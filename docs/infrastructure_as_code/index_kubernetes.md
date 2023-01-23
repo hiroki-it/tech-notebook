@@ -101,3 +101,5 @@
 * #### <u>Kustomize</u>
   > * ##### 📖 [Kustomize](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.html)
   > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.html)
+
+<br>

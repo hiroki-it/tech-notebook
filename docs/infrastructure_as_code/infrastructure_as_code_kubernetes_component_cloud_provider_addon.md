@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】クラウドプロバイダーアドオン＠Kubernetes
-description: クラウドプロバイダーアドオン＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】AWS EKSアドオン＠クラウドプロバイダーアドオン
+description: AWS EKSアドオン＠クラウドプロバイダーアドオンの知見を記録しています。
 ---
 
-# クラウドプロバイダーアドオン＠Kubernetes
+# AWS EKSアドオン＠クラウドプロバイダーアドオン
 
 ## はじめに
 
@@ -15,9 +15,7 @@ description: クラウドプロバイダーアドオン＠Kubernetesの知見を
 
 <br>
 
-## 01. AWS EKSアドオン
-
-### AWS EKSアドオンとは
+## 01. AWS EKSアドオンとは
 
 EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。
 
@@ -34,9 +32,9 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 <br>
 
-### eks-code-dnsアドオン
+## 02. eks-code-dnsアドオン
 
-#### ▼ eks-code-dnsアドオンとは
+### eks-code-dnsアドオンとは
 
 EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
 
@@ -44,9 +42,9 @@ EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働�
 
 <br>
 
-### eks-kube-proxy
+## 03. eks-kube-proxy
 
-#### ▼ eks-kube-proxyアドオンとは
+### eks-kube-proxyアドオンとは
 
 EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
@@ -54,9 +52,9 @@ EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働
 
 <br>
 
-### eks-vpc-cniアドオン
+## 04. eks-vpc-cniアドオン
 
-#### ▼ eks-vpc-cniアドオンとは
+### eks-vpc-cniアドオンとは
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
 
@@ -69,7 +67,15 @@ EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働す�
 
 <br>
 
-### AWS LBコントローラー
+## 05. AWS LBコントローラー
+
+### AWS LBコントローラーとは
+
+AWS LBコントローラーは、専用のALB、TargetGroupBinding、から構成されている。
+
+<br>
+
+### 専用のALB
 
 #### ▼ セットアップ
 
@@ -214,7 +220,11 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
-#### ▼ IngressとALBの紐付け
+<br>
+
+#### ▼ Ingressと専用のALBの紐付け
+
+IngressとALBを紐づけるために、```metadata.annotations```キーを設定する必要がある。
 
 | 項目                                            | 説明                                                           |
 |-------------------------------------------------|--------------------------------------------------------------|
@@ -232,5 +242,25 @@ aws-load-balancer-controller   2/2     2            0           22m
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
 
+
+<br>
+
+### TargetGroupBinding
+
+調査中...
+
+```yaml
+kind: TargetGroupBinding
+metadata:
+  name: foo-target-group-binding
+  namespace: foo
+spec:
+  serviceRef:
+    name: foo-service
+    port: 80
+  targetGroupARN: <ターゲットグループのARN>
+```
+
+> ℹ️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
 
 <br>

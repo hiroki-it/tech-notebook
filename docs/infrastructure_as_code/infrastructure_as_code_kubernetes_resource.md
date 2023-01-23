@@ -410,9 +410,11 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 しかし、EndpointsではPodの宛先情報を一括管理しなければならず、これを分割して管理できるように、Endpointsの代わりとしてEndpointSliceが導入された。
 
+![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_endpoint-slices.png)
+
+
 > ℹ️ 参考：https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api
 
-![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_endpoint-slices.png)
 
 <br>
 
@@ -532,17 +534,8 @@ Serviceに対するインバウンド通信を、Cluster-IPを介してPodにル
 
 Cluster-IPはServiceの```.spec.clusterIP```キーで指定しない限りランダムで決まり、Podの```/etc/resolv.conf ```ファイルに記載されている。
 
-Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。
+Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。
 
-Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。
-
-一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして（レイヤーは異なるが）、PodのIPアドレスを宛先とする```L7```ロードバランサー（例：AWS ALBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
-
-> ℹ️ 参考：
->
-> - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
-> - https://thinkit.co.jp/article/18263
-> - https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
 
 ```bash
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
@@ -553,6 +546,25 @@ nameserver *.*.*.* # ClusterネットワークのIPアドレス
 search default.svc.cluster.local svc.cluster.local cluster.local 
 options ndots:5
 ```
+
+Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。
+
+Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。
+
+一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして（レイヤーは異なるが）、PodのIPアドレスを宛先とする```L7```ロードバランサー（例：AWS ALBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+
+
+> ℹ️ 参考：
+>
+> - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
+> - https://thinkit.co.jp/article/18263
+> - https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
+
+ただし、クラウドプロバイダーによっては```L7```ロードバランサーとClusterIP Serviceを仲介するカスタムリソースを提供している場合がある（AWSのTargetGroupBindings）。
+
+これを使用すれば、ClusterIP Serviceでも、クラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
+
+> ℹ️ 参考：https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8
 
 #### ▼ NodePort Service
 
@@ -605,12 +617,6 @@ Serviceに対するインバウンド通信を、そのままPodにルーティ�
 Podが複数ある場合は、ラウンドロビン方式でIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。
 
 
-
-> ℹ️ 参考：
->
-> - https://thinkit.co.jp/article/13739
-> - https://hyoublog.com/2020/05/22/kubernetes-headless-service/
-
 ```bash
 $ dig <Serviceの完全修飾ドメイン名>
 
@@ -623,11 +629,18 @@ $ dig <Serviceの完全修飾ドメイン名>
 <Serviceの完全修飾ドメイン名>. 30 IN A       10.8.2.55
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://thinkit.co.jp/article/13739
+> - https://hyoublog.com/2020/05/22/kubernetes-headless-service/
+
+
 また、Headless ServiceからStatefulSetにルーティングする場合は、唯一、Podで直接的に名前解決できるようになる。
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/13739
 
 ```bash
 $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
@@ -638,6 +651,9 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 ;; ANSWER SECTION:
 <Pod名>.<Serviceの完全修飾ドメイン名>. 30 IN A 10.8.0.30
 ```
+
+> ℹ️ 参考：https://thinkit.co.jp/article/13739
+
 
 <br>
 
@@ -659,12 +675,12 @@ Cluster全体に渡る機能を提供する。
 
 #### ▼ 初期Namespace
 
-| 名前                  | 説明                                                                           |
-|-----------------------|------------------------------------------------------------------------------|
-| ```default```         | 任意のKubernetesリソースを配置する。                                                    |
-| ```kube-node-lease``` | Kubernetesリソースのうちで、特にLeaseを配置する。                                            |
+| 名前                  | 説明                                                                        |
+|-----------------------|---------------------------------------------------------------------------|
+| ```default```         | 任意のKubernetesリソースを配置する。                                                   |
+| ```kube-node-lease``` | Kubernetesリソースのうちで、特にLeaseを配置する。                                          |
 | ```kube-public```     | 全てのクライアント（```kubectl```クライアント、Kubernetesリソース）に公開してもよいKubernetesリソースを配置する。 |
-| ```kube-system```     | Kubernetesシステムに関するKubernetesリソースを配置する。                                      |
+| ```kube-system```     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。                          |
 
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
@@ -983,15 +999,10 @@ Node上の既存のストレージ領域をボリュームとし、コンテナ�
 
 バインドマウントは、NodeとPod内のコンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
 
-
-
-> ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
-
 HostPathは非推奨である。
 
 
 
-> ℹ️ 参考：https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
 ```bash
 # Node内でdockerコマンドを実行
@@ -1031,6 +1042,12 @@ $ docker inspect <コンテナID>
         ]
     }
 ```
+
+> ℹ️ 参考：
+> 
+> - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
+> - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+
 
 #### ▼ EmptyDir
 
@@ -1082,17 +1099,18 @@ Podの```.spec.volumes```キーでPersistentVolumeClaimを宣言すれば、Volu
 
 kube-apiserverが、リクエストの送信元を認証できるようにする。
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
-> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
-> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
-
 
 | アカウント名        | 説明                                                                                                                                 | 補足                                                                                                                                                                                                                                                                             |
 |----------------|------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ServiceAccount | kube-apiserverが、Kubernetesリソース（特にPod）を認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
 | UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                        | クライアントの認証に必要なクライアント証明書は、```~/.kube/config```ファイルに登録する必要がある。                                                                                                                                                                                                           |
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
 
 <br>
@@ -1107,16 +1125,17 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 kube-apiserverが、認証されたKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
-> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
-
 
 | ロール名       | 説明                                                             | 補足                                                                                                                                                                                                                                                                                                                                                            |
 |-------------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                      |
 | ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                  | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
 #### ▼ RBAC：Role-based access control
 
@@ -1136,16 +1155,18 @@ RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
 
 
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
-> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
-
 
 | バインディング名          | 説明                       | 補足                                                     |
 |--------------------|---------------------------|--------------------------------------------------------|
 | RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。               |
 | ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
 
 <br>
 

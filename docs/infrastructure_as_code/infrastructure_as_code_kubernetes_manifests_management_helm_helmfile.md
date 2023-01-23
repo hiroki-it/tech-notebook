@@ -112,15 +112,24 @@ releases:
 
 ### environments
 
+#### ▼ environments
+
 環境名のリストとして動作し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
 
 
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 
+#### ▼ 実行環境名を渡したいだけの場合
+
+実行環境名を渡したいだけの場合、```environments```キー配下のキー自体を```{{ .Environment.Name }}```のように変数化する。
+
 ```yaml
 environments:
-  dev:
-  prd:
+  {{ .Environment.Name }}:
+    values:
+      - values-{{ .Environment.Name }}.yaml
+    secrets:
+      - secrets-{{ .Environment.Name }}.yaml
 
 repositories:
   - name: foo-repository
@@ -130,8 +139,42 @@ releases:
   - name: foo
     chart: foo-repository/foo-chart
     version: <バージョンタグ>
+```
+
+```bash
+# 環境名を渡す。
+$ helmfile -e dev apply
+```
+
+> ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
+
+#### ▼ 実行環境名を渡す以外こともやりたい場合
+
+実行環境名を渡す以外こともやりたい場合、```environments```キー配下のキー自体に実行環境名を設定する。
+
+あまりユースケースがないかもしれない。
+
+```yaml
+environments:
+  dev:
     values:
-      - values-{{ .Environment.Name }}.yaml
+      - values-foo.yaml
+    secrets:
+      - secrets-foo.yaml
+  prd:
+    values:
+      - values-bar.yaml
+    secrets:
+      - secrets-bar.yaml
+
+repositories:
+  - name: foo-repository
+    url: https://github.com/hiroki.hasegawa/foo-repository
+
+releases:
+  - name: foo
+    chart: foo-repository/foo-chart
+    version: <バージョンタグ>
 ```
 
 ```bash
@@ -222,13 +265,22 @@ releases:
 
 Helmの実行時に複合化する```values```ファイルを設定する。
 
-
-
-
 ```yaml
 releases:
   - values:
       - ./foo-values.yaml
+```
+
+もし```{{ .Environment.Name }}```を使用したい場合は、```environments```キーの方でvaluesファイルを読み込ませるようにする。
+
+```yaml
+environments:
+  {{ .Environment.Name }}:
+    values:
+      - values-{{ .Environment.Name }}/yaml
+
+releases:
+  ...
 ```
 
 #### ▼ secrets
@@ -288,11 +340,15 @@ releases:
 
 ## 04. values.gotmplファイル
 
+### values.gotmplファイルとは
+
 Helmでは```values```ファイルをテンプレート化できないが、Helmfileではこれが可能である。
 
 ```values```ファイルに、Helmfileの変数や他の```values```ファイルの値を出力する。
 
 特に、公式チャートに実行環境別の```values```ファイルを渡したい場合に役立つ。
+
+注意点として、```values.yaml.gotmpl```ファイルに値を渡すための```values```ファイルは、Helmfileの```environments```キー配下で読み込まなければならない。
 
 ```yaml
 repositories:
@@ -304,33 +360,18 @@ releases:
     chart: foo-repository/foo-chart
     version: <バージョンタグ>
     values:
-      - values-{{ .Environment.Name }}.yaml # 実行環境別のvaluesファイル
       - values.yaml.gotmpl # 実行環境間で共有するvaluesファイル
 
 environments:
-  dev:
-  prd:
+  {{ .Environment.Name }}:
+    values:
+      - values-{{ .Environment.Name }}.yaml # values.yaml.gotmplファイルに値を渡すvaluesファイル
 ```
 
-```yaml
-repository/
-├── charts
-│   ├── argocd
-│   │   ├── values-dev.yaml 
-│   │   ├── values-prd.yaml
-│   │   └── values.yaml.gotmpl
-│   │
-│   └── argocd-apps
-│       ├── values-dev.yaml
-│       ├── values-prd.yaml
-│       └── values.yaml.gotmpl 
-│
-└── helmfile.d
-    ├── argocd-apps.yaml
-    └── argocd.yaml 
-```
-
-
-> ℹ️ 参考：https://zenn.dev/johnmanjiro13/articles/3f12eeda0762b9#%E7%8B%AC%E8%87%AA%E3%81%AEhelm-chart%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6helmfile%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B
+> ℹ️ 参考：
+> 
+> - https://helmfile.readthedocs.io/en/latest/#environment-values
+> - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
+> - https://zenn.dev/johnmanjiro13/articles/3f12eeda0762b9#%E7%8B%AC%E8%87%AA%E3%81%AEhelm-chart%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6helmfile%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B
 
 <br>

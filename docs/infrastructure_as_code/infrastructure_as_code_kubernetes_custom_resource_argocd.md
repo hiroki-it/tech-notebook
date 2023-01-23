@@ -44,13 +44,21 @@ argocd-dex-server-*****                 1/1     Running   0          1d
 
 #### ▼ argocd-serverとは
 
-クライアント（```argocd```コマンド実行者）のエンドポイントやダッシュボードを公開し、リクエストに応じて、ArgoCDのApplicationを操作する。
+クライアント（```argocd```コマンド実行者）のエンドポイントやダッシュボードを公開する。
 
-また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
+自身に対するリクエストに応じて、kube-apiserverにリクエストを送信し、ArgoCDのApplicationを操作する。
+
+Applicationから返却された情報（例：マニフェストの差分）をダッシュボード上に公開する。
+
+リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
 
 
 
-> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+> ℹ️ 参考：
+> 
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 
 <br>
 
@@ -72,7 +80,11 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "ls -la /tmp"
 ```
 
-> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+> ℹ️ 参考：
+> 
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 
 
 #### ▼ デバッグ
@@ -114,9 +126,23 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 #### ▼ application-controllerとは
 
-kube-controllerとして動作し、Applicationの状態がマニフェストの宣言的設定通りになるように制御する。repo-serverからマニフェストを取得し、指定されたKubernetes Clusterにこれを作成する。Applicationが管理するKubernetesリソースのマニフェストと、監視対象リポジトリのマニフェストの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
+kube-controllerとして動作し、Applicationの状態がマニフェストの宣言的設定通りになるように制御する。
 
-> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+repo-serverが取得したクローンからマニフェストを参照し、```kubectl diff```コマンドを実行することにより、差分を検出する。
+
+そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる（通常、Helmではカスタムリソースのマニフェストの差分を検出できない）。
+
+```kubectl apply```コマンドを実行し、指定されたKubernetes ClusterにKubernetesリソースを作成する。
+
+Applicationが管理するKubernetesリソースのマニフェストと、監視対象リポジトリのマニフェストの間に、差分がないか否かを継続的に監視する。
+
+この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
+
+> ℹ️ 参考：
+> 
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 
 <br>
 
@@ -124,7 +150,9 @@ kube-controllerとして動作し、Applicationの状態がマニフェストの
 
 #### ▼ redis-serverとは
 
-repo-server内のマニフェストのキャッシュを作成し、これを管理する。ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
+repo-server内のマニフェストのキャッシュを作成し、これを管理する。
+
+ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
 
 > ℹ️ 参考：
 >

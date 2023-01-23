@@ -409,6 +409,8 @@ spec:
 
 ```argocd-repo-server```コンテを持つPodに紐づけるServiceAccountを作成する。
 
+ServiceAccountにはクラウドプロバイダーの認可スコープ（例：AWS IAMロール）を紐付け、暗号化キーを使用できるようにする。
+
 ```yaml
 apiVersion: v1
 kind: ServiceAccount

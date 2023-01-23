@@ -396,3 +396,11 @@ ArgoCDが自分で自分をアップグレードできるように、親Applicat
 
 
 <br>
+
+## 07. 監視
+
+調査中...
+
+> ℹ️ 参考：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
+
+<br>
