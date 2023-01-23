@@ -37,13 +37,6 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。
 
-
-
-> ℹ️ 参考：
->
-> - https://blog.aquasec.com/docker-security-best-practices
-> - https://www.forcia.com/blog/002273.html
-
 ```dockerfile
 FROM alpine:3.12
 
@@ -55,6 +48,13 @@ USER foouser
  
 ENTRYPOINT ["/app"]
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://blog.aquasec.com/docker-security-best-practices
+> - https://www.forcia.com/blog/002273.html
 
 <br>
 
@@ -100,10 +100,10 @@ Dockerは全てのマシンで稼働できるわけではなく、コンテナ�
 
 
 
-> ℹ️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
 
 ```bash
 $ docker inspect <コンテナ名>
+
 {
     ...
  
@@ -112,6 +112,9 @@ $ docker inspect <コンテナ名>
     ...
 }
 ```
+
+> ℹ️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
+
 
 #### ▼ バージョン
 
@@ -244,11 +247,6 @@ Dockerfileの各命令によって、コンテナイメージ レイヤーが1�
 
 
 
-> ℹ️ 参考：
->
-> - https://www.itbook.info/network/docker02.html
-> - https://yuhabeem.com/2021/03/27/311/
-
 例えば、以下のような時、
 
 ```dockerfile
@@ -285,6 +283,13 @@ RUN yum -y install \
      php-pear \
   && rm -Rf /var/cache/dnf
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://www.itbook.info/network/docker02.html
+> - https://yuhabeem.com/2021/03/27/311/
+
 
 <br>
 

@@ -1591,11 +1591,11 @@ spec:
 
 パスベースルーティング判定時のルールの厳しさを設定する。
 
-| 厳しさ             | タイプ    |                                                   |
-|-----------------|--------|---------------------------------------------------|
-| パス名の一致          | Prefix | 最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。 |
-| パス名の完全一致        | Exact  | 指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。               |
-| IngressClassによる | ImplementationSpecific | IngressClass（例：Nginx）の設定に応じてルールを自動的に設定する。         |
+| 厳しさ            | タイプ                    |                                                                 |
+|-----------------|------------------------|-----------------------------------------------------------------|
+| パス名の一致       | Prefix                 | 最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。 |
+| パス名の完全一致   | Exact                  | 指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。                     |
+| IngressClassによる | ImplementationSpecific | IngressClass（例：Nginx）の設定に応じてルールを自動的に設定する。              |
 
 
 ```yaml
@@ -4349,7 +4349,7 @@ Serviceが待ち受けるポート番号とは別に、NodeのNICで待ち受け
 
 
 
-> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#nodeport
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
 
 ```yaml
 apiVersion: v1
@@ -4378,7 +4378,7 @@ spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid ran
 
 LoadBalancer Serviceを設定する。クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。同時に、```status.loadBalancer```キーが自動的に追加される。```status.loadBalancer.ingress```キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『```ingress```』である。```status.loadBalancer.ingress.ip```キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
 
-> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#loadbalancer
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
 
 ```yaml
 apiVersion: v1

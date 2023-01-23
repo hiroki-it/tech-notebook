@@ -29,7 +29,7 @@
   > > * ##### 📖 [Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
   > > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
 * #### <u>開発ツール</u>
-  > * 📖 [静的解析ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_linter.html)
+  > * ##### 📖 [静的解析ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_linter.html)
 
 
 <br>

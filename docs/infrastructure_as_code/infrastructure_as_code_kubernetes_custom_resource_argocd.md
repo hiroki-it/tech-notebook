@@ -23,7 +23,6 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 argocd-server、repo-server、application-controller、redis-server、dex-server、から構成される。
 
-> ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 
 ```bash
 $ kubectl get pod -n argocd
@@ -35,6 +34,9 @@ argocd-redis-*****                      1/1     Running   0          1d
 argocd-application-controller-*****     1/1     Running   0          1d
 argocd-dex-server-*****                 1/1     Running   0          1d
 ```
+
+> ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
+
 
 <br>
 
@@ -62,7 +64,6 @@ argocd-dex-server-*****                 1/1     Running   0          1d
 
 
 
-> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
@@ -71,11 +72,13 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "ls -la /tmp"
 ```
 
+> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+
+
 #### ▼ デバッグ
 
 ```repo-server```コンテナには```kubectl exec```コマンドでは接続できないが、直接的にコマンドを送信することは可能である。そのため、デバッグが可能である。
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
 
 **＊例＊**
 
@@ -101,6 +104,9 @@ $ kubectl -it exec foo-argocd-repo-server \
     -n argocd \
     -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-repository && helm template foo-chart -f values-prd.yaml"
 ```
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
+
 
 <br>
 

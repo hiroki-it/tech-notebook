@@ -99,10 +99,6 @@ $ minikube start
 
 ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeの決められたディレクトリにマウントされる。
 
-
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
-
 | ドライバー名       | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のNodeのディレクトリ |
 |---------------|----------|------------------|---------------------------|
 | VirtualBox    | Linux    | ```/home```      | ```/hosthome```           |
@@ -111,6 +107,8 @@ $ minikube start
 | VMware Fusion | macOS    | ```/Users```     | ```/mnt/hgfs/Users```     |
 | KVM           | Linux    | なし               |                           |
 | HyperKit      | Linux    | なし（NFSマウントを参照） |                           |
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
 <br>
 
@@ -125,9 +123,6 @@ $ minikube start
 ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
 
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
-
 - ```/data```
 - ```/var/lib/minikube```
 - ```/var/lib/docker```
@@ -136,6 +131,8 @@ $ minikube start
 - ```/var/lib/containers```
 - ```/tmp/hostpath_pv```
 - ```/tmp/hostpath-provisioner```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
 <br>
 
@@ -235,9 +232,6 @@ docker@minikube:~$ ip addr | grep eth0
 Node内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
 
-
-> ℹ️ 参考：https://nishipy.com/archives/1467
-
 **＊例＊**
 
 CNIとしてBridgeアドオンを使用している。
@@ -277,6 +271,9 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
     }
 }
 ```
+
+> ℹ️ 参考：https://nishipy.com/archives/1467
+
 
 <br>
 

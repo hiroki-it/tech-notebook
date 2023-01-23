@@ -36,8 +36,8 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 
 
-| 問題                                                                                                                         | 解決策                                                                                                                                              | 該当のカスタムリソース |
-|----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
+| 問題                                                                                                                           | 解決策                                                                                                                                              | 該当のカスタムリソース |
+|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
 | ```.spec.affinity```キーの変更を適用するために、Podを再スケジューリングした。```.spec.affinity```キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐づけるために、同じNodeにPodが再スケジューリングされている可能性がある。Podを再スケジューリングした後に、すぐにPersistentVolumeも再作成する。 | Prometheus系  |
 
 <br>
@@ -132,11 +132,6 @@ metadata:
 
 
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
-> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
-
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
@@ -146,6 +141,12 @@ spec:
   group: example.com
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+
 ### spec.scope
 
 #### ▼ scopeとは
@@ -153,11 +154,6 @@ spec:
 カスタムリソースがNamespaceあるいはClusterのいずれかに属するかを設定する。
 
 
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
-> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -167,6 +163,12 @@ metadata:
 spec:
   scope: Namespaced
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 <br>
 
@@ -186,7 +188,6 @@ spec:
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -206,13 +207,15 @@ spec:
   ...
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
+
 #### ▼ plural
 
 カスタムリソースをAPIからコールする時のURLで使用するリソースの複数形名を設定する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -224,13 +227,15 @@ spec:
     plural: foo
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
+
 #### ▼ singular
 
 ```kubectl```コマンドで使用するカスタムリソースの単数形名を設定する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -246,13 +251,15 @@ spec:
 $ kubectl get foo
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
+
 #### ▼ shortNames
 
 ```kubectl```コマンドで使用するカスタムリソースの省略名を設定する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -269,6 +276,9 @@ spec:
 $ kubectl get foo
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
+
 <br>
 
 ### versions
@@ -281,7 +291,6 @@ APIのバージョン名を設定する。
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -293,6 +302,9 @@ spec:
     - name: v1
 ```
 
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+
+
 #### ▼ served
 
 APIのバージョンを有効化するかを設定する。
@@ -301,7 +313,6 @@ APIのバージョンを有効化するかを設定する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -313,6 +324,8 @@ spec:
     - served: true
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
 #### ▼ schema
 
 カスタムリソースの```.spec.``キー以下に設定できるキーを設定する。
@@ -320,13 +333,6 @@ spec:
 例えば『```message```』というstring型のキーを設定すると、カスタムリソースの```.spec.message```キーに任意の文字列を設定できるようになる。
 
 カスタムリソース内部のPodのデプロイ戦略は、Deployment、StatefulSet、DaemonSet、の設定値によって決まることになる。
-
-
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
-> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -346,16 +352,19 @@ spec:
                   type: string
 ```
 
-#### ▼ storage
-
-APIのバージョンをetcdのストレージに保存してもよいどうかを設定する。
 
 
 
 > ℹ️ 参考：
 >
-> - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
-> - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
+> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+
+
+#### ▼ storage
+
+APIのバージョンをetcdのストレージに保存してもよいどうかを設定する。
+
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -366,6 +375,14 @@ spec:
   versions:
     - storage: true
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
+> - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5
+
 
 <br>
 
@@ -434,9 +451,10 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 #### ▼ アーキテクチャ
 
+Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、から構成されている。
+
 ![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator_architecture.png)
 
-Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、から構成されている。
 
 > ℹ️ 参考：
 >
@@ -445,9 +463,17 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 #### ▼ operator-controller
 
+
+カスタムコントローラーとして動作する。
+
+operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。
+
+operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。
+
+operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
+
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
-カスタムコントローラーとして動作する。operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 
 > ℹ️ 参考：
 >
@@ -457,7 +483,9 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 #### ▼ 認可スコープ付与リソース
 
-operator-controllerがkube-apiserverにリクエストを送信できるように、operator-controllerに認可スコープを付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
+operator-controllerがkube-apiserverにリクエストを送信できるように、operator-controllerに認可スコープを付与する。
+
+ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
 
 > ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 

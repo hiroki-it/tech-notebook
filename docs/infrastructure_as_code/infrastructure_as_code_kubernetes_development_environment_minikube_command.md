@@ -223,7 +223,6 @@ $ minikube delete --all --purge
 
 
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
 **＊例＊**
 
@@ -262,6 +261,9 @@ MINIKUBE_ACTIVE_DOCKERD=minikube
 docker-env:
 	eval $(shell minikube -p minikube docker-env)
 ```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
+
 
 #### ▼ -u
 
@@ -535,12 +537,6 @@ http://<Minikube仮想サーバー内のNodeのIPアドレス>:<NodePort Service
 仮想環境内のNodeにSSH公開鍵認証で接続する。
 
 
-
-> ℹ️ 参考：
->
-> - https://minikube.sigs.k8s.io/docs/commands/ssh/
-> - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
-
 ```bash
 # DockerドライバーによるNodeの場合
 $ minikube ssh  
@@ -611,6 +607,14 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 # コンテナの中
 [root@<コンテナID>:~] $ ls -la 
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://minikube.sigs.k8s.io/docs/commands/ssh/
+> - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
+
 
 #### ▼ ``--``（ハイフン2つ）
 

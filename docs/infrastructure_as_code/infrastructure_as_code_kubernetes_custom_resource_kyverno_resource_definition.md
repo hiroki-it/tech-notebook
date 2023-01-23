@@ -25,7 +25,6 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://kyverno.github.io/kyverno/
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kyverno.github.io/kyverno/
@@ -36,6 +35,10 @@ $ kubectl create namespace kyverno
 
 $ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
 ```
+
+> ℹ️ 参考：https://kyverno.github.io/kyverno/
+
+
 
 <br>
 
@@ -49,7 +52,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyv
 
 
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/validate/#validation-failure-action
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -60,6 +62,9 @@ metadata:
 spec:
   validationFailureAction: enforce
 ```
+
+> ℹ️ 参考：https://kyverno.io/docs/writing-policies/validate/#validation-failure-action
+
 
 <br>
 
@@ -72,7 +77,6 @@ Kyvernoの導入後に作成/更新されるKubernetesだけでなく、既存�
 
 
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/background/
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -83,6 +87,9 @@ metadata:
 spec:
   background: false
 ```
+
+> ℹ️ 参考：https://kyverno.io/docs/writing-policies/background/
+
 
 <br>
 
@@ -96,7 +103,6 @@ Webhook時に実行するKyvernoのルールを設定する。
 
 #### ▼ Mutateルールの場合
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/mutate/
 
 **＊実装例＊**
 
@@ -126,9 +132,11 @@ spec:
                 imagePullPolicy: "IfNotPresent"
 ```
 
+> ℹ️ 参考：https://kyverno.io/docs/writing-policies/mutate/
+
+
 #### ▼ Validateルールの場合
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/validate/#basic-validations
 
 **＊実装例＊**
 
@@ -165,5 +173,8 @@ spec:
                     memory: "?*"
                     cpu: "?*"
 ```
+
+> ℹ️ 参考：https://kyverno.io/docs/writing-policies/validate/#basic-validations
+
 
 <br>

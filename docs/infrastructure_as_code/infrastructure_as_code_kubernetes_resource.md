@@ -34,9 +34,9 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 <br>
 
-## 02. Workloadリソース
+## 02. Workload系リソース
 
-### Workloadリソースとは
+### Workload系リソースとは
 
 コンテナの実行に関する機能を提供する。
 
@@ -389,15 +389,12 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 
 <br>
 
-## 03. Discovery&LBリソース
+## 03. ネットワーク系リソース
 
-### Discovery&LBリソースとは
-
-Node上のコンテナをNode外に公開する機能を提供する。
+### ネットワーク系リソースとは
 
 
-
-> ℹ️ 参考：https://thinkit.co.jp/article/13542
+Cluster内のネットワークを制御する。
 
 <br>
 
@@ -644,13 +641,42 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 <br>
 
-## 04. Config&Storageリソース
+## 04. Clusterリソース
 
-### Config&Storageリソースとは
+### Clusterリソースとは
 
-コンテナで使用する変数、ファイル、ボリュームに関する機能を提供する。
+Cluster全体に渡る機能を提供する。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/13542
+
+<br>
+
+### Namespace
+
+#### ▼ Namespaceとは
+
+各Kubernetesリソースの影響範囲を制御するための領域のこと。
+
+#### ▼ 初期Namespace
+
+| 名前                  | 説明                                                                           |
+|-----------------------|------------------------------------------------------------------------------|
+| ```default```         | 任意のKubernetesリソースを配置する。                                                    |
+| ```kube-node-lease``` | Kubernetesリソースのうちで、特にLeaseを配置する。                                            |
+| ```kube-public```     | 全てのクライアント（```kubectl```クライアント、Kubernetesリソース）に公開してもよいKubernetesリソースを配置する。 |
+| ```kube-system```     | Kubernetesシステムに関するKubernetesリソースを配置する。                                      |
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
+
+
+<br>
+
+## 05. 設定系リソース
+
+### 設定系リソースとは
+
+コンテナで使用する変数、ファイル、ボリュームに関する機能を提供する。
 
 <br>
 
@@ -675,92 +701,6 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 <br>
 
-### PersistentVolumeClaim
-
-#### ▼ PersistentVolumeClaimとは
-
-設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
-
-> ℹ️ 参考：https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
-
-#### ▼ 削除できない
-
-PersistentVolumeClaimを削除しようとすると、```finalizers```キー配下に```kubernetes.io/pvc-protection```値が設定され、削除できなくなることがある。
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  finalizers:
-    - kubernetes.io/pvc-protection
-  name: foo-persistent-volume-claim
-spec:
-  ...
-```
-
-この場合、```kubectl edit```コマンドなどで```finalizers```キーを空配列に編集と、削除できるようになる。
-
-```bash
-$ kubectl edit pvc <PersistentVolumeClaim名>
-```
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  finalizers: []
-  name: foo-persistent-volume-claim
-spec:
-  ...
-```
-
-> ℹ️ 参考：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
-
-#### ▼ node affinityによるエラー
-
-PersistentVolumeClaimは、```annotation```キー配下の```volume.kubernetes.io/selected-node```キーで紐づくPersistentVolumeが配置されているNode名を指定している。
-
-PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
-
-しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが```.spec.nodeAffinity```キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
-
-```bash
-N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
-```
-
-> ℹ️ 参考：https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
-
-
-（１）PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
-
-```bash
-$ kubectl describe pvc <PersistentVolumeClaim名>
-
-...
-
-Annotations:   pv.kubernetes.io/bind-completed: yes
-               pv.kubernetes.io/bound-by-controller: yes
-               volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
-               volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal
-               
-...
-```
-
-（２）PodがいずれのNodeでスケジューリングされているのかを確認する。
-
-```bash
-$ kubectl get pod <Pod名> -o wide
-```
-
-（３）Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
-
-
-（４）StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
-
-> ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
-
-
-<br>
 
 ### Secret
 
@@ -799,60 +739,8 @@ Secretに永続化された値を復号化し、```kubectl```コマンドにパ�
 
 <br>
 
-## 05. Clusterリソース
 
-### Clusterリソースとは
-
-セキュリティやクォーターに関する機能を提供する。
-
-
-
-> ℹ️ 参考：https://thinkit.co.jp/article/13542
-
-<br>
-
-### CertificateSigningRequest
-
-#### ▼ CertificateSigningRequestとは
-
-認証局に対するSSL証明書の要求（```openssl x509```コマンド）を宣言的に設定する。
-
-別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。
-
-
-
-> ℹ️ 参考：https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
-
-<br>
-
-### NetworkPolicy
-
-#### ▼ NetworkPolicyとは
-
-Pod間通信でのインバウンド/アウトバウンド通信の送受信ルールを設定する。
-
-
-
-> ℹ️ 参考：
->
-> - https://www.amazon.co.jp/dp/B08FZX8PYW
-> - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
-
-#### ▼ Ingress
-
-他のPodからの受信するインバウンド通信のルールを設定する。
-
-Ingressとは関係がないことに注意する。
-
-
-
-#### ▼ Egress
-
-他のPodに送信するアウトバウンド通信のルールを設定する。
-
-
-
-<br>
+## 06. ストレージ系リソース
 
 ### PersistentVolume
 
@@ -961,77 +849,95 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 <br>
 
-### Role、ClusterRole
 
-#### ▼ Role、ClusterRoleとは
+### PersistentVolumeClaim
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+#### ▼ PersistentVolumeClaimとは
 
-kube-apiserverが、認証されたKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
+設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
-> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+> ℹ️ 参考：https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
+
+#### ▼ 削除できない
+
+PersistentVolumeClaimを削除しようとすると、```finalizers```キー配下に```kubernetes.io/pvc-protection```値が設定され、削除できなくなることがある。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  finalizers:
+    - kubernetes.io/pvc-protection
+  name: foo-persistent-volume-claim
+spec:
+  ...
+```
+
+この場合、```kubectl edit```コマンドなどで```finalizers```キーを空配列に編集と、削除できるようになる。
+
+```bash
+$ kubectl edit pvc <PersistentVolumeClaim名>
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  finalizers: []
+  name: foo-persistent-volume-claim
+spec:
+  ...
+```
+
+> ℹ️ 参考：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
+
+#### ▼ node affinityによるエラー
+
+PersistentVolumeClaimは、```annotation```キー配下の```volume.kubernetes.io/selected-node```キーで紐づくPersistentVolumeが配置されているNode名を指定している。
+
+PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
+
+しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが```.spec.nodeAffinity```キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
+
+```bash
+N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
+```
+
+> ℹ️ 参考：https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
 
 
-| ロール名       | 説明                                                             | 補足                                                                                                                                                                                                                                                                                                                                                            |
-|-------------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                      |
-| ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                  | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+（１）PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
 
-#### ▼ RBAC：Role-based access control
+```bash
+$ kubectl describe pvc <PersistentVolumeClaim名>
 
-Role、ClusterRole、を使用して認可スコープを制御する仕組みのこと。
+...
+
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+               volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
+               volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal
+               
+...
+```
+
+（２）PodがいずれのNodeでスケジューリングされているのかを確認する。
+
+```bash
+$ kubectl get pod <Pod名> -o wide
+```
+
+（３）Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
 
 
+（４）StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+> ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
+
+
 
 <br>
 
-### RoleBinding、ClusterRoleBinding
-
-#### ▼ RoleBinding、ClusterRoleBindingとは
-
-RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
-
-
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
-> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
-
-
-| バインディング名          | 説明                       | 補足                                                     |
-|--------------------|---------------------------|--------------------------------------------------------|
-| RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。               |
-| ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
-
-<br>
-
-### ServiceAccount、UserAccount
-
-#### ▼ ServiceAccount、UserAccountとは
-
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
-
-kube-apiserverが、リクエストの送信元を認証できるようにする。
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
-> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
-> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
-
-
-| アカウント名        | 説明                                                                                                                                 | 補足                                                                                                                                                                                                                                                                             |
-|----------------|------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ServiceAccount | kube-apiserverが、Kubernetesリソース（特にPod）を認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
-| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                        | クライアントの認証に必要なクライアント証明書は、```~/.kube/config```ファイルに登録する必要がある。                                                                                                                                                                                                           |
-
-<br>
 
 ### Volume
 
@@ -1048,7 +954,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 
 > ℹ️ 参考：
-> 
+>
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 
@@ -1150,16 +1056,132 @@ Podの```.spec.volumes```キーでPersistentVolumeClaimを宣言すれば、Volu
 
 <br>
 
-## 06. Metadataリソース
+## 07. 認証系リソース
 
-### Metadataリソースとは
 
-> ℹ️ 参考：https://thinkit.co.jp/article/13542
+### CertificateSigningRequest
+
+#### ▼ CertificateSigningRequestとは
+
+認証局に対するSSL証明書の要求（```openssl x509```コマンド）を宣言的に設定する。
+
+別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。
+
+
+
+> ℹ️ 参考：https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
+
+<br>
+
+
+### ServiceAccount、UserAccount
+
+#### ▼ ServiceAccount、UserAccountとは
+
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+
+kube-apiserverが、リクエストの送信元を認証できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
+
+| アカウント名        | 説明                                                                                                                                 | 補足                                                                                                                                                                                                                                                                             |
+|----------------|------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ServiceAccount | kube-apiserverが、Kubernetesリソース（特にPod）を認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                        | クライアントの認証に必要なクライアント証明書は、```~/.kube/config```ファイルに登録する必要がある。                                                                                                                                                                                                           |
 
 
 <br>
 
-## 07. 共通キー
+## 08. 認可系リソース
+
+### Role、ClusterRole
+
+#### ▼ Role、ClusterRoleとは
+
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+
+kube-apiserverが、認証されたKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
+
+| ロール名       | 説明                                                             | 補足                                                                                                                                                                                                                                                                                                                                                            |
+|-------------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                      |
+| ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                  | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+
+#### ▼ RBAC：Role-based access control
+
+Role、ClusterRole、を使用して認可スコープを制御する仕組みのこと。
+
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+
+<br>
+
+### RoleBinding、ClusterRoleBinding
+
+#### ▼ RoleBinding、ClusterRoleBindingとは
+
+RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
+
+| バインディング名          | 説明                       | 補足                                                     |
+|--------------------|---------------------------|--------------------------------------------------------|
+| RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。               |
+| ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+
+<br>
+
+
+## 09. ポリシー系リソース
+
+
+### NetworkPolicy
+
+#### ▼ NetworkPolicyとは
+
+Pod間通信でのインバウンド/アウトバウンド通信の送受信ルールを設定する。
+
+
+
+> ℹ️ 参考：
+>
+> - https://www.amazon.co.jp/dp/B08FZX8PYW
+> - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
+
+#### ▼ Ingressの場合
+
+他のPodからの受信するインバウンド通信のルールを設定する。
+
+Ingressとは関係がないことに注意する。
+
+
+
+#### ▼ Egressの場合
+
+他のPodに送信するアウトバウンド通信のルールを設定する。
+
+
+<br>
+
+## 10. 各Kubernetesリソース共通
 
 ### annotationsキー
 
@@ -1171,8 +1193,8 @@ Kubernetesリソースに関する情報を設定する。
 ```annotations```キー配下にも同じキーがあることに注意する。
 
 
-| キー               | 値の例                             | 説明                             |
-|------------------|-----------------------------------|--------------------------------|
+| キー                            | 値の例                             | 説明                             |
+|-------------------------------|-----------------------------------|--------------------------------|
 | ```kubernetes.io/createdby``` | ```aws-ebs-dynamic-provisioner``` | Kubernetesリソースを作成したツールを設定する。 |
 
 
@@ -1180,8 +1202,8 @@ Kubernetesリソースに関する情報を設定する。
 
 PersistentVolumeに関する情報を設定する。
 
-| キー                         | 値の例                       | 説明                              |
-|----------------------------|-----------------------------|-----------------------------------|
+| キー                                         | 値の例                       | 説明                              |
+|--------------------------------------------|-----------------------------|-----------------------------------|
 | ```pv.kubernetes.io/bound-by-controller``` | ```yes```                   |                                   |
 | ```pv.kubernetes.io/provisioned-by```      | ```kubernetes.io/aws-ebs``` | そのPersistVolumeを作成したツールを設定する。 |
 
@@ -1191,8 +1213,8 @@ PersistentVolumeに関する情報を設定する。
 
 PersistentVolumeClaimに関する情報を設定する。
 
-| キー                         | 値の例                                            | 説明                                                                                                                                                                                                   |
-|----------------------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| キー                                             | 値の例                                            | 説明                                                                                                                                                                                                   |
+|------------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```volume.kubernetes.io/storage-provisioner``` | ```kubernetes.io/aws-ebs```                      | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                           |
 | ```volume.kubernetes.io/selected-node```       | ```ip-*-*-*-*.ap-northeast-1.compute.internal``` | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、```N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector```というエラーになる。 |
 
@@ -1204,13 +1226,13 @@ PersistentVolumeClaimに関する情報を設定する。
 
 Kubernetes上で稼働するコンテナの情報を設定する。
 
-| キー                | 値の例                                | 説明                              |
-|-------------------|--------------------------------------|----------------------------------|
+| キー                                 | 値の例                                | 説明                                      |
+|------------------------------------|--------------------------------------|-----------------------------------------|
 | ```app.kubernetes.io/app```        | ```foo```、```foo-service```          | マイクロサービス名を設定する。                        |
 | ```app.kubernetes.io/component```  | ```database```                       | コンテナの役割名を設定する。                       |
 | ```app.kubernetes.io/created-by``` | ```kube-controller-manager```        | このKubernetesリソースを作成したリソースやユーザーを設定する。  |
 | ```app.kubernetes.io/env```        | ```prd```、```stg```、```dev```        | アプリケーションの実行環境名を設定する。               |
-| ```app.kubernetes.io/instance```   | ```mysql-12345```                    | アプリコンテナのインスタンス名を設定する。             |
+| ```app.kubernetes.io/instance```   | ```mysql-12345```                    | アプリコンテナのインスタンス名を設定する。                  |
 | ```app.kubernetes.io/managed-by``` | ```helm```、```foo-operator```        | アプリケーションの管理ツール名を設定する。                |
 | ```app.kubernetes.io/name```       | ```mysql```                          | マイクロサービスを構成するコンテナのベンダー名を設定する。        |
 | ```app.kubernetes.io/nodegrop```   | ```batch```、```ingress```、```mesh``` | コンテナを持つPodのスケジューリング先とするNodeグループを設定する。 |
@@ -1225,16 +1247,16 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 
 ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
 
-| キー              | 値の例                 | 説明                                      |
-|-----------------|-----------------------|-----------------------------------------|
+| キー                                | 値の例                 | 説明                                              |
+|-----------------------------------|-----------------------|-------------------------------------------------|
 | ```argocd.argoproj.io/instance``` | ```foo-application``` | Kubernetesリソースを管理するArgoCDのApplication名を設定する。 |
 
 #### ▼ ```helm.sh```キー
 
 Helmを使用している場合に、Helmの情報を設定する。
 
-| キー           | 値の例           | 説明           |
-|--------------|-----------------|--------------|
+| キー                  | 値の例           | 説明                   |
+|---------------------|-----------------|----------------------|
 | ```helm.sh/chart``` | ```foo-chart``` | 使用しているチャート名を設定する。 |
 
 
@@ -1244,8 +1266,8 @@ Kubernetesリソースに関する情報を設定する。
 
 ```annotations```キー配下にも同じキーがあることに注意する。
 
-| キー              | 値の例                                                      | 説明            |
-|-----------------|------------------------------------------------------------|-----------------|
+| キー                           | 値の例                                                      | 説明                    |
+|------------------------------|------------------------------------------------------------|-----------------------|
 | ```kubernetes.io/arch```     | ```amd64```                                                | NodeのCPUアーキテクチャを設定する。 |
 | ```kubernetes.io/hostname``` | ```ip-*-*-*-*.ap-northeast-1.compute.internal```（AWSの場合） | Nodeのホスト名を設定する。      |
 | ```kubernetes.io/os```       | ```linux```                                                | NodeのOSを設定する。         |
@@ -1255,8 +1277,8 @@ Kubernetesリソースに関する情報を設定する。
 
 Nodeのtaintを設定する。
 
-| キー            | 値の例                     | 説明                     |
-|---------------|-------------------------|------------------------|
+| キー                                   | 値の例                                   | 説明                     |
+|--------------------------------------|-----------------------------------------|------------------------|
 | ```node-role.kubernetes.io/master``` | ```NoSchedule```、```PreferNoSchedule``` | Podのスケジューリングのルールを設定する。 |
 
 
@@ -1265,10 +1287,10 @@ Nodeのtaintを設定する。
 Nodeに関する情報を設定する。
 
 
-| キー            | 値の例                           | 説明                   |
-|---------------|-------------------------------|----------------------|
+| キー                                  | 値の例                           | 説明                       |
+|-------------------------------------|-------------------------------|--------------------------|
 | ```topology.kubernetes.io/region``` | ```ap-northeast-1```（AWSの場合）  | Nodeが稼働しているリージョンを設定する。 |
-| ```topology.kubernetes.io/zone```   | ```ap-northeast-1a```（AWSの場合） | Nodeが稼働しているAZを設定する。        |
+| ```topology.kubernetes.io/zone```   | ```ap-northeast-1a```（AWSの場合） | Nodeが稼働しているAZを設定する。    |
 
 
 <br>

@@ -44,8 +44,6 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Node外からイ�
 
 KubernetesリソースのIngressの代わりとして使用できる。
 
-
-
 > ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 
 #### ▼ IngressGatewayの仕組み
@@ -53,12 +51,6 @@ KubernetesリソースのIngressの代わりとして使用できる。
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
 IngressGatewayは、```istio-ingressgateway```というService（NodePort ServiceまたはLoadBalancer Service）と、Deployment配下の```istio-ingressgateway-*****```というPod（```istio-proxy```コンテナのみが稼働）、から構成される。
-
-> ℹ️ 参考：
->
-> - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
-> - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
-> - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
 Serviceは、おおよそGatewayの設定で決まる。
 
@@ -138,6 +130,12 @@ spec:
 # 重要なところ以外を省略しているため、全体像はその都度確認すること。
 ```
 
+> ℹ️ 参考：
+>
+> - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
+> - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
+> - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
+
 <br>
 
 ### Gateway
@@ -192,9 +190,9 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 #### ▼ VirtualService数
 
 
-| 場合                          | VirtualService数                                                                         |
-|-----------------------------|-----------------------------------------------------------------------------------------|
-| API GatewayをIstioで管理する場合  | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。                    |
+| 場合                          | VirtualService数                                                                       |
+|-----------------------------|---------------------------------------------------------------------------------------|
+| API GatewayをIstioで管理する場合  | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。                  |
 | API GatewayをIstioで管理しない場合 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
 
 > ℹ️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
@@ -209,11 +207,10 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 Clusterネットワーク内からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。
 
-
+![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
 
 > ℹ️ 参考：https://knowledge.sakura.ad.jp/20489/
 
-![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
 
 <br>
 
@@ -223,11 +220,9 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
 
-
+![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-entry.png)
 
 > ℹ️ 参考：https://tech.uzabase.com/entry/2018/11/26/110407
-
-![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-entry.png)
 
 <br>
 

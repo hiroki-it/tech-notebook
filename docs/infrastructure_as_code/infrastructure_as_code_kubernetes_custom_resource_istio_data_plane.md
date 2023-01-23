@@ -160,20 +160,22 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 サービスディスカバリーによってPod等の宛先情報が、```istio-proxy```コンテナ内のEnvoyに登録されており、```istio-proxy```コンテナはアウトバウンド通信をPodに向けてルーティングする。
 
+![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_other.png)
+
+
 > ℹ️ 参考：
 >
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
 
-![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_other.png)
-
 #### ▼ ローカスホスト通信の場合
 
 アプリコンテナからローカルホスト（```http://localhost:<ポート番号>```）へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
-> ℹ️ 参考：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
 ![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_self.png)
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
 <br>
 
@@ -325,7 +327,6 @@ func (a *ADSC) Run() error {
 
 
 
-> ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
 
 ```go
 func (a *ADSC) handleRecv() {
@@ -387,11 +388,13 @@ func (a *ADSC) handleRecv() {
 }
 ```
 
+> ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
+
+
 #### ▼ ADSクライアントとしての```istioctl```コマンドの実装
 
 ```Run```メソッドによるXDS-APIとの通信は、```istioctl```コマンドでも使用されている。
 
-> ℹ️ 参考：https://github.com/istio/istio/blob/master/istioctl/pkg/xds/client.go#L44-L73
 
 ```go
 func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount string, opts clioptions.CentralControlPlaneOptions, grpcOpts []grpc.DialOption,) (*discovery.DiscoveryResponse, error) {
@@ -412,6 +415,9 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 	return response, err
 }
 ```
+
+> ℹ️ 参考：https://github.com/istio/istio/blob/master/istioctl/pkg/xds/client.go#L44-L73
+
 
 <br>
 
