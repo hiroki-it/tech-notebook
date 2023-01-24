@@ -314,11 +314,6 @@ Podと同じNamespaceに属するする必要があるため、作成時にNames
 
 
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
-> - https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
-
 ```bash
 # DockerHubの場合
 $ kubectl create secret docker-registry foo-secret \
@@ -329,16 +324,18 @@ $ kubectl create secret docker-registry foo-secret \
     -n foo-namespace
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
+> - https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
+
+
 #### ▼ secret generic
 
 Secretを作成する。
 
 
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
-> - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
 
 **＊例＊**
 
@@ -371,6 +368,13 @@ $ kubectl create secret generic foo-secret --from-literal=username="bar" --from-
 
 secret/foo-secret created
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
+> - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
+
 
 #### ▼ secret tls
 

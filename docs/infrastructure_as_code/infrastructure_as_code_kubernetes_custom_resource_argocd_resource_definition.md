@@ -141,8 +141,6 @@ Password: *****
 
 Nodeの外からArgoCDのダッシュボードをネットワークに公開する場合、Node外からargocd-serverにインバウンド通信が届くようにする必要がある。
 
-> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
-
 **＊実装例＊**
 
 Ingressを作成する。
@@ -151,11 +149,10 @@ Ingressを作成する。
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   namespace: argocd
   name: argocd-ingress
 spec:
+  ingressClassName: foo-ingress-class
   rules:
     # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
     - host: foo.argocd.com
@@ -172,12 +169,17 @@ spec:
 
 IngressClassを作成する。
 
+開発環境では、IngressClassとしてNginxを使用する。
+
+本番環境では、クラウドプロバイダーのIngressClass（AWS ALB、GCP CLB）を使用する。
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-nginx-ingress-class
+  name: foo-ingress-class
 spec:
+  # AWSの場合、ingress.k8s.aws/alb
   controller: k8s.io/ingress-nginx
 ```
 
@@ -212,6 +214,9 @@ spec:
   sessionAffinity: None
   type: ClusterIP
 ```
+
+> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
+
 
 <br>
 
@@ -277,12 +282,9 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ ignoreDifferencesとは
 
-特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。Sync後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストの自動整形、など）の場合に使用する。
+特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。
 
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
-> - https://blog.framinal.life/entry/2021/10/04/224722
+Sync後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストの自動整形、など）の場合に使用する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -305,16 +307,18 @@ spec:
         - /spec/metrics
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
+> - https://blog.framinal.life/entry/2021/10/04/224722
+
+
 注意点として、Syncステータスの判定時に無視されるのみで、内部的にSyncは実行されてしまうため、Syncのたびに設定値が元に戻ってしまう。
 
 そこで別途、```RespectIgnoreDifferences```オプションも有効にしておくと良い。
 
 
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs
-> - https://mixi-developers.mixi.co.jp/update-argocd-to-v2-3-0-d609bbf16662
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -332,6 +336,13 @@ spec:
       - RespectIgnoreDifferences=true
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs
+> - https://mixi-developers.mixi.co.jp/update-argocd-to-v2-3-0-d609bbf16662
+
 <br>
 
 ### spec.project
@@ -343,10 +354,6 @@ spec:
 プロジェクト名は『```default```』は必ず作成する必要がある。
 
 ```default```以外のプロジェクトは、コンポーネント別や実行環境別に作成すると良い。
-
-
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -373,6 +380,9 @@ metadata:
 spec:
   project: app # アプリケーションコンポーネント。その他、実行環境（dev、stg、prd）がよい。
 ```
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+
 
 <br>
 
@@ -472,10 +482,6 @@ spec:
 
 パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。
 
-
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -486,6 +492,9 @@ spec:
   source:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+
 
 #### ▼ targetRevision
 
@@ -953,16 +962,11 @@ spec:
 
 ArgoCDのApplicationは、```1```個のKubernetes Clusterにしかマニフェストを送信できない。
 
-そのため、二重管理になってしまうが、同じ設定値のApplicationをKubernetes Clusterに作成しなければならない。
+そのため、二重管理になってしまうが、同じ設定値のApplicationを作成しなければならない。
 
-一方で、ApplicationSetであれば、対応するKubernetes ClusterごとにApplicationを自動作成してくれる。
+一方で、ApplicationSetであれば、親Applicationに紐づく子Applicationが異なるKubernetes Clusterにデプロイできる。
 
 
-
-> ℹ️ 参考：
-> 
-> - https://techstep.hatenablog.com/entry/2021/12/02/085034
-> - https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -993,6 +997,13 @@ spec:
         server: '{{url}}'
         namespace: foo-namespace
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://techstep.hatenablog.com/entry/2021/12/02/085034
+> - https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5
+
 
 <br>
 
@@ -1239,10 +1250,6 @@ spec:
 
 WorkflowTemplateとして切り分けても良い。
 
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
@@ -1260,6 +1267,9 @@ spec:
             echo "Hello World"
 ```
 
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+
 <br>
 
 ### spec.workflowTemplateRef
@@ -1267,10 +1277,6 @@ spec:
 #### ▼ workflowTemplateRefとは
 
 切り分けたWorkflowTemplateの名前を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1283,6 +1289,9 @@ spec:
     name: hello-world-workflow-template
 ```
 
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+
 <br>
 
 ## 07. WorkflowTemplate
@@ -1292,10 +1301,6 @@ spec:
 #### ▼ templatesとは
 
 パイプラインの処理を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1311,6 +1316,9 @@ spec:
           cource: |
             echo "Hello World"
 ```
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
 
 #### ▼ script
 

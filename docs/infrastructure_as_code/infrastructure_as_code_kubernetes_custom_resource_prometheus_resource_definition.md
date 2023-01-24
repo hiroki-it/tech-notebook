@@ -135,11 +135,10 @@ Ingressを作成する。
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: foo-nginx-ingress-class
   namespace: prometheus
   name: foo-prometheus-ingress
 spec:
+  ingressClassname: foo-ingress-class
   rules:
     # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
     - host: foo.prometheus.com
@@ -161,8 +160,9 @@ IngressClassを作成する。
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-nginx-ingress-class
+  name: foo-ingress-class
 spec:
+  # AWSの場合、ingress.k8s.aws/alb
   controller: k8s.io/ingress-nginx
 ```
 
@@ -207,11 +207,10 @@ Ingressを作成する。
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: foo-nginx-ingress-class
   namespace: prometheus
   name: foo-alertmanager-ingress
 spec:
+  ingressClassname: foo-ingress-class
   rules:
     # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
     - host: foo.alertmanager.com
@@ -228,13 +227,17 @@ spec:
 
 IngressClassを作成する。
 
+開発環境では、IngressClassとしてNginxを使用する。
+
+本番環境では、クラウドプロバイダーのIngressClass（AWS ALB、GCP CLB）を使用する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-nginx-ingress-class
+  name: foo-ingress-class
 spec:
+  # AWSの場合、ingress.k8s.aws/alb
   controller: k8s.io/ingress-nginx
 ```
 

@@ -220,7 +220,6 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
-<br>
 
 #### ▼ Ingressと専用のALBの紐付け
 

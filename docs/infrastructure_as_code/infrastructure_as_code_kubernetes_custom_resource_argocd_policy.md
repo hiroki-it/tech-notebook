@@ -226,7 +226,7 @@ infra-manifest-repository/
 
 必須の構成である。
 
-各実行環境に```terraform apply```コマンドを実行するためのApplicationを異なるディレクトリで管理する。
+実行環境別に、Applicationを異なるディレクトリで管理する。
 
 Applicationでは、実行環境に対応するブランチのみを監視する。
 

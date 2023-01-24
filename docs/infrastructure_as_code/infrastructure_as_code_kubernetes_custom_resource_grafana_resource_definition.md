@@ -91,11 +91,10 @@ Ingressを作成する。
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: foo-nginx-ingress-class
   namespace: grafana
   name: foo-grafana-ingress
 spec:
+  ingressClassname: foo-ingress-class
   rules:
     # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
     - host: foo.grafana.com
@@ -112,13 +111,18 @@ spec:
 
 IngressClassを作成する。
 
+開発環境では、IngressClassとしてNginxを使用する。
+
+本番環境では、クラウドプロバイダーのIngressClass（AWS ALB、GCP CLB）を使用する。
+
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-nginx-ingress-class
+  name: foo-ingress-class
 spec:
+  # AWSの場合、ingress.k8s.aws/alb
   controller: k8s.io/ingress-nginx
 ```
 
@@ -278,7 +282,9 @@ kube-prometheus-stackチャートの```values```ファイルでは、```labelVal
       labelValue: "1"
 ```
 
-そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。
+そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。
+
+マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。
 
 > ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 

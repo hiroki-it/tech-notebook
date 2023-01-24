@@ -201,6 +201,17 @@ helmfiles:
 
 ### releases
 
+#### ▼ atomic
+
+```helmfile apply```コマンドが正常に完了しなかった場合に、自動的にロールバックする。
+
+ただし、Helmfileの自動作成機能でNamespaceは削除されずそのまま残る。
+
+```yaml
+releases:
+  - atomic: true
+```
+
 #### ▼ name
 
 リリース名を設定する。

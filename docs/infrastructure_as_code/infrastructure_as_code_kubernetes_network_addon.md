@@ -275,13 +275,6 @@ Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用�
 
 
 
-> ℹ️ 参考：
->
-> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
-> - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
-> - https://help.aliyun.com/document_detail/201873.html
-
 ```bash
 # Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
@@ -301,6 +294,15 @@ $ kubectl get service -n kube-system
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+> - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
+> - https://help.aliyun.com/document_detail/201873.html
+
 
 <br>
 

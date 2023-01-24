@@ -193,7 +193,6 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
 **＊例＊**
 
@@ -202,6 +201,8 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 | 自前 | Vault                 | 調査中...   |
 | AWS  | Amazon Trust Services | Starfield社 |
 | GCP  | Google Trust Services | 調査中...   |
+
+> ℹ️ 参考：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
 <br>
 
@@ -301,13 +302,6 @@ SSL証明書の内容
 
 この時の認証局は『自分』である。
 
-
-
-> ℹ️ 参考：
->
-> - https://www.karakaram.com/creating-self-signed-certificate/
-> - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd
-> - https://weblabo.oscasierra.net/openssl-gencert-1/
 
 
 （１）SSL証明書の有効期限が切れてしまい、HTTPSプロトコルで通信できなくなってしまったとする。
@@ -442,6 +436,13 @@ $ curl https://foo.example.com -v
 <
 * Connection #0 to host foo.example.com left intact
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://www.karakaram.com/creating-self-signed-certificate/
+> - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd
+> - https://weblabo.oscasierra.net/openssl-gencert-1/
 
 
 <br>

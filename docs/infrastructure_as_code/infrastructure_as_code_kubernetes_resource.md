@@ -675,12 +675,12 @@ Cluster全体に渡る機能を提供する。
 
 #### ▼ 初期Namespace
 
-| 名前                  | 説明                                                                        |
-|-----------------------|---------------------------------------------------------------------------|
-| ```default```         | 任意のKubernetesリソースを配置する。                                                   |
-| ```kube-node-lease``` | Kubernetesリソースのうちで、特にLeaseを配置する。                                          |
+| 名前                  | 説明                                                                           |
+|-----------------------|------------------------------------------------------------------------------|
+| ```default```         | 任意のKubernetesリソースを配置する。                                                    |
+| ```kube-node-lease``` | Kubernetesリソースのうちで、特にLeaseを配置する。                                            |
 | ```kube-public```     | 全てのクライアント（```kubectl```クライアント、Kubernetesリソース）に公開してもよいKubernetesリソースを配置する。 |
-| ```kube-system```     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。                          |
+| ```kube-system```     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。              |
 
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces

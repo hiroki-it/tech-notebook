@@ -59,11 +59,11 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ECSサービスの管理グループ単位のこと。
 
+![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_cluster.png)
 
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html
 
-![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_cluster.png)
 
 <br>
 
@@ -126,7 +126,7 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
+
 
 | フェーズ名          | 説明                                                        | 補足                                                                                                                                               |
 |-----------------|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -138,6 +138,8 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 | Stopping        | ECSタスク内のコンテナが正常/異常に停止しようとしている途中である。                |                                                                                                                                                    |
 | De-provisioning | ECSタスク全体を停止する前に必要な準備（例；ENIの解除）があり、これが完了していない。 |                                                                                                                                                    |
 | Stopped         | ECSタスク全体が停止した。                                          | 正常停止と異常停止に関わらず、停止理由を確認できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html          |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
 <br>
 
@@ -191,11 +193,11 @@ EC2でのみ使用できる。
 
 Dockerのhostネットワークに相当する。
 
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
 
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
 #### ▼ bridgeモード
 
@@ -203,11 +205,11 @@ EC2でのみ使用できる。
 
 Dockerのbridgeネットワークに相当する。
 
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
 
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
 #### ▼ awsvpcモード
 
@@ -225,12 +227,14 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 しかし、awsvpcモードではコンテナポートを開放する必要はない。
 
+![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
+
+
 > ℹ️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
 
-![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
 
 <br>
 
@@ -258,21 +262,21 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
 
+![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
 
 
 > ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
-![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
 
 代わりとして、VPCエンドポイントを設置する。
 
 より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
 
 
+![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
-
-![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
 
 <br>
 
@@ -776,13 +780,11 @@ NAT GatewayとVPCエンドポイントの両方を作成している場合、ル
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。
 
-> ℹ️ 参考：
->
-> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
-> - https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e
+Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。
+
+ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 （１）ECSサービスで、ECS-Execオプションを有効化する。
 
@@ -861,5 +863,13 @@ aws ecs execute-command \
     --debug \
     --command "bash"
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
+> - https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e
+
 
 <br>

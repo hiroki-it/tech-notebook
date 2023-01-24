@@ -58,11 +58,10 @@ apiVersion: v1
 
 kube-apiserverが、前回の```kubectl apply```コマンドで適用したマニフェストの設定値をJSONで割り当てる。
 
-```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。
+```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```metadata.annotations.kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。
 
-```kubectl edit```コマンドでマニフェストを変更してしまうと、```kubectl.kubernetes.io/last-applied-configuration```キーが変更されないため、次回の```kubectl apply```コマンドが失敗することがある。
+```kubectl edit```コマンドでマニフェストを変更してしまうと、```metadata.annotations.kubectl.kubernetes.io/last-applied-configuration```キーが変更されないため、次回の```kubectl apply```コマンドが失敗することがある。
 
-> ℹ️ 参考：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -72,6 +71,9 @@ metadata:
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"extensions/v1beta1","kind":"Deployment" ....
 ```
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
+
 
 <br>
 
@@ -83,31 +85,29 @@ metadata:
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations: 
-    kubernetes.io/ingress.class: foo-class
+    kubernetes.io/ingress.class: foo-ingress-class
 ...
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
 IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。
 
-Ingressが新しくapplyされた場合、このIngressClassの設定値が使用されるようになる。
+Ingressが新しく作成された場合、このIngressClassの設定値が使用されるようになる。
 
 複数のIngressClassをデフォルトに設定しないようにする。
 
 
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
-> - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -117,6 +117,12 @@ metadata:
     ingressclass.kubernetes.io/is-default-class: "true"
 ...
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
+> - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
 <br>
 
@@ -130,7 +136,6 @@ Kubernetesリソースに親子関係がある場合に、親リソースより�
 
 
 
-> ℹ️ 参考：https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
 
 ```yaml
 apiVersion: apps/v1
@@ -141,6 +146,9 @@ metadata:
   deletionTimestamp: "2022-01-01T12:00:00Z"
 ...
 ```
+
+> ℹ️ 参考：https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
+
 
 <br>
 
@@ -156,7 +164,6 @@ Kubernetesが設定してくれるため、開発者が設定する必要はな�
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 ```yaml
 apiVersion: apps/v1
@@ -165,6 +172,9 @@ metadata:
   generation: 3
 ...
 ```
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
 
 <br>
 
@@ -215,7 +225,17 @@ int型を割り当てようとするとエラーになり、これはHelmの```v
 
 #### ▼ managedFieldsとは
 
-特定のマネージャーが管理するマニフェストのキー部分が自動的に割り当てられており、ここにないキーは管理外である。```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に作成される。```manager```キーで、クライアント（```kubectl```クライアント、Kubernetesリソース）が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。```manager```キーにないマネージャーはマニフェストを変更できない。```managedFields```キー配下にマネージャーを新しく追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerやOperatorでは常に```--force-conflicts```オプションを実行するようになっている。
+特定のマネージャーが管理するマニフェストのキー部分が自動的に割り当てられており、ここにないキーは管理外である。
+
+```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に作成される。
+
+```manager```キーで、クライアント（```kubectl```クライアント、Kubernetesリソース）が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。
+
+```manager```キーにないマネージャーはマニフェストを変更できない。
+
+```managedFields```キー配下にマネージャーを新しく追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。
+
+ただし、kube-controllerやOperatorでは常に```--force-conflicts```オプションを実行するようになっている。
 
 > ℹ️ 参考：
 >
@@ -284,8 +304,6 @@ Kubernetesリソースを一意に識別するための名前を設定する。
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -293,6 +311,10 @@ metadata:
   name: foo-deployment
 ...
 ```
+
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### ▼ 名前は変更不可
 
@@ -314,7 +336,6 @@ Kubernetesリソースを作成するNamespaceを設定する。
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 ```yaml
 apiVersion: apps/v1
@@ -323,6 +344,9 @@ metadata:
   namespace: foo-namespace
 ...
 ```
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -334,10 +358,6 @@ metadata:
 
 Kubernetesが設定してくれるため、開発者が設定する必要はない。
 
-
-
-> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -345,6 +365,9 @@ metadata:
   uid: *****
 ...
 ```
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -370,9 +393,6 @@ Kubernetesリソースごとに、```status```キー配下の構造は異なっ�
 
 Kubernetesが設定してくれるため、開発者が設定する必要はない。
 
-
-
-> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
 
 ```yaml
 apiVersion: apps/v1
@@ -400,6 +420,8 @@ status:
       type: PodScheduled
 ```
 
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+
 <br>
 
 ### observedGeneration
@@ -411,11 +433,6 @@ kube-controllerやカスタムコントローラーがKubernetesリソースの�
 Kubernetesが設定してくれるため、開発者が設定する必要はない。
 
 ```.metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
-
-> ℹ️ 参考：
-> 
-> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
-> - https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485
 
 ```yaml
 apiVersion: apps/v1
@@ -429,6 +446,13 @@ status:
     ...
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+> - https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485
+
+
 <br>
 
 ## 02. APIService
@@ -440,9 +464,6 @@ status:
 拡張apiserverが受信するAPIグループ名を設定する。
 
 
-
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
-
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
 kind: APIService
@@ -452,6 +473,9 @@ spec:
   group: foo.k8s.io
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+
 <br>
 
 ### spec.groupPriorityMinimum
@@ -459,10 +483,6 @@ spec:
 #### ▼ groupPriorityMinimumとは
 
 同じAPIグループがある場合に、優先度を設定する。
-
-
-
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -473,6 +493,8 @@ spec:
   groupPriorityMinimum: 100
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
 <br>
 
 
@@ -480,7 +502,7 @@ spec:
 
 #### ▼ insecureSkipTLSVerifyとは
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -491,6 +513,8 @@ spec:
   insecureSkipTLSVerify: true
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
 <br>
 
 
@@ -500,7 +524,7 @@ spec:
 
 拡張apiserverは、kube-apiserverからリクエストを直接的に受信するのではなく、専用のServiceを介してリクエストを受信する。この時、どのServiceからリクエストを受信するかを設定する。
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -514,6 +538,8 @@ spec:
     port: 443
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
 <br>
 
 
@@ -525,7 +551,7 @@ spec:
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -535,6 +561,8 @@ metadata:
 spec:
   version: v1beta1
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -546,7 +574,7 @@ spec:
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -556,6 +584,8 @@ metadata:
 spec:
   versionPriority: 100
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -569,10 +599,6 @@ base64方式でエンコードした証明書署名要求（```.csr```ファイ�
 
 
 
-> ℹ️ 参考：
-> 
-> - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
-> - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
 
 ```yaml
 apiVersion: certificates.k8s.io/v1
@@ -590,6 +616,12 @@ spec:
     - key encipherment
     - client auth
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
+> - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
 
 定義したCertificateSigningRequestを承認し、SSL証明書（```.crt```）を作成するためには、```kubectl certificate approve```コマンドを使用する。
 
@@ -755,14 +787,16 @@ contexts:
 ```kubectl```コマンドの現在の向き先の名前を設定する。
 
 
-
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
-
 ```yaml
 apiVersion: v1
 kind: Config
 current-context: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
 ```
+
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+
 
 <br>
 
@@ -770,13 +804,15 @@ current-context: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-
 
 #### ▼ preferencesとは
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+
 
 ```yaml
 apiVersion: v1
 kind: Config
 preferences: {}
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 <br>
 
@@ -881,7 +917,6 @@ string型しか設定できないため、デコード後にinteger型やboolean
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
 ```yaml
 apiVersion: v1
@@ -892,6 +927,9 @@ data:
   enableFoo: "true" # ダブルクオーテーションで囲う。
   number: "1"
 ```
+
+
+> ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
 #### ▼ ファイルに管理
 
@@ -1020,11 +1058,6 @@ Cluster内に複数のNodeが存在していて、いずれかのNodeが停止�
 
 
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
-> - https://dr-asa.hatenablog.com/entry/2018/04/02/174006
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -1043,6 +1076,13 @@ spec:
         app.kubernetes.io/component: app
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
+> - https://dr-asa.hatenablog.com/entry/2018/04/02/174006
+
 <br>
 
 ### spec.revisionHistoryLimit
@@ -1053,9 +1093,6 @@ spec:
 
 もし依存のリビジョン番号にロールバックする場合があるのであれば、必要数を設定しておく。
 
-
-
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 
 ```yaml
 apiVersion: apps/v1
@@ -1074,6 +1111,9 @@ spec:
         app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
+
 
 <br>
 
@@ -1154,9 +1194,6 @@ spec:
 ローリングアップデートを使用して、新しいPodを作成する。
 
 
-
-> ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -1186,6 +1223,9 @@ spec:
 
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
+
+> ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
+
 
 <br>
 
@@ -1491,13 +1531,6 @@ spec:
 
 標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```.metadata.name```キーの値を設定する。
 
-
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
-
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -1506,6 +1539,13 @@ metadata:
 spec:
   ingressClassName: foo-ingress-class
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
 <br>
 
@@ -1619,7 +1659,6 @@ spec:
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
 
-
 #### ▼ spec.rules[].http.paths[].backend
 
 
@@ -1691,7 +1730,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-nginx-ingress-class
+  name: foo-ingress-class
   annotations:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
@@ -1699,8 +1738,6 @@ spec:
 ```
 
 #### ▼ Istio Ingressの場合
-
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1712,6 +1749,8 @@ metadata:
 spec:
   controller: istio.io/ingress-controller
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
 
 <br>
 

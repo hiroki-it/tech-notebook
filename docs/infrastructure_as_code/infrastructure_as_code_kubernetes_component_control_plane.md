@@ -293,7 +293,6 @@ ServiceAccountを作成すると、Bearerトークン（『```***-***-***-***-**
 
 kube-apiserverにはヘルスチェック（```healthy```、```liveness```、```readiness```）のエンドポイントがある。```kubectl get```コマンドでヘルスチェックを実行できる。
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/health-checks/
 
 ```bash
 # readinessエンドポイントにリクエストを送信する。
@@ -319,6 +318,8 @@ $ kubectl get --raw='/readyz?verbose'
 [+]poststarthook/apiservice-openapi-controller ok
 healthz check passed
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/health-checks/
 
 <br>
 
@@ -456,9 +457,11 @@ $ kube-controller-manager \
 
 #### ▼ reconciliationループ
 
-![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
+kube-controller-managerは、kube-controllerを反復的に実行する。
 
-kube-controller-managerは、kube-controllerを反復的に実行する。これにより、Kubernetesリソースはリソース定義の宣言通りに定期的に修復される。
+これにより、Kubernetesリソースはリソース定義の宣言通りに定期的に修復される。
+
+![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
 
 > ℹ️ 参考：
 >
@@ -503,11 +506,12 @@ $ kube-scheduler \
 
 ### kube-schedulerの仕組み
 
-![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler_flow.png)
 
 （１）フィルタリングを行う。フィルタリングステップでは、まず全てのNodeの一覧を取得する。その後、Pod作成の条件を満たすNodeを選定する。
 
 （２）スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
+
+![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler_flow.png)
 
 > ℹ️ 参考：
 >

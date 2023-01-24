@@ -9,8 +9,6 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -33,7 +31,9 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 ### ワーカーNodeとは
 
-ノードコンポーネントが稼働する。Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドで```--register-node=false```とする必要がある。
+ノードコンポーネントが稼働する。Kubernetesの実行時に自動的に作成される。
+
+もし手動で作成する場合は、```kubectl```コマンドで```--register-node=false```とする必要がある。
 
 > ℹ️ 参考：
 >
@@ -103,7 +103,9 @@ spec:
 
 ### ワーカーNodeのオートスケーリング
 
-執筆時点（2022/07/20）では、KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない。ただし、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
+執筆時点（2022/07/20）では、KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない。
+
+ただし、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
 
 > ℹ️ 参考：
 >
@@ -117,19 +119,20 @@ spec:
 
 ### kubeletとは
 
-各ワーカーNode上で直接デーモンとして常駐し、コンテナランタイムを操作することにより、Podを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
+各ワーカーNode上で直接デーモンとして常駐し、コンテナランタイムを操作することにより、Podを作成する。
+
+また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
+
+![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
 
 > ℹ️ 参考：https://thinkit.co.jp/article/17453
 
-![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
 
 <br>
 
 ### セットアップ
 
 #### ▼ 起動コマンド
-
-> ℹ️ 参考：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
 
 ```bash
 $ kubelet \
@@ -150,6 +153,9 @@ $ kubelet \
     --runtime-cgroups=/system.slice/containerd.service \
     ...
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
+
 
 #### ▼ kubelet.confファイル
 
@@ -230,9 +236,14 @@ $ kube-proxy \
 
 #### ▼ CoreDNSと組み合わせたサービスディスカバリー
 
+kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）や```L4```ロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。
+
+Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるか否かに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。
+
+ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。
+
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）や```L4```ロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるか否かに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。
 
 > ℹ️ 参考：
 > 
@@ -252,12 +263,12 @@ kube-proxyは、ワーカーNode上で稼働するパケットフィルタリン
 
 #### ▼ 確認方法
 
-```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。ターゲットには、Serviceのルーティング先となるPod（異なるワーカーNode上にある場合もある）の宛先情報が登録されている。```source```列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを```destination```列のIPアドレスに変換する。
+```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。
 
-> ℹ️ 参考：
->
-> - https://dream.jp/vps/support/manual/mnl_security_04.html
-> - https://zenn.dev/tayusa/articles/c705cd65b6ee74
+ターゲットには、Serviceのルーティング先となるPod（異なるワーカーNode上にある場合もある）の宛先情報が登録されている。
+
+```source```列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを```destination```列のIPアドレスに変換する。
+
 
 ```bash
 $ iptables -L -n KUBE-SERVICES -t nat --line-number
@@ -271,6 +282,12 @@ num  target                     prot   opt   source      destination
 5    KUBE-SVC-TCOU7JCQXEZGVUNU  udp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
 6    KUBE-NODEPORTS             all    --    0.0.0.0/0   0.0.0.0/0            /* kubernetes service nodeports; NOTE: this must be the last rule in this chain */ ADDRTYPE match dst-type LOCAL
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://dream.jp/vps/support/manual/mnl_security_04.html
+> - https://zenn.dev/tayusa/articles/c705cd65b6ee74
 
 <br>
 
@@ -314,9 +331,11 @@ num  target                     prot   opt   source      destination
 
 #### ▼ ipvsプロキシモード
 
-kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPVSProxyMode=true```、```--proxy-mode```オプションに```ipvs```を設定する。
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png)
+
+
+kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPVSProxyMode=true```、```--proxy-mode```オプションに```ipvs```を設定する。
 
 | 項目                     | 仕組み                                                                                            |
 |--------------------------|------------------------------------------------------------------------------------------------|
@@ -337,13 +356,12 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 
 ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシーが、他にもいくつかある。
 
-
-
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
-
 - ```kubectl proxy```コマンド
 - ```minikube tunnel```コマンド
 - LoadBalancer
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
+
 
 <br>
 
@@ -399,7 +417,6 @@ $ sysctl --system
 
 （１）要件のパッケージをインストールする。
 
-> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 ```bash
 $ apt-get update -y \ 
@@ -431,6 +448,9 @@ $ add-apt-repository \
 $ apt-get update && apt-get install containerd.io
 ```
 
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
 #### ▼ Containerdの設定ファイルの準備
 
 （１）設定ファイルとして、```/etc/containerd/config.toml```ファイルを作成する。
@@ -452,14 +472,15 @@ $ systemctl restart containerd
 
 kubeletの起動時に、```--container-runtime```オプションと```--container-runtime-endpoint```オプションを使用する。
 
-> ℹ️ 参考：https://repl.info/archives/2894/
-
 ```bash
 $ kubelet \
     --container-runtime=remote \
     --container-runtime-endpoint=unix:///run/containerd/containerd.sock
     ...
 ```
+
+> ℹ️ 参考：https://repl.info/archives/2894/
+
 
 <br>
 
@@ -484,14 +505,13 @@ $ journalctl -u containerd.service
 
 コンテナのライフサイクルにはフェーズがある。
 
-
-
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
-
 | フェーズ名     | 説明                                                |
 |------------|---------------------------------------------------|
 | Waiting    | ```Running```フェーズと```Terminated```フェーズ以外のフェーズにある。 |
 | Running    | コンテナの起動が完了し、実行中である。                          |
 | Terminated | コンテナが正常/異常に停止した。                              |
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
 
 <br>

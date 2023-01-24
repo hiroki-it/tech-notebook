@@ -147,22 +147,38 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 #### ▼ diffとは
 
-全てのリリースに対して、helm-diffプラグインを実行する。helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --debug --dry-run```コマンドの差分を取得する。
+全てのリリースに対して、helm-diffプラグインを実行する。
+
+helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --debug --dry-run```コマンドの差分を取得する。
+
+```bash
+$ helmfile -e prd diff
+```
+
 
 > ℹ️ 参考：
 >
 > - https://helmfile.readthedocs.io/en/latest/#diff
 > - https://github.com/databus23/helm-diff#helm-diff-plugin
 
+
+#### ▼ 色付け
+
+```helmfile diff```コマンドでは、差分を色付けできる。
+
+ただ、バージョンによって機能しないことがあるため、その場合は明示的に```HELM_DIFF_COLOR```変数を有効化する。
+
 ```bash
-$ helmfile -e prd diff
+$ HELM_DIFF_COLOR=true helmfile -e prd diff
 ```
+
+> ℹ️ 参考：https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
 
 #### ▼ grepとの組み合わせ
 
 マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。
 
-```grep```を使用して、差分のあるリソースやファイルを確認しておく。
+```grep```コマンドを使用して、差分のあるリソースやファイルを確認しておく。
 
 
 
@@ -190,13 +206,19 @@ Source: project/manifests/persistent-volume.yaml
 
 #### ▼ syncとは
 
-全てのリリースに関して、```helm upgrade --install```コマンドを実行する。```helmfile apply```コマンドとは異なり、リリース間に差分がなくとも、リビジョン番号を更新する。注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストを変更できない。
+全てのリリースに関して、```helm upgrade --install```コマンドを実行する。
 
-> ℹ️ 参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+```helmfile apply```コマンドとは異なり、リリース間に差分がなくとも、リビジョン番号を更新する。
+
+注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストを変更できない。
+
 
 ```bash
 $ helmfile -e prd sync
 ```
+
+> ℹ️ 参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+
 
 <br>
 
@@ -218,7 +240,11 @@ $ helmfile -e prd template
 
 #### ▼ write-valuesとは
 
-個人的に感動したコマンド。```helmfile```コマンドの実行で使用される```values```ファイルを、ファイルに書き出す。複数の```values```ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた```values```ファイルが優先されるようになっている。この時に、```helmfile write-values```コマンドを使用すると、優先された値で定義された```values```ファイルを確認できる。
+個人的に感動したコマンド。```helmfile```コマンドの実行で使用される```values```ファイルを、ファイルに書き出す。
+
+複数の```values```ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた```values```ファイルが優先されるようになっている。
+
+この時に、```helmfile write-values```コマンドを使用すると、優先された値で定義された```values```ファイルを確認できる。
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml write-values

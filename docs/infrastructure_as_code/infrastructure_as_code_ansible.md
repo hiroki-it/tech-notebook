@@ -29,11 +29,11 @@ Ansibleは、コントロールノード（デプロイサーバー）と管理�
 
 設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
 
+![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible.png)
 
 
 > ℹ️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
-![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible.png)
 
 <br>
 
@@ -43,13 +43,14 @@ Ansibleは、コントロールノード（デプロイサーバー）と管理�
 
 #### ▼ aptリポジトリから
 
-> ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 ```bash
 $ sudo apt -y install sshpass
 $ sudo apt -y install python3-pip
 $ pip3 install ansible
 ```
+
+> ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 <br>
 
@@ -58,12 +59,6 @@ $ pip3 install ansible
 ### ディレクトリ構成ポリシー
 
 #### ▼ ```group_vars```ディレクトリの構成
-
-> ℹ️ 参考：
->
-> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
-> - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
-> - https://thinkit.co.jp/article/9871
 
 ```yaml
 repository/
@@ -78,13 +73,13 @@ repository/
 ...
 ```
 
-#### ▼ ```host_vars```ディレクトリの構成
-
 > ℹ️ 参考：
 >
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
+
+#### ▼ ```host_vars```ディレクトリの構成
 
 ```yaml
 repository/
@@ -96,9 +91,15 @@ repository/
 ...
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
+> - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
+> - https://thinkit.co.jp/article/9871
+
 #### ▼ ```inventories```ディレクトリの構成
 
-> ℹ️ 参考：https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 
 ```yaml
 repository/
@@ -115,9 +116,11 @@ repository/
 ...
 ```
 
+> ℹ️ 参考：https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
+
+
 #### ▼ ```roles```ディレクトリの構成
 
-> ℹ️ 参考：https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-directory-structure
 
 ```yaml
 repository/
@@ -152,6 +155,8 @@ repository/
 ...
 ```
 
+> ℹ️ 参考：https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-directory-structure
+
 <br>
 
 ### 命名規則
@@ -170,10 +175,10 @@ Ansibleの実行時にパスワードを要求し、これが正しければ復�
 
 パスワード自体をファイル上でバージョン管理したい場合、sopsで暗号化することもできる。
 
+![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible_ansible-vault.png)
 
 
 > ℹ️ 参考：https://redj.hatenablog.com/entry/2020/05/02/044527
 
-![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible_ansible-vault.png)
 
 <br>

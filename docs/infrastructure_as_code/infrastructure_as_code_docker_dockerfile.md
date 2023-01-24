@@ -23,25 +23,26 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 Dockerエンジン、CLI、インストールする。
 
-
-
-> ℹ️ 参考：https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
-
 ```bash
 $ apt-get install -y \
     docker-ce \
     docker-ce-cli
 ```
 
+> ℹ️ 参考：https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
+
+
 ```docker```プロセスをデーモンとして起動する。
 
 
 
-> ℹ️ 参考：https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
 
 ```bash
 $ systemctl start docker
 ```
+
+> ℹ️ 参考：https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
+
 
 <br>
 
@@ -96,12 +97,6 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、```COPY```が推奨である。
 
 
-
-> ℹ️ 参考：
->
-> - https://qiita.com/zembutsu/items/a96b68277d699f79418d
-> - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles/44
-
 **＊実装例＊**
 
 以下では```ADD```を使用している。
@@ -125,6 +120,12 @@ RUN mkdir -p /usr/src/things \
   && curl -SL http://example.com/big.tar.xz | tar -xJC /usr/src/things \
   && make -C /usr/src/things all
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/zembutsu/items/a96b68277d699f79418d
+> - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles/44
 
 <br>
 

@@ -138,7 +138,7 @@ $ kubectlget pod -A -o wide
 （１）```asmcli```コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。
 
 ```bash
-$ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.14 > asmcli-1.14.3
+$ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.14 > asmcli-1.14
 ```
 
 > ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh
@@ -147,21 +147,21 @@ $ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.14 > asmcli-1.1
 
 ### GCP環境の場合
 
-#### ▼ Istiodをカナリア方式でアップグレード
+#### ▼ 新しいIstiodをインストール
 
 （１）共通の事前手順を参照。
 
 
-（２）カナリア方式でIstioをアップグレードする。```asmcli```コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
+（２）新しいIstiodをインストールする。```asmcli```コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。ここでは、Istioの```v1.13```から```v1.14```にアップグレードするとする。
 
 
 ```bash
-$ ./asmcli install \
+$ ./asmcli-1.14 install \
     --project_id <プロジェクトID> \
     --cluster_name <Cluster名> \
     --cluster_location <リージョン> \
     --fleet_id <フリートのグループID> \
-    --output_dir ./tmp/asm-1.14.3 \
+    --output_dir ./output/asm-1.14 \
     `# オプションを全て有効化する。` \
     --enable_all \
     `# Mesh CAを有効化する。` \
@@ -169,21 +169,63 @@ $ ./asmcli install \
     --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```
 
+> ℹ️ 参考：
+>
+> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja#transitioning_from_install_asm
+> - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade?hl=ja#about_canary_upgrades
+> - https://istio.io/latest/docs/setup/upgrade/canary/
 
-（２）Istiodコントロールプレーンがデプロイされたことを確認する。
+
+
+<br>
+
+### GCP環境以外（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境）の場合
+
+#### ▼ 新しいIstiodをインストール
+
+（１）新しいIstiodをインストールする。```asmcli```コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
+
+```bash
+$ ./asmcli-1.14 install \
+    --kubeconfig <kubeconfigファイルへのパス> \
+    `# GCP以外（オンプレ、AWS、Azure、など）で稼働させることを宣言する。` \
+    --platform multicloud \
+    --fleet_id <フリートのグループID> \
+    --output_dir ./output \
+    `# オプションを全て有効化する。` \
+    --enable_all \
+    `# Mesh CAを有効化する。` \
+    --ca mesh_ca \
+    --custom_overlay ./foo/<IstioOperatorのマニフェスト>
+```
+
+> ℹ️ 参考：
+>
+> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja#transitioning_from_install_asm
+> - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade?hl=ja#about_canary_upgrades
+> - https://istio.io/latest/docs/setup/upgrade/canary/
+
+
+<br>
+
+### 共通の事後手順
+
+#### ▼ 新しいIstiodを確認
+
+（２）Istiodコントロールプレーンがデプロイされたことを確認する。なお、```asmcli```コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。
 
 ```bash
 $ kubectl get all -n istio-system
 
 # Deployment
-NAME                  READY   STATUS    RESTARTS   AGE
-istiod                1/1     Running   0          1m
-istiod-canary         1/1     Running   0          1m  # 新しい方
+NAME                READY   STATUS    RESTARTS   AGE
+istiod-1.13.0         1/1     Running   0          1m  # 1.13.0
+istiod-1.14.0         1/1     Running   0          1m  # 1.14.0（今回のアップグレード先）
 
 # Service
 NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
-istiod          ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
-istiod-canary   ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+istiod-1.13     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
+istiod-1.14     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
 
 ```
 
@@ -191,9 +233,10 @@ istiod-canary   ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/
 # MutatingWebhookConfiguration
 $ kubectl get mutatingwebhookconfigurations
 
-NAME                            WEBHOOKS   AGE
-istio-sidecar-injector          1          7m56s
-istio-sidecar-injector-canary   1          3m18s # 新しい方
+NAME                                   WEBHOOKS   AGE
+istio-sidecar-injector-1.13.0          1          7m56s # 1.13.0
+istio-sidecar-injector-1.14.0          1          7m56s # 1.14.0（今回のアップグレード先）
+istio-revision-tag-default             1          3m18s 
 ```
 
 
@@ -204,82 +247,7 @@ istio-sidecar-injector-canary   1          3m18s # 新しい方
 > - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
 
 
-（３）共通の事後手順を参照。
-
-> ℹ️ 参考：
-> 
-> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja#transitioning_from_install_asm
-> - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade?hl=ja#about_canary_upgrades
-> - https://istio.io/latest/docs/setup/upgrade/canary/
-
-<br>
-
-### GCP環境以外（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境）の場合
-
-#### ▼ Istiodをカナリア方式でアップグレード
-
-（１）カナリア方式でIstioをアップグレードする。```asmcli```コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
-
-```bash
-$ ./asmcli install \
-    --kubeconfig <kubeconfigファイルへのパス> \
-    `# GCP以外（オンプレ、AWS、Azure、など）で稼働させることを宣言する。` \
-    --platform multicloud \
-    --fleet_id <フリートのグループID> \
-    --output_dir ./tmp \
-    `# オプションを全て有効化する。` \
-    --enable_all \
-    `# Mesh CAを有効化する。` \
-    --ca mesh_ca \
-    --custom_overlay ./foo/<IstioOperatorのマニフェスト>
-```
-
-（２）Istiodコントロールプレーンがデプロイされたことを確認する。
-
-
-```bash
-$ kubectl get all -n istio-system
-
-# Deployment
-NAME                  READY   STATUS    RESTARTS   AGE
-istiod                1/1     Running   0          1m
-istiod-canary         1/1     Running   0          1m  # 新しい方
-
-# Service
-NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
-istiod          ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
-istiod-canary   ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
-
-```
-
-```bash
-# MutatingWebhookConfiguration
-$ kubectl get mutatingwebhookconfigurations
-
-NAME                            WEBHOOKS   AGE
-istio-sidecar-injector          1          7m56s
-istio-sidecar-injector-canary   1          3m18s # 新しい方
-```
-
-
-> ℹ️ 参考：
->
-> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja#transitioning_from_install_asm
-> - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade?hl=ja#about_canary_upgrades
-> - https://istio.io/latest/docs/setup/upgrade/canary/
-
-
-（３）共通の事後手順を参照。
-
-
-
-
-<br>
-
-### 共通の事後手順
-
 #### ▼ Namespaceの```.metadata.labels```キーを付け替える。
-
 
 
 （１）カナリア方式のため、Istiodコントロールプレーンの新バージョンの```istio.io/rev```キーの値を取得する。
@@ -287,11 +255,11 @@ istio-sidecar-injector-canary   1          3m18s # 新しい方
 ```bash
 $ kubectl get pod -n istio-system -l istio.io/rev
 
-NAME                       READY   STATUS    RESTARTS   AGE   REV
-istiod-asm-1137-0-*****    1/1     Running   0          68m   asm-1137-0 # 旧バージョンのリビジョン番号
-istiod-asm-1137-0-*****    1/1     Running   0          68m   asm-1137-0
-istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1 # 新バージョンのリビジョン番号
-istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1
+NAME                    READY   STATUS    RESTARTS   AGE   REV
+istiod-asm-1130-*****    1/1     Running   0          68m   asm-1130 # 旧バージョン
+istiod-asm-1130-*****    1/1     Running   0          68m   asm-1130
+istiod-asm-1140-*****    1/1     Running   0          27s   asm-1140 # 今回のアップグレード先
+istiod-asm-1140-*****    1/1     Running   0          27s   asm-1140
 ```
 
 （２）```istio.io/rev```キーが設定されている全てのNamespaceを確認する。
@@ -299,7 +267,7 @@ istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1
 ```bash
 $ kubectl get namespace ingress -L istio.io/rev
 NAME       STATUS    AGE     REV
-ingress    Active    2d18h   1137-0
+ingress    Active    2d18h   1130
 
 
 $ kubectl get namespace app -o yaml
@@ -316,7 +284,7 @@ metadata:
 $ kubectl get namespace app -L istio.io/rev
 
 NAME   STATUS    AGE     REV
-app    Active    2d18h   1137-0
+app    Active    2d18h   1130
 
 
 $ kubectl get namespace app -o yaml
@@ -334,10 +302,10 @@ metadata:
 
 ```bash
 # IngressGatewayのNamespace
-$ kubectl label namespace ingress istio.io/rev=asm-1143-1 istio-injection- --overwrite
+$ kubectl label namespace ingress istio.io/rev=asm-1140 istio-injection- --overwrite
 
 # マイクロサービスのNamespace
-$ kubectl label namespace app istio.io/rev=asm-1143-1 istio-injection- --overwrite
+$ kubectl label namespace app istio.io/rev=asm-1140 istio-injection- --overwrite
 ```
 
 （４）新しいラベルに変更できたことに変更できたことを確認する。
@@ -362,13 +330,13 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 （５）新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
 
 ```bash
-# 新バージョンのリビジョン番号：asm-1143-1
+# 新バージョンのリビジョン番号：asm-1140
 $ kubectl get pod \
     -n istio-ingress \
     -o jsonpath={.items[*].spec.containers[*].image} | sed 's/ /\n/g' && echo
 
 
-gcr.io/gke-release/asm/proxyv2:1.14.3-asm.1
+gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 ```
 
 #### ▼ アプリケーションの```istio-proxy```コンテナをアップグレード
@@ -382,13 +350,13 @@ $ kubectl rollout restart deployment app-deployment -n app
 （５）新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
 
 ```bash
-# 新バージョンのリビジョン番号：asm-1143-1
+# 新バージョンのリビジョン番号：asm-1140
 $ kubectl get pod \
     -n app \
     -o jsonpath={.items[*].spec.containers[*].image} | sed 's/ /\n/g' && echo
 
 
-gcr.io/gke-release/asm/proxyv2:1.14.3-asm.1
+gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 ```
 
 
@@ -419,7 +387,7 @@ metadata:
   labels:
     app: istiod
     istio: pilot
-    istio.io/rev: asm-1143-1 # リビジョン番号を更新する。
+    istio.io/rev: asm-1140 # リビジョン番号を更新する。
     release: istio
 spec:
   ports:
@@ -441,48 +409,72 @@ spec:
       targetPort: 15014
   selector:
     app: istiod
-    istio.io/rev: asm-1143-1 # リビジョン番号を更新する。
+    istio.io/rev: asm-1140 # リビジョン番号を更新する。
 ```
 
-（７）Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
+
+（７）MutatingWebhookConfigurationの```.metadata.labels```キーの値の現状を確認する。
+
+```bash
+# istiocltコマンドで確認
+$ ./output/asm-1.14/istioctl tag list
+
+TAG     REVISION    NAMESPACES
+default asm-1130
+
+# マニフェストを直接確認
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml | grep -e istio.io/rev: -e istio.io/tag:
+
+istio.io/rev: asm-1130
+istio.io/tag: default
+```
+
+（８）Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
 
 
 ```bash
 # asmcliコマンドのoutput_dirオプションで指定したディレクトリのistioctlコマンド
-$ ./tmp/asm-1.14.3/istioctl tag set default --revision asm-1143-1
+$ ./output/asm-1.14/istioctl tag set default --revision asm-1140 --overwrite
 ```
 
-（８）```.metadata.labels```キーの値を変更できたことを確認する。
+（９）MutatingWebhookConfigurationの```.metadata.labels```キーの値を変更できたことを確認する。
 
 ```bash
-$ ./tmp/asm-1.14.3/istioctl tag list
+# istiocltコマンドで確認
+$ ./output/asm-1.14/istioctl tag list
 
 TAG     REVISION    NAMESPACES
-default asm-1143-1 
+default asm-1140 
+
+# マニフェストを直接確認
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml | grep -e istio.io/rev: -e istio.io/tag:
+
+istio.io/rev: asm-1140
+istio.io/tag: default
 ```
 
 #### ▼ 古いIstiodを削除
 
-（９）旧バージョンのIstiodコントロールプレーン（実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget）を削除する。
+（１０）旧バージョンのIstiodコントロールプレーン（実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget）を削除する。
 
 
 ```bash
 $ kubectl get all -n istio-system 
 
-# 旧バージョンのリビジョン番号：asm-1137-0
-$ kubectl delete Service,Deployment,HorizontalPodAutoscaler,PodDisruptionBudget istiod-asm-1137-0 -n istio-system --ignore-not-found=true
+# 旧バージョンのリビジョン番号：asm-1130
+$ kubectl delete Service,Deployment,HorizontalPodAutoscaler,PodDisruptionBudget istiod-asm-1130 -n istio-system --ignore-not-found=true
 
 $ kubectl get all -n istio-system 
 ```
 
 #### ▼ 古いIstiodを削除を削除
 
-（１０）旧バージョンのValidatingWebhookConfigurationを削除する。
+（１１）旧バージョンのValidatingWebhookConfigurationを削除する。
 
 ```bash
 $ kubectl get validatingwebhookconfiguration -n istio-system 
 
-$ kubectl delete validatingwebhookconfiguration istio-validator-asm-1143-1-istio-system -n istio-system --ignore-not-found=true
+$ kubectl delete validatingwebhookconfiguration istio-validator-asm-1140-istio-system -n istio-system --ignore-not-found=true
 
 $ kubectl get validatingwebhookconfiguration -n istio-system 
 ```
@@ -490,20 +482,20 @@ $ kubectl get validatingwebhookconfiguration -n istio-system
 #### ▼ 古いIstioOperatorを削除を削除
 
 
-（１１）旧バージョンのIstioOperatorを削除する。
+（１２）旧バージョンのIstioOperatorを削除する。
 
 ```bash
 $ kubectl get IstioOperator -n istio-system 
 
-# 旧バージョンのリビジョン番号：asm-1137-0
-$ kubectl delete IstioOperator installed-state-asm-1137-0 -n istio-system
+# 旧バージョンのリビジョン番号：asm-1130
+$ kubectl delete IstioOperator installed-state-asm-1130 -n istio-system
 
 $ kubectl get IstioOperator -n istio-system 
 ```
 
 #### ▼ さいごに
 
-（１２）全てのPodが正常に稼働していることを確認する。
+（１３）全てのPodが正常に稼働していることを確認する。
 
 ```bash
 $ kubectl get pod -A -o wide

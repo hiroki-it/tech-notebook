@@ -42,11 +42,11 @@ description: Lで始まるAWSリソース＠AWSの知見を記録しています
 
 リクエストを代理で受信し、EC2インスタンスへのアクセスをバランスよく分配することによって、サーバーへの負荷を緩和する。
 
+![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_alb.png)
 
 
 > ℹ️ 参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer/24
 
-![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_alb.png)
 
 <br>
 
@@ -90,11 +90,11 @@ ALBの実体で、各ALBインスタンスが異なるグローバルIPアドレ
 
 複数のAZにルーティングするようにALBを設定した場合、各AZにALBインスタンスが1つずつ配置される。
 
+![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alb-instance.png)
 
 
 > ℹ️ 参考：https://blog.takuros.net/entry/2019/08/27/075726
 
-![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alb-instance.png)
 
 #### ▼ 割り当てられるIPアドレス
 
@@ -142,13 +142,15 @@ Route53からルーティングされるパブリックIPアドレスを受信�
 
 ALBを経由したリクエストには、リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。これが『HTTPS』だった場合、webサーバーに対するリクエストをHTTPSであるとみなすように対処する。これにより、アプリケーションに対するリクエストのプロトコルがHTTPSとなる（こちらを行った場合は、アプリケーション側の対応不要）。
 
-> ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 **＊実装例＊**
 
 ```apacheconf
 SetEnvIf X-Forwarded-Proto https HTTPS=on
 ```
+
+> ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+
 
 #### ▼ アプリケーションにおける対処方法
 
@@ -162,7 +164,6 @@ ALBを経由したリクエストには、リクエストヘッダーに```HTTP_
 
 
 
-> ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 **＊実装例＊**
 
@@ -176,6 +177,9 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
     $_SERVER["HTTPS"] = "on";
 }
 ```
+
+> ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+
 
 <br>
 

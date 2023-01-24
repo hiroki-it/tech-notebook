@@ -383,10 +383,6 @@ $ kubectl label node minikube-m02 node-type=ingress
 
 ホスト側のファイルまたはディレクトリを、ゲスト仮想環境の指定したディレクトリにマウントする。
 
-
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
-
 ```bash
 $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
@@ -404,6 +400,9 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 📌  NOTE: This process must stay alive for the mount to be accessible ...
 ```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
+
 
 <br>
 
@@ -432,10 +431,6 @@ $ minikube update-context
 
 NodePort Serviceを指定し、ホストから仮想サーバーを介して、Node内のServiceにポートフォワーディングを実行する。
 
-> ℹ️ 参考：
-> 
-> - https://minikube.sigs.k8s.io/docs/commands/service/
-> - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
 ```bash
 $ minikube service <NodePort Servie名>
@@ -450,9 +445,12 @@ $ minikube service <NodePort Servie名>
 Opening service <Service名> in default browser...
 ```
 
-ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、```kubectl port-forward```コマンドでPodを指定すると良い。
+> ℹ️ 参考：
+>
+> - https://minikube.sigs.k8s.io/docs/commands/service/
+> - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
-> ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
+ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、```kubectl port-forward```コマンドでPodを指定すると良い。
 
 ```bash
 # Podに直接的に指定する場合
@@ -464,6 +462,8 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 # ホストポートを介してPodのポートにアクセスする。
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
+
+> ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
 ServiceのIPアドレスがNodeのIPアドレスすることは、```minikube ip```コマンドから確認できる。
 
@@ -478,15 +478,15 @@ $ minikube ip
 ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
 
 
-
-> ℹ️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
-
 ```bash
 $ minikube ssh
 
 # Nodeの中
 $ curl -X GET http://*.*.*.*:57761
 ```
+
+
+> ℹ️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
 #### ▼ list
 
@@ -642,10 +642,6 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 ゲスト仮想環境を作成し、仮想環境内にNodeを作成する。
 
-
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
-
 **＊例＊**
 
 ```bash
@@ -679,6 +675,9 @@ $ kubectl get node
 NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
 ```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
+
 
 #### ▼ --container-runtime
 
@@ -779,6 +778,7 @@ $ minikube start --docker-env
 # 事前にVirtualBoxのダウンロードが必要。
 $ minikube start --driver=virtualbox
 ```
+
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 
@@ -874,10 +874,6 @@ LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づ
 
 Node外からPodに通信できるようになる。```minikube ssh```コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
-> ℹ️ 参考：
->
-> - https://minikube.sigs.k8s.io/docs/commands/tunnel/
-> - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 
 **＊例＊**
 
@@ -892,6 +888,12 @@ $ minikube tunnel
 🔑  sudo permission will be asked for it.
 🏃  Starting tunnel for service <Service名>.
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://minikube.sigs.k8s.io/docs/commands/tunnel/
+> - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 
 <br>
 

@@ -9,8 +9,6 @@ description: 設定ファイル＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,8 +23,6 @@ Prometheusを設定する。
 
 ```/etc/prometheus```ディレクトリ配下におく。
 
-
-
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
 <br>
@@ -36,14 +32,13 @@ Prometheusを設定する。
 全てのメトリクス収集からアラートまでを共通で設定する。
 
 
-
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
-
 ```yaml
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
 ```
+
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 
 <br>
 
@@ -51,12 +46,6 @@ global:
 
 使用するAlertmanagerを設定する。
 
-
-
-> ℹ️ 参考：
-> 
-> - https://amateur-engineer-blog.com/alertmanager-docker-compose/
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
 
 ```yaml
 alerting:
@@ -66,15 +55,19 @@ alerting:
             - alertmanager:9093
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://amateur-engineer-blog.com/alertmanager-docker-compose/
+> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
+
+
 <br>
 
 ### rule_filesセクション
 
 Prometheusのアラートルールを設定する。
-
-
-
-> ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-docker-compose/
 
 ```yaml
 rule_files:
@@ -121,6 +114,9 @@ groups:
           description: 【 {{ $labels.app }} 】{{ $labels.env }} 環境で、Podのメモリ使用率が {{ $value }} になりました。
 ```
 
+> ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-docker-compose/
+
+
 #### ▼ scrape_configsセクション
 
 Retrievalのルールを設定する。
@@ -132,10 +128,6 @@ Retrievalのルールを設定する。
 #### ▼ static_configs
 
 IPアドレスやポート番号の変わらない対象を監視する。
-
-
-
-> ℹ️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
 
 ```yaml
 scrape_configs:
@@ -151,17 +143,14 @@ scrape_configs:
         - <node-exporterの稼働するサーバーのIPアドレス>:9100
 ```
 
+> ℹ️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
+
 #### ▼ sd_configs
 
 IPアドレスやポート番号が動的に変化する対象を監視する。
 
 監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
 
-
-> ℹ️ 参考：
-> 
-> - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
-> - https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
 ```yaml
 scrape_configs:
@@ -187,6 +176,12 @@ scrape_configs:
         action: keep
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
+> - https://christina04.hatenablog.com/entry/prometheus-service-discovery
+
 <br>
 
 ## 02. Alertmanager
@@ -195,25 +190,27 @@ scrape_configs:
 
 全てのアラートを共通で設定する。
 
-
-
-> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
-
 ```yaml
 global:
   slack_api_url: https://hooks.slack.com/services/*****
   resolve_timeout: 5m
 ```
 
+> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
+
 <br>
 
 ### routeセクション
 
-条件に応じて、受信したアラートを特定の通知先にルーティングする。
+#### ▼ routeセクションとは
 
+合致条件に応じて、受信したアラートを特定の通知先にルーティングする。
 
+#### ▼ receiver
 
-> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#route
+アラートのルーティング先の名前を設定する。
+
+receiver自体は、```receivers```キー配下で設定する。
 
 ```yaml
 route:
@@ -227,30 +224,72 @@ route:
       severity: critical
 ```
 
+> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#route
+
+#### ▼ match
+
+アラートのラベルと値を使用して、ルーティング時の合致条件を設定する。
+
+アラートのラベルは、Prometheusのrule_filesセクションで設定する。
+
+```yaml
+route:
+  # WarningレベルはSlackのレシーバーを選ぶ。
+  - receiver: slack-foo-channel
+    match:
+      severity: warning
+  # CriticalレベルはPagerDutyのレシーバーを選ぶ。
+  - receiver: pagerduty-foo-service
+    match:
+      severity: critical
+```
+
+
 <br>
 
 ### receiversセクション
 
+#### ▼ receiversセクションとは
+
 アラートの通知先をレシーバーとして設定する。
 
+#### ▼ pagerduty_configs
 
-
-> ℹ️ 参考：
-> 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
+通知先とするPagerDutyのServiceを設定する。
 
 ```yaml
 receivers:
-  # Slackに通知する。
-  - name: slack-foo-channel
-    slack_configs:
-      - channel: prd-foo-channel
   # PagerDutyに通知する。
   - name: pagerduty-foo-service
     pagerduty_configs:
       - routing_key: *****
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
+
+
+#### ▼ slack_configs
+
+通知先とするSlackのチャンネルを設定する。
+
+globalセクション配下でSlackのURLを設定する必要がある。
+
+```yaml
+global:
+  slack_api_url: https://hooks.slack.com/services/*****
+  resolve_timeout: 5m
+
+receivers:
+  # Slackに通知する。
+  - name: slack-foo-channel
+    slack_configs:
+      - channel: prd-foo-channel
+```
+
 
 <br>
 
@@ -309,12 +348,10 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mys
 
 バイナリに直接的にパラメーターを渡す。
 
-
-
-> ℹ️ 参考：https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
-
 ```bash
 $ /usr/local/bin/node_exporter --web.listen-address=":9100"
 ```
+
+> ℹ️ 参考：https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
 
 <br>

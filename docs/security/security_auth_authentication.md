@@ -113,11 +113,11 @@ cookie: sessionid=<セッションID>
 
 この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
 
+![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
 
 
 > ℹ️ 参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
 
-![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
 
 #### ▼ ```Cookie```ヘッダーの値のクライアント保持
 
@@ -148,9 +148,7 @@ Chromeの場合は、Cookieストレージに保持される。
 
 #### ▼ 照合情報の送信方法
 
-独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。リクエストヘッダへのパラメーターの割り当てについては、以下のリンクを参考にせよ。
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。
 
 ```yaml
 POST https://example.com/foo
@@ -170,10 +168,6 @@ x-api-key: <APIキー>
 
 作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。
 
-
-
-> ℹ️ 参考：https://www.contentful.com/help/personal-access-tokens/
-
 ```yaml
 POST https://example.com/foo
 ---
@@ -183,6 +177,9 @@ authorization: <Personal Acccess Token>
 | サービス例 | トークン名                | 説明                                                                                                                                                                                                                      |
 |--------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | GitHub | Personal access Token | HTTPSを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>ℹ️ 参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+
+> ℹ️ 参考：https://www.contentful.com/help/personal-access-tokens/
+
 
 <br>
 
