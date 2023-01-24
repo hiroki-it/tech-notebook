@@ -457,7 +457,9 @@ spec:
 
 #### ▼ defaultConfig
 
-```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```.metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
+```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。
+
+これを上書きしたい場合は、各Podの```.metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
 
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
 
@@ -531,7 +533,9 @@ spec:
 
 #### ▼ ingressSelector
 
-全ての```istio-proxy```コンテナに関して、使用するGatewayの```.metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全ての```istio-proxy```コンテナに関して、使用するGatewayの```.metadata.labels.istio```キーの値を設定する。
+
+IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -546,7 +550,9 @@ spec:
 
 #### ▼ ingressService
 
-全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```.metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```.metadata.labels.istio```キーの値を設定する。
+
+IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

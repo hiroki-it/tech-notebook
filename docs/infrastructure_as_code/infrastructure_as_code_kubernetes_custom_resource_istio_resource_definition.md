@@ -356,7 +356,11 @@ spec:
 
 #### ▼ proxy.istio.io/config.configPath
 
-```istio-proxy```コンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```.spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+```istio-proxy```コンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。
+
+デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。
+
+IstioOperatorの```.spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 

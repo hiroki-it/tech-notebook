@@ -210,15 +210,15 @@ Istioでは、この状況をカナリア方式（一部のユーザーを新サ
 
 （１）旧コントロールプレーンNodeを残したまま、新コントロールプレーンNodeを作成する。
 
-（２）特定のNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン値を新バージョンに変更する。これにより、コントロールプレーンNodeはNamespace内の```istio-proxy```コンテナをアップグレードする。
+（２）特定のNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を新バージョンに変更する。これにより、コントロールプレーンNodeはNamespace内の```istio-proxy```コンテナをアップグレードする。
 
 ![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
 
-（３）新バージョンの```istio-proxy```コンテナの動作が問題なければ、Namespaceの```.metadata.labels.istio.io/rev```キーのリビジョン値を順番に変更していく。
+（３）新バージョンの```istio-proxy```コンテナの動作が問題なければ、Namespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を順番に変更していく。
 
 ![istio_canary-upgrade_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_2.png)
 
-（４）もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン値順番に元に戻していく。
+（４）もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。
 
 （５）全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がなければ、旧コントロールプレーンNodeを削除する。
 

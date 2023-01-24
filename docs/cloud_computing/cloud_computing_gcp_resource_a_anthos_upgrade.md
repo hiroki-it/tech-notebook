@@ -226,7 +226,6 @@ istiod-1.14.0         1/1     Running   0          1m  # 1.14.0（今回のア�
 NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
 istiod-1.13     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
 istiod-1.14     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
-
 ```
 
 ```bash
@@ -236,7 +235,7 @@ $ kubectl get mutatingwebhookconfigurations
 NAME                                   WEBHOOKS   AGE
 istio-sidecar-injector-1.13.0          1          7m56s # 1.13.0
 istio-sidecar-injector-1.14.0          1          7m56s # 1.14.0（今回のアップグレード先）
-istio-revision-tag-default             1          3m18s 
+istio-revision-tag-default             1          3m18s # 現在のリビジョン番号（1.13.0）を定義するdefaultタグを持つ
 ```
 
 
@@ -297,7 +296,7 @@ metadata:
     istio.io/rev: <リビジョン番号>
 ```
 
-（３） Istioの```istio.io/rev```キーを使用して、Namespaceの既存の```istio-injection```キーを上書きする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン値を変更することになる。
+（３） Istioの```istio.io/rev```キーを使用して、Namespaceの既存の```istio-injection```キーを上書きする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 
 ```bash
@@ -413,17 +412,18 @@ spec:
 ```
 
 
-（７）MutatingWebhookConfigurationの```.metadata.labels```キーの値の現状を確認する。
+（７）MutatingWebhookConfigurationの```.metadata.labels```キーにて、エイリアスに紐づく現在のリビジョン番号を確認する。
 
 ```bash
-# istiocltコマンドで確認
+# アップグレード前に、istiocltコマンドで確認
 $ ./output/asm-1.14/istioctl tag list
 
 TAG     REVISION    NAMESPACES
 default asm-1130
 
-# マニフェストを直接確認
-$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml | grep -e istio.io/rev: -e istio.io/tag:
+# アップグレード前に、マニフェストを確認してみる。
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
+    | grep -e istio.io/rev: -e istio.io/tag:
 
 istio.io/rev: asm-1130
 istio.io/tag: default
@@ -437,17 +437,18 @@ istio.io/tag: default
 $ ./output/asm-1.14/istioctl tag set default --revision asm-1140 --overwrite
 ```
 
-（９）MutatingWebhookConfigurationの```.metadata.labels```キーの値を変更できたことを確認する。
+（９）MutatingWebhookConfigurationの```.metadata.labels```キーにて、エイリアスに紐づくリビジョン番号を変更できたことを確認する。
 
 ```bash
-# istiocltコマンドで確認
+# アップグレード前に、istiocltコマンドで確認してみる。
 $ ./output/asm-1.14/istioctl tag list
 
 TAG     REVISION    NAMESPACES
 default asm-1140 
 
-# マニフェストを直接確認
-$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml | grep -e istio.io/rev: -e istio.io/tag:
+# アップグレード前に、マニフェストを確認してみる。
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
+    | grep -e istio.io/rev: -e istio.io/tag:
 
 istio.io/rev: asm-1140
 istio.io/tag: default

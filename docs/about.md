@@ -1,91 +1,80 @@
 # 自己紹介
 
-## 👋🏻 はじめまして (About me)
+## 👋🏻 はじめまして
 
 長谷川広樹と申します。<br>
-<span style="font-size: 90%;">( I'm Hiroki Hasegawa. )</span>
 
 大学院にて **データサイエンス** の分野で研究を行い、理学修士を習得しました。<br>
-<span style="font-size: 90%;">( I studied **Data Science** at the graduate school, and obtained a Master of Science. )</span>
 
 その後、Webアプリケーションの **SWE** としてキャリアをスタートしました。<br>
-<span style="font-size: 90%;">( After that, I started my career as a **SWE** in web applications. )</span>
 
 現在は、**SRE** として働かさせていただいております。<br>
-<span style="font-size: 90%;">( Currently, I'm working as a **SRE**. ) </span>
 
 <br>
 
-## 🎯 関心のある技術領域 (Area of interest)
+## 🎯 関心のある技術領域
 
 Webアプリケーションのインフラ領域に軸足を置きつつ、バックエンド領域も好きです。<br>
-<span style="font-size: 90%;">( I focus on web infrastructure, and also like backend. )</span>
 
 特に、**拡張性**、**保守性**、**可読性** を高める技術に関心が強いです。<br>
-<span style="font-size: 90%;">( I'm very interested in technologies that enhance **extensibility**, **maintainability** and **readability**)</span>
 
-- マイクロサービスアーキテクチャ (Microservices architecture)
-- サービスメッシュ (Service mesh)
+- マイクロサービスアーキテクチャ
+- サービスメッシュ
 - DDD
-- クラウドインフラ (Cloud infrastructure)
+- クラウドインフラ
 - IaC
 
 <br>
 
-## 📚 知見の記録 (Knowledge)
+## 📚 知見の記録
 
 技術的な知識を体系的に整理するため、ノートにまとめております。<br>
-<span style="font-size: 90%;">( In order to systematically organize technical knowledge, I summarize it in my notebook. )</span>
 
-▶ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/)** (in Japanese)
+▶ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/)** 
 
 また、技術ノートの知見をさらに整理し、不定期でブログに投稿しています。<br>
-<span style="font-size: 90%;">(Also, I organize technical knowledge in my notebook further, and post it irregularly on my blog. )</span>
 
-▶ **[はてなブログ](https://hiroki-hasegawa.hatenablog.jp/)** (in Japanese)
+▶ **[はてなブログ](https://hiroki-hasegawa.hatenablog.jp/)** 
 
 <br>
 
-## 🏭 練習用リポジトリ (Repositories)
+## 💼 経歴、職歴
+
+詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
+
+▶ **[Wantedly](https://www.wantedly.com/id/h_hasegawa)** 
+
+<br>
+
+## 📢 過去の技術系プレゼン
+
+詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
+
+▶ **[Speaker Deck](https://speakerdeck.com/hiroki_hasegawa)** 
+
+<br>
+
+## 🏭 練習用リポジトリ
 
 アーキテクチャ関連の技術を人知れず練習しております。<br>
-<span style="font-size: 90%;">( I practice architecture in the following repository. )</span>
 
 知見の共有になれば幸いです。<br>
-<span style="font-size: 90%;">( I would be happy if I could share my knowledge. )</span>
 
-■ <ins>クリーンアーキテクチャ</ins> (Clean Architecture)
+■ <ins>クリーンアーキテクチャ</ins>
 
-| 使用技術                                        | リポジトリ（in Japanese）                                                                            |
+| 使用技術                                        | リポジトリ                                                                           |
 |-------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | Clean-Arch、Laravel、GitHub Actions、...           | [ddd-backend-with-laravel](https://github.com/hiroki-it/ddd-backend-with-laravel)             |
 | Clean-Arch、Gin、...                              | [ddd-backend-with-gin](https://github.com/hiroki-it/ddd-backend-with-gin)                     |
 | Clean-Arch、Go、Serverless Framework、CircleCI、... | [notify-slack-of-amplify-events](https://github.com/hiroki-it/notify-slack-of-amplify-events) |
 
-■ <ins>マイクロサービスアーキテクチャ</ins> (Microservices Architecture)
+■ <ins>マイクロサービスアーキテクチャ</ins>
 
-| 使用技術               | リポジトリ（in Japanese）                                                              |
+| 使用技術               | リポジトリ                                                           |
 |------------------------|---------------------------------------------------------------------------------|
 | Microservices-Arch、... | [microservices-backend](https://github.com/hiroki-it/microservices-backend)     |
 | K8s、Istio、ArgoCD、...   | [microservices-manifests](https://github.com/hiroki-it/microservices-manifests) |
 
 
-<br>
-
-## 💼 経歴、職歴 (Career)
-
-詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
-<span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
-
-▶ **[Wantedly](https://www.wantedly.com/id/h_hasegawa)** (in Japanese)
-
-<br>
-
-## 📢 過去の技術系プレゼン (Presentation)
-
-詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
-<span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
-
-▶ **[Speaker Deck](https://speakerdeck.com/hiroki_hasegawa)** (in Japanese)
 
 <br>

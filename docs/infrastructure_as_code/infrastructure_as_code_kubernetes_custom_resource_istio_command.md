@@ -840,9 +840,8 @@ MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリア
 
 MutatingWebhookConfigurationの```.metadata.labels```キーに、エイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を作成する。
 
+エイリアス名は、```stable```や```default```をよく使用するが、実際はなんでよい。
 
-
-> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
 
 ```bash
 $ istioctl tag generate <エイリアス名> --revision <エイリアスの実体>
@@ -850,17 +849,20 @@ $ istioctl tag generate <エイリアス名> --revision <エイリアスの実�
 
 **＊例＊**
 
-```prd-blue```というエイリアス（```istio.io/tag```キーの値）を作成し、エイリアスの実体（```istio.io/rev```キーの値）として```1-0-0```を設定する。
+```stable```というエイリアス（```istio.io/tag```キーの値）を作成し、エイリアスの実体（```istio.io/rev```キーの値）として```1-0-0```を設定する。
 
 ```bash
-$ istioctl tag generate prd-blue --revision 1-0-0
+$ istioctl tag generate stable --revision 1-0-0
 ```
 
-```tes-green```というエイリアス（```istio.io/tag```キーの値）を作成し、エイリアスの実体（```istio.io/rev```キーの値）として```1-0-1```を設定する。
+```stable```というエイリアス（```istio.io/tag```キーの値）を作成し、エイリアスの実体（```istio.io/rev```キーの値）として```1-0-1```を設定する。
 
 ```bash
-$ istioctl tag generate tes-green --revision 1-0-1
+$ istioctl tag generate stable --revision 1-0-1
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
+
 
 <br>
 
@@ -870,23 +872,26 @@ $ istioctl tag generate tes-green --revision 1-0-1
 
 MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を取得する。
 
-
-
-> ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
+カナリア方式アップグレード前に、現在のバージョンのエイリアスとリビジョン番号（現在のIstioのバージョンタグ）を確認するために使用する。
 
 ```bash
-$ istioctl tag list
-```
-
-**＊例＊**
-
-```bash
+# アップグレード前に、istioctlコマンドで確認してみる。
 $ istioctl tag list
 
 TAG        REVISION   NAMESPACES
-prd-blue   1-0-0      istioinaction
-tes-green  1-0-1      istioinaction
+stable    1-0-0      app
+
+
+# アップグレード前に、マニフェストを確認してみる。
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-<エイリアス名> -o yaml \
+    | grep -e istio.io/rev: -e istio.io/tag:
+    
+istio.io/rev: 1-0-0
+istio.io/tag: stable
 ```
+
+> ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
+
 
 <br>
 
@@ -897,23 +902,90 @@ tes-green  1-0-1      istioinaction
 
 MutatingWebhookConfigurationの```.metadata.labels```キーにある既存のエイリアス（```istio.io/tag```キーの値）に実体（```istio.io/rev```キーの値）を設定する。
 
+カナリア方式アップグレード時に、現在のバージョンのエイリアスとリビジョン番号（現在のIstioのバージョンタグ）を設定するために使用する。
+
+```bash
+$ istioctl tag set <エイリアス> --revision <エイリアスの実体> --overwrite
+```
+
+
+
+**＊例＊**
+
+（１）現在のバージョンのエイリアス名が```stable```、またバージョンが```v1.0.0```とする。
+
+```bash
+$ istioctl tag list
+
+TAG      REVISION   NAMESPACES
+stable   1-0-0      app
+```
+
+（２）```stable```タグを持つMutatingWebhookConfigurationを確認する。
+
+```bash
+# MutatingWebhookConfiguration
+$ kubectl get mutatingwebhookconfigurations
+
+NAME                               WEBHOOKS   AGE
+istio-sidecar-injector-1.0.0       1          7m56s # 1.0.0
+istio-revision-tag-stable          1          7m56s # 現在のリビジョン番号（1.0.0）定義するstableタグを持つ
+```
+
+
+（３）もし、ここでIstioをアップグレードしたとする。
+
+```bash
+$ istioctl install --set revision=1-0-0
+
+```
+
+（４）すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。その他、新しいIstiodコントロールプレーンも作成される。
+
+```bash
+# MutatingWebhookConfiguration
+$ kubectl get mutatingwebhookconfigurations
+
+NAME                               WEBHOOKS   AGE
+istio-sidecar-injector-1.0.0       1          7m56s # 1.0.0
+istio-sidecar-injector-1.1.0       1          7m56s # 1.1.0（今回のアップグレード先）
+istio-revision-tag-stable          1          7m56s # 現在のリビジョン番号（1.0.0）定義するstableタグを持つ
+```
+
+
+（３）エイリアス名を指定して、リビジョン番号を書き換える。これにより、```istio-revision-tag-stable```の```stable```タグの値が変更される。
+
+
+```bash
+$ istioctl tag set stable --revision 1-1-0 --overwrite
+
+# MutatingWebhookConfiguration
+$ kubectl get mutatingwebhookconfigurations
+
+NAME                               WEBHOOKS   AGE
+istio-sidecar-injector-1.0.0       1          7m56s # 1.0.0
+istio-sidecar-injector-1.1.0       1          7m56s # 1.1.0（今回のアップグレード先）
+istio-revision-tag-stable          1          7m56s # 現在のリビジョン番号（1.1.0）定義するstableタグを持つ
+```
+
+（４）また、```istioctl tag list```コマンドでも、リビジョン番号が```v1.0.0```になったことを確認できる。
+
+```bash
+$ istioctl tag list
+
+TAG       REVISION  NAMESPACES
+stable   1-1-0     app
+
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-stable -o yaml \
+    | grep -e istio.io/rev: -e istio.io/tag:
+    
+istio.io/rev: 1-1-0
+istio.io/tag: stable
+```
 
 
 > ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
-```bash
-$ istioctl tag set <エイリアス> --revision <エイリアスの実体>
-```
-
-**＊例＊**
-
-```bash
-$ istioctl tag set prd-blue --revision 1-0-0
-```
-
-```bash
-$ istioctl tag set stable --revision 1-0-0
-```
 
 <br>
 
@@ -923,7 +995,6 @@ $ istioctl tag set stable --revision 1-0-0
 
 IngressGateway、EgressGateway、```istio-proxy```コンテナのステータスを取得する。
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 
 ```bash
 $ istioctl proxy-status  
@@ -936,6 +1007,9 @@ bar-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCED       istiod-*****     1.12.1
 ```
 
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
+
+
 <br>
 
 ## upgrade
@@ -943,10 +1017,6 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 ### upgradeとは
 
 Istioのインプレースデプロイメントを実行する。
-
-
-
-> ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 
 ```bash
 $ istioctl upgrade
@@ -959,6 +1029,9 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 ✔ Installation complete                                                                                                                                                                                      Making this installation the default for injection and validation.
 ```
 
+> ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
+
+
 <br>
 
 ## verify-install
@@ -967,9 +1040,6 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 
 Istioリソースのapplyが正しく実行されたかを検証する。
 
-
-
-> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
 
 ```bash
 $ istioctl verify-install
@@ -986,6 +1056,9 @@ Checked 14 custom resource definitions
 Checked 3 Istio Deployments
 ✔ Istio is installed and verified successfully
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
+
 
 <br>
 
