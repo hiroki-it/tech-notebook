@@ -107,7 +107,9 @@ plugins:
         - ja
         - en
       separator: '[\s\-\.]'
-
+  - redirects:
+      redirect_maps:
+        'hatenablog/archive.md': 'https://hiroki-hasegawa.hatenablog.jp/archive'
 # ナビゲーション
 nav:
   - 当サイトについて: index.md
@@ -600,3 +602,5 @@ nav:
       - ■ Git:
           - コマンド: version_control/version_control_git_command.md
           - GitHub: version_control/version_control_git_github.md
+
+  - ❓ はてなブログ: hatenablog/archive.md
