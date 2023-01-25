@@ -3304,11 +3304,10 @@ spec:
 
 #### ▼ terminationGracePeriodSecondsとは
 
-Podを削除する時の待機時間を設定する。
-
-
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
+
+Podを削除する時の待機時間を設定する。
 
 ```yaml
 apiVersion: v1
@@ -3327,6 +3326,95 @@ spec:
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
 
+
+<br>
+
+### spec.topologySpreadConstraints
+
+#### ▼ topologySpreadConstraintsとは
+
+異なるリージョン、AZ、Node、にPodを分散させる。
+
+#### ▼ maxSkew
+
+```topologyKey```キーで指定した分散の単位の間で、Podの個数差を設定する。
+
+**＊実装例＊**
+
+AZが```2```個あるとすると、各AZ間のPodの個数差を```1```個にする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+```
+
+
+> ℹ️ 参考：https://zenn.dev/tmrekk/articles/07f30b09c26b50#maxskew%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+#### ▼ topologyKey
+
+Podの分散の単位を設定する。
+
+**＊実装例＊**
+
+AZを分散の単位に設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  topologySpreadConstraints:
+    - topologyKey: topology.kubernetes.io/zone
+```
+
+> ℹ️ 参考：https://zenn.dev/tmrekk/articles/07f30b09c26b50#topologykey%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+#### ▼ whenUnsatisfiable
+
+分散の条件に合致するNodeがない場合の振る舞いを設定する。
+
+**＊実装例＊**
+
+分散の条件に合致するNodeがない場合、このPodをスケジューリングしない。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  topologySpreadConstraints:
+    - whenUnsatisfiable: DoNotSchedule
+```
+
+> ℹ️ 参考：https://zenn.dev/tmrekk/articles/07f30b09c26b50#whenunsatisfiable%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+#### ▼ labelSelector
+
+分散させるPodの条件を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  topologySpreadConstraints:
+    - labelSelector:
+        app.kubernetes.io/app: foo-pod
+```
+
+> ℹ️ 参考：https://zenn.dev/tmrekk/articles/07f30b09c26b50#labelselector%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 <br>
 
@@ -3395,10 +3483,6 @@ EmptyDirボリュームのため、『Pod』が削除されるとこのボリュ
 
 
 
-> ℹ️ 参考：
-
-> - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
-> - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 **＊実装例＊**
 
@@ -3423,6 +3507,12 @@ spec:
       emptyDir: {}
 ```
 
+
+> ℹ️ 参考：
+
+> - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+> - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+
 **＊実装例＊**
 
 インメモリストレージを設定する。
@@ -3430,11 +3520,6 @@ spec:
 注意点として、Podが使用できる上限メモリサイズを設定しない場合、PodはスケジューリングされたNodeのメモリ領域を最大限に使ってしまう。
 
 
-
-> ℹ️ 参考：
-> 
-> - https://www.linkedin.com/pulse/planning-use-memory-backed-volumes-kubernetes-read-once-banerjee/?trk=articles_directory
-> - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 
 ```yaml
 apiVersion: v1
@@ -3454,6 +3539,13 @@ spec:
         medium: Memory
         sizeLimit: 1Gi
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://www.linkedin.com/pulse/planning-use-memory-backed-volumes-kubernetes-read-once-banerjee/?trk=articles_directory
+> - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+
 
 #### ▼ hostPath
 
@@ -3646,12 +3738,6 @@ spec:
 このスケジューリングを待機するPodの最低限数を設定する。
 
 
-
-> ℹ️ 参考：
-> 
-> - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
-> - https://zenn.dev/sasakiki/articles/a71d9158020266
-
 ```yaml
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
@@ -3663,6 +3749,14 @@ spec:
     matchLabels:
       app.kubernetes.io/app: foo-pod # 対象のPod
 ```
+
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+> - https://zenn.dev/sasakiki/articles/a71d9158020266
 
 <br>
 

@@ -19,10 +19,7 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
-
 argocd-server、repo-server、application-controller、redis-server、dex-server、から構成される。
-
 
 ```bash
 $ kubectl get pod -n argocd
@@ -35,7 +32,13 @@ argocd-application-controller-*****     1/1     Running   0          1d
 argocd-dex-server-*****                 1/1     Running   0          1d
 ```
 
-> ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
+
+
+> ℹ️ 参考：
+> 
+> - https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
+> - https://www.techmanyu.com/setup-a-gitops-deployment-model-on-your-local-development-environment-with-k3s-k3d-and-argocd-4be0f4f30820
 
 
 <br>
@@ -126,6 +129,8 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 #### ▼ application-controllerとは
 
+![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_application-controller.png)
+
 kube-controllerとして動作し、Applicationの状態がマニフェストの宣言的設定通りになるように制御する。
 
 repo-serverが取得したクローンからマニフェストを参照し、```kubectl diff```コマンドを実行することにより、差分を検出する。
@@ -140,7 +145,7 @@ Applicationが管理するKubernetesリソースのマニフェストと、監�
 
 > ℹ️ 参考：
 > 
-> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
+> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 

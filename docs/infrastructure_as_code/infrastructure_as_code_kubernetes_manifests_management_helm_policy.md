@@ -415,6 +415,18 @@ $ helm diff <チャート名> -f values.yaml \
     | pbcopy
 ```
 
+あるいは、Namespaceを指定すると、追加/変更/削除の箇所のみ取得できる。
+
+```bash
+$ helm diff <チャート名> -f values.yaml \
+    | grep foo-namespace \
+    | pbcopy
+    
+foo-namespace, foo-deployment, Deployment (apps) has been added:
+...
+```
+
+
 #### ▼ Helm以外を使用する場合
 
 GitOpsツールの差分を使用して、差分画面のURLを共有する。またはCDツールの通知能力（例：argocd-bot）を使用して、CDパイプラインの結果が通知されるようにする。
