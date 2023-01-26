@@ -588,7 +588,7 @@ nav:
       - ■ インシデント管理ツール:
           - PagerDuty: observability/observability_incident_management_pagerduty.md
 
-  - 👥 ソフトウェア開発手法論:
+  - 👥 ソフトウェア開発:
       - software_development_methodology/index.md
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
@@ -596,11 +596,9 @@ nav:
           - SREing: software_development_methodology/software_development_methodology_site_reliability_engineering.md
           - アンチパターン: software_development_methodology/software_development_methodology_site_reliability_engineering_antipattern.md
           - ドキュメンテーション: software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.md
-
-  - 🦶 バージョン管理:
-      - version_control/index.md
-      - ■ Git:
-          - コマンド: version_control/version_control_git_command.md
-          - GitHub: version_control/version_control_git_github.md
+      - ■ バージョン管理:
+          - ■ Git:
+              - コマンド: software_development_methodology/software_development_methodology_git_command.md
+              - GitHub: software_development_methodology/software_development_methodology_git_github.md
 
   - ❓ はてなブログ: hatenablog/archive.md
