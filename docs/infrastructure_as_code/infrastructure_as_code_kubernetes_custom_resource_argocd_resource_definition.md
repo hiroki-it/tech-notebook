@@ -70,13 +70,11 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 
 ArgoCDのApplicationを削除する。
 
-
 ```bash
 $ kubectl delete app <ArgoCDのアプリケーション名>
 ```
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
-
 
 <br>
 

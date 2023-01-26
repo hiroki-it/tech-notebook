@@ -19,13 +19,12 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 APIグループのバージョンを設定する。
 
-
-
-> ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
-
 ```yaml
 apiVersion: v1
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
+
 
 <br>
 

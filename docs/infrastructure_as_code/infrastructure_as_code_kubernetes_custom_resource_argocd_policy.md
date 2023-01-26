@@ -145,6 +145,7 @@ root-argocd-repository/
 
 管理チームごとにApplication（app-parent-application、infra-parent-application）を作成すると良い。
 
+parent-applicationは、```default```プロジェクトや```root```プロジェクトに配置する。
 
 ```yaml
 # 親Application
@@ -163,6 +164,9 @@ parent-argocd-repository/
 各AppProjectで、マニフェストリポジトリやチャートリポジトリを監視するApplicationのこと。
 
 マイクロサービス単位のマニフェストやチャートごとに作成すると良い。
+
+child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のプロジェクトに配置する。
+
 
 ```yaml
 # 子Application

@@ -1065,6 +1065,7 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 
 指定したPodの情報を継続的に取得する。
 
+別ツールで時間のかかるKubernetesリソースを作成しながら、```--watch```オプションを使用すると、作成状況を確認できる。
 
 **＊例＊**
 

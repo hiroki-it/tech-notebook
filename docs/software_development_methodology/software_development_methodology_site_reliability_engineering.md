@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SREing：Site Reliability Engineering
-description: SREing：Site Reliability Engineeringの知見を記録しています。
+title: 【IT技術の知見】SREing：Site Reliability＠ソフトウェア開発手法 Engineering
+description: SREing：Site Reliability Engineering＠ソフトウェア開発手法の知見を記録しています。
 ---
 
-# SREing：Site Reliability Engineering
+# SREing：Site Reliability Engineering＠ソフトウェア開発手法
 
 ## はじめに
 
