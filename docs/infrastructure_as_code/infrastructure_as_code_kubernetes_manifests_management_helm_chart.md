@@ -83,7 +83,9 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 #### ▼ apiVersionとは
 
-Helm-APIのバージョンを設定する。```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
+Helm-APIのバージョンを設定する。
+
+```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
 
 ```yaml
 apiVersion: v2
@@ -285,7 +287,13 @@ metadata:
 
 #### ▼ fullnameOverride
 
-デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```fullnameOverride```オプションを設定していた場合、Kubernetesリソースの名前は『```＜fullnameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。```nameOverride```オプションとは独立しており、```nameOverride```オプションでチャートをインストールした後に```fullnameOverride```オプションに移行したい場合、```nameOverride```オプションによるチャートを一度アンインストールする必要がある。しかし、そのまま```fullnameOverride```オプションに移行してしまうと、```nameOverride```オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
+デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```fullnameOverride```オプションを設定していた場合、Kubernetesリソースの名前は『```＜fullnameOverrideオプションの値＞```』になる。
+
+なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。
+
+```nameOverride```オプションとは独立しており、```nameOverride```オプションでチャートをインストールした後に```fullnameOverride```オプションに移行したい場合、```nameOverride```オプションによるチャートを一度アンインストールする必要がある。
+
+しかし、そのまま```fullnameOverride```オプションに移行してしまうと、```nameOverride```オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
 
 #### ▼ image.pullPolicy
 
@@ -309,7 +317,9 @@ metadata:
 
 チャート内のオプションに値を設定する。
 
+チャートのバージョンとコンテナイメージのバージョンには対応関係があり、基本的にはチャートの```values```ファイルで定義されているデフォルトの```image.tag```キー値を使用した方が良い。
 
+ただ、コンテナイメージを自前のイメージリポジトリで管理している場合は、デフォルトの```image.tag```キー値を参照してバージョンを確認し、揃えるようにする。
 
 #### ▼ ingress.annotations
 
@@ -337,7 +347,15 @@ Ingressの作成を有効化する。
 
 #### ▼ nameOverride
 
-デフォルトでは、チャートによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```nameOverride```オプションを設定していた場合、Kubernetesリソース名は『```＜リリース名＞-＜nameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。```fullnameOverride```オプションとは独立しており、```fullnameOverride```オプションでチャートをインストールした後に```nameOverride```オプションに移行したい場合、```fullnameOverride```オプションによるチャートを一度アンインストールする必要がある。しかし、そのまま```nameOverride```オプションに移行してしまうと、```fullnameOverride```オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
+デフォルトでは、チャートによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。
+
+もし、```nameOverride```オプションを設定していた場合、Kubernetesリソース名は『```＜リリース名＞-＜nameOverrideオプションの値＞```』になる。
+
+なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。
+
+```fullnameOverride```オプションとは独立しており、```fullnameOverride```オプションでチャートをインストールした後に```nameOverride```オプションに移行したい場合、```fullnameOverride```オプションによるチャートを一度アンインストールする必要がある。
+
+しかし、そのまま```nameOverride```オプションに移行してしまうと、```fullnameOverride```オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
 
 #### ▼ nodeSelector
 

@@ -316,6 +316,34 @@ CDパイプライン上で実行しているステップ（例：デプロイ、
 
 ### 削除できない系
 
+#### ▼ ```argocd```というNamespace以外でApplicationを作成できない
+
+古いArgoCDでは、```argocd```というNamespace以外でApplicationを作成できない。
+
+これに起因して、以下のようなエラーが出ることがある。
+
+```
+application 'foo-application' in namespace 'foo-namespace' is not permitted to use project 'default'
+```
+
+```
+error getting app project "foo-project": appproject.argoproj.io "foo-project" not found
+```
+
+これは、AppProjectの```.spec.sourceNamespaces```キーで解決できる。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prd # その他、運用チーム名など
+spec:
+  sourceNamespaces:
+    - '*'
+```
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/pull/9755
+
 #### ▼ Applicationを削除できない
 
 PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、Applicationを削除できないことがある。
@@ -347,6 +375,14 @@ $ kubectl patch ns argocd \
     -p '{"metadata":{"finalizers":[]}}' \
     --type=merge
 ```
+
+<br>
+
+### ConfigMapやSecretの設定変更が反映されない
+
+ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定変更を反映する場合、Deployment/StatefulSet/DaemonSetを再起動する必要がある。
+
+
 
 <br>
 
@@ -382,16 +418,16 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 <br>
 
-### システム品質特性の担保
+## 06. システム品質特性の担保
 
-#### ▼ 可用性の場合
+### 可用性の場合
 
 可用性を高めるために、ArgoCDの各コンポーネントを冗長化する。
 
 
 <br>
 
-## 06. アップグレード
+## 07. アップグレード
 
 ### 設計ポリシー
 
@@ -401,7 +437,7 @@ ArgoCDが自分で自分をアップグレードできるように、親Applicat
 
 <br>
 
-## 07. 監視
+## 08. 監視
 
 調査中...
 

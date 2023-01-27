@@ -67,7 +67,11 @@ alerting:
 
 ### rule_filesセクション
 
+#### ▼ rule_filesセクションとは
+
 Prometheusのアラートルールを設定する。
+
+
 
 ```yaml
 rule_files:

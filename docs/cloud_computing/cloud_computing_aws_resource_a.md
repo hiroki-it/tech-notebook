@@ -360,6 +360,8 @@ CPU平均使用率に段階的な閾値を設定する。
 
 #### ▼ ECSの場合
 
+調査中...
+
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
 
 <br>

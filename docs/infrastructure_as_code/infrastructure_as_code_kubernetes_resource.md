@@ -969,11 +969,6 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 
 
-> ℹ️ 参考：
->
-> - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
-> - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
-
 ```bash
 # Podに接続する
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
@@ -992,6 +987,13 @@ tmpfs           7.8G   12K  7.8G   1% /run/secrets/kubernetes.io/serviceaccount
 tmpfs           3.9G     0  3.9G   0% /proc/acpi
 tmpfs           3.9G     0  3.9G   0% /sys/firmware
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
+> - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
+
 
 #### ▼ HostPath（本番環境で非推奨）
 

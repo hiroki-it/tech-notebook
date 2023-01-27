@@ -234,6 +234,15 @@ $ helmfile -e prd sync
 $ helmfile -e prd template
 ```
 
+#### ▼ --include-crds
+
+カスタムリソースも含めて、```helm template```コマンドを実行する。
+
+```bash
+$ helmfile -e prd template --include-crds
+```
+
+
 <br>
 
 ### write-values

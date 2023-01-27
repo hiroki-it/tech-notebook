@@ -55,7 +55,23 @@ Applicationから返却された情報（例：マニフェストの差分）を
 
 リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
 
+```yaml
+{
+  "grpc.method": "Watch",
+  "grpc.request.claims": "<アカウントの情報>",
+  "grpc.request.content": {
+    "name": "foo"
+  },
+  "grpc.service": "application.ApplicationService",
+  "grpc.start_time": "2023-01-27T07:08:59Z",
+  "level": "info",
+  "msg": "...",
+  "span.kind": "server",
+  "system": "grpc",
+  "time": "2023-01-27T07:08:59Z"
+}
 
+```
 
 > ℹ️ 参考：
 > 
@@ -72,8 +88,6 @@ Applicationから返却された情報（例：マニフェストの差分）を
 監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。
 
 もし、HelmやKustomizeを採用している場合は、これらを実行し、Node内にマニフェストを作成する。
-
-
 
 
 ```bash
@@ -131,7 +145,22 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_application-controller.png)
 
-kube-controllerとして動作し、Applicationの状態がマニフェストの宣言的設定通りになるように制御する。
+kube-controllerとして動作し、監視対象リポジトリ上のマニフェストとetcd上のマニフェストの差分を定期的に検出する。
+
+```yaml
+# application-controllerのPodでログを確認してみる。
+{
+   "application":"foo-application",
+   "dest-name":"",
+   "dest-namespace":"foo",
+   "dest-server":"https://kubernetes.default.svc",
+   "fields.level":3,
+   "level":"info",
+   "msg":"Reconciliation completed",
+   "time":"2023-01-27T04:19:18Z",
+   "time_ms":14
+}
+```
 
 repo-serverが取得したクローンからマニフェストを参照し、```kubectl diff```コマンドを実行することにより、差分を検出する。
 

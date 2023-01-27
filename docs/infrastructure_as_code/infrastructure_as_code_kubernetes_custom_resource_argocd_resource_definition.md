@@ -685,6 +685,18 @@ ArgoCDはHelmの```v2```と```v3```の両方を保持している。
 
 ArgoCDを介してHelmを実行する場合、内部的には```helm template```コマンドとetcd上のマニフェストを```kubectl diff```コマンドで比較し、生じた差分を```kubectl apply```コマンドを使用してデプロイしている。
 
+> ℹ️ 参考：
+> 
+> - https://github.com/helm/helm/issues/6930#issuecomment-555242131
+> - https://qiita.com/kyohmizu/items/118bf654d0288da2294e
+
+
+```bash
+$ helm template . | kubectl diff -f -
+
+$ helm template . | kubectl apply -f -
+```
+
 そのため、Helmを手動でマニフェストをリリースする場合とは異なり、カスタムリソースのマニフェストの設定値を変更できる。
 
 一方で、リリース履歴が存在しない。
@@ -693,16 +705,6 @@ Helmのリリース履歴の代わりとして、```argocd app history```コマ�
 
 
 
-```bash
-$ helm template . | kubectl diff
-```
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#random-data
-> - https://qiita.com/kyohmizu/items/118bf654d0288da2294e
-> - https://medium.com/@ch1aki/argocd%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95%E3%81%A8%E6%97%A2%E5%AD%98%E3%81%AErelease%E3%82%92argocd%E7%AE%A1%E7%90%86%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95-9108295887
-> - https://github.com/argoproj/argo-cd/issues/4537#issuecomment-707997759
 
 ```bash
 $ argocd app history <Application名>
@@ -711,6 +713,13 @@ ID  DATE                           REVISION
 0   2020-04-12 10:22:57 +0900 JST  1.0.0
 1   2020-04-12 10:49:14 +0900 JST  <バージョンタグ>
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#random-data
+> - https://medium.com/@ch1aki/argocd%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95%E3%81%A8%E6%97%A2%E5%AD%98%E3%81%AErelease%E3%82%92argocd%E7%AE%A1%E7%90%86%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95-9108295887
+> - https://github.com/argoproj/argo-cd/issues/4537#issuecomment-707997759
 
 #### ▼ repoURL
 
@@ -1012,6 +1021,27 @@ spec:
 Applicationの責務境界をProjectとして管理する。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
+
+<br>
+
+### sourceNamespace
+
+AppProject配下のKubernetesリソースを作成できるNamespaceを設定する。
+
+ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると```argocd```のため、それ以外を許可するためにも必要である。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prd
+spec:
+  sourceNamespaces:
+    - '*'
+```
+
+
+<br>
 
 ### sourceRepos
 

@@ -349,7 +349,26 @@ releases:
 
 <br>
 
-## 04. values.gotmplファイル
+## 04. Helmfile限定の関数
+
+### readFile
+
+テキストファイルを想定パスで読み込み、レンダリングする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-configmap
+data:
+  policy.csv: |
+    {{ readFile ./policy.csv | nindent 4 }}
+```
+
+
+<br>
+
+## 05. values.gotmplファイル
 
 ### values.gotmplファイルとは
 

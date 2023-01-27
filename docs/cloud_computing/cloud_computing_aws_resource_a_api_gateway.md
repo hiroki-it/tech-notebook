@@ -261,7 +261,7 @@ API Gatewayは上記のJSON型データを受信した後、```body```のみ値�
 
 
 
-```
+```bash
 "Hello Lambda"
 ```
 
