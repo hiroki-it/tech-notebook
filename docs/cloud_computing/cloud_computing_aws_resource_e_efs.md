@@ -17,7 +17,6 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 ## 01. EFS：Elastic File Systemとは
 
-![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
 
 マウントターゲットと接続された片方のEC2インスタンスから、ファイルを読み出し、これをもう一方に出力する。
 
@@ -25,6 +24,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 再接続すると、切断直前のファイルが再び表示されようになる。
 
+![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
 
 
 <br>
@@ -76,11 +76,11 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 スループット性能の自動スケーリング機能は無いが、一定の性能は保証されている。
 
+![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/provisioning-mode_credit-balance-size.png)
 
 
 > ℹ️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput
 
-![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/provisioning-mode_credit-balance-size.png)
 
 <br>
 

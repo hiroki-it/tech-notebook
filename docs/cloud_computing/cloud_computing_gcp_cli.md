@@ -103,9 +103,6 @@ $ gcloud components update
 ```gcloud```コマンドのコンポーネントの一覧を取得する。
 
 
-
-> ℹ️ 参考：https://cloud.google.com/sdk/docs/components?hl=ja
-
 ```bash
 $ gcloud components list
 
@@ -127,6 +124,9 @@ The latest available version is: 400.0.0
 │ Not Installed    │ pkg                                                  │ pkg                      │          │
 └──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
 ```
+
+> ℹ️ 参考：https://cloud.google.com/sdk/docs/components?hl=ja
+
 
 <br>
 

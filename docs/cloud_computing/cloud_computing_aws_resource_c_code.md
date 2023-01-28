@@ -170,13 +170,6 @@ artifacts:
 
 リポジトリに事前に配置するのではなく、CI/CDパイプライン中で動的に作成するようにした方が良い。
 
-
-
-> ℹ️ 参考：
->
-> - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
-> - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
-
 ```yaml
 [
   {
@@ -185,6 +178,13 @@ artifacts:
   }
 ]
 ```
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
+> - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
+
+
 
 <br>
 
@@ -219,9 +219,9 @@ artifacts:
 
 #### ▼ ```appspec.yml```ファイル
 
-ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。ECSタスク定義名を```<TASK_DEFINITION>```とすると、```taskdef.json```ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。
+ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+ECSタスク定義名を```<TASK_DEFINITION>```とすると、```taskdef.json```ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。
 
 ```yaml
 version: 0.0
@@ -240,6 +240,10 @@ Resources:
         PlatformVersion: "1.4.0"
 ```
 
+
+> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+
+
 #### ▼ ```imageDetail.json```ファイル
 
 新バージョンタグを含むイメージリポジトリURLを、```taskdef.json```ファイルの ```<IMAGE1_NAME>```に代入するために必要である。これはリポジトリに事前に配置するのではなく、CI/CDパイプライン中で動的に作成するようにした方が良い。
@@ -251,7 +255,11 @@ Resources:
 
 #### ▼ ```taskdef.json```ファイル
 
-デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを検知し、ECRからコンテナイメージを取得する。この時、```taskdef.json```ファイルのコンテナイメージ名を```<IMAGE1_NAME>```としておくと、```imageDetail.json```ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
+デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。
+
+CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを検知し、ECRからコンテナイメージを取得する。
+
+この時、```taskdef.json```ファイルのコンテナイメージ名を```<IMAGE1_NAME>```としておくと、```imageDetail.json```ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
 
 ```yaml
 {
