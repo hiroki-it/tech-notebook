@@ -166,6 +166,7 @@ nav:
                   - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
 
   - ■ 🫥 ミドルウェア (ソフトウェア):
+      - software/index_middleware.md
       - ■ Web系:
           - ■ Nginx:
               - Nginx: software/software_middleware_web_nginx.md
