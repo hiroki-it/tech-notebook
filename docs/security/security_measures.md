@@ -444,7 +444,7 @@ Access-Control-Allow-Methods: GET,POST,HEAD,OPTIONS
 Access-Control-Allow-Headers: Content-Type
 ```
 
-ちなみに、```Cookie```ヘッダーを持つリクエストを許可しない場合に限り、全てのオリジンやヘッダーを許可できる。
+補足として、```Cookie```ヘッダーを持つリクエストを許可しない場合に限り、全てのオリジンやヘッダーを許可できる。
 
 
 

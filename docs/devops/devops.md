@@ -330,7 +330,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 > - https://webapp.io/blog/what-are-rolling-deployments/
 > - https://www.designet.co.jp/ossinfo/kubernetes/update/
 
-ちなみに、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに属する。
+補足として、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに属する。
 
 
 
@@ -359,7 +359,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 #### ▼ 技術ツール例
 
-- AWS（ECS、EKS）
+- AWS ECS、AWS EKS）
 - Kubernetes
 
 <br>

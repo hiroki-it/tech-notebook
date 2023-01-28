@@ -519,7 +519,7 @@ repository/
 ```yaml
 repository/
 └── modules/ # ローカルモジュール
-    └── eks/ # EKS
+    └── eks/ # AWS EKS
         ├── auto_scaling/ # オートスケーリング
         │   ├── main.tf
         │   ├── outputs.tf

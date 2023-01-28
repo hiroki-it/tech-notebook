@@ -240,7 +240,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 istio-cniを採用している場合にのみそう挿入されるコンテナ。
 
-istio-cniのDaemonSetがistio-iptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
+istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機するために、これが完了したかどうかを検証する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 
@@ -496,7 +496,12 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ```istio-proxy```コンテナの```15021```番ポートでは、kubeletからの準備済みチェックを待ち受ける。
 
-> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+Envoyが、```/healthz/ready```エンドポイントで準備済みチェックを待ち受けており、もしEnvoyが停止してれば```503```ステータスのレスポンスを返却する。
+
+> ℹ️ 参考：
+> 
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> - https://sreake.com/blog/istio-proxy-stop-behavior/
 
 <br>
 

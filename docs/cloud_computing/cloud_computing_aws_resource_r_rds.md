@@ -140,7 +140,7 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
 
-ちなみに保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
+補足として保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
 
 ![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance_action.png)
 
@@ -251,7 +251,7 @@ $ aws rds modify-db-instance \
 | バックアップ保持期間 | DBクラスター がバックアップを保持する期間を設定する。                                   | ```7```日間にしておく。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ログのエクスポート      | CloudWatchログに送信するログを設定する。                                        | 必ず、全てのログを選択すること。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | セキュリティグループ     | DBクラスターのセキュリティグループを設定する。                                           | コンピューティングからのインバウンド通信のみを許可するように、これらのプライベートIPアドレス（```*.*.*.*/32```）を設定する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| 削除保護       | DBクラスターの削除を防ぐ。                                                    | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。ちなみに、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにアクセスできる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 削除保護       | DBクラスターの削除を防ぐ。                                                    | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにアクセスできる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 > ℹ️ 参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
@@ -265,7 +265,7 @@ $ aws rds modify-db-instance \
 
 | 設定項目              | 説明                                                   | 補足                                                                                                     |
 |-----------------------|--------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| インスタンスクラス             | DBインスタンスのスペックを設定する。                                  | バースト可能クラスを選択すること。ちなみに、AuroraのDBサイズは自動的にスケーリングするため、設定する必要がない。                                  |
+| インスタンスクラス             | DBインスタンスのスペックを設定する。                                  | バースト可能クラスを選択すること。補足として、AuroraのDBサイズは自動的にスケーリングするため、設定する必要がない。                                  |
 | パブリックアクセス             | DBインスタンスにIPアドレスを割り当てるか否かを設定する。                    |                                                                                                          |
 | キャパシティタイプ             |                                                        |                                                                                                          |
 | マルチAZ配置             | プライマリーインスタンスとは別に、リードレプリカをマルチAZ配置で追加するか否かを設定する。 | 後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。              |
@@ -545,7 +545,7 @@ NOW()
 
 ![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_primary-instance.png)
 
-ちなみに、リードレプリカは再起動のみを実行していることがわかる。
+補足として、リードレプリカは再起動のみを実行していることがわかる。
 
 
 
@@ -672,7 +672,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する。
 
 インスタンスタイプをスケールアップさせることにより、接続過多のエラー（```ERROR 1040 (HY000): Too many connections```）に対処する。
 
-ちなみに現在の最大接続数はパラメーターグループの値から確認できる。
+補足として現在の最大接続数はパラメーターグループの値から確認できる。
 
 コンソール画面からはおおよその値しかわからないため、SQLで確認した方が良い。
 

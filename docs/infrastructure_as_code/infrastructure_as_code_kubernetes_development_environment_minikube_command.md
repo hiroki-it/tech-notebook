@@ -319,7 +319,7 @@ Client Version: version.Info{
 Server Version: version.Info{
   Major:"1",
   Minor:"22",
-  GitVersion:"v1.22.3", # EKSであれば、『v1.22.10-eks-84b4fe6』になっている。
+  GitVersion:"v1.22.3", # AWS EKSであれば、『v1.22.10-eks-84b4fe6』になっている。
   GitCommit:"*****",
   GitTreeState:"clean",
   BuildDate:"2021-11-17T15:41:42Z",
@@ -475,7 +475,7 @@ $ minikube ip
 *.*.*.*
 ```
 
-ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
+補足として、```minikube service```コマンドを使用せずに、```ssh```コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
 
 
 ```bash
@@ -846,7 +846,7 @@ host: Running
 kubelet: Running
 ```
 
-ちなみに、コントロールプレーンNodeも単なるNodeの```1```個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
+補足として、コントロールプレーンNodeも単なるNodeの```1```個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
 
 
 

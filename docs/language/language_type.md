@@ -19,10 +19,10 @@ description: 言語の種類＠言語を記録しています。
 
 ### プログラミングパラダイムとは
 
-![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プログラミング言語と設計手法の歴史.png)
-
 プログラミングを行う時の様式のこと。
 
+
+![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プログラミング言語と設計手法の歴史.png)
 
 
 > ℹ️ 参考：
@@ -119,7 +119,6 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 
 
 
-> ℹ️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
 （例）
 
@@ -128,6 +127,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 - Groovy
 - Kotlin
 
+> ℹ️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
 <br>
 

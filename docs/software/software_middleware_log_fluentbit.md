@@ -733,7 +733,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ```bash
 # 本来、改行はないが、わかりやすいように改行している。
-# <コンテナ名>-foo-<ECSタスクID>
+# <コンテナ名>-foo-<AWS ECSタスクID>
 [0] foo-bar-baz: [
     {
         "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
@@ -950,7 +950,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     region            ap-northeast-1
     # 予約変数あり。
     log_group_name    /prd-foo-ecs-container/laravel/log
-    # ログストリーム名。予約変数あり。ECSタスクIDなどアウトプットできる。
+    # ログストリーム名。予約変数あり。AWS ECSタスクIDなどアウトプットできる。
     log_stream_name   container/laravel/$(ecs_task_id)
     # ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。
     role_arn          arn:aws:iam::<アカウントID>:role/prd-foo-flunetbit-role

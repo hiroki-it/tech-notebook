@@ -240,7 +240,7 @@ metadata:
 
 ## 04. Namespace＠Kubernetesでの設定
 
-### labels
+### .metadata.labels
 
 #### ▼ istio-injection
 
@@ -320,7 +320,7 @@ metadata:
 
 ## 04-02. Pod＠Kubernetesでの設定
 
-### annotations
+### .metadata.annotations
 
 #### ▼ annotationsとは
 

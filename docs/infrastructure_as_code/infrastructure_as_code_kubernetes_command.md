@@ -382,11 +382,12 @@ SSL証明書を持つSecretを作成する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
 
 ```bash
 $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
 
 <br>
 
@@ -410,15 +411,21 @@ Podの場合、オプションの無い```kubectl delete```コマンドが安全
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
 
 ```bash
 $ kubectl delete pod foo-pod
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
+
+
 #### ▼ --force
 
-特に```Terminating```ステータスのまま削除されないPodに関して、これを強制的に削除する。合わせて```--grace-period```オプションを有効化することにより、即時に削除できる。
+Podを強制的に削除する。
+
+特に、```Terminating```フェーズのまま削除されないPodに対して有効である。
+
+合わせて```--grace-period```オプションを有効化することにより、即時に削除できる。
 
 ```bash
 $ kubectl delete pod <TerminatingステータスのままのPod名> --force --grace-period=0 
@@ -512,16 +519,16 @@ Nodeへの新しいPodのスケジューリングを無効化（```kubectl cordo
 
 Nodeが他に存在すれば、そのNode上でPodが再作成される。
 
-
+```bash
+$ kubectl drain <Node名>
+```
 
 > ℹ️ 参考：
 >
 > - https://cstoku.dev/posts/2018/k8sdojo-21/
 > - https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe
 
-```bash
-$ kubectl drain <Node名>
-```
+
 
 <br>
 
@@ -535,7 +542,6 @@ $ kubectl drain <Node名>
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 
 ```bash
 $ kubectl edit <リソースの種類> <Pod以外のKubernetesリソース名>
@@ -548,6 +554,8 @@ $ kubectl edit deployment foo-deployment
 ```bash
 $ kubectl edit statefulset foo-statefulset
 ```
+
+> ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 
 
 <br>

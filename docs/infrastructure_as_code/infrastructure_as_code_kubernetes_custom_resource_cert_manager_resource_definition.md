@@ -54,7 +54,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/cert-manager -
 
 SSL証明書、SSL証明書と対になる秘密鍵、を保持するSecretの名前を設定する。
 
-> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -66,13 +65,15 @@ spec:
   secretName: foo-certificate-secret
 ```
 
+> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+
+
 #### ▼ SSL証明書を使用する
 
 Ingressの```.spec.tls[].secretName```キーにて、Secretを設定する。
 
 これにより、IngressにSSL証明書を割り当てられる。
 
-> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#ingress-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -89,6 +90,9 @@ spec:
       secretName: foo-certificate-secret
 ```
 
+> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#ingress-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+
+
 <br>
 
 ### .spec.dnsNames
@@ -96,8 +100,6 @@ spec:
 #### ▼ dnsNamesとは
 
 SSL証明書を取得したいドメインを設定する。
-
-> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -111,6 +113,9 @@ spec:
     - foo.example.com
 ```
 
+> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+
+
 <br>
 
 ### .spec.issuerRef
@@ -119,7 +124,6 @@ spec:
 
 SSL証明書を発行してもらう認証局（Issuer）を設定する。
 
-> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
 
 
 ```yaml
@@ -134,6 +138,9 @@ spec:
     kind: Issuer
     group: cert-manager.io
 ```
+
+> ℹ️ 参考：https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+
 
 <br>
 

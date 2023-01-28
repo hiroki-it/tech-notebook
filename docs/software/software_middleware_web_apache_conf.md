@@ -626,7 +626,9 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 **＊実装例＊**
 
-```Referrer-Policy```ヘッダーを追加し、値を```no-referrer-when-downgrade```とする。ちなみに、Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
+```Referrer-Policy```ヘッダーを追加し、値を```no-referrer-when-downgrade```とする。
+
+補足として、Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
 
 > ℹ️ 参考：https://www.chromestatus.com/feature/6251880185331712
 

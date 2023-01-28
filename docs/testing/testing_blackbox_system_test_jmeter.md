@@ -105,7 +105,7 @@ $ jmeter -n \
 Don't use GUI mode for load testing !, only for Test creation and Test debugging.For load testing, use CLI Mode (was NON GUI):
 ```
 
-（５）テストを開始後に、結果（```jtl```ファイル）とログ（```log```ファイル）が作成され、テストが終わるまで追記されていく。
+（５）テストを開始後に、結果（```jtl```ファイル）とログ（```log```ファイル）が作成され、テストが終了するまで追記されていく。
 
 （６）テストを修正して新しく実行したい場合、```jmx```ファイル、```jtl```ファイル、logファイルをコピーして、バックアアップしておく。
 

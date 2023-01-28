@@ -263,7 +263,7 @@ GCP環境上にAnthos GKE Clusterを作成する。
 
 GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure）のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。
 
-ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境（例：EKS、AKS）を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
+ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境（例：AWS EKS、Azure AKS）を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 
 
 

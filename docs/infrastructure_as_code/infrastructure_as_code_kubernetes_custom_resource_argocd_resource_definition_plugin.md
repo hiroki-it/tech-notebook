@@ -22,7 +22,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 #### ▼ 連携先ツールのインストール
 
-ArgoCDと任意のツールを連携するためには、```argocd-repo-server```コンテナが連携先ツールを使用できるように、以下の方法でツールをインストールする必要がある。なお、執筆時点（2022/10/31）では、いくつかのツール（例：Helm、Kustomize、Ks、Jsonnet、など）が```argocd-repo-server```コンテナのイメージにあらかじめインストールされている。
+ArgoCDと任意のツールを連携するためには、```argocd-repo-server```コンテナが連携先ツールを使用できるように、以下の方法でツールをインストールする必要がある。補足として、執筆時点（2022/10/31）では、いくつかのツール（例：Helm、Kustomize、Ks、Jsonnet、など）が```argocd-repo-server```コンテナのイメージにあらかじめインストールされている。
 
 - 連携先ツールがすでにインストールされた```argocd-repo-server```コンテナのイメージを使用する。
 - Podの```.spec.initContainers.args```キーでInitContainerに連携先ツールをインストールし、```.spec.initContainers.volumeMounts```キーでコンテナのボリュームに連携先ツールを配置する。これにより、Podのストレージに連携先ツールを配置できるため、```argocd-repo-server```コンテナでは自身のボリュームを介して、Podのストレージ上の連携先ツールを使用できる。
@@ -341,7 +341,7 @@ data:
 
 #### ▼ 必要なマニフェストの作成
 
-```helm secrets template```コマンドを実行し、マニフェストファイルを作成する。ちなみに、zendesk製のhelm-secretsでは、文末にdecryptedの文字が出力されるため、```sed '$d'```が必要になる。
+```helm secrets template```コマンドを実行し、マニフェストファイルを作成する。補足として、zendesk製のhelm-secretsでは、文末にdecryptedの文字が出力されるため、```sed '$d'```が必要になる。
 
 ```yaml
 apiVersion: v1

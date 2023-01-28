@@ -266,15 +266,15 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
-    # ECSタスク定義名を指定
+    # AWS ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # ECSクラスター名を指定
+    # AWS ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
     # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # ECSタスク定義に基づくECSタスク数の監視
+    # AWS ECSタスク定義に基づくECSタスク数の監視
     verify-revision-is-deployed: true
     # 監視の試行回数
     max-poll-attempts: 30
@@ -306,7 +306,7 @@ workflows:
 
 #### ▼ deploy-update-service（ブルー/グリーンデプロイメント使用時）
 
-ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。
+AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。
 
 ローリングアップデートと同様にして、```verify-revision-is-deployed```オプションを使用できる。
 
@@ -322,9 +322,9 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_code_deploy
-    # ECSタスク定義名を指定
+    # AWS ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # ECSクラスター名を指定
+    # AWS ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
@@ -336,7 +336,7 @@ jobs:
     codedeploy-load-balanced-container-port: 80
     # コンテナ名とバージョンタグを指定。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # ECSサービス更新後のECSタスク監視
+    # AWS ECSサービス更新後のECSタスク監視
     verify-revision-is-deployed: true
           
 workflows:
@@ -363,13 +363,13 @@ workflows:
 
 #### ▼ run-task
 
-現在起動中のECSタスクとは別に、新しいECSタスクを一時的に起動する。
+現在起動中のAWS ECSタスクとは別に、新しいAWS ECSタスクを一時的に起動する。
 
-起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。
+起動時に、```overrides```オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。
 
 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。
 
-コマンドが実行された後に、ECSタスクは自動的にStopped状態になる。
+コマンドが実行された後に、AWS ECSタスクは自動的にStopped状態になる。
 
 
 
@@ -377,7 +377,7 @@ workflows:
 
 **＊実装例＊**
 
-例えば、DBマイグレーションを実行するためのECSタスクを起動する。
+例えば、DBマイグレーションを実行するためのAWS ECSタスクを起動する。
 
 ```overrides```オプションでコンテナ定義のコマンドを上書きする。
 
@@ -400,9 +400,9 @@ jobs:
     launch-type: FARGATE
     subnet-ids: $AWS_SUBNET_IDS
     security-group-ids: $AWS_SECURITY_GROUPS
-    # ECSタスク定義名。最新リビジョン番号が自動補完される。
+    # AWS ECSタスク定義名。最新リビジョン番号が自動補完される。
     task-definition: "${SERVICE}-ecs-task-definition"
-    # ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
+    # AWS ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
           
 workflows:
@@ -463,7 +463,7 @@ jobs:
     bundle-key: foo-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
     deployment-group: "${SERVICE}-deployment-group"
-    # ECSにアクセスできるCodeDeployサービスロール
+    # AWS ECSにアクセスできるCodeDeployサービスロール
     service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
  
 workflows:

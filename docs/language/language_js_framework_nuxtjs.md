@@ -42,7 +42,7 @@ Webpackは使用されないため、静的ファイルの圧縮や画像ファ�
 $ yarn dev
 ```
 
-ちなみに、```yarn dev```コマンドを実行した場合、環境変数の```NODE_ENV```が```development```になる。
+補足として、```yarn dev```コマンドを実行した場合、環境変数の```NODE_ENV```が```development```になる。
 
 
 
@@ -84,7 +84,7 @@ SSRモードのために使用する。
 $ yarn start
 ```
 
-ちなみに、```yarn start```コマンドを実行した場合、環境変数の```NODE_ENV```が```production```になる。
+補足として、```yarn start```コマンドを実行した場合、環境変数の```NODE_ENV```が```production```になる。
 
 
 
@@ -121,7 +121,7 @@ Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイ
 $ yarn dev
 ```
 
-ちなみに、```yarn dev```コマンドを実行した場合、環境変数の```NODE_ENV```が```development```になる。
+補足として、```yarn dev```コマンドを実行した場合、環境変数の```NODE_ENV```が```development```になる。
 
 
 
@@ -159,7 +159,7 @@ $ yarn generate
 $ yarn start
 ```
 
-ちなみに、```yarn start```コマンドを実行した場合、環境変数の```NODE_ENV```が```production```になる。
+補足として、```yarn start```コマンドを実行した場合、環境変数の```NODE_ENV```が```production```になる。
 
 
 
@@ -201,7 +201,6 @@ Nuxtがデフォルトで用意している設定をプロパティの設定値�
 
 
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -210,6 +209,9 @@ const nuxtConfig: Configuration = {
   // プロパティ
 }
 ```
+
+> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
+
 
 <br>
 
@@ -275,7 +277,6 @@ const nuxtConfig: Configuration = {
 
 
 
-> ℹ️ 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -287,6 +288,9 @@ const nuxtConfig: Configuration = {
   },
 }
 ```
+
+> ℹ️ 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
+
 
 #### ▼ privateRuntimeConfig
 

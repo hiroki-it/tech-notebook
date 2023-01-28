@@ -37,12 +37,14 @@ description: Goの知見を記録しています。
 
 #### ▼ yumリポジトリから
 
-> ℹ️ 参考：https://www.cyberithub.com/install-go-on-centos/
 
 ```bash
 $ yum install -y epel-release
 $ yum install -y golang
 ```
+
+> ℹ️ 参考：https://www.cyberithub.com/install-go-on-centos/
+
 
 <br>
 
@@ -118,10 +120,6 @@ CMD ["/go/bin/cmd"]
 
 
 
-> ℹ️ 参考：
-> 
-> - https://github.com/golang-standards/project-layout
-> - https://nekonenene.hatenablog.com/entry/2019/02/12/021610
 
 ```yaml
 $GOPATH/ # 例えば、『$HOME/go』とする。
@@ -159,6 +157,12 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
         ├── static
         └── template
 ```
+
+> ℹ️ 参考：
+>
+> - https://github.com/golang-standards/project-layout
+> - https://nekonenene.hatenablog.com/entry/2019/02/12/021610
+
 
 #### ▼ ```bin```
 
@@ -254,7 +258,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 小文字一単語で命名する。
 
-ディレクトリ名に小文字一単語が使用されている場合は、これと同じにするとなお良い。
+ディレクトリ名に小文字一単語が使用されている場合は、これと同じにしたが方が良い。
 
 また、処理中の変数名と被るとパッケージのインポートに失敗するため、変数名と被らないように、できるだけ省略しない名前の方が良い。
 
@@ -300,10 +304,6 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 オブジェクト指向で使われる『```this```』『```self```』
 
-> ℹ️ 参考：
->
-> - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
-> - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
 
 **＊例＊**
 
@@ -311,7 +311,10 @@ httpClientであれば、修飾語は『```http```』被修飾語『```client```
 
 そのため、レシーバ名または引数名では『```cl```』とする。
 
-`
+> ℹ️ 参考：
+>
+> - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
+> - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
 
 #### ▼ 一時的な変数名
 
@@ -382,6 +385,8 @@ func main() {
 ### その他のお作法
 
 #### ▼ コメントの書式
+
+調査中...
 
 > ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
 

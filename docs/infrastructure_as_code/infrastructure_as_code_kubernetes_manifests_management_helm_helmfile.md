@@ -107,6 +107,32 @@ releases:
     version: <バージョンタグ>
 ```
 
+補足として、```helmfile.d```ファイル内でもHelmの関数を使用できる。
+
+```yaml
+environments:
+  {{ .Environment.Name }}:
+
+repositories:
+  - name: <チャートリポジトリ名>
+    url: <URL>
+
+releases:
+  - name: <リリース名>
+    namespace: <Namespace名>
+    chart: <チャートリポジトリ名>/<チャート名>
+    version: <バージョンタグ>
+    # 実行環境ごとに、読み込むvalues.yaml.gotmplファイルを切り替える。
+    values:
+      {{- if or (eq .Environment.Name "dev") (eq .Environment.Name "tes") }}
+      - values-nonprd.yaml.gotmpl
+      {{- end }}
+      {{- if eq .Environment.Name "prd" }}
+      - values-prd.yaml.gotmpl
+      {{- end }}
+```
+
+
 <br>
 
 ### environments

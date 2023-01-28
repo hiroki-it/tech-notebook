@@ -129,7 +129,7 @@ Prometheusは、```data```ディレクトリ配下をTSDBとして、収集し�
 
 収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。
 
-現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。
+現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（補足としてRDBMSでは、これをジャーナルファイルという）。
 
 これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
@@ -253,7 +253,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 Alertmanagerのデータを永続化する。
 
 ```bash
-# Node内（EKS EC2 Nodeの場合）
+# Node内（AWS EKSのEC2ワーカーNodeの場合）
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/alertmanager-db/
 ```
 

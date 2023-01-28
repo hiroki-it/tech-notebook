@@ -300,7 +300,7 @@ data:
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-ちなみに、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されており、またその他にkubernetes-mixinsも同時にインストールするようになっている。
+補足として、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されており、またその他にkubernetes-mixinsも同時にインストールするようになっている。
 
 > ℹ️ 参考：
 > 

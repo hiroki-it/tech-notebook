@@ -399,7 +399,7 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 <br>
 
-### ヘルスチェックが終わらない
+### ヘルスチェックが終了しない
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
 

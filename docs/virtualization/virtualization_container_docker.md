@@ -21,11 +21,11 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 Dockerは、ホストOS、ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー、から構成される。
 
+![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_architecture.png)
 
 
 > ℹ️ 参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
 
-![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_architecture.png)
 
 <br>
 
@@ -51,11 +51,6 @@ Dockerは、オーバーレイファイルシステムを使用して、各フ�
 
 
 
-> ℹ️ 参考：
->
-> - https://www.creationline.com/lab/35518
-> - https://tech-lab.sios.jp/archives/21103#OverlayFS
-
 ```bash
 $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
@@ -67,17 +62,23 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 }
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://www.creationline.com/lab/35518
+> - https://tech-lab.sios.jp/archives/21103#OverlayFS
+
 <br>
 
 ### コンテナレイヤー
 
 コンテナイメージからコンテナを作成する時に、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。
 
+![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
 
 > ℹ️ 参考：https://blog.codecamp.jp/programming-docker-image-container
 
-![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
 <br>
 
@@ -89,11 +90,11 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 dockerクライアントは、```docker```コマンドを使用してdockerデーモンAPIをコールできる。
 
+![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png)
 
 
 > ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
 
-![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png)
 
 <br>
 
@@ -145,14 +146,9 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 構造化ログに変換し、サイドカーとして稼働するFluentdコンテナに送信する。
 
-ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラッピングしたものである。
+AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラッピングしたものである。
 
 
-
-> ℹ️ 参考：
->
-> - https://docs.docker.com/config/containers/logging/fluentd/
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 ```bash
  {
@@ -162,6 +158,12 @@ ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラ�
    }
  }
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://docs.docker.com/config/containers/logging/fluentd/
+> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 #### ▼ none
 
@@ -175,7 +177,6 @@ ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラ�
 
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
 
-> ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/
 
 ```yaml
 {
@@ -186,13 +187,15 @@ ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラ�
 }
 ```
 
+> ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/
+
+
 #### ▼ gcplogs
 
 標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
 
 
 
-> ℹ️ 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
 ```yaml
 {
@@ -202,6 +205,8 @@ ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラ�
   }
 }
 ```
+
+> ℹ️ 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
 <br>
 

@@ -659,7 +659,7 @@ sops:
 
 ArgoCDは暗号化された```values```ファイルを復号化し、チャートをインストールする。
 
-なおArgoCD上では、Secretのdataキーは```base64```方式でエンコードされる。
+補足としてArgoCD上では、Secretのdataキーは```base64```方式でエンコードされる。
 
 
 
@@ -855,7 +855,7 @@ spec:
 
 kube-apiserverのURLを設定する。
 
-Kubernetesの実行環境としてEKSやGKEを採用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
+Kubernetesの実行環境としてAWS EKSやGCP GKEを採用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -869,7 +869,7 @@ spec:
 ```
 
 ```yaml
-# EKSの場合
+# AWS EKSの場合
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -877,7 +877,7 @@ metadata:
   name: foo-application
 spec:
   destination:
-    # EKSのkube-apiserverのエンドポイントを指定する。
+    # AWS EKSのkube-apiserverのエンドポイントを指定する。
     server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
@@ -1992,7 +1992,7 @@ metadata:
   name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: -1 # 優先度-1（3個の中で一番優先される。）
+    argocd.argoproj.io/sync-wave: -1 # 優先度-1（3個の中で一番優先される）
 ```
 
 ```yaml
@@ -2003,7 +2003,7 @@ metadata:
   name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる。）
+    argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる）
 ```
 
 ```yaml

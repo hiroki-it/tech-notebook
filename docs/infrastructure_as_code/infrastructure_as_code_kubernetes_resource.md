@@ -166,9 +166,13 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ▼ 例外的なコントロールプレーンNode上のPod
 
-脆弱性の観点で、デフォルトではコントロールプレーンNodeにPodはスケジューリングされない。これは、コントロールプレーンNodeにはTaint（```node-role.kubernetes.io/master:NoSchedule```）が設定されているためである。一方で、Nodeにはこれがないため、Podをスケジューリングできる。
+脆弱性の観点で、デフォルトではコントロールプレーンNodeにPodはスケジューリングされない。
 
-> ℹ️ 参考：https://stackoverflow.com/questions/43147941/allow-scheduling-of-pods-on-kubernetes-master
+これは、コントロールプレーンNodeにはTaint（```node-role.kubernetes.io/master:NoSchedule```）が設定されているためである。
+
+一方で、Nodeにはこれがないため、Podをスケジューリングできる。
+
+
 
 ```bash
 # コントロールプレーンNodeの場合
@@ -181,6 +185,8 @@ $ kubectl describe node <ワーカーNode名> | grep -i taint
 
 Taints: <none>
 ```
+
+> ℹ️ 参考：https://stackoverflow.com/questions/43147941/allow-scheduling-of-pods-on-kubernetes-master
 
 ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。
 
@@ -208,7 +214,7 @@ Deployment、StatefulSet、Job、配下のPodはライフサイクルを持ち�
 | Error                | Pod内のいずれかのコンテナが異常に終了した。                                                     | Job配下のPodの場合はErrorになっても、次のPodが作成される。Jobの```.spec.ttlSecondsAfterFinished```キーを設定していなければ、ErrorのPodがしばらく残り続けるが、もし新しいPodがCompletedになれば問題ない。 |
 | Failed               | Pod内の全てのコンテナの起動が完了し、その後に異常に停止した。                                            |                                                                                                                                          |
 | ImagePullBackOff     | Pod内のコンテナイメージのプルに失敗した。                                                      |                                                                                                                                          |
-| OOMKilled            | Podのメモリの空きサイズが足らず、コンテナが強制終了された。                                             |                                                                                                                                          |
+| OOMKilled            | Podのメモリの空きサイズが足らず、コンテナが強制的に終了された。                                             |                                                                                                                                          |
 | Pending              | PodがNodeにスケジューリングされたが、Pod内の全てのコンテナの起動がまだ完了していない。                            |                                                                                                                                          |
 | PodInitializing      | Pod内にInitContainerがある場合の理由である。コンテナイメージをプルし、コンテナを作成している。                     |                                                                                                                                          |
 | PostStartHookError   | PodのPostStartフックに失敗した。                                                      |                                                                                                                                          |
@@ -252,30 +258,63 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 - ```kubectl describe nodes```コマンドで、PodがスケジューリングされているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。
 - ```kubectl describe pods```コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。（Containersの項目で、```kubectl logs```コマンドと同じ内容も確認できる）
 
-#### ▼ Podが削除されるまでの流れ
+#### ▼ Podを安全に削除する方法
+
+Podの削除プロセスが始まると、以下のプロセスも開始する。
+
+- DeploymentがPodを切り離す。
+- Serviceとkube-proxyがPodの宛先情報を削除する。
+- コンテナを停止する。
+
+これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。
+
+
+この時、コンテナが正常に終了する前にPodを削除してしまうと、コンテナでは強制的に終了として扱われてしまい、ログにエラーが出力されてしまう。
+
+また、Serviceとkube-proxyがPodの宛先情報を削除する前に、Podが削除されてしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。
+
+そのため、コンテナの正常な終了後にPodを削除できるように、```.spec.terminationGracePeriodSeconds```キーに任意の秒数を設定し、Podの削除プロセスの完了を待機する必要がある。
+
+
+また、Serviceとkube-proxyの処理後にPodを削除できるように、ユーザーがPodの```.spec.containers[].lifecycle.preStop```キーに任意の秒数を設定し、コンテナに待機処理（例：```sleep```コマンド）を実行させる必要がある。
+
+これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。
+
+```.spec.terminationGracePeriodSeconds```キーを長めに設定し、```.spec.containers[].lifecycle.preStop```キーの秒数も含めて、全てが完了した上でPodを削除できるようにする。
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
 （１）クライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
-（２）Podが、削除を開始する。
+（２）Podのマニフェストに```deletionTimestamp```キーが追加され、Podが```Terminating```フェーズとなり、削除プロセスを開始する。
 
-（３）preStopフックが起動し、```.spec.preStop```キーの設定がコンテナで実行される。
+（３）Podの```.spec.terminationGracePeriodSeconds```キーに応じて、Podの削除プロセス完了の待機時間を開始する。
 
-（４）kubeletは、コンテナランタイムを介して、Pod内のコンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```.spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（４）最初にpreStopフックが起動し、```.spec.containers[].lifecycle.preStop```キーで設定した待機処理をコンテナが実行する。
 
-（５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
+（５）DeploymentがPodを切り離す。また、Serviceとkube-proxyがPodの宛先情報を削除する。
+
+（６）```.spec.containers[].lifecycle.preStop```キーによるコンテナの待機処理が終了する。
+
+（７）待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナにSIGTERMシグナルを送信する。これにより、コンテナの停止処理が開始する。
+
+（８）```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。この段階でもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、コンテナを強制的に終了することになる。
+
+（９）Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
+
+
 
 > ℹ️ 参考：
 >
+> - https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
+> - https://44smkn.hatenadiary.com/entry/2018/08/01/022312
 
 #### ▼ ハードウェアリソースの割り当て
 
 そのPodに割り当てられたハードウェアリソース（CPU、メモリ）を、Pod内のコンテナが分け合って使用する。
 
-> ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 
 | 単位               | 例                                       |
@@ -283,15 +322,19 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 | ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
 | ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB              |
 
+> ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
+
 #### ▼ クライアントがPod内のログを参照できる仕組み
 
-![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_logging.png)
 
 （１）クライアント（特に```kubectl```コマンド実行者）が```kubectl logs```コマンドを実行する。
 
 （２）kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
 
-（３）kubeletはリクエストを受信し、Nodeの```/var/log```ディレクトリを読み込む。Nodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。なお、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
+（３）kubeletはリクエストを受信し、Nodeの```/var/log```ディレクトリを読み込む。Nodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
+
+![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_logging.png)
+
 
 > ℹ️ 参考：https://www.creationline.com/lab/29281
 
@@ -423,7 +466,6 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 #### ▼ Ingressとは
 
-![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
 IngressコントローラーによってNode外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。
 
@@ -431,6 +473,7 @@ Ingressを使用する場合、ルーティング先のIngressは、Cluster IP S
 
 NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
+![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
 
 > ℹ️ 参考：
@@ -482,9 +525,10 @@ Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）�
 
 #### ▼ SSL証明書の割り当て
 
+Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー（例：Nginx）に渡す。
+
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller_certificate.png)
 
-Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー（例：Nginx）に渡す。
 
 > ℹ️ 参考：
 >
@@ -552,7 +596,9 @@ Cluster-IPはNode外から宛先として指定できないため、インバウ
 
 Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。
 
-一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして（レイヤーは異なるが）、PodのIPアドレスを宛先とする```L7```ロードバランサー（例：AWS ALBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして（レイヤーは異なるが）、PodのIPアドレスを宛先とする```L7```ロードバランサー（例：AWS ALBとAWSターゲットグループ）を自動的にプロビジョニングする。
+
+そのため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
 
 > ℹ️ 参考：
@@ -575,7 +621,7 @@ Serviceに対するインバウンド通信を、NodeのNICの宛先情報（IP�
 
 NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
 
-ただし、NodePort Serviceは内部的にCluster-IPを使っているため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。（この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い。）
+ただし、NodePort Serviceは内部的にCluster-IPを使っているため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。（この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い）
 
 NodeのNICの宛先情報は、Nodeの作成方法（AWS EC2、GCP GCE、VMWare）に応じて、確認方法が異なる。
 
@@ -810,7 +856,7 @@ NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS
 foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp2-encrypted   181d
 ```
 
-（２）Node内（EKS EC2 Nodeの場合）で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
+（２）Node内（AWS EKSのEC2ワーカーNodeの場合）で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
 
 ```bash
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/<リージョン>/vol-*****/prometheus-db/
@@ -1207,7 +1253,7 @@ Ingressとは関係がないことに注意する。
 
 ## 10. 各Kubernetesリソース共通
 
-### annotationsキー
+### .metadata.annotations
 
 
 #### ▼ ```kubernetes.io```キー
@@ -1244,7 +1290,7 @@ PersistentVolumeClaimに関する情報を設定する。
 
 <br>
 
-### labelsキー
+### .metadata.labels
 
 #### ▼ ```app.kubernetes.io```キー
 

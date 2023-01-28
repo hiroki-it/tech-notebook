@@ -634,7 +634,7 @@ PHPにも、```forEach```関数と同様に配列に対してコールバック�
 
 > ℹ️ 参考：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
-ちなみにPHPにも、```forEach```関数と同じような使い方をする```array_walk```関数がある。
+補足としてPHPにも、```forEach```関数と同じような使い方をする```array_walk```関数がある。
 
 
 

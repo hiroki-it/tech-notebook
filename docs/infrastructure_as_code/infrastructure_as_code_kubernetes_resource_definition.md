@@ -177,7 +177,7 @@ metadata:
 
 <br>
 
-### labels
+### .metadata.labels
 
 #### ▼ labelsとは
 
@@ -1514,7 +1514,7 @@ spec:
 
 ## 11. Ingress
 
-### annotations
+### .metadata.annotations
 
 #### ▼ annotationsとは
 
@@ -2778,7 +2778,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 
 > ℹ️ 参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
-ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
+補足として、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
 
 
 ```bash
@@ -3312,7 +3312,9 @@ spec:
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
-Podを削除する時の待機時間を設定する。
+Podの削除プロセスの待機時間を設定する。
+
+この時間を超えてもPodを削除できていない場合は、コンテナを強制的に停止する。
 
 ```yaml
 apiVersion: v1
@@ -3328,6 +3330,7 @@ spec:
 
 > ℹ️ 参考：
 >
+> - https://nulab.com/ja/blog/backlog/graceful-shutdown-of-kubernetes-application/
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
 
@@ -4349,7 +4352,7 @@ spec:
       port: 22
 ```
 
-ちなみに、FastCGIプロトコルには変換できず、別にNginxを使用してプロトコルを変換する必要がある。
+補足として、FastCGIプロトコルには変換できず、別にNginxを使用してプロトコルを変換する必要がある。
 
 
 

@@ -136,7 +136,6 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 
 ### 対応関係
 
-> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
 
 ![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
 
@@ -151,6 +150,8 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 | Secrets Manager             | Secret                     | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                             |
 | IAMユーザー                     | ServiceAccount、UserAccount | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
 | IAMロール                      | Role、ClusterRole           | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
+
+> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
 
 <br>
 
@@ -532,7 +533,11 @@ source "${EXPORT_ENVS}"
 
 #### ▼ EC2ワーカーNodeのイメージキャッシュ削除
 
-kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。```--image-gc-high-threshold```オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。```--image-gc-low-threshold```オプションで解放しようとするディスク使用率を設定する。
+kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。
+
+```--image-gc-high-threshold```オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。
+
+```--image-gc-low-threshold```オプションで、解放しようとするディスク使用率を設定する。
 
 
 **＊実装例＊**
@@ -566,12 +571,15 @@ fi
 
 #### ▼ 安全なEC2ワーカーNodeシャットダウン
 
-kubeletを使用してワーカーNodeの停止を待機し、Podが終了する（ワーカーNodeを退避する）までの時間を稼ぐ。待機中に終了できたPodは```Failed```ステータスとなる。```--shutdown-grace-period```オプションで、ワーカーNodeの停止を待機する期間を設定する。```--shutdown-grace-period-critical-pods```オプションで、特に重要なPodの終了のために待機する時間を設定する。
+kubeletを使用してワーカーNodeの停止を待機し、Podが終了する（ワーカーNodeを退避する）までの時間を稼ぐ。
 
-> ℹ️ 参考：
->
-> - https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/
-> - https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown
+待機中に終了できたPodは```Failed```ステータスとなる。
+
+```--shutdown-grace-period```オプションで、ワーカーNodeの停止を待機する期間を設定する。
+
+```--shutdown-grace-period-critical-pods```オプションで、特に重要なPodの終了のために待機する時間を設定する。
+
+
 
 **＊実装例＊**
 
@@ -608,11 +616,15 @@ EOF
 sudo systemctl restart systemd-logind
 ```
 
+> ℹ️ 参考：
+>
+> - https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/
+> - https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown
+
 ```Failed```ステータスのPodはそのままでは削除できないため、以下のようなスクリプトを実行できるCronJobを作成するとよい。
 
 
 
-> ℹ️ 参考：https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
 
 ```bash
 for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
@@ -622,6 +634,9 @@ for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
     | xargs --no-run-if-empty --max-args=100 --verbose kubectl delete pods -n $ns 
 done
 ```
+
+> ℹ️ 参考：https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
+
 
 <br>
 

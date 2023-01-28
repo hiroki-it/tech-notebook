@@ -28,9 +28,11 @@ IPアドレスの例示では、```x```を使用しないようにする。
 
 
 
-> ℹ️ 参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
 
 ![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address.png)
+
+> ℹ️ 参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
+
 
 <br>
 
@@ -74,7 +76,7 @@ LAN内で使用される。
 
 例えば、プライベートIPアドレスの```4```個のオクテット（第一オクテットから第四オクテットまで）が```1```Byteのサイズをもち、IPアドレス全体で```4```Byteのサイズを持つ。
 
-ちなみに、```172```から始まるIPアドレスは、クラスBである。
+補足として、```172```から始まるIPアドレスは、クラスBである。
 
 
 
@@ -88,11 +90,11 @@ LAN内で使用される。
 
 IPアドレスのオクテットは、ネットワーク部とホスト部に分類できる。
 
+![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address_portion.png)
 
 
 > ℹ️ 参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
 
-![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address_portion.png)
 
 #### ▼ クラスによるホスト部とネットワーク部の定義
 
@@ -186,11 +188,11 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 
 例えば、『```www.example.com```』という完全修飾ドメイン名をURLで指定する場合、『```example.com```』としても良い。
 
+![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain_namespace.png)
 
 
 > ℹ️ 参考：https://ascii.jp/elem/000/000/419/419685/2/
 
-![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain_namespace.png)
 
 #### ▼ サブドメイン
 
@@ -243,7 +245,6 @@ webサーバーのIPアドレスがDNSサーバーに登録されていない時
 
 
 
-> ℹ️ 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
 
 **＊例＊**
 
@@ -255,6 +256,9 @@ webサーバーのIPアドレスがDNSサーバーに登録されていない時
 <IPアドレス> <ドメイン名>
 ```
 
+> ℹ️ 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
+
+
 #### ▼ ```/etc/resolv.conf```ファイル
 
 名前解決に使用するDNSサーバーのIPアドレスや、問い合わせで使用するドメイン名の後に付与する文字列を定義する。
@@ -263,7 +267,6 @@ webサーバーのIPアドレスがDNSサーバーに登録されていない時
 
 
 
-> ℹ️ 参考：https://linuc.org/study/knowledge/507/
 
 **＊例＊**
 
@@ -282,6 +285,9 @@ search      bar   baz # domain値で問い合わせに失敗した場合に使�
 ```bash
 $ nslookup example # 実際には、example.fooとなる
 ```
+
+> ℹ️ 参考：https://linuc.org/study/knowledge/507/
+
 
 #### ▼ DNSサーバー（ネームサーバー、権威DNSサーバー）
 

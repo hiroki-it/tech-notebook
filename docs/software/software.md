@@ -171,7 +171,7 @@ UNIXを源流として派生したOS。
 
 
 
-※ちなみに、MacOSはBSD系統
+※補足として、MacOSはBSD系統
 
 ![os_unix-like_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/os_unix-like_history.png)
 
@@ -185,9 +185,10 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 ### 基本ソフトウェア
 
+![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/基本ソフトウェアの構成.png)
+
 > ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
-![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/基本ソフトウェアの構成.png)
 
 <br>
 
@@ -199,11 +200,11 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 UNIXから分岐したLinuxは、加えて3系統（Debian、RedHat、Slackware）に分岐する。
 
+![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux-distribution.png)
 
 
 > ℹ️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
-![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux-distribution.png)
 
 #### ▼ Debian系統
 
@@ -305,8 +306,9 @@ Windows 8以降で採用されている新しいFirmware
 
 ### OSSの種類
 
-> ℹ️ 参考：https://openstandia.jp/oss_info/
 
 ![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSS一覧.png)
+
+> ℹ️ 参考：https://openstandia.jp/oss_info/
 
 <br>

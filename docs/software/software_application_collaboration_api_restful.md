@@ -1084,7 +1084,7 @@ session.save_handler = files
 session.save_path = "/tmp"
 ```
 
-なお、PHP-FPMを採用している場合は、```/etc/php.ini```ファイルではなく、```/etc/php-fpm.d/www.conf```ファイルで保存場所を設定する必要がある。
+補足として、PHP-FPMを採用している場合は、```/etc/php.ini```ファイルではなく、```/etc/php-fpm.d/www.conf```ファイルで保存場所を設定する必要がある。
 
 > ℹ️ 参考：
 >

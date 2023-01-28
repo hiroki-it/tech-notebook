@@ -25,7 +25,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 > ℹ️ 参考：https://en.wikipedia.org/wiki/Infrastructure_as_code
 
-なお、ここでいう『インフラ』は、ハードウェアと一部のソフトウェア（OS、ミドルウェア）を合わせたものである。
+補足として、ここでいう『インフラ』は、ハードウェアと一部のソフトウェア（OS、ミドルウェア）を合わせたものである。
 
 
 
@@ -73,7 +73,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 #### ▼ 変更のスピードが落ちる
 
-変更時に、画面上からの操作であればすぐに終わる変更であるのにも関わらず、コード化により、変更までに時間がかかる。
+変更時に、画面上からの操作であればすぐに終了する変更であるのにも関わらず、コード化により、変更までに時間がかかる。
 
 そのため例えばAWSとすると、運用時に変更する頻度が多いインフラ（例：API Gateway（VPCリンクを含む）、IAMユーザ（紐付けるロールやポリシーを含む））はコード化せず、あえて画面上から作成する。
 
@@ -278,11 +278,9 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの作成、コンテナの作成、コンテナの起動、を実行できる。
 
 
+- Docker
+- Docker Compose
 
-| ツール名                         | ベンダー   |
-|-------------------------------|--------|
-| Docker Compose                | Docker |
-| ECS：Elastic Container Service | Amazon |
 
 <br>
 
@@ -292,14 +290,9 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 どのホスト上のdockerデーモンに対して、どのコンテナに関する操作を行うのかを選択的に命令できる。
 
+- Docker Swarm
+- Kubernetes
 
-
-
-| ツール名                          | ベンダー   |
-|--------------------------------|--------|
-| Docker Swarm                   | Docker |
-| Kubernetes                     | Google |
-| EKS：Elastic Kubernetes Service | Amazon |
 
 > ℹ️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
@@ -312,7 +305,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 #### ▼ サイドカーパターンとは
 
-アプリコンテナと同じPod内や、ECSタスク内に、アプリケーションの一部の機能のみを持つコンテナを配置する。
+アプリコンテナと同じPod内や、AWS ECSタスク内に、アプリケーションの一部の機能のみを持つコンテナを配置する。
 
 
 
@@ -338,7 +331,7 @@ datadogコンテナをサイドカーコンテナとして稼働させ、アプ�
 
 #### ▼ アンバサダーパターンとは
 
-アプリコンテナと同じPod内や、ECSタスク内に、リバースプロキシコンテナ（Envoy、Linkerd、など）を配置する。
+アプリコンテナと同じPod内や、AWS ECSタスク内に、リバースプロキシコンテナ（Envoy、Linkerd、など）を配置する。
 
 サービスメッシュを実現するために採用される。
 

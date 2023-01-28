@@ -529,7 +529,7 @@ service FooService {
 $ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
 ```
 
-ちなみに、```pb.go```ファイルには、gRPCサーバーとして登録するための```Register<ファイル名>ServiceServer```関数が定義される。
+補足として、```pb.go```ファイルには、gRPCサーバーとして登録するための```Register<ファイル名>ServiceServer```関数が定義される。
 
 ```go
 // 〜 中略 〜

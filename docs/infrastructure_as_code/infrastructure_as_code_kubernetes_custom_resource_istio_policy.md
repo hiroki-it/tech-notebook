@@ -62,7 +62,7 @@ NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバラン
 
 LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
 
-なお、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。
+補足として、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。
 
 NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
 
