@@ -80,7 +80,7 @@ spec:
 
 ## 03. SecretProviderClass
 
-### metadata
+### .metadata
 
 #### ▼ namespace
 
@@ -101,7 +101,7 @@ metadata:
 
 <br>
 
-### spec.provider
+### .spec.provider
 
 #### ▼ providerとは
 
@@ -122,7 +122,7 @@ spec:
 
 <br>
 
-### spec.parameters
+### .spec.parameters
 
 #### ▼ parametersとは
 

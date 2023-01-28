@@ -279,7 +279,7 @@ Alertmanagerのセットアップ方法を決める。
 
 > ℹ️ 参考：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager
 
-### spec.version
+### .spec.version
 
 Alertmanagerのコンテナイメージのバージョンを設定する。
 
@@ -299,7 +299,7 @@ spec:
 
 <br>
 
-### spec.serviceAccountName
+### .spec.serviceAccountName
 
 AlertmanagerのPodに紐づけるServiceAccountの名前を設定する。
 
@@ -317,7 +317,7 @@ spec:
 
 <br>
 
-### spec.baseImage
+### .spec.baseImage
 
 Alertmanagerのコンテナイメージを設定する。
 
@@ -337,7 +337,7 @@ spec:
 
 <br>
 
-### spec.externalUrl
+### .spec.externalUrl
 
 AlertmanagerのURLを設定する。
 
@@ -355,7 +355,7 @@ spec:
 
 <br>
 
-### spec.replicas
+### .spec.replicas
 
 AlertmanagerのPodの冗長化数を設定する。
 
@@ -373,7 +373,7 @@ spec:
 
 <br>
 
-### spec.logLevel
+### .spec.logLevel
 
 Alertmanagerのログレベルを設定する。
 
@@ -391,7 +391,7 @@ spec:
 
 <br>
 
-### spec.resources
+### .spec.resources
 
 Alertmanagerのハードウェアリソースの要求量を設定する。
 
@@ -466,7 +466,7 @@ Prometheusのセットアップ方法を決める。
 
 <br>
 
-### spec.alerting
+### .spec.alerting
 
 アラートの送信先を設定する。
 
@@ -492,7 +492,7 @@ spec:
 
 <br>
 
-### spec.image
+### .spec.image
 
 prometheusコンテナのベースイメージを設定する。
 
@@ -513,7 +513,7 @@ spec:
 <br>
 
 
-### spec.retention
+### .spec.retention
 
 Prometheusのローカルストレージの保持期間を設定する。
 
@@ -533,7 +533,7 @@ spec:
 
 <br>
 
-### spec.remoteWrite
+### .spec.remoteWrite
 
 リモート書き込み先を設定する。
 
@@ -557,7 +557,7 @@ spec:
 
 <br>
 
-### spec.storage
+### .spec.storage
 
 ローカルストレージを設定する。
 
@@ -635,7 +635,7 @@ spec:
 
 <br>
 
-### spec.groups
+### .spec.groups
 
 #### ▼ groupsとは
 
@@ -763,7 +763,7 @@ spec:
 
 <br>
 
-### spec.endpoints
+### .spec.endpoints
 
 #### ▼ endpointsとは
 
@@ -862,7 +862,7 @@ spec:
 
 <br>
 
-### spec.namespaceSelector
+### .spec.namespaceSelector
 
 #### ▼ namespaceSelector
 
@@ -918,7 +918,7 @@ metadata:
 
 <br>
 
-### spec.selector
+### .spec.selector
 
 #### ▼ matchLabels
 

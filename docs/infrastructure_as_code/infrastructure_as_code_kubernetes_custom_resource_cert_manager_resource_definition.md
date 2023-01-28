@@ -48,7 +48,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/cert-manager -
 
 <br>
 
-### spec.secretName
+### .spec.secretName
 
 #### ▼ secretNameとは
 
@@ -91,7 +91,7 @@ spec:
 
 <br>
 
-### spec.dnsNames
+### .spec.dnsNames
 
 #### ▼ dnsNamesとは
 
@@ -113,7 +113,7 @@ spec:
 
 <br>
 
-### spec.issuerRef
+### .spec.issuerRef
 
 #### ▼ issuerRefとは
 
@@ -150,7 +150,7 @@ spec:
 
 <br>
 
-### spec.request
+### .spec.request
 
 #### ▼ request
 
@@ -169,7 +169,7 @@ spec:
 
 <br>
 
-### spec.isCA
+### .spec.isCA
 
 #### ▼ isCAとは
 
@@ -188,7 +188,7 @@ spec:
 
 <br>
 
-### spec.usages
+### .spec.usages
 
 #### ▼ usagesとは
 
@@ -212,7 +212,7 @@ spec:
 
 <br>
 
-### spec.duration
+### .spec.duration
 
 #### ▼ durationとは
 
@@ -231,7 +231,7 @@ spec:
 
 <br>
 
-### spec.issuerRef
+### .spec.issuerRef
 
 #### ▼ issuerRefとは
 
@@ -262,7 +262,7 @@ spec:
 
 <br>
 
-### spec.acme
+### .spec.acme
 
 #### ▼ acmeとは
 
@@ -358,7 +358,7 @@ spec:
 
 <br>
 
-### spec.ca
+### .spec.ca
 
 #### ▼ secretName
 

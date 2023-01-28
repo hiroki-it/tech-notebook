@@ -84,7 +84,6 @@ include:
 
 
 
-> ℹ️ 参考：https://www.serversus.work/topics/927zjvmew2491o2n1oob/
 
 ```yaml
 bar_job:
@@ -92,6 +91,9 @@ bar_job:
     paths:
       - ./node_module
 ```
+
+> ℹ️ 参考：https://www.serversus.work/topics/927zjvmew2491o2n1oob/
+
 
 <br>
 

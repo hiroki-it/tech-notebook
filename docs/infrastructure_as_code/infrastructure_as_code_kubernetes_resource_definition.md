@@ -456,7 +456,7 @@ status:
 
 ## 02. APIService
 
-### spec.group
+### .spec.group
 
 #### ▼ groupとは
 
@@ -477,7 +477,7 @@ spec:
 
 <br>
 
-### spec.groupPriorityMinimum
+### .spec.groupPriorityMinimum
 
 #### ▼ groupPriorityMinimumとは
 
@@ -497,7 +497,7 @@ spec:
 <br>
 
 
-### spec.insecureSkipTLSVerify
+### .spec.insecureSkipTLSVerify
 
 #### ▼ insecureSkipTLSVerifyとは
 
@@ -517,7 +517,7 @@ spec:
 <br>
 
 
-### spec.service
+### .spec.service
 
 #### ▼ serviceとは
 
@@ -542,7 +542,7 @@ spec:
 <br>
 
 
-### spec.version
+### .spec.version
 
 #### ▼ versionとは
 
@@ -565,7 +565,7 @@ spec:
 
 <br>
 
-### spec.versionPriority
+### .spec.versionPriority
 
 #### ▼ versionPriorityとは
 
@@ -590,7 +590,7 @@ spec:
 
 ## 03. CertificateSigningRequest
 
-### spec.request
+### .spec.request
 
 #### ▼ requestとは
 
@@ -958,7 +958,7 @@ data:
 
 ## 06. CronJob
 
-### spec.jobTemplate
+### .spec.jobTemplate
 
 #### ▼ jobTemplateとは
 
@@ -988,7 +988,7 @@ spec:
 
 <br>
 
-### spec.failedJobsHistoryLimit
+### .spec.failedJobsHistoryLimit
 
 #### ▼ failedJobsHistoryLimitとは
 
@@ -1007,7 +1007,7 @@ spec:
 
 <br>
 
-### spec.schedule
+### .spec.schedule
 
 #### ▼ scheduleとは
 
@@ -1026,7 +1026,7 @@ spec:
 
 <br>
 
-### spec.successfulJobsHistoryLimit
+### .spec.successfulJobsHistoryLimit
 
 #### ▼ successfulJobsHistoryLimitとは
 
@@ -1047,7 +1047,7 @@ spec:
 
 ## 07. Deployment
 
-### spec.replicas
+### .spec.replicas
 
 #### ▼ replicasとは
 
@@ -1084,7 +1084,7 @@ spec:
 
 <br>
 
-### spec.revisionHistoryLimit
+### .spec.revisionHistoryLimit
 
 #### ▼ revisionHistoryLimitとは
 
@@ -1116,7 +1116,7 @@ spec:
 
 <br>
 
-### spec.selector
+### .spec.selector
 
 #### ▼ selectorとは
 
@@ -1153,7 +1153,7 @@ spec:
 
 <br>
 
-### spec.strategy
+### .spec.strategy
 
 #### ▼ strategyとは
 
@@ -1228,7 +1228,7 @@ spec:
 
 <br>
 
-### spec.template
+### .spec.template
 
 #### ▼ templateとは（設定項目はPodと同じ）
 
@@ -1268,7 +1268,7 @@ spec:
 
 ## 08. EndpointSlice
 
-### spec.endpoints
+### .spec.endpoints
 
 #### ▼ endpointsとは
 
@@ -1366,7 +1366,7 @@ endpoints:
 
 <br>
 
-### spec.ports
+### .spec.ports
 
 #### ▼ portsとは
 
@@ -1422,7 +1422,7 @@ spec:
 
 ## 10. HorizontalPodAutoscaler
 
-### spec.maxReplicas、spec.minReplicas
+### .spec.maxReplicas、spec.minReplicas
 
 #### ▼ maxReplicas、minReplicas、とは
 
@@ -1444,7 +1444,7 @@ spec:
 
 <br>
 
-### spec.metrics
+### .spec.metrics
 
 #### ▼ metricsとは
 
@@ -1488,7 +1488,7 @@ spec:
 <br>
 
 
-### spec.scaleTargetRef
+### .spec.scaleTargetRef
 
 #### ▼ scaleTargetRefとは
 
@@ -1524,7 +1524,7 @@ spec:
 
 <br>
 
-### spec.ingressClassName
+### .spec.ingressClassName
 
 #### ▼ ingressClassNameとは
 
@@ -1548,7 +1548,7 @@ spec:
 
 <br>
 
-### spec.hosts
+### .spec.hosts
 
 #### ▼ hosts
 
@@ -1568,7 +1568,7 @@ spec:
 <br>
 
 
-### spec.rules
+### .spec.rules
 
 #### ▼ rulesとは
 
@@ -1580,7 +1580,7 @@ Ingressを使用する場合、ルーティング先のServiceは、ClusterIP Se
 
 > ℹ️ 参考：https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
-#### ▼ spec.rules[].host
+#### ▼ .spec.rules[].host
 
 
 ホストベースルーティングの判定に使用するパス名を設定する。
@@ -1602,7 +1602,7 @@ spec:
 ```
 
 
-#### ▼ spec.rules[].http.paths[].path
+#### ▼ .spec.rules[].http.paths[].path
 
 パスベースルーティングの判定に使用するパス名を設定する。
 
@@ -1626,7 +1626,7 @@ spec:
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
 
 
-#### ▼ spec.rules[].http.paths[].pathType
+#### ▼ .spec.rules[].http.paths[].pathType
 
 パスベースルーティング判定時のルールの厳しさを設定する。
 
@@ -1658,7 +1658,7 @@ spec:
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
 
-#### ▼ spec.rules[].http.paths[].backend
+#### ▼ .spec.rules[].http.paths[].backend
 
 
 ルーティング先のServiceを設定する。
@@ -1696,7 +1696,7 @@ spec:
 
 ## 12. IngressClass
 
-### spec.controller
+### .spec.controller
 
 #### ▼ controllerとは
 
@@ -1753,7 +1753,7 @@ spec:
 
 <br>
 
-### spec.parameters
+### .spec.parameters
 
 #### ▼ parametersとは
 
@@ -1817,7 +1817,7 @@ spec:
 
 ## 14. Job
 
-### spec.activeDeadlineSeconds
+### .spec.activeDeadlineSeconds
 
 #### ▼ activeDeadlineSecondsとは
 
@@ -1842,7 +1842,7 @@ spec:
 
 <br>
 
-### spec.backoffLimit
+### .spec.backoffLimit
 
 #### ▼ backoffLimitとは
 
@@ -1861,7 +1861,7 @@ spec:
 
 <br>
 
-### spec.parallelism
+### .spec.parallelism
 
 #### ▼ parallelismとは
 
@@ -1869,7 +1869,6 @@ spec:
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling-parallelism
 
 ```yaml
 apiVersion: batch/v1
@@ -1880,9 +1879,12 @@ spec:
   parallelism: 3
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling-parallelism
+
+
 <br>
 
-### spec.template
+### .spec.template
 
 #### ▼ templateとは
 
@@ -1890,7 +1892,6 @@ spec:
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template
 
 ```yaml
 apiVersion: batch/v1
@@ -1908,20 +1909,17 @@ spec:
       restartPolicy: OnFailure
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template
+
+
 <br>
 
-### spec.ttlSecondsAfterFinished
+### .spec.ttlSecondsAfterFinished
 
 #### ▼ ttlSecondsAfterFinishedとは
 
 Jobが成功/失敗した後にJob自体を削除する場合に、その秒数を設定する。
 
-
-
-> ℹ️ 参考：
-> 
-> - https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically
-> - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
 
 ```yaml
 apiVersion: batch/v1
@@ -1931,6 +1929,14 @@ metadata:
 spec:
   ttlSecondsAfterFinished: 30
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically
+> - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
+
 
 <br>
 
@@ -1942,7 +1948,7 @@ Kubernetesの実行時に自動的に作成される。もし手動で作成す�
 
 ## 16. PersistentVolume
 
-### spec.accessModes
+### .spec.accessModes
 
 #### ▼ accessModesとは
 
@@ -2015,7 +2021,7 @@ spec:
 
 <br>
 
-### spec.capacity
+### .spec.capacity
 
 #### ▼ capacityとは
 
@@ -2039,7 +2045,7 @@ spec:
 
 <br>
 
-### spec.hostPath
+### .spec.hostPath
 
 #### ▼ hostPathとは
 
@@ -2088,13 +2094,10 @@ spec:
 
 <br>
 
-### spec.initContainers
+### .spec.initContainers
 
 ```.spec.containers```キーで設定したコンテナよりも先に起動するコンテナ（InitContainer）を設定する。
 
-
-
-> ℹ️ 参考：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
 
 ```yaml
 apiVersion: v1
@@ -2122,9 +2125,12 @@ spec:
 ```
 
 
+> ℹ️ 参考：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
+
+
 <br>
 
-### spec.local
+### .spec.local
 
 #### ▼ localとは
 
@@ -2159,7 +2165,7 @@ spec:
 
 <br>
 
-### spec.mountOptions
+### .spec.mountOptions
 
 #### ▼ mountOptionsとは
 
@@ -2179,7 +2185,7 @@ spec:
 
 <br>
 
-### spec.nfs
+### .spec.nfs
 
 #### ▼ nfsとは
 
@@ -2212,7 +2218,7 @@ spec:
 
 <br>
 
-### spec.nodeAffinity
+### .spec.nodeAffinity
 
 #### ▼ nodeAffinityとは
 
@@ -2254,7 +2260,7 @@ spec:
 
 <br>
 
-### spec.persistentVolumeReclaimPolicy
+### .spec.persistentVolumeReclaimPolicy
 
 #### ▼ persistentVolumeReclaimPolicyとは
 
@@ -2331,7 +2337,7 @@ spec:
 
 <br>
 
-### spec.storageClassName
+### .spec.storageClassName
 
 #### ▼ storageClassNameとは
 
@@ -2368,7 +2374,7 @@ spec:
 
 ## 17. PersistentVolumeClaim
 
-### spec.accessModes
+### .spec.accessModes
 
 #### ▼ accessModesとは
 
@@ -2390,7 +2396,7 @@ spec:
 
 <br>
 
-### spec.resources
+### .spec.resources
 
 #### ▼ resourcesとは
 
@@ -2419,7 +2425,7 @@ spec:
 
 <br>
 
-### spec.storageClassName
+### .spec.storageClassName
 
 #### ▼ storageClassNameとは
 
@@ -2446,7 +2452,7 @@ spec:
 
 ## 18. Pod
 
-### spec.affinity
+### .spec.affinity
 
 #### ▼ affinityとは
 
@@ -2642,7 +2648,7 @@ spec:
 
 <br>
 
-### spec.containers
+### .spec.containers
 
 #### ▼ containersとは
 
@@ -2914,7 +2920,7 @@ spec:
 
 <br>
 
-### spec.enableServiceLinks
+### .spec.enableServiceLinks
 
 #### ▼ enableServiceLinks
 
@@ -2938,7 +2944,7 @@ spec:
 
 <br>
 
-### spec.hostname
+### .spec.hostname
 
 #### ▼ hostnameとは
 
@@ -2966,7 +2972,7 @@ spec:
 
 <br>
 
-### spec.hostNetwork
+### .spec.hostNetwork
 
 #### ▼ hostNetworkとは
 
@@ -2988,7 +2994,7 @@ spec:
 
 <br>
 
-### spec.imagePullSecrets
+### .spec.imagePullSecrets
 
 #### ▼ imagePullSecretsとは
 
@@ -3023,7 +3029,7 @@ spec:
 
 <br>
 
-### spec.livenessProbe
+### .spec.livenessProbe
 
 #### ▼ livenessProbeとは
 
@@ -3106,7 +3112,7 @@ spec:
 
 <br>
 
-### spec.nodeSelector
+### .spec.nodeSelector
 
 kube-schedulerがPodをスケジューリングするNodeを設定する。
 
@@ -3131,7 +3137,7 @@ spec:
 
 <br>
 
-### spec.readinessProbe
+### .spec.readinessProbe
 
 #### ▼ readinessProbeとは
 
@@ -3209,7 +3215,7 @@ spec:
 
 <br>
 
-### spec.restartPolicy
+### .spec.restartPolicy
 
 #### ▼ restartPolicyとは
 
@@ -3273,7 +3279,7 @@ spec:
 
 <br>
 
-### spec.serviceAccountName
+### .spec.serviceAccountName
 
 #### ▼ serviceAccountNameとは
 
@@ -3299,7 +3305,7 @@ spec:
 
 <br>
 
-### spec.terminationGracePeriodSeconds
+### .spec.terminationGracePeriodSeconds
 
 #### ▼ terminationGracePeriodSecondsとは
 
@@ -3328,7 +3334,7 @@ spec:
 
 <br>
 
-### spec.topologySpreadConstraints
+### .spec.topologySpreadConstraints
 
 #### ▼ topologySpreadConstraintsとは
 
@@ -3417,7 +3423,7 @@ spec:
 
 <br>
 
-### spec.volumes
+### .spec.volumes
 
 #### ▼ volumesとは
 
@@ -3708,7 +3714,7 @@ spec:
 
 ## 19. PodDisruptionBudget
 
-### spec.maxUnavailable
+### .spec.maxUnavailable
 
 対象のPodを新しいNodeでスケジューリングする時に、既存のNodeで削除できるPodの最大数を設定する。
 
@@ -3730,7 +3736,7 @@ spec:
 
 <br>
 
-### spec.minAvailable
+### .spec.minAvailable
 
 対象のPodを新しいNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。
 
@@ -3759,7 +3765,7 @@ spec:
 
 <br>
 
-### spec.selector
+### .spec.selector
 
 対象のPodを設定する。
 
@@ -4208,7 +4214,7 @@ data:
 
 ## 24. Service
 
-### spec.ports
+### .spec.ports
 
 #### ▼ portsとは
 
@@ -4418,7 +4424,7 @@ spec:
 
 <br>
 
-### spec.selector
+### .spec.selector
 
 インバウンド通信の転送先とするPodの```.metadata.labels```キー名と値を設定する。
 
@@ -4440,7 +4446,7 @@ spec:
 
 <br>
 
-### spec.type
+### .spec.type
 
 #### ▼ typeとは
 
@@ -4586,7 +4592,7 @@ imagePullSecrets:
 
 ## 26. StatefulSet
 
-### spec.serviceName
+### .spec.serviceName
 
 #### ▼ serviceNameとは
 
@@ -4637,7 +4643,7 @@ spec:
 
 <br>
 
-### spec.template（設定項目はPodと同じ）
+### .spec.template（設定項目はPodと同じ）
 
 #### ▼ templateとは
 
@@ -4698,7 +4704,7 @@ spec:
             storage: 2Gi
 ```
 
-### spec.volumeClaimTemplates
+### .spec.volumeClaimTemplates
 
 #### ▼ volumeClaimTemplatesとは
 

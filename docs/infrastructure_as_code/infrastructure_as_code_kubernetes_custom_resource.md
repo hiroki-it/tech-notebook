@@ -93,7 +93,7 @@ the server could not find the requested resource
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
 > - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
 
-### apiVersion
+### .apiVersion
 
 カスタムリソース定義自体のAPIグループの名前を設定する。
 
@@ -105,7 +105,7 @@ apiVersion: apiextensions.k8s.io/v1
 
 <br>
 
-### metadata
+### .metadata
 
 #### ▼ name
 
@@ -120,7 +120,7 @@ metadata:
 
 <br>
 
-### spec.group
+### .spec.group
 
 #### ▼ groupとは
 
@@ -147,7 +147,7 @@ spec:
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
-### spec.scope
+### .spec.scope
 
 #### ▼ scopeとは
 
@@ -172,7 +172,7 @@ spec:
 
 <br>
 
-### spec.names
+### .spec.names
 
 #### ▼ namesとは
 

@@ -276,7 +276,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 <br>
 
-### spec.ignoreDifferences
+### .spec.ignoreDifferences
 
 #### ▼ ignoreDifferencesとは
 
@@ -296,7 +296,7 @@ spec:
     - group: apps
       kind: Deployment
       jsonPointers:
-        # spec.replicas（インスタンス数）の設定値の変化を無視する。
+        # .spec.replicas（インスタンス数）の設定値の変化を無視する。
         - /spec/replicas
     - group: autoscaling
       kind: HorizontalPodAutoscaler
@@ -343,7 +343,7 @@ spec:
 
 <br>
 
-### spec.project
+### .spec.project
 
 #### ▼ projectとは
 
@@ -384,7 +384,7 @@ spec:
 
 <br>
 
-### spec.source
+### .spec.source
 
 #### ▼ sourceとは
 
@@ -403,7 +403,7 @@ spec:
 
 <br>
 
-### spec.source（マニフェストリポジトリの場合）
+### .spec.source（マニフェストリポジトリの場合）
 
 #### ▼ directory
 
@@ -536,7 +536,7 @@ spec:
 
 <br>
 
-### spec.source（チャートレジストリ内リポジトリの場合）
+### .spec.source（チャートレジストリ内リポジトリの場合）
 
 #### ▼ chart
 
@@ -770,7 +770,7 @@ spec:
 
 <br>
 
-### spec.source（OCIレジストリ内リポジトリの場合）
+### .spec.source（OCIレジストリ内リポジトリの場合）
 
 #### ▼ chart
 
@@ -824,7 +824,7 @@ spec:
 <br>
 
 
-### spec.destination
+### .spec.destination
 
 #### ▼ destinationとは
 
@@ -883,7 +883,7 @@ spec:
 
 <br>
 
-### spec.syncPolicy
+### .spec.syncPolicy
 
 #### ▼ syncPolicyとは
 
@@ -1116,7 +1116,7 @@ spec:
 
 ## 05. Rollout
 
-### spec.analysis
+### .spec.analysis
 
 #### ▼ analysisとは
 
@@ -1154,7 +1154,7 @@ spec:
 
 <br>
 
-### spec.strategy
+### .spec.strategy
 
 #### ▼ strategyとは
 
@@ -1248,7 +1248,7 @@ spec:
 
 ## 06 Workflow
 
-### spec.entrypoint
+### .spec.entrypoint
 
 #### ▼ entrypointとは
 
@@ -1270,7 +1270,7 @@ spec:
 
 <br>
 
-### spec.templates
+### .spec.templates
 
 #### ▼ templatesとは
 
@@ -1300,7 +1300,7 @@ spec:
 
 <br>
 
-### spec.workflowTemplateRef
+### .spec.workflowTemplateRef
 
 #### ▼ workflowTemplateRefとは
 
@@ -1324,7 +1324,7 @@ spec:
 
 ## 07. WorkflowTemplate
 
-### spec.templates
+### .spec.templates
 
 #### ▼ templatesとは
 
@@ -1508,7 +1508,7 @@ metadata:
 data:
   resource.customizations.ignoreDifferences.all: |
     jsonPointers:
-      # spec.replicas（インスタンス数）の設定値の変化を無視する。
+      # .spec.replicas（インスタンス数）の設定値の変化を無視する。
       - /spec/replicas
     jqPathExpressions:
       # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
@@ -1928,7 +1928,7 @@ subjects:
 
 ## 12. 専用Job
 
-### metadata
+### .metadata
 
 #### ▼ generateName
 
@@ -1936,7 +1936,6 @@ subjects:
 
 
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
 
 ```yaml
 apiVersion: batch/v1
@@ -1947,9 +1946,12 @@ metadata:
   generateName: foo-hook
 ```
 
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+
+
 <br>
 
-### metadata.annotations
+### .metadata.annotations
 
 #### ▼ argocd.argoproj.io/hook
 
@@ -1981,11 +1983,6 @@ metadata:
 優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
 
 
-
-> ℹ️ 参考：
->
-> - https://weseek.co.jp/tech/95/
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
 
 ```yaml
 apiVersion: batch/v1
@@ -2019,6 +2016,13 @@ metadata:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/sync-wave: 1 # 優先度1
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://weseek.co.jp/tech/95/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
+
 
 <br>
 

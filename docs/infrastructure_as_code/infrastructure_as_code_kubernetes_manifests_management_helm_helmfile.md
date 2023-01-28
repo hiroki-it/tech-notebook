@@ -37,10 +37,6 @@ description: Helmfile＠Helmの知見を記録しています。
 
 各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにリリース単位の```helmfile.d```ファイルを置く。
 
-
-
-> ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
-
 ```yaml
 repository/
 ├── foo/ # fooサービス
@@ -73,6 +69,9 @@ repository/
 ├── bar/ # barサービス
 └── baz/ # bazサービス
 ```
+
+> ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
+
 
 <br>
 
@@ -298,14 +297,12 @@ releases:
 
 Helmの実行時に複合化するSecretのファイルを設定する。
 
-
-
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
-
 ```yaml
 secrets:
   - ./foo-secrets.yaml
 ```
+
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
 
 <br>
 
@@ -349,11 +346,15 @@ releases:
 
 <br>
 
-## 04. Helmfile限定の関数
+## 04. Helmfile固有の関数
 
 ### readFile
 
+#### ▼ readFileとは
+
 テキストファイルを想定パスで読み込み、レンダリングする。
+
+一行目に空行が入ることに注意する。
 
 ```yaml
 apiVersion: v1
@@ -363,7 +364,39 @@ metadata:
 data:
   policy.csv: |
     {{ readFile ./policy.csv | nindent 4 }}
+
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: foo-configmap
+# data:
+#   policy.csv: |
+#     
+#     foo, bar, baz
 ```
+
+#### ▼ 空行を挿入したくない
+
+空行を挿入したくない場合、```readFile```関数で出力できないようにする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-configmap
+data:
+  policy.csv: | {{ readFile ./policy.csv | nindent 4 }}
+
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: foo-configmap
+# data:
+#   policy.csv: |
+#     foo, bar, baz
+```
+
+> ℹ️ 参考：https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
 
 
 <br>

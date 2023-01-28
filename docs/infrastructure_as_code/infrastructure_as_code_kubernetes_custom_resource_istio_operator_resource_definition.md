@@ -86,7 +86,7 @@ $ helm install <リリース名> manifests/charts/istio-operator -n istio-operat
 
 ## 02. metadata
 
-### metadata.name
+### .metadata.name
 
 リソース名は```istio-operator```とする必要がある。
 
@@ -103,7 +103,7 @@ metadata:
 
 ## 03. spec
 
-### spec.component
+### .spec.component
 
 #### ▼ componentとは
 
@@ -377,7 +377,7 @@ spec:
 
 <br>
 
-### spec.defaultRevision
+### .spec.defaultRevision
 
 #### ▼ defaultRevisionとは
 
@@ -395,7 +395,7 @@ spec:
 
 <br>
 
-### spec.hub
+### .spec.hub
 
 #### ▼ hubとは
 
@@ -415,7 +415,7 @@ spec:
 
 <br>
 
-### spec.meshConfig
+### .spec.meshConfig
 
 #### ▼ meshConfigとは
 
@@ -597,7 +597,7 @@ spec:
 
 <br>
 
-### spec.namespace
+### .spec.namespace
 
 #### ▼ namespaceとは
 
@@ -619,7 +619,7 @@ spec:
 
 <br>
 
-### spec.profile
+### .spec.profile
 
 #### ▼ profileとは
 
@@ -643,7 +643,7 @@ spec:
 
 <br>
 
-### spec.revision
+### .spec.revision
 
 #### ▼ revisionとは
 
@@ -670,7 +670,7 @@ spec:
 
 <br>
 
-### spec.tag
+### .spec.tag
 
 #### ▼ tagとは
 
@@ -695,7 +695,7 @@ spec:
 
 <br>
 
-### spec.values
+### .spec.values
 
 #### ▼ valuesとは
 

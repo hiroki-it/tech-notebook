@@ -194,7 +194,7 @@ spec:
 
 ## 03. 共通設定
 
-### apiVersion
+### .apiVersion
 
 Istio-APIのバージョンを設定する。
 
@@ -206,7 +206,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-### kind
+### .kind
 
 作成するIstioリソースを設定する。
 
@@ -218,15 +218,14 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-### metadata
+### .metadata
+
+#### ▼ metadataとは
 
 Istioリソースの一意に識別するための情報を設定する。
 
 
-
-<br>
-
-### namespace
+#### ▼ namespace
 
 Istioリソースを作成するNamespaceを設定する。デフォルトで```istio-system```になる。
 
@@ -480,7 +479,7 @@ spec:
 
 ## 05. DestinationRule
 
-### spec.exportTo
+### .spec.exportTo
 
 #### ▼ exportToとは
 
@@ -532,7 +531,7 @@ spec:
 
 <br>
 
-### spec.host
+### .spec.host
 
 インバウンド通信のルーティング元とするServiceの名前を設定する。
 
@@ -556,7 +555,7 @@ spec:
 
 <br>
 
-### spec.subsets
+### .spec.subsets
 
 #### ▼ subsetsとは
 
@@ -596,7 +595,7 @@ spec:
 
 <br>
 
-### spec.trafficPolicy
+### .spec.trafficPolicy
 
 #### ▼ connectionPool
 
@@ -760,7 +759,7 @@ spec:
 
 ## 06. EnvoyFilter
 
-### spec.configPatches
+### .spec.configPatches
 
 #### ▼ applyTo
 
@@ -936,7 +935,7 @@ spec:
 
 ## 07. Gateway
 
-### spec.selector
+### .spec.selector
 
 #### ▼ selectorとは
 
@@ -961,7 +960,7 @@ spec:
 
 <br>
 
-### spec.servers
+### .spec.servers
 
 #### ▼ port.name
 
@@ -1147,7 +1146,7 @@ spec:
 
 ## 08. PeerAuthentication
 
-### spec.mtls
+### .spec.mtls
 
 #### ▼ mtls
 
@@ -1195,7 +1194,7 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 ## 09. ServiceEntry
 
-### spec.hosts
+### .spec.hosts
 
 #### ▼ hostsとは
 
@@ -1217,7 +1216,7 @@ spec:
 
 <br>
 
-### spec.ports
+### .spec.ports
 
 #### ▼ portsとは
 
@@ -1244,7 +1243,7 @@ spec:
 
 <br>
 
-### spec.resolution
+### .spec.resolution
 
 #### ▼ resolutionとは
 
@@ -1267,7 +1266,7 @@ spec:
 
 ## 10. VirtualService
 
-### spec.exportTo
+### .spec.exportTo
 
 #### ▼ exportToとは
 
@@ -1319,7 +1318,7 @@ spec:
 
 <br>
 
-### spec.gateways
+### .spec.gateways
 
 #### ▼ gatewaysとは
 
@@ -1371,7 +1370,7 @@ spec:
 
 <br>
 
-### spec.http
+### .spec.http
 
 #### ▼ httpとは
 
@@ -1614,7 +1613,7 @@ spec:
 
 <br>
 
-### spec.tcp
+### .spec.tcp
 
 #### ▼ tcpとは
 
