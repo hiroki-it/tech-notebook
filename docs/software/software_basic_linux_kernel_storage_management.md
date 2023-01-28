@@ -161,12 +161,6 @@ Linuxの場合、```/dev/xvda1```をルートディレクトリにマウント�
 ```Filesystem```列にパーティション、```Mounted on```列にパーティションに対応するマウントポイント、が表示される。
 
 
-
-> ℹ️ 参考：
-> 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
-> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html
-
 ```bash
 $ df
 
@@ -193,6 +187,13 @@ tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
 tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 ```
 
+
+
+
+> ℹ️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html
 
 #### ▼ Windowsの場合
 

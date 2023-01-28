@@ -81,11 +81,6 @@ $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 
 
 
-> ℹ️ 参考：
->
-> - https://helmfile.readthedocs.io/en/latest/#apply
-> - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
-
 ```bash
 $ helmfile -e prd apply
 
@@ -106,6 +101,11 @@ NAME                CHART                VERSION
 foo-release         ./charts/foo         0.0.1
 ```
 
+> ℹ️ 参考：
+>
+> - https://helmfile.readthedocs.io/en/latest/#apply
+> - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+
 <br>
 
 ### destroy
@@ -115,12 +115,12 @@ foo-release         ./charts/foo         0.0.1
 インストール済みの全てのチャートをアンインストールする。
 
 
-
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
-
 ```bash
 $ helmfile -e prd destroy
 ```
+
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
+
 
 <br>
 

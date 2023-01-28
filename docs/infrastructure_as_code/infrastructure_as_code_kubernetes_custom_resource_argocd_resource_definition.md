@@ -1382,11 +1382,13 @@ spec:
 
 ### セットアップ
 
-> ℹ️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
 
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
 ```
+
+> ℹ️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
+
 
 <br>
 

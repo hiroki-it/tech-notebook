@@ -227,7 +227,6 @@ const nuxtConfig: Configuration = {
 
 
 
-> ℹ️ 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
 
 ```bash
 $ npm install @nuxtjs/dotenv
@@ -262,6 +261,9 @@ const nuxtConfig: Configuration = {
   // プロパティ
 }
 ```
+
+> ℹ️ 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
+
 
 <br>
 

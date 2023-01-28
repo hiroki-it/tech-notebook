@@ -57,12 +57,6 @@ OSが起動している間、メモリ上のアドレス空間の区画に恒常
 プロセスIDが```1```のプロセスが、全てのプロセスの親である。
 
 
-
-> ℹ️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
-
 ```bash
 # MacOSの場合
 $ ps -p 1
@@ -70,6 +64,14 @@ $ ps -p 1
 PID  TTY  TIME     CMD
   1  ??   9:23.33  /sbin/launchd
 ```
+
+
+
+
+> ℹ️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
 
 #### ▼ 同時処理できるリクエスト数
 

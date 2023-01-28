@@ -312,9 +312,6 @@ $ brew install speedtest-cli
 SPEEDTESTのAPIを使用して、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
 
 
-
-> ℹ️ 参考：https://www.speedtest.net/ja
-
 ```bash
 $ speedtest-cli
 
@@ -324,6 +321,9 @@ Download: 168.61 Mbit/s # ダウンロード速度
 Testing upload 
 Upload: 182.00 Mbit/s # アップロード速度
 ```
+
+> ℹ️ 参考：https://www.speedtest.net/ja
+
 
 <br>
 
@@ -359,17 +359,19 @@ $ yum install -y tcpdump
 
 
 
-> ℹ️ 参考：
->
-> - http://blog.livedoor.jp/sonots/archives/18239717.html
-> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
-> - https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html
-
 ```bash
 $ tcpdump
 
 [時間] IP [送信元IPアドレス].[シーケンス番号] > [宛先サーバー].[ポート番号]: [パケットの説明]
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - http://blog.livedoor.jp/sonots/archives/18239717.html
+> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
+> - https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html
 
 インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。
 
@@ -427,11 +429,13 @@ $ tcpdump icmp -i eth0
 
 指定したネットワークインターフェースにて、パケットの内容を取得する。```-i```オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。
 
-> ℹ️ 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
 ```bash
 $ tcpdump -i eth0
 ```
+
+> ℹ️ 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
+
 
 <br>
 

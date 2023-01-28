@@ -227,11 +227,6 @@ $ cat data.json | jq '.'"$KEY_NAME"'[]'
 
 
 
-> ℹ️ 参考：
->
-> - https://stedolan.github.io/jq/manual/#select(boolean_expression)
-> - https://qiita.com/kenyabe/items/29b7c615c4b6634a388e
-
 ```bash
 # fooキーを持ち、値がFOOやBAZであるオブジェクトを取得する。
 $ cat list.json | jq '.[] | select (.foo == "FOO" or .foo == "BAZ")' | jq -s '.'
@@ -250,6 +245,11 @@ $ cat list.json | jq '.[] | select (.foo == "FOO" or .foo == "BAZ")' | jq -s '.'
   },
 ]
 ```
+
+> ℹ️ 参考：
+>
+> - https://stedolan.github.io/jq/manual/#select(boolean_expression)
+> - https://qiita.com/kenyabe/items/29b7c615c4b6634a388e
 
 <br>
 

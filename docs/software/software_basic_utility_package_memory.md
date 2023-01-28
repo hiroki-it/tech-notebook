@@ -531,11 +531,13 @@ WantedBy=multi-user.target
 
 
 
-> ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
 
 ```bash
 $ systemctl daemon-reload
 ```
+
+> ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
+
 
 #### ▼ disable
 

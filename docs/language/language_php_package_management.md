@@ -505,14 +505,16 @@ $ composer install -vvv
 
 
 
+
+```bash
+$ composer remove <パッケージ名>
+```
+
 > ℹ️ 参考：
 >
 > - https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/
 > - https://getcomposer.org/doc/03-cli.md#remove
 
-```bash
-$ composer remove <パッケージ名>
-```
 
 <br>
 

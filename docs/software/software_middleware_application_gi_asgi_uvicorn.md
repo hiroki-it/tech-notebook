@@ -49,7 +49,6 @@ CMD ["uvicorn", "main:app", "--reload", "--port", "8000"]
 
 アプリケーションのエントリーポイントを```python```コマンドで直接的に指定する場合、Uvicornを実行できるように、uvicornパッケージの```run```関数をエントリーポイントで実行する。ただし、他の```.py```ファイルからエントリーポイントを読み込んだ場合（```from main import app```）に、Uvicornを再実行する必要はないため、『```__name__ == "__main__"```』内にこれを実行する。
 
-> ℹ️ 参考：https://www.uvicorn.org/deployment/#running-programmatically
 
 ```bash
 $ python main.py
@@ -67,6 +66,9 @@ if __name__ == "__main__":
     # または、uvicorn.run("main:app", host="0.0.0.0", port=8000)
     uvicorn.run(app, host="0.0.0.0", port=8000)
 ```
+
+> ℹ️ 参考：https://www.uvicorn.org/deployment/#running-programmatically
+
 
 <br>
 

@@ -183,13 +183,6 @@ $ terraform apply foo.tfplan
 もしプロバイダーをアップグレードした場合は、新バージョンのインストールするために、本コマンドを実行する必要がある。
 
 
-
-> ℹ️ 参考：
->
-> - https://spacelift.io/blog/terraform-init
-> - https://reboooot.net/post/what-is-terraform/
-> - https://www.terraform.io/cli/commands/init#usage
-
 ```bash
 Initializing provider plugins...
 - Reusing previous version of hashicorp/aws from the dependency lock file
@@ -201,6 +194,12 @@ Initializing provider plugins...
 - Installing foo/bar v2.3.0...
 - Installed foo/bar v2.3.0 (signed by a HashiCorp partner, key ID *****)
 ```
+
+> ℹ️ 参考：
+>
+> - https://spacelift.io/blog/terraform-init
+> - https://reboooot.net/post/what-is-terraform/
+> - https://www.terraform.io/cli/commands/init#usage
 
 #### ▼ -backend=false
 
@@ -421,10 +420,6 @@ your Terraform state and will henceforth be managed by Terraform.
 
 
 
-> ℹ️ 参考：
-> 
-> - https://www.terraform.io/cli/commands/output
-> - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
 
 ```bash
 $ terraform output -json
@@ -437,6 +432,12 @@ $ terraform output -json
   }
 }
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://www.terraform.io/cli/commands/output
+> - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
 
 ### plan
 

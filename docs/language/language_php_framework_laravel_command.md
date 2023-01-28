@@ -206,11 +206,13 @@ $ php artisan migrate:reset
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
 ```bash
 $ php artisan migrate:refresh
 ```
+
+> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
+
 
 #### ▼ fresh
 

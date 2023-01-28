@@ -27,11 +27,13 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold
 
 ```bash
 $ skaffold <任意のパラメーター> --verbosity=debug
 ```
+
+> ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold
+
 
 <br>
 
@@ -42,12 +44,11 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 全てのコンテナイメージをビルドする。
 
 
-
-> ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
-
 ```bash
 $ skaffold build
 ```
+
+> ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
 
 #### ▼ --cache-artifacts
 

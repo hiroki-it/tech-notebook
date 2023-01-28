@@ -221,11 +221,6 @@ Helmの構文をバリデーションを実行する。
 
 
 
-> ℹ️ 参考：
->
-> - https://helm.sh/docs/helm/helm_lint/
-> - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
-
 ```bash
 $ helm lint <チャートへのパス>
 
@@ -235,6 +230,13 @@ $ helm lint <チャートへのパス>
 
 1 chart(s) linted, 0 chart(s) failed
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://helm.sh/docs/helm/helm_lint/
+> - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
 
 #### ▼ -f
 

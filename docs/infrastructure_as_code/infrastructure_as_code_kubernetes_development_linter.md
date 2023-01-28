@@ -82,7 +82,6 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨のapiVersionを検出する。
 
-> ℹ️ 参考：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
 
 ```bash
 $ pluto detect-helm - -o wide
@@ -101,6 +100,9 @@ $ helm template foo-chart -f values-prd.yaml | pluto detect-helm - -o wide
 NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0  
 ```
+
+> ℹ️ 参考：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
+
 
 #### ▼ list-versions
 

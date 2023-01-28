@@ -1362,10 +1362,6 @@ minikube  97246 hasegawa   19u  IPv4 *****      0t0  TCP 192.168.64.1:50252 (LIS
 
 
 
-> ℹ️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
-> - https://centossrv.com/lvm-extend.shtml
 
 ```bash
 $ lvdisplay
@@ -1398,6 +1394,12 @@ $ lvdisplay
   Read ahead sectors    0
   Block device          253:1
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
+> - https://centossrv.com/lvm-extend.shtml
 
 <br>
 
@@ -1535,16 +1537,17 @@ $ swapoff /swap_volume
 指定したデバイスファイルを、これに紐づくディレクトリ（マウントポイント）にマウントする。
 
 
+```bash
+$ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
+```
+
+
+
 
 > ℹ️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
-
-```bash
-$ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
-```
-
 
 <br>
 
@@ -1883,10 +1886,7 @@ $ find ./* \
 
 ブロックを使用し、OR条件を定義する。注意点として、```;```を使用して、ブロック内の処理の終了を宣言する必要がある。
 
-> ℹ️ 参考：
-> 
-> - https://www.jh4vaj.com/archives/24778
-> - https://bi.biopapyrus.jp/os/linux/sed.html
+
 
 ```bash
 # MacOSの場合
@@ -1895,6 +1895,10 @@ $ find ./* \
     -type f | xargs sed -i '' -e '/foo/! {/bar/! {/baz/! {/qux/! s/before/after/g;} ;} ;}'
 ```
 
+> ℹ️ 参考：
+>
+> - https://www.jh4vaj.com/archives/24778
+> - https://bi.biopapyrus.jp/os/linux/sed.html
 
 <br>
 
@@ -2365,12 +2369,11 @@ $ unlink <シンボリックリンク名>
 無効なシェルを設定し、ログインできないようにしておく。
 
 
-
-> ℹ️ 参考：https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
-
 ```bash
 $ adduser -s /bin/false foo
 ```
+
+> ℹ️ 参考：https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
 
 <br>
 

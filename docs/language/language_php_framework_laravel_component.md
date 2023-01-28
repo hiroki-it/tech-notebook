@@ -2606,12 +2606,7 @@ return [
 
 
 
-> ℹ️ 参考：
->
-> - https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
-> - https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
-
-```bash
+```yaml
 ( 
   [title] => Array
          (
@@ -2631,6 +2626,13 @@ return [
          )    
 )
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
+> - https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
 <br>
 

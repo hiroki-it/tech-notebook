@@ -43,11 +43,6 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 
 
-> ℹ️ 参考：
->
-> - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
-> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
-
 ```bash
 # ハイフンオプション有り
 $ su - <ユーザー名>
@@ -61,6 +56,13 @@ $ bash --login
 ```bash
 $ ssh
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
+> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
 #### ▼ インタラクティブシェル
 
