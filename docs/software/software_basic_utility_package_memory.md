@@ -378,7 +378,7 @@ $ supervisorctl restart <デーモン名>
 
 #### ▼ update
 
-もし```supervisord.conf```ファイルの設定を変更した場合、これを読み出し直す。
+もし```supervisord.conf```ファイルの設定を変更した場合、これを再読み出しする。
 
 
 

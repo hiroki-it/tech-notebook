@@ -387,7 +387,7 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 
 #### ▼ マネージドNodeグループ
 
-Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。
+Nodeグループ内の各EC2ワーカーNodeと、Nodeグループに紐づくオートスケーリングの設定を、自動的にセットアップする。
 
 オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。
 
@@ -459,7 +459,7 @@ EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプ�
 | EKS 最適化 Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。            |                                                          | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami.html                                                                                |
 | EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |                                                                                                                                                                      |
 | EKS 最適化 Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。             |                                                          |                                                                                                                                                                      |
-| EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。                       |                                                          | ℹ️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
+| EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。                       |                                                          | ℹ️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 
@@ -873,6 +873,61 @@ Fargateを設定する。
 ## 05-02. Nodeグループ（on-Fargate）
 
 調査中...
+
+
+<br>
+
+## 06. アップグレード
+
+### アップグレードとは
+
+EKS Clusterにて、コントロールプレーンとデータプレーンをローリング方式でアップグレードする。
+
+執筆時点（2022/01/28）では、AWSのAPIを介して```updateConfig```値を設定すれば、アップグレード時のサージ数を設定できる。
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
+> - https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateNodegroupConfig.html#API_UpdateNodegroupConfig_RequestSyntax
+
+### 仕組み
+
+#### ▼ データプレーンの場合
+
+EKS Clusterのアップグレード時、以下の仕組みでデータプレーンのワーカーNodeをローリング方式アップグレードする。
+
+また、Nodeグループに紐づくオートスケーリンググループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。
+
+（１）Nodeグループ単位でローリング方式アップグレードできるように、EKS ClusterのワーカーNode数の設定（Node希望数、Node最大数）を自動的に増加させる。
+
+（２）旧ワーカーNodeを残して、新しいAMIを使用したワーカーNodeを作成する。旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。旧ワーカーNodeを残せるのは、あらかじめEKS ClusterのワーカーNode数の設定（Node希望数、Node最大数）を増加させているためである。
+
+（３）各AZで新ワーカーNodeを正しく作成できることを検証する。
+
+（４）AZリバランシングが成功すれば、旧ワーカーNodeでDrainが開始され、Podのスケジューリングが無効化される。
+
+（５）新ワーカーNode上でPodをスケジューリングし直し、旧ワーカーNodeを削除する。
+
+（６）最終的に、アップグレード前のワーカーNode数（Node希望数）に戻る。
+
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#common-scenarios-termination-rebalancing
+
+### 手順
+
+EKS Clusterはおおよそ以下の方法でアップグレードする。
+
+（１）コントロールプレーンNodeをアップグレードする。
+
+（２）ワーカーNodeをアップグレードする。コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAMIを使用して、ワーカーNodeを再作成する。
+
+（３）ワーカーNode上のAWS EKSアドオン（例：eks-code-dnsアドオン、eks-kube-proxyアドオン、eks-vpc-cniアドオン、など）をアップグレードする。
+
+
+> ℹ️ 参考：https://inside.dmm.com/entry/2022/08/26/eks_is_hard
 
 
 <br>

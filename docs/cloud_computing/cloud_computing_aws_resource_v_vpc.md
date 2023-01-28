@@ -305,6 +305,7 @@ DNAT処理を実行し、グローバルIPアドレス（VPC外のIPアドレス
 
 つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、複数のパブリックIPアドレスで送信する。
 
+![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
 
 > ℹ️ 参考：
@@ -312,13 +313,7 @@ DNAT処理を実行し、グローバルIPアドレス（VPC外のIPアドレス
 > - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
-DNATについては、以下のリンクを参考にせよ。
 
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
-
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
 <br>
 
@@ -334,6 +329,7 @@ SNAT処理を実行し、プライベートIPアドレス（VPC内のIPアドレ
 
 この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
 
+![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
 
 > ℹ️ 参考：
@@ -341,13 +337,8 @@ SNAT処理を実行し、プライベートIPアドレス（VPC内のIPアドレ
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
-SNATについては、以下のリンクを参考にせよ。
 
 
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
-
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
 <br>
 
@@ -434,7 +425,7 @@ version account-id   interface-id  srcaddr         dstaddr        srcport       
 
 > ℹ️ 参考：
 > 
-> - https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/flow-logs.html
+> - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 > - https://kikuchitk7.hatenablog.com/entry/2022/03/28/152414
 
 <br>

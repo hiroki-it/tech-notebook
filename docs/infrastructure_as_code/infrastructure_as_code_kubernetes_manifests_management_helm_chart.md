@@ -195,11 +195,13 @@ name: foo
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-types
 
 ```yaml
 type: application
 ```
+
+> ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-types
+
 
 <br>
 
@@ -213,11 +215,13 @@ type: application
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
 
 ```yaml
 version: <バージョンタグ>
 ```
+
+> ℹ️ 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
+
 
 <br>
 

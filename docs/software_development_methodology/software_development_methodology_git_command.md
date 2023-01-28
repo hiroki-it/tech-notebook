@@ -232,7 +232,17 @@ remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHub�
 
 #### ▼ set-url origin
 
-プライベートリポジトリのURLを変更し、プッシュ/プルできるようにする。```config```ファイルに記述されたユーザー名と接続名を設定する。```1```個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。プロジェクトをクローンした時、SSH URLはデフォルトで『```git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git```』となっている。使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『```github.com```』としておく。一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で設定し直す。
+プライベートリポジトリのURLを変更し、プッシュ/プルできるようにする。
+
+```config```ファイルに記述されたユーザー名と接続名を設定する。
+
+```1```個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。
+
+プロジェクトをクローンした時、SSH URLはデフォルトで『```git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git```』となっている。
+
+使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『```github.com```』としておく。
+
+一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で再設定する。
 
 ```bash
 # SSH公開鍵認証
@@ -315,7 +325,7 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 
 
 
-```bash
+```init
 [submodule "modules/foo-sub-module"]
 	path = modules/foo-sub-module
 	url = https://github.com/hiroki-hasegawa/foo-sub-module.git

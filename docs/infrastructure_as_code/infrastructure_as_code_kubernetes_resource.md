@@ -282,6 +282,12 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 ```.spec.terminationGracePeriodSeconds```キーを長めに設定し、```.spec.containers[].lifecycle.preStop```キーの秒数も含めて、全てが完了した上でPodを削除できるようにする。
 
+
+補足として、サービスメッシュツール（例：Istio）のサイドカーを持つPodを安全に削除する場合も、サイドカーコンテナが停止した上でPodを削除できるように、Podの削除プロセスの完了を待機する必要がある。
+
+> ℹ️ 参考：https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+
+
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
 （１）クライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
@@ -296,9 +302,9 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 （６）```.spec.containers[].lifecycle.preStop```キーによるコンテナの待機処理が終了する。
 
-（７）待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナにSIGTERMシグナルを送信する。これにより、コンテナの停止処理が開始する。
+（７）待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに```SIGTERM```シグナルを送信する。これにより、コンテナの停止処理が開始する。
 
-（８）```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。この段階でもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、コンテナを強制的に終了することになる。
+（８）```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
 
 （９）Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
 
