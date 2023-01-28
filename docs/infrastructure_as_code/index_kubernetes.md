@@ -1,6 +1,8 @@
 # セクションの目次
 
-## ☸️ Kubernetes (IaC) ※ 量が多いため、IaCセクションから切り分けています
+## ☸️ Kubernetes (IaC)
+
+**※ 量が多いため、IaCセクションから切り分けています**
 
 ### Kubernetes
 

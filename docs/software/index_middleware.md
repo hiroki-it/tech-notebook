@@ -1,6 +1,8 @@
 # セクションの目次
 
-## 👾 ミドルウェア ※ 量が多いため、ソフトウェアセクションから切り分けています
+## ↔️ ミドルウェア
+
+**※ 量が多いため、ソフトウェアセクションから切り分けています**
 
 ### Web系
 
@@ -13,6 +15,7 @@
   > * ##### 📖 [︎apache.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_conf.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
 
+<br>
 
 ### アプリケーション系
 
@@ -26,6 +29,8 @@
   > > * ##### 📖 [︎設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi_conf.html)
   > * ##### <u>ASGI</u>
   > > * ##### 📖 [︎Uvicorn](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_asgi_uvicorn.html)
+
+<br>
 
 ### データベース系
 
@@ -43,11 +48,15 @@
   > > * ##### 📖 [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_tsdb_victoriametrics.html)
   > > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_tsdb_victoriametrics_command.html)
 
+<br>
+
 ### ログ系
 
 * #### <u>FluentBit/Fluentd</u>
   > * ##### 📖 [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit_fluentd.html)
   > * ##### 📖 [︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit.html)
+
+<br>
 
 ### セキュリティ系
 
@@ -56,12 +65,15 @@
   > * ##### 📖 [Falco](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_security_falco.html)
   > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_security_falco_conf.html)
 
+<br>
+
 ### サービスメッシュ系
 
 * #### 📖 [︎サービスメッシュ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh.html)
-  > * ##### <u>Envoy</u>
-  > > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
-  > > * ##### 📖 [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
-  > > * ##### 📖 [︎API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_api.html)
+
+* #### <u>Envoy</u>
+  > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
+  > * ##### 📖 [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
+  > * ##### 📖 [︎API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_api.html)
 
 <br>
