@@ -479,7 +479,9 @@ nav:
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
-              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.md
+              - ■ コマンド:
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.md
+                  - helmプラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.md
               - ■ チャート:
                   - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.md
                   - 関数: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.md
