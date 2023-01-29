@@ -31,7 +31,7 @@
   > * ##### 📖 [︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
   
 * #### <u>Kubernetes</u>
-  > * ##### 📖 [量が多いため、こちたのタブに切り分けています](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/index_kubernetes.html)
+  > * ##### 📖 [量が多いため、こちらのタブに切り分けています](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/index_kubernetes.html)
 
 * #### <u>Packer</u>
   > * ##### 📖 [Packer](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_packer.html)
