@@ -147,6 +147,7 @@ nav:
                   - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
 
   - 🐧 OS:
+      - software/index_basic.md
       - ■ Linuxカーネル:
           - Linuxカーネル: software/software_basic_linux_kernel.md
           - プロセス管理: software/software_basic_linux_kernel_process_management.md
