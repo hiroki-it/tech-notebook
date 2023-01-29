@@ -27,7 +27,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 
 
-（１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
+【１】```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/
 
@@ -40,7 +40,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたマニフェストを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースを作成する。その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。```kubectl apply```コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
+【２】IstioOperatorが定義されたマニフェストを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースを作成する。その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。```kubectl apply```コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
 > ℹ️ 参考：
 >

@@ -309,16 +309,16 @@ vacuum = true
 
 エントリーポイントとするファイルを設定する。
 
-
+```ini
+[uwsgi]
+wsgi-file = main.py
+```
 
 > ℹ️ 参考：
 >
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
 > - https://django.kurodigi.com/uwsgi-basic/
 
-```ini
-[uwsgi]
-wsgi-file = main.py
-```
+
 
 <br>

@@ -356,7 +356,7 @@ GitHubとSSH公開鍵認証を行うために、秘密鍵と公開鍵は次の�
 
 > ℹ️ 参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
-（１）```ssh-keygen```コマンドで、秘密鍵と効果鍵のセットを作成する。
+【１】```ssh-keygen```コマンドで、秘密鍵と効果鍵のセットを作成する。
 
 ```bash
 # 鍵を保管するディレクトリに移動
@@ -371,7 +371,7 @@ Enter passphrase (empty for no passphrase):
 Enter same passphrase again: 
 ```
 
-（２）このうち、公開鍵をクリップボードにコピーする。
+【２】このうち、公開鍵をクリップボードにコピーする。
 
 ```bash
 # Mac
@@ -381,7 +381,7 @@ $ pbcopy < ~/.ssh/github/<鍵名>.pub
 $ clip < ~/.ssh/github/<鍵名>.pub
 ```
 
-（３）コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目（ https://github.com/settings/ssh ）にペーストする。```ssh```コマンドで接続を確認する。
+【３】コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目（ https://github.com/settings/ssh ）にペーストする。```ssh```コマンドで接続を確認する。
 
 ```bash
 $ ssh -T <接続名>
@@ -452,7 +452,7 @@ $ git branch --delete --remote origin/<ローカルブランチ名>
 リモート追跡ブランチを削除する。
 
 
-（１）まず、```branch --all```で作業中のローカルブランチとリモート追跡ブランチを取得する。
+【１】まず、```branch --all```で作業中のローカルブランチとリモート追跡ブランチを取得する。
 
 ```bash
 $ git branch --all
@@ -462,7 +462,7 @@ $ git branch --all
   remotes/origin/master
 ```
 
-（２）```remotes/origin/2019/Symfony_Nyumon/master```を削除する。
+【２】```remotes/origin/2019/Symfony_Nyumon/master```を削除する。
 
 ```bash
 $ git branch -d -r origin/2019/Symfony_Nyumon/master
@@ -470,7 +470,7 @@ $ git branch -d -r origin/2019/Symfony_Nyumon/master
 Deleted remote-tracking branch origin/2019/Symfony_Nyumon/master (was 18a31b5).
 ```
 
-（３）再び、```branch --all```で削除されたことを確認。
+【３】再び、```branch --all```で削除されたことを確認。
 
 ```bash
 $ git branch --all
@@ -840,7 +840,7 @@ $ git reset --hard <コミットID>
 
 #### ▼ resetの使用例
 
-（１）まず、```log ```コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
+【１】まず、```log ```コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
 
 ```bash
 $ git log
@@ -865,13 +865,13 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
     add #0 fooさんのREADME_1を追加
 ```
 
-（２）指定のコミットまで履歴を戻す。
+【２】指定のコミットまで履歴を戻す。
 
 ```bash
 $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
 ```
 
-（３）```log ```コマンドで、正しく変更されているか確認。
+【３】```log ```コマンドで、正しく変更されているか確認。
 
 ```bash
 $ git log
@@ -883,7 +883,7 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
     add 新しいREADMEを追加
 ```
 
-（４）```push --force```でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
+【４】```push --force```でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
    <font color="red">**『強制的にプッシュした』というログも、リモート側には残らない。**</font>
 
 ```bash
@@ -914,7 +914,7 @@ To github.com:hiroki-hasegawa/foo-repository.git
 
 **＊例（コミットメッセージの変更）＊**
 
-（１）まず、```log ```コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
+【１】まず、```log ```コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
 
 ```bash
 $ git log
@@ -939,7 +939,7 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
     add #0 fooさんのREADME_1を追加
 ```
 
-（２）指定した履歴の削除
+【２】指定した履歴の削除
 
 ```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
@@ -970,13 +970,13 @@ pick b1b5c0f add #0 *****
 
 
 
-（３）```commit --amend```に```m```オプションを付けて、メッセージを変更する。
+【３】```commit --amend```に```m```オプションを付けて、メッセージを変更する。
 
 ```bash
 $ git commit --amend -m="<変更後のメッセージ>"
 ```
 
-（４）```rebase --continue```を実行し、変更を反映させる。
+【４】```rebase --continue```を実行し、変更を反映させる。
 
 ```bash
 $ git rebase --continue
@@ -984,7 +984,7 @@ $ git rebase --continue
 Successfully rebased and updated refs/heads/develop.
 ```
 
-（５）プッシュしようとすると、```![rejected] develop -> develop (non-fast-forward)```とエラーが出るため、
+【５】プッシュしようとすると、```![rejected] develop -> develop (non-fast-forward)```とエラーが出るため、
 
 ```bash
 $ git merge <ブランチ名> --allow-unrelated-histories
@@ -995,19 +995,19 @@ $ git merge <ブランチ名> --allow-unrelated-histories
 
 **＊例（Author名とCommiter名の変更）＊**
 
-（１）ハッシュ値を指定して、```rebase```コマンドを実行する。
+【１】ハッシュ値を指定して、```rebase```コマンドを実行する。
 
 ```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 ```
 
-（２）```commit --amend```に```reset-author```オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
+【２】```commit --amend```に```reset-author```オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
 
 ```bash
 $ git commit --amend --reset-author
 ```
 
-（３）```rebase --continue```を実行し、変更を反映させる。
+【３】```rebase --continue```を実行し、変更を反映させる。
 
 ```bash
 $ git rebase --continue
@@ -1049,7 +1049,7 @@ $ git rebase --onto <派生元にしたいローカルブランチ名> <誤っ�
 
 
 
-（１）変更タブの表示
+【１】変更タブの表示
 
 ```bash
 $ git rebase --interactive --root
@@ -1061,7 +1061,7 @@ $ git rebase --interactive --root
 pick b1b5c0f add #0 *****
 ```
 
-（２）```pick b1b5c0f add #0 *****```の行を削除して保存し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
+【２】```pick b1b5c0f add #0 *****```の行を削除して保存し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
 
 ```bash
 :qa!

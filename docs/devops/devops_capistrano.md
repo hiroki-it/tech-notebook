@@ -23,11 +23,11 @@ description: Capistrano＠DevOpsの知見を記録しています。
 
 
 
-（１）自身のパソコンからデプロイサーバーにリモート通信する。
+【１】自身のパソコンからデプロイサーバーにリモート通信する。
 
-（２）デプロイサーバーの自動デプロイツール（例：Capistrano）が、デプロイサーバーからwebサーバーにリモート通信する。
+【２】デプロイサーバーの自動デプロイツール（例：Capistrano）が、デプロイサーバーからwebサーバーにリモート通信する。
 
-（３）自動デプロイツールが、webサーバーのGitを操作し、```git pull```あるいは```git clone```を実行する。その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
+【３】自動デプロイツールが、webサーバーのGitを操作し、```git pull```あるいは```git clone```を実行する。その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
 
 ![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/capistrano_ec2.png)
 

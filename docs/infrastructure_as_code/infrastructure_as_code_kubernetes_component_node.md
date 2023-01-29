@@ -383,7 +383,7 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 
 #### ▼ Containerdのインストールの事前作業
 
-（１）```/etc/modules-load.d/containerd.conf```ファイルに、カーネルモジュールを設定する。
+【１】```/etc/modules-load.d/containerd.conf```ファイルに、カーネルモジュールを設定する。
 
 > ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
 
@@ -392,14 +392,14 @@ overlay
 br_netfilter
 ```
 
-（２）カーネルモジュールを読み込む。
+【２】カーネルモジュールを読み込む。
 
 ```bash
 $ modprobe overlay
 $ modprobe br_netfilter
 ```
 
-（３）```/etc/sysctl.d/99-kubernetes-cri.conf```ファイルに、カーネルパラメーターを設定する。
+【３】```/etc/sysctl.d/99-kubernetes-cri.conf```ファイルに、カーネルパラメーターを設定する。
 
 > ℹ️ 参考：https://www.memotansu.jp/kubernetes/3790/#toc2
 
@@ -409,7 +409,7 @@ net.ipv4.ip_forward=1
 net.bridge.bridge-nf-call-ip6tables=1
 ```
 
-（４）カーネルに設定を反映する。
+【４】カーネルに設定を反映する。
 
 ```bash
 $ sysctl --system
@@ -417,7 +417,7 @@ $ sysctl --system
 
 #### ▼ Containerdのインストール
 
-（１）要件のパッケージをインストールする。
+【１】要件のパッケージをインストールする。
 
 
 ```bash
@@ -429,13 +429,13 @@ $ apt-get update -y \
     software-properties-common
 ```
 
-（２）Dockerの公式GPGキーを追加する。
+【２】Dockerの公式GPGキーを追加する。
 
 ```bash
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 ```
 
-（３）リポジトリを追加する。
+【３】リポジトリを追加する。
 
 ```bash
 $ add-apt-repository \
@@ -444,7 +444,7 @@ $ add-apt-repository \
     stable"
 ```
 
-（４）Containerdをインストールする。
+【４】Containerdをインストールする。
 
 ```bash
 $ apt-get update && apt-get install containerd.io
@@ -455,7 +455,7 @@ $ apt-get update && apt-get install containerd.io
 
 #### ▼ Containerdの設定ファイルの準備
 
-（１）設定ファイルとして、```/etc/containerd/config.toml```ファイルを作成する。
+【１】設定ファイルとして、```/etc/containerd/config.toml```ファイルを作成する。
 
 > ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
@@ -464,7 +464,7 @@ $ mkdir -p /etc/containerd
 $ containerd config default | sudo tee /etc/containerd/config.toml
 ```
 
-（２）Containerdに設定を反映する。
+【２】Containerdに設定を反映する。
 
 ```bash
 $ systemctl restart containerd

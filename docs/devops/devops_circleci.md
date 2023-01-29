@@ -19,15 +19,15 @@ description: CircleCIの知見を記録しています。
 
 ### CIパイプライン/CDパイプライン
 
-（１）テストクラスを実装したうえで、新機能を設計実装する。
+【１】テストクラスを実装したうえで、新機能を設計実装する。
 
-（２）リポジトリへプッシュすると、CIツールがGituHubからブランチの状態を取得する。
+【２】リポジトリへプッシュすると、CIツールがGituHubからブランチの状態を取得する。
 
-（３）CIツールによって、CIパイプラインが実行される。
+【３】CIツールによって、CIパイプラインが実行される。
 
-（４）CIOpsを採用している場合に、CDパイプラインも実行される。
+【４】CIOpsを採用している場合に、CDパイプラインも実行される。
 
-（５）結果を通知することも可能。
+【５】結果を通知することも可能。
 
 ![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/継続的インテグレーション.png)
 
@@ -117,13 +117,13 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 > ℹ️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
-（１）CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。この時、他の連携サービスと区別しやすいように、ホスト名を```github```とする。
+【１】CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。この時、他の連携サービスと区別しやすいように、ホスト名を```github```とする。
 
 ```bash
 $ pbcopy < ~/.ssh/github/<秘密鍵名>
 ```
 
-（３）CircleCIの```Enable SSH```ステップに表示された```ssh```コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を行う。
+【３】CircleCIの```Enable SSH```ステップに表示された```ssh```コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を行う。
 
 ```bash
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>

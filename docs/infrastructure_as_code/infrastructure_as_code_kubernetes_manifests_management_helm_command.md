@@ -142,11 +142,6 @@ $ helm install <リリース名> <チャートへのパス>
 | ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                             |
 | チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ（```.tgz```形式ファイル）の外にある必要がある。<br>ℹ️ 参考：https://helm.sh/docs/helm/helm_install/ |
 
-カスタムリソース定義を先にインストールせずに、カスタムリソースをインストールしようとすると、以下のエラーになる。
-
-```bash
-Error: unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "<カスタムリソース名>>" in version "<カスタムリソースのAPIグループ>"
-```
 
 #### ▼ --disable-openapi-validation
 
@@ -818,3 +813,4 @@ $ helm upgrade --wait foo-release ./foo-chart -f ./values.yaml
 ```
 
 <br>
+

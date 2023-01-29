@@ -54,7 +54,7 @@ data:
 
 #### ▼ 必要なマニフェストの作成
 
-ツールとの連携にはマニフェストを作成する必要がある。
+ツールとの連携にはマニフェストを定義する必要がある。
 
 ConfigMapの```data.configManagementPlugins```キーでそれらの処理を定義する。
 
@@ -83,7 +83,7 @@ data:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            # 必要なマニフェストを作成する。
+            # 必要なマニフェストを定義する。
 ```
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/#installing-a-cmp

@@ -772,7 +772,7 @@ OAuthに関して、以下のトークン付与タイプを実装できる。
 
 #### ▼ バックエンド側の実装
 
-（１）```guards```キーにて、認証方式を設定する。ここでは、```api```を設定する。
+【１】```guards```キーにて、認証方式を設定する。ここでは、```api```を設定する。
 
 ```php
 return [
@@ -788,7 +788,7 @@ return [
 ];
 ```
 
-（２）OAuth（認証フェーズ + 認可フェーズ）を行うために、```auth.php```ファイルで、```driver```キーにpassportドライバを設定する。また、```provider```キーで、```users```を設定する。
+【２】OAuth（認証フェーズ + 認可フェーズ）を行うために、```auth.php```ファイルで、```driver```キーにpassportドライバを設定する。また、```provider```キーで、```users```を設定する。
 
 **＊実装例＊**
 
@@ -814,7 +814,7 @@ return [
 ];
 ```
 
-（３）```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを使用したい場合は、```database```ドライバを設定する。
+【３】```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを使用したい場合は、```database```ドライバを設定する。
 
 ```php
 return [
@@ -838,7 +838,7 @@ return [
 ];
 ```
 
-（４）Userへのルーティング時に、```middleware```メソッドによる認証ガードを行う。これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
+【４】Userへのルーティング時に、```middleware```メソッドによる認証ガードを行う。これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 
 **＊実装例＊**
 
@@ -846,7 +846,7 @@ return [
 Route::get("user", "UserController@index")->middleware("auth:api");
 ```
 
-（５）認証ガードを行ったEloquentモデルに対して、HasAPIToken、NotifiableのTraitをコールする。
+【５】認証ガードを行ったEloquentモデルに対して、HasAPIToken、NotifiableのTraitをコールする。
 
 **＊実装例＊**
 
@@ -867,7 +867,7 @@ class User extends Authenticatable
 }
 ```
 
-（６）Passportの```routes```メソッドをコールする。これにより、Passportの認証フェーズに関わる全てのルーティング（```/oauth/xxx```）が有効になる。また、アクセストークンを発行できるよになる。
+【６】Passportの```routes```メソッドをコールする。これにより、Passportの認証フェーズに関わる全てのルーティング（```/oauth/xxx```）が有効になる。また、アクセストークンを発行できるよになる。
 
 **＊実装例＊**
 
@@ -889,7 +889,7 @@ class AuthServiceProvider extends ServiceProvider
 }
 ```
 
-（７）暗号キーとユーザーを作成する。
+【７】暗号キーとユーザーを作成する。
 
 ```bash
 $ php artisan passport:keys
@@ -899,7 +899,7 @@ $ php artisan passport:client --password
 
 #### ▼ クライアントアプリ側の実装
 
-（１）『認証』のために、アクセストークンのリクエストを送信する。ユーザー側のアプリケーションは、```/oauth/authorize```へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
+【１】『認証』のために、アクセストークンのリクエストを送信する。ユーザー側のアプリケーションは、```/oauth/authorize```へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
 
 **＊実装例＊**
 
@@ -920,7 +920,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 ]);
 ```
 
-（２）アクセストークンを含むJSON型データを受信する。
+【２】アクセストークンを含むJSON型データを受信する。
 
 **＊実装例＊**
 
@@ -932,7 +932,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 }
 ```
 
-（３）ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングに対して、リクエストを送信する。レスポンスのメッセージボディからデータを取得する。
+【３】ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングに対して、リクエストを送信する。レスポンスのメッセージボディからデータを取得する。
 
 **＊実装例＊**
 
@@ -997,7 +997,7 @@ class CreateUsersTable extends Migration
 
 #### ▼ バックエンド側の実装
 
-（１）暗号キーとユーザーを作成する。
+【１】暗号キーとユーザーを作成する。
 
 ```bash
 $ php artisan passport:keys
@@ -1005,7 +1005,7 @@ $ php artisan passport:keys
 $ php artisan passport:client --personal
 ```
 
-（２）作成したユーザーに、クライアントIDを付与する。
+【２】作成したユーザーに、クライアントIDを付与する。
 
 ```php
 /**
@@ -1023,7 +1023,7 @@ public function boot()
 }
 ```
 
-（３）ユーザーからのリクエスト時、クライアントIDを元に『認証』を行い、アクセストークンをレスポンスする。
+【３】ユーザーからのリクエスト時、クライアントIDを元に『認証』を行い、アクセストークンをレスポンスする。
 
 ```php
 <?php

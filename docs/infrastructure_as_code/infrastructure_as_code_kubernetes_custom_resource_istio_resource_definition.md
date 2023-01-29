@@ -80,7 +80,7 @@ $ kubectl create namespace istio-system
 # baseチャート
 $ helm install <リリース名> <チャートリポジトリ名>/base -n istio-system --version <バージョンタグ>
 
-# Istiodのみ
+# Istiodコントロールプレーンのみ
 # istiodチャート
 $ helm install <リリース名> <チャートリポジトリ名>/istiod -n istio-system --version <バージョンタグ>
 ```

@@ -23,13 +23,15 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
 **＊実装例＊**
 
 ```yaml
 configValidationMode: warn
 ```
+
+> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+
 
 <br>
 
@@ -41,7 +43,6 @@ configValidationMode: warn
 
 
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/variables
 
 **＊実装例＊**
 
@@ -49,6 +50,8 @@ configValidationMode: warn
 custom:
   foo: FOO
 ```
+
+> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/variables
 
 <br>
 
@@ -60,13 +63,15 @@ Serverless Frameworkのバージョンを設定する。
 
 
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
 **＊実装例＊**
 
 ```yaml
 frameworkVersion: '2'
 ```
+
+> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+
 
 <br>
 
@@ -123,7 +128,6 @@ Lambda関数に紐づけて作成するEventBridgeを設定する。
 
 
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
 
 **＊実装例＊**
 
@@ -137,6 +141,9 @@ functions:
           pattern: ${file(./event_bridge/patterns/pattern.json)}  
 ```
 
+> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
+
+
 #### ▼ sqs
 
 Lambda関数に紐づけるSQSを設定する。
@@ -145,7 +152,6 @@ Lambda関数に紐づけるSQSを設定する。
 
 
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
 
 **＊実装例＊**
 
@@ -155,6 +161,9 @@ functions:
     events:
       - sqs:arn:aws:sqs:region:<アカウントID>:prd-foo-queue
 ```
+
+> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
+
 
 <br>
 
@@ -466,13 +475,15 @@ resources:
 
 ### serviceとは（awsプロバイダーの場合）
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/services
 
 **＊実装例＊**
 
 ```yaml
 service: foo-service
 ```
+
+> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/services
+
 
 <br>
 

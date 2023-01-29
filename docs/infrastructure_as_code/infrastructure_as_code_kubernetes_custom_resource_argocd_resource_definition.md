@@ -84,7 +84,7 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ ```kubectl```コマンドを使用して
 
-（１）既存のServiceをLoadBalancer Serviceに変更する。
+【１】既存のServiceをLoadBalancer Serviceに変更する。
 
 ```bash
 $ kubectl patch service argocd-server \
@@ -92,7 +92,7 @@ $ kubectl patch service argocd-server \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
-（２）Kubernetes上のArgoCDダッシュボードのパスワードを取得する。
+【２】Kubernetes上のArgoCDダッシュボードのパスワードを取得する。
 
 ```bash
 $ kubectl get secret argocd-initial-admin-secret \
@@ -100,7 +100,7 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-（３）```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。```minikube tunnel```ではポート番号を指定できないことに注意する。
+【３】```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。```minikube tunnel```ではポート番号を指定できないことに注意する。
 
 
 ```bash
@@ -112,7 +112,7 @@ $ curl http://127.0.0.1:8080
 
 #### ▼ ```argocd```コマンドを使用して
 
-（１）```argocd```コマンドをインストールする。
+【１】```argocd```コマンドをインストールする。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -121,7 +121,7 @@ $ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/
 $ chmod +x /usr/local/bin/argocd
 ```
 
-（２）ArgoCDにログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
+【２】ArgoCDにログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
 
 ```bash
 $ argocd login 127.0.0.1:8080

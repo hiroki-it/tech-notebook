@@ -167,9 +167,9 @@ Istioの開発プロジェクトでは、マイナーバージョンを```1```�
 > - https://istio.io/latest/docs/setup/upgrade/
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
-#### ▼ Istiodでダウンタイムを発生させない
+#### ▼ Istiodコントロールプレーンでダウンタイムを発生させない
 
-Istiodでダウンタイムが発生すると、```istio-proxy```コンテナ内のpilot-agentが最新の宛先情報を取得できなくなる。
+Istiodコントロールプレーンでダウンタイムが発生すると、```istio-proxy```コンテナ内のpilot-agentが最新の宛先情報を取得できなくなる。
 
 そのため、古いバージョンのアプリコンテナの宛先情報を使用してしまう。
 
@@ -206,25 +206,139 @@ Istioでは、この状況をカナリア方式（一部のユーザーを新サ
 ただし、サイドカーをインジェクションしているNamespaceが```1```個しかない場合、全ての通信が新サイドカーにルーティングされるため、カナリアにはならない。
 
 
-#### ▼ 手順
+#### ▼ 手順（Helmを使用する場合）
 
-（１）旧コントロールプレーンNodeを残したまま、新コントロールプレーンNodeを作成する。
+【１】カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
 
-（２）特定のNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を新バージョンに変更する。これにより、コントロールプレーンNodeはNamespace内の```istio-proxy```コンテナをアップグレードする。
+```bash
+$ git clone https://github.com/istio/istio.git
+
+$ kubectl apply -f manifests/charts/base/crds
+```
+
+【２】カスタムリソース定義以外のマニフェストを送信し、旧Istiodコントロールプレーンを残したまま、新Istiodコントロールプレーンを作成する。この手順は、```istioctl install```コマンドによるIstiodのインストールに相当する。
+
+```bash
+# アップグレード先が1.1.0とする。
+$ helm install istiod istio/istiod --set revision=1-1-0 -n istio-system
+```
+
+【３】新しいIstiodコントロールプレーンを確認する。
+
+```bash
+# Deployment
+$ kubectl get deployment -n istio-system
+
+NAME                READY   STATUS    RESTARTS   AGE
+istiod-1-0-0        1/1     Running   0          1m  # 1-0-0
+istiod-1-1-0        1/1     Running   0          1m  # 1-1-0（今回のアップグレード先）
+
+
+# Service
+$ kubectl get svc -n istio-system
+
+NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
+istiod-1-0-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
+istiod-1-1-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+
+
+# MutatingWebhookConfiguration
+$ kubectl get mutatingwebhookconfigurations
+
+NAME                                  WEBHOOKS   AGE
+istio-sidecar-injector-1-0-0          1          7m56s # 1-0-0
+istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0（今回のアップグレード先）
+istio-revision-tag-default            1          3m18s # 現在のリビジョン番号（1-0-0）を定義するdefaultタグを持つ
+```
 
 ![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
 
-（３）新バージョンの```istio-proxy```コンテナの動作が問題なければ、Namespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を順番に変更していく。
+
+
+【４】Istioの```istio.io/rev```キーを使用して、特定のNamespaceの```istio-injection```キーを上書きする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+
+
+```bash
+# IngressGatewayの特定のNamespace
+$ kubectl label namespace ingress istio.io/rev=1-1-0 istio-injection- --overwrite
+
+# アプリの特定のNamespace
+$ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrite
+```
+
+
+> ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/
+
+【５】IngressGatewayとアプリのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
+
+```bash
+$ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
+
+# まずはfoo-appで検証する。
+$ kubectl rollout restart deployment app-deployment -n app
+```
 
 ![istio_canary-upgrade_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_2.png)
 
-（４）もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。
 
-（５）全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がなければ、旧コントロールプレーンNodeを削除する。
+【６】新バージョンの```istio-proxy```コンテナをインジェクションしたNamespaceで、アプリの動作を確認する。
 
+
+【７】新バージョンの```istio-proxy```コンテナに問題がなければ、他のアプリのNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を順番に変更していく。
+
+```bash
+# 他のNamespaceでも新istio-proxyコンテナを検証していく。
+$ kubectl label namespace bar-app istio.io/rev=1-1-0 istio-injection- --overwrite
+
+$ kubectl label namespace baz-app istio.io/rev=1-1-0 istio-injection- --overwrite
+```
+
+![istio_canary-upgrade_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_3.png)
+
+【８】もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。
+
+【９】全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がないかを確認する。
+
+【１０】Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
+
+```bash
+$ istioctl tag set default --revision 1-1-0 --overwrite
+```
+
+【１１】古いIstiodコントロールプレーンをアンインストールする。
+
+```bash
+$ istioctl uninstall --revision 1-0-0 -y
+```
+
+【１２】古いIstiodコントロールプレーンが削除されたことを確認する。
+
+```bash
+# Deployment
+$ kubectl get deployment -n istio-system
+
+NAME                READY   STATUS    RESTARTS   AGE
+istiod-1-1-0        1/1     Running   0          1m  # 1-1-0
+
+
+# Service
+$ kubectl get svc -n istio-system
+
+NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
+istiod-1-1-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+
+
+# MutatingWebhookConfiguration
+$ kubectl get mutatingwebhookconfigurations
+
+NAME                                  WEBHOOKS   AGE
+istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0
+istio-revision-tag-default            1          3m18s # 現在のリビジョン番号（1-1-0）を定義するdefaultタグを持つ
+```
 
 > ℹ️ 参考：
 >
+> - https://istio.io/latest/docs/setup/upgrade/helm/#canary-upgrade-recommended
 > - https://istio.io/v1.10/docs/setup/upgrade/canary/
 > - https://jimmysong.io/blog/istio-canary-upgrade/
 > - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2

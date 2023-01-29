@@ -236,7 +236,7 @@ $ helmfile -e prd template
 
 #### ▼ --include-crds
 
-カスタムリソースも含めて、```helm template```コマンドを実行する。
+カスタムリソース定義も含めて、```helm template```コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template --include-crds
