@@ -168,7 +168,7 @@ nav:
               - ■ GraphQL-API:
                   - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
 
-  - 🤝🏻 ミドルウェア (ソフトウェア):
+  - 🤝🏻 ミドルウェア:
       - software/index_middleware.md
       - ■ Web系:
           - ■ Nginx:
@@ -455,7 +455,7 @@ nav:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
 
-  - ☸️ Kubernetes (IaC):
+  - ☸️ Kubernetes:
       - infrastructure_as_code/index_kubernetes.md
       - ■ Kubernetes:
           - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
