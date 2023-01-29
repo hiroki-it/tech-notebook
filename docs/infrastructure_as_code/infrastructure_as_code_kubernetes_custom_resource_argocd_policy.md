@@ -63,7 +63,7 @@ repository/
 
 <br>
 
-## 03. デザインパターン
+## 02. Applicationのデザインパターン
 
 ### Appパターン（通常パターン）
 
@@ -114,9 +114,10 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 
 #### ▼ App-Of-Appsパターンとは
 
+親Applicationで子Applicationをグループ化したように構成する。
+
 ![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
 
-親Applicationで子Applicationをグループ化したように構成する。
 
 > ℹ️ 参考：
 >

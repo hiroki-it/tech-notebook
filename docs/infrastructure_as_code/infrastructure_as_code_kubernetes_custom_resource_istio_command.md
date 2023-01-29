@@ -937,7 +937,6 @@ istio-revision-tag-stable          1          7m56s # 現在のリビジョン�
 
 ```bash
 $ istioctl install --set revision=1-0-0
-
 ```
 
 （４）すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。その他、新しいIstiodコントロールプレーンも作成される。

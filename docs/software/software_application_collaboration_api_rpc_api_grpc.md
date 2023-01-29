@@ -21,7 +21,9 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
 
-RPCフレームワークの一つで、プロトコルバッファーを使用してRPC（リモートプロシージャーコール）を実行する。RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
+RPCフレームワークの一つで、プロトコルバッファーを使用してRPC（リモートプロシージャーコール）を実行する。
+
+RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
 
 > ℹ️ 参考：
 >
@@ -326,7 +328,6 @@ gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明�
 
 
 
-> ℹ️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
 ```bash
 # foo.pb.goファイルを作成する。
@@ -335,6 +336,9 @@ $ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
 # ワイルドカードで指定できる。
 $ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
 ```
+
+> ℹ️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
+
 
 <br>
 
@@ -367,11 +371,6 @@ $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 gRPCサーバーを実装する。
 
 
-
-> ℹ️ 参考：
->
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-> - https://entgo.io/ja/docs/grpc-server-and-client/
 
 ```go
 package main
@@ -420,6 +419,11 @@ func main() {
 }
 ```
 
+> ℹ️ 参考：
+>
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://entgo.io/ja/docs/grpc-server-and-client/
+
 <br>
 
 ### クライアント側
@@ -427,10 +431,6 @@ func main() {
 #### ▼ gRPCクライアント
 
 gRPCクライアントを実装する。
-
-
-
-> ℹ️ 参考：https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 ```go
 package main
@@ -470,6 +470,9 @@ func main() {
 }
 ```
 
+> ℹ️ 参考：https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+
+
 <br>
 
 ### 共通ファイル
@@ -479,12 +482,6 @@ func main() {
 クライアントからのコールで返信する構造体や関数を定義する。
 
 
-
-> ℹ️ 参考：
->
-> - https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-> - https://christina04.hatenablog.com/entry/protoc-usage
 
 ```protobuf
 // protoファイルの構文のバージョンを設定する。
@@ -511,18 +508,19 @@ service FooService {
 }
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://christina04.hatenablog.com/entry/protoc-usage
+
 #### ▼ ```pb.go```ファイル
 
 事前に用意した```.proto```ファイルを使用して、```pb.go```ファイルを自動作成する。
 
 ```pb.go```ファイルには、サーバー側とクライアント側の両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
 
-
-
-> ℹ️ 参考：
->
-> - https://christina04.hatenablog.com/entry/protoc-usage
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 ```bash
 # foo.pb.goファイルを作成する。
@@ -540,5 +538,13 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 // 〜 中略 〜
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://christina04.hatenablog.com/entry/protoc-usage
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+
 
 <br>

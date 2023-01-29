@@ -213,15 +213,37 @@ service:
 
 ## 03. 実装ポリシー
 
-### templateディレクトリ
+### テンプレート
 
 #### ▼ 命名規則
 
-ファイル名はスネークケースとし、Kubernetesリソースを識別できる名前とする。
+ファイル名はスネークケースとする。
 
+可能な限り、Kubernetesリソースの種類名（例：Deployment、Service、ConfigMap）とする。
+
+ただし、同じKubernetesリソースのマニフェストを複数作成する場合は、識別できる名前をプレフィクスとしてつける。
 
 
 > ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
+
+#### ▼ ロジック
+
+可能な限り、Kubernetesリソースごとのテンプレートを使い回すようにする。
+
+**＊実装例＊**
+
+このConfigMapのマニフェストが```1```個あれば、```values```ファイルによらずにConfigMapを作成できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-config-map
+data:
+  {{- range $key, $value := .Values.config | fromYaml }}
+    {{ $key }}: {{ $value }}
+  {{- end }}
+```
 
 #### ▼ 拡張子
 
@@ -240,8 +262,9 @@ service:
 公式リポジトリの実装方法を見て学んだ方が早い。
 
 
-
 > ℹ️ 参考：https://github.com/istio/istio/tree/master/manifests/charts
+
+
 
 <br>
 

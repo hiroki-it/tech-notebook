@@ -431,7 +431,7 @@ kube-controllerやカスタムコントローラーがKubernetesリソースの�
 
 Kubernetesが設定してくれるため、開発者が設定する必要はない。
 
-```.metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
+```.metadata.generation```キーよりも```.status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
 
 ```yaml
 apiVersion: apps/v1
@@ -3120,7 +3120,6 @@ kube-schedulerがPodをスケジューリングするNodeを設定する。
 
 複数のNodeに同じ```.metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 
 ```yaml
 apiVersion: v1
@@ -3134,6 +3133,9 @@ spec:
   nodeSelector:
     node.kubernetes.io/nodegroup: foo-node-group
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+
 
 <br>
 
@@ -4517,7 +4519,15 @@ spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid ran
 
 #### ▼ LoadBalancerの場合
 
-LoadBalancer Serviceを設定する。クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。同時に、```status.loadBalancer```キーが自動的に追加される。```status.loadBalancer.ingress```キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『```ingress```』である。```status.loadBalancer.ingress.ip```キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
+LoadBalancer Serviceを設定する。
+
+クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。
+
+同時に、```.status.loadBalancer```キーが自動的に追加される。
+
+```.status.loadBalancer.ingress```キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『```ingress```』である。
+
+```.status.loadBalancer.ingress.ip```キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
 

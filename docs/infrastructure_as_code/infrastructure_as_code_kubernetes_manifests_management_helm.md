@@ -2,14 +2,11 @@
 title: 【IT技術の知見】Helm＠マニフェスト管理
 description: Helm＠マニフェスト管理の知見を記録しています。
 ---
-
 # Helm＠マニフェスト管理
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
@@ -19,11 +16,9 @@ description: Helm＠マニフェスト管理の知見を記録しています。
 
 ### アーキテクチャ
 
-
 Helmは、helmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
-
 
 > ℹ️ 参考：
 >
@@ -43,36 +38,33 @@ Helmのリリースでは、バージョン管理に関する戦略を採用し�
 
 #### ▼ 2方向の戦略的マージパッチ
 
-Helmの```v2```では、2方向の戦略的マージパッチを採用している。
+Helmの ``v2``では、2方向の戦略的マージパッチを採用している。
 
 この戦略では、『前回リリースによるマニフェスト』『今回リリースによるマニフェスト』の2つを比較する。
 
-そのため、Helm以外の方法（例：```kubectl edit```コマンド、```kubectl apply```コマンド）でマニフェストが変更されたことを検知できず、チャートの宣言通りにリリースやロールバックを実施できなかった。
-
+そのため、Helm以外の方法（例：``kubectl edit``コマンド、``kubectl apply``コマンド）でマニフェストが変更されたことを検知できず、チャートの宣言通りにリリースやロールバックを実施できなかった。
 
 > ℹ️ 参考：
 >
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
 > - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
 
-
 #### ▼ 3方向の戦略的マージパッチ
 
-Helmの```v3```では、3方向の戦略的マージパッチを採用している。
+Helmの ``v3``では、3方向の戦略的マージパッチを採用している。
 
 この戦略では、『前回リリースによるマニフェスト』『今回リリースのマニフェスト』『前回リリース後のHelm以外の方法によるマニフェスト』の3つを比較する。
 
-そのため、Helm以外の方法（例：```kubectl edit```コマンド、```kubectl apply```コマンド）でマニフェストが変更されたことを検知でき、チャートの宣言通りにリリースやロールバックを実施できる。
+そのため、Helm以外の方法（例：``kubectl edit``コマンド、``kubectl apply``コマンド）でマニフェストが変更されたことを検知でき、チャートの宣言通りにリリースやロールバックを実施できる。
 
-ただし、すでにHelm以外（例：```kubectl apply```コマンド、Kustomize）で作成されているマニフェストからHelmに移行する場合、前回リリースによるマニフェスト自体が存在せず、新規のリリースとなる。
+ただし、すでにHelm以外（例：``kubectl apply``コマンド、Kustomize）で作成されているマニフェストからHelmに移行する場合、前回リリースによるマニフェスト自体が存在せず、新規のリリースとなる。
 
 そのため、チャートと現在のマニフェストと比較できない。
 
 > ℹ️ 参考：
-> 
+>
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
 > - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
-
 
 <br>
 
@@ -80,7 +72,7 @@ Helmの```v3```では、3方向の戦略的マージパッチを採用してい�
 
 ### helmクライアントとは
 
-helmクライアントは、リポジトリからインストールしたチャートアーカイブ（```.tgz```形式ファイル）に基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。
+helmクライアントは、リポジトリからインストールしたチャートアーカイブ（``.tgz``形式ファイル）に基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。
 
 これにより、Kubernetes上にKubernetesリソースが作成される。
 
@@ -94,15 +86,13 @@ helmクライアントは、リポジトリからインストールしたチャ�
 
 チャートレジストリ内にリポジトリを配置する。
 
-
-
-| レジストリ                 | 補足                                                     |
-|-----------------------|----------------------------------------------------------|
+| レジストリ              | 補足                                                        |
+| ----------------------- | ----------------------------------------------------------- |
 | ArtifactHub（Helm公式） | ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/    |
-| GitHub、GitHub Pages   | ℹ️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
-| AWSリソース（ECR、S3）       |                                                          |
-| GCPリソース               |                                                          |
-
+| GitHub、GitHub Pages    | ℹ️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+|                         |                                                             |
+| AWSリソース（ECR、S3）  |                                                             |
+| GCPリソース             |                                                             |
 
 <br>
 
@@ -116,13 +106,10 @@ helmクライアントは、リポジトリからインストールしたチャ�
 
 リポジトリにリモートからインストールできないチャートが配置されている場合、そのリポジトリはチャートリポジトリではなく、マニフェストリポジトリである。
 
-
-
-
-|      | URL                                            |
-|------|------------------------------------------------|
-| 形式 | ```https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>``` |
-| 例   | ```https://example.com/foo-chart```            |
+|      | URL                                                                 |
+| ---- | ------------------------------------------------------------------- |
+| 形式 | ``https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>`` |
+| 例   | ``https://example.com/foo-chart``                                   |
 
 > ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
 
@@ -134,12 +121,10 @@ helmクライアントは、リポジトリからインストールしたチャ�
 
 チャートのプッシュやプル時に、OCIレジストリ内のリポジトリを指定する場合は、OCIプロトコルを使用する。
 
-
-
-|      | URL                                     |
-|------|-----------------------------------------|
-| 形式 | ```oci://<チャートレジストリ名>/<チャートリポジトリ名>``` |
-| 例   | ```oci://foo-registry/foo-repository``` |
+|      | URL                                                     |
+| ---- | ------------------------------------------------------- |
+| 形式 | ``oci://<チャートレジストリ名>/<チャートリポジトリ名>`` |
+| 例   | ``oci://foo-registry/foo-repository``                   |
 
 <br>
 
@@ -147,12 +132,11 @@ helmクライアントは、リポジトリからインストールしたチャ�
 
 #### ▼ リポジトリをチャートリポジトリとして扱う場合
 
-リポジトリをチャートリポジトリとして扱う場合、チャートリポジトリのルートディレクトリ配下に、```index.yaml```ファイル、各バージョンのチャートアーカイブ（```.tgz```形式ファイル）、を配置する。
+リポジトリをチャートリポジトリとして扱う場合、チャートリポジトリのルートディレクトリ配下に、``index.yaml``ファイル、各バージョンのチャートアーカイブ（``.tgz``形式ファイル）、を配置する。
 
 これらにより、リモートからチャートリポジトリのURLを指定し、チャートをインストールできるようになる。
 
-ArtifactHubや、GitHubリポジトリにて```gh-pages```ブランチ上で複数のバージョンのチャートを管理するような使い方は、このチャートリポジトリに相当する。
-
+ArtifactHubや、GitHubリポジトリにて ``gh-pages``ブランチ上で複数のバージョンのチャートを管理するような使い方は、このチャートリポジトリに相当する。
 
 ```yaml
 repository/ # チャートリポジトリ
@@ -167,7 +151,6 @@ repository/ # チャートリポジトリ
 ...
 ```
 
-
 > ℹ️ 参考：
 >
 > - https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
@@ -175,12 +158,9 @@ repository/ # チャートリポジトリ
 
 #### ▼ リポジトリをマニフェストリポジトリとしてのまま扱う場合
 
-リポジトリをチャートリポジトリとして扱わず、ローカルのチャートとして操作する場合、```index.yaml```ファイルとチャートアーカイブ（```.tgz```形式ファイル）が不要になる。
+リポジトリをチャートリポジトリとして扱わず、ローカルのチャートとして操作する場合、``index.yaml``ファイルとチャートアーカイブ（``.tgz``形式ファイル）が不要になる。
 
 リモートからは、チャートをインストールできない。
-
-
-
 
 ```yaml
 repository/ # マニフェストリポジトリ
@@ -193,7 +173,6 @@ repository/ # マニフェストリポジトリ
 
 > ℹ️ 参考：https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional
 
-
 <br>
 
 ## 05. チャート
@@ -202,11 +181,9 @@ repository/ # マニフェストリポジトリ
 
 必要なKubernetesリソースを作成するためのマニフェストのセットをパッケージ化し、管理しやすくしたもの。
 
-ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。
+ルートディレクトリに ``Chart.yaml``ファイルと ``template``ディレクトリを置く必要がある。
 
 また、チャートのコントリビュート要件も参考にすること。
-
-
 
 ```yaml
 repository/
@@ -226,7 +203,6 @@ repository/
 ...
 ```
 
-
 > ℹ️ 参考：
 >
 > - https://helm.sh/docs/topics/charts/#the-chart-file-structure
@@ -234,12 +210,11 @@ repository/
 > - https://helm.sh/docs/helm/helm_package/
 > - https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
 
-
 <br>
 
 ### チャートアーカイブ
 
-```.tgz```形式で圧縮されたチャートのパッケージ。
+``.tgz``形式で圧縮されたチャートのパッケージ。
 
 <br>
 
@@ -247,9 +222,6 @@ repository/
 
 実際にインストールされたチャートのインスタンスのこと。
 
-
-
 > ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
 
 <br>
-

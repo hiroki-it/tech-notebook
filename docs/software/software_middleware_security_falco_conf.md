@@ -21,7 +21,6 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 #### ▼ チャートとして
 
-> ℹ️ 参考：https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
 
 ```bash
 $ helm repo add <リポジトリ名> https://falcosecurity.github.io/charts
@@ -32,6 +31,9 @@ $ kubectl create namespace falco
 
 $ helm install <リリース名> <リポジトリ名>/falco -n falco --version <バージョンタグ>
 ```
+
+> ℹ️ 参考：https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
+
 
 <br>
 
@@ -49,11 +51,6 @@ $ helm install <リリース名> <リポジトリ名>/falco -n falco --version <
 
 
 
-> ℹ️ 参考：
-> 
-> - https://github.com/falcosecurity/falco/tree/master/rules
-> - https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90
-
 ```yaml
 rules_file:
   # デフォルトのルールを定義したファイル
@@ -62,6 +59,13 @@ rules_file:
   - /etc/falco/falco_rules.local.yaml
   - /etc/falco/rules.d
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://github.com/falcosecurity/falco/tree/master/rules
+> - https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90
 
 <br>
 
