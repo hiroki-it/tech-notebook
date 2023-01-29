@@ -6,6 +6,8 @@
 
     **量が多いため、ソフトウェアセクションから切り分けています**
 
+<br>
+
 ### Linuxカーネル
 
 * #### 📖 [︎Linuxカーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel.html)
