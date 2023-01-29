@@ -1,6 +1,6 @@
 # セクションの目次
 
-## 🐧 OS
+## 🐧 基本ソフトウェア（OS）
 
 !!! info ""
 
@@ -37,10 +37,10 @@
 * #### 📖 [︎スクリプト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_script.html)
 
 * #### <u>パッケージ</u>
-  > > * ##### 📖 [︎メモリ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_memory.html)
-  > > * ##### 📖 [︎ネットワーク系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_network.html)
-  > > * ##### 📖 [︎セキュリティ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_security.html)
-  > > * ##### 📖 [︎ストレージ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_storage.html)
+  > * ##### 📖 [︎メモリ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_memory.html)
+  > * ##### 📖 [︎ネットワーク系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_network.html)
+  > * ##### 📖 [︎セキュリティ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_security.html)
+  > * ##### 📖 [︎ストレージ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_storage.html)
 
  <br>
 
