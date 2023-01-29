@@ -115,7 +115,7 @@ plugins:
 nav:
   - 当サイトについて: index.md
 
-  - 俺: about.md
+  - 『俺』: about.md
 
   - 🌳 システム:
       - system/index.md
