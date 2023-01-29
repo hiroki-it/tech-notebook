@@ -334,11 +334,12 @@ th, td {
     font-size: 1.25em;
 }
 
-/* インラインコード */
-.md-typeset code {
-    /* 途中で改行されないようにする */
-    white-space: nowrap
-}
+/*!* インラインコード *!*/
+/*!* コードブロックのスペースが削除されてしまうため、コメントアウトしている *!*/
+/*.md-typeset code :not(.md-typeset pre code) {*/
+/*    !* 途中で改行されないようにする *!*/
+/*    white-space: nowrap*/
+/*}*/
 
 /*
 pymdownxではなくhighlight.jsでハイライトする場合、行番号の機能を使用できなくなる。
