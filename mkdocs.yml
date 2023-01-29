@@ -92,6 +92,9 @@ markdown_extensions:
   - meta
   # htmlタグの有効化
   - md_in_html
+  # 注釈表示
+  - admonition
+  - pymdownx.details
 
 # 外部プラグイン
 plugins:
