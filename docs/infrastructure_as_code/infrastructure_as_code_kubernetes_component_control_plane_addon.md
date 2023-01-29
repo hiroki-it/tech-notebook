@@ -40,16 +40,18 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 
 クライアント（```kubectl```クライアント、Kubernetesリソース）からのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionプラグインによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
-> - https://www.digihunch.com/2022/01/kubernetes-admission-control/
-> - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
 | ステップ名                   | 説明                   |
 |--------------------------|----------------------|
 | mutating-admissionステップ   | リクエストの内容を変更する。     |
 | validating-admissionステップ | リクエストを許可するか否かを決める。 |
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+> - https://www.digihunch.com/2022/01/kubernetes-admission-control/
+> - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
 <br>
 
@@ -63,7 +65,6 @@ admissionプラグインは、ビルトイン処理や独自処理を発火さ�
 
 kube-apiserverの起動時に実行される```kube-apiserver```コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
 ```bash
 $ kube-apiserver -h | grep enable-admission-plugins
@@ -87,6 +88,9 @@ StorageObjectInUseProtection,
 TaintNodesByCondition,
 ValidatingAdmissionWebhook,
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
+
 
 #### ▼ Webhook系プラグインのSSL証明書
 
@@ -127,14 +131,12 @@ webhookサーバーは、Cluster内部に設置することが多い。
 
 
 
-> ℹ️ 参考：
->
-> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 
 **＊例＊**
 
-IstioのMutatingWebhookConfigurationは以下の通りである。Podの作成のためのkube-apiserverのコール自体がエラーとなる。
+IstioのMutatingWebhookConfigurationは以下の通りである。
+
+Podの作成のためのkube-apiserverのコール自体がエラーとなる。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -174,13 +176,21 @@ webhooks:
             - <リビジョン番号>
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+
 <br>
 
 ### ValidatingAdmissionWebhookプラグイン
 
 #### ▼ ValidatingAdmissionWebhookプラグイン
 
-ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
+ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。
+
+独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
 > ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
@@ -192,13 +202,6 @@ ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookプラグインの
 
 webhookサーバーは、Cluster内部に設置することが多い。
 
-
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
-> - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
-> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
 **＊例＊**
 
@@ -232,6 +235,15 @@ webhooks:
       caBundle: Ci0tLS0tQk...
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+> - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
+> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+
+
 <br>
 
 ## 01-03. AdmissionReviewとは
@@ -261,11 +273,6 @@ AdmissionReviewは、リクエストを定義するAdmissionRequestと、レス�
 
 kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメーターを格納し、リクエストとして送信する。
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-> - https://tokibi.hatenablog.com/entry/2020/01/07/150359
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 **＊例＊**
 
@@ -318,20 +325,19 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 }
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - https://tokibi.hatenablog.com/entry/2020/01/07/150359
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+
 #### ▼ AdmissionResponse
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。
 
 マニフェストのpatch処理の定義方法は、JSON Patchツールに依存している。
 
-
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
-> - https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225
-> - https://jsonpatch.com/
 
 **＊例＊**
 
@@ -366,6 +372,16 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
 ]
 ```
 
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225
+> - https://jsonpatch.com/
+
 <br>
 
 ### validating-admissionステップ
@@ -381,11 +397,6 @@ kube-apiserverは、mutating-admissionステップと同じAdmissionReview内の
 webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。
 
 
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 **＊例＊**
 
@@ -405,6 +416,13 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
   }
 }
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 <br>
 

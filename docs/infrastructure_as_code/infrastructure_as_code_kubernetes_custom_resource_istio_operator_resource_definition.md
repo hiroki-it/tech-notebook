@@ -294,7 +294,7 @@ metadata:
     install.operator.istio.io/owning-resource: istio-operator
     install.operator.istio.io/owning-resource-namespace: istio-system
     istio: ingressgateway
-    istio.io/rev: default
+    istio.io/rev: stable
     operator.istio.io/component: IngressGateways
     operator.istio.io/managed: Reconcile
     operator.istio.io/version: 1.12.1

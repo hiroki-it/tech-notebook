@@ -271,6 +271,8 @@ IstoOperatorの```.spec.revision```キーと同じである。
 
 ```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
+> ℹ️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+
 **＊実装例＊**
 
 ```yaml
@@ -279,7 +281,7 @@ kind: Namespace
 metadata:
   name: app-namespace
   labels:
-    istio.io/rev: 1-0-0 # ハイフン繋ぎのバージョン表記
+    istio.io/rev: stable
 ---
 apiVersion: v1
 kind: Namespace

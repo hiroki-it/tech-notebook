@@ -203,7 +203,11 @@ spec:
 
 ### istio-sidecar-injector-configuration
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。そのため、Istioが起動に失敗し続けると、サイドカーコンテナのインジェクションを有効しているPodがいつまでも作成されないことになる。
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。
+
+```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。
+
+そのため、Istioが起動に失敗し続けると、サイドカーコンテナのインジェクションを有効しているPodがいつまでも作成されないことになる。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -261,11 +265,6 @@ pilot-agentを介して、Envoyとの間で定期的にリモートプロシー�
 
 #### ▼ XDS-APIの実装
 
-> ℹ️ 参考：
->
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307-L348
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
 
 ```go
 package xds
@@ -309,6 +308,13 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 	}
 }
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
+> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307-L348
+> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
 
 実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
 

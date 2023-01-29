@@ -21,6 +21,7 @@ description: OpenPolicyAgent＠カスタムリソースの知見を記録して�
 
 OpenPolicyAgentは、OpenPolicyエージェント、```.rego```ファイル、DB、から構成される。
 
+![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent_architecture.png)
 
 
 > ℹ️ 参考：
@@ -28,17 +29,20 @@ OpenPolicyAgentは、OpenPolicyエージェント、```.rego```ファイル、DB
 > - https://www.velotio.com/engineering-blog/deploy-opa-on-kubernetes
 > - https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
 
-![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent_architecture.png)
 
 <br>
 
 ### OpenPolicyエージェント
 
-DBからアカウント情報を読み出し、```.rego```ファイルのロジックに基づいて、boolean型値を返却する。返却されたboolean型値を使用して、リクエストの送信元（例：アプリケーション、kube-apiserver）で認可処理を実施する。
+DBからアカウント情報を読み出し、```.rego```ファイルのロジックに基づいて、boolean型値を返却する。
+
+返却されたboolean型値を使用して、リクエストの送信元（例：アプリケーション、kube-apiserver）で認可処理を実施する。
+
+![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent.png)
 
 > ℹ️ 参考：https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
 
-![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent.png)
+
 
 <br>
 
@@ -182,7 +186,11 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 
 #### ▼ gatekeeper-validating-webhook-configuration
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、ValidatingWebhookConfigurationでValidatingWebhookアドオンを設定する。```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。そのため、OpenPolicyが起動に失敗しても、Podが中止されることはない。
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、ValidatingWebhookConfigurationでValidatingWebhookアドオンを設定する。
+
+```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
+
+そのため、OpenPolicyが起動に失敗しても、Podが中止されることはない。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1

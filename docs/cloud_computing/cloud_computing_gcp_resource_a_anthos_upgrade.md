@@ -127,6 +127,16 @@ $ kubectlget pod -A -o wide
 
 ## 02. Istioのアップグレード（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境の場合）
 
+### 注意!!!!
+
+Anthos Service Meshのドキュメントを確認すると、Istioをカナリア方式でアップグレードしている。
+
+Istioのカナリア方式のアップグレードでは、新しい```istio-proxy```コンテナをインジェクションする方法として、```istio.io/rev```キーのリビジョン番号を書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。
+
+Anthos Service Meshのアップグレードでは、何らかの事情でこれらの両方の手順が混じっており、Istioとは方法が若干異なっている。
+
+<br>
+
 ### ```asmcli```コマンドのセットアップ
 
 ```asmcli```コマンドでは、そのバージョンに応じて、アップグレード先のASMのバージョンがハードコーディングされている。
@@ -287,7 +297,7 @@ kind: Namespace
 metadata:
   name: istio-ingress
   labels:
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: stable
 ```
 
 ```bash
@@ -304,7 +314,7 @@ kind: Namespace
 metadata:
   name: app
   labels:
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: stable
 ```
 
 【９】 Istioの```istio.io/rev```キーを使用して、特定のNamespaceの```istio-injection```キーを上書きする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
@@ -337,7 +347,7 @@ $ kubectl get namespace -L istio.io/rev
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 ```
 
-【１２】新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
+【１２】新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。代わりに、```istioctl proxy-status```コマンドでも良い。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1140-0
@@ -347,6 +357,10 @@ $ kubectl get pod \
 
 
 gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
+
+
+# 代わりに、istioctl proxy-statusコマンドでも良い。
+$ istioctl proxy-status
 ```
 
 #### ▼ アプリケーションの```istio-proxy```コンテナをアップグレード
@@ -357,7 +371,7 @@ gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 $ kubectl rollout restart deployment app-deployment -n app
 ```
 
-【１４】新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
+【１４】新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。代わりに、```istioctl proxy-status```コマンドでも良い。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1140-0
@@ -367,6 +381,9 @@ $ kubectl get pod \
 
 
 gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
+
+# 代わりに、istioctl proxy-statusコマンドでも良い。
+$ istioctl proxy-status
 ```
 
 
@@ -441,7 +458,7 @@ istio.io/rev: asm-1130-0
 istio.io/tag: default
 ```
 
-【１７】Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
+【１７】Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）の実体（```istio.io/rev```キーの値）が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
 
 
 ```bash

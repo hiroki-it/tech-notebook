@@ -823,11 +823,21 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 ### tagとは
 
-MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を操作する。
+Namespaceの```istio.io/rev```キーの値を書き換えずにアップグレードできるように、```istio.io/rev```キーにエイリアスタグを設定する。
+
+
+エイリアスは、```stable```や```default```をよく使用するが、実際はなんでよい。
+
+
+具体的には、MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を操作する。
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
+> - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+> - https://fabianlee.org/2021/09/20/istio-canary-upgrade-of-operator-between-istio-1-7-and-1-8/
 
 
 <br>
@@ -839,8 +849,6 @@ MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリア
 #### ▼ generateとは
 
 MutatingWebhookConfigurationの```.metadata.labels```キーに、エイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を作成する。
-
-エイリアス名は、```stable```や```default```をよく使用するが、実際はなんでよい。
 
 
 ```bash
@@ -864,6 +872,7 @@ $ istioctl tag generate stable --revision 1-0-1
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
 
 
+
 <br>
 
 ### list
@@ -878,7 +887,7 @@ MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリア
 # アップグレード前に、istioctlコマンドで確認してみる。
 $ istioctl tag list
 
-TAG        REVISION   NAMESPACES
+TAG       REVISION   NAMESPACES
 stable    1-0-0      app
 
 
@@ -912,7 +921,7 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --ove
 
 **＊例＊**
 
-【１】現在のバージョンのエイリアス名が```stable```、またバージョンが```v1.0.0```とする。
+【１】現在のバージョンのエイリアス（```istio.io/tag```キーの値）が```stable```、またバージョン（```istio.io/rev```キーの値）が```v1.0.0```とする。
 
 ```bash
 $ istioctl tag list
@@ -963,7 +972,7 @@ istio-revision-tag-stable          1          7m56s # 現在のリビジョン�
 ```
 
 
-【３】エイリアス名を指定して、リビジョン番号を書き換える。これにより、```istio-revision-tag-stable```の```stable```タグの値が変更される。
+【３】エイリアス（```istio.io/tag```キーの値）を指定して、リビジョン番号を書き換える。これにより、```istio-revision-tag-stable```の```stable```タグの値が変更される。
 
 
 ```bash

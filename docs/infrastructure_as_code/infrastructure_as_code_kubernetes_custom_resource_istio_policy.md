@@ -173,6 +173,8 @@ Istiodコントロールプレーンでダウンタイムが発生すると、``
 
 そのため、古いバージョンのアプリコンテナの宛先情報を使用してしまう。
 
+Istiodコントロールプレーンをカナリア方式アップグレードを採用する。
+
 > ℹ️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
 
 #### ▼ IngressGatewayでダウンタイムを発生させない
@@ -185,7 +187,27 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 
 ### インプレース方式
 
-調査中...
+既存のIstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
+
+【１】カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。
+
+```bash
+$ git clone https://github.com/istio/istio.git
+
+$ kubectl apply -f manifests/charts/base/crds
+```
+
+【２】IstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
+
+```bash
+$ istioctl upgrade
+```
+
+【３】データプレーンの```istio-proxy```コンテナを再インジェクションする。
+
+```bash
+$ kubectl rollout restart deployment app-deployment -n app
+```
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 
@@ -195,15 +217,41 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 
 #### ▼ カナリア方式とは
 
-サイドカーをインジェクションしているNamespaceが複数あるという前提で、特定のNamespaceのラベルを書き換える。
+Istiodコントロールプレーンをカナリア方式でアップグレードし、一方でIngressGatewayはインプレース方式でアップグレードする。
 
-すると、そのNamespace上で新サイドカーが、それ以外のNamespaceでは旧サイドカーが動くことになる。
+異なるバージョンのIstioコントロールプレーンを並行的に稼働させる。
 
-新サイドカーが正しく動作すれば、残りのNamespaceにも新サイドカーをインジェクションする。
+![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
 
-Istioでは、この状況をカナリア方式（一部のユーザーを新サイドカーにルーティングして実地的に検証する）と呼称している。
 
-ただし、サイドカーをインジェクションしているNamespaceが```1```個しかない場合、全ての通信が新サイドカーにルーティングされるため、カナリアにはならない。
+```istio-proxy```コンテナをインジェクションしているNamespaceが複数あるという前提で、特定のNamespaceのラベルを書き換える。
+
+すると、そのNamespace上で新```istio-proxy```コンテナが、それ以外のNamespaceでは旧```istio-proxy```コンテナが動くことになる。
+
+![istio_canary-upgrade_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_2.png)
+
+
+新```istio-proxy```コンテナが正しく動作すれば、残りのNamespaceにも新```istio-proxy```コンテナをインジェクションする。
+
+![istio_canary-upgrade_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_3.png)
+
+
+Istioでは、この状況をカナリア方式（一部のユーザーを新```istio-proxy```コンテナにルーティングして実地的に検証する）と呼称している。
+
+ただし、```istio-proxy```コンテナをインジェクションしているNamespaceが```1```個しかない場合、全ての通信が新```istio-proxy```コンテナにルーティングされるため、カナリアにはならない。
+
+補足として、新しい```istio-proxy```コンテナをインジェクションする方法には```2```個の選択肢がある。
+
+前者は、Namespaceにある```istio.io/rev```キーのリビジョン番号を書き換える方法である。
+
+後者はより新しい手法で、MutatingWebhookConfigurationのエイリアスに紐づくリビジョン番号を書き換える方法である。
+
+> ℹ️ 参考：
+> 
+> - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
+> - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+> - https://istio.io/latest/blog/2021/revision-tags/
+
 
 
 #### ▼ 手順（Helmを使用する場合）
@@ -251,11 +299,10 @@ istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0（今回のアッ
 istio-revision-tag-default            1          3m18s # 現在のリビジョン番号（1-0-0）を定義するdefaultタグを持つ
 ```
 
-![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
 
 
 
-【４】Istioの```istio.io/rev```キーを使用して、特定のNamespaceの```istio-injection```キーを上書きする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+【４】ここでは```2```個の選択肢がある。```1```個目は、Istioの```istio.io/rev```キーのリビジョン番号を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 
 ```bash
@@ -269,6 +316,14 @@ $ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrit
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/
 
+【４】```2```個目は、Istioの```istio.io/rev```キーのエイリアスの実体を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。具体的には、Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
+
+```bash
+$ istioctl tag set default --revision 1-1-0 --overwrite
+```
+
+> ℹ️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+
 【５】IngressGatewayとアプリのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
 
 ```bash
@@ -276,9 +331,16 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 
 # まずはfoo-appで検証する。
 $ kubectl rollout restart deployment app-deployment -n app
+
+# 新バージョンのistio-proxyコンテナがインジェクションされたことを確認する。
+$ istioctl proxy-status
+
+NAME                     CLUSTER        CDS        LDS        EDS        RDS          ISTIOD           VERSION
+foo-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED       istiod-1-1-0     1.1.0
+bar-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED       istiod-1-0-0     1.0.0 # まだ古いIstiodコントロールプレーンと紐づく
+istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SENT     istiod-1-1-0     1.1.0
 ```
 
-![istio_canary-upgrade_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_2.png)
 
 
 【６】新バージョンの```istio-proxy```コンテナをインジェクションしたNamespaceで、アプリの動作を確認する。
@@ -293,19 +355,14 @@ $ kubectl label namespace bar-app istio.io/rev=1-1-0 istio-injection- --overwrit
 $ kubectl label namespace baz-app istio.io/rev=1-1-0 istio-injection- --overwrite
 ```
 
-![istio_canary-upgrade_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_3.png)
 
-【８】もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。
+【８】もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。あるいは、エイリアスの実体を元に戻す。
 
 【９】全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がないかを確認する。
 
-【１０】Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
 
-```bash
-$ istioctl tag set default --revision 1-1-0 --overwrite
-```
 
-【１１】古いIstiodコントロールプレーンをアンインストールする。
+【１０】古いIstiodコントロールプレーンをアンインストールする。
 
 ```bash
 $ istioctl uninstall --revision 1-0-0 -y
@@ -341,7 +398,6 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 > - https://istio.io/latest/docs/setup/upgrade/helm/#canary-upgrade-recommended
 > - https://istio.io/v1.10/docs/setup/upgrade/canary/
 > - https://jimmysong.io/blog/istio-canary-upgrade/
-> - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
 
 
 <br>
