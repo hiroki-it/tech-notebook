@@ -146,30 +146,6 @@ nav:
               - ■ GraphQL-API:
                   - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
 
-  - 🐧 OS:
-      - software/index_basic.md
-      - ■ Linuxカーネル:
-          - Linuxカーネル: software/software_basic_linux_kernel.md
-          - プロセス管理: software/software_basic_linux_kernel_process_management.md
-          - メモリ管理: software/software_basic_linux_kernel_memory_management.md
-          - ストレージ管理: software/software_basic_linux_kernel_storage_management.md
-          - I/O（入出力）管理: software/software_basic_linux_kernel_io_management.md
-          - ジョブ管理: software/software_basic_linux_kernel_job_management.md
-      - ■ ユーティリティ:
-          - ユーティリティ: software/software_basic_utility.md
-          - UNIX系標準ユーティリティ: software/software_basic_utility_unix.md
-          - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
-          - シェル: software/software_basic_utility_shell.md
-          - スクリプト: software/software_basic_utility_script.md
-          - ■ パッケージ:
-              - メモリ系: software/software_basic_utility_package_memory.md
-              - ネットワーク系: software/software_basic_utility_package_network.md
-              - セキュリティ系: software/software_basic_utility_package_security.md
-              - ストレージ系: software/software_basic_utility_package_storage.md
-      - ■ 言語プロセッサ:
-          - 言語プロセッサ: software/software_basic_language_processor.md
-          - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
-
   - 🤝🏻 ミドルウェア:
       - software/index_middleware.md
       - ■ Web系:
@@ -222,6 +198,30 @@ nav:
               - Envoy: software/software_middleware_service_mesh_envoy.md
               - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
               - API: software/software_middleware_service_mesh_envoy_api.md
+
+  - 🐧 OS:
+      - software/index_basic.md
+      - ■ Linuxカーネル:
+          - Linuxカーネル: software/software_basic_linux_kernel.md
+          - プロセス管理: software/software_basic_linux_kernel_process_management.md
+          - メモリ管理: software/software_basic_linux_kernel_memory_management.md
+          - ストレージ管理: software/software_basic_linux_kernel_storage_management.md
+          - I/O（入出力）管理: software/software_basic_linux_kernel_io_management.md
+          - ジョブ管理: software/software_basic_linux_kernel_job_management.md
+      - ■ ユーティリティ:
+          - ユーティリティ: software/software_basic_utility.md
+          - UNIX系標準ユーティリティ: software/software_basic_utility_unix.md
+          - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
+          - シェル: software/software_basic_utility_shell.md
+          - スクリプト: software/software_basic_utility_script.md
+          - ■ パッケージ:
+              - メモリ系: software/software_basic_utility_package_memory.md
+              - ネットワーク系: software/software_basic_utility_package_network.md
+              - セキュリティ系: software/software_basic_utility_package_security.md
+              - ストレージ系: software/software_basic_utility_package_storage.md
+      - ■ 言語プロセッサ:
+          - 言語プロセッサ: software/software_basic_language_processor.md
+          - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
 
   - 🔠 言語:
       - language/index.md
