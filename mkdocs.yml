@@ -95,6 +95,7 @@ markdown_extensions:
   # 注釈表示
   - admonition
   - pymdownx.details
+  # 定義リスト
   - def_list
 
 # 外部プラグイン
