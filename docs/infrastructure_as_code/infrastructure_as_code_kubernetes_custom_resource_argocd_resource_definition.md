@@ -554,7 +554,6 @@ spec:
 
 バージョンタグは、```Chart.yaml```ファイルの```name```キーから確認する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -566,6 +565,9 @@ spec:
   source:
     chart: <チャート名>
 ```
+
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
 #### ▼ helm
 
@@ -695,10 +697,6 @@ ArgoCDはHelmの```v2```と```v3```の両方を保持している。
 
 ArgoCDを介してHelmを実行する場合、内部的には```helm template```コマンドとetcd上のマニフェストを```kubectl diff```コマンドで比較し、生じた差分を```kubectl apply```コマンドを使用してデプロイしている。
 
-> ℹ️ 参考：
-> 
-> - https://github.com/helm/helm/issues/6930#issuecomment-555242131
-> - https://qiita.com/kyohmizu/items/118bf654d0288da2294e
 
 
 ```bash
@@ -706,6 +704,12 @@ $ helm template . | kubectl diff -f -
 
 $ helm template . | kubectl apply -f -
 ```
+
+> ℹ️ 参考：
+>
+> - https://github.com/helm/helm/issues/6930#issuecomment-555242131
+> - https://qiita.com/kyohmizu/items/118bf654d0288da2294e
+
 
 そのため、Helmを手動でマニフェストをリリースする場合とは異なり、カスタムリソースのマニフェストの設定値を変更できる。
 
@@ -1266,7 +1270,6 @@ spec:
 
 
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1277,6 +1280,9 @@ metadata:
 spec:
   entrypoint: foo-template
 ```
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
 
 <br>
 
@@ -1364,7 +1370,6 @@ spec:
 
 
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1381,6 +1386,9 @@ spec:
           source: |
             echo "Hello World"
 ```
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
 
 #### ▼ steps
 
@@ -1410,7 +1418,6 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/arg
 
 
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
 
 ```yaml
 apiVersion: v1
@@ -1433,13 +1440,15 @@ data:
       send: [app-sync-succeeded]
 ```
 
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
+
+
 #### ▼ data.service
 
 通知先のURLを設定する。
 
 
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
 
 ```yaml
 apiVersion: v1
@@ -1454,13 +1463,14 @@ data:
     token: *****
 ```
 
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
+
+
 #### ▼ data.template
 
 通知内容を設定する。
 
 
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
 
 ```yaml
 apiVersion: v1
@@ -1477,6 +1487,8 @@ data:
   template.a-slack-template-with-context: |
     message: "ArgoCD sync in {{ .context.env }}"
 ```
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
 
 <br>
 
@@ -1507,7 +1519,6 @@ ArgoCDの各コンポーネントで共通する値を設定する。
 
 ArgoCD全体で```.spec.ignoreDifferences```キーと同じ機能を有効化する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
 ```yaml
 apiVersion: v1
@@ -1526,6 +1537,9 @@ data:
       # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
       - /spec/metrics
 ```
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+
 
 #### ▼ repositories
 
@@ -1970,12 +1984,6 @@ metadata:
 フックを設定する```Sync```フェーズ（Sync前、Sync時、Syncスキップ時、Sync後、Sync失敗時）を設定する。
 
 
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
-
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -1985,6 +1993,14 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: SyncFail # Sync失敗時
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
+
 
 #### ▼ argocd.argoproj.io/sync-wave
 
@@ -2099,11 +2115,12 @@ Secretタイプは```repository```とする。
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 > - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
 
-#### ▼ Basic認証の場合
+#### ▼ Bearer認証の場合
 
-Basic認証に必要なユーザー名とパスワードを設定する。
+Bearer認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
 
 ```yaml
 # foo-repositoryを監視するためのargocd-repo
@@ -2118,7 +2135,7 @@ stringData:
   name: foo-repository # マニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/foo-manifest.git
   type: git
-  # Basic認証に必要なユーザー名とパスワードを設定する。
+  # Bearer認証に必要なユーザー名とパスワードを設定する。
   username: hiroki-it
   password: *****
 ---
@@ -2134,10 +2151,13 @@ stringData:
   name: bar-repository # マニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
-  # Basic認証に必要なユーザー名とパスワードを設定する。
+  # Bearer認証に必要なユーザー名とパスワードを設定する。
   username: hiroki-it
   password: *****
 ```
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+
 
 #### ▼ SSH公開鍵認証の場合
 
@@ -2198,9 +2218,9 @@ stringData:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
-#### ▼ Basic認証の場合
+#### ▼ Bearer認証の場合
 
-Basic認証に必要なユーザー名とパスワードを設定する。
+Bearer認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートなチャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
@@ -2238,6 +2258,9 @@ stringData:
   password: qux
 ```
 
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+
+
 <br>
 
 ### OCIリポジトリの場合
@@ -2258,9 +2281,9 @@ OCIプロトコルの有効化（```enableOCI```キー）が必要であるが�
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
-#### ▼ Basic認証の場合
+#### ▼ Bearer認証の場合
 
-Basic認証に必要なユーザー名とパスワードを設定する。
+Bearer認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートなOCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
@@ -2304,6 +2327,7 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 > ℹ️ 参考：
 >
+> - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 > - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
 > - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
 > - https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
@@ -2364,8 +2388,100 @@ data:
 
 <br>
 
+## 13-05. cluster-<エンドポイントURL>
+
+### cluster-<エンドポイントURL>とは
+
+ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のKubernetesクラスターのServiceAccountとapplication-controllerを紐づける必要がある。
+
+ArgoCDのapplication-controllerは、```cluster-<エンドポイントURL>```というSecretを介して、デプロイ先のServiceAccountと紐づく。
+
+
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+  name: cluster-<エンドポイントURL>
+  namespace: argocd
+type: Opaque
+data:
+  config: |
+    bearerToken: <ServiceAccountのトークン>
+    tlsClientConfig:
+      insecure: false
+      caData: <HTTPSに必要なSSL証明書>
+  name: foo-cluster
+  server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+```
+
+
+> ℹ️ 参考：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
+> - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
+
+<br>
+
+### セットアップ
+
+
+```argocd add <デプロイ先のKubernetes Clusterのコンテキスト>```コマンドで、Secretを作成できる。
+
+合わせて、argocd-manager、argocd-manager-role、argocd-manager-role-bindingも作成する。
+
+執筆時点（2022/01/30）では、あらかじめマニフェストで定義する方法はない。
+
+```bash
+$ argocd cluster add https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+
+INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system" 
+INFO[0011] ClusterRole "argocd-manager-role" updated    
+INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated 
+Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
+```
+
+> ℹ️ 参考：
+>
+> - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
+> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
+
+
+<br>
+
 
 ## 14. 専用ServiceAccount
+
+### argocd-manager
+
+#### ▼ argocd-managerとは
+
+ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のKubernetesクラスターにServiceAccountを作成する必要がある。
+
+このServiceAccountを介して、ArgoCDのapplication-controllerはKubernetesクラスターにKubernetesリソースをデプロイする。
+
+```argocd add <デプロイ先のKubernetes Clusterのコンテキスト>```コマンドで、```argocd-manager```というServiceAccountを作成できる。
+
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argocd-manager
+  namespace: kube-system
+secrets:
+  - name: argocd-manager-token-*****
+```
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
+
+<br>
+
+### argocd-application-controller
 
 ArgoCDのServiceAccountを作成する。
 
@@ -2373,6 +2489,7 @@ ArgoCDのServiceAccountを作成する。
 apiVersion: v1
 kind: ServiceAccount
 metadata:
+  namespace: argocd
   name: argocd-application-controller
   labels:
     app.kubernetes.io/part-of: argocd
