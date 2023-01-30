@@ -31,9 +31,9 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 ▶ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/)** 
 
-また、技術ノートの知見をさらに整理し、不定期でブログに投稿しています。<br>
+また、技術ノートから知見をピックアップし、不定期でブログに投稿しています。<br>
 
-▶ **[はてなブログ](https://hiroki-hasegawa.hatenablog.jp/)** 
+▶ **[はてなブログ](https://hiroki-hasegawa.hatenablog.jp/archive/)** 
 
 <br>
 

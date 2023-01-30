@@ -1765,11 +1765,6 @@ spec:
 
 #### ▼ ALB Ingressの場合
 
-> ℹ️ 参考：
->
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclass
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclassparams
-
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
@@ -1781,6 +1776,13 @@ spec:
     kind: IngressClassParams
     name: foo-alb-ingress-class-params
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclass
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclassparams
+
 
 <br>
 
@@ -1829,7 +1831,6 @@ Jobの試行の上限実行時間を設定する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#job-termination-and-cleanup
 
 ```yaml
 apiVersion: batch/v1
@@ -1839,6 +1840,9 @@ metadata:
 spec:
   activeDeadlineSeconds: 20
 ```
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#job-termination-and-cleanup
+
 
 <br>
 
@@ -1942,7 +1946,9 @@ spec:
 
 ## 15. Node
 
-Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```キーを```false```とする必要がある。
+Kubernetesの実行時に自動的に作成される。
+
+もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```キーを```false```とする必要がある。
 
 <br>
 

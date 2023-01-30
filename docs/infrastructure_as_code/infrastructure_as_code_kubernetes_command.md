@@ -515,9 +515,7 @@ Name:               baz-node
 
 #### ▼ drainとは
 
-![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_drain_node.png)
-
-Nodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。
+Nodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodをEvictさせる。
 
 Nodeが他に存在すれば、そのNode上でPodが再作成される。
 
@@ -525,8 +523,12 @@ Nodeが他に存在すれば、そのNode上でPodが再作成される。
 $ kubectl drain <Node名>
 ```
 
+![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_drain_node.png)
+
+
 > ℹ️ 参考：
 >
+> - https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service
 > - https://amazon.co.jp/dp/1491979682
 > - https://cstoku.dev/posts/2018/k8sdojo-21/
 > - https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe

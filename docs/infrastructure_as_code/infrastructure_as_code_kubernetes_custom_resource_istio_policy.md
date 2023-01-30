@@ -189,7 +189,9 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 
 既存のIstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
 
-【１】カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。
+```【１】```
+
+:    カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。
 
 ```bash
 $ git clone https://github.com/istio/istio.git
@@ -197,13 +199,17 @@ $ git clone https://github.com/istio/istio.git
 $ kubectl apply -f manifests/charts/base/crds
 ```
 
-【２】IstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
+```【２】```
+
+:    IstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
 
 ```bash
 $ istioctl upgrade
 ```
 
-【３】データプレーンの```istio-proxy```コンテナを再インジェクションする。
+```【３】```
+
+:    データプレーンの```istio-proxy```コンテナを再インジェクションする。
 
 ```bash
 $ kubectl rollout restart deployment app-deployment -n app
@@ -256,7 +262,9 @@ Istioでは、この状況をカナリア方式（一部のユーザーを新```
 
 #### ▼ 手順（Helmを使用する場合）
 
-【１】カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
+```【１】```
+
+:    カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
 
 ```bash
 $ git clone https://github.com/istio/istio.git
@@ -264,14 +272,18 @@ $ git clone https://github.com/istio/istio.git
 $ kubectl apply -f manifests/charts/base/crds
 ```
 
-【２】カスタムリソース定義以外のマニフェストを送信し、旧Istiodコントロールプレーンを残したまま、新Istiodコントロールプレーンを作成する。この手順は、```istioctl install```コマンドによるIstiodのインストールに相当する。
+```【２】```
+
+:    カスタムリソース定義以外のマニフェストを送信し、旧Istiodコントロールプレーンを残したまま、新Istiodコントロールプレーンを作成する。この手順は、```istioctl install```コマンドによるIstiodのインストールに相当する。
 
 ```bash
 # アップグレード先が1.1.0とする。
 $ helm install istiod istio/istiod --set revision=1-1-0 -n istio-system
 ```
 
-【３】新しいIstiodコントロールプレーンを確認する。
+```【３】```
+
+:    新しいIstiodコントロールプレーンを確認する。
 
 ```bash
 # Deployment
@@ -302,7 +314,9 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 
 
 
-【４】ここでは```2```個の選択肢がある。```1```個目は、Istioの```istio.io/rev```キーのリビジョン番号を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+```【４】```
+
+:    ここでは```2```個の選択肢がある。```1```個目は、Istioの```istio.io/rev```キーのリビジョン番号を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 
 ```bash
@@ -316,7 +330,9 @@ $ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrit
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/
 
-【４】```2```個目は、Istioの```istio.io/rev```キーのエイリアスの実体を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。具体的には、Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
+```【４】```
+
+:    ```2```個目は、Istioの```istio.io/rev```キーのエイリアスの実体を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。具体的には、Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
 
 ```bash
 $ istioctl tag set default --revision 1-1-0 --overwrite
@@ -324,7 +340,9 @@ $ istioctl tag set default --revision 1-1-0 --overwrite
 
 > ℹ️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 
-【５】IngressGatewayとアプリのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
+```【５】```
+
+:    IngressGatewayとアプリのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
 
 ```bash
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
@@ -343,10 +361,14 @@ istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SEN
 
 
 
-【６】新バージョンの```istio-proxy```コンテナをインジェクションしたNamespaceで、アプリの動作を確認する。
+```【６】```
+
+:    新バージョンの```istio-proxy```コンテナをインジェクションしたNamespaceで、アプリの動作を確認する。
 
 
-【７】新バージョンの```istio-proxy```コンテナに問題がなければ、他のアプリのNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を順番に変更していく。
+```【７】```
+
+:    新バージョンの```istio-proxy```コンテナに問題がなければ、他のアプリのNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を順番に変更していく。
 
 ```bash
 # 他のNamespaceでも新istio-proxyコンテナを検証していく。
@@ -356,19 +378,27 @@ $ kubectl label namespace baz-app istio.io/rev=1-1-0 istio-injection- --overwrit
 ```
 
 
-【８】もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。あるいは、エイリアスの実体を元に戻す。
+```【８】```
 
-【９】全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がないかを確認する。
+:    もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。あるいは、エイリアスの実体を元に戻す。
+
+```【９】```
+
+:    全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がないかを確認する。
 
 
 
-【１０】古いIstiodコントロールプレーンをアンインストールする。
+```【１０】```
+
+:    古いIstiodコントロールプレーンをアンインストールする。
 
 ```bash
 $ istioctl uninstall --revision 1-0-0 -y
 ```
 
-【１２】古いIstiodコントロールプレーンが削除されたことを確認する。
+```【１２】```
+
+:    古いIstiodコントロールプレーンが削除されたことを確認する。
 
 ```bash
 # Deployment

@@ -33,7 +33,9 @@ Linuxにデフォルトで導入されているミドルウェアで、セキュ
 
 
 
-【１】SELinuxの状態を確認
+```【１】```
+
+:    SELinuxの状態を確認
 
 ```bash
 $ getenforce
@@ -42,7 +44,9 @@ $ getenforce
 Enforcing
 ```
 
-【２】```/etc/selinux/config```を修正する。
+```【２】```
+
+:    ```/etc/selinux/config```を修正する。
 
 ```ini
 # This file controls the state of SELinux on the system.
@@ -61,7 +65,9 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-【３】OSを再起動
+```【３】```
+
+:    OSを再起動
 
 OSを再起動しないと設定が反映されない。
 

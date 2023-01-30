@@ -318,13 +318,17 @@ $ asdf install
 
 > ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
 
-【１】```helm upgrade```コマンドを実行し、インストール済みのチャートをアップグレードする。
+```【１】```
+
+:    ```helm upgrade```コマンドを実行し、インストール済みのチャートをアップグレードする。
 
 ```bash
 $ helm upgrade <リリース名> <チャートへのパス> -f <valuesファイルへのパス> --version <バージョンタグ> --wait
 ```
 
-【２】リリースのリビジョン番号が新しくなっていることを確認する。
+```【２】```
+
+:    リリースのリビジョン番号が新しくなっていることを確認する。
 
 ```bash
 $ helm list
@@ -342,26 +346,34 @@ Helmは、カスタムリソース定義を含むチャートのインストー�
 
 > ℹ️ 参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
 
-【１】kube-apiserverにカスタムリソース定義のマニフェストを送信し、新バージョンのカスタムリソース定義を更新する。Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
+```【１】```
+
+:    kube-apiserverにカスタムリソース定義のマニフェストを送信し、新バージョンのカスタムリソース定義を更新する。Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
 
 ```bash
 $ kubectl apply -f <新バージョンのカスタムリソース定義のマニフェストのURL>
 ```
 
-【２】kube-apiserverにカスタムリソースのマニフェストを送信する。
+```【２】```
+
+:    kube-apiserverにカスタムリソースのマニフェストを送信する。
 
 ```bash
 $ helm install <リリース名> <チャートリポジトリ名>/foo-crd -n foo --version <バージョンタグ>
 ```
 
-【３】補足として、もしカスタムリソース定義をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずにエラーになる。
+```【３】```
+
+:    補足として、もしカスタムリソース定義をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずにエラーになる。
 
 ```bash
 Error: unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "<カスタムリソース名>>" in version "<カスタムリソースのAPIグループ>"
 ```
 
 
-【４】旧バージョンのカスタムリソース定義を削除する。Helmは、カスタムリソース定義の削除に対応していないため、```kubectl delete```コマンドを使用する。
+```【４】```
+
+:    旧バージョンのカスタムリソース定義を削除する。Helmは、カスタムリソース定義の削除に対応していないため、```kubectl delete```コマンドを使用する。
 
 ```bash
 $ kubectl delete -f <旧バージョンのカスタムリソース定義のマニフェストのURL>

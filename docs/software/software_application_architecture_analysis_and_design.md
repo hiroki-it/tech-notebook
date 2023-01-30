@@ -116,11 +116,11 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 UML、概念データモデリング、構造化分析、リアルタイム分析、がある。
 
+![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/diagrams.png)
 
 
 > ℹ️ 参考：https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
 
-![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/diagrams.png)
 <br>
 
 ### 視点による分類
@@ -197,11 +197,6 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 記法
 
-> ℹ️ 参考：
->
-> - https://it-koala.com/usecasediagrams-1832
-> - https://www.itsenka.com/contents/development/uml/usecase.html
-
 ![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram.png)
 
 | 記号名                                                                                                                                               | 説明                                                                                                                                                                                                             | 補足                       |
@@ -217,6 +212,12 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_extend.png)               | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                   |                            |
 | ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_note.png)                    | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>ℹ️ 参考：https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent |                            |
 
+
+> ℹ️ 参考：
+>
+> - https://it-koala.com/usecasediagrams-1832
+> - https://www.itsenka.com/contents/development/uml/usecase.html
+
 **＊例＊**
 
 とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、色々な方がユースケース図とクラス図を作成されている。
@@ -225,13 +226,19 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 > ℹ️ 参考：https://github.com/tooppoo/ticket-modeling
 
-【１】映画チケット購入者の受注管理ソフトウェアを開発する例を考える。
+```【１】```
 
-【２】要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
+:    映画チケット購入者の受注管理ソフトウェアを開発する例を考える。
+
+```【２】```
+
+:    要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
 ![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_tooppoo_usecase-diagram_example.png)
 
-【３】クラス図を作成する。ユースケースから以下のオブジェクトを抽出する。
+```【３】```
+
+:    クラス図を作成する。ユースケースから以下のオブジェクトを抽出する。
 
 | ユースケース           | 抽出されたオブジェクト                                |
 |------------------|----------------------------------------------|
@@ -304,13 +311,21 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 12.2 という状態
 
-【１】初期の状態を『a』として、最初が数字なため、a行の『b』へ移動。
+```【１】```
 
-【２】現在の状態『b』から、次は数字なため、b行の『b』へ移動。
+:    初期の状態を『a』として、最初が数字なため、a行の『b』へ移動。
 
-【３】現在の状態『b』から、次は小数点なため、b行の『d』へ移動。
+```【２】```
 
-【４】現在の状態『d』から、次は数字なため、b行の『e』へ移動。
+:    現在の状態『b』から、次は数字なため、b行の『b』へ移動。
+
+```【３】```
+
+:    現在の状態『b』から、次は小数点なため、b行の『d』へ移動。
+
+```【４】```
+
+:    現在の状態『d』から、次は数字なため、b行の『e』へ移動。
 
 ![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/状態遷移表.png)
 
@@ -330,18 +345,22 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 記法
 
+![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/object-diagram.png)
+
+
 | 記号名     | 説明                                                                                              |
 |------------|-------------------------------------------------------------------------------------------------|
 | インスタンス指定 | 特定の状態にあるオブジェクト（インスタンス）の具体例を表す。『<u>```<具体的なインスタンス名>:<クラス名>```</u>』のように下線付きで表記する。 |
 | スロット       | インスタンスが保持する具体的なデータを表す。『```<属性名>:<データ型> = <値>```』で表記する。                               |
 | リンク        | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                             |
 
+
+
 > ℹ️ 参考：
 >
 > - https://thinkit.co.jp/article/40/3/3.html
 > - https://www.itsenka.com/contents/development/uml/object.html
 
-![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/object-diagram.png)
 
 <br>
 
@@ -552,17 +571,27 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 **＊例＊**
 
-【１】5つのライフライン（店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品DBオブジェクト、商品詳細画面オブジェクト）を設定する。
+```【１】```
 
-【２】各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
+:    5つのライフライン（店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品DBオブジェクト、商品詳細画面オブジェクト）を設定する。
+
+```【２】```
+
+:    各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
 ![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図.png)
 
 **＊例＊**
 
-【１】```3```個のライフラインを設定する。
+```【１】```
 
-【２】各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
+:    ```3```個のライフラインを設定する。
+
+```【２】```
+
+:    各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
 ![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図_2.png)
+
+<br>
 

@@ -247,7 +247,9 @@ $ terraform init \
 
 #### ▼ -reconfigure
 
-初期化のための```terraform init```コマンドの時、今現在で設定しているバックエンドにある```.tfstate```ファイルをそのまま使用する。```--migrate-state```オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの```.tfstate```ファイルはそのまま保持される。
+初期化のための```terraform init```コマンドの時、今現在で設定しているバックエンドにある```.tfstate```ファイルをそのまま使用する。
+
+```--migrate-state```オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの```.tfstate```ファイルはそのまま保持される。
 
 > ℹ️ 参考：
 >
@@ -283,12 +285,12 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 現在のバージョンを基に、```.terraform.lock.hcl```ファイル、モジュール、プラグインのアップグレード/ダウングレードを行う。
 
 
-
-> ℹ️ 参考：https://www.terraform.io/cli/commands/init#upgrade
-
 ```bash
 $ terraform init -upgrade
 ```
+
+> ℹ️ 参考：https://www.terraform.io/cli/commands/init#upgrade
+
 
 <br>
 
@@ -375,14 +377,15 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 #### ▼ 図形の見方
 
-> ℹ️ 参考：https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
-
 | 図形 | 種類                                                |
 |------|-----------------------------------------------------|
 | 楕円 | ルートモジュール                                            |
 | 菱形 | ```provider```ブロック                                  |
 | 四角 | ```resource```ブロック、```data```ブロック                   |
 | ノート  | ```variable```ブロック、```output```ブロック、```local```ブロック |
+
+> ℹ️ 参考：https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
+
 
 <br>
 
@@ -957,7 +960,9 @@ Terraformによる作成ではない方法ですでにクラウド上にイン�
 
 #### ▼ はじめに
 
-【１】バックエンドがリモートの場合、ローカルマシンに```.tfstate```ファイルをダウンロードする。
+```【１】```
+
+:    バックエンドがリモートの場合、ローカルマシンに```.tfstate```ファイルをダウンロードする。
 
 ```bash
 # バックエンドがS3バケットの場合
@@ -967,7 +972,9 @@ $ aws s3 cp s3://<S3バケット名>/<tfstateファイルへのパス> <ロー�
 $ gsutil cp gs://<GCS名>/<tfstateファイルへのパス> <ローカルマシンのパス>
 ```
 
-【２】ダウンロードした```.tfstate```ファイルを```local```バックエンドで指定する。
+```【２】```
+
+:    ダウンロードした```.tfstate```ファイルを```local```バックエンドで指定する。
 
 ```terraform
 terraform {
@@ -981,7 +988,9 @@ terraform {
 
 #### ▼ 初期化
 
-【３】```local```バックエンドで初期化する。
+```【３】```
+
+:    ```local```バックエンドで初期化する。
 
 ```bash
 $ terraform init -reconfigure
@@ -989,7 +998,9 @@ $ terraform init -reconfigure
 
 #### ▼ ```.tfstate```ファイルに実インフラの変更を取り込む
 
-【４】```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
+```【４】```
+
+:    ```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
 
 ```bash
 # 関数を使用せずに定義されている場合
@@ -1084,13 +1095,17 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 
 #### ▼ ```.tf```ファイルに実インフラの変更を取り込む
 
-【５】```terraform import```コマンドの実行と```.tf```ファイルの変更を繰り返す。この時、```.tfstate```ファイルの差分表記と反対に（例：```+```の場合は削除、```-```は追加、```→```は逆向き変更）になるように、tfファイルを修正する。
+```【５】```
+
+:    ```terraform import```コマンドの実行と```.tf```ファイルの変更を繰り返す。この時、```.tfstate```ファイルの差分表記と反対に（例：```+```の場合は削除、```-```は追加、```→```は逆向き変更）になるように、tfファイルを修正する。
 
 
 > ℹ️ 参考：https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
 
-【６】```.tfstate```ファイルと実インフラの差分が無くなったら完了である。
+```【６】```
+
+:    ```.tfstate```ファイルと実インフラの差分が無くなったら完了である。
 
 
 ```bash
@@ -1101,7 +1116,9 @@ No changes. Infrastructure is up-to-date.
 
 #### ▼ さいごに
 
-【７】ローカルマシンの```.tfstate```ファイルをリモートバックエンドにアップロードし、上書きする。
+```【７】```
+
+:    ローカルマシンの```.tfstate```ファイルをリモートバックエンドにアップロードし、上書きする。
 
 ```bash
 # バックエンドがS3バケットの場合
@@ -1111,7 +1128,9 @@ $ aws s3 cp <ローカルマシンのパス> s3://<S3バケット名>/<tfstate�
 $ gsutil cp <ローカルマシンのパス> gs://<GCS名>/<tfstateファイルへのパス>
 ```
 
-【８】ローカルマシンの```.tfstate```ファイルを削除する。
+```【８】```
+
+:    ローカルマシンの```.tfstate```ファイルを削除する。
 
 
 ```bash

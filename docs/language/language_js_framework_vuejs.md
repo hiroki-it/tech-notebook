@@ -25,13 +25,17 @@ description: Vue.jsの知見を記録しています。
 
 #### ▼ MVVMアーキテクチャにおける各層の責務
 
-【１】View層（```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
+```【１】```
+
+:    View層（```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
 
 ViewModel層から渡されたデータを出力するだけ。
 
 
 
-【２】ViewModel層（```index.js```、```foo-component.vue```の```script```タグ部分）
+```【２】```
+
+:    ViewModel層（```index.js```、```foo-component.vue```の```script```タグ部分）
 
 プレゼンテーションロジック（フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など）や、ビジネスロジック（※控えめに）を記述する。
 
@@ -39,7 +43,9 @@ scriptタグによって、JavaScriptが組み込まれている。
 
 
 
-【３】Model層（```store.js```または```foo.js```)
+```【３】```
+
+:    Model層（```store.js```または```foo.js```)
 
 ビジネスロジックや、ajaxメソッドによるデータ送受信、を記述する。
 
@@ -51,13 +57,21 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 
 
-【１】View層では、```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
+```【１】```
 
-【２】ViewModel層では、```index.js```、```foo-component.vue```の```script```タグ部分
+:    View層では、```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
 
-【３】Model層では、Vuex（```store.js```)やJavaScriptからなるモデル（```foo.js```）を設置する。
+```【２】```
 
-【４】これの元、双方向データバインディングが実現される仕組みとして、View層でイベントが起こると、ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる。
+:    ViewModel層では、```index.js```、```foo-component.vue```の```script```タグ部分
+
+```【３】```
+
+:    Model層では、Vuex（```store.js```)やJavaScriptからなるモデル（```foo.js```）を設置する。
+
+```【４】```
+
+:    これの元、双方向データバインディングが実現される仕組みとして、View層でイベントが起こると、ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる。
 
 ![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VueにおけるMVVMアーキテクチャ.png)
 
@@ -468,8 +482,12 @@ var vm = new Vue({
 })
 ```
 
-【１】『検索ボタンを押す』という```submit```イベントの発火によって、```form```タグでイベントに紐付けられているイベントハンドラ関数（```search```メソッド）がコールされる。
-【２】イベントハンドラ関数内の```emit```メソッドが、親コンポーネントの```search```イベントを発火させる。これに紐付くイベントハンドラ関数（```result```メソッド） がコールされる。
+```【１】```
+
+:    『検索ボタンを押す』という```submit```イベントの発火によって、```form```タグでイベントに紐付けられているイベントハンドラ関数（```search```メソッド）がコールされる。
+```【２】```
+
+:    イベントハンドラ関数内の```emit```メソッドが、親コンポーネントの```search```イベントを発火させる。これに紐付くイベントハンドラ関数（```result```メソッド） がコールされる。
 
 **＊実装例＊**
 

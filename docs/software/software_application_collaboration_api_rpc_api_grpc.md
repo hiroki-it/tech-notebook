@@ -19,11 +19,13 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 ### アーキテクチャ
 
-![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
-
 RPCフレームワークの一つで、プロトコルバッファーを使用してRPC（リモートプロシージャーコール）を実行する。
 
 RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
+
+![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
+
+
 
 > ℹ️ 参考：
 >
@@ -41,11 +43,11 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 通信方式は、```.proto```ファイルで定義する。
 
+![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_connection-type.png)
 
 
 > ℹ️ 参考：https://fintan.jp/page/1521/
 
-![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_connection-type.png)
 
 #### ▼ Unary RPC（単項RPC）
 
@@ -55,7 +57,6 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 
 
-> ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
 
 
 ```protobuf
@@ -65,6 +66,8 @@ service Request {
 }
 ```
 
+> ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
+
 #### ▼ Server Streaming RPC（サーバーストリーミングRPC）
 
 クライアントが```1```個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。
@@ -73,7 +76,6 @@ service Request {
 
 
 
-> ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
 
 
 ```protobuf
@@ -82,6 +84,9 @@ service Notification {
   }
 }
 ```
+
+> ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
+
 
 
 #### ▼ Client Streaming RPC（クライアントストリーミングRPC）
@@ -92,7 +97,6 @@ service Notification {
 
 
 
-> ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
 
 ```protobuf
 service Upload {
@@ -100,6 +104,9 @@ service Upload {
   }
 }
 ```
+
+> ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
+
 
 
 #### ▼ Bidirectional Streaming RPC（双方向ストリーミングRPC）
@@ -112,11 +119,7 @@ service Upload {
 
 
 
-> ℹ️ 参考：
-> 
-> - https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
-> - https://reboooot.net/post/hello-grpc/
-> - https://christina04.hatenablog.com/entry/2017/11/13/203000
+
 
 ```protobuf
 service Chat {
@@ -138,6 +141,12 @@ service Chat {
 }
 ```
 
+> ℹ️ 参考：
+>
+> - https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
+> - https://reboooot.net/post/hello-grpc/
+> - https://christina04.hatenablog.com/entry/2017/11/13/203000
+
 <br>
 
 ## 02. ディレクトリ構成ポリシー
@@ -146,10 +155,7 @@ service Chat {
 
 各マイクロサービスの```.proto```ファイル、RPC-API仕様書、```.pb.*```ファイル、を同じリポジトリで管理する。
 
-> ℹ️ 参考：
->
-> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
-> - https://lab.mo-t.com/blog/protocol-buffers
+
 
 
 ```yaml
@@ -217,6 +223,11 @@ repository/
     │           │
     ...         ...
 ```
+
+> ℹ️ 参考：
+>
+> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
+> - https://lab.mo-t.com/blog/protocol-buffers
 
 <br>
 

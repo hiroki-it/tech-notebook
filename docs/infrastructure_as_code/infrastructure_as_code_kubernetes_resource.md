@@ -126,6 +126,22 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 <br>
 
+### Node
+
+#### ▼ Nodeとは
+
+Kubernetesリソースを配置するサーバーのこと。
+
+#### ▼ ステータス
+
+
+| フェーズ名  | 説明                               |
+|--------|----------------------------------|
+| Ready  | NodeがPodをスケジューリング可能な状態であることを表す。  |
+| NotReady | NodeがPodをスケジューリング不可能な状態であることを表す。 |
+
+<br>
+
 ### Pod
 
 #### ▼ Podとは
@@ -306,23 +322,41 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
-【１】クライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
+```【１】```
 
-【２】Podのマニフェストに```deletionTimestamp```キーが追加され、Podが```Terminating```フェーズとなり、削除プロセスを開始する。
+:    クライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
-【３】Podの```.spec.terminationGracePeriodSeconds```キーに応じて、Podの削除プロセス完了の待機時間を開始する。
+```【２】```
 
-【４】最初にpreStopフックが起動し、```.spec.containers[].lifecycle.preStop```キーで設定した待機処理をコンテナが実行する。
+:    Podのマニフェストに```deletionTimestamp```キーが追加され、Podが```Terminating```フェーズとなり、削除プロセスを開始する。
 
-【５】DeploymentがPodを切り離す。また、Serviceとkube-proxyがPodの宛先情報を削除する。
+```【３】```
 
-【６】```.spec.containers[].lifecycle.preStop```キーによるコンテナの待機処理が終了する。
+:    Podの```.spec.terminationGracePeriodSeconds```キーに応じて、Podの削除プロセス完了の待機時間を開始する。
 
-【７】待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに```SIGTERM```シグナルを送信する。これにより、コンテナの停止処理が開始する。
+```【４】```
 
-【８】```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
+:    最初にpreStopフックが起動し、```.spec.containers[].lifecycle.preStop```キーで設定した待機処理をコンテナが実行する。
 
-【９】Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
+```【５】```
+
+:    DeploymentがPodを切り離す。また、Serviceとkube-proxyがPodの宛先情報を削除する。
+
+```【６】```
+
+:    ```.spec.containers[].lifecycle.preStop```キーによるコンテナの待機処理が終了する。
+
+```【７】```
+
+:    待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに```SIGTERM```シグナルを送信する。これにより、コンテナの停止処理が開始する。
+
+```【８】```
+
+:    ```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
+
+```【９】```
+
+:    Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
 
 > ℹ️ 参考：
 >
@@ -345,11 +379,17 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 #### ▼ クライアントがPod内のログを参照できる仕組み
 
-【１】クライアント（特に```kubectl```コマンド実行者）が```kubectl logs```コマンドを実行する。
+```【１】```
 
-【２】kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
+:    クライアント（特に```kubectl```コマンド実行者）が```kubectl logs```コマンドを実行する。
 
-【３】kubeletはリクエストを受信し、Nodeの```/var/log```ディレクトリを読み込む。Nodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
+```【２】```
+
+:    kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
+
+```【３】```
+
+:    kubeletはリクエストを受信し、Nodeの```/var/log```ディレクトリを読み込む。Nodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
 
 ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_logging.png)
 
@@ -826,7 +866,9 @@ $ kubectl exec -n prometheus foo-pod -- df -hT
 
 ここでは、Prometheusを例に挙げる。
 
-【１】PrometheusのPodに紐づくPersistentVolumeは、最大200Giを要求していることがわかる。
+```【１】```
+
+:    PrometheusのPodに紐づくPersistentVolumeは、最大200Giを要求していることがわかる。
 
 ```bash
 $ kubectl get pvc foo-prometheus-pvc -n prometheus
@@ -834,7 +876,9 @@ NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS
 foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp2-encrypted   181d
 ```
 
-【２】Node内（AWS EKSのEC2ワーカーNodeの場合）で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
+```【２】```
+
+:    Node内（AWS EKSのEC2ワーカーNodeの場合）で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
 
 ```bash
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/<リージョン>/vol-*****/prometheus-db/
@@ -850,7 +894,9 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 ```
 
-【３】```df```コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。
+```【３】```
+
+:    ```df```コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。
 
 ```bash
 $ df -h /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
@@ -940,7 +986,9 @@ N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node a
 
 > ℹ️ 参考：https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
 
-【１】PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
+```【１】```
+
+:    PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
 
 ```bash
 $ kubectl describe pvc <PersistentVolumeClaim名>
@@ -951,19 +999,25 @@ Annotations:   pv.kubernetes.io/bind-completed: yes
                pv.kubernetes.io/bound-by-controller: yes
                volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
                volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal
-           
+         
 ...
 ```
 
-【２】PodがいずれのNodeでスケジューリングされているのかを確認する。
+```【２】```
+
+:    PodがいずれのNodeでスケジューリングされているのかを確認する。
 
 ```bash
 $ kubectl get pod <Pod名> -o wide
 ```
 
-【３】Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
+```【３】```
 
-【４】StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
+:    Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
+
+```【４】```
+
+:    StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
 
 > ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
 
@@ -1028,7 +1082,7 @@ $ docker inspect <コンテナID>
                 "/var/lib/kubelet/pods/*****/etc-hosts:/etc/hosts",
                 "/var/lib/kubelet/pods/*****/containers/foo/*****:/dev/termination-log"
             ],
-      
+    
             ...
         },
   
@@ -1037,7 +1091,7 @@ $ docker inspect <コンテナID>
         "Mounts": [
   
             ...
-      
+    
             {
                 "Type": "bind", # バインドマウントが使用されている。
                 "Source": "/data",

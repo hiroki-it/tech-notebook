@@ -41,7 +41,6 @@ Lambdaはハンドラ関数を非同期関数としてコールし、引数の�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
 **＊実装例＊**
 
@@ -85,6 +84,9 @@ exports.handler = async (event) => {
     })
 }
 ```
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
 #### ▼ 同期ハンドラ関数（Non-async handlers）
 
@@ -413,7 +415,6 @@ CloudWatchログにてこれを確認する。
 
 ### デフォルトで使用できるパッケージ
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 
 以下のパッケージでは、npmを使用する必要はない。
 
@@ -427,6 +428,9 @@ CloudWatchログにてこれを確認する。
 |-------------------|----------------------------------------------------------|-------------------------------------------------------------------------|
 | Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる                       | ℹ️ 参考：https://nodejs.org/api/index.html                                 |
 | aws-sdk.js        | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
+
 
 <br>
 
@@ -442,7 +446,6 @@ CloudWatchログにてこれを確認する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
 
 ```javascript
 "use strict";
@@ -471,6 +474,9 @@ exports.handler = async (event) => {
 };
 ```
 
+> ℹ️ 参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
+
+
 <br>
 
 ## 03-02. 関数例
@@ -480,11 +486,6 @@ exports.handler = async (event) => {
 **＊実装例＊**
 
 AmplifyのイベントをEventBridgeでキャッチし、これをLambdaに転送する。Lambdaでは、メッセージを構成し、Slack-APIに送信する。
-
-> ℹ️ 参考：
->
-> - https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
-> - https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js
 
 ```javascript
 "use strict";
@@ -695,6 +696,13 @@ const postMessageToSlack = (message) => {
   });
 };
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
+> - https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js
+
 
 <br>
 

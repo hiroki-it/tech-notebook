@@ -451,9 +451,13 @@ repository/
 
 > ℹ️ 参考：https://logmi.jp/tech/articles/323033
 
-【１】ワーカーNodeを削除する。
+```【１】```
 
-【２】ワーカーNodeを再作成する。
+:    ワーカーNodeを削除する。
+
+```【２】```
+
+:    ワーカーNodeを再作成する。
 
 #### ▼ ローリング方式（サージ方式、ライブ方式）
 
@@ -469,9 +473,13 @@ repository/
 
 
 
-【１】旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
+```【１】```
 
-【２】```kubectl drain```コマンドを実行し、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
+:    旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
+
+```【２】```
+
+:    ```kubectl drain```コマンドを実行し、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
 ```bash
 $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
@@ -486,9 +494,13 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node_scheduling-pod-status.png)
 
-【３】ドレイン処理が完了した後、新Nodeグループ内ワーカーNode上でPodが正常に稼働していることを確認する。
+```【３】```
 
-【４】動作が問題なければ、旧Nodeグループを削除する。
+:    ドレイン処理が完了した後、新Nodeグループ内ワーカーNode上でPodが正常に稼働していることを確認する。
+
+```【４】```
+
+:    動作が問題なければ、旧Nodeグループを削除する。
 
 > ℹ️ 参考：
 >
@@ -512,11 +524,17 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 
 
-【１】旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）を作成する。新Clusterには、全てのKubernetesリソースが揃っている。
+```【１】```
 
-【２】社内から、新Clusterに特定のポート番号でアクセスし、動作を確認する。
+:    旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）を作成する。新Clusterには、全てのKubernetesリソースが揃っている。
 
-【３】動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterにロールバックする場合に備えて、旧Clusterは削除せずに残しておく。
+```【２】```
+
+:    社内から、新Clusterに特定のポート番号でアクセスし、動作を確認する。
+
+```【３】```
+
+:    動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterにロールバックする場合に備えて、旧Clusterは削除せずに残しておく。
 
 > ℹ️ 参考：
 >

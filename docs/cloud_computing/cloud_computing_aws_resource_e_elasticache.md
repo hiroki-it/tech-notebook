@@ -117,11 +117,11 @@ Redisノードのグループ。
 
 セッションIDについては、以下のリンクを参考にせよ。
 
+![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ElastiCacheのセッション管理機能.png)
 
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
-![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ElastiCacheのセッション管理機能.png)
 
 <br>
 
@@ -135,19 +135,29 @@ RDSに対するSQLと読み出されたデータを、キャッシュとして�
 
 ![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クエリCache管理機能_1.png)
 
-【１】アプリケーションは、RDSの前に、Redisに対してSQLを実行する。
+```【１】```
+
+:    アプリケーションは、RDSの前に、Redisに対してSQLを実行する。
 
 ```sql
 SELECT * FROM users;
 ```
 
-【２】始めて実行されたSQLの場合、RedisはSQLをキーとして保存し、キャッシュが無いことがアプリケーションに返却する。
+```【２】```
 
-【３】アプリケーションはRDSに対してSQLを実行する。
+:    始めて実行されたSQLの場合、RedisはSQLをキーとして保存し、キャッシュが無いことがアプリケーションに返却する。
 
-【４】データが読み出される。
+```【３】```
 
-【５】アプリケーションはRedisにデータを登録する。
+:    アプリケーションはRDSに対してSQLを実行する。
+
+```【４】```
+
+:    データが読み出される。
+
+```【５】```
+
+:    アプリケーションはRedisにデータを登録する。
 
 ```bash
 # ElastiCacheには、SQLの実行結果がまだ保存されていない
@@ -167,13 +177,17 @@ SELECT * FROM users;
 
 ![クエリCache管理機能_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クエリCache管理機能_2.png)
 
-【６】次回、アプリケーションは、RDSの前に、Redisに対してSQLを実行する。
+```【６】```
+
+:    次回、アプリケーションは、RDSの前に、Redisに対してSQLを実行する。
 
 ```sql
 SELECT * FROM users;
 ```
 
-【７】Redisは、SQLをキーにしてデータを特定し、アプリケーションに返却する。
+```【７】```
+
+:    Redisは、SQLをキーにしてデータを特定し、アプリケーションに返却する。
 
 ```bash
 # ElastiCacheには、SQLの実行結果が既に保存されている
@@ -262,14 +276,24 @@ Redisクラスターでは、設定値（例：エンジンバージョン）の
 
 
 
-【１】RedisのセッションやクエリキャッシュをS3にエクスポートする。
+```【１】```
 
-【２】新しいRedisを作成する。この時、インポートを使用して、セッションやクエリキャッシュを引き継いだRedisクラスターを別途作成する。
+:    RedisのセッションやクエリキャッシュをS3にエクスポートする。
 
-【３】新しく作成したRedisクラスターをアップグレードする。
+```【２】```
 
-【４】アプリケーションの接続先を古いRedisクラスターから新しいものに変更する。
+:    新しいRedisを作成する。この時、インポートを使用して、セッションやクエリキャッシュを引き継いだRedisクラスターを別途作成する。
 
-【５】古いRedisクラスターを削除する。
+```【３】```
+
+:    新しく作成したRedisクラスターをアップグレードする。
+
+```【４】```
+
+:    アプリケーションの接続先を古いRedisクラスターから新しいものに変更する。
+
+```【５】```
+
+:    古いRedisクラスターを削除する。
 
 <br>

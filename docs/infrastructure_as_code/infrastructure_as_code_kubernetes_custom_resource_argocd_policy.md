@@ -74,9 +74,6 @@ repository/
 監視対象リポジトリにはKubernetesリソースのマニフェストやhelmチャートが管理されている。
 
 
-
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
-
 ```yaml
 argocd-repository/
 ├── tes/
@@ -107,6 +104,9 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 ├── stg/
 └── prd/
 ```
+
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
+
 
 <br>
 
@@ -355,9 +355,13 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
 > ℹ️ 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
-【１】Applicationの```.spec.syncPolicy.allowEmpty```キーを有効化する。
+```【１】```
 
-【２】フォアグラウンドで削除すると、Applicationの```.metadata.finalizers```キーの値に削除中のリソースが設定される。この配列を空配列に変更する。ArgoCDのUIからは変更できず、```kubectl patch```コマンドを使用する必要がある。
+:    Applicationの```.spec.syncPolicy.allowEmpty```キーを有効化する。
+
+```【２】```
+
+:    フォアグラウンドで削除すると、Applicationの```.metadata.finalizers```キーの値に削除中のリソースが設定される。この配列を空配列に変更する。ArgoCDのUIからは変更できず、```kubectl patch```コマンドを使用する必要がある。
 
 > ℹ️ 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
@@ -367,7 +371,9 @@ $ kubectl patch crd applications.argoproj.io \
     --type=merge
 ```
 
-【３】1つ目の`spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
+```【３】```
+
+:    1つ目の`spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
 
 #### ▼ Namespaceを削除できない
 

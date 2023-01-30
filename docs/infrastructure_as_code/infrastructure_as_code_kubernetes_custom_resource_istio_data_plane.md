@@ -68,7 +68,9 @@ $ istio-iptables \
 
 #### ▼ ルール
 
-【１】```ps```コマンドを使用して、```istio-proxy```コンテナのプロセスのID（PID）を取得する。
+```【１】```
+
+:    ```ps```コマンドを使用して、```istio-proxy```コンテナのプロセスのID（PID）を取得する。
 
 ```bash
 # PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。
@@ -79,7 +81,9 @@ $ ps aux | grep envoy | awk '{print $2}'
 3456789
 ```
 
-【２】```nsenter```コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに```iptables```コマンドを送信する。Istioによって管理されているChainのルールを取得できる。
+```【２】```
+
+:    ```nsenter```コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに```iptables```コマンドを送信する。Istioによって管理されているChainのルールを取得できる。
 
 ```bash
 $ nsenter -t <istio-proxyコンテナのPID> -n iptables -L -n -t nat --line-number

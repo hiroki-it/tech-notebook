@@ -222,7 +222,9 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 
 
 
-【１】ユニットファイルを作成する。
+```【１】```
+
+:    ユニットファイルを作成する。
 
 ```ini
 # victoriametrics.service

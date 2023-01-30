@@ -142,9 +142,11 @@ spec:
 
 #### ▼ Gatewayとは
 
+IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
+
+
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
-IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
 
 
 
@@ -159,7 +161,7 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 #### ▼ VirtualServiceとは
 
-![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
+
 
 IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする能力を担う。
 
@@ -167,7 +169,7 @@ IngressGatewayの能力のうち、IngressGatewayで受信したインバウン�
 
 ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
 
-
+![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
 > ℹ️ 参考：
 >

@@ -208,7 +208,9 @@ CentOS公式リポジトリはパッケージのバージョンが古いこと�
 
 #### ▼ リポジトリ自体のインストール
 
-【１】CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
+```【１】```
+
+:    CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
 
 ```bash
 # CentOS7系の場合
@@ -221,7 +223,9 @@ $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 $ yum install -y epel-release でもよい
 ```
 
-【２】CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
+```【２】```
+
+:    CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
 
 ```bash
 # CentOS7系の場合
@@ -231,7 +235,9 @@ $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-【３】設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
+```【３】```
+
+:    設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
 
 ```ini
 [epel]
@@ -264,7 +270,9 @@ gpgcheck=1
 
 #### ▼ PHPのインストール
 
-【４】Remiリポジトリの有効化オプションを永続的に使用できるようにする。
+```【４】```
+
+:    Remiリポジトリの有効化オプションを永続的に使用できるようにする。
 
 ```bash
 # CentOS7の場合
@@ -277,7 +285,9 @@ $ yum-config-manager --enable remi-php74
 $ dnf module enable php:remi-7.4
 ```
 
-【５】remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される。
+```【５】```
+
+:    remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される。
 
 ```bash
 # CentOS7の場合
@@ -290,7 +300,9 @@ $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
-【６】再インストールする時は、reinstallとすること。
+```【６】```
+
+:    再インストールする時は、reinstallとすること。
 
 ```bash
 # CentOS7の場合

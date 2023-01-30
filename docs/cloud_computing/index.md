@@ -1,10 +1,12 @@
 # セクションの目次
 
-## ⛅ クラウドコンピューティング
+## ⛅ クラウドコンピューティング（クラウド）
 
 ### クラウドコンピューティング
 
 * #### [︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing.html)
+
+<br>
 
 ### AWS
 

@@ -36,7 +36,9 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 ### eks-code-dnsアドオンとは
 
-EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
+EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働する。
+
+同じCluster内の全てのPodの名前解決を行う。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
@@ -46,7 +48,9 @@ EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働�
 
 ### eks-kube-proxyアドオンとは
 
-EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
+EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働する。
+
+EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
@@ -58,7 +62,11 @@ EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
 
-EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
+EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働する。
+
+PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。
+
+これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
 
 > ℹ️ 参考：
 >
@@ -79,7 +87,9 @@ AWS LBコントローラーは、専用のALB、TargetGroupBinding、から構�
 
 #### ▼ セットアップ
 
-【１】ローカルマシンにIAMポリシーの```.json```ファイルをダウンロードする。
+```【１】```
+
+:    ローカルマシンにIAMポリシーの```.json```ファイルをダウンロードする。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 
@@ -87,7 +97,9 @@ AWS LBコントローラーは、専用のALB、TargetGroupBinding、から構�
 $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
 ```
 
-【２】```.json```ファイルを使用して、IAMポリシーを作成する。
+```【２】```
+
+:    ```.json```ファイルを使用して、IAMポリシーを作成する。
 
 ```bash
 $ aws iam create-policy \
@@ -95,7 +107,9 @@ $ aws iam create-policy \
     --policy-document file://iam_policy.json
 ```
 
-【４】IAM OIDC providerをEKS Clusterに紐づける。
+```【４】```
+
+:    IAM OIDC providerをEKS Clusterに紐づける。
 
 ```bash
 $ eksctl utils associate-iam-oidc-provider \
@@ -108,7 +122,9 @@ $ eksctl utils associate-iam-oidc-provider \
 2022-05-30 23:39:05 [ℹ]  IAM Open ID Connect provider is already associated with cluster "foo-eks-cluster" in "ap-northeast-1"
 ```
 
-【５】ServiceAccountを作成し、IAMロールと紐づける。
+```【５】```
+
+:    ServiceAccountを作成し、IAMロールと紐づける。
 
 ```bash
 $ eksctl create iamserviceaccount \
@@ -120,7 +136,9 @@ $ eksctl create iamserviceaccount \
     --approve
 ```
 
-【６】ServiceAccountがデプロイされたことを確認する。
+```【６】```
+
+:    ServiceAccountがデプロイされたことを確認する。
 
 > ℹ️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
@@ -156,7 +174,9 @@ secrets:
 - name: aws-load-balancer-controller-token-****
 ```
 
-【７】指定したリージョンにAWS LBコントローラーをデプロイする。この時、事前に作成したServiceAcountをALBに紐づける。
+```【７】```
+
+:    指定したリージョンにAWS LBコントローラーをデプロイする。この時、事前に作成したServiceAcountをALBに紐づける。
 
 ```bash
 # FargateにAWS LBコントローラーをデプロイする場合
@@ -184,7 +204,9 @@ $ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 AWS Load Balancer controller installed!
 ```
 
-【８】AWS LBコントローラーがデプロイされ、READY状態になっていることを確認する。
+```【８】```
+
+:    AWS LBコントローラーがデプロイされ、READY状態になっていることを確認する。
 
 ```bash
 $ helm list -n kube-system
@@ -216,7 +238,9 @@ aws-load-balancer-controller   2/2     2            0           22m
 }
 ```
 
-【９】Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。以下の条件を満たす必要がある。
+```【９】```
+
+:    Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。以下の条件を満たす必要がある。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 

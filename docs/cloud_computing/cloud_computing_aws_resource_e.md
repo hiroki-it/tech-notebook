@@ -44,7 +44,9 @@ description: Eで始まるAWSリソース＠AWSの知見を記録しています
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
-【１】ECRにログインする。
+```【１】```
+
+:    ECRにログインする。
 
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1 | docker login \
@@ -54,14 +56,18 @@ $ aws ecr get-login-password --region ap-northeast-1 | docker login \
 Login Succeeded
 ```
 
-【２】イメージにタグを付与する。
+```【２】```
+
+:    イメージにタグを付与する。
 
 ```bash
 # docker tag foo:latest <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
 ```
 
-【３】ECRにコンテナイメージをプッシュする。
+```【３】```
+
+:    ECRにコンテナイメージをプッシュする。
 
 ```bash
 # docker push <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest

@@ -21,11 +21,17 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 ![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-collection.png)
 
-【１】サーバーの場合、稼働するdatadogエージェントが、datadog-APIにアプリケーションログを送信する。コンテナの場合、FluentBitが代わりにアプリケーションログを送信する。
+```【１】```
 
-【２】Datadogにて、ログはパイプラインで処理され、構造化ログになる。
+:    サーバーの場合、稼働するdatadogエージェントが、datadog-APIにアプリケーションログを送信する。コンテナの場合、FluentBitが代わりにアプリケーションログを送信する。
 
-【３】ユーザーは、ログの属性値を基に、ログを検索できるようになる。
+```【２】```
+
+:    Datadogにて、ログはパイプラインで処理され、構造化ログになる。
+
+```【３】```
+
+:    ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 
 > ℹ️ 参考：https://developers.cyberagent.co.jp/blog/archives/12565/
 
@@ -33,11 +39,17 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 ### フロントエンド
 
-【１】ブラウザのコンソールに出力されるログを収集する。
+```【１】```
 
-【２】Datadogにて、ログはパイプラインで処理され、構造化ログになる。
+:    ブラウザのコンソールに出力されるログを収集する。
 
-【３】ユーザーは、ログの属性値を基に、ログを検索できるようになる。
+```【２】```
+
+:    Datadogにて、ログはパイプラインで処理され、構造化ログになる。
+
+```【３】```
+
+:    ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 
 > ℹ️ 参考：https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89
 
