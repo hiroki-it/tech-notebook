@@ -19,7 +19,6 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
 
 
 argocd-server、repo-server、application-controller、redis-server、dex-server、から構成される。
@@ -34,6 +33,8 @@ argocd-redis-*****                      1/1     Running   0          1d
 argocd-application-controller-*****     1/1     Running   0          1d
 argocd-dex-server-*****                 1/1     Running   0          1d
 ```
+
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
 
 
 > ℹ️ 参考：

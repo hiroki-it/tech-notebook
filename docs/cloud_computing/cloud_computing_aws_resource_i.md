@@ -145,7 +145,6 @@ AWSリソースに関する認可のスコープを定義する。
 
 AWSリソースの識別子のこと。リージョンのグループには、```aws```、```aws-cn```（中国系ネットワーク）、```aws-cn```（政府系ネットワーク）、がある。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
 ```yaml
 {
@@ -157,6 +156,9 @@ AWSリソースの識別子のこと。リージョンのグループには、``
   ]
 }
 ```
+
+> ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+
 
 <br>
 

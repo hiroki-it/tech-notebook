@@ -41,10 +41,9 @@ description: Minikube＠開発環境の知見を記録しています。
 このコンテナ内にMinikube仮想サーバーを作成し、Nodeを持つClusterを作成する。
 
 
+![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_docker_driver.png)
 
 > ℹ️ 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
-
-![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_docker_driver.png)
 
 <br>
 
@@ -82,10 +81,6 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。
 
-
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
-
 ```bash
 $ mkdir -p ~/.minikube/files/etc
 
@@ -94,6 +89,9 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 #  /etc/foo.conf に配置される
 $ minikube start
 ```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
+
 
 #### ▼ 各ドライバーのホストとNode間マウント
 

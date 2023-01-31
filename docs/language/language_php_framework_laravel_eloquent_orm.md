@@ -21,7 +21,7 @@ Laravelに組み込まれているORM。
 
 Active Recordパターンで実装されている。
 
-内部にはPDOが使用されており、Laravelクエリビルダよりも隠蔽度が高い。
+内部にはPDOが使用されており、Laravelクエリビルダーよりも抽象度が高い。
 
 
 
@@ -42,11 +42,6 @@ Active Recordパターンで実装されている。
 
 ビジネスロジックが複雑でないアプリケーションの開発に適している。
 
-オブジェクト間の依存関係については、以下のリンクを参考せよ。
-
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 
@@ -132,11 +127,6 @@ ER図における各テーブルのリレーションシップを元に、モデ
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
 
-ER図については、以下のリンクを参考にせよ。
-
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -619,17 +609,19 @@ Eloquentモデルにはより上位のメソッドが定義されていないこ
 
 
 
-> ℹ️ 参考：
->
-> - https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
-> - https://qiita.com/mpyw/items/7c7e8dc665584122a275
-
 | クラス            | 名前空間                                              | ```__call```メソッドを経由してコールできるクラス      |
 |:---------------|:------------------------------------------------------|:--------------------------------------|
 | Queryビルダー      | ```Illuminate\Database\Query\Builder```               | なし                                    |
 | Eloquentビルダー   | ```Illuminate\Database\Eloquent\Builder```            | Queryビルダー、                            |
 | Eloquentリレーション | ```Illuminate\Database\Eloquent\Relations\Relation``` | Queryビルダー、Eloquentビルダー、               |
 | Eloquentモデル    | ```Illuminate\Database\Eloquent\Model```              | Queryビルダー、Eloquentビルダー、Eloquentリレーション |
+
+
+
+> ℹ️ 参考：
+>
+> - https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
+> - https://qiita.com/mpyw/items/7c7e8dc665584122a275
 
 #### ▼ Eloquentビルダー
 

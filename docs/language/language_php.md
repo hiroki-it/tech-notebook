@@ -21,7 +21,6 @@ description: PHPの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-> ℹ️ 参考：https://loop-never-ends.com/ubuntu-php-install/
 
 ```bash
 # 外部リポジトリをインストールする。
@@ -35,6 +34,9 @@ $ apt-get update
 # PHPをインストールする。
 $ apt -y install php=1.0.0
 ```
+
+> ℹ️ 参考：https://loop-never-ends.com/ubuntu-php-install/
+
 
 <br>
 
@@ -117,7 +119,11 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 
 #### ▼ 本番/開発環境用```php.ini```ファイル
 
-PHPでは、```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている。これをコピーして設定値を変更し、読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）。代わりに、最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し、同じく配置しても良い。
+PHPでは、```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている。
+
+これをコピーして設定値を変更し、読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）。
+
+代わりに、最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し、同じく配置しても良い。
 
 ```bash
 $ ls -la /usr/local/etc/php
@@ -132,9 +138,10 @@ drwxr-xr-x 1 root root  4096 Dec 17 15:21 conf.d
 
 #### ▼ 開発環境用```php.ini```ファイル例
 
-あらかじめ用意されている```php.ini-development```ファイルを参考に設定する。元の値をコメントアウトで示す。
+あらかじめ用意されている```php.ini-development```ファイルを参考に設定する。
 
-> ℹ️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+元の値をコメントアウトで示す。
+
 
 ```ini
 # 開発環境では、スタックトレースを表示
@@ -181,9 +188,14 @@ zend.assertions = 1
 mbstring.language = Japanese
 ```
 
+> ℹ️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+
+
 #### ▼ 本番環境用```php.ini```ファイル例
 
-あらかじめ用意されている```php.ini-production```ファイルを参考に設定する。元の値をコメントアウトで示す。
+あらかじめ用意されている```php.ini-production```ファイルを参考に設定する。
+
+元の値をコメントアウトで示す。
 
 > ℹ️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
@@ -260,3 +272,6 @@ opcache.preload_user = www-data
 
 
 > ℹ️ 参考：https://weblabo.oscasierra.net/php-opcache/
+
+
+<br>

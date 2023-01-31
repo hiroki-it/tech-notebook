@@ -120,12 +120,14 @@ AWS CLIを実行するアカウントのアクセスキーIDを設定する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 ```ini
 [default]
 aws_access_key_id = *****
 ```
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
 
 #### ▼ aws_secret_access_key
 
@@ -135,12 +137,14 @@ AWS CLIを実行するアカウントのシークレットアクセスキーID�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 ```ini
 [default]
 aws_secret_access_key = *****
 ```
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ aws_session_token
 
@@ -149,13 +153,15 @@ aws_secret_access_key = *****
 ```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
 
 
-
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 ```ini
 [default]
 aws_session_token = *****
 ```
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
 
 <br>
 
@@ -167,25 +173,29 @@ AWS CLIの返却値のデータ形式を設定する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 ```ini
 [default]
 output = json
 ```
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ region
 
 AWS CLIで操作するAWSリソースのリージョンを設定する。
 
 
-
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 ```ini
 [default]
 region = ap-northeast-1
 ```
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
 
 #### ▼ role_arn
 
@@ -193,12 +203,14 @@ AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [profile foo]
 role_arn = arn:aws:iam::<アカウントID>:role/foo-role
 ```
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ role_session_name
 
@@ -206,12 +218,14 @@ IAMロールの委譲後のIAMユーザーの一時的な名前を設定する�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 ```ini
 [profile foo]
 role_session_name = hiroki.hasegawa
 ```
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ source_profile
 
@@ -219,12 +233,14 @@ IAMロールの委譲先のIAMユーザーのプロファイル名を設定す�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 ```ini
 [profile foo]
 source_profile = default
 ```
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 <br>
 
@@ -247,12 +263,12 @@ $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 ```AWS_PROFILE```変数よりも優先される。
 
 
-
-> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
-
 ```bash
 $ export AWS_DEFAULT_PROFILE=default
 ```
+
+> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+
 
 #### ▼ AWS_DEFAULT_REGION
 
@@ -271,7 +287,6 @@ $ export AWS_DEFAULT_REGION=ap-northeast-1
 現在のターミナルで使用するプロファイルを設定する。
 
 
-
 > ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 ```bash
@@ -282,7 +297,6 @@ $ export AWS_PROFILE=foo-profile
 #### ▼ AWS_SECRET_ACCESS_KEY
 
 現在のターミナルで使用するシークレットアクセスキーを設定する。
-
 
 
 ```bash

@@ -128,9 +128,22 @@ NoSQLとは異なり、データはストレージに保存する。
 
 ### クエリ
 
+#### ▼ クエリとは
+
 RDBMSの種類に応じたクエリが必要になる。
 
+#### ▼ クエリパッケージ
 
+クエリの実装の抽象度に応じて、パッケージがある。
+
+| クエリパッケージ | 説明                                                           |
+|----------|--------------------------------------------------------------|
+| 生のクエリ    | RDB固有のクエリのこと。                                                |
+| クエリビルダー  | RDB固有のクエリを実装しやすくしたパッケージのこと。                                  |
+| ORM      | アプリケーション側にDBテーブルに対応したモデルを定義し、これを使用してRDBに固有のクエリを実行するパッケージのこと。 |
+
+
+> ℹ️ 参考：https://levelup.gitconnected.com/raw-sql-vs-query-builder-vs-orm-eee72dbdd275
 
 <br>
 
@@ -148,12 +161,12 @@ TCP/IPプロトコルを使用する。
 
 #### ▼ コネクションプール
 
-![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/db_connection-pool.png)
 
 アプリからDBへのクエリ送信時に新しく作成したコネクションを、非アクティブ状態として保持しておき、以降のクエリ送信時に再利用する。
 
 一定回数再利用されたり、一定期間使用されていないコネクションは削除される。
 
+![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/db_connection-pool.png)
 
 
 > ℹ️ 参考：

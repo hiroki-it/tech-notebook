@@ -3934,9 +3934,8 @@ roleRef:
 
 Roleの紐付け先のAccountの名前を設定する。
 
+ServiceAccount名に関しては、ユーザー名でもよい。
 
-
-> ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
 ```yaml
 apiVersion: io.k8s.api.rbac.v1
@@ -3946,7 +3945,7 @@ metadata:
 subjects:
   - apiGroup: ""
     kind: ServiceAccount # ServiceAccountに紐づける。
-    name: foo-service-account
+    name: foo-service-account # ユーザー名（system:useraccounts:foo-service-account）でもよい。
 ```
 
 ```yaml
@@ -3957,8 +3956,17 @@ metadata:
 subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User # UserAccountに紐づける。
-    name: foo-user
+    name: foo-user-account
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-binding-examples
+> - https://knowledge.sakura.ad.jp/21129/
+
 
 <br>
 

@@ -820,7 +820,7 @@ return [
 
 ```【３】```
 
-:    ```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを使用したい場合は、```database```ドライバを設定する。
+:    ```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダーを使用したい場合は、```database```ドライバを設定する。
 
 ```php
 return [

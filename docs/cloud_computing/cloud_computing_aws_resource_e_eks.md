@@ -68,17 +68,31 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_auth_architecture.png)
 
+
 ```【１】```
 
-:    IAMユーザーと紐づいた```kubectl```クライアントが、コントロールプレーンにリクエストを送信する。kube-apiserverは、aws-iam-authenticator-serverにWebhookを送信する。admission-controllersアドオンのWebhookではないことに注意する。
+:    あらかじめ、```kubectl```クライアントやKubernetesリソースに紐づくIAMユーザーを作成しておく。
 
 ```【２】```
 
-:    aws-iam-authenticator-serverは、IAM APIを使用してIAMユーザーを認証する。
+:    IAMユーザーがkube-apiserverのURLにリクエストを送信する。
+
+     kube-apiserverは、aws-iam-authenticator-serverにWebhookを送信する。 
+
+     admission-controllersアドオンのWebhookではないことに注意する。
 
 ```【３】```
 
-:    もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap（aws-auth）から、IAMユーザーに紐づくUserAccountを取得する。
+:    コントロールプレーンNode上のaws-iam-authenticator-serverは、IAM APIを使用してIAMユーザーを認証する。
+
+```【４】```
+
+:    もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap（aws-auth）を確認する。
+
+     このConfigMapには、そのIAMユーザーに紐づくUserAccountやServiceAccount、RoleBindingやClusterRoleBinding、が定義されている。
+
+     この時、```kubectl```クライアントの場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
+      
 
 ```yaml
 apiVersion: v1
@@ -101,13 +115,17 @@ data:
         - system:nodes
 ```
 
-```【４】```
-
-:    aws-iam-authenticator-serverは、kube-apiserverにUserAccountを含むレスポンスを返信する。
-
 ```【５】```
 
-:    あとは、Kubernetesの標準の認可の仕組みである。kube-apiserverは、認可ステップでUserAccountに紐づくClusterRoleを取得する。```kubectl```クライアントは、Kubernetesリソースを操作できる。
+:    aws-iam-authenticator-serverは、UserAccountやServiceAccount、RoleBindingやClusterRoleBinding、の情報を含むレスポンスをkube-apiserverに返信する。
+
+```【６】```
+
+:    あとは、Kubernetesの標準の認可の仕組みである。
+
+     kube-apiserverは、UserAccountやServiceAccountに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを介して取得する。
+
+     IAMユーザーは、Kubernetesリソースを操作できる。
 
 
 > ℹ️ 参考：
@@ -214,9 +232,6 @@ $ aws configure
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
-
-
 ```【３】```
 
 :    ```kubectl```コマンドの向き先を、EKSのkube-apiserverに変更する。
@@ -226,7 +241,10 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 
 <br>

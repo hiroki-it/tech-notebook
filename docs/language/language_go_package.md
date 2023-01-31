@@ -249,7 +249,11 @@ kube-apiserverとクライアント側のバージョン差は、前方/後方�
 
 Go製のORMである。
 
+その他のORMについては、以下のリポジトリが参考になる。
 
+執筆時点（2022/01/31）では、GormとBeegoが接戦している。
+
+> ℹ️ 参考：https://github.com/d-tsuji/awesome-go-orms
 
 <br>
 
@@ -335,7 +339,6 @@ type User struct {
 
 『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、```gorm:"primaryKey"```タグをつける。
 
-> ℹ️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
 
 ```go
 type User struct {
@@ -351,6 +354,9 @@ type User struct {
 }
 ```
 
+> ℹ️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
+
+
 #### ▼ SoftDelete
 
 構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。
@@ -359,7 +365,6 @@ Gormモデルを埋め込むことによりこのフィールドを持たせる�
 
 
 
-> ℹ️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
 
 ```go
 type User struct {
@@ -382,6 +387,9 @@ db.Where("age = ?", 20).Delete(&User{})
 db.Where("age = 20").Find(&user)
 ```
 
+> ℹ️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
+
+
 <br>
 
 ### DBマイグレーション
@@ -391,10 +399,6 @@ db.Where("age = 20").Find(&user)
 デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
 
 ```TableName```メソッドにより、独自のテーブル名をつけられる。
-
-
-
-> ℹ️ 参考：https://gorm.io/docs/conventions.html#TableName
 
 ```go
 // テーブル名はデフォルトでは『users』になる。
@@ -410,6 +414,7 @@ func (User) TableName() string {
 }
 ```
 
+> ℹ️ 参考：https://gorm.io/docs/conventions.html#TableName
 
 
 <br>
@@ -419,10 +424,6 @@ func (User) TableName() string {
 Gormモデルのフィールドに設定された値を元に、カラムを作成する。
 
 作成したカラムのプライマリーキーを、構造体から取得できる。
-
-
-
-> ℹ️ 参考：https://gorm.io/docs/create.html#Create-Record
 
 ```go
 user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
@@ -434,13 +435,14 @@ result.Error        // returns error
 result.RowsAffected // returns inserted records count
 ```
 
+> ℹ️ 参考：https://gorm.io/docs/create.html#Create-Record
+
 <br>
 
 ### Read
 
 #### ▼ 全カラム取得
 
-> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-all-objects
 
 ```go
 user := User{}
@@ -453,13 +455,15 @@ result.RowsAffected // returns found records count, equals `len(users)`
 result.Error        // returns error
 ```
 
+> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-all-objects
+
+
 #### ▼ 単一/複数カラム取得
 
 Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
 
 
 
-> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
 
 ```go
 user := User{}
@@ -473,6 +477,9 @@ db.First(&user, "10")
 db.Find(&users, []int{1,2,3})
 // SELECT * FROM users WHERE id IN (1,2,3);
 ```
+
+> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+
 
 <br>
 

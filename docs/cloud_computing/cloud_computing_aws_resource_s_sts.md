@@ -18,42 +18,112 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 ## 01. STSとは：Security Token Service
 
-認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的なクレデンシャル情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を発行する。
-
-
+認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的なクレデンシャル情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を持つIAMユーザーを発行する。
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
 
-STSに対するリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。
+<br>
 
-このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。
+## 02. STSで発行されるIAMユーザー
+
+### IAMユーザーのローテーション
+
+STSで発行されたIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。
 
 この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。
 
 秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
 
+![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
 
 
 > ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
 
-![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
+<br>
+
+### 発行するIAMユーザーの切り替え
 
 IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
 
 
+![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sts_multi-account.png)
+
 
 > ℹ️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
-![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sts_multi-account.png)
+<br>
+
+### IAMユーザーの発行元
+
+#### ▼ フェデレーテッドユーザー
+
+任意のIDプロバイダーで認証されたユーザー（フェデレーテッドユーザー）にIAMロールを付与することで、AWSリソースにアクセスできるようにできる。
+
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_create_for-idp.html
+> - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+
+#### ▼ Cognito
+
+CognitoをIDプロバイダーとして使用する。
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Principal": {
+          "Federated": "cognito-identity.amazonaws.com"
+        },
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+            "StringEquals": {
+              "cognito-identity.amazonaws.com:aud": "*****"
+            },
+            "ForAnyValue:StringLike": {
+              "cognito-identity.amazonaws.com:amr": "unauthenticated"
+            }
+        }
+    }
+}
+```
+
+#### ▼ EKS Cluster
+
+EKS ClusterをIDプロバイダーとして使用する。
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenIDConnectプロバイダーURL>"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "<EKS ClusterのOpenIDConnectプロバイダーURL>:sub": [
+                        "system:serviceaccount:<Namespace>:<ServiceAccount名>",
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 
 <br>
 
-
-## 02. IAMロールの委譲先ユーザー
+## 03. IAMロールの委譲先ユーザー
 
 ### IAMロールの委譲先ユーザー
 
-IAMユーザー、AWSリソース、フェデレーテッドユーザー、がある。
+IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIAMロールを委譲できる。
 
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
 
@@ -106,9 +176,7 @@ OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必�
 
 IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
 
-
-
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+フェデレーテッドユーザーは任意のIPプロバイダーで発行する。
 
 ```yaml
 {
@@ -116,6 +184,7 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
     "Statement": {
         "Effect": "Allow",
         "Principal": {
+          # IDプロバイダーをCognitoとしている。
           "Federated": "cognito-identity.amazonaws.com"
         },
         "Action": "sts:AssumeRoleWithWebIdentity",
@@ -129,17 +198,15 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
         }
     }
 }
-
 ```
+
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+
 
 #### ▼ 外部OIDC
 
 IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
 
-
-
-
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 ```yaml
 {
@@ -162,13 +229,16 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
 }
 ```
 
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+
+
+
 #### ▼ AWS SAML
 
 IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 ```yaml
 {
@@ -190,9 +260,12 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 }
 ```
 
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+
+
 <br>
 
-## 03. セットアップ
+## 04. セットアップ
 
 ### 1. IAMロールに信頼ポリシーを紐付け
 

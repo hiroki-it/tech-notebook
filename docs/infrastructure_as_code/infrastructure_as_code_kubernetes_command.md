@@ -1314,12 +1314,6 @@ Podを直接的に指定する場合と、他のKubernetesリソース（例：S
 
 
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
-> - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
-> - https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B
-
 
 ```bash
 # Podを直接的に指定する場合
@@ -1331,6 +1325,14 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Serviceの�
 # ホストポートを介してPodのポートにアクセスする。
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
+> - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
+> - https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B
+
 
 <br>
 
@@ -1409,11 +1411,6 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 
 
-> ℹ️ 参考：
->
-> - https://hub.docker.com/r/praqma/network-multitool
-> - https://hub.docker.com/r/nicolaka/netshoot
-
 ```bash
 # シングルNodeの場合
 
@@ -1455,6 +1452,13 @@ $ kubectl debug node/<Node名> \
 # 使用後は手動で削除する。
 $ kubectl delete -n default node-debugger-*****
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://hub.docker.com/r/praqma/network-multitool
+> - https://hub.docker.com/r/nicolaka/netshoot
+
 
 <br>
 
@@ -1611,11 +1615,6 @@ kubectlとKubernetesのバージョンをそれぞれ取得する。
 
 
 
-> ℹ️ 参考：
->
-> - https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
-> - https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194
-
 ```bash
 $ kubectl version                                                             
 
@@ -1645,5 +1644,12 @@ Server Version: version.Info{
   Platform:"linux/amd64"
 }
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
+> - https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194
 
 <br>

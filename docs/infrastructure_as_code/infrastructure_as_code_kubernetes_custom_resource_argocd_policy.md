@@ -25,9 +25,6 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 <br>
 
-### 各Applicationを同じリポジトリで管理（推奨）
-
-
 ### 各Applicationを異なるリポジトリで管理
 
 監視対象リポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。

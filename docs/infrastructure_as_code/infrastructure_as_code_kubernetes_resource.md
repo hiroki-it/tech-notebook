@@ -1166,6 +1166,19 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
+#### ▼ ServiceAccountのユーザー名
+
+特にServiceAccountには、より正確な定義のユーザー名がある。
+
+ユーザー名は、```system:serviceaccount:＜Namespace名＞:＜ServiceAccount名＞```で定義されている。
+
+これは、RoleBindingやClusterBindingの定義時に使用できる。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects
+> - https://knowledge.sakura.ad.jp/21129/
+
 <br>
 
 ## 08. 認可系リソース

@@ -2559,7 +2559,7 @@ class DogToyRepository
      */
     public function create(DogToy $dogToy): DogToy
     {
-        // クエリビルダ作成
+        // クエリビルダー作成
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
@@ -2599,7 +2599,7 @@ class DogToyRepository
      */
     public function update(DogToy $dogToy): DogToy
     {
-        // クエリビルダ作成
+        // クエリビルダー作成
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
@@ -2641,7 +2641,7 @@ class DogToyRepository
      */
     public function delete(ToyId $toyId): bool
     {
-        // クエリビルダ作成
+        // クエリビルダー作成
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
@@ -2711,7 +2711,7 @@ class DogToyRepository
      */
     public function findAll(): array
     {
-        // クエリビルダ作成
+        // クエリビルダー作成
         $query = $this->createQueryBuilder();
         
         // SQLを設定する。

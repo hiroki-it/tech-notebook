@@ -869,7 +869,9 @@ spec:
 
 kube-apiserverのURLを設定する。
 
-Kubernetesの実行環境としてAWS EKSやGCP GKEを採用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
+ArgoCDの稼働しているKubernetes Clusterを指定する場合は、in-cluster（```https://kubernetes.default.svc```）を設定する。
+
+一方で、外部のKubernetesクラスターを指定する場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -891,7 +893,7 @@ metadata:
   name: foo-application
 spec:
   destination:
-    # AWS EKSのkube-apiserverのエンドポイントを指定する。
+    # 外部のAWS EKS Clusterのkube-apiserverのエンドポイントを指定する。
     server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
@@ -2396,6 +2398,37 @@ ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clust
 
 ArgoCDのapplication-controllerは、```cluster-<エンドポイントURL>```というSecretを介して、デプロイ先のServiceAccountと紐づく。
 
+**例**
+
+デプロイ先のKubernetes ClusterがEKSの場合は、以下のようなSecretが作成される。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+  name: cluster-<エンドポイントURL>
+  namespace: argocd
+type: Opaque
+data:
+  config: |
+    awsAuthConfig:
+      clusterName: <デプロイ先のKubernetes Cluster名>
+    tlsClientConfig:
+      insecure: false
+      caData: <HTTPSに必要なSSL証明書>
+  name: foo-cluster
+  server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+```
+
+
+> ℹ️ 参考：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
+> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
 
 
 ```yaml
@@ -2411,19 +2444,13 @@ metadata:
 type: Opaque
 data:
   config: |
-    bearerToken: <ServiceAccountのトークン>
+    awsAuthConfig: <ServiceAccountのトークン>
     tlsClientConfig:
       insecure: false
       caData: <HTTPSに必要なSSL証明書>
   name: foo-cluster
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
-
-
-> ℹ️ 参考：
-> 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
-> - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
 
 <br>
 
@@ -2448,8 +2475,7 @@ Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 > ℹ️ 参考：
 >
 > - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
-> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
-
+> - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
 
 <br>
 

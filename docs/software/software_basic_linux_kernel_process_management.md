@@ -99,6 +99,7 @@ PID  TTY  TIME     CMD
 
 現代のハードウェアのほとんどがマルチプロセシングの機能を持つ。
 
+![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
 
 
 > ℹ️ 参考：
@@ -106,7 +107,6 @@ PID  TTY  TIME     CMD
 > - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
 > - https://webpia.jp/thread_process/
 
-![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
 
 <br>
 
@@ -127,15 +127,15 @@ PID  TTY  TIME     CMD
 もしOOMキラーが実行された場合は、```/var/log/messages```ファイルにログが出力される。
 
 
-
-> ℹ️ 参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
-
 ```bash
 $ cat /var/log/messages | grep Kill
 
 Jan  1 00:00:00 localhost kernel: Out of memory: Kill process 17143 (java) score 468 or sacrifice child
 Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-vm:7790724kB, anon-rss:4108910kB, file-rss:6822kB, shmem-rss:0kB
 ```
+
+> ℹ️ 参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
+
 
 <br>
 
@@ -147,6 +147,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 CPUのコアと紐付くプロセスの実行単位を『スレッド』という。
 
+![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
 
 
 > ℹ️ 参考：
@@ -154,7 +155,6 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 > - https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
 > - https://webpia.jp/thread_process/
 
-![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
 
 <br>
 

@@ -66,22 +66,17 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。
 
 
+![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router.png)
 
 > ℹ️ 参考：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/
 > - https://michisugara.jp/modem_router
 
-![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router.png)
 
 <br>
 
 ### ルーターの種類
-
-> ℹ️ 参考：
->
-> - https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
-> - https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
 
 | ルーター名               | 設置場所                   | 役割                                                                     |
 |----------------------|---------------------------|------------------------------------------------------------------------|
@@ -89,6 +84,12 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 | センタールーター             | 一般企業内の拠点間WANネットワーク | 本社と支社のネットワーク間を繋ぐ。                                                  |
 | エッジルーター（エッジゲートウェイ）   | 一般企業内の拠点間WANネットワーク | 異なる支社や営業所のネットワーク間を繋ぐ。                                            |
 | ブロードバンドルーター、Wifiルーター | 自宅内のネットワーク              | 自宅内/外のネットワーク間を繋ぐ。ブロードバンドルーターであれば有線、Wifiルーターであれば無線で接続することになる。 |
+
+
+> ℹ️ 参考：
+>
+> - https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
+> - https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
 
 <br>
 
