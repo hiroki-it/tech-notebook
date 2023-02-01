@@ -36,11 +36,6 @@ $ growpart <パーティションのデバイスファイル名> <パーティ�
 
 
 
-> ℹ️ 参考：
->
-> - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
-> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
-
 ```bash
 $ fdisk -l
 
@@ -65,6 +60,13 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 /dev/xvda1       8G   1.9G    14G   12%   /           # パーティション
 /dev/nvme1n1   200G   161G    40G   81%   /var/lib
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
+> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
 
 **＊例＊**
 
@@ -101,6 +103,8 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 ```bash
 $ growpart /dev/xvda 1
 ```
+
+
 
 <br>
 
