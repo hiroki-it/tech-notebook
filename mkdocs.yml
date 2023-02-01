@@ -302,8 +302,8 @@ nav:
       - testing/index.md
       - ■ ホワイトボックステスト:
           - ホワイトボックステスト: testing/testing_whitebox.md
-          - PHP: testing/testing_whitebox_php.md
-          - Go: testing/testing_whitebox_go.md
+          - PHPの場合: testing/testing_whitebox_php.md
+          - Goの場合: testing/testing_whitebox_go.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
           - ■ 総合テスト:
