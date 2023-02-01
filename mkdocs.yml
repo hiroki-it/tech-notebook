@@ -130,7 +130,7 @@ nav:
       - 設計ポリシー: software/software_policy.md
 
   - 🚀 アプリ:
-      - software/index_application.md
+      - software/application/index.md
       - ■ アーキテクチャ:
           - オブジェクト指向分析設計: software/software_application_architecture_analysis_and_design.md
           - ■ バックエンド:
@@ -151,7 +151,7 @@ nav:
               - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
 
   - 🤝🏻 ミドルウェア:
-      - software/index_middleware.md
+      - software/middleware/index.md
       - ■ Web系:
           - ■ Nginx:
               - Nginx: software/software_middleware_web_nginx.md
@@ -204,7 +204,7 @@ nav:
               - API: software/software_middleware_service_mesh_envoy_api.md
 
   - 🐧 OS:
-      - software/index_basic.md
+      - software/basic/index.md
       - ■ Linuxカーネル:
           - Linuxカーネル: software/software_basic_linux_kernel.md
           - プロセス管理: software/software_basic_linux_kernel_process_management.md
@@ -462,7 +462,7 @@ nav:
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
 
   - ☸️ Kubernetes:
-      - infrastructure_as_code/index_kubernetes.md
+      - infrastructure_as_code/kubernetes/index.md
       - ■ Kubernetes:
           - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
