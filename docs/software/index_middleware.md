@@ -1,8 +1,11 @@
+
+# セクションの目次
+
 !!! info "このセクションについて"
 
     **量が多いため、[ソフトウェアセクション](https://hiroki-it.github.io/tech-notebook-mkdocs/software/index.html) から切り分けています**
 
-# セクションの目次
+<br>
 
 ## 🤝🏻ミドルウェア
 

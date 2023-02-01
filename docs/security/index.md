@@ -26,7 +26,7 @@
   > * ##### [︎HTTP認証](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authentication_http.html)
   > * ##### [︎トークン](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authentication_token.html)
 
-* ##### <u>認可</u>
+* #### <u>認可</u>
   > * ##### [︎認可](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authorization.html)
   > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authorization_open_policy_agent.html)
 

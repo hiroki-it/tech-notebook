@@ -51,9 +51,11 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 バッファーは、ステージ、キュー、から構成される。ログは、『```*-*.*.flb```』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
 
+![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_architecture_buffer.png)
+
+
 > ℹ️ 参考：https://www.alpha.co.jp/blog/202103_01
 
-![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
 <br>
 
@@ -65,9 +67,11 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 またメッセージキューによって、アウトプット先のレートリミットを超過しないように、一定の間隔でログを送信できる。
 
+![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_message-queue.png)
+
+
 > ℹ️ 参考：https://www.forcia.com/blog/001316.html
 
-![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_message-queue.png)
 
 <br>
 
@@ -93,8 +97,9 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 フォワーダーのFluentBit/Fluentdの送信元で稼働させ、アグリゲーターを介して、宛先にログを送信する。
 
-フォワーダーは、サーバーで直接的に常駐させる場合、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、がある。
+フォワーダーは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、がある。
 
+![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
 
 > ℹ️ 参考：
@@ -102,7 +107,6 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
 
-![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
 <br>
 
@@ -110,13 +114,13 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 エージェントパターンは、FluentBit/Fluentdのエージェントをログの送信元に常駐させ、宛先にログを直接的に送信する。
 
-エージェントは、サーバーで直接的に常駐させる場合、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、KubernetesのPodようにサイドカーコンテナとして配置する場合、がある。
+エージェントは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、KubernetesのPodようにサイドカーコンテナとして配置する場合、がある。
 
+![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_agent-pattern.png)
 
 
 > ℹ️ 参考：https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 
-![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_agent-pattern.png)
 
 <br>
 
