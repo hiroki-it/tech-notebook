@@ -157,7 +157,7 @@ spec:
 
 ### 独自ダッシュボード
 
-ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを作成できる。
+ConfigMapの```.data```キーにJSONを設定すると、ダッシュボードを作成できる。
 
 
 
@@ -171,7 +171,7 @@ ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを
 
 独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：kubernetes-mixins、Grafanaダッシュボードコミュニティ）を使用した方が良い。
 
-その場合、GitHubなどで公開されているJSONを、ConfigMapの```data```キーに貼り付ける。
+その場合、GitHubなどで公開されているJSONを、ConfigMapの```.data```キーに貼り付ける。
 
 > ℹ️ 参考：
 > 
@@ -216,9 +216,11 @@ ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを
 
 #### ▼ grafanaチャートの場合
 
-grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェスト化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。
+grafanaチャートでは、```values```ファイルの```dashboards.label```キーや```dashboards.labelValue```キーを使用して、ダッシュボードのマニフェスト化を制御している。
 
-これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
+デフォルト値として```dashboards.label```キーに```grafana_dashboard```が設定されている。
+
+これにより、```dashboards.label```キーに```grafana_dashboard```値を持つConfigMapのみがダッシュボードの設定として読み込まれる。
 
 ```yaml
 # valuesファイル
@@ -259,7 +261,6 @@ kube-prometheus-stackチャートでは、prometheusのチャートの他、graf
 
 kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
 
-> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
 ```yaml
 # valuesファイル
@@ -282,11 +283,13 @@ kube-prometheus-stackチャートの```values```ファイルでは、```labelVal
       labelValue: "1"
 ```
 
+> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+
+
 そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。
 
 マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。
 
-> ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 
 ```yaml
 apiVersion: v1
@@ -300,7 +303,12 @@ data:
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-補足として、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されており、またその他にkubernetes-mixinsも同時にインストールするようになっている。
+> ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
+
+
+補足として、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されている。
+
+またその他に、kubernetes-mixinsも同時にインストールするようになっている。
 
 > ℹ️ 参考：
 > 

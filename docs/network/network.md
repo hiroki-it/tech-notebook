@@ -37,11 +37,10 @@ LAN内では、各機器はプライベートIPアドレスで識別されてい
 
 LAN内に設置されたNATルーターが、WAN内のグローバルIPアドレスとLAN内のプライベートIPアドレスを相互変換する。
 
-
+![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_lan.jpeg)
 
 > ℹ️ 参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
 
-![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_lan.jpeg)
 
 <br>
 
@@ -53,6 +52,7 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 
 AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
+![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
 
 
 > ℹ️ 参考：
@@ -60,7 +60,6 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 > - https://www.techtarget.com/searchsecurity/definition/DMZ
 > - https://www.ntt.com/business/services/network/internet-connect/ocn-business/bocn/knowledge/archive_09.html
 
-![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
 
 #### ▼ パブリックサブネット内のサーバー
 
@@ -94,12 +93,14 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 ![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
 
-> ℹ️ 参考：https://qiita.com/att55/items/162950627dc593c72f23
 
 | サーバー名        | 処理                                                                             |
 |---------------|--------------------------------------------------------------------------------|
 | フォワードプロキシサーバー | 特定のクライアントのアウトバウンド通信を、不特定多数のサーバーに代理でルーティングする。                          |
 | リバースプロキシサーバー  | 不特定のクライアントからのインバウンド通信を、特定のサーバーに代理でルーティングする。また、ロードバランサーのように負荷分散もできる。 |
+
+> ℹ️ 参考：https://qiita.com/att55/items/162950627dc593c72f23
+
 
 #### ▼ キャッシュ
 
@@ -209,6 +210,7 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 
 少数対少数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報は不要である。
 
+![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_circuit-switching-system.png)
 
 
 > ℹ️ 参考：
@@ -216,7 +218,6 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 > - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 > - https://www.infraexpert.com/study/wan3.html
 
-![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_circuit-switching-system.png)
 
 #### ▼ パケット交換方式
 
@@ -226,6 +227,7 @@ WANを介したプライベートな通信で、パケット化されたデー�
 
 対多数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報が必要になる。
 
+![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_packet-switching-system.png)
 
 
 > ℹ️ 参考：
@@ -233,7 +235,6 @@ WANを介したプライベートな通信で、パケット化されたデー�
 > - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 > - https://www.infraexpert.com/study/wan3.html
 
-![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_packet-switching-system.png)
 
 <br>
 

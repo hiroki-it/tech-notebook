@@ -86,9 +86,7 @@ Eメール検証の場合を示す。
 # ---------------------------------------------
 # For www domain
 # ---------------------------------------------
-# 後述の説明を参考にせよ。```【１】```
-
-:    
+# 後述の説明を参考にせよ。【１】   
 resource "aws_acm_certificate_validation" "www_an1" {
   certificate_arn = aws_acm_certificate.www_an1.arn
 }
@@ -113,9 +111,7 @@ resource "aws_acm_certificate_validation" "www_an1" {
 }
 ```
 
-#### ```【１】```
-
-:    AWS以外でドメインを購入した場合は注意
+#### 【１】   AWS以外でドメインを購入した場合は注意
 
 AWS以外でドメインを購入した場合はAWS以外で作業になる。
 
@@ -123,7 +119,7 @@ SSL証明書のDNS検証時に、ドメインを購入したサービスが管�
 
 
 
-#### ```【２】```
+#### 【２】
 
 :    検証のためにメール再送が必要
 
@@ -156,14 +152,10 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 # For bastion
 # ---------------------------------------------
 data "aws_ami" "bastion" {
-  # 後述の説明を参考にせよ。```【１】```
-
-:    
+  # 後述の説明を参考にせよ。【１】   
   most_recent = false
   
-  # 後述の説明を参考にせよ。```【１】```
-
-:    
+  # 後述の説明を参考にせよ。【２】   
   owners      = ["amazon"]
   filter {
     name   = "name"
@@ -176,7 +168,7 @@ data "aws_ami" "bastion" {
   }
 }
 
-# 後述の説明を参考にせよ。```【２】```
+# 後述の説明を参考にせよ。【３】
 
 :    
 data "aws_ami" "backuped" {
@@ -198,9 +190,7 @@ data "aws_ami" "backuped" {
 
 <br>
 
-### ```【１】```
-
-:    取得するAMIのバージョンを固定
+### 【１】   取得するAMIのバージョンを固定
 
 取得するAMIが常に最新になっていると、EC2が再作成されなねない。
 
@@ -212,9 +202,7 @@ data "aws_ami" "backuped" {
 
 <br>
 
-### ```【２】```
-
-:    AWS Backupで作成したAMIを参照
+### 【２】AWS Backupで作成したAMIを参照
 
 AWS BackupでEC2のAMIを作成している場合に、フィルターの条件を使用して、AMIを参照する。
 
@@ -237,9 +225,7 @@ resource "aws_api_gateway_rest_api" "foo" {
   description = "The API that enables two-way communication with prd-foo"
   
   # VPCリンクのプロキシ統合のAPIを定義したOpenAPI仕様
-  # 後述の説明を参考にせよ。```【１】```
-
-:    
+  # 後述の説明を参考にせよ。【１】   
   body = templatefile(
     "${path.module}/open_api.yml",
     {
@@ -265,9 +251,7 @@ resource "aws_api_gateway_rest_api" "foo" {
 resource "aws_api_gateway_deployment" "foo" {
   rest_api_id = aws_api_gateway_rest_api.foo.id
 
-  # 後述の説明を参考にせよ。```【１】```
-
-:    
+  # 後述の説明を参考にせよ。【１】   
   triggers = {
     redeployment = sha1(aws_api_gateway_rest_api.foo.body)
   }
@@ -289,9 +273,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 <br>
 
-### ```【１】```
-
-:    OpenAPI仕様のインポートと差分認識
+### 【１】   OpenAPI仕様のインポートと差分認識
 
 あらかじめ用意したOpenAPI仕様の```.yaml```ファイルを```body```オプションのパラメーターとし、これをインポートすることにより、APIを定義できる。
 
@@ -349,9 +331,7 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 
 <br>
 
-### ```【１】```
-
-:    ECSサービス名をルートとした命名
+### 【１】   ECSサービス名をルートとした命名
 
 同じAWSアカウントの異なるECSサービスを作成する場合がある。
 
@@ -376,9 +356,7 @@ resource "aws_cloudfront_distribution" "this" {
   comment          = "prd-foo-cf-distribution"
   enabled          = true
   
-  # 後述の説明を参考にせよ。```【１】```
-
-:    
+  # 後述の説明を参考にせよ。【１】   
   retain_on_delete = true
 
   viewer_certificate {
@@ -406,9 +384,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 <br>
 
-### ```【１】```
-
-:    削除保持機能
+### 【１】   削除保持機能
 
 Terraformでは、```retain_on_delete```で設定できる。
 
@@ -612,14 +588,10 @@ resource "aws_ecs_service" "this" {
   deployment_maximum_percent         = 200
   deployment_minimum_healthy_percent = 100
 
-  # 後述の説明を参考にせよ。```【１】```
-
-:    
+  # 後述の説明を参考にせよ。【１】   
   health_check_grace_period_seconds = 330
 
-  # 後述の説明を参考にせよ。```【２】```
-
-:    
+  # 後述の説明を参考にせよ。【２】
   task_definition = "${aws_ecs_task_definition.this.family}:${max(aws_ecs_task_definition.this.revision, data.aws_ecs_task_definition.this.revision)}"
 
   network_configuration {
@@ -641,18 +613,14 @@ resource "aws_ecs_service" "this" {
   }
 
   depends_on = [
-    # 後述の説明を参考にせよ。```【３】```
-
-:    
+    # 後述の説明を参考にせよ。【３】
     var.alb_listener_https,
     var.nlb_listener
   ]
 
   lifecycle {
     ignore_changes = [
-      # ※後述の説明を参考にせよ```【４】```
-
-:    
+      # ※後述の説明を参考にせよ【４】
       desired_count,
     ]
   }
@@ -661,9 +629,7 @@ resource "aws_ecs_service" "this" {
 
 <br>
 
-### ```【１】```
-
-:    ヘルスチェック猶予期間
+### 【１】   ヘルスチェック猶予期間
 
 ECSタスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し、Unhealthyと誤認してしまうため、ECSタスクの起動完了を待機する。
 
@@ -673,9 +639,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 <br>
 
-### ```【２】```
-
-:    実インフラのリビジョン番号の追跡
+### 【２】実インフラのリビジョン番号の追跡
 
 アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
 
@@ -685,9 +649,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 <br>
 
-### ```【３】```
-
-:    ALB/NLBリスナーの作成を待機
+### 【３】ALB/NLBリスナーの作成を待機
 
 Terraformは、特に依存関係を実装しない場合、『ターゲットグループ → ALB/NLB → リスナー』の順で```resource```ブロックを作成する。
 
@@ -703,9 +665,7 @@ ALB/NLBの作成（※リスナーも含む可能性）が完全に完了しな�
 
 <br>
 
-### ```【４】```
-
-:    オートスケーリングによるECSタスク数の増減を無視
+### 【４】オートスケーリングによるECSタスク数の増減を無視
 
 オートスケーリングによって、ECSタスク数が増減するため、これを無視する。
 
@@ -774,9 +734,7 @@ resource "aws_instance" "bastion" {
   subnet_id                   = "*****"
   associate_public_ip_address = true
 
-  # ※後述の説明を参考にせよ```【１】```
-
-:    
+  # ※後述の説明を参考にせよ【１】   
   key_name = "prd-foo-bastion"
 
   disable_api_termination = true
@@ -785,18 +743,14 @@ resource "aws_instance" "bastion" {
     Name = "prd-foo-bastion"
   }
 
-  # ※後述の説明を参考にせよ```【２】```
-
-:    
+  # ※後述の説明を参考にせよ【２】
   depends_on = [var.internet_gateway]
 }
 ```
 
 <br>
 
-### ```【１】```
-
-:    キーペアはコンソール上で設定
+### 【１】   キーペアはコンソール上で設定
 
 誤って削除しないように、またコードに秘密鍵の内容をハードコーディングしないように、キーペアはコンソール画面で作成した後、```key_name```でキー名を指定する。
 
@@ -804,9 +758,7 @@ resource "aws_instance" "bastion" {
 
 <br>
 
-### ```【２】```
-
-:    Internet Gatewayの後に作成
+### 【２】Internet Gatewayの後に作成
 
 Internet Gatewayの後にEC2を作成できるようにする。
 
@@ -1231,23 +1183,17 @@ resource "aws_lb_target_group" "this" {
   deregistration_delay = "60"
   target_type          = "ip"
 
-  # ※後述の説明を参考にせよ```【１】```
-
-:    
+  # ※後述の説明を参考にせよ【１】   
   slow_start = "0"
 
-  # ※後述の説明を参考にせよ```【２】```
-
-:    
+  # ※後述の説明を参考にせよ【２】
   health_check {
     protocol          = "HTTP"
     healthy_threshold = 3
     path              = "/healthcheck"
   }
 
-  # stickiness ※後述の説明を参考にせよ```【３】```
-
-:    
+  # stickiness ※後述の説明を参考にせよ【３】
   # https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
   lifecycle {
@@ -1258,9 +1204,7 @@ resource "aws_lb_target_group" "this" {
 
 <br>
 
-### ```【１】```
-
-:    NLBはスロースタートに非対応
+### 【１】   NLBはスロースタートに非対応
 
 NLBに紐付くターゲットグループはスロースタートに非対応のため、これを明示的に無効化する必要がある。
 
@@ -1268,9 +1212,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 <br>
 
-### ```【２】```
-
-:    NLBヘルスチェックには設定できる項目が少ない
+### 【２】NLBヘルスチェックには設定できる項目が少ない
 
 ターゲットグループの転送プロトコルがTCPの場合は、設定できないヘルスチェックオプションがいくつかある。
 
@@ -1282,9 +1224,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 <br>
 
-### ```【３】```
-
-:    NLBスティッキーネスは明示的に無効化
+### 【３】NLBスティッキーネスは明示的に無効化
 
 スティッキネス機能を無効化する場合、AWSプロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。
 
@@ -1298,7 +1238,9 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 ### （＊）ターゲットグループの削除時にリスナーを先に削除できない。
 
-リスナーがターゲットグループに依存しているが、Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため、以下のようなエラーが発生する。
+リスナーがターゲットグループに依存しているが、Terraformがターゲットグループの削除時にリスナーを先に削除しようとしない。
+
+そのため、以下のようなエラーが発生する。
 
 
 
@@ -1330,9 +1272,7 @@ resource "aws_rds_cluster" "this" {
   engine_version                  = "5.7.mysql_aurora.2.08.3"
   cluster_identifier              = "prd-foo-rds-cluster"
   
-  # 後述の説明を参考にせよ。```【１】```
-
-:    
+  # 後述の説明を参考にせよ。【１】   
   master_username                 = var.rds_db_master_username_ssm_parameter_value
   master_password                 = var.rds_db_master_password_ssm_parameter_value
   port                            = var.rds_db_port_ssm_parameter_value
@@ -1350,27 +1290,19 @@ resource "aws_rds_cluster" "this" {
   enabled_cloudwatch_logs_exports = ["audit", "error", "general", "slowquery"]
   preferred_maintenance_window    = "sun:01:00-sun:01:30"
   
-  # 後述の説明を参考にせよ。```【２】```
-
-:    
+  # 後述の説明を参考にせよ。【２】
   apply_immediately = true
 
-  # 後述の説明を参考にせよ。```【３】```
-
-:    
+  # 後述の説明を参考にせよ。【３】
   availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
 
   deletion_protection = true
 
   lifecycle {
     ignore_changes = [
-      # 後述の説明を参考にせよ。```【４】```
-
-:    
+      # 後述の説明を参考にせよ。【４】
       availability_zones,
-      # 後述の説明を参考にせよ。```【５】```
-
-:    
+      # 後述の説明を参考にせよ。【５】
       engine_version
     ]
   }
@@ -1380,9 +1312,7 @@ resource "aws_rds_cluster" "this" {
 # RDS Cluster Instance
 # ---------------------------------------------
 resource "aws_rds_cluster_instance" "this" {
-  # 後述の説明を参考にせよ。```【６】```
-
-:    
+  # 後述の説明を参考にせよ。【６】
   for_each = var.vpc_availability_zones
 
   engine                       = "aurora-mysql"
@@ -1397,20 +1327,14 @@ resource "aws_rds_cluster_instance" "this" {
   preferred_maintenance_window = "sun:01:00-sun:01:30"
   apply_immediately            = true
   
-  # 後述の説明を参考にせよ。```【７】```
-
-:    
+  # 後述の説明を参考にせよ。【７】
   instance_class = var.rds_instance_class[each.key]
 
-  # 後述の説明を参考にせよ。```【８】```
-
-:    
+  # 後述の説明を参考にせよ。【８】
   # preferred_backup_window
 }
 
-# 後述の説明を参考にせよ。```【９】```
-
-:    
+# 後述の説明を参考にせよ。【９】
 locals {
   rds_cluster_vpc_availability_zones_a = aws_rds_cluster_instance.this[var.vpc_availability_zones.a]
 }
@@ -1438,9 +1362,7 @@ resource "aws_rds_cluster_instance" "read_replica" {
 resource "aws_db_subnet_group" "this" {
   name        = "prd-foo-rds-subnet-gp"
   description = "The subnet group for prd-foo-rds"
-  # 後述の説明を参考にせよ。```【１０】```
-
-:    
+  # 後述の説明を参考にせよ。【１０】
   subnet_ids  = [var.private_a_datastore_subnet_id, var.private_c_datastore_subnet_id]
 
   lifecycle {
@@ -1451,9 +1373,7 @@ resource "aws_db_subnet_group" "this" {
 
 <br>
 
-### ```【１】```
-
-:    パラメーターストア
+### 【１】   パラメーターストア
 
 Terraformに値をハードコーディングしたくない場合は、パラメーターストアで値を管理し、これを```data```ブロックで取得する。
 
@@ -1461,9 +1381,7 @@ Terraformに値をハードコーディングしたくない場合は、パラ�
 
 <br>
 
-### ```【２】```
-
-:    メンテナンスウインドウ時に変更適用
+### 【２】メンテナンスウインドウ時に変更適用
 
 メンテナンスウインドウ時の変更適用をTerraformで行う場合、一段階目に```apply_immediately```オプションを```false```に変更して```terraform apply```コマンドを実行し、二段階目に修正を```terraform apply```コマンドを実行する。
 
@@ -1471,9 +1389,7 @@ Terraformに値をハードコーディングしたくない場合は、パラ�
 
 <br>
 
-### ```【３】```
-
-:    DBクラスターにはAZが```3```個必要
+### 【３】DBクラスターにはAZが```3```個必要
 
 DBクラスターでは、レプリケーションのために、```3```個のAZが必要である。
 
@@ -1491,9 +1407,7 @@ Terraformがこれを認識しないように、```ignore_changes```引数でAZ�
 
 <br>
 
-### ```【４】```
-
-:    インスタンスを配置するAZは選択できない
+### 【４】インスタンスを配置するAZは選択できない
 
 事前にインスタンスにAZを表す識別子を入れたとしても、Terraformはインスタンスを配置するAZを選択できない。
 
@@ -1507,9 +1421,7 @@ Terraformがこれを認識しないように、```ignore_changes```引数でAZ�
 
 <br>
 
-### ```【５】```
-
-:    エンジンバージョンのアップグレードは画面から
+### 【５】エンジンバージョンのアップグレードは画面から
 
 運用でTerraformでエンジンバージョンをアップグレードすることに抵抗感がある場合、コンソール画面からアップグレードをTerraformで無視すると良い。
 
@@ -1521,9 +1433,7 @@ Terraformを書き換えなくとも問題は起こらないが、Terraformの�
 
 <br>
 
-### ```【６】```
-
-:    ```for_each```引数を使用して
+### 【６】```for_each```引数を使用して
 
 Auroraでは、クラスターにインスタンスを1つだけ紐づけると、プライマリーインスタンスとして作成される。
 
@@ -1540,9 +1450,7 @@ AZのマップデータに対して```for_each```引数を使用することに�
 
 <br>
 
-### ```【７】```
-
-:    インスタンスタイプは別々に設定する
+### 【７】インスタンスタイプは別々に設定する
 
 インスタンスタイプに```for_each```引数で値を渡さない場合、各DBインスタンスのインスタンスタイプを同時に変更することになる。
 
@@ -1556,9 +1464,7 @@ AZのマップデータに対して```for_each```引数を使用することに�
 
 <br>
 
-### ```【８】```
-
-:    インスタンスにバックアップウインドウは設定しない
+### 【８】インスタンスにバックアップウインドウは設定しない
 
 DBクラスターとDBインスタンスの両方に、```preferred_backup_window```オプションを設定できるが、RDSインスタンスに設定してはいけない。
 
@@ -1566,9 +1472,7 @@ DBクラスターとDBインスタンスの両方に、```preferred_backup_windo
 
 <br>
 
-### ```【９】```
-
-:    リードレプリカの追加
+### 【９】リードレプリカの追加
 
 クラスターに ```count```引数で量産したインスタンスを紐づける。
 
@@ -1578,9 +1482,7 @@ DBクラスターとDBインスタンスの両方に、```preferred_backup_windo
 
 <br>
 
-### ```【１０】```
-
-:    マルチAZを有効化する
+### 【１０】マルチAZを有効化する
 
 Auroraでは、紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合、各インスタンスを自動的にAZに配置するようになっている。
 
@@ -1763,9 +1665,7 @@ NLBのアクセスログを送信するバケット内には、自動的に『``
 # For RDS
 # ---------------------------------------------
 output "rds_db_name_ssm_parameter_value" {
-  sensitive = true # 後述の説明を参考にせよ。```【１】```
-
-:    
+  sensitive = true # 後述の説明を参考にせよ。【１】   
   value     = data.aws_ssm_parameter.rds_db_name.value
 }
 
@@ -1787,9 +1687,7 @@ output "rds_db_port_ssm_parameter_value" {
 
 <br>
 
-### ```【１】```
-
-:    ```terraform plan```コマンド時に非表示
+### 【１】```terraform plan```コマンド時に非表示
 
 CIの```terraform plan```コマンド時に値が公開されないように```output```ブロックで```sensitive```オプションを有効化する。
 
@@ -1802,9 +1700,7 @@ CIの```terraform plan```コマンド時に値が公開されないように```o
 ### まとめ
 
 ```terraform
-# 後述の説明を参考にせよ。```【１】```
-
-:    
+# 後述の説明を参考にせよ。【１】   
 vpc_availability_zones             = { a = "a", c = "c" }
 vpc_cidr                           = "*.*.*.*/23"
 vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
@@ -1989,9 +1885,7 @@ resource "aws_eip" "nat_gateway" {
 
 <br>
 
-### ```【１】```
-
-:    冗長化されたAWSリソースをfor_each関数で作成
+### 【１】   冗長化されたAWSリソースをfor_each関数で作成
 
 AZを上長化している場合、VPC内のサブネットと関連のAWSリソース（ルートテーブル、NAT Gateway、Elastic IPなど）も冗長化することになる。
 
@@ -2344,13 +2238,9 @@ WAFのIPセットと他設定の依存関係に癖がある。
 
 
 
-```【１】```
+【１】   新しいIPセットのresourceを実装し、ACLに紐付け、デプロイする。
 
-:    新しいIPセットのresourceを実装し、ACLに紐付け、デプロイする。
-
-```【２】```
-
-:    古いIPセットのresourceを削除し、デプロイする。
+【２】古いIPセットのresourceを削除し、デプロイする。
 
 もし、これを忘れてしまった場合は、画面上で適当なIPセットに付け換えて、削除処理を実行できるようにする。
 
@@ -2463,8 +2353,9 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 :    削除保護を無効化（```false```）に変更し、デプロイする。
 
-（2
-）コードを削除し、デプロイする。
+```【２】```
+
+:    コードを削除し、デプロイする。
 
 
 

@@ -101,7 +101,9 @@ description: テレメトリー間の紐付け＠Datadog
 |--------------------------------------|---------------------------------------------------------------------------------------------|
 | ```<マイクロサービス名>-<フレームワーク名/パッケージ名>``` | ・```order-pdo```<br>・```order-phpredis```<br>・```order-eloquent```<br>・```order-doctrine``` |
 
-ただし、フレームワークのインテグレーション名は接尾辞を付けずに、単に『```<マイクロサービス名>```』とする。なぜ接尾辞を付けないかというと、分散トレースと他のテレメトリーを紐づける時に、同じマイクロサービス名をタグに使用しなければならないためである。
+ただし、フレームワークのインテグレーション名は接尾辞を付けずに、単に『```<マイクロサービス名>```』とする。
+
+なぜ接尾辞を付けないかというと、分散トレースと他のテレメトリーを紐づける時に、同じマイクロサービス名をタグに使用しなければならないためである。
 
 〇：laravel → order、order-service
 ✕：laravel → order-laravel、order-service-laravel
@@ -254,11 +256,11 @@ FluentBitの設定ファイルからタグ付けする。
 
 これにより、その構造化ログが、いずれのマイクロサービスで、またどのタイミングで発生したものかを確認できる。
 
+![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_trace-viewer.png)
 
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
 
-![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_trace-viewer.png)
 
 <br>
 

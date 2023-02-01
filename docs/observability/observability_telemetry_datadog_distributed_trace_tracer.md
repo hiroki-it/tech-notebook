@@ -82,7 +82,6 @@ env[DD_VERSION] = '<バージョンタグ>'
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
@@ -94,6 +93,9 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
   `# 残骸ファイルを削除する。` \
   && rm datadog-php-tracer.deb
 ```
+
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
+
 
 #### ▼ インストールの動作確認
 
@@ -126,7 +128,6 @@ Extension 'ddtrace' not present.
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
 ```bash
 $ php --ri=ddtrace
@@ -179,6 +180,9 @@ DATADOG TRACER CONFIGURATION => { ..... } # ここに設定のJSONが得られ�
 }
 ```
 
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
+
+
 #### ▼ 受信ログの確認
 
 datadogコンテナにトレースが送信されている場合は、受信できていることを表すログを確認できる。
@@ -199,9 +203,13 @@ datadogコンテナにトレースが送信されている場合は、受信で�
 
 #### ▼ インストール
 
-TypeScriptやモジュールバンドルを採用している場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。対策として、```dd-trace```パッケージの```init```メソッドの実行を別ファイルに分割し、これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする。また、フレームワークよりも先に読み込むことになるため、```.env```ファイル参照を使用できない。そこで、環境変数はインフラ側で設定する。
+TypeScriptやモジュールバンドルを採用している場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+対策として、```dd-trace```パッケージの```init```メソッドの実行を別ファイルに分割し、これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする。
+
+また、フレームワークよりも先に読み込むことになるため、```.env```ファイル参照を使用できない。
+
+そこで、環境変数はインフラ側で設定する。
 
 
 ```javascript
@@ -230,6 +238,10 @@ import { Configuration } from '@nuxt/types'
 
 ...
 ```
+
+
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+
 
 #### ▼ 起動ログの確認
 
@@ -302,7 +314,6 @@ APMのマイクロサービスのタグ名に反映される。
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
 ```go
 package main
@@ -346,6 +357,9 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
+
+
 #### ▼ 後続のマイクロサービス
 
 後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
@@ -354,7 +368,6 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
 ```go
 package main
@@ -386,18 +399,14 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 ```
 
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
+
+
 <br>
 
 ### gRPCを使う場合
 
 #### ▼ gRPCサーバー側
-
-> ℹ️ 参考：
->
-> - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
-> - https://github.com/muroon/datadog_sample/blob/master/grpcserver/main.go#L75-L127
-> - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
-> - https://christina04.hatenablog.com/entry/grpc-unary-interceptor
 
 ```go
 package main
@@ -449,14 +458,18 @@ func main() {
 }
 ```
 
-#### ▼ gRPCクライアント側
 
 > ℹ️ 参考：
 >
 > - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
-> - https://github.com/muroon/datadog_sample/blob/master/httpserver/usecases/grpc.go#L23-L70
+> - https://github.com/muroon/datadog_sample/blob/master/grpcserver/main.go#L75-L127
 > - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
 > - https://christina04.hatenablog.com/entry/grpc-unary-interceptor
+
+
+#### ▼ gRPCクライアント側
+
+
 
 ```go
 package main
@@ -493,5 +506,12 @@ func main() {
 	... // pb.goファイルに関する実装は省略している。
 }
 ```
+
+> ℹ️ 参考：
+>
+> - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
+> - https://github.com/muroon/datadog_sample/blob/master/httpserver/usecases/grpc.go#L23-L70
+> - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
+> - https://christina04.hatenablog.com/entry/grpc-unary-interceptor
 
 <br>

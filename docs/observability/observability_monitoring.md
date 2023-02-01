@@ -145,7 +145,11 @@ description: 監視＠可観測性の知見を記録しています。
 
 #### ▼ リアルユーザー監視（RUM）
 
-特にページパフォーマンスに関するメトリクスのデータポイントを収集し、監視する。Webページのローディング時に、Navigation-timing-APIに対してリクエストを送信すると、Webページパフォーマンスに関するメトリクスのデータポイントを収集できる。JavaScriptにNavigation-timing-APIにリクエストを送信する処理を組み込むと、ページパフォーマンスに関するメトリクスのデータポイントを収集できる。
+特にページパフォーマンスに関するメトリクスのデータポイントを収集し、監視する。
+
+Webページのローディング時に、Navigation-timing-APIに対してリクエストを送信すると、Webページパフォーマンスに関するメトリクスのデータポイントを収集できる。
+
+JavaScriptにNavigation-timing-APIにリクエストを送信する処理を組み込むと、ページパフォーマンスに関するメトリクスのデータポイントを収集できる。
 
 > ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
 

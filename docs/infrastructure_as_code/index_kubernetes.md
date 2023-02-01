@@ -1,12 +1,11 @@
-# セクションの目次
-
-## ☸️ Kubernetes (IaC)
 
 !!! info "このセクションについて"
 
     **量が多いため、[IaCセクション](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/index.html) から切り分けています**
 
-<br>
+# セクションの目次
+
+## ☸️ Kubernetes (IaC)
 
 ### Kubernetes
 

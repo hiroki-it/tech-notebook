@@ -40,7 +40,9 @@ $ brew install pluto
 
 #### ▼ detect
 
-kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。```pluto detect-api-resources```コマンドとの違いは調査中...
+kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
+
+```pluto detect-api-resources```コマンドとの違いは調査中...
 
 > ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
 
@@ -64,7 +66,9 @@ foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v
 
 #### ▼ detect-api-resources
 
-kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。```pluto detect```コマンドとの違いは調査中...
+kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
+
+```pluto detect```コマンドとの違いは調査中...
 
 > ℹ️ 参考：https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
 

@@ -223,7 +223,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ サーバーサイドパターンとは
 
-![service-discovery-pattern_server-side](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_server-side.png)
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:25%;" />
 
 サービスレジストリ（例：etcd）に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
 

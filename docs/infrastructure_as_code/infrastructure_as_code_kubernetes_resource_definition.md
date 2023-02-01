@@ -57,9 +57,11 @@ apiVersion: v1
 
 kube-apiserverが、前回の```kubectl apply```コマンドで適用したマニフェストの設定値をJSONで割り当てる。
 
-```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```metadata.annotations.kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。
+```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。
 
-```kubectl edit```コマンドでマニフェストを変更してしまうと、```metadata.annotations.kubectl.kubernetes.io/last-applied-configuration```キーが変更されないため、次回の```kubectl apply```コマンドが失敗することがある。
+```kubectl edit```コマンドでマニフェストを変更してしまうと、```.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration```キーが変更されない。
+
+そのため、次回の```kubectl apply```コマンドが失敗することがある。
 
 
 ```yaml
@@ -131,7 +133,7 @@ metadata:
 
 Kubernetesリソースに親子関係がある場合に、親リソースよりも先に子リソースを削除できるようにするため、親リソースの削除を防ぐ。
 
-関連する子リソースが削除されると、```finalizers```キーが削除され、親リソースも削除されるようになる。
+関連する子リソースが削除されると、```.metadata.finalizers```キーが削除され、親リソースも削除されるようになる。
 
 
 

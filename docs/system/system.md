@@ -47,13 +47,15 @@ description: システムの知見を記録しています。
 
 ハードウェアとしてのwebサーバー/appサーバー/dbサーバーと、Webに関するソフトウェアからなる。
 
-近年は、仮想環境を使用してWebシステムのハードウェア部分を作成することが多いため、Web/App/dbサーバーではなく、仮想Web/App/DB環境と呼ぶ方が適切かもしれない。
+近年は、仮想環境を使用してWebシステムのハードウェア部分を作成することが多い。
 
+そのため、Web/App/dbサーバーではなく、仮想Web/App/DB環境と呼ぶ方が適切かもしれない。
+
+![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
 
 
 > ℹ️ 参考：http://www.iwass.co.jp/dev/devweb.html
 
-![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
 
 <br>
 

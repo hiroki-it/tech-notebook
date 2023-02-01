@@ -178,7 +178,9 @@ secrets:
 
 ```【７】```
 
-:    指定したリージョンにAWS LBコントローラーをデプロイする。この時、事前に作成したServiceAcountをALBに紐づける。
+:    指定したリージョンにAWS LBコントローラーをデプロイする。
+
+     この時、事前に作成したServiceAcountをALBに紐づける。
 
 ```bash
 # FargateにAWS LBコントローラーをデプロイする場合
@@ -249,7 +251,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 #### ▼ Ingressと専用のALBの紐付け
 
-IngressとALBを紐づけるために、```metadata.annotations```キーを設定する必要がある。
+IngressとALBを紐づけるために、```.metadata.annotations```キーを設定する必要がある。
 
 | 項目                                            | 説明                                                           |
 |-------------------------------------------------|--------------------------------------------------------------|

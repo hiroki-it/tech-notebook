@@ -273,11 +273,11 @@ ECサイトを運営するアスクルの例。
 
 境界付けられたコンテキストを定義しない場合、```1```個の商品モデルが全てのデータを保持することとなり、それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう。
 
+![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/book_ec_ubiquitous_language.png)
 
 
 > ℹ️ 参考：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
 
-![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/book_ec_ubiquitous_language.png)
 
 **＊例＊**
 
@@ -287,6 +287,7 @@ ECサイトを運営するアスクルの例。
 
 認証コンテキスト、予約コンテキスト、顧客管理コンテキスト、銀行支払いコンテキスト、クレジットカード支払いコンテキストがある。
 
+![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
 
 
 > ℹ️ 参考：
@@ -294,7 +295,6 @@ ECサイトを運営するアスクルの例。
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
 
-![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
 
 **＊例＊**
 
@@ -306,6 +306,7 @@ ECサイトを運営するアスクルの例。
 
 取り組みとして、週次でユビキタス言語の更新を行っている。
 
+![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/contract_billing_management_ubiquitous_language.png)
 
 
 > ℹ️ 参考：
@@ -313,7 +314,6 @@ ECサイトを運営するアスクルの例。
 > - https://note.com/alpinc/n/nab47ab9273c6
 > - https://thealp.co.jp/
 
-![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/contract_billing_management_ubiquitous_language.png)
 
 <br>
 
@@ -331,11 +331,11 @@ ECサイトを運営するアスクルの例。
 
 できる限り、各境界付けられたコンテキストでは異なるユビキタス言語を使用して、境界付けられたコンテキストが複数のサブドメインにまたがないようにした方が良い（これ重要）。
 
+![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
 
 
 > ℹ️ 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
-![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
 
 #### ▼ 記法
 
@@ -387,11 +387,11 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 最初に考案された実現方法。
 
+![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/layered-architecture.png)
 
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/4798121967
 
-![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/layered-architecture.png)
 
 #### ▼ ヘキサゴナルアーキテクチャ
 
@@ -419,6 +419,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 本質的には、他の『ヘキサゴナルアーキテクチャ』『クリーンアーキテクチャ』に同じである。
 
+![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/onion-architecture.png)
 
 
 > ℹ️ 参考：
@@ -426,7 +427,6 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 > - https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 > - https://little-hands.hatenablog.com/entry/2017/10/11/075634
 
-![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/onion-architecture.png)
 
 #### ▼ クリーンアーキテクチャ
 
@@ -438,11 +438,11 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 本質的には、他の『ヘキサゴナルアーキテクチャ』『オニオンアーキテクチャ』に同じである。
 
+![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
 
 
 > ℹ️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
-![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
 
 <br>
 
@@ -475,11 +475,11 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ドメインモデル図を基に、コアドメイン/サブドメインのモデリングを行う。
 
+![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 
 
 > ℹ️ 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
-![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 
 #### ▼ 記法
 
@@ -589,3 +589,4 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
 
+<br>

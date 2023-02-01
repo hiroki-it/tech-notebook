@@ -136,10 +136,6 @@ description:  監視＠Datadogの知見を記録しています。
 
 マークダウン記法を使用できる。
 
-
-
-> ℹ️ 参考：https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
-
 ```markdown
 <!-- Datadogに設定した通知先 -->
 
@@ -157,6 +153,12 @@ description:  監視＠Datadogの知見を記録しています。
 
 {{/is_alert}}
 ```
+
+
+
+
+> ℹ️ 参考：https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
+
 
 <br>
 
@@ -249,3 +251,5 @@ Datadog社の物理サーバーがリクエストを送信する。
 
 > ℹ️ 参考：https://docs.datadoghq.com/account_management/billing/usage_details/
 
+
+<br>

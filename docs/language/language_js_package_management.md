@@ -240,10 +240,6 @@ npmパッケージ名を設定する。
 
 Composerの```composer.lock```ファイルに相当する。
 
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_package_management.html
-
 <br>
 
 ## 01-02. npmコマンド

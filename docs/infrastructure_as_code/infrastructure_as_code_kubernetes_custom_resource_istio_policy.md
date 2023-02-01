@@ -58,7 +58,9 @@ IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort
 
 NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
 
-一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成されるため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。
+一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。
+
+そのため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。
 
 LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
 
@@ -191,7 +193,9 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 
 ```【１】```
 
-:    カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。
+:    カスタムリソース定義を更新する。
+
+     必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。
 
 ```bash
 $ git clone https://github.com/istio/istio.git
@@ -264,7 +268,9 @@ Istioでは、この状況をカナリア方式（一部のユーザーを新```
 
 ```【１】```
 
-:    カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
+:    カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。
+
+     Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
 
 ```bash
 $ git clone https://github.com/istio/istio.git
@@ -316,7 +322,15 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 
 ```【４】```
 
-:    ここでは```2```個の選択肢がある。```1```個目は、Istioの```istio.io/rev```キーのリビジョン番号を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+:    ここでは```2```個の選択肢がある。
+
+     ```1```個目は、Istioの```istio.io/rev```キーのリビジョン番号を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。
+
+     多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。
+
+     そこで、それらのNamespaceを指定する。
+
+     もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 
 ```bash
@@ -332,7 +346,11 @@ $ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrit
 
 ```【４】```
 
-:    ```2```個目は、Istioの```istio.io/rev```キーのエイリアスの実体を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。具体的には、Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
+:    ```2```個目は、Istioの```istio.io/rev```キーのエイリアスの実体を書き換えて、新しい```istio-proxy```コンテナをインジェクションする。
+
+     具体的には、Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。
+
+     MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
 
 ```bash
 $ istioctl tag set default --revision 1-1-0 --overwrite

@@ -940,7 +940,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 #### ▼ 削除できない
 
-PersistentVolumeClaimを削除しようとすると、```finalizers```キー配下に```kubernetes.io/pvc-protection```値が設定され、削除できなくなることがある。
+PersistentVolumeClaimを削除しようとすると、```.metadata.finalizers```キー配下に```kubernetes.io/pvc-protection```値が設定され、削除できなくなることがある。
 
 ```yaml
 apiVersion: v1
@@ -953,7 +953,7 @@ spec:
   ...
 ```
 
-この場合、```kubectl edit```コマンドなどで```finalizers```キーを空配列に編集と、削除できるようになる。
+この場合、```kubectl edit```コマンドなどで```.metadata.finalizers```キーを空配列に編集と、削除できるようになる。
 
 ```bash
 $ kubectl edit pvc <PersistentVolumeClaim名>
