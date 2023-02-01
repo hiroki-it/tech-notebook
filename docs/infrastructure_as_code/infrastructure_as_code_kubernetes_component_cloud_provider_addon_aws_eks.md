@@ -60,13 +60,15 @@ EKSのコントロールプレーン上のkube-apiserverが、Node外からPod�
 
 ### eks-vpc-cniアドオンとは
 
-![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
 
 EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働する。
 
 PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。
 
 これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
+
+![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
+
 
 > ℹ️ 参考：
 >

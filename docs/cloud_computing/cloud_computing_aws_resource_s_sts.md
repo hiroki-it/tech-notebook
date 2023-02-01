@@ -66,7 +66,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 #### ▼ Cognito
 
-CognitoをIDプロバイダーとして使用する。
+CognitoをIDプロバイダーとして使用するように、信頼されたエンティティを設定する。
 
 ```yaml
 {
@@ -91,7 +91,11 @@ CognitoをIDプロバイダーとして使用する。
 
 #### ▼ EKS Cluster
 
-EKS ClusterをIDプロバイダーとして使用する。
+EKS ClusterをIDプロバイダーとして使用するように、```Federated```キーでEKS Clusterの識別子を設定する。
+
+これにより、EKS Cluster内で認証されたServiceAccountにIAMロールを紐づけることができるようになる。
+
+また、```Condition```キーで特定のServiceAccountを指定できるようにする。
 
 ```yaml
 {
@@ -116,6 +120,19 @@ EKS ClusterをIDプロバイダーとして使用する。
 }
 ```
 
+その上で、実際のServiceAccountにIAMロールのARNを設定する。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
+  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
+  annotations:
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
+```
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
 
 <br>
 
@@ -399,9 +416,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 <br>
 
 
-### 4. クレデンシャル情報を取得```【１】```
-
-:    
+### 4. クレデンシャル情報を取得
 
 レスポンスされたデータからクレデンシャル情報を抽出する。
 

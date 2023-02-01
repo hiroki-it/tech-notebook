@@ -291,6 +291,12 @@ VPCエンドポイントとして動作し、AWSリソースからアウトバ�
 
 S3、DynamoDBのみ
 
+
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/ja_jp/vpc/latest/privatelink/vpce-gateway.html
+> - https://yassanabc.com/2022/02/17/%E3%80%90vpc%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%80%91gateway%E5%9E%8B%E3%81%A8interface%E5%9E%8B%E3%81%AE%E9%81%95%E3%81%84%E3%80%90s3%E3%80%91/
+
 <br>
 
 ## 01-07. Internet Gateway、NAT Gateway
@@ -379,7 +385,11 @@ VPC に複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じ
 
 #### ▼ VPCエンドポイントサービスとは
 
-VPCエンドポイントとは異なる能力なので注意。Interface型のVPCエンドポイント（プライベートリンク）をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。エンドポイントのサービス名は、『```com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****```』になる。API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
+VPCエンドポイントとは異なる能力なので注意。Interface型のVPCエンドポイント（プライベートリンク）をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。
+
+エンドポイントのサービス名は、『```com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****```』になる。
+
+API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
 
 ![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc-endpoint-service.png)
 

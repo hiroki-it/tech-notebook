@@ -65,7 +65,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念が考案される前、これらのロジックを持つライブラリを各マイクロサービスに持たせていた。
 
-![service-mesh_layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_layer.png)
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:2%;" />
 
 サービスメッシュの概念が考案され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーをインジェクションするようになった。
 
@@ -168,7 +168,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ### サービスディスカバリーの要素
 
-![service-discovery-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern.png)
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:25%;" />
 
 サービスディスカバリーの仕組みは、次の要素からなる。
 
@@ -192,7 +192,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ クライアントサイドパターン
 
-![service-discovery-pattern_client-side](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_client-side.png)
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:25%;" />
 
 サービスレジストリ（例：etcd）に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
 

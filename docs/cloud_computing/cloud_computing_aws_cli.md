@@ -267,6 +267,7 @@ $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 $ export AWS_DEFAULT_PROFILE=default
 ```
 
+
 > ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 
@@ -287,12 +288,13 @@ $ export AWS_DEFAULT_REGION=ap-northeast-1
 現在のターミナルで使用するプロファイルを設定する。
 
 
-> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 ```bash
 $ export AWS_PROFILE=foo-profile
 ```
 
+
+> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 #### ▼ AWS_SECRET_ACCESS_KEY
 
@@ -454,7 +456,6 @@ ACM、など
 
 #### ▼ --query
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
 
 ```bash
 # 全てのキーと値を取得する。
@@ -477,6 +478,9 @@ $ aws ec2 describe-instances \
     --filters "Name=tag:<タグ名>,Values=<タグ値>" \
     --query "SecurityGroups[*].GroupId"
 ```
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
 
 <br>
 
@@ -502,8 +506,6 @@ $ aws ec2 describe-instances \
 
 CloudWatchアラームの状態を変更する。
 
-
-
 ```bash
 $ aws cloudwatch set-alarm-state \
     --alarm-name "prd-foo-alarm" \
@@ -522,9 +524,10 @@ $ aws cloudwatch set-alarm-state \
 
 **＊例＊**
 
-全てのロググループに対して、一日当たりの収集サイズを```start-time```から```end-time```の間で取得する。```--dimensions ```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただし、やってみたけどうまくいかず）。
+全てのロググループに対して、一日当たりの収集サイズを```start-time```から```end-time```の間で取得する。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
+```--dimensions```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただし、やってみたけどうまくいかず）。
+
 
 ```bash
 $ aws cloudwatch get-metric-statistics \
@@ -536,6 +539,9 @@ $ aws cloudwatch get-metric-statistics \
     --statistics Sum \
       | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
 ```
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
+
 
 <br>
 
@@ -577,12 +583,14 @@ AWSリソースがリソースグループで管理されている場合、特�
 
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
-
 ```bash
 $ aws resourcegroupstaggingapi get-resources \
     --tag-filters Key=<タグ名>,Values=<タグ値>
 ```
+
+
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
 AWSリソースの種類（ec2、alb、など）を指定して、特定のAWSリソースのみを取得することもできる。
 
@@ -732,7 +740,6 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
 
 ```bash
 $ aws secretsmanager get-secret-value \
@@ -740,6 +747,9 @@ $ aws secretsmanager get-secret-value \
     --query=SecretString \
     --output=text
 ```
+
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
+
 
 <br>
 
@@ -764,10 +774,6 @@ $ aws sts get-caller-identity --profile foo
 #### ▼ get-parameters-by-path
 
 特定のパスで始まる全ての変数をパラメーターストアから取得する。
-
-
-
-> ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
 
 ```yaml
 # パスのないパラメーターの場合
@@ -808,6 +814,9 @@ $ aws ssm get-parameters-by-path --path "/FOO"
    ]
  }
 ```
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
+
 
 <br>
 

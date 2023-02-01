@@ -627,7 +627,9 @@ EBSボリュームのコピーのこと。
 
 #### ▼ systems-managerエージェント
 
-Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
+Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
+
+カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/ami-preinstalled-agent.html
 
@@ -640,8 +642,6 @@ Systems Managerを使用してEC2インスタンスに接続する場合、EC2�
 | Secrets Manager   | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerを使用するため。                    |
 
 
-> ℹ️ 参考：
->
-> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
+> ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
 
 <br>
