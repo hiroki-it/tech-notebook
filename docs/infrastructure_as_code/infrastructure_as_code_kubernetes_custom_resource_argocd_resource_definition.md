@@ -2457,14 +2457,16 @@ data:
 ### セットアップ
 
 
-```argocd add <デプロイ先のKubernetes Clusterのコンテキスト>```コマンドで、Secretを作成できる。
+デプロイ先のClusterをコンテキストとして設定した上で、```argocd add <デプロイ先のKubernetes ClusterのARN>```コマンドを実行すると、Secretを作成できる。
 
 合わせて、argocd-manager、argocd-manager-role、argocd-manager-role-bindingも作成する。
 
 執筆時点（2022/01/30）では、あらかじめマニフェストで定義する方法はない。
 
 ```bash
-$ argocd cluster add https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+$ argocd login <ArgoCDのドメイン名> --grpc-web
+
+$ argocd cluster add arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<EKS Cluster名>
 
 INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system" 
 INFO[0011] ClusterRole "argocd-manager-role" updated    

@@ -217,7 +217,9 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 ### client-goとは
 
-Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
+Kubernetesのkube-apiserverと通信できるパッケージ。
+
+使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
 
 > ℹ️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
 
@@ -233,13 +235,29 @@ kube-apiserverの認証/認可を通過するために、```~/.kube/config```フ
 
 ### client-goパッケージとkube-apiserverのバージョン整合性
 
+#### ▼ client-goパッケージとkube-apiserverの間
+
 ```kubectl```コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。
 
 例えば、client-goパッケージの```0.20.4```は、kube-apiserverの```v1.20.4```に対応している。
 
 kube-apiserverとクライアント側のバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
 
+そのため、client-goパッケージを定期的にアップグレードする必要がある。
+
 > ℹ️ 参考：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
+
+#### ▼ client-goパッケージとマニフェストの間
+
+Kubernetesのマニフェストには```apiVersion```キーが定義されている。
+
+kube-apiserverのバージョンに応じて、公式リポジトリが用意するマニフェストにて、```apiVersion```キーが```v1```から```v2```になることがある。
+
+この場合、client-goパッケージがこの```apiVersion```キーに対応していないと、kube-apiserverにそのマニフェストを送信できない。
+
+反対に、マニフェストですでに廃止済みの```apiVersion```キーが指定されていて、client-goパッケージでもこれが廃止されていても、同様のことが起こる。
+
+そのため、client-goパッケージを定期的にアップグレードする必要がある。
 
 <br>
 

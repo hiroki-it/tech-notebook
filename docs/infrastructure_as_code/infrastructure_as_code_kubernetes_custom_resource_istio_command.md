@@ -1075,7 +1075,7 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 
 ### verify-installとは
 
-Istioリソースのapplyが正しく実行されたかを検証する。
+Istioリソースが正しく作成されたかを検証する。
 
 
 ```bash

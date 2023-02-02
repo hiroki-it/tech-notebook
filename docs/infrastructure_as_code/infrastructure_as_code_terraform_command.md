@@ -274,11 +274,13 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 
 
 
-> ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
 ```bash
 $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 ```
+
+> ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
+
 
 #### ▼ -upgrade
 
@@ -349,11 +351,13 @@ main.tf
 
 
 
-> ℹ️ 参考：https://ozashu.hatenablog.com/entry/2019/05/07/000541
 
 ```bash
 $ terraform get
 ```
+
+> ℹ️ 参考：https://ozashu.hatenablog.com/entry/2019/05/07/000541
+
 
 <br>
 
@@ -369,11 +373,13 @@ Graphvizのダウンロードが必要である。
 
 
 
-> ℹ️ 参考：https://graphviz.org/download/
 
 ```bash
 $ terraform graph | dot -Tsvg > graph.svg
 ```
+
+> ℹ️ 参考：https://graphviz.org/download/
+
 
 #### ▼ 図形の見方
 

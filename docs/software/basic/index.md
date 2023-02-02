@@ -3,7 +3,7 @@
 
 !!! info "このセクションについて"
 
-    **量が多いため、 [ソフトウェアセクション](https://hiroki-it.github.io/tech-notebook-mkdocs/software/index.html) から切り分けています**
+    **量が多いため、[ソフトウェアセクション](https://hiroki-it.github.io/tech-notebook-mkdocs/software/index.html) から切り分けています**
 
 <br>
 

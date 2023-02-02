@@ -51,13 +51,14 @@ Helmは、カスタムリソース定義を含むチャートのインストー�
 
 カスタムリソース定義は手動で削除する必要がある。
 
-> ℹ️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
-
 ```bash
 $ kubectl get crd
 
 $ kubectl delete crd <カスタムリソース定義名>
 ```
+
+> ℹ️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
+
 
 <br>
 

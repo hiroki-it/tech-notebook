@@ -255,7 +255,7 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 
 FargateワーカーNodeやEC2ワーカーNodeの管理グループ単位のこと。
 
-KubernetesのClusterに相当する。
+Kubernetes Clusterに相当する。
 
 
 
@@ -936,6 +936,8 @@ Fargateを設定する。
 ### アップグレードとは
 
 EKS Clusterにて、コントロールプレーンとデータプレーンをローリング方式でアップグレードする。
+
+AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。
 
 執筆時点（2022/01/28）では、AWSのAPIを介して```updateConfig```値を設定すれば、アップグレード時のサージ数を設定できる。
 

@@ -116,9 +116,9 @@ Datadogの代わりにログを収集する。
 
 #### ▼ Kubernetesの場合
 
-![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
+Kubernetes ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
-KubernetesのClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
+![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
 > ℹ️ 参考：
 >
@@ -350,7 +350,6 @@ export default browserLogsForSsgPlugin
 
 LogパッケージにMonologを採用している場合、```/etc/datadog-agent/conf.d/php.d```ディレクトリ配下に```conf.yaml```ファイルを作成する。ここに、Datadogにログを送信するための設定を行う。
 
-> ℹ️ 参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
 
 **＊実装例＊**
 
@@ -367,6 +366,9 @@ logs:
     source: php
     sourcecategory: sourcecode
 ```
+
+> ℹ️ 参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
+
 
 <br>
 
@@ -518,21 +520,21 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 判定ルールについては、以下のリンクを参考にせよ。
 
+![datadog_status-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_status-facet.png)
 
 
 > ℹ️ 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
 
-![datadog_status-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_status-facet.png)
 
 #### ▼ サービスリマッパー
 
 指定した属性/タグに割り当てられた値を、サービスファセットのサービス名として登録する。
 
+![datadog_service-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_service-facet.png)
 
 
 > ℹ️ 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper
 
-![datadog_service-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_service-facet.png)
 
 <br>
 

@@ -33,7 +33,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 また、技術ノートから知見をピックアップし、不定期でブログに投稿しています。<br>
 
-▶ **[はてなブログ](https://hiroki-hasegawa.hatenablog.jp/archive/)** 
+▶ **[はてなブログ](https://hiroki-hasegawa.hatenablog.jp/archive)** 
 
 <br>
 

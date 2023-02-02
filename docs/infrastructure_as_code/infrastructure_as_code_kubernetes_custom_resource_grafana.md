@@ -25,9 +25,11 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 
 
-> ℹ️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
 
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images//grafana_architecture.png)
+
+> ℹ️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
+
 
 <br>
 

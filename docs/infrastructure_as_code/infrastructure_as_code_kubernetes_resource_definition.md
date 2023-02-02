@@ -19,11 +19,18 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 APIグループのバージョンを設定する。
 
+kube-apiserverをアップグレードすると、APIグループの特定のバージョンが廃止されることがある。
+
+もし、そのバージョンを指定したマニフェストを```kubectl apply```コマンドやclient-goパッケージで送信しようとすると、マニフェストのKubernetesリソースを作成できずにエラーになる。
+
 ```yaml
 apiVersion: v1
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
+> ℹ️ 参考：
+> 
+> - https://kubernetes.io/docs/reference/using-api/#api-groups
+> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#-strong-api-groups-strong-
 
 
 <br>
