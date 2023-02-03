@@ -700,9 +700,9 @@ ArgoCDを介してHelmを実行する場合、内部的には```helm template```
 
 
 ```bash
-$ helm template . | kubectl diff -f -
+$ helm template . --include-crds | kubectl diff -f -
 
-$ helm template . | kubectl apply -f -
+$ helm template . --include-crds | kubectl apply -f -
 ```
 
 > ℹ️ 参考：
@@ -903,9 +903,9 @@ spec:
 
 #### ▼ syncPolicyとは
 
-GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動Syncを設定する。
+GitOpsでのリポジトリ（例：GitHub、Helm、など）とKubernetesの間の自動Syncを設定する。
 
-
+ArgoCDはリポジトリを```3```分間ごとにポーリングしており、このタイミングでリポジトリとの間でマニフェストの状態を同期する。
 
 > ℹ️ 参考：
 >
@@ -918,7 +918,7 @@ GitOpsでのリポジトリ（例：GitHub、Helm、など）とKubernetesの間
 
 開発者には参照権限のみの認可スコープを付与し、ArgoCDの自動Syncを有効化すれば、開発者がデプロイできなくなり、安全性が増す。
 
-
+また、複数の実行環境ある場合に、Sync漏れを防げる。
 
 
 | 設定項目         | 説明                                                                                                                                                                                                                                                              | 補足                                                                                                                                                                                                                           |
@@ -2457,11 +2457,13 @@ data:
 ### セットアップ
 
 
-デプロイ先のClusterをコンテキストとして設定した上で、```argocd add <デプロイ先のKubernetes ClusterのARN>```コマンドを実行すると、Secretを作成できる。
+デプロイ先のClusterをコンテキストとして設定した上で、```argocd cluster add <デプロイ先のKubernetes ClusterのARN>```コマンドを実行すると、Secretを作成できる。
 
 合わせて、argocd-manager、argocd-manager-role、argocd-manager-role-bindingも作成する。
 
 執筆時点（2022/01/30）では、あらかじめマニフェストで定義する方法はない。
+
+もしタイムアウトになる場合、kube-apiserverのIPアドレスのアクセス制限に引っ掛かっていないかを確認する。
 
 ```bash
 $ argocd login <ArgoCDのドメイン名> --grpc-web
@@ -2492,7 +2494,7 @@ ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clust
 
 このServiceAccountを介して、ArgoCDのapplication-controllerはKubernetesクラスターにKubernetesリソースをデプロイする。
 
-```argocd add <デプロイ先のKubernetes Clusterのコンテキスト>```コマンドで、```argocd-manager```というServiceAccountを作成できる。
+```argocd cluster add <デプロイ先のKubernetes Clusterのコンテキスト>```コマンドで、```argocd-manager```というServiceAccountを作成できる。
 
 
 ```yaml

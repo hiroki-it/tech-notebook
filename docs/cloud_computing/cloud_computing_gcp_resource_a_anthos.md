@@ -237,7 +237,9 @@ $ systemctl start docker
 
 #### ▼ ブートストラップクラスター
 
-Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。```~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
+Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。
+
+```~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
 
 ```bash
 $ kubectl get pod \

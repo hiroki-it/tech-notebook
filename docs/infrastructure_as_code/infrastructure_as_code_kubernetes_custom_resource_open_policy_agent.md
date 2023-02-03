@@ -2,14 +2,11 @@
 title: 【IT技術の知見】OpenPolicyAgent＠カスタムリソース
 description: OpenPolicyAgent＠カスタムリソースの知見を記録しています。
 ---
-
 # OpenPolicyAgent＠カスタムリソース
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
@@ -23,12 +20,10 @@ OpenPolicyAgentは、OpenPolicyエージェント、```.rego```ファイル、DB
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent_architecture.png)
 
-
 > ℹ️ 参考：
 >
 > - https://www.velotio.com/engineering-blog/deploy-opa-on-kubernetes
 > - https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
-
 
 <br>
 
@@ -42,23 +37,17 @@ DBからアカウント情報を読み出し、```.rego```ファイルのロジ�
 
 > ℹ️ 参考：https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
 
-
-
 <br>
 
 ### ```.rego```ファイル
 
 認可スコープのロジックを定義する。
 
-
-
 <br>
 
 ### DB
 
 アカウント情報を```.json```形式、認可スコープ定義を```.rego```形式で、保管する。
-
-
 
 <br>
 
@@ -72,13 +61,13 @@ DBからアカウント情報を読み出し、```.rego```ファイルのロジ�
 
 返却されたboolean型値を使用して、アプリケーションは認可処理を実施する。
 
-
-
 #### ▼ アカウント情報の作成
 
 ```【１】```
 
-:    アカウント情報を```.json```形式で作成する。ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
+:    アカウント情報を```.json```形式で作成する。
+
+     ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/17511
 
@@ -153,7 +142,9 @@ $ curl \
 
 ```【５】```
 
-:    リクエスト内容を```.json```形式で作成する。ここでは、aliceというアカウントの参照権限の有無をリクエストを定義する。
+:    リクエスト内容を```.json```形式で作成する。
+
+     ここでは、aliceというアカウントの参照権限の有無をリクエストを定義する。
 
 ```yaml
 # request.jsonファイル
@@ -168,7 +159,9 @@ $ curl \
 
 ```【６】```
 
-:    アプリケーションは、aliceアカウントの参照権限の有無をOpenPolicyエージェントにリクエストする。OpenPolicyエージェントは、アプリケーションに```true```を返却する。
+:    アプリケーションは、aliceアカウントの参照権限の有無をOpenPolicyエージェントにリクエストする。
+
+     OpenPolicyエージェントは、アプリケーションに```true```を返却する。
 
 ```bash
 $ curl \
@@ -188,12 +181,19 @@ $ curl \
 
 #### ▼ Gatekeeperとは
 
+内部的にOpenPolicyAgentを使用して、Kubernetesのマニフェストを検証する。
+
 kube-apiserverのvalidating-admissionステップ時に、GatekeeperのwebhookサーバーにAdmissionReviewのリクエストが送信され、Gatekeeperの持つOpenPolicyAgentの処理を発火させる。
 
+そのため、GitOpsのCDパイプライン上にバリデーションを実行できる。
 
-> ℹ️ 参考：https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/
 
 ![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_open-policy-agent.png)
+
+> ℹ️ 参考：
+> 
+> - https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/
+> - https://www.infracloud.io/blogs/opa-and-gatekeeper/
 
 
 #### ▼ gatekeeper-validating-webhook-configuration
@@ -202,7 +202,7 @@ Podの作成/更新時にwebhookサーバーにリクエストを送信できる
 
 ```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
 
-そのため、OpenPolicyが起動に失敗しても、Podが中止されることはない。
+そのため、Gatekeeperが起動に失敗しても、Podが中止されることはない。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
@@ -227,7 +227,7 @@ webhooks:
         port: 443
     failurePolicy: Ignore
     matchPolicy: Exact
-    
+  
     namespaceSelector:
       matchExpressions:
         - key: admission.gatekeeper.sh/ignore
