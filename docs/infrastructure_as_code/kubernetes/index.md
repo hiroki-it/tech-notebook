@@ -71,8 +71,8 @@
 * #### [︎Kubernetesリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
 
 * #### <u>︎リソース定義</u>
-  > * [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
-  > * [共通部分](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html)
+  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
+  > * ##### [共通部分](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html)
 
 * #### <u>CSIドライバー</u>
   > * ##### <u>SecretsストアCSIドライバー</u>

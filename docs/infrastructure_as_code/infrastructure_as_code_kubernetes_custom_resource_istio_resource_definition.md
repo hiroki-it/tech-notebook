@@ -333,11 +333,11 @@ spec:
         istio.io/rev: 1-0-0
 ```
 
-#### ▼ proxy.istio.io/config.configPath
+#### ▼ proxy.istio.io
 
-```istio-proxy```コンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。
+```istio-proxy```コンテナのプロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
-デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。
+デフォルトでは、```./etc/istio/proxy```ディレクトリ配下に最終的な設定値ファイルが作成される。
 
 IstioOperatorの```.spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
@@ -357,8 +357,9 @@ spec:
   template:
     metadata:
       annotations:
-        proxy.istio.io/config:  |
+        proxy.istio.io/config: |
           configPath: ./etc/istio/proxy
+          terminationDrainDuration: "630s"
 ```
 
 #### ▼ sidecar.istio.io/inject
@@ -1088,11 +1089,11 @@ spec:
 相互TLSのタイプを設定する。
 
 
-| 項目       | 説明                                                           |
-| ---------- | -------------------------------------------------------------- |
-| UNSET      | 調査中...                                                      |
-| DISABLE    | 相互TLSを使用しない。                                          |
-| PERMISSIVE | 相互TLSの時、プロトコルはHTTPSとHTTPの両方を許可する。         |
+| 項目       | 説明                                         |
+|------------|--------------------------------------------|
+| UNSET      | 調査中...                                    |
+| DISABLE    | 相互TLSを使用しない。                             |
+| PERMISSIVE | 相互TLSの時、プロトコルはHTTPSとHTTPの両方を許可する。     |
 | STRICT     | 相互TLSの時、プロトコルはHTTPSのみを許可し、HTTPを許可しない。 |
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
