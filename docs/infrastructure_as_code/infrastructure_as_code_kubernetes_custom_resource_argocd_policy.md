@@ -113,6 +113,8 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 
 親Applicationで子Applicationをグループ化したように構成する。
 
+Applicationの```.resource```キー配下で、紐づく子Applicationを管理している。
+
 ![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
 
 

@@ -60,8 +60,7 @@ ConfigMapの```data.configManagementPlugins```キーでそれらの処理を定�
 
 これらの処理は、ArgoCDのリポジトリの監視処理と同時に実行されるため、何らかのエラーがあると、監視処理のエラーとして扱われる。
 
-
-
+Applicationの```.spec.source.plugin.env```キーで設定した環境変数が、```ARGOCD_ENV_<環境変数名>```で出力される。
 
 ```yaml
 apiVersion: v1
@@ -218,13 +217,13 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
-    - name: helm-secrets
+    - name: helmfile
       generate:
         command: ["/bin/bash", "-c"]
         args:
           - |
             set -euo pipefail
-            helmfile -f $HELMFILE -e "$ENV" template"
+            helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV" template"
 ```
 
 > ℹ️ 参考：https://github.com/travisghansen/argo-cd-helmfile#installation
@@ -361,9 +360,9 @@ data:
           - > 
             set -euo pipefail &&
             if [ -z "$VALUES" ];then
-              helm secrets template $HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $SOPS_SECRETS_FILE
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE
             else              
-              helm secrets template $HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $SOPS_SECRETS_FILE -f $VALUES_FILE
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE
             fi
 ```
 
@@ -521,7 +520,7 @@ data:
         args:
           - |
             set -euo pipefail
-            helm template $HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
+            helm template $ARGOCD_ENV_HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
 > ℹ️ 参考：https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm

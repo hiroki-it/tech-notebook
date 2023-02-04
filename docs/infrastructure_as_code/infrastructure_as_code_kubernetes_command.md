@@ -418,6 +418,14 @@ $ kubectl delete pod foo-pod
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
 
+**＊例＊**
+
+指定した名前のPodを全て削除する。
+
+```bash
+$ kubectl delete pod -n foo $(kubectl get pod --no-headers -o custom-columns=":metadata.name" -n foo | grep '<指定した名前>'  | tr -s '\n' ' ')
+```
+
 
 #### ▼ --force
 

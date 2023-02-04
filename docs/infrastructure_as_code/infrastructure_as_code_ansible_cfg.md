@@ -38,12 +38,14 @@ Ansible自体を設定する。
 
 inventoryファイルの場所を指定する
 
-> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 ```ini
 [defaults]
 hostfile = /etc/ansible/inventories
 ```
+
+> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+
 
 <br>
 
@@ -55,12 +57,14 @@ hostfile = /etc/ansible/inventories
 
 
 
-> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 ```ini
 [defaults]
 remote_user = ansible
 ```
+
+> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+
 
 <br>
 
@@ -71,13 +75,13 @@ remote_user = ansible
 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵を設定する。
 
 
-
-> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
-
 ```ini
 [defaults]
 private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 ```
+
+> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+
 
 <br>
 
@@ -87,6 +91,10 @@ private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 
 管理対象ノードに関するフィンガープリント値が作成されているか否かを検証する。
 
+```ini
+[defaults]
+host_key_checking = False
+```
 
 
 > ℹ️ 参考：
@@ -94,10 +102,6 @@ private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking
 > - https://tekunabe.hatenablog.jp/entry/2021/01/17/ansible_stumble_26
 
-```ini
-[defaults]
-host_key_checking = False
-```
 
 <br>
 
@@ -109,16 +113,16 @@ host_key_checking = False
 
 管理対象ノードがinventoryファイルに見つからない場合の返却値を設定する。
 
-
+```ini
+[defaults]
+host_pattern_mismatch = error
+```
 
 > ℹ️ 参考：
 > 
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-pattern-mismatch
 > - https://zenn.dev/akira6592/scraps/24a748660fdea4
 
-```ini
-[defaults]
-host_pattern_mismatch = error
-```
+
 
 <br>

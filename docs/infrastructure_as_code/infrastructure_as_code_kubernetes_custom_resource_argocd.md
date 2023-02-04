@@ -147,7 +147,9 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_application-controller.png)
 
-kube-controllerとして動作し、監視対象リポジトリ上のマニフェストとetcd上のマニフェストの差分を定期的に検出する。
+カスタムコントローラーとして動作し、ArgoCDのカスタムリソースをカスタムリソース定義の宣言通りに定期的に修復する。
+
+また、監視対象リポジトリ上のマニフェストとetcd上のマニフェストの差分を定期的に検出する。
 
 ```yaml
 # application-controllerのPodでログを確認してみる。
