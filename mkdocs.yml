@@ -505,7 +505,9 @@ nav:
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
       - ■ Kubernetesリソース:
           - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+          - ■ リソース定義:
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+              - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
           - ■ CSIドライバー:
               - ■ SecretsストアCSIドライバー:
                   - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.md
