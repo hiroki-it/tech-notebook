@@ -377,11 +377,12 @@ nav:
               - Fで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_f.md
               - Gで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_g.md
               - Iで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_i.md
-              - Kで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_k.md
+              - ■ Kで始まるAWSリソース:
+                  - Kinesis: cloud_computing/cloud_computing_aws_resource_k_kinesis.md
               - ■ Lで始まるAWSリソース:
-                  - Lで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_l.md
                   - Lambda: cloud_computing/cloud_computing_aws_resource_l_lambda.md
                   - Lambda関数: cloud_computing/cloud_computing_aws_resource_l_lambda_function.md
+                  - LB: cloud_computing/cloud_computing_aws_resource_l_lb.md
               - ■ Rで始まるAWSリソース:
                   - Rで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_r.md
                   - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
