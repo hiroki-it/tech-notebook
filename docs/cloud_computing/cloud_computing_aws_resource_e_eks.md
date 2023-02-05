@@ -139,12 +139,18 @@ data:
 
 KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。
 
+EKSをIDプロバイダーとして使用することにより、EKSで認証されたServiceAccountにIAMロールを紐づけることができるようになる。
+
 IRSAが登場するまでは、EKS上でのワーカーNode（例：EC2、Fargate）にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
 
 
 
+![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_oidc.png)
+
+
 > ℹ️ 参考：
 >
+> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://www.bigtreetc.com/column/eks-irsa/
 > - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
 
