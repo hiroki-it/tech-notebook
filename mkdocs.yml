@@ -352,7 +352,7 @@ nav:
 
   - ⛅️ クラウド:
       - cloud_computing/index.md
-      - クラウド（クラウドコンピューティング）: cloud_computing/cloud_computing.md
+      - クラウド: cloud_computing/cloud_computing.md
       - ■ AWS:
           - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
           - ■ AWSリソース:
