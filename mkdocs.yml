@@ -389,6 +389,7 @@ nav:
               - ■ Rで始まるAWSリソース:
                   - Rで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_r.md
                   - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
+                  - Route53: cloud_computing/cloud_computing_aws_resource_r_route53.md
               - ■ Sで始まるAWSリソース:
                   - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
                   - S3: cloud_computing/cloud_computing_aws_resource_s_s3.md
