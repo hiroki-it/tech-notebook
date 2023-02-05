@@ -374,7 +374,8 @@ nav:
                   - EFS: cloud_computing/cloud_computing_aws_resource_e_efs.md
                   - EKS: cloud_computing/cloud_computing_aws_resource_e_eks.md
                   - ︎ElastiCache: cloud_computing/cloud_computing_aws_resource_e_elasticache.md
-              - Fで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_f.md
+              - ■ Fで始まるAWSリソース:
+                  - FireLens: cloud_computing/cloud_computing_aws_resource_f_firelens.md
               - Gで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_g.md
               - ■ Iで始まるAWSリソース:
                   - IAM: cloud_computing/cloud_computing_aws_resource_i_iam.md
