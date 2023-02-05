@@ -376,7 +376,8 @@ nav:
                   - ︎ElastiCache: cloud_computing/cloud_computing_aws_resource_e_elasticache.md
               - Fで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_f.md
               - Gで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_g.md
-              - Iで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_i.md
+              - ■ Iで始まるAWSリソース:
+                  - IAM: cloud_computing/cloud_computing_aws_resource_i_iam.md
               - ■ Kで始まるAWSリソース:
                   - Kinesis: cloud_computing/cloud_computing_aws_resource_k_kinesis.md
                   - Kinesis: cloud_computing/cloud_computing_aws_resource_k_kms.md
