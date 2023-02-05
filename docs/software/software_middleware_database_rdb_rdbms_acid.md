@@ -264,11 +264,11 @@ try{
 
 ストレージ上のジャーナルファイルの更新後ログ『```a = 5```』『```b = 1```』を使用して、修復できる限りロールフォワードを行う。
 
+![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/媒体障害の障害回復機能.jpg)
 
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
-![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/媒体障害の障害回復機能.jpg)
 
 **＊例＊**
 

@@ -453,7 +453,7 @@ foo-plugin <バージョンタグ>
 もし```.tool-version```ファイルがないと、asdfでインストールしたコマンドで以下のようなエラーになる。
 
 ```bash
-# asdfでsopsをインストールしたとする。
+# asdfでSOPSをインストールしたとする。
 $ sops -e plain.yaml
  
 No version is set for command sops

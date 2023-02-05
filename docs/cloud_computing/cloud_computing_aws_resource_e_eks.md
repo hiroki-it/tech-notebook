@@ -187,19 +187,19 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 
 #### ▼ コンソール画面
 
-| 設定項目         | 説明                                                                                                                   | 補足                                                                                                                                                                                                                |
-|------------------|----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 名前             | クラスターの名前を設定する。                                                                                                       |                                                                                                                                                                                                                   |
-| Kubernetesバージョン  | EKS上で稼働するKubernetesのバージョンを設定する。                                                                                      | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                              |
-| クラスターサービスロール     | EKS Clusterのサービスリンクロールを設定する。                                                                                         | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html                                                                                                                                      |
-| シークレット           | Secretに保持するデータをKMSの暗号化キーで暗号化するか否かを設定する。                                                                              |                                                                                                                                                                                                                   |
-| VPC、サブネット        | ENIを配置するサブネットを設定する。                                                                                                  | 複数のAZにまたがっている必要がある。                                                                                                                                                                                               |
-| クラスターセキュリティグループ  | EKS Clusterのセキュリティグループを設定する。                                                                                         | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>ℹ️ 参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIPアドレスファミリー | PodとServiceに割り当てるClusterIPのIPアドレスタイプ（IPv4、IPv6）を設定する。                                                                |                                                                                                                                                                                                                   |
-| CIDRブロック         | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                                                                         |                                                                                                                                                                                                                   |
-| クラスターエンドポイントアクセス | kube-apiserverのアクセス制限を設定する。                                                                                          |                                                                                                                                                                                                                   |
-| ネットワークアドオン       | ネットワークに関するAWS EKSアドオンを設定する。執筆時点（2023/02/05）では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cniアドオン、を使用できる。 |                                                                                                                                                                                                                   |
-| コントロールプレーンのログ    | コントロールプレーンNodeコンポーネントのログをCloudWatchログに出力するかどうかを設定する。                                                                 | 執筆時点（2023/02/05）では、kube-apiserver（処理ログと監査ログの両方）、aws-iam-authenticator-server、kube-controller-manager、kube-scheduler、のログを出力できる。                                                                                    |
+| 設定項目         | 説明                                                      | 補足                                                                                                                                                                                                                                  |
+|------------------|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 名前             | クラスターの名前を設定する。                                        |                                                                                                                                                                                                                                       |
+| Kubernetesバージョン  | EKS上で稼働するKubernetesのバージョンを設定する。                      | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                          |
+| クラスターサービスロール     | EKS Clusterのサービスリンクロールを設定する。                            | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html                                                                                                                                                        |
+| シークレット           | Secretに保持するデータをKMSの暗号化キーで暗号化するか否かを設定する。        |                                                                                                                                                                                                                                       |
+| VPC、サブネット        | ENIを配置するサブネットを設定する。                                   | 複数のAZにまたがっている必要がある。                                                                                                                                                                                                               |
+| クラスターセキュリティグループ  | EKS Clusterのセキュリティグループを設定する。                            | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>ℹ️ 参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー | PodとServiceに割り当てるClusterIPのIPアドレスタイプ（IPv4、IPv6）を設定する。 |                                                                                                                                                                                                                                       |
+| CIDRブロック         | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。          |                                                                                                                                                                                                                                       |
+| クラスターエンドポイントアクセス | kube-apiserverのアクセス制限を設定する。                           |                                                                                                                                                                                                                                       |
+| ネットワークアドオン       | ネットワークに関するAWS EKSアドオンを設定する。                            | 執筆時点（2023/02/05）では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cniアドオン、を使用できる。                                                                                                                                       |
+| コントロールプレーンのログ    | コントロールプレーンNodeコンポーネントのログをCloudWatchログに出力するかどうかを設定する。  | 執筆時点（2023/02/05）では、kube-apiserver（処理ログと監査ログの両方）、aws-iam-authenticator-server、kube-controller-manager、kube-scheduler、のログを出力できる。                                                                                            |
 
 #### ▼ VPC、サブネット
 
@@ -504,7 +504,7 @@ EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプ�
 
 | AMI名                       | 説明                                                | 特に相性の良いPod                                           | 補足                                                                                                                                                           |
 |----------------------------|---------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| EKS 最適化 Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。            |                                                          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html                                                                          |
+| EKS 最適化 Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。            |                                                          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html                                                                                |
 | EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |                                                                                                                                                                |
 | EKS 最適化 Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。             |                                                          |                                                                                                                                                                |
 | EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。                       |                                                          | ℹ️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
@@ -823,7 +823,9 @@ FargateワーカーNode内のログを転送する上で、FargateはDaemonSet�
 
 ```【１】```
 
-:    ログ転送コンテナのためのNamespaceを作成する。名前は、必ず```aws-observability```とする。
+:    ログ転送コンテナのためのNamespaceを作成する。
+
+     名前は、必ず```aws-observability```とする。
 
 > ℹ️ 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
@@ -838,7 +840,11 @@ metadata:
 
 ```【２】```
 
-:    ```aws-observability```内で```aws-logging```という名前のConfigMapを作成することにより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからCloudWatchログにログを送信できるようになる。名前は、必ず```aws-logging```とする。
+:    ```aws-observability```内で```aws-logging```という名前のConfigMapを作成する。
+
+     これより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからCloudWatchログにログを送信できるようになる。
+
+     名前は、必ず```aws-logging```とする。
 
 > ℹ️ 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
@@ -865,7 +871,13 @@ data:
 
 ```【３】```
 
-:    FargateワーカーNodeにECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。一方で、Pod内のコンテナには認可スコープが付与されないため、Podが作成された後に必要な認可スコープ（例：コンテナがRDSにアクセスする認可スコープなど）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+:    FargateワーカーNodeにECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。
+
+     これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。
+
+     一方で、Pod内のコンテナには認可スコープが付与されない。
+
+     そのため、Podが作成された後に必要な認可スコープ（例：コンテナがRDSにアクセスする認可スコープなど）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 > ℹ️ 参考：
 >

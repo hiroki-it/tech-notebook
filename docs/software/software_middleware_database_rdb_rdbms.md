@@ -32,6 +32,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 RDBMSは、リレーショナルエンジン、DBエンジン（ストレージエンジン）、から構成される。
 
+![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DB管理システムの仕組み.png)
 
 
 > ℹ️ 参考：
@@ -39,7 +40,6 @@ RDBMSは、リレーショナルエンジン、DBエンジン（ストレージ�
 > - https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/
 > - https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html
 
-![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DB管理システムの仕組み.png)
 
 <br>
 

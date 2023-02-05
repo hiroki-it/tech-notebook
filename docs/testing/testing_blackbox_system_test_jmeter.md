@@ -31,11 +31,11 @@ JMeterをインストールし、環境を作成する。
 
 JMeterは、以下のコンポーネントから構成されている。
 
+![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jmeter_architecuture.png)
 
 
 > ℹ️ 参考：https://www.guru99.com/jmeter-element-reference.html
 
-![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jmeter_architecuture.png)
 
 <br>
 

@@ -284,7 +284,7 @@ spec:
       
       ...
       
-      # Podのボリュームを介して、argocd-repo-serverのコンテナ内でsopsを使用する。
+      # Podのボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
       volumeMounts:
         - mountPath: /usr/local/bin/sops
           name: custom-tools

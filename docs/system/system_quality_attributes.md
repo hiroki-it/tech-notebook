@@ -164,11 +164,11 @@ description: システム品質特性＠システムの知見を記録してい�
 
 仮想環境のコンポーネント自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
+![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアップ.png)
 
 
 > ℹ️ 参考：https://www.idcf.jp/words/scale-out.html
 
-![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアップ.png)
 
 <br>
 
@@ -178,11 +178,11 @@ description: システム品質特性＠システムの知見を記録してい�
 
 仮想環境のコンポーネントのインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
+![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアウト.png)
 
 
 > ℹ️ 参考：https://www.idcf.jp/words/scale-out.html
 
-![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアウト.png)
 
 <br>
 

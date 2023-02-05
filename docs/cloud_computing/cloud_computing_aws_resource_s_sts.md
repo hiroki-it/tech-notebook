@@ -91,6 +91,8 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 #### ▼ EKS
 
+![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_oidc.png)
+
 EKSをIDプロバイダーとして使用するように、```Federated```キーでEKS Clusterの識別子を設定する。
 
 これにより、EKS Cluster内で認証されたServiceAccountにIAMロールを紐づけることができるようになる。
@@ -132,7 +134,10 @@ metadata:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
 ```
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
+> ℹ️ 参考：
+> 
+> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
+> - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
 
 <br>
 
@@ -322,7 +327,11 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 
 ### 2. ロールを引き受けたクレデンシャル情報をリクエスト
 
-信頼されたエンティティから、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。OIDCによるフェデレーションユーザーの場合は、```--external-id```オプションの代わりとして、```--web-identity-token```オプションを使用する。このオプションに、発行されたJWTを設定する必要がある。
+信頼されたエンティティから、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。
+
+OIDCによるフェデレーションユーザーの場合は、```--external-id```オプションの代わりとして、```--web-identity-token```オプションを使用する。
+
+このオプションに、発行されたJWTを設定する必要がある。
 
 ```bash
 #!/bin/bash
