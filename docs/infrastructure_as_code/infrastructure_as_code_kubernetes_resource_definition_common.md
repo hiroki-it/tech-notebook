@@ -565,7 +565,7 @@ Kubernetesリソースの現在の状態を設定する。
 
 Kubernetesが設定してくれるため、開発者が設定する必要はない。
 
-Kubernetesリソースごとに、```status```キー配下の構造は異なっており、
+Kubernetesリソースごとに、```.status```キー配下の構造は異なっており、
 
 <br>
 
@@ -573,7 +573,7 @@ Kubernetesリソースごとに、```status```キー配下の構造は異なっ�
 
 #### ▼ conditionsとは
 
-```status```キーの履歴を設定する。
+```.status```キーの履歴を設定する。
 
 Kubernetesが設定してくれるため、開発者が設定する必要はない。
 

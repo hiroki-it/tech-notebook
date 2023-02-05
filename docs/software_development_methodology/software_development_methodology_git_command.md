@@ -996,7 +996,7 @@ pick b1b5c0f add #0 *****
 
 ```【３】```
 
-:    ```commit --amend```に```m```オプションを付けて、メッセージを変更する。
+:    ```git commit --amend```に```m```オプションを付けて、メッセージを変更する。
 
 ```bash
 $ git commit --amend -m="<変更後のメッセージ>"
@@ -1004,7 +1004,7 @@ $ git commit --amend -m="<変更後のメッセージ>"
 
 ```【４】```
 
-:    ```rebase --continue```を実行し、変更を反映させる。
+:    ```git rebase --continue```コマンドを実行し、変更を反映させる。
 
 ```bash
 $ git rebase --continue

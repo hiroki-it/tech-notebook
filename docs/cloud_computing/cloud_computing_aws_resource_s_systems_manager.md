@@ -17,15 +17,11 @@ description: Systems Manager（旧SSM）＠Sで始まるAWSリソースの知見
 
 ## 01. チェンジカレンダー
 
-![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sm-change-calender_scheduling.png)
 
 他のAWSリソース（例：SMオートメーション、EventBridge、など）を定期的に実行するCronとして使用する。
 
 定期的に実行するAWSリソースで、他のAWSリソース（EC2、RDS）の起動処理と停止処理を定義すれば、夜間だけ停止させられる。
 
-
-
-> ℹ️ 参考：https://www.skyarch.net/blog/?p=22277
 
 ```
 チェンジカレンダー
@@ -34,6 +30,11 @@ description: Systems Manager（旧SSM）＠Sで始まるAWSリソースの知見
 ↓
 EC2、RDS
 ```
+
+![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sm-change-calender_scheduling.png)
+
+> ℹ️ 参考：https://www.skyarch.net/blog/?p=22277
+
 
 <br>
 
@@ -69,7 +70,9 @@ AWSリソースの設定変更に承認フローを設ける。
 
 ```【６】```
 
-:    変更リクエストに基づいて、AWSリソースを変更する処理が自動的に実行される。これは、即時実行するこもスケジューリングもできる。
+:    変更リクエストに基づいて、AWSリソースを変更する処理が自動的に実行される。
+
+     これは、即時実行するこもスケジューリングもできる。
 
 <br>
 
@@ -137,15 +140,18 @@ Kubernetesのシークレットの概念が取り入れられている。
 
 <br>
 
-### KMSの暗号化キーを使用した暗号化と復号化
+### 変数の暗号化と復号化
 
-![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
+KMSの暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号化できる。
 
-パラメーターストアに永続化される変数は、KMSの暗号化キーによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。
+パラメーターストア上で変数は暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。
 
 セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
 たとえ同じ文字列を暗号化する場合でも、その時のタイムスタンプなど様々な要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。
+
+![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
+
 
 > ℹ️ 参考：
 >
@@ -165,7 +171,11 @@ SMパラメーター名は、『```/<リソース名>/<変数名>```』とする
 
 ### セッションマネージャーとは
 
-EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
+EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。
+
+SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。
+
+接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
 
 > ℹ️ 参考：
 >
@@ -198,3 +208,5 @@ TLS、Sigv4、KMSを使用して暗号化された接続のこと。
 # ECS Execの場合
 An error occurred (ClientException) when calling the ExecuteCommand operation: Unable to start new execute sessions because the maximum session limit of 2 has been reached.
 ```
+
+<br>

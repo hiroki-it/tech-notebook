@@ -631,7 +631,7 @@ Systems Managerを使用してEC2インスタンスに接続する場合、EC2�
 
 カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/ami-preinstalled-agent.html
+> ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
 
 #### ▼ VPCエンドポイントの作成
 

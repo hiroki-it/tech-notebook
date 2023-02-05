@@ -155,7 +155,7 @@ Nodeのインスタンスタイプごとに、紐づけられるENI数に制限�
 
 #### ▼ アドオン例
 
-- eks-vpc-cniアドオン（AWS EKSで推奨）
+- aws-eks-vpc-cniアドオン（AWS EKSで推奨）
 
 <br>
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Iで始まるAWSリソース＠AWS
-description: Rで始まるAWSリソース＠AWSの知見を記録しています。
+title: 【IT技術の知見】IAM＠Iで始まるAWSリソース
+description: IAM＠Iで始まるAWSリソースの知見を記録しています。
 ---
 
-# ```I```で始まるAWSリソース＠AWS
+# IAM＠```I```で始まるAWSリソース
 
 ## はじめに
 

@@ -340,7 +340,9 @@ data:
 
 #### ▼ 必要なマニフェストの作成
 
-```helm secrets template```コマンドを実行し、マニフェストファイルを作成する。補足として、zendesk製のhelm-secretsでは、文末にdecryptedの文字が出力されるため、```sed '$d'```が必要になる。
+```helm secrets template```コマンドを実行し、マニフェストファイルを作成する。
+
+補足として、zendesk製のhelm-secretsでは、文末にdecryptedの文字が出力されるため、```sed '$d'```が必要になる。
 
 ```yaml
 apiVersion: v1

@@ -53,7 +53,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n arg
 
 #### ▼ argocdコマンドを使用して
 
-ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。反対に無効化すると、Applicationのみを単体で削除する。
+ArgoCDのApplicationを削除する。```--cascade```オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。反対に無効化すると、Applicationのみを単体で削除する。
 
 ```bash
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false

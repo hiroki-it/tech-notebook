@@ -33,7 +33,9 @@ description: Capistrano＠DevOpsの知見を記録しています。
 
 ```【３】```
 
-:    自動デプロイツールが、webサーバーのGitを操作し、```git pull```あるいは```git clone```を実行する。その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
+:    自動デプロイツールが、webサーバーのGitを操作し、```git pull```コマンドあるいは```git clone```コマンドを実行する。
+
+     その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
 
 ![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/capistrano_ec2.png)
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Lで始まるAWSリソース＠AWS
-description: Lで始まるAWSリソース＠AWSの知見を記録しています。
+title: 【IT技術の知見】LB＠Lで始まるAWSリソース
+description: LB＠Lで始まるAWSリソースの知見を記録しています。
 ---
 
-# ```L```で始まるAWSリソース＠AWS
+# LB＠```L```で始まるAWSリソース
 
 ## はじめに
 

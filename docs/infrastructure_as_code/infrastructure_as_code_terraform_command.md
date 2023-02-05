@@ -899,7 +899,7 @@ $ terraform state show 'aws_instance.bastion'
 
 例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端に作成されてしまうことがある。
 
-ここで、```tainted```を立てておくと、実インフラの```resource```ブロックを削除したと想定した```plan```を実行できる。
+ここで、```tainted```を立てておくと、実インフラの```resource```ブロックを削除したと想定した```terraform plan```コマンドを実行できる。
 
 
 

@@ -362,6 +362,10 @@ $ istioctl tag set default --revision 1-1-0 --overwrite
 
 :    IngressGatewayとアプリのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
 
+    　この時、IngressGateway自体もインプレース方式またはカナリア方式でアップグレードできる。
+
+     この手順では、IngressGatewayはインプレース方式でアップグレードするとする。
+
 ```bash
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 
@@ -376,6 +380,8 @@ foo-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED 
 bar-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED       istiod-1-0-0     1.0.0 # まだ古いIstiodコントロールプレーンと紐づく
 istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SENT     istiod-1-1-0     1.1.0
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/gateway/#upgrading-gateways
 
 
 

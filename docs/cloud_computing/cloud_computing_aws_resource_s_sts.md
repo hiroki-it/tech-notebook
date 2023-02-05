@@ -61,8 +61,8 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 > ℹ️ 参考：
 > 
-> - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_create_for-idp.html
-> - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
 
 #### ▼ Cognito
 
@@ -89,9 +89,9 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 }
 ```
 
-#### ▼ EKS Cluster
+#### ▼ EKS
 
-EKS ClusterをIDプロバイダーとして使用するように、```Federated```キーでEKS Clusterの識別子を設定する。
+EKSをIDプロバイダーとして使用するように、```Federated```キーでEKS Clusterの識別子を設定する。
 
 これにより、EKS Cluster内で認証されたServiceAccountにIAMロールを紐づけることができるようになる。
 

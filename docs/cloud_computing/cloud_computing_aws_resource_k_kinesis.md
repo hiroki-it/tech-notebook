@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kで始まるAWSリソース＠AWS
-description: Kで始まるAWSリソース＠AWSの知見を記録しています。
+title: 【IT技術の知見】Kinesis＠Kで始まるAWSリソース
+description: Kinesis＠Kで始まるAWSリソースの知見を記録しています。
 ---
 
-# ```K```で始まるAWSリソース＠AWS
+# Kinesis＠```K```で始まるAWSリソース
 
 ## はじめに
 
@@ -27,7 +27,7 @@ description: Kで始まるAWSリソース＠AWSの知見を記録しています
 
 <br>
 
-## 01-02. Kinesis Data Firehose（Kinesis Delivery Stream）
+## 02. Kinesis Data Firehose（Kinesis Delivery Stream）
 
 ### Kinesis Data Firehoseとは
 
@@ -67,7 +67,7 @@ Kinesisを使用せずに、リアルタイムなストリーミングデータ�
 
 <br>
 
-## 01-03. Kinesis Data Analytics
+## 03. Kinesis Data Analytics
 
 ### Kinesis Data Analyticsとは
 

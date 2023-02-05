@@ -305,7 +305,7 @@ contexts:
 
 #### ▼ context
 
-実際に使用するCluster名とユーザー名を、```clusters```キーと```users```キーから選んで設定する。
+実際に使用するCluster名とユーザー名を、```.contexts[].context.cluster```キーと```.contexts[].context.user```キーから選んで設定する。
 
 
 

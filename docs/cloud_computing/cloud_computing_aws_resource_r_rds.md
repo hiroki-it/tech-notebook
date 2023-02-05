@@ -165,7 +165,6 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
 
 ```bash
 $ aws rds describe-pending-maintenance-actions --output=table
@@ -206,6 +205,9 @@ $ aws rds apply-pending-maintenance-action \
   --apply-action <取り消したいアクション名>
 ```
 
+> ℹ️ 参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
+
+
 #### ▼ 『保留中の変更』の取り消し
 
 保留中の変更を画面上からは取り消せない。
@@ -213,18 +215,18 @@ $ aws rds apply-pending-maintenance-action \
 しかし、CLIを使用すると戻せる。
 
 
-
-> ℹ️ 参考：
->
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
-> - https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
-
 ```bash
 $ aws rds modify-db-instance \
     --db-instance-identifier prd-foo-instance \
     <変更前の設定項目> <変更前の設定値> \
     --apply-immediately
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
+> - https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
 
 <br>
 
