@@ -464,7 +464,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 > ℹ️ 参考：
 >
-> - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing?hl=ja#distributed_tracing
+> - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
 > - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
 

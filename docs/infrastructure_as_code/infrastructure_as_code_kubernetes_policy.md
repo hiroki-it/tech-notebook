@@ -491,7 +491,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 > - https://logmi.jp/tech/articles/323032
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#surge
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge
 > - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44
 
 #### ▼ ブルー/グリーン方式
@@ -523,7 +523,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 > - https://logmi.jp/tech/articles/323032
 > - https://logmi.jp/tech/articles/323033
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#blue-green-upgrade-strategy
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy
 
 <br>
 

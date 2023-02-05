@@ -41,6 +41,7 @@ AMIの作成後、EC2を削除する。
 
 既存のEC2インスタンスのバックアップツールとしては使用できない。
 
+![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/packer_aws.png)
 
 
 > ℹ️ 参考：
@@ -48,6 +49,5 @@ AMIの作成後、EC2を削除する。
 > - https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
 > - https://qiita.com/mitzi2funk/items/c963483a11a1912e3c44#01-2-use-case
 
-![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/packer_aws.png)
 
 <br>

@@ -258,10 +258,6 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ 操作の種類
 
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/core_concepts/
-> - https://github.com/argoproj/argo-cd/discussions/8260
 
 | 操作名       | 説明                                                                                                                                                      |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -269,6 +265,12 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Refresh      | 監視対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                                                                           |
 | Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                                     |
 | Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetesリソースを作成することはない。<br>ℹ️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/core_concepts/
+> - https://github.com/argoproj/argo-cd/discussions/8260
+
 
 #### ▼ ヘルスステータスの種類
 
@@ -324,7 +326,7 @@ spec:
 
 注意点として、Syncステータスの判定時に無視されるのみで、内部的にSyncは実行されてしまうため、Syncのたびに設定値が元に戻ってしまう。
 
-そこで別途、```RespectIgnoreDifferences```オプションも有効にしておくと良い。
+そこで別途、```spec.syncPolicy.syncOptions[].RespectIgnoreDifferences```キーも有効にしておくと良い。
 
 
 
@@ -871,7 +873,7 @@ kube-apiserverのURLを設定する。
 
 ArgoCDの稼働しているKubernetes Clusterを指定する場合は、in-cluster（```https://kubernetes.default.svc```）を設定する。
 
-一方で、外部のKubernetesクラスターを指定する場合、これのkube-apiserverのエンドポイントを指定する必要がある。
+一方で、外部のClusterを指定する場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1563,11 +1565,6 @@ OIDCに必要なクライアントIDやクライアントシークレット（�
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
-
 
 ```yaml
 apiVersion: v1
@@ -1592,6 +1589,13 @@ data:
   # 開発環境では、https://localhost:8080
   url: <URL>
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+
 
 
 #### ▼ Dexを介して委譲先Webサイトに接続する場合
@@ -2394,7 +2398,7 @@ data:
 
 ### cluster-<エンドポイントURL>とは
 
-ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のKubernetesクラスターのServiceAccountとapplication-controllerを紐づける必要がある。
+ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のClusterのServiceAccountとapplication-controllerを紐づける必要がある。
 
 ArgoCDのapplication-controllerは、```cluster-<エンドポイントURL>```というSecretを介して、デプロイ先のServiceAccountと紐づく。
 
@@ -2425,12 +2429,6 @@ data:
 ```
 
 
-> ℹ️ 参考：
-> 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
-> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
-
-
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -2451,6 +2449,14 @@ data:
   name: foo-cluster
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
+> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
+
 
 <br>
 
@@ -2490,9 +2496,9 @@ Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 
 #### ▼ argocd-managerとは
 
-ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のKubernetesクラスターにServiceAccountを作成する必要がある。
+ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のClusterにServiceAccountを作成する必要がある。
 
-このServiceAccountを介して、ArgoCDのapplication-controllerはKubernetesクラスターにKubernetesリソースをデプロイする。
+このServiceAccountを介して、ArgoCDのapplication-controllerはClusterにKubernetesリソースをデプロイする。
 
 ```argocd cluster add <デプロイ先のKubernetes Clusterのコンテキスト>```コマンドで、```argocd-manager```というServiceAccountを作成できる。
 

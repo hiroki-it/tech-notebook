@@ -43,12 +43,12 @@ GKE Cluster（コントロールプレーンNode、ワーカーNode、を含む�
 
 #### ▼ アタッチCluster
 
-![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
 
 AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境（AWS EKS、Azure AKS、RKE、K3s）のClusterに委譲する。
 
 AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
 
+![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
 
 
 > ℹ️ 参考：
@@ -115,7 +115,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 > ℹ️ 参考：
 >
-> - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management?hl=ja
+> - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
 > - https://github.com/GoogleCloudPlatform/acm-policy-controller-library
 
@@ -179,7 +179,7 @@ on-オンプレミスは、各Clusterを作成するワークステーション�
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure?hl=ja
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
 
 <br>
 
@@ -189,13 +189,15 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 #### ▼ マルチClusterタイプ
 
-![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_multi-cluster.png)
 
 マルチClusterタイプのon-ベアメタルは、ワークステーション（仮想サーバー）、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4```（トランスポート層）のロードバランサーから構成される。
 
 GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+
+![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_multi-cluster.png)
+
 
 > ℹ️ 参考：
 >
@@ -204,13 +206,15 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 #### ▼ スタンドアローンClusterタイプ（ハイブリッドタイプ）
 
-![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
 スタンドアローンClusterタイプ（ハイブリッドタイプ）のon-ベアメタルは、ワークステーション（仮想サーバー）、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。
 
 ワークステーションにて、GCPのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+
+![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
+
 
 > ℹ️ 参考：
 >
@@ -293,11 +297,13 @@ $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 
 カスタムリソース定義の設定値を変更し、kube-apiserverに送信する。
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
 
 ```bash
 $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 ```
+
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
+
 
 <br>
 

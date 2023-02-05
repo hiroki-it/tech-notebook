@@ -52,6 +52,12 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 ### IngressGatewayに関して
 
+#### ▼ Istiodコントロールプレーンとは異なるNamespaceにおく
+
+セキュリティ上の理由から、IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
+
+> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/gateways#best_practices_for_managed_data_plane
+
 #### ▼ NodePort Serviceを選ぶ
 
 IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort Service、LoadBalancer Service）を選べる。
@@ -189,7 +195,11 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 
 ### インプレース方式
 
+#### ▼ インプレース方式とは
+
 既存のIstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
+
+#### ▼ 手順
 
 ```【１】```
 
@@ -280,7 +290,9 @@ $ kubectl apply -f manifests/charts/base/crds
 
 ```【２】```
 
-:    カスタムリソース定義以外のマニフェストを送信し、旧Istiodコントロールプレーンを残したまま、新Istiodコントロールプレーンを作成する。この手順は、```istioctl install```コマンドによるIstiodのインストールに相当する。
+:    カスタムリソース定義以外のマニフェストを送信し、旧Istiodコントロールプレーンを残したまま、新Istiodコントロールプレーンを作成する。
+
+     この手順は、```istioctl install```コマンドによるIstiodのインストールに相当する。
 
 ```bash
 # アップグレード先が1.1.0とする。
@@ -381,7 +393,10 @@ bar-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED 
 istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SENT     istiod-1-1-0     1.1.0
 ```
 
-> ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/gateway/#upgrading-gateways
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/setup/additional-setup/gateway/#upgrading-gateways
+> - https://cloud.google.com/service-mesh/docs/gateways#upgrade_gateways
 
 
 
@@ -404,7 +419,9 @@ $ kubectl label namespace baz-app istio.io/rev=1-1-0 istio-injection- --overwrit
 
 ```【８】```
 
-:    もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。あるいは、エイリアスの実体を元に戻す。
+:    もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン番号順番に元に戻していく。
+
+     あるいは、エイリアスの実体を元に戻す。
 
 ```【９】```
 

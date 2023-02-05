@@ -245,7 +245,9 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 #### ▼ XDS-APIとの通信の仕組み
 
-Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント（例：pilot-agent）が提供されている。
+Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。
+
+Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント（例：pilot-agent）が提供されている。
 
 > ℹ️ 参考：
 > 
@@ -254,7 +256,9 @@ Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双�
 
 ```【１】```
 
-:    Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。取得した宛先情報を自身に設定する。
+:    Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。
+
+     取得した宛先情報を自身に設定する。
 
 ```【２】```
 
@@ -266,11 +270,15 @@ Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双�
 
 ```【４】```
 
-:    Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。取得した宛先情報を自身に設定する。
+:    Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。
+
+     取得した宛先情報を自身に設定する。
 
 ```【５】```
 
-:    Envoyは、リスナー値とクラスター値をXDS-APIから定期的に取得する。取得した宛先情報を自身に設定する。
+:    Envoyは、リスナー値とクラスター値をXDS-APIから定期的に取得する。
+
+     取得した宛先情報を自身に設定する。
 
 
 #### ▼ 実装
@@ -321,11 +329,6 @@ message DiscoveryResponse {
 ```envoy.yaml```ファイルにて、```listeners```キーを設定することにより、Envoyに静的にリスナー値を静的に設定できる。
 
 
-
-> ℹ️ 参考：
-> 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
 
 ```yaml
@@ -409,15 +412,18 @@ static_resources:
                               cluster: PassthroughCluster
 ```
 
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+
 
 #### ▼ リスナーの動的な登録
 
-Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のリスナー値を取得する。また、Envoyは宛先のリスナー値を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のリスナー値を取得する。
 
-> ℹ️ 参考：
-> 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/listener/v3/lds.proto#L23-L42
-> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
+また、Envoyは宛先のリスナー値を自身に動的に設定する。
+
 
 ```protobuf
 
@@ -447,6 +453,11 @@ service ListenerDiscoveryService {
 
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/listener/v3/lds.proto#L23-L42
+> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 **＊実装例＊**
 
@@ -594,10 +605,7 @@ Envoyは、起動時にコントロールプレーンのRDS-APIにリモート�
 
 また、Envoyは宛先のルート値を自身に動的に設定する。
 
-> ℹ️ 参考：
-> 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/route/v3/rds.proto#L22-L42
-> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
+
 
 
 ```protobuf
@@ -627,6 +635,11 @@ service RouteDiscoveryService {
 ...
 
 ```
+
+> ℹ️ 参考：
+>
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/route/v3/rds.proto#L22-L42
+> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 
 **＊実装例＊**
@@ -745,11 +758,6 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 
 
-> ℹ️ 参考：
-> 
-> - https://skyao.io/learning-envoy/architecture/concept/cluster.html
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
-
 
 
 ```yaml
@@ -819,16 +827,20 @@ static_resources:
                       port_value: 80
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://skyao.io/learning-envoy/architecture/concept/cluster.html
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+
 #### ▼ クラスター値の動的な登録
 
 Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のクラスター値を取得する。
 
 また、Envoyは宛先のクラスター設定を自身に動的に設定する。
 
-> ℹ️ 参考：
-> 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/cluster/v3/cds.proto#L22-L38
-> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
+
 
 
 ```protobuf
@@ -859,6 +871,10 @@ service ClusterDiscoveryService {
 
 ```
 
+> ℹ️ 参考：
+>
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/cluster/v3/cds.proto#L22-L38
+> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 **＊実装例＊**
 
@@ -964,7 +980,6 @@ Envoyは、起動時にコントロールプレーンのEDS-APIにリモート�
 
 また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。
 
-> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
 
 ```protobuf
@@ -994,6 +1009,8 @@ service EndpointDiscoveryService {
 ...
 
 ```
+
+> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
 
 <br>

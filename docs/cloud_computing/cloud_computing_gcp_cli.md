@@ -125,7 +125,7 @@ The latest available version is: 400.0.0
 └──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
 ```
 
-> ℹ️ 参考：https://cloud.google.com/sdk/docs/components?hl=ja
+> ℹ️ 参考：https://cloud.google.com/sdk/docs/components
 
 
 <br>
@@ -190,7 +190,7 @@ GKE Clusterの一覧を取得する。
 
 
 
-> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters?hl=ja#viewing_your_clusters
+> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
 
 **＊実行例＊**
 
@@ -218,7 +218,7 @@ GKE Node Poolの情報を取得する。
 アップグレードの手法を確認することもできる。
 
 
-> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies?hl=ja#inspect-upgrade-settings
+> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
 
 **＊実行例＊**
 

@@ -262,8 +262,8 @@ $ ./repository/asmcli-1140-0 install \
 
 > ℹ️ 参考：
 >
-> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja#transitioning_from_install_asm
-> - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade?hl=ja#about_canary_upgrades
+> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview#transitioning_from_install_asm
+> - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade#about_canary_upgrades
 > - https://istio.io/latest/docs/setup/upgrade/canary/
 
 
@@ -302,7 +302,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 > ℹ️ 参考：
 >
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
-> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja
+> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview
 > - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
 
 

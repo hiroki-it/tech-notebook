@@ -492,6 +492,6 @@ Podの垂直スケーリングを実行する。
 >
 > - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12
 > - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler?hl=ja#vertical_pod_autoscaling_in_auto_mode
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode
 
 <br>

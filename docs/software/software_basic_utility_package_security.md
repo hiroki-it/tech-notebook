@@ -15,7 +15,7 @@ description: セキュリティ系＠パッケージの知見を記録してい�
 
 <br>
 
-## 01. sops
+## 01. SOPS
 
 ### インストール
 
@@ -27,11 +27,11 @@ $ brew install sops
 
 <br>
 
-### sopsの構成要素
+### SOPSの構成要素
 
 #### ▼ ```secrets```ファイル
 
-sopsによって暗号化されたファイルであり、キーバリュー型ストレージを持つ。
+SOPSによって暗号化されたファイルであり、キーバリュー型ストレージを持つ。
 
 ```sops```キー以下に暗号化の設定値が記載される。
 
@@ -62,7 +62,7 @@ $ cat ./secrets/foo-secrets.yaml
 DB_USERNAME: ENC[AES256...
 DB_PASSWORD: ENC[AES256...
 
-# sopsの暗号化の設定
+# SOPSの暗号化の設定
 sops:
     # AWS KMS
     kms:
@@ -80,7 +80,7 @@ sops:
     mac: ENC[AES256...
     pgp: []
     unencrypted_suffix: _unencrypted
-    # 暗号化に使用したsopsのバージョン
+    # 暗号化に使用したSOPSのバージョン
     version: 3.6.1
 ```
 

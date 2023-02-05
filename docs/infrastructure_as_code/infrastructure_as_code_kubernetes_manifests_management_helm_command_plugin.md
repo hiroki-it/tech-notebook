@@ -105,14 +105,14 @@ helm-secretsの内部で使用する暗号化ツールのこと。
 
 #### ▼ 使用可能なバックエンド例
 
-- sops
+- SOPS
 - vals
 
 > ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
 
 <br>
 
-## 03-02. バックエンドがsopsの場合
+## 03-02. バックエンドがSOPSの場合
 
 ### 注意点
 
@@ -120,7 +120,7 @@ helm-secretsの内部で使用する暗号化ツールのこと。
 
 helm-secretsには、zendesk製（2022/11/29時点でメンテナンスされていない）と、zendesk製からフォークされたjkroepke製がある。
 
-zendesk製を使用している場合、sopsの```secrets```ファイルの名前を『```secrets.yaml```』『```secrets.<任意の名前>.yaml```』とする必要がある。
+zendesk製を使用している場合、SOPSの```secrets```ファイルの名前を『```secrets.yaml```』『```secrets.<任意の名前>.yaml```』とする必要がある。
 
 一方でjkeroepke製では、執筆時点（2022/11/29）で、```secrets```ファイルの名前が自由である。
 
@@ -135,7 +135,7 @@ zendesk製を使用している場合、sopsの```secrets```ファイルの名�
 
 #### ▼ ```secrets://```
 
-sopsの```secrets```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
+SOPSの```secrets```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
 
 
 ```bash
@@ -160,12 +160,12 @@ $ helm template ./foo-chart -f secrets://secrets.yaml
 
 
 ```bash
-$ helm secrets template <チャートへのパス> -f <sopsが作成したsecretsファイルへのパス> -f <valuesファイルへのパス>
+$ helm secrets template <チャートへのパス> -f <SOPSが作成したsecretsファイルへのパス> -f <valuesファイルへのパス>
 ```
 
 **＊例＊**
 
-以下のようなsopsの```secrets```ファイルがあるとする。
+以下のようなSOPSの```secrets```ファイルがあるとする。
 
 
 
@@ -182,7 +182,7 @@ sops:
       
   ...
   
-  # 暗号化時に使用したsopsのバージョン
+  # 暗号化時に使用したSOPSのバージョン
   version: 3.7.0
 ```
 
@@ -202,7 +202,7 @@ data:
 
 この時、```helm secrets```コマンドで```secrets```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。
 
-ArgoCDが使用するsopsのバージョンは、暗号化時に使用したsopsのバージョン（```sops```キーの値）に合わせた方が良い。
+ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン（```sops```キーの値）に合わせた方が良い。
 
 結果的に、base64方式でエンコードされ、マニフェストが作成される。
 
@@ -270,7 +270,7 @@ db:
   user: *****
   password: *****
 
-# sopsキーが追記される。
+# SOPSキーが追記される。
 sops:
   ...
 ```
