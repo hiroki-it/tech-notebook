@@ -75,19 +75,21 @@ data:
 
 ### cluster-autoscalerとは
 
-![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
-
-Nodeの自動水平スケーリングを実行する。
+クラウドプロバイダーの自動スケーリングに関するAPI（例：AWS EC2AutoScaling）をコールし、Nodeの自動水平スケーリングを実行する。
 
 metrics-serverから取得したPodのハードウェアの最大リソース消費量（```.spec.resources```キーの合計値）と、Node全体のリソースの空き領域を比較し、Nodeをスケールアウト/スケールインさせる。
 
 現在の空きサイズではPodを新しく作成できないようであればNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。
 
-Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。
+コントロールプレーンNodeに配置することが推奨されている。
 
-コントロールプレーンに配置することが推奨されている。
+![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
 
-> ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
+
+> ℹ️ 参考：
+> 
+> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html
 
 <br>
 
@@ -116,6 +118,8 @@ Kubernetes標準のリソースではなく、クラウドプロバイダーを�
 #### ▼ スケールインの場合
 
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングのスケールインを実行する。
+
+クラウドプロバイダーのコンソール画面からNode数を増やして、正しくスケーリングされるかと```ScaleDown```のログから、cluster-autoscalerを動作確認できる。
 
 ```【１】```
 

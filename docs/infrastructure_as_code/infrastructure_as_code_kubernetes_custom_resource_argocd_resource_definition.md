@@ -871,7 +871,7 @@ spec:
 
 kube-apiserverのURLを設定する。
 
-ArgoCDの稼働しているKubernetes Clusterを指定する場合は、in-cluster（```https://kubernetes.default.svc```）を設定する。
+ArgoCDの稼働しているClusterを指定する場合は、in-cluster（```https://kubernetes.default.svc```）を設定する。
 
 一方で、外部のClusterを指定する場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
@@ -985,11 +985,11 @@ spec:
 
 ### ApplicationSet
 
-ArgoCDのApplicationは、```1```個のKubernetes Clusterにしかマニフェストを送信できない。
+ArgoCDのApplicationは、```1```個のClusterにしかマニフェストを送信できない。
 
 そのため、二重管理になってしまうが、同じ設定値のApplicationを作成しなければならない。
 
-一方で、ApplicationSetであれば、親Applicationに紐づく子Applicationが異なるKubernetes Clusterにデプロイできる。
+一方で、ApplicationSetであれば、親Applicationに紐づく子Applicationが異なるClusterにデプロイできる。
 
 
 
@@ -2398,13 +2398,13 @@ data:
 
 ### cluster-<エンドポイントURL>とは
 
-ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のClusterのServiceAccountとapplication-controllerを紐づける必要がある。
+ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterのServiceAccountとapplication-controllerを紐づける必要がある。
 
 ArgoCDのapplication-controllerは、```cluster-<エンドポイントURL>```というSecretを介して、デプロイ先のServiceAccountと紐づく。
 
 **例**
 
-デプロイ先のKubernetes ClusterがEKSの場合は、以下のようなSecretが作成される。
+デプロイ先のClusterがEKSの場合は、以下のようなSecretが作成される。
 
 ```yaml
 apiVersion: v1
@@ -2420,7 +2420,7 @@ type: Opaque
 data:
   config: |
     awsAuthConfig:
-      clusterName: <デプロイ先のKubernetes Cluster名>
+      clusterName: <デプロイ先のCluster名>
     tlsClientConfig:
       insecure: false
       caData: <HTTPSに必要なSSL証明書>
@@ -2463,7 +2463,7 @@ data:
 ### セットアップ
 
 
-デプロイ先のClusterをコンテキストとして設定した上で、```argocd cluster add <デプロイ先のKubernetes ClusterのARN>```コマンドを実行すると、Secretを作成できる。
+デプロイ先のClusterをコンテキストとして設定した上で、```argocd cluster add <デプロイ先のClusterのARN>```コマンドを実行すると、Secretを作成できる。
 
 合わせて、argocd-manager、argocd-manager-role、argocd-manager-role-bindingも作成する。
 
@@ -2496,11 +2496,11 @@ Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 
 #### ▼ argocd-managerとは
 
-ArgoCDのapplication-controllerが、デプロイ先と異なるKubernetes Clusterで稼働している場合に、デプロイ先のClusterにServiceAccountを作成する必要がある。
+ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterにServiceAccountを作成する必要がある。
 
 このServiceAccountを介して、ArgoCDのapplication-controllerはClusterにKubernetesリソースをデプロイする。
 
-```argocd cluster add <デプロイ先のKubernetes Clusterのコンテキスト>```コマンドで、```argocd-manager```というServiceAccountを作成できる。
+```argocd cluster add <デプロイ先のClusterのコンテキスト>```コマンドで、```argocd-manager```というServiceAccountを作成できる。
 
 
 ```yaml

@@ -55,7 +55,7 @@ argocd-dex-server-*****                 1/1     Running   0          1d
 
 Applicationから返却された情報（例：マニフェストの差分）をダッシュボード上に公開する。
 
-リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
+リポジトリの監視やClusterへのリクエストに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
 
 ```yaml
 {
@@ -172,7 +172,7 @@ repo-serverが取得したクローンからマニフェストを参照し、```
 
 そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる（通常、Helmではカスタムリソースのマニフェストの差分を検出できない）。
 
-kube-apiserverにマニフェストを送信し、指定されたKubernetes ClusterにKubernetesリソースを作成する。
+kube-apiserverにマニフェストを送信し、指定されたClusterにKubernetesリソースを作成する。
 
 Applicationが管理するKubernetesリソースのマニフェストと、監視対象リポジトリのマニフェストの間に、差分がないか否かを継続的に監視する。
 

@@ -1012,7 +1012,9 @@ $ kubectl get pod <Pod名> -o wide
 
 ```【３】```
 
-:    Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
+:    Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。
+
+     そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
 
 ```【４】```
 

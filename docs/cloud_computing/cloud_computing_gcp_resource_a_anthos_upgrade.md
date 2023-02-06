@@ -244,7 +244,9 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 
 ```【５】```
 
-:    新しいIstiodコントロールプレーンをインストールする。事前にバージョン管理している```asmcli```コマンドを使用して、```asmcli```コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
+:    新しいIstiodコントロールプレーンをインストールする。
+
+     事前にバージョン管理している```asmcli```コマンドを使用して、```asmcli```コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
 
 ```bash
 $ ./repository/asmcli-1140-0 install \
@@ -271,7 +273,9 @@ $ ./repository/asmcli-1140-0 install \
 
 ```【６】```
 
-:    Istiodコントロールプレーンがデプロイされたことを確認する。補足として、```asmcli```コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。
+:    Istiodコントロールプレーンがデプロイされたことを確認する。
+
+     補足として、```asmcli```コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。
 
 ```bash
 # Deployment
@@ -362,7 +366,12 @@ metadata:
 
 ```【９】```
 
-:     Istioの```istio.io/rev```キーを使用して、特定のNamespaceの```istio-injection```キーを上書きする。多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+:     Istioの```istio.io/rev```キーを使用して、特定のNamespaceの```istio-injection```キーを上書きする。
+     多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
+
+     これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
+
+     もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 
 ```bash
@@ -390,7 +399,9 @@ $ kubectl get namespace -L istio.io/rev
 
 ```【１１】```
 
-:    IngressGatewayのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
+:    IngressGatewayのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
+
+     カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
 
 ```bash
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
@@ -418,7 +429,9 @@ $ istioctl proxy-status
 
 ```【１３】```
 
-:    アプリケーションのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
+:    アプリケーションのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
+
+     カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
 
 ```bash
 $ kubectl rollout restart deployment app-deployment -n app
@@ -426,7 +439,9 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 ```【１４】```
 
-:    新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。代わりに、```istioctl proxy-status```コマンドでも良い。
+:    新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
+
+     代わりに、```istioctl proxy-status```コマンドでも良い。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1140-0
@@ -453,7 +468,9 @@ $ istioctl proxy-status
 
 ```【１５】```
 
-:    Istioのvalidating-admission時を経由するService更新する。ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
+:    Istioのvalidating-admission時を経由するService更新する。
+
+     ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
 
 ```bash
 $ kubectl diff -f ./asm/istio/istiod-service.yaml
@@ -519,7 +536,11 @@ istio.io/tag: default
 
 ```【１７】```
 
-:    Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）の実体（```istio.io/rev```キーの値）が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
+:    Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。
+
+     MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）の実体（```istio.io/rev```キーの値）が旧バージョンのままなため、新バージョンに変更する。
+
+     ```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
 
 
 ```bash

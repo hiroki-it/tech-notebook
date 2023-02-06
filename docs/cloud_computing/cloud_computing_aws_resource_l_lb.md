@@ -217,7 +217,6 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 ## 03. NLB：Network Load Balancer
 
-調査中...
 
 <br>
 

@@ -116,7 +116,7 @@ Datadogの代わりにログを収集する。
 
 #### ▼ Kubernetesの場合
 
-Kubernetes ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
+ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 

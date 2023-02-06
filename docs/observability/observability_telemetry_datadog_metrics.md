@@ -75,7 +75,7 @@ APMでは、分散トレースを元にして、マイクロサービス間の�
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
-Kubernetes ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
+ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
 > ℹ️ 参考：
 >

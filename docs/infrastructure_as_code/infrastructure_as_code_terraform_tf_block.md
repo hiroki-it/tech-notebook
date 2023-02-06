@@ -297,10 +297,6 @@ repository/
 ...
 ```
 
-> ℹ️ 参考：
->
-> - https://www.terraform.io/language/values/outputs#output-values
-> - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
 ```terraform
 # リモートモジュール内のローカルモジュールを出力する。
@@ -336,6 +332,12 @@ resource "foo" "this" {
     foo_id = module.alb.alb_zone_id
 }
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://www.terraform.io/language/values/outputs#output-values
+> - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
 <br>
 
@@ -1472,7 +1474,9 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-バケットポリシーを定義するtpl形式ファイルでは、string型の場合は```"${}"```で、integer型の場合は```${}```で変数を展開する。ここで拡張子をjsonにしてしまうと、integer型の出力をjsonの構文エラーとして扱われてしまう。
+バケットポリシーを定義するtpl形式ファイルでは、string型の場合は```"${}"```で、integer型の場合は```${}```で変数を展開する。
+
+ここで拡張子をjsonにしてしまうと、integer型の出力をjsonの構文エラーとして扱われてしまう。
 
 ```yaml
 {
@@ -1533,7 +1537,17 @@ ECSタスク定義のうち、コンテナを定義する部分のこと。
 
 #### ▼ 設定方法
 
-integer型を通常変数として渡せるように、拡張子をjsonではなくtplとするのが良い。```image```キーでは、ECRイメージのURLを設定する。バージョンタグは任意で指定でき、もし指定しない場合は、『```latest```』という名前のタグが自動的に割り当てられる。バージョンタグにハッシュ値が割り当てられている場合、Terraformでは時系列で最新のタグ名を取得する方法がないため、```secrets```キーでは、パラメーターストアの値を参照できる。ログ分割の目印を設定する```awslogs-datetime-format```キーでは、タイムスタンプを表す```\\[%Y-%m-%d %H:%M:%S\\]```を設定すると良い。これにより、同じ時間に発生したログを1つのログとしてまとめられるため、スタックトレースが見やすくなる。
+integer型を通常変数として渡せるように、拡張子をjsonではなくtplとするのが良い。
+
+```image```キーでは、ECRイメージのURLを設定する。
+
+バージョンタグは任意で指定でき、もし指定しない場合は、『```latest```』という名前のタグが自動的に割り当てられる。
+
+バージョンタグにハッシュ値が割り当てられている場合、Terraformでは時系列で最新のタグ名を取得する方法がないため、```secrets```キーでは、パラメーターストアの値を参照できる。
+
+ログ分割の目印を設定する```awslogs-datetime-format```キーでは、タイムスタンプを表す```\\[%Y-%m-%d %H:%M:%S\\]```を設定すると良い。
+
+これにより、同じ時間に発生したログを1つのログとしてまとめられるため、スタックトレースが見やすくなる。
 
 **＊実装例＊**
 
