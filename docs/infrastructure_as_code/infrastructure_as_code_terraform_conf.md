@@ -137,19 +137,11 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 
 ### ```.terraform.lock.hcl```ファイル
 
-#### ▼ ```.terraform.lock```ファイルとは
+#### ▼ ```.terraform.lock.hcl```ファイルとは
 
 ```terraform```ブロックの設定に基づいて、開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。
 
 これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
-
-
-
-> ℹ️ 参考：
->
-> - https://www.terraform.io/language/files/dependency-lock
-> - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
-> - https://qiita.com/mziyut/items/0f4109c425165f5011df
 
 もし、異なるプロバイダーを使用したい場合は、以下のコマンドを実行する。
 
@@ -160,6 +152,13 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 ```bash
 $ terraform init -upgrade
 ```
+
+> ℹ️ 参考：
+>
+> - https://www.terraform.io/language/files/dependency-lock
+> - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
+> - https://qiita.com/mziyut/items/0f4109c425165f5011df
+> - https://rurukblog.com/post/terraform-lock-hcl/
 
 #### ▼ version
 

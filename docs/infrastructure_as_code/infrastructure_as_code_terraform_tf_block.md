@@ -441,7 +441,9 @@ output "private_datastore_subnet_ids" {
 
 通常変数であり、定義されたローカル/リモートモジュール内にのみスコープを持つ。
 
-ルートモジュールとローカル/リモートモジュールが異なるリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
+ルートモジュールとローカル/リモートモジュールが異なるリポジトリで管理されている場合に有効である。
+
+これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
 
 
 ```terraform
@@ -560,7 +562,9 @@ variable "waf_blocked_user_agents" {
 
 変数のデフォルト値を定義できる。
 
-有効な値を設定してしまうと可読性が悪くなるため、無効値（例：boolean型であれば```false```、string型であれば空文字、list型であれば空配列、など）を設定する。
+有効な値を設定してしまうと可読性が悪くなる。
+
+そのため、無効値（例：boolean型であれば```false```、string型であれば空文字、list型であれば空配列、など）を設定する。
 
 
 
@@ -644,7 +648,9 @@ resource "aws_lb_target_group" "this" {
 
 例として、NAT Gatewayを示す。
 
-NAT Gateway、Internet Gateway、の```resource```ブロックを適切な順番で作成できないため、Internet Gatewayの作成後に、NAT Gatewayを作成するように定義する必要がある。
+NAT Gateway、Internet Gateway、の```resource```ブロックを適切な順番で作成できない。
+
+そのため、Internet Gatewayの作成後に、NAT Gatewayを作成するように定義する必要がある。
 
 
 
@@ -825,6 +831,113 @@ resource "aws_instance" "server" {
 }
 ```
 
+注意点として、```count```関数を使用すると、他のブロック（例：```resource```ブロック、```output```ブロック）で設定値にアクセスする時にインデックス番号```0```を指定する必要がある。
+
+```terraform
+resource "foo" "server" {
+  foo = aws_instance.server.0.ami
+}
+```
+
+#### ▼ 実行環境別の作成
+
+```terraform
+# 特定の実行環境の.terraform.tfvarsファイル
+env = dev
+```
+
+```terraform
+# ---------------------------------------------
+# Variables EC2
+# ---------------------------------------------
+variable "env" {
+  description = "system environment"
+  type        = string
+}
+```
+
+```terraform
+# ---------------------------------------------
+# Resource EC2
+# ---------------------------------------------
+resource "aws_instance" "server" {
+  # dev環境とstg環境以外でプロビジョニングする
+  count = (
+    var.env != "dev"
+    || var.env != "stg"
+  ) ? 1 : 0
+  
+  ami           = "ami-a1b2c3d4"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "ec2-${count.index}"
+  }
+}
+```
+
+#### ▼ ```count```関数で作成されなかった```resource```ブロックを検知
+
+```count```関数で作成したブロックを他のブロックで使用する場合、それを検知できるようにする必要がある。
+
+```count```関数で作成されたリソースが存在するかどうかは、```length```関数で検知できる。
+
+
+```terraform
+resource "aws_kms_key" "foo" {
+  count = var.region == "ap-northeast-1" ? 0 : 1
+  
+  policy = data.aws_iam_policy_document.foo.json
+  
+  multi_region = true
+  
+  tags = {
+    Name = foo
+  }
+}
+
+resource "aws_kms_alias" "foo" {
+  # count関数によるaws_kms_key.footリソースがなければ、本リソースも作成しない
+  count = length(aws_kms_key.foo)
+
+  name          = "alias/foo"
+  target_key_id = aws_kms_key.foo.0.key_id
+}
+
+resource "aws_kms_replica_key" "foo" {
+  # count関数によるaws_kms_key.fooリソースがなければ、本リソースも作成しない
+  count = length(aws_kms_key.k8s_secret)
+
+  provider = aws.ap-northeast-3
+
+  primary_key_arn = aws_kms_key.foo.0.arn
+  policy          = data.aws_iam_policy_document.foo.json
+  
+  tags = {
+    Name = foo
+  }
+}
+```
+
+> ℹ️ 参考：https://stackoverflow.com/questions/71484962/conditional-creation-of-parent-child-resources/71490413#71490413
+
+#### ▼ ```count```関数で作成されなかった```output```ブロックは```null```
+
+```count```関数で作成されなかったリソースに関しては、```output```ブロックの出力値を```null```にする。
+
+
+```terraform
+output "foo_kms_key_arn" {
+  value = length(aws_kms_key.foo) > 0 ? aws_kms_key.foo.0.arn : null
+}
+```
+
+
+> ℹ️ 参考：
+> 
+> - https://discuss.hashicorp.com/t/output-from-a-module-that-has-conditional-count-0/17234/2
+> - https://github.com/hashicorp/terraform/issues/23222#issuecomment-547462883
+> - https://www.bioerrorlog.work/entry/terraform-count-resource-output
 
 <br>
 

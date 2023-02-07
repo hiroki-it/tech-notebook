@@ -89,18 +89,18 @@ $ terraform apply \
 ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を処理することはできず、代わりに```terraform import```コマンドの実行が必要になる。
 
 
+```bash
+$ terraform apply -refresh-only
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
+```
+
 
 > ℹ️ 参考：
 >
 > - https://learn.hashicorp.com/tutorials/terraform/refresh
 > - https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
 > - https://rurukblog.com/post/terraform-refresh-onlyt/
-
-```bash
-$ terraform apply -refresh-only
-
-Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
-```
 
 #### ▼ -target
 
@@ -209,7 +209,6 @@ Initializing provider plugins...
 
 
 
-> ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
 ```bash
 $ terraform init -backend=false
@@ -219,6 +218,9 @@ $ terraform init -backend=false
 # ディレクトリを指定することも可能
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> init -backend=false
 ```
+
+> ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
+
 
 #### ▼ -backend=true, -backend-config
 
@@ -251,14 +253,16 @@ $ terraform init \
 
 ```--migrate-state```オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの```.tfstate```ファイルはそのまま保持される。
 
+
+```bash
+$ terraform init -reconfigure -backend-config=./foo/backend.tfvars
+```
+
 > ℹ️ 参考：
 >
 > - https://www.terraform.io/cli/commands/init#backend-initialization
 > - https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
 
-```bash
-$ terraform init -reconfigure -backend-config=./foo/backend.tfvars
-```
 
 また、開発時に一時的にlocalをバックエンドとして使用する場合にも役立つ。
 
@@ -447,6 +451,8 @@ $ terraform output -json
 >
 > - https://www.terraform.io/cli/commands/output
 > - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
+
+<br>
 
 ### plan
 
@@ -678,6 +684,30 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 <br>
 
+### provider
+
+#### ▼ providerとは
+
+```terraform.lock.hcl```ファイルを作成する。
+
+**＊例＊**
+
+CPUアーキテクチャを設定しつつ、```terraform.lock.hcl```ファイルを作成する。
+
+```bash
+$ terraform providers lock \
+    -platform=darwin_amd64 \
+    -platform=darwin_arm64 \
+    -platform=linux_amd64 \
+    -platform=linux_arm64 \
+    -platform=windows_amd64
+```
+
+> ℹ️ 参考：https://developer.hashicorp.com/terraform/cli/commands/providers/lock
+
+
+<br>
+
 ### refresh（非推奨）
 
 #### ▼ -var-file
@@ -749,13 +779,6 @@ $ terraform state pull > <tfstateファイル名>
 ```count```引数や```for_each```引数を使用している場合は、シングルクオーテーションで囲う必要がある。
 
 
-
-> ℹ️ 参考：
->
-> - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
-> - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
-> - https://dev.classmethod.jp/articles/terraform_import_for_each/
-
 ```bash
 # 関数を使用せずに定義されている場合
 $ terraform state rm --dry-run aws_instance.bastion
@@ -815,6 +838,15 @@ Successfully removed 1 resource instance(s).
 $ terraform state rm --dry-run 'module.ec2.aws_instance.bastion["<キー名2>"]'
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
+> - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
+> - https://dev.classmethod.jp/articles/terraform_import_for_each/
+
 
 #### ▼ show list
 
@@ -1006,7 +1038,13 @@ $ terraform init -reconfigure
 
 ```【４】```
 
-:    ```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
+:    ```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。
+
+     パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。
+
+     また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
+
+     何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
 
 ```bash
 # 関数を使用せずに定義されている場合
@@ -1103,7 +1141,9 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 
 ```【５】```
 
-:    ```terraform import```コマンドの実行と```.tf```ファイルの変更を繰り返す。この時、```.tfstate```ファイルの差分表記と反対に（例：```+```の場合は削除、```-```は追加、```→```は逆向き変更）になるように、tfファイルを修正する。
+:    ```terraform import```コマンドの実行と```.tf```ファイルの変更を繰り返す。
+
+     この時、```.tfstate```ファイルの差分表記と反対に（例：```+```の場合は削除、```-```は追加、```→```は逆向き変更）になるように、tfファイルを修正する。
 
 
 > ℹ️ 参考：https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import

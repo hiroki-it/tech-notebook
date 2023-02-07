@@ -27,6 +27,22 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 ## 02. セットアップ
 
+### マルチリージョン
+
+複数のリージョンで横断的に使用できる暗号化キーを作成できる。
+
+最初に作成された暗号化キーはプライマリキー、別のリージョンで使用できる暗号化キーをレプリカキーという。
+
+これらは、リージョン情報以外は同じ情報を持っている。
+
+もしマルチリージョン化したい場合、暗号化キーを再作成する必要がある。
+
+![kms_multi-region.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kms_multi-region.png)
+
+> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/multi-region-keys-overview.html
+
+<br>
+
 ### キーポリシー
 
 KMSのアクセス制限を設定する。

@@ -25,6 +25,7 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 また設定された条件下でアラートを作成し、Alertmanagerに送信する。
 
+![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
 
 
 > ℹ️ 参考：
@@ -33,7 +34,6 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 > - https://prometheus.io/docs/introduction/overview/
 > - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
 
-![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
 
 <br>
 
@@ -41,7 +41,11 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 ### prometheusサーバーとは
 
-メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
+メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。
+
+```9090```番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。
+
+例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
 
 > ℹ️ 参考：
 >
@@ -79,10 +83,6 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
 
-> ℹ️ 参考：
->
-> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
-> - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 ```bash
 $ ls -1 /etc/prometheus
@@ -106,6 +106,12 @@ prometheus-prometheus-kube-prometheus-node.rules.yaml
 prometheus-prometheus-kube-prometheus-prometheus-operator.yaml
 prometheus-prometheus-kube-prometheus-prometheus.yaml
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 <br>
 
@@ -183,7 +189,9 @@ TSDBのディレクトリはNodeにマウントされるため、Nodeのスト�
 
 Prometheusでは、独自のTSDB（```data```ディレクトリ配下）を採用している。
 
-データソース型モデルとメトリクス型モデルがあり、Prometheusではいずれを採用しているのかの記載が見つかっていないため、データソース型モデルと仮定してテーブル例を示す。
+データソース型モデルとメトリクス型モデルがあり、Prometheusではいずれを採用しているのかの記載が見つかっていない。
+
+そのため、データソース型モデルと仮定してテーブル例を示す。
 
 
 
@@ -203,9 +211,17 @@ Prometheusでは、独自のTSDB（```data```ディレクトリ配下）を採�
 
 #### ▼ リモートストレージとは
 
+
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。
+
+remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。
+
+Prometheusと外部のTSDBの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。
+
+リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
+
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部のTSDBの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
 > ℹ️ 参考：
 >
@@ -220,10 +236,11 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
 
 
+![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_dynamic-queues_shard.png)
+
 
 > ℹ️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 
-![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_dynamic-queues_shard.png)
 
 <br>
 
@@ -235,6 +252,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 
 受信したアラートは、AlertmanagerのUI上に表示される。
 
+![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
 
 
 > ℹ️ 参考：
@@ -244,7 +262,6 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 > - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
 > - https://amateur-engineer-blog.com/alertmanager-silence/
 
-![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
 
 
 
@@ -275,7 +292,13 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 ### Exporterとは
 
-PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter（例：外形監視のblack-exporter）は、Node外で稼働させる。Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
+PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。
+
+基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter（例：外形監視のblack-exporter）は、Node外で稼働させる。
+
+Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。
+
+また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
 > ℹ️ 参考：
 >
