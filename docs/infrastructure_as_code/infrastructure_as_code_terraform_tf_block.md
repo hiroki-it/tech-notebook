@@ -898,6 +898,7 @@ resource "aws_kms_key" "foo" {
 
 resource "aws_kms_alias" "foo" {
   # count関数によるaws_kms_key.footリソースがなければ、本リソースも作成しない
+  # count = var.region == "ap-northeast-1" ? 0 : 1 でもよい。
   count = length(aws_kms_key.foo)
 
   name          = "alias/foo"
@@ -906,6 +907,7 @@ resource "aws_kms_alias" "foo" {
 
 resource "aws_kms_replica_key" "foo" {
   # count関数によるaws_kms_key.fooリソースがなければ、本リソースも作成しない
+  # count = var.region == "ap-northeast-1" ? 0 : 1 でもよい。
   count = length(aws_kms_key.k8s_secret)
 
   provider = aws.ap-northeast-3
@@ -923,8 +925,9 @@ resource "aws_kms_replica_key" "foo" {
 
 #### ▼ ```count```関数で作成されなかった```output```ブロックは```null```
 
-```count```関数で作成されなかったリソースに関しては、```output```ブロックの出力値を```null```にする。
+```count```関数で作成されたリソースに対してのみ```output```ブロックで値を出力し、もしリソースがなければ```null```や空文字（```""```）を出力するようにする。
 
+補足として、```count```関数の結果の検知には、```length```関数を使用する。
 
 ```terraform
 output "foo_kms_key_arn" {

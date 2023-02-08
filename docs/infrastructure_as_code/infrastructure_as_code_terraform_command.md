@@ -80,6 +80,13 @@ $ terraform apply \
     -parallelism=30
 ```
 
+オプションで毎回設定するのが大変なため、環境変数で設定しても良い。
+
+```bash
+$ export TF_CLI_ARGS_plan="--parallelism=50"
+$ export TF_CLI_ARGS_apply="--parallelism=50"
+```
+
 #### ▼ -refresh-only
 
 すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。

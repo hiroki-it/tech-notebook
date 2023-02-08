@@ -171,13 +171,15 @@ cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネット�
 
 ### on-オンプレミスの仕組み
 
-![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_on-premises_architecture.png)
 
 on-オンプレミスは、各Clusterを作成するワークステーション（Clusterの作成後に削除される）、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。
 
 ワークステーションにて、GCPのAPIを介してオンプレミス（例：VMWare）のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+
+![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_on-premises_architecture.png)
+
 
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
 

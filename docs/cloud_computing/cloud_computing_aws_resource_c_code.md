@@ -74,9 +74,6 @@ ECSのために、CodeBuildの設定を行う。
 コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、```latest```タグもプッシュしておいた方が良い。
 
 
-
-> ℹ️ 参考：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
-
 ```yaml
 version: 0.2
 
@@ -111,6 +108,9 @@ phases:
 artifacts:
   files: imageDetail.json
 ```
+
+> ℹ️ 参考：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
+
 
 <br>
 
