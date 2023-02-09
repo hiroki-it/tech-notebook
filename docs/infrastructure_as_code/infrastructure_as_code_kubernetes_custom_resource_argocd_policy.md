@@ -465,3 +465,23 @@ ArgoCDには、ダッシュボード上から特定の```kubectl```コマンド�
 > ℹ️ 参考：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 
 <br>
+
+## 10. リリース/ロールバック
+
+### リリース
+
+#### ▼ 自動Syncの有効化
+
+リリース時には、自動Syncを有効化するようにする。
+
+<br>
+
+### ロールバック
+
+#### ▼ リバート
+
+ロールバック時には、ArgoCDのロールバック機能ではなく、GitHubのリバートを使用する。
+
+リバートした後に、再Syncを実行する。
+
+<br>

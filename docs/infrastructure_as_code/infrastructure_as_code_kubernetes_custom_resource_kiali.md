@@ -23,6 +23,8 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 
 バックエンドアプリケーションは、Prometheusで収集されたメトリクスを再収集して分析し、サービスメッシュトポロジーを作成する。
 
+サービスメッシュトポロジーから、マイクロサービス間の通信の依存関係や通信状況を確認できる。
+
 フロントエンドアプリケーションは、ダッシュボードとして動作する。
 
 現状は、Istioのコンポーネントに依存している。
@@ -52,6 +54,13 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 - デフォルトでは、全てのNamespaceが表示されて見にくいため、アプリコンテナのNamespaceのみをフィルタリングして表示する。
 - デフォルトでは、アプリコンテナ以外のコンポーネント（例：IstioのVirtual Service）が表示されて見にくいため、Appシェイプのみをフィルタリングして表示する。
 
+#### ▼ 囲み線
+
+- 複数のNamespaceに```istio-proxy```コンテナをインジェクションしている場合、Serviceとマイクロサービスが```NS```とついた線で囲われる。
+- 特定のマイクロサービスに複数の```subset```値（例：```v1```、```v2```）が付与されている場合、それらが```A```とついた線で囲われる。
+
+> ℹ️ 参考：https://istio.io/v1.14/docs/tasks/observability/kiali/#generating-a-graph
+
 #### ▼ Istioのマニフェストの検証
 
 Kialiでは、Istioのマニフェストを検証できる。
@@ -59,6 +68,13 @@ Kialiでは、Istioのマニフェストを検証できる。
 ダッシュボード（Serviceタブ、Istio Configタブ）のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
+
+#### ▼ 通信のトラブルシューティング
+
+> ℹ️ 参考：
+> 
+> - https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali
+> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021
 
 <br>
 
