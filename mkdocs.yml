@@ -397,7 +397,7 @@ nav:
                   - Systems Manager: cloud_computing/cloud_computing_aws_resource_s_systems_manager.md
               - Tで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_t.md
               - ■ Vで始まるAWSリソース:
-                  - ■ VPC: cloud_computing/cloud_computing_aws_resource_v_vpc.md
+                  - VPC: cloud_computing/cloud_computing_aws_resource_v_vpc.md
               - ■ Wで始まるAWSリソース:
                   - Wで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_w.md
                   - WAF: cloud_computing/cloud_computing_aws_resource_w_waf.md
