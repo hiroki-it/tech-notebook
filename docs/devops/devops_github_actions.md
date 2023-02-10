@@ -598,14 +598,6 @@ jobs:
 
 Projectレベルとは異なり、```env```キーに明示的に環境変数を渡す必要がある。
 
-
-
-> ℹ️ 参考：
->
-> - https://btj0.com/blog/github/use-env/
-> - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
-> - https://stackoverflow.com/a/61428342
-
 ```yaml
 jobs:
   foo:
@@ -618,6 +610,14 @@ jobs:
           echo ${{ secrets.FOO }}
           source ./bar.sh
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://btj0.com/blog/github/use-env/
+> - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
+> - https://stackoverflow.com/a/61428342
+
 
 #### ▼ Stepレベル
 
@@ -825,10 +825,6 @@ jobs:
 
 
 
-> ℹ️ 参考：
->
-> - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
-> - https://swfz.hatenablog.com/entry/2020/04/18/160235
 
 ```yaml
 jobs:
@@ -854,6 +850,12 @@ jobs:
         run: |
           echo "${{ needs.foo.outputs.FOO }}"         
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+> - https://swfz.hatenablog.com/entry/2020/04/18/160235
 
 ただし異なる```job```では、Secretsや```add-mask```コマンドでマスキングされた値は共有できず、空になってしまう。
 

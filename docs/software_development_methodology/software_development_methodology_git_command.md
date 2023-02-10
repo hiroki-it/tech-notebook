@@ -313,10 +313,6 @@ and the repository exists.
 
 カレントディレクトリにサブモジュールを作成する。
 
-
-
-> ℹ️ 参考：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
-
 ```bash
 $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-module.git ./modules/foo-sub-module
 ```
@@ -331,6 +327,12 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 	url = https://github.com/hiroki-hasegawa/foo-sub-module.git
 	branch = main
 ```
+
+
+
+
+> ℹ️ 参考：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
+
 
 #### ▼ update
 
@@ -524,7 +526,15 @@ $ git cherry-pick <コミットID>
 $ git cherry-pick 1d0ddeb9e52
 ```
 
-プルリクエストのマージによるマージコミットを指定すると、そのプルリクエストで変更されたファイルのみがコミットの内容として取得できる。これにより、```develop```ブランチ上の必要な変更のみをリリースできる。ただし、マージコミットを指定する時は```-m```オプションを有効化しないとエラーになることに注意する。また、マージコミットには```2```個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。前者は1番、また後者は2番となっており、1番を選択すること。
+プルリクエストのマージによるマージコミットを指定すると、そのプルリクエストで変更されたファイルのみがコミットの内容として取得できる。
+
+これにより、```develop```ブランチ上の必要な変更のみをリリースできる。
+
+ただし、マージコミットを指定する時は```-m```オプションを有効化しないとエラーになることに注意する。
+
+また、マージコミットには```2```個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。
+
+前者は1番、また後者は2番となっており、1番を選択すること。
 
 ```bash
 # mainブランチ上でreleaseブランチを作成し、チェックアウトする
@@ -573,8 +583,8 @@ Aborting
 
 
 #### ▼ --include-untracked
-トラッキングされていないファイルも含めて、全てのファイルを退避。
 
+トラッキングされていないファイルも含めて、全てのファイルを退避。
 
 ```git status```をしたところ、修正ファイルが```3```個、トラックされていないファイルが1つある。
 

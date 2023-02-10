@@ -89,7 +89,7 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 > ℹ️ 参考：
 > 
 > - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
 
 <br>
 

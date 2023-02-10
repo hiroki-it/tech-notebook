@@ -889,7 +889,8 @@ resource "aws_kms_key" "foo" {
   
   policy = data.aws_iam_policy_document.foo.json
   
-  multi_region = true
+  # ここでは、マルチリージョンが必須とする。
+  multi_region = true 
   
   tags = {
     Name = foo

@@ -19,9 +19,11 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 ### アーキテクチャ
 
-![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/gitlab-ci_architecture.png)
 
 GitLab Runnerを処理の実行環境として、GitLabリポジトリの```gitlab-ci.yml```ファイルで定義されたパイプラインを実行する。
+
+![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/gitlab-ci_architecture.png)
+
 
 > ℹ️ 参考：
 >
@@ -58,10 +60,6 @@ GitLab CIのJobの設定ファイルを、特定のリポジトリで一括管�
 
 ポリリポジトリ構成ポリシーと相性がよい。
 
-
-
-> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
-
 ```yaml
 include:
   - project: hiroki-hasegawa/gitlab-ci-job-repository
@@ -71,6 +69,9 @@ include:
       - bar-job.yml
       - baz-job.yml
 ```
+
+> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
+
 
 <br>
 
@@ -101,15 +102,14 @@ bar_job:
 
 先に実行するJobを設定する。
 
-
-
-> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
-
 ```yaml
 bar_job:
   dependencies:
     - foo_job
 ```
+
+> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
+
 
 <br>
 
@@ -117,16 +117,15 @@ bar_job:
 
 Jobの実行環境を設定する。
 
-
-
-> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
-
 ```yaml
 foo_job:
   image:
     name: alpine:1.0.0
     entrypoint: ["sh"]
 ```
+
+> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
+
 
 <br>
 
@@ -136,14 +135,13 @@ Jobが属するステージを設定する。
 
 同じステージに属するJobは、並行的に実行される。
 
-
-
-> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#stage
-
 ```yaml
 foo_job:
   stage: foo_stage
 ```
+
+> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#stage
+
 
 <br>
 
@@ -151,15 +149,56 @@ foo_job:
 
 Jobで実行する処理を設定する。
 
-
-
-> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#script
-
 ```yaml
 foo_job:
   script:
     - echo "Hello World"
 ```
+
+> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#script
+
+
+<br>
+
+### trigger
+
+ジョブが発火した場合に、特定のアクションを実施する。
+
+**＊例＊**
+
+モノリポジトリでGitLabCIを採用している場合に、 親の```.gitlab-ci.yml```ファイルでディレクトリ配下の変更を検知し、子の```.gitlab-ci.yml```ファイルを読み込む（```include```）ようにする。
+
+```yaml
+# 親の.gitlab-ci.yml
+stage:
+  - trigger
+
+foo:
+  stage: trigger
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - foo/*
+        - foo/**/*
+  trigger:
+    include: foo/.gitlab-ci.yml
+    strategy: depend
+
+bar:
+  stage: trigger
+  rules:
+    # ディレクトリ配下の変更を検知する
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        - foo/*
+        - foo/**/*
+  trigger:
+    # 各ディレクトリ配下に置いた子の.gitlab-ci.ymlファイルを読み込む
+    include: foo/.gitlab-ci.yml
+    strategy: depend
+```
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
 
 <br>
 
@@ -169,7 +208,6 @@ foo_job:
 
 Job内で使用する変数を設定する。
 
-> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
 ```yaml
 foo_job:
@@ -178,6 +216,9 @@ foo_job:
     BAZ: baz
     QUX: qux
 ```
+
+> ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
+
 
 #### ▼ GIT_SUBMODULE_STRATEGY
 

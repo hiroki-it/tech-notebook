@@ -176,12 +176,14 @@ PHPUnitにおけるモックについては、以下のリンクを参考にせ�
 
 
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
 
 | ツール名   | モックのメソッドの返却値                                                                 | 補足                                                                                                                                  |
 |---------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | PHPUnit | メソッドは、```null```を返却する。                                                        | 注意点として、```final```、```private```なメソッドはモック化されず、実体をそのまま引き継ぐ。また、```static```なメソッドは```BadMethodCallException```をスローするモックに置き換わる。 |
 | JUnit   | メソッドは、元のオブジェクトのメソッドの返却値の型を基に、初期値を返却する<br>（例：boolean型なら```false```） |                                                                                                                                       |
+
+> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
+
 
 #### ▼ スタブ
 
@@ -356,10 +358,6 @@ AとBは、『1』または『0』になり得るとする。
 
 ### 循環複雑度の種類
 
-> ℹ️ 参考：
->
-> - https://jp.mathworks.com/discovery/cyclomatic-complexity.html
-> - https://szk-takanori.hatenablog.com/entry/20111219/p1
 
 | 循環的複雑度 | 複雑さの状態           | バグ混入率  |
 |------------|----------------------|-----------|
@@ -367,6 +365,12 @@ AとBは、『1』または『0』になり得るとする。
 | ```30```以上 | 構造的なリスクあり         | ```40```% |
 | ```50```以上 | テストできない              | ```70```% |
 | ```75```以上 | 変更によって誤修正が生じる。 | ```98```% |
+
+
+> ℹ️ 参考：
+>
+> - https://jp.mathworks.com/discovery/cyclomatic-complexity.html
+> - https://szk-takanori.hatenablog.com/entry/20111219/p1
 
 <br>
 

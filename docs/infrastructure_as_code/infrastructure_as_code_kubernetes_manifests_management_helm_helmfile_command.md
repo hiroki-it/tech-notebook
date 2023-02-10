@@ -39,11 +39,13 @@ $ helmfile <サブコマンド>
 
 
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
 $ helmfile -e prd <コマンド>
 ```
+
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
+
 
 **＊例＊**
 
@@ -61,11 +63,13 @@ $ helmfile -e prd apply
 
 
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 ```
+
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
+
 
 <br>
 

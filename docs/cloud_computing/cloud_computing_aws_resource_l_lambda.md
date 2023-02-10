@@ -22,13 +22,13 @@ description: Lambda＠Lで始まるAWSリソース
 
 他のAWSリソースのイベントによって駆動する関数を管理できる。
 
-ユースケースについては、以下のリンクを参考にせよ。
+
+![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバーレスアーキテクチャとは.png)
 
 
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
 
-![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバーレスアーキテクチャとは.png)
 
 <br>
 

@@ -228,11 +228,6 @@ $ go test -v ./...
 
 反対に、```foo_test.go```ファイルがなければ、そのパッケージの網羅率は解析しない。
 
-網羅条件については、以下のリンクを参考にせよ。
-
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 ```bash
 $ go test -cover ./...

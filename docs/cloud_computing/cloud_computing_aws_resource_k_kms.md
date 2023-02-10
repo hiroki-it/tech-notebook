@@ -39,7 +39,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 ![kms_multi-region.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kms_multi-region.png)
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/multi-region-keys-overview.html
+> ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
 
 <br>
 
@@ -112,5 +112,15 @@ KMSのアクセス制限を設定する。
 
 
 > ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage
+
+<br>
+
+### キーローテーション
+
+暗号化キーのキーマテリアルを一定期間で自動的にローテーションする。
+
+![kms_key_rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kms_key_rotation.png)
+
+> ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
 
 <br>

@@ -41,11 +41,11 @@ build/test/deployステージに加えて、継続的な開発に役立つステ
 
 Skaffoldの各ステージでは、それ専用のツールをコールできる。
 
+![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline_tools.png)
 
 
 > ℹ️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
 
-![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline_tools.png)
 
 <br>
 

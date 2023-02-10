@@ -129,7 +129,11 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 ```【１】```
 
-:    CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。この時、他の連携サービスと区別しやすいように、ホスト名を```github```とする。
+:    CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。
+
+     GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。
+
+     この時、他の連携サービスと区別しやすいように、ホスト名を```github```とする。
 
 ```bash
 $ pbcopy < ~/.ssh/github/<秘密鍵名>

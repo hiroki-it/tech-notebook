@@ -1362,7 +1362,13 @@ Terraformまたはプロバイダーのアップグレードを別々にリリ�
 
 ### 仕様書自動作成
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.html
+terraform-docsを使用して、```variable```ブロック、```output```ブロック、```module```ブロック、などの仕様書を作成する。
+
+作成した仕様書を自動コミットできるようにする。
+
+```bash
+$ terraform-docs markdown . --output-file=README.md
+```
 
 <br>
 

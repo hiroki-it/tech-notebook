@@ -679,7 +679,6 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 ただし、差分として認識されるものの```moved```ブロックを使用すれば、差分を回避できる。
 
-> ℹ️ 参考：https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
 
 | 変更内容                                                                | される/されない |
 |----------------------------------------------------------------------|----------|
@@ -688,6 +687,9 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 | ファイルやディレクトリを指定するパスの変更                                               | されない     |
 | ```resource```ブロックにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない     |
 | ```variables```ブロック名の変更                                              | されない     |
+
+> ℹ️ 参考：https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
+
 
 <br>
 
@@ -708,6 +710,12 @@ $ terraform providers lock \
     -platform=linux_amd64 \
     -platform=linux_arm64 \
     -platform=windows_amd64
+```
+
+事前に、```terraform.lock.hcl```ファイルを削除する必要がある。
+
+```bash
+$ rm .terraform.lock.hcl
 ```
 
 > ℹ️ 参考：https://developer.hashicorp.com/terraform/cli/commands/providers/lock
