@@ -67,11 +67,6 @@ SecretsストアCSIドライバーによって、PodではSecretを介さずに�
 
 
 
-> ℹ️ 参考：
-> 
-> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
-> - https://innablr.com.au/blog/what-is-secret-management-and-how-to-integrate-with-k8s-part-2/
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -100,6 +95,13 @@ spec:
           secretProviderClass: foo-aws-secret-provider-class
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
+> - https://innablr.com.au/blog/what-is-secret-management-and-how-to-integrate-with-k8s-part-2/
+
+
 <br>
 
 ## 03. SecretProviderClass
@@ -114,7 +116,6 @@ Secretのマウント対象となるPodと同じNamespaceにする必要があ�
 
 
 
-> ℹ️ 参考：https://www.bigtreetc.com/column/eks-secrets/
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -122,6 +123,9 @@ kind: SecretProviderClass
 metadata:
   namespace: foo-namespace # Podと同じNamespace
 ```
+
+> ℹ️ 参考：https://www.bigtreetc.com/column/eks-secrets/
+
 
 <br>
 
@@ -133,7 +137,6 @@ Secretのプロバイダーを設定する。
 
 
 
-> ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -143,6 +146,9 @@ metadata:
 spec:
   provider: aws
 ```
+
+> ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+
 
 <br>
 
@@ -162,11 +168,6 @@ AWSプロバイダー上のSecret（AWS Secrets Manager、AWS Systems Manager）
 
 
 
-> ℹ️ 参考：
-> 
-> - https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
-> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
-
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
 kind: SecretProviderClass
@@ -183,10 +184,11 @@ spec:
       - objectType: "secretsmanager"
 ```
 
+
 > ℹ️ 参考：
-> 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
-> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-systems-manager-parameter-store%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
+>
+> - https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
+> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -203,6 +205,14 @@ spec:
       - objectName: "/foo/PASSWORD"
         objectType: "ssmparameter"
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
+> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-systems-manager-parameter-store%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
+
 
 #### ▼ objects（GCPプロバイダーの場合）
 

@@ -20,6 +20,8 @@ description: カスタムコントローラー＠カスタムリソースの知�
 
 ### カスタムコントローラーとは
 
+![custom_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/custom_controller.png)
+
 カスタムリソースのためのkube-controllerに相当する。
 
 ただし、kube-controllerとは異なり、Node上で稼働する。
@@ -42,7 +44,10 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 ただし、カスタムコントローラー自体は```kubectl```クライアントが作成する必要がある。
 
-> ℹ️ 参考：https://youtu.be/pw8AVOJQ5uw?t=1372
+> ℹ️ 参考：
+> 
+> - https://youtu.be/pw8AVOJQ5uw?t=1372
+> - https://note.varu3.me/n/n461302e3ac79
 
 <br>
 
