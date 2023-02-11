@@ -220,7 +220,7 @@ foo_job:
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
 
-#### ▼ GIT_SUBMODULE_STRATEGY
+#### ▼ ```GIT_SUBMODULE_STRATEGY```
 
 デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。
 

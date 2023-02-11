@@ -26,6 +26,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+
 > ℹ️ 参考：
 > 
 > - https://argo-cd.readthedocs.io/en/stable/getting_started/
@@ -33,6 +34,9 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 
 #### ▼ チャートとして
+
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://argoproj.github.io/argo-helm

@@ -110,7 +110,11 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 #### ▼ ```~/.aws/confidentials```ファイルとは
 
-クレデンシャル情報を設定する。LinuxやUNIXの場合は、```$HOME/.aws/<credentialsファイル名>```に配置される。また、Windowsの場合は、```%USERPROFILE%\.aws\<credentialsファイル名>```に配置される。
+クレデンシャル情報を設定する。
+
+LinuxやUNIXの場合は、```$HOME/.aws/<credentialsファイル名>```に配置される。
+
+また、Windowsの場合は、```%USERPROFILE%\.aws\<credentialsファイル名>```に配置される。
 
 #### ▼ aws_access_key_id
 

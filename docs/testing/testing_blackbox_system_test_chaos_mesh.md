@@ -38,19 +38,21 @@ ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、か�
 
 GitHubリポジトリからchaos-meshチャートをインストールし、リソースを作成する。
 
-> ℹ️ 参考：
->
-> - https://chaos-mesh.org/docs/production-installation-using-helm/
-> - https://github.com/chaos-mesh/charts
 
 ```bash
-$ helm repo add <リポジトリ名> https://charts.chaos-mesh.org
+$ helm repo add <チャートリポジトリ名> https://charts.chaos-mesh.org
 
 $ helm repo update
 
 $ kubectl create namespace chaos-testing
 
-$ helm install chaos-mesh <リポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
+$ helm install <リリース名> <リポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://chaos-mesh.org/docs/production-installation-using-helm/
+> - https://github.com/chaos-mesh/charts
 
 <br>

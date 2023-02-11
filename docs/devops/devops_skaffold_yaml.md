@@ -69,7 +69,6 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
 
 ```yaml
 build:
@@ -80,13 +79,15 @@ build:
     - image: bar-web
 ```
 
+> ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
+
+
 #### ▼ context
 
 マイクロサービスのルートまでのパスを設定する。
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
 
 ```yaml
 build:
@@ -100,6 +101,9 @@ build:
     - image: bar-web
       context: ./src/bar    
 ```
+
+> ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
+
 
 <br>
 

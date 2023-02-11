@@ -115,12 +115,12 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 ### VPCトラフィックミラーリング
 
-![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc_traffic-mirroring.png)
 
 ENIを介して、同じVPC内のインスタンスなどに、パケットのコピーを送信する。
 
 VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
 
+![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc_traffic-mirroring.png)
 
 
 > ℹ️ 参考：

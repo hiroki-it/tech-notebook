@@ -179,8 +179,10 @@ secrets:
 
 
 ```bash
+$ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
+
 # FargateにAWS LBコントローラーをデプロイする場合
-$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+$ helm install <リリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \
@@ -194,8 +196,10 @@ AWS Load Balancer controller installed!
 ```
 
 ```bash
+$ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
+
 # EC2にAWS LBコントローラーをデプロイする場合
-$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+$ helm install <リリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \
@@ -206,7 +210,10 @@ $ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 AWS Load Balancer controller installed!
 ```
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
+> ℹ️ 参考：
+> 
+> - https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
+> - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
 
 ```【４】```
 

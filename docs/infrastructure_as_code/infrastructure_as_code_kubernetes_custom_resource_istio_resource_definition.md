@@ -18,11 +18,10 @@ description: リソース定義＠Istioの知見を記録しています。
 
 #### ▼ チャートとして
 
-```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、IstioOperatorにリソースを作成させる。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 チャートは、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
 
-> ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
 ```bash
 # IstioOperatorのdemoをインストールし、リソースを作成する。
@@ -31,6 +30,9 @@ $ istioctl install --set profile=demo
 # 外部のチャートを使用する場合
 $ istioctl install --manifests=foo-chart
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
+
 
 執筆時点（2023/01/16）でIstioOperatorは非推奨になっている。
 

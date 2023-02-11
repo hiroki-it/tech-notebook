@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit/Fluentd＠ログ系ミドルウェア
-description: FluentBit/Fluentd＠ログ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】FluentBit/Fluentd＠カスタムリソース
+description: FluentBit/Fluentd＠カスタムリソースの知見を記録しています。
 ---
 
-# FluentBit/Fluentd＠ログ系ミドルウェア
+# FluentBit/Fluentd＠カスタムリソース
 
 ## はじめに
 

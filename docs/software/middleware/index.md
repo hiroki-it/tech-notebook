@@ -55,14 +55,6 @@
 
 <br>
 
-### ログ系
-
-* #### <u>FluentBit/Fluentd</u>
-  > * ##### [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit_fluentd.html)
-  > * ##### [︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit.html)
-
-<br>
-
 ### セキュリティ系
 
 * #### [︎︎Linux標準](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_security_linux.html)

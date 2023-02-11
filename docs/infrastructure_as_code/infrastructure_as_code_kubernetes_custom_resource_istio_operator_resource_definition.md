@@ -21,7 +21,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 #### ▼ チャートとして
 
-```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 プロファイルは、設定済みのIstioOperatorのチャートであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
 
@@ -71,10 +71,13 @@ istiooperator.install.istio.io/istio-operator created
 
 #### ▼ チャートとして
 
-IstioOperatorのチャートをインストールし、リソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
 
+```bash
+$ helm install <リリース名> manifests/charts/istio-operator -n istio-operator --version <バージョンタグ>
+```
 
 
 > ℹ️ 参考：
@@ -82,9 +85,6 @@ IstioOperatorのチャートをインストールし、リソースを作成す�
 > - https://istio.io/latest/docs/setup/install/operator/#deploy-the-istio-operator
 > - https://tech.griphone.co.jp/2020/12/12/istio-operator-101/
 
-```bash
-$ helm install <リリース名> manifests/charts/istio-operator -n istio-operator --version <バージョンタグ>
-```
 
 <br>
 

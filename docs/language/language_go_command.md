@@ -66,10 +66,6 @@ $ go build ./cmd
 
 もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、```panic```メソッドが原因を握りつぶしている可能性を考える。
 
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_go_logic_method_data.html
-
 ```bash
 exit status 2. Docker build ran into internal error. Please retry. If this keeps happening, please open an issue..
 ```

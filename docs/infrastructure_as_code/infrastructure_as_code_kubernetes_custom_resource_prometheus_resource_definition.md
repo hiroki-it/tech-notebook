@@ -21,7 +21,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 #### ▼ 非チャートとして（prometheus-operator）
 
-非チャートとして、prometheus-operatorのマニフェストを送信し、Kubernetesリソースを作成する。
+Node内で監視系ツール（Prometheus、Alertmanager、Node exporter、Grafana、など）をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
 
 ```bash
 $ git clone https://github.com/prometheus-operator/prometheus-operator.git
@@ -33,7 +33,7 @@ $ kubectl create -f bundle.yaml
 
 #### ▼ 非チャートとして（kube-prometheus）
 
-非チャートとして、kube-prometheusリポジトリのマニフェストを送信し、Kubernetesリソースを作成する。
+Node内で監視系ツール（Prometheus、Alertmanager、Node exporter、Grafana、など）をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
 
 ```bash
 $ git clone https://github.com/prometheus-operator/kube-prometheus.git
@@ -50,9 +50,7 @@ $ kubectl apply -f manifests/
 
 #### ▼ チャートとして（kube-prometheus-stack）
 
-チャートとしてkube-prometheus-stackをインストールし、Kubernetesリソースを作成する。
-
-Prometheusだけでなく、様々な関連ツール（Alertmanager、Node exporter、Grafana、など）のKubernetesリソースも合わせて作成する。
+Node内で監視系ツール（Prometheus、Alertmanager、Node exporter、Grafana、など）をコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -85,12 +83,10 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheu
 
 kube-prometheus-stackとは異なり、最低限の関連ツール（Alertmanager、Node exporter、など）のKubernetesリソースも合わせて作成する。
 
-ただ、
-
 ```bash
-helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
 
-helm repo update
+$ helm repo update
 
 $ kubectl create namespace prometheus
 

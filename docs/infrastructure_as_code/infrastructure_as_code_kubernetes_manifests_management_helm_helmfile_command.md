@@ -26,12 +26,14 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
 # helmfile.dディレクトリ配下を再帰的に読み込む。
 $ helmfile <サブコマンド>
 ```
+
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
+
 
 #### ▼ -e
 

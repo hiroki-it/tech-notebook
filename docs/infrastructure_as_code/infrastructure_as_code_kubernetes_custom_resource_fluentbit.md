@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit＠ログ系ミドルウェア
-description: FluentBit＠ログ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】FluentBit＠カスタムリソース
+description: FluentBit＠カスタムリソースの知見を記録しています。
 ---
 
-# FluentBit＠ログ系ミドルウェア
+# FluentBit＠カスタムリソース
 
 ## はじめに
 
@@ -15,71 +15,9 @@ description: FluentBit＠ログ系ミドルウェアの知見を記録してい�
 
 <br>
 
-## 01. セットアップ
-
-### confファイル
-
-セクションを設定できる。
 
 
-
-> ℹ️ 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file
-
-<br>
-
-### コマンド
-
-#### ▼ 一覧
-
-コマンドでセクションを実行できる。
-
-
-
-```bash
-$ /fluent-bit/bin/fluent-bit --help
-
-Available Options
-  -b  --storage_path=PATH specify a storage buffering path
-  -c  --config=FILE       specify an optional configuration file
-  -d, --daemon            run Fluent Bit in background mode
-  -D, --dry-run           dry run
-  -f, --flush=SECONDS     flush timeout in seconds (default: 5)
-  -F  --filter=FILTER     set a filter
-  -i, --input=INPUT       set an input
-  -m, --match=MATCH       set plugin match, same as '-p match=abc'
-  -o, --output=OUTPUT     set an output
-  -p, --prop="A=B"        set plugin configuration property
-  -R, --parser=FILE       specify a parser configuration file
-  -e, --plugin=FILE       load an external plugin (shared lib)
-  -l, --log_file=FILE     write log info to a file
-  -t, --tag=TAG           set plugin tag, same as '-p tag=abc'
-  -T, --sp-task=SQL       define a stream processor task
-  -v, --verbose           increase logging verbosity (default: info)
-  -w, --workdir           set the working directory
-  -H, --http              enable monitoring HTTP server
-  -P, --port              set HTTP server TCP port (default: 2020)
-  -s, --coro_stack_size   set coroutines stack size in bytes (default: 24576)
-  -q, --quiet             quiet mode
-  -S, --sosreport         support report for Enterprise customers
-  -V, --version           show version number
-  -h, --help              print this help
-```
-
-#### ▼ -c
-
-設定ファイルのバリデーションは、開発環境にて、以下サイトや再起動を伴う```--config```オプションから行う。
-
-これら以外に再起動を伴わない```--dry-run```オプションがあるが、このオプションは経験則で精度が低いため、参考程度にする。
-
-> ℹ️ 参考：https://cloud.calyptia.com/visualizer
-
-```bash
-$ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
-```
-
-<br>
-
-## 02. SERVICEセクション
+## 01. SERVICEセクション
 
 ### SERVICEとは
 
@@ -87,7 +25,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 各設定の頭文字は大文字とする。
 
-
+> ℹ️ 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section
 
 **＊実装例＊**
 
@@ -161,14 +99,14 @@ Fluent Bit v1.8.6
 
 <br>
 
-## 02-02. INPUT
+## 02. INPUT
 
 ### INPUTとは
 
-![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_input.png)
 
 ログのパイプラインへのインプット方法を設定する。
 
+![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_input.png)
 
 
 > ℹ️ 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
@@ -384,7 +322,7 @@ $ fluent-bit \
 
 <br>
 
-## 02-03. PARSER
+## 03. PARSER
 
 ### PARSERとは
 
@@ -398,7 +336,7 @@ $ fluent-bit \
 
 <br>
 
-## 02-04. FILTER
+## 04. FILTER
 
 ### FILTERとは
 
@@ -659,7 +597,7 @@ Fluent Bit v1.8.6
 
 <br>
 
-## 02-05. STREAM_TASK
+## 05. STREAM_TASK
 
 ### STREAM_TASKとは
 
@@ -748,7 +686,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 <br>
 
-## 02-06. BUFFER
+## 06. BUFFER
 
 ### BUFFERとは
 
@@ -840,7 +778,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 <br>
 
-## 02-07. ROUTING、OUTPUT
+## 07. ROUTING、OUTPUT
 
 ### ROUTING、OUTPUTとは
 
@@ -1140,4 +1078,6 @@ $ /fluent-bit/bin/fluent-bit \
     -m "*" \
     -o null
 ```
+
+<br>
 

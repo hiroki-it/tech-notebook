@@ -18,7 +18,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 #### ▼ チャートとして
 
-チャートとしてgrafanaをインストールし、リソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://grafana.github.io/helm-charts

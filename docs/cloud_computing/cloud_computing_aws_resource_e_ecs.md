@@ -93,12 +93,12 @@ ECSタスク定義を基に作成される。
 
 #### ▼ ECSコンテナエージェント
 
-![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
 
 ECSタスク実行ロールを使用して、ECSタスクのライフサイクルを管理する。
 
 Fargateの場合、ECSコンテナエージェントがプリインストールされている。
 
+![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
 
 
 > ℹ️ 参考：

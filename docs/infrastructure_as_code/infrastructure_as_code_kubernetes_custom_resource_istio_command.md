@@ -27,7 +27,6 @@ $ brew install istioctl
 
 #### ▼ チャートとして
 
-> ℹ️ 参考：https://istio.io/latest/docs/setup/getting-started/#download
 
 ```【１】```
 
@@ -53,6 +52,9 @@ $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
 $ cd istio-1.12.1
 $ export PATH=$PWD/bin:$PATH
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/setup/getting-started/#download
+
 
 <br>
 

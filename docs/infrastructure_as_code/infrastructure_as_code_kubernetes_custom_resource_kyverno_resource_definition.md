@@ -21,10 +21,7 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 
 #### ▼ チャートとして
 
-チャートとしてkyvernoをインストールし、リソースを作成する。
-
-
-
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kyverno.github.io/kyverno/

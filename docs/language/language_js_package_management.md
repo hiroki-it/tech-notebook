@@ -69,9 +69,12 @@ $ yum install -y nodejs
 
 #### ▼ dependencies
 
-本番環境と開発環境で依存するパッケージ名を設定する。NPMに登録されていないパッケージは、『```git+<GitHubリポジトリURL>```』を指定する。```npm install```コマンドの実行時に```--production```オプションを有効化すると、```dependencies```キーが使用される。
+本番環境と開発環境で依存するパッケージ名を設定する。
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
+NPMに登録されていないパッケージは、『```git+<GitHubリポジトリURL>```』を指定する。
+
+```npm install```コマンドの実行時に```--production```オプションを有効化すると、```dependencies```キーが使用される。
+
 
 
 ```yaml
@@ -83,6 +86,9 @@ $ yum install -y nodejs
   },
 }
 ```
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
+
 
 #### ▼ description
 
@@ -96,9 +102,10 @@ $ yum install -y nodejs
 
 #### ▼ devDependencies
 
-開発環境のみ依存するパッケージ名を設定する。```npm install```コマンドの実行時に```--production```オプションを有効化しないと、```devDependencies```キーが使用される。
+開発環境のみ依存するパッケージ名を設定する。
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
+```npm install```コマンドの実行時に```--production```オプションを有効化しないと、```devDependencies```キーが使用される。
+
 
 
 ```yaml
@@ -111,13 +118,15 @@ $ yum install -y nodejs
 }
 ```
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
+
+
 #### ▼ directories
 
 パッケージのディレクトリ構造を設定する。
 
 
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
 
 ```yaml
 {
@@ -127,6 +136,9 @@ $ yum install -y nodejs
   },
 }
 ```
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
+
 
 #### ▼ engines
 
@@ -182,18 +194,17 @@ npmパッケージ名を設定する。
 全てのnpmパッケージの中で、一意の名前でなければならない。
 
 
-
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
-
 ```yaml
 {
   "name": "foo",
 }
 ```
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
+
+
 #### ▼ repository
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
 
 ```yaml
 {
@@ -204,11 +215,11 @@ npmパッケージ名を設定する。
 }
 ```
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
+
 #### ▼ scripts
 
 汎用コマンドとエイリアスを設定する。```npm run <エイリアス名>```コマンドで実行できる。
-
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
 
 
 ```yaml
@@ -219,20 +230,24 @@ npmパッケージ名を設定する。
 }
 ```
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
+
+
+
 #### ▼ version
 
 パッケージのバージョンを設定する。
-
-
-
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
-
 
 ```yaml
 {
   "version": "<バージョンタグ>",
 }
 ```
+
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
+
+
 
 <br>
 
@@ -375,19 +390,23 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 #### ▼ aptリポジトリから
 
-> ℹ️ 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
-
 ```bash
 $ apt-get install yarn
 ```
 
+
+> ℹ️ 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
+
+
 #### ▼ npmレジストリから
 
-> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
 
 ```bash
 $ npm install --global yarn
 ```
+
+> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
+
 
 <br>
 
@@ -402,10 +421,6 @@ Npmと同じ。
 ### ```yarn.lock```ファイル
 
 Composerの```composer.lock```ファイルに相当する。
-
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_package_management.html
 
 <br>
 
@@ -449,11 +464,13 @@ $ yarn add <パッケージ名>@<バージョンタグ>
 
 
 
-> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
 
 ```bash
 $ yarn install --check-files
 ```
+
+> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
+
 
 <br>
 
@@ -488,24 +505,24 @@ $ yarn remove <パッケージ名>
 指定したパッケージを```package.json```ファイルの範囲内でアップグレードする。
 
 
-
-> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
-
 ```bash
 $ yarn upgrade <パッケージ名>@<バージョンタグ>
 ```
+
+> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+
 
 #### ▼ latest
 
 全てのパッケージを、```package.json```ファイルを無視して最新までアップグレードする。
 
 
-
-> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
-
 ```bash
 $ yarn upgrade --latest
 ```
+
+> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+
 
 <br>
 

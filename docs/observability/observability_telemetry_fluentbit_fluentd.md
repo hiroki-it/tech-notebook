@@ -21,6 +21,6 @@ FluentBit/Fluentdはセクションが重複しており、以下のセクショ
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit_fluentd.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.html
 
 <br>
