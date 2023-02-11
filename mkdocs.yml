@@ -187,10 +187,6 @@ nav:
               - ■ VictoriaMetrics:
                   - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
                   - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
-      - ■ ログ系:
-          - ■ FluentBit/Fluentd:
-              - FluentBit/Fluentd: software/software_middleware_log_fluentbit_fluentd.md
-              - FluentBit: software/software_middleware_log_fluentbit.md
       - ■ セキュリティ系:
           - Linux標準: software/software_middleware_security_linux.md
           - ■ Falco:
@@ -526,6 +522,11 @@ nav:
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
           - ■ CertManager:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.md
+          - ■ FluentBit/Fluentd:
+              - FluentBit/Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.md
+              - FluentBit: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_command.md
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_resource_definition.md
           - ■ Grafana:
               - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
