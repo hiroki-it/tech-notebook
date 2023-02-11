@@ -195,7 +195,7 @@ ConfigMapの```.data```キーにJSONを設定すると、ダッシュボード�
 
 > ℹ️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
 
-#### ▼ Istio
+#### ▼ Istioダッシュボード
 
 ```istioctl dashboard grafana```コマンドでインストールできるダッシュボード。
 

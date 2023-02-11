@@ -471,12 +471,13 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
     --delete-emptydir-data
 ```
 
+![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node_scheduling-pod-status.png)
+
 > ℹ️ 参考：
 >
 > - https://dunkshoot.hatenablog.com/
 > - https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/
 
-![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node_scheduling-pod-status.png)
 
 ```【３】```
 
