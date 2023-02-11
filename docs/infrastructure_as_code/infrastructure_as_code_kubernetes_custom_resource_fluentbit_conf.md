@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit＠カスタムリソース
-description: FluentBit＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】設定ファイル＠FluentBit
+description: 設定ファイル＠FluentBitの知見を記録しています。
 ---
 
-# FluentBit＠カスタムリソース
+# 設定ファイル＠FluentBit
 
 ## はじめに
 
