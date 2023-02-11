@@ -525,7 +525,7 @@ nav:
           - ■ FluentBit/Fluentd:
               - FluentBit/Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.md
               - ■ FluentBit:
-                  - FluentBit: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.md
+                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_conf.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_command.md
                   - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_resource_definition.md
           - ■ Grafana:
