@@ -407,7 +407,7 @@ istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SEN
 
 ```【７】```
 
-:    新バージョンの```istio-proxy```コンテナに問題がなければ、他のアプリのNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を順番に変更していく。
+:    新バージョンの```istio-proxy```コンテナに問題が起こらなければ、他のアプリのNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン番号を順番に変更していく。
 
 ```bash
 # 他のNamespaceでも新istio-proxyコンテナを検証していく。

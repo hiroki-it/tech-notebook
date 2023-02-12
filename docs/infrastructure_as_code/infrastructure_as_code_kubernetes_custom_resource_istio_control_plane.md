@@ -214,7 +214,7 @@ spec:
 
 Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。
 
-```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。
+```.webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。
 
 そのため、Istioが起動に失敗し続けると、サイドカーコンテナのインジェクションを有効しているPodがいつまでも作成されないことになる。
 

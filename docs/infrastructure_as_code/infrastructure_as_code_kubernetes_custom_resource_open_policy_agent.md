@@ -200,7 +200,7 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 
 Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、ValidatingWebhookConfigurationでValidatingWebhookアドオンを設定する。
 
-```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
+```.webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
 
 そのため、Gatekeeperが起動に失敗しても、Podが中止されることはない。
 

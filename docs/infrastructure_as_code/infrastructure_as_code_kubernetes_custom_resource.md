@@ -281,7 +281,7 @@ $ kubectl get foo
 
 <br>
 
-### versions
+### .spec.versions
 
 #### ▼ name
 
