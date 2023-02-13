@@ -11,7 +11,7 @@ description: コマンド＠Vagrantの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: コマンド＠Vagrantの知見を記録しています。
 $ vagrant box add <ボックス名> <URL>
 ```
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-add
+> ↪️ 参考：https://www.vagrantup.com/docs/cli/box#box-add
 
 
 <br>
@@ -41,7 +41,7 @@ $ vagrant box add <ボックス名> <URL>
 $ vagrant box list
 ```
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-list
+> ↪️ 参考：https://www.vagrantup.com/docs/cli/box#box-list
 
 
 <br>
@@ -55,7 +55,7 @@ $ vagrant box list
 $ vagrant global-status
 ```
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/global-status
+> ↪️ 参考：https://www.vagrantup.com/docs/cli/global-status
 
 
 <br>
@@ -68,7 +68,7 @@ $ vagrant global-status
 $ vagrant halt
 ```
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/halt
+> ↪️ 参考：https://www.vagrantup.com/docs/cli/halt
 
 
 <br>
@@ -93,7 +93,7 @@ $ vagrant reload
 $ vagrant ssh
 ```
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/ssh
+> ↪️ 参考：https://www.vagrantup.com/docs/cli/ssh
 
 
 <br>
@@ -106,7 +106,7 @@ $ vagrant ssh
 $ vagrant up
 ```
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/up
+> ↪️ 参考：https://www.vagrantup.com/docs/cli/up
 
 
 <br>

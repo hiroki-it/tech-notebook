@@ -11,7 +11,7 @@ description: コマンド＠Apacheの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: コマンド＠Apacheの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> ↪️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
 $ apachectl configtest
@@ -39,7 +39,7 @@ Apacheを段階的に再起動する。
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> ↪️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
 $ apachectl graceful
@@ -53,7 +53,7 @@ $ apachectl graceful
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> ↪️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
 $ apachectl -t
@@ -71,7 +71,7 @@ $ apachectl -t
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> ↪️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
@@ -87,7 +87,7 @@ $ httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> ↪️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -l
@@ -101,7 +101,7 @@ $ httpd -l
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> ↪️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -L
@@ -115,7 +115,7 @@ $ httpd -L
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> ↪️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -M
@@ -129,7 +129,7 @@ $ httpd -M
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> ↪️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -S
@@ -145,7 +145,7 @@ Apacheの設定ファイルのバリデーションを実行する。
 
 
 
-> ℹ️ 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+> ↪️ 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 ```bash
 $ service httpd configtest

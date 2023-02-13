@@ -11,7 +11,7 @@ description: クラス＠PHPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +19,7 @@ description: クラス＠PHPの知見を記録しています。
 
 ### has-one、has-manyな関係性とは
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
@@ -267,7 +267,7 @@ $car = new Car();
 
 ### is-a-kind-ofな関係性とは
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
@@ -597,7 +597,7 @@ class Mammal implements Animal
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_prototype_based.html
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_prototype_based_method_data.html
@@ -793,7 +793,7 @@ PHPでは、集約や合成の関係性を作り、委譲先クラスのメソ�
 
 #### ▼ 継承よりも優れた点
 
-> ℹ️ 参考：https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B
+> ↪️ 参考：https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B
 
 <br>
 
@@ -903,7 +903,7 @@ Composerのオートロード機能を有効化した上で、外部ファイル
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
 
 #### ▼ 外部ファイルのクラスからメソッドをコール
 
@@ -977,7 +977,7 @@ class Bar
 
 ### useな関係とは
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 <br>
 
@@ -991,7 +991,7 @@ class Bar
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
 > - https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
@@ -1201,7 +1201,7 @@ LCOM4は、クラスの各メソッド内で、保持する全てのデータに
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/B082WXZVPC
 > - https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
@@ -1228,7 +1228,7 @@ LCOM4は、クラスの各メソッド内で、保持する全てのデータに
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection
 > - https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection
@@ -1550,7 +1550,7 @@ $sample = new Sample($container);
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
+> ↪️ 参考：https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
 ![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DIPに基づく設計の場合.png)
 

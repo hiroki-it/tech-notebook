@@ -11,7 +11,7 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -60,7 +60,7 @@ description: アプリケーション間通信＠アプリケーション連携�
 - gRPCの双方向ストリーミングRPC
 - Websocket
 
-> ℹ️ 参考：https://qiita.com/namusyaka/items/71cf27fd3242adbf348c
+> ↪️ 参考：https://qiita.com/namusyaka/items/71cf27fd3242adbf348c
 
 <br>
 
@@ -140,7 +140,7 @@ JavaScriptのビルトインオブジェクトである。
 
 
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 
 #### ▼ ```fetch```メソッド
 
@@ -148,7 +148,7 @@ JavaScriptのビルトイン関数である。
 
 
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
 
 #### ▼ JQueryオブジェクト
 
@@ -156,7 +156,7 @@ JQueryパッケージである。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://api.jquery.com/category/ajax/shorthand-methods/
 > - https://api.jquery.com/jquery.ajax
@@ -167,7 +167,7 @@ Axiosパッケージである。
 
 
 
-> ℹ️ 参考：https://github.com/axios/axios#request-method-aliases
+> ↪️ 参考：https://github.com/axios/axios#request-method-aliases
 
 <br>
 
@@ -177,7 +177,7 @@ Axiosパッケージである。
 
 #### ▼ GET送信
 
-> ℹ️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
+> ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
 **＊実装例＊**
 
@@ -204,7 +204,7 @@ xhr.send();
 
 #### ▼ POST送信
 
-> ℹ️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
+> ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
 **＊実装例＊**
 
@@ -286,7 +286,7 @@ Promiseオブジェクトを返却する。
 
 
 
-> ℹ️ 参考：https://api.jquery.com/jquery.ajax
+> ↪️ 参考：https://api.jquery.com/jquery.ajax
 
 **＊実装例＊**
 

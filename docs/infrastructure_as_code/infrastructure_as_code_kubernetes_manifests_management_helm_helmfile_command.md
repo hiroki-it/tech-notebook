@@ -11,7 +11,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -32,7 +32,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 $ helmfile <サブコマンド>
 ```
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 
 #### ▼ -e
@@ -46,7 +46,7 @@ $ helmfile <サブコマンド>
 $ helmfile -e prd <コマンド>
 ```
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 
 **＊例＊**
@@ -70,7 +70,7 @@ $ helmfile -e prd apply
 $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 ```
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 
 <br>
@@ -107,7 +107,7 @@ NAME                CHART                VERSION
 foo-release         ./charts/foo         0.0.1
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helmfile.readthedocs.io/en/latest/#apply
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
@@ -125,7 +125,7 @@ foo-release         ./charts/foo         0.0.1
 $ helmfile -e prd destroy
 ```
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
 
 
 <br>
@@ -162,7 +162,7 @@ $ helmfile -e prd diff
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helmfile.readthedocs.io/en/latest/#diff
 > - https://github.com/databus23/helm-diff#helm-diff-plugin
@@ -178,7 +178,7 @@ $ helmfile -e prd diff
 $ HELM_DIFF_COLOR=true helmfile -e prd diff
 ```
 
-> ℹ️ 参考：https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
+> ↪️ 参考：https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
 
 #### ▼ grepとの組み合わせ
 
@@ -223,7 +223,7 @@ Source: project/manifests/persistent-volume.yaml
 $ helmfile -e prd sync
 ```
 
-> ℹ️ 参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+> ↪️ 参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 
 <br>

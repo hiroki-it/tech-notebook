@@ -11,7 +11,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -28,7 +28,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
@@ -41,7 +41,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
@@ -204,7 +204,7 @@ DBインデックスを使用しない場合、SQLの実行時に全てカラム
 
 
 
-> ℹ️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+> ↪️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 #### ▼ クラスターDBインデックス
 
@@ -238,7 +238,7 @@ CREATE INDEX foo_index
 
 
 
-> ℹ️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+> ↪️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 ```sql
 CREATE INDEX foo_index

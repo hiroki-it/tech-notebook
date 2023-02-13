@@ -11,7 +11,7 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -445,7 +445,7 @@ CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナ�
 
 
 
-> ℹ️ 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
+> ↪️ 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
 <br>
 

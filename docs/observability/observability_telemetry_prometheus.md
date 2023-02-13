@@ -11,7 +11,7 @@ description: Prometheus＠テレメトリー収集ツールの知見を記録し
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -21,6 +21,6 @@ Prometheusはセクションが重複しており、以下のセクションを�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html
 
 <br>

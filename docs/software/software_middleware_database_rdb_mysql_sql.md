@@ -11,7 +11,7 @@ description: SQL＠MySQLの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -292,7 +292,7 @@ MySQLでは、取得結果の並び順が毎回異なるため、プライマリ
 
 
 
-> ℹ️ 参考：https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
+> ↪️ 参考：https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
 
 ```sql
 SELECT
@@ -827,7 +827,7 @@ WHERE
 
 
 
-> ℹ️ 参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
+> ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
 
 ```sql
 EXPLAIN
@@ -930,7 +930,7 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p325.gif)
 

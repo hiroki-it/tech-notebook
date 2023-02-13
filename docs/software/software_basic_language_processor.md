@@ -11,7 +11,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -46,7 +46,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 ![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/compiler_language.png)
 
 
-> ℹ️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+> ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 
 #### ▼ コンパイラによるビルド
@@ -87,7 +87,7 @@ exeファイルとなる。
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 
-> ℹ️ 参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
+> ↪️ 参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
 
 
 #### ```【２】```
@@ -104,7 +104,7 @@ exeファイルとなる。
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/Bison
+> ↪️ 参考：https://ja.wikipedia.org/wiki/Bison
 
 #### ```【３】```
 
@@ -170,7 +170,7 @@ exeファイルとなる。
 
 
 
-> ℹ️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+> ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/interpreted_language.png)
 

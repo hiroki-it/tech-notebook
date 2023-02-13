@@ -11,7 +11,7 @@ description: I/O（入出力）管理＠Linuxカーネルの知見を記録し�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ I/Oは、文脈によって意味合いが異なる。
 | ネットワークの場合   | インバウンド通信、アウトバウンド通信        |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.idcf.jp/words/io.html
 > - https://itkq.jp/blog/2017/05/10/linux-file-and-io/
@@ -47,7 +47,7 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 
 
-> ℹ️ 参考：https://dev-labo.com/aws/difference-iops-throughput/
+> ↪️ 参考：https://dev-labo.com/aws/difference-iops-throughput/
 
 <br>
 
@@ -64,7 +64,7 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.png)
 
 
-> ℹ️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
+> ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
 
 
 <br>
@@ -79,7 +79,7 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 
 
-> ℹ️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
+> ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
 
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.png)
 
@@ -89,7 +89,7 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 
 
-> ℹ️ 参考：https://teratail.com/questions/1285
+> ↪️ 参考：https://teratail.com/questions/1285
 
 **＊例＊**
 
@@ -117,7 +117,7 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/1
 ```
 
-> ℹ️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> ↪️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
 
 #### ▼ 標準出力とファイルに出力
 
@@ -125,7 +125,7 @@ $ cat /proc/1/fd/1
 
 
 
-> ℹ️ 参考：https://glorificatio.org/archives/2903
+> ↪️ 参考：https://glorificatio.org/archives/2903
 
 ```bash
 $ echo "text" | tee stdout.log
@@ -149,7 +149,7 @@ $ echo "text" | tee stdout.log
 
 
 
-> ℹ️ 参考：https://teratail.com/questions/1285
+> ↪️ 参考：https://teratail.com/questions/1285
 
 ```bash
 $ echo "text" 1>&2
@@ -175,7 +175,7 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/2
 ```
 
-> ℹ️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> ↪️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
 
 
 <br>
@@ -190,7 +190,7 @@ $ cat /proc/1/fd/2
 
 プロセスの標準入力に対する転送は、多くの場合にユーティリティのパラメーターにファイルを渡すことと同じである。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
 > - https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
@@ -276,7 +276,7 @@ $ echo 'Hello World' >| stdout.txt
 
 
 
-> ℹ️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 ![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline_shell.png)
 
@@ -313,7 +313,7 @@ $ find ./* -name "*.png" -type f -printf "%s\n" \
 
 
 
-> ℹ️ 参考：https://it-ojisan.tokyo/awk-f/
+> ↪️ 参考：https://it-ojisan.tokyo/awk-f/
 
 ```bash
 $ tcpdump dst port 443 \
@@ -383,7 +383,7 @@ $ sudo pgrep \
 | ```Ctrl + b``` | 一ページ戻り                 |
 | ```/文字列```  | 以降の文字を検索し、ハイライトする。 |
 
-> ℹ️ 参考：https://tech.pjin.jp/blog/infra_engneer/more-less/
+> ↪️ 参考：https://tech.pjin.jp/blog/infra_engneer/more-less/
 
 
 **＊例＊**

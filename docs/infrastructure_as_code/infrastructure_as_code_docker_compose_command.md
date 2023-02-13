@@ -11,7 +11,7 @@ description: コマンド＠Docker composeの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -219,7 +219,7 @@ $ docker compose logs -f <サービス名>
 
 
 
-> ℹ️ 参考：https://github.com/docker/compose-cli
+> ↪️ 参考：https://github.com/docker/compose-cli
 
 <br>
 
@@ -231,6 +231,6 @@ $ docker compose logs -f <サービス名>
 
 
 
-> ℹ️ 参考：https://github.com/docker/compose-cli
+> ↪️ 参考：https://github.com/docker/compose-cli
 
 <br>

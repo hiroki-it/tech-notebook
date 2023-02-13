@@ -11,7 +11,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 サイドカープロキシメッシュは、サイドカープロキシ型のサービスメッシュを実装したものである。
 
-> ℹ️ 参考：https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
+> ↪️ 参考：https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
 
 #### ▼ サイドカープロキシメッシュとは
 
@@ -39,7 +39,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/docs/ops/deployment/architecture/
 > - https://techblog.zozo.com/entry/zozotown-istio-production-ready
@@ -53,7 +53,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 アンビエントメッシュは、NodeのServiceAccountごとの共有エージェント型のサービスメッシュを実装したものである。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://blog.csdn.net/cr7258/article/details/126870859
 > - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
@@ -109,7 +109,7 @@ ztunnelのPod（L4）
 アプリコンテナのPod
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/blog/2022/introducing-ambient-mesh/
 > - https://istio.io/latest/blog/2022/get-started-ambient/#install-istio-with-ambient-mode
@@ -133,7 +133,7 @@ ztunnelのPod（L4）
 
 ### 他のサービスメッシュツールとの比較
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/1492043788
+> ↪️ 参考：https://www.amazon.co.jp/dp/1492043788
 
 | 能力（執筆時点2022/08/21）            | Istio | Linkerd | Consul |
 |-------------------------------------|:-----:|:-------:|:------:|
@@ -183,7 +183,7 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 | Node外からのインバウンド通信のルーティング    | ・VirtualService + Gateway（内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である）<br>・Ingress + Istio Ingressコントローラー + ClusterIP Service | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー + ClusterIP Service |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
@@ -205,7 +205,7 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 | メトリクスと分散トレースの収集 | メトリクスと分散トレースの収集ツールを個別にセットアップする。                                                                                                                                       | メトリクスと分散トレースの収集ツールを一括してセットアップできる。                                                                                                                                 |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.container-solutions.com/wtf-is-istio
 > - https://www.containiq.com/post/kubernetes-service-mesh
@@ -220,7 +220,7 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 | Nodeのハードウェアリソースの消費量増加 | IstioのPod間通信では、Kubernetesと比べて、通信に必要なコンポーネント（例：Istiodコントロールプレーン、```istio-proxy```コンテナ）が増える。そのため、Nodeのハードウェアリソースの消費量が増え、また宛先Podからのレスポンス速度が低くなる。 |
 | 学習コストの増加               | Istioが多機能であり、学習コストが増加する。                                                                                                                                  |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://arxiv.org/pdf/2004.00372.pdf
 > - https://www.containiq.com/post/kubernetes-service-mesh
@@ -231,13 +231,13 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 
 ### コンテナインジェクションの仕組み
 
-> ℹ️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2023/01/14/223815
+> ↪️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2023/01/14/223815
 
 <br>
 
 ### サービスディスカバリーの仕組み
 
-> ℹ️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2022/12/25/060000
+> ↪️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2022/12/25/060000
 
 
 <br>
@@ -254,7 +254,7 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 | BlackHoleCluster   | 設定されていない任意の宛先          |                                              |
 | 外部のサービス          | Clusterの外にあるサービス | ServiceEntryで設定できる。                          |
 
-> ℹ️ 参考：https://istiobyexample.dev/monitoring-egress-traffic/
+> ↪️ 参考：https://istiobyexample.dev/monitoring-egress-traffic/
 
 
 <br>
@@ -267,14 +267,14 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+> ↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 
 #### ▼ テストの種類
 
 | テスト名         | 内容                                                                                                                                                               |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Delayインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abortインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+| Delayインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abortインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
 <br>
 
@@ -291,7 +291,7 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
+> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
 <br>
 
@@ -299,7 +299,7 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 
 #### ▼ 仕組み
 
-> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization-architecture
+> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authorization-architecture
 
 <br>
 
@@ -330,13 +330,13 @@ Istiodコントロールプレーンを使用する代わりに、外部の中�
 
 ### メトリクス
 
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/metrics/
+> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/metrics/
 
 <br>
 
 ### ログ
 
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/logs/
+> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/
 
 <br>
 
@@ -350,7 +350,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
 > - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/productpage/productpage.py#L180-L237
@@ -364,7 +364,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 複数のClusterのネットワークを横断的に管理するサービスメッシュ。
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
+> ↪️ 参考：https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
 
 <br>
 
@@ -376,7 +376,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 
 
-> ℹ️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+> ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
 ![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_cluster_same-network.png)
 
@@ -386,7 +386,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 
 
-> ℹ️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+> ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
 ![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
 
@@ -401,7 +401,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 ![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_same-network.png)
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
+> ↪️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
 
 
 #### ▼ 異なるプライベートネットワーク内の場合

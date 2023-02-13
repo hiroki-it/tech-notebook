@@ -11,7 +11,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -24,7 +24,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
 
 
-> ℹ️ 参考：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
+> ↪️ 参考：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
 
 
 <br>
@@ -43,7 +43,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットの構造.jpg)
 
 
-> ℹ️ 参考：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
+> ↪️ 参考：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
 
 
 <br>
@@ -174,7 +174,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 | 宛先マシン（サーバー、デスクトップPC）内 | なし                      |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >  
 > - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1
 > - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
@@ -188,7 +188,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 
 
-> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
+> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
 
 <br>
 
@@ -225,7 +225,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 
 
-> ℹ️ 参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
+> ↪️ 参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
 
 <br>
 
@@ -273,7 +273,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 | 中継VPNマシン内 | OpenVpn、FortiGate、SDPゲートウェイ（クラウドZscalerのVPNマシン）など       |
 | 宛先マシン内    | なし                                                      |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/
@@ -291,7 +291,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 ![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSLによるインターネットVPN.jpg)
 
 
-> ℹ️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
+> ↪️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
 
 
 

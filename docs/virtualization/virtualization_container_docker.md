@@ -11,7 +11,7 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -24,7 +24,7 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 ![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_architecture.png)
 
 
-> ℹ️ 参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
+> ↪️ 参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
 
 
 <br>
@@ -63,7 +63,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.creationline.com/lab/35518
 > - https://tech-lab.sios.jp/archives/21103#OverlayFS
@@ -77,7 +77,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 ![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
 
-> ℹ️ 参考：https://blog.codecamp.jp/programming-docker-image-container
+> ↪️ 参考：https://blog.codecamp.jp/programming-docker-image-container
 
 
 <br>
@@ -93,7 +93,7 @@ dockerクライアントは、```docker```コマンドを使用してdockerデ�
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png)
 
 
-> ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
+> ↪️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
 
 
 <br>
@@ -160,7 +160,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.docker.com/config/containers/logging/fluentd/
 > - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
@@ -187,7 +187,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 }
 ```
 
-> ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/
+> ↪️ 参考：https://docs.docker.com/config/containers/logging/awslogs/
 
 
 #### ▼ gcplogs
@@ -206,7 +206,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 }
 ```
 
-> ℹ️ 参考：https://docs.docker.com/config/containers/logging/gcplogs/
+> ↪️ 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
 <br>
 
@@ -249,7 +249,7 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 
 
-> ℹ️ 参考：https://docs.docker.com/config/containers/logging/
+> ↪️ 参考：https://docs.docker.com/config/containers/logging/
 
 #### ▼ php-fpmイメージ
 

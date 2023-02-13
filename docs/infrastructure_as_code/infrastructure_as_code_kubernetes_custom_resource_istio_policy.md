@@ -11,7 +11,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
+> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
 
 <br>
 
@@ -33,7 +33,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
+> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
 
 <br>
 
@@ -44,7 +44,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 | 登録しないPod例 | 理由                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 監視系のPod   | サイドカープロキシメッシュに登録するPodが増えると、その分```istio-proxy```コンテナが増える。そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。可観測性を高める必要のないPod（例：監視を責務に持つPod）は、サイドカープロキシメッシュに登録しないようにする。                                                                                                                                                                                                                                                                                               |
-| Job配下のPod  | Job配下のPodに```istio-proxy```コンテナを挿入した場合、Pod内のコンテナが終了しても```istio-proxy```コンテナが終了せず、Pod自体が削除されない問題がある。Job配下のPodは、サイドカープロキシメッシュに登録しないようにする。どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、```istio-proxy```コンテナの『```localhost:15020/quitquitquit```』をコールするようなシェルスクリプトを実行する。<br>ℹ️ 参考：<br>・https://www.kabegiwablog.com/entry/2020/08/31/224827 <br>・https://github.com/istio/istio/issues/6324#issuecomment-760156652 <br>・https://youtu.be/2_Nan81j03o?t=1915 |
+| Job配下のPod  | Job配下のPodに```istio-proxy```コンテナを挿入した場合、Pod内のコンテナが終了しても```istio-proxy```コンテナが終了せず、Pod自体が削除されない問題がある。Job配下のPodは、サイドカープロキシメッシュに登録しないようにする。どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、```istio-proxy```コンテナの『```localhost:15020/quitquitquit```』をコールするようなシェルスクリプトを実行する。<br>↪️ 参考：<br>・https://www.kabegiwablog.com/entry/2020/08/31/224827 <br>・https://github.com/istio/istio/issues/6324#issuecomment-760156652 <br>・https://youtu.be/2_Nan81j03o?t=1915 |
 
 <br>
 
@@ -56,7 +56,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 セキュリティ上の理由から、IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
 
-> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/gateways#best_practices_for_managed_data_plane
+> ↪️ 参考：https://cloud.google.com/service-mesh/docs/gateways#best_practices_for_managed_data_plane
 
 #### ▼ NodePort Serviceを選ぶ
 
@@ -76,7 +76,7 @@ NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperat
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/bd9ae57cc00a44810496989ec3fa34649d6c8516/manifests/charts/gateway/values.yaml#L39
@@ -112,7 +112,7 @@ spec:
           subset: v1
 ```
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
+> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
 
 
 <br>
@@ -139,7 +139,7 @@ spec:
           host: myservice
 ```
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
+> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
 
 
 <br>
@@ -156,7 +156,7 @@ DestinationRuleを最初に更新し、正常に完了することを待機し�
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
+> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
 
 <br>
 
@@ -170,7 +170,7 @@ Istioの開発プロジェクトでは、マイナーバージョンを```1```�
 
 そのため、マイナーバージョンを```2```個以上跨いだアップグレードを推奨していない。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://istio.io/latest/docs/setup/upgrade/
 > - https://thenewstack.io/upgrading-istio-without-downtime/
@@ -183,13 +183,13 @@ Istiodコントロールプレーンでダウンタイムが発生すると、``
 
 Istiodコントロールプレーンをカナリア方式アップグレードを採用する。
 
-> ℹ️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
+> ↪️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
 
 #### ▼ IngressGatewayでダウンタイムを発生させない
 
 IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
 
-> ℹ️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
+> ↪️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
 
 <br>
 
@@ -229,7 +229,7 @@ $ istioctl upgrade
 $ kubectl rollout restart deployment app-deployment -n app
 ```
 
-> ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
+> ↪️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 
 <br>
 
@@ -266,7 +266,7 @@ Istioでは、この状況をカナリア方式（一部のユーザーを新```
 
 後者はより新しい手法で、MutatingWebhookConfigurationのエイリアスに紐づくリビジョン番号を書き換える方法である。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
@@ -354,7 +354,7 @@ $ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrit
 ```
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/
+> ↪️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/
 
 ```【４】```
 
@@ -368,7 +368,7 @@ $ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrit
 $ istioctl tag set default --revision 1-1-0 --overwrite
 ```
 
-> ℹ️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+> ↪️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 
 ```【５】```
 
@@ -393,7 +393,7 @@ bar-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED 
 istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SENT     istiod-1-1-0     1.1.0
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://istio.io/latest/docs/setup/additional-setup/gateway/#upgrading-gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#upgrade_gateways
@@ -464,7 +464,7 @@ istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0
 istio-revision-tag-default            1          3m18s # 現在のリビジョン番号（1-1-0）を定義するdefaultタグを持つ
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/docs/setup/upgrade/helm/#canary-upgrade-recommended
 > - https://istio.io/v1.10/docs/setup/upgrade/canary/
@@ -482,11 +482,11 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 
 | メトリクス                                              | 単位 | 説明                                                                                                                                                           | アラート条件例（合致したら発火） |
 |----------------------------------------------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|
-| 総リクエスト数（```istio_requests_total```）              | カウント | ```istio-proxy```コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>ℹ️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                         |
+| 総リクエスト数（```istio_requests_total```）              | カウント | ```istio-proxy```コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                         |
 | 総gRPCリクエスト数（```istio_request_messages_total```）  | カウント | ```istio-proxy```コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                 |                         |
 | 総gRPCレスポンス数（```istio_response_messages_total```） | カウント | ```istio-proxy```コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                 |                         |
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/config/metrics/
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/metrics/
 
 
 <br>

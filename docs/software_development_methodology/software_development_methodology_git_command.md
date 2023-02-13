@@ -11,7 +11,7 @@ description: コマンド@Gitの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -51,7 +51,7 @@ login <ユーザー名>
 password <パスワード>
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
 > - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
@@ -97,7 +97,7 @@ Macでは、```1```個のマシンで```2```個のGutHubアカウントを使用
 
 
 
-> ℹ️ 参考：https://sy-base.com/myrobotics/others/git-push_403error/
+> ↪️ 参考：https://sy-base.com/myrobotics/others/git-push_403error/
 
 #### ▼ --<影響範囲> user.name
 
@@ -197,7 +197,7 @@ $ git init
 .idea/
 ```
 
-> ℹ️ 参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
+> ↪️ 参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
 
 
 <br>
@@ -307,7 +307,7 @@ and the repository exists.
 
 
 
-> ℹ️ 参考：https://qiita.com/kohashi/items/f4a50c5436b326e9475b
+> ↪️ 参考：https://qiita.com/kohashi/items/f4a50c5436b326e9475b
 
 #### ▼ add
 
@@ -331,7 +331,7 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 
 
 
-> ℹ️ 参考：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
+> ↪️ 参考：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
 
 
 #### ▼ update
@@ -356,7 +356,7 @@ GitHubとSSH公開鍵認証を行うために、秘密鍵と公開鍵は次の�
 
 
 
-> ℹ️ 参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
+> ↪️ 参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
 ```【１】```
 
@@ -718,7 +718,7 @@ CIの自動化で使うことが多い。
 
 
 
-> ℹ️ 参考：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
+> ↪️ 参考：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
 
 ```bash
  $ git status --porcelain

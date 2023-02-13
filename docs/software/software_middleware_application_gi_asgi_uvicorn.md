@@ -11,7 +11,7 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -35,7 +35,7 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 
 
-> ℹ️ 参考：https://www.uvicorn.org/deployment/#running-from-the-command-line
+> ↪️ 参考：https://www.uvicorn.org/deployment/#running-from-the-command-line
 
 ```dockerfile
 FROM python:3.10-slim
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
 ```
 
-> ℹ️ 参考：https://www.uvicorn.org/deployment/#running-programmatically
+> ↪️ 参考：https://www.uvicorn.org/deployment/#running-programmatically
 
 
 <br>
@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.uvicorn.org/#running-with-gunicorn
 > - https://www.uvicorn.org/deployment/#gunicorn
@@ -102,7 +102,7 @@ CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "
 
 
 
-> ℹ️ 参考：https://www.uvicorn.org/#quickstart
+> ↪️ 参考：https://www.uvicorn.org/#quickstart
 
 ```bash
 $ pip3 install uvicorn[standard]

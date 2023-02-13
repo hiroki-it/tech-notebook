@@ -11,7 +11,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://newrelic.com/jp/topics/what-are-slos-slis-slas#toc-sli-
+> ↪️ 参考：https://newrelic.com/jp/topics/what-are-slos-slis-slas#toc-sli-
 
 <br>
 
@@ -37,7 +37,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
+> ↪️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
 
 #### ▼ クリティカルユーザージャーニーとSLI
 
@@ -47,7 +47,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
+> ↪️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
 
 **＊例＊**
 
@@ -71,7 +71,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 
 :    商品を購入する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos
 > - https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
@@ -86,7 +86,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
 > - https://medium.com/google-cloud-jp/sre-slo-d7c6aee1fb0e
@@ -101,7 +101,7 @@ MTtxメトリクスをSLIとし、そのダッシュボードを作成すると�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
@@ -127,7 +127,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 
 
-> ℹ️ 参考：https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en
+> ↪️ 参考：https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en
 
 
 ![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/slo_user-happiness.png)
@@ -161,7 +161,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6
+> ↪️ 参考：https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6
 
 #### ▼ バーンレート
 
@@ -177,7 +177,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://sre.google/workbook/alerting-on-slos/
 > - https://engineering.mercari.com/blog/entry/20211215-practical_alerting_methods_based_on_customer_impact/
@@ -205,11 +205,11 @@ Datadogでは、平常時のメトリクスのデータから予測値を算出�
 | レスポンスのステータスコード率  | ```24```時間当たりの全リクエストのうちで、```50```% 以上のリクエストが```200```ステータスコードになること。         |
 | スループット            | ```24```hのうちの```0.1```(%) 以下の時間にスループット低下を抑えること。                            |
 
-> ℹ️ 参考：https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear
+> ↪️ 参考：https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear
 
 #### ▼ 目標値の例（Google）
 
-> ℹ️ 参考：https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons
+> ↪️ 参考：https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons
 
 <br>
 
@@ -263,7 +263,7 @@ SLAとして、例えば以下がある。
 
 
 
-> ℹ️ 参考：https://www.meti.go.jp/policy/netsecurity/secdoc/contents/downloadfils/080121saasgl.pdf#page=27
+> ↪️ 参考：https://www.meti.go.jp/policy/netsecurity/secdoc/contents/downloadfils/080121saasgl.pdf#page=27
 
 #### ▼ 返金率の例（AWS）
 
@@ -275,7 +275,7 @@ AWSではサービスレベルの項目として、サーバー稼働率を採�
 
 
 
-> ℹ️ 参考：https://aws.amazon.com/jp/legal/service-level-agreements/
+> ↪️ 参考：https://aws.amazon.com/jp/legal/service-level-agreements/
 
 **＊例＊**
 
@@ -291,7 +291,7 @@ AWS EC2、EBS、ECS、EKS、の例を示す。
 
 #### ▼ 対応開始時間の例（PureCloud）
 
-> ℹ️ 参考：https://jp-help.mypurecloud.com/articles/service-level-agreements/
+> ↪️ 参考：https://jp-help.mypurecloud.com/articles/service-level-agreements/
 
 #### ▼ 保証期間の例（Google）
 
@@ -305,6 +305,6 @@ SLA違反の場合には、返金を補償とする場合があるが、これ�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
+> ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 <br>

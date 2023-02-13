@@ -11,7 +11,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -26,7 +26,7 @@ description: ホワイトボックステストの知見を記録しています�
 ![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_whitebox-test.png)
 
 
-> ℹ️ 参考：https://hldc.co.jp/blog/2018/05/25/1387/
+> ↪️ 参考：https://hldc.co.jp/blog/2018/05/25/1387/
 
 
 <br>
@@ -37,7 +37,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/Watcher/20060809/245528/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/Watcher/20060809/245528/
 
 - 整形
 - 静的解析（例：文法の誤りテスト 、ベストプラクティス違反テスト 、脆弱性テスト、など）
@@ -63,7 +63,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5
 > - https://devblog.thebase.in/entry/2018/12/24/110000
@@ -104,7 +104,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 テスト用DBを```docker-compose.yml```ファイルによって用意する方法については、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 <br>
 
@@ -132,7 +132,7 @@ Roy Osherove氏の命名規則については、以下のリンクを参考に�
 
 
 
-> ℹ️ 参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+> ↪️ 参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
 #### ▼ アサーションの比較値
 
@@ -140,7 +140,7 @@ Roy Osherove氏の命名規則については、以下のリンクを参考に�
 
 
 
-> ℹ️ 参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+> ↪️ 参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
 <br>
 
@@ -152,7 +152,7 @@ Roy Osherove氏の命名規則については、以下のリンクを参考に�
 
 
 
-> ℹ️ 参考：https://en.wikipedia.org/wiki/Test_double
+> ↪️ 参考：https://en.wikipedia.org/wiki/Test_double
 
 <br>
 
@@ -182,7 +182,7 @@ PHPUnitにおけるモックについては、以下のリンクを参考にせ�
 | PHPUnit | メソッドは、```null```を返却する。                                                        | 注意点として、```final```、```private```なメソッドはモック化されず、実体をそのまま引き継ぐ。また、```static```なメソッドは```BadMethodCallException```をスローするモックに置き換わる。 |
 | JUnit   | メソッドは、元のオブジェクトのメソッドの返却値の型を基に、初期値を返却する<br>（例：boolean型なら```false```） |                                                                                                                                       |
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
 
 
 #### ▼ スタブ
@@ -205,7 +205,7 @@ PHPUnitにおけるスタブについては、以下のリンクを参考にせ�
 
 
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
 
 <br>
 
@@ -230,7 +230,7 @@ PHPUnitにおけるスタブについては、以下のリンクを参考にせ�
 
 言語やツールごとに網羅率を解析する方法が異なり、PHPのPHPUnitでは以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
 
 <br>
 
@@ -244,7 +244,7 @@ PHPUnitにおけるスタブについては、以下のリンクを参考にせ�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -264,7 +264,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -285,7 +285,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -317,7 +317,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -359,7 +359,7 @@ AとBは、『1』または『0』になり得るとする。
 | ```75```以上 | 変更によって誤修正が生じる。 | ```98```% |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://jp.mathworks.com/discovery/cyclomatic-complexity.html
 > - https://szk-takanori.hatenablog.com/entry/20111219/p1
@@ -380,7 +380,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
+> ↪️ 参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
 
 <br>
 
@@ -394,7 +394,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：https://softwareengineering.stackexchange.com/a/358792
+> ↪️ 参考：https://softwareengineering.stackexchange.com/a/358792
 
 <br>
 
@@ -418,7 +418,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
@@ -442,7 +442,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
@@ -472,7 +472,7 @@ AとBは、『1』または『0』になり得るとする。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
@@ -489,7 +489,7 @@ AとBは、『1』または『0』になり得るとする。
 調査中...
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
@@ -502,6 +502,6 @@ AとBは、『1』または『0』になり得るとする。
 
 調査中...
 
-> ℹ️ 参考：https://www.chalkboard.me/2020/08/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%86%E3%82%B9%E3%83%88%E6%96%B9%E6%B3%95%E3%81%AE%E8%AA%BF%E6%9F%BB/
+> ↪️ 参考：https://www.chalkboard.me/2020/08/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%86%E3%82%B9%E3%83%88%E6%96%B9%E6%B3%95%E3%81%AE%E8%AA%BF%E6%9F%BB/
 
 <br>

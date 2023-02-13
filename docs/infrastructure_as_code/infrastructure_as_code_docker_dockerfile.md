@@ -11,7 +11,7 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,7 +29,7 @@ $ apt-get install -y \
     docker-ce-cli
 ```
 
-> ℹ️ 参考：https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
+> ↪️ 参考：https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
 
 
 ```docker```プロセスをデーモンとして起動する。
@@ -41,7 +41,7 @@ $ apt-get install -y \
 $ systemctl start docker
 ```
 
-> ℹ️ 参考：https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
+> ↪️ 参考：https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
 
 
 <br>
@@ -84,7 +84,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#add
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#add
 
 #### ▼ COPYとの違い
 
@@ -122,7 +122,7 @@ RUN mkdir -p /usr/src/things \
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/zembutsu/items/a96b68277d699f79418d
 > - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles/44
@@ -204,7 +204,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#cmd
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#cmd
 
 #### ▼ 注意点
 
@@ -251,7 +251,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#copy
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#copy
 
 <br>
 
@@ -263,7 +263,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#entrypoint
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#entrypoint
 
 #### ▼ CMDとの違い
 
@@ -292,7 +292,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#env
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#env
 
 <br>
 
@@ -308,7 +308,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.docker.com/engine/reference/builder/#expose
 > - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
@@ -333,7 +333,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#from
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#from
 
 ```dockerfile
 FROM python:latest-slim
@@ -359,7 +359,7 @@ FROM python:latest-slim
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
+> ↪️ 参考：https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
 
 ```dockerfile
 FROM --platform=linux/amd64 python:latest-slim
@@ -377,7 +377,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#run
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#run
 
 <br>
 
@@ -389,7 +389,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.docker.com/engine/reference/builder/#volume
 > - https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d
@@ -406,6 +406,6 @@ FROM --platform=linux/amd64 python:latest-slim
 
 
 
-> ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#workdir
+> ↪️ 参考：https://docs.docker.com/engine/reference/builder/#workdir
 
 <br>

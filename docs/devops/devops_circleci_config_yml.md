@@ -11,7 +11,7 @@ description: config.yml@CircleCIの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -452,7 +452,7 @@ jobを実行する仮想環境を選択できる。
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_executor.png)
 
 
-> ℹ️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
 
 **＊実装例＊**
@@ -519,7 +519,7 @@ Workflow間のキャッシュの使い回しと同様にして、ビルドの完
 
 
 
-> ℹ️ 参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
+> ↪️ 参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
 
 ```yaml
 version: 2.1
@@ -601,7 +601,7 @@ Workflow間で使いまわせるキャッシュを作成する。
 
 
 
-> ℹ️ 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
 **＊実装例＊**
 
@@ -1057,7 +1057,7 @@ workflows:
 | steps        | 指定したディレクトリーに移動する。                                                                                          |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.engilaboo.com/circleci-working-directory/
 > - https://nju33.com/notes/circleci/articles
@@ -1076,7 +1076,7 @@ workflows:
 
 
 
-> ℹ️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
 
 ```yaml
 # 出力できない
@@ -1165,7 +1165,7 @@ jobs:
 
 
 
-> ℹ️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
 
 **＊実装例＊**
 
@@ -1198,7 +1198,7 @@ CircleCIでは```run```キーを実行する時に『```$BASH_ENV```』が```sou
 
 
 
-> ℹ️ 参考：https://github.com/circleci/circleci-docs/issues/1650
+> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
 ```yaml
 version: 2.1 
@@ -1365,7 +1365,7 @@ jobs:
 
 実行環境にmachineタイプを選択した場合、docker-composeがプリインストールされている。
 
-> ℹ️ 参考：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
 
 <br>
 
@@ -1387,7 +1387,7 @@ Docker Composeは、コンテナの作成の順番を制御できるものの、
 
 
 
-> ℹ️ 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
+> ↪️ 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
 
 **＊実装例＊**
 

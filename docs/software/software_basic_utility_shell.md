@@ -11,7 +11,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 
 
-> ℹ️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 ![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell.png)
 
@@ -59,7 +59,7 @@ $ ssh
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
@@ -70,7 +70,7 @@ $ ssh
 
 
 
-> ℹ️ 参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> ↪️ 参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
 ```bash
 # ハイフンオプション無し
@@ -98,7 +98,7 @@ $ bash -c foo.sh
 
 
 
-> ℹ️ 参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
+> ↪️ 参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
 
 ```bash
 $ echo $0
@@ -118,7 +118,7 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 
 
 
-> ℹ️ 参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
+> ↪️ 参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
 
 ```bash
 #!/bin/sh
@@ -136,7 +136,7 @@ echo $0 # foo.sh
 ![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
 
 
-> ℹ️ 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
+> ↪️ 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
 
 
 #### ▼ 設定ファイル
@@ -156,7 +156,7 @@ echo $0 # foo.sh
 | ```~/.bash_logout```ファイル  | ```~/.zlogout```ファイル  | ```exit```コマンド時                                          |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 > - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
@@ -185,7 +185,7 @@ $ echo $SHELL
 
 
 
-> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_variable_scope.png)
 
@@ -197,7 +197,7 @@ $ echo $SHELL
 
 
 
-> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -228,7 +228,7 @@ FOO=$(echo "foo")
 
 
 
-> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -272,7 +272,7 @@ $ apk add bash
 
 
 
-> ℹ️ 参考：https://en.wikipedia.org/wiki/Exit_status
+> ↪️ 参考：https://en.wikipedia.org/wiki/Exit_status
 
 <br>
 
@@ -291,7 +291,7 @@ $ apk add bash
 | ```255```     | 範囲外の終了ステータス                | ```exit```コマンドに0〜255以外の整数を渡している可能性がある。                                        | ```$ exit -1```                                     |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://tldp.org/LDP/abs/html/exitcodes.html
 > - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b

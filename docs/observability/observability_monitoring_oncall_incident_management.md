@@ -11,7 +11,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 
 
-> ℹ️ 参考：https://response.pagerduty.com/oncall/being_oncall/
+> ↪️ 参考：https://response.pagerduty.com/oncall/being_oncall/
 
 <br>
 
@@ -123,7 +123,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 
 
-> ℹ️ 参考：https://engineering.otobank.co.jp/entry/2016/09/20/181756
+> ↪️ 参考：https://engineering.otobank.co.jp/entry/2016/09/20/181756
 
 | ログステータス   | 説明                             | 重要度レベルへの変換例  |
 |-----------|--------------------------------|--------------------|
@@ -162,7 +162,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management
 > - https://response.pagerduty.com/before/what_is_an_incident/
@@ -183,7 +183,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 
 
-> ℹ️ 参考：https://smart-stage.jp/topics/itsm_keyword_relate/p3/
+> ↪️ 参考：https://smart-stage.jp/topics/itsm_keyword_relate/p3/
 
 **＊技術ツール例＊**
 
@@ -230,7 +230,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 | low               | いつかは解決する必要がある。              |
 | notification      | 解決する必要はない。                  |
 
-> ℹ️ 参考：https://response.pagerduty.com/oncall/alerting_principles/
+> ↪️ 参考：https://response.pagerduty.com/oncall/alerting_principles/
 
 <br>
 
@@ -307,7 +307,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://fastalert.jp/column/disaster-prevention/incident-command-system
+> ↪️ 参考：https://fastalert.jp/column/disaster-prevention/incident-command-system
 
 #### ▼ 指揮
 
@@ -369,7 +369,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://knowledge.sakura.ad.jp/11635/
+> ↪️ 参考：https://knowledge.sakura.ad.jp/11635/
 
 #### ▼ アラートの条件の調節
 
@@ -389,7 +389,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://pagerduty.digitalstacks.net/blog/suppress-your-data/
+> ↪️ 参考：https://pagerduty.digitalstacks.net/blog/suppress-your-data/
 
 #### ▼ 特定のシステムを無視
 
@@ -397,7 +397,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/13558
+> ↪️ 参考：https://thinkit.co.jp/article/13558
 
 #### ▼ インシデントの一時無効化
 
@@ -405,7 +405,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/13558
+> ↪️ 参考：https://thinkit.co.jp/article/13558
 
 #### ▼ エラーイベントの重要度レベルの調節
 
@@ -415,7 +415,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/13558
+> ↪️ 参考：https://thinkit.co.jp/article/13558
 
 
 #### ▼ インシデントのグループ化
@@ -424,7 +424,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://knowledge.sakura.ad.jp/11635/
+> ↪️ 参考：https://knowledge.sakura.ad.jp/11635/
 
 <br>
 
@@ -434,7 +434,7 @@ fields @timestamp, @message, @logStream
 
 #### ▼ MTxxメトリクスとは
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
@@ -443,10 +443,10 @@ fields @timestamp, @message, @logStream
 
 | メトリクス名                        |                                                                                                                               | 補足                                                                        |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                     | ℹ️ 参考：https://e-words.jp/w/MTTF.html                                      |
-| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                    | ℹ️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                     | ↪️ 参考：https://e-words.jp/w/MTTF.html                                      |
+| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                    | ↪️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 | MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                        |                                                                             |
-| MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | ℹ️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | ↪️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 
 #### ▼ 稼働率
 
@@ -456,7 +456,7 @@ fields @timestamp, @message, @logStream
 
 
 
-> ℹ️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
+> ↪️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
 
 ```mathematica
 (稼働率)
@@ -507,7 +507,7 @@ fields @timestamp, @message, @logStream
 | MTTE    | インシデントがオンコール担当にアラートされ、オンコール担当本人/アサインされたエンジニアがタスクとして着手するまで。 |   |
 | MTTF    | オンコール担当がタスクに着手してから、これを完了するまで。                                |   |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262
@@ -522,7 +522,7 @@ DRI Hops（インシデントの直接的に責任者）の値を使用して人
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
+> ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 ![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mttx-metrics_dash-board.png)
 
@@ -579,7 +579,7 @@ PagerDuty社が公開しているテンプレートがある。
 
 
 
-> ℹ️ 参考：https://response.pagerduty.com/after/post_mortem_template/
+> ↪️ 参考：https://response.pagerduty.com/after/post_mortem_template/
 
 ```markdown
 # ポストモーテム
@@ -624,7 +624,7 @@ PagerDuty社が公開しているテンプレートがある。
 
 #### ▼ その他の会社事例
 
-> ℹ️ 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
+> ↪️ 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
 
 | サービス   | リンク                                                                                                     |
 |--------|---------------------------------------------------------------------------------------------------------|

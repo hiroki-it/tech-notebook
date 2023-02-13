@@ -11,7 +11,7 @@ description: 安全性＠AWSの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -99,7 +99,7 @@ ALBからEC2にインバウンド通信をルーティングする場合、特�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
+> ↪️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
 
 | タイプ   | プロトコル | ポート       | 宛先                  | 説明        |
 |-------|-------|-----------|---------------------|-------------|

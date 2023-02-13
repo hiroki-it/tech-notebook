@@ -11,7 +11,7 @@ description: 設計ポリシー＠Helmの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -132,7 +132,7 @@ repository/
 
 
 
-> ℹ️ 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
+> ↪️ 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
 
 ```yaml
 repository/
@@ -226,7 +226,7 @@ service:
 ただし、同じKubernetesリソースのマニフェストを複数作成する場合は、識別できる名前をプレフィクスとしてつける。
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
+> ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/
 
 #### ▼ ロジック
 
@@ -253,7 +253,7 @@ data:
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
+> ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/
 
 #### ▼ アクションの選定
 
@@ -264,7 +264,7 @@ data:
 公式リポジトリの実装方法を見て学んだ方が早い。
 
 
-> ℹ️ 参考：https://github.com/istio/istio/tree/master/manifests/charts
+> ↪️ 参考：https://github.com/istio/istio/tree/master/manifests/charts
 
 
 
@@ -318,7 +318,7 @@ $ asdf install
 
 非カスタムリソース定義のみからなるチャートのアップグレードは以下の手順で行う。アップグレードが正常に完了したことがわかるように、```--wait```オプションを有効化すると良い。
 
-> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
+> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
 
 ```【１】```
 
@@ -346,7 +346,7 @@ Helmは、カスタムリソース定義を含むチャートのインストー�
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
+> ↪️ 参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
 
 ```【１】```
 
@@ -395,7 +395,7 @@ $ kubectl delete -f <旧バージョンのカスタムリソース定義のマ�
 
 ### 仕様書自動作成
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.html
 
 <br>
 
@@ -407,7 +407,7 @@ $ kubectl delete -f <旧バージョンのカスタムリソース定義のマ�
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | 文法の誤りテスト      | Helmの静的解析コマンド（```helm lint```コマンド）を使用して、機能追加/変更を含むチャートの文法の誤りを検証する。                                                                                              |                                                              |
 | ベストプラクティス違反テスト | 外部のベストプラクティス違反テストツール（例：調査中...）を使用して、チャートのベストプラクティス違反を検証する。                                                                                                          |                                                              |
-| 脆弱性テスト        | 外部の脆弱性テストツール（例：checkov）を使用して、チャートの実装方法に起因する脆弱性を検証する。補足として、チャートのインストールによるKubernetesリソースのセキュリティスキャン（例：trivy）は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。 | ℹ️ 参考：https://blog.aquasec.com/trivy-v0.29.0-rbac-security |
+| 脆弱性テスト        | 外部の脆弱性テストツール（例：checkov）を使用して、チャートの実装方法に起因する脆弱性を検証する。補足として、チャートのインストールによるKubernetesリソースのセキュリティスキャン（例：trivy）は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。 | ↪️ 参考：https://blog.aquasec.com/trivy-v0.29.0-rbac-security |
 
 #### ▼ ドライラン
 
@@ -419,7 +419,7 @@ $ kubectl delete -f <旧バージョンのカスタムリソース定義のマ�
 
 
 
-> ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> ↪️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 #### ▼ 単体テスト
 
@@ -433,7 +433,7 @@ Helmの単体テストコマンド（```helm test```コマンド）を使用し�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 > - https://camunda.com/blog/2022/03/test/
@@ -444,7 +444,7 @@ Helmの単体テストコマンド（```helm test```コマンド）を使用し�
 
 
 
-> ℹ️ 参考：https://camunda.com/blog/2022/03/test/
+> ↪️ 参考：https://camunda.com/blog/2022/03/test/
 
 
 <br>
@@ -481,7 +481,7 @@ foo-namespace, foo-deployment, Deployment (apps) has been added:
 
 GitOpsツールの差分を使用して、差分画面のURLを共有する。またはCDツールの通知能力（例：argocd-bot）を使用して、CDパイプラインの結果が通知されるようにする。
 
-> ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
+> ↪️ 参考：https://github.com/argoproj-labs/argocd-bot
 
 
 <br>
@@ -498,7 +498,7 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 > - https://camunda.com/blog/2022/03/test/
@@ -513,13 +513,13 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 
 
-> ℹ️ 参考：https://camunda.com/blog/2022/03/test/
+> ↪️ 参考：https://camunda.com/blog/2022/03/test/
 
 <br>
 
 ### デプロイ
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
 
 <br>
 
@@ -533,7 +533,7 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 #### ▼ Helm以外を使用する場合
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
 
 <br>
 
@@ -541,7 +541,7 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 ### デプロイの通知
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html
 
 <br>
 

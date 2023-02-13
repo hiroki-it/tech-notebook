@@ -11,7 +11,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
     
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,13 +23,13 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://en.wikipedia.org/wiki/Infrastructure_as_code
+> ↪️ 参考：https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 補足として、ここでいう『インフラ』は、ハードウェアと一部のソフトウェア（OS、ミドルウェア）を合わせたものである。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software.html
 
 <br>
 
@@ -111,7 +111,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
 > - https://techblog.locoguide.co.jp/entry/2021/05/24/145342
@@ -157,7 +157,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
 > - https://techblog.locoguide.co.jp/entry/2021/05/24/145342
@@ -195,7 +195,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 - Docker Swarm
 - Kubernetes
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/kounan13/items/57adfbf3a5f209afa586
 > - https://knowledge.sakura.ad.jp/9473/
@@ -230,7 +230,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://securesamba.com/term/%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0/
 > - https://www.redhat.com/ja/topics/automation/what-is-provisioning#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0
@@ -265,7 +265,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://www.vmware.com/topics/glossary/content/container-orchestration.html
+> ↪️ 参考：https://www.vmware.com/topics/glossary/content/container-orchestration.html
 
 <br>
 
@@ -294,7 +294,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 - Kubernetes
 
 
-> ℹ️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
+> ↪️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
 
 <br>
@@ -315,7 +315,7 @@ FluentBitコンテナをサイドカーコンテナとして稼働させ、ア�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit.html
 
 #### ▼ メトリクス収集コンテナの配置
 
@@ -323,7 +323,7 @@ datadogコンテナをサイドカーコンテナとして稼働させ、アプ�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 
@@ -339,7 +339,7 @@ datadogコンテナをサイドカーコンテナとして稼働させ、アプ�
 
 
 
-> ℹ️ 参考：https://logmi.jp/tech/articles/321841
+> ↪️ 参考：https://logmi.jp/tech/articles/321841
 
 <br>
 

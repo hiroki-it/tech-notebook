@@ -11,7 +11,7 @@ description: 可用性＠AWSの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -45,7 +45,7 @@ RPOは最後のバックアップ時点である。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/
@@ -71,7 +71,7 @@ RPOは最後の同期時点である。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/
@@ -96,7 +96,7 @@ RPOは最後の同期時点である。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/
@@ -119,7 +119,7 @@ RPOは最後の同期時点である。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/

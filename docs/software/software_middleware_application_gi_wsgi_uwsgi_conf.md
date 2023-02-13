@@ -11,7 +11,7 @@ description: 設定ファイル＠uWSGIの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -39,7 +39,7 @@ uWSGIの起動時の値を設定する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 > - https://qiita.com/11ohina017/items/da2ae5b039257752e558
@@ -118,7 +118,7 @@ uWSGIの```uwsgi```プロセスのプールを設定する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://laplace-daemon.com/nginx-uwsgi-flask/
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
@@ -136,7 +136,7 @@ callable = app
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
 
 ```ini
 [uwsgi]
@@ -151,7 +151,7 @@ UNIXドメインソケットファイルの権限を設定する。
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
 
 ```ini
 [uwsgi]
@@ -162,7 +162,7 @@ chmod-socket = 666
 
 ### die-on-term
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
 
 ```ini
 [uwsgi]
@@ -179,7 +179,7 @@ Pythonアプリケーションをフレームワークで開発している場�
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
 
 ```ini
 [uwsgi]
@@ -194,7 +194,7 @@ http = 0.0.0.0:5000
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
 
 ```ini
 [uwsgi]
@@ -209,7 +209,7 @@ logto = /dev/stdout
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
 
 ```ini
 [uwsgi]
@@ -224,7 +224,7 @@ Pythonでアプリケーションファクトリーパターンを採用して�
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
 
 ```ini
 [uwsgi]
@@ -235,7 +235,7 @@ module = src:create_app()
 
 ### processes
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
 
 ```ini
 [uwsgi]
@@ -246,7 +246,7 @@ processes = 1
 
 ### py-autoreload
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
 
 ```ini
 [uwsgi]
@@ -261,7 +261,7 @@ py-autoreload = 1
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
 
 ```ini
 [uwsgi]
@@ -278,7 +278,7 @@ Pythonアプリケーションをフレームワークで開発している場�
 
 
 
-> ℹ️ 参考： 
+> ↪️ 参考： 
 
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
 > - https://qiita.com/koyoru1214/items/57461b920dfc11f67683
@@ -296,7 +296,7 @@ uwsgiプロセス終了時にソケットファイルを削除するか否かを
 
 
 
-> ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
 
 ```ini
 [uwsgi]
@@ -314,7 +314,7 @@ vacuum = true
 wsgi-file = main.py
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
 > - https://django.kurodigi.com/uwsgi-basic/

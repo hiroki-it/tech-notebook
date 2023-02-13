@@ -11,7 +11,7 @@ description: ansible.cfg＠Ansibleの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ Ansible自体を設定する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - http://yamada.daiji.ro/blog/?p=618
 > - https://docs.ansible.com/ansible/2.9_ja/reference_appendices/general_precedence.html#id2
@@ -44,7 +44,7 @@ inventoryファイルの場所を指定する
 hostfile = /etc/ansible/inventories
 ```
 
-> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> ↪️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 
 <br>
@@ -63,7 +63,7 @@ hostfile = /etc/ansible/inventories
 remote_user = ansible
 ```
 
-> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> ↪️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 
 <br>
@@ -80,7 +80,7 @@ remote_user = ansible
 private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 ```
 
-> ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> ↪️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 
 <br>
@@ -97,7 +97,7 @@ host_key_checking = False
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking
 > - https://tekunabe.hatenablog.jp/entry/2021/01/17/ansible_stumble_26
@@ -118,7 +118,7 @@ host_key_checking = False
 host_pattern_mismatch = error
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-pattern-mismatch
 > - https://zenn.dev/akira6592/scraps/24a748660fdea4

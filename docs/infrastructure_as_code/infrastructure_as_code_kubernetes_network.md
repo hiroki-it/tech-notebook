@@ -11,7 +11,7 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -30,7 +30,7 @@ Nodeネットワークの作成は、Kubernetesの実行環境のネットワー
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
+> ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
 <br>
 
@@ -46,7 +46,7 @@ Serviceネットワークの作成は、Kubernetesが担う。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=39
@@ -68,7 +68,7 @@ Clusterネットワークの作成は、cniアドオンが担う。
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
+> ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 
 <br>
 
@@ -82,7 +82,7 @@ Podごとにネットワークインターフェースが付与され、またIP
 
 
 
-> ℹ️ 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+> ↪️ 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
 #### ▼ 通信方法
 
@@ -113,7 +113,7 @@ Pod内のコンテナから宛先のPodにアウトバウンド通信を送信�
 | Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
 | Nodeが同じ場合  | Clusterネットワーク + Serviceネットワーク              |
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
+> ↪️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 
 <br>
@@ -164,7 +164,7 @@ Pod内のコンテナは、これを使用し、Serviceを介してPodにアウ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A 
@@ -198,7 +198,7 @@ Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルで権威D
 
 レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにアウトバウンド通信を送信する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://amateur-engineer-blog.com/kubernetes-dns/
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/

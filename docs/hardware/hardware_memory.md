@@ -11,7 +11,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -37,7 +37,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ Mask ROMとは
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-1.png)
 
@@ -47,7 +47,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ Programmable ROMとは
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-2.png)
 
@@ -157,7 +157,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 ### 実効アクセス時間
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p171-1.png)
 
@@ -207,7 +207,7 @@ GPUとVRAMのサイズによって、扱うことのできる解像度と色数�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p204.jpg)
 

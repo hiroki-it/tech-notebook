@@ -11,7 +11,7 @@ description: ポート＠ネットワークの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,7 +29,7 @@ description: ポート＠ネットワークの知見を記録しています。
 - USBポート
 - LANポート
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - http://faq3.dospara.co.jp/faq/show/3708?site_domain=default
 > - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
@@ -42,7 +42,7 @@ description: ポート＠ネットワークの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
 > - https://ascii.jp/elem/000/000/434/434183/2/
@@ -87,7 +87,7 @@ IANA：Internet Assigned Numbers Authority（インターネット割当番号�
 | ...                         | ...                |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
 > - https://abhp.net/it/IT_Port_No_100000.html
@@ -106,7 +106,7 @@ IANAが登録申請を受けて公開しているポート番号。
 | 企業が共有している | HTTP/1、HTTP/2（RPCなどで使用する） | ```8080```   |
 | ...           | ...                         | ...          |
 
-> ℹ️ 参考：https://abhp.net/it/IT_Port_No_100000.html
+> ↪️ 参考：https://abhp.net/it/IT_Port_No_100000.html
 
 
 #### ▼ 動的/非公式ポート番号（```49152```～```65535```）
@@ -117,7 +117,7 @@ IANAが登録申請を受けて公開しているポート番号。
 
 
 
-> ℹ️ 参考：https://abhp.net/it/IT_Port_No_100000.html
+> ↪️ 参考：https://abhp.net/it/IT_Port_No_100000.html
 
 
 <br>

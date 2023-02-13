@@ -11,7 +11,7 @@ description: ネットワークの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -39,7 +39,7 @@ LAN内に設置されたNATルーターが、WAN内のグローバルIPアドレ
 
 ![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_lan.jpeg)
 
-> ℹ️ 参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
+> ↪️ 参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
 
 
 <br>
@@ -55,7 +55,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 ![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.techtarget.com/searchsecurity/definition/DMZ
 > - https://www.ntt.com/business/services/network/internet-connect/ocn-business/bocn/knowledge/archive_09.html
@@ -81,7 +81,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 ## 02-02. ルーター
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_router.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_router.html
 
 <br>
 
@@ -99,7 +99,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 | フォワードプロキシサーバー | 特定のクライアントのアウトバウンド通信を、不特定多数のサーバーに代理でルーティングする。                          |
 | リバースプロキシサーバー  | 不特定のクライアントからのインバウンド通信を、特定のサーバーに代理でルーティングする。また、ロードバランサーのように負荷分散もできる。 |
 
-> ℹ️ 参考：https://qiita.com/att55/items/162950627dc593c72f23
+> ↪️ 参考：https://qiita.com/att55/items/162950627dc593c72f23
 
 
 #### ▼ キャッシュ
@@ -112,7 +112,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 | フォワードプロキシサーバー | クライアント側にて、代理ルーティングのレスポンスのキャッシュを作成する。 |
 | リバースプロキシサーバー  | サーバー側にて、代理ルーティングのレスポンスのキャッシュを作成する。   |
 
-> ℹ️ 参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.htm
+> ↪️ 参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.htm
 
 <br>
 
@@ -128,7 +128,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 - ポート番号
 - HTTPリクエスト（パス、```Host```ヘッダー）
 
-> ℹ️ 参考：https://www.infraexpert.com/study/tcpip8.html
+> ↪️ 参考：https://www.infraexpert.com/study/tcpip8.html
 
 <br>
 
@@ -142,7 +142,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 - IPアドレス
 - ポート番号
 
-> ℹ️ 参考：https://www.infraexpert.com/study/tcpip8.html
+> ↪️ 参考：https://www.infraexpert.com/study/tcpip8.html
 
 
 <br>
@@ -183,7 +183,7 @@ WAN内では、各LANはグローバルIPアドレスで識別されている。
 
 その一方で、通信の利用者が限られているため、サイバー攻撃の脆弱性が低い。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/hymnofpeace/items/7f09a7a10e843552a8cb
 > - https://xtech.nikkei.com/it/article/COLUMN/20080715/310872/
@@ -200,7 +200,7 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 
 
 
-> ℹ️ 参考：http://makiyamashinji.web.fc2.com/emprus/design/wan.html
+> ↪️ 参考：http://makiyamashinji.web.fc2.com/emprus/design/wan.html
 
 #### ▼ 回線交換方式
 
@@ -213,7 +213,7 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 ![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_circuit-switching-system.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 > - https://www.infraexpert.com/study/wan3.html
@@ -230,7 +230,7 @@ WANを介したプライベートな通信で、パケット化されたデー�
 ![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_packet-switching-system.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 > - https://www.infraexpert.com/study/wan3.html
@@ -275,7 +275,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/B0043D2EKO/
 > - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
@@ -292,7 +292,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/B0043D2EKO/
 > - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
@@ -376,7 +376,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 ![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィック.png)
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
 
 
 総務省のデータで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。
@@ -384,7 +384,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 ![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィックのグラフ.png)
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
+> ↪️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
 
 
 <br>

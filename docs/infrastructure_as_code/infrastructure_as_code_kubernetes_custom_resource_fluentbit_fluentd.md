@@ -11,7 +11,7 @@ description: FluentBit/Fluentd＠カスタムリソースの知見を記録し�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -39,7 +39,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
 > - https://zenn.dev/taisho6339/articles/eff38b47cbdbcb#(2)-%E3%83%90%E3%83%83%E3%83%95%E3%82%A1%E3%81%95%E3%82%8C%E3%81%9F%E6%9C%AA%E9%80%81%E4%BF%A1%E3%81%AE%E3%83%AD%E3%82%B0%E3%81%AE%E6%90%8D%E5%A4%B1%E3%82%92%E9%98%B2%E3%81%90
@@ -54,7 +54,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 ![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
 
-> ℹ️ 参考：https://www.alpha.co.jp/blog/202103_01
+> ↪️ 参考：https://www.alpha.co.jp/blog/202103_01
 
 
 <br>
@@ -70,7 +70,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 ![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_message-queue.png)
 
 
-> ℹ️ 参考：https://www.forcia.com/blog/001316.html
+> ↪️ 参考：https://www.forcia.com/blog/001316.html
 
 
 <br>
@@ -102,7 +102,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 ![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
@@ -119,7 +119,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 ![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_agent-pattern.png)
 
 
-> ℹ️ 参考：https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
+> ↪️ 参考：https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 
 
 <br>

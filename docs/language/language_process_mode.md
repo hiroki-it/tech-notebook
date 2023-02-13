@@ -11,7 +11,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 
 
-> ℹ️ 参考：https://en.wikipedia.org/wiki/Entry_point
+> ↪️ 参考：https://en.wikipedia.org/wiki/Entry_point
 
 <br>
 
@@ -107,7 +107,7 @@ func main() {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 > - https://moz.hatenablog.jp/entry/2018/04/10/175643
@@ -129,7 +129,7 @@ func main() {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 > - https://moz.hatenablog.jp/entry/2018/04/10/175643
@@ -144,7 +144,7 @@ parallelパッケージを使用する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/krakjoe/parallel
 > - https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405
@@ -155,7 +155,7 @@ parallelパッケージを使用する。
 
 
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
 
 #### ▼ Goの場合
 
@@ -167,7 +167,7 @@ Goroutinesを使用する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://medium.com/sprocket-inc/goroutine-concurrent-and-parallel-programming-669eaae55e73
 > - https://golang.org/doc/effective_go#concurrency
@@ -193,7 +193,7 @@ Goroutinesを使用する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/kiyodori/items/da434d169755cbb20447
 > - https://qiita.com/klme_u6/items/ea155f82cbe44d6f5d88
@@ -214,7 +214,7 @@ Goroutinesを使用する。
 
 #### ▼ JavaScriptの場合
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_logic_asynchronous_process.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_logic_asynchronous_process.html
 
 #### ▼ Node.jsの場合
 
@@ -224,7 +224,7 @@ JavaScriptと同じような記法で実装できるNode.jsについて、Node.j
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://engineer.recruit-lifestyle.co.jp/techblog/2019-12-13-node-async-io/
 > - https://blog.honjala.net/entry/2018/08/08/022027

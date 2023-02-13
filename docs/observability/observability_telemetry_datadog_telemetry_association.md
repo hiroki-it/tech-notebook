@@ -11,7 +11,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,7 +29,7 @@ description: テレメトリー間の紐付け＠Datadog
 | ```version``` | メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。                                      |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.datadoghq.com/getting_started/tagging/
 > - https://www.datadoghq.com/ja/blog/tagging-best-practices/
@@ -43,13 +43,13 @@ description: テレメトリー間の紐付け＠Datadog
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes
+> ↪️ 参考：https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes
 
 <br>
 
 ### 各コンソール画面での使い方
 
-> ℹ️ 参考：https://docs.datadoghq.com/getting_started/tagging/using_tags/
+> ↪️ 参考：https://docs.datadoghq.com/getting_started/tagging/using_tags/
 
 <br>
 
@@ -118,7 +118,7 @@ service名はインテグレーション名が自動的に割り当てられる�
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup/php/#%E3%82%A4%E3%83%B3%E3%83%86%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%90%8D
+> ↪️ 参考：https://docs.datadoghq.com/tracing/setup/php/#%E3%82%A4%E3%83%B3%E3%83%86%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%90%8D
 
 #### ▼ env
 
@@ -246,7 +246,7 @@ FluentBitの設定ファイルからタグ付けする。
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/connect_logs_and_traces/
+> ↪️ 参考：https://docs.datadoghq.com/tracing/connect_logs_and_traces/
 
 <br>
 
@@ -259,7 +259,7 @@ FluentBitの設定ファイルからタグ付けする。
 ![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_trace-viewer.png)
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
+> ↪️ 参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
 
 
 <br>

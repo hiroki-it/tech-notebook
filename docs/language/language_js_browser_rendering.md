@@ -11,7 +11,7 @@ description: ブラウザレンダリングの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -420,7 +420,7 @@ DOMのインターフェースについては、以下のリンクを参考に�
 
 
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
 ![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dom-tree.png)
 
@@ -447,7 +447,7 @@ DOMのインターフェースについては、以下のリンクを参考に�
 
 ![DOMによるツリー構造化](https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png)
 
-> ℹ️ 参考：https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
+> ↪️ 参考：https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
 
 <br>
 
@@ -491,7 +491,7 @@ JavaScriptエンジンは、コードを、字句解析、構造解析、意味�
 
 
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/Events
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/Events
 
 #### ▼ イベントハンドラ関数とは
 
@@ -688,7 +688,7 @@ Chromeの場合は、CacheStorageに保持される。
 
 ![ブラウザのキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ブラウザのキャッシュ.png)
 
-> ℹ️ 参考：https://developer.chrome.com/docs/devtools/storage/cache/
+> ↪️ 参考：https://developer.chrome.com/docs/devtools/storage/cache/
 
 
 #### ▼ リバースプロキシサーバーにおけるキャッシュ
@@ -709,7 +709,7 @@ Laravelのキャッシュ機能については、以下のリンクを参考に�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/cache.html
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/cache.html
 
 <br>
 

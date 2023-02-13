@@ -11,7 +11,7 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -33,7 +33,7 @@ $ kubectl create namespace kyverno
 $ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
 ```
 
-> ℹ️ 参考：https://kyverno.github.io/kyverno/
+> ↪️ 参考：https://kyverno.github.io/kyverno/
 
 
 
@@ -60,7 +60,7 @@ spec:
   validationFailureAction: enforce
 ```
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/validate/#validation-failure-action
+> ↪️ 参考：https://kyverno.io/docs/writing-policies/validate/#validation-failure-action
 
 
 <br>
@@ -85,7 +85,7 @@ spec:
   background: false
 ```
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/background/
+> ↪️ 参考：https://kyverno.io/docs/writing-policies/background/
 
 
 <br>
@@ -129,7 +129,7 @@ spec:
                 imagePullPolicy: "IfNotPresent"
 ```
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/mutate/
+> ↪️ 参考：https://kyverno.io/docs/writing-policies/mutate/
 
 
 #### ▼ Validateルールの場合
@@ -171,7 +171,7 @@ spec:
                     cpu: "?*"
 ```
 
-> ℹ️ 参考：https://kyverno.io/docs/writing-policies/validate/#basic-validations
+> ↪️ 参考：https://kyverno.io/docs/writing-policies/validate/#basic-validations
 
 
 <br>

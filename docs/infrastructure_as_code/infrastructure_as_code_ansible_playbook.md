@@ -11,7 +11,7 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -84,7 +84,7 @@ repository/
 ...
 ```
 
-> ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
+> ↪️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
 
 
 ## 01-02. playbookファイルの切り分け
@@ -101,7 +101,7 @@ repository/
 
 
 
-> ℹ️ 参考：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
+> ↪️ 参考：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
 
 #### ▼ handlersディレクトリ
 
@@ -218,7 +218,7 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 
 
 
-> ℹ️ 参考：https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
+> ↪️ 参考：https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
 
 #### ▼ group_varファイル
 
@@ -242,7 +242,7 @@ ports:
 
 ポート番号のリストを```playbook```ファイルで出力する
 
-> ℹ️ 参考：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
+> ↪️ 参考：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
 
 ```yaml
 ...
@@ -286,7 +286,7 @@ ports:
 
 Ansibleの実行時に、```-i```オプションでディレクトリを指定する。
 
-> ℹ️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
+> ↪️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
@@ -304,7 +304,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat
 > - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
@@ -489,7 +489,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 必須である。
 
-> ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> ↪️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -562,7 +562,7 @@ root以外であれば、```become_user```キーを設定する。
 
 
 
-> ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> ↪️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -576,7 +576,7 @@ root以外であれば、```become_user```キーを設定する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
 > - https://qiita.com/tkit/items/7ad3e93070e97033f604
@@ -608,7 +608,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook
+> ↪️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook
 
 **＊実装例＊**
 
@@ -632,7 +632,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro
+> ↪️ 参考：https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro
 
 **＊実装例＊**
 
@@ -683,7 +683,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url
+> ↪️ 参考：https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url
 
 ```yaml
 - name: Download tool
@@ -703,7 +703,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：https://docs.ansible.com/ansible/2.9/modules/service_module.html
+> ↪️ 参考：https://docs.ansible.com/ansible/2.9/modules/service_module.html
 
 **＊実装例＊**
 
@@ -724,7 +724,7 @@ SELinuxを無効化する。
 
 管理対象ノードでシェルを実行する。複数行に渡る場合は、『```|```』を使用する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
 > - https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
@@ -759,7 +759,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
+> ↪️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
 
 **＊実装例＊**
 
@@ -799,7 +799,7 @@ SELinuxを無効化する。
 | ```started```   | 最終的な状態として停止しているように、ユニットを起動する。            |
 | ```stopped```   | 最終的な状態として停止しているさうに、ユニットを停止する。            |
 
-> ℹ️ 参考：https://dekitakotono.blogspot.com/2019/05/systemd.html
+> ↪️ 参考：https://dekitakotono.blogspot.com/2019/05/systemd.html
 
 
 <br>
@@ -831,7 +831,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
+> ↪️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
 
 **＊実装例＊**
 
@@ -861,7 +861,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
+> ↪️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
 
 ```yaml
 - name: add user
@@ -882,7 +882,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
 > - https://qiita.com/tkit/items/7ad3e93070e97033f604
@@ -917,7 +917,7 @@ SELinuxを無効化する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 > - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
@@ -949,7 +949,7 @@ task内で出力できる環境変数を設定する。
 
 
 
-> ℹ️ 参考：https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
+> ↪️ 参考：https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
 
 **＊実装例＊**
 
@@ -974,7 +974,7 @@ task内で出力できる環境変数を設定する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.katsubemakito.net/ansible/ansible-1st-4
 > - https://ksaito11.hatenablog.com/entry/2018/10/24/232929
@@ -1008,7 +1008,7 @@ task内で出力できる環境変数を設定する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 > - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env

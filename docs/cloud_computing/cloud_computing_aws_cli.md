@@ -11,7 +11,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -37,7 +37,7 @@ $ aws configure
 
 
 
-> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
+> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
 
 ```bash
 $ aws configure --profile <プロファイル名>
@@ -130,7 +130,7 @@ aws_access_key_id = *****
 ```
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 
 #### ▼ aws_secret_access_key
@@ -148,7 +148,7 @@ aws_secret_access_key = *****
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ aws_session_token
 
@@ -164,7 +164,7 @@ aws_session_token = *****
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 
 <br>
@@ -184,7 +184,7 @@ output = json
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ region
 
@@ -198,7 +198,7 @@ region = ap-northeast-1
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 
 #### ▼ role_arn
@@ -214,7 +214,7 @@ role_arn = arn:aws:iam::<アカウントID>:role/foo-role
 ```
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ role_session_name
 
@@ -229,7 +229,7 @@ role_session_name = hiroki.hasegawa
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ source_profile
 
@@ -244,7 +244,7 @@ source_profile = default
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 <br>
 
@@ -272,7 +272,7 @@ $ export AWS_DEFAULT_PROFILE=default
 ```
 
 
-> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 
 #### ▼ AWS_DEFAULT_REGION
@@ -298,7 +298,7 @@ $ export AWS_PROFILE=foo-profile
 ```
 
 
-> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 #### ▼ AWS_SECRET_ACCESS_KEY
 
@@ -333,7 +333,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
 
 #### ▼ json
 
@@ -377,7 +377,7 @@ $ aws iam list-users --output text > data.tsv
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
 
 #### ▼ --max-items
 
@@ -423,7 +423,7 @@ AWSリソースごとに専用のオプションがある。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
 #### ▼ --filter
 
@@ -484,7 +484,7 @@ $ aws ec2 describe-instances \
 ```
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
 
 <br>
 
@@ -544,7 +544,7 @@ $ aws cloudwatch get-metric-statistics \
       | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
 
 <br>
@@ -594,7 +594,7 @@ $ aws resourcegroupstaggingapi get-resources \
 
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
+> ↪️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
 AWSリソースの種類（ec2、alb、など）を指定して、特定のAWSリソースのみを取得することもできる。
 
@@ -752,7 +752,7 @@ $ aws secretsmanager get-secret-value \
     --output=text
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
 
 
 <br>
@@ -819,7 +819,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
  }
 ```
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
+> ↪️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
 
 
 <br>
@@ -838,7 +838,7 @@ AWSにSSOでログインする。
 
 
 
-> ℹ️ 参考：https://github.com/Versent/saml2aws
+> ↪️ 参考：https://github.com/Versent/saml2aws
 
 ```bash
 $ saml2aws login

@@ -11,7 +11,7 @@ description: アドオン＠Kubernetesネットワークの知見を記録して
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=30
 > - https://kubernetes.io/docs/concepts/cluster-administration/networking/
@@ -50,7 +50,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
@@ -61,7 +61,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 #### ▼ アドオン例
 
-> ℹ️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+> ↪️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 
 - calico-ipip（Kubeadmで推奨）
 - flannel-vxlan
@@ -77,7 +77,7 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 
 
-> ℹ️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
+> ↪️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
 
 #### ▼ 同一Node上のPod間通信
 
@@ -87,7 +87,7 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 
 
-> ℹ️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
+> ↪️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
 
 <br>
 
@@ -99,14 +99,14 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 
 #### ▼ アドオン例
 
-> ℹ️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+> ↪️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 
 - calico-bgp（Kubeadmで推奨）
 - flannel-hostgw
@@ -122,7 +122,7 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 
 
-> ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
+> ↪️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
 
 #### ▼ アドオン例
 
@@ -147,7 +147,7 @@ Nodeのインスタンスタイプごとに、紐づけられるENI数に制限�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
@@ -167,7 +167,7 @@ Nodeのインスタンスタイプごとに、紐づけられるENI数に制限�
 
 CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
-> ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+> ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_coredns.png)
 
@@ -182,7 +182,7 @@ CoreDNSはNode内にPodとして稼働しており、これはCoreDNSのService�
 
 
 
-> ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 ```bash
 $ kubectl get service -n kube-system
@@ -217,7 +217,7 @@ ConfigMapに```Corefile```ファイルを配置する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
+> ↪️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
 
 **＊実装例＊**
 
@@ -296,7 +296,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
@@ -320,7 +320,7 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 対応する完全修飾ドメイン名は、『```<Service名>.<Namespace名>.svc.cluster.local```』である。通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。『```svc.cluster.local```』は省略でき、『```<Service名>.<Namespace名>```』のみを指定しても名前解決できる。また、同じNamespace内でパケットを送受信する場合は、さらに『```<Namespace名>```』も省略でき、『```<Service名>```』のみで名前解決できる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://ameblo.jp/bakery-diary/entry-12613605860.html
@@ -331,7 +331,7 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 対応する完全修飾ドメイン名は、『```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local```』である。Serviceの```.spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
@@ -373,7 +373,7 @@ Address:  10.105.157.184
 [root@<Pod名>:~] $ nslookup <Serviceの完全修飾ドメイン名>
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
@@ -414,7 +414,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 10.101.67.107
 ```
 
-> ℹ️ 参考：https://zenn.dev/tayusa/articles/c705cd65b6ee74
+> ↪️ 参考：https://zenn.dev/tayusa/articles/c705cd65b6ee74
 
 <br>
 
@@ -478,7 +478,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 対応する完全修飾ドメイン名は、『```<PodのIPアドレス>.<Namespace名>.pod.cluster.local```』である。
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
+> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
 
 
 <br>
@@ -487,7 +487,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction

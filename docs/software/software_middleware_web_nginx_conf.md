@@ -11,7 +11,7 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 nginxを```apt-get```コマンドでインストールすると、旧バージョンが指定されるため、```apt```コマンドを使用する。
 
-> ℹ️ 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+> ↪️ 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
 ```bash
 $ apt install nginx
@@ -111,7 +111,7 @@ Debian10の設定ファイルを以下に示す。
 
 
 
-> ℹ️ 参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
+> ↪️ 参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
 
 **＊実装例＊**
 
@@ -153,7 +153,7 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 #### ▼ events
 
-> ℹ️ 参考：https://nginx.org/en/docs/ngx_core_module.html#events
+> ↪️ 参考：https://nginx.org/en/docs/ngx_core_module.html#events
 
 **＊実装例＊**
 
@@ -209,7 +209,7 @@ workerプロセスが同時に処理できるコネクションの最大数を�
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/ngx_core_module.html#worker_connections
+> ↪️ 参考：https://nginx.org/en/docs/ngx_core_module.html#worker_connections
 
 ```nginx
 worker_connections  1024;
@@ -239,7 +239,7 @@ worker_rlimit_nofile  8192;
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 
 ```nginx
 http {
@@ -275,7 +275,7 @@ http {
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#location
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 
 **＊実装例＊**
 
@@ -329,7 +329,7 @@ location / {
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
 
 **＊実装例＊**
 
@@ -360,7 +360,7 @@ server {
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 <br>
 
@@ -370,7 +370,7 @@ server {
 
 ```Content-Type```ヘッダーの値が```mime.types```ファイルにないMIME typeであった場合に適用するMIME typeを設定する。
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
 
 **＊実装例＊**
 
@@ -388,7 +388,7 @@ default_type application/octet-stream
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
 **＊実装例＊**
 
@@ -418,7 +418,7 @@ listen 443 ssl;
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
 
 **＊実装例＊**
 
@@ -434,7 +434,7 @@ sendfile on;
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 
 ```nginx
 server_name example.com;
@@ -464,7 +464,7 @@ HTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効に�
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
 **＊実装例＊**
 
@@ -540,7 +540,7 @@ tcp_nopush on;
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
 
 ```nginx
 location / {
@@ -642,7 +642,7 @@ server {
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_index_module.html
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_index_module.html
 
 **＊実装例＊**
 
@@ -662,7 +662,7 @@ index index.php;
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
 
 **＊実装例＊**
 
@@ -685,7 +685,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
 
 **＊実装例＊**
 
@@ -708,7 +708,7 @@ FastCGIプロトコルでインバウンド通信をルーティングする場�
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
 
 **＊実装例＊**
 
@@ -722,7 +722,7 @@ FastCGIプロトコルでインバウンド通信をルーティングする場�
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
 **＊実装例＊**
 
@@ -742,7 +742,7 @@ HTTPプロトコルでインバウンド通信をルーティングする場合�
 
 
 
-> ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 
 **＊実装例＊**
 

@@ -11,7 +11,7 @@ description: コマンド@PHPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -104,7 +104,7 @@ zlib
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
+> ↪️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
 
 ```bash
 $ php -r 'print_r(get_loaded_extensions());'
@@ -131,7 +131,7 @@ Array
 
 
 
-> ℹ️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
+> ↪️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
 **＊例＊**
 

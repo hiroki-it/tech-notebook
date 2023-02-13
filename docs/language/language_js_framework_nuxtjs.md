@@ -11,7 +11,7 @@ description: Nuxt.jsの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: Nuxt.jsの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 #### ▼ ```dev```
 
@@ -35,7 +35,7 @@ Webpackは使用されないため、静的ファイルの圧縮や画像ファ�
 
 
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 ```bash
 # リファレンスでは nuxt devとなっているが、yarn devで問題ない。
@@ -46,7 +46,7 @@ $ yarn dev
 
 
 
-> ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> ↪️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 #### ▼ ```build```
 
@@ -62,7 +62,7 @@ minifyにより、不要な改行やインデントが削除され、パッケ�
 
 
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 ```bash
 # リファレンスでは nuxt buildとなっているが、yarn buildで問題ない。
@@ -77,7 +77,7 @@ SSRモードのために使用する。
 
 
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 ```bash
 # リファレンスでは nuxt startとなっているが、yarn startで問題ない。
@@ -88,7 +88,7 @@ $ yarn start
 
 
 
-> ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> ↪️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 <br>
 
@@ -100,7 +100,7 @@ $ yarn start
 
 
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
 
 #### ▼ ```dev```
 
@@ -114,7 +114,7 @@ Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイ
 
 
 
-> ℹ️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
+> ↪️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 ```bash
 # リファレンスでは nuxt devとなっているが、yarn devで問題ない。
@@ -125,7 +125,7 @@ $ yarn dev
 
 
 
-> ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> ↪️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 #### ▼ ```generate```
 
@@ -141,7 +141,7 @@ SSGモードのために使用する。
 
 
 
-> ℹ️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
+> ↪️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 ```bash
 # リファレンスでは nuxt generateとなっているが、yarn generateで問題ない。
@@ -163,7 +163,7 @@ $ yarn start
 
 
 
-> ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> ↪️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 <br>
 
@@ -173,7 +173,7 @@ SSRモードとSSGモードで、```build```コマンド時に使用されるWeb
 
 `
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
 <br>
 
@@ -210,7 +210,7 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
 
 
 <br>
@@ -262,7 +262,7 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-> ℹ️ 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
+> ↪️ 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
 
 
 <br>
@@ -291,7 +291,7 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-> ℹ️ 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
+> ↪️ 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
 
 
 #### ▼ privateRuntimeConfig
@@ -310,7 +310,7 @@ const nuxtConfig: Configuration = {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
@@ -358,7 +358,7 @@ export function foo() {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
@@ -401,7 +401,7 @@ CIツールでログが確認できなくなるため、無効化しておいた
 
 
 
-> ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -420,7 +420,7 @@ const nuxtConfig: Configuration = {
 
 
 
-> ℹ️ 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
+> ↪️ 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -444,7 +444,7 @@ SSG/SSRモードの```yarn dev```（開発用コマンド）、またSSRモー�
 
 
 
-> ℹ️ 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
+> ↪️ 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -469,19 +469,19 @@ SSGモードの```generate```コマンドの実行時に、アーティファク
 
 
 
-> ℹ️ 参考：https://nuxtjs.org/ja/docs/directory-structure/dist
+> ↪️ 参考：https://nuxtjs.org/ja/docs/directory-structure/dist
 
 <br>
 
 ### ```module```ディレクトリ
 
-> ℹ️ 参考：https://nuxtjs.org/docs/directory-structure/modules
+> ↪️ 参考：https://nuxtjs.org/docs/directory-structure/modules
 
 <br>
 
 ### ```plugin```ディレクトリ
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://nuxtjs.org/docs/directory-structure/plugins/
 > - https://github.com/nuxt/nuxt.js/issues/2820

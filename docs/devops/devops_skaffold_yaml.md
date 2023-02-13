@@ -11,7 +11,7 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -44,7 +44,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 ![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline_tools.png)
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
+> ↪️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
 
 
 <br>
@@ -57,7 +57,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/builders/
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/builders/
 
 <br>
 
@@ -79,7 +79,7 @@ build:
     - image: bar-web
 ```
 
-> ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
+> ↪️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
 
 
 #### ▼ context
@@ -102,7 +102,7 @@ build:
       context: ./src/bar    
 ```
 
-> ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
+> ↪️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
 
 
 <br>
@@ -163,7 +163,7 @@ BuildKitではイメージレイヤーが並列的に作成されるため、ビ
 
 
 
-> ℹ️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
+> ↪️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
 
 ```yaml
 build:
@@ -181,7 +181,7 @@ build:
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
 
 ```yaml
 build:
@@ -195,7 +195,7 @@ sha256ハッシュ値と```latest```タグをバージョンタグとして設�
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
 ```yaml
 build:
@@ -235,7 +235,7 @@ Kubernetesリソースのテスト方法を定義する。
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/testers/
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/testers/
 
 <br>
 
@@ -245,7 +245,7 @@ Kubernetesリソースのテスト方法を定義する。
 
 
 
-> ℹ️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
+> ↪️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
 
 ```yaml
 test:
@@ -274,7 +274,7 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 
 <br>
 
@@ -288,7 +288,7 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
 ```yaml
 deploy:
@@ -308,7 +308,7 @@ Helmを使用して、Kubernetesリソースをデプロイする。
 
 
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
 
 ```yaml
 deploy:

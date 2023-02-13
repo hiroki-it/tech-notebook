@@ -11,7 +11,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,7 +29,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://blog.inductor.me/entry/2021/03/13/205452
+> ↪️ 参考：https://blog.inductor.me/entry/2021/03/13/205452
 
 ```bash
 $ cd ~/.kube
@@ -54,7 +54,7 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 #### ▼ -f -R
 
@@ -97,7 +97,7 @@ pod/foo-pod configured
 
 
 
-> ℹ️ 参考：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
+> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
 
 ```bash
 $ kubectl cluster-info
@@ -117,7 +117,7 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 #### ▼ current-context
 
@@ -244,7 +244,7 @@ users:
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
 #### ▼ オプション無し
 
@@ -272,7 +272,7 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
 **＊例＊**
 
@@ -325,7 +325,7 @@ $ kubectl create secret docker-registry foo-secret \
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
 > - https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
@@ -370,7 +370,7 @@ secret/foo-secret created
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
 > - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
@@ -387,7 +387,7 @@ SSL証明書を持つSecretを作成する。
 $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
 
 <br>
 
@@ -416,7 +416,7 @@ Podの場合、オプションの無い```kubectl delete```コマンドが安全
 $ kubectl delete pod foo-pod
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
+> ↪️ 参考：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
 
 **＊例＊**
 
@@ -439,7 +439,7 @@ Podを強制的に削除する。
 $ kubectl delete pod <TerminatingステータスのままのPod名> --force --grace-period=0 
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.opensourcetech.tokyo/entry/20211207/1638879696
 > - https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion
@@ -456,7 +456,7 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 **＊例＊**
 
@@ -534,7 +534,7 @@ $ kubectl drain <Node名>
 ![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_drain_node.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service
 > - https://amazon.co.jp/dp/1491979682
@@ -568,7 +568,7 @@ $ kubectl edit deployment foo-deployment
 $ kubectl edit statefulset foo-statefulset
 ```
 
-> ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
+> ↪️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 
 
 <br>
@@ -581,7 +581,7 @@ $ kubectl edit statefulset foo-statefulset
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
 #### ▼ -it
 
@@ -619,7 +619,7 @@ Serviceを作成する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
 > - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
@@ -673,7 +673,7 @@ $ kubectl expose <Service名> \
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 **＊例＊**
 
@@ -681,7 +681,7 @@ $ kubectl expose <Service名> \
 
 
 
-> ℹ️ 参考：https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
+> ↪️ 参考：https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
 
 ```bash
 $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')" -n foo-namespace
@@ -752,7 +752,7 @@ bar-pod    2/2     Running            0          5m01s
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/a/61634879
+> ↪️ 参考：https://stackoverflow.com/a/61634879
 
 ```bash
 $ kubectl get pod --no-headers | wc -l
@@ -1095,7 +1095,7 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 $ kubectl get pod --watch
 ```
 
-> ℹ️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
+> ↪️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
 
 
 <br>
@@ -1163,7 +1163,7 @@ $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
 #### ▼ -c
 
@@ -1218,7 +1218,7 @@ Kubernetesリソースを一度削除し、別のマニフェストで再作成�
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
+> ↪️ 参考：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
 
 ```bash
 $ kubectl replace -f foo.yaml
@@ -1234,7 +1234,7 @@ Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
 > - https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
@@ -1247,7 +1247,7 @@ PodのVolume（例：ConfigMap、Secret、PersistentVolume、persistentVolumeCla
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
 > - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
@@ -1283,7 +1283,7 @@ JSON/```.yaml```形式を入力値として、リソースの設定値を変更�
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
 
 #### ▼ pv
 
@@ -1297,7 +1297,7 @@ PersistentVolumeの設定値を変更する。
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
+> ↪️ 参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
 
 ```bash
 $ kubectl get pv \
@@ -1335,7 +1335,7 @@ $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 > - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
@@ -1354,7 +1354,7 @@ kube-proxyとは異なるリソースであることに注意する。
 
 #### ▼ --address、--accept-hosts
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
 **＊例＊**
 
@@ -1374,7 +1374,7 @@ Deployment、Pod、Jobを作成する。
 
 
 
-> ℹ️ 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+> ↪️ 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
 #### ▼ --restart、--image、--port
 
@@ -1409,7 +1409,7 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 ```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
 > - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
@@ -1462,7 +1462,7 @@ $ kubectl delete -n default node-debugger-*****
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://hub.docker.com/r/praqma/network-multitool
 > - https://hub.docker.com/r/nicolaka/netshoot
@@ -1501,7 +1501,7 @@ $ kubectl taint node foo-node app=batch:NoSchedule
 
 
 
-> ℹ️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+> ↪️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
 
 ```yaml
 apiVersion: v1
@@ -1538,7 +1538,7 @@ $ kubectl taint node foo-node node-role.kubernetes.io/master:NoSchedule
 
 
 
-> ℹ️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+> ↪️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
 
 ```yaml
 apiVersion: v1
@@ -1564,7 +1564,7 @@ spec:
 
 
 
-> ℹ️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
+> ↪️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
 
 **＊例＊**
 
@@ -1655,7 +1655,7 @@ Server Version: version.Info{
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
 > - https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194

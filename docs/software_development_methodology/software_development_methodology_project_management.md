@@ -11,7 +11,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 | 工期     | 開発を完了するために必要な『期間』を表す。                                              |
 | 工数     | 1人が1ヶ月働いた時の作業サイズを```1```と定義した場合、開発を完了するために必要な『作業サイズ』を表す。 |
 
-> ℹ️ 参考：https://www.ipa.go.jp/files/000003910.pdf#page12
+> ↪️ 参考：https://www.ipa.go.jp/files/000003910.pdf#page12
 
 <br>
 
@@ -43,7 +43,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://monoist.itmedia.co.jp/mn/articles/1109/14/news011.html
 > - https://e-words.jp/w/%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E6%95%B0.html
@@ -120,7 +120,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p509.jpg)
 
@@ -132,7 +132,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-1.jpg)
 
@@ -142,7 +142,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-2.jpg)
 
@@ -154,7 +154,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 
 
-> ℹ️ 参考：https://www.mof-mof.co.jp/blog/column/agile-estimation-planning-poker
+> ↪️ 参考：https://www.mof-mof.co.jp/blog/column/agile-estimation-planning-poker
 
 <br>
 

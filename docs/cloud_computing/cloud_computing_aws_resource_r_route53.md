@@ -11,7 +11,7 @@ description: Route53＠Rで始まるAWSリソース
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ description: Route53＠Rで始まるAWSリソース
 
 
 
-> ℹ️ 参考：https://go-journey.club/archives/2665
+> ↪️ 参考：https://go-journey.club/archives/2665
 
 <br>
 
@@ -50,7 +50,7 @@ description: Route53＠Rで始まるAWSリソース
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
+> ↪️ 参考：https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
 
 #### ▼ レコードタイプの種類
 
@@ -118,7 +118,7 @@ DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーと
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
 > - https://zenn.dev/seyama/articles/02118b0914183e

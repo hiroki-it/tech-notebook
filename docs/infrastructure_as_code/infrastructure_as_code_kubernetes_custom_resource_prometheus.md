@@ -11,7 +11,7 @@ description: Prometheus＠Kubernetes
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -28,7 +28,7 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 ![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://danielfm.me/prometheus-for-developers/
 > - https://prometheus.io/docs/introduction/overview/
@@ -47,7 +47,7 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
 > - https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
@@ -74,7 +74,7 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 | アラートルール    | 収集されたデータポイントがアラート条件に合致する場合、アラートを作成し、Alertmanagerにこれを送信する。 |
 | レコーディングルール | 収集されたデータポイントをローカルストレージに保管する。                                      |
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 
 #### ▼ 設定ファイル
@@ -108,7 +108,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 > - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
@@ -141,7 +141,7 @@ Prometheusは、```data```ディレクトリ配下をTSDBとして、収集し�
 
 
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
+> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
 ```yaml
 data/
@@ -179,11 +179,11 @@ TSDBのディレクトリはNodeにマウントされるため、Nodeのスト�
 
 ストレージサイズが大きすぎると、Prometheusのコンテナが起動できなくなることがあり、その場合はNode側でメトリクスのブロックを削除する必要がある。
 
-> ℹ️ 参考：https://github.com/prometheus/prometheus/issues/8298#issuecomment-747603392
+> ↪️ 参考：https://github.com/prometheus/prometheus/issues/8298#issuecomment-747603392
 
 対処方法として、データポイント数を減らし、データポイント全体のデータサイズを小さくすると良い。
 
-> ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> ↪️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 #### ▼ 独自TSDB
 
@@ -200,7 +200,7 @@ Prometheusでは、独自のTSDB（```data```ディレクトリ配下）を採�
 | ```2022-01-01``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```10``` | ```10``` |
 | ```2022-01-02``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```20``` | ```30``` |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://db-engines.com/en/system/InfluxDB%3BLevelDB%3BPrometheus
 > - https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734
@@ -223,7 +223,7 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
 > - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
@@ -239,7 +239,7 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_dynamic-queues_shard.png)
 
 
-> ℹ️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+> ↪️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 
 
 <br>
@@ -255,7 +255,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 ![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://prometheus.io/docs/alerting/latest/alertmanager/
 > - https://www.designet.co.jp/ossinfo/alertmanager/
@@ -284,7 +284,7 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 
 
-> ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-silence/
+> ↪️ 参考：https://amateur-engineer-blog.com/alertmanager-silence/
 
 <br>
 
@@ -300,7 +300,7 @@ Pull型通信により、アプリケーションはPrometheusの存在を知る
 
 また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://openstandia.jp/oss_info/prometheus
 > - https://danielfm.me/prometheus-for-developers/
@@ -330,8 +330,8 @@ Pull型通信により、アプリケーションはPrometheusの存在を知る
 | Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                      | Exportタイプ    | 待ち受けポート番号 | 待ち受けエンドポイント  | メトリクス名              |
 |:-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|---------------|----------------|----------------------|
 | [node-exporter](https://github.com/prometheus/node_exporter)                             | Nodeに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                            | DaemonSet型  | ```9100```    | ```/metrics``` | ```node_*```         |
-| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>ℹ️ 参考：<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/ | Deployment型 | ```8080```    | 同上           | ```kube_*```         |
-| [process-exporter](https://github.com/ncabatoff/process-exporter)                        | 任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は```config.yaml```ファイルで設定できる。 <br>ℹ️ 参考：https://qiita.com/kkentaro/items/c01b8cf332da893791bb                                                                                                                       | DaemonSet型  | ```9256```    | 同上           | ```namedprocess_*``` |
+| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>↪️ 参考：<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/ | Deployment型 | ```8080```    | 同上           | ```kube_*```         |
+| [process-exporter](https://github.com/ncabatoff/process-exporter)                        | 任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は```config.yaml```ファイルで設定できる。 <br>↪️ 参考：https://qiita.com/kkentaro/items/c01b8cf332da893791bb                                                                                                                       | DaemonSet型  | ```9256```    | 同上           | ```namedprocess_*``` |
 | [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter)                      | Nginxに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                           | Sidecar型    | ```9113```    | 同上           |                      |
 | [apache-exporter](https://github.com/Lusitaniae/apache_exporter)                         | Apacheに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                          | Sidecar型    | ```9117```    | 同上           |                      |
 | [black box expoter](https://github.com/prometheus/blackbox_exporter)                     | 各種通信プロトコルの状況をメトリクスとして収集する。                                                                                                                                                                                                                                        | Deployment型 | ```9115```    | 同上           |                      |
@@ -343,7 +343,7 @@ Pull型通信により、アプリケーションはPrometheusの存在を知る
 | open-telemetryのSDK                                                                       |                                                                                                                                                                                                                                                                           | 埋め込み型     |               |                |                      |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
 > - https://prometheus.io/docs/instrumenting/exporters/
@@ -359,7 +359,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 
 
-> ℹ️ 参考：https://prometheus.io/docs/practices/pushing/
+> ↪️ 参考：https://prometheus.io/docs/practices/pushing/
 
 <br>
 
@@ -371,6 +371,6 @@ Pull型通信の宛先のIPアドレスが動的に変化する場合（例：�
 
 
 
-> ℹ️ 参考：https://christina04.hatenablog.com/entry/prometheus-service-discovery
+> ↪️ 参考：https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
 <br>

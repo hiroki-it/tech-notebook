@@ -11,7 +11,7 @@ description: GCP CLI＠GCPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ GCPアカウントの認証を行う。
 
 
 
-> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/auth
+> ↪️ 参考：https://cloud.google.com/sdk/gcloud/reference/auth
 
 #### ▼ application-default login
 
@@ -39,7 +39,7 @@ GCP CLIによるGCPリソースへのアクセスを認証するために使用�
 
 
 
-> ℹ️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
+> ↪️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
 
 ```bash
 $ gcloud auth application-default login
@@ -62,7 +62,7 @@ GCP SDKによるGCPリソースへのアクセスを認証するために使用�
 
 
 
-> ℹ️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
+> ↪️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
 
 ```bash
 $ gcloud auth login
@@ -72,7 +72,7 @@ $ gcloud auth login
 
 ```gcloud auth application-default login```コマンドと```gcloud auth login```コマンドを同時に実行する。これにより、GCP CLIのための認証情報（```~/.config/gcloud/application_default_credentials.json```ファイル）とGCP SDKのための認証情報が更新される。
 
-> ℹ️ 参考：https://blog.pokutuna.com/entry/application-default-credentials
+> ↪️ 参考：https://blog.pokutuna.com/entry/application-default-credentials
 
 ```bash
 $ gcloud auth login --update-adc
@@ -125,7 +125,7 @@ The latest available version is: 400.0.0
 └──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
 ```
 
-> ℹ️ 参考：https://cloud.google.com/sdk/docs/components
+> ↪️ 参考：https://cloud.google.com/sdk/docs/components
 
 
 <br>
@@ -182,7 +182,7 @@ Updated property [compute/region].
 
 #### ▼ container clustersとは
 
-> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/clusters
+> ↪️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/clusters
 
 #### ▼ list
 
@@ -190,7 +190,7 @@ GKE Clusterの一覧を取得する。
 
 
 
-> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
+> ↪️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
 
 **＊実行例＊**
 
@@ -209,7 +209,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.
 
 調査中...
 
-> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
+> ↪️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
 
 #### ▼ describe
 
@@ -218,7 +218,7 @@ GKE Node Poolの情報を取得する。
 アップグレードの手法を確認することもできる。
 
 
-> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
+> ↪️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
 
 **＊実行例＊**
 
@@ -263,7 +263,7 @@ $ gcloud container node-pools update foo-node-pool \
     --max-unavailable-upgrade=1
 ```
 
-> ℹ️ 参考：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
+> ↪️ 参考：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
 
 
 <br>
@@ -353,7 +353,7 @@ foo-prd      foo-prd   *****
 $ gcloud storage cp gs://<GCS名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
-> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/storage/cp
+> ↪️ 参考：https://cloud.google.com/sdk/gcloud/reference/storage/cp
 
 ディレクトリごとコピーする場合は、```--recursive```オプションを使用する。
 

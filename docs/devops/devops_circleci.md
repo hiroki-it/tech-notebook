@@ -12,7 +12,7 @@ description: CircleCIの知見を記録しています。
 ![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circleci_architecture.png)
 
 
-> ℹ️ 参考：https://circleci.com/docs/2.0/server-3-overview/
+> ↪️ 参考：https://circleci.com/docs/2.0/server-3-overview/
 
 
 <br>
@@ -57,7 +57,7 @@ CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシ
 
 
 
-> ℹ️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
+> ↪️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
 
 #### ▼ デバッグの事前準備
 
@@ -125,7 +125,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ▼ CircleCIコンテナにSSH公開鍵認証
 
-> ℹ️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
 ```【１】```
 
@@ -153,7 +153,7 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘�
 
 
 
-> ℹ️ 参考：https://circleci.com/docs/2.0/insights-tests/
+> ↪️ 参考：https://circleci.com/docs/2.0/insights-tests/
 
 #### ▼ SSHキー
 
@@ -167,7 +167,7 @@ SSHキーを作成する必要がある。
 | デプロイキー | CircleCIコンテナがプロジェクトのGitHubリポジトリにアクセスするために必要である（例：CIOps）。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。     |
 | ユーザーキー | CircleCIコンテナがプロジェクト以外のGitHubリポジトリにアクセスするために必要である（例：GitOps）。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。 |
 
-> ℹ️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
+> ↪️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
 
 
 <br>

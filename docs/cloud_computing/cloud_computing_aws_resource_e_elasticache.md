@@ -11,7 +11,7 @@ description: ElastiCache＠Eで始まるAWSリソースの知見を記録して�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -43,7 +43,7 @@ RedisとMemcachedがある。
 | マルチAZ            | プライマリーノードとリードレプリカを異なるAZに配置するか否かを設定する。合わせて、自動フェイルオーバーを実行できるようになる。 |                                                                                                                                                               |
 | サブネットグループ        | Redisにアクセスできるサブネットを設定する。                                                  |                                                                                                                                                               |
 | セキュリティ           | セキュリティグループを設定する。                                                          |                                                                                                                                                               |
-| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを作成する。                             | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
+| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを作成する。                             | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
 | バックアップ           | バックアップの有効化、保持期間、時間を設定する。                                         | バックアップを取るほどでもないため、無効化しておいて問題ない。                                                                                                                         |
 | メンテナンス           | メンテナンスの時間を設定する。                                                         |                                                                                                                                                               |
 
@@ -61,7 +61,7 @@ RedisとMemcachedがある。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
 
@@ -75,7 +75,7 @@ RedisとMemcachedがある。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
 
 <br>
 
@@ -93,7 +93,7 @@ Redisノードのグループ。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
 
 <br>
 
@@ -120,7 +120,7 @@ Redisノードのグループ。
 ![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ElastiCacheのセッション管理機能.png)
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 
 <br>

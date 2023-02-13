@@ -11,7 +11,7 @@ description: アクション＠チャートの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: アクション＠チャートの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -37,7 +37,7 @@ description: アクション＠チャートの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
@@ -62,7 +62,7 @@ Helmのテンプレート内に、アクションや変数以外の理由で```{
 
 エスケープしたい文字列にバッククオートが含まれる場合、『```{{`<記号を含む文字列>`}}```』を使用できず、他のエスケープ方法（```{{"<記号>"}}```、```printf```アクション）が必要になる。
 
-> ℹ️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
+> ↪️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
 
 ```yaml
 # Helmのテンプレート
@@ -105,7 +105,7 @@ receivers:
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 #### ▼ マップ型を扱う場合
 
@@ -159,7 +159,7 @@ data:
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 ```yaml
 # valuesファイル
@@ -190,7 +190,7 @@ data:
 
 調査中...
 
-> ℹ️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
+> ↪️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 
 <br>
 
@@ -204,7 +204,7 @@ data:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da
@@ -223,7 +223,7 @@ data:
 
 
 
-> ℹ️ 参考：https://github.com/helm/helm/issues/8026
+> ↪️ 参考：https://github.com/helm/helm/issues/8026
 
 ```yaml
 # values.yamlファイル
@@ -253,7 +253,7 @@ int型にならないように、```values```ファイルの出力先をダブ�
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
 ```yaml
 # values.yamlファイル
@@ -285,7 +285,7 @@ metadata:
 
 
 
-> ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
+> ↪️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
 
 ```yaml
 # values.yamlファイル
@@ -358,7 +358,7 @@ baz:
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 **＊実装例＊**
 
@@ -395,7 +395,7 @@ metadata:
 
 ただ、```-}}```は使用しない方が良いらしい。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
 > - https://github.com/helm/helm/issues/4191#issuecomment-539149037
@@ -436,7 +436,7 @@ baz:
 
 
 
-> ℹ️ 参考：https://www.skyarch.net/blog/?p=16660#28
+> ↪️ 参考：https://www.skyarch.net/blog/?p=16660#28
 
 **＊実装例＊**
 
@@ -474,7 +474,7 @@ baz:
 
 
 
-> ℹ️ 参考：https://www.skyarch.net/blog/?p=16660#29
+> ↪️ 参考：https://www.skyarch.net/blog/?p=16660#29
 
 
 **＊実装例＊**
@@ -557,7 +557,7 @@ SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKu
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
 > - https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017
@@ -603,7 +603,7 @@ spec:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
 > - https://stackoverflow.com/a/62832814
@@ -656,7 +656,7 @@ data:
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/a/49819239
+> ↪️ 参考：https://stackoverflow.com/a/49819239
 
 ```yaml
 {{- if and (eq .Values.enableFoo true) (eq .Values.enableBar true) }}
@@ -671,7 +671,7 @@ data:
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/a/49819239
+> ↪️ 参考：https://stackoverflow.com/a/49819239
 
 ```yaml
 {{- if or (eq .Values.global.env "dev") (eq .Values.global.env "tes") }}
@@ -693,7 +693,7 @@ Helmのテンプレート内にコメントアウトを定義する。YAMLのコ
 {{- /* コメント */}}
 ```
 
-> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
+> ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
 
 <br>
 
@@ -701,7 +701,7 @@ Helmのテンプレート内にコメントアウトを定義する。YAMLのコ
 
 また、改行コードを削除するためのハイフン（```-}}```）は、定義しないようにする。また、```*/}}```にはスペースを含めずに、一繋ぎで定義する。
 
-> ℹ️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-417096290
+> ↪️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-417096290
 
 ```yaml
 {{- /* コメント */}}

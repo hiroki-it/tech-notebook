@@ -11,7 +11,7 @@ description: Anthos＠GCPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -26,7 +26,7 @@ Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.fsi.co.jp/blog/5939/
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
@@ -51,7 +51,7 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 ![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/previous-generation/how-to/attach-kubernetes-clusters
 > - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
@@ -60,7 +60,7 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 #### ▼ Anthos、Kubernetesのバージョンの対応
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
+> ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
 
 
 <br>
@@ -73,7 +73,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 ![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_service_mesh.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=20
@@ -82,7 +82,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 サービスディスカバリーとして、```istio-proxy```コンテナに他の宛先の情報を提供する。
 
-> ℹ️ 参考：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
+> ↪️ 参考：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
 
 
 #### ▼ Mesh CA
@@ -91,7 +91,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 また、SSL証明書が失効すれば更新する。
 
-> ℹ️ 参考：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=27
+> ↪️ 参考：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=27
 
 <br>
 
@@ -104,7 +104,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
 
 
-> ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
+> ↪️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
 
 
 #### ▼ acm-operatorの仕組み
@@ -113,7 +113,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
@@ -132,7 +132,7 @@ Anthos GKE Clusterが、GCP以外（オンプレミス、ベアメタル、他�
 
 これにより、Anthos GKE Clusterはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
 
-> ℹ️ 参考：https://www.jetstack.io/blog/anthos-aws/
+> ↪️ 参考：https://www.jetstack.io/blog/anthos-aws/
 
 <br>
 
@@ -144,7 +144,7 @@ GCP上で```kubectl```コマンドを実行して各クラウドプロバイダ�
 
 ![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_connect-gateway.png)
 
-> ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#connect-gateway
+> ↪️ 参考：https://www.topgate.co.jp/anthos-gke#connect-gateway
 
 
 #### ▼ fleet-workload-identity
@@ -155,7 +155,7 @@ GCP側のアカウント情報と、各クラウドプロバイダーのAnthos�
 
 
 
-> ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
+> ↪️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
 
 #### ▼ anetd
 
@@ -163,7 +163,7 @@ cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネット�
 
 
 
-> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
+> ↪️ 参考：https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
 
 <br>
 
@@ -181,7 +181,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 ![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_on-premises_architecture.png)
 
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
+> ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
 
 <br>
 
@@ -201,7 +201,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 ![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_multi-cluster.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
@@ -218,7 +218,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
@@ -304,7 +304,7 @@ $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 ```
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
+> ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
 
 
 <br>

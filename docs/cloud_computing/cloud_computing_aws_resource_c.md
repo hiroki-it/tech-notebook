@@ -11,7 +11,7 @@ description: Cで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -51,7 +51,7 @@ description: Cで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html
 > - https://jp.globalsign.com/support/proceeding/147.html
@@ -66,7 +66,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html
 > - https://dev.classmethod.jp/articles/route53-domain-onamae/
@@ -79,7 +79,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
+> ↪️ 参考：https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
 
 #### ▼ 検証方法の変更
 
@@ -91,7 +91,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 
 
-> ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
+> ↪️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
 
 <br>
 
@@ -168,7 +168,7 @@ ALBではSSL証明書の変更でダウンタイムは発生しない。
 
 CloudFrontは謎...
 
-> ℹ️ 参考：https://aws.typepad.com/sajp/2014/04/elb-ssl.html
+> ↪️ 参考：https://aws.typepad.com/sajp/2014/04/elb-ssl.html
 
 <br>
 
@@ -206,7 +206,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
+> ↪️ 参考：https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
 
 #### ▼ インシデント
 

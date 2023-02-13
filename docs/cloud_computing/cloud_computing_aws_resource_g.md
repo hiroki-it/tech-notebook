@@ -11,7 +11,7 @@ description: Gで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -77,7 +77,7 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 
 
-> ℹ️ 参考：https://speedtest.globalaccelerator.aws/#/
+> ↪️ 参考：https://speedtest.globalaccelerator.aws/#/
 
 <br>
 
@@ -89,7 +89,7 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 | 設定項目 | 説明                                     | 補足                                                                                               |
 |----------|----------------------------------------|----------------------------------------------------------------------------------------------------|
-| ソース      | 元データを管理するデータウェアハウスやデータベースを設定する。     | データウェアハウスの方が、データベースよりも保存形式の柔軟性が高い。<br>ℹ️ 参考：https://www.topgate.co.jp/dwh-db-difference |
+| ソース      | 元データを管理するデータウェアハウスやデータベースを設定する。     | データウェアハウスの方が、データベースよりも保存形式の柔軟性が高い。<br>↪️ 参考：https://www.topgate.co.jp/dwh-db-difference |
 | ターゲット    | 処理済データを管理するデータウェアハウスやデータベースを設定する。 |                                                                                                    |
 
 <br>

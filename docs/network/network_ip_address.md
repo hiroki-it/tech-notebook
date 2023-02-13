@@ -11,7 +11,7 @@ description: IPアドレス＠ネットワークの知見を記録していま�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ IPアドレスの例示では、```x```を使用しないようにする。
 
 ![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address.png)
 
-> ℹ️ 参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
+> ↪️ 参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
 
 
 <br>
@@ -67,7 +67,7 @@ LAN内で使用される。
 | ```172.16.0.0/12```  | ```172.16.0.0```～```172.31.255.255```   | ```1048576```  |
 | ```192.168.0.0/16``` | ```192.168.0.0```～```192.168.255.255``` | ```65536```    |
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
 
 
 <br>
@@ -93,7 +93,7 @@ IPアドレスのオクテットは、ネットワーク部とホスト部に分
 ![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address_portion.png)
 
 
-> ℹ️ 参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
+> ↪️ 参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
 
 
 #### ▼ クラスによるホスト部とネットワーク部の定義
@@ -164,7 +164,7 @@ IPアドレスをクラスとして分類し、各クラスでIPアドレスの�
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
+> ↪️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 
 <br>
 
@@ -191,7 +191,7 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 ![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain_namespace.png)
 
 
-> ℹ️ 参考：https://ascii.jp/elem/000/000/419/419685/2/
+> ↪️ 参考：https://ascii.jp/elem/000/000/419/419685/2/
 
 
 #### ▼ サブドメイン
@@ -224,7 +224,7 @@ URLやメールアドレスのドメイン名とIPアドレスを相互変換す
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 > - https://www.kagoya.jp/howto/it-glossary/network/nameresolution/
@@ -256,7 +256,7 @@ webサーバーのIPアドレスがDNSサーバーに登録されていない時
 <IPアドレス> <ドメイン名>
 ```
 
-> ℹ️ 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
+> ↪️ 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
 
 
 #### ▼ ```/etc/resolv.conf```ファイル
@@ -286,7 +286,7 @@ search      bar   baz # domain値で問い合わせに失敗した場合に使�
 $ nslookup example # 実際には、example.fooとなる
 ```
 
-> ℹ️ 参考：https://linuc.org/study/knowledge/507/
+> ↪️ 参考：https://linuc.org/study/knowledge/507/
 
 
 #### ▼ DNSサーバー（ネームサーバー、権威DNSサーバー）
@@ -297,7 +297,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 
 
-> ℹ️ 参考：https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
+> ↪️ 参考：https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
 
 #### ▼ キャッシュDNSサーバー
 

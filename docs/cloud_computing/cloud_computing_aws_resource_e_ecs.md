@@ -11,7 +11,7 @@ description: ECS＠Eで始まるAWSリソースの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -32,7 +32,7 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 ![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane.png)
 
 
-> ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
+> ↪️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
 
 
 <br>
@@ -62,7 +62,7 @@ ECSサービスの管理グループ単位のこと。
 ![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_cluster.png)
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html
 
 
 <br>
@@ -75,7 +75,7 @@ ECSタスクへのロードバランシング、タスクの数の維持管理�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html
 
 <br>
 
@@ -101,7 +101,7 @@ Fargateの場合、ECSコンテナエージェントがプリインストール�
 ![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 > - https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/
@@ -137,9 +137,9 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 | De-activating   | ECSタスク内のコンテナを停止する前に必要な処理があり、これが完了していない。           |                                                                                                                                                    |
 | Stopping        | ECSタスク内のコンテナが正常/異常に停止しようとしている途中である。                |                                                                                                                                                    |
 | De-provisioning | ECSタスク全体を停止する前に必要な準備（例；ENIの解除）があり、これが完了していない。 |                                                                                                                                                    |
-| Stopped         | ECSタスク全体が停止した。                                          | 正常停止と異常停止に関わらず、停止理由を確認できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html          |
+| Stopped         | ECSタスク全体が停止した。                                          | 正常停止と異常停止に関わらず、停止理由を確認できる。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html          |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
 <br>
 
@@ -157,7 +157,7 @@ ECSクラスターが複数のECSサービスから構成される。
 ![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
 
 
-> ℹ️ 参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
+> ↪️ 参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
 
 
 #### ▼ ECSサービスディスカバリー
@@ -167,7 +167,7 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 ![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://practical-aws.dev/p/ecs-service-discovery/
 > - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
@@ -196,7 +196,7 @@ Dockerのhostネットワークに相当する。
 ![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
 
 
 #### ▼ bridgeモード
@@ -208,7 +208,7 @@ Dockerのbridgeネットワークに相当する。
 ![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
 
 
 #### ▼ awsvpcモード
@@ -230,7 +230,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 ![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
@@ -265,7 +265,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 ![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
 
 
-> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
+> ↪️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
 
 代わりとして、VPCエンドポイントを設置する。
@@ -276,7 +276,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 ![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
 
 <br>
 
@@ -293,7 +293,7 @@ ECSサービスがECSタスクを操作するために必要なロールであ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
@@ -308,7 +308,7 @@ Fargateの場合、不要である。
 ![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_container-instance-role.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
@@ -323,7 +323,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 ![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-role.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
@@ -387,7 +387,7 @@ ECSタスク内のコンテナがリソースにアクセスするために必�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
@@ -450,12 +450,12 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 | 設定項目                      | 説明                                                   | 補足                                                                                                                                                                                                       |
 |-------------------------------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```awslogs-group```           | ログ宛先のCloudWatchログのロググループを設定する。                     |                                                                                                                                                                                                            |
-| ```awslogs-datetime-format``` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
+| ```awslogs-datetime-format``` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>↪️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
 | ```awslogs-region```          | ログ宛先のCloudWatchログのリージョンを設定する。                      |                                                                                                                                                                                                            |
 | ```awslogs-stream-prefix```   | ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。          | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。                                                                                                                                               |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.docker.com/config/containers/logging/awslogs/
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
@@ -482,13 +482,13 @@ EC2インスタンスをホストとして、コンテナを作成する。
 | AMI名                          | 説明                                                                                                                                 | 特に相性の良いアプリ                                    |
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
 | ECS最適化 Amazon Linux 2       | ECSのための標準的なEC2インスタンスを作成できる。最も推奨。                                                                                             |                                                   |
-| ECS最適化 Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                   |
+| ECS最適化 Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>↪️ 参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                   |
 | ECS最適化 Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。                                                               |                                                   |
 | ECS最適化 Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。                                                                                    |                                                   |
 | ECS最適化 Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                                                                                                        | GPUが必要なアプリケーション（計算処理系、機械学習系のアプリケーション） |
 | ECS最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                                                                                                       |                                                   |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
 
 <br>
 
@@ -517,7 +517,7 @@ Fargateの実体はEC2インスタンスである（ドキュメントに記載�
 ![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
 
 
-> ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+> ↪️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
 <br>
 
@@ -532,8 +532,8 @@ Fargateの実体はEC2インスタンスである（ドキュメントに記載�
 | プラットフォームのバージョン   | ECSコントロールプレーンのバージョンを設定する。                                                                                                    | バージョンによって、連携できるAWSリソースが異なる。                                                                                                                                                                                                                                                                                                                                                          |
 | サービスタイプ          |                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                         |
 | ECSタスクの必要数    | 非スケーリング時またはデプロイ時のタスク数を設定する。                                                                                              | 最小ヘルス率と最大率の設定値に影響する。                                                                                                                                                                                                                                                                                                                                                         |
-| 最小ヘルス率        | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。                                              | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>ℹ️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                                     |
-| 最大率           | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。                                       | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>ℹ️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                          |
+| 最小ヘルス率        | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。                                              | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>↪️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                                     |
+| 最大率           | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。                                       | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>↪️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                          |
 | ヘルスチェックの猶予期間 | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。 |
 | タスクの最小数       | スケーリング時のタスク数の最小数を設定する。                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                                         |
 | タスクの最大数       | スケーリング時のタスク数の最大数を設定する。                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -569,24 +569,24 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 | 設定項目                        | 対応する```docker```コマンドオプション       | 説明                                                                                                                                                                            | 補足                                                                                                                                                                                                  |
 |---------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| cpu                             | ```--cpus```                      | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment <br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
+| cpu                             | ```--cpus```                      | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | ↪️ 参考：<br>・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment <br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
 | dnsServers                      | ```--dns```                       | コンテナが名前解決に使用するDNSサーバーのIPアドレスを設定する。                                                                                                                                      |                                                                                                                                                                                                       |
 | essential                       |                                   | コンテナが必須か否かを設定する。                                                                                                                                                           | ・```true```の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br>```false```の場合、コンテナが停止しても、その他のコンテナは停止しない。                                                                                             |
 | healthCheck<br>(command)        | ```--health-cmd```                | ホストからFargateに対して、```curl```コマンドによるリクエストを送信し、レスポンス内容を確認。                                                                                                                  |                                                                                                                                                                                                       |
 | healthCheck<br>(interval)       | ```--health-interval```           | ヘルスチェックの間隔を設定する。                                                                                                                                                            |                                                                                                                                                                                                       |
 | healthCheck<br>(retries)        | ```--health-retries```            | ヘルスチェックを成功と見なす回数を設定する。                                                                                                                                                   |                                                                                                                                                                                                       |
 | hostName                        | ```--hostname```                  | コンテナにホスト名を設定する。                                                                                                                                                              |                                                                                                                                                                                                       |
-| image                           |                                   | ECRのURLを設定する。                                                                                                                                                                 | 指定できるURLの記法は、Dockerfileの```FROM```と同じである。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                       |
+| image                           |                                   | ECRのURLを設定する。                                                                                                                                                                 | 指定できるURLの記法は、Dockerfileの```FROM```と同じである。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                       |
 | logConfiguration<br>(logDriver) | ```--log-driver```                | ログドライバーを指定することにより、ログの出力先を設定する。                                                                                                                                           | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。                                               |
 | logConfiguration<br>(options)   | ```--log-opt```                   | ログドライバーに応じて、詳細な設定を行う。                                                                                                                                                     |                                                                                                                                                                                                       |
-| portMapping                     | ```--publish```<br>```--expose``` | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。                                                                                                                            | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                      |
+| portMapping                     | ```--publish```<br>```--expose``` | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。                                                                                                                            | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                      |
 | secrets<br>(volumesFrom)        |                                   | パラメーターストアから出力する変数を設定する。                                                                                                                                                   |                                                                                                                                                                                                       |
-| memory                          | ```--memory```                    | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。                                                                                                                    | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
-| memoryReservation               | ```--memory-reservation```        | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                              | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
-| mountPoints                     |                                   | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。                                                                                           | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html                                                                                          |
+| memory                          | ```--memory```                    | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。                                                                                                                    | ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
+| memoryReservation               | ```--memory-reservation```        | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                              | ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
+| mountPoints                     |                                   | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。                                                                                           | ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html                                                                                          |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                                                                                                                                                 |                                                                                                                                                                                                       |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
 <br>
 
@@ -614,7 +614,7 @@ Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化�
 ![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
 
-> ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
+> ↪️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
 <br>
 
@@ -745,7 +745,7 @@ exit ${EXIT_STATUS}
 
 ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rolling-update.png)
 
-> ℹ️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/
+> ↪️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/
 
 
 #### ▼ ブルー/グリーンデプロイメント
@@ -778,7 +778,7 @@ NAT GatewayとVPCエンドポイントの両方を作成している場合、ル
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec
 > - https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
@@ -855,7 +855,7 @@ Systems Managerを使用してコンテナに接続する場合、コンテナ�
 
 :    事前の設定がなされているか否かをecs-exec-checkerスクリプトを実行して確認する。
 
-> ℹ️ 参考：https://github.com/aws-containers/amazon-ecs-exec-checker
+> ↪️ 参考：https://github.com/aws-containers/amazon-ecs-exec-checker
 
 ```bash
 #!/bin/bash
@@ -889,7 +889,7 @@ aws ecs execute-command \
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html

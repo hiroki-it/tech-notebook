@@ -11,7 +11,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +19,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 ### セットアップ
 
-> ℹ️ 参考：https://pip.pypa.io/en/stable/installation/
+> ↪️ 参考：https://pip.pypa.io/en/stable/installation/
 
 <br>
 
@@ -71,7 +71,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 
 
 
-> ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
 
 ```bash
 $ pip3 install <パッケージ名>
@@ -99,7 +99,7 @@ $ pip3 freeze > requirements.txt
 
 
 
-> ℹ️ 参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
+> ↪️ 参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
 
 ```bash
 $ pip3 freeze --local \
@@ -112,7 +112,7 @@ pip自身をアップグレードする。
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
+> ↪️ 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
 
 ```bash
 $ pip3 install --upgrade pip
@@ -151,7 +151,7 @@ pipでインストールされたパッケージを元に、要件ファイル�
 
 
 
-> ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
 
 ```bash
 # インストールのため
@@ -220,7 +220,7 @@ pipでインストールしたパッケージ情報を取得する。
 
 
 
-> ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
 
 ```bash
 $ pip3 show sphinx
@@ -250,7 +250,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 
 
-> ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
 
 ```bash
 $ pip3 uninstall -y <パッケージ名>

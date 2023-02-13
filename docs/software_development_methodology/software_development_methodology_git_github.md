@@ -10,7 +10,7 @@ title: 【IT技術の知見】GitHub
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -50,7 +50,7 @@ Issueのテンプレートに関して、代わりに```ISSUE_TEMPLATE```ディ�
 
 
 
-> ℹ️ 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
+> ↪️ 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
 ```yaml
 repository/
@@ -128,7 +128,7 @@ GitHubだとプルリクエストであるが、GitLabだとマージリクエ�
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
+> ↪️ 参考：https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
 
 <br>
 
@@ -238,7 +238,7 @@ DBからフロント出力までに至る実装をコミットする場合、以
 
 Gitでソフトウェアを開発する場合、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flowを簡略化したものに、GitHub-flowやGitlab-flowがある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/Voronenko/gitflow-release
 > - https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
@@ -257,7 +257,7 @@ Gitでソフトウェアを開発する場合、役割を持たせたブラン�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 | 実行環境名                 | ブランチ                                         |
 |------------------------|----------------------------------------------|
@@ -346,7 +346,7 @@ CIツールやCDツールを使用して、コミット（マージコミット�
 
 『```release/v<セマンティックバージョニング>```』とする。タグの付与先対象とするブランチは、『```Taget: main```』を選択する。
 
-> ℹ️ 参考：https://semver.org/lang/ja/
+> ↪️ 参考：https://semver.org/lang/ja/
 
 #### ▼ リリース名
 
@@ -456,7 +456,7 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 :    プッシュする。この時、マージコミットを作成する時、基点ブランチ以外からマージしていると、差分のコミットが1つにまとまらず、
 
-> ℹ️ 参考：http://www-creators.com/archives/1938
+> ↪️ 参考：http://www-creators.com/archives/1938
 
 #### ▼ GitHubを使用して
 
@@ -464,7 +464,7 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github
 > - https://qiita.com/Kto_pi/items/4fd6bdec72e852763315

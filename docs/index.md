@@ -6,7 +6,7 @@ title: 【IT技術の知見】当サイトについて
 
 ## 俺の技術ノートとは
 
-**俺**（ [長谷川広樹](https://hiroki-it.github.io/tech-notebook-mkdocs/about.html) ）が、業務や学習から得た技術的な知見を、チートシート形式で記録した技術ノートです。
+**俺**（↪️ [長谷川広樹](https://hiroki-it.github.io/tech-notebook-mkdocs/about.html) ）が、業務や学習から得た技術的な知見を、チートシート形式で記録した技術ノートです。
 
 <br>
 
@@ -62,7 +62,7 @@ title: 【IT技術の知見】当サイトについて
 
 そのため、冗長な記載となることをご容赦いただけると幸いです。
 
-> ℹ️ 参考：https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/how-to-write.pdf
+> ↪️ 参考：https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/how-to-write.pdf
 
 <br>
 

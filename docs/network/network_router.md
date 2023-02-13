@@ -11,7 +11,7 @@ description: ルーター＠ネットワークの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -36,7 +36,7 @@ description: ルーター＠ネットワークの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://www.infraexpert.com/study/routing.html
+> ↪️ 参考：https://www.infraexpert.com/study/routing.html
 
 #### ▼ パスベースルーティング
 
@@ -68,7 +68,7 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 
 ![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/
 > - https://michisugara.jp/modem_router
@@ -86,7 +86,7 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 | ブロードバンドルーター、Wifiルーター | 自宅内のネットワーク              | 自宅内/外のネットワーク間を繋ぐ。ブロードバンドルーターであれば有線、Wifiルーターであれば無線で接続することになる。 |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
 > - https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
@@ -103,7 +103,7 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 
 
 
-> ℹ️ 参考：https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
+> ↪️ 参考：https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
 
 #### ▼ ホップバイホップルーティング
 
@@ -113,7 +113,7 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 
 
 
-> ℹ️ 参考：https://ascii.jp/elem/000/000/444/444681/3/
+> ↪️ 参考：https://ascii.jp/elem/000/000/444/444681/3/
 
 <br>
 
@@ -148,7 +148,7 @@ NAT処理を実行できるルーターのこと。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 > - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
@@ -163,7 +163,7 @@ NATルーター自体を複数のプライベートネットワークで共有�
 
 
 
-> ℹ️ 参考：https://rainbow-engine.com/dnat-snat-difference/
+> ↪️ 参考：https://rainbow-engine.com/dnat-snat-difference/
 
 **＊例＊**
 
@@ -181,7 +181,7 @@ NATルーター自体を複数のプライベートネットワークで共有�
 
 
 
-> ℹ️ 参考：https://rainbow-engine.com/dnat-snat-difference/
+> ↪️ 参考：https://rainbow-engine.com/dnat-snat-difference/
 
 **＊例＊**
 
@@ -270,7 +270,7 @@ AWSやGCPなどで使用されているようなNATルーターはこちらで�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 > - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
@@ -315,7 +315,7 @@ Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケット�
 | POSTROUTING              | パケットの送信時に、パケットの送信元IPアドレスとポート番号を変換する。 |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://christina04.hatenablog.com/entry/iptables-outline
 > - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#nat%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
@@ -324,7 +324,7 @@ Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケット�
 **＊例＊**
 
 
-> ℹ️ 参考：https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
+> ↪️ 参考：https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
 
 ```bash
 $ cat /etc/sysconfig/iptables

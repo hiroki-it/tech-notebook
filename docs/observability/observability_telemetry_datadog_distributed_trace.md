@@ -11,7 +11,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -26,7 +26,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
 
-> ℹ️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
+> ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 
 <br>
@@ -35,7 +35,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -51,7 +51,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 > - https://inokara.hateblo.jp/entry/2017/10/01/164446
@@ -64,15 +64,15 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 
 #### ▼ パッケージ一覧
 
-> ℹ️ 参考：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+> ↪️ 参考：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
 
 #### ▼ デバッグ
 
 | 方法                 | 説明                                                                                                           | 補足                                                                                                                                                                                       |
 |--------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 起動ログの有効化        | 環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、トレーサーの設定値を確認できる。 | ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                              |
-| デバッグログの有効化        | 各トレーサーが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。  | ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                        |
-| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                | ℹ️ 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
+| 起動ログの有効化        | 環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、トレーサーの設定値を確認できる。 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                              |
+| デバッグログの有効化        | 各トレーサーが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。  | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                        |
+| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                | ↪️ 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
 <br>
 
@@ -87,7 +87,7 @@ Datadogで、分散トレースは複数のスパンの配列データとして�
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+> ↪️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 ```yaml
 [
@@ -141,7 +141,7 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
 ]
 ```
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+> ↪️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 
 #### ▼ メタデータ
@@ -191,13 +191,13 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/generate_metrics/
+> ↪️ 参考：https://docs.datadoghq.com/tracing/generate_metrics/
 
 #### ▼ メトリクス名の構成要素
 
 メトリクス名は『```trace.<スパン名>.<メトリクス接尾辞名>```』の名前で構成される。
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
+> ↪️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
 
 #### ▼ メトリクスのスパン名
 
@@ -225,7 +225,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 - ```trace.<スパン名>.duration.by.*****```（該当スパンの処理時間の割合）
 - ```trace.<スパン名>.errors.*****```（該当スパンにおけるエラー数）
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
+> ↪️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 
 
 <br>
@@ -237,7 +237,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 調査中...
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
+> ↪️ 参考：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
 
 <br>
 
@@ -255,7 +255,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
 > - https://docs.datadoghq.com/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
@@ -274,7 +274,7 @@ PHPトレーサの各インテグレーションのコードについては以�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
 > - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php

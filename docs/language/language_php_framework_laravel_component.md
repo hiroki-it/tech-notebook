@@ -11,7 +11,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -44,7 +44,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                            |
 | 15 | レスポンスを返信する。                                         |                                                                                                     |
 
-> ℹ️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
+> ↪️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
 
 <br>
@@ -59,7 +59,7 @@ Laravelの各コンポーネントには、似たような名前のメソッド�
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate.html
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate.html
 
 <br>
 
@@ -138,7 +138,7 @@ artisanコマンドで実行できるコマンド処理を定義する。
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
 ```php
 <?php
@@ -312,7 +312,7 @@ return [
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
 
 ```
 DB_HOST_PRIMARY=<プライマリーインスタンスのエンドポイント>
@@ -325,7 +325,7 @@ DB_HOST_READ=<リードレプリカのエンドポイント>
 
 
 
-> ℹ️ 参考：https://imanengineer.net/laravel-how-to-configure-master-slave-db/
+> ↪️ 参考：https://imanengineer.net/laravel-how-to-configure-master-slave-db/
 
 ```php
 <?php
@@ -406,7 +406,7 @@ REDIS_PORT=<Redisのポート>
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
 **＊実装例＊**
 
@@ -452,7 +452,7 @@ Eloquentモデルでは、DBアクセスに関するメソッドの実行開始�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
 **＊実装例＊**
 
@@ -613,7 +613,7 @@ class EventServiceProvider extends ServiceProvider
 
 Laravelの多くのコンポーネントに、```boot```メソッドが定義されている。Eloquentモデルでは、インスタンス作成時に```boot```メソッドがコールされ、これによりに```bootTraits```メソッドが実行される。Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると、```bootTraits```メソッドはこれをコールする。```bootTraits```メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
 
-> ℹ️ 参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
+> ↪️ 参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
 
 **＊実装例＊**
 
@@ -803,7 +803,7 @@ LaravelではデフォルトでHandlerクラスが全てのステップをカバ
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_error_and_error_handling.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_error_and_error_handling.html
 
 <br>
 
@@ -815,7 +815,7 @@ LaravelではデフォルトでHandlerクラスが全てのステップをカバ
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/search.html?search=exception
+> ↪️ 参考：https://laravel.com/api/8.x/search.html?search=exception
 
 #### ▼ スタックトレース
 
@@ -831,7 +831,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
 ```bash
 [2021-09-00 00:00:00] local.ERROR: *****（エラーメッセージ）
@@ -885,7 +885,7 @@ Laravel内部でキャッチされた例外を基に、ロギングを実行す�
 
 
 
-> ℹ️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
+> ↪️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
@@ -919,7 +919,7 @@ class Handler extends ExceptionHandler
 
 Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。代わりとして、各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する。
 
-> ℹ️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
+> ↪️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
@@ -1146,7 +1146,7 @@ Active Recordのロジックを持たないため、Repositoryパターンのロ
 
 
 
-> ℹ️ 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
+> ↪️ 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
 **＊実装例＊**
 
@@ -1431,7 +1431,7 @@ Route::prefix("foos")->group(function () {
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
 **＊実装例＊**
 
@@ -1846,7 +1846,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
+> ↪️ 参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
 
 #### ▼ 一覧
 
@@ -1854,7 +1854,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-view
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-view
 
 <br>
 
@@ -1866,7 +1866,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 
 ```php
 <?php
@@ -1934,7 +1934,7 @@ return [
 
 ### ```bcrypt```ヘルパー
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
 
 ```php
 <?php
@@ -1946,7 +1946,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 ### ```redirect```ヘルパー
 
-> ℹ️ 参考：https://blog.capilano-fw.com/?p=566
+> ↪️ 参考：https://blog.capilano-fw.com/?p=566
 
 <br>
 
@@ -1960,7 +1960,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 
 
-> ℹ️ 参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
+> ↪️ 参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
 
 **＊実装例＊**
 
@@ -2059,7 +2059,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
 
 ```php
 <?php
@@ -2140,7 +2140,7 @@ $path = storage_path("app/file.txt");
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/5.7/ja/urls.html
+> ↪️ 参考：https://readouble.com/laravel/5.7/ja/urls.html
 
 ```php
 <?php
@@ -2167,7 +2167,7 @@ Farkerクラスは、プロパティにランダムなデータを保持して�
 
 
 
-> ℹ️ 参考：https://fwhy.github.io/faker-docs/
+> ↪️ 参考：https://fwhy.github.io/faker-docs/
 
 #### ▼ Factoryによるレコード定義
 
@@ -2210,7 +2210,7 @@ Factoryに対応するEloquentモデルで使用する必要がある。
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
 ```php
 class Foo
@@ -2350,7 +2350,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
 > - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
@@ -2547,7 +2547,7 @@ Routeファサードの```pattern```メソッドまたは```where```メソッド
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
 
 ```php
 <?php
@@ -2629,7 +2629,7 @@ return [
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
 > - https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
@@ -2644,7 +2644,7 @@ return [
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
 
 ```php
 <?php
@@ -2710,7 +2710,7 @@ class FooRequest extends FormRequest
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
 
 ```php
 <?php
@@ -2750,7 +2750,7 @@ class FooRequest extends FormRequest
 
 
 
-> ℹ️ 参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
+> ↪️ 参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
 
 **＊実装例＊**
 
@@ -2993,7 +2993,7 @@ class FooAfterMiddleware
 
 
 
-> ℹ️ 参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
+> ↪️ 参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
 
 #### ▼ StartSession
 
@@ -3001,7 +3001,7 @@ class FooAfterMiddleware
 
 
 
-> ℹ️ 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
+> ↪️ 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 
 また、同一セッションで一意なCSRFトークンを作成する。
 
@@ -3009,7 +3009,7 @@ CSRFトークンによるCSRFの防御については、以下のリンクを参
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
 
 #### ▼ VerifyCsrfToken
 
@@ -3021,7 +3021,7 @@ CSRFトークンによるCSRFの防御については、以下のリンクを参
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
 
 <br>
 
@@ -3130,7 +3130,7 @@ class Kernel extends HttpKernel
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
 
@@ -3171,7 +3171,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
 
@@ -3202,7 +3202,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://technote.space/posts/wpdb-laravel-get-url-parameter/
 > - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
@@ -3267,7 +3267,7 @@ Requestではなく、FormRequestを使用した方がバリデーションが�
 
 
 
-> ℹ️ 参考：https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
+> ↪️ 参考：https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
 
 ```php
 namespace App\Http\Controllers;
@@ -3303,7 +3303,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
 
 ```
 LOG_CHANNEL=<オプション名>
@@ -3324,7 +3324,7 @@ $ chmod -R 777 /var/www/foo/storage
 
 LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Laravelのログの出力先を変更しても、PHP-FPMのログの出力先は変更されない。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html
 
 #### ▼ ```stack```キー
 
@@ -3846,7 +3846,7 @@ $ php artisan migrate
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
 **＊実装例＊**
 
@@ -3870,7 +3870,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
 ```php
 Schema::create("foos", function (Blueprint $table) {
@@ -4013,7 +4013,7 @@ MailMessageクラスのメソッドを使用して、Eメール通知の内容�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message
 > - https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
@@ -4075,7 +4075,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ SMS通知内容の定義
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
 
 ```php
 <?php
@@ -4118,7 +4118,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ Slack通知内容の定義
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
 
 #### ▼ DB通知内容の定義
 
@@ -4126,7 +4126,7 @@ class TfaTokenNotification extends Notification
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
+> ↪️ 参考：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
 
 ```php
 <?php
@@ -4265,7 +4265,7 @@ Notifiableトレイトを継承する。
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
 
 ```php
 <?php
@@ -4287,7 +4287,7 @@ class User extends Authenticatable
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
 ```php
 <?php
@@ -4333,7 +4333,7 @@ Notification::send($users, new FooNotification());
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
 > - https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
@@ -4560,7 +4560,7 @@ class Kernel extends HttpKernel
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
 
 **＊実装例＊**
 
@@ -4616,7 +4616,7 @@ Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグ
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html
 
 ```html
 <form method="POST" action="/profile">
@@ -4627,7 +4627,7 @@ Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグ
 
 Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
@@ -4781,7 +4781,7 @@ DBファサードを使用するよりも。
 
 
 
-> ℹ️ 参考：https://i-407.com/blog/tech/n3/
+> ↪️ 参考：https://i-407.com/blog/tech/n3/
 
 ```php
 <?php
@@ -4938,7 +4938,7 @@ ServiceContainer、バインド、リゾルブについては、以下のリン�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 ```php
 <?php
@@ -4992,7 +4992,7 @@ Laravelでは、クラスはServiceContainerに自動的にバインドされて
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 
 **＊実装例＊**
 
@@ -5233,7 +5233,7 @@ class Interactor
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
 
 **＊実装例＊**
 
@@ -5409,7 +5409,7 @@ return [
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
 **＊実装例＊**
 
@@ -5457,7 +5457,7 @@ class RouteServiceProvider extends ServiceProvider
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
 
 **＊実装例＊**
 
@@ -5623,7 +5623,7 @@ FormRequestクラスの```session```メソッドはStoreクラスを返却する
 | ```pull```   | セッションのキー名を指定して、```1```個の値を取得し、取得後に削除する。                    |
 | ```has```    | セッションのキー名を指定して、値が存在しているかを検証する。```null```は```false```として判定する。 |
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Session/Store.html
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Session/Store.html
 
 **＊実装例＊**
 
@@ -5684,7 +5684,7 @@ Sessionクラスのメソッドは、```attribute```プロパティを使用し�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handle
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handleStatefulRequest
@@ -5727,7 +5727,7 @@ MessageBagクラスは、Blade上で```errors```変数に格納されており�
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
 **＊実装例＊**
 

@@ -11,7 +11,7 @@ description: カスタムリソース＠Kubernetesの知見を記録していま
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
@@ -88,7 +88,7 @@ the server could not find the requested resource
 
 ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはカスタムコントローラーを作成する必要がある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
 > - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
@@ -142,7 +142,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
@@ -165,7 +165,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
@@ -207,7 +207,7 @@ spec:
   ...
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 
 #### ▼ plural
@@ -227,7 +227,7 @@ spec:
     plural: foo
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 
 #### ▼ singular
@@ -251,7 +251,7 @@ spec:
 $ kubectl get foo
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 
 #### ▼ shortNames
@@ -276,7 +276,7 @@ spec:
 $ kubectl get foo
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 
 <br>
@@ -302,7 +302,7 @@ spec:
     - name: v1
 ```
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 
 #### ▼ served
@@ -324,7 +324,7 @@ spec:
     - served: true
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ schema
 
@@ -355,7 +355,7 @@ spec:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
@@ -378,7 +378,7 @@ spec:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
 > - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5

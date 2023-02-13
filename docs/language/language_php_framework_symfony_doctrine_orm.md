@@ -12,7 +12,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -24,7 +24,7 @@ Data Mapperパターンで実装されている。
 
 
 
-> ℹ️ 参考：https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/tutorials/getting-started.html
+> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/tutorials/getting-started.html
 
 <br>
 
@@ -38,7 +38,7 @@ CRUD処理に必要なSQLを保持し、トランザクションによってSQL�
 
 
 
-> ℹ️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
+> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
 
 **＊実装例＊**
 
@@ -159,7 +159,7 @@ SQLインジェクションについては、以下のリンクを参考にせ�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
 
 **＊実装例＊**
 
@@ -257,7 +257,7 @@ RDBの処理用語に相当する```beginTransaction```メソッド、```commit`
 
 
 
-> ℹ️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
+> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
 
 **＊実装例＊**
 

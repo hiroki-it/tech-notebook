@@ -11,7 +11,7 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -35,7 +35,7 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 コンテナの増加に合わせて要求量を動的に変更できるように、addon-resizerを使用する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer
 > - https://qiita.com/superbrothers/items/650d6591aa6531bdbd08
@@ -67,7 +67,7 @@ data:
     cpuPerNode: 1m
 ```
 
-> ℹ️ 参考：https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager
+> ↪️ 参考：https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager
 
 <br>
 
@@ -86,7 +86,7 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 ![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
@@ -149,7 +149,7 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件（負荷が激しく変化するようなシステム）でも合っている。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://sreake.com/blog/learn-about-karpenter/
 > - https://blog.inductor.me/entry/2021/12/06/165743
@@ -200,7 +200,7 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://sreake.com/blog/kubernetes-descheduler/
 > - https://torumakabe.github.io/post/k8s_descheduler/
@@ -217,7 +217,7 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
+> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
 
 #### ▼ LowNodeUtilization
 
@@ -225,7 +225,7 @@ Nodeのリソース（例：CPU、メモリ、など）が指定した閾値以�
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
+> ↪️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -252,7 +252,7 @@ Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でス�
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
+> ↪️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -266,7 +266,7 @@ strategies:
 
 調査中...
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -288,7 +288,7 @@ strategies:
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 
 ```yaml
@@ -304,7 +304,7 @@ strategies:
 
 調査中...
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 
 ```yaml
@@ -319,7 +319,7 @@ strategies:
 
 調査中...
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 
 ```yaml
@@ -360,7 +360,7 @@ KubernetesのNodeとPod（それ以外のKubernetesリソースは対象外）�
 
 似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://speakerdeck.com/bells17/metrics-server?slide=20
 > - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base
@@ -379,7 +379,7 @@ ServiceとAPIServiceを介して、クライアント（```kubectl```コマン�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
 > - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
@@ -403,7 +403,7 @@ $ kubectl top pod -n <任意のNamespace>
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
 
-> ℹ️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
+> ↪️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 
 
 <br>
@@ -440,7 +440,7 @@ metrics-serverから取得したPodに関するメトリクス値とターゲッ
 
 HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 > - https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/
@@ -453,7 +453,7 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
+> ↪️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
 
 ```mathematica
 (必要な最大Pod数)
@@ -474,7 +474,7 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 Podの垂直スケーリングを実行する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ccvanishing.hateblo.jp/entry/2018/10/02/203205
 > - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
@@ -492,7 +492,7 @@ Podの垂直スケーリングを実行する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12
 > - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet

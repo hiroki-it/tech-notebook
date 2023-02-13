@@ -13,7 +13,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：https://pm-rasinban.com/ut-it-st
+> ↪️ 参考：https://pm-rasinban.com/ut-it-st
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
 
@@ -42,7 +42,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.qbook.jp/column/20180806_667.html
 > - https://thinkit.co.jp/article/17647
@@ -86,7 +86,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
+> ↪️ 参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
 
 <br>
 
@@ -104,7 +104,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
@@ -120,7 +120,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 - Gatling（Scalaでシナリオ定義できる）
 - Taurus（他のロードテストツールのラッパー）
 
-> ℹ️ 参考：http://blog.father.gedow.net/2021/08/17/stress-tools/
+> ↪️ 参考：http://blog.father.gedow.net/2021/08/17/stress-tools/
 
 #### ▼ 事前作業
 
@@ -157,7 +157,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/#%E8%B2%A0%E8%8D%B7%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E6%B5%81%E3%82%8C
@@ -168,7 +168,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 - オートスケーリングがある場合とない場合で、ネットワークのパフォーマンス指標（スループット、レスポンスタイム、など）にどの程度の違いがあるかを確認する。
 
-> ℹ️ 参考：https://blog.studysapuri.jp/entry/school-communication-with-gatling
+> ↪️ 参考：https://blog.studysapuri.jp/entry/school-communication-with-gatling
 
 <br>
 
@@ -182,7 +182,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
@@ -201,7 +201,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
@@ -218,7 +218,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackify.com/what-is-load-testing/
 > - https://webrage.jp/techblog/non_functional_testing/
@@ -229,7 +229,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 - 実地的な負荷状況で、オートスケーリングが品質を満たしているか（有効に機能するか）を確認する。
 
-> ℹ️ 参考：https://blog.studysapuri.jp/entry/school-communication-with-gatling
+> ↪️ 参考：https://blog.studysapuri.jp/entry/school-communication-with-gatling
 
 <br>
 
@@ -242,7 +242,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 - Gatling（Scalaでシナリオ定義できる）
 - Taurus（他のロードテストツールのラッパー）
 
-> ℹ️ 参考：http://blog.father.gedow.net/2021/08/17/stress-tools/
+> ↪️ 参考：http://blog.father.gedow.net/2021/08/17/stress-tools/
 
 #### ▼ 事前作業
 
@@ -322,7 +322,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：https://e-words.jp/w/RPO.html
+> ↪️ 参考：https://e-words.jp/w/RPO.html
 
 #### ▼ RTO（目標復旧時間）
 
@@ -334,7 +334,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：https://e-words.jp/w/RTO.html
+> ↪️ 参考：https://e-words.jp/w/RTO.html
 
 <br>
 
@@ -393,7 +393,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：https://blog.cybozu.io/entry/2018/09/06/080000
+> ↪️ 参考：https://blog.cybozu.io/entry/2018/09/06/080000
 
 <br>
 
@@ -408,7 +408,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 - カナリアリリース中のテスト
 - カオスエンジニアリング
 
-> ℹ️ 参考：https://www.optimizely.com/optimization-glossary/testing-in-production/
+> ↪️ 参考：https://www.optimizely.com/optimization-glossary/testing-in-production/
 
 ### カオスエンジニアリング
 
@@ -428,7 +428,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://principlesofchaos.org/
 > - https://codezine.jp/article/detail/14526
@@ -437,7 +437,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 #### ▼ 手順
 
-> ℹ️ 参考：https://zenn.dev/hodagi/articles/3ce6ccdb00538c
+> ↪️ 参考：https://zenn.dev/hodagi/articles/3ce6ccdb00538c
 
 ```【１】```
 

@@ -11,7 +11,7 @@ description: トークン＠認証の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ Bear認証やOAuthのトークンとして使用できる。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://meetup-jp.toast.com/3511
 > - https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
@@ -71,7 +71,7 @@ JWTは以下のサイトから取得できる。
 
 
 
-> ℹ️ 参考：https://jwt.io/
+> ↪️ 参考：https://jwt.io/
 
 JWTの作成時に、例えばJavaScriptであれば、以下のような処理が実行されている。
 
@@ -154,7 +154,7 @@ const signature = HMACSHA256(
 | SameSiteCookie                              |             |   ⭕    | SPAとAPIが同一オリジンの必要がある。                               |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 > - https://blog.flatt.tech/entry/auth0_access_token_poc

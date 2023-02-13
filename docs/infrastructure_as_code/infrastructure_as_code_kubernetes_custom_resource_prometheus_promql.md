@@ -11,7 +11,7 @@ description: PromQL＠Prometheus
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: PromQL＠Prometheus
 
 
 
-> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
@@ -33,7 +33,7 @@ description: PromQL＠Prometheus
 
 
 
-> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Scalar
 
@@ -41,7 +41,7 @@ description: PromQL＠Prometheus
 
 
 
-> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ String
 
@@ -49,7 +49,7 @@ description: PromQL＠Prometheus
 
 
 
-> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 <br>
 
@@ -61,7 +61,7 @@ description: PromQL＠Prometheus
 
 
 
-> ℹ️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
+> ↪️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
 
 ```bash
 # 直近1時間に関して、Istioのistio-proxyコンテナが受信した総リクエストのデータポイントを、コンテナの種類ごとに集約する。
@@ -74,7 +74,7 @@ sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destinati
 
 
 
-> ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
+> ↪️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
@@ -82,7 +82,7 @@ rate関数のラッパーであり、rate関数の結果（平均増加率）に
 
 
 
-> ℹ️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+> ↪️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 ```bash
 # rate関数に期間（今回は5m）を自動的に掛けた数値を算出する。
@@ -99,7 +99,7 @@ increase(foo_metrics[5m])
 
 
 
-> ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
+> ↪️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 ```bash
 # 直近1時間に関して、foo_metricsの平均増加率（%/秒）を集計する。
@@ -115,7 +115,7 @@ rate(foo_metrics[1h])
 rate(foo_metrics[5m])
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
 > - https://christina04.hatenablog.com/entry/prometheus-rate
@@ -156,7 +156,7 @@ Prometheusが収集したデータポイントの合計数を表す。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -168,7 +168,7 @@ Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -179,7 +179,7 @@ Prometheusが作成したチャンクの合計数を表す。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -219,7 +219,7 @@ Prometheusで収集されたデータポイントの合計サイズ（KB/秒）�
 
 
 
-> ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> ↪️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -262,7 +262,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 1.2
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
 > - https://www.robustperception.io/how-much-space-does-the-wal-take-up/
@@ -292,7 +292,7 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 
 node-exporterの場合は、Nodeの```127.0.0.1:9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
-> ℹ️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
+> ↪️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
 
 ```bash
 # Node内でコールする。
@@ -320,7 +320,7 @@ NodeのCPU使用率を取得する。
 
 
 
-> ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
+> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
 
 ```bash
 rate(node_cpu_seconds_total[1m])
@@ -332,7 +332,7 @@ Nodeのメモリ使用率を取得する。
 
 
 
-> ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
+> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
 
 ```bash
 node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
@@ -344,7 +344,7 @@ Nodeのディスク使用率を取得する。
 
 
 
-> ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
+> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
 
 ```bash
 100 - (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100
@@ -378,7 +378,7 @@ A
 rate(node_disk_io_time_seconds_total[1m])
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc
 > - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
@@ -396,7 +396,7 @@ rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_tot
 rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
 ```
 
-> ℹ️ 参考：https://christina04.hatenablog.com/entry/prometheus-node-monitoring
+> ↪️ 参考：https://christina04.hatenablog.com/entry/prometheus-node-monitoring
 
 
 #### ▼ パケットの受信サイズ
@@ -405,7 +405,7 @@ Nodeのパケットの受信サイズを取得する。
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
+> ↪️ 参考：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
 
 ```bash
 node_network_receive_packets_total

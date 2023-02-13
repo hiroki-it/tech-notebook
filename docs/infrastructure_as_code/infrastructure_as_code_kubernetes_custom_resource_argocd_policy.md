@@ -11,7 +11,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -102,7 +102,7 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 └── prd/
 ```
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
 
 <br>
@@ -118,7 +118,7 @@ Applicationの```.resource```キー配下で、紐づく子Applicationを管理�
 ![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c
 > - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
@@ -220,7 +220,7 @@ infra-manifest-repository/
 
 
 
-> ℹ️ 参考：https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
+> ↪️ 参考：https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
 
 <br>
 
@@ -295,7 +295,7 @@ CDツールのServiceAccountを認証し、またClusterRoleの認可スコー�
 
 調査中...
 
-> ℹ️ 参考：https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
+> ↪️ 参考：https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
 
 <br>
 
@@ -344,7 +344,7 @@ spec:
     - '*'
 ```
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/pull/9755
+> ↪️ 参考：https://github.com/argoproj/argo-cd/pull/9755
 
 #### ▼ Applicationを削除できない
 
@@ -354,7 +354,7 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
+> ↪️ 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
 ```【１】```
 
@@ -366,7 +366,7 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
      この配列を空配列に変更する。ArgoCDのUIからは変更できず、```kubectl patch```コマンドを使用する必要がある。
 
-> ℹ️ 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+> ↪️ 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
 ```bash
 $ kubectl patch crd applications.argoproj.io \
@@ -411,7 +411,7 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 ### ヘルスチェックが終了しない
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
 
 <br>
 
@@ -421,7 +421,7 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
 > - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
@@ -462,7 +462,7 @@ ArgoCDには、ダッシュボード上から特定の```kubectl```コマンド�
 
 調査中...
 
-> ℹ️ 参考：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
+> ↪️ 参考：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 
 <br>
 

@@ -11,7 +11,7 @@ description: 可観測性の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ description: 可観測性の知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.thundra.io/observability-driven-development-for-serverless
 > - https://sookocheff.com/post/architecture/testing-in-production/
@@ -66,7 +66,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 また、AWSではCloudWatch（メトリクス+ログ）とX-Ray（分散トレース）を両方利用すると、これらの要素を満たせたことになり、可観測性を実現できる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
 > - https://knowledge.sakura.ad.jp/26395/
@@ -83,7 +83,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
 > - https://www.splunk.com/en_us/data-insider/what-is-opentelemetry.html
@@ -100,7 +100,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
 <br>
 
@@ -112,7 +112,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
 #### ▼ ログの持つ情報
 
@@ -131,7 +131,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 #### ▼ スパンの持つ情報
 
-> ℹ️ 参考：https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
+> ↪️ 参考：https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
 
 | 領域   | 内容      | 値                                                                                          |
 |--------|-----------|--------------------------------------------------------------------------------------------|
@@ -158,7 +158,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
@@ -224,7 +224,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://whatis.techtarget.com/definition/data-point
 > - https://aws.amazon.com/jp/about-aws/whats-new/2017/12/amazon-cloudwatch-alarms-now-alerts-you-when-any-m-out-of-n-metric-datapoints-in-an-interval-are-above-your-threshold/
@@ -247,7 +247,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 ストレージの空きサイズが増え、長期間のデータポイントを保管できるようになる
 
-> ℹ️ 参考：http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
+> ↪️ 参考：http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
 
 #### ▼ データポイントの重複排除
 
@@ -261,7 +261,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> ↪️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 <br>
 
@@ -273,7 +273,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
 
 #### ▼ 集計との違い
 
@@ -326,7 +326,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://codezine.jp/article/detail/11472
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes4.html
@@ -341,7 +341,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ℹ️ 参考：https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
+> ↪️ 参考：https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
 
 <br>
 
@@ -385,7 +385,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 
 
-> ℹ️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+> ↪️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 #### ▼ Centralized logging（集中ロギング）
 
@@ -395,7 +395,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 
 
-> ℹ️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+> ↪️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 <br>
 
@@ -411,7 +411,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 > - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
@@ -430,7 +430,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_connection-time.png)
 
-> ℹ️ 参考：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
+> ↪️ 参考：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
 
 
 
@@ -451,7 +451,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 | 親スパンIDヘッダー | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
@@ -462,7 +462,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 サービスメッシュのリバースプロキシは、分散トレースのためのメタデータ（例：トレースID、マイクロサービスの属性情報、など）を生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐づける機能を持たない。そのためマイクロサービス（クリーンアーキテクチャを採用している場合は、アプリのインフラストラクチャ層）で、受信したインバウンド通信のヘッダーから分散トレースのメタデータを取得し、アウトバウンド通信のヘッダーにメタデータを渡すような、実装が必要である。各分散トレースの収集ツール（例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray）ごとに、ヘッダーからメタデータを簡単に取り出せるパッケージを使用すると良い。インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
@@ -484,7 +484,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://opentracing.io/docs/overview/spans/
 > - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
@@ -509,7 +509,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 
 
-> ℹ️ 参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
+> ↪️ 参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
 
 <br>
 
@@ -519,7 +519,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 
 
-> ℹ️ 参考：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
+> ↪️ 参考：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
 
 **＊例＊**
 

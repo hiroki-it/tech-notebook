@@ -11,7 +11,7 @@ description: IAM＠Iで始まるAWSリソースの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -157,7 +157,7 @@ AWSリソースの識別子のこと。リージョンのグループには、``
 }
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+> ↪️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
 
 <br>
@@ -180,7 +180,7 @@ AWSリソースを作成した時に自動的に作成されるロール。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
 
 <br>
 

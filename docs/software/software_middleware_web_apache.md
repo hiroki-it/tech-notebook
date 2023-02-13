@@ -11,7 +11,7 @@ description: Apache＠Web系ミドルウェアの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,7 +29,7 @@ Apacheは、Apacheコアとモジュールから構成される。
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/120/1
+> ↪️ 参考：https://thinkit.co.jp/article/120/1
 
 ![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apache_architecture.png)
 
@@ -49,7 +49,7 @@ Apacheは、Apacheコアとモジュールから構成される。
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/mod_fcgid/
+> ↪️ 参考：https://httpd.apache.org/mod_fcgid/
 
 <br>
 

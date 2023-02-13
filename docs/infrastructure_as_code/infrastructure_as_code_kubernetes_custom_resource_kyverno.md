@@ -11,7 +11,7 @@ description: Kyverno＠カスタムリソースの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ kube-apiserverにマニフェストが送信した時、kube-apiserverのmutatin
 
 送信されたマニフェストの宣言が事前に設定されたルールに則っているかを検証し、もし則っていなければマニフェストの宣言を変更する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.squadcast.com/blog/kyverno-policy-management-in-kubernetes
 > - https://www.kreyman.de/index.php/others/linux-kubernetes/244-erhoehung-der-container-security-mit-kyverno

@@ -11,7 +11,7 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -37,7 +37,7 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内での�
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
 
 
-> ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
+> ↪️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
 
 <br>
 
@@ -49,7 +49,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sts_multi-account.png)
 
 
-> ℹ️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
+> ↪️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
 <br>
 
@@ -59,7 +59,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 任意のIDプロバイダーで認証されたユーザー（フェデレーテッドユーザー）にIAMロールを付与することで、AWSリソースにアクセスできるようにできる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
@@ -134,7 +134,7 @@ metadata:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
@@ -150,7 +150,7 @@ IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIA
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
+> ↪️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
 
 
 <br>
@@ -165,7 +165,7 @@ IAMユーザーの場合、外部IDが必要になる。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
 #### ▼ AWSリソース
 
@@ -175,7 +175,7 @@ IAMリソースの場合、外部IDが必要になる。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
 
 #### ▼ フェデレーテッドユーザー
 
@@ -185,7 +185,7 @@ OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
@@ -222,7 +222,7 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 }
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 
 #### ▼ 外部OIDC
@@ -251,7 +251,7 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
 }
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 
 
@@ -282,7 +282,7 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 }
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 
 <br>
@@ -392,7 +392,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 ```yaml
 # レスポンスデータ
@@ -437,7 +437,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 
 
-> ℹ️ 参考：https://stedolan.github.io/jq/
+> ↪️ 参考：https://stedolan.github.io/jq/
 
 
 ```bash

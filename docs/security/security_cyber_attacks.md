@@ -11,7 +11,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
+> ↪️ 参考：https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
 
 <br>
 
@@ -41,7 +41,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
+> ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
 ![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf.png)
 
@@ -51,7 +51,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 #### ▼ セッションID固定化とは
 
-> ℹ️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
+> ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
 
 ![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-fixation.png)
 

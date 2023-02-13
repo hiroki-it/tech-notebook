@@ -10,7 +10,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
 
-> ℹ️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
+> ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 
 <br>
@@ -34,7 +34,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -46,7 +46,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
+> ↪️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
 ### トレースエージェント
 
@@ -60,7 +60,7 @@ APMでは、分散トレースを元にして、マイクロサービス間の�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.datadoghq.com/agent/docker/apm/?tab=linux
 > - https://docs.datadoghq.com/tracing/#explore-datadog-apm
@@ -77,7 +77,7 @@ APMでは、分散トレースを元にして、マイクロサービス間の�
 
 ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 > - https://blog.serverworks.co.jp/k8s-datadog
@@ -88,7 +88,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
 > - https://docs.datadoghq.com/integrations/istio/
@@ -103,7 +103,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/metrics/#submitting-metrics-to-datadog
+> ↪️ 参考：https://docs.datadoghq.com/metrics/#submitting-metrics-to-datadog
 
 <br>
 
@@ -121,10 +121,10 @@ Datadogに送信されなくなったメトリクスは、時間経過ととも�
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/dashboards/faq/historical-data/
+> ↪️ 参考：https://docs.datadoghq.com/dashboards/faq/historical-data/
 
 <br>
 
 ## 04. 他テレメトリーとの相関付け
 
-> ℹ️ 参考：https://docs.datadoghq.com/logs/guide/correlate-logs-with-metrics/
+> ↪️ 参考：https://docs.datadoghq.com/logs/guide/correlate-logs-with-metrics/

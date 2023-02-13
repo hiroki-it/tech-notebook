@@ -11,7 +11,7 @@ description: 設定ファイル＠PHP-FPMの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -87,7 +87,7 @@ daemonize = yes
 ; See /etc/php-fpm.d/*.conf
 ```
 
-> ℹ️ 参考：https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
+> ↪️ 参考：https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
 
 <br>
@@ -106,7 +106,7 @@ NginxからPHP-FPMにインバウンド通信をルーティングする場合�
 
 補足として、『```www-data```』は```apache```プロセスのユーザー名のデフォルト値である。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
@@ -124,7 +124,7 @@ PHP-FPMの仕様では、同じプールに同じオプションを設定した�
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.kengotakimoto.com/posts/laravel_with_docker-compose
 > - https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template
@@ -194,7 +194,7 @@ pid = /run/php-fpm/php-fpm.pid
 
 PHP-FPMの```www```プロセスのプールを設定する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://hackers-high.com/linux/php-fpm-config/
@@ -217,7 +217,7 @@ PHP-FPMの```www```プロセスのプールを設定する。
 clear_env = no
 ```
 
-> ℹ️ 参考：https://takapi86.hatenablog.com/entry/2019/07/29/225558
+> ↪️ 参考：https://takapi86.hatenablog.com/entry/2019/07/29/225558
 
 
 <br>
@@ -348,7 +348,7 @@ PHPの```ini```ファイルで設定されたbool値のオプションを上書�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag
 > - https://www.php.net/manual/en/ini.list.php
@@ -374,7 +374,7 @@ PHPの```ini```ファイルで設定されたbool値以外のオプションを�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value
 > - https://www.php.net/manual/en/ini.list.php
@@ -400,7 +400,7 @@ PHPの```ini```ファイルで設定されたbool値のオプションを上書�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag
 > - https://www.php.net/manual/en/ini.list.php
@@ -428,7 +428,7 @@ PHPの```ini```ファイルで設定されたbool値以外のオプションを�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value
 > - https://www.php.net/manual/en/ini.list.php
@@ -443,7 +443,7 @@ PHPの```ini```ファイルで設定されたbool値以外のオプションを�
 
 
 
-> ℹ️ 参考：https://zapanet.info/blog/item/3364
+> ↪️ 参考：https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -462,7 +462,7 @@ php_value[session.save_handler] = redis
 
 
 
-> ℹ️ 参考：https://zapanet.info/blog/item/3364
+> ↪️ 参考：https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -488,7 +488,7 @@ php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 
 
 
-> ℹ️ 参考：https://life.iua.jp/?p=230
+> ↪️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -505,7 +505,7 @@ pm = dynamic
 
 
 
-> ℹ️ 参考：https://life.iua.jp/?p=230
+> ↪️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -520,7 +520,7 @@ pm.max_children = 50
 
 
 
-> ℹ️ 参考：https://life.iua.jp/?p=230
+> ↪️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -535,7 +535,7 @@ pm.max_spare_servers = 35
 
 
 
-> ℹ️ 参考：https://life.iua.jp/?p=230
+> ↪️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -548,7 +548,7 @@ pm.min_spare_servers = 5
 
 PHP-FPM起動時の子プロセス数を設定する。
 
-> ℹ️ 参考：https://life.iua.jp/?p=230
+> ↪️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]

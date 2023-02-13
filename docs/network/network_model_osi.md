@@ -11,7 +11,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -21,7 +21,7 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 
 
 
-> ℹ️ 参考：https://www.infraexpert.com/study/networking3.html
+> ↪️ 参考：https://www.infraexpert.com/study/networking3.html
 
 ![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデル.png)
 
@@ -37,7 +37,7 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 
 
 
-> ℹ️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+> ↪️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
 
@@ -87,7 +87,7 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 
 :    パケットをHTTPリクエストとして送信する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.infraexpert.com/study/networking3.html
 > - https://www.infraexpert.com/study/networking4.html
@@ -140,7 +140,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 :    サーバーにて、アプリケーションのプロセスが特定のポート番で受信している。アプリケーションによってパケットが処理される。
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
 
 
 <br>
@@ -152,7 +152,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
 
 ![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/tcp-ip_structure.png)
 
@@ -166,7 +166,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
 
 <br>
 
@@ -188,7 +188,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 $ sudo lsof -i -P | grep LISTEN
 ```
 
-> ℹ️ 参考：https://netdekagaku.com/netstat-command/
+> ↪️ 参考：https://netdekagaku.com/netstat-command/
 
 
 <br>
@@ -214,7 +214,7 @@ $ sudo lsof -i -P | grep LISTEN
 ![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/smtp_pop3_imap4.png)
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
+> ↪️ 参考：https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
 
 #### ▼ 送信側のメールサーバーのモック
@@ -229,7 +229,7 @@ Mailtrapがおすすめである。
 
 
 
-> ℹ️ 参考：https://mailtrap.io/
+> ↪️ 参考：https://mailtrap.io/
 
 <br>
 
@@ -301,7 +301,7 @@ GmailでPOPかIMAPを設定できる。
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4
 
 <br>
 
@@ -383,7 +383,7 @@ Unixで使用されるソケットのこと。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://en.wikipedia.org/wiki/Unix_domain_socket
 > - https://ascii.jp/elem/000/001/415/1415088/
@@ -411,7 +411,7 @@ unix://./etc/foo.sock
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E5%B1%A4
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E5%B1%A4
 
 <br>
 

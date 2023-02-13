@@ -11,7 +11,7 @@ description: PHPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -35,7 +35,7 @@ $ apt-get update
 $ apt -y install php=1.0.0
 ```
 
-> ℹ️ 参考：https://loop-never-ends.com/ubuntu-php-install/
+> ↪️ 参考：https://loop-never-ends.com/ubuntu-php-install/
 
 
 <br>
@@ -104,7 +104,7 @@ PHPの起動時の値を設定する。
 
 
 
-> ℹ️ 参考：https://www.php.net/manual/ja/configuration.file.php
+> ↪️ 参考：https://www.php.net/manual/ja/configuration.file.php
 
 ```bash
 $ php --ini
@@ -188,7 +188,7 @@ zend.assertions = 1
 mbstring.language = Japanese
 ```
 
-> ℹ️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+> ↪️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
 
 #### ▼ 本番環境用```php.ini```ファイル例
@@ -197,7 +197,7 @@ mbstring.language = Japanese
 
 元の値をコメントアウトで示す。
 
-> ℹ️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+> ↪️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
 ```ini
 zend.exception_ignore_args = on
@@ -271,7 +271,7 @@ opcache.preload_user = www-data
 
 
 
-> ℹ️ 参考：https://weblabo.oscasierra.net/php-opcache/
+> ↪️ 参考：https://weblabo.oscasierra.net/php-opcache/
 
 
 <br>

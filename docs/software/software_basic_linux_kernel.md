@@ -11,7 +11,7 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB
 
 <br>
 
@@ -37,7 +37,7 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
+> ↪️ 参考：https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
 
 ![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux_kernel_architecture.png)
 
@@ -55,7 +55,7 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - http://curtaincall.weblike.jp/portfolio-unix/api.html
 > - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
@@ -68,7 +68,7 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
+> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
 
 ![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux_kernel_system-call.png)
 
@@ -78,23 +78,23 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 #### ▼ プロセス管理
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_process_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_process_management.html
 
 #### ▼ メモリ管理
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_memory_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_memory_management.html
 
 #### ▼ ストレージ管理
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_storage_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_storage_management.html
 
 #### ▼ I/O（入出力）管理
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_io_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_io_management.html
 
 #### ▼ ジョブ管理
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_job_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_job_management.html
 
 #### ▼ 通信管理
 
@@ -102,7 +102,7 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> ↪️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 #### ▼ 運用管理
 
@@ -110,7 +110,7 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> ↪️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 #### ▼ 障害管理
 
@@ -118,6 +118,6 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 
 
-> ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> ↪️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 <br>

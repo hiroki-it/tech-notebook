@@ -11,7 +11,7 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries
 
 <br>
 
@@ -104,7 +104,7 @@ repository/
 - リソースタイプが同じであっても、同じ名前を付けられる。
 - 複数人が同時にTerraformの実装を修正する場合、異なる```.tfstate```ファイルの間では、誰かのプロビジョニングによって他の誰かのプロビジョニングを元に戻してしまうような、作業の衝突が起こらない。
 
-> ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+> ↪️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 
 #### ▼ 方法
@@ -239,7 +239,7 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 
 また、中間ディレクトリごとに```provider.tf```ファイルを作成する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://zoo200.net/terraform-tutorial-module-and-directory/
 > - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
@@ -255,7 +255,7 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
 > - https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
@@ -386,7 +386,7 @@ repository/
 
 
 
-> ℹ️ 参考：https://sreake.com/blog/terraform-state-structure/
+> ↪️ 参考：https://sreake.com/blog/terraform-state-structure/
 
 ```yaml
 repository/
@@ -576,7 +576,7 @@ repository/
 
 
 
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
 
 ```yaml
 repository/
@@ -649,7 +649,7 @@ service           = "bar"
 
 
 
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention
 
 ```terraform
 # 種類が無い時（thisの時）
@@ -670,7 +670,7 @@ service           = "bar"
 
 
 
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
 **＊実装例＊**
 
@@ -697,7 +697,7 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 
 
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
 ```terraform
 enable_foo = true
@@ -1145,7 +1145,7 @@ Makefileのコマンドを実行する前に、```provider.tf```ファイルの`
 
 
 
-> ℹ️ 参考：https://repl.info/archives/1435/
+> ↪️ 参考：https://repl.info/archives/1435/
 
 ```terraform
 terraform {
@@ -1185,7 +1185,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 ## 06. CIツールに関する脆弱性対策
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_policy.html
@@ -1211,7 +1211,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 > - https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9
@@ -1259,7 +1259,7 @@ resource "aws_rds_cluster" "this" {
 
 
 
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state
 
 <br>
 
@@ -1269,7 +1269,7 @@ resource "aws_rds_cluster" "this" {
 
 
 
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs
 
 <br>
 
@@ -1307,7 +1307,7 @@ Terraformでは、マイナーバージョン単位でアップグレードを�
 
 
 
-> ℹ️ 参考：https://www.terraform.io/upgrade-guides/1-0.html 
+> ↪️ 参考：https://www.terraform.io/upgrade-guides/1-0.html 
 
 #### ```【４】``` terraform planコマンドの警告/エラーを解決
 
@@ -1331,7 +1331,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - Terraform：https://www.terraform.io/language/upgrade-guides
 > - AWSプロバイダー：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-4-upgrade
@@ -1370,6 +1370,39 @@ terraform-docsを使用して、```variable```ブロック、```output```ブロ�
 $ terraform-docs markdown . --output-file=README.md
 ```
 
+```TF_DOCS```タグで囲われた場所のみを自動的に追記/更新してくれる。
+
+```markdown
+# foo-terraformリポジトリ
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+...
+
+## Providers
+
+...
+
+## Modules
+
+...
+
+## Resources
+
+...
+
+## Inputs
+
+...
+
+## Outputs
+
+...
+
+<!-- END_TF_DOCS -->
+```
+
 <br>
 
 ### 各ブロックのホワイトボックステスト
@@ -1398,7 +1431,7 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 
 
 
-> ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> ↪️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 #### ▼ 単体テスト
 
@@ -1412,7 +1445,7 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 
 残骸のリソースが残ることがあるため、合わせてテスト環境の全てのリソースをツール（例：cloud-nuke）で削除する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test
@@ -1429,7 +1462,7 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 
 残骸のリソースが残ることがあるため、合わせてテスト環境の全てのリソースをツール（例：cloud-nuke）で削除する。
 
-> ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> ↪️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 <br>
 
@@ -1525,7 +1558,7 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 ステージング環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する
 
-> ℹ️ 参考：https://www.infracloud.io/blogs/testing-iac-terratest/
+> ↪️ 参考：https://www.infracloud.io/blogs/testing-iac-terratest/
 
 #### ▼ 総合テスト（擬似的総合テストも含む）
 
@@ -1535,7 +1568,7 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 
 
-> ℹ️ 参考：https://docs.localstack.cloud/ci/
+> ↪️ 参考：https://docs.localstack.cloud/ci/
 
 
 <br>
@@ -1594,7 +1627,7 @@ RDSの項目として書かれており、Auroraではないが、おおよそ�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
 <br>
 

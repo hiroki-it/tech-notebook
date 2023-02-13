@@ -11,7 +11,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -32,7 +32,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 
 
-> ℹ️ 参考：https://jpazamu.com/thread_process/#index_id5
+> ↪️ 参考：https://jpazamu.com/thread_process/#index_id5
 
 <br>
 
@@ -42,7 +42,7 @@ OSが起動している間、メモリ上のアドレス空間の区画に恒常
 
 
 
-> ℹ️ 参考：https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html
+> ↪️ 参考：https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html
 
 <br>
 
@@ -68,7 +68,7 @@ PID  TTY  TIME     CMD
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
@@ -102,7 +102,7 @@ PID  TTY  TIME     CMD
 ![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
 > - https://webpia.jp/thread_process/
@@ -120,7 +120,7 @@ PID  TTY  TIME     CMD
 
 
 
-> ℹ️ 参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
+> ↪️ 参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
 
 #### ▼ 確認方法
 
@@ -134,7 +134,7 @@ Jan  1 00:00:00 localhost kernel: Out of memory: Kill process 17143 (java) score
 Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-vm:7790724kB, anon-rss:4108910kB, file-rss:6822kB, shmem-rss:0kB
 ```
 
-> ℹ️ 参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
+> ↪️ 参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
 
 
 <br>
@@ -150,7 +150,7 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 ![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
 > - https://webpia.jp/thread_process/
@@ -174,7 +174,7 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 
 
-> ℹ️ 参考：https://webpia.jp/thread_process/
+> ↪️ 参考：https://webpia.jp/thread_process/
 
 ![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multi-thread.png)
 
@@ -189,7 +189,7 @@ CPUのコアが単一のスレッドが紐付くようなマルチスレッド�
 ![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
 
 
-> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 
 #### ▼ 同時マルチスレッド
@@ -199,7 +199,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
 
 
-> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 
 <br>

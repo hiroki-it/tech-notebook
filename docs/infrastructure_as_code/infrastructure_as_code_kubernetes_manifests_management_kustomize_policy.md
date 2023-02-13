@@ -11,7 +11,7 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
+> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 
 ```yaml
 repository/

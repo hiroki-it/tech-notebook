@@ -11,7 +11,7 @@ description: ストレージ＠ハードウェアの知見を記録していま�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -48,7 +48,7 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://jisaku-pc.net/hddnavi/disk_drive.html
 > - https://pctrouble.net/storage/disk_drive.html
@@ -65,7 +65,7 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p184-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-1.png)
 
@@ -86,7 +86,7 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RAIDの種類.png)
 
-> ℹ️ 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
+> ↪️ 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 
 
 <br>

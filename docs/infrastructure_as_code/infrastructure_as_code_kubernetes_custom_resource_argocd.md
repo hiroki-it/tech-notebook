@@ -11,7 +11,7 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -37,7 +37,7 @@ argocd-dex-server-*****                 1/1     Running   0          1d
 ![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 > - https://www.techmanyu.com/setup-a-gitops-deployment-model-on-your-local-development-environment-with-k3s-k3d-and-argocd-4be0f4f30820
@@ -75,7 +75,7 @@ Applicationから返却された情報（例：マニフェストの差分）を
 
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
@@ -99,7 +99,7 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "ls -la /tmp"
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
@@ -138,7 +138,7 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-repository && helm template foo-chart -f values-prd.yaml"
 ```
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
+> ↪️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
 
 
 <br>
@@ -178,7 +178,7 @@ Applicationが管理するKubernetesリソースのマニフェストと、監�
 
 この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
 > - https://weseek.co.jp/tech/95/#i-7
@@ -194,7 +194,7 @@ repo-server内のマニフェストのキャッシュを作成し、これを管
 
 ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://weseek.co.jp/tech/95/
 > - https://blog.manabusakai.com/2021/04/argo-cd-cache/
@@ -211,7 +211,7 @@ ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズ�
 
 ```dex-server```の起動に失敗すると、外部Webサイトに情報を送信できずにSSOに失敗してしまう。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://weseek.co.jp/tech/95/
 > - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
@@ -233,7 +233,7 @@ ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.vpantry.net/2021/01/cicd-2/
 > - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
@@ -251,7 +251,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 
 
-> ℹ️ 参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
+> ↪️ 参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
 
 <br>
 
@@ -285,7 +285,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 :    ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-> ℹ️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+> ↪️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
 #### ▼ テンプレート構成管理ツールを使用した場合
 
@@ -320,7 +320,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 ![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks_helm.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
@@ -345,7 +345,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 ![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_gcp.png)
 
 
-> ℹ️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
+> ↪️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 
 
 <br>

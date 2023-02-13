@@ -11,7 +11,7 @@ description: API Gatewayへのymlインポート＠AWSの知見を記録して�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルに
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 
 <br>
 
@@ -33,7 +33,7 @@ API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルに
 
 該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために ```x-amazon-apigateway-integration```キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
 
 各種パラメーターもマッピングできる。
 
@@ -41,13 +41,13 @@ API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルに
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
 
 統合レスポンスからメソッドレスポンスへのマッピングについては、以下のリンクを参考にせよ。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
 #### ▼ セットアップ（VPCリンク&プロキシ統合）
 
@@ -223,7 +223,7 @@ Swagger EditorでAPIの仕様書の```.html```ファイルを確認できる。
 
 
 
-> ℹ️ 参考：https://editor.swagger.io/
+> ↪️ 参考：https://editor.swagger.io/
 
  - OpenAPI仕様のバージョン2.0と3.0に対応している。
  - ```x-amazon-apigateway-integration```キーを各HTTPメソッドに定義する。
@@ -241,7 +241,7 @@ Swagger EditorでAPIの仕様書の```.html```ファイルを確認できる。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
 
 <br>
 

@@ -10,7 +10,7 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -142,7 +142,7 @@ foo($data);
 
 
 
-> ℹ️ 参考：https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
+> ↪️ 参考：https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
 
 #### ▼ オブジェクト指向の場合
 
@@ -537,7 +537,7 @@ PHPには最初からマジックメソッドは組み込まれているが、�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 **＊実装例＊**
 
@@ -837,7 +837,7 @@ $D = objB()->objC()->objC();
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_algorithm.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_algorithm.html
 
 ```【１】```
 
@@ -1077,7 +1077,7 @@ $dispatcher->dispatch("foo", "test");
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_symfony_component.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_symfony_component.html
 
 ```php
 <?php
@@ -1527,7 +1527,7 @@ final class FlagConstant
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ 数値計算、数値比較
 
@@ -1539,7 +1539,7 @@ final class FlagConstant
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ URL
 
@@ -1937,7 +1937,7 @@ var_dump($result); // true
 
 
 
-> ℹ️ 参考：https://www-creators.com/archives/3102
+> ↪️ 参考：https://www-creators.com/archives/3102
 
 **＊実装例＊**
 
@@ -1963,7 +1963,7 @@ var_dump($result); // 1
 
 
 
-> ℹ️ 参考：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
+> ↪️ 参考：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
 
 **＊実装例＊**
 
@@ -1994,7 +1994,7 @@ var_dump($result); // 1
 
 
 
-> ℹ️ 参考：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
+> ↪️ 参考：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
 
 ```php
 <?php
@@ -2041,7 +2041,7 @@ var_dump($result); // 1
 
 
 
-> ℹ️ 参考：http://www.turtle.gr.jp/techno/regular-expression.html
+> ↪️ 参考：http://www.turtle.gr.jp/techno/regular-expression.html
 
 ```php
 <?php

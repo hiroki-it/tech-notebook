@@ -11,7 +11,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - http://tooljp.com/jyosho/docs/ACID/ACID.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1801/31/news011.html
@@ -82,7 +82,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### 一連の流れ
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
@@ -110,7 +110,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://oss-db.jp/dojo/dojo_01
+> ↪️ 参考：https://oss-db.jp/dojo/dojo_01
 
 #### ▼ PDOによるRDBの書き込み系の操作
 
@@ -151,7 +151,7 @@ try{
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_symfony_component.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_symfony_component.html
 
 <br>
 
@@ -174,7 +174,7 @@ try{
 ![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
 
-> ℹ️ 参考：https://www.kimullaa.com/posts/201910271500/
+> ↪️ 参考：https://www.kimullaa.com/posts/201910271500/
 
 
 #### ▼ WAL：Write ahead log（ログ先行書き込み）
@@ -191,7 +191,7 @@ try{
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://gihyo.jp/dev/serial/01/db-academy/000202
 > - https://www.kimullaa.com/posts/201910271500/
@@ -208,7 +208,7 @@ try{
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 ![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トランザクション.jpg)
 
@@ -222,7 +222,7 @@ try{
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 #### ▼ システム障害からの回復
 
@@ -244,7 +244,7 @@ try{
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 #### ▼ システム障害からの回復
 
@@ -267,7 +267,7 @@ try{
 ![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/媒体障害の障害回復機能.jpg)
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 
 **＊例＊**
@@ -333,7 +333,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 
 
-> ℹ️ 参考：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
+> ↪️ 参考：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
 
 ![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-1.png)
 
@@ -355,7 +355,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 | 共有/占有ロック     | DBによるロック機能。            |
 | 楽観的/悲観的ロック | アプリケーションまたはDBによるロック機能。 |
 
-> ℹ️ 参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
+> ↪️ 参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 
 #### ▼ UPDATE処理競合問題の許容
 
@@ -381,7 +381,7 @@ MySQLでは、『```SELECT ... LOCK IN SHARE MODE```』を使用する。
 
 
 
-> ℹ️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
+> ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ 占有ロック
 
@@ -393,7 +393,7 @@ MySQLでは、『```SELECT ... FOR UPDATE```』を使用する。
 
 
 
-> ℹ️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
+> ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ デッドロック現象
 
@@ -428,7 +428,7 @@ UPDATE処理のためにユーザAがDBのレコードを取得した時に、�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
 > - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
@@ -443,7 +443,7 @@ UPDATE処理のためにユーザAがDBのレコードを取得した時に、�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
 > - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
@@ -456,7 +456,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.9/reference/transactions-and-concurrency.html#locking-support
 > - https://qiita.com/tatsurou313/items/053cffdfe940a89d7f5a#or-%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%A5%BD%E8%A6%B3%E7%9A%84%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E5%AE%9F%E8%A3%85%E6%9C%89%E7%84%A1
@@ -495,7 +495,7 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/40615565/test-performance-rollback-vs-restoring-point
 > - https://dev.mysql.com/doc/refman/8.0/en/point-in-time-recovery.html
@@ -511,9 +511,9 @@ SQLの種類に合わせてツールが用意されている。
 
 | SQLの種類   | ポイントインタイムリカバリーのツール例 | 補足                                                                 |
 |------------|----------------------|--------------------------------------------------------------------|
-| MySQL      | XtraBackup           | ℹ️ 参考：https://developers.cyberagent.co.jp/blog/archives/28454/     |
-| PostgreSQL | Barman               | ℹ️ 参考：https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
-| MariaDB    | Xpand                | ℹ️ 参考：https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
+| MySQL      | XtraBackup           | ↪️ 参考：https://developers.cyberagent.co.jp/blog/archives/28454/     |
+| PostgreSQL | Barman               | ↪️ 参考：https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
+| MariaDB    | Xpand                | ↪️ 参考：https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
 
 ```bash
 # 例えば、一週間分の保管期間を設定した場合

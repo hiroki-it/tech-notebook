@@ -11,7 +11,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.victoriametrics.com/#downsampling
 > - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
@@ -55,7 +55,7 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
@@ -91,7 +91,7 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 
 
-> ℹ️ 参考：https://docs.victoriametrics.com/#storage
+> ↪️ 参考：https://docs.victoriametrics.com/#storage
 
 **＊例＊**
 
@@ -109,7 +109,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.victoriametrics.com/#retention
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/

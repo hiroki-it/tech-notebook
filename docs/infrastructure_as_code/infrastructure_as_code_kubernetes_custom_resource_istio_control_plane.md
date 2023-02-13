@@ -10,7 +10,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/1617295825
 > - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
@@ -122,11 +122,11 @@ spec:
 ```
 
 
-> ℹ️ 参考：https://github.com/istio/istio/blob/master/pilot/pkg/bootstrap/server.go#L412-L476
+> ↪️ 参考：https://github.com/istio/istio/blob/master/pilot/pkg/bootstrap/server.go#L412-L476
 
 Dockerfileとしては、最後に```pilot-discovery```プロセスを実行している。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.pilot
 > - https://zenn.dev/link/comments/e8a978a00c6325
@@ -137,7 +137,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 
 そのため、```pilot-discovery```プロセスの実体は、GitHubの```pilot-discovery```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。
 
-> ℹ️ 参考：https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
+> ↪️ 参考：https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
 
 #### ▼ HorizontalPodAutoscaler
 
@@ -222,9 +222,11 @@ Podの作成/更新時にwebhookサーバーにリクエストを送信できる
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: istio-sidecar-injector-<リビジョン番号>
+  name: istio-revision-tag-stable
   labels:
     app: sidecar-injector
+    istio.io/rev: <リビジョン番号>
+    istio.io/tag: <エイリアス>
 webhooks:
   - name: rev.namespace.sidecar-injector.istio.io
     # mutating-admissionステップ発火条件を登録する。
@@ -252,7 +254,7 @@ webhooks:
         - key: istio.io/rev
           operator: In
           values:
-            - <リビジョン番号>
+            - <エイリアス>
 ```
 
 <br>
@@ -265,7 +267,7 @@ webhooks:
 
 pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cloudnative.to/blog/istio-pilot-3/
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
@@ -319,7 +321,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307-L348
@@ -327,7 +329,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
 
-> ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
+> ↪️ 参考：https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
 
 
 <br>
@@ -362,7 +364,7 @@ tcp6       0      0 :::15014                :::*                    LISTEN      
 
 
 
-> ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
+> ↪️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
 
 ```bash
 # ポートフォワーディングを実行する。
@@ -389,7 +391,7 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/docs/ops/diagnostic-tools/controlz/
 > - https://jimmysong.io/en/blog/istio-components-and-ports/
@@ -407,7 +409,7 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 ```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
 
-> ℹ️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
+> ↪️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
 ![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
 
@@ -417,7 +419,7 @@ Istiodコントロールプレーンは、サービスレジストリ（例：et
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://juejin.cn/post/7028572651421433892
 > - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
@@ -442,7 +444,7 @@ Istiodコントロールプレーンは、サービスレジストリ（例：et
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
+> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 
 
 <br>
@@ -463,7 +465,7 @@ $ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system
 $ curl http://127.0.0.1:15014/debug
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
 > - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#istio-%E8%B0%83%E8%AF%95%E6%8E%A5%E5%8F%A3

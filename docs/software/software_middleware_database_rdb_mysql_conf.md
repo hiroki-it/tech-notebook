@@ -11,7 +11,7 @@ description: 設定ファイル＠MySQLの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -132,7 +132,7 @@ dockerエリアのマウントポイントとして指定される。
 
 
 
-> ℹ️ 参考：https://dev.mysql.com/doc/refman/8.0/ja/data-directory.html
+> ↪️ 参考：https://dev.mysql.com/doc/refman/8.0/ja/data-directory.html
 
 ```bash
 [root@<コンテナID>:/var/lib/mysql] $ ls -la

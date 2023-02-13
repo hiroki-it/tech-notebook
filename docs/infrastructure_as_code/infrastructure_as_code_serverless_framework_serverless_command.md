@@ -11,7 +11,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -21,7 +21,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 #### ▼ printとは
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
+> ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
 
 ```bash
 $ serverless print
@@ -43,7 +43,7 @@ $ serverless print --FOO foo
 
 
 
-> ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
+> ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
 
 ```bash

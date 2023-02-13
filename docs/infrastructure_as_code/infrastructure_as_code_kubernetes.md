@@ -11,7 +11,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -24,7 +24,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 ![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/components/
+> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/components/
 
 
 <br>
@@ -56,7 +56,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 | kube-apiserver                                     | front-proxy    | SSL証明書    | 調査中...                                                                                 | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                               |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
 > - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
@@ -76,7 +76,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 Kubernetesでは非常に多くの証明書があるため、期限切れの証明書を特定することは大変である。
 
-> ℹ️ 参考：https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
+> ↪️ 参考：https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
 
 ```bash
 $ cat <証明書が設定されたConfigのマニフェストへのパス> \
@@ -105,7 +105,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 ```kubelet```プロセスの実行時に、```--rotate-certificates```オプションを有効化すると、証明書の更新処理を自動化できる。
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation
+> ↪️ 参考：https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation
 
 
 <br>

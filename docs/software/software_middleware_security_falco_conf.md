@@ -11,7 +11,7 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -34,7 +34,7 @@ $ kubectl create namespace falco
 $ helm install <リリース名> <リポジトリ名>/falco -n falco --version <バージョンタグ>
 ```
 
-> ℹ️ 参考：https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
+> ↪️ 参考：https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
 
 
 <br>
@@ -43,7 +43,7 @@ $ helm install <リリース名> <リポジトリ名>/falco -n falco --version <
 
 ### 設定ファイルの例
 
-> ℹ️ 参考：https://github.com/falcosecurity/falco/blob/master/falco.yaml
+> ↪️ 参考：https://github.com/falcosecurity/falco/blob/master/falco.yaml
 
 <br>
 
@@ -64,7 +64,7 @@ rules_file:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/falcosecurity/falco/tree/master/rules
 > - https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90

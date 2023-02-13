@@ -11,7 +11,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -48,7 +48,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
 > - https://embedded.hatenadiary.org/entry/20081101/p3
@@ -173,7 +173,7 @@ $ yum list | grep <検索文字>
 
 
 
-> ℹ️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
+> ↪️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
 ```bash
 $ yum repolist all
@@ -329,7 +329,7 @@ Linuxで使用できるパッケージを管理する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.brew.sh/FAQ#how-do-i-keep-old-versions-of-a-formula-when-upgrading
 > - https://christina04.hatenablog.com/entry/install-old-version-with-homebrew
@@ -338,7 +338,7 @@ Linuxで使用できるパッケージを管理する。
 
 パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。事前に```--dry-run```オプションを有効化し、対象のパッケージを確認すると良い。
 
-> ℹ️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
+> ↪️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
 
 ```bash
 $ brew autoremove --dry-run
@@ -352,7 +352,7 @@ $ brew autoremove
 
 
 
-> ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
 $ brew cleanup
@@ -396,7 +396,7 @@ brewによって```~/usr/local/Cellar ```ディレクトリにインストール
 
 
 
-> ℹ️ 参考：https://hacknote.jp/archives/23816/
+> ↪️ 参考：https://hacknote.jp/archives/23816/
 
 ```bash
 $ brew link <パッケージ名>
@@ -408,7 +408,7 @@ brew本体をアップグレードする。
 
 
 
-> ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
 $ brew update
@@ -420,7 +420,7 @@ brew本体とパッケージの両方をアップグレードする。
 
 
 
-> ℹ️ 参考：https://www.curict.com/item/bc/bcc0607.html
+> ↪️ 参考：https://www.curict.com/item/bc/bcc0607.html
 
 ```bash
 $ brew upgrade
@@ -467,7 +467,7 @@ sops <バージョン>
 
 
 
-> ℹ️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+> ↪️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 ```bash
 $ brew install asdf

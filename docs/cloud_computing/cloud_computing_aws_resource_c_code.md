@@ -11,7 +11,7 @@ description: Code系＠Cで始まるAWSリソースの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -62,7 +62,7 @@ ECSのために、CodeBuildの設定を行う。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/ecs-cd-pipeline.html
@@ -109,7 +109,7 @@ artifacts:
   files: imageDetail.json
 ```
 
-> ℹ️ 参考：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
+> ↪️ 参考：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
 
 
 <br>
@@ -122,19 +122,19 @@ artifacts:
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
 ### インプレースデプロイメント
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
 
 <br>
 
 ### ブルー/グリーンデプロイメント
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
 
 <br>
 
@@ -146,7 +146,7 @@ artifacts:
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
@@ -158,7 +158,7 @@ artifacts:
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
@@ -179,7 +179,7 @@ artifacts:
 ]
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
@@ -231,7 +231,7 @@ artifacts:
 :    元の旧環境（Prodブルー）は削除される。
 
 
-> ℹ️ 参考：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
+> ↪️ 参考：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
 
 #### ▼ ```appspec.yml```ファイル
 
@@ -257,7 +257,7 @@ Resources:
 ```
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
 
 
 #### ▼ ```imageDetail.json```ファイル
@@ -266,7 +266,7 @@ Resources:
 
 これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
@@ -348,7 +348,7 @@ CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
@@ -360,7 +360,7 @@ CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを
 
 ### オートスケーリング
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
 
 <br>
 
@@ -376,6 +376,6 @@ CodeDeployのデプロイの途中、ターゲットグループからインス�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 
 <br>

@@ -11,7 +11,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -38,7 +38,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 ![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_remote-storage_architecture.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 > - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
@@ -51,7 +51,7 @@ vm-agent、vm-storage、vm-alert、から構成されている。また、アラ
 
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_monitoring_architecture.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 > - https://www.sobyte.net/post/2022-05/vmalert/
@@ -79,7 +79,7 @@ $ curl \
     -d 'query=vm_http_request_errors_total'
 ```
 
-> ℹ️ 参考：https://docs.victoriametrics.com/url-examples.html#apiv1query
+> ↪️ 参考：https://docs.victoriametrics.com/url-examples.html#apiv1query
 
 
 #### ▼ 書き込みエンドポイント
@@ -94,7 +94,7 @@ PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイン
 $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 ```
 
-> ℹ️ https://docs.victoriametrics.com/#high-availability
+> ↪️ https://docs.victoriametrics.com/#high-availability
 
 <br>
 
@@ -118,7 +118,7 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 
 
 
-> ℹ️ 参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
+> ↪️ 参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
 
 #### ▼ ディレクトリ構成
 
@@ -152,19 +152,19 @@ $ du -hs /var/lib/victoriametrics/data
 
 vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
 
-> ℹ️ 参考：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
+> ↪️ 参考：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
 
 #### ▼ 保管期間
 
 vm-storageは、一定期間だけ経過したメトリクスファイル（主に、```data```ディレクトリ、```indexdb```ディレクトリ、の配下など）を削除する。VictoriaMetricsの起動時に、```victoria-metrics-prod```コマンドの```-retentionPeriod```オプションで指定できる。
 
-> ℹ️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> ↪️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 #### ▼ ストレージの必要サイズの見積もり
 
 vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量（日）を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
 
-> ℹ️ 参考：https://docs.victoriametrics.com/#capacity-planning
+> ↪️ 参考：https://docs.victoriametrics.com/#capacity-planning
 
 **＊例＊**
 
@@ -266,7 +266,7 @@ $ systemctl start victoriametrics
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/package/victoria-metrics.service
 > - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/

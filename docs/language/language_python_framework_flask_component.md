@@ -11,7 +11,7 @@ description: コンポーネント＠Flaskの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,7 +29,7 @@ WSGIアプリケーションの実行に関するメソッドを持つ。
 
 
 
-> ℹ️ 参考：https://flask.palletsprojects.com/Ien/2.0.x/api/
+> ↪️ 参考：https://flask.palletsprojects.com/Ien/2.0.x/api/
 
 ```python
 from flask import Flask
@@ -75,7 +75,7 @@ PREFIX_FOO = "foo"
 
 
 
-> ℹ️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
+> ↪️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
 
 ```python
 from flask import Flask
@@ -92,7 +92,7 @@ app.run()
 
 #### ▼ 引数
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
@@ -125,7 +125,7 @@ app.run()
 | ```module```            | モジュール名（ファイル名）を設定する。          |
 | ```file.py```           | ファイル名を設定する。                   |
 
-> ℹ️ 参考：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
+> ↪️ 参考：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 
 <br>
 
@@ -139,7 +139,7 @@ Pythonのコードを配置するディレクトリに```__init__.py```ファイ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
 > - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
@@ -167,7 +167,7 @@ def create_app():
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
+> ↪️ 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 
 ```python
 from src import create_app
@@ -188,7 +188,7 @@ if __name__ == '__main__':
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
 > - https://serip39.hatenablog.com/entry/2020/07/06/070000

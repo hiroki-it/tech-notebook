@@ -11,7 +11,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -40,7 +40,7 @@ SPAでは、ページ全体の静的ファイルをリクエストするのは�
 
 
 
-> ℹ️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
+> ↪️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 
 ![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SPアプリにおけるデータ通信の仕組み.png)
 
@@ -58,7 +58,7 @@ Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるよう�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_framework_vuejs.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_framework_vuejs.html
 
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
 
@@ -73,7 +73,7 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 ![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
 
 
-> ℹ️ 参考：https://www.switchitmaker2.com/seo/spa/
+> ↪️ 参考：https://www.switchitmaker2.com/seo/spa/
 
 
 #### ▼ SEO
@@ -82,7 +82,7 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 
 
 
-> ℹ️ 参考：https://www.switchitmaker2.com/seo/spa/
+> ↪️ 参考：https://www.switchitmaker2.com/seo/spa/
 
 <br>
 
@@ -105,7 +105,7 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 | Paiting         | ブラウザ   |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
 > - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
@@ -122,7 +122,7 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/rita0222/items/66fec6e7be5987bace3c
 > - https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89<br>
@@ -157,7 +157,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 
 
-> ℹ️ 参考：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
+> ↪️ 参考：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
 
 <br>
 
@@ -169,7 +169,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 
 
-> ℹ️ 参考：https://atomicdesign.bradfrost.com/
+> ↪️ 参考：https://atomicdesign.bradfrost.com/
 
 <br>
 
@@ -179,7 +179,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 
 
-> ℹ️ 参考：https://tec.tecotec.co.jp/entry/2020/03/27/090000
+> ↪️ 参考：https://tec.tecotec.co.jp/entry/2020/03/27/090000
 
 | Nuxt.jsのディレクトリ | Atomic Designのレイヤー        |
 |----------------|---------------------------|

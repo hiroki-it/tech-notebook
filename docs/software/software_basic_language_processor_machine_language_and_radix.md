@@ -11,7 +11,7 @@ description: 機械語と進数の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -59,7 +59,7 @@ description: 機械語と進数の知見を記録しています。
 
 1000 Byte = 1k Byte
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p106](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p106.png)
 
@@ -410,7 +410,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 無限小数
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p067-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p067-1.png)
 
@@ -428,7 +428,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p068](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p068.png)
 
@@ -436,7 +436,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 情報落ち
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p069](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p069.png)
 
@@ -448,7 +448,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p070-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-1.png)
 
@@ -456,7 +456,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 桁落ち
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p070-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-2.png)
 
@@ -464,7 +464,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 丸め誤差
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p071](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p071.png)
 
@@ -754,7 +754,7 @@ Reset側に『1』を入力すると、両方の出力結果は変化する。
 ーーーーーーーーーーー
  0000 0000 0000 1000
 
-> ℹ️ 参考：https://ameblo.jp/kou05/entry-10883110086.html
+> ↪️ 参考：https://ameblo.jp/kou05/entry-10883110086.html
 
 **＊例題＊**
 

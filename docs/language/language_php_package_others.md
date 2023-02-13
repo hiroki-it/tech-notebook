@@ -11,7 +11,7 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +19,7 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 ### Carbonとは
 
-> ℹ️ 参考：https://github.com/briannesbitt/Carbon
+> ↪️ 参考：https://github.com/briannesbitt/Carbon
 
 <br>
 
@@ -172,7 +172,7 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 
 
-> ℹ️ 参考：https://github.com/TimeToogo/Pinq/
+> ↪️ 参考：https://github.com/TimeToogo/Pinq/
 
 <br>
 
@@ -221,7 +221,7 @@ class Foo
 
 
 
-> ℹ️ 参考：https://github.com/guzzle/guzzle
+> ↪️ 参考：https://github.com/guzzle/guzzle
 
 <br>
 
@@ -229,7 +229,7 @@ class Foo
 
 #### ▼ GET送信
 
-> ℹ️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
+> ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
 **＊実装例＊**
 
@@ -254,7 +254,7 @@ $response = $client->request(
 
 #### ▼ POST送信
 
-> ℹ️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
+> ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
 
 ```php
 <?php
@@ -332,7 +332,7 @@ $body = json_decode($response->getBody(), true);
 
 
 
-> ℹ️ 参考：https://github.com/KnpLabs/snappy
+> ↪️ 参考：https://github.com/KnpLabs/snappy
 
 <br>
 
@@ -366,7 +366,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 
 
-> ℹ️ 参考：https://github.com/Respect/Validation
+> ↪️ 参考：https://github.com/Respect/Validation
 
 ```php
 <?php
@@ -386,7 +386,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/line/line-bot-sdk-php
 > - https://developers.line.biz/ja/docs/messaging-api/overview/

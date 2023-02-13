@@ -11,7 +11,7 @@ description: モジュール＠Terraformの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -26,7 +26,7 @@ description: モジュール＠Terraformの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://www.terraform.io/language/modules#the-root-module
+> ↪️ 参考：https://www.terraform.io/language/modules#the-root-module
 
 <br>
 
@@ -85,7 +85,7 @@ S3などの実インフラで管理する場合、クレデンシャル情報を
 
 
 
-> ℹ️ 参考：https://www.terraform.io/language/settings/backends/s3
+> ↪️ 参考：https://www.terraform.io/language/settings/backends/s3
 
 **＊実装例＊**
 
@@ -307,7 +307,7 @@ resource "aws_acm_certificate" "example" {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.terraform.io/language/modules/sources
 > - https://qiita.com/bigwheel/items/2b420183639416b5c6bb
@@ -366,7 +366,7 @@ module "alb" {
 
 サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
 
-> ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+> ↪️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
 
 ```terraform
 # @ルートモジュール
@@ -390,7 +390,7 @@ module "alb" {
 
 #### ▼ 環境変数の優先順位
 
-> ℹ️ 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
+> ↪️ 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
 
 #### ▼ ```-var```、```-var-file```
 
@@ -490,7 +490,7 @@ Terraformの```2```個以上のブロックをパッケージ化することに�
 
 
 
-> ℹ️ 参考：https://www.terraform.io/language/modules#child-modules
+> ↪️ 参考：https://www.terraform.io/language/modules#child-modules
 >
 
 #### ▼ ローカルモジュール
@@ -503,7 +503,7 @@ Terraformの```2```個以上のブロックをパッケージ化することに�
 
 
 
-> ℹ️ 参考：https://learn.hashicorp.com/tutorials/terraform/module#local-and-remote-modules
+> ↪️ 参考：https://learn.hashicorp.com/tutorials/terraform/module#local-and-remote-modules
 
 #### ▼ リモートモジュール（パブリッシュモジュール）
 
@@ -521,7 +521,7 @@ Terraformの```2```個以上のブロックをパッケージ化することに�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://learn.hashicorp.com/tutorials/terraform/module#local-and-remote-modules
 > - https://www.terraform.io/language/modules#published-modules

@@ -11,7 +11,7 @@ description: AWS EKSアドオン＠クラウドプロバイダーアドオンの
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html
 > - https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9
@@ -40,7 +40,7 @@ EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働�
 
 同じCluster内の全てのPodの名前解決を行う。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
+> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
 <br>
 
@@ -52,7 +52,7 @@ EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働
 
 EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
 
@@ -70,7 +70,7 @@ PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPod�
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
@@ -94,7 +94,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/aws-vpc-cni -n
 ```
 
 
-> ℹ️ 参考：https://github.com/aws/eks-charts/tree/master/stable/aws-vpc-cni
+> ↪️ 参考：https://github.com/aws/eks-charts/tree/master/stable/aws-vpc-cni
 
 <br>
 

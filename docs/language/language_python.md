@@ -11,7 +11,7 @@ description: Pythonの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -138,7 +138,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.python.org/dev/peps/pep-0007/
 > - https://pep8-ja.readthedocs.io/ja/latest/
@@ -208,7 +208,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.python.org/ja/3/reference/import.html#packages
 
@@ -235,7 +235,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://rinatz.github.io/python-book/ch04-01-modules/
 > - https://qiita.com/msi/items/d91ea3900373ff8b09d7
@@ -256,7 +256,7 @@ Pythonの命名規則は、PEPに記載されている。
 from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名、関数名>
 ```
 
-> ℹ️ 参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
+> ↪️ 参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
 
 #### ▼ アスタリスクを使用しないこと
 
@@ -264,7 +264,7 @@ from <パッケージ名>.<サブパッケージ名>.<モジュール名> import
 
 
 
-> ℹ️ 参考：https://python.civic-apps.com/wildcard-import/
+> ↪️ 参考：https://python.civic-apps.com/wildcard-import/
 
 #### ▼ 絶対パスを使用すること
 
@@ -313,7 +313,7 @@ def bar():
 
 
 
-> ℹ️ 参考：https://www.tech-teacher.jp/blog/python-import/
+> ↪️ 参考：https://www.tech-teacher.jp/blog/python-import/
 
 ```python
 # import foo, bar

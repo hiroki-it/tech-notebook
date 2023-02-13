@@ -11,7 +11,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 ### アーキテクチャ
 
-> ℹ️ 参考：http://delftswa.github.io/chapters/vagrant/
+> ↪️ 参考：http://delftswa.github.io/chapters/vagrant/
 
 ### ユースケース
 
@@ -31,7 +31,7 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 
 
-> ℹ️ 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
+> ↪️ 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
 ![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vagrant_provider_provisioner.png)
 
@@ -45,16 +45,16 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/providers
+> ↪️ 参考：https://www.vagrantup.com/docs/providers
 
 #### ▼ プロバイダーの種類
 
 | プロバイダー名   | 補足                                                        |
 |------------|-----------------------------------------------------------|
-| VirtualBox | ℹ️ 参考：https://www.vagrantup.com/docs/providers/virtualbox |
-| VMWare     | ℹ️ 参考：https://www.vagrantup.com/docs/providers/vmware     |
-| Docker     | ℹ️ 参考：https://www.vagrantup.com/docs/providers/docker     |
-| Hyper-V    | ℹ️ 参考：https://www.vagrantup.com/docs/providers/hyperv     |
+| VirtualBox | ↪️ 参考：https://www.vagrantup.com/docs/providers/virtualbox |
+| VMWare     | ↪️ 参考：https://www.vagrantup.com/docs/providers/vmware     |
+| Docker     | ↪️ 参考：https://www.vagrantup.com/docs/providers/docker     |
+| Hyper-V    | ↪️ 参考：https://www.vagrantup.com/docs/providers/hyperv     |
 
 <br>
 
@@ -68,18 +68,18 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/provisioning
+> ↪️ 参考：https://www.vagrantup.com/docs/provisioning
 
 #### ▼ プロビジョナーの種類
 
 | プロビジョナー名 | ユースケース                                                          | 補足                                                             |
 |-----------|-----------------------------------------------------------------|----------------------------------------------------------------|
-| シェル       | Vagrantfile自体をプロビジョニングツールとして使用する。                           | ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/shell        |
-| Ansible   | Vagrantfileでプロビジョニングを実行する代わりとして、Ansibleを使用する。              | ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/ansible      |
-| CFEngine  | Vagrantfileでプロビジョニングを実行する代わりとして、CFEngineを使用する。             | ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/cfengine     |
-| Chef      | Vagrantfileでプロビジョニングを実行する代わりとして、Chefを使用する。                 | ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/chef_common  |
-| Docker    | Vagrantfileでプロビジョニングを実行する代わりとして、Dockerfile（に似た記述）を使用する。 | ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/docker       |
-| Puppet    | Vagrantfileでプロビジョニングを実行する代わりとして、Puppetを使用する。               | ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
+| シェル       | Vagrantfile自体をプロビジョニングツールとして使用する。                           | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/shell        |
+| Ansible   | Vagrantfileでプロビジョニングを実行する代わりとして、Ansibleを使用する。              | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/ansible      |
+| CFEngine  | Vagrantfileでプロビジョニングを実行する代わりとして、CFEngineを使用する。             | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/cfengine     |
+| Chef      | Vagrantfileでプロビジョニングを実行する代わりとして、Chefを使用する。                 | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/chef_common  |
+| Docker    | Vagrantfileでプロビジョニングを実行する代わりとして、Dockerfile（に似た記述）を使用する。 | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/docker       |
+| Puppet    | Vagrantfileでプロビジョニングを実行する代わりとして、Puppetを使用する。               | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
 
 <br>
 
@@ -103,7 +103,7 @@ Vagrantfileのバージョンを設定する。
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/version
+> ↪️ 参考：https://www.vagrantup.com/docs/vagrantfile/version
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -133,7 +133,7 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
+> ↪️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -189,7 +189,7 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
+> ↪️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
 
 #### ▼ forwarded_port
 
@@ -197,7 +197,7 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
+> ↪️ 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -217,7 +217,7 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/networking/private_network
+> ↪️ 参考：https://www.vagrantup.com/docs/networking/private_network
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -237,11 +237,11 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
+> ↪️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
 #### ▼ virtualbox
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
+> ↪️ 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -257,7 +257,7 @@ end
 
 #### ▼ docker
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/providers/docker/configuration
+> ↪️ 参考：https://www.vagrantup.com/docs/providers/docker/configuration
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -280,13 +280,13 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
+> ↪️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
 #### ▼ shell
 
 shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式（```<<-```）を使用すると良い。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.vagrantup.com/docs/provisioning/shell
 > - https://monologu.com/vagrant-shell-provisioning/
@@ -311,7 +311,7 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/ansible
+> ↪️ 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -334,7 +334,7 @@ end
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.vagrantup.com/docs/provisioning/ansible_local
 > - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
@@ -380,7 +380,7 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
+> ↪️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -400,7 +400,7 @@ end
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
+> ↪️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -416,13 +416,13 @@ end
 
 
 
-> ℹ️ 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
+> ↪️ 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
 
 また、『```RSync > NFS```』『```NFS > SMB```』である。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
 > - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/

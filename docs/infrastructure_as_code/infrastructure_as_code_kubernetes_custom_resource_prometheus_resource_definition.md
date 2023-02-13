@@ -11,7 +11,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,7 +29,7 @@ $ git clone https://github.com/prometheus-operator/prometheus-operator.git
 $ kubectl create -f bundle.yaml
 ```
 
-> ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
+> ↪️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
 
 #### ▼ 非チャートとして（kube-prometheus）
 
@@ -45,7 +45,7 @@ $ kubectl wait --for condition=Established --all CustomResourceDefinition --name
 $ kubectl apply -f manifests/
 ```
 
-> ℹ️ 参考：https://github.com/prometheus-operator/kube-prometheus
+> ↪️ 参考：https://github.com/prometheus-operator/kube-prometheus
 
 
 #### ▼ チャートとして（kube-prometheus-stack）
@@ -63,7 +63,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheu
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 > - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
@@ -72,7 +72,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheu
 
 他のインストール方法と名前が似ていることに注意する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart
 > - https://stackoverflow.com/questions/54422566/what-is-the-difference-between-the-core-os-projects-kube-prometheus-and-promethe
@@ -94,7 +94,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus -n 
 ```
 
 
-> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
 
 <br>
 
@@ -273,7 +273,7 @@ spec:
 
 Alertmanagerのセットアップ方法を決める。
 
-> ℹ️ 参考：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager
+> ↪️ 参考：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager
 
 ### .spec.version
 
@@ -391,7 +391,7 @@ spec:
 
 Alertmanagerのハードウェアリソースの要求量を設定する。
 
-> ℹ️ 参考：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec
+> ↪️ 参考：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -513,7 +513,7 @@ spec:
 
 Prometheusのローカルストレージの保持期間を設定する。
 
-> ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
+> ↪️ 参考：https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -591,7 +591,7 @@ PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheu
 
 独自アラートルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたアラートルール（例：kubernetes-mixins）を使用した方が良い。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 > - https://monitoring.mixins.dev/
@@ -605,11 +605,11 @@ PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheu
 
 独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール（例：kubernetes-mixins）を使用した方が良い。
 
-> ℹ️ 参考：https://monitoring.mixins.dev
+> ↪️ 参考：https://monitoring.mixins.dev
 
 #### ▼ kubernetes-mixinsのPrometheusRule
 
-> ℹ️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
+> ↪️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
 
 <br>
 
@@ -619,14 +619,14 @@ PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheu
 |-------------------|---------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Receiver          | string型 | ```.Receiver```                                                                            | アラートの受信者が割り当てられている。                                                                                                                                                |
 | Status            | string型 | ```.Status```                                                                              | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                               |
-| Alerts            | map型    | ```.Alerts.Labels.SortedPairs```                                                           | アラートの情報が割り当てられている。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                       |
-| GroupLabels       | map型    | ・```.GroupLabels.alertname``` <br>・```.GroupLabels.instance``` <br>・```.GroupLabels.job``` | 特定のアラートグループに関するラベルが割り当てられている。```.spec.groups[].rules[].labels```キー配下で設定した独自のラベルも含む。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#kv |
+| Alerts            | map型    | ```.Alerts.Labels.SortedPairs```                                                           | アラートの情報が割り当てられている。<br>↪️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                       |
+| GroupLabels       | map型    | ・```.GroupLabels.alertname``` <br>・```.GroupLabels.instance``` <br>・```.GroupLabels.job``` | 特定のアラートグループに関するラベルが割り当てられている。```.spec.groups[].rules[].labels```キー配下で設定した独自のラベルも含む。<br>↪️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#kv |
 | CommonLabels      | map型    | ```.CommonLabels.alertname```                                                              | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                                         |
 | CommonAnnotations | map型    | ```.CommonAnnotations.summary```                                                           | 全てのアラートに共通するアノテーションが割り当てられている。```.spec.groups[].rules[].labels```キー配下で設定した独自のアノテーションも含む。                                                                    |
 | ExternalURL       | string型 | ```.ExternalURL```                                                                         | AlertmangerのURLが割り当てられている。                                                                                                                                            |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.amazon.co.jp/dp/4910313001
 > - https://prometheus.io/docs/alerting/latest/notifications/
@@ -645,7 +645,7 @@ PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheu
 
 
 
-> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
+> ↪️ 参考：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
 
 #### ▼ name
 
@@ -711,7 +711,7 @@ spec:
              source: gin
 ```
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 
 #### ▼ rules（レコーディングルールの場合）
@@ -741,7 +741,7 @@ spec:
            expr: ...
 ```
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 
 <br>
@@ -754,7 +754,7 @@ spec:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
@@ -794,7 +794,7 @@ Serviceの待ち受けるパスを設定する。
 
 
 
-> ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -813,7 +813,7 @@ Serviceの待ち受けるポート名を設定する。
 
 
 
-> ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -893,7 +893,7 @@ spec:
 
 
 
-> ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -928,7 +928,7 @@ metadata:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 > - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md

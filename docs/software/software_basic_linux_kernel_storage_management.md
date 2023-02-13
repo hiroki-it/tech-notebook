@@ -11,7 +11,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +19,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 ### ストレージ管理の仕組み
 
-> ℹ️ 参考：https://hogetech.info/linux/kernel/basic4
+> ↪️ 参考：https://hogetech.info/linux/kernel/basic4
 
 <br>
 
@@ -37,7 +37,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 :    パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。
 
-> ℹ️ 参考：https://isleofhoso.com/linux-lvm-extend/
+> ↪️ 参考：https://isleofhoso.com/linux-lvm-extend/
 
 ```bash
 $ lsblk
@@ -143,7 +143,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://win2012r2.com/2018/05/13/post-268/
 > - http://www.miloweb.net/partition.html
@@ -158,7 +158,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 
 
-> ℹ️ 参考：https://allabout.co.jp/gm/gc/438839/
+> ↪️ 参考：https://allabout.co.jp/gm/gc/438839/
 
 <br>
 
@@ -206,7 +206,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
 > - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html
@@ -217,7 +217,7 @@ Windowsでは、CドライブとDドライブがパーティションに相当�
 
 
 
-> ℹ️ 参考：http://www.miloweb.net/partition.html
+> ↪️ 参考：http://www.miloweb.net/partition.html
 
 #### ▼ MacOSの場合
 
@@ -225,7 +225,7 @@ MacOSでは、```diskutil```コマンドを実行するとパーティション�
 
 
 
-> ℹ️ 参考：https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
+> ↪️ 参考：https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
 
 **＊例＊**
 
@@ -266,7 +266,7 @@ $ diskutil list
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
 
 <br>
 
@@ -280,7 +280,7 @@ Linuxでは論理ボリュームは、```lvdisplay```コマンドで確認でき
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
 
 ```bash
 $ lvdisplay
@@ -331,7 +331,7 @@ Linuxカーネルが入出力装置や標準入出力を操作できるように
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
 > - https://qiita.com/angel_p_57/items/1faafa275525469788b4
@@ -350,7 +350,7 @@ Dockerのデバイスファイルを確認すると、以下のデバイスフ�
 
 
 
-> ℹ️ 参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
+> ↪️ 参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
 
 ```bash
 $ ls -l /dev
@@ -475,7 +475,7 @@ HHD（```/dev/hd```）、メモリ、などがある。
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 #### ▼ キャラクターデバイス（キャラクタースペシャルファイル）
 
@@ -485,7 +485,7 @@ HHD（```/dev/hd```）、メモリ、などがある。
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 #### ▼ 擬似デバイス
 
@@ -495,7 +495,7 @@ HHD（```/dev/hd```）、メモリ、などがある。
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 <br>
 
@@ -508,7 +508,7 @@ HHD（```/dev/hd```）、メモリ、などがある。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.infraeye.com/study/linuxz22.html
 > - https://ameblo.jp/bakery-diary/entry-12639340661.html
@@ -532,7 +532,7 @@ $ mkfs -t <ファイルシステムのタイプ> <パーティションのデバ
 $ mkfs -t xfs /dev/sda5
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://kazmax.zpp.jp/linux_beginner/mkfs.html
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
@@ -552,7 +552,7 @@ $ mke2fs -t <ファイルシステムのタイプ> <パーティションのデ�
 $ mke2fs -t ext4 /dev/sda5
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://xtech.nikkei.com/it/article/COLUMN/20140324/545285/
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
@@ -580,7 +580,7 @@ NFSサーバーに配置されたファイルを、他のサーバー（NFSク�
 
 :    ホスト側のMacOSにて、```/etc/exports```ファイルにマウントオプションを設定する。また、```/etc/exports```ファイルを検証する。
 
-> ℹ️ 参考：https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
+> ↪️ 参考：https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
 
 ```bash
 # マウントオプションを設定する。
@@ -615,7 +615,7 @@ Exports list on localhost:
 
 :    NFSクライアントにて、必要なパッケージをインストールする。
 
-> ℹ️ 参考：https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
+> ↪️ 参考：https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
 
 ```bash
 # Ubuntuの場合

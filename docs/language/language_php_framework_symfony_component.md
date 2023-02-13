@@ -11,13 +11,13 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. 参考になるリファレンス
 
-> ℹ️ 参考：https://symfony.com/doc/current/the-fast-track/ja/
+> ↪️ 参考：https://symfony.com/doc/current/the-fast-track/ja/
 
 <br>
 

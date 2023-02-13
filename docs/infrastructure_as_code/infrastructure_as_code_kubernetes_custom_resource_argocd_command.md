@@ -10,7 +10,7 @@ description: コマンド＠ArgoCDの知見を記録しています。
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -35,7 +35,7 @@ $ argocd app create foo-application \
     --sync-option CreateNamespace=false
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
 <br>
 
@@ -71,7 +71,7 @@ $ argocd app sync foo-application --dry-run
 $ argocd app sync foo-application --local=<ディレクトリへのパス>
 ```
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
+> ↪️ 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
 
 <br>
 
@@ -96,7 +96,7 @@ $ argocd repo add oci://<OCIレジストリ名> \
     --password $(aws ecr get-login-password --region ap-northeast-1)
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://medium.com/@Technorite
 > - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd

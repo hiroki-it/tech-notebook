@@ -11,7 +11,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -139,7 +139,7 @@ json["prefecture"] = "Tokyo";
 
 
 
-> ℹ️ 参考：https://r37r0m0d3l.github.io/json_sort/
+> ↪️ 参考：https://r37r0m0d3l.github.io/json_sort/
 
 <br>
 

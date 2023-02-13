@@ -11,7 +11,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +19,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 ### はじめに
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
+> ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 <br>
 
@@ -36,11 +36,11 @@ description: アンチパターン@SREingの知見を記録しています。
 
 - SREerの作業内容には、システム運用だけなく、開発も含まれる。またこの開発では、できるだけ人の手を離れていて、障害の発生頻度が少ないようなシステムを構築する必要がある。
 - NOCのような場所は、作業に集中できる環境ではない。
-    - > ℹ️ 参考：https://k-tai.watch.impress.co.jp/docs/news/1077992.html
+    - > ↪️ 参考：https://k-tai.watch.impress.co.jp/docs/news/1077992.html
 
 - ヒーローパターンはアンチパターン。
     - ヒーローパターンでは作業が属人化するため、チームが育たず、またドキュンメントが残らずに本人がいなくなってしまうことがある。
-    - > ℹ️ 参考：https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c
+    - > ↪️ 参考：https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c
 
 
 ![noc_ntt-docomo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/noc_ntt-docomo.jpeg)
@@ -201,7 +201,7 @@ description: アンチパターン@SREingの知見を記録しています。
 ![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/infrastructure_mutable_immutable.jpeg)
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
+> ↪️ 参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
 
 
 #### ▼ 問題点
@@ -253,7 +253,7 @@ SREerの役割の```1```個として、システムの設計段階でレビュ�
 
 
 
-> ℹ️ 参考：https://x-tech5.co.jp/2022/02/21/204/
+> ↪️ 参考：https://x-tech5.co.jp/2022/02/21/204/
 
 #### ▼ 解決策
 
@@ -307,7 +307,7 @@ SREingの実現に必要なツールをアプリ開発チームに導入した�
 - ロールフォワード、ロールバックの自動化
     - リリース前の予防を完璧にしない代わりとして、リスクヘッジとして、リリース後のロールフォワードとロールバックを自動的に実行できるようにしておく。
       - Progressive Deliveryを採用し、SLOを判定基準とした自動ロールバックを実現する。
-      - > ℹ️ 参考：https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
+      - > ↪️ 参考：https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
 
 <br>
 
@@ -359,7 +359,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 
 
-> ℹ️ 参考：https://github.com/ortelius/ortelius
+> ↪️ 参考：https://github.com/ortelius/ortelius
 
 <br>
 
@@ -415,7 +415,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
+> ↪️ 参考：https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
 
 <br>
 

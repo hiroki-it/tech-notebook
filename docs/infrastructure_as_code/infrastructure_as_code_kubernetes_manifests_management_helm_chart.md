@@ -11,7 +11,7 @@ description: チャート＠Helmの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -21,7 +21,7 @@ description: チャート＠Helmの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-> ℹ️ 参考：https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+> ↪️ 参考：https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 
 ```bash
 $ curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
@@ -43,7 +43,7 @@ $ sudo apt-get install helm
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> ↪️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -51,7 +51,7 @@ $ sudo apt-get install helm
 
 #### ▼ apiVersionとは
 
-> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> ↪️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -59,7 +59,7 @@ $ sudo apt-get install helm
 
 #### ▼ entriesとは
 
-> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> ↪️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -91,7 +91,7 @@ Helm-APIのバージョンを設定する。
 apiVersion: v2
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helm.sh/docs/topics/charts/#the-apiversion-field
 > - https://helm.sh/docs/topics/v2_v3_migration/
@@ -108,7 +108,7 @@ Kubernetes上で稼働するアプリケーションのリリースバージョ�
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
+> ↪️ 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
 
 ```yaml
 appVersion: <バージョンタグ>
@@ -140,7 +140,7 @@ description: The chart of foo
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-dependencies
+> ↪️ 参考：https://helm.sh/docs/topics/charts/#chart-dependencies
 
 ```yaml
 dependencies:
@@ -179,7 +179,7 @@ Helmで作成されるKubernetesリソースの接頭辞を設定する。
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/topics/charts/#the-chartyaml-file
+> ↪️ 参考：https://helm.sh/docs/topics/charts/#the-chartyaml-file
 
 ```yaml
 name: foo
@@ -200,7 +200,7 @@ name: foo
 type: application
 ```
 
-> ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-types
+> ↪️ 参考：https://helm.sh/docs/topics/charts/#chart-types
 
 
 <br>
@@ -220,7 +220,7 @@ type: application
 version: <バージョンタグ>
 ```
 
-> ℹ️ 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
+> ↪️ 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
 
 
 <br>
@@ -236,7 +236,7 @@ version: <バージョンタグ>
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/builtin_objects/
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/builtin_objects/
 
 <br>
 
@@ -281,7 +281,7 @@ metadata:
 
 
 
-> ℹ️ 参考：https://knowledge.sakura.ad.jp/23603/
+> ↪️ 参考：https://knowledge.sakura.ad.jp/23603/
 
 #### ▼ affinity
 

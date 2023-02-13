@@ -11,7 +11,7 @@ description: アドオン＠Nodeコンポーネントの知見を記録してい
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ description: アドオン＠Nodeコンポーネントの知見を記録してい
 | ...                                             | ...      | ...      |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
@@ -55,7 +55,7 @@ Ingressでインバウンド通信を受信する場合に使用し、NodePort S
 
 ![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alb_targetgroupbinding.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.recruit.co.jp/rmp/infrastructure/post-21469/
 > - https://aws.amazon.com/cn/blogs/china/use-aws-load-balancer-controller-s-targetgroupbinding-function-to-realize-flexible-load-balancer-management/
@@ -78,7 +78,7 @@ AWS LBコントローラーのセットアップのうち、AWS側で必要な�
 $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount
@@ -136,7 +136,7 @@ $ eksctl create iamserviceaccount \
 
 :    ServiceAccountを作成できたことを確認する。
 
-> ℹ️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 ```bash
 $ eksctl get iamserviceaccount \
@@ -210,7 +210,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/aws-load-balan
 AWS Load Balancer controller installed!
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
@@ -259,7 +259,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
      以下の条件を満たす必要がある。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
+> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 <br>
 
@@ -280,7 +280,7 @@ IngressとALBを紐づけるために、```.metadata.annotations```キーを設�
 | ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。    |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
@@ -304,6 +304,6 @@ spec:
   targetGroupARN: <ターゲットグループのARN>
 ```
 
-> ℹ️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
+> ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
 
 <br>

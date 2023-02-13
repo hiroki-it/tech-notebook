@@ -11,7 +11,7 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 | Webガード   | セッションIDを使用したForm認証のために使用する。        |
 | APIガード   | Bearer認証、APIキー認証、OAuth、などのために使用する。 |
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 #### ▼ カスタムガード
 
@@ -39,13 +39,13 @@ Laravelがデフォルトで持たないドライバーとプロバイダーを�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
 APIガードの認証で使用するトークンをJWTに変更したい時には、以下のパッケージがおすすめ。
 
 
 
-> ℹ️ 参考：https://github.com/tymondesigns/jwt-auth
+> ↪️ 参考：https://github.com/tymondesigns/jwt-auth
 
 <br>
 
@@ -65,7 +65,7 @@ APIガードの認証で使用するトークンをJWTに変更したい時に�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://teratail.com/questions/171582
 > - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
@@ -103,7 +103,7 @@ BeforeMiddlwareで認証済みのユーザーか否かを検証し、もし未�
 
 
 
-> ℹ️ 参考：https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
+> ↪️ 参考：https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
 
 <br>
 
@@ -115,7 +115,7 @@ BeforeMiddlwareで認証済みのユーザーか否かを検証し、もし未�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 <br>
 
@@ -137,7 +137,7 @@ SessionGuardクラスの```attempt```メソッドをコールしてパスワー�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
 
 ```php
 <?php
@@ -196,7 +196,7 @@ class RouteServiceProvider extends ServiceProvider
 
 
 
-> ℹ️ 参考：https://blog.capilano-fw.com/?p=8159
+> ↪️ 参考：https://blog.capilano-fw.com/?p=8159
 
 **＊実装例＊**
 
@@ -387,7 +387,7 @@ Policyクラスのメソッドによって、リクエスト中の認証済み�
 
 EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
 
-> ℹ️ 参考：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
+> ↪️ 参考：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
 
 ```php
 <?php
@@ -492,7 +492,7 @@ AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
 **＊実装例＊**
 
@@ -527,7 +527,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
@@ -593,7 +593,7 @@ DBアクセスが、そのユーザーの認可スコープの範囲内か否か
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
@@ -659,7 +659,7 @@ Composerでインストールする必要がある。
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/passport.html
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/passport.html
 
 ```bash
 $ composer require laravel/passport
@@ -700,7 +700,7 @@ DBマイグレーション後、以下のテーブルが作成される。
 | oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。                                                                                                                     |
 | oauth_clients                 | Passportで使用している付与タイプを管理する。                                                                                                                             |
 | oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する。                                                                                                                        |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>ℹ️ 参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>↪️ 参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ▼ トークンを作成
 
@@ -1075,7 +1075,7 @@ APIキー認証とセッションIDを使用したForm認証機能の認証処�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
 
 <br>
 
@@ -1095,7 +1095,7 @@ $ composer require laravel/sanctum
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
@@ -1109,7 +1109,7 @@ $ composer require laravel/sanctum
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
@@ -1125,7 +1125,7 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/fortify.html
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
@@ -1140,7 +1140,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証+ルーティ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
@@ -1149,7 +1149,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証+ルーティ
 
 ### セットアップ
 
-> ℹ️ 参考：https://github.com/laravel/breeze
+> ↪️ 参考：https://github.com/laravel/breeze
 
 #### ▼ インストール
 
@@ -1183,7 +1183,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証+ルーティ
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/7.x/ja/authentication.html
+> ↪️ 参考：https://readouble.com/laravel/7.x/ja/authentication.html
 
 <br>
 

@@ -11,7 +11,7 @@ description: コマンド＠Nginxの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -41,7 +41,7 @@ $ nginx -c ./custom-nginx.conf
 $ nginx -s reload
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://serverfault.com/questions/378581/nginx-config-reload-without-downtime
 > - https://www.nyamucoro.com/entry/2019/07/27/222829
@@ -62,7 +62,7 @@ $ nginx -s reload
 $ nginx -t
 ```
 
-> ℹ️ 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
+> ↪️ 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
 
 <br>
 
@@ -74,7 +74,7 @@ Nginxの設定ファイルのバリデーションを実行する。
 
 
 
-> ℹ️ 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+> ↪️ 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 ```bash
 $ service nginx configtest

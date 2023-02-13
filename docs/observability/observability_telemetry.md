@@ -11,7 +11,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -36,7 +36,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
@@ -62,7 +62,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
 > - https://qiita.com/kazookie/items/eef3071a0667cb4d5136
@@ -87,7 +87,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | アラート                         |                                |               |        |          |         |           |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 > - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection

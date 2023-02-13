@@ -8,7 +8,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/grafana -n prometheus --version <バージョンタグ>
 ```
 
-> ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
+> ↪️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
 Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
@@ -45,7 +45,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/prometheus-operator/prometheus-operator#helm-chart
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
@@ -59,7 +59,7 @@ Grafanaのドキュメントから```.yaml```ファイルをコピーし、```gr
 
 これを作成する。
 
-> ℹ️ 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
+> ↪️ 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
 ```bash
 $ kubectl apply -f grafana.yaml
@@ -158,7 +158,7 @@ ConfigMapの```.data```キーにJSONを設定すると、ダッシュボード�
 
 その場合、GitHubなどで公開されているJSONを、ConfigMapの```.data```キーに貼り付ける。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
@@ -193,7 +193,7 @@ ConfigMapの```.data```キーにJSONを設定すると、ダッシュボード�
 | Prometheus               | PrometheusのPod         | ```Prometheus / Remote Write```                              |                                                                                                                                    |
 |                          |                         | ```Prometheus / Overview```                                  |                                                                                                                                    |
 
-> ℹ️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
+> ↪️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
 
 #### ▼ Istioダッシュボード
 
@@ -209,7 +209,7 @@ ConfigMapの```.data```キーにJSONを設定すると、ダッシュボード�
 | ```Istio Service Dashboard```        | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
 | ```Istio Control Plane Dashboard```  |                                                   |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
 > - https://github.com/istio/istio/tree/master/manifests/addons/dashboards
@@ -259,7 +259,7 @@ data:
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-> ℹ️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+> ↪️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
 #### ▼ kube-prometheus-stackチャートの場合
 
@@ -288,7 +288,7 @@ kube-prometheus-stackチャートの```values```ファイルでは、```labelVal
       labelValue: "1"
 ```
 
-> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
 そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。
 
@@ -306,13 +306,13 @@ data:
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-> ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
+> ↪️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 
 補足として、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されている。
 
 またその他に、kubernetes-mixinsも同時にインストールするようになっている。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 > - https://monitoring.mixins.dev

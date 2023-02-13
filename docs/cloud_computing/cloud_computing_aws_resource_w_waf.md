@@ -11,7 +11,7 @@ description: WAF＠Wで始まるAWSリソース
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -56,7 +56,7 @@ description: WAF＠Wで始まるAWSリソース
 | 設定項目                 | 説明                                                                        | 補足                                                                                                                                  |
 |--------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | Overview                 | WAFによって許可/拒否されたリクエストのアクセスログを確認できる。                                    |                                                                                                                                       |
-| Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html |
+| Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>↪️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html |
 | Associated AWS resources | WAFを紐付けるAWSリソースを設定する。                                                   | CloudFront、ALBなどに紐付けできる。                                                                                                            |
 | Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する。                               |                                                                                                                                       |
 
@@ -104,7 +104,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 | レートベース | 同じ送信元IPアドレスからの５分間当たりのリクエスト数制限をルールに付与する。 |
 | レギュラー  | リクエスト数は制限しない。                                    |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/classic-web-acl-rules-creating.html
+> ↪️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/classic-web-acl-rules-creating.html
 
 #### ▼ ルールの粒度のコツ
 
@@ -120,7 +120,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 
 
-> ℹ️ 参考：https://oji-cloud.net/2020/09/18/post-5501/
+> ↪️ 参考：https://oji-cloud.net/2020/09/18/post-5501/
 
 #### ▼ ルールグループアクションの上書き
 
@@ -138,7 +138,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 | Block             | OFF      | ON         | そもそもCountモードが無効なため、上書きオプションは能力せずに、Blockが実行される。                           |
 | Block             | OFF      | OFF        | そもそもCountモードが無効なため、マネージドルールのBlockが実行される（と思っていたが、結果としてCountとして動作する模様）。 |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
+> ↪️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
 
 #### ▼ セキュリティグループとの関係
 
@@ -150,7 +150,7 @@ WAFを紐付けられるリソースにセキュリティグループも紐づ�
 
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
+> ↪️ 参考：https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
 
 <br>
 
@@ -214,7 +214,7 @@ WAFマネージドルールを採用している場合、マネージドルー�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/limits.html
+> ↪️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/limits.html
 
 
 <br>

@@ -15,7 +15,7 @@ Breezeパッケージにも同梱されている。
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/mix.html
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/mix.html
 
 <br>
 
@@ -45,7 +45,7 @@ $ npm run watch
 
 ## 02. 認証系パッケージ
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_laravel_package_auth.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_laravel_package_auth.html
 
 <br>
 
@@ -55,7 +55,7 @@ $ npm run watch
 
 #### ▼ コード
 
-> ℹ️ 参考：https://github.com/BenSampo/laravel-enum
+> ↪️ 参考：https://github.com/BenSampo/laravel-enum
 
 #### ▼ Enumクラスの定義
 
@@ -166,7 +166,7 @@ PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 > - https://pleiades.io/help/phpstorm/laravel.html
@@ -201,7 +201,7 @@ PHPStromで、メソッドが定義された場所にジャンプできるよう
 
 
 
-> ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
+> ↪️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
 ```bash
 $ php artisan ide-helper:generate
@@ -213,7 +213,7 @@ PHPStromで、LaravelのEloquentモデルでのアノテーションを自動作
 
 
 
-> ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
+> ↪️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
 ```bash
 $ php artisan ide-helper:models
@@ -225,7 +225,7 @@ PHPStromで、Laravelのメソッドを予測表示できるように、```phpst
 
 
 
-> ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+> ↪️ 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 
 ```bash
 $ php artisan ide-helper:meta

@@ -11,7 +11,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 しかし、マイクロサービスアーキテクチャ固有のインフラ領域の課題（例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー収集、など）があり、非推奨である。
 
-> ℹ️ 参考：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
+> ↪️ 参考：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
 
 
 <br>
@@ -42,7 +42,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://solace.com/blog/event-mesh-service-mesh-for-microservices/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html
@@ -73,7 +73,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 > - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
@@ -94,7 +94,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
@@ -108,7 +108,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
 
-> ℹ️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
+> ↪️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
 
 
 <br>
@@ -126,7 +126,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 ![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_control-plane.png)
 
 
-> ℹ️ 参考：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
+> ↪️ 参考：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
 
 
 <br>
@@ -147,7 +147,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
@@ -181,7 +181,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 - ロードバランサー
 - 名前解決（DNSベースのサービスディスカバリーの場合のみ）
 
-> ℹ️ 参考：https://www.baeldung.com/cs/service-discovery-microservices
+> ↪️ 参考：https://www.baeldung.com/cs/service-discovery-microservices
 
 
 <br>
@@ -206,7 +206,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 :    送信元マイクロサービスは、ロードバランサーを介して、宛先マイクロサービスにリクエストを送信する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://microservices.io/patterns/client-side-discovery.html
 > - https://www.baeldung.com/cs/service-discovery-microservices
@@ -241,7 +241,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 :    ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://microservices.io/patterns/server-side-discovery.html
 > - https://www.baeldung.com/cs/service-discovery-microservices
@@ -264,6 +264,6 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 
 <br>

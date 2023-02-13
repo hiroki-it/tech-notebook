@@ -11,7 +11,7 @@ description: Kiali＠カスタムリソースの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -32,7 +32,7 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 ![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
 
 
-> ℹ️ 参考：https://kiali.io/docs/architecture/architecture/
+> ↪️ 参考：https://kiali.io/docs/architecture/architecture/
 
 
 <br>
@@ -43,7 +43,7 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 
 アプリコンテナ間（Pod間）の通信を表示するために、Appグラフを選択する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://kiali.io/docs/features/topology/#graph-types
 > - https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml
@@ -59,7 +59,7 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 - 複数のNamespaceに```istio-proxy```コンテナをインジェクションしている場合、Serviceとマイクロサービスが```NS```とついた線で囲われる。
 - 特定のマイクロサービスに複数の```subset```値（例：```v1```、```v2```）が付与されている場合、それらが```A```とついた線で囲われる。
 
-> ℹ️ 参考：https://istio.io/v1.14/docs/tasks/observability/kiali/#generating-a-graph
+> ↪️ 参考：https://istio.io/v1.14/docs/tasks/observability/kiali/#generating-a-graph
 
 #### ▼ Istioのマニフェストの検証
 
@@ -67,11 +67,11 @@ Kialiでは、Istioのマニフェストを検証できる。
 
 ダッシュボード（Serviceタブ、Istio Configタブ）のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。
 
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
+> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
 
 #### ▼ 通信のトラブルシューティング
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021
@@ -84,16 +84,16 @@ Kialiでは、Istioのマニフェストを検証できる。
 
 #### ▼ メトリクスとの紐付け
 
-> ℹ️ 参考：https://kiali.io/docs/features/tracing/#metric-correlation
+> ↪️ 参考：https://kiali.io/docs/features/tracing/#metric-correlation
 
 #### ▼ ログとの紐付け
 
-> ℹ️ 参考：https://kiali.io/docs/features/tracing/#logs-correlation
+> ↪️ 参考：https://kiali.io/docs/features/tracing/#logs-correlation
 
 <br>
 
 ### サービスメッシュトポロジーとの紐付け
 
-> ℹ️ 参考：https://kiali.io/docs/features/tracing/#graph-correlation
+> ↪️ 参考：https://kiali.io/docs/features/tracing/#graph-correlation
 
 <br>

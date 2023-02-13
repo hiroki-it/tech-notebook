@@ -11,7 +11,7 @@ description: Aで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ Webサイトのクラウドインフラの実行環境ごとに作成したほ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html
 > - https://www.lastweekinaws.com/blog/are-aws-account-ids-sensitive-information/
@@ -78,7 +78,7 @@ AZに跨いで冗長化すると、いずれかのデータセンターで障害
 
 
 
-> ℹ️ 参考：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
+> ↪️ 参考：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
 
 <br>
 
@@ -133,7 +133,7 @@ GitHubのブランチごとにアプリケーションのCI/CDパイプライン
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://zenn.dev/intercept6/articles/4016e9d61ab36761685d
 > - https://devblog.thebase.in/entry/2021/12/22/110000
@@ -187,7 +187,7 @@ $ amplify publish
 
 #### ▼ 連携できるバージョン管理システム
 
-> ℹ️ 参考：https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
+> ↪️ 参考：https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
 
 #### ▼ 対応するバージョン管理リポジトリ構造
 
@@ -210,7 +210,7 @@ SSRの場合、フロントエンドのみでなくバックエンドの実行�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html
 > - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
@@ -308,7 +308,7 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 ![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Auto-scaling.png)
 
 
-> ℹ️ 参考：https://www.a-frontier.jp/technology/aws10/
+> ↪️ 参考：https://www.a-frontier.jp/technology/aws10/
 
 
 <br>
@@ -362,7 +362,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 調査中...
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
 
 <br>
 
@@ -422,7 +422,7 @@ CPU平均使用率に段階的な閾値を設定する。
 | スケールインクールダウン期間    | スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。               |                                                                                                                                                          |
 | スケールインの無効化       |                                                                  |                                                                                                                                                          |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
 
 <br>
 
@@ -436,7 +436,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.takuros.net/entry/2020/08/11/082712
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html

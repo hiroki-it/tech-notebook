@@ -10,7 +10,7 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -38,7 +38,7 @@ $ yum install -y nodejs
 
 
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
 
 ```yaml
 {
@@ -56,7 +56,7 @@ $ yum install -y nodejs
 
 
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
 
 
 ```yaml
@@ -87,12 +87,12 @@ NPMに登録されていないパッケージは、『```git+<GitHubリポジト
 }
 ```
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
 
 
 #### ▼ description
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
 
 ```yaml
 {
@@ -118,7 +118,7 @@ NPMに登録されていないパッケージは、『```git+<GitHubリポジト
 }
 ```
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
 
 
 #### ▼ directories
@@ -137,7 +137,7 @@ NPMに登録されていないパッケージは、『```git+<GitHubリポジト
 }
 ```
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
 
 
 #### ▼ engines
@@ -148,7 +148,7 @@ NPMに登録されていないパッケージは、『```git+<GitHubリポジト
 
 
 
-> ℹ️ 参考：https://qiita.com/suin/items/994458418c737cc9c3e8
+> ↪️ 参考：https://qiita.com/suin/items/994458418c737cc9c3e8
 
 ```yaml
 {
@@ -165,7 +165,7 @@ NPMに登録されていないパッケージは、『```git+<GitHubリポジト
 
 
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage
 
 ```yaml
 {
@@ -179,7 +179,7 @@ NPMに登録されていないパッケージは、『```git+<GitHubリポジト
 
 
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
 
 ```yaml
 {
@@ -200,7 +200,7 @@ npmパッケージ名を設定する。
 }
 ```
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
 
 
 #### ▼ repository
@@ -215,7 +215,7 @@ npmパッケージ名を設定する。
 }
 ```
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
 
 #### ▼ scripts
 
@@ -230,7 +230,7 @@ npmパッケージ名を設定する。
 }
 ```
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
 
 
 
@@ -245,7 +245,7 @@ npmパッケージ名を設定する。
 ```
 
 
-> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
 
 
 
@@ -395,7 +395,7 @@ $ apt-get install yarn
 ```
 
 
-> ℹ️ 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
+> ↪️ 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
 
 
 #### ▼ npmレジストリから
@@ -405,7 +405,7 @@ $ apt-get install yarn
 $ npm install --global yarn
 ```
 
-> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
+> ↪️ 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
 
 
 <br>
@@ -469,7 +469,7 @@ $ yarn add <パッケージ名>@<バージョンタグ>
 $ yarn install --check-files
 ```
 
-> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
+> ↪️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
 
 
 <br>
@@ -509,7 +509,7 @@ $ yarn remove <パッケージ名>
 $ yarn upgrade <パッケージ名>@<バージョンタグ>
 ```
 
-> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> ↪️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
 
 #### ▼ latest
@@ -521,7 +521,7 @@ $ yarn upgrade <パッケージ名>@<バージョンタグ>
 $ yarn upgrade --latest
 ```
 
-> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> ↪️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
 
 <br>
@@ -538,7 +538,7 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる。
 
 
 
-> ℹ️ 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
+> ↪️ 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
 **＊例＊**
 

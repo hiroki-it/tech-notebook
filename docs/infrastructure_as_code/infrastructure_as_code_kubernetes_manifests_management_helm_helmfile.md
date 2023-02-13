@@ -11,7 +11,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -70,7 +70,7 @@ repository/
 └── baz/ # bazサービス
 ```
 
-> ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
+> ↪️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
 
 
 <br>
@@ -142,7 +142,7 @@ releases:
 環境名のリストとして動作し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
 
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 
 #### ▼ 実行環境名を渡したいだけの場合
 
@@ -171,7 +171,7 @@ releases:
 $ helmfile -e dev apply
 ```
 
-> ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
+> ↪️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
 
 #### ▼ 実行環境名を渡す以外こともやりたい場合
 
@@ -220,7 +220,7 @@ helmfiles:
   - path: ./helmfile.d/baz.yaml
 ```
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#selectors
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#selectors
 
 <br>
 
@@ -328,7 +328,7 @@ secrets:
   - ./foo-secrets.yaml
 ```
 
-> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
 
 <br>
 
@@ -422,7 +422,7 @@ data:
 #     foo, bar, baz
 ```
 
-> ℹ️ 参考：https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
+> ↪️ 参考：https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
 
 
 <br>
@@ -457,7 +457,7 @@ environments:
       - values-{{ .Environment.Name }}.yaml # values.yaml.gotmplファイルに値を渡すvaluesファイル
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://helmfile.readthedocs.io/en/latest/#environment-values
 > - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22

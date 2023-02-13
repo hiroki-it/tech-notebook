@@ -11,7 +11,7 @@ description: SREing：Site Reliability Engineering＠ソフトウェア開発手
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -127,7 +127,7 @@ SREerチームとアプリケーションチームの間で、どのようにコ
 
 
 
-> ℹ️ 参考：https://x-tech5.co.jp/2022/02/21/204/
+> ↪️ 参考：https://x-tech5.co.jp/2022/02/21/204/
 
 #### ▼ プロダクトチーム内フルスタックSREer型（Embedded SRE）
 
@@ -173,7 +173,7 @@ SREチームのValueから、SREerに必要な技術がわかる。
 
 
 
-> ℹ️ 参考：https://gist.github.com/south37/85d97e02d7816a31053971d63c164880
+> ↪️ 参考：https://gist.github.com/south37/85d97e02d7816a31053971d63c164880
 
 #### ▼ 3-shake、Topotal
 
@@ -181,7 +181,7 @@ SREチームのValueから、SREerに必要な技術がわかる。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://sreake.com/
 > - https://topotal.com/services/sre-as-a-service
@@ -192,6 +192,6 @@ SREチームのValueから、SREerに必要な技術がわかる。
 
 #### ▼ SREウィークリー
 
-> ℹ️ 参考：https://sreweekly.com/about-sre-weekly-2/
+> ↪️ 参考：https://sreweekly.com/about-sre-weekly-2/
 
 <br>

@@ -11,7 +11,7 @@ description: Eで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,9 +31,9 @@ description: Eで始まるAWSリソース＠AWSの知見を記録しています
 
 | 設定項目     | 説明                                                               | 補足                                                                               |
 |--------------|--------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| 可視性       | イメージリポジトリをパブリックあるいはプライベートにするかを設定する。                              | 様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>ℹ️ 参考：https://gallery.ecr.aws/          |
+| 可視性       | イメージリポジトリをパブリックあるいはプライベートにするかを設定する。                              | 様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>↪️ 参考：https://gallery.ecr.aws/          |
 | タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合、バージョンタグを上書きできる/できないかを設定できる。           | -                                                                                  |
-| プッシュ時にスキャン  | イメージがプッシュされた時に、コンテナイメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html |
+| プッシュ時にスキャン  | イメージがプッシュされた時に、コンテナイメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html |
 | 暗号化設定   | -                                                                  | -                                                                                  |
 
 <br>
@@ -42,7 +42,7 @@ description: Eで始まるAWSリソース＠AWSの知見を記録しています
 
 #### ▼ コンテナイメージの場合
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
 ```【１】```
 
@@ -76,7 +76,7 @@ $ docker push <イメージリポジトリURL>:<バージョンタグ>
 
 #### ▼ helmチャートの場合
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
 
 <br>
 
@@ -106,7 +106,7 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 
 
-> ℹ️ 参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
+> ↪️ 参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
 
 <br>
 
@@ -121,7 +121,7 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
+> ↪️ 参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
 
 <br>
 
@@ -137,7 +137,7 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
 ```yaml
 {
@@ -190,7 +190,7 @@ cron式またはrate式を使用して、スケジュールを定義する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
 
 <br>
 
@@ -198,7 +198,7 @@ cron式またはrate式を使用して、スケジュールを定義する。
 
 #### ▼ ターゲットの一覧
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
+> ↪️ 参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
 
 #### ▼ デバッグ
 
@@ -296,7 +296,7 @@ JSONのキー名が変数名として動作する。
 
 入力テンプレートにて、転送するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。出力する時は、入力パスの変数名を『```<>```』で囲う。Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://app.slack.com/block-kit-builder
+> ↪️ 参考：https://app.slack.com/block-kit-builder
 
 ```yaml
 {

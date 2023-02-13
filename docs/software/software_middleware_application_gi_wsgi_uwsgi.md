@@ -11,7 +11,7 @@ description: uWSGI＠アプリケーション系ミドルウェアの知見を�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -37,7 +37,7 @@ description: uWSGI＠アプリケーション系ミドルウェアの知見を�
 ![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/uwsgi.png)
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
+> ↪️ 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 
 
 <br>

@@ -11,7 +11,7 @@ description: Goの場合＠ホワイトボックステストの知見を記録�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -71,7 +71,7 @@ description: Goの場合＠ホワイトボックステストの知見を記録�
 
 
 
-> ℹ️ 参考：https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36
+> ↪️ 参考：https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36
 
 <br>
 
@@ -99,7 +99,7 @@ description: Goの場合＠ホワイトボックステストの知見を記録�
 
 
 
-> ℹ️ 参考：https://github.com/golang/go/wiki/TableDrivenTests
+> ↪️ 参考：https://github.com/golang/go/wiki/TableDrivenTests
 
 
 ```go

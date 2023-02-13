@@ -11,7 +11,7 @@ description: コマンド＠Minikubeの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -31,7 +31,7 @@ Minikubeのアドオンを操作する。
 
 
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
 
 **＊例＊**
 
@@ -41,7 +41,7 @@ Minikubeのアドオンを操作する。
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+> ↪️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
 ```bash
 $ minikube addons enable ingress
@@ -116,7 +116,7 @@ $ minikube start --cni=bridge
 $ minikube start --cni=cilium
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
 
 <br>
@@ -168,7 +168,7 @@ Kubernetesのバージョンのデフォルト値を設定する。
 $ minikube config set kubernetes-version=v1.23.0
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://minikube.sigs.k8s.io/docs/commands/config/
 > - https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
@@ -262,7 +262,7 @@ docker-env:
 	eval $(shell minikube -p minikube docker-env)
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
 
 #### ▼ -u
@@ -330,7 +330,7 @@ Server Version: version.Info{
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
@@ -372,7 +372,7 @@ $ kubectl label node minikube-m02 node-type=deploy
 $ kubectl label node minikube-m02 node-type=ingress
 ```
 
-> ℹ️ 参考：https://qiita.com/zaburo/items/efd7315161281d9822ed
+> ↪️ 参考：https://qiita.com/zaburo/items/efd7315161281d9822ed
 
 
 <br>
@@ -401,7 +401,7 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 📌  NOTE: This process must stay alive for the mount to be accessible ...
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
 
 
 <br>
@@ -420,7 +420,7 @@ $ minikube update-context
 💗  Current context is "minikube"
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
 
 
 <br>
@@ -445,7 +445,7 @@ $ minikube service <NodePort Servie名>
 Opening service <Service名> in default browser...
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/commands/service/
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
@@ -463,7 +463,7 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
-> ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
+> ↪️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
 ServiceのIPアドレスがNodeのIPアドレスすることは、```minikube ip```コマンドから確認できる。
 
@@ -486,7 +486,7 @@ $ curl -X GET http://*.*.*.*:57761
 ```
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
+> ↪️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
 #### ▼ list
 
@@ -522,7 +522,7 @@ http://<Minikube仮想サーバー内のNodeのIPアドレス>:<NodePort Service
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
@@ -610,7 +610,7 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/commands/ssh/
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
@@ -676,7 +676,7 @@ NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
 
 #### ▼ --container-runtime
@@ -701,7 +701,7 @@ $ minikube start --container-runtime=containerd
 $ minikube start --container-runtime=cri-o
 ```
 
-> ℹ️ 参考：https://github.com/kubernetes/minikube/issues/11101#issuecomment-819917618
+> ↪️ 参考：https://github.com/kubernetes/minikube/issues/11101#issuecomment-819917618
 
 
 #### ▼ --cpus、--memory
@@ -779,7 +779,7 @@ $ minikube start --docker-env
 $ minikube start --driver=virtualbox
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 
 #### ▼ --kubernetes-vsersion
@@ -793,7 +793,7 @@ Minikubeで稼働させるKubernetesのバージョンを指定しつつ、```st
 $ minikube start --kubernetes-version=v1.23.0
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
 
 #### ▼ --mount、--mount--string
@@ -859,7 +859,7 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.3   minikub
 nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikube-m02   <none>           <none>
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
 
 <br>
@@ -890,7 +890,7 @@ $ minikube tunnel
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
@@ -910,7 +910,7 @@ $ minikube tunnel
 $ minikube start --alsologtostderr
 ```
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
+> ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
 
 
 <br>

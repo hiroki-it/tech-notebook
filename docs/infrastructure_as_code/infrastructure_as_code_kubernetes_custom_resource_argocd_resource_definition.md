@@ -11,7 +11,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://argo-cd.readthedocs.io/en/stable/getting_started/
 > - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml
@@ -48,7 +48,7 @@ $ kubectl create namespace argocd
 $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
 ```
 
-> ℹ️ 参考：https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
+> ↪️ 参考：https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
 
 <br>
 
@@ -64,7 +64,7 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/faq/
 > - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
@@ -78,7 +78,7 @@ ArgoCDのApplicationを削除する。
 $ kubectl delete app <ArgoCDのアプリケーション名>
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
 <br>
 
@@ -110,7 +110,11 @@ $ kubectl get secret argocd-initial-admin-secret \
 
 ```【３】```
 
-:    ```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。```minikube tunnel```ではポート番号を指定できないことに注意する。
+:    ```443```番ポートにルーティングできるロードバランサーを作成する。
+
+     この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。
+
+     ```minikube tunnel```ではポート番号を指定できないことに注意する。
 
 
 ```bash
@@ -126,7 +130,7 @@ $ curl http://127.0.0.1:8080
 
 :    ```argocd```コマンドをインストールする。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
 ```bash
 $ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
@@ -149,11 +153,12 @@ Password: *****
 
 ### ネットワークに公開する場合
 
+#### ▼ 共通の手順
+
 ![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
 
 Nodeの外からArgoCDのダッシュボードをネットワークに公開する場合、Node外からargocd-serverにインバウンド通信が届くようにする必要がある。
 
-**＊実装例＊**
 
 Ingressを作成する。
 
@@ -179,21 +184,6 @@ spec:
                   number: 80
 ```
 
-IngressClassを作成する。
-
-開発環境では、IngressClassとしてNginxを使用する。
-
-本番環境では、クラウドプロバイダーのIngressClass（AWS ALB、GCP CLB）を使用する。
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: IngressClass
-metadata:
-  name: foo-ingress-class
-spec:
-  # AWSの場合、ingress.k8s.aws/alb
-  controller: k8s.io/ingress-nginx
-```
 
 ClusterIP Serviceを作成する。
 
@@ -227,8 +217,44 @@ spec:
   type: ClusterIP
 ```
 
-> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
+> ↪️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
 
+
+#### ▼ 開発環境の場合
+
+
+IngressClassを作成する。
+
+開発環境では、IngressClassとしてNginxを使用する。
+
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-ingress-class
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+#### ▼ 本番環境
+
+IngressClassを作成する。
+
+
+本番環境では、クラウドプロバイダーのIngressClass（AWS ALB、GCP CLB）を使用する。
+
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-ingress-class
+spec:
+  controller: ingress.k8s.aws/alb
+```
+
+また、IngressClass（AWS ALB、GCP CLB）に接続できるように、ドメインレジストリ（Route53、CloudDNS）にArgoCDのドメインを登録する。
 
 <br>
 
@@ -243,7 +269,7 @@ Kubernetesのカスタムリソースから定義される。
 
 監視対象のKubernetesリソースやカスタムリソースを設定する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/argoproj/argo-cd/blob/master/manifests/crds/application-crd.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects
@@ -254,7 +280,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/latest/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
 > - https://github.com/argoproj/argo-cd/discussions/7908
@@ -268,9 +294,9 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Sync         | 監視対象リポジトリとのマニフェストの差分を確認し、差分があれば```kubectl apply```コマンドを実行する。                                                                                  |
 | Refresh      | 監視対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                                                                           |
 | Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                                     |
-| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetesリソースを作成することはない。<br>ℹ️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
+| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetesリソースを作成することはない。<br>↪️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/core_concepts/
 > - https://github.com/argoproj/argo-cd/discussions/8260
@@ -288,7 +314,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Missing     | 調査中...                                                                                                       |
 | Unknown     | 調査中...                                                                                                       |
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 
 <br>
 
@@ -322,7 +348,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
 > - https://blog.framinal.life/entry/2021/10/04/224722
@@ -352,7 +378,7 @@ spec:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs
 > - https://mixi-developers.mixi.co.jp/update-argocd-to-v2-3-0-d609bbf16662
@@ -395,7 +421,7 @@ spec:
   project: app # アプリケーションコンポーネント。その他、実行環境（dev、stg、prd）がよい。
 ```
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 
 <br>
@@ -415,7 +441,7 @@ spec:
 | チャートリポジトリ（例：ArtifactHub、GitHub Pages、内のリポジトリ） | チャートアーカイブ（```.tgz```形式ファイル） | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
 | OCIリポジトリ（例：ECR内のリポジトリ）                        | チャートアーカイブ（```.tgz```形式ファイル） | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 <br>
 
@@ -449,7 +475,7 @@ spec:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
@@ -507,7 +533,7 @@ spec:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 
 #### ▼ targetRevision
@@ -520,7 +546,7 @@ spec:
 
 
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 ```yaml
 # 本番環境のApplication
@@ -573,7 +599,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
 #### ▼ helm
 
@@ -586,12 +612,12 @@ helmfileと同じように```helm```コマンドを宣言的に実行しつつ�
 | 設定項目          | 説明                                                                                                                               | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```releaseName``` | リリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をリリース名としてしまうため、これを上書きするために```releaseName```を設定した方が良い。                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ```values```      | ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。                                                                                 | 執筆時点（2022/10/31）では、```values```ファイルは、同じチャートリポジトリ内にある必要がある。チャートと```values```ファイルが異なるリポジトリにある場合（例：チャートはOSSを参照し、```values```ファイルは独自で定義する）、```valueFiles```オプションの代わりに```values```オプションを使用する。<br>ℹ️ 参考：<br>・https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936  <br>・https://github.com/argoproj/argo-cd/blob/428bf48734153fa1bcc340a975be8c7e3f34c163/docs/operator-manual/application.yaml#L48-L62 <br><br>ただし、Applicationに```values```ファイルをハードコーディングした場合に、共有```values```ファイルと差分```values```ファイルに切り分けて定義できなくなってしまう。そこで、```values```オプションの一部分をHelmのテンプレート機能で動的に出力するようにする。ただし、新機能として複数のリポジトリの```values```ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに```values```ファイルがあっても```valueFiles```オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>ℹ️ 参考：<br>・https://github.com/argoproj/argo-cd/pull/10432 |
+| ```values```      | ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。                                                                                 | 執筆時点（2022/10/31）では、```values```ファイルは、同じチャートリポジトリ内にある必要がある。チャートと```values```ファイルが異なるリポジトリにある場合（例：チャートはOSSを参照し、```values```ファイルは独自で定義する）、```valueFiles```オプションの代わりに```values```オプションを使用する。<br>↪️ 参考：<br>・https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936  <br>・https://github.com/argoproj/argo-cd/blob/428bf48734153fa1bcc340a975be8c7e3f34c163/docs/operator-manual/application.yaml#L48-L62 <br><br>ただし、Applicationに```values```ファイルをハードコーディングした場合に、共有```values```ファイルと差分```values```ファイルに切り分けて定義できなくなってしまう。そこで、```values```オプションの一部分をHelmのテンプレート機能で動的に出力するようにする。ただし、新機能として複数のリポジトリの```values```ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに```values```ファイルがあっても```valueFiles```オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>↪️ 参考：<br>・https://github.com/argoproj/argo-cd/pull/10432 |
 | ```valueFiles```  | ```helm```コマンドに渡す```values```ファイルを設定する。                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ```version```     | ```helm```コマンドのバージョンを設定する。デフォルトでは、```v3```になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できるため、このオプションを使用する必要はない。 | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version <br>・https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#L720-L733                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ```version```     | ```helm```コマンドのバージョンを設定する。デフォルトでは、```v3```になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できるため、このオプションを使用する必要はない。 | ↪️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version <br>・https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#L720-L733                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
@@ -640,7 +666,7 @@ spec:
 
 
 
-> ℹ️ 参考：https://github.com/camptocamp/argocd-helm-sops-example
+> ↪️ 参考：https://github.com/camptocamp/argocd-helm-sops-example
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -699,7 +725,7 @@ ArgoCDはHelmの```v2```と```v3```の両方を保持している。
 
 
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
+> ↪️ 参考：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
 
 ArgoCDを介してHelmを実行する場合、内部的には```helm template```コマンドとetcd上のマニフェストを```kubectl diff```コマンドで比較し、生じた差分を```kubectl apply```コマンドを使用してデプロイしている。
 
@@ -711,7 +737,7 @@ $ helm template . --include-crds | kubectl diff -f -
 $ helm template . --include-crds | kubectl apply -f -
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/helm/helm/issues/6930#issuecomment-555242131
 > - https://qiita.com/kyohmizu/items/118bf654d0288da2294e
@@ -735,7 +761,7 @@ ID  DATE                           REVISION
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#random-data
 > - https://medium.com/@ch1aki/argocd%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95%E3%81%A8%E6%97%A2%E5%AD%98%E3%81%AErelease%E3%82%92argocd%E7%AE%A1%E7%90%86%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95-9108295887
@@ -751,7 +777,7 @@ ID  DATE                           REVISION
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 > - https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
@@ -775,7 +801,7 @@ spec:
 バージョンタグは、```Chart.yaml```ファイルの```version```キーから確認する。
 
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -812,7 +838,7 @@ spec:
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
+> ↪️ 参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -852,7 +878,7 @@ apply先のKubernetesを設定する。
 
 
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 #### ▼ namespace
 
@@ -913,7 +939,7 @@ GitOpsでのリポジトリ（例：GitHub、Helm、など）とKubernetesの間
 
 ArgoCDはリポジトリを```3```分間ごとにポーリングしており、このタイミングでリポジトリとの間でマニフェストの状態を同期する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L113
@@ -929,9 +955,9 @@ GitOpsでのリポジトリ（例：GitHub、Helm、など）とKubernetesの間
 
 | 設定項目         | 説明                                                                                                                                                                                                                                                              | 補足                                                                                                                                                                                                                           |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```prune```      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。```rev:n```という表記があるKubernetesリソースは、```prune```を忘れて新旧バージョンが存在していることを表す。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                       |
-| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetesリソースを変更しても、リポジトリの状態に戻すための自動Syncは実行されない。                                                                                                                                     | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                  |
-| ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。                                                                                                                                                | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
+| ```prune```      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。```rev:n```という表記があるKubernetesリソースは、```prune```を忘れて新旧バージョンが存在していることを表す。 | ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                       |
+| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetesリソースを変更しても、リポジトリの状態に戻すための自動Syncは実行されない。                                                                                                                                     | ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                  |
+| ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。                                                                                                                                                | ↪️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -947,7 +973,7 @@ spec:
       selfHeal: true
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
 
 #### ▼ syncOptions
@@ -960,8 +986,8 @@ GitOpsでのマニフェストのSync処理の詳細を設定する。
 |------------------------------|----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。                                                                                    | Namespaceので出どころがわからなくなるため、ArgoCDの```createNamespace```オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。                                                                                                                       |
 | ```Validate```               |                                                                                                                                  |                                                                                                                                                                                                                             |
-| ```PrunePropagationPolicy``` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、KubernetesでのKubernetesリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| ```PruneLast```              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。    | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                        |
+| ```PrunePropagationPolicy``` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、KubernetesでのKubernetesリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ↪️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
+| ```PruneLast```              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。    | ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                        |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -977,7 +1003,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
 > - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
@@ -991,9 +1017,9 @@ spec:
 
 ArgoCDのApplicationは、```1```個のClusterにしかマニフェストを送信できない。
 
-そのため、二重管理になってしまうが、同じ設定値のApplicationを作成しなければならない。
+そのため、Clusterの数だけApplicationを個別に管理しなければならない。
 
-一方で、ApplicationSetであれば、親Applicationに紐づく子Applicationが異なるClusterにデプロイできる。
+一方で、ApplicationSetであれば、異なるClusterに対応するApplicationを一括して管理できる。
 
 
 
@@ -1028,7 +1054,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://techstep.hatenablog.com/entry/2021/12/02/085034
 > - https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5
@@ -1042,7 +1068,7 @@ spec:
 
 Applicationの責務境界をProjectとして管理する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
 
 <br>
 
@@ -1146,7 +1172,7 @@ Progressive Deliveryを使用する場合、詳細を設定する。
 
 
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 #### ▼ successfulRunHistoryLimit
 
@@ -1223,7 +1249,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argoproj.github.io/argo-rollouts/features/bluegreen/
 > - https://argoproj.github.io/argo-rollouts/concepts/#blue-green
@@ -1259,7 +1285,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argoproj.github.io/argo-rollouts/features/canary/
 > - https://argoproj.github.io/argo-rollouts/concepts/#canary
@@ -1289,7 +1315,7 @@ spec:
   entrypoint: foo-template
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 
 <br>
@@ -1319,7 +1345,7 @@ spec:
             echo "Hello World"
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 
 <br>
@@ -1341,7 +1367,7 @@ spec:
     name: hello-world-workflow-template
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 
 <br>
@@ -1369,7 +1395,7 @@ spec:
             echo "Hello World"
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 
 #### ▼ script
@@ -1395,12 +1421,12 @@ spec:
             echo "Hello World"
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 
 #### ▼ steps
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 <br>
 
@@ -1413,7 +1439,7 @@ spec:
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
 ```
 
-> ℹ️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
+> ↪️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
 
 
 <br>
@@ -1448,7 +1474,7 @@ data:
       send: [app-sync-succeeded]
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
 
 
 #### ▼ data.service
@@ -1471,7 +1497,7 @@ data:
     token: *****
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
 
 
 #### ▼ data.template
@@ -1496,7 +1522,7 @@ data:
     message: "ArgoCD sync in {{ .context.env }}"
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
 
 <br>
 
@@ -1507,7 +1533,7 @@ ArgoCDの各コンポーネントの機密でない変数やファイルを管�
 
 ConfigMapでは、```.metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
 <br>
 
@@ -1517,7 +1543,7 @@ ConfigMapでは、```.metadata.labels```キー配下に、必ず```app.kubernete
 
 ArgoCDの各コンポーネントで共通する値を設定する。
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
 
 <br>
 
@@ -1546,14 +1572,14 @@ data:
       - /spec/metrics
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
 
 #### ▼ repositories
 
 ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
 
 
 <br>
@@ -1595,7 +1621,7 @@ data:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
@@ -1632,7 +1658,7 @@ data:
   url: <URL>
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
 > - https://dexidp.io/docs/connectors/oidc/
@@ -1684,7 +1710,7 @@ data:
   server.x.frame.options: sameorigin
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
@@ -1695,7 +1721,7 @@ data:
 
 ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐づける。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
@@ -1714,7 +1740,7 @@ Casbinの記法を使用して、```.csv```形式で認可スコープを定義�
 | ```g``` | グループにロールを紐付ける。     |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://stackoverflow.com/a/73784100
 > - https://github.com/argoproj/argo-cd/blob/master/assets/model.conf
@@ -1759,7 +1785,7 @@ data:
   scopes: '[groups]'
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://krrrr.hatenablog.com/entry/2022/01/23/201700
 > - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
@@ -1800,7 +1826,7 @@ data:
   scopes: '[groups]'
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
@@ -1837,7 +1863,7 @@ data:
   scopes: '[email]'
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
@@ -1848,7 +1874,7 @@ data:
 
 リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 
 
 
@@ -1883,7 +1909,7 @@ data:
 ```
 
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
 
 <br>
 
@@ -1982,7 +2008,7 @@ metadata:
   generateName: foo-hook
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
 
 
 <br>
@@ -2006,7 +2032,7 @@ metadata:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
@@ -2056,7 +2082,7 @@ metadata:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://weseek.co.jp/tech/95/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
@@ -2070,7 +2096,7 @@ metadata:
 
 ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
 <br>
 
@@ -2088,7 +2114,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 パブリックリポジトリの場合は、不要である。
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repositories.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
@@ -2104,7 +2130,7 @@ Secretタイプは```repository```とする。
 
 監視対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
 <br>
 
@@ -2120,7 +2146,7 @@ Secretタイプは```repository```とする。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 > - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
@@ -2166,7 +2192,7 @@ stringData:
   password: *****
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 
 
 #### ▼ SSH公開鍵認証の場合
@@ -2223,7 +2249,7 @@ stringData:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
@@ -2268,7 +2294,7 @@ stringData:
   password: qux
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 
 
 <br>
@@ -2285,7 +2311,7 @@ OCIプロトコルの有効化（```enableOCI```キー）が必要であるが�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
@@ -2335,7 +2361,7 @@ stringData:
 
 AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 > - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
@@ -2357,7 +2383,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 パブリックリポジトリの場合は、不要である。
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
@@ -2375,7 +2401,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
 - Webhookでリクエストを送信するためのSSL証明書
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
 
 <br>
 
@@ -2456,7 +2482,7 @@ data:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
 > - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
@@ -2486,7 +2512,7 @@ INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
 Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 > - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
@@ -2517,7 +2543,7 @@ secrets:
   - name: argocd-manager-token-*****
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
 
 <br>
 

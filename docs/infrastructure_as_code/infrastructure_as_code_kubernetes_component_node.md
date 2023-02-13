@@ -9,7 +9,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cstoku.dev/posts/2018/k8sdojo-24/
 > - https://kubernetes.io/docs/concepts/overview/components/
@@ -35,7 +35,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 もし手動で作成する場合は、```kubectl```コマンドで```--register-node=false```とする必要がある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/architecture/nodes/
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration
@@ -48,7 +48,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/ports-and-protocols/#node
+> ↪️ 参考：https://kubernetes.io/docs/reference/ports-and-protocols/#node
 
 <br>
 
@@ -69,7 +69,7 @@ Nodeグループをターゲットとするロードバランサーでは、Node
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
@@ -109,7 +109,7 @@ spec:
 
 ただし、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#cluster-autoscaler
 > - https://blog.inductor.me/entry/2021/12/06/165743
@@ -127,7 +127,7 @@ spec:
 
 ![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
 
-> ℹ️ 参考：https://thinkit.co.jp/article/17453
+> ↪️ 参考：https://thinkit.co.jp/article/17453
 
 
 <br>
@@ -156,7 +156,7 @@ $ kubelet \
     ...
 ```
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
+> ↪️ 参考：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
 
 
 #### ▼ kubelet.confファイル
@@ -224,7 +224,7 @@ kubelet[405976]: I0421 14:22:01.838974  405976 server.go:440] "Kubelet version" 
 
 kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、IPアドレスベースのサービスディスカバリー、検出したサービス（Pod）に対する```L4```ロードバランサー、として働く。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 > - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
@@ -257,7 +257,7 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
@@ -271,7 +271,7 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
 #### ▼ 確認方法
 
@@ -296,7 +296,7 @@ num  target                     prot   opt   source      destination
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dream.jp/vps/support/manual/mnl_security_04.html
 > - https://zenn.dev/tayusa/articles/c705cd65b6ee74
@@ -318,7 +318,7 @@ num  target                     prot   opt   source      destination
 | IPアドレスベースのサービスディスカバリー    | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
 | ```L4```のロードバランシングアルゴリズム | ランダム方式のみ。                                                                                          |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
@@ -335,7 +335,7 @@ num  target                     prot   opt   source      destination
 | IPアドレスベースのサービスディスカバリー    | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
 | ```L4```のロードバランシングアルゴリズム | ラウンドロビン方式のみ。                                                                                       |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
 > - https://github.com/kubernetes/kubernetes/pull/81430
@@ -355,7 +355,7 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 | ```L4```のロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
@@ -372,7 +372,7 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 - ```minikube tunnel```コマンド
 - LoadBalancer
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
+> ↪️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
 
 
 <br>
@@ -385,7 +385,7 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/17453
+> ↪️ 参考：https://thinkit.co.jp/article/17453
 
 <br>
 
@@ -397,7 +397,7 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 
 :    ```/etc/modules-load.d/containerd.conf```ファイルに、カーネルモジュールを設定する。
 
-> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
+> ↪️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
 
 ```bash
 overlay
@@ -417,7 +417,7 @@ $ modprobe br_netfilter
 
 :    ```/etc/sysctl.d/99-kubernetes-cri.conf```ファイルに、カーネルパラメーターを設定する。
 
-> ℹ️ 参考：https://www.memotansu.jp/kubernetes/3790/#toc2
+> ↪️ 参考：https://www.memotansu.jp/kubernetes/3790/#toc2
 
 ```bash
 net.bridge.bridge-nf-call-iptables=1
@@ -477,7 +477,7 @@ $ apt-get update && apt-get install containerd.io
 ```
 
 
-> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> ↪️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 #### ▼ Containerdの設定ファイルの準備
 
@@ -485,7 +485,7 @@ $ apt-get update && apt-get install containerd.io
 
 :    設定ファイルとして、```/etc/containerd/config.toml```ファイルを作成する。
 
-> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> ↪️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 ```bash
 $ mkdir -p /etc/containerd
@@ -511,7 +511,7 @@ $ kubelet \
     ...
 ```
 
-> ℹ️ 参考：https://repl.info/archives/2894/
+> ↪️ 参考：https://repl.info/archives/2894/
 
 
 <br>
@@ -544,6 +544,6 @@ $ journalctl -u containerd.service
 | Terminated | コンテナが正常/異常に停止した。                              |
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
+> ↪️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
 
 <br>

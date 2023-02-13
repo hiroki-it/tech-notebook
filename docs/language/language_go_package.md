@@ -10,7 +10,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -20,7 +20,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_go_logic_method_data.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_go_logic_method_data.html
 
 <br>
 
@@ -79,7 +79,7 @@ go 1.16
 
 
 
-> ℹ️ 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
+> ↪️ 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
 ```
 module github.com/hiroki-hasegawa/repository
@@ -112,7 +112,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
+> ↪️ 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
 ```
 module foo.com/hiroki-it/repository
@@ -176,7 +176,7 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 ### aws-sdk-go-v2とは
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
+> ↪️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
 
 <br>
 
@@ -186,20 +186,20 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
+> ↪️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
 ポインタ型からstring型に変換する```ToString```関数や、反対にstring型からポインタ型に変換する```String```関数をよく使用する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
 
 #### ▼ serviceパッケージ
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
+> ↪️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
 
 <br>
 
@@ -209,7 +209,7 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
 
 <br>
 
@@ -221,7 +221,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。
 
 使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
 
-> ℹ️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
+> ↪️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
 
 <br>
 
@@ -229,7 +229,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。
 
 kube-apiserverの認証/認可を通過するために、```~/.kube/config```ファイルをコンテナにマウントする必要がある。
 
-> ℹ️ 参考：https://nishipy.com/archives/1363
+> ↪️ 参考：https://nishipy.com/archives/1363
 
 <br>
 
@@ -245,7 +245,7 @@ kube-apiserverとクライアント側のバージョン差は、前方/後方�
 
 そのため、client-goパッケージを定期的にアップグレードする必要がある。
 
-> ℹ️ 参考：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
+> ↪️ 参考：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
 
 #### ▼ client-goパッケージとマニフェストの間
 
@@ -271,7 +271,7 @@ Go製のORMである。
 
 執筆時点（2022/01/31）では、GormとBeegoが接戦している。
 
-> ℹ️ 参考：https://github.com/d-tsuji/awesome-go-orms
+> ↪️ 参考：https://github.com/d-tsuji/awesome-go-orms
 
 <br>
 
@@ -279,7 +279,7 @@ Go製のORMである。
 
 #### ▼ MySQLの場合
 
-> ℹ️ 参考：https://gorm.io/docs/connecting_to_the_database.html#MySQL
+> ↪️ 参考：https://gorm.io/docs/connecting_to_the_database.html#MySQL
 
 ```go
 func NewDB() (*gorm.DB, error) {
@@ -335,7 +335,7 @@ func Close(db *gorm.DB) error {
 
 
 
-> ℹ️ 参考：https://gorm.io/docs/models.html#embedded_struct
+> ↪️ 参考：https://gorm.io/docs/models.html#embedded_struct
 
 ```go
 type User struct {
@@ -372,7 +372,7 @@ type User struct {
 }
 ```
 
-> ℹ️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
+> ↪️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
 
 
 #### ▼ SoftDelete
@@ -405,7 +405,7 @@ db.Where("age = ?", 20).Delete(&User{})
 db.Where("age = 20").Find(&user)
 ```
 
-> ℹ️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
+> ↪️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
 
 
 <br>
@@ -432,7 +432,7 @@ func (User) TableName() string {
 }
 ```
 
-> ℹ️ 参考：https://gorm.io/docs/conventions.html#TableName
+> ↪️ 参考：https://gorm.io/docs/conventions.html#TableName
 
 
 <br>
@@ -453,7 +453,7 @@ result.Error        // returns error
 result.RowsAffected // returns inserted records count
 ```
 
-> ℹ️ 参考：https://gorm.io/docs/create.html#Create-Record
+> ↪️ 参考：https://gorm.io/docs/create.html#Create-Record
 
 <br>
 
@@ -473,7 +473,7 @@ result.RowsAffected // returns found records count, equals `len(users)`
 result.Error        // returns error
 ```
 
-> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-all-objects
+> ↪️ 参考：https://gorm.io/docs/query.html#Retrieving-all-objects
 
 
 #### ▼ 単一/複数カラム取得
@@ -496,7 +496,7 @@ db.Find(&users, []int{1,2,3})
 // SELECT * FROM users WHERE id IN (1,2,3);
 ```
 
-> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+> ↪️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
 
 
 <br>
@@ -509,7 +509,7 @@ db.Find(&users, []int{1,2,3})
 
 
 
-> ℹ️ 参考：https://gorm.io/docs/update.html#Update-single-column
+> ↪️ 参考：https://gorm.io/docs/update.html#Update-single-column
 
 ```go
 // Update with conditions
@@ -537,7 +537,7 @@ Gormモデルを使用した場合、フィールド値がゼロ値であると�
 
 
 
-> ℹ️ 参考：https://gorm.io/docs/update.html#Updates-multiple-columns
+> ↪️ 参考：https://gorm.io/docs/update.html#Updates-multiple-columns
 
 ```go
 user := User{Id:111}
@@ -559,7 +559,7 @@ Gormモデルのフィールドを明示的に指定して、複数のカラム�
 
 
 
-> ℹ️ 参考：https://gorm.io/docs/update.html#Update-Selected-Fields
+> ↪️ 参考：https://gorm.io/docs/update.html#Update-Selected-Fields
 
 ```go
 user := User{Id:111}
@@ -579,7 +579,7 @@ Gormモデルのフィールドを暗黙的に全て指定して、全てのカ�
 
 
 
-> ℹ️ 参考：https://gorm.io/docs/update.html#Save-All-Fields
+> ↪️ 参考：https://gorm.io/docs/update.html#Save-All-Fields
 
 ```go
 user := User{Id:111}
@@ -606,7 +606,7 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 <br>
 
@@ -643,7 +643,7 @@ type MockedAwsClient struct {
 
 #### ▼ スタブ化
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+> ↪️ 参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
 | よく使用するメソッド              | 説明                                                                                  |
 |---------------------------|-------------------------------------------------------------------------------------|
@@ -690,7 +690,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 | ```assert.Exactly```メソッド          | 関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。 |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 > - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
@@ -705,13 +705,13 @@ PHPUnitにおける前処理と後処理については、以下のリンクを�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 前処理と後処理については、以下のリンクを参考にせよ。
 
 
 
-> ℹ️ 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
+> ↪️ 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
 | よく使用する関数        | 実行タイミング | 説明                                                                                                          |
 |---------------------|-----------|-------------------------------------------------------------------------------------------------------------|

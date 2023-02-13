@@ -11,7 +11,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ HTTPプロトコルの中で認証を行う認証スキームのこと。
 
 認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除（ログアウト）をサーバー側で完全に制御できない。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
 > - https://architecting.hateblo.jp/entry/2020/03/27/130535
@@ -102,7 +102,7 @@ WWW-Authenticate: Basic realm=""
 
 :    認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
 
-> ℹ️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
+> ↪️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 ```yaml
 POST https://example.com/foo-form/logout
@@ -171,7 +171,7 @@ Bearer認証にて、トークンとして使用する。
 
 
 
-> ℹ️ 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
+> ↪️ 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
 <br>
 
@@ -185,7 +185,7 @@ Bearer認証にて、トークンとして使用する。
 
      必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 > - https://ja.developer.box.com/reference/post-oauth2-token/#request
@@ -205,7 +205,7 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 
      他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 > - https://ja.developer.box.com/reference/resources/access-token/
@@ -230,7 +230,7 @@ Content-Type: application/json
 
      ここでは詳しく言及しないが、BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
 > - https://ja.developer.box.com/reference/post-oauth2-token/#response
@@ -261,7 +261,7 @@ WWW-Authenticate: Bearer realm=""
 
      またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
 > - https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6
@@ -276,7 +276,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ### 正常系/異常系レスポンス
 
-> ℹ️ 参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
+> ↪️ 参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
 
 成功の場合は、realm属性を空にしたレスポンスを返信する。
 
@@ -320,11 +320,11 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 Chromeでは、ローカルストレージあるいはセッションストレージに保持される。
 
-ローカルストレージはセッションストレージと比べて保存期間が長いため、XSSの危険性がより高い。
+ローカルストレージはセッションストレージと比べて保管期間が長いため、XSSの危険性がより高い。
 
 これらの場所の確認方法については、以下のリンクを参考にせよ
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://developer.chrome.com/docs/devtools/storage/localstorage/
 > - https://developer.chrome.com/docs/devtools/storage/sessionstorage/

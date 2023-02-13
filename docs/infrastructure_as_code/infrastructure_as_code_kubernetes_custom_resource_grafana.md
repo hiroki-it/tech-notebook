@@ -11,7 +11,7 @@ description: Grafana＠カスタムリソースの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -28,7 +28,7 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images//grafana_architecture.png)
 
-> ℹ️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
+> ↪️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
 
 
 <br>
@@ -42,6 +42,6 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 | RDB        | MySQL、PostgreSQL                                    |
 | クラウドデータソース | AWS CloudWatch、Google Stackdriver                   |
 
-> ℹ️ 参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
+> ↪️ 参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
 
 <br>

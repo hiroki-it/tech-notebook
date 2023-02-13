@@ -11,7 +11,7 @@ description: 検証ロジック＠PHPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -47,7 +47,7 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 
 
 
-> ℹ️ 参考：https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62
+> ↪️ 参考：https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62
 
 | 検証パターン             | ```isset($var)```、```!is_null($var)``` |        ```if($var)```、```!empty($var)```         |
 |:---------------------|:--------------------------------------:|:------------------------------------------------:|

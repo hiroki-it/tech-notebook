@@ -11,7 +11,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects
+> ↪️ 参考：https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects
 
 ```yaml
 fooBarBaz: ""
@@ -41,7 +41,7 @@ fooBarBaz: ""
 
 
 
-> ℹ️ 参考：https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
+> ↪️ 参考：https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
 
 
 ```yaml
@@ -97,7 +97,7 @@ fruit:
 
 
 
-> ℹ️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: |
@@ -120,7 +120,7 @@ command: |
 
 
 
-> ℹ️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: |+
@@ -143,7 +143,7 @@ command: |+
 
 
 
-> ℹ️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: |-
@@ -166,7 +166,7 @@ command: |-
 
 
 
-> ℹ️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: >
@@ -210,7 +210,7 @@ command: >
 
 
 
-> ℹ️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: >+
@@ -236,7 +236,7 @@ command: >+
 
 
 
-> ℹ️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: >-

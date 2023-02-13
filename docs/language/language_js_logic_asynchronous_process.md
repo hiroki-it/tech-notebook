@@ -10,7 +10,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -20,7 +20,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 #### ▼ 非同期処理とは
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_process_mode.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_process_mode.html
 
 #### ▼ 非同期処理化
 
@@ -30,7 +30,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 
 
-> ℹ️ 参考：https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
+> ↪️ 参考：https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
 
 **＊実装例＊**
 
@@ -68,7 +68,7 @@ Promiseオブジェクトの実装の仕様は取り決められており、以�
 
 
 
-> ℹ️ 参考：https://promisesaplus.com/
+> ↪️ 参考：https://promisesaplus.com/
 
 #### ▼ Promiseオブジェクトの種類
 
@@ -81,11 +81,11 @@ Promiseオブジェクトの実装の仕様は取り決められており、以�
 
 | リリース日 | 提供                      | 種類            | 説明                                                                                    | 補足                                                                                             |
 |--------|---------------------------|-----------------|---------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| 2012   | JQueryパッケージのDeferredモジュール | Promiseオブジェクト   | バージョン1.5でPromiseオブジェクトが導入された。<br>ℹ️ 参考：https://api.jquery.com/category/version/1.5/ | ℹ️ 参考：https://api.jquery.com/category/deferred-object/                                         |
-| 2015   | ビルトインオブジェクト               | Promiseオブジェクト   | JQueryのPromiseオブジェクトを参考にして、ES2015から新しく使用できるようになった。                                 | ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
-| 2017   | ビルトインオブジェクト               | async/await宣言 | ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。                     | ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+| 2012   | JQueryパッケージのDeferredモジュール | Promiseオブジェクト   | バージョン1.5でPromiseオブジェクトが導入された。<br>↪️ 参考：https://api.jquery.com/category/version/1.5/ | ↪️ 参考：https://api.jquery.com/category/deferred-object/                                         |
+| 2015   | ビルトインオブジェクト               | Promiseオブジェクト   | JQueryのPromiseオブジェクトを参考にして、ES2015から新しく使用できるようになった。                                 | ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
+| 2017   | ビルトインオブジェクト               | async/await宣言 | ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。                     | ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
 
-> ℹ️ 参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
+> ↪️ 参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
 
 
 <br>
@@ -98,7 +98,7 @@ Promiseオブジェクトのコンストラクタに、非同期処理を持つ�
 
 
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 ```javascript
 const asyncFunc = () => {
@@ -232,7 +232,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
+> ↪️ 参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 
 <br>
 
@@ -240,7 +240,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 #### ▼ コンストラクタを使用する場合
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
 **＊実装例＊**
 
@@ -305,7 +305,7 @@ Promiseや、これのコントラクタに渡す関数を実装する必要が�
 
 
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
 **＊実装例＊**
 
@@ -438,7 +438,7 @@ const asyncFunc = async () => {
 
 Promiseオブジェクトの```then```メソッド、```catch```メソッド、```finally```メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
 **＊実装例＊**
 

@@ -11,7 +11,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -211,7 +211,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-> ℹ️ 参考：https://zeropasoakita.livedoor.blog/archives/20294837.html
+> ↪️ 参考：https://zeropasoakita.livedoor.blog/archives/20294837.html
 
 ![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/認証局自体の成りすまし防止.png)
 
@@ -230,7 +230,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 | AWS  | Amazon Trust Services | Starfield社 |
 | GCP  | Google Trust Services | 調査中...   |
 
-> ℹ️ 参考：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
+> ↪️ 参考：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
 <br>
 
@@ -242,7 +242,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ルート認証局は、ブラウザの開発会社の厳しい監査を受けているため、ルート証明書を使用して自分で自分を証明できる。
 
-> ℹ️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+> ↪️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 
 #### ▼ 中間CA証明書
 
@@ -250,7 +250,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ただし、中間認証局は中間CA証明書を使用して自分で自分を証明できないため、代わりにルート認証局がこれを担保する。
 
-> ℹ️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+> ↪️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 
 #### ▼ SSL証明書
 
@@ -276,7 +276,7 @@ SSL証明書の内容
 -----END CERTIFICATE-----
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.mtioutput.com/entry/2019/01/02/090000
 > - https://portal.kitcloud.net/documents/1356
@@ -290,7 +290,7 @@ SSL証明書の内容
 
 ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。
 
-> ℹ️ 参考：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
+> ↪️ 参考：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
 
 <br>
 
@@ -318,7 +318,7 @@ SSL証明書の内容
 | 証明書署名要求 | 秘密鍵から作成され、公開鍵であるSSL証明書を作成するために使用する。 | ```.csr```、```.txt```                                 |
 | SSL証明書      | 秘密鍵と対になる公開鍵として動作する。                       | ```pem```、```.crt```、```.cert```、```.ca```、```.txt``` |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.ssl-concier.com/news/topics/164
 > - https://install-memo.hatenadiary.org/entry/20110906/1315291837
@@ -478,7 +478,7 @@ $ curl https://foo.example.com -v
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.karakaram.com/creating-self-signed-certificate/
 > - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd

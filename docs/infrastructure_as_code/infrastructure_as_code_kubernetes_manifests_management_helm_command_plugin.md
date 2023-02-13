@@ -11,7 +11,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 
 
-> ℹ️ 参考：https://github.com/komodorio/helm-dashboard
+> ↪️ 参考：https://github.com/komodorio/helm-dashboard
 
 <br>
 
@@ -31,7 +31,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 #### ▼ インストール
 
-> ℹ️ 参考：https://github.com/komodorio/helm-dashboard#installing
+> ↪️ 参考：https://github.com/komodorio/helm-dashboard#installing
 
 ```bash
 $ helm plugin install https://github.com/komodorio/helm-dashboard.git
@@ -39,7 +39,7 @@ $ helm plugin install https://github.com/komodorio/helm-dashboard.git
 
 #### ▼ 起動
 
-> ℹ️ 参考：https://github.com/komodorio/helm-dashboard#running
+> ↪️ 参考：https://github.com/komodorio/helm-dashboard#running
 
 ```bash
 $ helm dashboard
@@ -59,7 +59,7 @@ $ helm dashboard
 $ helm diff
 ```
 
-> ℹ️ 参考：https://github.com/databus23/helm-diff/pull/304
+> ↪️ 参考：https://github.com/databus23/helm-diff/pull/304
 
 <br>
 
@@ -81,7 +81,7 @@ $ helm plugin install https://github.com/databus23/helm-diff --version 1.0.0
 
 
 
-> ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
+> ↪️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
 <br>
 
@@ -101,14 +101,14 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version 1.0.0
 
 helm-secretsの内部で使用する暗号化ツールのこと。
 
-> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
+> ↪️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
 
 #### ▼ 使用可能なバックエンド例
 
 - SOPS
 - vals
 
-> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
+> ↪️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
 
 <br>
 
@@ -124,7 +124,7 @@ zendesk製を使用している場合、SOPSの```secrets```ファイルの名�
 
 一方でjkeroepke製では、執筆時点（2022/11/29）で、```secrets```ファイルの名前が自由である。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/zendesk/helm-secrets#usage-and-examples
 > - https://github.com/jkroepke/helm-secrets/wiki/Usage
@@ -142,7 +142,7 @@ SOPSの```secrets```ファイルを指定する時に```secrets://```を使用�
 $ helm template ./foo-chart -f secrets://secrets.yaml
 ```
 
-> ℹ️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
+> ↪️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
 
 <br>
 
@@ -220,7 +220,7 @@ data:
   foo: Rjc5OVE4Q1E=...
 ```
 
-> ℹ️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
+> ↪️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
 
 
 <br>
@@ -247,7 +247,7 @@ db:
   password: password
 ```
 
-> ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> ↪️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 #### ▼ enc
 
@@ -275,7 +275,7 @@ sops:
   ...
 ```
 
-> ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> ↪️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 
 #### ▼ view
@@ -293,7 +293,7 @@ db:
   password: password
 ```
 
-> ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> ↪️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 
 <br>

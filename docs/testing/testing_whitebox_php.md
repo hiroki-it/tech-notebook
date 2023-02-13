@@ -11,7 +11,7 @@ description: PHPの場合＠ホワイトボックステストの知見を記録�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -181,7 +181,7 @@ PHPUnitの設定を行う。
 
 
 
-> ℹ️ 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
+> ↪️ 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
 
 #### ▼ ```testsuites```タグ
 
@@ -191,7 +191,7 @@ PHPUnitの設定を行う。
 
 
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
 ```xml
 <phpunit>
@@ -221,7 +221,7 @@ PHPUnitの実行前に設定する```ini_set```関数、```define```関数、グ
 
 
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
 
 **＊実装例＊**
 
@@ -266,7 +266,7 @@ Composerの実行時にメモリ不足にならないようにメモリを拡張
 
 
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
 
 ```php
 $this->assertTrue();
@@ -325,7 +325,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 
 
-> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
 
 **＊実装例＊**
 
@@ -995,7 +995,7 @@ class FooControllerTest extends TestCase
 
 
 
-> ℹ️ 参考：https://github.com/mlively/Phake#phake
+> ↪️ 参考：https://github.com/mlively/Phake#phake
 
 <br>
 

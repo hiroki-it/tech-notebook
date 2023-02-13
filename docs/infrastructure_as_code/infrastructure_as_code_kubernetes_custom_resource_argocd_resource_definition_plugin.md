@@ -11,7 +11,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ ArgoCDと任意のツールを連携するためには、```argocd-repo-server``
 - 連携先ツールがすでにインストールされた```argocd-repo-server```コンテナのイメージを使用する。
 - Podの```.spec.initContainers.args```キーでInitContainerに連携先ツールをインストールし、```.spec.initContainers.volumeMounts```キーでコンテナのボリュームに連携先ツールを配置する。これにより、Podのストレージに連携先ツールを配置できるため、```argocd-repo-server```コンテナでは自身のボリュームを介して、Podのストレージ上の連携先ツールを使用できる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
@@ -85,7 +85,7 @@ data:
             # 必要なマニフェストを定義する。
 ```
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/#installing-a-cmp
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/#installing-a-cmp
 
 
 #### ▼ プラグイン名の指定
@@ -116,7 +116,7 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
 
 
 <br>
@@ -175,7 +175,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
@@ -226,7 +226,7 @@ data:
             helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV" template"
 ```
 
-> ℹ️ 参考：https://github.com/travisghansen/argo-cd-helmfile#installation
+> ↪️ 参考：https://github.com/travisghansen/argo-cd-helmfile#installation
 
 
 
@@ -236,7 +236,7 @@ Applicationでプラグイン名を指定する。
 
 
 
-> ℹ️ 参考：https://github.com/travisghansen/argo-cd-helmfile#intro
+> ↪️ 参考：https://github.com/travisghansen/argo-cd-helmfile#intro
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -310,7 +310,7 @@ spec:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
@@ -368,7 +368,7 @@ data:
             fi
 ```
 
-> ℹ️ 参考：https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
+> ↪️ 参考：https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
 
 
 #### ▼ プラグイン名の指定
@@ -424,7 +424,7 @@ metadata:
 automountServiceAccountToken: true
 ```
 
-> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
+> ↪️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
 
 
 #### ▼ helm-secretsの使用
@@ -459,7 +459,7 @@ spec:
         - secrets://secrets.yaml
 ```
 
-> ℹ️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
+> ↪️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
 
 
 <br>
@@ -473,7 +473,7 @@ spec:
 
 ```argocd-repo-server```コンテナがVaultを使用できるように、Vaultをインストールする。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
@@ -525,7 +525,7 @@ data:
             helm template $ARGOCD_ENV_HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
-> ℹ️ 参考：https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
+> ↪️ 参考：https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
 
 
 #### ▼ プラグイン名の指定
@@ -551,7 +551,7 @@ spec:
         value: foo
 ```
 
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
+> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
 
 
 <br>

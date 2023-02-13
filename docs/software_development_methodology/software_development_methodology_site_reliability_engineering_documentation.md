@@ -11,7 +11,7 @@ description: ドキュメンテーション＠SREingの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: ドキュメンテーション＠SREingの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
+> ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 <br>
 
@@ -134,7 +134,7 @@ description: ドキュメンテーション＠SREingの知見を記録してい�
 |----------|-------------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
 | アプリケーション | RESTful-API | RESTful-APIを採用している場合、仕様書作成ツール（例：openapi-generatorなど）を使用して、APIの仕様書のおおよその部分を自動的に作成する。                    |                                                                |
 |          | RPC-API     | RPC-APIを採用している場合、仕様書作成ツール（例：protoc-gen-docなど）を使用して、APIの仕様書のおおよその部分を自動的に作成する。                           |                                                                |
-| インフラ     | Helm        | 独自のチャートを採用している場合、外部の仕様書作成ツール（例：helm-docs）を使用して、チャートの仕様書を自動的に作成する。                                      | ℹ️ 参考：https://github.com/norwoodj/helm-docs                  |
-|          | Terraform   | 外部の仕様書自動作成ツール（例：terraform-docs）を使用して、```variable```ブロック、```output```ブロック、```module```ブロック、などの仕様書を作成する。 | ℹ️ 参考：https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6 |
+| インフラ     | Helm        | 独自のチャートを採用している場合、外部の仕様書作成ツール（例：helm-docs）を使用して、チャートの仕様書を自動的に作成する。                                      | ↪️ 参考：https://github.com/norwoodj/helm-docs                  |
+|          | Terraform   | 外部の仕様書自動作成ツール（例：terraform-docs）を使用して、```variable```ブロック、```output```ブロック、```module```ブロック、などの仕様書を作成する。 | ↪️ 参考：https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6 |
 
 <br>

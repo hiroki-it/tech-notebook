@@ -11,7 +11,7 @@ description: SecretsストアCSIドライバー＠CSIドライバーの知見を
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -41,7 +41,7 @@ ExternalSecretsOperatorと比較して、Secretを作成しない点で脆弱性
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 > - https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129
@@ -59,6 +59,6 @@ CSIの仕様によって標準化された外部ボリューム。
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/17635
+> ↪️ 参考：https://thinkit.co.jp/article/17635
 
 <br>

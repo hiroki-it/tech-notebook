@@ -11,7 +11,7 @@ description: apache.conf@Apacheの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -37,7 +37,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
+> ↪️ 参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
 
 <br>
 
@@ -51,7 +51,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess
 > - https://ja.wikipedia.org/wiki/.htaccess
@@ -63,7 +63,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 ![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
 
 
-> ℹ️ 参考：https://htaccess.cman.jp/attention/
+> ↪️ 参考：https://htaccess.cman.jp/attention/
 
 
 #### ▼ それ以外のディレクトリに置いた場合
@@ -73,7 +73,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 ![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲_2.png)
 
 
-> ℹ️ 参考：https://htaccess.cman.jp/attention/
+> ↪️ 参考：https://htaccess.cman.jp/attention/
 
 
 <br>
@@ -124,7 +124,7 @@ VirtualHostという名前の通り、Apacheの稼働するサーバーが複数
 
 
 
-> ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html
+> ↪️ 参考：https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html
 
 **＊実装例＊**
 
@@ -250,7 +250,7 @@ HTTPプロトコルのリクエストのクライアントとの接続時に、�
 
 
 
-> ℹ️ 参考：https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
+> ↪️ 参考：https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
 
 **＊実装例＊**
 
@@ -426,7 +426,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 #### ▼ RewriteRuleとは
 
@@ -630,7 +630,7 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 補足として、Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://www.chromestatus.com/feature/6251880185331712
+> ↪️ 参考：https://www.chromestatus.com/feature/6251880185331712
 
 ```apacheconf
 Header set Referrer-Policy "no-referrer-when-downgrade"

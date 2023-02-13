@@ -11,7 +11,7 @@ description: template.json＠Packerの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -21,7 +21,7 @@ description: template.json＠Packerの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-> ℹ️ 参考：https://www.packer.io/downloads
+> ↪️ 参考：https://www.packer.io/downloads
 
 ```bash
 $ curl -L https://apt.releases.hashicorp.com/gpg | sudo apt-key add -

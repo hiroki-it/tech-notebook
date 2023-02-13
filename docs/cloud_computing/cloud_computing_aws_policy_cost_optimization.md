@@ -11,7 +11,7 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -29,19 +29,19 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html
+> ↪️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html
 
 <br>
 
 ### 各種AWSリソースの上限値
 
-> ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html
+> ↪️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html
 
 <br>
 
 ### 方法
 
-> ℹ️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html
+> ↪️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html
 
 <br>
 
@@ -75,7 +75,7 @@ EBSボリュームは、ボリュームの使用率に関わらず、最大サ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ebs-volume-charges/
 > - https://aws.amazon.com/jp/ebs/pricing/
@@ -95,12 +95,12 @@ EBSボリュームは、ボリュームの使用率に関わらず、最大サ�
 
 | 使い方名       | 説明                                                                                                                           | 補足                                                                                     |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| オンデマンドインスタンス  | EC2インスタンスの使用期間に応じて使用料金を支払う。                                                                                         | ℹ️ 参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/                                 |
+| オンデマンドインスタンス  | EC2インスタンスの使用期間に応じて使用料金を支払う。                                                                                         | ↪️ 参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/                                 |
 | Savings Plans |                                                                                                                                |                                                                                          |
 | リザーブドインスタンス   | EC2インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。                                                                   |                                                                                          |
-| スポットインスタンス    | 休止しているEC2インスタンスを使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
+| スポットインスタンス    | 休止しているEC2インスタンスを使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
+> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
 
 #### ▼ 実行時間
 
@@ -122,7 +122,7 @@ EC2インスタンスを実行している時間分だけ料金がかかる。
 | shutting-down | なし            |                                                 |
 | terminated    | なし            |                                                 |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 
 <br>
 
@@ -146,7 +146,7 @@ Fargateでは、FargateワーカーNode内でPodが使用したリソースサ�
 
 
 
-> ℹ️ 参考：https://aws.amazon.com/jp/fargate/pricing/
+> ↪️ 参考：https://aws.amazon.com/jp/fargate/pricing/
 
 **＊例＊**
 
@@ -195,10 +195,10 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 
 | 使い方名      | 説明                                                                                                                                                                    |
 |:-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| オンデマンドインスタンス | ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html                                                                            |
-| リザーブドインスタンス  | RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
+| オンデマンドインスタンス | ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html                                                                            |
+| リザーブドインスタンス  | RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
 
 <br>
 

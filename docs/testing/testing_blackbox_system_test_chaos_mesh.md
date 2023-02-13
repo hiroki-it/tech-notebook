@@ -11,7 +11,7 @@ description: ChaosMesh＠総合テストの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、か�
 
 ![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/chaos-mesh_architecture.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://chaos-mesh.org/docs/
 > - https://www.publickey1.jp/blog/20/kubernetespodchaos_mesh10.html
@@ -50,7 +50,7 @@ $ helm install <リリース名> <リポジトリ名>/chaos-mesh -n chaos-testin
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://chaos-mesh.org/docs/production-installation-using-helm/
 > - https://github.com/chaos-mesh/charts

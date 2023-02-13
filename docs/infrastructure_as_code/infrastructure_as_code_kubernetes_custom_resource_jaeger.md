@@ -11,7 +11,7 @@ description: Jaeger＠カスタムリソースの知見を記録しています�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -24,7 +24,7 @@ Jaegerは、jaegerクライアントパッケージ（執筆時点2022/07/16で�
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
 
 
-> ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/
+> ↪️ 参考：https://www.jaegertracing.io/docs/latest/architecture/
 
 
 <br>
@@ -41,7 +41,7 @@ jaegerクライアントパッケージは、コンテナ内でデーモンと�
 
 
 
-> ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#jaeger-client-libraries-deprecated
+> ↪️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#jaeger-client-libraries-deprecated
 
 <br>
 
@@ -51,7 +51,7 @@ jaegerエージェントは、Pod内でサイドカーとして常駐し、ア�
 
 もしサービスメッシュツール（Istio）でサイドカーメッシュを採用している場合、jaegerエージェントの代わりにサイドカーを使用することになるため、jaegerエージェントは不要になる。
 
-> ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#agent
+> ↪️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#agent
 
 <br>
 
@@ -62,7 +62,7 @@ jaegerコレクターは、プッシュ型でjaegerエージェントからコ�
 もしサービスメッシュツール（Istio）でサイドカーメッシュを採用している場合、jaegerエージェントの代わりに、サイドカーがjaegerコレクターにスパンを送信する。
 
 
-> ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#collector
+> ↪️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#collector
 
 <br>
 
@@ -74,7 +74,7 @@ jaegerコレクターは、プッシュ型でjaegerエージェントからコ�
 
 
 
-> ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#query
+> ↪️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#query
 
 <br>
 

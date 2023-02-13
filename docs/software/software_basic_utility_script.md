@@ -11,7 +11,7 @@ description: スクリプト＠ユーティリティの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -70,7 +70,7 @@ echo bar
 
 
 
-> ℹ️ 参考：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
+> ↪️ 参考：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
 
 ```bash
 #!/bin/bash
@@ -138,7 +138,7 @@ esac
 
 
 
-> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 $ source hello.sh
@@ -154,7 +154,7 @@ $ source hello.sh
 
 
 
-> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 $ bash hello.sh
@@ -178,7 +178,7 @@ $ . hello.sh
 
 
 
-> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 $ ./hello.sh
@@ -224,7 +224,7 @@ $ apk add make
 
 
 
-> ℹ️ 参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
+> ↪️ 参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
 
 ```makefile
 SHELL=/bin/bash -xeu
@@ -239,7 +239,7 @@ SHELL=/bin/bash -xeu
 SHELL=/bin/bash -o pipefail
 ```
 
-> ℹ️ 参考：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
+> ↪️ 参考：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
 
 #### ▼ ターゲット
 
@@ -287,7 +287,7 @@ baz: foo baz # foo、bazを事前に実行する。
 
 
 
-> ℹ️ 参考：https://advancedinsight.jp/using_phony_target_for_makefile/
+> ↪️ 参考：https://advancedinsight.jp/using_phony_target_for_makefile/
 
 ```makefile
 # ターゲットであることを明示する。
@@ -313,7 +313,7 @@ baz qux:
 
 
 
-> ℹ️ 参考：https://make-muda.net/2014/10/1824/
+> ↪️ 参考：https://make-muda.net/2014/10/1824/
 
 ```makefile
 FOO:=foo
@@ -328,7 +328,7 @@ echo:
 
 
 
-> ℹ️ 参考：https://make-muda.net/2014/10/1824/
+> ↪️ 参考：https://make-muda.net/2014/10/1824/
 
 ```makefile
 FOO=foo
@@ -345,7 +345,7 @@ echo:
 
 
 
-> ℹ️ 参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
+> ↪️ 参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
 
 ```makefile
 FOO=$(shell echo "foo")
@@ -393,7 +393,7 @@ foo:
 
 
 
-> ℹ️ 参考：https://qiita.com/chihiro/items/f270744d7e09c58a50a5
+> ↪️ 参考：https://qiita.com/chihiro/items/f270744d7e09c58a50a5
 
 ```【１】```
 

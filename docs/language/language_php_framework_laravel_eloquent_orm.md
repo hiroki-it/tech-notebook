@@ -11,7 +11,7 @@ description: Eloquent ORM＠Laravelの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ Active Recordパターンで実装されている。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/eloquent.html
 > - https://codezine.jp/article/detail/12805
@@ -121,7 +121,7 @@ ER図における各テーブルのリレーションシップを元に、モデ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
@@ -618,7 +618,7 @@ Eloquentモデルにはより上位のメソッドが定義されていないこ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
 > - https://qiita.com/mpyw/items/7c7e8dc665584122a275
@@ -639,7 +639,7 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 |    update     |          mixed           | ```0```、```1```、```2```、```3``` | 変更したレコード数 |
 |    delete     |          mixed           | ```0```、```1```、```2```、```3``` | 変更したレコード数 |
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
 #### ▼ Eloquentモデル
 
@@ -656,7 +656,7 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 |     save      |   bool   | ```true```、```false``` | 結果のbool値 |
 |    delete     |   bool   | ```true```、```false``` | 結果のbool値 |
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
+> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
 <br>
 
@@ -680,7 +680,7 @@ Eloquentモデルには```create```メソッドがないため、代わりにElo
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://codelikes.com/laravel-eloquent-basic/#toc9
 > - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
@@ -759,7 +759,7 @@ Eloquentモデルには```all```メソッドがないため、代わりにEloque
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
 > - https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
@@ -802,7 +802,7 @@ Eloquentモデルには```find```メソッドがないため、代わりにEloqu
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
 > - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
@@ -882,7 +882,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
 **＊実装例＊**
 
@@ -923,7 +923,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
 **＊実装例＊**
 
@@ -968,7 +968,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
 
 **＊実装例＊**
 
@@ -1001,7 +1001,7 @@ class FooController extends Controller
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
 
 ```php
 <?php
@@ -1040,13 +1040,13 @@ N+1問題を防げる。
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
 
 ただし、```with```メソッドに他のメソッドをチェーンしてしまうと、Eagerロードの後にSQLを発行されてしまうため、Eagerロードの恩恵を得られなくなることに注意する。
 
 
 
-> ℹ️ 参考：https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
+> ↪️ 参考：https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
 
 **＊実装例＊**
 
@@ -1170,7 +1170,7 @@ Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://codelikes.com/laravel-eloquent-basic/#toc9
 > - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
@@ -1417,7 +1417,7 @@ LaravelはActive Recordパターンを採用しており、これはビジネス
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
 <br>
 

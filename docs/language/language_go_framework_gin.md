@@ -11,7 +11,7 @@ description: Ginの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Ginの知見を記録しています。
 
 リクエストからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
+> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
 
 <br>
 
@@ -33,7 +33,7 @@ description: Ginの知見を記録しています。
 
 ```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストからJSON型データを取得し、構造体に紐付ける。
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
+> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
 <br>
 
@@ -57,7 +57,7 @@ description: Ginの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
+> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
 
 <br>
 
@@ -122,7 +122,7 @@ c.JSON(200, &Foo{
 
 
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
+> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
 
 <br>
 
@@ -146,7 +146,7 @@ c.JSON(200, &Foo{
 
 
 
-> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
+> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
 
 #### ▼ 注意点
 
@@ -250,6 +250,6 @@ c.JSON(400, gin.H{
 
 
 
-> ℹ️ 参考：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
+> ↪️ 参考：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
 
 <br>

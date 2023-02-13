@@ -11,7 +11,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -108,7 +108,7 @@ foreach ($a as $foo) {
 
 
 
-> ℹ️ 参考：https://www.php.net/manual/ja/ref.array.php
+> ↪️ 参考：https://www.php.net/manual/ja/ref.array.php
 
 #### ▼ 配列の値へのアクセス
 

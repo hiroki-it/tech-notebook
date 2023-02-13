@@ -11,7 +11,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -36,7 +36,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
@@ -58,7 +58,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 
 
-> ℹ️ 参考：https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
+> ↪️ 参考：https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 
 <br>
 
@@ -97,7 +97,7 @@ CREATE、UPDATE、DELETE処理を実行する処理フローのこと。
 :    インターフェース層のコントローラーにて、レスポンスモデルをJSONに変換し、レスポンスを返信する。
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/19620404/entity-vs-dto-in-cqrs
 > - https://softwareengineering.stackexchange.com/questions/378909/in-what-layer-are-the-dtos-stored-with-cqrs
@@ -132,7 +132,7 @@ READ処理を実行するオブジェクトのこと。
 :    インターフェース層のコントローラーにて、DTOをJSONに変換し、レスポンスを返信する。
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/19620404/entity-vs-dto-in-cqrs
 > - https://softwareengineering.stackexchange.com/questions/378909/in-what-layer-are-the-dtos-stored-with-cqrs
@@ -151,7 +151,7 @@ READ処理を実行するオブジェクトのこと。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 > - https://postd.cc/using-cqrs-with-event-sourcing/

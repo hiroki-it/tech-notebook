@@ -11,7 +11,7 @@ description: コマンド＠Containerdの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ KubernetesのNode内で```crictl```コマンドを実行している場合に、
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods
+> ↪️ 参考：https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods
 
 ```bash
 $ crictl pods
@@ -40,7 +40,7 @@ POD ID      CREATED             STATE        NAME            NAMESPACE          
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-containers
+> ↪️ 参考：https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-containers
 
 ```bash
 $ crictl ps -a
@@ -57,6 +57,6 @@ CONTAINER   IMAGE   CREATED        STATE       NAME              ATTEMPT        
 
 
 
-> ℹ️ 参考：https://repl.info/archives/2894/
+> ↪️ 参考：https://repl.info/archives/2894/
 
 <br>

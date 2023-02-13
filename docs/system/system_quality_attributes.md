@@ -11,13 +11,13 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. 一覧
 
-> ℹ️ 参考：https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
+> ↪️ 参考：https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
 
 <br>
 
@@ -29,7 +29,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
+> ↪️ 参考：https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
 
 <br>
 
@@ -45,7 +45,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://it-trend.jp/words/availability
+> ↪️ 参考：https://it-trend.jp/words/availability
 
 #### ▼ ロードバランシング
 
@@ -55,7 +55,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://knowledge.sakura.ad.jp/6274/#i-3
+> ↪️ 参考：https://knowledge.sakura.ad.jp/6274/#i-3
 
 <br>
 
@@ -75,7 +75,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://www.fe-siken.com/kakomon/29_aki/q13.html
+> ↪️ 参考：https://www.fe-siken.com/kakomon/29_aki/q13.html
 
 <br>
 
@@ -93,7 +93,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.idcf.jp/words/failover.html
 > - https://www.itpassportsiken.com/kakomon/02_yosou/q60.html
@@ -104,7 +104,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://www.idcf.jp/words/failover.html
+> ↪️ 参考：https://www.idcf.jp/words/failover.html
 
 <br>
 
@@ -136,7 +136,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4873117917
+> ↪️ 参考：https://www.amazon.co.jp/dp/4873117917
 
 <br>
 
@@ -152,7 +152,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 #### ▼ SLOの遵守
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html
 
 <br>
 
@@ -167,7 +167,7 @@ description: システム品質特性＠システムの知見を記録してい�
 ![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアップ.png)
 
 
-> ℹ️ 参考：https://www.idcf.jp/words/scale-out.html
+> ↪️ 参考：https://www.idcf.jp/words/scale-out.html
 
 
 <br>
@@ -181,7 +181,7 @@ description: システム品質特性＠システムの知見を記録してい�
 ![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアウト.png)
 
 
-> ℹ️ 参考：https://www.idcf.jp/words/scale-out.html
+> ↪️ 参考：https://www.idcf.jp/words/scale-out.html
 
 
 <br>
@@ -200,7 +200,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+> ↪️ 参考：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
 
 #### ▼ スイッチオーバー、フェイルオーバー
 

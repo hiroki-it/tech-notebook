@@ -11,7 +11,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -51,7 +51,7 @@ ENTRYPOINT ["/app"]
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.aquasec.com/docker-security-best-practices
 > - https://www.forcia.com/blog/002273.html
@@ -66,7 +66,7 @@ ENTRYPOINT ["/app"]
 
 
 
-> ℹ️ 参考：https://www.forcia.com/blog/002273.html
+> ↪️ 参考：https://www.forcia.com/blog/002273.html
 
 #### ▼ ベースイメージの種類
 
@@ -80,7 +80,7 @@ ENTRYPOINT ["/app"]
 | distroless型   | 接尾辞なし                                               | 最小限のパッケージのみをインストールしている。                     | イメージによる      | 有（非常に少ない） | イメージによる                    |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://prograshi.com/platform/docker/docker-image-tags-difference/
 > - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
@@ -113,7 +113,7 @@ $ docker inspect <コンテナ名>
 }
 ```
 
-> ℹ️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
+> ↪️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
 
 
 #### ▼ バージョン
@@ -130,7 +130,7 @@ $ docker inspect <コンテナ名>
 | ```2```      | 『```2.X```』と『```2.0.X```』のマイナーアップデートのみを追跡する。 |
 | ```latest``` | メジャーアップデートとマイナーアップデートを追跡する。                  |
 
-> ℹ️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
+> ↪️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
 
 <br>
 
@@ -285,7 +285,7 @@ RUN yum -y install \
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.itbook.info/network/docker02.html
 > - https://yuhabeem.com/2021/03/27/311/
@@ -405,7 +405,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
 > - https://codezine.jp/article/detail/15119
@@ -421,7 +421,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 | 文法の誤りテスト      | Dockerのビルトインのコマンド（例：```docker build```コマンド）を使用して、Dockerfileの文法の誤りを検証する。                                                                                                                                                                                       |
 | ベストプラクティス違反テスト | 外部のベストプラクティス違反テストツール（例：hadolint）を使用して、Dockerfileのベストプラクティス違反を検証する。                                                                                                                                                                                         |
 | 脆弱性テスト        | 外部の脆弱性テストツール（例：hadolint）を使用して、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。補足として、イメージスキャン（例：trivy）は既にビルドされたコンテナイメージを検証するため、ここには含めない。                                                                                                |
-| コンテナ構造テスト      | 外部の脆弱性テストツール（例：container-structure-test）を使用して、Dockerfileのコンテナの構造を検証する。（例：期待するファイルが存在するか、コンテナ起動時の```ENTRYPOINT```が正しく動作するか、など）<br>ℹ️ 参考：https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF |
+| コンテナ構造テスト      | 外部の脆弱性テストツール（例：container-structure-test）を使用して、Dockerfileのコンテナの構造を検証する。（例：期待するファイルが存在するか、コンテナ起動時の```ENTRYPOINT```が正しく動作するか、など）<br>↪️ 参考：https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF |
 
 <br>
 

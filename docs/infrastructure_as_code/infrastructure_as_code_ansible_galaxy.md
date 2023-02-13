@@ -11,7 +11,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://knowledge.sakura.ad.jp/3118/
+> ↪️ 参考：https://knowledge.sakura.ad.jp/3118/
 
 <br>
 
@@ -35,7 +35,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+> ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
 ```yaml
 repository/
@@ -70,7 +70,7 @@ dependencies: []
 
 
 
-> ℹ️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+> ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
 
 ```yaml
@@ -121,7 +121,7 @@ repository/
 
 Ansibleのコントロールノードで```ansible-galaxy```コマンドを実行し、管理対象ノードの```~/.ansible/roles```ディレクトリ配下にモジュールをインストールする。
 
-> ℹ️ 参考：https://note.com/shift_tech/n/n087a9db743d1
+> ↪️ 参考：https://note.com/shift_tech/n/n087a9db743d1
 
 ```bash
 $ ansible-galaxy install <モジュール名>

@@ -11,7 +11,7 @@ description: ソフトウェアの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: ソフトウェアの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://thinkit.co.jp/article/11526
+> ↪️ 参考：https://thinkit.co.jp/article/11526
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
@@ -39,7 +39,7 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 
 
 
-> ℹ️ 参考：https://12factor.net/ja/
+> ↪️ 参考：https://12factor.net/ja/
 
 <br>
 
@@ -63,7 +63,7 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 
 
 
-> ℹ️ 参考：https://www.sbbit.jp/article/cont1/28197
+> ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -85,7 +85,7 @@ URLをwebサーバーにリクエストすることにより利用でき、随�
 
 
 
-> ℹ️ 参考：https://www.sbbit.jp/article/cont1/28197
+> ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -117,7 +117,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 
 
 
-> ℹ️ 参考：https://www.sbbit.jp/article/cont1/28197
+> ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -133,7 +133,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 - Nginx
 - IIS
 
-> ℹ️ 参考：https://thinkit.co.jp/article/11837
+> ↪️ 参考：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -144,7 +144,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 - NGINX Unit（webサーバーのNginxと組み合わせて使用できるミドルウェア）
 - Tomcat
 
-> ℹ️ 参考：https://thinkit.co.jp/article/11837
+> ↪️ 参考：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -155,7 +155,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 - PostgreSQL
 - Oracle Database
 
-> ℹ️ 参考：https://thinkit.co.jp/article/11837
+> ↪️ 参考：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -187,7 +187,7 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 ![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/基本ソフトウェアの構成.png)
 
-> ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> ↪️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 
 <br>
@@ -203,14 +203,14 @@ UNIXから分岐したLinuxは、加えて3系統（Debian、RedHat、Slackware�
 ![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux-distribution.png)
 
 
-> ℹ️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
+> ↪️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
 
 #### ▼ Debian系統
 
 Debian、Ubuntu、など
 
-> ℹ️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 ```bash
 # 確認方法
@@ -223,7 +223,7 @@ Debian GNU/Linux 10 \n \l
 
 RedHat、CentOS、Fedora、など
 
-> ℹ️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 ```bash
 # 確認方法
@@ -309,6 +309,6 @@ Windows 8以降で採用されている新しいFirmware
 
 ![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSS一覧.png)
 
-> ℹ️ 参考：https://openstandia.jp/oss_info/
+> ↪️ 参考：https://openstandia.jp/oss_info/
 
 <br>

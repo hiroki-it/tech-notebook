@@ -11,7 +11,7 @@ description: API Gateway＠Aで始まるAWSリソースの知見を記録して�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -39,13 +39,13 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 | ステージ              | API Gatewayをデプロイする環境を定義する。                                                       |                                                                                                                                                                     |
 | オーソライザー           | LambdaまたはCognitoによるオーソライザーを使用して、認可プロセスを定義する。                                   |                                                                                                                                                                     |
 | ゲートウェイのレスポンス      |                                                                                      |                                                                                                                                                                     |
-| モデル               | リクエスト/レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                                      | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
+| モデル               | リクエスト/レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                                      | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
 | リソースポリシー          | ポリシーを使用して、API Gatewayにセキュリティを定義づける。                                              |                                                                                                                                                                     |
 | ドキュメント            |                                                                                      |                                                                                                                                                                     |
 | ダッシュボード           |                                                                                      |                                                                                                                                                                     |
 | APIの設定          |                                                                                      |                                                                                                                                                                     |
 | 使用サイズプラン        | 有料サービスとしてAPIを公開し、料金体系に応じてリクエストサイズを制限するために使用する。APIキーにリクエスト量のレートを設定する。 | 有料サービスとして使用しないAPIの場合は、レートを設定する必要はない。                                                                                                                      |
-| APIキー             | APIキー認証を設定する。                                                                    | ・その他のアクセス制御の方法として、以下がある。<br>ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html                       |
+| APIキー             | APIキー認証を設定する。                                                                    | ・その他のアクセス制御の方法として、以下がある。<br>↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html                       |
 | クライアント証明書      | SSL証明書をAPI Gatewayに割り当てる。                                                       | APIが、API Gatewayからルーティングされたリクエストであること識別できるようになる。                                                                                                                  |
 | CloudWatchログの設定 | API GatewayがCloudWatchログにアクセスできるよう、ロールを設定する。                                       | ```1```個のAWSアカウントにつき、```1```個のロールを設定すれば良い。                                                                                                                     |
 
@@ -68,7 +68,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 |--------------------|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 認可               | 定義したLambdaまたはCognitoによるオーソライザーを有効化するか否かを設定する。                                          |                                                                                                                                                                      |
 | リクエストの検証         | 『URLクエリ文字列パラメーター』『HTTPリクエストヘッダー』『リクエスト本文』のバリデーションを有効化するか否かを設定する。                    |                                                                                                                                                                      |
-| APIキーの必要性       | リクエストヘッダーにおけるAPIキーのバリデーションを行う。リクエストのヘッダーに『```x-api-key```』を含み、これにAPIキーが割り当てられていることを強制する。 | ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
+| APIキーの必要性       | リクエストヘッダーにおけるAPIキーのバリデーションを行う。リクエストのヘッダーに『```x-api-key```』を含み、これにAPIキーが割り当てられていることを強制する。 | ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
 | URLクエリ文字列パラメーター | リクエストされたURLのクエリパラメーターのバリデーションを行う。                                                             |                                                                                                                                                                      |
 | HTTPリクエストヘッダー      | リクエストヘッダーのバリデーションを行う。                                                                         |                                                                                                                                                                      |
 | リクエスト本文          | リクエストボディのバリデーションを行う。                                                                          |                                                                                                                                                                      |
@@ -98,7 +98,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
 
 #### ▼ CORSの有効化
 
@@ -108,7 +108,7 @@ CORSを有効化し、異なるオリジンによって表示されたページ�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html
 
 <br>
 
@@ -120,7 +120,7 @@ API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSON型�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
 
 また、VPCリンクの設定によって、VPCエンドポイントサービスが作成される。
 
@@ -163,7 +163,7 @@ API GatewayとLambdaの間で、リクエスト/レスポンスのJSON型デー�
 | デフォルトタイムアウトの使用    |                                                                                                    |
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html
 
 #### ▼ リクエスト時のマッピング
 
@@ -273,9 +273,9 @@ API Gatewayは上記のJSON型データを受信した後、```body```のみ値�
 
 | 設定項目          | 説明                                                                                                                                   |
 |-------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| キャッシュ設定         | ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                          |
-| デフォルトのメソッドスロットリング | リクエスト数（個/秒）制限を設定する。<br>ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
-| WAF               | ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                            |
+| キャッシュ設定         | ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                          |
+| デフォルトのメソッドスロットリング | リクエスト数（個/秒）制限を設定する。<br>↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
+| WAF               | ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                            |
 | クライアント証明書      | 紐付けるWAFを設定する。                                                                                                                      |
 
 #### ▼ ステージ変数
@@ -288,7 +288,7 @@ Lambda関数名、エンドポイントURL、パラメーターマッピング�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
 
 #### ▼ SDKの作成
 
@@ -304,7 +304,7 @@ API Gatewayの通常のデプロイメントの仕組みは隠蔽されている
 
 
 
-> ℹ️ 参考：https://forums.aws.amazon.com/thread.jspa?threadID=238876
+> ↪️ 参考：https://forums.aws.amazon.com/thread.jspa?threadID=238876
 
 #### ▼ カナリアリリース
 
@@ -320,7 +320,7 @@ API Gatewayの通常のデプロイメントの仕組みは隠蔽されている
 | Canaryステージ変数        |      |
 | キャッシュ                 |      |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html
 
 <br>
 
@@ -334,7 +334,7 @@ CloudWatchログにAPI Gatewayの実行ログを送信するか否かを設定�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
 
 #### ▼ カスタムアクセスログ
 
@@ -344,7 +344,7 @@ CloudWatchログにAPI Gatewayのアクセスログを送信するか否かを�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
 
 <br>
 
@@ -358,7 +358,7 @@ X-Rayを使用して、API Gatewayを開始点とした分散トレースを収�
 
 補足としてX-Rayでは、親スパンをセグメント、子スパンをサブセグメントと呼ぶ。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-traces
+> ↪️ 参考：https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-traces
 
 <br>
 
@@ -373,6 +373,6 @@ X-Rayを使用して、API Gatewayを開始点とした分散トレースを収�
 | プライベート    | API Gatewayのエンドポイントに対するリクエストを、VPC内からのみ受け付ける。           |
 | エッジ最適化 | API Gatewayのエンドポイントに対するリクエストを、CloudFrontのエッジサーバーで受け付ける。 |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html
+> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html
 
 <br>

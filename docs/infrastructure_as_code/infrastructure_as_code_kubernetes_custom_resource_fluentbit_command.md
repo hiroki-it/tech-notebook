@@ -10,7 +10,7 @@ description: コマンド＠FluentBitの知見を記録しています。
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -59,7 +59,7 @@ Available Options
 
 これら以外に再起動を伴わない```--dry-run```オプションがあるが、このオプションは経験則で精度が低いため、参考程度にする。
 
-> ℹ️ 参考：https://cloud.calyptia.com/visualizer
+> ↪️ 参考：https://cloud.calyptia.com/visualizer
 
 ```bash
 $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf

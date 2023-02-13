@@ -11,7 +11,7 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://strategicppm.wordpress.com/2010/01/20/batch-vs-job-processes-becoming-more-efficient/
 > - https://www.quora.com/What-is-the-difference-between-cron-job-and-batch-job
@@ -40,7 +40,7 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%96%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
 > - https://japan.zdnet.com/glossary/exp/%E3%82%B8%E3%83%A7%E3%83%96%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%A9/?s=4
@@ -73,7 +73,7 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
+> ↪️ 参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
 
 <br>
 

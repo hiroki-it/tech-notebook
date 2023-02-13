@@ -11,7 +11,7 @@ description: セキュリティ系＠パッケージの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -39,7 +39,7 @@ SOPSによって暗号化されたファイルであり、キーバリュー型�
 
 
 
-> ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
+> ↪️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 ```bash
 # 平文ファイル
@@ -122,7 +122,7 @@ $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 $ sops -e ./values/foo-values.yaml
 ```
 
-> ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
+> ↪️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
 
 
 <br>
@@ -133,7 +133,7 @@ $ sops -e ./values/foo-values.yaml
 
 
 
-> ℹ️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
+> ↪️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
 
 <br>
 

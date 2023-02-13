@@ -11,7 +11,7 @@ description: カスタムコントローラー＠カスタムリソースの知�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -42,7 +42,7 @@ description: カスタムコントローラー＠カスタムリソースの知�
 その他、etcd上のカスタムリソースに応じて、外部サービスのAPI（例：証明書のFastly）をコールし、カスタムリソースと対になるもの（例：Fastlyの証明書）を作成することも可能である。
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://youtu.be/pw8AVOJQ5uw?t=1372
 > - https://note.varu3.me/n/n461302e3ac79
@@ -63,7 +63,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 ### 既にあるものを使用する
 
-> ℹ️ 参考：https://github.com/mercari/certificate-expiry-monitor-controller
+> ↪️ 参考：https://github.com/mercari/certificate-expiry-monitor-controller
 
 <br>
 
@@ -73,7 +73,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
 > - https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go
@@ -88,7 +88,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 
 
-> ℹ️ 参考：https://zoetrope.github.io/kubebuilder-training/
+> ↪️ 参考：https://zoetrope.github.io/kubebuilder-training/
 
 <br>
 
@@ -101,7 +101,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 ![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator_architecture.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20200629-1/
@@ -120,7 +120,7 @@ operator-controllerに不具合があると、etcd上のカスタムリソース
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://stackoverflow.com/questions/47848258/what-is-the-difference-between-a-kubernetes-controller-and-a-kubernetes-operator
@@ -132,7 +132,7 @@ operator-controllerがkube-apiserverにリクエストを送信できるよう�
 
 ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
 
-> ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
+> ↪️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 
 <br>
 
@@ -144,7 +144,7 @@ ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されて�
 
 調査中...
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
 > - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
@@ -153,7 +153,7 @@ ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されて�
 
 調査中...
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
 > - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
@@ -170,7 +170,7 @@ OperatorHubで公開されている。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes
 > - https://operatorhub.io/

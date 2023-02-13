@@ -11,7 +11,7 @@ description: Orbs＠CircleCIの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -53,7 +53,7 @@ AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登
 
 
 
-> ℹ️ 参考：https://github.com/circleci/circleci-docs/issues/1650
+> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
 **＊実装例＊**
 
@@ -252,7 +252,7 @@ ECRイメージを使用して、新しいリビジョン番号のECSタスク�
 
 オプションを使用して、```max-poll-attempts```（ポーリングの最大試行回数）と```poll-interval```（試行の間隔秒数）で、ポーリングの総実行時間を定義できる。
 
-> ℹ️ 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
 **＊実装例＊**
 

@@ -11,7 +11,7 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -34,7 +34,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
@@ -56,7 +56,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 コントロールプレーンのXDS-APIは、Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
-> ℹ️ 参考：https://skyao.io/learning-envoy/xds/
+> ↪️ 参考：https://skyao.io/learning-envoy/xds/
 
 #### ▼ ADS-API：Aggregated XDS
 
@@ -66,7 +66,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads
@@ -82,7 +82,7 @@ Envoyの実行時に、ルーティング先のClusterの設定を動的に検�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -95,7 +95,7 @@ Envoyの実行時に、ルーティング先のClusterに含まれるメンバ�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -108,7 +108,7 @@ Envoyの実行時に、リスナーの設定を動的に検出できるように
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -121,7 +121,7 @@ Envoyの実行時に、ルーティングの設定を動的に検出できるよ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -134,7 +134,7 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出でき
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -147,13 +147,13 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出でき
 
 コントロールプレーンのXDS-APIにはエンドポイントがある。Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信する。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
 
 #### ▼ 実装
 
 Envoyを使用するサービスディスカバリーツールのいくつか（例：Istio）では、コントロールプレーンに```go-control-plane```パッケージが使用されている。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/resource/v3/resource.go#L34-L43
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/server/v3/gateway.go#L38-L98
@@ -238,7 +238,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -249,7 +249,7 @@ Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双�
 
 Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント（例：pilot-agent）が提供されている。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
@@ -301,7 +301,7 @@ message DiscoveryResponse {
 }
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://skyao.io/learning-envoy/xds/overview/
 > - https://skyao.io/learning-envoy/xds/overview/discovery-message.html
@@ -312,7 +312,7 @@ message DiscoveryResponse {
 
 調査中...
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types
 
 <br>
 
@@ -412,7 +412,7 @@ static_resources:
                               cluster: PassthroughCluster
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
@@ -454,7 +454,7 @@ service ListenerDiscoveryService {
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/listener/v3/lds.proto#L23-L42
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
@@ -584,7 +584,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 
 
-> ℹ️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> ↪️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ ルート値の静的な登録
 
@@ -593,7 +593,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
@@ -636,7 +636,7 @@ service RouteDiscoveryService {
 
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/route/v3/rds.proto#L22-L42
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
@@ -829,7 +829,7 @@ static_resources:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
@@ -871,7 +871,7 @@ service ClusterDiscoveryService {
 
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/cluster/v3/cds.proto#L22-L38
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
@@ -959,7 +959,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 
 
-> ℹ️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> ↪️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ エンドポイント値の静的な登録
 
@@ -968,7 +968,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
@@ -1010,7 +1010,7 @@ service EndpointDiscoveryService {
 
 ```
 
-> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
+> ↪️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
 
 <br>
@@ -1035,7 +1035,7 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト宛先マイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.linkode.co.jp/entry/2020/07/06/162915
 > - https://openstandia.jp/oss_info/envoy/
@@ -1049,7 +1049,7 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 
 
-> ℹ️ 参考：https://tech.uzabase.com/entry/2020/09/28/140046
+> ↪️ 参考：https://tech.uzabase.com/entry/2020/09/28/140046
 
 <br>
 
@@ -1073,7 +1073,7 @@ Envoyは、分散トレースを作成できるように、自分で自分を通
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 
 <br>
 
@@ -1086,7 +1086,7 @@ Envoyは、分散トレースを作成できるように、自分で自分を通
 |--------------------|-------------------|
 | ```X-REQUEST-ID``` | トレースIDが割り当てられている。 |
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
 #### ▼ zipkin系ヘッダー
 
@@ -1094,7 +1094,7 @@ Envoyは、Zipkinが使用するヘッダーを追加する。
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
 | HTTPヘッダー名              | 説明                                              |
 |-------------------------|---------------------------------------------------|
@@ -1107,7 +1107,7 @@ Envoyは、Zipkinが使用するヘッダーを追加する。
 
 Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
 | HTTPヘッダー名            | 説明                |
 |-----------------------|-------------------|
@@ -1124,6 +1124,6 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 |----------------------|-------------------|
 | ```GRPC-TRACE-BIN``` | トレースIDが割り当てられている。 |
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
 
 <br>

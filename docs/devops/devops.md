@@ -11,7 +11,7 @@ description: DevOpsの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -51,7 +51,7 @@ description: DevOpsの知見を記録しています。
 - SREingの文脈でのユーザーからの満足度
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
 > - https://en.wikipedia.org/wiki/List_of_system_quality_attributes
@@ -91,7 +91,7 @@ description: DevOpsの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://e-words.jp/w/DevOps.html
+> ↪️ 参考：https://e-words.jp/w/DevOps.html
 
 #### ▼ DevOpsと品質の関係
 
@@ -117,7 +117,7 @@ CIツールを使用して、CIパイプラインとCDパイプラインの両�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 > - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
@@ -144,8 +144,8 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理
 
 | 理由          | 説明                                                                                                                                                                                                                             | 補足                                                                                                                                        |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| セキュリティ        | リポジトリ側に```~/.kube/config```ファイルを置く必要がある。```~/.kube/config```ファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー（例：AWS KMS、GCP KMS、など）で```~/.kube/config```ファイルを暗号化しておき、これをCIパイプライン内に出力する。                 | ℹ️ 参考：<br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 <br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 |
-| 責務境界の分離 | CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。そのため、結果的にCIの構築/運用を担当するアプリエンジニアが、CDも構築/運用することになる。特に、CDはインフラに影響するため、アプリエンジニアチームが責任を持つべきではない。一方でGitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用をアプリチームとSREチームで分担できるようになる。 | ℹ️ 参考：https://news.mynavi.jp/techplus/article/techp5025/                                                                                  |
+| セキュリティ        | リポジトリ側に```~/.kube/config```ファイルを置く必要がある。```~/.kube/config```ファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー（例：AWS KMS、GCP KMS、など）で```~/.kube/config```ファイルを暗号化しておき、これをCIパイプライン内に出力する。                 | ↪️ 参考：<br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 <br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 |
+| 責務境界の分離 | CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。そのため、結果的にCIの構築/運用を担当するアプリエンジニアが、CDも構築/運用することになる。特に、CDはインフラに影響するため、アプリエンジニアチームが責任を持つべきではない。一方でGitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用をアプリチームとSREチームで分担できるようになる。 | ↪️ 参考：https://news.mynavi.jp/techplus/article/techp5025/                                                                                  |
 
 <br>
 
@@ -159,7 +159,7 @@ CIツールを使用してCIパイプラインを、またはCDツールを使�
 
 
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 
 #### ▼ 技術ツール例
 
@@ -198,7 +198,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 ![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CICDパイプライン.png)
 
 
-> ℹ️ 参考：https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
+> ↪️ 参考：https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
 
 
 <br>
@@ -220,7 +220,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 |      | コーディング規約に関するレビュー                          |     ⭕️      | CIツールと静的解析ツールで自動化できる。     |
 |      | 仕様に関するレビュー                                |      ×      | GitHub上でレビューする必要がある。          |
 
-> ℹ️ 参考：https://tracpath.com/works/devops/11_topics_for_devops/
+> ↪️ 参考：https://tracpath.com/works/devops/11_topics_for_devops/
 
 
 #### ▼ CD：Continuous Delivery
@@ -241,7 +241,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 | DBマイグレーション          | 本番環境のDBに対するデプロイ   |     ⭕️      | CDツールで自動化できる。 |
 
 
-> ℹ️ 参考：https://blog.kyanny.me/entry/2014/12/24/145001
+> ↪️ 参考：https://blog.kyanny.me/entry/2014/12/24/145001
 
 #### ▼ PD：Progressive Delivery
 
@@ -257,7 +257,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://r-kaga.com/blog/what-is-progressive-delivery
 > - https://codezine.jp/article/detail/14476
@@ -278,7 +278,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
 > - https://developer.hatenastaff.com/entry/2020/06/26/150300
@@ -291,7 +291,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://garafu.blogspot.com/2018/11/release-strategy.html
 > - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
@@ -304,7 +304,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 - Git（手動で```git pull```コマンド）
 - Istio
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/zaburo/items/8886be1a733aaf581045
 > - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
@@ -327,7 +327,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://webapp.io/blog/what-are-rolling-deployments/
 > - https://www.designet.co.jp/ossinfo/kubernetes/update/
@@ -336,7 +336,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://logmi.jp/tech/articles/323033
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
@@ -357,7 +357,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
+> ↪️ 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
 
 #### ▼ 技術ツール例
 
@@ -374,7 +374,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 『ブルー/グリーン』という言葉は、これに由来している。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://gitlab.com/snippets/1846041
 > - https://martinfowler.com/bliki/BlueGreenDeployment.html
@@ -398,7 +398,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 :    新環境に対する切り替えが完全に完了した後、新環境から旧環境にロールバックする場合に備えて、旧環境は削除せずに残しておく。何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。この時、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
 > - https://developer.hatenastaff.com/entry/2020/06/26/150300
@@ -429,7 +429,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
+> ↪️ 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
 
 #### ▼ 技術ツール例
 
@@ -450,7 +450,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 システムのユーザーがバグに寛容でないと採用できないリリース手法である。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.linkedin.com/pulse/canary-deployment-simple-words-jakub-hajek/ 
 > - https://codechacha.com/ja/what-is-canary-development-test/
@@ -477,7 +477,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1804/12/news071.html
 > - https://www.techtarget.com/searchitoperations/answer/When-to-use-canary-vs-blue-green-vs-rolling-deployment
@@ -503,7 +503,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：https://blog.bltinc.co.jp/entry/2020/04/27/090000
+> ↪️ 参考：https://blog.bltinc.co.jp/entry/2020/04/27/090000
 
 #### ▼ 類似するカナリアリリースとの違い
 
@@ -525,7 +525,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://scrapbox.io/nobuoka-pub/%E3%83%80%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%83%81
 > - https://newrelic.com/jp/resources/undefined/next-phase-of-devops
@@ -546,7 +546,7 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 
 
-> ℹ️ 参考：https://www.atlassian.com/ja/agile/software-development/release
+> ↪️ 参考：https://www.atlassian.com/ja/agile/software-development/release
 
 #### ▼ ビッグバンリリースではないこと
 
@@ -558,7 +558,7 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 
 
-> ℹ️ 参考：https://www.atlassian.com/ja/agile/software-development/release
+> ↪️ 参考：https://www.atlassian.com/ja/agile/software-development/release
 
 #### ▼ リリース内容がわかるようにしておく
 
@@ -570,7 +570,7 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.atlassian.com/ja/agile/software-development/release
 > - https://tech-blog.optim.co.jp/entry/2020/07/01/080000

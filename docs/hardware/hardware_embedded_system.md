@@ -11,7 +11,7 @@ description: 組み込み機器＠ハードウェアの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -53,7 +53,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 - 加速度センサ
 - 照度センサ
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p119-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-2.png)
 
@@ -77,7 +77,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p119-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-3.png)
 
@@ -95,7 +95,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 洗濯機
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-1.png)
 
@@ -109,7 +109,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 エアコン
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-2.png)
 

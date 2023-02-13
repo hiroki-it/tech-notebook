@@ -11,7 +11,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -35,7 +35,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B
+> ↪️ 参考：https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B
 
 #### ▼ シングルアラート
 
@@ -61,7 +61,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/monitors/create/configuration/?tab=thresholdalert#auto-resolve
+> ↪️ 参考：https://docs.datadoghq.com/monitors/create/configuration/?tab=thresholdalert#auto-resolve
 
 <br>
 
@@ -81,11 +81,11 @@ description:  監視＠Datadogの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
 #### ▼ テンプレート変数
 
-> ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
+> ↪️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
 
 #### ▼ マルチアラート変数
 
@@ -99,15 +99,15 @@ description:  監視＠Datadogの知見を記録しています。
 
 構造化ログの属性値またはタグ値を変数として出力する。```{{log.attributes.<キー名>}}``` または```{{log.tags.<キー名>}}```として実装する。
 
-> ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
+> ↪️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 
 #### ▼ コンポジットモニター変数
 
-> ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
+> ↪️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
 
 #### ▼ 条件変数
 
-> ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables
+> ↪️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables
 
 <br>
 
@@ -157,7 +157,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
+> ↪️ 参考：https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
 
 
 <br>
@@ -179,7 +179,7 @@ Datadogで、ブラウザのエラーは以下に分類される。
 | ブラウザコンソール上 | ```console.error```メソッドによって、コンソール上に出力されたテキスト                                             |
 | カスタム        | ```@datadog/browser-rum```パッケージの```addError```メソッドによって、datadog-APIに送信されたテキスト              |
 
-> ℹ️ 参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
+> ↪️ 参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 
 <br>
 
@@ -197,7 +197,7 @@ Datadog社の物理サーバーがリクエストを送信する。
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests
+> ↪️ 参考：https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests
 
 #### ▼ ヘッダー
 
@@ -212,7 +212,7 @@ Datadog社の物理サーバーがリクエストを送信する。
 | ```x-datadog-sampling-priority``` | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、```1```が割り当てれる。                     |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
 > - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests
@@ -249,7 +249,7 @@ Datadog社の物理サーバーがリクエストを送信する。
 
 ## 06. コスト
 
-> ℹ️ 参考：https://docs.datadoghq.com/account_management/billing/usage_details/
+> ↪️ 参考：https://docs.datadoghq.com/account_management/billing/usage_details/
 
 
 <br>

@@ -11,7 +11,7 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 #### ▼ resources
 
@@ -52,7 +52,7 @@ resources:
 
 
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 **＊実装例＊**
 
@@ -100,7 +100,7 @@ spec:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 > - https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d

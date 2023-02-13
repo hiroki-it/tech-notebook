@@ -11,7 +11,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html
 
 <br>
 
@@ -170,7 +170,7 @@ $ php artisan migrate:status
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```bash
 $ php artisan migrate:rollback --step=<ロールバック数>
@@ -194,7 +194,7 @@ $ php artisan migrate
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```bash
 $ php artisan migrate:reset
@@ -211,7 +211,7 @@ $ php artisan migrate:reset
 $ php artisan migrate:refresh
 ```
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
 
 #### ▼ fresh
@@ -222,7 +222,7 @@ DBマイグレーションファイルの構文チェックを行わずに、強
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
 
 ```bash
 $ php artisan migrate:fresh
@@ -248,7 +248,7 @@ CI/CDパイプライン時に、この確認画面でYes/Noを入力できない
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
 ```bash
 $ php artisan migrate --force

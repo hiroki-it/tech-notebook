@@ -11,7 +11,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://en.wikipedia.org/wiki/Website_monitoring
 > - https://blog.thundra.io/observability-driven-development-for-serverless
@@ -43,7 +43,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 
 
-> ℹ️ 参考：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
+> ↪️ 参考：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
 
 ![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monitoring_collecting_pull_push.png)
 
@@ -52,7 +52,7 @@ description: 監視＠可観測性の知見を記録しています。
 収集したデータ（ログ、メトリクス）をストレージに保管する。
 
 
-
+保管期間は、```90```日が個人的には推奨である。
 
 
 | 要件                    | 説明                                                                                                                                       |
@@ -62,7 +62,10 @@ description: 監視＠可観測性の知見を記録しています。
 | バックアップの保管期間（リテンション） | ログファイルのメトリクスファイルのバックアップを実施し、また保管期間ポリシー（例：```3```ヶ月）を決めておくと良い。                                                                    |
 | ローテーション                 | ログファイルやメトリクスファイルのローテーション期間（例：```7```日）をポリシーとして決めておくと良い。ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付（例：```-20220101```）をつけておく。 |
 
-> ℹ️ 参考：https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/
+> ↪️ 参考：
+> 
+> - https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/
+> - https://qiita.com/yamotuki/items/628f9bf399cc9b59f3cb
 
 
 #### ▼ データの分析
@@ -151,7 +154,7 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 
 JavaScriptにNavigation-timing-APIにリクエストを送信する処理を組み込むと、ページパフォーマンスに関するメトリクスのデータポイントを収集できる。
 
-> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
 
 ページローディング時間は特に重要である。
 
@@ -161,7 +164,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 
 
-> ℹ️ 参考：https://bit.ly/2y494hq
+> ↪️ 参考：https://bit.ly/2y494hq
 
 #### ▼ Googleアナリティクスによる監視
 
@@ -171,7 +174,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.uptrends.com/web-performance/rum-and-google-analytics-understanding-the-difference/
 > - https://developer.akamai.com/blog/2017/03/29/RUM-data-google-analytics
@@ -183,7 +186,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://support.google.com/webmasters/answer/9128668?hl=en
 > - https://semlabo.com/seo/blog/difference-between-ga-and-gsc/
@@ -203,7 +206,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://takehora.hatenadiary.jp/entry/2019/07/05/012036
 > - https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
@@ -261,13 +264,13 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 
 
-> ℹ️ 参考：https://github.com/statsd/statsd/wiki
+> ↪️ 参考：https://github.com/statsd/statsd/wiki
 
 CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
 > - https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538
@@ -284,7 +287,7 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 | ログの種類                                              | 説明                                                                                                                 |
 |------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| システムログ（```/var/log/message```ファイル）                   | 基本的にはOSやミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>ℹ️ 参考：https://thinkit.co.jp/article/724/1 |
+| システムログ（```/var/log/message```ファイル）                   | 基本的にはOSやミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>↪️ 参考：https://thinkit.co.jp/article/724/1 |
 | アプリケーションログ（ログファイルはフレームワークによる）                        | アプリケーションの任意の重要な処理（アクセスログ、ログイン、ログアウト、など）のログを出力する。                                                             |
 | クエリログ（```/var/log/<ベンダー名>/general-query.log```ファイル） | アプリケーションからDBへのクエリ処理の内容をログとして出力する。                                                                              |
 
@@ -331,14 +334,14 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 | ログの種類                              | 説明                                                                    |
 |--------------------------------------|-----------------------------------------------------------------------|
-| システムログ（```/var/log/message```ファイル）   | OSやミドルウェアの処理ログを出力する。<br>ℹ️ 参考：https://thinkit.co.jp/article/724/1 |
+| システムログ（```/var/log/message```ファイル）   | OSやミドルウェアの処理ログを出力する。<br>↪️ 参考：https://thinkit.co.jp/article/724/1 |
 | セキュリティログ（```/var/log/secure```ファイル）  | OSのセキュリティ処理のログを出力する。                                                |
 | cronログ（```/var/log/cron```ファイル）      | OSのジョブ処理（例：UNIXであればcron）のログを出力する。                                  |
 | メールログ（```/var/log/maillog```ファイル）    | OSのメール処理のログを出力する。                                                   |
 | 印刷ログ（```/var/log/spooler```ファイル）   | OSの印刷処理のログを出力する。                                                  |
 | OSブートログ（```/var/log/boot.log```ファイル） | OSの起動処理のログを出力する。                                                  |
 
-> ℹ️ 参考：https://www.infraeye.com/study/linuxz46.html
+> ↪️ 参考：https://www.infraeye.com/study/linuxz46.html
 
 <br>
 
@@ -393,11 +396,11 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 | ヘルスチェック名    | ヘルスチェックの範囲                     | 方法                                                                                                                                                                                     |
 |--------------|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```L3```チェック | ```L1```から```L3```（ネットワーク層）まで   | サーバー/コンテナのIPアドレスにPINGリクエスト（ICMP echo）を送信し、レスポンスを検証する。正しいPINGレスポンスが返信されれば、サーバー/コンテナまでのネットワークが正しく動作していると判断できる。<br>ℹ️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/ |
+| ```L3```チェック | ```L1```から```L3```（ネットワーク層）まで   | サーバー/コンテナのIPアドレスにPINGリクエスト（ICMP echo）を送信し、レスポンスを検証する。正しいPINGレスポンスが返信されれば、サーバー/コンテナまでのネットワークが正しく動作していると判断できる。<br>↪️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/ |
 | ```L4```チェック | ```L1```から```L4```（トランスポート層）まで  | サーバー/コンテナのポートにTCPリクエストを送信し、TCPレスポンスを検証する。TCPコネクションが確立されれば、サーバー/コンテナの開放ポートまでのネットワークが正しく動作していると判断できる。                                                                         |
 | ```L7```チェック | ```L1```から```L7```（アプリケーション層）まで | サーバー/コンテナ上のアプリケーションのエンドポイントにHTTPリクエストを送信し、HTTPレスポンスを検証する。正しいHTTPレスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。                                                        |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.f5.com/ja_jp/services/resources/glossary/health-check
 > - https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html
@@ -419,7 +422,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 
 
-> ℹ️ 参考：https://healthchecks.io/docs/monitoring_cron_jobs/
+> ↪️ 参考：https://healthchecks.io/docs/monitoring_cron_jobs/
 
 ```bash
 # ジョブをCronを使用して実装する場合
@@ -433,7 +436,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 
 
-> ℹ️ 参考：https://github.com/bdd/runitor
+> ↪️ 参考：https://github.com/bdd/runitor
 
 ```bash
 # ジョブをCronを使用して実装する場合
@@ -453,7 +456,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://health.aws.amazon.com/health/status
 > - https://status.cloud.google.com/?hl=ja
@@ -472,7 +475,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 
 
-> ℹ️ 参考：https://neinvalli.hatenablog.com/entry/2017/10/31/002839
+> ↪️ 参考：https://neinvalli.hatenablog.com/entry/2017/10/31/002839
 
 <br>
 
@@ -487,7 +490,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.datadoghq.com/solutions/real-time-business-intelligence/
 > - https://qiita.com/tomo_will/items/e0f00b3f08ac607286da#bi%E3%83%84%E3%83%BC%E3%83%AB%E6%AF%8E%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9

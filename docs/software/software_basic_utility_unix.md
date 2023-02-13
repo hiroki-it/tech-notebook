@@ -11,7 +11,7 @@ description: UNIX系標準ユーティリティ＠ユーティリティの知見
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -39,7 +39,7 @@ $ chmod 600 <ファイルへのパス>
 
 
 
-> ℹ️ 参考：http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
+> ↪️ 参考：http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
 
 ```bash
 $ chmod -R 600 <ディレクトリ名>/
@@ -90,7 +90,7 @@ $ chmod -R 600 <ディレクトリ名>/
 
 
 
-> ℹ️ 参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
+> ↪️ 参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
 
 ```bash
 $ chmod go+r <ファイルへのパス>
@@ -106,7 +106,7 @@ $ chmod go+r <ファイルへのパス>
 
 
 
-> ℹ️ 参考：https://webkaru.net/linux/chown-command/
+> ↪️ 参考：https://webkaru.net/linux/chown-command/
 
 ```bash
 $ chown <ユーザー所有権>:<グループ所有権> <ファイル名>
@@ -374,7 +374,7 @@ foo.txt: ASCII text
 
 
 
-> ℹ️ 参考：https://nontitle.xyz/archives/1065
+> ↪️ 参考：https://nontitle.xyz/archives/1065
 
 ```bash
 $ crontab -e
@@ -626,7 +626,7 @@ total                                 557167 390644      140909            74%  
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command
+> ↪️ 参考：https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command
 
 <br>
 
@@ -640,7 +640,7 @@ total                                 557167 390644      140909            74%  
 
 
 
-> ℹ️ 参考：https://kimuson.dev/blog/shell/color_diff/
+> ↪️ 参考：https://kimuson.dev/blog/shell/color_diff/
 
 <br>
 
@@ -683,7 +683,7 @@ $ du ./ | sort -n
 
 読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズ、ディレクトリ全体の合計サイズ（KB）、を再帰的に取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、```-h```オプションを使用しないようにする。
 
-> ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+> ↪️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 ```bash
 $ du -h ./
@@ -721,7 +721,7 @@ $ du -h ./vendor/foo --max-depth=1
 
 
 
-> ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+> ↪️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 ```bash
 $ du -s ./
@@ -763,7 +763,7 @@ $ echo "$<変数名>"
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
 
 ```bash
 # シェル変数を設定
@@ -828,7 +828,7 @@ export PATH
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
 > - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
@@ -952,7 +952,7 @@ Swap:             0           0           0
 
 
 
-> ℹ️ 参考：https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
+> ↪️ 参考：https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
 
 ```mathematica
 メモリ使用率 =
@@ -968,9 +968,21 @@ Swap:             0           0           0
 
 標準出力に出力された文字列のうち、合致するもののみを取得する。
 
-文字列の表示に関する様々なユーティリティ（例：```ls```、```cat```、```find```、など）と組み合わせられる。
 
+```bash
+$ grep -h
 
+usage: grep [-abcdDEFGHhIiJLlMmnOopqRSsUVvwXxZz] [-A num] [-B num] [-C[num]]
+        [-e pattern] [-f file] [--binary-files=value] [--color=when]
+        [--context[=num]] [--directories=action] [--label] [--line-buffered]
+        [--null] [pattern] [file ...]
+```
+
+<br>
+
+### 基本的な使い方
+
+文字列の表示に関する様々なユーティリティ（例：```ls```、```cat```、```find```、など）と組み合わせて使用する。
 
 ```bash
 $ cat foo.txt | grep bar
@@ -980,9 +992,19 @@ $ cat foo.txt | grep bar
 $ cat foo.txt | grep bar
 ```
 
-```grep```コマンドを忘れると、後続のコマンドに取得内容をパラメーターとして渡すことになるが、これで問題が起こることがある...
+```grep```コマンドを忘れると、後続のコマンドに取得内容をパラメーターとして渡すことになるが、これで問題が起こることがある。
 
-> ℹ️ 参考：https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5
+> ↪️ 参考：https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5
+
+<br>
+
+### ```--```
+
+ハイフンを含む文字列を取得する。
+
+```bash
+$ cat foo.txt | grep -- "--bar"
+```
 
 <br>
 
@@ -1078,7 +1100,7 @@ iptablesの設定を取得/変更する。
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L
@@ -1118,7 +1140,7 @@ $ iptables -L <Chain名>
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -S
@@ -1142,7 +1164,7 @@ Chain内の各ルールを番号付きで取得する。
 
 
 
-> ℹ️ 参考：http://redcinfo-c.blogspot.com/2010/09/iptables.html
+> ↪️ 参考：http://redcinfo-c.blogspot.com/2010/09/iptables.html
 
 ```bash
 $ iptables --line-number
@@ -1154,7 +1176,7 @@ $ iptables --line-number
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L -t nat
@@ -1166,7 +1188,7 @@ ChainのIPアドレスを名前解決せずに、IPアドレスのまま取得�
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L -n
@@ -1179,7 +1201,7 @@ Chain内のルールを詳しく取得する。
 
 
 
-> ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L -v
@@ -1259,7 +1281,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ファイルには```2```GBを超えてテキストを書き込めない。そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。ローテションされた過去のログファイルでは、ファイル名の末尾に最終日付（例：```-20220101```）をつけておく。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - http://proger.blog10.fc2.com/blog-entry-66.html
 > - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
@@ -1410,7 +1432,7 @@ $ lvdisplay
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
 > - https://centossrv.com/lvm-extend.shtml
@@ -1425,7 +1447,7 @@ $ lvdisplay
 
 
 
-> ℹ️ 参考：https://centossrv.com/lvm-extend.shtml
+> ↪️ 参考：https://centossrv.com/lvm-extend.shtml
 
 
 <br>
@@ -1436,7 +1458,7 @@ $ lvdisplay
 
 
 
-> ℹ️ 参考：https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
+> ↪️ 参考：https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
 
 **＊例＊**
 
@@ -1558,7 +1580,7 @@ $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
@@ -1573,7 +1595,7 @@ $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html
 > - https://webkaru.net/linux/mount-command/
@@ -1596,7 +1618,7 @@ $ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクト�
 
 
 
-> ℹ️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
+> ↪️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
 
 ```bash
 $ nc <IPアドレス/ドメイン> <ポート番号>
@@ -1611,7 +1633,7 @@ $ nc <IPアドレス/ドメイン> <ポート番号>
 
 
 
-> ℹ️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
+> ↪️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
 
 ```bash
 $ nc -v <IPアドレス/ドメイン> <ポート番号>
@@ -1667,7 +1689,7 @@ $ od -Ad -tx <ファイルへのパス>
 
 
 
-> ℹ️ 参考：https://memo.open-code.club/OpenSSL/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7.html
+> ↪️ 参考：https://memo.open-code.club/OpenSSL/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7.html
 
 <br>
 
@@ -1679,7 +1701,7 @@ $ od -Ad -tx <ファイルへのパス>
 
 
 
-> ℹ️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
+> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
 
 ```bash
 $ opsnssl enc -aes-256-cbc -d -in encrypted.txt -out plane.txt
@@ -1691,7 +1713,7 @@ $ opsnssl enc -aes-256-cbc -d -in encrypted.txt -out plane.txt
 
 
 
-> ℹ️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
+> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
 
 ```bash
 $ opsnssl enc -aes-256-cbc -e -in plan.txt -out encrypted.txt
@@ -1707,7 +1729,7 @@ $ opsnssl enc -aes-256-cbc -e -in plan.txt -out encrypted.txt
 
 
 
-> ℹ️ 参考：https://en.wikipedia.org/wiki/OpenSSL#Algorithms
+> ↪️ 参考：https://en.wikipedia.org/wiki/OpenSSL#Algorithms
 
 ```bash
 $ openssl list-cipher-algorithms
@@ -1758,7 +1780,7 @@ aes256 => AES-256-CBC
 
 
 
-> ℹ️ 参考：https://pcvogel.sarakura.net/2019/01/07/31902
+> ↪️ 参考：https://pcvogel.sarakura.net/2019/01/07/31902
 
 ```bash
 $ openssl x509 -noout -dates -in foo.crt
@@ -1877,7 +1899,7 @@ $ find ./* \
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
+> ↪️ 参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
 
 ```bash
 $ find ./* \
@@ -1909,7 +1931,7 @@ $ find ./* \
     -type f | xargs sed -i '' -e '/foo/! {/bar/! {/baz/! {/qux/! s/before/after/g;} ;} ;}'
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.jh4vaj.com/archives/24778
 > - https://bi.biopapyrus.jp/os/linux/sed.html
@@ -2158,7 +2180,7 @@ getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("*.
 
 
 
-> ℹ️ 参考：https://tech-lab.sios.jp/archives/17394
+> ↪️ 参考：https://tech-lab.sios.jp/archives/17394
 
 ```bash
 $ strace -p <プロセスID>
@@ -2176,7 +2198,7 @@ $ strace -p <プロセスID>
 
 
 
-> ℹ️ 参考：https://eng-entrance.com/linux-command-tail
+> ↪️ 参考：https://eng-entrance.com/linux-command-tail
 
 ```bash
 $ tail foo.log
@@ -2206,7 +2228,7 @@ $ tail -f foo.log
 
 
 
-> ℹ️ 参考：https://www.itmedia.co.jp/help/tips/linux/l0418.html
+> ↪️ 参考：https://www.itmedia.co.jp/help/tips/linux/l0418.html
 
 ```bash
 $ mkdir /foo
@@ -2387,7 +2409,7 @@ $ unlink <シンボリックリンク名>
 $ adduser -s /bin/false foo
 ```
 
-> ℹ️ 参考：https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
+> ↪️ 参考：https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
 
 <br>
 

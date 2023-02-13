@@ -11,7 +11,7 @@ description: 言語の種類＠言語を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: 言語の種類＠言語を記録しています。
 ![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プログラミング言語と設計手法の歴史.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
@@ -59,7 +59,7 @@ description: 言語の種類＠言語を記録しています。
 | SQL        |         |        |              |        |   ✅    |        |        |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://web-camp.io/magazine/archives/61816
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
@@ -127,7 +127,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 - Groovy
 - Kotlin
 
-> ℹ️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
+> ↪️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
 <br>
 
@@ -139,7 +139,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 
 
 
-> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
+> ↪️ 参考：https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
 
 <br>
 

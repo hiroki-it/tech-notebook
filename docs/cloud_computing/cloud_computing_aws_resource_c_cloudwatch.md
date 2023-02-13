@@ -11,7 +11,7 @@ description: CloudWatch＠Cで始まるAWSリソースの知見を記録して�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 
 <br>
@@ -37,7 +37,7 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18
@@ -51,7 +51,7 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 | ディメンション  | インスタンスの設定値をグループとした集約のこと（例：インスタンスID、スペック、AZ、など）。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される（例えば、EC2のストレージで、```/var/lib/foo```パーティションのディスク使用率のデータポイントが```30```%だとする。EC2のインスタンスIDをディメンションにした場合に、```/var/lib/foo```以外のパーティションが```30```%より低いため、インスタンスIDのディメンション全体としては```10%```ほどのディスク使用率になる）。CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。 |
 | 名前空間 | AWSリソースをグループとした集約のこと（例：EC2、RDS、ALB、など）。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスを収集すると、名前空間はCWAgentになる。                                                                                                                                                                                                                                                             |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
@@ -64,7 +64,7 @@ CloudWatchメトリクス上では、各集約を以下の様に確認できる�
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/
+> ↪️ 参考：https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/
 
 
 <br>
@@ -89,7 +89,7 @@ RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクス�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html
@@ -148,7 +148,7 @@ AWSリソースで作成されたログを収集できる。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html
 > - https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb
@@ -183,7 +183,7 @@ OR条件と除外条件を組み合わせようとすると、OR条件が認識�
 
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
+> ↪️ 参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
 
 ```yaml
 "ERROR:" -MethodNotAllowedHttpException
@@ -211,7 +211,7 @@ OS、ミドルウェア、アプリケーションに分類して設定すると
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
 
 **＊実装例＊**
 
@@ -302,7 +302,7 @@ $ service awslogs start
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
 
 **＊例＊**
 
@@ -370,7 +370,7 @@ Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: I! Detecting run_as_use
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
 > - https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/
@@ -397,7 +397,7 @@ $ yum install collectd -y
 
 ウィザードを使用して設定ファイル（```amazon-cloudwatch-agent.json```ファイル）をセットアップする場合、ウィザードは```amazon-cloudwatch-agent.json```ファイルを```/opt/aws/amazon-cloudwatch-agent/bin```ディレクトリ配下に自動的に作成する。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
 
 #### ▼ 手動の場合
 
@@ -409,7 +409,7 @@ $ yum install collectd -y
 | Linux   | ```/opt/aws/amazon-cloudwatch-agent/etc```          |
 | Windows | ```$Env:ProgramData\Amazon\AmazonCloudWatchAgent``` |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
 
 
 <br>
@@ -420,13 +420,13 @@ $ yum install collectd -y
 
 cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる。全てのセクションを設定する必要はなく、```logs```セクションまたは```metrics```セクションのいずれかのみを設定でもよい（例：cloudwatchエージェントを使用してCloudWatchにログファイルを送信するのみであれば、```log```セッションのみ）。注意点として、cloudwatchエージェントは、起動後に```amazon-cloudwatch-agent.json```ファイルを```/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json```ファイルとして移動してしまい、元々の```amazon-cloudwatch-agent.json```ファイルは無くなってしまう。
 
-> ℹ️ 参考：https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local
+> ↪️ 参考：https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local
 
 #### ▼ ```amazon-cloudwatch-agent-ctl```コマンド
 
 ```amazon-cloudwatch-agent-ctl```コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
 
 **＊例＊**
 
@@ -484,7 +484,7 @@ cloudwatchエージェント全体を設定する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
 
 ```yaml
 {
@@ -567,7 +567,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html
@@ -615,7 +615,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection
 
 <br>
 
@@ -651,7 +651,7 @@ EC2インスタンスでcloudwatchエージェントを稼働させる場合、C
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
 #### ▼ AWS外のサーバーの場合
 
@@ -659,7 +659,7 @@ AWS外（オンプレミス、他のクラウドプロバイダー）のサー�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
 <br>
 
@@ -685,7 +685,7 @@ AWS外（オンプレミス、他のクラウドプロバイダー）のサー�
 |------------------|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 閾値の種類          |                                     |                                                                                                                                                                                                                                                                                                                                        |
 | アラートを実行するデータポイント | アラートを発生させるデータポイント数を設定する。       |                                                                                                                                                                                                                                                                                                                                        |
-| 欠落データの処理       | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが一切発生しないことを正常とし、これが発生することを異常とする場合（例：エラーイベント、など）は『```notBreaching```』とする。反対に、データポイントが継続的に発生することを正常とし、これが発生しないことを異常とする場合（例：CPU使用率、メモリ使用率、など）は、『```breaching```』とする。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
+| 欠落データの処理       | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが一切発生しないことを正常とし、これが発生することを異常とする場合（例：エラーイベント、など）は『```notBreaching```』とする。反対に、データポイントが継続的に発生することを正常とし、これが発生しないことを異常とする場合（例：CPU使用率、メモリ使用率、など）は、『```breaching```』とする。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
 
 <br>
 

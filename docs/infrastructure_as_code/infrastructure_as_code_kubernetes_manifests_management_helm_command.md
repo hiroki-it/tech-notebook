@@ -11,7 +11,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -25,7 +25,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_create/
+> ↪️ 参考：https://helm.sh/docs/helm/helm_create/
 
 ```bash
 $ helm create <チャートへのパス>
@@ -57,7 +57,7 @@ $ kubectl get crd
 $ kubectl delete crd <カスタムリソース定義名>
 ```
 
-> ℹ️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
+> ↪️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
 
 
 <br>
@@ -70,7 +70,7 @@ $ kubectl delete crd <カスタムリソース定義名>
 
 
 
-> ℹ️ 参考：https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
+> ↪️ 参考：https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
 
 ```bash
 $ helm dependency build
@@ -91,7 +91,7 @@ Saving 1 charts
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
+> ↪️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
 
 ```bash
 $ helm get <リリース名>
@@ -107,7 +107,7 @@ $ helm get <リリース名>
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_history/
+> ↪️ 参考：https://helm.sh/docs/helm/helm_history/
 
 ```bash
 $ helm history <リリース名>
@@ -129,7 +129,7 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 チャートへのパスを指定する以外にも、指定方法には種類がある。
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_install/
+> ↪️ 参考：https://helm.sh/docs/helm/helm_install/
 
 ```bash
 $ helm install <リリース名> <チャートへのパス>
@@ -138,10 +138,10 @@ $ helm install <リリース名> <チャートへのパス>
 | パラメーター                                           | 例                                                              | 補足                                                                                                                                        |
 |--------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | チャートへのパス                                         | ```./foo-chart```                                               |                                                                                                                                             |
-| ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | ℹ️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                    |
+| ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                    |
 | チャートリポジトリURL                                     | ```https://example.com/foo-chart```                             |                                                                                                                                             |
 | ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                             |
-| チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ（```.tgz```形式ファイル）の外にある必要がある。<br>ℹ️ 参考：https://helm.sh/docs/helm/helm_install/ |
+| チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ（```.tgz```形式ファイル）の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
 
 
 #### ▼ --disable-openapi-validation
@@ -183,7 +183,7 @@ kind: Deployment
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_install/#options
+> ↪️ 参考：https://helm.sh/docs/helm/helm_install/#options
 
 ```bash
 $ helm install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
@@ -229,7 +229,7 @@ $ helm lint <チャートへのパス>
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helm.sh/docs/helm/helm_lint/
 > - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
@@ -276,7 +276,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_list/
+> ↪️ 参考：https://helm.sh/docs/helm/helm_list/
 
 ```bash
 $ helm list
@@ -301,7 +301,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_package/
+> ↪️ 参考：https://helm.sh/docs/helm/helm_package/
 
 ```bash
 $ helm package <fooチャートへのパス> <barチャートへのパス> <bazチャートへのパス>
@@ -383,7 +383,7 @@ OCIリポジトリからもプルできる。
 
 
 
-> ℹ️ 参考：https://helm.sh/blog/storing-charts-in-oci/
+> ↪️ 参考：https://helm.sh/blog/storing-charts-in-oci/
 
 ```bash
 # AWSの場合
@@ -468,7 +468,7 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 
 
-> ℹ️ 参考：https://knowledge.sakura.ad.jp/23603/
+> ↪️ 参考：https://knowledge.sakura.ad.jp/23603/
 
 ```bash
 $ helm repo add <チャートリポジトリ名> <チャートリポジトリURL>
@@ -542,7 +542,7 @@ $ helm repo remove foo-chart
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
 
 ```bash
 $ helm repo update <チャートリポジトリ名>
@@ -562,7 +562,7 @@ Update Complete. ⎈Happy Helming!⎈
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
+> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 
 #### ▼ hub
 
@@ -629,7 +629,7 @@ version: <バージョンタグ>
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
+> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
 
 ```bash
 $ helm show values <チャート名>
@@ -714,7 +714,7 @@ $ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_uninstall/
+> ↪️ 参考：https://helm.sh/docs/helm/helm_uninstall/
 
 ```bash
 $ helm uninstall <リリース名>
@@ -738,7 +738,7 @@ Helmは、カスタムリソース定義を含むチャートのインストー�
 
 そのため、```helm upgrade```コマンド時にはカスタムリソース定義のインストールを実行する仕様になっている。
 
-> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
+> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
 #### ▼ --atomic
 
@@ -779,7 +779,7 @@ TEST SUITE: None
 
 ```install```オプションを有効化した上で、```--skip-crds```オプションを有効化すると、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールする。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://helm.sh/docs/helm/helm_upgrade/
 

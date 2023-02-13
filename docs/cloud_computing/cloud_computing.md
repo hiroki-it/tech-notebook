@@ -11,7 +11,7 @@ description: クラウド（クラウドコンピューティング）の知見�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -37,7 +37,7 @@ description: クラウド（クラウドコンピューティング）の知見�
 
 
 
-> ℹ️ 参考：https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
+> ↪️ 参考：https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
 
 #### ▼ パブリッククラウド
 
@@ -45,7 +45,7 @@ description: クラウド（クラウドコンピューティング）の知見�
 
 
 
-> ℹ️ 参考：https://www.gadgeblo.com/cloud-service-brand/
+> ↪️ 参考：https://www.gadgeblo.com/cloud-service-brand/
 
 **＊例＊**
 
@@ -65,7 +65,7 @@ description: クラウド（クラウドコンピューティング）の知見�
 
 
 
-> ℹ️ 参考：https://www.cyberagent.co.jp/way/list/detail/id=26235
+> ↪️ 参考：https://www.cyberagent.co.jp/way/list/detail/id=26235
 
 **＊例＊**
 
@@ -85,7 +85,7 @@ description: クラウド（クラウドコンピューティング）の知見�
 
 ![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/on-premises_iaas_caas_paas_faas_saas.png)
 
-ℹ️ 参考：
+↪️ 参考：
 
 
 > - https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud
@@ -198,6 +198,6 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 
 
 
-> ℹ️ 参考：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
+> ↪️ 参考：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
 
 <br>

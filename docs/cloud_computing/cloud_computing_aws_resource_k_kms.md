@@ -11,7 +11,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -39,7 +39,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 ![kms_multi-region.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kms_multi-region.png)
 
-> ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
+> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
 
 <br>
 
@@ -82,7 +82,7 @@ KMSのアクセス制限を設定する。
 
 暗号化キーを対称型（ペアは不要）または非対称（パブリックとプライベートのペアが必要）とするかを設定する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#asymmetric-keys-concept
@@ -91,7 +91,7 @@ KMSのアクセス制限を設定する。
 
 調査中...
 
-> ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin
+> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin
 
 #### ▼ キーの仕様
 
@@ -99,7 +99,7 @@ KMSのアクセス制限を設定する。
 調査中...
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec
+> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec
 
 #### ▼ キーの用途
 
@@ -111,7 +111,7 @@ KMSのアクセス制限を設定する。
 - MCの生成と検証（```GENERATE_VERIFY_MAC```）
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage
+> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage
 
 <br>
 
@@ -121,6 +121,6 @@ KMSのアクセス制限を設定する。
 
 ![kms_key_rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kms_key_rotation.png)
 
-> ℹ️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
+> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
 
 <br>

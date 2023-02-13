@@ -11,7 +11,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 > - https://chroju.dev/blog/terraform_state_introduction
@@ -109,7 +109,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
+> ↪️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
 
 ```bash
 $ terraform plan
@@ -153,7 +153,7 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 $ terraform init -upgrade
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.terraform.io/language/files/dependency-lock
 > - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
@@ -198,7 +198,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+> ↪️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 
 | タグ名     | 説明                                                                                                                                                                                     |
 |----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -234,7 +234,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 
 
-> ℹ️ 参考：https://www.terraform.io/cli/config/config-file#provider-plugin-cache
+> ↪️ 参考：https://www.terraform.io/cli/config/config-file#provider-plugin-cache
 
 #### ▼ plugin_cache_dir
 
@@ -244,7 +244,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://blog.jhashimoto.net/entry/2021/12/24/090000
 > - https://www.terraform.io/cli/config/config-file#provider-plugin-cache

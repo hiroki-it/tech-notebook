@@ -11,7 +11,7 @@ description: トレーサー＠分散トレース収集の知見を記録して�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -49,7 +49,7 @@ env[DD_ENV] = 'prd'
 env[DD_VERSION] = '<バージョンタグ>'
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.datadoghq.com/tracing/setup/php/
 > - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
@@ -94,7 +94,7 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
   && rm datadog-php-tracer.deb
 ```
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
+> ↪️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
 
 #### ▼ インストールの動作確認
@@ -180,7 +180,7 @@ DATADOG TRACER CONFIGURATION => { ..... } # ここに設定のJSONが得られ�
 }
 ```
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
+> ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
 
 #### ▼ 受信ログの確認
@@ -240,7 +240,7 @@ import { Configuration } from '@nuxt/types'
 ```
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+> ↪️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
 
 #### ▼ 起動ログの確認
@@ -298,7 +298,7 @@ APMのマイクロサービスのタグ名に反映される。
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+> ↪️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -357,7 +357,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
+> ↪️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
 
 #### ▼ 後続のマイクロサービス
@@ -399,7 +399,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 ```
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
+> ↪️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
 
 <br>
@@ -459,7 +459,7 @@ func main() {
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
 > - https://github.com/muroon/datadog_sample/blob/master/grpcserver/main.go#L75-L127
@@ -507,7 +507,7 @@ func main() {
 }
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
 > - https://github.com/muroon/datadog_sample/blob/master/httpserver/usecases/grpc.go#L23-L70

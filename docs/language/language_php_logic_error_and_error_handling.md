@@ -11,7 +11,7 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -99,7 +99,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 
 
-> ℹ️ 参考：https://www.php.net/manual/ja/reserved.exceptions.php
+> ↪️ 参考：https://www.php.net/manual/ja/reserved.exceptions.php
 
 <br>
 
@@ -115,7 +115,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 
 
-> ℹ️ 参考：https://www.php.net/manual/ja/exception.construct.php
+> ↪️ 参考：https://www.php.net/manual/ja/exception.construct.php
 
 エラーコードはステータスコードと異なり、例外を識別するためのものである。
 
@@ -127,7 +127,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 **＊実装例＊**
 
@@ -172,7 +172,7 @@ function foo(string $foo) {
 
 - InvalidArgumentException
 
-> ℹ️ 参考：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
+> ↪️ 参考：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
 
 <br>
 
@@ -382,7 +382,7 @@ class Foo
 
 補足として、この例外をロギングする場合、スタックトレースログとして出力される。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - http://blog.tojiru.net/article/455279557.html
 > - https://www.php.net/manual/ja/exception.construct.php
@@ -395,7 +395,7 @@ class Foo
 
 想定外のエラーも含めて、全てのエラーを検出できるように、コントローラーまたはミドルウェアにtry-catch文を実装する。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 > - https://softwareengineering.stackexchange.com/questions/393307/where-would-you-handle-exceptions-controller-service-repository
@@ -404,7 +404,7 @@ class Foo
 
 コントローラーの実装をより単純にするべく、より下位のユースケースにtry-catch文を実装する。
 
-> ℹ️ 参考：https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
+> ↪️ 参考：https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 
 <br>
 
@@ -414,7 +414,7 @@ class Foo
 
 #### ▼ ```error_log```関数
 
-> ℹ️ 参考：https://www.php.net/manual/ja/function.error-log.php
+> ↪️ 参考：https://www.php.net/manual/ja/function.error-log.php
 
 ```php
 error_log(
@@ -458,7 +458,7 @@ class Notification
 
 
 
-> ℹ️ 参考：https://github.com/php-fig/log
+> ↪️ 参考：https://github.com/php-fig/log
 
 ```php
 <?php

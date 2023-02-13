@@ -11,7 +11,7 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -33,7 +33,7 @@ bridgeネットワークは、コンテナのネットワークインターフ�
 
 
 
-> ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+> ↪️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
 
 ```brctl```コマンドを使用し、```docker0```ブリッジがどの仮想インターフェースと接続されているかを確認できる。
@@ -98,7 +98,7 @@ hostネットワークは、コンテナのネットワークインターフェ�
 
 
 
-> ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+> ↪️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
 ```bash
 $ docker network list
@@ -153,7 +153,7 @@ $ curl --fail http://127.0.0.1:8080
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 **＊例＊**
 

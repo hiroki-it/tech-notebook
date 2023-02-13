@@ -11,7 +11,7 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://garop.com/36/
+> ↪️ 参考：https://garop.com/36/
 
 <br>
 
@@ -86,7 +86,7 @@ exports.handler = async (event) => {
 ```
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
 #### ▼ 同期ハンドラ関数（Non-async handlers）
 
@@ -100,7 +100,7 @@ Lambdaはハンドラ関数を同期関数としてコールし、引数（event
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
 （※『Non』が翻訳をおかしくしているため、英語版を推奨）
 
@@ -157,9 +157,9 @@ exports.handler = (event, context, callback) => {
 
 | 引数          | 説明                                                                               | 補足                                                                                                                                       |
 |---------------|----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                       | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ（名前、バージョンなど）を取得できるメソッドとプロパティが代入されている。                          | オブジェクトの構造は以下の通り<br>ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                           |
-| callback関数  | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、Lambdaのコール元にレスポンスを返信する。 | ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                   |
+| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                       | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
+| contextオブジェクト | Lambdaに関するデータ（名前、バージョンなど）を取得できるメソッドとプロパティが代入されている。                          | オブジェクトの構造は以下の通り<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                           |
+| callback関数  | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、Lambdaのコール元にレスポンスを返信する。 | ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                   |
 
 #### ▼ テストとデバッグ
 
@@ -167,7 +167,7 @@ Lambdaで関数を作成すると、CloudWatchログのロググループに、�
 
 #### ▼ ベストプラクティス
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-code
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-code
 
 <br>
 
@@ -179,7 +179,7 @@ Lambdaで関数を作成すると、CloudWatchログのロググループに、�
 
 Goを使用して、Lambda-APIに対してリクエストを送信し、AWSリソースを操作できる。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
 
 #### ▼ ```Start```関数
 
@@ -191,7 +191,7 @@ Lamda関数を実行するための関数。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
 
 ```go
 package main
@@ -223,7 +223,7 @@ contextオブジェクトとeventオブジェクトをパラメーターとし�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html
 
 <br>
 
@@ -231,7 +231,7 @@ contextオブジェクトとeventオブジェクトをパラメーターとし�
 
 #### ▼ 全種類
 
-> ℹ️ 参考：https://github.com/aws/aws-lambda-go/tree/master/events#overview
+> ↪️ 参考：https://github.com/aws/aws-lambda-go/tree/master/events#overview
 
 #### ▼ SNSイベントの場合
 
@@ -318,7 +318,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
 文字列を返却すると、Lambdaはその文字列をそのまま返信する。
 
@@ -326,7 +326,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs
 
 #### ▼ 異常系
 
@@ -334,13 +334,13 @@ Lambdaのエラーレスポンスのステータスコードについては以�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 
 エラーレスポンスのメッセージボディには以下のJSONが割り当てられる。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
 ```yaml
 {
@@ -399,7 +399,7 @@ CloudWatchログにてこれを確認する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
 
 <br>
 
@@ -407,7 +407,7 @@ CloudWatchログにてこれを確認する。
 
 ### Amplify → EventBridge → Lambda → Slack-API
 
-> ℹ️ 参考：https://github.com/hiroki-it/notify-slack-of-amplify-events
+> ↪️ 参考：https://github.com/hiroki-it/notify-slack-of-amplify-events
 
 <br>
 
@@ -426,10 +426,10 @@ CloudWatchログにてこれを確認する。
 
 | パッケージ名           | 説明                                                       | 補足                                                                      |
 |-------------------|----------------------------------------------------------|-------------------------------------------------------------------------|
-| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる                       | ℹ️ 参考：https://nodejs.org/api/index.html                                 |
-| aws-sdk.js        | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる                       | ↪️ 参考：https://nodejs.org/api/index.html                                 |
+| aws-sdk.js        | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ↪️ 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
-> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 
 
 <br>
@@ -474,7 +474,7 @@ exports.handler = async (event) => {
 };
 ```
 
-> ℹ️ 参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
+> ↪️ 参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
 
 
 <br>
@@ -698,7 +698,7 @@ const postMessageToSlack = (message) => {
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 > - https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js

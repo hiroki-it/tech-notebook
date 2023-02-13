@@ -10,7 +10,7 @@ description: 設計ポリシー＠ソフトウェアの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -32,7 +32,7 @@ description: 設計ポリシー＠ソフトウェアの知見を記録してい�
 
 
 
-> ℹ️ 参考：https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33
+> ↪️ 参考：https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33
 
 #### ▼ 対応日時の決定
 

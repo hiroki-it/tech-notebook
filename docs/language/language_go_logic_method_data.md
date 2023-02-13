@@ -11,7 +11,7 @@ description: メソッド/データ@Goの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -313,7 +313,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 ```go
 package main
@@ -717,7 +717,7 @@ PHPにおけるポインタは、以下のリンクを参考にせよ。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based_method_data.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based_method_data.html
 
 **＊実装例＊**
 
@@ -803,7 +803,7 @@ type slice struct {
 }
 ```
 
-> ℹ️ 参考：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
+> ↪️ 参考：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
 
 #### ▼ 宣言と代入
 
@@ -1178,7 +1178,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
+> ↪️ 参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
 
 ```go
 package main
@@ -1492,7 +1492,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#pass-values
+> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#pass-values
 
 #### ▼ Closure（無名関数）とは
 
@@ -2216,7 +2216,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://golang.org/pkg/sync/
+> ↪️ 参考：https://golang.org/pkg/sync/
 
 **＊実装例＊**
 
@@ -2250,7 +2250,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
+> ↪️ 参考：https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
 ```go
 package main
@@ -2350,7 +2350,7 @@ func main() {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://www.spinute.org/go-by-example/select.html
 > - https://leben.mobi/go/channel-and-select/go-programming/
@@ -2410,7 +2410,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_validation.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_validation.html
 
 #### ▼ Goには例外が無い
 
@@ -2498,7 +2498,7 @@ errorインターフェースはErrorメソッドを自動的に実行する。
 
 
 
-> ℹ️ 参考：https://golang.org/pkg/errors/#New
+> ↪️ 参考：https://golang.org/pkg/errors/#New
 
 **＊実装例＊**
 
@@ -2541,7 +2541,7 @@ errorインターフェースはErrorメソッドを自動的に実行する。
 
 
 
-> ℹ️ 参考：https://golang.org/pkg/fmt/#Errorf
+> ↪️ 参考：https://golang.org/pkg/fmt/#Errorf
 
 **＊実装例＊**
 
@@ -2694,7 +2694,7 @@ Goにはデフォルトで、ロギング用パッケージが用意されてい
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://pkg.go.dev/log
 > - https://github.com/sirupsen/logrus
@@ -2746,7 +2746,7 @@ if err != nil {
 
 
 
-> ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 
 **＊実装例＊**
 
@@ -2799,7 +2799,7 @@ if err != nil {
 
 各記号を```{{"<記号>"}}```のように挟み、エスケープする。
 
-> ℹ️ 参考：https://stackoverflow.com/a/17642427
+> ↪️ 参考：https://stackoverflow.com/a/17642427
 
 ```yaml
 {{"{{"}} foo {{"}}"}}
@@ -2809,7 +2809,7 @@ if err != nil {
 
 記号を含む文字ごと```{{`<記号を含む文字列全体>`}}```のように挟み、エスケープする。
 
-> ℹ️ 参考：https://stackoverflow.com/a/38941123
+> ↪️ 参考：https://stackoverflow.com/a/38941123
 
 ```yaml
 {{`{{ foo }}`}}
@@ -2821,7 +2821,7 @@ if err != nil {
 
 ### パッケージのコード
 
-> ℹ️ 参考：https://golang.org/pkg/
+> ↪️ 参考：https://golang.org/pkg/
 
 <br>
 
@@ -2870,7 +2870,7 @@ func main() {
 
 
 
-> ℹ️ 参考：https://golang.org/pkg/encoding/json/#Marshal
+> ↪️ 参考：https://golang.org/pkg/encoding/json/#Marshal
 
 **＊実装例＊**
 
@@ -2976,7 +2976,7 @@ JSONを構造体に変換する。
 
 
 
-> ℹ️ 参考：https://golang.org/pkg/encoding/json/#Unmarshal
+> ↪️ 参考：https://golang.org/pkg/encoding/json/#Unmarshal
 
 **＊実装例＊**
 
@@ -3027,7 +3027,7 @@ CloudWatchは様々なイベントを処理するため、一部のJSON構造が
 
 
 
-> ℹ️ 参考：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
+> ↪️ 参考：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
 
 ```go
 package events
@@ -3146,7 +3146,7 @@ func main() {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://golang.org/pkg/fmt/#Print
 > - https://golang.org/pkg/fmt/#Fprint
@@ -3214,7 +3214,7 @@ func main() {
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://golang.org/pkg/fmt/#Sprint
 > - https://golang.org/pkg/fmt/#Sprintf
@@ -3234,7 +3234,7 @@ package mainimport "fmt"func main() {        // Sprintは返却するだけ    f
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://golang.org/pkg/fmt/#Println
 > - https://golang.org/pkg/fmt/#Fprintln
@@ -3272,7 +3272,7 @@ func main() {
 | ```%+v```      | フィールドを含む構造体として | データの構造を確認できるため、デバッグに有効である。 |
 | ```%#v```      | Go構文として          | データの構造を確認できるため、デバッグに有効である。 |
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://golang.org/pkg/fmt/#Printf
 > - https://golang.org/pkg/fmt/#Fprintf
@@ -3370,7 +3370,7 @@ HTTPクライアントまたはWebサーバを提供する。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go

@@ -11,7 +11,7 @@ description: API＠Envoyの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -64,7 +64,7 @@ $ kubectl exec \
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface
@@ -82,7 +82,7 @@ $ kubectl exec \
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
 
 ```yaml
 [
@@ -110,7 +110,7 @@ $ kubectl exec \
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -168,7 +168,7 @@ Envoyの稼働するサーバー/コンテナからローカルホストにリ�
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -210,7 +210,7 @@ $ kubectl exec \
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -254,7 +254,7 @@ $ kubectl exec \
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
 
 
 **＊例＊**
@@ -359,7 +359,7 @@ configs:
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -376,7 +376,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster
@@ -420,7 +420,7 @@ configs:
   ...
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
@@ -436,7 +436,7 @@ configs:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
@@ -477,7 +477,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -542,7 +542,7 @@ configs:
 
 
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。

@@ -11,7 +11,7 @@ description: リソース＠Istioの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -44,7 +44,7 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Node外からイ�
 
 KubernetesリソースのIngressの代わりとして使用できる。
 
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
+> ↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 
 #### ▼ IngressGatewayの仕組み
 
@@ -130,7 +130,7 @@ spec:
 # 重要なところ以外を省略しているため、全体像はその都度確認すること。
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
@@ -150,7 +150,7 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
@@ -171,7 +171,7 @@ IngressGatewayの能力のうち、IngressGatewayで受信したインバウン�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
@@ -183,7 +183,7 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
@@ -197,7 +197,7 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 | API GatewayをIstioで管理する場合  | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。                  |
 | API GatewayをIstioで管理しない場合 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
 
-> ℹ️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+> ↪️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
 <br>
 
@@ -211,7 +211,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
 
-> ℹ️ 参考：https://knowledge.sakura.ad.jp/20489/
+> ↪️ 参考：https://knowledge.sakura.ad.jp/20489/
 
 
 <br>
@@ -224,7 +224,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 ![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-entry.png)
 
-> ℹ️ 参考：https://tech.uzabase.com/entry/2018/11/26/110407
+> ↪️ 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 
 <br>
 
@@ -237,13 +237,13 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 | 通信方向 | 能力                                                                                                                                | 補足                                                                                                  |
 |----------|-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                                                                       |
-| アウトバウンド  | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。                                                             | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+| アウトバウンド  | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。                                                             | ↪️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 
 DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値として```istio-proxy```コンテナに適用される。
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/

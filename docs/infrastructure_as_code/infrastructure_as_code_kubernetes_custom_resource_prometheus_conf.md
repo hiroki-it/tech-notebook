@@ -9,7 +9,7 @@ description: 設定ファイル＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -23,7 +23,7 @@ Prometheusを設定する。
 
 ```/etc/prometheus```ディレクトリ配下におく。
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
 <br>
 
@@ -38,7 +38,7 @@ global:
   evaluation_interval: 15s
 ```
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
+> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 
 <br>
 
@@ -57,7 +57,7 @@ alerting:
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://amateur-engineer-blog.com/alertmanager-docker-compose/
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
@@ -118,7 +118,7 @@ groups:
           description: 【 {{ $labels.app }} 】{{ $labels.env }} 環境で、Podのメモリ使用率が {{ $value }} になりました。
 ```
 
-> ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-docker-compose/
+> ↪️ 参考：https://amateur-engineer-blog.com/alertmanager-docker-compose/
 
 
 #### ▼ scrape_configsセクション
@@ -127,7 +127,7 @@ Retrievalのルールを設定する。
 
 
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
+> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 
 #### ▼ static_configs
 
@@ -147,7 +147,7 @@ scrape_configs:
         - <node-exporterの稼働するサーバーのIPアドレス>:9100
 ```
 
-> ℹ️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
+> ↪️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
 
 #### ▼ sd_configs
 
@@ -181,7 +181,7 @@ scrape_configs:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
 > - https://christina04.hatenablog.com/entry/prometheus-service-discovery
@@ -200,7 +200,7 @@ global:
   resolve_timeout: 5m
 ```
 
-> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
+> ↪️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
 
 <br>
 
@@ -228,7 +228,7 @@ route:
       severity: critical
 ```
 
-> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#route
+> ↪️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#route
 
 #### ▼ match
 
@@ -270,7 +270,7 @@ receivers:
 ```
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
@@ -332,7 +332,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 
 一方で、個別にチャートをインストールすることもできる。
 
@@ -353,7 +353,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-state-met
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
 ```
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
@@ -372,6 +372,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mys
 $ /usr/local/bin/node_exporter --web.listen-address=":9100"
 ```
 
-> ℹ️ 参考：https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
+> ↪️ 参考：https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
 
 <br>

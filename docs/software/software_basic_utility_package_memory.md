@@ -11,7 +11,7 @@ description: メモリ系＠パッケージの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -61,7 +61,7 @@ $ pstree
 
 #### ▼ pipリポジトリから
 
-> ℹ️ 参考：http://supervisord.org/installing.html#installing-a-distribution-package
+> ↪️ 参考：http://supervisord.org/installing.html#installing-a-distribution-package
 
 ```bash
 $ pip3 install supervisor
@@ -79,7 +79,7 @@ Python製のユーティリティである。
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - http://supervisord.org/index.html
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
@@ -90,7 +90,7 @@ supervisordを操作する。
 
 
 
-> ℹ️ 参考：http://supervisord.org/introduction.html#supervisor-components
+> ↪️ 参考：http://supervisord.org/introduction.html#supervisor-components
 
 #### ▼ supervisord
 
@@ -98,7 +98,7 @@ supervisor自体のプロセスのこと。
 
 
 
-> ℹ️ 参考：http://supervisord.org/introduction.html#supervisor-components
+> ↪️ 参考：http://supervisord.org/introduction.html#supervisor-components
 
 <br>
 
@@ -110,7 +110,7 @@ supervisorの```supervisord```プロセスのプールを設定する。
 
 
 
-> ℹ️ 参考：http://supervisord.org/configuration.html#supervisord-section-settings
+> ↪️ 参考：http://supervisord.org/configuration.html#supervisord-section-settings
 
 ```ini
 [supervisord]
@@ -205,7 +205,7 @@ user=root
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - http://supervisord.org/configuration.html#program-x-section-settings
 > - https://christina04.hatenablog.com/entry/2015/07/21/215525
@@ -285,7 +285,7 @@ startretries=10
 
 
 
-> ℹ️ 参考：http://supervisord.org/configuration.html#supervisord-section-values
+> ↪️ 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
 ```ini
 [program:foo]
@@ -370,7 +370,7 @@ programs=bar,baz
 
 
 
-> ℹ️ 参考：http://supervisord.org/running.html#supervisorctl-actions
+> ↪️ 参考：http://supervisord.org/running.html#supervisorctl-actions
 
 ```bash
 $ supervisorctl restart <デーモン名>
@@ -382,7 +382,7 @@ $ supervisorctl restart <デーモン名>
 
 
 
-> ℹ️ 参考：http://supervisord.org/running.html#supervisorctl-actions
+> ↪️ 参考：http://supervisord.org/running.html#supervisorctl-actions
 
 ```bash
 $ supervisorctl update
@@ -400,7 +400,7 @@ $ supervisorctl update
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://cameong.hatenablog.com/entry/2016/10/18/121400
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
@@ -413,7 +413,7 @@ $ supervisorctl update
 
 
 
-> ℹ️ 参考：https://www.kabegiwablog.com/entry/2018/06/11/100000
+> ↪️ 参考：https://www.kabegiwablog.com/entry/2018/06/11/100000
 
 | ユニットタイプ     | ユニットの拡張子    | 説明                      |
 |-------------|----------------|--------------------------|
@@ -450,7 +450,7 @@ $ apt-get install systemd
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://tex2e.github.io/blog/linux/create-my-systemd-service
 > - https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
@@ -479,7 +479,7 @@ serviceユニットのオプションを設定する。
 
 
 
-> ℹ️ 参考：https://serverfault.com/a/806620
+> ↪️ 参考：https://serverfault.com/a/806620
 
 ```ini
 [Service]
@@ -536,7 +536,7 @@ WantedBy=multi-user.target
 $ systemctl daemon-reload
 ```
 
-> ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
+> ↪️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
 
 
 #### ▼ disable
@@ -575,7 +575,7 @@ $ systemctl enable httpd.service
 
 
 
-> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 ```bash
 $ systemctl list-units --type=<ユニットの拡張子>
@@ -692,7 +692,7 @@ $ systemctl start nginx.service
 
 
 
-> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 ```bash
 $ systemctl status <ユニット名>
@@ -739,7 +739,7 @@ systemで管理する全てのユニットのログを取得する。
 
 
 
-> ℹ️ 参考：https://qiita.com/aosho235/items/9fbff75e9cccf351345c
+> ↪️ 参考：https://qiita.com/aosho235/items/9fbff75e9cccf351345c
 
 ```bash
 $ journalctl | grep error
@@ -767,7 +767,7 @@ $ journalctl -u foo.service | grep error
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://serverfault.com/a/924434
 > - https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html
@@ -805,7 +805,7 @@ WantedBy=multi-user.target
 
 
 
-> ℹ️ 参考：https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
+> ↪️ 参考：https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
 
 ```ini
 [Service]
@@ -846,7 +846,7 @@ $ yum install -y xclip
 
 
 
-> ℹ️ 参考：https://linux.die.net/man/1/xclip
+> ↪️ 参考：https://linux.die.net/man/1/xclip
 
 <br>
 
@@ -858,7 +858,7 @@ $ yum install -y xclip
 
 
 
-> ℹ️ 参考：https://linuxfan.info/xclip
+> ↪️ 参考：https://linuxfan.info/xclip
 
 **＊例＊**
 
@@ -886,7 +886,7 @@ $ ls -la | xclip -selection clipboard
 
 
 
-> ℹ️ 参考：https://linuxfan.info/xclip
+> ↪️ 参考：https://linuxfan.info/xclip
 
 **＊例＊**
 

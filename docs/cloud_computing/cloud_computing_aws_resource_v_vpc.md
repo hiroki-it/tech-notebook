@@ -11,7 +11,7 @@ description: VPC＠Vで始まるAWSリソースの知見を記録しています
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +27,7 @@ VPCのパケット通信の仕組みについては、以下のリンクを参�
 
 
 
-> ℹ️ 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
+> ↪️ 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
 ![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCが提供できるネットワークの範囲.png)
 
@@ -45,7 +45,7 @@ VPCのパケット通信の仕組みについては、以下のリンクを参�
 | Elastic IP   | 手動      | グローバル        | 静的IPアドレス | 静的なIPアドレスのため、インスタンスを再作成しても保持される。 |
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html
 > - https://qiita.com/masato930/items/ba242f0171a76ce0994f
@@ -58,7 +58,7 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
@@ -67,8 +67,8 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 | 紐付け名    | 補足                                                                                                       |
 |----------|----------------------------------------------------------------------------------------------------------|
-| EC2との紐付け | 非推奨の方法である。<br>ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
-| ENIとの紐付け | 推奨される方法である。<br>ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| EC2との紐付け | 非推奨の方法である。<br>↪️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| ENIとの紐付け | 推奨される方法である。<br>↪️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 
 <br>
 
@@ -84,7 +84,7 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 <br>
 
@@ -102,9 +102,9 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 | リソースの種類         | 役割                                                                                   | 補足                                                                                                                |
 |-------------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 | ALB               | ENIに紐付けられたIPアドレスを、ALBに割り当てる。                                                       |                                                                                                                     |
-| EC2               | ENIに紐付けられたIPアドレスを、EC2に割り当てる。                                                       | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics                               |
-| Fargate環境のEC2   | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
-| Elastic IP        | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses  |
+| EC2               | ENIに紐付けられたIPアドレスを、EC2に割り当てる。                                                       | ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics                               |
+| Fargate環境のEC2   | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>↪️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
+| Elastic IP        | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses  |
 | GlobalAccelerator |                                                                                        |                                                                                                                     |
 | NAT Gateway       | ENIに紐付けられたパブリックIPアドレスを、NAT Gatewayに割り当てる。                                          |                                                                                                                     |
 | RDS               |                                                                                        |                                                                                                                     |
@@ -123,7 +123,7 @@ VPCエンドポイントを経由すれば異なるVPCに送信することも�
 ![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc_traffic-mirroring.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/
 > - https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/
@@ -205,7 +205,7 @@ LAN内の内部ネットワークに相当する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
+> ↪️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
 
 | Destination（宛先のIPの範囲） |             Target             |
 |:-------------------------:|:------------------------------:|
@@ -273,7 +273,7 @@ NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
+> ↪️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 
 **＊リソース例＊**
 
@@ -292,7 +292,7 @@ VPCエンドポイントとして動作し、AWSリソースからアウトバ�
 S3、DynamoDBのみ
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-gateway.html
 > - https://yassanabc.com/2022/02/17/%E3%80%90vpc%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%80%91gateway%E5%9E%8B%E3%81%A8interface%E5%9E%8B%E3%81%AE%E9%81%95%E3%81%84%E3%80%90s3%E3%80%91/
@@ -314,7 +314,7 @@ DNAT処理を実行し、グローバルIPアドレス（VPC外のIPアドレス
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
@@ -338,7 +338,7 @@ SNAT処理を実行し、プライベートIPアドレス（VPC内のIPアドレ
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
@@ -433,7 +433,7 @@ version account-id   interface-id  srcaddr         dstaddr        srcport       
 
 
 
-> ℹ️ 参考：
+> ↪️ 参考：
 > 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 > - https://kikuchitk7.hatenablog.com/entry/2022/03/28/152414
