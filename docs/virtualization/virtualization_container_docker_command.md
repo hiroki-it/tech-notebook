@@ -157,7 +157,7 @@ $ docker create <コンテナ名> <コンテナイメージ名>:<バージョン
 
 
 ```bash
-# i：interactive、t：tty（対話モード）
+# i：interactive、t：tty (対話モード) 
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
 # コンテナ内に/bin/bash がない場合
@@ -311,7 +311,7 @@ json-fileドライバーを使用している時に、ログファイルの出�
 
 #### ▼ --follow
 
-標準出力（```/dev/stdout```）/標準エラー出力（```/dev/stderr```）に出力されたログを表示し続ける。ロギングドライバーが```json-file```の場合のみ有効。
+標準出力 (```/dev/stdout```) /標準エラー出力 (```/dev/stderr```) に出力されたログを表示し続ける。ロギングドライバーが```json-file```の場合のみ有効。
 
 ```bash
 $ docker logs -f <コンテナ名>

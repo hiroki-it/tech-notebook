@@ -1,6 +1,6 @@
 # セクションの目次
 
-## ⛅ クラウド（クラウドコンピューティング）
+## ⛅ クラウド (クラウドコンピューティング) 
 
 ### クラウドコンピューティング
 
@@ -50,7 +50,7 @@
   > > * ##### [︎Sで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s.html)
   > > * ##### [S3](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s_s3.html)
   > > * ##### [STS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s_sts.html)
-  > > * ##### [Systems Manager（旧SSM）](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s_systems_manager.html)
+  > > * ##### [Systems Manager (旧SSM) ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s_systems_manager.html)
   > * ##### [︎Tで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_t.html)
   > * ##### <u>︎Vで始まるAWSリソース</u>
   > > * ##### [VPC](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_v_vpc.html)

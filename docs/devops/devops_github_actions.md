@@ -363,7 +363,7 @@ runs:
 
 #### ▼ Workflowレベルとは
 
-定義された```workflow```（```.yaml```ファイル）内でのみ参照できる。
+定義された```workflow``` (```.yaml```ファイル) 内でのみ参照できる。
 
 
 
@@ -419,7 +419,7 @@ jobs:
 
 #### ▼ 環境ファイル
 
-環境ファイル（```GITHUB_ENV```）に値を入力することにより、```job```内の環境変数として使用できるようになる。
+環境ファイル (```GITHUB_ENV```) に値を入力することにより、```job```内の環境変数として使用できるようになる。
 
 
 
@@ -564,7 +564,7 @@ runs:
 
 ### 変数のスコープレベル
 
-#### ▼ Projectレベル（Repository Secrets）
+#### ▼ Projectレベル (Repository Secrets) 
 
 リポジトリの設定のSecrets項目に変数名と値を登録する。
 
@@ -586,7 +586,7 @@ jobs:
           echo ${{ secrets.FOO }}
 ```
 
-#### ▼ Actionレベル（Environment Secrets）
+#### ▼ Actionレベル (Environment Secrets) 
 
 リポジトリの設定のEnvironment項目に変数名と値を登録する。
 

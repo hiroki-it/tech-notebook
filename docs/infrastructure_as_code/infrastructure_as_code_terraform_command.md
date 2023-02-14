@@ -93,7 +93,7 @@ $ export TF_CLI_ARGS_apply="--parallelism=50"
 
 具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。
 
-ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を処理することはできず、代わりに```terraform import```コマンドの実行が必要になる。
+ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) を処理することはできず、代わりに```terraform import```コマンドの実行が必要になる。
 
 
 ```bash
@@ -183,7 +183,7 @@ $ terraform apply foo.tfplan
 
 #### ▼ initとは
 
-```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。
+```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化 (```terraform.lock.hcl```ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど) を実行する。
 
 ```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。
 
@@ -625,7 +625,7 @@ $ terraform plan \
 
 #### ▼ 出力内容の読み方
 
-リソースの作成（```+```）、更新（```~```）、削除（```-```）、再作成（```-/+```）で表す。
+リソースの作成 (```+```) 、更新 (```~```) 、削除 (```-```) 、再作成 (```-/+```) で表す。
 
 ```mathematica
 + create
@@ -636,7 +636,7 @@ $ terraform plan \
 
 前半部分と後半部分に区別されている。
 
-前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。
+前半部分は、Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出する。
 
 また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。
 
@@ -654,7 +654,7 @@ Note: Objects have changed outside of Terraform
 Terraform detected the following changes made outside of Terraform since the
 last "terraform apply":
 
-  # Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出。
+  # Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出。
 
 Unless you have made equivalent changes to your configuration, or ignored the
 relevant attributes using ignore_changes, the following plan may include
@@ -685,7 +685,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 | ```resource```ブロック名の変更                                               | される      |
 | ```module```ブロック名の変更                                                 | される      |
 | ファイルやディレクトリを指定するパスの変更                                               | されない     |
-| ```resource```ブロックにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない     |
+| ```resource```ブロックにハードコーディングされた値を環境変数に変更 (```.tfvars```ファイルに移行)  | されない     |
 | ```variables```ブロック名の変更                                              | されない     |
 
 > ↪️ 参考：https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
@@ -723,7 +723,7 @@ $ rm .terraform.lock.hcl
 
 <br>
 
-### refresh（非推奨）
+### refresh (非推奨) 
 
 #### ▼ -var-file
 
@@ -745,7 +745,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ▼ list
 
-```.tfstate```ファイルで定義されている```resource```ブロック（```.tfstate```ファイル上では```managed```モード）の一覧を取得する。```terraform apply```コマンドで```-target```オプションを使用する前にアドレスを確認したい場合や、```terraform apply```コマンドの実行に失敗した時に```.tfstate```ファイルと実インフラにどのような差分があるかを確認する場合に使用する。
+```.tfstate```ファイルで定義されている```resource```ブロック (```.tfstate```ファイル上では```managed```モード) の一覧を取得する。```terraform apply```コマンドで```-target```オプションを使用する前にアドレスを確認したい場合や、```terraform apply```コマンドの実行に失敗した時に```.tfstate```ファイルと実インフラにどのような差分があるかを確認する場合に使用する。
 
 > ↪️ 参考：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
@@ -1001,9 +1001,9 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 ### なぜ```import```コマンドが必要なのか
 
-Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を```resource```ブロックの設定値として```.tfstate```ファイルに書き込み、Terraformの管理下におく必要がある（```.tfstate```ファイル上では、```resource```ブロックは```managed```モードという表記になる）。
+Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を```resource```ブロックの設定値として```.tfstate```ファイルに書き込み、Terraformの管理下におく必要がある (```.tfstate```ファイル上では、```resource```ブロックは```managed```モードという表記になる) 。
 
-執筆時点（2022/07/19）で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを```1```個ずつ指定して、```.tfstate```ファイルに書き込んでいく必要がある。
+執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを```1```個ずつ指定して、```.tfstate```ファイルに書き込んでいく必要がある。
 
 > ↪️ 参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
 
@@ -1158,7 +1158,7 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 
 :    ```terraform import```コマンドの実行と```.tf```ファイルの変更を繰り返す。
 
-     この時、```.tfstate```ファイルの差分表記と反対に（例：```+```の場合は削除、```-```は追加、```→```は逆向き変更）になるように、tfファイルを修正する。
+     この時、```.tfstate```ファイルの差分表記と反対に (例：```+```の場合は削除、```-```は追加、```→```は逆向き変更) になるように、tfファイルを修正する。
 
 
 > ↪️ 参考：https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
@@ -1206,7 +1206,7 @@ $ rm terraform.tfstate.backup
 
 #### ▼ importできない```resource```タイプ
 
-```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。
+```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い (AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など) 。
 
 その場合、```.tfstate```ファイルと実インフラの差分を解消できない。
 
@@ -1222,13 +1222,13 @@ $ rm terraform.tfstate.backup
 
 
 
-（エラー例1）
+ (エラー例1) 
 
 ```bash
 Error: InvalidParameterException: Creation of service was not idempotent.
 ```
 
-（エラー例2）
+ (エラー例2) 
 
 ```bash
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'

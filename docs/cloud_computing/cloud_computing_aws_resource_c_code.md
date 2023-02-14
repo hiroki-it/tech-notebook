@@ -101,7 +101,7 @@ phases:
       # コミットハッシュ値のタグの前に、latestタグのコンテナイメージをプッシュしておく。
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      # ECRにあるデプロイ先のコンテナイメージの情報（imageDetail.json）
+      # ECRにあるデプロイ先のコンテナイメージの情報 (imageDetail.json) 
       - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
     
 # デプロイ対象とするビルドのアーティファクト    
@@ -114,7 +114,7 @@ artifacts:
 
 <br>
 
-## 03. CodeDeploy（EC2の場合）
+## 03. CodeDeploy (EC2の場合) 
 
 ### 利用できるデプロイメント手法
 
@@ -138,7 +138,7 @@ artifacts:
 
 <br>
 
-## 03-02. CodeDeploy（Lambdaの場合）
+## 03-02. CodeDeploy (Lambdaの場合) 
 
 ### 利用できるデプロイメント手法
 
@@ -150,7 +150,7 @@ artifacts:
 
 <br>
 
-## 03-03. CodeDeploy（ECSの場合）
+## 03-03. CodeDeploy (ECSの場合) 
 
 ### 利用できるデプロイメント手法
 
@@ -212,23 +212,23 @@ artifacts:
 
 ```【４】```
 
-:    CodeDeployによって、ECSタスク定義を基に、現行の旧環境（Prodブルー）のECSタスクとは別に、新環境（Testグリーン）が作成される。ロードバランサーの接続先を、旧環境（Prodブルー）のターゲットグループ（Primaryターゲットグループ）に加えて、新環境（Testグリーン）にも向ける。
+:    CodeDeployによって、ECSタスク定義を基に、現行の旧環境 (Prodブルー) のECSタスクとは別に、新環境 (Testグリーン) が作成される。ロードバランサーの接続先を、旧環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。
 
 ```【５】```
 
-:    社内から新環境（Testグリーン）のALBに、特定のポート番号でアクセスし、動作を確認する。
+:    社内から新環境 (Testグリーン) のALBに、特定のポート番号でアクセスし、動作を確認する。
 
 ```【６】```
 
-:    動作確認で問題なければ、Console画面からの入力で、ロードバランサーの接続先を新環境（Testグリーン）のみに設定する。
+:    動作確認で問題なければ、Console画面からの入力で、ロードバランサーの接続先を新環境 (Testグリーン) のみに設定する。
 
 ```【７】```
 
-:    新環境（Testグリーン）が新しい旧環境としてユーザーに公開される。
+:    新環境 (Testグリーン) が新しい旧環境としてユーザーに公開される。
 
 ```【８】```
 
-:    元の旧環境（Prodブルー）は削除される。
+:    元の旧環境 (Prodブルー) は削除される。
 
 
 > ↪️ 参考：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1

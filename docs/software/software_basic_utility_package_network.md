@@ -146,7 +146,7 @@ $ yum install -y bind-utils
 # 正引き
 $ nslookup google.co.jp
 
-# 非権威DNSサーバー（キャッシュDNSサーバー）からの返信
+# 非権威DNSサーバー (キャッシュDNSサーバー) からの返信
 Non-authoritative answer:
 Server:  UnKnown
 Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
@@ -264,7 +264,7 @@ $ yum install -y net-tools
 
 #### ▼ -plunt
 
-オプション（```-p```、```-l```、```-u```、```-n```、```-t```）の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
+オプション (```-p```、```-l```、```-u```、```-n```、```-t```) の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
 
 > ↪️ 参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
 
@@ -309,7 +309,7 @@ $ brew install speedtest-cli
 
 ### speedtest-cliとは
 
-SPEEDTESTのAPIを使用して、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
+SPEEDTESTのAPIを使用して、ダウンロード (下り) とアップロード (上り) の通信速度を解析する。
 
 
 ```bash
@@ -351,9 +351,9 @@ $ yum install -y tcpdump
 
 ### tcpdumpとは
 
-今現在処理されているパケット（インバウンド通信とアウトバウンド通信）の情報を取得する。
+今現在処理されているパケット (インバウンド通信とアウトバウンド通信) の情報を取得する。
 
-パケットの送信元と宛先から、送信元からの通信（```ping```、```nc```、```curl```、など）が届いているかを確認する。
+パケットの送信元と宛先から、送信元からの通信 (```ping```、```nc```、```curl```、など) が届いているかを確認する。
 
 最初の```3```行はスリーウェイハンドシェイクを表す。
 
@@ -518,7 +518,7 @@ $ tcpdump src port 80
 
 ### tracerouteとは
 
-宛先にUDPプロトコル/ICMPプロトコル（デフォルトはUDPプロトコル）でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
+宛先にUDPプロトコル/ICMPプロトコル (デフォルトはUDPプロトコル) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
 
 
 
@@ -541,7 +541,7 @@ UDPプロトコルを使用して、パケットを送信する。
 ```bash
 $ traceroute google.com
 
-traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数（ルーター数）
+traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数 (ルーター数) 
  1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
  
  ...
@@ -553,7 +553,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大3
 ```bash
 $ traceroute 173.194.38.98
 
-traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数（ルーター数）
+traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数 (ルーター数) 
  1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
  
  ...
@@ -655,7 +655,7 @@ $ traceroute *.*.*.* -p 9000
 
 宛先にTCPプロトコルでパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
 
-```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外（ファイアウォールなど）のところで通信できない場合がある。
+```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。
 
 
 

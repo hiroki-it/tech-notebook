@@ -269,7 +269,7 @@ Go製のORMである。
 
 その他のORMについては、以下のリポジトリが参考になる。
 
-執筆時点（2022/01/31）では、GormとBeegoが接戦している。
+執筆時点 (2022/01/31) では、GormとBeegoが接戦している。
 
 > ↪️ 参考：https://github.com/d-tsuji/awesome-go-orms
 
@@ -503,7 +503,7 @@ db.Find(&users, []int{1,2,3})
 
 ### Update
 
-#### ▼ 単一カラム更新（暗黙的）
+#### ▼ 単一カラム更新 (暗黙的) 
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
 
@@ -527,7 +527,7 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
 ```
 
-#### ▼ 複数カラム更新（暗黙的）
+#### ▼ 複数カラム更新 (暗黙的) 
 
 Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。
 
@@ -551,7 +551,7 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 // UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
 ```
 
-#### ▼ 複数カラム更新（明示的）
+#### ▼ 複数カラム更新 (明示的) 
 
 Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。
 

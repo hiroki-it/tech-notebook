@@ -46,7 +46,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 ### コントロールプレーンとは
 
-コントロールプレーンは、データプレーンのEnvoyを管理する。サービスディスカバリーのためのAPI（XDS-API）を持つ。
+コントロールプレーンは、データプレーンのEnvoyを管理する。サービスディスカバリーのためのAPI (XDS-API) を持つ。
 
 <br>
 
@@ -151,7 +151,7 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出でき
 
 #### ▼ 実装
 
-Envoyを使用するサービスディスカバリーツールのいくつか（例：Istio）では、コントロールプレーンに```go-control-plane```パッケージが使用されている。
+Envoyを使用するサービスディスカバリーツールのいくつか (例：Istio) では、コントロールプレーンに```go-control-plane```パッケージが使用されている。
 
 > ↪️ 参考：
 > 
@@ -234,7 +234,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 データプレーンでは、Envoyが稼働し、通信を宛先にルーティングする。
 
-データプレーンの処理は、コンポーネント（リスナー、ルート、クラスター、エンドポイント）から構成される。
+データプレーンの処理は、コンポーネント (リスナー、ルート、クラスター、エンドポイント) から構成される。
 
 
 
@@ -247,7 +247,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。
 
-Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント（例：pilot-agent）が提供されている。
+Envoyが組み込まれたサービスメッシュツール (例：Istio) では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。
 
 > ↪️ 参考：
 > 
@@ -673,7 +673,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
             # パスベース
             prefix: /
           route:
-            # クラスター（ここではKubernetesのService）
+            # クラスター (ここではKubernetesのService) 
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
     - name: allow_any
       domains:
@@ -887,7 +887,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
-# クラスター（ここではKubernetesのService）
+# クラスター (ここではKubernetesのService) 
 - name: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
   connectTimeout: 0.25s
   type: STATIC
@@ -900,7 +900,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
           - endpoint:
               address:
                 socketAddress:
-                  # 宛先（ここではPod）のIPアドレス
+                  # 宛先 (ここではPod) のIPアドレス
                   address: 10.0.0.1
                   # 宛先が待ち受けるポート番号
                   portValue: 80
@@ -1043,7 +1043,7 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 <br>
 
-#### ▼ Pod外の場合（フロントプロキシ）
+#### ▼ Pod外の場合 (フロントプロキシ) 
 
 フロントプロキシと呼ばれている。
 

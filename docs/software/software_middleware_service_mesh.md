@@ -23,7 +23,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービスアーキテクチャで、マイクロサービス間でパケットを直接的に送受信する。
 
-しかし、マイクロサービスアーキテクチャ固有のインフラ領域の課題（例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー収集、など）があり、非推奨である。
+しかし、マイクロサービスアーキテクチャ固有のインフラ領域の課題 (例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー収集、など) があり、非推奨である。
 
 > ↪️ 参考：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
 
@@ -38,7 +38,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービスアーキテクチャで、マイクロサービス間の通信をメッシュで管理する。
 
-マイクロサービス間で直接的に通信を送受信する（サービスメッシュを導入しない）場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。
+マイクロサービス間で直接的に通信を送受信する (サービスメッシュを導入しない) 場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。
 
 
 
@@ -69,7 +69,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念が考案され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーをインジェクションするようになった。
 
-サービスメッシュの概念により、アプリケーションエンジニアがこれらのロジックを意識せずに（透過的に）、インフラストラクチャ層より上層（インターフェース層、ユースケース層、ドメイン層）の実装に注力できる。
+サービスメッシュの概念により、アプリケーションエンジニアがこれらのロジックを意識せずに (透過的に) 、インフラストラクチャ層より上層 (インターフェース層、ユースケース層、ドメイン層) の実装に注力できる。
 
 
 
@@ -90,7 +90,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。
 
-マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。
+マイクロサービス間の通信を透過的にする (通信の存在を感じさせない) ことを思想としている。
 
 
 
@@ -101,9 +101,9 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 #### ▼ 適するリバースプロキシ
 
-マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー（レスポンス速度）が重要である。
+マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー (レスポンス速度) が重要である。
 
-Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い（レスポンス速度が速い）との結果が出ている。
+Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い (レスポンス速度が速い) との結果が出ている。
 
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
@@ -140,7 +140,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 | OSS名   | データプレーンの実装              | コントロールプレーンの実装                     | サポートしているXDS-API |
 |---------|---------------------------|-------------------------------------|-----------------|
 | Istio   | Envoy                     | Istiod                              | 全てのXDS-API     |
-| Linkerd | ビルトインプロキシ（Linkerd2-proxy） | Proxy Injector、Destination、Identity | 全てのXDS-API     |
+| Linkerd | ビルトインプロキシ (Linkerd2-proxy)  | Proxy Injector、Destination、Identity | 全てのXDS-API     |
 | Consul  | ビルトインプロキシ、Envoy           | Consul-control-plane                | 全てのXDS-API     |
 | SPIRE   | Envoy                     | SPIRE                               | SDSのみ           |
 | ...     | ...                       | ...                                 | ...             |
@@ -160,7 +160,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ### サービスディスカバリーとは
 
-マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所（IPアドレス、ポート番号、完全修飾ドメイン名、など）を動的に検出し、また同時に名前解決できるようにする仕組みのこと。
+マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所 (IPアドレス、ポート番号、完全修飾ドメイン名、など) を動的に検出し、また同時に名前解決できるようにする仕組みのこと。
 
 
 
@@ -179,7 +179,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 - 宛先マイクロサービス
 - サービスレジストリ
 - ロードバランサー
-- 名前解決（DNSベースのサービスディスカバリーの場合のみ）
+- 名前解決 (DNSベースのサービスディスカバリーの場合のみ) 
 
 > ↪️ 参考：https://www.baeldung.com/cs/service-discovery-microservices
 
@@ -194,7 +194,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:25%;" />
 
-サービスレジストリ（例：etcd）に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
+サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
 
 
 
@@ -225,7 +225,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:25%;" />
 
-サービスレジストリ（例：etcd）に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
+サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
 
 
 
@@ -251,8 +251,8 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ 実装方法
 
-- KubernetesのServiceとkube-proxy + CoreDNS（DNSベースのサービスディスカバリー）
-- サイドカープロキシ（例：Istioの```istio-proxy```、Nginx、など）を使用したサービスディスカバリー
+- KubernetesのServiceとkube-proxy + CoreDNS (DNSベースのサービスディスカバリー) 
+- サイドカープロキシ (例：Istioの```istio-proxy```、Nginx、など) を使用したサービスディスカバリー
 
 <br>
 

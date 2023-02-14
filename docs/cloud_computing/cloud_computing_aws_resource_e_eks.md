@@ -42,10 +42,10 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 #### ▼ データプレーンとは
 
-複数のホスト（EC2、Fargate）のOS上でコンテナオーケストレーションを実行する。
+複数のホスト (EC2、Fargate) のOS上でコンテナオーケストレーションを実行する。
 
 
-『```on-EC2```』『```on-Fargate```』という呼び方は、データプレーンがEKSの実行環境（```on environment```）の意味合いを持つからである。
+『```on-EC2```』『```on-Fargate```』という呼び方は、データプレーンがEKSの実行環境 (```on environment```) の意味合いを持つからである。
 
 
 <br>
@@ -87,7 +87,7 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ```【４】```
 
-:    もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap（aws-auth）を確認する。
+:    もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。
 
      このConfigMapには、そのIAMユーザーに紐づくUserAccountやServiceAccount、RoleBindingやClusterRoleBinding、が定義されている。
 
@@ -143,7 +143,7 @@ EKSをOIDCのIDプロバイダーとして使用することにより、IAMの�
 
 これにより、EKSで認証されたServiceAccountにIAMロールを紐づけることができるようになる。
 
-IRSAが登場するまでは、EKS上でのワーカーNode（例：EC2、Fargate）にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
+IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate) にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
 
 
 
@@ -203,11 +203,11 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 | シークレット           | Secretに保持するデータをKMSの暗号化キーで暗号化するか否かを設定する。        |                                                                                                                                                                                                                                       |
 | VPC、サブネット        | ENIを配置するサブネットを設定する。                                   | 複数のAZにまたがっている必要がある。                                                                                                                                                                                                               |
 | クラスターセキュリティグループ  | EKS Clusterのセキュリティグループを設定する。                            | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>↪️ 参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIPアドレスファミリー | PodとServiceに割り当てるClusterIPのIPアドレスタイプ（IPv4、IPv6）を設定する。 |                                                                                                                                                                                                                                       |
+| クラスターIPアドレスファミリー | PodとServiceに割り当てるClusterIPのIPアドレスタイプ (IPv4、IPv6) を設定する。 |                                                                                                                                                                                                                                       |
 | CIDRブロック         | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。          |                                                                                                                                                                                                                                       |
 | クラスターエンドポイントアクセス | kube-apiserverのアクセス制限を設定する。                           |                                                                                                                                                                                                                                       |
-| ネットワークアドオン       | ネットワークに関するAWS EKSアドオンを設定する。                            | 執筆時点（2023/02/05）では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cniアドオン、を使用できる。                                                                                                                                       |
-| コントロールプレーンのログ    | コントロールプレーンNodeコンポーネントのログをCloudWatchログに出力するかどうかを設定する。  | 執筆時点（2023/02/05）では、kube-apiserver（処理ログと監査ログの両方）、aws-iam-authenticator-server、kube-controller-manager、kube-scheduler、のログを出力できる。                                                                                            |
+| ネットワークアドオン       | ネットワークに関するAWS EKSアドオンを設定する。                            | 執筆時点 (2023/02/05) では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cniアドオン、を使用できる。                                                                                                                                       |
+| コントロールプレーンのログ    | コントロールプレーンNodeコンポーネントのログをCloudWatchログに出力するかどうかを設定する。  | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server、kube-controller-manager、kube-scheduler、のログを出力できる。                                                                                            |
 
 #### ▼ VPC、サブネット
 
@@ -287,7 +287,7 @@ KubernetesのClusterに相当する。
 
 EFSを使用して、ワーカーNode間でファイルを共有する。
 
-PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合（例：PrometheusのローカルストレージをPod間で共有したい）に役立つ。
+PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合 (例：PrometheusのローカルストレージをPod間で共有したい) に役立つ。
 
 ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにするべきであり、PodのファイルはワーカーNodeの外で管理するべきである。
 
@@ -416,7 +416,7 @@ VPC外からNLBへの```443```番ポートに対するアクセスはデフォ�
 
 
 
-## 04. on-EC2（EC2ワーカーNode）
+## 04. on-EC2 (EC2ワーカーNode) 
 
 ### EC2ワーカーNode
 
@@ -437,7 +437,7 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 <br>
 
 
-## 04-02. Nodeグループ（on-EC2）
+## 04-02. Nodeグループ (on-EC2) 
 
 ### マネージド
 
@@ -505,7 +505,7 @@ Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオ�
 
 必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。
 
-EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする（例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす）といった方法でもよい。
+EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする (例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす) といった方法でもよい。
 
 
 
@@ -513,7 +513,7 @@ EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプ�
 | AMI名                       | 説明                                                | 特に相性の良いPod                                           | 補足                                                                                                                                                           |
 |----------------------------|---------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | EKS 最適化 Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。            |                                                          | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html                                                                                |
-| EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |                                                                                                                                                                |
+| EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod (計算処理系、機械学習系のアプリケーション)  |                                                                                                                                                                |
 | EKS 最適化 Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。             |                                                          |                                                                                                                                                                |
 | EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。                       |                                                          | ↪️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
 
@@ -627,7 +627,7 @@ fi
 
 #### ▼ 安全なEC2ワーカーNodeシャットダウン
 
-kubeletを使用してワーカーNodeの停止を待機し、Podが終了する（ワーカーNodeを退避する）までの時間を稼ぐ。
+kubeletを使用してワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeを退避する) までの時間を稼ぐ。
 
 待機中に終了できたPodは```Failed```ステータスとなる。
 
@@ -741,7 +741,7 @@ kind: Secret
 metadata:
   name: foo-secret
 data:
-  # RDS（Aurora）の宛先情報
+  # RDS (Aurora) の宛先情報
   DB_HOST_PRIMARY: <プライマリーインスタンスのエンドポイント>
   DB_HOST_READ: <リードレプリカのエンドポイント>
   DB_USER: bar
@@ -755,7 +755,7 @@ data:
 
 EKSでは、Podをプライベートサブネットに配置する必要がある。
 
-プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+プライベートサブネットにを配置した場合、VPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
 
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
@@ -777,7 +777,7 @@ EKS Clusterを作成すると、ENIも作成する。
 
 これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
 
-執筆時点（2022/05/27）では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+執筆時点 (2022/05/27) では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
 
 
@@ -788,13 +788,13 @@ EKS Clusterを作成すると、ENIも作成する。
 
 #### ▼ VPC内の他のAWSリソースへのアウトバウンド通信
 
-VPC内にあるAWSリソース（RDSなど）の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
+VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
 
 
 <br>
 
 
-## 05. on-Fargate（FargateワーカーNode）
+## 05. on-Fargate (FargateワーカーNode) 
 
 ### セットアップ
 
@@ -885,7 +885,7 @@ data:
 
      一方で、Pod内のコンテナには認可スコープが付与されない。
 
-     そのため、Podが作成された後に必要な認可スコープ（例：コンテナがRDSにアクセスする認可スコープなど）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+     そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにアクセスする認可スコープなど) に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 > ↪️ 参考：
 >
@@ -932,10 +932,10 @@ Fargateを設定する。
 
 | コンポーネント名          | 説明                                                                     | 補足                                                                                                                                                                                                                                       |
 |--------------------|------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Pod実行ロール         | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。                               | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| Pod実行ロール         | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。                               | ・実行ポリシー (AmazonEKSFargatePodExecutionRolePolicy) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
 | サブネット              | EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                 |
-| ポッドセレクタ（Namespace） | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、PodのNamespaceの値を設定する。    | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                                          |
-| ポッドセレクタ（Label）     | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                            |
+| ポッドセレクタ (Namespace)  | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、PodのNamespaceの値を設定する。    | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                                          |
+| ポッドセレクタ (Label)      | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                            |
 
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
@@ -944,7 +944,7 @@ Fargateを設定する。
 
 
 
-## 05-02. Nodeグループ（on-Fargate）
+## 05-02. Nodeグループ (on-Fargate) 
 
 調査中...
 
@@ -959,7 +959,7 @@ EKS Clusterにて、コントロールプレーンとデータプレーンをロ
 
 AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。
 
-執筆時点（2022/01/28）では、AWSのAPIを介して```updateConfig```値を設定すれば、アップグレード時のサージ数を設定できる。
+執筆時点 (2022/01/28) では、AWSのAPIを介して```updateConfig```値を設定すれば、アップグレード時のサージ数を設定できる。
 
 > ↪️ 参考：
 >
@@ -976,7 +976,7 @@ EKS Clusterのアップグレード時、以下の仕組みでデータプレー
 
 ```【１】```
 
-:    Nodeグループ単位でローリング方式アップグレードできるように、EKS ClusterのワーカーNode数の設定（Node希望数、Node最大数）を自動的に増加させる。
+:    Nodeグループ単位でローリング方式アップグレードできるように、EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を自動的に増加させる。
 
 ```【２】```
 
@@ -984,7 +984,7 @@ EKS Clusterのアップグレード時、以下の仕組みでデータプレー
 
      旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。
 
-     旧ワーカーNodeを残せるのは、あらかじめEKS ClusterのワーカーNode数の設定（Node希望数、Node最大数）を増加させているためである。
+     旧ワーカーNodeを残せるのは、あらかじめEKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を増加させているためである。
 
 ```【３】```
 
@@ -1000,7 +1000,7 @@ EKS Clusterのアップグレード時、以下の仕組みでデータプレー
 
 ```【６】```
 
-:    最終的に、アップグレード前のワーカーNode数（Node希望数）に戻る。
+:    最終的に、アップグレード前のワーカーNode数 (Node希望数) に戻る。
 
 > ↪️ 参考：
 > 
@@ -1024,7 +1024,7 @@ EKS Clusterはおおよそ以下の方法でアップグレードする。
 
 ```【３】```
 
-:    ワーカーNode上のAWS EKSアドオン（例：aws-eks-codednsアドオン、aws-eks-kube-proxyアドオン、aws-eks-vpc-cniアドオン、など）をアップグレードする。
+:    ワーカーNode上のAWS EKSアドオン (例：aws-eks-codednsアドオン、aws-eks-kube-proxyアドオン、aws-eks-vpc-cniアドオン、など) をアップグレードする。
 
 
 > ↪️ 参考：https://inside.dmm.com/entry/2022/08/26/eks_is_hard

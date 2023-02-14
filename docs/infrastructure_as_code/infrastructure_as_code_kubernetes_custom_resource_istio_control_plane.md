@@ -14,7 +14,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 <br>
 
-## 01. コントロールプレーン（Istiodコントロールプレーン）とは
+## 01. コントロールプレーン (Istiodコントロールプレーン) とは
 
 ### サイドカープロキシメッシュの場合
 
@@ -167,7 +167,7 @@ spec:
 
 ### istiod-service
 
-```istio-proxy```コンテナからのリクエストを、Istiodコントロールプレーン（istiod-deployment配下のPod）にポートフォワーディングする。
+```istio-proxy```コンテナからのリクエストを、Istiodコントロールプレーン (istiod-deployment配下のPod) にポートフォワーディングする。
 
 ```yaml
 apiVersion: v1
@@ -203,7 +203,7 @@ spec:
       protocol: TCP
       targetPort: 15014
   selector:
-    # ルーティング先のistiodコントールプレーン（istiod-deployment配下のPod）
+    # ルーティング先のistiodコントールプレーン (istiod-deployment配下のPod) 
     app: istiod
     istio.io/rev: <リビジョン番号>
 ```
@@ -405,15 +405,15 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 ```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。
 
-コールの内容に応じて、他のサービス（Pod、Node)の宛先情報を含むレスポンスを返信する。
+コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。
 
-```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
+```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービスディスカバリー) 。
 
 > ↪️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
 ![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
 
-Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、Node）の宛先情報を取得する。
+Istiodコントロールプレーンは、サービスレジストリ (例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。
 
 ```discovery```コンテナは、取得した宛先情報を自身に保管する。
 

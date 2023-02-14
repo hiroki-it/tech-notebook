@@ -62,7 +62,7 @@ Serviceネットワークの作成は、Kubernetesが担う。
 
 ![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-network.png)
 
-同じClusterネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。
+同じClusterネットワーク内にあるPodの仮想NIC (veth) 間を接続するネットワーク。
 
 Clusterネットワークの作成は、cniアドオンが担う。
 
@@ -128,7 +128,7 @@ Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直
 
 **＊例＊**
 
-foo-podから、IPアドレス（```11.0.0.1```）とポート番号（```80```）を指定して、bar-podにパケットを送信してみる。
+foo-podから、IPアドレス (```11.0.0.1```) とポート番号 (```80```) を指定して、bar-podにパケットを送信してみる。
 
 ```bash
 $ kubectl exec \
@@ -158,7 +158,7 @@ traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
 
 ### ServiceのIPアドレスを指定する場合
 
-kubeletは、Pod内のコンテナにServiceの宛先情報（プロトコル、IPアドレス、ポート番号）を出力する。
+kubeletは、Pod内のコンテナにServiceの宛先情報 (プロトコル、IPアドレス、ポート番号) を出力する。
 
 Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
 
@@ -190,7 +190,7 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 ### Serviceの完全修飾ドメイン名を指定する場合
 
-Kubernetesに採用できる権威DNSサーバー（kube-dns、CoreDNS、HashiCorp Consul、など）は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。
+Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCorp Consul、など) は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。
 
 Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスを設定する。
 

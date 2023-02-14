@@ -166,7 +166,7 @@ foo_job:
 
 **＊例＊**
 
-モノリポジトリでGitLabCIを採用している場合に、 親の```.gitlab-ci.yml```ファイルでディレクトリ配下の変更を検知し、子の```.gitlab-ci.yml```ファイルを読み込む（```include```）ようにする。
+モノリポジトリでGitLabCIを採用している場合に、 親の```.gitlab-ci.yml```ファイルでディレクトリ配下の変更を検知し、子の```.gitlab-ci.yml```ファイルを読み込む (```include```) ようにする。
 
 ```yaml
 # 親の.gitlab-ci.yml

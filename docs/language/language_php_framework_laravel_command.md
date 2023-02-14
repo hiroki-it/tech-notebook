@@ -31,7 +31,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 #### ▼ キャッシュの削除
 
-キャッシュ（```bootstrap/cache/config.php```ファイル）を削除する。
+キャッシュ (```bootstrap/cache/config.php```ファイル) を削除する。
 
 
 
@@ -202,7 +202,7 @@ $ php artisan migrate:reset
 
 #### ▼ refresh
 
-全てのロールバック（```migrate:reset```）を実行し、次いで```migrate```を実行する。
+全てのロールバック (```migrate:reset```) を実行し、次いで```migrate```を実行する。
 
 
 
@@ -242,7 +242,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ▼ --force
 
-DBマイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。
+DBマイグレーション時、本当に実行して良いか確認画面 (Yes/No) が表示される。
 
 CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
 

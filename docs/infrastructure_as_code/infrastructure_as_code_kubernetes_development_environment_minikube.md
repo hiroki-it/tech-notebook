@@ -51,9 +51,9 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ ドライバーとは
 
-ゲスト（Node）側のOSを設定する。
+ゲスト (Node) 側のOSを設定する。
 
-ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
+ホスト側のOS (Linux、MacOS、Windows) や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
 
 
@@ -62,7 +62,7 @@ description: Minikube＠開発環境の知見を記録しています。
 #### ▼ ドライバーの種類
 
 
-| ホスト側のOS | ゲスト（Node）側のOS                 |
+| ホスト側のOS | ゲスト (Node) 側のOS                 |
 |----------|--------------------------------|
 | Linux    | VirtualBox、Docker、KVM2、...     |
 | MacOS    | VirtualBox、Docker、HyperKit、... |
@@ -104,7 +104,7 @@ $ minikube start
 | VirtualBox    | Windows  | ```C://Users```  | ```/c/Users```            |
 | VMware Fusion | macOS    | ```/Users```     | ```/mnt/hgfs/Users```     |
 | KVM           | Linux    | なし               |                           |
-| HyperKit      | Linux    | なし（NFSマウントを参照） |                           |
+| HyperKit      | Linux    | なし (NFSマウントを参照)  |                           |
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
@@ -327,7 +327,7 @@ ClusterIP Serviceの場合、やや難易度が高くなる。
 
 クラウドプロバイダーとは状況が異なり、Node外にロードバランサーを構築できず、別の方法でホストから仮想サーバー内のNodeに接続する必要がある。
 
-minikubeのingressアドオン（Nginxコントローラー）を有効化し、Ingressとnginxを指定したIngressClassを作成する。
+minikubeのingressアドオン (Nginxコントローラー) を有効化し、Ingressとnginxを指定したIngressClassを作成する。
 
 ```bash
 $ minikube addons enable ingress

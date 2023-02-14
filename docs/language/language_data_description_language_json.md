@@ -33,15 +33,15 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 <br>
 
-## 02. 相互パース（シリアライズ + デシリアライズ）
+## 02. 相互パース (シリアライズ + デシリアライズ) 
 
 ### バックエンドとフロントエンド間
 
 フロントエンドにJavaScript、バックエンドにPHPを使用しているとする。
 
-データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。
+データ送信のためにオブジェクト (JS型、PHP型) をJSONに変換する処理はシリアライズである。
 
-一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
+一方で、送信のためにJSONをオブジェクト (JS型、PHP型) に変換する処理はデシリアライズである。
 
 
 
@@ -53,9 +53,9 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 バックエンドにPHPを使用しているとする。
 
-データ格納のためにオブジェクト（PHP型）をDBレコードに変換する処理はシリアライズである。
+データ格納のためにオブジェクト (PHP型) をDBレコードに変換する処理はシリアライズである。
 
-一方で、データ取得のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
+一方で、データ取得のためにJSONをオブジェクト (PHP型) に変換する処理はデシリアライズである。
 
 
 
@@ -263,7 +263,7 @@ class StaffParser {
   }
 
 
-  //-- デシリアライズ（JSONからJavaScriptへ） --//
+  //-- デシリアライズ (JSONからJavaScriptへ)  --//
   static deserializeStaff(json) {
 
     // JS型オブジェクトの定義方法
@@ -274,7 +274,7 @@ class StaffParser {
   }
 
 
-  //-- シリアライズ（JavaScriptからJSONへ） --//
+  //-- シリアライズ (JavaScriptからJSONへ)  --//
   static serializeCriteria(criteria) {
 
     // JSONの定義

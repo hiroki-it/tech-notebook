@@ -15,13 +15,13 @@ description: アップグレード＠Anthosの知見を記録しています。
 
 <br>
 
-## 01. Kubernetesのアップグレード（ベアメタル環境の場合）
+## 01. Kubernetesのアップグレード (ベアメタル環境の場合) 
 
 ### アップグレードの仕組み
 
 Anthos Clusterのアップグレード時、データプレーンのワーカーNodeをローリング方式アップグレードする。
 
-ベアメタルのため、ワーカーNodeを再作成することはなく、コントロールプレーンNodeコンポーネント（例：kube-apiserverなど）とワーカーNodeコンポーネント（例：kubeletなど）をそのままアップグレードしていく。
+ベアメタルのため、ワーカーNodeを再作成することはなく、コントロールプレーンNodeコンポーネント (例：kube-apiserverなど) とワーカーNodeコンポーネント (例：kubeletなど) をそのままアップグレードしていく。
 
 
 <br>
@@ -69,7 +69,7 @@ spec:
 
 ```【３】```
 
-:    ```docker```プロセスが起動しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。 ワークステーション（仮想サーバー）上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。
+:    ```docker```プロセスが起動しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。 ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。
 
 ```bash
 $ systemctl status docker
@@ -146,13 +146,20 @@ $ kubectl get node -o wide
 
 :    Crash、Terminating、Error、などのPodがいないかを確認する。
 
+     また、Podの作成が始まらないと、```kubectl get pod```コマンドにPod自体が表示されない。
+
+     そのため、```kubectl get deployment```で、Podの管理リソース（例：Deployment）の全てのPodが```Ready```コンディションかどうかを確認しておく。
+
+
 ```bash
-$ kubectlget pod -A -o wide
+$ kubectl get pod -A -o wide
+
+$ kubectl get deployment -A
 ```
 
 <br>
 
-## 02. Istioのアップグレード（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境の場合）
+## 02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境の場合) 
 
 ### 注意!!!!
 
@@ -238,7 +245,7 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                                   WEBHOOKS   AGE
 istio-sidecar-injector-1130-0          1          7m56s # 1130-0
-istio-revision-tag-default             1          3m18s # 現在のリビジョン番号（1130-0）を定義するdefaultタグを持つ
+istio-revision-tag-default             1          3m18s # 現在のリビジョン番号 (1130-0) を定義するdefaultタグを持つ
 ```
 
 
@@ -251,7 +258,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 ```bash
 $ ./repository/asmcli-1140-0 install \
     --kubeconfig <kubeconfigファイルへのパス> \
-    `# GCP以外（オンプレ、AWS、Azure、など）で稼働させることを宣言する。` \
+    `# GCP以外 (オンプレ、AWS、Azure、など) で稼働させることを宣言する。` \
     --platform multicloud \
     --fleet_id <フリートのグループID> \
     --output_dir ./output \
@@ -283,7 +290,7 @@ $ kubectl get deployment -n istio-system
 
 NAME                READY   STATUS    RESTARTS   AGE
 istiod-asm-1130-0         1/1     Running   0          1m  # 1130-0
-istiod-asm-1140-0         1/1     Running   0          1m  # 1140-0（今回のアップグレード先）
+istiod-asm-1140-0         1/1     Running   0          1m  # 1140-0 (今回のアップグレード先) 
 
 
 # Service
@@ -298,8 +305,8 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                                   WEBHOOKS   AGE
 istio-sidecar-injector-1130-0          1          7m56s # 1130-0
-istio-sidecar-injector-1140-0          1          7m56s # 1140-0（今回のアップグレード先）
-istio-revision-tag-default             1          3m18s # 現在のリビジョン番号（1130-0）を定義するdefaultタグを持つ
+istio-sidecar-injector-1140-0          1          7m56s # 1140-0 (今回のアップグレード先) 
+istio-revision-tag-default             1          3m18s # 現在のリビジョン番号 (1130-0) を定義するdefaultタグを持つ
 ```
 
 
@@ -366,12 +373,13 @@ metadata:
 
 ```【９】```
 
-:     Istioの```istio.io/rev```キーを使用して、特定のNamespaceの```istio-injection```キーを上書きする。
+:    Istioの```istio.io/rev```キーを使用して、特定のNamespaceの```istio-injection```キーを上書きする。
+
      多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
 
      これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
 
-     もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+     もしGitOpsツール (例：ArgoCD) でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 
 ```bash
@@ -409,7 +417,9 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 
 ```【１２】```
 
-:    新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。代わりに、```istioctl proxy-status```コマンドでも良い。
+:    新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
+
+     代わりに、```istioctl proxy-status```コマンドでも良い。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1140-0
@@ -538,7 +548,7 @@ istio.io/tag: default
 
 :    Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。
 
-     MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）の実体（```istio.io/rev```キーの値）が旧バージョンのままなため、新バージョンに変更する。
+     MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス (```istio.io/tag```キーの値) の実体 (```istio.io/rev```キーの値) が旧バージョンのままなため、新バージョンに変更する。
 
      ```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
 
@@ -572,7 +582,7 @@ istio.io/tag: default
 
 ```【１９】```
 
-:    旧バージョンのIstiodコントロールプレーン（実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget）を削除する。
+:    旧バージョンのIstiodコントロールプレーン (実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget) を削除する。
 
 
 ```bash
@@ -628,13 +638,17 @@ $ kubectl get IstioOperator -n istio-system
 
 :    全てのPodが正常に稼働していることを確認する。
 
+     また、Podの作成が始まらないと、```kubectl get pod```コマンドにPod自体が表示されない。
+
+     そのため、```kubectl get deployment```で、Podの管理リソース（例：Deployment）の全てのPodが```Ready```コンディションかどうかを確認しておく。
+
 ```bash
 $ kubectl get pod -A -o wide
 ```
 
 <br>
 
-## 03. NodeのOSのアップグレード（ベアメタル環境の場合）
+## 03. NodeのOSのアップグレード (ベアメタル環境の場合) 
 
 ベアメタル環境の場合、GCPはNodeのOSのバージョンを管理してくれず、GCP外でアップグレードする必要がある。
 

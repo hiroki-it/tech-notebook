@@ -30,7 +30,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 <br>
 
-### Atomicity（不可分性）
+### Atomicity (不可分性) 
 
 #### ▼ Atomicityとは
 
@@ -42,7 +42,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 <br>
 
-### Consistency（整合性）
+### Consistency (整合性) 
 
 #### ▼ Consistencyとは
 
@@ -54,7 +54,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 <br>
 
-### Isolation（独立性）
+### Isolation (独立性) 
 
 #### ▼ Isolationとは
 
@@ -66,7 +66,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 <br>
 
-### Durability（永続性）
+### Durability (永続性) 
 
 #### ▼ Durabilityとは
 
@@ -86,7 +86,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
-| RDBの書き込み系の操作                    | よくあるメソッド名（例：PDO）                                          | ラッピング                 | 障害からの回復                  |
+| RDBの書き込み系の操作                    | よくあるメソッド名 (例：PDO)                                           | ラッピング                 | 障害からの回復                  |
 |:-------------------------------------|:------------------------------------------------------------|-----------------------|------------------------------|
 | 更新前ログをジャーナルファイルに書き込む            | ↓                                                           | ↓                     |                              |
 | ↓                                    | ↓                                                           | ↓                     |                              |
@@ -177,7 +177,7 @@ try{
 > ↪️ 参考：https://www.kimullaa.com/posts/201910271500/
 
 
-#### ▼ WAL：Write ahead log（ログ先行書き込み）
+#### ▼ WAL：Write ahead log (ログ先行書き込み) 
 
 ![wal](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/wal.png)
 
@@ -416,7 +416,7 @@ MySQLでは、『```SELECT ... FOR UPDATE```』を使用する。
 
 #### ▼ 楽観的ロック
 
-DBのレコードにはバージョンに関するカラム値（最終更新日時など）が存在しているとする。
+DBのレコードにはバージョンに関するカラム値 (最終更新日時など) が存在しているとする。
 
 UPDATE処理のためにユーザAがDBのレコードを取得した時に、バージョン値を一時的に保持しておく。
 
@@ -469,7 +469,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大きい。
 
-ロックの粒度が細かければ、トランザクションの同時実行性が高くなって効率は向上する（複数の人がDBに対して作業できる）。
+ロックの粒度が細かければ、トランザクションの同時実行性が高くなって効率は向上する (複数の人がDBに対して作業できる) 。
 
 しかし、ロックの粒度を細かくすればするほど、それだけベース管理システムのCPU負荷は大きくなる。
 
@@ -487,7 +487,7 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 ![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/db_point-in-time-recovery.png)
 
-特定の時点のベースバックアップ（例：SQLによって異なり、MySQLの場合は```mysqldump```コマンドの出力）、ベースバックアップの時点以降の変更点を含む差分バックアップ（例：SQLによって異なり、MySQLの場合はバイナリーログ）、を使用し、DBを任意の時点の状態に戻す。
+特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は```mysqldump```コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) 、を使用し、DBを任意の時点の状態に戻す。
 
 トランザクションの前後の状態に戻すロールバック/ロールフォワードとは異なり、DBを任意の時点の状態に戻せる。
 

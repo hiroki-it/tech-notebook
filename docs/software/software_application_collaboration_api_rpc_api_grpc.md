@@ -19,9 +19,11 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 ### アーキテクチャ
 
-RPCフレームワークの一つで、プロトコルバッファーを使用してRPC（リモートプロシージャーコール）を実行する。
+RPCフレームワークの一つで、プロトコルバッファーを使用してRPC (リモートプロシージャーコール) を実行する。
 
-RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
+RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要がある。
+
+一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
 
@@ -32,6 +34,7 @@ RESTful-APIに対するリクエストではリクエストのヘッダーやボ
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://openstandia.jp/oss_info/grpc/
 > - https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
+> - https://atmarkit.itmedia.co.jp/ait/articles/1501/26/news009.html
 
 <br>
 
@@ -49,7 +52,7 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 > ↪️ 参考：https://fintan.jp/page/1521/
 
 
-#### ▼ Unary RPC（単項RPC）
+#### ▼ Unary RPC (単項RPC) 
 
 クライアントが```1```個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。
 
@@ -68,7 +71,7 @@ service Request {
 
 > ↪️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
 
-#### ▼ Server Streaming RPC（サーバーストリーミングRPC）
+#### ▼ Server Streaming RPC (サーバーストリーミングRPC) 
 
 クライアントが```1```個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。
 
@@ -89,11 +92,11 @@ service Notification {
 
 
 
-#### ▼ Client Streaming RPC（クライアントストリーミングRPC）
+#### ▼ Client Streaming RPC (クライアントストリーミングRPC) 
 
 クライアントが複数個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。
 
-クライアントからのリクエストのデータサイズが大きくなる場合（例：アップロードサービス）に使用する。
+クライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。
 
 
 
@@ -109,13 +112,13 @@ service Upload {
 
 
 
-#### ▼ Bidirectional Streaming RPC（双方向ストリーミングRPC）
+#### ▼ Bidirectional Streaming RPC (双方向ストリーミングRPC) 
 
 クライアントが複数個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。
 
 また、双方向にリクエストを送信できる。
 
-クライアントとサーバーが互いにリクエストを送信する場合（例：チャット、オンラインゲーム）に使用する。
+クライアントとサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。
 
 
 
@@ -151,7 +154,7 @@ service Chat {
 
 ## 02. ディレクトリ構成ポリシー
 
-### アプリとプロトコルバッファーを異なるリポジトリで管理（推奨）
+### アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨) 
 
 各マイクロサービスの```.proto```ファイル、RPC-API仕様書、```.pb.*```ファイル、を同じリポジトリで管理する。
 
@@ -161,7 +164,7 @@ service Chat {
 ```yaml
 # プロトコルバッファー
 repository/
-├── proto/ # サービス定義ファイル（.protoファイル）
+├── proto/ # サービス定義ファイル (.protoファイル) 
 │   ├── foo/ # マイクロサービス
 │   │   ├── client/
 │   │   │   └── foo.proto # fooサービスをgRPCクライアントとして使う場合のプロトコルバッファー
@@ -201,7 +204,7 @@ repository/
 # アプリケーション
 repository/
 └── src/
-    ├── foo/ # マイクロサービス（Go製）
+    ├── foo/ # マイクロサービス (Go製) 
     │   └── infrastructure
     │       └── grpc
     │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
@@ -212,7 +215,7 @@ repository/
     │           │
     │           ...
     │
-    ├── bar/ # マイクロサービス（Python製）
+    ├── bar/ # マイクロサービス (Python製) 
     │   └── infrastructure
     │     └── grpc
     │           ├── client/
@@ -329,7 +332,7 @@ gRPCサーバーをリモートプロシージャーコールする。
 
 ## 02-03. 共通ファイルのセットアップ
 
-### サービス定義ファイル（```.proto```ファイル）
+### サービス定義ファイル (```.proto```ファイル) 
 
 gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。
 
@@ -353,7 +356,7 @@ $ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
 
 <br>
 
-### ```pb.*```ファイル（拡張子は言語ごとに異なる）
+### ```pb.*```ファイル (拡張子は言語ごとに異なる) 
 
 ```.proto```ファイルから自動作成される。
 

@@ -239,7 +239,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 #### ▼ COPYとは
 
-ホスト側（第一引数）のディレクトリ/ファイルをコンテナ側（第二引数）にコピーする。
+ホスト側 (第一引数) のディレクトリ/ファイルをコンテナ側 (第二引数) にコピーする。
 
 コンテナ側のパスは、```WORKDIR```をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。
 
@@ -247,7 +247,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 イメージのビルド時にコピーされるのみで、ビルド後のコードの変更は反映されない。
 
-設定ファイル（例：```nginx.conf```ファイル、```php.ini```ファイル）をホストからコンテナにコピーしたい時によく使用する。
+設定ファイル (例：```nginx.conf```ファイル、```php.ini```ファイル) をホストからコンテナにコピーしたい時によく使用する。
 
 
 
@@ -348,8 +348,8 @@ FROM python:latest-slim
 | レジストリの種類         | 例                                                                                                             | 補足                                                                                 |
 |--------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | DockerHub          | ```php:8.0-fpm```                                                                                              | https://hub.docker.com/_/php                                                         |
-| クラウドプロバイダー（パブリック）  | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest```                                             | https://gallery.ecr.aws/bitnami/php-fpm                                              |
-| クラウドプロバイダー（プライベート） | ECRプライベートレジストリの場合：<br>```<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest``` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
+| クラウドプロバイダー (パブリック)   | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest```                                             | https://gallery.ecr.aws/bitnami/php-fpm                                              |
+| クラウドプロバイダー (プライベート)  | ECRプライベートレジストリの場合：<br>```<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest``` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
 
 #### ▼ CPUアーキテクチャの指定
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Systems Manager（旧SSM）＠Sで始まるAWSリソース
-description: Systems Manager（旧SSM）＠Sで始まるAWSリソースの知見を記録しています。
+title: 【IT技術の知見】Systems Manager (旧SSM) ＠Sで始まるAWSリソース
+description: Systems Manager (旧SSM) ＠Sで始まるAWSリソースの知見を記録しています。
 ---
 
-# Systems Manager（旧SSM）＠```S```で始まるAWSリソース
+# Systems Manager (旧SSM) ＠```S```で始まるAWSリソース
 
 ## はじめに
 
@@ -18,15 +18,15 @@ description: Systems Manager（旧SSM）＠Sで始まるAWSリソースの知見
 ## 01. チェンジカレンダー
 
 
-他のAWSリソース（例：SMオートメーション、EventBridge、など）を定期的に実行するCronとして使用する。
+他のAWSリソース (例：SMオートメーション、EventBridge、など) を定期的に実行するCronとして使用する。
 
-定期的に実行するAWSリソースで、他のAWSリソース（EC2、RDS）の起動処理と停止処理を定義すれば、夜間だけ停止させられる。
+定期的に実行するAWSリソースで、他のAWSリソース (EC2、RDS) の起動処理と停止処理を定義すれば、夜間だけ停止させられる。
 
 
 ```
 チェンジカレンダー
 ↓
-オートメーション、EventBridge（カレンダー取得処理、対象リソースの開始停止処理、を定義）
+オートメーション、EventBridge (カレンダー取得処理、対象リソースの開始停止処理、を定義) 
 ↓
 EC2、RDS
 ```
@@ -44,7 +44,7 @@ EC2、RDS
 
 AWSリソースの設定変更に承認フローを設ける。
 
-事前にランブックを作成する必要があり、IaCのように柔軟なプロビジョニングを実行するというより、決まりきったプロビジョニング（例：AWS上で稼働する負荷試験ツールの実行からレポート作成まで）を実行するのに向いている。
+事前にランブックを作成する必要があり、IaCのように柔軟なプロビジョニングを実行するというより、決まりきったプロビジョニング (例：AWS上で稼働する負荷試験ツールの実行からレポート作成まで) を実行するのに向いている。
 
 
 
@@ -76,9 +76,9 @@ AWSリソースの設定変更に承認フローを設ける。
 
 <br>
 
-### ランブック（ドキュメント）
+### ランブック (ドキュメント) 
 
-AWSリソースを変更するためには『ランブック（ドキュメント）』を事前に作成する必要がある。
+AWSリソースを変更するためには『ランブック (ドキュメント) 』を事前に作成する必要がある。
 
 ランブックでは、AWSリソースの変更箇所を定義する。
 
@@ -88,7 +88,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 | タイプ           | 説明                                                                                                                                                                         | 補足                                                                                                                                                                                                                              |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている（たぶん）。<br>↪️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html     | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                             |
+| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている (たぶん) 。<br>↪️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html     | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                             |
 | Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>↪️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
 | Sessionタイプ    |                                                                                                                                                                              |                                                                                                                                                                                                                                   |
 
@@ -144,7 +144,7 @@ Kubernetesのシークレットの概念が取り入れられている。
 
 KMSの暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号化できる。
 
-パラメーターストア上で変数は暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。
+パラメーターストア上で変数は暗号化されており、EC2インスタンス (ECSやEKSのコンテナのホストを含む) で参照する時に復号化される。
 
 セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
@@ -171,7 +171,7 @@ SMパラメーター名は、『```/<リソース名>/<変数名>```』とする
 
 ### セッションマネージャーとは
 
-EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。
+EC2インスタンス (ECSやEKSのコンテナのホストを含む) に通信できるようにする。
 
 SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。
 

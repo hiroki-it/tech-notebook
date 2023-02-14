@@ -31,7 +31,7 @@ OpenPolicyAgentは、OpenPolicyエージェント、```.rego```ファイル、DB
 
 DBからアカウント情報を読み出し、```.rego```ファイルのロジックに基づいて、boolean型値を返却する。
 
-返却されたboolean型値を使用して、リクエストの送信元（例：アプリケーション、kube-apiserver）で認可処理を実施する。
+返却されたboolean型値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可処理を実施する。
 
 ![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent.png)
 
@@ -109,7 +109,7 @@ import data.subordinates as subord
 
 default allow = false
 
-# 一般社員は、自身の給与のみで参照権限を持つ（trueを返却する）。
+# 一般社員は、自身の給与のみで参照権限を持つ (trueを返却する) 。
 allow {
   some username
   input.method == "GET"
@@ -117,7 +117,7 @@ allow {
   input.user == username
 }
 
-# 管理職は、自身と部下社員の給与で参照権限を持つ（trueを返却する）。
+# 管理職は、自身と部下社員の給与で参照権限を持つ (trueを返却する) 。
 allow {
   some username
   input.method == "GET"

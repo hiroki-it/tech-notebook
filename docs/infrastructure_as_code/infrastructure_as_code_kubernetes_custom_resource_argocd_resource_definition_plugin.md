@@ -22,7 +22,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 #### ▼ 連携先ツールのインストール
 
-ArgoCDと任意のツールを連携するためには、```argocd-repo-server```コンテナが連携先ツールを使用できるように、以下の方法でツールをインストールする必要がある。補足として、執筆時点（2022/10/31）では、いくつかのツール（例：Helm、Kustomize、Ks、Jsonnet、など）が```argocd-repo-server```コンテナのイメージにあらかじめインストールされている。
+ArgoCDと任意のツールを連携するためには、```argocd-repo-server```コンテナが連携先ツールを使用できるように、以下の方法でツールをインストールする必要がある。補足として、執筆時点 (2022/10/31) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) が```argocd-repo-server```コンテナのイメージにあらかじめインストールされている。
 
 - 連携先ツールがすでにインストールされた```argocd-repo-server```コンテナのイメージを使用する。
 - Podの```.spec.initContainers.args```キーでInitContainerに連携先ツールをインストールし、```.spec.initContainers.volumeMounts```キーでコンテナのボリュームに連携先ツールを配置する。これにより、Podのストレージに連携先ツールを配置できるため、```argocd-repo-server```コンテナでは自身のボリュームを介して、Podのストレージ上の連携先ツールを使用できる。
@@ -131,7 +131,7 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 ArgoCDとHelmfileを連携すれば、```helmfile```コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-```helm```コマンドを宣言的に実行するのであれば、```.spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```を使用すればHelmfileの機能（例：複数の```values```ファイルを参照する、など）も活用できる。
+```helm```コマンドを宣言的に実行するのであれば、```.spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```を使用すればHelmfileの機能 (例：複数の```values```ファイルを参照する、など) も活用できる。
 
 **＊実装例＊**
 
@@ -262,7 +262,7 @@ spec:
 
 ## 03. helm-secretsとの連携
 
-### セットアップ（共通手順）
+### セットアップ (共通手順) 
 
 #### ▼ helm-secretsのインストール
 
@@ -357,7 +357,7 @@ data:
     - name: helm-secrets
       generate:
         command: ["/bin/bash", "-c"]
-        # 暗号化されたvaluesファイル（sopsのsecretsファイル）、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
           - > 
             set -euo pipefail &&
@@ -410,7 +410,7 @@ spec:
 
 ```argocd-repo-server```コンテを持つPodに紐づけるServiceAccountを作成する。
 
-ServiceAccountにはクラウドプロバイダーの認可スコープ（例：AWS IAMロール）を紐付け、暗号化キーを使用できるようにする。
+ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用できるようにする。
 
 ```yaml
 apiVersion: v1

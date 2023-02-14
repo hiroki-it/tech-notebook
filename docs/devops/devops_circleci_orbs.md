@@ -237,7 +237,7 @@ jobs:
 
 ### jobs
 
-#### ▼ deploy-update-service（ローリングアップデート使用時）
+#### ▼ deploy-update-service (ローリングアップデート使用時) 
 
 ECRイメージを使用して、新しいリビジョン番号のECSタスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
 
@@ -250,7 +250,7 @@ ECRイメージを使用して、新しいリビジョン番号のECSタスク�
 | ```max-poll-attempts```            | ポーリングの最大試行回数を設定する。```poll-interval```と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。                                                                          |
 | ```poll-interval```                | 試行の間隔秒数を設定する。```max-poll-attempts```と掛け合わせて、そう実行時間を定義できる。  |                                                                                                                                                         |
 
-オプションを使用して、```max-poll-attempts```（ポーリングの最大試行回数）と```poll-interval```（試行の間隔秒数）で、ポーリングの総実行時間を定義できる。
+オプションを使用して、```max-poll-attempts``` (ポーリングの最大試行回数) と```poll-interval``` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
 
 > ↪️ 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
@@ -304,7 +304,7 @@ workflows:
           
 ```
 
-#### ▼ deploy-update-service（ブルー/グリーンデプロイメント使用時）
+#### ▼ deploy-update-service (ブルー/グリーンデプロイメント使用時) 
 
 AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。
 

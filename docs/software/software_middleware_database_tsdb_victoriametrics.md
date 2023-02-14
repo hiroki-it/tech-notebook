@@ -156,13 +156,13 @@ vm-storageは、サイズいっぱいまでデータが保管されると、ラ�
 
 #### ▼ 保管期間
 
-vm-storageは、一定期間だけ経過したメトリクスファイル（主に、```data```ディレクトリ、```indexdb```ディレクトリ、の配下など）を削除する。VictoriaMetricsの起動時に、```victoria-metrics-prod```コマンドの```-retentionPeriod```オプションで指定できる。
+vm-storageは、一定期間だけ経過したメトリクスファイル (主に、```data```ディレクトリ、```indexdb```ディレクトリ、の配下など) を削除する。VictoriaMetricsの起動時に、```victoria-metrics-prod```コマンドの```-retentionPeriod```オプションで指定できる。
 
 > ↪️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 #### ▼ ストレージの必要サイズの見積もり
 
-vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量（日）を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
+vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
 
 > ↪️ 参考：https://docs.victoriametrics.com/#capacity-planning
 
@@ -176,7 +176,7 @@ vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量�
 (増加率) = ((当該時刻のサイズ) - (前時刻のサイズ)) ÷ (前時刻のサイズ) × 100
 ```
 
-| 時刻           | storageDataPathのサイズ（MB） | 前時刻比 増加率（%） | 前時刻比 増加量（MB） |
+| 時刻           | storageDataPathのサイズ (MB)  | 前時刻比 増加率 (%)  | 前時刻比 増加量 (MB)  |
 |----------------|-------------------------|--------------------|---------------------|
 | ```00:00:00``` | ```10535```             | -                  | -                   |
 | ```01:00:00``` | ```10708```             | ```0.0164```       | ```173```           |

@@ -19,9 +19,9 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 ### インストール
 
-#### ▼ 非チャートとして（prometheus-operator）
+#### ▼ 非チャートとして (prometheus-operator) 
 
-Node内で監視系ツール（Prometheus、Alertmanager、Node exporter、Grafana、など）をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
+Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
 
 ```bash
 $ git clone https://github.com/prometheus-operator/prometheus-operator.git
@@ -31,9 +31,9 @@ $ kubectl create -f bundle.yaml
 
 > ↪️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
 
-#### ▼ 非チャートとして（kube-prometheus）
+#### ▼ 非チャートとして (kube-prometheus) 
 
-Node内で監視系ツール（Prometheus、Alertmanager、Node exporter、Grafana、など）をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
+Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
 
 ```bash
 $ git clone https://github.com/prometheus-operator/kube-prometheus.git
@@ -48,9 +48,9 @@ $ kubectl apply -f manifests/
 > ↪️ 参考：https://github.com/prometheus-operator/kube-prometheus
 
 
-#### ▼ チャートとして（kube-prometheus-stack）
+#### ▼ チャートとして (kube-prometheus-stack) 
 
-Node内で監視系ツール（Prometheus、Alertmanager、Node exporter、Grafana、など）をコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -77,11 +77,11 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheu
 > - https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart
 > - https://stackoverflow.com/questions/54422566/what-is-the-difference-between-the-core-os-projects-kube-prometheus-and-promethe
 
-#### ▼ チャートとして（prometheus）
+#### ▼ チャートとして (prometheus) 
 
 チャートとしてprometheusをインストールし、リソースを作成する。
 
-kube-prometheus-stackとは異なり、最低限の関連ツール（Alertmanager、Node exporter、など）のKubernetesリソースも合わせて作成する。
+kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporter、など) のKubernetesリソースも合わせて作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -225,7 +225,7 @@ IngressClassを作成する。
 
 開発環境では、IngressClassとしてNginxを使用する。
 
-本番環境では、クラウドプロバイダーのIngressClass（AWS ALB、GCP CLB）を使用する。
+本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、GCP CLB) を使用する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -585,11 +585,11 @@ spec:
 
 ### PrometheusRuleとは
 
-ルール（アラートルール、レコーディングルール）を設定する。
+ルール (アラートルール、レコーディングルール) を設定する。
 
 PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。
 
-独自アラートルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたアラートルール（例：kubernetes-mixins）を使用した方が良い。
+独自アラートルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたアラートルール (例：kubernetes-mixins) を使用した方が良い。
 
 > ↪️ 参考：
 > 
@@ -603,7 +603,7 @@ PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheu
 
 #### ▼ 公開ルールとは
 
-独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール（例：kubernetes-mixins）を使用した方が良い。
+独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins) を使用した方が良い。
 
 > ↪️ 参考：https://monitoring.mixins.dev
 
@@ -671,7 +671,7 @@ spec:
   #   - bar
 ```
 
-#### ▼ rules（アラートルールの場合）
+#### ▼ rules (アラートルールの場合) 
 
 ```alert```キーを宣言し、アラートルールを設定する。
 
@@ -679,7 +679,7 @@ spec:
 | 項目              | 説明                                                                                                |
 |-------------------|---------------------------------------------------------------------------------------------------|
 | ```alert```       | アラートルール名を設定する                                                                                    |
-| ```annotations``` | アラートルールによるアラートの通知内容を設定する。```.metadata.labels```キーや発火値（```$value```）を通知内容に変数で出力できる。 |
+| ```annotations``` | アラートルールによるアラートの通知内容を設定する。```.metadata.labels```キーや発火値 (```$value```) を通知内容に変数で出力できる。 |
 | ```expr```        | アラートルールで監視するメトリクスに関するPromQLを設定する。ロジックを変更すればアラートの発火をテストできる。                                 |
 | ```for```         | アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。                                       |
 | ```labels```      | アラートの通知内容に付与するラベルを設定する                                                                      |
@@ -714,7 +714,7 @@ spec:
 > ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 
-#### ▼ rules（レコーディングルールの場合）
+#### ▼ rules (レコーディングルールの場合) 
 
 ```record```キーを宣言し、レコーディングルールを設定する。
 
@@ -752,6 +752,7 @@ spec:
 
 指定したServiceに対してPull型通信を送信し、これに紐づくリソースに関するメトリクスのデータポイントを収集する。
 
+![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor.png)
 
 
 > ↪️ 参考：
@@ -759,7 +760,6 @@ spec:
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
-![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor.png)
 
 <br>
 

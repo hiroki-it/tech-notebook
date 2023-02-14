@@ -38,7 +38,7 @@ CREATE TABLE order_data (
     system_update_date_time DATETIME NOT NULL COMMENT "システム更新日時",
     delete_flg INT(1) DEFAULT 0 NOT NULL COMMENT "0：通常、1：削除済",
   
-    -- 複合プライマリーキー制約（これを指定する場合、上記のプライマリーキー制約の記述は不要）
+    -- 複合プライマリーキー制約 (これを指定する場合、上記のプライマリーキー制約の記述は不要) 
     PRIMARY KEY(order_id, order_kbn)
   
     -- 参照制約キー
@@ -448,7 +448,7 @@ FROM
 
 ![内部結合のベン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/内部結合のベン図.jpg)
 
-#### ▼ ```LEFT JOIN```（左外部結合）
+#### ▼ ```LEFT JOIN``` (左外部結合) 
 
 『users』テーブルと『items』テーブルの商品IDが一致しているデータと、元となる『users』テーブルにしか存在しないデータが、セットで取得される。
 
@@ -458,9 +458,9 @@ FROM
 
 <br>
 
-#### ▼ ```INNER JOIN```（内部結合）
+#### ▼ ```INNER JOIN``` (内部結合) 
 
-基本情報技術者試験では、内部結合（A∩B）しか出題されない。
+基本情報技術者試験では、内部結合 (A∩B) しか出題されない。
 
 
 
@@ -821,7 +821,7 @@ WHERE
 
 #### ▼ 使い方
 
-設定した```SELECT```句が仮に実行された場合、いずれのテーブルのいずれのカラムを取得することになるか（実行計画）を取得する。
+設定した```SELECT```句が仮に実行された場合、いずれのテーブルのいずれのカラムを取得することになるか (実行計画) を取得する。
 
 また、想定実行時間も検出できるため、スロークエリの検出に役立つ。
 

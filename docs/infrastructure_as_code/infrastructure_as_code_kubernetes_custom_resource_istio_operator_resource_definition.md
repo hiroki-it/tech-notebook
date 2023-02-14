@@ -126,7 +126,7 @@ IstioOperator管理でIstioリソースを作成する。
 
 各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。
 
-ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
+ただし、執筆時点 (2022/06/04) では、これを使用することは非推奨である。
 
 
 
@@ -270,7 +270,7 @@ spec:
                 targetPort: 80
 ```
 
-補足として、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
+補足として、以下の方法で独自のIngressGatewayを作成できる (かなり大変) 。
 
 
 
@@ -571,7 +571,7 @@ spec:
 
 #### ▼ proxyHttpPort
 
-全ての```istio-proxy```コンテナに関して、Cluster外からのインバウンド通信（特にHTTPプロトコル通信）を待ち受けるポート番号を設定する。
+全ての```istio-proxy```コンテナに関して、Cluster外からのインバウンド通信 (特にHTTPプロトコル通信) を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

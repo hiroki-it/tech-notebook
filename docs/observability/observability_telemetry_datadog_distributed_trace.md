@@ -15,7 +15,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 <br>
 
-## 01. Traceエージェント（サーバーの場合）
+## 01. Traceエージェント (サーバーの場合) 
 
 ### Traceエージェントとは
 
@@ -39,7 +39,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 <br>
 
-## 02. Traceエージェント（AWS ECS Fargateの場合）
+## 02. Traceエージェント (AWS ECS Fargateの場合) 
 
 ### Traceエージェントとは
 
@@ -220,10 +220,10 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 **＊例＊**
 
-- ```trace.<スパン名>.hits.*****```（該当スパンのヒット数）
-- ```trace.<スパン名>.duration```（該当スパンの処理時間）
-- ```trace.<スパン名>.duration.by.*****```（該当スパンの処理時間の割合）
-- ```trace.<スパン名>.errors.*****```（該当スパンにおけるエラー数）
+- ```trace.<スパン名>.hits.*****``` (該当スパンのヒット数) 
+- ```trace.<スパン名>.duration``` (該当スパンの処理時間) 
+- ```trace.<スパン名>.duration.by.*****``` (該当スパンの処理時間の割合) 
+- ```trace.<スパン名>.errors.*****``` (該当スパンにおけるエラー数) 
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 

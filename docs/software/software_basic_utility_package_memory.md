@@ -281,7 +281,7 @@ startretries=10
 
 デフォルト値は```/var/log/supervisor```ディレクトリである。
 
-もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
+もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0``` (無制限) とする必要がある。
 
 
 
@@ -390,7 +390,7 @@ $ supervisorctl update
 
 <br>
 
-## 03. systemctl：system control（旧service）
+## 03. systemctl：system control (旧service) 
 
 ### systemctlの構成要素
 
@@ -487,7 +487,7 @@ serviceユニットのオプションを設定する。
 # https://www.golinuxcloud.com/run-systemd-service-specific-user-group-linux/
 User=foo
 Type=notify
-# コマンドの引数（$OPTIONS変数）を定義したファイルを設定する。
+# コマンドの引数 ($OPTIONS変数) を定義したファイルを設定する。
 EnvironmentFile=/etc/sysconfig/httpd
 # systemctl startコマンド時に実行するコマンド
 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND
@@ -507,13 +507,13 @@ OPTIONS=foo
 
 #### ▼ Installセクション
 
-ユニットのインストール（```systemctl enable```コマンドの実行）時のオプションを設定する。
+ユニットのインストール (```systemctl enable```コマンドの実行) 時のオプションを設定する。
 
 
 
 ```ini
 [Install]
-# シンボリックリンクを作成するディレクトリ（/etc/systemd/system/<設定値>）
+# シンボリックリンクを作成するディレクトリ (/etc/systemd/system/<設定値>) 
 WantedBy=multi-user.target
 ```
 
@@ -571,7 +571,7 @@ $ systemctl enable httpd.service
 
 デーモン化されたプロセスの稼働状態を一覧を取得する。
 
-```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
+```grep```と組み合わせて、起動中 (```active```) 、停止中 (```inactive```) 、起動失敗 (```failed```) のデーモンのみを取得すると良い。
 
 
 
@@ -763,7 +763,7 @@ $ journalctl -u foo.service | grep error
 
 デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、```OnFailure```オプションを使用する。
 
-この時に指定するユニットファイル名には、「```@%i```』が必要である（実際のファイル名に```%i```は不要である）。
+この時に指定するユニットファイル名には、「```@%i```』が必要である (実際のファイル名に```%i```は不要である) 。
 
 
 

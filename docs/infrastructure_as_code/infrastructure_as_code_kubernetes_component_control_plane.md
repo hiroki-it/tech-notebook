@@ -38,11 +38,11 @@ description: コントロールプレーンコンポーネント＠Kubernetesの
 
 ## 02. コントロールプレーンNode
 
-### コントロールプレーンNode（kubernetesマスター）とは
+### コントロールプレーンNode (kubernetesマスター) とは
 
 kubernetesマスターともいう。コントロールプレーンコンポーネントが稼働する。
 
-クライアント（```kubectl```クライアント、Kubernetesリソース）がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
+クライアント (```kubectl```クライアント、Kubernetesリソース) がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
 
 > ↪️ 参考：
 >
@@ -52,7 +52,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 ### クライアント
 
-クライアント（```kubectl```クライアント、Kubernetesリソース）は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。
+クライアント (```kubectl```クライアント、Kubernetesリソース) は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。
 
 <br>
 
@@ -114,7 +114,7 @@ cloud-controllerを使用して、kube-apiserverがクラウドインフラを�
 
 <br>
 
-## 04. etcd（エトセディー）
+## 04. etcd (エトセディー) 
 
 ### etcdとは
 
@@ -122,7 +122,7 @@ cloud-controllerを使用して、kube-apiserverがクラウドインフラを�
 
 Cluster内のKubernetesリソースの設定値をキーバリュー型で永続化し、またサービスレジストリとして働く。
 
-語尾の『```d```』は、分散（distribution）の意味である。リクエストを受信したkube-apiserverは、etcdからKubernetesリソースの情報を参照する。
+語尾の『```d```』は、分散 (distribution) の意味である。リクエストを受信したkube-apiserverは、etcdからKubernetesリソースの情報を参照する。
 
 Kubernetesに標準で組み込まれているが、別のOSSである。
 
@@ -264,9 +264,9 @@ $ kube-apiserver \
 
 アプリケーションの認証と同じように、許可されたクライアントか否かを検証する。
 
-Kubernetesリソース（特に、Pod）からのリクエストの場合はServiceAccountで、反対にクライアントからの場合はUserAccountに基づいて、クライアントを認証する。
+Kubernetesリソース (特に、Pod) からのリクエストの場合はServiceAccountで、反対にクライアントからの場合はUserAccountに基づいて、クライアントを認証する。
 
-ServiceAccountを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。
+ServiceAccountを作成すると、Bearerトークン (『```***-***-***-***-***-***```』のような形式) がSecretに格納される。
 
 クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。
 
@@ -282,7 +282,7 @@ ServiceAccountを作成すると、Bearerトークン（『```***-***-***-***-**
 
 ![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
 
-アプリケーションの認可と同じように、クライアントの権限の範囲（認可スコープ）を検証する。
+アプリケーションの認可と同じように、クライアントの権限の範囲 (認可スコープ) を検証する。
 
 認証されたServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
 
@@ -299,7 +299,7 @@ ServiceAccountを作成すると、Bearerトークン（『```***-***-***-***-**
 
 #### ▼ ヘルスチェック
 
-kube-apiserverにはヘルスチェック（```healthy```、```liveness```、```readiness```）のエンドポイントがある。
+kube-apiserverにはヘルスチェック (```healthy```、```liveness```、```readiness```) のエンドポイントがある。
 
 ```kubectl get```コマンドでヘルスチェックを実行できる。
 
@@ -368,7 +368,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 ```【５】```
 
-:    kube-apiserverは、バインディング情報（スケジューリング対象NodeとPod間の紐付き情報）をetcdに永続化する。
+:    kube-apiserverは、バインディング情報 (スケジューリング対象NodeとPod間の紐付き情報) をetcdに永続化する。
 
 ```【６】```
 
@@ -376,7 +376,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 ```【７】```
 
-:    kubeletは、コンテナランタイム（例：Docker、Containerd）のデーモンにコンテナの作成をコールする。
+:    kubeletは、コンテナランタイム (例：Docker、Containerd) のデーモンにコンテナの作成をコールする。
 
 ```【８】```
 
@@ -399,7 +399,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 <br>
 
-### 拡張apiverver（aggregated apiserver）
+### 拡張apiverver (aggregated apiserver) 
 
 #### ▼ 拡張apiververとは
 
@@ -476,7 +476,7 @@ $ kube-controller-manager \
 
 マニフェストとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。
 
-加えて、Kubernetesリソースのマニフェストの設定値をコマンド（例：```kubectl apply```コマンド、```kubectl edit```コマンド、など）で変更した場合に、etcd上でKubernetesリソースのマニフェストを検知し、実際にカスタムリソースの設定値を都度変更してくれる。
+加えて、Kubernetesリソースのマニフェストの設定値をコマンド (例：```kubectl apply```コマンド、```kubectl edit```コマンド、など) で変更した場合に、etcd上でKubernetesリソースのマニフェストを検知し、実際にカスタムリソースの設定値を都度変更してくれる。
 
 > ↪️ 参考：
 >

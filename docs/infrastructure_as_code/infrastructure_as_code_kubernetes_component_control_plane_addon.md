@@ -41,7 +41,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 またvalidating-admissionステップは、リクエストを許可するか否かを決める。
 
-クライアント（```kubectl```クライアント、Kubernetesリソース）からのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionプラグインによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
+クライアント (```kubectl```クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、独自処理) を発火させられる。
 
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
@@ -94,9 +94,9 @@ ValidatingAdmissionWebhook,
 
 #### ▼ Webhook系プラグインのSSL証明書
 
-Webhook系プラグイン（例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook、など）では、kube-apiserverからwebhookサーバーにHTTPSプロトコルで通信する時に、webhookサーバーのためにSL証明書が必要である。
+Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook、など) では、kube-apiserverからwebhookサーバーにHTTPSプロトコルで通信する時に、webhookサーバーのためにSL証明書が必要である。
 
-このSSL証明書は、SecretとConfiguration（例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration、など）で管理している。
+このSSL証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration、など) で管理している。
 
 SSL証明書を含むSecretの作成は```kube-webhook-certgen```イメージで```create```コマンドを実行し、Configurationへの挿入は```patch```コマンドを実行することで実現している。
 
@@ -218,7 +218,7 @@ webhooks:
     admissionReviewVersions: ["v1", "v1beta1"]
     sideEffects: None
     timeoutSeconds: 5
-    # 発火条件を登録する。（例：Podの作成/更新リクエスト時に発火する）
+    # 発火条件を登録する。 (例：Podの作成/更新リクエスト時に発火する) 
     rules:
       - apiGroups: ["security.istio.io", "networking.istio.io"]
         apiVersions: ["*"]

@@ -219,8 +219,8 @@ log_routerという名前以外を設定できないことに注意する。
 |---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```type```                                  | メインコンテナからFireLensコンテナにログを送信できるように、ログドライバーのタイプとして『```fluentbit```』を設定する。                                                                                                                                                                                                                                                                                                                                  |
 | ```config-file-type```                      | FluentBitの設定ファイルを読み込むために、```file```とする。                                                                                                                                                                                                                                                                                                                                                                  |
-| ```config-file-value```                     | ```options```キーにて、ログルーティングを設定できるが、それらは```fluent-bit.conf```ファイルにも設定できるため、ルーティングの設定はできるだけ```fluent-bit.conf```ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは監視ツール（Datadogなど）にルーティングする。                                                                                                                                                                               |
-| ```enable-ecs-log-metadata```（デフォルトで有効化） | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>↪️ 参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
+| ```config-file-value```                     | ```options```キーにて、ログルーティングを設定できるが、それらは```fluent-bit.conf```ファイルにも設定できるため、ルーティングの設定はできるだけ```fluent-bit.conf```ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは監視ツール (Datadogなど) にルーティングする。                                                                                                                                                                               |
+| ```enable-ecs-log-metadata``` (デフォルトで有効化)  | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>↪️ 参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | ```environment```、```secrets```             | コンテナ内の```fluent-bit.conf```ファイルに変数をアウトプットできるように、コンテナの環境変数に値を設定する。                                                                                                                                                                                                                                                                                                                                  |
 | ```options```                               | FluentBitの設定ファイルでOUTPUTセクションを定義する代わりとして、```options```キーからも設定できる。                                                                                                                                                                                                                                                                                                                                      |
 
@@ -430,7 +430,7 @@ FireLensコンテナで処理中のログのキーの値を修正したい場合
 
 #### ▼ PARSERセクション
 
-例えば、ECSのプラットフォームバージョンが```v1.3.0```の時、メタデータのDockerNameは『```/ecs-<ECSタスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）。
+例えば、ECSのプラットフォームバージョンが```v1.3.0```の時、メタデータのDockerNameは『```/ecs-<ECSタスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる (例：```/ecs-foo-task-definition-1-bar-123456789```) 。
 
 これを```v1.4.0```にアップグレードすればコンテナ名になるが、すぐにアップグレードに対応できないこともある。
 
@@ -506,7 +506,7 @@ FireLensコンテナで複数行のログを処理したい場合、```parsers_m
     name                  multiline
     match                 *
     multiline.key_content log
-    # ファイルを読み込む。ビルトインパーサ（goなど）を使用することも可能。
+    # ファイルを読み込む。ビルトインパーサ (goなど) を使用することも可能。
     multiline.parser      go, laravel
 ```
 

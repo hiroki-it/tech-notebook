@@ -31,7 +31,7 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 マイクロサービスのためというよりは、インフラのために使用する。
 
-特に、NodeでDaemonSetとして稼働するテレメトリー収集系のコンテナ（例：metrics-server、kube-state-metrics、heaper）では、Node内のコンテナが増えるほどハードウェアリソースの要求量が増える。
+特に、NodeでDaemonSetとして稼働するテレメトリー収集系のコンテナ (例：metrics-server、kube-state-metrics、heaper) では、Node内のコンテナが増えるほどハードウェアリソースの要求量が増える。
 
 コンテナの増加に合わせて要求量を動的に変更できるように、addon-resizerを使用する。
 
@@ -75,9 +75,9 @@ data:
 
 ### cluster-autoscalerとは
 
-クラウドプロバイダーの自動スケーリングに関するAPI（例：AWS EC2AutoScaling）をコールし、Nodeの自動水平スケーリングを実行する。
+クラウドプロバイダーの自動スケーリングに関するAPI (例：AWS EC2AutoScaling) をコールし、Nodeの自動水平スケーリングを実行する。
 
-metrics-serverから取得したPodのハードウェアの最大リソース消費量（```.spec.resources```キーの合計値）と、Node全体のリソースの空き領域を比較し、Nodeをスケールアウト/スケールインさせる。
+metrics-serverから取得したPodのハードウェアの最大リソース消費量 (```.spec.resources```キーの合計値) と、Node全体のリソースの空き領域を比較し、Nodeをスケールアウト/スケールインさせる。
 
 現在の空きサイズではPodを新しく作成できないようであればNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。
 
@@ -147,7 +147,7 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。
 
 Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
 
-そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件（負荷が激しく変化するようなシステム）でも合っている。
+そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (負荷が激しく変化するようなシステム) でも合っている。
 
 > ↪️ 参考：
 > 
@@ -221,7 +221,7 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 #### ▼ LowNodeUtilization
 
-Nodeのリソース（例：CPU、メモリ、など）が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングする。
+Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングする。
 
 
 
@@ -354,9 +354,9 @@ metrics-serverは、拡張apiserverのmetrics-apiserver、ローカルストレ�
 
 また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。
 
-KubernetesのNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスを収集しつつ、収集したメトリクスをmetrics-apiserverで公開する。
+KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスを収集しつつ、収集したメトリクスをmetrics-apiserverで公開する。
 
-クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。
+クライアント (```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。
 
 似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
@@ -373,7 +373,7 @@ KubernetesのNodeとPod（それ以外のKubernetesリソースは対象外）�
 
 #### ▼ metrics-apiserverとは
 
-ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
+ServiceとAPIServiceを介して、クライアント (```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
 
 データポイントはローカルストレージに保管している。
 
@@ -481,13 +481,13 @@ Podの垂直スケーリングを実行する。
 
 #### ▼ Podの再作成のない垂直スケーリング
 
-執筆時点（2022/12/31）の仕様では、Podを垂直スケーリングする場合に、Podの再作成が必要になる。
+執筆時点 (2022/12/31) の仕様では、Podを垂直スケーリングする場合に、Podの再作成が必要になる。
 
 これを解決するために、いくつかの方法が提案されている。
 
 | 方法                   | 説明                                                                                                |
 |----------------------|---------------------------------------------------------------------------------------------------|
-| マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値（例：```.spec.containers[].resources[].resizePolicy```キー）を追加する。 |
+| マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値 (例：```.spec.containers[].resources[].resizePolicy```キー) を追加する。 |
 | eBPFによるインプレース変更      | ハードウェアリソースの不足が検知された時に、eBPFを使用して、Podのマニフェストを変更するJSONPatch処理をフックする。                        |
 
 

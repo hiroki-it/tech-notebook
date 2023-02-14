@@ -141,7 +141,7 @@ $ helm install <リリース名> <チャートへのパス>
 | ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                    |
 | チャートリポジトリURL                                     | ```https://example.com/foo-chart```                             |                                                                                                                                             |
 | ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                             |
-| チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ（```.tgz```形式ファイル）の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
+| チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ (```.tgz```形式ファイル) の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
 
 
 #### ▼ --disable-openapi-validation
@@ -291,7 +291,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 #### ▼ packageとは
 
-チャートからチャートアーカイブ（```.tgz```形式ファイル）を作成する。
+チャートからチャートアーカイブ (```.tgz```形式ファイル) を作成する。
 
 または、すでにアーカイブが存在する場合は更新する。
 
@@ -311,7 +311,7 @@ Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 
 #### ▼ -d
 
-チャートアーカイブ（```.tgz```形式ファイル）の作成先のディレクトリを指定しつつ、```helm package```コマンドを実行する。
+チャートアーカイブ (```.tgz```形式ファイル) の作成先のディレクトリを指定しつつ、```helm package```コマンドを実行する。
 
 
 
@@ -363,7 +363,7 @@ $ helm plugin uninstall secrets
 
 #### ▼ pullとは
 
-指定したチャートリポジトリからチャートをチャートアーカイブ（```.tgz```形式ファイル）でプルする。
+指定したチャートリポジトリからチャートをチャートアーカイブ (```.tgz```形式ファイル) でプルする。
 
 チャートアーカイブは、チャートに解凍した上で使用した方がよい。
 
@@ -408,7 +408,7 @@ $ helm pull <チャートリポジトリURL> --version <バージョンタグ>
 
 チャートリポジトリにチャートをプッシュする。
 
-プッシュする前にチャートをチャートアーカイブ（```.tgz```形式ファイル）に圧縮しておく必要がある。
+プッシュする前にチャートをチャートアーカイブ (```.tgz```形式ファイル) に圧縮しておく必要がある。
 
 
 
@@ -777,11 +777,9 @@ TEST SUITE: None
 
 #### ▼ --skip-crds
 
-```install```オプションを有効化した上で、```--skip-crds```オプションを有効化すると、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールする。
+```install```オプションを有効化した上で、```--skip-crds```オプションを有効化する。
 
-> ↪️ 参考：
->
-> - https://helm.sh/docs/helm/helm_upgrade/
+これにより、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールできる。
 
 ```bash
 $ helm upgrade --skip-crds --install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
@@ -796,6 +794,10 @@ $ helm upgrade --skip-crds --install <リリース名> <チャートへのパス
 ```bash
 $ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >| release.yaml
 ```
+
+
+> ↪️ 参考：https://helm.sh/docs/helm/helm_upgrade/
+
 
 #### ▼ --wait
 

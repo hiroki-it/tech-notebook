@@ -62,7 +62,7 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロビジョナーとは
 
-プロバイダーによって作成された仮想環境に、ソフトウェアをインストールできる（構成管理できる）。
+プロバイダーによって作成された仮想環境に、ソフトウェアをインストールできる (構成管理できる) 。
 
 具体的には、プログラミング言語やファイアウォールをインストールする。
 
@@ -78,7 +78,7 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 | Ansible   | Vagrantfileでプロビジョニングを実行する代わりとして、Ansibleを使用する。              | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/ansible      |
 | CFEngine  | Vagrantfileでプロビジョニングを実行する代わりとして、CFEngineを使用する。             | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/cfengine     |
 | Chef      | Vagrantfileでプロビジョニングを実行する代わりとして、Chefを使用する。                 | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/chef_common  |
-| Docker    | Vagrantfileでプロビジョニングを実行する代わりとして、Dockerfile（に似た記述）を使用する。 | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/docker       |
+| Docker    | Vagrantfileでプロビジョニングを実行する代わりとして、Dockerfile (に似た記述) を使用する。 | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/docker       |
 | Puppet    | Vagrantfileでプロビジョニングを実行する代わりとして、Puppetを使用する。               | ↪️ 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
 
 <br>
@@ -284,7 +284,7 @@ end
 
 #### ▼ shell
 
-shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式（```<<-```）を使用すると良い。
+shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式 (```<<-```) を使用すると良い。
 
 > ↪️ 参考：
 >
@@ -328,7 +328,7 @@ end
 
 仮想環境側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。
 
-注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため、コントロールノードは自分で自分を指定してプロビジョニングを実行することになる。
+注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー (仮想環境) になるため、コントロールノードは自分で自分を指定してプロビジョニングを実行することになる。
 
 開発環境ではこのオプションを使用することが推奨されており、```ansible```オプションを使用することが非推奨とされている。
 

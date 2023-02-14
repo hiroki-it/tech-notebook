@@ -44,7 +44,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 ![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
 
-オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外のcniアドオンはiptables、CiliumアドオンはCilium）、Nodeのネットワークインターフェース（```eth```）、から構成される。
+オーバーレイモードは、Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネットワークインターフェース (```veth```) 、Nodeのブリッジ (```cni```) 、NATルーター (Cilium以外のcniアドオンはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (```eth```) 、から構成される。
 
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
@@ -63,7 +63,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 > ↪️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 
-- calico-ipip（Kubeadmで推奨）
+- calico-ipip (Kubeadmで推奨) 
 - flannel-vxlan
 - Weave
 - Cilium
@@ -73,7 +73,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 ![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
 
-Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、を使用して、同じNode上のPod間でパケットを送受信する。
+Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネットワークインターフェース (```veth```) 、Nodeのブリッジ (```cni```) 、を使用して、同じNode上のPod間でパケットを送受信する。
 
 
 
@@ -83,7 +83,7 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 ![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
 
-Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外はiptables、Cilium）、Nodeのネットワークインターフェース（```eth```）を使用して、異なるNode上のPod間でパケットを送受信する。
+Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネットワークインターフェース (```veth```) 、Nodeのブリッジ (```cni```) 、NATルーター (Cilium以外はiptables、Cilium) 、Nodeのネットワークインターフェース (```eth```) を使用して、異なるNode上のPod間でパケットを送受信する。
 
 
 
@@ -95,7 +95,7 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 #### ▼ ルーティングモードとは
 
-ルーティングテーブル（```L3```）を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
+ルーティングテーブル (```L3```) を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 
 
@@ -108,7 +108,7 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 > ↪️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 
-- calico-bgp（Kubeadmで推奨）
+- calico-bgp (Kubeadmで推奨) 
 - flannel-hostgw
 - sriov
 
@@ -137,13 +137,13 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_aws-mode.png)
 
-AWSの独自モードは、Podの仮想ネットワークインターフェース（```veth```）、Nodeのネットワークインターフェース（```eth```）、から構成される。
+AWSの独自モードは、Podの仮想ネットワークインターフェース (```veth```) 、Nodeのネットワークインターフェース (```eth```) 、から構成される。
 
-AWSでは、Node（EC2、Fargate）上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの```2```つを付与できる。
+AWSでは、Node (EC2、Fargate) 上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの```2```つを付与できる。
 
 NodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
 
-Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり```1```個しかPodをスケジューリングできない）。
+Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する (2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり```1```個しかPodをスケジューリングできない) 。
 
 
 
@@ -155,13 +155,13 @@ Nodeのインスタンスタイプごとに、紐づけられるENI数に制限�
 
 #### ▼ アドオン例
 
-- aws-eks-vpc-cniアドオン（AWS EKSで推奨）
+- aws-eks-vpc-cniアドオン (AWS EKSで推奨) 
 
 <br>
 
 
 
-## 02. CoreDNSアドオン（旧kube-dns）
+## 02. CoreDNSアドオン (旧kube-dns) 
 
 ### CoreDNSアドオンとは
 
@@ -267,7 +267,7 @@ data:
 
 ![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/coredns_service-discovery.png)
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー（CoreDNSのService）のIPアドレスを設定する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。
 
 Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、CoreDNSのServiceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。
 
@@ -394,7 +394,7 @@ nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
 
 ```【２】```
 
-:    CoreDNSのPodが稼働しているとする。ここで、CoreDNSのPodのIPアドレス（ここでは```10.244.0.2```）を確認しておく。
+:    CoreDNSのPodが稼働しているとする。ここで、CoreDNSのPodのIPアドレス (ここでは```10.244.0.2```) を確認しておく。
 
 ```bash
 $ kubectl get pods -o wide -l k8s-app=kube-dns -n kube-system 
@@ -405,7 +405,7 @@ coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <no
 
 ```【３】```
 
-:    ここで、Node内に接続する。Serviceの完全修飾ドメイン名（ここでは```nginx-service.default.svc.cluster.local```）をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
+:    ここで、Node内に接続する。Serviceの完全修飾ドメイン名 (ここでは```nginx-service.default.svc.cluster.local```) をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
 
 ```bash
 # Node内に接続する。

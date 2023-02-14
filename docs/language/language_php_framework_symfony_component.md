@@ -25,7 +25,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 ```yaml
 symfony/
-├── config/ # 設定ファイル（カーネルのためのルート定義ファイル等）
+├── config/ # 設定ファイル (カーネルのためのルート定義ファイル等) 
 │
 ├── bin/ # コマンドラインツール
 │   ├── console/ #bin/consoleコマンドの実行ファイル
@@ -42,13 +42,13 @@ symfony/
 │   │  ├── Repository/ # リポジトリ ⇒ Infrastructure層
 │   │  ├── Form/ # フォーム
 │   │  └── Resources/
-│   │       └── views/ # 画面テンプレート（※本書では扱わない） 
+│   │       └── views/ # 画面テンプレート (※本書では扱わない)  
 │   │           
-│   └── その他のBundle/ # 汎用的なパッケージのコード（※本書では扱わない）
+│   └── その他のBundle/ # 汎用的なパッケージのコード (※本書では扱わない) 
 │
 ├── templates/ # UserInterface層
 │   
-├── test/ # 自動テスト（Unit tests等）
+├── test/ # 自動テスト (Unit tests等) 
 │  
 ├── var/ # 自動作成されるファイル
 │   ├── cache/ # キャッシュファイル
@@ -63,13 +63,13 @@ symfony/
 │   ├── symfonyコンポーネント/
 │   └── twig/ # パッケージ
 │
-└── asset/ #ブラウザコンソールに公開されるファイル（css, javascript, image等）
+└── asset/ #ブラウザコンソールに公開されるファイル (css, javascript, image等) 
     ├── admin/
     ├── bootstrap/
     ├── css/
     ├── fontawesome/
     ├── img/ # 画像ファイル
-    ├── jquery/ # jquery（javascriptフレームワーク）
+    ├── jquery/ # jquery (javascriptフレームワーク) 
     └── js/
 ```
 
@@ -183,7 +183,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 #### ▼ CLIとは
 
-シェルスクリプト（```.sh```）、またはバッチファイル（```.bat```）におけるコマンドの処理内容を定義できる。
+シェルスクリプト (```.sh```) 、またはバッチファイル (```.bat```) におけるコマンドの処理内容を定義できる。
 
 
 
@@ -373,7 +373,7 @@ public function handle
 
 :    Ajaxによるリクエストの場合、JSON型データをレスポンスし、かつページレンダリング。
 
-（2）Ajaxによるリクエストでない場合、ページレンダリングのみ
+ (2) Ajaxによるリクエストでない場合、ページレンダリングのみ
 
 ```php
 <?php

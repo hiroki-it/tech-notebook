@@ -39,9 +39,9 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ### データプレーン
 
-単一のホスト（EC2、Fargate）のOS上でコンテナオーケストレーションを実行する。
+単一のホスト (EC2、Fargate) のOS上でコンテナオーケストレーションを実行する。
 
-『```on-EC2```』『```on-Fargate```』という呼び方は、データプレーンがECSの実行環境（```on environment```）の意味合いを持つからである。
+『```on-EC2```』『```on-Fargate```』という呼び方は、データプレーンがECSの実行環境 (```on environment```) の意味合いを持つからである。
 
 
 <br>
@@ -130,13 +130,13 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 | フェーズ名          | 説明                                                        | 補足                                                                                                                                               |
 |-----------------|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Provisioning    | ECSタスクの起動前に必要な準備（例；ENIの紐付け）があり、これが完了していない。      |                                                                                                                                                    |
+| Provisioning    | ECSタスクの起動前に必要な準備 (例；ENIの紐付け) があり、これが完了していない。      |                                                                                                                                                    |
 | Pending         | ECSタスク内のコンテナの起動がまだ完了していない。                             |                                                                                                                                                    |
 | Activating      | ECSタスク内の全てのコンテナの起動が完了したが、ECSタスク全体のセットアップは完了していない。 |                                                                                                                                                    |
-| Running         | ECSタスク内の全てのコンテナの起動とECSタスク全体の準備が完了し、実行中である。     | コンテナの起動が完了すれば```Running```フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション（例：フレームワークのビルトインサーバー機能）の場合は、```Running```フェーズであっても使用できないことに注意する。 |
+| Running         | ECSタスク内の全てのコンテナの起動とECSタスク全体の準備が完了し、実行中である。     | コンテナの起動が完了すれば```Running```フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、```Running```フェーズであっても使用できないことに注意する。 |
 | De-activating   | ECSタスク内のコンテナを停止する前に必要な処理があり、これが完了していない。           |                                                                                                                                                    |
 | Stopping        | ECSタスク内のコンテナが正常/異常に停止しようとしている途中である。                |                                                                                                                                                    |
-| De-provisioning | ECSタスク全体を停止する前に必要な準備（例；ENIの解除）があり、これが完了していない。 |                                                                                                                                                    |
+| De-provisioning | ECSタスク全体を停止する前に必要な準備 (例；ENIの解除) があり、これが完了していない。 |                                                                                                                                                    |
 | Stopped         | ECSタスク全体が停止した。                                          | 正常停止と異常停止に関わらず、停止理由を確認できる。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html          |
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
@@ -217,9 +217,9 @@ FargateとEC2の両方で使用できるawsの独自ネットワークモード�
 
 タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。
 
-Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。
+Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる) 。
 
-これにより、コンテナ間でパケットを送受信する時（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。
+これにより、コンテナ間でパケットを送受信する時 (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (```127.0.0.1```) 』で指定すれば良い。
 
 また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。
 
@@ -256,7 +256,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 #### ▼ VPC外のAWSリソースに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
 
 もしNAT Gatewayを設置したとする。
 
@@ -485,7 +485,7 @@ EC2インスタンスをホストとして、コンテナを作成する。
 | ECS最適化 Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>↪️ 参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                   |
 | ECS最適化 Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。                                                               |                                                   |
 | ECS最適化 Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。                                                                                    |                                                   |
-| ECS最適化 Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                                                                                                        | GPUが必要なアプリケーション（計算処理系、機械学習系のアプリケーション） |
+| ECS最適化 Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                                                                                                        | GPUが必要なアプリケーション (計算処理系、機械学習系のアプリケーション)  |
 | ECS最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                                                                                                       |                                                   |
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
@@ -512,7 +512,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 Fargateをホストとして、コンテナを作成する。
 
-Fargateの実体はEC2インスタンスである（ドキュメントに記載がないが、AWSサポートに確認済み）。
+Fargateの実体はEC2インスタンスである (ドキュメントに記載がないが、AWSサポートに確認済み) 。
 
 ![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
 
@@ -534,7 +534,7 @@ Fargateの実体はEC2インスタンスである（ドキュメントに記載�
 | ECSタスクの必要数    | 非スケーリング時またはデプロイ時のタスク数を設定する。                                                                                              | 最小ヘルス率と最大率の設定値に影響する。                                                                                                                                                                                                                                                                                                                                                         |
 | 最小ヘルス率        | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。                                              | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>↪️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                                     |
 | 最大率           | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。                                       | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>↪️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                          |
-| ヘルスチェックの猶予期間 | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。 |
+| ヘルスチェックの猶予期間 | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js (SSRモード) を使用する場合は、```600```秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。 |
 | タスクの最小数       | スケーリング時のタスク数の最小数を設定する。                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                                         |
 | タスクの最大数       | スケーリング時のタスク数の最大数を設定する。                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                                         |
 | ロードバランシング        | ALBでルーティングするコンテナを設定する。                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -569,7 +569,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 | 設定項目                        | 対応する```docker```コマンドオプション       | 説明                                                                                                                                                                            | 補足                                                                                                                                                                                                  |
 |---------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| cpu                             | ```--cpus```                      | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | ↪️ 参考：<br>・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment <br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
+| cpu                             | ```--cpus```                      | タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | ↪️ 参考：<br>・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment <br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
 | dnsServers                      | ```--dns```                       | コンテナが名前解決に使用するDNSサーバーのIPアドレスを設定する。                                                                                                                                      |                                                                                                                                                                                                       |
 | essential                       |                                   | コンテナが必須か否かを設定する。                                                                                                                                                           | ・```true```の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br>```false```の場合、コンテナが停止しても、その他のコンテナは停止しない。                                                                                             |
 | healthCheck<br>(command)        | ```--health-cmd```                | ホストからFargateに対して、```curl```コマンドによるリクエストを送信し、レスポンス内容を確認。                                                                                                                  |                                                                                                                                                                                                       |
@@ -582,7 +582,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | portMapping                     | ```--publish```<br>```--expose``` | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。                                                                                                                            | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                      |
 | secrets<br>(volumesFrom)        |                                   | パラメーターストアから出力する変数を設定する。                                                                                                                                                   |                                                                                                                                                                                                       |
 | memory                          | ```--memory```                    | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。                                                                                                                    | ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
-| memoryReservation               | ```--memory-reservation```        | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                              | ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
+| memoryReservation               | ```--memory-reservation```        | タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                              | ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
 | mountPoints                     |                                   | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。                                                                                           | ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html                                                                                          |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                                                                                                                                                 |                                                                                                                                                                                                       |
 
@@ -603,11 +603,11 @@ ECSタスクごとに異なるプライベートIPが割り当てられる。
 #### ▼ FargateのIPアドレス
 
 
-Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化するIPアドレス）を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。
+Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化するIPアドレス) を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。
 
-アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
+アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信 (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
 
-そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。
+そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。
 
 これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
 
@@ -768,7 +768,7 @@ CodeDeployを使用してデプロイする。
 | Systems Manager   | ```ssm.ap-northeast-1.amazonaws.com```                                                     | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager   | ```ssmmessage.ap-northeast-1.amazonaws.com```                                              | Secrets Managerを使用するため。                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。
 
 NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。
 

@@ -26,13 +26,13 @@ CPUの制御部分は、プログラムの命令を解釈して、コンピュ�
 
 CPUの演算部分は、計算や演算処理を行う。
 
-特に、『**算術論理演算装置（ALU：Arithmetic and Logic Unit）**』とも呼ぶ。
+特に、『**算術論理演算装置 (ALU：Arithmetic and Logic Unit) **』とも呼ぶ。
 
 
 
 <br>
 
-### CPUの歴史（※2009年まで）
+### CPUの歴史 (※2009年まで) 
 
 IntelとAMDにおけるCPUの歴史を以下に示す。
 
@@ -52,7 +52,7 @@ CPUの回路が処理と歩調を合わせるために使用する信号を、�
 
 これは、Hzで表す。
 
-補足として、ワイのパソコンのクロック周波数は```2.60```（GHz）でした。
+補足として、ワイのパソコンのクロック周波数は```2.60``` (GHz) でした。
 
 
 
@@ -68,11 +68,12 @@ CPUの回路が処理と歩調を合わせるために使用する信号を、�
 2.6GHz
 = 2.6×10^9  (クロック数/秒)
 ```
+
 ![クロック数比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クロック数比較.png)
 
 <br>
 
-### MIPS：Million Instructions Per Second（×10^6 命令数/秒）
+### MIPS：Million Instructions Per Second (×10^6 命令数/秒) 
 
 #### ▼ MIPSとは
 
@@ -80,7 +81,7 @@ CPUが1秒間に何回命令を実行するかを表す。
 
 
 
-（例題）
+ (例題) 
 
 ```mathematica
 (命令当たりの平均クロック数) 

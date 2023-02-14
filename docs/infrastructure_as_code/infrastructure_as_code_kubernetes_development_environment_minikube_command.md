@@ -616,7 +616,7 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
 
-#### ▼ ``--``（ハイフン2つ）
+#### ▼ ``--`` (ハイフン2つ) 
 
 NodeにSSH公開鍵認証で接続し、任意のコマンドを実行する。
 
@@ -870,7 +870,7 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 
 LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。
 
-紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。
+紐付けられたLoadBalancer Serviceには『External Endpoints (```http://127.0.0.1:80```) 』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。
 
 Node外からPodに通信できるようになる。```minikube ssh```コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 

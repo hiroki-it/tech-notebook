@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】クラウド（クラウドコンピューティング）
-description: クラウド（クラウドコンピューティング）の知見を記録しています。
+title: 【IT技術の知見】クラウド (クラウドコンピューティング) 
+description: クラウド (クラウドコンピューティング) の知見を記録しています。
 ---
 
-# クラウド（クラウドコンピューティング）
+# クラウド (クラウドコンピューティング) 
 
 ## はじめに
 
@@ -52,10 +52,10 @@ description: クラウド（クラウドコンピューティング）の知見�
 - AWS
 - GCP
 - Azure
-- さくらのクラウド（さくらインターネット） 
-- OpenCanvas（NTT）
-- ASPIRE（ソフトバンク）
-- ALTUS（GMO）
+- さくらのクラウド (さくらインターネット)  
+- OpenCanvas (NTT) 
+- ASPIRE (ソフトバンク) 
+- ALTUS (GMO) 
 
 #### ▼ プライベートクラウド
 
@@ -71,7 +71,7 @@ description: クラウド（クラウドコンピューティング）の知見�
 
 
 - Yahoo
-- Cycloud（サイバーエージェント）
+- Cycloud (サイバーエージェント) 
 
 <br>
 
@@ -99,7 +99,7 @@ description: クラウド（クラウドコンピューティング）の知見�
 
 ### XaaSの種類
 
-#### ▼ オンプレミス（自社所有）
+#### ▼ オンプレミス (自社所有) 
 
 XaaSに含まれないが、比較のために記載している。
 
@@ -119,7 +119,7 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 
 | サービス名 | リソース名                  |
 |--------|-------------------------|
-| AWS    | AWS EC2（ベアメタルインスタンスタイプ） |
+| AWS    | AWS EC2 (ベアメタルインスタンスタイプ)  |
 | GCP    | Bare Metal Solution     |
 | Azure  |                         |
 
@@ -183,7 +183,7 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 | サービス名 | リソース名                                                     |
 |--------|------------------------------------------------------------|
 | AWS    | AWS S3、AWS CloudWatch                                      |
-| GCP    | Google Apps（例：Google Map、Google Cloud、Google Calender など） |
+| GCP    | Google Apps (例：Google Map、Google Cloud、Google Calender など)  |
 | Azure  | -                                                          |
 
 

@@ -103,7 +103,7 @@ IngressClassを作成する。
 
 開発環境では、IngressClassとしてNginxを使用する。
 
-本番環境では、クラウドプロバイダーのIngressClass（AWS ALB、GCP CLB）を使用する。
+本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、GCP CLB) を使用する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -154,7 +154,7 @@ ConfigMapの```.data```キーにJSONを設定すると、ダッシュボード�
 
 #### ▼ 公開ダッシュボードとは
 
-独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：kubernetes-mixins、Grafanaダッシュボードコミュニティ）を使用した方が良い。
+独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。
 
 その場合、GitHubなどで公開されているJSONを、ConfigMapの```.data```キーに貼り付ける。
 
@@ -169,19 +169,19 @@ ConfigMapの```.data```キーにJSONを設定すると、ダッシュボード�
 | 種類                     | コンポーネント          | ダッシュボード名                                             | 説明                                                                                                                                 |
 | ------------------------ | ----------------------- | ------------------------------------------------------------ |------------------------------------------------------------------------------------------------------------------------------------|
 | Alertmanager             | AlertmanagerのPod       | ```Alertmanager / Overview```                                |                                                                                                                                    |
-| CoreDNS                  | CoreDNSのPod            | ```CoreDNS```                                                | CoreDNSのPodに対するリクエストに関するメトリクス（例：リクエスト数、レスポンスタイム）を取得する。                                                                             |
-| Kubernetesコンポーネント | kube-apiserver          | ```Kubernetes / API server```                                | kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス（例：CPU使用率、メモリ使用率）を取得する。                                                          |
-|                          | Cluster                 | ```Kubernetes / Networking / Cluster```                      | Clusterのネットワークのパフォーマンス指標に関するメトリクス（例：帯域幅、秒当たりパケット受信数）を取得する。                                                                         |
+| CoreDNS                  | CoreDNSのPod            | ```CoreDNS```                                                | CoreDNSのPodに対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を取得する。                                                                             |
+| Kubernetesコンポーネント | kube-apiserver          | ```Kubernetes / API server```                                | kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率) を取得する。                                                          |
+|                          | Cluster                 | ```Kubernetes / Networking / Cluster```                      | Clusterのネットワークのパフォーマンス指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を取得する。                                                                         |
 |                          | kube-controller-manager | ```Kubernetes / Controller Manager```                        |                                                                                                                                    |
-|                          | Cluster                 | ```Kubernetes / Compute Resources / Cluster```               | Clusterのハードウェアリソースの消費に関するメトリクス（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）を取得する。                                                                 |
-|                          | Pod                     | ```Kubernetes / Compute Resources / Namespace (Pods)```      | Namespace単位で、Podのハードウェアリソースの消費に関するメトリクス（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）を取得する。同じNamespace複数のPod（削除されたPodも含む）のメトリクスを一括して確認したい場合に便利である。 |
-|                          | Pod                     | ```Kubernetes / Compute Resources / Node (Pods)```           | Node単位で、Podのハードウェアリソースの消費に関するメトリクス（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）を取得する。同じNodeの複数のPod（削除されたPodも含む）のメトリクスを一括して確認したい場合に便利である。          |
-|                          | Pod                     | ```Kubernetes / Compute Resources / Pod```                   | 各Podのハードウェアリソースの消費に関するメトリクス（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）を取得する。個別のPodや特定のPodの状況を確認したい場合に便利である。                                     |
-|                          | Pod                     | ```Kubernetes / Compute Resources / Workload```              | ワークロード（例：Deployment）単位で、Podのハードウェアリソースの消費に関するメトリクス（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）を取得する。                                             |
-|                          | Pod                     | ```Kubernetes / Compute Resources / Namespace (Workloads)``` | ワークロード（例：Deployment）単位かつNamespace単位で、Podのハードウェアリソースの消費に関するメトリクス（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）を取得する。                                |
+|                          | Cluster                 | ```Kubernetes / Compute Resources / Cluster```               | Clusterのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                                 |
+|                          | Pod                     | ```Kubernetes / Compute Resources / Namespace (Pods)```      | Namespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNamespace複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。 |
+|                          | Pod                     | ```Kubernetes / Compute Resources / Node (Pods)```           | Node単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNodeの複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。          |
+|                          | Pod                     | ```Kubernetes / Compute Resources / Pod```                   | 各Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。個別のPodや特定のPodの状況を確認したい場合に便利である。                                     |
+|                          | Pod                     | ```Kubernetes / Compute Resources / Workload```              | ワークロード (例：Deployment) 単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                             |
+|                          | Pod                     | ```Kubernetes / Compute Resources / Namespace (Workloads)``` | ワークロード (例：Deployment) 単位かつNamespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                |
 |                          | kubelet                 | ```Kubernetes / Kubelet```                                   |                                                                                                                                    |
-|                          | Pod                     | ```Kubernetes / Networking / Namespace (Pods)```             | Namespace単位で、Podのネットワークに関するメトリクスを取得する。複数のPod（削除されたPodも含む）のメトリクスを一括して確認したい場合に便利である。                                                 |
-|                          |                         | ```Kubernetes / Networking / Namespace (Workload)```         | ワークロード（例：Deployment）単位で、Podのネットワークに関するメトリクスを取得する。                                                                                  |
+|                          | Pod                     | ```Kubernetes / Networking / Namespace (Pods)```             | Namespace単位で、Podのネットワークに関するメトリクスを取得する。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。                                                 |
+|                          |                         | ```Kubernetes / Networking / Namespace (Workload)```         | ワークロード (例：Deployment) 単位で、Podのネットワークに関するメトリクスを取得する。                                                                                  |
 |                          |                         | ```Kubernetes / Persistent Volumes```                        | Persistent Volumeの使用率に関するメトリクスを取得する。                                                                                               |
 |                          |                         | ```Kubernetes / Networking / Pod```                          | 各Podのネットワークに関するメトリクスを取得する。Podを個別に確認したい場合に便利である。                                                                                    |
 |                          | kube-proxy              | ```Kubernetes / Proxy```                                     |                                                                                                                                    |

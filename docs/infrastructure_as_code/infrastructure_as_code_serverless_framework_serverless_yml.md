@@ -433,7 +433,7 @@ provider:
 
 ## 07. resources
 
-### resourcesとは（awsプロバイダーの場合）
+### resourcesとは (awsプロバイダーの場合) 
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/resources
 
@@ -473,7 +473,7 @@ resources:
 
 ## 08. service
 
-### serviceとは（awsプロバイダーの場合）
+### serviceとは (awsプロバイダーの場合) 
 
 
 **＊実装例＊**

@@ -19,11 +19,11 @@ description: 組み込み機器＠ハードウェアの知見を記録してい�
 
 ### 組み込みシステムとは
 
-組み込み機器（限定的な用途向けに特定の能力を果たす事を目的とした機器）を制御するシステムのこと。
+組み込み機器 (限定的な用途向けに特定の能力を果たす事を目的とした機器) を制御するシステムのこと。
 
 
 
-※パソコンは、汎用機器（汎用的な用途向けに多様な機能を果たす事を目的とした機器）に分類される。
+※パソコンは、汎用機器 (汎用的な用途向けに多様な機能を果たす事を目的とした機器) に分類される。
 
 
 
@@ -53,9 +53,10 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 - 加速度センサ
 - 照度センサ
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p119-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-2.png)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -77,9 +78,11 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p119-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-3.png)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+
 
 <br>
 
@@ -95,9 +98,11 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 洗濯機
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-1.png)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+
 
 #### ▼ フィードバック制御
 
@@ -109,9 +114,11 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 エアコン
 
+![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-2.png)
+
+
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-2.png)
 
 <br>
 
@@ -221,7 +228,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 #### ▼ プリンタの解像度
 
-```1```インチ当たりのドット数（dpi）によって、解像度が異なる。
+```1```インチ当たりのドット数 (dpi) によって、解像度が異なる。
 
 復習ではあるが、PC上では、ドット数がどのくらいのビット数を持つかで、解像度が変わる。
 
@@ -266,7 +273,7 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 ### Serial interface を使用している例
 
-#### ▼ USB（Universal Serial Bus）
+#### ▼ USB (Universal Serial Bus) 
 
 ![usbケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usbインターフェイス.png)
 
@@ -280,7 +287,7 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 ### Parallel interface を使用している例
 
-#### ▼ IDE（Integrated Drive Electronics）
+#### ▼ IDE (Integrated Drive Electronics) 
 
 ストレージとの接続に使用されるインターフェイス。
 
@@ -288,7 +295,7 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 ![ideケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ideインターフェイス.jpg)
 
-#### ▼ SCSI（Small Computer System Interface）
+#### ▼ SCSI (Small Computer System Interface) 
 
 ストレージ、CD-ROM、コンテナイメージスキャナなど、様々な周辺機器をデイジーチェーンするために使用するインターフェイス。
 
@@ -298,7 +305,7 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 ### 無線インターフェイス
 
-#### ▼ IrDA（infrared Data Assoiciation）
+#### ▼ IrDA (infrared Data Assoiciation) 
 
 赤外線を使用して、無線通信を行うためのインターフェイス。
 

@@ -97,7 +97,7 @@ func main() {
 
 <br>
 
-## 02. 並行処理（Concurrent processing）
+## 02. 並行処理 (Concurrent processing) 
 
 ### 並行処理とは
 
@@ -119,7 +119,7 @@ func main() {
 
 <br>
 
-## 03. 並列処理（Parallel processing）
+## 03. 並列処理 (Parallel processing) 
 
 ### 並列処理とは
 
@@ -175,7 +175,7 @@ Goroutinesを使用する。
 
 <br>
 
-## 04. 同期処理（Synchronous processing）
+## 04. 同期処理 (Synchronous processing) 
 
 ### 同期処理とは
 
@@ -185,7 +185,7 @@ Goroutinesを使用する。
 
 <br>
 
-## 05. 非同期処理（Asynchronous processing）
+## 05. 非同期処理 (Asynchronous processing) 
 
 ### 非同期処理とは
 
@@ -218,7 +218,7 @@ Goroutinesを使用する。
 
 #### ▼ Node.jsの場合
 
-JavaScriptと同じような記法で実装できるNode.jsについて、Node.jsのビルトイン関数（特にI/O処理系）は、非同期処理化するための実装がなされている。
+JavaScriptと同じような記法で実装できるNode.jsについて、Node.jsのビルトイン関数 (特にI/O処理系) は、非同期処理化するための実装がなされている。
 
 そのため、後続の処理に非同期処理の結果を使用するものが含まれている場合、この処理だけは非同期処理の後に実行されるように定義する必要がある。
 

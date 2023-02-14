@@ -19,7 +19,7 @@ description: Prometheus＠Kubernetes
 
 ### アーキテクチャ
 
-Prometheusは、prometheusサーバー（Retrieval、ローカルの時系列ストレージ、HTTPサーバー）から構成されている。
+Prometheusは、prometheusサーバー (Retrieval、ローカルの時系列ストレージ、HTTPサーバー) から構成されている。
 
 Kubernetesリソースに関するメトリクスのデータポイントを収集し、分析する。
 
@@ -135,7 +135,7 @@ Prometheusは、```data```ディレクトリ配下をTSDBとして、収集し�
 
 収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。
 
-現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（補足としてRDBMSでは、これをジャーナルファイルという）。
+現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される (補足としてRDBMSでは、これをジャーナルファイルという) 。
 
 これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
@@ -187,7 +187,7 @@ TSDBのディレクトリはNodeにマウントされるため、Nodeのスト�
 
 #### ▼ 独自TSDB
 
-Prometheusでは、独自のTSDB（```data```ディレクトリ配下）を採用している。
+Prometheusでは、独自のTSDB (```data```ディレクトリ配下) を採用している。
 
 データソース型モデルとメトリクス型モデルがあり、Prometheusではいずれを採用しているのかの記載が見つかっていない。
 
@@ -212,9 +212,9 @@ Prometheusでは、独自のTSDB（```data```ディレクトリ配下）を採�
 #### ▼ リモートストレージとは
 
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ (AWS Timestream、Google Bigquery、VictoriaMetrics、...) に保管できる。
 
-remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。
+remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる (ポート番号はリモートストレージごとに異なる) 。
 
 Prometheusと外部のTSDBの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。
 
@@ -270,7 +270,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 Alertmanagerのデータを永続化する。
 
 ```bash
-# Node内（AWS EKSのEC2ワーカーNodeの場合）
+# Node内 (AWS EKSのEC2ワーカーNodeの場合) 
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/alertmanager-db/
 ```
 
@@ -294,7 +294,7 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。
 
-基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter（例：外形監視のblack-exporter）は、Node外で稼働させる。
+基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter (例：外形監視のblack-exporter) は、Node外で稼働させる。
 
 Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。
 
@@ -367,7 +367,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 ### ServiceDiscoveryとは
 
-Pull型通信の宛先のIPアドレスが動的に変化する場合（例：スケーリングなど）、宛先を動的に検出し、データポイントを収集し続けられるようにする。
+Pull型通信の宛先のIPアドレスが動的に変化する場合 (例：スケーリングなど) 、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
 
 

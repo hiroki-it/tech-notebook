@@ -7,7 +7,7 @@
 
 <br>
 
-## 🐧 基本ソフトウェア（OS）
+## 🐧 基本ソフトウェア (OS) 
 
 ### Linuxカーネル
 
@@ -19,7 +19,7 @@
 
 * #### [︎ストレージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_storage_management.html)
 
-* #### [︎I/O（入出力）管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_io_management.html)
+* #### [︎I/O (入出力) 管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_io_management.html)
 
 * #### [︎ジョブ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_job_management.html)
 

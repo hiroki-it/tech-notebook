@@ -49,7 +49,7 @@ Datadogとパケットを送受信するためには、アプリケーション�
 
 ### セットアップ
 
-#### ▼ インストール（手動の場合）
+#### ▼ インストール (手動の場合) 
 
 ```bash
 # 環境変数を設定する。
@@ -61,7 +61,7 @@ $ export DD_SITE=datadoghq.com
 $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 ```
 
-#### ▼ インストール（Ansibleの場合）
+#### ▼ インストール (Ansibleの場合) 
 
 > ↪️ 参考：https://app.datadoghq.com/account/settings#agent/ubuntu
 
@@ -258,7 +258,7 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
         # barコンテナ
     },
     {
-        # datadogコンテナ（サイドカー）
+        # datadogコンテナ (サイドカー) 
         "name": "datadog",
         "image": "datadog/agent:latest",
         "essential": false,
@@ -446,8 +446,8 @@ datadogコンテナの環境変数として設定する。
 
 | 変数名                               | 説明                                                                                                                 | 画面                                   |
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------|
-| ```DD_SERVICE_MAPPING```             | 分散トレースにマイクロサービス名を設定する。マイクロサービス名はデフォルトのインテグレーション名になるが、これを上書きできる<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
-| ```DD_SERVICE_NAME```                | 分散トレースにマイクロサービス名を設定する。```DD_SERVICE_MAPPING```がnullの場合、この環境変数の値が代わりにマイクロサービス名になる（仕組みがよくわからん）。        |                                        |
+| ```DD_SERVICE_MAPPING```             | 分散トレースにマイクロサービス名を設定する。マイクロサービス名はデフォルトのインテグレーション名になるが、これを上書きできる<br> (例) ```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
+| ```DD_SERVICE_NAME```                | 分散トレースにマイクロサービス名を設定する。```DD_SERVICE_MAPPING```がnullの場合、この環境変数の値が代わりにマイクロサービス名になる (仕組みがよくわからん) 。        |                                        |
 | ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する。デフォルトで全てのインテグレーションが有効化されているため、設定は不要である。Datadogのインテグレーションを無効化する場合は            |                                        |
 | ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する。                                                                                          |                                        |
 

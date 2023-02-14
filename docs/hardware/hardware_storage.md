@@ -16,9 +16,9 @@ description: ストレージ＠ハードウェアの知見を記録していま�
 <br>
 
 
-## 01. ストレージ（ディスク）
+## 01. ストレージ (ディスク) 
 
-### ストレージ（ディスク）とは
+### ストレージ (ディスク) とは
 
 『ディスク』ともいう。
 
@@ -65,11 +65,13 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p184-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-1.png)
 
 ![p184-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-2.png)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+
 
 #### ▼ RAID：Redundant Arrays of Inexpensive Disks
 
@@ -82,7 +84,7 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 |-------|:----------------------------------------------|
 | RAID0 | データを複数のHDDに振り分けて書き込む。                     |
 | RAID1 | データを複数のHDDに複製して書き込む。                      |
-| RAID5 | データとパリティ（誤り訂正符号）を```3```個以上のHDDに書き込む。 |
+| RAID5 | データとパリティ (誤り訂正符号) を```3```個以上のHDDに書き込む。 |
 
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RAIDの種類.png)
 

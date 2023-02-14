@@ -27,7 +27,7 @@ description: Vue.jsの知見を記録しています。
 
 ```【１】```
 
-:    View層（```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
+:    View層 (```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分) 
 
 ViewModel層から渡されたデータを出力するだけ。
 
@@ -35,9 +35,9 @@ ViewModel層から渡されたデータを出力するだけ。
 
 ```【２】```
 
-:    ViewModel層（```index.js```、```foo-component.vue```の```script```タグ部分）
+:    ViewModel層 (```index.js```、```foo-component.vue```の```script```タグ部分) 
 
-プレゼンテーションロジック（フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など）や、ビジネスロジック（※控えめに）を記述する。
+プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
 
 scriptタグによって、JavaScriptが組み込まれている。
 
@@ -45,7 +45,7 @@ scriptタグによって、JavaScriptが組み込まれている。
 
 ```【３】```
 
-:    Model層（```store.js```または```foo.js```)
+:    Model層 (```store.js```または```foo.js```)
 
 ビジネスロジックや、ajaxメソッドによるデータ送受信、を記述する。
 
@@ -59,7 +59,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 ```【１】```
 
-:    View層では、```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
+:    View層では、```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分) 
 
 ```【２】```
 
@@ -67,7 +67,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 ```【３】```
 
-:    Model層では、Vuex（```store.js```)やJavaScriptからなるモデル（```foo.js```）を設置する。
+:    Model層では、Vuex (```store.js```)やJavaScriptからなるモデル (```foo.js```) を設置する。
 
 ```【４】```
 
@@ -78,9 +78,9 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 ### 親子コンポーネント間のデータ渡し
 
-#### ▼ 親子コンポーネント間のデータ渡しの仕組み（Props Down, Events Up）
+#### ▼ 親子コンポーネント間のデータ渡しの仕組み (Props Down, Events Up) 
 
-まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。コンポーネント（```foo-component.vue```）の```script```タグ部分（ViewModel層）の親子間では、```props```と```$emit```メソッドを使用して、データを渡す。この仕組みを、Props Down, Events Upという。
+まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。コンポーネント (```foo-component.vue```) の```script```タグ部分 (ViewModel層) の親子間では、```props```と```$emit```メソッドを使用して、データを渡す。この仕組みを、Props Down, Events Upという。
 
 ![親子コンポーネント間の双方向データバインディング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子コンポーネント間の双方向データバインディング.png)
 
@@ -90,7 +90,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 ### MVVMアーキテクチャの実装例
 
-#### (1) 【View層】テンプレート（```foo.html```、```foo.twig```）
+#### (1) 【View層】テンプレート (```foo.html```、```foo.twig```) 
 
 データが、テンプレートからJavaScriptファイルに渡される仕組みは、フレークワークを使用しない場合と同じである。
 
@@ -141,7 +141,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
     <src={{ asset(".../index.js") }}>
 </script>
 ```
-#### (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数（```index.js```）
+#### (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数 (```index.js```) 
 
 ![vue-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vue-instance.png)
 
@@ -256,7 +256,7 @@ var vm = new Vue({
 })
 
 ```
-#### (2) 【View + ViewModel層】単一ファイルコンポーネントに相当するコンポーネント（```foo-component.vue```）
+#### (2) 【View + ViewModel層】単一ファイルコンポーネントに相当するコンポーネント (```foo-component.vue```) 
 
 コンポーネントは、View層に相当する```template```タグ、ViewModel層に相当する```script```タグと```style```タグを使用して、単一ファイルコンポーネントとする。
 
@@ -345,7 +345,7 @@ var vm = new Vue({
       updateCriteria(key, value) {
 
         /*
-        ・コンポーネント（v-foo-component-1）と紐付く処理
+        ・コンポーネント (v-foo-component-1) と紐付く処理
         ・changeイベントの発火と、これのイベントハンドラ関数に引数を渡す。
 
 
@@ -373,11 +373,11 @@ var vm = new Vue({
 </script>
 ```
 
-#### (3) 【Model層】オブジェクトに相当するVuex（```store.js```）
+#### (3) 【Model層】オブジェクトに相当するVuex (```store.js```) 
 
 ノート内の[こちら](#Vuex)を参考にせよ。
 
-#### (3-2) 【Model層】オブジェクトに相当するJavaScript（```foo.js```）
+#### (3-2) 【Model層】オブジェクトに相当するJavaScript (```foo.js```) 
 
 クラス宣言で実装する。
 
@@ -418,14 +418,14 @@ class Foo {
 
 ![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Vueにおけるemitとv-onの連携.png)
 
-View層（```template```タグ部分）のイベントを、ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
+View層 (```template```タグ部分) のイベントを、ViewModel層 (```script```タグ部分) のイベントハンドラ関数 (```methods:```内にあるメソッド) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
 
-コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
+コンポーネントの```script```タグ部分 (ViewModel層) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
 
 
 
 ```
-v-on:{イベント名}="{イベントハンドラ関数（methods: 内にあるメソッド）}"
+v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にあるメソッド) }"
 ```
 
 または、省略して、
@@ -484,10 +484,10 @@ var vm = new Vue({
 
 ```【１】```
 
-:    『検索ボタンを押す』という```submit```イベントの発火によって、```form```タグでイベントに紐付けられているイベントハンドラ関数（```search```メソッド）がコールされる。
+:    『検索ボタンを押す』という```submit```イベントの発火によって、```form```タグでイベントに紐付けられているイベントハンドラ関数 (```search```メソッド) がコールされる。
 ```【２】```
 
-:    イベントハンドラ関数内の```emit```メソッドが、親コンポーネントの```search```イベントを発火させる。これに紐付くイベントハンドラ関数（```result```メソッド） がコールされる。
+:    イベントハンドラ関数内の```emit```メソッドが、親コンポーネントの```search```イベントを発火させる。これに紐付くイベントハンドラ関数 (```result```メソッド)  がコールされる。
 
 **＊実装例＊**
 
@@ -703,7 +703,7 @@ var vm = new Vue({
 })
 ```
 
-#### ▼ ```$router```（Routerインスタンス）
+#### ▼ ```$router``` (Routerインスタンス) 
 
 Webアプリケーション全体に1つ存在し、全体的なRouter機能を管理しているインスタンス。
 
@@ -729,7 +729,7 @@ this.$router.push({
 });
 ```
 
-#### ▼ ```$route```（Routeオブジェクト）
+#### ▼ ```$route``` (Routeオブジェクト) 
 
 現在のアクティブなルートを持つオブジェクト
 
@@ -787,13 +787,13 @@ Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相
 
 データの状態の変化をいくつか管理する。
 
-クラスベースオブジェクト指向でいうところの、データ（プロパティ）に相当する。
+クラスベースオブジェクト指向でいうところの、データ (プロパティ) に相当する。
 
 
 
 #### ▼ ```mutations:{}```
 
-データに状態（```state```）を設定するメソッドをいくつか持つ。
+データに状態 (```state```) を設定するメソッドをいくつか持つ。
 
 保守性の観点から、```mutations:{}```におくメソッド間は同期的に実行されるようにしておかなければならない。
 
@@ -844,7 +844,7 @@ module.exports = new Vuex.Store({
     },
 
     /* mutations
-    ・データの状態（state）を変化させるメソッドを持つ。
+    ・データの状態 (state) を変化させるメソッドを持つ。
 
 
     ・クラスベースオブジェクト指向のSetterメソッドに相当。
@@ -884,13 +884,13 @@ module.exports = new Vuex.Store({
 
     ・contextオブジェクトからcommit機能を取り出す必要がある。
 
-（※省略記法あり）
+ (※省略記法あり) 
     ・クラスベースオブジェクト指向のSetterメソッドに相当。
 
 
     */
     actions: {
-        // 省略記法（Argument destructuring)
+        // 省略記法 (Argument destructuring)
         mutate({commit}) {
             commit("mutate");
         }
@@ -902,7 +902,7 @@ module.exports = new Vuex.Store({
 
 ### コンポーネントからVuexに対するアクセス
 
-例えば、子コンポーネントのファイル（```template```タグを持つファイル）の下部に、以下を記述することにより、```Vuex.Store```メソッドとデータを受け渡しできるようになる。
+例えば、子コンポーネントのファイル (```template```タグを持つファイル) の下部に、以下を記述することにより、```Vuex.Store```メソッドとデータを受け渡しできるようになる。
 
 
 
@@ -962,7 +962,7 @@ module.exports = new Vuex.Store({
 
   module.exports = {
 
-    // イベントハンドラ関数を定義（※データを状態の変更を保持したくないもの）
+    // イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの) 
     computed: {
 
       /* mapGettersヘルパー。
@@ -978,7 +978,7 @@ module.exports = new Vuex.Store({
 
     },
 
-    // イベントハンドラ関数を定義（※データを状態の変更を保持したいもの）
+    // イベントハンドラ関数を定義 (※データを状態の変更を保持したいもの) 
     methods: {
 
       // mapMutationsヘルパー
@@ -1018,8 +1018,8 @@ Vueインスタンスの作成から破棄までの間に実行される関数�
 | 4    | mounted       | Vueインスタンスがマウントされた後                           |
 | 5    | beforeUpdate  | データ更新時の再レンダリング前                          |
 | 6    | updated       | データ更新時の再レンダリング後                          |
-| 7    | beforeDestroy | Vueインスタンスが削除される前（```$destroy```メソッド実行前） |
-| 8    | destroyed     | Vueインスタンスが削除された後（```$destroy```メソッド実行後） |
+| 7    | beforeDestroy | Vueインスタンスが削除される前 (```$destroy```メソッド実行前)  |
+| 8    | destroyed     | Vueインスタンスが削除された後 (```$destroy```メソッド実行後)  |
 
 > ↪️ 参考：https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF
 

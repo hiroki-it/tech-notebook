@@ -37,7 +37,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/cert-manager -
 
 ### Certificateとは
 
-認証局を使用して、秘密鍵と証明書署名要求に基づいて、```X.509```のSSL証明書（```.crt```ファイル）を作成する。
+認証局を使用して、秘密鍵と証明書署名要求に基づいて、```X.509```のSSL証明書 (```.crt```ファイル) を作成する。
 
 証明書自体は、紐づくSecretに割り当てられる。
 
@@ -122,7 +122,7 @@ spec:
 
 #### ▼ issuerRefとは
 
-SSL証明書を発行してもらう認証局（Issuer）を設定する。
+SSL証明書を発行してもらう認証局 (Issuer) を設定する。
 
 
 
@@ -148,7 +148,7 @@ spec:
 
 ### CertificateRequestとは
 
-秘密鍵から、証明書署名要求（```.csr```ファイル）を作成する。
+秘密鍵から、証明書署名要求 (```.csr```ファイル) を作成する。
 
 > ↪️ 参考：
 > 
@@ -161,7 +161,7 @@ spec:
 
 #### ▼ request
 
-証明書署名要求（```.csr```ファイル）の作成に必要な秘密鍵を設定する。
+証明書署名要求 (```.csr```ファイル) の作成に必要な秘密鍵を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -180,7 +180,7 @@ spec:
 
 #### ▼ isCAとは
 
-秘密鍵と証明書署名要求（```.csr```ファイル）に基づいて作成するSSL証明書が中間CA証明書であるか否か、を設定する。
+秘密鍵と証明書署名要求 (```.csr```ファイル) に基づいて作成するSSL証明書が中間CA証明書であるか否か、を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -326,7 +326,7 @@ spec:
 
 #### ▼ solvers
 
-名前解決の委譲先（例；AWS Route53、GCP Cloud DNS、など）を設定する。
+名前解決の委譲先 (例；AWS Route53、GCP Cloud DNS、など) を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2

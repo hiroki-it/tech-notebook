@@ -43,7 +43,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 | 登録しないPod例 | 理由                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 監視系のPod   | サイドカープロキシメッシュに登録するPodが増えると、その分```istio-proxy```コンテナが増える。そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。可観測性を高める必要のないPod（例：監視を責務に持つPod）は、サイドカープロキシメッシュに登録しないようにする。                                                                                                                                                                                                                                                                                               |
+| 監視系のPod   | サイドカープロキシメッシュに登録するPodが増えると、その分```istio-proxy```コンテナが増える。そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。可観測性を高める必要のないPod (例：監視を責務に持つPod) は、サイドカープロキシメッシュに登録しないようにする。                                                                                                                                                                                                                                                                                               |
 | Job配下のPod  | Job配下のPodに```istio-proxy```コンテナを挿入した場合、Pod内のコンテナが終了しても```istio-proxy```コンテナが終了せず、Pod自体が削除されない問題がある。Job配下のPodは、サイドカープロキシメッシュに登録しないようにする。どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、```istio-proxy```コンテナの『```localhost:15020/quitquitquit```』をコールするようなシェルスクリプトを実行する。<br>↪️ 参考：<br>・https://www.kabegiwablog.com/entry/2020/08/31/224827 <br>・https://github.com/istio/istio/issues/6324#issuecomment-760156652 <br>・https://youtu.be/2_Nan81j03o?t=1915 |
 
 <br>
@@ -60,7 +60,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 #### ▼ NodePort Serviceを選ぶ
 
-IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort Service、LoadBalancer Service）を選べる。
+IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。
 
 NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
 
@@ -119,7 +119,7 @@ spec:
 
 ### Istioリソースの使用可能範囲を限定する
 
-Istioリソースの```.spec.exportTo```キーでは『```.```（ドット）』を設定する。
+Istioリソースの```.spec.exportTo```キーでは『```.``` (ドット) 』を設定する。
 
 これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
@@ -256,7 +256,7 @@ Istiodコントロールプレーンをカナリア方式でアップグレー�
 ![istio_canary-upgrade_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_3.png)
 
 
-Istioでは、この状況をカナリア方式（一部のユーザーを新```istio-proxy```コンテナにルーティングして実地的に検証する）と呼称している。
+Istioでは、この状況をカナリア方式 (一部のユーザーを新```istio-proxy```コンテナにルーティングして実地的に検証する) と呼称している。
 
 ただし、```istio-proxy```コンテナをインジェクションしているNamespaceが```1```個しかない場合、全ての通信が新```istio-proxy```コンテナにルーティングされるため、カナリアにはならない。
 
@@ -274,13 +274,13 @@ Istioでは、この状況をカナリア方式（一部のユーザーを新```
 
 
 
-#### ▼ 手順（Helmを採用する場合）
+#### ▼ 手順 (Helmを採用する場合) 
 
 ```【１】```
 
 :    カスタムリソース定義を更新する。必要なカスタムリソース定義のマニフェストは、リポジトリで確認する必要がある。
 
-     Helmは、カスタムリソース定義の更新に対応していない（作成には対応している）ため、```kubectl```コマンドを使用してこれを更新する。
+     Helmは、カスタムリソース定義の更新に対応していない (作成には対応している) ため、```kubectl```コマンドを使用してこれを更新する。
 
 ```bash
 $ git clone https://github.com/istio/istio.git
@@ -309,7 +309,7 @@ $ kubectl get deployment -n istio-system
 
 NAME                READY   STATUS    RESTARTS   AGE
 istiod-1-0-0        1/1     Running   0          1m  # 1-0-0
-istiod-1-1-0        1/1     Running   0          1m  # 1-1-0（今回のアップグレード先）
+istiod-1-1-0        1/1     Running   0          1m  # 1-1-0 (今回のアップグレード先) 
 
 
 # Service
@@ -325,8 +325,8 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                                  WEBHOOKS   AGE
 istio-sidecar-injector-1-0-0          1          7m56s # 1-0-0
-istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0（今回のアップグレード先）
-istio-revision-tag-default            1          3m18s # 現在のリビジョン番号（1-0-0）を定義するdefaultタグを持つ
+istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0 (今回のアップグレード先) 
+istio-revision-tag-default            1          3m18s # 現在のリビジョン番号 (1-0-0) を定義するdefaultタグを持つ
 ```
 
 
@@ -342,7 +342,7 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 
      そこで、それらのNamespaceを指定する。
 
-     もしGitOpsツール（例：ArgoCD）でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+     もしGitOpsツール (例：ArgoCD) でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 
 ```bash
@@ -461,7 +461,7 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                                  WEBHOOKS   AGE
 istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0
-istio-revision-tag-default            1          3m18s # 現在のリビジョン番号（1-1-0）を定義するdefaultタグを持つ
+istio-revision-tag-default            1          3m18s # 現在のリビジョン番号 (1-1-0) を定義するdefaultタグを持つ
 ```
 
 > ↪️ 参考：
@@ -480,11 +480,11 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 メトリクスの名前空間を```istio-proxy```コンテナとした時の監視ポリシーは以下の通りである。
 
 
-| メトリクス                                              | 単位 | 説明                                                                                                                                                           | アラート条件例（合致したら発火） |
+| メトリクス                                              | 単位 | 説明                                                                                                                                                           | アラート条件例 (合致したら発火)  |
 |----------------------------------------------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|
-| 総リクエスト数（```istio_requests_total```）              | カウント | ```istio-proxy```コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                         |
-| 総gRPCリクエスト数（```istio_request_messages_total```）  | カウント | ```istio-proxy```コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                 |                         |
-| 総gRPCレスポンス数（```istio_response_messages_total```） | カウント | ```istio-proxy```コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                 |                         |
+| 総リクエスト数 (```istio_requests_total```)               | カウント | ```istio-proxy```コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                         |
+| 総gRPCリクエスト数 (```istio_request_messages_total```)   | カウント | ```istio-proxy```コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                 |                         |
+| 総gRPCレスポンス数 (```istio_response_messages_total```)  | カウント | ```istio-proxy```コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                 |                         |
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/metrics/
 

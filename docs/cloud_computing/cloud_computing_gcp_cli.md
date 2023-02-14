@@ -70,7 +70,7 @@ $ gcloud auth login
 
 #### ▼ login --update-adc
 
-```gcloud auth application-default login```コマンドと```gcloud auth login```コマンドを同時に実行する。これにより、GCP CLIのための認証情報（```~/.config/gcloud/application_default_credentials.json```ファイル）とGCP SDKのための認証情報が更新される。
+```gcloud auth application-default login```コマンドと```gcloud auth login```コマンドを同時に実行する。これにより、GCP CLIのための認証情報 (```~/.config/gcloud/application_default_credentials.json```ファイル) とGCP SDKのための認証情報が更新される。
 
 > ↪️ 参考：https://blog.pokutuna.com/entry/application-default-credentials
 
@@ -244,7 +244,7 @@ GKE Node Poolの設定を変更する。
 
 **＊実行例＊**
 
-ローリング方式（サージ方式）のアップグレードを有効化する。
+ローリング方式 (サージ方式) のアップグレードを有効化する。
 
 ```bash
 $ gcloud container node-pools update foo-node-pool \

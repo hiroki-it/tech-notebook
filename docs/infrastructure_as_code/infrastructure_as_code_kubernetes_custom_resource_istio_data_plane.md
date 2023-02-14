@@ -70,7 +70,7 @@ $ istio-iptables \
 
 ```【１】```
 
-:    ```ps```コマンドを使用して、```istio-proxy```コンテナのプロセスのID（PID）を取得する。
+:    ```ps```コマンドを使用して、```istio-proxy```コンテナのプロセスのID (PID) を取得する。
 
 ```bash
 # PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。
@@ -149,7 +149,7 @@ num  target     prot  opt  source     destination
 
 Pod外からアプリコンテナへのインバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。
 
-```istio-proxy```コンテナはこれを受信し、ローカルホスト（```http://localhost:<アプリコンテナのポート番号>```）のアプリコンテナにルーティングする。
+```istio-proxy```コンテナはこれを受信し、ローカルホスト (```http://localhost:<アプリコンテナのポート番号>```) のアプリコンテナにルーティングする。
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_inbound.png)
 
@@ -174,7 +174,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 #### ▼ ローカスホスト通信の場合
 
-アプリコンテナからローカルホスト（```http://localhost:<ポート番号>```）へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
+アプリコンテナからローカルホスト (```http://localhost:<ポート番号>```) へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
 
 ![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_self.png)
@@ -207,7 +207,7 @@ COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-```istio-proxy```コンテナは、アプリコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の```istio-proxy```コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。一方で、アプリコンテナを持つPod間の通信では、Pod内の```istio-proxy```コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+```istio-proxy```コンテナは、アプリコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の```istio-proxy```コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。一方で、アプリコンテナを持つPod間の通信では、Pod内の```istio-proxy```コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 > ↪️ 参考：
 >
@@ -228,7 +228,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 ```istio-init```コンテナはistio-iptablesをPodに適用する権限を持っている。
 
-しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている（同様にして、ユーザーが```iptables```コマンドを実行する時も```sudo```権限が必要である）。
+しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている (同様にして、ユーザーが```iptables```コマンドを実行する時も```sudo```権限が必要である) 。
 
 ```istio-init```コンテナの代替案として、istio-cniアドオンが提供されている。
 
@@ -252,7 +252,7 @@ istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機す
 
 ## 02-02. ```istio-proxy```コンテナ
 
-### pilot-agent（旧istio-agent）
+### pilot-agent (旧istio-agent) 
 
 #### ▼ pilot-agentとは
 

@@ -151,12 +151,12 @@ $staff_name = $_POST["name"];
 $staff_pass = $_POST["pass"];
 
 
-// HTMLとして変数の内容を出力する際、『<』『>』などの特殊文字をエスケープ（無害化）
+// HTMLとして変数の内容を出力する際、『<』『>』などの特殊文字をエスケープ (無害化) 
 $staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
 $staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
 
 
-// DBと接続（イコールの間にスペースを入れるとエラーになる）
+// DBと接続 (イコールの間にスペースを入れるとエラーになる) 
 $dsn = "mysql:dbname=kizukeba_pronami_php;
 host=kizukebapronamiphp
 charaset=UTF-8";
@@ -171,7 +171,7 @@ $sql="INSERT INTO mst_staff (name,password) VALUES (?,?)";
 $stmt = $dbh->prepare($sql);
 
 
-// 配列に値を格納（格納する値の順番と、SQLでの引数の順番は、合わせる必要がある）
+// 配列に値を格納 (格納する値の順番と、SQLでの引数の順番は、合わせる必要がある) 
 $data[] = $staff_name;
 $data[] = $staff_pass;
 

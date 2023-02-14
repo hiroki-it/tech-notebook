@@ -62,7 +62,7 @@ repository/
 
 ## 02. Applicationのデザインパターン
 
-### Appパターン（通常パターン）
+### Appパターン (通常パターン) 
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。
 
@@ -143,7 +143,7 @@ root-argocd-repository/
 
 各AppProjectの子Applicationを監視する親Applicationのこと。
 
-管理チームごとにApplication（app-parent-application、infra-parent-application）を作成すると良い。
+管理チームごとにApplication (app-parent-application、infra-parent-application) を作成すると良い。
 
 parent-applicationは、```default```プロジェクトや```root```プロジェクトに配置する。
 
@@ -226,7 +226,7 @@ infra-manifest-repository/
 
 ## 02. ディレクトリ構成ポリシー
 
-### 実行環境別（必須）
+### 実行環境別 (必須) 
 
 必須の構成である。
 
@@ -303,7 +303,7 @@ CDツールのServiceAccountを認証し、またClusterRoleの認可スコー�
 
 ### 通知
 
-CDパイプライン上で実行しているステップ（例：デプロイ、ロールバック、など）の結果が通知されるようにする。
+CDパイプライン上で実行しているステップ (例：デプロイ、ロールバック、など) の結果が通知されるようにする。
 
 通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。
 
@@ -405,7 +405,7 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 
 - argocd-serverを再起動する。親になるリソースを削除する必要がなく、apply先のClusterには影響がないため、安全な方法である。ArgoCDの使用者に周知しさえすれば問題ない。
-- 親になるリソース（Deployment、DaemonSet、など）を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。
+- 親になるリソース (Deployment、DaemonSet、など) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。
 
 <br>
 
@@ -441,9 +441,9 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 ### 設計ポリシー
 
-ArgoCD自体をArgoCDで管理することはできないため、手動やマニフェスト管理ツール（Helm、Kustomize）でArgoCDをアップグレードする必要がある。
+ArgoCD自体をArgoCDで管理することはできないため、手動やマニフェスト管理ツール (Helm、Kustomize) でArgoCDをアップグレードする必要がある。
 
-特にカスタムリソース定義は、マニフェスト管理ツールで更新できない（作成はできる）場合がある。
+特にカスタムリソース定義は、マニフェスト管理ツールで更新できない (作成はできる) 場合がある。
 
 そのため、チャートリポジトリにある該当のディレクトリ配下のカスタムリソース定義のマニフェストを指定し、直接的に更新するようにする。
 
@@ -452,7 +452,7 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 
 ## 08. 権限設定
 
-ArgoCDには、ダッシュボード上から特定の```kubectl```コマンド（```kubectl logs```コマンド、```kubectl exec```コマンド）を実行できる機能がある。
+ArgoCDには、ダッシュボード上から特定の```kubectl```コマンド (```kubectl logs```コマンド、```kubectl exec```コマンド) を実行できる機能がある。
 
 ダッシュボードの操作者にその権限がない場合、権限を絞る必要がある。
 

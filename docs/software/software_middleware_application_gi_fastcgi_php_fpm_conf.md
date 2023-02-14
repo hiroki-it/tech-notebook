@@ -31,7 +31,7 @@ $ apt-get install php-fpm
 
 <br>
 
-## 02. 設定ファイルの種類（※ Dockerの場合）
+## 02. 設定ファイルの種類 (※ Dockerの場合) 
 
 ### ```/usr/local/etc/php-fpm.conf```ファイル
 
@@ -102,7 +102,7 @@ PHP-FPMの```www```プロセスのプールを設定する。
 
 ```php.ini```ファイルによって読み込まれ、```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。
 
-NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で、プロセスのユーザー名を『```www-data```』とする必要がある。
+NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル (```/etc/nginx/nginx.conf```ファイル) とPHP-FPMの設定ファイル (```/usr/local/etc/php-fpm.d/www.conf```ファイル) の両方で、プロセスのユーザー名を『```www-data```』とする必要がある。
 
 補足として、『```www-data```』は```apache```プロセスのユーザー名のデフォルト値である。
 
@@ -140,7 +140,7 @@ PHP-FPMをコンテナで稼働させるために必要な項目を設定する�
 
 ```ini
 [global]
-; /dev/stderr（標準エラー出力）へのシンボリックリンクになっている。
+; /dev/stderr (標準エラー出力) へのシンボリックリンクになっている。
 error_log = /proc/self/fd/2
 
 ; https://github.com/docker-library/php/pull/725#issuecomment-443540114
@@ -148,7 +148,7 @@ log_limit = 8192
 
 [www]
 ; if we send this to /proc/self/fd/1, it never appears
-; /dev/stderr（標準エラー出力）へのシンボリックリンクになっている。
+; /dev/stderr (標準エラー出力) へのシンボリックリンクになっている。
 access.log = /proc/self/fd/2
 
 clear_env = no
@@ -381,7 +381,7 @@ PHPの```ini```ファイルで設定されたbool値以外のオプションを�
 
 #### ▼ php_admin_value[error_log]
 
-エラーログの出力先を設定する。開発環境ではエラーログファイル（```/var/log/php-fpm/www-error.log```）に出力し、本番環境では標準エラー出力に出力すると良い。
+エラーログの出力先を設定する。開発環境ではエラーログファイル (```/var/log/php-fpm/www-error.log```) に出力し、本番環境では標準エラー出力に出力すると良い。
 
 ```ini
 [www]
@@ -439,7 +439,7 @@ PHPの```ini```ファイルで設定されたbool値以外のオプションを�
 
 デフォルト値は```files```形式でサーバー内に保存する。
 
-```redis```レコード形式でセッションDB（例：PHP Redis、ElastiCache Redisなど）に保存するように設定もできる。
+```redis```レコード形式でセッションDB (例：PHP Redis、ElastiCache Redisなど) に保存するように設定もできる。
 
 
 

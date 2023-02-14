@@ -530,7 +530,7 @@ $ aws cloudwatch set-alarm-state \
 
 全てのロググループに対して、一日当たりの収集サイズを```start-time```から```end-time```の間で取得する。
 
-```--dimensions```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただし、やってみたけどうまくいかず）。
+```--dimensions```オプションを使用して、特定のディメンション (ロググループ) に対して集計を実行もできる (ただし、やってみたけどうまくいかず) 。
 
 
 ```bash
@@ -596,7 +596,7 @@ $ aws resourcegroupstaggingapi get-resources \
 
 > ↪️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
-AWSリソースの種類（ec2、alb、など）を指定して、特定のAWSリソースのみを取得することもできる。
+AWSリソースの種類 (ec2、alb、など) を指定して、特定のAWSリソースのみを取得することもできる。
 
 
 
@@ -773,7 +773,7 @@ $ aws sts get-caller-identity --profile foo
 
 <br>
 
-### Systems Manager（旧SSM）
+### Systems Manager (旧SSM) 
 
 #### ▼ get-parameters-by-path
 
@@ -832,7 +832,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 AWSにSSOでログインする。
 
-認証フェーズを外部（Google Apps、AzureAD、KeyCloak、など）に委譲し、AWSでは認可フェーズのみを実施する。
+認証フェーズを外部 (Google Apps、AzureAD、KeyCloak、など) に委譲し、AWSでは認可フェーズのみを実施する。
 
 追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
 

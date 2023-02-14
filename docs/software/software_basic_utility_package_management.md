@@ -204,7 +204,7 @@ repolist: 34,344
 
 #### ▼ リポジトリとは
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（RPM、EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
+CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ (RPM、EPEL、Remi) から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
 
 #### ▼ リポジトリ自体のインストール
 
@@ -281,7 +281,7 @@ $ yum install -y yum-utils
 $ yum-config-manager --enable remi-php74
 
 
-# CentOS8の場合（dnf moduleコマンドを使用）
+# CentOS8の場合 (dnf moduleコマンドを使用) 
 $ dnf module enable php:remi-7.4
 ```
 
@@ -475,7 +475,7 @@ $ brew install asdf
 
 #### ▼ global
 
-ホームディレクトリ（```~/```）に```.tool-version```ファイルを作成する。
+ホームディレクトリ (```~/```) に```.tool-version```ファイルを作成する。
 
 ```bash
 $ asdf global <プラグイン名> 1.0.0
@@ -527,14 +527,14 @@ $ asdf plugin remove <プラグイン名>
 $ asdf plugin list all | grep <プラグイン名>
 
  
-# プラグインをローカルマシンに登録する。（まだインストールされていない）
+# プラグインをローカルマシンに登録する。 (まだインストールされていない) 
 $ asdf plugin add <プラグイン名> <URL>
 ```
 
 #### ▼ install
 
 ```bash
-# プラグインをローカルマシンに登録する。（まだインストールされていない）
+# プラグインをローカルマシンに登録する。 (まだインストールされていない) 
 $ asdf plugin add <プラグイン名> <URL>
 
 
@@ -558,11 +558,11 @@ $ asdf install
 
 ## 04. 言語バージョン管理ユーティリティ
 
-### phpenv（PHP）
+### phpenv (PHP) 
 
 <br>
 
-### pyenv（Python）
+### pyenv (Python) 
 
 #### ▼ which
 
@@ -574,7 +574,7 @@ $ pyenv which python
 
 <br>
 
-### rbenv（Ruby）
+### rbenv (Ruby) 
 
 調査中...
 

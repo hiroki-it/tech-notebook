@@ -37,14 +37,14 @@ Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management�
 
 #### ▼ Anthos GKE Clusterとは
 
-GKE Cluster（コントロールプレーンNode、ワーカーNode、を含む）から構成される。
+GKE Cluster (コントロールプレーンNode、ワーカーNode、を含む) から構成される。
 
 
 
 #### ▼ アタッチCluster
 
 
-AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境（AWS EKS、Azure AKS、RKE、K3s）のClusterに委譲する。
+AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境 (AWS EKS、Azure AKS、RKE、K3s) のClusterに委譲する。
 
 AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
 
@@ -99,7 +99,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 #### ▼ Anthos Config Managementとは
 
-一連のacm-operator（cluster-operator、など）から構成される。
+一連のacm-operator (cluster-operator、など) から構成される。
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
 
@@ -109,7 +109,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 #### ▼ acm-operatorの仕組み
 
-一連のacm-operator（cluster-operator、など）は、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
+一連のacm-operator (cluster-operator、など) は、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
 
@@ -126,11 +126,11 @@ cluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを�
 
 Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。
 
-Anthos GKE Clusterが、GCP以外（オンプレミス、ベアメタル、他クラウドプロバイダー）にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。
+Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。
 
 またkube-controller-managerはcluster-operatorを反復的に実行する。
 
-これにより、Anthos GKE Clusterはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
+これにより、Anthos GKE Clusterはカスタムリソース定義の宣言通りに定期的に修復される (reconciliationループ) 。
 
 > ↪️ 参考：https://www.jetstack.io/blog/anthos-aws/
 
@@ -172,9 +172,9 @@ cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネット�
 ### on-オンプレミスの仕組み
 
 
-on-オンプレミスは、各Clusterを作成するワークステーション（Clusterの作成後に削除される）、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。
+on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。
 
-ワークステーションにて、GCPのAPIを介してオンプレミス（例：VMWare）のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
+ワークステーションにて、GCPのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
@@ -192,7 +192,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 #### ▼ マルチClusterタイプ
 
 
-マルチClusterタイプのon-ベアメタルは、ワークステーション（仮想サーバー）、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4```（トランスポート層）のロードバランサーから構成される。
+マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4``` (トランスポート層) のロードバランサーから構成される。
 
 GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
@@ -206,10 +206,10 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
-#### ▼ スタンドアローンClusterタイプ（ハイブリッドタイプ）
+#### ▼ スタンドアローンClusterタイプ (ハイブリッドタイプ) 
 
 
-スタンドアローンClusterタイプ（ハイブリッドタイプ）のon-ベアメタルは、ワークステーション（仮想サーバー）、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。
+スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。
 
 ワークステーションにて、GCPのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
@@ -229,7 +229,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 #### ▼ ワークステーションとは
 
-Anthos Clusterの作成時やアップグレード時に、```bmctl```コマンドはワークステーション（仮想サーバー）を構築し、ワークステーション上でKindを起動する。
+Anthos Clusterの作成時やアップグレード時に、```bmctl```コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
 
 Kindはコンテナを構築し、そのコンテナ内でブートストラップクラスターを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。
 
@@ -269,9 +269,9 @@ GCP環境上にAnthos GKE Clusterを作成する。
 
 ### on-クラウドプロバイダーの仕組み
 
-GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure）のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。
+GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。
 
-ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境（例：AWS EKS、Azure AKS）を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
+ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境 (例：AWS EKS、Azure AKS) を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 
 
 

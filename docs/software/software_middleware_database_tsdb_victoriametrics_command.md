@@ -105,7 +105,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 メトリクスの保管期間を設定する。
 
-```h(ours)```、```d(ays)```、```w(eeks)```、```y(ears)```、単位なし（```month```）で期間の単位を指定できる。
+```h(ours)```、```d(ays)```、```w(eeks)```、```y(ears)```、単位なし (```month```) で期間の単位を指定できる。
 
 
 

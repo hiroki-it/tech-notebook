@@ -156,7 +156,7 @@ spec:
 
 #### ▼ requestとは
 
-base64方式でエンコードした証明書署名要求（```.csr```ファイル）を設定する。
+base64方式でエンコードした証明書署名要求 (```.csr```ファイル) を設定する。
 
 
 
@@ -184,7 +184,7 @@ spec:
 > - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
 > - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
 
-定義したCertificateSigningRequestを承認し、SSL証明書（```.crt```）を作成するためには、```kubectl certificate approve```コマンドを使用する。
+定義したCertificateSigningRequestを承認し、SSL証明書 (```.crt```) を作成するためには、```kubectl certificate approve```コマンドを使用する。
 
 
 
@@ -381,7 +381,7 @@ preferences: {}
 
 #### ▼ usersとは
 
-kube-apiserverのクライアント（特に```kubectl```コマン実行者）のUserAccountの情報を設定する。
+kube-apiserverのクライアント (特に```kubectl```コマン実行者) のUserAccountの情報を設定する。
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -494,7 +494,7 @@ data:
 
 #### ▼ ファイルに管理
 
-パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
+パイプ (``` |```) を使用すれば、ファイルを変数として設定できる。
 
 ```yaml
 apiVersion: v1
@@ -792,7 +792,7 @@ spec:
 
 ### .spec.template
 
-#### ▼ templateとは（設定項目はPodと同じ）
+#### ▼ templateとは (設定項目はPodと同じ) 
 
 Deploymentで維持管理するPodのテンプレートを設定する。
 
@@ -1196,7 +1196,7 @@ spec:
 |-----------------|------------------------|-----------------------------------------------------------------|
 | パス名の一致       | Prefix                 | 最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。 |
 | パス名の完全一致   | Exact                  | 指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。                     |
-| IngressClassによる | ImplementationSpecific | IngressClass（例：Nginx）の設定に応じてルールを自動的に設定する。              |
+| IngressClassによる | ImplementationSpecific | IngressClass (例：Nginx) の設定に応じてルールを自動的に設定する。              |
 
 
 ```yaml
@@ -1664,7 +1664,7 @@ spec:
 
 ### .spec.initContainers
 
-```.spec.containers```キーで設定したコンテナよりも先に起動するコンテナ（InitContainer）を設定する。
+```.spec.containers```キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
 
 
 ```yaml
@@ -1798,7 +1798,7 @@ PersistentVolumeの作成先とするNodeを設定する。
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
-作成先のNodeの```.metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
+作成先のNodeの```.metadata.labels```キーを指定するための条件 (```In```、```NotIn```、```Exists```) を設定する。
 
 
 
@@ -1859,7 +1859,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
 ```
 
-#### ▼ Recycle（非推奨）
+#### ▼ Recycle (非推奨) 
 
 PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。
 
@@ -2251,7 +2251,7 @@ spec:
 
 #### ▼ envFrom
 
-```.spec.volumes.secret```キー（ファイルとしてコンテナにマウントする）とは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
+```.spec.volumes.secret```キー (ファイルとしてコンテナにマウントする) とは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
 
 
 
@@ -2342,7 +2342,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 | キー名           | 説明                           | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |----------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>↪️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                                 |
-| ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>↪️ 参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>↪️ 参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
+| ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>↪️ 参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>↪️ 参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
 > ↪️ 参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
@@ -2384,8 +2384,8 @@ Allocatable:
 
 | ハードウェアリソース名 | 単位                                                  |
 |--------------|-------------------------------------------------------|
-| ```cpu```    | m：millicores（```1```m = ```1``` ユニット = ```0.001```コア） |
-| ```memory``` | Mi：mebibyte（```1```Mi = ```1.04858```MB）              |
+| ```cpu```    | m：millicores (```1```m = ```1``` ユニット = ```0.001```コア)  |
+| ```memory``` | Mi：mebibyte (```1```Mi = ```1.04858```MB)               |
 
 **＊実装例＊**
 
@@ -2492,7 +2492,7 @@ spec:
 
 #### ▼ enableServiceLinks
 
-Serviceの宛先情報（IPアドレス、プロトコル、ポート番号）に関する環境変数をPod内に出力するかどうかを設定する。
+Serviceの宛先情報 (IPアドレス、プロトコル、ポート番号) に関する環境変数をPod内に出力するかどうかを設定する。
 
 
 
@@ -2795,7 +2795,7 @@ Pod内のコンテナのライフサイクルの再起動ポリシーを設定�
 
 #### ▼ Always
 
-コンテナが停止した場合、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）か否かに関わらず、常にコンテナを再起動する。
+コンテナが停止した場合、これが正常 (終了ステータス```0```) か異常 (終了ステータス```1```) か否かに関わらず、常にコンテナを再起動する。
 
 
 
@@ -2831,7 +2831,7 @@ spec:
 
 #### ▼ OnFailure
 
-コンテナが停止した場合、これが異常（終了ステータス```1```）の場合にのみ、常にコンテナを再起動する。
+コンテナが停止した場合、これが異常 (終了ステータス```1```) の場合にのみ、常にコンテナを再起動する。
 
 
 
@@ -3248,7 +3248,7 @@ spec:
 
 #### ▼ secret
 
-```.spec.containers[].envFrom```キー（環境変数としてコンテナに出力する）とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
+```.spec.containers[].envFrom```キー (環境変数としてコンテナに出力する) とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
 
 ConfigMapは、別の```.spec.volumes.configMap```キーで設定することに注意する。
 
@@ -3400,7 +3400,7 @@ rules:
 
 #### ▼ resourcesとは
 
-アクション可能なKubernetesリソースの範囲（認可スコープ）を設定する。
+アクション可能なKubernetesリソースの範囲 (認可スコープ) を設定する。
 
 
 
@@ -3421,7 +3421,7 @@ rules:
 
 #### ▼ verbsとは
 
-実行可能なアクション範囲（認可スコープ）を設定する。
+実行可能なアクション範囲 (認可スコープ) を設定する。
 
 
 
@@ -3507,7 +3507,7 @@ metadata:
 subjects:
   - apiGroup: ""
     kind: ServiceAccount # ServiceAccountに紐づける。
-    name: foo-service-account # ユーザー名（system:useraccounts:foo-service-account）でもよい。
+    name: foo-service-account # ユーザー名 (system:useraccounts:foo-service-account) でもよい。
 ```
 
 ```yaml
@@ -3582,7 +3582,7 @@ data:
 
 #### ▼ 機密なファイルの管理
 
-パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
+パイプ (``` |```) を使用すれば、ファイルを変数として設定できる。
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
@@ -3649,7 +3649,7 @@ stringData:
 
 #### ▼ 機密なファイルの管理
 
-パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
+パイプ (``` |```) を使用すれば、ファイルを変数として設定できる。
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/#specify-unencoded-data-when-creating-a-secret
 
@@ -4052,7 +4052,7 @@ spec:
     - name: http-foo
       protocol: TCP
       port: 8080 # Serviceが待ち受けるポート番号
-      targetPort: 8080 # ルーティング先のポート番号（containerPort名でもよい）
+      targetPort: 8080 # ルーティング先のポート番号 (containerPort名でもよい) 
   selector:
     app.kubernetes.io/app: foo-pod
   # clusterIP: *.*.*.*
@@ -4062,7 +4062,7 @@ spec:
 
 NodePort Serviceを設定する。
 
-Serviceが待ち受けるポート番号とは別に、NodeのNICで待ち受けるポート番号（```30000``` 〜 ```32767```）を指定する。
+Serviceが待ち受けるポート番号とは別に、NodeのNICで待ち受けるポート番号 (```30000``` 〜 ```32767```) を指定する。
 
 これを指定しない場合、コントロールプレーンNodeがランダムでポート番号を決める。
 
@@ -4082,7 +4082,7 @@ spec:
       protocol: TCP
       nodePort: 30000 # 指定しなければ、コントロールプレーンNodeがランダムで決める。
       port: 8080 # Serviceが待ち受けるポート番号
-      targetPort: 8080 # ルーティング先のポート番号（containerPort名でもよい）
+      targetPort: 8080 # ルーティング先のポート番号 (containerPort名でもよい) 
   selector:
     app.kubernetes.io/app: foo-pod
 ```
@@ -4118,7 +4118,7 @@ spec:
     - name: http-foo
       protocol: TCP
       port: 8080 # Serviceが待ち受けるポート番号
-      targetPort: 8080 # ルーティング先のポート番号（containerPort名でもよい）
+      targetPort: 8080 # ルーティング先のポート番号 (containerPort名でもよい) 
   selector:
     app.kubernetes.io/app: foo-pod
 # Kubernetesが自動的に追加するキー
@@ -4232,7 +4232,7 @@ spec:
 
 <br>
 
-### .spec.template（設定項目はPodと同じ）
+### .spec.template (設定項目はPodと同じ) 
 
 #### ▼ templateとは
 

@@ -412,7 +412,7 @@ output "private_datastore_subnet_ids" {
 
 #### ▼ スカラー型```output```ブロック
 
-インデックスキー（```0```番目）を指定した場合、スカラー型になる。
+インデックスキー (```0```番目) を指定した場合、スカラー型になる。
 
 
 
@@ -564,7 +564,7 @@ variable "waf_blocked_user_agents" {
 
 有効な値を設定してしまうと可読性が悪くなる。
 
-そのため、無効値（例：boolean型であれば```false```、string型であれば空文字、list型であれば空配列、など）を設定する。
+そのため、無効値 (例：boolean型であれば```false```、string型であれば空文字、list型であれば空配列、など) を設定する。
 
 
 
@@ -831,7 +831,7 @@ resource "aws_instance" "server" {
 }
 ```
 
-注意点として、```count```関数を使用すると、他のブロック（例：```resource```ブロック、```output```ブロック）で設定値にアクセスする時にインデックス番号```0```を指定する必要がある。
+注意点として、```count```関数を使用すると、他のブロック (例：```resource```ブロック、```output```ブロック) で設定値にアクセスする時にインデックス番号```0```を指定する必要がある。
 
 ```terraform
 resource "foo" "server" {
@@ -926,7 +926,7 @@ resource "aws_kms_replica_key" "foo" {
 
 #### ▼ ```count```関数で作成されなかった```output```ブロックは```null```
 
-```count```関数で作成されたリソースに対してのみ```output```ブロックで値を出力し、もしリソースがなければ```null```や空文字（```""```）を出力するようにする。
+```count```関数で作成されたリソースに対してのみ```output```ブロックで値を出力し、もしリソースがなければ```null```や空文字 (```""```) を出力するようにする。
 
 補足として、```count```関数の結果の検知には、```length```関数を使用する。
 
@@ -1539,7 +1539,7 @@ resource "aws_security_group" "ec2" {
   ...
 
   dynamic ingress {
-    # 環境が複数あるとする。（prd-1、prd-2、stg-1、stg-2）
+    # 環境が複数あるとする。 (prd-1、prd-2、stg-1、stg-2) 
     # 環境名がprdという文字を含むキーがあった場合、全てprdキーの方を使用する。
     for_each = length(regexall("prd", var.env)) > 0 ? var.security_group_ingress_ec2_ssh.prd : var.security_group_ingress_ec2_ssh.stg
     content {
@@ -1720,7 +1720,7 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
       "options": {
         # ロググループ名
         "awslogs-group": "/prd-foo/laravel/log",
-        # スタックトレースのグループ化（同時刻ログのグループ化）
+        # スタックトレースのグループ化 (同時刻ログのグループ化) 
         "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
         # リージョン
         "awslogs-region": "ap-northeast-1",

@@ -78,22 +78,22 @@ sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destinati
 
 #### ▼ increase
 
-rate関数のラッパーであり、rate関数の結果（平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
+rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間あたりの増加数) を算出する。
 
 
 
 > ↪️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 ```bash
-# rate関数に期間（今回は5m）を自動的に掛けた数値を算出する。
+# rate関数に期間 (今回は5m) を自動的に掛けた数値を算出する。
 increase(foo_metrics[5m])
-# foo_metricsの平均増加率（%/秒）を集計する。
+# foo_metricsの平均増加率 (%/秒) を集計する。
 = rate(foo_metrics[1h]) * 5 * 60
 ```
 
 #### ▼ rate
 
-平均増加率（%/秒）を算出する。
+平均増加率 (%/秒) を算出する。
 
 常に同じ割合で増加していく場合、横一直線のグラフになる。
 
@@ -102,16 +102,16 @@ increase(foo_metrics[5m])
 > ↪️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 ```bash
-# 直近1時間に関して、foo_metricsの平均増加率（%/秒）を集計する。
+# 直近1時間に関して、foo_metricsの平均増加率 (%/秒) を集計する。
 rate(foo_metrics[1h])
 ```
 
-#### ▼ ```[]```（ウィンドウ）
+#### ▼ ```[]``` (ウィンドウ) 
 
-直近、何時間（分、秒）のデータポイントを集計するかを設定する。数値を大きくするほど、なだらかになる。
+直近、何時間 (分、秒) のデータポイントを集計するかを設定する。数値を大きくするほど、なだらかになる。
 
 ```bash
-# 直近5分に関して、foo_metricsの平均増加率（%/秒）を集計する。
+# 直近5分に関して、foo_metricsの平均増加率 (%/秒) を集計する。
 rate(foo_metrics[5m])
 ```
 
@@ -148,7 +148,7 @@ rate(foo_metrics[5m])
 
 ## 02. 標準メトリクス
 
-### ローカルストレージのメトリクス（```prometheus_tsdb_*```）
+### ローカルストレージのメトリクス (```prometheus_tsdb_*```) 
 
 #### ▼ prometheus_tsdb_head_samples_appended_total
 
@@ -164,7 +164,7 @@ Prometheusが収集したデータポイントの合計数を表す。
 
 #### ▼ prometheus_tsdb_compaction_chunk_size_bytes_sum
 
-Prometheusが作成したチャンクの合計サイズ（KB）を表す。
+Prometheusが作成したチャンクの合計サイズ (KB) を表す。
 
 
 
@@ -190,9 +190,9 @@ Prometheusが作成したチャンクの合計数を表す。
 
 ### データポイントの各種数値の算出
 
-#### ▼ データポイントの平均サイズ（KB/秒）の増加率
+#### ▼ データポイントの平均サイズ (KB/秒) の増加率
 
-Prometheusで収集されたデータポイントの平均サイズ（KB/秒）の増加率を分析する。
+Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を分析する。
 
 
 
@@ -201,9 +201,9 @@ rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 ```
 
-#### ▼ データポイントの合計数（個/秒）の増加率
+#### ▼ データポイントの合計数 (個/秒) の増加率
 
-Prometheusで収集されたデータポイントの合計数（個/秒）の増加率を分析する。
+Prometheusで収集されたデータポイントの合計数 (個/秒) の増加率を分析する。
 
 
 
@@ -211,9 +211,9 @@ Prometheusで収集されたデータポイントの合計数（個/秒）の増
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
-#### ▼ データポイントの合計サイズ（KB/秒）の増加率
+#### ▼ データポイントの合計サイズ (KB/秒) の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。
+Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の増加率を分析する。
 
 計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
@@ -227,9 +227,9 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
-#### ▼ データポイントの合計サイズ（KB/日）の推移
+#### ▼ データポイントの合計サイズ (KB/日) の推移
 
-Prometheusで収集されたデータポイントの合計サイズ（KB/日）の推移を分析する。
+Prometheusで収集されたデータポイントの合計サイズ (KB/日) の推移を分析する。
 
 
 
@@ -244,9 +244,9 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 ### ストレージの各種数値の算出
 
-#### ▼ ローカルストレージの必要サイズ（KB/日）
+#### ▼ ローカルストレージの必要サイズ (KB/日) 
 
-データポイントの合計サイズ（KB/日）とローカルストレージの部品ファイルの合計を分析する。
+データポイントの合計サイズ (KB/日) とローカルストレージの部品ファイルの合計を分析する。
 
 ローカルストレージの部品ファイル分で、```20```%のサイズが必要になる。
 
@@ -269,9 +269,9 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 > - https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4
 > - https://gist.github.com/mikejoh/c172b2400909d33c37199c9114df61ef
 
-#### ▼ リモートストレージの必要サイズ（KB/日）
+#### ▼ リモートストレージの必要サイズ (KB/日) 
 
-Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ（KB/日）を分析する。
+Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を分析する。
 
 この結果から、リモートストレージの必要サイズを推測できる。
 
@@ -368,7 +368,7 @@ A
 
 #### ▼ ディスクのI/OによるCPU使用率
 
-ディスクのI/OによるCPU使用率（ディスクのI/OがNodeのCPUをどの程度使用しているか）を取得する。
+ディスクのI/OによるCPU使用率 (ディスクのI/OがNodeのCPUをどの程度使用しているか) を取得する。
 
 ```iostat```コマンドの```%util```指標と同じである。
 

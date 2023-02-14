@@ -31,7 +31,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | 1  | リクエストを受信する。                                         |                                                                                                     |
 | 2  | ```index.php```ファイル                                   | エントリーポイントから処理が開始する。                                                                             |
 | 3  | Autoload                                              | ```autoload.php```ファイルにて、パッケージを自動的にロードする。                                                        |
-| 4  | Load App                                              | ```bootstrap/app.php```ファイルにて、ServiceContainer（```Illuminate\Foundation\Application.php```）を実行する。 |
+| 4  | Load App                                              | ```bootstrap/app.php```ファイルにて、ServiceContainer (```Illuminate\Foundation\Application.php```) を実行する。 |
 | 5  | Http Kernel                                           | Kernelを実行する。                                                                                      |
 | 6  | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。        |
 | 7  | Middleware                                            | BeforeMiddlewareを実行する。                                                                            |
@@ -222,22 +222,22 @@ return [
 
     "connections" => [
 
-        // DB接続情報（SQLite）
+        // DB接続情報 (SQLite) 
         "sqlite" => [
 
         ],
 
-        // DB接続情報（MySQL）
+        // DB接続情報 (MySQL) 
         "mysql"  => [
 
         ],
 
-        // DB接続情報（pgSQL）
+        // DB接続情報 (pgSQL) 
         "pgsql"  => [
 
         ],
 
-        // DB接続情報（SQLSRV）
+        // DB接続情報 (SQLSRV) 
         "sqlsrv" => [
 
         ],
@@ -834,7 +834,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
 ```bash
-[2021-09-00 00:00:00] local.ERROR: *****（エラーメッセージ）
+[2021-09-00 00:00:00] local.ERROR: ***** (エラーメッセージ) 
 [stacktrace]
 #0 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(652): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(486): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
@@ -847,7 +847,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 #62 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #63 {main}
 
-[previous exception] [object] *****（エラーメッセージ）
+[previous exception] [object] ***** (エラーメッセージ) 
 [stacktrace]
 #0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(114): Doctrine\\DBAL\\Driver\\PDO\\Exception::new(Object(PDOException))
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
@@ -860,7 +860,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 #65 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #66 {main}
 
-[previous exception] [object] *****（エラーメッセージ）
+[previous exception] [object] ***** (エラーメッセージ) 
 [stacktrace]
 #0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(112): PDOStatement->execute(NULL)
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
@@ -948,7 +948,7 @@ class Handler extends ExceptionHandler
 
 #### ▼ Facadeとは
 
-Facadeに登録されたクラス（Facadeクラス）とServiceContainerを繋ぐ静的プロキシとして働く。
+Facadeに登録されたクラス (Facadeクラス) とServiceContainerを繋ぐ静的プロキシとして働く。
 
 メソッドをコールできるようになる。
 
@@ -987,7 +987,7 @@ $foo->method();
 
 静的メソッドの記法でコールできる。
 
-ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう。
+ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。
 
 例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
 
@@ -1498,7 +1498,7 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 
 
-#### ▼ ローカルストレージ（非公開）の場合
+#### ▼ ローカルストレージ (非公開) の場合
 
 ファイルを```/storage/app```ディレクトリ配下に保存する。
 
@@ -1557,7 +1557,7 @@ Storage::disk("local")->put("file.txt", "file.txt");
 Storage::put("file.txt", "file.txt");
 ```
 
-#### ▼ ローカルストレージ（公開）の場合
+#### ▼ ローカルストレージ (公開) の場合
 
 ファイルを```storage/app/public```ディレクトリ配下に保存する。
 
@@ -1639,7 +1639,7 @@ class FileSystemPublicController extends Controller
         $file_path = "/path/to/public/foo.jpg"
         $contents = file_get_contents($file_path);
 
-        // 保存先パス（ディレクトリ+ファイル名）
+        // 保存先パス (ディレクトリ+ファイル名) 
         $saved_file_path = "/images/foo.jpg";
 
         // foo.jpgを『/images/foo.jpg』に保存
@@ -1739,7 +1739,7 @@ Validateファサードの```make```メソッドを使用して、ルールを�
 
 この時、第一引数で、バリデーションを行うリクエストデータを渡す。
 
-ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+ルールに反すると、1つ目のルール名 (例：```required```) に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
 
 次に、```fails```メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
 
@@ -1989,7 +1989,7 @@ class FooController extends Controller
 
 #### ▼ Viewテンプレートのレスポンス
 
-返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ（テンプレート、array型データ、ステータスコードなど）を設定する。
+返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ (テンプレート、array型データ、ステータスコードなど) を設定する。
 
 また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。
 
@@ -2344,7 +2344,7 @@ class DatabaseSeeder extends Seeder
 
 ```validated```メソッドと間違わないように注意する。
 
-ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+ルールに反すると、1つ目のルール名 (例：```required```) に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
 
 バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
@@ -2485,7 +2485,7 @@ class FooController extends Controller
 
 FormRequestクラスの```rules```メソッドを使用して、ルールを定義する。
 
-ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+ルールに反すると、1つ目のルール名 (例：```required```) に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
 
 
 
@@ -2914,7 +2914,7 @@ public function authorize()
 
 一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。
 
-これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+これらのクラスはClosure (無名関数) として、```next```変数に格納されている。
 
 
 
@@ -2945,11 +2945,11 @@ class FooBeforeMiddleware
 
 #### ▼ AfterMiddleware
 
-コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる。
+コントローラーメソッドのレスポンスの実行後 (テンプレートのレンダリングを含む) に実行する処理を設定できる。
 
 あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。
 
-これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+これらのクラスはClosure (無名関数) として、```next```変数に格納されている。
 
 
 
@@ -3343,7 +3343,7 @@ return [
     "channels" => [
         "stack" => [
             "driver"            => "stack",
-            // 複数チャンネルを設定できる。（例）["single", "stack"]
+            // 複数チャンネルを設定できる。 (例) ["single", "stack"]
             "channels"          => ["single"],
             "ignore_exceptions" => false,
         ],
@@ -3944,7 +3944,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 ```via```メソッドで受信チャンネルを定義する。
 
-この時、Laravelがデフォルトで用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。
+この時、Laravelがデフォルトで用意しているチャンネル (Mail、SMS、Slackチャンネル、Databaseチャンネル) 以外に送信したい場合、Channelクラスを定義する必要がある。
 
 複数の値を設定した場合は、それぞれに通信が送信される。
 
@@ -4168,7 +4168,7 @@ class TfaTokenNotification extends Notification
 
 <br>
 
-### 受信チャンネル（通知方法）
+### 受信チャンネル (通知方法) 
 
 #### ▼ Channel
 
@@ -4435,9 +4435,9 @@ class FooController extends Controller
 }
 ```
 
-#### ▼ 複数のEloquentモデル（Collection型）の配列化
+#### ▼ 複数のEloquentモデル (Collection型) の配列化
 
-複数のEloquentモデル（Collection型）を配列に変換する。
+複数のEloquentモデル (Collection型) を配列に変換する。
 
 
 
@@ -4904,9 +4904,9 @@ class DatabaseSeeder extends Seeder
 
 | 用途の種類                                                  | 説明                                                                       |
 |------------------------------------------------------------|--------------------------------------------------------------------------|
-| AppServiceProvider                                         | ・ServiceContainerへのクラスのバインド（登録）<br>・ServiceContainerからのインスタンスのリゾルブ（作成） |
-| MacroServiceProvider                                       | ServiceContainerへのメソッドのバインド（登録）                                          |
-| RouteServiceProvider<br>（```app.php```、```web.php```も使用） | ルーティングとコントローラーの対応関係の定義                                               |
+| AppServiceProvider                                         | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成)  |
+| MacroServiceProvider                                       | ServiceContainerへのメソッドのバインド (登録)                                           |
+| RouteServiceProvider<br> (```app.php```、```web.php```も使用)  | ルーティングとコントローラーの対応関係の定義                                               |
 | EventServiceProvider                                       | EventListenerとEventhandler関数の対応関係の定義                               |
 
 #### ▼ ServiceProviderのコール
@@ -5173,7 +5173,7 @@ Laravelではクラスが自動的にバインドされ、これのインスタ�
 
 これを使用して、インターフェースをバインドし、実装クラスをリゾルブできるようにする。
 
-この方法は、上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ。
+この方法は、上位レイヤーが抽象に依存することが必要な場面 (例：依存性逆転の原則) で役立つ。
 
 
 
@@ -5771,7 +5771,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 ### 要素の共通化
 
-#### ▼ ```@include```（サブビュー）
+#### ▼ ```@include``` (サブビュー) 
 
 読み込んだファイル全体を出力する。
 
@@ -5779,7 +5779,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 ```@extentds```との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。
 
-両者は、PHPでいう```extends```（クラスチェーン）と```require```（単なる読み出し）の関係に近い。
+両者は、PHPでいう```extends``` (クラスチェーン) と```require``` (単なる読み出し) の関係に近い。
 
 
 

@@ -23,7 +23,7 @@ description: ツール＠AWSの知見を記録しています。
 
 ## 02. ロードテスト
 
-### Distributed Load Testing（分散ロードテスト）
+### Distributed Load Testing (分散ロードテスト) 
 
 #### ▼ 分散ロードテストとは
 

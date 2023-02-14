@@ -34,11 +34,11 @@ $ istioctl install --manifests=foo-chart
 > ↪️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
 
-執筆時点（2023/01/16）でIstioOperatorは非推奨になっている。
+執筆時点 (2023/01/16) でIstioOperatorは非推奨になっている。
 
 > ↪️ 参考：https://www.solo.io/blog/3-most-common-ways-install-istio/
 
-#### ▼ GCRから（ユーザー定義）
+#### ▼ GCRから (ユーザー定義) 
 
 プロファイルを使用する代わりに、IstioOperatorを独自で定義しても良い。
 
@@ -78,7 +78,7 @@ $ helm repo update
 
 $ kubectl create namespace istio-system
 
-# 共通部分（IstioBase）のみ
+# 共通部分 (IstioBase) のみ
 # baseチャート
 $ helm install <リリース名> <チャートリポジトリ名>/base -n istio-system --version <バージョンタグ>
 
@@ -230,7 +230,7 @@ metadata:
 
 #### ▼ istio-injection
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない (```istio-injection```キーの値が```disabled```の場合は共存できる) 。```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
@@ -269,7 +269,7 @@ metadata:
 
 IstoOperatorの```.spec.revision```キーと同じである。
 
-```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。
+```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない (```istio-injection```キーの値が```disabled```の場合は共存できる) 。
 
 ```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
@@ -468,7 +468,7 @@ spec:
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
-#### ▼ ```*```（アスタリスク）
+#### ▼ ```*``` (アスタリスク) 
 
 全てのNamespaceで使用できるようにする。
 
@@ -485,7 +485,7 @@ spec:
     - "*"
 ```
 
-#### ▼ ```.```（ドット）
+#### ▼ ```.``` (ドット) 
 
 全てのNamespaceのうちで、```.metadata.namespace```キーのNamespaceでのみ使用できるようにする。
 
@@ -572,7 +572,7 @@ spec:
 
 Podの同時接続数の制限数を設定する。
 
-制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する（サーキットブレイカー）。
+制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。
 
 > ↪️ 参考：
 >
@@ -1197,7 +1197,7 @@ spec:
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
-#### ▼ ```*```（アスタリスク）
+#### ▼ ```*``` (アスタリスク) 
 
 全てのNamespaceでのみ使用できるようにする。
 
@@ -1214,7 +1214,7 @@ spec:
     - "*"
 ```
 
-#### ▼ ```.```（ドット）
+#### ▼ ```.``` (ドット) 
 
 全てのNamespaceのうちで、```.metadata.namespace```キーのNamespaceでのみ使用できるようにする。
 
@@ -1400,7 +1400,7 @@ spec:
 
 #### ▼ route.destination.host
 
-受信したインバウンド通信でルーティング先のServiceのドメイン名（あるいはService名）を設定する。
+受信したインバウンド通信でルーティング先のServiceのドメイン名 (あるいはService名) を設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 

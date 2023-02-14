@@ -14,7 +14,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 <br>
 
-## 01. Processエージェント（サーバーの場合）
+## 01. Processエージェント (サーバーの場合) 
 
 ### Processエージェントとは
 
@@ -38,7 +38,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 <br>
 
-## 02. Processエージェント（AWS ECS Fargateの場合）
+## 02. Processエージェント (AWS ECS Fargateの場合) 
 
 ### Processエージェントとは
 
@@ -67,7 +67,7 @@ APMでは、分散トレースを元にして、マイクロサービス間の�
 
 <br>
 
-## 02-02. Cluster/Nodeエージェント（Kubernetesの場合）
+## 02-02. Cluster/Nodeエージェント (Kubernetesの場合) 
 
 ### Cluster/Nodeエージェントとは
 

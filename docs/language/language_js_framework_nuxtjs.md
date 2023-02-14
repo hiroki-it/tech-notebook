@@ -17,7 +17,7 @@ description: Nuxt.jsの知見を記録しています。
 
 ## 01. Nuxt.js用yarnコマンド
 
-### serverモード（SSRモード）
+### serverモード (SSRモード) 
 
 #### ▼ serverモードとは
 
@@ -92,7 +92,7 @@ $ yarn start
 
 <br>
 
-### staticモード（SSGモード）
+### staticモード (SSGモード) 
 
 #### ▼ staticモードとは
 
@@ -135,7 +135,7 @@ $ yarn dev
 
 そのため、SSGは完全な静的ファイルからなる。
 
-ビルド時にバックエンドに接続し、DBに格納したデータ（例：画像パス）を元に、静的ファイルをビルドできる。
+ビルド時にバックエンドに接続し、DBに格納したデータ (例：画像パス) を元に、静的ファイルをビルドできる。
 
 SSGモードのために使用する。
 
@@ -350,7 +350,7 @@ export function foo() {
 
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。
 
-すなわち、全モード（SSG/SPA/SSRモード）が対応している。
+すなわち、全モード (SSG/SPA/SSRモード) が対応している。
 
 環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。
 
@@ -440,7 +440,7 @@ const nuxtConfig: Configuration = {
 
 ### buildModules
 
-SSG/SSRモードの```yarn dev```（開発用コマンド）、またSSRモードの```yarn build```の時のみ、```node_module```ディレクトリ内に作成するパッケージを設定する。
+SSG/SSRモードの```yarn dev``` (開発用コマンド) 、またSSRモードの```yarn build```の時のみ、```node_module```ディレクトリ内に作成するパッケージを設定する。
 
 
 

@@ -49,7 +49,7 @@ description: CircleCIの知見を記録しています。
 
 #### ▼ Webhook
 
-CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシュによって、CircleCIをフック（プッシュフック）できるようになる。
+CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシュによって、CircleCIをフック (プッシュフック) できるようになる。
 
 鍵のうちでデプロイキーを使用することが推奨されている。
 
@@ -125,7 +125,6 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ▼ CircleCIコンテナにSSH公開鍵認証
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
 ```【１】```
 
@@ -147,6 +146,9 @@ $ pbcopy < ~/.ssh/github/<秘密鍵名>
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
 ```
 
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
+
+
 #### ▼ Test Insights
 
 各テストのパフォーマンスや成功失敗率を確認できる。
@@ -164,8 +166,8 @@ SSHキーを作成する必要がある。
 
 | 鍵名   | 説明                                                                                                      |
 |--------|---------------------------------------------------------------------------------------------------------|
-| デプロイキー | CircleCIコンテナがプロジェクトのGitHubリポジトリにアクセスするために必要である（例：CIOps）。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。     |
-| ユーザーキー | CircleCIコンテナがプロジェクト以外のGitHubリポジトリにアクセスするために必要である（例：GitOps）。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。 |
+| デプロイキー | CircleCIコンテナがプロジェクトのGitHubリポジトリにアクセスするために必要である (例：CIOps) 。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。     |
+| ユーザーキー | CircleCIコンテナがプロジェクト以外のGitHubリポジトリにアクセスするために必要である (例：GitOps) 。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。 |
 
 > ↪️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
 

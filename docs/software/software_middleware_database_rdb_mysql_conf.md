@@ -79,7 +79,7 @@ SET time_zone = "Asia/Tokyo";
 
 <br>
 
-## 02. 設定ファイルの種類（※ Dockerの場合）
+## 02. 設定ファイルの種類 (※ Dockerの場合) 
 
 ### ```/etc/mysql/my.cnf```ファイル
 

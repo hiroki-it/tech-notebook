@@ -82,13 +82,13 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 ```【１】```
 
-:    DatadogのAWSアカウントの登録画面で、CloudFormationによる自動セットアップを選択する。これにより、AWSコンソール画面に自動的に遷移する。CloudFormationのテンプレートを使用して、スタックを作成できる。ほとんどのパラメーターはデフォルト値が設定されており、空欄部分（APIキーなど）に値を入力する。
+:    DatadogのAWSアカウントの登録画面で、CloudFormationによる自動セットアップを選択する。これにより、AWSコンソール画面に自動的に遷移する。CloudFormationのテンプレートを使用して、スタックを作成できる。ほとんどのパラメーターはデフォルト値が設定されており、空欄部分 (APIキーなど) に値を入力する。
 
 > ↪️ 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
 ```【２】```
 
-:    CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを作成する。このIAMロール（```DatadogIntegrationRole```）には、DatadogのIAMユーザー（```464622532012```）に委譲できるように、AWS STSの設定がなされている。Datadogの設定画面にアカウントIDとロール名を入力することにより、設定画完了する。
+:    CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを作成する。このIAMロール (```DatadogIntegrationRole```) には、DatadogのIAMユーザー (```464622532012```) に委譲できるように、AWS STSの設定がなされている。Datadogの設定画面にアカウントIDとロール名を入力することにより、設定画完了する。
 
 > ↪️ 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 

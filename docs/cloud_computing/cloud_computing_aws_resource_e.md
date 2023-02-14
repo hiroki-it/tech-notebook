@@ -102,7 +102,7 @@ ECRのコンテナイメージの有効期間を定義できる。
 
 Dockerのベストプラクティスに則り、タグ名にlatestを使用しないようにする。
 
-代わりとして、コンテナイメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する。
+代わりとして、コンテナイメージのバージョンごとに異なるタグ名になるようハッシュ値 (例：GitHubのコミットID) を使用する。
 
 
 
@@ -111,9 +111,9 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 <br>
 
 
-## 02. EventBridge（CloudWatchイベント）
+## 02. EventBridge (CloudWatchイベント) 
 
-### EventBridge（CloudWatchイベント）とは
+### EventBridge (CloudWatchイベント) とは
 
 AWSリソースで発生したイベントを、他のAWSリソースに転送する。
 

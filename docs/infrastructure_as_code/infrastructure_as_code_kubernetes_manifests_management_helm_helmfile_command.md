@@ -155,7 +155,7 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 全てのリリースに対して、helm-diffプラグインを実行する。
 
-helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --debug --dry-run```コマンドの差分を取得する。
+helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --dry-run```コマンドの差分を取得する。
 
 ```bash
 $ helmfile -e prd diff
@@ -166,6 +166,17 @@ $ helmfile -e prd diff
 >
 > - https://helmfile.readthedocs.io/en/latest/#diff
 > - https://github.com/databus23/helm-diff#helm-diff-plugin
+
+
+#### ▼ --debug
+
+オプションの無い```helmfile diff```では、内部的な```helm upgrade --dry-run```コマンドのどの段階でエラーになったかがわからない。
+
+```--debug```オプションであれば、```helm upgrade --dry-run```コマンドの結果を確認できる。
+
+```bash
+$ helmfile -e prd --debug diff
+```
 
 
 #### ▼ 色付け
@@ -185,8 +196,6 @@ $ HELM_DIFF_COLOR=true helmfile -e prd diff
 マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。
 
 ```grep```コマンドを使用して、差分のあるリソースやファイルを確認しておく。
-
-
 
 ```bash
 $ helmfile -e prd diff | grep kind

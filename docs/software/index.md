@@ -23,7 +23,7 @@
 
 <br>
 
-### 基本ソフトウェア（OS）
+### 基本ソフトウェア (OS) 
 
 * ##### [量が多いため、こちらのタブに切り分けています](https://hiroki-it.github.io/tech-notebook-mkdocs/software/basic/index.html)
 

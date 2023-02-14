@@ -22,13 +22,13 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 ![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cqrs.png)
 
 
-『Command Query Responsibility Segregation（コマンドクエリ責務分離）』の略。
+『Command Query Responsibility Segregation (コマンドクエリ責務分離) 』の略。
 
 リポジトリパターンにおける更新系と参照系の処理を分離する設計のこと。
 
 更新系のオブジェクトはそのままリポジトリとしてインフラ層に配置する。
 
-一方で参照系のオブジェクトは、参照のユースケースに応じて『QueryServiceオブジェクト』として設計し、ユースケース層に配置する（これ重要）。
+一方で参照系のオブジェクトは、参照のユースケースに応じて『QueryServiceオブジェクト』として設計し、ユースケース層に配置する (これ重要) 。
 
 ソフトウェアに部分的に組み込める。
 
@@ -64,7 +64,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 ## 01-02. 処理系の種類
 
-### Command（更新系）
+### Command (更新系) 
 
 #### ▼ Commandとは
 
@@ -107,7 +107,7 @@ CREATE、UPDATE、DELETE処理を実行する処理フローのこと。
 
 <br>
 
-### Query（参照系）
+### Query (参照系) 
 
 #### ▼ Queryとは
 
@@ -125,7 +125,7 @@ READ処理を実行するオブジェクトのこと。
 
 ```【２】```
 
-:    ユースケース層のインターラクターにて、リクエストモデルからデータを取り出し、QueryCriteriaオブジェクト（参照系検索条件）を作成する。ユースケースに応じたQueryServiceオブジェクトでは、QueryCriteriaオブジェクトを使用して、DBからレコードを配列として取得する。この配列からそのユースケースに対応するDTOを作成する。DTOをレスポンスモデルと見なし、そのままインタフェース層のコントローラーに渡す。
+:    ユースケース層のインターラクターにて、リクエストモデルからデータを取り出し、QueryCriteriaオブジェクト (参照系検索条件) を作成する。ユースケースに応じたQueryServiceオブジェクトでは、QueryCriteriaオブジェクトを使用して、DBからレコードを配列として取得する。この配列からそのユースケースに対応するDTOを作成する。DTOをレスポンスモデルと見なし、そのままインタフェース層のコントローラーに渡す。
 
 ```【３】```
 

@@ -170,7 +170,7 @@ scrape_configs:
   - job_name: node-exporter
     kubernetes_sd_configs:
       # Service配下のPodを対象とする。
-      # ingress、node、pod（Serviceに関連づけない）、service、がある。
+      # ingress、node、pod (Serviceに関連づけない) 、service、がある。
       - role: endpoints
       # 特定のPodのみを監視対象とする。
       - source_labels:

@@ -49,7 +49,7 @@ API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルに
 
 > ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
-#### ▼ セットアップ（VPCリンク&プロキシ統合）
+#### ▼ セットアップ (VPCリンク&プロキシ統合) 
 
 ```yaml
 paths:
@@ -78,7 +78,7 @@ paths:
             statusCode: 200     
 ```
 
-#### ▼ セットアップ（VPCリンク&非プロキシ統合の場合）
+#### ▼ セットアップ (VPCリンク&非プロキシ統合の場合) 
 
 パススルー条件やresponseキー以下の統合レスポンスを設定できる。
 
@@ -110,7 +110,7 @@ paths:
             statusCode: 401
 ```
 
-#### ▼ セットアップ（モック統合）
+#### ▼ セットアップ (モック統合) 
 
 パススルー条件を設定できる。
 

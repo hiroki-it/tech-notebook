@@ -50,7 +50,7 @@ KubernetesリソースのIngressの代わりとして使用できる。
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-IngressGatewayは、```istio-ingressgateway```というService（NodePort ServiceまたはLoadBalancer Service）と、Deployment配下の```istio-ingressgateway-*****```というPod（```istio-proxy```コンテナのみが稼働）、から構成される。
+IngressGatewayは、```istio-ingressgateway```というService (NodePort ServiceまたはLoadBalancer Service) と、Deployment配下の```istio-ingressgateway-*****```というPod (```istio-proxy```コンテナのみが稼働) 、から構成される。
 
 Serviceは、おおよそGatewayの設定で決まる。
 
@@ -68,7 +68,7 @@ metadata:
 spec:
   # Serviceタイプは選択可能である。
   type: NodePort
-  # ルーティンング先のPod（istio-ingressgateway-*****）の識別子が設定される。
+  # ルーティンング先のPod (istio-ingressgateway-*****) の識別子が設定される。
   selector:
     app: istio-ingressgateway
     istio: ingressgateway

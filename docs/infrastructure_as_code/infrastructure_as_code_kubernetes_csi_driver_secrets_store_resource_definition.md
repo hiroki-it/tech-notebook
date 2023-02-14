@@ -162,9 +162,9 @@ spec:
 
 > ↪️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
-#### ▼ objects（AWSプロバイダーの場合）
+#### ▼ objects (AWSプロバイダーの場合) 
 
-AWSプロバイダー上のSecret（AWS Secrets Manager、AWS Systems Manager）を識別する情報を設定する。
+AWSプロバイダー上のSecret (AWS Secrets Manager、AWS Systems Manager) を識別する情報を設定する。
 
 
 
@@ -177,7 +177,7 @@ spec:
   provider: aws
   parameters:
     # AWS Secrets Managerから取得する。
-    # objectNameキーに、ARN（arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<Secretストア名>）を指定しても良い。
+    # objectNameキーに、ARN (arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<Secretストア名>) を指定しても良い。
     # その場合、objectTypeキーは不要になる。
     objects: |
       - objectName: "<Secret名>"
@@ -214,9 +214,9 @@ spec:
 > - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-systems-manager-parameter-store%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
 
 
-#### ▼ objects（GCPプロバイダーの場合）
+#### ▼ objects (GCPプロバイダーの場合) 
 
-GCPプロバイダー上のSecret（GCP Secret Manager）を識別する情報を設定する。
+GCPプロバイダー上のSecret (GCP Secret Manager) を識別する情報を設定する。
 
 
 

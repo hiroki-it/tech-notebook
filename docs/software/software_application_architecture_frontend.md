@@ -15,7 +15,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 <br>
 
-## 01. SPA（CSR）：Single Page Application
+## 01. SPA (CSR) ：Single Page Application
 
 ### SPAとは
 
@@ -50,7 +50,7 @@ SPAでは、ページ全体の静的ファイルをリクエストするのは�
 
 #### ▼ MVVMアーキテクチャ
 
-View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって、View層とModel層の間を疎結合にするための設計手法の一種。
+View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り (双方向データバインディング) することによって、View層とModel層の間を疎結合にするための設計手法の一種。
 
 Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。
 
@@ -137,7 +137,7 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 
 そして、これをレンダリングし、静的サイトとして稼働させる。
 
-動的な要素（例：ランダム表示）を含む静的ファイルについては、該当の部分でAjaxを使用できるようにしておく。
+動的な要素 (例：ランダム表示) を含む静的ファイルについては、該当の部分でAjaxを使用できるようにしておく。
 
 
 
@@ -165,7 +165,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 ### Atmic Designとは
 
-フロントエンドを構成する要素を、5つのレイヤー（Atoms、Molecules、Organisms、Templates、Pages）に分ける設計方法のこと。
+フロントエンドを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
 
 
 

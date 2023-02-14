@@ -55,7 +55,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 <br>
 
-## 02. ログエージェント（サーバーの場合）
+## 02. ログエージェント (サーバーの場合) 
 
 ### ログエージェントとは
 
@@ -79,7 +79,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 <br>
 
-## 03. ログエージェント（AWS ECS Fargateの場合）
+## 03. ログエージェント (AWS ECS Fargateの場合) 
 
 ### ログエージェントとは
 
@@ -110,7 +110,7 @@ Datadogの代わりにログを収集する。
 
 <br>
 
-## 02-02. Cluster/Nodeエージェント（Kubernetesの場合）
+## 02-02. Cluster/Nodeエージェント (Kubernetesの場合) 
 
 ### Cluster/Nodeエージェントとは
 
@@ -296,7 +296,7 @@ export default browserLogsForSsgPlugin
 
 ## 05. ログの識別子
 
-### attribute（属性）
+### attribute (属性) 
 
 #### ▼ 予約済み属性
 
@@ -334,7 +334,7 @@ export default browserLogsForSsgPlugin
 | ```logger.thread_name``` | スレッド名を示す。                         |
 | ```error.stack```        | スタックトレースログ全体を示す。                 |
 | ```error.message```      | スタックトレースログのメッセージ部分を示す。           |
-| ```error.kind```         | エラーの種類（Exception、OSError、など）を示す。 |
+| ```error.kind```         | エラーの種類 (Exception、OSError、など) を示す。 |
 
 <br>
 
@@ -514,7 +514,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 #### ▼ ログステータスリマッパー
 
-指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス（```INFO```、```WARNING```、```ERROR```、など）として登録する。
+指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス (```INFO```、```WARNING```、```ERROR```、など) として登録する。
 
 ログコンソール画面にて、ステータスファセットとして表示される。
 
@@ -594,7 +594,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これに対して、以下のようなカテゴリパーサーのルールを定義する。
 
-```http.status_code```属性のステータスコード値に応じて、```http.status_category```属性にレベル値（```info```、```notice```、```warning```、```critical```）に変換する。
+```http.status_code```属性のステータスコード値に応じて、```http.status_category```属性にレベル値 (```info```、```notice```、```warning```、```critical```) に変換する。
 
 ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
 
@@ -633,7 +633,7 @@ CRITICAL @http.status_code:[500 TO 599]
 
 これに対して、ステータスリマッパーのルールを定義する。
 
-```http.status_category```属性のログステータス値が、ステータスファセット（```INFO```、```WARNING```、```ERROR```、など）として登録されるようにする。
+```http.status_category```属性のログステータス値が、ステータスファセット (```INFO```、```WARNING```、```ERROR```、など) として登録されるようにする。
 
 
 
@@ -645,7 +645,7 @@ CRITICAL @http.status_code:[500 TO 599]
 
 #### ▼ Grokパーサーとは
 
-パースルール（```%{<マッチャー名>:<エクストラクト名>:<フィルター名>}```）を使用して、```message```属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extractを使用すると、```message```属性以外に対してGrokパーサーを使用できるようになるため、構造化ログも扱えるようになる。
+パースルール (```%{<マッチャー名>:<エクストラクト名>:<フィルター名>}```) を使用して、```message```属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extractを使用すると、```message```属性以外に対してGrokパーサーを使用できるようになるため、構造化ログも扱えるようになる。
 
 > ↪️ 参考：
 >
@@ -719,7 +719,7 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 ```yaml
 {
-  "date": 1630454400000, # エポック形式（UNIX時間）
+  "date": 1630454400000, # エポック形式 (UNIX時間) 
   "log_status": "INFO"
 }
 ```
@@ -779,7 +779,7 @@ AWS WAFから以下のような構造化ログを受信する例を考える。
 
 ```data```マッチャーを使用して、また```wafacl_name```カスタム属性をエクストラクト先とする。
 
-抽出する必要のない文字列は、ワイルドカード（```.*```）を指定する。
+抽出する必要のない文字列は、ワイルドカード (```.*```) を指定する。
 
 
 
@@ -949,7 +949,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 }
 ```
 
-これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの```aws.invoked_function_arn```属性のARNに応じて、```service```属性にサービス値（```foo-apigateway```、```bar-apigateway```、```baz-apigateway```）を付与する。この属性を使用する理由は、様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？）。元の構造化ログにすでに```service```属性があるため、この値が上書きされる。
+これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの```aws.invoked_function_arn```属性のARNに応じて、```service```属性にサービス値 (```foo-apigateway```、```bar-apigateway```、```baz-apigateway```) を付与する。この属性を使用する理由は、様々なAWSリソースの構造化ログが持っているためである (```owner```属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？) 。元の構造化ログにすでに```service```属性があるため、この値が上書きされる。
 
 ```
 foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
@@ -1279,7 +1279,7 @@ autoFilledRule3 ...
 
 #### ▼ プリプロセッサー
 
-予約済み属性（```message```、```timestamp```、```status```、```host```、```service```）に基づいて、ログを構造化する。
+予約済み属性 (```message```、```timestamp```、```status```、```host```、```service```) に基づいて、ログを構造化する。
 
 例えば、受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの```message```属性に割り当てられる。
 

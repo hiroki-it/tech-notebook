@@ -29,9 +29,9 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 ### Lambdaハンドラ関数
 
-#### ▼ 非同期ハンドラ関数（Async handlers）
+#### ▼ 非同期ハンドラ関数 (Async handlers) 
 
-Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト（event）に値をわたす。
+Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト (event) に値をわたす。
 
 ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い。
 
@@ -88,9 +88,9 @@ exports.handler = async (event) => {
 
 > ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
-#### ▼ 同期ハンドラ関数（Non-async handlers）
+#### ▼ 同期ハンドラ関数 (Non-async handlers) 
 
-Lambdaはハンドラ関数を同期関数としてコールし、引数（eventオブジェクト、contextオブジェクト、callback関数）に値をわたす。
+Lambdaはハンドラ関数を同期関数としてコールし、引数 (eventオブジェクト、contextオブジェクト、callback関数) に値をわたす。
 
 このオブジェクトにはメソッドとプロパティを持つ。
 
@@ -102,7 +102,7 @@ Lambdaはハンドラ関数を同期関数としてコールし、引数（event
 
 > ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
-（※『Non』が翻訳をおかしくしているため、英語版を推奨）
+ (※『Non』が翻訳をおかしくしているため、英語版を推奨) 
 
 **＊実装例＊**
 
@@ -158,7 +158,7 @@ exports.handler = (event, context, callback) => {
 | 引数          | 説明                                                                               | 補足                                                                                                                                       |
 |---------------|----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                       | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ（名前、バージョンなど）を取得できるメソッドとプロパティが代入されている。                          | オブジェクトの構造は以下の通り<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                           |
+| contextオブジェクト | Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                          | オブジェクトの構造は以下の通り<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                           |
 | callback関数  | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、Lambdaのコール元にレスポンスを返信する。 | ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                   |
 
 #### ▼ テストとデバッグ

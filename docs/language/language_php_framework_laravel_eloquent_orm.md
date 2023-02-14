@@ -53,7 +53,7 @@ Active Recordパターンで実装されている。
 |------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 保守性 | テーブル間のリレーションが、そのままモデル間の依存関係になるため、モデル間の依存関係を考える必要がなく、開発が早い。そのため、ビジネスロジックが複雑でないアプリケーションの開発に適している。                                                    | ・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルに関して、必要なカラムのみでなく、全てのカラムから取得するため、アプリケーションに余分な負荷がかかる。 |
 | 拡張性 | テーブル間のリレーションがモデル間の依存関係によって定義されており、JOIN句を使用せずに、各テーブルから必要なレコードを取得できる。そのため、テーブルを増やすやすい。                                                                    |                                                                                                                                                                                                       |
-| 可読性 | ・モデルとこれのプロパティがそのままテーブルになるため、モデルを作成するためにどのテーブルからレコードを取得するのかを推測しやすい（Userモデル ⇄ usersテーブル）。<br>・リレーションを理解する必要がなく、複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい。 |                                                                                                                                                                                                       |
+| 可読性 | ・モデルとこれのプロパティがそのままテーブルになるため、モデルを作成するためにどのテーブルからレコードを取得するのかを推測しやすい (Userモデル ⇄ usersテーブル) 。<br>・リレーションを理解する必要がなく、複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい。 |                                                                                                                                                                                                       |
 
 <br>
 
@@ -130,7 +130,7 @@ ER図における各テーブルのリレーションシップを元に、モデ
 
 **＊実装例＊**
 
-Departmentモデルで、```hasMany```メソッドを使用して、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
+Departmentモデルで、```hasMany```メソッドを使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。
 
 
 
@@ -154,13 +154,13 @@ class Department extends Model
      */
     public function employees(): HasMany
     {
-        // 一対多の関係を定義します。（デフォルトではemployee_idに紐付けます）
+        // 一対多の関係を定義します。 (デフォルトではemployee_idに紐付けます) 
         return $this->hasMany(Employee::class);
     }
 }
 ```
 
-また、Employeesモデルでは、```belongsTo```メソッドを使用して、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
+また、Employeesモデルでは、```belongsTo```メソッドを使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。
 
 
 
@@ -184,15 +184,15 @@ class Employee extends Model
      */
     public function department(): BelongsTo
     {
-        // 多対一の関係を定義します。（デフォルトではdepartment_idに紐付けます）
+        // 多対一の関係を定義します。 (デフォルトではdepartment_idに紐付けます) 
         return $this->belongsTo(Department::class);
     }
 }
 ```
 
-リレーションを基にJOIN句のSQLを発行するために、Departmentモデル（親）の```hasMany```メソッドを実行する。
+リレーションを基にJOIN句のSQLを発行するために、Departmentモデル (親) の```hasMany```メソッドを実行する。
 
-これにより、DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる。
+これにより、DepartmentモデルのIDに紐付くEmployeesモデル (子) を配列で参照できる。
 
 
 
@@ -228,7 +228,7 @@ class Foo extends Model
     /**
      * @var string 
      */
-    protected $primaryKey = "foo_id"; // 主キーとするカラム（デフォルトではidが主キー）
+    protected $primaryKey = "foo_id"; // 主キーとするカラム (デフォルトではidが主キー) 
     
     /**
      * @var string 
@@ -603,7 +603,7 @@ $filtered = $collection->first(function ($value, $key) {
 
 Eloquentモデルを継承すると、以下のクラスからメソッドをコールできるようになる。
 
-Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ、より上位クラスのメソッドをコールできる。
+Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、```__callStatic```メソッド (静的コールによる) や```__call```メソッド (非静的コールによる) が代わりにコールされ、より上位クラスのメソッドをコールできる。
 
 どちらの方法でコールしても同じである。
 
@@ -876,7 +876,7 @@ class FooController extends Controller
 
 開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。
 
-これにより、ページネーションで、1ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。
+これにより、ページネーションで、1ページ当たりのレコード数 (```limit```) と、次のページの開始レコード (```offset```) を定義できる。
 
 これらのパラメーターはクエリパラメーターとして渡すと良い。
 
@@ -1034,7 +1034,7 @@ class FooController extends Controller
 
 Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。
 
-テーブル間に一対多（親子）のリレーションシップがある場合に使用する。
+テーブル間に一対多 (親子) のリレーションシップがある場合に使用する。
 
 N+1問題を防げる。
 
@@ -1050,7 +1050,7 @@ N+1問題を防げる。
 
 **＊実装例＊**
 
-コントローラーにて、Department（親）と、これに紐付くEmployee（子）を読み出す。
+コントローラーにて、Department (親) と、これに紐付くEmployee (子) を読み出す。
 
 これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを使用して、テーブルにおける一対多のリレーションを定義しておく。
 
@@ -1070,7 +1070,7 @@ class EmployeeController
         $department = new Department();
 
         // Departmentに属するEmployeesを全て読み出します。
-        // （departments : employees = 1 : 多）
+        //  (departments : employees = 1 : 多) 
         $employees = $department->with("employees")->get();
 
         foreach ($employees as $employee) {
@@ -1084,7 +1084,7 @@ class EmployeeController
 }
 ```
 
-Department（親）に、departmentsテーブルとemployeesテーブルの間に、一対多の関係を定義する。
+Department (親) に、departmentsテーブルとemployeesテーブルの間に、一対多の関係を定義する。
 
 
 
@@ -1109,7 +1109,7 @@ class Department extends Model
      * 一対多の関係を定義します。
 
 
-     * （デフォルトではemployee_idに紐付けます）
+     *  (デフォルトではemployee_idに紐付けます) 
      *
      * @return HasMany
      */
@@ -1120,7 +1120,7 @@ class Department extends Model
 }
 ```
 
-また、Employee（子）に、反対の多対一の関係を定義する。
+また、Employee (子) に、反対の多対一の関係を定義する。
 
 
 
@@ -1145,7 +1145,7 @@ class Employee extends Model
      * 多対一の関係を定義します。
 
 
-     * （デフォルトではdepartment_idに紐付けます）
+     *  (デフォルトではdepartment_idに紐付けます) 
      * 
      * @return BelongsTo
      */
@@ -1228,7 +1228,7 @@ class FooDTO extends Model
 
 ### DELETE
 
-#### ▼ ```destroy```/```delete```メソッド（物理削除）
+#### ▼ ```destroy```/```delete```メソッド (物理削除) 
 
 DELETE文を実行する。
 
@@ -1240,7 +1240,7 @@ Eloquentモデルの```destroy```/```delete```メソッドを使用する。
 
 
 
-#### ▼ SoftDeletesの有効化（論理削除）
+#### ▼ SoftDeletesの有効化 (論理削除) 
 
 削除フラグを更新するUPDATE文を実行する。
 
@@ -1355,10 +1355,10 @@ class CreateFooTable extends Migration
 ```php
 <?php
     
-$departments = Department::all(); // 親テーブルにSQLを発行（1回）
+$departments = Department::all(); // 親テーブルにSQLを発行 (1回) 
 
 foreach($departments as $department) {
-    $department->employees; // 親テーブルのレコード数分のWhere句SQLが発行される（N回）
+    $department->employees; // 親テーブルのレコード数分のWhere句SQLが発行される (N回) 
 }
 ```
 
@@ -1388,10 +1388,10 @@ select * from `employees` where `department_id` = 3
 ```php
 <?php
 
-$departments = Department::with('employees')->get(); // SQL発行（2回）
+$departments = Department::with('employees')->get(); // SQL発行 (2回) 
 
 foreach($departments as $department) {
-    $department->employees; // キャッシュを使用するのでSQLの発行はされない（0回）
+    $department->employees; // キャッシュを使用するのでSQLの発行はされない (0回) 
 }
 ```
 
@@ -1425,7 +1425,7 @@ LaravelはActive Recordパターンを採用しており、これはビジネス
 
 #### ▼ DTOクラスの導入
 
-ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する。
+ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル (例：DTOクラス) を用意する。
 
 詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である。
 

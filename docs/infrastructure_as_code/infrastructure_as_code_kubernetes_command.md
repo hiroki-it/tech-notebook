@@ -48,7 +48,7 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 
 #### ▼ applyとは
 
-同じ識別子（名前）のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストの差分を更新する。
+同じ識別子 (名前) のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストの差分を更新する。
 
 全ての項目を更新できるわけでない。
 
@@ -268,7 +268,7 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 そのため、```f```オプションで、マニフェストを指定した方が良い。
 
-同じ識別子（リソース名）のKubernetesリソースが存在する場合は重複エラーになる。
+同じ識別子 (リソース名) のKubernetesリソースが存在する場合は重複エラーになる。
 
 
 
@@ -523,7 +523,7 @@ Name:               baz-node
 
 #### ▼ drainとは
 
-Nodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodをEvictさせる。
+Nodeへの新しいPodのスケジューリングを無効化 (```kubectl cordon```コマンドを実行) し、加えて既存のPodをEvictさせる。
 
 Nodeが他に存在すれば、そのNode上でPodが再作成される。
 
@@ -1082,9 +1082,9 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 ```
 
 
-#### ▼ --watch
+#### ▼ --watch (-w)
 
-指定したPodの情報を継続的に取得する。
+指定したPodの情報（フェーズ、ステータス、など）を継続的に取得し、情報に変更があれば出力を追記していく。
 
 別ツールで時間のかかるKubernetesリソースを作成しながら、```--watch```オプションを使用すると、作成状況を確認できる。
 
@@ -1092,7 +1092,7 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 
 
 ```bash
-$ kubectl get pod --watch
+$ kubectl get pod -w
 ```
 
 > ↪️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
@@ -1108,7 +1108,7 @@ $ kubectl get pod --watch
 
 
 
-#### ▼ オプション無し（キーの追加）
+#### ▼ オプション無し (キーの追加) 
 
 指定したリソースに```.metadata.labels```キーを作成する。
 
@@ -1119,7 +1119,7 @@ $ kubectl get pod --watch
 $ kubectl label <リソース名> foo=bar
 ```
 
-#### ▼ オプション無し（キーの削除）
+#### ▼ オプション無し (キーの削除)
 
 指定したリソースの```.metadata.labels```キーを削除する。
 
@@ -1147,7 +1147,7 @@ $ kubectl label --overwrite <リソースの種類> <リソース名> foo=bar
 
 **＊例＊**
 
-```istio-injection```キーを```istio.io/rev```キー（値は```1-0-0```）に上書きする。
+```istio-injection```キーを```istio.io/rev```キー (値は```1-0-0```) に上書きする。
 
 ```bash
 $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
@@ -1243,7 +1243,7 @@ Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
 レプリカのPodを再スケジューリングする。
 
-PodのVolume（例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim）の設定を変更した後に、Podに再び読み込ませるために役立つ。
+PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後に、Podに再び読み込ませるために役立つ。
 
 
 
@@ -1314,7 +1314,7 @@ $ kubectl get pv \
 
 ポートフォワーディングを実行し、ホストのポートからPodにアクセスできるようにする。
 
-Podを直接的に指定する場合と、他のKubernetesリソース（例：Service、Deployment）の情報を使用して、Podを指定する方法がある。
+Podを直接的に指定する場合と、他のKubernetesリソース (例：Service、Deployment) の情報を使用して、Podを指定する方法がある。
 
 この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する。
 
@@ -1407,7 +1407,7 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 #### ▼ Podのアウトバウンド通信のデバッグ
 
-```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
+```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチNodeの場合は、 (たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
 
 > ↪️ 参考：
 >
@@ -1489,7 +1489,7 @@ NodeにTaintを付与する。
 
 **＊例＊**
 
-NodeにTaint（```app=batch:NoSchedule```）を付与する。
+NodeにTaint (```app=batch:NoSchedule```) を付与する。
 
 
 
@@ -1558,7 +1558,7 @@ spec:
       effect: NoSchedule
 ```
 
-#### ▼ ```-```（ラベル値のハイフン）
+#### ▼ ```-``` (ラベル値のハイフン) 
 
 指定したNodeからTaintを削除する。
 

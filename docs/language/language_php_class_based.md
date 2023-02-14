@@ -15,7 +15,7 @@ description: クラス＠PHPの知見を記録しています。
 
 <br>
 
-## 01. has-one、has-many（データとして保持する関係性）
+## 01. has-one、has-many (データとして保持する関係性) 
 
 ### has-one、has-manyな関係性とは
 
@@ -25,7 +25,7 @@ description: クラス＠PHPの知見を記録しています。
 
 <br>
 
-### Association（関連）
+### Association (関連) 
 
 #### ▼ Associationとは
 
@@ -43,7 +43,7 @@ description: クラス＠PHPの知見を記録しています。
 
 <br>
 
-### Aggregation（集約）
+### Aggregation (集約) 
 
 #### ▼ Aggregationとは
 
@@ -167,7 +167,7 @@ $car = new Car($tire1, $tire2, $tire3, $tire4);
 
 <br>
 
-### Composition（合成）
+### Composition (合成) 
 
 #### ▼ Compositionとは
 
@@ -263,7 +263,7 @@ $car = new Car();
 
 <br>
 
-## 02. is-a-kind-of（グループとメンバーの関係性）
+## 02. is-a-kind-of (グループとメンバーの関係性) 
 
 ### is-a-kind-ofな関係性とは
 
@@ -271,7 +271,7 @@ $car = new Car();
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
-### Generalization（汎化）
+### Generalization (汎化) 
 
 #### ▼ 汎化におけるOverride
 
@@ -332,8 +332,8 @@ class GoodsWithTax extends Goods
     public function printPrice()
     {
         // 商品価格の税込み価格を計算し、表示
-        $priceWithTax = round($this->getPrice() * 1.08);  // （1）
-        print($this->getName()."の税込み価格: ￥".$priceWithTax."<br>");  // （2）
+        $priceWithTax = round($this->getPrice() * 1.08);  //  (1) 
+        print($this->getName()."の税込み価格: ￥".$priceWithTax."<br>");  //  (2) 
     }
 }
 ```
@@ -481,7 +481,7 @@ class EnginnerShainManagement extends ShainManagement
 
 <br>
 
-### Realization（実現）
+### Realization (実現) 
 
 #### ▼ Realizationとは
 
@@ -564,7 +564,7 @@ class Mammal implements Animal
 | **子クラスでの継承先数**           | 単一継承        | 単一継承                | 単一継承｜多重継承                                                             |
 | **メンバ変数のコール**               | 自身と継承先     | 継承先のみ                | 実装先のみ                                                                      |
 | **定数の定義**                 | 〇               | 〇                       | 〇                                                                             |
-| **抽象メソッドの定義**             | ✕               | 〇                       | 〇（abstractは省略）                                                              |
+| **抽象メソッドの定義**             | ✕               | 〇                       | 〇 (abstractは省略)                                                               |
 | **具象メソッドの定義**             | 〇               | 〇                       | ✕                                                                             |
 | **```construct```メソッド の定義** | 〇               | 〇                       | ✕                                                                             |
 
@@ -640,7 +640,7 @@ class SubFoo extends Foo
 $subFoo = new SubFoo;
 
 // SubFooクラスにはgetValue()は無い。
-// 継承元まで辿り、Fooクラスからメソッドがコールされる（クラスチェーン）。
+// 継承元まで辿り、Fooクラスからメソッドがコールされる (クラスチェーン) 。
 echo $subFoo->getValue();
 ```
 
@@ -973,7 +973,7 @@ class Bar
 
 <br>
 
-## 03. use（引数型/返却値型として使用する関係性）
+## 03. use (引数型/返却値型として使用する関係性) 
 
 ### useな関係とは
 
@@ -981,7 +981,7 @@ class Bar
 
 <br>
 
-### Dependency（依存）
+### Dependency (依存) 
 
 #### ▼ Dependencyとは
 
@@ -1218,11 +1218,11 @@ LCOM4は、クラスの各メソッド内で、保持する全てのデータに
 
 <br>
 
-### DI：Dependency Injection（依存オブジェクト注入）
+### DI：Dependency Injection (依存オブジェクト注入) 
 
 #### ▼ DIとは
 
-サプライヤー側（依存先）の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。
+サプライヤー側 (依存先) の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。
 
 『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。
 
@@ -1406,13 +1406,13 @@ $user->method($name); // インジェクション
 
 <br>
 
-### DI Container（依存オブジェクト注入コンテナ）、Service Container
+### DI Container (依存オブジェクト注入コンテナ) 、Service Container
 
-#### ▼ DI Container（依存オブジェクト注入コンテナ）、Service Containerとは
+#### ▼ DI Container (依存オブジェクト注入コンテナ) 、Service Containerとは
 
 依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。
 
-あらかじめクラスを登録（バインド）しておき、必要な時にインスタンスを作成（リゾルブ）してくれる。
+あらかじめクラスを登録 (バインド) しておき、必要な時にインスタンスを作成 (リゾルブ) してくれる。
 
 注意点として、
 
@@ -1490,7 +1490,7 @@ $sample = new Sample($container);
 
 <br>
 
-## 03-02. Dependency Inversion Principle（依存性逆転の原則）
+## 03-02. Dependency Inversion Principle (依存性逆転の原則) 
 
 ### DIP
 
@@ -1524,7 +1524,7 @@ $sample = new Sample($container);
 
 ### DIPを満たす実装
 
-#### ▼ DIPを満たさない実装の場合（従来）
+#### ▼ DIPを満たさない実装の場合 (従来) 
 
 より上位レイヤーのコール処理を配置し、より下位レイヤーでコールされる側の定義を行う。
 
@@ -1536,17 +1536,17 @@ $sample = new Sample($container);
 
 #### ▼ DIPを満たす実装の場合
 
-インターフェース（または抽象クラス）で抽象メソッドを記述することによって、実装クラスでの実装が強制される。
+インターフェース (または抽象クラス) で抽象メソッドを記述することによって、実装クラスでの実装が強制される。
 
 つまり、実装クラスは抽象クラスに依存している。
 
-より上位レイヤーにインターフェースを配置することによって、下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作られる（原則２】。
+より上位レイヤーにインターフェースを配置することによって、下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作られる (原則２】。
 
 原則２でいう依存は、引数型/返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する。
 
 また、実装クラスをインターフェースをエイリアスとしてコールでききるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる。
 
-よって、全てのレイヤーがインターフェースに依存するようになる（原則１】。
+よって、全てのレイヤーがインターフェースに依存するようになる (原則１】。
 
 
 
@@ -1562,15 +1562,15 @@ $sample = new Sample($container);
 
 ```【２】```
 
-:    Repositoryのインターフェース（抽象クラス）を、より上位のドメイン層に配置する。また、Repositoryの実装クラスを、より下位のインフラストラクチャ層に配置する。
+:    Repositoryのインターフェース (抽象クラス) を、より上位のドメイン層に配置する。また、Repositoryの実装クラスを、より下位のインフラストラクチャ層に配置する。
 
 ```【３】```
 
-:    両方のクラスに対して、バインディング（紐付け）を行い、インターフェース（抽象クラス）をコールした時に、実際には実装クラスがコールされるようにする。
+:    両方のクラスに対して、バインディング (紐付け) を行い、インターフェース (抽象クラス) をコールした時に、実際には実装クラスがコールされるようにする。
 
 ```【４】```
 
-:    ２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース（抽象クラス）に依存することになる。これは、原則１を満たす。
+:    ２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース (抽象クラス) に依存することになる。これは、原則１を満たす。
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 
