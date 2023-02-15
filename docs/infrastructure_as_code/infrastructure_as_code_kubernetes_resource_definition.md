@@ -220,7 +220,7 @@ Cluster名を設定する。
 apiVersion: v1
 kind: Config
 clusters:
-  - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+  - name: <ClusterのARN>
     
     ...
   
@@ -290,7 +290,7 @@ clusters:
 apiVersion: v1
 kind: Config
 contexts:
-  - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+  - name: <ClusterのARN>
   
     ...
   
@@ -314,8 +314,8 @@ apiVersion: v1
 kind: Config
 contexts:
   - context:
-      cluster: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
-      user: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+      cluster: <ClusterのARN>
+      user: <ClusterのARN>
       
     ...  
     
@@ -351,7 +351,7 @@ contexts:
 ```yaml
 apiVersion: v1
 kind: Config
-current-context: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+current-context: <ClusterのARN>
 ```
 
 
@@ -396,7 +396,7 @@ kube-apiserverのクライアント (特に```kubectl```コマン実行者) のU
 apiVersion: v1
 kind: Config
 users:
-  - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+  - name: <ClusterのARN>
   
     ...
     
@@ -798,7 +798,7 @@ Deploymentで維持管理するPodのテンプレートを設定する。
 
 設定項目はPodと同じである。
 
-
+Deployment自体の```metadata.labels```キーを更新した場合はPodは再作成しないが、```.spec.template```キー配下の```metadata.labels```キーの場合は、Podの再作成となる。
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
 
@@ -1702,7 +1702,7 @@ spec:
 
 #### ▼ localとは
 
-Node上にストレージ領域を新しく作成し、これをボリュームとする。
+Node上にストレージ上にボリュームを作成する。
 
 ```.spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
 
@@ -1737,8 +1737,6 @@ spec:
 
 #### ▼ mountOptionsとは
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
-
 **＊実装例＊**
 
 ```yaml
@@ -1751,6 +1749,9 @@ spec:
     - hard
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+
+
 <br>
 
 ### .spec.nfs
@@ -1759,17 +1760,12 @@ spec:
 
 ホスト上であらかじめNFSサーバーを起動しておく。
 
-NFSサーバーにストレージ領域を作成し、これをボリュームとする。
+NFSサーバーのストレージ上にボリュームを作成する。
 
 Node内のPodを、ホスト上のNFSサーバーにマウントする。
 
 
 
-> ↪️ 参考：
->
-> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
-> - https://ytsuboi.jp/archives/505
-> - https://qiita.com/reoring/items/4d80a04dd31e991dd233
 
 **＊実装例＊**
 
@@ -1783,6 +1779,13 @@ spec:
     server: <NFSサーバーのIPアドレス>
     path: /data/src/foo
 ```
+
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+> - https://ytsuboi.jp/archives/505
+> - https://qiita.com/reoring/items/4d80a04dd31e991dd233
 
 <br>
 
@@ -1886,7 +1889,7 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除されたとして�
 
 割り当てから解除されたPersistentVolumeはReleasedステータスになる。
 
-一度、Releasedステータスになると、他のPerisistentVolumeClaimからは指定できなくなる。
+一度、Releasedステータスになると、他のPersistentVolumeClaimからは指定できなくなる。
 
 
 
@@ -1946,7 +1949,7 @@ spec:
 
 #### ▼ accessModesとは
 
-要求対象のPerisitentVolumeのaccessModeを設定する。
+要求対象のPersistentVolumeのaccessModeを設定する。
 
 
 
@@ -1974,7 +1977,7 @@ spec:
 
 #### ▼ requests
 
-要求対象のPerisitentVolumeのrequestsを設定する。
+要求対象のPersistentVolumeのrequestsを設定する。
 
 
 
@@ -1999,7 +2002,7 @@ spec:
 
 要求対象のPersistentVolumeのストレージクラス名を設定する。
 
-これを設定しない場合は、ストレージクラス名が```standard```のPerisitentVolumeを要求する。
+これを設定しない場合は、ストレージクラス名が```standard```のPersistentVolumeを要求する。
 
 
 
@@ -2434,7 +2437,7 @@ Pod内のコンテナのマウントポイントを設定する。
 
 Node側のマウント元のディレクトリは、PersistentVolumeの```.spec.hostPath```キーで設定する。
 
-volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPersistentVolumeで設定された任意のマウントを実行できることに注意する。
 
 
 

@@ -86,9 +86,11 @@ PodTemplate (```.spec.template```キー) を変更した場合、Deploymentは�
 
 レプリカ数 (```.spec.replicas```キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
 
-> ↪️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
 
 ![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_replace_replicaset.png)
+
+> ↪️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
+
 
 #### ▼ Podのレプリカ数の維持
 
@@ -104,7 +106,7 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 > ↪️ 参考：https://www.amazon.com/dp/1617297615
 
-![kubernetes_deployment_perisitent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_perisitent-volume.png)
+![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_persistent-volume.png)
 
 <br>
 
@@ -742,6 +744,8 @@ Cluster全体に渡る機能を提供する。
 
 各Kubernetesリソースの影響範囲を制御するための領域のこと。
 
+Namespaceが異なれば、```metadata```キーに同じ値（例：同じ名前、など）を設定できる。
+
 #### ▼ 初期Namespace
 
 
@@ -827,7 +831,7 @@ Secretに永続化された値を復号化し、```kubectl```コマンドにパ�
 
 #### ▼ PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし、これをコンテナにボリュームマウントする。
+Pluggableなボリュームを作成し、これをコンテナにボリュームマウントする。
 
 Node上のPod間でボリュームを共有できる。
 
@@ -842,6 +846,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 > - https://thinkit.co.jp/article/14195
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
 #### ▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffでない場合) 
 
@@ -906,7 +911,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 #### ▼ HostPath (本番環境で非推奨) 
 
-Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
+Nodeのストレージ上にボリュームを作成し、これをコンテナにバインドマウントする。
 
 機能としては、Volumeの一種であるHostPathと同じである。
 
@@ -919,7 +924,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 #### ▼ Local (本番環境で推奨) 
 
-Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
+Node上にボリュームを作成し、これをコンテナにバインドマウントする。
 
 マルチNodeに対応している (明言されているわけではく、HostPathとの明確な違いがよくわからない) 。
 
@@ -927,6 +932,17 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 >
 > - https://kubernetes.io/docs/concepts/storage/volumes/#local
 > - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
+
+#### ▼ 外部ストレージ上のボリューム
+
+外部ストレージ (例：AWS EBS、NFS、など) 上のボリュームを作成し、コンテナにマウントする。
+
+この場合、StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部ストレージ上のボリュームを紐づける。
+
+また、外部ストレージを使用する場合には、CSIドライバーも必要である。
+
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/storage_class.png)
+
 
 <br>
 
@@ -1024,6 +1040,21 @@ $ kubectl get pod <Pod名> -o wide
 
 <br>
 
+### StorageClass
+
+#### ▼ StorageClassとは
+
+外部ストレージ上 (例：AWS EBS、など) を動的にプロビジョニングし、これのボリュームをPersistentVolumeClaimに提供する。
+
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/storage_class.png)
+
+> ↪️ 参考：
+> 
+> - https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
+
+<br>
+
 ### Volume
 
 #### ▼ Volumeとは
@@ -1062,7 +1093,7 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ▼ HostPath (本番環境で非推奨) 
 
-Node上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。
+Node上の既存のストレージ上にボリュームを作成し、コンテナにバインドマウントする。
 
 バインドマウントは、NodeとPod内のコンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
 
@@ -1114,7 +1145,7 @@ $ docker inspect <コンテナID>
 
 #### ▼ EmptyDir
 
-Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。
+Podの既存のストレージ上にボリュームを作成し、コンテナにボリュームマウントする。
 
 そのため、Podが削除されると、このボリュームも同時に削除される。
 
@@ -1122,11 +1153,14 @@ Node上のPod間でボリュームを共有できない。
 
 > ↪️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
-#### ▼ 外部ボリューム
+#### ▼ 外部ストレージ上のボリューム
 
-クラウドプロバイダーやNFSから提供されるストレージ領域を使用したボリュームとし、コンテナにマウントする。
+外部ストレージ (例：AWS EBS、NFS、など) のストレージ上のボリュームとし、コンテナにマウントする。
 
-> ↪️ 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
+> ↪️ 参考：
+> 
+> - https://kubernetes.io/docs/concepts/storage/volumes/
+> - https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
 #### ▼ Volumeの代わりにPersistentVolumeを使用する
 

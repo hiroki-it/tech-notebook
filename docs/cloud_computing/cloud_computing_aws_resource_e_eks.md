@@ -246,7 +246,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 
 
 ```bash
-$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
+$ kubectl config use-context <ClusterのARN>
 ```
 
 > ↪️ 参考：
@@ -318,7 +318,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
-$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
+$ kubectl config use-context <ClusterのARN>
 ```
 
 ```【３】```

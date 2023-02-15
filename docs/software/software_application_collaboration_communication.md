@@ -177,7 +177,6 @@ Axiosパッケージである。
 
 #### ▼ GET送信
 
-> ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
 **＊実装例＊**
 
@@ -202,9 +201,11 @@ xhr.onload = () => {
 xhr.send();
 ```
 
+> ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
+
+
 #### ▼ POST送信
 
-> ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
 **＊実装例＊**
 
@@ -247,6 +248,9 @@ xhr.onload = () => {
 // 最後に送信を実行
 xhr.send(queryString);
 ```
+
+> ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
+
 
 <br>
 

@@ -30,7 +30,6 @@ SecretsストアCSIドライバーは、CSIドライバー、CSIボリューム�
 #### ▼ CSIドライバーとは
 
 
-![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/secrets-store-csi-volume.png)
 
 
 CSIドライバーは、SecretProviderClassで定義されたプロバイダーのAPIと通信し、プロバイダーのSecretのデータを参照する。
@@ -39,6 +38,7 @@ CSIドライバーは、SecretProviderClassで定義されたプロバイダー�
 
 ExternalSecretsOperatorと比較して、Secretを作成しない点で脆弱性が高い一方で、Kubernetesとプロバイダーが密結合になってしまう。
 
+![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/secrets-store-csi-volume.png)
 
 
 > ↪️ 参考：
@@ -53,9 +53,9 @@ ExternalSecretsOperatorと比較して、Secretを作成しない点で脆弱性
 
 #### ▼ CSIボリュームとは
 
-CSIの仕様によって標準化された外部ボリューム。
+CSIの仕様によって標準化された外部ストレージ上のボリューム。
 
-プロバイダー上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
+外部ストレージ上にボリュームを作成し、これをコンテナにバインドマウントする。
 
 
 

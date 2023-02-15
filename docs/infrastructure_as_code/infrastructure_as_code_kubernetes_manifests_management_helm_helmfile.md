@@ -35,7 +35,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 マイクロサービスをチャートの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。
 
-各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにリリース単位の```helmfile.d```ファイルを置く。
+各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにHelmリリース単位の```helmfile.d```ファイルを置く。
 
 ```yaml
 repository/
@@ -50,7 +50,7 @@ repository/
 └── baz/ # bazサービス
 ```
 
-リリース単位は、Kubernetesリソースとすると良い。
+Helmリリース単位は、Kubernetesリソースとすると良い。
 
 
 
@@ -90,7 +90,7 @@ $ helm repo update
 
 $ kubectl create namespace <Namespace名>
 
-$ helm install <リリース名> <チャートリポジトリ名>/<チャート名> -n <Namespace名> --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/<チャート名> -n <Namespace名> --version <バージョンタグ>
 ```
 
 これを```helmfile.d```ファイルで定義すると、以下のようになる。
@@ -101,7 +101,7 @@ repositories:
     url: <URL>
 
 releases:
-  - name: <リリース名>
+  - name: <Helmリリース名>
     namespace: <Namespace名>
     chart: <チャートリポジトリ名>/<チャート名>
     version: <バージョンタグ>
@@ -118,7 +118,7 @@ repositories:
     url: <URL>
 
 releases:
-  - name: <リリース名>
+  - name: <Helmリリース名>
     namespace: <Namespace名>
     chart: <チャートリポジトリ名>/<チャート名>
     version: <バージョンタグ>
@@ -239,7 +239,7 @@ releases:
 
 #### ▼ name
 
-リリース名を設定する。
+Helmリリース名を設定する。
 
 
 
@@ -265,9 +265,9 @@ releases:
 
 #### ▼ createNamespace
 
-リリース時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
+Helmリリース時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
 
-デフォルトで```true```になっており、リリース前にNamespaceを自動的に作成するようになっている。
+デフォルトで```true```になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
 
 ただし、Namespaceので出どころがわからなくなるため、Helmfileの```createNamespace```オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。
 
@@ -278,7 +278,7 @@ releases:
 
 #### ▼ chart
 
-リリース対象のチャートへのパスを設定する。
+Helmリリース対象のチャートへのパスを設定する。
 
 
 ```yaml
@@ -288,7 +288,7 @@ releases:
 
 #### ▼ version
 
-リリースのバージョンを設定する。
+Helmリリースのバージョンを設定する。
 
 
 
@@ -299,7 +299,7 @@ releases:
 
 #### ▼ values
 
-Helmの実行時に複合化する```values```ファイルを設定する。
+Helmの実行時に復号化する```values```ファイルを設定する。
 
 ```yaml
 releases:
@@ -319,16 +319,20 @@ releases:
   ...
 ```
 
-#### ▼ secrets
+#### ▼ set
 
-Helmの実行時に複合化するSecretのファイルを設定する。
+Helmの実行時に出力する```values```の値を設定する。
+
+キー名にドットを含む場合、エスケープする必要がある。
 
 ```yaml
-secrets:
-  - ./foo-secrets.yaml
+releases:
+  - set:
+      - name: foo
+        value: FOO
+      - name: bar\.enabled
+        value: true
 ```
-
-> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
 
 <br>
 
@@ -354,7 +358,7 @@ releases:
 
 #### ▼ url
 
-リリース対象のチャートリポジトリのURLを設定する。
+Helmリリース対象のチャートリポジトリのURLを設定する。
 
 
 
@@ -369,6 +373,20 @@ releases:
     values:
       - values.yaml
 ```
+
+<br>
+
+
+### secrets
+
+Helmの実行時に復号化するSecretのファイルを設定する。
+
+```yaml
+secrets:
+  - ./foo-secrets.yaml
+```
+
+> ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
 
 <br>
 

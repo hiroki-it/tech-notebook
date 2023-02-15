@@ -181,7 +181,7 @@ repository/
 |------------------|-----------------------------|
 | Service          | ```foo-service```           |
 | Deployment       | ```foo-pod```               |
-| PersistentVolume | ```foo-perisitent-volume``` |
+| PersistentVolume | ```foo-persistent-volume``` |
 | ...              | ...                         |
 
 <br>
@@ -407,7 +407,7 @@ Clusterの複数の実行環境 (```dev-*```、```stg-*```、```prd-*```) を用
 
 また加えて、Podの作成が始まらないと、```kubectl get pod```コマンドにPod自体が表示されない。
 
-そのため、```kubectl get deployment```で、Podの管理リソース（例：Deployment）の全てのPodが```Ready```コンディションかどうかを確認しておく。
+そのため、```kubectl get deployment```で、Podの管理リソース (例：Deployment) の全てのPodが```Ready```コンディションかどうかを確認しておく。
 
 <br>
 

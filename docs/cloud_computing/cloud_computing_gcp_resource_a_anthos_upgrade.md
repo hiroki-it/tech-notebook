@@ -148,7 +148,7 @@ $ kubectl get node -o wide
 
      また、Podの作成が始まらないと、```kubectl get pod```コマンドにPod自体が表示されない。
 
-     そのため、```kubectl get deployment```で、Podの管理リソース（例：Deployment）の全てのPodが```Ready```コンディションかどうかを確認しておく。
+     そのため、```kubectl get deployment```で、Podの管理リソース (例：Deployment) の全てのPodが```Ready```コンディションかどうかを確認しておく。
 
 
 ```bash
@@ -640,7 +640,7 @@ $ kubectl get IstioOperator -n istio-system
 
      また、Podの作成が始まらないと、```kubectl get pod```コマンドにPod自体が表示されない。
 
-     そのため、```kubectl get deployment```で、Podの管理リソース（例：Deployment）の全てのPodが```Ready```コンディションかどうかを確認しておく。
+     そのため、```kubectl get deployment```で、Podの管理リソース (例：Deployment) の全てのPodが```Ready```コンディションかどうかを確認しておく。
 
 ```bash
 $ kubectl get pod -A -o wide

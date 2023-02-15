@@ -37,7 +37,7 @@ $ helmfile <サブコマンド>
 
 #### ▼ -e
 
-リリース対象の実行環境名を設定する。
+Helmリリース対象の実行環境名を設定する。
 
 
 
@@ -81,7 +81,7 @@ $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 
 まず```helmfile diff```コマンドを実行し、この時に差分があれば、```helmfile apply```コマンドを実行する。
 
-```helmfile sync```コマンドとは異なり、リリース間に差分がないと、リビジョン番号は更新されない。
+```helmfile sync```コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。
 
 注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
 
@@ -153,9 +153,9 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 #### ▼ diffとは
 
-全てのリリースに対して、helm-diffプラグインを実行する。
+全てのHelmリリースに対して、helm-diffプラグインを実行する。
 
-helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --dry-run```コマンドの差分を取得する。
+helm-diffプラグインでは、Helmリリース済みの最新バージョンと、```helm upgrade --dry-run```コマンドの差分を取得する。
 
 ```bash
 $ helmfile -e prd diff
@@ -221,9 +221,9 @@ Source: project/manifests/persistent-volume.yaml
 
 #### ▼ syncとは
 
-全てのリリースに関して、```helm upgrade --install```コマンドを実行する。
+全てのHelmリリースに関して、```helm upgrade --install```コマンドを実行する。
 
-```helmfile apply```コマンドとは異なり、リリース間に差分がなくとも、リビジョン番号を更新する。
+```helmfile apply```コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョン番号を更新する。
 
 注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
 
@@ -241,7 +241,7 @@ $ helmfile -e prd sync
 
 #### ▼ templateとは
 
-全てのリリースに関して、```helm template```コマンドを実行する。
+全てのHelmリリースに関して、```helm template```コマンドを実行する。
 
 
 

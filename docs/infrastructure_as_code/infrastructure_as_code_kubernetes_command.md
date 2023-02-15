@@ -165,7 +165,7 @@ $ kubectl config use-context docker-desktop
 宛先をAWS EKSのkube-apiserverに変更する。
 
 ```bash
-$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
+$ kubectl config use-context <ClusterのARN>
 ```
 
 #### ▼ view
@@ -1084,7 +1084,7 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 
 #### ▼ --watch (-w)
 
-指定したPodの情報（フェーズ、ステータス、など）を継続的に取得し、情報に変更があれば出力を追記していく。
+指定したPodの情報 (フェーズ、ステータス、など) を継続的に取得し、情報に変更があれば出力を追記していく。
 
 別ツールで時間のかかるKubernetesリソースを作成しながら、```--watch```オプションを使用すると、作成状況を確認できる。
 

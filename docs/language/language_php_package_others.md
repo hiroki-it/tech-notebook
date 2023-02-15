@@ -229,7 +229,6 @@ class Foo
 
 #### ▼ GET送信
 
-> ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
 **＊実装例＊**
 
@@ -252,9 +251,11 @@ $response = $client->request(
 );
 ```
 
+> ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
+
+
 #### ▼ POST送信
 
-> ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
 
 ```php
 <?php
@@ -283,6 +284,9 @@ $response = $client->request(
     ]
 );
 ```
+
+> ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
+
 
 <br>
 

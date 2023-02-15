@@ -51,6 +51,9 @@ RESTに基づいた設計をRESTfulという。RESTful設計が使用されたWe
 | SSH、TLS/SSL、SFTP | ステートフル        |
 
 #### ▼ Connectabilityであること
+
+調査中...
+
 #### ▼ Uniform Interfaceであること
 
 HTTPプロトコルを使用したリクエストを、『リソースに対する操作』とらえ、リクエストにHTTPメソッドを対応づけるようにする。
@@ -1012,7 +1015,9 @@ setcookie(
 
 ```【４】```
 
-:    ```2```回目以降のリクエストでは、ブラウザは、リクエストヘッダーの```Cookie```ヘッダーにCookie情報を埋め込んでサーバーに送信する。サーバーは、Cookie情報に紐付くクライアントのデータをReadする。
+:    ```2```回目以降のリクエストでは、ブラウザは、リクエストヘッダーの```Cookie```ヘッダーにCookie情報を埋め込んでサーバーに送信する。
+
+     サーバーは、Cookie情報に紐付くクライアントのデータをReadする。
 
 ![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cookie.png)
 
@@ -1024,7 +1029,15 @@ setcookie(
 
 ![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id_page-transition.png)
 
-特定のサイトを訪問してから、離脱するまでの一連のユーザー操作を『セッション』という。この時、セッションIDを使用すると、セッションの各リクエストの送信元を同一クライアントとして識別できる。HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信を行える。例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザーからのリクエストとして認識できる。セッションIDは、Cookie情報の1つとして、```Cookie```ヘッダーと```Set-Cookie```ヘッダーを使用して送受信される。
+特定のサイトを訪問してから、離脱するまでの一連のユーザー操作を『セッション』という。
+
+この時、セッションIDを使用すると、セッションの各リクエストの送信元を同一クライアントとして識別できる。
+
+HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信を行える。
+
+例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザーからのリクエストとして認識できる。
+
+セッションIDは、Cookie情報の1つとして、```Cookie```ヘッダーと```Set-Cookie```ヘッダーを使用して送受信される。
 
 ```yaml
 # リクエストヘッダーの場合
@@ -1092,11 +1105,6 @@ session.save_path = "/tmp"
 
 補足として、PHP-FPMを採用している場合は、```/etc/php.ini```ファイルではなく、```/etc/php-fpm.d/www.conf```ファイルで保存場所を設定する必要がある。
 
-> ↪️ 参考：
->
-> - https://github.com/phpredis/phpredis/issues/1097
-> - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
-
 ```bash
 # /etc/php-fpm.d/www.confファイル
 
@@ -1105,6 +1113,13 @@ php_value[session.save_handler] = redis
 ## AWS RedisのOrigin
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
+
+
+> ↪️ 参考：
+>
+> - https://github.com/phpredis/phpredis/issues/1097
+> - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
+
 
 #### ▼ セッションの有効期限と初期化確率
 
@@ -1125,7 +1140,6 @@ session.gc_maxlifetime = 86400
 
 
 
-> ↪️ 参考：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
 
 ```ini
 # 有効期限後に100%初期化されるようにする。
@@ -1133,11 +1147,19 @@ session.gc_probability = 1
 session.gc_divisor = 1
 ```
 
+> ↪️ 参考：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
+
+
 #### ▼ 仕組み
+
+![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png)
+
 
 ```【１】```
 
-:    最初、ブラウザはリクエストを送信する。セッションIDを発行し、セッションIDごとに```sess_*****```ファイルを作成。
+:    最初、ブラウザはリクエストを送信する。
+
+     セッションIDを発行し、セッションIDごとに```sess_*****```ファイルを作成。
 
 ```【２】```
 
@@ -1149,8 +1171,9 @@ session.gc_divisor = 1
 
 ```【４】```
 
-:    2回目以降のリクエストでは、ブラウザは、リクエストヘッダ情報の```Cookie```ヘッダーを使用して、セッションIDをサーバーに送信する。サーバーは、セッションIDに紐付くクライアントのデータをReadする。
+:    2回目以降のリクエストでは、ブラウザは、リクエストヘッダ情報の```Cookie```ヘッダーを使用して、セッションIDをサーバーに送信する。
 
-![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png)
+     サーバーは、セッションIDに紐付くクライアントのデータをReadする。
+
 
 <br>

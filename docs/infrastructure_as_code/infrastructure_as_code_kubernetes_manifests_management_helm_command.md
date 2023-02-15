@@ -37,11 +37,11 @@ $ helm create <チャートへのパス>
 
 #### ▼ destoryとは
 
-指定したリリースでインストールされたチャートを削除する。
+指定したHelmリリースでインストールされたチャートを削除する。
 
 
 ```bash
-$ helm destory <リリース名>
+$ helm destory <Helmリリース名>
 ```
 
 
@@ -87,14 +87,14 @@ Saving 1 charts
 
 #### ▼ getとは
 
-特定のリリースに含まれる```helm template```コマンドの結果を取得する。
+特定のHelmリリースに含まれる```helm template```コマンドの結果を取得する。
 
 
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
 
 ```bash
-$ helm get <リリース名>
+$ helm get <Helmリリース名>
 ```
 
 <br>
@@ -103,19 +103,19 @@ $ helm get <リリース名>
 
 #### ▼ historyとは
 
-指定したリリースの履歴を取得する。
+指定したHelmリリースの履歴を取得する。
 
 
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_history/
 
 ```bash
-$ helm history <リリース名>
+$ helm history <Helmリリース名>
 
 REVISION     UPDATED                    STATUS     CHART               APP VERSION            DESCRIPTION
-<リリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-<バージョンタグ>   <バージョンタグ>          Initial install
-<リリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-1.1.0  1.1.0    Rolled back to 1
-<リリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully
+<Helmリリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-<バージョンタグ>   <バージョンタグ>          Initial install
+<Helmリリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-1.1.0  1.1.0    Rolled back to 1
+<Helmリリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully
 ```
 
 <br>
@@ -132,7 +132,7 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 > ↪️ 参考：https://helm.sh/docs/helm/helm_install/
 
 ```bash
-$ helm install <リリース名> <チャートへのパス>
+$ helm install <Helmリリース名> <チャートへのパス>
 ```
 
 | パラメーター                                           | 例                                                              | 補足                                                                                                                                        |
@@ -152,7 +152,7 @@ $ helm install <リリース名> <チャートへのパス>
 
 
 ```bash
-$ helm install --disable-openapi-validation <リリース名> <チャートへのパス>
+$ helm install --disable-openapi-validation <Helmリリース名> <チャートへのパス>
 ```
 
 #### ▼ --dry-run
@@ -164,7 +164,7 @@ Kubernetesに作成されるリソースのマニフェストを取得する。
 
 
 ```bash
-$ helm install --dry-run <リリース名> <チャートへのパス>
+$ helm install --dry-run <Helmリリース名> <チャートへのパス>
 
 # Source: prd/templates/deployment.yaml
 apiVersion: apps/v1
@@ -186,7 +186,7 @@ kind: Deployment
 > ↪️ 参考：https://helm.sh/docs/helm/helm_install/#options
 
 ```bash
-$ helm install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
 #### ▼ kube-context
@@ -197,12 +197,12 @@ $ helm install <リリース名> <チャートへのパス> -f <valuesファイ�
 
 ```bash
 # Minikubeの場合
-$ helm install <リリース名> <チャートリポジトリ名> --kube-context minikube
+$ helm install <Helmリリース名> <チャートリポジトリ名> --kube-context minikube
 ```
 
 ```bash
 # AWSの場合
-$ helm install <リリース名> <チャートリポジトリ名> --kube-context <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
+$ helm install <Helmリリース名> <チャートリポジトリ名> --kube-context <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 ```
 
 <br>
@@ -270,7 +270,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 
 #### ▼ listとは
 
-リリースの一覧を取得する。
+Helmリリースの一覧を取得する。
 
 チャートは、バージョンによって中身の```.yaml```ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
@@ -282,7 +282,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 $ helm list
 
 NAME         VERSION   UPDATED                   STATUS    CHART
-<リリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-<バージョンタグ> # <-- チャートのバージョンがわかる。
+<Helmリリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-<バージョンタグ> # <-- チャートのバージョンがわかる。
 ```
 
 <br>
@@ -574,7 +574,7 @@ Update Complete. ⎈Happy Helming!⎈
 $ helm search hub <キーワード>
 
 URL               CHART VERSION      APP VERSION                       DESCRIPTION                                                   https://artifacthub.io/example.com   <バージョンタグ>             <バージョンタグ>                            This is foo chart
-<OCIリポジトリURL>  <チャートバージョン>  <アプリケーションのリリースバージョン>  <説明文>
+<OCIリポジトリURL>  <チャートバージョン>  <アプリケーションのHelmリリースバージョン>  <説明文>
 ```
 
 <br>
@@ -710,14 +710,14 @@ $ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
 
 #### ▼ uninstallとは
 
-リリースを指定し、そのリリースでインストールされたKubernetesリソースを削除する。
+Helmリリースを指定し、そのHelmリリースでインストールされたKubernetesリソースを削除する。
 
 
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_uninstall/
 
 ```bash
-$ helm uninstall <リリース名>
+$ helm uninstall <Helmリリース名>
 ```
 
 **＊例＊**
@@ -732,7 +732,7 @@ $ helm uninstall foo-release
 
 #### ▼ upgradeとは
 
-指定したバージョンのチャートを使用して、リリースをアップグレードする。
+指定したバージョンのチャートを使用して、Helmリリースをアップグレードする。
 
 Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
@@ -747,7 +747,7 @@ Helmは、カスタムリソース定義を含むチャートのインストー�
 
 
 ```bash
-$ helm upgrade --atomic <リリース名> <チャートへのパス> -f <valuesファイルへのパス> 
+$ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス> 
 ```
 
 **＊例＊**
@@ -759,15 +759,15 @@ $ helm template --atomic ./foo-chart -f ./values.yaml >| release.yaml
 
 #### ▼ --install
 
-新しいリビジョン番号を作成し、インストール済のリリースをアップグレードする。
+新しいリビジョン番号を作成し、インストール済のHelmリリースをアップグレードする。
 
 
 
 ```bash
-$ helm upgrade --install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
 
-Release "<リリース名>" has been upgraded. Happy Helming!
-NAME: <リリース名>
+Release "<Helmリリース名>" has been upgraded. Happy Helming!
+NAME: <Helmリリース名>
 LAST DEPLOYED: Sat Jan 1 12:00:00 2022
 NAMESPACE: default
 STATUS: deployed
@@ -782,7 +782,7 @@ TEST SUITE: None
 これにより、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールできる。
 
 ```bash
-$ helm upgrade --skip-crds --install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --skip-crds --install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
 **＊例＊**
@@ -806,7 +806,7 @@ $ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >|
 
 
 ```bash
-$ helm upgrade --wait <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --wait <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
 **＊例＊**

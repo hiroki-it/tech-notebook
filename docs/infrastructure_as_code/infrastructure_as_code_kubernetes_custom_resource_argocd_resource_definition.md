@@ -2504,7 +2504,7 @@ data:
 ```bash
 $ argocd login <ArgoCDのドメイン名> --grpc-web
 
-$ argocd cluster add arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<EKS Cluster名>
+$ argocd cluster add <ClusterのARN>
 
 INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system" 
 INFO[0011] ClusterRole "argocd-manager-role" updated    
