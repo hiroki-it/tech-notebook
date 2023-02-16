@@ -519,6 +519,25 @@ Name:               baz-node
 
 <br>
 
+### diff
+
+既存のマニフェストと、指定したマニフェストの差分を表示する。
+
+<br>
+
+### -f
+
+ファイルを指定して、差分を表示する。
+
+カスタムリソース定義をHelmの管理外で作成する場合に役立つ。
+
+```bash
+$ curl "https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crds/application-crd.yaml" \
+    | k diff -f -
+```
+
+<br>
+
 ### drain
 
 #### ▼ drainとは

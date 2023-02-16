@@ -47,7 +47,15 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 #### ▼ 監視ツールとして
 
-vm-agent、vm-storage、vm-alert、から構成されている。また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
+vm-agent、vm-storage、vm-alert、から構成されている。
+
+また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。
+
+vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。
+
+vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
+
+VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
 
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_monitoring_architecture.png)
 
@@ -63,7 +71,9 @@ vm-agent、vm-storage、vm-alert、から構成されている。また、アラ
 
 #### ▼ ロードバランサーとは
 
-HTTPSプロトコルの```8224```番ポートでインバウンド通信を待ち受け、vm-selectやvm-insertに通信をルーティングする。このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
+HTTPSプロトコルの```8224```番ポートでインバウンド通信を待ち受け、vm-selectやvm-insertに通信をルーティングする。
+
+このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
 
 #### ▼ 読み出しエンドポイント
 
@@ -122,7 +132,9 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 
 #### ▼ ディレクトリ構成
 
-VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起動する時に、```storageDataPath```オプションでディレクトリ名を渡すことにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。
+VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起動する時に、```storageDataPath```オプションでディレクトリ名を渡す。
+
+これにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。
 
 ```yaml
 /var/lib/victoriametrics/
@@ -150,19 +162,27 @@ $ du -hs /var/lib/victoriametrics/data
 
 #### ▼ ReadOnlyモード
 
-vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
+vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
+
+ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。
+
+これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
 
 > ↪️ 参考：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
 
 #### ▼ 保管期間
 
-vm-storageは、一定期間だけ経過したメトリクスファイル (主に、```data```ディレクトリ、```indexdb```ディレクトリ、の配下など) を削除する。VictoriaMetricsの起動時に、```victoria-metrics-prod```コマンドの```-retentionPeriod```オプションで指定できる。
+vm-storageは、一定期間だけ経過したメトリクスファイル (主に、```data```ディレクトリ、```indexdb```ディレクトリ、の配下など) を削除する。
+
+VictoriaMetricsの起動時に、```victoria-metrics-prod```コマンドの```-retentionPeriod```オプションで指定できる。
 
 > ↪️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 #### ▼ ストレージの必要サイズの見積もり
 
-vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
+vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。
+
+また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
 
 > ↪️ 参考：https://docs.victoriametrics.com/#capacity-planning
 
@@ -186,7 +206,13 @@ vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量 
 | ```23:00:00``` | ```13023```             | ```0.0020```       | ```26```            |
 | ```24:00:00``` | ```12900```             | ```-0.0094```      | ```123```           |
 
-増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。もし、データの保管日数が```10```日分という非機能的な品質であれば、vm-storageは常に過去```10```日分のデータを保管している必要がある。そのため、以下の数式で```10```日分のサイズを算出できる。
+増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。
+
+これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。
+
+もし、データの保管日数が```10```日分という非機能的な品質であれば、vm-storageは常に過去```10```日分のデータを保管している必要がある。
+
+そのため、以下の数式で```10```日分のサイズを算出できる。
 
 ```mathematica
 (増加量の合計)

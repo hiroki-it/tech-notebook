@@ -808,7 +808,9 @@ Systems Managerを使用してコンテナに接続する場合、コンテナ�
 
 ```【３】```
 
-:    ECSタスク実行ロールにIAMポリシーを付与する。これにより、ECSタスクがセッションマネージャーにアクセスできるようになる。
+:    ECSタスク実行ロールにIAMポリシーを付与する。
+
+     これにより、ECSタスクがセッションマネージャーにアクセスできるようになる。
 
 ```yaml
 {
@@ -868,7 +870,13 @@ bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec
 
 ```【６】```
 
-:    ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』を送信する。これはCloudTrailでExecuteCommandイベントとして確認できる。ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
+:    ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。
+
+     例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』を送信する。
+
+     これはCloudTrailでExecuteCommandイベントとして確認できる。
+
+     ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
 
 ```bash
 #!/bin/bash

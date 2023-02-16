@@ -35,8 +35,13 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+カスタムリソース定義をHelmの管理外で作成する。
 
+```bash
+$ kubectl apply -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=<バージョン>"
+```
+
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://argoproj.github.io/argo-helm

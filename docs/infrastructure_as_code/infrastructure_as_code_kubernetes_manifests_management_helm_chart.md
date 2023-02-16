@@ -106,13 +106,18 @@ Kubernetes上で稼働するアプリケーションのリリースバージョ�
 
 リリースバージョンは、GitHubのリリースタグで管理した方がよく、```appVersion```キーの値は特に変更しなくても良い。
 
+公式チャートでは、チャート内で使用しているコンテナのイメージタグが```appVersion```キーに設定されている。
 
-
-> ↪️ 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
 
 ```yaml
 appVersion: <バージョンタグ>
 ```
+
+> ↪️ 参考：
+> 
+> - https://helm.sh/docs/topics/charts/#the-appversion-field
+> - https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/templates/_common.tpl#L38
+
 
 <br>
 
@@ -478,99 +483,102 @@ nodeSelector:
 
 #### ▼ podSecurityContext
 
-```yaml
-
-```
-
-
 チャート内のDeploymentの```.spec.template.spec.securityContext```キーに値を設定する。
 
 
-
-#### ▼ replicaCount
-
 ```yaml
-
+securityContext:
+  allowPrivilegeEscalation: false
 ```
 
+#### ▼ replicaCount
 
 チャート内のDeploymentの```.spec.replicas```キーに値を設定する。
 
 
+```yaml
+replicaCount: 3
+```
 
 #### ▼ resources
-
-```yaml
-
-```
 
 
 チャート内のDeploymentの```.spec.template.spec.containers[].resources```オプションに値を設定する。
 
-
-
-#### ▼ securityContext
-
 ```yaml
-
+resources:
+  cpu: 50m
+  memory: 400Mi
 ```
 
+#### ▼ securityContext
 
 チャート内のDeploymentの```.spec.template.spec.containers[].securityContext```オプションに値を設定する。
 
 
-
-#### ▼ serviceAccount.create
-
 ```yaml
-
+securityContext:
+  runAsUser: 1000
+  fsGroup: 2000
 ```
 
+#### ▼ serviceAccount.create
 
 ServiceAccountの作成を有効化する。
 
 
-
-#### ▼ serviceAccount.annotations
-
 ```yaml
-
+serviceAccount:
+  create: true
 ```
 
+#### ▼ serviceAccount.annotations
 
 チャート内のServiceAccountの```.metadata.annotations```オプションに値を設定する。
 
 
-
-#### ▼ service.type
-
 ```yaml
-
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
 ```
 
+#### ▼ service.type
 
 チャート内のServiceの```.spec.type```キーに値を設定する。
 
 
+```yaml
+service:
+  type: ClusterIP
+```
 
 #### ▼ service.port
 
-```yaml
+チャート内のServiceの```.spec.ports.port```キーに値を設定する。
 
+
+```yaml
+service:
+  port: 80
 ```
 
 
-チャート内のServiceの```.spec.ports.port```キーに値を設定する。
 
 
 
 #### ▼ tolerations
 
-```yaml
+チャート内のDeploymentの```.spec.template.spec.tolerations```キーに値を設定する。
 
+
+```yaml
+tolerations:
+  - key: "app"
+    operator: "Exists"
+    effect: "NoSchedule"
 ```
 
-チャート内のDeploymentの```.spec.template.spec.tolerations```キーに値を設定する。
 
 
 

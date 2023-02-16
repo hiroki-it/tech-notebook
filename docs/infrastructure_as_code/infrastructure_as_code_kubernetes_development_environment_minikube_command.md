@@ -830,6 +830,7 @@ minikube-m02   Ready    <none>                 42s   v1.22.0 # ワーカーNode
 minikube-m03   Ready    <none>                 19s   v1.22.0
 minikube-m04   Ready    <none>                 19s   v1.22.0
 
+
 # Nodeを確認する。
 $ minikube status
 
@@ -860,6 +861,20 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 ```
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+
+
+#### ▼ --profile
+
+MinikubeのClusterに名前をつける。
+
+Minikubeを使用してマルチClusterを再現できる。
+
+```bash
+$ minikube start --profile foo-cluster
+
+$ kubectl config use-context foo-cluster
+Switched to context "foo-cluster".
+```
 
 
 <br>

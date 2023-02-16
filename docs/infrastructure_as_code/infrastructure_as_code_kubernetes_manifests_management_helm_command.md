@@ -704,6 +704,16 @@ foo:
 $ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
 ```
 
+#### ▼ --show-only
+
+特定のディレクトリのテンプレートを出力する。
+
+```bash
+$ helm template ./foo-chart -f ./values.yaml --show-only ./foo-chart/templates/bar
+```
+
+> ↪️ 参考：https://stackoverflow.com/a/63159075
+
 <br>
 
 ### uninstall

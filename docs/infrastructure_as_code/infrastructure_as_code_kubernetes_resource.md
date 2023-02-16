@@ -744,7 +744,7 @@ Cluster全体に渡る機能を提供する。
 
 各Kubernetesリソースの影響範囲を制御するための領域のこと。
 
-Namespaceが異なれば、```metadata```キーに同じ値（例：同じ名前、など）を設定できる。
+Namespaceが異なれば、```metadata```キーに同じ値 (例：同じ名前、など) を設定できる。
 
 #### ▼ 初期Namespace
 
