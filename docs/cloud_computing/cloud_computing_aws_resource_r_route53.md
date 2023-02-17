@@ -67,14 +67,14 @@ description: Route53＠Rで始まるAWSリソース
 
 ![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
 
-| 種別      | AWSリソース       | 例                                                                      |
-|-----------|---------------|------------------------------------------------------------------------|
-| DNS名     | ALB           | ```<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com```            |
-|           | EC2           | ```ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com``` |
-| ドメイン名    | CloudFront    | ```<ランダムな文字列>.cloudfront.net```                                      |
-| エンドポイント名 | RDS (Aurora)    | ```<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.```        |
-|           | RDS (非Aurora)  | ```<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.```       |
-|           | S3            | ```<バケット名>.ap-northeast-1.amazonaws.com```                             |
+| 種別      | AWSリソース        | 例                                                                      |
+|-----------|----------------|------------------------------------------------------------------------|
+| DNS名     | ALB            | ```<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com```            |
+|           | EC2            | ```ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com``` |
+| ドメイン名    | CloudFront     | ```<ランダムな文字列>.cloudfront.net```                                      |
+| エンドポイント名 | RDS (Aurora)   | ```<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.```        |
+|           | RDS (非Aurora) | ```<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.```       |
+|           | S3             | ```<バケット名>.ap-northeast-1.amazonaws.com```                             |
 
 #### ▼ AWS以外でドメインを購入した場合
 

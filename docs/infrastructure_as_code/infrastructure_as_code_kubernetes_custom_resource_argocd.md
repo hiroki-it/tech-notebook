@@ -24,14 +24,19 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 argocd-server、repo-server、application-controller、redis-server、dex-server、から構成される。
 
 ```bash
-$ kubectl get pod -n argocd
+$ kubectl get deployment -n argocd
 
-NAME                                    READY   STATUS    RESTARTS   AGE
-argocd-server-*****                     1/1     Running   0          1d
-argocd-repo-server-*****                1/1     Running   0          1d
-argocd-redis-*****                      1/1     Running   0          1d
-argocd-application-controller-*****     1/1     Running   0          1d
-argocd-dex-server-*****                 1/1     Running   0          1d
+NAME                                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/paylab-argocd-dex-server    1/1     1            1           119d
+deployment.apps/paylab-argocd-redis         1/1     1            1           119d
+deployment.apps/paylab-argocd-repo-server   1/1     1            1           119d
+deployment.apps/paylab-argocd-server        1/1     1            1           119d
+
+
+$ kubectl get statefulset -n argocd
+
+NAME                                                    READY   AGE
+statefulset.apps/paylab-argocd-application-controller   1/1     119d
 ```
 
 ![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)

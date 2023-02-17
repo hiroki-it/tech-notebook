@@ -563,7 +563,7 @@ $ terraform plan | grep <moduleブロック名>
 
 # module.qux.quux will be changed
 # module.qux.corge will be changed
-# module.grault will be destoryed
+# module.grault will be destroyed
 
 $ terraform plan \
     -var-file=foo.tfvars \
@@ -680,13 +680,13 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 ただし、差分として認識されるものの```moved```ブロックを使用すれば、差分を回避できる。
 
 
-| 変更内容                                                                | される/されない |
-|----------------------------------------------------------------------|----------|
-| ```resource```ブロック名の変更                                               | される      |
-| ```module```ブロック名の変更                                                 | される      |
-| ファイルやディレクトリを指定するパスの変更                                               | されない     |
-| ```resource```ブロックにハードコーディングされた値を環境変数に変更 (```.tfvars```ファイルに移行)  | されない     |
-| ```variables```ブロック名の変更                                              | されない     |
+| 変更内容                                                                 | される/されない |
+|-----------------------------------------------------------------------|----------|
+| ```resource```ブロック名の変更                                                | される      |
+| ```module```ブロック名の変更                                                  | される      |
+| ファイルやディレクトリを指定するパスの変更                                                | されない     |
+| ```resource```ブロックにハードコーディングされた値を環境変数に変更 (```.tfvars```ファイルに移行) | されない     |
+| ```variables```ブロック名の変更                                               | されない     |
 
 > ↪️ 参考：https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
 

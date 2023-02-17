@@ -44,6 +44,33 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 
 <br>
 
+### annotate
+
+#### ▼ annotateとは
+
+指定したKubernetesリソースのアノテーションを操作する。
+
+#### ▼ --overwrite
+
+指定したアノテーションを書き換える。
+
+
+```bash
+$ kubectl annotate --overwrite pod foo-pod <キー名>=<値>
+```
+
+```kubectl apply```コマンドではアノテーションを変更できず、また```kubectl diff```コマンドでも差分として認識されない仕様になっている。
+
+そのため、```kubectl annotate```コマンドが必要になる。
+
+キー名の後に```-```（ハイフン）をつけるのアノテーションを削除できる。
+
+```bash
+$ kubectl annotate --overwrite pod foo-pod <キー名>-
+```
+
+<br>
+
 ### apply
 
 #### ▼ applyとは

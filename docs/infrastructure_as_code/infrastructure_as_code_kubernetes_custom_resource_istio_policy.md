@@ -37,14 +37,58 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 <br>
 
-### サービスメッシュに登録しないPodの選定
+### サービスメッシュに登録しないPodの選定（サイドカープロキシメッシュの場合）
 
-#### ▼ サイドカープロキシメッシュの場合
+#### ▼ 監視系のPod
 
-| 登録しないPod例 | 理由                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 監視系のPod   | サイドカープロキシメッシュに登録するPodが増えると、その分```istio-proxy```コンテナが増える。そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。可観測性を高める必要のないPod (例：監視を責務に持つPod) は、サイドカープロキシメッシュに登録しないようにする。                                                                                                                                                                                                                                                                                               |
-| Job配下のPod  | Job配下のPodに```istio-proxy```コンテナを挿入した場合、Pod内のコンテナが終了しても```istio-proxy```コンテナが終了せず、Pod自体が削除されない問題がある。Job配下のPodは、サイドカープロキシメッシュに登録しないようにする。どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、```istio-proxy```コンテナの『```localhost:15020/quitquitquit```』をコールするようなシェルスクリプトを実行する。<br>↪️ 参考：<br>・https://www.kabegiwablog.com/entry/2020/08/31/224827 <br>・https://github.com/istio/istio/issues/6324#issuecomment-760156652 <br>・https://youtu.be/2_Nan81j03o?t=1915 |
+サイドカープロキシメッシュに登録するPodが増えると、その分```istio-proxy```コンテナが増える。
+
+そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。
+
+可観測性を高める必要のないPod (例：監視を責務に持つPod) は、サイドカープロキシメッシュに登録しないようにする。
+
+#### ▼ Job配下のPod
+
+Job配下のPodに```istio-proxy```コンテナを挿入した場合、Pod内のコンテナが終了しても```istio-proxy```コンテナが終了せず、Pod自体が削除されない問題がある。
+
+Job配下のPodは、サイドカープロキシメッシュに登録しないようにする。
+
+どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、```istio-proxy```コンテナの『```localhost:15020/quitquitquit```』をコールするようなシェルスクリプトを実行する。
+
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: foo-job
+spec:
+  template:
+    metadata:
+      name: foo-job
+    spec:
+      containers:
+        - name: foo
+          command: [ "/bin/bash", "-c" ]
+          args:
+            - >
+              until curl -fsI http://localhost:15021/healthz/ready;
+              do
+                echo "Waiting for Sidecar to be healthy";
+                sleep 3;
+              done;
+              echo "Sidecar available. Running job command...";
+              <CronJobのコマンド>;
+              x=$(echo $?);
+              curl -fsI -X POST http://localhost:15020/quitquitquit && exit $x
+```
+
+
+> ↪️ 参考：
+>
+> - https://www.kabegiwablog.com/entry/2020/08/31/224827
+> - https://github.com/istio/istio/issues/6324#issuecomment-760156652
+> - https://youtu.be/2_Nan81j03o?t=1915
+
 
 <br>
 
@@ -480,11 +524,11 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 メトリクスの名前空間を```istio-proxy```コンテナとした時の監視ポリシーは以下の通りである。
 
 
-| メトリクス                                              | 単位 | 説明                                                                                                                                                           | アラート条件例 (合致したら発火)  |
-|----------------------------------------------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|
-| 総リクエスト数 (```istio_requests_total```)               | カウント | ```istio-proxy```コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                         |
-| 総gRPCリクエスト数 (```istio_request_messages_total```)   | カウント | ```istio-proxy```コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                 |                         |
-| 総gRPCレスポンス数 (```istio_response_messages_total```)  | カウント | ```istio-proxy```コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                 |                         |
+| メトリクス                                               | 単位 | 説明                                                                                                                                                           | アラート条件例 (合致したら発火) |
+|-----------------------------------------------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| 総リクエスト数 (```istio_requests_total```)              | カウント | ```istio-proxy```コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                          |
+| 総gRPCリクエスト数 (```istio_request_messages_total```)  | カウント | ```istio-proxy```コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                 |                          |
+| 総gRPCレスポンス数 (```istio_response_messages_total```) | カウント | ```istio-proxy```コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                 |                          |
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/metrics/
 

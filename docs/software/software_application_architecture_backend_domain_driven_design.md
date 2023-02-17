@@ -558,7 +558,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 | 同上                      | 予約オブジェクト                             | エンティティ          | 予約集約          |
 | 割引を選択する               | 適用割引オブジェクト                         | 値オブジェクト        | 予約集約          |
 | 支払い金額を確認する          | 支払料金オブジェクト                         | 値オブジェクト        | 支払い料金集約     |
-| 同上                      | 料金区分オブジェクト                         | タイプコード (Enum)     | 料金設定集約      |
+| 同上                      | 料金区分オブジェクト                         | タイプコード (Enum)   | 料金設定集約      |
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
 
@@ -578,7 +578,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 | 同上                      | 予約オブジェクト                             | エンティティ          | 予約集約          |
 | 割引を選択する               | 適用割引オブジェクト                         | 値オブジェクト        | 予約集約          |
 | 支払い金額を確認する          | 支払料金オブジェクト                         | 値オブジェクト        | 支払い料金集約     |
-| 同上                      | 料金区分オブジェクト                         | タイプコード (Enum)     | 料金設定集約      |
+| 同上                      | 料金区分オブジェクト                         | タイプコード (Enum)   | 料金設定集約      |
 | 同上                      | 料金区分計算オブジェクト                     | 値オブジェクト        | 料金区分計算集約  |
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)

@@ -1086,6 +1086,10 @@ spec:
 
 ```istio-proxy```コンテナ間の通信で相互TLSを有効化するか否かを設定する。
 
+Kubernetesのみで相互TLSをセットアップしようとすると大変であり、Istioを使うとより簡単にセットアップできる。
+
+> ↪️ 参考：https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
+
 #### ▼ mode
 
 相互TLSのタイプを設定する。

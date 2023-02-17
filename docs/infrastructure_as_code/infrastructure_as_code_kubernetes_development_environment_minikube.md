@@ -62,7 +62,7 @@ description: Minikube＠開発環境の知見を記録しています。
 #### ▼ ドライバーの種類
 
 
-| ホスト側のOS | ゲスト (Node) 側のOS                 |
+| ホスト側のOS | ゲスト (Node) 側のOS               |
 |----------|--------------------------------|
 | Linux    | VirtualBox、Docker、KVM2、...     |
 | MacOS    | VirtualBox、Docker、HyperKit、... |
@@ -97,14 +97,14 @@ $ minikube start
 
 ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeの決められたディレクトリにマウントされる。
 
-| ドライバー名       | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のNodeのディレクトリ |
-|---------------|----------|------------------|---------------------------|
-| VirtualBox    | Linux    | ```/home```      | ```/hosthome```           |
-| VirtualBox    | macOS    | ```/Users```     | ```/Users```              |
-| VirtualBox    | Windows  | ```C://Users```  | ```/c/Users```            |
-| VMware Fusion | macOS    | ```/Users```     | ```/mnt/hgfs/Users```     |
-| KVM           | Linux    | なし               |                           |
-| HyperKit      | Linux    | なし (NFSマウントを参照)  |                           |
+| ドライバー名       | ホスト側のOS | ホスト側のディレクトリ      | ゲスト仮想環境内のNodeのディレクトリ |
+|---------------|----------|-------------------|---------------------------|
+| VirtualBox    | Linux    | ```/home```       | ```/hosthome```           |
+| VirtualBox    | macOS    | ```/Users```      | ```/Users```              |
+| VirtualBox    | Windows  | ```C://Users```   | ```/c/Users```            |
+| VMware Fusion | macOS    | ```/Users```      | ```/mnt/hgfs/Users```     |
+| KVM           | Linux    | なし                |                           |
+| HyperKit      | Linux    | なし (NFSマウントを参照) |                           |
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 

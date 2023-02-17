@@ -26,23 +26,23 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 
 
-|    | 用語                                                  | 説明                                                                                                |
-|----|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| 1  | リクエストを受信する。                                         |                                                                                                     |
-| 2  | ```index.php```ファイル                                   | エントリーポイントから処理が開始する。                                                                             |
-| 3  | Autoload                                              | ```autoload.php```ファイルにて、パッケージを自動的にロードする。                                                        |
+|    | 用語                                                  | 説明                                                                                                  |
+|----|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| 1  | リクエストを受信する。                                         |                                                                                                       |
+| 2  | ```index.php```ファイル                                   | エントリーポイントから処理が開始する。                                                                               |
+| 3  | Autoload                                              | ```autoload.php```ファイルにて、パッケージを自動的にロードする。                                                          |
 | 4  | Load App                                              | ```bootstrap/app.php```ファイルにて、ServiceContainer (```Illuminate\Foundation\Application.php```) を実行する。 |
-| 5  | Http Kernel                                           | Kernelを実行する。                                                                                      |
-| 6  | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。        |
-| 7  | Middleware                                            | BeforeMiddlewareを実行する。                                                                            |
-| 8  | ・Dispatch by Router<br>・Routes Match                  | ```web.php```ファイル、```app.php```ファイルなどのルーティング定義を元に、Routerが実行する。                                 |
-| 9  | FormRequest                                           | バリデーションを実行する。                                                                                     |
-| 10 | Controller                                            | Controllerを基点として、DBにまで処理が走る。                                                                   |
-| 11 | Resource                                              | DBから取得したコレクション型データを配列型データに変換する。                                                             |
-| 12 | Response                                              | Responseを実行する。配列型データをJSON型データに変換する。                                                         |
-| 13 | Terminate Middleware                                  | AfterMiddlewareが実行される。                                                                            |
-| 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                            |
-| 15 | レスポンスを返信する。                                         |                                                                                                     |
+| 5  | Http Kernel                                           | Kernelを実行する。                                                                                        |
+| 6  | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。          |
+| 7  | Middleware                                            | BeforeMiddlewareを実行する。                                                                              |
+| 8  | ・Dispatch by Router<br>・Routes Match                  | ```web.php```ファイル、```app.php```ファイルなどのルーティング定義を元に、Routerが実行する。                                   |
+| 9  | FormRequest                                           | バリデーションを実行する。                                                                                       |
+| 10 | Controller                                            | Controllerを基点として、DBにまで処理が走る。                                                                     |
+| 11 | Resource                                              | DBから取得したコレクション型データを配列型データに変換する。                                                               |
+| 12 | Response                                              | Responseを実行する。配列型データをJSON型データに変換する。                                                           |
+| 13 | Terminate Middleware                                  | AfterMiddlewareが実行される。                                                                              |
+| 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                              |
+| 15 | レスポンスを返信する。                                         |                                                                                                       |
 
 > ↪️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
@@ -4902,12 +4902,12 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ServiceProviderの用途
 
-| 用途の種類                                                  | 説明                                                                       |
-|------------------------------------------------------------|--------------------------------------------------------------------------|
-| AppServiceProvider                                         | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成)  |
-| MacroServiceProvider                                       | ServiceContainerへのメソッドのバインド (登録)                                           |
-| RouteServiceProvider<br> (```app.php```、```web.php```も使用)  | ルーティングとコントローラーの対応関係の定義                                               |
-| EventServiceProvider                                       | EventListenerとEventhandler関数の対応関係の定義                               |
+| 用途の種類                                                   | 説明                                                                          |
+|-------------------------------------------------------------|-----------------------------------------------------------------------------|
+| AppServiceProvider                                          | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成) |
+| MacroServiceProvider                                        | ServiceContainerへのメソッドのバインド (登録)                                            |
+| RouteServiceProvider<br> (```app.php```、```web.php```も使用) | ルーティングとコントローラーの対応関係の定義                                                  |
+| EventServiceProvider                                        | EventListenerとEventhandler関数の対応関係の定義                                  |
 
 #### ▼ ServiceProviderのコール
 

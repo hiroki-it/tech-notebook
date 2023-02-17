@@ -117,11 +117,11 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 
 
 
-| サービス名 | リソース名                  |
-|--------|-------------------------|
-| AWS    | AWS EC2 (ベアメタルインスタンスタイプ)  |
-| GCP    | Bare Metal Solution     |
-| Azure  |                         |
+| サービス名 | リソース名                   |
+|--------|--------------------------|
+| AWS    | AWS EC2 (ベアメタルインスタンスタイプ) |
+| GCP    | Bare Metal Solution      |
+| Azure  |                          |
 
 #### ▼ 仮想サーバー型IaaS
 
@@ -180,11 +180,11 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 
 
 
-| サービス名 | リソース名                                                     |
-|--------|------------------------------------------------------------|
-| AWS    | AWS S3、AWS CloudWatch                                      |
-| GCP    | Google Apps (例：Google Map、Google Cloud、Google Calender など)  |
-| Azure  | -                                                          |
+| サービス名 | リソース名                                                      |
+|--------|-------------------------------------------------------------|
+| AWS    | AWS S3、AWS CloudWatch                                       |
+| GCP    | Google Apps (例：Google Map、Google Cloud、Google Calender など) |
+| Azure  | -                                                           |
 
 
 

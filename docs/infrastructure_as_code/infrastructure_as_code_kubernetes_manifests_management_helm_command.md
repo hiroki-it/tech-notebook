@@ -23,31 +23,31 @@ description: コマンド＠Helmの知見を記録しています。
 
 指定したパスにチャートのサンプルファイルを作成する。
 
-
-
-> ↪️ 参考：https://helm.sh/docs/helm/helm_create/
-
 ```bash
 $ helm create <チャートへのパス>
 ```
 
+> ↪️ 参考：https://helm.sh/docs/helm/helm_create/
+
+
+
 <br>
 
-### destory
+### destroy
 
-#### ▼ destoryとは
+#### ▼ destroyとは
 
 指定したHelmリリースでインストールされたチャートを削除する。
 
 
 ```bash
-$ helm destory <Helmリリース名>
+$ helm destroy <Helmリリース名>
 ```
 
 
 Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
-そのため、```helm destory```コマンド時にはカスタムリソース定義を削除しない仕様になっている。
+そのため、```helm destroy```コマンド時にはカスタムリソース定義を削除しない仕様になっている。
 
 カスタムリソース定義は手動で削除する必要がある。
 
@@ -69,9 +69,6 @@ $ kubectl delete crd <カスタムリソース定義名>
 ```requirements.yaml```ファイルに定義された依存対象のチャートを、```chart```ディレクトリ内にダウンロードする。
 
 
-
-> ↪️ 参考：https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
-
 ```bash
 $ helm dependency build
 
@@ -81,6 +78,10 @@ Update Complete. ⎈Happy Helming!⎈
 Saving 1 charts
 ```
 
+
+> ↪️ 参考：https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
+
+
 <br>
 
 ### get
@@ -89,13 +90,13 @@ Saving 1 charts
 
 特定のHelmリリースに含まれる```helm template```コマンドの結果を取得する。
 
-
-
-> ↪️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
-
 ```bash
 $ helm get <Helmリリース名>
 ```
+
+> ↪️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
+
+
 
 <br>
 
@@ -135,12 +136,12 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 $ helm install <Helmリリース名> <チャートへのパス>
 ```
 
-| パラメーター                                           | 例                                                              | 補足                                                                                                                                        |
-|--------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| チャートへのパス                                         | ```./foo-chart```                                               |                                                                                                                                             |
-| ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                    |
-| チャートリポジトリURL                                     | ```https://example.com/foo-chart```                             |                                                                                                                                             |
-| ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                             |
+| パラメーター                                           | 例                                                              | 補足                                                                                                                                          |
+|--------------------------------------------------|-----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| チャートへのパス                                         | ```./foo-chart```                                               |                                                                                                                                               |
+| ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                      |
+| チャートリポジトリURL                                     | ```https://example.com/foo-chart```                             |                                                                                                                                               |
+| ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                               |
 | チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ (```.tgz```形式ファイル) の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
 
 
@@ -181,13 +182,13 @@ kind: Deployment
 
 これ以外の名前の場合は、オプションによる```values```ファイルの指定が必要になる。
 
+```bash
+$ helm install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
+```
 
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_install/#options
 
-```bash
-$ helm install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
-```
 
 #### ▼ kube-context
 
@@ -722,10 +723,6 @@ $ helm template ./foo-chart -f ./values.yaml --show-only ./foo-chart/templates/b
 
 Helmリリースを指定し、そのHelmリリースでインストールされたKubernetesリソースを削除する。
 
-
-
-> ↪️ 参考：https://helm.sh/docs/helm/helm_uninstall/
-
 ```bash
 $ helm uninstall <Helmリリース名>
 ```
@@ -735,6 +732,9 @@ $ helm uninstall <Helmリリース名>
 ```bash
 $ helm uninstall foo-release
 ```
+
+> ↪️ 参考：https://helm.sh/docs/helm/helm_uninstall/
+
 
 <br>
 

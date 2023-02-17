@@ -158,7 +158,7 @@ exports.handler = (event, context, callback) => {
 | 引数          | 説明                                                                               | 補足                                                                                                                                       |
 |---------------|----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                       | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                          | オブジェクトの構造は以下の通り<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                           |
+| contextオブジェクト | Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                        | オブジェクトの構造は以下の通り<br>↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                           |
 | callback関数  | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、Lambdaのコール元にレスポンスを返信する。 | ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                   |
 
 #### ▼ テストとデバッグ

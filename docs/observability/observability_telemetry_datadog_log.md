@@ -328,12 +328,12 @@ export default browserLogsForSsgPlugin
 
 > ↪️ 参考：https://docs.datadoghq.com/logs/log_collection/?tab=host#attributes-for-stack-traces
 
-| 属性名                   | 説明                                |
-|--------------------------|-----------------------------------|
-| ```logger.name```        | ログパッケージの名前を示す。                   |
-| ```logger.thread_name``` | スレッド名を示す。                         |
-| ```error.stack```        | スタックトレースログ全体を示す。                 |
-| ```error.message```      | スタックトレースログのメッセージ部分を示す。           |
+| 属性名                   | 説明                                  |
+|--------------------------|-------------------------------------|
+| ```logger.name```        | ログパッケージの名前を示す。                     |
+| ```logger.thread_name``` | スレッド名を示す。                           |
+| ```error.stack```        | スタックトレースログ全体を示す。                   |
+| ```error.message```      | スタックトレースログのメッセージ部分を示す。             |
 | ```error.kind```         | エラーの種類 (Exception、OSError、など) を示す。 |
 
 <br>
