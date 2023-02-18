@@ -398,7 +398,7 @@ spec:
 
 プロジェクト名は『```default```』は必ず作成する必要がある。
 
-```default```以外のプロジェクトは、コンポーネント別や実行環境別に作成すると良い。
+```default```以外のプロジェクトは、認可スコープと紐づけられるように、チーム別や実行環境別に作成すると良い。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1735,20 +1735,24 @@ ArgoCDを構成するKubernetesリソースにアクセスするための認可�
 
 ### 認可スコープの設定
 
-Casbinの記法を使用して、```.csv```形式で認可スコープを定義する。
+#### ▼ 記法
 
-ダッシュボードやCLIでArgoCDを操作する時に使用する。
+Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐づける。
 
-| 記号    | 説明                 |
-|---------|--------------------|
-| ```p``` | ロールに認可スコープを紐付ける。 |
-| ```g``` | グループにロールを紐付ける。     |
+
+| 記号    | 項目                                                                          | 説明                    |
+|---------|-----------------------------------------------------------------------------|-----------------------|
+| ```p``` | ```p, <ロール名> <Kubernetesリソースの種類> <アクション名> <プロジェクト名>/<Kubernetesリソースの識別名>``` | ロールと認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
+| ```g``` | ```g, <グループ名> <ロール名>```                                                     | グループにロールを紐付ける。        |
+
 
 
 > ↪️ 参考：
 > 
 > - https://stackoverflow.com/a/73784100
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure
 > - https://github.com/argoproj/argo-cd/blob/master/assets/model.conf
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 
 <br>
 
@@ -1756,17 +1760,19 @@ Casbinの記法を使用して、```.csv```形式で認可スコープを定義�
 
 ロールに付与するポリシーの認可スコープは、プロジェクト単位にするとよい。
 
-管理チーム単位でプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
 
-これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
 
 **＊実装例＊**
 
-以下のように、ロールと認可スコープを紐づける。
+管理チーム（```app```、```infra```）単位でプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
 
-- ```admin```ロールに全ての認可スコープ
-- ```app```ロールに```app```プロジェクト配下の全ての認可スコープ
-- ```infra```ロールに```infra```プロジェクト配下の全ての認可スコープ
+これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
+
+- ```admin```ロールに、全ての認可スコープ
+- ```app```ロールに、```app```プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに、```infra```プロジェクト配下の全ての認可スコープ
+
+なお、実行環境名は```metadata.labels```キーに設定しておく。
 
 ```yaml
 apiVersion: v1
@@ -1790,6 +1796,7 @@ data:
   scopes: '[groups]'
 ```
 
+
 > ↪️ 参考：
 >
 > - https://krrrr.hatenablog.com/entry/2022/01/23/201700
@@ -1797,17 +1804,57 @@ data:
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 > - https://weseek.co.jp/tech/95/#SSO_RBAC
 
+
+**＊実装例＊**
+
+実行環境（```dev```、```tes```、```prd```）別にプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
+
+- ```admin```ロールに、全ての認可スコープ
+- ```app```ロールに、プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに、プロジェクト配下の全ての認可スコープ
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  # デフォルトのロール
+  policy.default: role:readonly
+  policy.csv: |
+    # ロールに認可スコープを紐づける。
+    p, role:admin, *, *, *, allow
+    p, role:app, *, *, *, allow
+    p, role:infra, *, *, *, allow
+
+    # グループにロールを紐づける。
+    g, admin, role:admin
+    g, app-team, role:app
+    g, infra-team, role:infra
+  scopes: '[groups]'
+```
+
 <br>
 
 ### ArgoCDの認証を外部Webサイトに委譲する場合 (SSOの場合) 
 
 #### ▼ 外部Webサイトのチームに紐づける場合
 
-以下のように、ロールと認可スコープを紐づける。
 
-- ```admin```ロールに全ての認可スコープ
-- ```app```ロールに```app```プロジェクト配下の全ての認可スコープ
-- ```infra```ロールに```infra```プロジェクト配下の全ての認可スコープ
+**＊実装例＊**
+
+管理チーム（```app```、```infra```）単位でプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
+
+これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
+
+
+- ```admin```ロールに、全ての認可スコープ
+- ```app```ロールに、```app```プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに、```infra```プロジェクト配下の全ての認可スコープ
+
+なお、実行環境名は```metadata.labels```キーに設定しておく。
+
 
 ```yaml
 apiVersion: v1
@@ -1838,13 +1885,46 @@ data:
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 
 
+
+**＊実装例＊**
+
+実行環境（```dev```、```tes```、```prd```）別にプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
+
+
+
+- ```admin```ロールに、全ての認可スコープ
+- ```app```ロールに、プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに、プロジェクト配下の全ての認可スコープ
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  # デフォルトのロール
+  policy.default: role:readonly
+  policy.csv: |
+    # ロールに認可スコープを紐づける。
+    p, role:admin, *, *, *, allow
+    p, role:app, *, *, *, allow
+    p, role:infra, *, *, *, allow
+
+    # グループにロールを紐づける。
+    g, example-org.github.com:admin, role:admin
+    g, example-org.github.com:app-team, role:app
+    g, example-org.github.com:infra-team, role:infra
+  scopes: '[groups]'
+```
+
 #### ▼ 外部Webサイトのメールアドレスに紐づける場合
 
 以下のように、ロールと認可スコープを紐づける。
 
-- ```admin```ロールに全ての認可スコープ
-- ```app```ロールに```app```プロジェクト配下の全ての認可スコープ
-- ```infra```ロールに```infra```プロジェクト配下の全ての認可スコープ
+- ```admin```ロールに、全ての認可スコープ
+- ```app```ロールに、```app```プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに、```infra```プロジェクト配下の全ての認可スコープ
 
 ```yaml
 apiVersion: v1

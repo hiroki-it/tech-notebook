@@ -827,6 +827,21 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 <br>
 
+## precheck
+
+### precheckとは
+
+Istioをインストールまたはアップグレードできる準備が整っているかを検証する。
+
+```bash
+$ istioctl x precheck
+
+✔ No issues found when checking the cluster. Istio is safe to install or upgrade!
+  To get started, check out https://istio.io/latest/docs/setup/getting-started/
+```
+
+> ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-experimental-precheck
+
 ## tag
 
 ### tagとは
@@ -964,7 +979,9 @@ $ istioctl install --set revision=1-1-0
 
 ```【４】```
 
-:    すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。その他、新しいIstiodコントロールプレーンも作成される。
+:    すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。
+
+     その他、新しいIstiodコントロールプレーンも作成される。
 
 ```bash
 # Deployment
@@ -990,7 +1007,9 @@ istio-revision-tag-stable          1          7m56s # 現在のリビジョン�
 
 ```【３】```
 
-:    エイリアス (```istio.io/tag```キーの値) を指定して、リビジョン番号を書き換える。これにより、```istio-revision-tag-stable```の```stable```タグの値が変更される。
+:    エイリアス (```istio.io/tag```キーの値) を指定して、リビジョン番号を書き換える。
+
+     これにより、```istio-revision-tag-stable```の```stable```タグの値が変更される。
 
 
 ```bash

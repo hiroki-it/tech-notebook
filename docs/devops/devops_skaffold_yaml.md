@@ -163,13 +163,15 @@ BuildKitではイメージレイヤーが並列的に作成されるため、ビ
 
 
 
-> ↪️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
 
 ```yaml
 build:
   local:
     useBuildkit: false
 ```
+
+> ↪️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
+
 
 <br>
 
@@ -245,7 +247,6 @@ Kubernetesリソースのテスト方法を定義する。
 
 
 
-> ↪️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
 
 ```yaml
 test:
@@ -263,6 +264,9 @@ fileExistenceTests:
     path: /var/www/public/index.php
     shouldExist: true
 ```
+
+> ↪️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
+
 
 <br>
 
@@ -288,7 +292,6 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
 ```yaml
 deploy:
@@ -297,6 +300,10 @@ deploy:
       - ./release/dev/kubernetes.yaml
       - ./**/**/**.yaml # ワイルドカードを使用できる。
 ```
+
+
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
+
 
 <br>
 
@@ -308,7 +315,6 @@ Helmを使用して、Kubernetesリソースをデプロイする。
 
 
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
 
 ```yaml
 deploy:
@@ -320,5 +326,8 @@ deploy:
       imageStrategy:
         helm: {}
 ```
+
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
+
 
 <br>

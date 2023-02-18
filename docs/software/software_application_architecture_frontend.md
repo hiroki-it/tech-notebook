@@ -201,4 +201,6 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 ![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
 
+<br>
+
 

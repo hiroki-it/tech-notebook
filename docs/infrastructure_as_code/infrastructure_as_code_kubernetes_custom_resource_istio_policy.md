@@ -79,7 +79,8 @@ spec:
               echo "Sidecar available. Running job command...";
               <CronJobのコマンド>;
               x=$(echo $?);
-              curl -fsI -X POST http://localhost:15020/quitquitquit && exit $x
+              curl -fsI -X POST http://localhost:15020/quitquitquit && 
+              exit $x
 ```
 
 

@@ -21,11 +21,11 @@ description: システムの知見を記録しています。
 
 ソフトウェア (OS、ミドルウェア、アプリケーション) とハードウェアの要素と合わせたグループのこと。
 
+![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
 
 > ↪️ 参考：https://thinkit.co.jp/article/11526
 
-![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
 <br>
 

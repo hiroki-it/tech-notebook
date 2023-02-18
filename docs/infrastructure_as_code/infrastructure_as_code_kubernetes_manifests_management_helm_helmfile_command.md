@@ -155,7 +155,7 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 全てのHelmリリースに対して、helm-diffプラグインを実行する。
 
-helm-diffプラグインでは、Helmリリース済みの最新バージョンと、```helm upgrade --dry-run```コマンドの差分を取得する。
+helm-diffプラグインでは、前回のHelmリリースと、今回の```helm upgrade --dry-run```コマンドの差分を取得する。
 
 ```bash
 $ helmfile -e prd diff
