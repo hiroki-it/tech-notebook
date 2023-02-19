@@ -433,7 +433,7 @@ $ kubectl annotate --overwrite crd <カスタムリソース定義> meta.helm.sh
 $ kubectl annotate --overwrite crd <カスタムリソース定義> meta.helm.sh/release-name="<新しいリリース名>"
 ```
 
-また反対に、特定のKubernetesリソース（例：カスタムリソース定義）をHelmの管理外としたい場合、このキーを削除する必要がある。
+また反対に、特定のKubernetesリソース (例：カスタムリソース定義) をHelmの管理外としたい場合、このキーを削除する必要がある。
 
 ```bash
 $ kubectl annotate --overwrite crd <カスタムリソース定義> meta.helm.sh/release-namespace-

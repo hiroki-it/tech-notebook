@@ -433,16 +433,23 @@ NodePort Serviceを指定し、ホストから仮想サーバーを介して、N
 
 
 ```bash
-$ minikube service <NodePort Servie名>
+$ minikube service <NodePort Servie名> -n foo-namespace
 
 🏃  Starting tunnel for service <Service名>.
 |-----------|--------------|-------------|------------------------|
 | NAMESPACE   | NAME           | TARGET PORT   | URL                      |
 |-------------|----------------|---------------|--------------------------|
 | default     | <Service名>    |               | http://127.0.0.1:57761   |
-| ----------- | -------------- | ------------- | ------------------------ |
+| ----------- | -------------- | ------------- | -----I------------------- |
 
 Opening service <Service名> in default browser...
+```
+
+これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。
+
+
+```bash
+$ minikube service istio-ingressgateway -n istio-ingress
 ```
 
 > ↪️ 参考：
@@ -465,7 +472,7 @@ $ curl http://127.0.0.1:<ホストポート番号>
 
 > ↪️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
-ServiceのIPアドレスがNodeのIPアドレスすることは、```minikube ip```コマンドから確認できる。
+ServiceのIPアドレスがNodeのIPアドレスと一致することは、```minikube ip```コマンドから確認できる。
 
 
 
@@ -516,9 +523,16 @@ Minikube仮想サーバー内のNodeのIPアドレスと、NodePort Serviceの�
 ```--url```オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。
 
 ```bash
-$ minikube service <NodePort Servie名> --url
+$ minikube service <NodePort Servie名> --url -n foo-namespace
  
 http://<Minikube仮想サーバー内のNodeのIPアドレス>:<NodePort Serviceのポート番号>
+```
+
+これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。
+
+
+```bash
+$ minikube service istio-ingressgateway --url -n istio-ingress
 ```
 
 

@@ -632,6 +632,30 @@ Pod全体をディメンションとしたメトリクスの監視ポリシー�
 
 <br>
 
+## 08. デバッグ
+
+### 便利なイメージ
+
+#### ▼ Deployment系
+
+Deploymentが正しくPodを作成できない場合、HelloWorldのアプリケーションを起動できるイメージがある。
+
+> ↪️ 参考：https://hub.docker.com/r/paulbouwer/hello-kubernetes/
+
+#### ▼ ネットワーク系
+
+ネットワークのトラブルシューティングに役立つツールがインストールされているイメージがある。
+
+```kubectl debug```コマンドと組み合わせる。
+
+> ↪️ 参考：
+>
+> - https://hub.docker.com/r/praqma/network-multitool
+> - https://hub.docker.com/r/nicolaka/netshoot
+
+<br>
+
+
 ## 07. Kubernetesリソースの脆弱性対策
 
 ### 認証/認可の実施

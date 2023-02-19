@@ -144,9 +144,9 @@ spec:
 
 IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
 
+そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、VirtualServiceとDestinationRuleは必要であるが、Gatewayは不要となる。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
-
 
 
 
@@ -155,19 +155,25 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
+#### ▼ ```404```ステータス
+
+ルーティング先のVirtualServiceが見つからないと、```404```ステータスを返信する。
+
+> ↪️ 参考：
+> 
+> - https://stackoverflow.com/a/73824193
+> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
+
 <br>
 
 ### VirtualService
 
 #### ▼ VirtualServiceとは
 
-
-
-IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする能力を担う。
+IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。
 
 ルーティング先のServiceは、Istioのコンポーネントではないに注意する。
 
-ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
@@ -175,7 +181,11 @@ IngressGatewayの能力のうち、IngressGatewayで受信したインバウン�
 >
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
-> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
+
+#### ▼ ```404```ステータス
+
+ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
+
 
 #### ▼ Envoyの設定値として
 

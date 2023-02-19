@@ -63,7 +63,7 @@ $ kubectl annotate --overwrite pod foo-pod <キー名>=<値>
 
 そのため、```kubectl annotate```コマンドが必要になる。
 
-キー名の後に```-```（ハイフン）をつけるのアノテーションを削除できる。
+キー名の後に```-``` (ハイフン) をつけるのアノテーションを削除できる。
 
 ```bash
 $ kubectl annotate --overwrite pod foo-pod <キー名>-
@@ -1262,13 +1262,13 @@ $ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名
 
 Kubernetesリソースを一度削除し、別のマニフェストで再作成する。
 
-
-
-> ↪️ 参考：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
-
 ```bash
 $ kubectl replace -f foo.yaml
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
+
+
 
 <br>
 
@@ -1293,11 +1293,6 @@ PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClai
 
 
 
-> ↪️ 参考：
->
-> - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
-> - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
-
 **＊例＊**
 
 
@@ -1315,6 +1310,13 @@ $ kubectl rollout restart daemonset foo-daemonset -n foo-namespace
 # StatefulSet配下のPodを再スケジューリングする。
 $ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
 ```
+
+
+
+> ↪️ 参考：
+>
+> - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
+> - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
 
 
 <br>
@@ -1400,7 +1402,6 @@ kube-proxyとは異なるリソースであることに注意する。
 
 #### ▼ --address、--accept-hosts
 
-> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
 **＊例＊**
 
@@ -1409,6 +1410,9 @@ $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'
 
 Starting to serve on [::]:8001
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
+
 
 <br>
 
@@ -1453,16 +1457,9 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 #### ▼ Podのアウトバウンド通信のデバッグ
 
-```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチNodeの場合は、 (たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
+```kubectl exec```コマンドが運用的に禁止されているような状況がある。
 
-> ↪️ 参考：
->
-> - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
-> - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
-
-ネットワークのトラブルシューティングに役立つツールがインストールされているイメージがいくつかある。
-
-
+そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。
 
 
 ```bash
@@ -1488,6 +1485,12 @@ $ kubectl run \
 [root@<Pod名>:~] $ mtr <Serviceの完全修飾ドメイン名やIPアドレス>
 ```
 
+マルチNodeの場合は、 (たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。
+
+そのため、代わりに```kubectl debug```コマンドを使用する。
+
+ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
+
 ```bash
 # マルチNodeの場合
 
@@ -1510,8 +1513,8 @@ $ kubectl delete -n default node-debugger-*****
 
 > ↪️ 参考：
 >
-> - https://hub.docker.com/r/praqma/network-multitool
-> - https://hub.docker.com/r/nicolaka/netshoot
+> - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
+> - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
 
 
 <br>
@@ -1584,7 +1587,6 @@ $ kubectl taint node foo-node node-role.kubernetes.io/master:NoSchedule
 
 
 
-> ↪️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
 
 ```yaml
 apiVersion: v1
@@ -1604,19 +1606,24 @@ spec:
       effect: NoSchedule
 ```
 
+> ↪️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+
+
 #### ▼ ```-``` (ラベル値のハイフン) 
 
 指定したNodeからTaintを削除する。
 
 
 
-> ↪️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
 
 **＊例＊**
 
 ```bash
 $ kubectl taint node foo-node app=batch:NoSchedule-
 ```
+
+> ↪️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
+
 
 <br>
 

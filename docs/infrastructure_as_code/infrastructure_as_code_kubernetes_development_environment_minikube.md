@@ -296,10 +296,18 @@ Minikubeは、クラウドプロバイダーとは状況が異なり、Minikube�
 
 NodePort Serviceの場合、```minikube service```コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。
 
+
 ```bash
-$ minikube service <NodePort Serviceのポート番号 > --url
+$ minikube service <NodePort Service名> --url -n foo-namespace
 
 $ curl http://<NodeのIPアドレス>:<NodePort Serviceのポート番号>
+```
+
+これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。
+
+
+```bash
+$ minikube service istio-ingressgateway --url -n istio-ingress
 ```
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel

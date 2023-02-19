@@ -318,7 +318,13 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 #### ▼ ```A/AAAA```レコードの場合
 
-対応する完全修飾ドメイン名は、『```<Service名>.<Namespace名>.svc.cluster.local```』である。通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。『```svc.cluster.local```』は省略でき、『```<Service名>.<Namespace名>```』のみを指定しても名前解決できる。また、同じNamespace内でパケットを送受信する場合は、さらに『```<Namespace名>```』も省略でき、『```<Service名>```』のみで名前解決できる。
+対応する完全修飾ドメイン名は、『```<Service名>.<Namespace名>.svc.cluster.local```』である。
+
+通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。
+
+『```svc.cluster.local```』は省略でき、『```<Service名>.<Namespace名>```』のみを指定しても名前解決できる。
+
+また、同じNamespace内でパケットを送受信する場合は、さらに『```<Namespace名>```』も省略でき、『```<Service名>```』のみで名前解決できる。
 
 > ↪️ 参考：
 >
@@ -329,7 +335,9 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 #### ▼ ```SRV```レコードの場合
 
-対応する完全修飾ドメイン名は、『```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local```』である。Serviceの```.spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。
+対応する完全修飾ドメイン名は、『```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local```』である。
+
+Serviceの```.spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。
 
 > ↪️ 参考：
 >

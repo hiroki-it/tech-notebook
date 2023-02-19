@@ -385,7 +385,9 @@ spec:
 
 #### ▼ parentShutdownDuration
 
-```terminationDrainDuration```キーよりも最低```5```秒以上長くすると良い。
+```istio-proxy```コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
+
+```istio-proxy```コンテナ自体の終了タイミングを決める```terminationDrainDuration```キーよりも、最低```5```秒以上長くすると良い。
 
 
 **＊実装例＊**
@@ -410,11 +412,14 @@ spec:
 > 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s
+> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 
 
 #### ▼ terminationDrainDuration
 
-SIGKILLシグナルを```istio-proxy```コンテナに送信し始まるまでに待機する時間を設定する。
+SIGKILLシグナルを```istio-proxy```コンテナに送信するまでに待機する時間を設定する。
+
+この待機時間を経た後に、SIGKILLシグナルを```istio-proxy```コンテナに送信する。
 
 **＊実装例＊**
 
@@ -974,6 +979,8 @@ spec:
 
 Gatewayの適用対象のIngressGatewayに付与された```.metadata.labels```キーを設定する。
 
+デフォルトでは、IngressGatewayには```istio```ラベルがあり、値は```ingressgateway```である。
+
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
 **＊実装例＊**
@@ -987,6 +994,16 @@ metadata:
 spec:
   selector:
     istio: istio-ingressgateway
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: istio-ingressgateway
+    istio: ingressgateway
+...
 ```
 
 <br>
@@ -1305,9 +1322,9 @@ spec:
 
 #### ▼ ```.``` (ドット) 
 
-全てのNamespaceのうちで、```.metadata.namespace```キーのNamespaceでのみ使用できるようにする。
+VirtualServiceと同じNamespaceで、そのVirtualServiceを指定できるようにする。
 
-VirtualServiceを想定外のNamespaceで使用してしまうことを防ぐ。
+VirtualServiceを想定外のNamespaceで指定してしまうことを防ぐ。
 
 **＊実装例＊**
 
@@ -1351,6 +1368,26 @@ spec:
     - foo-namespace/foo-gateway
 ```
 
+#### ▼ ```<Gateway名>```
+
+Gateway名を設定する。
+
+VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
+
+**＊実装例＊**
+
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  gateways:
+    - foo-gateway
+```
+
 #### ▼ mesh
 
 アプリコンテナ間の通信を有効化するか否かを設定する。
@@ -1387,7 +1424,6 @@ HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信�
 
 発生させるフォールトインジェクションを設定する。
 
-> ↪️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=19
 
 **＊実装例＊**
 
@@ -1405,6 +1441,9 @@ spec:
           percentage:
             value: 100 # エラーを発生させる確率
 ```
+
+> ↪️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=19
+
 
 #### ▼ match
 

@@ -4071,7 +4071,6 @@ Serviceが待ち受けるポート番号とは別に、NodeのNICで待ち受け
 
 
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
 
 ```yaml
 apiVersion: v1
@@ -4096,6 +4095,9 @@ NodePortのポート番号は、```30000``` 〜 ```32767```番である必要が
 spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid range. The range of valid ports is 30000-32767
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
+
+
 #### ▼ LoadBalancerの場合
 
 LoadBalancer Serviceを設定する。
@@ -4108,7 +4110,6 @@ LoadBalancer Serviceを設定する。
 
 ```.status.loadBalancer.ingress.ip```キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
 
 ```yaml
 apiVersion: v1
@@ -4132,6 +4133,9 @@ status:
       # External-IP
       - ip: 192.0.2.127 
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
+
 
 <br>
 
