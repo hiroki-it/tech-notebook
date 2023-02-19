@@ -11,7 +11,7 @@ description: GI：Gateway Interface＠アプリケーション系ミドルウェ
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: GI：Gateway Interface＠アプリケーション系ミドルウェ
 
 調査中...
 
-![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CGIの仕組み.png)
+![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CGIの仕組み.png)
 
 <br>
 

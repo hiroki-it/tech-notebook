@@ -11,7 +11,7 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -22,7 +22,7 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 #### ▼ bridgeネットワークとは
 
-![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bridge-network.png)
+![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bridge-network.png)
 
 
 bridgeネットワークは、コンテナのネットワークインターフェース (```eth```) 、ホストの仮想ネットワークインターフェース (```veth```) 、ホストのブリッジ (```docker0```) 、NATルーター (iptables) 、ホストのネットワークインターフェース (```eth```) 、から構成される。
@@ -88,7 +88,7 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 
 #### ▼ hostネットワークとは
 
-![docker_host-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_host-network.png)
+![docker_host-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_host-network.png)
 
 hostネットワークは、コンテナのネットワークインターフェース (```eth```) 、ホストのネットワークインターフェース (```eth*```) 、から構成される。
 
@@ -153,7 +153,7 @@ $ curl --fail http://127.0.0.1:8080
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 **＊例＊**
 

@@ -11,7 +11,7 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -127,7 +127,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 **＊実装例＊**
 

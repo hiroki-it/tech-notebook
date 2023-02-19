@@ -11,7 +11,7 @@ description: 仮想化の知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -130,7 +130,7 @@ description: 仮想化の知見を記録しています。
 
 
 
-![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
+![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png)
 
 <br>
 
@@ -146,7 +146,7 @@ description: 仮想化の知見を記録しています。
 
 
 
-![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
+![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png)
 
 #### ▼ オーバーヘッドの比較
 

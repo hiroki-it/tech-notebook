@@ -11,7 +11,7 @@ description: Code系＠Cで始まるAWSリソースの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -28,7 +28,7 @@ CodeCommitは、他のコード管理サービスで代用できる。
 
 
 
-![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/code-pipeline.png)
+![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-pipeline.png)
 
 #### ▼ CodeCommit
 
@@ -192,7 +192,7 @@ artifacts:
 
 #### ▼ 仕組み
 
-![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/blue-green-deployment.jpeg)
+![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blue-green-deployment.jpeg)
 
 以下の手順でデプロイする。
 

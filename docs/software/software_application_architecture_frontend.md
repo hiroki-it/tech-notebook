@@ -11,7 +11,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -42,7 +42,7 @@ SPAでは、ページ全体の静的ファイルをリクエストするのは�
 
 > ↪️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 
-![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SPアプリにおけるデータ通信の仕組み.png)
+![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SPアプリにおけるデータ通信の仕組み.png)
 
 <br>
 
@@ -58,9 +58,9 @@ Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるよう�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_framework_vuejs.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html
 
-![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
+![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
 
 <br>
 
@@ -70,7 +70,7 @@ Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるよう�
 
 MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、レンダリングが速い。
 
-![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
+![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
 
 
 > ↪️ 参考：https://www.switchitmaker2.com/seo/spa/
@@ -199,7 +199,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 
 
-![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
+![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composite-ui.png)
 
 <br>
 

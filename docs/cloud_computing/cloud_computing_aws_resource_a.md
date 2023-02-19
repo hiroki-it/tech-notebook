@@ -11,7 +11,7 @@ description: Aで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -50,7 +50,7 @@ Webサイトのクラウドインフラの実行環境ごとに作成したほ�
 
 
 
-![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/edge-location.png)
+![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/edge-location.png)
 
 <br>
 
@@ -305,7 +305,7 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 
 言い換えると、オートスケーリングにターゲットグループを紐づけて初めて、ターゲットにルーティングできるようになる。
 
-![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Auto-scaling.png)
+![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png)
 
 
 > ↪️ 参考：https://www.a-frontier.jp/technology/aws10/

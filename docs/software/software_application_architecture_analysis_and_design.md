@@ -11,7 +11,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -116,7 +116,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 UML、概念データモデリング、構造化分析、リアルタイム分析、がある。
 
-![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/diagrams.png)
+![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/diagrams.png)
 
 
 > ↪️ 参考：https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
@@ -171,7 +171,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### DFDとは
 
-![データフロー図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データフロー図.jpg)
+![データフロー図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データフロー図.jpg)
 
 <br>
 
@@ -197,20 +197,20 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 記法
 
-![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram.png)
+![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram.png)
 
 | 記号名                                                                                                                                               | 説明                                                                                                                                                                                                             | 補足                       |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
-| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_actor.png)                 | ソフトウェアを利用するユーザーや、連携する他のソフトウェアを表す。                                                                                                                                                                          |                            |
-| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表す。                                                                                                                                                                                          |                            |
-| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png)           | アクターとソフトウェアの境界線を表す。                                                                                                                                                                                          |                            |
-| パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_package.png)            | アクターによって提供する機能に違いがある場合、これの境界線を表す。                                                                                                                                                                     |                            |
-| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png)     | アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。                                                                                                                                                                      |                            |
-| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png)   | アクター間またはユースケース間に、is-a-kind-ofな関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                               |                            |
-| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png)             | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                   | ```<< invoke >>```も同じである。 |
+| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png)                 | ソフトウェアを利用するユーザーや、連携する他のソフトウェアを表す。                                                                                                                                                                          |                            |
+| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表す。                                                                                                                                                                                          |                            |
+| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png)           | アクターとソフトウェアの境界線を表す。                                                                                                                                                                                          |                            |
+| パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png)            | アクターによって提供する機能に違いがある場合、これの境界線を表す。                                                                                                                                                                     |                            |
+| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png)     | アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。                                                                                                                                                                      |                            |
+| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png)   | アクター間またはユースケース間に、is-a-kind-ofな関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                               |                            |
+| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)             | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                   | ```<< invoke >>```も同じである。 |
 | 先行：<br>```<< precedes >>```                                                                                                                        | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                           |                            |
-| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_extend.png)               | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                   |                            |
-| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_note.png)                    | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>↪️ 参考：https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent |                            |
+| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)               | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                   |                            |
+| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                    | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>↪️ 参考：https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent |                            |
 
 
 > ↪️ 参考：
@@ -234,7 +234,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 :    要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
-![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_tooppoo_usecase-diagram_example.png)
+![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_usecase-diagram_example.png)
 
 ```【３】```
 
@@ -247,7 +247,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | 映画の形式を選択する | 映画形式オブジェクト、上映形態オブジェクト                |
 | 上映回を選択する    | 上映回オブジェクト、上映日オブジェクト、上映開始時刻オブジェクト |
 
-![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
+![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
 
 <br>
 
@@ -261,13 +261,13 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 **＊例＊**
 
-![アクティビティ図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アクティビティ図.png)
+![アクティビティ図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アクティビティ図.png)
 
 ## 02-05. システムシーケンス図
 
 ### システムシーケンス図とは
 
-![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/system-sequence-diagram.png)
+![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system-sequence-diagram.png)
 
 アクターとソフトウェアの出入力を基に、ユーザーの要求に対するソフトウェアの『動的な振舞』を表す。
 
@@ -293,7 +293,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 
 
-![状態遷移図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ストップウォッチ状態遷移図.jpg)
+![状態遷移図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移図.jpg)
 
 <br>
 
@@ -305,7 +305,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 
 
-![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ストップウォッチ状態遷移表.jpg)
+![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移表.jpg)
 
 **＊例題＊**
 
@@ -327,7 +327,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 :    現在の状態『d』から、次は数字なため、b行の『e』へ移動。
 
-![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/状態遷移表.png)
+![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/状態遷移表.png)
 
 <br>
 
@@ -345,7 +345,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 記法
 
-![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/object-diagram.png)
+![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/object-diagram.png)
 
 
 | 記号名     | 説明                                                                                                |
@@ -388,7 +388,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 <br>
 
@@ -408,23 +408,23 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 #### ▼ has-one、has-many (データとして保持する関係性) 
 
-![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
+![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
 『has-one』『has-many』な関係と表現され、より具体的に説明すると、とデータとして保持する関係性である。Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 #### ▼ is-a-kind-of (グループとメンバーの関係性) 
 
-![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
+![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
 『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 #### ▼ use (引数型/返却値型として使用する関係性) 
 
-![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として使用する関係性.png)
+![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
 
 『use』な関係と表現され、より具体的に説明すると、と引数型/返却値型として使用する関係性である。
 
@@ -434,7 +434,7 @@ Dependency (依存) が使用される。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 <br>
 
@@ -477,7 +477,7 @@ Dependency (依存) が使用される。
 
 
 
-![多重度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/多重度.png)
+![多重度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重度.png)
 
 <br>
 
@@ -495,7 +495,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 ### IE記法
 
-![ER図 (IE記法) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ER図 (IE記法) .png)
+![ER図 (IE記法) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ER図 (IE記法) .png)
 
 #### ▼ エンティティ、属性
 
@@ -503,7 +503,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 
 
-![エンティティとアトリビュート](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/エンティティとアトリビュート.png)
+![エンティティとアトリビュート](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/エンティティとアトリビュート.png)
 
 #### ▼ リレーション、カーディナリティ
 
@@ -515,7 +515,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 > ↪️ 参考：https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb
 
-![リレーションとカーディナリティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リレーションとカーディナリティ.png)
+![リレーションとカーディナリティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リレーションとカーディナリティ.png)
 
 <br>
 
@@ -523,7 +523,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 #### ▼ 1：1
 
-![1対1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/1対1.png)
+![1対1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1.png)
 
 #### ▼ 1：多 (リレーションが曖昧な状態) 
 
@@ -531,11 +531,11 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 
 
-![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/1対1以上.png)
+![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png)
 
 #### ▼ 1：1 以上
 
-![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/1対1以上.png)
+![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png)
 
 <br>
 
@@ -579,7 +579,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 :    各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図.png)
+![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図.png)
 
 **＊例＊**
 
@@ -591,7 +591,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 :    各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図_2.png)
+![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図_2.png)
 
 <br>
 

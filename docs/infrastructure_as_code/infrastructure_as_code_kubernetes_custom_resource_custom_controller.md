@@ -11,7 +11,7 @@ description: カスタムコントローラー＠カスタムリソースの知�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -28,7 +28,7 @@ description: カスタムコントローラー＠カスタムリソースの知�
 
 ### カスタムリソースの仕組み
 
-![custom_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/custom_controller.png)
+![custom_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
 
 
 カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。
@@ -98,7 +98,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、から構成されている。
 
-![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator_architecture.png)
+![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png)
 
 
 > ↪️ 参考：
@@ -117,7 +117,7 @@ operator-controllerは、NodeとPod間のバインディング情報に基づい
 
 operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 
-![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
+![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator-controller.png)
 
 
 > ↪️ 参考：

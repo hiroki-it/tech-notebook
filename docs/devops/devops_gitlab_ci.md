@@ -11,7 +11,7 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -22,7 +22,7 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 GitLab Runnerを処理の実行環境として、GitLabリポジトリの```gitlab-ci.yml```ファイルで定義されたパイプラインを実行する。
 
-![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/gitlab-ci_architecture.png)
+![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png)
 
 
 > ↪️ 参考：

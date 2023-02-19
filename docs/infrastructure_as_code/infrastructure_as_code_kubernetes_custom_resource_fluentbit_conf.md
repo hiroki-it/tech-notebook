@@ -11,7 +11,7 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -106,7 +106,7 @@ Fluent Bit v1.8.6
 
 ログのパイプラインへのインプット方法を設定する。
 
-![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_input.png)
+![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png)
 
 
 > ↪️ 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
@@ -326,7 +326,7 @@ $ fluent-bit \
 
 ### PARSERとは
 
-![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_parser.png)
+![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_parser.png)
 
 非構造化ログを構造化ログに変換する。
 
@@ -340,7 +340,7 @@ $ fluent-bit \
 
 ### FILTERとは
 
-![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_filter.png)
+![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png)
 
 ログのキーや値を加工する。
 
@@ -601,7 +601,7 @@ Fluent Bit v1.8.6
 
 ### STREAM_TASKとは
 
-![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
+![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png)
 
 現在のデータストリームからログを抽出し、新しいストリームを作成する。
 
@@ -690,7 +690,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ### BUFFERとは
 
-![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_buffer.png)
+![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png)
 
 ログを蓄え、またこれを順番にROUTINGに渡す。
 
@@ -782,7 +782,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 ### ROUTING、OUTPUTとは
 
-![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_output.png)
+![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png)
 
 ログのアウトプット先を設定する。
 

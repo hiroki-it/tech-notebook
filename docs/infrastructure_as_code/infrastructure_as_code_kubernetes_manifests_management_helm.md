@@ -8,7 +8,7 @@ description: Helm＠マニフェスト管理の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -18,7 +18,7 @@ description: Helm＠マニフェスト管理の知見を記録しています。
 
 Helmは、helmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。
 
-![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
+![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/helm_architecture.png)
 
 > ↪️ 参考：
 >

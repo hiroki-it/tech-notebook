@@ -11,7 +11,7 @@ description: SQLパッケージ＠PHPの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ SQLの種類が異なっていても、共通のロジックでクエリを実�
 
 > ↪️ 参考：https://thinkit.co.jp/free/marugoto/1/4/1/
 
-![php_sql_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php_sql_package.png)
+![php_sql_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php_sql_package.png)
 
 ## 02. PDO
 

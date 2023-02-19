@@ -11,7 +11,7 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -384,7 +384,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 ### linecorp/line-bot-sdkとは
 
-![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/line_messaging-api.png)
+![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/line_messaging-api.png)
 
 ボットサーバーにて、LINEプラットフォームに返信するためのレスポンスを作成する。
 

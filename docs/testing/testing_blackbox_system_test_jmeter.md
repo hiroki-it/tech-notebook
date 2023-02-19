@@ -11,7 +11,7 @@ description: JMeter＠総合テストの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ JMeterをインストールし、環境を作成する。
 
 JMeterは、以下のコンポーネントから構成されている。
 
-![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jmeter_architecuture.png)
+![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jmeter_architecuture.png)
 
 
 > ↪️ 参考：https://www.guru99.com/jmeter-element-reference.html
@@ -43,7 +43,7 @@ JMeterは、以下のコンポーネントから構成されている。
 
 #### ▼ 全体像
 
-![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stress-test_parameter.png)
+![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stress-test_parameter.png)
 
 > ↪️ 参考：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
 

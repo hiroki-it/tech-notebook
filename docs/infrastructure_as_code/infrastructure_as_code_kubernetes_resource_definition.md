@@ -11,7 +11,7 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -783,7 +783,7 @@ spec:
 
 
 
-![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
+![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png)
 
 > ↪️ 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
@@ -2883,7 +2883,7 @@ spec:
 #### ▼ terminationGracePeriodSecondsとは
 
 
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
 Podの削除プロセスの待機時間を設定する。
 

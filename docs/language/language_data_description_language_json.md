@@ -11,7 +11,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -45,7 +45,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 
 
-![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
+![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シリアライズとデシリアライズ.png)
 
 <br>
 

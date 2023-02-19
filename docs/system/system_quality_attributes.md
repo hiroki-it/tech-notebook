@@ -11,7 +11,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -65,7 +65,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 #### ▼ デュアルシステムとは
 
-![dual-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dual-system.png)
+![dual-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png)
 
 複数の稼働中インスタンスを設置する冗長化方法のこと。
 
@@ -83,7 +83,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 #### ▼ デュプレックスシステムとは
 
-![duplex-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/duplex-system.png)
+![duplex-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/duplex-system.png)
 
 稼働中インスタンスと待機中インスタンス (ホットスタンバイ/コールドスタンバイ) を設置する冗長化方法のこと。
 
@@ -152,7 +152,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 #### ▼ SLOの遵守
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_site_reliability_engineering.html
 
 <br>
 
@@ -164,7 +164,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 仮想環境のコンポーネント自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアップ.png)
+![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアップ.png)
 
 
 > ↪️ 参考：https://www.idcf.jp/words/scale-out.html
@@ -178,7 +178,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 仮想環境のコンポーネントのインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアウト.png)
+![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアウト.png)
 
 
 > ↪️ 参考：https://www.idcf.jp/words/scale-out.html
@@ -190,7 +190,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 #### ▼ 高可用性クラスターシステムとは
 
-![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ha-cluster-system,png.png)
+![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
 
 ```1```個の処理を分担できる複数の稼働中ノードと待機中ノードを設置する冗長化方法のこと。
 

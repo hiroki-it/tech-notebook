@@ -11,7 +11,7 @@ description: SQL＠MySQLの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -446,7 +446,7 @@ FROM
 
 #### ▼ ```JOIN```句の種類
 
-![内部結合のベン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/内部結合のベン図.jpg)
+![内部結合のベン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/内部結合のベン図.jpg)
 
 #### ▼ ```LEFT JOIN``` (左外部結合) 
 
@@ -454,7 +454,7 @@ FROM
 
 
 
-![LEFT_JOIN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LEFT_JOIN.png)
+![LEFT_JOIN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEFT_JOIN.png)
 
 <br>
 
@@ -932,7 +932,7 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p325.gif)
+![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p325.gif)
 
 #### ▼ 使い方
 

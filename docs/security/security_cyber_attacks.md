@@ -11,7 +11,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 > ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
-![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf.png)
+![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf.png)
 
 <br>
 
@@ -53,7 +53,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 > ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
 
-![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-fixation.png)
+![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-fixation.png)
 
 <br>
 
@@ -67,7 +67,7 @@ traversalは、横断する (ディレクトリを乗り越える) の意味。
 
 
 
-![ディレクトリトラバーサル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ディレクトリトラバーサル.jpg)
+![ディレクトリトラバーサル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ディレクトリトラバーサル.jpg)
 
 <br>
 
@@ -81,7 +81,7 @@ traversalは、横断する (ディレクトリを乗り越える) の意味。
 
 
 
-![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DoS攻撃.png)
+![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DoS攻撃.png)
 
 
 <br>
@@ -96,7 +96,7 @@ DBのSQLクエリのパラメーターとなる入力に、不正な文字列を
 
 
 
-![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQLインジェクション.jpg)
+![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQLインジェクション.jpg)
 
 
 <br>
@@ -109,7 +109,7 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 
 
-![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cross-cite-scripting.png)
+![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png)
 
 
 <br>
@@ -122,7 +122,7 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 
 
-![パスワードリスト攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パスワードリスト攻撃.png)
+![パスワードリスト攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パスワードリスト攻撃.png)
 
 <br>
 
@@ -132,11 +132,11 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 Brute-forceは力ずくの意味。IDを固定して、パスワードを総当たりで試す手法。例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。
 
-![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/brute-force-attack_reverse-brute-force-attack.png)
+![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/brute-force-attack_reverse-brute-force-attack.png)
 
 #### ▼ パスワードのパターン数
 
-![パスワードのパターン数](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パスワードのパターン数.png)
+![パスワードのパターン数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パスワードのパターン数.png)
 
 <br>
 
@@ -148,7 +148,7 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 
 
-![レインボー攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Rainbow攻撃.png)
+![レインボー攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Rainbow攻撃.png)
 
 
 <br>
@@ -161,7 +161,7 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 
 
-![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソーシャルエンジニアリング.png)
+![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソーシャルエンジニアリング.png)
 
 
 <br>
@@ -183,7 +183,7 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 
 
-![DNSキャッシュポイズニング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DNSキャッシュポイズニング.gif)
+![DNSキャッシュポイズニング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DNSキャッシュポイズニング.gif)
 
 
 <br>
@@ -196,7 +196,7 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 
 
-![バックドア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/バックドア.png)
+![バックドア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バックドア.png)
 
 
 <br>

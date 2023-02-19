@@ -11,7 +11,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 

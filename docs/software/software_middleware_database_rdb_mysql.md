@@ -11,7 +11,7 @@ description: MySQL＠RDBの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -196,7 +196,7 @@ DBで、アプリケーションのCRUD処理に対するバリデーション�
 
 
 
-![外部キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/外部キー.png)
+![外部キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/外部キー.png)
 
 <br>
 
@@ -208,7 +208,7 @@ DBで、アプリケーションのCRUD処理に対するバリデーション�
 
 
 
-![主キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/主キー.jpg)
+![主キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/主キー.jpg)
 
 #### ▼ プライマリーキーとして使用できるもの
 

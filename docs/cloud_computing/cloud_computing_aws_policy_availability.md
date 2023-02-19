@@ -11,7 +11,7 @@ description: 可用性＠AWSの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: 可用性＠AWSの知見を記録しています。
 
 ### バックアップリストア構成
 
-![dr-architecture_backup-restore](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_backup-restore.png)
+![dr-architecture_backup-restore](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_backup-restore.png)
 
 DRリージョンにメインリージョンのAWSリソース (例：EBSボリューム、RDS) のスナップショットを定期的に作成しておく。
 
@@ -55,7 +55,7 @@ RPOは最後のバックアップ時点である。
 
 ### パイロットライト構成
 
-![dr-architecture_pilot-light](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_pilot-light.png)
+![dr-architecture_pilot-light](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_pilot-light.png)
 
 DRリージョンに低スペックなDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。
 
@@ -80,7 +80,7 @@ RPOは最後の同期時点である。
 
 ### ウォームスタンバイ構成
 
-![dr-architecture_warm-standby](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_warm-standby.png)
+![dr-architecture_warm-standby](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_warm-standby.png)
 
 DRリージョンにメインリージョンよりも低スペックなアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。
 
@@ -105,7 +105,7 @@ RPOは最後の同期時点である。
 
 ### マルチサイトアクティブ構成
 
-![dr-architecture_multi-site-active](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_multi-site-active.png)
+![dr-architecture_multi-site-active](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_multi-site-active.png)
 
 DRリージョンにメインリージョンと同等なアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。
 

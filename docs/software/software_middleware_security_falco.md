@@ -11,7 +11,7 @@ description: Falco＠セキュリティ系ミドルウェアの知見を記録�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Falco＠セキュリティ系ミドルウェアの知見を記録�
 
 ### アーキテクチャ
 
-![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/falco_architecture.png)
+![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/falco_architecture.png)
 
 コンテナ上のプロセスは、コンテナのカーネルに対してシステムコールを実行する。
 

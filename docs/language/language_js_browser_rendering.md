@@ -11,7 +11,7 @@ description: ブラウザレンダリングの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ description: ブラウザレンダリングの知見を記録しています。
 - Rasterize
 - Composite
 
-![browser-rendering](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/browser-rendering.png)
+![browser-rendering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering.png)
 
 <br>
 
@@ -56,7 +56,7 @@ Webページをテキストによって構成するための言語をマーク�
 
 
 
-![markup-language-history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/markup-language-history.png)
+![markup-language-history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/markup-language-history.png)
 
 <br>
 
@@ -349,7 +349,7 @@ Intersection Observerによる要素の交差率を監視し、指定の交差�
 
 
 
-![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/intersection-observer.png)
+![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png)
 
 <br>
 
@@ -410,7 +410,7 @@ img { float: right }
 
 
 
-![dom-tree_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dom-tree_process.png)
+![dom-tree_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree_process.png)
 
 HTMLパーサーは、オブジェクトをノードとして、DOMツリーを作成する。
 
@@ -422,7 +422,7 @@ DOMのインターフェースについては、以下のリンクを参考に�
 
 > ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
-![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dom-tree.png)
+![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png)
 
 同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを行う。
 
@@ -430,7 +430,7 @@ DOMのインターフェースについては、以下のリンクを参考に�
 
 
 
-![cssom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cssom-tree.png)
+![cssom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cssom-tree.png)
 
 <br>
 
@@ -475,7 +475,7 @@ JavaScriptエンジンは、これを機械語に翻訳し、ハードウェア�
 
 
 
-![JavascriptEngine](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JavascriptEngine.png)
+![JavascriptEngine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png)
 
 #### ▼ 機械語翻訳
 
@@ -619,7 +619,7 @@ CalculateStyle処理とLayout処理に分けられる。
 
 
 
-![Renderツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Renderツリー.png)
+![Renderツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Renderツリー.png)
 
 <br>
 
@@ -635,7 +635,7 @@ CalculateStyle処理とLayout処理に分けられる。
 
 
 
-![Layout処理](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Layout処理.png)
+![Layout処理](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Layout処理.png)
 
 <br>
 
@@ -686,7 +686,7 @@ Chromeの場合は、CacheStorageに保持される。
 
 確認方法については、以下のリンクを参考にせよ。
 
-![ブラウザのキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ブラウザのキャッシュ.png)
+![ブラウザのキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ブラウザのキャッシュ.png)
 
 > ↪️ 参考：https://developer.chrome.com/docs/devtools/storage/cache/
 
@@ -732,7 +732,7 @@ Laravelのキャッシュ機能については、以下のリンクを参考に�
 
 ブラウザは、Etag値を使用してキャッシュの実現する。
 
-![EtagとIf-NoneMach](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ETagとIf-None-Match.png)
+![EtagとIf-NoneMach](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ETagとIf-None-Match.png)
 
 ####  (１)  キャッシュの有効時間が切れるまで
 

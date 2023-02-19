@@ -11,7 +11,7 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -35,13 +35,13 @@ build/test/deployステージに加えて、継続的な開発に役立つステ
 
 
 
-![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
+![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline.png)
 
 #### ▼ 各ステージのツールの選択
 
 Skaffoldの各ステージでは、それ専用のツールをコールできる。
 
-![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline_tools.png)
+![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline_tools.png)
 
 
 > ↪️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture

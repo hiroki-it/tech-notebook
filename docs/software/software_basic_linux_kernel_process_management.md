@@ -11,7 +11,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -71,7 +71,7 @@ PID  TTY  TIME     CMD
 > ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
 
 #### ▼ 同時処理できるリクエスト数
 
@@ -99,7 +99,7 @@ PID  TTY  TIME     CMD
 
 現代のハードウェアのほとんどがマルチプロセシングの機能を持つ。
 
-![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
+![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/process.png)
 
 
 > ↪️ 参考：
@@ -147,7 +147,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 CPUのコアと紐付くプロセスの実行単位を『スレッド』という。
 
-![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
+![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png)
 
 
 > ↪️ 参考：
@@ -176,7 +176,7 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 > ↪️ 参考：https://webpia.jp/thread_process/
 
-![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multi-thread.png)
+![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multi-thread.png)
 
 <br>
 
@@ -186,7 +186,7 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 CPUのコアが単一のスレッドが紐付くようなマルチスレッドのこと。
 
-![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
+![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png)
 
 
 > ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
@@ -196,7 +196,7 @@ CPUのコアが単一のスレッドが紐付くようなマルチスレッド�
 
 CPUのコアが複数のスレッドが紐付くようなマルチスレッドのこと。
 
-![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
+![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png)
 
 
 > ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
@@ -220,7 +220,7 @@ CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする
 
 
 
-![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_1.png)
+![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_1.png)
 
 ```【１】```
 
@@ -238,7 +238,7 @@ CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする
 
 :    ```40```秒時点で、プロセスCは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスAにCPUを割り当てる。
 
-![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_2.png)
+![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_2.png)
 
 
 <br>
@@ -249,7 +249,7 @@ CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする
 
 
 
-![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_1.png)
+![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_1.png)
 
 **＊例＊**
 
@@ -257,7 +257,7 @@ CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする
 
 
 
-![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_2.png)
+![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_2.png)
 
 <br>
 
@@ -271,6 +271,6 @@ CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする
 
 
 
-![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ラウンドロビン方式.png)
+![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ラウンドロビン方式.png)
 
 <br>

@@ -11,7 +11,7 @@ description: EKS＠Eで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ description: EKS＠Eで始まるAWSリソースの知見を記録しています
 
 EKSのコントロールプレーンは、開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
 
-![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_control-plane.png)
+![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png)
 
 > ↪️ 参考：https://www.sunnycloud.jp/column/20210315-01/
 
@@ -66,7 +66,7 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 認証認可に関するKubernetesリソースと、AWSのIAMユーザーを紐づける仕組み。
 
-![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_auth_architecture.png)
+![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
 
 ```【１】```
@@ -147,7 +147,7 @@ IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate
 
 
 
-![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_oidc.png)
+![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
 
 > ↪️ 参考：
@@ -173,7 +173,7 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 ### 対応関係
 
 
-![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
+![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks.png)
 
 | データプレーン上のAWSリソース           | Kubernetesリソース             | 補足                                                                                                                                                                                                                                                                     |
 |-----------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -278,7 +278,7 @@ KubernetesのClusterに相当する。
 マルチワーカーNodeを作成する場合、AZごとにNodeを作成する。
 
 
-![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_multi-node.png)
+![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_multi-node.png)
 
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html
 
@@ -381,7 +381,7 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、ALB Ingressを使用してPodにルーティングする。
 
-![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
+![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 
 
 > ↪️ 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
@@ -429,7 +429,7 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 
 一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
 
-![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
+![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_ec2.png)
 
 
 > ↪️ 参考：https://www.sunnycloud.jp/column/20210315-01/
@@ -901,7 +901,7 @@ data:
 
 #### ▼ FargateワーカーNodeとは
 
-![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
+![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_fargate.png)
 
 Fargate上で稼働するKubernetesのホストのこと。
 

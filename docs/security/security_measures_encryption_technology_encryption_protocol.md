@@ -11,7 +11,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 プロトコルとしての暗号化技術である『暗号化プロトコル』は、赤色で示してある。
 
-![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
 
 > ↪️ 参考：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
@@ -40,7 +40,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 パケット交換方式におけるパケットのヘッダ情報は、パソコンの各概念層のプロトコルによって追加されていく。
 
-![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットの構造.jpg)
+![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg)
 
 
 > ↪️ 参考：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
@@ -58,7 +58,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 
 
-![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/S_MIME.png)
+![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/S_MIME.png)
 
 #### ▼ S/MIMEにおけるデジタル証明書
 
@@ -74,7 +74,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 #### ▼ SSHとは
 
-![SSH公開鍵認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSH公開鍵認証.png)
+![SSH公開鍵認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSH公開鍵認証.png)
 
 公開鍵暗号方式に基づく暗号化プロトコル。
 
@@ -95,7 +95,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 
 
-![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
 
 **＊例＊**
 
@@ -105,7 +105,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 
 
-![docker_port-forwarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_port-forwarding.png)
+![docker_port-forwarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_port-forwarding.png)
 
 <br>
 
@@ -127,7 +127,7 @@ SSHの能力をより拡張したプロトコルである。
 
 :    サーバーは、Shellを使用してSCPプログラムを起動し、クライアントにファイルを送信する。
 
-![SCPの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SCPの仕組み.png)
+![SCPの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SCPの仕組み.png)
 
 #### ▼ ファイルを要求する側に必要なソフトウェア
 
@@ -159,7 +159,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 #### ▼ リモートデスクトップとは
 
-![encryption_protocol_remote-desktop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol_remote-desktop.png)
+![encryption_protocol_remote-desktop](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_remote-desktop.png)
 
 ゲートウェイマシン上で稼働するリモートデスクトップツールを介して、異なるネットワーク内のアプリケーションと通信する。
 
@@ -198,7 +198,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 #### ▼ SSL/TLSとは
 
-![encryption_protocol_ssh-tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol_ssh-tls.png)
+![encryption_protocol_ssh-tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png)
 
 ハイブリッド暗号方式に基づく暗号化プロトコル。
 
@@ -216,7 +216,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 
 
-![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSL接続に不備がある場合の警告.jpg)
+![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg)
 
 
 #### ▼ 相互TLS (mTLS) 
@@ -247,11 +247,11 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 
 
-![IPsecによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IPsecによるインターネットVPN.jpg)
+![IPsecによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるインターネットVPN.jpg)
 
 #### ▼ IPsecによるパケットのカプセル化
 
-![IPsecによるカプセル化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IPsecによるカプセル化.jpg)
+![IPsecによるカプセル化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるカプセル化.jpg)
 
 <br>
 
@@ -259,7 +259,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 #### ▼ VPNとは
 
-![VPN (ネットワーク間) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPN (ネットワーク間) .png)
+![VPN (ネットワーク間) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPN (ネットワーク間) .png)
 
 異なるネットワーク間で安全な通信を行うための仕組み。
 
@@ -288,7 +288,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。
 
-![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSLによるインターネットVPN.jpg)
+![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg)
 
 
 > ↪️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/

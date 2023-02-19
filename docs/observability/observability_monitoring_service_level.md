@@ -11,7 +11,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -130,7 +130,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 > ↪️ 参考：https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en
 
 
-![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/slo_user-happiness.png)
+![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_user-happiness.png)
 
 
 <br>
@@ -165,7 +165,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 #### ▼ バーンレート
 
-![burn-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burn-rate.png)
+![burn-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burn-rate.png)
 
 エラーバジェットの消費速度を表すメトリクスのこと。
 
@@ -233,7 +233,7 @@ LT (ロングテール) の先にある見えない最大値は```120```msであ
 
 
 
-![slo_histogram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/slo_histogram.png)
+![slo_histogram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_histogram.png)
 
 <br>
 

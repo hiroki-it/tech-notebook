@@ -11,7 +11,7 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 ### アーキテクチャ
 
-![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_structure.png)
+![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_structure.png)
 
 
 Envoyは、コントロールプレーンに相当するxDSサーバーと、データプレーンに相当するプロキシコンテナから構成される。
@@ -230,7 +230,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 #### ▼ データプレーンの仕組み
 
-![envoy_data-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_data-plane_architecture.png)
+![envoy_data-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_data-plane_architecture.png)
 
 データプレーンでは、Envoyが稼働し、通信を宛先にルーティングする。
 

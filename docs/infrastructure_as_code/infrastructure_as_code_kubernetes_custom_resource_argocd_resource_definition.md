@@ -11,7 +11,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -160,7 +160,7 @@ Password: *****
 
 #### ▼ 共通の手順
 
-![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
+![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argocd-server_dashboard.png)
 
 Nodeの外からArgoCDのダッシュボードをネットワークに公開する場合、Node外からargocd-serverにインバウンド通信が届くようにする必要がある。
 
@@ -1221,7 +1221,7 @@ ArgoCDのstrategyオプションを使用することにより、これらのKub
 
 #### ▼ blueGreen
 
-![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
+![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_blue-green-deployment.png)
 
 ブルー/グリーンデプロイメントを使用して、新しいPodをリリースする。
 
@@ -1263,7 +1263,7 @@ spec:
 
 #### ▼ canary
 
-![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_canary-release.png)
+![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_canary-release.png)
 
 カナリアリリースを使用して、新しいPodをリリースする。
 
@@ -1740,10 +1740,10 @@ ArgoCDを構成するKubernetesリソースにアクセスするための認可�
 Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐づける。
 
 
-| 記号    | 項目                                                                          | 説明                    |
-|---------|-----------------------------------------------------------------------------|-----------------------|
+| 記号    | 項目                                                                                | 説明                                                 |
+|---------|-----------------------------------------------------------------------------------|----------------------------------------------------|
 | ```p``` | ```p, <ロール名> <Kubernetesリソースの種類> <アクション名> <プロジェクト名>/<Kubernetesリソースの識別名>``` | ロールと認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
-| ```g``` | ```g, <グループ名> <ロール名>```                                                     | グループにロールを紐付ける。        |
+| ```g``` | ```g, <グループ名> <ロール名>```                                                           | グループにロールを紐付ける。                                     |
 
 
 

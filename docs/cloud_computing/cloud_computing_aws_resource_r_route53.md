@@ -11,7 +11,7 @@ description: Route53＠Rで始まるAWSリソース
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -65,7 +65,7 @@ description: Route53＠Rで始まるAWSリソース
 
 #### ▼ AWSリソースのDNS名、ドメイン名、エンドポイント名
 
-![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
+![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
 
 | 種別      | AWSリソース        | 例                                                                      |
 |-----------|----------------|------------------------------------------------------------------------|
@@ -153,7 +153,7 @@ DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーと
 
 ## 03 Route53 + DNSサーバーによる名前解決の仕組み
 
-![Route53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Route53を含む名前解決の仕組み.png)
+![Route53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png)
 
 ```【１】```
 

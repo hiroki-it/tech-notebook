@@ -11,7 +11,7 @@ description: FluentBit/Fluentd＠テレメトリー収集ツールの知見を�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,6 +21,6 @@ FluentBit/Fluentdはセクションが重複しており、以下のセクショ
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.html
 
 <br>

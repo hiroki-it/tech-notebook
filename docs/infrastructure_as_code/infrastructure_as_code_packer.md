@@ -11,7 +11,7 @@ description: Packer＠IaCの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -41,7 +41,7 @@ AMIの作成後、EC2を削除する。
 
 既存のEC2インスタンスのバックアップツールとしては使用できない。
 
-![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/packer_aws.png)
+![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packer_aws.png)
 
 
 > ↪️ 参考：

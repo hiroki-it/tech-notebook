@@ -11,7 +11,7 @@ description: RDS＠Rで始まるAWSリソース
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -130,7 +130,7 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 #### ▼ 『保留中の変更』『保留中のメンテナンス』
 
-![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance.png)
+![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance.png)
 
 ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア/OS/DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。
 
@@ -142,7 +142,7 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 補足として保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
 
-![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance_action.png)
+![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance_action.png)
 
 
 > ↪️ 参考：https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
@@ -245,7 +245,7 @@ $ aws rds modify-db-instance \
 |----------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | レプリケーション       | 単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。 | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、DBクラスターをクローンできないなどのデメリットもある。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | DBクラスター識別子  | DBクラスター名を設定する。                                                        | インスタンス名は、最初に設定できず、RDSの作成後に設定できる。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| VPCとサブネットグループ  | DBクラスターを配置するVPCとサブネットを設定する。                                          | DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにアクセスできないようにする。<br>![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet_component-type.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| VPCとサブネットグループ  | DBクラスターを配置するVPCとサブネットを設定する。                                          | DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにアクセスできないようにする。<br>![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | パラメーターグループ     | グローバルパラメーターを設定する。                                                      | デフォルトを使用せずに独自定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、全てのインスタンスに同じパラメーターループを設定するべきなため、クラスターパラメーターを使用すれば良い。各パラメーターに適用タイプ (dynamic/static) があり、dynamicタイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定すると良い。<br>・```time_zone=Asia/Tokyo```<br>・```character_set_client=utf8mb4```<br>・```character_set_connection=utf8mb4```<br>・```character_set_database=utf8mb4```<br>・```character_set_results=utf8mb4```<br>・```character_set_server=utf8mb4```<br>・```server_audit_logging=1``` (監査ログをCloudWatchに送信するか否か) <br>・```server_audit_logs_upload=1```<br>・```general_log=1``` (通常クエリログをCloudWatchに送信するか否か) <br>・```slow_query_log=1``` (スロークエリログをCloudWatchに送信するか否か) <br>・```long_query_time=3``` (スロークエリと見なす最短秒数) |
 | DB認証         | DBに接続するための認証方法を設定する。                                             | 各DBインスタンスに異なるDB認証を設定できるが、全てのDBインスタンスに同じ認証方法を設定すべきなため、DBクラスターでこれを設定すれば良い。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | マスタユーザー名      | DBのrootユーザーを設定                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -295,7 +295,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
 
-![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aurora-db-cluster.png)
+![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster.png)
 
 #### ▼ 空のDBクラスター
 
@@ -305,7 +305,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 #### ▼ グローバルクラスター
 
-![aurora-db-cluster_global](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aurora-db-cluster_global.png)
+![aurora-db-cluster_global](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster_global.png)
 
 リージョン間に跨いだDBクラスターから構成されている。
 
@@ -369,7 +369,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 #### ▼ ZDP (ゼロダウンタイムパッチ適用) 
 
-![zero-downtime-patching](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/zero-downtime-patching.png)
+![zero-downtime-patching](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/zero-downtime-patching.png)
 
 Auroraをエンジンバージョンに選択した場合に使用できる。
 
@@ -406,7 +406,7 @@ Auroraをエンジンバージョンに選択した場合に使用できる。
 
 ### エンドポイント
 
-![rds_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_endpoint.png)
+![rds_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_endpoint.png)
 
 | エンドポイント名     | 役割          | エンドポイント：ポート番号                                                              | 説明                                                                                                                                                                                                                                                                                                                                                      |
 |---------------|---------------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -559,13 +559,13 @@ NOW()
 
 
 
-![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_primary-instance.png)
+![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_primary-instance.png)
 
 補足として、リードレプリカは再起動のみを実行していることがわかる。
 
 
 
-![rds-event-log_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_read-replica.png)
+![rds-event-log_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_read-replica.png)
 
 <br>
 
@@ -743,7 +743,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 | 変更する項目           | ダウンタイムの有無 | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| インスタンスクラス            | あり          | ・```2```個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかる通り、長いダウンタイム (約```6```～```8```分) が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>↪️ 参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/ <br>・プライマリーインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
+| インスタンスクラス            | あり          | ・```2```個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかる通り、長いダウンタイム (約```6```～```8```分) が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>↪️ 参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/ <br>・プライマリーインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png) |
 | サブネットグループ            | あり          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | エンジンバージョン            | あり          | ```20```～```30```秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>↪️ 参考：<br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html <br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU <br>また、メジャーバージョンのアップグレードには```10```分のダウンタイムが発生する。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview                                                                                  |
 | メンテナンスウィンドウ          | 条件付きでなし  | ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -829,7 +829,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 RDSプロキシは、RDSの同時接続の上限数を考慮しつつ、コネクションプールから非アクティブなコネクションを再利用するため、アプリがRDSの同時接続の上限数を超えて接続することがない。
 
-![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_rds-proxy.png)
+![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy.png)
 
 
 > ↪️ 参考：

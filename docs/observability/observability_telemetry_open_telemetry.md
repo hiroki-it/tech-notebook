@@ -11,7 +11,7 @@ description: OpenTelemetry＠テレメトリー収集ツールの知見を記録
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -24,7 +24,7 @@ OpenTelemetryは、サードパーティパッケージ、OTelクライアント
 
 OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。
 
-![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_architecture.png)
+![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png)
 
 
 > ↪️ 参考：
@@ -53,7 +53,7 @@ OpenTelemetry用パッケージからのテレメトリーデータを、APIパ�
 
 
 
-![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_client-package.png)
+![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
 
 > ↪️ 参考：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
 
@@ -69,7 +69,7 @@ OTelクライアントパッケージからのテレメトリーデータを、�
 
 
 
-![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_collector.png)
+![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
 > ↪️ 参考：https://www.logicmonitor.com/blog/what-is-an-otel-collector
 

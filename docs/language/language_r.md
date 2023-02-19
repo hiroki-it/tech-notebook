@@ -11,7 +11,7 @@ description: 統計分析＠Rの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ description: 統計分析＠Rの知見を記録しています。
 
 
 
-![相関分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/相関分析.png)
+![相関分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/相関分析.png)
 
 **＊実装例＊**
 
@@ -84,11 +84,11 @@ cor(ts, method = "pearson")
 
 
 
-![単回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰分析.png)
+![単回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単回帰分析.png)
 
 #### ▼ 回帰方程式
 
-![単回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰式.png)
+![単回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単回帰式.png)
 
 **＊実装例＊**
 
@@ -127,11 +127,11 @@ summary(Reg)
 
 
 
-![重回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/重回帰分析.png)
+![重回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/重回帰分析.png)
 
 #### ▼ 回帰方程式
 
-![重回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/重回帰式.png)
+![重回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/重回帰式.png)
 
 **＊実装例＊**
 
@@ -199,11 +199,11 @@ summary(Reg)
 
 
 
-![ロジスティック回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロジスティック回帰分析.png)
+![ロジスティック回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロジスティック回帰分析.png)
 
 #### ▼ 回帰方程式
 
-![ロジスティック回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロジスティック回帰式.png)
+![ロジスティック回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロジスティック回帰式.png)
 
 **＊実装例＊**
 
@@ -246,11 +246,11 @@ exp(result_lg2$coefficients)
 
 青い点：被験者が暑くないと感じた日
 
-![決定木分析_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/決定木分析_1.png)
+![決定木分析_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定木分析_1.png)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
 
-![決定木分析_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/決定木分析_2.png)
+![決定木分析_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定木分析_2.png)
 
 **＊実装例＊**
 
@@ -286,7 +286,7 @@ fancyRpartPlot(tree)
 
 
 
-![階層クラスター分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/階層クラスター分析.png)
+![階層クラスター分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/階層クラスター分析.png)
 
 **＊実装例＊**
 
@@ -335,6 +335,6 @@ plot(cluster1)
 
 :    ```theme```メソッド：グラフを追加加工
 
-![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ggplotの概念.png)
+![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ggplotの概念.png)
 
 <br>

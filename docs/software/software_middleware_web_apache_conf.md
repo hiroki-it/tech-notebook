@@ -11,7 +11,7 @@ description: apache.conf@Apacheの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -60,7 +60,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 全てのファイルに対して、ディレクティブが適用される。
 
-![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
+![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲.png)
 
 
 > ↪️ 参考：https://htaccess.cman.jp/attention/
@@ -70,7 +70,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 設置したディレクトリ配下の階層のファイルに対して適用される。
 
-![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲_2.png)
+![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲_2.png)
 
 
 > ↪️ 参考：https://htaccess.cman.jp/attention/
@@ -426,7 +426,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 #### ▼ RewriteRuleとは
 

@@ -11,7 +11,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 アプリケーションから分散トレースを収集し、Datadogに転送する。
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
 
 > ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
@@ -35,7 +35,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -56,7 +56,7 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 > - https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 > - https://inokara.hateblo.jp/entry/2017/10/01/164446
 
-![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-tracer.png)
+![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
 
 <br>
 

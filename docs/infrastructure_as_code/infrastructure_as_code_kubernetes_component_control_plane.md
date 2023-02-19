@@ -11,7 +11,7 @@ description: コントロールプレーンコンポーネント＠Kubernetesの
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -70,7 +70,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 #### ▼ 高可用性構成とは
 
-![control-plane-node_ha-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/control-plane-node_ha-architecture.png)
+![control-plane-node_ha-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/control-plane-node_ha-architecture.png)
 
 コントロールプレーンNodeの可用性を高める方法には、デザインパターンがある。
 
@@ -110,7 +110,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 cloud-controllerを使用して、kube-apiserverがクラウドインフラを操作できるようにする。
 
-![kubernetes_cloud-controller-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cloud-controller-manager.png)
+![kubernetes_cloud-controller-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cloud-controller-manager.png)
 
 <br>
 
@@ -118,7 +118,7 @@ cloud-controllerを使用して、kube-apiserverがクラウドインフラを�
 
 ### etcdとは
 
-![kubernetes_etcd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_etcd.png)
+![kubernetes_etcd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_etcd.png)
 
 Cluster内のKubernetesリソースの設定値をキーバリュー型で永続化し、またサービスレジストリとして働く。
 
@@ -172,7 +172,7 @@ $ etcd \
 
 ### kube-apiserverとは
 
-![kubernetes_kube-apiserver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver.png)
+![kubernetes_kube-apiserver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver.png)
 
 クライアントにコントロールプレーンNodeを公開する。
 
@@ -260,7 +260,7 @@ $ kube-apiserver \
 
 #### ▼ 認証
 
-![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
+![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver_flow.png)
 
 アプリケーションの認証と同じように、許可されたクライアントか否かを検証する。
 
@@ -280,7 +280,7 @@ ServiceAccountを作成すると、Bearerトークン (『```***-***-***-***-***
 
 #### ▼ 認可
 
-![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
+![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver_flow.png)
 
 アプリケーションの認可と同じように、クライアントの権限の範囲 (認可スコープ) を検証する。
 
@@ -348,7 +348,7 @@ kube-apiserverには、SLIとSLOが設定されている。
 
 kube-apiserverは、クライアントからKubernetesリソースの作成/更新/削除リクエストを受信すると、他のコンポーネントと通信してKubernetesリソースを間接的に操作する。ここでは、Podの作成リクエストが送信された場合の流れを記載する。
 
-![kubernetes_kube-apiserver_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_communication.png)
+![kubernetes_kube-apiserver_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver_communication.png)
 
 ```【１】```
 
@@ -493,7 +493,7 @@ kube-controller-managerは、kube-controllerを反復的に実行する。
 
 これにより、Kubernetesリソースはリソース定義の宣言通りに定期的に修復される。
 
-![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
+![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_reconciliation-loop.png)
 
 > ↪️ 参考：
 >
@@ -513,7 +513,7 @@ Nodeが複数ある場合、NodeとPodのスペックを基に、Podをスケジ
 
 > ↪️ 参考：https://thinkit.co.jp/article/17453
 
-![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler.png)
+![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler.png)
 
 <br>
 
@@ -547,7 +547,7 @@ $ kube-scheduler \
 
 :    スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
 
-![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler_flow.png)
+![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler_flow.png)
 
 > ↪️ 参考：
 >

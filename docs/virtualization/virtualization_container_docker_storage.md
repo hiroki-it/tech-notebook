@@ -11,7 +11,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -28,7 +28,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 > - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 > - https://maku77.github.io/docker/mount/
 
-![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_storage.png)
+![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png)
 
 <br>
 
@@ -36,7 +36,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ### バインドマウントとは
 
-![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bind-mount.png)
+![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
 
 ホスト側のストレージ上のディレクトリを、コンテナ側にマウントすることにより、データを永続化する。
 
@@ -77,7 +77,7 @@ Docker for Desktopの設定画面で変更する。
 
 
 
-![mount_host-directory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mount_host-directory.png)
+![mount_host-directory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mount_host-directory.png)
 
 マウント元の詳細なディレクトリ名は、```/Users/<ユーザー名>/Library/Group Containers/group.com.docker/setting.json```ファイルから確認できる。
 
@@ -110,7 +110,7 @@ $ cat settings.json
 
 ### ボリュームマウントとは
 
-![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_volume-mount.png)
+![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
 
 ホスト側のストレージ上にあるdockerエリア (```/var/lib/docker/volumes```ディレクトリ) のマウントポイント (```/var/lib/docker/volumes/<ボリューム名>/_data```) を、コンテナ側にマウントすることより、データを永続化する。ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBのデータをホストコンテナ間と共有する方法として推奨である。しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。
 
@@ -155,7 +155,7 @@ dockerエリアのボリュームをData Volumeをコンテナのディレクト
 
 
 
-![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
+![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/data-volumeコンテナ.png)
 
 <br>
 

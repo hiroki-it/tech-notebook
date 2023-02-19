@@ -11,7 +11,7 @@ description: アドオン＠Nodeコンポーネントの知見を記録してい
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -53,7 +53,7 @@ Ingressでインバウンド通信を受信する場合に使用し、NodePort S
 また、TargetGroupBindingを介して、ALBのターゲットグループとIngressを紐づける。
 
 
-![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alb_targetgroupbinding.png)
+![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
 > ↪️ 参考：
 >

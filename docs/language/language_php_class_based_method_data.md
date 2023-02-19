@@ -10,7 +10,7 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -537,7 +537,7 @@ PHPには最初からマジックメソッドは組み込まれているが、�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 **＊実装例＊**
 
@@ -829,7 +829,7 @@ $D = objB()->objC()->objC();
 
 
 
-![再帰的](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再帰的.png)
+![再帰的](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再帰的.png)
 
 **＊実装例＊**
 
@@ -837,7 +837,7 @@ $D = objB()->objC()->objC();
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_algorithm.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html
 
 ```【１】```
 
@@ -1077,7 +1077,7 @@ $dispatcher->dispatch("foo", "test");
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_symfony_component.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
 
 ```php
 <?php
@@ -1527,7 +1527,7 @@ final class FlagConstant
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ 数値計算、数値比較
 
@@ -1539,7 +1539,7 @@ final class FlagConstant
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ URL
 

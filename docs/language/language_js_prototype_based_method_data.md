@@ -10,7 +10,7 @@ title: 【IT技術の知見】メソッド/データ＠JavaScript
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -638,7 +638,7 @@ PHPにも、```forEach```関数と同様に配列に対してコールバック�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_iteration.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html
 
 ```javascript
 const array = ["foo", "bar", "baz"];

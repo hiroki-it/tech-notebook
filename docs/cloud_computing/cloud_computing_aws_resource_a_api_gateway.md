@@ -11,7 +11,7 @@ description: API Gateway＠Aで始まるAWSリソースの知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: API Gateway＠Aで始まるAWSリソースの知見を記録して�
 
 
 
-![API Gatewayの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/APIGatewayの仕組み.png)
+![API Gatewayの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/APIGatewayの仕組み.png)
 
 <br>
 
@@ -39,7 +39,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 | ステージ              | API Gatewayをデプロイする環境を定義する。                                                       |                                                                                                                                                                     |
 | オーソライザー           | LambdaまたはCognitoによるオーソライザーを使用して、認可プロセスを定義する。                                   |                                                                                                                                                                     |
 | ゲートウェイのレスポンス      |                                                                                      |                                                                                                                                                                     |
-| モデル               | リクエスト/レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                                      | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
+| モデル               | リクエスト/レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                                      | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html |
 | リソースポリシー          | ポリシーを使用して、API Gatewayにセキュリティを定義づける。                                              |                                                                                                                                                                     |
 | ドキュメント            |                                                                                      |                                                                                                                                                                     |
 | ダッシュボード           |                                                                                      |                                                                                                                                                                     |
@@ -68,7 +68,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 |--------------------|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 認可               | 定義したLambdaまたはCognitoによるオーソライザーを有効化するか否かを設定する。                                          |                                                                                                                                                                      |
 | リクエストの検証         | 『URLクエリ文字列パラメーター』『HTTPリクエストヘッダー』『リクエスト本文』のバリデーションを有効化するか否かを設定する。                    |                                                                                                                                                                      |
-| APIキーの必要性       | リクエストヘッダーにおけるAPIキーのバリデーションを行う。リクエストのヘッダーに『```x-api-key```』を含み、これにAPIキーが割り当てられていることを強制する。 | ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
+| APIキーの必要性       | リクエストヘッダーにおけるAPIキーのバリデーションを行う。リクエストのヘッダーに『```x-api-key```』を含み、これにAPIキーが割り当てられていることを強制する。 | ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html |
 | URLクエリ文字列パラメーター | リクエストされたURLのクエリパラメーターのバリデーションを行う。                                                             |                                                                                                                                                                      |
 | HTTPリクエストヘッダー      | リクエストヘッダーのバリデーションを行う。                                                                         |                                                                                                                                                                      |
 | リクエスト本文          | リクエストボディのバリデーションを行う。                                                                          |                                                                                                                                                                      |
@@ -98,7 +98,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
 
 #### ▼ CORSの有効化
 

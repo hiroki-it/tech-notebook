@@ -11,7 +11,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ description: アンチパターン@SREingの知見を記録しています。
     - > ↪️ 参考：https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c
 
 
-![noc_ntt-docomo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/noc_ntt-docomo.jpeg)
+![noc_ntt-docomo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/noc_ntt-docomo.jpeg)
 
 #### ▼ 解決策
 
@@ -198,7 +198,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 インフラのプロビジョニングツールを、イミュータブルなインフラを構築するためではなく、既存のミュータブルなインフラを冗長化させるために使用してしまうこと。
 
-![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/infrastructure_mutable_immutable.jpeg)
+![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_mutable_immutable.jpeg)
 
 
 > ↪️ 参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
@@ -320,7 +320,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 
 
-![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mtxx.png)
+![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png)
 
 #### ▼ 問題点
 

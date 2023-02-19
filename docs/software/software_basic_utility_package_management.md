@@ -11,7 +11,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 
 
-![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/library_package_module.png)
+![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/library_package_module.png)
 
 <br>
 

@@ -11,7 +11,7 @@ description: Gで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -55,7 +55,7 @@ description: Gで始まるAWSリソース＠AWSの知見を記録しています
 
 ### 素早いレスポンスの理由
 
-![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator.png)
+![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator.png)
 
 最初、クライアントPCからのリクエストはエッジロケーションで受信される。
 
@@ -65,13 +65,13 @@ description: Gで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入後.png)
+![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入後.png)
 
 Global Acceleratorを使用しない場合、クライアントPCのリージョンから指定したリージョンに至るまで、いくつもパブリックネットワークを経由する必要があり、時間がかかってしまう。
 
 
 
-![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入前.png)
+![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入前.png)
 
 以下のサイトで、Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる。
 

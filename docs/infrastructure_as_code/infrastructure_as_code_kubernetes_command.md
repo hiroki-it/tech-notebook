@@ -11,7 +11,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -577,7 +577,7 @@ Nodeが他に存在すれば、そのNode上でPodが再作成される。
 $ kubectl drain <Node名>
 ```
 
-![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_drain_node.png)
+![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_drain_node.png)
 
 
 > ↪️ 参考：

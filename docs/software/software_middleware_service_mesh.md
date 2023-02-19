@@ -11,7 +11,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 #### ▼ メッシュとは
 
-![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mesh.png)
+![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mesh.png)
 
 マイクロサービスアーキテクチャで、マイクロサービス間の通信をメッシュで管理する。
 
@@ -65,7 +65,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念が考案される前、これらのロジックを持つライブラリを各マイクロサービスに持たせていた。
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:2%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:2%;" />
 
 サービスメッシュの概念が考案され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーをインジェクションするようになった。
 
@@ -86,7 +86,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 #### ▼ サイドカープロキシメッシュとは
 
-![service-mesh_sidecar-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy.png)
+![service-mesh_sidecar-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy.png)
 
 マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。
 
@@ -105,7 +105,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い (レスポンス速度が速い) との結果が出ている。
 
-![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
+![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
 
 > ↪️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
@@ -123,7 +123,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 サイドカープロキシが稼働する領域を『データプレーン』、中央集権的に管理する領域を『コントロールプレーン』という。
 
-![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_control-plane.png)
+![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_control-plane.png)
 
 
 > ↪️ 参考：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
@@ -168,7 +168,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ### サービスディスカバリーの要素
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:25%;" />
 
 サービスディスカバリーの仕組みは、次の要素からなる。
 
@@ -192,7 +192,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ クライアントサイドパターン
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:25%;" />
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
 
@@ -223,7 +223,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ サーバーサイドパターンとは
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:25%;" />
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
 

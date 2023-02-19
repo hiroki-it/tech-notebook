@@ -11,7 +11,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 実装内容が適切かを確認しながら、入力に対して、適切な出力が行われているかを検証する。
 
-![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_whitebox-test.png)
+![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_whitebox-test.png)
 
 
 > ↪️ 参考：https://hldc.co.jp/blog/2018/05/25/1387/
@@ -106,7 +106,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 テスト用DBを```docker-compose.yml```ファイルによって用意する方法については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 <br>
 
@@ -120,7 +120,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 
 
-![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/test-plan_test-suite_test-case.jpg)
+![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test-plan_test-suite_test-case.jpg)
 
 #### ▼ テストケース名
 
@@ -240,7 +240,7 @@ PHPUnitにおけるスタブについては、以下のリンクを参考にせ�
 
 #### ▼ C０：Statement Coverage (命令網羅) 
 
-![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-1.png)
+![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-1.png)
 
 全ての命令が実行されるかを検証する。
 
@@ -262,7 +262,7 @@ AとBは、『1』または『0』になり得るとする。
 
 #### ▼ C１：Decision Coverage (判定条件網羅/分岐網羅) 
 
-![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-2.png)
+![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-2.png)
 
 全ての判定が実行されるかを検証する。
 
@@ -285,7 +285,7 @@ AとBは、『1』または『0』になり得るとする。
 
 #### ▼ C２：Condition Coverage (条件網羅) 
 
-![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-3.png)
+![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-3.png)
 
 各条件が、取り得る全ての値で実行されるかを検証する。
 
@@ -317,7 +317,7 @@ AとBは、『1』または『0』になり得るとする。
 
 #### ▼ MCC：Multiple Condition Coverage (複数条件網羅) 
 
-![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-4.png)
+![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-4.png)
 
 各条件が、取り得る全ての値で、かつ全ての組み合わせが実行されるかを検証する。
 

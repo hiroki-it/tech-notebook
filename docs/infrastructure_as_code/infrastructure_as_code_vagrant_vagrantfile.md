@@ -11,7 +11,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 > ↪️ 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
-![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vagrant_provider_provisioner.png)
+![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vagrant_provider_provisioner.png)
 
 <br>
 

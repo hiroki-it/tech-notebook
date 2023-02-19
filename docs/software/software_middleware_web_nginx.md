@@ -11,7 +11,7 @@ description: Nginx＠Web系ミドルウェアの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Nginx＠Web系ミドルウェアの知見を記録しています�
 
 ### アーキテクチャ
 
-![nginx_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nginx_architecture.png)
+![nginx_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nginx_architecture.png)
 
 Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、から構成される。
 
@@ -62,7 +62,7 @@ Nginxは、インバウンド通信をappサーバーにルーティングする
 
 
 
-![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リバースプロキシサーバーとしてのNginx.png)
+![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リバースプロキシサーバーとしてのNginx.png)
 
 **＊実装例＊**
 
@@ -94,7 +94,7 @@ server {
 
 #### ▼ FastCGIプロトコルの場合
 
-![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
+![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NginxとPHP-FPMの組み合わせ.png)
 
 PHP-FPMはFastCGIプロトコルでインバウンド通信を受信するため、これに変換する必要がある。
 

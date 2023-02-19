@@ -11,7 +11,7 @@ description: Lambda＠Lで始まるAWSリソース
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Lambda＠Lで始まるAWSリソース
 他のAWSリソースのイベントによって駆動する関数を管理できる。
 
 
-![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバーレスアーキテクチャとは.png)
+![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サーバーレスアーキテクチャとは.png)
 
 
 
@@ -63,7 +63,7 @@ description: Lambda＠Lで始まるAWSリソース
 
 ### Lambdaと関数の関係性
 
-![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-api-flow.png)
+![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-api-flow.png)
 
 #### ▼ Lambdaサービス
 
@@ -87,7 +87,7 @@ Lambdaは、API (ランタイムAPI、ログAPI、拡張API) と実行環境か�
 
 > ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
 
-![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-lifecycle.png)
+![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png)
 
 #### ▼ Initフェーズ
 
@@ -220,7 +220,7 @@ Lambdaは、関数の実行中に再びリクエストを受信すると、関�
 
 > ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
 
-![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda_concurrency-model.png)
+![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda_concurrency-model.png)
 
 <br>
 
@@ -317,7 +317,7 @@ CloudFrontに統合されたLambdaを、特別にLambda@Edgeという。
 
 #### ▼ トリガーの種類
 
-![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge.png)
+![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge.png)
 
 CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンス、をトリガーとする。
 

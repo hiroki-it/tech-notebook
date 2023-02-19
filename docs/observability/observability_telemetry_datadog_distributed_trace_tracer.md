@@ -11,7 +11,7 @@ description: トレーサー＠分散トレース収集の知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 

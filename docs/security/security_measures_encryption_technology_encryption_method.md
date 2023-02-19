@@ -11,7 +11,7 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -93,7 +93,7 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 **短所**：鍵の配布が大変
 
-![p437](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p437.png)
+![p437](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p437.png)
 
 #### ▼ 共通鍵の再利用の可否
 
@@ -103,7 +103,7 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 
 
-![共通鍵の再利用](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/共通鍵の再利用.png)
+![共通鍵の再利用](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/共通鍵の再利用.png)
 
 <br>
 
@@ -111,7 +111,7 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 #### ▼ 公開鍵暗号方式とは
 
-![公開鍵暗号方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/公開鍵暗号方式.png)
+![公開鍵暗号方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/公開鍵暗号方式.png)
 
 公開鍵暗号方式でも記載の通り、共通鍵暗号方式の鍵配送問題を解決すべく開発された。
 
@@ -147,7 +147,7 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 
 
-![公開鍵の再利用](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/公開鍵の再利用.png)
+![公開鍵の再利用](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/公開鍵の再利用.png)
 
 <br>
 
@@ -159,6 +159,6 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 
 
-![ハイブリッド暗号](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハイブリッド暗号.png)
+![ハイブリッド暗号](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッド暗号.png)
 
 <br>

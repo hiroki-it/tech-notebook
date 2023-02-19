@@ -11,7 +11,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,6 +21,6 @@ Dockerのコマンドはセクションが重複しており、以下のセク�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker_command.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker_command.html
 
 <br>

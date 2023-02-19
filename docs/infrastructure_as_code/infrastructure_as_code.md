@@ -11,7 +11,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
     
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software.html
 
 <br>
 
@@ -315,7 +315,7 @@ FluentBitコンテナをサイドカーコンテナとして稼働させ、ア�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_log_fluentbit.html
 
 #### ▼ メトリクス収集コンテナの配置
 
@@ -323,7 +323,7 @@ datadogコンテナをサイドカーコンテナとして稼働させ、アプ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 

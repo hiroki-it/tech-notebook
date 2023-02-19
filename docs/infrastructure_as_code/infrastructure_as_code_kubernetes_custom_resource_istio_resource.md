@@ -11,7 +11,7 @@ description: リソース＠Istioの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -48,7 +48,7 @@ KubernetesリソースのIngressの代わりとして使用できる。
 
 #### ▼ IngressGatewayの仕組み
 
-![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
+![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png)
 
 IngressGatewayは、```istio-ingressgateway```というService (NodePort ServiceまたはLoadBalancer Service) と、Deployment配下の```istio-ingressgateway-*****```というPod (```istio-proxy```コンテナのみが稼働) 、から構成される。
 
@@ -145,7 +145,7 @@ spec:
 IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
 
 
-![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
+![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
 
 
@@ -169,7 +169,7 @@ IngressGatewayの能力のうち、IngressGatewayで受信したインバウン�
 
 ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
 
-![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
+![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
 > ↪️ 参考：
 >
@@ -209,7 +209,7 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 Clusterネットワーク内からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。
 
-![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
+![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
 > ↪️ 参考：https://knowledge.sakura.ad.jp/20489/
 
@@ -222,7 +222,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
 
-![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-entry.png)
+![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
 
 > ↪️ 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 

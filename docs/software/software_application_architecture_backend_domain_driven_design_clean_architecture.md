@@ -11,7 +11,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 > ↪️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
-![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
+![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
 #### ▼ クラス or 関数
 
@@ -165,7 +165,7 @@ class FormatValidator
 
 インターフェース層からユースケース層までの処理の流れを以下に示す。
 
-![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master//images/clean-architecture_flow.png)
+![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master//images/clean-architecture_flow.png)
 
 
 > ↪️ 参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
@@ -220,7 +220,7 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -1274,7 +1274,7 @@ final class User
 
 一意で識別できるデータ (例：```id```データ) を持つ
 
-![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
+![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_エンティティ.jpg)
 
 <br>
 
@@ -1553,7 +1553,7 @@ abstract class Id
 
 
 
-![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
+![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
 
 <br>
 
@@ -2269,7 +2269,7 @@ abstract class ValueObject
 
 #### ▼ ルートエンティティとは
 
-![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
+![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_集約関係.jpg)
 
 エンティティや値オブジェクトからなる集約の中で、最終的にユースケース層へレスポンスされる集約を、『ルートエンティティ』という。
 
@@ -2357,7 +2357,7 @@ class DogOrder
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 <br>
 
@@ -2381,11 +2381,11 @@ class DogOrder
 
 #### ▼ DIP (依存性逆転の原則) とは
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ### リポジトリ
 
-![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Repository.png)
+![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Repository.png)
 
 #### ▼ リポジトリパターンとは
 
@@ -2442,7 +2442,7 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
 
 #### ▼ インターフェースリポジトリ
 
@@ -2507,7 +2507,7 @@ interface FooRepository extends Repository
 
 #### ▼ DBに対する書き込み責務 (Create、Update、Delete) 
 
-![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
+![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
 
 DBに対する書き込み操作を行う。
 
@@ -2657,7 +2657,7 @@ class DogToyRepository
 
 #### ▼ DBに対する読み出し責務 (Read) 
 
-![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
+![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
 
 DBに対する書き込み操作を行う。
 
@@ -2834,7 +2834,7 @@ class DogComboFactory
 
 
 
-![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
+![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
 <br>
 
@@ -2903,7 +2903,7 @@ class DogComboFactory
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_error_and_error_handling.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
 
 <br>
 

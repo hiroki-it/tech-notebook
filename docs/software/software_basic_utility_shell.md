@@ -11,7 +11,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 > ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
-![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell.png)
+![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell.png)
 
 <br>
 
@@ -133,7 +133,7 @@ echo $0 # foo.sh
 
 #### ▼ 系譜
 
-![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
+![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_history.png)
 
 
 > ↪️ 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
@@ -187,7 +187,7 @@ $ echo $SHELL
 
 > ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
-![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_variable_scope.png)
+![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_variable_scope.png)
 
 #### ▼ シェル変数
 

@@ -11,7 +11,7 @@ description: Goの場合＠ホワイトボックステストの知見を記録�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 

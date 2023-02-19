@@ -11,7 +11,7 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -1188,7 +1188,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 > ↪️ 参考：
 > 
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_policy.html
+> - https://hiroki-it.github.io/tech-notebook/devops/devops_circleci_policy.html
 
 <br>
 

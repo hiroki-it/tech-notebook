@@ -11,7 +11,7 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -20,7 +20,7 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的なクレデンシャル情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つIAMユーザーを発行する。
 
-![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
+![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/STS.jpg)
 
 <br>
 
@@ -34,7 +34,7 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内での�
 
 秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
 
-![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
+![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
 
 > ↪️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
@@ -46,7 +46,7 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内での�
 IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
 
 
-![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sts_multi-account.png)
+![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
 
 
 > ↪️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
@@ -91,7 +91,7 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 #### ▼ EKS
 
-![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_oidc.png)
+![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
 EKSをIDプロバイダーとして使用するように、```Federated```キーでEKS Clusterの識別子を設定する。
 
@@ -147,7 +147,7 @@ metadata:
 
 IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIAMロールを委譲できる。
 
-![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
+![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
 
 
 > ↪️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/

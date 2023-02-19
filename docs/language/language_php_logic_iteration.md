@@ -11,7 +11,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 
 
-![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/配列の走査.png)
+![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/配列の走査.png)
 
 #### ▼ 内部ポインタと配列の関係
 
@@ -83,7 +83,7 @@ foreach ($array as &$value) {
 
 #### ▼ 制御文
 
-![流れ図_foreach文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_foreach文.png)
+![流れ図_foreach文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_foreach文.png)
 
 ```php
 <?php
@@ -325,7 +325,7 @@ echo $count
 
 #### ▼ 制御文
 
-![流れ図_while文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_while文.png)
+![流れ図_while文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_while文.png)
 
 ```php
 <?php
@@ -395,7 +395,7 @@ echo $count
 
 #### ▼ 制御文
 
-![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_for文.png)
+![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_for文.png)
 
 ```php
 <?php

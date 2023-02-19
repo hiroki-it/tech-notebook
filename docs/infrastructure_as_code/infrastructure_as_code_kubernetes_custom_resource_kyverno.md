@@ -11,13 +11,13 @@ description: Kyverno＠カスタムリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. Kyverno
 
-![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kyverno_architecture.png)
+![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kyverno_architecture.png)
 
 Kyvernoは、admission-controllersアドオン、webhookサーバー、Controller、から構成されている。
 

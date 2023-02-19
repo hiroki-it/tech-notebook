@@ -11,7 +11,7 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 

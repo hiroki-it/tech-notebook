@@ -11,7 +11,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -214,7 +214,7 @@ Goroutinesを使用する。
 
 #### ▼ JavaScriptの場合
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_logic_asynchronous_process.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html
 
 #### ▼ Node.jsの場合
 

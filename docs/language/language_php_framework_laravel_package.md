@@ -45,7 +45,7 @@ $ npm run watch
 
 ## 02. 認証系パッケージ
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_laravel_package_auth.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html
 
 <br>
 

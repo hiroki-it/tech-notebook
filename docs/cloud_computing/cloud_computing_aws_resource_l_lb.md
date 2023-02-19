@@ -11,7 +11,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -42,7 +42,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 
 リクエストを代理で受信し、EC2インスタンスへのアクセスをバランスよく分配することによって、サーバーへの負荷を緩和する。
 
-![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_alb.png)
+![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png)
 
 
 > ↪️ 参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer/24
@@ -90,7 +90,7 @@ ALBの実体で、各ALBインスタンスが異なるグローバルIPアドレ
 
 複数のAZにルーティングするようにALBを設定した場合、各AZにALBインスタンスが1つずつ配置される。
 
-![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alb-instance.png)
+![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb-instance.png)
 
 
 > ↪️ 参考：https://blog.takuros.net/entry/2019/08/27/075726
@@ -160,7 +160,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 #### ▼ アプリケーションにおける対処方法
 
-![ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png)
+![ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png)
 
 ALBを経由したリクエストには、リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される。
 

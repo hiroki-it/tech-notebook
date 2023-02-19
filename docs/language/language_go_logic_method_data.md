@@ -11,7 +11,7 @@ description: メソッド/データ@Goの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -101,7 +101,7 @@ type MyAppWriter io.Writer
 
 
 
-![basic-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/basic-variable_memory.png)
+![basic-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/basic-variable_memory.png)
 
 #### ▼ 各データ型のサイズ
 
@@ -313,7 +313,7 @@ func main() {
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ```go
 package main
@@ -615,7 +615,7 @@ func main() {
 
 
 
-![aggregate-type_array](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aggregate-type_array.png)
+![aggregate-type_array](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregate-type_array.png)
 
 #### ▼ 宣言と代入
 
@@ -695,7 +695,7 @@ func main() {
 
 
 
-![array-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/array-variable_memory.png)
+![array-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/array-variable_memory.png)
 
 <br>
 
@@ -717,7 +717,7 @@ PHPにおけるポインタは、以下のリンクを参考にせよ。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based_method_data.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html
 
 **＊実装例＊**
 
@@ -792,7 +792,7 @@ func main() {
 
 
 
-![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/reference-types_slice.png)
+![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reference-types_slice.png)
 
 ```go
 // Goのコードより
@@ -2410,7 +2410,7 @@ func main() {
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_validation.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html
 
 #### ▼ Goには例外が無い
 

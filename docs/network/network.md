@@ -11,7 +11,7 @@ description: ネットワークの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: ネットワークの知見を記録しています。
 
 
 
-![network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network.png)
+![network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network.png)
 
 <br>
 
@@ -37,7 +37,7 @@ LAN内では、各機器はプライベートIPアドレスで識別されてい
 
 LAN内に設置されたNATルーターが、WAN内のグローバルIPアドレスとLAN内のプライベートIPアドレスを相互変換する。
 
-![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_lan.jpeg)
+![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_lan.jpeg)
 
 > ↪️ 参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
 
@@ -52,7 +52,7 @@ LANは、バリアセグメント、パブリックサブネット (非武装地
 
 AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
-![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
+![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internal_dmz_external.png)
 
 
 > ↪️ 参考：
@@ -81,7 +81,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 ## 02-02. ルーター
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_router.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network_router.html
 
 <br>
 
@@ -91,7 +91,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 #### ▼ 代理ルーティング
 
-![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
+![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
 
 
 | サーバー名        | 処理                                                                             |
@@ -104,7 +104,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 #### ▼ キャッシュ
 
-![プロキシサーバーのキャッシュ能力](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロキシサーバーのキャッシュ能力.png)
+![プロキシサーバーのキャッシュ能力](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロキシサーバーのキャッシュ能力.png)
 
 
 | サーバー名        | 処理                                      |
@@ -155,7 +155,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 
 
-![proxy-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/proxy-server.png)
+![proxy-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/proxy-server.png)
 
 #### ▼ クラウド上の場合
 
@@ -169,7 +169,7 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 ### WANとは
 
-![network_wan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_wan.png)
+![network_wan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_wan.png)
 
 特定のLAN間のハブになるプライベートネットワークのこと。
 
@@ -210,7 +210,7 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 
 少数対少数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報は不要である。
 
-![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_circuit-switching-system.png)
+![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_circuit-switching-system.png)
 
 
 > ↪️ 参考：
@@ -227,7 +227,7 @@ WANを介したプライベートな通信で、パケット化されたデー�
 
 対多数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報が必要になる。
 
-![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/waf_packet-switching-system.png)
+![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_packet-switching-system.png)
 
 
 > ↪️ 参考：
@@ -246,7 +246,7 @@ WANの実現は、```1980```年代のアナログ専用線から始まった。
 
 
 
-![network_wan_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_wan_history.png)
+![network_wan_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_wan_history.png)
 
 <br>
 
@@ -267,7 +267,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ### インバウンド/アウトバウンド
 
-![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/inbound_outbound.png)
+![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/inbound_outbound.png)
 
 サーバーを中心とした方向で通信を見た時、サーバーに流入する方向をインバウンドという。
 
@@ -284,7 +284,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ### アップストリーム/ダウンストリーム
 
-![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/upstream_downstream.png)
+![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/upstream_downstream.png)
 
 通信の送受信全体の中の位置で通信を見た時、通信が送信された前半の位置を相対的にアップストリームという。
 
@@ -352,7 +352,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 
 
-![伝送速度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/伝送速度.png)
+![伝送速度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/伝送速度.png)
 
 #### ▼ 伝送
 
@@ -373,7 +373,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 とあるネットワーク地点でのスループットのこと。
 
-![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィック.png)
+![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィック.png)
 
 
 > ↪️ 参考：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
@@ -381,7 +381,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 総務省のデータで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。
 
-![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィックのグラフ.png)
+![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィックのグラフ.png)
 
 
 > ↪️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/

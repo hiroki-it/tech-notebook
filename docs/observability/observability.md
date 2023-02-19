@@ -11,7 +11,7 @@ description: 可観測性の知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: 可観測性の知見を記録しています。
 
 ### 可観測性とは
 
-![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
+![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observality_and_monitoring.png)
 
 『収集されたデータから、システムと想定内と想定外 (想定できない) の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。
 
@@ -100,7 +100,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 <br>
 
@@ -112,7 +112,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 #### ▼ ログの持つ情報
 
@@ -163,7 +163,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
 
-![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
 
 <br>
@@ -403,7 +403,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 ### 分散トレースとは
 
-![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
+![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png)
 
 マイクロサービスから収集されたスパンのセットのこと。
 
@@ -428,7 +428,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 特定のマイクロサービス間で通信速度が低ければ、その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、パフォーマンスに問題がないかを調査する必要がある。
 
-![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_connection-time.png)
+![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 
 > ↪️ 参考：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
 
@@ -440,7 +440,7 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 #### ▼ IDの種類
 
-![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
+![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png)
 
 サービスメッシュでは、リバースプロキシ (例：Envoy、Linkerd2-proxy) 、ロードバランサー (Istio IngressGateway、AWS ALB) 、API Gateway (AWS API Gateway) で、インバウンド通信のHTTPヘッダーやRPCヘッダーに分散トレースIDが割り当てられているか (メッセージボディにIDを追加するツールもある) を確認し、もしなければ作成したトレースIDを新しく割り当てるようにする。
 
@@ -501,7 +501,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 ### 分散トレースの読み方
 
-![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_reading.png)
+![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png)
 
 上から下に読むと、上流サービス (上位スパン) が下流サービス (下位スパン) を処理をコールしていることを確認できる。
 
@@ -523,7 +523,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 **＊例＊**
 
-![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monolith-trace.png)
+![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png)
 
 
 ```【１】```

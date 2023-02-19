@@ -11,7 +11,7 @@ description: IAM＠Iで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -394,15 +394,15 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
 
 #### ▼ IAMユーザーに対する紐付け
 
-![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMユーザーにポリシーを付与.jpeg)
+![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
 
 #### ▼ IAMグループに対する紐付け
 
-![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMグループにポリシーを付与.jpeg)
+![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
 
 #### ▼ IAMロールに対する紐付け
 
-![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMロールにポリシーを付与.jpeg)
+![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
 
 <br>
 
@@ -434,7 +434,7 @@ IAMグループごとにIAMロールを紐付けすれば、IAMユーザーのIA
 
 
 
-![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループ.png)
+![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループ.png)
 
 <br>
 
@@ -446,7 +446,7 @@ IAMグループに対して、IAMロールを紐付ける。
 
 
 
-![グループに所属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループに所属するユーザーにロールを付与.png)
+![グループに所属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループに所属するユーザーにロールを付与.png)
 
 <br>
 

@@ -11,7 +11,7 @@ description: Prometheus＠Kubernetes
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 また設定された条件下でアラートを作成し、Alertmanagerに送信する。
 
-![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
+![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_architecture.png)
 
 
 > ↪️ 参考：
@@ -220,7 +220,7 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 
 リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
-![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
+![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_remote-storage.png)
 
 
 > ↪️ 参考：
@@ -236,7 +236,7 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
 
 
-![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_dynamic-queues_shard.png)
+![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png)
 
 
 > ↪️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
@@ -252,7 +252,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 
 受信したアラートは、AlertmanagerのUI上に表示される。
 
-![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
+![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alertmanager.png)
 
 
 > ↪️ 参考：

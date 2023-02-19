@@ -11,7 +11,7 @@ description: アドオン＠コントロールプレーンコンポーネント�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -20,7 +20,7 @@ description: アドオン＠コントロールプレーンコンポーネント�
 
 ### admission-controllersアドオンとは
 
-![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers.png)
+![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png)
 
 有効化すると、kube-apiserverにて、認証ステップと認可ステップの後にadmissionプラグインを実行できる。
 
@@ -44,7 +44,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 クライアント (```kubectl```クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、独自処理) を発火させられる。
 
 
-![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
+![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 
 
 > ↪️ 参考：
@@ -112,7 +112,7 @@ SSL証明書を含むSecretの作成は```kube-webhook-certgen```イメージで
 
 #### ▼ MutatingAdmissionWebhookプラグイン
 
-![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_admission-review.png)
+![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png)
 
 MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
 
@@ -123,7 +123,7 @@ MutatingAdmissionWebhookプラグインを使用すると、mutating-admission�
 
 #### ▼ MutatingWebhookConfiguration
 
-![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
 
 MutatingWebhookConfigurationで、MutatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 
@@ -198,7 +198,7 @@ ValidatingAdmissionWebhookプラグインを使用すると、validating-admissi
 
 #### ▼ ValidatingWebhookConfiguration
 
-![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
 
 ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 

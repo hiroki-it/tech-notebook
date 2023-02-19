@@ -11,7 +11,7 @@ description: Goの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -212,7 +212,7 @@ import "<パッケージ名>"
 
 
 
-![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/golang_import_cycle.png)
+![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/golang_import_cycle.png)
 
 #### ▼ func
 

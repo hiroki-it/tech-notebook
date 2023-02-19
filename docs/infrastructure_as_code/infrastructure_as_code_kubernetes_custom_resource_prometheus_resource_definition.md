@@ -11,7 +11,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -752,7 +752,7 @@ spec:
 
 指定したServiceに対してPull型通信を送信し、これに紐づくリソースに関するメトリクスのデータポイントを収集する。
 
-![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor.png)
+![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 
 
 > ↪️ 参考：
@@ -922,7 +922,7 @@ metadata:
 
 #### ▼ matchLabels
 
-![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor_match-labels.png)
+![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor_match-labels.png)
 
 収集の対象とするServiceに付与された```.metadata.labels```キーを設定する。
 

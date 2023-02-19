@@ -11,7 +11,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html
 
 <br>
 
@@ -393,7 +393,7 @@ services:
 
 ### ```networks```
 
-![dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+![dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
 
 コンテナを接続する内/外ネットワークのエイリアス名を設定する。
 
@@ -605,7 +605,7 @@ datadirディレクトリについては、以下のリンクを参考にせよ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_conf.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html
 
 ```yaml
 service:
@@ -730,7 +730,7 @@ $ docker network inspect foo-network
 
 ### ```external```
 
-![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-compose_external.png)
+![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-compose_external.png)
 
 異なる```docker-compose.yml```ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、```<プロジェクト名>_<外部ネットワーク名>```になる。
 
@@ -873,5 +873,5 @@ PHPUnitで接続するDBを指定する方法については、以下のリン�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
 

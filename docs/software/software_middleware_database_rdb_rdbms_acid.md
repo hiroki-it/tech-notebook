@@ -11,7 +11,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -84,7 +84,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
+![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
 | RDBの書き込み系の操作                    | よくあるメソッド名 (例：PDO)                                         | ラッピング                 | 障害からの回復                  |
 |:-------------------------------------|:------------------------------------------------------------|-----------------------|------------------------------|
@@ -151,7 +151,7 @@ try{
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_symfony_component.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
 
 <br>
 
@@ -171,7 +171,7 @@ try{
 
 これにより、書き込み後にすぐ読み出しが必要な場合、読み出しが速くなる。
 
-![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMSによるメモリとディスクの使い分け.jpg)
+![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
 
 > ↪️ 参考：https://www.kimullaa.com/posts/201910271500/
@@ -179,7 +179,7 @@ try{
 
 #### ▼ WAL：Write ahead log (ログ先行書き込み) 
 
-![wal](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/wal.png)
+![wal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/wal.png)
 
 コミットのメモリ書き込みの仕組みの前に、ストレージ上のジャーナルファイルに更新前ログを書き込む。
 
@@ -210,7 +210,7 @@ try{
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
-![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トランザクション.jpg)
+![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランザクション.jpg)
 
 <br>
 
@@ -232,7 +232,7 @@ try{
 
 
 
-![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/システム障害の障害回復機能.jpg)
+![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg)
 
 <br>
 
@@ -254,7 +254,7 @@ try{
 
 
 
-![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/システム障害の障害回復機能.jpg)
+![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg)
 
 #### ▼ 媒体障害からの回復
 
@@ -264,7 +264,7 @@ try{
 
 ストレージ上のジャーナルファイルの更新後ログ『```a = 5```』『```b = 1```』を使用して、修復できる限りロールフォワードを行う。
 
-![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/媒体障害の障害回復機能.jpg)
+![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/媒体障害の障害回復機能.jpg)
 
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
@@ -335,13 +335,13 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 > ↪️ 参考：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
 
-![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-1.png)
+![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png)
 
 ユーザAとユーザBのUPDATE処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。
 
 
 
-![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-2.png)
+![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png)
 
 <br>
 
@@ -367,7 +367,7 @@ UPDATE処理競合問題を許容し、排他制御を使用しない選択肢�
 
 ### 共有/占有ロック
 
-![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-3.gif)
+![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
 
 #### ▼ 共有ロック
 
@@ -408,7 +408,7 @@ MySQLでは、『```SELECT ... FOR UPDATE```』を使用する。
 | **共有ロックされたレコード** |      〇       |      ✕       |
 | **占有ロックされたレコード** |      ✕       |      ✕       |
 
-![Null](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デッドロック.gif)
+![Null](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デッドロック.gif)
 
 <br>
 
@@ -465,7 +465,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 ### ロックの粒度
 
-![ロックの粒度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロックの粒度-1.png)
+![ロックの粒度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-1.png)
 
 DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大きい。
 
@@ -475,7 +475,7 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 
 
-![ロックの粒度-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロックの粒度-2.jpg)
+![ロックの粒度-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-2.jpg)
 
 <br>
 
@@ -485,7 +485,7 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 #### ▼ ポイントインタイムリカバリーとは
 
-![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/db_point-in-time-recovery.png)
+![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_point-in-time-recovery.png)
 
 特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は```mysqldump```コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) 、を使用し、DBを任意の時点の状態に戻す。
 

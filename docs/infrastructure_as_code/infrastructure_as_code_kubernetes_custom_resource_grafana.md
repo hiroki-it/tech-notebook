@@ -11,7 +11,7 @@ description: Grafana＠カスタムリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -26,7 +26,7 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 
 
-![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images//grafana_architecture.png)
+![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images//grafana_architecture.png)
 
 > ↪️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
 

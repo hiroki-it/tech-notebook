@@ -8,7 +8,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -473,7 +473,7 @@ Clusterの複数の実行環境 (```dev-*```、```stg-*```、```prd-*```) を用
 
 #### ▼ ローリング方式 (サージ方式、ライブ方式) 
 
-![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
+![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_live-upgrade.png)
 
 『サージ方式』『ライブ方式』ともいう。
 
@@ -497,7 +497,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
     --delete-emptydir-data
 ```
 
-![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node_scheduling-pod-status.png)
+![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png)
 
 > ↪️ 参考：
 >
@@ -523,7 +523,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 #### ▼ ブルー/グリーン方式
 
-![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
+![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-migration.png)
 
 『マイグレーション方式』ともいう。
 

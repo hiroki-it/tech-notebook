@@ -11,7 +11,7 @@ description: Anthos＠GCPの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -48,7 +48,7 @@ AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境 (AWS EK
 
 AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
 
-![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
+![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_attached_cluster.png)
 
 
 > ↪️ 参考：
@@ -71,7 +71,7 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 Traffic Director、Mesh CA、Managed backends、から構成される。
 
-![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_service_mesh.png)
+![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_service_mesh.png)
 
 > ↪️ 参考：
 > 
@@ -101,7 +101,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 一連のacm-operator (cluster-operator、など) から構成される。
 
-![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
+![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management.png)
 
 
 > ↪️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
@@ -111,7 +111,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 一連のacm-operator (cluster-operator、など) は、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
 
-![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
+![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management_gitops.png)
 
 > ↪️ 参考：
 >
@@ -142,7 +142,7 @@ Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他ク
 
 GCP上で```kubectl```コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
 
-![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_connect-gateway.png)
+![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png)
 
 > ↪️ 参考：https://www.topgate.co.jp/anthos-gke#connect-gateway
 
@@ -178,7 +178,7 @@ on-オンプレミスは、各Clusterを作成するワークステーション 
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
-![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_on-premises_architecture.png)
+![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png)
 
 
 > ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
@@ -198,7 +198,7 @@ GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし�
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
-![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_multi-cluster.png)
+![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png)
 
 
 > ↪️ 参考：
@@ -215,7 +215,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
-![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
+![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
 
 > ↪️ 参考：
@@ -275,7 +275,7 @@ GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure)
 
 
 
-![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_cloud-provider.png)
+![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png)
 
 <br>
 

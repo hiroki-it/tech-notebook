@@ -11,7 +11,7 @@ description: ソフトウェアの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: ソフトウェアの知見を記録しています。
 
 > ↪️ 参考：https://thinkit.co.jp/article/11526
 
-![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
+![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
 <br>
 
@@ -55,7 +55,7 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 
 ### ネイティブアプリケーション
 
-![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ネイティブアプリ.png)
+![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネイティブアプリ.png)
 
 端末のシステムによって稼働するアプリケーションのこと。
 
@@ -73,7 +73,7 @@ Office、BookLiveのアプリ版
 
 ### Webアプリケーションとクラウドアプリケーション
 
-![Webアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Webアプリ.png)
+![Webアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webアプリ.png)
 
 #### ▼ Webアプリケーション
 
@@ -109,9 +109,9 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 
 ### ハイブリッドアプリケーション
 
-![Webviewよるアプリパッケージ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Webviewよるアプリパッケージ.png)
+![Webviewよるアプリパッケージ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webviewよるアプリパッケージ.png)
 
-![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハイブリッドアプリ.png)
+![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッドアプリ.png)
 
 端末でWebviewを稼働させ、ソフトウェアの```.html```ファイルのレンダリングをWebview上で行うアプリケーションのこと。
 
@@ -173,19 +173,19 @@ UNIXを源流として派生したOS。
 
 ※補足として、MacOSはBSD系統
 
-![os_unix-like_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/os_unix-like_history.png)
+![os_unix-like_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/os_unix-like_history.png)
 
 #### ▼ WindowsOS
 
 MS-DOSを源流として派生したOS。今では、全ての派生がWindows 10に集約された。
 
-![os_windows_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/os_windows_history.png)
+![os_windows_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/os_windows_history.png)
 
 <br>
 
 ### 基本ソフトウェア
 
-![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/基本ソフトウェアの構成.png)
+![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/基本ソフトウェアの構成.png)
 
 > ↪️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
@@ -200,7 +200,7 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 UNIXから分岐したLinuxは、加えて3系統 (Debian、RedHat、Slackware) に分岐する。
 
-![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux-distribution.png)
+![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux-distribution.png)
 
 
 > ↪️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
@@ -269,7 +269,7 @@ ROMに組み込まれている。
 
 ### BIOS：Basic Input/Output System
 
-![BIOS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/BIOS.jpg)
+![BIOS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/BIOS.jpg)
 
 <br>
 
@@ -277,7 +277,7 @@ ROMに組み込まれている。
 
 Windows 8以降で採用されている新しいFirmware
 
-![UEFIとセキュアブート](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/UEFIとセキュアブート.jpg)
+![UEFIとセキュアブート](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/UEFIとセキュアブート.jpg)
 
 <br>
 
@@ -307,7 +307,7 @@ Windows 8以降で採用されている新しいFirmware
 ### OSSの種類
 
 
-![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSS一覧.png)
+![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSS一覧.png)
 
 > ↪️ 参考：https://openstandia.jp/oss_info/
 

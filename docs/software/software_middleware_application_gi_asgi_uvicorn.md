@@ -11,7 +11,7 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
 #### ▼ Gunicornを使用する場合
 
-![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/uvicorn_with-gunicorn.png)
+![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uvicorn_with-gunicorn.png)
 
 パフォーマンス上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行した方が良い。
 

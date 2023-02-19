@@ -11,7 +11,7 @@ description: ツール＠AWSの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -37,6 +37,6 @@ CloudFormationで作成でき、ECS Fargateを使用して、ユーザーから�
 
 #### ▼ インフラ構成
 
-![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed_load_testing.png)
+![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed_load_testing.png)
 
 <br>

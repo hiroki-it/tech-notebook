@@ -11,7 +11,7 @@ description: Ansible＠IaCの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ Ansibleは、コントロールノード (デプロイサーバー) と管理対
 
 設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
 
-![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible.png)
+![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible.png)
 
 
 > ↪️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
@@ -175,7 +175,7 @@ Ansibleの実行時にパスワードを要求し、これが正しければ復�
 
 パスワード自体をファイル上でバージョン管理したい場合、暗号化ツール (例：SOPS) で暗号化することもできる。
 
-![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible_ansible-vault.png)
+![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible_ansible-vault.png)
 
 
 > ↪️ 参考：https://redj.hatenablog.com/entry/2020/05/02/044527

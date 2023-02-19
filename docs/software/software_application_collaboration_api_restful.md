@@ -11,7 +11,7 @@ description: RESTful-API＠アプリケーション連携の知見を記録し�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,13 +25,13 @@ description: RESTful-API＠アプリケーション連携の知見を記録し�
 
 RESTは、以下の特徴を持つ。
 
-![REST](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/REST.jpg)
+![REST](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/REST.jpg)
 
 #### ▼ RESTfulとRESTful-APIとは
 
 RESTに基づいた設計をRESTfulという。RESTful設計が使用されたWebAPIをRESTful-APIという。例えば、RESTful-APIの場合、DBにおけるUserInfoのCRUDに対して、```1```個の『/UserInfo』というURIを対応づけている。
 
-![RESTfulAPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RESTfulAPI.png)
+![RESTfulAPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RESTfulAPI.png)
 
 <br>
 
@@ -483,7 +483,7 @@ x-api-key: *****
 | 同上      | 送信元IPアドレスの参照禁止           | 誤ったリクエストである。APIに認証/認可プロセスが存在せず、トークン発行と参照権限検証が不要だとする。送信元IPアドレスに参照権限がないと判定されてことを表す。                                                                                                                                                                                                                                                                                                                                          |
 | ```404``` | Webページが見つからない                  | 誤ったリクエストである。存在しないWebページをリクエストしていることを表す。もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが```404```ステータスを自動的に返信してくれるが、独自の```404```ページを用意した場合は、そのままでは検索エンジンは```200```ステータスを返信してしまうため、アプリケーション側で明示的に```404```ステータスを返信する必要がある。アプリケーションは```404```ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを```200```ステータスと扱ってしまう (ブラウザでは```200```ステータスが返信される) 現象を『ソフト```404```』という。<br>↪️ 参考：https://www.sakurasaku-labo.jp/blogs/soft-404-error |
 | ```405``` | 許可されていないHTTPメソッド              | 誤ったリクエストである。エンドポイントのパスは正しいが、HTTPメソッドは誤っていることを表す。                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ```409``` | 競合エラー                         | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms.html                                                                                                                                                                               |
+| ```409``` | 競合エラー                         | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html                                                                                                                                                                               |
 | ```412``` | リソースアクセスエラー                     | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ```422``` | バリデーションエラー                      | 誤ったリクエストである。送信されたパラメーターが誤っていることを表す。                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ```499``` | 接続切断エラー                     | 誤ったリクエストである。リバースプロキシサーバー (例：Nginx) が持つ非標準のステータスコードであり、一般的には使用されない。プロキシの先のシステムからのレスポンスの返信が遅く (またはレスポンスがなく) 、途中でプロキシが接続を切断してしまったことを表す。```504```とやや似ている。<br>↪️ 参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200                                                                                                                                                                                                               |
@@ -1019,7 +1019,7 @@ setcookie(
 
      サーバーは、Cookie情報に紐付くクライアントのデータをReadする。
 
-![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cookie.png)
+![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cookie.png)
 
 <br>
 
@@ -1027,7 +1027,7 @@ setcookie(
 
 #### ▼ セッション、セッションIDとは
 
-![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id_page-transition.png)
+![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id_page-transition.png)
 
 特定のサイトを訪問してから、離脱するまでの一連のユーザー操作を『セッション』という。
 
@@ -1152,7 +1152,7 @@ session.gc_divisor = 1
 
 #### ▼ 仕組み
 
-![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png)
+![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id.png)
 
 
 ```【１】```

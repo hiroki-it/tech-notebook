@@ -11,7 +11,7 @@ description: Jaeger＠カスタムリソースの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Jaeger＠カスタムリソースの知見を記録しています�
 
 Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、OTelクライアントパッケージの使用が推奨) 、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、から構成されている。
 
-![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
+![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jaeger_architecture.png)
 
 
 > ↪️ 参考：https://www.jaegertracing.io/docs/latest/architecture/

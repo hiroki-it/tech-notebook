@@ -11,7 +11,7 @@ description: アドオン＠Kubernetesネットワークの知見を記録して
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: アドオン＠Kubernetesネットワークの知見を記録して
 
 ### cniアドオンとは
 
-![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
+![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
 
 cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。
 
@@ -42,7 +42,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 #### ▼ オーバーレイモードとは
 
-![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
+![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png)
 
 オーバーレイモードは、Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネットワークインターフェース (```veth```) 、Nodeのブリッジ (```cni```) 、NATルーター (Cilium以外のcniアドオンはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (```eth```) 、から構成される。
 
@@ -71,7 +71,7 @@ cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 #### ▼ 同一Node上のPod間通信
 
-![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
+![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
 
 Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネットワークインターフェース (```veth```) 、Nodeのブリッジ (```cni```) 、を使用して、同じNode上のPod間でパケットを送受信する。
 
@@ -81,7 +81,7 @@ Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネ
 
 #### ▼ 同一Node上のPod間通信
 
-![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
+![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
 
 Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネットワークインターフェース (```veth```) 、Nodeのブリッジ (```cni```) 、NATルーター (Cilium以外はiptables、Cilium) 、Nodeのネットワークインターフェース (```eth```) を使用して、異なるNode上のPod間でパケットを送受信する。
 
@@ -135,7 +135,7 @@ Podのネットワークインターフェース (```eth```) 、Nodeの仮想ネ
 
 #### ▼ AWSの独自モードとは
 
-![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_aws-mode.png)
+![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
 
 AWSの独自モードは、Podの仮想ネットワークインターフェース (```veth```) 、Nodeのネットワークインターフェース (```eth```) 、から構成される。
 
@@ -169,7 +169,7 @@ CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。
 
 > ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
-![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_coredns.png)
+![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
 
 <br>
@@ -265,7 +265,7 @@ data:
 
 ### Serviceの名前解決の仕組み
 
-![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/coredns_service-discovery.png)
+![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/coredns_service-discovery.png)
 
 Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。
 

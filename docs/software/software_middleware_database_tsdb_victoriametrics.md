@@ -11,7 +11,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -35,7 +35,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。
 
-![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_remote-storage_architecture.png)
+![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
 
 
 > ↪️ 参考：
@@ -57,7 +57,7 @@ vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件�
 
 VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
 
-![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_monitoring_architecture.png)
+![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
 
 > ↪️ 参考：
 >

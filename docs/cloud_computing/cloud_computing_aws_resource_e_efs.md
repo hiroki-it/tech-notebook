@@ -11,7 +11,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -24,7 +24,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 再接続すると、切断直前のファイルが再び表示されようになる。
 
-![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
+![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EFSのファイル共有機能.png)
 
 
 <br>
@@ -54,7 +54,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 
 
-![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-algorithm.png)
+![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-algorithm.png)
 
 元の残高は、ファイルシステムのスタンダードストレージクラスのサイズに応じて大きくなる。
 
@@ -62,7 +62,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 > ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
 
-![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-size.png)
+![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-size.png)
 
 残高は、```BurstCreditBalance```メトリクスから確認できる。
 
@@ -76,7 +76,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 スループット性能の自動スケーリング機能は無いが、一定の性能は保証されている。
 
-![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/provisioning-mode_credit-balance-size.png)
+![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
 
 
 > ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput

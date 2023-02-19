@@ -10,7 +10,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -24,7 +24,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
 
-![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
+![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_ports.png)
 
 
 > ↪️ 参考：
@@ -401,7 +401,7 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 ### ```15010```番
 
-![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
+![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png)
 
 ```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。
 
@@ -411,7 +411,7 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 > ↪️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
-![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
+![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-registry.png)
 
 Istiodコントロールプレーンは、サービスレジストリ (例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。
 
@@ -441,7 +441,7 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
-![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
+![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png)
 
 
 > ↪️ 参考：https://istio.io/latest/docs/concepts/security/#pki

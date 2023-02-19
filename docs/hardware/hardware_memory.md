@@ -11,7 +11,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -28,7 +28,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 
 
-![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dynamic_RAM.jpg)
+![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Dynamic_RAM.jpg)
 
 
 <br>
@@ -39,7 +39,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-1.png)
+![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png)
 
 <br>
 
@@ -49,7 +49,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-2.png)
+![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png)
 
 <br>
 
@@ -81,13 +81,13 @@ CPUとメインメモリの間に、キャッシュメモリを何段階か設�
 
 
 
-![メモリキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリキャッシュ.gif)
+![メモリキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリキャッシュ.gif)
 
 実際に、タスクマネージャのパフォーマンスタブで、n次キャッシュメモリがどのくらい使われているのかを確認できる。
 
 
 
-![キャッシュメモリの実例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/キャッシュメモリの実例.png)
+![キャッシュメモリの実例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/キャッシュメモリの実例.png)
 
 <br>
 
@@ -123,11 +123,11 @@ CPUとメインメモリの間に、キャッシュメモリを何段階か設�
 
 :    CPUは、命令を実行する。
 
-![メモリとキャッシュメモリ_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリとキャッシュメモリ_1.jpg)
+![メモリとキャッシュメモリ_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_1.jpg)
 
 #### ▼ 二度目
 
-![メモリとキャッシュメモリ_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリとキャッシュメモリ_2.jpg)
+![メモリとキャッシュメモリ_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_2.jpg)
 
 <br>
 
@@ -141,7 +141,7 @@ CPUは、命令をメインメモリとキャッシュメモリの両方に書�
 
 
 
-![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Write-through方式.jpg)
+![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-through方式.jpg)
 
 #### ▼ Write-back方式
 
@@ -151,7 +151,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 メインメモリとキャッシュメモリの内容が一致している状態を必ずしも確保できないが、メインメモリへの書き込み回数が少ないため速い
 
-![Write-back方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Write-back方式.jpg)
+![Write-back方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-back方式.jpg)
 
 <br>
 
@@ -159,7 +159,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p171-1.png)
+![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p171-1.png)
 
 <br>
 
@@ -171,7 +171,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 
 
-![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Static_RAM.jpg)
+![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Static_RAM.jpg)
 
 <br>
 
@@ -185,7 +185,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 
 
-![ディスクキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ディスクキャッシュ.gif)
+![ディスクキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ディスクキャッシュ.gif)
 
 <br>
 
@@ -195,13 +195,13 @@ GPUとVRAMのサイズによって、扱うことのできる解像度と色数�
 
 
 
-![VRAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VRAM.jpg)
+![VRAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VRAM.jpg)
 
 富士通PCのGPUとVRAMのサイズは、以下の通り。
 
 
 
-![本パソコンのVRAMスペック](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/本パソコンのVRAMスペック.jpg)
+![本パソコンのVRAMスペック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/本パソコンのVRAMスペック.jpg)
 
 色数によって、```1```ドット当たり何ビットを要するが異なる。
 
@@ -209,6 +209,6 @@ GPUとVRAMのサイズによって、扱うことのできる解像度と色数�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p204.jpg)
+![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p204.jpg)
 
 <br>

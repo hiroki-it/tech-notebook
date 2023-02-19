@@ -11,7 +11,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 ### CQRSとは
 
-![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cqrs.png)
+![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cqrs.png)
 
 
 『Command Query Responsibility Segregation (コマンドクエリ責務分離) 』の略。

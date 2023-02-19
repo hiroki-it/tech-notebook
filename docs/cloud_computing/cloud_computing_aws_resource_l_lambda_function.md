@@ -11,7 +11,7 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -768,7 +768,7 @@ exports.handler = (event, context, callback) => {
 
 ### CloudFront → Lambda@Edge → S3
 
-![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge_dynamic-origin.png)
+![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
 
 **＊実装例＊**
 

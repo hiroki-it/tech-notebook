@@ -11,7 +11,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -256,7 +256,7 @@ FluentBitの設定ファイルからタグ付けする。
 
 これにより、その構造化ログが、いずれのマイクロサービスで、またどのタイミングで発生したものかを確認できる。
 
-![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_trace-viewer.png)
+![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_trace-viewer.png)
 
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs

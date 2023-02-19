@@ -11,7 +11,7 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 Dockerは、ホストOS、ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー、から構成される。
 
-![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_architecture.png)
+![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_architecture.png)
 
 
 > ↪️ 参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
@@ -41,7 +41,7 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 ### イメージレイヤー
 
-![イメージレイヤーからなるコンテナイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージのビルド.png)
+![イメージレイヤーからなるコンテナイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージのビルド.png)
 
 イメージレイヤーの実体は、```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている。
 
@@ -74,7 +74,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 コンテナイメージからコンテナを作成する時に、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。
 
-![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
+![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
 
 > ↪️ 参考：https://blog.codecamp.jp/programming-docker-image-container
@@ -90,7 +90,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 dockerクライアントは、```docker```コマンドを使用してdockerデーモンAPIをコールできる。
 
-![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png)
+![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png)
 
 
 > ↪️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
@@ -110,7 +110,7 @@ dockerクライアントにdockerデーモンAPIを公開する。
 
 
 
-![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
+![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png)
 
 <br>
 

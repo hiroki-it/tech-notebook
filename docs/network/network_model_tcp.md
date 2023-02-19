@@ -11,7 +11,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ TCP/IPモデルで使用されるプロトコルのうち、最も代表的な�
 
 
 
-![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
 <br>
 
@@ -35,6 +35,6 @@ TCP/IPモデルで使用されるプロトコルのうち、最も代表的な�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_osi.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html
 
 <br>

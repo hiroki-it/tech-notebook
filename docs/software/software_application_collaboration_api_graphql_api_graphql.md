@@ -11,7 +11,7 @@ description: GraphQL＠RESTful-APIの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: GraphQL＠RESTful-APIの知見を記録しています。
 
 GraphQL-APIは、スキーマ、クエリ、から構成される。従来のRESTful-APIを使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。一方で、GraphQL-APIを使用した場合、単一のエンドポイントをGraphQLで指定すれば、GraphQL-APIが適切な宛先にルーティングしてくれる。
 
-![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/graphql-api.png)
+![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/graphql-api.png)
 
 
 > ↪️ 参考：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/

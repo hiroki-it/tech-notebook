@@ -11,7 +11,7 @@ description: CloudWatch＠Cで始まるAWSリソースの知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 
 <br>
@@ -31,7 +31,7 @@ AWSリソースで発生したメトリクスのデータポイントを収集�
 
 #### ▼ メトリクスの集約とは
 
-![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
 CloudWatchは、データポイントからメトリクスを作成しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。
 
@@ -61,7 +61,7 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 
 CloudWatchメトリクス上では、各集約を以下の様に確認できる。
 
-![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
+![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudwatch_namespace_metric_dimension.png)
 
 
 > ↪️ 参考：https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/

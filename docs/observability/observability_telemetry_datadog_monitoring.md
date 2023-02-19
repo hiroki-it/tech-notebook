@@ -11,7 +11,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -81,7 +81,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 #### ▼ テンプレート変数
 

@@ -11,7 +11,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 > ↪️ 参考：https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
 
-![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux_kernel_architecture.png)
+![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_architecture.png)
 
 #### ▼ マイクロカーネルの場合
 
@@ -70,7 +70,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 > ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
 
-![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux_kernel_system-call.png)
+![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_system-call.png)
 
 <br>
 
@@ -78,23 +78,23 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 #### ▼ プロセス管理
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_process_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html
 
 #### ▼ メモリ管理
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_memory_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_memory_management.html
 
 #### ▼ ストレージ管理
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_storage_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_storage_management.html
 
 #### ▼ I/O (入出力) 管理
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_io_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_io_management.html
 
 #### ▼ ジョブ管理
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_linux_kernel_job_management.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html
 
 #### ▼ 通信管理
 

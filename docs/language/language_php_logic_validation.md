@@ -11,7 +11,7 @@ description: 検証ロジック＠PHPの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -340,7 +340,7 @@ class Example
 
 :    決定表を、流れ図で表す。
 
-![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/決定表.png)
+![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定表.png)
 
 #### ▼ if-elseif-elseは使用しない
 

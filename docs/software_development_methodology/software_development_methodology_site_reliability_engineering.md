@@ -11,7 +11,7 @@ description: SREing：Site Reliability Engineering＠ソフトウェア開発手
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 

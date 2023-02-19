@@ -11,7 +11,7 @@ description: IPアドレス＠ネットワークの知見を記録していま�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ IPアドレスの例示では、```x```を使用しないようにする。
 
 
 
-![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address.png)
+![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address.png)
 
 > ↪️ 参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
 
@@ -80,7 +80,7 @@ LAN内で使用される。
 
 
 
-![IPアドレスとbitの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IPアドレスとbitの関係.png)
+![IPアドレスとbitの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPアドレスとbitの関係.png)
 
 <br>
 
@@ -90,7 +90,7 @@ LAN内で使用される。
 
 IPアドレスのオクテットは、ネットワーク部とホスト部に分類できる。
 
-![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address_portion.png)
+![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_portion.png)
 
 
 > ↪️ 参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
@@ -174,7 +174,7 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 
 
 
-![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
+![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
 
 <br>
 
@@ -188,7 +188,7 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 
 例えば、『```www.example.com```』という完全修飾ドメイン名をURLで指定する場合、『```example.com```』としても良い。
 
-![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain_namespace.png)
+![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_namespace.png)
 
 
 > ↪️ 参考：https://ascii.jp/elem/000/000/419/419685/2/
@@ -202,7 +202,7 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 
 
 
-![サブドメイン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サブドメイン.png)
+![サブドメイン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サブドメイン.png)
 
 <br>
 
@@ -210,7 +210,7 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 
 ### 名前解決、正引き、逆引きとは
 
-![IPアドレスと完全修飾ドメイン名のマッピング1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IPアドレスと完全修飾ドメイン名のマッピング4.png)
+![IPアドレスと完全修飾ドメイン名のマッピング1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPアドレスと完全修飾ドメイン名のマッピング4.png)
 
 URLやメールアドレスのドメイン名とIPアドレスを相互変換すること。
 
@@ -315,7 +315,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 ### 名前解決の仕組み
 
-![名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/名前解決の仕組み.png)
+![名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/名前解決の仕組み.png)
 
 ```【１】```
 

@@ -11,7 +11,7 @@ description: 組み込み機器＠ハードウェアの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: 組み込み機器＠ハードウェアの知見を記録してい�
 
 
 
-![組み込みシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/組み込みシステム.png)
+![組み込みシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/組み込みシステム.png)
 
 <br>
 
@@ -37,7 +37,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-![マイコン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マイコン.png)
+![マイコン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マイコン.png)
 
 <br>
 
@@ -54,7 +54,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 - 照度センサ
 
 
-![p119-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-2.png)
+![p119-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p119-2.png)
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
@@ -62,13 +62,13 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 ### A/D変換器によるアナログ情報からデジタル情報への変換
 
-![AD変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AD変換.png)
+![AD変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AD変換.png)
 
 <br>
 
 ### D/A変換器によるデジタル情報からアナログ情報への変換
 
-![DA変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DA変換.png)
+![DA変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DA変換.png)
 
 <br>
 
@@ -79,7 +79,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-![p119-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-3.png)
+![p119-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p119-3.png)
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
@@ -99,7 +99,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 洗濯機
 
 
-![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-1.png)
+![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p120-1.png)
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
@@ -114,7 +114,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 エアコン
 
-![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-2.png)
+![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p120-2.png)
 
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
@@ -148,7 +148,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-![ORM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ORM.png)
+![ORM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ORM.png)
 
 #### ▼ キャプチャカード
 
@@ -169,9 +169,9 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-![液晶分子](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/液晶分子.png)
+![液晶分子](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/液晶分子.png)
 
-![液晶ディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/液晶ディスプレイ.jpg)
+![液晶ディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/液晶ディスプレイ.jpg)
 
 #### ▼ 有機ELディスプレイ
 
@@ -179,11 +179,11 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-![有機ELディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/有機ELディスプレイ.jpg)
+![有機ELディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/有機ELディスプレイ.jpg)
 
 #### ▼ プラズマディスプレイ
 
-![プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プラズマディスプレイ.gif)
+![プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プラズマディスプレイ.gif)
 
 ```2```枚のガラスの間に、封入された希ガスに電圧をかけると放電し、紫外線が出る。
 
@@ -193,11 +193,11 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-![パナソニック製プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パナソニック製プラズマディスプレイ.jpg)
+![パナソニック製プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パナソニック製プラズマディスプレイ.jpg)
 
 #### ▼ LEDディスプレイ
 
-![LEDディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LEDディスプレイ.jpg)
+![LEDディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEDディスプレイ.jpg)
 
 2018年1月に開催された『CES 2018』でサムスンが発表した“マイクロLEDテレビ”『The Wall』は、従来の『液晶』や『有機EL』とは異なる新たな表示方式を採用したテレビとして、大きな話題となった。
 
@@ -210,21 +210,21 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 #### ▼ ドットインパクトプリンタ
 
-![ドットインパクトプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドットインパクトプリンタ.jpg)
+![ドットインパクトプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドットインパクトプリンタ.jpg)
 
-![ドットインパクトプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドットインパクトプリンタの仕組み.jpg)
+![ドットインパクトプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドットインパクトプリンタの仕組み.jpg)
 
 #### ▼ インクジェットプリンタ
 
-![インクジェットプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インクジェットプリンタ.jpg)
+![インクジェットプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インクジェットプリンタ.jpg)
 
-![インクジェットプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インクジェットプリンタの仕組み.jpg)
+![インクジェットプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インクジェットプリンタの仕組み.jpg)
 
 #### ▼ レーザプリンタ
 
-![レーザプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/レーザプリンタ.jpg)
+![レーザプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/レーザプリンタ.jpg)
 
-![レーザプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/レーザプリンタの仕組み.jpg)
+![レーザプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/レーザプリンタの仕組み.jpg)
 
 #### ▼ プリンタの解像度
 
@@ -234,17 +234,17 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 
 
-![DPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DPI.jpg)
+![DPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DPI.jpg)
 
 dpiが大きくなるにつれて、解像度は大きくなる。
 
 
 
-![DPIの比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DPIの比較.jpg)
+![DPIの比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DPIの比較.jpg)
 
 #### ▼ プリンタの印字速度
 
-![cps_ppm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cps_ppm.jpg)
+![cps_ppm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cps_ppm.jpg)
 
 <br>
 
@@ -265,9 +265,9 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 
 
-![パラレルインターフェイスは配線の長さが関係してくる](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パラレルインターフェイスは配線の長さが関係してくる.png)
+![パラレルインターフェイスは配線の長さが関係してくる](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パラレルインターフェイスは配線の長さが関係してくる.png)
 
-![serial_parallel](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/serial_parallel.jpeg)
+![serial_parallel](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/serial_parallel.jpeg)
 
 <br>
 
@@ -275,13 +275,13 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 #### ▼ USB (Universal Serial Bus) 
 
-![usbケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usbインターフェイス.png)
+![usbケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usbインターフェイス.png)
 
 #### ▼ IEEE1394
 
 ビデオカメラとの接続に使用されるインターフェイス
 
-![ieeeケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ieeeインターフェイス.jpg)
+![ieeeケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ieeeインターフェイス.jpg)
 
 <br>
 
@@ -293,13 +293,13 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 
 
-![ideケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ideインターフェイス.jpg)
+![ideケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ideインターフェイス.jpg)
 
 #### ▼ SCSI (Small Computer System Interface) 
 
 ストレージ、CD-ROM、コンテナイメージスキャナなど、様々な周辺機器をデイジーチェーンするために使用するインターフェイス。
 
-![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/scsiインターフェイス.jpg)
+![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scsiインターフェイス.jpg)
 
 <br>
 
@@ -311,7 +311,7 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 
 
-![irDAインターフェイス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/irDAインターフェイス.jpg)
+![irDAインターフェイス](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/irDAインターフェイス.jpg)
 
 #### ▼ Bluetooth
 

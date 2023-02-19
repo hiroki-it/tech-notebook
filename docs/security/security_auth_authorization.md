@@ -11,7 +11,7 @@ description: Authorization (認可) ＠認証/認可の知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -61,7 +61,7 @@ Webサイトごとに認証フェーズと認可フェーズを行うのでは�
 
 :    アクセストークンが『認可』されれば、API側がデータをレスポンスする。
 
-![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sso.jpg)
+![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sso.jpg)
 
 SSOには、認証フェーズと認可フェーズがあり、```3```個の役割が定義されている。
 
@@ -87,7 +87,7 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 #### ▼ 共通認証フェーズとして使用できるサービス
 
@@ -100,7 +100,7 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 - Facebook
 
 
-![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/auth0_sso.png)
+![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/auth0_sso.png)
 
 > ↪️ 参考：https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25
 
@@ -111,7 +111,7 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 ### OAuthとは
 
-![oauth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oauth_architecture.png)
+![oauth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_architecture.png)
 
 認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth』と呼ぶ。
 
@@ -145,7 +145,7 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 
 最も基本的な認可コードフローの例を説明する。
 
-![oauth_authorization-code](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oauth_authorization-code.png)
+![oauth_authorization-code](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code.png)
 
 
 > ↪️ 参考：
@@ -158,7 +158,7 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 
 Facebookで認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。
 
-![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oauth_authorization-code_facebook.png)
+![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png)
 
 
 > ↪️ 参考：https://contents.saitolab.org/oauth/
@@ -347,7 +347,7 @@ OAuthをベースとして、認証フェーズを追加し、認証/認可を�
 OIDCでは、OAuthとは異なり、アクセストークンではなく、IDトークンを使用する。
 
 
-![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oidc_vs_oauth.png)
+![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
 > ↪️ 参考：https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
 

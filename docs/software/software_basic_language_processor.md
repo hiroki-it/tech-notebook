@@ -11,7 +11,7 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 命令の結果はメモリに保管される。
 
-![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/compiler_language.png)
+![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/compiler_language.png)
 
 
 > ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
@@ -63,13 +63,13 @@ exeファイルとなる。
 
 
 
-![ビルドとコンパイル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ビルドとコンパイル.jpg)
+![ビルドとコンパイル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ビルドとコンパイル.jpg)
 
 <br>
 
 ### 機械語翻訳とは
 
-![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lexical_syntax_semantics.png)
+![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lexical_syntax_semantics.png)
 
 #### ```【１】```
 
@@ -85,7 +85,7 @@ exeファイルとなる。
 
 
 
-![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
+![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/構文規則と説明.png)
 
 > ↪️ 参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
 
@@ -172,7 +172,7 @@ exeファイルとなる。
 
 > ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
-![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/interpreted_language.png)
+![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interpreted_language.png)
 
 <br>
 
@@ -236,15 +236,15 @@ exeファイルとなる。
 
 :    結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。
 
-![Javaによる言語処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_1.png)
+![Javaによる言語処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_1.png)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
 
-![Javaによる言語処理_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_2.png)
+![Javaによる言語処理_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_2.png)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
 
-![Javaによる言語処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_3.png)
+![Javaによる言語処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_3.png)
 
 <br>
 
@@ -252,6 +252,6 @@ exeファイルとなる。
 
 調査中...
 
-![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CとJavaのOSへの依存度比較.png)
+![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CとJavaのOSへの依存度比較.png)
 
 <br>

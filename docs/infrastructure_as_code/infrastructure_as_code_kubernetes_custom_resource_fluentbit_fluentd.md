@@ -11,7 +11,7 @@ description: FluentBit/Fluentd＠カスタムリソースの知見を記録し�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: FluentBit/Fluentd＠カスタムリソースの知見を記録し�
 
 ### アーキテクチャ
 
-![fluent-bit_fluentd_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_architecture.png)
+![fluent-bit_fluentd_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture.png)
 
 FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ、アウトプットレイヤー、から構成される。
 
@@ -51,7 +51,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 バッファーは、ステージ、キュー、から構成される。ログは、『```*-*.*.flb```』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
 
-![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_architecture_buffer.png)
+![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
 
 > ↪️ 参考：https://www.alpha.co.jp/blog/202103_01
@@ -67,7 +67,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 またメッセージキューによって、アウトプット先のレートリミットを超過しないように、一定の間隔でログを送信できる。
 
-![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_message-queue.png)
+![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_message-queue.png)
 
 
 > ↪️ 参考：https://www.forcia.com/blog/001316.html
@@ -99,7 +99,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 フォワーダーは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、がある。
 
-![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
+![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
 
 > ↪️ 参考：
@@ -116,7 +116,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 エージェントは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、KubernetesのPodようにサイドカーコンテナとして配置する場合、がある。
 
-![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_agent-pattern.png)
+![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
 
 
 > ↪️ 参考：https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/

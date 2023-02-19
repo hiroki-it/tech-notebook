@@ -11,7 +11,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 #### ▼ サイドカープロキシメッシュとは
 
-![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
+![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png)
 
 サイドカープロキシメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。
 
@@ -60,7 +60,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 #### ▼ 仕組み
 
-![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
+![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png)
 
 アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。
 
@@ -194,7 +194,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 #### ▼ メリット
 
-![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery_kubernetes_vs_istio.png)
+![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png)
 
 | 項目                | Kubernetesのみを使用する場合                                                                                                                                                     | Istioを使用する場合                                                                                                                                                          |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -378,7 +378,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 > ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
-![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_cluster_same-network.png)
+![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_same-network.png)
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
@@ -388,7 +388,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 > ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
-![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
+![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
 
 <br>
 
@@ -398,7 +398,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナをインジェクションすることにより、データプレーン内で仮想サーバーを管理できるようになる。この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
 
-![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_same-network.png)
+![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png)
 
 
 > ↪️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
@@ -408,6 +408,6 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナをインジェクションすることにより、データプレーン内で管理できるようになる。この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
 
-![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_difficult-network.png)
+![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_difficult-network.png)
 
 <br>

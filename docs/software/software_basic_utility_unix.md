@@ -11,7 +11,7 @@ description: UNIX系標準ユーティリティ＠ユーティリティの知見
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -763,7 +763,7 @@ $ echo "$<変数名>"
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
 
 ```bash
 # シェル変数を設定
@@ -1536,7 +1536,7 @@ $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 
 
 
-![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スワッピング方式.png)
+![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 
 
 <br>

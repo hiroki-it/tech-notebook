@@ -11,7 +11,7 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ RESTful-APIに対するリクエストではリクエストのヘッダーやボ
 
 一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
 
-![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
+![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png)
 
 
 
@@ -46,7 +46,7 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 通信方式は、```.proto```ファイルで定義する。
 
-![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_connection-type.png)
+![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png)
 
 
 > ↪️ 参考：https://fintan.jp/page/1521/

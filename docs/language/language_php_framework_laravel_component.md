@@ -11,7 +11,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 ### ライフサイクル
 
-![laravel-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/laravel-lifecycle.png)
+![laravel-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/laravel-lifecycle.png)
 
 大まかな処理フローは以下の通りである。
 
@@ -803,7 +803,7 @@ LaravelではデフォルトでHandlerクラスが全てのステップをカバ
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_error_and_error_handling.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
 
 <br>
 
@@ -2906,7 +2906,7 @@ public function authorize()
 
 ルーティング後にコントローラーメソッドの前にコールされるBeforeMiddleと、レスポンスの実行時にコールされるAfterMiddlewareがある
 
-![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
+![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
 #### ▼ BeforeMiddleware
 
@@ -3009,7 +3009,7 @@ CSRFトークンによるCSRFの防御については、以下のリンクを参
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
 
 #### ▼ VerifyCsrfToken
 
@@ -3324,7 +3324,7 @@ $ chmod -R 777 /var/www/foo/storage
 
 LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Laravelのログの出力先を変更しても、PHP-FPMのログの出力先は変更されない。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html
 
 #### ▼ ```stack```キー
 
@@ -4938,7 +4938,7 @@ ServiceContainer、バインド、リゾルブについては、以下のリン�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ```php
 <?php

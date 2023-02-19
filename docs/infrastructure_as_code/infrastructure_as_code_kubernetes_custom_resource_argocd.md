@@ -11,7 +11,7 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ NAME                                                    READY   AGE
 statefulset.apps/paylab-argocd-application-controller   1/1     119d
 ```
 
-![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_architecture.png)
 
 
 > ↪️ 参考：
@@ -152,7 +152,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 #### ▼ application-controllerとは
 
-![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_application-controller.png)
+![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
 
 カスタムコントローラーとして動作し、ArgoCDのカスタムリソースをカスタムリソース定義の宣言通りに定期的に修復する。
 
@@ -230,7 +230,7 @@ ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズ�
 
 #### ▼ 基本構成
 
-![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
+![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd.png)
 
 指定したブランチのコードの状態を監視する。
 
@@ -264,7 +264,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 #### ▼ テンプレート構成管理ツールを使用しない場合
 
-![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks.png)
+![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks.png)
 
 ```【１】```
 
@@ -322,7 +322,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 :    ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
 
-![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks_helm.png)
+![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks_helm.png)
 
 
 > ↪️ 参考：
@@ -347,7 +347,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 :    ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_gcp.png)
+![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_gcp.png)
 
 
 > ↪️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1

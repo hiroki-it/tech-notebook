@@ -11,7 +11,7 @@ description: CloudFront＠Cで始まるAWSリソースの知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ VPCの外側 (パブリックネットワーク) に設置されている。
 
 
 
-![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudFrontによるリクエストの振り分け.png)
+![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudFrontによるリクエストの振り分け.png)
 
 <br>
 

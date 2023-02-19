@@ -11,7 +11,7 @@ description: Systems Manager (旧SSM) ＠Sで始まるAWSリソースの知見�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ description: Systems Manager (旧SSM) ＠Sで始まるAWSリソースの知見�
 EC2、RDS
 ```
 
-![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sm-change-calender_scheduling.png)
+![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sm-change-calender_scheduling.png)
 
 > ↪️ 参考：https://www.skyarch.net/blog/?p=22277
 
@@ -150,7 +150,7 @@ KMSの暗号化キーを使用すると、パラメーターストアに永続�
 
 たとえ同じ文字列を暗号化する場合でも、その時のタイムスタンプなど様々な要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。
 
-![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
+![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png)
 
 
 > ↪️ 参考：

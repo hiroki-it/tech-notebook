@@ -10,7 +10,7 @@ description: ブラックボックステストの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -24,7 +24,7 @@ description: ブラックボックステストの知見を記録しています�
 
 単体テストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
 
-![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_black-box-test.png)
+![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_black-box-test.png)
 
 
 > ↪️ 参考：https://service.shiftinc.jp/column/4801/
@@ -76,7 +76,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ホワイトボックステストの単体テストとは意味合いが異なることに注意する。
 
-![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
 
 > ↪️ 参考：https://pm-rasinban.com/ut-it-st
@@ -118,7 +118,7 @@ description: ブラックボックステストの知見を記録しています�
 
 機能追加/変更を含む複数のコンポーネントを組み合わせ、複数のコンポーネント間の連携が正しく動作しているかを検証する。
 
-![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
 
 > ↪️ 参考：https://pm-rasinban.com/ut-it-st
@@ -164,7 +164,7 @@ description: ブラックボックステストの知見を記録しています�
 
 
 
-![トップダウンテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トップダウンテスト.jpg)
+![トップダウンテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トップダウンテスト.jpg)
 
 <br>
 
@@ -176,7 +176,7 @@ description: ブラックボックステストの知見を記録しています�
 
 
 
-![ボトムアップテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボトムアップテスト.jpg)
+![ボトムアップテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ボトムアップテスト.jpg)
 
 <br>
 
@@ -196,7 +196,7 @@ description: ブラックボックステストの知見を記録しています�
 
 機能追加/変更を含むコンポーネントが既存のコンポーネントに影響を与えていないか (既存の機能がデグレーションしていないか) を検証する。
 
-![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p496.jpg)
+![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p496.jpg)
 
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
@@ -344,6 +344,6 @@ Fluentdのテストケース例を示す。
 
 ## 05. 総合テスト (システムテスト) 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html
 
 <br>

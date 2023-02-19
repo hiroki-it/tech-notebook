@@ -11,7 +11,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -103,7 +103,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 #### ▼ アクセスタイプ別の命名
 
-![subnet_accsess-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet_accsess-type.png)
+![subnet_accsess-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_accsess-type.png)
 
 パブリックネットワークとの通信の遮断具合から名前をつける。
 
@@ -119,7 +119,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 #### ▼ コンポーネントタイプ別の命名
 
-![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet_component-type.png)
+![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png)
 
 配置するコンポーネントの種類に関する名前をつける。
 
@@ -139,7 +139,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 ### ルートテーブルの設計
 
-![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/route-table.png)
+![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png)
 
 #### ▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合
 

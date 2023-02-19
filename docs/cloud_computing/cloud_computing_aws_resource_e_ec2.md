@@ -11,7 +11,7 @@ description: EC2＠Eで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -142,7 +142,7 @@ EC2インスタンスでは、ブロックデバイスにルートデバイス�
 
 #### ▼ EBSボリューム
 
-![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_ebs-backed-instance.png)
+![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_ebs-backed-instance.png)
 
 名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。
 
@@ -164,7 +164,7 @@ EBSで保管されているルートデバイスボリュームで、推奨の�
 
 #### ▼ インスタンスストアボリューム
 
-![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_instance-store-backed-instance.png)
+![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_instance-store-backed-instance.png)
 
 名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。
 
@@ -185,7 +185,7 @@ EBSボリュームとは異なり、コンピューティングとして動作�
 
 ### EC2インスタンスのライフサイクルフェーズ
 
-![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_ec2_lifecycle_phase.png)
+![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ec2_lifecycle_phase.png)
 
 EC2インスタンスのライフサイクルにはフェーズがある。
 
@@ -630,7 +630,7 @@ EBSボリュームのコピーのこと。
 
 
 
-![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
 
 <br>
 
@@ -640,7 +640,7 @@ EBSボリュームのコピーのこと。
 
 セッションマネージャーを使用してEC2インスタンスに接続し、ログインシェルを起動する。
 
-![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
+![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png)
 
 
 > ↪️ 参考：

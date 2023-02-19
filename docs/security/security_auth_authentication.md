@@ -11,7 +11,7 @@ description: Authenticate (認証) ＠認証/認可の知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: Authenticate (認証) ＠認証/認可の知見を記録してい�
 
 ### HTTP認証
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authentication_http.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html
 
 <br>
 
@@ -127,7 +127,7 @@ cookie: sessionid=<セッションID>
 
 この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
 
-![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
+![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png)
 
 
 > ↪️ 参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82

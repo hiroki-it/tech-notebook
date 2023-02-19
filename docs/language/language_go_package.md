@@ -10,7 +10,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -20,7 +20,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_go_logic_method_data.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method_data.html
 
 <br>
 
@@ -209,7 +209,7 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
 
 <br>
 
@@ -606,7 +606,7 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
 
 <br>
 
@@ -705,7 +705,7 @@ PHPUnitにおける前処理と後処理については、以下のリンクを�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
 
 前処理と後処理については、以下のリンクを参考にせよ。
 

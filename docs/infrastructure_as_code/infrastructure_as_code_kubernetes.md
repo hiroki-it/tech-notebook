@@ -11,7 +11,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 Kubernetesは、コントロールコンポーネント、Nodeコンポーネント、から構成される。
 
-![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
+![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_architecture.png)
 
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/overview/components/
@@ -34,7 +34,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ### デフォルトの証明書
 
-![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
+![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_certificates.png)
 
 コンポーネント間でHTTPSプロトコルを使用するためにはクライアント証明書やSSL証明書が必須である。
 

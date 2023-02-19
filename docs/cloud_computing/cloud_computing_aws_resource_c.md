@@ -11,7 +11,7 @@ description: Cで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -158,7 +158,7 @@ CircleCIのサイトは、SSL証明書のためにACMを使用している。
 
 
 
-![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssl_certificate_chrome.png)
+![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_certificate_chrome.png)
 
 #### ▼ ダウンタイム
 
@@ -180,7 +180,7 @@ SNSを経由して、CloudWatchからの通知をチャットアプリケーシ�
 
 
 
-![ChatbotとSNSの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ChatbotとSNSの連携.png)
+![ChatbotとSNSの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ChatbotとSNSの連携.png)
 
 <br>
 
@@ -234,7 +234,7 @@ CloudWatchと連携もできる。
 
 
 
-![CloudTrailとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudTrailとは.jpeg)
+![CloudTrailとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudTrailとは.jpeg)
 
 <br>
 

@@ -11,7 +11,7 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 

@@ -29,7 +29,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 技術的な知識を体系的に整理するため、ノートにまとめております。<br>
 
-↪️ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/)** 
+↪️ **[技術ノート](https://hiroki-it.github.io/tech-notebook/)** 
 
 また、技術ノートから知見をピックアップし、不定期でブログに投稿しています。<br>
 

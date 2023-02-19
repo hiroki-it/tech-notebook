@@ -11,7 +11,7 @@ description: VPC＠Vで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ VPCのパケット通信の仕組みについては、以下のリンクを参�
 
 > ↪️ 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
-![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCが提供できるネットワークの範囲.png)
+![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCが提供できるネットワークの範囲.png)
 
 <br>
 
@@ -84,7 +84,7 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
 
 <br>
 
@@ -120,7 +120,7 @@ ENIを介して、同じVPC内のインスタンスなどに、パケットの�
 
 VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
 
-![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc_traffic-mirroring.png)
+![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png)
 
 
 > ↪️ 参考：
@@ -158,7 +158,7 @@ LAN内の内部ネットワークに相当する。
 
 
 
-![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/public-subnet_private-subnet.png)
+![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-subnet_private-subnet.png)
 
 <br>
 
@@ -174,7 +174,7 @@ LAN内の内部ネットワークに相当する。
 
 
 
-![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-acl.png)
+![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-acl.png)
 
 <br>
 
@@ -249,7 +249,7 @@ Fargateをプライベートサブネットに置いた場合、FargateからVPC
 
 
 
-![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイント.png)
+![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCエンドポイント.png)
 
 <br>
 
@@ -311,7 +311,7 @@ DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス)
 
 つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、複数のパブリックIPアドレスで送信する。
 
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
+![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png)
 
 
 > ↪️ 参考：
@@ -335,7 +335,7 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
 
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
+![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png)
 
 
 > ↪️ 参考：
@@ -352,7 +352,7 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 ### VPCピアリング接続
 
-![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続.png)
+![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続.png)
 
 #### ▼ VPCピアリング接続とは
 
@@ -371,13 +371,13 @@ VPC に複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じ
 
 
 
-![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
+![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-1.png)
 
 たとえ、IPv6が異なっていても、同様である。
 
 
 
-![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-2.png)
+![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-2.png)
 
 <br>
 
@@ -391,7 +391,7 @@ VPCエンドポイントとは異なる能力なので注意。Interface型のVP
 
 API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
 
-![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc-endpoint-service.png)
+![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-endpoint-service.png)
 
 <br>
 
@@ -402,7 +402,7 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 『多対多』の関係で、『異なるVPC間』や『オンプレミス-VPC間』の双方向通信を可能にする。クラウドルーターとして働く。
 
-![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/transit-gateway.png)
+![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
 
 <br>
 

@@ -11,7 +11,7 @@ description: Sで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -105,7 +105,7 @@ Kubernetesのシークレットの概念が取り入れられている。
 
 #### ▼ コンソール画面
 
-![SESとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SESとは.png)
+![SESとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SESとは.png)
 
 | 設定項目           | 説明                                                                 | 補足                                                                                                     |
 |--------------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -156,7 +156,7 @@ Sandboxモードでは以下の制限がかかっており。
 
 一般的なSMTP-AUTHでは、クライアントユーザーの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。送信元となるアプリケーションにIAMユーザーを紐付け、このIAMユーザーにはユーザー名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザー名とパスワードを使用した認証を実行する。ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
 
 <br>
 
@@ -168,7 +168,7 @@ Sandboxモードでは以下の制限がかかっており。
 
 
 
-![SNSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SNSとは.png)
+![SNSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SNSとは.png)
 
 <br>
 
@@ -207,7 +207,7 @@ Sandboxモードでは以下の制限がかかっており。
 
 ### SQSとは
 
-![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQS.jpeg)
+![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQS.jpeg)
 
 クラウドメッセージキューとして働く。
 

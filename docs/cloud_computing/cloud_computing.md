@@ -11,7 +11,7 @@ description: クラウド (クラウドコンピューティング) の知見を
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -83,7 +83,7 @@ description: クラウド (クラウドコンピューティング) の知見を
 
 
 
-![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/on-premises_iaas_caas_paas_faas_saas.png)
+![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/on-premises_iaas_caas_paas_faas_saas.png)
 
 ↪️ 参考：
 

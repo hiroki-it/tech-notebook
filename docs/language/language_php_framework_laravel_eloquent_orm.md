@@ -11,7 +11,7 @@ description: Eloquent ORM＠Laravelの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ Active Recordパターンで実装されている。
 ビジネスロジックが複雑でないアプリケーションの開発に適している。
 
 
-![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
+![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ActiveRecord.png)
 
 <br>
 
@@ -1417,7 +1417,7 @@ LaravelはActive Recordパターンを採用しており、これはビジネス
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
 <br>
 

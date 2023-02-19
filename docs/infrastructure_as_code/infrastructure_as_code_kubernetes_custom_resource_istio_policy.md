@@ -11,7 +11,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -286,19 +286,19 @@ Istiodコントロールプレーンをカナリア方式でアップグレー�
 
 異なるバージョンのIstioコントロールプレーンを並行的に稼働させる。
 
-![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
+![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_canary-upgrade_1.png)
 
 
 ```istio-proxy```コンテナをインジェクションしているNamespaceが複数あるという前提で、特定のNamespaceのラベルを書き換える。
 
 すると、そのNamespace上で新```istio-proxy```コンテナが、それ以外のNamespaceでは旧```istio-proxy```コンテナが動くことになる。
 
-![istio_canary-upgrade_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_2.png)
+![istio_canary-upgrade_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_canary-upgrade_2.png)
 
 
 新```istio-proxy```コンテナが正しく動作すれば、残りのNamespaceにも新```istio-proxy```コンテナをインジェクションする。
 
-![istio_canary-upgrade_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_3.png)
+![istio_canary-upgrade_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_canary-upgrade_3.png)
 
 
 Istioでは、この状況をカナリア方式 (一部のユーザーを新```istio-proxy```コンテナにルーティングして実地的に検証する) と呼称している。

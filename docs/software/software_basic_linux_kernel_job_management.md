@@ -11,7 +11,7 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -53,7 +53,7 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 
 
-![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
+![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ジョブ管理とタスク管理の概要.jpg)
 
 <br>
 
@@ -97,7 +97,7 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 
 
-![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブからジョブステップへの分解.png)
+![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ジョブからジョブステップへの分解.png)
 
 #### ▼ ターミネーター
 

@@ -11,7 +11,7 @@ description: システムの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: システムの知見を記録しています。
 
 ソフトウェア (OS、ミドルウェア、アプリケーション) とハードウェアの要素と合わせたグループのこと。
 
-![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
+![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
 
 > ↪️ 参考：https://thinkit.co.jp/article/11526
@@ -35,7 +35,7 @@ description: システムの知見を記録しています。
 
 
 
-![ソフトウェアとハードウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソフトウェアとハードウェア.png)
+![ソフトウェアとハードウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソフトウェアとハードウェア.png)
 
 <br>
 
@@ -51,7 +51,7 @@ description: システムの知見を記録しています。
 
 そのため、Web/App/dbサーバーではなく、仮想Web/App/DB環境と呼ぶ方が適切かもしれない。
 
-![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
+![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-server_app-server_db-server.png)
 
 
 > ↪️ 参考：http://www.iwass.co.jp/dev/devweb.html

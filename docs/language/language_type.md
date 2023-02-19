@@ -11,7 +11,7 @@ description: 言語の種類＠言語を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -22,7 +22,7 @@ description: 言語の種類＠言語を記録しています。
 プログラミングを行う時の様式のこと。
 
 
-![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プログラミング言語と設計手法の歴史.png)
+![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プログラミング言語と設計手法の歴史.png)
 
 
 > ↪️ 参考：
@@ -80,7 +80,7 @@ description: 言語の種類＠言語を記録しています。
 
 
 
-![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイル型とインタプリタ型言語.jpg)
+![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンパイル型とインタプリタ型言語.jpg)
 
 <br>
 

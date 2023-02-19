@@ -10,7 +10,7 @@ title: 【IT技術の知見】GitHub
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -243,7 +243,7 @@ Gitでソフトウェアを開発する場合、役割を持たせたブラン�
 > - https://github.com/Voronenko/gitflow-release
 > - https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
 
-![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/git-flow.png)
+![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png)
 
 <br>
 
@@ -340,7 +340,7 @@ CIツールやCDツールを使用して、コミット (マージコミット�
 
 #### ▼ 例
 
-![github_release-note](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/github_release-note.png)
+![github_release-note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_release-note.png)
 
 #### ▼ タグ
 

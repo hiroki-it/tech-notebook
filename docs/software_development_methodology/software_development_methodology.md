@@ -11,7 +11,7 @@ description: 手法論＠ソフトウェア開発手法の知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: 手法論＠ソフトウェア開発手法の知見を記録して�
 
 #### ▼ ウォーターフォール型開発とは
 
-![ウォーターフォール型](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ウォーターフォール型.png)
+![ウォーターフォール型](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ウォーターフォール型.png)
 
 #### ▼ 外部設計の詳細
 
@@ -29,7 +29,7 @@ description: 手法論＠ソフトウェア開発手法の知見を記録して�
 
 
 
-![外部設計の詳細](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/外部設計の詳細.png)
+![外部設計の詳細](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/外部設計の詳細.png)
 
 <br>
 
@@ -43,7 +43,7 @@ description: 手法論＠ソフトウェア開発手法の知見を記録して�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p456.png)
+![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p456.png)
 
 <br>
 
@@ -57,9 +57,9 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p462-1.png)
+![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p462-1.png)
 
-![p462-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p462-2.png)
+![p462-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p462-2.png)
 
 <br>
 
@@ -71,7 +71,7 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 
 
-![p457](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p457.png)
+![p457](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p457.png)
 
 <br>
 
@@ -87,7 +87,7 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p463](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p463.png)
+![p463](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p463.png)
 
 <br>
 
@@ -113,7 +113,7 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 
 
-![full-cycle-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/full-cycle-engineering.png)
+![full-cycle-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/full-cycle-engineering.png)
 
 <br>
 
@@ -141,6 +141,6 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p459](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p459.png)
+![p459](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p459.png)
 
 <br>

@@ -9,7 +9,7 @@ description: CircleCIの知見を記録しています。
 
 ### アーキテクチャ
 
-![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circleci_architecture.png)
+![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_architecture.png)
 
 
 > ↪️ 参考：https://circleci.com/docs/2.0/server-3-overview/
@@ -39,7 +39,7 @@ description: CircleCIの知見を記録しています。
 
 :    結果を通知することも可能。
 
-![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/継続的インテグレーション.png)
+![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/継続的インテグレーション.png)
 
 <br>
 

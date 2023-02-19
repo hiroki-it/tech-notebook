@@ -11,7 +11,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -133,7 +133,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 #### ▼ パーティション、物理ボリューム、とは
 
-![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
+![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
 
 ストレージ上の仮想的な仕切りを『パーティション』、また仕切られた領域を『物理ボリューム』という。
 
@@ -260,7 +260,7 @@ $ diskutil list
 
 ### 論理ボリュームとは
 
-![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/logical-volume.png)
+![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
 
 異なる物理ボリュームにまたがる領域を組み合わせ、```1```個の仮想的なボリュームとした扱ったもの。
 

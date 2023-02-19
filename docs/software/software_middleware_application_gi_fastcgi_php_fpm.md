@@ -11,7 +11,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ PHP-FPMは、Server API、Zend Engine、から構成される。
 
 > ↪️ 参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 
-![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_architecture.png)
+![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_architecture.png)
 
 <br>
 
@@ -52,13 +52,13 @@ PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行され�
 例えば、ログの出力先はそれぞれ個別に設定する必要がある。
 
 
-![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_fastcgi.png)
+![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_fastcgi.png)
 
 
 > ↪️ 参考：
 >
 > - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_laravel_component.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_component.html
 
 <br>
 

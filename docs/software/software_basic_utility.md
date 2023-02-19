@@ -11,7 +11,7 @@ description: ユーティリティ (サービスプログラム) ＠基本ソフ
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: ユーティリティ (サービスプログラム) ＠基本ソフ
 
 ### Unix系の標準ユーティリティ
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_unix.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html
 
 <br>
 

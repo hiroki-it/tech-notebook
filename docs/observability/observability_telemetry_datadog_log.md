@@ -11,7 +11,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 ### バックエンド
 
-![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-collection.png)
+![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-collection.png)
 
 ```【１】```
 
@@ -67,7 +67,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 > ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
 <br>
 
@@ -75,7 +75,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -93,8 +93,8 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 > ↪️ 参考：
 >
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_metrics.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_distributed_trace.html
 
 <br>
 
@@ -118,7 +118,7 @@ Datadogの代わりにログを収集する。
 
 ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
-![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
+![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 
 > ↪️ 参考：
 >
@@ -129,7 +129,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 調査中...
 
-![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
+![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
 
 > ↪️ 参考：
 >
@@ -340,7 +340,7 @@ export default browserLogsForSsgPlugin
 
 ### タグ
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_telemetry_association.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_telemetry_association.html
 
 ## 06. 収集されたログの送信
 
@@ -520,7 +520,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 判定ルールについては、以下のリンクを参考にせよ。
 
-![datadog_status-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_status-facet.png)
+![datadog_status-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_status-facet.png)
 
 
 > ↪️ 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
@@ -530,7 +530,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 指定した属性/タグに割り当てられた値を、サービスファセットのサービス名として登録する。
 
-![datadog_service-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_service-facet.png)
+![datadog_service-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_service-facet.png)
 
 
 > ↪️ 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper
@@ -600,7 +600,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 ```bash
 INFO @http.status_code:[200 TO 299]
@@ -1236,7 +1236,7 @@ log-pipeline
 
 
 
-![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-pipeline_data-type.png)
+![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-pipeline_data-type.png)
 
 <br>
 
@@ -1366,7 +1366,7 @@ autoFilledRule3 ...
 
 
 
-![log-query_auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/log-query_auto-complete.png)
+![log-query_auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_auto-complete.png)
 
 #### ▼ 非オートコンプリート
 
@@ -1382,7 +1382,7 @@ autoFilledRule3 ...
 
 
 
-![log-query_non-auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/log-query_non-auto-complete.png)
+![log-query_non-auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_non-auto-complete.png)
 
 #### ▼ 文法
 
@@ -1410,7 +1410,7 @@ Pathの値に属性までのアクセスを『```@```』から入力すると、
 
 
 
-![datadog_facet_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_facet_attribute.png)
+![datadog_facet_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_attribute.png)
 
 #### ▼ タグのファセット化
 
@@ -1418,6 +1418,6 @@ Pathの値にタグ名をそのまま入力すると、タグがファセット�
 
 
 
-![datadog_facet_tag](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_facet_tag.png)
+![datadog_facet_tag](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_tag.png)
 
 <br>

@@ -11,7 +11,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 
 <br>
@@ -32,7 +32,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 RDBMSは、リレーショナルエンジン、DBエンジン (ストレージエンジン) 、から構成される。
 
-![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DB管理システムの仕組み.png)
+![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DB管理システムの仕組み.png)
 
 
 > ↪️ 参考：
@@ -166,7 +166,7 @@ TCP/IPプロトコルを使用する。
 
 一定回数再利用されたり、一定期間使用されていないコネクションは削除される。
 
-![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/db_connection-pool.png)
+![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_connection-pool.png)
 
 
 > ↪️ 参考：

@@ -11,7 +11,7 @@ description: Googleアナリティクス＠テレメトリー収集ツールの�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -157,7 +157,7 @@ Googleアナリティクスでは、1つのドメイン当たりのセッショ�
 
 ### 増加率
 
-![increase-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/increase-rate.png)
+![increase-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/increase-rate.png)
 
 増加率は、増加量が基準量全体の何倍 (何割分) であるかで表す。
 

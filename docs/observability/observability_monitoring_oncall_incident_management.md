@@ -11,7 +11,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -171,7 +171,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 ### インシデント管理
 
-![incident_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/incident_management.png)
+![incident_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/incident_management.png)
 
 一次オンコール担当は、エラーを解決するためのタスクを作成し、完了させる。
 
@@ -439,7 +439,7 @@ fields @timestamp, @message, @logStream
 > - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
 
-![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mtxx.png)
+![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png)
 
 | メトリクス名                        |                                                                                                                               | 補足                                                                        |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -495,11 +495,11 @@ fields @timestamp, @message, @logStream
 1 - (1-0.81) × (1-0.64) = 0.9316
 ```
 
-![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/稼働率の計算.jpg)
+![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/稼働率の計算.jpg)
 
 #### ▼ MTxxメトリクスのインシデント管理への適用
 
-![mttx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mttx-metrics.png)
+![mttx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics.png)
 
 | メトリクス名 | 説明                                                               |   |
 |---------|------------------------------------------------------------------|---|
@@ -524,7 +524,7 @@ DRI Hops (インシデントの直接的に責任者) の値を使用して人�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
 
-![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mttx-metrics_dash-board.png)
+![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics_dash-board.png)
 
 <br>
 

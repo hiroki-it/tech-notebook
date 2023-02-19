@@ -8,7 +8,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -69,7 +69,6 @@ $ kubectl apply -f istio-operator.yaml
 
 Google-APIsから、Istioのコンポーネント別にチャートをインストールし、リソースを作成する。
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://istio-release.storage.googleapis.com/charts
@@ -94,6 +93,9 @@ IngressGatewayのインストールは必須ではない。
 # gatewayチャート
 $ helm install <リリース名> <チャートリポジトリ名>/gateway -n istio-system --version <バージョンタグ>
 ```
+
+> ↪️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
+
 
 <br>
 
@@ -129,7 +131,9 @@ VirtualServiceとDestinationRuleの設定値は、```istio-proxy```コンテナ�
 
 #### ▼ annotationsの定義
 
-DeploymentやPodの```.metadata.anontations```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```.metadata.``キーを使用することに注意する。
+DeploymentやPodの```.metadata.anontations```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。
+
+Deploymentの場合は、```template```キーよりも下層の```.metadata.``キーを使用することに注意する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -137,7 +141,6 @@ DeploymentやPodの```.metadata.anontations```キーにて、```istio-proxy```�
 
 DeploymentやPodで```istio-proxy```コンテナを定義することにより設定を上書きできる。
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 
 **＊実装例＊**
 
@@ -178,6 +181,9 @@ spec:
                  - |
                   pilot-agent wait
 ```
+
+> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+
 
 <br>
 
@@ -224,15 +230,16 @@ metadata:
 
 <br>
 
-## 04. Namespace＠Kubernetesでの設定
+## 04. Namespaceの```.metadata.labels```キー
 
-### .metadata.labels
+### istio-injection
 
-#### ▼ istio-injection
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない (```istio-injection```キーの値が```disabled```の場合は共存できる) 。```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
+```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない (```istio-injection```キーの値が```disabled```の場合は共存できる) 。
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
+
 
 **＊実装例＊**
 
@@ -263,7 +270,12 @@ metadata:
     istio-injection: disabled
 ```
 
-#### ▼ istio.io/rev
+> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+
+
+<br>
+
+### istio.io/rev
 
 指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。
 
@@ -273,7 +285,6 @@ IstoOperatorの```.spec.revision```キーと同じである。
 
 ```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
-> ↪️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 
 **＊実装例＊**
 
@@ -300,19 +311,22 @@ metadata:
     istio-injection: disabled
 ```
 
+> ↪️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+
+
 <br>
 
-## 04-02. Pod＠Kubernetesでの設定
+## 04-02. Podの```.metadata.annotations```キー
 
-### .metadata.annotations
-
-#### ▼ annotationsとは
+### annotationsとは
 
 Deploymentの```.spec.template```キーや、Podの```.metadata.``キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの```.metadata.``キーで定義しないように注意する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
-#### ▼ istio.io/rev
+<br>
+
+### istio.io/rev
 
 IstoOperatorの```.spec.revision```キーと同じ。
 
@@ -335,15 +349,18 @@ spec:
         istio.io/rev: 1-0-0
 ```
 
-#### ▼ proxy.istio.io
+<br>
+
+### proxy.istio.io
+
+#### ▼ proxy.istio.ioとは
 
 ```istio-proxy```コンテナのプロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
+#### ▼ configPath
+
 デフォルトでは、```./etc/istio/proxy```ディレクトリ配下に最終的な設定値ファイルが作成される。
 
-IstioOperatorの```.spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
 **＊実装例＊**
 
@@ -361,10 +378,72 @@ spec:
       annotations:
         proxy.istio.io/config: |
           configPath: ./etc/istio/proxy
-          terminationDrainDuration: "630s"
 ```
 
-#### ▼ sidecar.istio.io/inject
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+
+
+#### ▼ parentShutdownDuration
+
+```terminationDrainDuration```キーよりも最低```5```秒以上長くすると良い。
+
+
+**＊実装例＊**
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment # もしくはPod
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  template:
+    metadata:
+      annotations:
+        proxy.istio.io/config: |
+          parentShutdownDuration: "80s"
+```
+
+> ↪️ 参考：
+> 
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s
+
+
+#### ▼ terminationDrainDuration
+
+SIGKILLシグナルを```istio-proxy```コンテナに送信し始まるまでに待機する時間を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment # もしくはPod
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  template:
+    metadata:
+      annotations:
+        proxy.istio.io/config: |
+          terminationDrainDuration: "75s"
+```
+
+> ↪️ 参考：
+> 
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-drain-time-s
+> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+
+
+<br>
+
+### sidecar.istio.io/inject
 
 特定のPodで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。
 
@@ -387,7 +466,9 @@ spec:
         sidecar.istio.io/inject: false
 ```
 
-#### ▼ sidecar.istio.io/proxyCPU
+<br>
+
+### sidecar.istio.io/proxyCPU
 
 ```istio-proxy```コンテナで使用するCPUサイズを設定する。
 
@@ -410,7 +491,9 @@ spec:
         sidecar.istio.io/proxyCPU: 2
 ```
 
-#### ▼ sidecar.istio.io/proxyImage
+<br>
+
+### sidecar.istio.io/proxyImage
 
 ```istio-proxy```コンテナの作成に使用するコンテナイメージを設定する。
 
@@ -433,7 +516,9 @@ spec:
         sidecar.istio.io/proxyImage: foo-envoy
 ```
 
-#### ▼ sidecar.istio.io/proxyMemory
+<br>
+
+### sidecar.istio.io/proxyMemory
 
 ```istio-proxy```コンテナで使用するメモリサイズを設定する。
 
@@ -532,7 +617,7 @@ spec:
 
 #### ▼ subsetsとは
 
-![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service_destination-rule_subset.png)
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
 ルーティング先のPodの```.metadata.labels```キーを設定する
 
@@ -1445,7 +1530,7 @@ spec:
 
 #### ▼ route.destination.subset
 
-![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service_destination-rule_subset.png)
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
 紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
 

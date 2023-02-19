@@ -11,7 +11,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -45,7 +45,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 > ↪️ 参考：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
 
-![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monitoring_collecting_pull_push.png)
+![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monitoring_collecting_pull_push.png)
 
 #### ▼ データの保管
 

@@ -11,7 +11,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ OSI参照モデルは、物理層 (```L1```) 、データリンク層 (```L2```)
 
 > ↪️ 参考：https://www.infraexpert.com/study/networking3.html
 
-![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデル.png)
+![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデル.png)
 
 <br>
 
@@ -39,7 +39,7 @@ OSI参照モデルは、物理層 (```L1```) 、データリンク層 (```L2```)
 
 > ↪️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
-![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
 <br>
 
@@ -53,7 +53,7 @@ OSI参照モデルは、物理層 (```L1```) 、データリンク層 (```L2```)
 
 
 
-![osi-reference-model_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/osi-reference-model_packet.png)
+![osi-reference-model_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi-reference-model_packet.png)
 
 ```【１】```
 
@@ -97,7 +97,7 @@ OSI参照モデルは、物理層 (```L1```) 、データリンク層 (```L2```)
 
 ### 通信機器との対応関係
 
-![OSI参照モデルと通信機器.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデルと通信機器.jpg)
+![OSI参照モデルと通信機器.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデルと通信機器.jpg)
 
 OSI参照モデルの各レイヤーと通信機器の間の対応関係は以下の通りである。
 
@@ -154,7 +154,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 > ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
 
-![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/tcp-ip_structure.png)
+![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png)
 
 <br>
 
@@ -172,7 +172,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 ### アプリケーション層の仕組み
 
-![application_expose-port](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/application_expose-port.png)
+![application_expose-port](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/application_expose-port.png)
 
 ```【１】```
 
@@ -211,7 +211,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 :    受信側のアプリケーションは、各々が指定したプロトコルに応じて、受信側のメールサーバーからメールデータを取得する。
 
-![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/smtp_pop3_imap4.png)
+![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png)
 
 
 > ↪️ 参考：https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
@@ -249,7 +249,7 @@ SMTPに認証を組み込んだ仕組みのこと。
 
 
 
-![SMTP-AUTH](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SMTP-AUTH.png)
+![SMTP-AUTH](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SMTP-AUTH.png)
 
 <br>
 
@@ -281,7 +281,7 @@ GmailでPOPかIMAPを設定できる。
 
 
 
-![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GmailでPOPかIMAPを設定.jpg)
+![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg)
 
 <br>
 
@@ -317,7 +317,7 @@ GmailでPOPかIMAPを設定できる。
 
 
 
-![トランスポート層からアプリケーション層へのパケットの移動](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トランスポート層からアプリケーション層へのパケットの移動.PNG)
+![トランスポート層からアプリケーション層へのパケットの移動](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランスポート層からアプリケーション層へのパケットの移動.PNG)
 
 #### ▼ クライアントからのリクエスト時 (図の 『```→```』 ) 
 
@@ -375,7 +375,7 @@ GET http://127.0.0.1:8080
 
 #### ▼ Unixドメインソケットとは
 
-![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/unix-domain-socket.png)
+![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
 
 Unixで使用されるソケットのこと。
 
@@ -417,7 +417,7 @@ unix://./etc/foo.sock
 
 ### ネットワーク層の仕組み
 
-![ネットワークにおけるTCP_IPを使用したデータ通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ネットワークにおけるTCP_IPを使用したデータ通信.png)
+![ネットワークにおけるTCP_IPを使用したデータ通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネットワークにおけるTCP_IPを使用したデータ通信.png)
 
 IPパケットのヘッダ情報を使用して、宛先認識する。
 

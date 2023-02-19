@@ -11,7 +11,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -37,7 +37,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 もしマルチリージョン化したい場合、暗号化キーを再作成する必要がある。
 
-![kms_multi-region.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kms_multi-region.png)
+![kms_multi-region.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_multi-region.png)
 
 > ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
 
@@ -119,7 +119,7 @@ KMSのアクセス制限を設定する。
 
 暗号化キーのキーマテリアルを一定期間で自動的にローテーションする。
 
-![kms_key_rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kms_key_rotation.png)
+![kms_key_rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
 
 > ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
 

@@ -12,7 +12,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -159,7 +159,7 @@ SQLインジェクションについては、以下のリンクを参考にせ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
 
 **＊実装例＊**
 
@@ -251,7 +251,7 @@ class Foo
 
 #### ▼ トランザクション、コミット、ロールバック
 
-![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
+![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
 RDBの処理用語に相当する```beginTransaction```メソッド、```commit```メソッド、```rollBack```メソッドを使用して、RDBを操作する。
 

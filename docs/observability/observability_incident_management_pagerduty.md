@@ -11,13 +11,13 @@ description: PagerDuty＠インシデント管理ツールオンコールとイ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. PagerDutyの仕組み
 
-![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_on-call.png)
+![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_on-call.png)
 
 
 ここでは、PagerDutyをインシデント管理ツールとして使用する。
@@ -74,7 +74,7 @@ PagerDutyでは、以下の解決フェーズを設定できる。
 | Acknowledged | インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolvedフェーズに移行しない場合は、再びTriggeredフェーズに戻る。           |
 | Resolved     | インシデントのタスクを解決した。                                                                                    |
 
-![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_incident_phase.png)
+![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_incident_phase.png)
 
 
 > ↪️ 参考：

@@ -11,7 +11,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/盗聴_改竄_成りすまし_1.png)
+![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_1.png)
 
 <br>
 
@@ -37,7 +37,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/盗聴_改竄_成りすまし_2.png)
+![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_2.png)
 
 <br>
 
@@ -49,7 +49,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/盗聴_改竄_成りすまし_3.png)
+![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_3.png)
 
 <br>
 
@@ -66,7 +66,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-![デジタル署名](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デジタル署名.png)
+![デジタル署名](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名.png)
 
 **＊サーバーが行うこと＊**
 
@@ -140,7 +140,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-![デジタル署名と暗号化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デジタル署名と暗号化.png)
+![デジタル署名と暗号化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名と暗号化.png)
 
 <br>
 
@@ -150,7 +150,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 
 
-![ハッシュ関数](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハッシュ関数.png)
+![ハッシュ関数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ関数.png)
 
 <br>
 
@@ -170,7 +170,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 #### ▼ 公開鍵基盤による公開鍵検証の仕組み
 
-![デジタル証明書 (SSL証明書) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デジタル証明書 (SSL証明書) .gif)
+![デジタル証明書 (SSL証明書) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル証明書 (SSL証明書) .gif)
 
 
 **＊サーバーが行うこと＊**
@@ -213,7 +213,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 > ↪️ 参考：https://zeropasoakita.livedoor.blog/archives/20294837.html
 
-![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/認証局自体の成りすまし防止.png)
+![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
 
 #### ▼ 認証局の例
 
@@ -510,7 +510,7 @@ $ curl https://foo.example.com -v
 
 
 
-![ハッシュ値で保存](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハッシュ値で保存.png)
+![ハッシュ値で保存](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ値で保存.png)
 
 <br>
 
@@ -518,9 +518,9 @@ $ curl https://foo.example.com -v
 
 調査中...
 
-![生体認証-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/生体認証-1.png)
+![生体認証-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/生体認証-1.png)
 
-![生体認証-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/生体認証-2.png)
+![生体認証-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/生体認証-2.png)
 
 <br>
 

@@ -11,7 +11,7 @@ description: config.yml@CircleCIの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -415,7 +415,7 @@ workflowsを使用しない場合は、少なくとも```1```個の```job```に�
 
 #### ▼ jobの粒度
 
-![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CICDパイプライン.png)
+![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
 
 | 粒度   | 説明                                        | 備考                                        |
 |--------|-------------------------------------------|---------------------------------------------|
@@ -449,7 +449,7 @@ jobを実行する仮想環境を選択できる。
 
 また、DockerfileのCOPYコマンドが動作しなくなる。
 
-![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_executor.png)
+![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png)
 
 
 > ↪️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
@@ -486,7 +486,7 @@ Linuxサーバーを実行環境として設定する。
 
 
 
-![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/machine_executor.png)
+![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine_executor.png)
 
 **＊実装例＊**
 
@@ -585,7 +585,7 @@ workflows:
 
 #### ▼ restore_cache、save_cache
 
-![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
+![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CircleCIキャッシュ.png)
 
 Workflow間で使いまわせるキャッシュを作成する。
 
@@ -709,7 +709,7 @@ jobs:
 
 #### ▼ persist_to_workspace、attach_workspace
 
-![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/workflow_workspace_cache.png)
+![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/workflow_workspace_cache.png)
 
 CircleCIでは、jobごとに異なる仮想環境が作成されるため、他の```jobs```キーで使用された一時ファイルを再利用したい場合、これを使用する。
 
@@ -1489,7 +1489,7 @@ CircleCIでコンテナイメージをビルドした後、各イメージレイ
 
 
 
-![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerLayerCache.png)
+![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DockerLayerCache.png)
 
 #### ▼ 使用例
 

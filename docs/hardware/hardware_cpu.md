@@ -11,7 +11,7 @@ description: CPU＠ハードウェアの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -38,7 +38,7 @@ IntelとAMDにおけるCPUの歴史を以下に示す。
 
 
 
-![IntelとAMDのCPUの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IntelとAMDにおけるCPUの歴史.png)
+![IntelとAMDのCPUの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IntelとAMDにおけるCPUの歴史.png)
 
 <br>
 
@@ -69,7 +69,7 @@ CPUの回路が処理と歩調を合わせるために使用する信号を、�
 = 2.6×10^9  (クロック数/秒)
 ```
 
-![クロック数比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クロック数比較.png)
+![クロック数比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クロック数比較.png)
 
 <br>
 
@@ -92,7 +92,7 @@ CPUが1秒間に何回命令を実行するかを表す。
 = 100 (×10^6 命令数/秒)
 ```
 
-![MIPSの例題](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/MIPSの例題.png)
+![MIPSの例題](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/MIPSの例題.png)
 
 1命令当たりの実行時間 (秒/命令) の求め方は以下の通り。
 

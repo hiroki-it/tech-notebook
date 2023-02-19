@@ -15,7 +15,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 > ↪️ 参考：https://pm-rasinban.com/ut-it-st
 
-![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
 <br>
 
@@ -68,13 +68,13 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 
 
-![品質管理図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/品質管理図.jpg)
+![品質管理図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/品質管理図.jpg)
 
 不良摘出実績線 (信頼度成長曲線) は、プログラムの品質の状態を表し、S字型でないものはプログラムの品質が良くないことを表す。
 
 
 
-![信頼度成長曲線の悪い例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/信頼度成長曲線の悪い例.jpg)
+![信頼度成長曲線の悪い例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/信頼度成長曲線の悪い例.jpg)
 
 <br>
 
@@ -145,7 +145,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 #### ▼ 性能テストとは
 
-![performance-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/performance-test.png)
+![performance-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/performance-test.png)
 
 一定時間内に、ユーザーが一連のリクエスト (例：ログイン、参照、登録、ログアウト) を行った時に、ネットワークのパフォーマンス指標 (スループット、レスポンスタイム、など) にどのような変化があるかを検証する。
 
@@ -467,4 +467,4 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 株式会社LACによるペネトレーションテストサービス
 
-![ペネトレーションテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ペネトレーションテスト.png)
+![ペネトレーションテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ペネトレーションテスト.png)

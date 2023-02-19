@@ -9,7 +9,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -127,7 +127,7 @@ spec:
 
 また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
 
-![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
+![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet.png)
 
 > ↪️ 参考：https://thinkit.co.jp/article/17453
 
@@ -256,7 +256,7 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。
 
-![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
+![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
 
 
 > ↪️ 参考：
@@ -309,7 +309,7 @@ num  target                     prot   opt   source      destination
 
 #### ▼ iptablesプロキシモード
 
-![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png)
+![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
 
 デフォルトのプロキシモードである。
 
@@ -329,7 +329,7 @@ num  target                     prot   opt   source      destination
 
 #### ▼ userspaceプロキシモード
 
-![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png)
+![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
 
 
 | 項目                     | 仕組み                                                                                                |
@@ -346,7 +346,7 @@ num  target                     prot   opt   source      destination
 #### ▼ ipvsプロキシモード
 
 
-![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png)
+![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
 
 kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPVSProxyMode=true```、```--proxy-mode```オプションに```ipvs```を設定する。

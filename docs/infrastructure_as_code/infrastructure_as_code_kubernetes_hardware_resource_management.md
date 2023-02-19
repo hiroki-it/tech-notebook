@@ -11,7 +11,7 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -83,7 +83,7 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 
 コントロールプレーンNodeに配置することが推奨されている。
 
-![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
+![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
 
 
 > ↪️ 参考：
@@ -365,7 +365,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 > - https://speakerdeck.com/bells17/metrics-server?slide=20
 > - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base
 
-![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_metrics-server.png)
+![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
 <br>
 
@@ -400,7 +400,7 @@ $ kubectl top pod -n <任意のNamespace>
 
 また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、metrics-apiserverからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
 
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
 
 > ↪️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
@@ -430,7 +430,7 @@ $ kubectl top pod -n <任意のNamespace>
 
 #### ▼ HorizontalPodAutoscalerとは
 
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
 Podの自動水平スケーリングを実行する。
 

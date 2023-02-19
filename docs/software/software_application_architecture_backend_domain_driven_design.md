@@ -11,7 +11,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ### 戦略的設計の手順例
 
-![ddd_strategic_design_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ddd_strategic_design_flow.png)
+![ddd_strategic_design_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_strategic_design_flow.png)
 
 戦略的設計では、ドメイン全体から境界付けられたコンテキストを明確にする。
 
@@ -129,7 +129,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 これにより、インターネット広告代理店のビジネスモデルは、各担当者に対応するドメインに分割できる。
 
-![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internet_advertising_agency_domain.png)
+![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet_advertising_agency_domain.png)
 
 
 > ↪️ 参考：https://labs.septeni.co.jp/entry/2021/04/15/130000
@@ -137,7 +137,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 **＊例＊**
 
-![hacogym_business_model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_business_model.png)
+![hacogym_business_model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_business_model.png)
 
 完全個室ジムを運営するハコジムの例。
 
@@ -147,7 +147,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 これにより、ハコジムのビジネスモデルは、各担当者に対応するドメインに分割できる。
 
-![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_domain.png)
+![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_domain.png)
 
 
 > ↪️ 参考：
@@ -173,7 +173,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 > - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 > - https://labs.septeni.co.jp/entry/2021/04/15/130000
 
-![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context.png)
+![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
 
 #### ▼ サブドメインの委譲
 
@@ -207,7 +207,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
 
-![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_subdomain.png)
+![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain.png)
 
 **＊例＊**
 
@@ -235,7 +235,7 @@ ECサイトを運営するアスクルの例。
 
 > ↪️ 参考：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
 
-![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
+![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain-model.png)
 
 <br>
 
@@ -273,7 +273,7 @@ ECサイトを運営するアスクルの例。
 
 境界付けられたコンテキストを定義しない場合、```1```個の商品モデルが全てのデータを保持することとなり、それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう。
 
-![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/book_ec_ubiquitous_language.png)
+![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
 
 
 > ↪️ 参考：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
@@ -287,7 +287,7 @@ ECサイトを運営するアスクルの例。
 
 認証コンテキスト、予約コンテキスト、顧客管理コンテキスト、銀行支払いコンテキスト、クレジットカード支払いコンテキストがある。
 
-![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
+![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
 
 
 > ↪️ 参考：
@@ -306,7 +306,7 @@ ECサイトを運営するアスクルの例。
 
 取り組みとして、週次でユビキタス言語の更新を行っている。
 
-![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/contract_billing_management_ubiquitous_language.png)
+![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
 
 > ↪️ 参考：
@@ -331,7 +331,7 @@ ECサイトを運営するアスクルの例。
 
 できる限り、各境界付けられたコンテキストでは異なるユビキタス言語を使用して、境界付けられたコンテキストが複数のサブドメインにまたがないようにした方が良い (これ重要) 。
 
-![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
+![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/context-map.png)
 
 
 > ↪️ 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
@@ -351,7 +351,7 @@ ECサイトを運営するアスクルの例。
 
 
 
-![hacogym_subdomain_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_subdomain_modeling.png)
+![hacogym_subdomain_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain_modeling.png)
 
 <br>
 
@@ -367,7 +367,7 @@ ECサイトを運営するアスクルの例。
 
 
 
-![MVCモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/MVCモデル.png)
+![MVCモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/MVCモデル.png)
 
 #### ▼ MVCからレイヤードアーキテクチャへの移行
 
@@ -387,7 +387,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 最初に考案された実現方法。
 
-![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/layered-architecture.png)
+![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png)
 
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4798121967
@@ -419,7 +419,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 本質的には、他の『ヘキサゴナルアーキテクチャ』『クリーンアーキテクチャ』に同じである。
 
-![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/onion-architecture.png)
+![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/onion-architecture.png)
 
 
 > ↪️ 参考：
@@ -438,7 +438,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 本質的には、他の『ヘキサゴナルアーキテクチャ』『オニオンアーキテクチャ』に同じである。
 
-![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
+![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
 
 > ↪️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
@@ -475,7 +475,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ドメインモデル図を基に、コアドメイン/サブドメインのモデリングを行う。
 
-![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context_modeling.png)
+![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 
 
 > ↪️ 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
@@ -523,7 +523,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 :    ドメインエキスパートへの要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
-![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
+![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
 
 ```【３】```
 
@@ -533,7 +533,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 |---------------------------|:------------------------------------|----------------|---------------|
 | 映画、上映日時、枚数を選択する | 上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト | エンティティ、値オブジェクト | 上映集約、映画集約 |
 
-![ticket-modeling_little-hands_domain-model-diagram_example-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
+![ticket-modeling_little-hands_domain-model-diagram_example-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
 
 ```【３】```
 
@@ -546,7 +546,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 | 割引を選択する               | 適用割引オブジェクト                         | 値オブジェクト        | 予約集約          |
 | 支払い金額を確認する          | 支払料金オブジェクト                         | 値オブジェクト        | 支払い料金集約     |
 
-![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
+![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
 
 ```【４】```
 
@@ -560,13 +560,13 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 | 支払い金額を確認する          | 支払料金オブジェクト                         | 値オブジェクト        | 支払い料金集約     |
 | 同上                      | 料金区分オブジェクト                         | タイプコード (Enum)   | 料金設定集約      |
 
-![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
+![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
 
 実装フェーズに入ってからの話になるが、料金区分オブジェクトはEnumとして実装することになり、以下の様になる。
 
 
 
-![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_enum_example.jpg)
+![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_enum_example.jpg)
 
 ```【５】```
 
@@ -581,12 +581,12 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 | 同上                      | 料金区分オブジェクト                         | タイプコード (Enum)   | 料金設定集約      |
 | 同上                      | 料金区分計算オブジェクト                     | 値オブジェクト        | 料金区分計算集約  |
 
-![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
+![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
 
 ```【６】```
 
 :    集約間の関係性のみに着目する、オブジェクト間の関係性は複雑であるが、集約間は単純であることが分かる。
 
-![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
+![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
 
 <br>

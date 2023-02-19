@@ -11,7 +11,7 @@ description: ChaosMesh＠総合テストの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: ChaosMesh＠総合テストの知見を記録しています。
 
 ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、から構成されている。Chaos monkeyやChaos Kongと比べて、Kubernetesにより合った手法でカオスエンジニアリングを実行できる。
 
-![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/chaos-mesh_architecture.png)
+![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/chaos-mesh_architecture.png)
 
 > ↪️ 参考：
 >

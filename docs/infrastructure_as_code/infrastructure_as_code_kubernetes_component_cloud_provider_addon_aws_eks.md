@@ -11,7 +11,7 @@ description: AWS EKSアドオン＠クラウドプロバイダーアドオンの
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -67,7 +67,7 @@ PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPod�
 
 これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
 
-![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
+![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 
 
 > ↪️ 参考：

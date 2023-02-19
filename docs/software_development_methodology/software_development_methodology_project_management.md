@@ -11,7 +11,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -64,7 +64,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 = (ｋステップ行数)
 ```
 
-![kステップ行数による開発規模](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kステップ行数による開発規模.png)
+![kステップ行数による開発規模](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kステップ行数による開発規模.png)
 
 #### ▼ 工数の定量化
 
@@ -84,7 +84,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 | A社動員数 | 12 (人)   | 20       | 0    | 12      | 12      |
 | B社動員数 | 2 (人)    | 4        | 28   | 15      | 2       |
 
-![project_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/project_management.png)
+![project_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project_management.png)
 
 #### ▼ 生産性の定量化
 
@@ -94,7 +94,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 = (プログラム本数による開発規模) ÷ (工数)
 ```
 
-![プログラム本数による生産性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プログラム本数による生産性.png)
+![プログラム本数による生産性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プログラム本数による生産性.png)
 
 ```mathematica
 (kステップ行数の生産性)
@@ -102,11 +102,11 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 = (ｋステップ行数による開発規模) ÷ (工数)
 ```
 
-![kステップ行数による生産性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kステップ行数による生産性.png)
+![kステップ行数による生産性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kステップ行数による生産性.png)
 
 #### ▼ 進捗率の定量化
 
-![進捗率](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/進捗率.png)
+![進捗率](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/進捗率.png)
 
 <br>
 
@@ -122,7 +122,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p509.jpg)
+![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p509.jpg)
 
 #### ▼ 最早結合点時刻
 
@@ -134,7 +134,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-1.jpg)
+![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-1.jpg)
 
 #### ▼ 最遅結合点時刻
 
@@ -144,7 +144,7 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-2.jpg)
+![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-2.jpg)
 
 <br>
 

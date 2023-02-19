@@ -11,7 +11,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 メモリ管理は、物理メモリと仮想メモリで管理方式がある。
 
-![アドレス空間管理の種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アドレス空間管理の種類.png)
+![アドレス空間管理の種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アドレス空間管理の種類.png)
 
 
 > ↪️ 参考：https://itmanabi.com/real-memory-mng/
@@ -37,7 +37,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 単一のプロセスしか読み込めず、物理メモリの余ったアドレス空間は利用できない。
 
-![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単一区画方式.png)
+![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単一区画方式.png)
 
 
 > ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
@@ -53,7 +53,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 > ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
-![多重区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/多重区画方式.png)
+![多重区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重区画方式.png)
 
 <br>
 
@@ -65,7 +65,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 固定区画方式とは異なり、物理メモリのアドレス空間を有効に利用できる。
 
-![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/可変区画方式.png)
+![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/可変区画方式.png)
 
 
 > ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
@@ -81,7 +81,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 これにより、物理メモリのアドレス空間を確保できる。
 
-![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スワッピング方式.png)
+![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 
 
 > ↪️ 参考：
@@ -129,7 +129,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 仮想メモリのアドレス空間を『固定長』の区画 (ページ) 、また物理メモリのアドレス空間を『固定長』の区画 (ページフレーム) に分割し、管理する。
 
-![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページの構造.png)
+![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
 
 
 > ↪️ 参考：http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
@@ -143,7 +143,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 また、物理メモリのページフレームからストレージにページを追い出すことを『Page-out』という。
 
-![ページインとページアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページインとページアウト.png)
+![ページインとページアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページインとページアウト.png)
 
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
@@ -157,13 +157,13 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![仮想メモリとのマッピングによる大容量アドレス空間の再現_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_1.png)
+![仮想メモリとのマッピングによる大容量アドレス空間の再現_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_1.png)
 
 補足として、富士通の仮想メモリのサイズは、以下の通り。
 
 
 
-![仮想メモリのアドレス空間の容量設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリのアドレス空間の容量設定.png)
+![仮想メモリのアドレス空間の容量設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリのアドレス空間の容量設定.png)
 
 <br>
 
@@ -191,7 +191,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![メモリ管理ユニット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリ管理ユニット.png)
+![メモリ管理ユニット](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリ管理ユニット.png)
 
 #### ▼ アドレス変換の仕組み (ページング方式型/セグメント方式型) 
 
@@ -199,7 +199,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 :    仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。
 
-![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページの構造.png)
+![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
 
 ```【２】```
 
@@ -209,13 +209,13 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 :    物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。
 
-![仮想メモリとのマッピングによる大容量アドレス空間の再現_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_3.png)
+![仮想メモリとのマッピングによる大容量アドレス空間の再現_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_3.png)
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![仮想メモリとのマッピングによる大容量アドレス空間の再現_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_4.png)
+![仮想メモリとのマッピングによる大容量アドレス空間の再現_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_4.png)
 
 <br>
 
@@ -229,7 +229,7 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 
 
-![ページフォールト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページフォールト.png)
+![ページフォールト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページフォールト.png)
 
 <br>
 
@@ -245,17 +245,17 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-2.png)
+![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-2.png)
 
-![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-3.png)
+![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-3.png)
 
 #### ▼ 『LRU方式：Least Recently Used』と『LFU方式：Least Frequently Used』
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
-![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-1.png)
+![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-1.png)
 
-![p261-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-4.png)
+![p261-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-4.png)
 
 <br>
 
@@ -267,7 +267,7 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 
 
-![再使用可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再使用可能.gif)
+![再使用可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再使用可能.gif)
 
 <br>
 
@@ -277,7 +277,7 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 
 
-![再入可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再入可能.gif)
+![再入可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再入可能.gif)
 
 <br>
 
@@ -287,7 +287,7 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 
 
-![再配置可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再配置可能.gif)
+![再配置可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再配置可能.gif)
 
 <br>
 

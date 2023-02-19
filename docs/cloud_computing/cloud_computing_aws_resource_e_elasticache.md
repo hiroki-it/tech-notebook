@@ -11,7 +11,7 @@ description: ElastiCache＠Eで始まるAWSリソースの知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -53,7 +53,7 @@ RedisとMemcachedがある。
 
 #### ▼ Redisクラスターとは
 
-![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/redis-cluster.png)
+![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png)
 
 複数のRedisノードを持つRedisシャードから構成されている。
 
@@ -117,10 +117,10 @@ Redisノードのグループ。
 
 セッションIDについては、以下のリンクを参考にせよ。
 
-![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ElastiCacheのセッション管理機能.png)
+![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ElastiCacheのセッション管理機能.png)
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 
 <br>
@@ -133,7 +133,7 @@ RDSに対するSQLと読み出されたデータを、キャッシュとして�
 
 
 
-![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クエリCache管理機能_1.png)
+![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_1.png)
 
 ```【１】```
 
@@ -175,7 +175,7 @@ SELECT * FROM users;
 {"id"=>"10", "name"=>"jonny"}
 ```
 
-![クエリCache管理機能_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クエリCache管理機能_2.png)
+![クエリCache管理機能_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_2.png)
 
 ```【６】```
 

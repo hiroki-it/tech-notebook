@@ -11,7 +11,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 #### ▼ マイクロサービスアーキテクチャを取り巻く環境
 
-![architecture_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_history.png)
+![architecture_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_history.png)
 
 
 | 年代        | アーキテクチャ           | 説明                                                                                                                                                                                                                                                                                              | 補足                                                                                                                                                                                                                            |
@@ -36,7 +36,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 #### ▼ モジュール/マイクロサービスの粒度の比較
 
-![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_deployment_comparison.png)
+![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_deployment_comparison.png)
 
 
 | モジュールの大きさ | 粒度名     | 説明                                                                                                                                                                                                                                                                                                                             |
@@ -125,7 +125,7 @@ Googleではモノリポジトリによるマイクロサービスアーキテ�
 
 その他にも、アメリカのIT大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitter、など) でもモノリポを採用している。
 
-![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
+![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png)
 
 
 > ↪️ 参考：
@@ -144,7 +144,7 @@ Googleではモノリポジトリによるマイクロサービスアーキテ�
 
 > ↪️ 参考：https://www.fourtheorem.com/blog/monorepo
 
-![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
+![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/polyrepo.png)
 
 <br>
 
@@ -266,7 +266,7 @@ IaCツールにTerraformを使用した場合を示す。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_policy.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_policy.html
 
 ```yaml
 # クラウドインフラのIaCツールを管理するリポジトリ
@@ -285,7 +285,7 @@ infrastructure_repository/
 
 #### ▼ マイクロサービスとは
 
-![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
+![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anti-corruption-layer.png)
 
 マイクロサービスアーキテクチャにおける分散システム状のバックエンドのコンポーネントのこと。
 
@@ -323,7 +323,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 
 
-![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices-architecture_onion-architecture.png)
+![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png)
 
 <br>
 
@@ -342,7 +342,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 加えて小さな粒度に分割する方法として、ルートエンティティを粒度ともできる。
 
-![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_bounded-context.png)
+![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_bounded-context.png)
 
 > ↪️ 参考：
 >
@@ -389,11 +389,11 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 | ユースケース           | 分割方法         | マイクロサービスの種類                                                                                                                 | ディレクトリ構成ポリシー                                 | リンク                                                                                                                                                                                                  |
 |------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Eコマース            | 境界付けられたコンテキスト | ・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視 | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する。      | ↪️ 参考：https://github.com/GoogleCloudPlatform/microservices-demo <br>![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_google.png)                  |
-| Eコマース            | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                                              | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する。 | ↪️ 参考：https://github.com/mercari/mercari-microservices-example <br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_mercari.png)                 |
+| Eコマース            | 境界付けられたコンテキスト | ・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視 | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する。      | ↪️ 参考：https://github.com/GoogleCloudPlatform/microservices-demo <br>![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)                  |
+| Eコマース            | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                                              | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する。 | ↪️ 参考：https://github.com/mercari/mercari-microservices-example <br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)                 |
 | Eコマース            | 境界付けられたコンテキスト | ・広告<br>・割引                                                                                                                | ルートに各マイクロサービスのディレクトリを配置する。                  | ↪️ 参考：https://github.com/DataDog/ecommerce-workshop                                                                                                                                                |
-| SNS (Twitter)    | 境界付けられたコンテキスト | いっぱい                                                                                                                          | 実装方法は不明                                  | ↪️ 参考：https://www.codekarle.com/system-design/Twitter-system-design.html <br>![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_twitter.png)       |
-| 地図 (GoogleMap) | 境界付けられたコンテキスト | いっぱい                                                                                                                          | 実装方法は不明                                  | ↪️ 参考：https://www.codekarle.com/system-design/Twitter-system-design.html <br>![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_google-map.png) |
+| SNS (Twitter)    | 境界付けられたコンテキスト | いっぱい                                                                                                                          | 実装方法は不明                                  | ↪️ 参考：https://www.codekarle.com/system-design/Twitter-system-design.html <br>![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)       |
+| 地図 (GoogleMap) | 境界付けられたコンテキスト | いっぱい                                                                                                                          | 実装方法は不明                                  | ↪️ 参考：https://www.codekarle.com/system-design/Twitter-system-design.html <br>![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png) |
 
 <br>
 
@@ -422,7 +422,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ▼ リクエストリプライ方式とは
 
-![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
+![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_request_reply.png)
 
 マイクロサービス間で相互通信を行う。
 
@@ -453,7 +453,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ▼ イベント駆動方式とは
 
-![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
+![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png)
 
 マイクロサービスからマイクロサービスに一方通行の通信を行う。
 
@@ -490,7 +490,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ### プレゼンテーションドメイン分離とは
 
-![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/presentation_domain_separation.png)
+![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png)
 
 モノリシックなアプリケーションには二つの段階 (v1、v2) がある。
 
@@ -513,7 +513,7 @@ v2では、アプリケーションがプレゼンテーション層、アプリ
 
 #### ▼ API Gatewayとは
 
-![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_api-gateway-pattern.png)
+![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
 
 クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
 
@@ -534,11 +534,11 @@ v2では、アプリケーションがプレゼンテーション層、アプリ
 
 #### ▼ RESTful-API
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 #### ▼ GraphQL-API
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_graphql_api_graphql.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_graphql_api_graphql.html
 
 
 <br>
@@ -585,7 +585,7 @@ Kubernetes内で管理できるメリットがある。
 
 マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API Gatewayを```1```個だけ作成する。
 
-![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_public-api-pattern.png)
+![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png)
 
 
 > ↪️ 参考：https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
@@ -597,7 +597,7 @@ Kubernetes内で管理できるメリットがある。
 
 ただし、複数のクライアントをWebアプリとして開発することもできるため、同じWebからのアクセスであっても、異なるAPI Gatewayを作成する場合がある。
 
-![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_bff-pattern.png)
+![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
 > ↪️ 参考：
 >
@@ -693,7 +693,7 @@ Kubernetes内で管理できるメリットがある。
 
 #### ▼ Sagaパターンとは
 
-![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
+![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png)
 
 複数のローカルトランザクションを非同期通信で連続的に実行する。
 
@@ -723,13 +723,13 @@ Kubernetes内で管理できるメリットがある。
 
 
 
-![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_example.png)
+![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png)
 
 補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される。
 
 
 
-![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_compensating-transaction_example.png)
+![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
 
 
 > ↪️ 参考：https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
@@ -752,7 +752,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 オーケストレーションが推奨である。
 
-![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
+![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
 
 > ↪️ 参考：
 >
@@ -771,7 +771,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 各マイクロサービスは、処理結果をオーケストレーターに返却する。
 
-![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration_message-queue.png)
+![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png)
 
 > ↪️ 参考：
 >
@@ -793,7 +793,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 ```1```個のリクエストが送信された時に、マイクロサービスからマイクロサービスに処理が繋がっていく。
 
-![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
+![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
 
 > ↪️ 参考：
 >
@@ -805,7 +805,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 以下のリポジトリを参考にせよ。
 
-![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_example.png)
+![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png)
 
 > ↪️ 参考：https://github.com/fedeoliv/microservices-transactions
 
@@ -821,7 +821,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 各マイクロサービスは、次のマイクロサービスにイベントを渡せる別のキューに処理結果を返却する。
 
-![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_message-queue.png)
+![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png)
 
 > ↪️ 参考：https://www.12-technology.com/2021/08/dbsaga.html
 
@@ -886,7 +886,7 @@ CQRSと相性が良い。
 
 認証マイクロサービスが単一障害点になるというデメリットがある。
 
-![micro-auth_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_sso.png)
+![micro-auth_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_sso.png)
 
 > ↪️ 参考：
 >
@@ -905,7 +905,7 @@ CQRSと相性が良い。
 
 耐障害性のあるセッションストレージが必要になるというデメリットがある。
 
-![micro-auth_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_centralization.png)
+![micro-auth_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_centralization.png)
 
 > ↪️ 参考：
 >
@@ -924,7 +924,7 @@ JWTを作成する認証マイクロサービスを```1```個だけ配置し、C
 
 クライアント側に保存されたJWTの失効が難しいというデメリットがある。
 
-![micro-auth_type_distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_distribution.png)
+![micro-auth_type_distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_distribution.png)
 
 > ↪️ 参考：
 >
@@ -945,7 +945,7 @@ JWTを作成する認証マイクロサービスを```1```個だけ配置し、C
 
 また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。
 
-![micro-auth_type_gateway-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_gateway-distribution.png)
+![micro-auth_type_gateway-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_gateway-distribution.png)
 
 
 > ↪️ 参考：
@@ -994,7 +994,7 @@ blast-radiusを最小限にできる。
 
 下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
 
-![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circuit-breaker.png)
+![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png)
 
 > ↪️ 参考：https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
 

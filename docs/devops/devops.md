@@ -11,7 +11,7 @@ description: DevOpsの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: DevOpsの知見を記録しています。
 
 #### ▼ システムの品質とは
 
-![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software-quality-attributes_measurement.png)
+![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
 
 システム (ソフトウェアとハードウェア、があるがここでは特にソフトウェア) には、例えば以下の品質の特性がある (ISOの規格の場合) 。
 
@@ -109,7 +109,7 @@ DevOpsの実現方法には、CIOpsまたはGitOpsがある。
 
 #### ▼ CIOpsとは
 
-![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/devops_ciops.png)
+![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
 
 CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。
 
@@ -153,7 +153,7 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理
 
 #### ▼ GitOpsとは
 
-![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/devops_gitops.png)
+![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
 
 CIツールを使用してCIパイプラインを、またはCDツールを使用してCDパイプラインを、実装する手法のこと。
 
@@ -195,7 +195,7 @@ GitOpsでは、CIツールで実施する手順が少ないため、基本的に
 
 CIパイプラインとCDパイプラインを組み合わせた手法のこと。
 
-![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CICDパイプライン.png)
+![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
 
 
 > ↪️ 参考：https://www.redhat.com/ja/topics/devops/what-cicd-pipeline

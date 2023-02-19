@@ -11,7 +11,7 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 > ↪️ 参考：https://digital-jyoshisu.com/archives/468
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
 
 <br>
@@ -34,7 +34,7 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 #### ▼ パケットフィルタリング型ファイアウォールとは
 
-![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
+![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif)
 
 パケットのヘッダ情報の送信元IPアドレスやポート番号などに基づいて、パケットを許可するべきか否かを決める。
 
@@ -145,7 +145,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 > ↪️ 参考：https://pc-karuma.net/windows-10-firewall-open-port/
 
-![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリングの設定.gif)
+![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif)
 
 **＊例＊**
 
@@ -182,7 +182,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 > ↪️ 参考：https://digital-jyoshisu.com/archives/468
 
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
 
 <br>
@@ -201,7 +201,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 
 
-![IDS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IDS.png)
+![IDS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IDS.png)
 
 <br>
 
@@ -211,7 +211,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_measures_encryption_technology_encryption_protocol.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_encryption_protocol.html
 
 <br>
 
@@ -230,7 +230,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 > - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
 
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
 
 <br>
@@ -271,7 +271,7 @@ sha256によって作成された文字列をファイル情報として添付�
 
 > ↪️ 参考：https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
 
-![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf-token.png)
+![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf-token.png)
 
 
 <br>
@@ -370,7 +370,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_package_sql.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html
 
 <br>
 
@@ -391,7 +391,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 > ↪️ 参考：https://developer.mozilla.org/ja/docs/Glossary/Origin
 
 
-![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cors.png)
+![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cors.png)
 
 
 <br>

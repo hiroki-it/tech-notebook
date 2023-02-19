@@ -11,7 +11,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -442,7 +442,7 @@ $request->get('foo');
 
 ### HttpKernelによるリクエストとレスポンス
 
-![SymfonyのHttpKernelの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SymfonyのHttpKernelの仕組み.png)
+![SymfonyのHttpKernelの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SymfonyのHttpKernelの仕組み.png)
 
 <br>
 

@@ -11,7 +11,7 @@ description: datadogエージェントの設定＠Datadogの知見を記録し�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,19 +29,19 @@ Datadogとパケットを送受信するためには、アプリケーション�
 
 ### メトリクス収集について
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 
 ### ログ収集について
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_log.html
 
 <br>
 
 ### 分散トレース収集について
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_distributed_trace.html
 
 <br>
 

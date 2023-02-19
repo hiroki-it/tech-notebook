@@ -8,7 +8,7 @@ description: Kubernetesリソース＠Kubernetesの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -87,7 +87,7 @@ PodTemplate (```.spec.template```キー) を変更した場合、Deploymentは�
 レプリカ数 (```.spec.replicas```キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
 
 
-![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_replace_replicaset.png)
+![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png)
 
 > ↪️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
 
@@ -106,7 +106,7 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 > ↪️ 参考：https://www.amazon.com/dp/1617297615
 
-![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_persistent-volume.png)
+![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png)
 
 <br>
 
@@ -157,7 +157,7 @@ Podを単位として、コンテナ起動/停止や水平スケールアウト/
 
 PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同じPod内に配置する。
 
-![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
+![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_php-fpm_nginx.png)
 
 #### ▼ 例外的なコントロールプレーンNode上のPod
 
@@ -321,7 +321,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 > ↪️ 参考：https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
 ```【１】```
 
@@ -349,11 +349,15 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 ```【７】```
 
-:    待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに```SIGTERM```シグナルを送信する。これにより、コンテナの停止処理が開始する。
+:    待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに```SIGTERM```シグナルを送信する。
+
+     これにより、コンテナの停止処理が開始する。
 
 ```【８】```
 
-:    ```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
+:    ```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。
+
+     この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
 
 ```【９】```
 
@@ -392,7 +396,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 :    kubeletはリクエストを受信し、Nodeの```/var/log```ディレクトリを読み込む。Nodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
 
-![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_logging.png)
+![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png)
 
 > ↪️ 参考：https://www.creationline.com/lab/29281
 
@@ -500,7 +504,7 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 しかし、EndpointsではPodの宛先情報を一括管理しなければならず、これを分割して管理できるように、Endpointsの代わりとしてEndpointSliceが導入された。
 
-![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_endpoint-slices.png)
+![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_endpoint-slices.png)
 
 > ↪️ 参考：https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api
 
@@ -516,7 +520,7 @@ Ingressを使用する場合、ルーティング先のIngressは、Cluster IP S
 
 NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
-![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
+![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png)
 
 > ↪️ 参考：
 >
@@ -528,7 +532,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 パスの値に基づいて、Serviceにルーティングする。
 
-![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png)
+![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_path.png)
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout
 
@@ -538,7 +542,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 本番環境では、ドメインを指定した各種ダッシュボードにアクセスできるようにする必要がある。
 
-![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png)
+![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png)
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting
 
@@ -548,7 +552,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 #### ▼ Ingressコントローラーとは
 
-![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
+![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
 
 Ingressコントローラーは、Ingressの設定に基づいてNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
 
@@ -564,7 +568,7 @@ Kubernetesの周辺ツール (Prometheus、AlertManager、Grafana、ArgoCD) の�
 
 Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー (例：Nginx) に渡す。
 
-![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller_certificate.png)
+![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 
 > ↪️ 参考：
 >
@@ -595,7 +599,7 @@ Ingressコントローラーは、『```***-controller-admission```』というS
 
 #### ▼ Serviceとは
 
-![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_service.png)
+![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png)
 
 Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。
 
@@ -609,7 +613,7 @@ Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し
 
 #### ▼ ClusterIP Service
 
-![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_clusterip-service.png)
+![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png)
 
 Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。
 
@@ -649,7 +653,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 #### ▼ NodePort Service
 
-![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_nodeport-service.png)
+![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png)
 
 Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。
 
@@ -669,7 +673,7 @@ Serviceのポート番号と紐づくNodeのNICのポート番号はデフォル
 
 #### ▼ LoadBalancer Service
 
-![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_loadbalancer-service.png)
+![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png)
 
 Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。
 
@@ -941,7 +945,7 @@ Node上にボリュームを作成し、これをコンテナにバインドマ�
 
 また、外部ストレージを使用する場合には、CSIドライバーも必要である。
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/storage_class.png)
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 
 <br>
@@ -1046,7 +1050,7 @@ $ kubectl get pod <Pod名> -o wide
 
 外部ストレージ上 (例：AWS EBS、など) を動的にプロビジョニングし、これのボリュームをPersistentVolumeClaimに提供する。
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/storage_class.png)
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 > ↪️ 参考：
 > 
@@ -1186,7 +1190,7 @@ Podの```.spec.volumes```キーでPersistentVolumeClaimを宣言すれば、Volu
 
 #### ▼ ServiceAccount、UserAccountとは
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
 kube-apiserverが、リクエストの送信元を認証できるようにする。
 
@@ -1223,7 +1227,7 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 #### ▼ Role、ClusterRoleとは
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
 kube-apiserverが、認証されたKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
 

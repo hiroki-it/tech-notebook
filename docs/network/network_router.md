@@ -11,7 +11,7 @@ description: ルーター＠ネットワークの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -66,7 +66,7 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。
 
 
-![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router.png)
+![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router.png)
 
 > ↪️ 参考：
 >
@@ -110,7 +110,7 @@ URLを基点としたパスに応じて、ルーティング先を決める。
 
 ネットワーク内でルーターがルーターに通信をルーティングする時、各ルーターが最適なルーティング先を選択すること。
 
-![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router_hop-by-hop-routing.jpeg)
+![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpeg)
 
 
 > ↪️ 参考：https://ascii.jp/elem/000/000/444/444681/3/
@@ -131,7 +131,7 @@ NAT処理を実行できるルーターのこと。
 
 #### ▼ NAT処理とは
 
-![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router.png)
+![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png)
 
 | 設置場所                       | 処理                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------|
@@ -155,7 +155,7 @@ NAT処理を実行できるルーターのこと。
 
 #### ▼ DNAT：Destination NAT
 
-![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グローバルからプライベートへのnat変換.png)
+![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グローバルからプライベートへのnat変換.png)
 
 NATルーターの処理のうち、宛先IPアドレスを変換すること (```グローバルIPアドレス``` → ```プライベートIPアドレス```、```プライベートIPアドレス``` → ```プライベートIPアドレス```) 。
 
@@ -173,7 +173,7 @@ NATルーターは、プライベートネットワークに入る時に、パ�
 
 #### ▼ SNAT：Source NAT
 
-![プライベートからグローバルへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プライベートからグローバルへのnat変換.png)
+![プライベートからグローバルへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プライベートからグローバルへのnat変換.png)
 
 NATルーターの処理のうち送信元IPアドレスを変換すること (```プライベートIPアドレス``` → ```グローバルIPアドレス```、```プライベートIPアドレス``` → ```プライベートIPアドレス```) 。
 
@@ -259,7 +259,7 @@ NAPTの処理を持つルーターのこと。
 
 #### ▼ NAPT処理
 
-![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/napt-router.png)
+![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
 
 | 設置場所                       | 処理                                                                                            |
 |------------------------------|-----------------------------------------------------------------------------------------------|
@@ -296,7 +296,7 @@ AWSやGCPなどで使用されているようなNATルーターはこちらで�
 | ```192.168.2.1```  |  ```50011```  |  ⇄   | ```130.X.X.X:50011``` |  ```50011```  |
 | ```192.168.3.1```  |  ```50011```  |  ⇄   | ```130.X.X.X:50012``` |  ```50012```  |
 
-![napt変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/napt変換.png)
+![napt変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換.png)
 
 #### ▼ SNATの場合
 
@@ -304,7 +304,7 @@ AWSやGCPなどで使用されているようなNATルーターはこちらで�
 
 
 
-![napt変換_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/napt変換_2.png)
+![napt変換_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換_2.png)
 
 <br>
 

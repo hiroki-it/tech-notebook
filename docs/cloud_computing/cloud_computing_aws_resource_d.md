@@ -11,7 +11,7 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -20,7 +20,7 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 
 ### Direct Connectとは
 
-![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/direct-connect.png)
+![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
 
 専用線方式のWANとして動作し、AWS側のプライベートネットワーク (VPC) と、ユーザー側のプライベートネットワークの間を接続する。
 
@@ -34,6 +34,6 @@ WANの種類については、以下のリンクを参考にせよ。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network.html
 
 <br>

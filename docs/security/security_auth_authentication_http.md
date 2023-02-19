@@ -11,7 +11,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -45,7 +45,7 @@ HTTPプロトコルの中で認証を行う認証スキームのこと。
 
 ### Basic認証の仕組み
 
-![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Basic認証.png)
+![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Basic認証.png)
 
 
 | 役割   | 説明                                                                           |

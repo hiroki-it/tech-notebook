@@ -11,7 +11,7 @@ description: ECS＠Eで始まるAWSリソースの知見を記録しています
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: ECS＠Eで始まるAWSリソースの知見を記録しています
 
 ECSのコントロールプレーンは、開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
 
-![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane.png)
+![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png)
 
 
 > ↪️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
@@ -59,7 +59,7 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ECSサービスの管理グループ単位のこと。
 
-![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_cluster.png)
+![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_cluster.png)
 
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html
@@ -89,7 +89,7 @@ ECSタスク定義を基に作成される。
 
 
 
-![ecs_task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task.png)
+![ecs_task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task.png)
 
 #### ▼ ECSコンテナエージェント
 
@@ -98,7 +98,7 @@ ECSタスク実行ロールを使用して、ECSタスクのライフサイク�
 
 Fargateの場合、ECSコンテナエージェントがプリインストールされている。
 
-![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
+![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png)
 
 
 > ↪️ 参考：
@@ -118,7 +118,7 @@ ECSタスク定義を削除するには、全てのリビジョン番号のECS�
 
 #### ▼ ECSタスクのライフサイクルフェーズ
 
-![ecs_task_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task_lifecycle_phase.png)
+![ecs_task_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task_lifecycle_phase.png)
 
 ECSタスクのライフサイクルにはフェーズがある。
 
@@ -154,7 +154,7 @@ ECSクラスターが複数のECSサービスから構成される。
 
 ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。
 
-![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
+![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-fargate_microservices.png)
 
 
 > ↪️ 参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
@@ -164,7 +164,7 @@ ECSクラスターが複数のECSサービスから構成される。
 
 Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信できるようにする。
 
-![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
+![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_service-discovery.png)
 
 
 > ↪️ 参考：
@@ -193,7 +193,7 @@ EC2でのみ使用できる。
 
 Dockerのhostネットワークに相当する。
 
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png)
 
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
@@ -205,7 +205,7 @@ EC2でのみ使用できる。
 
 Dockerのbridgeネットワークに相当する。
 
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png)
 
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
@@ -227,7 +227,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 しかし、awsvpcモードではコンテナポートを開放する必要はない。
 
-![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
+![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png)
 
 
 > ↪️ 参考：
@@ -262,7 +262,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
 
-![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
+![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png)
 
 
 > ↪️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
@@ -273,7 +273,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
 
 
-![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
+![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane_vpc-endpoint.png)
 
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
@@ -305,7 +305,7 @@ ECSサービスがECSタスクを操作するために必要なロールであ�
 
 Fargateの場合、不要である。
 
-![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_container-instance-role.png)
+![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_container-instance-role.png)
 
 
 > ↪️ 参考：
@@ -320,7 +320,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
 
-![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-role.png)
+![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png)
 
 
 > ↪️ 参考：
@@ -375,7 +375,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 #### ▼ タスク実行ロール
 
-![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
+![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png)
 
 ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。
 
@@ -514,7 +514,7 @@ Fargateをホストとして、コンテナを作成する。
 
 Fargateの実体はEC2インスタンスである (ドキュメントに記載がないが、AWSサポートに確認済み) 。
 
-![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
+![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_data-plane.png)
 
 
 > ↪️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
@@ -576,14 +576,14 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | healthCheck<br>(interval)       | ```--health-interval```           | ヘルスチェックの間隔を設定する。                                                                                                                                                              |                                                                                                                                                                                                       |
 | healthCheck<br>(retries)        | ```--health-retries```            | ヘルスチェックを成功と見なす回数を設定する。                                                                                                                                                     |                                                                                                                                                                                                       |
 | hostName                        | ```--hostname```                  | コンテナにホスト名を設定する。                                                                                                                                                                |                                                                                                                                                                                                       |
-| image                           |                                   | ECRのURLを設定する。                                                                                                                                                                   | 指定できるURLの記法は、Dockerfileの```FROM```と同じである。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                       |
+| image                           |                                   | ECRのURLを設定する。                                                                                                                                                                   | 指定できるURLの記法は、Dockerfileの```FROM```と同じである。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                       |
 | logConfiguration<br>(logDriver) | ```--log-driver```                | ログドライバーを指定することにより、ログの出力先を設定する。                                                                                                                                             | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。                                               |
 | logConfiguration<br>(options)   | ```--log-opt```                   | ログドライバーに応じて、詳細な設定を行う。                                                                                                                                                       |                                                                                                                                                                                                       |
 | portMapping                     | ```--publish```<br>```--expose``` | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。                                                                                                                              | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                      |
 | secrets<br>(volumesFrom)        |                                   | パラメーターストアから出力する変数を設定する。                                                                                                                                                     |                                                                                                                                                                                                       |
 | memory                          | ```--memory```                    | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。                                                                                                                      | ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
 | memoryReservation               | ```--memory-reservation```        | タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                              | ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
-| mountPoints                     |                                   | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。                                                                                             | ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html                                                                                          |
+| mountPoints                     |                                   | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。                                                                                             | ↪️ 参考：https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html                                                                                          |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                                                                                                                                                   |                                                                                                                                                                                                       |
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
@@ -611,7 +611,7 @@ Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化�
 
 これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
 
-![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
+![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
 
 > ↪️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
@@ -743,7 +743,7 @@ exit ${EXIT_STATUS}
 
 :    全ての既存タスクが新タスクに置き換わる。
 
-![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rolling-update.png)
+![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rolling-update.png)
 
 > ↪️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/
 
@@ -758,7 +758,7 @@ CodeDeployを使用してデプロイする。
 
 ### プライベートサブネット内のFargateからVPC外のAWSリソースへのアクセス
 
-![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
+![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_vpc-endpoint.png)
 
 | VPCエンドポイントの接続先 | プライベートDNS名                                                                                | 説明                                         |
 |-------------------|--------------------------------------------------------------------------------------------|--------------------------------------------|
@@ -790,7 +790,7 @@ NAT GatewayとVPCエンドポイントの両方を作成している場合、ル
 
 #### ▼ セッションマネージャーを使用したECS Exec
 
-![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
+![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png)
 
 セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。
 

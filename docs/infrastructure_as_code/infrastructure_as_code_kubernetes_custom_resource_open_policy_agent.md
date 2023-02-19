@@ -8,7 +8,7 @@ description: OpenPolicyAgent＠カスタムリソースの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -18,7 +18,7 @@ description: OpenPolicyAgent＠カスタムリソースの知見を記録して�
 
 OpenPolicyAgentは、OpenPolicyエージェント、```.rego```ファイル、DB、から構成される。
 
-![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent_architecture.png)
+![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
 > ↪️ 参考：
 >
@@ -33,7 +33,7 @@ DBからアカウント情報を読み出し、```.rego```ファイルのロジ�
 
 返却されたboolean型値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可処理を実施する。
 
-![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-policy-agent.png)
+![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
 
 > ↪️ 参考：https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
 
@@ -188,7 +188,7 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 そのため、GitOpsのCDパイプライン上にバリデーションを実行できる。
 
 
-![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_open-policy-agent.png)
+![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_open-policy-agent.png)
 
 > ↪️ 参考：
 > 

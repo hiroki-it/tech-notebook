@@ -11,7 +11,7 @@ description: クラス＠PHPの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,9 +19,9 @@ description: クラス＠PHPの知見を記録しています。
 
 ### has-one、has-manyな関係性とは
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
 
-![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
+![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
 <br>
 
@@ -53,7 +53,7 @@ description: クラス＠PHPの知見を記録しています。
 
 #### ▼ 例
 
-![aggregation_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aggregation_example.png)
+![aggregation_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregation_example.png)
 
 UserはUserNameをデータとして保持する。
 
@@ -179,7 +179,7 @@ $car = new Car($tire1, $tire2, $tire3, $tire4);
 
 **＊実装例＊**
 
-![composition_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composition_example.png)
+![composition_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png)
 
 UserクラスはUserNameクラスをデータとして保持する。
 
@@ -267,9 +267,9 @@ $car = new Car();
 
 ### is-a-kind-ofな関係性とは
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
 
-![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
+![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
 ### Generalization (汎化) 
 
@@ -477,7 +477,7 @@ class EnginnerShainManagement extends ShainManagement
 
 
 
-![抽象クラス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/抽象クラス.png)
+![抽象クラス](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/抽象クラス.png)
 
 <br>
 
@@ -505,7 +505,7 @@ class EnginnerShainManagement extends ShainManagement
 
 
 
-![インターフェースとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インターフェースとは.png)
+![インターフェースとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースとは.png)
 
 実装クラスに処理内容を記述しなければならない。
 
@@ -515,7 +515,7 @@ class EnginnerShainManagement extends ShainManagement
 
 
 
-![子インターフェースの多重継承_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/子インターフェースの多重継承_2.png)
+![子インターフェースの多重継承_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/子インターフェースの多重継承_2.png)
 
 **＊実装例＊**
 
@@ -580,7 +580,7 @@ class Mammal implements Animal
 
      そこで、抽象メソッドによって、エンジン機能に最低限必要なメソッドの実装を強制する。
 
-![インターフェースと抽象クラスの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インターフェースと抽象クラスの使い分け.png)
+![インターフェースと抽象クラスの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースと抽象クラスの使い分け.png)
 
 <br>
 
@@ -599,8 +599,8 @@ class Mammal implements Animal
 
 > ↪️ 参考：
 >
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_prototype_based.html
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_prototype_based_method_data.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based_method_data.html
 
 **＊実装例＊**
 
@@ -681,7 +681,7 @@ class SubFoo extends Foo
 
 #### ▼ Traitとは
 
-![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Trait.png)
+![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png)
 
 再利用したいメソッドやデータを部品化し、利用したい時にクラスに取り込む。
 
@@ -977,7 +977,7 @@ class Bar
 
 ### useな関係とは
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
 
 <br>
 
@@ -985,7 +985,7 @@ class Bar
 
 #### ▼ Dependencyとは
 
-![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として使用する関係性.png)
+![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
 
 クラスＡがクラスＢを引数型/返却値型として使用する関係性のこと。
 
@@ -1000,7 +1000,7 @@ class Bar
 
 **＊実装例＊**
 
-![dependency_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dependency_example.png)
+![dependency_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dependency_example.png)
 
 UserはUserNameを引数として使用する。
 
@@ -1214,7 +1214,7 @@ LCOM4は、クラスの各メソッド内で、保持する全てのデータに
 
 例として、以下の画像では、道具モジュールを、キッチン引き出しモジュールとガレージ工具箱モジュールに分け、各クラスの結合度を低く、凝集度を高くするように対応している・
 
-![低結合度高凝集度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/低結合度高凝集度.png)
+![低結合度高凝集度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/低結合度高凝集度.png)
 
 <br>
 
@@ -1532,7 +1532,7 @@ $sample = new Sample($container);
 
 
 
-![DIPに基づかない設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DIPに基づかない設計の場合.png)
+![DIPに基づかない設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づかない設計の場合.png)
 
 #### ▼ DIPを満たす実装の場合
 
@@ -1552,7 +1552,7 @@ $sample = new Sample($container);
 
 > ↪️ 参考：https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
-![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DIPに基づく設計の場合.png)
+![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づく設計の場合.png)
 
 #### ▼ DIPに基づくドメイン駆動設計の場合
 
@@ -1572,7 +1572,7 @@ $sample = new Sample($container);
 
 :    ２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース (抽象クラス) に依存することになる。これは、原則１を満たす。
 
-![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 
 <br>
 

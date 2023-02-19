@@ -11,7 +11,7 @@ description: I/O (入出力) 管理＠Linuxカーネルの知見を記録して�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -61,7 +61,7 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 プロセスごとに存在する。
 
-![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.png)
+![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stdin_stdout_stderr.png)
 
 
 > ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
@@ -81,7 +81,7 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 > ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
 
-![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.png)
+![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stdin_stdout_stderr.png)
 
 #### ▼ 標準出力に全て出力
 
@@ -268,7 +268,7 @@ $ echo 'Hello World' >| stdout.txt
 
 『```|```』の縦棒記号のこと。特定のプロセスの標準出力/標準エラー出力を他のプロセスの標準入力に繋げる。
 
-![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
+![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pipeline.png)
 
 シェルは、プロセスの処理結果をパイプラインに出力する。
 
@@ -278,7 +278,7 @@ $ echo 'Hello World' >| stdout.txt
 
 > ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
-![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline_shell.png)
+![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pipeline_shell.png)
 
 <br>
 
@@ -437,6 +437,6 @@ Spoolerは、全てのデータをまとめて出力するのではなく、一�
 
 
 
-![スプーリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スプーリング.jpg)
+![スプーリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スプーリング.jpg)
 
 <br>

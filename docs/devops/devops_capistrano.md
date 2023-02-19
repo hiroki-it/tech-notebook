@@ -11,7 +11,7 @@ description: Capistrano＠DevOpsの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -37,6 +37,6 @@ description: Capistrano＠DevOpsの知見を記録しています。
 
      その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
 
-![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/capistrano_ec2.png)
+![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png)
 
 <br>

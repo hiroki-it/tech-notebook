@@ -11,7 +11,7 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -522,7 +522,7 @@ $ tcpdump src port 80
 
 
 
-![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
+![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traceroute.png)
 
 > ↪️ 参考：
 >

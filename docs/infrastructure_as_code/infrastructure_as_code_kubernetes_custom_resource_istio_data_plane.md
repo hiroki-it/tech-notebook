@@ -10,7 +10,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -38,7 +38,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 > ↪️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
-![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-init.png)
+![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
 
 <br>
 
@@ -151,7 +151,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ```istio-proxy```コンテナはこれを受信し、ローカルホスト (```http://localhost:<アプリコンテナのポート番号>```) のアプリコンテナにルーティングする。
 
-![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_inbound.png)
+![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
 
 > ↪️ 参考：
 >
@@ -164,7 +164,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 サービスディスカバリーによってPod等の宛先情報が、```istio-proxy```コンテナ内のEnvoyに登録されており、```istio-proxy```コンテナはアウトバウンド通信をPodに向けてルーティングする。
 
-![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_other.png)
+![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png)
 
 
 > ↪️ 参考：
@@ -177,7 +177,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 アプリコンテナからローカルホスト (```http://localhost:<ポート番号>```) へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
 
-![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_self.png)
+![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png)
 
 > ↪️ 参考：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
@@ -185,7 +185,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ### ```istio-proxy```コンテナ
 
-![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
+![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png)
 
 リバースプロキシの能力を持つサイドカーコンテナである。
 
@@ -222,7 +222,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 #### ▼ istio-cniアドオンとは
 
-![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-cni.png)
+![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-cni.png)
 
 各Node上で、```istio-cni-node```という名前のDaemonSetとして稼働する。
 

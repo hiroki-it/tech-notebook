@@ -10,7 +10,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -22,7 +22,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 アプリケーションからメトリクスのデータポイントを収集し、Datadogに転送する。
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
 
 > ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
@@ -34,7 +34,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -73,7 +73,7 @@ APMでは、分散トレースを元にして、マイクロサービス間の�
 
 #### ▼ Kubernetesの場合
 
-![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
+![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 
 ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
@@ -86,7 +86,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 調査中...
 
-![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
+![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
 
 > ↪️ 参考：
 >

@@ -11,7 +11,7 @@ description: コマンド＠Minikubeの知見を記録しています。
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -333,7 +333,7 @@ Server Version: version.Info{
 > ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
 
 
 <br>

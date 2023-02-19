@@ -11,7 +11,7 @@ description: Kiali＠カスタムリソースの知見を記録しています�
 
 
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 
 現状は、Istioのコンポーネントに依存している。
 
-![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
+![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kiali_architecture.png)
 
 
 > ↪️ 参考：https://kiali.io/docs/architecture/architecture/
