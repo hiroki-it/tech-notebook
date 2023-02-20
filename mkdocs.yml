@@ -514,6 +514,8 @@ nav:
               - ■ SecretsストアCSIドライバー:
                   - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.md
                   - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.md
+              - ■ AWS EBS CSIドライバー:
+                  - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_aws_ebs.md
       - ■ カスタムリソース:
           - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
           - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
