@@ -78,6 +78,8 @@
   > * ##### <u>SecretsストアCSIドライバー</u>
   > > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.html)
   > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.html)
+  > * ##### <u>AWS EBS CSIドライバー</u>
+  > > * ##### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_aws_ebs.html)
 
 <br>
 
