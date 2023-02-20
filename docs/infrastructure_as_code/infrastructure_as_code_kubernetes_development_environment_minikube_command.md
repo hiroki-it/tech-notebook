@@ -431,15 +431,16 @@ $ minikube update-context
 
 NodePort Serviceを指定し、ホストから仮想サーバーを介して、Node内のServiceにポートフォワーディングを実行する。
 
+```http://127.0.0.1:<自動的に発行されたポート番号>```の形式でURLが発行されるため、ブラウザや```curl```コマンドで接続を確認できる。
 
 ```bash
-$ minikube service <NodePort Servie名> -n foo-namespace
+$ minikube service <NodePort Service名> -n foo-namespace
 
 🏃  Starting tunnel for service <Service名>.
 |-----------|--------------|-------------|------------------------|
 | NAMESPACE   | NAME           | TARGET PORT   | URL                      |
 |-------------|----------------|---------------|--------------------------|
-| default     | <Service名>    |               | http://127.0.0.1:57761   |
+| default     | <Service名>    |               | http://127.0.0.1:<自動的に発行されたポート番号>   |
 | ----------- | -------------- | ------------- | -----I------------------- |
 
 Opening service <Service名> in default browser...
@@ -520,12 +521,15 @@ $ minikube service list
 
 Minikube仮想サーバー内のNodeのIPアドレスと、NodePort Serviceのポート番号を取得する。
 
+```http://127.0.0.1:<自動的に発行されたポート番号>```の形式でURLが発行されるため、ブラウザや```curl```コマンドで接続を確認できる。
+
+
 ```--url```オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。
 
 ```bash
-$ minikube service <NodePort Servie名> --url -n foo-namespace
+$ minikube service <NodePort Service名> --url -n foo-namespace
  
-http://<Minikube仮想サーバー内のNodeのIPアドレス>:<NodePort Serviceのポート番号>
+http://127.0.0.1:<自動的に発行されたポート番号>
 ```
 
 これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。

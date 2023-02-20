@@ -638,15 +638,39 @@ Pod全体をディメンションとしたメトリクスの監視ポリシー�
 
 #### ▼ Deployment系
 
-Deploymentが正しくPodを作成できない場合、HelloWorldのアプリケーションを起動できるイメージがある。
+Deploymentが正しくPodを作成できない場合、それだけでHelloWorldのアプリケーションを起動できるイメージがある。
 
-> ↪️ 参考：https://hub.docker.com/r/paulbouwer/hello-kubernetes/
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: helloworld-pod
+spec:
+  containers:
+    - name: hello-world
+      image: paulbouwer/hello-kubernetes:1.10
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+```
+
+> ↪️ 参考：
+> 
+> - https://hub.docker.com/r/paulbouwer/hello-kubernetes/
+> - https://hub.docker.com/_/nginx
 
 #### ▼ ネットワーク系
 
 ネットワークのトラブルシューティングに役立つツールがインストールされているイメージがある。
 
 ```kubectl debug```コマンドと組み合わせる。
+
+```bash
+$ kubectl debug node/<Node名> \                
+    -n default \
+    -it \
+    --image=praqma/network-multitool
+```
 
 > ↪️ 参考：
 >

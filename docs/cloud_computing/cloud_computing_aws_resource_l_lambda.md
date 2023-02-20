@@ -9,12 +9,9 @@ description: Lambda＠Lで始まるAWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
-
 
 ## 01. Lambda
 
@@ -22,13 +19,9 @@ description: Lambda＠Lで始まるAWSリソース
 
 他のAWSリソースのイベントによって駆動する関数を管理できる。
 
-
 ![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サーバーレスアーキテクチャとは.png)
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
-
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html>
 
 <br>
 
@@ -41,7 +34,7 @@ description: Lambda＠Lで始まるAWSリソース
 | ランタイム                   | 関数の実装に使用する言語を設定する。                           | コンテナイメージの関数では使用できない。                                                                                                                                                                                    |
 | ハンドラ                    | 関数の実行時にコールしたい具体的メソッド名を設定する。                 | ・コンテナイメージの関数では使用できない。<br>・Node.js：```index.js``` というファイル名で ```exports.handler``` メソッドを呼び出したい場合、ハンドラ名を```index.handler```とする                                                                       |
 | レイヤー                    | 異なる関数の間で、特定の処理を共通化できる。                      | コンテナイメージの関数では使用できない。                                                                                                                                                                                    |
-| メモリ                     | Lambdaに割り当てるメモリサイズを設定する。                           | 最大10240MBまで増設でき、増設するほどパフォーマンスが上がる。<br>↪️ 参考：https://www.business-on-it.com/2003-aws-lambda-performance-check/                                                                                      |
+| メモリ                     | Lambdaに割り当てるメモリサイズを設定する。                           | 最大10240MBまで増設でき、増設するほどパフォーマンスが上がる。<br>↪️ 参考：<https://www.business-on-it.com/2003-aws-lambda-performance-check/>                                                                                      |
 | タイムアウト                  |                                                        |                                                                                                                                                                                                             |
 | 実行ロール                 | Lambda内のメソッドが実行される時に必要なポリシーを持つロールを設定する。       |                                                                                                                                                                                                             |
 | 既存ロール                 | Lambdaにロールを設定する。                                     |                                                                                                                                                                                                             |
@@ -57,7 +50,7 @@ description: Lambda＠Lで始まるAWSリソース
 
 ### 設定のベストプラクティス
 
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration>
 
 <br>
 
@@ -69,23 +62,17 @@ description: Lambda＠Lで始まるAWSリソース
 
 コンソール画面のLambdaに相当する。
 
-
-
 #### ▼ 関数の実行環境
 
 Lambdaは、API (ランタイムAPI、ログAPI、拡張API) と実行環境から構成されている。
 
 関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle>
 
 実行環境には、```3```個のフェーズがある。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle>
 
 ![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png)
 
@@ -95,8 +82,6 @@ Lambdaが発火する。
 
 実行環境が作成され、関数を実行するための準備が行われる。
 
-
-
 #### ▼ Invokeフェーズ
 
 Lambdaは関数を実行する。
@@ -105,13 +90,9 @@ Lambdaは関数を実行する。
 
 また関数の実行後に、APIを介して返却値をLambdaに渡す。
 
-
-
 #### ▼ Shutdownフェーズ
 
 一定期間、Invokeフェーズにおける関数実行が行われなかった場合、Lambdaはランタイムを完了し、実行環境を削除する。
-
-
 
 <br>
 
@@ -119,7 +100,7 @@ Lambdaは関数を実行する。
 
 #### ▼ ベースイメージの準備
 
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp>
 
 #### ▼ RIC：Runtime Interface Clients
 
@@ -127,9 +108,7 @@ Lambdaは関数を実行する。
 
 言語別にRICパッケージが用意されている。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client>
 
 #### ▼ RIE：Runtime Interface Emulator
 
@@ -137,15 +116,11 @@ Lambdaは関数を実行する。
 
 全ての言語で共通のRIEパッケージが用意されている。
 
-
-
-> ↪️ 参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
+> ↪️ 参考：<https://github.com/aws/aws-lambda-runtime-interface-emulator>
 
 RIEであっても、稼働させるためにAWSのクレデンシャル情報 (アクセスキーID、シークレットアクセスキー、リージョン) が必要なため、環境変数や```credentials```ファイルを使用して、Lambdaにこれらの値を出力する。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env>
 
 **＊参考＊**
 
@@ -191,7 +166,7 @@ services:
 ```
 
 ```bash
-$ docker compose up lambda
+docker compose up lambda
 ```
 
 ```bash
@@ -216,9 +191,7 @@ Lambdaは、関数の実行中に再びリクエストを受信すると、関�
 
 同時実行の予約数を```0```個とした場合、Lambdaがスケーリングしなくなる。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved>
 
 ![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda_concurrency-model.png)
 
@@ -234,15 +207,11 @@ LambdaはデフォルトではVPC外に配置される。
 
 Lambdaの実行時にENIは再作成されるため、実行ごとにIPアドレスは変化するが、一定時間内の再実行であればENIは再利用されるため、前回の実行時と同じIPアドレスになることもある。
 
-
-
 #### ▼ VPC内への配置
 
 LambdaをVPC内に配置するように設定する。
 
 VPC内に配置したLambdaにはパブリックIPアドレスが割り当てられないため、アウトバウンド通信を行うためには、NAT Gatewayを設置する必要がある。
-
-
 
 <br>
 
@@ -253,8 +222,6 @@ VPC内に配置したLambdaにはパブリックIPアドレスが割り当てら
 Lambdaを実行するためには、デプロイされた関数を使用する認可スコープが必要である。
 
 そのため、関数を取得するためのステートメントを設定する。
-
-
 
 ```yaml
 {
@@ -277,17 +244,13 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 デプロイを行わずに、関数のコードを直接的に修正し、『Deploy』ボタンでデプロイする。
 
-
-
 #### ▼ S3における```.zip```ファイル
 
 ビルド後のコードを```.zip```ファイルにしてアップロードする。
 
 ローカルマシンまたはS3からアップロードできる。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip>
 
 #### ▼ ECRにおけるイメージ
 
@@ -297,9 +260,7 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 ECRからアップロードできる。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
+> ↪️ 参考：<https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images>
 
 <br>
 
@@ -308,8 +269,6 @@ ECRからアップロードできる。
 ### Lambda@Edgeとは
 
 CloudFrontに統合されたLambdaを、特別にLambda@Edgeという。
-
-
 
 <br>
 
@@ -323,8 +282,6 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 
 エッジロケーションのCloudFrontに、Lambdaのレプリカが作成される。
 
-
-
 | トリガーの種類  | 発火のタイミング                                             |
 |------------|------------------------------------------------------|
 | ビューワーリクエスト | CloudFrontが、ビューワーからリクエストを受信した後 (キャッシュを確認する前) 。   |
@@ -336,9 +293,7 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 
 各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
 
-
-
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
+> ↪️ 参考：<https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html>
 
 <br>
 
@@ -347,8 +302,6 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 #### ▼ 実行のための最低限のポリシー
 
 Lambda@Edgeを実行するためには、最低限、以下の認可スコープが必要である。
-
-
 
 ```yaml
 {

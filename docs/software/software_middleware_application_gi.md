@@ -9,9 +9,7 @@ description: GI：Gateway Interface＠アプリケーション系ミドルウェ
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
@@ -26,8 +24,6 @@ description: GI：Gateway Interface＠アプリケーション系ミドルウェ
 ## 02. FastCGI
 
 CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと。
-
-
 
 <br>
 

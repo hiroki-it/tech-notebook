@@ -9,9 +9,7 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
@@ -21,20 +19,18 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 ansible-vaultプラグインによって暗号化されたファイルを使用して、プロビジョニングを実行する。
 
-> ↪️ 参考：https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
+> ↪️ 参考：<https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
 
 ```bash
-$ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
+ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
 ```
 
 **＊例＊**
 
 全てのインベントリーを指定し、また暗号化済みファイルを復号化し、プロビジョニングを実行する。
 
-
-
 ```bash
-$ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
+ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
 
 <br>
@@ -47,32 +43,26 @@ inventoryファイルを指定する。
 
 基本的には、ディレクトリを指定した方が良い。
 
-
-
-> ↪️ 参考：https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849
+> ↪️ 参考：<https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
 
 ```bash
-$ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
+ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
 ```
 
 **＊例＊**
 
 fooインベントリのみを指定して、プロビジョニングを実行する。
 
-
-
 ```bash
-$ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
+ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 ```
 
 **＊例＊**
 
 全てのインベントリーを指定して、プロビジョニングを実行する。
 
-
-
 ```bash
-$ ansible-playbook foo-playbook.yml -i ./inventories
+ansible-playbook foo-playbook.yml -i ./inventories
 ```
 
 <br>
@@ -83,12 +73,10 @@ $ ansible-playbook foo-playbook.yml -i ./inventories
 
 指定した暗号化済みファイルを復号化する。
 
-
-
-> ↪️ 参考：https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
+> ↪️ 参考：<https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
 
 ```bash
-$ ansible-vault decrypt parameters.yml
+ansible-vault decrypt parameters.yml
 ```
 
 <br>
@@ -97,8 +85,6 @@ $ ansible-vault decrypt parameters.yml
 
 指定した平文ファイルを暗号化し、元の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、```ansible-playbook```コマンドで```--ask-vault-pass```オプションを有効化する必要がある。
 
-
-
 ```bash
 $ ansible-vault encrypt parameters.yml
 
@@ -106,6 +92,7 @@ New Vault password:
 Confirm New Vault password:
 Encryption successful
 ```
+
 ```bash
 $ cat parameters.yml
 
@@ -115,8 +102,8 @@ $ANSIBLE_VAULT;1.1;AES256
 
 > ↪️ 参考：
 >
-> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
-> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
+> - <https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
+> - <https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
 
 <br>
 
@@ -128,36 +115,32 @@ $ANSIBLE_VAULT;1.1;AES256
 
 ```inventory```ファイルを指定し、```json```形式に変換する。
 
-
-
-> ↪️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+> ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 ```bash
-$ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
+ansible-playbook -i <inventoryファイル/ディレクトリ> --list
 ```
 
 **＊例＊**
 
 ```bash
-$ ansible-inventory -i ./inventories/inventory --list
+ansible-inventory -i ./inventories/inventory --list
 ```
 
 #### ▼ -y
 
 ```inventory```ファイルを指定し、```yml```形式に変換する。
 
-
-
-> ↪️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+> ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 ```bash
-$ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
+ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
 ```
 
 **＊例＊**
 
 ```bash
-$ ansible-inventory -i ./inventories/inventory --list -y
+ansible-inventory -i ./inventories/inventory --list -y
 ```
 
 <br>

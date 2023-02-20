@@ -1096,9 +1096,9 @@ spec:
 
 #### ▼ hosts
 
-Gatewayに紐づけれたVirtualServiceのドメイン名を設定する。
+Gatewayでフィルタリングするインバウンド通信の```Host```ヘッダー名を設定する。
 
-ワイルドカードを使用できる。
+ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカードを使用して全てのドメインを許可してもよい。
 
 **＊実装例＊**
 
@@ -1235,6 +1235,9 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 コンフィグストレージに登録する宛先のドメイン名を設定する。
 
+宛先のドメインレジストラのドメインのみを許可しても良いが、ワイルドカードを使用して全てのドメインを許可してもよい。
+
+
 **＊実装例＊**
 
 ```yaml
@@ -1337,6 +1340,30 @@ metadata:
 spec:
   exportTo:
     - "."
+```
+
+<br>
+
+### .spec.hosts
+
+#### ▼ hostsとは
+
+Gatewayから受信するインバウンド通信の```Host```ヘッダー名を設定する。
+
+ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカードを使用して全てのドメインを許可してもよい。
+
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  hosts:
+    - "*"
 ```
 
 <br>

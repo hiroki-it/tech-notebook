@@ -56,13 +56,13 @@ title: 【IT技術の知見】当サイトについて
 
 本サイトでは、以下を記載し、その概念を学習するようにしております。
 
-- 定義づけ (演繹的な学習) 
-- 例 (帰納的な学習) 
-- 概念図 (視覚優位な学習) 
+- 定義づけ (演繹的な学習)
+- 例 (帰納的な学習)
+- 概念図 (視覚優位な学習)
 
 そのため、冗長な記載となることをご容赦いただけると幸いです。
 
-> ↪️ 参考：https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/how-to-write.pdf
+> ↪️ 参考：<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/how-to-write.pdf>
 
 <br>
 
@@ -76,7 +76,6 @@ title: 【IT技術の知見】当サイトについて
 | デプロイ           | GitHub Actions |
 | パッケージバージョン更新 | Renovate       |
 
-
 <br>
 
 ## おわび
@@ -86,7 +85,5 @@ title: 【IT技術の知見】当サイトについて
 あくまで、上記の目的のためだけに使用させていただくという名目で、引用元を十分に記載しておりません。
 
 深くお詫び申し上げます。
-
-
 
 <br>

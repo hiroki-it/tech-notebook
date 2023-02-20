@@ -37,15 +37,6 @@ VPCの外側 (パブリックネットワーク) に設置されている。
 
 ## 02. セットアップ
 
-### コンソール画面
-
-| 設定項目            | 説明 |
-|---------------------|------|
-| Distributions       |      |
-| Reports & analytics |      |
-
-<br>
-
 ### Distributions
 
 #### ▼ Distributions

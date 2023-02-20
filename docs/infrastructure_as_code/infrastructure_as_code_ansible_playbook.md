@@ -12,7 +12,7 @@ description: Playbook＠Ansibleの知見を記録しています。
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 
-## 01\. playbookファイル
+## 01. playbookファイル
 
 ### playbookファイルとは
 
@@ -442,7 +442,7 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 ```
 
 
-## 02\. /roles/handlersセクション
+## 02. /roles/handlersセクション
 
 ### handlersセクションとは
 

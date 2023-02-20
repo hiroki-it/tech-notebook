@@ -19,6 +19,7 @@
   > * ##### [Bで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_b.html)
   > * ##### <u>︎Cで始まるAWSリソース</u>
   > > * ##### [︎Cで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_c.html)
+  > > * ##### [CertificateManager](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_c_certificate_manager.html)
   > > * ##### [CloudFront](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_c_cloudfront.html)
   > > * ##### [CloudWatch](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_c_cloudwatch.html)
   > > * ##### [Code系](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_c_code.html)

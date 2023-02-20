@@ -9,20 +9,15 @@ description: Wで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
-
 
 ## 02. WorkMail
 
 ### WorkMailとは
 
 Gmail、サンダーバード、Yahooメールなどと同類のメール管理アプリケーション。
-
-
 
 <br>
 

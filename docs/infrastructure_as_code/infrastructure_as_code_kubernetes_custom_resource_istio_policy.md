@@ -175,7 +175,7 @@ metadata:
   name: foo-virtual-service
 spec:
   hosts:
-    - foo-service.com
+    - "*"
   exportTo:
     - "."
   http:

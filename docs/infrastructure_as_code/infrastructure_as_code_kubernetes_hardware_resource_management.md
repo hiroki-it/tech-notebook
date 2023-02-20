@@ -9,17 +9,13 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
 ## 01. リソース管理とは
 
 種々のKubernetesリソースの状態を管理する。
-
-
 
 <br>
 
@@ -36,9 +32,9 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 コンテナの増加に合わせて要求量を動的に変更できるように、addon-resizerを使用する。
 
 > ↪️ 参考：
-> 
-> - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer
-> - https://qiita.com/superbrothers/items/650d6591aa6531bdbd08
+>
+> - <https://github.com/kubernetes/autoscaler/tree/master/addon-resizer>
+> - <https://qiita.com/superbrothers/items/650d6591aa6531bdbd08>
 
 <br>
 
@@ -67,7 +63,7 @@ data:
     cpuPerNode: 1m
 ```
 
-> ↪️ 参考：https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager
+> ↪️ 参考：<https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager>
 
 <br>
 
@@ -85,11 +81,10 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 
 ![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
 
-
 > ↪️ 参考：
-> 
-> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
-> - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
+>
+> - <https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
+> - <https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html>
 
 <br>
 
@@ -150,9 +145,9 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (負荷が激しく変化するようなシステム) でも合っている。
 
 > ↪️ 参考：
-> 
-> - https://sreake.com/blog/learn-about-karpenter/
-> - https://blog.inductor.me/entry/2021/12/06/165743
+>
+> - <https://sreake.com/blog/learn-about-karpenter/>
+> - <https://blog.inductor.me/entry/2021/12/06/165743>
 
 <br>
 
@@ -202,10 +197,9 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 > ↪️ 参考：
 >
-> - https://sreake.com/blog/kubernetes-descheduler/
-> - https://torumakabe.github.io/post/k8s_descheduler/
-> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
-
+> - <https://sreake.com/blog/kubernetes-descheduler/>
+> - <https://torumakabe.github.io/post/k8s_descheduler/>
+> - <https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8>
 
 <br>
 
@@ -215,17 +209,13 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 再スケジューリングの対象とするPodの選定ルールを設定する。
 
-
-
-> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
+> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler#policy-and-strategies>
 
 #### ▼ LowNodeUtilization
 
 Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングする。
 
-
-
-> ↪️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
+> ↪️ 参考：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23>
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -245,14 +235,11 @@ strategies:
           pods: 50
 ```
 
-
 #### ▼ RemoveDuplicates
 
 Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングする。
 
-
-
-> ↪️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
+> ↪️ 参考：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18>
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -266,7 +253,7 @@ strategies:
 
 調査中...
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -280,16 +267,11 @@ strategies:
         includingInitContainers: true
 ```
 
-
-
 #### ▼ RemovePodsViolatingNodeAffinity
 
 ```.spec.nodeAffinity```キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングする。
 
-
-
-> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
-
+> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -299,13 +281,11 @@ strategies:
     enabled: true
 ```
 
-
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
 調査中...
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
-
+> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -319,8 +299,7 @@ strategies:
 
 調査中...
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
-
+> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -334,8 +313,6 @@ strategies:
         includingInitContainers: true
 ```
 
-
-
 <br>
 
 ## 05. metrics-server
@@ -343,8 +320,6 @@ strategies:
 ### metrics-server
 
 PodとNodeのメトリクスを収集し、Podの負荷状態に合わせて、Podの自動水平スケーリングを実行する。
-
-
 
 <br>
 
@@ -362,8 +337,8 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 > ↪️ 参考：
 >
-> - https://speakerdeck.com/bells17/metrics-server?slide=20
-> - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base
+> - <https://speakerdeck.com/bells17/metrics-server?slide=20>
+> - <https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base>
 
 ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
@@ -377,18 +352,14 @@ ServiceとAPIServiceを介して、クライアント (```kubectl```コマンド
 
 データポイントはローカルストレージに保管している。
 
-
-
 > ↪️ 参考：
 >
-> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
-> - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
+> - <https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html>
+> - <https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58>
 
 #### ▼ metrics-apiserverへのリクエスト
 
 クライアントが```kubectl```コマンド実行者の場合は、```kubectl top```コマンドを実行する。
-
-
 
 ```bash
 # Nodeのメトリクスを取得
@@ -402,17 +373,13 @@ $ kubectl top pod -n <任意のNamespace>
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
-
-> ↪️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
-
+> ↪️ 参考：<https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
 
 <br>
 
 ### ローカルストレージ
 
 メトリクスのデータポイントを保存する。
-
-
 
 <br>
 
@@ -421,8 +388,6 @@ $ kubectl top pod -n <任意のNamespace>
 対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。
 
 収集のために、ServiceAccountとClusterRoleを作成する必要がある。
-
-
 
 <br>
 
@@ -442,8 +407,8 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 > ↪️ 参考：
 >
-> - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
-> - https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/
+> - <https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
+> - <https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/>
 
 #### ▼ 最大Pod数の求め方
 
@@ -451,9 +416,7 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 算出結果に基づいて、スケールアウト/スケールインが実行される。
 
-
-
-> ↪️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
+> ↪️ 参考：<https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14>
 
 ```mathematica
 (必要な最大Pod数)
@@ -463,8 +426,6 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 例えば、『```現在のPod数 = 5```』『```現在のPodのCPU平均使用率 = 90```』『```現在のPodのCPU使用率のターゲット値 = 70```』だとすると、『```必要な最大Pod数 = 7```』となる。
 
 算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
-
-
 
 <br>
 
@@ -476,8 +437,8 @@ Podの垂直スケーリングを実行する。
 
 > ↪️ 参考：
 >
-> - https://ccvanishing.hateblo.jp/entry/2018/10/02/203205
-> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
+> - <https://ccvanishing.hateblo.jp/entry/2018/10/02/203205>
+> - <https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
 
 #### ▼ Podの再作成のない垂直スケーリング
 
@@ -490,12 +451,10 @@ Podの垂直スケーリングを実行する。
 | マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値 (例：```.spec.containers[].resources[].resizePolicy```キー) を追加する。 |
 | eBPFによるインプレース変更      | ハードウェアリソースの不足が検知された時に、eBPFを使用して、Podのマニフェストを変更するJSONPatch処理をフックする。                          |
 
-
-
 > ↪️ 参考：
 >
-> - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12
-> - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode
+> - <https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12>
+> - <https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet>
+> - <https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode>
 
 <br>

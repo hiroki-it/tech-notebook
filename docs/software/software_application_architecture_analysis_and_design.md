@@ -9,9 +9,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
@@ -20,8 +18,6 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 ### オブジェクト指向とは
 
 互いに密接に関連するデータと手続き (処理手順) を、オブジェクトと呼ばれる```1```個のまとまりとして捉えること。
-
-
 
 <br>
 
@@ -35,8 +31,6 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 これにより、ソフトウェアの具体的な機能を明確化させる。
 
-
-
 #### 2. オブジェクト図の作成
 
 要件定義とユースケース図を基に、オブジェクト図を作成する。
@@ -45,9 +39,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 これにより、ソフトウェアの具体的な静的構造を明確化させる。
 
-
-
-> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90%E8%A8%AD%E8%A8%88#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90
+> ↪️ 参考：<https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90%E8%A8%AD%E8%A8%88#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90>
 
 <br>
 
@@ -63,8 +55,6 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 クラス図ではソフトウェアの『振舞』を設計できないため、これはシーケンス図に託す。
 
-
-
 #### 2. シーケンス図の作成
 
 オブジェクト図を参考にしつつ、これに時系列を取り入れ、シーケンス図を作成する。
@@ -73,32 +63,24 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 システムシーケンス図とシーケンス図の違いについて、以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：
 >
-> - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd
-> - https://en.wikipedia.org/wiki/Sequence_diagram
+> - <https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd>
+> - <https://en.wikipedia.org/wiki/Sequence_diagram>
 
 #### 3. 設計のレビュー
 
 ソフトウェアの静的構造を設計するクラス図と、動的な振舞を設計するシーケンス図の間の整合性から、設計を妥当性をレビューする。
 
-
-
-> ↪️ 参考：https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf
+> ↪️ 参考：<https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf>
 
 #### 4. デザインパターンの導入
 
 クラス図に、デザインパターンを基にしたクラスを導入する。
 
-
-
 #### 5. フレームワークのコンポーネントの導入
 
 クラス図に、フレームワークのコンポーネントを導入する。
-
-
 
 <br>
 
@@ -108,8 +90,6 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 オブジェクト指向分析設計で、ソフトウェアをモデリングしやすくするための図のこと。
 
-
-
 <br>
 
 ### ダイアグラムの種類
@@ -118,8 +98,7 @@ UML、概念データモデリング、構造化分析、リアルタイム分�
 
 ![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/diagrams.png)
 
-
-> ↪️ 参考：https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
+> ↪️ 参考：<https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf>
 
 <br>
 
@@ -129,23 +108,17 @@ UML、概念データモデリング、構造化分析、リアルタイム分�
 
 ユーザーの要求に対するソフトウェアの機能に注目するダイアグラムが属する。
 
-
-
 #### ▼ 振舞の視点
 
 ソフトウェアの時系列的な振舞に注目するダイアグラムが属する。
 
 シーケンス図には、分析に使用するシステムシーケンス図と、設計に使用するシーケンス図があることに注意する。
 
-
-
 #### ▼ 構造の視点
 
 ソフトウェアの構成要素とそれぞれの関係に注目するダイアグラムが属する。
 
 クラス図は設計のために使用することに注意する。
-
-
 
 <br>
 
@@ -155,19 +128,15 @@ UML、概念データモデリング、構造化分析、リアルタイム分�
 
 DFD、ユースケース図、アクティビティ図、などがある。
 
-
-
 <br>
 
 ### 振舞の視点
 
 システムシーケンス図、状態遷移図、などがある。
 
-
-
 <br>
 
-## 02-02. DFD：Data Flow Diagram (データフロー図) 
+## 02-02. DFD：Data Flow Diagram (データフロー図)
 
 ### DFDとは
 
@@ -191,8 +160,6 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 』と考え、〇〇 (名詞) をオブジェクト図に反映させる。
 
-
-
 <br>
 
 ### 記法
@@ -210,13 +177,12 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)             | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                   | ```<< invoke >>```も同じである。 |
 | 先行：<br>```<< precedes >>```                                                                                                                        | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                           |                            |
 | 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)               | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                   |                            |
-| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                    | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>↪️ 参考：https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent |                            |
-
+| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                    | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>↪️ 参考：<https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                            |
 
 > ↪️ 参考：
 >
-> - https://it-koala.com/usecasediagrams-1832
-> - https://www.itsenka.com/contents/development/uml/usecase.html
+> - <https://it-koala.com/usecasediagrams-1832>
+> - <https://www.itsenka.com/contents/development/uml/usecase.html>
 
 **＊例＊**
 
@@ -224,7 +190,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 いずれの方も非常に参考になる
 
-> ↪️ 参考：https://github.com/tooppoo/ticket-modeling
+> ↪️ 参考：<https://github.com/tooppoo/ticket-modeling>
 
 ```【１】```
 
@@ -257,8 +223,6 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ビジネスロジックや業務フローを手続き的に表記する。
 
-
-
 **＊例＊**
 
 ![アクティビティ図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アクティビティ図.png)
@@ -273,13 +237,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的としてはユースケース図と似ている。
 
-
-
 > ↪️ 参考：
 >
-> - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd
-> - https://digitalgyan.org/difference-between-sequence-diagram-and-a-system-sequence-diagram/
-> - https://katzn.hatenablog.com/entry/2013/05/08/235531
+> - <https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd>
+> - <https://digitalgyan.org/difference-between-sequence-diagram-and-a-system-sequence-diagram/>
+> - <https://katzn.hatenablog.com/entry/2013/05/08/235531>
 
 <br>
 
@@ -291,8 +253,6 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 矢印の横の説明は、遷移のきっかけとなる『イベント (入力) ⁠/アクション (出力) ⁠』を表す。
 
-
-
 ![状態遷移図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移図.jpg)
 
 <br>
@@ -302,8 +262,6 @@ DFD、ユースケース図、アクティビティ図、などがある。
 状態遷移図から作成した表。
 
 状態遷移表を作成してみると、状態遷移図では、9つあるセルのうち```4```個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
-
-
 
 ![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移表.jpg)
 
@@ -331,7 +289,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 <br>
 
-## 02-07. オブジェクト図 (インスタンス図) 
+## 02-07. オブジェクト図 (インスタンス図)
 
 ### オブジェクト図とは
 
@@ -339,14 +297,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 特定のデータを保持する具体的なオブジェクト間の関係性を基に、ソフトウェアの『静的構造』を表す。
 
-
-
 <br>
 
 ### 記法
 
 ![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/object-diagram.png)
-
 
 | 記号名     | 説明                                                                                                |
 |------------|---------------------------------------------------------------------------------------------------|
@@ -354,13 +309,10 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | スロット       | インスタンスが保持する具体的なデータを表す。『```<属性名>:<データ型> = <値>```』で表記する。                                 |
 | リンク        | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                               |
 
-
-
 > ↪️ 参考：
 >
-> - https://thinkit.co.jp/article/40/3/3.html
-> - https://www.itsenka.com/contents/development/uml/object.html
-
+> - <https://thinkit.co.jp/article/40/3/3.html>
+> - <https://www.itsenka.com/contents/development/uml/object.html>
 
 <br>
 
@@ -370,15 +322,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 クラス図、ER図、などがある。
 
-
-
 <br>
 
 ### 振舞の視点
 
 シーケンス図などがある。
-
-
 
 <br>
 
@@ -386,9 +334,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ドメインモデル図がある。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html>
 
 <br>
 
@@ -400,29 +346,27 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 オブジェクト図のインスタンス間の関係性を参考にして、クラス間の関係性の種類を判断する。
 
-
-
 <br>
 
 ### 記法の種類
 
-#### ▼ has-one、has-many (データとして保持する関係性) 
+#### ▼ has-one、has-many (データとして保持する関係性)
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
 『has-one』『has-many』な関係と表現され、より具体的に説明すると、とデータとして保持する関係性である。Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
 
-#### ▼ is-a-kind-of (グループとメンバーの関係性) 
+#### ▼ is-a-kind-of (グループとメンバーの関係性)
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
 『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
 
-#### ▼ use (引数型/返却値型として使用する関係性) 
+#### ▼ use (引数型/返却値型として使用する関係性)
 
 ![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
 
@@ -432,9 +376,7 @@ Dependency (依存) が使用される。
 
 実装例は以下のリンクを参考にせよ。
 
-
-
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
 
 <br>
 
@@ -448,9 +390,7 @@ Dependency (依存) が使用される。
 
 オブジェクト図のインスタンス間のリンク記号数を参考にして定義する。
 
-
-
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html
+> ↪️ 参考：<https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html>
 
 #### ▼ 記法
 
@@ -475,8 +415,6 @@ Dependency (依存) が使用される。
 
 よって、会社クラスに『```0..*```』を付記する。
 
-
-
 ![多重度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重度.png)
 
 <br>
@@ -489,8 +427,6 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 『IE記法』と『IDEF1X記法』が一般的に使用される。
 
-
-
 <br>
 
 ### IE記法
@@ -501,8 +437,6 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 テーブルに相当するエンティティと、カラムに相当する属性がある。
 
-
-
 ![エンティティとアトリビュート](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/エンティティとアトリビュート.png)
 
 #### ▼ リレーション、カーディナリティ
@@ -511,9 +445,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 ```(カラム数/レコード数)```で導かれ、カーディナリティが高いほど、より効率的なDBインデックスを作成できる。
 
-
-
-> ↪️ 参考：https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb
+> ↪️ 参考：<https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb>
 
 ![リレーションとカーディナリティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リレーションとカーディナリティ.png)
 
@@ -525,11 +457,9 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 ![1対1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1.png)
 
-#### ▼ 1：多 (リレーションが曖昧な状態) 
+#### ▼ 1：多 (リレーションが曖昧な状態)
 
 オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化しく。
-
-
 
 ![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png)
 
@@ -545,7 +475,6 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 オブジェクト間の時系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。
 
-
 | 記号名                  | 説明                                                                                     | 補足                                                                                                                                                                                                                                |
 |-------------------------|-----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ライフライン                  | オブジェクト (クラス、インスタンス) を表す。                                                                | 粒度を大きくして、システムのコンポーネントをライフラインとすることもある。                                                                                                                                                                                            |
@@ -554,20 +483,16 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 | 同期メッセージ               | 既存のライフラインを同期的にコールすることを表す。                                                          |                                                                                                                                                                                                                                     |
 | 非同期メッセージ             | 既存のライフラインを非同期的にコールすることを表す。                                                        |                                                                                                                                                                                                                                     |
 | 生成メッセージ               | ライフラインを新しく作成することを表す。                                                                 |                                                                                                                                                                                                                                     |
-| 自己メッセージ               | ライフラインが、自分自身の内部処理をコールして処理を繰り返すこと、を表す。                                       | ↪️ 参考：https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc                                                                                                                          |
-| 再帰的メッセージ             | ライフラインが、自分自身全体をコールして処理を繰り返すこと、を表す。                                            | ↪️ 参考：https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc                                                                                                                          |
+| 自己メッセージ               | ライフラインが、自分自身の内部処理をコールして処理を繰り返すこと、を表す。                                       | ↪️ 参考：<https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                          |
+| 再帰的メッセージ             | ライフラインが、自分自身全体をコールして処理を繰り返すこと、を表す。                                            | ↪️ 参考：<https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                          |
 | 入れ子実行仕様           | 再帰的メッセージによってコールされた別の実行仕様を表す。                                                    |                                                                                                                                                                                                                                     |
 | 返却メッセージ               | コールの結果を他のライフラインに返却することを表す。                                                         |                                                                                                                                                                                                                                     |
-| 複合フラグメント (結合フラグメント) | 条件分岐、繰り返し、などによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を```alt``` (```alternative```) 、繰り返しの場合は```loop```とする。<br>↪️ 参考：https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88 |
-
-
+| 複合フラグメント (結合フラグメント) | 条件分岐、繰り返し、などによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を```alt``` (```alternative```) 、繰り返しの場合は```loop```とする。<br>↪️ 参考：<https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88> |
 
 > ↪️ 参考：
 >
-> - https://rainbow-engine.com/sequence-diagram-sample/
-> - https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html
-
-
+> - <https://rainbow-engine.com/sequence-diagram-sample/>
+> - <https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html>
 
 **＊例＊**
 
@@ -594,4 +519,3 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 ![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図_2.png)
 
 <br>
-

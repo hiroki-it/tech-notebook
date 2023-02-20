@@ -609,7 +609,7 @@ Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
-> - https://www.amazon.co.jp/dp/B079TG2M5N/  (チャプター5) 
+> - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5) 
 
 #### ▼ ClusterIP Service
 
