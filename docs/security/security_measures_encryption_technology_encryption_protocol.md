@@ -9,8 +9,6 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,9 +21,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
-
 > ↪️ 参考：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
-
 
 <br>
 
@@ -42,9 +38,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg)
 
-
 > ↪️ 参考：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
-
 
 <br>
 
@@ -56,15 +50,11 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 暗号化ダイジェスト (デジタル署名) を含むデジタル証明書をメールに添付することによって、公開鍵の成りすましを防ぐセキュリティ技術。
 
-
-
 ![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/S_MIME.png)
 
 #### ▼ S/MIMEにおけるデジタル証明書
 
 デジタル証明書をS/MIMEに使用する場合、特にS/MIME証明書という。
-
-
 
 <br>
 
@@ -82,18 +72,14 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 物理webサーバーであっても、webサーバーであっても、SSH公開鍵認証によるリモート通信/操作の仕組みは同じである。
 
-
-
-| 要素        | ツール例                       |
-|-----------|-----------------------------|
-| 送信元マシン内 | OpenSSH、TeraTerm、Putty、など   |
+| 要素           | ツール例                        |
+| -------------- | ------------------------------- |
+| 送信元マシン内 | OpenSSH、TeraTerm、Putty、など  |
 | 宛先マシン内   | OpenSSH、Apache MINA/SSHD、など |
 
-#### ▼ SSHポートフォワーディング (SSHポート転送) 
+#### ▼ SSHポートフォワーディング (SSHポート転送)
 
 ローカルマシンと踏み台サーバーのSSH公開鍵認証と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的にパケットを送受信する。
-
-
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
 
@@ -102,8 +88,6 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 このリモートサーバーが、仮想環境の場合もあり、ホストと仮想環境の接続でもSSHポートフォワーディングを使用している。
 
 ホスト外部のパソコンから、ホスト上の仮想環境に接続したい場合、SSHポートフォワーディングを使用することによって、ホストを踏み台とした仮想環境への接続が行えるようになる。
-
-
 
 ![docker_port-forwarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_port-forwarding.png)
 
@@ -117,15 +101,13 @@ SSHを介して、ファイル転送を行う。
 
 SSHの能力をより拡張したプロトコルである。
 
+`【１】`
 
+: クライアントは、リモート通信先のサーバーにファイル送信を命令する。
 
-```【１】```
+`【２】`
 
-:    クライアントは、リモート通信先のサーバーにファイル送信を命令する。
-
-```【２】```
-
-:    サーバーは、Shellを使用してSCPプログラムを起動し、クライアントにファイルを送信する。
+: サーバーは、Shellを使用してSCPプログラムを起動し、クライアントにファイルを送信する。
 
 ![SCPの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SCPの仕組み.png)
 
@@ -146,16 +128,14 @@ SSHを介して、ファイル転送を行う。
 
 SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をより拡張したものである。
 
-
-
-| 要素        | ツール例               |
-|-----------|---------------------|
+| 要素           | ツール例                |
+| -------------- | ----------------------- |
 | 送信元マシン内 | WinSCP、Filezilla、など |
-| 宛先マシン内   | なし                  |
+| 宛先マシン内   | なし                    |
 
 <br>
 
-### RDP：Remote Desktop Protocol (リモートデスクトッププロトコル) 
+### RDP：Remote Desktop Protocol (リモートデスクトッププロトコル)
 
 #### ▼ リモートデスクトップとは
 
@@ -167,15 +147,14 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 その場合、ローカルマシンのコピーを一度リモート先にあるメモ帳などにペーストし、これを改めてコピーアンドペーストすると良い。
 
-| 要素                       | ツール例                     |
-|---------------------------|---------------------------|
-| 送信元マシン内                | Chromeリモートデスクトップ、など       |
-| ゲートウェイマシン内                | Guacamole (guardを含む) 、など |
-| 宛先マシン (サーバー、デスクトップPC) 内 | なし                        |
-
+| 要素                                     | ツール例                         |
+| ---------------------------------------- | -------------------------------- |
+| 送信元マシン内                           | Chromeリモートデスクトップ、など |
+| ゲートウェイマシン内                     | Guacamole (guardを含む) 、など   |
+| 宛先マシン (サーバー、デスクトップPC) 内 | なし                             |
 
 > ↪️ 参考：
->  
+>
 > - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1
 > - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
 > - https://openstandia.jp/oss_info/guacamole/
@@ -185,8 +164,6 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 ゲートウェイマシンとさえ通信できれば、該当のアプリケーションと通信できてしまうため、ゲートウェイマシン自体への通信でも暗号化プロトコル (例：VPN) を使用した方がよい。
 
 例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。
-
-
 
 > ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
 
@@ -208,22 +185,15 @@ SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定�
 
 具体的には、HTTPプロトコルで、GET送信のヘッダ部分、またPOST送信のヘッダ部分とボディ部分を暗号化する。
 
-
-
 **＊例＊**
 
 Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。
 
-
-
 ![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg)
 
-
-#### ▼ 相互TLS (mTLS) 
+#### ▼ 相互TLS (mTLS)
 
 通常のSSL/TLSを使用した通信では、通信の受信側のみSSL証明書を設定すればよいが、相互TLSでは受信側のみでなく送信側にも設定が必要になる。
-
-
 
 > ↪️ 参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
 
@@ -245,8 +215,6 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 盗聴を防げる。
 
-
-
 ![IPsecによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるインターネットVPN.jpg)
 
 #### ▼ IPsecによるパケットのカプセル化
@@ -255,7 +223,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 <br>
 
-### VPN：Virtual Private Network (仮想プライベートネットワーク) 
+### VPN：Virtual Private Network (仮想プライベートネットワーク)
 
 #### ▼ VPNとは
 
@@ -265,13 +233,11 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
-
-
-| 要素         | ツール例                                                     |
-|------------|-----------------------------------------------------------|
+| 要素            | ツール例                                                                    |
+| --------------- | --------------------------------------------------------------------------- |
 | 送信元マシン内  | OpenVpnClient、FortiClient、Zapp (クラウドZscalerのクライアントツール) など |
 | 中継VPNマシン内 | OpenVpn、FortiGate、SDPゲートウェイ (クラウドZscalerのVPNマシン) など       |
-| 宛先マシン内    | なし                                                        |
+| 宛先マシン内    | なし                                                                        |
 
 > ↪️ 参考：
 >
@@ -290,9 +256,6 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 ![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg)
 
-
 > ↪️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
-
-
 
 <br>

@@ -2,6 +2,7 @@
 title: 【IT技術の知見】Kubernetesリソース＠Kubernetes
 description: Kubernetesリソース＠Kubernetesの知見を記録しています。
 ---
+
 # Kubernetesリソース＠Kubernetes
 
 ## はじめに
@@ -82,15 +83,13 @@ Podの負荷に合わせてPodの自動水平スケーリングを実行しな�
 
 #### ▼ ReplicaSetの置き換え
 
-PodTemplate (```.spec.template```キー) を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。
+PodTemplate (`.spec.template`キー) を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。
 
-レプリカ数 (```.spec.replicas```キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
-
+レプリカ数 (`.spec.replicas`キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
 
 ![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png)
 
 > ↪️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
-
 
 #### ▼ Podのレプリカ数の維持
 
@@ -118,7 +117,7 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。
 
-```.spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
+`.spec.ttlSecondsAfterFinished`キーを使用すると、Podのみを自動削除できるようになる。
 
 > ↪️ 参考：
 >
@@ -136,10 +135,10 @@ Kubernetesリソースを配置するサーバーのこと。
 
 #### ▼ ステータス
 
-| フェーズ名   | 説明                                   |
-|----------|--------------------------------------|
-| Ready    | NodeがPodをスケジューリング可能な状態であることを表す。   |
-| NotReady | NodeがPodをスケジューリング不可能な状態であることを表す。 |
+| フェーズ名 | 説明                                                      |
+| ---------- | --------------------------------------------------------- |
+| Ready      | NodeがPodをスケジューリング可能な状態であることを表す。   |
+| NotReady   | NodeがPodをスケジューリング不可能な状態であることを表す。 |
 
 <br>
 
@@ -163,7 +162,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 脆弱性の観点で、デフォルトではコントロールプレーンNodeにPodはスケジューリングされない。
 
-これは、コントロールプレーンNodeにはTaint (```node-role.kubernetes.io/master:NoSchedule```) が設定されているためである。
+これは、コントロールプレーンNodeにはTaint (`node-role.kubernetes.io/master:NoSchedule`) が設定されているためである。
 
 一方で、Nodeにはこれがないため、Podをスケジューリングできる。
 
@@ -191,33 +190,30 @@ $ kubectl taint node --all node-role.kubernetes.io/master:NoSchedule-
 
 #### ▼ Podのライフサイクルフェーズ
 
-Podは、マニフェストの```.status.phase```キーにライフサイクルのフェーズを持つ。
+Podは、マニフェストの`.status.phase`キーにライフサイクルのフェーズを持つ。
 
 ```yaml
 status:
   phase: Running
-
-...
 ```
 
-
-| フェーズ名               | 説明                                                                              | 補足                                                                                                                                                               |
-|----------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Completed            | Pod内の全てのコンテナが正常に終了した。                                                       | Job配下のPodでよく見られるフェーズである。                                                                                                                                        |
-| ContainerCreating    | Pod内にInitContainerがない場合の理由である。コンテナイメージをプルし、コンテナを作成している。                    |                                                                                                                                                                    |
-| CrashLoopBackOff     | Podが、一連のフェーズ (```Running```フェーズ、```Waiting```フェーズ、```Failed```フェーズ) を繰り返している。 |                                                                                                                                                                    |
-| CreateContainerError | Pod内のコンテナの作成に失敗した。                                                           |                                                                                                                                                                    |
-| ErrImagePull         | Pod内のコンテナイメージのプルに失敗した。                                                         |                                                                                                                                                                    |
-| Error                | Pod内のいずれかのコンテナが異常に終了した。                                                      | Job配下のPodの場合はErrorになっても、次のPodが作成される。Jobの```.spec.ttlSecondsAfterFinished```キーを設定していなければ、ErrorのPodがしばらく残り続けるが、もし新しいPodがCompletedになれば問題ない。             |
-| Failed               | Pod内の全てのコンテナの起動が完了し、その後に異常に停止した。                                       |                                                                                                                                                                    |
-| ImagePullBackOff     | Pod内のコンテナイメージのプルに失敗した。                                                         |                                                                                                                                                                    |
-| OOMKilled            | Podのメモリの空きサイズが足らず、コンテナが強制的に終了された。                                          |                                                                                                                                                                    |
-| Pending              | PodがNodeにスケジューリングされたが、Pod内の全てのコンテナの起動がまだ完了していない。                            |                                                                                                                                                                    |
-| PodInitializing      | Pod内にInitContainerがある場合の理由である。コンテナイメージをプルし、コンテナを作成している。                    |                                                                                                                                                                    |
-| PostStartHookError   | PodのPostStartフックに失敗した。                                                          |                                                                                                                                                                    |
-| Running              | Pod内の全てのコンテナの起動が完了し、実行中である。                                              | コンテナの起動が完了すれば```Running```フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、```Running```フェーズであっても```Ready```コンディションではないことに注意する。 |
-| Succeed              | Pod内の全てのコンテナの起動が完了し、その後に正常に停止した。                                       |                                                                                                                                                                    |
-| Unknown              | NodeとPodの間の通信に異常があり、NodeがPodから情報を取得できなかった。                               |                                                                                                                                                                    |
+| フェーズ名           | 説明                                                                                              | 補足                                                                                                                                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Completed            | Pod内の全てのコンテナが正常に終了した。                                                           | Job配下のPodでよく見られるフェーズである。                                                                                                                                                                                                          |
+| ContainerCreating    | Pod内にInitContainerがない場合の理由である。コンテナイメージをプルし、コンテナを作成している。    |                                                                                                                                                                                                                                                     |
+| CrashLoopBackOff     | Podが、一連のフェーズ (`Running`フェーズ、`Waiting`フェーズ、`Failed`フェーズ) を繰り返している。 |                                                                                                                                                                                                                                                     |
+| CreateContainerError | Pod内のコンテナの作成に失敗した。                                                                 |                                                                                                                                                                                                                                                     |
+| ErrImagePull         | Pod内のコンテナイメージのプルに失敗した。                                                         |                                                                                                                                                                                                                                                     |
+| Error                | Pod内のいずれかのコンテナが異常に終了した。                                                       | Job配下のPodの場合はErrorになっても、次のPodが作成される。Jobの`.spec.ttlSecondsAfterFinished`キーを設定していなければ、ErrorのPodがしばらく残り続けるが、もし新しいPodがCompletedになれば問題ない。                                                |
+| Failed               | Pod内の全てのコンテナの起動が完了し、その後に異常に停止した。                                     |                                                                                                                                                                                                                                                     |
+| ImagePullBackOff     | Pod内のコンテナイメージのプルに失敗した。                                                         |                                                                                                                                                                                                                                                     |
+| OOMKilled            | Podのメモリの空きサイズが足らず、コンテナが強制的に終了された。                                   |                                                                                                                                                                                                                                                     |
+| Pending              | PodがNodeにスケジューリングされたが、Pod内の全てのコンテナの起動がまだ完了していない。            |                                                                                                                                                                                                                                                     |
+| PodInitializing      | Pod内にInitContainerがある場合の理由である。コンテナイメージをプルし、コンテナを作成している。    |                                                                                                                                                                                                                                                     |
+| PostStartHookError   | PodのPostStartフックに失敗した。                                                                  |                                                                                                                                                                                                                                                     |
+| Running              | Pod内の全てのコンテナの起動が完了し、実行中である。                                               | コンテナの起動が完了すれば`Running`フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、`Running`フェーズであっても`Ready`コンディションではないことに注意する。 |
+| Succeed              | Pod内の全てのコンテナの起動が完了し、その後に正常に停止した。                                     |                                                                                                                                                                                                                                                     |
+| Unknown              | NodeとPodの間の通信に異常があり、NodeがPodから情報を取得できなかった。                            |                                                                                                                                                                                                                                                     |
 
 > ↪️ 参考：
 >
@@ -226,7 +222,7 @@ status:
 
 #### ▼ Podのコンディション
 
-Podのライフサイクルのフェーズは、```.status.conditions```キーにフェーズの詳細を持つ。
+Podのライフサイクルのフェーズは、`.status.conditions`キーにフェーズの詳細を持つ。
 
 ```yaml
 status:
@@ -248,20 +244,18 @@ status:
       lastTransitionTime: "2022-12-01T18:00:02Z"
       status: "True"
       type: PodScheduled
-...
 ```
 
-例えば```Running```フェーズであっても、```Ready```コンディションになっていない可能性がある。
+例えば`Running`フェーズであっても、`Ready`コンディションになっていない可能性がある。
 
-そのため、Podが正常であると見なすためには、『```Running```フェーズ』かつ『```Ready```コンディション』である必要がある。
+そのため、Podが正常であると見なすためには、『`Running`フェーズ』かつ『`Ready`コンディション』である必要がある。
 
-
-| 各フェーズのコンディション名 | 説明                                                          |
-|------------------|-------------------------------------------------------------|
-| PodScheduled     | NodeへのPodのスケジューリングが完了した。                                    |
-| ContainersReady  | 全てのコンテナの起動が完了し、加えてコンテナ内のアプリケーションやミドルウェアの準備が完了している。 |
-| Initialized      | 全ての```init```コンテナの起動が完了した。                               |
-| Ready            | Pod全体の準備が完了した。                                          |
+| 各フェーズのコンディション名 | 説明                                                                                                 |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------- |
+| PodScheduled                 | NodeへのPodのスケジューリングが完了した。                                                            |
+| ContainersReady              | 全てのコンテナの起動が完了し、加えてコンテナ内のアプリケーションやミドルウェアの準備が完了している。 |
+| Initialized                  | 全ての`init`コンテナの起動が完了した。                                                               |
+| Ready                        | Pod全体の準備が完了した。                                                                            |
 
 > ↪️ 参考：
 >
@@ -270,20 +264,18 @@ status:
 
 #### ▼ Podの最後のフェーズの理由
 
-Podは、```.status.reason```キーに、最後のフェーズの理由を値として持つ。
+Podは、`.status.reason`キーに、最後のフェーズの理由を値として持つ。
 
 ```yaml
 status:
   phase: Failed
   reason: Evicted
-...
 ```
 
-
-| 理由    | 説明                                                                                      |
-|---------|-----------------------------------------------------------------------------------------|
-| Unknown | 原因が不明である。                                                                             |
-| Evicted | Nodeのハードウェアリソース不足のため、Podが退避対象となった。```Evicted```が理由の場合、```Failed```フェーズが最後となる。 |
+| 理由    | 説明                                                                                                               |
+| ------- | ------------------------------------------------------------------------------------------------------------------ |
+| Unknown | 原因が不明である。                                                                                                 |
+| Evicted | Nodeのハードウェアリソース不足のため、Podが退避対象となった。`Evicted`が理由の場合、`Failed`フェーズが最後となる。 |
 
 > ↪️ 参考：https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/developer_guide/diagnosing-evicted-pod
 
@@ -291,9 +283,9 @@ status:
 
 PodがCrashLoopBackOffになっている場合、以下を確認すると良い。
 
-- ```kubectl logs```コマンドで、該当のコンテナのエラーログを確認する。
-- ```kubectl describe nodes```コマンドで、PodがスケジューリングされているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。
-- ```kubectl describe pods```コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。 (Containersの項目で、```kubectl logs```コマンドと同じ内容も確認できる) 
+- `kubectl logs`コマンドで、該当のコンテナのエラーログを確認する。
+- `kubectl describe nodes`コマンドで、PodがスケジューリングされているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。
+- `kubectl describe pods`コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。 (Containersの項目で、`kubectl logs`コマンドと同じ内容も確認できる)
 
 #### ▼ Podを安全に削除する方法
 
@@ -309,13 +301,13 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 また、Serviceとkube-proxyがPodの宛先情報を削除する前に、Podが削除されてしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。
 
-そのため、コンテナの正常な終了後にPodを削除できるように、```.spec.terminationGracePeriodSeconds```キーに任意の秒数を設定し、Podの削除プロセスの完了を待機する必要がある。
+そのため、コンテナの正常な終了後にPodを削除できるように、`.spec.terminationGracePeriodSeconds`キーに任意の秒数を設定し、Podの削除プロセスの完了を待機する必要がある。
 
-また、Serviceとkube-proxyの処理後にPodを削除できるように、ユーザーがPodの```.spec.containers[].lifecycle.preStop```キーに任意の秒数を設定し、コンテナに待機処理 (例：```sleep```コマンド) を実行させる必要がある。
+また、Serviceとkube-proxyの処理後にPodを削除できるように、ユーザーがPodの`.spec.containers[].lifecycle.preStop`キーに任意の秒数を設定し、コンテナに待機処理 (例：`sleep`コマンド) を実行させる必要がある。
 
 これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。
 
-```.spec.terminationGracePeriodSeconds```キーを長めに設定し、```.spec.containers[].lifecycle.preStop```キーの秒数も含めて、全てが完了した上でPodを削除できるようにする。
+`.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを削除できるようにする。
 
 補足として、サービスメッシュツール (例：Istio) のサイドカーを持つPodを安全に削除する場合も、サイドカーコンテナが停止した上でPodを削除できるように、Podの削除プロセスの完了を待機する必要がある。
 
@@ -323,45 +315,45 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
-```【１】```
+`【１】`
 
-:    クライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
+: クライアントは、`kubectl`コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
-```【２】```
+`【２】`
 
-:    Podのマニフェストに```deletionTimestamp```キーが追加され、Podが```Terminating```フェーズとなり、削除プロセスを開始する。
+: Podのマニフェストに`deletionTimestamp`キーが追加され、Podが`Terminating`フェーズとなり、削除プロセスを開始する。
 
-```【３】```
+`【３】`
 
-:    Podの```.spec.terminationGracePeriodSeconds```キーに応じて、Podの削除プロセス完了の待機時間を開始する。
+: Podの`.spec.terminationGracePeriodSeconds`キーに応じて、Podの削除プロセス完了の待機時間を開始する。
 
-```【４】```
+`【４】`
 
-:    最初にpreStopフックが起動し、```.spec.containers[].lifecycle.preStop```キーで設定した待機処理をコンテナが実行する。
+: 最初にpreStopフックが起動し、`.spec.containers[].lifecycle.preStop`キーで設定した待機処理をコンテナが実行する。
 
-```【５】```
+`【５】`
 
-:    DeploymentがPodを切り離す。また、Serviceとkube-proxyがPodの宛先情報を削除する。
+: DeploymentがPodを切り離す。また、Serviceとkube-proxyがPodの宛先情報を削除する。
 
-```【６】```
+`【６】`
 
-:    ```.spec.containers[].lifecycle.preStop```キーによるコンテナの待機処理が終了する。
+: `.spec.containers[].lifecycle.preStop`キーによるコンテナの待機処理が終了する。
 
-```【７】```
+`【７】`
 
-:    待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに```SIGTERM```シグナルを送信する。
+: 待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに`SIGTERM`シグナルを送信する。
 
      これにより、コンテナの停止処理が開始する。
 
-```【８】```
+`【８】`
 
-:    ```.spec.terminationGracePeriodSeconds```キーによるPodの削除プロセス完了の待機時間が終了する。
+: `.spec.terminationGracePeriodSeconds`キーによるPodの削除プロセス完了の待機時間が終了する。
 
      この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
 
-```【９】```
+`【９】`
 
-:    Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
+: Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
 
 > ↪️ 参考：
 >
@@ -374,52 +366,51 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 そのPodに割り当てられたハードウェアリソース (CPU、メモリ) を、Pod内のコンテナが分け合って使用する。
 
-
-| 単位               | 例                                       |
-|--------------------|------------------------------------------|
-| ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
-| ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB              |
+| 単位            | 例                                 |
+| --------------- | ---------------------------------- |
+| `m`：millicores | `1`コア = `1000`ユニット = `1000`m |
+| `Mi`：mebibyte  | `1`Mi = `1.04858`MB                |
 
 > ↪️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 #### ▼ クライアントがPod内のログを参照できる仕組み
 
-```【１】```
+`【１】`
 
-:    クライアント (特に```kubectl```コマンド実行者) が```kubectl logs```コマンドを実行する。
+: クライアント (特に`kubectl`コマンド実行者) が`kubectl logs`コマンドを実行する。
 
-```【２】```
+`【２】`
 
-:    kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
+: kube-apiserverが、`/logs/pods/<ログへのパス>`エンドポイントにリクエストを送信する。
 
-```【３】```
+`【３】`
 
-:    kubeletはリクエストを受信し、Nodeの```/var/log```ディレクトリを読み込む。Nodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
+: kubeletはリクエストを受信し、Nodeの`/var/log`ディレクトリを読み込む。Nodeの`/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log`ファイルは、Pod内のコンテナの`/var/lib/docker/container/<ID>/<ID>-json.log`ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
 
 ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png)
 
 > ↪️ 参考：https://www.creationline.com/lab/29281
 
-補足として、DaemonSetとして稼働するFluentdは、Nodeの```/var/log```ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
+補足として、DaemonSetとして稼働するFluentdは、Nodeの`/var/log`ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
 
 > ↪️ 参考：https://note.com/shift_tech/n/n503b32e5cd35
 
 #### ▼ 待ち受けるポート番号の確認
 
-Pod内のコンテナ内で```netstat```コマンドを実行すると、コンテナが待ち受けているポート番号を確認できる。
+Pod内のコンテナ内で`netstat`コマンドを実行すると、コンテナが待ち受けているポート番号を確認できる。
 
 ```bash
 $ kubectl exec foo-istiod -n istio-system -- netstat -tulpn
 
 Active Internet connections (only servers)
 
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name  
-tcp        0      0 127.0.0.1:9876          0.0.0.0:*               LISTEN      1/pilot-discovery   
-tcp6       0      0 :::15017                :::*                    LISTEN      1/pilot-discovery   
-tcp6       0      0 :::8080                 :::*                    LISTEN      1/pilot-discovery   
-tcp6       0      0 :::15010                :::*                    LISTEN      1/pilot-discovery   
-tcp6       0      0 :::15012                :::*                    LISTEN      1/pilot-discovery   
-tcp6       0      0 :::15014                :::*                    LISTEN      1/pilot-discovery 
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:9876          0.0.0.0:*               LISTEN      1/pilot-discovery
+tcp6       0      0 :::15017                :::*                    LISTEN      1/pilot-discovery
+tcp6       0      0 :::8080                 :::*                    LISTEN      1/pilot-discovery
+tcp6       0      0 :::15010                :::*                    LISTEN      1/pilot-discovery
+tcp6       0      0 :::15012                :::*                    LISTEN      1/pilot-discovery
+tcp6       0      0 :::15014                :::*                    LISTEN      1/pilot-discovery
 ```
 
 <br>
@@ -538,7 +529,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 #### ▼ ホストベースルーティング
 
-```Host```ヘッダーの値に基づいて、Serviceにルーティングする。
+`Host`ヘッダーの値に基づいて、Serviceにルーティングする。
 
 本番環境では、ドメインを指定した各種ダッシュボードにアクセスできるようにする必要がある。
 
@@ -577,15 +568,15 @@ Ingressコントローラーは、Secretに設定されたSSL証明書を参照�
 
 #### ▼ Ingressの設定値のバリデーション
 
-Ingressコントローラーは、『```***-controller-admission```』というServiceでwebhookサーバーを公開している。
+Ingressコントローラーは、『`***-controller-admission`』というServiceでwebhookサーバーを公開している。
 
 このwebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。
 
 これにより、不正なIngressが稼働することを防止できる。
 
-このwebhookサーバーの登録時、まず『```***-create```』というPodが有効期限の長いSSL証明書を持つSecretを作成する。
+このwebhookサーバーの登録時、まず『`***-create`』というPodが有効期限の長いSSL証明書を持つSecretを作成する。
 
-その後、『```***-patch```』というPodがValidatingWebhookConfigurationにこのSSL証明書を設定し、webhookサーバーにSSL証明書が割り当てられる。
+その後、『`***-patch`』というPodがValidatingWebhookConfigurationにこのSSL証明書を設定し、webhookサーバーにSSL証明書が割り当てられる。
 
 > ↪️ 参考：
 >
@@ -609,7 +600,7 @@ Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
-> - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5) 
+> - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5)
 
 #### ▼ ClusterIP Service
 
@@ -617,17 +608,17 @@ Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し
 
 Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。
 
-Cluster-IPはServiceの```.spec.clusterIP```キーで指定しない限りランダムで決まり、Podの```/etc/resolv.conf ```ファイルに記載されている。
+Cluster-IPはServiceの`.spec.clusterIP`キーで指定しない限りランダムで決まり、Podの`/etc/resolv.conf `ファイルに記載されている。
 
-Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。
+Pod内に複数のコンテナがある場合、各コンテナに同じ内容の`/etc/resolv.conf `ファイルが配置される。
 
 ```bash
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
-[root@<Pod名>] $ cat /etc/resolv.conf 
+[root@<Pod名>] $ cat /etc/resolv.conf
 
 nameserver *.*.*.* # ClusterネットワークのIPアドレス
-search default.svc.cluster.local svc.cluster.local cluster.local 
+search default.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
 ```
 
@@ -635,7 +626,7 @@ Cluster-IPはNode外から宛先として指定できないため、インバウ
 
 Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。
 
-一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする```L7```ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
+一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする`L7`ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
 
 そのため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
@@ -645,7 +636,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 > - https://thinkit.co.jp/article/18263
 > - https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
 
-ただし、クラウドプロバイダーによっては```L7```ロードバランサーとClusterIP Serviceを仲介するカスタムリソースを提供している場合がある (AWSのTargetGroupBindings) 。
+ただし、クラウドプロバイダーによっては`L7`ロードバランサーとClusterIP Serviceを仲介するカスタムリソースを提供している場合がある (AWSのTargetGroupBindings) 。
 
 これを使用すれば、ClusterIP Serviceでも、クラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
 
@@ -659,13 +650,13 @@ Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IP�
 
 NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
 
-ただし、NodePort Serviceは内部的にCluster-IPを使っているため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。 (この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い) 
+ただし、NodePort Serviceは内部的にCluster-IPを使っているため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。 (この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い)
 
 NodeのNICの宛先情報は、Nodeの作成方法 (AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。
 
 Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。
 
-この時、```1```個のNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。
+この時、`1`個のNodeのポート番号につき、`1`個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。
 
 一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
 
@@ -679,7 +670,7 @@ Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛�
 
 External-IPはNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、ロードバランサーのみが宛先IPアドレスを指定できる。
 
-クラウドプロバイダー環境 (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする```L4```ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+クラウドプロバイダー環境 (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする`L4`ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
 > ↪️ 参考：
 >
@@ -748,17 +739,16 @@ Cluster全体に渡る機能を提供する。
 
 各Kubernetesリソースの影響範囲を制御するための領域のこと。
 
-Namespaceが異なれば、```metadata```キーに同じ値 (例：同じ名前、など) を設定できる。
+Namespaceが異なれば、`metadata`キーに同じ値 (例：同じ名前、など) を設定できる。
 
 #### ▼ 初期Namespace
 
-
-| 名前                  | 説明                                                                             |
-|-----------------------|--------------------------------------------------------------------------------|
-| ```default```         | 任意のKubernetesリソースを配置する。                                                      |
-| ```kube-node-lease``` | Kubernetesリソースのうちで、特にLeaseを配置する。                                              |
-| ```kube-public```     | 全てのクライアント (```kubectl```クライアント、Kubernetesリソース) に公開してもよいKubernetesリソースを配置する。 |
-| ```kube-system```     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。                |
+| 名前              | 説明                                                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `default`         | 任意のKubernetesリソースを配置する。                                                                          |
+| `kube-node-lease` | Kubernetesリソースのうちで、特にLeaseを配置する。                                                             |
+| `kube-public`     | 全てのクライアント (`kubectl`クライアント、Kubernetesリソース) に公開してもよいKubernetesリソースを配置する。 |
+| `kube-system`     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。                      |
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
 
@@ -782,15 +772,14 @@ Namespaceが異なれば、```metadata```キーに同じ値 (例：同じ名前�
 
 #### ▼ 機密ではない変数の例
 
-
-| 変数           | 何のために使用するのか                          |
-|----------------|-----------------------------------------|
-| DBホスト名        | コンテナがDBに接続する時に、DBのホスト名として使用する。    |
-| DBポート番号      | コンテナがDBに接続する時に、DBのポート番号として使用する。  |
-| DB接続タイムアウト   | コンテナがDBに接続する時に、タイムアウト時間として使用する。  |
-| DB接続再試行数 | コンテナがDBに接続する時に、再試行の回数として使用する。 |
-| タイムゾーン         | コンテナ内のタイムゾーンとして使用する。                 |
-| ...            | ...                                     |
+| 変数               | 何のために使用するのか                                       |
+| ------------------ | ------------------------------------------------------------ |
+| DBホスト名         | コンテナがDBに接続する時に、DBのホスト名として使用する。     |
+| DBポート番号       | コンテナがDBに接続する時に、DBのポート番号として使用する。   |
+| DB接続タイムアウト | コンテナがDBに接続する時に、タイムアウト時間として使用する。 |
+| DB接続再試行数     | コンテナがDBに接続する時に、再試行の回数として使用する。     |
+| タイムゾーン       | コンテナ内のタイムゾーンとして使用する。                     |
+| ...                | ...                                                          |
 
 <br>
 
@@ -800,24 +789,23 @@ Namespaceが異なれば、```metadata```キーに同じ値 (例：同じ名前�
 
 コンテナで使用する機密な変数やファイルをキーバリュー型で永続化する。
 
-永続化されている間は```base64```方式でエンコードされており、デコードした上で、変数やファイルとして対象のPodに出力する。
+永続化されている間は`base64`方式でエンコードされており、デコードした上で、変数やファイルとして対象のPodに出力する。
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets
 
 #### ▼ 機密ではない変数の例
 
-
-| 変数     | 何のために使用するのか                            |
-|----------|-------------------------------------------|
+| 変数         | 何のために使用するのか                                             |
+| ------------ | ------------------------------------------------------------------ |
 | DBユーザー名 | コンテナがDBに接続する時に、DBユーザーのユーザー名として使用する。 |
-| DBパスワード  | コンテナがDBに接続する時に、DBユーザーのパスワードとして使用する。  |
-| ...      | ...                                       |
+| DBパスワード | コンテナがDBに接続する時に、DBユーザーのパスワードとして使用する。 |
+| ...          | ...                                                                |
 
 #### ▼ コンテナイメージプルのパラメーターとして
 
 Podの起動時に、kubectlコマンドが実行され、コンテナイメージをプルする。
 
-Secretに永続化された値を復号化し、```kubectl```コマンドにパラメーターとして出力できる。
+Secretに永続化された値を復号化し、`kubectl`コマンドにパラメーターとして出力できる。
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets
 
@@ -852,9 +840,9 @@ Dockerのボリュームとは独立した機能であることに注意する�
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
-#### ▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffでない場合) 
+#### ▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffでない場合)
 
-Pod内で```df```コマンドを実行すると、PersistentVolumeの使用率を確認できる。
+Pod内で`df`コマンドを実行すると、PersistentVolumeの使用率を確認できる。
 
 出力結果で、ファイルシステム全体の使用率を確認する。
 
@@ -870,13 +858,13 @@ $ kubectl exec -n prometheus foo-pod -- df -hT
 
 > ↪️ 参考：https://github.com/monitoring-mixins/website/blob/master/assets/kubernetes/dashboards/persistentvolumesusage.json
 
-#### ▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffの場合) 
+#### ▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffの場合)
 
 ここでは、Prometheusを例に挙げる。
 
-```【１】```
+`【１】`
 
-:    PrometheusのPodに紐づくPersistentVolumeは、最大200Giを要求していることがわかる。
+: PrometheusのPodに紐づくPersistentVolumeは、最大200Giを要求していることがわかる。
 
 ```bash
 $ kubectl get pvc foo-prometheus-pvc -n prometheus
@@ -884,9 +872,9 @@ NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS
 foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp2-encrypted   181d
 ```
 
-```【２】```
+`【２】`
 
-:    Node内 (AWS EKSのEC2ワーカーNodeの場合) で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
+: Node内 (AWS EKSのEC2ワーカーNodeの場合) で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
 
 ```bash
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/<リージョン>/vol-*****/prometheus-db/
@@ -902,9 +890,9 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 ```
 
-```【３】```
+`【３】`
 
-:    ```df```コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。
+: `df`コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。
 
 ```bash
 $ df -h /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
@@ -913,7 +901,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/nvme8n1    197G  197G     0 100% /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****
 ```
 
-#### ▼ HostPath (本番環境で非推奨) 
+#### ▼ HostPath (本番環境で非推奨)
 
 Nodeのストレージ上にボリュームを作成し、これをコンテナにバインドマウントする。
 
@@ -926,7 +914,7 @@ Nodeのストレージ上にボリュームを作成し、これをコンテナ�
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
 > - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
-#### ▼ Local (本番環境で推奨) 
+#### ▼ Local (本番環境で推奨)
 
 Node上にボリュームを作成し、これをコンテナにバインドマウントする。
 
@@ -947,7 +935,6 @@ Node上にボリュームを作成し、これをコンテナにバインドマ�
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-
 <br>
 
 ### PersistentVolumeClaim
@@ -960,7 +947,7 @@ Node上にボリュームを作成し、これをコンテナにバインドマ�
 
 #### ▼ 削除できない
 
-PersistentVolumeClaimを削除しようとすると、```.metadata.finalizers```キー配下に```kubernetes.io/pvc-protection```値が設定され、削除できなくなることがある。
+PersistentVolumeClaimを削除しようとすると、`.metadata.finalizers`キー配下に`kubernetes.io/pvc-protection`値が設定され、削除できなくなることがある。
 
 ```yaml
 apiVersion: v1
@@ -969,11 +956,10 @@ metadata:
   finalizers:
     - kubernetes.io/pvc-protection
   name: foo-persistent-volume-claim
-spec:
-  ...
+spec: ...
 ```
 
-この場合、```kubectl edit```コマンドなどで```.metadata.finalizers```キーを空配列に編集と、削除できるようになる。
+この場合、`kubectl edit`コマンドなどで`.metadata.finalizers`キーを空配列に編集と、削除できるようになる。
 
 ```bash
 $ kubectl edit pvc <PersistentVolumeClaim名>
@@ -985,19 +971,18 @@ kind: PersistentVolumeClaim
 metadata:
   finalizers: []
   name: foo-persistent-volume-claim
-spec:
-  ...
+spec: ...
 ```
 
 > ↪️ 参考：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
 
 #### ▼ node affinityによるエラー
 
-PersistentVolumeClaimは、```annotation```キー配下の```volume.kubernetes.io/selected-node```キーで紐づくPersistentVolumeが配置されているNode名を指定している。
+PersistentVolumeClaimは、`annotation`キー配下の`volume.kubernetes.io/selected-node`キーで紐づくPersistentVolumeが配置されているNode名を指定している。
 
 PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
 
-しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが```.spec.nodeAffinity```キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
+しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが`.spec.nodeAffinity`キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
 
 ```bash
 N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
@@ -1005,9 +990,9 @@ N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node a
 
 > ↪️ 参考：https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
 
-```【１】```
+`【１】`
 
-:    PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
+: PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
 
 ```bash
 $ kubectl describe pvc <PersistentVolumeClaim名>
@@ -1018,27 +1003,27 @@ Annotations:   pv.kubernetes.io/bind-completed: yes
                pv.kubernetes.io/bound-by-controller: yes
                volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
                volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal
-         
+
 ...
 ```
 
-```【２】```
+`【２】`
 
-:    PodがいずれのNodeでスケジューリングされているのかを確認する。
+: PodがいずれのNodeでスケジューリングされているのかを確認する。
 
 ```bash
 $ kubectl get pod <Pod名> -o wide
 ```
 
-```【３】```
+`【３】`
 
-:    Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。
+: Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。
 
      そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
 
-```【４】```
+`【４】`
 
-:    StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
+: StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
 
 > ↪️ 参考：https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
 
@@ -1053,7 +1038,7 @@ $ kubectl get pod <Pod名> -o wide
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 > ↪️ 参考：
-> 
+>
 > - https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
@@ -1065,7 +1050,7 @@ $ kubectl get pod <Pod名> -o wide
 
 既存 (Node、NFS、iSCSI、Cephなど) のボリュームをそのままKubernetesのボリュームとして使用する。
 
-Podの```.spec.volumes```キーで指定する。
+Podの`.spec.volumes`キーで指定する。
 
 > ↪️ 参考：https://thinkit.co.jp/article/14195
 
@@ -1095,7 +1080,7 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 
-#### ▼ HostPath (本番環境で非推奨) 
+#### ▼ HostPath (本番環境で非推奨)
 
 Node上の既存のストレージ上にボリュームを作成し、コンテナにバインドマウントする。
 
@@ -1106,7 +1091,7 @@ HostPathは非推奨である。
 ```bash
 # Node内でdockerコマンドを実行
 $ docker inspect <コンテナID>
-  
+
     {
 
         ...
@@ -1118,16 +1103,16 @@ $ docker inspect <コンテナID>
                 "/var/lib/kubelet/pods/*****/etc-hosts:/etc/hosts",
                 "/var/lib/kubelet/pods/*****/containers/foo/*****:/dev/termination-log"
             ],
-    
+
             ...
         },
-  
+
         ...
-  
+
         "Mounts": [
-  
+
             ...
-    
+
             {
                 "Type": "bind", # バインドマウントが使用されている。
                 "Source": "/data",
@@ -1162,13 +1147,13 @@ Node上のPod間でボリュームを共有できない。
 外部ストレージ (例：AWS EBS、NFS、など) のストレージ上のボリュームとし、コンテナにマウントする。
 
 > ↪️ 参考：
-> 
+>
 > - https://kubernetes.io/docs/concepts/storage/volumes/
 > - https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
 #### ▼ Volumeの代わりにPersistentVolumeを使用する
 
-Podの```.spec.volumes```キーでPersistentVolumeClaimを宣言すれば、Volumeの代わりにPersistentVolumeを使用できる。
+Podの`.spec.volumes`キーでPersistentVolumeClaimを宣言すれば、Volumeの代わりにPersistentVolumeを使用できる。
 
 <br>
 
@@ -1178,7 +1163,7 @@ Podの```.spec.volumes```キーでPersistentVolumeClaimを宣言すれば、Volu
 
 #### ▼ CertificateSigningRequestとは
 
-認証局に対するSSL証明書の要求 (```openssl x509```コマンド) を宣言的に設定する。
+認証局に対するSSL証明書の要求 (`openssl x509`コマンド) を宣言的に設定する。
 
 別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。
 
@@ -1194,11 +1179,10 @@ Podの```.spec.volumes```キーでPersistentVolumeClaimを宣言すれば、Volu
 
 kube-apiserverが、リクエストの送信元を認証できるようにする。
 
-
-| アカウント名        | 説明                                                                                                                                   | 補足                                                                                                                                                                                                                                                                             |
-|----------------|--------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| アカウント名   | 説明                                                                                                                                                                         | 補足                                                                                                                                                                                                                                                                                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ServiceAccount | kube-apiserverが、Kubernetesリソース (特にPod) を認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>↪️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
-| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                          | クライアントの認証に必要なクライアント証明書は、```~/.kube/config```ファイルに登録する必要がある。                                                                                                                                                                                                           |
+| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                      | クライアントの認証に必要なクライアント証明書は、`~/.kube/config`ファイルに登録する必要がある。                                                                                                                                                                                                                                                    |
 
 > ↪️ 参考：
 >
@@ -1210,7 +1194,7 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 特にServiceAccountには、より正確な定義のユーザー名がある。
 
-ユーザー名は、```system:serviceaccount:＜Namespace名＞:＜ServiceAccount名＞```で定義されている。
+ユーザー名は、`system:serviceaccount:＜Namespace名＞:＜ServiceAccount名＞`で定義されている。
 
 これは、RoleBindingやClusterBindingの定義時に使用できる。
 
@@ -1231,11 +1215,10 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 kube-apiserverが、認証されたKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
 
-
-| ロール名       | 説明                                                             | 補足                                                                                                                                                                                                                                                                                                                                                            |
-|-------------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                      |
-| ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                  | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>↪️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+| ロール名    | 説明                                                                                 | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                    | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>↪️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
 
 > ↪️ 参考：
 >
@@ -1256,9 +1239,8 @@ Role、ClusterRole、を使用して認可スコープを制御する仕組み�
 
 RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
 
-
-| バインディング名          | 説明                       | 補足                                                     |
-|--------------------|---------------------------|--------------------------------------------------------|
+| バインディング名   | 説明                             | 補足                                                               |
+| ------------------ | -------------------------------- | ------------------------------------------------------------------ |
 | RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。               |
 | ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
 

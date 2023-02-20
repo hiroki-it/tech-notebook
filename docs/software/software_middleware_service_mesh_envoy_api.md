@@ -9,15 +9,13 @@ description: API＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. Envoy-API
 
-Envoyの設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すれば良いのかが個人的にはわかりにくく、サービスメッシュツール (例：Istio) でサポートされている付属ツール (例：```istioctl proxy-config```コマンド) を使用した方が良い。
+Envoyの設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すれば良いのかが個人的にはわかりにくく、サービスメッシュツール (例：Istio) でサポートされている付属ツール (例：`istioctl proxy-config`コマンド) を使用した方が良い。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -63,12 +61,10 @@ $ kubectl exec \
   /stats/recentlookups/enable: enable recording of reset stat-name lookup names
 ```
 
-
 > ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface
-
 
 <br>
 
@@ -78,9 +74,7 @@ $ kubectl exec \
 
 宛先情報のバージョンが表示される。
 
-宛先情報が変わった場合、コントロールプレーンは```version_info```キーの値が変更する。
-
-
+宛先情報が変わった場合、コントロールプレーンは`version_info`キーの値が変更する。
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
 
@@ -93,22 +87,20 @@ $ kubectl exec \
     "cluster": {
        ...
      }
-    
+
      ...
-      
+
   }
 ]
 ```
 
 <br>
 
-## 03. ```/clusters```エンドポイント
+## 03. `/clusters`エンドポイント
 
-### ```/clusters```エンドポイントとは
+### `/clusters`エンドポイントとは
 
 静的な設定値 (特に、クラスター) 、サービスディスカバリーによって動的に登録された設定値 (特に、クラスター) を、見やすい形式でレスポンスとして返信する。
-
-
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
@@ -124,8 +116,6 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/clusters
 #### ▼ Istioの場合
 
 Istioを使用している場合には、宛先のIPアドレスとポート番号が登録されている。
-
-
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -158,15 +148,13 @@ outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::10.0.0.3:80::regi
 
 <br>
 
-## 04. ```/config_dump```エンドポイント
+## 04. `/config_dump`エンドポイント
 
-### ```/config_dump```エンドポイントとは
+### `/config_dump`エンドポイントとは
 
 Envoyの現在の全ての設定値を、JSON形式でレスポンスとして返信する。
 
 Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
-
-
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
 
@@ -208,8 +196,6 @@ $ kubectl exec \
 
 サービスディスカバリーによって動的に登録された設定値 (特に、エンドポイント) を、JSON形式でレスポンスとして返信する。
 
-
-
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
 ```bash
@@ -246,20 +232,17 @@ $ kubectl exec \
 - version_info
 ```
 
-#### ▼ ```dynamic_endpoint_configs```キー
+#### ▼ `dynamic_endpoint_configs`キー
 
 準備済みのエンドポイント値が設定されている。
 
-```cluster_name```キーは、```/config_dump?resource={dynamic_active_clusters}```エンドポイントから取得できるJSONの```service_name```キーのエイリアスと紐づいている。
-
-
+`cluster_name`キーは、`/config_dump?resource={dynamic_active_clusters}`エンドポイントから取得できるJSONの`service_name`キーのエイリアスと紐づいている。
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
 
-
 **＊例＊**
 
-foo-podに登録されているbar-podの```endpoint```値を確認してみる。
+foo-podに登録されているbar-podの`endpoint`値を確認してみる。
 
 ```bash
 $ kubectl exec \
@@ -346,18 +329,13 @@ configs:
     ...
 ```
 
-
-
-
 <br>
 
 ### resourceパラメーター
 
 #### ▼ resourceパラメーターとは
 
-```config_dump```エンドポイントのJSON形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。
-
-
+`config_dump`エンドポイントのJSON形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
 
@@ -370,11 +348,9 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 
 準備済みのクラスター値を、JSON形式でレスポンスとして返信する。
 
-クラスターに紐づく宛先に関して、```load_assignment```キーで宛先IPアドレスを直接的に設定する場合と、```service_name```キーでエイリアスを設定する場合がある。
+クラスターに紐づく宛先に関して、`load_assignment`キーで宛先IPアドレスを直接的に設定する場合と、`service_name`キーでエイリアスを設定する場合がある。
 
-```service_name```キーに紐づく宛先情報は、```/config_dump?include_eds```エンドポイントのレスポンスの```dynamic_endpoint_configs```キー配下にある```cluster_name```キーで確認できる。
-
-
+`service_name`キーに紐づく宛先情報は、`/config_dump?include_eds`エンドポイントのレスポンスの`dynamic_endpoint_configs`キー配下にある`cluster_name`キーで確認できる。
 
 > ↪️ 参考：
 >
@@ -388,7 +364,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 **＊例＊**
 
-foo-podに登録されているbar-podの```dynamic_active_clusters```値を確認してみる。
+foo-podに登録されているbar-podの`dynamic_active_clusters`値を確認してみる。
 
 ```bash
 $ kubectl exec \
@@ -414,9 +390,9 @@ configs:
         # https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/cluster.proto#envoy-v3-api-field-config-cluster-v3-cluster-edsclusterconfig-service-name
         service_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
   ...
-  
+
   - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
-  
+
   ...
 ```
 
@@ -427,14 +403,11 @@ configs:
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response
 > - https://cloud.tencent.com/developer/article/1701214
 
-
 #### ▼ dynamic_warm_clusters
 
 準備が完了していない (ウォーミングアップ中の) クラスター値を、JSON形式でレスポンスとして返信する。
 
-もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス (特に、Istio) になる。
-
-
+もしウォーミングアップ中の宛先にルーティングしてしまった場合は、`404`ステータスや`503`ステータス (特に、Istio) になる。
 
 > ↪️ 参考：
 >
@@ -447,10 +420,9 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
 
-
 **＊例＊**
 
-foo-podに登録されているbar-podの```dynamic_warming_clusters```値を確認してみる。
+foo-podに登録されているbar-podの`dynamic_warming_clusters`値を確認してみる。
 
 ```bash
 $ kubectl exec \
@@ -475,8 +447,6 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 サービスディスカバリーによって動的に登録された設定値 (特に、リスナー) を、JSON形式でレスポンスとして返信する。
 
-
-
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
 
 ```bash
@@ -486,7 +456,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 **＊例＊**
 
-foo-podに登録されているbar-podの```dynamic_listeners```値を確認してみる。
+foo-podに登録されているbar-podの`dynamic_listeners`値を確認してみる。
 
 ```bash
 $ kubectl exec \
@@ -529,18 +499,15 @@ configs:
                     # 本リスナーに紐づくルート名を指定している。
                     route_config_name: 50002
   ...
-  
+
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
 
   ...
 ```
 
-
 #### ▼ dynamic_route_configs
 
 サービスディスカバリーによって動的に登録された設定値 (特に、ルート) を、JSON形式でレスポンスとして返信する。
-
-
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
 
@@ -551,7 +518,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 **＊例＊**
 
-foo-podに登録されているbar-podの```dynamic_route_configs```値を確認してみる。
+foo-podに登録されているbar-podの`dynamic_route_configs`値を確認してみる。
 
 ```bash
 $ kubectl exec \
@@ -559,7 +526,7 @@ $ kubectl exec \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P
-    
+
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
     version_info: 2022-11-24T12:13:05Z/468
@@ -602,11 +569,11 @@ configs:
                   grpc_timeout_header_max: 0s
               decorator:
                 operation: bar-service.bar-namespace.svc.cluster.local:50002/*
-                
+
   ...
-                  
+
   - '@type': type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
-  
+
   ...
 ```
 
@@ -614,17 +581,14 @@ configs:
 
 静的なリスナー値を返信する。
 
-
-
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={static_listeners}
 ```
 
-
 **＊例＊**
 
-foo-podに登録されているbar-podの```static_listeners```値を確認してみる。
+foo-podに登録されているbar-podの`static_listeners`値を確認してみる。
 
 ```bash
 $ kubectl exec \
@@ -656,6 +620,5 @@ configs:
 
    ...
 ```
-
 
 <br>

@@ -9,8 +9,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-    
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,13 +19,9 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 構成ファイルの実装に基づくプロビジョニングによって、インフラの構成を管理する手法のこと。
 
-
-
 > ↪️ 参考：https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 補足として、ここでいう『インフラ』は、ハードウェアと一部のソフトウェア (OS、ミドルウェア) を合わせたものである。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software.html
 
@@ -41,15 +35,11 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 コード化により、レビューを事前に行ったうえで変更する、という手順を踏める。
 
-
-
 #### ▼ ヒューマンエラーが減る
 
 画面上からの変更であると、ヒューマンエラーが起こってしまう。
 
 コード化すれば、これが減る。
-
-
 
 #### ▼ 再利用や冗長化が簡単
 
@@ -57,15 +47,11 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 コード化すれば、これが楽になる。
 
-
-
 #### ▼ 過去の変更が記録に残る
 
 画面上からの変更であると、過去の変更履歴が残らない。
 
 コードをバージョン管理すれば、Issueと紐付けて、履歴を残せる。
-
-
 
 <br>
 
@@ -77,8 +63,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 そのため例えばAWSとすると、運用時に変更する頻度が多いインフラ (例：API Gateway (VPCリンクを含む) 、IAMユーザ (紐付けるロールやポリシーを含む) ) はコード化せず、あえて画面上から作成する。
 
-
-
 #### ▼ クラウドプロバイダーの機能追加に追従しにくい
 
 クラウドプロバイダーは日々をオプションを追加している。
@@ -87,15 +71,11 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 運用時に便利なオプションを使用できず、インフラを改善できないことに繋がる。
 
-
-
 #### ▼ リリースの心理的ハードルが高い
 
 画面上から変更すれば、インフラ変更のリリース中に予期せぬエラーが起こることはまずない。
 
 しかし、コード化ツールでは、変更のリリース中に予期せぬエラーが起こる可能性は決して低くないため、リリースの心理的ハードルが高くなる。
-
-
 
 <br>
 
@@ -109,8 +89,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 一方で、順番さえ理解していれば、構成ファイルを簡単に実装できるため、学習コストが低い。
 
-
-
 > ↪️ 参考：
 >
 > - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
@@ -121,7 +99,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 ### サーバー系
 
-#### ▼ サーバープロビジョニング (物理/仮想) 
+#### ▼ サーバープロビジョニング (物理/仮想)
 
 - Ansible
 - Chef
@@ -155,8 +133,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 その一方で、最終的な状態を定義しさえすれば、作成/更新/削除の順序はツールが解決してくれるため、インフラの構成管理のコストが少ない。
 
-
-
 > ↪️ 参考：
 >
 > - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
@@ -166,7 +142,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 ### サーバー系
 
-#### ▼ サーバープロビジョニング (物理/仮想) 
+#### ▼ サーバープロビジョニング (物理/仮想)
 
 - CFEngine
 - Puppet
@@ -228,8 +204,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 サーバーを最終的な状態に至らせるまでの一連の処理のこと。
 
-
-
 > ↪️ 参考：
 >
 > - https://securesamba.com/term/%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0/
@@ -243,8 +217,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 コンテナを最終的な状態に至らせるまでの一連の作業のこと。
 
-
-
 <br>
 
 ### クラウドインフラプロビジョニング
@@ -253,8 +225,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 クラウドインフラを最終的な状態に至らせるまでの一連の作業のこと。
 
-
-
 <br>
 
 ## 05. コンテナオーケストレーション
@@ -262,8 +232,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 ### コンテナオーケストレーション
 
 複数のコンテナの稼働 (プロビジョニング、デプロイメインと、スケーリング、コンテナ間ネットワーク、など) を一括で管理する。
-
-
 
 > ↪️ 参考：https://www.vmware.com/topics/glossary/content/container-orchestration.html
 
@@ -277,10 +245,8 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの作成、コンテナの作成、コンテナの起動、を実行できる。
 
-
 - Docker
 - Docker Compose
-
 
 <br>
 
@@ -293,9 +259,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 - Docker Swarm
 - Kubernetes
 
-
 > ↪️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
-
 
 <br>
 
@@ -307,21 +271,15 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 アプリコンテナと同じPod内や、AWS ECSタスク内に、アプリケーションの一部の機能のみを持つコンテナを配置する。
 
-
-
 #### ▼ ロギングコンテナの配置
 
 FluentBitコンテナをサイドカーコンテナとして稼働させ、アプリコンテナからログを受信し、他にルーティングする。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_log_fluentbit.html
 
 #### ▼ メトリクス収集コンテナの配置
 
 datadogコンテナをサイドカーコンテナとして稼働させ、アプリコンテナからメトリクスのデータポイントを収集する。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_metrics.html
 
@@ -336,8 +294,6 @@ datadogコンテナをサイドカーコンテナとして稼働させ、アプ�
 サービスメッシュを実現するために採用される。
 
 サイドカーパターンではないが、このプロキシコンテナのことをサイドカーコンテナともいう。
-
-
 
 > ↪️ 参考：https://logmi.jp/tech/articles/321841
 

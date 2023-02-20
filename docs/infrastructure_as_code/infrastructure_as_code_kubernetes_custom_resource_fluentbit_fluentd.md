@@ -9,8 +9,6 @@ description: FluentBit/Fluentd＠カスタムリソースの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -37,8 +35,6 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 補足として、AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている。
 
-
-
 > ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
@@ -49,13 +45,11 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ### バッファーの構造
 
-バッファーは、ステージ、キュー、から構成される。ログは、『```*-*.*.flb```』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
+バッファーは、ステージ、キュー、から構成される。ログは、『`*-*.*.flb`』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
 
 ![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
-
 > ↪️ 参考：https://www.alpha.co.jp/blog/202103_01
-
 
 <br>
 
@@ -69,23 +63,20 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_message-queue.png)
 
-
 > ↪️ 参考：https://www.forcia.com/blog/001316.html
-
 
 <br>
 
-
 ### 機能比較
 
-|            | FluentBit                 | Fluentd                           |
-|------------|---------------------------|-----------------------------------|
-| スコープ       | 組み込みLinux/仮想環境      | 仮想環境                          |
-| 言語       | NS                        | C & Ruby                          |
-| メモリ最大サイズ | ```650```KB               | ```40```MB                        |
-| 依存関係   | 標準プラグインではパッケージに依存しない。 | 標準プラグインで一定数のRuby gemに依存する。 |
-| パフォーマンス    | 高                        | 高                                |
-| プラグイン数    | ```70```個                | ```1000```個以上                  |
+|                  | FluentBit                                  | Fluentd                                      |
+| ---------------- | ------------------------------------------ | -------------------------------------------- |
+| スコープ         | 組み込みLinux/仮想環境                     | 仮想環境                                     |
+| 言語             | NS                                         | C & Ruby                                     |
+| メモリ最大サイズ | `650`KB                                    | `40`MB                                       |
+| 依存関係         | 標準プラグインではパッケージに依存しない。 | 標準プラグインで一定数のRuby gemに依存する。 |
+| パフォーマンス   | 高                                         | 高                                           |
+| プラグイン数     | `70`個                                     | `1000`個以上                                 |
 
 <br>
 
@@ -97,16 +88,14 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 フォワーダーのFluentBit/Fluentdの送信元で稼働させ、アグリゲーターを介して、宛先にログを送信する。
 
-フォワーダーは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、がある。
+フォワーダーは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で`1`個ずつ稼働させる場合、がある。
 
 ![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
-
 > ↪️ 参考：
-> 
+>
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
-
 
 <br>
 
@@ -114,13 +103,10 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 エージェントパターンは、FluentBit/Fluentdのエージェントをログの送信元に常駐させ、宛先にログを直接的に送信する。
 
-エージェントは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で```1```個ずつ稼働させる場合、KubernetesのPodようにサイドカーコンテナとして配置する場合、がある。
+エージェントは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で`1`個ずつ稼働させる場合、KubernetesのPodようにサイドカーコンテナとして配置する場合、がある。
 
 ![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
 
-
 > ↪️ 参考：https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 
-
 <br>
-

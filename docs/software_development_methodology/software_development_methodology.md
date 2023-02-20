@@ -9,8 +9,6 @@ description: 手法論＠ソフトウェア開発手法の知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -25,9 +23,7 @@ description: 手法論＠ソフトウェア開発手法の知見を記録して�
 
 #### ▼ 外部設計の詳細
 
-  外部設計では、ユーザ向けのソフトウェア設計が行われる。
-
-
+外部設計では、ユーザ向けのソフトウェア設計が行われる。
 
 ![外部設計の詳細](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/外部設計の詳細.png)
 
@@ -39,21 +35,17 @@ description: 手法論＠ソフトウェア開発手法の知見を記録して�
 
 ソフトウェア設計に入るまでに試作品を作り、要件定義をより正確にする。
 
-
-
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p456.png)
 
 <br>
 
-### RAD (Rapid Application Development) 
+### RAD (Rapid Application Development)
 
 #### ▼ RADとは
 
 Visual Basicなどの開発支援ツールを使用して、短期間で設計～テストまでを繰り返す。
-
-
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
@@ -69,8 +61,6 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 ソフトウェアをいくつかのサブシステムに分割し、ウォーターフォール型開発で各サブシステムを開発していく。
 
-
-
 ![p457](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p457.png)
 
 <br>
@@ -82,8 +72,6 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 スパイラルモデルの派生型。
 
 スパイラルモデルよりも短い期間で、設計～テストまでを繰り返す。
-
-
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
@@ -97,8 +85,6 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 すでにある具体的な実装から、抽象的なアーキテクチャを導く手法のこと。
 
-
-
 <br>
 
 ### フルサイクルエンジニアリング
@@ -111,8 +97,6 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 そのため、SREの実践になる。
 
-
-
 ![full-cycle-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/full-cycle-engineering.png)
 
 <br>
@@ -124,8 +108,6 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 #### ▼ CASEツールとは
 
 ソフトウェア開発をサポートする手法のこと。
-
-
 
 #### ▼ 上流CASEツール
 

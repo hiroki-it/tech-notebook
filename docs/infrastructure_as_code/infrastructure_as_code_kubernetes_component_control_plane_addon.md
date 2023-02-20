@@ -9,12 +9,9 @@ description: アドオン＠コントロールプレーンコンポーネント�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. admission-controllersアドオン
 
@@ -34,18 +31,15 @@ description: アドオン＠コントロールプレーンコンポーネント�
 
 ### admission-controllersアドオンのステップ
 
-
 admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。
 
 mutating-admissionステップは、リクエストの内容を変更する。
 
 またvalidating-admissionステップは、リクエストを許可するか否かを決める。
 
-クライアント (```kubectl```クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、独自処理) を発火させられる。
-
+クライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、独自処理) を発火させられる。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
-
 
 > ↪️ 参考：
 >
@@ -63,8 +57,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 admissionプラグインは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。
 
-kube-apiserverの起動時に実行される```kube-apiserver```コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。
-
+kube-apiserverの起動時に実行される`kube-apiserver`コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。
 
 ```bash
 $ kube-apiserver -h | grep enable-admission-plugins
@@ -91,17 +84,16 @@ ValidatingAdmissionWebhook,
 
 > ↪️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
-
 #### ▼ Webhook系プラグインのSSL証明書
 
 Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook、など) では、kube-apiserverからwebhookサーバーにHTTPSプロトコルで通信する時に、webhookサーバーのためにSL証明書が必要である。
 
 このSSL証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration、など) で管理している。
 
-SSL証明書を含むSecretの作成は```kube-webhook-certgen```イメージで```create```コマンドを実行し、Configurationへの挿入は```patch```コマンドを実行することで実現している。
+SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行し、Configurationへの挿入は`patch`コマンドを実行することで実現している。
 
 > ↪️ 参考：
-> 
+>
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch
 > - https://tokibi.hatenablog.com/entry/2020/01/07/150359
@@ -128,9 +120,6 @@ MutatingAdmissionWebhookプラグインを使用すると、mutating-admission�
 MutatingWebhookConfigurationで、MutatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 
 webhookサーバーは、Cluster内部に設置することが多い。
-
-
-
 
 **＊例＊**
 
@@ -178,7 +167,6 @@ webhooks:
             - <エイリアス>
 ```
 
-
 > ↪️ 参考：
 >
 > - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
@@ -204,7 +192,6 @@ ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookプラグインの
 
 webhookサーバーは、Cluster内部に設置することが多い。
 
-
 **＊例＊**
 
 ```yaml
@@ -213,12 +200,12 @@ kind: ValidatingWebhookConfiguration
 metadata:
   name: istiod-default-validator
 webhooks:
-    # webhook名は完全修飾ドメイン名にする。
+  # webhook名は完全修飾ドメイン名にする。
   - name: validation.istio.io
     admissionReviewVersions: ["v1", "v1beta1"]
     sideEffects: None
     timeoutSeconds: 5
-    # 発火条件を登録する。 (例：Podの作成/更新リクエスト時に発火する) 
+    # 発火条件を登録する。 (例：Podの作成/更新リクエスト時に発火する)
     rules:
       - apiGroups: ["security.istio.io", "networking.istio.io"]
         apiVersions: ["*"]
@@ -237,14 +224,11 @@ webhooks:
       caBundle: Ci0tLS0tQk...
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 > - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
 > - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
-
 
 <br>
 
@@ -263,7 +247,7 @@ AdmissionReviewは、リクエストを定義するAdmissionRequestと、レス�
   # AdmissionRequest
   "request": {},
   # AdmissionResponse
-  "response": {}  
+  "response": {},
 }
 ```
 
@@ -274,7 +258,6 @@ AdmissionReviewは、リクエストを定義するAdmissionRequestと、レス�
 #### ▼ AdmissionRequest
 
 kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメーターを格納し、リクエストとして送信する。
-
 
 **＊例＊**
 
@@ -322,11 +305,10 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
     # etcdに永続化されない。
     "dryRun": false
   }
-  
+
   ...
 }
 ```
-
 
 > ↪️ 参考：
 >
@@ -340,7 +322,6 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
 
 マニフェストのpatch処理の定義方法は、JSON Patchツールに依存している。
 
-
 **＊例＊**
 
 ```yaml
@@ -349,14 +330,14 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
   "kind": "AdmissionReview",
   # AdmissionResponse
   "response": {
-    "uid": "<value from request.uid>",
-    # 宛先のwebhookサーバーが受信したか否かを表す。
-    "allowed": true,
-    # PathによるPatch処理を行う。
-    "patchType": "JSONPatch",
-    # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
-    "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="
-  }
+      "uid": "<value from request.uid>",
+      # 宛先のwebhookサーバーが受信したか否かを表す。
+      "allowed": true,
+      # PathによるPatch処理を行う。
+      "patchType": "JSONPatch",
+      # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
+      "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0=",
+    },
 }
 ```
 
@@ -369,13 +350,10 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
     # .spec.replicasをターゲットとする。
     "path": "/spec/replicas",
     # 値は3とする。
-    "value": 3
-  }
+    "value": 3,
+  },
 ]
 ```
-
-
-
 
 > ↪️ 参考：
 >
@@ -398,8 +376,6 @@ kube-apiserverは、mutating-admissionステップと同じAdmissionReview内の
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。
 
-
-
 **＊例＊**
 
 ```yaml
@@ -408,18 +384,17 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
   "kind": "AdmissionReview",
   # AdmissionResponse
   "response": {
-    "uid": "<value from request.uid>",
-    # 宛先のwebhookサーバーが受信したか否かを表す。
-    "allowed": true,
-    "status": {
-      "code": 403,
-      "message": "You cannot do this because it is Tuesday and your name starts with A"
-    }
-  }
+      "uid": "<value from request.uid>",
+      # 宛先のwebhookサーバーが受信したか否かを表す。
+      "allowed": true,
+      "status":
+        {
+          "code": 403,
+          "message": "You cannot do this because it is Tuesday and your name starts with A",
+        },
+    },
 }
 ```
-
-
 
 > ↪️ 参考：
 >
@@ -427,4 +402,3 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 > - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 <br>
-

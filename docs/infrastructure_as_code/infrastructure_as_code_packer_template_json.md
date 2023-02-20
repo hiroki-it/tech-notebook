@@ -9,8 +9,6 @@ description: template.json＠Packerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -37,8 +35,6 @@ $ sudo apt-get update && sudo apt-get install packer
 
 作成するマシンイメージやコンテナイメージの内容を設定する。
 
-
-
 <br>
 
 ### typeがamazon-ebsの場合
@@ -46,8 +42,6 @@ $ sudo apt-get update && sudo apt-get install packer
 #### ▼ region
 
 AMIを作成するリージョンを設定する。
-
-
 
 ```yaml
 }
@@ -64,8 +58,6 @@ AMIを作成するリージョンを設定する。
 
 AMIの基とするAMIを設定する。
 
-
-
 ```yaml
 }
   "builders": [
@@ -81,8 +73,6 @@ AMIの基とするAMIを設定する。
 
 AMIの名前を設定する。
 
-
-
 ```yaml
 }
   "builders": [
@@ -95,7 +85,6 @@ AMIの名前を設定する。
 ```
 
 #### ▼ ami_users
-
 
 ```yaml
 }
@@ -121,7 +110,6 @@ AMIの名前を設定する。
 }
 ```
 
-
 #### ▼ instance_type
 
 ```yaml
@@ -139,8 +127,6 @@ AMIの名前を設定する。
 
 EC2インスタンスへのSSH公開鍵認証時に使用するユーザー名を設定する。
 
-
-
 ```yaml
 }
   "builders": [
@@ -151,7 +137,6 @@ EC2インスタンスへのSSH公開鍵認証時に使用するユーザー名�
   ]
 }
 ```
-
 
 #### ▼ ena_support
 
@@ -165,7 +150,6 @@ EC2インスタンスへのSSH公開鍵認証時に使用するユーザー名�
   ]
 }
 ```
-
 
 #### ▼ encrypt_boot
 
@@ -186,12 +170,9 @@ EC2インスタンスへのSSH公開鍵認証時に使用するユーザー名�
 
 Packerの作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。
 
-マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、```1```個の名前のマシンイメージを一回しか作成できないことになってしまう。
+マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、`1`個の名前のマシンイメージを一回しか作成できないことになってしまう。
 
 そういった場合に必要になる。
-
-
-
 
 ```yaml
 }
@@ -204,12 +185,9 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 }
 ```
 
-
 #### ▼ launch_block_device_mappings
 
 EC2インスタンスに紐づけるルートデバイスボリュームを設定する。
-
-
 
 ```yaml
 }
@@ -238,8 +216,6 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 #### ▼ typeとは
 
 サーバー/コンテナのプロビジョナーを設定する。
-
-
 
 <br>
 
@@ -298,20 +274,11 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 
 ファイル内で使用する変数を設定する。
 
-
-
 ```yaml
 {
-  "variables": {
-    "region": "ap-northeast-1",
-  },
-  "builders": [
-    {
-      "region": "{{ user `region` }}"
-    }
-  ]
+  "variables": { "region": "ap-northeast-1" },
+  "builders": [{ "region": "{{ user `region` }}" }],
 }
 ```
 
 <br>
-

@@ -9,8 +9,6 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -22,18 +20,12 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 #### ▼ 括弧
 
 ```yaml
-{
-  "account": 200,
-  "fruit": [
-    "banana",
-    "apple"
-  ]
-}
+{ "account": 200, "fruit": ["banana", "apple"] }
 ```
 
 <br>
 
-## 02. 相互パース (シリアライズ + デシリアライズ) 
+## 02. 相互パース (シリアライズ + デシリアライズ)
 
 ### バックエンドとフロントエンド間
 
@@ -42,8 +34,6 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 データ送信のためにオブジェクト (JS型、PHP型) をJSONに変換する処理はシリアライズである。
 
 一方で、送信のためにJSONをオブジェクト (JS型、PHP型) に変換する処理はデシリアライズである。
-
-
 
 ![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シリアライズとデシリアライズ.png)
 
@@ -57,8 +47,6 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 一方で、データ取得のためにJSONをオブジェクト (PHP型) に変換する処理はデシリアライズである。
 
-
-
 <br>
 
 ## 02-02. オブジェクトデータ
@@ -69,17 +57,12 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 キーを、シングルクオーテーションではなく、クオーテーションで囲う必要がある。
 
-
-
 **＊実装例＊**
 
 ```javascript
 const json = {
-  "account": 200,
-  "fruit": [
-    "banana",
-    "apple"
-  ]
+  account: 200,
+  fruit: ["banana", "apple"],
 };
 ```
 
@@ -90,10 +73,10 @@ const json = {
 ```javascript
 // どんなデータを含むJSONなのかわかりやすい方法
 const json = {
-  "age": null,
-  "name": null,
-  "tel": null
-}
+  age: null,
+  name: null,
+  tel: null,
+};
 
 json.age = 30;
 json.name = "taro";
@@ -103,7 +86,7 @@ json.tel = "090-0123-4567";
 **＊実装例＊**
 
 ```javascript
-const json = {}
+const json = {};
 
 // areaというキーの値を追加
 json.prefecture = "Tokyo";
@@ -119,10 +102,10 @@ json["prefecture"] = "Tokyo";
 
 ```javascript
 const json = {
-  "age": 30,
-  "name": "taro",
-  "tel": "090-0123-4567"
-}
+  age: 30,
+  name: "taro",
+  tel: "090-0123-4567",
+};
 
 // areaというキーの値を追加
 json.prefecture = "Tokyo";
@@ -137,8 +120,6 @@ json["prefecture"] = "Tokyo";
 
 以下のサイトで並び替えられる。
 
-
-
 > ↪️ 参考：https://r37r0m0d3l.github.io/json_sort/
 
 <br>
@@ -149,17 +130,12 @@ json["prefecture"] = "Tokyo";
 
 キーはクオーテーションで囲う必要が無い。
 
-
-
 **＊実装例＊**
 
 ```javascript
 const object = {
-  "account": 200,
-  "fruit": [
-    "banana",
-    "apple"
-  ]
+  account: 200,
+  fruit: ["banana", "apple"],
 };
 ```
 
@@ -182,18 +158,18 @@ class Foo {
 
 ```php
 <?php
-    
-class Foo 
+
+class Foo
 {
     private $fruit;
     private $account;
-    
+
     public function __construct($fruit, $account)
     {
         $this->fruit = $fruit;
         $this->account = $account;
     }
-}    
+}
 ```
 
 <br>
@@ -204,16 +180,14 @@ class Foo
 
 #### ▼ シリアライズ：JS型からJSON
 
-JS型オブジェクトからJSONへの変換には、```JSON.stringfy```メソッドを使用する。
-
-
+JS型オブジェクトからJSONへの変換には、`JSON.stringfy`メソッドを使用する。
 
 **＊実装例＊**
 
 ```javascript
 const object = {
   fruit: ["banana", "apple"],
-  account: 200
+  account: 200,
 };
 
 // シリアライズ
@@ -225,16 +199,14 @@ console.log(json);
 
 #### ▼ デシリアライズ：JSONからJS型
 
-JSONからJS型オブジェクトへの変換には、```JSON.parse```メソッドを使用する。
+JSONからJS型オブジェクトへの変換には、`JSON.parse`メソッドを使用する。
 
 レスポンスされたJSONはエスケープされていることに注意する。
-
-
 
 **＊実装例＊**
 
 ```javascript
-const escapedJson = "{\"fruit\":[\"banana\",\"apple\"],\"account\":200}"
+const escapedJson = '{"fruit":["banana","apple"],"account":200}';
 
 console.log(escapedJson); // {"fruit":["banana","apple"],"account":200}
 
@@ -251,37 +223,30 @@ console.log(object);
 
 シリアライズとデシリアライズを行うクラスを以下に示す。
 
-
-
 ```javascript
 class StaffParser {
-
   // デシリアライズによるJS型データを自身に設定
   constructor(properties) {
-    this.id   = properties.id;
+    this.id = properties.id;
     this.name = properties.name;
   }
 
-
   //-- デシリアライズ (JSONからJavaScriptへ)  --//
   static deserializeStaff(json) {
-
     // JS型オブジェクトの定義方法
     return new StaffParser({
       id: json.id,
-      name: json.name
+      name: json.name,
     });
   }
 
-
   //-- シリアライズ (JavaScriptからJSONへ)  --//
   static serializeCriteria(criteria) {
-
     // JSONの定義
     const json = {
-      "id" : null,
-      "name" : null
-    }
+      id: null,
+      name: null,
+    };
 
     // ID
     if (criteria.id) {
@@ -294,7 +259,7 @@ class StaffParser {
       json.name = _.trim(criteria.name);
     }
   }
-}     
+}
 ```
 
 <br>
@@ -305,13 +270,11 @@ class StaffParser {
 
 JSONからPHP型オブジェクトの変換には。
 
-```json_decode```メソッドを使用する。
+`json_decode`メソッドを使用する。
 
-第二引数が```false```の場合、object形式オブジェクトに変換する。
+第二引数が`false`の場合、object形式オブジェクトに変換する。
 
 リクエストで送信するJSONはエスケープする必要があることに注意する。
-
-
 
 ```php
 <?php
@@ -336,9 +299,7 @@ var_dump($object);
 //  }
 ```
 
-第二引数が```true```の場合、連想配列形式に変換する。
-
-
+第二引数が`true`の場合、連想配列形式に変換する。
 
 ```php
 <?php

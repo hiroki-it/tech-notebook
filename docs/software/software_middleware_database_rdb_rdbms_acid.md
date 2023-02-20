@@ -9,8 +9,6 @@ description: ACID＠RDBMSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,8 +19,6 @@ description: ACID＠RDBMSの知見を記録しています。
 
 トランザクションを実現するため必要な機能を略して『ACID』という。
 
-
-
 > ↪️ 参考：
 >
 > - http://tooljp.com/jyosho/docs/ACID/ACID.html
@@ -30,7 +26,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 <br>
 
-### Atomicity (不可分性) 
+### Atomicity (不可分性)
 
 #### ▼ Atomicityとは
 
@@ -38,11 +34,9 @@ description: ACID＠RDBMSの知見を記録しています。
 
 コミットメント制御によって実装される。
 
-
-
 <br>
 
-### Consistency (整合性) 
+### Consistency (整合性)
 
 #### ▼ Consistencyとは
 
@@ -50,11 +44,9 @@ description: ACID＠RDBMSの知見を記録しています。
 
 カラムの制約によって実装される。
 
-
-
 <br>
 
-### Isolation (独立性) 
+### Isolation (独立性)
 
 #### ▼ Isolationとは
 
@@ -62,19 +54,15 @@ description: ACID＠RDBMSの知見を記録しています。
 
 排他制御によって実装される。
 
-
-
 <br>
 
-### Durability (永続性) 
+### Durability (永続性)
 
 #### ▼ Durabilityとは
 
 トランザクションの完了後は、たとえ障害があったとしても、データは失われない性質のこと。
 
 障害回復制御によって実装される。
-
-
 
 <br>
 
@@ -86,19 +74,19 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
-| RDBの書き込み系の操作                    | よくあるメソッド名 (例：PDO)                                         | ラッピング                 | 障害からの回復                  |
-|:-------------------------------------|:------------------------------------------------------------|-----------------------|------------------------------|
-| 更新前ログをジャーナルファイルに書き込む            | ↓                                                           | ↓                     |                              |
-| ↓                                    | ↓                                                           | ↓                     |                              |
-| トランザクション開始                         | ```beginTransaction```メソッド                                  | ```execute```メソッド開始 |                              |
-| ↓                                    | ↓                                                           | ↓                     | ⬆︎                           |
-| ・C/U/Dの実行<br>・トランザクション終了         | ・```insert```メソッド<br>・```update```メソッド<br>・```delete```メソッド | ```flush```メソッド       | ⬆︎ ロールバック：```rollBack```メソッド |
-| ↓                                    | ↓                                                           | ↓                     | ⬆︎                           |
-| コミットの実行。更新後ログをジャーナルファイルに書き込む。 | ```commit```メソッド開始                                        | ↓                     |                              |
-| ↓                                    | ↓                                                           | ↓                     | ⬇︎                           |
-| ↓                                    | ↓                                                           | ↓                     | ⬇︎ *Roll forward*            |
-| ↓                                    | ↓                                                           | ↓                     | ⬇︎                           |
-| チェックポイントによる更新後ログのDB反映           | ```commit```メソッド終了                                        | ```execute```メソッド終了 |                              |
+| RDBの書き込み系の操作                                      | よくあるメソッド名 (例：PDO)                                   | ラッピング            | 障害からの回復                      |
+| :--------------------------------------------------------- | :------------------------------------------------------------- | --------------------- | ----------------------------------- |
+| 更新前ログをジャーナルファイルに書き込む                   | ↓                                                              | ↓                     |                                     |
+| ↓                                                          | ↓                                                              | ↓                     |                                     |
+| トランザクション開始                                       | `beginTransaction`メソッド                                     | `execute`メソッド開始 |                                     |
+| ↓                                                          | ↓                                                              | ↓                     | ⬆︎                                  |
+| ・C/U/Dの実行<br>・トランザクション終了                    | ・`insert`メソッド<br>・`update`メソッド<br>・`delete`メソッド | `flush`メソッド       | ⬆︎ ロールバック：`rollBack`メソッド |
+| ↓                                                          | ↓                                                              | ↓                     | ⬆︎                                  |
+| コミットの実行。更新後ログをジャーナルファイルに書き込む。 | `commit`メソッド開始                                           | ↓                     |                                     |
+| ↓                                                          | ↓                                                              | ↓                     | ⬇︎                                  |
+| ↓                                                          | ↓                                                              | ↓                     | ⬇︎ _Roll forward_                   |
+| ↓                                                          | ↓                                                              | ↓                     | ⬇︎                                  |
+| チェックポイントによる更新後ログのDB反映                   | `commit`メソッド終了                                           | `execute`メソッド終了 |                                     |
 
 <br>
 
@@ -108,15 +96,11 @@ description: ACID＠RDBMSの知見を記録しています。
 
 複数のSQLをセットで扱い、まとめてDBに書き込む。
 
-
-
 > ↪️ 参考：https://oss-db.jp/dojo/dojo_01
 
 #### ▼ PDOによるRDBの書き込み系の操作
 
-PDOでは書き込み処理に```exec```メソッド、読み出し処理に```query```メソッドを使用する。
-
-
+PDOでは書き込み処理に`exec`メソッド、読み出し処理に`query`メソッドを使用する。
 
 **＊実装例＊**
 
@@ -128,13 +112,13 @@ try{
 
     // 例外処理を有効化。
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  
+
     // トランザクションを開始。
     $db->beginTransaction();
     // いくつかのSQLが実行される。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。
     $db->exec("INSERT INTO movie(title, price) VALUES("ハリポタ", 2000)")
     $db->exec("INSERT INTO movie(title, price) VALUES("シスター", 2000)")
-   
+
     // トランザクション内の一連のステートメントが成功したら、ログファイルにコミット。
     $db->commit();
 
@@ -142,14 +126,12 @@ try{
     // 例外が発生したらロールバックし、エラーメッセージを出力。
     $db->rollBack();
     print "失敗しました。：{$e->getMessage()}"
-}  
+}
 ```
 
 #### ▼ DoctrineによるRDBの書き込み系の操作
 
 詳しくは、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
 
@@ -163,8 +145,6 @@ try{
 
 また、更新前ログとして、ストレージ上のジャーナルファイルに書き込む。
 
-
-
 #### ▼ メモリ書き込み
 
 コミットの結果をメモリ上で管理し、ある程度まとまってからデータベースファイルに書き込む。
@@ -173,11 +153,9 @@ try{
 
 ![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
-
 > ↪️ 参考：https://www.kimullaa.com/posts/201910271500/
 
-
-#### ▼ WAL：Write ahead log (ログ先行書き込み) 
+#### ▼ WAL：Write ahead log (ログ先行書き込み)
 
 ![wal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/wal.png)
 
@@ -188,8 +166,6 @@ try{
 そこで、WALによるジャーナルファイルの更新前ログをバックアップとして使用し、メモリ上に書き込まれたデータを復元できる。
 
 また、データベースファイルに書き込むよりも書き込みサイズが少なく済むため、短時間で終了する。
-
-
 
 > ↪️ 参考：
 >
@@ -206,8 +182,6 @@ try{
 
 この時、チェックポイントは、自動実行または手動実行で作成する。
 
-
-
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 ![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランザクション.jpg)
@@ -220,17 +194,13 @@ try{
 
 障害によって、トランザクション内の一連のステートメントがすべて実行されなかった場合、ストレージ上のジャーナルファイルの更新前ログを使用して、トランザクションの開始前の状態に戻す。
 
-
-
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 #### ▼ システム障害からの回復
 
 **＊例＊**
 
-『```b```』の値を更新するステートメントを含むトランザクションの途中に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新前ログ『```b = 1```』を使用して、障害発生前の状態に戻す。
-
-
+『`b`』の値を更新するステートメントを含むトランザクションの途中に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新前ログ『`b = 1`』を使用して、障害発生前の状態に戻す。
 
 ![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg)
 
@@ -242,17 +212,13 @@ try{
 
 障害によって、トランザクションの終了後に一連のステートメントの更新結果がストレージに反映されなかった場合、ストレージ上のジャーナルファイルの更新後ログを使用して、ストレージ上のデータベースファイルに更新結果を反映させる。
 
-
-
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 #### ▼ システム障害からの回復
 
 **＊例＊**
 
-『```a```』の値を更新するステートメントを含むトランザクションの後に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新後ログ『```a = 5```』を使用して、ストレージ上のデータベースファイルに更新結果を反映させる。
-
-
+『`a`』の値を更新するステートメントを含むトランザクションの後に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新後ログ『`a = 5`』を使用して、ストレージ上のデータベースファイルに更新結果を反映させる。
 
 ![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg)
 
@@ -262,13 +228,11 @@ try{
 
 ストレージを初期化/交換した後、バックアップファイルからDBを修復する。
 
-ストレージ上のジャーナルファイルの更新後ログ『```a = 5```』『```b = 1```』を使用して、修復できる限りロールフォワードを行う。
+ストレージ上のジャーナルファイルの更新後ログ『`a = 5`』『`b = 1`』を使用して、修復できる限りロールフォワードを行う。
 
 ![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/媒体障害の障害回復機能.jpg)
 
-
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
-
 
 **＊例＊**
 
@@ -331,15 +295,11 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 結果として、ユーザBのUPDATE処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。
 
-
-
 > ↪️ 参考：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
 
 ![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png)
 
 ユーザAとユーザBのUPDATE処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。
-
-
 
 ![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png)
 
@@ -349,10 +309,9 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 #### ▼ 排他制御の種類
 
-
-| ロック名            | 説明                     |
-|-----------------|------------------------|
-| 共有/占有ロック     | DBによるロック機能。            |
+| ロック名            | 説明                                       |
+| ------------------- | ------------------------------------------ |
+| 共有/占有ロック     | DBによるロック機能。                       |
 | 楽観的/悲観的ロック | アプリケーションまたはDBによるロック機能。 |
 
 > ↪️ 参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
@@ -360,8 +319,6 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 #### ▼ UPDATE処理競合問題の許容
 
 UPDATE処理競合問題を許容し、排他制御を使用しない選択肢もある。
-
-
 
 <br>
 
@@ -377,9 +334,7 @@ DBで、CRUDのREAD処理以外の処理を実行できなくする。
 
 『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行える。
 
-MySQLでは、『```SELECT ... LOCK IN SHARE MODE```』を使用する。
-
-
+MySQLでは、『`SELECT ... LOCK IN SHARE MODE`』を使用する。
 
 > ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
@@ -389,9 +344,7 @@ DBで、CRUDの全ての処理を実行できなくする。
 
 レコードのUPDATE処理を実行する時に、他者によってUPDATE/READ処理の両方を実行させない場合に使用する。
 
-MySQLでは、『```SELECT ... FOR UPDATE```』を使用する。
-
-
+MySQLでは、『`SELECT ... FOR UPDATE`』を使用する。
 
 > ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
@@ -401,12 +354,10 @@ MySQLでは、『```SELECT ... FOR UPDATE```』を使用する。
 
 もう一方のレコードのロックが解除されないと、自身のレコードのロックを解除できない時、トランザクションが停止する。
 
-
-
-|                    | 共有ロックの実行 | 占有ロックの実行 |
-|:------------------:|:------------:|:------------:|
-| **共有ロックされたレコード** |      〇       |      ✕       |
-| **占有ロックされたレコード** |      ✕       |      ✕       |
+|                              | 共有ロックの実行 | 占有ロックの実行 |
+| :--------------------------: | :--------------: | :--------------: |
+| **共有ロックされたレコード** |        〇        |        ✕         |
+| **占有ロックされたレコード** |        ✕         |        ✕         |
 
 ![Null](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デッドロック.gif)
 
@@ -424,9 +375,7 @@ UPDATE処理のためにユーザAがDBのレコードを取得した時に、�
 
 保持しておいたバージョン値とDBの値を比較し、DBの値の方がより新バージョンだった場合、UPDATE処理を失敗させることにより、複数の更新処理の競合を防ぐ。
 
-競合によるエラーを表す```409```ステータスをレスポンスとして返信すると良い。
-
-
+競合によるエラーを表す`409`ステータスをレスポンスとして返信すると良い。
 
 > ↪️ 参考：
 >
@@ -441,8 +390,6 @@ UPDATE処理のためにユーザAがDBのレコードを取得した時に、�
 
 アプリケーションで悲観的ロックを実装することは難易度が高く、基本的にはDBが提供するロックを使用する。
 
-
-
 > ↪️ 参考：
 >
 > - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
@@ -453,8 +400,6 @@ UPDATE処理のためにユーザAがDBのレコードを取得した時に、�
 ORMが楽観的ロックの能力を持っている場合がある。
 
 PHPのORMであるDoctrineのロック機能については、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：
 >
@@ -473,8 +418,6 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 しかし、ロックの粒度を細かくすればするほど、それだけベース管理システムのCPU負荷は大きくなる。
 
-
-
 ![ロックの粒度-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-2.jpg)
 
 <br>
@@ -487,13 +430,11 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 ![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_point-in-time-recovery.png)
 
-特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は```mysqldump```コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) 、を使用し、DBを任意の時点の状態に戻す。
+特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は`mysqldump`コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) 、を使用し、DBを任意の時点の状態に戻す。
 
 トランザクションの前後の状態に戻すロールバック/ロールフォワードとは異なり、DBを任意の時点の状態に戻せる。
 
 補足として、バックアップに含まれない期間の状態には戻せない。
-
-
 
 > ↪️ 参考：
 >
@@ -507,13 +448,11 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 SQLの種類に合わせてツールが用意されている。
 
-
-
-| SQLの種類   | ポイントインタイムリカバリーのツール例 | 補足                                                                 |
-|------------|----------------------|--------------------------------------------------------------------|
-| MySQL      | XtraBackup           | ↪️ 参考：https://developers.cyberagent.co.jp/blog/archives/28454/     |
-| PostgreSQL | Barman               | ↪️ 参考：https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
-| MariaDB    | Xpand                | ↪️ 参考：https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
+| SQLの種類  | ポイントインタイムリカバリーのツール例 | 補足                                                                  |
+| ---------- | -------------------------------------- | --------------------------------------------------------------------- |
+| MySQL      | XtraBackup                             | ↪️ 参考：https://developers.cyberagent.co.jp/blog/archives/28454/     |
+| PostgreSQL | Barman                                 | ↪️ 参考：https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
+| MariaDB    | Xpand                                  | ↪️ 参考：https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
 
 ```bash
 # 例えば、一週間分の保管期間を設定した場合

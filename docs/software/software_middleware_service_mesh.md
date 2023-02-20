@@ -9,8 +9,6 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -27,7 +25,6 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 > ↪️ 参考：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
 
-
 <br>
 
 ### メッシュ
@@ -40,10 +37,8 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービス間で直接的に通信を送受信する (サービスメッシュを導入しない) 場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://solace.com/blog/event-mesh-service-mesh-for-microservices/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html
 
@@ -54,8 +49,6 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 ### サービスメッシュとは
 
 マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。
-
-
 
 <br>
 
@@ -71,14 +64,10 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念により、アプリケーションエンジニアがこれらのロジックを意識せずに (透過的に) 、インフラストラクチャ層より上層 (インターフェース層、ユースケース層、ドメイン層) の実装に注力できる。
 
-
-
 > ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 > - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
-
-
 
 <br>
 
@@ -91,8 +80,6 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。
 
 マイクロサービス間の通信を透過的にする (通信の存在を感じさせない) ことを思想としている。
-
-
 
 > ↪️ 参考：
 >
@@ -107,9 +94,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
-
 > ↪️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
-
 
 <br>
 
@@ -125,9 +110,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_control-plane.png)
 
-
 > ↪️ 参考：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
-
 
 <br>
 
@@ -135,24 +118,19 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 データプレーンとコントロールプレーンの組み合わせには様々ある。
 
-
-
-| OSS名   | データプレーンの実装               | コントロールプレーンの実装                     | サポートしているXDS-API |
-|---------|----------------------------|-------------------------------------|-----------------|
-| Istio   | Envoy                      | Istiod                              | 全てのXDS-API     |
-| Linkerd | ビルトインプロキシ (Linkerd2-proxy) | Proxy Injector、Destination、Identity | 全てのXDS-API     |
-| Consul  | ビルトインプロキシ、Envoy            | Consul-control-plane                | 全てのXDS-API     |
-| SPIRE   | Envoy                      | SPIRE                               | SDSのみ           |
-| ...     | ...                        | ...                                 | ...             |
-
-
+| OSS名   | データプレーンの実装                | コントロールプレーンの実装            | サポートしているXDS-API |
+| ------- | ----------------------------------- | ------------------------------------- | ----------------------- |
+| Istio   | Envoy                               | Istiod                                | 全てのXDS-API           |
+| Linkerd | ビルトインプロキシ (Linkerd2-proxy) | Proxy Injector、Destination、Identity | 全てのXDS-API           |
+| Consul  | ビルトインプロキシ、Envoy           | Consul-control-plane                  | 全てのXDS-API           |
+| SPIRE   | Envoy                               | SPIRE                                 | SDSのみ                 |
+| ...     | ...                                 | ...                                   | ...                     |
 
 > ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
 > - https://qiita.com/ryysud/items/bbfc730e17f53be65ce0
-
 
 <br>
 
@@ -162,8 +140,6 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所 (IPアドレス、ポート番号、完全修飾ドメイン名、など) を動的に検出し、また同時に名前解決できるようにする仕組みのこと。
 
-
-
 <br>
 
 ### サービスディスカバリーの要素
@@ -172,17 +148,13 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 サービスディスカバリーの仕組みは、次の要素からなる。
 
-
-
-
 - 送信元マイクロサービス
 - 宛先マイクロサービス
 - サービスレジストリ
 - ロードバランサー
-- 名前解決 (DNSベースのサービスディスカバリーの場合のみ) 
+- 名前解決 (DNSベースのサービスディスカバリーの場合のみ)
 
 > ↪️ 参考：https://www.baeldung.com/cs/service-discovery-microservices
-
 
 <br>
 
@@ -196,15 +168,13 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
 
+`【１】`
 
+: 送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、宛先情報を取得する。
 
-```【１】```
+`【２】`
 
-:    送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、宛先情報を取得する。
-
-```【２】```
-
-:    送信元マイクロサービスは、ロードバランサーを介して、宛先マイクロサービスにリクエストを送信する。
+: 送信元マイクロサービスは、ロードバランサーを介して、宛先マイクロサービスにリクエストを送信する。
 
 > ↪️ 参考：
 >
@@ -227,19 +197,17 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
 
+`【１】`
 
+: 送信元マイクロサービスは、ロードバランサーにリクエストを送信する。
 
-```【１】```
+`【２】`
 
-:    送信元マイクロサービスは、ロードバランサーにリクエストを送信する。
+: ロードバランサーは、宛先マイクロサービスの場所をサービスディスカバリーに問い合わせ、宛先情報を取得する。
 
-```【２】```
+`【２】`
 
-:    ロードバランサーは、宛先マイクロサービスの場所をサービスディスカバリーに問い合わせ、宛先情報を取得する。
-
-```【２】```
-
-:    ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
+: ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
 
 > ↪️ 参考：
 >
@@ -251,8 +219,8 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ 実装方法
 
-- KubernetesのServiceとkube-proxy + CoreDNS (DNSベースのサービスディスカバリー) 
-- サイドカープロキシ (例：Istioの```istio-proxy```、Nginx、など) を使用したサービスディスカバリー
+- KubernetesのServiceとkube-proxy + CoreDNS (DNSベースのサービスディスカバリー)
+- サイドカープロキシ (例：Istioの`istio-proxy`、Nginx、など) を使用したサービスディスカバリー
 
 <br>
 
@@ -261,8 +229,6 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 ### イベントメッシュとは
 
 マイクロサービス間の通信方式でイベント駆動方式を採用した場合に使用するメッシュ。
-
-
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 

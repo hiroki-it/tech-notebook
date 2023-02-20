@@ -9,8 +9,6 @@ description: GCP CLI＠GCPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,21 +21,17 @@ description: GCP CLI＠GCPの知見を記録しています。
 
 GCPアカウントの認証を行う。
 
-
-
 > ↪️ 参考：https://cloud.google.com/sdk/gcloud/reference/auth
 
 #### ▼ application-default login
 
 GCP CLIによるGCPリソースへのアクセスを認証するために使用する。
 
-```~/.config/gcloud/application_default_credentials.json```ファイルを作成し、クレデンシャル情報を定義する。
+`~/.config/gcloud/application_default_credentials.json`ファイルを作成し、クレデンシャル情報を定義する。
 
 また、これ使用してGCPにログインする。
 
-```~/.config/gcloud/application_default_credentials.json```ファイルは```1```個のアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
-
-
+`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
 
 > ↪️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
 
@@ -52,15 +46,13 @@ $ gcloud auth application-default login
   "client_secret": "***",
   "quota_project_id": "***",
   "refresh_token": "***",
-  "type": "authorized_user"
+  "type": "authorized_user",
 }
 ```
 
 #### ▼ login
 
 GCP SDKによるGCPリソースへのアクセスを認証するために使用する。
-
-
 
 > ↪️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
 
@@ -70,7 +62,7 @@ $ gcloud auth login
 
 #### ▼ login --update-adc
 
-```gcloud auth application-default login```コマンドと```gcloud auth login```コマンドを同時に実行する。これにより、GCP CLIのための認証情報 (```~/.config/gcloud/application_default_credentials.json```ファイル) とGCP SDKのための認証情報が更新される。
+`gcloud auth application-default login`コマンドと`gcloud auth login`コマンドを同時に実行する。これにより、GCP CLIのための認証情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGCP SDKのための認証情報が更新される。
 
 > ↪️ 参考：https://blog.pokutuna.com/entry/application-default-credentials
 
@@ -84,15 +76,11 @@ $ gcloud auth login --update-adc
 
 #### ▼ componentとは
 
-```gcloud```コマンドのコンポーネントを管理する。
-
-
+`gcloud`コマンドのコンポーネントを管理する。
 
 #### ▼ update
 
-```gcloud```コマンドのコンポーネントをアップグレードする。
-
-
+`gcloud`コマンドのコンポーネントをアップグレードする。
 
 ```bash
 $ gcloud components update
@@ -100,8 +88,7 @@ $ gcloud components update
 
 #### ▼ list
 
-```gcloud```コマンドのコンポーネントの一覧を取得する。
-
+`gcloud`コマンドのコンポーネントの一覧を取得する。
 
 ```bash
 $ gcloud components list
@@ -127,7 +114,6 @@ The latest available version is: 400.0.0
 
 > ↪️ 参考：https://cloud.google.com/sdk/docs/components
 
-
 <br>
 
 ### config
@@ -136,13 +122,9 @@ The latest available version is: 400.0.0
 
 認証時のデフォルト値を設定する。
 
-
-
 #### ▼ list
 
 認証情報を取得する。
-
-
 
 **＊実行例＊**
 
@@ -160,8 +142,6 @@ Your active configuration is: [default]
 
 認証の特定の項目のデフォルト値を設定する。
 
-
-
 **＊実行例＊**
 
 ```bash
@@ -169,6 +149,7 @@ $ gcloud config set project <プロジェクト名>
 
 Updated property [core/project].
 ```
+
 ```bash
 $ gcloud config set compute/region <リージョン名>
 
@@ -187,8 +168,6 @@ Updated property [compute/region].
 #### ▼ list
 
 GKE Clusterの一覧を取得する。
-
-
 
 > ↪️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
 
@@ -217,7 +196,6 @@ GKE Node Poolの情報を取得する。
 
 アップグレードの手法を確認することもできる。
 
-
 > ↪️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
 
 **＊実行例＊**
@@ -240,8 +218,6 @@ upgradeSettings:
 
 GKE Node Poolの設定を変更する。
 
-
-
 **＊実行例＊**
 
 ローリング方式 (サージ方式) のアップグレードを有効化する。
@@ -254,8 +230,6 @@ $ gcloud container node-pools update foo-node-pool \
 
 ローリング方式時に新しく追加できる最大インスタンス数と、削除できる最大インスタンス数を設定する。
 
-
-
 ```bash
 $ gcloud container node-pools update foo-node-pool \
     --cluster=foo-anthos-cluster \
@@ -265,7 +239,6 @@ $ gcloud container node-pools update foo-node-pool \
 
 > ↪️ 参考：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
 
-
 <br>
 
 ### init
@@ -273,8 +246,6 @@ $ gcloud container node-pools update foo-node-pool \
 #### ▼ initとは
 
 認証時のデフォルト値を対話方式で設定する。
-
-
 
 **＊実行例＊**
 
@@ -288,9 +259,9 @@ core:
   account: hiroki.hasegawa
   disable_usage_reporting: 'True'
   project: foo-project
-  
+
 Pick configuration to use:
- [1] Re-initialize this configuration [default] with new settings 
+ [1] Re-initialize this configuration [default] with new settings
  [2] Create a new configuration
 Please enter your numeric choice:  1 # 再設定か新しいアカウントの設定かを選択する。
 
@@ -300,7 +271,7 @@ You can skip diagnostics next time by using the following flag:
   gcloud init --skip-diagnostics
 
 Network diagnostic detects and fixes local network connection issues.
-Checking network connection...done.                                                                                                                                        
+Checking network connection...done.
 Reachability Check passed.
 Network diagnostic passed (1/1 checks passed).
 
@@ -311,7 +282,7 @@ Please enter your numeric choice:  1 # デフォルトのアカウントを設�
 
 You are logged in as: [hiroki.hasegawa].
 
-Pick cloud project to use: 
+Pick cloud project to use:
 [1] foo-project
 [2] bar-project
 [3] baz-project
@@ -326,8 +297,6 @@ Please enter numeric choice or text value (must exactly match list item): 3 # �
 #### ▼ projectとは
 
 認可スコープの範囲内になるプロジェクトの一覧を取得する。
-
-
 
 **＊実行例＊**
 
@@ -355,7 +324,7 @@ $ gcloud storage cp gs://<GCS名>/<オブジェクトのファイルパス> <ロ
 
 > ↪️ 参考：https://cloud.google.com/sdk/gcloud/reference/storage/cp
 
-ディレクトリごとコピーする場合は、```--recursive```オプションを使用する。
+ディレクトリごとコピーする場合は、`--recursive`オプションを使用する。
 
 ```bash
 $ gcloud storage cp --recursive gs://<GCS名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>

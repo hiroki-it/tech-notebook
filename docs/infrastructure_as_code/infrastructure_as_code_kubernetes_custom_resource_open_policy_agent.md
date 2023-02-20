@@ -2,6 +2,7 @@
 title: 【IT技術の知見】OpenPolicyAgent＠カスタムリソース
 description: OpenPolicyAgent＠カスタムリソースの知見を記録しています。
 ---
+
 # OpenPolicyAgent＠カスタムリソース
 
 ## はじめに
@@ -16,7 +17,7 @@ description: OpenPolicyAgent＠カスタムリソースの知見を記録して�
 
 ### アーキテクチャ
 
-OpenPolicyAgentは、OpenPolicyエージェント、```.rego```ファイル、DB、から構成される。
+OpenPolicyAgentは、OpenPolicyエージェント、`.rego`ファイル、DB、から構成される。
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
@@ -29,7 +30,7 @@ OpenPolicyAgentは、OpenPolicyエージェント、```.rego```ファイル、DB
 
 ### OpenPolicyエージェント
 
-DBからアカウント情報を読み出し、```.rego```ファイルのロジックに基づいて、boolean型値を返却する。
+DBからアカウント情報を読み出し、`.rego`ファイルのロジックに基づいて、boolean型値を返却する。
 
 返却されたboolean型値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可処理を実施する。
 
@@ -39,7 +40,7 @@ DBからアカウント情報を読み出し、```.rego```ファイルのロジ�
 
 <br>
 
-### ```.rego```ファイル
+### `.rego`ファイル
 
 認可スコープのロジックを定義する。
 
@@ -47,7 +48,7 @@ DBからアカウント情報を読み出し、```.rego```ファイルのロジ�
 
 ### DB
 
-アカウント情報を```.json```形式、認可スコープ定義を```.rego```形式で、保管する。
+アカウント情報を`.json`形式、認可スコープ定義を`.rego`形式で、保管する。
 
 <br>
 
@@ -63,9 +64,9 @@ DBからアカウント情報を読み出し、```.rego```ファイルのロジ�
 
 #### ▼ アカウント情報の作成
 
-```【１】```
+`【１】`
 
-:    アカウント情報を```.json```形式で作成する。
+: アカウント情報を`.json`形式で作成する。
 
      ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
 
@@ -73,17 +74,12 @@ DBからアカウント情報を読み出し、```.rego```ファイルのロジ�
 
 ```yaml
 # subordinates.jsonファイル
-{
-  "alice": ["bob"],
-  "bob": [],
-  "charlie": ["david"],
-  "david": []
-}
+{ "alice": ["bob"], "bob": [], "charlie": ["david"], "david": [] }
 ```
 
-```【２】```
+`【２】`
 
-:    アプリケーションは、OpenPolicyエージェントにアカウント情報を送信し、アカウント情報をDBに作成する。
+: アプリケーションは、OpenPolicyエージェントにアカウント情報を送信し、アカウント情報をDBに作成する。
 
 ```bash
 $ curl \
@@ -95,9 +91,9 @@ $ curl \
 
 #### ▼ 認可スコープの定義
 
-```【３】```
+`【３】`
 
-:    認可スコープ定義のロジックを```.rego```形式で作成する。
+: 認可スコープ定義のロジックを`.rego`形式で作成する。
 
 > ↪️ 参考：https://thinkit.co.jp/article/17511
 
@@ -126,9 +122,9 @@ allow {
 }
 ```
 
-```【４】```
+`【４】`
 
-:    アプリケーションは、OpenPolicyエージェントに```.rego```ファイルを送信し、認可スコープ定義をDBに作成する。
+: アプリケーションは、OpenPolicyエージェントに`.rego`ファイルを送信し、認可スコープ定義をDBに作成する。
 
 ```bash
 $ curl \
@@ -140,26 +136,27 @@ $ curl \
 
 #### ▼ 認可スコープのリクエスト
 
-```【５】```
+`【５】`
 
-:    リクエスト内容を```.json```形式で作成する。
+: リクエスト内容を`.json`形式で作成する。
 
      ここでは、aliceというアカウントの参照権限の有無をリクエストを定義する。
 
 ```yaml
 # request.jsonファイル
 {
-  "input": {
-    "method": "GET",
-    "path": ["finance", "salary", "alice"],
-    "user": "alice"
-  }
+  "input":
+    {
+      "method": "GET",
+      "path": ["finance", "salary", "alice"],
+      "user": "alice",
+    },
 }
 ```
 
-```【６】```
+`【６】`
 
-:    アプリケーションは、aliceアカウントの参照権限の有無をOpenPolicyエージェントにリクエストする。
+: アプリケーションは、aliceアカウントの参照権限の有無をOpenPolicyエージェントにリクエストする。
 
      OpenPolicyエージェントは、アプリケーションに```true```を返却する。
 
@@ -187,20 +184,18 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 
 そのため、GitOpsのCDパイプライン上にバリデーションを実行できる。
 
-
 ![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_open-policy-agent.png)
 
 > ↪️ 参考：
-> 
+>
 > - https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/
 > - https://www.infracloud.io/blogs/opa-and-gatekeeper/
-
 
 #### ▼ gatekeeper-validating-webhook-configuration
 
 Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、ValidatingWebhookConfigurationでValidatingWebhookアドオンを設定する。
 
-```.webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
+`.webhooks.failurePolicy`キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
 
 そのため、Gatekeeperが起動に失敗しても、Podが中止されることはない。
 
@@ -212,7 +207,7 @@ metadata:
   labels:
     gatekeeper.sh/system: "yes"
 webhooks:
-    # webhook名は完全修飾ドメイン名にする。
+  # webhook名は完全修飾ドメイン名にする。
   - name: validation.gatekeeper.sh
     admissionReviewVersions: ["v1", "v1beta1"]
     clientConfig:
@@ -227,7 +222,7 @@ webhooks:
         port: 443
     failurePolicy: Ignore
     matchPolicy: Exact
-  
+
     namespaceSelector:
       matchExpressions:
         - key: admission.gatekeeper.sh/ignore

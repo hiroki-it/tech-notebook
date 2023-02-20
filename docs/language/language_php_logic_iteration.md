@@ -9,8 +9,6 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -19,15 +17,13 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 ### 配列
 
-#### ▼ 走査 (スキャン) 
+#### ▼ 走査 (スキャン)
 
 配列内の要素を順に調べていくことを『走査 (スキャン) 』という。
 
-例えば、```foreach```は、配列内の全ての要素を走査する処理である。
+例えば、`foreach`は、配列内の全ての要素を走査する処理である。
 
 下図では、連想配列が表現されている。
-
-
 
 ![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/配列の走査.png)
 
@@ -35,12 +31,11 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 『内部ポインタ』とは、PHPの配列で、参照したい要素を位置で指定するためのカーソルのこと。
 
-
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 $array = ['あ', 'い', 'う'];
 
 // 内部ポインタが現在指定している要素を出力。
@@ -69,8 +64,6 @@ echo reset($array); // あ
 
 配列を走査する。
 
-
-
 ```php
 <?php
 
@@ -87,7 +80,7 @@ foreach ($array as &$value) {
 
 ```php
 <?php
-    
+
 $a = [1, -1, 2];
 $sum = 0;
 
@@ -106,15 +99,11 @@ foreach ($a as $foo) {
 
 複雑な走査を行うために、ビルトイン関数が用意されている。
 
-
-
 > ↪️ 参考：https://www.php.net/manual/ja/ref.array.php
 
 #### ▼ 配列の値へのアクセス
 
 単に配列を作るのみでなく、要素にアクセスするためにも使われる。
-
-
 
 ```php
 <?php
@@ -131,25 +120,25 @@ class Foo
         $result = '何も設定されていません。
 
 '
-        
+
         // $options配列には、OptionA,B,Cエンティティのいずれかが格納されていると想定
         foreach ($options as $option) {
-            
+
             if ($option->name() == 'オプションA') {
                 $result = 'オプションAが設定されています。';
             }
-            
+
             if ($option->name() == 'オプションB') {
                 $result = 'オプションBが設定されています。';
             }
-            
+
             if ($option->name() == 'オプションC') {
                 $result = 'オプションCが設定されています。';
             }
-            
+
             return $result;
         }
-        
+
         return $result;
     }
 }
@@ -162,7 +151,7 @@ class Foo
 
 // 以下の引数が渡されると想定
 // ($K, $A) = (4, [1, 2, 3, 4, 1, 1, 3])
-    
+
 function iteration($K, $A)
 {
     $topesNumber = 0;
@@ -170,7 +159,7 @@ function iteration($K, $A)
     $currentLength = 0;
 
     for ($i = 0; $i < count($A); $i++) {
-        
+
         // 前回の走査に今回のものを加算する。
         $currentLength += $A[$i];
 
@@ -190,16 +179,16 @@ function iteration($K, $A)
 
 ```php
 <?php
-    
+
 // 以下の引数が渡されると想定
 // ($M, $A) = (6, [3, 4, 5, 5, 2])
-    
+
 function iteration($M, $A) {
 
     $count = 0;
-    
+
     foreach ($A as $key => $value) {
-        
+
         // vを固定して、以降のvと比較する。
         for ($i = $key; $i < count($A); $i++) {
             if($value <= $A[$i]){
@@ -208,12 +197,10 @@ function iteration($M, $A) {
             }
         }
     }
-    
+
     return $count;
 }
 ```
-
-
 
 <br>
 
@@ -223,17 +210,15 @@ function iteration($M, $A) {
 
 コールバック関数の使用が必要になる。
 
-```call_user_func_array```メソッドの第一引数に、コールバック関数の```array_merge```メソッドの文字列を渡し、第二引数に二次元配列を渡す。
+`call_user_func_array`メソッドの第一引数に、コールバック関数の`array_merge`メソッドの文字列を渡し、第二引数に二次元配列を渡す。
 
 その結果、平坦になって一次元配列になる。
 
 例えば、不要なインデックス (0) で入れ子になっている場合に役に立つ。
 
-
-
 ```php
 <?php
-    
+
 $twoDimension = [
   [
     'date'  => '2015/11/1',
@@ -262,11 +247,9 @@ $oneDimension = call_user_func_array(
 
 配列のscoreキーから値を取り出し、一次元配列を作成する。
 
-
-
 ```php
 <?php
-    
+
 $twoDimension = [
   [
     'date'  => '2015/11/1',
@@ -300,23 +283,21 @@ $oneDimension = array_column($twoDimension, 'score');
 
 配列の走査を含む反復処理を行う。
 
-ただし、配列の走査は、```while```ではなく```foreach```を使用するようにする。
+ただし、配列の走査は、`while`ではなく`foreach`を使用するようにする。
 
-また、```for```とは異なり、反復回数が決まっていない場合に使用する。
-
-
+また、`for`とは異なり、反復回数が決まっていない場合に使用する。
 
 ```php
 <?php
-    
+
 $count = 0
 // 反復回数が決まっていないため、満たせたらbreakで停止する。
 while(true) {
-    
+
     if($count = 10){
         break;
     }
-    
+
     $count++
 }
 
@@ -329,24 +310,24 @@ echo $count
 
 ```php
 <?php
-    
+
 $a = [1, -1, 2];
 $sum = 0;
 
 $i = 0;
 while (true) {
-    
+
     // 全て走査したら停止
     if($count == count($a)) {
         break;
     }
-    
+
     $foo = $a[$i];
-    
+
     if($foo > 0) {
         $sum += $foo;
     }
-    
+
     // 代入加算
     $count ++;
 }
@@ -362,8 +343,6 @@ while (true) {
 
 しかし、終えられないと、無限ループが発生してしまう。
 
-
-
 <br>
 
 ## 04. for
@@ -374,15 +353,13 @@ while (true) {
 
 配列の走査を含む反復処理を行う。
 
-ただし、配列の走査は、```for```ではなく```foreach```を使用するようにする。
+ただし、配列の走査は、`for`ではなく`foreach`を使用するようにする。
 
-また、```while```とは異なり、反復回数が決まっている場合に使用する。
-
-
+また、`while`とは異なり、反復回数が決まっている場合に使用する。
 
 ```php
 <?php
-    
+
 // 10回反復することが決まっている。
 for($i = 1; $i <= 10; $i++){
     $count++
@@ -391,15 +368,13 @@ for($i = 1; $i <= 10; $i++){
 echo $count
 ```
 
-
-
 #### ▼ 制御文
 
 ![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_for文.png)
 
 ```php
 <?php
-    
+
 $a = [1, -1, 2];
 $sum = 0;
 
@@ -425,8 +400,6 @@ echo $sum;
 
 反復処理の現在のループをスキップし、次のループを開始する。
 
-
-
 ```php
 <?php
 
@@ -449,11 +422,9 @@ foreach ($array as $key => $value) {
 
 #### ▼ array_walkを使用した代替法
 
-反復処理のループを```continue```でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。
+反復処理のループを`continue`でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。
 
-```continue```を使用するより、こちらの方が良い。
-
-
+`continue`を使用するより、こちらの方が良い。
 
 ```php
 <?php
@@ -483,8 +454,6 @@ array_walk($array, function ($value, $key) {
 
 反復処理の現在のループを停止し、以降のループも実行しない。
 
-
-
 ```php
 <?php
 
@@ -502,4 +471,3 @@ foreach ($array as $value) {
 ```
 
 <br>
-

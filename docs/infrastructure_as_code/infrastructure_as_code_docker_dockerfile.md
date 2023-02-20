@@ -9,8 +9,6 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -31,18 +29,13 @@ $ apt-get install -y \
 
 > ↪️ 参考：https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
 
-
-```docker```プロセスをデーモンとして起動する。
-
-
-
+`docker`プロセスをデーモンとして起動する。
 
 ```bash
 $ systemctl start docker
 ```
 
 > ↪️ 参考：https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
-
 
 <br>
 
@@ -52,19 +45,15 @@ $ systemctl start docker
 
 ビルドに失敗したコンテナイメージからコンテナを作成し、接続する。
 
-```rm```オプションを設定し、接続の切断後にコンテナを削除する。
+`rm`オプションを設定し、接続の切断後にコンテナを削除する。
 
-Dockerfileで、コンテナイメージのプロセスの起動コマンドを```ENTRYPOINT```で設定している場合は、後から上書きできなくなるため、```docker run```コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
-
-
+Dockerfileで、コンテナイメージのプロセスの起動コマンドを`ENTRYPOINT`で設定している場合は、後から上書きできなくなるため、`docker run`コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
 
 ```bash
 $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
 ```
 
 その他、プルしたコンテナイメージ内でちょっとしたコマンドを検証したいといった場合にも役立つ。
-
-
 
 ```bash
 $ docker run --rm -it <検証したいコンテナイメージID> ls
@@ -78,32 +67,27 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 #### ▼ ADDとは
 
-ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが```tar```ファイルの場合は解凍する。
+ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが`tar`ファイルの場合は解凍する。
 
 また、URLを直接的に指定して、ダウンロードから解凍までを実行もできる。
-
-
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#add
 
 #### ▼ COPYとの違い
 
-似た命令として```COPY```がある。
+似た命令として`COPY`がある。
 
-```ADD```は```COPY```とは異なり、インターネットからファイルをダウンロードし、解凍も行う。
+`ADD`は`COPY`とは異なり、インターネットからファイルをダウンロードし、解凍も行う。
 
 イメージのビルド時にコピーされるのみで、ビルド後のコードの変更は反映されない。
 
-解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、```COPY```が推奨である。
-
+解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY`が推奨である。
 
 **＊実装例＊**
 
-以下では```ADD```を使用している。
+以下では`ADD`を使用している。
 
 URLを直接的に指定し、ダウンロードから解答までを実行している。
-
-
 
 ```dockerfile
 ADD http://example.com/big.tar.xz /usr/src/things/
@@ -113,14 +97,11 @@ RUN make -C /usr/src/things all
 
 これは、次のように書き換えるべきである。
 
-
-
 ```dockerfile
 RUN mkdir -p /usr/src/things \
   && curl -SL http://example.com/big.tar.xz | tar -xJC /usr/src/things \
   && make -C /usr/src/things all
 ```
-
 
 > ↪️ 参考：
 >
@@ -135,15 +116,11 @@ RUN mkdir -p /usr/src/things \
 
 Dockerfikeの命令で扱える変数を定義する。
 
-
-
 #### ▼ ENVとの違い
 
-似た命令として```ENV```がある。
+似た命令として`ENV`がある。
 
-```ARG```は```ENV```とは異なり、OS上のコマンド処理に展開するための変数として定義できない。
-
-
+`ARG`は`ENV`とは異なり、OS上のコマンド処理に展開するための変数として定義できない。
 
 ```dockerfile
 # ARGは、OS上のコマンド処理に展開するための変数として定義できない。
@@ -158,8 +135,6 @@ RUN pyenv install ${PYTHON_VERSION}
 
 一方で、Dockerfikeの命令に展開するための変数として定義できる。
 
-
-
 ```dockerfile
 # ARGは、Dockerfikeの命令に展開するための変数として定義できる。
 ARG OS_VERSION="8"
@@ -172,8 +147,6 @@ FROM centos:${OS_VERSION}
 ```
 
 そのため、以下の様に使い分けることになる。
-
-
 
 ```dockerfile
 # 最初に全て、ARGで定義
@@ -200,19 +173,15 @@ RUN pyenv install ${PYTHON_VERSION}
 
 イメージのプロセスの起動コマンドを実行する。
 
-パラメーターの記述形式には、文字列形式、```.json```形式がある。
-
-
+パラメーターの記述形式には、文字列形式、`.json`形式がある。
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#cmd
 
 #### ▼ 注意点
 
-Dockerfileで```CMD```を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。
+Dockerfileで`CMD`を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。
 
 一旦、デフォルトのバイナリファイルを確認した後に、これをDockerfileに明示的に実装する。
-
-
 
 ```bash
 CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
@@ -221,11 +190,9 @@ CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS        
 
 静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行しても良い。
 
-その場合、```bin```ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。
+その場合、`bin`ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。
 
-しかし、```bin```ディレクトリへの認可スコープがないことがあるため、その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。
-
-
+しかし、`bin`ディレクトリへの認可スコープがないことがあるため、その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。
 
 ```bash
 # /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを配置する。
@@ -241,15 +208,13 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 ホスト側 (第一引数) のディレクトリ/ファイルをコンテナ側 (第二引数) にコピーする。
 
-コンテナ側のパスは、```WORKDIR```をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。
+コンテナ側のパスは、`WORKDIR`をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。
 
-ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『```/```』で終える必要がある。
+ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『`/`』で終える必要がある。
 
 イメージのビルド時にコピーされるのみで、ビルド後のコードの変更は反映されない。
 
-設定ファイル (例：```nginx.conf```ファイル、```php.ini```ファイル) をホストからコンテナにコピーしたい時によく使用する。
-
-
+設定ファイル (例：`nginx.conf`ファイル、`php.ini`ファイル) をホストからコンテナにコピーしたい時によく使用する。
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#copy
 
@@ -261,21 +226,17 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 イメージのプロセスの起動コマンドを実行する。
 
-
-
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#entrypoint
 
 #### ▼ CMDとの違い
 
-似た命令として```CMD```がある。
+似た命令として`CMD`がある。
 
-```CMD```とは異なり、後から上書き実行できない。
+`CMD`とは異なり、後から上書き実行できない。
 
 使用者に、コンテナの起動方法を強制させたい場合に適する。
 
-イメージのプロセスの起動コマンドを後から上書きできなくなるため、```docker run```コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
-
-
+イメージのプロセスの起動コマンドを後から上書きできなくなるため、`docker run`コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
 
 ```bash
 # 上書きできず、失敗してしまう。
@@ -289,8 +250,6 @@ $ docker run --rm -it <コンテナイメージ名>:<バージョンタグ> /bin
 #### ▼ ENVとは
 
 OS上のコマンド処理で展開できる変数を定義できる。
-
-
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#env
 
@@ -306,8 +265,6 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 ホスト側からはアクセスできないことに注意する。
 
-
-
 > ↪️ 参考：
 >
 > - https://docs.docker.com/engine/reference/builder/#expose
@@ -321,7 +278,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 ただし、多くの場合デフォルトでこれが設定されている。
 
-例えば、PHP-FPMでは、```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには、```listen```オプションの値に```127.0.0.1:9000```が割り当てられている。
+例えば、PHP-FPMでは、`/usr/local/etc/www.conf.default`ファイルと`/usr/local/etc/php-fpm.d/www.conf`ファイルには、`listen`オプションの値に`127.0.0.1:9000`が割り当てられている。
 
 <br>
 
@@ -330,8 +287,6 @@ OS上のコマンド処理で展開できる変数を定義できる。
 #### ▼ FROMとは
 
 ベースのコンテナイメージを、コンテナにインストールする。
-
-
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#from
 
@@ -343,13 +298,11 @@ FROM python:latest-slim
 
 指定できるイメージレジストリの例と記法は以下の通りである。
 
-
-
-| レジストリの種類          | 例                                                                                                             | 補足                                                                                 |
-|---------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| DockerHub           | ```php:8.0-fpm```                                                                                              | https://hub.docker.com/_/php                                                         |
-| クラウドプロバイダー (パブリック)  | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest```                                             | https://gallery.ecr.aws/bitnami/php-fpm                                              |
-| クラウドプロバイダー (プライベート) | ECRプライベートレジストリの場合：<br>```<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest``` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
+| レジストリの種類                    | 例                                                                                                                           | 補足                                                                                 |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| DockerHub                           | `php:8.0-fpm`                                                                                                                | https://hub.docker.com/_/php                                                         |
+| クラウドプロバイダー (パブリック)   | ECRパブリックギャラリーの場合：<br>`public.ecr.aws/bitnami/php-fpm:latest`                                                   | https://gallery.ecr.aws/bitnami/php-fpm                                              |
+| クラウドプロバイダー (プライベート) | ECRプライベートレジストリの場合：<br>`<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
 
 #### ▼ CPUアーキテクチャの指定
 
@@ -357,15 +310,11 @@ FROM python:latest-slim
 
 ただし、DockerがマシンのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
 
-
-
 > ↪️ 参考：https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
 
 ```dockerfile
 FROM --platform=linux/amd64 python:latest-slim
 ```
-
-
 
 <br>
 
@@ -374,8 +323,6 @@ FROM --platform=linux/amd64 python:latest-slim
 #### ▼ RUNとは
 
 ベースイメージ上に、ソフトウェアをインストールする。
-
-
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#run
 
@@ -386,8 +333,6 @@ FROM --platform=linux/amd64 python:latest-slim
 #### ▼ VOLUMEとは
 
 ボリュームマウントを行う。
-
-
 
 > ↪️ 参考：
 >
@@ -403,8 +348,6 @@ FROM --platform=linux/amd64 python:latest-slim
 ビルド中の各命令の作業ディレクトリを絶対パスで指定する。
 
 また、コンテナ接続時の最初のディレクトリも定義できる。
-
-
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#workdir
 

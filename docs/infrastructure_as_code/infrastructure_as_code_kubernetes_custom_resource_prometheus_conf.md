@@ -15,13 +15,13 @@ description: 設定ファイル＠Prometheus
 
 ## 01. Prometheus
 
-### ```prometheus.yml```ファイルによる設定
+### `prometheus.yml`ファイルによる設定
 
-#### ▼ ```prometheus.yml```ファイルとは
+#### ▼ `prometheus.yml`ファイルとは
 
 Prometheusを設定する。
 
-```/etc/prometheus```ディレクトリ配下におく。
+`/etc/prometheus`ディレクトリ配下におく。
 
 > ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
@@ -30,7 +30,6 @@ Prometheusを設定する。
 ### globalセクション
 
 全てのメトリクス収集からアラートまでを共通で設定する。
-
 
 ```yaml
 global:
@@ -46,7 +45,6 @@ global:
 
 使用するAlertmanagerを設定する。
 
-
 ```yaml
 alerting:
   alertmanagers:
@@ -55,13 +53,10 @@ alerting:
             - alertmanager:9093
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://amateur-engineer-blog.com/alertmanager-docker-compose/
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
-
 
 <br>
 
@@ -70,8 +65,6 @@ alerting:
 #### ▼ rule_filesセクションとは
 
 Prometheusのアラートルールを設定する。
-
-
 
 ```yaml
 rule_files:
@@ -120,12 +113,9 @@ groups:
 
 > ↪️ 参考：https://amateur-engineer-blog.com/alertmanager-docker-compose/
 
-
 #### ▼ scrape_configsセクション
 
 Retrievalのルールを設定する。
-
-
 
 > ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 
@@ -139,12 +129,12 @@ scrape_configs:
   - job_name: prometheus
     static_configs:
       - targets:
-        - localhost:9090'
+          - localhost:9090'
   # node-exporterの稼働するサーバーを監視する。
   - job_name: node-exporter
     static_configs:
       - targets:
-        - <node-exporterの稼働するサーバーのIPアドレス>:9100
+          - <node-exporterの稼働するサーバーのIPアドレス>:9100
 ```
 
 > ↪️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
@@ -154,7 +144,6 @@ scrape_configs:
 IPアドレスやポート番号が動的に変化する対象を監視する。
 
 監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
-
 
 ```yaml
 scrape_configs:
@@ -179,7 +168,6 @@ scrape_configs:
         regex: foo-namespace;9100
         action: keep
 ```
-
 
 > ↪️ 参考：
 >
@@ -214,7 +202,7 @@ global:
 
 アラートのルーティング先の名前を設定する。
 
-receiver自体は、```receivers```キー配下で設定する。
+receiver自体は、`receivers`キー配下で設定する。
 
 ```yaml
 route:
@@ -248,7 +236,6 @@ route:
       severity: critical
 ```
 
-
 <br>
 
 ### receiversセクション
@@ -269,12 +256,10 @@ receivers:
       - routing_key: *****
 ```
 
-
 > ↪️ 参考：
 >
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
-
 
 #### ▼ slack_configs
 
@@ -294,7 +279,6 @@ receivers:
       - channel: prd-foo-channel
 ```
 
-
 <br>
 
 ## 03. Exporter
@@ -309,7 +293,7 @@ receivers:
 # node-exporterの場合
 
 # tmpディレクトリ配下にダウンロードする。
-$ curl -L https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz -o /tmp/node_exporter-1.0.0.linux-amd64.tar.gz 
+$ curl -L https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz -o /tmp/node_exporter-1.0.0.linux-amd64.tar.gz
 $ tar xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
 
 # バイナリファイルだけを移動する。
@@ -354,11 +338,10 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mys
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
-
 
 <br>
 

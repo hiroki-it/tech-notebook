@@ -9,8 +9,6 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -35,8 +33,6 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 特定の処理が非同期通信の後に実行されるように定義する方法については、以下のリンクを参考にせよ。
 
-
-
 - JavaScriptのAjax
 
 <br>
@@ -49,13 +45,9 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 サーバーからクライアントにリクエストを送信することはない。
 
-
-
 #### ▼ 双方向
 
 クライアントとサーバー間が双方向でリクエストを送信し合う。
-
-
 
 - gRPCの双方向ストリーミングRPC
 - Websocket
@@ -72,57 +64,55 @@ JavaScriptで非同期通信を実装する手法のこと。
 
 JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT、を組み合わせる。
 
-
-
 <br>
 
 ### Ajaxの仕組み
 
 ![AJAXの処理フロー](https://user-images.githubusercontent.com/42175286/58467340-6741cb80-8176-11e9-9692-26e6401f1de9.png)
 
-```【１】```
+`【１】`
 
-:    urlにアクセスすることにより、サーバーからデータがレスポンスされる。
+: urlにアクセスすることにより、サーバーからデータがレスポンスされる。
 
-```【２】```
+`【２】`
 
-:    DOMのマークアップ言語の解析により、Webページが構成される。
+: DOMのマークアップ言語の解析により、Webページが構成される。
 
-```【３】```
+`【３】`
 
-:    ページ上で任意のイベント (例：ページング操作、フォーム入力など) が発火し、紐付くハンドラ関数が実行される。
+: ページ上で任意のイベント (例：ページング操作、フォーム入力など) が発火し、紐付くハンドラ関数が実行される。
 
-```【４】```
+`【４】`
 
-:    JavaScript型オブジェクトがJSONに変換される。
+: JavaScript型オブジェクトがJSONに変換される。
 
-```【５】```
+`【５】`
 
-:    非同期通信により、バックエンドにリクエストを送信する。
+: 非同期通信により、バックエンドにリクエストを送信する。
 
-```【６】```
+`【６】`
 
-:    コントローラーは、JSON型データを受信し、加えてそれを元にDBからオブジェクトをReadする。
+: コントローラーは、JSON型データを受信し、加えてそれを元にDBからオブジェクトをReadする。
 
-```【７】```
+`【７】`
 
-:    コントローラーは、PHP型オブジェクトをJSONに変換し、レスポンスを返信する。
+: コントローラーは、PHP型オブジェクトをJSONに変換し、レスポンスを返信する。
 
-```【８】```
+`【８】`
 
-:    非同期通信メソッドがバックエンドからレスポンスを受信する。
+: 非同期通信メソッドがバックエンドからレスポンスを受信する。
 
-```【９】```
+`【９】`
 
-:    JSONがJavaScript型オブジェクトに変換される。
+: JSONがJavaScript型オブジェクトに変換される。
 
-```【１０】```
+`【１０】`
 
-:    オブジェクトがマークアップ言語に出力される。
+: オブジェクトがマークアップ言語に出力される。
 
-```【１１】```
+`【１１】`
 
-:    DOMを使用して、Webページを再び構成する。
+: DOMを使用して、Webページを再び構成する。
 
 <br>
 
@@ -130,23 +120,17 @@ JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT、を組み合わせる。
 
 歴史的に、Ajaxを実装するための方法がいくつかある。
 
-
-
 #### ▼ xhrオブジェクト
 
 JavaScriptのビルトインオブジェクトである。
 
 今では使用することは少ないが、Ajaxが登場した初期の頃によく使われた。
 
-
-
 > ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 
-#### ▼ ```fetch```メソッド
+#### ▼ `fetch`メソッド
 
 JavaScriptのビルトイン関数である。
-
-
 
 > ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
 
@@ -154,18 +138,14 @@ JavaScriptのビルトイン関数である。
 
 JQueryパッケージである。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://api.jquery.com/category/ajax/shorthand-methods/
 > - https://api.jquery.com/jquery.ajax
- 
+
 #### ▼ axiosオブジェクト
 
 Axiosパッケージである。
-
-
 
 > ↪️ 参考：https://github.com/axios/axios#request-method-aliases
 
@@ -177,24 +157,23 @@ Axiosパッケージである。
 
 #### ▼ GET送信
 
-
 **＊実装例＊**
 
 ```javascript
 // URL
-const url = 'https://example.com/';
+const url = "https://example.com/";
 
 const xhr = new XMLHttpRequest();
 
 // HTTPメソッドを指定
-xhr.open('GET', url);
+xhr.open("GET", url);
 
 // レスポンス受信後の処理
 xhr.onload = () => {
-    if(xhr.status === 200) {
-        const data = JSON.parse(xhr.responseText);
-        console.log(data);
-    }
+  if (xhr.status === 200) {
+    const data = JSON.parse(xhr.responseText);
+    console.log(data);
+  }
 };
 
 // 最後に送信を実行
@@ -203,46 +182,44 @@ xhr.send();
 
 > ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
-
 #### ▼ POST送信
-
 
 **＊実装例＊**
 
 ```javascript
 // URL
-const url = 'https://example.com/';
+const url = "https://example.com/";
 
 // メッセージボディ
 const body = {
-    name: 'Hiroki',
-    email: 'example@gmail.com',
-    password: 'password'
+  name: "Hiroki",
+  email: "example@gmail.com",
+  password: "password",
 };
 
 const queries = [];
 
-for(const key in body) {
-    const query = key +'='+ encodeURIComponent(params[key]);
-    queries.push(query);
+for (const key in body) {
+  const query = key + "=" + encodeURIComponent(params[key]);
+  queries.push(query);
 }
 
-const queryString = queries.join('&');
+const queryString = queries.join("&");
 
 const xhr = new XMLHttpRequest();
 
 // HTTPメソッドを指定
-xhr.open('POST', url);
+xhr.open("POST", url);
 
 // 送信するデータ型
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
 // レスポンス受信後の処理
 xhr.onload = () => {
-    if(xhr.status === 200) {
-        const data = JSON.parse(xhr.responseText);
-        console.log(data);
-    }
+  if (xhr.status === 200) {
+    const data = JSON.parse(xhr.responseText);
+    console.log(data);
+  }
 };
 
 // 最後に送信を実行
@@ -250,7 +227,6 @@ xhr.send(queryString);
 ```
 
 > ↪️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
-
 
 <br>
 
@@ -261,7 +237,7 @@ xhr.send(queryString);
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.com/';
+const url = "https://example.com/";
 
 $.get(url);
 ```
@@ -271,12 +247,12 @@ $.get(url);
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.com/';
+const url = "https://example.com/";
 
 const body = {
-    name: 'Hiroki',
-    email: 'example@gmail.com',
-    password: 'password'
+  name: "Hiroki",
+  email: "example@gmail.com",
+  password: "password",
 };
 
 $.post(url, params);
@@ -288,8 +264,6 @@ $.post(url, params);
 
 Promiseオブジェクトを返却する。
 
-
-
 > ↪️ 参考：https://api.jquery.com/jquery.ajax
 
 **＊実装例＊**
@@ -298,34 +272,33 @@ Promiseオブジェクトを返却する。
 const id = 1;
 
 $.ajax({
+  // ###################
+  //  リクエスト
+  // ###################
 
-    // ###################
-    //  リクエスト
-    // ###################
+  // HTTPメソッド
+  type: "POST",
 
-    // HTTPメソッド
-    type: 'POST',
+  // URL
+  url: "/xxx/xxx/" + id + "/",
 
-    // URL
-    url: '/xxx/xxx/' + id + '/',
+  // 送信するデータ型
+  contentType: "application/json",
 
-    // 送信するデータ型
-    contentType: 'application/json',
+  // メッセージボディ
+  data: {
+    name: "Hiroki",
+    email: "example@gmail.com",
+    password: "password",
+  },
 
-    // メッセージボディ
-    data: {
-        name: 'Hiroki',
-        email: 'example@gmail.com',
-        password: 'password'
-    },
+  // ###################
+  //  レスポンス
+  // ###################
 
-    // ###################
-    //  レスポンス
-    // ###################
-
-    // 受信するデータ型
-    dataType: 'json',
-})
+  // 受信するデータ型
+  dataType: "json",
+});
 ```
 
 <br>
@@ -337,7 +310,7 @@ $.ajax({
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.com/';
+const url = "https://example.com/";
 
 axios.get(url);
 ```
@@ -347,12 +320,12 @@ axios.get(url);
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.com/';
+const url = "https://example.com/";
 
 const body = {
-    name: 'Hiroki',
-    email: 'example@gmail.com',
-    password: 'password'
+  name: "Hiroki",
+  email: "example@gmail.com",
+  password: "password",
 };
 
 axios.post(url, params);

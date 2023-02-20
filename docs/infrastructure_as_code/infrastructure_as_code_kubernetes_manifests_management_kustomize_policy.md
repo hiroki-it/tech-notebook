@@ -9,21 +9,17 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. ディレクトリ構成ポリシー
 
-### ```overlays```ディレクトリの場合
+### `overlays`ディレクトリの場合
 
 #### ▼ 実行環境別
 
-実行環境別に```kustomization.yaml```ファイルを定義し、実行環境別に異なるリソース定義ファイルを作成できるようにする。
-
-
+実行環境別に`kustomization.yaml`ファイルを定義し、実行環境別に異なるリソース定義ファイルを作成できるようにする。
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 
@@ -36,11 +32,11 @@ repository/
 │   └── kustomization.yaml
 │
 └── overlays
-    ├── dev/
-    │   └── kustomization.yaml
-    │
-    ├── prod/
-    └── stg/
+├── dev/
+│   └── kustomization.yaml
+│
+├── prod/
+└── stg/
 ```
 
 <br>

@@ -9,14 +9,11 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-
-## 01. メインメモリ (主記憶装置) 
+## 01. メインメモリ (主記憶装置)
 
 ### DRAM：Dynamic RAM
 
@@ -26,10 +23,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 データを保管できる揮発的な記憶装置のこと。
 
-
-
 ![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Dynamic_RAM.jpg)
-
 
 <br>
 
@@ -59,15 +53,11 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 プログラムが確保したメモリ領域のうち、不要になった領域を自動的に解放する機能。
 
-
-
 #### ▼ Javaの場合
 
 Javaでは、JVM：Java Virtual Machine (Java仮想マシン) が、メモリ領域をオブジェクトに自動的に割り当て、また一方で、不要になったメモリ領域の解放を行う。
 
 一方で自動的に行う。
-
-
 
 <br>
 
@@ -79,13 +69,9 @@ Javaでは、JVM：Java Virtual Machine (Java仮想マシン) が、メモリ領
 
 CPUとメインメモリの間に、キャッシュメモリを何段階か設置し、CPUとメインメモリの間の読み出しと書き込みの処理速度の差を緩和させる。
 
-
-
 ![メモリキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリキャッシュ.gif)
 
 実際に、タスクマネージャのパフォーマンスタブで、n次キャッシュメモリがどのくらい使われているのかを確認できる。
-
-
 
 ![キャッシュメモリの実例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/キャッシュメモリの実例.png)
 
@@ -97,31 +83,29 @@ CPUとメインメモリの間に、キャッシュメモリを何段階か設�
 
 ユーザー ➔ メインメモリ ➔ 二次キャッシュメモリ ➔ 一次キャッシュメモリの順で、データがやり取りされる。
 
+`【１】`
 
+: ユーザーが、パソコンに対して命令を与える。
 
-```【１】```
+`【２】`
 
-:    ユーザーが、パソコンに対して命令を与える。
+: CPUは、命令をメインメモリに書き込む。
 
-```【２】```
+`【３】`
 
-:    CPUは、命令をメインメモリに書き込む。
+: CPUは、メインメモリから命令を読み出す。
 
-```【３】```
+`【４】`
 
-:    CPUは、メインメモリから命令を読み出す。
+: CPUは、二次キャッシュメモリに書き込む。
 
-```【４】```
+`【５】`
 
-:    CPUは、二次キャッシュメモリに書き込む。
+: CPUは、一次キャッシュメモリに書き込む。
 
-```【５】```
+`【６】`
 
-:    CPUは、一次キャッシュメモリに書き込む。
-
-```【６】```
-
-:    CPUは、命令を実行する。
+: CPUは、命令を実行する。
 
 ![メモリとキャッシュメモリ_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_1.jpg)
 
@@ -138,8 +122,6 @@ CPUとメインメモリの間に、キャッシュメモリを何段階か設�
 CPUは、命令をメインメモリとキャッシュメモリの両方に書き込む。
 
 常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが、メモリへの書き込みが頻繁に行われるので遅い。
-
-
 
 ![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-through方式.jpg)
 
@@ -169,8 +151,6 @@ CPUは、キャッシュメモリのみに書き込む。
 
 キャッシュメモリとして使用される。
 
-
-
 ![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Static_RAM.jpg)
 
 <br>
@@ -183,8 +163,6 @@ CPUは、キャッシュメモリのみに書き込む。
 
 読み出しと書き込みの処理速度の差を緩和させる。
 
-
-
 ![ディスクキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ディスクキャッシュ.gif)
 
 <br>
@@ -193,19 +171,13 @@ CPUは、キャッシュメモリのみに書き込む。
 
 GPUとVRAMのサイズによって、扱うことのできる解像度と色数が決まる。
 
-
-
 ![VRAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VRAM.jpg)
 
 富士通PCのGPUとVRAMのサイズは、以下の通り。
 
-
-
 ![本パソコンのVRAMスペック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/本パソコンのVRAMスペック.jpg)
 
-色数によって、```1```ドット当たり何ビットを要するが異なる。
-
-
+色数によって、`1`ドット当たり何ビットを要するが異なる。
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 

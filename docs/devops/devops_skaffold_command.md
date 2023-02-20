@@ -9,8 +9,6 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,19 +19,15 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 #### ▼ --verbosity
 
-ログレベルを指定し、```skaffold```コマンドを実行する。
+ログレベルを指定し、`skaffold`コマンドを実行する。
 
-デフォルトは```warn```である。
-
-
-
+デフォルトは`warn`である。
 
 ```bash
 $ skaffold <任意のパラメーター> --verbosity=debug
 ```
 
 > ↪️ 参考：https://skaffold.dev/docs/references/cli/#skaffold
-
 
 <br>
 
@@ -43,7 +37,6 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 
 全てのコンテナイメージをビルドする。
 
-
 ```bash
 $ skaffold build
 ```
@@ -52,9 +45,7 @@ $ skaffold build
 
 #### ▼ --cache-artifacts
 
-キャッシュを無効化し、```build```コマンドを実行する。
-
-
+キャッシュを無効化し、`build`コマンドを実行する。
 
 ```bash
 $ skaffold build --cache-artifacts=false
@@ -70,17 +61,13 @@ $ skaffold build --cache-artifacts=false
 
 また、ポートフォワーディングを実行する。
 
-
-
 ```bash
 $ skaffold dev
 ```
 
 #### ▼ --trigger
 
-一定間隔でコードの変更を監視しつつ、```dev```コマンドを実行する。
-
-
+一定間隔でコードの変更を監視しつつ、`dev`コマンドを実行する。
 
 ```bash
 $ skaffold dev --trigger=polling
@@ -88,9 +75,7 @@ $ skaffold dev --trigger=polling
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、```dev```コマンドを実行する。
-
-
+イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、`dev`コマンドを実行する。
 
 ```bash
 $ skaffold dev --no-prune=false --cache-artifacts=false
@@ -98,9 +83,7 @@ $ skaffold dev --no-prune=false --cache-artifacts=false
 
 #### ▼ --port-forward
 
-ポートフォワードを実行しつつ、```dev```コマンドを実行する。
-
-
+ポートフォワードを実行しつつ、`dev`コマンドを実行する。
 
 ```bash
 $ skaffold dev --port-forward
@@ -114,17 +97,13 @@ $ skaffold dev --port-forward
 
 バックグラウンドで、コンテナイメージのビルド/デプロイを実行する。
 
-
-
 ```bash
 $ skaffold run
 ```
 
 #### ▼ force
 
-リソースを強制的にデプロイしつつ、```skaffold run```コマンドを実行する。
-
-
+リソースを強制的にデプロイしつつ、`skaffold run`コマンドを実行する。
 
 ```bash
 $ skaffold run --force
@@ -132,9 +111,7 @@ $ skaffold run --force
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、```skaffold run```コマンドを実行する。
-
-
+イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、`skaffold run`コマンドを実行する。
 
 ```bash
 $ skaffold run --no-prune=false --cache-artifacts=false
@@ -142,9 +119,7 @@ $ skaffold run --no-prune=false --cache-artifacts=false
 
 #### ▼ --tail
 
-フォアグラウンドで```skaffold run```コマンドを実行する。
-
-
+フォアグラウンドで`skaffold run`コマンドを実行する。
 
 ```bash
 $ skaffold run --tail
@@ -152,9 +127,7 @@ $ skaffold run --tail
 
 #### ▼ --port-forward
 
-ポートフォワードを実行しつつ、```skaffold run```コマンドを実行する。
-
-
+ポートフォワードを実行しつつ、`skaffold run`コマンドを実行する。
 
 ```bash
 $ skaffold run --port-forward
@@ -166,16 +139,14 @@ $ skaffold run --port-forward
 
 ### コマンド別
 
-
-| コマンド                                  | ポートフォワーディングの可否    |
-|---------------------------------------|-------------------|
-| ```skaffold dev```                    | ユーザー定義を参照       |
-| ```skaffold dev --port-forward```     | ユーザー定義を参照       |
-| ```skaffold dev --port-forward=off``` | ポートフォワーディングを実行しない |
-| ```skaffold run```                    | ポートフォワーディングを実行しない |
-| ```skaffold run --port-forward```     | ユーザー定義を参照       |
+| コマンド                          | ポートフォワーディングの可否       |
+| --------------------------------- | ---------------------------------- |
+| `skaffold dev`                    | ユーザー定義を参照                 |
+| `skaffold dev --port-forward`     | ユーザー定義を参照                 |
+| `skaffold dev --port-forward=off` | ポートフォワーディングを実行しない |
+| `skaffold run`                    | ポートフォワーディングを実行しない |
+| `skaffold run --port-forward`     | ユーザー定義を参照                 |
 
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
-
 
 <br>

@@ -9,8 +9,6 @@ description: apache.conf@Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -29,27 +27,23 @@ $ apt install apache2
 
 ## 02. 設定ファイルの種類
 
-### ```httpd.conf```ファイル
+### `httpd.conf`ファイル
 
 Apacheの主要な設定ファイル。
 
 Includeディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。
 
-
-
 > ↪️ 参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
 
 <br>
 
-### ```.htaccess```ファイル
+### `.htaccess`ファイル
 
-#### ▼ ```.htaccess```ファイルとは
+#### ▼ `.htaccess`ファイルとは
 
-基本的に、```httpd.conf```ファイルで全ての能力を設定できる。
+基本的に、`httpd.conf`ファイルで全ての能力を設定できる。
 
-ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、```.htaccess```ファイルを使用する。
-
-
+ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、`.htaccess`ファイルを使用する。
 
 > ↪️ 参考：
 >
@@ -62,9 +56,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 ![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲.png)
 
-
 > ↪️ 参考：https://htaccess.cman.jp/attention/
-
 
 #### ▼ それ以外のディレクトリに置いた場合
 
@@ -72,9 +64,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 ![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲_2.png)
 
-
 > ↪️ 参考：https://htaccess.cman.jp/attention/
-
 
 <br>
 
@@ -88,21 +78,15 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 そのルートディレクトリを設定する。
 
-
-
 **＊実装例＊**
 
 通常であれば、etcディレクトリ配下にconfファイルが配置される。
-
-
 
 ```apacheconf
 ServerRoot /etc/httpd
 ```
 
 CentOSのEPELリポジトリ経由でインストールした場合、Apacheのインストール後に、optディレクトリ配下にconfファイルが設置される。
-
-
 
 ```apacheconf
 ServerRoot /opt/rh/httpd24/root/etc/httpd
@@ -120,9 +104,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 VirtualHostという名前の通り、Apacheの稼働するサーバーが複数のドメインを仮想的に持つようにできる。
 
-複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、リクエストの```Host```ヘッダー値がいずれのServerName値と一致するかで決まる。
-
-
+複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、リクエストの`Host`ヘッダー値がいずれのServerName値と一致するかで決まる。
 
 > ↪️ 参考：https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html
 
@@ -142,16 +124,14 @@ NameVirtualHost *:80
     ServerName example.org
 </VirtualHost>
 ```
+
 #### ▼ IPベースVirtualHost
 
 各ドメインに異なるIPアドレスを割り振るバーチャルホスト。
 
-
-
 #### ▼ 名前ベースVirtualHost
+
 全てのドメインに同じIPアドレスを割り振るバーチャルホスト。
-
-
 
 <br>
 
@@ -161,9 +141,7 @@ NameVirtualHost *:80
 
 ドキュメントのルートディレクトリを設定する。
 
-ドキュメントルートに『```index.html```』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の```index.html```ファイルが、エントリーポイントとして自動的に認識されて表示される。
-
-
+ドキュメントルートに『`index.html`』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の`index.html`ファイルが、エントリーポイントとして自動的に認識されて表示される。
 
 **＊実装例＊**
 
@@ -175,8 +153,6 @@ NameVirtualHost *:80
 ```
 
 index.html以外の名前をエントリーポイントにする場合、ファイル名を指定する必要がある。
-
-
 
 **＊実装例＊**
 
@@ -197,8 +173,6 @@ index.html以外の名前をエントリーポイントにする場合、ファ�
 
 指定したディレクトリ内にリクエストがあった時に実行するディレクティブを設定する。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -218,8 +192,6 @@ httpdプロセスのユーザー名を設定する。
 
 httpdプロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -231,8 +203,6 @@ User apache
 httpdプロセスのグループ名を設定する。
 
 httpdプロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。
-
-
 
 **＊実装例＊**
 
@@ -248,8 +218,6 @@ Group apache
 
 HTTPプロトコルのリクエストのクライアントとの接続時に、クライアントの状態に応じて、その接続をタイムアウトにするか否かを制御する。
 
-
-
 > ↪️ 参考：https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
 
 **＊実装例＊**
@@ -262,8 +230,6 @@ KeepAlive On
 
 セッションIDを付与中のクライアントで、再びリクエストを送信するまでに何秒間経過したら、セッションIDを破棄するか、を設定する。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -274,8 +240,6 @@ KeepAliveTimeout 5
 #### ▼ MaxKeepAliveRequests
 
 セッションIDを付与中のクライアントで、リクエストのファイルの最大数を設定する。
-
-
 
 **＊実装例＊**
 
@@ -294,15 +258,11 @@ MaxKeepAliveRequests 1000
 
 モジュールを読み出し、設定ディレクティブを宣言できるようにする。
 
-
-
 **＊実装例＊**
 
 相対パスを指定し、ServerRootを適用させる。
 
 これにより、httpdディレクトリのmodulesディレクトリが参照される。
-
-
 
 ```apacheconf
 # ServerRoot が /opt/rh/httpd24/root/etc/httpd だとする。
@@ -319,8 +279,6 @@ LoadModule dir_module modules/mod_dir.so
 
 Directoryディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -328,6 +286,7 @@ Directoryディレクティブによってリクエストされたディレク�
     DirectoryIndex index.html index.php
 </Directory>
 ```
+
 **＊実装例＊**
 
 ```apacheconf
@@ -343,9 +302,7 @@ Directoryディレクティブによってリクエストされたディレク�
 
 #### ▼ AllowOverrideとは
 
-別に用意した```.htaccess```ファイルにて、有効化するディレクティブを設定する。
-
-
+別に用意した`.htaccess`ファイルにて、有効化するディレクティブを設定する。
 
 **＊実装例＊**
 
@@ -358,9 +315,7 @@ Directoryディレクティブによってリクエストされたディレク�
 
 #### ▼ All
 
-別に用意した```.htaccess```ファイルにて、実装できるディレクティブを全て有効化する。
-
-
+別に用意した`.htaccess`ファイルにて、実装できるディレクティブを全て有効化する。
 
 **＊実装例＊**
 
@@ -370,9 +325,7 @@ AllowOverride All
 
 #### ▼ None
 
-別に用意した```.htaccess```ファイルにて、実装できるディレクティブを全て無効化する。
-
-
+別に用意した`.htaccess`ファイルにて、実装できるディレクティブを全て無効化する。
 
 **＊実装例＊**
 
@@ -382,9 +335,7 @@ AllowOverride None
 
 #### ▼ Indexes
 
-別に用意した```.htaccess```ファイルにて、DirectoryIndexディレクティブを有効化するか否かを設定する。
-
-
+別に用意した`.htaccess`ファイルにて、DirectoryIndexディレクティブを有効化するか否かを設定する。
 
 **＊実装例＊**
 
@@ -401,8 +352,6 @@ AllowOverride Indexes
 #### ▼ RewriteCondとは
 
 条件分岐と、それによる処理を設定する。
-
-
 
 **＊実装例＊**
 
@@ -424,15 +373,11 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 #### ▼ RewriteRuleとは
 
 条件分岐による処理を設定する。
-
-
 
 ```apacheconf
 RewriteRule URL書換＆ルーティングの記述
@@ -441,8 +386,6 @@ RewriteRule URL書換＆ルーティングの記述
 **＊実装例＊**
 
 リクエストをHTTPSプロトコルに変換して、リダイレクトする。
-
-
 
 ```apacheconf
 RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
@@ -458,8 +401,6 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 条件分岐と環境変数の設定を設定する。
 
-
-
 ```apacheconf
 # クエリパラメーターが以下の拡張子の場合
 SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
@@ -468,8 +409,6 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 #### ▼ nolog
 
 ログを出力しない場合を設定できる。
-
-
 
 <br>
 
@@ -481,13 +420,9 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 アクセスログファイルの書式を設定する。
 
-
-
 #### ▼ アクセスログ形式と出力内容
 
 アクセスログの出力先ログファイルとフォーマットを合わせて設定する。
-
-
 
 **＊実装例＊**
 
@@ -503,12 +438,11 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 以下のようなログになる。
 
-
-
 ```log
 # common形式
 118.86.194.71 - - [17/Aug/2011:23:04:03 +0900] "GET /home/name/category/web HTTP/1.1" 200 11815
 ```
+
 ```log
 # combine形式
 118.86.194.71 - - [17/Aug/2011:23:04:03 +0900] "GET /home/name/category/web HTTP/1.1" 200 11815 "http://naoberry.com/home/name/" "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1"
@@ -516,17 +450,17 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 #### ▼ ログの変数一覧
 
-| 変数           | 値                      | 例                                                                                                  |
-|----------------|-------------------------|-----------------------------------------------------------------------------------------------------|
-| %h             | リモートホスト                 | 118.86.194.71                                                                                       |
-| %l             | リモートログ名 (基本”-“になる)   | -                                                                                                   |
+| 変数           | 値                                 | 例                                                                                                  |
+| -------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- |
+| %h             | リモートホスト                     | 118.86.194.71                                                                                       |
+| %l             | リモートログ名 (基本”-“になる)     | -                                                                                                   |
 | %u             | リモートユーザ (Basic認証のユーザ) | -                                                                                                   |
-| %t             | リクエスト受付時刻           | [17/Aug/2011:23:04:03 +0900]                                                                        |
-| %r             | リクエストの最初の行           | GET /home/name/category/web HTTP/1.1                                                                |
-| %s             | ステータス                   | 200                                                                                                 |
-| %b             | レスポンスのバイト数             | 11815                                                                                               |
-| %{Referer}i    | リファラ                    | http://naoberry.com/home/name/                                                                      |
-| %{User-Agent}i | ユーザエージェント               | Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1 |
+| %t             | リクエスト受付時刻                 | [17/Aug/2011:23:04:03 +0900]                                                                        |
+| %r             | リクエストの最初の行               | GET /home/name/category/web HTTP/1.1                                                                |
+| %s             | ステータス                         | 200                                                                                                 |
+| %b             | レスポンスのバイト数               | 11815                                                                                               |
+| %{Referer}i    | リファラ                           | http://naoberry.com/home/name/                                                                      |
+| %{User-Agent}i | ユーザエージェント                 | Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1 |
 
 <br>
 
@@ -536,13 +470,9 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 エラーログファイルの書式を設定する。
 
-
-
 #### ▼ エラーログ形式と出力内容
 
 エラーログの出力先を設定する。
-
-
 
 **＊実装例＊**
 
@@ -558,15 +488,13 @@ ErrorLog /var/log/httpd/error_log
 
 ログに出力する最低のレグレベルを設定する。
 
-
-
 ```apacheconf
 LogLevel warn
 ```
 
 <br>
 
-## 03-07. mod_sslにおける設定ディレクティブ 
+## 03-07. mod_sslにおける設定ディレクティブ
 
 ### SSLCertificateFile
 
@@ -575,8 +503,6 @@ LogLevel warn
 PKIにおける公開鍵の検証に必要なSSL証明書のディレクトリを設定する。
 
 本番環境ではAWSのACMの証明書を使用することが多いため、基本的な用途としては、ローカル開発での自己署名SSL証明書の読み出しのために使用する。
-
-
 
 **＊実装例＊**
 
@@ -591,8 +517,6 @@ SSLCertificateFile /etc/httpd/conf.d/server.crt
 #### ▼ SSLCertificateKeyFileとは
 
 PKIにおける公開鍵の検証に必要な秘密鍵のディレクトリを設定する。
-
-
 
 **＊実装例＊**
 
@@ -610,25 +534,21 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 レスポンスヘッダーを設定する。
 
-```set```、```append```、```add```、```unset```、```echo```オプションを設定できる。
+`set`、`append`、`add`、`unset`、`echo`オプションを設定できる。
 
-デフォルトでは```2xx```と```3xx```のステータスコードのみで設定が適用される。
+デフォルトでは`2xx`と`3xx`のステータスコードのみで設定が適用される。
 
-オプションとして、```always```を設定することにより、全てのステータスコードでヘッダーを設定する。
-
-
+オプションとして、`always`を設定することにより、全てのステータスコードでヘッダーを設定する。
 
 #### ▼ set
 
 レスポンスヘッダーを追加する。
 
-
-
 **＊実装例＊**
 
-```Referrer-Policy```ヘッダーを追加し、値を```no-referrer-when-downgrade```とする。
+`Referrer-Policy`ヘッダーを追加し、値を`no-referrer-when-downgrade`とする。
 
-補足として、Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
+補足として、Chrome85以降の`Referrer-Policy`ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
 
 > ↪️ 参考：https://www.chromestatus.com/feature/6251880185331712
 
@@ -644,11 +564,9 @@ Header set Referrer-Policy "no-referrer-when-downgrade" always
 
 レスポンスヘッダーを削除する。
 
-
-
 **＊実装例＊**
 
-```Referrer-Policy```ヘッダーを削除する
+`Referrer-Policy`ヘッダーを削除する
 
 ```apacheconf
 Header unset Referrer-Policy "no-referrer-when-downgrade"
@@ -659,4 +577,3 @@ Header unset Referrer-Policy "no-referrer-when-downgrade" always
 ```
 
 <br>
-

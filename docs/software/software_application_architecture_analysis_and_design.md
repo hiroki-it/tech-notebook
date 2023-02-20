@@ -17,7 +17,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 ### オブジェクト指向とは
 
-互いに密接に関連するデータと手続き (処理手順) を、オブジェクトと呼ばれる```1```個のまとまりとして捉えること。
+互いに密接に関連するデータと手続き (処理手順) を、オブジェクトと呼ばれる`1`個のまとまりとして捉えること。
 
 <br>
 
@@ -166,18 +166,18 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram.png)
 
-| 記号名                                                                                                                                               | 説明                                                                                                                                                                                                             | 補足                       |
-|------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
-| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png)                 | ソフトウェアを利用するユーザーや、連携する他のソフトウェアを表す。                                                                                                                                                                          |                            |
-| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表す。                                                                                                                                                                                          |                            |
-| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png)           | アクターとソフトウェアの境界線を表す。                                                                                                                                                                                          |                            |
-| パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png)            | アクターによって提供する機能に違いがある場合、これの境界線を表す。                                                                                                                                                                     |                            |
-| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png)     | アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。                                                                                                                                                                      |                            |
-| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png)   | アクター間またはユースケース間に、is-a-kind-ofな関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                               |                            |
-| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)             | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                   | ```<< invoke >>```も同じである。 |
-| 先行：<br>```<< precedes >>```                                                                                                                        | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                           |                            |
-| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)               | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                   |                            |
-| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                    | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>↪️ 参考：<https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                            |
+| 記号名                                                                                                                                                             | 説明                                                                                                                                                                                                                                            | 補足                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png)                   | ソフトウェアを利用するユーザーや、連携する他のソフトウェアを表す。                                                                                                                                                                              |                              |
+| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表す。                                                                                                                                                                                                              |                              |
+| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png)           | アクターとソフトウェアの境界線を表す。                                                                                                                                                                                                          |                              |
+| パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png)             | アクターによって提供する機能に違いがある場合、これの境界線を表す。                                                                                                                                                                              |                              |
+| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png)           | アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。                                                                                                                                                                          |                              |
+| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png)         | アクター間またはユースケース間に、is-a-kind-ofな関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                            |                              |
+| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)                   | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                                  | `<< invoke >>`も同じである。 |
+| 先行：<br>`<< precedes >>`                                                                                                                                         | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                                      |                              |
+| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)                     | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                          |                              |
+| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                       | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>↪️ 参考：<https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                              |
 
 > ↪️ 参考：
 >
@@ -192,26 +192,26 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 > ↪️ 参考：<https://github.com/tooppoo/ticket-modeling>
 
-```【１】```
+`【１】`
 
-:    映画チケット購入者の受注管理ソフトウェアを開発する例を考える。
+: 映画チケット購入者の受注管理ソフトウェアを開発する例を考える。
 
-```【２】```
+`【２】`
 
-:    要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
+: 要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
 ![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_usecase-diagram_example.png)
 
-```【３】```
+`【３】`
 
-:    クラス図を作成する。ユースケースから以下のオブジェクトを抽出する。
+: クラス図を作成する。ユースケースから以下のオブジェクトを抽出する。
 
-| ユースケース           | 抽出されたオブジェクト                                |
-|------------------|----------------------------------------------|
-| 映画を選択する      | 映画オブジェクト                                   |
-| タイトルを選択する      | タイトルオブジェクト                                   |
-| 映画の形式を選択する | 映画形式オブジェクト、上映形態オブジェクト                |
-| 上映回を選択する    | 上映回オブジェクト、上映日オブジェクト、上映開始時刻オブジェクト |
+| ユースケース         | 抽出されたオブジェクト                                           |
+| -------------------- | ---------------------------------------------------------------- |
+| 映画を選択する       | 映画オブジェクト                                                 |
+| タイトルを選択する   | タイトルオブジェクト                                             |
+| 映画の形式を選択する | 映画形式オブジェクト、上映形態オブジェクト                       |
+| 上映回を選択する     | 上映回オブジェクト、上映日オブジェクト、上映開始時刻オブジェクト |
 
 ![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
 
@@ -261,7 +261,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 状態遷移図から作成した表。
 
-状態遷移表を作成してみると、状態遷移図では、9つあるセルのうち```4```個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
+状態遷移表を作成してみると、状態遷移図では、9つあるセルのうち`4`個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
 
 ![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移表.jpg)
 
@@ -269,21 +269,21 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 12.2 という状態
 
-```【１】```
+`【１】`
 
-:    初期の状態を『a』として、最初が数字なため、a行の『b』へ移動。
+: 初期の状態を『a』として、最初が数字なため、a行の『b』へ移動。
 
-```【２】```
+`【２】`
 
-:    現在の状態『b』から、次は数字なため、b行の『b』へ移動。
+: 現在の状態『b』から、次は数字なため、b行の『b』へ移動。
 
-```【３】```
+`【３】`
 
-:    現在の状態『b』から、次は小数点なため、b行の『d』へ移動。
+: 現在の状態『b』から、次は小数点なため、b行の『d』へ移動。
 
-```【４】```
+`【４】`
 
-:    現在の状態『d』から、次は数字なため、b行の『e』へ移動。
+: 現在の状態『d』から、次は数字なため、b行の『e』へ移動。
 
 ![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/状態遷移表.png)
 
@@ -303,11 +303,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/object-diagram.png)
 
-| 記号名     | 説明                                                                                                |
-|------------|---------------------------------------------------------------------------------------------------|
-| インスタンス指定 | 特定の状態にあるオブジェクト (インスタンス) の具体例を表す。『<u>```<具体的なインスタンス名>:<クラス名>```</u>』のように下線付きで表記する。 |
-| スロット       | インスタンスが保持する具体的なデータを表す。『```<属性名>:<データ型> = <値>```』で表記する。                                 |
-| リンク        | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                               |
+| 記号名           | 説明                                                                                                                                     |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| インスタンス指定 | 特定の状態にあるオブジェクト (インスタンス) の具体例を表す。『<u>`<具体的なインスタンス名>:<クラス名>`</u>』のように下線付きで表記する。 |
+| スロット         | インスタンスが保持する具体的なデータを表す。『`<属性名>:<データ型> = <値>`』で表記する。                                                 |
+| リンク           | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                                       |
 
 > ↪️ 参考：
 >
@@ -386,7 +386,7 @@ Dependency (依存) が使用される。
 
 クラス間がデータとして保持する関係性にある時に、保持される側クラスが何個のクラスに保持されるか、また反対に保持する側クラスが保持される側クラスを何個保持するか、を表す。
 
-このように```2```個の見方があることが混乱するので注意する。
+このように`2`個の見方があることが混乱するので注意する。
 
 オブジェクト図のインスタンス間のリンク記号数を参考にして定義する。
 
@@ -394,26 +394,26 @@ Dependency (依存) が使用される。
 
 #### ▼ 記法
 
-| 保持する/保持されるクラスの個数      |    記法    |
-|:----------------------------|:----------:|
-| 1                           |  ```1```   |
-| 0以上1以下 (つまり、0または1)      | ```0..1``` |
-| 0以上n以下                  | ```0..n``` |
-| m以上n以下                  | ```m..n``` |
-| 0以上無限大以下 (つまり、0以上) |  ```*```   |
-| 0以上無限大以下 (つまり、0以上) | ```0..*``` |
+| 保持する/保持されるクラスの個数 |  記法  |
+| :------------------------------ | :----: |
+| 1                               |  `1`   |
+| 0以上1以下 (つまり、0または1)   | `0..1` |
+| 0以上n以下                      | `0..n` |
+| m以上n以下                      | `m..n` |
+| 0以上無限大以下 (つまり、0以上) |  `*`   |
+| 0以上無限大以下 (つまり、0以上) | `0..*` |
 
 **＊例＊**
 
-社員は```1```個の会社にしか所属できないとする。
+社員は`1`個の会社にしか所属できないとする。
 
-『社員クラス』から見た時に、```1```個の『会社クラス』にしか保持されない。
+『社員クラス』から見た時に、`1`個の『会社クラス』にしか保持されない。
 
-よって、会社クラスに『```1```』を付記する。
+よって、会社クラスに『`1`』を付記する。
 
 一方で『会社クラス』から見た時に、0以上の『社員クラス』を保持する。
 
-よって、会社クラスに『```0..*```』を付記する。
+よって、会社クラスに『`0..*`』を付記する。
 
 ![多重度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重度.png)
 
@@ -443,7 +443,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 リレーションとカーディナリティを組み合わせて、エンティティ間の関係性の強さを表す。
 
-```(カラム数/レコード数)```で導かれ、カーディナリティが高いほど、より効率的なDBインデックスを作成できる。
+`(カラム数/レコード数)`で導かれ、カーディナリティが高いほど、より効率的なDBインデックスを作成できる。
 
 > ↪️ 参考：<https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb>
 
@@ -475,19 +475,19 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 オブジェクト間の時系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。
 
-| 記号名                  | 説明                                                                                     | 補足                                                                                                                                                                                                                                |
-|-------------------------|-----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ライフライン                  | オブジェクト (クラス、インスタンス) を表す。                                                                | 粒度を大きくして、システムのコンポーネントをライフラインとすることもある。                                                                                                                                                                                            |
-| 実行仕様                | ライフライン上で実行されている処理を表す。                                                              |                                                                                                                                                                                                                                     |
-| 停止                    | ライフラインが削除されることを表す。                                                                    |                                                                                                                                                                                                                                     |
-| 同期メッセージ               | 既存のライフラインを同期的にコールすることを表す。                                                          |                                                                                                                                                                                                                                     |
-| 非同期メッセージ             | 既存のライフラインを非同期的にコールすることを表す。                                                        |                                                                                                                                                                                                                                     |
-| 生成メッセージ               | ライフラインを新しく作成することを表す。                                                                 |                                                                                                                                                                                                                                     |
-| 自己メッセージ               | ライフラインが、自分自身の内部処理をコールして処理を繰り返すこと、を表す。                                       | ↪️ 参考：<https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                          |
-| 再帰的メッセージ             | ライフラインが、自分自身全体をコールして処理を繰り返すこと、を表す。                                            | ↪️ 参考：<https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                          |
-| 入れ子実行仕様           | 再帰的メッセージによってコールされた別の実行仕様を表す。                                                    |                                                                                                                                                                                                                                     |
-| 返却メッセージ               | コールの結果を他のライフラインに返却することを表す。                                                         |                                                                                                                                                                                                                                     |
-| 複合フラグメント (結合フラグメント) | 条件分岐、繰り返し、などによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を```alt``` (```alternative```) 、繰り返しの場合は```loop```とする。<br>↪️ 参考：<https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88> |
+| 記号名                              | 説明                                                                                                                                 | 補足                                                                                                                                                                                                                                         |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ライフライン                        | オブジェクト (クラス、インスタンス) を表す。                                                                                         | 粒度を大きくして、システムのコンポーネントをライフラインとすることもある。                                                                                                                                                                   |
+| 実行仕様                            | ライフライン上で実行されている処理を表す。                                                                                           |                                                                                                                                                                                                                                              |
+| 停止                                | ライフラインが削除されることを表す。                                                                                                 |                                                                                                                                                                                                                                              |
+| 同期メッセージ                      | 既存のライフラインを同期的にコールすることを表す。                                                                                   |                                                                                                                                                                                                                                              |
+| 非同期メッセージ                    | 既存のライフラインを非同期的にコールすることを表す。                                                                                 |                                                                                                                                                                                                                                              |
+| 生成メッセージ                      | ライフラインを新しく作成することを表す。                                                                                             |                                                                                                                                                                                                                                              |
+| 自己メッセージ                      | ライフラインが、自分自身の内部処理をコールして処理を繰り返すこと、を表す。                                                           | ↪️ 参考：<https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                |
+| 再帰的メッセージ                    | ライフラインが、自分自身全体をコールして処理を繰り返すこと、を表す。                                                                 | ↪️ 参考：<https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                |
+| 入れ子実行仕様                      | 再帰的メッセージによってコールされた別の実行仕様を表す。                                                                             |                                                                                                                                                                                                                                              |
+| 返却メッセージ                      | コールの結果を他のライフラインに返却することを表す。                                                                                 |                                                                                                                                                                                                                                              |
+| 複合フラグメント (結合フラグメント) | 条件分岐、繰り返し、などによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を`alt` (`alternative`) 、繰り返しの場合は`loop`とする。<br>↪️ 参考：<https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88> |
 
 > ↪️ 参考：
 >
@@ -496,25 +496,25 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 **＊例＊**
 
-```【１】```
+`【１】`
 
-:    5つのライフライン (店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品DBオブジェクト、商品詳細画面オブジェクト) を設定する。
+: 5つのライフライン (店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品DBオブジェクト、商品詳細画面オブジェクト) を設定する。
 
-```【２】```
+`【２】`
 
-:    各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
+: 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
 ![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図.png)
 
 **＊例＊**
 
-```【１】```
+`【１】`
 
-:    ```3```個のライフラインを設定する。
+: `3`個のライフラインを設定する。
 
-```【２】```
+`【２】`
 
-:    各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
+: 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
 ![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図_2.png)
 

@@ -9,8 +9,6 @@ description: カスタムリソース＠Kubernetesの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -20,8 +18,6 @@ description: カスタムリソース＠Kubernetesの知見を記録していま
 ### カスタムリソースとは
 
 Kubernetesに標準で備わっていないKubernetesリソースを提供する。
-
-
 
 > ↪️ 参考：
 >
@@ -34,11 +30,9 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 メモ程度に、カスタムリソースで起こった固有の問題を記載しておく。
 
-
-
-| 問題                                                                                                                           | 解決策                                                                                                                                              | 該当のカスタムリソース |
-|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
-| ```.spec.affinity```キーの変更を適用するために、Podを再スケジューリングした。```.spec.affinity```キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐づけるために、同じNodeにPodが再スケジューリングされている可能性がある。Podを再スケジューリングした後に、すぐにPersistentVolumeも再作成する。 | Prometheus系  |
+| 問題                                                                                                                                                                   | 解決策                                                                                                                                                                                                       | 該当のカスタムリソース |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
+| `.spec.affinity`キーの変更を適用するために、Podを再スケジューリングした。`.spec.affinity`キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐づけるために、同じNodeにPodが再スケジューリングされている可能性がある。Podを再スケジューリングした後に、すぐにPersistentVolumeも再作成する。 | Prometheus系           |
 
 <br>
 
@@ -60,8 +54,6 @@ the server could not find the requested resource
 
 カスタムリソース定義とカスタムリソースを含むチャートをインストールする。
 
-
-
 <br>
 
 ### カスタムコントローラーによる管理
@@ -70,13 +62,9 @@ the server could not find the requested resource
 
 カスタムコントローラーのマニフェストを送信し、後はカスタムコントローラーにカスタムリソースを作成させる。
 
-
-
 #### ▼ チャートとして
 
 カスタムコントローラーのチャートをインストールし、後はカスタムコントローラーにカスタムリソースを作成させる。
-
-
 
 <br>
 
@@ -97,8 +85,6 @@ the server could not find the requested resource
 
 カスタムリソース定義自体のAPIグループの名前を設定する。
 
-
-
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 ```
@@ -109,7 +95,7 @@ apiVersion: apiextensions.k8s.io/v1
 
 #### ▼ name
 
-カスタムリソースのAPIグループの名前を設定する。『```<pluralキー名>.<groupキー名>```』とする必要がある。
+カスタムリソースのAPIグループの名前を設定する。『`<pluralキー名>.<groupキー名>`』とする必要がある。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -126,11 +112,9 @@ metadata:
 
 カスタムリソースが属するAPIグループの名前を設定する。
 
-例えば『```example.com```』というグループに定義とすると、```example.com/v1```というAPIからコールできるようになる。
+例えば『`example.com`』というグループに定義とすると、`example.com/v1`というAPIからコールできるようになる。
 
 カスタムリソースを管理する組織の完全修飾ドメイン名にすると良い。
-
-
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -140,7 +124,6 @@ metadata:
 spec:
   group: example.com
 ```
-
 
 > ↪️ 参考：
 >
@@ -153,8 +136,6 @@ spec:
 
 カスタムリソースがNamespaceあるいはClusterのいずれかに属するかを設定する。
 
-
-
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
@@ -163,7 +144,6 @@ metadata:
 spec:
   scope: Namespaced
 ```
-
 
 > ↪️ 参考：
 >
@@ -178,16 +158,11 @@ spec:
 
 カスタムリソースの様々な場面での名前を設定する。
 
-
-
 #### ▼ kind
 
-カスタムリソースの```kind```キー名を設定する。
+カスタムリソースの`kind`キー名を設定する。
 
-例えば『```Foo```』という宣言名にすると、マニフェストの```kind```キーで、```Foo```というカスタムリソース名で使用できるようになる。
-
-
-
+例えば『`Foo`』という宣言名にすると、マニフェストの`kind`キーで、`Foo`というカスタムリソース名で使用できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -203,19 +178,14 @@ spec:
 # カスタムリソースの宣言
 apiVersion: foo.example.com
 kind: Foo
-spec:
-  ...
+spec: ...
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
-
 #### ▼ plural
 
 カスタムリソースをAPIからコールする時のURLで使用するリソースの複数形名を設定する。
-
-
-
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -229,13 +199,9 @@ spec:
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
-
 #### ▼ singular
 
-```kubectl```コマンドで使用するカスタムリソースの単数形名を設定する。
-
-
-
+`kubectl`コマンドで使用するカスタムリソースの単数形名を設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -253,13 +219,9 @@ $ kubectl get foo
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
-
 #### ▼ shortNames
 
-```kubectl```コマンドで使用するカスタムリソースの省略名を設定する。
-
-
-
+`kubectl`コマンドで使用するカスタムリソースの省略名を設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -278,7 +240,6 @@ $ kubectl get foo
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
-
 <br>
 
 ### .spec.versions
@@ -287,10 +248,7 @@ $ kubectl get foo
 
 APIのバージョン名を設定する。
 
-例えば『```v1```』というstring型のキーを設定すると、マニフェストの```apiVersion```で、```/v1```を最後につけてコールすることになる。
-
-
-
+例えば『`v1`』というstring型のキーを設定すると、マニフェストの`apiVersion`で、`/v1`を最後につけてコールすることになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -304,15 +262,11 @@ spec:
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
-
 #### ▼ served
 
 APIのバージョンを有効化するかを設定する。
 
 もしカスタムリソースに複数のバージョンが存在する場合、旧バージョンを無効化し、マニフェストで使用できないようにできる。
-
-
-
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -328,9 +282,9 @@ spec:
 
 #### ▼ schema
 
-カスタムリソースの```.spec```キー以下に設定できるキーを設定する。
+カスタムリソースの`.spec`キー以下に設定できるキーを設定する。
 
-例えば『```message```』というstring型のキーを設定すると、カスタムリソースの```.spec.message```キーに任意の文字列を設定できるようになる。
+例えば『`message`』というstring型のキーを設定すると、カスタムリソースの`.spec.message`キーに任意の文字列を設定できるようになる。
 
 カスタムリソース内部のPodのデプロイ戦略は、Deployment、StatefulSet、DaemonSet、の設定値によって決まることになる。
 
@@ -352,19 +306,14 @@ spec:
                   type: string
 ```
 
-
-
-
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
-
 #### ▼ storage
 
 APIのバージョンをetcdのストレージに保存してもよいどうかを設定する。
-
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -376,14 +325,9 @@ spec:
     - storage: true
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
 > - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5
 
-
 <br>
-
-

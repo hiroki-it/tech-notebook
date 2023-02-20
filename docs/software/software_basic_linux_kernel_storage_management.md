@@ -9,8 +9,6 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -25,17 +23,17 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 ### ストレージの変更方法
 
-```【１】```
+`【１】`
 
-:    ストレージのサイズを現状から```100```GBまで拡張する。
+: ストレージのサイズを現状から`100`GBまで拡張する。
 
-```【２】```
+`【２】`
 
-:    ストレージサイズをOSに適用するために、OSを再起動する。
+: ストレージサイズをOSに適用するために、OSを再起動する。
 
-```【３】```
+`【３】`
 
-:    パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。
+: パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。
 
 > ↪️ 参考：https://isleofhoso.com/linux-lvm-extend/
 
@@ -64,41 +62,41 @@ tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
 tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 ```
 
-```【４】```
+`【４】`
 
-:    パーティションを```growpart```コマンドで拡張する。
+: パーティションを`growpart`コマンドで拡張する。
 
 ```bash
 $ growpart /dev/sda 2
 ```
 
-```【５】```
+`【５】`
 
-:    論理ボリュームを拡張できるように、事前に物理ボリュームを```pvresize```コマンドで拡張する。
+: 論理ボリュームを拡張できるように、事前に物理ボリュームを`pvresize`コマンドで拡張する。
 
 ```bash
 $ pvresize /dev/sda2
 ```
 
-```【６】```
+`【６】`
 
-:    論理ボリュームを```lvextend```コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。
+: 論理ボリュームを`lvextend`コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。
 
 ```bash
 $ lvextend -l +100%FREE /dev/root
 ```
 
-```【７】```
+`【７】`
 
-:    パーティションのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
+: パーティションのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
 
 ```bash
 $ xfs_growfs -d /
 ```
 
-```【８】```
+`【８】`
 
-:    パーティション、物理ボリューム、論理ボリューム、ファイルシステム、を拡張できた。
+: パーティション、物理ボリューム、論理ボリューム、ファイルシステム、を拡張できた。
 
 ```bash
 $ lsblk
@@ -139,9 +137,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 1つの領域を複数に見せかけられる。
 
-```/dev```ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
-
-
+`/dev`ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
 > ↪️ 参考：
 >
@@ -156,8 +152,6 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 パーティションにアクセスできるディレクトリのこと。
 
-
-
 > ↪️ 参考：https://allabout.co.jp/gm/gc/438839/
 
 <br>
@@ -166,16 +160,13 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 #### ▼ Linuxの場合
 
-Linuxでは、パーティションとマウントポイントは```df```コマンドで確認できる。
-
-
+Linuxでは、パーティションとマウントポイントは`df`コマンドで確認できる。
 
 **＊例＊**
 
-Linuxの場合、```/dev/xvda1```をルートディレクトリにマウントしていることがある。
+Linuxの場合、`/dev/xvda1`をルートディレクトリにマウントしていることがある。
 
-```Filesystem```列にパーティション、```Mounted on```列にパーティションに対応するマウントポイント、が表示される。
-
+`Filesystem`列にパーティション、`Mounted on`列にパーティションに対応するマウントポイント、が表示される。
 
 ```bash
 $ df
@@ -188,7 +179,7 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 
 **＊例＊**
 
-特にCentOSの場合、```/dev/mapper/rhel-root```をルートディレクトリにマウントしていることがある。
+特にCentOSの場合、`/dev/mapper/rhel-root`をルートディレクトリにマウントしていることがある。
 
 ```bash
 $ df -hT
@@ -203,9 +194,6 @@ tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
 tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 ```
 
-
-
-
 > ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
@@ -215,21 +203,17 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 Windowsでは、CドライブとDドライブがパーティションに相当する。
 
-
-
 > ↪️ 参考：http://www.miloweb.net/partition.html
 
 #### ▼ MacOSの場合
 
-MacOSでは、```diskutil```コマンドを実行するとパーティションとマウントポイントを確認できる。
-
-
+MacOSでは、`diskutil`コマンドを実行するとパーティションとマウントポイントを確認できる。
 
 > ↪️ 参考：https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
 
 **＊例＊**
 
-ストレージに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、```IDENTIFIER```列で表示される (例：パーティションのデバイスファイル名が```/dev/disk0```なら、マウントポイントは```/dev/disk0<IDENTIFIER名>```になる) 。
+ストレージに紐づく`2`個のデバイスファイルが表示され、`disk0`ファイル は2つ、また`disk1`ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、`IDENTIFIER`列で表示される (例：パーティションのデバイスファイル名が`/dev/disk0`なら、マウントポイントは`/dev/disk0<IDENTIFIER名>`になる) 。
 
 ```bash
 $ diskutil list
@@ -262,9 +246,7 @@ $ diskutil list
 
 ![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
 
-異なる物理ボリュームにまたがる領域を組み合わせ、```1```個の仮想的なボリュームとした扱ったもの。
-
-
+異なる物理ボリュームにまたがる領域を組み合わせ、`1`個の仮想的なボリュームとした扱ったもの。
 
 > ↪️ 参考：https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
 
@@ -276,9 +258,7 @@ $ diskutil list
 
 **＊例＊**
 
-Linuxでは論理ボリュームは、```lvdisplay```コマンドで確認できる。
-
-
+Linuxでは論理ボリュームは、`lvdisplay`コマンドで確認できる。
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
 
@@ -316,20 +296,17 @@ $ lvdisplay
 
 <br>
 
-
 ## 04. デバイスファイル
 
 ### デバイスファイルとは
 
 Linuxカーネルが入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。
 
-```/dev```ディレクトリ配下に配置されている。
+`/dev`ディレクトリ配下に配置されている。
 
 各ファイルには具体的な入出力装置を示す番号 (メジャー番号、マイナー番号) が割り当てられている。
 
 デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。
-
-
 
 > ↪️ 参考：
 >
@@ -344,11 +321,9 @@ Linuxカーネルが入出力装置や標準入出力を操作できるように
 
 **＊例＊**
 
-Linuxのデバイスファイルは```/dev```ディレクトリ配下にある。
+Linuxのデバイスファイルは`/dev`ディレクトリ配下にある。
 
 Dockerのデバイスファイルを確認すると、以下のデバイスファイルがある。
-
-
 
 > ↪️ 参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
 
@@ -377,13 +352,13 @@ crw-------  drm_dp_aux1           # ディスプレイ
 crw-rw----  fb0                   # フレームバッファ
 lrwxrwxrwx  fd -> /proc/self/fd   # ファイルディスクリプタ
 crw-rw-rw-  full                  # full状態のデバイス(書き込みエラー)
-crw-rw-rw-  fuse                  # FUSE (Filesytem in userspace) 
+crw-rw-rw-  fuse                  # FUSE (Filesytem in userspace)
 crw-------  hidraw0               # USB、Bluetooth
 crw-------  hidraw1               # USB、Bluetooth
 crw-------  hpet                  # 割り込み
 drwxr-xr-x  hugepages             # メモリー・ページの拡大
 crw-------  hwrng                 # 乱数発生機
-drwxr-xr-x  input                 # インプットデバイス (マウス、キーボード) 
+drwxr-xr-x  input                 # インプットデバイス (マウス、キーボード)
 crw-r--r--  kmsg                  # Linuxカーネルログ
 crw-rw-rw-  kvm                   # 仮想化のkvm
 lrwxrwxrwx  log -> /run/systemd/journal/dev-log   # システムログ
@@ -397,7 +372,7 @@ crw-------  mtd0ro                # フラッシュデバイス
 crw-------  mtd1                  # フラッシュデバイス
 crw-------  mtd1ro                # フラッシュデバイス
 drwxr-xr-x  net                   # トンネル ネットワーク
-crw-rw-rw-  null                  # nullデバイス (書き込むと消える) 
+crw-rw-rw-  null                  # nullデバイス (書き込むと消える)
 crw-------  nvram                 # BIOSフラッシュメモリ
 crw-r-----  port                  # システムメモリ
 crw-------  ppp                   # pointo-to-point protocol ネットワーク
@@ -460,30 +435,26 @@ crw-rw----+ vhost-net             # 仮想ネットワーク
 crw-rw-rw-  vhost-vsock           # 仮想ソケット
 crw-------  watchdog              # システムリセット
 crw-------  watchdog0             # システムリセット
-crw-rw-rw-  zero                  # ゼロ出力  (読み込むとゼロ) 
+crw-rw-rw-  zero                  # ゼロ出力  (読み込むとゼロ)
 ```
 
 <br>
 
 ### デバイスファイルの種類
 
-#### ▼ ブロックデバイス (ブロックスペシャルファイル) 
+#### ▼ ブロックデバイス (ブロックスペシャルファイル)
 
 ある程度のまとまりでデータを処理する入出力装置にデータを転送するデバイスファイル。
 
-HHD (```/dev/hd```) 、メモリ、などがある。
-
-
+HHD (`/dev/hd`) 、メモリ、などがある。
 
 > ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
-#### ▼ キャラクターデバイス (キャラクタースペシャルファイル) 
+#### ▼ キャラクターデバイス (キャラクタースペシャルファイル)
 
 一文字単位でデータを処理する入出力装置にデータを転送するデバイスファイル。
 
-プリンター (```/dev/lp```) 、モデム、ターミナル、などがある。
-
-
+プリンター (`/dev/lp`) 、モデム、ターミナル、などがある。
 
 > ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
@@ -491,14 +462,11 @@ HHD (```/dev/hd```) 、メモリ、などがある。
 
 デバイスファイルの中で、実際の装置に対応していないデバイスファイル。
 
-標準入出力 (```/dev/stdin```、```/dev/stdout```) や破棄 (```/dev/null```) などがある。
-
-
+標準入出力 (`/dev/stdin`、`/dev/stdout`) や破棄 (`/dev/null`) などがある。
 
 > ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 <br>
-
 
 ## 05. ファイルシステム
 
@@ -506,10 +474,8 @@ HHD (```/dev/hd```) 、メモリ、などがある。
 
 パーティション内のファイルをデータとして使用できるようにする機能のこと。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://www.infraeye.com/study/linuxz22.html
 > - https://ameblo.jp/bakery-diary/entry-12639340661.html
 
@@ -517,11 +483,9 @@ HHD (```/dev/hd```) 、メモリ、などがある。
 
 ### ファイルシステムの作成方法
 
-#### ▼ ```mkfs```コマンドの場合
+#### ▼ `mkfs`コマンドの場合
 
 様々なタイプのファイルシステムを作成する。
-
-
 
 ```bash
 $ mkfs -t <ファイルシステムのタイプ> <パーティションのデバイスファイル名>
@@ -533,15 +497,13 @@ $ mkfs -t xfs /dev/sda5
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://kazmax.zpp.jp/linux_beginner/mkfs.html
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
 
-#### ▼ ```mke2fs```コマンドの場合
+#### ▼ `mke2fs`コマンドの場合
 
-```ext```系タイプ (```ext2```、```ext3```、```ext4```) のファイルシステムを作成する。
-
-
+`ext`系タイプ (`ext2`、`ext3`、`ext4`) のファイルシステムを作成する。
 
 ```bash
 $ mke2fs -t <ファイルシステムのタイプ> <パーティションのデバイスファイル名>
@@ -553,10 +515,9 @@ $ mke2fs -t ext4 /dev/sda5
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://xtech.nikkei.com/it/article/COLUMN/20140324/545285/
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
-
 
 <br>
 
@@ -568,17 +529,15 @@ $ mke2fs -t ext4 /dev/sda5
 
 NFSサーバーに配置されたファイルを、他のサーバー (NFSクライアント) にマウントできる。
 
-
-
 <br>
 
 ### セットアップ
 
 #### ▼ NFSの場合
 
-```【１】```
+`【１】`
 
-:    ホスト側のMacOSにて、```/etc/exports```ファイルにマウントオプションを設定する。また、```/etc/exports```ファイルを検証する。
+: ホスト側のMacOSにて、`/etc/exports`ファイルにマウントオプションを設定する。また、`/etc/exports`ファイルを検証する。
 
 > ↪️ 参考：https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
 
@@ -596,9 +555,9 @@ $ echo '
 $ nfsd checkexports
 ```
 
-```【２】```
+`【２】`
 
-:    MacOSにNFSサーバーを起動する。
+: MacOSにNFSサーバーを起動する。
 
 ```bash
 # nfsdプロセスを起動する
@@ -611,9 +570,9 @@ Exports list on localhost:
 <マウント元のディレクトリ> <マウント先のサーバーのIPアドレス>
 ```
 
-```【３】```
+`【３】`
 
-:    NFSクライアントにて、必要なパッケージをインストールする。
+: NFSクライアントにて、必要なパッケージをインストールする。
 
 > ↪️ 参考：https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
 
@@ -622,9 +581,9 @@ Exports list on localhost:
 $ sudo apt-get install -y nfs-common
 ```
 
-```【４】```
+`【４】`
 
-:    NFSクライアントにて、マウントを実行する。
+: NFSクライアントにて、マウントを実行する。
 
 ```bash
 $ sudo mount -t nfs \

@@ -9,8 +9,6 @@ description: Ansible＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -31,9 +29,7 @@ Ansibleは、コントロールノード (デプロイサーバー) と管理対
 
 ![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible.png)
 
-
 > ↪️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
-
 
 <br>
 
@@ -42,7 +38,6 @@ Ansibleは、コントロールノード (デプロイサーバー) と管理対
 ### インストール
 
 #### ▼ aptリポジトリから
-
 
 ```bash
 $ sudo apt -y install sshpass
@@ -58,7 +53,7 @@ $ pip3 install ansible
 
 ### ディレクトリ構成ポリシー
 
-#### ▼ ```group_vars```ディレクトリの構成
+#### ▼ `group_vars`ディレクトリの構成
 
 ```yaml
 repository/
@@ -79,7 +74,7 @@ repository/
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
 
-#### ▼ ```host_vars```ディレクトリの構成
+#### ▼ `host_vars`ディレクトリの構成
 
 ```yaml
 repository/
@@ -87,10 +82,8 @@ repository/
 ├── host_vars/
 │   ├── bar_host.yml
 │   └── baz_host.yml
-│   
-...
+│
 ```
-
 
 > ↪️ 参考：
 >
@@ -98,8 +91,7 @@ repository/
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
 
-#### ▼ ```inventories```ディレクトリの構成
-
+#### ▼ `inventories`ディレクトリの構成
 
 ```yaml
 repository/
@@ -112,15 +104,13 @@ repository/
 │   │
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
-│ 
+│
 ...
 ```
 
 > ↪️ 参考：https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 
-
-#### ▼ ```roles```ディレクトリの構成
-
+#### ▼ `roles`ディレクトリの構成
 
 ```yaml
 repository/
@@ -129,7 +119,7 @@ repository/
 │   ├── app/ # appサーバー
 │   │   ├── defaults/ # rolesディレクトリ内で使用するデフォルト変数を配置する。
 │   │   │   └── foo.yml
-│   │   │  
+│   │   │
 │   │   ├── files/ # 管理対象ノードにコピーするファイルを配置する。
 │   │   │   └── foo.conf
 │   │   │
@@ -138,7 +128,7 @@ repository/
 │   │   │
 │   │   ├── meta/
 │   │   │   └── main.yml
-│   │   │  
+│   │   │
 │   │   ├── tasks/ # プロビジョニング時に実行するコマンドを配置する。
 │   │   │   └── main.yml
 │   │   │
@@ -177,8 +167,6 @@ Ansibleの実行時にパスワードを要求し、これが正しければ復�
 
 ![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible_ansible-vault.png)
 
-
 > ↪️ 参考：https://redj.hatenablog.com/entry/2020/05/02/044527
-
 
 <br>

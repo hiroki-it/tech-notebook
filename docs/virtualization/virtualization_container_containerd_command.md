@@ -9,8 +9,6 @@ description: コマンド＠Containerdの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -19,9 +17,7 @@ description: コマンド＠Containerdの知見を記録しています。
 
 ### pods
 
-KubernetesのNode内で```crictl```コマンドを実行している場合に、Node内で稼働するPodを取得する。
-
-
+KubernetesのNode内で`crictl`コマンドを実行している場合に、Node内で稼働するPodを取得する。
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods
 
@@ -38,8 +34,6 @@ POD ID      CREATED             STATE        NAME            NAMESPACE          
 
 コンテナを取得する。
 
-
-
 > ↪️ 参考：https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-containers
 
 ```bash
@@ -53,9 +47,7 @@ CONTAINER   IMAGE   CREATED        STATE       NAME              ATTEMPT        
 
 ## 02. ctr
 
-見にくいため、```crictl```コマンドを使用する。
-
-
+見にくいため、`crictl`コマンドを使用する。
 
 > ↪️ 参考：https://repl.info/archives/2894/
 

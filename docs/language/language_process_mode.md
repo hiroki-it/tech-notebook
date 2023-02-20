@@ -9,8 +9,6 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,8 +21,6 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 エントリーポイントのファイルや関数を開始点として、そのプログラムの全てのファイルの処理が実行される。
 
-
-
 > ↪️ 参考：https://en.wikipedia.org/wiki/Entry_point
 
 <br>
@@ -35,19 +31,13 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 動的型付け言語では、エントリーポイントの定義方法が強制されず、指定したファイルの先頭行がエントリーポイントになる。
 
-
-
 #### ▼ PHPの場合
 
-慣例として、```index.php```ファイルをエントリーポイントとすることになっている。
-
-
+慣例として、`index.php`ファイルをエントリーポイントとすることになっている。
 
 #### ▼ Python
 
 特になし。
-
-
 
 <br>
 
@@ -57,15 +47,11 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 静的型付け言語では、エントリーポイントの定義方法が強制される。
 
-『```main```』という名前の関数でエントリーポイントを定義させる言語が多い。
-
-
+『`main`』という名前の関数でエントリーポイントを定義させる言語が多い。
 
 #### ▼ Javaの場合
 
-修飾子が『```public static```』、返却値型が『```void```』、引数名が『```args```』、引数型が『```String[]```』である```main```関数が、自動的にエントリーポイントになる。
-
-
+修飾子が『`public static`』、返却値型が『`void`』、引数名が『`args`』、引数型が『`String[]`』である`main`関数が、自動的にエントリーポイントになる。
 
 ```java
 import java.util.*;
@@ -82,9 +68,7 @@ public class Main
 
 #### ▼ Goの場合
 
-パッケージ名が『```main```』である```main.go```ファイルが、自動的にエントリーポイントとなる。
-
-
+パッケージ名が『`main`』である`main.go`ファイルが、自動的にエントリーポイントとなる。
 
 ```go
 package main
@@ -97,15 +81,13 @@ func main() {
 
 <br>
 
-## 02. 並行処理 (Concurrent processing) 
+## 02. 並行処理 (Concurrent processing)
 
 ### 並行処理とは
 
 プロセスでシングルスレッドが実行されている場合、複数の処理を『独立的』に実行すること。
 
 開始も終了もバラバラであるが、処理の実行が重複する場合がある。
-
-
 
 > ↪️ 参考：
 >
@@ -119,15 +101,13 @@ func main() {
 
 <br>
 
-## 03. 並列処理 (Parallel processing) 
+## 03. 並列処理 (Parallel processing)
 
 ### 並列処理とは
 
 プロセスでマルチスレッドが実行されている場合、各スレッド上で複数の処理を『同時発生的』に実行すること。
 
 開始は同時であるが、終了はバラバラになる。
-
-
 
 > ↪️ 参考：
 >
@@ -142,8 +122,6 @@ func main() {
 
 parallelパッケージを使用する。
 
-
-
 > ↪️ 参考：
 >
 > - https://github.com/krakjoe/parallel
@@ -151,9 +129,7 @@ parallelパッケージを使用する。
 
 #### ▼ JavaScriptの場合
 
-  Web Workerを使用する。
-
-
+Web Workerを使用する。
 
 > ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
 
@@ -163,9 +139,7 @@ Goroutinesを使用する。
 
 ただし、実行環境によっては並列処理にならずに、並行処理になってしまうことがある。
 
-それが理由か否かはわからないが、Goのドキュメントでは、Goroutinesは```concurrency```の項目に記載されている。
-
-
+それが理由か否かはわからないが、Goのドキュメントでは、Goroutinesは`concurrency`の項目に記載されている。
 
 > ↪️ 参考：
 >
@@ -175,23 +149,19 @@ Goroutinesを使用する。
 
 <br>
 
-## 04. 同期処理 (Synchronous processing) 
+## 04. 同期処理 (Synchronous processing)
 
 ### 同期処理とは
 
 完了を待ってから後続の処理が始まるような処理のこと。
 
-
-
 <br>
 
-## 05. 非同期処理 (Asynchronous processing) 
+## 05. 非同期処理 (Asynchronous processing)
 
 ### 非同期処理とは
 
 完了を待たずに後続の処理が始まり、後続の処理と同時に実行されるような処理のこと。
-
-
 
 > ↪️ 参考：
 >
@@ -210,8 +180,6 @@ Goroutinesを使用する。
 
 言語別に、非同期処理の成否を管理し、後続する処理を定義できる機能が提供されている。
 
-
-
 #### ▼ JavaScriptの場合
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html
@@ -221,8 +189,6 @@ Goroutinesを使用する。
 JavaScriptと同じような記法で実装できるNode.jsについて、Node.jsのビルトイン関数 (特にI/O処理系) は、非同期処理化するための実装がなされている。
 
 そのため、後続の処理に非同期処理の結果を使用するものが含まれている場合、この処理だけは非同期処理の後に実行されるように定義する必要がある。
-
-
 
 > ↪️ 参考：
 >

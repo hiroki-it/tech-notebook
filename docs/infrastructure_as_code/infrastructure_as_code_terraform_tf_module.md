@@ -9,47 +9,37 @@ description: モジュール＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. ルートモジュール
 
 ### ルートモジュールとは
 
-```terraform```コマンドの実行に最低限必要な```.tf```ファイルを配置する。
+`terraform`コマンドの実行に最低限必要な`.tf`ファイルを配置する。
 
 ルートモジュールのみでも問題なく動作するが、チャイルドモジュールを使用する場合、これをコールする実装が必要になる。
-
-
 
 > ↪️ 参考：https://www.terraform.io/language/modules#the-root-module
 
 <br>
 
-
 ## 01-02. ルートモジュールの実装
 
-### ```terraform```ブロック
+### `terraform`ブロック
 
-#### ▼ ```terraform```ブロックとは
+#### ▼ `terraform`ブロックとは
 
-ルートモジュールで、```terraform```コマンドの実行時に、エントリーポイントとして動作する。
-
-
+ルートモジュールで、`terraform`コマンドの実行時に、エントリーポイントとして動作する。
 
 #### ▼ required_providers
 
 AWSやGCPなど、使用するプロバイダを定義する。
 
-プロバイダによって、異なる```resource```タイプが提供される。
+プロバイダによって、異なる`resource`タイプが提供される。
 
 一番最初に読みこまれるファイルのため、通常変数やモジュール化などが行えない。
-
-
 
 **＊実装例＊**
 
@@ -63,27 +53,25 @@ terraform {
     aws = {
       # グローバルソースアドレスを指定
       source  = "hashicorp/aws"
-      
+
       # プロバイダーのバージョン変更時は initを実行
-      version = "3.0" 
+      version = "3.0"
     }
   }
 }
 ```
 
-#### ▼ ```backend```ブロック
+#### ▼ `backend`ブロック
 
-インフラの状態ファイル (```.tfstate```ファイル) を管理する場所を設定する。
+インフラの状態ファイル (`.tfstate`ファイル) を管理する場所を設定する。
 
 S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。
 
-代わりに、```terraform init```コマンド実行時に指定しても良い。
+代わりに、`terraform init`コマンド実行時に指定しても良い。
 
-デフォルト値は```local```である。
+デフォルト値は`local`である。
 
-通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
-
-
+通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは`providers.tf`ファイルの`backend`オプションを参照し、CDの中で`terraform init`コマンドのオプションを使用して値を渡すようにする。
 
 > ↪️ 参考：https://www.terraform.io/language/settings/backends/s3
 
@@ -123,35 +111,32 @@ terraform {
 
 どのユーザーもバケット内のオブジェクトを削除できないように、ポリシーを設定しておくと良い。
 
-
-
 **＊実装例＊**
 
 ```yaml
 {
-    "Version": "2008-10-17",
-    "Statement": [
-        {
-            "Effect": "Deny",
-            "Principal": "*",
-            "Action": "s3:DeleteObject",
-            "Resource": "arn:aws:s3:::prd-foo-tfstate-bucket/*"
-        }
-    ]
+  "Version": "2008-10-17",
+  "Statement":
+    [
+      {
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:DeleteObject",
+        "Resource": "arn:aws:s3:::prd-foo-tfstate-bucket/*",
+      },
+    ],
 }
 ```
 
 <br>
 
-### ```provider```ブロック
+### `provider`ブロック
 
-#### ▼ ```provider```ブロックとは
+#### ▼ `provider`ブロックとは
 
 ルートモジュールで、Terraformで操作するクラウドインフラベンダーを設定する。
 
 ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
-
-
 
 **＊実装例＊**
 
@@ -167,7 +152,7 @@ terraform {
       # 何らかの設定
     }
   }
-  
+
   backend "s3" {
     # 何らかの設定
   }
@@ -196,7 +181,7 @@ terraform {
       # 何らかの設定
     }
   }
-  
+
   backend "gcs" {
     # 何らかの設定
   }
@@ -205,7 +190,7 @@ terraform {
 # gcpプロバイダを指定
 provider "google" {
   # アクセスキー、シークレットアクセスキー、はハードコーディングしない。
-  
+
   # デフォルト値とするリージョン名
   region = "asia-northeast1"
 }
@@ -213,9 +198,7 @@ provider "google" {
 
 #### ▼ マルチprovidersとは
 
-複数の```provider```ブロックを実装し、エイリアスを使用して、これらを動的に切り替える方法。
-
-
+複数の`provider`ブロックを実装し、エイリアスを使用して、これらを動的に切り替える方法。
 
 **＊実装例＊**
 
@@ -247,9 +230,7 @@ provider "aws" {
 
 #### ▼ モジュールに渡すプロバイダーを切り替える
 
-モジュールにプロバイダーをパラメーターとして設定する場合、```provider```ブロックを使用する。
-
-
+モジュールにプロバイダーをパラメーターとして設定する場合、`provider`ブロックを使用する。
 
 **＊実装例＊**
 
@@ -262,14 +243,12 @@ module "route53" {
   providers = {
     aws = aws.ue1
   }
-  
+
   # その他の設定値
 }
 ```
 
-加えてモジュールに```provider```ブロックでパラメーターを設定する必要がある。
-
-
+加えてモジュールに`provider`ブロックでパラメーターを設定する必要がある。
 
 **＊実装例＊**
 
@@ -299,13 +278,11 @@ resource "aws_acm_certificate" "example" {
 
 <br>
 
-### ```module```ブロック
+### `module`ブロック
 
-#### ▼ ```module```ブロックとは
+#### ▼ `module`ブロックとは
 
 ルートモジュールで、ローカルモジュールやリモートモジュールをコールし、パラメーターを設定する。
-
-
 
 > ↪️ 参考：
 >
@@ -316,8 +293,6 @@ resource "aws_acm_certificate" "example" {
 #### ▼ ローカルモジュールをコールする場合
 
 ローカルモジュールをコールし、パラメーターを設定する。
-
-
 
 **＊実装例＊**
 
@@ -330,7 +305,7 @@ resource "aws_acm_certificate" "example" {
 module "alb" {
   # ローカルモジュールを参照する。
   source = "../modules/alb"
-  
+
   # ローカルモジュールに、他のローカルモジュールのoutputブロックを渡す。
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
@@ -344,8 +319,6 @@ module "alb" {
 
 リポジトリの認証時にBasic認証やSSH公開鍵認証で接続できるが、鍵の登録が不要なBasic認証の方が簡単である。
 
-
-
 **＊実装例＊**
 
 ```terraform
@@ -358,13 +331,13 @@ module "alb" {
   # リモートモジュールを参照する。
   # SSHの場合
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git"
-  
+
   # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す。
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
 ```
 
-サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ (```//```) つけ、その後にパスを続ける。
+サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ (`//`) つけ、その後にパスを続ける。
 
 > ↪️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
 
@@ -378,7 +351,7 @@ module "alb" {
   # リモートモジュールを参照する。
   # SSHの場合
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git//module/sub-directory"
-  
+
   # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す。
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
@@ -392,7 +365,7 @@ module "alb" {
 
 > ↪️ 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
 
-#### ▼ ```-var```、```-var-file```
+#### ▼ `-var`、`-var-file`
 
 ```bash
 $ terraform plan -var="foo=foo"
@@ -403,17 +376,15 @@ $ terraform plan -var="foo=foo" -var="bar=bar"
 $ terraform plan -var-file=foo.tfvars
 ```
 
-#### ▼ ```*.auto.tfvars```ファイル、```*.auto.tfvars.json```ファイル
+#### ▼ `*.auto.tfvars`ファイル、`*.auto.tfvars.json`ファイル
 
-#### ▼ ```terraform.tfvars.json```ファイル
+#### ▼ `terraform.tfvars.json`ファイル
 
-#### ▼ ```terraform.tfvars```ファイル
+#### ▼ `terraform.tfvars`ファイル
 
 実行ファイルに入力したい環境変数を定義する。
 
-『```terraform.tfvars```』という名前にすると、```terraform```コマンドの実行時に自動的に読み込まれる。
-
-
+『`terraform.tfvars`』という名前にすると、`terraform`コマンドの実行時に自動的に読み込まれる。
 
 ```bash
 # ファイルを指定しなくとも読み込まれる
@@ -466,9 +437,9 @@ waf_blocked_user_agents = [
 ]
 ```
 
-#### ▼ ```TF_VAR_<環境変数名>```
+#### ▼ `TF_VAR_<環境変数名>`
 
-環境変数としてエクスポートしておくと自動的に読み込まれる。```<環境変数名>```の文字が、実際の環境変数名としてTerraformに渡される。
+環境変数としてエクスポートしておくと自動的に読み込まれる。`<環境変数名>`の文字が、実際の環境変数名としてTerraformに渡される。
 
 ```bash
 $ printenv
@@ -486,26 +457,21 @@ TF_VAR_ecr_version_tag=foo
 
 ルートモジュールから使用するモジュールのこと。
 
-Terraformの```2```個以上のブロックをパッケージ化することにより、複数の```resource```ブロックをまとめ、```1```個の```resource```ブロックのように扱う。
-
-
+Terraformの`2`個以上のブロックをパッケージ化することにより、複数の`resource`ブロックをまとめ、`1`個の`resource`ブロックのように扱う。
 
 > ↪️ 参考：https://www.terraform.io/language/modules#child-modules
->
 
 #### ▼ ローカルモジュール
 
 ルートモジュールよりも下層のディレクトリにあるモジュールのこと。
 
-任意の```resource```ブロックを含めて良いわけではなく、同じ責務を持つ```resource```ブロックをまとめ、凝集度が高くなるようにする。
+任意の`resource`ブロックを含めて良いわけではなく、同じ責務を持つ`resource`ブロックをまとめ、凝集度が高くなるようにする。
 
 ローカルモジュール間で変数を受け渡すときは、必ずルートモジュールを経由し、ローカルモジュール内でローカルモジュールを呼び出すことはしない。
 
-
-
 > ↪️ 参考：https://learn.hashicorp.com/tutorials/terraform/module#local-and-remote-modules
 
-#### ▼ リモートモジュール (パブリッシュモジュール) 
+#### ▼ リモートモジュール (パブリッシュモジュール)
 
 異なるリポジトリにあるモジュールのこと。
 
@@ -513,13 +479,11 @@ Terraformの```2```個以上のブロックをパッケージ化することに�
 
 モジュール内の処理を追うのが大変になるため、多用しない。
 
-ドキュメントを確認すれば、いずれの```resource```ブロックがリモートモジュールに含まれているかがわかる。
+ドキュメントを確認すれば、いずれの`resource`ブロックがリモートモジュールに含まれているかがわかる。
 
-任意の```resource```ブロックを含めて良いわけではなく、同じ責務を持つ```resource```ブロックをまとめ、凝集度が高くなるようにする。
+任意の`resource`ブロックを含めて良いわけではなく、同じ責務を持つ`resource`ブロックをまとめ、凝集度が高くなるようにする。
 
 リモートモジュール間で変数を受け渡すときは、必ずルートモジュールを経由し、リモートモジュール内でリモートモジュールを呼び出すことはしない。
-
-
 
 > ↪️ 参考：
 >
@@ -527,4 +491,3 @@ Terraformの```2```個以上のブロックをパッケージ化することに�
 > - https://www.terraform.io/language/modules#published-modules
 
 <br>
-

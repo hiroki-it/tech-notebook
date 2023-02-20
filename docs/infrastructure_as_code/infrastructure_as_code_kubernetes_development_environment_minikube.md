@@ -9,8 +9,6 @@ description: Minikube＠開発環境の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -27,19 +25,16 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_virtual_machine_driver.png)
 
-
 > ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/commands/
 > - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
-
 
 #### ▼ Dockerドライバーの場合
 
 ホストマシン上にコンテナを作成する。
 
 このコンテナ内にMinikube仮想サーバーを作成し、Nodeを持つClusterを作成する。
-
 
 ![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_docker_driver.png)
 
@@ -55,23 +50,19 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ホスト側のOS (Linux、MacOS、Windows) や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
-
-
 > ↪️ 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
 #### ▼ ドライバーの種類
 
-
-| ホスト側のOS | ゲスト (Node) 側のOS               |
-|----------|--------------------------------|
-| Linux    | VirtualBox、Docker、KVM2、...     |
-| MacOS    | VirtualBox、Docker、HyperKit、... |
-| Windows  | VirtualBox、Docker、Hyper-V、...  |
+| ホスト側のOS | ゲスト (Node) 側のOS              |
+| ------------ | --------------------------------- |
+| Linux        | VirtualBox、Docker、KVM2、...     |
+| MacOS        | VirtualBox、Docker、HyperKit、... |
+| Windows      | VirtualBox、Docker、Hyper-V、...  |
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 <br>
-
 
 ## 02. マウント
 
@@ -79,7 +70,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ 標準のホストとNode間マウント
 
-ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。
+ホスト側の`$MINIKUBE_HOME/files`ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。
 
 ```bash
 $ mkdir -p ~/.minikube/files/etc
@@ -92,19 +83,18 @@ $ minikube start
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
-
 #### ▼ 各ドライバーのホストとNode間マウント
 
 ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeの決められたディレクトリにマウントされる。
 
-| ドライバー名       | ホスト側のOS | ホスト側のディレクトリ      | ゲスト仮想環境内のNodeのディレクトリ |
-|---------------|----------|-------------------|---------------------------|
-| VirtualBox    | Linux    | ```/home```       | ```/hosthome```           |
-| VirtualBox    | macOS    | ```/Users```      | ```/Users```              |
-| VirtualBox    | Windows  | ```C://Users```   | ```/c/Users```            |
-| VMware Fusion | macOS    | ```/Users```      | ```/mnt/hgfs/Users```     |
-| KVM           | Linux    | なし                |                           |
-| HyperKit      | Linux    | なし (NFSマウントを参照) |                           |
+| ドライバー名  | ホスト側のOS | ホスト側のディレクトリ   | ゲスト仮想環境内のNodeのディレクトリ |
+| ------------- | ------------ | ------------------------ | ------------------------------------ |
+| VirtualBox    | Linux        | `/home`                  | `/hosthome`                          |
+| VirtualBox    | macOS        | `/Users`                 | `/Users`                             |
+| VirtualBox    | Windows      | `C://Users`              | `/c/Users`                           |
+| VMware Fusion | macOS        | `/Users`                 | `/mnt/hgfs/Users`                    |
+| KVM           | Linux        | なし                     |                                      |
+| HyperKit      | Linux        | なし (NFSマウントを参照) |                                      |
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
@@ -120,15 +110,14 @@ $ minikube start
 
 ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
-
-- ```/data```
-- ```/var/lib/minikube```
-- ```/var/lib/docker```
-- ```/var/lib/containerd```
-- ```/var/lib/buildkit```
-- ```/var/lib/containers```
-- ```/tmp/hostpath_pv```
-- ```/tmp/hostpath-provisioner```
+- `/data`
+- `/var/lib/minikube`
+- `/var/lib/docker`
+- `/var/lib/containerd`
+- `/var/lib/buildkit`
+- `/var/lib/containers`
+- `/tmp/hostpath_pv`
+- `/tmp/hostpath-provisioner`
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -138,7 +127,7 @@ $ minikube start
 
 #### ▼ ホストをコンテナにマウントする方法
 
-Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。
+Minikubeでは、`mount`コマンド、ホスト側の`$MINIKUBE_HOME/files`ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。
 
 またNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。
 
@@ -146,25 +135,23 @@ Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/file
 
 このように、ホストからNode、NodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
 
-
-
 > ↪️ 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
 #### ▼ HyperKitドライバーを使用する場合
 
 **＊例＊**
 
-```【１】```
+`【１】`
 
-:    HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで```mount```コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。
+: HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで`mount`コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。
 
 ```bash
 $ minikube start --driver=hyperkit --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
 
-```【２】```
+`【２】`
 
-:    NodeのボリュームをPod内のコンテナにマウントする。
+: NodeのボリュームをPod内のコンテナにマウントする。
 
 ```yaml
 apiVersion: apps/v1
@@ -205,9 +192,7 @@ spec:
 
 #### ▼ Nodeの場合
 
-Node内で```ip addr```コマンドを実行すると、Nodeに割り当てられたCIDRブロックを確認できる。
-
-
+Node内で`ip addr`コマンドを実行すると、Nodeに割り当てられたCIDRブロックを確認できる。
 
 > ↪️ 参考：https://nishipy.com/archives/1467
 
@@ -215,9 +200,7 @@ Node内で```ip addr```コマンドを実行すると、Nodeに割り当てら�
 
 CNIとしてBridgeアドオンを使用している。
 
-CIDRブロックは、```192.168.49.2/24```である。
-
-
+CIDRブロックは、`192.168.49.2/24`である。
 
 ```bash
 $ minikube ssh
@@ -225,22 +208,19 @@ $ minikube ssh
 # Nodeの中
 docker@minikube:~$ ip addr | grep eth0
 
-10: eth0@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+10: eth0@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
     inet 192.168.49.2/24 brd 192.168.49.255 scope global eth0
 ```
 
 #### ▼ Pod
 
-Node内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
-
+Node内で`/etc/cni/net.d`ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
 **＊例＊**
 
 CNIとしてBridgeアドオンを使用している。
 
-CIDRブロックは、```10.85.0.0/16```である。
-
-
+CIDRブロックは、`10.85.0.0/16`である。
 
 ```bash
 $ minikube ssh
@@ -250,7 +230,7 @@ docker@minikube:~$ ls -la /etc/cni/net.d
 -rw-r--r-- 1 root root  438 Nov 11  2021 100-crio-bridge.conf
 -rw-r--r-- 1 root root   54 Nov 11  2021 200-loopback.conf
 
-docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf 
+docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 {
     "cniVersion": "0.3.1",
@@ -276,9 +256,7 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 > ↪️ 参考：https://nishipy.com/archives/1467
 
-
 <br>
-
 
 ## 04-02. Podへの接続
 
@@ -294,9 +272,9 @@ Minikubeは、クラウドプロバイダーとは状況が異なり、Minikube�
 
 ### NodePort Serviceの場合
 
-NodePort Serviceの場合、```minikube service```コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。
+NodePort Serviceの場合、`minikube service`コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。
 
-```http://127.0.0.1:<自動的に発行されたポート番号>```の形式でURLが発行されるため、ブラウザや```curl```コマンドで接続を確認できる。
+`http://127.0.0.1:<自動的に発行されたポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
 
 ```bash
 $ minikube service <NodePort Service名> --url -n foo-namespace
@@ -305,7 +283,6 @@ $ curl http://127.0.0.1:<自動的に発行されたポート番号>
 ```
 
 これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。
-
 
 ```bash
 $ minikube service istio-ingressgateway --url -n istio-ingress
@@ -317,7 +294,7 @@ $ minikube service istio-ingressgateway --url -n istio-ingress
 
 #### LoadBalancer Serviceの場合
 
-LoadBalancer Serviceの場合、```minikube tunnel```コマンドでLoadBalancer Serviceに```EXTERNAL-IP```が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。
+LoadBalancer Serviceの場合、`minikube tunnel`コマンドでLoadBalancer Serviceに`EXTERNAL-IP`が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。
 
 ```bash
 $ minikube tunnel
@@ -326,7 +303,6 @@ $ curl http://<minikube tunnelコマンドでLoadBalancer Serviceに割り当て
 ```
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
-
 
 ### ClusterIP Serviceの場合
 
@@ -350,7 +326,7 @@ Nginxコントローラーを含むIngressコントローラーは、Hostヘッ�
 $ minikube addons enable ingress-dns
 ```
 
-また、```/etc/resolver/minikube-test ```ファイルを以下の通りに編集する。
+また、`/etc/resolver/minikube-test `ファイルを以下の通りに編集する。
 
 ```bash
 $ vim /etc/resolver/minikube-test
@@ -361,7 +337,7 @@ search_order 1
 timeout 5
 ```
 
-あとは、```minikube```というドメインで、Minikube仮想サーバー内のNodeに接続できる。
+あとは、`minikube`というドメインで、Minikube仮想サーバー内のNodeに接続できる。
 
 ```bash
 $ curl http://foo.minikube
@@ -372,8 +348,7 @@ $ curl http://foo.minikube
 > - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
 
-
-#### ▼ ```kubectl port-forward```コマンドを使用する場合
+#### ▼ `kubectl port-forward`コマンドを使用する場合
 
 妥協策として、Ingressを介さずに、Podに直接的に接続する。
 
@@ -387,7 +362,7 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 
 #### ▼ NodePort Serviceを別途作成する場合
 
-妥協策として、開発環境のみで使用するNodePort Serviceを作成する。      
+妥協策として、開発環境のみで使用するNodePort Serviceを作成する。
 
 > ↪️ 参考：
 >

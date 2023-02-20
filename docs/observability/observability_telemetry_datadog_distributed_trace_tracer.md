@@ -9,8 +9,6 @@ description: トレーサー＠分散トレース収集の知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -19,13 +17,11 @@ description: トレーサー＠分散トレース収集の知見を記録して�
 
 ### セットアップ
 
-#### ▼ インストール (手動の場合) 
+#### ▼ インストール (手動の場合)
 
 採用しているミドルウェアごとに、インストール方法が異なる。
 
 サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用した方が良い。
-
-
 
 ```bash
 # GitHubリポジトリからパッケージをダウンロードする。
@@ -38,7 +34,7 @@ $ dpkg -i datadog-php-tracer_0.69_amd64.deb
 $ rm datadog-php-tracer.deb
 ```
 
-また、PHP-FPMに環境変数を渡せるように、```www```プールに関する設定ファイルを配置し、PHP-FPMを再起動する。
+また、PHP-FPMに環境変数を渡せるように、`www`プールに関する設定ファイルを配置し、PHP-FPMを再起動する。
 
 ```ini
 # /etc/php-fpm.d/dd-trace.confファイル
@@ -54,11 +50,9 @@ env[DD_VERSION] = '<バージョンタグ>'
 > - https://docs.datadoghq.com/tracing/setup/php/
 > - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
-#### ▼ インストール (Ansibleの場合) 
+#### ▼ インストール (Ansibleの場合)
 
 使用しているミドルウェアごとに、インストール方法が異なる。
-
-
 
 ```yaml
 - tasks:
@@ -74,14 +68,11 @@ env[DD_VERSION] = '<バージョンタグ>'
       notify: restart php-fpm
 ```
 
-#### ▼ インストール (コンテナの場合) 
+#### ▼ インストール (コンテナの場合)
 
 アプリコンテナのDockerfileにて、PHPトレーサーをインストールする。
 
-また、コンテナの環境変数として、```DD_SERVICE```、```DD_ENV```、```DD_VERSION```を渡す。
-
-
-
+また、コンテナの環境変数として、`DD_SERVICE`、`DD_ENV`、`DD_VERSION`を渡す。
 
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
@@ -96,10 +87,9 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
-
 #### ▼ インストールの動作確認
 
-パッケージが正しく読み込まれているか否かは、```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる。
+パッケージが正しく読み込まれているか否かは、`php --ri=ddtrace`コマンドまたは`phpinfo`メソッドの結果から確認できる。
 
 ```bash
 # 成功の場合
@@ -124,10 +114,7 @@ Extension 'ddtrace' not present.
 
 #### ▼ パラメーターの動作確認
 
-パラメーターがトレーサーに渡されたか否かは、```DATADOG TRACER CONFIGURATION```の項目で確認できる。
-
-
-
+パラメーターがトレーサーに渡されたか否かは、`DATADOG TRACER CONFIGURATION`の項目で確認できる。
 
 ```bash
 $ php --ri=ddtrace
@@ -182,18 +169,13 @@ DATADOG TRACER CONFIGURATION => { ..... } # ここに設定のJSONが得られ�
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
-
 #### ▼ 受信ログの確認
 
 datadogコンテナにトレースが送信されている場合は、受信できていることを表すログを確認できる。
 
-
-
 ```log
 2022-01-01 12:00:00 UTC | TRACE | INFO | (pkg/trace/info/stats.go:111 in LogStats) | [lang:php lang_version:8.0.8 interpreter:fpm-fcgi tracer_version:0.64.1 endpoint_version:v0.4] -> traces received: 7, traces filtered: 0, traces amount: 25546 bytes, events extracted: 0, events sampled: 0
 ```
-
-
 
 <br>
 
@@ -205,29 +187,28 @@ datadogコンテナにトレースが送信されている場合は、受信で�
 
 TypeScriptやモジュールバンドルを採用している場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。
 
-対策として、```dd-trace```パッケージの```init```メソッドの実行を別ファイルに分割し、これをエントリーポイント (```nuxt.config.js```ファイル) の先頭で読み込むようにする。
+対策として、`dd-trace`パッケージの`init`メソッドの実行を別ファイルに分割し、これをエントリーポイント (`nuxt.config.js`ファイル) の先頭で読み込むようにする。
 
-また、フレームワークよりも先に読み込むことになるため、```.env```ファイル参照を使用できない。
+また、フレームワークよりも先に読み込むことになるため、`.env`ファイル参照を使用できない。
 
 そこで、環境変数はインフラ側で設定する。
 
-
 ```javascript
 // datadogTracer.tsファイル
-import tracer from 'dd-trace'
+import tracer from "dd-trace";
 
 tracer.init({
-  // フレームワークの.envファイル参照を使用できない 
+  // フレームワークの.envファイル参照を使用できない
   env: DD_ENV,
-  service: DD_SERVICE + '-ssr',
+  service: DD_SERVICE + "-ssr",
   version: DD_VERSION,
-    
+
   // 検証時のオプション
   debug: true,
   startupLogs: true,
-})
+});
 
-export default datadogTracer
+export default datadogTracer;
 ```
 
 ```javascript
@@ -239,15 +220,11 @@ import { Configuration } from '@nuxt/types'
 ...
 ```
 
-
 > ↪️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
-
 
 #### ▼ 起動ログの確認
 
-トレーサーの起動ログは、```init```メソッドの```startupLogs```オプションを有効化すると確認できる。
-
-
+トレーサーの起動ログは、`init`メソッドの`startupLogs`オプションを有効化すると確認できる。
 
 ```bash
 DATADOG TRACER CONFIGURATION -
@@ -285,7 +262,7 @@ DATADOG TRACER CONFIGURATION -
     "appsec_enabled": false
 }
 
-WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the agent: socket hang up 
+WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the agent: socket hang up
 ```
 
 <br>
@@ -295,8 +272,6 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 初期化時に環境変数を設定できる。
 
 APMのマイクロサービスのタグ名に反映される。
-
-
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
@@ -311,9 +286,6 @@ APMのマイクロサービスのタグ名に反映される。
 先頭のマイクロサービスでは、親スパンを作成する。
 
 また、後続のマイクロサービスに親スパンのメタデータを伝播する。
-
-
-
 
 ```go
 package main
@@ -359,15 +331,11 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
-
 #### ▼ 後続のマイクロサービス
 
 後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
 
 また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
-
-
-
 
 ```go
 package main
@@ -400,7 +368,6 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 ```
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
-
 
 <br>
 
@@ -438,7 +405,7 @@ func main() {
 		grpc.StreamInterceptor(streamServerInterceptor),
 		grpc.UnaryInterceptor(unaryServerInterceptor),
 	)
-	
+
 	... // pb.goファイルに関する実装は省略している。
 
 	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
@@ -458,7 +425,6 @@ func main() {
 }
 ```
 
-
 > ↪️ 参考：
 >
 > - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
@@ -466,10 +432,7 @@ func main() {
 > - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
 > - https://christina04.hatenablog.com/entry/grpc-unary-interceptor
 
-
 #### ▼ gRPCクライアント側
-
-
 
 ```go
 package main

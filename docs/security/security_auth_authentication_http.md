@@ -9,8 +9,6 @@ description: HTTP認証＠認証の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -19,7 +17,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 HTTPプロトコルの中で認証を行う認証スキームのこと。
 
-リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する。
+リクエストの`authorization`ヘッダーとレスポンスの`WWW-Authenticate`ヘッダーで認証スキームを指定する。
 
 認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。
 
@@ -39,32 +37,29 @@ HTTPプロトコルの中で認証を行う認証スキームのこと。
 
 認証時に、平文のIDとパスワードを使用する認証スキームのこと。
 
-
-
 <br>
 
 ### Basic認証の仕組み
 
 ![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Basic認証.png)
 
-
-| 役割   | 説明                                                                           |
-|--------|------------------------------------------------------------------------------|
+| 役割         | 説明                                                                                                                            |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | クライアント | リクエスト送信元のアプリケーションのこと。文脈によっては、ブラウザがクライアントである場合とそうでない場合 (例：OAuth) がある。 |
-| ユーザー   | クライアントを使用している人物のこと。                                                        |
-| サーバー   | クライアントからリクエストを受信し、レスポンスを返信するアプリケーションのこと。                                   |
+| ユーザー     | クライアントを使用している人物のこと。                                                                                          |
+| サーバー     | クライアントからリクエストを受信し、レスポンスを返信するアプリケーションのこと。                                                |
 
-```【１】```
+`【１】`
 
-:    最初、クライアントは、認証後にアクセスできるWebページのリクエストをサーバーに送信する。
+: 最初、クライアントは、認証後にアクセスできるWebページのリクエストをサーバーに送信する。
 
 ```yaml
 GET https://example.com/foo-form
 ```
 
-```【２】```
+`【２】`
 
-:    サーバーは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを返信する。
+: サーバーは、これ拒否し、`401`ステータスで認証領域を設定し、レスポンスを返信する。
 
      これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。
 
@@ -76,9 +71,9 @@ GET https://example.com/foo-form
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-```【３】```
+`【３】`
 
-:    『```<ユーザー名>:<パスワード>```』をbase64方式でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
+: 『`<ユーザー名>:<パスワード>`』をbase64方式でエンコードした値を`authorization`ヘッダーに割り当て、リクエストを送信する。
 
 ```yaml
 POST https://example.com/foo-form
@@ -86,9 +81,9 @@ POST https://example.com/foo-form
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
-```【４】```
+`【４】`
 
-:    サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。
+: サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。
 
      また、認証情報をブラウザのWebストレージに保存する。
 
@@ -98,9 +93,9 @@ authorization: Basic bG9naW46cGFzc3dvcmQ=
 WWW-Authenticate: Basic realm=""
 ```
 
-```【５】```
+`【５】`
 
-:    認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
+: 認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
 
 > ↪️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
@@ -110,9 +105,9 @@ POST https://example.com/foo-form/logout
 authorization: Basic <誤った認証情報>
 ```
 
-```【６】```
+`【６】`
 
-:    サーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
+: サーバーは、`401`ステータスでレスポンスを返信し、認証が解除される。
 
 ```yaml
 401 Unauthorized
@@ -122,14 +117,11 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 <br>
 
-
 ## 03. Digest認証
 
 ### Digest認証とは
 
 認証時に、ハッシュ化されたIDとパスワードを使用する認証スキームのこと。
-
-
 
 <br>
 
@@ -155,8 +147,6 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成し
 
 認証時に、Bearerトークンを使用する認証スキームのこと。
 
-
-
 <br>
 
 ### Bearerトークン (署名なしトークン) とは
@@ -169,17 +159,15 @@ Bearer認証にて、トークンとして使用する。
 
 そのため、トークンの文字列が流出してしまわないよう、厳重に管理する必要がある。
 
-
-
 > ↪️ 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
 <br>
 
 ### Bearer認証の仕組み
 
-```【１】```
+`【１】`
 
-:    指定されたエンドポイントに対して、```POST```リクエストを送信する。
+: 指定されたエンドポイントに対して、`POST`リクエストを送信する。
 
      この時、```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする。
 
@@ -199,9 +187,9 @@ Content-Type: application/x-www-form-urlencoded
 client_id=*****&grant_type=client_credentials&scope=messaging:push
 ```
 
-```【２】```
+`【２】`
 
-:    レスポンスボディにBearerトークンを含むレスポンスが返信される。
+: レスポンスボディにBearerトークンを含むレスポンスが返信される。
 
      他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
 
@@ -220,13 +208,13 @@ Content-Type: application/json
   "access_token": "*****",
   "expires_in": 3600,
   "scope": "messaging:push",
-  "token_type": "Bearer"
+  "token_type": "Bearer",
 }
 ```
 
-```【３】```
+`【３】`
 
-:    発行されたBearerトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て、リクエストを送信する。
+: 発行されたBearerトークンを指定された認証スキーマで`Authorization`ヘッダーに割り当て、リクエストを送信する。
 
      ここでは詳しく言及しないが、BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある。
 
@@ -241,9 +229,9 @@ POST https://example.com/foo
 authorization: Bearer <Bearerトークン>
 ```
 
-```【４】```
+`【４】`
 
-:    サーバーは、Bearerトークンを照合し、合致していれば、認証後のWebページを返信する。
+: サーバーは、Bearerトークンを照合し、合致していれば、認証後のWebページを返信する。
 
      無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。
 
@@ -255,9 +243,9 @@ authorization: Bearer <Bearerトークン>
 WWW-Authenticate: Bearer realm=""
 ```
 
-```【５】```
+`【５】`
 
-:    認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。
+: 認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。
 
      またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
@@ -280,8 +268,6 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 成功の場合は、realm属性を空にしたレスポンスを返信する。
 
-
-
 ```yaml
 200 OK
 ---
@@ -289,8 +275,6 @@ WWW-Authenticate: Bearer realm=""
 ```
 
 失敗の場合は、error属性にエラメッセージを割り当てたレスポンスを返信する。
-
-
 
 ```yaml
 400 Bad Request
@@ -312,9 +296,9 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 <br>
 
-### ```Authorization```ヘッダーのトークンのクライアント保持
+### `Authorization`ヘッダーのトークンのクライアント保持
 
-不便ではあるが、```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり、ローカルマシンに保存できない。
+不便ではあるが、`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保存できない。
 
 その代わり、ブラウザの設定によって、ブラウザのWebストレージでも保持できる。
 

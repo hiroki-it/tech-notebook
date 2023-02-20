@@ -9,8 +9,6 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,31 +19,27 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 プログラムの実行が強制的に停止されるランタイムエラー (実行時エラー) 、停止せずに続行される非ランタイムエラー、に分類される。
 
-
-
 <br>
 
 ### エラーハンドリングとは
 
 エラーハンドリングは以下の４ステップからなる。
 
+`【１】`
 
+: エラー検出
 
-```【１】```
+`【２】`
 
-:    エラー検出
+: 例外スロー
 
-```【２】```
+`【３】`
 
-:    例外スロー
+: 例外キャッチ
 
-```【３】```
+`【４】`
 
-:    例外キャッチ
-
-```【４】```
-
-:    ロギング
+: ロギング
 
 <br>
 
@@ -59,8 +53,6 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 注意点として、下層クラスのエラーの内容自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。
 
-
-
 <br>
 
 ### ソフトウェア開発者にとって
@@ -70,8 +62,6 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 そのため、エラーをメソッドコールしたクラスで検出し、ソフトウェア開発者にわかる言葉に変換した例外としてスローする必要がある。
 
 注意点として、下層クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。
-
-
 
 <br>
 
@@ -97,8 +87,6 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 以下リンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://www.php.net/manual/ja/reserved.exceptions.php
 
 <br>
@@ -107,13 +95,11 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 #### ▼ 定義
 
-エラーの種類に合わせて、```Exception```クラスを継承した独自例外クラスを実装し、使い分けると良い。
+エラーの種類に合わせて、`Exception`クラスを継承した独自例外クラスを実装し、使い分けると良い。
 
-```__construct```メソッドに、メッセージやエラーコード (例外コード) などを渡せる。
+`__construct`メソッドに、メッセージやエラーコード (例外コード) などを渡せる。
 
 エラーコードのデフォルト値はゼロである。
-
-
 
 > ↪️ 参考：https://www.php.net/manual/ja/exception.construct.php
 
@@ -125,15 +111,11 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 ステータスコードはコントローラーにおけるレスポンス処理で割り当てる。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 **＊実装例＊**
 
 『Foo変数が見つからない』というエラーに対応する例外クラスを定義する。
-
-
 
 ```php
 <?php
@@ -141,7 +123,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 class FooNotFoundException extends Exception
 {
     // 基本的に何も実装しない。
-    
+
     // エラーコードとステータスコードは異なるもののため、以下の様にしないこと。
     // protected $code = 400
 }
@@ -153,22 +135,22 @@ class FooNotFoundException extends Exception
 use Exception\FooNotFound;
 
 function foo(string $foo) {
-    
+
     if (empty($foo)) {
         throw new FooNotFoundException("foo is not found.");
     }
-    
+
     return "これは ${foo} です。";
 }
 ```
 
 #### ▼ 命名規則
 
-何のエラーが発生したかを判断できるように、名前は『```<エラー名>Exception```』とする。
+何のエラーが発生したかを判断できるように、名前は『`<エラー名>Exception`』とする。
 
 また、開発者にとって詳しく理解できるように、コンストラクタの引数にメッセージを渡す。
 
- (例) 
+(例)
 
 - InvalidArgumentException
 
@@ -184,15 +166,13 @@ function foo(string $foo) {
 
 多くのフレームワークでは、ランタイムエラーや非ランタイムエラーが発生すると、それを検知して、例外をスローしてくれる。
 
-
-
 #### ▼ 独自定義
 
 if-throw文を使用して、エラー検出と例外スローを実行する。
 
 ランタイムエラーは検出できないことに注意する。特定の処理の中に、想定できる例外があり、それを例外クラスとしてするために使用する。
 
-ここでは、全ての例外クラスの親クラスである```Exception```クラスのインスタンスを投げている。
+ここでは、全ての例外クラスの親クラスである`Exception`クラスのインスタンスを投げている。
 
 **＊実装例＊**
 
@@ -200,12 +180,12 @@ if-throw文を使用して、エラー検出と例外スローを実行する。
 <?php
 
 function value(int $value) {
-    
+
     if (empty($value)) {
         // 例外クラスを返却
         throw new Exception("Value is empty");
     }
-    
+
     return "これは ${value} です。";
 }
 ```
@@ -214,21 +194,20 @@ function value(int $value) {
 
 ```php
 <?php
-    
+
 function value() {
-    
+
     if (...) {
         throw new ExternalApiException();
     }
-    
+
     if (...) {
         throw new FooInvalidArgumentException();
     }
-        
+
     return "成功です。"
 }
 ```
-
 
 <br>
 
@@ -279,11 +258,9 @@ class Foo
 
 ```
 
-finally句は、try句やcatch句の返却処理が行われる直前に実行されるため、finally句では、```return```や```continue```を使用しないようにする。
+finally句は、try句やcatch句の返却処理が行われる直前に実行されるため、finally句では、`return`や`continue`を使用しないようにする。
 
-
-
-```php
+````php
 <?php
 
 use Exception\ExternalApiErrorException;
@@ -297,34 +274,34 @@ class Foo
 
             // ```【１】```
 
-:    
+:
             echo "Aの直前です";
             return "Aです。";
-            
+
         } catch (ExternalApiErrorException $exception) {
 
             // ```【２】```
 
-:    
+:
             echo "Bの直前です";
             return "Bです。";
-            
+
         } catch (HttpRequestErrorException $exception) {
 
             // ```【３】```
 
-:    
+:
             echo "Cの直前です";
             return "Cです。";
-            
+
         } catch (Exception $exception) {
 
             // ```【４】```
 
-:    
+:
             echo "Dの直前です";
             return "Dです。";
-            
+
         } finally {
 
             // returnやcontinueを使用しない
@@ -333,16 +310,15 @@ class Foo
         }
     }
 }
-```
+````
 
+`【１】`
 
-```【１】```
+: ～`【４】`
 
-:    ～```【４】```
+: のいずれかで返却される時、返却の直前にfinally句が実行されることがわかる。
 
-:    のいずれかで返却される時、返却の直前にfinally句が実行されることがわかる。
-
-```php
+````php
 // ```【１】```
 
 :    の場合
@@ -370,7 +346,7 @@ class Foo
 // Dの直前です。
 // Eです。
 // Dです。
-```
+````
 
 <br>
 
@@ -378,7 +354,7 @@ class Foo
 
 例外をtry-catch文でキャッチした後、別の新しい例外をスローしても良い。
 
-その場合は、例外のコンストラクタの第三引数 (```previous```) を使用して、キャッチされていた元の例外も検知できるようにする。
+その場合は、例外のコンストラクタの第三引数 (`previous`) を使用して、キャッチされていた元の例外も検知できるようにする。
 
 補足として、この例外をロギングする場合、スタックトレースログとして出力される。
 
@@ -412,7 +388,7 @@ class Foo
 
 ### ロギング関数
 
-#### ▼ ```error_log```関数
+#### ▼ `error_log`関数
 
 > ↪️ 参考：https://www.php.net/manual/ja/function.error-log.php
 
@@ -455,8 +431,6 @@ class Notification
 ```
 
 他に、Loggerインターフェースを使用することも多い。
-
-
 
 > ↪️ 参考：https://github.com/php-fig/log
 
@@ -507,8 +481,6 @@ try-catch文に伴うロギングの場合、catch句の中でこれを実行す
 
 例えば、メッセージアプリケーションのAPIに対してメッセージ作成のリクエストを送信する時、例外の種類に合わせて、外部APIとの接続失敗によるエラーログを作成と、自社ソフトウェアなどその他原因によるエラーログを作成を行う必要がある。
 
-
-
 **＊実装例＊**
 
 ```php
@@ -528,7 +500,7 @@ class Foo
             // 外部APIのURL、送信方法、トークンなどのパラメーターを設定。
 
         } catch (\HttpRequestErrorException $exception) {
-            
+
             // 下流クラスによる例外スローを含む処理
 
             // 外部APIとの接続失敗によるエラーをロギング
@@ -540,7 +512,7 @@ class Foo
             ));
 
         } catch (\ExternalApiErrorException $exception) {
-            
+
             // 下流クラスによる例外スローを含む処理
 
             // 外部APIのソフトウェアエラーをロギング
@@ -552,7 +524,7 @@ class Foo
             ));
 
         } catch (\Exception $exception) {
-            
+
             // 下流クラスによる例外スローを含む処理
 
             // その他 (例：自社ソフトウェアなど) によるエラーをロギング

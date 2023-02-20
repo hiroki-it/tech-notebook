@@ -9,8 +9,6 @@ description: コマンド＠Minikubeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,13 +21,9 @@ description: コマンド＠Minikubeの知見を記録しています。
 
 Minikubeのアドオンを操作する。
 
-
-
 #### ▼ enable
 
 アドオンを有効化するか否かを設定する。
-
-
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
 
@@ -38,8 +32,6 @@ Minikubeのアドオンを操作する。
 開発環境専用のIngressコントローラーとして、Nginx Ingressコントローラーを有効化するか否かを設定する。
 
 本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
-
-
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
@@ -57,8 +49,6 @@ foo-ingress   nginx   *       <IPアドレス>    80      12m
 #### ▼ list
 
 有効できるアドオンの一覧を取得する。
-
-
 
 ```bash
 $ minikube addons list
@@ -118,26 +108,21 @@ $ minikube start --cni=cilium
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
-
 <br>
 
 ### config
 
 #### ▼ configとは
 
-```minikube```コマンドに関するパラメーターを操作する。
-
-
+`minikube`コマンドに関するパラメーターを操作する。
 
 #### ▼ set
 
-```kubectl```コマンド実行時のデフォルト値を設定する。
+`kubectl`コマンド実行時のデフォルト値を設定する。
 
 **＊例＊**
 
 デフォルトのドライバーを設定する。
-
-
 
 ```bash
 $ minikube config set driver virtualbox
@@ -145,15 +130,11 @@ $ minikube config set driver virtualbox
 
 CPUサイズの上限値を設定する。
 
-
-
 ```bash
 $ minikube config set cpus 4
 ```
 
 メモリサイズの上限値を設定する。
-
-
 
 ```bash
 $ minikube config set memory 16384
@@ -161,18 +142,14 @@ $ minikube config set memory 16384
 
 Kubernetesのバージョンのデフォルト値を設定する。
 
-
-
-
 ```bash
 $ minikube config set kubernetes-version=v1.23.0
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://minikube.sigs.k8s.io/docs/commands/config/
 > - https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
-
 
 <br>
 
@@ -181,8 +158,6 @@ $ minikube config set kubernetes-version=v1.23.0
 #### ▼ dashboardとは
 
 Kubernetesのダッシュボードを開発環境に作成する。
-
-
 
 **＊例＊**
 
@@ -217,12 +192,9 @@ $ minikube delete --all --purge
 
 #### ▼ docker-envとは
 
-ホストで```docker```コマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。
+ホストで`docker`コマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。
 
-バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
-
-
-
+バージョンタグが`latest`であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
 **＊例＊**
 
@@ -242,10 +214,8 @@ $ eval $(minikube -p minikube docker-env)
 
 これにより、以下の環境変数が追加される。
 
-
-
 ```bash
-$ env | grep DOCKER    
+$ env | grep DOCKER
 
 DOCKER_TLS_VERIFY=1
 DOCKER_HOST=tcp://*.*.*.*:2376
@@ -253,9 +223,7 @@ DOCKER_CERT_PATH=/Users/hiroki.hasegawa/.minikube/certs
 MINIKUBE_ACTIVE_DOCKERD=minikube
 ```
 
-もし、 Makefileのターゲット内でこれを実行する場合は、```$(shell ...)```とする。
-
-
+もし、 Makefileのターゲット内でこれを実行する場合は、`$(shell ...)`とする。
 
 ```makefile
 docker-env:
@@ -264,12 +232,9 @@ docker-env:
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
-
 #### ▼ -u
 
 ホスト側のdockerデーモンを指定できるように、元に戻す。
-
-
 
 ```bash
 $ eval $(minikube docker-env -u)
@@ -283,8 +248,6 @@ $ eval $(minikube docker-env -u)
 
 ゲスト仮想環境内のNodeのIPアドレスを取得する。
 
-
-
 ```bash
 $ minikube ip
 
@@ -297,7 +260,7 @@ $ minikube ip
 
 #### ▼ kubectlとは
 
-Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
+Minikubeのkube-apiserverをコンテキストとする`kubectl`コマンドを実行する。ローカルマシンに`kubectl`コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
 ```bash
 $ minikube kubectl -- version
@@ -329,12 +292,10 @@ Server Version: version.Info{
 }
 ```
 
-
 > ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
 > - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
-
 
 <br>
 
@@ -342,7 +303,7 @@ Server Version: version.Info{
 
 #### ▼ add
 
-Nodeを```1```個だけ追加する。
+Nodeを`1`個だけ追加する。
 
 #### ▼ --control-plane
 
@@ -356,13 +317,11 @@ $ minikube node add --control-plane
 
 ワーカーNodeを追加する。
 
-
 ```bash
 $ minikube node add --worker
 ```
 
-
-追加したワーカーNodeに```.metadata.labeles```キーを追加すれば、node affinityやnode selectorを検証できる。
+追加したワーカーNodeに`.metadata.labeles`キーを追加すれば、node affinityやnode selectorを検証できる。
 
 ```bash
 # ArgoCDを作成するワーカーNodeの場合
@@ -373,7 +332,6 @@ $ kubectl label node minikube-m02 node-type=ingress
 ```
 
 > ↪️ 参考：https://qiita.com/zaburo/items/efd7315161281d9822ed
-
 
 <br>
 
@@ -387,7 +345,7 @@ $ kubectl label node minikube-m02 node-type=ingress
 $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 📁  Mounting host path /Users/hiroki.hasegawa/projects/foo into VM as /data ...
-    ▪ Mount type:   
+    ▪ Mount type:
     ▪ User ID:      docker
     ▪ Group ID:     docker
     ▪ Version:      9p2000.L
@@ -403,15 +361,11 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
 
-
 <br>
 
 ### update-context
 
 Minikubeのコンテキスト情報が誤っている場合、正しく修正する。
-
-
-
 
 ```bash
 $ minikube update-context
@@ -422,7 +376,6 @@ $ minikube update-context
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
 
-
 <br>
 
 ### service
@@ -431,7 +384,7 @@ $ minikube update-context
 
 NodePort Serviceを指定し、ホストから仮想サーバーを介して、Node内のServiceにポートフォワーディングを実行する。
 
-```http://127.0.0.1:<自動的に発行されたポート番号>```の形式でURLが発行されるため、ブラウザや```curl```コマンドで接続を確認できる。
+`http://127.0.0.1:<自動的に発行されたポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
 
 ```bash
 $ minikube service <NodePort Service名> -n foo-namespace
@@ -448,7 +401,6 @@ Opening service <Service名> in default browser...
 
 これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。
 
-
 ```bash
 $ minikube service istio-ingressgateway -n istio-ingress
 ```
@@ -458,7 +410,7 @@ $ minikube service istio-ingressgateway -n istio-ingress
 > - https://minikube.sigs.k8s.io/docs/commands/service/
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
-ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、```kubectl port-forward```コマンドでPodを指定すると良い。
+ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、`kubectl port-forward`コマンドでPodを指定すると良い。
 
 ```bash
 # Podに直接的に指定する場合
@@ -473,9 +425,7 @@ $ curl http://127.0.0.1:<ホストポート番号>
 
 > ↪️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
-ServiceのIPアドレスがNodeのIPアドレスと一致することは、```minikube ip```コマンドから確認できる。
-
-
+ServiceのIPアドレスがNodeのIPアドレスと一致することは、`minikube ip`コマンドから確認できる。
 
 ```bash
 $ minikube ip
@@ -483,8 +433,7 @@ $ minikube ip
 *.*.*.*
 ```
 
-補足として、```minikube service```コマンドを使用せずに、```ssh```コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
-
+補足として、`minikube service`コマンドを使用せずに、`ssh`コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
 
 ```bash
 $ minikube ssh
@@ -493,14 +442,11 @@ $ minikube ssh
 $ curl -X GET http://*.*.*.*:57761
 ```
 
-
 > ↪️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
 #### ▼ list
 
 全てのServiceの情報を取得する。
-
-
 
 ```bash
 $ minikube service list
@@ -521,30 +467,26 @@ $ minikube service list
 
 Minikube仮想サーバー内のNodeのIPアドレスと、NodePort Serviceのポート番号を取得する。
 
-```http://127.0.0.1:<自動的に発行されたポート番号>```の形式でURLが発行されるため、ブラウザや```curl```コマンドで接続を確認できる。
+`http://127.0.0.1:<自動的に発行されたポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
 
-
-```--url```オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。
+`--url`オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。
 
 ```bash
 $ minikube service <NodePort Service名> --url -n foo-namespace
- 
+
 http://127.0.0.1:<自動的に発行されたポート番号>
 ```
 
 これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。
 
-
 ```bash
 $ minikube service istio-ingressgateway --url -n istio-ingress
 ```
 
-
 > ↪️ 参考：
-> 
+>
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
-
 
 <br>
 
@@ -554,10 +496,9 @@ $ minikube service istio-ingressgateway --url -n istio-ingress
 
 仮想環境内のNodeにSSH公開鍵認証で接続する。
 
-
 ```bash
 # DockerドライバーによるNodeの場合
-$ minikube ssh  
+$ minikube ssh
 
 # ワーキングディレクトリ
 docker@minikube:~$ pwd
@@ -570,9 +511,9 @@ docker@minikube:~$ sudo apt update -y && apt --help
 ```bash
 # VirtualBoxドライバーによるNodeの場合
 $ minikube ssh
-                         _             _            
-            _         _ ( )           ( )           
-  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __  
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
 /' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
 | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
 (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
@@ -585,10 +526,10 @@ $ pwd
 
 ```bash
 # HyperKitドライバーによるNodeの場合
-$ minikube ssh   
-                         _             _            
-            _         _ ( )           ( )           
-  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __  
+$ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
 /' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
 | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
 (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
@@ -612,38 +553,31 @@ yes
 zcat
 ```
 
-Nodeの中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
-
-
+Nodeの中では`docker`コマンドを実行でき、コンテナイメージもデバッグできる。
 
 ```bash
-$ minikube ssh  
+$ minikube ssh
 
 # Nodeの中
 $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
 
 # コンテナの中
-[root@<コンテナID>:~] $ ls -la 
+[root@<コンテナID>:~] $ ls -la
 ```
-
-
 
 > ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/commands/ssh/
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
-
-#### ▼ ``--`` (ハイフン2つ) 
+#### ▼ `--` (ハイフン2つ)
 
 NodeにSSH公開鍵認証で接続し、任意のコマンドを実行する。
-
-
 
 **＊例＊**
 
 ```bash
-$ minikube ssh -- ls -la  
+$ minikube ssh -- ls -la
 
 total 4
 drwxr-xr-x 3 docker docker  80 Mar 15 09:30 .
@@ -685,8 +619,6 @@ $ minikube start
 
 コントロールプレーンNodeが作成されていることを確認できる。
 
-
-
 ```bash
 $ kubectl get node
 
@@ -695,7 +627,6 @@ minikube   Ready    control-plane,master   14m   v1.22.3
 ```
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
-
 
 #### ▼ --container-runtime
 
@@ -721,20 +652,15 @@ $ minikube start --container-runtime=cri-o
 
 > ↪️ 参考：https://github.com/kubernetes/minikube/issues/11101#issuecomment-819917618
 
-
 #### ▼ --cpus、--memory
 
 MinikubeのNodeのスペックを設定する。
-
-
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
 ```
 
 実際に設定されたハードウェアリソースは、Minikube内から確認できる。
-
-
 
 ```bash
 $ minikube ssh
@@ -771,7 +697,7 @@ Swap:          1023           0        1023
 
 #### ▼ --docker-env
 
-別に```docker-env```コマンドを実行しつつ、```start```コマンドを実行する。
+別に`docker-env`コマンドを実行しつつ、`start`コマンドを実行する。
 
 **＊例＊**
 
@@ -781,14 +707,11 @@ $ minikube start --docker-env
 
 #### ▼ --driver
 
-ゲスト仮想環境のドライバーを指定し、```start```コマンドを実行する。
+ゲスト仮想環境のドライバーを指定し、`start`コマンドを実行する。
 
 ホストごとに標準の仮想環境が異なり、MacOSはDockerドライバーがデフォルトである。
 
 ドライバーの使用前に、これをインストールしておく必要があることに注意する。
-
-
-
 
 **＊例＊**
 
@@ -799,13 +722,9 @@ $ minikube start --driver=virtualbox
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
-
 #### ▼ --kubernetes-vsersion
 
-Minikubeで稼働させるKubernetesのバージョンを指定しつつ、```start```コマンドを実行する。
-
-
-
+Minikubeで稼働させるKubernetesのバージョンを指定しつつ、`start`コマンドを実行する。
 
 ```bash
 $ minikube start --kubernetes-version=v1.23.0
@@ -813,12 +732,9 @@ $ minikube start --kubernetes-version=v1.23.0
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
-
 #### ▼ --mount、--mount--string
 
-ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、```start```コマンドを実行する。
-
-
+ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、`start`コマンドを実行する。
 
 **＊例＊**
 
@@ -828,12 +744,9 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 #### ▼ --nodes
 
-作成するNode数を指定し、```start```コマンドを実行する。
+作成するNode数を指定し、`start`コマンドを実行する。
 
 マルチNodeのClusterを作成できる。
-
-
-
 
 **＊例＊**
 
@@ -865,9 +778,7 @@ host: Running
 kubelet: Running
 ```
 
-補足として、コントロールプレーンNodeも単なるNodeの```1```個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
-
-
+補足として、コントロールプレーンNodeも単なるNodeの`1`個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
 
 ```bash
 $ kubectl get pod -o wide
@@ -879,7 +790,6 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 ```
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
-
 
 #### ▼ --profile
 
@@ -894,7 +804,6 @@ $ kubectl config use-context foo-cluster
 Switched to context "foo-cluster".
 ```
 
-
 <br>
 
 ### tunnel
@@ -903,10 +812,9 @@ Switched to context "foo-cluster".
 
 LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。
 
-紐付けられたLoadBalancer Serviceには『External Endpoints (```http://127.0.0.1:80```) 』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。
+紐付けられたLoadBalancer Serviceには『External Endpoints (`http://127.0.0.1:80`) 』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。
 
-Node外からPodに通信できるようになる。```minikube ssh```コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
-
+Node外からPodに通信できるようになる。`minikube ssh`コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 **＊例＊**
 
@@ -922,7 +830,6 @@ $ minikube tunnel
 🏃  Starting tunnel for service <Service名>.
 ```
 
-
 > ↪️ 参考：
 >
 > - https://minikube.sigs.k8s.io/docs/commands/tunnel/
@@ -936,14 +843,10 @@ $ minikube tunnel
 
 コマンドの詳細な実行ログを標準エラー出力に出力する。
 
-
-
-
 ```bash
 $ minikube start --alsologtostderr
 ```
 
 > ↪️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
-
 
 <br>

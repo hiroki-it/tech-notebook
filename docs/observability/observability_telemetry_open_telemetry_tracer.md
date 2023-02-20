@@ -9,8 +9,6 @@ description: トレーサー＠OpenTelemetryの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -24,8 +22,6 @@ description: トレーサー＠OpenTelemetryの知見を記録しています。
 先頭のマイクロサービスでは、親スパンを作成する。
 
 また、後続のマイクロサービスに親スパンのメタデータを伝播する。
-
-
 
 ```go
 package tracer
@@ -93,7 +89,7 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
-	
+
 	// 定義したtracerパッケージ
     "github.com/hiroki-hasegawa/foo/infrastructure/tracer"
 )
@@ -160,8 +156,6 @@ func main() {
 }
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://opentelemetry.io/docs/instrumentation/go/manual/
@@ -169,13 +163,11 @@ func main() {
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 
-
 #### ▼ 後続のマイクロサービス
 
 後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
 
 また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
-
 
 ```go
 package main
@@ -196,7 +188,7 @@ import (
 )
 
 func httpRequest(ctx context.Context) error {
-	
+
 	// 子スパンを作成する。親スパンからメタデータを取得する必要はない。
 	var childSpan trace.Span
 	ctx, childSpan = otel.Tracer("example.com/bar-service").Start(ctx, "child")
@@ -227,7 +219,7 @@ func httpRequest(ctx context.Context) error {
 
 	defer res.Body.Close()
 
-	return nil 
+	return nil
 }
 
 
@@ -256,13 +248,9 @@ func main() {
 }
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
-
-
 
 <br>

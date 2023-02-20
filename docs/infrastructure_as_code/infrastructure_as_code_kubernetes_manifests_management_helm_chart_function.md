@@ -9,8 +9,6 @@ description: アクション＠チャートの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -19,9 +17,7 @@ description: アクション＠チャートの知見を記録しています。
 
 ### テンプレートを出力する関数とは
 
-```template```ディレクトリ配下のテンプレートを出力する。
-
-
+`template`ディレクトリ配下のテンプレートを出力する。
 
 > ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
@@ -31,11 +27,9 @@ description: アクション＠チャートの知見を記録しています。
 
 #### ▼ includeとは
 
-```define```関数で定義したテンプレートを加工して出力する。
+`define`関数で定義したテンプレートを加工して出力する。
 
 加工内容はパラメーターで設定できる。
-
-
 
 > ↪️ 参考：
 >
@@ -50,17 +44,15 @@ description: アクション＠チャートの知見を記録しています。
 
 変数を出力する。
 
-
-
 #### ▼ エスケープ
 
-Helmのテンプレート内に、アクションや変数以外の理由で```{}```を出力する場合 (例：Alertmanagerのアラートの変数出力の定義) 、これらとして認識されないようにエスケープする必要がある。
+Helmのテンプレート内に、アクションや変数以外の理由で`{}`を出力する場合 (例：Alertmanagerのアラートの変数出力の定義) 、これらとして認識されないようにエスケープする必要がある。
 
-また、エスケープする場合は必ず改行 (```|```、```|-```、```|+```) で出力する必要がある。エスケープのために```printf```アクションを使用することもできる。
+また、エスケープする場合は必ず改行 (`|`、`|-`、`|+`) で出力する必要がある。エスケープのために`printf`アクションを使用することもできる。
 
-一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法 (例：```{{`<記号を含む文字列全体>`}}```、```{{"<記号>"}}```) を使用できる。
+一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法 (例：`` {{`<記号を含む文字列全体>`}} ``、`{{"<記号>"}}`) を使用できる。
 
-エスケープしたい文字列にバッククオートが含まれる場合、『```{{`<記号を含む文字列>`}}```』を使用できず、他のエスケープ方法 (```{{"<記号>"}}```、```printf```アクション) が必要になる。
+エスケープしたい文字列にバッククオートが含まれる場合、『`` {{`<記号を含む文字列>`}} ``』を使用できず、他のエスケープ方法 (`{{"<記号>"}}`、`printf`アクション) が必要になる。
 
 > ↪️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
 
@@ -70,8 +62,7 @@ Helmのテンプレート内に、アクションや変数以外の理由で```{
 # Alertmanagerの通知内容の定義は以下を参考にした。
 # https://www.infinityworks.com/insights/slack-prometheus-alertmanager/
 
-...
-
+---
 receivers:
   - name: slack_webhook
     slack_configs:
@@ -89,11 +80,7 @@ receivers:
           {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
           {{`{{ end }}`}}
           {{`{{ end }}`}}
-          
-...
 ```
-
-
 
 <br>
 
@@ -101,9 +88,7 @@ receivers:
 
 #### ▼ rangeとは
 
-同じ階層にある他の```.yaml```ファイルのキーとその値を格納し、foreach関数のように出力する。
-
-
+同じ階層にある他の`.yaml`ファイルのキーとその値を格納し、foreach関数のように出力する。
 
 > ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
@@ -111,13 +96,9 @@ receivers:
 
 マップ型を入力値として使用できる。
 
-
-
 **＊実装例＊**
 
 もし、以下のような平文ファイルがあるとする。
-
-
 
 ```yaml
 # plane.yamlファイル
@@ -125,20 +106,16 @@ foo: FOO
 bar: bar
 ```
 
-これを```base64```方式で変換し、```values```ファイルの```config```キー配下に定義したとする。
-
-
+これを`base64`方式で変換し、`values`ファイルの`config`キー配下に定義したとする。
 
 ```yaml
 # valuesファイル
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-```fromYaml```アクションを使用して、テキスト形式を```.yaml```形式に変換する。
+`fromYaml`アクションを使用して、テキスト形式を`.yaml`形式に変換する。
 
-その後、```range```アクションでキーと値を取得し、Secretのデータとして割り当てる。
-
-
+その後、`range`アクションでキーと値を取得し、Secretのデータとして割り当てる。
 
 ```yaml
 {{ $decoded := .Values.config | b64dec | fromYaml }}
@@ -156,8 +133,6 @@ data:
 #### ▼ 配列型を扱う場合
 
 配列型を入力値として使用できる。
-
-
 
 > ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
@@ -179,7 +154,7 @@ data:
   ip-addresses: |
     {{- range .Values.ipAddresses }}
       - {{ . }}
-    {{- end }} 
+    {{- end }}
 ```
 
 <br>
@@ -198,11 +173,9 @@ data:
 
 #### ▼ templateとは
 
-```define```関数で定義したテンプレートをそのまま出力する。
+`define`関数で定義したテンプレートをそのまま出力する。
 
-```template```関数では出力内容を変数に格納できないため、これが可能な```include```関数が推奨されている。
-
-
+`template`関数では出力内容を変数に格納できないため、これが可能な`include`関数が推奨されている。
 
 > ↪️ 参考：
 >
@@ -211,17 +184,15 @@ data:
 
 <br>
 
-## 01-02. ```values```ファイルを出力する関数
+## 01-02. `values`ファイルを出力する関数
 
 ### Values
 
 #### ▼ Valuesとは
 
-```values```ファイルの特定のキー値を出力する。
+`values`ファイルの特定のキー値を出力する。
 
-特定の条件下で、```values```ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
-
-
+特定の条件下で、`values`ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
 
 > ↪️ 参考：https://github.com/helm/helm/issues/8026
 
@@ -243,15 +214,13 @@ metadata:
 
 #### ▼ metadataキーで使用する場合の注意点
 
-マニフェストの```.metadata.``キーの値には文字列しか設定できない。
+マニフェストの``.metadata.`キーの値には文字列しか設定できない。
 
-```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。
+`values`ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。
 
 そのため、metadataキーの値にint型を出力しようとしてエラーになる。
 
-int型にならないように、```values```ファイルの出力先をダブルクオーテーションで囲うと良い。
-
-
+int型にならないように、`values`ファイルの出力先をダブルクオーテーションで囲うと良い。
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
@@ -279,11 +248,9 @@ metadata:
 
 #### ▼ toYamlとは
 
-```.yaml```形式でテンプレートを出力する。
+`.yaml`形式でテンプレートを出力する。
 
-```values```ファイルの複数のキー値を出力する場合に使用する。
-
-
+`values`ファイルの複数のキー値を出力する場合に使用する。
 
 > ↪️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
 
@@ -299,8 +266,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: foo-secret
-data:
-  {{- toYaml .Values.parameters | nindent 2 }}
+data: { { - toYaml .Values.parameters | nindent 2 } }
 ```
 
 <br>
@@ -309,19 +275,15 @@ data:
 
 ### アクセスする関数とは
 
-テンプレートや```values```ファイルを出力する時に、特定の位置にアクセスする。
-
-
+テンプレートや`values`ファイルを出力する時に、特定の位置にアクセスする。
 
 <br>
 
-### ```.``` (ドット) 
+### `.` (ドット)
 
 #### ▼ ドットとは
 
 テンプレートの内容をルートから出力する。
-
-
 
 ```yaml
 {* tplファイル *}
@@ -342,31 +304,27 @@ baz:
 ```yaml
 # 結果
 baz:
-- foo: FOO
-  bar: BAR
+  - foo: FOO
+    bar: BAR
 ```
 
 <br>
 
-### ```$``` (ドル) 
+### `$` (ドル)
 
 #### ▼ ドルとは
 
-出力時に、```.yaml```ファイルのルートを明示的に出力する。
+出力時に、`.yaml`ファイルのルートを明示的に出力する。
 
-アクションの中でアクションで、```.yaml```ファイルのルートにアクセスしたい場合に役立つ。
-
-
+アクションの中でアクションで、`.yaml`ファイルのルートにアクセスしたい場合に役立つ。
 
 > ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 **＊実装例＊**
 
-```range```アクションを使用すると、```.yaml```ファイルへのアクセスのルートが変わってしまう。
+`range`アクションを使用すると、`.yaml`ファイルへのアクセスのルートが変わってしまう。
 
-ルートを明示することにより、```range```アクション内でも```.yaml```ファイルの正しいルートにアクセスできるようなる。
-
-
+ルートを明示することにより、`range`アクション内でも`.yaml`ファイルの正しいルートにアクセスできるようなる。
 
 ```yaml
 {{- range $.Values.foo.namespaces }}
@@ -375,7 +333,7 @@ kind: Secret
 metadata:
   name: {{ $.Values.global.env }}-foo-secret
   namespace: {{ . }}
-    
+
   ...
 
 {{- end }}
@@ -385,15 +343,15 @@ metadata:
 
 ## 03. 除去する関数
 
-### ```-``` (ハイフン) 
+### `-` (ハイフン)
 
 #### ▼ ハイフンとは
 
-```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。
+`{{-`であると、テンプレートの出力時にこれより前のインデントを削除する。
 
-反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。
+反対に、`-}}`であると改行コードを削除し、不要な改行が挿入されないようにする。
 
-ただ、```-}}```は使用しない方が良いらしい。
+ただ、`-}}`は使用しない方が良いらしい。
 
 > ↪️ 参考：
 >
@@ -401,7 +359,6 @@ metadata:
 > - https://github.com/helm/helm/issues/4191#issuecomment-539149037
 
 **＊実装例＊**
-
 
 ```yaml
 {* tplファイル *}
@@ -415,15 +372,14 @@ metadata:
 ```
 
 ```yaml
-baz:
-  {{- include "foo-template" . }} # 『{{-』の前にあるインデントは削除される。
+baz: { { - include "foo-template" . } } # 『{{-』の前にあるインデントは削除される。
 ```
 
 ```yaml
 # 結果
 baz:
-- foo: FOO
-  bar: BAR
+  - foo: FOO
+    bar: BAR
 ```
 
 <br>
@@ -433,8 +389,6 @@ baz:
 #### ▼ indentとは
 
 改行せずに、そのままスペースを挿入した上で、内容を出力する。
-
-
 
 > ↪️ 参考：https://www.skyarch.net/blog/?p=16660#28
 
@@ -472,10 +426,7 @@ baz:
 
 改行しつつ、スペースを挿入した上で、内容を出力する。
 
-
-
 > ↪️ 参考：https://www.skyarch.net/blog/?p=16660#29
-
 
 **＊実装例＊**
 
@@ -499,11 +450,10 @@ baz:
 ```yaml
 # 結果
 baz:
-# ここで改行が入る
+  # ここで改行が入る
   - foo: FOO
     bar: BAR
 ```
-
 
 <br>
 
@@ -513,14 +463,11 @@ baz:
 
 #### ▼ b64encとは
 
-```base64```方式でエンコードする。
+`base64`方式でエンコードする。
 
-Secretの```.data```キーでは、他のKubernetesリソースへの出力時に自動的に```base64```方式でデコードするようになっており、相性が良い。
-
-
+Secretの`.data`キーでは、他のKubernetesリソースへの出力時に自動的に`base64`方式でデコードするようになっており、相性が良い。
 
 **＊実装例＊**
-
 
 ```yaml
 # values.yamlファイル
@@ -535,8 +482,8 @@ metadata:
   name: foo-secret
 data:
   # base64方式でエンコードする。
-  username: {{ .Values.username | b64enc }}
-  password: {{ .Values.password | b64enc }}
+  username: { { .Values.username | b64enc } }
+  password: { { .Values.password | b64enc } }
 ```
 
 <br>
@@ -549,13 +496,11 @@ data:
 
 SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース (例：Deployment、StatefulSet、DaemonSet) では、Podを再作成する必要がある。
 
-これらのKubernetesリソースのPodTemplateの```.metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。
+これらのKubernetesリソースのPodTemplateの`.metadata.annotations`キーにて、テンプレートの出力を`sha256sum`に入力する。
 
 これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。
 
 そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。
-
-
 
 > ↪️ 参考：
 >
@@ -577,20 +522,29 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/secret: {{ include (print $.Template.BasePath "/foo-secret.yaml") . | sha256sum }}
-        checksum/config: {{ include (print $.Template.BasePath "/foo-configmap.yaml") . | sha256sum }}
+        checksum/secret:
+          {
+            {
+              include (print $.Template.BasePath "/foo-secret.yaml") . | sha256sum,
+            },
+          }
+        checksum/config:
+          {
+            {
+              include (print $.Template.BasePath "/foo-configmap.yaml") . | sha256sum,
+            },
+          }
     spec:
       containers:
-      - name: foo-gin
-        image: foo-gin:1.0.0
-        ports:
-          - containerPort: 8080
-        envFrom:
-          - secretRef:
-              name: foo-secret
-          - configMapRef:
-              name: foo-secret
-...
+        - name: foo-gin
+          image: foo-gin:1.0.0
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: foo-secret
+            - configMapRef:
+                name: foo-secret
 ```
 
 <br>
@@ -599,9 +553,7 @@ spec:
 
 #### ▼ fromYamlとは
 
-テキスト形式を```.yaml```形式に変換する。
-
-
+テキスト形式を`.yaml`形式に変換する。
 
 > ↪️ 参考：
 >
@@ -612,26 +564,20 @@ spec:
 
 もし、以下のような平文ファイルあるとする。
 
-
-
 ```yaml
 # plane.yamlファイル
 foo: FOO
 bar: bar
 ```
 
-これを```base64```方式で変換し、```values```ファイルの```config```キー配下に定義したとする。
-
-
+これを`base64`方式で変換し、`values`ファイルの`config`キー配下に定義したとする。
 
 ```yaml
 # valuesファイル
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-```fromYaml```アクションを使用して、テキスト形式を```.yaml```形式に変換する。
-
-
+`fromYaml`アクションを使用して、テキスト形式を`.yaml`形式に変換する。
 
 ```yaml
 {{ $decoded := .Values.config | b64dec | fromYaml }}
@@ -652,9 +598,7 @@ data:
 
 ### AND条件
 
-```and```演算子と```()```記号を使用する。
-
-
+`and`演算子と`()`記号を使用する。
 
 > ↪️ 参考：https://stackoverflow.com/a/49819239
 
@@ -664,12 +608,9 @@ data:
 {{- end }}
 ```
 
-
 ### OR条件
 
-```or```演算子と```()```記号を使用する。
-
-
+`or`演算子と`()`記号を使用する。
 
 > ↪️ 参考：https://stackoverflow.com/a/49819239
 
@@ -679,18 +620,16 @@ data:
 {{- end }}
 ```
 
-
 <br>
 
 ## 06. コメントアウト
 
 ### Helmのコメントアウト
 
-Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト (例：```#```) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
-
+Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
 
 ```yaml
-{{- /* コメント */}}
+{ { - /* コメント */ } }
 ```
 
 > ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
@@ -699,12 +638,12 @@ Helmのテンプレート内にコメントアウトを定義する。YAMLのコ
 
 ### 細かな注意点
 
-また、改行コードを削除するためのハイフン (```-}}```) は、定義しないようにする。また、```*/}}```にはスペースを含めずに、一繋ぎで定義する。
+また、改行コードを削除するためのハイフン (`-}}`) は、定義しないようにする。また、`*/}}`にはスペースを含めずに、一繋ぎで定義する。
 
 > ↪️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-417096290
 
 ```yaml
-{{- /* コメント */}}
+{ { - /* コメント */ } }
 ```
 
 <br>

@@ -9,8 +9,6 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -27,8 +25,6 @@ RESTful-APIに対するリクエストではリクエストのヘッダーやボ
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png)
 
-
-
 > ↪️ 参考：
 >
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
@@ -44,23 +40,17 @@ RESTful-APIに対するリクエストではリクエストのヘッダーやボ
 
 gRPCでは、クライアントとサーバーの間の通信方式に種類がある。
 
-通信方式は、```.proto```ファイルで定義する。
+通信方式は、`.proto`ファイルで定義する。
 
 ![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png)
 
-
 > ↪️ 参考：https://fintan.jp/page/1521/
 
+#### ▼ Unary RPC (単項RPC)
 
-#### ▼ Unary RPC (単項RPC) 
-
-クライアントが```1```個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。
+クライアントが`1`個のリクエストを送信すると、サーバーは`1`個のレスポンスを返信する。
 
 一番よく使用する。
-
-
-
-
 
 ```protobuf
 service Request {
@@ -71,15 +61,11 @@ service Request {
 
 > ↪️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
 
-#### ▼ Server Streaming RPC (サーバーストリーミングRPC) 
+#### ▼ Server Streaming RPC (サーバーストリーミングRPC)
 
-クライアントが```1```個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。
+クライアントが`1`個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。
 
 任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。
-
-
-
-
 
 ```protobuf
 service Notification {
@@ -90,16 +76,11 @@ service Notification {
 
 > ↪️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
 
+#### ▼ Client Streaming RPC (クライアントストリーミングRPC)
 
-
-#### ▼ Client Streaming RPC (クライアントストリーミングRPC) 
-
-クライアントが複数個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。
+クライアントが複数個のリクエストを送信すると、サーバーは`1`個のレスポンスを返信する。
 
 クライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。
-
-
-
 
 ```protobuf
 service Upload {
@@ -110,9 +91,7 @@ service Upload {
 
 > ↪️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
 
-
-
-#### ▼ Bidirectional Streaming RPC (双方向ストリーミングRPC) 
+#### ▼ Bidirectional Streaming RPC (双方向ストリーミングRPC)
 
 クライアントが複数個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。
 
@@ -120,22 +99,18 @@ service Upload {
 
 クライアントとサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。
 
-
-
-
-
 ```protobuf
 service Chat {
   rpc Chat (stream ChatRequest) returns (stream ChatResponse) {
-    
+
     // クライアントからのリクエストを受信する。
     in, err := stream.Recv()
-        
+
     ...
-    
+
     // クライアントにリクエストを送信する。
     stream.Send(message);
-    
+
     ...
 
     // リクエストを終了する。
@@ -154,17 +129,14 @@ service Chat {
 
 ## 02. ディレクトリ構成ポリシー
 
-### アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨) 
+### アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
 
-各マイクロサービスの```.proto```ファイル、RPC-API仕様書、```.pb.*```ファイル、を同じリポジトリで管理する。
-
-
-
+各マイクロサービスの`.proto`ファイル、RPC-API仕様書、`.pb.*`ファイル、を同じリポジトリで管理する。
 
 ```yaml
 # プロトコルバッファー
 repository/
-├── proto/ # サービス定義ファイル (.protoファイル) 
+├── proto/ # サービス定義ファイル (.protoファイル)
 │   ├── foo/ # マイクロサービス
 │   │   ├── client/
 │   │   │   └── foo.proto # fooサービスをgRPCクライアントとして使う場合のプロトコルバッファー
@@ -199,12 +171,11 @@ repository/
     ...
 ```
 
-
 ```yaml
 # アプリケーション
 repository/
 └── src/
-    ├── foo/ # マイクロサービス (Go製) 
+    ├── foo/ # マイクロサービス (Go製)
     │   └── infrastructure
     │       └── grpc
     │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
@@ -215,7 +186,7 @@ repository/
     │           │
     │           ...
     │
-    ├── bar/ # マイクロサービス (Python製) 
+    ├── bar/ # マイクロサービス (Python製)
     │   └── infrastructure
     │     └── grpc
     │           ├── client/
@@ -242,8 +213,6 @@ repository/
 
 Pythonで使用する場合、pipリポジトリからインストールする。
 
-
-
 ```bash
 $ pip3 install grpcio-tools
 ```
@@ -252,8 +221,6 @@ $ pip3 install grpcio-tools
 
 Rubyで使用する場合、gemリポジトリからインストールする。
 
-
-
 ```bash
 $ gem install grpc-tools
 ```
@@ -261,8 +228,6 @@ $ gem install grpc-tools
 #### ▼ npmリポジトリから
 
 Node.jsで使用する場合、npmリポジトリからインストールする。
-
-
 
 ```bash
 $ npm install grpc-tools
@@ -276,10 +241,7 @@ $ npm install grpc-tools
 
 サーバーをgRPCサーバーとして登録する必要がある。
 
-
-
 > ↪️ 参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
-
 
 <br>
 
@@ -291,8 +253,6 @@ $ npm install grpc-tools
 
 Pythonで使用する場合、pipリポジトリからインストールする。
 
-
-
 ```bash
 $ pip3 install grpcio
 ```
@@ -301,8 +261,6 @@ $ pip3 install grpcio
 
 Rubyで使用する場合、gemリポジトリからインストールする。
 
-
-
 ```bash
 $ gem install grpc
 ```
@@ -310,8 +268,6 @@ $ gem install grpc
 #### ▼ npmリポジトリから
 
 Node.jsで使用する場合、npmリポジトリからインストールする。
-
-
 
 ```bash
 $ npm install grpc
@@ -323,25 +279,19 @@ $ npm install grpc
 
 gRPCサーバーをリモートプロシージャーコールする。
 
-
-
 > ↪️ 参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
 <br>
 
-
 ## 02-03. 共通ファイルのセットアップ
 
-### サービス定義ファイル (```.proto```ファイル) 
+### サービス定義ファイル (`.proto`ファイル)
 
 gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。
 
 クライアント側とサーバー側の両方で作成する必要がある。
 
-サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから```pb.*```ファイルを自動作成する。
-
-
-
+サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから`pb.*`ファイルを自動作成する。
 
 ```bash
 # foo.pb.goファイルを作成する。
@@ -353,22 +303,19 @@ $ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
 
 > ↪️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
-
 <br>
 
-### ```pb.*```ファイル (拡張子は言語ごとに異なる) 
+### `pb.*`ファイル (拡張子は言語ごとに異なる)
 
-```.proto```ファイルから自動作成される。
+`.proto`ファイルから自動作成される。
 
 このファイルには、サーバー側とクライアント側の両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。
-
-
 
 <br>
 
 ### RPC-API仕様書
 
-gRPCにおけるAPI仕様書である。仕様の実装である```.proto```ファイルを使用して、RPC-API仕様書を作成できる。
+gRPCにおけるAPI仕様書である。仕様の実装である`.proto`ファイルを使用して、RPC-API仕様書を作成できる。
 
 ```bash
 $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
@@ -383,8 +330,6 @@ $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 #### ▼ gRPCサーバー
 
 gRPCサーバーを実装する。
-
-
 
 ```go
 package main
@@ -486,16 +431,13 @@ func main() {
 
 > ↪️ 参考：https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
-
 <br>
 
 ### 共通ファイル
 
-#### ▼ ```.proto```ファイル
+#### ▼ `.proto`ファイル
 
 クライアントからのコールで返信する構造体や関数を定義する。
-
-
 
 ```protobuf
 // protoファイルの構文のバージョンを設定する。
@@ -522,26 +464,24 @@ service FooService {
 }
 ```
 
-
 > ↪️ 参考：
 >
 > - https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://christina04.hatenablog.com/entry/protoc-usage
 
-#### ▼ ```pb.go```ファイル
+#### ▼ `pb.go`ファイル
 
-事前に用意した```.proto```ファイルを使用して、```pb.go```ファイルを自動作成する。
+事前に用意した`.proto`ファイルを使用して、`pb.go`ファイルを自動作成する。
 
-```pb.go```ファイルには、サーバー側とクライアント側の両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
-
+`pb.go`ファイルには、サーバー側とクライアント側の両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
 
 ```bash
 # foo.pb.goファイルを作成する。
 $ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
 ```
 
-補足として、```pb.go```ファイルには、gRPCサーバーとして登録するための```Register<ファイル名>ServiceServer```関数が定義される。
+補足として、`pb.go`ファイルには、gRPCサーバーとして登録するための`Register<ファイル名>ServiceServer`関数が定義される。
 
 ```go
 // 〜 中略 〜
@@ -553,12 +493,9 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 // 〜 中略 〜
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://christina04.hatenablog.com/entry/protoc-usage
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-
 
 <br>

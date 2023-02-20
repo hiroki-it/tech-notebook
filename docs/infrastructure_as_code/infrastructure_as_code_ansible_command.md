@@ -83,7 +83,7 @@ ansible-vault decrypt parameters.yml
 
 ### encrypt
 
-指定した平文ファイルを暗号化し、元の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、```ansible-playbook```コマンドで```--ask-vault-pass```オプションを有効化する必要がある。
+指定した平文ファイルを暗号化し、元の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、`ansible-playbook`コマンドで`--ask-vault-pass`オプションを有効化する必要がある。
 
 ```bash
 $ ansible-vault encrypt parameters.yml
@@ -113,7 +113,7 @@ $ANSIBLE_VAULT;1.1;AES256
 
 #### ▼ --listとは
 
-```inventory```ファイルを指定し、```json```形式に変換する。
+`inventory`ファイルを指定し、`json`形式に変換する。
 
 > ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
@@ -129,7 +129,7 @@ ansible-inventory -i ./inventories/inventory --list
 
 #### ▼ -y
 
-```inventory```ファイルを指定し、```yml```形式に変換する。
+`inventory`ファイルを指定し、`yml`形式に変換する。
 
 > ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 

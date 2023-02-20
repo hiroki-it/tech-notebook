@@ -9,12 +9,9 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. プロセス
 
@@ -30,17 +27,13 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 何かのプロセスを正しく終了できないと、メモリ上に不要なプロセスが溜まっていき、メモリ使用率が高くなってしまう。
 
-
-
 > ↪️ 参考：https://jpazamu.com/thread_process/#index_id5
 
 <br>
 
-### デーモン (常駐プログラム) 
+### デーモン (常駐プログラム)
 
 OSが起動している間、メモリ上のアドレス空間の区画に恒常的に割り当てられているプロセスを、特に『デーモン (常駐プログラム) 』という。
-
-
 
 > ↪️ 参考：https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html
 
@@ -52,10 +45,9 @@ OSが起動している間、メモリ上のアドレス空間の区画に恒常
 
 プロセスが新しいプロセスを作成する場合、プロセス間には親子関係がある。
 
-例えば、ターミナルの親プロセスは```shell```や```bash```であり、任意のユーティリティを実行すると、これの子プロセスが作成されることになる。
+例えば、ターミナルの親プロセスは`shell`や`bash`であり、任意のユーティリティを実行すると、これの子プロセスが作成されることになる。
 
-プロセスIDが```1```のプロセスが、全てのプロセスの親である。
-
+プロセスIDが`1`のプロセスが、全てのプロセスの親である。
 
 ```bash
 # MacOSの場合
@@ -65,9 +57,6 @@ PID  TTY  TIME     CMD
   1  ??   9:23.33  /sbin/launchd
 ```
 
-
-
-
 > ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
@@ -75,11 +64,9 @@ PID  TTY  TIME     CMD
 
 #### ▼ 同時処理できるリクエスト数
 
-メモリ上には親の通信プロセスが割り当てられており、また```1```個のリクエストを処理するために、```1```個の子プロセスが割り当てられる。
+メモリ上には親の通信プロセスが割り当てられており、また`1`個のリクエストを処理するために、`1`個の子プロセスが割り当てられる。
 
 そのため、子プロセスの最大数は、同時に処理できるリクエストの最大数に相当する。
-
-
 
 <br>
 
@@ -88,8 +75,6 @@ PID  TTY  TIME     CMD
 #### ▼ シングルプロセシング
 
 単一のメモリ上で、単一のプロセスがアドレスに割り当てられる仕組みのこと。
-
-
 
 #### ▼ マルチプロセシング
 
@@ -101,12 +86,10 @@ PID  TTY  TIME     CMD
 
 ![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/process.png)
 
-
 > ↪️ 参考：
 >
 > - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
 > - https://webpia.jp/thread_process/
-
 
 <br>
 
@@ -118,14 +101,11 @@ PID  TTY  TIME     CMD
 
 現在割り当てられているプロセスのうち、最も使用領域の大きいプロセスを強制的に終了する。
 
-
-
 > ↪️ 参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
 
 #### ▼ 確認方法
 
-もしOOMキラーが実行された場合は、```/var/log/messages```ファイルにログが出力される。
-
+もしOOMキラーが実行された場合は、`/var/log/messages`ファイルにログが出力される。
 
 ```bash
 $ cat /var/log/messages | grep Kill
@@ -135,7 +115,6 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 ```
 
 > ↪️ 参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
-
 
 <br>
 
@@ -149,12 +128,10 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 ![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png)
 
-
 > ↪️ 参考：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
 > - https://webpia.jp/thread_process/
-
 
 <br>
 
@@ -164,15 +141,11 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 メモリ上の特定のプロセスで、単一のスレッドを実行できる仕組みのこと。
 
-
-
 #### ▼ マルチスレッディング
 
 メモリ上の特定のプロセスで、複数のスレッドを実行できる仕組みのこと。
 
 各スレッドがプロセスに割り当てられているアドレスを共有して使用する。
-
-
 
 > ↪️ 参考：https://webpia.jp/thread_process/
 
@@ -188,9 +161,7 @@ CPUのコアが単一のスレッドが紐付くようなマルチスレッド�
 
 ![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png)
 
-
 > ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
-
 
 #### ▼ 同時マルチスレッド
 
@@ -198,9 +169,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png)
 
-
 > ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
-
 
 <br>
 
@@ -210,36 +179,31 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 各プロセスに優先度を設定し、優先度の高いプロセスから順に、CPUをプロセスに割り当てる。
 
-
-
 **＊例＊**
 
 作成されたプロセスの到着時刻と処理時間は以下のとおりである。
 
 CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする。
 
-
-
 ![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_1.png)
 
-```【１】```
+`【１】`
 
-:    プロセスAが```0```秒に待ち行列へ登録される。
+: プロセスAが`0`秒に待ち行列へ登録される。
 
-```【２】```
+`【２】`
 
-:    ```20```秒間、プロセスAは実行状態へ割り当てられる。
+: `20`秒間、プロセスAは実行状態へ割り当てられる。
 
-```【３】```
+`【３】`
 
-:    ```20```秒時点で、プロセスAは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスBにCPUを割り当てる。
+: `20`秒時点で、プロセスAは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスBにCPUを割り当てる。
 
-```【４】```
+`【４】`
 
-:    ```40```秒時点で、プロセスCは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスAにCPUを割り当てる。
+: `40`秒時点で、プロセスCは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスAにCPUを割り当てる。
 
 ![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_2.png)
-
 
 <br>
 
@@ -247,15 +211,11 @@ CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする
 
 待ち行列に登録されたプロセスから順に、CPUをプロセスに割り当てる。
 
-
-
 ![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_1.png)
 
 **＊例＊**
 
 以下の様に、プロセスがCPUに割り当てられていく。
-
-
 
 ![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_2.png)
 
@@ -268,8 +228,6 @@ CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする
 一定時間 (タイムクウォンタム) ごとに、実行状態にあるプロセスが強制的に待ち行列に登録される。
 
 交代するように、CPUをプロセスに割り当てる。
-
-
 
 ![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ラウンドロビン方式.png)
 

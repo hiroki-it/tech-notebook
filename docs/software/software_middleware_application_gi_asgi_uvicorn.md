@@ -9,8 +9,6 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -29,11 +27,9 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 #### ▼ uvicornコマンドを使用する場合
 
-アプリケーションのエントリーポイントを```uvicorn```コマンドで指定する。
+アプリケーションのエントリーポイントを`uvicorn`コマンドで指定する。
 
-開発のしやすさから、開発環境ではUvicornを直接的に実行し、その時に```reload```オプションを使用した方が良い。
-
-
+開発のしやすさから、開発環境ではUvicornを直接的に実行し、その時に`reload`オプションを使用した方が良い。
 
 > ↪️ 参考：https://www.uvicorn.org/deployment/#running-from-the-command-line
 
@@ -45,12 +41,11 @@ FROM python:3.10-slim
 CMD ["uvicorn", "main:app", "--reload", "--port", "8000"]
 ```
 
-#### ▼ uvicornパッケージの```run```関数を使用する場合
+#### ▼ uvicornパッケージの`run`関数を使用する場合
 
-アプリケーションのエントリーポイントを```python```コマンドで直接的に指定する場合、Uvicornを実行できるように、uvicornパッケージの```run```関数をエントリーポイントで実行する。
+アプリケーションのエントリーポイントを`python`コマンドで直接的に指定する場合、Uvicornを実行できるように、uvicornパッケージの`run`関数をエントリーポイントで実行する。
 
-ただし、他の```.py```ファイルからエントリーポイントを読み込んだ場合 (```from main import app```) に、Uvicornを再実行する必要はないため、『```__name__ == "__main__"```』内にこれを実行する。
-
+ただし、他の`.py`ファイルからエントリーポイントを読み込んだ場合 (`from main import app`) に、Uvicornを再実行する必要はないため、『`__name__ == "__main__"`』内にこれを実行する。
 
 ```bash
 $ python main.py
@@ -64,13 +59,12 @@ app = create_app()
 
 # 他の.pyファイルからUvicornを再実行しないようにする。
 if __name__ == "__main__":
-  
+
     # または、uvicorn.run("main:app", host="0.0.0.0", port=8000)
     uvicorn.run(app, host="0.0.0.0", port=8000)
 ```
 
 > ↪️ 参考：https://www.uvicorn.org/deployment/#running-programmatically
-
 
 <br>
 
@@ -82,9 +76,7 @@ if __name__ == "__main__":
 
 パフォーマンス上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行した方が良い。
 
-```w```オプションを使用して、プロセスの並列数を設定できる。
-
-
+`w`オプションを使用して、プロセスの並列数を設定できる。
 
 > ↪️ 参考：
 >
@@ -102,8 +94,6 @@ CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "
 
 注意点として、Gunicornを使用する場合には、standardタイプのUvicornをインストールする必要がある。
 
-
-
 > ↪️ 参考：https://www.uvicorn.org/#quickstart
 
 ```bash
@@ -116,13 +106,13 @@ $ pip3 install uvicorn[standard]
 
 ### オプション無し
 
-ルートディレクトリにエントリーポイントのファイルを配置している場合は、```<モジュール名>.<インスタンス名>```となる。
+ルートディレクトリにエントリーポイントのファイルを配置している場合は、`<モジュール名>.<インスタンス名>`となる。
 
 ```bash
 $ uvicorn main:app
 ```
 
-もし、サブディレクトリ配下にこのファイルを配置している場合は、```<ディレクトリ名>.<モジュール名>.<インスタンス名>```となる。
+もし、サブディレクトリ配下にこのファイルを配置している場合は、`<ディレクトリ名>.<モジュール名>.<インスタンス名>`となる。
 
 ```bash
 $ uvicorn src.main:app
@@ -136,8 +126,6 @@ $ uvicorn src.main:app
 
 ソースコードが変更された場合、再読み出しする。
 
-
-
 ```bash
 $ uvicorn main:app --reload
 ```
@@ -149,8 +137,6 @@ $ uvicorn main:app --reload
 #### ▼ --portとは
 
 インバウンド通信を受け付けるポート番号を設定する。
-
-
 
 ```bash
 $ uvicorn main:app --port 8000

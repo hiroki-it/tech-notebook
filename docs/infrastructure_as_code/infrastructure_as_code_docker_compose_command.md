@@ -9,19 +9,17 @@ description: コマンド＠Docker composeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. ```docker compose```コマンド
+## 01. `docker compose`コマンド
 
 ### config
 
 #### ▼ configとは
 
-バリデーションとして、```docker-compose.yml```ファイルを展開する。ファイル内で、相対パスや変数を使用している場合、これらが正しく設定されているかを確認できる。
+バリデーションとして、`docker-compose.yml`ファイルを展開する。ファイル内で、相対パスや変数を使用している場合、これらが正しく設定されているかを確認できる。
 
 ```bash
 $ docker compose config
@@ -35,13 +33,9 @@ $ docker compose config
 
 イメージをビルドする。
 
-
-
 #### ▼ --no-cache
 
 キャッシュを使用せずにコンテナイメージをビルドする。
-
-
 
 ```bash
 $ docker compose build --no-cache
@@ -49,7 +43,7 @@ $ docker compose build --no-cache
 
 <br>
 
-### up 
+### up
 
 #### ▼ upとは
 
@@ -61,15 +55,11 @@ $ docker compose build --no-cache
 
 オプションにより起動モードが異なる。
 
-
-
 #### ▼ オプション無し
 
 指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナ起動を行う。
 
 アタッチモードでコンテナを起動する。
-
-
 
 ```bash
 # アタッチモード
@@ -82,8 +72,6 @@ $ docker compose up <サービス名>
 
 デタッチドモードでコンテナを起動する。
 
-
-
 ```bash
 # デタッチモード
 $ docker compose up -d <サービス名>
@@ -92,8 +80,6 @@ $ docker compose up -d <サービス名>
 #### ▼ --build
 
 イメージをビルドし、コンテナを作成する。
-
-
 
 ```bash
 $ docker compose up --build -d <サービス名>
@@ -113,15 +99,13 @@ $ docker compose up -f foo-docker-compose.yml
 
 #### ▼ runとは
 
-すでに停止中または起動中コンテナが存在していても、これとは別にコンテナを新しく作成し、起動する。加えてそのコンテナ内でコマンドを実行する。起動時に```bash```プロセスや```shell```プロセスを実行すると、コンテナに通信できる。何も渡さない場合は、デフォルトのプロセスとして```bash```プロセスが実行される。```docker-compose run```コマンドでは、アタッチモードとデタッチモードを選択できる。新しく起動したコンテナを停止後に自動削除する場合は、```rm```オプションを付けるようにする。```service-ports```オプションを使用しないと、ホストとコンテナ間のポートフォワーディングを有効化できないため注意する。
+すでに停止中または起動中コンテナが存在していても、これとは別にコンテナを新しく作成し、起動する。加えてそのコンテナ内でコマンドを実行する。起動時に`bash`プロセスや`shell`プロセスを実行すると、コンテナに通信できる。何も渡さない場合は、デフォルトのプロセスとして`bash`プロセスが実行される。`docker-compose run`コマンドでは、アタッチモードとデタッチモードを選択できる。新しく起動したコンテナを停止後に自動削除する場合は、`rm`オプションを付けるようにする。`service-ports`オプションを使用しないと、ホストとコンテナ間のポートフォワーディングを有効化できないため注意する。
 
 #### ▼ --service-ports
 
 既存コンテナを残して、指定したサービスの新しいコンテナをアタッチモードで起動する。
 
 また、ホストとコンテナ間のポートフォワーディングを有効化するか否かを設定する。
-
-
 
 ```bash
 # アタッチモード
@@ -133,8 +117,6 @@ $ docker compose run --rm --service-ports <サービス名>
 既存コンテナを残して、指定したサービスの新しいコンテナをデタッチドモードで起動する。
 
 また、ホストとコンテナ間のポートフォワーディングを有効化するか否かを設定する。
-
-
 
 ```bash
 # デタッチモード
@@ -149,8 +131,6 @@ $ docker compose run --rm -d --service-ports <サービス名>
 
 指定したサービスの起動中コンテナを全て停止する。
 
-
-
 ```bash
 $ docker compose stop <サービス名>
 ```
@@ -163,13 +143,9 @@ $ docker compose stop <サービス名>
 
 指定したリソースを削除する。
 
-
-
 #### ▼ --rmi --volumes --remove-orphans
 
 全てのリソース (イメージ、コンテナ、ボリューム、ネットワーク) を削除する。
-
-
 
 ```bash
 $ docker compose down --rmi all --volumes --remove-orphans
@@ -185,13 +161,9 @@ $ docker compose down --rmi all --volumes --remove-orphans
 
 オプションごとに、ログの表示タイプが異なる。
 
-
-
 #### ▼ オプション無し
 
 バックグラウンドでログを取得する。
-
-
 
 ```bash
 $ docker compose logs <サービス名>
@@ -200,8 +172,6 @@ $ docker compose logs <サービス名>
 #### ▼ -f
 
 フォアグラウンドでログを取得する。
-
-
 
 ```bash
 $ docker compose logs -f <サービス名>
@@ -217,8 +187,6 @@ $ docker compose logs -f <サービス名>
 
 コンテキストがAWSの場合は、AWS ECSクラスターとその中身を削除する。
 
-
-
 > ↪️ 参考：https://github.com/docker/compose-cli
 
 <br>
@@ -228,8 +196,6 @@ $ docker compose logs -f <サービス名>
 クラウドインフラストラクチャの作成をプロビジョニングする。
 
 コンテキストがAWSの場合は、AWS ECSクラスターとその中身を作成する。
-
-
 
 > ↪️ 参考：https://github.com/docker/compose-cli
 

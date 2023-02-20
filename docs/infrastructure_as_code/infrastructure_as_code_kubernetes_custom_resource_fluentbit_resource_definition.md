@@ -9,8 +9,6 @@ description: リソース定義＠FluentBitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -50,5 +48,3 @@ $ helm install <リリース名> <リポジトリ名>/aws-for-fluent-bit -n kube
 > ↪️ 参考：https://github.com/aws/eks-charts/tree/master/stable/aws-for-fluent-bit
 
 <br>
-
-

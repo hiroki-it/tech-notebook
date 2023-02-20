@@ -9,8 +9,6 @@ description: Orbs＠CircleCIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,37 +19,31 @@ description: Orbs＠CircleCIの知見を記録しています。
 
 CircleCIから提供される汎用的なパッケージの使用を読み込む。
 
-
-
 <br>
 
 ### 構成
 
 #### ▼ オプション
 
-| オプション名   | 説明                         |
-|-----------|----------------------------|
-| jobs      | ```job```キーに割り当てられる。       |
-| commands  | ```step```キーに割り当てられる。      |
-| executors | ```executors```キーに割り当てられる。 |
+| オプション名 | 説明                              |
+| ------------ | --------------------------------- |
+| jobs         | `job`キーに割り当てられる。       |
+| commands     | `step`キーに割り当てられる。      |
+| executors    | `executors`キーに割り当てられる。 |
 
 #### ▼ Orbsのデメリット
 
-Orbsのパッケージの処理の最小単位は```step```である。
+Orbsのパッケージの処理の最小単位は`step`である。
 
-そのため、```step```よりも小さい```run```はOrbsに組み込めず、```run```固有のオプションや```run```に設定できるlinuxコマンドをOrbsでは使用できないことになる。
-
-
+そのため、`step`よりも小さい`run`はOrbsに組み込めず、`run`固有のオプションや`run`に設定できるlinuxコマンドをOrbsでは使用できないことになる。
 
 #### ▼ オプションへの引数の渡し方と注意点
 
 AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動的に入力してくれる。
 
-オプションが```env_var_name```型は、基本的に全てのスコープレベルの環境変数を受け付ける。
+オプションが`env_var_name`型は、基本的に全てのスコープレベルの環境変数を受け付ける。
 
-ただしAlpine Linuxでは、『```$BASH_ENV```』を使用して、複数の```run```間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。
-
-
+ただしAlpine Linuxでは、『`$BASH_ENV`』を使用して、複数の`run`間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。
 
 > ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
@@ -105,8 +97,6 @@ CloudFrontに保存されているキャッシュを削除する。
 
 そのため、S3へのデプロイ後に、キャッシュを削除する必要がある。
 
-
-
 ```yaml
 version: 2.1
 
@@ -124,7 +114,7 @@ jobs:
           name: Run create invalidation
           command: |
             echo $AWS_CLOUDFRONT_ID | base64 -d | aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths "/*"
-            
+
 workflows:
   # ステージング環境にデプロイ
   develop:
@@ -139,25 +129,23 @@ workflows:
             branches:
               only:
                 - develop
-                
-  # 本番環境にデプロイ                
+
+  # 本番環境にデプロイ
   main:
     jobs:
       # 直前に承認Jobを挿入する
       - hold:
           name: hold_create_invalidation_prd
-          type: approval    
+          type: approval
       - cloudfront_create_invalidation:
           name: cloudfront_create_invalidation_prd
           filters:
             branches:
               only:
-                - main   
+                - main
 ```
 
-ただし、```credentials```ファイルの作成では、orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない。
-
-
+ただし、`credentials`ファイルの作成では、orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない。
 
 ```bash
 #!/bin/bash
@@ -199,7 +187,7 @@ aws configure list
 
 #### ▼ build-and-push-image
 
-CircleCIコンテナでコンテナイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を使用して、Docker Layer Cacheを有効化できる。
+CircleCIコンテナでコンテナイメージをビルドし、ECRにデプロイする。`remote-docker-layer-caching`を使用して、Docker Layer Cacheを有効化できる。
 
 **＊実装例＊**
 
@@ -237,20 +225,18 @@ jobs:
 
 ### jobs
 
-#### ▼ deploy-update-service (ローリングアップデート使用時) 
+#### ▼ deploy-update-service (ローリングアップデート使用時)
 
 ECRイメージを使用して、新しいリビジョン番号のECSタスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
 
+| 設定値                         | 説明                                                                                          |                                                                                                                                                                                                                                 |
+| ------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                        | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                                                                                      |
+| `verify-revision-is-deployed`  | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。      | 例えば、ECSタスクが『`Running`フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないため、検知できる。 |
+| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval`と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                          |
+| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts`と掛け合わせて、そう実行時間を定義できる。       |                                                                                                                                                                                                                                 |
 
-
-| 設定値                             | 説明                                                                       |                                                                                                                                                         |
-|------------------------------------|--------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```container-image-name-updates``` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                           | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                                   |
-| ```verify-revision-is-deployed```  | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。                | 例えば、ECSタスクが『```Running```フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないため、検知できる。 |
-| ```max-poll-attempts```            | ポーリングの最大試行回数を設定する。```poll-interval```と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。                                                                          |
-| ```poll-interval```                | 試行の間隔秒数を設定する。```max-poll-attempts```と掛け合わせて、そう実行時間を定義できる。  |                                                                                                                                                         |
-
-オプションを使用して、```max-poll-attempts``` (ポーリングの最大試行回数) と```poll-interval``` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
+オプションを使用して、`max-poll-attempts` (ポーリングの最大試行回数) と`poll-interval` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
 
 > ↪️ 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
@@ -262,7 +248,7 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@1.3.1
   aws-ecs: circleci/aws-ecs@2.2.1
-  
+
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
@@ -280,7 +266,7 @@ jobs:
     max-poll-attempts: 30
     # 試行の間隔
     poll-interval: 20
-          
+
 workflows:
   # ステージング環境にデプロイ
   develop:
@@ -291,8 +277,8 @@ workflows:
             branches:
               only:
                 - develop
-                
-  # 本番環境にデプロイ                
+
+  # 本番環境にデプロイ
   main:
     jobs:
       - ecs_update_service_by_rolling_update:
@@ -300,15 +286,14 @@ workflows:
           filters:
             branches:
               only:
-                - main               
-          
+                - main
 ```
 
-#### ▼ deploy-update-service (ブルー/グリーンデプロイメント使用時) 
+#### ▼ deploy-update-service (ブルー/グリーンデプロイメント使用時)
 
 AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。
 
-ローリングアップデートと同様にして、```verify-revision-is-deployed```オプションを使用できる。
+ローリングアップデートと同様にして、`verify-revision-is-deployed`オプションを使用できる。
 
 **＊実装例＊**
 
@@ -318,7 +303,7 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@1.3.1
   aws-ecs: circleci/aws-ecs@2.2.1
-  
+
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_code_deploy
@@ -338,7 +323,7 @@ jobs:
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # AWS ECSサービス更新後のECSタスク監視
     verify-revision-is-deployed: true
-          
+
 workflows:
   # ステージング環境にデプロイ
   develop:
@@ -349,8 +334,8 @@ workflows:
             branches:
               only:
                 - develop
-                
-  # 本番環境にデプロイ                
+
+  # 本番環境にデプロイ
   main:
     jobs:
       - ecs_update_service_by_code_deploy:
@@ -358,20 +343,18 @@ workflows:
           filters:
             branches:
               only:
-                - main       
+                - main
 ```
 
 #### ▼ run-task
 
 現在起動中のAWS ECSタスクとは別に、新しいAWS ECSタスクを一時的に起動する。
 
-起動時に、```overrides```オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。
+起動時に、`overrides`オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。
 
-正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。
+正規表現で設定する必要があり、加えてJSONでは『`\`』を『`\\`』にエスケープしなければならない。
 
 コマンドが実行された後に、AWS ECSタスクは自動的にStopped状態になる。
-
-
 
 上書きできるキーの参照リンク：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 
@@ -379,9 +362,7 @@ workflows:
 
 例えば、DBマイグレーションを実行するためのAWS ECSタスクを起動する。
 
-```overrides```オプションでコンテナ定義のコマンドを上書きする。
-
-
+`overrides`オプションでコンテナ定義のコマンドを上書きする。
 
 ```yaml
 version: 2.1
@@ -404,7 +385,7 @@ jobs:
     task-definition: "${SERVICE}-ecs-task-definition"
     # AWS ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
-          
+
 workflows:
   # ステージング環境にデプロイ
   develop:
@@ -415,8 +396,8 @@ workflows:
             branches:
               only:
                 - develop
-                
-  # 本番環境にデプロイ                
+
+  # 本番環境にデプロイ
   main:
     jobs:
       - ecs_run_task_for_migration:
@@ -438,8 +419,6 @@ workflows:
 S3にコードとappspecファイルをデプロイできる。
 
 また、CodeDeployを使用して、これをEC2インスタンスにデプロイできる。
-
-
 
 **＊実装例＊**
 
@@ -465,7 +444,7 @@ jobs:
     deployment-group: "${SERVICE}-deployment-group"
     # AWS ECSにアクセスできるCodeDeployサービスロール
     service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
- 
+
 workflows:
   # ステージング環境にデプロイ
   develop:
@@ -476,8 +455,8 @@ workflows:
             branches:
               only:
                 - develop
-                
-  # 本番環境にデプロイ                
+
+  # 本番環境にデプロイ
   main:
     jobs:
       - code_deploy:
@@ -499,8 +478,6 @@ workflows:
 Jobの完了時に、成功または失敗を基に、ステータスを通知する。
 
 Jobの最後のステップとして設定しなければならない。
-
-
 
 ```yaml
 version: 2.1
@@ -534,8 +511,8 @@ workflows:
           # 失敗時に通知
           post-steps:
             - notify_of_failure:
-            
-  # 本番環境にデプロイ                
+
+  # 本番環境にデプロイ
   main:
     jobs:
       - deploy:

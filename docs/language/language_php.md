@@ -9,8 +9,6 @@ description: PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -20,7 +18,6 @@ description: PHPの知見を記録しています。
 ### インストール
 
 #### ▼ aptリポジトリから
-
 
 ```bash
 # 外部リポジトリをインストールする。
@@ -36,7 +33,6 @@ $ apt -y install php=1.0.0
 ```
 
 > ↪️ 参考：https://loop-never-ends.com/ubuntu-php-install/
-
 
 <br>
 
@@ -86,23 +82,21 @@ COPY ../software /var/www/foo/
 
 <br>
 
-## 02. 設定ファイルの種類 (※ Dockerの場合) 
+## 02. 設定ファイルの種類 (※ Dockerの場合)
 
-### ```php.ini```ファイル
+### `php.ini`ファイル
 
-#### ▼ ```php.ini```ファイルとは
+#### ▼ `php.ini`ファイルとは
 
 PHPの起動時の値を設定する。
 
-```php.ini```ファイルは、```/usr/local/etc/php```ディレクトリ配下に配置されている。
+`php.ini`ファイルは、`/usr/local/etc/php`ディレクトリ配下に配置されている。
 
-配置された任意の```ini```ファイルに実装された設定値が、ユーザー定義のカスタム値として読み込まれる。
+配置された任意の`ini`ファイルに実装された設定値が、ユーザー定義のカスタム値として読み込まれる。
 
 また、それ以外の設定値はデフォルト値となる。
 
-設定ファイルを切り分ける場合、```/usr/local/etc/php/conf.d```ディレクトリ配下に```custom.php.ini```ファイルの名前で配置する。
-
-
+設定ファイルを切り分ける場合、`/usr/local/etc/php/conf.d`ディレクトリ配下に`custom.php.ini`ファイルの名前で配置する。
 
 > ↪️ 参考：https://www.php.net/manual/ja/configuration.file.php
 
@@ -117,13 +111,13 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 ```
 
-#### ▼ 本番/開発環境用```php.ini```ファイル
+#### ▼ 本番/開発環境用`php.ini`ファイル
 
-PHPでは、```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている。
+PHPでは、`/usr/local/etc/php`ディレクトリには`php.ini-development`ファイルと`php.ini-production`ファイルが最初から配置されている。
 
-これをコピーして設定値を変更し、読み込まれるようにファイル名を```php.ini```に変えて配置する (これ以外のファイル名でｊは読み込まれない) 。
+これをコピーして設定値を変更し、読み込まれるようにファイル名を`php.ini`に変えて配置する (これ以外のファイル名でｊは読み込まれない) 。
 
-代わりに、最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し、同じく配置しても良い。
+代わりに、最小限の設定値のみを変更した`php.ini`ファイルを自身で作成し、同じく配置しても良い。
 
 ```bash
 $ ls -la /usr/local/etc/php
@@ -136,12 +130,11 @@ drwxr-xr-x 1 root root  4096 Dec 17 15:21 conf.d
 # php.iniファイルをここに配置する
 ```
 
-#### ▼ 開発環境用```php.ini```ファイル例
+#### ▼ 開発環境用`php.ini`ファイル例
 
-あらかじめ用意されている```php.ini-development```ファイルを参考に設定する。
+あらかじめ用意されている`php.ini-development`ファイルを参考に設定する。
 
 元の値をコメントアウトで示す。
-
 
 ```ini
 # 開発環境では、スタックトレースを表示
@@ -190,10 +183,9 @@ mbstring.language = Japanese
 
 > ↪️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
+#### ▼ 本番環境用`php.ini`ファイル例
 
-#### ▼ 本番環境用```php.ini```ファイル例
-
-あらかじめ用意されている```php.ini-production```ファイルを参考に設定する。
+あらかじめ用意されている`php.ini-production`ファイルを参考に設定する。
 
 元の値をコメントアウトで示す。
 
@@ -269,9 +261,6 @@ opcache.preload_user = www-data
 
 これにより、PHPのコードの実行が高速化される。
 
-
-
 > ↪️ 参考：https://weblabo.oscasierra.net/php-opcache/
-
 
 <br>

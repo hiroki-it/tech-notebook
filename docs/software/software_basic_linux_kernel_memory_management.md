@@ -9,8 +9,6 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,27 +19,23 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![アドレス空間管理の種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アドレス空間管理の種類.png)
 
-
 > ↪️ 参考：https://itmanabi.com/real-memory-mng/
-
 
 <br>
 
 ## 01-02. 物理メモリの管理方式
 
-### 固定区画方式 (同じ大きさの区画に分割する方式) 
+### 固定区画方式 (同じ大きさの区画に分割する方式)
 
 #### ▼ 単一区画方式とは
 
-物理メモリのアドレス空間を```1```個の区画として扱い、プロセスに割り当てる。
+物理メモリのアドレス空間を`1`個の区画として扱い、プロセスに割り当てる。
 
 単一のプロセスしか読み込めず、物理メモリの余ったアドレス空間は利用できない。
 
 ![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単一区画方式.png)
 
-
 > ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
-
 
 #### ▼ 多重区画方式とは
 
@@ -49,15 +43,13 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 複数のプロセスを読み込めるが、単一区画方式と同様に、物理メモリの余ったアドレス空間は利用できない。
 
-
-
 > ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![多重区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重区画方式.png)
 
 <br>
 
-### 可変区画方式 (様々な大きさの区画に分割する方式) 
+### 可変区画方式 (様々な大きさの区画に分割する方式)
 
 #### ▼ 可変区画方式とは
 
@@ -67,9 +59,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/可変区画方式.png)
 
-
 > ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
-
 
 <br>
 
@@ -83,18 +73,14 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 
-
 > ↪️ 参考：
 >
 > - https://itmanabi.com/real-memory-mng/
 > - https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97
 
-
 #### ▼ スワップファイル
 
 ストレージ上に作成された仮想的な領域であり、仮想メモリのように動作する。
-
-
 
 <br>
 
@@ -112,12 +98,9 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 物理メモリを使用しているオブジェクトが何かしらから参照されているか否かを元に、解放するか否かを判定する。
 
-
-
 #### ▼ アルゴリズム
 
 ガベージコレクションには様々なアルゴリズムがあり、採用されているアルゴリズムは言語ごとに異なる。
-
 
 <br>
 
@@ -131,9 +114,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
 
-
 > ↪️ 参考：http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
-
 
 #### ▼ ページイン/ページアウト
 
@@ -145,23 +126,17 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![ページインとページアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページインとページアウト.png)
 
-
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
-
 
 #### ▼ 仮想メモリとのマッピングによる大容量アドレス空間の実現
 
 仮想メモリのアドレス空間を、物理メモリのアドレス空間とストレージにマッピングすることによって、物理メモリのアドレス空間を疑似的に大きく見せかけられる。
-
-
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_1.png)
 
 補足として、富士通の仮想メモリのサイズは、以下の通り。
-
-
 
 ![仮想メモリのアドレス空間の容量設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリのアドレス空間の容量設定.png)
 
@@ -175,11 +150,9 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 仮想メモリのアドレス空間を『可変長』の区画 (セグメント) 、また物理メモリのアドレス空間を『可変長』の区画 (セグメント) に分割し、管理する。
 
-
-
 <br>
 
-### MMU：Memory Management Unit (メモリ管理ユニット) 
+### MMU：Memory Management Unit (メモリ管理ユニット)
 
 #### ▼ MMUにおける動的アドレス変換機構
 
@@ -187,27 +160,25 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 この仕組みを、『動的アドレス変換機構』と呼ぶ。
 
-
-
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![メモリ管理ユニット](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリ管理ユニット.png)
 
-#### ▼ アドレス変換の仕組み (ページング方式型/セグメント方式型) 
+#### ▼ アドレス変換の仕組み (ページング方式型/セグメント方式型)
 
-```【１】```
+`【１】`
 
-:    仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。
+: 仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。
 
 ![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
 
-```【２】```
+`【２】`
 
-:    ページテーブルを使用して、仮想アドレスのページ番号に対応する物理アドレスのページ番号を探す。
+: ページテーブルを使用して、仮想アドレスのページ番号に対応する物理アドレスのページ番号を探す。
 
-```【３】```
+`【３】`
 
-:    物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。
+: 物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_3.png)
 
@@ -227,8 +198,6 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 CPUによって稼働したプロセスが、仮想メモリのアドレス空間のページにアクセスし、そのページが物理メモリのアドレス空間にマッピングされていなかった場合、ストレージから物理メモリのアドレス空間に『ページイン』が起こる。
 
-
-
 ![ページフォールト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページフォールト.png)
 
 <br>
@@ -238,8 +207,6 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 ページアウトのアルゴリズムのこと。
 
 方式ごとに、物理メモリのページフレームからストレージにページアウトするページが異なる。
-
-
 
 #### ▼ 『FIFO方式：First In First Out』と『LIFO方式：Last In First Out』
 
@@ -261,33 +228,26 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 ## 03. アドレス空間管理におけるプログラムの種類
 
-### Reusable (再使用可能プログラム) 
+### Reusable (再使用可能プログラム)
 
 一度実行すれば、再び、ストレージから物理メモリにページインを行わずに、実行を繰り返せるプログラムのこと。
-
-
 
 ![再使用可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再使用可能.gif)
 
 <br>
 
-### Reentrant (再入可能プログラム) 
+### Reentrant (再入可能プログラム)
 
 再使用可能の性質をもち、また複数のプログラムから呼び出されても、互いの呼び出しが干渉せず、同時に実行できるプログラムのこと。
-
-
 
 ![再入可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再入可能.gif)
 
 <br>
 
-### Relocatable (再配置可能プログラム) 
+### Relocatable (再配置可能プログラム)
 
 ストレージから物理メモリにページインを行う時に、アドレス空間上のどこに配置されても実行できるプログラムのこと。
-
-
 
 ![再配置可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再配置可能.gif)
 
 <br>
-

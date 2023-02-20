@@ -9,8 +9,6 @@ description: コマンド@Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -25,25 +23,19 @@ Basic認証でGitHubにログインし、クローンする。
 
 GitHubのユーザー名とパスワードが必要になる。
 
-
-
 ```bash
 $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 ```
 
 ユーザー名とパスワードの入力は、ターミナルに手動で入力する方法と、自動的に入力する方法がある。
 
- 後者の場合、```1```個目にURLに設定する方法がある。
-
-
+後者の場合、`1`個目にURLに設定する方法がある。
 
 ```bash
 $ git clone https://<ユーザー名>:<パスワード>@github.com/<組織名>/<GitHubリポジトリ名>.git
 ```
 
-もう```1```個の方法として、```.netrc```ファイルに定義しておく。
-
-
+もう`1`個の方法として、`.netrc`ファイルに定義しておく。
 
 ```bash
 machine github.com
@@ -56,18 +48,15 @@ password <パスワード>
 > - https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
 > - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
 
-
 #### ▼ SSH公開鍵認証
 
 SSH公開鍵認証でGitHubにログインし、クローンする。
 
 GitHubの自身の公開鍵を登録する必要がある。
 
-サーバー接続名は、SSH公開鍵認証の設定ファイル (```~/.ssh/config```) に記載されている。
+サーバー接続名は、SSH公開鍵認証の設定ファイル (`~/.ssh/config`) に記載されている。
 
-デフォルトでは、GitHubの接続名は、『```github.com```』になっている。
-
-
+デフォルトでは、GitHubの接続名は、『`github.com`』になっている。
 
 ```bash
 $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<GitHubリポジトリ名>.git
@@ -79,23 +68,21 @@ $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/
 
 #### ▼ 設定の影響範囲の種類
 
-| 影響範囲 | 意味                | 上書き順 | 設定ファイルの場所                     |
-|:---------|:------------------|---------|:----------------------------------|
-| system   | 全PCユーザーの全リポジトリ    | 1       | ```/etc/gitconfig```              |
-| global   | 現在のPCユーザーの全リポジトリ | 2       | ```~/.gitconfig```                |
-| local    | 現在のリポジトリ          | 3       | ```<GitHubリポジトリ名>/.git/config``` |
+| 影響範囲 | 意味                           | 上書き順 | 設定ファイルの場所                 |
+| :------- | :----------------------------- | -------- | :--------------------------------- |
+| system   | 全PCユーザーの全リポジトリ     | 1        | `/etc/gitconfig`                   |
+| global   | 現在のPCユーザーの全リポジトリ | 2        | `~/.gitconfig`                     |
+| local    | 現在のリポジトリ               | 3        | `<GitHubリポジトリ名>/.git/config` |
 
 #### ▼ --<影響範囲> --list
 
-指定した影響範囲で適用されている設定値を取得する。```--local```で設定されていない項目は、```--global```の設定値が適用される。
+指定した影響範囲で適用されている設定値を取得する。`--local`で設定されていない項目は、`--global`の設定値が適用される。
 
 ```bash
 $ git config --local --list
 ```
 
-Macでは、```1```個のマシンで```2```個のGutHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
-
-
+Macでは、`1`個のマシンで`2`個のGutHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
 
 > ↪️ 参考：https://sy-base.com/myrobotics/others/git-push_403error/
 
@@ -103,30 +90,23 @@ Macでは、```1```個のマシンで```2```個のGutHubアカウントを使用
 
 AuthorとCommitterの名前を設定する。
 
-```local```が一番最後に上書きされ、適用される。
-
-
+`local`が一番最後に上書きされ、適用される。
 
 ```bash
 $ git config --local user.name "hiroki.hasegawa"
 ```
 
-
 #### ▼ --<影響範囲> user.email
 
 AuthorとCommitterのメールアドレスを設定する。
 
-```local```が一番最後に上書きされ、適用される。
-
-
+`local`が一番最後に上書きされ、適用される。
 
 ```bash
 $ git config --local user.email "example@gmail.com"
 ```
 
 Authorの情報は、コミット時に反映される (Committerは表示されない) 。
-
-
 
 ```bash
 $ git log
@@ -144,27 +124,23 @@ Date:   Sat Sep 12 00:00:00 2020 +0900
 
 改行コードを、特定のタイミングで自動変換するように設定する。
 
-```input```としておくのが良い。
-
-
+`input`としておくのが良い。
 
 ```bash
 $ git config --global core.autocrlf <値>
 ```
 
-| 設定値 | チェックアウト時 | コミット時    |
-|--------|-----------|-----------|
-| input  | 変換しない   | CRLF → LF |
-| true   | LF → CRLF | CRLF → LF |
-| false  | 変換しない   | 変換しない   |
+| 設定値 | チェックアウト時 | コミット時 |
+| ------ | ---------------- | ---------- |
+| input  | 変換しない       | CRLF → LF  |
+| true   | LF → CRLF        | CRLF → LF  |
+| false  | 変換しない       | 変換しない |
 
 #### ▼ --global core.editor
 
 gitのデフォルトエディタを設定する。
 
 ここでは、Vimをデフォルトとする。
-
-
 
 ```bash
 $ git config --global core.editor "vim -c "set fenc=utf-8""
@@ -178,8 +154,6 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 エディタにGitHubリポジトリを再反映するためにも使用できる。
 
-
-
 ```bash
 $ git init
 ```
@@ -190,7 +164,7 @@ $ git init
 
 #### ▼ global ignore
 
-```~/.config/git/ignore```ファイルに設定されたファイルは、グローバルに無視される。
+`~/.config/git/ignore`ファイルに設定されたファイルは、グローバルに無視される。
 
 ```ignore
 .DS_Store
@@ -199,7 +173,6 @@ $ git init
 
 > ↪️ 参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
 
-
 <br>
 
 ### remote
@@ -207,8 +180,6 @@ $ git init
 #### ▼ add origin
 
 プライベートリポジトリのURLを登録し、プッシュ/プルできるようにする。
-
-
 
 ```bash
 $ git init
@@ -234,13 +205,13 @@ remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHub�
 
 プライベートリポジトリのURLを変更し、プッシュ/プルできるようにする。
 
-```config```ファイルに記述されたユーザー名と接続名を設定する。
+`config`ファイルに記述されたユーザー名と接続名を設定する。
 
-```1```個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。
+`1`個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。
 
-プロジェクトをクローンした時、SSH URLはデフォルトで『```git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git```』となっている。
+プロジェクトをクローンした時、SSH URLはデフォルトで『`git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git`』となっている。
 
-使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『```github.com```』としておく。
+使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『`github.com`』としておく。
 
 一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で再設定する。
 
@@ -281,8 +252,6 @@ Host gitlab.com
 
 リポジトリに対してコミットをプッシュし、エラーが出た場合、異なる接続名が選択されている場合は、URLの『接続名』の部分が正しく設定されているか否かを確認する。
 
-
-
 ```bash
 $ git push
 
@@ -301,11 +270,9 @@ and the repository exists.
 
 リポジトリ内の特定のディレクトリで他のリポジトリをリモート参照できるようにする。
 
-フォークと似た仕組みであり、```git submodule update```コマンドを実行しないと、サブモジュールの更新を取り込めない。
+フォークと似た仕組みであり、`git submodule update`コマンドを実行しないと、サブモジュールの更新を取り込めない。
 
 そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。
-
-
 
 > ↪️ 参考：https://qiita.com/kohashi/items/f4a50c5436b326e9475b
 
@@ -317,9 +284,7 @@ and the repository exists.
 $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-module.git ./modules/foo-sub-module
 ```
 
-コマンドを実行すると、```.gitmodules```ファイルが作成される。
-
-
+コマンドを実行すると、`.gitmodules`ファイルが作成される。
 
 ```init
 [submodule "modules/foo-sub-module"]
@@ -328,11 +293,7 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 	branch = main
 ```
 
-
-
-
 > ↪️ 参考：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
-
 
 #### ▼ update
 
@@ -341,8 +302,6 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 参照先の更新を自動的に取り込むことはできないため、以下のコマンドを必要なタイミングで実行する必要がある。
 
 上記を実行すると、サブモジュールのコミット情報が更新されて差分が生じるため、それをプッシュする。
-
-
 
 ```bash
 $ git submodule update --remote <.gitmodulesに定義されたサブモジュール名>
@@ -354,13 +313,11 @@ $ git submodule update --remote <.gitmodulesに定義されたサブモジュー
 
 GitHubとSSH公開鍵認証を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
 
-
-
 > ↪️ 参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
-```【１】```
+`【１】`
 
-:    ```ssh-keygen```コマンドで、秘密鍵と効果鍵のセットを作成する。
+: `ssh-keygen`コマンドで、秘密鍵と効果鍵のセットを作成する。
 
 ```bash
 # 鍵を保管するディレクトリに移動
@@ -371,13 +328,13 @@ $ ssh-keygen -t rsa
 # 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい
 Enter file in which to save the key: hiroki-it
 # 鍵の使用時にパスワードの入力を要求するか否かは任意である。
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
 ```
 
-```【２】```
+`【２】`
 
-:    このうち、公開鍵をクリップボードにコピーする。
+: このうち、公開鍵をクリップボードにコピーする。
 
 ```bash
 # Mac
@@ -387,9 +344,9 @@ $ pbcopy < ~/.ssh/github/<鍵名>.pub
 $ clip < ~/.ssh/github/<鍵名>.pub
 ```
 
-```【３】```
+`【３】`
 
-:    コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目 ( https://github.com/settings/ssh ) にペーストする。```ssh```コマンドで接続を確認する。
+: コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目 ( https://github.com/settings/ssh ) にペーストする。`ssh`コマンドで接続を確認する。
 
 ```bash
 $ ssh -T <接続名>
@@ -407,8 +364,6 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 
 変更した全てのファイルをaddする。
 
-
-
 <br>
 
 ### branch
@@ -417,13 +372,9 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 
 作業中のローカルブランチとリモート追跡ブランチを取得する。
 
-
-
 #### ▼ --contains
 
 現在にいるブランチを取得する。
-
-
 
 ```bash
 $ git branch --contains
@@ -435,8 +386,6 @@ $ git branch --contains
 
 プッシュとマージの状態に関係なく、ローカルブランチを削除する。
 
-
-
 ```bash
 $ git branch --delete --force <ローカルブランチ名>
 ```
@@ -444,8 +393,6 @@ $ git branch --delete --force <ローカルブランチ名>
 #### ▼ --move
 
 作業中のローカルブランチの名前を変更する。
-
-
 
 ```bash
 $ git branch --move <ローカルブランチ名>
@@ -459,10 +406,9 @@ $ git branch --delete --remote origin/<ローカルブランチ名>
 
 リモート追跡ブランチを削除する。
 
+`【１】`
 
-```【１】```
-
-:    まず、```branch --all```で作業中のローカルブランチとリモート追跡ブランチを取得する。
+: まず、`branch --all`で作業中のローカルブランチとリモート追跡ブランチを取得する。
 
 ```bash
 $ git branch --all
@@ -472,9 +418,9 @@ $ git branch --all
   remotes/origin/master
 ```
 
-```【２】```
+`【２】`
 
-:    ```remotes/origin/2019/Symfony_Nyumon/master```を削除する。
+: `remotes/origin/2019/Symfony_Nyumon/master`を削除する。
 
 ```bash
 $ git branch -d -r origin/2019/Symfony_Nyumon/master
@@ -482,9 +428,9 @@ $ git branch -d -r origin/2019/Symfony_Nyumon/master
 Deleted remote-tracking branch origin/2019/Symfony_Nyumon/master (was 18a31b5).
 ```
 
-```【３】```
+`【３】`
 
-:    再び、```branch --all```で削除されたことを確認。
+: 再び、`branch --all`で削除されたことを確認。
 
 ```bash
 $ git branch --all
@@ -495,8 +441,6 @@ $ git branch --all
 #### ▼ checkout -b
 
 指定のコミットから新しいブランチを生やせる。
-
-
 
 ```bash
 $ git branch checkout -b <新しいローカルブランチ名> <コミット番号>
@@ -514,8 +458,6 @@ $ git checkout -b feature/3 d7e49b04
 
 現在のブランチに対して、指定したコミットそれ単体をマージする。
 
-
-
 ```bash
 $ git cherry-pick <コミットID>
 ```
@@ -528,11 +470,11 @@ $ git cherry-pick 1d0ddeb9e52
 
 プルリクエストのマージによるマージコミットを指定すると、そのプルリクエストで変更されたファイルのみがコミットの内容として取得できる。
 
-これにより、```develop```ブランチ上の必要な変更のみをリリースできる。
+これにより、`develop`ブランチ上の必要な変更のみをリリースできる。
 
-ただし、マージコミットを指定する時は```-m```オプションを有効化しないとエラーになることに注意する。
+ただし、マージコミットを指定する時は`-m`オプションを有効化しないとエラーになることに注意する。
 
-また、マージコミットには```2```個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。
+また、マージコミットには`2`個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。
 
 前者は1番、また後者は2番となっており、1番を選択すること。
 
@@ -552,7 +494,7 @@ $ git cherry-pick -m 1 d7e49b04
  Author: hiroki.hasegawa <*****@users.noreply.github.com>
  Date: Wed Sep 15 00:00:00 2021 +0900
  1 file changed, 7 insertions(+)
- 
+
 # 指定したコミットのみがマージされているか否かを確認する。
 $ git log
 ```
@@ -563,9 +505,7 @@ $ git log
 
 #### ▼ stashとは
 
-ファイルが、『インデックス』 (=```add```) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを```checkout```しようとすると、以下のエラーが出る。
-
-
+ファイルが、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを`checkout`しようとすると、以下のエラーが出る。
 
 ```bash
 $ git checkout 2019/Symfony2_Ny
@@ -578,17 +518,13 @@ Please commit your changes or stash them before you switch branches.
 Aborting
 ```
 
-この場合、一度```stash```を行い、『インデックス』 (=```add```) あるいは『HEAD』 (=コミット) を横に置いておく必要がある。
-
-
+この場合、一度`stash`を行い、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) を横に置いておく必要がある。
 
 #### ▼ --include-untracked
 
 トラッキングされていないファイルも含めて、全てのファイルを退避。
 
-```git status```をしたところ、修正ファイルが```3```個、トラックされていないファイルが1つある。
-
-
+`git status`をしたところ、修正ファイルが`3`個、トラックされていないファイルが1つある。
 
 ```bash
 $ git status
@@ -612,7 +548,7 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-これを、```stash -u```する
+これを、`stash -u`する
 
 ```bash
 $ git stash -u
@@ -622,22 +558,17 @@ Saved working directory and index state WIP on 2019/foo-repository/feature/6: 64
 
 これらのファイルの変更点を一時的に退避できる。
 
-
-
 #### ▼ -- <パス>
 
-特定のディレクトリやファイルのみ```stash```できる。
-
-
+特定のディレクトリやファイルのみ`stash`できる。
 
 ```bash
 git stash -- ./
 ```
 
 #### ▼ list
+
 退避している『ファイル番号ブランチ親コミットとコミットメッセージ』の一覧を取得する。
-
-
 
 ```bash
 $ git stash list
@@ -646,9 +577,8 @@ stash@{0}: WIP on 2019/foo-repository/feature/6: 649995e update #6 *****
 ```
 
 #### ▼ pop
+
 退避している指定のファイルを復元する。
-
-
 
 ```bash
 $ git stash pop stash@{<番号>}
@@ -675,9 +605,8 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 #### ▼ drop
+
 退避している指定のファイルを復元せずに削除する。
-
-
 
 ```bash
 $ git stash drop stash@{<番号>}
@@ -690,9 +619,8 @@ Dropped refs/stash@{0} (1d0ddeb9e52a737dcdbff7296272080e9ff71815)
 ```
 
 #### ▼ clear
+
 退避している全てのファイルを復元せずに削除する。
-
-
 
 ```bash
 $ git stash clear
@@ -706,8 +634,6 @@ $ git stash clear
 
 addステージやcommitステージにファイルが存在しているか否かを取得する。
 
-
-
 <br>
 
 #### ▼ --porcelain
@@ -716,13 +642,11 @@ addステージやcommitステージにファイルが存在しているか否�
 
 CIの自動化で使うことが多い。
 
-
-
 > ↪️ 参考：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
 
 ```bash
  $ git status --porcelain
- 
+
  M foo
  M bar
  M baz
@@ -753,11 +677,9 @@ git push origin HEAD
 
 作業中のローカルブランチで、指定の履歴を削除する。
 
-
-
 ![revert.png](https://qiita-image-store.s3.amazonaws.com/0/292201/995d8f16-0a3e-117f-945f-c20a511edeaf.png)
 
-#### ▼ ```<コミットID>``` --no-edit
+#### ▼ `<コミットID>` --no-edit
 
 指定したコミットのみを打ち消す新しいコミットを作成する。
 
@@ -765,19 +687,15 @@ git push origin HEAD
 
 リリース後に元に戻したい時に役立つ。
 
-
-
 ```bash
 $ git revert <コミットID> --no-edit
 ```
 
-#### ▼ ```<コミットID>``` --edit
+#### ▼ `<コミットID>` --edit
 
 指定したコミットのみを打ち消す新しいコミットを作成する。
 
 vimが起動するため、コミットメッセージを新しいものに変更する。
-
-
 
 ```bash
 $ git revert <コミットID> --edit
@@ -791,8 +709,6 @@ $ git revert <コミットID> --edit
 
 マージナンバーを事前に確認しておく必要がある。
 
-
-
 ```bash
 $ git show
 
@@ -802,7 +718,7 @@ Author: xxxx xxxx
 Date:   Thu Jul 13 09:00:00 2017 +0000
 
     Merge commit
-    
+
 $ git revert -m 1 xyz
 ```
 
@@ -814,45 +730,39 @@ $ git revert -m 1 xyz
 
 作業中のローカルブランチで、指定の履歴まで戻し、それ以降を削除する。
 
-
-
 ![reset.png](https://qiita-image-store.s3.amazonaws.com/0/292201/e96468c4-57cc-bf2b-941a-d179ac829627.png)
 
 #### ▼ HEAD <ファイル名/パス>
 
 インデックスから、指定したファイルを削除する。
 
-
-
 ```bash
 $ git reset HEAD <ファイル名/パス>
 ```
 
 #### ▼ --soft <コミットID>
+
 作業中のブランチで、最新のHEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
 コミットのみを取り消したい場合はこれ。
-
-
 
 ```bash
 $ git reset --soft <コミットID>
 ```
 
 #### ▼ --mixed <コミットID>
-作業中のローカルブランチで、インデックス (=```add```後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
-```add```とコミットを取り消したい場合はこれ。
+作業中のローカルブランチで、インデックス (=`add`後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
-
+`add`とコミットを取り消したい場合はこれ。
 
 ```bash
 $ git reset --mixed <コミットID>
 ```
 
 #### ▼ --hard <コミットID>
-作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=```add```後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
+作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=`add`後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
 <font color="red">**ワークツリー (=ディレクトリ) 内のファイルの状態も戻ってしまうため、取り扱い注意！！**</font>
 
@@ -862,9 +772,9 @@ $ git reset --hard <コミットID>
 
 #### ▼ resetの使用例
 
-```【１】```
+`【１】`
 
-:    まず、```log ```コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
+: まず、`log `コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
 
 ```bash
 $ git log
@@ -889,17 +799,17 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
     add #0 fooさんのREADME_1を追加
 ```
 
-```【２】```
+`【２】`
 
-:    指定のコミットまで履歴を戻す。
+: 指定のコミットまで履歴を戻す。
 
 ```bash
 $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
 ```
 
-```【３】```
+`【３】`
 
-:    ```log ```コマンドで、正しく変更されているか確認。
+: `log `コマンドで、正しく変更されているか確認。
 
 ```bash
 $ git log
@@ -911,10 +821,10 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
     add 新しいREADMEを追加
 ```
 
-```【４】```
+`【４】`
 
-:    ```push --force```でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
-   <font color="red">**『強制的にプッシュした』というログも、リモート側には残らない。**</font>
+: `push --force`でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
+<font color="red">**『強制的にプッシュした』というログも、リモート側には残らない。**</font>
 
 ```bash
 $ git push --force
@@ -928,25 +838,21 @@ To github.com:hiroki-hasegawa/foo-repository.git
 
 ### rebase
 
-#### ▼ rebaseとは (注意点あり) 
+#### ▼ rebaseとは (注意点あり)
 
 作業中のローカルブランチで、ブランチの派生元を変更する。
 
 リモートブランチにプッシュした後は使用してはならず、他のコマンドを使用する。
 
-
-
 #### ▼ --interactive <コミットID>
 
 派生元を変更する機能を応用して、過去のコミットのメッセージ変更、削除、統合などを行う。
 
-
-
 **＊例 (コミットメッセージの変更) ＊**
 
-```【１】```
+`【１】`
 
-:    まず、```log ```コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
+: まず、`log `コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
 
 ```bash
 $ git log
@@ -971,20 +877,21 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
     add #0 fooさんのREADME_1を追加
 ```
 
-```【２】```
+`【２】`
 
-:    指定した履歴の削除
+: 指定した履歴の削除
 
 ```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 ```
+
 とすると、タブが表示され、指定のコミットIDの履歴が表示される
 
 ```bash
 pick b1b5c0f add #0 *****
 ```
 
-『挿入モード』に変更し、この一行の```pick```を```edit```に変更。
+『挿入モード』に変更し、この一行の`pick`を`edit`に変更。
 
 その後、
 
@@ -1002,19 +909,17 @@ pick b1b5c0f add #0 *****
 
 で終了。
 
+`【３】`
 
-
-```【３】```
-
-:    ```git commit --amend```に```m```オプションを付けて、メッセージを変更する。
+: `git commit --amend`に`m`オプションを付けて、メッセージを変更する。
 
 ```bash
 $ git commit --amend -m="<変更後のメッセージ>"
 ```
 
-```【４】```
+`【４】`
 
-:    ```git rebase --continue```コマンドを実行し、変更を反映させる。
+: `git rebase --continue`コマンドを実行し、変更を反映させる。
 
 ```bash
 $ git rebase --continue
@@ -1022,38 +927,37 @@ $ git rebase --continue
 Successfully rebased and updated refs/heads/develop.
 ```
 
-```【５】```
+`【５】`
 
-:    プッシュしようとすると、```![rejected] develop -> develop (non-fast-forward)```とエラーが出るため、
+: プッシュしようとすると、`![rejected] develop -> develop (non-fast-forward)`とエラーが出るため、
 
 ```bash
 $ git merge <ブランチ名> --allow-unrelated-histories
 ```
+
 で解決し、プッシュする。
-
-
 
 **＊例 (Author名とCommiter名の変更) ＊**
 
-```【１】```
+`【１】`
 
-:    ハッシュ値を指定して、```rebase```コマンドを実行する。
+: ハッシュ値を指定して、`rebase`コマンドを実行する。
 
 ```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 ```
 
-```【２】```
+`【２】`
 
-:    ```commit --amend```に```reset-author```オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
+: `commit --amend`に`reset-author`オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
 
 ```bash
 $ git commit --amend --reset-author
 ```
 
-```【３】```
+`【３】`
 
-:    ```rebase --continue```を実行し、変更を反映させる。
+: `rebase --continue`を実行し、変更を反映させる。
 
 ```bash
 $ git rebase --continue
@@ -1063,8 +967,6 @@ Successfully rebased and updated refs/heads/develop.
 過去の全てのコミットに対して、Author名とCommitter名を適用するコマンドもある。
 
 しかし、危険な方法であるため、個人利用のリポジトリのみで使用するようにするべきである。
-
-
 
 ```bash
 #!/bin/bash
@@ -1083,8 +985,6 @@ fi"
 
 作業中のローカルブランチの派生元を変更する。
 
-
-
 ```bash
 $ git rebase --onto <派生元にしたいローカルブランチ名> <誤って派生元にしたローカルブランチ名> <派生元を変更したいローカルブランチ名>
 ```
@@ -1093,11 +993,9 @@ $ git rebase --onto <派生元にしたいローカルブランチ名> <誤っ�
 
 一番古い、最初の履歴を削除する。
 
+`【１】`
 
-
-```【１】```
-
-:    変更タブの表示
+: 変更タブの表示
 
 ```bash
 $ git rebase --interactive --root
@@ -1109,9 +1007,9 @@ $ git rebase --interactive --root
 pick b1b5c0f add #0 *****
 ```
 
-```【２】```
+`【２】`
 
-:    ```pick b1b5c0f add #0 *****```の行を削除して保存し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
+: `pick b1b5c0f add #0 *****`の行を削除して保存し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
 
 ```bash
 :qa!
@@ -1134,10 +1032,9 @@ Could not apply 37bee65... update #0 README.mdに本レポジトリのタイト�
 
 #### ▼ --abort
 
-やりかけの```rebase```を取り消し。
+やりかけの`rebase`を取り消し。
 
-
-作業中のローカルブランチにおける```(master|REBASE-i)```が、``` (master)```に変更されていることからも確認可能。
+作業中のローカルブランチにおける`(master|REBASE-i)`が、` (master)`に変更されていることからも確認可能。
 
 ```bash
 hiroki.hasegawa@PC /var/www/foo (master)
@@ -1158,14 +1055,12 @@ $
 
 全てのリモートブランチをpullする。
 
-
-
 ```bash
 $ git branch -r \
     | grep -v "\->" \
     | grep -v main \
     | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
-  
+
 $ git fetch --all
 
 $ git pull --all
@@ -1173,15 +1068,13 @@ $ git pull --all
 
 <br>
 
-### push 
+### push
 
 #### ▼ -u origin <作成したブランチ名>
 
 ローカルで作成したブランチを、リモートにプッシュする。
 
 コミットは無くても良い。
-
-
 
 ```bash
 $ git push -u origin <作成したブランチ名>
@@ -1191,8 +1084,6 @@ $ git push -u origin <作成したブランチ名>
 
 トラウマコマンド。
 
-
-
 ```bash
 $ git push origin <コミットID>:master
 ```
@@ -1200,8 +1091,6 @@ $ git push origin <コミットID>:master
 #### ▼ --delete origin <バージョンタグ>
 
 リモートブランチのタグを削除する。
-
-
 
 ```bash
 $ git push --delete origin <バージョンタグ>
@@ -1215,8 +1104,6 @@ $ git push --delete origin v1.0.0
 
 注意点として、ローカルマシンのタグは別に削除する必要がある。
 
-
-
 ```bash
 $ git tag -d v1.0.0
 ```
@@ -1224,8 +1111,6 @@ $ git tag -d v1.0.0
 #### ▼ --tags
 
 ローカルマシンのコミットに付与したタグをリモートにプッシュする。
-
-
 
 ```bash
 $ git push --tags
@@ -1236,8 +1121,6 @@ $ git push --tags
 ### show-branch
 
 作業ブランチの派生元になっているブランチを確認。
-
-
 
 ```bash
 $ git show-branch \
@@ -1255,8 +1138,6 @@ $ git show-branch \
 
 全てのコミットの名前とメールアドレスを上書きする。
 
-
-
 ```bash
 $ git filter-branch -f --env-filter \
      "GIT_AUTHOR_NAME="hiroki.hasegawa"; \
@@ -1270,15 +1151,11 @@ $ git filter-branch -f --env-filter \
 
 全てのコミットに対して、指定した処理を実行する。
 
-
-
 **＊例＊**
 
 全てのコミットに対して、特定のファイルを削除する処理を実行する。
 
 加えて、ローカルリポジトリに対してガーベジコレクションを実行すると、ローカルリポジトリから完全に削除できる。
-
-
 
 ```bash
 $ git filter-branch -f --tree-filter \

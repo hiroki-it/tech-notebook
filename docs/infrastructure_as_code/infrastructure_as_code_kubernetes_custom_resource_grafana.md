@@ -9,8 +9,6 @@ description: Grafana＠カスタムリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,24 +21,19 @@ Grafanaは、ダッシュボードとストレージから構成されている�
 
 PromQLに基づいて、収集されたメトリクスを可視化する。
 
-
-
-
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images//grafana_architecture.png)
 
 > ↪️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
-
 
 <br>
 
 ### データソース
 
-
-| データソース名   | 例                                                  |
-|------------|-----------------------------------------------------|
-| TSDB       | PrometheusのローカルDB、VictoriaMetrics、Graphite、InfluxDB |
-| RDB        | MySQL、PostgreSQL                                    |
-| クラウドデータソース | AWS CloudWatch、Google Stackdriver                   |
+| データソース名       | 例                                                          |
+| -------------------- | ----------------------------------------------------------- |
+| TSDB                 | PrometheusのローカルDB、VictoriaMetrics、Graphite、InfluxDB |
+| RDB                  | MySQL、PostgreSQL                                           |
+| クラウドデータソース | AWS CloudWatch、Google Stackdriver                          |
 
 > ↪️ 参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
 

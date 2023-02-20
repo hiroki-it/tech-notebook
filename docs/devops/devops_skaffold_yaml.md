@@ -9,8 +9,6 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -33,8 +31,6 @@ build/test/deployステージに加えて、継続的な開発に役立つステ
 
 ただし、Skaffoldは基本的には開発環境でしか使わないため、ユースケースが限定的なステージもある。
 
-
-
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline.png)
 
 #### ▼ 各ステージのツールの選択
@@ -43,9 +39,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 ![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline_tools.png)
 
-
 > ↪️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
-
 
 <br>
 
@@ -54,8 +48,6 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 ### buildステージとは
 
 コンテナイメージのビルド方法を定義する。
-
-
 
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/builders/
 
@@ -66,9 +58,6 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 #### ▼ image
 
 ビルドされるイメージの名前を設定する。
-
-
-
 
 ```yaml
 build:
@@ -81,13 +70,9 @@ build:
 
 > ↪️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
 
-
 #### ▼ context
 
 マイクロサービスのルートまでのパスを設定する。
-
-
-
 
 ```yaml
 build:
@@ -99,20 +84,19 @@ build:
     - image: bar-app
       context: ./src/bar
     - image: bar-web
-      context: ./src/bar    
+      context: ./src/bar
 ```
 
 > ↪️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
-
 
 <br>
 
 #### ▼ docker
 
-| 項目       | 説明                                  | 補足                                                                         |
-|------------|-------------------------------------|------------------------------------------------------------------------------|
+| 項目       | 説明                                                         | 補足                                                                         |
+| ---------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | dockerfile | マイクロサービスのルートからDockerfileまでのパスを設定する。 | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile |
-| target     | ビルドするイメージのステージを設定する。                | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target     |
+| target     | ビルドするイメージのステージを設定する。                     | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target     |
 
 ```yaml
 build:
@@ -147,8 +131,6 @@ build:
 
 Skaffoldは基本的には開発環境でしか使わないため、これは無効化しておいた方が良い。
 
-
-
 ```yaml
 build:
   local:
@@ -161,9 +143,6 @@ BuildKit機能の有効化を設定する。
 
 BuildKitではイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
 
-
-
-
 ```yaml
 build:
   local:
@@ -172,7 +151,6 @@ build:
 
 > ↪️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
 
-
 <br>
 
 ### tagPolicy
@@ -180,8 +158,6 @@ build:
 #### ▼ gitCommit
 
 コミットIDをバージョンタグとして設定する。
-
-
 
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
 
@@ -193,9 +169,7 @@ build:
 
 #### ▼ sha256
 
-sha256ハッシュ値と```latest```タグをバージョンタグとして設定する。
-
-
+sha256ハッシュ値と`latest`タグをバージョンタグとして設定する。
 
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
@@ -209,20 +183,18 @@ build:
 
 ## 03. portForwardステージ
 
-```skaffold run```コマンド時に、同時にポートフォワーディングを実行する。
+`skaffold run`コマンド時に、同時にポートフォワーディングを実行する。
 
-すでにポート番号が使用中だった場合は、```+1```されたポート番号が自動的に使用される。
-
-
+すでにポート番号が使用中だった場合は、`+1`されたポート番号が自動的に使用される。
 
 ```yaml
 portForward:
   - resourceType: pod
     resourceName: foo-mysql-pod-0
-    localPort: 3308 
+    localPort: 3308
     port: 3306
   - resourceType: pod
-    resourceName: bar-mysql-pod-0  
+    resourceName: bar-mysql-pod-0
     localPort: 3309
     port: 3306
 ```
@@ -235,8 +207,6 @@ portForward:
 
 Kubernetesリソースのテスト方法を定義する。
 
-
-
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/testers/
 
 <br>
@@ -244,9 +214,6 @@ Kubernetesリソースのテスト方法を定義する。
 ### structureTests
 
 ファイルを指定し、コンテナ構造テストを実施する。
-
-
-
 
 ```yaml
 test:
@@ -267,7 +234,6 @@ fileExistenceTests:
 
 > ↪️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
 
-
 <br>
 
 ## 05. deployステージ
@@ -275,8 +241,6 @@ fileExistenceTests:
 ### deployステージとは
 
 Kubernetesリソースのデプロイ手法を定義する。
-
-
 
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 
@@ -286,12 +250,9 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 #### ▼ kubectlとは
 
-```kubectl```コマンドを使用して、Kubernetesリソースをデプロイする。
+`kubectl`コマンドを使用して、Kubernetesリソースをデプロイする。
 
 ワイルドカードを使用できる。
-
-
-
 
 ```yaml
 deploy:
@@ -301,9 +262,7 @@ deploy:
       - ./**/**/**.yaml # ワイルドカードを使用できる。
 ```
 
-
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
-
 
 <br>
 
@@ -313,21 +272,17 @@ deploy:
 
 Helmを使用して、Kubernetesリソースをデプロイする。
 
-
-
-
 ```yaml
 deploy:
   helm:
     releases:
-    - name: <リリース名>
-      artifactOverrides:
-        image: <コンテナイメージ名> # buildステージのartifactsのコンテナイメージ名と合わせる。
-      imageStrategy:
-        helm: {}
+      - name: <リリース名>
+        artifactOverrides:
+          image: <コンテナイメージ名> # buildステージのartifactsのコンテナイメージ名と合わせる。
+        imageStrategy:
+          helm: {}
 ```
 
 > ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
-
 
 <br>

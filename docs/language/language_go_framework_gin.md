@@ -9,8 +9,6 @@ description: Ginの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -31,7 +29,7 @@ description: Ginの知見を記録しています。
 
 #### ▼ 処理
 
-```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストからJSON型データを取得し、構造体に紐付ける。
+`Content-Type`ヘッダーのMIMEタイプが`application/json`であることが前提である。リクエストからJSON型データを取得し、構造体に紐付ける。
 
 > ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
@@ -43,31 +41,25 @@ description: Ginの知見を記録しています。
 
 クエリパラメーターからデータを取得し、構造体に紐付ける。
 
-
-
 <br>
 
 ### Get
 
 #### ▼ 処理
 
-同じリクエストにて```Set```関数でセットされたマップ型データから、インターフェース型で値を取得する。
+同じリクエストにて`Set`関数でセットされたマップ型データから、インターフェース型で値を取得する。
 
-値が存在しない場合は、第二返却値で```false```を返却する。
-
-
+値が存在しない場合は、第二返却値で`false`を返却する。
 
 > ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
 
 <br>
 
-### ShouldBindQuery (= ShouldBindWith) 
+### ShouldBindQuery (= ShouldBindWith)
 
 #### ▼ 処理
 
 クエリパラメーターからデータを取得し、指定したバインディングツールを使用して、構造体に紐付ける。
-
-
 
 <br>
 
@@ -79,13 +71,9 @@ JSON型データとして、レスポンスを返信する。
 
 第二引数の引数型がインターフェースになっているため、様々なデータ型を渡せる。
 
-
-
- **＊実装例＊**
+**＊実装例＊**
 
 マップ型データを渡す。
-
-
 
 ```go
 c.JSON(200, gin.H{
@@ -95,8 +83,6 @@ c.JSON(200, gin.H{
 ```
 
 構造体型データを渡す。
-
-
 
 ```go
 type Foo struct {
@@ -116,11 +102,9 @@ c.JSON(200, &Foo{
 
 #### ▼ 処理
 
-同じリクエストにて```Set```関数でセットされたマップ型データから、インターフェース型で値を取得する。
+同じリクエストにて`Set`関数でセットされたマップ型データから、インターフェース型で値を取得する。
 
 値が存在しない場合は、ランタイムエラーとなる。
-
-
 
 > ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
 
@@ -132,9 +116,7 @@ c.JSON(200, &Foo{
 
 クエリパラメーターからデータを取得する。
 
-この後、構造体に紐付ける場合は、```BindQuery```関数を使用した方が良い。
-
-
+この後、構造体に紐付ける場合は、`BindQuery`関数を使用した方が良い。
 
 <br>
 
@@ -144,19 +126,15 @@ c.JSON(200, &Foo{
 
 当該のリクエストで利用できるマップ型データに、値を保存する。
 
-
-
 > ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
 
 #### ▼ 注意点
 
-データ型を変換した値を```Set```関数で保存しないようにすることによりある。
+データ型を変換した値を`Set`関数で保存しないようにすることによりある。
 
-```Set```関数後に```Get```関数で取得される値は、元のデータ型に関係なくインターフェース型に変換されてしまう。
+`Set`関数後に`Get`関数で取得される値は、元のデータ型に関係なくインターフェース型に変換されてしまう。
 
-そのため、例えば、タイプID型として値を保存したとしても、```Get```関数で得られたインターフェース型データを改めて変換しないといけなくなってしまう。
-
-
+そのため、例えば、タイプID型として値を保存したとしても、`Get`関数で得られたインターフェース型データを改めて変換しないといけなくなってしまう。
 
 **＊実装例＊**
 
@@ -196,7 +174,7 @@ type UserController struct {
 }
 
 func (uc *UserController) GetUser(ctx *gin.Context) {
-    
+
     // インターフェース型になってしまう。
 	userId, ok := ctx.Get("id")
 
@@ -213,8 +191,6 @@ func (uc *UserController) GetUser(ctx *gin.Context) {
 ### H
 
 マップ型の変数のエイリアスとして働く。
-
-
 
 ```go
 type H map[string]interface{}
@@ -247,8 +223,6 @@ c.JSON(400, gin.H{
 バリデーションのルールを定義する。
 
 標準のルールの一覧は、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
 

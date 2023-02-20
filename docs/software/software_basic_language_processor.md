@@ -9,8 +9,6 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,8 +19,6 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 アセンブリ型言語を機械語に翻訳する。
 
-
-
 <br>
 
 ## 02. コンパイラ方式
@@ -30,8 +26,6 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 ### コンパイラ方式とは
 
 コンパイラ型言語を機械語に翻訳する。
-
-
 
 <br>
 
@@ -45,9 +39,7 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 ![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/compiler_language.png)
 
-
 > ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
-
 
 #### ▼ コンパイラによるビルド
 
@@ -61,8 +53,6 @@ exeファイルとなる。
 
 また、ビルドによって作成されたファイルを『アーティファクト (成果物) 』という。
 
-
-
 ![ビルドとコンパイル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ビルドとコンパイル.jpg)
 
 <br>
@@ -71,28 +61,25 @@ exeファイルとなる。
 
 ![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lexical_syntax_semantics.png)
 
-#### ```【１】```
+#### `【１】`
 
-:    Lexical analysis (字句解析) 
+: Lexical analysis (字句解析)
 
 コードの文字列を言語の最小単位 (トークン) の列に分解する。
 
- 以下に、トークンの分類方法の例を以下に示す。
+以下に、トークンの分類方法の例を以下に示す。
 
 字句解析のアルゴリズムは、LexやFlexで実装されている。
 
 解析器をルーツを辿れない問題をブートストラップ問題という。
 
-
-
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/構文規則と説明.png)
 
 > ↪️ 参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
 
+#### `【２】`
 
-#### ```【２】```
-
-:    Syntax analysis (構文解析) 
+: Syntax analysis (構文解析)
 
 トークンの列をツリー構造に変換する。
 
@@ -102,51 +89,39 @@ exeファイルとなる。
 
 コンパイラ型言語の構文解析に失敗した時、これらの構文解析言語はシンタックスエラーを出力する。
 
-
-
 > ↪️ 参考：https://ja.wikipedia.org/wiki/Bison
 
-#### ```【３】```
+#### `【３】`
 
-:    Semantics analysis (意味解析) 
+: Semantics analysis (意味解析)
 
 ツリー構造を基に、コードに論理的な誤りがないかを解析する。
 
+#### `【４】`
 
-
-#### ```【４】```
-
-:    Code optimization (コード最適化) 
+: Code optimization (コード最適化)
 
 コードの冗長な部分を削除または編集する。
 
 機械語をより短くできる。
 
+#### `【５】`
 
-
-#### ```【５】```
-
-:    Code generation (コード作成) 
+: Code generation (コード作成)
 
 最適化されたコードをバイナリ形式のコードに変換する。
 
+#### `【６】`
 
-
-#### ```【６】```
-
-:    リンク
+: リンク
 
 バイナリ形式のコードをリンクする。
 
+#### `【７】`
 
-
-#### ```【７】```
-
-:    命令の実行
+: 命令の実行
 
 リンクされたバイナリ形式のコードを基に、命令が実行される。
-
-
 
 <br>
 
@@ -155,8 +130,6 @@ exeファイルとなる。
 ### インタプリタ方式とは
 
 インタプリタ型言語を機械語に翻訳する。
-
-
 
 <br>
 
@@ -168,8 +141,6 @@ exeファイルとなる。
 
 命令の結果はメモリに保管される。
 
-
-
 > ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interpreted_language.png)
@@ -178,41 +149,33 @@ exeファイルとなる。
 
 ### 機械語翻訳とは
 
-#### ```【１】```
+#### `【１】`
 
-:    Lexical analysis (字句解析) 
-
-コンパイラ型言語と同じである。
-
-
-
-#### ```【２】```
-
-:    Syntax analysis (構文解析) 
+: Lexical analysis (字句解析)
 
 コンパイラ型言語と同じである。
 
+#### `【２】`
 
-
-#### ```【３】```
-
-:    Semantics analysis (意味解析) 
+: Syntax analysis (構文解析)
 
 コンパイラ型言語と同じである。
 
+#### `【３】`
 
-
-#### ```【４】```
-
-:    命令の実行
+: Semantics analysis (意味解析)
 
 コンパイラ型言語と同じである。
 
+#### `【４】`
 
+: 命令の実行
 
-#### ```【５】```
+コンパイラ型言語と同じである。
 
-:    １から４をコード行ごとに繰り返す
+#### `【５】`
+
+: １から４をコード行ごとに繰り返す
 
 <br>
 
@@ -224,17 +187,17 @@ exeファイルとなる。
 
 ### 仕組み
 
-```【１】```
+`【１】`
 
-:    JavaまたはJVM型言語のコードを、Javaバイトコードを含むクラスファイルに変換する。
+: JavaまたはJVM型言語のコードを、Javaバイトコードを含むクラスファイルに変換する。
 
-```【２】```
+`【２】`
 
-:    JVM：Java Virtual Machine内で、インタプリタによって、クラスデータを機械語に翻訳する。
+: JVM：Java Virtual Machine内で、インタプリタによって、クラスデータを機械語に翻訳する。
 
-```【３】```
+`【３】`
 
-:    結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。
+: 結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。
 
 ![Javaによる言語処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_1.png)
 

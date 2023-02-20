@@ -9,8 +9,6 @@ description: AWS EKSアドオン＠クラウドプロバイダーアドオンの
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,8 +21,6 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。
 
-
-
 > ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html
@@ -36,7 +32,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 ### aws-eks-codednsアドオンとは
 
-EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働する。
+EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働する。
 
 同じCluster内の全てのPodの名前解決を行う。
 
@@ -48,7 +44,7 @@ EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働�
 
 ### aws-eks-kube-proxyアドオンとは
 
-EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働する。
+EKSの各Node上で、`kube-proxy`という名前のDaemonSetとして稼働する。
 
 EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
@@ -60,15 +56,13 @@ EKSのコントロールプレーン上のkube-apiserverが、Node外からPod�
 
 ### aws-eks-vpc-cniアドオンとは
 
-
-EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働する。
+EKSのNode上で、`aws-node`という名前のDaemonSetとして稼働する。
 
 PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。
 
 これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
-
 
 > ↪️ 参考：
 >
@@ -93,8 +87,6 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 $ helm install <リリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
 ```
 
-
 > ↪️ 参考：https://github.com/aws/eks-charts/tree/master/stable/aws-vpc-cni
 
 <br>
-

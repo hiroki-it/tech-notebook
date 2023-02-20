@@ -2,6 +2,7 @@
 title: 【IT技術の知見】リソース定義＠Istio
 description: リソース定義＠Istioの知見を記録しています。
 ---
+
 # リソース定義＠Istio
 
 ## はじめに
@@ -20,8 +21,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
-チャートは、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
-
+チャートは、`istioctl`コマンドインストール時に`manifests`ディレクトリ以下に同梱される。
 
 ```bash
 # IstioOperatorのdemoをインストールし、リソースを作成する。
@@ -33,12 +33,11 @@ $ istioctl install --manifests=foo-chart
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
-
 執筆時点 (2023/01/16) でIstioOperatorは非推奨になっている。
 
 > ↪️ 参考：https://www.solo.io/blog/3-most-common-ways-install-istio/
 
-#### ▼ GCRから (ユーザー定義) 
+#### ▼ GCRから (ユーザー定義)
 
 プロファイルを使用する代わりに、IstioOperatorを独自で定義しても良い。
 
@@ -69,7 +68,6 @@ $ kubectl apply -f istio-operator.yaml
 
 Google-APIsから、Istioのコンポーネント別にチャートをインストールし、リソースを作成する。
 
-
 ```bash
 $ helm repo add <チャートリポジトリ名> https://istio-release.storage.googleapis.com/charts
 
@@ -96,7 +94,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/gateway -n ist
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
 
-
 <br>
 
 ## 01-03. その他のセットアップ
@@ -115,7 +112,7 @@ $ minikube start --cpus=4 --memory=16384
 
 #### ▼ VirtualService、DestinationRuleの定義
 
-VirtualServiceとDestinationRuleの設定値は、```istio-proxy```コンテナに適用される。
+VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに適用される。
 
 > ↪️ 参考：
 >
@@ -125,22 +122,21 @@ VirtualServiceとDestinationRuleの設定値は、```istio-proxy```コンテナ�
 
 #### ▼ EnvoyFilterの定義
 
-```istio-proxy```コンテナの設定を上書きできる。
+`istio-proxy`コンテナの設定を上書きできる。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
 
 #### ▼ annotationsの定義
 
-DeploymentやPodの```.metadata.anontations```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。
+DeploymentやPodの`.metadata.anontations`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。
 
-Deploymentの場合は、```template```キーよりも下層の```.metadata.``キーを使用することに注意する。
+Deploymentの場合は、`template`キーよりも下層の``.metadata.`キーを使用することに注意する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
-#### ▼ ```istio-proxy```コンテナの定義
+#### ▼ `istio-proxy`コンテナの定義
 
-DeploymentやPodで```istio-proxy```コンテナを定義することにより設定を上書きできる。
-
+DeploymentやPodで`istio-proxy`コンテナを定義することにより設定を上書きできる。
 
 **＊実装例＊**
 
@@ -164,26 +160,25 @@ spec:
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
-               # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
-               # envoyプロセスとpilot-agentプロセスの終了を待機する。
-               command:
-                 - "/bin/bash"
-                 - "-c"
-                 - |
-                   sleep 5
-                   while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
+                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
+                # envoyプロセスとpilot-agentプロセスの終了を待機する。
+                command:
+                  - "/bin/bash"
+                  - "-c"
+                  - |
+                    sleep 5
+                    while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
             # istio-proxyコンテナ開始直後の処理
             postStart:
               exec:
                 # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。
                 # pilot-agentの起動完了を待機する。
                 command:
-                 - |
-                  pilot-agent wait
+                  - |
+                    pilot-agent wait
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
-
 
 <br>
 
@@ -219,7 +214,7 @@ Istioリソースの一意に識別するための情報を設定する。
 
 #### ▼ namespace
 
-Istioリソースを作成するNamespaceを設定する。デフォルトで```istio-system```になる。
+Istioリソースを作成するNamespaceを設定する。デフォルトで`istio-system`になる。
 
 **＊実装例＊**
 
@@ -230,16 +225,15 @@ metadata:
 
 <br>
 
-## 04. Namespaceの```.metadata.labels```キー
+## 04. Namespaceの`.metadata.labels`キー
 
 ### istio-injection
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
 
-```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない (```istio-injection```キーの値が```disabled```の場合は共存できる) 。
+`istio.io/rev`キーとはコンフリクトを発生させるため、どちらかしか使えない (`istio-injection`キーの値が`disabled`の場合は共存できる) 。
 
-```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
-
+`istio-injection`キーを使用する場合、Istioのアップグレードがインプレース方式になる。
 
 **＊実装例＊**
 
@@ -252,7 +246,7 @@ metadata:
     istio-injection: enabled
 ```
 
-アプリケーション以外のNamespaceでは```disabled```値を設定することが多い。
+アプリケーション以外のNamespaceでは`disabled`値を設定することが多い。
 
 ```yaml
 apiVersion: v1
@@ -272,19 +266,17 @@ metadata:
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
-
 <br>
 
 ### istio.io/rev
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
 
-IstoOperatorの```.spec.revision```キーと同じである。
+IstoOperatorの`.spec.revision`キーと同じである。
 
-```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない (```istio-injection```キーの値が```disabled```の場合は共存できる) 。
+`istio-injection`キーとはコンフリクトを発生させるため、どちらかしか使えない (`istio-injection`キーの値が`disabled`の場合は共存できる) 。
 
-```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
-
+`istio.io/rev`キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
 **＊実装例＊**
 
@@ -313,14 +305,13 @@ metadata:
 
 > ↪️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 
-
 <br>
 
-## 04-02. Podの```.metadata.annotations```キー
+## 04-02. Podの`.metadata.annotations`キー
 
 ### annotationsとは
 
-Deploymentの```.spec.template```キーや、Podの```.metadata.``キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの```.metadata.``キーで定義しないように注意する。
+Deploymentの`.spec.template`キーや、Podの` .metadata.``キーにて、 `istio-proxy`コンテナごとのオプション値を設定する。Deploymentの`.metadata.``キーで定義しないように注意する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -328,7 +319,7 @@ Deploymentの```.spec.template```キーや、Podの```.metadata.``キーにて�
 
 ### istio.io/rev
 
-IstoOperatorの```.spec.revision```キーと同じ。
+IstoOperatorの`.spec.revision`キーと同じ。
 
 特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
 
@@ -355,12 +346,11 @@ spec:
 
 #### ▼ proxy.istio.ioとは
 
-```istio-proxy```コンテナのプロセスの設定値を上書きし、ユーザー定義の値を設定する。
+`istio-proxy`コンテナのプロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
 #### ▼ configPath
 
-デフォルトでは、```./etc/istio/proxy```ディレクトリ配下に最終的な設定値ファイルが作成される。
-
+デフォルトでは、`./etc/istio/proxy`ディレクトリ配下に最終的な設定値ファイルが作成される。
 
 **＊実装例＊**
 
@@ -382,13 +372,11 @@ spec:
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
-
 #### ▼ parentShutdownDuration
 
-```istio-proxy```コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
+`istio-proxy`コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
 
-```istio-proxy```コンテナ自体の終了タイミングを決める```terminationDrainDuration```キーよりも、最低```5```秒以上長くすると良い。
-
+`istio-proxy`コンテナ自体の終了タイミングを決める`terminationDrainDuration`キーよりも、最低`5`秒以上長くすると良い。
 
 **＊実装例＊**
 
@@ -409,17 +397,16 @@ spec:
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 
-
 #### ▼ terminationDrainDuration
 
-SIGKILLシグナルを```istio-proxy```コンテナに送信するまでに待機する時間を設定する。
+SIGKILLシグナルを`istio-proxy`コンテナに送信するまでに待機する時間を設定する。
 
-この待機時間を経た後に、SIGKILLシグナルを```istio-proxy```コンテナに送信する。
+この待機時間を経た後に、SIGKILLシグナルを`istio-proxy`コンテナに送信する。
 
 **＊実装例＊**
 
@@ -440,11 +427,10 @@ spec:
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-drain-time-s
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
-
 
 <br>
 
@@ -475,7 +461,7 @@ spec:
 
 ### sidecar.istio.io/proxyCPU
 
-```istio-proxy```コンテナで使用するCPUサイズを設定する。
+`istio-proxy`コンテナで使用するCPUサイズを設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -500,7 +486,7 @@ spec:
 
 ### sidecar.istio.io/proxyImage
 
-```istio-proxy```コンテナの作成に使用するコンテナイメージを設定する。
+`istio-proxy`コンテナの作成に使用するコンテナイメージを設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -525,7 +511,7 @@ spec:
 
 ### sidecar.istio.io/proxyMemory
 
-```istio-proxy```コンテナで使用するメモリサイズを設定する。
+`istio-proxy`コンテナで使用するメモリサイズを設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -558,7 +544,7 @@ spec:
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
-#### ▼ ```*``` (アスタリスク) 
+#### ▼ `*` (アスタリスク)
 
 全てのNamespaceで使用できるようにする。
 
@@ -575,9 +561,9 @@ spec:
     - "*"
 ```
 
-#### ▼ ```.``` (ドット) 
+#### ▼ `.` (ドット)
 
-全てのNamespaceのうちで、```.metadata.namespace```キーのNamespaceでのみ使用できるようにする。
+全てのNamespaceのうちで、`.metadata.namespace`キーのNamespaceでのみ使用できるようにする。
 
 DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
@@ -624,7 +610,7 @@ spec:
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
-ルーティング先のPodの```.metadata.labels```キーを設定する
+ルーティング先のPodの`.metadata.labels`キーを設定する
 
 > ↪️ 参考：
 >
@@ -634,9 +620,9 @@ spec:
 
 **＊実装例＊**
 
-サブセットv1に対するインバウンド通信では、```version```キーの値が```v1```であるPodにルーティングする。
+サブセットv1に対するインバウンド通信では、`version`キーの値が`v1`であるPodにルーティングする。
 
-```v2```も同様である。
+`v2`も同様である。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -646,12 +632,12 @@ metadata:
   name: foo-destination-rule
 spec:
   subsets:
-  - name: v1
-    labels:
-      version: v1
-  - name: v2
-    labels:
-      version: v2
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
 ```
 
 <br>
@@ -812,7 +798,7 @@ spec:
 
 #### ▼ applyTo
 
-上書きしたい```envoy.yaml```ファイルの項目を設定する。
+上書きしたい`envoy.yaml`ファイルの項目を設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
@@ -831,7 +817,7 @@ spec:
 
 #### ▼ match
 
-上書きしたい```envoy.yaml```ファイルのCluster項目を設定する。
+上書きしたい`envoy.yaml`ファイルのCluster項目を設定する。
 
 **＊実装例＊**
 
@@ -850,7 +836,7 @@ spec:
 
 #### ▼ listener
 
-上書きしたい```envoy.yaml```ファイルのListener項目を設定する。
+上書きしたい`envoy.yaml`ファイルのListener項目を設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
 
@@ -873,7 +859,7 @@ spec:
 
 #### ▼ PatchContext
 
-上書きしたい```envoy.yaml```ファイルの通信の方向を設定する。
+上書きしたい`envoy.yaml`ファイルの通信の方向を設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
@@ -893,7 +879,7 @@ spec:
 
 #### ▼ patch
 
-```envoy.yaml```ファイルの上書き方法と上書き内容を設定する。
+`envoy.yaml`ファイルの上書き方法と上書き内容を設定する。
 
 **＊実装例＊**
 
@@ -925,7 +911,7 @@ spec:
 
 #### ▼ KeepAliveの設定
 
-istio-ingressgatewayのPod内の```istio-proxy```コンテナで、KeepAliveを実行できるようにする。
+istio-ingressgatewayのPod内の`istio-proxy`コンテナで、KeepAliveを実行できるようにする。
 
 > ↪️ 参考：https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
 
@@ -977,9 +963,9 @@ spec:
 
 #### ▼ selectorとは
 
-Gatewayの適用対象のIngressGatewayに付与された```.metadata.labels```キーを設定する。
+Gatewayの適用対象のIngressGatewayに付与された`.metadata.labels`キーを設定する。
 
-デフォルトでは、IngressGatewayには```istio```ラベルがあり、値は```ingressgateway```である。
+デフォルトでは、IngressGatewayには`istio`ラベルがあり、値は`ingressgateway`である。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
@@ -1003,7 +989,6 @@ metadata:
   labels:
     app.kubernetes.io/name: istio-ingressgateway
     istio: ingressgateway
-...
 ```
 
 <br>
@@ -1034,7 +1019,7 @@ spec:
 
 インバウンド通信を待ち受けるポート番号を設定する。
 
-IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて```30000```番ポートとする。
+IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて`30000`番ポートとする。
 
 一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
 
@@ -1090,13 +1075,13 @@ metadata:
   name: gateway
 spec:
   servers:
-    - port: 
+    - port:
         targetPort: 80
 ```
 
 #### ▼ hosts
 
-Gatewayでフィルタリングするインバウンド通信の```Host```ヘッダー名を設定する。
+Gatewayでフィルタリングするインバウンド通信の`Host`ヘッダー名を設定する。
 
 ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカードを使用して全てのドメインを許可してもよい。
 
@@ -1111,14 +1096,14 @@ metadata:
 spec:
   servers:
     - hosts:
-        - "*" 
+        - "*"
 ```
 
 #### ▼ tls.credentialName
 
 GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書を保持するSecretを設定する。
 
-SSL証明書のファイルを指定する場合は、```.spec.servers[].tls.serverCertificate```キーを設定する。
+SSL証明書のファイルを指定する場合は、`.spec.servers[].tls.serverCertificate`キーを設定する。
 
 Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
 
@@ -1160,7 +1145,7 @@ spec:
 
 GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書のファイルを設定する。
 
-SSL証明書を保持するSecretを指定する場合は、```.spec.servers[].tls.credentialName```キーを設定する。
+SSL証明書を保持するSecretを指定する場合は、`.spec.servers[].tls.credentialName`キーを設定する。
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
@@ -1186,7 +1171,7 @@ spec:
 
 #### ▼ mtls
 
-```istio-proxy```コンテナ間の通信で相互TLSを有効化するか否かを設定する。
+`istio-proxy`コンテナ間の通信で相互TLSを有効化するか否かを設定する。
 
 Kubernetesのみで相互TLSをセットアップしようとすると大変であり、Istioを使うとより簡単にセットアップできる。
 
@@ -1196,12 +1181,11 @@ Kubernetesのみで相互TLSをセットアップしようとすると大変で�
 
 相互TLSのタイプを設定する。
 
-
-| 項目       | 説明                                         |
-|------------|--------------------------------------------|
-| UNSET      | 調査中...                                    |
-| DISABLE    | 相互TLSを使用しない。                             |
-| PERMISSIVE | 相互TLSの時、プロトコルはHTTPSとHTTPの両方を許可する。     |
+| 項目       | 説明                                                           |
+| ---------- | -------------------------------------------------------------- |
+| UNSET      | 調査中...                                                      |
+| DISABLE    | 相互TLSを使用しない。                                          |
+| PERMISSIVE | 相互TLSの時、プロトコルはHTTPSとHTTPの両方を許可する。         |
 | STRICT     | 相互TLSの時、プロトコルはHTTPSのみを許可し、HTTPを許可しない。 |
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
@@ -1236,7 +1220,6 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 コンフィグストレージに登録する宛先のドメイン名を設定する。
 
 宛先のドメインレジストラのドメインのみを許可しても良いが、ワイルドカードを使用して全てのドメインを許可してもよい。
-
 
 **＊実装例＊**
 
@@ -1306,7 +1289,7 @@ spec:
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
-#### ▼ ```*``` (アスタリスク) 
+#### ▼ `*` (アスタリスク)
 
 全てのNamespaceでのみ使用できるようにする。
 
@@ -1323,7 +1306,7 @@ spec:
     - "*"
 ```
 
-#### ▼ ```.``` (ドット) 
+#### ▼ `.` (ドット)
 
 VirtualServiceと同じNamespaceで、そのVirtualServiceを指定できるようにする。
 
@@ -1348,10 +1331,9 @@ spec:
 
 #### ▼ hostsとは
 
-Gatewayから受信するインバウンド通信の```Host```ヘッダー名を設定する。
+Gatewayから受信するインバウンド通信の`Host`ヘッダー名を設定する。
 
 ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカードを使用して全てのドメインを許可してもよい。
-
 
 **＊実装例＊**
 
@@ -1376,7 +1358,7 @@ spec:
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
-#### ▼ ```<Namespace名>/<Gateway名>```
+#### ▼ `<Namespace名>/<Gateway名>`
 
 Gateway名とこれのNamespaceを設定する。
 
@@ -1395,14 +1377,13 @@ spec:
     - foo-namespace/foo-gateway
 ```
 
-#### ▼ ```<Gateway名>```
+#### ▼ `<Gateway名>`
 
 Gateway名を設定する。
 
 VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
 
 **＊実装例＊**
-
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1440,7 +1421,7 @@ spec:
 
 HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
-ルーティング先のServiceを厳格に指定するために、Serviceの```.spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+ルーティング先のServiceを厳格に指定するために、Serviceの`.spec.ports.appProtocol`キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
 > ↪️ 参考：
 >
@@ -1450,7 +1431,6 @@ HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信�
 #### ▼ fault
 
 発生させるフォールトインジェクションを設定する。
-
 
 **＊実装例＊**
 
@@ -1463,14 +1443,13 @@ metadata:
 spec:
   http:
     - fault:
-      - abort:
-          httpStatus: 503 # 発生させるエラー
-          percentage:
-            value: 100 # エラーを発生させる確率
+        - abort:
+            httpStatus: 503 # 発生させるエラー
+            percentage:
+              value: 100 # エラーを発生させる確率
 ```
 
 > ↪️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=19
-
 
 #### ▼ match
 
@@ -1478,7 +1457,7 @@ spec:
 
 **＊実装例＊**
 
-受信したインバウンド通信のうち、```x-foo```ヘッダーに```bar```が割り当てられたものだけにルールを適用する。
+受信したインバウンド通信のうち、`x-foo`ヘッダーに`bar`が割り当てられたものだけにルールを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1489,12 +1468,12 @@ metadata:
 spec:
   http:
     - match:
-      - headers:
-          x-foo:
-            exact: bar
+        - headers:
+            x-foo:
+              exact: bar
 ```
 
-受信したインバウンド通信のうち、URLの接頭辞が```/foo```のものだけにルールを適用する。
+受信したインバウンド通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
 
 > ↪️ 参考：https://istiobyexample.dev/path-based-routing/
 
@@ -1507,14 +1486,14 @@ metadata:
 spec:
   http:
     - match:
-      - headers:
-          uri:
-            prefix: /foo
+        - headers:
+            uri:
+              prefix: /foo
 ```
 
 #### ▼ retries.attempt
 
-```istio-proxy```コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。
+`istio-proxy`コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。
 
 **＊実装例＊**
 
@@ -1532,7 +1511,7 @@ spec:
 
 #### ▼ retries.retryOn
 
-再試行する失敗理由を設定する。```istio-proxy```コンテナは、レスポンスの```x-envoy-retry-on```ヘッダーに割り当てるため、これの値を設定する。
+再試行する失敗理由を設定する。`istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
 
 > ↪️ 参考：
 >
@@ -1550,7 +1529,7 @@ metadata:
 spec:
   http:
     - retries:
-        retryOn: 'connect-failure,refused-stream,unavailable,503'
+        retryOn: "connect-failure,refused-stream,unavailable,503"
 ```
 
 #### ▼ route.destination.host
@@ -1689,7 +1668,7 @@ spec:
 
 #### ▼ route.destination.host
 
-```.spec.http```キーと同じ機能である。
+`.spec.http`キーと同じ機能である。
 
 **＊実装例＊**
 
@@ -1708,7 +1687,7 @@ spec:
 
 #### ▼ route.destination.port
 
-```.spec.http```キーと同じ機能である。
+`.spec.http`キーと同じ機能である。
 
 **＊実装例＊**
 
@@ -1729,7 +1708,7 @@ spec:
 
 #### ▼ route.destination.subset
 
-```.spec.http```キーと同じ機能である。
+`.spec.http`キーと同じ機能である。
 
 **＊実装例＊**
 

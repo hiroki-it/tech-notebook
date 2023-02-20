@@ -9,8 +9,6 @@ description: ネットワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -20,8 +18,6 @@ description: ネットワークの知見を記録しています。
 ネットワークには、『インターネット』『WAN』『LAN』がある。
 
 自宅内LAN、学内LAN、企業内LAN、企業WANなど、さまざまなネットワークがあり、インターネットは、それぞれのネットワークを互いに接続しているネットワークである。
-
-
 
 ![network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network.png)
 
@@ -41,7 +37,6 @@ LAN内に設置されたNATルーターが、WAN内のグローバルIPアドレ
 
 > ↪️ 参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
 
-
 <br>
 
 ### LANの構成
@@ -54,12 +49,10 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 ![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internal_dmz_external.png)
 
-
 > ↪️ 参考：
 >
 > - https://www.techtarget.com/searchsecurity/definition/DMZ
 > - https://www.ntt.com/business/services/network/internet-connect/ocn-business/bocn/knowledge/archive_09.html
-
 
 #### ▼ パブリックサブネット内のサーバー
 
@@ -67,15 +60,11 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 そのため、『DNSサーバー』『プロキシサーバー』『webサーバー』『メールサーバー』は、パブリックサブネットに設置すると良い。
 
-
-
 #### ▼ プライベートサブネット内のサーバー
 
 外部から直接的にリクエストを受けない。
 
 そのため、『dbサーバー』は、プライベートサブネットに設置すると良い。
-
-
 
 <br>
 
@@ -93,24 +82,21 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 ![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
 
-
-| サーバー名        | 処理                                                                             |
-|---------------|--------------------------------------------------------------------------------|
-| フォワードプロキシサーバー | 特定のクライアントのアウトバウンド通信を、不特定多数のサーバーに代理でルーティングする。                          |
-| リバースプロキシサーバー  | 不特定のクライアントからのインバウンド通信を、特定のサーバーに代理でルーティングする。また、ロードバランサーのように負荷分散もできる。 |
+| サーバー名                 | 処理                                                                                                                                   |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| フォワードプロキシサーバー | 特定のクライアントのアウトバウンド通信を、不特定多数のサーバーに代理でルーティングする。                                               |
+| リバースプロキシサーバー   | 不特定のクライアントからのインバウンド通信を、特定のサーバーに代理でルーティングする。また、ロードバランサーのように負荷分散もできる。 |
 
 > ↪️ 参考：https://qiita.com/att55/items/162950627dc593c72f23
-
 
 #### ▼ キャッシュ
 
 ![プロキシサーバーのキャッシュ能力](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロキシサーバーのキャッシュ能力.png)
 
-
-| サーバー名        | 処理                                      |
-|---------------|-----------------------------------------|
+| サーバー名                 | 処理                                                                     |
+| -------------------------- | ------------------------------------------------------------------------ |
 | フォワードプロキシサーバー | クライアント側にて、代理ルーティングのレスポンスのキャッシュを作成する。 |
-| リバースプロキシサーバー  | サーバー側にて、代理ルーティングのレスポンスのキャッシュを作成する。   |
+| リバースプロキシサーバー   | サーバー側にて、代理ルーティングのレスポンスのキャッシュを作成する。     |
 
 > ↪️ 参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.htm
 
@@ -118,32 +104,27 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 ## 02-04. ロードバランサー
 
-### ```L7```ロードバランサー
+### `L7`ロードバランサー
 
-```L7```のプロトコルの通信をロードバランシングする。
+`L7`のプロトコルの通信をロードバランシングする。
 
-
-
-- ```L7```のプロトコル
+- `L7`のプロトコル
 - ポート番号
-- HTTPリクエスト (パス、```Host```ヘッダー) 
+- HTTPリクエスト (パス、`Host`ヘッダー)
 
 > ↪️ 参考：https://www.infraexpert.com/study/tcpip8.html
 
 <br>
 
-### ```L4```ロードバランサー
+### `L4`ロードバランサー
 
-```L4```のプロトコルの通信をロードバランシングする。
+`L4`のプロトコルの通信をロードバランシングする。
 
-
-
-- ```L4```のプロトコル
+- `L4`のプロトコル
 - IPアドレス
 - ポート番号
 
 > ↪️ 参考：https://www.infraexpert.com/study/tcpip8.html
-
 
 <br>
 
@@ -153,15 +134,11 @@ AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 フォワードプロキシサーバーはプロバイダの会社に、リバースプロキシサーバーはリクエスト先の社内ネットワークに設置されている。
 
-
-
 ![proxy-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/proxy-server.png)
 
 #### ▼ クラウド上の場合
 
 クラウドの場合も、仮想環境が作成されるのみで、設置場所は同じである。
-
-
 
 <br>
 
@@ -198,8 +175,6 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 
 他のLANから閉じられた専用のアクセス回線であり、特定のLAN間でのみデータ通信を行う。
 
-
-
 > ↪️ 参考：http://makiyamashinji.web.fc2.com/emprus/design/wan.html
 
 #### ▼ 回線交換方式
@@ -212,12 +187,10 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 
 ![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_circuit-switching-system.png)
 
-
 > ↪️ 参考：
 >
 > - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 > - https://www.infraexpert.com/study/wan3.html
-
 
 #### ▼ パケット交換方式
 
@@ -229,22 +202,18 @@ WANを介したプライベートな通信で、パケット化されたデー�
 
 ![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_packet-switching-system.png)
 
-
 > ↪️ 参考：
 >
 > - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 > - https://www.infraexpert.com/study/wan3.html
 
-
 <br>
 
 ### WANの実現方法
 
-WANの実現は、```1980```年代のアナログ専用線から始まった。
+WANの実現は、`1980`年代のアナログ専用線から始まった。
 
 現在は、広域イーサネットやVPN (仮想プライベートネットワーク) を使用して、WANを実現するようになった。
-
-
 
 ![network_wan_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_wan_history.png)
 
@@ -260,7 +229,6 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 一方で金銭的負担が小さく、帯域幅を考慮しなくてもよい。
 
-
 <br>
 
 ## 05. 通信の方向/位置
@@ -272,8 +240,6 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 サーバーを中心とした方向で通信を見た時、サーバーに流入する方向をインバウンドという。
 
 反対に、サーバーから流出する方向をアウトバウンドという。
-
-
 
 > ↪️ 参考：
 >
@@ -290,8 +256,6 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 反対に、通信が受信される後半の位置を相対的にダウンストリームという。
 
-
-
 > ↪️ 参考：
 >
 > - https://www.amazon.co.jp/dp/B0043D2EKO/
@@ -305,8 +269,6 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 リクエストを送信してから、サーバーが処理を実行し、レスポンスが返信されるまでに要する時間のこと。
 
-
-
 <br>
 
 ### レイテンシー
@@ -315,42 +277,33 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 サーバーの処理時間は含まない。
 
-
-
 <br>
 
-### Connection Time (接続時間) 
+### Connection Time (接続時間)
 
 リクエストを送信する前に、サーバーとのTCP接続の確立に要する時間のこと。
 
 補足として、リクエストとレスポンスの送受信の前後に行われるTCP接続の確立を『スリーウェイハンドシェイク』という。
 
-
-
 <br>
 
-
-### Bandwidth (帯域幅) 
+### Bandwidth (帯域幅)
 
 一度に送受信できるデータの最大サイズのこと。
 
 インターネットやWANの帯域幅が狭いと、ダウンロード (例：インストール、コンテナイメージのプル) やアップロード (例：POST送信、コンテナイメージのプッシュ) に時間がかかる。
 
-
-
 <br>
 
-### スループット (伝送速度) 
+### スループット (伝送速度)
 
 #### ▼ スループットとは
 
 単位時間当たりの送信できる最大のデータサイズのこと。
 
-実際には、スループットは、『プロバイダ』、『光回線』、『自宅の有線/無線』の```3```個に影響されるため、スループットで期待されるデータサイズを満たせないことが多い。
+実際には、スループットは、『プロバイダ』、『光回線』、『自宅の有線/無線』の`3`個に影響されるため、スループットで期待されるデータサイズを満たせないことが多い。
 
 他からの影響を受けた実際のスループットを『実効スループット』という。
-
-
 
 ![伝送速度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/伝送速度.png)
 
@@ -359,8 +312,6 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 サーバーからクライアントPCにパケットを送信すること。
 
 相互の送信は、通信 (パケット送受信) と呼ぶ。
-
-
 
 #### ▼ 伝送秒数の求め方
 
@@ -375,16 +326,12 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィック.png)
 
-
 > ↪️ 参考：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
-
 
 総務省のデータで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。
 
 ![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィックのグラフ.png)
 
-
 > ↪️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
-
 
 <br>

@@ -9,8 +9,6 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,7 +21,6 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 Node内でfalcoをコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
-
 ```bash
 $ helm repo add <チャートリポジトリ名> https://falcosecurity.github.io/charts
 
@@ -35,7 +32,6 @@ $ helm install <リリース名> <リポジトリ名>/falco -n falco --version <
 ```
 
 > ↪️ 参考：https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
-
 
 <br>
 
@@ -51,8 +47,6 @@ $ helm install <リリース名> <リポジトリ名>/falco -n falco --version <
 
 切り分けて定義したFalcoの設定ファイルを設定する。
 
-
-
 ```yaml
 rules_file:
   # デフォルトのルールを定義したファイル
@@ -61,8 +55,6 @@ rules_file:
   - /etc/falco/falco_rules.local.yaml
   - /etc/falco/rules.d
 ```
-
-
 
 > ↪️ 参考：
 >
@@ -75,14 +67,12 @@ rules_file:
 
 Falcoの拡張プラグインを設定する。
 
-
-
 ```yaml
 plugins:
   - name: k8saudit
     library_path: libk8saudit.so
     init_config: null
-    open_params: 'http://:9765/k8s-audit'
+    open_params: "http://:9765/k8s-audit"
   - name: cloudtrail
     library_path: libcloudtrail.so
   - name: json
@@ -346,7 +336,7 @@ program_output:
 ```yaml
 http_output:
   enabled: false
-  url: 'http://some.url'
+  url: "http://some.url"
   user_agent: falcosecurity/falco
 ```
 
@@ -359,7 +349,7 @@ http_output:
 ```yaml
 grpc:
   enabled: false
-  bind_address: 'unix:///run/falco/falco.sock'
+  bind_address: "unix:///run/falco/falco.sock"
   threadiness: 0
 ```
 

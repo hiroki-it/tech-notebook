@@ -9,8 +9,6 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,9 +21,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 クレデンシャル情報を設定する。
 
-OSによって、```credentials```ファイルが配置される場所が異なる。
-
-
+OSによって、`credentials`ファイルが配置される場所が異なる。
 
 ```bash
 $ aws configure
@@ -34,8 +30,6 @@ $ aws configure
 #### ▼ --profile
 
 プロファイルを新しく作成する。
-
-
 
 > ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
 
@@ -56,8 +50,6 @@ Default output format [None]: <アウトプット形式>
 
 現在設定されているクレデンシャル情報を取得する。
 
-
-
 ```bash
 $ aws configure list
 ```
@@ -70,15 +62,11 @@ $ aws configure list
 
 クレデンシャル情報の特定の項目を設定する。
 
-
-
 ```bash
 $ aws configure set <クレデンシャル情報の項目>
 ```
 
 アクセスキーIDを設定する。
-
-
 
 ```bash
 $ aws configure set aws_access_key_id "<アクセスキーID>"
@@ -86,17 +74,13 @@ $ aws configure set aws_access_key_id "<アクセスキーID>"
 
 シークレットアクセスキーを設定する。
 
-
-
 ```bash
 $ aws configure set aws_secret_access_key "<シークレットアクセスキー>"
 ```
 
 リージョンを設定する。
 
-『```aws_region```』ではなく『```aws_default_region```』であることに注意する。
-
-
+『`aws_region`』ではなく『`aws_default_region`』であることに注意する。
 
 ```bash
 $ aws configure set aws_default_region "<リージョン名>"
@@ -106,47 +90,39 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 ## 01-02. 設定ファイル、環境変数
 
-### ```~/.aws/confidentials```ファイル
+### `~/.aws/confidentials`ファイル
 
-#### ▼ ```~/.aws/confidentials```ファイルとは
+#### ▼ `~/.aws/confidentials`ファイルとは
 
 クレデンシャル情報を設定する。
 
-LinuxやUNIXの場合は、```$HOME/.aws/<credentialsファイル名>```に配置される。
+LinuxやUNIXの場合は、`$HOME/.aws/<credentialsファイル名>`に配置される。
 
-また、Windowsの場合は、```%USERPROFILE%\.aws\<credentialsファイル名>```に配置される。
+また、Windowsの場合は、`%USERPROFILE%\.aws\<credentialsファイル名>`に配置される。
 
 #### ▼ aws_access_key_id
 
 AWS CLIを実行するアカウントのアクセスキーIDを設定する。
 
-```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
-
-
+`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨されている。
 
 ```ini
 [default]
 aws_access_key_id = *****
 ```
 
-
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 
 #### ▼ aws_secret_access_key
 
 AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。
 
-```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
-
-
+`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨されている。
 
 ```ini
 [default]
 aws_secret_access_key = *****
 ```
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
@@ -154,35 +130,27 @@ aws_secret_access_key = *****
 
 認証で補助的に使用するセッショントークン値を設定する。
 
-```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
-
+`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨されている。
 
 ```ini
 [default]
 aws_session_token = *****
 ```
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 
 <br>
 
-### ```~/.aws/config```ファイル
+### `~/.aws/config`ファイル
 
 #### ▼ output
 
 AWS CLIの返却値のデータ形式を設定する。
 
-
-
 ```ini
 [default]
 output = json
 ```
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
@@ -190,29 +158,21 @@ output = json
 
 AWS CLIで操作するAWSリソースのリージョンを設定する。
 
-
 ```ini
 [default]
 region = ap-northeast-1
 ```
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
-
 
 #### ▼ role_arn
 
 AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する。
 
-
-
-
 ```ini
 [profile foo]
 role_arn = arn:aws:iam::<アカウントID>:role/foo-role
 ```
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
@@ -220,14 +180,10 @@ role_arn = arn:aws:iam::<アカウントID>:role/foo-role
 
 IAMロールの委譲後のIAMユーザーの一時的な名前を設定する。
 
-
-
 ```ini
 [profile foo]
 role_session_name = hiroki.hasegawa
 ```
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
@@ -235,14 +191,10 @@ role_session_name = hiroki.hasegawa
 
 IAMロールの委譲先のIAMユーザーのプロファイル名を設定する。
 
-
-
 ```ini
 [profile foo]
 source_profile = default
 ```
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
@@ -254,8 +206,6 @@ source_profile = default
 
 現在のターミナルで使用するアクセスキーIDを設定する。
 
-
-
 ```bash
 $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 ```
@@ -264,24 +214,19 @@ $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 
 現在のターミナルで使用するプロファイルを設定する。
 
-```AWS_PROFILE```変数よりも優先される。
-
+`AWS_PROFILE`変数よりも優先される。
 
 ```bash
 $ export AWS_DEFAULT_PROFILE=default
 ```
 
-
 > ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
-
 
 #### ▼ AWS_DEFAULT_REGION
 
 現在のターミナルで使用するリージョンを設定する。
 
-『```AWS_REGION```』ではなく『```AWS_DEFAULT_REGION```』であることに注意する。
-
-
+『`AWS_REGION`』ではなく『`AWS_DEFAULT_REGION`』であることに注意する。
 
 ```bash
 $ export AWS_DEFAULT_REGION=ap-northeast-1
@@ -291,19 +236,15 @@ $ export AWS_DEFAULT_REGION=ap-northeast-1
 
 現在のターミナルで使用するプロファイルを設定する。
 
-
-
 ```bash
 $ export AWS_PROFILE=foo-profile
 ```
-
 
 > ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 #### ▼ AWS_SECRET_ACCESS_KEY
 
 現在のターミナルで使用するシークレットアクセスキーを設定する。
-
 
 ```bash
 $ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
@@ -314,8 +255,6 @@ $ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 現在のターミナルで使用するセッショントークンを設定する。
 
 AWS STSで発行された一時的なクレデンシャル情報に含まれ、このクレデンシャル情報を使用する時に、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
-
-
 
 ```bash
 $ export AWS_SESSION_TOKEN=<セッショントークン>
@@ -331,15 +270,11 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 返却されるデータの形式を設定できる。
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
 
 #### ▼ json
 
-```.json```形式で取得する。
-
-
+`.json`形式で取得する。
 
 ```bash
 $ aws iam list-users --output json > data.json
@@ -347,9 +282,7 @@ $ aws iam list-users --output json > data.json
 
 #### ▼ yaml
 
-```.yaml```形式で取得する。
-
-
+`.yaml`形式で取得する。
 
 ```bash
 $ aws iam list-users --output yaml > data.yaml
@@ -360,8 +293,6 @@ $ aws iam list-users --output yaml > data.yaml
 タブ切り形式で取得する。
 
 表計算ソフトで扱いやすい。
-
-
 
 ```bash
 $ aws iam list-users --output text > data.tsv
@@ -375,15 +306,11 @@ $ aws iam list-users --output text > data.tsv
 
 返却されるデータのページングを設定できる。
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
 
 #### ▼ --max-items
 
 取得する項目の最大数を設定する。
-
-
 
 ```bash
 $ aws iam list-users --max-items 100
@@ -393,8 +320,6 @@ $ aws iam list-users --max-items 100
 
 ページングを無効化する。
 
-
-
 ```bash
 $ aws iam list-users --no-paginate
 ```
@@ -402,8 +327,6 @@ $ aws iam list-users --no-paginate
 #### ▼ --page-size
 
 ページ当たりで取得する項目数を設定する。
-
-
 
 ```bash
 $ aws iam list-users --page-size 10
@@ -419,9 +342,7 @@ AWSリソースのAPI側でフィルタリングし、実際に取得するデ�
 
 AWSリソースごとに専用のオプションがある。
 
-代わりとして、```jq```コマンドの```select```関数を使用しても良い。
-
-
+代わりとして、`jq`コマンドの`select`関数を使用しても良い。
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
@@ -454,12 +375,9 @@ ACM、など
 
 コマンド実行側でフィルタリングし、取得するキーや値を制御できる。
 
-代わりとして、```jq```コマンドのパスを使用しても良い。
-
-
+代わりとして、`jq`コマンドのパスを使用しても良い。
 
 #### ▼ --query
-
 
 ```bash
 # 全てのキーと値を取得する。
@@ -476,13 +394,12 @@ $ aws ec2 describe-instances --query "Reservations[0]"
 $ aws ec2 describe-instances \
     --filters "Name=tag:<タグ名>,Values=<タグ値>" \
     --query "Reservations[*].Instances[*].InstanceId"
-    
+
 # 特定のタグ値のデータのみを取得し、そのデータのセキュリティグループのIDのみを取得する。
 $ aws ec2 describe-instances \
     --filters "Name=tag:<タグ名>,Values=<タグ値>" \
     --query "SecurityGroups[*].GroupId"
 ```
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
 
@@ -496,9 +413,7 @@ $ aws ec2 describe-instances \
 
 リージョンを指定して、コマンドを実行する。
 
-```credentials```ファイルや環境変数を変更する手間が省ける。
-
-
+`credentials`ファイルや環境変数を変更する手間が省ける。
 
 <br>
 
@@ -528,10 +443,9 @@ $ aws cloudwatch set-alarm-state \
 
 **＊例＊**
 
-全てのロググループに対して、一日当たりの収集サイズを```start-time```から```end-time```の間で取得する。
+全てのロググループに対して、一日当たりの収集サイズを`start-time`から`end-time`の間で取得する。
 
-```--dimensions```オプションを使用して、特定のディメンション (ロググループ) に対して集計を実行もできる (ただし、やってみたけどうまくいかず) 。
-
+`--dimensions`オプションを使用して、特定のディメンション (ロググループ) に対して集計を実行もできる (ただし、やってみたけどうまくいかず) 。
 
 ```bash
 $ aws cloudwatch get-metric-statistics \
@@ -546,7 +460,6 @@ $ aws cloudwatch get-metric-statistics \
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
-
 <br>
 
 ### ECR
@@ -554,8 +467,6 @@ $ aws cloudwatch get-metric-statistics \
 #### ▼ get-login-password
 
 一時的に有効なパスワード取得する。
-
-
 
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1
@@ -568,8 +479,6 @@ $ aws ecr get-login-password --region ap-northeast-1
 #### ▼ update-user
 
 ユーザー名は、コンソール画面から変更できず、コマンドで変更する必要がある。
-
-
 
 ```bash
 $ aws iam update-user \
@@ -585,20 +494,14 @@ $ aws iam update-user \
 
 AWSリソースがリソースグループで管理されている場合、特定のタグを持つAWSリソースを取得する。
 
-
-
 ```bash
 $ aws resourcegroupstaggingapi get-resources \
     --tag-filters Key=<タグ名>,Values=<タグ値>
 ```
 
-
-
 > ↪️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
 AWSリソースの種類 (ec2、alb、など) を指定して、特定のAWSリソースのみを取得することもできる。
-
-
 
 ```bash
 $ aws resourcegroupstaggingapi get-resources \
@@ -616,8 +519,6 @@ $ aws resourcegroupstaggingapi get-resources \
 
 指定したバケット内のファイル名を取得する。
 
-
-
 ```bash
 $ aws s3 ls s3://<バケット名>
 ```
@@ -625,8 +526,6 @@ $ aws s3 ls s3://<バケット名>
 **＊例＊**
 
 指定したバケット内のファイルサイズを合計する。
-
-
 
 ```bash
 $ aws s3 ls s3://<バケット名> \
@@ -641,8 +540,6 @@ $ aws s3 ls s3://<バケット名> \
 
 指定したバケット内のファイルを他のバケットにコピーする。
 
-
-
 ```bash
 $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://<コピー先S3バケット名>/<ディレクトリ名> \
     --acl bucket-owner-full-control
@@ -650,34 +547,26 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 
 コピーされる側のバケットのバケットポリシーでアクセスを許可すれば、異なるアカウント間でもコピーできる。
 
-
-
 ```yaml
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "<IAMユーザーのARN>"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::foo-bucket/*",
-            "Condition": {
-                "StringEquals": {
-                    "s3:x-amz-acl": "bucket-owner-full-control"
-                }
-            }
-        },
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "<IAMユーザーのARN>"
-            },
-            "Action": "s3:ListBucket",
-            "Resource": "arn:aws:s3:::bar-bucket"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Principal": { "AWS": "<IAMユーザーのARN>" },
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::foo-bucket/*",
+        "Condition":
+          { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
+      },
+      {
+        "Effect": "Allow",
+        "Principal": { "AWS": "<IAMユーザーのARN>" },
+        "Action": "s3:ListBucket",
+        "Resource": "arn:aws:s3:::bar-bucket",
+      },
+    ],
 }
 ```
 
@@ -689,8 +578,6 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 
 キューのURLを取得する。
 
-
-
 ```bash
 $ aws sqs get-queue-url --queue-name <キュー名>
 ```
@@ -700,8 +587,6 @@ $ aws sqs get-queue-url --queue-name <キュー名>
 #### ▼ receive-message
 
 キューに受信リクエストを送信し、メッセージを受信する。
-
-
 
 ```bash
 $ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
@@ -713,8 +598,6 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL}
 
 また、メッセージの内容をファイルに書き出す。
 
-
-
 ```bash
 $ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
 
@@ -723,14 +606,15 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 ```yaml
 {
-    "Messages": [
-        {
-            "Body": "<メッセージの内容>", 
-            "ReceiptHandle": "AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=", 
-            "MD5OfBody": "6699d5711c044a109a6aff9fc193aada", 
-            "MessageId": "*****"
-        }
-    ]
+  "Messages":
+    [
+      {
+        "Body": "<メッセージの内容>",
+        "ReceiptHandle": "AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=",
+        "MD5OfBody": "6699d5711c044a109a6aff9fc193aada",
+        "MessageId": "*****",
+      },
+    ],
 }
 ```
 
@@ -742,9 +626,6 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 特定のSecretに格納されている文字列を取得する。
 
-
-
-
 ```bash
 $ aws secretsmanager get-secret-value \
     --secret-id=<シークレット名> \
@@ -754,7 +635,6 @@ $ aws secretsmanager get-secret-value \
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
 
-
 <br>
 
 ### STS
@@ -763,9 +643,7 @@ $ aws secretsmanager get-secret-value \
 
 一時的な認証情報を取得する。
 
-```~/.aws/cli/cache```ディレクトリ配下に認証情報のキャッシュが作成される。
-
-
+`~/.aws/cli/cache`ディレクトリ配下に認証情報のキャッシュが作成される。
 
 ```bash
 $ aws sts get-caller-identity --profile foo
@@ -773,7 +651,7 @@ $ aws sts get-caller-identity --profile foo
 
 <br>
 
-### Systems Manager (旧SSM) 
+### Systems Manager (旧SSM)
 
 #### ▼ get-parameters-by-path
 
@@ -787,12 +665,12 @@ $ aws ssm get-parameters-by-path --path "/"
     "Parameters": [
         {
             "Name": "FOO",
-            
+
             ...
         },
         {
             "Name": "BAR",
-            
+
             ...
         },
    ]
@@ -807,12 +685,12 @@ $ aws ssm get-parameters-by-path --path "/FOO"
     "Parameters": [
         {
             "Name": "/FOO",
-            
+
             ...
         },
         {
             "Name": "/FOO/BAR",
-            
+
             ...
         },
    ]
@@ -820,7 +698,6 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 ```
 
 > ↪️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
-
 
 <br>
 
@@ -835,8 +712,6 @@ AWSにSSOでログインする。
 認証フェーズを外部 (Google Apps、AzureAD、KeyCloak、など) に委譲し、AWSでは認可フェーズのみを実施する。
 
 追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
-
-
 
 > ↪️ 参考：https://github.com/Versent/saml2aws
 
@@ -868,31 +743,22 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 特定の送信元IPアドレスを制限するポリシーをIAMユーザーに紐付けることにより、そのIAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。
 
-
-
 **＊実装例＊**
 
 ```yaml
 {
   "Version": "2012-10-17",
-  "Statement": {
-    "Effect": "Deny",
-    "Action": "*",
-    "Resource": "*",
-    "Condition": {
-      "NotIpAddress": {
-        "aws:SourceIp": [
-          "*.*.*.*/32"
-        ]
-      }
-    }
-  }
+  "Statement":
+    {
+      "Effect": "Deny",
+      "Action": "*",
+      "Resource": "*",
+      "Condition": { "NotIpAddress": { "aws:SourceIp": ["*.*.*.*/32"] } },
+    },
 }
 ```
 
-ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『```with an explicit deny```』という文言がつく。
-
-
+ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『`with an explicit deny`』という文言がつく。
 
 ```
 Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <IAMユーザー名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny

@@ -3,16 +3,13 @@ title: 【IT技術の知見】CloudWatch＠Cで始まるAWSリソース
 description: CloudWatch＠Cで始まるAWSリソースの知見を記録しています。
 ---
 
-# CloudWatch＠```C```で始まるAWSリソース
+# CloudWatch＠`C`で始まるAWSリソース
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
-
 
 <br>
 
@@ -21,9 +18,6 @@ description: CloudWatch＠Cで始まるAWSリソースの知見を記録して�
 ### CloudWatchメトリクスとは
 
 AWSリソースで発生したメトリクスのデータポイントを収集する。
-
-
-
 
 <br>
 
@@ -35,8 +29,6 @@ AWSリソースで発生したメトリクスのデータポイントを収集�
 
 CloudWatchは、データポイントからメトリクスを作成しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。
 
-
-
 > ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
@@ -44,18 +36,15 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 
 #### ▼ 集約の種類
 
-
-
-| 集約名   | 説明                                                                                                                                                                                                                                                                                                                                                                            |
-|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ディメンション  | インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZ、など) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、EC2のストレージで、```/var/lib/foo```パーティションのディスク使用率のデータポイントが```30```%だとする。EC2のインスタンスIDをディメンションにした場合に、```/var/lib/foo```以外のパーティションが```30```%より低いため、インスタンスIDのディメンション全体としては```10%```ほどのディスク使用率になる) 。CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。 |
-| 名前空間 | AWSリソースをグループとした集約のこと (例：EC2、RDS、ALB、など) 。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスを収集すると、名前空間はCWAgentになる。                                                                                                                                                                                                                                                               |
+| 集約名         | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ディメンション | インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZ、など) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、EC2のストレージで、`/var/lib/foo`パーティションのディスク使用率のデータポイントが`30`%だとする。EC2のインスタンスIDをディメンションにした場合に、`/var/lib/foo`以外のパーティションが`30`%より低いため、インスタンスIDのディメンション全体としては`10%`ほどのディスク使用率になる) 。CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。 |
+| 名前空間       | AWSリソースをグループとした集約のこと (例：EC2、RDS、ALB、など) 。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスを収集すると、名前空間はCWAgentになる。                                                                                                                                                                                                                                                                                                                                                                                                |
 
 > ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
-
 
 #### ▼ 集約の確認方法
 
@@ -63,9 +52,7 @@ CloudWatchメトリクス上では、各集約を以下の様に確認できる�
 
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudwatch_namespace_metric_dimension.png)
 
-
 > ↪️ 参考：https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/
-
 
 <br>
 
@@ -75,19 +62,15 @@ CloudWatchメトリクス上では、各集約を以下の様に確認できる�
 
 異なるメトリクスを再集計し、パフォーマンスに関するメトリクスとして提供する。
 
-
-
 #### ▼ パフォーマンスインサイト
 
 RDS (Aurora、非Aurora) のパフォーマンスに関するメトリクスのデータポイントを収集する。
 
 特定の集約 (例：個別のクエリ) で監視できるようになる。
 
-パラメーターグループの```performance_schema```を有効化する必要がある。
+パラメーターグループの`performance_schema`を有効化する必要がある。
 
 対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：
 >
@@ -104,13 +87,9 @@ RDS (Aurora、非Aurora) のパフォーマンスに関するメトリクスの�
 
 ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
 
-
-
 #### ▼ Lambdaインサイト
 
 Lambdaのパフォーマンスに関するメトリクスのデータポイントを収集する。
-
-
 
 <br>
 
@@ -122,19 +101,17 @@ Lambdaのパフォーマンスに関するメトリクスのデータポイン�
 
 AWSリソースで作成されたログを収集できる。
 
-
-
 <br>
 
 ### セットアップ
 
 #### ▼ コンソール画面
 
-| 設定項目       | 説明                                                                                  | 補足                                                                       |
-|----------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| ロググループ         | ログストリームをグループ化して収集するか否かを設定する。                                                    | 基本的に、ログファイルはグループ化せずに、```1```個のロググループには```1```個のログストリームしか含まれないようにする。 |
-| メトリクスフィルター     | フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集計し、メトリクスとして使用できる。 |                                                                            |
-| サブスクリプションフィルター |                                                                                       |                                                                            |
+| 設定項目                     | 説明                                                                                                                                               | 補足                                                                                                             |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| ロググループ                 | ログストリームをグループ化して収集するか否かを設定する。                                                                                           | 基本的に、ログファイルはグループ化せずに、`1`個のロググループには`1`個のログストリームしか含まれないようにする。 |
+| メトリクスフィルター         | フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集計し、メトリクスとして使用できる。 |                                                                                                                  |
+| サブスクリプションフィルター |                                                                                                                                                    |                                                                                                                  |
 
 <br>
 
@@ -146,8 +123,6 @@ AWSリソースで作成されたログを収集できる。
 
 大文字と小文字を区別するため、網羅的に設定する必要がある。
 
-
-
 > ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html
@@ -157,7 +132,7 @@ AWSリソースで作成されたログを収集できる。
 
 **＊例＊**
 
-OR条件で大文字小文字を考慮し、『```<ログレベル>:```』が含まれるログを検出する。
+OR条件で大文字小文字を考慮し、『`<ログレベル>:`』が含まれるログを検出する。
 
 ここでコロンを含まているのは、ログに含まれるファイル名やメソッド名が誤って検知されないようするためである。
 
@@ -167,7 +142,7 @@ OR条件で大文字小文字を考慮し、『```<ログレベル>:```』が含
 
 **＊例＊**
 
-OR条件で大文字小文字を考慮し、『```<ログレベル> message```』が含まれるログを検出する。
+OR条件で大文字小文字を考慮し、『`<ログレベル> message`』が含まれるログを検出する。
 
 ```bash
 ?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
@@ -177,13 +152,11 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 **＊例＊**
 
-『```ERROR:```』が含まれ、かつ『```MethodNotAllowedHttpException```』が含まれないログを検知する。
+『`ERROR:`』が含まれ、かつ『`MethodNotAllowedHttpException`』が含まれないログを検知する。
 
 OR条件と除外条件を組み合わせようとすると、OR条件が認識されずに除外条件だけが適用されてしまう。
 
 そのため、ここではOR条件を使用していない。
-
-
 
 > ↪️ 参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
 
@@ -193,7 +166,7 @@ OR条件と除外条件を組み合わせようとすると、OR条件が認識�
 
 <br>
 
-### CloudWatchログエージェント (非推奨) 
+### CloudWatchログエージェント (非推奨)
 
 #### ▼ CloudWatchログエージェントとは
 
@@ -203,15 +176,11 @@ OR条件と除外条件を組み合わせようとすると、OR条件が認識�
 
 執筆時点 (2020/10/05) では非推奨で、cloudwatchエージェントへの設定の移行が推奨されている。
 
-
-
-#### ▼ ```/var/awslogs/etc/awslogs.conf```ファイル
+#### ▼ `/var/awslogs/etc/awslogs.conf`ファイル
 
 CloudWatchログエージェントを設定する。
 
 OS、ミドルウェア、アプリケーションに分類して設定すると良い。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
 
@@ -270,9 +239,7 @@ log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 
 #### ▼ コマンド
 
-設定後、```awslogs```コマンドでプロセスを起動する。
-
-
+設定後、`awslogs`コマンドでプロセスを起動する。
 
 **＊例＊**
 
@@ -296,21 +263,15 @@ $ service awslogs start
 
 クエリを使用してログを抽出する。
 
-
-
 #### ▼ クエリ例
 
 汎用的なクエリを示す。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
 
 **＊例＊**
 
 小文字と大文字を区別せずに、Errorを含むログを検索する。
-
-
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -323,8 +284,6 @@ fields @timestamp, @message, @logStream
 
 小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。
 
-
-
 ```sql
 fields @timestamp, @message, @logStream
 | filter @message like /(?i)(Warning|Error)/
@@ -333,7 +292,6 @@ fields @timestamp, @message, @logStream
 ```
 
 <br>
-
 
 ## 02-02. cloudwatchエージェント
 
@@ -347,11 +305,7 @@ fields @timestamp, @message, @logStream
 
 cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。
 
-
-
 プロセスは、デーモン化しておくと良い。
-
-
 
 ```bash
 $ systemctl list-unit-files --type=service | grep amazon-cloudwatch-agent
@@ -369,8 +323,6 @@ Oct 13 19:04:56 *** systemd[1]: Started Amazon CloudWatch Agent.
 Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json does not exist or cannot read. Skipping it.
 Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: I! Detecting run_as_user...
 ```
-
-
 
 > ↪️ 参考：
 >
@@ -397,46 +349,42 @@ $ yum install collectd -y
 
 #### ▼ ウィザードの場合
 
-ウィザードを使用して設定ファイル (```amazon-cloudwatch-agent.json```ファイル) をセットアップする場合、ウィザードは```amazon-cloudwatch-agent.json```ファイルを```/opt/aws/amazon-cloudwatch-agent/bin```ディレクトリ配下に自動的に作成する。
+ウィザードを使用して設定ファイル (`amazon-cloudwatch-agent.json`ファイル) をセットアップする場合、ウィザードは`amazon-cloudwatch-agent.json`ファイルを`/opt/aws/amazon-cloudwatch-agent/bin`ディレクトリ配下に自動的に作成する。
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
 
 #### ▼ 手動の場合
 
-手動で設定ファイル (```amazon-cloudwatch-agent.json```ファイル) をセットアップする場合、```amazon-cloudwatch-agent.json```ファイルを指定されたディレクトリに配置する必要がある。
+手動で設定ファイル (`amazon-cloudwatch-agent.json`ファイル) をセットアップする場合、`amazon-cloudwatch-agent.json`ファイルを指定されたディレクトリに配置する必要がある。
 
-
-| OS      | 配置先のパス                                           |
-|---------|-----------------------------------------------------|
-| Linux   | ```/opt/aws/amazon-cloudwatch-agent/etc```          |
-| Windows | ```$Env:ProgramData\Amazon\AmazonCloudWatchAgent``` |
+| OS      | 配置先のパス                                    |
+| ------- | ----------------------------------------------- |
+| Linux   | `/opt/aws/amazon-cloudwatch-agent/etc`          |
+| Windows | `$Env:ProgramData\Amazon\AmazonCloudWatchAgent` |
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
 
-
 <br>
 
-### ```amazon-cloudwatch-agent.json```ファイル
+### `amazon-cloudwatch-agent.json`ファイル
 
-#### ▼ ```amazon-cloudwatch-agent.json```ファイルとは
+#### ▼ `amazon-cloudwatch-agent.json`ファイルとは
 
-cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる。全てのセクションを設定する必要はなく、```logs```セクションまたは```metrics```セクションのいずれかのみを設定でもよい (例：cloudwatchエージェントを使用してCloudWatchにログファイルを送信するのみであれば、```log```セッションのみ) 。
+cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、`amazon-cloudwatch-agent-ctl`コマンドで設定ファイルを読み込ませる。全てのセクションを設定する必要はなく、`logs`セクションまたは`metrics`セクションのいずれかのみを設定でもよい (例：cloudwatchエージェントを使用してCloudWatchにログファイルを送信するのみであれば、`log`セッションのみ) 。
 
-注意点として、cloudwatchエージェントは、起動後に```amazon-cloudwatch-agent.json```ファイルを```/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json```ファイルとして移動してしまい、元々の```amazon-cloudwatch-agent.json```ファイルは無くなってしまう。
+注意点として、cloudwatchエージェントは、起動後に`amazon-cloudwatch-agent.json`ファイルを`/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json`ファイルとして移動してしまい、元々の`amazon-cloudwatch-agent.json`ファイルは無くなってしまう。
 
 > ↪️ 参考：https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local
 
-#### ▼ ```amazon-cloudwatch-agent-ctl```コマンド
+#### ▼ `amazon-cloudwatch-agent-ctl`コマンド
 
-```amazon-cloudwatch-agent-ctl```コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。
+`amazon-cloudwatch-agent-ctl`コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
 
 **＊例＊**
 
 設定ファイルを読み込み、EC2インスタンス上のcloudwatchエージェントを起動/再起動する。
-
-
 
 ```bash
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
@@ -447,8 +395,6 @@ $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
 ```
 
 cloudwatchエージェントをデーモンとして起動するためのユニットファイルが、自動的に作成される。
-
-
 
 ```ini
 [Unit]
@@ -470,15 +416,13 @@ WantedBy=multi-user.target
 
 プロセスのステータスを確認する。
 
-
-
 ```bash
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
     -m ec2 \
     -a status
 ```
 
-#### ▼ ```agent```セクション
+#### ▼ `agent`セクション
 
 cloudwatchエージェント全体を設定する。
 
@@ -486,23 +430,19 @@ cloudwatchエージェント全体を設定する。
 
 実装しなかった場合、デフォルト値が適用される。
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
 
 ```yaml
-{
-  "agent": {
-    # プロセスのユーザー名を設定する。
-    "run_as_user": "cwagent",
-    "metrics_collection_interval": 60,
-    # 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール
-    "credentials": "arn:aws:iam::<アカウントID>:role/<IAMロール名>"
-  }
-}
+{ "agent": {
+      # プロセスのユーザー名を設定する。
+      "run_as_user": "cwagent",
+      "metrics_collection_interval": 60,
+      # 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール
+      "credentials": "arn:aws:iam::<アカウントID>:role/<IAMロール名>",
+    } }
 ```
 
-#### ▼ ```metrics```セクション
+#### ▼ `metrics`セクション
 
 AWSリソースが標準で収集しないカスタムメトリクスのデータポイントの収集について設定する。
 
@@ -510,114 +450,88 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 
 実装しなかった場合、何も設定されない。
 
-
 ```yaml
-{
-  "agent": {
-    "run_as_user": "cwagent"
-  },
-  "metrics": {
-    # メトリクスの集約とする名前空間のユーザー定義名
-    # デフォルトでCWAgentになる。
-    "namespace": "CWAgent",
-    # メトリクスの集約とするディメンション
-    "aggregation_dimensions": [
-      [
-        # インスタンスID
-        "InstanceId",
-        # パーティションに紐づくファイルシステムのパス
-        "path"
-      ]
-    ],
-    # ディメンションのユーザー定義名
-    "append_dimensions": {
-      "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
-      "ImageId": "${aws:ImageId}",
-      "InstanceId": "${aws:InstanceId}",
-      "InstanceType": "${aws:InstanceType}"
-    },
-    # メモリ上のバッファーの保存時間
-    "force_flush_interval": 60,
-    # 収集対象のカスタムメトリクスの一覧 (collectdパッケージまたはStatsDパッケージを使用する場合) 
-    "metrics_collected": {
-      # collectdパッケージの使用を宣言する。必ず設定する必要がある。
-      "collectd": {
-        "metrics_aggregation_interval": 60
-      },
-      # ストレージ系
-      "disk": {
-        "measurement": [
-          # ディスク使用率メトリクス
-          "used_percent"
+{ "agent": { "run_as_user": "cwagent" }, "metrics": {
+      # メトリクスの集約とする名前空間のユーザー定義名
+      # デフォルトでCWAgentになる。
+      "namespace": "CWAgent",
+      # メトリクスの集約とするディメンション
+      "aggregation_dimensions": [
+          [
+            # インスタンスID
+            "InstanceId",
+            # パーティションに紐づくファイルシステムのパス
+            "path",
+          ],
         ],
-        "metrics_collection_interval": 60,
-        # マウントポイントを設定する。
-        "resources": [
-          "*"
-        ]
-      },
-      # メモリ系
-      "mem": {
-        "measurement": [
-          # メモリ使用率メトリクス
-          "mem_used_percent"
-        ],
-        "metrics_collection_interval": 60
-      }
-    }
-  }
-}
+      # ディメンションのユーザー定義名
+      "append_dimensions":
+        {
+          "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
+          "ImageId": "${aws:ImageId}",
+          "InstanceId": "${aws:InstanceId}",
+          "InstanceType": "${aws:InstanceType}",
+        },
+      # メモリ上のバッファーの保存時間
+      "force_flush_interval": 60,
+      # 収集対象のカスタムメトリクスの一覧 (collectdパッケージまたはStatsDパッケージを使用する場合)
+      "metrics_collected": {
+          # collectdパッケージの使用を宣言する。必ず設定する必要がある。
+          "collectd": { "metrics_aggregation_interval": 60 },
+          # ストレージ系
+          "disk": {
+              "measurement": [
+                  # ディスク使用率メトリクス
+                  "used_percent",
+                ],
+              "metrics_collection_interval": 60,
+              # マウントポイントを設定する。
+              "resources": ["*"],
+            },
+          # メモリ系
+          "mem": { "measurement": [
+                  # メモリ使用率メトリクス
+                  "mem_used_percent",
+                ], "metrics_collection_interval": 60 },
+        },
+    } }
 ```
-
-
 
 > ↪️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html
 
-
-#### ▼ ```logs```セクション
+#### ▼ `logs`セクション
 
 ログの収集について設定する。
-
-
 
 **＊実装例＊**
 
 ```yaml
-{
-  "agent": {
-    "run_as_user": "cwagent"
-  },
-  "logs": {
-    # メモリ上のバッファーの保存時間
-    "force_flush_interval": 60,
-    "logs_collected": {
-      "files": {
-        # 収集対象のログの一覧
-        "collect_list": [
-          {
-            # 収集対象のログのディレクトリ
-            "file_path": "/var/log/nginx/error.log",
-            # CloudWatchログ上でのロググループ名
-            "log_group_name": "/foo-www/var/log/nginx/error_log",
-            # CloudWatchログ上でのログストリーム名
-            "log_stream_name": "{instance_id}"
-          },
-          {
-            "file_path": "/var/log/php-fpm/error.log",
-            "log_group_name": "/foo-www/var/log/php-fpm/error_log",
-            "log_stream_name": "{instance_id}"
-          }
-        ]
-      }
-    }
-  }
-}
+{ "agent": { "run_as_user": "cwagent" }, "logs": {
+      # メモリ上のバッファーの保存時間
+      "force_flush_interval": 60,
+      "logs_collected": { "files": {
+              # 収集対象のログの一覧
+              "collect_list": [
+                  {
+                    # 収集対象のログのディレクトリ
+                    "file_path": "/var/log/nginx/error.log",
+                    # CloudWatchログ上でのロググループ名
+                    "log_group_name": "/foo-www/var/log/nginx/error_log",
+                    # CloudWatchログ上でのログストリーム名
+                    "log_stream_name": "{instance_id}",
+                  },
+                  {
+                    "file_path": "/var/log/php-fpm/error.log",
+                    "log_group_name": "/foo-www/var/log/php-fpm/error_log",
+                    "log_stream_name": "{instance_id}",
+                  },
+                ],
+            } },
+    } }
 ```
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection
 
@@ -625,21 +539,17 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 
 ### ログ
 
-#### ▼ ```amazon-cloudwatch-agent.log```ファイル
+#### ▼ `amazon-cloudwatch-agent.log`ファイル
 
 cloudwatchエージェントのプロセスに関するログを出力する。
-
-
 
 ```bash
 $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
 ```
 
-#### ▼ ```configuration-validation.log```ファイル
+#### ▼ `configuration-validation.log`ファイル
 
 cloudwatchエージェントの設定ファイルの構文チェックに関するログを出力する。
-
-
 
 ```bash
 $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
@@ -653,15 +563,11 @@ $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 
 EC2インスタンスでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐づける必要がある。
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
 #### ▼ AWS外のサーバーの場合
 
 AWS外 (オンプレミス、他のクラウドプロバイダー) のサーバーでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをcloudwatchエージェント用のIAMユーザーに紐づける必要がある。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
@@ -673,23 +579,21 @@ AWS外 (オンプレミス、他のクラウドプロバイダー) のサーバ�
 
 #### ▼ ログが監視対象の場合
 
-| 設定項目 | 説明                                                                              | 補足                                       |
-|----------|---------------------------------------------------------------------------------|--------------------------------------------|
-| 名前空間 | 紐付くロググループが属する名前空間を設定する。CloudWatchログが、設定した名前空間に対して、値を発行する。      |                                            |
-| メトリクス    | 紐付くロググループが属する名前空間内のメトリクスを設定する。CloudWatchログが、設定したメトリクスに対して、値を発行する。 |                                            |
-| メトリクス値  | フィルターパターンでログが検知された時に、データポイントとして発生させる値のこと。                                   | 例えば『検出数』を発行する場合は、『```1```』を設定する。 |
+| 設定項目     | 説明                                                                                                                     | 補足                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| 名前空間     | 紐付くロググループが属する名前空間を設定する。CloudWatchログが、設定した名前空間に対して、値を発行する。                 |                                                       |
+| メトリクス   | 紐付くロググループが属する名前空間内のメトリクスを設定する。CloudWatchログが、設定したメトリクスに対して、値を発行する。 |                                                       |
+| メトリクス値 | フィルターパターンでログが検知された時に、データポイントとして発生させる値のこと。                                       | 例えば『検出数』を発行する場合は、『`1`』を設定する。 |
 
 #### ▼ メトリクスが監視対象の場合
 
-
-
 #### ▼ 条件
 
-| 設定項目           | 説明                                | 補足                                                                                                                                                                                                                                                                                                                                       |
-|------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 閾値の種類          |                                     |                                                                                                                                                                                                                                                                                                                                            |
-| アラートを実行するデータポイント | アラートを発生させるデータポイント数を設定する。       |                                                                                                                                                                                                                                                                                                                                            |
-| 欠落データの処理       | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが一切発生しないことを正常とし、これが発生することを異常とする場合 (例：エラーイベント、など) は『```notBreaching```』とする。反対に、データポイントが継続的に発生することを正常とし、これが発生しないことを異常とする場合 (例：CPU使用率、メモリ使用率、など) は、『```breaching```』とする。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
+| 設定項目                         | 説明                                                       | 補足                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| -------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 閾値の種類                       |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| アラートを実行するデータポイント | アラートを発生させるデータポイント数を設定する。           |                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 欠落データの処理                 | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが一切発生しないことを正常とし、これが発生することを異常とする場合 (例：エラーイベント、など) は『`notBreaching`』とする。反対に、データポイントが継続的に発生することを正常とし、これが発生しないことを異常とする場合 (例：CPU使用率、メモリ使用率、など) は、『`breaching`』とする。<br>↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
 
 <br>
 
@@ -698,7 +602,5 @@ AWS外 (オンプレミス、他のクラウドプロバイダー) のサーバ�
 ### CloudWatchシンセティックとは
 
 合成監視を行えるようになる。
-
-
 
 <br>

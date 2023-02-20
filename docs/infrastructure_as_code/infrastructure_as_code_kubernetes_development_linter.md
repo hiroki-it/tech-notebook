@@ -9,8 +9,6 @@ description: 静的解析ツール＠Kubernetesの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -24,7 +22,6 @@ description: 静的解析ツール＠Kubernetesの知見を記録しています
 ## 02. ベストプラクティス違反テスト
 
 調査中...
-
 
 <br>
 
@@ -82,12 +79,11 @@ plutoで検証する非推奨項目のKubernetesバージョンを指定する�
 $ pluto detect - -o wide --target-versions k8s=v1.23.0
 ```
 
-
 #### ▼ detect
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
 
-```pluto detect-api-resources```コマンドとの違いは調査中...
+`pluto detect-api-resources`コマンドとの違いは調査中...
 
 > ↪️ 参考：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
 
@@ -95,9 +91,9 @@ kube-apiserverからの返信、または標準入力で入力されたマニフ
 $ pluto detect - -o wide
 
 NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0  
-bar-pdb  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0     
-baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0    
+foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+bar-pdb  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0
+baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0
 ...
 ```
 
@@ -105,29 +101,26 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 $ helm template foo-chart -f values-prd.yaml | pluto detect - -o wide
 
 NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0  
+foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
-
 
 #### ▼ detect-api-resources
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
 
-```pluto detect```コマンドとの違いは調査中...
-
+`pluto detect`コマンドとの違いは調査中...
 
 ```bash
 $ pluto detect-api-resources - -o wide
 
 NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0  
-bar-pdb  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0     
-baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0    
+foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+bar-pdb  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0
+baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0
 ...
 ```
 
 > ↪️ 参考：https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
-
 
 #### ▼ detect-files
 
@@ -143,54 +136,48 @@ $ pluto detect-files - -o wide
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨のapiVersionを検出する。
 
-
 ```bash
 $ pluto detect-helm - -o wide
 
 NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0  
-bar-chart  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0     
-baz-chart  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0     
+foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+bar-chart  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0
+baz-chart  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0
 ...
 ```
-
 
 ```bash
 $ helm template foo-chart -f values-prd.yaml | pluto detect-helm - -o wide
 
 NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0  
+foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
 > ↪️ 参考：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
-
 
 #### ▼ list-versions
 
 Plutoが非推奨と見なしているバージョンの一覧を取得する。
 
-
-
 ```bash
 $ pluto list-versions
 
-KIND                             NAME                                   DEPRECATED IN   REMOVED IN   REPLACEMENT                            COMPONENT     
-Deployment                       extensions/v1beta1                     v1.9.0          v1.16.0      apps/v1                                k8s           
-Deployment                       apps/v1beta2                           v1.9.0          v1.16.0      apps/v1                                k8s           
-Deployment                       apps/v1beta1                           v1.9.0          v1.16.0      apps/v1                                k8s           
-StatefulSet                      apps/v1beta1                           v1.9.0          v1.16.0      apps/v1                                k8s           
-StatefulSet                      apps/v1beta2                           v1.9.0          v1.16.0      apps/v1                                k8s           
-NetworkPolicy                    extensions/v1beta1                     v1.9.0          v1.16.0      networking.k8s.io/v1                   k8s           
-Ingress                          extensions/v1beta1                     v1.14.0         v1.22.0      networking.k8s.io/v1                   k8s           
-Ingress                          networking.k8s.io/v1beta1              v1.19.0         v1.22.0      networking.k8s.io/v1                   k8s           
-IngressClass                     networking.k8s.io/v1beta1              v1.19.0         v1.22.0      networking.k8s.io/v1                   k8s           
-DaemonSet                        apps/v1beta2                           v1.9.0          v1.16.0      apps/v1                                k8s           
-DaemonSet                        extensions/v1beta1                     v1.9.0          v1.16.0      apps/v1                                k8s           
-PodSecurityPolicy                extensions/v1beta1                     v1.10.0         v1.16.0      policy/v1beta1                         k8s           
-PodSecurityPolicy                policy/v1beta1                         v1.21.0         v1.25.0      n/a                                    k8s        
+KIND                             NAME                                   DEPRECATED IN   REMOVED IN   REPLACEMENT                            COMPONENT
+Deployment                       extensions/v1beta1                     v1.9.0          v1.16.0      apps/v1                                k8s
+Deployment                       apps/v1beta2                           v1.9.0          v1.16.0      apps/v1                                k8s
+Deployment                       apps/v1beta1                           v1.9.0          v1.16.0      apps/v1                                k8s
+StatefulSet                      apps/v1beta1                           v1.9.0          v1.16.0      apps/v1                                k8s
+StatefulSet                      apps/v1beta2                           v1.9.0          v1.16.0      apps/v1                                k8s
+NetworkPolicy                    extensions/v1beta1                     v1.9.0          v1.16.0      networking.k8s.io/v1                   k8s
+Ingress                          extensions/v1beta1                     v1.14.0         v1.22.0      networking.k8s.io/v1                   k8s
+Ingress                          networking.k8s.io/v1beta1              v1.19.0         v1.22.0      networking.k8s.io/v1                   k8s
+IngressClass                     networking.k8s.io/v1beta1              v1.19.0         v1.22.0      networking.k8s.io/v1                   k8s
+DaemonSet                        apps/v1beta2                           v1.9.0          v1.16.0      apps/v1                                k8s
+DaemonSet                        extensions/v1beta1                     v1.9.0          v1.16.0      apps/v1                                k8s
+PodSecurityPolicy                extensions/v1beta1                     v1.10.0         v1.16.0      policy/v1beta1                         k8s
+PodSecurityPolicy                policy/v1beta1                         v1.21.0         v1.25.0      n/a                                    k8s
 ...
 ```
-
 
 <br>
 

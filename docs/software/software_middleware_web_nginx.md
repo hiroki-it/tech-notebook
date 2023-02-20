@@ -9,8 +9,6 @@ description: Nginx＠Web系ミドルウェアの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -31,8 +29,6 @@ Nginxの起動時に最初にマスタープロセスが実行され、Nginxに�
 
 キャッシュマネージャは、保存されたキャッシュの有効期限を管理する。
 
-
-
 > ↪️ 参考：
 >
 > - https://www.codetd.com/en/article/12312272
@@ -50,8 +46,6 @@ Nginxの起動時に最初にマスタープロセスが実行され、Nginxに�
 
 リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のアプリケーションにアクセスできるようになる。
 
-
-
 #### ▼ HTTP/HTTPSプロトコルの場合
 
 Nginxは、インバウンド通信をappサーバーにルーティングする。
@@ -59,8 +53,6 @@ Nginxは、インバウンド通信をappサーバーにルーティングする
 また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保存する。
 
 以降に同じ静的ファイルに関するインバウンド通信があった場合、Nginxはappサーバーにルーティングせずに、保存されたキャッシュを取得し、レスポンスとして返信する。
-
-
 
 ![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リバースプロキシサーバーとしてのNginx.png)
 
@@ -74,7 +66,7 @@ server {
     server_name example.com;
     listen 80;
     return 301 https://$host$request_uri;
-    
+
     #-------------------------------------
     # 静的ファイルであればNginxでレスポンス
     #-------------------------------------
@@ -125,7 +117,7 @@ server {
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
-    
+
     #--------------------------------------------------
     # インバウンド通信をFastCGIプロトコルでルーティングする。
     # OSによって、fastcgi_paramsファイルの必要な設定が異なる
@@ -135,8 +127,8 @@ server {
         fastcgi_pass   localhost:9000;
         # もしくは、UNIXドメインソケット
         # fastcgi_pass unix:/run/php-fpm/www.sock;
-        
-        # ルーティング先のURL (rootディレクティブ値+パスパラメータ) 
+
+        # ルーティング先のURL (rootディレクティブ値+パスパラメータ)
         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
         # 設定ファイルからデフォルト値を読み込む
@@ -147,7 +139,6 @@ server {
 
 <br>
 
-
 ### フォワードプロキシのミドルウェアとして
 
 #### ▼ 構成
@@ -155,8 +146,6 @@ server {
 フォワードプロキシのミドルウェアとして使用できる。
 
 クライアントサイドにNginxを配置し、リクエストを外部ネットワークにプロキシする。
-
-
 
 #### ▼ HTTP/HTTPSプロトコルの場合
 
@@ -200,11 +189,11 @@ http {
 
 <br>
 
-### ```L4```/```L7```ロードバランサ－のミドルウェアとして
+### `L4`/`L7`ロードバランサ－のミドルウェアとして
 
-#### ▼ ```L7```ロードバランサーの場合
+#### ▼ `L7`ロードバランサーの場合
 
-```L7```ロードバランサーとして使用できる。
+`L7`ロードバランサーとして使用できる。
 
 Nginxは、HTTPプロトコルのインバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。
 
@@ -213,7 +202,6 @@ Nginxは、HTTPプロトコルのインバウンド通信を複数のwebサー�
 また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。
 
 ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
-
 
 **＊実装例＊**
 
@@ -251,7 +239,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Port $remote_port;
     }
-    
+
     # ルーティング先のリスト
     upstream foo_servers {
         server srv1.example.com;
@@ -261,21 +249,16 @@ server {
 }
 ```
 
-
-
 > ↪️ 参考：
 >
 > - http://nginx.org/en/docs/http/load_balancing.html
 > - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
 
-
-#### ▼ ```L4```ロードバランサーの場合
+#### ▼ `L4`ロードバランサーの場合
 
 Nginxは、TCPプロトコルのインバウンド通信を複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。
 
-```L4```ロードバランサーのため、宛先のサーバーでTCPプロトコルをHTTPプロトコルに変換するように処理しなければならない。
-
-
+`L4`ロードバランサーのため、宛先のサーバーでTCPプロトコルをHTTPプロトコルに変換するように処理しなければならない。
 
 **＊実装例＊**
 
@@ -286,20 +269,18 @@ Nginxは、TCPプロトコルのインバウンド通信を複数のサーバー
 stream {
     error_log /var/log/nginx/stream.log info;
     proxy_protocol on;
-    
+
     upstream grpc_servers {
         server 192.168.0.1:50051;
         server 192.168.0.2:50051;
     }
-    
+
     server {
         listen 50051;
         proxy_pass grpc_servers;
     }
 }
 ```
-
-
 
 > ↪️ 参考：
 >

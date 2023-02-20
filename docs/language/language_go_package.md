@@ -8,8 +8,6 @@ title: 【IT技術の知見】パッケージ@Go
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -17,8 +15,6 @@ title: 【IT技術の知見】パッケージ@Go
 ## 01. ビルトインパッケージ
 
 以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method_data.html
 
@@ -28,19 +24,15 @@ title: 【IT技術の知見】パッケージ@Go
 
 ### コマンド
 
-#### ▼ ```go mod tidy```
+#### ▼ `go mod tidy`
 
-インポートされているパッケージに合わせて、```go.mod```ファイルと```go.sum```ファイルを更新する。
-
-
+インポートされているパッケージに合わせて、`go.mod`ファイルと`go.sum`ファイルを更新する。
 
 ```bash
 $ go mod tidy
 ```
 
-もし```go.sum```ファイルがあるのにも関わらず、以下のようなエラーが出る時は、```go mod tidy```コマンドを実行して```go.sum```ファイルを更新する必要がある。
-
-
+もし`go.sum`ファイルがあるのにも関わらず、以下のようなエラーが出る時は、`go mod tidy`コマンドを実行して`go.sum`ファイルを更新する必要がある。
 
 ```bash
 cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:
@@ -51,15 +43,13 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 
 ### go.modファイル
 
-#### ▼ ```go.mod```ファイルとは
+#### ▼ `go.mod`ファイルとは
 
-PHPにおける```composer.json```ファイルに相当する。
+PHPにおける`composer.json`ファイルに相当する。
 
 インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。
 
 インストールしたい外部パッケージも定義できる。
-
-
 
 ```
 module github.com/hiroki-hasegawa/foo-repository
@@ -71,13 +61,11 @@ go 1.16
 
 パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。
 
-```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。
+`go mod tidy`コマンドによって`indirect`コメントのついたパッケージが実装される。
 
 これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。
 
-注意点として、パッケージ名は、使用したいパッケージの```go.mod```ファイルを参照すること。
-
-
+注意点として、パッケージ名は、使用したいパッケージの`go.mod`ファイルを参照すること。
 
 > ↪️ 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
@@ -104,13 +92,11 @@ func main() {
 
 #### ▼ ローカルマシンからインポート
 
-ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を使用してインポートする必要がある。
+ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、`replace`関数を使用してインポートする必要がある。
 
 独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。
 
-パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
-
-
+パス実際、`unknown revision`のエラーで、バージョンを見つけられない。
 
 > ↪️ 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
@@ -122,15 +108,13 @@ go 1.16
 replace github.com/hiroki-hasegawa/foo-repository => /
 ```
 
-また、ルートディレクトリのみでなく、各パッケージにも```go.mod```ファイルを配置する必要がある。
-
-
+また、ルートディレクトリのみでなく、各パッケージにも`go.mod`ファイルを配置する必要がある。
 
 ```yaml
 repository/
 ├── cmd/
 │   └── hello.go
-│ 
+│
 ├── go.mod
 ├── go.sum
 └── local-pkg/
@@ -146,8 +130,6 @@ go 1.16
 
 これらにより、ローカルマシンのパッケージをインポートできるようになる。
 
-
-
 ```go
 import "local.packages/local-pkg"
 
@@ -160,15 +142,13 @@ func main() {
 
 ### go.sumファイル
 
-#### ▼ ```go.sum```ファイルとは
+#### ▼ `go.sum`ファイルとは
 
-PHPにおける```composer.lock```ファイルに相当する。
+PHPにおける`composer.lock`ファイルに相当する。
 
-```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。
+`go.mod`ファイルによって実際にインストールされたパッケージが自動的に実装される。
 
 パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるか否かを検知できる。
-
-
 
 <br>
 
@@ -184,13 +164,9 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 汎用的な関数が同梱されている。
 
-
-
 > ↪️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
-ポインタ型からstring型に変換する```ToString```関数や、反対にstring型からポインタ型に変換する```String```関数をよく使用する。
-
-
+ポインタ型からstring型に変換する`ToString`関数や、反対にstring型からポインタ型に変換する`String`関数をよく使用する。
 
 > ↪️ 参考：
 >
@@ -207,8 +183,6 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
 
 <br>
@@ -219,7 +193,7 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 Kubernetesのkube-apiserverと通信できるパッケージ。
 
-使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
+使用できるAPIの型を拡張するために、`k8s.io/api`パッケージや`k8s.io/apimachinery`パッケージも必要になる。
 
 > ↪️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
 
@@ -227,7 +201,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。
 
 ### セットアップ
 
-kube-apiserverの認証/認可を通過するために、```~/.kube/config```ファイルをコンテナにマウントする必要がある。
+kube-apiserverの認証/認可を通過するために、`~/.kube/config`ファイルをコンテナにマウントする必要がある。
 
 > ↪️ 参考：https://nishipy.com/archives/1363
 
@@ -237,11 +211,11 @@ kube-apiserverの認証/認可を通過するために、```~/.kube/config```フ
 
 #### ▼ client-goパッケージとkube-apiserverの間
 
-```kubectl```コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。
+`kubectl`コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。
 
-例えば、client-goパッケージの```0.20.4```は、kube-apiserverの```v1.20.4```に対応している。
+例えば、client-goパッケージの`0.20.4`は、kube-apiserverの`v1.20.4`に対応している。
 
-kube-apiserverとクライアント側のバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
+kube-apiserverとクライアント側のバージョン差は、前方/後方の`1`個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
 
 そのため、client-goパッケージを定期的にアップグレードする必要がある。
 
@@ -249,13 +223,13 @@ kube-apiserverとクライアント側のバージョン差は、前方/後方�
 
 #### ▼ client-goパッケージとマニフェストの間
 
-Kubernetesのマニフェストには```apiVersion```キーが定義されている。
+Kubernetesのマニフェストには`apiVersion`キーが定義されている。
 
-kube-apiserverのバージョンに応じて、公式リポジトリが用意するマニフェストにて、```apiVersion```キーが```v1```から```v2```になることがある。
+kube-apiserverのバージョンに応じて、公式リポジトリが用意するマニフェストにて、`apiVersion`キーが`v1`から`v2`になることがある。
 
-この場合、client-goパッケージがこの```apiVersion```キーに対応していないと、kube-apiserverにそのマニフェストを送信できない。
+この場合、client-goパッケージがこの`apiVersion`キーに対応していないと、kube-apiserverにそのマニフェストを送信できない。
 
-反対に、マニフェストですでに廃止済みの```apiVersion```キーが指定されていて、client-goパッケージでもこれが廃止されていても、同様のことが起こる。
+反対に、マニフェストですでに廃止済みの`apiVersion`キーが指定されていて、client-goパッケージでもこれが廃止されていても、同様のことが起こる。
 
 そのため、client-goパッケージを定期的にアップグレードする必要がある。
 
@@ -283,7 +257,7 @@ Go製のORMである。
 
 ```go
 func NewDB() (*gorm.DB, error) {
-    
+
     // 接続情報。sprintfメソッドを使用すると、可読性が高い。
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
@@ -331,9 +305,7 @@ func Close(db *gorm.DB) error {
 
 構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
 
-構造体をマッピングしたテーブルに、```id```カラム、```created_at```カラム、```updated_at```カラム、```deleted_at```カラムが追加される。
-
-
+構造体をマッピングしたテーブルに、`id`カラム、`created_at`カラム、`updated_at`カラム、`deleted_at`カラムが追加される。
 
 > ↪️ 参考：https://gorm.io/docs/models.html#embedded_struct
 
@@ -355,8 +327,7 @@ type User struct {
 
 #### ▼ プライマリーキー
 
-『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、```gorm:"primaryKey"```タグをつける。
-
+『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、`gorm:"primaryKey"`タグをつける。
 
 ```go
 type User struct {
@@ -374,15 +345,11 @@ type User struct {
 
 > ↪️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
 
-
 #### ▼ SoftDelete
 
-構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。
+構造体が、`gorm.DeleteAt`をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。
 
 Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。
-
-
-
 
 ```go
 type User struct {
@@ -407,16 +374,15 @@ db.Where("age = 20").Find(&user)
 
 > ↪️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
 
-
 <br>
 
 ### DBマイグレーション
 
-#### ▼ ```TableName```メソッド
+#### ▼ `TableName`メソッド
 
 デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
 
-```TableName```メソッドにより、独自のテーブル名をつけられる。
+`TableName`メソッドにより、独自のテーブル名をつけられる。
 
 ```go
 // テーブル名はデフォルトでは『users』になる。
@@ -433,7 +399,6 @@ func (User) TableName() string {
 ```
 
 > ↪️ 参考：https://gorm.io/docs/conventions.html#TableName
-
 
 <br>
 
@@ -461,7 +426,6 @@ result.RowsAffected // returns inserted records count
 
 #### ▼ 全カラム取得
 
-
 ```go
 user := User{}
 
@@ -475,13 +439,9 @@ result.Error        // returns error
 
 > ↪️ 参考：https://gorm.io/docs/query.html#Retrieving-all-objects
 
-
 #### ▼ 単一/複数カラム取得
 
 Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
-
-
-
 
 ```go
 user := User{}
@@ -498,16 +458,13 @@ db.Find(&users, []int{1,2,3})
 
 > ↪️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
 
-
 <br>
 
 ### Update
 
-#### ▼ 単一カラム更新 (暗黙的) 
+#### ▼ 単一カラム更新 (暗黙的)
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
-
-
 
 > ↪️ 参考：https://gorm.io/docs/update.html#Update-single-column
 
@@ -527,15 +484,13 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
 ```
 
-#### ▼ 複数カラム更新 (暗黙的) 
+#### ▼ 複数カラム更新 (暗黙的)
 
 Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。
 
 または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。
 
 Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
-
-
 
 > ↪️ 参考：https://gorm.io/docs/update.html#Updates-multiple-columns
 
@@ -551,13 +506,11 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 // UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
 ```
 
-#### ▼ 複数カラム更新 (明示的) 
+#### ▼ 複数カラム更新 (明示的)
 
 Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。
 
 フィールド値がゼロ値であっても、スキップされない。
-
-
 
 > ↪️ 参考：https://gorm.io/docs/update.html#Update-Selected-Fields
 
@@ -576,8 +529,6 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 #### ▼ 全カラム更新
 
 Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
-
-
 
 > ↪️ 参考：https://gorm.io/docs/update.html#Save-All-Fields
 
@@ -604,8 +555,6 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 モックとスタブについては、以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
 
 <br>
@@ -614,15 +563,13 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 #### ▼ モック化
 
-| よく使用するメソッド | 説明                                                |
-|--------------|---------------------------------------------------|
-| なし           | データとして、構造体に```Mock```を設定すれば、その構造体はモック化される。 |
+| よく使用するメソッド | 説明                                                                   |
+| -------------------- | ---------------------------------------------------------------------- |
+| なし                 | データとして、構造体に`Mock`を設定すれば、その構造体はモック化される。 |
 
 **＊実装例＊**
 
 AWSクライアントをモック化する。
-
-
 
 ```go
 package amplify
@@ -645,17 +592,15 @@ type MockedAwsClient struct {
 
 > ↪️ 参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
-| よく使用するメソッド              | 説明                                                                                  |
-|---------------------------|-------------------------------------------------------------------------------------|
-| ```Mock.Called```メソッド     | 関数の一部の処理をスタブ化する時に使用する。関数に値が渡されたことをモックに伝える。                             |
-| ```Arguments.Get```メソッド   | 関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。独自のデータ型を返却する処理を定義する。 |
-| ```Arguments.Error```メソッド | 関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。エラーを返却する処理を定義する。        |
+| よく使用するメソッド      | 説明                                                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `Mock.Called`メソッド     | 関数の一部の処理をスタブ化する時に使用する。関数に値が渡されたことをモックに伝える。                                 |
+| `Arguments.Get`メソッド   | 関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。独自のデータ型を返却する処理を定義する。 |
+| `Arguments.Error`メソッド | 関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。エラーを返却する処理を定義する。         |
 
 **＊実装例＊**
 
 関数の一部の処理をスタブ化し、これをAWSクライアントのモックに紐付ける。
-
-
 
 ```go
 package amplify
@@ -682,13 +627,11 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ▼ アサーションメソッドによる検証
 
-
-| よく使用するメソッド                      | 説明                                                                  |
-|-----------------------------------|---------------------------------------------------------------------|
-| ```Mock.On```メソッド                 | 関数の検証時に使用する。関数内部のスタブに引数として渡される値と、その時の返却値を定義する。   |
-| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。               |
-| ```assert.Exactly```メソッド          | 関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。 |
-
+| よく使用するメソッド              | 説明                                                                                           |
+| --------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `Mock.On`メソッド                 | 関数の検証時に使用する。関数内部のスタブに引数として渡される値と、その時の返却値を定義する。   |
+| `Mock.AssertExpectations`メソッド | 関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。                   |
+| `assert.Exactly`メソッド          | 関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。 |
 
 > ↪️ 参考：
 >
@@ -703,30 +646,24 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
 
 前処理と後処理については、以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
-| よく使用する関数        | 実行タイミング | 説明                                                                                                          |
-|---------------------|-----------|-------------------------------------------------------------------------------------------------------------|
-| ```SetupSuite```    | 1         | テストスイート内の全てのテストの前処理として、一回だけ実行する。                                                                     |
-| ```SetupTest```     | 2         | テストスイート内の各テストの前処理として、テストの度に事前に実行する。```BeforeTest```関数よりも前に実行されることに注意する。                      |
-| ```BeforeTest```    | 3         | テストスイート内の各テストの直前の前処理として、テストの度に事前に実行する。必ず、『```suiteName```』『```testName```』を引数として設定する必要がある。 |
-| ```AfterTest```     | 4         | テストスイート内の各テストの直後の後処理として、テストの度に事後に実行する。必ず、『```suiteName```』『```testName```』を引数として設定する必要がある。 |
-| ```TearDownTest```  | 5         | テストスイート内の各テストの後処理として、テストの度に事後に実行する。```BeforeTest```関数よりも後に実行されることに注意する。                      |
-| ```TearDownSuite``` | 6         | テストスイート内の全てのテストの後処理として、一回だけ実行する。                                                                     |
+| よく使用する関数 | 実行タイミング | 説明                                                                                                                                            |
+| ---------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SetupSuite`     | 1              | テストスイート内の全てのテストの前処理として、一回だけ実行する。                                                                                |
+| `SetupTest`      | 2              | テストスイート内の各テストの前処理として、テストの度に事前に実行する。`BeforeTest`関数よりも前に実行されることに注意する。                      |
+| `BeforeTest`     | 3              | テストスイート内の各テストの直前の前処理として、テストの度に事前に実行する。必ず、『`suiteName`』『`testName`』を引数として設定する必要がある。 |
+| `AfterTest`      | 4              | テストスイート内の各テストの直後の後処理として、テストの度に事後に実行する。必ず、『`suiteName`』『`testName`』を引数として設定する必要がある。 |
+| `TearDownTest`   | 5              | テストスイート内の各テストの後処理として、テストの度に事後に実行する。`BeforeTest`関数よりも後に実行されることに注意する。                      |
+| `TearDownSuite`  | 6              | テストスイート内の全てのテストの後処理として、一回だけ実行する。                                                                                |
 
 **＊実装例＊**
 
-事前にモックを作成するために、```BeforeTest```関数を使用する。
-
-
+事前にモックを作成するために、`BeforeTest`関数を使用する。
 
 ```go
 package foo
@@ -893,4 +830,3 @@ func main() {
 ```
 
 <br>
-

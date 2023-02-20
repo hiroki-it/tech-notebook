@@ -9,8 +9,6 @@ description: ブラウザレンダリングの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -22,8 +20,6 @@ description: ブラウザレンダリングの知見を記録しています。
 以下の8つの処理からなる。
 
 クライアントの操作のたびにイベントが発火し、Scriptingプロセスが繰り返し実行される。
-
-
 
 - Downloading
 - Parse
@@ -46,15 +42,11 @@ description: ブラウザレンダリングの知見を記録しています。
 
 このうち、テキストファイルをタグとデータによって構造的に表現し、ハードウェアが読み込める状態する言語のこと。
 
-
-
 #### ▼ マークアップ言語の歴史
 
 Webページをテキストによって構成するための言語をマークアップ言語という。
 
 1970年、IBMが、タグによって、テキスト文章に構造や意味を持たせるGML言語を発表した。
-
-
 
 ![markup-language-history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/markup-language-history.png)
 
@@ -66,8 +58,6 @@ Webページをテキストによって構成するための言語をマーク�
 
 テキストファイルのうち、何らかのデータの構造を表すことに特化している。
 
-
-
 #### ▼ スキーマ言語とは
 
 マークアップ言語の特にXML形式で、タグの付け方は自由である。
@@ -77,8 +67,6 @@ Webページをテキストによって構成するための言語をマーク�
 ルールを定義するための言語をスキーマ言語という。
 
 スキーマ言語に、DTD：Document Type Definition (文書型定義) がある。
-
-
 
 **＊実装例＊**
 
@@ -103,8 +91,6 @@ Webページをテキストによって構成するための言語をマーク�
 
 テキストファイルのうち、Webページの構造を表すことに特化している。
 
-
-
 <br>
 
 ## 01-03. JavaScript
@@ -115,19 +101,15 @@ Webページをテキストによって構成するための言語をマーク�
 
 JavaScriptファイルを直接的に組み込む。
 
-
-
 ```html
 <script>
-document.write("JavaScriptを直接的に組み込んでいます。")
+  document.write("JavaScriptを直接的に組み込んでいます。");
 </script>
 ```
 
 #### ▼ 外部スクリプト
 
 外部JavaScriptファイルを組み込む。
-
-
 
 ```html
 <script src="sample.js"></sc
@@ -136,44 +118,43 @@ document.write("JavaScriptを直接的に組み込んでいます。")
 
 CDN (グローバルなキャッシュサーバー) の仕組みを使用して、Web上からリソースを取得もできる。
 
-
-
 ```html
-<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js" integrity="sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=" crossorigin="anonymous"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"
+  integrity="sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg="
+  crossorigin="anonymous"
+></script>
 ```
 
 #### ▼ scriptタグが複数ある場合
 
-```1```個のWebページの```.html```ファイル内で、scriptタグが複数に分散していても、Scriptingプロセスでは、1つにまとめて実行される。
+`1`個のWebページの`.html`ファイル内で、scriptタグが複数に分散していても、Scriptingプロセスでは、1つにまとめて実行される。
 
 そのため、より上部のscriptタグの処理は、より下部のscriptに引き継がれる。
-
-
 
 1。
 
 例えば、以下のコードがある。
 
-
-
 ```html
-localNum<p>見出し１</p>
+localNum
+<p>見出し１</p>
 
 <script>
-var globalNum = 10;
+  var globalNum = 10;
 </script>
 
 <p>見出し２</p>
 
 <script>
-globalNum = globalNum * 10;
+  globalNum = globalNum * 10;
 </script>
 
 <p>見出し３</p>
 
 <script>
-document.write("<p>結果は" + globalNum + "です</p>");
-var foo = true;
+  document.write("<p>結果は" + globalNum + "です</p>");
+  var foo = true;
 </script>
 
 <script src="sample.js"></script>
@@ -183,57 +164,53 @@ var foo = true;
 // sample.js
 // 無名関数の即時実行。定義と呼び出しを同時に行う。
 (function () {
-    
-    // 外側の変数 (foo) を参照できる。
-    if(foo) {
-      console.log("外部ファイルを読み出しました");
-    }
-    
-    var localNum = 20;
-    function localMethod() {
-        // 外側の変数 (localNum) を参照できる。
-        console.log("localNum");
-    }
-    
-    // 定義したメソッドを実行
-    localMethod();
-}());
+  // 外側の変数 (foo) を参照できる。
+  if (foo) {
+    console.log("外部ファイルを読み出しました");
+  }
+
+  var localNum = 20;
+  function localMethod() {
+    // 外側の変数 (localNum) を参照できる。
+    console.log("localNum");
+  }
+
+  // 定義したメソッドを実行
+  localMethod();
+})();
 ```
 
 2. 実行時には以下の様に、まとめて実行される。
 
-ここでは、```.html```ファイルで定義した関数の外にある変数は、グローバル変数になっている。
+ここでは、`.html`ファイルで定義した関数の外にある変数は、グローバル変数になっている。
 
-```1```個のページを構成する```.html```ファイルを別ファイルとして分割していても、同じである。
-
-
+`1`個のページを構成する`.html`ファイルを別ファイルとして分割していても、同じである。
 
 ```html
 <script>
-var globalNum = 10;
-    
-localNum = localNum * 10;
-    
-document.write("<p>結果は" + num + "です</p>");
-var foo = true;
+  var globalNum = 10;
 
-// 無名関数の即時実行。定義と呼び出しを同時に行う。
-(function () {
-    
+  localNum = localNum * 10;
+
+  document.write("<p>結果は" + num + "です</p>");
+  var foo = true;
+
+  // 無名関数の即時実行。定義と呼び出しを同時に行う。
+  (function () {
     // 外側の変数 (foo) を参照できる。
-    if(foo) {
+    if (foo) {
       console.log("外部ファイルを読み出しました");
     }
-    
+
     var localNum = 20;
     function localMethod() {
-        // 外側の変数 (localNum) を参照できる。
-        console.log("localNum");
+      // 外側の変数 (localNum) を参照できる。
+      console.log("localNum");
     }
-    
+
     // 定義したメソッドを実行
     localMethod();
-}());
+  })();
 </script>
 ```
 
@@ -249,8 +226,6 @@ JavaScriptやHTMLの更新にブラウザが追いついていない場合、そ
 
 『Polyfilla』に由来している。
 
-
-
 <br>
 
 ## 02. Downloading処理
@@ -259,7 +234,7 @@ JavaScriptやHTMLの更新にブラウザが追いついていない場合、そ
 
 #### ▼ 非同期的な読み出し
 
-まず、サーバーサイドからリソース (```.html```ファイル、```.css```ファイル、JavaScriptファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。
+まず、サーバーサイドからリソース (`.html`ファイル、`.css`ファイル、JavaScriptファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。
 
 これは、メッセージボディに含まれている。
 
@@ -271,25 +246,23 @@ JavaScriptやHTMLの更新にブラウザが追いついていない場合、そ
 
 Downloading処理が終了したリソースから、次のParse処理に進んでいく。
 
-
-
 #### ▼ リソースの優先順位
 
-```【１】```
+`【１】`
 
-:    HTML
+: HTML
 
-```【２】```
+`【２】`
 
-:    CSS
+: CSS
 
-```【３】```
+`【３】`
 
-:    JS
+: JS
 
-```【４】```
+`【４】`
 
-:    画像
+: 画像
 
 <br>
 
@@ -303,16 +276,14 @@ Downloading処理の優先順位を上げるように宣言する。
 
 そのため、JSファイルのScripting処理が、以降のimageファイルのDownloading処理よりも早くに行われることがある。
 
-
-
 ```html
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Title</title>
   <!-- preloadしたいものを宣言 -->
-  <link rel="preload" href="style.css" as="style">
-  <link rel="preload" href="main.js" as="script">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="style.css" as="style" />
+  <link rel="preload" href="main.js" as="script" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -323,31 +294,25 @@ Downloading処理の優先順位を上げるように宣言する。
 
 <br>
 
-### Lazy Loading (遅延読み出し) 
+### Lazy Loading (遅延読み出し)
 
 #### ▼ Lazy Loadingとは
 
 条件に合致した要素を随時読み込む。
 
-条件の指定方法には、```scroll```/```resize```イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。
+条件の指定方法には、`scroll`/`resize`イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。
 
 画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。
-
-
 
 #### ▼ scrollイベントとresizeイベントに基づく読み出し
 
 scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。
 
-
-
 #### ▼ Intersection Observerによる要素の交差率に基づく読み出し
 
 Intersection Observerによる要素の交差率を監視し、指定の交差率を超えた要素を随時読み込む。
 
-例えば、交差率の閾値を『```0.5```』と設定すると、ターゲットエレメントの交差率が『```0.5```』を超えた要素を随時読み込む。
-
-
+例えば、交差率の閾値を『`0.5`』と設定すると、ターゲットエレメントの交差率が『`0.5`』を超えた要素を随時読み込む。
 
 ![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png)
 
@@ -373,21 +338,19 @@ Downloading処理によって読み込まれたリソースを翻訳するプロ
 
 Downloading処理で読みこまれたバイト形式ファイルは、文字コードを基に、一連の文字列に変換される。
 
-ここでは、以下の```.html```ファイルと```.css```ファイル (```style.css```) に変換されたとする。
-
-
+ここでは、以下の`.html`ファイルと`.css`ファイル (`style.css`) に変換されたとする。
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="style.css" rel="stylesheet" />
     <title>Critical Path</title>
   </head>
   <body>
     <p>Hello <span>web performance</span> students!</p>
-    <div><img src="awesome-photo.jpg"></div>
+    <div><img src="awesome-photo.jpg" /></div>
     <div style="width: 50%">
       <div style="width: 50%">Hello world!</div>
     </div>
@@ -397,18 +360,26 @@ Downloading処理で読みこまれたバイト形式ファイルは、文字コ
 
 ```css
 /* style.css */
-body { font-size: 16px }
-p { font-weight: bold }
-span { color: red }
-p span { display: none }
-img { float: right }
+body {
+  font-size: 16px;
+}
+p {
+  font-weight: bold;
+}
+span {
+  color: red;
+}
+p span {
+  display: none;
+}
+img {
+  float: right;
+}
 ```
 
 リソースの文字列からHTMLタグが認識され、トークンに変換される。
 
-各トークンは、```1```個のオブジェクトに変換される。
-
-
+各トークンは、`1`個のオブジェクトに変換される。
 
 ![dom-tree_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree_process.png)
 
@@ -418,30 +389,23 @@ DOMツリーを作成する途中でscriptタグに到達すると、一旦、JS
 
 DOMのインターフェースについては、以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
 ![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png)
 
 同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを行う。
 
-レスポンスされた```.css```ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。
-
-
+レスポンスされた`.css`ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。
 
 ![cssom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cssom-tree.png)
 
 <br>
-
 
 ### XML形式テキストファイルの構造解析
 
 #### ▼ 構造解析の流れ
 
 レンダリングエンジンは、最初に出現するルート要素を根 (ルート) 、またすべての要素や属性を、そこから延びる枝葉として意味づけ、レンダリングツリーを作成する。
-
-
 
 **＊例＊**
 
@@ -459,8 +423,6 @@ JavaScriptエンジンによって、JavaScriptコードが機械語に翻訳さ
 
 この処理は、初回アクセス時のみでなく、イベントが発火した時にも実行される。
 
-
-
 <br>
 
 ### JavaScriptエンジン
@@ -469,11 +431,9 @@ JavaScriptエンジンによって、JavaScriptコードが機械語に翻訳さ
 
 JavaScriptのインタプリタのこと。
 
-JavaScriptエンジンは、レンダリングエンジンから```.html```ファイルに組み込まれたJavaScriptのコードを受け取る。
+JavaScriptエンジンは、レンダリングエンジンから`.html`ファイルに組み込まれたJavaScriptのコードを受け取る。
 
 JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して、命令を実行する。
-
-
 
 ![JavascriptEngine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png)
 
@@ -487,9 +447,7 @@ JavaScriptエンジンは、コードを、字句解析、構造解析、意味�
 
 #### ▼ イベントとは
 
-ブラウザの各操作はイベントとして```.js```ファイルまたは```.html```ファイルに紐付けられている。
-
-
+ブラウザの各操作はイベントとして`.js`ファイルまたは`.html`ファイルに紐付けられている。
 
 > ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/Events
 
@@ -499,31 +457,25 @@ JavaScriptエンジンは、コードを、字句解析、構造解析、意味�
 
 イベントハンドラ関数が実行されるたびにScripting処理が繰り返される。
 
-
-
 <br>
 
 ### HTML形式におけるイベントハンドラ関数のコール
 
-#### ▼ ```onload```
+#### ▼ `onload`
 
 『Webページのローディング』というイベントが発火すると、イベントハンドラ関数をコールする。
 
-
-
-#### ▼ ```onclick```
+#### ▼ `onclick`
 
 『要素のクリック』というイベントが発火すると、イベントハンドラ関数をコールする。
 
-
-
 ```html
-<input type="button" value="ボタン1" onclick="methodA()">
+<input type="button" value="ボタン1" onclick="methodA()" />
 
 <script>
-function methodA(){
-	console.log("イベントが発火しました");
-}
+  function methodA() {
+    console.log("イベントが発火しました");
+  }
 </script>
 ```
 
@@ -531,32 +483,26 @@ function methodA(){
 
 ### JS形式におけるイベントハンドラ関数のコール
 
+#### ▼ `document.getElementById.onclick`関数
 
-#### ▼ ```document.getElementById.onclick```関数
-
-指定したIDに対して、```1```個のイベントと```1```個のイベントハンドラ関数を紐付ける。
-
-
+指定したIDに対して、`1`個のイベントと`1`個のイベントハンドラ関数を紐付ける。
 
 **＊実装例＊**
 
 ```javascript
 // 指定したIDで、クリックイベントが発火した時に、処理を行う。
 document.getElementById("btn").onclick = () => {
-	console.log("イベントが発火しました");
-}
+  console.log("イベントが発火しました");
+};
 ```
 
+#### ▼ `document.addEventListener`関数
 
-#### ▼ ```document.addEventListener```関数
+`1`個のイベントに対して、1つ以上のイベントハンドラ関数を紐付ける。
 
-```1```個のイベントに対して、1つ以上のイベントハンドラ関数を紐付ける。
+第一引数で、`click`などのイベントを設定し、第二引数でメソッド (無名関数でも可) を渡す。
 
-第一引数で、```click```などのイベントを設定し、第二引数でメソッド (無名関数でも可) を渡す。
-
-```false```を設定することにより、イベントバブリングを行わせない。
-
-
+`false`を設定することにより、イベントバブリングを行わせない。
 
 **＊実装例＊**
 
@@ -564,21 +510,25 @@ document.getElementById("btn").onclick = () => {
 <button id="btn">表示</button>
 
 <script>
-const btn = document.getElementById("btn");
-btn.addEventListener("click", () => {
-    console.log("クリックされました！");
-},false);
+  const btn = document.getElementById("btn");
+  btn.addEventListener(
+    "click",
+    () => {
+      console.log("クリックされました！");
+    },
+    false
+  );
 </script>
 ```
 
 ```javascript
 // DOMContentLoadedイベントが発火した時に、処理を行う。
 document.addEventListener("DOMContentLoaded", () => {
-	console.log("イベントが発火しました");
+  console.log("イベントが発火しました");
 });
 ```
 
-```javascript
+````javascript
 // 1つ目
 document.getElementById("btn").addEventListener("click", () => {
 	console.log("イベントが発火しました```【１】```
@@ -592,12 +542,9 @@ document.getElementById("btn").addEventListener("click", () => {
 
 :    ");
 }, false);
-```
-
-
+````
 
 <br>
-
 
 ## 04. Rendering処理
 
@@ -607,8 +554,6 @@ document.getElementById("btn").addEventListener("click", () => {
 
 CalculateStyle処理とLayout処理に分けられる。
 
-
-
 <br>
 
 ## 04-02. CalculateStyle処理
@@ -616,8 +561,6 @@ CalculateStyle処理とLayout処理に分けられる。
 ### CalculateStyle処理とは
 
 レンダリングエンジンは、DOMツリーのルートのノードから順にCSSOSツリーを適用し、Renderツリーを作成する。
-
-
 
 ![Renderツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Renderツリー.png)
 
@@ -629,11 +572,9 @@ CalculateStyle処理とLayout処理に分けられる。
 
 上記で読み込まれたHTML形式テキストファイルには、ネストされた 2 つの div がある。
 
-1 つ目 (親) の```div```より、ノードの表示サイズをビューポートの幅の 50% に設定する。
+1 つ目 (親) の`div`より、ノードの表示サイズをビューポートの幅の 50% に設定する。
 
-この親に含まれている 2 つ目 (子) の```div```より、その幅を親の50%、つまりビューポートの幅の25%になるようにレイアウトされる。
-
-
+この親に含まれている 2 つ目 (子) の`div`より、その幅を親の50%、つまりビューポートの幅の25%になるようにレイアウトされる。
 
 ![Layout処理](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Layout処理.png)
 
@@ -644,8 +585,6 @@ CalculateStyle処理とLayout処理に分けられる。
 ### Paint処理とは
 
 DOMツリーの各ノードを、ブラウザ上に描画する。
-
-
 
 <br>
 
@@ -663,7 +602,6 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 
 調査中...
 
-
 <br>
 
 ## 06. キャッシュ
@@ -671,8 +609,6 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 ### キャッシュとは
 
 静的コンテンツ (HTML、JavaScript、CSS、画像) をデータを保存しておき、再利用することによって、処理速度を高める仕組みのこと。
-
-
 
 <br>
 
@@ -690,14 +626,11 @@ Chromeの場合は、CacheStorageに保持される。
 
 > ↪️ 参考：https://developer.chrome.com/docs/devtools/storage/cache/
 
-
 #### ▼ リバースプロキシサーバーにおけるキャッシュ
 
 リバースプロキシサーバーで、レスポンスされた静的コンテンツのキャッシュが作成される。
 
 AWSでは、CloudFrontにおけるキャッシュがこれに相当する。
-
-
 
 #### ▼ アプリケーションにおけるキャッシュ
 
@@ -707,8 +640,6 @@ AWSでは、CloudFrontにおけるキャッシュがこれに相当する。
 
 Laravelのキャッシュ機能については、以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/cache.html
 
 <br>
@@ -717,11 +648,9 @@ Laravelのキャッシュ機能については、以下のリンクを参考に�
 
 リバースプロキシサーバー/アプリケーションで、キャッシュすべきでないデータを持つWebページがある。
 
-
-
-| ページ                             | 理由                                   |
-|---------------------------------|--------------------------------------|
-| Form認証ページ                     | 無関係のユーザーに認証済みのWebページが返信されてしまう。 |
+| ページ                                      | 理由                                                         |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| Form認証ページ                              | 無関係のユーザーに認証済みのWebページが返信されてしまう。    |
 | 緯度経度/フリーワードに基づく検索結果ページ | パターン数が多く、全てのページを網羅することが現実的でない。 |
 
 <br>
@@ -734,75 +663,75 @@ Laravelのキャッシュ機能については、以下のリンクを参考に�
 
 ![EtagとIf-NoneMach](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ETagとIf-None-Match.png)
 
-####  (１)  キャッシュの有効時間が切れるまで
+#### (１) キャッシュの有効時間が切れるまで
 
-```【１】```
+`【１】`
 
-:    クライアントのブラウザは、リクエストをサーバーに送信する。
+: クライアントのブラウザは、リクエストをサーバーに送信する。
 
-```【２】```
+`【２】`
 
-:    サーバーは、特定のアルゴリズムを使用してハッシュ値を作成し、これをコンテンツのETag値とする。
+: サーバーは、特定のアルゴリズムを使用してハッシュ値を作成し、これをコンテンツのETag値とする。
 
-```【３】```
+`【３】`
 
-:    サーバーは、```ETag```ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。
+: サーバーは、`ETag`ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。
 
-```【４】```
+`【４】`
 
-:    クライアントのブラウザは、コンテンツとETag値をキャッシュする。
+: クライアントのブラウザは、コンテンツとETag値をキャッシュする。
 
-```【５】```
+`【５】`
 
-:    キャッシュの有効時間が切れるまで、ブラウザキャッシュを使用し続ける。
+: キャッシュの有効時間が切れるまで、ブラウザキャッシュを使用し続ける。
 
-####  (２)  キャッシュの有効時間が切れた後
+#### (２) キャッシュの有効時間が切れた後
 
-```【１】```
+`【１】`
 
-:    キャッシュの有効時間が切れる。
+: キャッシュの有効時間が切れる。
 
-```【２】```
+`【２】`
 
-:    クライアントのブラウザは、リクエストをサーバーに送信する。
+: クライアントのブラウザは、リクエストをサーバーに送信する。
 
      この時、If-None-MatchヘッダーにキャッシュしておいたETag値を設定する。
 
-```【３】```
+`【３】`
 
-:    サーバーは、送信されたETag値とコンテンツのETag値を比較検証する。
+: サーバーは、送信されたETag値とコンテンツのETag値を比較検証する。
 
-####  (３)  検証により、ブラウザキャッシュを使用
+#### (３) 検証により、ブラウザキャッシュを使用
 
-```【１】```
+`【１】`
 
-:    ETag値の比較検証の結果、一致する。
+: ETag値の比較検証の結果、一致する。
 
-```【２】```
+`【２】`
 
-:    サーバーは、両方の値が一致する場合、```304```ステータスでレスポンスをクライアントに送信する。
+: サーバーは、両方の値が一致する場合、`304`ステータスでレスポンスをクライアントに送信する。
 
-```【３】```
+`【３】`
 
-:    クライアントのブラウザは、キャッシュを使用する。
+: クライアントのブラウザは、キャッシュを使用する。
 
-####  (４)  検証により、ブラウザキャッシュを使用せず
+#### (４) 検証により、ブラウザキャッシュを使用せず
 
-```【１】```
+`【１】`
 
-:    ETag値の比較検証の結果、一致しない。
+: ETag値の比較検証の結果、一致しない。
 
-```【２】```
+`【２】`
 
-:    サーバーは、両方の値が一致しない場合、ETag値を作成し、これをコンテンツの新しいETag値とする。
+: サーバーは、両方の値が一致しない場合、ETag値を作成し、これをコンテンツの新しいETag値とする。
 
-```【３】```
+`【３】`
 
-:    サーバーは、```ETag```ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。
+: サーバーは、`ETag`ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。
 
-```【４】```
+`【４】`
 
-:    クライアントのブラウザは、コンテンツとETag値をキャッシュする。
+: クライアントのブラウザは、コンテンツとETag値をキャッシュする。
 
 <br>
 
@@ -810,7 +739,7 @@ Laravelのキャッシュ機能については、以下のリンクを参考に�
 
 #### ▼ ブラウザキャッシュなし
 
-レスポンスヘッダーにて、```Cache-Control```ヘッダーに```no-store```を設定する。
+レスポンスヘッダーにて、`Cache-Control`ヘッダーに`no-store`を設定する。
 
 この場合、ETag値が無効になり、ブラウザキャッシュを使用しなくなる。
 
@@ -818,22 +747,18 @@ Laravelのキャッシュ機能については、以下のリンクを参考に�
 HTTP/1.1 200
 ---
 
-...
-
+---
 Cache-Control: no-store
-
-...
-
 ---
 # ボディ
 ここにサイトのHTMLのコード
 ```
 
-#### ▼ ブラウザキャッシュあり (有効時間あり) 
+#### ▼ ブラウザキャッシュあり (有効時間あり)
 
-レスポンスヘッダーにて、```Cache-Control```ヘッダーに```max-age=31536000```を設定する。
+レスポンスヘッダーにて、`Cache-Control`ヘッダーに`max-age=31536000`を設定する。
 
-Expireヘッダーに有効時間を設定しても良いが、```Cache-Control```ヘッダーの有効時間が優先される。
+Expireヘッダーに有効時間を設定しても良いが、`Cache-Control`ヘッダーの有効時間が優先される。
 
 この場合、有効時間を過ぎると、ETag値を比較検証するようになる。
 
@@ -841,20 +766,16 @@ Expireヘッダーに有効時間を設定しても良いが、```Cache-Control`
 HTTP/1.1 200
 ---
 
-...
-
+---
 Cache-Control: max-age=31536000
-
-...
-
 ---
 # ボディ
 ここにサイトのHTMLのコード
 ```
 
-#### ▼ ブラウザキャッシュあり (有効時間なし) 
+#### ▼ ブラウザキャッシュあり (有効時間なし)
 
-レスポンスヘッダーにて、```Cache-Control```ヘッダーに```max-age=0```を設定する。
+レスポンスヘッダーにて、`Cache-Control`ヘッダーに`max-age=0`を設定する。
 
 また、Expireヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時にETag値を比較検証するようになる。
 
@@ -862,17 +783,13 @@ Cache-Control: max-age=31536000
 HTTP/1.1 200
 ---
 
-...
-
+---
 Cache-Control: max-age=0
 Expires: Sat, 01 Jan 2000 00:00:00 GMT
-
-...
 
 ---
 # ボディ
 ここにサイトのHTMLのコード
 ```
-
 
 <br>

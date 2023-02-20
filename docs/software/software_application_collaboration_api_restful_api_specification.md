@@ -9,8 +9,6 @@ description: API仕様書＠RESTful-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -51,9 +49,7 @@ externalDocs: # externalDocsフィールド
 
 #### ▼ ReDocの場合
 
-ReDocを使用して、OpenAPI仕様から```.html```ファイルを作成する。
-
-
+ReDocを使用して、OpenAPI仕様から`.html`ファイルを作成する。
 
 > ↪️ 参考：https://qiita.com/icck/items/97d00495ec324e1902d6
 
@@ -71,19 +67,15 @@ $ redoc-cli bundle openapi.yaml redoc.html
 
 API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
 
 <br>
 
 ## 02. フィールド
 
-### openapiフィールド (必須) 
+### openapiフィールド (必須)
 
 OpenAPI仕様のバージョンを定義する。
-
-
 
 **＊実装例＊**
 
@@ -93,11 +85,9 @@ openapi: 3.0.0
 
 <br>
 
-### infoフィールド (必須) 
+### infoフィールド (必須)
 
 API名、作成者名、メールアドレス、ライセンス、などを定義する。
-
-
 
 **＊実装例＊**
 
@@ -122,8 +112,6 @@ info:
 
 API自体のURL、などを定義する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -141,11 +129,9 @@ servers:
 
 <br>
 
-### pathsフィールド (必須) 
+### pathsフィールド (必須)
 
 APIのエンドポイント、HTTPメソッド、ステータスコード、などを定義する。
-
-
 
 ```yaml
 paths:
@@ -169,7 +155,7 @@ paths:
       # レスポンス
       #===========================
       responses:
-        '200':
+        "200":
           description: OK レスポンス
           content:
             application/json: # MIME type
@@ -180,7 +166,7 @@ paths:
                     name: Hiroki
               schema:
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
-        '400':
+        "400":
           description: Bad Request レスポンス
           content:
             application/json: # MIME type
@@ -188,13 +174,11 @@ paths:
                 status: 400
                 title: Bad Request
                 errors:
-                messages: [
-                    "不正なリクエストです。"
-                ]
+                messages: ["不正なリクエストです。"]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
-        '401':
-          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。              
+        "401":
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
     #===========================
     # path itemオブジェクト
     #===========================
@@ -219,7 +203,7 @@ paths:
       # レスポンス
       #===========================
       responses:
-        '200':
+        "200":
           description: OK レスポンス
           content:
             application/json: # MIME type
@@ -227,7 +211,7 @@ paths:
                 userId: 1
               schema:
                 $ref: "#/components/schemas/normal" # スキーマとして、正常系モデルを参照する。
-        '400':
+        "400":
           description: Bad Request レスポンス
           content:
             application/json: # MIME type
@@ -235,13 +219,11 @@ paths:
                 status: 400
                 title: Bad Request
                 errors:
-                  messages: [
-                      "ユーザーIDは必ず指定してください。"
-                  ]
+                  messages: ["ユーザーIDは必ず指定してください。"]
               schema:
                 $ref: "#/components/schemas/error" # スキーマとして、異常系モデルを参照する。
-        '401':
-          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。              
+        "401":
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
   #===========================
   # pathsオブジェクト
   #===========================
@@ -270,7 +252,7 @@ paths:
       # レスポンス
       #===========================
       responses:
-        '200':
+        "200":
           description: OK レスポンス
           content:
             application/json: # MIME type
@@ -279,7 +261,7 @@ paths:
                 name: Hiroki
               schema: # スキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
-        '400':
+        "400":
           description: Bad Request レスポンス
           content:
             application/json: # MIME type
@@ -287,14 +269,12 @@ paths:
                 status: 400
                 title: Bad Request
                 errors:
-                  messages: [
-                      "ユーザーIDは必ず指定してください。"
-                  ]
+                  messages: ["ユーザーIDは必ず指定してください。"]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
-        '401':
+        "401":
           $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
-        '404':
+        "404":
           description: Not Found レスポンス
           content:
             application/json: # MIME type
@@ -302,14 +282,12 @@ paths:
                 status: 404
                 title: Not Found
                 errors:
-                  messages: [
-                      "対象のユーザーが見つかりませんでした。"
-                  ]
+                  messages: ["対象のユーザーが見つかりませんでした。"]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
     #===========================
     # path itemオブジェクト
-    #===========================                
+    #===========================
     put:
       tags:
         - ユーザー情報更新エンドポイント
@@ -331,7 +309,7 @@ paths:
       # レスポンス
       #===========================
       responses:
-        '200':
+        "200":
           description: OK レスポンス
           content:
             application/json: # Content-Type
@@ -340,7 +318,7 @@ paths:
                 name: Hiroki
               schema: # スキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
-        '400':
+        "400":
           description: Bad Request レスポンス
           content:
             application/json: # Content-Type
@@ -348,14 +326,12 @@ paths:
                 status: 400
                 title: Bad Request
                 errors:
-                  messages: [
-                      "ユーザーIDは必ず指定してください。"
-                  ]
+                  messages: ["ユーザーIDは必ず指定してください。"]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
-        '401':
+        "401":
           $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
-        '404':
+        "404":
           description: Not Found レスポンス
           content:
             application/json: # Content-Type
@@ -363,31 +339,27 @@ paths:
                 status: 404
                 title: Not Found
                 errors:
-                  messages: [
-                      "対象のユーザーが見つかりませんでした。"
-                  ]
+                  messages: ["対象のユーザーが見つかりませんでした。"]
               schema:
-                $ref: "#/components/schemas/error" # 異常系モデルを参照する。                 
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する。
 ```
 
 <br>
 
-### componentsフィールド (必須) 
+### componentsフィールド (必須)
 
 スキーマなど、他の項目で共通して利用するものを定義する。
-
-
 
 ```yaml
 components:
   #===========================
   # callbackキーの共通化
   #===========================
-  callbacks: { }
+  callbacks: {}
   #===========================
   # linkキーの共通化
   #===========================
-  links: { }
+  links: {}
   #===========================
   # responseキーの共通化
   #===========================
@@ -400,11 +372,9 @@ components:
             status: 401
             title: Unauthorized
             errors:
-              messages: [
-                  "APIキーの認可に失敗しました。"
-              ]
+              messages: ["APIキーの認可に失敗しました。"]
           schema:
-            $ref: "#/components/schemas/error" # 異常系モデルを参照する。              
+            $ref: "#/components/schemas/error" # 異常系モデルを参照する。
   #===========================
   # schemaキーの共通化
   #===========================
@@ -423,7 +393,7 @@ components:
       properties:
         userId:
           type: string
-    # 異常系      
+    # 異常系
     error:
       type: object
       properties:
@@ -461,12 +431,10 @@ componentsフィールドで定義した認証方法を宣言する。
 
 ルートで宣言すると、全てのパスに適用できる。
 
-
-
 **＊実装例＊**
 
 ```yaml
-security: 
+security:
   - apiKeyAuth: []
 ```
 
@@ -477,8 +445,6 @@ security:
 各項目に付けるタグを定義する。
 
 同名のタグをつけると、自動的にまとめられる。
-
-
 
 **＊実装例＊**
 
@@ -493,8 +459,6 @@ tags:
 ### externalDocsフィールド
 
 APIを説明するドキュメントのリンクを定義する。
-
-
 
 **＊実装例＊**
 
@@ -518,63 +482,38 @@ RESTful-APIが受信するCRUDのデータ型や必須データを定義した�
 
 データ型や必須データにより、リクエスト/レスポンスのデータのバリデーションを行う。
 
-
-
 > ↪️ 参考：https://spec.openapis.org/oas/v3.1.0#data-types
 
 **＊実装例＊**
 
 例えば、APIがレスポンス時に以下のようなJSON型データを返信する例を考える。
 
-
-
 ```yaml
 {
   "id": 1,
   "name": "Taro Yamada",
   "age": 10,
-  "sports":["soccer", "baseball"],
-  "subjects": "math"
+  "sports": ["soccer", "baseball"],
+  "subjects": "math",
 }
 ```
 
 ここで、スキーマを以下の様に定義しておき、APIからデータをレスポンスする時のバリデーションを行う。
 
-
-
 ```yaml
 {
   "$schema": "https://json-schema.org/draft-04/schema#",
   "type": "object",
-  "properties": {
-    "id": {
-      "type": "integer",
-      "minimum": 1
+  "properties":
+    {
+      "id": { "type": "integer", "minimum": 1 },
+      "name": { "type": "string" },
+      "age": { "type": "integer", "minimum": 0 },
+      "sports": { "type": "array", "items": { "type": "string" } },
+      "subjects": { "type": "string" },
     },
-    "name": {
-      "type": "string"
-    },
-    "age": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "sports": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "subjects": {
-      "type": "string"
-    }
-  },
-  "required": ["id"]
+  "required": ["id"],
 }
 ```
 
 <br>
-
-
-
-
-

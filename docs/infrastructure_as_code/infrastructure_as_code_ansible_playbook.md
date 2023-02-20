@@ -11,7 +11,6 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
-
 ## 01. playbookファイル
 
 ### playbookファイルとは
@@ -76,13 +75,11 @@ repository/
 │       └── tasks/
 │           └── main.yml
 │
-...
 ```
 
 > ↪️ 参考：https://zenn.dev/y\_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
 
 ## 01-02. playbookファイルの切り分け
-
 
 ### rolesディレクトリ
 
@@ -104,7 +101,7 @@ taskファイルの`notify`オプションで指定できる。
 # handlerファイル
 - name: Restart php-fpm
   service:
-    name:  php-fpm
+    name: php-fpm
     state: restarted
 ```
 
@@ -112,7 +109,7 @@ taskファイルの`notify`オプションで指定できる。
 # taskファイル
 - name: Upload www.conf
   ansible.builtin.template:
-    src:  php-fpm/www.conf.j2
+    src: php-fpm/www.conf.j2
     dest: /etc/php-fpm.d/www.conf
   notify:
     # handlerの名前を指定する。
@@ -131,9 +128,9 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 # taskファイル
 - name: Install software-properties-common
   ansible.builtin.apt:
-    name:  software-properties-common
+    name: software-properties-common
     state: present
- 
+
 - name: Install packages
   ansible.builtin.apt:
   pkg:
@@ -143,26 +140,26 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
   state: present
   notify:
     - restart_php-fpm
-    
+
 - name: Upload php.ini
   ansible.builtin.template:
-    src:  php.ini.j2
+    src: php.ini.j2
     dest: /etc/php.ini
   notify:
     - restart_php-fpm
-    
+
 - name: Upload www.conf
   ansible.builtin.template:
-    src:  php-fpm/www.conf.j2
+    src: php-fpm/www.conf.j2
     dest: /etc/php-fpm.d/www.conf
   notify:
     - restart_php-fpm
-    
+
 - name: Setup composer
   ansible.builtin.shell: |
-  
+
     # Composerのセットアップ処理
-  
+
     ...
 ```
 
@@ -185,10 +182,9 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 ...
 ```
 
+### group_varsディレクトリ
 
-### group\_varsディレクトリ
-
-#### ▼ group\_varsディレクトリとは
+#### ▼ group_varsディレクトリとは
 
 複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。
 
@@ -198,7 +194,7 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 
 > ↪️ 参考：https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
 
-#### ▼ group\_varファイル
+#### ▼ group_varファイル
 
 複数の管理対象ノードで使用する変数を設定する。
 
@@ -221,8 +217,8 @@ ports:
 > ↪️ 参考：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
 
 ```yaml
-...
 
+---
 - name: Add port
   firewalld:
     port: "{{ item }}"
@@ -231,23 +227,20 @@ ports:
     zone: public
   with_items:
     - "{{ ports }}"
-    
+
 - name: Restart firewalld
   systemd:
     name: firewalld
     state: reloaded
-
-...
 ```
 
+### host_varsディレクトリ
 
-### host\_varsディレクトリ
-
-#### ▼ host\_varsディレクトリとは
+#### ▼ host_varsディレクトリとは
 
 特定の管理対象ノードで使用する変数に関するファイルを配置する。
 
-#### ▼ host\_varファイル
+#### ▼ host_varファイル
 
 特定の管理対象ノードで使用する変数を設定する。
 
@@ -280,9 +273,9 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 > ↪️ 参考：
 >
-> * https://docs.ansible.com/ansible/2.9/user\_guide/intro\_inventory.html#inventoryformat
-> * https://zenn.dev/y\_mrok/books/ansible-no-tsukaikata/viewer/chapter5
-> * https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible\_inventory\_ini
+> - https://docs.ansible.com/ansible/2.9/user\_guide/intro\_inventory.html#inventoryformat
+> - https://zenn.dev/y\_mrok/books/ansible-no-tsukaikata/viewer/chapter5
+> - https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible\_inventory\_ini
 
 **＊実装例＊**
 
@@ -307,7 +300,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
       db:
         ansible_host: 127.0.0.1
         ansible_user: vagrant
-        ansible_password: vagrant 
+        ansible_password: vagrant
 ```
 
 ```yaml
@@ -441,7 +434,6 @@ ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 ```
 
-
 ## 02. /roles/handlersセクション
 
 ### handlersセクションとは
@@ -459,7 +451,6 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 > ↪️ 参考：https://zenn.dev/y\_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
-
 ### name
 
 #### ▼ nameとは
@@ -470,7 +461,6 @@ taskセクションの後に実行するセットアップ処理を設定する�
 - name: Setup nginx
 ```
 
-
 ### hosts
 
 #### ▼ hostsとは
@@ -480,7 +470,6 @@ taskセクションの後に実行するセットアップ処理を設定する�
 ```yaml
 - hosts: all
 ```
-
 
 ### become
 
@@ -495,17 +484,15 @@ root以外であれば、`become_user`キーを設定する。
   become_user: foo-user
 ```
 
+### gather_facts
 
-### gather\_facts
-
-#### ▼ gather\_factsとは
+#### ▼ gather_factsとは
 
 ファクト変数を収集するか否かを設定する。
 
 ```yaml
 - gather_facts: no
 ```
-
 
 ## 02-03. /roles/tasksセクション
 
@@ -517,7 +504,6 @@ root以外であれば、`become_user`キーを設定する。
 
 > ↪️ 参考：https://zenn.dev/y\_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
-
 ### ansible.builtin.apt
 
 #### ▼ ansible.builtin.aptとは
@@ -528,8 +514,8 @@ root以外であれば、`become_user`キーを設定する。
 
 > ↪️ 参考：
 >
-> * https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt\_module.html
-> * https://qiita.com/tkit/items/7ad3e93070e97033f604
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt\_module.html
+> - https://qiita.com/tkit/items/7ad3e93070e97033f604
 
 **＊実装例＊**
 
@@ -540,7 +526,6 @@ root以外であれば、`become_user`キーを設定する。
     name: nginx=1.0.0
     state: present
 ```
-
 
 ### ansible.builtin.lineinfile
 
@@ -561,10 +546,9 @@ SELinuxを無効化する。
 - name: Disable SELinux
   ansible.builtin.lineinfile:
     path: /etc/selinux/config
-    regexp: '^SELINUX='
-    line: 'SELINUX=disabled'
+    regexp: "^SELINUX="
+    line: "SELINUX=disabled"
 ```
-
 
 ### ansible.builtin.file
 
@@ -586,7 +570,6 @@ SELinuxを無効化する。
     group: root
 ```
 
-
 ### ansible.builtin.copy
 
 #### ▼ ansible.builtin.copyとは
@@ -606,10 +589,9 @@ SELinuxを無効化する。
     mode: 0644
 ```
 
+### ansible.builtin.get_url
 
-### ansible.builtin.get\_url
-
-#### ▼ ansible.builtin.get\_urlとは
+#### ▼ ansible.builtin.get_urlとは
 
 管理対象ノードで`curl`コマンドを実行する。
 
@@ -621,7 +603,6 @@ SELinuxを無効化する。
     url: https://github.com/hiroki-hasegawa/foo-tool.tar.gz
     dest: .
 ```
-
 
 ### ansible.builtin.service
 
@@ -639,9 +620,8 @@ SELinuxを無効化する。
   ansible.builtin.service:
     name: Start nginx
     state: started
-    enabled: 'yes'
+    enabled: "yes"
 ```
-
 
 ### ansible.builtin.shell
 
@@ -651,8 +631,8 @@ SELinuxを無効化する。
 
 > ↪️ 参考：
 >
-> * https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell\_module.html
-> * https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell\_module.html
+> - https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
 
 **＊実装例＊**
 
@@ -673,7 +653,6 @@ SELinuxを無効化する。
       -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
       -s
 ```
-
 
 ### ansible.builtin.systemd
 
@@ -711,15 +690,14 @@ SELinuxを無効化する。
 
 ユニットの最終的な状態を設定する。
 
-| 設定値      | 説明                                               |
-|-------------|--------------------------------------------------|
-| `reloaded`  | 最終的な状態としてdeamon\_reloadするように、ユニットを再読み込みする。 |
-| `restarted` | 最終的な状態として再起動するように、ユニットを再起動する。           |
-| `started`   | 最終的な状態として停止しているように、ユニットを起動する。             |
-| `stopped`   | 最終的な状態として停止しているさうに、ユニットを停止する。             |
+| 設定値      | 説明                                                                  |
+| ----------- | --------------------------------------------------------------------- |
+| `reloaded`  | 最終的な状態としてdeamon_reloadするように、ユニットを再読み込みする。 |
+| `restarted` | 最終的な状態として再起動するように、ユニットを再起動する。            |
+| `started`   | 最終的な状態として停止しているように、ユニットを起動する。            |
+| `stopped`   | 最終的な状態として停止しているさうに、ユニットを停止する。            |
 
 > ↪️ 参考：https://dekitakotono.blogspot.com/2019/05/systemd.html
-
 
 ### ansible.builtin.template
 
@@ -735,7 +713,6 @@ SELinuxを無効化する。
     src: foo.conf.j2
     dest: /etc/foo/foo.conf
 ```
-
 
 ### ansible.builtin.unarchive
 
@@ -754,7 +731,6 @@ SELinuxを無効化する。
     dest: /usr/local/bin
     remote_src: yes # 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。
 ```
-
 
 ### ansible.builtin.user
 
@@ -777,7 +753,6 @@ SELinuxを無効化する。
     shell: /bin/false
 ```
 
-
 ### ansible.builtin.yum
 
 #### ▼ ansible.builtin.yumとは
@@ -788,8 +763,8 @@ SELinuxを無効化する。
 
 > ↪️ 参考：
 >
-> * https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum\_module.html
-> * https://qiita.com/tkit/items/7ad3e93070e97033f604
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum\_module.html
+> - https://qiita.com/tkit/items/7ad3e93070e97033f604
 
 **＊実装例＊**
 
@@ -809,10 +784,9 @@ SELinuxを無効化する。
     state: present
 ```
 
+### ansible_env
 
-### ansible\_env
-
-#### ▼ ansible\_envとは
+#### ▼ ansible_envとは
 
 管理対象ノードに設定された環境変数を出力する。
 
@@ -820,8 +794,8 @@ SELinuxを無効化する。
 
 > ↪️ 参考：
 >
-> * https://docs.ansible.com/ansible/2.9/reference\_appendices/faq.html#shell
-> * https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible\_env
+> - https://docs.ansible.com/ansible/2.9/reference\_appendices/faq.html#shell
+> - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible\_env
 
 **＊実装例＊**
 
@@ -837,7 +811,6 @@ SELinuxを無効化する。
 - vars:
     FOO: ansible_env.FOO
 ```
-
 
 ### environment
 
@@ -858,7 +831,6 @@ task内で出力できる環境変数を設定する。
     FOO: FOO
 ```
 
-
 ## 02-04. /roles/varsセクション
 
 ### varsセクションとは
@@ -869,8 +841,8 @@ task内で出力できる環境変数を設定する。
 
 > ↪️ 参考：
 >
-> * https://blog.katsubemakito.net/ansible/ansible-1st-4
-> * https://ksaito11.hatenablog.com/entry/2018/10/24/232929
+> - https://blog.katsubemakito.net/ansible/ansible-1st-4
+> - https://ksaito11.hatenablog.com/entry/2018/10/24/232929
 
 **＊実装例＊**
 
@@ -886,9 +858,8 @@ task内で出力できる環境変数を設定する。
 
 ```yaml
 # foo.conf.j2ファイル
-{{ foo }}
+{ { foo } }
 ```
-
 
 ## 02-05. プラグイン
 
@@ -900,8 +871,8 @@ task内で出力できる環境変数を設定する。
 
 > ↪️ 参考：
 >
-> * https://docs.ansible.com/ansible/2.9/reference\_appendices/faq.html#shell
-> * https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible\_env
+> - https://docs.ansible.com/ansible/2.9/reference\_appendices/faq.html#shell
+> - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible\_env
 
 **＊実装例＊**
 
@@ -915,5 +886,3 @@ task内で出力できる環境変数を設定する。
   vars:
     foo: 'lookup("env", "FOO")'
 ```
-
-

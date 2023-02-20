@@ -9,7 +9,6 @@ description: コマンド＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,7 +20,6 @@ description: コマンド＠ArgoCDの知見を記録しています。
 #### ▼ createとは
 
 ArgoCDのアプリケーションを作成する。
-
 
 ```bash
 $ argocd app create foo-application \

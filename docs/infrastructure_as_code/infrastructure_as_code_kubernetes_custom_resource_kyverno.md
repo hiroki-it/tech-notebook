@@ -9,8 +9,6 @@ description: Kyverno＠カスタムリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -26,7 +24,7 @@ kube-apiserverにマニフェストが送信した時、kube-apiserverのmutatin
 送信されたマニフェストの宣言が事前に設定されたルールに則っているかを検証し、もし則っていなければマニフェストの宣言を変更する。
 
 > ↪️ 参考：
-> 
+>
 > - https://www.squadcast.com/blog/kyverno-policy-management-in-kubernetes
 > - https://www.kreyman.de/index.php/others/linux-kubernetes/244-erhoehung-der-container-security-mit-kyverno
 

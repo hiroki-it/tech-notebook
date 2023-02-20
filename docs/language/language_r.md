@@ -9,25 +9,23 @@ description: 統計分析＠Rの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## データ分析で気をつけること
 
-```【１】```
+`【１】`
 
-:    データ分析によって、何を明らかにしたいのか。
+: データ分析によって、何を明らかにしたいのか。
 
-```【２】```
+`【２】`
 
-:    明らかにすることのために、どのデータ分析が必要なのか。
+: 明らかにすることのために、どのデータ分析が必要なのか。
 
-```【３】```
+`【３】`
 
-:    必要なデータ分析のために、どんな形式のデータを用意する必要があるのか。
+: 必要なデータ分析のために、どんな形式のデータを用意する必要があるのか。
 
 <br>
 
@@ -36,8 +34,6 @@ description: 統計分析＠Rの知見を記録しています。
 データに、どの程度の直線的関係があるかを検出する分析手法。
 
 回帰分析を行うか否かの判断材料になる。
-
-
 
 ![相関分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/相関分析.png)
 
@@ -76,13 +72,9 @@ cor(ts, method = "pearson")
 
 モデルの精度が高ければ因果関係の証明になり、またモデルに原因を代入することにより結果を予測できる。
 
-
-
 ### 単回帰分析
 
 原因と結果が1つずつと仮定した時に、最も当てはまりの良い線形モデルを推定できる。
-
-
 
 ![単回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単回帰分析.png)
 
@@ -111,8 +103,8 @@ summary(Reg)
 
 
 # Coefficients:
-#              Estimate Std. Error t value Pr(>|t|)    
-# (Intercept) 1.099e+01  2.405e+00   4.571 3.11e-05 *** 
+#              Estimate Std. Error t value Pr(>|t|)
+# (Intercept) 1.099e+01  2.405e+00   4.571 3.11e-05 ***
 # 純広告      2.239e-05  2.927e-05   0.765    0.448
 # // 純広告の回帰係数のp値 > 0.05 より、因果関係がない可能性。
 ```
@@ -124,8 +116,6 @@ summary(Reg)
 原因が2つ以上で結果が1つと仮定した時に、最も当てはまりの良い線形モデルを推定できる。
 
 ただし、グラフでは、モデルは平面で表す。
-
-
 
 ![重回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/重回帰分析.png)
 
@@ -171,13 +161,13 @@ summary(Reg)
 
 
 # Coefficients:
-#             Estimate Std. Error t value Pr(>|t|)    
+#             Estimate Std. Error t value Pr(>|t|)
 # (Intercept)    8.857      1.007   8.797 1.69e-11 ***
-# days.月曜日     5.286      1.744   3.031 0.003957 ** 
-# days.火曜日     4.893      1.670   2.930 0.005212 ** 
+# days.月曜日     5.286      1.744   3.031 0.003957 **
+# days.火曜日     4.893      1.670   2.930 0.005212 **
 # days.水曜日     6.143      1.670   3.679 0.000601 ***
 # days.木曜日     5.893      1.670   3.529 0.000944 ***
-# days.金曜日     4.393      1.670   2.631 0.011479 *  
+# days.金曜日     4.393      1.670   2.631 0.011479 *
 # // 月、水、金の回帰係数のp値 < 0.05 より、月水金で因果関係があり、火金で因果関係がない可能性。
 ```
 
@@ -191,13 +181,9 @@ summary(Reg)
 
 非線形モデルを推定するためには、モデルを一般化し、一般化線形モデルとして処理する必要がある。
 
-
-
 ### ロジスティック回帰分析
 
 説明変数が質的変数の場合、最も当てはまりの良い非線形モデル (ロジスティック分布) を推定する。
-
-
 
 ![ロジスティック回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロジスティック回帰分析.png)
 
@@ -221,24 +207,19 @@ exp(result_lg2$coefficients)
 
 
 # オッズ比の出力結果
-# (Intercept)        性別    経済関連 
-# 0.08930881 14.98017457  1.75649720 
+# (Intercept)        性別    経済関連
+# 0.08930881 14.98017457  1.75649720
 ```
 
 <br>
-
 
 ## 03. 決定木分析
 
 データに対して、最も当てはまりの良い決定木モデルを推定する分析手法。
 
-
-
 ### 分類木分析
 
 決定木モデルを分類モデルとして使用する場合の決定木分析。
-
-
 
 #### ▼ 図解例
 
@@ -277,14 +258,11 @@ fancyRpartPlot(tree)
 
 <br>
 
-
 ## 04. 階層クラスター分析
 
 データを、似ている順に階層的にグループ化 (クラスタリング) していく分析手法。
 
 データ間の同一性を明らかにできる。
-
-
 
 ![階層クラスター分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/階層クラスター分析.png)
 
@@ -321,19 +299,19 @@ plot(cluster1)
 
 ## 05. グラフ作成関数
 
-### ```ggplot```メソッド
+### `ggplot`メソッド
 
-```【１】```
+`【１】`
 
-:    ```ggplot```メソッド：グラフのキャンバスを準備
+: `ggplot`メソッド：グラフのキャンバスを準備
 
-```【２】```
+`【２】`
 
-:    ```geom_XXX```メソッド：グラフをプロット
+: `geom_XXX`メソッド：グラフをプロット
 
-```【３】```
+`【３】`
 
-:    ```theme```メソッド：グラフを追加加工
+: `theme`メソッド：グラフを追加加工
 
 ![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ggplotの概念.png)
 

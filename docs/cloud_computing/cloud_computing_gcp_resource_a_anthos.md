@@ -9,12 +9,9 @@ description: Anthos＠GCPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. Anthos
 
@@ -23,8 +20,6 @@ description: Anthos＠GCPの知見を記録しています。
 #### ▼ 構造
 
 Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
-
-
 
 > ↪️ 参考：
 >
@@ -39,17 +34,13 @@ Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management�
 
 GKE Cluster (コントロールプレーンNode、ワーカーNode、を含む) から構成される。
 
-
-
 #### ▼ アタッチCluster
-
 
 AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境 (AWS EKS、Azure AKS、RKE、K3s) のClusterに委譲する。
 
 AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
 
 ![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_attached_cluster.png)
-
 
 > ↪️ 参考：
 >
@@ -62,7 +53,6 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 > ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
 
-
 <br>
 
 ### Anthos Service Mesh
@@ -74,20 +64,19 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 ![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_service_mesh.png)
 
 > ↪️ 参考：
-> 
+>
 > - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=20
 
 #### ▼ Traffic Director
 
-サービスディスカバリーとして、```istio-proxy```コンテナに他の宛先の情報を提供する。
+サービスディスカバリーとして、`istio-proxy`コンテナに他の宛先の情報を提供する。
 
 > ↪️ 参考：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
 
-
 #### ▼ Mesh CA
 
-中間認証局として、相互TLSのためのSSL証明書を```istio-proxy```コンテナに提供する。
+中間認証局として、相互TLSのためのSSL証明書を`istio-proxy`コンテナに提供する。
 
 また、SSL証明書が失効すれば更新する。
 
@@ -103,9 +92,7 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management.png)
 
-
 > ↪️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
-
 
 #### ▼ acm-operatorの仕組み
 
@@ -118,7 +105,6 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 > - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
 > - https://github.com/GoogleCloudPlatform/acm-policy-controller-library
-
 
 #### ▼ cluster-operator
 
@@ -140,12 +126,11 @@ Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他ク
 
 #### ▼ connect-gateway
 
-GCP上で```kubectl```コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
+GCP上で`kubectl`コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
 
 ![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png)
 
 > ↪️ 参考：https://www.topgate.co.jp/anthos-gke#connect-gateway
-
 
 #### ▼ fleet-workload-identity
 
@@ -153,15 +138,11 @@ GCP側のアカウント情報と、各クラウドプロバイダーのAnthos�
 
 これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 
-
-
 > ↪️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
 
 #### ▼ anetd
 
 cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
-
-
 
 > ↪️ 参考：https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
 
@@ -171,7 +152,6 @@ cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネット�
 
 ### on-オンプレミスの仕組み
 
-
 on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。
 
 ワークステーションにて、GCPのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
@@ -179,7 +159,6 @@ on-オンプレミスは、各Clusterを作成するワークステーション 
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 ![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png)
-
 
 > ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
 
@@ -191,8 +170,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 #### ▼ マルチClusterタイプ
 
-
-マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4``` (トランスポート層) のロードバランサーから構成される。
+マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、`L4` (トランスポート層) のロードバランサーから構成される。
 
 GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
@@ -200,14 +178,12 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 ![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png)
 
-
 > ↪️ 参考：
 >
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
-#### ▼ スタンドアローンClusterタイプ (ハイブリッドタイプ) 
-
+#### ▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)
 
 スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。
 
@@ -216,7 +192,6 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png)
-
 
 > ↪️ 参考：
 >
@@ -229,13 +204,11 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 #### ▼ ワークステーションとは
 
-Anthos Clusterの作成時やアップグレード時に、```bmctl```コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
+Anthos Clusterの作成時やアップグレード時に、`bmctl`コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
 
 Kindはコンテナを構築し、そのコンテナ内でブートストラップクラスターを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。
 
-Kindがコンテナを構築するために、Anthos Clusterの構築前に、```docker```プロセスを起動しておく必要がある。
-
-
+Kindがコンテナを構築するために、Anthos Clusterの構築前に、`docker`プロセスを起動しておく必要がある。
 
 ```bash
 $ systemctl start docker
@@ -245,7 +218,7 @@ $ systemctl start docker
 
 Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。
 
-```~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
+`~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig`ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
 
 ```bash
 $ kubectl get pod \
@@ -261,8 +234,6 @@ $ kubectl get pod \
 
 GCP環境上にAnthos GKE Clusterを作成する。
 
-
-
 <br>
 
 ## 02-04. on-クラウドプロバイダー
@@ -272,8 +243,6 @@ GCP環境上にAnthos GKE Clusterを作成する。
 GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。
 
 ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境 (例：AWS EKS、Azure AKS) を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
-
-
 
 ![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png)
 
@@ -285,9 +254,7 @@ GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure)
 
 #### ▼ check preflightとは
 
-```bmctl upgrade```コマンドの実行時に実施されるプリフライトチェックのみを実施する。
-
-
+`bmctl upgrade`コマンドの実行時に実施されるプリフライトチェックのみを実施する。
 
 ```bash
 $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
@@ -299,13 +266,11 @@ $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 
 カスタムリソース定義の設定値を変更し、kube-apiserverに送信する。
 
-
 ```bash
 $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 ```
 
 > ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
-
 
 <br>
 
@@ -315,21 +280,16 @@ $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 
 AnthosのKubernetesのバージョンをプリフライトチェックで検証し、成功すればアップグレードする。
 
-
-
 ```bash
-$ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace 
+$ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace
 ```
 
 #### ▼ --reuse-bootstrap-cluster
 
 既存のブートストラップクラスターを再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
 
-
-
 ```bash
 $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reuse-bootstrap-cluster
 ```
 
 <br>
-

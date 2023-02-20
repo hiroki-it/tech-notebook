@@ -9,8 +9,6 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,16 +19,14 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 様々な粒度のプログラムを対象にした管理ユーティリティがある。
 
-
-
 ![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/library_package_module.png)
 
 <br>
 
 ## 02. パッケージ管理ユーティリティ
 
-| OS系統   | ユーティリティ              |
-|---------|----------------------|
+| OS系統   | ユーティリティ         |
+| -------- | ---------------------- |
 | Debian系 | apt、apt-get、apt-file |
 | RedHat系 | rpm、yum、dnf          |
 
@@ -45,8 +41,6 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 指定したファイルを持つパッケージを検索する。
 
 拡張子も指定しても、ファイル名までしか絞れない。
-
-
 
 > ↪️ 参考：
 >
@@ -89,25 +83,21 @@ zlib1g-dev: /usr/include/zlib.h
 
 インストール時にパッケージ間の依存関係を解決できないので注意。
 
-
-
 ```bash
 # パッケージをインストール
-# -ivh：--install -v --hash 
+# -ivh：--install -v --hash
 $ rpm -ivh <パッケージ名>
 ```
 
 ```bash
 # パッケージを更新
-# -Uvh：--upgrade -v --hash 
+# -Uvh：--upgrade -v --hash
 $ rpm -Uvh <パッケージ名>
 ```
 
 #### ▼ -qa
 
 インストールされた全てのパッケージの中で、指定した文字を名前に含むものを取得する。
-
-
 
 ```bash
 # -qa：
@@ -118,8 +108,6 @@ $ rpm -qa | grep <検索文字>
 
 指定したパッケージ名で、関連する全てのファイルの場所を取得する。
 
-
-
 ```bash
 # -ql：
 $ rpm -ql <パッケージ名>
@@ -128,8 +116,6 @@ $ rpm -ql <パッケージ名>
 #### ▼ -qi
 
 指定したパッケージ名で、インストール日などの情報を取得する。
-
-
 
 ```bash
 # -qi：
@@ -146,8 +132,6 @@ rpmと同様に使用できる。
 
 また、インストール時にパッケージ間の依存関係を解決できる。
 
-
-
 ```bash
 # パッケージをインストール
 $ yum install -y <パッケージ名>
@@ -160,8 +144,6 @@ $ yum reinstall -y <パッケージ名>
 
 インストールされたパッケージの一覧を取得する。
 
-
-
 ```bash
 # 指定した文字を名前に含むものを表示。
 $ yum list | grep <検索文字>
@@ -170,8 +152,6 @@ $ yum list | grep <検索文字>
 #### ▼ repolist
 
 リポジトリか有効か否かの一覧を取得する。
-
-
 
 > ↪️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
@@ -204,13 +184,13 @@ repolist: 34,344
 
 #### ▼ リポジトリとは
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ (RPM、EPEL、Remi) から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
+CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、`--enablerepo`オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ (RPM、EPEL、Remi) から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
 
 #### ▼ リポジトリ自体のインストール
 
-```【１】```
+`【１】`
 
-:    CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
+: CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、`/etc/yu.repos.d`ディレクトリ配下に配置される。
 
 ```bash
 # CentOS7系の場合
@@ -223,9 +203,9 @@ $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 $ yum install -y epel-release でもよい
 ```
 
-```【２】```
+`【２】`
 
-:    CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
+: CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、`/etc/yu.repos.d`ディレクトリ配下に配置される。
 
 ```bash
 # CentOS7系の場合
@@ -235,9 +215,9 @@ $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-```【３】```
+`【３】`
 
-:    設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
+: 設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
 
 ```ini
 [epel]
@@ -270,9 +250,9 @@ gpgcheck=1
 
 #### ▼ PHPのインストール
 
-```【４】```
+`【４】`
 
-:    Remiリポジトリの有効化オプションを永続的に使用できるようにする。
+: Remiリポジトリの有効化オプションを永続的に使用できるようにする。
 
 ```bash
 # CentOS7の場合
@@ -281,13 +261,13 @@ $ yum install -y yum-utils
 $ yum-config-manager --enable remi-php74
 
 
-# CentOS8の場合 (dnf moduleコマンドを使用) 
+# CentOS8の場合 (dnf moduleコマンドを使用)
 $ dnf module enable php:remi-7.4
 ```
 
-```【５】```
+`【５】`
 
-:    remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される。
+: remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは`/opt/remi/*`に配置される。
 
 ```bash
 # CentOS7の場合
@@ -300,9 +280,9 @@ $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
-```【６】```
+`【６】`
 
-:    再インストールする時は、reinstallとすること。
+: 再インストールする時は、reinstallとすること。
 
 ```bash
 # CentOS7の場合
@@ -327,8 +307,6 @@ Linuxで使用できるパッケージを管理する。
 
 最新バージョンしか管理できず、以前のバージョンを管理できない。
 
-
-
 > ↪️ 参考：
 >
 > - https://docs.brew.sh/FAQ#how-do-i-keep-old-versions-of-a-formula-when-upgrading
@@ -336,7 +314,7 @@ Linuxで使用できるパッケージを管理する。
 
 #### ▼ autoremove
 
-パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。事前に```--dry-run```オプションを有効化し、対象のパッケージを確認すると良い。
+パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。事前に`--dry-run`オプションを有効化し、対象のパッケージを確認すると良い。
 
 > ↪️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
 
@@ -350,9 +328,7 @@ $ brew autoremove
 
 パッケージの旧バージョンのキャッシュを削除する。
 
-
-
-> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3
 
 ```bash
 $ brew cleanup
@@ -362,10 +338,8 @@ $ brew cleanup
 
 brewの設定に不備がないかを検証する。
 
-
-
 ```bash
-$ brew doctor 
+$ brew doctor
 Your system is ready to brew.
 
 # パッケージとエイリアスが正しく紐づいていない場合
@@ -381,8 +355,6 @@ those kegs to fail to run properly once built. Run `brew link` on these:
 
 パッケージをインストールする。
 
-
-
 ```bash
 # Intel Macの場合
 $ brew install <パッケージ名>
@@ -392,9 +364,7 @@ $ brew install <パッケージ名>@<バージョンタグ>
 
 #### ▼ link
 
-brewによって```~/usr/local/Cellar ```ディレクトリにインストールされたパッケージと、```~/usr/local/bin```ディレクトリに作成されたパッケージへのエイリアスを紐づける。
-
-
+brewによって`~/usr/local/Cellar `ディレクトリにインストールされたパッケージと、`~/usr/local/bin`ディレクトリに作成されたパッケージへのエイリアスを紐づける。
 
 > ↪️ 参考：https://hacknote.jp/archives/23816/
 
@@ -406,9 +376,7 @@ $ brew link <パッケージ名>
 
 brew本体をアップグレードする。
 
-
-
-> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3
 
 ```bash
 $ brew update
@@ -417,8 +385,6 @@ $ brew update
 #### ▼ upgrade
 
 brew本体とパッケージの両方をアップグレードする。
-
-
 
 > ↪️ 参考：https://www.curict.com/item/bc/bcc0607.html
 
@@ -438,11 +404,9 @@ Linuxで使用できるパッケージを管理する。
 
 ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。
 
+#### ▼ `.tool-version`ファイル
 
-
-#### ▼ ```.tool-version```ファイル
-
-```.tool-version```ファイルをリポジトリのルートディレクトリに置いておく必要がある。異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールを強制できる。
+`.tool-version`ファイルをリポジトリのルートディレクトリに置いておく必要がある。異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールを強制できる。
 
 ```bash
 # .tool-versionsファイル
@@ -450,22 +414,20 @@ Linuxで使用できるパッケージを管理する。
 foo-plugin <バージョンタグ>
 ```
 
-もし```.tool-version```ファイルがないと、asdfでインストールしたコマンドで以下のようなエラーになる。
+もし`.tool-version`ファイルがないと、asdfでインストールしたコマンドで以下のようなエラーになる。
 
 ```bash
 # asdfでSOPSをインストールしたとする。
 $ sops -e plain.yaml
- 
+
 No version is set for command sops
-Consider adding one of the following versions in your config file at 
+Consider adding one of the following versions in your config file at
 sops <バージョン>
 ```
 
 #### ▼ セットアップ
 
-```brew```コマンドを使用してインストールする場合、```~/.zshrc```ファイルを編集する必要がある。
-
-
+`brew`コマンドを使用してインストールする場合、`~/.zshrc`ファイルを編集する必要がある。
 
 > ↪️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
@@ -475,13 +437,13 @@ $ brew install asdf
 
 #### ▼ global
 
-ホームディレクトリ (```~/```) に```.tool-version```ファイルを作成する。
+ホームディレクトリ (`~/`) に`.tool-version`ファイルを作成する。
 
 ```bash
 $ asdf global <プラグイン名> 1.0.0
 
 # ファイルが作成されたことを確認する。
-$ cat ~/.tool-versions 
+$ cat ~/.tool-versions
 
 foo 1.0.0
 bar 1.0.0
@@ -491,21 +453,19 @@ bar 1.0.0
 
 インストールされているパッケージで使用できるバージョンの一覧を取得する。
 
-
-
 ```bash
 $ asdf list all <プラグイン名>
 ```
 
 #### ▼ local
 
-現在のディレクトリに、```.tool-version```ファイルを作成する。事前に```asdf install```コマンドでプラグインの特定のバージョンをインストールしておく必要がある。
+現在のディレクトリに、`.tool-version`ファイルを作成する。事前に`asdf install`コマンドでプラグインの特定のバージョンをインストールしておく必要がある。
 
 ```bash
 $ asdf local <プラグイン名> 1.0.0
 
 # ファイルが作成されたことを確認する。
-$ cat .tool-versions 
+$ cat .tool-versions
 
 foo 1.0.0
 bar 1.0.0
@@ -526,15 +486,15 @@ $ asdf plugin remove <プラグイン名>
 # プラグインのURLを調べる。
 $ asdf plugin list all | grep <プラグイン名>
 
- 
-# プラグインをローカルマシンに登録する。 (まだインストールされていない) 
+
+# プラグインをローカルマシンに登録する。 (まだインストールされていない)
 $ asdf plugin add <プラグイン名> <URL>
 ```
 
 #### ▼ install
 
 ```bash
-# プラグインをローカルマシンに登録する。 (まだインストールされていない) 
+# プラグインをローカルマシンに登録する。 (まだインストールされていない)
 $ asdf plugin add <プラグイン名> <URL>
 
 
@@ -548,7 +508,7 @@ Downloading <プラグイン名> from <URL>
 $ asdf plugin list
 ```
 
-もし、```.tool-version```ファイルを作成してある場合には、プラグイン名とバージョンが不要になる。
+もし、`.tool-version`ファイルを作成してある場合には、プラグイン名とバージョンが不要になる。
 
 ```bash
 $ asdf install
@@ -558,11 +518,11 @@ $ asdf install
 
 ## 04. 言語バージョン管理ユーティリティ
 
-### phpenv (PHP) 
+### phpenv (PHP)
 
 <br>
 
-### pyenv (Python) 
+### pyenv (Python)
 
 #### ▼ which
 
@@ -574,7 +534,7 @@ $ pyenv which python
 
 <br>
 
-### rbenv (Ruby) 
+### rbenv (Ruby)
 
 調査中...
 

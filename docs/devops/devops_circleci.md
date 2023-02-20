@@ -11,33 +11,31 @@ description: CircleCIの知見を記録しています。
 
 ![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_architecture.png)
 
-
 > ↪️ 参考：https://circleci.com/docs/2.0/server-3-overview/
-
 
 <br>
 
 ### CIパイプライン/CDパイプライン
 
-```【１】```
+`【１】`
 
-:    テストクラスを実装したうえで、新機能を設計実装する。
+: テストクラスを実装したうえで、新機能を設計実装する。
 
-```【２】```
+`【２】`
 
-:    リポジトリへプッシュすると、CIツールがGituHubからブランチの状態を取得する。
+: リポジトリへプッシュすると、CIツールがGituHubからブランチの状態を取得する。
 
-```【３】```
+`【３】`
 
-:    CIツールによって、CIパイプラインが実行される。
+: CIツールによって、CIパイプラインが実行される。
 
-```【４】```
+`【４】`
 
-:    CIOpsを採用している場合に、CDパイプラインも実行される。
+: CIOpsを採用している場合に、CDパイプラインも実行される。
 
-```【５】```
+`【５】`
 
-:    結果を通知することも可能。
+: 結果を通知することも可能。
 
 ![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/継続的インテグレーション.png)
 
@@ -55,8 +53,6 @@ CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシ
 
 注意点として、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
 
-
-
 > ↪️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
 
 #### ▼ デバッグの事前準備
@@ -64,8 +60,6 @@ CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシ
 デバッグでは行数がわからない仕様になっている。
 
 そこで、workflowのjobのどこで失敗しているのかを特定するために、検証しないjobをコメントアウトしておく。
-
-
 
 ```yaml
 workflows:
@@ -87,8 +81,6 @@ workflows:
 #### ▼ バリデーション
 
 ホストで、以下のコマンドを実行する。
-
-
 
 ```bash
 $ circleci config validate
@@ -113,8 +105,6 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 
 バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
 
-
-
 ```bash
 # バージョン2.1の設定ファイルの処理を展開する。
 $ circleci config process .circleci/config.yml > .circleci/process.yml
@@ -125,10 +115,9 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ▼ CircleCIコンテナにSSH公開鍵認証
 
+`【１】`
 
-```【１】```
-
-:    CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。
+: CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。
 
      GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。
 
@@ -138,9 +127,9 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 $ pbcopy < ~/.ssh/github/<秘密鍵名>
 ```
 
-```【３】```
+`【３】`
 
-:    CircleCIの```Enable SSH```ステップに表示された```ssh```コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を行う。
+: CircleCIの`Enable SSH`ステップに表示された`ssh`コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を行う。
 
 ```bash
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
@@ -148,12 +137,9 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘�
 
 > ↪️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
-
 #### ▼ Test Insights
 
 各テストのパフォーマンスや成功失敗率を確認できる。
-
-
 
 > ↪️ 参考：https://circleci.com/docs/2.0/insights-tests/
 
@@ -161,16 +147,11 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘�
 
 SSHキーを作成する必要がある。
 
-
-
-
-| 鍵名   | 説明                                                                                                        |
-|--------|-----------------------------------------------------------------------------------------------------------|
-| デプロイキー | CircleCIコンテナがプロジェクトのGitHubリポジトリにアクセスするために必要である (例：CIOps) 。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。     |
+| 鍵名         | 説明                                                                                                                                                          |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| デプロイキー | CircleCIコンテナがプロジェクトのGitHubリポジトリにアクセスするために必要である (例：CIOps) 。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。 |
 | ユーザーキー | CircleCIコンテナがプロジェクト以外のGitHubリポジトリにアクセスするために必要である (例：GitOps) 。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。 |
 
 > ↪️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
 
-
 <br>
-

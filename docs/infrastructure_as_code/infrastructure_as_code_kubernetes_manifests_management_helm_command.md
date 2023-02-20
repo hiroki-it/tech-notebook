@@ -9,13 +9,11 @@ description: コマンド＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. ```helm```コマンド
+## 01. `helm`コマンド
 
 ### create
 
@@ -29,8 +27,6 @@ $ helm create <チャートへのパス>
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_create/
 
-
-
 <br>
 
 ### destroy
@@ -39,15 +35,13 @@ $ helm create <チャートへのパス>
 
 指定したHelmリリースでインストールされたチャートを削除する。
 
-
 ```bash
 $ helm destroy <Helmリリース名>
 ```
 
-
 Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
-そのため、```helm destroy```コマンド時にはカスタムリソース定義を削除しない仕様になっている。
+そのため、`helm destroy`コマンド時にはカスタムリソース定義を削除しない仕様になっている。
 
 カスタムリソース定義は手動で削除する必要がある。
 
@@ -59,15 +53,13 @@ $ kubectl delete crd <カスタムリソース定義名>
 
 > ↪️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
 
-
 <br>
 
 ### dependency
 
 #### ▼ build
 
-```requirements.yaml```ファイルに定義された依存対象のチャートを、```chart```ディレクトリ内にダウンロードする。
-
+`requirements.yaml`ファイルに定義された依存対象のチャートを、`chart`ディレクトリ内にダウンロードする。
 
 ```bash
 $ helm dependency build
@@ -78,9 +70,7 @@ Update Complete. ⎈Happy Helming!⎈
 Saving 1 charts
 ```
 
-
 > ↪️ 参考：https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
-
 
 <br>
 
@@ -88,15 +78,13 @@ Saving 1 charts
 
 #### ▼ getとは
 
-特定のHelmリリースに含まれる```helm template```コマンドの結果を取得する。
+特定のHelmリリースに含まれる`helm template`コマンドの結果を取得する。
 
 ```bash
 $ helm get <Helmリリース名>
 ```
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
-
-
 
 <br>
 
@@ -105,8 +93,6 @@ $ helm get <Helmリリース名>
 #### ▼ historyとは
 
 指定したHelmリリースの履歴を取得する。
-
-
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_history/
 
@@ -129,28 +115,25 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 
 チャートへのパスを指定する以外にも、指定方法には種類がある。
 
-
 > ↪️ 参考：https://helm.sh/docs/helm/helm_install/
 
 ```bash
 $ helm install <Helmリリース名> <チャートへのパス>
 ```
 
-| パラメーター                                           | 例                                                              | 補足                                                                                                                                          |
-|--------------------------------------------------|-----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| チャートへのパス                                         | ```./foo-chart```                                               |                                                                                                                                               |
-| ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                      |
-| チャートリポジトリURL                                     | ```https://example.com/foo-chart```                             |                                                                                                                                               |
-| ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                               |
-| チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ (```.tgz```形式ファイル) の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
-
+| パラメーター                                                            | 例                                                          | 補足                                                                                                                                                                 |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| チャートへのパス                                                        | `./foo-chart`                                               |                                                                                                                                                                      |
+| `<チャートレジストリ名>/<チャートリポジトリ名>`                         | `foo-registry/foo-repository`                               | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                                            |
+| チャートリポジトリURL                                                   | `https://example.com/foo-chart`                             |                                                                                                                                                                      |
+| `<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>` | `https://example.com/foo-chart foo-registry/foo-repository` |                                                                                                                                                                      |
+| チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values`ファイルを使用する場合、`values`ファイルはチャートアーカイブ (`.tgz`形式ファイル) の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
 
 #### ▼ --disable-openapi-validation
 
 チャートをインストールする時に、OpenAPIを使用したマニフェストの静的解析を無効化する。
 
 特に、カスタムリソース定義のファイルサイズが大きすぎてインストールできない場合に使用する。
-
 
 ```bash
 $ helm install --disable-openapi-validation <Helmリリース名> <チャートへのパス>
@@ -161,8 +144,6 @@ $ helm install --disable-openapi-validation <Helmリリース名> <チャート�
 Kubernetesに作成されるリソースのマニフェストを取得する。
 
 作成する前に、チャートの設定が正しいか否かを確認できる。
-
-
 
 ```bash
 $ helm install --dry-run <Helmリリース名> <チャートへのパス>
@@ -176,25 +157,21 @@ kind: Deployment
 
 #### ▼ -f
 
-指定した```values```ファイル使用して、```helm install```コマンドを実行する。
+指定した`values`ファイル使用して、`helm install`コマンドを実行する。
 
-チャートのルートパスに『```values.yaml```』の名前でファイルが存在している場合、自動的に読み込まれるため、このオプションは不要である。
+チャートのルートパスに『`values.yaml`』の名前でファイルが存在している場合、自動的に読み込まれるため、このオプションは不要である。
 
-これ以外の名前の場合は、オプションによる```values```ファイルの指定が必要になる。
+これ以外の名前の場合は、オプションによる`values`ファイルの指定が必要になる。
 
 ```bash
 $ helm install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
-
 > ↪️ 参考：https://helm.sh/docs/helm/helm_install/#options
-
 
 #### ▼ kube-context
 
-```helm```コマンドの向き先を指定して、```helm install```コマンドを実行する。
-
-
+`helm`コマンドの向き先を指定して、`helm install`コマンドを実行する。
 
 ```bash
 # Minikubeの場合
@@ -216,8 +193,6 @@ Helmの構文をバリデーションを実行する。
 
 あくまでHelmの構文マニフェスト自体の記法の誤りは検出してくれないことに注意する。
 
-
-
 ```bash
 $ helm lint <チャートへのパス>
 
@@ -228,8 +203,6 @@ $ helm lint <チャートへのパス>
 1 chart(s) linted, 0 chart(s) failed
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://helm.sh/docs/helm/helm_lint/
@@ -237,9 +210,7 @@ $ helm lint <チャートへのパス>
 
 #### ▼ -f
 
-指定した```values```ファイル使用して、```helm lint```コマンドを実行する。
-
-
+指定した`values`ファイル使用して、`helm lint`コマンドを実行する。
 
 ```bash
 $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
@@ -251,9 +222,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 1 chart(s) linted, 0 chart(s) failed
 ```
 
-複数のチャートに対して、同じ```values```ファイルを渡すこともできる。
-
-
+複数のチャートに対して、同じ`values`ファイルを渡すこともできる。
 
 ```bash
 $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
@@ -273,9 +242,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 
 Helmリリースの一覧を取得する。
 
-チャートは、バージョンによって中身の```.yaml```ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
-
-
+チャートは、バージョンによって中身の`.yaml`ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -292,15 +259,13 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 #### ▼ packageとは
 
-チャートからチャートアーカイブ (```.tgz```形式ファイル) を作成する。
+チャートからチャートアーカイブ (`.tgz`形式ファイル) を作成する。
 
 または、すでにアーカイブが存在する場合は更新する。
 
 アーカイブ名にはバージョンが設定される。
 
 複数のチャートを指定できる。
-
-
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_package/
 
@@ -312,9 +277,7 @@ Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 
 #### ▼ -d
 
-チャートアーカイブ (```.tgz```形式ファイル) の作成先のディレクトリを指定しつつ、```helm package```コマンドを実行する。
-
-
+チャートアーカイブ (`.tgz`形式ファイル) の作成先のディレクトリを指定しつつ、`helm package`コマンドを実行する。
 
 ```bash
 $ helm package <チャートへのパス> -d <作成するチャートアーカイブのパス>
@@ -328,8 +291,6 @@ $ helm package <チャートへのパス> -d <作成するチャートアーカ�
 
 プラグインをインストールする。
 
-
-
 ```bash
 $ helm plugin install https://github.com/jkroepke/helm-secrets --version 1.0.0
 ```
@@ -338,21 +299,17 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version 1.0.0
 
 インストール済みのプラグインの一覧を表示する。
 
-
-
 ```bash
 $ helm plugin list
 
-NAME     VERSION  DESCRIPTION                                                                 
-diff     3.4.2    Preview helm upgrade changes as a diff                                      
+NAME     VERSION  DESCRIPTION
+diff     3.4.2    Preview helm upgrade changes as a diff
 secrets  3.7.0    plugin provides secrets values encryption for Helm charts secure storing
 ```
 
 #### ▼ uninstall
 
 指定したプラグインをアンインストールする。
-
-
 
 ```bash
 $ helm plugin uninstall secrets
@@ -364,25 +321,19 @@ $ helm plugin uninstall secrets
 
 #### ▼ pullとは
 
-指定したチャートリポジトリからチャートをチャートアーカイブ (```.tgz```形式ファイル) でプルする。
+指定したチャートリポジトリからチャートをチャートアーカイブ (`.tgz`形式ファイル) でプルする。
 
 チャートアーカイブは、チャートに解凍した上で使用した方がよい。
 
-
-
 #### ▼ -d
 
-チャートのプル先のディレクトリを指定して、```helm pull```コマンドを実行する。
-
-
+チャートのプル先のディレクトリを指定して、`helm pull`コマンドを実行する。
 
 ```bash
 $ helm pull <チャートリポジトリURL> -d <プル先のディレクトリ>
 ```
 
 OCIリポジトリからもプルできる。
-
-
 
 > ↪️ 参考：https://helm.sh/blog/storing-charts-in-oci/
 
@@ -393,9 +344,7 @@ $ helm pull oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チ�
 
 #### ▼ --version
 
-チャートのバージョンを指定して、```helm pull```コマンドを実行する。
-
-
+チャートのバージョンを指定して、`helm pull`コマンドを実行する。
 
 ```bash
 $ helm pull <チャートリポジトリURL> --version <バージョンタグ>
@@ -409,9 +358,7 @@ $ helm pull <チャートリポジトリURL> --version <バージョンタグ>
 
 チャートリポジトリにチャートをプッシュする。
 
-プッシュする前にチャートをチャートアーカイブ (```.tgz```形式ファイル) に圧縮しておく必要がある。
-
-
+プッシュする前にチャートをチャートアーカイブ (`.tgz`形式ファイル) に圧縮しておく必要がある。
 
 ```bash
 $ helm push <チャートアーカイブへのパス> <チャートリポジトリURL>
@@ -430,13 +377,9 @@ $ helm push <チャートアーカイブへのパス> oci://<アカウントID>.
 
 チャートリポジトリを操作する。
 
-
-
 #### ▼ login
 
 チャートリポジトリにログインする。
-
-
 
 ```bash
 $ <チャートリポジトリのプロバイダーによる> | helm registry login \
@@ -461,13 +404,9 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 チャートリポジトリを操作する。
 
-
-
 #### ▼ add
 
-```helm```コマンドの実行環境にチャートリポジトリを登録する。
-
-
+`helm`コマンドの実行環境にチャートリポジトリを登録する。
 
 > ↪️ 参考：https://knowledge.sakura.ad.jp/23603/
 
@@ -477,9 +416,7 @@ $ helm repo add <チャートリポジトリ名> <チャートリポジトリURL
 "<チャート名>" has been added to your repositories
 ```
 
-登録していないチャートに```helm```コマンドでアクセスしようとするとエラーになる。
-
-
+登録していないチャートに`helm`コマンドでアクセスしようとするとエラーになる。
 
 ```bash
 $ helm show all <チャートリポジトリ名>
@@ -489,14 +426,11 @@ Error: failed to download "<チャートリポジトリ名>"
 
 #### ▼ index
 
-チャートリポジトリのメタデータが設定された```index.yaml```ファイルを作成する。
-
-
+チャートリポジトリのメタデータが設定された`index.yaml`ファイルを作成する。
 
 ```bash
 $ helm repo index <チャートへのパス>
 ```
-
 
 **＊例＊**
 
@@ -506,22 +440,18 @@ $ helm repo index ./foo-chart
 
 #### ▼ list
 
-事前に```helm repo add```コマンドで追加しておいたチャートリポジトリの一覧を取得する。
-
-
+事前に`helm repo add`コマンドで追加しておいたチャートリポジトリの一覧を取得する。
 
 ```bash
 $ helm repo list
 
-NAME                 URL                          
+NAME                 URL
 <チャートリポジトリ名>   https://example.com/charts
 ```
 
 #### ▼ remove
 
-事前に```helm repo add```コマンドで追加しておいたチャートリポジトリを削除する。
-
-
+事前に`helm repo add`コマンドで追加しておいたチャートリポジトリを削除する。
 
 ```bash
 $ helm repo remove <チャート名>
@@ -537,11 +467,9 @@ $ helm repo remove foo-chart
 
 #### ▼ update
 
-事前に```helm repo add```コマンドで追加しておいたチャートリポジトリの情報を更新する。
+事前に`helm repo add`コマンドで追加しておいたチャートリポジトリの情報を更新する。
 
 チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。
-
-
 
 > ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
 
@@ -559,17 +487,13 @@ Update Complete. ⎈Happy Helming!⎈
 
 #### ▼ searchとは
 
-事前に```helm repo add```コマンドで追加しておいたチャートリポジトリを検索する。
-
-
+事前に`helm repo add`コマンドで追加しておいたチャートリポジトリを検索する。
 
 > ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 
 #### ▼ hub
 
 チャートリポジトリをキーワードで検索する。
-
-
 
 ```bash
 $ helm search hub <キーワード>
@@ -586,13 +510,9 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 
 チャートの情報を取得する。
 
-
-
 #### ▼ all
 
 チャート内の全てのマニフェストを取得する。
-
-
 
 ```bash
 $ helm show all <チャート名>
@@ -606,9 +526,7 @@ $ helm show all foo-chart
 
 #### ▼ chart
 
-チャートの```Chart.yaml```ファイルを取得する。
-
-
+チャートの`Chart.yaml`ファイルを取得する。
 
 ```bash
 $ helm show chart <チャート名>
@@ -624,11 +542,9 @@ version: <バージョンタグ>
 
 #### ▼ values
 
-チャートに渡せるパラメーターを```values```ファイルとして取得する。
+チャートに渡せるパラメーターを`values`ファイルとして取得する。
 
-```values```ファイル本体は、チャートリポジトリで参照できる。
-
-
+`values`ファイル本体は、チャートリポジトリで参照できる。
 
 > ↪️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
 
@@ -650,9 +566,7 @@ $ helm show values foo-chart
 
 Kubernetesに作成されるリソースのマニフェストを出力する。
 
-```.yaml```ファイルにリダイレクトするようにすると良い。
-
-
+`.yaml`ファイルにリダイレクトするようにすると良い。
 
 ```bash
 # チャート名をreleasesとしている場合
@@ -661,9 +575,7 @@ $ helm template . -f values.yaml >| releases.yaml
 
 #### ▼ -f
 
-指定した```values```ファイル使用して、```helm template```コマンドを実行する。
-
-
+指定した`values`ファイル使用して、`helm template`コマンドを実行する。
 
 ```bash
 $ helm template <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
@@ -675,19 +587,15 @@ $ helm template <チャートへのパス> -f <valuesファイルへのパス> >
 $ helm template ./foo-chart -f ./values.yaml >| release.yaml
 ```
 
-
 #### ▼ -set
 
-デフォルト値を上書きし、```helm template```コマンドを実行する。
+デフォルト値を上書きし、`helm template`コマンドを実行する。
 
 機密な変数を一時的に出力する場合に使うと良い。
-
-
 
 ```bash
 $ helm template <チャートへのパス> -f <valuesファイルへのパス> -set foo.user.password=$PASSWPRD >| <出力先ファイル>
 ```
-
 
 ```yaml
 # valuesファイル
@@ -698,8 +606,6 @@ foo:
 #### ▼ --include-crds
 
 カスタムリソース定義を含めて、マニフェストを出力する。
-
-
 
 ```bash
 $ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
@@ -735,7 +641,6 @@ $ helm uninstall foo-release
 
 > ↪️ 参考：https://helm.sh/docs/helm/helm_uninstall/
 
-
 <br>
 
 ### upgrade
@@ -746,18 +651,16 @@ $ helm uninstall foo-release
 
 Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
-そのため、```helm upgrade```コマンド時にはカスタムリソース定義のインストールを実行する仕様になっている。
+そのため、`helm upgrade`コマンド時にはカスタムリソース定義のインストールを実行する仕様になっている。
 
 > ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
 #### ▼ --atomic
 
-```helm upgrade```コマンドが正常に完了しなかった場合に、自動的にロールバックする。
-
-
+`helm upgrade`コマンドが正常に完了しなかった場合に、自動的にロールバックする。
 
 ```bash
-$ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス> 
+$ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
 **＊例＊**
@@ -766,12 +669,9 @@ $ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f <val
 $ helm template --atomic ./foo-chart -f ./values.yaml >| release.yaml
 ```
 
-
 #### ▼ --install
 
 新しいリビジョン番号を作成し、インストール済のHelmリリースをアップグレードする。
-
-
 
 ```bash
 $ helm upgrade --install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
@@ -787,9 +687,9 @@ TEST SUITE: None
 
 #### ▼ --skip-crds
 
-```install```オプションを有効化した上で、```--skip-crds```オプションを有効化する。
+`install`オプションを有効化した上で、`--skip-crds`オプションを有効化する。
 
-これにより、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールできる。
+これにより、`helm upgrade`コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールできる。
 
 ```bash
 $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
@@ -797,23 +697,17 @@ $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへの�
 
 **＊例＊**
 
-```helm upgrade```コマンド時に、カスタムリソース定義の作成をスキップし、非カスタムリソース定義のみをインストールする。
-
-
+`helm upgrade`コマンド時に、カスタムリソース定義の作成をスキップし、非カスタムリソース定義のみをインストールする。
 
 ```bash
 $ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >| release.yaml
 ```
 
-
 > ↪️ 参考：https://helm.sh/docs/helm/helm_upgrade/
-
 
 #### ▼ --wait
 
-作成したPodがReady状態になるまで、```helm upgrade```コマンドの完了を待機する。
-
-
+作成したPodがReady状態になるまで、`helm upgrade`コマンドの完了を待機する。
 
 ```bash
 $ helm upgrade --wait <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
@@ -826,4 +720,3 @@ $ helm upgrade --wait foo-release ./foo-chart -f ./values.yaml
 ```
 
 <br>
-

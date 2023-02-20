@@ -17,8 +17,6 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 ワーカーNode上で稼働するKubernetesコンポーネントのこと。
 
-
-
 > ↪️ 参考：
 >
 > - https://cstoku.dev/posts/2018/k8sdojo-24/
@@ -26,14 +24,13 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 <br>
 
-
 ## 02. ワーカーNode
 
 ### ワーカーNodeとは
 
 ノードコンポーネントが稼働する。Kubernetesの実行時に自動的に作成される。
 
-もし手動で作成する場合は、```kubectl```コマンドで```--register-node=false```とする必要がある。
+もし手動で作成する場合は、`kubectl`コマンドで`--register-node=false`とする必要がある。
 
 > ↪️ 参考：
 >
@@ -46,12 +43,9 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 ワーカーNodeがパケットを待ち受けるデフォルトのポート番号は、以下の通りである。
 
-
-
 > ↪️ 参考：https://kubernetes.io/docs/reference/ports-and-protocols/#node
 
 <br>
-
 
 ## 03. Nodeグループ
 
@@ -61,13 +55,11 @@ KubernetesにはNodeグループというリソースがなく、グループを
 
 ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2AutoScaling) を使用して、Nodeグループを実現できる。
 
-同じ設定値 (```.metadata.labels```キー、CPU、メモリ、など) や同じ役割を持ったNodeのグループのこと。
+同じ設定値 (`.metadata.labels`キー、CPU、メモリ、など) や同じ役割を持ったNodeのグループのこと。
 
 基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。
 
 Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。
-
-
 
 > ↪️ 参考：
 >
@@ -78,18 +70,18 @@ Nodeグループをターゲットとするロードバランサーでは、Node
 
 ### Nodeグループの粒度
 
-node affinityやnode selectorを実施できるように、```.metadata.labels```キーにNodeグループ名を設定しておく。
+node affinityやnode selectorを実施できるように、`.metadata.labels`キーにNodeグループ名を設定しておく。
 
-キー名は、```node.kubernetes.io/nodegroup```とする。
+キー名は、`node.kubernetes.io/nodegroup`とする。
 
-| Nodeグループ名の例と```.metadata.labels```キー値 | 説明                                                                                                                                                                                                              |
-|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```app```、```service```                  | アプリコンテナを稼働させる。                                                                                                                                                                                                  |
-| ```batch```、```job```                    | バッチ処理やジョブ (定期的に実行するように設定されたバッチ処理) のコンテナを配置する。                                                                                                                                                        |
-| ```deploy```                             | 他のKubernetesリソースをデプロイするためのKubernetesリソース (例：ArgoCDのPod) のコンテナを配置する。Nodeグループ内に含めずに、異なるClusterに切り分けて管理してもよい。                                                                                             |
-| ```ingress```、```gateway```              | ワーカーNodeへのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API Gatewayのアプリコンテナを配置する。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。また、アップグレード時間の短縮にも繋がる。 |
-| ```master```                             | セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS EKS、GCP GKE、など) の場合、このNodeグループは不要になる。                                                                                             |
-| ```system```                             | ログやメトリクスのデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS AppMesh、など) の場合、このNodeグループは不要になる。                     |
+| Nodeグループ名の例と`.metadata.labels`キー値 | 説明                                                                                                                                                                                                                                                                                                                              |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app`、`service`                             | アプリコンテナを稼働させる。                                                                                                                                                                                                                                                                                                      |
+| `batch`、`job`                               | バッチ処理やジョブ (定期的に実行するように設定されたバッチ処理) のコンテナを配置する。                                                                                                                                                                                                                                            |
+| `deploy`                                     | 他のKubernetesリソースをデプロイするためのKubernetesリソース (例：ArgoCDのPod) のコンテナを配置する。Nodeグループ内に含めずに、異なるClusterに切り分けて管理してもよい。                                                                                                                                                          |
+| `ingress`、`gateway`                         | ワーカーNodeへのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API Gatewayのアプリコンテナを配置する。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。また、アップグレード時間の短縮にも繋がる。 |
+| `master`                                     | セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS EKS、GCP GKE、など) の場合、このNodeグループは不要になる。                                                                                                                                              |
+| `system`                                     | ログやメトリクスのデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS AppMesh、など) の場合、このNodeグループは不要になる。                        |
 
 ```yaml
 apiVersion: v1
@@ -118,7 +110,6 @@ spec:
 
 <br>
 
-
 ## 04. kubelet
 
 ### kubeletとは
@@ -130,7 +121,6 @@ spec:
 ![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet.png)
 
 > ↪️ 参考：https://thinkit.co.jp/article/17453
-
 
 <br>
 
@@ -144,7 +134,7 @@ $ kubelet \
     ``# kubeletの設定ファイル` \
     --kubeconfig=/etc/kubernetes/kubelet.conf \
     --config=/var/lib/kubelet/config.yaml \
-    --authentication-token-webhook=true 
+    --authentication-token-webhook=true
     --authorization-mode=Webhook \
     --container-runtime=remote \
     ``# コンテナランタイムの設定` \
@@ -160,12 +150,9 @@ $ kubelet \
 
 > ↪️ 参考：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
 
-
 #### ▼ kubelet.confファイル
 
-```/etc/kubernetes/kubelet.conf```ファイルにkubeletを設定する。
-
-
+`/etc/kubernetes/kubelet.conf`ファイルにkubeletを設定する。
 
 ```yaml
 apiVersion: v1
@@ -196,9 +183,7 @@ users:
 
 #### ▼ kubeletのログの確認
 
-kubeletは、ワーカーNodeでデーモンとして常駐しているため、```journalctl```コマンドでログを取得できる。
-
-
+kubeletは、ワーカーNodeでデーモンとして常駐しているため、`journalctl`コマンドでログを取得できる。
 
 ```bash
 $ journalctl -u kubelet.service
@@ -224,7 +209,7 @@ kubelet[405976]: I0421 14:22:01.838974  405976 server.go:440] "Kubelet version" 
 
 ### kube-proxyとは
 
-kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、IPアドレスベースのサービスディスカバリー、検出したサービス (Pod) に対する```L4```ロードバランサー、として働く。
+kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、IPアドレスベースのサービスディスカバリー、検出したサービス (Pod) に対する`L4`ロードバランサー、として働く。
 
 > ↪️ 参考：
 >
@@ -250,7 +235,7 @@ $ kube-proxy \
 
 #### ▼ CoreDNSと組み合わせたサービスディスカバリー
 
-kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール (iptables) や```L4```ロードバランサー (ipvs) に、EndpointSliceで管理するPodの宛先情報を追加/削除する。
+kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール (iptables) や`L4`ロードバランサー (ipvs) に、EndpointSliceで管理するPodの宛先情報を追加/削除する。
 
 Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるか否かに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。
 
@@ -258,9 +243,8 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
 
-
 > ↪️ 参考：
-> 
+>
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
 > - https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/
@@ -271,24 +255,21 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
 
-
-
 > ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
 #### ▼ 確認方法
 
-```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。
+`iptable`コマンドで、『`KUBE-SERVICES`』というチェインのターゲットを確認する。
 
 ターゲットには、Serviceのルーティング先となるPod (異なるワーカーNode上にある場合もある) の宛先情報が登録されている。
 
-```source```列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを```destination```列のIPアドレスに変換する。
-
+`source`列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを`destination`列のIPアドレスに変換する。
 
 ```bash
 $ iptables -L -n KUBE-SERVICES -t nat --line-number
 
 Chain KUBE-SERVICES (2 references)
-num  target                     prot   opt   source      destination         
+num  target                     prot   opt   source      destination
 1    KUBE-SVC-ERIFXISQEP7F7OF4  tcp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns-tcp cluster IP */ tcp dpt:53
 2    KUBE-SVC-V2OKYYMBY3REGZOG  tcp    --    0.0.0.0/0   10.101.67.107        /* default/nginx-service cluster IP */ tcp dpt:8080
 3    KUBE-SVC-NPX46M4PTMTKRN6Y  tcp    --    0.0.0.0/0   10.96.0.1            /* default/kubernetes:https cluster IP */ tcp dpt:443
@@ -296,7 +277,6 @@ num  target                     prot   opt   source      destination
 5    KUBE-SVC-TCOU7JCQXEZGVUNU  udp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
 6    KUBE-NODEPORTS             all    --    0.0.0.0/0   0.0.0.0/0            /* kubernetes service nodeports; NOTE: this must be the last rule in this chain */ ADDRTYPE match dst-type LOCAL
 ```
-
 
 > ↪️ 参考：
 >
@@ -313,12 +293,10 @@ num  target                     prot   opt   source      destination
 
 デフォルトのプロキシモードである。
 
-
-
-| 項目                     | 仕組み                                                                                                |
-|--------------------------|----------------------------------------------------------------------------------------------------|
-| IPアドレスベースのサービスディスカバリー    | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| ```L4```のロードバランシングアルゴリズム | ランダム方式のみ。                                                                                          |
+| 項目                                     | 仕組み                                                                                                                            |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| `L4`のロードバランシングアルゴリズム     | ランダム方式のみ。                                                                                                                |
 
 > ↪️ 参考：
 >
@@ -326,36 +304,30 @@ num  target                     prot   opt   source      destination
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
-
 #### ▼ userspaceプロキシモード
 
 ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
 
-
-| 項目                     | 仕組み                                                                                                |
-|--------------------------|----------------------------------------------------------------------------------------------------|
-| IPアドレスベースのサービスディスカバリー    | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| ```L4```のロードバランシングアルゴリズム | ラウンドロビン方式のみ。                                                                                       |
+| 項目                                     | 仕組み                                                                                                                            |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| `L4`のロードバランシングアルゴリズム     | ラウンドロビン方式のみ。                                                                                                          |
 
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
-
 #### ▼ ipvsプロキシモード
-
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
+kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxyMode=true`、`--proxy-mode`オプションに`ipvs`を設定する。
 
-kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPVSProxyMode=true```、```--proxy-mode```オプションに```ipvs```を設定する。
-
-| 項目                     | 仕組み                                                                                            |
-|--------------------------|------------------------------------------------------------------------------------------------|
-| IPアドレスベースのサービスディスカバリー    | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
-| ```L4```のロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
-
+| 項目                                     | 仕組み                                                                                                                        |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
+| `L4`のロードバランシングアルゴリズム     | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
 
 > ↪️ 参考：
 >
@@ -363,41 +335,37 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
-
 <br>
 
 ### その他のプロキシー
 
 ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシーが、他にもいくつかある。
 
-- ```kubectl proxy```コマンド
-- ```minikube tunnel```コマンド
+- `kubectl proxy`コマンド
+- `minikube tunnel`コマンド
 - LoadBalancer
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
 
-
 <br>
 
-## 06. コンテナランタイム (コンテナエンジン) 
+## 06. コンテナランタイム (コンテナエンジン)
 
 ### コンテナランタイムとは
 
 イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
 
-
-
 > ↪️ 参考：https://thinkit.co.jp/article/17453
 
 <br>
 
-### セットアップ (Containerdの場合) 
+### セットアップ (Containerdの場合)
 
 #### ▼ Containerdのインストールの事前作業
 
-```【１】```
+`【１】`
 
-:    ```/etc/modules-load.d/containerd.conf```ファイルに、カーネルモジュールを設定する。
+: `/etc/modules-load.d/containerd.conf`ファイルに、カーネルモジュールを設定する。
 
 > ↪️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
 
@@ -406,18 +374,18 @@ overlay
 br_netfilter
 ```
 
-```【２】```
+`【２】`
 
-:    カーネルモジュールを読み込む。
+: カーネルモジュールを読み込む。
 
 ```bash
 $ modprobe overlay
 $ modprobe br_netfilter
 ```
 
-```【３】```
+`【３】`
 
-:    ```/etc/sysctl.d/99-kubernetes-cri.conf```ファイルに、カーネルパラメーターを設定する。
+: `/etc/sysctl.d/99-kubernetes-cri.conf`ファイルに、カーネルパラメーターを設定する。
 
 > ↪️ 参考：https://www.memotansu.jp/kubernetes/3790/#toc2
 
@@ -427,9 +395,9 @@ net.ipv4.ip_forward=1
 net.bridge.bridge-nf-call-ip6tables=1
 ```
 
-```【４】```
+`【４】`
 
-:    カーネルに設定を反映する。
+: カーネルに設定を反映する。
 
 ```bash
 $ sysctl --system
@@ -437,13 +405,12 @@ $ sysctl --system
 
 #### ▼ Containerdのインストール
 
-```【１】```
+`【１】`
 
-:    要件のパッケージをインストールする。
-
+: 要件のパッケージをインストールする。
 
 ```bash
-$ apt-get update -y \ 
+$ apt-get update -y \
   && apt-get install -y \
     apt-transport-https \
     ca-certificates \
@@ -451,17 +418,17 @@ $ apt-get update -y \
     software-properties-common
 ```
 
-```【２】```
+`【２】`
 
-:    Dockerの公式GPGキーを追加する。
+: Dockerの公式GPGキーを追加する。
 
 ```bash
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 ```
 
-```【３】```
+`【３】`
 
-:    リポジトリを追加する。
+: リポジトリを追加する。
 
 ```bash
 $ add-apt-repository \
@@ -470,22 +437,21 @@ $ add-apt-repository \
     stable"
 ```
 
-```【４】```
+`【４】`
 
-:    Containerdをインストールする。
+: Containerdをインストールする。
 
 ```bash
 $ apt-get update && apt-get install containerd.io
 ```
 
-
 > ↪️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 #### ▼ Containerdの設定ファイルの準備
 
-```【１】```
+`【１】`
 
-:    設定ファイルとして、```/etc/containerd/config.toml```ファイルを作成する。
+: 設定ファイルとして、`/etc/containerd/config.toml`ファイルを作成する。
 
 > ↪️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
@@ -494,9 +460,9 @@ $ mkdir -p /etc/containerd
 $ containerd config default | sudo tee /etc/containerd/config.toml
 ```
 
-```【２】```
+`【２】`
 
-:    Containerdに設定を反映する。
+: Containerdに設定を反映する。
 
 ```bash
 $ systemctl restart containerd
@@ -504,7 +470,7 @@ $ systemctl restart containerd
 
 #### ▼ kubeletによるContainerdの指定
 
-kubeletの起動時に、```--container-runtime```オプションと```--container-runtime-endpoint```オプションを使用する。
+kubeletの起動時に、`--container-runtime`オプションと`--container-runtime-endpoint`オプションを使用する。
 
 ```bash
 $ kubelet \
@@ -515,14 +481,11 @@ $ kubelet \
 
 > ↪️ 参考：https://repl.info/archives/2894/
 
-
 <br>
 
 ### ログ
 
-ワーカーNodeでデーモンとして常駐しているため、```journalctl```コマンドでログを取得できる。
-
-
+ワーカーNodeでデーモンとして常駐しているため、`journalctl`コマンドでログを取得できる。
 
 ```bash
 $ journalctl -u containerd.service
@@ -539,12 +502,11 @@ $ journalctl -u containerd.service
 
 コンテナのライフサイクルにはフェーズがある。
 
-| フェーズ名     | 説明                                                |
-|------------|---------------------------------------------------|
-| Waiting    | ```Running```フェーズと```Terminated```フェーズ以外のフェーズにある。 |
-| Running    | コンテナの起動が完了し、実行中である。                          |
-| Terminated | コンテナが正常/異常に停止した。                              |
-
+| フェーズ名 | 説明                                                          |
+| ---------- | ------------------------------------------------------------- |
+| Waiting    | `Running`フェーズと`Terminated`フェーズ以外のフェーズにある。 |
+| Running    | コンテナの起動が完了し、実行中である。                        |
+| Terminated | コンテナが正常/異常に停止した。                               |
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
 

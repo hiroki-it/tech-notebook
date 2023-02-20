@@ -3,18 +3,15 @@ title: 【IT技術の知見】Dで始まるAWSリソース＠AWS
 description: Dで始まるAWSリソース＠AWSの知見を記録しています。
 ---
 
-# ```D```で始まるAWSリソース＠AWS
+# `D`で始まるAWSリソース＠AWS
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. Direct Connect
 
@@ -26,13 +23,9 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 
 注意点として、DirectConnectは、それ専用の中継VPC内に作成する。
 
-
-
 > ↪️ 参考：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 
 WANの種類については、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network.html
 

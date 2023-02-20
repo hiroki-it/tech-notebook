@@ -9,13 +9,11 @@ description: コマンド＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. ```docker```コマンド
+## 01. `docker`コマンド
 
 ### attach
 
@@ -24,8 +22,6 @@ description: コマンド＠Dockerの知見を記録しています。
 **＊例＊**
 
 デタッチドモードを使用して、起動中コンテナに接続する。
-
-
 
 ```bash
 $ docker attach <起動中コンテナ名>
@@ -39,7 +35,7 @@ $ docker attach <起動中コンテナ名>
 
 **＊例＊**
 
-キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗した時は削除するように、```--force-rm```オプションを有効化するか否かを設定する。
+キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗した時は削除するように、`--force-rm`オプションを有効化するか否かを設定する。
 
 ```bash
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --force-rm=true --no-cache .
@@ -55,8 +51,6 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
 
-
-
 > ↪️ 参考：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
 
 ```bash
@@ -70,8 +64,6 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 #### ▼ commitとは
 
 停止中コンテナからコンテナイメージを作成する。
-
-
 
 **＊例＊**
 
@@ -89,8 +81,6 @@ $ docker commit <停止中コンテナ名> <Docker Hubユーザー名>/<コン�
 
 停止中コンテナのみを全て削除する。
 
-
-
 **＊例＊**
 
 ```bash
@@ -103,11 +93,9 @@ $ docker container prune
 
 #### ▼ cpとは
 
-Dockerfileの```COPY```コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを行うことは面倒のため、ホストからコンテナにコピーし、再読み出しを行う。
+Dockerfileの`COPY`コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを行うことは面倒のため、ホストからコンテナにコピーし、再読み出しを行う。
 
 ただし、コンテナを再作成すると元に戻ってしまうことに注意。
-
-
 
 **＊例＊**
 
@@ -136,8 +124,6 @@ $ docker logs <コンテナ名>
 
 起動はしない。
 
-
-
 ```bash
 $ docker create <コンテナ名> <コンテナイメージ名>:<バージョンタグ>
 ```
@@ -152,12 +138,10 @@ $ docker create <コンテナ名> <コンテナイメージ名>:<バージョン
 
 デタッチドモードを使用して、起動中コンテナ内でコマンドを実行する。
 
-実行するコマンドが```bash```や```shell```の場合、コンテナに通信できる。
-
-
+実行するコマンドが`bash`や`shell`の場合、コンテナに通信できる。
 
 ```bash
-# i：interactive、t：tty (対話モード) 
+# i：interactive、t：tty (対話モード)
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
 # コンテナ内に/bin/bash がない場合
@@ -166,11 +150,9 @@ $ docker exec -it <起動中コンテナ名> /bin/sh
 
 #### ▼ attach、execの違い
 
-まず```docker attach```コマンドでは、起動中コンテナに接続する。
+まず`docker attach`コマンドでは、起動中コンテナに接続する。
 
-```exit```コマンドを使用して、コンテナとの接続を切断した後、コンテナが停止してしまう。
-
-
+`exit`コマンドを使用して、コンテナとの接続を切断した後、コンテナが停止してしまう。
 
 ```bash
 # デタッチドモードによる起動
@@ -192,13 +174,11 @@ root        33  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 $ docker container ps -a --no-trunc # コンテナのフェーズがEXITedになっている
 ```
 
-一方で```docker exec```コマンドでは、起動中コンテナでコマンドを実行する。
+一方で`docker exec`コマンドでは、起動中コンテナでコマンドを実行する。
 
-実行するコマンドが```bash```や```shell```の場合、コンテナに通信できる。
+実行するコマンドが`bash`や`shell`の場合、コンテナに通信できる。
 
-```exit```コマンドを使用して、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
-
-
+`exit`コマンドを使用して、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
 
 ```bash
 # デタッチドモードによる起動
@@ -231,8 +211,6 @@ $ docker container ps -a --no-trunc # コンテナのフェーズがUPになっ�
 
 レジストリ側に保管されているイメージを検索する。
 
-
-
 ```bash
 $ docker search <コンテナイメージ名>
 ```
@@ -246,8 +224,6 @@ $ docker search <コンテナイメージ名>
 **＊例＊**
 
 ホストにインストールされたイメージを確認する。
-
-
 
 ```bash
 $ docker images
@@ -269,8 +245,6 @@ $ docker image prune -a
 
 タグ名のないイメージのみを全て削除する。
 
-
-
 ```bash
 $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet)
 ```
@@ -285,9 +259,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 起動中コンテナの全ての設定内容を取得する。
 
-```grep```とも組み合わせられる。
-
-
+`grep`とも組み合わせられる。
 
 ```bash
 $ docker inspect <起動中コンテナ名>
@@ -301,7 +273,7 @@ json-fileドライバーを使用している時に、ログファイルの出�
 
 ```bash
  $ docker inspect <起動中コンテナ名> | grep LogPath
- 
+
  "LogPath": "/var/lib/docker/containers/*****-json.log",
 ```
 
@@ -311,7 +283,7 @@ json-fileドライバーを使用している時に、ログファイルの出�
 
 #### ▼ --follow
 
-標準出力 (```/dev/stdout```) /標準エラー出力 (```/dev/stderr```) に出力されたログを表示し続ける。ロギングドライバーが```json-file```の場合のみ有効。
+標準出力 (`/dev/stdout`) /標準エラー出力 (`/dev/stderr`) に出力されたログを表示し続ける。ロギングドライバーが`json-file`の場合のみ有効。
 
 ```bash
 $ docker logs -f <コンテナ名>
@@ -321,7 +293,7 @@ $ docker logs -f <コンテナ名>
 
 **＊例＊**
 
-指定した行数だけ、ログを取得する。ロギングドライバーが```json-file```の場合のみ有効。
+指定した行数だけ、ログを取得する。ロギングドライバーが`json-file`の場合のみ有効。
 
 ```bash
 $ docker logs --follow=true --tail=500 <コンテナ名>
@@ -335,13 +307,9 @@ $ docker logs --follow=true --tail=500 <コンテナ名>
 
 イメージレジストリにログインする。
 
-
-
 #### ▼ --password-stdin
 
-コマンドへの標準入力をパスワードとしつつ、```docker login```コマンドを実行する。
-
-
+コマンドへの標準入力をパスワードとしつつ、`docker login`コマンドを実行する。
 
 ```bash
 $ echo "pass" | docker login --username foo --password-stdin
@@ -373,8 +341,6 @@ $ docker network prune
 
 複数のコンテナが起動している時に、コンテナがいずれのネットワークを使用しているかを確認する。
 
-
-
 ```bash
 $ docker network inspect <ネットワーク名>
 ```
@@ -389,8 +355,6 @@ $ docker network inspect <ネットワーク名>
 
 コンテナの起動と停止に関わらず、IDなどの一覧を取得する。
 
-
-
 ```bash
 $ docker ps -a
 ```
@@ -402,8 +366,6 @@ $ docker ps -a
 **＊例＊**
 
 レジストリ側のコンテナイメージをクライアント側にインストールする。
-
-
 
 ```bash
 $ docker pull <コンテナイメージ名>:<バージョンタグ>
@@ -419,8 +381,6 @@ $ docker pull <コンテナイメージ名>:<バージョンタグ>
 
 ホストで作成したコンテナイメージを、指定したDockerHubのユーザーにアップロードする。
 
-
-
 ```bash
 $ docker push <Docker Hubユーザー名>/<コンテナイメージ名>:<バージョンタグ>
 ```
@@ -430,8 +390,6 @@ $ docker push <Docker Hubユーザー名>/<コンテナイメージ名>:<バー�
 ホストで作成したコンテナイメージを、指定したECRにアップロードする。
 
 ECRはタグ名がやや特殊のため、事前にタグを付け替える必要がある。
-
-
 
 ```bash
 # docker tag foo:latest <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
@@ -451,8 +409,6 @@ $ docker push <イメージレジストリ名>/<イメージリポジトリ名>:
 
 起動中/停止中の全てコンテナを強制的に削除する。
 
-
-
 ```bash
 $ docker rm --force $(docker ps --all --quiet)
 ```
@@ -463,11 +419,9 @@ $ docker rm --force $(docker ps --all --quiet)
 
 #### ▼ --hostname
 
-コンテナ内の```/etc/hosts```ファイルで、コンテナのプライベートIPアドレスを確認できる。
+コンテナ内の`/etc/hosts`ファイルで、コンテナのプライベートIPアドレスを確認できる。
 
-```hostname```オプションで命名していればその名前、指定していなければランダムな文字列が割り当てられる。
-
-
+`hostname`オプションで命名していればその名前、指定していなければランダムな文字列が割り当てられる。
 
 **＊例＊**
 
@@ -488,7 +442,7 @@ ff02::2	ip6-allrouters
 
 #### ▼ --publish
 
-指定したホストポートとコンテナポートのマッピングを実行する。```--publish-all```オプションではホストポートをランダムに選択してポートマッピングを実行する。
+指定したホストポートとコンテナポートのマッピングを実行する。`--publish-all`オプションではホストポートをランダムに選択してポートマッピングを実行する。
 
 > ↪️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
@@ -498,13 +452,11 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイ�
 
 #### ▼ --expose
 
-他のコンテナに公開するコンテナポートを```expose```オプションで設定できる。
+他のコンテナに公開するコンテナポートを`expose`オプションで設定できる。
 
 これはDockerfileでEXPOSE命令として設定しても良い。
 
 補足として、プロセスの受信するポートと合わせる必要がある。
-
-
 
 > ↪️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
@@ -518,15 +470,13 @@ $ docker run -d -it --name <コンテナ名> --expose=80 <コンテナイメー�
 
 加えてそのコンテナ内でコマンドを実行する。
 
-起動時に```bash```プロセスや```shell```プロセスを実行すると、コンテナに通信できる。
+起動時に`bash`プロセスや`shell`プロセスを実行すると、コンテナに通信できる。
 
-何も渡さない場合は、デフォルトのプロセスとして```bash```プロセスが実行される。
+何も渡さない場合は、デフォルトのプロセスとして`bash`プロセスが実行される。
 
-```docker run```コマンドでは、アタッチモードとデタッチモードを選択できる。
+`docker run`コマンドでは、アタッチモードとデタッチモードを選択できる。
 
-新しく起動したコンテナを停止後に自動削除する場合は、```rm```オプションを付けるようにする。
-
-
+新しく起動したコンテナを停止後に自動削除する場合は、`rm`オプションを付けるようにする。
 
 **＊例＊**
 
@@ -538,11 +488,9 @@ $ docker run -a -it --rm --name <コンテナ名> <コンテナイメージ名>:
 $ docker run -d -it --rm --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
-コンテナの起動時に、```bash```プロセスを実行すると以下のようなエラーが出ることがある。
+コンテナの起動時に、`bash`プロセスを実行すると以下のようなエラーが出ることがある。
 
-その場合は、```shell```プロセスを実行する。
-
-
+その場合は、`shell`プロセスを実行する。
 
 ```bash
 docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
@@ -551,8 +499,6 @@ docker: Error response from daemon: OCI runtime create failed: container_linux.g
 アタッチモードは、フォアグラウンド起動である。
 
 ターミナルにプロセスのログが表示されないため、同一ターミナルで他のコマンドを入力できる。
-
-
 
 **＊例＊**
 
@@ -567,10 +513,7 @@ $ docker run -a -it --name <コンテナ名> <コンテナイメージ名>:<バ�
 
 プロセスのログを監視できるが、他のプロセスを入力するためには、そのターミナル上でコンテナを停止させる必要がある。
 
-
-
 **＊例＊**
-
 
 ```bash
 # -d: detached mode
@@ -583,15 +526,11 @@ $ docker run -d -it --name <コンテナ名> <コンテナイメージ名>:<バ�
 
 コンテナを起動する。
 
-```start```コマンドでは、アタッチモードによる起動しかできない。
-
-
+`start`コマンドでは、アタッチモードによる起動しかできない。
 
 **＊例＊**
 
 停止中コンテナをアタッチモードによって起動する。
-
-
 
 ```bash
 $ docker start -i <停止中コンテナ名>
@@ -605,15 +544,11 @@ $ docker start -i <停止中コンテナ名>
 
 コンテナイメージを署名する。
 
-
-
 > ↪️ 参考：https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
 
 #### ▼ inspect
 
 署名されたコンテナイメージか否かを確認する。
-
-
 
 > ↪️ 参考：https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/
 
@@ -632,7 +567,7 @@ $ docker trust inspect <コンテナイメージ名>:<バージョンタグ>
         ]
       }
     ],
-    
+
     ...
   }
 ]
@@ -648,8 +583,6 @@ $ docker trust inspect <コンテナイメージ名>:<バージョンタグ>
 
 起動中コンテナを停止する。
 
-
-
 ```bash
 $ docker stop <起動中コンテナ名>
 ```
@@ -657,8 +590,6 @@ $ docker stop <起動中コンテナ名>
 **＊例＊**
 
 全てのコンテナを停止する。
-
-
 
 ```bash
 $ docker stop $(docker ps --all --quiet)
@@ -672,9 +603,7 @@ $ docker stop $(docker ps --all --quiet)
 
 ボリュームマウントを作成する。
 
-```docker```コマンドではなく、```docker compose```コマンドで作成することが推奨されている。
-
-
+`docker`コマンドではなく、`docker compose`コマンドで作成することが推奨されている。
 
 **＊例＊**
 
@@ -744,8 +673,6 @@ Dockerfileでボリュームマウントを行う場合、コンテナ側のマ�
 dockerエリアのマウントポイントは、自動的に作成される。
 
 Docker Composeで行うことが推奨されている。
-
-
 
 ```dockerfile
 FROM ubuntu

@@ -9,8 +9,6 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -51,9 +49,7 @@ PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行され�
 
 例えば、ログの出力先はそれぞれ個別に設定する必要がある。
 
-
 ![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_fastcgi.png)
-
 
 > ↪️ 参考：
 >
@@ -69,8 +65,6 @@ PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行され�
 #### ▼ -t
 
 設定ファイルを検証する。
-
-
 
 ```bash
 $ php-fpm -t
@@ -129,4 +123,3 @@ Fatal error: Allowed memory size of ***** bytes exhausted (tried to allocate 16 
 ```
 
 <br>
-

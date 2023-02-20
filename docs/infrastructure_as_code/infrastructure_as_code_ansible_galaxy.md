@@ -9,17 +9,13 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. Ansible Galaxyとは
 
-```role```ディレクトリ配下をモジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。
-
-
+`role`ディレクトリ配下をモジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。
 
 > ↪️ 参考：https://knowledge.sakura.ad.jp/3118/
 
@@ -31,9 +27,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 #### ▼ ディレクトリ構成
 
-```meta```ディレクトリ配下に、モジュールを宣言する設定ファイルを配置する。
-
-
+`meta`ディレクトリ配下に、モジュールを宣言する設定ファイルを配置する。
 
 > ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
@@ -45,18 +39,15 @@ repository/
 │   ├── tasks
 │   │   └── main.yml
 │   │
-... 
 ```
 
 #### ▼ main.yml
 
-```meta```ディレクトリ配下の```main.yml```ファイルモジュールであることを宣言する。
-
-
+`meta`ディレクトリ配下の`main.yml`ファイルモジュールであることを宣言する。
 
 ```yaml
 galaxy_info:
-  min_ansible_version: '1.0.0'
+  min_ansible_version: "1.0.0"
 dependencies: []
 ```
 
@@ -66,12 +57,9 @@ dependencies: []
 
 #### ▼ ディレクトリ構成
 
-```meta```ディレクトリ配下に、モジュールを宣言する設定ファイルを配置する。
-
-
+`meta`ディレクトリ配下に、モジュールを宣言する設定ファイルを配置する。
 
 > ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
-
 
 ```yaml
 repository/
@@ -83,18 +71,13 @@ repository/
 │   │
 │   └── requirements.yml
 │
-
-...
-
+---
 └── playbook.yml
-
 ```
 
 #### ▼ requirements.yml
 
 リモート参照するリポジトリのURLを設定する。
-
-
 
 ```yaml
 - name: foo
@@ -104,9 +87,7 @@ repository/
 
 #### ▼ playbook.yml
 
-```playbook.yml```ファイルでモジュール名を設定する。
-
-
+`playbook.yml`ファイルでモジュール名を設定する。
 
 ```yaml
 - hosts: all
@@ -119,7 +100,7 @@ repository/
 
 ### コマンド
 
-Ansibleのコントロールノードで```ansible-galaxy```コマンドを実行し、管理対象ノードの```~/.ansible/roles```ディレクトリ配下にモジュールをインストールする。
+Ansibleのコントロールノードで`ansible-galaxy`コマンドを実行し、管理対象ノードの`~/.ansible/roles`ディレクトリ配下にモジュールをインストールする。
 
 > ↪️ 参考：https://note.com/shift_tech/n/n087a9db743d1
 

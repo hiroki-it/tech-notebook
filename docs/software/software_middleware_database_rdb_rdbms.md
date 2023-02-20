@@ -9,10 +9,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
-
 
 <br>
 
@@ -20,8 +17,8 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 ### RDBMSの種類
 
-| RDBMS      | RDB           |
-|------------|---------------|
+| RDBMS      | RDB            |
+| ---------- | -------------- |
 | MariaDB    | MariaDBのDB    |
 | MySQL      | MySQLのDB      |
 | PostgreSQL | PostgreSQLのDB |
@@ -34,12 +31,10 @@ RDBMSは、リレーショナルエンジン、DBエンジン (ストレージ�
 
 ![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DB管理システムの仕組み.png)
 
-
 > ↪️ 参考：
-> 
+>
 > - https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/
 > - https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html
-
 
 <br>
 
@@ -53,16 +48,13 @@ RDBMSは、リレーショナルエンジン、DBエンジン (ストレージ�
 
 <br>
 
-
-### DBエンジン (ストレージエンジン) 
+### DBエンジン (ストレージエンジン)
 
 #### ▼ DBエンジンとは
 
 『ストレージエンジン』ともいう。
 
 RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフトウェアのこと。
-
-
 
 > ↪️ 参考：
 >
@@ -73,14 +65,11 @@ RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフ
 
 RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジンが異なる。
 
-
-
 - InnoDB
 - Memory
 - CSV
 
 <br>
-
 
 ### 保管場所
 
@@ -89,8 +78,6 @@ RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジ�
 メモリ (例：DRAMなどの物理メモリ、仮想メモリ) 上にデータを保管するDBを、ストレージ上に保管することと比較して、インメモリDBという。
 
 インメモリDBを採用する場合は、データ保管とプロセス割り当ての間でメモリ領域を奪い合うことになるため、メモリサイズを大きくする必要がある。
-
-
 
 > ↪️ 参考：
 >
@@ -102,8 +89,6 @@ RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジ�
 
 ストレージ (例：HDD、SSD) 上にデータを保管するDBを、メモリ上に保管することと比較して、オンディスクDBという。
 
-
-
 > ↪️ 参考：
 >
 > - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
@@ -111,7 +96,7 @@ RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジ�
 
 <br>
 
-### RDB (関係DB) 
+### RDB (関係DB)
 
 #### ▼ RDBとは
 
@@ -119,10 +104,7 @@ RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジ�
 
 NoSQLとは異なり、データはストレージに保存する。
 
-
-
 <br>
-
 
 ## 03. RDBMSクライアント
 
@@ -136,12 +118,11 @@ RDBMSの種類に応じたクエリが必要になる。
 
 クエリの実装の抽象度に応じて、パッケージがある。
 
-| クエリパッケージ | 説明                                                                    |
-|----------|-----------------------------------------------------------------------|
-| 生のクエリ   | RDB固有のクエリのこと。                                                         |
-| クエリビルダー  | RDB固有のクエリを実装しやすくしたパッケージのこと。                                         |
-| ORM      | アプリケーション側にDBテーブルに対応したモデルを定義し、これを使用してRDBに固有のクエリを実行するパッケージのこと。 |
-
+| クエリパッケージ | 説明                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------- |
+| 生のクエリ       | RDB固有のクエリのこと。                                                                                             |
+| クエリビルダー   | RDB固有のクエリを実装しやすくしたパッケージのこと。                                                                 |
+| ORM              | アプリケーション側にDBテーブルに対応したモデルを定義し、これを使用してRDBに固有のクエリを実行するパッケージのこと。 |
 
 > ↪️ 参考：https://levelup.gitconnected.com/raw-sql-vs-query-builder-vs-orm-eee72dbdd275
 
@@ -155,19 +136,15 @@ RDBMSの種類に応じたクエリが必要になる。
 
 TCP/IPプロトコルを使用する。
 
-
-
 > ↪️ 参考：https://en.wikipedia.org/wiki/Database_connection
 
 #### ▼ コネクションプール
-
 
 アプリからDBへのクエリ送信時に新しく作成したコネクションを、非アクティブ状態として保持しておき、以降のクエリ送信時に再利用する。
 
 一定回数再利用されたり、一定期間使用されていないコネクションは削除される。
 
 ![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_connection-pool.png)
-
 
 > ↪️ 参考：
 >
@@ -184,7 +161,4 @@ TCP/IPプロトコルを使用する。
 
 そのため、コネクションプロキシーの採用時には、プリペアードステートメントを使用できない。
 
-
-
 <br>
-

@@ -9,13 +9,11 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. Traceエージェント (サーバーの場合) 
+## 01. Traceエージェント (サーバーの場合)
 
 ### Traceエージェントとは
 
@@ -25,21 +23,19 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
-
 > ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
-
 
 <br>
 
 ### セットアップ
 
-#### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
+#### ▼ `/etc/datadog-agent/datadog.yaml`ファイル
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
-## 02. Traceエージェント (AWS ECS Fargateの場合) 
+## 02. Traceエージェント (AWS ECS Fargateの場合)
 
 ### Traceエージェントとは
 
@@ -47,7 +43,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 サーバーの場合とは異なり、自身が収集しにいくことはできない。
 
-仕組みとして、アプリコンテナのトレースパッケージは分散トレースを作成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。
+仕組みとして、アプリコンテナのトレースパッケージは分散トレースを作成し、datadogコンテナの『`http://localhost:8126`』にこれを送信する。
 
 datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
@@ -68,14 +64,13 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 
 #### ▼ デバッグ
 
-| 方法                 | 説明                                                                                                           | 補足                                                                                                                                                                                       |
-|--------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 起動ログの有効化        | 環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、トレーサーの設定値を確認できる。 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                              |
-| デバッグログの有効化        | 各トレーサーが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。  | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                        |
-| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                | ↪️ 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
+| 方法                      | 説明                                                                                                                                                                              | 補足                                                                                                                                                                                          |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 起動ログの有効化          | 環境変数の`DD_TRACE_STARTUP_LOGS`を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、トレーサーの設定値を確認できる。                                 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                                |
+| デバッグログの有効化      | 各トレーサーが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                          |
+| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                                                      | ↪️ 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
 <br>
-
 
 ## 03. 分散トレースの作成
 
@@ -85,34 +80,21 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 
 Datadogで、分散トレースは複数のスパンの配列データとして定義される。
 
-
-
 > ↪️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 ```yaml
-[
-    span1,
-    span2,
-    span3
-]
+[span1, span2, span3]
 ```
 
 また、複数の分散トレース自体を配列データとして定義できる。
 
-
-
 ```yaml
-[
-    trace1,
-    trace2,
-    trace3
-]
+[trace1, trace2, trace3]
 ```
 
 #### ▼ スパンの構成
 
 Datadogで、スパンはJSON型データとして定義される。アプリケーション内のトレーサーで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。
-
 
 **＊実装例＊**
 
@@ -120,37 +102,34 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
 [
   [
     {
-      "duration": 123,           # 処理の所要時間
-      "error": 0,                # エラーの有無
+      "duration": 123, # 処理の所要時間
+      "error": 0, # エラーの有無
       "meta": {
-        "env": "prd"             # タグ
-      },
+          "env": "prd", # タグ
+        },
       "metrics": {
-        "baz-sum": 123           # マイクロサービスのメトリクス
-      },
+          "baz-sum": 123, # マイクロサービスのメトリクス
+        },
       "name": "laravel.request", # スパン名
-      "parent_id": 123,          # 親スパンID
-      "resource": "/foo",        # アクセスされたリソース
-      "service": "laravel",      # マイクロサービス名
-      "span_id": 123456789,      # スパンID
-      "start": 0,                # 処理開始時間
-      "trace_id": 123456789,     # トレースID
-      "type": "web"              # マイクロサービスのタイプ
-    }
-  ]
+      "parent_id": 123, # 親スパンID
+      "resource": "/foo", # アクセスされたリソース
+      "service": "laravel", # マイクロサービス名
+      "span_id": 123456789, # スパンID
+      "start": 0, # 処理開始時間
+      "trace_id": 123456789, # トレースID
+      "type": "web", # マイクロサービスのタイプ
+    },
+  ],
 ]
 ```
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
-
 #### ▼ メタデータ
 
-スパンの```meta```キーにメタデータのセットを割り当てられる。
+スパンの`meta`キーにメタデータのセットを割り当てられる。
 
 メタデータはタグとして動作する。
-
-
 
 **＊実装例＊**
 
@@ -189,13 +168,11 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 スパンの持つデータをデータポイントとして集計すると、メトリクスのデータポイントを収集できる。
 
-
-
 > ↪️ 参考：https://docs.datadoghq.com/tracing/generate_metrics/
 
 #### ▼ メトリクス名の構成要素
 
-メトリクス名は『```trace.<スパン名>.<メトリクス接尾辞名>```』の名前で構成される。
+メトリクス名は『`trace.<スパン名>.<メトリクス接尾辞名>`』の名前で構成される。
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
 
@@ -203,33 +180,26 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 データポイントとなったスパン名が割り当てられる。
 
-
-
 **＊例＊**
 
-- ```trace.web.request.<メトリクス接尾辞名>```
-- ```trace.db.query.<メトリクス接尾辞名>```
-- ```trace.db.commit.<メトリクス接尾辞名>```
+- `trace.web.request.<メトリクス接尾辞名>`
+- `trace.db.query.<メトリクス接尾辞名>`
+- `trace.db.commit.<メトリクス接尾辞名>`
 
 #### ▼ メトリクスのメトリクス接尾辞名
 
 メトリクスの種類に応じた接尾辞名が割り当てられる。
 
-
-
-
 **＊例＊**
 
-- ```trace.<スパン名>.hits.*****``` (該当スパンのヒット数) 
-- ```trace.<スパン名>.duration``` (該当スパンの処理時間) 
-- ```trace.<スパン名>.duration.by.*****``` (該当スパンの処理時間の割合) 
-- ```trace.<スパン名>.errors.*****``` (該当スパンにおけるエラー数) 
+- `trace.<スパン名>.hits.*****` (該当スパンのヒット数)
+- `trace.<スパン名>.duration` (該当スパンの処理時間)
+- `trace.<スパン名>.duration.by.*****` (該当スパンの処理時間の割合)
+- `trace.<スパン名>.errors.*****` (該当スパンにおけるエラー数)
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 
-
 <br>
-
 
 ### エラートラッキング
 
@@ -247,13 +217,11 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ マイクロサービスタイプとは
 
-トレーサによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の```4```個に分類される。
+トレーサによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の`4`個に分類される。
 
-各マイクロサービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる。
+各マイクロサービスの`span.type`属性に割り当てられるタイプ名から自動的に割り振られる。
 
 タイプ名の種類については、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：
 >
@@ -271,8 +239,6 @@ PHPトレーサーでlaravel内からタグを収集した例
 PHPトレーサの各インテグレーションのコードについては以下のリンクを参考にせよ。
 
 コードから、PHPトレーサーがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
-
-
 
 > ↪️ 参考：
 >

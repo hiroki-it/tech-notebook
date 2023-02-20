@@ -9,8 +9,6 @@ description: Linux標準＠セキュリティ系ミドルウェアの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,8 +19,6 @@ description: Linux標準＠セキュリティ系ミドルウェアの知見を�
 
 Linuxにデフォルトで導入されているミドルウェアで、セキュリティを制御する。
 
-
-
 <br>
 
 ### 設定
@@ -31,11 +27,9 @@ Linuxにデフォルトで導入されているミドルウェアで、セキュ
 
 アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため、基本的には無効にしておく。
 
+`【１】`
 
-
-```【１】```
-
-:    SELinuxの状態を確認
+: SELinuxの状態を確認
 
 ```bash
 $ getenforce
@@ -44,9 +38,9 @@ $ getenforce
 Enforcing
 ```
 
-```【２】```
+`【２】`
 
-:    ```/etc/selinux/config```を修正する。
+: `/etc/selinux/config`を修正する。
 
 ```ini
 # This file controls the state of SELinux on the system.
@@ -60,17 +54,15 @@ SELINUX=disabled
 
 # SELINUXTYPE= can take one of these three values:
 #     targeted - Targeted processes are protected,
-#     minimum - Modification of targeted policy. Only selected processes are protected. 
+#     minimum - Modification of targeted policy. Only selected processes are protected.
 #     mls - Multi Level Security protection.
 SELINUXTYPE=targeted
 ```
 
-```【３】```
+`【３】`
 
-:    OSを再起動
+: OSを再起動
 
 OSを再起動しないと設定が反映されない。
-
-
 
 <br>

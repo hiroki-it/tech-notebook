@@ -9,12 +9,9 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. helmfileコマンド
 
@@ -22,10 +19,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 #### ▼ オプション無し
 
-使用する```helmfile.d```ディレクトリ下にある```helm.yaml```ファイルを再帰的に使用する。
-
-
-
+使用する`helmfile.d`ディレクトリ下にある`helm.yaml`ファイルを再帰的に使用する。
 
 ```bash
 # helmfile.dディレクトリ配下を再帰的に読み込む。
@@ -34,20 +28,15 @@ $ helmfile <サブコマンド>
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
-
 #### ▼ -e
 
 Helmリリース対象の実行環境名を設定する。
-
-
-
 
 ```bash
 $ helmfile -e prd <コマンド>
 ```
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
-
 
 **＊例＊**
 
@@ -61,10 +50,7 @@ $ helmfile -e prd apply
 
 #### ▼ -f
 
-使用する```helmfile.yaml```ファイルを指定する。
-
-
-
+使用する`helmfile.yaml`ファイルを指定する。
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml <コマンド>
@@ -72,20 +58,17 @@ $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
-
 <br>
 
 ### apply
 
 #### ▼ apply
 
-まず```helmfile diff```コマンドを実行し、この時に差分があれば、```helmfile apply```コマンドを実行する。
+まず`helmfile diff`コマンドを実行し、この時に差分があれば、`helmfile apply`コマンドを実行する。
 
-```helmfile sync```コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。
+`helmfile sync`コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。
 
 注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
-
-
 
 ```bash
 $ helmfile -e prd apply
@@ -100,7 +83,7 @@ REVISION: 1
 TEST SUITE: None
 
 Listing releases matching ^foo-release$
-foo-release 2022-06-01 13:53:57.271186378 +0900 JST deployed foo-release-0.0.1 0.0.1      
+foo-release 2022-06-01 13:53:57.271186378 +0900 JST deployed foo-release-0.0.1 0.0.1
 
 UPDATED RELEASES:
 NAME                CHART                VERSION
@@ -120,13 +103,11 @@ foo-release         ./charts/foo         0.0.1
 
 インストール済みの全てのチャートをアンインストールする。
 
-
 ```bash
 $ helmfile -e prd destroy
 ```
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
-
 
 <br>
 
@@ -135,8 +116,6 @@ $ helmfile -e prd destroy
 #### ▼ list
 
 Helmfileでインストールしたチャートの一覧を取得する。
-
-
 
 ```bash
 $ helmfile list
@@ -155,35 +134,32 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 全てのHelmリリースに対して、helm-diffプラグインを実行する。
 
-helm-diffプラグインでは、前回のHelmリリースと、今回の```helm upgrade --dry-run```コマンドの差分を取得する。
+helm-diffプラグインでは、前回のHelmリリースと、今回の`helm upgrade --dry-run`コマンドの差分を取得する。
 
 ```bash
 $ helmfile -e prd diff
 ```
-
 
 > ↪️ 参考：
 >
 > - https://helmfile.readthedocs.io/en/latest/#diff
 > - https://github.com/databus23/helm-diff#helm-diff-plugin
 
-
 #### ▼ --debug
 
-オプションの無い```helmfile diff```では、内部的な```helm upgrade --dry-run```コマンドのどの段階でエラーになったかがわからない。
+オプションの無い`helmfile diff`では、内部的な`helm upgrade --dry-run`コマンドのどの段階でエラーになったかがわからない。
 
-```--debug```オプションであれば、```helm upgrade --dry-run```コマンドの結果を確認できる。
+`--debug`オプションであれば、`helm upgrade --dry-run`コマンドの結果を確認できる。
 
 ```bash
 $ helmfile -e prd --debug diff
 ```
 
-
 #### ▼ 色付け
 
-```helmfile diff```コマンドでは、差分を色付けできる。
+`helmfile diff`コマンドでは、差分を色付けできる。
 
-ただ、バージョンによって機能しないことがあるため、その場合は明示的に```HELM_DIFF_COLOR```変数を有効化する。
+ただ、バージョンによって機能しないことがあるため、その場合は明示的に`HELM_DIFF_COLOR`変数を有効化する。
 
 ```bash
 $ HELM_DIFF_COLOR=true helmfile -e prd diff
@@ -195,7 +171,7 @@ $ HELM_DIFF_COLOR=true helmfile -e prd diff
 
 マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。
 
-```grep```コマンドを使用して、差分のあるリソースやファイルを確認しておく。
+`grep`コマンドを使用して、差分のあるリソースやファイルを確認しておく。
 
 ```bash
 $ helmfile -e prd diff | grep kind
@@ -221,12 +197,11 @@ Source: project/manifests/persistent-volume.yaml
 
 #### ▼ syncとは
 
-全てのHelmリリースに関して、```helm upgrade --install```コマンドを実行する。
+全てのHelmリリースに関して、`helm upgrade --install`コマンドを実行する。
 
-```helmfile apply```コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョン番号を更新する。
+`helmfile apply`コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョン番号を更新する。
 
 注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
-
 
 ```bash
 $ helmfile -e prd sync
@@ -234,16 +209,13 @@ $ helmfile -e prd sync
 
 > ↪️ 参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
-
 <br>
 
 ### template
 
 #### ▼ templateとは
 
-全てのHelmリリースに関して、```helm template```コマンドを実行する。
-
-
+全てのHelmリリースに関して、`helm template`コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template
@@ -251,12 +223,11 @@ $ helmfile -e prd template
 
 #### ▼ --include-crds
 
-カスタムリソース定義も含めて、```helm template```コマンドを実行する。
+カスタムリソース定義も含めて、`helm template`コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template --include-crds
 ```
-
 
 <br>
 
@@ -264,11 +235,11 @@ $ helmfile -e prd template --include-crds
 
 #### ▼ write-valuesとは
 
-個人的に感動したコマンド。```helmfile```コマンドの実行で使用される```values```ファイルを、ファイルに書き出す。
+個人的に感動したコマンド。`helmfile`コマンドの実行で使用される`values`ファイルを、ファイルに書き出す。
 
-複数の```values```ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた```values```ファイルが優先されるようになっている。
+複数の`values`ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた`values`ファイルが優先されるようになっている。
 
-この時に、```helmfile write-values```コマンドを使用すると、優先された値で定義された```values```ファイルを確認できる。
+この時に、`helmfile write-values`コマンドを使用すると、優先された値で定義された`values`ファイルを確認できる。
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml write-values

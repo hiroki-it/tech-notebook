@@ -9,8 +9,6 @@ description: コマンド＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -27,26 +25,25 @@ $ brew install istioctl
 
 #### ▼ チャートとして
 
+`【１】`
 
-```【１】```
-
-:    インストール先のディレクトリに移動する。
+: インストール先のディレクトリに移動する。
 
 ```bash
 $ cd /Users/hiroki.hasegawa/projects
 ```
 
-```【２】```
+`【２】`
 
-:    ```istioctl```コマンドをインストールする。
+: `istioctl`コマンドをインストールする。
 
 ```bash
 $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
 ```
 
-```【３】```
+`【３】`
 
-:    ```istioctl```コマンドへのパスを環境変数に登録する。
+: `istioctl`コマンドへのパスを環境変数に登録する。
 
 ```bash
 $ cd istio-1.12.1
@@ -54,7 +51,6 @@ $ export PATH=$PWD/bin:$PATH
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/getting-started/#download
-
 
 <br>
 
@@ -64,28 +60,24 @@ $ export PATH=$PWD/bin:$PATH
 
 Istioの機能のセットを提供する。
 
-実際には設定済みのIstioOperatorであり、```istioctl```コマンドのインストール時に```manifests```ディレクトリ以下に配置される。
-
-
+実際には設定済みのIstioOperatorであり、`istioctl`コマンドのインストール時に`manifests`ディレクトリ以下に配置される。
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
 #### ▼ プロファイルの種類
 
-| ユースケース               | default  |   demo   |         empty          | external |     minimal      | openshift | preview | remote |
-|:---------------------|:--------:|:--------:|:----------------------:|:--------:|:----------------:|:---------:|:-------:|:------:|
-| 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい |    なし    | 最小限の機能が欲しい |     ？     |   なし    |   ？    |
-| istio-egressgateway  |    なし    |    ✅     |           なし           |    なし    |        なし        |     ？     |   なし    |   ？    |
-| istio-ingressgateway |    ✅     |    ✅     |           なし           |    なし    |        なし        |     ？     |    ✅    |   ？    |
-| istiod               |    ✅     |    ✅     |           なし           |    なし    |        ✅         |     ？     |    ✅    |   ？    |
-
+| ユースケース         | default  |   demo   |                 empty                 | external |       minimal        | openshift | preview | remote |
+| :------------------- | :------: | :------: | :-----------------------------------: | :------: | :------------------: | :-------: | :-----: | :----: |
+| 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい |   なし   | 最小限の機能が欲しい |    ？     |  なし   |   ？   |
+| istio-egressgateway  |   なし   |    ✅    |                 なし                  |   なし   |         なし         |    ？     |  なし   |   ？   |
+| istio-ingressgateway |    ✅    |    ✅    |                 なし                  |   なし   |         なし         |    ？     |   ✅    |   ？   |
+| istiod               |    ✅    |    ✅    |                 なし                  |   なし   |          ✅          |    ？     |   ✅    |   ？   |
 
 > ↪️ 参考：
 >
 > - https://github.com/istio/istio/tree/master/manifests/profiles
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 > - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
-
 
 <br>
 
@@ -95,13 +87,9 @@ Istioの機能のセットを提供する。
 
 Istioが正しく動作しているか否かを検証する。
 
-
-
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
 
 成功した場合を以下に示す。
-
-
 
 ```bash
 $ istioctl analyze
@@ -110,8 +98,6 @@ $ istioctl analyze
 ```
 
 失敗した場合を以下に示す。
-
-
 
 ```bash
 $ istioctl analyze
@@ -123,9 +109,7 @@ Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 8
 
 #### ▼ -n
 
-Namespaceを指定しつつ、```analyze```コマンドを実行する。
-
-
+Namespaceを指定しつつ、`analyze`コマンドを実行する。
 
 ```bash
 $ istioctl analyze -n <Namespace名>
@@ -141,8 +125,6 @@ $ istioctl analyze -n <Namespace名>
 
 Istioリソースを全てdestroyする。
 
-
-
 ```bash
 $ istioctl x uninstall --purge
 ```
@@ -154,8 +136,6 @@ $ istioctl x uninstall --purge
 ### installとは
 
 プロファイルをインストールし、加えて設定値を変更する。
-
-
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/install/istioctl/
 
@@ -177,17 +157,13 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 インストールするもの、または変更する項目を指定する。
 
-
-
-
-| オプション例                                    | 説明                                                                                          | 補足                                                                     |
-|--------------------------------------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| ```meshConfig.accessLogFile=/dev/stdout``` | アクセスログの出力先を標準出力に変更する。                                                                |                                                                          |
-| ```profile=default```                      | 指定したプロファイルをインストールする。                                                                        |                                                                          |
-| ```revision=1-0-0```                       | 既存のIstioのコントロールプレーンを稼働させつつ、指定したバージョンのコントロールプレーンをカナリアリリースする。バージョンは、ケバブケースで設定する必要がある。 | ↪️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/#control-plane |
+| オプション例                           | 説明                                                                                                                                                              | 補足                                                                      |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `meshConfig.accessLogFile=/dev/stdout` | アクセスログの出力先を標準出力に変更する。                                                                                                                        |                                                                           |
+| `profile=default`                      | 指定したプロファイルをインストールする。                                                                                                                          |                                                                           |
+| `revision=1-0-0`                       | 既存のIstioのコントロールプレーンを稼働させつつ、指定したバージョンのコントロールプレーンをカナリアリリースする。バージョンは、ケバブケースで設定する必要がある。 | ↪️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/#control-plane |
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
-
 
 <br>
 
@@ -195,13 +171,12 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 ### kube-injectとは
 
-```istio-proxy```コンテナを手動でインジェクションする。代わりに、```enabled```値が割り当てられた```.metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
+`istio-proxy`コンテナを手動でインジェクションする。代わりに、`enabled`値が割り当てられた`.metadata.labels,istio-injection`キーをNamespaceに付与しても良い。
 
 > ↪️ 参考：
 >
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
-
 
 <br>
 
@@ -209,7 +184,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 #### ▼ -f
 
-指定したマニフェストのPodに```istio-proxy```コンテナをインジェクションする。
+指定したマニフェストのPodに`istio-proxy`コンテナをインジェクションする。
 
 ```bash
 $ istioctl kube-inject -f pod.yaml
@@ -223,8 +198,6 @@ $ istioctl kube-inject -f pod.yaml
 
 ymlファイルの差分を取得する。
 
-
-
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
 ```bash
@@ -237,7 +210,7 @@ $ istioctl manifest diff <変更前マニフェストへのパス> <変更後マ
 
 ### init
 
-IstioOperatorを```istio-system```に作成する。
+IstioOperatorを`istio-system`に作成する。
 
 ```bash
 $ istioctl operator init
@@ -256,21 +229,15 @@ Operator controller will watch namespaces: istio-system
 
 Istioのプロファイルを操作する。
 
-
-
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
 
 <br>
-
-
 
 ### list
 
 #### ▼ listとは
 
 利用できるプロファイルを取得する。
-
-
 
 ```bash
 $ istioctl profile list
@@ -294,8 +261,6 @@ Istio configuration profiles:
 
 Istio上で管理されるEnvoyの構成情報を取得する。
 
-
-
 > ↪️ 参考：
 >
 > - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
@@ -314,9 +279,7 @@ $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 
 出力形式を指定する。
 
-```jq```コマンドや```yq```コマンドと組み合わせた方が良い。
-
-
+`jq`コマンドや`yq`コマンドと組み合わせた方が良い。
 
 ```bash
 # 返信されたYAMLから、1番目の項目だけ取得する。
@@ -357,7 +320,6 @@ $ istioctl proxy-config all foo-pod \
 - version_info
 ```
 
-
 <br>
 
 ### bootstrap
@@ -365,8 +327,6 @@ $ istioctl proxy-config all foo-pod \
 #### ▼ bootstrapとは
 
 Envoyで、起動時に読み込まれる設定を取得する。
-
-
 
 ```bash
 $ istioctl proxy-config bootstrap foo-pod \
@@ -401,28 +361,27 @@ bootstrap:
       initialFetchTimeout: 0s
       resourceApiVersion: V3
   layeredRuntime:
-    
+
     ...
-  
+
   node:
-    
+
     ...
-  
+
   staticResources:
-    
+
     ...
-  
+
   statsConfig:
-    
+
     ...
-  
+
   tracing:
-    
+
     ...
 
 lastUpdated: "2022-11-16T08:12:07.162Z"
 ```
-
 
 <br>
 
@@ -432,10 +391,8 @@ lastUpdated: "2022-11-16T08:12:07.162Z"
 
 Envoyのクラスターの静的/動的な設定値を取得する。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
 
@@ -447,7 +404,7 @@ $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
 $ istioctl proxy-config cluster foo-pod -n foo-namespace
 
 SERVICE FQDN                                  PORT                         SUBSET        DIRECTION   TYPE                DESTINATION RULE
-<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <DestinationRule名>.<Namespace名> 
+<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <DestinationRule名>.<Namespace名>
 
 foo-service.foo-namespace.svc.cluster.local   50001                        v1            outbound     EDS                 foo-destination-rule.foo-namespace
 bar-service.bar-namespace.svc.cluster.local   50002                        v1            outbound     EDS                 bar-destination-rule.bar-namespace
@@ -455,12 +412,10 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 ...
 ```
 
-```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
-
-
+`.yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
 > ↪️ 参考：
-> 
+>
 > - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 > - https://www.amazon.co.jp/Istio-Action-Christian-Posta/dp/1617295825
 
@@ -492,8 +447,6 @@ $ istioctl proxy-config cluster foo-pod \
 
 クラスターが待ち受ける完全修飾ドメイン名でフィルタリングし、クラスターを取得する。
 
-
-
 ```bash
 $ istioctl proxy-config cluster foo-pod \
     -n foo-namespace \
@@ -506,8 +459,6 @@ $ istioctl proxy-config cluster foo-pod \
 
 クラスターが待ち受けるポート番号でフィルタリングし、クラスターを取得する。
 
-
-
 ```bash
 $ istioctl proxy-config routes foo-pod \
     -n foo-namespace \
@@ -516,14 +467,11 @@ $ istioctl proxy-config routes foo-pod \
 
 <br>
 
-
 ### endpoints
 
 #### ▼ endpointsとは
 
 Envoyのエンドポイントの静的/動的な設定値を取得する。
-
-
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint
 
@@ -550,9 +498,7 @@ unix://./etc/istio/proxy/SDS                         HEALTHY     OK             
 unix://./etc/istio/proxy/XDS                         HEALTHY     OK                xds-grpc
 ```
 
-```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
-
-
+`.yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
 > ↪️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -577,7 +523,7 @@ $ istioctl proxy-config endpoints foo-pod \
       locality:
         region: ap-northeast-1
         zone: ap-northeast-1a
-    
+
       ...
 
     - address:
@@ -589,7 +535,7 @@ $ istioctl proxy-config endpoints foo-pod \
       locality:
         region: ap-northeast-1
         zone: ap-northeast-1c
-      
+
         ...
 
     - address:
@@ -601,17 +547,15 @@ $ istioctl proxy-config endpoints foo-pod \
       locality:
         region: ap-northeast-1
         zone: ap-northeast-1d
-    
+
       ...
 
-...   
+...
 ```
 
 #### ▼ --cluster
 
 エンドポイントに紐づくクラスター名でフィルタリングし、エンドポイントを取得する。
-
-
 
 ```bash
 $ istioctl proxy-config endpoints foo-pod \
@@ -621,14 +565,11 @@ $ istioctl proxy-config endpoints foo-pod \
 
 <br>
 
-
 ### listeners
 
 #### ▼ listenersとは
 
 Envoyのリスナーの静的/動的な設定値を取得する。
-
-
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-listener
 
@@ -653,14 +594,11 @@ ADDRESS               PORT                          MATCH                       
 
 <br>
 
-
 ### routes
 
 #### ▼ routesとは
 
 Envoyのルーティングの静的/動的な設定値を取得する。
-
-
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route
 
@@ -684,14 +622,12 @@ NAME                         DOMAINS                                     MATCH  
 
 ...
 
-*                            /stats/prometheus*     
-*                            /healthz/ready*  
+*                            /stats/prometheus*
+*                            /healthz/ready*
 ...
 ```
 
-```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
-
-
+`.yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
 > ↪️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -727,13 +663,13 @@ $ istioctl proxy-config routes foo-pod \
           route:
             # foo-podのルートと紐づくクラスターを指定する。
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
-            
+
             ...
-            
+
           maxGrpcTimeout: 10800s
-          
+
           ...
-          
+
       includeRequestAttemptCount: true
     # foo-podからbar-podにアウトバウンド通信を送信する時に選ばれる。
     - name: bar-service.bar-namespace.svc.cluster.local:50002
@@ -754,13 +690,13 @@ $ istioctl proxy-config routes foo-pod \
           route:
             # bar-podのルートと紐づくクラスターを指定する。
             cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
-            
+
             ...
-            
+
           maxGrpcTimeout: 10800s
-          
+
           ...
-          
+
       includeRequestAttemptCount: true
     # foo-podからbaz-podにアウトバウンド通信を送信する時に選ばれる。
     - name: baz-service.baz-namespace.svc.cluster.local:50003
@@ -781,14 +717,14 @@ $ istioctl proxy-config routes foo-pod \
           route:
             # baz-podのルートと紐づくクラスターを指定する。
             cluster: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
-            
+
             ...
-            
+
           maxGrpcTimeout: 10800s
       includeRequestAttemptCount: true
-    
-    ...  
-    
+
+    ...
+
     # 条件に合致しない任意のアウトバウンド通信を送信する時に選ばれる。
     - name: allow_any
       domains:
@@ -811,8 +747,6 @@ $ istioctl proxy-config routes foo-pod \
 
 ルート名でフィルタリグし、取得する。
 
-
-
 ```bash
 $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名> --name 50001
 ```
@@ -823,7 +757,6 @@ $ istioctl proxy-config routes foo-pod -n foo-namespace
 NAME     DOMAINS                                      MATCH               VIRTUAL SERVICE
 50001    foo-service.foo-namespace.svc.cluster.local  /*                  foo-virtual-service.foo-namespace
 ```
-
 
 <br>
 
@@ -846,33 +779,25 @@ $ istioctl x precheck
 
 ### tagとは
 
-Namespaceの```istio.io/rev```キーの値を書き換えずにアップグレードできるように、```istio.io/rev```キーにエイリアスタグを設定する。
+Namespaceの`istio.io/rev`キーの値を書き換えずにアップグレードできるように、`istio.io/rev`キーにエイリアスタグを設定する。
 
+エイリアスは、`stable`や`default`をよく使用するが、実際はなんでよい。
 
-エイリアスは、```stable```や```default```をよく使用するが、実際はなんでよい。
-
-
-具体的には、MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス (```istio.io/tag```キーの値) と、エイリアスの実体 (```istio.io/rev```キーの値) を操作する。
-
-
+具体的には、MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を操作する。
 
 > ↪️ 参考：
-> 
+>
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 > - https://fabianlee.org/2021/09/20/istio-canary-upgrade-of-operator-between-istio-1-7-and-1-8/
 
-
 <br>
-
-
 
 ### generate
 
 #### ▼ generateとは
 
-MutatingWebhookConfigurationの```.metadata.labels```キーに、エイリアス (```istio.io/tag```キーの値) と、エイリアスの実体 (```istio.io/rev```キーの値) を作成する。
-
+MutatingWebhookConfigurationの`.metadata.labels`キーに、エイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を作成する。
 
 ```bash
 $ istioctl tag generate <エイリアス名> --revision <エイリアスの実体>
@@ -880,13 +805,13 @@ $ istioctl tag generate <エイリアス名> --revision <エイリアスの実�
 
 **＊例＊**
 
-```stable```というエイリアス (```istio.io/tag```キーの値) を作成し、エイリアスの実体 (```istio.io/rev```キーの値) として```1-0-0```を設定する。
+`stable`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-0-0`を設定する。
 
 ```bash
 $ istioctl tag generate stable --revision 1-0-0
 ```
 
-```stable```というエイリアス (```istio.io/tag```キーの値) を作成し、エイリアスの実体 (```istio.io/rev```キーの値) として```1-0-1```を設定する。
+`stable`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-0-1`を設定する。
 
 ```bash
 $ istioctl tag generate stable --revision 1-0-1
@@ -894,15 +819,13 @@ $ istioctl tag generate stable --revision 1-0-1
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
 
-
-
 <br>
 
 ### list
 
 #### ▼ listとは
 
-MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス (```istio.io/tag```キーの値) と、エイリアスの実体 (```istio.io/rev```キーの値) を取得する。
+MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を取得する。
 
 カナリア方式アップグレード前に、現在のバージョンのエイリアスとリビジョン番号 (現在のIstioのバージョンタグ) を確認するために使用する。
 
@@ -917,22 +840,20 @@ stable    1-0-0      app
 # アップグレード前に、マニフェストを確認してみる。
 $ kubectl get mutatingwebhookconfiguration istio-revision-tag-<エイリアス名> -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:
-    
+
 istio.io/rev: 1-0-0
 istio.io/tag: stable
 ```
 
 > ↪️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
-
 <br>
-
 
 ### set
 
 #### ▼ setとは
 
-MutatingWebhookConfigurationの```.metadata.labels```キーにある既存のエイリアス (```istio.io/tag```キーの値) に実体 (```istio.io/rev```キーの値) を設定する。
+MutatingWebhookConfigurationの`.metadata.labels`キーにある既存のエイリアス (`istio.io/tag`キーの値) に実体 (`istio.io/rev`キーの値) を設定する。
 
 カナリア方式アップグレード時に、現在のバージョンのエイリアスとリビジョン番号 (現在のIstioのバージョンタグ) を設定するために使用する。
 
@@ -940,13 +861,11 @@ MutatingWebhookConfigurationの```.metadata.labels```キーにある既存のエ
 $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --overwrite
 ```
 
-
-
 **＊例＊**
 
-```【１】```
+`【１】`
 
-:    現在のバージョンのエイリアス (```istio.io/tag```キーの値) が```stable```、またバージョン (```istio.io/rev```キーの値) が```v1.0.0```とする。
+: 現在のバージョンのエイリアス (`istio.io/tag`キーの値) が`stable`、またバージョン (`istio.io/rev`キーの値) が`v1.0.0`とする。
 
 ```bash
 $ istioctl tag list
@@ -955,9 +874,9 @@ TAG      REVISION   NAMESPACES
 stable   1-0-0      app
 ```
 
-```【２】```
+`【２】`
 
-:    ```stable```タグを持つMutatingWebhookConfigurationを確認する。
+: `stable`タグを持つMutatingWebhookConfigurationを確認する。
 
 ```bash
 # MutatingWebhookConfiguration
@@ -968,18 +887,17 @@ istio-sidecar-injector-1.0.0       1          7m56s # 1.0.0
 istio-revision-tag-stable          1          7m56s # 現在のリビジョン番号 (1.0.0) 定義するstableタグを持つ
 ```
 
+`【３】`
 
-```【３】```
-
-:    もし、ここでIstioをアップグレードしたとする。
+: もし、ここでIstioをアップグレードしたとする。
 
 ```bash
 $ istioctl install --set revision=1-1-0
 ```
 
-```【４】```
+`【４】`
 
-:    すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。
+: すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。
 
      その他、新しいIstiodコントロールプレーンも作成される。
 
@@ -987,7 +905,7 @@ $ istioctl install --set revision=1-1-0
 # Deployment
 NAME                READY   STATUS    RESTARTS   AGE
 istiod-1-0-0        1/1     Running   0          1m  # 1-0-0
-istiod-1-1-0        1/1     Running   0          1m  # 1-1-0 (今回のアップグレード先) 
+istiod-1-1-0        1/1     Running   0          1m  # 1-1-0 (今回のアップグレード先)
 
 
 # Service
@@ -1000,17 +918,15 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                               WEBHOOKS   AGE
 istio-sidecar-injector-1.0.0       1          7m56s # 1.0.0
-istio-sidecar-injector-1.1.0       1          7m56s # 1.1.0 (今回のアップグレード先) 
+istio-sidecar-injector-1.1.0       1          7m56s # 1.1.0 (今回のアップグレード先)
 istio-revision-tag-stable          1          7m56s # 現在のリビジョン番号 (1.0.0) 定義するstableタグを持つ
 ```
 
+`【３】`
 
-```【３】```
-
-:    エイリアス (```istio.io/tag```キーの値) を指定して、リビジョン番号を書き換える。
+: エイリアス (`istio.io/tag`キーの値) を指定して、リビジョン番号を書き換える。
 
      これにより、```istio-revision-tag-stable```の```stable```タグの値が変更される。
-
 
 ```bash
 $ istioctl tag set stable --revision 1-1-0 --overwrite
@@ -1020,13 +936,13 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                               WEBHOOKS   AGE
 istio-sidecar-injector-1.0.0       1          7m56s # 1.0.0
-istio-sidecar-injector-1.1.0       1          7m56s # 1.1.0 (今回のアップグレード先) 
+istio-sidecar-injector-1.1.0       1          7m56s # 1.1.0 (今回のアップグレード先)
 istio-revision-tag-stable          1          7m56s # 現在のリビジョン番号 (1.1.0) 定義するstableタグを持つ
 ```
 
-```【４】```
+`【４】`
 
-:    また、```istioctl tag list```コマンドでも、リビジョン番号が```v1.0.0```になったことを確認できる。
+: また、`istioctl tag list`コマンドでも、リビジョン番号が`v1.0.0`になったことを確認できる。
 
 ```bash
 $ istioctl tag list
@@ -1036,14 +952,12 @@ stable   1-1-0     app
 
 $ kubectl get mutatingwebhookconfiguration istio-revision-tag-stable -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:
-    
+
 istio.io/rev: 1-1-0
 istio.io/tag: stable
 ```
 
-
 > ↪️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
-
 
 <br>
 
@@ -1051,11 +965,10 @@ istio.io/tag: stable
 
 ### proxy-statusとは
 
-IngressGateway、EgressGateway、```istio-proxy```コンテナのステータスを取得する。
-
+IngressGateway、EgressGateway、`istio-proxy`コンテナのステータスを取得する。
 
 ```bash
-$ istioctl proxy-status  
+$ istioctl proxy-status
 
 NAME                                      CDS        LDS        EDS        RDS          ISTIOD           VERSION
 istio-egressgateway-*****.istio-system    SYNCED     SYNCED     SYNCED     NOT SENT     istiod-*****     1.12.1
@@ -1066,7 +979,6 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
-
 
 <br>
 
@@ -1081,14 +993,13 @@ $ istioctl upgrade
 
 This will install the Istio <バージョンタグ> default profile with ["Istio core" "Istiod" "Ingress gateways"] components into the cluster. Proceed? (y/N) y
 
-✔ Istio core installed                                                                                                                                                                                       
-✔ Istiod installed                                                                                                                                                                                           
-✔ Ingress gateways installed                                                                                                                                                                                 
+✔ Istio core installed
+✔ Istiod installed
+✔ Ingress gateways installed
 ✔ Installation complete                                                                                                                                                                                      Making this installation the default for injection and validation.
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
-
 
 <br>
 
@@ -1097,7 +1008,6 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 ### verify-installとは
 
 Istioリソースが正しく作成されたかを検証する。
-
 
 ```bash
 $ istioctl verify-install
@@ -1117,7 +1027,6 @@ Checked 3 Istio Deployments
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
 
-
 <br>
 
 ## version
@@ -1125,8 +1034,6 @@ Checked 3 Istio Deployments
 ### versionとは
 
 Istiodコントロールプレーンのバージョンを取得する。
-
-
 
 ```bash
 $ istioctl version

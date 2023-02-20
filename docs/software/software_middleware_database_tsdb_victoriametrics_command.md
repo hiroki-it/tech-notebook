@@ -9,13 +9,11 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. ```victoria-metrics-prod```コマンド
+## 01. `victoria-metrics-prod`コマンド
 
 ### -downsampling.period
 
@@ -23,19 +21,15 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 データポイント数が少なくなるため、ストレージ容量を節約できる。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://docs.victoriametrics.com/#downsampling
 > - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 **＊例＊**
 
-```30```日以前のデータを```5```分ごとダウンサンプリングにする。
-
-
+`30`日以前のデータを`5`分ごとダウンサンプリングにする。
 
 ```bash
 $ victoria-metrics-prod -downsampling.period=30d:5m
@@ -53,10 +47,8 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 
 この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
@@ -66,14 +58,11 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 ```
 
-
 <br>
 
 ### -httpListenAddr
 
 インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。
-
-
 
 **＊例＊**
 
@@ -87,9 +76,7 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 メトリクスを保管するディレクトリを設定する。
 
-設定したディレクトリ配下に```data```ディレクトリを作成し、これの配下にメトリクスを保管する。
-
-
+設定したディレクトリ配下に`data`ディレクトリを作成し、これの配下にメトリクスを保管する。
 
 > ↪️ 参考：https://docs.victoriametrics.com/#storage
 
@@ -105,15 +92,12 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 メトリクスの保管期間を設定する。
 
-```h(ours)```、```d(ays)```、```w(eeks)```、```y(ears)```、単位なし (```month```) で期間の単位を指定できる。
-
-
+`h(ours)`、`d(ays)`、`w(eeks)`、`y(ears)`、単位なし (`month`) で期間の単位を指定できる。
 
 > ↪️ 参考：
-> 
+>
 > - https://docs.victoriametrics.com/#retention
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
-
 
 **＊例＊**
 
@@ -129,8 +113,6 @@ $ victoria-metrics-prod -retentionPeriod=90d
 
 デフォルトでは、キャッシュを作成しない。
 
-
-
 **＊例＊**
 
 ```bash
@@ -145,8 +127,6 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBDataBlocks=0
 
 デフォルトでは、キャッシュを作成しない。
 
-
-
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBIndexBlocks=0
 ```
@@ -158,8 +138,6 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBIndexBlocks=0
 転置インデックスのタグフィルターの上限キャッシュサイズを設定する。
 
 デフォルトでは、キャッシュを作成しない。
-
-
 
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBTagFilters=0

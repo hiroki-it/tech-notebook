@@ -3,18 +3,15 @@ title: 【IT技術の知見】STS＠Sで始まるAWSリソース
 description: STS＠Sで始まるAWSリソースの知見を記録しています。
 ---
 
-# STS＠```S```で始まるAWSリソース
+# STS＠`S`で始まるAWSリソース
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. STSとは：Security Token Service
 
@@ -36,7 +33,6 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内での�
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
-
 > ↪️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
 
 <br>
@@ -45,9 +41,7 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内での�
 
 IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
 
-
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
-
 
 > ↪️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
@@ -60,7 +54,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 任意のIDプロバイダーで認証されたユーザー (フェデレーテッドユーザー) にIAMロールを付与することで、AWSリソースにアクセスできるようにできる。
 
 > ↪️ 参考：
-> 
+>
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
 
@@ -70,22 +64,19 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 ```yaml
 {
-    "Version": "2012-10-17",
-    "Statement": {
-        "Effect": "Allow",
-        "Principal": {
-          "Federated": "cognito-identity.amazonaws.com"
+  "Version": "2012-10-17",
+  "Statement":
+    {
+      "Effect": "Allow",
+      "Principal": { "Federated": "cognito-identity.amazonaws.com" },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition":
+        {
+          "StringEquals": { "cognito-identity.amazonaws.com:aud": "*****" },
+          "ForAnyValue:StringLike":
+            { "cognito-identity.amazonaws.com:amr": "unauthenticated" },
         },
-        "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition": {
-            "StringEquals": {
-              "cognito-identity.amazonaws.com:aud": "*****"
-            },
-            "ForAnyValue:StringLike": {
-              "cognito-identity.amazonaws.com:amr": "unauthenticated"
-            }
-        }
-    }
+    },
 }
 ```
 
@@ -93,32 +84,35 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 ![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
-EKSをIDプロバイダーとして使用するように、```Federated```キーでEKS Clusterの識別子を設定する。
+EKSをIDプロバイダーとして使用するように、`Federated`キーでEKS Clusterの識別子を設定する。
 
 これにより、EKS Cluster内で認証されたServiceAccountにIAMロールを紐づけることができるようになる。
 
-また、```Condition```キーで特定のServiceAccountを指定できるようにする。
+また、`Condition`キーで特定のServiceAccountを指定できるようにする。
 
 ```yaml
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "",
-            "Effect": "Allow",
-            "Principal": {
-                "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenIDConnectプロバイダーURL>"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-                "StringEquals": {
-                    "<EKS ClusterのOpenIDConnectプロバイダーURL>:sub": [
-                        "system:serviceaccount:<Namespace>:<ServiceAccount名>",
-                    ]
-                }
-            }
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Sid": "",
+        "Effect": "Allow",
+        "Principal":
+          {
+            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenIDConnectプロバイダーURL>",
+          },
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition":
+          {
+            "StringEquals":
+              {
+                "<EKS ClusterのOpenIDConnectプロバイダーURL>:sub":
+                  ["system:serviceaccount:<Namespace>:<ServiceAccount名>"],
+              },
+          },
+      },
+    ],
 }
 ```
 
@@ -135,7 +129,7 @@ metadata:
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
 
@@ -149,9 +143,7 @@ IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIA
 
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
 
-
 > ↪️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
-
 
 <br>
 
@@ -163,8 +155,6 @@ IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲で�
 
 IAMユーザーの場合、外部IDが必要になる。
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
 #### ▼ AWSリソース
@@ -173,8 +163,6 @@ IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲で�
 
 IAMリソースの場合、外部IDが必要になる。
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
 
 #### ▼ フェデレーテッドユーザー
@@ -182,8 +170,6 @@ IAMリソースの場合、外部IDが必要になる。
 OIDC、SAML、によって発行されたユーザーに委譲できる。
 
 OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
-
-
 
 > ↪️ 参考：
 >
@@ -201,89 +187,65 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 フェデレーテッドユーザーは任意のIPプロバイダーで発行する。
 
 ```yaml
-{
-    "Version": "2012-10-17",
-    "Statement": {
-        "Effect": "Allow",
-        "Principal": {
+{ "Version": "2012-10-17", "Statement": { "Effect": "Allow", "Principal": {
           # IDプロバイダーをCognitoとしている。
-          "Federated": "cognito-identity.amazonaws.com"
-        },
-        "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition": {
-            "StringEquals": {
-              "cognito-identity.amazonaws.com:aud": "*****"
-            },
-            "ForAnyValue:StringLike": {
-              "cognito-identity.amazonaws.com:amr": "unauthenticated"
-            }
-        }
-    }
-}
+          "Federated": "cognito-identity.amazonaws.com",
+        }, "Action": "sts:AssumeRoleWithWebIdentity", "Condition": { "StringEquals": { "cognito-identity.amazonaws.com:aud": "*****" }, "ForAnyValue:StringLike": { "cognito-identity.amazonaws.com:amr": "unauthenticated" } } } }
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
-
 
 #### ▼ 外部OIDC
 
 IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
 
-
 ```yaml
 {
-    "Version": "2012-10-17",
-    "Statement": {
-        "Effect": "Allow",
-        "Principal": {
-          "Federated": "accounts.google.com"
+  "Version": "2012-10-17",
+  "Statement":
+    {
+      "Effect": "Allow",
+      "Principal": { "Federated": "accounts.google.com" },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition":
+        {
+          "StringEquals": { "accounts.google.com:aud": "*****" },
+          "ForAnyValue:StringLike":
+            { "accounts.google.com:amr": "unauthenticated" },
         },
-        "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition": {
-            "StringEquals": {
-              "accounts.google.com:aud": "*****"
-            },
-            "ForAnyValue:StringLike": {
-              "accounts.google.com:amr": "unauthenticated"
-            }
-        }
-    }
+    },
 }
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
-
-
 #### ▼ AWS SAML
 
 IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
 
-
-
-
 ```yaml
 {
   "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::<アカウントID>:saml-provider/<プロバイダー名>"
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Principal":
+          {
+            "Federated": "arn:aws:iam::<アカウントID>:saml-provider/<プロバイダー名>",
+          },
+        "Action": "sts:AssumeRole",
+        "Condition":
+          {
+            "StringEquals":
+              { "SAML:aud": "https://signin.aws.amazon.com/saml" },
+          },
       },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "SAML:aud": "https://signin.aws.amazon.com/saml"
-        }
-      }
-    }
-  ]
+    ],
 }
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
-
 
 <br>
 
@@ -293,43 +255,37 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 
 必要なポリシーが設定されたIAMロールを作成する。
 
-その時信頼ポリシーでは、IAMユーザーの```ARN```を信頼されたエンティティとして設定しておく。
+その時信頼ポリシーでは、IAMユーザーの`ARN`を信頼されたエンティティとして設定しておく。
 
 これにより、そのIAMユーザーに対して、ロールを紐付けできるようになる。
 
 この時に使用するユーザーは、IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。
 
-
-
 ```yaml
 {
   "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>"
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Principal": { "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>" },
+        "Action": "sts:AssumeRole",
+        "Condition": { "StringEquals": {
+                # IAMユーザーを使用する場合は、外部IDが必要になる。
+                "sts:ExternalId": "<適当な文字列>",
+              } },
       },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          # IAMユーザーを使用する場合は、外部IDが必要になる。
-          "sts:ExternalId": "<適当な文字列>"
-        }
-      }
-    }
-  ]
+    ],
 }
 ```
 
 <br>
 
-
 ### 2. ロールを引き受けたクレデンシャル情報をリクエスト
 
-信頼されたエンティティから、STSのエンドポイント (```https://sts.amazonaws.com```) に対して、ロールの紐付けをリクエストする。
+信頼されたエンティティから、STSのエンドポイント (`https://sts.amazonaws.com`) に対して、ロールの紐付けをリクエストする。
 
-OIDCによるフェデレーションユーザーの場合は、```--external-id```オプションの代わりとして、```--web-identity-token```オプションを使用する。
+OIDCによるフェデレーションユーザーの場合は、`--external-id`オプションの代わりとして、`--web-identity-token`オプションを使用する。
 
 このオプションに、発行されたJWTを設定する必要がある。
 
@@ -381,49 +337,31 @@ aws_sts_credentials="$(aws sts assume-role \
 
 <br>
 
-
 ### 3. 返信されたレスポンスからクレデンシャル情報を取得
 
 STSのエンドポイントから一時的なクレデンシャル情報が発行される。
 
-また同時に、このクレデンシャル情報は、ローカルマシンの```~/.aws/cli/cache```ディレクトリ配下にも```.json```ファイルで保管される。
+また同時に、このクレデンシャル情報は、ローカルマシンの`~/.aws/cli/cache`ディレクトリ配下にも`.json`ファイルで保管される。
 
-クレデンシャルの失効時間に合わせて、STSはこの```.json```ファイルを定期的に更新する。
-
-
+クレデンシャルの失効時間に合わせて、STSはこの`.json`ファイルを定期的に更新する。
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 ```yaml
 # レスポンスデータ
 # ~/.aws/cli/cacheディレクトリ配下にも保存される。
-{
-  "Credentials": {
-    "AccessKeyId": "<アクセスキーID>", # 必要になる値"
-    "SecretAccessKey": "<シークレットアクセスキー>", # 必要になる値
-    "SessionToken": "<セッショントークン文字列>", # 必要になる値
-    "Expiration": "<セッションの期限>",
-  },
-  "AssumeRoleUser": {
-    "AssumedRoleId": "<セッションID>:<セッション名>",
-    "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>" # 一時的なIAMユーザー
-  },
-  "ResponseMetadata": {
-    "RequestId": "*****",
-    "HTTPStatusCode": 200,
-    "HTTPHeaders": {
-      "x-amzn-requestid": "*****",
-      "content-type": "text/xml",
-      "content-length": "1472",
-      "date": "Fri, 01 Jul 2022 13:00:00 GMT"
-    },
-    "RetryAttempts": 0
-  }
-}
+{ "Credentials": {
+      "AccessKeyId": "<アクセスキーID>", # 必要になる値"
+      "SecretAccessKey": "<シークレットアクセスキー>", # 必要になる値
+      "SessionToken": "<セッショントークン文字列>", # 必要になる値
+      "Expiration": "<セッションの期限>",
+    }, "AssumeRoleUser": {
+      "AssumedRoleId": "<セッションID>:<セッション名>",
+      "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>", # 一時的なIAMユーザー
+    }, "ResponseMetadata": { "RequestId": "*****", "HTTPStatusCode": 200, "HTTPHeaders": { "x-amzn-requestid": "*****", "content-type": "text/xml", "content-length": "1472", "date": "Fri, 01 Jul 2022 13:00:00 GMT" }, "RetryAttempts": 0 } }
 ```
 
 <br>
-
 
 ### 4. クレデンシャル情報を取得
 
@@ -431,14 +369,11 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。
 
-代わりとして、```~/.aws/cli/cache```ディレクトリ配下の```.json```ファイルから取得しても良い。
+代わりとして、`~/.aws/cli/cache`ディレクトリ配下の`.json`ファイルから取得しても良い。
 
 クレデンシャル情報を環境変数として出力し、使用できるようにする。
 
-
-
 > ↪️ 参考：https://stedolan.github.io/jq/
-
 
 ```bash
 #!/bin/bash
@@ -452,9 +387,7 @@ export AWS_DEFAULT_REGION="ap-northeast-1"
 EOF
 ```
 
-環境変数に登録する代わりとして、AWSの```credentials```ファイルを作成しても良い。
-
-
+環境変数に登録する代わりとして、AWSの`credentials`ファイルを作成しても良い。
 
 ```bash
 #!/bin/bash
@@ -475,9 +408,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 ロールを引き受けた新しいアカウントを使用して、AWSリソースに通信できるか否かを確認する。
 
-クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
-
-
+クレデンシャル情報の取得方法として`credentials`ファイルの作成を選択した場合、`profile`オプションが必要である。
 
 ```bash
 #!/bin/bash

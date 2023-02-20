@@ -9,8 +9,6 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -37,13 +35,11 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 ![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
 
-
 > ↪️ 参考：
 >
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 > - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
 > - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
-
 
 #### ▼ 監視ツールとして
 
@@ -64,23 +60,19 @@ VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不�
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 > - https://www.sobyte.net/post/2022-05/vmalert/
 
-
 <br>
 
 ### ロードバランサー
 
 #### ▼ ロードバランサーとは
 
-HTTPSプロトコルの```8224```番ポートでインバウンド通信を待ち受け、vm-selectやvm-insertに通信をルーティングする。
+HTTPSプロトコルの`8224`番ポートでインバウンド通信を待ち受け、vm-selectやvm-insertに通信をルーティングする。
 
 このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
 
 #### ▼ 読み出しエンドポイント
 
 PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。
-
-
-
 
 ```bash
 # 読み出しエンドポイントにリクエストを送信する。
@@ -91,13 +83,9 @@ $ curl \
 
 > ↪️ 参考：https://docs.victoriametrics.com/url-examples.html#apiv1query
 
-
 #### ▼ 書き込みエンドポイント
 
 PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。
-
-
-
 
 ```bash
 # 書き込みエンドポイントにリクエストを送信する。
@@ -124,15 +112,13 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 
 保管時にデータを圧縮している。
 
-公式での情報は見つからなかったが、圧縮率は約```10%```らしい。
-
-
+公式での情報は見つからなかったが、圧縮率は約`10%`らしい。
 
 > ↪️ 参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
 
 #### ▼ ディレクトリ構成
 
-VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起動する時に、```storageDataPath```オプションでディレクトリ名を渡す。
+VictoriaMetricsのプロセスを`victoria-metrics-prod`コマンドで起動する時に、`storageDataPath`オプションでディレクトリ名を渡す。
 
 これにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。
 
@@ -150,9 +136,7 @@ VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起�
 └── tmp/
 ```
 
-```du```コマンドを使用して、ストレージ使用量を確認できる。
-
-
+`du`コマンドを使用して、ストレージ使用量を確認できる。
 
 ```bash
 $ du -hs /var/lib/victoriametrics/data
@@ -164,7 +148,7 @@ $ du -hs /var/lib/victoriametrics/data
 
 vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
 
-ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。
+ReadOnlyモードにより、vm-storageの空きサイズが`minFreeDiskSpaceBytes`オプション値を超えると、書き込みできなくなるような仕様になっている。
 
 これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
 
@@ -172,17 +156,17 @@ ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceB
 
 #### ▼ 保管期間
 
-vm-storageは、一定期間だけ経過したメトリクスファイル (主に、```data```ディレクトリ、```indexdb```ディレクトリ、の配下など) を削除する。
+vm-storageは、一定期間だけ経過したメトリクスファイル (主に、`data`ディレクトリ、`indexdb`ディレクトリ、の配下など) を削除する。
 
-VictoriaMetricsの起動時に、```victoria-metrics-prod```コマンドの```-retentionPeriod```オプションで指定できる。
+VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retentionPeriod`オプションで指定できる。
 
 > ↪️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 #### ▼ ストレージの必要サイズの見積もり
 
-vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。
+vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。
 
-また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
+また、`20`%の空きサイズを考慮するために、増加量を`1.2`倍する必要がある。
 
 > ↪️ 参考：https://docs.victoriametrics.com/#capacity-planning
 
@@ -190,40 +174,38 @@ vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量 
 
 ここでは、増加率を以下の数式で算出している。
 
-
-
 ```mathematica
 (増加率) = ((当該時刻のサイズ) - (前時刻のサイズ)) ÷ (前時刻のサイズ) × 100
 ```
 
-| 時刻           | storageDataPathのサイズ (MB) | 前時刻比 増加率 (%) | 前時刻比 増加量 (MB) |
-|----------------|--------------------------|---------------------|----------------------|
-| ```00:00:00``` | ```10535```              | -                   | -                    |
-| ```01:00:00``` | ```10708```              | ```0.0164```        | ```173```            |
-| ```02:00:00``` | ```10838```              | ```0.0121```        | ```130```            |
-| 〜 中略 〜       |                          |                     |                      |
-| ```22:00:00``` | ```12997```              | ```0.0226```        | ```159```            |
-| ```23:00:00``` | ```13023```              | ```0.0020```        | ```26```             |
-| ```24:00:00``` | ```12900```              | ```-0.0094```       | ```123```            |
+| 時刻       | storageDataPathのサイズ (MB) | 前時刻比 増加率 (%) | 前時刻比 増加量 (MB) |
+| ---------- | ---------------------------- | ------------------- | -------------------- |
+| `00:00:00` | `10535`                      | -                   | -                    |
+| `01:00:00` | `10708`                      | `0.0164`            | `173`                |
+| `02:00:00` | `10838`                      | `0.0121`            | `130`                |
+| 〜 中略 〜 |                              |                     |                      |
+| `22:00:00` | `12997`                      | `0.0226`            | `159`                |
+| `23:00:00` | `13023`                      | `0.0020`            | `26`                 |
+| `24:00:00` | `12900`                      | `-0.0094`           | `123`                |
 
 増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。
 
 これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。
 
-もし、データの保管日数が```10```日分という非機能的な品質であれば、vm-storageは常に過去```10```日分のデータを保管している必要がある。
+もし、データの保管日数が`10`日分という非機能的な品質であれば、vm-storageは常に過去`10`日分のデータを保管している必要がある。
 
-そのため、以下の数式で```10```日分のサイズを算出できる。
+そのため、以下の数式で`10`日分のサイズを算出できる。
 
 ```mathematica
 (増加量の合計)
-= 12900 - 10535 
+= 12900 - 10535
 = 2365 (MB/日)
 ```
 
 ```mathematica
-(10日分を保管するために必要なサイズ) 
-= 2365 × 1.2 × 10 
-= 28380 (MB/10日) 
+(10日分を保管するために必要なサイズ)
+= 2365 × 1.2 × 10
+= 28380 (MB/10日)
 ```
 
 VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュームサイズもvm-storageのサイズ以上にする必要がある。
@@ -240,17 +222,13 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 
 ## 02. セットアップ
 
-### ```systemctl```コマンド
+### `systemctl`コマンド
 
+`systemctl`コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
 
-```systemctl```コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
+`【１】`
 
-
-
-
-```【１】```
-
-:    ユニットファイルを作成する。
+: ユニットファイルを作成する。
 
 ```ini
 # victoriametrics.service
@@ -280,17 +258,13 @@ LimitNPROC=32000
 WantedBy=multi-user.target
 ```
 
-(２】victoriametricsのプロセスを```systemctl```で起動する。
-
-
-
+(２】victoriametricsのプロセスを`systemctl`で起動する。
 
 ```bash
 # 作成したファイルを読み込み、VictoriaMetricsプロセスをデーモンとして起動する。
 $ systemctl daemon-reload
 $ systemctl start victoriametrics
 ```
-
 
 > ↪️ 参考：
 >

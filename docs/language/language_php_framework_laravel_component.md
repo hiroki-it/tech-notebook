@@ -9,8 +9,6 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -23,29 +21,25 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 大まかな処理フローは以下の通りである。
 
-
-
-
-|    | 用語                                                  | 説明                                                                                                  |
-|----|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| 1  | リクエストを受信する。                                         |                                                                                                       |
-| 2  | ```index.php```ファイル                                   | エントリーポイントから処理が開始する。                                                                               |
-| 3  | Autoload                                              | ```autoload.php```ファイルにて、パッケージを自動的にロードする。                                                          |
-| 4  | Load App                                              | ```bootstrap/app.php```ファイルにて、ServiceContainer (```Illuminate\Foundation\Application.php```) を実行する。 |
-| 5  | Http Kernel                                           | Kernelを実行する。                                                                                        |
-| 6  | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。          |
-| 7  | Middleware                                            | BeforeMiddlewareを実行する。                                                                              |
-| 8  | ・Dispatch by Router<br>・Routes Match                  | ```web.php```ファイル、```app.php```ファイルなどのルーティング定義を元に、Routerが実行する。                                   |
-| 9  | FormRequest                                           | バリデーションを実行する。                                                                                       |
-| 10 | Controller                                            | Controllerを基点として、DBにまで処理が走る。                                                                     |
-| 11 | Resource                                              | DBから取得したコレクション型データを配列型データに変換する。                                                               |
-| 12 | Response                                              | Responseを実行する。配列型データをJSON型データに変換する。                                                           |
-| 13 | Terminate Middleware                                  | AfterMiddlewareが実行される。                                                                              |
-| 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                              |
-| 15 | レスポンスを返信する。                                         |                                                                                                       |
+|     | 用語                                                    | 説明                                                                                                                  |
+| --- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 1   | リクエストを受信する。                                  |                                                                                                                       |
+| 2   | `index.php`ファイル                                     | エントリーポイントから処理が開始する。                                                                                |
+| 3   | Autoload                                                | `autoload.php`ファイルにて、パッケージを自動的にロードする。                                                          |
+| 4   | Load App                                                | `bootstrap/app.php`ファイルにて、ServiceContainer (`Illuminate\Foundation\Application.php`) を実行する。              |
+| 5   | Http Kernel                                             | Kernelを実行する。                                                                                                    |
+| 6   | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの`register`メソッドや`boot`メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。 |
+| 7   | Middleware                                              | BeforeMiddlewareを実行する。                                                                                          |
+| 8   | ・Dispatch by Router<br>・Routes Match                  | `web.php`ファイル、`app.php`ファイルなどのルーティング定義を元に、Routerが実行する。                                  |
+| 9   | FormRequest                                             | バリデーションを実行する。                                                                                            |
+| 10  | Controller                                              | Controllerを基点として、DBにまで処理が走る。                                                                          |
+| 11  | Resource                                                | DBから取得したコレクション型データを配列型データに変換する。                                                          |
+| 12  | Response                                                | Responseを実行する。配列型データをJSON型データに変換する。                                                            |
+| 13  | Terminate Middleware                                    | AfterMiddlewareが実行される。                                                                                         |
+| 14  | View                                                    | `blade.php`ファイルを基に静的ファイルが作成される。                                                                   |
+| 15  | レスポンスを返信する。                                  |                                                                                                                       |
 
 > ↪️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
-
 
 <br>
 
@@ -56,8 +50,6 @@ Laravelの各コンポーネントには、似たような名前のメソッド�
 そのため、同様の能力を実現するために、各々が異なるメソッドを使用しがちになる。
 
 その時、各メソッドがブラックボックスにならないように、処理の違いをコードから確認する必要がある。
-
-
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate.html
 
@@ -71,13 +63,13 @@ Laravelの各コンポーネントには、似たような名前のメソッド�
 
 ```bash
 APP_NAME=<サービス名>
-APP_ENV=<実行環境名>	
+APP_ENV=<実行環境名>
 APP_KEY=<セッションの作成やパスワードの暗号化に使用する認証キー>
 APP_DEBUG=<デバッグモードの有効無効化>
 APP_URL=<アプリケーションのURL>
 ```
 
-#### ▼ ```app.php```ファイルの基本設定
+#### ▼ `app.php`ファイルの基本設定
 
 ```php
 <?php
@@ -136,8 +128,6 @@ return [
 
 artisanコマンドで実行できるコマンド処理を定義する。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
 ```php
@@ -168,7 +158,7 @@ class FooCommand extends Command
     public function handle(): void
     {
         Log::info('START: artisan do-foo');
-        
+
         // パラメーターを取得します。
         $bar = $this->argument('bar');
 
@@ -180,8 +170,6 @@ class FooCommand extends Command
 ```
 
 定義したCommandクラスは、以下の様に実行できる。
-
-
 
 ```bash
 $ php artisan command:do-foo
@@ -195,11 +183,9 @@ $ php artisan command:do-foo
 
 #### ▼ 設定方法
 
-環境変数を```.env```ファイルに実装する。
+環境変数を`.env`ファイルに実装する。
 
-```database.php```ファイルから、指定された設定が選択される。
-
-
+`database.php`ファイルから、指定された設定が選択される。
 
 ```bash
 DB_CONNECTION=<RDB名>
@@ -222,22 +208,22 @@ return [
 
     "connections" => [
 
-        // DB接続情報 (SQLite) 
+        // DB接続情報 (SQLite)
         "sqlite" => [
 
         ],
 
-        // DB接続情報 (MySQL) 
+        // DB接続情報 (MySQL)
         "mysql"  => [
 
         ],
 
-        // DB接続情報 (pgSQL) 
+        // DB接続情報 (pgSQL)
         "pgsql"  => [
 
         ],
 
-        // DB接続情報 (SQLSRV) 
+        // DB接続情報 (SQLSRV)
         "sqlsrv" => [
 
         ],
@@ -259,16 +245,14 @@ return [
 
 #### ▼ 単一のエンドポイント
 
-単一のエンドポイントしかない場合、```DB_HOST```を1つだけ設定する。
-
-
+単一のエンドポイントしかない場合、`DB_HOST`を1つだけ設定する。
 
 ```php
 <?php
 
 return [
 
-    ...    
+    ...
 
     "default" => env("DB_CONNECTION", "mysql"),
 
@@ -297,7 +281,7 @@ return [
         ],
     ],
 
-    ...        
+    ...
 
 ];
 ```
@@ -308,9 +292,7 @@ return [
 
 例えば、AWS RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。
 
-この場合、環境変数に```2```個のインスタンスのエンドポイントを実装する必要がある。
-
-
+この場合、環境変数に`2`個のインスタンスのエンドポイントを実装する必要がある。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
 
@@ -319,11 +301,9 @@ DB_HOST_PRIMARY=<プライマリーインスタンスのエンドポイント>
 DB_HOST_READ=<リードレプリカのエンドポイント>
 ```
 
-注意点として、```sticky```キーを有効化しておくと良い。
+注意点として、`sticky`キーを有効化しておくと良い。
 
 プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。
-
-
 
 > ↪️ 参考：https://imanengineer.net/laravel-how-to-configure-master-slave-db/
 
@@ -367,17 +347,13 @@ return [
 ];
 ```
 
-
-
 <br>
 
 ### Redis
 
 #### ▼ クエリキャッシュ管理
 
-環境変数を```.env```ファイルに実装する必要がある。
-
-
+環境変数を`.env`ファイルに実装する必要がある。
 
 ```bash
 CACHE_DRIVER=redis
@@ -388,9 +364,7 @@ REDIS_PORT=<Redisのポート>
 
 <br>
 
-
-
-## 	06. Event/Listener
+## 06. Event/Listener
 
 ### Event
 
@@ -398,13 +372,9 @@ REDIS_PORT=<Redisのポート>
 
 ビジネスの出来事がモデリングされたイベントオブジェクトとして動作する。
 
-
-
 #### ▼ 構成
 
 イベントに関するデータを保持するのみで、ビジネスロジックを持たない構成となる。
-
-
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
@@ -436,11 +406,9 @@ final class UserCreatedEvent
 
 任意の場所でイベントを発行できる。
 
-
-
 ```php
 <?php
-    
+
 event(new UserCreatedEvent($user));
 ```
 
@@ -450,15 +418,11 @@ Eloquentモデルでは、DBアクセスに関するメソッドの実行開始�
 
 紐付けるために、プロパティで定義するか、あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
 **＊実装例＊**
 
 プロパティにて、CREATE処理とDELETE処理に独自イベントクラスに紐付ける。
-
-
 
 ```php
 <?php
@@ -487,9 +451,6 @@ class User extends Authenticatable
 **＊実装例＊**
 
 クロージャーにて、CREATE処理に独自イベントクラスに紐付ける。
-
-
-
 
 ```php
 <?php
@@ -520,19 +481,13 @@ class User extends Model
 
 イベントが発生した時に、これに紐付いてコールされるオブジェクトのこと。
 
-
-
 #### ▼ 構成
 
-Listenerクラスがコールされた時に実行する処理を```handle```関数に定義する。
-
-
+Listenerクラスがコールされた時に実行する処理を`handle`関数に定義する。
 
 **＊実装例＊**
 
 ユーザーが作成された時に、メールアドレスにメッセージを送信する。
-
-
 
 ```php
 <?php
@@ -559,19 +514,15 @@ final class UserCreatedEventListener
 
 任意の場所でイベントを発行すると、リスナーが自動的にコールされる。
 
-
-
 ```php
 <?php
-    
+
 event(new UserCreatedEvent($user));
 ```
 
 #### ▼ イベントとリスナーの紐付け
 
 EventServiceProviderクラスにて、Eventクラスに紐付ける1つ以上のListenerクラスを設定する。
-
-
 
 **＊実装例＊**
 
@@ -611,7 +562,7 @@ class EventServiceProvider extends ServiceProvider
 
 #### ▼ 任意のEloquentモデルCRUDイベントの検知
 
-Laravelの多くのコンポーネントに、```boot```メソッドが定義されている。Eloquentモデルでは、インスタンス作成時に```boot```メソッドがコールされ、これによりに```bootTraits```メソッドが実行される。Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると、```bootTraits```メソッドはこれをコールする。```bootTraits```メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
+Laravelの多くのコンポーネントに、`boot`メソッドが定義されている。Eloquentモデルでは、インスタンス作成時に`boot`メソッドがコールされ、これによりに`bootTraits`メソッドが実行される。Traitに`boot+<クラス名>`という名前の静的メソッドが定義されていると、`bootTraits`メソッドはこれをコールする。`bootTraits`メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
 
 > ↪️ 参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
 
@@ -619,9 +570,7 @@ Laravelの多くのコンポーネントに、```boot```メソッドが定義さ
 
 あらかじめTraitを定義する。
 
-```saved```メソッドにEloquentモデルの更新イベントを登録できるようにする。
-
-
+`saved`メソッドにEloquentモデルの更新イベントを登録できるようにする。
 
 ```php
 <?php
@@ -650,7 +599,7 @@ trait UpdatedModelTrait
             event(new UpdatedModelEvent($updatedModel));
         });
     }
-    
+
     /**
      * イベントを発火させずにModelを保存します。
 
@@ -662,17 +611,15 @@ trait UpdatedModelTrait
     {
         // 無限ループを防ぐために、save実行時にイベントが発火しないようにする。
         return static::withoutEvents(function () use ($options) {
-            
+
             // プロパティの変更を保存。
             return $this->save($options);
         });
-    }    
+    }
 }
 ```
 
 イベントを定義する。
-
-
 
 ```php
 <?php
@@ -698,11 +645,9 @@ class UpdatedModelEvent
 
 Model更新イベントが発火してコールされるリスナーを定義する。
 
-```create_by```カラムまたは```updated_by```カラムを指定した更新者名に更新できるようにする。
+`create_by`カラムまたは`updated_by`カラムを指定した更新者名に更新できるようにする。
 
 注意点として、イベントとリスナーの対応関係は、EventServiceProviderで登録する。
-
-
 
 ```php
 <?php
@@ -723,15 +668,15 @@ class UpdatedModelListener
         $by = $this->getModelUpdater();
 
         // create_byプロパティに値が設定されているかを判定。
-        if (is_null($updatedModelEvent->updatedModel->created_by)) {     
+        if (is_null($updatedModelEvent->updatedModel->created_by)) {
             $updatedModelEvent->updatedModel->created_by = $by;
         }
 
         $updatedModelEvent->updatedModel->updated_by = $by;
-        
+
         $updatedModelEvent->updatedModel->saveWithoutEvents();
     }
-    
+
     /**
      * 更新処理の実行者を取得します。
 
@@ -750,15 +695,13 @@ class UpdatedModelListener
         if (auth()->check()) {
             return ExecutorConstant::STAFF . ":" . auth()->id();
         }
-        
+
         return ExecutorConstant::GUEST;
-    }    
+    }
 }
 ```
 
 実行者名は、定数として管理しておくと良い。
-
-
 
 ```php
 <?php
@@ -779,11 +722,11 @@ class ExecutorConstant
      * スタッフ
      */
     public const STAFF = "Staff";
-    
+
     /**
      * ゲスト
      */
-    public const GUEST = "Guest";    
+    public const GUEST = "Guest";
 }
 ```
 
@@ -793,15 +736,13 @@ class ExecutorConstant
 
 ### Laravelにおけるエラーハンドリング
 
-エラーハンドリングは```4```個のステップからなる。
+エラーハンドリングは`4`個のステップからなる。
 
 LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。
 
 また加えて、異常系レスポンスを自動的に返信してくれる。
 
 エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
 
@@ -813,28 +754,24 @@ LaravelではデフォルトでHandlerクラスが全てのステップをカバ
 
 ドキュメントとしてまとめられていないが、デフォルトで様々な例外が備わっている。
 
-
-
 > ↪️ 参考：https://laravel.com/api/8.x/search.html?search=exception
 
 #### ▼ スタックトレース
 
 Laravelはスローされる例外のメッセージをスタックトレースで作成する。
 
-また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、```[previous exception]```によって例外が結合される。
+また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、`[previous exception]`によって例外が結合される。
 
 スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。
 
 エラーが複数行にまたがるため、CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。
 
-補足として、ログの詳細度は```APP_DEBUG```環境変数で制御できる。
-
-
+補足として、ログの詳細度は`APP_DEBUG`環境変数で制御できる。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
 ```bash
-[2021-09-00 00:00:00] local.ERROR: ***** (エラーメッセージ) 
+[2021-09-00 00:00:00] local.ERROR: ***** (エラーメッセージ)
 [stacktrace]
 #0 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(652): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(486): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
@@ -847,7 +784,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 #62 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #63 {main}
 
-[previous exception] [object] ***** (エラーメッセージ) 
+[previous exception] [object] ***** (エラーメッセージ)
 [stacktrace]
 #0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(114): Doctrine\\DBAL\\Driver\\PDO\\Exception::new(Object(PDOException))
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
@@ -860,7 +797,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 #65 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #66 {main}
 
-[previous exception] [object] ***** (エラーメッセージ) 
+[previous exception] [object] ***** (エラーメッセージ)
 [stacktrace]
 #0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(112): PDOStatement->execute(NULL)
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
@@ -872,18 +809,16 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 #64 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #65 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #66 {main}
-"} 
+"}
 ```
 
 <br>
 
 ### ロギング
 
-#### ▼ ```report```メソッド
+#### ▼ `report`メソッド
 
 Laravel内部でキャッチされた例外を基に、ロギングを実行する。
-
-
 
 > ↪️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -905,7 +840,7 @@ class Handler extends ExceptionHandler
     {
         parent::report($exception);
     }
-    
+
     ...
 
 }
@@ -915,9 +850,9 @@ class Handler extends ExceptionHandler
 
 ### 異常系レスポンスの返信
 
-#### ▼ ```render```メソッド
+#### ▼ `render`メソッド
 
-Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。代わりとして、各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する。
+Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。代わりとして、各コントローラーに`try-catch`と異常系レスポンスの返信処理を実装する。
 
 > ↪️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -935,7 +870,7 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
-    
+
     ...
 }
 ```
@@ -952,52 +887,11 @@ Facadeに登録されたクラス (Facadeクラス) とServiceContainerを繋ぐ
 
 メソッドをコールできるようになる。
 
-
-
 #### ▼ Facadeを使用しない場合
 
 new演算子でインスタンスを作成する。
 
-
-
 **＊実装例＊**
-
-```php
-<?php
-  
-namespace App\Domain\DTO; 
-    
-class Foo
-{
-    public function method()
-    {
-        return "foo";
-    }
-}
-```
-```php
-<?php
-    
-// 通常
-$foo = new Foo();
-$foo->method();
-```
-
-#### ▼ Facadeの静的プロキシを使用する場合
-
-静的メソッドの記法でコールできる。
-
-ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。
-
-例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
-
-
-
-**＊実装例＊**
-
-Facadeとして使用したいクラスを定義する。
-
-
 
 ```php
 <?php
@@ -1013,13 +907,45 @@ class Foo
 }
 ```
 
-エイリアス名とクラスの名前空間を```config/app.php```ファイルを```aliases```キーに登録すると、そのエイリアス名でインスタンス化とメソッドコールを行えるようになる。
+```php
+<?php
 
+// 通常
+$foo = new Foo();
+$foo->method();
+```
 
+#### ▼ Facadeの静的プロキシを使用する場合
+
+静的メソッドの記法でコールできる。
+
+ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。
+
+例えば、Facadeの中でも、`Route`のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
+
+**＊実装例＊**
+
+Facadeとして使用したいクラスを定義する。
 
 ```php
 <?php
-  
+
+namespace App\Domain\DTO;
+
+class Foo
+{
+    public function method()
+    {
+        return "foo";
+    }
+}
+```
+
+エイリアス名とクラスの名前空間を`config/app.php`ファイルを`aliases`キーに登録すると、そのエイリアス名でインスタンス化とメソッドコールを行えるようになる。
+
+```php
+<?php
+
 "aliases" => [
     "Foo" => App\Models\Foo::class,
 ]
@@ -1027,13 +953,11 @@ class Foo
 
 インスタンス化とメソッドコールを行う。
 
-
-
 ```php
 <?php
 
 use Illuminate\Support\Facades\Foo;
-    
+
 // Facade利用
 $result = Foo::method();
 ```
@@ -1042,67 +966,61 @@ $result = Foo::method();
 
 Facadeがトレイトの代わりになる場合、Facadeを使用することにより、責務がドメインモデルに集中せずにすむ。
 
-
-
 **＊例＊**
 
 NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を使用することにより、Userクラスが通知処理の責務を持たずに済む。
-
-
 
 #### ▼ 標準登録されたFacadeクラスの種類
 
 以下のクラスは、デフォルトで登録されているFacadeである。
 
-
-
-| エイリアス名              | クラス名                                                                                                                               | サービスコンテナ結合キー         |
-|:---------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|
-| App                  | [Illuminate\Foundation\Application](https://laravel.com/api/8.x/Illuminate/Foundation/Application.html)                             | `app`                  |
-| Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html)                         | `artisan`              |
-| Auth                 | [Illuminate\Auth\AuthManager](https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html)                                         | `auth`                 |
-| Auth (Instance)      | [Illuminate\Contracts\Auth\Guard](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html)                                 | `auth.driver`          |
-| Blade                | [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/8.x/Illuminate/View/Compilers/BladeCompiler.html)                 | `blade.compiler`       |
-| Broadcast            | [Illuminate\Contracts\Broadcasting\Factory](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Factory.html)             |                        |
-| Broadcast (Instance) | [Illuminate\Contracts\Broadcasting\Broadcaster](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Broadcaster.html)     |                        |
-| Bus                  | [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/8.x/Illuminate/Contracts/Bus/Dispatcher.html)                         |                        |
-| Cache                | [Illuminate\Cache\CacheManager](https://laravel.com/api/8.x/Illuminate/Cache/CacheManager.html)                                     | `cache`                |
-| Cache (Instance)     | [Illuminate\Cache\Repository](https://laravel.com/api/8.x/Illuminate/Cache/Repository.html)                                         | `cache.store`          |
-| Config               | [Illuminate\Config\Repository](https://laravel.com/api/8.x/Illuminate/Config/Repository.html)                                       | `config`               |
-| Cookie               | [Illuminate\Cookie\CookieJar](https://laravel.com/api/8.x/Illuminate/Cookie/CookieJar.html)                                         | `cookie`               |
-| Crypt                | [Illuminate\Encryption\Encrypter](https://laravel.com/api/8.x/Illuminate/Encryption/Encrypter.html)                                 | `encrypter`            |
-| DB                   | [Illuminate\Database\DatabaseManager](https://laravel.com/api/8.x/Illuminate/Database/DatabaseManager.html)                         | `db`                   |
-| DB (Instance)        | [Illuminate\Database\Connection](https://laravel.com/api/8.x/Illuminate/Database/Connection.html)                                   | `db.connection`        |
-| Event                | [Illuminate\Events\Dispatcher](https://laravel.com/api/8.x/Illuminate/Events/Dispatcher.html)                                       | `events`               |
-| File                 | [Illuminate\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Filesystem/Filesystem.html)                               | `files`                |
-| Gate                 | [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Access/Gate.html)                     |                        |
-| Hash                 | [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/8.x/Illuminate/Contracts/Hashing/Hasher.html)                         | `hash`                 |
-| Lang                 | [Illuminate\Translation\Translator](https://laravel.com/api/8.x/Illuminate/Translation/Translator.html)                             | `translator`           |
-| Log                  | [Illuminate\Log\LogManager](https://laravel.com/api/8.x/Illuminate/Log/LogManager.html)                                             | `log`                  |
-| Mail                 | [Illuminate\Mail\Mailer](https://laravel.com/api/8.x/Illuminate/Mail/Mailer.html)                                                   | `mailer`               |
-| Notification         | [Illuminate\Notifications\ChannelManager](https://laravel.com/api/8.x/Illuminate/Notifications/ChannelManager.html)                 |                        |
-| Password             | [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html) | `auth.password`        |
-| Password (Instance)  | [Illuminate\Auth\Passwords\PasswordBroker](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBroker.html)               | `auth.password.broker` |
-| Queue                | [Illuminate\Queue\QueueManager](https://laravel.com/api/8.x/Illuminate/Queue/QueueManager.html)                                     | `queue`                |
-| Queue (Instance)     | [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Contracts/Queue/Queue.html)                               | `queue.connection`     |
-| Queue (Base Class)   | [Illuminate\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Queue/Queue.html)                                                   |                        |
-| Redirect             | [Illuminate\Routing\Redirector](https://laravel.com/api/8.x/Illuminate/Routing/Redirector.html)                                     | `redirect`             |
-| Redis                | [Illuminate\Redis\RedisManager](https://laravel.com/api/8.x/Illuminate/Redis/RedisManager.html)                                     | `redis`                |
-| Redis (Instance)     | [Illuminate\Redis\Connections\Connection](https://laravel.com/api/8.x/Illuminate/Redis/Connections/Connection.html)                 | `redis.connection`     |
-| Request              | [Illuminate\Http\Request](https://laravel.com/api/8.x/Illuminate/Http/Request.html)                                                 | `request`              |
-| Response             | [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/8.x/Illuminate/Contracts/Routing/ResponseFactory.html)       |                        |
-| Response (Instance)  | [Illuminate\Http\Response](https://laravel.com/api/8.x/Illuminate/Http/Response.html)                                               |                        |
-| Route                | [Illuminate\Routing\Router](https://laravel.com/api/8.x/Illuminate/Routing/Router.html)                                             | `router`               |
-| Schema               | [Illuminate\Database\Schema\Builder](https://laravel.com/api/8.x/Illuminate/Database/Schema/Builder.html)                           |                        |
-| Session              | [Illuminate\Session\SessionManager](https://laravel.com/api/8.x/Illuminate/Session/SessionManager.html)                             | `session`              |
-| Session (Instance)   | [Illuminate\Session\Store](https://laravel.com/api/8.x/Illuminate/Session/Store.html)                                               | `session.store`        |
-| Storage              | [Illuminate\Filesystem\FilesystemManager](https://laravel.com/api/8.x/Illuminate/Filesystem/FilesystemManager.html)                 | `filesystem`           |
-| Storage (Instance)   | [Illuminate\Contracts\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Contracts/Filesystem/Filesystem.html)           | `filesystem.disk`      |
-| URL                  | [Illuminate\Routing\UrlGenerator](https://laravel.com/api/8.x/Illuminate/Routing/UrlGenerator.html)                                 | `url`                  |
-| Validator            | [Illuminate\Validation\Factory](https://laravel.com/api/8.x/Illuminate/Validation/Factory.html)                                     | `validator`            |
-| Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/8.x/Illuminate/Validation/Validator.html)                                 |                        |
-| View                 | [Illuminate\View\Factory](https://laravel.com/api/8.x/Illuminate/View/Factory.html)                                                 | `view`                 |
-| View (Instance)      | [Illuminate\View\View](https://laravel.com/api/8.x/Illuminate/View/View.html)                                                       |                        |
+| エイリアス名         | クラス名                                                                                                                            | サービスコンテナ結合キー |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
+| App                  | [Illuminate\Foundation\Application](https://laravel.com/api/8.x/Illuminate/Foundation/Application.html)                             | `app`                    |
+| Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html)                         | `artisan`                |
+| Auth                 | [Illuminate\Auth\AuthManager](https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html)                                         | `auth`                   |
+| Auth (Instance)      | [Illuminate\Contracts\Auth\Guard](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html)                                 | `auth.driver`            |
+| Blade                | [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/8.x/Illuminate/View/Compilers/BladeCompiler.html)                 | `blade.compiler`         |
+| Broadcast            | [Illuminate\Contracts\Broadcasting\Factory](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Factory.html)             |                          |
+| Broadcast (Instance) | [Illuminate\Contracts\Broadcasting\Broadcaster](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Broadcaster.html)     |                          |
+| Bus                  | [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/8.x/Illuminate/Contracts/Bus/Dispatcher.html)                         |                          |
+| Cache                | [Illuminate\Cache\CacheManager](https://laravel.com/api/8.x/Illuminate/Cache/CacheManager.html)                                     | `cache`                  |
+| Cache (Instance)     | [Illuminate\Cache\Repository](https://laravel.com/api/8.x/Illuminate/Cache/Repository.html)                                         | `cache.store`            |
+| Config               | [Illuminate\Config\Repository](https://laravel.com/api/8.x/Illuminate/Config/Repository.html)                                       | `config`                 |
+| Cookie               | [Illuminate\Cookie\CookieJar](https://laravel.com/api/8.x/Illuminate/Cookie/CookieJar.html)                                         | `cookie`                 |
+| Crypt                | [Illuminate\Encryption\Encrypter](https://laravel.com/api/8.x/Illuminate/Encryption/Encrypter.html)                                 | `encrypter`              |
+| DB                   | [Illuminate\Database\DatabaseManager](https://laravel.com/api/8.x/Illuminate/Database/DatabaseManager.html)                         | `db`                     |
+| DB (Instance)        | [Illuminate\Database\Connection](https://laravel.com/api/8.x/Illuminate/Database/Connection.html)                                   | `db.connection`          |
+| Event                | [Illuminate\Events\Dispatcher](https://laravel.com/api/8.x/Illuminate/Events/Dispatcher.html)                                       | `events`                 |
+| File                 | [Illuminate\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Filesystem/Filesystem.html)                               | `files`                  |
+| Gate                 | [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Access/Gate.html)                     |                          |
+| Hash                 | [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/8.x/Illuminate/Contracts/Hashing/Hasher.html)                         | `hash`                   |
+| Lang                 | [Illuminate\Translation\Translator](https://laravel.com/api/8.x/Illuminate/Translation/Translator.html)                             | `translator`             |
+| Log                  | [Illuminate\Log\LogManager](https://laravel.com/api/8.x/Illuminate/Log/LogManager.html)                                             | `log`                    |
+| Mail                 | [Illuminate\Mail\Mailer](https://laravel.com/api/8.x/Illuminate/Mail/Mailer.html)                                                   | `mailer`                 |
+| Notification         | [Illuminate\Notifications\ChannelManager](https://laravel.com/api/8.x/Illuminate/Notifications/ChannelManager.html)                 |                          |
+| Password             | [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html) | `auth.password`          |
+| Password (Instance)  | [Illuminate\Auth\Passwords\PasswordBroker](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBroker.html)               | `auth.password.broker`   |
+| Queue                | [Illuminate\Queue\QueueManager](https://laravel.com/api/8.x/Illuminate/Queue/QueueManager.html)                                     | `queue`                  |
+| Queue (Instance)     | [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Contracts/Queue/Queue.html)                               | `queue.connection`       |
+| Queue (Base Class)   | [Illuminate\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Queue/Queue.html)                                                   |                          |
+| Redirect             | [Illuminate\Routing\Redirector](https://laravel.com/api/8.x/Illuminate/Routing/Redirector.html)                                     | `redirect`               |
+| Redis                | [Illuminate\Redis\RedisManager](https://laravel.com/api/8.x/Illuminate/Redis/RedisManager.html)                                     | `redis`                  |
+| Redis (Instance)     | [Illuminate\Redis\Connections\Connection](https://laravel.com/api/8.x/Illuminate/Redis/Connections/Connection.html)                 | `redis.connection`       |
+| Request              | [Illuminate\Http\Request](https://laravel.com/api/8.x/Illuminate/Http/Request.html)                                                 | `request`                |
+| Response             | [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/8.x/Illuminate/Contracts/Routing/ResponseFactory.html)       |                          |
+| Response (Instance)  | [Illuminate\Http\Response](https://laravel.com/api/8.x/Illuminate/Http/Response.html)                                               |                          |
+| Route                | [Illuminate\Routing\Router](https://laravel.com/api/8.x/Illuminate/Routing/Router.html)                                             | `router`                 |
+| Schema               | [Illuminate\Database\Schema\Builder](https://laravel.com/api/8.x/Illuminate/Database/Schema/Builder.html)                           |                          |
+| Session              | [Illuminate\Session\SessionManager](https://laravel.com/api/8.x/Illuminate/Session/SessionManager.html)                             | `session`                |
+| Session (Instance)   | [Illuminate\Session\Store](https://laravel.com/api/8.x/Illuminate/Session/Store.html)                                               | `session.store`          |
+| Storage              | [Illuminate\Filesystem\FilesystemManager](https://laravel.com/api/8.x/Illuminate/Filesystem/FilesystemManager.html)                 | `filesystem`             |
+| Storage (Instance)   | [Illuminate\Contracts\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Contracts/Filesystem/Filesystem.html)           | `filesystem.disk`        |
+| URL                  | [Illuminate\Routing\UrlGenerator](https://laravel.com/api/8.x/Illuminate/Routing/UrlGenerator.html)                                 | `url`                    |
+| Validator            | [Illuminate\Validation\Factory](https://laravel.com/api/8.x/Illuminate/Validation/Factory.html)                                     | `validator`              |
+| Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/8.x/Illuminate/Validation/Validator.html)                                 |                          |
+| View                 | [Illuminate\View\Factory](https://laravel.com/api/8.x/Illuminate/View/Factory.html)                                                 | `view`                   |
+| View (Instance)      | [Illuminate\View\View](https://laravel.com/api/8.x/Illuminate/View/View.html)                                                       |                          |
 
 <br>
 
@@ -1113,8 +1031,6 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 認証に関する処理を提供する。
 
 Laravelからあらかじめ提供されている認証を使用しない場合、Authファサードを使用して、認証ロジックを実装できる。
-
-
 
 <br>
 
@@ -1128,23 +1044,19 @@ Eloquentの代わりとして、DBファサードを使用しても良い。
 
 Active Recordのロジックを持たないため、Repositoryパターンのロジックとして使用できる。
 
-
-
-#### ▼ ```transaction```メソッド
+#### ▼ `transaction`メソッド
 
 一連のトランザクション処理を実行する。
 
 引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。
 
-例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。
+例外が発生しなかった場合、無名関数の返却値が、そのまま`transaction`メソッドの返却値になる。
 
-加えて```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。
+加えて`transaction`メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。
 
 補足として、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。
 
 参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
-
-
 
 > ↪️ 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -1201,13 +1113,11 @@ class FooRepository extends Repository implements DomainFooRepository
 
 ```
 
-#### ▼ ```beginTransaction```メソッド、```commit```メソッド、```rollback```メソッド、
+#### ▼ `beginTransaction`メソッド、`commit`メソッド、`rollback`メソッド、
 
 トランザクション処理の各操作を分割して実行する。
 
-基本的には、```transaction```メソッドを使用してトランザクション処理を実行すれば良い。
-
-
+基本的には、`transaction`メソッドを使用してトランザクション処理を実行すれば良い。
 
 **＊実装例＊**
 
@@ -1226,12 +1136,12 @@ class FooRepository extends Repository implements DomainFooRepository
      * @var FooDTO
      */
     private FooDTO $fooDTO;
-    
+
     public function __construct(FooDTO $fooDTO)
     {
         $this->fooDTO = $fooDTO;
-    }   
-    
+    }
+
     /**
      * Fooを更新します。
 
@@ -1243,7 +1153,7 @@ class FooRepository extends Repository implements DomainFooRepository
     {
         // トランザクション処理を開始する。
         DB::beginTransaction();
-        
+
         try {
             $this->fooDTO
             // オブジェクトにデータを設定する。
@@ -1253,12 +1163,12 @@ class FooRepository extends Repository implements DomainFooRepository
                 "email" => $foo->email()
             ])
             // update文を実行する。
-            ->save();            
-            
+            ->save();
+
             // コミットメントを実行する。
             DB::commit();
         } catch (\Exception $e) {
-            
+
             // ロールバックする。
             DB::rollback();
         }
@@ -1274,17 +1184,13 @@ class FooRepository extends Repository implements DomainFooRepository
 
 ルーティング処理を提供する。
 
-
-
 #### ▼ ヘルスチェックへの対応
 
-ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で、```200```ステータスを含むレスポンスを返信する。
+ALBやGlobal Acceleratorから『`/healthcheck`』に対してヘルスチェックを設定した上で、`200`ステータスを含むレスポンスを返信する。
 
 Nginxでヘルスチェックを実装もできるが、アプリケーションの死活管理としては、Laravelに実装する方が適切である。
 
 RouteServiceProviderも参照せよ。
-
-
 
 **＊実装例＊**
 
@@ -1297,19 +1203,15 @@ Route::get("/healthcheck", function () {
 });
 ```
 
-#### ▼ ```middleware```メソッド
+#### ▼ `middleware`メソッド
 
 コントローラーへのルーティング時に実行するMiddlewareクラスを設定する。
 
-引数として、```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する。
-
-
+引数として、`App\Http\Kernel.php`ファイルで定義されたMiddlewareクラスのエイリアス名を設定する。
 
 **＊実装例＊**
 
-認証方法としてWebガードを使用する場合、```auth```エイリアスを設定する。
-
-
+認証方法としてWebガードを使用する場合、`auth`エイリアスを設定する。
 
 ```php
 <?php
@@ -1327,10 +1229,7 @@ Route::middleware("auth")->group(function () {
 
 ```
 
-デフォルトでは、```App\Http\Kernel.php```ファイルにて、```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが紐付けられている。
-
-
-
+デフォルトでは、`App\Http\Kernel.php`ファイルにて、`auth`エイリアスに`\App\Http\Middleware\Authenticate`クラスが紐付けられている。
 
 ```php
 <?php
@@ -1342,23 +1241,21 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-    
+
     ...
-    
+
     protected $routeMiddleware = [
-        
+
         "auth" => \App\Http\Middleware\Authenticate::class,
-        
+
     ];
-    
-    ...    
-    
+
+    ...
+
 }
 ```
 
-一方で、認証方法としてAPIガードを使用する場合、```auth:api```エイリアスを設定する。
-
-
+一方で、認証方法としてAPIガードを使用する場合、`auth:api`エイリアスを設定する。
 
 ```php
 <?php
@@ -1369,17 +1266,13 @@ Route::middleware("auth:api")->group(function () {
 });
 ```
 
-#### ▼ ```prefix```メソッド
+#### ▼ `prefix`メソッド
 
 エンドポイントが共通として持つ最初のパスを、接頭辞として定義する。
 
-
-
 **＊実装例＊**
 
-各エンドポイントの最初の『```foos```』を接頭辞として定義する。
-
-
+各エンドポイントの最初の『`foos`』を接頭辞として定義する。
 
 ```php
 <?php
@@ -1395,19 +1288,15 @@ Route::prefix("foos")->group(function () {
 });
 ```
 
-#### ▼ ```where```メソッド、```pattern```メソッド
+#### ▼ `where`メソッド、`pattern`メソッド
 
 パスパラメーターに対するバリデーションルールを正規表現で定義し、加えて実行する。
 
-RouteServiceProviderの```boot```メソッドにて、```pattern```メソッドで制約を設定することによって、ルーティング時にwhereを使用する必要がなくなる。
-
-
+RouteServiceProviderの`boot`メソッドにて、`pattern`メソッドで制約を設定することによって、ルーティング時にwhereを使用する必要がなくなる。
 
 **＊実装例＊**
 
 userIdの形式を『0〜9が1つ以上』に設定している。
-
-
 
 ```php
 <?php
@@ -1427,9 +1316,7 @@ Route::prefix("foos")->group(function () {
 });
 ```
 
-または、RouteServiceProviderクラスに```pattern```メソッドを定義すると、各エンドポイントに対する正規表現を一括で実行できる。
-
-
+または、RouteServiceProviderクラスに`pattern`メソッドを定義すると、各エンドポイントに対する正規表現を一括で実行できる。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
@@ -1458,23 +1345,19 @@ class RouteServiceProvider extends ServiceProvider
     {
         // バリデーションルールとして『0〜9が1つ以上』を定義する。
         Route::pattern('fooId', '[0-9]+');
-        
+
         // 〜 中略 〜
     }
 }
 ```
 
-#### ▼ ```group```メソッド
+#### ▼ `group`メソッド
 
-複数のグループを組み合わせる場合、```group```メソッドを使用する。
-
-
+複数のグループを組み合わせる場合、`group`メソッドを使用する。
 
 **＊実装例＊**
 
 エンドポイントの接頭辞とミドルウェアの指定を定義する。
-
-
 
 ```php
 <?php
@@ -1496,17 +1379,13 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 ファイルの入出力処理を提供する。
 
-
-
 #### ▼ ローカルストレージ (非公開) の場合
 
-ファイルを```/storage/app```ディレクトリ配下に保存する。
+ファイルを`/storage/app`ディレクトリ配下に保存する。
 
 このファイルは非公開であり、リクエストによってアクセスできない。
 
-事前に、シンボリックリンクを作成する、また、```filesystems.php```ファイルに設定が必要である。
-
-
+事前に、シンボリックリンクを作成する、また、`filesystems.php`ファイルに設定が必要である。
 
 ```bash
 $ php artisan storage:link
@@ -1516,7 +1395,7 @@ $ php artisan storage:link
 return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
-    
+
      ...
 
     "disks" => [
@@ -1525,12 +1404,12 @@ return [
             "driver" => "local",
             "root"   => storage_path("app"),
         ],
-        
+
      ...
-        
+
     // シンボリックリンクの関係を定義
     "links" => [
-        
+
         // 『/var/www/project/public/storage』から『/var/www/project/storage/app/public』へのリンク
         public_path("storage") => storage_path("app/public"),
     ],
@@ -1539,19 +1418,15 @@ return [
 
 **＊実装例＊**
 
-Storageファサードの```disk```メソッドを使用してlocalディスクを指定する。
+Storageファサードの`disk`メソッドを使用してlocalディスクを指定する。
 
-```file.txt```ファイルを```storage/app/file.txt```として保存する。
-
-
+`file.txt`ファイルを`storage/app/file.txt`として保存する。
 
 ```php
 Storage::disk("local")->put("file.txt", "file.txt");
 ```
 
-ただし、```filesytems.php```ファイルでデフォルトディスクは```local```になっているため、```put```メソッドを直接的に使用できる。
-
-
+ただし、`filesytems.php`ファイルでデフォルトディスクは`local`になっているため、`put`メソッドを直接的に使用できる。
 
 ```php
 Storage::put("file.txt", "file.txt");
@@ -1559,23 +1434,21 @@ Storage::put("file.txt", "file.txt");
 
 #### ▼ ローカルストレージ (公開) の場合
 
-ファイルを```storage/app/public```ディレクトリ配下に保存する。
+ファイルを`storage/app/public`ディレクトリ配下に保存する。
 
 このファイルは公開であり、リクエストによってアクセスできる。
 
-事前に、```filesystems.php```ファイルに設定が必要である。
-
-
+事前に、`filesystems.php`ファイルに設定が必要である。
 
 ```php
 return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
-    
+
      ...
 
     "disks" => [
-        
+
         ...
 
         "public" => [
@@ -1586,26 +1459,22 @@ return [
         ],
 
         ...
-        
+
     ],
 ];
 ```
 
 **＊実装例＊**
 
-Storageファサードの```disk```メソッドを使用してpublicディスクを指定する。
+Storageファサードの`disk`メソッドを使用してpublicディスクを指定する。
 
-また、```file.txt```ファイルを```storage/app/public/file.txt```として保存する。
-
-
+また、`file.txt`ファイルを`storage/app/public/file.txt`として保存する。
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
-ただし、環境変数を使用して、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接的に使用できる。
-
-
+ただし、環境変数を使用して、`filesytems.php`ファイルでデフォルトディスクを`s3`に変更すると、`put`メソッドを直接的に使用できる。
 
 ```php
 FILESYSTEM_DRIVER=s3
@@ -1616,7 +1485,6 @@ Storage::put("file.txt", "file.txt");
 ```
 
 **＊実装例＊**
-
 
 ```php
 <?php
@@ -1639,7 +1507,7 @@ class FileSystemPublicController extends Controller
         $file_path = "/path/to/public/foo.jpg"
         $contents = file_get_contents($file_path);
 
-        // 保存先パス (ディレクトリ+ファイル名) 
+        // 保存先パス (ディレクトリ+ファイル名)
         $saved_file_path = "/images/foo.jpg";
 
         // foo.jpgを『/images/foo.jpg』に保存
@@ -1653,15 +1521,13 @@ class FileSystemPublicController extends Controller
 
 ファイルをS3バケット内のディレクトリ配下に保存する。
 
-環境変数を```.env```ファイルに実装する必要がある。
+環境変数を`.env`ファイルに実装する必要がある。
 
-```filesystems.php```ファイルから、指定された設定が選択される。
+`filesystems.php`ファイルから、指定された設定が選択される。
 
 AWSアカウントの認証情報を環境変数として設定するか、またはS3アクセスポリシーをEC2やECSタスクに付与することにより、S3にアクセスできるようになる。
 
-事前に、```filesystems.php```ファイルに設定が必要である。
-
-
+事前に、`filesystems.php`ファイルに設定が必要である。
 
 ```bash
 # S3アクセスポリシーをEC2やECSタスクに付与してもよい
@@ -1677,9 +1543,9 @@ AWS_BUCKET=<バケット名>
 return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
-    
+
      ...
-    
+
     "disks" => [
 
         ...
@@ -1699,19 +1565,15 @@ return [
 
 **＊実装例＊**
 
-Storageファサードの```disk```メソッドを使用してs3ディスクを指定する。
+Storageファサードの`disk`メソッドを使用してs3ディスクを指定する。
 
-また、```file.txt```ファイルをS3バケットのルートに```file.txt```として保存する。
-
-
+また、`file.txt`ファイルをS3バケットのルートに`file.txt`として保存する。
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
-他の実装方法として、環境変数を使用して、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接的に使用できる。
-
-
+他の実装方法として、環境変数を使用して、`filesytems.php`ファイルでデフォルトディスクを`s3`に変更すると、`put`メソッドを直接的に使用できる。
 
 ```bash
 FILESYSTEM_DRIVER=s3
@@ -1729,21 +1591,17 @@ Storage::put("file.txt", "file.txt");
 
 バリデーション処理を提供する。
 
-FormRequestクラスの```validated```メソッドや```validate```メソッドの代わりとして、Validatorファサードを使用しても良い。
+FormRequestクラスの`validated`メソッドや`validate`メソッドの代わりとして、Validatorファサードを使用しても良い。
 
+#### ▼ Validatorクラス、`fails`メソッド
 
-
-#### ▼ Validatorクラス、```fails```メソッド
-
-Validateファサードの```make```メソッドを使用して、ルールを定義する。
+Validateファサードの`make`メソッドを使用して、ルールを定義する。
 
 この時、第一引数で、バリデーションを行うリクエストデータを渡す。
 
-ルールに反すると、1つ目のルール名 (例：```required```) に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+ルールに反すると、1つ目のルール名 (例：`required`) に基づき、`validation.php`ファイルから対応するエラーメッセージを自動的に選択する。
 
-次に、```fails```メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
-
-
+次に、`fails`メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
 
 **＊実装例＊**
 
@@ -1778,19 +1636,17 @@ class FooController extends Controller
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
-        
+
         // 続きの処理
     }
 }
 ```
 
-#### ▼ ```validate```メソッド
+#### ▼ `validate`メソッド
 
-Validatorクラスの```validate```メソッドを使用すると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。
+Validatorクラスの`validate`メソッドを使用すると、FormRequestクラスの`validate`メソッドと同様の処理が実行される。
 
-バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
-
-
+バリデーションでエラーが発生した場合、Handlerクラスの`invalid`メソッドがコールされ、元のWebページにリダイレクトされる。
 
 ```php
 <?php
@@ -1824,7 +1680,7 @@ class FooController extends Controller
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
-        
+
         // 続きの処理
     }
 }
@@ -1844,27 +1700,21 @@ class FooController extends Controller
 
 どちらを使用するかは好みである。
 
-
-
 > ↪️ 参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
 
 #### ▼ 一覧
 
 以下リンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-view
 
 <br>
 
-### ```auth```ヘルパー
+### `auth`ヘルパー
 
 #### ▼ AuthManagerインスタンスの返却
 
 認証処理を持つAuthManagerクラスのインスタンスを返却する。
-
-
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 
@@ -1877,19 +1727,15 @@ $auth = auth();
 
 <br>
 
-### ```config```ヘルパー
+### `config`ヘルパー
 
 #### ▼ 環境変数ファイルの読み出し
 
 環境変数ファイル名とキー名をドットで指定し、事前に設定された値を出力する。
 
-
-
 **＊実装例＊**
 
-デフォルトで搭載されている```app.php```ファイルの```timezone```キーの値を出力する。
-
-
+デフォルトで搭載されている`app.php`ファイルの`timezone`キーの値を出力する。
 
 ```php
 <?php
@@ -1899,21 +1745,17 @@ $value = config("app.timezone");
 
 #### ▼ 独自環境変数ファイルの作成と読み出し
 
-任意の名前のphp形式ファイルを```config```ディレクトリ配下に作成しておく。
+任意の名前のphp形式ファイルを`config`ディレクトリ配下に作成しておく。
 
 これは、configヘルパーで読み込める。
 
-
-
 **＊実装例＊**
-
 
 ```php
 <?php
 
 $requestUrl = config("api.foo.endpoint_url");
 ```
-
 
 ```php
 <?php
@@ -1932,7 +1774,7 @@ return [
 
 <br>
 
-### ```bcrypt```ヘルパー
+### `bcrypt`ヘルパー
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
 
@@ -1944,21 +1786,19 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 <br>
 
-### ```redirect```ヘルパー
+### `redirect`ヘルパー
 
 > ↪️ 参考：https://blog.capilano-fw.com/?p=566
 
 <br>
 
-### ```response```ヘルパー
+### `response`ヘルパー
 
 #### ▼ JSON型データを含むレスポンス
 
-返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSON型データを設定する。
+返却されるResponseFactoryクラスの`json`メソッドにレンダリングしたいJSON型データを設定する。
 
-```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
-
-
+`response`ヘルパーは初期値として`200`ステータスが設定されているが、`view`メソッドや`setStatusCode`メソッドを使用して、明示的に設定しても良い。
 
 > ↪️ 参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
 
@@ -1989,13 +1829,11 @@ class FooController extends Controller
 
 #### ▼ Viewテンプレートのレスポンス
 
-返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ (テンプレート、array型データ、ステータスコードなど) を設定する。
+返却されるResponseFactoryクラスの`view`メソッドに、レンダリングしたいデータ (テンプレート、array型データ、ステータスコードなど) を設定する。
 
-また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。
+また、Viewクラスの`header`メソッドにHTTPヘッダーの値を設定する。
 
-```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
-
-
+`response`ヘルパーは初期値として`200`ステータスが設定されているが、`view`メソッドや`setStatusCode`メソッドを使用して、明示的に設定しても良い。
 
 **＊実装例＊**
 
@@ -2049,7 +1887,7 @@ class FooController extends Controller
 
 <br>
 
-### ```route```ヘルパー
+### `route`ヘルパー
 
 #### ▼ ルートエイリアスを基にURL作成
 
@@ -2057,30 +1895,26 @@ class FooController extends Controller
 
 ドメインは自動的に補完される。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
 
 ```php
 <?php
-    
+
 Route::get('/foo', [FooController::class, 'index'])->name('foos_index');
-    
+
 // https://example.com/foo
 $url = route('foos_index');
 ```
 
 <br>
 
-### ```path```系ヘルパー
+### `path`系ヘルパー
 
-#### ▼ ```base_path```ヘルパー
+#### ▼ `base_path`ヘルパー
 
 引数を設定しない場合、projectルートディレクトリの絶対パスを作成する。
 
 また、projectルートディレクトリからの相対パスを引数として、絶対パスを作成する。
-
-
 
 ```php
 <?php
@@ -2092,13 +1926,11 @@ $path = base_path();
 $path = base_path("vendor/bin");
 ```
 
-#### ▼ ```public_path```ヘルパー
+#### ▼ `public_path`ヘルパー
 
 引数を設定しない場合、publicディレクトリの絶対パスを作成する。
 
 また、publicディレクトリからの相対パスを引数として、絶対パスを作成する。
-
-
 
 ```php
 <?php
@@ -2110,13 +1942,11 @@ $path = public_path();
 $path = public_path("css/app.css");
 ```
 
-#### ▼ ```storage_path```ヘルパー
+#### ▼ `storage_path`ヘルパー
 
 引数を設定しない場合、storageディレクトリの絶対パスを作成する。
 
 まあ、storageディレクトリからの相対パスを引数として、絶対パスを作成する。
-
-
 
 ```php
 <?php
@@ -2130,15 +1960,13 @@ $path = storage_path("app/file.txt");
 
 <br>
 
-### ```url```ヘルパー
+### `url`ヘルパー
 
 #### ▼ パスを基にURL作成
 
 指定したパスに応じてURLを作成する。
 
 ドメインは自動的に補完される。
-
-
 
 > ↪️ 参考：https://readouble.com/laravel/5.7/ja/urls.html
 
@@ -2151,8 +1979,6 @@ $url = url('/foo');
 
 <br>
 
-
-
 ## 09. Factory
 
 ### 初期値レコードの定義
@@ -2164,8 +1990,6 @@ Fakerはレコードの値をランダムに作成するためのパッケージ
 Farkerクラスは、プロパティにランダムなデータを保持している。
 
 このプロパティを特に、Formattersという。
-
-
 
 > ↪️ 参考：https://fwhy.github.io/faker-docs/
 
@@ -2208,8 +2032,6 @@ class FooFactory extends Factory
 
 Factoryに対応するEloquentモデルで使用する必要がある。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
 ```php
@@ -2227,13 +2049,9 @@ class Foo
 
 Factoryにおける定義を基にして、指定した数だけダミーデータを量産する。
 
-
-
 **＊実装例＊**
 
-FooSeederを定義し、```50```個のダミーユーザーデータを量産する。
-
-
+FooSeederを定義し、`50`個のダミーユーザーデータを量産する。
 
 ```php
 <?php
@@ -2244,7 +2062,7 @@ use Illuminate\Database\Seeder;
 class FooSeeder extends Seeder
 {
     private const NUM_TEST_DATA = 3;
-    
+
     /**
      * @return void
      */
@@ -2255,9 +2073,7 @@ class FooSeeder extends Seeder
 }
 ```
 
-また、BarSeederを定義し、```50```個のダミーユーザーデータを量産する。
-
-
+また、BarSeederを定義し、`50`個のダミーユーザーデータを量産する。
 
 ```php
 <?php
@@ -2268,7 +2084,7 @@ use Illuminate\Database\Seeder;
 class BarSeeder extends Seeder
 {
     private const NUM_TEST_DATA = 3;
-    
+
     /**
      * @return void
      */
@@ -2280,8 +2096,6 @@ class BarSeeder extends Seeder
 ```
 
 DatabaseSeederにて、全てのSeederをまとめて実行する。
-
-
 
 ```php
 <?php
@@ -2310,14 +2124,14 @@ class DatabaseSeeder extends Seeder
                 // リアルデータ
             ]);
         }
-                
+
         // ステージング環境用の初期データ
         if (app()->environment("stg")) {
             $this->call([
                 // リアルデータ
             ]);
         }
-        
+
         // 本番環境用の初期データ
         if (app()->environment("prd")) {
             $this->call([
@@ -2340,15 +2154,13 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。
+同じくFormRequestクラスの`validate`メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。
 
-```validated```メソッドと間違わないように注意する。
+`validated`メソッドと間違わないように注意する。
 
-ルールに反すると、1つ目のルール名 (例：```required```) に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+ルールに反すると、1つ目のルール名 (例：`required`) に基づき、`validation.php`ファイルから対応するエラーメッセージを自動的に選択する。
 
-バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
-
-
+バリデーションでエラーが発生した場合、Handlerクラスの`invalid`メソッドがコールされ、元のWebページにリダイレクトされる。
 
 > ↪️ 参考：
 >
@@ -2401,8 +2213,6 @@ class FooController extends Controller
 
 注意点として、ルールによっては、配列を使用せずとも定義できる。
 
-
-
 **＊実装例＊**
 
 ```php
@@ -2438,13 +2248,11 @@ Controllerで、FormRequestクラスを引数に指定すると、コントロ�
 
 そのため、コントローラーの中ではバリデーションを実行する必要はない。
 
-代わりとして、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。
+代わりとして、ルールをFormRequestクラスの`rule`メソッドに定義する必要がある。
 
-FormRequestクラスの```validated```メソッドを使用して、バリデーション済みのデータを取得できる。
+FormRequestクラスの`validated`メソッドを使用して、バリデーション済みのデータを取得できる。
 
-バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
-
-
+バリデーションでエラーが発生した場合、Handlerクラスの`invalid`メソッドがコールされ、元のWebページにリダイレクトされる。
 
 **＊実装例＊**
 
@@ -2483,11 +2291,9 @@ class FooController extends Controller
 }
 ```
 
-FormRequestクラスの```rules```メソッドを使用して、ルールを定義する。
+FormRequestクラスの`rules`メソッドを使用して、ルールを定義する。
 
-ルールに反すると、1つ目のルール名 (例：```required```) に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
-
-
+ルールに反すると、1つ目のルール名 (例：`required`) に基づき、`validation.php`ファイルから対応するエラーメッセージを自動的に選択する。
 
 **＊実装例＊**
 
@@ -2527,9 +2333,7 @@ class FooRequest extends FormRequest
 
 #### ▼ ルールの定義 ＆ バリデーション自動実行
 
-Routeファサードの```pattern```メソッドまたは```where```メソッドで定義する。
-
-
+Routeファサードの`pattern`メソッドまたは`where`メソッドで定義する。
 
 <br>
 
@@ -2537,15 +2341,13 @@ Routeファサードの```pattern```メソッドまたは```where```メソッド
 
 #### ▼ 標準のエラーメッセージ
 
-標準のバリデーションメッセージは、```resources/lang/ja/validation.php```ファイルで定義できる。
+標準のバリデーションメッセージは、`resources/lang/ja/validation.php`ファイルで定義できる。
 
-バリデーションルールの組み合わせによって、```validation.php```ファイルから自動的にメッセージが選択される。
+バリデーションルールの組み合わせによって、`validation.php`ファイルから自動的にメッセージが選択される。
 
 例えばルールとして最大値を設定した場合は、データ型に合わせてメッセージが選択される。
 
-日本語翻訳```validation.php```ファイルについては、以下のリンクを参考にせよ。
-
-
+日本語翻訳`validation.php`ファイルについては、以下のリンクを参考にせよ。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
 
@@ -2580,9 +2382,7 @@ return [
 ];
 ```
 
-注意点として、言語設定を行わない場合、デフォルトでは```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため、```app.php```ファイルで言語を変更することと、日本語翻訳```validation.php```ファイルが必要である。
-
-
+注意点として、言語設定を行わない場合、デフォルトでは`/resources/lang/en/validation.php`ファイルをバリデーションメッセージとして参照するため、`app.php`ファイルで言語を変更することと、日本語翻訳`validation.php`ファイルが必要である。
 
 ```php
 <?php
@@ -2592,42 +2392,38 @@ return [
     // 〜 中略 〜
 
     'locale' => 'ja'
-    
+
     // 〜 中略 〜
-    
+
 ];
 ```
 
 #### ▼ 画面上でのエラーメッセージ出力
 
-バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。
+バリデーションでエラーがあった場合、Handlerクラスの`invalid`メソッドがコールされ、MessageBagクラスがViewに渡される。
 
 選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている。
 
-
-
 ```yaml
-( 
-  [title] => Array
-         (
-            [0] => タイトルの入力は必須です
-            [1] => タイトルは、最大255文字以下で指定してください
-         )
+(
+[title] => Array
+(
+[0] => タイトルの入力は必須です
+[1] => タイトルは、最大255文字以下で指定してください
+)
 
-  [body] => Array
-         (
-            [0] => 本文の入力は必須です
-            [1] => 本文は、最大255文字以下で指定してください
-         )
-  [data] => Array
-         (
-            [0] => 作成日の入力は必須です
-            [1] => 作成日を有効な日付形式にしてください
-         )    
+[body] => Array
+(
+[0] => 本文の入力は必須です
+[1] => 本文は、最大255文字以下で指定してください
+)
+[data] => Array
+(
+[0] => 作成日の入力は必須です
+[1] => 作成日を有効な日付形式にしてください
+)
 )
 ```
-
-
 
 > ↪️ 参考：
 >
@@ -2638,11 +2434,9 @@ return [
 
 ### Rule
 
-#### ▼ ```exists```メソッド
+#### ▼ `exists`メソッド
 
 指定されたテーブルのカラムに値が存在しているかを検証する。
-
-
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
 
@@ -2675,8 +2469,6 @@ class FooRequest extends FormRequest
 
 テーブルにカラム数が多い場合は、Where句をつけることにより、特定のカラムのみ検証もできる。
 
-
-
 ```php
 <?php
 
@@ -2704,11 +2496,9 @@ class FooRequest extends FormRequest
 }
 ```
 
-#### ▼ ```in```メソッド
+#### ▼ `in`メソッド
 
 決められた複数の値に合致する値であるか否かを検証する。
-
-
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
 
@@ -2740,15 +2530,13 @@ class FooRequest extends FormRequest
 
 #### ▼ 独自ルール/メッセージ
 
-独自ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、```rule```メソッドの中でインスタンスを作成する。
+独自ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、`rule`メソッドの中でインスタンスを作成する。
 
-独自Ruleクラスでは、```passes```メソッドでルールを定義する。
+独自Ruleクラスでは、`passes`メソッドでルールを定義する。
 
-また、```messages```メソッドでバリデーションメッセージを定義する。
+また、`messages`メソッドでバリデーションメッセージを定義する。
 
-```validation.php```ファイルでメッセージを定義し、これを参照しても良い。
-
-
+`validation.php`ファイルでメッセージを定義し、これを参照しても良い。
 
 > ↪️ 参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
 
@@ -2820,15 +2608,13 @@ class FooRequest extends FormRequest
 
 #### ▼ セッション変数の取得
 
-FormRequestクラスの```session```メソッドを使用して、セッション変数を取得する。
-
-
+FormRequestクラスの`session`メソッドを使用して、セッション変数を取得する。
 
 **＊実装例＊**
 
 ```php
 <?php
-  
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -2849,8 +2635,6 @@ class FooController extends Controller
 
 全てのセッション変数を取得もできる。
 
-
-
 ```php
 $session = $request->session()->all();
 ```
@@ -2858,8 +2642,6 @@ $session = $request->session()->all();
 #### ▼ フラッシュデータの設定
 
 現在のセッションで、今回と次回のリクエストのみで有効な一時データを設定できる。
-
-
 
 ```php
 $request->session()
@@ -2870,11 +2652,9 @@ $request->session()
 
 ### 認証
 
-#### ▼ ```authorize```メソッド
+#### ▼ `authorize`メソッド
 
 ユーザーがリソースに対してCRUDを行う権限を持っているかを、コントローラーのメソッドを実行する前に、判定する。
-
-
 
 **＊実装例＊**
 
@@ -2914,9 +2694,7 @@ public function authorize()
 
 一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。
 
-これらのクラスはClosure (無名関数) として、```next```変数に格納されている。
-
-
+これらのクラスはClosure (無名関数) として、`next`変数に格納されている。
 
 **＊実装例＊**
 
@@ -2949,12 +2727,9 @@ class FooBeforeMiddleware
 
 あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。
 
-これらのクラスはClosure (無名関数) として、```next```変数に格納されている。
-
-
+これらのクラスはClosure (無名関数) として、`next`変数に格納されている。
 
 **＊実装例＊**
-
 
 ```php
 <?php
@@ -2968,7 +2743,7 @@ class FooAfterMiddleware
     /**
      * @param  Request  $request
      * @param  \Closure  $next
-     */    
+     */
     public function handle($request, Closure $next)
     {
         $response = $next($request);
@@ -2987,11 +2762,9 @@ class FooAfterMiddleware
 
 #### ▼ EncryptCookies
 
-レスポンス時に、```Cookie```ヘッダーの全ての値を暗号化する。
+レスポンス時に、`Cookie`ヘッダーの全ての値を暗号化する。
 
-暗号化したくない場合は、```Cookie```ヘッダーのキー名を```except```プロパティに設定する。
-
-
+暗号化したくない場合は、`Cookie`ヘッダーのキー名を`except`プロパティに設定する。
 
 > ↪️ 参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
 
@@ -2999,15 +2772,11 @@ class FooAfterMiddleware
 
 セッションの開始の開始点になる。
 
-
-
 > ↪️ 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 
 また、同一セッションで一意なCSRFトークンを作成する。
 
 CSRFトークンによるCSRFの防御については、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
 
@@ -3015,11 +2784,9 @@ CSRFトークンによるCSRFの防御については、以下のリンクを参
 
 セッションデータに書かれたCSRFトークンと、リクエストボディに割り当てられたトークンを比較する。
 
-セッションデータは```storage/framework/sessions```ディレクトリ配下に配置されている。
+セッションデータは`storage/framework/sessions`ディレクトリ配下に配置されている。
 
-一般的に、CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが、Laravelではリクエストボディを使用する必要がある。
-
-
+一般的に、CSRFトークンは`Cookie`ヘッダーに割り当てることもできるが、Laravelではリクエストボディを使用する必要がある。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
 
@@ -3030,8 +2797,6 @@ CSRFトークンによるCSRFの防御については、以下のリンクを参
 #### ▼ Kernel
 
 Middlewareクラスをコールする時の方法をカスタマイズできる。
-
-
 
 **＊実装例＊**
 
@@ -3128,8 +2893,6 @@ class Kernel extends HttpKernel
 
 クエリパラメーターとメッセージボディの両方を取得する。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
@@ -3151,7 +2914,7 @@ class FooController extends Controller
         $params = $request->all(); // 全てのパラメーターを連想配列で取得する。
 
         $foo = $request->input('foo'); // 指定したパラメーターの値を取得する。
-        
+
         $qux = $request->input('foo.qux'); // ネストされたパラメーターの値を取得する。
 
         $params = $request->only(['foo', 'bar']); // 指定したパラメーターを連想配列で取得する。
@@ -3168,8 +2931,6 @@ class FooController extends Controller
 #### ▼ クエリパラメーター
 
 クエリパラメーターを取得する。
-
-
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
@@ -3199,8 +2960,6 @@ class FooController extends Controller
 #### ▼ パスパラメータ
 
 パスパラメーターを取得する。
-
-
 
 > ↪️ 参考：
 >
@@ -3235,8 +2994,6 @@ class FooController extends Controller
 
 代わりとして、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得しても良い。
 
-
-
 **＊実装例＊**
 
 ```php
@@ -3265,15 +3022,13 @@ class FooController extends Controller
 
 Requestではなく、FormRequestを使用した方がバリデーションがおすすめである。
 
-
-
 > ↪️ 参考：https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
 
 ```php
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
- 
+
 class FooController extends Controller
 {
     public function update(Request $request)
@@ -3283,7 +3038,7 @@ class FooController extends Controller
             'name'  => 'required',
             'email' => 'required|email',
         ]);
-        
+
         // 〜 中略 〜
     }
 }
@@ -3297,11 +3052,9 @@ class FooController extends Controller
 
 #### ▼ 設定方法
 
-環境変数を```.env```ファイルに実装する。
+環境変数を`.env`ファイルに実装する。
 
-```logging.php```ファイルから、指定された設定が選択される。
-
-
+`logging.php`ファイルから、指定された設定が選択される。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
 
@@ -3309,11 +3062,9 @@ class FooController extends Controller
 LOG_CHANNEL=<オプション名>
 ```
 
-注意点として、```storage```ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへの認可スコープを持たないため、アクセスできるようにする必要がある。
+注意点として、`storage`ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへの認可スコープを持たないため、アクセスできるようにする必要がある。
 
 権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。
-
-
 
 ```bash
 # Failed to open stream: Permission denied
@@ -3326,18 +3077,16 @@ LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Larave
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html
 
-#### ▼ ```stack```キー
+#### ▼ `stack`キー
 
 他の単一/複数のチャンネルを利用するチャンネル。
 
-
-
 ```php
 <?php
-    
+
 return [
 
-    ...    
+    ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -3354,18 +3103,16 @@ return [
 ];
 ```
 
-#### ▼ ```single```キー
+#### ▼ `single`キー
 
-全てのログを```/storage/logs/laravel.log```ファイルに対して出力する。
-
-
+全てのログを`/storage/logs/laravel.log`ファイルに対して出力する。
 
 ```php
 <?php
 
 return [
 
-    ...    
+    ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -3382,14 +3129,14 @@ return [
 ];
 ```
 
-#### ▼ ```daily```キー
+#### ▼ `daily`キー
 
-全てのログを```/storage/logs/laravel-<日付>.log```ファイルに対して出力する。
+全てのログを`/storage/logs/laravel-<日付>.log`ファイルに対して出力する。
 
 ```php
 return [
 
-    ...    
+    ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -3408,15 +3155,13 @@ return [
 ];
 ```
 
-#### ▼ ```stderr```キー
+#### ▼ `stderr`キー
 
 全てのログを標準エラー出力に対して出力する。
 
 Docker上でLaravelを稼働させる場合は、作成されるログファイルでコンテナのサイズが肥大化することを防ぐために、これを選択する。
 
-注意点として、独自カスタマイズとして、```stream```キーをstdout変更すれば、標準出力にログを出力もできる。
-
-
+注意点として、独自カスタマイズとして、`stream`キーをstdout変更すれば、標準出力にログを出力もできる。
 
 ```php
 return [
@@ -3444,11 +3189,9 @@ return [
 
 ### ログの出力
 
-#### ▼ ```error```メソッド
+#### ▼ `error`メソッド
 
-エラーメッセージを定義する時、```sprintf```メソッドを使用すると便利である。
-
-
+エラーメッセージを定義する時、`sprintf`メソッドを使用すると便利である。
 
 **＊実装例＊**
 
@@ -3457,8 +3200,6 @@ return [
 取得したJSON型データを、クライアントにレスポンスする。
 
 この時、リクエスト処理のために、Guzzleパッケージを使用している。
-
-
 
 ```php
 <?php
@@ -3528,24 +3269,21 @@ return [
 ];
 ```
 
-#### ▼ ```info```メソッド
+#### ▼ `info`メソッド
 
 <br>
-
 
 ## 12. Migration
 
 ### テーブルの作成/削除
 
-#### ▼ ```up```メソッド、```down```メソッド
+#### ▼ `up`メソッド、`down`メソッド
 
 コマンドによるDBマイグレーション時にコールされる。
 
-```up```メソッドでテーブル、カラム、インデックスのCREATEを実行する。
+`up`メソッドでテーブル、カラム、インデックスのCREATEを実行する。
 
-```down```メソッドで```up```メソッドの結果をロールバックする。
-
-
+`down`メソッドで`up`メソッドの結果をロールバックする。
 
 **＊実装例＊**
 
@@ -3564,7 +3302,7 @@ class CreateFooTable extends Migration
     public function up()
     {
         Schema::create("foos", function (Blueprint $table) {
-            
+
             $table->bigIncrements("foo_id")->comment("ID");
             $table->string("name")->comment("名前");
 
@@ -3594,21 +3332,15 @@ class CreateFooTable extends Migration
 
 指定したカラムを追加する。
 
-
-
 **＊実装例＊**
 
 カラムを追加するためだけにDBマイグレーションファイルを作成する。
-
-
 
 ```bash
 $ php artisan make:migration add_column --table=foos
 ```
 
 追加したいカラムのみを定義する。
-
-
 
 ```php
 <?php
@@ -3635,33 +3367,25 @@ DBマイグレーションを実行すると、指定したテーブルのカラ
 
 実行後は、作成したDBマイグレーションファイルを削除する。
 
-
-
 ```bash
 $ php artisan migrate
 ```
 
-#### ▼ ```renameColumn```メソッド
+#### ▼ `renameColumn`メソッド
 
 指定したカラムの名前を変更する。
-
-
 
 **＊実装例＊**
 
 カラム名を変更するためだけにDBマイグレーションファイルを作成する。
 
-
-
 ```bash
 $ php artisan make:migration rename_column --table=foos
 ```
 
-テーブルのカラム名を定義し、```renameColumn```メソッドをコールする。
+テーブルのカラム名を定義し、`renameColumn`メソッドをコールする。
 
-変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
-
-
+変更後でも、ロールバックできるように、`down`メソッドも定義しておく。
 
 ```php
 <?php
@@ -3699,33 +3423,25 @@ DBマイグレーションを実行すると、指定したテーブルのカラ
 
 実行後は、作成したDBマイグレーションファイルを削除する。
 
-
-
 ```bash
 $ php artisan migrate
 ```
 
-#### ▼ ```change```メソッド
+#### ▼ `change`メソッド
 
 指定したカラムのデータ型を変更する。
-
-
 
 **＊実装例＊**
 
 データ型を変更するためだけにDBマイグレーションファイルを作成する。
 
-
-
 ```bash
 $ php artisan make:migration change_column_data_type --table=foos
 ```
 
-テーブルのカラムのデータ型を定義し、```change```メソッドをコールする。
+テーブルのカラムのデータ型を定義し、`change`メソッドをコールする。
 
-変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
-
-
+変更後でも、ロールバックできるように、`down`メソッドも定義しておく。
 
 ```php
 <?php
@@ -3763,33 +3479,25 @@ DBマイグレーションを実行すると、指定したテーブルのカラ
 
 実行後は、作成したDBマイグレーションファイルを削除する。
 
-
-
 ```bash
 $ php artisan migrate
 ```
 
-#### ▼ ```dropColumn```メソッド
+#### ▼ `dropColumn`メソッド
 
 指定したカラムを削除する。
-
-
 
 **＊実装例＊**
 
 カラムを削除するためだけにDBマイグレーションファイルを作成する。
 
-
-
 ```bash
 $ php artisan make:migration drop_column --table=foos
 ```
 
-削除するカラムを```dropColumn```メソッドで指定する。
+削除するカラムを`dropColumn`メソッドで指定する。
 
-変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
-
-
+変更後でも、ロールバックできるように、`down`メソッドも定義しておく。
 
 ```php
 <?php
@@ -3826,8 +3534,6 @@ DBマイグレーションを実行すると、指定したテーブルのカラ
 
 実行後は、作成したDBマイグレーションファイルを削除する。
 
-
-
 ```bash
 $ php artisan migrate
 ```
@@ -3836,15 +3542,13 @@ $ php artisan migrate
 
 ### よく使用するカラムタイプ
 
-#### ▼ ```bigIncrements```メソッド
+#### ▼ `bigIncrements`メソッド
 
 自動増分ありのinteger型カラムを作成する。
 
 プライマリーキーとするIDカラムのために使用する。
 
-自動増分のカラムは```1```個のテーブルに1つしか定義できず、他のIDカラムは```unsignedBigInteger```メソッドを使用して定義する。
-
-
+自動増分のカラムは`1`個のテーブルに1つしか定義できず、他のIDカラムは`unsignedBigInteger`メソッドを使用して定義する。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
@@ -3852,74 +3556,68 @@ $ php artisan migrate
 
 ```php
 Schema::create("foos", function (Blueprint $table) {
-    
+
     ...
-    
+
     $table->bigIncrements("foo_id");
-    
+
     ...
-    
+
 });
 ```
 
-#### ▼ ```unsignedBigInteger```メソッド
+#### ▼ `unsignedBigInteger`メソッド
 
 自動増分なしのinteger型カラムを作成する。
 
 プライマリーキーではないIDカラムのために使用する。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
 ```php
 Schema::create("foos", function (Blueprint $table) {
-    
+
     ...
-    
+
     $table->bigIncrements("foo_id");
     $table->unsignedBigInteger("bar_id");
-    
+
     ...
-    
+
 });
 ```
 
-#### ▼ ```string```メソッド
+#### ▼ `string`メソッド
 
 VARCHAR型カラムを作成する。
 
-
-
 **＊実装例＊**
 
 ```php
 Schema::create("foos", function (Blueprint $table) {
-  
-    ...    
-    
-    $table->string("name");
-    
+
     ...
-    
+
+    $table->string("name");
+
+    ...
+
 });
 ```
 
-#### ▼ ```timestamp```メソッド
+#### ▼ `timestamp`メソッド
 
 TIMESTAMP型カラムを作成する。
-
-
 
 **＊実装例＊**
 
 ```php
 Schema::create("foos", function (Blueprint $table) {
-    
+
     ...
-    
+
     $table->timestamp("created_at");
-    
+
     ...
 });
 ```
@@ -3942,15 +3640,13 @@ Schema::create("foos", function (Blueprint $table) {
 
 通知内容を定義する。
 
-```via```メソッドで受信チャンネルを定義する。
+`via`メソッドで受信チャンネルを定義する。
 
 この時、Laravelがデフォルトで用意しているチャンネル (Mail、SMS、Slackチャンネル、Databaseチャンネル) 以外に送信したい場合、Channelクラスを定義する必要がある。
 
 複数の値を設定した場合は、それぞれに通信が送信される。
 
-```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
-
-
+`toMail`メソッド、`toSms`メソッド、`toSlack`メソッド、`toArray`メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
 
 **＊実装例＊**
 
@@ -4009,9 +3705,7 @@ class TfaTokenNotification extends Notification
 
 MailMessageクラスのメソッドを使用して、Eメール通知の内容を作成する。
 
-```markdown```メソッドを使用することにより、マークダウン形式で定義できる。
-
-
+`markdown`メソッドを使用することにより、マークダウン形式で定義できる。
 
 > ↪️ 参考：
 >
@@ -4059,17 +3753,10 @@ class TfaTokenNotification extends Notification
 ```
 
 ```html
-@component("mail::message")
+@component("mail::message") 認証コード『{ $tfa_token }}』を入力して下さい。<br />
 
-認証コード『{ $tfa_token }}』を入力して下さい。<br>
-
-+++++++++++++++++++++++++++++++++++++<br>
-本アドレスは送信専用です。
-
-ご返信頂いてもお答えできませんので、ご了承ください。
-
-
-
++++++++++++++++++++++++++++++++++++++<br />
+本アドレスは送信専用です。 ご返信頂いてもお答えできませんので、ご了承ください。
 @endcomponent
 ```
 
@@ -4112,7 +3799,7 @@ class TfaTokenNotification extends Notification
             "subject"   => "コードを送信いたしました。",
             "tfa_token" => $notifiable->tfaToken()
         ]);
-    }  
+    }
 }
 ```
 
@@ -4123,8 +3810,6 @@ class TfaTokenNotification extends Notification
 #### ▼ DB通知内容の定義
 
 配列でDBに保存する内容を定義する。
-
-
 
 > ↪️ 参考：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
 
@@ -4151,7 +3836,7 @@ class TfaTokenNotification extends Notification
             'database' // DB受信チャンネル
         ];
     }
-    
+
     /**
      * @param $notifiable
      * @return array
@@ -4168,23 +3853,19 @@ class TfaTokenNotification extends Notification
 
 <br>
 
-### 受信チャンネル (通知方法) 
+### 受信チャンネル (通知方法)
 
 #### ▼ Channel
 
 Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、独自の受信チャンネルを定義する。
 
-これは、Notificationクラスの```via```メソッドで使用される。
-
-
+これは、Notificationクラスの`via`メソッドで使用される。
 
 **＊実装例＊**
 
 AWS SNSを受信チャンネルとする。
 
 AWSから配布されているパッケージが必要である。
-
-
 
 ```bash
 $ composer require aws/aws-sdk-php-laravel
@@ -4255,15 +3936,13 @@ class AwsSnsChannel
 
 ### 通知対象モデル
 
-#### ▼ Notifiableトレイトの```notify```メソッド
+#### ▼ Notifiableトレイトの`notify`メソッド
 
 通知対象となるモデルを定義する。
 
 Notifiableトレイトを継承する。
 
-これにより、```notify```メソッドを使用できるようになる。
-
-
+これにより、`notify`メソッドを使用できるようになる。
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
 
@@ -4281,11 +3960,9 @@ class User extends Authenticatable
 }
 ```
 
-通知先のクラスから```notify```メソッドをコールし、任意のNotificationクラスを渡す。
+通知先のクラスから`notify`メソッドをコールし、任意のNotificationクラスを渡す。
 
 これにより、通知処理が実行される。
-
-
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
@@ -4300,8 +3977,6 @@ $user->notify(new FooNotification());
 通知対象となるモデルを定義する。
 
 Notifiableトレイトを継承する。
-
-
 
 ```php
 <?php
@@ -4319,8 +3994,6 @@ class User extends Authenticatable
 
 Notificationファサードに通知先のモデルと通知クラスを渡す。
 
-
-
 ```php
 <?php
 
@@ -4330,8 +4003,6 @@ Notification::send($users, new FooNotification());
 #### ▼ オンデマンド通知
 
 オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
-
-
 
 > ↪️ 参考：
 >
@@ -4357,27 +4028,21 @@ Notification::route('mail', $user->email_address)
 
 EloquentモデルをJSON型データとしてレスポンスする時に、一旦、配列データに変換する必要がある。
 
-
-
 #### ▼ 単一のEloquentモデルの配列化
 
 単一のEloquentモデルを配列に変換する。
 
-Resourceクラスの```toArray```メソッドにて、```this```変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。
+Resourceクラスの`toArray`メソッドにて、`this`変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。
 
-また、```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる。
+また、`this`変数からゲッターを経由せずに直接的にプロパティにアクセスできる。
 
 Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。
 
-LaravelはレスポンスのJSON型データを作成するために、まず```toArray```メソッドにより配列化し、加えてこれをJSON型データに変換する。
-
-
+LaravelはレスポンスのJSON型データを作成するために、まず`toArray`メソッドにより配列化し、加えてこれをJSON型データに変換する。
 
 **＊実装例＊**
 
 Fooクラスからデータを取り出し、配列化する。
-
-
 
 ```php
 <?php
@@ -4428,7 +4093,7 @@ class FooController extends Controller
     public function index(Request $request)
     {
         // ここに、EloquentモデルをDBから取得する処理
-        
+
         // Eloquentモデルを渡す。
         return new FooResource($foo);
     }
@@ -4439,8 +4104,6 @@ class FooController extends Controller
 
 複数のEloquentモデル (Collection型) を配列に変換する。
 
-
-
 ```php
 // ここに実装例
 ```
@@ -4449,17 +4112,15 @@ class FooController extends Controller
 
 ## 15. Routing
 
-### ```api.php```ファイル
+### `api.php`ファイル
 
 #### ▼ Middlewareの適用
 
 APIのエンドポイントとして働くルーティング処理を実装する。
 
-実装したルーティング処理時には、Kernelクラスの```middlewareGroups```プロパティの```api```キーで設定したミドルウェアが実行される。
+実装したルーティング処理時には、Kernelクラスの`middlewareGroups`プロパティの`api`キーで設定したミドルウェアが実行される。
 
-APIのエンドポイントは外部公開する必要があるため、```web```キーと比較して、セキュリティのためのミドルウェアが設定されていない。
-
-
+APIのエンドポイントは外部公開する必要があるため、`web`キーと比較して、セキュリティのためのミドルウェアが設定されていない。
 
 ```php
 <?php
@@ -4472,7 +4133,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     // 〜 中略 〜
-    
+
     /**
      * The application"s route middleware groups.
      *
@@ -4487,26 +4148,24 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-    
+
     // 〜 中略 〜
 }
 ```
 
 <br>
 
-### ```web.php```ファイル
+### `web.php`ファイル
 
 #### ▼ Middlewareの適用
 
 API以外のルーティング処理を実装する。
 
-実装したルーティング処理時には、Kernelクラスの```middlewareGroups```プロパティの```web```キーで設定したミドルウェアが実行される。
+実装したルーティング処理時には、Kernelクラスの`middlewareGroups`プロパティの`web`キーで設定したミドルウェアが実行される。
 
-API以外のルーティングは外部公開する必要がないため、```api```キーと比較して、セキュリティのためのミドルウェアが多く設定されている。
+API以外のルーティングは外部公開する必要がないため、`api`キーと比較して、セキュリティのためのミドルウェアが多く設定されている。
 
 例えば、CSRF対策のためのVerifyCsrfTokenクラスがある。
-
-
 
 ```php
 <?php
@@ -4519,7 +4178,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     // 〜 中略 〜
-    
+
     /**
      * @var array
      */
@@ -4533,22 +4192,20 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-        
+
         // 〜 中略 〜
-        
+
     ];
-    
+
     // 〜 中略 〜
 }
 ```
 
 <br>
 
-### ```guest.php```ファイル
+### `guest.php`ファイル
 
 ヘルスチェックなど、API認証が不要なルーティング処理を実装する。
-
-
 
 <br>
 
@@ -4558,29 +4215,23 @@ class Kernel extends HttpKernel
 
 ルーティング時に使用するパラメーター名とコントローラーのメソッドの引数型と変数名が同じであり、かつパラメーターに数値が割り当てられた場合、その数値をIDとするEloquentモデルが自動的にインジェクションされる。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
 
 **＊実装例＊**
 
-ルーティング時に、パスパラメーター名を```user```としておく。
-
-
+ルーティング時に、パスパラメーター名を`user`としておく。
 
 ```php
 <?php
-    
+
 Route::get('/users/{user}', 'UserController@index');
 ```
 
-かつ、コントローラーのメソッドの引数型/変数名を```User```/```$user```とする。
+かつ、コントローラーのメソッドの引数型/変数名を`User`/`$user`とする。
 
 または。
 
-この時、『```/users/1```』に対してリクエストを送信すると、ユーザーIDが```1```のユーザーがDBから読み出され、コントローラーにインジェクションされる。
-
-
+この時、『`/users/1`』に対してリクエストを送信すると、ユーザーIDが`1`のユーザーがDBから読み出され、コントローラーにインジェクションされる。
 
 ```php
 <?php
@@ -4614,18 +4265,13 @@ class UserController extends Controller
 
 Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html
 
 ```html
-<form method="POST" action="/profile">
-    @csrf
-    ...
-</form>
+<form method="POST" action="/profile">@csrf ...</form>
 ```
 
-Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
+Bladeを使用しない場合、セッション開始時のレスポンスの`Set-Cookie`にCSRFトークンが割り当てられるため、これを取り出して`X-CSRF-TOKEN`ヘッダーや`X-XSRF-TOKEN`ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
 
 > ↪️ 参考：
 >
@@ -4637,34 +4283,34 @@ Bladeを使用しない場合、セッション開始時のレスポンスの```
 
 PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い。
 
-
-
 ```javascript
-if (pm.request.method == 'GET') {
-    return true;
+if (pm.request.method == "GET") {
+  return true;
 }
 
-return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
-    
+return pm.sendRequest(
+  "http://127.0.0.1:8000",
+  (error, response, { cookies }) => {
     if (error) {
-        console.error(error);
-        return false;
+      console.error(error);
+      return false;
     }
 
     const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
 
     if (!xsrfTokenHeader) {
-        console.log("トークンがありません");
-        return false;
+      console.log("トークンがありません");
+      return false;
     }
 
     // laravelによってエンコードされたトークンをデコードする。
-    const xsrfToken = decodeURIComponent(xsrfTokenHeader['value']);
+    const xsrfToken = decodeURIComponent(xsrfTokenHeader["value"]);
     // 環境変数を挿入するために、該当する実行環境名をCollection全体に適用しておく必要がある。
-    pm.environment.set('XSRF_TOKEN', xsrfToken);
+    pm.environment.set("XSRF_TOKEN", xsrfToken);
     console.log(xsrfToken);
     return true;
-});
+  }
+);
 ```
 
 #### ▼ XSS対策
@@ -4680,8 +4326,6 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 #### ▼ DBファサードによる定義
 
 DBファサードを使用して、初期データを定義する。
-
-
 
 ```php
 <?php
@@ -4705,7 +4349,7 @@ class ProductsSeeder extends Seeder
                 "price"        => 300,
                 "product_type" => 1,
                 "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
-                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
+                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,
                 "created_at"   => NOW(),
                 "updated_at"   => NOW(),
                 "deleted_at"   => NULL
@@ -4715,32 +4359,30 @@ class ProductsSeeder extends Seeder
                 "price"        => 200,
                 "product_type" => 2,
                 "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
-                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
+                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,
                 "created_at"   => NOW(),
                 "updated_at"   => NOW(),
-                "deleted_at"   => NULL                
-            ],            
+                "deleted_at"   => NULL
+            ],
             [
                 "product_name" => "消しゴム",
                 "price"        => 100,
                 "product_type" => 3,
                 "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
-                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
+                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,
                 "created_at"   => NOW(),
                 "updated_at"   => NOW(),
-                "deleted_at"   => NULL                
+                "deleted_at"   => NULL
             ],
-            
+
             ...
-            
+
         ]);
     }
 }
 ```
 
 実行者名は、定数として管理しておくと良い。
-
-
 
 ```php
 <?php
@@ -4761,11 +4403,11 @@ class ExecutorConstant
      * スタッフ
      */
     public const STAFF = "Staff";
-    
+
     /**
      * ゲスト
      */
-    public const GUEST = "Guest";    
+    public const GUEST = "Guest";
 }
 ```
 
@@ -4777,9 +4419,7 @@ DBファサードを使用するよりも。
 
 大サイズのデータを定義しやすい。
 
-この時、```LOAD DATA LOCAL INFILE```文を使用すると、高速で処理できる。
-
-
+この時、`LOAD DATA LOCAL INFILE`文を使用すると、高速で処理できる。
 
 > ↪️ 参考：https://i-407.com/blog/tech/n3/
 
@@ -4800,11 +4440,11 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        // 〜 中略 〜 
-    
+        // 〜 中略 〜
+
         $this->importCsv();
-        
-        // 〜 中略 〜 
+
+        // 〜 中略 〜
     }
 
     /**
@@ -4815,10 +4455,10 @@ class ProductsSeeder extends Seeder
     private function importCsv(): void
     {
         foreach ($this->tables as $table) {
-        
+
             // S3に保存してあるCSVファイルを読み込む。
             $csv = \Storage::get(migrations/csv/ . $table . '.csv');
-            
+
             // 一時CSVファイルに書き込む。
             file_put_contents('/tmp/csv', $csv);
 
@@ -4843,8 +4483,6 @@ class ProductsSeeder extends Seeder
 
 DatabaseSeederにて、全てのSeederをまとめて実行する。
 
-
-
 ```php
 <?php
 
@@ -4867,14 +4505,14 @@ class DatabaseSeeder extends Seeder
                 // ダミーデータ
             ]);
         }
-        
+
         // テスト環境用の初期データ
         if (app()->environment("tes")) {
             $this->call([
                 // リアルデータ
             ]);
         }
-        
+
         // ステージング環境用の初期データ
         if (App::environment("stg")) {
             $this->call([
@@ -4882,7 +4520,7 @@ class DatabaseSeeder extends Seeder
                 ProductsSeeder::class
             ]);
         }
-        
+
         // 本番環境用の初期データ
         if (App::environment("prd")) {
             $this->call([
@@ -4902,18 +4540,16 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ServiceProviderの用途
 
-| 用途の種類                                                   | 説明                                                                          |
-|-------------------------------------------------------------|-----------------------------------------------------------------------------|
-| AppServiceProvider                                          | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成) |
-| MacroServiceProvider                                        | ServiceContainerへのメソッドのバインド (登録)                                            |
-| RouteServiceProvider<br> (```app.php```、```web.php```も使用) | ルーティングとコントローラーの対応関係の定義                                                  |
-| EventServiceProvider                                        | EventListenerとEventhandler関数の対応関係の定義                                  |
+| 用途の種類                                            | 説明                                                                                                    |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| AppServiceProvider                                    | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成) |
+| MacroServiceProvider                                  | ServiceContainerへのメソッドのバインド (登録)                                                           |
+| RouteServiceProvider<br> (`app.php`、`web.php`も使用) | ルーティングとコントローラーの対応関係の定義                                                            |
+| EventServiceProvider                                  | EventListenerとEventhandler関数の対応関係の定義                                                         |
 
 #### ▼ ServiceProviderのコール
 
-クラスの名前空間を、```config/app.php```ファイルの```providers```配列に登録すると、アプリケーションの起動時にServiceProviderをコールできるため、ServiceContainerへのクラスのバインドが自動的に完了する。
-
-
+クラスの名前空間を、`config/app.php`ファイルの`providers`配列に登録すると、アプリケーションの起動時にServiceProviderをコールできるため、ServiceContainerへのクラスのバインドが自動的に完了する。
 
 **＊実装例＊**
 
@@ -4921,7 +4557,7 @@ class DatabaseSeeder extends Seeder
 <?php
 
 "providers" => [
-    
+
     // 複数のServiceProviderが実装されている
 
     App\Providers\ComposerServiceProvider::class,
@@ -4935,8 +4571,6 @@ class DatabaseSeeder extends Seeder
 #### ▼ ServiceContainer、バインド、リゾルブとは
 
 ServiceContainer、バインド、リゾルブについては、以下のリンクを参考にせよ。
-
-
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
@@ -4962,7 +4596,7 @@ interface Container extends ContainerInterface
      * @return void
      */
     public function bind($abstract, $concrete = null, $shared = false);
-    
+
     /**
      * singletonとして、自身にバインドする。
 
@@ -4990,8 +4624,6 @@ Laravelでは、クラスはServiceContainerに自動的にバインドされて
 
 ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
-
-
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 
 **＊実装例＊**
@@ -4999,8 +4631,6 @@ Laravelでは、クラスはServiceContainerに自動的にバインドされて
 バインドする。
 
 注意点として、Laravelでは不要である。
-
-
 
 ```php
 <?php
@@ -5030,8 +4660,6 @@ class FooServiceProvider extends ServiceProvider
 
 引数の型を元に、クラスのインスタンスがリゾルブされる。
 
-
-
 ```php
 <?php
 
@@ -5049,8 +4677,6 @@ class Qux
 ```
 
 引数の型を指定しない場合は、手動で渡す必要がある。
-
-
 
 ```php
 <?php
@@ -5074,8 +4700,6 @@ $qux = new Qux($foo); // 手動で渡す
 ```
 
 混合型の場合は、引数の型を指定できないため、リゾルブを実行できない。
-
-
 
 ```php
 <?php
@@ -5107,8 +4731,6 @@ $qux = new Qux($foo1);
 
 メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。
 
-
-
 **＊実装例＊**
 
 ```php
@@ -5134,7 +4756,7 @@ class FoosServiceProvider extends ServiceProvider
         $this->registerBar();
         $this->registerBaz();
     }
-    
+
     /**
     * 1つ目のクラスをバインド
     */
@@ -5144,17 +4766,17 @@ class FoosServiceProvider extends ServiceProvider
             return new Foo();
         });
     }
-    
+
     /**
     * 2つ目のクラスをバインド
-    */    
+    */
     private function registerBar()
     {
         $this->app->bind(Bar::class, function ($app) {
             return new Bar();
         });
     }
-    
+
     /**
     * 3つ目のクラスをバインド
     */
@@ -5174,8 +4796,6 @@ Laravelではクラスが自動的にバインドされ、これのインスタ�
 これを使用して、インターフェースをバインドし、実装クラスをリゾルブできるようにする。
 
 この方法は、上位レイヤーが抽象に依存することが必要な場面 (例：依存性逆転の原則) で役立つ。
-
-
 
 **＊実装例＊**
 
@@ -5211,10 +4831,10 @@ class FooServiceProvider extends ServiceProvider
 class Interactor
 {
     /**
-     * @var FooRepositoryIF 
+     * @var FooRepositoryIF
      */
     private FooRepositoryIF $fooRepository;
-    
+
     /**
      * @param FooRepositoryIF $fooRepository
      */
@@ -5225,13 +4845,11 @@ class Interactor
 }
 ```
 
-#### ▼ ```make```メソッド
+#### ▼ `make`メソッド
 
-引数の型でリゾルブを実行する以外に、```make```メソッドも使用できる。
+引数の型でリゾルブを実行する以外に、`make`メソッドも使用できる。
 
-```make```メソッドの引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
-
-
+`make`メソッドの引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
 
@@ -5257,21 +4875,17 @@ $foo = App::make(Foo::class);
 $result = $foo->method();
 ```
 
-#### ▼ ```register```メソッドと```boot```メソッドの違い
+#### ▼ `register`メソッドと`boot`メソッドの違い
 
-Laravelのライフサイクルで、ServiceContainerへのクラスのバインドの時には、まずServiceProviderの```register```メソッドが実行され、その後に```boot```メソッドが実行される。
+Laravelのライフサイクルで、ServiceContainerへのクラスのバインドの時には、まずServiceProviderの`register`メソッドが実行され、その後に`boot`メソッドが実行される。
 
-そのため、ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき、これは```boot```メソッドに実装することが適している。
-
-
+そのため、ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき、これは`boot`メソッドに実装することが適している。
 
 <br>
 
 ### MigrationMacroServiceProvider
 
 複数のテーブルに共通のカラムを作成するDBマイグレーション処理を提供する。
-
-
 
 ```php
 <?php
@@ -5314,27 +4928,25 @@ class MigrationMacroServiceProvider extends ServiceProvider
                 ->comment("レコードの削除日")
                 ->nullable();
         });
-        
+
         Blueprint::macro("dropSystemColumns", function () {
             $this->dropColumn(
                 "created_by",
-                "updated_by",                
+                "updated_by",
                 "created_at",
                 "updated_at",
                 "deleted_at"
             );
-        });        
+        });
     }
 }
 ```
 
-DBマイグレーションファイルにて、定義した```systemColumn```メソッドをコールする。
-
-
+DBマイグレーションファイルにて、定義した`systemColumn`メソッドをコールする。
 
 ```php
 <?php
-  
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -5353,10 +4965,10 @@ class CreateFooTable extends Migration
                 ->comment("ID");
             $table->string("name")
                 ->comment("名前");
-            
+
             // MigrationMacroServiceProviderのメソッドを使用する。
             $table->systemColumns();
-            
+
             // deleted_atカラムを追加する。
             $table->softDeletes();
         });
@@ -5374,28 +4986,24 @@ class CreateFooTable extends Migration
 }
 ```
 
-最後に、```app.php```ファイルにて、MigrationMacroServiceProviderを新しく読み込む。
-
-
+最後に、`app.php`ファイルにて、MigrationMacroServiceProviderを新しく読み込む。
 
 ```php
 <?php
 
 return [
-    
+
     ...
-    
+
     'providers' => [
         // マクロサービスプロバイダー
-        App\Providers\MigrationMacroServiceProvider::class,  
+        App\Providers\MigrationMacroServiceProvider::class,
     ],
-    
+
     ...
-    
-];        
+
+];
 ```
-
-
 
 <br>
 
@@ -5406,8 +5014,6 @@ return [
 ルーティングの設定ファイルをコールする。
 
 また、全てのルーティングに適用する処理を定義する。
-
-
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
@@ -5451,11 +5057,9 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ▼ リクエスト数制限
 
-```1```分間当たりに許容するリクエスト数とその制限名を```configureRateLimiting```メソッドで定義する。
+`1`分間当たりに許容するリクエスト数とその制限名を`configureRateLimiting`メソッドで定義する。
 
-加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、```configureRateLimiting```メソッドによって、```429```ステータスでレスポンスが返信される。
-
-
+加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、`configureRateLimiting`メソッドによって、`429`ステータスでレスポンスが返信される。
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
 
@@ -5503,8 +5107,6 @@ class RouteServiceProvider extends ServiceProvider
 }
 ```
 
-
-
 <br>
 
 ### EventServiceProvider
@@ -5514,8 +5116,6 @@ class RouteServiceProvider extends ServiceProvider
 EventとListenerの対応関係を定義する。
 
 注意点として、Eventを発火させてListenerを実行する方法は、Eventコンポーネントを参考にせよ。
-
-
 
 ```php
 <?php
@@ -5608,20 +5208,18 @@ return [
 
 #### ▼ よく使用する操作メソッド
 
-FormRequestクラスの```session```メソッドはStoreクラスを返却する。
+FormRequestクラスの`session`メソッドはStoreクラスを返却する。
 
 このクラスのメソッドを使用して、セッションを操作できる。
 
-
-
-| メソッド名       | 説明                                                                   |
-|--------------|----------------------------------------------------------------------|
-| ```get```    | セッションのキー名を指定して、```1```個の値を取得する。                                 |
-| ```all```    | セッションの全ての値を取得する。                                                   |
-| ```forget``` | セッションのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。         |
-| ```flush```  | セッションの全ての値を取得する。                                                   |
-| ```pull```   | セッションのキー名を指定して、```1```個の値を取得し、取得後に削除する。                    |
-| ```has```    | セッションのキー名を指定して、値が存在しているかを検証する。```null```は```false```として判定する。 |
+| メソッド名 | 説明                                                                                         |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| `get`      | セッションのキー名を指定して、`1`個の値を取得する。                                          |
+| `all`      | セッションの全ての値を取得する。                                                             |
+| `forget`   | セッションのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。 |
+| `flush`    | セッションの全ての値を取得する。                                                             |
+| `pull`     | セッションのキー名を指定して、`1`個の値を取得し、取得後に削除する。                          |
+| `has`      | セッションのキー名を指定して、値が存在しているかを検証する。`null`は`false`として判定する。  |
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Session/Store.html
 
@@ -5646,23 +5244,23 @@ class FooController extends Controller
     {
         // getメソッド
         $data = $request->session()->get("foo");
-        
+
         // allメソッド
         $data = $request->session()->all();
-        
+
         // forgetメソッド
         $request->session()->forget("foo");
         $request->session()->forget(["foo", "bar"]);
-        
+
         // flush
         $request->session()->flush();
-        
+
         // pullメソッド
         $data = $request->session()->pull("foo");
-        
+
         // hasメソッド
         if ($request->session()->has("foo")) {
-    
+
         }
     }
 }
@@ -5670,19 +5268,17 @@ class FooController extends Controller
 
 #### ▼ セッションデータがStoreクラスに至るまで
 
-全てを追うことは難しいため、StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする。
+全てを追うことは難しいため、StartSessionクラスの`handle`メソッドが実行されるところから始めるものとする。
 
-ここで、```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される。
+ここで、`handleStatefulRequest`メソッドの中の`startSession`メソッドが実行される。
 
-これにより、Storeクラスの```start```メソッド、```loadSession```メソッド、```readFromHandler```メソッドが実行され、```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される。
+これにより、Storeクラスの`start`メソッド、`loadSession`メソッド、`readFromHandler`メソッドが実行され、`SessionHandlerInterface`の実装クラスの`read`メソッドが実行される。
 
-```read```メソッドは、```storage/framework/sessions```にあるセッションデータに書き込まれたセッションを読み出し、```attribute```プロパティに格納する。
+`read`メソッドは、`storage/framework/sessions`にあるセッションデータに書き込まれたセッションを読み出し、`attribute`プロパティに格納する。
 
-Sessionクラスのメソッドは、```attribute```プロパティを使用して、セッションを操作する。
+Sessionクラスのメソッドは、`attribute`プロパティを使用して、セッションを操作する。
 
-最終的に,```handleStatefulRequest```では、```saveSession```メソッドの中の```save```メソッドが実行され、セッションデータに新しい値が書き込まれる。
-
-
+最終的に,`handleStatefulRequest`では、`saveSession`メソッドの中の`save`メソッドが実行され、セッションデータに新しい値が書き込まれる。
 
 > ↪️ 参考：
 >
@@ -5705,7 +5301,7 @@ Sessionクラスのメソッドは、```attribute```プロパティを使用し�
 
 #### ▼ データの出力
 
-Controllerクラスから返却されたデータは、```{{ 変数名 }}```で取得できる。
+Controllerクラスから返却されたデータは、`{{ 変数名 }}`で取得できる。
 
 `
 
@@ -5713,27 +5309,23 @@ Controllerクラスから返却されたデータは、```{{ 変数名 }}```で�
 
 ```html
 <html>
-    <body>
-        <h1>Hello!! {{ $data }}</h1>
-    </body>
+  <body>
+    <h1>Hello!! {{ $data }}</h1>
+  </body>
 </html>
 ```
 
 #### ▼ バリデーションメッセージの出力
 
-バリデーションでエラーが発生した場合、バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。
+バリデーションでエラーが発生した場合、バリデーションでエラーがあった場合、Handlerクラスの`invalid`メソッドがコールされ、MessageBagクラスがViewに渡される。
 
-MessageBagクラスは、Blade上で```errors```変数に格納されており、各メソッドをコールしてエラーメッセージを出力できる。
-
-
+MessageBagクラスは、Blade上で`errors`変数に格納されており、各メソッドをコールしてエラーメッセージを出力できる。
 
 > ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
 **＊実装例＊**
 
-MessageBagクラスの```all```メソッドで、全てのエラーメッセージを出力する。
-
-
+MessageBagクラスの`all`メソッドで、全てのエラーメッセージを出力する。
 
 ```html
 <!-- /resources/views/foo/create.blade.php -->
@@ -5741,17 +5333,15 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 <h1>ポスト作成</h1>
 
 @if ($errors->any())
-    <div>
-        @foreach ($errors->all() as $error)
-            <p class="alert alert-danger">{{ $error }}</p>
-        @endforeach        
-    </div>
-@endif
-
-@isset ($status)
-    <div class="complete">
-        <p>登録が完了しました。</p>
-    </div>
+<div>
+  @foreach ($errors->all() as $error)
+  <p class="alert alert-danger">{{ $error }}</p>
+  @endforeach
+</div>
+@endif @isset ($status)
+<div class="complete">
+  <p>登録が完了しました。</p>
+</div>
 @endisset
 
 <!-- ポスト作成フォーム -->
@@ -5759,11 +5349,11 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 ```css
 .errors {
-    /* 何らかのデザイン */
+  /* 何らかのデザイン */
 }
 
 .complete {
-    /* 何らかのデザイン */
+  /* 何らかのデザイン */
 }
 ```
 
@@ -5771,25 +5361,22 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 ### 要素の共通化
 
-#### ▼ ```@include``` (サブビュー) 
+#### ▼ `@include` (サブビュー)
 
 読み込んだファイル全体を出力する。
 
 読み込むファイルに対して、変数を渡すこともできる。
 
-```@extentds```との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。
+`@extentds`との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。
 
-両者は、PHPでいう```extends``` (クラスチェーン) と```require``` (単なる読み出し) の関係に近い。
-
-
+両者は、PHPでいう`extends` (クラスチェーン) と`require` (単なる読み出し) の関係に近い。
 
 **＊実装例＊**
 
 ```html
 <div>
-    @include("shared.errors")
-    <form><!-- フォームの内容 -->
-    </form>
+  @include("shared.errors")
+  <form><!-- フォームの内容 --></form>
 </div>
 ```
 
@@ -5797,9 +5384,9 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 ### 要素の継承
 
-#### ▼ ```@yield```、```@extends```、```@section```、```@endsection```
+#### ▼ `@yield`、`@extends`、`@section`、`@endsection`
 
-子テンプレートのレンダリング時に、子テンプレートで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、```@yield("foo")```を定義する。
+子テンプレートのレンダリング時に、子テンプレートで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、`@yield("foo")`を定義する。
 
 **＊実装例＊**
 
@@ -5808,35 +5395,31 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>アプリケーション</title>
-    </head>
-    <body>
-        <h2>タイトル</h2>        
-        @yield("content")
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>アプリケーション</title>
+  </head>
+  <body>
+    <h2>タイトル</h2>
+    @yield("content")
+  </body>
 </html>
 ```
 
-これを子テンプレートで```@extends```で継承すると、レンダリング時に、子テンプレートの```@section("foo")```-```@endsection```で定義した要素が、親テンプレートの```@yieid```メソッド部分に出力される。
+これを子テンプレートで`@extends`で継承すると、レンダリング時に、子テンプレートの`@section("foo")`-`@endsection`で定義した要素が、親テンプレートの`@yieid`メソッド部分に出力される。
 
 **＊実装例＊**
 
 ```html
 <!-- 子テンプレート -->
 
-@extends("layouts.parent")
-
-@section("content")
-    <p>子テンプレートのレンダリング時に、yieldに出力される要素</p>
+@extends("layouts.parent") @section("content")
+<p>子テンプレートのレンダリング時に、yieldに出力される要素</p>
 @endsection
 ```
 
 補足として、子テンプレートは、レンダリング時に以下の様に出力される。
 
-
-
 **＊実装例＊**
 
 ```html
@@ -5844,20 +5427,20 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>アプリケーション</title>
-    </head>
-    <body>
-        <h2>タイトル</h2>
-        <p>子テンプレートのレンダリング時に、yieldに出力される要素</p>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>アプリケーション</title>
+  </head>
+  <body>
+    <h2>タイトル</h2>
+    <p>子テンプレートのレンダリング時に、yieldに出力される要素</p>
+  </body>
 </html>
 ```
 
-#### ▼ ```@section```、```@show```、```@extends```、```@parent```
+#### ▼ `@section`、`@show`、`@extends`、`@parent`
 
-子テンプレートのレンダリング時に、親テンプレートと子テンプレートそれぞれで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、```@section```-```@show```で要素を定義する。
+子テンプレートのレンダリング時に、親テンプレートと子テンプレートそれぞれで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、`@section`-`@show`で要素を定義する。
 
 **＊実装例＊**
 
@@ -5866,41 +5449,34 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>アプリケーション</title>
-    </head>
-    <body>
-        <h2>タイトル</h2>
-        @section("sidebar")
-        <p>親テンプレートのサイドバーとなる要素</p>
-        @show
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>アプリケーション</title>
+  </head>
+  <body>
+    <h2>タイトル</h2>
+    @section("sidebar")
+    <p>親テンプレートのサイドバーとなる要素</p>
+    @show
+  </body>
 </html>
 ```
 
-子テンプレートの```@section```にて、```@parent```を使用する。
+子テンプレートの`@section`にて、`@parent`を使用する。
 
 親テンプレートと子テンプレートそれぞれの要素が出力される。
 
-
-
 **＊実装例＊**
 
 ```html
 <!-- 子テンプレート -->
 
-@extends("layouts.app")
-
-@section("sidebar")
-    @parent
-    <p>子テンレプートのサイドバーに追加される要素</p>
+@extends("layouts.app") @section("sidebar") @parent
+<p>子テンレプートのサイドバーに追加される要素</p>
 @endsection
 ```
 
 補足として、子テンプレートは、レンダリング時に以下の様に出力される。
-
-
 
 **＊実装例＊**
 
@@ -5909,23 +5485,23 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>アプリケーション</title>
-    </head>
-    <body>
-        <h2>タイトル</h2>
-        <p>親テンプレートのサイドバーとなる要素</p>
-        <p>子テンレプートのサイドバーに追加される要素</p>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>アプリケーション</title>
+  </head>
+  <body>
+    <h2>タイトル</h2>
+    <p>親テンプレートのサイドバーとなる要素</p>
+    <p>子テンレプートのサイドバーに追加される要素</p>
+  </body>
 </html>
 ```
 
 <br>
 
-#### ▼ ```@stack```、```@push```
+#### ▼ `@stack`、`@push`
 
-子テンプレートのレンダリング時に、```.css```ファイルと```.js```ファイルを動的に出力する場合に使用する。親テンプレートにて、```@stack("foo")```を定義する。これを継承した子テンプレートのレンダリング時に、```@push("foo")```-```@endpush```で定義した要素が、```@stack```メソッド部分に出力される。
+子テンプレートのレンダリング時に、`.css`ファイルと`.js`ファイルを動的に出力する場合に使用する。親テンプレートにて、`@stack("foo")`を定義する。これを継承した子テンプレートのレンダリング時に、`@push("foo")`-`@endpush`で定義した要素が、`@stack`メソッド部分に出力される。
 
 **＊実装例＊**
 
@@ -5933,9 +5509,9 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 <!-- 親テンプレート -->
 
 <head>
-    <!-- Headの内容 -->
+  <!-- Headの内容 -->
 
-    @stack("scripts")
+  @stack("scripts")
 </head>
 ```
 
@@ -5943,7 +5519,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 <!-- 子テンプレート -->
 
 @push("scripts")
-    <script src="/foo.js"></script>
+<script src="/foo.js"></script>
 @endpush
 ```
 
@@ -5960,36 +5536,25 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 <!DOCTYPE html>
 <html lang="">
-    <head>
-        <title>@yield("title")</title>
-    </head>
-    <body>
+  <head>
+    <title>@yield("title")</title>
+  </head>
+  <body>
+    @section("sidebar") 親テンプレートのサイドバーとなる要素 @show
 
-        @section("sidebar")
-            親テンプレートのサイドバーとなる要素
-        @show
-
-        <div class="container">
-            @yield("content")
-        </div>
-    </body>
+    <div class="container">@yield("content")</div>
+  </body>
 </html>
 ```
 
 ```html
 <!-- 子テンプレート -->
 
-@extends("layouts.master")
-
-@section("title", "子テンプレートのタイトルになる要素")
-
-@section("sidebar")
-    @parent
-    <p>子テンレプートのサイドバーに追加される要素</p>
-@endsection
-
-@section("content")
-    <p>子テンプレートのコンテンツになる要素</p>
+@extends("layouts.master") @section("title",
+"子テンプレートのタイトルになる要素") @section("sidebar") @parent
+<p>子テンレプートのサイドバーに追加される要素</p>
+@endsection @section("content")
+<p>子テンプレートのコンテンツになる要素</p>
 @endsection
 ```
 
@@ -6002,38 +5567,37 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 <!DOCTYPE html>
 <html lang="">
-    <head>
-        <title>{% block title %}{% endblock %}</title>
-    </head>
-    <body>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    {% block sidebar %}
+    <!-- @section("sidebar") に相当 -->
+    親テンプレートのサイドバーとなる要素 {% endblock %}
 
-        {% block sidebar %} <!-- @section("sidebar") に相当 -->
-            親テンプレートのサイドバーとなる要素
-        {% endblock %}
-
-        <div class="container">
-            {% block content %}<!-- @yield("content") に相当 -->
-            {% endblock %}
-        </div>
-    </body>
+    <div class="container">
+      {% block content %}<!-- @yield("content") に相当 -->
+      {% endblock %}
+    </div>
+  </body>
 </html>
 ```
+
 ```html
 <!-- 子テンプレート -->
 
-{% extends "layouts.master" %} <!-- @extends("layouts.master") に相当 -->
+{% extends "layouts.master" %}
+<!-- @extends("layouts.master") に相当 -->
 
-{% block title %} <!-- @section("title", "Page Title") に相当 -->
-    子テンプレートのタイトルになる要素
-{% endblock %}
-
-{% block sidebar %} <!-- @section("sidebar") に相当 -->
-    {{ parent() }} <!-- @parent に相当 -->
-    <p>子テンレプートのサイドバーに追加される要素</p>
-{% endblock %}
-
-{% block content %} <!-- @section("content") に相当 -->
-    <p>子テンプレートのコンテンツになる要素</p>
+{% block title %}
+<!-- @section("title", "Page Title") に相当 -->
+子テンプレートのタイトルになる要素 {% endblock %} {% block sidebar %}
+<!-- @section("sidebar") に相当 -->
+{{ parent() }}
+<!-- @parent に相当 -->
+<p>子テンレプートのサイドバーに追加される要素</p>
+{% endblock %} {% block content %}
+<!-- @section("content") に相当 -->
+<p>子テンプレートのコンテンツになる要素</p>
 {% endblock %}
 ```
-

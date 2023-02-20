@@ -9,8 +9,6 @@ description: 検証ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -25,40 +23,34 @@ DBから取得した後に直接的に表示する値の場合、DBでNullにな
 
 そのため、値が想定通りの状態になっているかを改めて検証する必要はない。
 
-
-
 #### ▼ 必要な場合
 
 DBからの値を直接的に表示する場合と異なり、新しく作られる値を使用する場合、その値が想定外の状態になっている可能性がある。
 
 そのため、値が想定通りの状態になっているかを検証する必要がある。
 
-
-
 <br>
 
 ### 検証パターンと検証メソッドの対応
 
-✅：```TRUE```
+✅：`TRUE`
 
-空欄：```FALSE```
+空欄：`FALSE`
 
 フロントエンドの検証については以下のリンクを参考にせよ。
 
-
-
 > ↪️ 参考：https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62
 
-| 検証パターン              | ```isset($var)```、```!is_null($var)``` |        ```if($var)```、```!empty($var)```         |
-|:----------------------|:--------------------------------------:|:------------------------------------------------:|
-| **```null```**        |                                        |                                                  |
-| **```0```**           |                   ✅                    |                                                  |
-| **```1```**           |                   ✅                    |                        ✅                         |
-| **```""```** (空文字) |                   ✅                    |                                                  |
-| **```"あ"```**         |                   ✅                    |                        ✅                         |
-| **```array(0)```**    |                   ✅                    |                                                  |
-| **```array(1)```**    |                   ✅                    |                        ✅                         |
-| **使いどころ**            |        ```null```のみを検証したい場合        | ```null```、```0```、```""```、```[]```を検証したい場合 |
+| 検証パターン      | `isset($var)`、`!is_null($var)` |       `if($var)`、`!empty($var)`        |
+| :---------------- | :-----------------------------: | :-------------------------------------: |
+| **`null`**        |                                 |                                         |
+| **`0`**           |               ✅                |                                         |
+| **`1`**           |               ✅                |                   ✅                    |
+| **`""`** (空文字) |               ✅                |                                         |
+| **`"あ"`**        |               ✅                |                   ✅                    |
+| **`array(0)`**    |               ✅                |                                         |
+| **`array(1)`**    |               ✅                |                   ✅                    |
+| **使いどころ**    |   `null`のみを検証したい場合    | `null`、`0`、`""`、`[]`を検証したい場合 |
 
 <br>
 
@@ -69,8 +61,6 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 **＊実装例＊**
 
 曜日を検証し、文字列を出力する。
-
-
 
 #### ▼ if-elseif-else
 
@@ -105,8 +95,6 @@ if ($weeks == "Mon") {
 #### ▼ switch-case-break
 
 定数ごとに処理が変わる時、こちらの方が可読性が高い。
-
-
 
 **＊実装例＊**
 
@@ -154,8 +142,6 @@ switch ($weeks) {
 #### ▼ if-elseを使用した場合
 
 可読性が悪いため、避けるべき。
-
-
 
 **＊実装例＊**
 
@@ -212,8 +198,6 @@ class Example
 
 よりすっきりした書き方になる。
 
-
-
 **＊実装例＊**
 
 ```php
@@ -262,8 +246,6 @@ class Example
 
 よりすっきりした書き方になる。
 
-
-
 **＊実装例＊**
 
 ```php
@@ -287,27 +269,27 @@ class Example
         $result["optionItemA"] = self::noOptionItem;
         $result["optionItemB"] = self::noOptionItem;
         $result["optionItemC"] = self::noOptionItem;
-    
+
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
         if(!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
-            
+
                 // if文を通過した場合、メソッドの返却値によって初期値0が上書きされる。
                 // 通過しない場合、初期値0が使用される。
                 if ($option->isOptionItemA()) {
                     $result["optionItemA"] = $option->optionItemA();
                 }
-            
+
                 if ($option->isOptionItemB()) {
                     $result["optionItemB"] = $option->optionItemB();
                 }
-            
+
                 if ($option->isOptionItemC()) {
                     $result["optionItemC"] = $option->optionItemC();
                 }
             };
         }
-    
+
         return $result;
     }
 }
@@ -326,27 +308,23 @@ class Example
 
 以下の手順で設計と実装を行う。
 
+`【１】`
 
+: 条件分岐の処理順序の概要を日本で記述する。
 
-```【１】```
+`【２】`
 
-:    条件分岐の処理順序の概要を日本で記述する。
+: 記述内容を、条件部と動作部に分解し、決定表で表す。
 
-```【２】```
+`【３】`
 
-:    記述内容を、条件部と動作部に分解し、決定表で表す。
-
-```【３】```
-
-:    決定表を、流れ図で表す。
+: 決定表を、流れ図で表す。
 
 ![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定表.png)
 
 #### ▼ if-elseif-elseは使用しない
 
 可読性が悪いため、避けるべき。
-
-
 
 **＊実装例＊**
 
@@ -358,7 +336,7 @@ $year = N;
 
 ```php
 <?php
-    
+
 function leapYear(int $year): string
 {
     // (5)
@@ -386,20 +364,18 @@ function leapYear(int $year): string
 
 #### ▼ ifとreturnを使用した早期リターン
 
-各if文で```return```を使用することにより、```if```が入れ子状になることを防げる。
+各if文で`return`を使用することにより、`if`が入れ子状になることを防げる。
 
 これを、早期リターンともいう。
-
-
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 // 西暦を格納する。
 $year = N;
-    
+
 function leapYear(int $year): string
 {
     // (5)
@@ -424,23 +400,23 @@ function leapYear(int $year): string
 
     // (1)
     return "うるう年";
-    
+
 }
 ```
 
 #### ▼ switch-case-breakを使用した早期リターン
 
-if文の代わりに、```switch-case-break```によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。ここでは、メソッドに実装することを想定して、```break```ではなく```return```を使用している。
+if文の代わりに、`switch-case-break`によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。ここでは、メソッドに実装することを想定して、`break`ではなく`return`を使用している。
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 function leapYear(int $year): string
-{   
+{
     switch(true) {
-    
+
     // (5)
     case($year <= 0):
         throw new Exception("負の数は検証できません。");
@@ -469,13 +445,11 @@ function leapYear(int $year): string
 
 早期リターンのif文の波括弧を省略した記法を、ガード節という。
 
-
-
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 function leapYear(int $year): string
 {
     // (5)
@@ -492,7 +466,7 @@ function leapYear(int $year): string
 
     // (1)
     return "うるう年";
-    
+
 }
 ```
 
@@ -502,11 +476,9 @@ function leapYear(int $year): string
 
 ### 等価演算子
 
-#### ▼ イコールが```2```個の場合
+#### ▼ イコールが`2`個の場合
 
 同じオブジェクトから別々に作られたインスタンスであっても、『同じもの』として認識される。
-
-
 
 **＊実装例＊**
 
@@ -523,17 +495,15 @@ if(new Example == new Example){
 // 同じです
 ```
 
-#### ▼ イコールが```3```個の場合
+#### ▼ イコールが`3`個の場合
 
 同じオブジェクトから別々に作られたインスタンスであっても、『異なるもの』として認識される。
-
-
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 class Example {};
 
 if (new Example === new Example) {
@@ -548,13 +518,11 @@ if (new Example === new Example) {
 
 同じインスタンスの場合のみ、『同じもの』として認識される。
 
-
-
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 class Example {};
 
 $a = $b = new Example;

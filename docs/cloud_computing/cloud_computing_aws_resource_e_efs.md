@@ -9,14 +9,11 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. EFS：Elastic File Systemとは
-
 
 マウントターゲットと接続された片方のEC2インスタンスから、ファイルを読み出し、これをもう一方に出力する。
 
@@ -26,21 +23,20 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 ![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EFSのファイル共有機能.png)
 
-
 <br>
 
 ## 02. セットアップ
 
 ### コンソール画面
 
-| 設定項目     | 説明                                                                                     | 補足                                                                                                                                                                                                 |
-|--------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| パフォーマンスモード   |                                                                                          |                                                                                                                                                                                                      |
-| スループットモード    | EFSのスループット性能を設定する。                                                                   |                                                                                                                                                                                                      |
-| ライフサイクルポリシー  | しばらくリクエストされていないファイルが低頻度アクセス (IA：Infrequent Access) ストレージクラスに移動保存するまでの期限を設定する。 | ・ライフサイクルポリシーを有効にしない場合、スタンダードストレージクラスのみが使用される。<br>・画面から両ストレージのサイズを確認できる。<br>↪️ 参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6 |
-| ファイルシステムポリシー | 他のAWSリソースがEFSを利用する時のポリシーを設定する。                                                     |                                                                                                                                                                                                      |
-| 自動バックアップ   | AWS Backupに定期的に保存するか否かを設定する。                                                     |                                                                                                                                                                                                      |
-| ネットワーク       | マウントターゲットを設置するサブネット、セキュリティグループを設定する。                                                 | ・サブネットは、ファイル供給の速度の観点から、マウントターゲットにアクセスするAWSリソースと同じにする。<br>・セキュリティグループは、EC2からのNFSプロトコルアクセスを許可したものを設定する。EC2のセキュリティグループを通過したアクセスのみを許可するために、IPアドレスでは、EC2のセキュリティグループを設定する。                |
+| 設定項目                 | 説明                                                                                                                                | 補足                                                                                                                                                                                                                                                                                                                |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| パフォーマンスモード     |                                                                                                                                     |                                                                                                                                                                                                                                                                                                                     |
+| スループットモード       | EFSのスループット性能を設定する。                                                                                                   |                                                                                                                                                                                                                                                                                                                     |
+| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス (IA：Infrequent Access) ストレージクラスに移動保存するまでの期限を設定する。 | ・ライフサイクルポリシーを有効にしない場合、スタンダードストレージクラスのみが使用される。<br>・画面から両ストレージのサイズを確認できる。<br>↪️ 参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6                                                       |
+| ファイルシステムポリシー | 他のAWSリソースがEFSを利用する時のポリシーを設定する。                                                                              |                                                                                                                                                                                                                                                                                                                     |
+| 自動バックアップ         | AWS Backupに定期的に保存するか否かを設定する。                                                                                      |                                                                                                                                                                                                                                                                                                                     |
+| ネットワーク             | マウントターゲットを設置するサブネット、セキュリティグループを設定する。                                                            | ・サブネットは、ファイル供給の速度の観点から、マウントターゲットにアクセスするAWSリソースと同じにする。<br>・セキュリティグループは、EC2からのNFSプロトコルアクセスを許可したものを設定する。EC2のセキュリティグループを通過したアクセスのみを許可するために、IPアドレスでは、EC2のセキュリティグループを設定する。 |
 
 <br>
 
@@ -52,23 +48,17 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 また、ベースライン未満の分は残高として蓄積されていく。
 
-
-
 ![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-algorithm.png)
 
 元の残高は、ファイルシステムのスタンダードストレージクラスのサイズに応じて大きくなる。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-size.png)
 
-残高は、```BurstCreditBalance```メトリクスから確認できる。
+残高は、`BurstCreditBalance`メトリクスから確認できる。
 
 このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
 
@@ -78,9 +68,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
 
-
 > ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput
-
 
 <br>
 
@@ -88,12 +76,9 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 #### ▼ マウントポイントの登録と解除とは
 
-```mount```コマンドと```unmount```コマンドで、EFSに対してマウントポイントの登録と解除を実行できる。
-
-
+`mount`コマンドと`unmount`コマンドで、EFSに対してマウントポイントの登録と解除を実行できる。
 
 > ↪️ 参考：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
-
 
 #### ▼ 登録
 
@@ -104,9 +89,7 @@ $ mount -t efs -o tls fs-*****:/ /var/www/foo
 
 #### ▼ 解除
 
-```df```コマンドで、EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、```unmount```コマンドを実行する。
-
-
+`df`コマンドで、EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、`unmount`コマンドを実行する。
 
 ```bash
 $ df

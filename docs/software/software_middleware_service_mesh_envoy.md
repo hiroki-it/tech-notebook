@@ -9,8 +9,6 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,7 +19,6 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 ![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_structure.png)
 
-
 Envoyは、コントロールプレーンに相当するxDSサーバーと、データプレーンに相当するプロキシコンテナから構成される。
 
 Envoyには静的/動的な設定がある。
@@ -31,8 +28,6 @@ Envoyには静的/動的な設定がある。
 一方で動的な設定は、xDSサーバーによってEnvoyの実行時に初めて適用される。
 
 Envoyは、xDSサーバーとの間で、リモートプロシージャーコールを双方向で起動時/定期的に実行し、取得した宛先情報を自身に登録する。
-
-
 
 > ↪️ 参考：
 >
@@ -67,7 +62,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
 
 > ↪️ 参考：
-> 
+>
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
@@ -80,8 +75,6 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
 
-
-
 > ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds
@@ -92,8 +85,6 @@ Envoyの実行時に、ルーティング先のClusterの設定を動的に検�
 単一のエンドポイントを提供し、エンドポイント値を取得できる。
 
 Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
-
-
 
 > ↪️ 参考：
 >
@@ -106,10 +97,8 @@ Envoyの実行時に、ルーティング先のClusterに含まれるメンバ�
 
 Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -118,8 +107,6 @@ Envoyの実行時に、リスナーの設定を動的に検出できるように
 単一のエンドポイントを提供し、ルート値を取得できる。
 
 Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
-
-
 
 > ↪️ 参考：
 >
@@ -131,8 +118,6 @@ Envoyの実行時に、ルーティングの設定を動的に検出できるよ
 単一のエンドポイントを提供し、証明書を取得できる。
 
 Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
-
-
 
 > ↪️ 参考：
 >
@@ -151,10 +136,10 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出でき
 
 #### ▼ 実装
 
-Envoyを使用するサービスディスカバリーツールのいくつか (例：Istio) では、コントロールプレーンに```go-control-plane```パッケージが使用されている。
+Envoyを使用するサービスディスカバリーツールのいくつか (例：Istio) では、コントロールプレーンに`go-control-plane`パッケージが使用されている。
 
 > ↪️ 参考：
-> 
+>
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/resource/v3/resource.go#L34-L43
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/server/v3/gateway.go#L38-L98
 
@@ -207,20 +192,19 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 	default:
 		return nil, http.StatusNotFound, fmt.Errorf("no endpoint")
 	}
-	
+
 	...
 
 	out.TypeUrl = typeURL
-	
+
 	...
 
 	res, err := h.Server.Fetch(req.Context(), out)
-	
+
 	...
 
 }
 ```
-
 
 <br>
 
@@ -236,10 +220,8 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 データプレーンの処理は、コンポーネント (リスナー、ルート、クラスター、エンドポイント) から構成される。
 
-
-
 > ↪️ 参考：
-> 
+>
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -250,59 +232,58 @@ Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双�
 Envoyが組み込まれたサービスメッシュツール (例：Istio) では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。
 
 > ↪️ 参考：
-> 
+>
 > - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
 
-```【１】```
+`【１】`
 
-:    Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。
-
-     取得した宛先情報を自身に設定する。
-
-```【２】```
-
-:    Envoyは、リスナー値に紐づける必要のあるルート値を特定する。
-
-```【３】```
-
-:    Envoyは、クラスター値に紐づける必要のあるエンドポイント値を特定する。
-
-```【４】```
-
-:    Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。
+: Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。
 
      取得した宛先情報を自身に設定する。
 
-```【５】```
+`【２】`
 
-:    Envoyは、リスナー値とクラスター値をXDS-APIから定期的に取得する。
+: Envoyは、リスナー値に紐づける必要のあるルート値を特定する。
+
+`【３】`
+
+: Envoyは、クラスター値に紐づける必要のあるエンドポイント値を特定する。
+
+`【４】`
+
+: Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。
 
      取得した宛先情報を自身に設定する。
 
+`【５】`
+
+: Envoyは、リスナー値とクラスター値をXDS-APIから定期的に取得する。
+
+     取得した宛先情報を自身に設定する。
 
 #### ▼ 実装
-
 
 ```protobuf
 message DiscoveryRequest {
   option (udpa.annotations.versioning).previous_message_type = "envoy.api.v2.DiscoveryRequest";
-  
+
   ...
-  
+
 }
 ```
+
 ```protobuf
 message DiscoveryResponse {
   option (udpa.annotations.versioning).previous_message_type = "envoy.api.v2.DiscoveryResponse";
-  
+
   ...
-  
+
 }
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://skyao.io/learning-envoy/xds/overview/
 > - https://skyao.io/learning-envoy/xds/overview/discovery-message.html
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L47-L97
@@ -322,14 +303,9 @@ message DiscoveryResponse {
 
 リスナーでは、Envoyに対する通信を待ち受ける。
 
-
-
 #### ▼ リスナーの静的な登録
 
-```envoy.yaml```ファイルにて、```listeners```キーを設定することにより、Envoyに静的にリスナー値を静的に設定できる。
-
-
-
+`envoy.yaml`ファイルにて、`listeners`キーを設定することにより、Envoyに静的にリスナー値を静的に設定できる。
 
 ```yaml
 static_resources:
@@ -368,7 +344,7 @@ static_resources:
                               cluster: foo-cluster
                       - name: allow_any
                         domains:
-                          - "*" 
+                          - "*"
                         routes:
                           - match:
                               prefix: /
@@ -386,7 +362,7 @@ static_resources:
                               cluster: bar-cluster
                       - name: allow_any
                         domains:
-                          - "*" 
+                          - "*"
                         routes:
                           - match:
                               prefix: /
@@ -404,7 +380,7 @@ static_resources:
                               cluster: baz-cluster
                       - name: allow_any
                         domains:
-                          - "*" 
+                          - "*"
                         routes:
                           - match:
                               prefix: /
@@ -417,13 +393,11 @@ static_resources:
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
-
 #### ▼ リスナーの動的な登録
 
 Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のリスナー値を取得する。
 
 また、Envoyは宛先のリスナー値を自身に動的に設定する。
-
 
 ```protobuf
 
@@ -437,11 +411,11 @@ service ListenerDiscoveryService {
   rpc StreamListeners(stream discovery.v3.DiscoveryRequest)
       returns (stream discovery.v3.DiscoveryResponse) {
   }
-  
+
   rpc DeltaListeners(stream discovery.v3.DeltaDiscoveryRequest)
       returns (stream discovery.v3.DeltaDiscoveryResponse) {
   }
-  
+
   // 単項RPC
   rpc FetchListeners(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:listeners";
@@ -453,7 +427,6 @@ service ListenerDiscoveryService {
 
 ```
 
-
 > ↪️ 参考：
 >
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/listener/v3/lds.proto#L23-L42
@@ -461,11 +434,9 @@ service ListenerDiscoveryService {
 
 **＊実装例＊**
 
-Istioを使用して、```envoy```コンテナを稼働させるとする。
+Istioを使用して、`envoy`コンテナを稼働させるとする。
 
 Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
-
-
 
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
@@ -477,7 +448,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
             - NR
       name: envoy.access_loggers.file
       typedConfig:
-        '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+        "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
         path: /dev/stdout
   address:
     # 宛先IPアドレスとポート番号が合致した場合に、このリスナーで処理される。
@@ -491,15 +462,15 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
     - filters:
         - name: istio.stats
           typedConfig:
-            '@type': type.googleapis.com/udpa.type.v1.TypedStruct
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            '@type': type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+            "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
-                  '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+                  "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
             cluster: outbound|50001|v1|foo-service.foo.svc.cluster.local
             statPrefix: outbound|50001|v1|foo-service.foo.svc.cluster.local
@@ -513,7 +484,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
             - NR
       name: envoy.access_loggers.file
       typedConfig:
-        '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+        "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
         path: /dev/stdout
   address:
     socketAddress:
@@ -524,15 +495,15 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
     - filters:
         - name: istio.stats
           typedConfig:
-            '@type': type.googleapis.com/udpa.type.v1.TypedStruct
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            '@type': type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+            "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
-                  '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+                  "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
             cluster: outbound|50002|v1|bar-service.bar.svc.cluster.local
             statPrefix: outbound|50002|v1|bar-service.bar.svc.cluster.local
@@ -545,7 +516,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
             - NR
       name: envoy.access_loggers.file
       typedConfig:
-        '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+        "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
         path: /dev/stdout
   address:
     socketAddress:
@@ -556,21 +527,20 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
     - filters:
         - name: istio.stats
           typedConfig:
-            '@type': type.googleapis.com/udpa.type.v1.TypedStruct
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            '@type': type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+            "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
-                  '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+                  "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
             cluster: outbound|50003|v1|baz-service.baz.svc.cluster.local
             statPrefix: outbound|50003|v1|baz-service.baz.svc.cluster.local
   trafficDirection: OUTBOUND
 ```
-
 
 <br>
 
@@ -582,31 +552,22 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 ルートでは、リスナーで処理した通信を受け取り、特定のクラスターにルーティングする。
 
-
-
 > ↪️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ ルート値の静的な登録
 
-```static_resources.listeners```キー配下で、リスナーと合わせて設定する。
-
-
-
+`static_resources.listeners`キー配下で、リスナーと合わせて設定する。
 
 > ↪️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
-
 #### ▼ ルート値の動的な登録
 
 Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のルート値を取得する。
 
 また、Envoyは宛先のルート値を自身に動的に設定する。
-
-
-
 
 ```protobuf
 
@@ -641,15 +602,11 @@ service RouteDiscoveryService {
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/route/v3/rds.proto#L22-L42
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
-
 **＊実装例＊**
 
-Istioを使用して、```envoy```コンテナを稼働させるとする。
+Istioを使用して、`envoy`コンテナを稼働させるとする。
 
 Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
-
-
-
 
 ```yaml
 - name: "50001"
@@ -673,7 +630,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
             # パスベース
             prefix: /
           route:
-            # クラスター (ここではKubernetesのService) 
+            # クラスター (ここではKubernetesのService)
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
     - name: allow_any
       domains:
@@ -743,22 +700,15 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 <br>
 
-
 ### クラスター
 
 #### ▼ クラスターとは
 
 クラスターでは、ルートからルーティングされた通信を受け取り、いずれかのエンドポイントにロードバランシングする。
 
-
-
 #### ▼ クラスター値の静的な登録
 
-```envoy.yaml```ファイルにて、```clusters```キーを設定することにより、Envoyに静的にクラスター値を静的に設定できる。
-
-
-
-
+`envoy.yaml`ファイルにて、`clusters`キーを設定することにより、Envoyに静的にクラスター値を静的に設定できる。
 
 ```yaml
 static_resources:
@@ -803,8 +753,8 @@ static_resources:
               - endpoint:
                   # 冗長化された宛先の情報
                   socket_address:
-                      address: 11.0.0.2
-                      port_value: 80
+                    address: 11.0.0.2
+                    port_value: 80
     - name: baz-cluster
       connect_timeout: 0.25s
       type: STATIC
@@ -827,8 +777,6 @@ static_resources:
                       port_value: 80
 ```
 
-
-
 > ↪️ 参考：
 >
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
@@ -839,9 +787,6 @@ static_resources:
 Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のクラスター値を取得する。
 
 また、Envoyは宛先のクラスター設定を自身に動的に設定する。
-
-
-
 
 ```protobuf
 
@@ -878,16 +823,13 @@ service ClusterDiscoveryService {
 
 **＊実装例＊**
 
-Istioを使用して、```envoy```コンテナを稼働させるとする。
+Istioを使用して、`envoy`コンテナを稼働させるとする。
 
 Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
 
-
-
-
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
-# クラスター (ここではKubernetesのService) 
+# クラスター (ここではKubernetesのService)
 - name: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
   connectTimeout: 0.25s
   type: STATIC
@@ -957,30 +899,22 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IPアドレスとポート番号を指定して、宛先に送信する。
 
-
-
 > ↪️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ エンドポイント値の静的な登録
 
-```static_resources.clusters```キー配下で、リスナーと合わせて設定する。
-
-
-
+`static_resources.clusters`キー配下で、リスナーと合わせて設定する。
 
 > ↪️ 参考：
 >
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
-
 #### ▼ エンドポイント値の動的な登録
 
 Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のエンドポイント値を取得する。
 
 また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。
-
-
 
 ```protobuf
 
@@ -1012,7 +946,6 @@ service EndpointDiscoveryService {
 
 > ↪️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
-
 <br>
 
 ## 02. ユースケース
@@ -1025,11 +958,9 @@ service EndpointDiscoveryService {
 
 この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のアプリケーションにアクセスできるようになる。
 
-
-
 #### ▼ Pod内の場合
 
-Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に```istio-proxy```コンテナをインジェクションする。
+Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に`istio-proxy`コンテナをインジェクションする。
 
 Istioによって自動的に作成されるが、Istioリソースを使用しなくとも作成できる。
 
@@ -1043,17 +974,15 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 <br>
 
-#### ▼ Pod外の場合 (フロントプロキシ) 
+#### ▼ Pod外の場合 (フロントプロキシ)
 
 フロントプロキシと呼ばれている。
-
-
 
 > ↪️ 参考：https://tech.uzabase.com/entry/2020/09/28/140046
 
 <br>
 
-### ```l4```または```L7```ロードバランサーのミドルウェアとして
+### `l4`または`L7`ロードバランサーのミドルウェアとして
 
 調査中...
 
@@ -1071,8 +1000,6 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 Envoyは、分散トレースを作成できるように、自分で自分を通過した通信にHTTPヘッダーやRPCヘッダーに分散トレースIDを割り当てる。
 
-
-
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 
 <br>
@@ -1081,10 +1008,9 @@ Envoyは、分散トレースを作成できるように、自分で自分を通
 
 #### ▼ 標準ヘッダー
 
-
-| HTTPヘッダー名         | 説明                |
-|--------------------|-------------------|
-| ```X-REQUEST-ID``` | トレースIDが割り当てられている。 |
+| HTTPヘッダー名 | 説明                             |
+| -------------- | -------------------------------- |
+| `X-REQUEST-ID` | トレースIDが割り当てられている。 |
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
@@ -1092,16 +1018,14 @@ Envoyは、分散トレースを作成できるように、自分で自分を通
 
 Envoyは、Zipkinが使用するヘッダーを追加する。
 
-
-
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
-| HTTPヘッダー名              | 説明                                              |
-|-------------------------|---------------------------------------------------|
-| ```X-B3-SAMPLED```      |                                                   |
-| ```X-B3-SPANID```       | スパンIDが割り当てられている。                                |
-| ```X-B3-TRACEID```      | トレースIDが割り当てられている。                               |
-| ```X-B3-PARENTSPANId``` | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
+| HTTPヘッダー名      | 説明                                                                               |
+| ------------------- | ---------------------------------------------------------------------------------- |
+| `X-B3-SAMPLED`      |                                                                                    |
+| `X-B3-SPANID`       | スパンIDが割り当てられている。                                                     |
+| `X-B3-TRACEID`      | トレースIDが割り当てられている。                                                   |
+| `X-B3-PARENTSPANId` | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
 
 #### ▼ AWS X-Ray系ヘッダー
 
@@ -1109,9 +1033,9 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
-| HTTPヘッダー名            | 説明                |
-|-----------------------|-------------------|
-| ```X-AMZN-TRACE-ID``` | トレースIDが割り当てられている。 |
+| HTTPヘッダー名    | 説明                             |
+| ----------------- | -------------------------------- |
+| `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。 |
 
 <br>
 
@@ -1119,10 +1043,9 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 #### ▼ 標準ヘッダー
 
-
-| RPCヘッダー名            | 説明                |
-|----------------------|-------------------|
-| ```GRPC-TRACE-BIN``` | トレースIDが割り当てられている。 |
+| RPCヘッダー名    | 説明                             |
+| ---------------- | -------------------------------- |
+| `GRPC-TRACE-BIN` | トレースIDが割り当てられている。 |
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
 

@@ -9,8 +9,6 @@ description: コマンド@PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -20,8 +18,6 @@ description: コマンド@PHPの知見を記録しています。
 ### -i
 
 PHPの設定を取得する。
-
-
 
 **＊例＊**
 
@@ -33,9 +29,7 @@ PHP Version => 7.4
 
 ```
 
-出力サイズが多いため、```grep```を使用して、特定の項目のみを表示すると良い。
-
-
+出力サイズが多いため、`grep`を使用して、特定の項目のみを表示すると良い。
 
 ```bash
 # PHPのプロセスが使用できるメモリを確認する。
@@ -48,9 +42,7 @@ memory_limit => 2048M => 2048M
 
 ### --ini
 
-Configuration Fileの項目で、```php.ini```ファイルのあるディレクトリを取得する。
-
-
+Configuration Fileの項目で、`php.ini`ファイルのあるディレクトリを取得する。
 
 **＊例＊**
 
@@ -79,8 +71,6 @@ drwxr-xr-x 1 root root  4096 Sep 25 12:22 conf.d
 
 現在インストールされているモジュールを取得する。
 
-
-
 **＊例＊**
 
 ```bash
@@ -100,9 +90,7 @@ zlib
 [Zend Modules]
 ```
 
-注意点として、実際に読み込まれているか否かは、```get_loaded_extensions```メソッドで確認できる。
-
-
+注意点として、実際に読み込まれているか否かは、`get_loaded_extensions`メソッドで確認できる。
 
 > ↪️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
 
@@ -114,9 +102,9 @@ Array
     [0] => Core
     [1] => date
     [2] => libxml
-    
+
     ...
-    
+
     [33] => bcmath
     [34] => pdo_mysql
     [35] => sodium
@@ -128,8 +116,6 @@ Array
 ### -r
 
 コマンドラインからコードを実行できる。
-
-
 
 > ↪️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
@@ -163,8 +149,6 @@ $ php -r '
 ### --ri
 
 拡張モジュールの設定値を取得する。
-
-
 
 **＊例＊**
 

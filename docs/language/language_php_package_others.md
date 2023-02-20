@@ -9,8 +9,6 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -31,28 +29,24 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 タイムスタンプとは、協定世界時(UTC)を基準にした1970年1月1日の0時0分0秒からの経過秒数を表したもの。
 
-
-
-| フォーマット       | 実装方法            | 備考                                                    |
-|--------------|---------------------|-------------------------------------------------------|
-| 日付         | 2019-07-07          | 区切り記号なし、ドット、スラッシュなども可能                            |
-| 時間         | 19:07:07            | 区切り記号なし、も可能                                       |
-| 日時         | 2019-07-07 19:07:07 | 同上                                                    |
+| フォーマット        | 実装方法            | 備考                                                          |
+| ------------------- | ------------------- | ------------------------------------------------------------- |
+| 日付                | 2019-07-07          | 区切り記号なし、ドット、スラッシュなども可能                  |
+| 時間                | 19:07:07            | 区切り記号なし、も可能                                        |
+| 日時                | 2019-07-07 19:07:07 | 同上                                                          |
 | タイムスタンプ (秒) | 1562494027          | 1970年1月1日の0時0分0秒から2019-07-07 19:07:07 までの経過秒数 |
 
 <br>
 
 ### メソッド
 
-#### ▼ ```instance```メソッド 
+#### ▼ `instance`メソッド
 
 DateTimeインスタンスを引数として、Carbonインスタンスを作成する。
 
-
-
 ```php
 <?php
-    
+
 $datetime = new \DateTime("2019-07-07 19:07:07");
 $carbon = Carbon::instance($datetime);
 
@@ -61,17 +55,15 @@ echo $carbon; // 2019-07-07 19:07:07
 
 <br>
 
-#### ▼ ```create```メソッド
+#### ▼ `create`メソッド
 
 日時の文字列からCarbonインスタンスを作成する。
-
-
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 $carbon = Carbon::create(2019, 07, 07, 19, 07, 07);
 
 echo $carbon; // 2019-07-07 19:07:07
@@ -79,21 +71,17 @@ echo $carbon; // 2019-07-07 19:07:07
 
 <br>
 
-#### ▼ ```createFromXXX```メソッド
+#### ▼ `createFromXXX`メソッド
 
 指定の文字列から、Carbonインスタンスを作成する。
-
-
 
 **＊実装例＊**
 
 日時数字からCarbonインスタンスを作成する。
 
-
-
 ```php
 <?php
-    
+
 // 日時数字から、Carbonインスタンスを作成する。
 $carbonFromeDate = Carbon::createFromDate(2019, 07, 07);
 
@@ -102,11 +90,9 @@ echo $carbonFromeDate; // 2019-07-07
 
 時間数字からCarbonインスタンスを作成する。
 
-
-
 ```php
 <?php
-    
+
 // 時間数字から、Carbonインスタンスを作成する。
 $carbonFromTime = Carbon::createFromTime(19, 07, 07);
 
@@ -117,11 +103,9 @@ echo $carbonFromTime; // 19:07:07
 
 第一引数でフォーマットを指定する必要がある。
 
-
-
 ```php
 <?php
-    
+
 // 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。
 // 第一引数でフォーマットを指定する必要がある。
 $carbonFromFormat = Carbon::createFromFormat("Y-m-d H:m:s", "2019-07-07 19:07:07");
@@ -131,11 +115,9 @@ echo $carbonFromFormat; // 2019-07-07 19:07:07
 
 タイムスタンプフォーマットからCarbonインスタンスを作成する。
 
-
-
 ```php
 <?php
-    
+
 // タイムスタンプフォーマットから、Carbonインスタンスを作成する。
 $carbonFromTimestamp = Carbon::createFromTimestamp(1562494027);
 
@@ -144,19 +126,17 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 
 <br>
 
-#### ▼ ```parse```メソッド
+#### ▼ `parse`メソッド
 
 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。
 
-```createFromFormat```メソッドとは異なり、フォーマットを指定する必要がない。
-
-
+`createFromFormat`メソッドとは異なり、フォーマットを指定する必要がない。
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 $carbon = Carbon::parse("2019-07-07 19:07:07")
 ```
 
@@ -170,31 +150,27 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 他の同様パッケージとして、Linqがある。
 
-
-
 > ↪️ 参考：https://github.com/TimeToogo/Pinq/
 
 <br>
 
-### ```Traversable::from```メソッド
+### `Traversable::from`メソッド
 
-SQLの```SELECT```や```WHERE```といった単語を使用して、```foreach```のように、配列データやオブジェクトデータの各要素に対して、処理を行える。
-
-
+SQLの`SELECT`や`WHERE`といった単語を使用して、`foreach`のように、配列データやオブジェクトデータの各要素に対して、処理を行える。
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 use Pinq\Traversable;
 
 class Foo
 {
-    
+
     public function getData(array $entities)
     {
-        
+
         return [
           "data" => Traversable::from($entities)
             // 1つずつ要素を取り出し、関数に渡す。
@@ -219,8 +195,6 @@ class Foo
 
 しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ (例：外部のAPIなど) に対して、リクエストの送受信できる。
 
-
-
 > ↪️ 参考：https://github.com/guzzle/guzzle
 
 <br>
@@ -228,7 +202,6 @@ class Foo
 ### リクエスト
 
 #### ▼ GET送信
-
 
 **＊実装例＊**
 
@@ -253,9 +226,7 @@ $response = $client->request(
 
 > ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
-
 #### ▼ POST送信
-
 
 ```php
 <?php
@@ -286,7 +257,6 @@ $response = $client->request(
 ```
 
 > ↪️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
-
 
 <br>
 
@@ -332,9 +302,7 @@ $body = json_decode($response->getBody(), true);
 
 ### KnpLabs/Snappyとは
 
-ローカルまたは指定したURLの```.html```ファイルから、PDFや画像のファイルを作成するパッケージ。
-
-
+ローカルまたは指定したURLの`.html`ファイルから、PDFや画像のファイルを作成するパッケージ。
 
 > ↪️ 参考：https://github.com/KnpLabs/snappy
 
@@ -342,17 +310,15 @@ $body = json_decode($response->getBody(), true);
 
 ### メソッド
 
-#### ▼ ```generateFromHtml```メソッド
+#### ▼ `generateFromHtml`メソッド
 
-ローカルディレクトリ配下に、```.html```ファイルを基にしたPDFファイルを作成する。
-
-
+ローカルディレクトリ配下に、`.html`ファイルを基にしたPDFファイルを作成する。
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 $snappy = new Pdf("/usr/local/bin/wkhtmltopdf");
 
 $snappy->generateFromHtml("foo.html", ".../foo.pdf");
@@ -368,13 +334,11 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 フロントエンドからリクエストされるデータに関しては、JavaScriptとPHPの両方によるバリデーションが必要である。
 
-
-
 > ↪️ 参考：https://github.com/Respect/Validation
 
 ```php
 <?php
-    
+
 // ここに実装例
 ```
 
@@ -387,8 +351,6 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 ![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/line_messaging-api.png)
 
 ボットサーバーにて、LINEプラットフォームに返信するためのレスポンスを作成する。
-
-
 
 > ↪️ 参考：
 >

@@ -9,8 +9,6 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -20,8 +18,6 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 ### ジョブとは
 
 定期的に実行するように設定されたバッチ処理を、特に『ジョブ』という。
-
-
 
 > ↪️ 参考：
 >
@@ -36,9 +32,7 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 ジョブ管理では、複数のジョブを管理でき、各ジョブを独立して実行する。
 
-UNIXでは```at```や```cron```に、またWindowsではタスクスケジューラーがジョブ管理機能を持つ。
-
-
+UNIXでは`at`や`cron`に、またWindowsではタスクスケジューラーがジョブ管理機能を持つ。
 
 > ↪️ 参考：
 >
@@ -51,13 +45,11 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 ジョブ管理は、マスタスケジューラー、ジョブスケジューラーから構成される。
 
-
-
 ![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ジョブ管理とタスク管理の概要.jpg)
 
 <br>
 
-###  マスタースケジューラー
+### マスタースケジューラー
 
 #### ▼ マスタースケジューラーとは
 
@@ -71,8 +63,6 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 ややこしいことに、タスクスケジューラーとも呼ぶ。
 
-
-
 > ↪️ 参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
 
 <br>
@@ -83,19 +73,13 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 マスタースケジューラーから命令を受け、実際にジョブを実行する。
 
-
-
 #### ▼ リーダー
 
 ジョブを待ち行列に登録する。
 
-
-
 #### ▼ イニシエーター
 
 ジョブをジョブステップに分解する。
-
-
 
 ![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ジョブからジョブステップへの分解.png)
 
@@ -103,12 +87,8 @@ UNIXでは```at```や```cron```に、またWindowsではタスクスケジュー
 
 ジョブを出力待ち行列に登録する。
 
-
-
 #### ▼ ライター
 
 優先度順に、ジョブの結果を出力する。
-
-
 
 <br>

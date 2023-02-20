@@ -9,8 +9,6 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,8 +19,6 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 リポジトリを分割することにより、以下のメリットがある。
 
-
-
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 > ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries
@@ -31,9 +27,7 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 ### アプリとIaCを同じリポジトリで管理
 
-アプリケーションと同じリポジトリにて、```terraform```ディレクトリを作成し、ここに```.tf```ファイルを配置する。
-
-
+アプリケーションと同じリポジトリにて、`terraform`ディレクトリを作成し、ここに`.tf`ファイルを配置する。
 
 ```yaml
 repository/
@@ -46,20 +40,18 @@ repository/
 
 <br>
 
-### アプリとIaCを異なるリポジトリで管理 (推奨) 
+### アプリとIaCを異なるリポジトリで管理 (推奨)
 
-#### ▼ ローカルモジュールを使用する (推奨) 
+#### ▼ ローカルモジュールを使用する (推奨)
 
-アプリケーションとは異なるリポジトリにて、```.tf```ファイルを配置しつつ、ルートモジュールとモジュールは同じリポジトリ内で管理する。
-
-
+アプリケーションとは異なるリポジトリにて、`.tf`ファイルを配置しつつ、ルートモジュールとモジュールは同じリポジトリ内で管理する。
 
 ```yaml
 repository/
 ├── modules/ # ローカルモジュール
 │   ├── foo-module/
 │   ...
-│  
+│
 ├── main.tf # ルートモジュール
 ├── variables.tf
 ...
@@ -67,15 +59,13 @@ repository/
 
 #### ▼ リモートモジュールを使用する
 
-アプリケーションとは異なるリポジトリにて、```.tf```ファイルを配置しつつ、ルートモジュールとモジュールは異なるリポジトリ内で管理する。
+アプリケーションとは異なるリポジトリにて、`.tf`ファイルを配置しつつ、ルートモジュールとモジュールは異なるリポジトリ内で管理する。
 
 ルートモジュールでリモートモジュールのリポジトリのURLを指定し、参照する。
 
-
-
 ```yaml
 repository/
-├── main.tf # ルートモジュール (リポジトリのURLを指定し、リモートモジュールを読み込む) 
+├── main.tf # ルートモジュール (リポジトリのURLを指定し、リモートモジュールを読み込む)
 ├── variables.tf
 ...
 ```
@@ -90,68 +80,63 @@ repository/
 
 <br>
 
-## 02 ```.tfstate```ファイルを含むルートモジュールの分割
+## 02 `.tfstate`ファイルを含むルートモジュールの分割
 
-### ```.tfstate```ファイルを含むルートモジュールの分割とは
+### `.tfstate`ファイルを含むルートモジュールの分割とは
 
 #### ▼ メリット
 
-```.tfstate```ファイルを分割することにより、以下のメリットがある。
+`.tfstate`ファイルを分割することにより、以下のメリットがある。
 
-
-- ```terraform apply```コマンドの実行途中に問題が発生し、```.tfstate```ファイルが破損したとしても、影響範囲をその```.tfstate```ファイルのリソース内に閉じられる。
-- ```terraform plan```コマンドや```terraform apply```コマンドの実行時間を短縮できる。
+- `terraform apply`コマンドの実行途中に問題が発生し、`.tfstate`ファイルが破損したとしても、影響範囲をその`.tfstate`ファイルのリソース内に閉じられる。
+- `terraform plan`コマンドや`terraform apply`コマンドの実行時間を短縮できる。
 - リソースタイプが同じであっても、同じ名前を付けられる。
-- 複数人が同時にTerraformの実装を修正する場合、異なる```.tfstate```ファイルの間では、誰かのプロビジョニングによって他の誰かのプロビジョニングを元に戻してしまうような、作業の衝突が起こらない。
+- 複数人が同時にTerraformの実装を修正する場合、異なる`.tfstate`ファイルの間では、誰かのプロビジョニングによって他の誰かのプロビジョニングを元に戻してしまうような、作業の衝突が起こらない。
 
 > ↪️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
-
 #### ▼ 方法
 
-前提として、```terraform```ブロックから```backend```オプションを切り分け、```backend.tfvars```ファイルを作成する。
+前提として、`terraform`ブロックから`backend`オプションを切り分け、`backend.tfvars`ファイルを作成する。
 
-```backend.tfvars```ファイルでは、```.tfstate```ファイルのあるバックエンドを定義するとする。
+`backend.tfvars`ファイルでは、`.tfstate`ファイルのあるバックエンドを定義するとする。
 
 １と２は必須であるが、３は状況 (例：プロダクトのフェーズ、システムの規模) によって読み手が選ぶようにする。
 
 例ではディレクトリで分割しているが、基点ブランチで作業が衝突する可能性があるため、リポジトリを分割した方がよさそうである。
 
+`【１】`
 
-```【１】```
+: 最上層をクラウドプロバイダーで切る。
 
-:    最上層をクラウドプロバイダーで切る。
+`【２】`
 
-```【２】```
+: 最下層を実行環境別で切る。
 
-:    最下層を実行環境別で切る。 
+`【３】`
 
-```【３】```
-
-:    中間層を以下のいずれかで切る。
+: 中間層を以下のいずれかで切る。
 
      プロジェクトによっては、特に中間層ディレクトリで複数の設計ポリシーを組み合わせている場合があり、一つだけ採用されているとは限らないことに注意する。
 
-- クラウドインフラのリソースの変更頻度 
-- 運用チームの責務範囲 
-- blast radius (影響範囲、障害範囲)  
+- クラウドインフラのリソースの変更頻度
+- 運用チームの責務範囲
+- blast radius (影響範囲、障害範囲)
 - システムコンポーネント
 
 <br>
 
 ### リポジトリ/最上層ディレクトリの構成方法の種類
 
-#### ▼ クラウドプロバイダー別 (必須) 
+#### ▼ クラウドプロバイダー別 (必須)
 
-リポジトリまたは最上層ディレクトリで分割し、クラウドプロバイダー別に```providers.tf```ファイルを作成する。
+リポジトリまたは最上層ディレクトリで分割し、クラウドプロバイダー別に`providers.tf`ファイルを作成する。
 
-これにより、クラウドプロバイダー別に```.tfstate```ファイルが作成される。
+これにより、クラウドプロバイダー別に`.tfstate`ファイルが作成される。
 
-各環境で独立して作成した```.tfstate```ファイルの管理リソース (AWSならS3バケット) 内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
+各環境で独立して作成した`.tfstate`ファイルの管理リソース (AWSならS3バケット) 内でディレクトリを作り、各ディレクトリに`.tfstate`ファイルを配置する。
 
-```.tfstate```ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
-
-
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 ```yaml
 repository/
@@ -165,11 +150,11 @@ repository/
 │   ├── provider.tf
 │   ...
 │
-├── healthchecks/ # Healthchecks 
+├── healthchecks/ # Healthchecks
 │   ├── backend.tf # healthchecks/terraform.tfstateを指定
 │   ├── provider.tf
 │   ...
-│ 
+│
 └── pagerduty/ # PagerDuty
     ├── backend.tf # pagerduty/terraform.tfstateを指定
     ├── provider.tf
@@ -180,27 +165,24 @@ repository/
 
 ### 最下層ディレクトリの構成方法の種類
 
-#### ▼ 実行環境別 (必須) 
+#### ▼ 実行環境別 (必須)
 
-最下層ディレクトリで分割し、クラウドプロバイダー別かつ実行環境別に```providers.tfvars```ファイルを作成する。
+最下層ディレクトリで分割し、クラウドプロバイダー別かつ実行環境別に`providers.tfvars`ファイルを作成する。
 
-ルートモジュールと一緒に、```providers.tf```ファイルや```tfnotify.yml```ファイルも管理してしまうと良い。
+ルートモジュールと一緒に、`providers.tf`ファイルや`tfnotify.yml`ファイルも管理してしまうと良い。
 
-これにより、実行環境別に```.tfstate```ファイルが作成される。
+これにより、実行環境別に`.tfstate`ファイルが作成される。
 
-```terraform apply```コマンドの影響範囲を実行環境内に閉じられる。
+`terraform apply`コマンドの影響範囲を実行環境内に閉じられる。
 
-また、各環境の```.tfstate```ファイルの管理リソース (AWSならS3バケット) も分割した方がよい。
+また、各環境の`.tfstate`ファイルの管理リソース (AWSならS3バケット) も分割した方がよい。
 
-```.tfstate```ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
-
-
-
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 ```yaml
 repository/
 ├── aws/ # AWS
-│   ├── provider.tf    
+│   ├── provider.tf
 │   ├── tes/ # テスト環境
 │   │   ├── backend.tfvars # バックエンド内の/aws/terraform.tfstateを指定
 │   │   ...
@@ -214,12 +196,12 @@ repository/
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
 │
-├── healthchecks/ # Healthchecks 
+├── healthchecks/ # Healthchecks
 │   ├── provider.tf
 │   ├── tes/ # テスト環境
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環
-│ 
+│
 └── pagerduty/ # PagerDuty # pagerduty/terraform.tfstateを指定
     ├── provider.tf
     ├── tes/ # テスト環境
@@ -237,7 +219,7 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 
 これらの観点の分割が混在してしまうと可読性が悪くなるため、個人的にはいずれかの観点に統一した方が良い。
 
-また、中間ディレクトリごとに```provider.tf```ファイルを作成する。
+また、中間ディレクトリごとに`provider.tf`ファイルを作成する。
 
 > ↪️ 参考：
 >
@@ -249,11 +231,9 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 
 中間ディレクトリをクラウドインフラのリソースの実装変更頻度ごとに分割する。
 
-各環境で独立して作成した```.tfstate```ファイルの管理リソース (AWSならS3バケット) 内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
+各環境で独立して作成した`.tfstate`ファイルの管理リソース (AWSならS3バケット) 内でディレクトリを作り、各ディレクトリに`.tfstate`ファイルを配置する。
 
-```.tfstate```ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
-
-
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 > ↪️ 参考：
 >
@@ -263,7 +243,7 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 ```yaml
 repository/
 ├── aws/ # AWS
-│   ├── high-freq # 高頻度リソース (サーバー系、コンテナ系、セキュリティ系、監視系など) 
+│   ├── high-freq # 高頻度リソース (サーバー系、コンテナ系、セキュリティ系、監視系など)
 │   │   ├── provider.tf
 │   │   ├── tes # テスト環境
 │   │   │   ├── backend.tfvars # バックエンド内の/aws/high-freq/terraform.tfstateを指定
@@ -277,34 +257,34 @@ repository/
 │   │       ├── backend.tfvars # バックエンド内の/aws/middle-freq/terraform.tfstateを指定
 │   │       ...
 │   │
-│   ├── low-freq # 低頻度リソース (ネットワーク系、ストレージ系、など) 
+│   ├── low-freq # 低頻度リソース (ネットワーク系、ストレージ系、など)
 │   │   ├── provider.tf
 │   │   ├── tes
-│   │   │   ├── backend.tfvars 
+│   │   │   ├── backend.tfvars
 │   │   │   ...
 │   │   │
 │   │   ├── stg
-│   │   │   ├── backend.tfvars 
+│   │   │   ├── backend.tfvars
 │   │   │   ...
 │   │   │
 │   │   └── prd
-│   │       ├── backend.tfvars 
+│   │       ├── backend.tfvars
 │   │       ...
 │   │
-│   └── middle-freq # 中頻度リソース (高頻度とも低頻度とも言えないリソース) 
+│   └── middle-freq # 中頻度リソース (高頻度とも低頻度とも言えないリソース)
 │       ├── provider.tf
 │       ├── tes
-│       │   ├── backend.tfvars 
+│       │   ├── backend.tfvars
 │       │   ...
 │       │
 │       ├── stg
-│       │   ├── backend.tfvars 
+│       │   ├── backend.tfvars
 │       │   ...
 │       │
 │       └── prd
-│           ├── backend.tfvars 
+│           ├── backend.tfvars
 │           ...
-│    
+│
 ├── datadog/ # Datadog
 ├── healthchecks/ # Healthchecks
 └── pagerduty/ # PagerDuty
@@ -314,13 +294,11 @@ repository/
 
 中間ディレクトリを運用チームの責務範囲ごとに分割する。
 
-また、```.tfstate```ファイルを管理するバックエンドにて、ディレクトリ単位で認可スコープを設定する。
+また、`.tfstate`ファイルを管理するバックエンドにて、ディレクトリ単位で認可スコープを設定する。
 
 ただし、チームの責務範囲や数は、組織の大きさに合わせて流動的に変化するものなため、個人的には保守性が高くない。
 
-```.tfstate```ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
-
-
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 ```yaml
 repository/
@@ -366,7 +344,7 @@ repository/
 │       └── prd
 │           ├── backend.tf
 │           ...
-│    
+│
 ├── datadog/ # Datadog
 ├── healthchecks/ # Healthchecks
 └── pagerduty/ # PagerDuty
@@ -380,11 +358,9 @@ repository/
 
 ディレクトリ名に番号を付けてもよい。
 
-必ず自分より小さな番号の```.tfstate```ファイルを参照するようにすると良い。
+必ず自分より小さな番号の`.tfstate`ファイルを参照するようにすると良い。
 
-```.tfstate```ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
-
-
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 > ↪️ 参考：https://sreake.com/blog/terraform-state-structure/
 
@@ -410,12 +386,11 @@ repository/
 │   ├── 04-qux/
 │   ├── 05-quux/
 │   └── 06-corge/
-│    
+│
 ├── datadog/ # Datadog
 ├── healthchecks/
 └── pagerduty/
 ```
-
 
 <br>
 
@@ -429,8 +404,6 @@ repository/
 
 またスクリプトを使用するリソース (例：Lambda) では、そのソースコードをモジュール下で管理する。
 
-
-
 ```yaml
 repository/
 └── modules/ # ローカルモジュール
@@ -442,7 +415,7 @@ repository/
     │   │   └── functions/
     │   │       └── foo_function/ # スクリプト
     │   │
-    │   └── rds/        # RDS    
+    │   └── rds/        # RDS
     │
     └── waf/ # WAF
         ├── alb/         # ALB
@@ -458,8 +431,6 @@ repository/
 
 特定のリソースの設定が実行環境ごとに異なる場合、冗長性よりも保守性を重視して、実行環境に応じたディレクトリに分割する。
 
-
-
 ```yaml
 repository/
 └── modules/ # ローカルモジュール
@@ -467,14 +438,14 @@ repository/
     │   ├── tes/ # テスト環境
     │   ├── stg/ # ステージング環境
     │   └── prd/ # 本番環境
-    │ 
+    │
     ├── ssm/ # Systems Manager
     │   ├── tes/
     │   ├── stg/
     │   └── prd/
-    │ 
+    │
     └── waf/ # WAF
-        └── alb/ 
+        └── alb/
             ├── tes/
             ├── prd/
             └── stg/
@@ -484,14 +455,12 @@ repository/
 
 特定のリソースの設定がリージョンごとに異なる場合、冗長性よりも保守性を重視して、リージョンに応じたディレクトリに分割する。
 
-
-
 ```yaml
 repository/
 └── modules/ # ローカルモジュール
     └── acm/ # ACM
         ├── ap-northeast-1/ # 東京リージョン
-        └── us-east-1/      # バージニアリージョン  
+        └── us-east-1/      # バージニアリージョン
 ```
 
 #### ▼ 共通セット別
@@ -499,8 +468,6 @@ repository/
 WAFで使用するIPパターンセットと正規表現パターンセットには、CloudFrontタイプとRegionalタイプがある。
 
 Regionalタイプは、同じリージョンの異なるクラウドプロバイダーのリソース間で共通して使用できるため、共通セットとしてディレクトリ分割を行う。
-
-
 
 ```yaml
 repository/
@@ -514,7 +481,7 @@ repository/
             │   ├── tes/
             │   ├── stg/
             │   └── prd/
-            │    
+            │
             └── regex_pattern_sets/ # 正規表現パターンセット
                 ├── tes/
                 ├── stg/
@@ -523,9 +490,7 @@ repository/
 
 #### ▼ リソースのセットアップ別
 
-リソースをセットアップする上で異なる種類のリソースが必要になる場合に、それらの```resource```ブロックを一つにまとめて管理する。
-
-
+リソースをセットアップする上で異なる種類のリソースが必要になる場合に、それらの`resource`ブロックを一つにまとめて管理する。
 
 ```yaml
 repository/
@@ -541,7 +506,7 @@ repository/
         │   ├── outputs.tf
         │   └── variables.tf
         │
-        ├── kubernetes/ # Kubernetesリソース (例：RoleBinding、StorageClass、など) 
+        ├── kubernetes/ # Kubernetesリソース (例：RoleBinding、StorageClass、など)
         │   ├── main.tf
         │   ├── outputs.tf
         │   └── variables.tf
@@ -554,7 +519,7 @@ repository/
         ├── security_group/ # セキュリティグループ
         │   ├── main.tf
         │   ├── outputs.tf
-        │   └── variables.tf   
+        │   └── variables.tf
         │
         └── node_group/ # Nodeグループ
             ├── main.tf
@@ -568,13 +533,11 @@ repository/
 
 #### ▼ policiesディレクトリ
 
-ポリシーのために```.json```形式を定義する場合、Terraformのコードにハードコーディングせずに、切り分けるようにする。
+ポリシーのために`.json`形式を定義する場合、Terraformのコードにハードコーディングせずに、切り分けるようにする。
 
 また、『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し、ディレクトリを分割している。
 
-注意点として、```templatefile```関数でこれを読みこむ時、```bash```ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。
-
-
+注意点として、`templatefile`関数でこれを読みこむ時、`bash`ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。
 
 > ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
 
@@ -594,10 +557,10 @@ repository/
     │       │   ├── aws_cli_executor_access_address_restriction_policy.tpl
     │       │   ├── cloudwatch_logs_access_policy.tpl
     │       │   └── lambda_edge_execution_policy.tpl
-    │       │     
+    │       │
     │       ├── inline_policies/ # インラインポリシー
     │       │   └── ecs_task_policy.tpl
-    │       │     
+    │       │
     │       └── trust_policies/ # 信頼ポリシー
     │           ├── cloudwatch_events_policy.tpl
     │           ├── ecs_task_policy.tpl
@@ -611,9 +574,7 @@ repository/
 
 #### ▼ opsディレクトリ
 
-CI/CDパイプライン上の```terraform```コマンドの実行で必要なシェルスクリプトは、```ops```ディレクトリで管理する。
-
-
+CI/CDパイプライン上の`terraform`コマンドの実行で必要なシェルスクリプトは、`ops`ディレクトリで管理する。
 
 ```yaml
 repository/
@@ -625,15 +586,13 @@ repository/
 
 ## 04. 命名規則と並び順
 
-### 環境変数 (通常変数も同じ) 
+### 環境変数 (通常変数も同じ)
 
 #### ▼ 対象リソースに合わせる命名
 
 複数のリソースで共通して使用する場合 (将来的にそうなる可能性も含めて) は、Globalに配置し、グローバルな名前を付ける。
 
 クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。
-
-
 
 ```terraform
 # ---------------------------------------------
@@ -647,12 +606,10 @@ service           = "bar"
 
 一方で、特定のリソースのみで使用する環境変数/通常変数の場合は、対象のリソース、種類名、オプション名、がわかるように命名する。
 
-
-
 > ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention
 
 ```terraform
-# 種類が無い時 (thisの時) 
+# 種類が無い時 (thisの時)
 # 例：ecs_service_desired_count = 2
 <使用するクラウドプロバイダーのリソースの名前>_<オプション名> = ****
 
@@ -666,17 +623,13 @@ service           = "bar"
 
 複数の値を持つlist型やmap型の環境変数であれば複数形で命名する。
 
-一方で、string型など値が```1```個しかなければ単数形とする。
-
-
+一方で、string型など値が`1`個しかなければ単数形とする。
 
 > ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
 **＊実装例＊**
 
 例として、VPCを示す。
-
-
 
 ```terraform
 # @ルートモジュール
@@ -693,9 +646,7 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 #### ▼ boolean型の命名
 
-```count```引数による条件分岐でリソースの作成の有無を切り替えている場合、```enable_***```という名前のboolean型環境変数を用意する。
-
-
+`count`引数による条件分岐でリソースの作成の有無を切り替えている場合、`enable_***`という名前のboolean型環境変数を用意する。
 
 > ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
@@ -705,15 +656,13 @@ enable_foo = true
 
 <br>
 
-### ```module```ブロック
+### `module`ブロック
 
 #### ▼ 命名規則
 
-```source```オプションで指定するディレクトリ名で命名する。
+`source`オプションで指定するディレクトリ名で命名する。
 
 スネークケースによる命名を採用する。
-
-
 
 ```terraform
 # @ルートモジュール
@@ -738,7 +687,7 @@ module "alb" {
 
 <br>
 
-### ```resource```ブロック、```data```ブロック
+### `resource`ブロック、`data`ブロック
 
 #### ▼ リソースに種類がある場合
 
@@ -746,13 +695,9 @@ module "alb" {
 
 もし種類がある場合、リソース名でその種類を表す。
 
-
-
 **＊実装例＊**
 
 例として、VPCを示す。
-
-
 
 ```terraform
 # ---------------------------------------------
@@ -786,13 +731,11 @@ resource "aws_route_table" "route_table_private" {
 
 #### ▼ リソースに種類が無い場合
 
-リソースタイプに、```1```個のリソースしか種類が存在しない場合、```this```で命名する。
+リソースタイプに、`1`個のリソースしか種類が存在しない場合、`this`で命名する。
 
 `this`と命名されたresourceで、後から種類が増える場合は、既存の`this`は後からリファクタリングするとして、新規リソースには種類名を名付ける。
 
 ただし、リファクタリングすることが大変なため、非推奨である。
-
-
 
 **＊実装例＊**
 
@@ -810,8 +753,6 @@ resource "aws_internet_gateway" "this" {
 
 Lambda以外では、作成されるクラウドプロバイダーのリソースの名前は以下の通りとする。
 
-
-
 - ケバブケース
 - `<接頭辞>-<種類>-<接尾辞>`とする。
 - 接頭辞は、 `<実行環境>-<サービス名>`とする。
@@ -821,8 +762,6 @@ Lambda以外では、作成されるクラウドプロバイダーのリソー�
 
 例として、CloudWatchを示す。
 
-
-
 - 接尾辞は、 `<実行環境>-<サービス名>`
 - 種類は、alb-httpcode-4xx-count
 - クラウドプロバイダーのリソース名は、CloudWatchAlarmを省略してAlarm
@@ -831,7 +770,7 @@ Lambda以外では、作成されるクラウドプロバイダーのリソー�
 resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 
   alarm_name = "prd-foo-alb-httpcode-target-4xx-count-alarm"
-  
+
 }
 ```
 
@@ -839,13 +778,9 @@ LambdaではLambda関数が稼働する。
 
 接尾辞にfunctionとつけることは冗長と判断したため、関数名のみで命名する。
 
-
-
 **＊実装例＊**
 
 例として、Lambdaをしめす。
-
-
 
 - 接尾辞は、 `<実行環境>-<サービス名>`
 - 種類は、echo-helloworld
@@ -855,25 +790,23 @@ LambdaではLambda関数が稼働する。
 resource "aws_lambda_function" "echo_helloworld" {
 
   function_name    = "prd-foo-echo-helloworld"
-  
+
 }
 ```
 
 <br>
 
-### ```output```ブロック
+### `output`ブロック
 
 #### ▼ リソースに種類がある場合
 
-『```<リソース名>_<リソースタイプ>_<attribute名>```』で命名する。可読性の観点から、リソース一括ではなく、具体的なattributeを出力する。
+『`<リソース名>_<リソースタイプ>_<attribute名>`』で命名する。可読性の観点から、リソース一括ではなく、具体的なattributeを出力する。
 
 **＊実装例＊**
 
 例として、CloudWatchを示す。
 
-リソース名は```ecs_container_nginx```、リソースタイプは```aws_cloudwatch_log_group```、attributeは```name```オプションである。
-
-
+リソース名は`ecs_container_nginx`、リソースタイプは`aws_cloudwatch_log_group`、attributeは`name`オプションである。
 
 ```terraform
 output "ecs_container_nginx_cloudwatch_log_group_name" {
@@ -884,8 +817,6 @@ output "ecs_container_nginx_cloudwatch_log_group_name" {
 **＊実装例＊**
 
 例として、IAM Roleを示す。
-
-
 
 ```terraform
 # ---------------------------------------------
@@ -906,15 +837,11 @@ output "rds_enhanced_monitoring_iam_role_arn" {
 
 #### ▼ リソースに種類が無い場合
 
-リソース名が```this```である場合、```output```ブロック名ではこれを省略しても良い。
-
-
+リソース名が`this`である場合、`output`ブロック名ではこれを省略しても良い。
 
 **＊実装例＊**
 
 例として、ALBを示す。
-
-
 
 ```terraform
 # ---------------------------------------------
@@ -929,21 +856,17 @@ output "alb_dns_name" {
 }
 ```
 
-#### ▼ 冗長な場合 (アンチパターン) 
+#### ▼ 冗長な場合 (アンチパターン)
 
 ルール通りに命名すると、一部のクラウドプロバイダーのリソースで冗長な名前になってしまうことがある。
 
 この場合は、省略を許容する。
 
-
-
 **＊実装例＊**
 
-ルール通りに名付けると、『```laravel_ecr_repository_repository_url```』という```output```ブロック名になってしまう。
+ルール通りに名付けると、『`laravel_ecr_repository_repository_url`』という`output`ブロック名になってしまう。
 
-repositoryが二回繰り返されることになるため、```1```個省略している。
-
-
+repositoryが二回繰り返されることになるため、`1`個省略している。
 
 ```terraform
 # ---------------------------------------------
@@ -960,7 +883,7 @@ output "nginx_ecr_repository_url" {
 
 <br>
 
-### ```description```オプション
+### `description`オプション
 
 一部のクラウドプロバイダーのリソースでは、`description`オプションで説明文を設定できる。
 
@@ -978,19 +901,17 @@ output "nginx_ecr_repository_url" {
 
 Globalな環境変数を先頭に配置し、その他のクラウドプロバイダーのリソース固有の環境変数はアルファベット順に変数を並べる。
 
-
-
 <br>
 
-### ```module```ブロック
+### `module`ブロック
 
 #### ▼ 並び順
 
-環境変数を並べる```# Variables```コメントと、モジュール間の値を受け渡しを並べる```# Output values```コメントに分ける。
+環境変数を並べる`# Variables`コメントと、モジュール間の値を受け渡しを並べる`# Output values`コメントに分ける。
 
-```# Variables```コメントの部分では、```terraform.tfvars```ファイルと同じ並び順になるようにする。
+`# Variables`コメントの部分では、`terraform.tfvars`ファイルと同じ並び順になるようにする。
 
-また、```# Output values```コメントの部分では、```output```ブロックをモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる。
+また、`# Output values`コメントの部分では、`output`ブロックをモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる。
 
 ```terraform
 # @ルートモジュール
@@ -1022,19 +943,17 @@ module "alb" {
 
 <br>
 
-### ```resource```ブロック、```data```ブロック
+### `resource`ブロック、`data`ブロック
 
 #### ▼ 設定の並び順、行間
 
-最初に```count```引数や```for_each```引数を設定し改行する。
+最初に`count`引数や`for_each`引数を設定し改行する。
 
 その後、各リソース別の設定を行間を空けずに記述する (この順番にルールはなし) 。
 
 最後に共通の設定として、`tags`、`depends_on`、`lifecycle`、の順で配置する。
 
 ただし実際、これらの全ての設定が必要なリソースはない。
-
-
 
 **＊実装例＊**
 
@@ -1045,7 +964,7 @@ module "alb" {
 resource "aws_baz" "this" {
   for_each = var.vpc_availability_zones # 最初にfor_each
   # スペース
-  subnet_id = aws_subnet.public[*].id # 各設定 (順番にルールなし) 
+  subnet_id = aws_subnet.public[*].id # 各設定 (順番にルールなし)
   # スペース
   tags = {
     Name = format(
@@ -1070,7 +989,7 @@ resource "aws_baz" "this" {
 
 #### ▼ docker-compose.ymlファイルを用いる場合
 
-作業者間で```terraform```コマンドのバージョンを統一するために、```docker-compose.yml```ファイルを作成する。
+作業者間で`terraform`コマンドのバージョンを統一するために、`docker-compose.yml`ファイルを作成する。
 
 ```yaml
 version: "3.8"
@@ -1084,9 +1003,9 @@ services:
     working_dir: /var/infra
 ```
 
-goのバイナリファイルを実行するためには、```docker-compose run```コマンドの実行する必要がある。
+goのバイナリファイルを実行するためには、`docker-compose run`コマンドの実行する必要がある。
 
-ただし、実行のたびにコンテナが増えてしまうため、```--rm```を使用するようにする。
+ただし、実行のたびにコンテナが増えてしまうため、`--rm`を使用するようにする。
 
 また、毎度コマンドを実行することが面倒なため、Makefileでまとめてしまう。
 
@@ -1109,7 +1028,7 @@ validate: init fmt
 
 #### ▼ asdfパッケージを使用する場合
 
-バージョンを統一するために、```.tool-versions```ファイルを作成する。
+バージョンを統一するために、`.tool-versions`ファイルを作成する。
 
 ```bash
 $ asdf local terraform <バージョン>
@@ -1120,9 +1039,9 @@ $ asdf local terraform <バージョン>
 terraform <バージョンタグ>
 ```
 
-asdfパッケージを使用して、```terraform```コマンドをインストールする。
+asdfパッケージを使用して、`terraform`コマンドをインストールする。
 
-```.tool-versions```ファイルに定義されたバージョンがインストールされる。
+`.tool-versions`ファイルに定義されたバージョンがインストールされる。
 
 ```bash
 $ asdf plugin list all | grep terraform
@@ -1141,9 +1060,7 @@ $ asdf install
 
 前提として、バックエンドにS3を使用しているものとする。
 
-Makefileのコマンドを実行する前に、```provider.tf```ファイルの```backend```オプションを、『s3』から『local』に変更する。
-
-
+Makefileのコマンドを実行する前に、`provider.tf`ファイルの`backend`オプションを、『s3』から『local』に変更する。
 
 > ↪️ 参考：https://repl.info/archives/1435/
 
@@ -1157,11 +1074,9 @@ terraform {
 
 GitHubリポジトリにこの変更をプッシュしないように気を付ける必要がある。
 
-ただし、バックエンドに```s3```を指定する```terraform init```コマンドをCIのステップを設けておけば、```provider.tf```ファイルで```local```の指定していことがエラーになるような仕組みを作れる。
+ただし、バックエンドに`s3`を指定する`terraform init`コマンドをCIのステップを設けておけば、`provider.tf`ファイルで`local`の指定していことがエラーになるような仕組みを作れる。
 
 もし間違えてコミットしてしまった場合は、元に戻すように再コミットすればよい。
-
-
 
 ```bash
 #!/bin/bash
@@ -1186,7 +1101,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 ## 06. CIツールに関する脆弱性対策
 
 > ↪️ 参考：
-> 
+>
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
 > - https://hiroki-it.github.io/tech-notebook/devops/devops_circleci_policy.html
 
@@ -1196,49 +1111,45 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 #### ▼ パラメーターの暗号化と管理場所
 
-| 方法                            | バージョン管理 | 暗号化と管理場所                                                                                                                                                                                         |
-|---------------------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| GitHubリポジトリ                     | ⭕️        | ```base64```方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。                                                                                                                                             |
-| GitHubリポジトリ + キーバリュー型ストレージ     | ⭕         | ```base64```方式エンコード値を暗号化キー (例：AWS KMS、GCP KMS、など) で暗号化した上で、リポジトリ上でキーバリュー型ストレージ (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に```base64```方式エンコード値に復号化する。                    |
-| GitHubリポジトリ + クラウドキーバリュー型ストレージ | ×         | ```base64```方式エンコード値を暗号化キー (例：AWS KMS、GCP KMS、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型ストレージ (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。クラウドインフラへのプロビジョニング時に```base64```方式エンコード値に復号化する。 |
+| 方法                                                | バージョン管理 | 暗号化と管理場所                                                                                                                                                                                                                                                                      |
+| --------------------------------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GitHubリポジトリ                                    | ⭕️            | `base64`方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。                                                                                                                                                                                                        |
+| GitHubリポジトリ + キーバリュー型ストレージ         | ⭕             | `base64`方式エンコード値を暗号化キー (例：AWS KMS、GCP KMS、など) で暗号化した上で、リポジトリ上でキーバリュー型ストレージ (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に`base64`方式エンコード値に復号化する。                                     |
+| GitHubリポジトリ + クラウドキーバリュー型ストレージ | ×              | `base64`方式エンコード値を暗号化キー (例：AWS KMS、GCP KMS、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型ストレージ (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。クラウドインフラへのプロビジョニング時に`base64`方式エンコード値に復号化する。 |
 
+#### ▼ `.tfstate`ファイルへの書き込みを防ぐ
 
-#### ▼ ```.tfstate```ファイルへの書き込みを防ぐ
+機密な変数を`ignore_changes`引数を使用して、`.tfstate`ファイルへの書き込みを防ぐ。
 
-機密な変数を```ignore_changes```引数を使用して、```.tfstate```ファイルへの書き込みを防ぐ。
-
-その上で、特定の方法 (例：SOPS、AWS Secrets Manager) で実際の値を管理し、これを```data```ブロックで参照する。
-
-
+その上で、特定の方法 (例：SOPS、AWS Secrets Manager) で実際の値を管理し、これを`data`ブロックで参照する。
 
 > ↪️ 参考：
 >
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 > - https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9
 
+`【１】`
 
-```【１】```
-
-:    初期構築時にダミー値を割り当ててプロビジョニングする。
+: 初期構築時にダミー値を割り当ててプロビジョニングする。
 
      この時点で、```.tfstate```ファイルにはダミー値が書き込まれる。
 
-```【２】```
+`【２】`
 
-:    ```ignore_changes```引数を設定した後に、実際の値をコンソール画面から設定する。
+: `ignore_changes`引数を設定した後に、実際の値をコンソール画面から設定する。
 
-```【３】```
+`【３】`
 
-:    以降のプロビジョニングで、```.tfstate```ファイル上はダミー値のままになる。
+: 以降のプロビジョニングで、`.tfstate`ファイル上はダミー値のままになる。
 
 ```terraform
 # AWS RDSの場合
 resource "aws_rds_cluster" "this" {
-  
+
   # 実際の値はSecrets Managerから参照する。
   master_username = var.rds_db_master_username_ssm_parameter_value
-  master_password = var.rds_db_master_password_ssm_parameter_value  
-  
+  master_password = var.rds_db_master_password_ssm_parameter_value
+
   lifecycle {
     ignore_changes = [
       # ユーザー名とパスワードが.tfstateファイルに書き込まれなくなる。
@@ -1251,23 +1162,19 @@ resource "aws_rds_cluster" "this" {
 
 <br>
 
-### ```.tfstate```ファイルの暗号化
+### `.tfstate`ファイルの暗号化
 
 バックエンドのファイル暗号化を使用する。
 
-バックエンド内の```.tfstate```ファイルを暗号化しておき、ダウンロード時だけ復号化するようにしておく。
-
-
+バックエンド内の`.tfstate`ファイルを暗号化しておき、ダウンロード時だけ復号化するようにしておく。
 
 > ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state
 
 <br>
 
-### ```output```ブロックの暗号化
+### `output`ブロックの暗号化
 
-```output```ブロックに機密な変数を含む場合は、```sensitive```オプションを有効化する。
-
-
+`output`ブロックに機密な変数を含む場合は、`sensitive`オプションを有効化する。
 
 > ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs
 
@@ -1277,15 +1184,13 @@ resource "aws_rds_cluster" "this" {
 
 ### 設計ポリシー
 
-#### ```【１】``` 現在のTerraformのバージョンで```terraform apply```コマンドを実行
+#### `【１】` 現在のTerraformのバージョンで`terraform apply`コマンドを実行
 
 アップグレードと同時に新しいクラウドプロバイダーのリソースをデプロイせずに、アップグレードのみに専念する。
 
-そのために、現在のTerraformのバージョンで```terraform apply```コマンドを実行し、差分が無いようにしておく。
+そのために、現在のTerraformのバージョンで`terraform apply`コマンドを実行し、差分が無いようにしておく。
 
-
-
-#### ```【２】``` アップグレード以外の作業を済ませておく
+#### `【２】` アップグレード以外の作業を済ませておく
 
 低いバージョンのTerraformに対して、より高いバージョンはデプロイできる。
 
@@ -1293,33 +1198,27 @@ resource "aws_rds_cluster" "this" {
 
 そのため、アップグレードしてしまうと、それ以外のTerraformバージョンの異なる作業に影響が出る。
 
-
-
-#### ```【３】``` マイナーバージョン単位でアップグレード
+#### `【３】` マイナーバージョン単位でアップグレード
 
 Terraformでは、マイナーバージョン単位でアップグレードを行うことが推奨されている。
 
-そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず```1```個ずつマイナーバージョンをアップグレードするように気をつける。
+そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず`1`個ずつマイナーバージョンをアップグレードするように気をつける。
 
-この時、次のマイナーバージョンの『最新』までアップグレードしてしまって問題ない (例：現在のバージョンが```v0.13.0```であれば、```0.14```系の最新にアップグレード) 。
+この時、次のマイナーバージョンの『最新』までアップグレードしてしまって問題ない (例：現在のバージョンが`v0.13.0`であれば、`0.14`系の最新にアップグレード) 。
 
 また、アップグレードの都度、リリースを行う。
 
+> ↪️ 参考：https://www.terraform.io/upgrade-guides/1-0.html
 
-
-> ↪️ 参考：https://www.terraform.io/upgrade-guides/1-0.html 
-
-#### ```【４】``` terraform planコマンドの警告/エラーを解決
+#### `【４】` terraform planコマンドの警告/エラーを解決
 
 アップグレードに伴って、非推奨/廃止の機能がリリースされ、警告/エラーが出力される場合がある。
 
 警告/エラーを解決できるように、記法やオプション値を修正する。
 
-場合によっては```.tfstate```ファイルの差分として表示されているのみで、実インフラとの差分ではない場合もあるため、```terraform plan```コマンド時に差分があったとしても、実インフラに影響がなければ問題ない。
+場合によっては`.tfstate`ファイルの差分として表示されているのみで、実インフラとの差分ではない場合もあるため、`terraform plan`コマンド時に差分があったとしても、実インフラに影響がなければ問題ない。
 
-
-
-#### ```【５】``` プロバイダーをアップグレードしたい場合はTerraformもアップグレード
+#### `【５】` プロバイダーをアップグレードしたい場合はTerraformもアップグレード
 
 Terraformとプロバイダーのバージョンは独立して管理されている。
 
@@ -1329,14 +1228,12 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 アップグレードガイドについては、以下のリンクを参考せよ。
 
-
-
 > ↪️ 参考：
 >
 > - Terraform：https://www.terraform.io/language/upgrade-guides
 > - AWSプロバイダー：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-4-upgrade
 
-#### ```【６】``` Terraformとプロバイダーのアップグレードは別々にリリース 
+#### `【６】` Terraformとプロバイダーのアップグレードは別々にリリース
 
 プロバイダーをアップグレードしたい場合はTerraformもアップグレードすることになる。
 
@@ -1346,15 +1243,11 @@ Terraformまたはプロバイダーのアップグレードを別々にリリ�
 
 反対に、一緒にリリースしてしまうとどちらが原因なのかわかりにくくなってしまう。
 
-
-
 <br>
 
 ### 新バージョンの自動検出
 
 外部のツール (例：renovate) を使用して、プロバイダーやTerraformの新バージョンを自動的に検出する。
-
-
 
 <br>
 
@@ -1362,7 +1255,7 @@ Terraformまたはプロバイダーのアップグレードを別々にリリ�
 
 ### 仕様書自動作成
 
-terraform-docsを使用して、```variable```ブロック、```output```ブロック、```module```ブロック、などの仕様書を作成する。
+terraform-docsを使用して、`variable`ブロック、`output`ブロック、`module`ブロック、などの仕様書を作成する。
 
 作成した仕様書を自動コミットできるようにする。
 
@@ -1370,12 +1263,13 @@ terraform-docsを使用して、```variable```ブロック、```output```ブロ�
 $ terraform-docs markdown . --output-file=README.md
 ```
 
-```TF_DOCS```タグで囲われた場所のみを自動的に追記/更新してくれる。
+`TF_DOCS`タグで囲われた場所のみを自動的に追記/更新してくれる。
 
 ```markdown
 # foo-terraformリポジトリ
 
 <!-- BEGIN_TF_DOCS -->
+
 ## Requirements
 
 ...
@@ -1409,39 +1303,35 @@ $ terraform-docs markdown . --output-file=README.md
 
 #### ▼ 整形
 
-Terraformの整形コマンド (```terraform fmt```コマンド) を使用して、ソースコードを整形する。
-
-
+Terraformの整形コマンド (`terraform fmt`コマンド) を使用して、ソースコードを整形する。
 
 #### ▼ 静的解析
 
-| 観点             | 説明                                                                                                                                                  | 補足 |
-|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|------|
-| 文法の誤りテスト      | Terraformの静的解析コマンド (```terraform validate```コマンド) を使用して、機能追加/変更を含むブロックの文法の誤りを検証する。代わりとして、外部の静的解析ツール (例：tflint) を使用しても良い。 |      |
-| ベストプラクティス違反テスト |                                                                                                                                                       |      |
-| 脆弱性テスト        | 外部の脆弱性テストツール (例：tfsec) を使用して、Terraformの実装方法に起因する脆弱性を検証する。                                                                          |      |
+| 観点                         | 説明                                                                                                                                                                                         | 補足 |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| 文法の誤りテスト             | Terraformの静的解析コマンド (`terraform validate`コマンド) を使用して、機能追加/変更を含むブロックの文法の誤りを検証する。代わりとして、外部の静的解析ツール (例：tflint) を使用しても良い。 |      |
+| ベストプラクティス違反テスト |                                                                                                                                                                                              |      |
+| 脆弱性テスト                 | 外部の脆弱性テストツール (例：tfsec) を使用して、Terraformの実装方法に起因する脆弱性を検証する。                                                                                             |      |
 
 #### ▼ ドライラン
 
-テスト環境に対して```terraform plan```コマンドを実行し、ドライランを実施する。
+テスト環境に対して`terraform plan`コマンドを実行し、ドライランを実施する。
 
-```terraform plan```コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。
+`terraform plan`コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。
 
 リリースの粒度を小さくし、差分が少なくなるようにする。
-
-
 
 > ↪️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 #### ▼ 単体テスト
 
-テスト環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含むブロックが単体で正しく動作するか否かを検証する。
+テスト環境に対して`terraform apply`コマンドを実行し、機能追加/変更を含むブロックが単体で正しく動作するか否かを検証する。
 
 代わりとして、外部のテストツール (例：Terratest) を使用しても良い。
 
 この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。
 
-また、確認後にリソースを```terraform destroy```コマンドで削除する。
+また、確認後にリソースを`terraform destroy`コマンドで削除する。
 
 残骸のリソースが残ることがあるため、合わせてテスト環境の全てのリソースをツール (例：cloud-nuke) で削除する。
 
@@ -1452,13 +1342,13 @@ Terraformの整形コマンド (```terraform fmt```コマンド) を使用して
 
 #### ▼ 結合テスト
 
-テスト環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。
+テスト環境に対して`terraform apply`コマンドを実行し、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。
 
 代わりとして、外部のテストツール (例：Terratest) を使用しても良い。
 
 この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。
 
-また、確認後にリソースを```terraform destroy```コマンドで削除する。
+また、確認後にリソースを`terraform destroy`コマンドで削除する。
 
 残骸のリソースが残ることがあるため、合わせてテスト環境の全てのリソースをツール (例：cloud-nuke) で削除する。
 
@@ -1466,20 +1356,17 @@ Terraformの整形コマンド (```terraform fmt```コマンド) を使用して
 
 <br>
 
-
 ### ホワイトボックステスト結果の通知
 
 #### ▼ Terraformを使用する場合
 
 Terraformには通知能力がなく、手動で知らせる必要がある。
 
-そこで、```terraform plan```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
+そこで、`terraform plan`コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
 
-```grep```コマンドを使用して、差分の表記部分のみを取得すると良い。
+`grep`コマンドを使用して、差分の表記部分のみを取得すると良い。
 
 これを確認し、差分が正しいかをレビューする。
-
-
 
 ```bash
 $ terraform plan -var-file=foo.tfvars -no-color \
@@ -1489,12 +1376,9 @@ $ terraform plan -var-file=foo.tfvars -no-color \
 
 #### ▼ Terraform以外を使用する場合
 
-通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に```terraform plan```コマンドの結果が通知されるようにする。
+通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に`terraform plan`コマンドの結果が通知されるようにする。
 
 これを確認し、差分が正しいかをレビューする。
-
-
-
 
 <br>
 
@@ -1508,15 +1392,11 @@ $ terraform plan -var-file=foo.tfvars -no-color \
 
 コンソール画面にログインする。
 
-
-
 #### ▼ クラウドプロバイダーのドキュメントや技術記事を確認
 
 コンソール画面の相当する設定箇所がわかったところで、設定値が正しいか否かを確認する。
 
 以下を確認する。
-
-
 
 - クラウドプロバイダーのドキュメント
 - 技術記事
@@ -1527,8 +1407,6 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 以下を確認する。
 
-
-
 - TerraformのAWSプロバイダーのドキュメント：https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 - 技術記事
 
@@ -1536,19 +1414,15 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 以下の点でレビューする。
 
-
-
 - プロジェクトの設計ポリシーに即しているか
 - リファレンスに非推奨と注意書きされた方法で実装していないか
 - リリースの粒度は適切か
 
-#### ▼ ```develop```ブランチへのマージは問題ないか
+#### ▼ `develop`ブランチへのマージは問題ないか
 
-```develop```ブランチにマージするコミット = 次にリリースするコミット である。
+`develop`ブランチにマージするコミット = 次にリリースするコミット である。
 
-他にリリースの優先度が高い対応がある場合、またリリースの粒度が大きすぎる場合、同時にリリースしないように、```develop```ブランチへのマージに『待った！』をかけること。
-
-
+他にリリースの優先度が高い対応がある場合、またリリースの粒度が大きすぎる場合、同時にリリースしないように、`develop`ブランチへのマージに『待った！』をかけること。
 
 <br>
 
@@ -1556,28 +1430,25 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 #### ▼ 結合テスト
 
-ステージング環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する
+ステージング環境に対して`terraform apply`コマンドを実行し、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する
 
 > ↪️ 参考：https://www.infracloud.io/blogs/testing-iac-terratest/
 
-#### ▼ 総合テスト (擬似的総合テストも含む) 
+#### ▼ 総合テスト (擬似的総合テストも含む)
 
-ステージング環境に対して```terraform apply```コマンドを実行し、既存機能/追加/変更を含む全てのブロックを組み合わせた総合テストを実施する。
+ステージング環境に対して`terraform apply`コマンドを実行し、既存機能/追加/変更を含む全てのブロックを組み合わせた総合テストを実施する。
 
 クラウドプロバイダーのモックを使用して、擬似的な総合テストを実施しても良い。
 
-
-
 > ↪️ 参考：https://docs.localstack.cloud/ci/
-
 
 <br>
 
 ### デプロイ
 
-#### ▼ 大原則：プルリクエストを```1```個ずつリリース
+#### ▼ 大原則：プルリクエストを`1`個ずつリリース
 
-基本的には、プルリクエストを```1```個ずつリリースする。
+基本的には、プルリクエストを`1`個ずつリリースする。
 
 ただし、軽微なupdate処理が実行されるプルリクエストであれば、まとめてリリースしても良い。
 
@@ -1587,21 +1458,15 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 プルリクエストを複数まとめてリリースすると、create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる。
 
-
-
 #### ▼ 既存のリソースに対して、新しいリソースを紐づける場合
 
 既存のリソースに対して、新しいリソースを紐づける場合、新しいリソースの作成と紐づけを別々にリリースする。
 
 ロールバックでもたつきにくく、またTerraformで問題が発生したとしても変更点が紐づけだけなため、原因を追究しやすい。
 
-
-
 #### ▼ Terraformとプロバイダーの両方をアップグレードする場合
 
 Terraformとプロバイダーを別々にリリースする。
-
-
 
 #### ▼ DBインスタンスの設定変更でダウンタイムが発生する場合
 
@@ -1611,21 +1476,17 @@ DBインスタンスの設定変更でダウンタイムが発生する場合、
 
 プライマリーインスタンスのリリース時にフェールオーバーが発生するため、ダウンタイムを短縮できる。
 
+`【１】`
 
+: リードレプリカの変更をリリースする。
 
-```【１】```
+`【２】`
 
-:    リードレプリカの変更をリリースする。
-
-```【２】```
-
-:    プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが動作する。
+: プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが動作する。
 
 ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。
 
 RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
@@ -1637,21 +1498,17 @@ RDSの項目として書かれており、Auroraではないが、おおよそ�
 
 Terraformには、クラウドインフラのバージョンのロールバック機能がなく、手動でロールバックする必要がある。
 
-そこで、過去のリリースタグを```terraform apply```コマンドでデプロイすることにより、バージョンをロールバックする。
+そこで、過去のリリースタグを`terraform apply`コマンドでデプロイすることにより、バージョンをロールバックする。
 
-今回のリリースのcreate処理が少ないほど```terraform apply```コマンドでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。
+今回のリリースのcreate処理が少ないほど`terraform apply`コマンドでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。
 
 もしリリース時に問題が発生した場合、インフラのバージョンのロールバックする必要があるが、経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。
 
-そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、過去のリリースタグを```terraform apply```コマンドを実行するか否かを判断する。
-
-
+そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、過去のリリースタグを`terraform apply`コマンドを実行するか否かを判断する。
 
 #### ▼ Terraform以外を使用する場合
 
 CDパイプラインがない場合と同じである。
-
-
 
 <br>
 
@@ -1663,14 +1520,10 @@ CDパイプラインがない場合と同じである。
 
 Terraformには通知能力がなく、手動で知らせる必要がある。
 
-```terraform apply```コマンドの結果をクリップボードに出力し、これをリリースチケットに貼り付ける。
-
-
+`terraform apply`コマンドの結果をクリップボードに出力し、これをリリースチケットに貼り付ける。
 
 #### ▼ Terraform以外を使用する場合
 
-通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に```terraform apply```コマンドの結果が通知されるようにする。
-
-
+通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に`terraform apply`コマンドの結果が通知されるようにする。
 
 <br>

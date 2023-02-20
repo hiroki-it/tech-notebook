@@ -9,8 +9,6 @@ description: 設定ファイル＠uWSGIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -29,15 +27,13 @@ $ pip3 install uwsgi
 
 ## 02. 設定ファイルの種類
 
-### ```uwsgi.ini```ファイル
+### `uwsgi.ini`ファイル
 
-#### ▼ ```uwsgi.ini```ファイルとは
+#### ▼ `uwsgi.ini`ファイルとは
 
 uWSGIの起動時の値を設定する。
 
-```.json```形式やXML形式でも問題ない。
-
-
+`.json`形式やXML形式でも問題ない。
 
 > ↪️ 参考：
 >
@@ -47,8 +43,6 @@ uWSGIの起動時の値を設定する。
 #### ▼ 起動ログ
 
 起動時に、以下のようなログが出力される。
-
-
 
 ```bash
 [uWSGI] getting INI configuration from /etc/wsgi/wsgi.ini
@@ -104,19 +98,15 @@ spawned uWSGI http 1 (pid: 10)
 
 ### uwsgiセクションとは
 
-uWSGIの```uwsgi```プロセスのプールを設定する。
-
-
+uWSGIの`uwsgi`プロセスのプールを設定する。
 
 <br>
 
 ### callable
 
- アプリケーションのインスタンスの変数名を設定する。
+アプリケーションのインスタンスの変数名を設定する。
 
-デフォルト値は、```application```である。
-
-
+デフォルト値は、`application`である。
 
 > ↪️ 参考：
 >
@@ -134,8 +124,6 @@ callable = app
 
 作業ディレクトリから移動する。
 
-
-
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
 
 ```ini
@@ -148,8 +136,6 @@ chdir=/var/www/foo
 ### chmod-socket
 
 UNIXドメインソケットファイルの権限を設定する。
-
-
 
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
 
@@ -177,8 +163,6 @@ HTTPプロトコルを使用する場合、受信するインバウンド通信�
 
 Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
 
-
-
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
 
 ```ini
@@ -191,8 +175,6 @@ http = 0.0.0.0:5000
 ### logto
 
 ログの出力先を設定する。
-
-
 
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
 
@@ -207,8 +189,6 @@ logto = /dev/stdout
 
 マスターモードで起動するか否かを設定する。
 
-
-
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
 
 ```ini
@@ -221,8 +201,6 @@ master = true
 ### module、wsgi
 
 Pythonでアプリケーションファクトリーパターンを採用している場合、エントリーポイントのディレクトリ名とファクトリーメソッド名を設定する。
-
-
 
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
 
@@ -259,8 +237,6 @@ py-autoreload = 1
 
 アプリケーションのあるディレクトリを設定する。
 
-
-
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
 
 ```ini
@@ -276,9 +252,7 @@ UNIXドメインソケットを使用する場合、ソケットファイルの�
 
 Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
 
-
-
-> ↪️ 参考： 
+> ↪️ 参考：
 
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
 > - https://qiita.com/koyoru1214/items/57461b920dfc11f67683
@@ -293,8 +267,6 @@ socket = /etc/uwsgi/uwsgi.sock:5000
 ### vacuum
 
 uwsgiプロセス終了時にソケットファイルを削除するか否かを設定する。
-
-
 
 > ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
 
@@ -318,7 +290,5 @@ wsgi-file = main.py
 >
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
 > - https://django.kurodigi.com/uwsgi-basic/
-
-
 
 <br>

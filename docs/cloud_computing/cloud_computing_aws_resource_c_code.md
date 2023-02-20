@@ -3,18 +3,15 @@ title: 【IT技術の知見】Code系＠Cで始まるAWSリソース
 description: Code系＠Cで始まるAWSリソースの知見を記録しています。
 ---
 
-# Code系＠```C```で始まるAWSリソース
+# Code系＠`C`で始まるAWSリソース
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. Code系サービス
 
@@ -26,41 +23,31 @@ CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CDパ�
 
 CodeCommitは、他のコード管理サービスで代用できる。
 
-
-
 ![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-pipeline.png)
 
 #### ▼ CodeCommit
 
 コードをバージョン管理する。
 
-
-
 #### ▼ CodeBuild
 
 ビルドフェーズとテストフェーズを実行する。
-
-
 
 #### ▼ CodeDeploy
 
 デプロイフェーズを実行する。
 
-
-
 <br>
 
 ## 02. CodeBuild
 
-### ```buildspec.yml```ファイル
+### `buildspec.yml`ファイル
 
 #### ▼ ECSの場合
 
 ECSのために、CodeBuildの設定を行う。
 
 ルートディレクトリの直下に配置しておく。
-
-
 
 > ↪️ 参考：
 >
@@ -71,8 +58,7 @@ ECSのために、CodeBuildの設定を行う。
 
 コンテナをビルドする場合を示す。
 
-コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、```latest```タグもプッシュしておいた方が良い。
-
+コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、`latest`タグもプッシュしておいた方が良い。
 
 ```yaml
 version: 0.2
@@ -101,26 +87,23 @@ phases:
       # コミットハッシュ値のタグの前に、latestタグのコンテナイメージをプッシュしておく。
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      # ECRにあるデプロイ先のコンテナイメージの情報 (imageDetail.json) 
+      # ECRにあるデプロイ先のコンテナイメージの情報 (imageDetail.json)
       - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-    
-# デプロイ対象とするビルドのアーティファクト    
+
+# デプロイ対象とするビルドのアーティファクト
 artifacts:
   files: imageDetail.json
 ```
 
 > ↪️ 参考：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
 
-
 <br>
 
-## 03. CodeDeploy (EC2の場合) 
+## 03. CodeDeploy (EC2の場合)
 
 ### 利用できるデプロイメント手法
 
 インプレースデプロイ、ブルー/グリーンデプロイメント、を利用できる。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
@@ -138,25 +121,21 @@ artifacts:
 
 <br>
 
-## 03-02. CodeDeploy (Lambdaの場合) 
+## 03-02. CodeDeploy (Lambdaの場合)
 
 ### 利用できるデプロイメント手法
 
 ブルー/グリーンデプロイメント、を利用できる。
 
-
-
 > ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
-## 03-03. CodeDeploy (ECSの場合) 
+## 03-03. CodeDeploy (ECSの場合)
 
 ### 利用できるデプロイメント手法
 
 ローリングアップデート、ブルー/グリーンデプロイメント、を利用できる。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
@@ -164,7 +143,7 @@ artifacts:
 
 ### ローリングアップデート
 
-#### ▼ ```imagedefinitions.json```ファイル
+#### ▼ `imagedefinitions.json`ファイル
 
 新しいリビジョン番号のECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。
 
@@ -174,8 +153,8 @@ artifacts:
 [
   {
     "imageUri": "<イメージリポジトリURL>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
-    "name": "<コンテナ名>"
-  }
+    "name": "<コンテナ名>",
+  },
 ]
 ```
 
@@ -183,8 +162,6 @@ artifacts:
 >
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
-
-
 
 <br>
 
@@ -196,48 +173,45 @@ artifacts:
 
 以下の手順でデプロイする。
 
+`【１】`
 
+: ECRのコンテナイメージを更新
 
-```【１】```
+`【２】`
 
-:    ECRのコンテナイメージを更新
+: ECSタスク定義の新しいリビジョンを作成。
 
-```【２】```
+`【３】`
 
-:    ECSタスク定義の新しいリビジョンを作成。
+: サービスを更新。
 
-```【３】```
+`【４】`
 
-:    サービスを更新。
+: CodeDeployによって、ECSタスク定義を基に、現行の旧環境 (Prodブルー) のECSタスクとは別に、新環境 (Testグリーン) が作成される。ロードバランサーの接続先を、旧環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。
 
-```【４】```
+`【５】`
 
-:    CodeDeployによって、ECSタスク定義を基に、現行の旧環境 (Prodブルー) のECSタスクとは別に、新環境 (Testグリーン) が作成される。ロードバランサーの接続先を、旧環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。
+: 社内から新環境 (Testグリーン) のALBに、特定のポート番号でアクセスし、動作を確認する。
 
-```【５】```
+`【６】`
 
-:    社内から新環境 (Testグリーン) のALBに、特定のポート番号でアクセスし、動作を確認する。
+: 動作確認で問題なければ、Console画面からの入力で、ロードバランサーの接続先を新環境 (Testグリーン) のみに設定する。
 
-```【６】```
+`【７】`
 
-:    動作確認で問題なければ、Console画面からの入力で、ロードバランサーの接続先を新環境 (Testグリーン) のみに設定する。
+: 新環境 (Testグリーン) が新しい旧環境としてユーザーに公開される。
 
-```【７】```
+`【８】`
 
-:    新環境 (Testグリーン) が新しい旧環境としてユーザーに公開される。
-
-```【８】```
-
-:    元の旧環境 (Prodブルー) は削除される。
-
+: 元の旧環境 (Prodブルー) は削除される。
 
 > ↪️ 参考：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
 
-#### ▼ ```appspec.yml```ファイル
+#### ▼ `appspec.yml`ファイル
 
 ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。
 
-ECSタスク定義名を```<TASK_DEFINITION>```とすると、```taskdef.json```ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。
+ECSタスク定義名を`<TASK_DEFINITION>`とすると、`taskdef.json`ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。
 
 ```yaml
 version: 0.0
@@ -256,13 +230,11 @@ Resources:
         PlatformVersion: "1.4.0"
 ```
 
-
 > ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
 
+#### ▼ `imageDetail.json`ファイル
 
-#### ▼ ```imageDetail.json```ファイル
-
-新バージョンタグを含むイメージリポジトリURLを、```taskdef.json```ファイルの ```<IMAGE1_NAME>```に代入するために必要である。
+新バージョンタグを含むイメージリポジトリURLを、`taskdef.json`ファイルの `<IMAGE1_NAME>`に代入するために必要である。
 
 これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。
 
@@ -271,88 +243,57 @@ Resources:
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 
-#### ▼ ```taskdef.json```ファイル
+#### ▼ `taskdef.json`ファイル
 
 デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。
 
-CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを検知し、ECRからコンテナイメージを取得する。
+CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検知し、ECRからコンテナイメージを取得する。
 
-この時、```taskdef.json```ファイルのコンテナイメージ名を```<IMAGE1_NAME>```としておくと、```imageDetail.json```ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
+この時、`taskdef.json`ファイルのコンテナイメージ名を`<IMAGE1_NAME>`としておくと、`imageDetail.json`ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
 
 ```yaml
 {
   "family": "<ECSタスク定義名>",
-  "requiresCompatibilities": [
-    "FARGATE"
-  ],
+  "requiresCompatibilities": ["FARGATE"],
   "networkMode": "awsvpc",
   "taskRoleArn": "<タスクロールのARN>",
   "executionRoleArn": "<タスク実行ロールのARN>",
   "cpu": "512",
   "memory": "1024",
-  "containerDefinitions": [
-    {
-      "name": "<コンテナ名>",
-      "image": "<IMAGE1_NAME>",
-      "essential": true,
-      "portMappings": [
-        {
-          "containerPort": 80,
-          "hostPort": 80,
-          "protocol": "tcp"
-        }
-      ],
-      "secrets": [
-        {
-          "name": "DB_HOST",
-          "valueFrom": "/ecs/DB_HOST"
-        },
-        {
-          "name": "DB_DATABASE",
-          "valueFrom": "/ecs/DB_DATABASE"
-        },
-        {
-          "name": "DB_PASSWORD",
-          "valueFrom": "/ecs/DB_PASSWORD"
-        },
-        {
-          "name": "DB_USERNAME",
-          "valueFrom": "/ecs/DB_USERNAME"
-        },
-        {
-          "name": "REDIS_HOST",
-          "valueFrom": "/ecs/REDIS_HOST"
-        },
-        {
-          "name": "REDIS_PASSWORD",
-          "valueFrom": "/ecs/REDIS_PASSWORD"
-        },
-        {
-          "name": "REDIS_PORT",
-          "valueFrom": "/ecs/REDIS_PORT"
-        }
-      ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "<ログストリーム名>",
-          # スタックトレースのログを紐付けられるように、日付で区切るようにする。
-          "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
-          "awslogs-region": "ap-northeast-1",
-          "awslogs-stream-prefix": "<ログストリーム名の接頭辞>"
-        }
-      }
-    }
-  ]
+  "containerDefinitions":
+    [
+      {
+        "name": "<コンテナ名>",
+        "image": "<IMAGE1_NAME>",
+        "essential": true,
+        "portMappings":
+          [{ "containerPort": 80, "hostPort": 80, "protocol": "tcp" }],
+        "secrets":
+          [
+            { "name": "DB_HOST", "valueFrom": "/ecs/DB_HOST" },
+            { "name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE" },
+            { "name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD" },
+            { "name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME" },
+            { "name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST" },
+            { "name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD" },
+            { "name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT" },
+          ],
+        "logConfiguration": { "logDriver": "awslogs", "options": {
+                "awslogs-group": "<ログストリーム名>",
+                # スタックトレースのログを紐付けられるように、日付で区切るようにする。
+                "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "<ログストリーム名の接頭辞>",
+              } },
+      },
+    ],
 }
 ```
-
 
 > ↪️ 参考：
 >
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
-
 
 <br>
 
@@ -373,8 +314,6 @@ CodeDeployのデプロイの途中、ターゲットグループからインス�
 そのため、デプロイ中にユーザーはアプリにアクセスできなくなる。
 
 デプロイが正常に完了次第、ターゲットグループにインスタンスを再登録し、アクセスできるようにする。
-
-
 
 > ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 

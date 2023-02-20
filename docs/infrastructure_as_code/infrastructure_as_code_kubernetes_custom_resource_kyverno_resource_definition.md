@@ -9,8 +9,6 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -35,8 +33,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyv
 
 > ↪️ 参考：https://kyverno.github.io/kyverno/
 
-
-
 <br>
 
 ## 02. ClusterPolicy
@@ -46,9 +42,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyv
 #### ▼ validationFailureActionとは
 
 ルールに則っていないKubernetesリソースの作成/更新があった場合に、これを拒否するか、または許可するが監査ログを記録するかを設定する。
-
-
-
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -62,18 +55,13 @@ spec:
 
 > ↪️ 参考：https://kyverno.io/docs/writing-policies/validate/#validation-failure-action
 
-
 <br>
-
 
 ### background
 
 #### ▼ backgroundとは
 
 Kyvernoの導入後に作成/更新されるKubernetesだけでなく、既存のKubernetesリソースもKyvernoの対象とするかを設定する。
-
-
-
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -87,7 +75,6 @@ spec:
 
 > ↪️ 参考：https://kyverno.io/docs/writing-policies/background/
 
-
 <br>
 
 ### rules
@@ -96,16 +83,11 @@ spec:
 
 Webhook時に実行するKyvernoのルールを設定する。
 
-
-
 #### ▼ Mutateルールの場合
-
 
 **＊実装例＊**
 
-コンテナイメージのタグが『```latest```』だった場合に、マニフェストに```imagePullPolicy```キーを追加する。
-
-
+コンテナイメージのタグが『`latest`』だった場合に、マニフェストに`imagePullPolicy`キーを追加する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -131,15 +113,11 @@ spec:
 
 > ↪️ 参考：https://kyverno.io/docs/writing-policies/mutate/
 
-
 #### ▼ Validateルールの場合
-
 
 **＊実装例＊**
 
-Podのマニフェストの```.spec.containers```キー以下に、```resources```キーがあるか否かを検証する。
-
-
+Podのマニフェストの`.spec.containers`キー以下に、`resources`キーがあるか否かを検証する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -172,6 +150,5 @@ spec:
 ```
 
 > ↪️ 参考：https://kyverno.io/docs/writing-policies/validate/#basic-validations
-
 
 <br>

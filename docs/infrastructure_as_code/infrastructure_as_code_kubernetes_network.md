@@ -9,12 +9,9 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. Kubernetesネットワーク
 
@@ -27,8 +24,6 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。
 
 Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
-
-
 
 > ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
@@ -44,17 +39,12 @@ Podのアウトバウンド通信に割り当てられたホスト名を認識�
 
 Serviceネットワークの作成は、Kubernetesが担う。
 
-
-
 > ↪️ 参考：
 >
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=39
 
-
-
 <br>
-
 
 ### Clusterネットワーク
 
@@ -65,8 +55,6 @@ Serviceネットワークの作成は、Kubernetesが担う。
 同じClusterネットワーク内にあるPodの仮想NIC (veth) 間を接続するネットワーク。
 
 Clusterネットワークの作成は、cniアドオンが担う。
-
-
 
 > ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 
@@ -80,13 +68,11 @@ Pod内のネットワークのみを経由して、他のコンテナにアウ�
 
 Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
 
-
-
 > ↪️ 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
 #### ▼ 通信方法
 
-同じPod内のコンテナ間は『```localhost:<ポート番号>```』で通信できる。
+同じPod内のコンテナ間は『`localhost:<ポート番号>`』で通信できる。
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -105,16 +91,12 @@ Pod内のコンテナから宛先のPodにアウトバウンド通信を送信�
 
 この時、PodのスケジューリングされているNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
 
-
-
-
-| 条件          | 経由するネットワーク                               |
-|-------------|--------------------------------------------|
+| 条件             | 経由するネットワーク                                         |
+| ---------------- | ------------------------------------------------------------ |
 | Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
-| Nodeが同じ場合  | Clusterネットワーク + Serviceネットワーク              |
+| Nodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
-
 
 <br>
 
@@ -124,11 +106,9 @@ Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直
 
 ただし、PodのIPアドレスは動的に変化するため、現実的な方法ではない。
 
-
-
 **＊例＊**
 
-foo-podから、IPアドレス (```11.0.0.1```) とポート番号 (```80```) を指定して、bar-podにパケットを送信してみる。
+foo-podから、IPアドレス (`11.0.0.1`) とポート番号 (`80`) を指定して、bar-podにパケットを送信してみる。
 
 ```bash
 $ kubectl exec \
@@ -162,12 +142,10 @@ kubeletは、Pod内のコンテナにServiceの宛先情報 (プロトコル、I
 
 Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
 
-
-
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
-> - https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A 
+> - https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A
 
 **＊実装例＊**
 
@@ -192,9 +170,9 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCorp Consul、など) は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスを設定する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの`/etc/resolv.conf`ファイルに権威DNSサーバーのIPアドレスを設定する。
 
-Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。
+Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。
 
 レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにアウトバウンド通信を送信する。
 
@@ -209,10 +187,10 @@ Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルで権威D
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 # コンテナのresolv.confファイルの中身を確認する
-[root@<Pod名>] $ cat /etc/resolv.conf 
+[root@<Pod名>] $ cat /etc/resolv.conf
 
 nameserver 10.96.0.10 # 権威DNSサーバーのIPアドレス
-search default.svc.cluster.local svc.cluster.local cluster.local 
+search default.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
 ```
 

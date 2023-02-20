@@ -9,29 +9,23 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. ```bases```ディレクトリ
+## 01. `bases`ディレクトリ
 
-### ```kustomize.yaml```ファイル
+### `kustomize.yaml`ファイル
 
-#### ▼ ```kustomize.yaml```ファイルとは
+#### ▼ `kustomize.yaml`ファイルとは
 
-```base```ディレクトリ配下にあるファイルの処理方法を設定する。
-
-
+`base`ディレクトリ配下にあるファイルの処理方法を設定する。
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 #### ▼ resources
 
 使用するリソース定義ファイルを設定する。
-
-
 
 **＊実装例＊**
 
@@ -44,13 +38,11 @@ resources:
 
 <br>
 
-### ```resources```ディレクトリ
+### `resources`ディレクトリ
 
-#### ▼ ```リソース定義ファイル```
+#### ▼ `リソース定義ファイル`
 
-後の```overlays```ディレクトリの元になるリソース定義を設定する。
-
-
+後の`overlays`ディレクトリの元になるリソース定義を設定する。
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
@@ -59,8 +51,6 @@ resources:
 元になるリソース定義を設定する。
 
 ここでは、Deploymentを設定する。
-
-
 
 ```yaml
 apiVersion: apps/v1
@@ -92,25 +82,20 @@ spec:
 
 ## 02. overlaysディレクトリ
 
-### ```kustomize.yaml```ファイル
+### `kustomize.yaml`ファイル
 
-#### ▼ ```kustomize.yaml```ファイルとは
+#### ▼ `kustomize.yaml`ファイルとは
 
-```overlays```ディレクトリ配下にあるファイルの処理方法を設定する。
-
-
+`overlays`ディレクトリ配下にあるファイルの処理方法を設定する。
 
 > ↪️ 参考：
 >
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 > - https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d
 
-
 #### ▼ resources
 
 使用するリソース定義ファイルを設定する。
-
-
 
 **＊実装例＊**
 
@@ -126,21 +111,17 @@ patches:
 
 <br>
 
-### ```patches```ディレクトリ
+### `patches`ディレクトリ
 
-#### ▼ ```差分リソース定義ファイル```
+#### ▼ `差分リソース定義ファイル`
 
-```base```ディレクトリ配下のリソース定義ファイルとの差分の実装を設定する。
-
-
+`base`ディレクトリ配下のリソース定義ファイルとの差分の実装を設定する。
 
 **＊実装例＊**
 
 ここでは、Deploymentの差分を設定する。
 
-```.spec.replicas```キー以下は```base```ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
-
-
+`.spec.replicas`キー以下は`base`ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
 ```yaml
 apiVersion: apps/v1
@@ -153,9 +134,7 @@ spec:
 
 ここでは、Deploymentの差分を設定する。
 
-```.spec.template.spec.containers[].resources```キー以下はbaseディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
-
-
+`.spec.template.spec.containers[].resources`キー以下はbaseディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
 ```yaml
 apiVersion: apps/v1
@@ -169,7 +148,7 @@ spec:
         - name: foo-gin
           resources:
             limits:
-              cpu: 7000m  
+              cpu: 7000m
 ```
 
 <br>

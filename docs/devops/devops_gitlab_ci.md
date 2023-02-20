@@ -9,8 +9,6 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -19,11 +17,9 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 ### アーキテクチャ
 
-
-GitLab Runnerを処理の実行環境として、GitLabリポジトリの```gitlab-ci.yml```ファイルで定義されたパイプラインを実行する。
+GitLab Runnerを処理の実行環境として、GitLabリポジトリの`gitlab-ci.yml`ファイルで定義されたパイプラインを実行する。
 
 ![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png)
-
 
 > ↪️ 参考：
 >
@@ -45,7 +41,6 @@ GitLab Runnerを処理の実行環境として、GitLabリポジトリの```gitl
 ```yaml
 repository/
 ├── .gitlab-ci.yml
-...
 ```
 
 <br>
@@ -72,7 +67,6 @@ include:
 
 > ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
-
 <br>
 
 ## 04. Job
@@ -83,9 +77,6 @@ include:
 
 これにより、他のパイプラインでこのディレクトリを再利用し、CIの時間を短縮できる。
 
-
-
-
 ```yaml
 bar_job:
   cache:
@@ -94,7 +85,6 @@ bar_job:
 ```
 
 > ↪️ 参考：https://www.serversus.work/topics/927zjvmew2491o2n1oob/
-
 
 <br>
 
@@ -109,7 +99,6 @@ bar_job:
 ```
 
 > ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
-
 
 <br>
 
@@ -126,7 +115,6 @@ foo_job:
 
 > ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
-
 <br>
 
 ### stage
@@ -142,7 +130,6 @@ foo_job:
 
 > ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#stage
 
-
 <br>
 
 ### script
@@ -157,7 +144,6 @@ foo_job:
 
 > ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#script
 
-
 <br>
 
 ### trigger
@@ -166,7 +152,7 @@ foo_job:
 
 **＊例＊**
 
-モノリポジトリでGitLabCIを採用している場合に、 親の```.gitlab-ci.yml```ファイルでディレクトリ配下の変更を検知し、子の```.gitlab-ci.yml```ファイルを読み込む (```include```) ようにする。
+モノリポジトリでGitLabCIを採用している場合に、 親の`.gitlab-ci.yml`ファイルでディレクトリ配下の変更を検知し、子の`.gitlab-ci.yml`ファイルを読み込む (`include`) ようにする。
 
 ```yaml
 # 親の.gitlab-ci.yml
@@ -208,7 +194,6 @@ bar:
 
 Job内で使用する変数を設定する。
 
-
 ```yaml
 foo_job:
   variables:
@@ -219,8 +204,7 @@ foo_job:
 
 > ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
-
-#### ▼ ```GIT_SUBMODULE_STRATEGY```
+#### ▼ `GIT_SUBMODULE_STRATEGY`
 
 デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。
 
@@ -233,6 +217,3 @@ foo_job:
 > ↪️ 参考：https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
 
 <br>
-
-
-

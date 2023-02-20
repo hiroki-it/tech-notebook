@@ -9,8 +9,6 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -25,7 +23,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 ```yaml
 symfony/
-├── config/ # 設定ファイル (カーネルのためのルート定義ファイル等) 
+├── config/ # 設定ファイル (カーネルのためのルート定義ファイル等)
 │
 ├── bin/ # コマンドラインツール
 │   ├── console/ #bin/consoleコマンドの実行ファイル
@@ -42,14 +40,14 @@ symfony/
 │   │  ├── Repository/ # リポジトリ ⇒ Infrastructure層
 │   │  ├── Form/ # フォーム
 │   │  └── Resources/
-│   │       └── views/ # 画面テンプレート (※本書では扱わない)  
-│   │           
-│   └── その他のBundle/ # 汎用的なパッケージのコード (※本書では扱わない) 
+│   │       └── views/ # 画面テンプレート (※本書では扱わない)
+│   │
+│   └── その他のBundle/ # 汎用的なパッケージのコード (※本書では扱わない)
 │
 ├── templates/ # UserInterface層
-│   
-├── test/ # 自動テスト (Unit tests等) 
-│  
+│
+├── test/ # 自動テスト (Unit tests等)
+│
 ├── var/ # 自動作成されるファイル
 │   ├── cache/ # キャッシュファイル
 │   ├── logs/ # ログファイル
@@ -63,13 +61,13 @@ symfony/
 │   ├── symfonyコンポーネント/
 │   └── twig/ # パッケージ
 │
-└── asset/ #ブラウザコンソールに公開されるファイル (css, javascript, image等) 
+└── asset/ #ブラウザコンソールに公開されるファイル (css, javascript, image等)
     ├── admin/
     ├── bootstrap/
     ├── css/
     ├── fontawesome/
     ├── img/ # 画像ファイル
-    ├── jquery/ # jquery (javascriptフレームワーク) 
+    ├── jquery/ # jquery (javascriptフレームワーク)
     └── js/
 ```
 
@@ -81,7 +79,7 @@ symfony/
 
 ```php
 <?php
-    
+
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputArgument;
@@ -95,7 +93,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 ```php
 <?php
-    
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -110,7 +108,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 ```php
 <?php
-    
+
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -123,7 +121,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 ```php
 <?php
-    
+
 use Pimple\ConfigSupport;
 use Pimple\Container;
 use Pimple\DiSupport;
@@ -136,7 +134,7 @@ use Pimple\ServiceProviderInterface;
 
 ```php
 <?php
-    
+
 use Symfony\Component\Security\Core\AuthenticationEvents;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
@@ -148,7 +146,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManager;
 
 ```php
 <?php
-    
+
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -160,7 +158,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 ```php
 <?php
-    
+
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 ```
 
@@ -170,12 +168,11 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 ```php
 <?php
-    
+
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 ```
 
 <br>
-
 
 ## 03. Console
 
@@ -183,15 +180,13 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 #### ▼ CLIとは
 
-シェルスクリプト (```.sh```) 、またはバッチファイル (```.bat```) におけるコマンドの処理内容を定義できる。
-
-
+シェルスクリプト (`.sh`) 、またはバッチファイル (`.bat`) におけるコマンドの処理内容を定義できる。
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -212,7 +207,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
           "処理年月を設定してください。"
         );
     }
-  
+
     // コマンドの処理内容
     protected function execute(InputeInterface $input, OutputInterface $output)
     {
@@ -222,7 +217,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
                   "Y-m",
                   $input->getArgument("year-month")
                 );
-        
+
         } catch (\Exception $e) {
             // エラーログの文章を作成
         }
@@ -234,13 +229,13 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 
 ### CLIをコールするバッチファイル
 
-#### ▼ ```for```
+#### ▼ `for`
 
 ```bash
 #!/bin/bash
 
 # txtファイルを変数fに繰り返し格納し、処理を行う。
-for f in *txt; do 
+for f in *txt; do
   echo "$f"
 done
 ```
@@ -250,8 +245,6 @@ done
 **＊例＊**
 
 10秒ごとに、コマンドを自動実行する。
-
-
 
 ```bash
 #!/bin/bash
@@ -278,36 +271,34 @@ done
 
 #### ▼ カーネルに必要なオブジェクト
 
-```【１】```
+`【１】`
 
-:    Requestオブジェクト。グローバル変数から収集した情報やHTTPリクエストのヘッダ情報やコンテンツ情報を保持
-```【２】```
+: Requestオブジェクト。グローバル変数から収集した情報やHTTPリクエストのヘッダ情報やコンテンツ情報を保持
+`【２】`
 
-:    カーネルオブジェクトの```handle```メソッド。送られてきたURLを基にしたコントローラー/アクションに対するルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング
-```【３】```
+: カーネルオブジェクトの`handle`メソッド。送られてきたURLを基にしたコントローラー/アクションに対するルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング
+`【３】`
 
-:    Responseオブジェクト。HTTPレスポンスのヘッダ情報やコンテンツ情報などの情報を保持。
+: Responseオブジェクト。HTTPレスポンスのヘッダ情報やコンテンツ情報などの情報を保持。
 
 #### ▼ オブジェクトから取り出されたメソッドの
 
-```【１】```
+`【１】`
 
-:    カーネルが、クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る。
-```【２】```
+: カーネルが、クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る。
+`【２】`
 
-:    カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートがURLを作成。
-```【３】```
+: カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートがURLを作成。
+`【３】`
 
-:    カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
-   このカーネルを、特別に『HTTPカーネル』と呼ぶ。
-
-
+: カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
+このカーネルを、特別に『HTTPカーネル』と呼ぶ。
 
 **【app.phpの実装例】**
 
-```php
+````php
 <?php
-    
+
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -319,28 +310,26 @@ if (PHP_VERSION_ID < 70000) {
 
 $request = Request::createFromGlobals();  //```【１】```
 
-:    
+:
 
 $response = $kernel->handle($request); //```【２】```
 
-:    
+:
 
 $response->send(); //```【３】```
 
-:    
+:
 
 $kernel->terminate($request, $response);
-```
+````
 
-上記の```handle```メソッドが定義されているファイル。
+上記の`handle`メソッドが定義されているファイル。
 
-ここで定義された```handle```メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
-
-
+ここで定義された`handle`メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
 
 ```php
 <?php
-    
+
 public function handle
 (
     Request $request,
@@ -349,14 +338,14 @@ public function handle
 )
 {
     $this->boot();
-    
+
     ++$this->requestStackSize;
-    
+
     $this->resetServices = true;
 
     try {
         return $this->getHttpKernel()->handle($request, $type, $catch);
-    
+
     } finally {
         --$this->requestStackSize;
     }
@@ -369,38 +358,38 @@ public function handle
 
 #### ▼ リクエストからのデータ取得、JSON型データを含むレスポンス
 
-```【１】```
+`【１】`
 
-:    Ajaxによるリクエストの場合、JSON型データをレスポンスし、かつページレンダリング。
+: Ajaxによるリクエストの場合、JSON型データをレスポンスし、かつページレンダリング。
 
- (2) Ajaxによるリクエストでない場合、ページレンダリングのみ
+(2) Ajaxによるリクエストでない場合、ページレンダリングのみ
 
 ```php
 <?php
-    
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\FooReposiroy;
 
-class ExampleController extends AbstractController 
+class ExampleController extends AbstractController
 {
     public function get(Request $req)
     {
         // Ajaxによるリクエストの場合。
         if ($req->headers->get("content-type") === "application/json") {
-            
+
             $fooRepository = new FooRepository;
             $entityObject = $FooRepository->getEntity();
-            
+
             //-- entityをObject型からArray型に変換する何らかの処理。--//
-            
+
             // Ajaxにレンスポンス。
-            return new JsonResponse([ 
+            return new JsonResponse([
                 "value" => $entityArray
               ]);
         }
-    
+
         return $this->render(".../foo.twig")->setStatusCode(200);
     }
 }
@@ -410,28 +399,28 @@ class ExampleController extends AbstractController
 
 ```php
 <?php
-    
+
 // $_GET['foo']
 $request->query->get('foo');
- 
+
 // $_POST['foo']
 $request->request->get('foo');
- 
+
 // ルーティングパラメータ / ex) @Route('/{foo}')
 $request->attributes->get('foo');
- 
+
 // $_COOKIE['foo']
 $request->cookies->get('foo');
- 
+
 // $_FILES['foo']
 $request->files->get('foo');
- 
+
 // $_SERVER['SCRIPT_FILENAME']
 $request->server->get('SCRIPT_FILENAME');
- 
+
 // $_SERVER['HTTP_USER_AGENT']
 $request->headers->get('User-Agent');
- 
+
 // query > attribute  > request の順で検索
 $request->get('foo');
 ```
@@ -452,8 +441,6 @@ $request->get('foo');
 
 Symfonyから提供されるDIコンテナのこと。
 
-
-
 <br>
 
 ## 03-05. Routing
@@ -464,11 +451,9 @@ Symfonyから提供されるDIコンテナのこと。
 
 コントローラーに対するルーティングを設定する。
 
-
-
 ```php
 <?php
-    
+
 use App\Controller\BlogApiController; // ルーティング先のコントローラーを読み出し
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
@@ -496,11 +481,9 @@ return function (RoutingConfigurator $routes) {
 
 オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。
 
-
-
 ```php
 <?php
-    
+
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 $cache = new FilesystemAdapter("", 0, "example/cache/");
@@ -520,4 +503,3 @@ if (!$cacheItemObj->isHit()) {
 $cacheItemObj = $cache->get();
 
 ```
-

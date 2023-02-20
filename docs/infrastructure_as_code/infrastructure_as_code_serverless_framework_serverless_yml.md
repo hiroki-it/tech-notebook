@@ -9,8 +9,6 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -21,9 +19,6 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 設定ファイルのバリデーションの実行時に、エラーを出力するレベルを設定する。
 
-
-
-
 **＊実装例＊**
 
 ```yaml
@@ -32,17 +27,13 @@ configValidationMode: warn
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
-
 <br>
 
 ## 02. custom
 
 ### customとは
 
-スコープが```serverless.yml```ファイル内のみの変数を設定する。
-
-
-
+スコープが`serverless.yml`ファイル内のみの変数を設定する。
 
 **＊実装例＊**
 
@@ -61,17 +52,13 @@ custom:
 
 Serverless Frameworkのバージョンを設定する。
 
-
-
-
 **＊実装例＊**
 
 ```yaml
-frameworkVersion: '2'
+frameworkVersion: "2"
 ```
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
-
 
 <br>
 
@@ -87,8 +74,6 @@ frameworkVersion: '2'
 
 Lambda関数の説明文を設定する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -103,8 +88,6 @@ functions:
 
 Lambda関数の変数を設定する。
 
-
-
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
 
 **＊実装例＊**
@@ -115,7 +98,7 @@ functions:
     environment:
       FOO: foo
       BAR: bar
-      BAz: baz      
+      BAz: baz
 ```
 
 <br>
@@ -126,32 +109,25 @@ functions:
 
 Lambda関数に紐づけて作成するEventBridgeを設定する。
 
-
-
-
 **＊実装例＊**
 
-イベントパターンとして、```.json```ファイルを読み込む
+イベントパターンとして、`.json`ファイルを読み込む
 
 ```yaml
 functions:
   main:
     events:
       - eventBridge:
-          pattern: ${file(./event_bridge/patterns/pattern.json)}  
+          pattern: ${file(./event_bridge/patterns/pattern.json)}
 ```
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
-
 
 #### ▼ sqs
 
 Lambda関数に紐づけるSQSを設定する。
 
 新しくSQSを作成できず、既存のSQSと紐づける動作しかないことに注意する。
-
-
-
 
 **＊実装例＊**
 
@@ -164,7 +140,6 @@ functions:
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
 
-
 <br>
 
 ### image
@@ -172,8 +147,6 @@ functions:
 #### ▼ name
 
 Lambda関数で使用するイメージのエイリアスを設定する。
-
-
 
 **＊実装例＊**
 
@@ -189,8 +162,6 @@ functions:
 ### maximumRetryAttempts
 
 Lambda関数の再試行回数を設定する。
-
-
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
 
@@ -208,8 +179,6 @@ functions:
 
 Lambda関数のメモリサイズを設定する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -223,8 +192,6 @@ functions:
 ### name
 
 Lambda関数の名前を設定する。
-
-
 
 **＊実装例＊**
 
@@ -240,13 +207,9 @@ functions:
 
 Lambda関数に紐づけるIAMロールを設定する。
 
-
-
 **＊実装例＊**
 
-別に```resources.Resources```を使用して作成したIAMロールを設定する。
-
-
+別に`resources.Resources`を使用して作成したIAMロールを設定する。
 
 ```yaml
 functions:
@@ -259,8 +222,6 @@ functions:
 ### runtime
 
 Lambda関数で使用する言語とバージョンを設定する。
-
-
 
 **＊実装例＊**
 
@@ -277,8 +238,6 @@ functions:
 ### packageとは
 
 作成されるアーティファクトのパスを設定する。
-
-
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 
@@ -304,8 +263,6 @@ Serverless Frameworkで操作するクラウドインフラベンダーを設定
 
 ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
 
-
-
 <br>
 
 ### ecr
@@ -326,8 +283,6 @@ Lambda関数のベースイメージを指定し、エイリアス名を付け�
 
 名前は全て小文字である必要がある。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -346,8 +301,6 @@ provider:
 
 EventBridgeをCloudFormationで作成するか否かを設定する。
 
-
-
 ```yaml
 provider:
   eventBridge:
@@ -359,8 +312,6 @@ provider:
 ### lambdaHashingVersion
 
 Lambda関数のハッシュバージョンを設定する。
-
-
 
 **＊実装例＊**
 
@@ -375,8 +326,6 @@ provider:
 
 クラウドインフラベンダー名を設定する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -390,8 +339,6 @@ provider:
 
 クラウドインフラを作成するリージョンを設定する。
 
-
-
 ```yaml
 provider:
   region: ap-northeast-1
@@ -402,8 +349,6 @@ provider:
 ### stackName
 
 CloudFormationのスタック名を設定する。
-
-
 
 **＊実装例＊**
 
@@ -420,8 +365,6 @@ provider:
 
 クラウドインフラの実行環境名と考えて良い。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -433,7 +376,7 @@ provider:
 
 ## 07. resources
 
-### resourcesとは (awsプロバイダーの場合) 
+### resourcesとは (awsプロバイダーの場合)
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/resources
 
@@ -443,13 +386,9 @@ provider:
 
 IAMロールを作成する。
 
-
-
 **＊実装例＊**
 
-IAMロールに紐づけるIAMポリシーは、```.json```ファイルで切り分けておいた方が良い。
-
-
+IAMロールに紐づけるIAMポリシーは、`.json`ファイルで切り分けておいた方が良い。
 
 ```yaml
 resources:
@@ -473,8 +412,7 @@ resources:
 
 ## 08. service
 
-### serviceとは (awsプロバイダーの場合) 
-
+### serviceとは (awsプロバイダーの場合)
 
 **＊実装例＊**
 
@@ -483,7 +421,6 @@ service: foo-service
 ```
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/services
-
 
 <br>
 
@@ -510,4 +447,3 @@ variablesResolutionMode: null
 ```
 
 <br>
-

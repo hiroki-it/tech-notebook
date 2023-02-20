@@ -9,12 +9,9 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
-
 
 ## 01. dig
 
@@ -28,7 +25,7 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 > - https://dev.classmethod.jp/articles/dig-route53-begginer/
 
 ```bash
-$ dig yahoo.co.jp 
+$ dig yahoo.co.jp
 
 # Header
 # 各セクションのステータスやフラグが表示される。
@@ -61,7 +58,7 @@ yahoo.co.jp.            35      IN      A       182.22.25.252
 ;; Query time: 7 msec
 # 正引きに利用したDNSサーバーを表す。
 # digコマンドのパラメーターでDNSサーバーを指定しない場合、digコマンドの実行元によって、異なるDNSサーバーが利用される。
-;; SERVER: 8.8.8.8#53(8.8.8.8) 
+;; SERVER: 8.8.8.8#53(8.8.8.8)
 ;; WHEN: Mon May 30 22:33:44 JST 2022
 ;; MSG SIZE  rcvd: 168
 
@@ -72,8 +69,6 @@ yahoo.co.jp.            35      IN      A       182.22.25.252
 ### -x
 
 逆引きの名前解決を実行する。
-
-
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
 
@@ -134,8 +129,6 @@ $ yum install -y bind-utils
 
 もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを行うと、全てのIPアドレスが返却される。
 
-
-
 #### ▼ オプション無し
 
 > ↪️ 参考：https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
@@ -167,9 +160,7 @@ Name:  nrt20s18-in-f3.1e100.net # IPv4アドレスにマッピングされたド
 Address:  172.217.175.3 # IPv4アドレス
 ```
 
-権威DNSサーバーを使用して名前解決する場合、引数なしで```nslookup```コマンドを実行する。
-
-
+権威DNSサーバーを使用して名前解決する場合、引数なしで`nslookup`コマンドを実行する。
 
 > ↪️ 参考：
 >
@@ -199,13 +190,9 @@ Address: 142.251.42.131
 
 正引き/逆引きによる名前解決を行い、この時に指定したレコードタイプのレコード値を返却させる。
 
-
-
 **＊例＊**
 
 名前解決を行い、NSレコード値を返却させる。
-
-
 
 ```bash
 $ nslookup -type=NS google.co.jp
@@ -239,7 +226,7 @@ ns4.google.com  internet address = 216.239.38.10
 #### ▼ aptリポジトリから
 
 ```bash
-$ apt install net-tools 
+$ apt install net-tools
 ```
 
 ```bash
@@ -249,7 +236,7 @@ $ apt-get install net-tools
 #### ▼ yumリポジトリから
 
 ```bash
-$ yum install -y net-tools 
+$ yum install -y net-tools
 ```
 
 <br>
@@ -264,7 +251,7 @@ $ yum install -y net-tools
 
 #### ▼ -plunt
 
-オプション (```-p```、```-l```、```-u```、```-n```、```-t```) の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
+オプション (`-p`、`-l`、`-u`、`-n`、`-t`) の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
 
 > ↪️ 参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
 
@@ -272,18 +259,18 @@ $ yum install -y net-tools
 $ netstat -plunt
 
 Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name     
-tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 127.0.0.1:15004         0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -                   
-tcp6       0      0 :::9000                 :::*                    LISTEN      1/php-fpm: master p 
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.1:15004         0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -
+tcp6       0      0 :::9000                 :::*                    LISTEN      1/php-fpm: master p
 tcp6       0      0 :::15020                :::*                    LISTEN      -
 ```
 
@@ -311,19 +298,17 @@ $ brew install speedtest-cli
 
 SPEEDTESTのAPIを使用して、ダウンロード (下り) とアップロード (上り) の通信速度を解析する。
 
-
 ```bash
 $ speedtest-cli
 
-Testing download 
+Testing download
 Download: 168.61 Mbit/s # ダウンロード速度
 
-Testing upload 
+Testing upload
 Upload: 182.00 Mbit/s # アップロード速度
 ```
 
 > ↪️ 参考：https://www.speedtest.net/ja
-
 
 <br>
 
@@ -353,19 +338,15 @@ $ yum install -y tcpdump
 
 今現在処理されているパケット (インバウンド通信とアウトバウンド通信) の情報を取得する。
 
-パケットの送信元と宛先から、送信元からの通信 (```ping```、```nc```、```curl```、など) が届いているかを確認する。
+パケットの送信元と宛先から、送信元からの通信 (`ping`、`nc`、`curl`、など) が届いているかを確認する。
 
-最初の```3```行はスリーウェイハンドシェイクを表す。
-
-
+最初の`3`行はスリーウェイハンドシェイクを表す。
 
 ```bash
 $ tcpdump
 
 [時間] IP [送信元IPアドレス].[シーケンス番号] > [宛先サーバー].[ポート番号]: [パケットの説明]
 ```
-
-
 
 > ↪️ 参考：
 >
@@ -375,15 +356,11 @@ $ tcpdump
 
 インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。
 
-
-
 > ↪️ 参考：https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
 
 **＊例＊**
 
 スリーウェイハンドシェイクのパケットの例。
-
-
 
 > ↪️ 参考：https://please-sleep.cou929.nu/tcpdump-study-pt1.html
 
@@ -400,9 +377,7 @@ $ tcpdump
 
 <br>
 
-```awk```コマンドや```grep```コマンドと組み合わせると、特定のIPアドレスを送信元/宛先としたパケットがあるか否かを検出できる。
-
-
+`awk`コマンドや`grep`コマンドと組み合わせると、特定のIPアドレスを送信元/宛先としたパケットがあるか否かを検出できる。
 
 ```bash
 $ tcpdump <コマンド/オプション> \
@@ -412,9 +387,7 @@ $ tcpdump <コマンド/オプション> \
 
 **＊例＊**
 
-```ping```コマンドの送信先で、通信を受信できていることを確認する。
-
-
+`ping`コマンドの送信先で、通信を受信できていることを確認する。
 
 > ↪️ 参考：https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/
 
@@ -427,8 +400,7 @@ $ tcpdump icmp -i eth0
 
 ### -i <ネットワークインターフェース名>
 
-指定したネットワークインターフェースにて、パケットの内容を取得する。```-i```オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。
-
+指定したネットワークインターフェースにて、パケットの内容を取得する。`-i`オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。
 
 ```bash
 $ tcpdump -i eth0
@@ -436,14 +408,11 @@ $ tcpdump -i eth0
 
 > ↪️ 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
-
 <br>
 
 ### -nn <プロトコル名>
 
 全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を取得する。
-
-
 
 > ↪️ 参考：https://go-journey.club/archives/1472
 
@@ -459,8 +428,6 @@ $ tcpdump -nn ip
 
 全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を取得する。
 
-
-
 > ↪️ 参考：https://go-journey.club/archives/1472
 
 ```bash
@@ -475,15 +442,11 @@ $ tcpdump -nn port 80
 
 パケットを宛先情報でフィルタリングし、パケットを取得する。
 
-
-
 > ↪️ 参考：https://orebibou.com/ja/home/201505/20150525_001/
 
 #### ▼ port
 
 指定したポート番号を宛先とするパケットのみを取得する。
-
-
 
 ```bash
 $ tcpdump dst port 80
@@ -497,15 +460,11 @@ $ tcpdump dst port 80
 
 パケットを送信元情報でフィルタリングし、パケットを取得する。
 
-
-
 > ↪️ 参考：https://orebibou.com/ja/home/201505/20150525_001/
 
 #### ▼ port
 
 指定したポート番号を送信元とするパケットのみを取得する。
-
-
 
 ```bash
 $ tcpdump src port 80
@@ -513,14 +472,11 @@ $ tcpdump src port 80
 
 <br>
 
-
 ## 06. traceroute
 
 ### tracerouteとは
 
 宛先にUDPプロトコル/ICMPプロトコル (デフォルトはUDPプロトコル) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
-
-
 
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traceroute.png)
 
@@ -534,18 +490,16 @@ $ tcpdump src port 80
 
 UDPプロトコルを使用して、パケットを送信する。
 
-もし、```traceroute```コマンドが終了すれば、全てのルーターを経由できていることを表す。
-
-
+もし、`traceroute`コマンドが終了すれば、全てのルーターを経由できていることを表す。
 
 ```bash
 $ traceroute google.com
 
-traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数 (ルーター数) 
+traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数 (ルーター数)
  1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
- 
+
  ...
- 
+
  8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーターの送信元
  9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms # 宛先のサーバー
 ```
@@ -553,18 +507,16 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大3
 ```bash
 $ traceroute 173.194.38.98
 
-traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数 (ルーター数) 
+traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数 (ルーター数)
  1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
- 
+
  ...
- 
+
  8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーターの送信元IPアドレス
  9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms # 宛先のサーバー
 ```
 
 アスタリスクは検証が実行中であることを表し、アスタリスクのまま変わらない場合は、それ以降のルーターに通信が届いていない可能性がある。
-
-
 
 > ↪️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
 
@@ -590,9 +542,6 @@ ICMPプロトコルを使用して、パケットを送信する。
 
 TCPプロトコルの一種である。
 
-
-
-
 **＊例＊**
 
 ```bash
@@ -608,8 +557,6 @@ $ traceroute -I -n *.*.*.* -p 443
 IPアドレスの名前解決を実行せずに、ルーターの送信元IPアドレスをそのまま取得する。
 
 ネットワークの境目がわかりやすくなる。
-
-
 
 > ↪️ 参考：
 >
@@ -639,9 +586,7 @@ traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
 
 ポート番号を指定する。
 
-デフォルト値は、```33434```番ポートである。
-
-
+デフォルト値は、`33434`番ポートである。
 
 **＊例＊**
 
@@ -655,9 +600,7 @@ $ traceroute *.*.*.* -p 9000
 
 宛先にTCPプロトコルでパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
 
-```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。
-
-
+`traceroute`コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。
 
 **＊例＊**
 
@@ -667,9 +610,7 @@ $ traceroute google.com -T -p 443
 $ traceroute *.*.*.* -T -p 443
 ```
 
-
 <br>
-
 
 ## 06-02. tracerouteの代わり
 
@@ -697,7 +638,7 @@ $ tracepath -n google.com
 
 #### ▼ tcptracerouteとは
 
-tracerouteコマンドのバージョンによっては、```-T```オプションがない場合があり、代わりとして```tcptraceroute```コマンドを使用する。
+tracerouteコマンドのバージョンによっては、`-T`オプションがない場合があり、代わりとして`tcptraceroute`コマンドを使用する。
 
 > ↪️ 参考：https://succzero.hatenablog.com/entry/2013/09/01/181615
 
@@ -713,15 +654,8 @@ $ tcptraceroute google.com 443
 
 宛先ではないことに注意する。
 
-
-
 ```bash
 $ tcptraceroute *.*.*.* -p 80
 ```
 
-
 <br>
-
-
-
-

@@ -9,8 +9,6 @@ description: Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
 
 <br>
@@ -136,8 +134,6 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 
 Pythonの命名規則は、PEPに記載されている。
 
-
-
 > ↪️ 参考：
 >
 > - https://www.python.org/dev/peps/pep-0007/
@@ -148,55 +144,37 @@ Pythonの命名規則は、PEPに記載されている。
 
 全て小文字のスネークケースとする。
 
-
-
 #### ▼ モジュール
 
 全て小文字のスネークケースとする。
-
-
 
 #### ▼ クラス
 
 アッパーキャメルケースとする。
 
-
-
 #### ▼ 例外
 
 アッパーキャメルケースとする。
-
-
 
 #### ▼ 型変数
 
 アッパーキャメルケースとする。
 
-
-
 #### ▼ メソッド
 
 全て小文字のスネークケースとする。
-
-
 
 #### ▼ 関数
 
 全て小文字のスネークケースとする。
 
-
-
 #### ▼ 変数
 
 全て小文字のスネークケースとする。
 
-
-
 #### ▼ 定数
 
 全て大文字のスネークケースとする。
-
-
 
 <br>
 
@@ -206,21 +184,17 @@ Pythonの命名規則は、PEPに記載されている。
 
 ディレクトリに相当する。
 
-
-
 > ↪️ 参考：
 >
 > - https://docs.python.org/ja/3/reference/import.html#packages
 
-#### ▼ 基本的には```__init__.py```ファイルを配置すること
+#### ▼ 基本的には`__init__.py`ファイルを配置すること
 
 通常パッケージとして扱うディレクトリには。
 
-```__init__.py```ファイルを配置する必要がある。
+`__init__.py`ファイルを配置する必要がある。
 
 一方で、名前空間パッケージではこれが不要である。
-
-
 
 > - https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
 > - https://rinatz.github.io/python-book/ch04-02-packages/
@@ -232,8 +206,6 @@ Pythonの命名規則は、PEPに記載されている。
 #### ▼ moduleとは
 
 パッケージ内の各ファイルに相当する。
-
-
 
 > ↪️ 参考：
 >
@@ -250,8 +222,6 @@ Pythonの命名規則は、PEPに記載されている。
 
 存在しないパッケージをインポートしようとすると、インポートエラーになる。
 
-
-
 ```python
 from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名、関数名>
 ```
@@ -262,56 +232,46 @@ from <パッケージ名>.<サブパッケージ名>.<モジュール名> import
 
 アスタリスクによるインポートは非推奨である。
 
-
-
 > ↪️ 参考：https://python.civic-apps.com/wildcard-import/
 
 #### ▼ 絶対パスを使用すること
 
 パッケージ名は絶対パスを指定する。
 
-
-
 #### ▼ 宣言場所について
 
-```1```個のファイルで```1```個のクラスや関数のみを宣言する場合は、```import```を実行する場所はクラスや関数の外でも中でもよい。
-
-
+`1`個のファイルで`1`個のクラスや関数のみを宣言する場合は、`import`を実行する場所はクラスや関数の外でも中でもよい。
 
 ```python
 from foo import foo
 
-def foo():    
+def foo():
     foo = foo()
-    
+
     return foo
 ```
 
-ただし、複数を宣言する場合は、可読性の観点からクラスや関数の中で```import```を実行する。
-
-
+ただし、複数を宣言する場合は、可読性の観点からクラスや関数の中で`import`を実行する。
 
 ```python
 def foo():
     from foo import foo
-    
+
     foo = foo()
-    
+
     return foo
-    
+
 def bar():
     from bar import bar
-    
+
     bar = bar()
-    
+
     return bar
 ```
 
-#### ▼ ```1```個ずつインポート
+#### ▼ `1`個ずつインポート
 
-複数のパッケージをインポートする場合、カンマで繋ぐこともできるが、```1```個ずつインポートした方が良い。
-
-
+複数のパッケージをインポートする場合、カンマで繋ぐこともできるが、`1`個ずつインポートした方が良い。
 
 > ↪️ 参考：https://www.tech-teacher.jp/blog/python-import/
 
@@ -320,9 +280,9 @@ def bar():
 import foo
 import bar
 
-def foo():    
+def foo():
     foo = foo()
-    
+
     return foo
 ```
 
