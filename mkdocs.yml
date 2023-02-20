@@ -359,6 +359,7 @@ nav:
               - Bで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_b.md
               - ■ Cで始まるAWSリソース:
                   - Cで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_c.md
+                  - CertificateManager: cloud_computing/cloud_computing_aws_resource_c_certificate_manager.md
                   - CloudFront: cloud_computing/cloud_computing_aws_resource_c_cloudfront.md
                   - CloudWatch: cloud_computing/cloud_computing_aws_resource_c_cloudwatch.md
                   - Code系: cloud_computing/cloud_computing_aws_resource_c_code.md
