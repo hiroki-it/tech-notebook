@@ -32,7 +32,7 @@
 $ yarn
 
 # フォーマット
-$ yarn prettier -w *
+$ yarn prettier -w **/*.md
 ```
 
 <br>
