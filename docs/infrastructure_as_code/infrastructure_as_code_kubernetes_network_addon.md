@@ -365,7 +365,9 @@ nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
 
 `【２】`
 
-: CoreDNSのPodが稼働しているとする。ここで、CoreDNSのPodのIPアドレス (ここでは`10.244.0.2`) を確認しておく。
+: CoreDNSのPodが稼働しているとする。
+
+  ここで、CoreDNSのPodのIPアドレス (ここでは`10.244.0.2`) を確認しておく。
 
 ```bash
 $ kubectl get pods -o wide -l k8s-app=kube-dns -n kube-system

@@ -138,7 +138,7 @@ paths:
 
 #### ▼ セットアップ
 
-各種パラメーターのいずれをバリデーションの対象とするかを指定したうえで、エイリアス名を定義する。
+各種パラメーターのいずれをバリデーションの対象とするかを指定したうえで、エイリアスを定義する。
 
 ルートで定義する。
 
@@ -168,7 +168,7 @@ x-amazon-apigateway-request-validators:
 
 #### ▼ セットアップ
 
-事前に定義した`x-amazon-apigateway-request-validators`キーの中から、使用するバリデーションのエイリアス名を宣言する。
+事前に定義した`x-amazon-apigateway-request-validators`キーの中から、使用するバリデーションのエイリアスを宣言する。
 
 ```yaml
 paths:
@@ -180,7 +180,7 @@ paths:
       #===========================
       # メソッドリクエスト
       #===========================
-      x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証 # エイリアス名を宣言
+      x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証 # エイリアスを宣言
 
     ...
 

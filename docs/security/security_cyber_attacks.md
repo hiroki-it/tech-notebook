@@ -111,7 +111,11 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 #### ▼ Brute-force攻撃とReverse Brute-force攻撃とは
 
-Brute-forceは力ずくの意味。IDを固定して、パスワードを総当たりで試す手法。例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。
+Brute-forceは力ずくの意味。IDを固定して、パスワードを総当たりで試す手法。
+
+例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。
+
+一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。
 
 ![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/brute-force-attack_reverse-brute-force-attack.png)
 

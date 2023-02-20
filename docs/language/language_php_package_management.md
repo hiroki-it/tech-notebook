@@ -181,7 +181,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
     ...
 
     "scripts": {
-        # エイリアス名
+        # エイリアス
         "post-autoload-dump": [
             # 実行するコマンド
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

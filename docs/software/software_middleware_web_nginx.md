@@ -288,3 +288,42 @@ stream {
 > - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
 
 <br>
+
+### API Gatewayとして
+
+NginxをAPI Gatewayとして使用する。
+
+API Gatewayのため、リバースプロキシやロードバランサーとは異なり、以下の機能を持つ必要がある。
+
+- 受信したインバウンド通信を適切なマイクロサービスのAPIにルーティング
+- 認証
+- トレースIDの付与
+- キャッシュの作成
+- リクエスト制限
+
+**＊実装例＊**
+
+
+```nginx
+server {
+   listen 80 default_server;
+   listen [::]:80 default_server;
+ 
+   # Products API
+   location /api/products {
+       proxy_pass http://products.api.com:8001;
+   }
+ 
+   # Users API
+   location /api/users {
+       proxy_pass http://products.api.com:8002;
+   }
+}
+```
+
+> ↪️ 参考：
+> 
+> - https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/
+> - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
+
+<br>

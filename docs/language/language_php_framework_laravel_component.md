@@ -941,7 +941,7 @@ class Foo
 }
 ```
 
-エイリアス名とクラスの名前空間を`config/app.php`ファイルを`aliases`キーに登録すると、そのエイリアス名でインスタンス化とメソッドコールを行えるようになる。
+エイリアスとクラスの名前空間を`config/app.php`ファイルを`aliases`キーに登録すると、そのエイリアスでインスタンス化とメソッドコールを行えるようになる。
 
 ```php
 <?php
@@ -974,7 +974,7 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 以下のクラスは、デフォルトで登録されているFacadeである。
 
-| エイリアス名         | クラス名                                                                                                                            | サービスコンテナ結合キー |
+| エイリアス         | クラス名                                                                                                                            | サービスコンテナ結合キー |
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
 | App                  | [Illuminate\Foundation\Application](https://laravel.com/api/8.x/Illuminate/Foundation/Application.html)                             | `app`                    |
 | Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html)                         | `artisan`                |
@@ -1207,7 +1207,7 @@ Route::get("/healthcheck", function () {
 
 コントローラーへのルーティング時に実行するMiddlewareクラスを設定する。
 
-引数として、`App\Http\Kernel.php`ファイルで定義されたMiddlewareクラスのエイリアス名を設定する。
+引数として、`App\Http\Kernel.php`ファイルで定義されたMiddlewareクラスのエイリアスを設定する。
 
 **＊実装例＊**
 
@@ -2825,7 +2825,7 @@ class Kernel extends HttpKernel
     ];
 
     /**
-     * エイリアス名とミドルウェアグループを定義します。
+     * エイリアスとミドルウェアグループを定義します。
 
 
      *
@@ -2842,7 +2842,7 @@ class Kernel extends HttpKernel
     ];
 
     /**
-     * エイリアス名と個別のミドルウェアを定義します。
+     * エイリアスと個別のミドルウェアを定義します。
 
 
      *

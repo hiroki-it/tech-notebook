@@ -800,7 +800,7 @@ Namespaceの`istio.io/rev`キーの値を書き換えずにアップグレード
 MutatingWebhookConfigurationの`.metadata.labels`キーに、エイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を作成する。
 
 ```bash
-$ istioctl tag generate <エイリアス名> --revision <エイリアスの実体>
+$ istioctl tag generate <エイリアス> --revision <エイリアスの実体>
 ```
 
 **＊例＊**
@@ -838,7 +838,7 @@ stable    1-0-0      app
 
 
 # アップグレード前に、マニフェストを確認してみる。
-$ kubectl get mutatingwebhookconfiguration istio-revision-tag-<エイリアス名> -o yaml \
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-<エイリアス> -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:
 
 istio.io/rev: 1-0-0

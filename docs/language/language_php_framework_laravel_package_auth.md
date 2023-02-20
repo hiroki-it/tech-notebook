@@ -444,7 +444,7 @@ class AuthServiceProvider extends ServiceProvider
 
 ルーティング時にDBレコードレベルの認可スコープを定義する。
 
-AuthorizeMiddlewareのエイリアス名はデフォルトで`can`であり、Kernelクラスに定義されている。
+AuthorizeMiddlewareのエイリアスはデフォルトで`can`であり、Kernelクラスに定義されている。
 
 第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。
 

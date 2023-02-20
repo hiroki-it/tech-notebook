@@ -175,7 +175,7 @@ npmパッケージ名を設定する。
 
 #### ▼ scripts
 
-汎用コマンドとエイリアスを設定する。`npm run <エイリアス名>`コマンドで実行できる。
+汎用コマンドとエイリアスを設定する。`npm run <エイリアス>`コマンドで実行できる。
 
 ```yaml
 { "scripts": { "foo": "npm install" } }
@@ -271,13 +271,13 @@ $ npm update
 
 #### ▼ runとは
 
-ユーザーが定義したエイリアス名のコマンドを実行する。
+ユーザーが定義したエイリアスのコマンドを実行する。
 
 ```bash
-$ npm run <エイリアス名>
+$ npm run <エイリアス>
 ```
 
-あらかじめ、任意のエイリアス名を`scripts`キー下に定義する。
+あらかじめ、任意のエイリアスを`scripts`キー下に定義する。
 
 エイリアスの中で、実行するコマンドのセットを定義する。
 
@@ -285,7 +285,7 @@ $ npm run <エイリアス名>
 
 ```yaml
 { "scripts": {
-      # "<エイリアス名>": "<実行するコマンド>",
+      # "<エイリアス>": "<実行するコマンド>",
       "dev": "npm run development",
       "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
       "watch": "npm run development -- --watch",
