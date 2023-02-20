@@ -237,7 +237,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels: { { include "global.template.labels" . | indent 4 } } # まとめて出力する。
-
 ```
 
 <br>

@@ -217,7 +217,6 @@ ports:
 > ↪️ 参考：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
 
 ```yaml
-
 ---
 - name: Add port
   firewalld:

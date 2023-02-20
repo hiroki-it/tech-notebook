@@ -87,7 +87,6 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
      この時、```kubectl```クライアントの場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
 
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
