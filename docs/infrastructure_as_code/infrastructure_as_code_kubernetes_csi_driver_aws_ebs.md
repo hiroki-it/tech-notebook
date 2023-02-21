@@ -80,7 +80,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
   }
 
   storage_provisioner = "ebs.csi.aws.com"
-[infrastructure_as_code_kubernetes_custom_resource_cluster_api_resoruce_definition.md](infrastructure_as_code_kubernetes_custom_resource_cluster_api_resoruce_definition.md)
+
   parameters = {
     encrypted = "true"
     fsType    = "ext4"
@@ -98,6 +98,8 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class
 
 #### ▼ Helmを使用して
+
+調査中...
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver
 

@@ -248,26 +248,168 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 <br>
 
-### Ingress
+## 02-02. ALB Ingress
 
-#### ▼ `.metadata.annotations`キー
+### ALB Ingress
 
-IngressとALBを紐づけるために、`.metadata.annotations`キーを設定する必要がある。
+AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと```.spec.rules```キーに設定に応じて、ALB Ingressを自動的にプロビジョニングする。
 
-| 項目                                        | 説明                                                                                    |
-| ------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `alb.ingress.kubernetes.io/certificate-arn` | ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。                |
-| `alb.ingress.kubernetes.io/listen-ports`    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。                         |
-| `alb.ingress.kubernetes.io/scheme`          | ALB Ingressのスキームを設定する。                                                       |
-| `alb.ingress.kubernetes.io/subnets`         | ALB Ingressのルーティング先のサブネットを設定する。                                     |
-| `alb.ingress.kubernetes.io/target-type`     | ルーティング先のターゲットタイプを設定する。Fargateの場合は、`ip`を設定する必要がある。 |
-| `alb.ingress.kubernetes.io/waf-acl-id`      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。     |
-| `alb.ingress.kubernetes.io/wafv2-acl-arn`   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。    |
+> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+
+<br>
+
+### `.metadata.annotations`キー
+
+#### ▼ `.metadata.annotations`キーとは
+
+ALB Ingressをリスナールール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
+
 
 > ↪️ 参考：
 >
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
+
+#### ▼ `alb.ingress.kubernetes.io/certificate-arn`
+
+ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: *****
+```
+
+#### ▼ `alb.ingress.kubernetes.io/healthcheck-path`
+
+ヘルスチェックのパスを設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz
+```
+
+#### ▼ `alb.ingress.kubernetes.io/listen-ports`
+
+ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+```
+
+#### ▼ `alb.ingress.kubernetes.io/load-balancer-attributes`
+
+ALB Ingressの属性を設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=foo-alb-ingress-backet,access_logs.s3.prefix=foo
+```
+
+#### ▼ `alb.ingress.kubernetes.io/scheme`
+
+ALB Ingressのスキームを設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+```
+
+#### ▼ `alb.ingress.kubernetes.io/success-codes`
+
+成功した場合のステータスコードを設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/success-codes: "200"
+```
+
+#### ▼ `alb.ingress.kubernetes.io/subnets`
+
+ALB Ingressのルーティング先のサブネットを設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/subnets: ["*****", "*****"]
+```
+
+#### ▼ `alb.ingress.kubernetes.io/target-type`
+
+ルーティング先のターゲットタイプを設定する。
+
+Fargateの場合は、`ip`を設定する必要がある。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/target-type: ip
+```
+
+#### ▼ `alb.ingress.kubernetes.io/waf-acl-id`
+
+LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/waf-acl-id: *****
+```
+
+#### ▼ `alb.ingress.kubernetes.io/wafv2-acl-arn`
+
+LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/wafv2-acl-arn: *****
+```
+
+<br>
+
+### `.spec.rules`キー
+
+ALB Ingressのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
+
+> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+
 
 <br>
 

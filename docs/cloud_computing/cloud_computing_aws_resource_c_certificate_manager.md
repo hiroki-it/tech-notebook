@@ -15,6 +15,10 @@ description: Certificate Manager＠Cで始まるAWSリソースを記録して�
 
 ## 01. Certificate Managerとは
 
+調査中...
+
+<br>
+
 ## 02. セットアップ
 
 ### ドメイン名
@@ -160,3 +164,6 @@ ALBではSSL証明書の変更でダウンタイムは発生しない。
 CloudFrontは謎...
 
 > ↪️ 参考：https://aws.typepad.com/sajp/2014/04/elb-ssl.html
+
+
+<br>

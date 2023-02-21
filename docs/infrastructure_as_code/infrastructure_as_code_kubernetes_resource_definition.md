@@ -1076,11 +1076,11 @@ spec:
 
 パスベースルーティング判定時のルールの厳しさを設定する。
 
-| 厳しさ             | タイプ                 |                                                                                                    |
-| ------------------ | ---------------------- | -------------------------------------------------------------------------------------------------- |
-| パス名の一致       | Prefix                 | 最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。 |
-| パス名の完全一致   | Exact                  | 指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。                             |
-| IngressClassによる | ImplementationSpecific | IngressClass (例：Nginx) の設定に応じてルールを自動的に設定する。                                  |
+| 厳しさ             | タイプ                 |                                                               |
+| ------------------ | ---------------------- |---------------------------------------------------------------|
+| パス名の一致       | Prefix                 | 最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。             |
+| パス名の完全一致   | Exact                  | 指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。                           |
+| IngressClassによる | ImplementationSpecific | IngressClass (例：Nginx) の設定に応じて、独自タイプ、Prefix、Exact、を自動的に切り替える。 |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1100,7 +1100,10 @@ spec:
             pathType: Prefix
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
+> ↪️ 参考：
+> 
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
+> - https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
 
 #### ▼ .spec.rules[].http.paths[].backend
 

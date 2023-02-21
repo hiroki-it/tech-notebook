@@ -61,11 +61,9 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 <br>
 
-## 02. 命令
+## 02. ADD
 
-### ADD
-
-#### ▼ ADDとは
+### ADDとは
 
 ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが`tar`ファイルの場合は解凍する。
 
@@ -73,7 +71,9 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#add
 
-#### ▼ COPYとの違い
+<br>
+
+### COPYとの違い
 
 似た命令として`COPY`がある。
 
@@ -110,13 +110,15 @@ RUN mkdir -p /usr/src/things \
 
 <br>
 
-### ARG
+## 03. ARG
 
-#### ▼ ARGとは
+### ARGとは
 
 Dockerfikeの命令で扱える変数を定義する。
 
-#### ▼ ENVとの違い
+<br>
+
+### ENVとの違い
 
 似た命令として`ENV`がある。
 
@@ -167,9 +169,9 @@ RUN pyenv install ${PYTHON_VERSION}
 
 <br>
 
-### CMD
+## 04. CMD
 
-#### ▼ CMDとは
+### CMDとは
 
 イメージのプロセスの起動コマンドを実行する。
 
@@ -177,7 +179,9 @@ RUN pyenv install ${PYTHON_VERSION}
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#cmd
 
-#### ▼ 注意点
+<br>
+
+### 注意点
 
 Dockerfileで`CMD`を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。
 
@@ -202,9 +206,9 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 <br>
 
-### COPY
+## 05. COPY
 
-#### ▼ COPYとは
+### COPYとは
 
 ホスト側 (第一引数) のディレクトリ/ファイルをコンテナ側 (第二引数) にコピーする。
 
@@ -220,15 +224,17 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 <br>
 
-### ENTRYPOINT
+## 06. ENTRYPOINT
 
-#### ▼ ENTRYPOINTとは
+### ENTRYPOINTとは
 
 イメージのプロセスの起動コマンドを実行する。
 
 > ↪️ 参考：https://docs.docker.com/engine/reference/builder/#entrypoint
 
-#### ▼ CMDとの違い
+<br>
+
+### CMDとの違い
 
 似た命令として`CMD`がある。
 
@@ -245,9 +251,9 @@ $ docker run --rm -it <コンテナイメージ名>:<バージョンタグ> /bin
 
 <br>
 
-### ENV
+## 07. ENV
 
-#### ▼ ENVとは
+### ENVとは
 
 OS上のコマンド処理で展開できる変数を定義できる。
 
@@ -255,9 +261,9 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 <br>
 
-### EXPOSE
+## 08. EXPOSE
 
-#### ▼ EXPOSEとは
+### EXPOSEとは
 
 他のコンテナに対してコンテナポートを開放する。
 
@@ -270,7 +276,9 @@ OS上のコマンド処理で展開できる変数を定義できる。
 > - https://docs.docker.com/engine/reference/builder/#expose
 > - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
-#### ▼ プロセスによるポート受信
+<br>
+
+### プロセスによるポート受信
 
 コンテナのポートを開放するのみでは不十分である。
 
@@ -282,9 +290,9 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 <br>
 
-### FROM
+## 09. FROM
 
-#### ▼ FROMとは
+### FROMとは
 
 ベースのコンテナイメージを、コンテナにインストールする。
 
@@ -294,17 +302,51 @@ OS上のコマンド処理で展開できる変数を定義できる。
 FROM python:latest-slim
 ```
 
-#### ▼ イメージレジストリの指定
+<br>
+
+### イメージレジストリの指定
 
 指定できるイメージレジストリの例と記法は以下の通りである。
 
-| レジストリの種類                    | 例                                                                                                                           | 補足                                                                                 |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| DockerHub                           | `php:8.0-fpm`                                                                                                                | https://hub.docker.com/_/php                                                         |
-| クラウドプロバイダー (パブリック)   | ECRパブリックギャラリーの場合：<br>`public.ecr.aws/bitnami/php-fpm:latest`                                                   | https://gallery.ecr.aws/bitnami/php-fpm                                              |
-| クラウドプロバイダー (プライベート) | ECRプライベートレジストリの場合：<br>`<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
+#### ▼ DockerHub
 
-#### ▼ CPUアーキテクチャの指定
+PHP-FPMをインストールする場合は、`php:8.0-fpm`である。
+
+> ↪️ 参考：https://hub.docker.com/_/php
+
+
+#### ▼ クラウドプロバイダー (パブリック)
+
+ECRパブリックギャラリーからPHP-FPMをインストールする場合は、`public.ecr.aws/bitnami/php-fpm:latest`である。
+
+> ↪️ 参考：https://gallery.ecr.aws/bitnami/php-fpm
+
+#### ▼ クラウドプロバイダー (プライベート)
+
+ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest`である。
+
+> ↪️ 参考：https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1
+
+
+<br>
+
+
+### レートリミット
+
+#### ▼ DockerHub
+
+DockerHubのレートリミットは、匿名アカウントであれば`100`プル/`6`時間、無料アカウントであれば`200`プル/`6`時間、である。
+
+CIパイプライン上でコンテナイメージをビルドしていると、これにひっかかりやすい。
+
+クラウドプロバイダーのレートリミットの方が寛容なため、クラウドプロバイダー (パブリック/プライベート) からプルする方法もよい。
+
+> ↪️ 参考：https://www.docker.com/increase-rate-limits/
+
+<br>
+
+
+### CPUアーキテクチャの指定
 
 イメージの対応するCPUアーキテクチャを設定する。
 
@@ -318,9 +360,9 @@ FROM --platform=linux/amd64 python:latest-slim
 
 <br>
 
-### RUN
+## 10. RUN
 
-#### ▼ RUNとは
+### RUNとは
 
 ベースイメージ上に、ソフトウェアをインストールする。
 
@@ -328,9 +370,9 @@ FROM --platform=linux/amd64 python:latest-slim
 
 <br>
 
-### VOLUME
+## 11. VOLUME
 
-#### ▼ VOLUMEとは
+### VOLUMEとは
 
 ボリュームマウントを行う。
 
@@ -341,9 +383,9 @@ FROM --platform=linux/amd64 python:latest-slim
 
 <br>
 
-### WORKDIR
+## 12. WORKDIR
 
-#### ▼ WORKDIRとは
+### WORKDIRとは
 
 ビルド中の各命令の作業ディレクトリを絶対パスで指定する。
 
