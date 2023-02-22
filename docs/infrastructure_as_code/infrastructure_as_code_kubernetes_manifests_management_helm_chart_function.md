@@ -615,7 +615,7 @@ data:
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://lzone.de/blog/Helm-template-check-if-key-exists
 > - https://helm.sh/docs/chart_template_guide/function_list/#haskey
 
@@ -627,7 +627,6 @@ data:
 
 `and`演算子と`()`記号を使用する。
 
-
 ```yaml
 {{- if and (eq .Values.enableFoo true) (eq .Values.enableBar true) }}
   ...
@@ -636,11 +635,9 @@ data:
 
 > ↪️ 参考：https://stackoverflow.com/a/49819239
 
-
 ### OR条件
 
 `or`演算子と`()`記号を使用する。
-
 
 ```yaml
 {{- if or (eq .Values.global.env "dev") (eq .Values.global.env "tes") }}
@@ -649,7 +646,6 @@ data:
 ```
 
 > ↪️ 参考：https://stackoverflow.com/a/49819239
-
 
 <br>
 

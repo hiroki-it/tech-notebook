@@ -62,7 +62,6 @@ $ cat data.json | jq '.foo[]'
 
 出力結果のダブルクオーテーションを削除する。
 
-
 ```bash
 $ cat data.json | jq -r '.foo[]'
 
@@ -70,7 +69,6 @@ FOO
 BAR
 BAZ
 ```
-
 
 > ↪️ 参考：https://qiita.com/takeshinoda@github/items/2dec7a72930ec1f658af#%E3%83%80%E3%83%96%E3%83%AB%E3%82%AF%E3%82%A9%E3%83%BC%E3%83%88%E3%81%8C%E9%82%AA%E9%AD%94
 
@@ -127,8 +125,6 @@ $ cat data.json | jq '.'
 リストへのパスを表す。もしJSON型データが起点からリストだった場合は、『`.[]`』になる。
 
 オブジェクトを取得できるだけなため、取得したオブジェクトを再びリストに入れたい場合は、加えて`-s`オプションを有効化した`jq`コマンドに渡す必要がある。
-
-
 
 ```bash
 $ cat data.json | jq '.baz[]'
@@ -229,8 +225,6 @@ $ cat list.json | jq '.[] | select (.foo == "FOO" or .foo == "BAZ")' | jq -s '.'
 `jq`コマンドの実行結果を任意の文字で結合する。
 
 リストを扱う場合には、パスを『`[]`』で囲う必要がある。
-
-
 
 ```bash
 cat list.json | jq '[.[].foo] | join(" ")'

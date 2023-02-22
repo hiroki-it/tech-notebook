@@ -128,7 +128,6 @@ return [
 
 artisanコマンドで実行できるコマンド処理を定義する。
 
-
 ```php
 <?php
 
@@ -173,7 +172,6 @@ class FooCommand extends Command
 ```bash
 $ php artisan command:do-foo
 ```
-
 
 > ↪️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
@@ -571,8 +569,6 @@ Eloquentモデルでは、インスタンス作成時に`boot`メソッドがコ
 Traitに`boot+<クラス名>`という名前の静的メソッドが定義されていると、`bootTraits`メソッドはこれをコールする。
 
 `bootTraits`メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
-
-
 
 **＊実装例＊**
 
@@ -988,7 +984,7 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 以下のクラスは、デフォルトで登録されているFacadeである。
 
-| エイリアス         | クラス名                                                                                                                            | サービスコンテナ結合キー |
+| エイリアス           | クラス名                                                                                                                            | サービスコンテナ結合キー |
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
 | App                  | [Illuminate\Foundation\Application](https://laravel.com/api/8.x/Illuminate/Foundation/Application.html)                             | `app`                    |
 | Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html)                         | `artisan`                |

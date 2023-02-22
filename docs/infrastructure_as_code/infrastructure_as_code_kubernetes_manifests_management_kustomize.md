@@ -46,7 +46,6 @@ resources:
 
 **＊実装例＊**
 
-
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -65,8 +64,6 @@ resources:
 #### ▼ `リソース定義ファイル`
 
 後の`overlays`ディレクトリの元になるリソース定義を設定する。
-
-
 
 **＊実装例＊**
 

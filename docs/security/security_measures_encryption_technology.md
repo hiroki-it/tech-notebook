@@ -147,7 +147,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 #### ▼ 公開鍵基盤による公開鍵検証の仕組み
 
-![デジタル証明書 (SSL証明書) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル証明書 (SSL証明書) .gif)
+![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.gif)
 
 **＊サーバーが行うこと＊**
 

@@ -35,7 +35,6 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 調査中...
 
-
 > ↪️ 参考：https://zenn.dev/nanagi/articles/0e899711611630#dry%EF%BC%88don't-repeat-yourself%EF%BC%89
 
 <br>
@@ -48,11 +47,9 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 <br>
 
-
 ### SOLID
 
 調査中...
-
 
 > ↪️ 参考：https://zenn.dev/nanagi/articles/0e899711611630#solid
 
@@ -75,5 +72,3 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 > ↪️ 参考：https://zenn.dev/nanagi/articles/0e899711611630#yagni%EF%BC%88you-ain't-gonna-need-it.%EF%BC%89
 
 <br>
-
-

@@ -151,7 +151,6 @@ dependencies:
 
 チャート内のマニフェストに、新しい`apiVersion`が存在する場合、これに対応できるkube-apiserverのバージョンを設定する。
 
-
 ```yaml
 kubeVersion: ">=1.22.0-0"
 ```

@@ -64,7 +64,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 #### ▼ SSHとは
 
-![SSH公開鍵認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSH公開鍵認証.png)
+![ssh_public-key-authentication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh_public-key-authentication.png)
 
 公開鍵暗号方式に基づく暗号化プロトコル。
 
@@ -227,7 +227,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 #### ▼ VPNとは
 
-![VPN (ネットワーク間) ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPN (ネットワーク間) .png)
+![vpn_between_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_between_network.png)
 
 異なるネットワーク間で安全な通信を行うための仕組み。
 

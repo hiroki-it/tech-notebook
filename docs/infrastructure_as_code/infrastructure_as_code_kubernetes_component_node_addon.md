@@ -252,7 +252,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 ### ALB Ingress
 
-AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと```.spec.rules```キーに設定に応じて、ALB Ingressを自動的にプロビジョニングする。
+AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、ALB Ingressを自動的にプロビジョニングする。
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
@@ -263,7 +263,6 @@ AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと```.s
 #### ▼ `.metadata.annotations`キーとは
 
 ALB Ingressをリスナールール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
-
 
 > ↪️ 参考：
 >
@@ -409,7 +408,6 @@ metadata:
 ALB Ingressのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
-
 
 <br>
 

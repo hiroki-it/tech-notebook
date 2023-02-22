@@ -303,17 +303,16 @@ API Gatewayのため、リバースプロキシやロードバランサーとは
 
 **＊実装例＊**
 
-
 ```nginx
 server {
    listen 80 default_server;
    listen [::]:80 default_server;
- 
+
    # Products API
    location /api/products {
        proxy_pass http://products.api.com:8001;
    }
- 
+
    # Users API
    location /api/users {
        proxy_pass http://products.api.com:8002;
@@ -322,7 +321,7 @@ server {
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/
 > - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
 
