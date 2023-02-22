@@ -132,6 +132,7 @@ nav:
   - 🚀 アプリ:
       - software/application/index.md
       - ■ アーキテクチャ:
+          - アーキテクチャ: software/software_application_architecture.md
           - オブジェクト指向分析設計: software/software_application_architecture_analysis_and_design.md
           - ■ バックエンド:
               - マイクロサービスアーキテクチャ: software/software_application_architecture_backend_microservices.md
