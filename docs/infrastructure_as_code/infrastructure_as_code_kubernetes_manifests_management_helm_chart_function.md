@@ -594,13 +594,39 @@ data:
 
 <br>
 
-## 05. 条件分岐
+## 05. 検証
+
+### hasKey
+
+キーが存在する場合、`true`を返却する。
+
+キーが存在する場合にのみ、そのキー配下の構造を使用するような場面で役立つ。
+
+一方で、別途`enabled`キーを用意するのもありである。
+
+```yaml
+{{- if hasKey .Values.foo "baz" }}
+  baz:
+    {{- range baz.list }}
+    - {{ . }}
+    {{- end }}
+  ...
+{{- end }}
+```
+
+> ↪️ 参考：
+> 
+> - https://lzone.de/blog/Helm-template-check-if-key-exists
+> - https://helm.sh/docs/chart_template_guide/function_list/#haskey
+
+<br>
+
+## 06. 条件分岐
 
 ### AND条件
 
 `and`演算子と`()`記号を使用する。
 
-> ↪️ 参考：https://stackoverflow.com/a/49819239
 
 ```yaml
 {{- if and (eq .Values.enableFoo true) (eq .Values.enableBar true) }}
@@ -608,11 +634,13 @@ data:
 {{- end }}
 ```
 
+> ↪️ 参考：https://stackoverflow.com/a/49819239
+
+
 ### OR条件
 
 `or`演算子と`()`記号を使用する。
 
-> ↪️ 参考：https://stackoverflow.com/a/49819239
 
 ```yaml
 {{- if or (eq .Values.global.env "dev") (eq .Values.global.env "tes") }}
@@ -620,9 +648,12 @@ data:
 {{- end }}
 ```
 
+> ↪️ 参考：https://stackoverflow.com/a/49819239
+
+
 <br>
 
-## 06. コメントアウト
+## 07. コメントアウト
 
 ### Helmのコメントアウト
 

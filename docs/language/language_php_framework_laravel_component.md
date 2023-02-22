@@ -128,7 +128,6 @@ return [
 
 artisanコマンドで実行できるコマンド処理を定義する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
 ```php
 <?php
@@ -174,6 +173,9 @@ class FooCommand extends Command
 ```bash
 $ php artisan command:do-foo
 ```
+
+
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
 <br>
 
@@ -562,9 +564,15 @@ class EventServiceProvider extends ServiceProvider
 
 #### ▼ 任意のEloquentモデルCRUDイベントの検知
 
-Laravelの多くのコンポーネントに、`boot`メソッドが定義されている。Eloquentモデルでは、インスタンス作成時に`boot`メソッドがコールされ、これによりに`bootTraits`メソッドが実行される。Traitに`boot+<クラス名>`という名前の静的メソッドが定義されていると、`bootTraits`メソッドはこれをコールする。`bootTraits`メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
+Laravelの多くのコンポーネントに、`boot`メソッドが定義されている。
 
-> ↪️ 参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
+Eloquentモデルでは、インスタンス作成時に`boot`メソッドがコールされ、これによりに`bootTraits`メソッドが実行される。
+
+Traitに`boot+<クラス名>`という名前の静的メソッドが定義されていると、`bootTraits`メソッドはこれをコールする。
+
+`bootTraits`メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
+
+
 
 **＊実装例＊**
 
@@ -730,6 +738,8 @@ class ExecutorConstant
 }
 ```
 
+> ↪️ 参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
+
 <br>
 
 ## 07. Exception
@@ -852,7 +862,11 @@ class Handler extends ExceptionHandler
 
 #### ▼ `render`メソッド
 
-Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。代わりとして、各コントローラーに`try-catch`と異常系レスポンスの返信処理を実装する。
+Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。
+
+異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。
+
+代わりとして、各コントローラーに`try-catch`と異常系レスポンスの返信処理を実装する。
 
 > ↪️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 

@@ -12,6 +12,7 @@
 
 ### アーキテクチャ
 
+* #### [アーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture.html)
 * #### [︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html)
 * #### <u>バックエンド</u>
   > * ##### [︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_microservices.html)

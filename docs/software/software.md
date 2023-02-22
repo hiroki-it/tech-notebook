@@ -21,19 +21,11 @@ description: ソフトウェアの知見を記録しています。
 
 『OS』『ミドルウェア』『ハードウェア』をインフラとも呼ぶ。
 
-> ↪️ 参考：https://thinkit.co.jp/article/11526
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
-<br>
+> ↪️ 参考：https://thinkit.co.jp/article/11526
 
-### Twelve-Factor
-
-#### ▼ Twelve-Factorとは
-
-Webシステムのソフトウェアを開発する上でのベストプラクティスのこと。
-
-> ↪️ 参考：https://12factor.net/ja/
 
 <br>
 
@@ -49,11 +41,13 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 
 ### ネイティブアプリケーション
 
-![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネイティブアプリ.png)
 
 端末のシステムによって稼働するアプリケーションのこと。
 
 一度ダウンロードしてしまえば、インターネットに繋がっていなくとも、使用できる。
+
+![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネイティブアプリ.png)
+
 
 > ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
 
@@ -97,11 +91,13 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 
 ### ハイブリッドアプリケーション
 
+
+端末でWebviewを稼働させ、ソフトウェアの`.html`ファイルのレンダリングをWebview上で行うアプリケーションのこと。
+
 ![Webviewよるアプリパッケージ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webviewよるアプリパッケージ.png)
 
 ![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッドアプリ.png)
 
-端末でWebviewを稼働させ、ソフトウェアの`.html`ファイルのレンダリングをWebview上で行うアプリケーションのこと。
 
 > ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
 
@@ -191,7 +187,6 @@ UNIXから分岐したLinuxは、加えて3系統 (Debian、RedHat、Slackware) 
 
 Debian、Ubuntu、など
 
-> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 ```bash
 # 確認方法
@@ -200,11 +195,13 @@ $ cat /etc/issue
 Debian GNU/Linux 10 \n \l
 ```
 
+> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+
+
 #### ▼ RedHat系統
 
 RedHat、CentOS、Fedora、など
 
-> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 ```bash
 # 確認方法
@@ -213,6 +210,9 @@ $ cat /etc/issue
 CentOS release 5.5 (Final)
 Kernel \r on an \m
 ```
+
+> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+
 
 #### ▼ Slackware系統
 

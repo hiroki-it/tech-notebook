@@ -35,11 +35,13 @@ fooBarBaz: ""
 
 例えば、Envoyではスネークケースに統一されている。
 
-> ↪️ 参考：https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
-
 ```yaml
 foo_bar_baz: ""
 ```
+
+
+> ↪️ 参考：https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
+
 
 #### ▼ ケバブケース
 
@@ -83,7 +85,6 @@ fruit:
 
 コマンドを繋ぐ`&&`は不要である。
 
-> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: |
@@ -96,6 +97,9 @@ command: |
 { "command" => "echo foo\necho bar\n" }
 ```
 
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+
+
 #### ▼ `|+` (パイプ、プラス)
 
 改行を改行のまま処理する。
@@ -104,7 +108,6 @@ command: |
 
 コマンドを繋ぐ`&&`は不要である。
 
-> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: |+
@@ -116,6 +119,9 @@ command: |+
 { "command" => "echo foo\necho bar\n" }
 ```
 
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+
+
 #### ▼ `|-` (パイプ、マイナス)
 
 改行を改行のまま処理する。
@@ -124,7 +130,6 @@ command: |+
 
 コマンドを繋ぐ`&&`は不要である。
 
-> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: |-
@@ -137,6 +142,9 @@ command: |-
 { "command" => "echo foo\necho bar" }
 ```
 
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+
+
 #### ▼ `>` (大なり)
 
 改行をスペースに変換して処理する。
@@ -145,7 +153,6 @@ command: |-
 
 改行した異なるコマンドが、スペースを挟んで繋がってしまうため、`&&`で繋ぐ必要がある。
 
-> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: >
@@ -173,6 +180,9 @@ command: >
   fi
 ```
 
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+
+
 #### ▼ `>+` (大なり、プラス)
 
 改行をスペースに変換して処理する。
@@ -183,7 +193,6 @@ command: >
 
 改行した異なるコマンドが、スペースを挟んで繋がってしまうため、`&&`で繋ぐ必要がある。
 
-> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: >+
@@ -195,6 +204,9 @@ command: >+
 { "command" => "echo foo && echo bar\n" }
 ```
 
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+
+
 #### ▼ `>-` (大なり、マイナス)
 
 改行をスペースに変換して処理する。
@@ -205,7 +217,6 @@ command: >+
 
 改行した異なるコマンドが、スペースを挟んで繋がってしまうため、`&&`で繋ぐ必要がある。
 
-> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 ```yaml
 command: >-
@@ -217,5 +228,8 @@ command: >-
 # 処理中の構造
 { "command" => "echo foo && echo bar" }
 ```
+
+> ↪️ 参考：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+
 
 <br>

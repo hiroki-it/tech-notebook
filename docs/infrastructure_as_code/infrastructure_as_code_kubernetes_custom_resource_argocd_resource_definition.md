@@ -998,6 +998,8 @@ spec:
     - "*"
 ```
 
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#implementation-details
+
 <br>
 
 ### sourceRepos

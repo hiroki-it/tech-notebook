@@ -21,8 +21,6 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 
 実行環境別に`kustomization.yaml`ファイルを定義し、実行環境別に異なるリソース定義ファイルを作成できるようにする。
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
-
 ```yaml
 repository/
 ├── base
@@ -32,11 +30,15 @@ repository/
 │   └── kustomization.yaml
 │
 └── overlays
-├── dev/
-│   └── kustomization.yaml
-│
-├── prod/
-└── stg/
+    ├── dev/
+    │   └── kustomization.yaml
+    │
+    ├── prd/
+    └── stg/
 ```
+
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
+
 
 <br>

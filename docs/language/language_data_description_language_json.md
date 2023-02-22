@@ -337,3 +337,5 @@ $json = json_encode($object);
 var_dump($json);
 // ""{\"fruit\":[\"banana\",\"apple\"],\"account\":200}""
 ```
+
+<br>

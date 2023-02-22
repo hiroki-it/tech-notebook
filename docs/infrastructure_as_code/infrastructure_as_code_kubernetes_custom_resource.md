@@ -28,6 +28,16 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 ### カスタムリソース固有の問題
 
+#### ▼ 共通エラー
+
+以下のようなエラーになる場合、カスタムリソース定義が存在していないか、カスタムリソース定義が古くて新しいカスタムリソースが対応していない可能性がある。
+
+```bash
+Failed to render chart: exit status 1: Error: unable to build kubernetes objects from release manifest: error validating ""
+```
+
+#### ▼ 個別
+
 メモ程度に、カスタムリソースで起こった固有の問題を記載しておく。
 
 | 問題                                                                                                                                                                   | 解決策                                                                                                                                                                                                       | 該当のカスタムリソース |
@@ -80,6 +90,8 @@ the server could not find the requested resource
 >
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
 > - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
+
+<br>
 
 ### .apiVersion
 

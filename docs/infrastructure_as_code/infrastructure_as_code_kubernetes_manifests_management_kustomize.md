@@ -21,6 +21,14 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 `base`ディレクトリ配下にあるファイルの処理方法を設定する。
 
+`kubectl`コマンドで`-k`オプションを有効化すると、`kustomize.yaml`ファイルを使用してマニフェストを生成できる。
+
+```bash
+$ kubectl diff -k kustomization.yaml
+
+$ kubectl apply -k kustomization.yaml
+```
+
 > ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 #### ▼ resources
@@ -36,6 +44,20 @@ resources:
   - ./applications/deployment.yaml
 ```
 
+**＊実装例＊**
+
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - application-crd.yaml
+  - appproject-crd.yaml
+  - applicationset-crd.yaml
+```
+
+> ↪️ 参考：https://github.com/argoproj/argo-cd/tree/master/manifests/crds
+
 <br>
 
 ### `resources`ディレクトリ
@@ -44,7 +66,7 @@ resources:
 
 後の`overlays`ディレクトリの元になるリソース定義を設定する。
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+
 
 **＊実装例＊**
 
@@ -77,6 +99,8 @@ spec:
             - name: foo-gin
               mountPath: /go/src
 ```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 <br>
 
@@ -134,7 +158,7 @@ spec:
 
 ここでは、Deploymentの差分を設定する。
 
-`.spec.template.spec.containers[].resources`キー以下はbaseディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+`.spec.template.spec.containers[].resources`キー以下は`base`ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
 ```yaml
 apiVersion: apps/v1
