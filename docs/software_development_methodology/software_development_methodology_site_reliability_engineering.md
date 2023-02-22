@@ -127,6 +127,15 @@ SREerチームは、T字型のスキルを持った様々なエンジニア (例
 
 様々なプロダクトの信頼性を高めるために、SREerがアプリケーションチームやチーム内SREerを支援するインフラを開発する。
 
+> ↪️ 参考：https://hrmos.co/pages/moneyforward/jobs/040infra01
+
+#### ▼ Enabling SRE (CCeE)
+
+前者にSREのプラクティスを広める。
+
+> ↪️ 参考：https://hrmos.co/pages/moneyforward/jobs/040infra01
+
+
 <br>
 
 ## 02. その他情報収集

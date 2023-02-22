@@ -593,7 +593,7 @@ services:
 
 ### `networks`とは
 
-標準のネットワークを作成する。ただし定義しなくとも自動的に作成される。ネットワーク名は、指定しない場合に『<プロジェクト名>_default』になる。
+標準のネットワークを作成する。ただし定義しなくとも自動的に作成される。ネットワーク名は、指定しない場合に『`<プロジェクト名>_default`』になる。
 
 <br>
 
@@ -801,3 +801,5 @@ GRANT ALL ON *.* TO 'foo'@'%' ;
 PHPUnitで接続するDBを指定する方法については、以下のリンクを参考にせよ。
 
 > ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
+
+<br>
