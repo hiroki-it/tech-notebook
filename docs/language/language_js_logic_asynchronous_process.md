@@ -26,7 +26,6 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 これは非同期処理である。
 
-
 **＊実装例＊**
 
 非同期化する処理を`setTimeout`関数に渡し、処理を遅らせる。
@@ -47,7 +46,6 @@ asyncMethod();
 // bar
 // foo
 ```
-
 
 > ↪️ 参考：https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
 

@@ -34,8 +34,8 @@ $ istioctl operator init
 
 Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン番号>
 Operator controller will watch namespaces: istio-system
-✔ Istio operator installed
-✔ Installation complete
+✅ Istio operator installed
+✅ Installation complete
 ```
 
 `【２】`
@@ -49,12 +49,12 @@ Operator controller will watch namespaces: istio-system
 
 ```bash
 # istioctlコマンド
-$ istioctl install -y -f istio-operator.yaml
+$ istioctl install -y -f ./istio-operator.yaml
 
-✔ Istio core installed
-✔ Istiod installed
-✔ Ingress gateways installed
-✔ Installation complete
+✅ Istio core installed
+✅ Istiod installed
+✅ Ingress gateways installed
+✅ Installation complete
 Making this installation the default for injection and validation.
 ```
 
@@ -633,7 +633,7 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  revision: 1-0-0 # ハイフン繋ぎのバージョン表記
+  revision: 1-10-0 # ハイフン繋ぎのバージョン表記
 ```
 
 <br>

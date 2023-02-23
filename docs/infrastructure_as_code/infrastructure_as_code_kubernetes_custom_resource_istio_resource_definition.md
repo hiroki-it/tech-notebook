@@ -25,7 +25,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 ```bash
 # IstioOperatorのdemoをインストールし、リソースを作成する。
-$ istioctl install --set profile=demo
+$ istioctl install --set profile=demo revision=1-10-0
 
 # 外部のチャートを使用する場合
 $ istioctl install --manifests=foo-chart
@@ -337,7 +337,7 @@ spec:
   template:
     metadata:
       annotations:
-        istio.io/rev: 1-0-0
+        istio.io/rev: 1-10-0
 ```
 
 <br>

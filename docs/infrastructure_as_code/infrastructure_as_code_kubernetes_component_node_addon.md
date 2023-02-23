@@ -91,7 +91,6 @@ module "iam_policy_aws_load_balancer_controller" {
   source      = "terraform-aws-modules/iam/aws//modules/iam-policy"
   version     = "<モジュールのバージョン>"
   name        = "foo-aws-load-balancer-controller"
-  path        = "/"
   description = "This is the policy of AWS LB Controller"
   policy      = templatefile(
     "${path.module}/policies/aws_load_balancer_controller_policy.tpl",

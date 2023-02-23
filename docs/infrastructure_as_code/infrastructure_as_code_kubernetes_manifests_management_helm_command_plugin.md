@@ -137,9 +137,7 @@ $ helm template ./foo-chart -f secrets://secrets.yaml
 
 <br>
 
-### オプション
-
-#### ▼ -f
+### -f
 
 暗号化された`values`ファイル (`secrets`ファイル) と、平文の`values`ファイルを使用して、`helm`コマンドを実行する。
 

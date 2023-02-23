@@ -54,8 +54,6 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 > - https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 > - https://inokara.hateblo.jp/entry/2017/10/01/164446
 
-
-
 <br>
 
 ### セットアップ
@@ -84,7 +82,6 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 
 Datadogで、分散トレースは複数のスパンの配列データとして定義される。
 
-
 ```yaml
 [span1, span2, span3]
 ```
@@ -96,7 +93,6 @@ Datadogで、分散トレースは複数のスパンの配列データとして�
 ```
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
-
 
 #### ▼ スパンの構成
 

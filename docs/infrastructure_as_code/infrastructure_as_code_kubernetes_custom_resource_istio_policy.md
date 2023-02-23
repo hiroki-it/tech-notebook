@@ -316,8 +316,8 @@ $ kubectl apply -f manifests/charts/base/crds
      この手順は、```istioctl install```コマンドによるIstiodのインストールに相当する。
 
 ```bash
-# アップグレード先が1.1.0とする。
-$ helm install istiod istio/istiod --set revision=1-1-0 -n istio-system
+# アップグレード先が1.11.0とする。
+$ helm install istiod istio/istiod --set revision=1-11-0 -n istio-system
 ```
 
 `【３】`
@@ -328,26 +328,26 @@ $ helm install istiod istio/istiod --set revision=1-1-0 -n istio-system
 # Deployment
 $ kubectl get deployment -n istio-system
 
-NAME                READY   STATUS    RESTARTS   AGE
-istiod-1-0-0        1/1     Running   0          1m  # 1-0-0
-istiod-1-1-0        1/1     Running   0          1m  # 1-1-0 (今回のアップグレード先)
+NAME                 READY   STATUS    RESTARTS   AGE
+istiod-1-10-0        1/1     Running   0          1m  # 1-10-0
+istiod-1-11-0        1/1     Running   0          1m  # 1-11-0 (今回のアップグレード先)
 
 
 # Service
 $ kubectl get svc -n istio-system
 
-NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
-istiod-1-0-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
-istiod-1-1-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+NAME              TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
+istiod-1-10-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
+istiod-1-11-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
 
 
 # MutatingWebhookConfiguration
 $ kubectl get mutatingwebhookconfigurations
 
 NAME                                  WEBHOOKS   AGE
-istio-sidecar-injector-1-0-0          1          7m56s # 1-0-0
-istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0 (今回のアップグレード先)
-istio-revision-tag-default            1          3m18s # 現在のリビジョン番号 (1-0-0) を定義するdefaultタグを持つ
+istio-sidecar-injector-1-10-0         1          7m56s # 1-10-0
+istio-sidecar-injector-1-11-0         1          7m56s # 1-11-0 (今回のアップグレード先)
+istio-revision-tag-default            1          3m18s # 現在のリビジョン番号 (1-10-0) を定義するdefaultタグを持つ
 ```
 
 `【４】`
@@ -364,10 +364,10 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 
 ```bash
 # IngressGatewayの特定のNamespace
-$ kubectl label namespace ingress istio.io/rev=1-1-0 istio-injection- --overwrite
+$ kubectl label namespace ingress istio.io/rev=1-11-0 istio-injection- --overwrite
 
 # アプリの特定のNamespace
-$ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrite
+$ kubectl label namespace foo-app istio.io/rev=1-11-0 istio-injection- --overwrite
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/
@@ -381,7 +381,7 @@ $ kubectl label namespace foo-app istio.io/rev=1-1-0 istio-injection- --overwrit
      MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
 
 ```bash
-$ istioctl tag set default --revision 1-1-0 --overwrite
+$ istioctl tag set default --revision 1-11-0 --overwrite
 ```
 
 > ↪️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
@@ -404,9 +404,9 @@ $ kubectl rollout restart deployment app-deployment -n app
 $ istioctl proxy-status
 
 NAME                     CLUSTER        CDS        LDS        EDS        RDS          ISTIOD           VERSION
-foo-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED       istiod-1-1-0     1.1.0
-bar-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED       istiod-1-0-0     1.0.0 # まだ古いIstiodコントロールプレーンと紐づく
-istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SENT     istiod-1-1-0     1.1.0
+foo-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED       istiod-1-11-0     1.11.0
+bar-app                  Kubernetes     SYNCED     SYNCED     SYNCED     SYNCED       istiod-1-10-0     1.10.0 # まだ古いIstiodコントロールプレーンと紐づく
+istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SENT     istiod-1-11-0     1.11.0
 ```
 
 > ↪️ 参考：
@@ -424,9 +424,9 @@ istio-ingressgateway     Kubernetes     SYNCED     SYNCED     SYNCED     NOT SEN
 
 ```bash
 # 他のNamespaceでも新istio-proxyコンテナを検証していく。
-$ kubectl label namespace bar-app istio.io/rev=1-1-0 istio-injection- --overwrite
+$ kubectl label namespace bar-app istio.io/rev=1-11-0 istio-injection- --overwrite
 
-$ kubectl label namespace baz-app istio.io/rev=1-1-0 istio-injection- --overwrite
+$ kubectl label namespace baz-app istio.io/rev=1-11-0 istio-injection- --overwrite
 ```
 
 `【８】`
@@ -444,7 +444,7 @@ $ kubectl label namespace baz-app istio.io/rev=1-1-0 istio-injection- --overwrit
 : 古いIstiodコントロールプレーンをアンインストールする。
 
 ```bash
-$ istioctl uninstall --revision 1-0-0 -y
+$ istioctl uninstall --revision 1-10-0
 ```
 
 `【１２】`
@@ -456,22 +456,22 @@ $ istioctl uninstall --revision 1-0-0 -y
 $ kubectl get deployment -n istio-system
 
 NAME                READY   STATUS    RESTARTS   AGE
-istiod-1-1-0        1/1     Running   0          1m  # 1-1-0
+istiod-1-11-0        1/1     Running   0          1m  # 1-11-0
 
 
 # Service
 $ kubectl get svc -n istio-system
 
 NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
-istiod-1-1-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+istiod-1-11-0     ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
 
 
 # MutatingWebhookConfiguration
 $ kubectl get mutatingwebhookconfigurations
 
 NAME                                  WEBHOOKS   AGE
-istio-sidecar-injector-1-1-0          1          7m56s # 1-1-0
-istio-revision-tag-default            1          3m18s # 現在のリビジョン番号 (1-1-0) を定義するdefaultタグを持つ
+istio-sidecar-injector-1-11-0          1          7m56s # 1-11-0
+istio-revision-tag-default            1          3m18s # 現在のリビジョン番号 (1-11-0) を定義するdefaultタグを持つ
 ```
 
 > ↪️ 参考：
