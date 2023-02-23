@@ -1063,7 +1063,7 @@ resource "aws_lb_target_group" "this" {
   name                 = "prd-foo-nlb-tg"
   port                 = 80
   protocol             = "TCP"
-  vpc_id               = "*****"
+  vpc_id               = "vpc-*****"
   deregistration_delay = "60"
   target_type          = "ip"
 

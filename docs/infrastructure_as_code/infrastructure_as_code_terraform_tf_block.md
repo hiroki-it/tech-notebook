@@ -45,7 +45,7 @@ resource "aws_lb" "this" {
   name               = "prd-foo-alb"
   load_balancer_type = "application"
   security_groups    = ["*****"]
-  subnets            = ["*****","*****"]
+  subnets            = ["subnet-*****","subnet-*****"]
 }
 ```
 
@@ -565,7 +565,7 @@ resource "aws_lb_target_group" "this" {
   name                 = "prd-foo-alb-tg"
   port                 = 80
   protocol             = "HTTP"
-  vpc_id               = "*****"
+  vpc_id               = "vpc-*****"
   deregistration_delay = "60"
   target_type          = "ip"
   slow_start           = "60"

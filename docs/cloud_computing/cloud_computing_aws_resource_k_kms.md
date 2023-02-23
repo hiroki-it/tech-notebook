@@ -91,13 +91,13 @@ KMSのアクセス制限を設定する。
 
 #### ▼ オリジン
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin
 
 #### ▼ キーの仕様
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec
 

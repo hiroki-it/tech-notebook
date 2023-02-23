@@ -26,7 +26,6 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 これは非同期処理である。
 
-> ↪️ 参考：https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
 
 **＊実装例＊**
 
@@ -48,6 +47,9 @@ asyncMethod();
 // bar
 // foo
 ```
+
+
+> ↪️ 参考：https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
 
 <br>
 
@@ -102,7 +104,15 @@ const asyncFunc = () => {
 
 #### ▼ コンストラクタを使用する場合
 
-Promiseオブジェクトのコンストラクタ内では、暗黙的に`try-catch`が実行されている。そのため、結果のステータスが成功であれば`resolve`メソッドの結果を返却し、反対に失敗であれば`reject`メソッドを返却する。両方を実装すると良しなに実行してくれる。`resolve`メソッドと`resolve`メソッドのコール時に`return`を使用しないと、後続する処理も実行される。1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。
+Promiseオブジェクトのコンストラクタ内では、暗黙的に`try-catch`が実行されている。
+
+そのため、結果のステータスが成功であれば`resolve`メソッドの結果を返却し、反対に失敗であれば`reject`メソッドを返却する。
+
+両方を実装すると良しなに実行してくれる。
+
+`resolve`メソッドと`resolve`メソッドのコール時に`return`を使用しないと、後続する処理も実行される。
+
+1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。
 
 ```javascript
 const asyncFunc = () => {
@@ -193,7 +203,7 @@ const asyncFunc = () => {
 console.log(asyncFunc()); // エラーになる
 ```
 
-```log
+```yaml
 UnhandledPromiseRejectionWarning: FAILED
 (Use `node --trace-warnings ...` to show where the warning was created)
 UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)

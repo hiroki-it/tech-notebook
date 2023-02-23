@@ -48,7 +48,7 @@ RESTに基づいた設計をRESTfulという。RESTful設計が使用されたWe
 
 #### ▼ Connectabilityであること
 
-調査中...
+記入中...
 
 #### ▼ Uniform Interfaceであること
 

@@ -857,7 +857,7 @@ ports:
 
 ## 09. HTTPRoute
 
-調査中...
+記入中...
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
@@ -1226,7 +1226,7 @@ spec:
 
 ## 13. Gateway
 
-調査中...
+記入中...
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1

@@ -27,7 +27,9 @@ PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとし�
 
 ### EKSアドオンとして
 
-#### ▼ Terraformを使用して
+#### ▼ Terraformの公式モジュールの場合
+
+Terraformの公式モジュールを使用する。
 
 Terraformの`aws_eks_addon`でEKSアドオンをインストールし、EBS CSIドライバーに関するKubernetesリソースを作成する。
 
@@ -44,25 +46,34 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon#example-usage
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-ebs-csi.html
+
 ```terraform
-# ebs-csi-driver-controllerのServiceAccountにIAMロールを紐づける、
-module "iam_assumable_role_ebs_csi_driver" {
+module "iam_assumable_role_ebs_csi_driver_with_oidc" {
   count = var.enable_ebs_csi_driver ? 1 : 0
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "4.20.0"
+  version                       = "<モジュールのバージョン>"
+
+  # EBS CSIコントローラーのPodに紐づけるIAMロール
   create_role                   = true
   role_name                     = "foo-ebs-csi-driver"
+
+  # EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
+
+  # IAMロールに紐づけるIAMポリシー
   role_policy_arns              = ["arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"]
+
+  # EBS CSIコントローラーのPodのサービスアカウント名
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
 }
 ```
 
-> ↪️ 参考：
->
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-ebs-csi.html
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon
+> ↪️ 参考：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
 
 また、StorageClassを定義する必要があるが、これはTerraformでもマニフェストでもどちらでもよい。
 
@@ -95,11 +106,11 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 > ↪️ 参考：
 >
 > - https://kubernetes.io/ja/docs/concepts/storage/storage-classes/
-> - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class
+> - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
 
-#### ▼ Helmを使用して
+#### ▼ Helmの場合
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver
 

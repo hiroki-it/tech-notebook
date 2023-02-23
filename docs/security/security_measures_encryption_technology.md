@@ -197,9 +197,9 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 | 方法 | 中間認証局名          | ルート認証局名 |
 | ---- | --------------------- | -------------- |
-| 自前 | Vault                 | 調査中...      |
+| 自前 | Vault                 | 記入中...      |
 | AWS  | Amazon Trust Services | Starfield社    |
-| GCP  | Google Trust Services | 調査中...      |
+| GCP  | Google Trust Services | 記入中...      |
 
 > ↪️ 参考：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
@@ -456,11 +456,11 @@ $ curl https://foo.example.com -v
 
 #### ▼ OP25B (Outbound Port 25 Blocking)
 
-調査中...
+記入中...
 
 #### ▼ SPF (Sender Policy Framework)
 
-調査中...
+記入中...
 
 <br>
 
@@ -474,7 +474,7 @@ $ curl https://foo.example.com -v
 
 ### 生体認証
 
-調査中...
+記入中...
 
 ![生体認証-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/生体認証-1.png)
 

@@ -344,7 +344,7 @@ func main() {
 
 #### ▼ コメントの書式
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
 

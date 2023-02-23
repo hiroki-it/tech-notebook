@@ -76,7 +76,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 #### ▼ Kubernetes + Istioの場合
 
-調査中...
+記入中...
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
 

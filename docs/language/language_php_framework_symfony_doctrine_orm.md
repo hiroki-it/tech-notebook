@@ -31,7 +31,7 @@ Data Mapperパターンで実装されている。
 
 CRUD処理に必要なSQLを保持し、トランザクションによってSQLを実行する。
 
-> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
+
 
 **＊実装例＊**
 
@@ -41,6 +41,8 @@ CRUD処理に必要なSQLを保持し、トランザクションによってSQL�
 // QueryBuilderインスタンスを作成。
 $queryBuilder = $this->createQueryBuilder();
 ```
+
+> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
 
 <br>
 

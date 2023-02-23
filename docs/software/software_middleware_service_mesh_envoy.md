@@ -291,7 +291,7 @@ message DiscoveryResponse {
 
 #### ▼ リクエスト内容の種類
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types
 
@@ -984,13 +984,13 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 ### `l4`または`L7`ロードバランサーのミドルウェアとして
 
-調査中...
+記入中...
 
 <br>
 
 ### フォワードプロキシのミドルウェアとして
 
-調査中...
+記入中...
 
 <br>
 

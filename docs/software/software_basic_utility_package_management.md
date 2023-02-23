@@ -536,6 +536,6 @@ $ pyenv which python
 
 ### rbenv (Ruby)
 
-調査中...
+記入中...
 
 <br>

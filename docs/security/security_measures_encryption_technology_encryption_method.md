@@ -31,11 +31,11 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 #### ▼ DES暗号：Data Encryption Standard
 
-調査中...
+記入中...
 
 #### ▼ AES暗号：Advanced Encryption Standard
 
-調査中...
+記入中...
 
 <br>
 
@@ -47,7 +47,7 @@ description: 暗号方式＠通信データの暗号化技術の知見を記録�
 
 #### ▼ RSA暗号：Rivest-Shamir-Adleman cryptosystem
 
-調査中...
+記入中...
 
 <br>
 

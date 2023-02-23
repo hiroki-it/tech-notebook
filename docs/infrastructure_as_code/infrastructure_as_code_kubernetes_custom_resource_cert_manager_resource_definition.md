@@ -187,7 +187,7 @@ spec:
 
 #### ▼ usagesとは
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://www.ibm.com/docs/ja/cloud-paks/1.0?topic=certificates-customizing-cert-manager#keyUsage
 

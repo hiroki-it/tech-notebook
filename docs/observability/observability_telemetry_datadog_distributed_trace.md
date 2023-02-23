@@ -47,18 +47,22 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
+![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
+
 > ↪️ 参考：
 >
 > - https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 > - https://inokara.hateblo.jp/entry/2017/10/01/164446
 
-![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
+
 
 <br>
 
 ### セットアップ
 
 #### ▼ パッケージ一覧
+
+記入中...
 
 > ↪️ 参考：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
 
@@ -80,7 +84,6 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 
 Datadogで、分散トレースは複数のスパンの配列データとして定義される。
 
-> ↪️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 ```yaml
 [span1, span2, span3]
@@ -91,6 +94,9 @@ Datadogで、分散トレースは複数のスパンの配列データとして�
 ```yaml
 [trace1, trace2, trace3]
 ```
+
+> ↪️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+
 
 #### ▼ スパンの構成
 
@@ -205,7 +211,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ エラートラッキングの仕組み
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
 

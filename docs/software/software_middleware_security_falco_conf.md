@@ -83,7 +83,7 @@ plugins:
 
 ### load_plugins
 
-調査中...
+記入中...
 
 ```yaml
 load_plugins: []
@@ -93,7 +93,7 @@ load_plugins: []
 
 ### watch_config_files
 
-調査中...
+記入中...
 
 ```yaml
 watch_config_files: true
@@ -103,7 +103,7 @@ watch_config_files: true
 
 ### time_format_iso_8601
 
-調査中...
+記入中...
 
 ```yaml
 time_format_iso_8601: false
@@ -113,7 +113,7 @@ time_format_iso_8601: false
 
 ### json_output
 
-調査中...
+記入中...
 
 ```yaml
 json_output: false
@@ -123,7 +123,7 @@ json_output: false
 
 ### json_include_output_property
 
-調査中...
+記入中...
 
 ```yaml
 json_include_output_property: true
@@ -133,7 +133,7 @@ json_include_output_property: true
 
 ### json_include_tags_property
 
-調査中...
+記入中...
 
 ```yaml
 json_include_tags_property: true
@@ -143,7 +143,7 @@ json_include_tags_property: true
 
 ### log_stderr
 
-調査中...
+記入中...
 
 ```yaml
 log_stderr: true
@@ -153,7 +153,7 @@ log_stderr: true
 
 ### log_syslog
 
-調査中...
+記入中...
 
 ```yaml
 log_syslog: true
@@ -163,7 +163,7 @@ log_syslog: true
 
 ### log_level
 
-調査中...
+記入中...
 
 ```yaml
 log_level: info
@@ -173,7 +173,7 @@ log_level: info
 
 ### libs_logger
 
-調査中...
+記入中...
 
 ```yaml
 libs_logger:
@@ -185,7 +185,7 @@ libs_logger:
 
 ### priority
 
-調査中...
+記入中...
 
 ```yaml
 priority: debug
@@ -195,7 +195,7 @@ priority: debug
 
 ### buffered_outputs
 
-調査中...
+記入中...
 
 ```yaml
 buffered_outputs: false
@@ -205,7 +205,7 @@ buffered_outputs: false
 
 ### syscall_event_drops
 
-調査中...
+記入中...
 
 ```yaml
 syscall_event_drops:
@@ -222,7 +222,7 @@ syscall_event_drops:
 
 ### syscall_event_timeouts
 
-調査中...
+記入中...
 
 ```yaml
 syscall_event_timeouts:
@@ -233,7 +233,7 @@ syscall_event_timeouts:
 
 ### syscall_buf_size_preset
 
-調査中...
+記入中...
 
 ```yaml
 syscall_buf_size_preset: 4
@@ -243,7 +243,7 @@ syscall_buf_size_preset: 4
 
 ### output_timeout
 
-調査中...
+記入中...
 
 ```yaml
 output_timeout: 2000
@@ -253,7 +253,7 @@ output_timeout: 2000
 
 ### outputs
 
-調査中...
+記入中...
 
 ```yaml
 outputs:
@@ -265,7 +265,7 @@ outputs:
 
 ### syslog_output
 
-調査中...
+記入中...
 
 ```yaml
 syslog_output:
@@ -276,7 +276,7 @@ syslog_output:
 
 ### file_output
 
-調査中...
+記入中...
 
 ```yaml
 file_output:
@@ -289,7 +289,7 @@ file_output:
 
 ### stdout_output
 
-調査中...
+記入中...
 
 ```yaml
 stdout_output:
@@ -300,7 +300,7 @@ stdout_output:
 
 ### webserver
 
-調査中...
+記入中...
 
 ```yaml
 webserver:
@@ -316,7 +316,7 @@ webserver:
 
 ### program_output
 
-調査中...
+記入中...
 
 ```yaml
 program_output:
@@ -331,7 +331,7 @@ program_output:
 
 ### http_output
 
-調査中...
+記入中...
 
 ```yaml
 http_output:
@@ -344,7 +344,7 @@ http_output:
 
 ### grpc
 
-調査中...
+記入中...
 
 ```yaml
 grpc:
@@ -357,7 +357,7 @@ grpc:
 
 ### grpc_output
 
-調査中...
+記入中...
 
 ```yaml
 grpc_output:
@@ -368,7 +368,7 @@ grpc_output:
 
 ### metadata_download
 
-調査中...
+記入中...
 
 ```yaml
 metadata_download:

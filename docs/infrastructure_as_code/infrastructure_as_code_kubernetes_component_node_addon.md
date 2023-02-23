@@ -17,20 +17,22 @@ description: アドオン＠Nodeコンポーネントの知見を記録してい
 
 ### 外部Ingressコントローラーの種類
 
+Ingressコントローラーや、それに相当するもの (AWS LBコントローラー、Istio IngressGateway) が必要である。
+
 | コントローラー名                                              | 開発環境 | 本番環境 |
-| ------------------------------------------------------------- | -------- | -------- |
-| minikubeのingressアドオン (実体はNginx Ingressコントローラー) | ✅       |          |
-| AWS LBコントローラー                                          |          | ✅       |
-| GCP CLBコントローラー                                         |          | ✅       |
-| Nginx Ingressコントローラー                                   | ✅       | ✅       |
-| Istio Ingress                                                 | ✅       | ✅       |
-| Istio Gateway                                                 | ✅       | ✅       |
-| ...                                                           | ...      | ...      |
+| ------------------------------------------------------------- | :------: | :------: |
+| minikubeのingressアドオン (実体はNginx Ingressコントローラー) |    ✅    |          |
+| AWS LBコントローラー                                          |          |    ✅    |
+| GCP CLBコントローラー                                         |          |    ✅    |
+| Nginx Ingressコントローラー                                   |    ✅    |    ✅    |
+| Istio IngressGateway (NodePort Service、LoadBalancer Service) |    ✅    |    ✅    |
+| ...                                                           |   ...    |   ...    |
 
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
+> - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/
 
 <br>
 
@@ -55,9 +57,52 @@ Ingressでインバウンド通信を受信する場合に使用し、NodePort S
 
 <br>
 
-### セットアップ
+### セットアップ (AWS側)
 
-#### ▼ AWS側のセットアップ
+#### ▼ Terraformの公式モジュールの場合
+
+AWS LBコントローラーのセットアップのうち、AWS側で必要なものをまとめる。
+
+Terraformの公式モジュールを使用する。
+
+コマンド (例：`eksctl`コマンド) を使用しても良い。
+
+```terraform
+module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<モジュールのバージョン>"
+
+  # AWS LBコントローラーのPodに紐づけるIAMロール
+  create_role                   = true
+  role_name                     = "foo-aws-load-balancer-controller"
+
+  # EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
+
+  # IAMロールに紐づけるIAMポリシー
+  role_policy_arns              = [module.iam_policy_aws_load_balancer_controller.arn]
+
+  # AWS LBコントローラーのPodのサービスアカウント名
+  oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:foo-aws-load-balancer-controller"]
+}
+
+module "iam_policy_aws_load_balancer_controller" {
+  source      = "terraform-aws-modules/iam/aws//modules/iam-policy"
+  version     = "<モジュールのバージョン>"
+  name        = "foo-aws-load-balancer-controller"
+  path        = "/"
+  description = "This is the policy of AWS LB Controller"
+  policy      = templatefile(
+    "${path.module}/policies/aws_load_balancer_controller_policy.tpl",
+    {}
+  )
+}
+```
+
+> ↪️ 参考：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
+
+#### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
 
 AWS LBコントローラーのセットアップのうち、AWS側で必要なものをまとめる。
 
@@ -103,13 +148,11 @@ $ eksctl utils associate-iam-oidc-provider \
 2022-05-30 23:39:05 [ℹ]  IAM Open ID Connect provider is already associated with cluster "foo-eks-cluster" in "ap-northeast-1"
 ```
 
-#### ▼ Kubernetes側のセットアップ
+<br>
 
-AWS LBコントローラーのセットアップのうち、Kubernetes側で必要なものをまとめる。
+`【４】`
 
-`【１】`
-
-: AWS LBコントローラーのPodで使用するServiceAccountを作成する。
+: AWS LBコントローラーのPodのServiceAccountと、これに紐づくIAMロールを作成する。
 
 ```bash
 $ eksctl create iamserviceaccount \
@@ -121,11 +164,11 @@ $ eksctl create iamserviceaccount \
     --approve
 ```
 
-`【２】`
+> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/adot-iam.html
 
-: ServiceAccountを作成できたことを確認する。
+`【５】`
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+: ServiceAccountを作成できたことを確認する。IAMロールはコンソール画面から確認する。
 
 ```bash
 $ eksctl get iamserviceaccount \
@@ -159,7 +202,17 @@ secrets:
 - name: aws-load-balancer-controller-token-****
 ```
 
-`【３】`
+> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+
+<br>
+
+### セットアップ (Kubernetes側)
+
+#### ▼ Helmの場合
+
+AWS LBコントローラーのセットアップのうち、Kubernetes側で必要なものをまとめる。
+
+`【１】`
 
 : 指定したリージョンにAWS LBコントローラーをデプロイする。
 
@@ -176,7 +229,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/aws-load-balan
     --set serviceAccount.name=aws-load-balancer-controller \
     --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller \
     --set region=ap-northeast-1 \
-    --set vpcId=<VPCID>
+    --set vpcId=vpc-*****
 
 
 AWS Load Balancer controller installed!
@@ -202,7 +255,7 @@ AWS Load Balancer controller installed!
 > - https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
 
-`【４】`
+`【２】`
 
 : AWS LBコントローラーがデプロイされ、READY状態になっていることを確認する。
 
@@ -220,7 +273,7 @@ NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 aws-load-balancer-controller   2/2     2            0           22m
 ```
 
-`【５】`
+`【３】`
 
 : もし、以下の様に、`53`番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていない。
 
@@ -238,7 +291,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 }
 ```
 
-`【６】`
+`【４】`
 
 : Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。
 
@@ -269,7 +322,7 @@ ALB Ingressをリスナールール以外を設定するために、Ingressの`.
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
 
-#### ▼ `alb.ingress.kubernetes.io/certificate-arn`
+#### ▼ `alb.ingress.kubernetes.io/certificate-arn`キー
 
 ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。
 
@@ -282,7 +335,7 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: *****
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/healthcheck-path`
+#### ▼ `alb.ingress.kubernetes.io/healthcheck-path`キー
 
 ヘルスチェックのパスを設定する。
 
@@ -295,7 +348,7 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-path: /healthz
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/listen-ports`
+#### ▼ `alb.ingress.kubernetes.io/listen-ports`キー
 
 ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。
 
@@ -308,7 +361,7 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/load-balancer-attributes`
+#### ▼ `alb.ingress.kubernetes.io/load-balancer-attributes`キー
 
 ALB Ingressの属性を設定する。
 
@@ -321,7 +374,7 @@ metadata:
     alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=foo-alb-ingress-backet,access_logs.s3.prefix=foo
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/scheme`
+#### ▼ `alb.ingress.kubernetes.io/scheme`キー
 
 ALB Ingressのスキームを設定する。
 
@@ -334,7 +387,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/success-codes`
+#### ▼ `alb.ingress.kubernetes.io/success-codes`キー
 
 成功した場合のステータスコードを設定する。
 
@@ -347,7 +400,7 @@ metadata:
     alb.ingress.kubernetes.io/success-codes: "200"
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/subnets`
+#### ▼ `alb.ingress.kubernetes.io/subnets`キー
 
 ALB Ingressのルーティング先のサブネットを設定する。
 
@@ -357,10 +410,10 @@ kind: Ingress
 metadata:
   name: foo-alb-ingress
   annotations:
-    alb.ingress.kubernetes.io/subnets: ["*****", "*****"]
+    alb.ingress.kubernetes.io/subnets: ["subnet-*****", "subnet-*****"]
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/target-type`
+#### ▼ `alb.ingress.kubernetes.io/target-type`キー
 
 ルーティング先のターゲットタイプを設定する。
 
@@ -375,7 +428,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/waf-acl-id`
+#### ▼ `alb.ingress.kubernetes.io/waf-acl-id`キー
 
 LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。
 
@@ -388,7 +441,7 @@ metadata:
     alb.ingress.kubernetes.io/waf-acl-id: *****
 ```
 
-#### ▼ `alb.ingress.kubernetes.io/wafv2-acl-arn`
+#### ▼ `alb.ingress.kubernetes.io/wafv2-acl-arn`キー
 
 LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。
 
@@ -413,7 +466,7 @@ ALB Ingressのリスナールールを定義するために、Ingressの`.spec.r
 
 ### TargetGroupBinding
 
-調査中...
+記入中...
 
 ```yaml
 kind: TargetGroupBinding

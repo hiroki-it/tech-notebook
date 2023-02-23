@@ -17,7 +17,7 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 ### アーキテクチャ
 
-調査中...
+記入中...
 
 <br>
 

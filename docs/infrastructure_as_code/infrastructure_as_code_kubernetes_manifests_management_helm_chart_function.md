@@ -163,7 +163,7 @@ data:
 
 #### ▼ requiredとは
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 

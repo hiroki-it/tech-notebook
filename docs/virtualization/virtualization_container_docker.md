@@ -214,6 +214,6 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ▼ php-fpmイメージ
 
-調査中...
+記入中...
 
 <br>

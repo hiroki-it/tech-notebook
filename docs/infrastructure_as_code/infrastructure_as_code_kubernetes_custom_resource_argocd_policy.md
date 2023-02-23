@@ -271,7 +271,7 @@ CDツールのServiceAccountを認証し、またClusterRoleの認可スコー�
 
 #### ▼ Secretの変数の場合
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
 
@@ -433,7 +433,7 @@ ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`ku
 
 ## 09. 監視
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 

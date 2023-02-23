@@ -21,7 +21,7 @@ description: S3＠Sで始まるAWSリソースの知見を記録しています�
 
 ## 02. セットアップ
 
-### コンソール画面
+### コンソール画面の場合
 
 | 設定項目             | 説明                       |
 | -------------------- | -------------------------- |
@@ -192,7 +192,7 @@ description: S3＠Sで始まるAWSリソースの知見を記録しています�
         "Principal": "*",
         "Action": "s3:GetObject",
         "Resource": "arn:aws:s3:::<バケット名>/*",
-        "Condition": { "IpAddress": { "aws:SourceIp": "<IPアドレス>/32" } },
+        "Condition": { "IpAddress": { "aws:SourceIp": "*.*.*.*/32" } },
       },
     ],
 }

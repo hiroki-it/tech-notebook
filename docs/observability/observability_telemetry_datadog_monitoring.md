@@ -73,6 +73,8 @@ description: 監視＠Datadogの知見を記録しています。
 
 #### ▼ テンプレート変数
 
+記入中...
+
 > ↪️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
 
 #### ▼ マルチアラート変数
@@ -218,6 +220,8 @@ Datadog社の物理サーバーがリクエストを送信する。
 <br>
 
 ## 06. コスト
+
+記入中...
 
 > ↪️ 参考：https://docs.datadoghq.com/account_management/billing/usage_details/
 

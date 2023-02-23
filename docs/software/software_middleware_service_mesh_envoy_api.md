@@ -436,7 +436,7 @@ $ kubectl exec \
 
 #### ▼ dynamic_active_secrets
 
-調査中...
+記入中...
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。

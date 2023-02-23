@@ -216,6 +216,6 @@ authorization: <Personal Acccess Token>
 
 #### ▼ 多要素認証とは
 
-調査中...
+記入中...
 
 <br>

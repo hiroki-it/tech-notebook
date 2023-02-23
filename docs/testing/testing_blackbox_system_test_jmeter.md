@@ -116,6 +116,6 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 ### ストレステスト
 
-調査中...
+記入中...
 
 <br>

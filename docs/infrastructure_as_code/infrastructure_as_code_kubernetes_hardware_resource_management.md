@@ -175,7 +175,7 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 #### ▼ スケールインの場合
 
-調査中...
+記入中...
 
 <br>
 
@@ -251,7 +251,7 @@ strategies:
 
 #### ▼ RemovePodsHavingTooManyRestarts
 
-調査中...
+記入中...
 
 > ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
@@ -283,7 +283,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
-調査中...
+記入中...
 
 > ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
@@ -297,7 +297,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingTopologySpreadConstraint
 
-調査中...
+記入中...
 
 > ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 

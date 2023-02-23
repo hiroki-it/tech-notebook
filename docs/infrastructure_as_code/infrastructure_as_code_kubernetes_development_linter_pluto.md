@@ -1,6 +1,6 @@
 ---
 title: 【IT技術の知見】 pluto＠非推奨apiVersionテスト
-description:  pluto＠非推奨apiVersionテストの知見を記録しています。
+description: pluto＠非推奨apiVersionテストの知見を記録しています。
 ---
 
 # pluto＠非推奨apiVersionテスト
@@ -40,13 +40,13 @@ $ pluto detect - -o wide --target-versions k8s=v1.23.0
 出力形式を指定する。
 
 ```bash
-$ pluto detect - -o wide 
+$ pluto detect - -o wide
 ```
 
 > ↪️ 参考：https://pluto.docs.fairwinds.com/advanced/#display-options
 
 ```bash
-$ pluto detect - -o markdown 
+$ pluto detect - -o markdown
 ```
 
 > ↪️ 参考：https://pluto.docs.fairwinds.com/advanced/#display-options
@@ -59,7 +59,7 @@ $ pluto detect - -o markdown
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
 
-`pluto detect-api-resources`コマンドとの違いは調査中...
+`pluto detect-api-resources`コマンドとの違いは記入中...
 
 > ↪️ 参考：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
 
@@ -82,11 +82,11 @@ foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v
 
 <br>
 
-###  detect-api-resources
+### detect-api-resources
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
 
-`pluto detect`コマンドとの違いは調査中...
+`pluto detect`コマンドとの違いは記入中...
 
 ```bash
 $ pluto detect-api-resources - -o wide
@@ -102,8 +102,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 
 <br>
 
-
-###  detect-files
+### detect-files
 
 ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨のapiVersionを検出する。
 
@@ -112,14 +111,13 @@ $ pluto detect-files - -o wide
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
 > - https://qiita.com/wadason/items/c9d5f6a475bf7764fc9d#%E6%A4%9C%E8%A8%BC
 
 <br>
 
-
-###  detect-helm
+### detect-helm
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨のapiVersionを検出する。
 
@@ -146,8 +144,7 @@ foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch
 
 <br>
 
-
-###  list-versions
+### list-versions
 
 plutoが非推奨と見なしているバージョンの一覧を取得する。
 

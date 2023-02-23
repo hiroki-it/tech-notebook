@@ -15,7 +15,13 @@ description: RDS＠Rで始まるAWSリソース
 
 ## 01. RDS：Relational Database Service
 
-### セットアップ
+### RDSとは
+
+<br>
+
+## 01-02. セットアップ
+
+### コンソール画面の場合
 
 #### ▼ DBエンジン
 
@@ -209,7 +215,13 @@ $ aws rds modify-db-instance \
 
 ## 02. RDS (Aurora)
 
-### セットアップ
+### RDS (Aurora) とは
+
+<br>
+
+## 02-02. セットアップ
+
+### コンソール画面の場合
 
 #### ▼ DBクラスター
 

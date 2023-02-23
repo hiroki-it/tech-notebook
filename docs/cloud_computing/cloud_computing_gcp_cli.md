@@ -186,7 +186,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.
 
 #### ▼ container node-poolsとは
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
 

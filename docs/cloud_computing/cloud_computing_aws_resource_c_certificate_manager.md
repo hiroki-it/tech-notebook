@@ -15,7 +15,7 @@ description: Certificate Manager＠Cで始まるAWSリソースを記録して�
 
 ## 01. Certificate Managerとは
 
-調査中...
+記入中...
 
 <br>
 

@@ -295,8 +295,8 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Progressing  | 一部のKubernetesリソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。この状態の場合は、ステータスが他のいずれかになるまで待機する。 |
 | Degraded     | 一部のKubernetesリソースは正常に稼働していない。                                                                                                                       |
 | Suspended    | 一部のKubernetesリソースは、イベント (例：CronJobなど) が実行されることを待機している。                                                                                |
-| Missing      | 調査中...                                                                                                                                                              |
-| Unknown      | 調査中...                                                                                                                                                              |
+| Missing      | 記入中...                                                                                                                                                              |
+| Unknown      | 記入中...                                                                                                                                                              |
 
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 

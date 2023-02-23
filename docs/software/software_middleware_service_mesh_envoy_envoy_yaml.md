@@ -80,7 +80,7 @@ Envoyでは、YAMLファイルのキー名がスネークケースになって�
 
 ### adminとは
 
-調査中...
+記入中...
 
 > ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin
 
@@ -105,7 +105,7 @@ admin:
 
 ### addressとは
 
-調査中...
+記入中...
 
 <br>
 
@@ -267,7 +267,7 @@ static_resources:
 
 #### ▼ typed_config.http_filters
 
-調査中...
+記入中...
 
 > ↪️ 参考：
 >
@@ -450,7 +450,7 @@ static_resources:
 
 #### ▼ dns_lookup_familyとは
 
-調査中...
+記入中...
 
 **＊実装例＊**
 
@@ -760,7 +760,7 @@ staticResources:
 
 #### ▼ set_node_on_first_message_only
 
-調査中...
+記入中...
 
 **＊実装例＊**
 
@@ -772,7 +772,7 @@ dynamic_resources:
 
 #### ▼ transport_api_version
 
-調査中...
+記入中...
 
 **＊実装例＊**
 

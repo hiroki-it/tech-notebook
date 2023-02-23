@@ -130,7 +130,7 @@ ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されて�
 
 #### ▼ client-goコンポーネント
 
-調査中...
+記入中...
 
 > ↪️ 参考：
 >
@@ -139,7 +139,7 @@ ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されて�
 
 #### ▼ custom-controller-componentsコンポーネント
 
-調査中...
+記入中...
 
 > ↪️ 参考：
 >
@@ -171,6 +171,6 @@ Operatorの、作成、削除、を管理する。
 
 #### ▼ Operator Metering
 
-調査中...
+記入中...
 
 <br>
