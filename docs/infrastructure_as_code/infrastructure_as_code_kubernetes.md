@@ -27,7 +27,28 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ## 02. 証明書
 
-### デフォルトの証明書
+### デフォルトのルート認証局
+
+Kubernetesのルート認証局の証明書は、`kube-root-ca.crt`というConfigMapで定義されている。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-root-ca.crt
+  namespace: foo
+data:
+  ca.crt: |
+    -----BEGIN CERTIFICATE-----
+    *****
+    -----END CERTIFICATE-----
+```
+
+> ↪️ 参考：https://qiita.com/uesyn/items/f46b066772781317653d#introducing-rootcaconfigmap
+
+<br>
+
+### デフォルトのSSL証明書
 
 ![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_certificates.png)
 

@@ -15,7 +15,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 ## 01. 原則
 
-### Convention over configuration（設定より規約）
+### Convention over configuration (設定より規約)
 
 #### ▼ 設定より規約とは
 

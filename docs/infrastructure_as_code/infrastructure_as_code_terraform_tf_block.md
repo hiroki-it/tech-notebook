@@ -1431,7 +1431,7 @@ resource "aws_security_group" "ec2" {
   ...
 
   dynamic ingress {
-    # 環境が複数あるとする。 (prd-1、prd-2、stg-1、stg-2)
+    # 環境が複数あるとする (prd-1、prd-2、stg-1、stg-2) 。
     # 環境名がprdという文字を含むキーがあった場合、全てprdキーの方を使用する。
     for_each = length(regexall("prd", var.env)) > 0 ? var.security_group_ingress_ec2_ssh.prd : var.security_group_ingress_ec2_ssh.stg
     content {

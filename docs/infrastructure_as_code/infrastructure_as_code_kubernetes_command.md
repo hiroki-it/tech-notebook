@@ -51,7 +51,7 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 指定したアノテーションを書き換える。
 
 ```bash
-$ kubectl annotate --overwrite pod foo-pod <キー名>=<値>
+$ kubectl annotate --overwrite pod foo-pod <キー名>=<値> -n foo-namespace
 ```
 
 `kubectl apply`コマンドではアノテーションを変更できず、また`kubectl diff`コマンドでも差分として認識されない仕様になっている。
@@ -61,7 +61,7 @@ $ kubectl annotate --overwrite pod foo-pod <キー名>=<値>
 キー名の後に`-` (ハイフン) をつけるのアノテーションを削除できる。
 
 ```bash
-$ kubectl annotate --overwrite pod foo-pod <キー名>-
+$ kubectl annotate --overwrite pod foo-pod <キー名>- -n foo-namespace
 ```
 
 <br>
@@ -896,7 +896,11 @@ $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 
 #### ▼ -L
 
-特定の`.metadata.labels`キーを持つKubernetesリソースを取得する。小文字の`-l`オプションもあるが、こちらは値まで絞り込みたい時に使用する。該当のキーがない場合は、空欄で表示される。
+特定の`.metadata.labels`キーを持つKubernetesリソースを取得する。
+
+小文字の`-l`オプションもあるが、こちらは値まで絞り込みたい時に使用する。
+
+該当のキーがない場合は、空欄で表示される。
 
 ```bash
 $ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
@@ -1130,24 +1134,24 @@ Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
 #### ▼ restart
 
-レプリカのPodを再スケジューリングする。
+レプリカのPodを再作成する。
 
 PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後に、Podに再び読み込ませるために役立つ。
 
 **＊例＊**
 
 ```bash
-# Deployment配下のPodを再スケジューリングする。
+# Deployment配下のPodを再作成する。
 $ kubectl rollout restart deployment foo-deployment -n foo-namespace
 ```
 
 ```bash
-# DaemonSet配下のPodを再スケジューリングする。
+# DaemonSet配下のPodを再作成する。
 $ kubectl rollout restart daemonset foo-daemonset -n foo-namespace
 ```
 
 ```bash
-# StatefulSet配下のPodを再スケジューリングする。
+# StatefulSet配下のPodを再作成する。
 $ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
 ```
 

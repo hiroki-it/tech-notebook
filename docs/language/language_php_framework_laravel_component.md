@@ -3102,7 +3102,8 @@ return [
     "channels" => [
         "stack" => [
             "driver"            => "stack",
-            // 複数チャンネルを設定できる。 (例) ["single", "stack"]
+            // 複数チャンネルを設定できる。
+            // (例) ["single", "stack"]
             "channels"          => ["single"],
             "ignore_exceptions" => false,
         ],

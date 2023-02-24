@@ -36,7 +36,6 @@ Terraformの`aws_eks_addon`でEKSアドオンをインストールし、EBS CSI�
 ```terraform
 # AWS EKSアドオンをインストールする。
 resource "aws_eks_addon" "aws_ebs_csi_driver" {
-  count = var.enable_ebs_csi_driver ? 1 : 0
 
   cluster_name             = data.aws_eks_cluster.cluster.name
   addon_name               = "aws-ebs-csi-driver"
@@ -53,7 +52,6 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 
 ```terraform
 module "iam_assumable_role_ebs_csi_driver_with_oidc" {
-  count = var.enable_ebs_csi_driver ? 1 : 0
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version                       = "<モジュールのバージョン>"
@@ -81,7 +79,6 @@ module "iam_assumable_role_ebs_csi_driver_with_oidc" {
 # KubernetesのStorageClassをTerraformで作成する。
 # マニフェストとして定義しても良い。
 resource "kubernetes_storage_class" "gp3_encrypted" {
-  count = var.enable_ebs_csi_driver ? 1 : 0
 
   metadata {
     name = "gp3-encrypted"

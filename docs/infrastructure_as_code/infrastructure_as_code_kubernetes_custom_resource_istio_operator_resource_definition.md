@@ -40,12 +40,9 @@ Operator controller will watch namespaces: istio-system
 
 `【２】`
 
-: IstioOperatorが定義されたマニフェストを、`istioctl`コマンドまたは`kubectl`コマンドを使用して、Istioリソースを作成する。その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。`kubectl apply`コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
+: IstioOperatorが定義されたマニフェストを、`istioctl`コマンドまたは`kubectl`コマンドを使用して、Istioリソースを作成する。
 
-> ↪️ 参考：
->
-> - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
-> - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
+     その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。`kubectl apply`コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
 ```bash
 # istioctlコマンド
@@ -64,6 +61,11 @@ $ kubectl apply -f istio-operator.yaml
 
 istiooperator.install.istio.io/istio-operator created
 ```
+
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+> - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 #### ▼ チャートとして
 
@@ -212,7 +214,7 @@ spec:
 
 ingressGatewaysコンポーネントのオプションを設定する。
 
-IngressGatewaysを直接的に作成するのではなく、IstioOperatorに作成させる。
+IngressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -275,7 +277,7 @@ metadata:
     install.operator.istio.io/owning-resource: istio-operator
     install.operator.istio.io/owning-resource-namespace: istio-system
     istio: ingressgateway
-    istio.io/rev: stable
+    istio.io/rev: default
     operator.istio.io/component: IngressGateways
     operator.istio.io/managed: Reconcile
     operator.istio.io/version: 1.12.1

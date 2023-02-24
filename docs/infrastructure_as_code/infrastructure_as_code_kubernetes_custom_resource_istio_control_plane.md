@@ -214,7 +214,7 @@ Podの作成/更新時にwebhookサーバーにリクエストを送信できる
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: istio-revision-tag-stable
+  name: istio-revision-tag-default
   labels:
     app: sidecar-injector
     istio.io/rev: <リビジョン番号>

@@ -17,7 +17,7 @@ description: アップグレード＠Anthosの知見を記録しています。
 
 ### アップグレードの仕組み
 
-Anthos Clusterのアップグレード時、データプレーンのワーカーNodeをローリング方式アップグレードする。
+Anthos Clusterのアップグレード時、データプレーンのワーカーNodeをローリングアップグレードする。
 
 ベアメタルのため、ワーカーNodeを再作成することはなく、コントロールプレーンNodeコンポーネント (例：kube-apiserverなど) とワーカーNodeコンポーネント (例：kubeletなど) をそのままアップグレードしていく。
 
@@ -338,7 +338,7 @@ kind: Namespace
 metadata:
   name: istio-ingress
   labels:
-    istio.io/rev: stable
+    istio.io/rev: default
 ```
 
 ```bash
@@ -355,7 +355,7 @@ kind: Namespace
 metadata:
   name: app
   labels:
-    istio.io/rev: stable
+    istio.io/rev: default
 ```
 
 `【９】`
@@ -393,7 +393,7 @@ $ kubectl get namespace -L istio.io/rev
 
 `【１１】`
 
-: IngressGatewayのPodを再スケジューリングし、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
+: IngressGatewayのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
 
      カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
 
@@ -425,7 +425,7 @@ $ istioctl proxy-status
 
 `【１３】`
 
-: アプリケーションのPodを再スケジューリングし、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
+: アプリケーションのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
 
      カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
 

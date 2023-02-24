@@ -15,7 +15,7 @@ description: アクション＠チャートの知見を記録しています。
 
 ## 01. テンプレートを出力する関数
 
-### テンプレートを出力する関数とは
+### テンプレートを出力に関する関数とは
 
 `template`ディレクトリ配下のテンプレートを出力する。
 
@@ -184,7 +184,7 @@ data:
 
 <br>
 
-## 01-02. `values`ファイルを出力する関数
+## 01-02. `values`ファイルを出力に関する関数
 
 ### Values
 
@@ -266,14 +266,14 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: foo-secret
-data: { { - toYaml .Values.parameters | nindent 2 } }
+data: {{ - toYaml .Values.parameters | nindent 2 }}
 ```
 
 <br>
 
-## 02. アクセスする関数
+## 02. アクセスに関する関数
 
-### アクセスする関数とは
+### アクセスに関する関数とは
 
 テンプレートや`values`ファイルを出力する時に、特定の位置にアクセスする。
 
@@ -341,7 +341,21 @@ metadata:
 
 <br>
 
-## 03. 除去する関数
+## 03. 変数に関する関数
+
+### default
+
+出力された値が空文字（`""`）や`false`の場合に、それを上書きしてデフォルト値として出力する。
+
+キー自体は存在しなければならず、省略することはできないことに注意する。
+
+```yaml
+{{ default "foo" .Values.foo }}
+```
+
+<br>
+
+## 04. 除去に関する関数
 
 ### `-` (ハイフン)
 
@@ -372,7 +386,7 @@ metadata:
 ```
 
 ```yaml
-baz: { { - include "foo-template" . } } # 『{{-』の前にあるインデントは削除される。
+baz: {{ - include "foo-template" . }} # 『{{-』の前にあるインデントは削除される。
 ```
 
 ```yaml
@@ -457,7 +471,7 @@ baz:
 
 <br>
 
-## 04. 変換する関数
+## 05. 変換に関する関数
 
 ### b64enc
 
@@ -482,8 +496,8 @@ metadata:
   name: foo-secret
 data:
   # base64方式でエンコードする。
-  username: { { .Values.username | b64enc } }
-  password: { { .Values.password | b64enc } }
+  username: {{ .Values.username | b64enc }}
+  password: {{ .Values.password | b64enc }}
 ```
 
 <br>
@@ -594,7 +608,7 @@ data:
 
 <br>
 
-## 05. 検証
+## 06. 検証に関する関数
 
 ### hasKey
 
@@ -621,7 +635,7 @@ data:
 
 <br>
 
-## 06. 条件分岐
+## 07. 条件分岐に関する関数
 
 ### AND条件
 
@@ -649,14 +663,16 @@ data:
 
 <br>
 
-## 07. コメントアウト
+## 08. コメントアウト
 
 ### Helmのコメントアウト
 
-Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
+Helmのテンプレート内にコメントアウトを定義する。
+
+YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
 
 ```yaml
-{ { - /* コメント */ } }
+{{ - /* コメント */ }}
 ```
 
 > ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
@@ -670,7 +686,7 @@ Helmのテンプレート内にコメントアウトを定義する。YAMLのコ
 > ↪️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-417096290
 
 ```yaml
-{ { - /* コメント */ } }
+{{ - /* コメント */ }}
 ```
 
 <br>

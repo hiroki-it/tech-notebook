@@ -179,7 +179,7 @@ metadata:
   name: foo-secret
 type: Opaque
 data:
-  foo: { { .Values.foo | b64enc } }
+  foo: {{ .Values.foo | b64enc }}
 ```
 
 この時、`helm secrets`コマンドで`secrets`ファイルを指定すると、復号化した上で`.Values`に出力してくれる。

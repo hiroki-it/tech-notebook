@@ -114,7 +114,7 @@ ztunnelのPod (L4)
 
 | 項目                         | サイドカープロキシメッシュ                                                                                           | アンビエントメッシュ |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| Istioのアップグレード        | サイドカーの再作成時に障害が起こる可能性がある。対策としては、Istioのカナリアリリース方式アップグレードがある。      |                      |
+| Istioのアップグレード        | サイドカーの再作成時に障害が起こる可能性がある。対策としては、Istioのカナリアアップグレードがある。                  |                      |
 | ハードウェアリソースの消費量 | サイドカーを各Podにインジェクションすることになるため、Pod全体としての合計のハードウェアリソースの消費量が多くなる。 |                      |
 
 <br>
@@ -154,6 +154,8 @@ ztunnelのPod (L4)
 | Ingressコントローラー                            |  ⭕️  |    ×    |   ×    |
 | Egressコントローラー                             |  ⭕️  |    ×    |   ×    |
 
+<br>
+
 ### Istio、Kubernetes、の同じ機能の比較
 
 KubernetesとIstioには重複する能力がいくつか (例：サービスディスカバリー) ある。全てのPodの`istio-proxy`コンテナをインジェクションする場合、kube-proxyとServiceによるサービスメッシュは不要になる。
@@ -178,6 +180,76 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
+
+<br>
+
+### Node外からのインバウンド通信ルーティングのパターン
+
+#### ▼ LoadBalancer Serviceの場合
+
+LoadBalancer Serviceを使用する場合、以下のようなネットワーク経路がある。
+
+**＊例＊**
+
+```
+パブリックネットワーク
+↓
+AWS Route53
+↓
+AWS ALB
+↓
+LoadBalancer Service (Istio IngressGateway)
+↓
+Gateway
+↓
+VirtualService
+↓
+Service
+↓
+Pod
+```
+
+#### ▼ NodePort Serviceの場合
+
+NodePort Serviceを使用する場合、以下のようなネットワーク経路がある。
+
+**＊例＊**
+
+```
+パブリックネットワーク
+↓
+NodePort Service (Istio IngressGateway)
+↓
+Gateway
+↓
+VirtualService
+↓
+Service
+↓
+Pod
+```
+
+**＊例＊**
+
+```
+パブリックネットワーク
+↓
+AWS Route53
+↓
+AWS ALB
+↓
+NodePort Service (Istio IngressGateway)
+↓
+Gateway
+↓
+VirtualService
+↓
+Service
+↓
+Pod
+```
+
+<br>
 
 ### Istioのメリット/デメリット
 
@@ -345,7 +417,9 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 同じプライベートネットワーク内の場合
 
-異なるClusterが同じプライベートネットワーク内に属している場合に、ClusterのコントロールプレーンNode間でデータプレーンを管理し合うことにより、この時、IngressGatewayを使用せずに、異なるClusterのコンテナが直接的に通信できる。
+異なるClusterが同じプライベートネットワーク内に属している場合に、ClusterのコントロールプレーンNode間でデータプレーンを管理し合う。
+
+これにより、この時、IngressGatewayを使用せずに、異なるClusterのコンテナが直接的に通信できる。
 
 > ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
@@ -353,7 +427,9 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
-異なるClusterが異なるプライベートネットワーク内に属している場合に、ClusterのコントロールプレーンNode間でデータプレーンを管理し合うことにより、この時、IngressGatewayを経由して、異なるClusterのコンテナが間接的に通信できる。
+異なるClusterが異なるプライベートネットワーク内に属している場合に、ClusterのコントロールプレーンNode間でデータプレーンを管理し合う。
+
+これにより、この時、IngressGatewayを経由して、異なるClusterのコンテナが間接的に通信できる。
 
 > ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
@@ -365,7 +441,11 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 同じプライベートネットワーク内の場合
 
-仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに`istio-proxy`コンテナをインジェクションすることにより、データプレーン内で仮想サーバーを管理できるようになる。この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
+仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに`istio-proxy`コンテナをインジェクションする。
+
+これにより、データプレーン内で仮想サーバーを管理できるようになる。
+
+この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
 
 ![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png)
 
@@ -373,7 +453,11 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
-仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に属している場合に、この仮想サーバーに`istio-proxy`コンテナをインジェクションすることにより、データプレーン内で管理できるようになる。この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
+仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に属している場合に、この仮想サーバーに`istio-proxy`コンテナをインジェクションする。
+
+これにより、データプレーン内で管理できるようになる。
+
+この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
 
 ![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_difficult-network.png)
 

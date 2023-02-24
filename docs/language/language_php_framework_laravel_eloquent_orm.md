@@ -139,7 +139,8 @@ class Department extends Model
      */
     public function employees(): HasMany
     {
-        // 一対多の関係を定義します。 (デフォルトではemployee_idに紐付けます)
+        // 一対多の関係を定義します。
+        // デフォルトではemployee_idに紐付けます。
         return $this->hasMany(Employee::class);
     }
 }
@@ -167,7 +168,8 @@ class Employee extends Model
      */
     public function department(): BelongsTo
     {
-        // 多対一の関係を定義します。 (デフォルトではdepartment_idに紐付けます)
+        // 多対一の関係を定義します。
+        // デフォルトではdepartment_idに紐付けます。
         return $this->belongsTo(Department::class);
     }
 }

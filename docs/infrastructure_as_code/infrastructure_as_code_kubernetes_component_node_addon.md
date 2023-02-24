@@ -44,6 +44,18 @@ AWS LBコントローラーは、コントローラーの本体であるPod、Ta
 
 Ingressでインバウンド通信を受信する場合に使用し、NodePort Serviceの場合には使用しない。
 
+```
+パブリックネットワーク
+↓
+AWS Route53
+↓
+AWS LBコントローラー、AWS ALB (Ingressの設定で決まる)
+↓
+ClusterIP Service
+↓
+Pod
+```
+
 `alb`が宣言されたIngressClassを検知して、AWS上に専用のALBを自動的にプロビジョニングする。
 
 また、TargetGroupBindingを介して、ALBのターゲットグループとIngressを紐づける。

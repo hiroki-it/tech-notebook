@@ -254,6 +254,8 @@ AWS EC2、EBS、ECS、EKS、の例を示す。
 
 #### ▼ 対応開始時間の例 (PureCloud)
 
+記入中...
+
 > ↪️ 参考：https://jp-help.mypurecloud.com/articles/service-level-agreements/
 
 #### ▼ 保証期間の例 (Google)

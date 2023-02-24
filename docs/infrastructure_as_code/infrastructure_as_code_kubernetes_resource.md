@@ -624,6 +624,16 @@ options ndots:5
 
 Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。
 
+```
+パブリックネットワーク
+↓
+Ingress、Ingressコントローラー
+↓
+ClusterIP Service
+↓
+Pod
+```
+
 Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。
 
 一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする`L7`ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
@@ -650,7 +660,43 @@ Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IP�
 
 NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
 
-ただし、NodePort Serviceは内部的にCluster-IPを使っているため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。 (この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い)
+```
+パブリックネットワーク
+↓
+NodePort Service
+↓
+Pod
+```
+
+パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingressコントローラー由来ではない) 。
+
+```
+パブリックネットワーク
+↓
+AWS Route53
+↓
+AWS ALB
+↓
+NodePort Service
+↓
+Pod
+```
+
+ただし、NodePort Serviceは内部的にCluster-IPを使っている。
+
+そのため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。
+
+この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い。
+
+```
+パブリックネットワーク
+↓
+Ingress、Ingressコントローラー
+↓
+ClusterIP Service (実体はNodePort Service)
+↓
+Pod
+```
 
 NodeのNICの宛先情報は、Nodeの作成方法 (AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。
 
@@ -668,7 +714,19 @@ Serviceのポート番号と紐づくNodeのNICのポート番号はデフォル
 
 Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。
 
-External-IPはNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、ロードバランサーのみが宛先IPアドレスを指定できる。
+External-IPはNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。
+
+```
+パブリックネットワーク
+↓
+AWS Route53
+↓
+AWS ALB
+↓
+LoadBalancer Service
+↓
+Pod
+```
 
 クラウドプロバイダー環境 (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする`L4`ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 

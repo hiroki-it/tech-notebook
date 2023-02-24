@@ -286,7 +286,7 @@ kind: Namespace
 metadata:
   name: app-namespace
   labels:
-    istio.io/rev: stable
+    istio.io/rev: default
 ---
 apiVersion: v1
 kind: Namespace

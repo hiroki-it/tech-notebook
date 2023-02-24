@@ -189,7 +189,7 @@ repository/
 
 #### ▼ 重複しない場合
 
-ファイル名は、Kubernetesリソースの名前 (例：`deployment.yaml`ファイル) になるようにする。
+ファイル名は、Kubernetesリソース名 (例：`deployment.yaml`ファイル) になるようにする。
 
 基本的にはこれを使用する。
 
@@ -207,7 +207,7 @@ repository/
 
 ▼ ファイル名重複する場合
 
-`1`個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソースの名前をつけることができない。
+`1`個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソース名をつけることができない。
 
 その場合、`app.kubernetes.io`キーの値 (例：`<マイクロサービス名>`または`<マイクロサービス名>-<Kubernetesリソース名>`) と同じにする。
 
@@ -479,11 +479,21 @@ Clusterの複数の実行環境 (`dev-*`、`stg-*`、`prd-*`) を用意したい
 
 `【１】`
 
-: 旧Nodeグループ (Prodブルー) を残したまま、新Nodeグループ (Testグリーン) を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
+: 旧Nodeグループ (Prodブルー) を残したまま、新Nodeグループ (Testグリーン) を作成する。
+
+     この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
 
 `【２】`
 
-: `kubectl drain`コマンドを実行し、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように`--delete-emptydir-data`オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
+: `kubectl drain`コマンドを実行し、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。
+
+     この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
+
+     また、emptyDirボリュームを持つPodを退避できるように`--delete-emptydir-data`オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。
+
+     その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。
+
+     この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
 ```bash
 $ kubectl drain <旧Nodeグループ内のワーカーNode名> \

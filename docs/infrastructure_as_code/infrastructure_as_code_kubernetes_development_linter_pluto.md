@@ -167,3 +167,5 @@ PodSecurityPolicy                extensions/v1beta1                     v1.10.0 
 PodSecurityPolicy                policy/v1beta1                         v1.21.0         v1.25.0      n/a                                    k8s
 ...
 ```
+
+<br>

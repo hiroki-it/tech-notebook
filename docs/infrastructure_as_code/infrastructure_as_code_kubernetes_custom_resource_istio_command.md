@@ -179,17 +179,31 @@ $ istioctl install -y --set profile=demo
 
 #### ▼ `revision` (基本的に必須)
 
-インストールされるKubernetesリソースの名前や、`istio.io/rev`キーにリビジョン番号をつけて、Istioをインストールする。
-
-カナリア方式アップグレードの時にも使用するが、インストール時にも使用した方が良い。
+インストールされるKubernetesリソース名や、`istio.io/rev`キーにリビジョン番号をつけて、Istioをインストールする。
 
 バージョンは、ケバブケースで設定する必要がある。
-
-インストールするIstioは`istioctl`コマンドのバージョンによるため、リビジョン番号と実際にインストールするIstioのバージョンは無関係である。
 
 ```bash
 $ istioctl install -y --set revision=1-10-0
 ```
+
+カナリアアップグレード時に使用するが、このオプションを使用しないとKubernetesリソース名にリビジョン番号がつかないため、インストール時にも使用した方が良い。
+
+```bash
+# revisionオプションを使用しない場合
+$ istioctl install -y
+
+# Kubernetesリソース名にリビジョン番号がつかない
+$ kubectl get mutatingwebhookconfiguration
+
+NAME                              WEBHOOKS   AGE
+istio-revision-tag-default        4          15s
+istio-sidecar-injector            4          23s
+```
+
+インストールするIstioは`istioctl`コマンドのバージョンで決まるため、`revision`キーのリビジョン番号と実際にインストールするIstioのバージョンは無関係である。
+
+執筆時点 (2023/02/23) で、`istioctl`コマンドを使用してエイリアスを設定する方法はなく、自動的に`default`になってしまう。
 
 ```bash
 $ kubectl get mutatingwebhookconfiguration
@@ -210,7 +224,7 @@ istio.io/rev: 1-10-0
 ```
 
 ```bash
-k get all -n istio-system                                                                      
+k get all -n istio-system
 NAME                                        READY   STATUS    RESTARTS   AGE
 pod/istio-ingressgateway-*****              1/1     Running   0          35m
 pod/istiod-1-10-0-*****                     1/1     Running   0          35m
@@ -854,7 +868,7 @@ $ istioctl x precheck
 
 Namespaceの`istio.io/rev`キーの値を書き換えずにアップグレードできるように、`istio.io/rev`キーにエイリアスタグを設定する。
 
-エイリアスは、`stable`や`default`をよく使用するが、実際はなんでよい。
+エイリアスは、`default`や`stable`をよく使用するが、実際はなんでよい。
 
 具体的には、MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を操作する。
 
@@ -878,16 +892,16 @@ $ istioctl tag generate <エイリアス> --revision <エイリアスの実体>
 
 **＊例＊**
 
-`stable`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-10-0`を設定する。
+`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-10-0`を設定する。
 
 ```bash
-$ istioctl tag generate stable --revision 1-10-0
+$ istioctl tag generate default --revision 1-10-0
 ```
 
-`stable`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-0-1`を設定する。
+`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-0-1`を設定する。
 
 ```bash
-$ istioctl tag generate stable --revision 1-0-1
+$ istioctl tag generate default --revision 1-0-1
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
@@ -900,14 +914,14 @@ $ istioctl tag generate stable --revision 1-0-1
 
 MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を取得する。
 
-カナリア方式アップグレード前に、現在のバージョンのエイリアスとリビジョン番号 (現在のIstioのバージョンタグ) を確認するために使用する。
+カナリアアップグレード前に、現在のバージョンのエイリアスとリビジョン番号 (現在のIstioのバージョンタグ) を確認するために使用する。
 
 ```bash
 # アップグレード前に、istioctlコマンドで確認してみる。
 $ istioctl tag list
 
 TAG       REVISION   NAMESPACES
-stable    1-10-0      app
+default    1-10-0      app
 
 
 # アップグレード前に、マニフェストを確認してみる。
@@ -915,7 +929,7 @@ $ kubectl get mutatingwebhookconfiguration istio-revision-tag-<エイリアス> 
     | grep -e istio.io/rev: -e istio.io/tag:
 
 istio.io/rev: 1-10-0
-istio.io/tag: stable
+istio.io/tag: default
 ```
 
 > ↪️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
@@ -928,9 +942,11 @@ istio.io/tag: stable
 
 MutatingWebhookConfigurationの`.metadata.labels`キーにある既存のエイリアス (`istio.io/tag`キーの値) に実体 (`istio.io/rev`キーの値) を設定する。
 
-カナリア方式アップグレード時に、現在のバージョンのエイリアスとリビジョン番号 (現在のIstioのバージョンタグ) を設定するために使用する。
+カナリアアップグレード用のMutatingWebhookConfigurationを新しく作成するためや、既存のMutatingWebhookConfigurationにある現在のバージョンのエイリアスの実体を変更するために使用する。
 
 ```bash
+# カナリアアップグレード用のMutatingWebhookConfigurationがなければ新しく作成する。
+# もしあれば、MutatingWebhookConfigurationのエイリアスの実体を変更する。
 $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --overwrite
 ```
 
@@ -938,18 +954,18 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --ove
 
 `【１】`
 
-: 現在のバージョンのエイリアス (`istio.io/tag`キーの値) が`stable`、またバージョン (`istio.io/rev`キーの値) が`v1.10.0`とする。
+: 現在のバージョンのエイリアス (`istio.io/tag`キーの値) が`default`、またバージョン (`istio.io/rev`キーの値) が`v1.10.0`とする。
 
 ```bash
 $ istioctl tag list
 
 TAG      REVISION   NAMESPACES
-stable   1-10-0      app
+default   1-10-0      app
 ```
 
 `【２】`
 
-: `stable`タグを持つMutatingWebhookConfigurationを確認する。
+: `default`タグを持つMutatingWebhookConfigurationを確認する。
 
 ```bash
 # MutatingWebhookConfiguration
@@ -957,7 +973,7 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                               WEBHOOKS   AGE
 istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
-istio-revision-tag-stable          1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するstableタグを持つ
+istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するdefaultタグを持つ
 ```
 
 `【３】`
@@ -992,17 +1008,17 @@ $ kubectl get mutatingwebhookconfigurations
 NAME                                WEBHOOKS   AGE
 istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
 istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアップグレード先)
-istio-revision-tag-stable           1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するstableタグを持つ
+istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するdefaultタグを持つ
 ```
 
 `【３】`
 
 : エイリアス (`istio.io/tag`キーの値) を指定して、リビジョン番号を書き換える。
 
-     これにより、```istio-revision-tag-stable```の```stable```タグの値が変更される。
+     これにより、```istio-revision-tag-default```の```default```タグの値が変更される。
 
 ```bash
-$ istioctl tag set stable --revision 1-11-0 --overwrite
+$ istioctl tag set default --revision 1-11-0 --overwrite
 
 # MutatingWebhookConfiguration
 $ kubectl get mutatingwebhookconfigurations
@@ -1010,7 +1026,7 @@ $ kubectl get mutatingwebhookconfigurations
 NAME                                WEBHOOKS   AGE
 istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
 istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアップグレード先)
-istio-revision-tag-stable           1          7m56s # 現在のリビジョン番号 (1.11.0) 定義するstableタグを持つ
+istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.11.0) 定義するdefaultタグを持つ
 ```
 
 `【４】`
@@ -1021,13 +1037,13 @@ istio-revision-tag-stable           1          7m56s # 現在のリビジョン�
 $ istioctl tag list
 
 TAG       REVISION  NAMESPACES
-stable   1-11-0     app
+default   1-11-0     app
 
-$ kubectl get mutatingwebhookconfiguration istio-revision-tag-stable -o yaml \
+$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:
 
 istio.io/rev: 1-11-0
-istio.io/tag: stable
+istio.io/tag: default
 ```
 
 > ↪️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action

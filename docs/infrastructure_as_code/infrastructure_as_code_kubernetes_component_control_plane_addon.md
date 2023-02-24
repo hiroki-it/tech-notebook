@@ -131,7 +131,7 @@ Podの作成のためのkube-apiserverのコール自体がエラーとなる。
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: istio-revision-tag-stable
+  name: istio-revision-tag-default
   labels:
     app: sidecar-injector
     istio.io/rev: <リビジョン番号>
@@ -205,7 +205,7 @@ webhooks:
     admissionReviewVersions: ["v1", "v1beta1"]
     sideEffects: None
     timeoutSeconds: 5
-    # 発火条件を登録する。 (例：Podの作成/更新リクエスト時に発火する)
+    # 発火条件を登録する (例：Podの作成/更新リクエスト時に発火する) 。
     rules:
       - apiGroups: ["security.istio.io", "networking.istio.io"]
         apiVersions: ["*"]

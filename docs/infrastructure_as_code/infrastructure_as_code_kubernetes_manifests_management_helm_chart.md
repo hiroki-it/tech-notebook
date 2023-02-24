@@ -236,6 +236,7 @@ version: <バージョンタグ>
 
 ```yaml
 {{- define "global.template.labels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 helm.sh/chart: {{ .Chart.Name }}
@@ -246,8 +247,10 @@ helm.sh/chart: {{ .Chart.Name }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels: { { include "global.template.labels" . | indent 4 } } # まとめて出力する。
+  labels: {{ include "global.template.labels" . | indent 4 }} # まとめて出力する。
 ```
+
+> ↪️ 参考：https://codersociety.com/blog/articles/helm-best-practices#3-use-labels-to-find-resources-easily
 
 <br>
 
@@ -302,7 +305,7 @@ crds:
 fullnameOverride: foo
 ```
 
-もし、`fullnameOverride`オプションを設定していた場合、Kubernetesリソースの名前は『`＜fullnameOverrideオプションの値＞`』になる。
+もし、`fullnameOverride`オプションを設定していた場合、Kubernetesリソース名は『`＜fullnameOverrideオプションの値＞`』になる。
 
 補足としてチャートごとに、Kubernetesリソース名の前後に特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) がつくことがある。
 
