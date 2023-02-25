@@ -32,7 +32,7 @@
 $ yarn
 
 # フォーマッターを実行
-$ yarn prettier -w **/*.md
+$ yarn prettier -w --no-bracket-spacing **/*.md
 ```
 
 <br>
