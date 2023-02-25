@@ -311,7 +311,7 @@ Lambdaのエラーレスポンスのステータスコードについては以�
 > ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
 ```yaml
-{ "errorMessage": "<エラーメッセージ>", "errorType": "<エラータイプ>" }
+{"errorMessage": "<エラーメッセージ>", "errorType": "<エラータイプ>"}
 ```
 
 errorsパッケージの`New`関数を使用すると、内部で発生したエラーメッセージをオーバーライドできる。
@@ -411,7 +411,7 @@ const aws = require("aws-sdk");
  * @returns Promise<json>
  */
 exports.handler = async (event) => {
-  const ec2 = new aws.EC2({ apiVersion: "2014-10-01" });
+  const ec2 = new aws.EC2({apiVersion: "2014-10-01"});
 
   // Promiseオブジェクトを返却する
   const ec2Instances = ec2.describeInstances().promise();
@@ -444,16 +444,16 @@ AmplifyのイベントをEventBridgeでキャッチし、これをLambdaに転�
 
 const aws = require("aws-sdk");
 const https = require("https");
-const { format } = require("util");
+const {format} = require("util");
 
 /**
  * @param event
  * @returns Promise<json>
  */
 exports.handler = async (event) => {
-  console.log(JSON.stringify({ event }, null, 2));
+  console.log(JSON.stringify({event}, null, 2));
 
-  const amplify = new aws.Amplify({ apiVersion: "2017-07-25" });
+  const amplify = new aws.Amplify({apiVersion: "2017-07-25"});
 
   const option = {
     appId: event.detail.appId,
@@ -466,7 +466,7 @@ exports.handler = async (event) => {
     // Amplifyのブランチ情報を取得します。
     const app = await amplify.getBranch(option).promise();
 
-    console.log(JSON.stringify({ app }, null, 2));
+    console.log(JSON.stringify({app}, null, 2));
 
     const message = buildMessage(event, app);
 
@@ -477,7 +477,7 @@ exports.handler = async (event) => {
     console.error(error);
   }
 
-  console.log(JSON.stringify({ result }, null, 2));
+  console.log(JSON.stringify({result}, null, 2));
 
   return result;
 };
@@ -606,7 +606,7 @@ const postMessageToSlack = (message) => {
 
     // 非同期処理
     const request = https.request(options, (response) => {
-      console.info({ response }, null, 2);
+      console.info({response}, null, 2);
 
       let tmp;
 
@@ -637,7 +637,7 @@ const postMessageToSlack = (message) => {
     });
 
     request.on("error", (error) => {
-      console.error(JSON.stringify({ error }, null, 2));
+      console.error(JSON.stringify({error}, null, 2));
     });
 
     // メッセージボディを設定して、リクエストを送信します。
@@ -645,7 +645,7 @@ const postMessageToSlack = (message) => {
 
     request.end();
 
-    console.log(JSON.stringify({ request }, null, 2));
+    console.log(JSON.stringify({request}, null, 2));
   });
 };
 ```
@@ -734,7 +734,7 @@ eventオブジェクトの`domainName`と`host.value`に代入されたバケッ
 exports.handler = (event, context, callback) => {
   const request = event.Records[0].cf.request;
   // ログストリームに変数を出力する。
-  console.log(JSON.stringify({ request }, null, 2));
+  console.log(JSON.stringify({request}, null, 2));
 
   const headers = request.headers;
   const s3Backet = getBacketBasedOnDeviceType(headers);
@@ -742,7 +742,7 @@ exports.handler = (event, context, callback) => {
   request.origin.s3.domainName = s3Backet;
   request.headers.host[0].value = s3Backet;
   // ログストリームに変数を出力する。
-  console.log(JSON.stringify({ request }, null, 2));
+  console.log(JSON.stringify({request}, null, 2));
 
   return callback(null, request);
 };
@@ -816,25 +816,15 @@ const getBacketBasedOnDeviceType = (headers) => {
                         },
                       ],
                     "cloudfront-is-mobile-viewer":
-                      [{ "key": "CloudFront-Is-Mobile-Viewer", "value": true }],
+                      [{"key": "CloudFront-Is-Mobile-Viewer", "value": true}],
                     "cloudfront-is-tablet-viewer":
-                      [{ "key": "loudFront-Is-Tablet-Viewer", "value": false }],
+                      [{"key": "loudFront-Is-Tablet-Viewer", "value": false}],
                     "cloudfront-is-smarttv-viewer":
-                      [
-                        {
-                          "key": "CloudFront-Is-SmartTV-Viewer",
-                          "value": false,
-                        },
-                      ],
+                      [{"key": "CloudFront-Is-SmartTV-Viewer", "value": false}],
                     "cloudfront-is-desktop-viewer":
-                      [
-                        {
-                          "key": "CloudFront-Is-Desktop-Viewer",
-                          "value": false,
-                        },
-                      ],
+                      [{"key": "CloudFront-Is-Desktop-Viewer", "value": false}],
                     "user-agent":
-                      [{ "key": "User-Agent", "value": "Amazon CloudFront" }],
+                      [{"key": "User-Agent", "value": "Amazon CloudFront"}],
                   },
                 "method": "GET",
                 "origin":
@@ -843,7 +833,7 @@ const getBacketBasedOnDeviceType = (headers) => {
                       {
                         "authMethod": "origin-access-identity",
                         "customHeaders":
-                          { "env": [{ "key": "env", "value": "prd" }] },
+                          {"env": [{"key": "env", "value": "prd"}]},
                         "domainName": "prd-sp-bucket.s3.amazonaws.com",
                         "path": "",
                         "port": 443,

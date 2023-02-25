@@ -510,7 +510,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
             "countType": "imageCountMoreThan",
             "countNumber": 10,
           },
-        "action": { "type": "expire" },
+        "action": {"type": "expire"},
       },
       {
         "rulePriority": 2,
@@ -521,7 +521,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
             "countType": "imageCountMoreThan",
             "countNumber": 10,
           },
-        "action": { "type": "expire" },
+        "action": {"type": "expire"},
       },
     ],
 }
@@ -815,7 +815,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
     [
       {
         "Effect": "Allow",
-        "Principal": { "Service": "ecs-tasks.amazonaws.com" },
+        "Principal": {"Service": "ecs-tasks.amazonaws.com"},
         "Action": "sts:AssumeRole",
       },
     ],
@@ -863,7 +863,7 @@ resource "aws_iam_role" "ecs_task" {
         "Sid": "",
         "Effect": "Allow",
         "Principal":
-          { "Service": ["lambda.amazonaws.com", "edgelambda.amazonaws.com"] },
+          {"Service": ["lambda.amazonaws.com", "edgelambda.amazonaws.com"]},
         "Action": "sts:AssumeRole",
       },
     ],
@@ -903,7 +903,7 @@ resource "aws_iam_role" "lambda_execute" {
 {
   "Version": "2012-10-17",
   "Statement":
-    [{ "Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*" }],
+    [{"Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*"}],
 }
 ```
 
@@ -1435,7 +1435,7 @@ ALBのアクセスログを送信するバケット内には、自動的に『/A
     [
       {
         "Effect": "Allow",
-        "Principal": { "AWS": "arn:aws:iam::582318560864:root" },
+        "Principal": {"AWS": "arn:aws:iam::582318560864:root"},
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::<バケット名>/*",
       },
@@ -1478,16 +1478,16 @@ NLBのアクセスログを送信するバケット内には、自動的に『`/
       {
         "Sid": "AWSLogDeliveryWrite",
         "Effect": "Allow",
-        "Principal": { "Service": "delivery.logs.amazonaws.com" },
+        "Principal": {"Service": "delivery.logs.amazonaws.com"},
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::<バケット名>/*",
         "Condition":
-          { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
+          {"StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"}},
       },
       {
         "Sid": "AWSLogDeliveryAclCheck",
         "Effect": "Allow",
-        "Principal": { "Service": "delivery.logs.amazonaws.com" },
+        "Principal": {"Service": "delivery.logs.amazonaws.com"},
         "Action": "s3:GetBucketAcl",
         "Resource": "arn:aws:s3:::<バケット名>",
       },

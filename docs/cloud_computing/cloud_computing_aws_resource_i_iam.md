@@ -50,7 +50,7 @@ IAMステートメントのセットを定義する。
   "Version": "2012-10-17",
   "Statement":
     [
-      { "Effect": "Allow", "Action": "ec2:Describe*", "Resource": "*" },
+      {"Effect": "Allow", "Action": "ec2:Describe*", "Resource": "*"},
       {
         "Effect": "Allow",
         "Action": "elasticloadbalancing:Describe*",
@@ -66,7 +66,7 @@ IAMステートメントのセットを定義する。
           ],
         "Resource": "*",
       },
-      { "Effect": "Allow", "Action": "autoscaling:Describe*", "Resource": "*" },
+      {"Effect": "Allow", "Action": "autoscaling:Describe*", "Resource": "*"},
     ],
 }
 ```
@@ -89,7 +89,7 @@ AWSリソースに関する認可のスコープを定義する。
 {
   "Version": "2012-10-17",
   "Statement":
-    [{ "Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*" }],
+    [{"Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*"}],
 }
 ```
 
@@ -198,7 +198,7 @@ IAMロールにインラインポリシーを紐付ける。
 {
   "Version": "2012-10-17",
   "Statement":
-    [{ "Effect": "Allow", "Action": "acm:ListCertificates", "Resource": "*" }],
+    [{"Effect": "Allow", "Action": "acm:ListCertificates", "Resource": "*"}],
 }
 ```
 
@@ -211,7 +211,7 @@ IAMロールにインラインポリシーを紐付ける。
 ```yaml
 {
   "Version": "2012-10-17",
-  "Statement": [{ "Effect": "Allow", "Action": "*", "Resource": "*" }],
+  "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}],
 }
 ```
 
@@ -250,7 +250,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
             "countType": "imageCountMoreThan",
             "countNumber": 10,
           },
-        "action": { "type": "expire" },
+        "action": {"type": "expire"},
       },
       {
         "rulePriority": 2,
@@ -261,7 +261,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
             "countType": "imageCountMoreThan",
             "countNumber": 10,
           },
-        "action": { "type": "expire" },
+        "action": {"type": "expire"},
       },
     ],
 }
@@ -282,7 +282,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
     [
       {
         "Effect": "Allow",
-        "Principal": { "Service": "ecs-tasks.amazonaws.com" },
+        "Principal": {"Service": "ecs-tasks.amazonaws.com"},
         "Action": "sts:AssumeRole",
       },
     ],
@@ -304,9 +304,9 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
     [
       {
         "Effect": "Allow",
-        "Principal": { "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>" },
+        "Principal": {"AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
-        "Condition": { "StringEquals": { "sts:ExternalId": "<適当な文字列>" } },
+        "Condition": {"StringEquals": {"sts:ExternalId": "<適当な文字列>"}},
       },
     ],
 }

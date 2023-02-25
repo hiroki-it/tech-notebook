@@ -266,7 +266,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: foo-secret
-data: { { - toYaml .Values.parameters | nindent 2 } }
+data: {{- toYaml .Values.parameters | nindent 2}}
 ```
 
 <br>
@@ -350,7 +350,7 @@ metadata:
 キー自体は存在しなければならず、省略することはできないことに注意する。
 
 ```yaml
-{ { default "foo" .Values.foo } }
+{{default "foo" .Values.foo}}
 ```
 
 <br>
@@ -386,7 +386,7 @@ metadata:
 ```
 
 ```yaml
-baz: { { - include "foo-template" . } } # 『{{-』の前にあるインデントは削除される。
+baz: {{- include "foo-template" .}} # 『{{-』の前にあるインデントは削除される。
 ```
 
 ```yaml
@@ -496,8 +496,8 @@ metadata:
   name: foo-secret
 data:
   # base64方式でエンコードする。
-  username: { { .Values.username | b64enc } }
-  password: { { .Values.password | b64enc } }
+  username: {{.Values.username | b64enc}}
+  password: {{.Values.password | b64enc}}
 ```
 
 <br>
@@ -672,7 +672,7 @@ Helmのテンプレート内にコメントアウトを定義する。
 YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
 
 ```yaml
-{ { - /* コメント */ } }
+{{- /* コメント */}}
 ```
 
 > ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
@@ -686,7 +686,7 @@ YAMLのコメントアウト (例：`#`) であると、テンプレートの出
 > ↪️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-417096290
 
 ```yaml
-{ { - /* コメント */ } }
+{{- /* コメント */}}
 ```
 
 <br>

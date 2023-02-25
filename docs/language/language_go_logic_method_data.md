@@ -2562,7 +2562,7 @@ if err != nil {
 #### ▼ コメント
 
 ```yaml
-{ { /* a comment */ } }
+{{/* a comment */}}
 ```
 
 #### ▼ 条件分岐

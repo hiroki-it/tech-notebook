@@ -138,7 +138,7 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
   "time": "2021-01-01T00:00:00Z",
   "region": "us-west-1",
   "resources": ["<イベントを起こしたリソースのARN>"],
-  "detail": { // その時々のイベントごとに異なるデータ },
+  "detail": {// その時々のイベントごとに異なるデータ},
 }
 ```
 
@@ -148,7 +148,7 @@ Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Sta
 
 ```yaml
 {
-  "detail": { "appId": ["foo", "bar"], "jobStatus": ["SUCCEED", "FAILED"] },
+  "detail": {"appId": ["foo", "bar"], "jobStatus": ["SUCCEED", "FAILED"]},
   "detail-type": ["Amplify Deployment Status Change"],
   "source": "aws.amplify",
 }
@@ -183,14 +183,14 @@ EventBridgeでは、どのようなJSONのイベントをターゲットに転�
 ```javascript
 // Lambdaにデバッグ用の関数を用意する
 exports.handler = async (event) => {
-  console.log(JSON.stringify({ event }, null, 2));
+  console.log(JSON.stringify({event}, null, 2));
 };
 ```
 
 対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからLambdaに転送するように設定する。
 
 ```yaml
-{ "source": "aws.amplify" }
+{"source": "aws.amplify"}
 ```
 
 AWSリソースで意図的にイベントを起こし、Lambdaのロググループから内容を確認する。

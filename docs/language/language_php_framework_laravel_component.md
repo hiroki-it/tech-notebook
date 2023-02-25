@@ -4299,29 +4299,26 @@ if (pm.request.method == "GET") {
   return true;
 }
 
-return pm.sendRequest(
-  "http://127.0.0.1:8000",
-  (error, response, { cookies }) => {
-    if (error) {
-      console.error(error);
-      return false;
-    }
-
-    const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
-
-    if (!xsrfTokenHeader) {
-      console.log("トークンがありません");
-      return false;
-    }
-
-    // laravelによってエンコードされたトークンをデコードする。
-    const xsrfToken = decodeURIComponent(xsrfTokenHeader["value"]);
-    // 環境変数を挿入するために、該当する実行環境名をCollection全体に適用しておく必要がある。
-    pm.environment.set("XSRF_TOKEN", xsrfToken);
-    console.log(xsrfToken);
-    return true;
+return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
+  if (error) {
+    console.error(error);
+    return false;
   }
-);
+
+  const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
+
+  if (!xsrfTokenHeader) {
+    console.log("トークンがありません");
+    return false;
+  }
+
+  // laravelによってエンコードされたトークンをデコードする。
+  const xsrfToken = decodeURIComponent(xsrfTokenHeader["value"]);
+  // 環境変数を挿入するために、該当する実行環境名をCollection全体に適用しておく必要がある。
+  pm.environment.set("XSRF_TOKEN", xsrfToken);
+  console.log(xsrfToken);
+  return true;
+});
 ```
 
 #### ▼ XSS対策

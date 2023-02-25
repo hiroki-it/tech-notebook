@@ -213,9 +213,9 @@ API Gatewayは、Lambdaからのレスポンスを、以下のJSON型データ�
 これ以外の構造のJSON型データを送信すると、API Gatewayで『`Internal Server Error`』のエラーが起こる。
 
 ```yaml
-{ "isBase64Encoded": true
+{"isBase64Encoded": true
     |
-    false, "statusCode": httpStatusCode, "headers": { "headerName": "headerValue", ... }, "multiValueHeaders": { "headerName": ["headerValue", "headerValue2", ...], ... }, "body": "Hello Lambda" }
+    false, "statusCode": httpStatusCode, "headers": {"headerName": "headerValue", ...}, "multiValueHeaders": {"headerName": ["headerValue", "headerValue2", ...], ...}, "body": "Hello Lambda"}
 ```
 
 API Gatewayは上記のJSON型データを受信した後、`body`のみ値をレスポンスのメッセージボディに持たせ、クライアントに送信する。

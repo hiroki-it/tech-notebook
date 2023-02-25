@@ -276,8 +276,8 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 
 ```yaml
 {
-  "variables": { "region": "ap-northeast-1" },
-  "builders": [{ "region": "{{ user `region` }}" }],
+  "variables": {"region": "ap-northeast-1"},
+  "builders": [{"region": "{{ user `region` }}"}],
 }
 ```
 

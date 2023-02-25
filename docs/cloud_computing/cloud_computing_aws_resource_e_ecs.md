@@ -305,7 +305,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 {
   "Version": "2012-10-17",
   "Statement":
-    [{ "Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*" }],
+    [{"Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*"}],
 }
 ```
 
@@ -728,13 +728,13 @@ Systems Managerを使用してコンテナに接続する場合、コンテナ�
      これにより、ECSタスクがセッションマネージャーにアクセスできるようになる。
 
 ```yaml
-{ "Version": "2012-10-17", "Statement": [{ "Effect": "Allow", "Action": [
+{"Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Action": [
             # ssmmessages APIへの認可スコープ
             "ssmmessages:CreateControlChannel",
             "ssmmessages:CreateDataChannel",
             "ssmmessages:OpenControlChannel",
             "ssmmessages:OpenDataChannel",
-          ], "Resource": "*" }] }
+          ], "Resource": "*"}]}
 ```
 
 `【４】`

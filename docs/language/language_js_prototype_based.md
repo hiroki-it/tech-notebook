@@ -350,7 +350,7 @@ export class Foo {
 
 ```javascript
 // ファイルの読み出し
-import { Foo } from "./foo.js";
+import {Foo} from "./foo.js";
 
 // 作成、初期化
 const foo = new Foo(1);
@@ -379,7 +379,7 @@ export const Foo = class {
 
 ```javascript
 // ファイルの読み出し
-import { Foo } from "./foo.js";
+import {Foo} from "./foo.js";
 
 // 作成、初期化
 const foo = new Foo(1);

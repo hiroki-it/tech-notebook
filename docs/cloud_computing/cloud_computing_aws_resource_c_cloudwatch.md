@@ -435,13 +435,13 @@ cloudwatchエージェント全体を設定する。
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
 
 ```yaml
-{ "agent": {
+{"agent": {
       # プロセスのユーザー名を設定する。
       "run_as_user": "cwagent",
       "metrics_collection_interval": 60,
       # 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール
       "credentials": "arn:aws:iam::<アカウントID>:role/<IAMロール名>",
-    } }
+    }}
 ```
 
 #### ▼ `metrics`セクション
@@ -453,7 +453,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 実装しなかった場合、何も設定されない。
 
 ```yaml
-{ "agent": { "run_as_user": "cwagent" }, "metrics": {
+{"agent": {"run_as_user": "cwagent"}, "metrics": {
       # メトリクスの集約とする名前空間のユーザー定義名
       # デフォルトでCWAgentになる。
       "namespace": "CWAgent",
@@ -479,7 +479,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
       # 収集対象のカスタムメトリクスの一覧 (collectdパッケージまたはStatsDパッケージを使用する場合)
       "metrics_collected": {
           # collectdパッケージの使用を宣言する。必ず設定する必要がある。
-          "collectd": { "metrics_aggregation_interval": 60 },
+          "collectd": {"metrics_aggregation_interval": 60},
           # ストレージ系
           "disk": {
               "measurement": [
@@ -491,12 +491,12 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
               "resources": ["*"],
             },
           # メモリ系
-          "mem": { "measurement": [
+          "mem": {"measurement": [
                   # メモリ使用率メトリクス
                   "mem_used_percent",
-                ], "metrics_collection_interval": 60 },
+                ], "metrics_collection_interval": 60},
         },
-    } }
+    }}
 ```
 
 > ↪️ 参考：
@@ -511,10 +511,10 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 **＊実装例＊**
 
 ```yaml
-{ "agent": { "run_as_user": "cwagent" }, "logs": {
+{"agent": {"run_as_user": "cwagent"}, "logs": {
       # メモリ上のバッファーの保存時間
       "force_flush_interval": 60,
-      "logs_collected": { "files": {
+      "logs_collected": {"files": {
               # 収集対象のログの一覧
               "collect_list": [
                   {
@@ -531,8 +531,8 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
                     "log_stream_name": "{instance_id}",
                   },
                 ],
-            } },
-    } }
+            }},
+    }}
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection

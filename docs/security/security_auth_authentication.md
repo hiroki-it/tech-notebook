@@ -60,7 +60,7 @@ description: Authenticate (認証) ＠認証/認可の知見を記録してい�
 POST https://example.com/users
 ---
 # ボディ
-{ "email_address": "foo@gmail.com", "password": "foo" }
+{"email_address": "foo@gmail.com", "password": "foo"}
 ```
 
 `【３】`
@@ -71,7 +71,7 @@ POST https://example.com/users
 POST https://example.com/foo-form
 ---
 # ボディ
-{ "email_address": "foo@gmail.com", "password": "foo" }
+{"email_address": "foo@gmail.com", "password": "foo"}
 ```
 
 `【４】`

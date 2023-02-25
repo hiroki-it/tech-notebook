@@ -267,24 +267,24 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
         "image": "<IMAGE1_NAME>",
         "essential": true,
         "portMappings":
-          [{ "containerPort": 80, "hostPort": 80, "protocol": "tcp" }],
+          [{"containerPort": 80, "hostPort": 80, "protocol": "tcp"}],
         "secrets":
           [
-            { "name": "DB_HOST", "valueFrom": "/ecs/DB_HOST" },
-            { "name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE" },
-            { "name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD" },
-            { "name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME" },
-            { "name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST" },
-            { "name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD" },
-            { "name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT" },
+            {"name": "DB_HOST", "valueFrom": "/ecs/DB_HOST"},
+            {"name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE"},
+            {"name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD"},
+            {"name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME"},
+            {"name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST"},
+            {"name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD"},
+            {"name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT"},
           ],
-        "logConfiguration": { "logDriver": "awslogs", "options": {
+        "logConfiguration": {"logDriver": "awslogs", "options": {
                 "awslogs-group": "<ログストリーム名>",
                 # スタックトレースのログを紐付けられるように、日付で区切るようにする。
                 "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
                 "awslogs-region": "ap-northeast-1",
                 "awslogs-stream-prefix": "<ログストリーム名の接頭辞>",
-              } },
+              }},
       },
     ],
 }

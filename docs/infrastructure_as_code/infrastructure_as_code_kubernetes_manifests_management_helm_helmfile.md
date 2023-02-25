@@ -141,7 +141,7 @@ releases:
 
 ```yaml
 environments:
-  { { .Environment.Name } }:
+  {{.Environment.Name}}:
     values:
       - values-{{ .Environment.Name }}.yaml
     secrets:
@@ -295,7 +295,7 @@ releases:
 
 ```yaml
 environments:
-  { { .Environment.Name } }:
+  {{.Environment.Name}}:
     values:
       - values-{{ .Environment.Name }}.yaml
 
@@ -447,7 +447,7 @@ releases:
       - values.yaml.gotmpl # 実行環境間で共有するvaluesファイル
 
 environments:
-  { { .Environment.Name } }:
+  {{.Environment.Name}}:
     values:
       - values-{{ .Environment.Name }}.yaml # values.yaml.gotmplファイルに値を渡すvaluesファイル
 ```

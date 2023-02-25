@@ -659,8 +659,8 @@ metadata:
   name: foo-aws-credentials
 type: Opaque
 data:
-  AWS_ACCESS_KEY: { { .Values.data.AWS_ACCESS_KEY | b64en } } # base64方式でエンコードされる。
-  AWS_SECRET_ACCESS_KEY: { { .Values.data.AWS_SECRET_ACCESS_KEY | b64en } }
+  AWS_ACCESS_KEY: {{.Values.data.AWS_ACCESS_KEY | b64en}} # base64方式でエンコードされる。
+  AWS_SECRET_ACCESS_KEY: {{.Values.data.AWS_SECRET_ACCESS_KEY | b64en}}
 ```
 
 ArgoCDはHelmの`v2`と`v3`の両方を保持している。

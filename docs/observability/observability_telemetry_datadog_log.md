@@ -149,20 +149,20 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 > ↪️ 参考：https://docs.datadoghq.com/logs/log_collection/javascript/#results
 
 ```yaml
-{ "content": {
+{"content": {
       "attributes": {
-          "error": { "origin": "network", "stack": "Failed to load" },
+          "error": {"origin": "network", "stack": "Failed to load"},
           "http":
             {
               "useragent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
             },
-          "network": { "client": { "ip": "18.180.199.160" } },
+          "network": {"client": {"ip": "18.180.199.160"}},
           "service": "prd-foo-ssg",
           "session_id": "*****",
           # コンソールログのステータス
           "status": "error",
           # ブラウザで表示されたWebページのURL。非同期リクエストのエラーは、こちらではなくmessage属性に記載される。
-          "view": { "referrer": "", "url": "https://example.com/" },
+          "view": {"referrer": "", "url": "https://example.com/"},
         },
       # コンソールログの内容。非同期リクエストのエラーは、view.urlではなくこちらに記載される。
       "message": "XHR error POST https://async.jp",
@@ -175,7 +175,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
           "source:browser",
           "env:prd",
         ],
-    }, "id": "*****" }
+    }, "id": "*****"}
 ```
 
 <br>
@@ -245,10 +245,10 @@ const nuxtConfig: Configuration = {
 
 ```javascript
 // プラグインファイル
-import { Plugin, Context } from "@nuxt/types";
-import { datadogLogs } from "@datadog/browser-logs";
+import {Plugin, Context} from "@nuxt/types";
+import {datadogLogs} from "@datadog/browser-logs";
 
-const browserLogsForSsgPlugin: Plugin = ({ $config }: Context) => {
+const browserLogsForSsgPlugin: Plugin = ({$config}: Context) => {
   // パフォーマンスとログの重要性の観点から、開発環境のログを送信しないようにする
   if (!$config.datadog.clientToken) {
     return;
@@ -449,11 +449,11 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
               "status_category": "OK",
               "status_code": 200,
               "url": "/users/{userId}",
-              "url_details": { "path": "/users/{userId}" },
+              "url_details": {"path": "/users/{userId}"},
               "version": "HTTP/1.1",
             },
           "id": "36472822677180929652719686832176844832038235205288853504",
-          "network": { "bytes_written": "26", "client": { "ip": "*.*.*.*" } },
+          "network": {"bytes_written": "26", "client": {"ip": "*.*.*.*"}},
           "service": "apigateway",
           "timestamp": 1635497933028,
         },
@@ -533,7 +533,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
       "useragent": "ELB-HealthChecker/2.0",
       "version": "1.1",
     },
-  "network": { "bytes_written": 17, "client": { "ip": "*.*.*.*" } },
+  "network": {"bytes_written": 17, "client": {"ip": "*.*.*.*"}},
 }
 ```
 
@@ -557,13 +557,13 @@ CRITICAL @http.status_code:[500 TO 599]
 補足として、`http.status_category`属性以外は元の構造化ログと同じため、省略している。
 
 ```yaml
-{ ? ...
+{? ...
 
     "http"
-  : { ? ...
+  : {? ...
 
         status_category
-      : "info" }, ... }
+      : "info"}, ...}
 ```
 
 これに対して、ステータスリマッパーのルールを定義する。
@@ -612,7 +612,7 @@ Laravelから、以下のような非構造化ログを受信する例を考え�
 {
   "content":
     {
-      "attributes": { ... },
+      "attributes": {...},
       "message": "[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ",
       "service": "prd-foo",
       "tags": [...],
@@ -712,7 +712,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 これにより、`webaclId`属性の非構造化ログは以下の様に構造化され、構造化ログに付与される。
 
 ```yaml
-{ "wafacl_name": "prd-foo-alb-waf" }
+{"wafacl_name": "prd-foo-alb-waf"}
 ```
 
 <br>
@@ -739,7 +739,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 {
   "content":
     {
-      "attributes": { ... },
+      "attributes": {...},
       "message": "192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200",
       "service": "prd-foo",
       "tags": [...],
@@ -762,12 +762,8 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 {
   "date": 1609502400000,
   "http":
-    {
-      "method": "GET",
-      "status_code": 200,
-      "url": "/users?paginate=10&fooId=1",
-    },
-  "network": { "client": { "ip": "192.168.0.1" } },
+    {"method": "GET", "status_code": 200, "url": "/users?paginate=10&fooId=1"},
+  "network": {"client": {"ip": "192.168.0.1"}},
 }
 ```
 
@@ -784,9 +780,9 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
       "status_code": 200,
       "url": "/users?paginate=10&fooId=1",
       "url_details":
-        { "path": "/users", "queryString": { "fooId": 1, "paginate": 10 } },
+        {"path": "/users", "queryString": {"fooId": 1, "paginate": 10}},
     },
-  "network": { "client": { "ip": "192.168.0.1" } },
+  "network": {"client": {"ip": "192.168.0.1"}},
 }
 ```
 
@@ -855,10 +851,10 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカ�
 補足として、`service`属性以外は元の構造化ログと同じため、省略している。
 
 ```yaml
-{ "content": { ? ...
+{"content": {? ...
 
         "service"
-      : "foo-apigateway", ... }, ... }
+      : "foo-apigateway", ...}, ...}
 ```
 
 これに対して、サービスリマッパーのルールを定義する。
@@ -905,7 +901,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
       "useragent": "ELB-HealthChecker/2.0",
       "version": "1.1",
     },
-  "network": { "bytes_written": 17, "client": { "ip": "*.*.*.*" } },
+  "network": {"bytes_written": 17, "client": {"ip": "*.*.*.*"}},
 }
 ```
 
@@ -963,9 +959,9 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
       "status_code": 200,
       "url": "/users?paginate=10&fooId=1",
       "url_details":
-        { "path": "/users", "queryString": { "fooId": 1, "paginate": 10 } },
+        {"path": "/users", "queryString": {"fooId": 1, "paginate": 10}},
     },
-  "network": { "client": { "ip": "192.168.0.1" } },
+  "network": {"client": {"ip": "192.168.0.1"}},
 }
 ```
 
@@ -980,13 +976,13 @@ https://example.com%{http.url}
 これにより、以下の構造化ログが得られる。
 
 ```yaml
-{ "date": 1609502400000, ? ...
+{"date": 1609502400000, ? ...
 
     "http"
-  : { ? ...
+  : {? ...
 
         "url_full"
-      : "https://example.com/users?paginate=10&fooId=1" }, ... }
+      : "https://example.com/users?paginate=10&fooId=1"}, ...}
 ```
 
 <br>

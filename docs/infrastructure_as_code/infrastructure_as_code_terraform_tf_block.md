@@ -1490,7 +1490,7 @@ resource "aws_s3_bucket_policy" "alb" {
     [
       {
         "Effect": "Allow",
-        "Principal": { "AWS": "${aws_elb_service_account_arn}/*" },
+        "Principal": {"AWS": "${aws_elb_service_account_arn}/*"},
         "Action": "s3:PutObject",
         "Resource": "${aws_s3_bucket_alb_logs_arn}/*",
       },
@@ -1557,8 +1557,7 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
     # ECRのURL。タグを指定しない場合はlatestが割り当てられる。
     "image": "${laravel_ecr_repository_url}",
     "essential": true,
-    "portMappings":
-      [{ "containerPort": 80, "hostPort": 80, "protocol": "tcp" }],
+    "portMappings": [{"containerPort": 80, "hostPort": 80, "protocol": "tcp"}],
     "secrets": [
         {
           # アプリケーションの環境変数名
@@ -1566,14 +1565,14 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
           # Systems Managerのパラメーター名
           "valueFrom": "/prd-foo/DB_HOST",
         },
-        { "name": "DB_DATABASE", "valueFrom": "/prd-foo/DB_DATABASE" },
-        { "name": "DB_PASSWORD", "valueFrom": "/prd-foo/DB_PASSWORD" },
-        { "name": "DB_USERNAME", "valueFrom": "/prd-foo/DB_USERNAME" },
-        { "name": "REDIS_HOST", "valueFrom": "/prd-foo/REDIS_HOST" },
-        { "name": "REDIS_PASSWORD", "valueFrom": "/prd-foo/REDIS_PASSWORD" },
-        { "name": "REDIS_PORT", "valueFrom": "/prd-foo/REDIS_PORT" },
+        {"name": "DB_DATABASE", "valueFrom": "/prd-foo/DB_DATABASE"},
+        {"name": "DB_PASSWORD", "valueFrom": "/prd-foo/DB_PASSWORD"},
+        {"name": "DB_USERNAME", "valueFrom": "/prd-foo/DB_USERNAME"},
+        {"name": "REDIS_HOST", "valueFrom": "/prd-foo/REDIS_HOST"},
+        {"name": "REDIS_PASSWORD", "valueFrom": "/prd-foo/REDIS_PASSWORD"},
+        {"name": "REDIS_PORT", "valueFrom": "/prd-foo/REDIS_PORT"},
       ],
-    "logConfiguration": { "logDriver": "awslogs", "options": {
+    "logConfiguration": {"logDriver": "awslogs", "options": {
             # ロググループ名
             "awslogs-group": "/prd-foo/laravel/log",
             # スタックトレースのグループ化 (同時刻ログのグループ化)
@@ -1582,7 +1581,7 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
             "awslogs-region": "ap-northeast-1",
             # ログストリーム名の接頭辞
             "awslogs-stream-prefix": "/container",
-          } },
+          }},
   },
 ]
 ```

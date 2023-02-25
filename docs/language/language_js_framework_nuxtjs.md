@@ -172,7 +172,7 @@ Nuxtがデフォルトで用意している設定をプロパティの設定値�
 各プロパティは以下のリンクを参考にせよ。
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
   // プロパティ
@@ -212,7 +212,7 @@ HOME_PATH=/
 ```
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
 const {
   API_URL,
@@ -242,7 +242,7 @@ const nuxtConfig: Configuration = {
 ビルドの完了が早くなる。
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
   build: {
@@ -273,9 +273,9 @@ const nuxtConfig: Configuration = {
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
-const { API_KEY } = process.env;
+const {API_KEY} = process.env;
 
 const nuxtConfig: Configuration = {
   privateRuntimeConfig: {
@@ -293,7 +293,7 @@ API_KEY=*****
 ```javascript
 export function foo() {
   // contextオブジェクトの$configプロパティを分割代入
-  const { $config } = useContext();
+  const {$config} = useContext();
 
   $config.apiKey;
 }
@@ -315,9 +315,9 @@ export function foo() {
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
-const { API_URL } = process.env;
+const {API_URL} = process.env;
 
 const nuxtConfig: Configuration = {
   publicRuntimeConfig: {
@@ -334,7 +334,7 @@ API_URL=https://example.com/api
 ```javascript
 export function foo() {
   // contextオブジェクトの$configプロパティを分割代入
-  const { $config } = useContext();
+  const {$config} = useContext();
 
   $config.apiUrl;
 }
@@ -349,7 +349,7 @@ CIツールでログが確認できなくなるため、無効化しておいた
 > ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
   build: {
@@ -365,7 +365,7 @@ const nuxtConfig: Configuration = {
 > ↪️ 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
   serverMiddleware: [
@@ -386,7 +386,7 @@ SSG/SSRモードの`yarn dev` (開発用コマンド) 、またSSRモードの`y
 > ↪️ 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 
 ```javascript
-import { Configuration } from "@nuxt/types";
+import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
   buildModules: ["@nuxt/typescript-build", "@nuxtjs/composition-api"],

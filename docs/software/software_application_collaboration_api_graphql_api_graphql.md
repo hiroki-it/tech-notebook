@@ -154,7 +154,7 @@ input UserCreateInput {
 
 ```graphql
 mutation CreateUser {
-  createUser(data: { name: "bar", email: "example@gmail.com" }) {
+  createUser(data: {name: "bar", email: "example@gmail.com"}) {
     name
   }
 }

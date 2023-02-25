@@ -554,15 +554,15 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
     [
       {
         "Effect": "Allow",
-        "Principal": { "AWS": "<IAMユーザーのARN>" },
+        "Principal": {"AWS": "<IAMユーザーのARN>"},
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::foo-bucket/*",
         "Condition":
-          { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
+          {"StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"}},
       },
       {
         "Effect": "Allow",
-        "Principal": { "AWS": "<IAMユーザーのARN>" },
+        "Principal": {"AWS": "<IAMユーザーのARN>"},
         "Action": "s3:ListBucket",
         "Resource": "arn:aws:s3:::bar-bucket",
       },
@@ -753,7 +753,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
       "Effect": "Deny",
       "Action": "*",
       "Resource": "*",
-      "Condition": { "NotIpAddress": { "aws:SourceIp": ["*.*.*.*/32"] } },
+      "Condition": {"NotIpAddress": {"aws:SourceIp": ["*.*.*.*/32"]}},
     },
 }
 ```

@@ -881,7 +881,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 **＊実装例＊**
 
 ```yaml
-{ "token_type": "Bearer", "expires_in": 31536000, "access_token": "*****" }
+{"token_type": "Bearer", "expires_in": 31536000, "access_token": "*****"}
 ```
 
 `【３】`

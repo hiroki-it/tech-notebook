@@ -313,7 +313,7 @@ var vm = new Vue({
 
 
         */
-        this.$emit("change", { criteria: localCriteria });
+        this.$emit("change", {criteria: localCriteria});
       },
 
       // ajaxメソッドから受信したデータを使用して、propsを更新
@@ -606,8 +606,8 @@ const vueRouter = require("vue-router").default;
 // VueRouterインスタンスを作成する。
 const router = new VueRouter({
   routes: [
-    { path: "/", component: Home },
-    { path: "/foo", component: Foo },
+    {path: "/", component: Home},
+    {path: "/foo", component: Foo},
   ],
 });
 
@@ -809,7 +809,7 @@ module.exports = new Vuex.Store({
     */
   actions: {
     // 省略記法 (Argument destructuring)
-    mutate({ commit }) {
+    mutate({commit}) {
       commit("mutate");
     },
   },

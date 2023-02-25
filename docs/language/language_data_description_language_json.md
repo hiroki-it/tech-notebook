@@ -20,7 +20,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 #### ▼ 括弧
 
 ```yaml
-{ "account": 200, "fruit": ["banana", "apple"] }
+{"account": 200, "fruit": ["banana", "apple"]}
 ```
 
 <br>

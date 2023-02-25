@@ -145,7 +145,7 @@ WAFマネージドルールを採用している場合、マネージドルー�
 もし、Countアクションが実行されていれば、`excludedRules`キーにその旨とルールIDが格納される。
 
 ```yaml
-{ ? ...
+{? ...
 
     "ruleGroupList"
   : [
@@ -179,7 +179,7 @@ WAFマネージドルールを採用している場合、マネージドルー�
         "nonTerminatingMatchingRules": [],
         "excludedRules": null,
       },
-    ], ... }
+    ], ...}
 ```
 
 ### クオータ

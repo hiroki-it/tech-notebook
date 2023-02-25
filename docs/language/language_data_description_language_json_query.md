@@ -33,16 +33,16 @@ $ brew install jq
 
 ```yaml
 # data.json
-{ "foo": "FOO", "bar": "BAR", "baz": [{ "qux": "QUX" }, { "quux": "QUUX" }] }
+{"foo": "FOO", "bar": "BAR", "baz": [{"qux": "QUX"}, {"quux": "QUUX"}]}
 ```
 
 ```yaml
 # list.jsonファイル
 # 配列内のオブジェクトごとに、fooキーの値が異なる。
 [
-  { "foo": "FOO", "bar": "BAR", "baz": "BAZ" },
-  { "foo": "BAR", "bar": "BAZ", "baz": "FOO" },
-  { "foo": "BAZ", "bar": "FOO", "baz": "BAR" },
+  {"foo": "FOO", "bar": "BAR", "baz": "BAZ"},
+  {"foo": "BAR", "bar": "BAZ", "baz": "FOO"},
+  {"foo": "BAZ", "bar": "FOO", "baz": "BAR"},
 ]
 ```
 

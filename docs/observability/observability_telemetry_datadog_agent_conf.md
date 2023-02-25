@@ -158,7 +158,7 @@ datadogエージェントにデフォルトで内蔵されている設定をそ�
 > ↪️ 参考：https://hub.docker.com/r/datadog/agent
 
 ```yaml
-[{ "name": "datadog", "image": "datadog/agent:latest" }]
+[{"name": "datadog", "image": "datadog/agent:latest"}]
 ```
 
 #### ▼ ECRパブリックギャラリーを使用する場合
@@ -168,7 +168,7 @@ AWS ECSタスクのコンテナ定義にて、ECRパブリックギャラリー�
 datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
 ```yaml
-[{ "name": "datadog", "image": "public.ecr.aws/datadog/agent:latest" }]
+[{"name": "datadog", "image": "public.ecr.aws/datadog/agent:latest"}]
 ```
 
 > ↪️ 参考：

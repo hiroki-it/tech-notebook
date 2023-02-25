@@ -156,7 +156,7 @@ Inputs
 > - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
 
 ```yaml
-{ "message": "dummy" }
+{"message": "dummy"}
 ```
 
 #### ▼ セットアップ

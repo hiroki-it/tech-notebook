@@ -280,7 +280,7 @@ POST https://example.com/bar-form.php
 x-csrf-token: <トークン>
 ---
 # ボディ
-{ _token=<トークン> }
+{_token=<トークン>}
 ```
 
 `【３】`

@@ -68,13 +68,13 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
   "Statement":
     {
       "Effect": "Allow",
-      "Principal": { "Federated": "cognito-identity.amazonaws.com" },
+      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition":
         {
-          "StringEquals": { "cognito-identity.amazonaws.com:aud": "*****" },
+          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
           "ForAnyValue:StringLike":
-            { "cognito-identity.amazonaws.com:amr": "unauthenticated" },
+            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
         },
     },
 }
@@ -187,10 +187,10 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 フェデレーテッドユーザーは任意のIPプロバイダーで発行する。
 
 ```yaml
-{ "Version": "2012-10-17", "Statement": { "Effect": "Allow", "Principal": {
+{"Version": "2012-10-17", "Statement": {"Effect": "Allow", "Principal": {
           # IDプロバイダーをCognitoとしている。
           "Federated": "cognito-identity.amazonaws.com",
-        }, "Action": "sts:AssumeRoleWithWebIdentity", "Condition": { "StringEquals": { "cognito-identity.amazonaws.com:aud": "*****" }, "ForAnyValue:StringLike": { "cognito-identity.amazonaws.com:amr": "unauthenticated" } } } }
+        }, "Action": "sts:AssumeRoleWithWebIdentity", "Condition": {"StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"}, "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "unauthenticated"}}}}
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
@@ -205,13 +205,13 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
   "Statement":
     {
       "Effect": "Allow",
-      "Principal": { "Federated": "accounts.google.com" },
+      "Principal": {"Federated": "accounts.google.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition":
         {
-          "StringEquals": { "accounts.google.com:aud": "*****" },
+          "StringEquals": {"accounts.google.com:aud": "*****"},
           "ForAnyValue:StringLike":
-            { "accounts.google.com:amr": "unauthenticated" },
+            {"accounts.google.com:amr": "unauthenticated"},
         },
     },
 }
@@ -236,10 +236,7 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
           },
         "Action": "sts:AssumeRole",
         "Condition":
-          {
-            "StringEquals":
-              { "SAML:aud": "https://signin.aws.amazon.com/saml" },
-          },
+          {"StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"}},
       },
     ],
 }
@@ -268,12 +265,12 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
     [
       {
         "Effect": "Allow",
-        "Principal": { "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>" },
+        "Principal": {"AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
-        "Condition": { "StringEquals": {
+        "Condition": {"StringEquals": {
                 # IAMユーザーを使用する場合は、外部IDが必要になる。
                 "sts:ExternalId": "<適当な文字列>",
-              } },
+              }},
       },
     ],
 }
@@ -350,7 +347,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 ```yaml
 # レスポンスデータ
 # ~/.aws/cli/cacheディレクトリ配下にも保存される。
-{ "Credentials": {
+{"Credentials": {
       "AccessKeyId": "<アクセスキーID>", # 必要になる値"
       "SecretAccessKey": "<シークレットアクセスキー>", # 必要になる値
       "SessionToken": "<セッショントークン文字列>", # 必要になる値
@@ -358,7 +355,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
     }, "AssumeRoleUser": {
       "AssumedRoleId": "<セッションID>:<セッション名>",
       "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>", # 一時的なIAMユーザー
-    }, "ResponseMetadata": { "RequestId": "*****", "HTTPStatusCode": 200, "HTTPHeaders": { "x-amzn-requestid": "*****", "content-type": "text/xml", "content-length": "1472", "date": "Fri, 01 Jul 2022 13:00:00 GMT" }, "RetryAttempts": 0 } }
+    }, "ResponseMetadata": {"RequestId": "*****", "HTTPStatusCode": 200, "HTTPHeaders": {"x-amzn-requestid": "*****", "content-type": "text/xml", "content-length": "1472", "date": "Fri, 01 Jul 2022 13:00:00 GMT"}, "RetryAttempts": 0}}
 ```
 
 <br>

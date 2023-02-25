@@ -383,7 +383,7 @@ JSON型データ内に定義し、メッセージボディにパラメーター�
 POST https://example.com
 ---
 # ボディ
-{ "id": 1, "name": "foo" }
+{"id": 1, "name": "foo"}
 ```
 
 #### ▼ リクエストヘッダーへの割り当て
@@ -715,7 +715,7 @@ DELETEメソッドでは、メッセージのみを200レスポンスとして�
 正常系レスポンスの場合、オブジェクトデータへのステータスコードの割り当ては不要である。
 
 ```yaml
-{ "name": "Taro Yamada" }
+{"name": "Taro Yamada"}
 ```
 
 #### ▼ フラットなデータ構造にすること
@@ -728,7 +728,7 @@ JSONの場合、階層構造にすると、データサイズが増えてしま�
 {
   "name": "Taro Yamada",
   "age": 10,
-  "interest": { "sports": ["soccer", "baseball"], "subjects": "math" },
+  "interest": {"sports": ["soccer", "baseball"], "subjects": "math"},
 }
 ```
 

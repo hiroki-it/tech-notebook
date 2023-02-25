@@ -359,7 +359,7 @@ $ composer dump-autoload
   ? ...
 
     "autoload"
-  : { "psr-4": {} },
+  : {"psr-4": {}},
 
   # パスが誤っていないか
   ...,

@@ -27,7 +27,7 @@ title: 【IT技術の知見】メソッド/データ＠JavaScript
 const object = {
   foo: "FOO",
   age: 42,
-  baz: { myProp: 12 },
+  baz: {myProp: 12},
 };
 ```
 
@@ -394,7 +394,7 @@ const obj = {
 };
 
 // プロパティ名と同じ名前の変数に代入
-const { foo, baz } = obj;
+const {foo, baz} = obj;
 
 console.log(foo); // 1
 console.log(baz); // 3

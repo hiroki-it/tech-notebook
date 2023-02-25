@@ -74,7 +74,7 @@ DBからアカウント情報を読み出し、`.rego`ファイルのロジッ�
 
 ```yaml
 # subordinates.jsonファイル
-{ "alice": ["bob"], "bob": [], "charlie": ["david"], "david": [] }
+{"alice": ["bob"], "bob": [], "charlie": ["david"], "david": []}
 ```
 
 `【２】`
@@ -146,11 +146,7 @@ $ curl \
 # request.jsonファイル
 {
   "input":
-    {
-      "method": "GET",
-      "path": ["finance", "salary", "alice"],
-      "user": "alice",
-    },
+    {"method": "GET", "path": ["finance", "salary", "alice"], "user": "alice"},
 }
 ```
 

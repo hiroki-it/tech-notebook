@@ -506,11 +506,11 @@ RESTful-APIが受信するCRUDのデータ型や必須データを定義した�
   "type": "object",
   "properties":
     {
-      "id": { "type": "integer", "minimum": 1 },
-      "name": { "type": "string" },
-      "age": { "type": "integer", "minimum": 0 },
-      "sports": { "type": "array", "items": { "type": "string" } },
-      "subjects": { "type": "string" },
+      "id": {"type": "integer", "minimum": 1},
+      "name": {"type": "string"},
+      "age": {"type": "integer", "minimum": 0},
+      "sports": {"type": "array", "items": {"type": "string"}},
+      "subjects": {"type": "string"},
     },
   "required": ["id"],
 }

@@ -60,7 +60,7 @@ Applicationから返却された情報 (例：マニフェストの差分) を�
 {
   "grpc.method": "Watch",
   "grpc.request.claims": "<アカウントの情報>",
-  "grpc.request.content": { "name": "foo" },
+  "grpc.request.content": {"name": "foo"},
   "grpc.service": "application.ApplicationService",
   "grpc.start_time": "2023-01-27T07:08:59Z",
   "level": "info",

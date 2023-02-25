@@ -101,7 +101,7 @@ description: S3＠Sで始まるAWSリソースの知見を記録しています�
     [
       {
         "Effect": "Allow",
-        "Principal": { "AWS": "arn:aws:iam::582318560864:root" },
+        "Principal": {"AWS": "arn:aws:iam::582318560864:root"},
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::<バケット名>/*",
       },
@@ -192,7 +192,7 @@ description: S3＠Sで始まるAWSリソースの知見を記録しています�
         "Principal": "*",
         "Action": "s3:GetObject",
         "Resource": "arn:aws:s3:::<バケット名>/*",
-        "Condition": { "IpAddress": { "aws:SourceIp": "*.*.*.*/32" } },
+        "Condition": {"IpAddress": {"aws:SourceIp": "*.*.*.*/32"}},
       },
     ],
 }
