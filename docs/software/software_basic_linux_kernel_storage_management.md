@@ -435,7 +435,7 @@ crw-rw----+ vhost-net             # 仮想ネットワーク
 crw-rw-rw-  vhost-vsock           # 仮想ソケット
 crw-------  watchdog              # システムリセット
 crw-------  watchdog0             # システムリセット
-crw-rw-rw-  zero                  # ゼロ出力  (読み込むとゼロ)
+crw-rw-rw-  zero                  # ゼロ出力 (読み込むとゼロ)
 ```
 
 <br>

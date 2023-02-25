@@ -311,7 +311,8 @@ error getting app project "foo-project": appproject.argoproj.io "foo-project" no
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: prd # その他、運用チーム名など
+  name: prd # 実行環境名、運用チーム名など
+  namespace: foo # サービス名、など
 spec:
   sourceNamespaces:
     - "*"

@@ -488,17 +488,16 @@ istio-revision-tag-default            1          3m18s # 現在のリビジョ�
 
 メトリクスの名前空間を`istio-proxy`コンテナとした時の監視ポリシーは以下の通りである。
 
-| メトリクス                                                     | 単位     | 説明                                                                                                                                          | アラート条件例 (合致したら発火) |
-|-----------------------------------------------------------| -------- |---------------------------------------------------------------------------------------------------------------------------------------------| ------------------------------- |
-| 総リクエスト数 (`istio_requests_total`)                          | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                                 |
-| 総gRPCリクエスト数 (`istio_request_messages_total`)              | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                       |                                 |
-| 総gRPCレスポンス数 (`istio_response_messages_total`)             | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                       |                                 |
-| Pod間通信リトライ数 (`envoy_cluster_upstream_rq_retry`)           | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                    |                                 |
-| Pod間通信リトライ成功数 (`envoy_cluster_upstream_rq_retry_success`) | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                 |
-
+| メトリクス                                                          | 単位     | 説明                                                                                                                                                                                              | アラート条件例 (合致したら発火) |
+| ------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| 総リクエスト数 (`istio_requests_total`)                             | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                                 |
+| 総gRPCリクエスト数 (`istio_request_messages_total`)                 | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                         |                                 |
+| 総gRPCレスポンス数 (`istio_response_messages_total`)                | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                         |                                 |
+| Pod間通信リトライ数 (`envoy_cluster_upstream_rq_retry`)             | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                                  |                                 |
+| Pod間通信リトライ成功数 (`envoy_cluster_upstream_rq_retry_success`) | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                              |
 
 > ↪️ 参考：
-> 
+>
 > - https://istio.io/latest/docs/reference/config/metrics/
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
 > - https://www.zhaohuabing.com/post/2023-02-14-istio-metrics-deep-dive/

@@ -102,7 +102,7 @@ $ istioctl analyze
 ```bash
 $ istioctl analyze
 
-Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 80) doesn't follow the naming convention of Istio port.
+Info [IST0118] (Service default/foo-service) Port name (port: 80, targetPort: 80) doesn't follow the naming convention of Istio port.
 ```
 
 <br>

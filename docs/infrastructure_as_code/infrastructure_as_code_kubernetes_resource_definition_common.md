@@ -385,14 +385,14 @@ $ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm
 
 **＊例＊**
 
-| キー                             | 値の例          | 説明                                                                                                                                                                                    |
-| -------------------------------- | --------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `meta.helm.sh/release-name`      | `foo-release`   | Helmのリリース名を設定する。                                                                                                                                                                      |
-| `meta.helm.sh/release-namespace` | `foo-namespace` | リリース時のNamespaceを設定する。                                                                                                                                                                 |
+| キー                             | 値の例          | 説明                                                                                                                                                                                                                                                                                                                |
+| -------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `meta.helm.sh/release-name`      | `foo-release`   | Helmのリリース名を設定する。                                                                                                                                                                                                                                                                                        |
+| `meta.helm.sh/release-namespace` | `foo-namespace` | リリース時のNamespaceを設定する。                                                                                                                                                                                                                                                                                   |
 | `meta.helm.sh/resource-policy`   | `keep`          | Kubernetesリソースに付与することで、 リリース時に再作成処理や削除処理されることを防ぐ。公式チャートのアップグレード時に、特定のチャート内のKubernetesリソースを別チャートに移行したい場合に役立つ。他に、Helmリリースのアンインストール時に特定のKubernetesリソース (例：PersistentVolume) を残したい場合に役立つ。 |
 
 > ↪️ 参考：
-> 
+>
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#tell-helm-not-to-uninstall-a-resource
 > - https://codersociety.com/blog/articles/helm-best-practices#9-opt-out-of-resource-deletion-with-resource-policies
 

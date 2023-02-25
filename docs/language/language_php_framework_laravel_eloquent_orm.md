@@ -991,7 +991,7 @@ class EmployeeController
         $department = new Department();
 
         // Departmentに属するEmployeesを全て読み出します。
-        //  (departments : employees = 1 : 多)
+        // (departments : employees = 1 : 多)
         $employees = $department->with("employees")->get();
 
         foreach ($employees as $employee) {
@@ -1028,7 +1028,7 @@ class Department extends Model
      * 一対多の関係を定義します。
 
 
-     *  (デフォルトではemployee_idに紐付けます)
+     * (デフォルトではemployee_idに紐付けます)
      *
      * @return HasMany
      */
@@ -1062,7 +1062,7 @@ class Employee extends Model
      * 多対一の関係を定義します。
 
 
-     *  (デフォルトではdepartment_idに紐付けます)
+     * (デフォルトではdepartment_idに紐付けます)
      *
      * @return BelongsTo
      */

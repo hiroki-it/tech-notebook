@@ -247,7 +247,7 @@ helm.sh/chart: {{ .Chart.Name }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels: {{ include "global.template.labels" . | indent 4 }} # まとめて出力する。
+  labels: { { include "global.template.labels" . | indent 4 } } # まとめて出力する。
 ```
 
 > ↪️ 参考：https://codersociety.com/blog/articles/helm-best-practices#3-use-labels-to-find-resources-easily

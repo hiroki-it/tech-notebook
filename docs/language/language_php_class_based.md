@@ -306,8 +306,8 @@ class GoodsWithTax extends Goods
     public function printPrice()
     {
         // 商品価格の税込み価格を計算し、表示
-        $priceWithTax = round($this->getPrice() * 1.08);  //  (1)
-        print($this->getName()."の税込み価格: ￥".$priceWithTax."<br>");  //  (2)
+        $priceWithTax = round($this->getPrice() * 1.08);  // (1)
+        print($this->getName()."の税込み価格: ￥".$priceWithTax."<br>");  // (2)
     }
 }
 ```

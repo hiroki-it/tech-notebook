@@ -718,7 +718,7 @@ Deploymentで維持管理するPodのテンプレートを設定する。
 
 設定項目はPodと同じである。
 
-Deployment自体の`metadata.labels`キーを更新した場合はPodは再作成しないが、`.spec.template`キー配下の`metadata.labels`キーの場合は、Podの再作成となる。
+Deployment自体の`.metadata.labels`キーを更新した場合はPodは再作成しないが、`.spec.template`キー配下の`.metadata.labels`キーの場合は、Podの再作成となる。
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
 

@@ -817,6 +817,15 @@ spec:
     namespace: foo-namespace
 ```
 
+注意点として、既存のKubernetesリソースが、すでに別のNamespaceで作成されている場合、そちらが優先される。
+
+そのため、App-of-AppsのArgoCDをリプレイスしたい時に、既存のApplicationをそのままに新規でApplicationを作成できない (可能性がある) 。
+
+> ↪️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455
+> - https://github.com/argoproj/argo-cd/issues/6274#issuecomment-844494318
+
 #### ▼ server
 
 kube-apiserverのURLを設定する。
@@ -993,6 +1002,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: prd
+  namespace: foo # サービス名、など
 spec:
   sourceNamespaces:
     - "*"
@@ -1010,7 +1020,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: prd # その他、運用チーム名など
+  name: prd # 実行環境名、運用チーム名など
+  namespace: foo # サービス名、など
 spec:
   sourceRepos:
     - "*"
@@ -1024,7 +1035,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: prd # その他、運用チーム名など
+  name: prd # 実行環境名、運用チーム名など
+  namespace: foo # サービス名、など
 spec:
   description: This is application in prd environment
 ```
@@ -1039,7 +1051,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: prd # その他、運用チーム名など
+  name: prd # 実行環境名、運用チーム名など
+  namespace: foo # サービス名、など
 spec:
   destinations:
     - namespace: "*" # 全てのNamespaceにデプロイできる。
@@ -1056,7 +1069,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: prd # その他、運用チーム名など
+  name: prd # 実行環境名、運用チーム名など
+  namespace: foo # サービス名、など
 spec:
   clusterResourceWhitelist:
     - group: "*"
@@ -1620,7 +1634,7 @@ Casbinの記法を使用して、ロールと認可スコープを定義しつ�
 - `app`ロールに、`app`プロジェクト配下の全ての認可スコープ
 - `infra`ロールに、`infra`プロジェクト配下の全ての認可スコープ
 
-なお、実行環境名は`metadata.labels`キーに設定しておく。
+なお、実行環境名は`.metadata.labels`キーに設定しておく。
 
 ```yaml
 apiVersion: v1
@@ -1697,7 +1711,7 @@ data:
 - `app`ロールに、`app`プロジェクト配下の全ての認可スコープ
 - `infra`ロールに、`infra`プロジェクト配下の全ての認可スコープ
 
-なお、実行環境名は`metadata.labels`キーに設定しておく。
+なお、実行環境名は`.metadata.labels`キーに設定しておく。
 
 ```yaml
 apiVersion: v1
