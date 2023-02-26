@@ -27,21 +27,21 @@ description: Vue.jsの知見を記録しています。
 
 : View層 (`foo.html`、`/foo.twig`、`foo-component.vue`の`template`タグ部分)
 
-ViewModel層から渡されたデータを出力するだけ。
+     ViewModel層から渡されたデータを出力するだけ。
 
 `【２】`
 
 : ViewModel層 (`index.js`、`foo-component.vue`の`script`タグ部分)
 
-プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
+     プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
 
-scriptタグによって、JavaScriptが組み込まれている。
+     scriptタグによって、JavaScriptが組み込まれている。
 
 `【３】`
 
 : Model層 (`store.js`または`foo.js`)
 
-ビジネスロジックや、ajaxメソッドによるデータ送受信、を記述する。
+     ビジネスロジックや、ajaxメソッドによるデータ送受信、を記述する。
 
 #### ▼ Vueを使用したMVVMアーキテクチャ、双方向データバインディング
 
@@ -69,7 +69,11 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 #### ▼ 親子コンポーネント間のデータ渡しの仕組み (Props Down, Events Up)
 
-まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。コンポーネント (`foo-component.vue`) の`script`タグ部分 (ViewModel層) の親子間では、`props`と`$emit`メソッドを使用して、データを渡す。この仕組みを、Props Down, Events Upという。
+まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。
+
+コンポーネント (`foo-component.vue`) の`script`タグ部分 (ViewModel層) の親子間では、`props`と`$emit`メソッドを使用して、データを渡す。
+
+この仕組みを、Props Down, Events Upという。
 
 ![親子コンポーネント間の双方向データバインディング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/親子コンポーネント間の双方向データバインディング.png)
 

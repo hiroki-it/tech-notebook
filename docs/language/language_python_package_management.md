@@ -61,11 +61,11 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 
 指定したパッケージをインストールする。
 
-> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
-
 ```bash
 $ pip3 install <パッケージ名>
 ```
+
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
 
 #### ▼ --upgrade
 
@@ -85,8 +85,6 @@ $ pip3 freeze > requirements.txt
 
 アップグレードできるパッケージを一括でアップグレードする場合は、パイプラインと組み合わせる必要がある。
 
-> ↪️ 参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
-
 ```bash
 $ pip3 freeze --local \
     | grep -v '^\-e' \
@@ -94,13 +92,15 @@ $ pip3 freeze --local \
     | xargs -n1 pip3 install -U
 ```
 
-pip自身をアップグレードする。
+> ↪️ 参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
 
-> ↪️ 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
+pip自身をアップグレードする。
 
 ```bash
 $ pip3 install --upgrade pip
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
 
 #### ▼ --user
 
@@ -193,8 +193,6 @@ setuptools         60.5.0  60.9.3 wheel
 
 pipでインストールしたパッケージ情報を取得する。
 
-> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
-
 ```bash
 $ pip3 show sphinx
 
@@ -213,6 +211,8 @@ Requires: sphinxcontrib-applehelp, imagesize, docutils, sphinxcontrib-serializin
 Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 ```
 
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
+
 <br>
 
 ### uninstall
@@ -221,16 +221,16 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 指定したパッケージをインストールする。
 
-> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
-
 ```bash
 $ pip3 uninstall -y <パッケージ名>
 ```
 
-uninstall.txt を元にパッケージをアンインストールもできる。
+`uninstall.txt`ファイルを元にパッケージをアンインストールもできる。
 
 ```bash
 $ pip3 uninstall -y -r uninstall.txt
 ```
+
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
 
 <br>

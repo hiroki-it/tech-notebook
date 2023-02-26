@@ -773,8 +773,9 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
-  # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
-  repoURL: oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
+  source:
+    # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
+    repoURL: oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
 #### ▼ targetRevision
@@ -1479,7 +1480,7 @@ metadata:
   namespace: argocd
   name: argocd-cm
 data:
-  admin.enabled: "true"
+  admin.enabled: true
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
     connectors:
@@ -1514,7 +1515,7 @@ metadata:
   namespace: argocd
   name: argocd-cm
 data:
-  admin.enabled: "true"
+  admin.enabled: true
   # OIDCに必要なIDやトークンを設定する。
   dex.config: |
     connectors:
@@ -2137,7 +2138,8 @@ metadata:
   name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: foo-repository # マニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/foo-manifest.git
   type: git
@@ -2153,7 +2155,8 @@ metadata:
   name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: bar-repository # マニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
@@ -2179,7 +2182,8 @@ metadata:
   name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: foo-repository # マニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/foo-manifest.git
   type: git
@@ -2195,7 +2199,8 @@ metadata:
   name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: bar-repository # マニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/bar-manifest.git
   type: git
@@ -2234,7 +2239,8 @@ metadata:
   name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: foo-repository # チャートリポジトリ名
   url: https://github.com/hiroki.hasegawa/foo-charts # チャートリポジトリのURL
   type: helm
@@ -2249,7 +2255,8 @@ metadata:
   name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: bar-repository # チャートリポジトリ名
   url: https://github.com/hiroki.hasegawa/bar-charts # チャートリポジトリのURL
   type: helm
@@ -2292,13 +2299,14 @@ metadata:
   name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: foo-oci-repository # OCIリポジトリ名
   url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: foo
   password: bar
-  enableOCI: "true" # OCIリポジトリを有効化する。
+  enableOCI: true # OCIリポジトリを有効化する。
 ---
 # bar-repositoryを監視するためのargocd-repo
 apiVersion: v1
@@ -2308,13 +2316,14 @@ metadata:
   name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+type: Opaque
+data:
   name: bar-oci-repository # OCIリポジトリ名
   url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: baz
   password: qux
-  enableOCI: "true" # OCIリポジトリを有効化する。
+  enableOCI: true # OCIリポジトリを有効化する。
 ```
 
 AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。

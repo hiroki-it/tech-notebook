@@ -506,7 +506,7 @@ terraform:
     template: |
       {{ .Title }} for staging <sup>[CI link]( {{ .Link }} )</sup>
       {{ .Message }}
-      {{if .Result}}
+      {{ if .Result }}
       <pre><code> {{ .Result }}
       </pre></code>
       {{end}}
@@ -518,7 +518,7 @@ terraform:
     template: |
       {{ .Title }}
       {{ .Message }}
-      {{if .Result}}
+      {{ if .Result }}
       <pre><code>{{ .Result }}
       </pre></code>
       {{end}}

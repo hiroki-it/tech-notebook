@@ -196,6 +196,8 @@ Pythonの命名規則は、PEPに記載されている。
 
 一方で、名前空間パッケージではこれが不要である。
 
+> ↪️ 参考：
+>
 > - https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
 > - https://rinatz.github.io/python-book/ch04-02-packages/
 

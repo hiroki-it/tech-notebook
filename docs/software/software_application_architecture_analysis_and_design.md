@@ -445,9 +445,9 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 `(カラム数/レコード数)`で導かれ、カーディナリティが高いほど、より効率的なDBインデックスを作成できる。
 
-> ↪️ 参考：<https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb>
-
 ![リレーションとカーディナリティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リレーションとカーディナリティ.png)
+
+> ↪️ 参考：<https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb>
 
 <br>
 

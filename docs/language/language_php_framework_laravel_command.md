@@ -182,8 +182,6 @@ $ php artisan migrate:refresh
 
 DBマイグレーションファイルの構文チェックを行わずに、強制的に実行される。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
-
 ```bash
 $ php artisan migrate:fresh
 ```
@@ -198,17 +196,19 @@ DBマイグレーション時、テーブルがすでに存在するエラーが
 SQLSTATE[42S01]: <テーブル名> table or view already exists
 ```
 
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
+
 #### ▼ --force
 
 DBマイグレーション時、本当に実行して良いか確認画面 (Yes/No) が表示される。
 
 CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
-
 ```bash
 $ php artisan migrate --force
 ```
+
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
 <br>
 

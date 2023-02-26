@@ -40,8 +40,6 @@ description: Eで始まるAWSリソース＠AWSの知見を記録しています
 
 #### ▼ コンテナイメージの場合
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
-
 `【１】`
 
 : ECRにログインする。
@@ -72,7 +70,11 @@ $ docker tag <イメージID> <イメージリポジトリURL>:<バージョン�
 $ docker push <イメージリポジトリURL>:<バージョンタグ>
 ```
 
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+
 #### ▼ helmチャートの場合
+
+調査中...
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
 
@@ -126,8 +128,6 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 イベントパターンに定義しないキーは任意のデータと見なされる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
-
 ```yaml
 {
   "version": "0",
@@ -153,6 +153,8 @@ Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Sta
   "source": "aws.amplify",
 }
 ```
+
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
 #### ▼ スケジュール
 
@@ -250,9 +252,11 @@ JSONのキー名が変数名として動作する。
 }
 ```
 
-入力テンプレートにて、転送するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。出力する時は、入力パスの変数名を『`<>`』で囲う。Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。
+入力テンプレートにて、転送するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。
 
-> ↪️ 参考：https://app.slack.com/block-kit-builder
+出力する時は、入力パスの変数名を『`<>`』で囲う。
+
+Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。
 
 ```yaml
 {
@@ -301,5 +305,7 @@ JSONのキー名が変数名として動作する。
           "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*Amplifyコンソール*"
 
 ```
+
+> ↪️ 参考：https://app.slack.com/block-kit-builder
 
 <br>
