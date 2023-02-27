@@ -135,13 +135,13 @@ outbound|<Serviceの受信ポート>|<サブセット名>|<Serviceの完全修�
 
 outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.1:80::zone::ap-northeast-1a
 outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.2:80::zone::ap-northeast-1a
-outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::10.0.0.3:80::zone::ap-northeast-1a
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.3:80::zone::ap-northeast-1a
 
 ...
 
 outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.1:80::region::ap-northeast-1
 outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.2:80::region::ap-northeast-1
-outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::10.0.0.3:80::region::ap-northeast-1
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.3:80::region::ap-northeast-1
 
 ...
 ```

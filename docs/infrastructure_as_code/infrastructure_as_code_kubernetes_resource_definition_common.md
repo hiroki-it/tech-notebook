@@ -15,6 +15,8 @@ description: 共通部分＠リソース定義の知見を記録しています�
 
 ## 01. apiVersion
 
+### apiVersionとは
+
 APIグループのバージョンを設定する。
 
 kube-apiserverをアップグレードすると、APIグループの特定のバージョンが廃止されることがある。
@@ -29,6 +31,23 @@ apiVersion: v1
 >
 > - https://kubernetes.io/docs/reference/using-api/#api-groups
 > - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#-strong-api-groups-strong-
+
+<br>
+
+### APIグループ
+
+#### ▼ バージョンの段階
+
+バージョンは、成熟度に応じて、`alpha`、`beta`、`stable`、の段階がある。
+
+`alpha`のみデフォルトで無効化されており、`beta`や`stable`であれば、マニフェストで指定すればそのまま使用できる。
+
+もしバージョンの`v2`にKubernetesが対応していなければ、`v1beta1`や`v2beta2`で回避する方法がある。
+
+> ↪️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/2008/27/news057.html
+> - https://qiita.com/tkusumi/items/cb2dc318875fbef19468
 
 <br>
 

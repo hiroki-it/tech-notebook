@@ -118,6 +118,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 ```bash
 # Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
+
 # ホストポートを介してPodのポートにアクセスする。
 $ curl http://127.0.0.1:8080
 ```

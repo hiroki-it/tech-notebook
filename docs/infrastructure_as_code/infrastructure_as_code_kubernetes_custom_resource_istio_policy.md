@@ -92,7 +92,7 @@ spec:
 
 セキュリティ上の理由から、IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
 
-> ↪️ 参考：https://cloud.google.com/service-mesh/docs/gateways#best_practices_for_managed_data_plane
+> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway
 
 #### ▼ NodePort Serviceを選ぶ
 

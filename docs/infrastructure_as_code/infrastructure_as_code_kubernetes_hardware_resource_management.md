@@ -96,7 +96,9 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 
 `【１】`
 
-: Podが、Nodeの`70`%にあたるリソースを要求する。 しかし、Nodeが`1`台では足りない。`70 + 70 = 140%`になるため、既存のNodeの少なくとも`1.4`倍のスペックが必要となる。
+: Podが、Nodeの`70`%にあたるリソースを要求する。
+
+​ しかし、Nodeが`1`台では足りない。`70 + 70 = 140%`になるため、既存のNodeの少なくとも`1.4`倍のスペックが必要となる。
 
 `【２】`
 
@@ -118,7 +120,9 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 
 `【１】`
 
-: Podが、Nodeの`30`%にあたるリソースを要求する。 `30 + 30 = 60%`になるため、既存のNodeが`1`台あれば足りる。
+: Podが、Nodeの`30`%にあたるリソースを要求する。
+
+​ `30 + 30 = 60%`になるため、既存のNodeが`1`台あれば足りる。
 
 `【２】`
 
@@ -138,13 +142,13 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 
 ### karpenterとは
 
-AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。
+AWSの場合、cluster-autoscalerの代わりにkarpenterを使用できる。
 
-karpenterはAWS EC2の起動API (例：AWS EC2 Fleet) をコールし、Nodeの自動水平スケーリングを実行する。
+karpenterはAWS EC2のグループに関するAPI (例：AWS EC2フリート) をコールし、Nodeの自動水平スケーリングを実行する。
 
-Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
+karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
 
-そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (負荷が激しく変化するようなシステム) でも合っている。
+そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。
 
 ![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
@@ -153,16 +157,17 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 > - <https://sreake.com/blog/learn-about-karpenter/>
 > - <https://blog.inductor.me/entry/2021/12/06/165743>
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
+> - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
 
 <br>
 
-### cluster-autosclerとの違い
+### cluster-autoscalerとの違い
 
 cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
 
-cluster-autosclerはクラウドプロバイダーの自動スケーリングに関するAPI (例：AWS EC2AutoScaling) をコールするため、その機能が自動スケーリングに関するAPIに依存する。
+cluster-autoscalerはクラウドプロバイダーの自動スケーリングに関するAPI (例：AWS EC2AutoScaling) をコールするため、その機能が自動スケーリングに関するAPIに依存する。
 
-一方でkarpenterは、EC2の起動に関するAPI (例：AWS EC2 Fleet) をコールするため、より柔軟なNode数にスケーリングできる。
+一方でkarpenterは、EC2のグループに関するAPI (例：AWS EC2フリート) をコールするため、より柔軟なNode数にスケーリングできる。
 
 ![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
@@ -348,28 +353,28 @@ PodとNodeのメトリクスを収集し、Podの負荷状態に合わせて、P
 
 ### metrics-serverの仕組み
 
-metrics-serverは、拡張apiserverのmetrics-apiserver、ローカルストレージ、スクレイパー、から構成される。
+metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、から構成される。
 
 また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。
 
-KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスを収集しつつ、収集したメトリクスをmetrics-apiserverで公開する。
+KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスを収集しつつ、収集したメトリクスを拡張APIサーバーで公開する。
 
 クライアント (`kubectl`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。
 
 似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+
+![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
 > ↪️ 参考：
 >
 > - <https://speakerdeck.com/bells17/metrics-server?slide=20>
 > - <https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base>
 
-![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
-
 <br>
 
-### metrics-apiserver
+### 拡張APIサーバー
 
-#### ▼ metrics-apiserverとは
+#### ▼ 拡張APIサーバーとは
 
 ServiceとAPIServiceを介して、クライアント (`kubectl`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
 
@@ -380,7 +385,7 @@ ServiceとAPIServiceを介して、クライアント (`kubectl`コマンド実�
 > - <https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html>
 > - <https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58>
 
-#### ▼ metrics-apiserverへのリクエスト
+#### ▼ 拡張APIサーバーへのリクエスト
 
 クライアントが`kubectl`コマンド実行者の場合は、`kubectl top`コマンドを実行する。
 
@@ -392,7 +397,7 @@ $ kubectl top node
 $ kubectl top pod -n <任意のNamespace>
 ```
 
-また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、metrics-apiserverからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
+また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、拡張APIサーバーからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
@@ -418,8 +423,6 @@ $ kubectl top pod -n <任意のNamespace>
 
 #### ▼ HorizontalPodAutoscalerとは
 
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
-
 Podの自動水平スケーリングを実行する。
 
 metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。
@@ -427,6 +430,8 @@ metrics-serverから取得したPodに関するメトリクス値とターゲッ
 設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。
 
 HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
+
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
 > ↪️ 参考：
 >
@@ -439,8 +444,6 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 算出結果に基づいて、スケールアウト/スケールインが実行される。
 
-> ↪️ 参考：<https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14>
-
 ```mathematica
 (必要な最大Pod数)
 = (現在のPod数) x (現在のPodのCPU平均使用率) ÷ (現在のPodのCPU使用率のターゲット値)
@@ -449,6 +452,8 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 例えば、『`現在のPod数 = 5`』『`現在のPodのCPU平均使用率 = 90`』『`現在のPodのCPU使用率のターゲット値 = 70`』だとすると、『`必要な最大Pod数 = 7`』となる。
 
 算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
+
+> ↪️ 参考：<https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14>
 
 <br>
 

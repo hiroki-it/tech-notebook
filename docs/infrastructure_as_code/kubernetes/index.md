@@ -33,6 +33,8 @@
 
 ### 開発
 
+* #### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.html)
+
 * #### <u>開発環境</u>
   > * ##### <u>Minikube</u>
   > > * ##### [Minikube](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
