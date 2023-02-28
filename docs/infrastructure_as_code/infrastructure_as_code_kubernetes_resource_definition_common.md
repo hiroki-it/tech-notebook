@@ -30,7 +30,7 @@ apiVersion: v1
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/reference/using-api/#api-groups
-> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#-strong-api-groups-strong-
+> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
 
 <br>
 
@@ -406,8 +406,8 @@ $ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm
 
 | キー                             | 値の例          | 説明                                                                                                                                                                                                                                                                                                                |
 | -------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `meta.helm.sh/release-name`      | `foo-release`   | Helmのリリース名を設定する。                                                                                                                                                                                                                                                                                        |
-| `meta.helm.sh/release-namespace` | `foo-namespace` | リリース時のNamespaceを設定する。                                                                                                                                                                                                                                                                                   |
+| `meta.helm.sh/release-name`      | `foo-release`   | Helmのリリース名を設定する。これを削除すると、helm-diffで削除判定になっても、実際には削除されない。                                                                                                                                                                                                                 |
+| `meta.helm.sh/release-namespace` | `foo-namespace` | リリース時のNamespaceを設定する。これを削除すると、helm-diffで削除判定になっても、実際には削除されない。                                                                                                                                                                                                            |
 | `meta.helm.sh/resource-policy`   | `keep`          | Kubernetesリソースに付与することで、 リリース時に再作成処理や削除処理されることを防ぐ。公式チャートのアップグレード時に、特定のチャート内のKubernetesリソースを別チャートに移行したい場合に役立つ。他に、Helmリリースのアンインストール時に特定のKubernetesリソース (例：PersistentVolume) を残したい場合に役立つ。 |
 
 > ↪️ 参考：

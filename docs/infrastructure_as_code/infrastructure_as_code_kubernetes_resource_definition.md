@@ -575,7 +575,7 @@ spec:
 
 > ↪️ 参考：
 >
-> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
+> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deployment-v1-apps
 > - https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
 <br>
@@ -606,7 +606,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deployment-v1-apps
 
 <br>
 
@@ -1076,11 +1076,11 @@ spec:
 
 パスベースルーティング判定時のルールの厳しさを設定する。
 
-| 厳しさ             | タイプ                 |                                                                                                    |
-| ------------------ | ---------------------- | -------------------------------------------------------------------------------------------------- |
-| パス名の一致       | Prefix                 | 最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。 |
-| パス名の完全一致   | Exact                  | 指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。                             |
-| IngressClassによる | ImplementationSpecific | IngressClass (例：Nginx) の設定に応じて、独自タイプ、Prefix、Exact、を自動的に切り替える。         |
+| 厳しさ                | タイプ                 |                                                                                     |
+|--------------------| ---------------------- |-------------------------------------------------------------------------------------|
+| パス名の前方一致           | Prefix                 | 前方一致である。最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。そのため、ワイルドカード (`*`) は不要である。 |
+| パス名の完全一致           | Exact                  | 完全一致である。指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。                                         |
+| IngressClassの機能による | ImplementationSpecific | IngressClass (例：Nginx) の設定に応じて、独自タイプ、Prefix、Exact、を自動的に切り替える。                       |
 
 ```yaml
 apiVersion: networking.k8s.io/v1

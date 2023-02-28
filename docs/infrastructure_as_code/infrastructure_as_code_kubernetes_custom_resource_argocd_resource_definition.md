@@ -301,6 +301,14 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 
+#### ▼ Namespace
+
+Applicationは任意のNamespaceに作成できる。
+
+ただし、ルートのApplicationはargocd-serverと同じNamespaceに配置しないと、UI上にApplicationを表示できない。
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/
+
 <br>
 
 ### .spec.ignoreDifferences
@@ -819,9 +827,7 @@ spec:
     namespace: foo-namespace
 ```
 
-注意点として、既存のKubernetesリソースが、すでに別のNamespaceで作成されている場合、そちらが優先される。
-
-そのため、App-of-AppsのArgoCDをリプレイスしたい時に、既存のApplicationをそのままに新規でApplicationを作成できない (可能性がある) 。
+注意点として、Applicationがリポジトリで検知したKubernetesリソースの`metadata.namespace`キーで、別のNamespaceで作成されている場合、そちらが優先される。
 
 > ↪️ 参考：
 >

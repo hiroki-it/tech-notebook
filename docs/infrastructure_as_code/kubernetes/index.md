@@ -20,9 +20,15 @@
   > > * ##### [アドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.html)
   > * ##### <u>Nodeコンポーネント</u>
   > > * ##### [Nodeコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)
-  > > * ##### [アドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.html)
+  > > * ##### <u>アドオン</u>
+  > > > * ##### [アドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.html)
+  > > > * ##### <u>SecretsストアCSIドライバー</u>
+  > > > > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon_secrets_store_csi_driver.html)
+  > > > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon_secrets_store_csi_driver_resource_definition.html)
   > * ##### <u>︎クラウドプロバイダーアドオン</u>
   > > * ##### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon_aws_eks.html)
+  > > * ##### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon_aws_eks_ebs_csi_driver.html)
+  > > * ##### [AWS VPC CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon_aws_eks_vpc_cni.html)
 * #### <u>ネットワーク</u>
   > * ##### [ネットワーク](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)
   > * ##### [アドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_network_addon.html)
@@ -75,13 +81,6 @@
 * #### <u>︎リソース定義</u>
   > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
   > * ##### [共通部分](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html)
-
-* #### <u>CSIドライバー</u>
-  > * ##### <u>SecretsストアCSIドライバー</u>
-  > > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.html)
-  > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.html)
-  > * ##### <u>AWS EBS CSIドライバー</u>
-  > > * ##### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_aws_ebs.html)
 
 <br>
 

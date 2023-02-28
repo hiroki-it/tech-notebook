@@ -230,6 +230,30 @@ repository/
 
 <br>
 
+## 03. 命名規則
+
+### Application
+
+わかりやすいように、Kubernetesリソース名に実行環境名をつける。
+
+合わせて、`metadata.labels`キーに実行環境名に関するラベルをつけるかどうかは任意である。
+
+<br>
+
+### Project
+
+実行環境名とする。
+
+<br>
+
+### Namespace
+
+プロダクト名とする。
+
+argocd-serverもプロダクトごとに作成して各Namespaceに配置すると、プロダクトごとにGUIに表示するApplicationを使い分けられる。
+
+<br>
+
 ## 03. CDツールに関する脆弱性対策
 
 ### CDツールに関する脆弱性対策とは

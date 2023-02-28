@@ -58,7 +58,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念が考案される前、これらのロジックを持つライブラリを各マイクロサービスに持たせていた。
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:2%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:100%;">
 
 サービスメッシュの概念が考案され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーをインジェクションするようになった。
 
@@ -144,7 +144,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ### サービスディスカバリーの要素
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:100%;">
 
 サービスディスカバリーの仕組みは、次の要素からなる。
 
@@ -164,7 +164,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ クライアントサイドパターン
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:100%;">
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
 
@@ -193,7 +193,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ サーバーサイドパターンとは
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:100%;">
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
 

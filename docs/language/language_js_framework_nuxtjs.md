@@ -52,12 +52,12 @@ minifyにより、不要な改行やインデントが削除され、パッケ�
 
 画像名はハッシュ化される。
 
-> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
-
 ```bash
 # リファレンスでは nuxt buildとなっているが、yarn buildで問題ない。
 $ yarn build
 ```
+
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 #### ▼ `start`
 
@@ -65,12 +65,12 @@ $ yarn build
 
 SSRモードのために使用する。
 
-> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
-
 ```bash
 # リファレンスでは nuxt startとなっているが、yarn startで問題ない。
 $ yarn start
 ```
+
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 補足として、`yarn start`コマンドを実行した場合、環境変数の`NODE_ENV`が`production`になる。
 
@@ -96,12 +96,12 @@ Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイ
 
 また、`build`コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
 
-> ↪️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
-
 ```bash
 # リファレンスでは nuxt devとなっているが、yarn devで問題ない。
 $ yarn dev
 ```
+
+> ↪️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 補足として、`yarn dev`コマンドを実行した場合、環境変数の`NODE_ENV`が`development`になる。
 
@@ -119,12 +119,12 @@ $ yarn dev
 
 SSGモードのために使用する。
 
-> ↪️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
-
 ```bash
 # リファレンスでは nuxt generateとなっているが、yarn generateで問題ない。
 $ yarn generate
 ```
+
+> ↪️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 #### ▼ `start`
 
@@ -267,11 +267,6 @@ const nuxtConfig: Configuration = {
 
 環境変数は、`context`オブジェクトの`config`変数から取得できる。
 
-> ↪️ 参考：
->
-> - https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
-> - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
-
 ```javascript
 import {Configuration} from "@nuxt/types";
 
@@ -299,6 +294,11 @@ export function foo() {
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
+> - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
+
 #### ▼ publicRuntimeConfig
 
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。
@@ -308,11 +308,6 @@ export function foo() {
 環境変数は、`pages`、`store`、`components`、`plugin`ディレクトリで使用できる。
 
 環境変数は、`context`オブジェクトの`config`変数から取得できる。
-
-> ↪️ 参考：
->
-> - https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
-> - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -340,13 +335,16 @@ export function foo() {
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
+> - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
+
 #### ▼ quiet
 
 ビルド時にログを最小限にする。
 
 CIツールでログが確認できなくなるため、無効化しておいた方が良い。
-
-> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -358,11 +356,11 @@ const nuxtConfig: Configuration = {
 };
 ```
 
+> ↪️ 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
+
 #### ▼ serverMiddleware
 
 リクエストを受信できるエンドポイントと、紐付けるハンドラー関数を設定する。
-
-> ↪️ 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -377,13 +375,13 @@ const nuxtConfig: Configuration = {
 };
 ```
 
+> ↪️ 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
+
 <br>
 
 ### buildModules
 
 SSG/SSRモードの`yarn dev` (開発用コマンド) 、またSSRモードの`yarn build`の時のみ、`node_module`ディレクトリ内に作成するパッケージを設定する。
-
-> ↪️ 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -392,6 +390,8 @@ const nuxtConfig: Configuration = {
   buildModules: ["@nuxt/typescript-build", "@nuxtjs/composition-api"],
 };
 ```
+
+> ↪️ 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 
 <br>
 

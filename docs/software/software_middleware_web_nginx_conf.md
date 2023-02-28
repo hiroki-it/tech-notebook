@@ -177,7 +177,7 @@ error_log  logs/error.log;
 
 共通化された設定ファイルを読み込む。
 
-アスタリスクによるワイルドカードに対応している。
+アスタリスクによるワイルドカード (`*`) に対応している。
 
 ```nginx
 include /etc/nginx/conf.d/*.conf;
