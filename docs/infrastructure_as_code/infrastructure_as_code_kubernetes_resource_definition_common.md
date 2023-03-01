@@ -163,7 +163,7 @@ Kubernetesリソースが最初に作成されてから何回変更されたか�
 
 マニフェストのどこかの設定値を変更すると、世代数が増える。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
 ```yaml
 apiVersion: apps/v1
@@ -336,7 +336,9 @@ metadata:
 
 そのKubernetesリソースを識別するユニークIDを設定する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
+
+また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
 
 ```yaml
 apiVersion: apps/v1
@@ -370,7 +372,7 @@ Kubernetesリソースに関する情報を設定する。
 
 PersistentVolumeに関する情報を設定する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
 **＊例＊**
 
@@ -419,7 +421,7 @@ $ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm
 
 PersistentVolumeClaimに関する情報を設定する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
 **＊例＊**
 
@@ -458,7 +460,7 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 
 ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
 
-ArgoCDが設定してくれるため、開発者が設定する必要はない。
+カスタムコントローラー (application-controller) が設定してくれるため、開発者が設定する必要はない。
 
 **＊例＊**
 
@@ -484,7 +486,7 @@ Kubernetesリソースに関する情報を設定する。
 
 `.metadata.annotations`キー配下にも同じキーがあることに注意する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
 **＊例＊**
 
@@ -508,7 +510,7 @@ Nodeのtaintを設定する。
 
 Nodeに関する情報を設定する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
 **＊例＊**
 
@@ -527,7 +529,9 @@ Kubernetesが設定してくれるため、開発者が設定する必要はな�
 
 Kubernetesリソースの現在の状態を設定する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
+
+また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
 
 Kubernetesリソースごとに、`.status`キー配下の構造は異なっており、
 
@@ -539,7 +543,9 @@ Kubernetesリソースごとに、`.status`キー配下の構造は異なって�
 
 `.status`キーの履歴を設定する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
+
+また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
 
 ```yaml
 apiVersion: apps/v1
@@ -576,7 +582,9 @@ status:
 
 kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した`.metadata.generation`キーの値を設定する。
 
-Kubernetesが設定してくれるため、開発者が設定する必要はない。
+kube-controllerが設定してくれるため、開発者が設定する必要はない。
+
+また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
 
 `.metadata.generation`キーよりも`.status.observedGeneration`キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
 

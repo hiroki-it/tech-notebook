@@ -315,7 +315,7 @@ data:
 
 `helm secrets template`コマンドを実行し、マニフェストファイルを作成する。
 
-補足として、zendesk製のhelm-secretsでは、文末にdecryptedの文字が出力されるため、`sed '$d'`が必要になる。
+新しい`helm-secrets`はjkroepke製であり、古いものはzendesk製である。
 
 ```yaml
 apiVersion: v1
@@ -326,6 +326,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: argocd
 data:
+  # jkroepke製のhelm-secretsの場合
   configManagementPlugins: |
     - name: helm-secrets
       generate:
@@ -338,6 +339,33 @@ data:
               helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE
             else              
               helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE
+            fi
+```
+
+特に、zendesk製のhelm-secretsでは、helm secrets templateコマンドの出力内容の末尾に`decrypted`の文字が出力されるため、`| sed '$d'`が必要になる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  # zendesk製のhelm-secretsの場合
+  configManagementPlugins: |
+    - name: helm-secrets
+      generate:
+        command: ["/bin/bash", "-c"]
+        # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        args:
+          - > 
+            set -euo pipefail &&
+            if [ -z "$VALUES" ];then
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE | sed '$d'
+            else              
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE | sed '$d'
             fi
 ```
 

@@ -891,9 +891,9 @@ GitOpsでのリポジトリ (例：GitHub、Helm、など) とKubernetesの間�
 
 | 設定項目     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 補足                                                                                                                                                                                                                              |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。`rev:<番号>`という表記があるKubernetesリソースは、`prune`を忘れて新旧バージョンが存在していることを表す。Applicationを削除する時には、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。 | ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                         |
-| `selfHeal`   | Kubernetes側に変更があった場合、リポジトリ (GitHub、Helm) の状態に戻すようにする。デフォルトでは、Kubernetesリソースを変更しても、リポジトリの状態に戻すための自動Syncは実行されない。                                                                                                                                                                                                                                                                                                                                                 | ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                    |
 | `allowEmpty` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空 (配下にリソースがない) 状態を許可するか否かを設定する。                                                                                                                                                                                                                                                                                                                                                                     | ↪️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
+| `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。`rev:<番号>`という表記があるKubernetesリソースは、`prune`を忘れて新旧バージョンが存在していることを表す。Applicationを削除する時には、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。 | ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                         |
+| `selfHeal`   | ArgoCD以外の方法でCluster内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動Syncする。デフォルトでは、ArgoCD以外の方法で変更しても、自動Syncは実行しない。                                                                                                                                                                                                                                                                                                                                                      | ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                    |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1053,7 +1053,7 @@ spec:
 
 ### destinations
 
-プロジェクト内でデプロイ先として指定可能なスコープを設定する。
+プロジェクトに属するApplicationが指定可能なClusterを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1063,8 +1063,8 @@ metadata:
   namespace: foo # サービス名、など
 spec:
   destinations:
-    - namespace: "*" # 全てのNamespaceにデプロイできる。
-      server: https://kubernetes.default.svc
+    - namespace: "*" # 属するApplictionは、全てのNamespaceにデプロイできる。
+      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 属するApplictionは、指定したURLのClusterのみを指定できる。
 ```
 
 <br>
@@ -2458,17 +2458,23 @@ data:
 
 ### セットアップ
 
-デプロイ先のClusterをコンテキストとして設定した上で、`argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行すると、Secretを作成できる。
+```bash
+# ArgoCDが指定するClusterをコンテキストとする。
+$ kubectl config current-context
+https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 
-合わせて、argocd-manager、argocd-manager-role、argocd-manager-role-bindingも作成する。
+# ログインする。
+$ argocd login <ArgoCDのドメイン名> --grpc-web
+```
 
-執筆時点 (2022/01/30) では、あらかじめマニフェストで定義する方法はない。
-
-もしタイムアウトになる場合、kube-apiserverのIPアドレスのアクセス制限に引っ掛かっていないかを確認する。
+ArgoCDが指定するClusterをコンテキストとした上で、`argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行すると、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
 
 ```bash
-$ argocd login <ArgoCDのドメイン名> --grpc-web
+# ArgoCDが指定するClusterをコンテキストとする。
+$ kubectl config current-context
+https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 
+# ClusterのURLを追加する。
 $ argocd cluster add <ClusterのARN>
 
 INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system"
@@ -2476,6 +2482,16 @@ INFO[0011] ClusterRole "argocd-manager-role" updated
 INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
 Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
+
+これを実施しないと、Applicationで指定するClusterのURLがArgoCDに登録されていないとして、以下のようなエラーになる。
+
+```bash
+cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured
+```
+
+執筆時点 (2022/01/30) では、`argocd cluster add`コマンドをマニフェストとして定義する方法はない。
+
+もしタイムアウトになる場合、kube-apiserverのIPアドレスのアクセス制限に引っ掛かっていないかを確認する。
 
 > ↪️ 参考：
 >

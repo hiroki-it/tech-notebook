@@ -100,9 +100,13 @@ $ cat settings.json
 
 ### ボリュームマウントとは
 
-![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
+ホスト側のストレージ上にあるdockerエリア (`/var/lib/docker/volumes`ディレクトリ) のマウントポイント (`/var/lib/docker/volumes/<ボリューム名>/_data`) を、コンテナ側にマウントすることより、データを永続化する。
 
-ホスト側のストレージ上にあるdockerエリア (`/var/lib/docker/volumes`ディレクトリ) のマウントポイント (`/var/lib/docker/volumes/<ボリューム名>/_data`) を、コンテナ側にマウントすることより、データを永続化する。ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBのデータをホストコンテナ間と共有する方法として推奨である。しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。
+ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBのデータをホストコンテナ間と共有する方法として推奨である。
+
+しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。
+
+![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
 
 > ↪️ 参考：
 >
