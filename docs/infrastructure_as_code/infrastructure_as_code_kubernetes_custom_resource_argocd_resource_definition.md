@@ -1436,9 +1436,49 @@ ArgoCDの各コンポーネントで共通する値を設定する。
 
 <br>
 
-### カスタムリソースの設定
+### globalProjects
 
-#### ▼ resource.customizations.ignoreDifferences.all
+#### ▼ globalProjectsとは
+
+グローバルスコープを持つ親AppProjectと、これの設定値を継承させる子AppProjectを指定する。
+
+`labelSelector`キーで、子Projectの条件を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  globalProjects: |-
+    - projectName: foo-global-project
+      labelSelector:
+        matchExpressions:
+          - key: opt
+            operator: In
+            values:
+              - prd
+```
+
+```yaml
+# グローバルスコープを持つ親AppProject
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: foo-global-project
+spec: ...
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#configuring-global-projects-v18
+
+<br>
+
+### resource.customizations.ignoreDifferences.all
+
+#### ▼ resource.customizations.ignoreDifferences.allとは
 
 ArgoCD全体で`.spec.ignoreDifferences`キーと同じ機能を有効化する。
 
@@ -1462,7 +1502,11 @@ data:
 
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
-#### ▼ repositories
+<br>
+
+### repositories
+
+#### ▼ repositoriesとは
 
 ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
 

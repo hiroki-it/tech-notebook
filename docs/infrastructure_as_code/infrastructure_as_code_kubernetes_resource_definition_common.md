@@ -352,9 +352,9 @@ metadata:
 
 <br>
 
-## 03-02. 色々な識別子
+## 03-02. 標準の識別子
 
-### .metadata.annotations
+### `.metadata.annotations`キー
 
 #### ▼ `kubernetes.io`キー
 
@@ -432,7 +432,7 @@ kube-controllerが設定してくれるため、開発者が設定する必要�
 
 <br>
 
-### .metadata.labels
+### `.metadata.labels`キー
 
 #### ▼ `app.kubernetes.io`キー
 
@@ -455,30 +455,6 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 | `app.kubernetes.io/version`    | `5.7.21`                   | マイクロサービスのリリースバージョン名を設定する。                  |
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
-
-#### ▼ `argocd.argoproj.io`キー
-
-ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
-
-カスタムコントローラー (application-controller) が設定してくれるため、開発者が設定する必要はない。
-
-**＊例＊**
-
-| キー                          | 値の例            | 説明                                                          |
-| ----------------------------- | ----------------- | ------------------------------------------------------------- |
-| `argocd.argoproj.io/instance` | `foo-application` | Kubernetesリソースを管理するArgoCDのApplication名を設定する。 |
-
-#### ▼ `helm.sh`キー
-
-Helmを使用している場合に、Helmの情報を設定する。
-
-Helmが設定してくれるため、開発者が設定する必要はない。
-
-**＊例＊**
-
-| キー            | 値の例      | 説明                               |
-| --------------- | ----------- | ---------------------------------- |
-| `helm.sh/chart` | `foo-chart` | 使用しているチャート名を設定する。 |
 
 #### ▼ `kubernetes.io`キー
 
@@ -518,6 +494,38 @@ kube-controllerが設定してくれるため、開発者が設定する必要�
 | ------------------------------- | ----------------------------- | ---------------------------------------- |
 | `topology.kubernetes.io/region` | `ap-northeast-1` (AWSの場合)  | Nodeが稼働しているリージョンを設定する。 |
 | `topology.kubernetes.io/zone`   | `ap-northeast-1a` (AWSの場合) | Nodeが稼働しているAZを設定する。         |
+
+<br>
+
+## 03-03. ツール固有の`.metadata.labels`キー
+
+### `.metadata.labels`キー
+
+#### ▼ ArgoCD由来
+
+ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
+
+カスタムコントローラー (application-controller) が設定してくれるため、開発者が設定する必要はない。
+
+**＊例＊**
+
+| キー                          | 値の例            | 説明                                                          |
+| ----------------------------- | ----------------- | ------------------------------------------------------------- |
+| `argocd.argoproj.io/instance` | `foo-application` | Kubernetesリソースを管理するArgoCDのApplication名を設定する。 |
+
+#### ▼ Helm由来
+
+Helmを使用している場合に、Helmの情報を設定する。
+
+Helmが設定してくれるため、開発者が設定する必要はない。
+
+**＊例＊**
+
+| キー                     | 値の例                           | 説明                                               |
+| ------------------------ | -------------------------------- | -------------------------------------------------- |
+| `chart`、`helm.sh/chart` | `foo-chart`                      | 使用しているチャート名を設定する。                 |
+| `release`                | `foo-release`、`foo-application` | Helmリリース名、ArogoCDのApplication名を設定する。 |
+| `heritage`               | `Helm`                           | 記入中...                                          |
 
 <br>
 
