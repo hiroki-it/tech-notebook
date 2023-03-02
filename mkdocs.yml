@@ -487,7 +487,6 @@ nav:
           - ■ クラウドプロバイダーアドオン:
               - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks.md
               - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks_ebs_csi_driver.md
-              - AWS VPC CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks_vpc_cni.md
       - ■ 開発:
           - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.md
           - ■ 開発環境:
