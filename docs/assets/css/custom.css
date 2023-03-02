@@ -164,6 +164,12 @@ p {
     font-size: 0.63rem;
 }
 
+/* サイドバーの余白 */
+[dir=ltr] .md-sidebar__inner {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 /* マウスオーバー時の動き */
 .md-nav__item a:hover {
     text-decoration: underline;
