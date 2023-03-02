@@ -40,7 +40,6 @@
   > * ##### <u>AWS EKSアドオン</u>
   > > * ##### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks.html)
   > > * ##### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks_ebs_csi_driver.html)
-  > > * ##### [AWS VPC CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks_vpc_cni.html)
 
 <br>
 

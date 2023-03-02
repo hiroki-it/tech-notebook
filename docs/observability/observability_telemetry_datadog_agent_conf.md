@@ -251,20 +251,20 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
       ],
     "secrets": [{ "name": "DD_API_KEY", "valueFrom": "/prd-foo/DD_API_KEY" }],
     "dockerLabels": {
-        # ECSコンテナに対するenvタグ
+        # AWS ECSコンテナに対するenvタグ
         "com.datadoghq.tags.env": "prd",
-        # ECSコンテナに対するserviceタグ
+        # AWS ECSコンテナに対するserviceタグ
         "com.datadoghq.tags.service": "foo",
-        # ECSコンテナに対するversionタグ
+        # AWS ECSコンテナに対するversionタグ
         "com.datadoghq.tags.version": "<バージョンタグ>",
       },
   },
 ]
 ```
 
-#### ▼ ECSのIAMロール
+#### ▼ AWS ECSのIAMロール
 
-datadogコンテナがコンテナからメトリクスのデータポイントを収集できるように、ECSタスク実行ロールにポリシーを追加する必要がある。
+datadogコンテナがコンテナからメトリクスのデータポイントを収集できるように、AWS ECSタスク実行ロールにポリシーを追加する必要がある。
 
 > ↪️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
 

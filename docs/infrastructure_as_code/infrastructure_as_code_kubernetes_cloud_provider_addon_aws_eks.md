@@ -13,7 +13,9 @@ description: AWS EKSアドオン＠クラウドプロバイダーアドオンの
 
 <br>
 
-## 01. AWS EKSアドオンとは
+## 01. AWS EKSアドオン
+
+### AWS EKSアドオンとは
 
 EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。
 
@@ -25,6 +27,73 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 >
 > - https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html
 > - https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9
+
+<br>
+
+### セットアップ
+
+#### ▼ コンソール画面から
+
+| 設定項目               | 説明                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| バージョン             | AWS EKSアドオンのバージョンを設定する。                                             |
+| オプション             | AWS EKSアドオンのパラメーターを設定する。                                           |
+| 継承                   | AWS EKSのNodeのIAMロールをEKSアドオンにも適用するか否かを設定する。                 |
+| コンフリクトの解決方法 | 既存のAWS EKSアドオンが存在している場合に、上書きするかそのままとするかを設定する。 |
+
+#### ▼ Terraformの場合
+
+Terraformを使用する。
+
+```terraform
+# aws-eks-corednsアドオン
+resource "aws_eks_addon" "coredns" {
+  cluster_name      = aws_eks_cluster.foo.name
+  addon_version     = "<バージョン>"
+  addon_name        = "coredns"
+  resolve_conflicts = "PRESERVE"
+}
+
+
+# aws-kube-proxy
+resource "aws_eks_addon" "kube_proxy" {
+  cluster_name      = aws_eks_cluster.foo.name
+  addon_version     = "<バージョン>"
+  addon_name        = "kube-proxy"
+  resolve_conflicts = "PRESERVE"
+}
+
+
+# aws-vpc-cniアドオン
+resource "aws_eks_addon" "vpc_cni" {
+  cluster_name      = aws_eks_cluster.foo.name
+  addon_version     = "<バージョン>"
+  addon_name        = "vpc-cni"
+  resolve_conflicts = "PRESERVE"
+}
+```
+
+#### ▼ Helmの場合
+
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
+
+
+# aws-eks-corednsアドオン
+# 執筆時点 (2023/03/02) 時点でチャートなし
+
+
+# aws-kube-proxy
+# 執筆時点 (2023/03/02) 時点でチャートなし
+
+
+# aws-vpc-cniアドオン
+$ helm install <リリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/aws/eks-charts/tree/master/stable
 
 <br>
 
@@ -49,5 +118,24 @@ EKSの各Node上で、`kube-proxy`という名前のDaemonSetとして稼働す�
 EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+
+<br>
+
+## 04. aws-eks-vpc-cniアドオン
+
+### aws-eks-vpc-cniアドオンとは
+
+EKSのNode上で、`aws-node`という名前のDaemonSetとして稼働する。
+
+PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。
+
+これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
+
+![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
+
+> ↪️ 参考：
+>
+> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
+> - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
 
 <br>

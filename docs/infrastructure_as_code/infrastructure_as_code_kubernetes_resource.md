@@ -877,6 +877,22 @@ Secretに永続化された値を復号化し、`kubectl`コマンドにパラ�
 
 ## 06. ストレージ系リソース
 
+### ストレージ系リソースの種類
+
+Kubernetesで作成できるストレージは、作成場所で種類を分けられる。
+
+![kubernetes_storage_resource_types.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png)
+
+| ストレージの種類 | Volume         | PersistentVolume |
+| ---------------- | -------------- | ---------------- |
+| Pod内ストレージ  | EmptyDir       | なし             |
+| Node内ストレージ | HostPath       | HostPath、Local  |
+| Node外ストレージ | 外部ストレージ | 外部ストレージ   |
+
+> ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
+
+<br>
+
 ### PersistentVolume
 
 #### ▼ PersistentVolumeとは

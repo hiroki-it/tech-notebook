@@ -27,9 +27,9 @@ PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとし�
 
 ### EKSアドオンとして
 
-#### ▼ Terraformの公式モジュールの場合
+#### ▼ Terraformの場合
 
-Terraformの公式モジュールを使用する。
+Terraformを使用する。
 
 Terraformの`aws_eks_addon`でEKSアドオンをインストールし、EBS CSIドライバーに関するKubernetesリソースを作成する。
 

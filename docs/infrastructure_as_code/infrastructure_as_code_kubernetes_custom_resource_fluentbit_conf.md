@@ -306,11 +306,32 @@ $ fluent-bit \
 
 ### PARSERとは
 
-![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_parser.png)
-
 非構造化ログを構造化ログに変換する。
 
+![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_parser.png)
+
 > ↪️ 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/parser
+
+<br>
+
+### criプラグイン
+
+#### ▼ セットアップ
+
+**＊実装例＊**
+
+Containerdのコンテナが作成するログを構造化ログに変換する。
+
+```bash
+[PARSER]
+    Name        cri
+    Format      regex
+    Regex       ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$
+    Time_Key    time
+    Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+```
+
+> ↪️ 参考：https://github.com/microsoft/fluentbit-containerd-cri-o-json-log
 
 <br>
 
@@ -318,9 +339,9 @@ $ fluent-bit \
 
 ### FILTERとは
 
-![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png)
-
 ログのキーや値を加工する。
+
+![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png)
 
 > ↪️ 参考：
 >
@@ -356,11 +377,6 @@ $ fluent-bit \
 
 #### ▼ セットアップ
 
-> ↪️ 参考：
->
-> - https://docs.fluentbit.io/manual/pipeline/filters/modify
-> - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
-
 ```bash
 [FILTER]
     Name            modify
@@ -378,6 +394,11 @@ $ fluent-bit \
     Remove_wildcard ignored_key
 ```
 
+> ↪️ 参考：
+>
+> - https://docs.fluentbit.io/manual/pipeline/filters/modify
+> - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
+
 <br>
 
 ### multilineプラグイン
@@ -393,8 +414,6 @@ $ fluent-bit \
 > ↪️ 参考：https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
 
 #### ▼ セットアップ
-
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
 
 ```bash
 [SERVICE]
@@ -433,13 +452,13 @@ Filters
   geoip2                  add geoip information to records
 ```
 
+> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+
 #### ▼ MULTILINE_PARSER
 
 複数行のログを結合するためのルールを設定する。
 
 ここで定義したパーサー名を、multilineプラグインで指定する必要がある。
-
-> ↪️ 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
 
 **＊実装例＊**
 
@@ -466,6 +485,8 @@ Laravelのスタックトレースを結合する。
     # アプリケーション独自仕様のログ
     rule          "cont" "/・.*/" "cont"
 ```
+
+> ↪️ 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
 
 <br>
 
@@ -559,20 +580,20 @@ Fluent Bit v1.8.6
 
 ### STREAM_TASKとは
 
-![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png)
-
 現在のデータストリームからログを抽出し、新しいストリームを作成する。
 
 このストリームは、パイプラインのINPUTに再び取り込まれ、処理し直される。
 
 同時に、SERVICEでSTREAM_TASKの設定ファイルを読み込む必要がある。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
-
 ```bash
 [SERVICE]
     Streams_File stream_processor.conf
 ```
+
+![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png)
+
+> ↪️ 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
 <br>
 
@@ -588,11 +609,6 @@ STREAM_TASKセッションは、独自のSQLステートメントで定義され
 
 SELECTステートメントの結果を使用して、データストリームを作成する。
 
-> ↪️ 参考：
->
-> - https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement
-> - https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example
-
 **＊実装例＊**
 
 ```bash
@@ -607,11 +623,14 @@ SELECTステートメントの結果を使用して、データストリーム�
     Exec CREATE STREAM bar WITH (tag='bar') AS SELECT * FROM TAG:'bar';
 ```
 
+> ↪️ 参考：
+>
+> - https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement
+> - https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example
+
 #### ▼ SELECT
 
 マッチしたログから、指定したキーを抽出する。
-
-> ↪️ 参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement
 
 **＊実装例＊**
 
@@ -632,15 +651,17 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 ]
 ```
 
+> ↪️ 参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement
+
 <br>
 
 ## 06. BUFFER
 
 ### BUFFERとは
 
-![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png)
-
 ログを蓄え、またこれを順番にROUTINGに渡す。
+
+![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png)
 
 > ↪️ 参考：
 >
@@ -720,18 +741,13 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 ### ROUTING、OUTPUTとは
 
-![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png)
-
 ログのアウトプット先を設定する。
 
 設定できるアウトプット先の種類については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：
->
-> - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
-> - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
-
 コマンドの`-o`オプションでOUTPUT名を指定し、実行もできる。
+
+![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png)
 
 ```bash
 Outputs
@@ -771,6 +787,11 @@ Outputs
   prometheus_remote_write Prometheus remote write
   s3                      Send to S3
 ```
+
+> ↪️ 参考：
+>
+> - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
+> - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 
 <br>
 
@@ -842,8 +863,6 @@ CloudWatchログに送信されるデータはJSON型である。
 
 例えば、`log`キーのみを送信する場合、『`log`』と設定する。
 
-> ↪️ 参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
-
 ```yaml
 {
   "container_id": "*****",
@@ -857,6 +876,8 @@ CloudWatchログに送信されるデータはJSON型である。
 }
 ```
 
+> ↪️ 参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
+
 <br>
 
 ### datadogプラグイン
@@ -868,8 +889,6 @@ CloudWatchログに送信されるデータはJSON型である。
 #### ▼ セットアップ
 
 全てのベースイメージにdatadogプラグインがプリインストールされているため、datadogプラグインのインストールは不要である。
-
-> ↪️ 参考：https://github.com/DataDog/fluent-plugin-datadog
 
 ```bash
 # ---------------------------------------------
@@ -906,6 +925,8 @@ CloudWatchログに送信されるデータはJSON型である。
     dd_message_key    log
     dd_tags           env:prd-foo
 ```
+
+> ↪️ 参考：https://github.com/DataDog/fluent-plugin-datadog
 
 <br>
 
@@ -967,8 +988,6 @@ newRelicプラグインがプリインストールされているベースイメ
 
 アウトプットを破棄する。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/outputs/null
-
 **＊実装例＊**
 
 ```bash
@@ -988,5 +1007,7 @@ $ /fluent-bit/bin/fluent-bit \
     -m "*" \
     -o null
 ```
+
+> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/outputs/null
 
 <br>
