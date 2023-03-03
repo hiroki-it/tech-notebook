@@ -403,6 +403,8 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 ### ヘルスチェックが終了しない
 
+Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの`Progressing`状態でスタックすることがある。
+
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
 
 <br>

@@ -64,3 +64,30 @@ $ which python3
 ```
 
 <br>
+
+## 04. Posix
+
+### Posix
+
+OSによろずにシステムコールできるようにするためのインターフェースのこと。
+
+<br>
+
+### Posixの規格
+
+#### ▼ ファイルの末尾に改行が必要
+
+Posixではファイル末尾の改行を『終了』として認識する。
+
+ファイルの末尾に改行がないと『終了』であることを明示できないため、Unixユーティリティのファイル処理で予期せぬ問題が起こることがある。
+
+この問題に合わせて、一部のツール（例：GitHub）では、ファイルの末尾に改行がないと、警告文がでるようになっている。
+
+> ↪️ 参考：
+>
+> - [https://joachimschuster.de/posts/why-inserting-newline-at-the-end-of-file/](https://joachimschuster.de/posts/why-inserting-newline-at-the-end-of-file/)
+> - [https://stackoverflow.com/a/729795](https://stackoverflow.com/a/729795)
+
+<br>
+
+<br>

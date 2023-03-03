@@ -17,7 +17,11 @@ description: GraphQL＠RESTful-APIの知見を記録しています。
 
 ### GraphQL-API
 
-GraphQL-APIは、スキーマ、クエリ、から構成される。従来のRESTful-APIを使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。一方で、GraphQL-APIを使用した場合、単一のエンドポイントをGraphQLで指定すれば、GraphQL-APIが適切な宛先にルーティングしてくれる。
+GraphQL-APIは、スキーマ、クエリ、から構成される。
+
+従来のRESTful-APIを使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。
+
+一方で、GraphQL-APIを使用した場合、単一のエンドポイントをGraphQLで指定すれば、GraphQL-APIが適切な宛先にルーティングしてくれる。
 
 ![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/graphql-api.png)
 
@@ -51,8 +55,6 @@ GraphQL-APIに送信するCRUDの実際のデータを定義したもの。
 
 ここでは、Query処理を受信するためのスキーマを定義したとする。
 
-> ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
-
 ```graphql
 # ルート型
 type Query {
@@ -67,6 +69,8 @@ type User {
 }
 ```
 
+> ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
+
 <br>
 
 #### ▼ クエリ
@@ -78,8 +82,6 @@ type User {
 **＊例＊**
 
 ここでは、前述のQuery処理のスキーマで定義した`GetUser`メソッドを使用するとする。
-
-> ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
 ```graphql
 query GetUser {
@@ -106,6 +108,8 @@ $ curl \
   }
 }
 ```
+
+> ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
 <br>
 

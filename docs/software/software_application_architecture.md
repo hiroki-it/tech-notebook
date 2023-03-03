@@ -2,14 +2,13 @@
 title: 【IT技術の知見】アーキテクチャ＠アプリケーション
 description: アーキテクチャ＠アプリケーションの知見を記録しています。
 ---
-
 # アーキテクチャ＠アプリケーション
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
+> ↪️ 参考：[https://hiroki-it.github.io/tech-notebook/](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 

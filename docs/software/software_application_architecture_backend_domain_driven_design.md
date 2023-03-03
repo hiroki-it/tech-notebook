@@ -153,12 +153,12 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 コアドメインやサブドメインに相当する業務に詳しい人 (アプリケーションの利用者本人、利用者の関心に詳しい人) がドメインエキスパートになることが多い。
 
+![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
+
 > ↪️ 参考：
 >
 > - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 > - https://labs.septeni.co.jp/entry/2021/04/15/130000
-
-![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
 
 #### ▼ サブドメインの委譲
 
@@ -183,12 +183,12 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 コアドメインは予約ドメイン、それ以外はサブドメインとしている。
 
+![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain.png)
+
 > ↪️ 参考：
 >
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
-
-![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain.png)
 
 **＊例＊**
 
@@ -210,9 +210,9 @@ ECサイトを運営するアスクルの例。
 
 ドメインエキスパート間で、特定の『単語』や『動詞』の意味合い/定義づけが異なる場合、これを異なる名前からなるユビキタス言語として定義づける。
 
-> ↪️ 参考：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
-
 ![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain-model.png)
+
+> ↪️ 参考：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
 
 <br>
 

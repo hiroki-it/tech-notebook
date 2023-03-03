@@ -19,6 +19,8 @@ description: Capistrano＠DevOpsの知見を記録しています。
 
 インプレースデプロイメントを実装する。
 
+![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png)
+
 `【１】`
 
 : 自身のパソコンからデプロイサーバーにリモート通信する。
@@ -32,7 +34,5 @@ description: Capistrano＠DevOpsの知見を記録しています。
 : 自動デプロイツールが、webサーバーのGitを操作し、`git pull`コマンドあるいは`git clone`コマンドを実行する。
 
      その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
-
-![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png)
 
 <br>

@@ -33,7 +33,7 @@ $ helmfile <サブコマンド>
 Helmリリース対象の実行環境名を設定する。
 
 ```bash
-$ helmfile -e prd <コマンド>
+$ helmfile -e dev <コマンド>
 ```
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
@@ -41,11 +41,11 @@ $ helmfile -e prd <コマンド>
 **＊例＊**
 
 ```bash
-$ helmfile -e prd diff
+$ helmfile -e dev diff
 ```
 
 ```bash
-$ helmfile -e prd apply
+$ helmfile -e dev apply
 ```
 
 #### ▼ -f
@@ -53,10 +53,26 @@ $ helmfile -e prd apply
 使用する`helmfile.yaml`ファイルを指定する。
 
 ```bash
-$ helmfile -e prd -f ./helmfile.yaml <コマンド>
+$ helmfile -e dev -f ./helmfile.yaml <コマンド>
 ```
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
+
+
+#### ▼ --interactive
+
+コマンドの実行前の確認を要求する。
+
+```bash
+$ helmfile -e dev --interactive destroy
+
+...
+
+Do you really want to delete?
+  Helmfile will delete all your releases, as shown above.
+
+ [y/n]: 
+```
 
 <br>
 
@@ -71,7 +87,7 @@ $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
 
 ```bash
-$ helmfile -e prd apply
+$ helmfile -e dev apply
 
 Upgrading release=foo-release, chart=./charts/foo
 Release "foo-release" has been upgraded. Happy Helming!
@@ -104,10 +120,12 @@ foo-release         ./charts/foo         0.0.1
 インストール済みの全てのチャートをアンインストールする。
 
 ```bash
-$ helmfile -e prd destroy
+$ helmfile -e dev destroy
 ```
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
+
+
 
 <br>
 
@@ -137,7 +155,7 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 helm-diffプラグインでは、前回のHelmリリースと、今回の`helm upgrade --dry-run`コマンドの差分を取得する。
 
 ```bash
-$ helmfile -e prd diff
+$ helmfile -e dev diff
 ```
 
 > ↪️ 参考：
@@ -152,7 +170,7 @@ $ helmfile -e prd diff
 `--debug`オプションであれば、`helm upgrade --dry-run`コマンドの結果を確認できる。
 
 ```bash
-$ helmfile -e prd --debug diff
+$ helmfile -e dev --debug diff
 ```
 
 #### ▼ 色付け
@@ -162,7 +180,7 @@ $ helmfile -e prd --debug diff
 ただ、バージョンによって機能しないことがあるため、その場合は明示的に`HELM_DIFF_COLOR`変数を有効化する。
 
 ```bash
-$ HELM_DIFF_COLOR=true helmfile -e prd diff
+$ HELM_DIFF_COLOR=true helmfile -e dev diff
 ```
 
 > ↪️ 参考：https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
@@ -174,7 +192,7 @@ $ HELM_DIFF_COLOR=true helmfile -e prd diff
 `grep`コマンドを使用して、差分のあるリソースやファイルを確認しておく。
 
 ```bash
-$ helmfile -e prd diff | grep kind
+$ helmfile -e dev diff | grep kind
 
 # 差分のあるマニフェストのkindキーのみを取得する。
 kind: Service
@@ -183,7 +201,7 @@ kind: PersistentVolume
 ```
 
 ```bash
-$ helmfile -e prd diff | grep Source
+$ helmfile -e dev diff | grep Source
 
 # 差分のあるマニフェストのkindキーのみを取得する。
 Source: project/manifests/service.yaml
@@ -204,7 +222,7 @@ Source: project/manifests/persistent-volume.yaml
 注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
 
 ```bash
-$ helmfile -e prd sync
+$ helmfile -e dev sync
 ```
 
 > ↪️ 参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
@@ -218,7 +236,7 @@ $ helmfile -e prd sync
 全てのHelmリリースに関して、`helm template`コマンドを実行する。
 
 ```bash
-$ helmfile -e prd template
+$ helmfile -e dev template
 ```
 
 #### ▼ --include-crds
@@ -226,7 +244,7 @@ $ helmfile -e prd template
 カスタムリソース定義も含めて、`helm template`コマンドを実行する。
 
 ```bash
-$ helmfile -e prd template --include-crds
+$ helmfile -e dev template --include-crds
 ```
 
 <br>
@@ -242,7 +260,7 @@ $ helmfile -e prd template --include-crds
 この時に、`helmfile write-values`コマンドを使用すると、優先された値で定義された`values`ファイルを確認できる。
 
 ```bash
-$ helmfile -e prd -f ./helmfile.yaml write-values
+$ helmfile -e dev -f ./helmfile.yaml write-values
 
 # helmfile.yamlファイルのディレクトリ以下に、ディレクトリとファイルが生成される。
 Writing values file foo-77cab19b/foo.yaml

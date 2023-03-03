@@ -1,8 +1,9 @@
 ---
-title: 【IT技術の知見】GitHub
+title: 【IT技術の知見】GitHub＠Git
+description: GitHub＠Gitの知見を記録しています。
 ---
 
-# GitHub
+# GitHub＠Git
 
 ## はじめに
 
@@ -38,7 +39,7 @@ title: 【IT技術の知見】GitHub
 
 #### ▼ 配置場所
 
-リポジトリの直下に`.github`ディレクトリを配置し、`ISSUE_TEMPLATE.md`や`PULL_REQUEST_TEMPLATE.md`の名前でファイルを配置する。
+リポジトリの直下に`.github`ディレクトリを配置し、`ISSUE_TEMPLATE.md`ファイルや`PULL_REQUEST_TEMPLATE.md`ファイルを配置する。
 
 Issueのテンプレートに関して、代わりに`ISSUE_TEMPLATE`ディレクトリを配置し、任意の名前のmdファイルを配置すると、複数のテンプレートを作成できる。
 

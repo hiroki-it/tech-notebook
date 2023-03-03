@@ -21,6 +21,8 @@ description: SREing：Site Reliability Engineering＠ソフトウェア開発手
 
 サイトの信頼性向上を目的としたエンジニアリング手法のこと。
 
+DevOpsを実践したエンジニアリング手法でもある。
+
 <br>
 
 ### サイトの『信頼性』とは

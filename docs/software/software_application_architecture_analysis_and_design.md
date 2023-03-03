@@ -231,11 +231,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### システムシーケンス図とは
 
-![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system-sequence-diagram.png)
-
 アクターとソフトウェアの出入力を基に、ユーザーの要求に対するソフトウェアの『動的な振舞』を表す。
 
 オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的としてはユースケース図と似ている。
+
+![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system-sequence-diagram.png)
 
 > ↪️ 参考：
 >
@@ -249,9 +249,9 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 状態遷移図とは
 
-状態 (丸) と⁠遷移 (矢印) の関係性を基に、ソフトウェアの『動的な振舞』を表す。
+状態 (丸) と遷移 (矢印) の関係性を基に、ソフトウェアの『動的な振舞』を表す。
 
-矢印の横の説明は、遷移のきっかけとなる『イベント (入力) ⁠/アクション (出力) ⁠』を表す。
+矢印の横の説明は、遷移のきっかけとなる『イベント (入力) /アクション (出力) 』を表す。
 
 ![状態遷移図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移図.jpg)
 
@@ -267,7 +267,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 **＊例題＊**
 
-12.2 という状態
+`12.2`という状態
 
 `【１】`
 
@@ -354,7 +354,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
-『has-one』『has-many』な関係と表現され、より具体的に説明すると、とデータとして保持する関係性である。Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。
+『has-one』『has-many』な関係と表現され、より具体的に説明すると、とデータとして保持する関係性である。
+
+Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。
+
+『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。
 
 > ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
 
@@ -362,7 +366,9 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
-『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。
+『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。
+
+Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。
 
 > ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
 
