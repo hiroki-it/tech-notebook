@@ -139,3 +139,23 @@ PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPod�
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
 
 <br>
+
+### 仕組み
+
+AWSの独自モードは、Podの仮想ネットワークインターフェース (`veth`) 、Nodeのネットワークインターフェース (`eth`) 、から構成される。
+
+AWSでは、Node (EC2、Fargate) 上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの`2`つを付与できる。
+
+NodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
+
+Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する (2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり`1`個しかPodをスケジューリングできない) 。
+
+![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
+
+
+> ↪️ 参考：
+>
+> - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
+> - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
+> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
+

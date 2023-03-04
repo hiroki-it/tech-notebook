@@ -25,18 +25,24 @@
 
 * #### [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
 
-* #### <u>アドオン</u>
-  > * ##### <u>コントロールプレーンNodeのアドオン</u>
-  > > * ##### [admission-controllers](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html)
-  > * ##### <u>ワーカーNodeのアドオン</u>
-  > > * ##### [外部Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_external_ingress_controller.html)
-  > > * ##### <u>SecretsストアCSIドライバー</u>
-  > > > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_secrets_store_csi_driver.html)
-  > > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_secrets_store_csi_driver_resource_definition.html)
-  > * ##### <u>ネットワークアドオン</u>
-  > > * #### [CoreDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html)
-  > > * #### [CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)
-  > * #### <u>︎クラウドプロバイダーアドオン</u>
+<br>
+
+### アドオン
+
+* #### <u>コントロールプレーンNodeのアドオン</u>
+   > * ##### [admission-controllers](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html)
+
+* #### [外部Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_external_ingress_controller.html)
+
+* #### <u>ネットワークアドオン</u>
+  > * ##### [CoreDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html)
+  > * ##### [CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)
+
+* #### <u>SecretsストアCSIドライバー</u>
+  > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver.html)
+  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver_resource_definition.html)
+
+* #### <u>︎クラウドプロバイダーアドオン</u>
   > > * ##### <u>AWS EKSアドオン</u>
   > > > * ##### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)
   > > > * ##### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html)
