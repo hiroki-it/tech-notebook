@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】アドオン＠Kubernetesネットワーク
-description: アドオン＠Kubernetesネットワークの知見を記録しています。
+title: 【IT技術の知見】ネットワークアドオン＠Kubernetes
+description: ネットワークアドオン＠Kubernetesの知見を記録しています。
 ---
 
-# アドオン＠Kubernetesネットワーク
+# ネットワークアドオン＠Kubernetes
 
 ## はじめに
 

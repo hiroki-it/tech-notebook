@@ -56,7 +56,27 @@ repository/
 
 <br>
 
-## 02. Applicationのデザインパターン
+## 02-01. Clusterのデザインパターン
+
+### 内部Clusterパターン
+
+ArgoCDのApplicationと、監視対象のClusterを同じClusterで管理する。
+
+ApplicationとClusterを一括で管理できる。
+
+<br>
+
+### 外部Clusterパターン
+
+ArgoCDのApplicationと、監視対象のClusterを別々のClusterで管理する。
+
+複数のClusterにデプロイするApplicationを管理しやすい。
+
+> ↪️ 参考：https://twitter.com/yaml_villager/status/1625857205928075267
+
+<br>
+
+## 02-02. Applicationのデザインパターン
 
 ### Appパターン (通常パターン)
 
@@ -119,6 +139,8 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 #### ▼ root-application
 
 全てのApplicationを監視する最上位Applicationのこと。
+
+状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。
 
 ```yaml
 # 最上位Application

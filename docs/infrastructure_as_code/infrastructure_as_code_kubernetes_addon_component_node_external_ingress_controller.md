@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】アドオン＠Nodeコンポーネント
-description: アドオン＠Nodeコンポーネントの知見を記録しています。
+title: 【IT技術の知見】外部Ingressコントローラー＠ワーカーNodeのアドオン
+description: 外部Ingressコントローラー＠ワーカーNodeのアドオンの知見を記録しています。
 ---
 
-# アドオン＠Nodeコンポーネント
+# 外部Ingressコントローラー＠アドオン
 
 ## はじめに
 
@@ -21,10 +21,10 @@ Ingressコントローラーや、それに相当するもの (AWS LBコント�
 
 | コントローラー名                                              | 開発環境 | 本番環境 |
 | ------------------------------------------------------------- | :------: | :------: |
+| Nginx Ingressコントローラー                                   |    ✅    |    ✅    |
 | minikubeのingressアドオン (実体はNginx Ingressコントローラー) |    ✅    |          |
 | AWS LBコントローラー                                          |          |    ✅    |
 | GCP CLBコントローラー                                         |          |    ✅    |
-| Nginx Ingressコントローラー                                   |    ✅    |    ✅    |
 | Istio IngressGateway (NodePort Service、LoadBalancer Service) |    ✅    |    ✅    |
 | ...                                                           |   ...    |   ...    |
 

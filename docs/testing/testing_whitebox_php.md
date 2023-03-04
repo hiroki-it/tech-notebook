@@ -169,8 +169,6 @@ PHPUnitの設定を行う。
 
 `testsuites`タグ内の`testsuites`タグを追加変更すると、検証対象のディレクトリを増やし、加えて対象のディレクトリ名を変更できる。
 
-> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
-
 ```xml
 <phpunit>
 
@@ -190,6 +188,8 @@ PHPUnitの設定を行う。
 
 </phpunit>
 ```
+
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
 #### ▼ `php`タグ
 
@@ -238,8 +238,6 @@ Composerの実行時にメモリ不足にならないようにメモリを拡張
 
 非staticまたはstaticとしてコールできる。
 
-> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
-
 ```php
 $this->assertTrue();
 ```
@@ -247,6 +245,8 @@ $this->assertTrue();
 ```php
 self::assertTrue()
 ```
+
+> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
 
 #### ▼ assertTrue
 

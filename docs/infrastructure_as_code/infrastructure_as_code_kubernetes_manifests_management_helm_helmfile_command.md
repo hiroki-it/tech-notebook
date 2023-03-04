@@ -58,7 +58,6 @@ $ helmfile -e dev -f ./helmfile.yaml <コマンド>
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
-
 #### ▼ --interactive
 
 コマンドの実行前の確認を要求する。
@@ -71,7 +70,7 @@ $ helmfile -e dev --interactive destroy
 Do you really want to delete?
   Helmfile will delete all your releases, as shown above.
 
- [y/n]: 
+ [y/n]:
 ```
 
 <br>
@@ -124,8 +123,6 @@ $ helmfile -e dev destroy
 ```
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
-
-
 
 <br>
 

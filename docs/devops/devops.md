@@ -95,7 +95,7 @@ DevOpsの実現方法には、CIOpsまたはGitOpsがある。
 
 ### DevOpsの実現方法
 
-DevOpsの実現には、ツール、文化、が必要である。
+DevOpsの実現には、技術的要素、組織文化的要素、が必要である。
 
 DevOpsのこれらの要素を実践するエンジニアリングを『SREing』、また職種は『SREer』という。
 
@@ -103,17 +103,17 @@ DevOpsのこれらの要素を実践するエンジニアリングを『SREing�
 
 <br>
 
-## 02. ツール
+## 02. 技術的要素
 
 ### CIOps
 
 #### ▼ CIOpsとは
 
-![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
-
 CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。
 
 例えばCircleCIでアプリケーションのビルドからデプロイまでを実装する。
+
+![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
 
 > ↪️ 参考：
 >

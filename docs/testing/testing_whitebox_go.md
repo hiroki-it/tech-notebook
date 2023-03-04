@@ -85,8 +85,6 @@ description: Goの場合＠ホワイトボックステストの知見を記録�
 
 テストケースの構造体を反復処理し、テストを実施する。
 
-> ↪️ 参考：https://github.com/golang/go/wiki/TableDrivenTests
-
 ```go
 package test
 
@@ -143,5 +141,7 @@ func TestFoo(t *testing.T) {
 }
 
 ```
+
+> ↪️ 参考：https://github.com/golang/go/wiki/TableDrivenTests
 
 <br>

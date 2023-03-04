@@ -247,7 +247,7 @@ $ crond -n
 
 ### crontabとは
 
-crontabファイルを操作するためのユーティリティ。
+crontabファイルを操作する。
 
 作成した`cron`ファイルを登録できる。
 
@@ -796,7 +796,7 @@ foo.txt: ASCII text, with CR line terminators<br>
 
 ### -type
 
-ファイルを検索するためのユーティリティ。
+ファイルを検索する。
 
 アスタリスクを付けなくとも、自動的にワイルドカード (`*`) が働く。
 
@@ -1580,14 +1580,14 @@ aes256 => AES-256-CBC
 
 証明書の有効期限を取得する。
 
-> ↪️ 参考：https://pcvogel.sarakura.net/2019/01/07/31902
-
 ```bash
 $ openssl x509 -noout -dates -in foo.crt
 
 notBefore=Dec  9 09:31:55 2020 GMT # 開始日
 notAfter=Jan 10 09:31:55 2022 GMT  # 終了日
 ```
+
+> ↪️ 参考：https://pcvogel.sarakura.net/2019/01/07/31902
 
 <br>
 
@@ -1619,12 +1619,31 @@ $ printenv VAR
 
 ### -aux
 
-稼働しているプロセスの詳細情報を表示するためのユーティリティ。
+#### ▼ -auxとは
+
+稼働しているプロセスの詳細情報を表示する。
+
+代わりに、`-ef`オプションを使用しても良い。
 
 ```bash
-# 稼働しているプロセスのうち、詳細情報に『xxx』を含むものを取得する。
+# 稼働しているプロセスのうち、指定した名前のプロセスを取得する。
 $ ps -aux | grep <検索文字>
 ```
+
+> ↪️ 参考：https://ten-snapon.com/archives/2646
+
+#### ▼ -ef
+
+稼働しているプロセスの詳細情報を表示する。
+
+代わりに、`-aux`オプションを使用しても良い。
+
+```bash
+# 稼働しているプロセスのうち、指定した名前のプロセスを取得する。
+$ ps -ef | grep <検索文字>
+```
+
+> ↪️ 参考：https://ten-snapon.com/archives/2646
 
 <br>
 
@@ -1681,8 +1700,6 @@ $ find ./* \
 
 ファイルの一行目にテキストを追加する。
 
-> ↪️ 参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
-
 ```bash
 $ find ./* \
     -name "*.md" \
@@ -1695,6 +1712,8 @@ $ find ./* \
     -name "*.md" \
     -type f | xargs sed -i '' '1s/^/一行目にFooを挿入して改行\n\n/'
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
 
 <br>
 
@@ -1930,11 +1949,11 @@ getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("*.
 
 ユーティリティがすでに実行途中の場合、プロセスIDを指定してシステムコールをトレースする。
 
-> ↪️ 参考：https://tech-lab.sios.jp/archives/17394
-
 ```bash
 $ strace -p <プロセスID>
 ```
+
+> ↪️ 参考：https://tech-lab.sios.jp/archives/17394
 
 <br>
 
@@ -1946,11 +1965,11 @@ $ strace -p <プロセスID>
 
 全てを取得する`cat`コマンドとは異なり、巨大なファイル (例：ログ) の内容を取得するために使用する。
 
-> ↪️ 参考：https://eng-entrance.com/linux-command-tail
-
 ```bash
 $ tail foo.log
 ```
+
+> ↪️ 参考：https://eng-entrance.com/linux-command-tail
 
 <br>
 
@@ -1972,12 +1991,12 @@ $ tail -f foo.log
 
 補足として、配置先のディレクトリは事前に作成しておく必要がある。
 
-> ↪️ 参考：https://www.itmedia.co.jp/help/tips/linux/l0418.html
-
 ```bash
 $ mkdir /foo
 $ tar -xf foo.tar.gz -C /foo
 ```
+
+> ↪️ 参考：https://www.itmedia.co.jp/help/tips/linux/l0418.html
 
 <br>
 

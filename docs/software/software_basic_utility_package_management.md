@@ -25,10 +25,19 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 ## 02. パッケージ管理ユーティリティ
 
-| OS系統   | ユーティリティ         |
-| -------- | ---------------------- |
-| Debian系 | apt、apt-get、apt-file |
-| RedHat系 | rpm、yum、dnf          |
+### Debian系
+
+- apt
+- apt-get
+- apt-file
+
+<br>
+
+### RedHat系
+
+- rpm
+- yum
+- dnf
 
 <br>
 
@@ -41,11 +50,6 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 指定したファイルを持つパッケージを検索する。
 
 拡張子も指定しても、ファイル名までしか絞れない。
-
-> ↪️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
-> - https://embedded.hatenadiary.org/entry/20081101/p3
 
 ```bash
 # apt-fileパッケージをインストールする。
@@ -68,6 +72,11 @@ texlive-plain-generic: /usr/share/texlive/texmf-dist/tex4ht/ht-fonts/alias/arabi
 tinc: /usr/share/doc/tinc/tinc.html/zlib.html
 zlib1g-dev: /usr/include/zlib.h
 ```
+
+> ↪️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
+> - https://embedded.hatenadiary.org/entry/20081101/p3
 
 <br>
 
@@ -184,7 +193,11 @@ repolist: 34,344
 
 #### ▼ リポジトリとは
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、`--enablerepo`オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ (RPM、EPEL、Remi) から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
+CentOS公式リポジトリはパッケージのバージョンが古いことがある。
+
+そこで、`--enablerepo`オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ (RPM、EPEL、Remi) から、パッケージをインストールできる。
+
+外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
 
 #### ▼ リポジトリ自体のインストール
 
@@ -229,6 +242,7 @@ enabled=0
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 
+
 [epel-debuginfo]
 name=Extra Packages for Enterprise Linux 6 - $basearch - Debug
 #baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch/debug
@@ -237,6 +251,7 @@ failovermethod=priority
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 gpgcheck=1
+
 
 [epel-source]
 name=Extra Packages for Enterprise Linux 6 - $basearch - Source
@@ -314,9 +329,9 @@ Linuxで使用できるパッケージを管理する。
 
 #### ▼ autoremove
 
-パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。事前に`--dry-run`オプションを有効化し、対象のパッケージを確認すると良い。
+パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。
 
-> ↪️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
+事前に`--dry-run`オプションを有効化し、対象のパッケージを確認すると良い。
 
 ```bash
 $ brew autoremove --dry-run
@@ -324,15 +339,17 @@ $ brew autoremove --dry-run
 $ brew autoremove
 ```
 
+> ↪️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
+
 #### ▼ cleanup
 
 パッケージの旧バージョンのキャッシュを削除する。
 
-> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3
-
 ```bash
 $ brew cleanup
 ```
+
+> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3
 
 #### ▼ doctor
 
@@ -366,31 +383,31 @@ $ brew install <パッケージ名>@<バージョンタグ>
 
 brewによって`~/usr/local/Cellar `ディレクトリにインストールされたパッケージと、`~/usr/local/bin`ディレクトリに作成されたパッケージへのエイリアスを紐づける。
 
-> ↪️ 参考：https://hacknote.jp/archives/23816/
-
 ```bash
 $ brew link <パッケージ名>
 ```
+
+> ↪️ 参考：https://hacknote.jp/archives/23816/
 
 #### ▼ update
 
 brew本体をアップグレードする。
 
-> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3
-
 ```bash
 $ brew update
 ```
+
+> ↪️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3
 
 #### ▼ upgrade
 
 brew本体とパッケージの両方をアップグレードする。
 
-> ↪️ 参考：https://www.curict.com/item/bc/bcc0607.html
-
 ```bash
 $ brew upgrade
 ```
+
+> ↪️ 参考：https://www.curict.com/item/bc/bcc0607.html
 
 <br>
 
@@ -406,7 +423,9 @@ Linuxで使用できるパッケージを管理する。
 
 #### ▼ `.tool-version`ファイル
 
-`.tool-version`ファイルをリポジトリのルートディレクトリに置いておく必要がある。異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールを強制できる。
+`.tool-version`ファイルをリポジトリのルートディレクトリに置いておく必要がある。
+
+異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールを強制できる。
 
 ```bash
 # .tool-versionsファイル
@@ -429,11 +448,11 @@ sops <バージョン>
 
 `brew`コマンドを使用してインストールする場合、`~/.zshrc`ファイルを編集する必要がある。
 
-> ↪️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-
 ```bash
 $ brew install asdf
 ```
+
+> ↪️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 #### ▼ global
 
@@ -459,7 +478,9 @@ $ asdf list all <プラグイン名>
 
 #### ▼ local
 
-現在のディレクトリに、`.tool-version`ファイルを作成する。事前に`asdf install`コマンドでプラグインの特定のバージョンをインストールしておく必要がある。
+現在のディレクトリに、`.tool-version`ファイルを作成する。
+
+事前に`asdf install`コマンドでプラグインの特定のバージョンをインストールしておく必要がある。
 
 ```bash
 $ asdf local <プラグイン名> 1.0.0
