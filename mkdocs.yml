@@ -476,7 +476,7 @@ nav:
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
           - ■ アドオン:
               - ■ コントロールプレーンNodeのアドオン:
-                  - AdmissionControllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
+                  - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
               - ■ ワーカーNodeのアドオン:
                   - 外部Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_external_ingress_controller.md
                   - ■ SecretsストアCSIドライバー:
