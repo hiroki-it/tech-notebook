@@ -19,11 +19,11 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 #### ▼ Nodeネットワークとは
 
-![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node-network.png)
-
 同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。
 
 Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
+
+![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node-network.png)
 
 > ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
@@ -33,11 +33,11 @@ Nodeネットワークの作成は、Kubernetesの実行環境のネットワー
 
 #### ▼ Serviceネットワークとは
 
-![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_service-network.png)
-
 Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。
 
 Serviceネットワークの作成は、Kubernetesが担う。
+
+![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_service-network.png)
 
 > ↪️ 参考：
 >
@@ -50,11 +50,11 @@ Serviceネットワークの作成は、Kubernetesが担う。
 
 #### ▼ Clusterネットワークとは
 
-![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-network.png)
-
 同じClusterネットワーク内にあるPodの仮想NIC (veth) 間を接続するネットワーク。
 
 Clusterネットワークの作成は、CNIアドオンが担う。
+
+![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-network.png)
 
 > ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 

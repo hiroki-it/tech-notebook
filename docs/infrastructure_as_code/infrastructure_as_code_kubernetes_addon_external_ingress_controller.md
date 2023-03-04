@@ -304,7 +304,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 `【４】`
 
-: Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。
+: Ingressをデプロイし、IngressからAWS ALBを自動的に作成させる。
 
      以下の条件を満たす必要がある。
 
@@ -312,11 +312,11 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 <br>
 
-## 02-02. ALB Ingress
+## 02-02. AWS ALB
 
-### ALB Ingress
+### AWS ALB
 
-AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、ALB Ingressを自動的にプロビジョニングする。
+AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
@@ -326,7 +326,7 @@ AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと`.spe
 
 #### ▼ `.metadata.annotations`キーとは
 
-ALB Ingressをリスナールール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
+AWS ALBをリスナールール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
 
 > ↪️ 参考：
 >
@@ -335,7 +335,7 @@ ALB Ingressをリスナールール以外を設定するために、Ingressの`.
 
 #### ▼ `alb.ingress.kubernetes.io/certificate-arn`キー
 
-ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。
+AWS ALBでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -361,7 +361,7 @@ metadata:
 
 #### ▼ `alb.ingress.kubernetes.io/listen-ports`キー
 
-ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。
+AWS ALBでインバウンド通信を受け付けるポート番号を設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -374,7 +374,7 @@ metadata:
 
 #### ▼ `alb.ingress.kubernetes.io/load-balancer-attributes`キー
 
-ALB Ingressの属性を設定する。
+AWS ALBの属性を設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -387,7 +387,7 @@ metadata:
 
 #### ▼ `alb.ingress.kubernetes.io/scheme`キー
 
-ALB Ingressのスキームを設定する。
+AWS ALBのスキームを設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -413,7 +413,7 @@ metadata:
 
 #### ▼ `alb.ingress.kubernetes.io/subnets`キー
 
-ALB Ingressのルーティング先のサブネットを設定する。
+AWS ALBのルーティング先のサブネットを設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -469,7 +469,7 @@ metadata:
 
 ### `.spec.rules`キー
 
-ALB Ingressのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
+AWS ALBのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 

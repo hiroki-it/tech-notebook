@@ -438,8 +438,6 @@ spec:
 
 特定のPodで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
-
 **＊実装例＊**
 
 ```yaml
@@ -457,13 +455,13 @@ spec:
         sidecar.istio.io/inject: false
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+
 <br>
 
 ### sidecar.istio.io/proxyCPU
 
 `istio-proxy`コンテナで使用するCPUサイズを設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 **＊実装例＊**
 
@@ -482,13 +480,13 @@ spec:
         sidecar.istio.io/proxyCPU: 2
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
+
 <br>
 
 ### sidecar.istio.io/proxyImage
 
 `istio-proxy`コンテナの作成に使用するコンテナイメージを設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 **＊実装例＊**
 
@@ -507,13 +505,13 @@ spec:
         sidecar.istio.io/proxyImage: foo-envoy
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
+
 <br>
 
 ### sidecar.istio.io/proxyMemory
 
 `istio-proxy`コンテナで使用するメモリサイズを設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 **＊実装例＊**
 
@@ -531,6 +529,8 @@ spec:
       annotations:
         sidecar.istio.io/proxyMemory: 4
 ```
+
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 <br>
 
@@ -650,11 +650,6 @@ Podの同時接続数の制限数を設定する。
 
 制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。
 
-> ↪️ 参考：
->
-> - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
-> - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
-
 **＊実装例＊**
 
 ```yaml
@@ -673,11 +668,14 @@ spec:
         maxConnections: 100
 ```
 
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
+> - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
+
 #### ▼ outlierDetection
 
 サーキットブレイカーを設定する。
-
-> ↪️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=25
 
 **＊実装例＊**
 
@@ -696,11 +694,11 @@ spec:
       maxEjectionPercent: 99
 ```
 
+> ↪️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=25
+
 #### ▼ loadBalancer
 
 Podへのルーティング時に使用するロードバランシングアルゴリズムを設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
 
 **＊実装例＊**
 
@@ -716,11 +714,11 @@ spec:
       simple: ROUND_ROBIN
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
+
 #### ▼ portLevelSettings.loadBalancer
 
 Podのポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 **＊実装例＊**
 
@@ -737,11 +735,11 @@ spec:
           simple: ROUND_ROBIN
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+
 #### ▼ portLevelSettings.port
 
 Podのポート番号別ルーティングで使用するポート番号を設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 **＊実装例＊**
 
@@ -758,11 +756,11 @@ spec:
           number: 80
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+
 #### ▼ tls.mode
 
 Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
 **＊実装例＊**
 
@@ -790,6 +788,8 @@ spec:
       mode: ISTIO_MUTUAL # 相互TLS
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
+
 <br>
 
 ## 06. EnvoyFilter
@@ -799,8 +799,6 @@ spec:
 #### ▼ applyTo
 
 上書きしたい`envoy.yaml`ファイルの項目を設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
 **＊実装例＊**
 
@@ -814,6 +812,8 @@ spec:
   configPatches:
     - applyTo: NETWORK_FILTER
 ```
+
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
 #### ▼ match
 
@@ -838,8 +838,6 @@ spec:
 
 上書きしたい`envoy.yaml`ファイルのListener項目を設定する。
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
-
 **＊実装例＊**
 
 ```yaml
@@ -857,11 +855,11 @@ spec:
               name: "envoy.filters.network.http_connection_manager"
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
+
 #### ▼ PatchContext
 
 上書きしたい`envoy.yaml`ファイルの通信の方向を設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
 **＊実装例＊**
 
@@ -876,6 +874,8 @@ spec:
     - match:
         context: SIDECAR_INBOUND
 ```
+
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
 #### ▼ patch
 
@@ -912,8 +912,6 @@ spec:
 #### ▼ KeepAliveの設定
 
 istio-ingressgatewayのPod内の`istio-proxy`コンテナで、KeepAliveを実行できるようにする。
-
-> ↪️ 参考：https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -954,6 +952,8 @@ spec:
               int_value: 3
               state: STATE_PREBIND
 ```
+
+> ↪️ 参考：https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
 
 <br>
 

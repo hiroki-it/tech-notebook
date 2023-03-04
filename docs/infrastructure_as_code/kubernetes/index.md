@@ -37,6 +37,7 @@
 * #### <u>ネットワークアドオン</u>
   > * ##### [CoreDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html)
   > * ##### [CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)
+  > * ##### [ExternalDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html)
 
 * #### <u>SecretsストアCSIドライバー</u>
   > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver.html)

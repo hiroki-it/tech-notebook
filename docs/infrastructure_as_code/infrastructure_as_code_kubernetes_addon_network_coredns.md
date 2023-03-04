@@ -36,6 +36,8 @@ $ kubectl get service -n kube-system
 
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
+
+...
 ```
 
 > ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
@@ -52,6 +54,8 @@ $ kubectl get pod -n kube-system
 NAME                        READY   STATUS    RESTARTS   AGE
 coredns-558bd4d5db-hg75t    1/1     Running   0          1m0s
 coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
+
+...
 ```
 
 <br>
@@ -60,9 +64,7 @@ coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
 
 #### ▼ coredns-configmapとは
 
-ConfigMapに`Corefile`ファイルを配置する。
-
-`Corefile`ファイルは、CoreDNSを設定する。
+ConfigMapの`.data.Corefile`キーに、`Corefile`ファイルの設定値を定義する。
 
 **＊実装例＊**
 
@@ -149,13 +151,13 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 <br>
 
-### レコードタイプ別の完全修飾ドメイン名
+### DNSレコードタイプ別の完全修飾ドメイン名
 
-#### ▼ レコードタイプ別の完全修飾ドメイン名とは
+#### ▼ DNSレコードタイプ別の完全修飾ドメイン名とは
 
 Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。
 
-レコードタイプごとに、完全修飾ドメイン名が異なる。
+DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 
 #### ▼ `A/AAAA`レコードの場合
 
@@ -314,7 +316,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 <br>
 
-### レコードタイプ別の完全修飾ドメイン名
+### DNSレコードタイプ別の完全修飾ドメイン名
 
 #### ▼ `A/AAAA`レコードの場合
 

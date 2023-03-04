@@ -394,7 +394,7 @@ $ kubectl patch crd applications.argoproj.io \
 
 `【３】`
 
-: 1つ目の`spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
+: 1つ目の`.spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
 
 #### ▼ Namespaceを削除できない
 

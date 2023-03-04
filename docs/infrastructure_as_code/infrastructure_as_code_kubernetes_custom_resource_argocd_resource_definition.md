@@ -350,7 +350,7 @@ spec:
 
 注意点として、Syncステータスの判定時に無視されるのみで、内部的にSyncは実行されてしまうため、Syncのたびに設定値が元に戻ってしまう。
 
-そこで別途、`spec.syncPolicy.syncOptions[].RespectIgnoreDifferences`キーも有効にしておくと良い。
+そこで別途、`.spec.syncPolicy.syncOptions[].RespectIgnoreDifferences`キーも有効にしておくと良い。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -677,7 +677,7 @@ data:
 
 ArgoCDはHelmの`v2`と`v3`の両方を保持している。
 
-リリースするチャートの`apiVersion`キーの値が`v1`であれば、ArgoCDはHelmの`v2`を使用して、一方で`apiVersion`キーの値が`v2`であれば、Helmの`v3`を使用するようになっている。
+リリースするチャートの`.apiVersion`キーの値が`v1`であれば、ArgoCDはHelmの`v2`を使用して、一方で`.apiVersion`キーの値が`v2`であれば、Helmの`v3`を使用するようになっている。
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
 

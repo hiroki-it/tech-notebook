@@ -1152,7 +1152,7 @@ spec:
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
-#### ▼ ALB Ingressの場合
+#### ▼ AWS ALBの場合
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1178,7 +1178,7 @@ spec:
   controller: k8s.io/ingress-nginx
 ```
 
-#### ▼ Istio Ingressの場合
+#### ▼ Istio IngressGatewayの場合
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1203,7 +1203,7 @@ spec:
 
 代わりとして、IngressClassParamsを使用しても良い。
 
-#### ▼ ALB Ingressの場合
+#### ▼ AWS ALBの場合
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -3653,7 +3653,7 @@ metadata:
   name: foo-app-service
 spec:
   selector:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/app: foo-pod
 ```
 
 <br>

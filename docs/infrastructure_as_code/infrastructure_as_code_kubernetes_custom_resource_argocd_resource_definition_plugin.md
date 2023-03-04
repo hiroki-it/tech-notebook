@@ -31,7 +31,7 @@ ArgoCDと任意のツールを連携するためには、`argocd-repo-server`コ
 
 #### ▼ プラグイン名の設定
 
-ConfigMapの`data.configManagementPlugins`キーで、任意の名前でプラグイン名を設定する。
+ConfigMapの`.data.configManagementPlugins`キーで、任意の名前でプラグイン名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -50,7 +50,7 @@ data:
 
 ツールとの連携にはマニフェストを定義する必要がある。
 
-ConfigMapの`data.configManagementPlugins`キーでそれらの処理を定義する。
+ConfigMapの`.data.configManagementPlugins`キーでそれらの処理を定義する。
 
 これらの処理は、ArgoCDのリポジトリの監視処理と同時に実行されるため、何らかのエラーがあると、監視処理のエラーとして扱われる。
 
@@ -83,7 +83,7 @@ data:
 
 #### ▼ プラグイン名の指定
 
-Applicationの`.spec.plugin.name`キーで、`data.configManagementPlugins`キーで設定した独自のプラグイン名を設定する。
+Applicationの`.spec.plugin.name`キーで、`.data.configManagementPlugins`キーで設定した独自のプラグイン名を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

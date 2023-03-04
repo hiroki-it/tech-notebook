@@ -79,7 +79,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 Helm-APIのバージョンを設定する。
 
-`apiVersion`キーの`v1`はHelmの`v2`に対応しており、`v2`は`v3`に対応している。
+`.apiVersion`キーの`v1`はHelmの`v2`に対応しており、`v2`は`v3`に対応している。
 
 ```yaml
 apiVersion: v2
@@ -149,7 +149,7 @@ dependencies:
 
 ### kubeVersion
 
-チャート内のマニフェストに、新しい`apiVersion`が存在する場合、これに対応できるkube-apiserverのバージョンを設定する。
+チャート内のマニフェストに、新しい`.apiVersion`が存在する場合、これに対応できるkube-apiserverのバージョンを設定する。
 
 ```yaml
 kubeVersion: ">=1.22.0-0"

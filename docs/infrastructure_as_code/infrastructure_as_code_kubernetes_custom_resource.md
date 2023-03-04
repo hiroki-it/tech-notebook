@@ -172,9 +172,9 @@ spec:
 
 #### ▼ kind
 
-カスタムリソースの`kind`キー名を設定する。
+カスタムリソースの`.kind`キー名を設定する。
 
-例えば『`Foo`』という宣言名にすると、マニフェストの`kind`キーで、`Foo`というカスタムリソース名で使用できるようになる。
+例えば『`Foo`』という宣言名にすると、マニフェストの`.kind`キーで、`Foo`というカスタムリソース名で使用できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -260,7 +260,7 @@ $ kubectl get foo
 
 APIのバージョン名を設定する。
 
-例えば『`v1`』というstring型のキーを設定すると、マニフェストの`apiVersion`で、`/v1`を最後につけてコールすることになる。
+例えば『`v1`』というstring型のキーを設定すると、マニフェストの`.apiVersion`で、`/v1`を最後につけてコールすることになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
