@@ -469,24 +469,24 @@ nav:
           - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
           - ■ コンポーネント:
-              - ■ コントロールプレーンコンポーネント:
-                  - コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
-                  - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.md
-              - ■ Nodeコンポーネント:
-                  - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
-                  - ■ アドオン:
-                      - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.md
-                      - ■ SecretsストアCSIドライバー:
-                          - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon_secrets_store_csi_driver.md
-                          - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon_secrets_store_csi_driver_resource_definition.md
-          - ■ ネットワーク:
-              - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
-              - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_network_addon.md
+              - ■ コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
+              - ■ Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - ハードウェアリソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.md
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
-          - ■ クラウドプロバイダーアドオン:
-              - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks.md
-              - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_cloud_provider_addon_aws_eks_ebs_csi_driver.md
+          - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
+          - ■ アドオン:
+              - ■ コントロールプレーンNodeのアドオン:
+                  - AdmissionControllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
+              - ■ ワーカーNodeのアドオン:
+                  - 外部Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_external_ingress_controller.md
+                  - ■ SecretsストアCSIドライバー:
+                      - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_secrets_store_csi_driver.md
+                      - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_secrets_store_csi_driver_resource_definition.md
+              - ■ ネットワークアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network.md
+              - ■ クラウドプロバイダーアドオン:
+                  - ■ AWS EKSアドオン:
+                      - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.md
+                      - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.md
       - ■ 開発:
           - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.md
           - ■ 開発環境:
