@@ -33,7 +33,9 @@
   > > * ##### <u>SecretsストアCSIドライバー</u>
   > > > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_secrets_store_csi_driver.html)
   > > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_node_secrets_store_csi_driver_resource_definition.html)
-  > * #### [ネットワークアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network.html)
+  > * ##### <u>ネットワークアドオン</u>
+  > > * #### [CoreDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html)
+  > > * #### [CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)
   > * #### <u>︎クラウドプロバイダーアドオン</u>
   > > * ##### <u>AWS EKSアドオン</u>
   > > > * ##### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)

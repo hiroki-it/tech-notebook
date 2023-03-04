@@ -92,7 +92,7 @@ $ minikube addons list
 
 ### cni
 
-使用するcniアドオンを設定する。
+使用するCNIアドオンを設定する。
 
 ```bash
 $ minikube start --cni=auto

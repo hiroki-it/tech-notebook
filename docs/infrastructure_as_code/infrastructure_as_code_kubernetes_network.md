@@ -54,7 +54,7 @@ Serviceネットワークの作成は、Kubernetesが担う。
 
 同じClusterネットワーク内にあるPodの仮想NIC (veth) 間を接続するネットワーク。
 
-Clusterネットワークの作成は、cniアドオンが担う。
+Clusterネットワークの作成は、CNIアドオンが担う。
 
 > ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 

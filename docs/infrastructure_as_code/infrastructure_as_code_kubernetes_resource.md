@@ -49,7 +49,7 @@ Podの負荷に合わせてPodの自動水平スケーリングを実行しな�
 
 ただしReplicaSetとは異なり、Node内でPodを1つだけ維持管理する。
 
-Nodeで1つだけ稼働させる必要のあるプロセス (例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など) のために使用される。
+Nodeで1つだけ稼働させる必要のあるプロセス (例：kube-proxy、CNI、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など) のために使用される。
 
 こういったプロセスが稼働するコンテナは、Node内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 

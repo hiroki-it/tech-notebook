@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ネットワークアドオン＠Kubernetes
-description: ネットワークアドオン＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】CoreDNS＠ネットワークアドオン
+description: CoreDNS＠ネットワークアドオンの知見を記録しています。
 ---
 
-# ネットワークアドオン＠Kubernetes
+# CoreDNS＠ネットワークアドオン
 
 ## はじめに
 
@@ -13,142 +13,15 @@ description: ネットワークアドオン＠Kubernetesの知見を記録して
 
 <br>
 
-## 01. cniアドオン
-
-### cniアドオンとは
-
-![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
-
-cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。
-
-また、Podに仮想NICを紐付け、Node内のネットワークのIPアドレスをPodの仮想NICに割り当てる。
-
-これにより、PodをNode内のClusterネットワークに参加させ、異なるNode上のPod間を接続する。
-
-cniアドオンは、kubeletによるPodの起動時に有効化される。
-
-> ↪️ 参考：
->
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=30
-> - https://kubernetes.io/docs/concepts/cluster-administration/networking/
-
-<br>
-
-### オーバーレイモード
-
-#### ▼ オーバーレイモードとは
-
-![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png)
-
-オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のcniアドオンはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (`eth`) 、から構成される。
-
-オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
-
-> ↪️ 参考：
->
-> - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
-> - https://www.netstars.co.jp/kubestarblog/k8s-3/
-> - https://www1.gifu-u.ac.jp/~hry_lab/rs-overlay.html
-> - https://www.slideshare.net/ThomasGraf5/cilium-bringing-the-bpf-revolution-to-kubernetes-networking-and-security/28
-> - https://caddi.tech/archives/3864
-
-#### ▼ アドオン例
-
-> ↪️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
-
-- calico-ipip (Kubeadmで推奨)
-- flannel-vxlan
-- Weave
-- Cilium
-
-#### ▼ 同一Node上のPod間通信
-
-![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
-
-Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、を使用して、同じNode上のPod間でパケットを送受信する。
-
-> ↪️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
-
-#### ▼ 同一Node上のPod間通信
-
-![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
-
-Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外はiptables、Cilium) 、Nodeのネットワークインターフェース (`eth`) を使用して、異なるNode上のPod間でパケットを送受信する。
-
-> ↪️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
-
-<br>
-
-### ルーティングモード
-
-#### ▼ ルーティングモードとは
-
-ルーティングテーブル (`L3`) を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
-
-> ↪️ 参考：
->
-> - https://www.netstars.co.jp/kubestarblog/k8s-3/
-> - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
-
-#### ▼ アドオン例
-
-> ↪️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
-
-- calico-bgp (Kubeadmで推奨)
-- flannel-hostgw
-- sriov
-
-<br>
-
-### アンダーレイモード
-
-#### ▼ アンダーレイモードとは
-
-アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
-
-> ↪️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
-
-#### ▼ アドオン例
-
-- Aliyun
-
-<br>
-
-### AWSの独自モード
-
-#### ▼ AWSの独自モードとは
-
-![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
-
-AWSの独自モードは、Podの仮想ネットワークインターフェース (`veth`) 、Nodeのネットワークインターフェース (`eth`) 、から構成される。
-
-AWSでは、Node (EC2、Fargate) 上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの`2`つを付与できる。
-
-NodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
-
-Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する (2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり`1`個しかPodをスケジューリングできない) 。
-
-> ↪️ 参考：
->
-> - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
-> - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
-> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-
-#### ▼ アドオン例
-
-- aws-eks-vpc-cniアドオン (AWS EKSで推奨)
-
-<br>
-
-## 02. CoreDNSアドオン (旧kube-dns)
+## 01. CoreDNSアドオン (旧kube-dns)
 
 ### CoreDNSアドオンとは
 
 CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
-> ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
-
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
+
+> ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 <br>
 
@@ -158,14 +31,14 @@ CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。
 
 CoreDNSはNode内にPodとして稼働しており、これはCoreDNSのServiceによって管理されている。
 
-> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
-
 ```bash
 $ kubectl get service -n kube-system
 
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 ```
+
+> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 <br>
 
@@ -190,8 +63,6 @@ coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
 ConfigMapに`Corefile`ファイルを配置する。
 
 `Corefile`ファイルは、CoreDNSを設定する。
-
-> ↪️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
 
 **＊実装例＊**
 
@@ -233,9 +104,11 @@ data:
     }
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
+
 <br>
 
-## 02-02. Serviceの名前解決
+## 02. Serviceの名前解決
 
 ### Serviceの名前解決の仕組み
 
@@ -433,7 +306,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 <br>
 
-## 02-03. Podの直接的な名前解決
+## 03. Podの直接的な名前解決
 
 ### Podの直接的な名前解決の仕組み
 
@@ -451,7 +324,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 <br>
 
-## 02-04. サービスディスカバリー
+## 04. サービスディスカバリー
 
 CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
 

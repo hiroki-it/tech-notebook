@@ -24,7 +24,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 <br>
 
-## 📚 学習記録
+## 📚 知見
 
 技術的な知識を体系的に整理するため、ノートにまとめています。<br>
 
@@ -34,7 +34,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 ↪️ **[はてなブログ](https://hiroki-hasegawa.hatenablog.jp/archive)**
 
-時々、技術LTで発表しています。<br>
+時々、LTで知見を発表しています。<br>
 
 ↪️ **[Speaker Deck](https://speakerdeck.com/hiroki_hasegawa)**
 

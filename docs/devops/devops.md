@@ -85,21 +85,19 @@ DevOpsを実践しない状況では、開発者 (例：機能追加、機能変
 > - https://e-words.jp/w/DevOps.html
 > - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=12
 
+#### ▼ 実現要素
+
+DevOpsの実現には、『技術的要素』『組織文化的要素』が必要である。
+
+DevOpsのこれらの要素を実践するエンジニアリングを『SREing』、また職種は『SREer』という。
+
+> ↪️ 参考：https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23
+
 #### ▼ DevOpsと品質の関係
 
 DevOpsにて、品質を維持する作業を自動化することにより、一定水準以上の品質を維持しやすくする。
 
 DevOpsの実現方法には、CIOpsまたはGitOpsがある。
-
-<br>
-
-### DevOpsの実現方法
-
-DevOpsの実現には、技術的要素、組織文化的要素、が必要である。
-
-DevOpsのこれらの要素を実践するエンジニアリングを『SREing』、また職種は『SREer』という。
-
-> ↪️ 参考：https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23
 
 <br>
 
