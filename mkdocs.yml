@@ -481,6 +481,7 @@ nav:
           - ■ ネットワークアドオン:
               - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
               - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
+              - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
           - ■ SecretsストアCSIドライバー:
               - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver.md
               - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver_resource_definition.md
