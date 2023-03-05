@@ -166,7 +166,7 @@ p {
 
 /* サイドバーの余白 */
 /* なぜかローカルマシン上でしか機能しない */
-.md-sidebar__inner {
+[dir=ltr] .md-sidebar__inner {
     /** 幅を広げるために余白を無くす **/
     margin-left: 0;
     margin-right: 0;
