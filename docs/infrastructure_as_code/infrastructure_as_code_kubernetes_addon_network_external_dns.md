@@ -19,7 +19,7 @@ description: ExternalDNS＠ネットワークアドオンの知見を記録し�
 
 ExternalDNSアドオンは、ExternalDNSコントローラー、から構成される。
 
-ネットワークからのアクセスにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、ドメインレジストラ (例：AWS Route53) にDNSレコードを自動的に作成する。
+ネットワークからのアクセスにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。
 
 ![external-dns_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
 
@@ -27,6 +27,20 @@ ExternalDNSアドオンは、ExternalDNSコントローラー、から構成さ�
 >
 > - https://networkop.co.uk/post/2020-08-k8s-gateway/
 > - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#how-do-i-specify-a-dns-name-for-my-kubernetes-objects
+
+<br>
+
+### セットアップ
+
+#### ▼ Helmの場合
+
+```bash
+$ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/external-dns/
+
+$ helm install <リリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
 
 <br>
 
@@ -74,7 +88,7 @@ spec:
 
 #### ▼ ServiceAccount、ClusterRole
 
-ExternalDNSコントローラーがドメインレジストラ (例：AWS Route53) にアクセスできるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。
+ExternalDNSコントローラーがDNSプロバイダー (例：AWS Route53) にアクセスできるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。
 
 ```yaml
 apiVersion: v1

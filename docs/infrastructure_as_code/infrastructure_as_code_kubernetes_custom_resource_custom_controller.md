@@ -102,7 +102,9 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。
 
-operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。
+するとoperator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。
+
+反対に、カスタムリソース定義を削除すると、operator-controllerはカスタムリソースを削除する。
 
 operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 

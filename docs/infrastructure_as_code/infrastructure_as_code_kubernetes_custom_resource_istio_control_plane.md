@@ -139,12 +139,12 @@ istiod-deployment配下のPodには、HorizontalPodAutoscalerが設定されて�
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
+  name: istiod-<リビジョン番号>
+  namespace: istio-system
   labels:
     app: istiod
     istio.io/rev: <リビジョン番号>
     release: istiod
-  name: istiod-<リビジョン番号>
-  namespace: istio-system
 spec:
   maxReplicas: 5
   minReplicas: 2

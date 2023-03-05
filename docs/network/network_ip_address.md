@@ -246,13 +246,27 @@ $ nslookup example # 実際には、example.fooとなる
 
 > ↪️ 参考：https://linuc.org/study/knowledge/507/
 
+#### ▼ ドメイン
+
+ドメインレジストラ (例：AWS Route53、GCP Cloud DNS、お名前ドットコム) によって管理される。
+
+> ↪️ 参考：
+>
+> - https://www.value-domain.com/media/registry-registrar/
+> - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
+
 #### ▼ DNSサーバー (ネームサーバー、権威DNSサーバー)
 
 『ネームサーバー』『権威DNSサーバー』ともいう。
 
+ドメインレジストラがドメインと合わせて管理することが多いが、DNSサーバーの管理をDNSプロバイダーに委譲することもできる (例：お名前ドットコムをドメインレジストラ、AWS Route53をDNSプロバイダーとする) 。
+
 ドメイン名とIPアドレスのマッピングを管理する。
 
-> ↪️ 参考：https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
+> ↪️ 参考：
+>
+> - https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
+> - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
 
 #### ▼ キャッシュDNSサーバー
 
@@ -272,15 +286,21 @@ $ nslookup example # 実際には、example.fooとなる
 
 `【１】`
 
-: クライアントPCは、`www.example.com`にマッピングされるIPアドレスのキャッシュを検索する。キャッシュが無ければ、クライアントPCはドメイン名をキャッシュDNSサーバーに問い合わせる。
+: クライアントPCは、`www.example.com`にマッピングされるIPアドレスのキャッシュを検索する。
+
+     キャッシュが無ければ、クライアントPCはドメイン名をキャッシュDNSサーバーに問い合わせる。
 
 `【２】`
 
-: キャッシュDNSサーバーは、IPアドレスのキャッシュを検索する。キャッシュが無ければ、キャッシュDNSサーバーはドメイン名をDNSサーバーに問い合わせる。
+: キャッシュDNSサーバーは、IPアドレスのキャッシュを検索する。
+
+     キャッシュが無ければ、キャッシュDNSサーバーはドメイン名をドメインレジストラにあるDNSサーバーに問い合わせる。
 
 `【３】`
 
-: DNSサーバーは、IPアドレスを検索する。また、キャッシュDNSサーバーにこれを返却する。
+: ドメインレジストラにあるDNSサーバーは、IPアドレスを検索する。
+
+     また、キャッシュDNSサーバーにこれを返却する。
 
 |    完全修飾ドメイン名    | DNSサーバー |    IPアドレス     |
 | :----------------------: | :---------: | :---------------: |
@@ -288,11 +308,13 @@ $ nslookup example # 実際には、example.fooとなる
 
 `【４】`
 
-: キャッシュDNSサーバーは、IPアドレスをNATに返却する。この時、IPv4アドレスのネットワーク間変換が起こる。
+: キャッシュDNSサーバーは、IPアドレスをNATルーターに返却する。
+
+     この時、IPv4アドレスのネットワーク間変換が起こる。
 
 `【５】`
 
-: NATは、IPアドレスをクライアントPCに返却する。
+: NATルーターは、IPアドレスをクライアントPCに返却する。
 
 `【６】`
 

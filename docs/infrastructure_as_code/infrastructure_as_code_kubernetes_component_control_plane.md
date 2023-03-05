@@ -285,7 +285,7 @@ ServiceAccountを作成すると、Bearerトークン (『`***-***-***-***-***-*
 
 #### ▼ ヘルスチェック
 
-kube-apiserverにはヘルスチェック (`healthy`、`liveness`、`readiness`) のエンドポイントがある。
+kube-apiserverは、ヘルスチェック (Healthy、LivenessProbe、ReadinessProbe) ごとにエンドポイントを持つ。
 
 `kubectl get`コマンドでヘルスチェックを実行できる。
 

@@ -2248,13 +2248,274 @@ spec:
 
 <br>
 
+### .spec.containers[].livenessProbe
+
+#### ▼ livenessProbeとは
+
+kubeletは、Pod内のコンテナが起動しているか否かのヘルスチェックを行う。
+
+ReadinessProbeチェックよりもヘルスチェックの意味合いが強い。
+
+コンテナのLivenessProbeヘルスチェックに失敗すると、Podはコンテナを自動的に再起動する。
+
+> ↪️ 参考：
+>
+> - https://www.ianlewis.org/jp/kubernetes-health-check
+> - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/
+
+#### ▼ httpGet
+
+コンテナのLivenessProbeヘルスチェックのエンドポイントを設定する。
+
+自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
+
+| ツール       | エンドポイント   |
+| ------------ | ---------------- |
+| Alertmaanger | `/-/healthy`     |
+| Grafana      | `/healthz`       |
+| Kiali        | `/kiali/healthz` |
+| Prometheus   | `/-/healthy`     |
+| ...          | ...              |
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        httpGet:
+          port: 80
+          path: /healthcheck
+```
+
+#### ▼ failureThreshold
+
+コンテナのLivenessProbeヘルスチェックが失敗したとみなす試行回数を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        failureThreshold: 5
+```
+
+#### ▼ gracePeriodSeconds
+
+`2`回目以降のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
+
+注意として、初回のLivenessProbeヘルスチェックは、`.spec.containers[].livenessProbe.initialDelaySeconds`キーで設定する。
+
+この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
+
+設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        # 2回目以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。
+        gracePeriodSeconds: 5
+```
+
+#### ▼ initialDelaySeconds
+
+初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
+
+注意として、`2`回目以降のLivenessProbeによる再起動は、`.spec.containers[].livenessProbe.gracePeriodSeconds`キーで設定する。
+
+この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
+
+設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        # 初回以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。
+        initialDelaySeconds: 5
+```
+
+#### ▼ timeoutSeconds
+
+コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。
+
+この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        # LivenessProbeヘルスチェックのタイムアウト時間を30秒とする。
+        timeoutSeconds: 30
+```
+
+#### ▼ periodSeconds
+
+コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        # 5秒ごとにLivenessProbeヘルスチェックを実行する。
+        periodSeconds: 5
+```
+
+<br>
+
+### .spec.containers[].readinessProbe
+
+#### ▼ readinessProbeとは
+
+kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かのチェックを行う。
+
+コンテナが起動してもプロセスの起動に時間がかかる場合（例：DB）などで使用する。
+
+> ↪️ 参考：
+>
+> - https://www.ianlewis.org/jp/kubernetes-health-check
+> - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
+
+#### ▼ failureThreshold
+
+ReadinessProbeチェックが失敗したとみなす試行回数を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-mysql
+      image: foo-mysql:1.0.0
+      readinessProbe:
+        failureThreshold: 5
+```
+
+#### ▼ gracePeriodSeconds
+
+`2`回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
+
+注意として、初回のReadinessProbeヘルスチェックは、`.spec.containers[].readinessProbe.initialDelaySeconds`キーで設定する。
+
+この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
+
+設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-mysql
+      image: foo-mysql:1.0.0
+      readinessProbe:
+        # 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。
+        gracePeriodSeconds: 5
+```
+
+#### ▼ initialDelaySeconds
+
+初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
+
+注意として、`2`回目以降のreadinessProbeによる再起動は、`.spec.containers[].readinessProbe.gracePeriodSeconds`キーで設定する。
+
+この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
+
+設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-mysql
+      image: foo-mysql:1.0.0
+      readinessProbe:
+        initialDelaySeconds: 10
+```
+
+#### ▼ periodSeconds
+
+ReadinessProbeチェックの試行当たりの間隔を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-mysql
+      image: foo-mysql:1.0.0
+      readinessProbe:
+        periodSeconds: 5
+```
+
+#### ▼ tcpSocket
+
+ReadinessProbeチェックのTCPプロトコルのポート番号を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-mysql
+      image: foo-mysql:1.0.0
+      readinessProbe:
+        tcpSocket:
+          port: 3306
+```
+
+<br>
+
 ### .spec.enableServiceLinks
 
 #### ▼ enableServiceLinks
 
 Serviceの宛先情報 (IPアドレス、プロトコル、ポート番号) に関する環境変数をPod内に出力するかどうかを設定する。
-
-> ↪️ 参考：https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
 
 ```yaml
 apiVersion: v1
@@ -2268,6 +2529,8 @@ spec:
   enableServiceLinks: false
 ```
 
+> ↪️ 参考：https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
+
 <br>
 
 ### .spec.hostname
@@ -2277,8 +2540,6 @@ spec:
 Podのホスト名を設定する。
 
 また、`.spec.hostname`キーが設定されていない時は、`.metadata.name`がホスト名として使用される。
-
-> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 
 **＊実装例＊**
 
@@ -2294,15 +2555,17 @@ spec:
   hostname: foo-pod
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
+
 <br>
 
 ### .spec.hostNetwork
 
 #### ▼ hostNetworkとは
 
-Podが、自身の稼働するNodeのネットワークにアクセスできるかどうかを設定する。ユーザーが使用するうユースケースは少なく、例えばnode-exporterのPodで使用される。
+Podが、自身の稼働するNodeのネットワークにアクセスできるかどうかを設定する。
 
-> ↪️ 参考：https://stackoverflow.com/a/64793701
+ユーザーが使用するうユースケースは少なく、例えばnode-exporterのPodで使用される。
 
 ```yaml
 apiVersion: v1
@@ -2315,6 +2578,8 @@ spec:
       image: prom/node-exporter:1.0.0
   hostNetwork: true
 ```
+
+> ↪️ 参考：https://stackoverflow.com/a/64793701
 
 <br>
 
@@ -2349,81 +2614,6 @@ spec:
 
 <br>
 
-### .spec.livenessProbe
-
-#### ▼ livenessProbeとは
-
-kubeletは、Pod内のコンテナが起動しているか否かのヘルスチェックを行う。
-
-`.spec.livenessProbe`では、コンテナがヘルスチェックを待ち受けられるように設定する。
-
-> ↪️ 参考：https://www.ianlewis.org/jp/kubernetes-health-check
-
-#### ▼ httpGet
-
-ヘルスチェックのエンドポイントを設定する。
-
-自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
-
-| ツール       | エンドポイント   |
-| ------------ | ---------------- |
-| Alertmaanger | `/-/healthy`     |
-| Grafana      | `/healthz`       |
-| Kiali        | `/kiali/healthz` |
-| Prometheus   | `/-/healthy`     |
-| ...          | ...              |
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
-      livenessProbe:
-        httpGet:
-          port: 80
-          path: /healthcheck
-```
-
-#### ▼ failureThreshold
-
-ヘルスチェックが失敗したとみなす試行回数を設定する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
-      livenessProbe:
-        failureThreshold: 5
-```
-
-#### ▼ periodSeconds
-
-ヘルスチェックの試行当たりの間隔を設定する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
-      livenessProbe:
-        periodSeconds: 5
-```
-
-<br>
-
 ### .spec.nodeSelector
 
 kube-schedulerがPodをスケジューリングするNodeを設定する。
@@ -2446,76 +2636,6 @@ spec:
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
-
-<br>
-
-### .spec.readinessProbe
-
-#### ▼ readinessProbeとは
-
-kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを行う。
-
-`.spec.readinessProbe`キーでは、コンテナが準備済みチェックを待ち受けられるように設定する。
-
-何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
-
-> ↪️ 参考：
->
-> - https://www.ianlewis.org/jp/kubernetes-health-check
-> - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
-
-#### ▼ httpGet
-
-準備済みチェックのエンドポイントを設定する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
-      livenessProbe:
-        httpGet:
-          port: 80
-          path: /ready
-```
-
-#### ▼ failureThreshold
-
-準備済みチェックが失敗したとみなす試行回数を設定する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
-      livenessProbe:
-        failureThreshold: 5
-```
-
-#### ▼ periodSeconds
-
-準備済みチェックの試行当たりの間隔を設定する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
-      livenessProbe:
-        periodSeconds: 5
-```
 
 <br>
 
@@ -2605,7 +2725,7 @@ spec:
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
-Podの削除プロセスの待機時間を設定する。
+Podの削除プロセスを開始するまで待機時間を設定する。
 
 この時間を超えてもPodを削除できていない場合は、コンテナを強制的に停止する。
 
@@ -2842,11 +2962,6 @@ HostPathボリュームのため、『Node』が削除されるとこのボリ�
 
 HostPathボリューム自体は本番環境で非推奨である。
 
-> ↪️ 参考：
->
-> - https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
-> - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
-
 **＊実装例＊**
 
 ```yaml
@@ -2867,6 +2982,11 @@ spec:
         path: /data/src/foo
         type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
+> - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 #### ▼ name
 
@@ -2890,8 +3010,6 @@ spec:
 #### ▼ persistentVolumeClaim
 
 PersistentVolumeを使用する場合、PersistentVolumeClaimを設定する。
-
-> ↪️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 **＊実装例＊**
 
@@ -2945,13 +3063,13 @@ spec:
     type: DirectoryOrCreate
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+
 #### ▼ secret
 
 `.spec.containers[].envFrom`キー (環境変数としてコンテナに出力する) とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
 
 ConfigMapは、別の`.spec.volumes.configMap`キーで設定することに注意する。
-
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
 
 **＊実装例＊**
 
@@ -2979,6 +3097,8 @@ spec:
         defaultMode: 420 # ファイルの実行権限
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
+
 <br>
 
 ## 19. PodDisruptionBudget
@@ -2986,8 +3106,6 @@ spec:
 ### .spec.maxUnavailable
 
 対象のPodを新しいNodeでスケジューリングする時に、既存のNodeで削除できるPodの最大数を設定する。
-
-> ↪️ 参考：https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -3000,6 +3118,8 @@ spec:
     matchLabels:
       app.kubernetes.io/app: foo-pod # 対象のPod
 ```
+
+> ↪️ 参考：https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
 
 <br>
 
@@ -3032,8 +3152,6 @@ spec:
 
 対象のPodを設定する。
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
-
 ```yaml
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
@@ -3044,6 +3162,8 @@ spec:
     matchLabels:
       app.kubernetes.io/app: foo-pod # 対象のPod
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
 
 <br>
 
@@ -3067,8 +3187,6 @@ resourceキーで指定するKubernetesリソースのAPIグループの名前�
 
 空文字はコアグループを表す。
 
-> ↪️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
-
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -3077,6 +3195,8 @@ metadata:
 rules:
   - apiGroups: [""]
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 
 <br>
 
@@ -3820,7 +3940,7 @@ spec:
     matchLabels:
       app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
-  serviceName: foo-db-service
+  serviceName: foo-mysql-service
   template:
     metadata:
       labels:
@@ -3834,7 +3954,7 @@ spec:
           ports:
             - containerPort: 3306
           volumeMounts:
-            - name: foo-db-host-path-persistent-volume-claim
+            - name: foo-mysql-host-path-persistent-volume-claim
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
@@ -3871,7 +3991,7 @@ spec:
     matchLabels:
       app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
-  serviceName: foo-db-service
+  serviceName: foo-mysql-service
   template:
     metadata:
       labels:
@@ -3895,7 +4015,7 @@ spec:
             - name: MYSQL_PASSWORD
               value: dev_password
           volumeMounts:
-            - name: foo-db-host-path-persistent-volume-claim
+            - name: foo-mysql-host-path-persistent-volume-claim
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
@@ -3932,7 +4052,7 @@ spec:
     matchLabels:
       app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
-  serviceName: foo-db-service
+  serviceName: foo-mysql-service
   template:
     metadata:
       labels:
@@ -3945,7 +4065,7 @@ spec:
           ports:
             - containerPort: 3306
           volumeMounts:
-            - name: foo-db-host-path-persistent-volume-claim
+            - name: foo-mysql-host-path-persistent-volume-claim
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:

@@ -160,6 +160,8 @@ root-argocd-repository/
 
 parent-applicationは、`default`プロジェクトや`root`プロジェクトに配置する。
 
+`metadata.labels`キー配下に、`argocd.argoproj.io/instance`キーを設定し、値はroot-applicationの名前とする。
+
 ```yaml
 # 親Application
 parent-argocd-repository/
@@ -178,6 +180,8 @@ parent-argocd-repository/
 マイクロサービス単位のマニフェストやチャートごとに作成すると良い。
 
 child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のプロジェクトに配置する。
+
+`metadata.labels`キー配下に、`argocd.argoproj.io/instance`キーを設定し、値はparent-applicationの名前とする。
 
 ```yaml
 # 子Application
@@ -204,6 +208,8 @@ child-argocd-repository/
 ```
 
 アプリ領域やインフラ領域のマニフェストやチャートは以下の通りになっているとする。
+
+`metadata.labels`キー配下に、`argocd.argoproj.io/instance`キーを設定し、値はchild-applicationの名前とする。
 
 ```yaml
 # アプリ領域のマニフェスト
@@ -423,7 +429,7 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 <br>
 
-### ヘルスチェックが終了しない
+### `Progressing`状態でスタックする
 
 Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの`Progressing`状態でスタックすることがある。
 

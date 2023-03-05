@@ -199,6 +199,8 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
   name: istiod-default-validator
+  labels:
+    istio.io/rev: <リビジョン番号>
 webhooks:
   # webhook名は完全修飾ドメイン名にする。
   - name: validation.istio.io

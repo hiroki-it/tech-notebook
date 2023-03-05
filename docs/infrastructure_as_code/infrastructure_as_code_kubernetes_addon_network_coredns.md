@@ -79,7 +79,7 @@ data:
     .:53 {
         # エラーの出力先を設定する。
         errors
-        # CoreDNSのヘルスチェックのレスポンスの待機時間を設定する。
+        # CoreDNSのヘルスチェックを開始するまでの待機時間を設定する。
         health {
             lameduck 5s
         }
@@ -91,7 +91,7 @@ data:
         }
         prometheus :9153
         forward . /etc/resolv.conf {
-          # まずはUDPプロトコルによるルーティングを使用し、失敗した場合におTCPプロトコルを使用する。
+          # まずはUDPプロトコルによるルーティングを使用し、失敗した場合にTCPプロトコルを使用する。
           prefer_udp
           max_concurrent 1000
         }
