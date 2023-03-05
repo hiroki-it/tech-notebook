@@ -49,12 +49,12 @@ description: PromQL＠Prometheus
 
 同じ種類のデータポイントをラベル単位で集約する。
 
-> ↪️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
-
 ```bash
 # 直近1時間に関して、Istioのistio-proxyコンテナが受信した総リクエストのデータポイントを、コンテナの種類ごとに集約する。
 sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destination_app)
 ```
+
+> ↪️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
 
 #### ▼ count
 
@@ -66,8 +66,6 @@ sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destinati
 
 rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間あたりの増加数) を算出する。
 
-> ↪️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
-
 ```bash
 # rate関数に期間 (今回は5m) を自動的に掛けた数値を算出する。
 increase(foo_metrics[5m])
@@ -75,18 +73,20 @@ increase(foo_metrics[5m])
 = rate(foo_metrics[1h]) * 5 * 60
 ```
 
+> ↪️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+
 #### ▼ rate
 
 平均増加率 (%/秒) を算出する。
 
 常に同じ割合で増加していく場合、横一直線のグラフになる。
 
-> ↪️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
-
 ```bash
 # 直近1時間に関して、foo_metricsの平均増加率 (%/秒) を集計する。
 rate(foo_metrics[1h])
 ```
+
+> ↪️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ `[]` (ウィンドウ)
 
@@ -185,13 +185,13 @@ Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の
 
 計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
-> ↪️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
-
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
+
+> ↪️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 #### ▼ データポイントの合計サイズ (KB/日) の推移
 
@@ -252,8 +252,6 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 
 node-exporterの場合は、Nodeの`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
-> ↪️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
-
 ```bash
 # Node内でコールする。
 $ curl http://127.0.0.1:9100/metrics
@@ -270,6 +268,8 @@ go_gc_duration_seconds_sum 29.83657924
 ...
 ```
 
+> ↪️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
+
 <br>
 
 ### node-exporterのメトリクスを使用したクエリ
@@ -278,35 +278,31 @@ go_gc_duration_seconds_sum 29.83657924
 
 NodeのCPU使用率を取得する。
 
-> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
-
 ```bash
 rate(node_cpu_seconds_total[1m])
 ```
+
+> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
 
 #### ▼ メモリ使用率
 
 Nodeのメモリ使用率を取得する。
 
-> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
-
 ```bash
 node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
 ```
 
+> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
+
 #### ▼ ディスク使用率
 
 Nodeのディスク使用率を取得する。
-
-> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
 
 ```bash
 100 - (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100
 ```
 
 `mountpoint`ディメンションを使用して、マウントポイント別のディスク使用率を取得する。
-
-A
 
 ```bash
 100 - (node_filesystem_avail_bytes{mountpoint="/var/lib/data"} / node_filesystem_size_bytes{mountpoint="/var/lib/data"} ) * 100
@@ -317,6 +313,8 @@ A
 ```bash
 100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
 ```
+
+> ↪️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
 
 #### ▼ ディスクのI/OによるCPU使用率
 

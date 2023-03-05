@@ -17,7 +17,7 @@ description: 外部Ingressコントローラー＠ワーカーNodeのアドオ�
 
 ### 外部Ingressコントローラーの種類
 
-Ingressコントローラーや、それに相当するもの (AWS LBコントローラー、Istio IngressGateway) が必要である。
+Ingressコントローラーや、それに相当するもの (AWS LBコントローラー、Istio IngressGateway、Istio Ingress) が必要である。
 
 | コントローラー名                                              | 開発環境 | 本番環境 |
 | ------------------------------------------------------------- | :------: | :------: |
@@ -26,6 +26,7 @@ Ingressコントローラーや、それに相当するもの (AWS LBコント�
 | AWS LBコントローラー                                          |          |    ✅    |
 | GCP CLBコントローラー                                         |          |    ✅    |
 | Istio IngressGateway (NodePort Service、LoadBalancer Service) |    ✅    |    ✅    |
+| Istio Ingressコントローラー                                   |    ✅    |    ✅    |
 | ...                                                           |   ...    |   ...    |
 
 > ↪️ 参考：
@@ -33,6 +34,7 @@ Ingressコントローラーや、それに相当するもの (AWS LBコント�
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 > - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/
+> - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
 
 <br>
 

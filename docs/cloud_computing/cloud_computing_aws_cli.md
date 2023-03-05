@@ -31,8 +31,6 @@ $ aws configure
 
 プロファイルを新しく作成する。
 
-> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
-
 ```bash
 $ aws configure --profile <プロファイル名>
 
@@ -41,6 +39,8 @@ AWS Secret Access Key [None]: <シークレットアクセスキー>
 Default region name [None]: <リージョン名>
 Default output format [None]: <アウトプット形式>
 ```
+
+> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
 
 <br>
 

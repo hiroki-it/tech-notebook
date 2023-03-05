@@ -117,8 +117,6 @@ end
 
 仮想環境のベースとするボックス名を設定する。
 
-> ↪️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
-
 ```ruby
 Vagrant.configure("2") do |config|
 
@@ -126,6 +124,8 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
+> ↪️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
 <br>
 
@@ -173,8 +173,6 @@ end
 
 ホストから仮想環境へポートフォワーディングを設定する。
 
-> ↪️ 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
-
 ```ruby
 Vagrant.configure("2") do |config|
 
@@ -182,6 +180,8 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
+> ↪️ 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
 
 #### ▼ private_network
 
@@ -191,8 +191,6 @@ end
 
 他の仮想環境とIPアドレスが重複しないようにする必要がある。
 
-> ↪️ 参考：https://www.vagrantup.com/docs/networking/private_network
-
 ```ruby
 Vagrant.configure("2") do |config|
 
@@ -200,6 +198,8 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
+> ↪️ 参考：https://www.vagrantup.com/docs/networking/private_network
 
 <br>
 
@@ -213,8 +213,6 @@ end
 
 #### ▼ virtualbox
 
-> ↪️ 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
-
 ```ruby
 Vagrant.configure("2") do |config|
 
@@ -227,9 +225,9 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-#### ▼ docker
+> ↪️ 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
 
-> ↪️ 参考：https://www.vagrantup.com/docs/providers/docker/configuration
+#### ▼ docker
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -241,6 +239,8 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
+> ↪️ 参考：https://www.vagrantup.com/docs/providers/docker/configuration
 
 <br>
 
@@ -256,11 +256,6 @@ end
 
 shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式 (`<<-`) を使用すると良い。
 
-> ↪️ 参考：
->
-> - https://www.vagrantup.com/docs/provisioning/shell
-> - https://monologu.com/vagrant-shell-provisioning/
-
 ```ruby
 Vagrant.configure("2") do |config|
 
@@ -273,13 +268,16 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+> ↪️ 参考：
+>
+> - https://www.vagrantup.com/docs/provisioning/shell
+> - https://monologu.com/vagrant-shell-provisioning/
+
 #### ▼ ansible
 
 ホスト側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。
 
 開発環境ではこのオプションを使用することは非推奨で、`ansible_local`オプションを使用することが推奨されている。
-
-> ↪️ 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -292,6 +290,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+> ↪️ 参考：https://www.vagrantup.com/docs/provisioning/ansible
+
 #### ▼ ansible_local
 
 仮想環境側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。
@@ -299,11 +299,6 @@ end
 注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー (仮想環境) になるため、コントロールノードは自分で自分を指定してプロビジョニングを実行することになる。
 
 開発環境ではこのオプションを使用することが推奨されており、`ansible`オプションを使用することが非推奨とされている。
-
-> ↪️ 参考：
->
-> - https://www.vagrantup.com/docs/provisioning/ansible_local
-> - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -334,6 +329,11 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+> ↪️ 参考：
+>
+> - https://www.vagrantup.com/docs/provisioning/ansible_local
+> - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
+
 <br>
 
 ### config.vm.synced_folder
@@ -341,8 +341,6 @@ end
 #### ▼ synced_folderとは
 
 ホストのディレクトリを仮想環境にマウントする。
-
-> ↪️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -352,6 +350,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+> ↪️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
+
 #### ▼ type
 
 マウント方法を設定する。
@@ -359,8 +359,6 @@ end
 デフォルト値は、VirtualBox共有ディレクトリである。
 
 その他、NFS、RSync、SMBを設定できる。
-
-> ↪️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -370,6 +368,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+> ↪️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
+
 ホストと仮想環境間のファイルの入出力の速度差によって、パフォーマンスに差がある。
 
 以下のリンクで、ロードテストを実施したところ、『`RSync > SMB > VirtualBox共有ディレクトリ`』の順でパフォーマンスが良かった。
@@ -378,11 +378,11 @@ end
 
 また、『`RSync > NFS`』『`NFS > SMB`』である。
 
+これらから、おおよそ『`RSync > NFS > SMB > VirtualBox共有ディレクトリ`』の順でパフォーマンスが良くなると考えておけばよい。
+
 > ↪️ 参考：
 >
 > - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
 > - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
-
-これらから、おおよそ『`RSync > NFS > SMB > VirtualBox共有ディレクトリ`』の順でパフォーマンスが良くなると考えておけばよい。
 
 <br>

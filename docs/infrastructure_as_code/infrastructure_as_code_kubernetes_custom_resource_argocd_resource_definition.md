@@ -1439,6 +1439,30 @@ ArgoCDの各コンポーネントで共通する値を設定する。
 
 <br>
 
+### application.instanceLabelKey
+
+#### ▼ application.instanceLabelKeyとは
+
+Kubernetesリソースや子Applicationが親Applicationを識別するためのラベルのキー名を設定する。
+
+デフォルトは`app.kubernetes.io/instance`キーであり、コンフリクトしやすいキー名なため、変更した方が良い。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  application.instanceLabelKey: argocd.argoproj.io/instance
+```
+
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
+
+<br>
+
 ### globalProjects
 
 #### ▼ globalProjectsとは
@@ -1479,45 +1503,11 @@ spec: ...
 
 <br>
 
-### resource.customizations.ignoreDifferences.all
+### oidc.config
 
-#### ▼ resource.customizations.ignoreDifferences.allとは
+#### ▼ oidc.configとは
 
-ArgoCD全体で`.spec.ignoreDifferences`キーと同じ機能を有効化する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: argocd
-  name: argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-data:
-  resource.customizations.ignoreDifferences.all: |
-    jsonPointers:
-      # .spec.replicas (インスタンス数) の設定値の変化を無視する。
-      - /spec/replicas
-    jqPathExpressions:
-      # .spec.metrics (ターゲット対象のメトリクス) の自動整形を無視する。
-      - /spec/metrics
-```
-
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
-
-<br>
-
-### repositories
-
-#### ▼ repositoriesとは
-
-ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
-
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
-
-<br>
-
-### OIDCの設定
+OIDCを使用して、ArgoCDにログインできるようにする。
 
 #### ▼ 委譲先Webサイトに直接的に接続する場合
 
@@ -1591,6 +1581,44 @@ data:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
 > - https://dexidp.io/docs/connectors/oidc/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+
+<br>
+
+### repositories
+
+#### ▼ repositoriesとは
+
+ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+
+<br>
+
+### resource.customizations.ignoreDifferences.all
+
+#### ▼ resource.customizations.ignoreDifferences.allとは
+
+ArgoCD全体で`.spec.ignoreDifferences`キーと同じ機能を有効化する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  resource.customizations.ignoreDifferences.all: |
+    jsonPointers:
+      # .spec.replicas (インスタンス数) の設定値の変化を無視する。
+      - /spec/replicas
+    jqPathExpressions:
+      # .spec.metrics (ターゲット対象のメトリクス) の自動整形を無視する。
+      - /spec/metrics
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
 <br>
 

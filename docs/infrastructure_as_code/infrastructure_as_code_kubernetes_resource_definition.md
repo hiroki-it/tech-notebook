@@ -1178,7 +1178,7 @@ spec:
   controller: k8s.io/ingress-nginx
 ```
 
-#### ▼ Istio IngressGatewayの場合
+#### ▼ Istio Ingressの場合
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -2403,7 +2403,7 @@ spec:
 
 kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かのチェックを行う。
 
-コンテナが起動してもプロセスの起動に時間がかかる場合（例：DB）などで使用する。
+コンテナが起動してもプロセスの起動に時間がかかる場合 (例：DB) などで使用する。
 
 > ↪️ 参考：
 >

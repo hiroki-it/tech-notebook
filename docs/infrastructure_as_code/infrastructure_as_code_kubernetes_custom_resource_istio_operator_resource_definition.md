@@ -483,6 +483,7 @@ spec:
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/mesh-and-proxy-config/#available-tracing-configurations
 > - https://istio.io/latest/docs/ops/integrations/jaeger/
 > - https://istio.io/latest/docs/ops/integrations/zipkin/#option-2-customizable-install
+> - https://zenn.dev/riita10069/articles/service-mesh
 
 #### ▼ holdApplicationUntilProxyStarts
 

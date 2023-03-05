@@ -15,6 +15,8 @@ description: ツール＠AWSの知見を記録しています。
 
 ## 01. ツールの一覧
 
+記入中...
+
 > ↪️ 参考：https://aws.amazon.com/jp/solutions/browse-all/?solutions-all.sort-by=item.additionalFields.headline&solutions-all.sort-order=asc&awsf.Content-Type=content-type%23solution&awsf.AWS-Product%20Category=*all
 
 <br>

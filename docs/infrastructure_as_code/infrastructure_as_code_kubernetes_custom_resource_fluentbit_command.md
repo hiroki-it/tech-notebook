@@ -57,10 +57,10 @@ Available Options
 
 これら以外に再起動を伴わない`--dry-run`オプションがあるが、このオプションは経験則で精度が低いため、参考程度にする。
 
-> ↪️ 参考：https://cloud.calyptia.com/visualizer
-
 ```bash
 $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 ```
+
+> ↪️ 参考：https://cloud.calyptia.com/visualizer
 
 <br>

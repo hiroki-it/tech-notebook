@@ -23,11 +23,6 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 バックエンドの場所に限らず、`terraform apply`コマンドを実行した後、成功もしくは失敗したタイミングで初めて作成される。
 
-> ↪️ 参考：
->
-> - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
-> - https://chroju.dev/blog/terraform_state_introduction
-
 ```yaml
 {
   "version": 4,
@@ -87,6 +82,11 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
+> - https://chroju.dev/blog/terraform_state_introduction
+
 #### ▼ `.tfstate`ファイルのロック
 
 `.tfstate`ファイルの競合を防ぐために、`terraform apply`コマンドの処理中に`.tfstate`ファイルはロックされる。
@@ -100,8 +100,6 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 `terraform apply`コマンドの完了前に処理を強制的に中断してしまうと、ロックが残ってしまう。
 
 これが起こると、以降、一連の`terraform`コマンドを実行できなくなってしまう。
-
-> ↪️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
 
 ```bash
 $ terraform plan
@@ -124,6 +122,8 @@ Lock Info:
 ```bash
 $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 ```
+
+> ↪️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
 
 <br>
 
@@ -184,13 +184,6 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 ハッシュ値を設定する、タグごとに役割が異なる。
 
-> ↪️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
-
-| タグ名 | 説明                                                                                                                                                                                                                                           |
-| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `h1`   | 開発者が使用しているOSを表すハッシュ値を設定する。`zh`タグの`zip`パッケージのOS名に存在しないOS値が、`h1`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。                                                                |
-| `zh`   | プロバイダーの`zip`パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1`タグのOS値に存在しないOS名の`zip`パッケージが、`zh`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
-
 ```terraform
 provider "registry.terraform.io/hashicorp/aws" {
 
@@ -207,6 +200,13 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 }
 ```
+
+| タグ名 | 説明                                                                                                                                                                                                                                           |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `h1`   | 開発者が使用しているOSを表すハッシュ値を設定する。`zh`タグの`zip`パッケージのOS名に存在しないOS値が、`h1`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。                                                                |
+| `zh`   | プロバイダーの`zip`パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1`タグのOS値に存在しないOS名の`zip`パッケージが、`zh`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
+
+> ↪️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 
 <br>
 
@@ -226,16 +226,16 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 以降、プロバイダープラグインをインストールする必要がなくなり、`terraform init`コマンドの速度を改善できる。
 
-> ↪️ 参考：
->
-> - https://blog.jhashimoto.net/entry/2021/12/24/090000
-> - https://www.terraform.io/cli/config/config-file#provider-plugin-cache
-
 ```terraform
 # ~/.terraformrcファイル
 
 plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 ```
+
+> ↪️ 参考：
+>
+> - https://blog.jhashimoto.net/entry/2021/12/24/090000
+> - https://www.terraform.io/cli/config/config-file#provider-plugin-cache
 
 <br>
 

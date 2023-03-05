@@ -100,11 +100,13 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 カスタムコントローラーとして動作する。
 
-operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。
+operator-controllerが稼働している状況で、etcdにカスタムリソース定義とカスタムリソースの両方を永続化したとする。
 
 するとoperator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。
 
 反対に、カスタムリソース定義を削除すると、operator-controllerはカスタムリソースを削除する。
+
+この時カスタムリソース定義を改めて作成しても、operator-controllerはカスタムリソースを自動的に作成しない。
 
 operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 
@@ -115,6 +117,7 @@ operator-controllerに不具合があると、etcd上のカスタムリソース
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://stackoverflow.com/questions/47848258/what-is-the-difference-between-a-kubernetes-controller-and-a-kubernetes-operator
 > - https://www.howtogeek.com/devops/what-are-kubernetes-controllers-and-operators/
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#delete-a-customresourcedefinition
 
 #### ▼ 認可スコープ付与リソース
 

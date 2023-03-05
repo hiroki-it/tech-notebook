@@ -109,7 +109,13 @@ EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働す�
 
 <br>
 
-## 03. aws-eks-kube-proxy
+## 03. aws-eks-distro-for-opentelemetry
+
+記入中...
+
+<br>
+
+## 04. aws-eks-kube-proxy
 
 ### aws-eks-kube-proxyアドオンとは
 
@@ -121,7 +127,7 @@ EKSのコントロールプレーン上のkube-apiserverが、Node外からPod�
 
 <br>
 
-## 04. aws-eks-vpc-cniアドオン
+## 05. aws-eks-vpc-cniアドオン
 
 ### aws-eks-vpc-cniアドオンとは
 
@@ -157,3 +163,5 @@ Nodeのインスタンスタイプごとに、紐づけられるENI数に制限�
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
+
+<br>

@@ -262,9 +262,11 @@ repository/
 
 ### Application
 
-わかりやすいように、Kubernetesリソース名に実行環境名をつける。
+ArgoCDでは、子Kubernetesリソースや子Applicationの`metadata.labels`キーにある`argocd.argoproj.io/instance`キーの値に基づいて、親Applicationを判断する。
 
-合わせて、`metadata.labels`キーに実行環境名に関するラベルをつけるかどうかは任意である。
+複数の親Applicationに紐づかないように、Applicationは一意にする必要がある。
+
+そのために、Application名にサービス名と実行環境名 (例：`<サービス名>-<実行環境名>`) で命名する。
 
 <br>
 

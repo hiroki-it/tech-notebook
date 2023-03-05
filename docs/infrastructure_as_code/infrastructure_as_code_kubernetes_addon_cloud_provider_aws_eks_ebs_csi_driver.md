@@ -107,6 +107,10 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 
 #### ▼ Helmの場合
 
+Helmを使用する。
+
+KubernetesよりもAWSに依存している要素が多いため、Terraformによるセットアップの方が個人的にはおすすめである。
+
 ```bash
 $ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/aws-ebs-csi-driver
 
@@ -225,6 +229,8 @@ AWS EBSは自動で作成されるため、作成不要である。
 
 **＊実装例＊**
 
+マニフェストまたはTerraformで定義する。
+
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -234,6 +240,25 @@ provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
 parameters:
   type: gp2
+```
+
+```terraform
+resource "kubernetes_storage_class" "gp2_encrypted" {
+
+  metadata {
+    name = "foo-storage-class"
+  }
+
+  storage_provisioner = "ebs.csi.aws.com"
+
+  parameters = {
+    encrypted = "true"
+    fsType    = "ext4"
+    type      = "gp2"
+  }
+
+  volume_binding_mode = "WaitForFirstConsumer"
+}
 ```
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
