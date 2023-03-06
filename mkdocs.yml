@@ -325,7 +325,13 @@ nav:
           - ルーター: network/network_router.md
       - ■ モデル:
           - TCP階層モデル: network/network_model_tcp.md
-          - OSI参照モデル: network/network_model_osi.md
+          - ■ OSI参照モデル:
+              - OSI参照モデル: network/network_model_osi.md
+              - ■ L5 - L7:
+                  L5 - L7: network/network_model_osi_l5_l7.md
+                  メッセージ: network/network_model_osi_l5_l7_message.md
+              - L4: network/network_model_osi_l4.md
+              - L3: network/network_model_osi_l3.md
 
   - 🔐 セキュリティ:
       - security/index.md
