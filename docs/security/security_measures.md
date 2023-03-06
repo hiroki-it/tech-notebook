@@ -52,12 +52,6 @@ Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケット�
 | FORWARD                            | パケットの転送時に、その転送を許可/拒否する。 |
 | OUTPUT                             | パケットの送信時に、その送信を許可/拒否する。 |
 
-> ↪️ 参考：
->
-> - https://christina04.hatenablog.com/entry/iptables-outline-
-> - https://linuc.org/study/knowledge/540/
-> - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
-
 **＊例＊**
 
 ```bash
@@ -76,6 +70,12 @@ COMMIT
 
 ...
 ```
+
+> ↪️ 参考：
+>
+> - https://christina04.hatenablog.com/entry/iptables-outline-
+> - https://linuc.org/study/knowledge/540/
+> - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
 
 #### ▼ firewalld (CentOS) による標準的ファイアウォール
 
@@ -127,9 +127,9 @@ public
 
 Windowsファイアウォールは、Windowsにおけるファイアウォールである。
 
-> ↪️ 参考：https://pc-karuma.net/windows-10-firewall-open-port/
-
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif)
+
+> ↪️ 参考：https://pc-karuma.net/windows-10-firewall-open-port/
 
 **＊例＊**
 
@@ -193,12 +193,12 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 `L7` (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を防御する。
 
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
+
 > ↪️ 参考：
 >
 > - https://digital-jyoshisu.com/archives/468
 > - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
-
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
 <br>
 
@@ -232,11 +232,15 @@ sha256によって作成された文字列をファイル情報として添付�
 
 ### ワンタイムトークンとは
 
-`L7` (アプリケーション層) に対するサイバー攻撃 (例：CSRF) を防御する。認証時に、セッションIDのみでなく、ワンタイムトークンも併用する。認証フォームがリクエストされた時、サーバー側では、ワンタイムトークンを発行し、これを`Set-Cookie`ヘッダーの`csrftoken`パラメーター (フレームワークによっては、これに相当するパラメーター) や独自ヘッダーに割り当てて、レスポンスを返信する。
+`L7` (アプリケーション層) に対するサイバー攻撃 (例：CSRF) を防御する。
 
-> ↪️ 参考：https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
+認証時に、セッションIDのみでなく、ワンタイムトークンも併用する。
+
+認証フォームがリクエストされた時、サーバー側では、ワンタイムトークンを発行し、これを`Set-Cookie`ヘッダーの`csrftoken`パラメーター (フレームワークによっては、これに相当するパラメーター) や独自ヘッダーに割り当てて、レスポンスを返信する。
 
 ![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf-token.png)
+
+> ↪️ 参考：https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
 
 <br>
 
@@ -252,7 +256,9 @@ X-CSRF-TOKEN: <トークン>
 
 `【１】`
 
-: ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し、認証フォームのinputタグのhidden属性に割り当てる。他に、metaタグにトークンを割り当てることもある。
+: ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し、認証フォームのinputタグのhidden属性に割り当てる。
+
+     他に、metaタグにトークンを割り当てることもある。
 
 ```html
 <form method="POST" action="http://foo.com/bar-form.php">
@@ -271,7 +277,9 @@ X-CSRF-TOKEN: <トークン>
 
 `【２】`
 
-: 認証のためのPOSTリクエスト時に、リクエストボディや独自ヘッダーにトークンを割り当て、リクエストを送信する。どちらを使用するかは、バックエンド側の仕様によって異なる。
+: 認証のためのPOSTリクエスト時に、リクエストボディや独自ヘッダーにトークンを割り当て、リクエストを送信する。
+
+     どちらを使用するかは、バックエンド側の仕様によって異なる。
 
 ```yaml
 POST https://example.com/bar-form.php
@@ -285,7 +293,11 @@ x-csrf-token: <トークン>
 
 `【３】`
 
-: サーバー側では、POSTリクエストによって送信されたトークンとワンタイムトークンを比較し、認証を実行する。以降、POSTリクエストの場合はそのワンタイムトークンを使い回し、GETリクエストの場合は使用しない。トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、`401`ステータスを返却する。
+: サーバー側では、POSTリクエストによって送信されたトークンとワンタイムトークンを比較し、認証を実行する。
+
+     以降、POSTリクエストの場合はそのワンタイムトークンを使い回し、GETリクエストの場合は使用しない。
+
+     トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、`401`ステータスを返却する。
 
 > ↪️ 参考：
 >
@@ -342,9 +354,9 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 異なるドメインで表示されるページからのリクエストを許可したい場合は、ページからのリクエストとサーバーからのレスポンスの両方で対応が必要である。
 
-> ↪️ 参考：https://developer.mozilla.org/ja/docs/Glossary/Origin
-
 ![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cors.png)
+
+> ↪️ 参考：https://developer.mozilla.org/ja/docs/Glossary/Origin
 
 <br>
 
@@ -354,7 +366,11 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 `【１】`
 
-: リクエストの`Origin`ヘッダーに送信元オリジンを設定する。加えて、`Cookie`ヘッダーを持つリクエストを送信したい場合は、JavaScriptの実装で`withCredentials`オプションに`true`を割り当てる。JavaScriptのパッケージによってオプション名が異なるため注意する。
+: リクエストの`Origin`ヘッダーに送信元オリジンを設定する。
+
+     加えて、`Cookie`ヘッダーを持つリクエストを送信したい場合は、JavaScriptの実装で`withCredentials`オプションに`true`を割り当てる。
+
+     JavaScriptのパッケージによってオプション名が異なるため注意する。
 
 > ↪️ 参考：https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
 
@@ -387,7 +403,13 @@ return new Promise((resolve, reject) => {
 
 `【２】`
 
-: 次に、レスポンスの`Access-Control-Allow-Origin`ヘッダーに、許可された送信元オリジンを割り当てて返信する。`Cookie`ヘッダーを持つリクエストを許可する場合、同じくレスポンスの`Access-Control-Allow-Credentials`ヘッダーに`true`を割り当てる。その他、許可するHTTPメソッドやHTTPヘッダーを定義できる。例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、`405`ステータスでエラーレスポンスが返信される。
+: 次に、レスポンスの`Access-Control-Allow-Origin`ヘッダーに、許可された送信元オリジンを割り当てて返信する。
+
+     `Cookie`ヘッダーを持つリクエストを許可する場合、同じくレスポンスの`Access-Control-Allow-Credentials`ヘッダーに`true`を割り当てる。
+
+     その他、許可するHTTPメソッドやHTTPヘッダーを定義できる。
+
+     例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、`405`ステータスでエラーレスポンスが返信される。
 
 > ↪️ 参考：
 >
@@ -433,7 +455,13 @@ Access-Control-Allow-Headers: *
 
 #### ▼ Domain属性とh
 
-リクエストが`Cookie`ヘッダーを持つことを許可した場合、サブドメインのオリジンにも`Cookie`ヘッダーの送信を許可するか否かを制御できる。サブドメインのレスポンスの`Set-Cookie`ヘッダーにて、Domain属性にドメインが割り当てなかった場合は、ページを表示するサーバーのドメインにのみ`Cookie`ヘッダーを持つリクエストを許可でき、サブドメインへの送信を拒否できる。一方で、ドメインが割り当てた場合は、そのページからサブドメインに対しても、`Cookie`ヘッダーを持つリクエストを許可できる。ドメインではなく、オリジンであることに注意する。
+リクエストが`Cookie`ヘッダーを持つことを許可した場合、サブドメインのオリジンにも`Cookie`ヘッダーの送信を許可するか否かを制御できる。
+
+サブドメインのレスポンスの`Set-Cookie`ヘッダーにて、Domain属性にドメインが割り当てなかった場合は、ページを表示するサーバーのドメインにのみ`Cookie`ヘッダーを持つリクエストを許可でき、サブドメインへの送信を拒否できる。
+
+一方で、ドメインが割り当てた場合は、そのページからサブドメインに対しても、`Cookie`ヘッダーを持つリクエストを許可できる。
+
+ドメインではなく、オリジンであることに注意する。
 
 > ↪️ 参考：
 >

@@ -732,11 +732,11 @@ $ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
 
 #### ▼ -o yaml
 
-指定したKubernetesリソースの設定を取得し、`.yaml`形式で出力する。
+指定したKubernetesリソースの設定を取得し、`yaml`形式で出力する。
 
 **＊例＊**
 
-指定したSecretを`.yaml`形式で取得する。
+指定したSecretを`yaml`形式で取得する。
 
 正規表現と同様に、一部の文字列ではエスケープする必要がある。
 
@@ -1166,7 +1166,7 @@ $ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
 
 #### ▼ patchとは
 
-JSON/`.yaml`形式を入力値として、リソースの設定値を変更する。
+JSON/`yaml`形式を入力値として、リソースの設定値を変更する。
 
 ただし、マニフェストは変更されない。
 

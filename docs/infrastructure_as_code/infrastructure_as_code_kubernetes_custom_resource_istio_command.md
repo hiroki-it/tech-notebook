@@ -499,7 +499,7 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
 
-`.yaml`形式で取得すれば、より詳細な設定値を確認できる。
+`yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
 ```bash
 $ istioctl proxy-config cluster foo-pod \
@@ -585,7 +585,7 @@ unix://./etc/istio/proxy/XDS                         HEALTHY     OK             
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint
 
-`.yaml`形式で取得すれば、より詳細な設定値を確認できる。
+`yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
 ```bash
 $ istioctl proxy-config endpoints foo-pod \
@@ -714,7 +714,7 @@ NAME                         DOMAINS                                     MATCH  
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route
 
-`.yaml`形式で取得すれば、より詳細な設定値を確認できる。
+`yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
 ```bash
 $ istioctl proxy-config routes foo-pod \

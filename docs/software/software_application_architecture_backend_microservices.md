@@ -122,9 +122,9 @@ Googleではモノリポジトリによるマイクロサービスアーキテ�
 
 バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール (例：Kubernetes、Terraformなど) 、をそれぞれ異なるリポジトリで管理する。
 
-> ↪️ 参考：https://www.fourtheorem.com/blog/monorepo
-
 ![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/polyrepo.png)
+
+> ↪️ 参考：https://www.fourtheorem.com/blog/monorepo
 
 <br>
 
@@ -236,8 +236,6 @@ project/
 
 IaCツールにTerraformを使用した場合を示す。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_policy.html
-
 ```yaml
 # クラウドインフラのIaCツールを管理するリポジトリ
 infrastructure_repository/
@@ -280,13 +278,13 @@ CQRSでは、これはプロセスマネージャパターンとして知られ�
 
 **＊例＊**
 
-> ↪️ 参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
-
 ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。
 
 この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをマイクロサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信を行う。
 
 ![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png)
+
+> ↪️ 参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
 
 <br>
 

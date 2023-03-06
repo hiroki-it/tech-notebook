@@ -21,11 +21,11 @@ description: コマンド＠Flaskの知見を記録しています。
 
 あらかじめアプリケーションのエントリーポイントを環境変数の`FLASK_APP`に設定する必要がある。
 
-> ↪️ 参考：https://flask.palletsprojects.com/en/2.0.x/cli/
-
 ```bash
 $ export FLASK_APP=main.py
 ```
+
+> ↪️ 参考：https://flask.palletsprojects.com/en/2.0.x/cli/
 
 <br>
 
@@ -102,3 +102,5 @@ root          29       9  0 Feb21 pts/0    00:00:00 /usr/local/bin/python /usr/l
 root          69      29 82 09:47 pts/0    00:03:34 /usr/local/bin/python /usr/local/bin/flask run --reload
 root         397      60  0 09:51 pts/1    00:00:00 grep python
 ```
+
+<br>

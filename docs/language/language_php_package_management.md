@@ -45,11 +45,6 @@ $ php -r "unlink('composer-setup.php');"
 
 `require`関数を使用せずに、クラスの名前空間を`use`で指定するのみでファイルを読み込めるようになる。
 
-> ↪️ 参考：
->
-> - https://getcomposer.org/doc/04-schema.md#autoload
-> - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
-
 ```yaml
 {
 
@@ -73,11 +68,14 @@ $ php -r "unlink('composer-setup.php');"
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://getcomposer.org/doc/04-schema.md#autoload
+> - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
+
 #### ▼ config
 
 Composerのコマンドのオプションのデフォルト値を設定する。
-
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#config
 
 ```yaml
 {
@@ -95,11 +93,11 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
+> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#config
+
 #### ▼ require
 
 インストールされるパッケージとバージョンを設定する。
-
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#package-links
 
 ```bash
 # 個人的に一番おすすめ
@@ -169,11 +167,11 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
+> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#package-links
+
 #### ▼ scripts
 
 コマンドのエイリアスを設定する。
-
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#scripts
 
 ```yaml
 {
@@ -200,6 +198,8 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
+> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#scripts
+
 <br>
 
 #### ▼ version
@@ -207,8 +207,6 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 Composerのバージョンを設定する。
 
 インストールされているcomposerと齟齬がないようにする。
-
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#version
 
 ```yaml
 {
@@ -219,6 +217,8 @@ Composerのバージョンを設定する。
     ...
 }
 ```
+
+> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#version
 
 <br>
 
@@ -309,12 +309,12 @@ $ composer clear-cache
 
 補足として、ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
 
-> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#create-project
-
 ```bash
 # カレントディレクトリ配下にプロジェクトを作成する。
 $ composer create-project --prefer-dist laravel/lumen .
 ```
+
+> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#create-project
 
 <br>
 
@@ -340,8 +340,6 @@ Checking https connectivity to packagist: OK
 
 事前に設定された`autoload`プロパティを基に、クラスの名前空間とパスの対応関係を登録する。
 
-> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
-
 ```bash
 $ composer dump-autoload
 ```
@@ -366,17 +364,19 @@ $ composer dump-autoload
 }
 ```
 
+> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
+
 <br>
 
 ### init
 
 対話形式で`composer.json`ファイルを作成する。
 
-> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#init
-
 ```bash
 $ composer init
 ```
+
+> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#init
 
 <br>
 
@@ -386,14 +386,14 @@ $ composer init
 
 事前に`composer.json`ファイルに書き込まれたパッケージを、`composer.lock`ファイルに書き込まれたバージョンでインストールする。
 
+```bash
+$ composer install
+```
+
 > ↪️ 参考：
 >
 > - https://getcomposer.org/doc/03-cli.md#install-i
 > - https://prograshi.com/framework/laravel/require-update-install/
-
-```bash
-$ composer install
-```
 
 #### ▼ -vvv
 
@@ -413,7 +413,9 @@ $ composer install --no-dev
 
 #### ▼ --prefer-dist
 
-Composerの配布サイトからインストールする。`prefer-source`オプションを使用するよりも高速でインストールできる。デフォルトでdistを使用するため、実際は宣言しなくても問題ない。
+Composerの配布サイトからインストールする。`prefer-source`オプションを使用するよりも高速でインストールできる。
+
+デフォルトでdistを使用するため、実際は宣言しなくても問題ない。
 
 ```bash
 $ composer install --prefer-dist
@@ -515,15 +517,15 @@ $ composer <スクリプト名>
 
 いずれかのパッケージで新バージョンがリリースされたが、これに不具合があった可能性が高い。
 
-> ↪️ 参考：
->
-> - https://getcomposer.org/doc/03-cli.md#update
-> - https://prograshi.com/framework/laravel/require-update-install/
-
 ```bash
 # 必要なパッケージをcomposer.jsonファイルに追加した上で実行する。
 $ composer update
 ```
+
+> ↪️ 参考：
+>
+> - https://getcomposer.org/doc/03-cli.md#update
+> - https://prograshi.com/framework/laravel/require-update-install/
 
 #### ▼ -vvv
 
@@ -622,3 +624,5 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 ### 切り戻し作業の考慮
 
 本番環境のバージョンアップ後に想定外の問題が起こることも考慮して、バージョンアップの手順自体に切り戻し作業を組み込む必要がある。
+
+<br>

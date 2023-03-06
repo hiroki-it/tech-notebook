@@ -92,8 +92,6 @@ zlib
 
 注意点として、実際に読み込まれているか否かは、`get_loaded_extensions`メソッドで確認できる。
 
-> ↪️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
-
 ```bash
 $ php -r 'print_r(get_loaded_extensions());'
 
@@ -111,13 +109,13 @@ Array
 )
 ```
 
+> ↪️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
+
 <br>
 
 ### -r
 
 コマンドラインからコードを実行できる。
-
-> ↪️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
 **＊例＊**
 
@@ -143,6 +141,8 @@ $ php -r '
     echo $foo;
   '
 ```
+
+> ↪️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
 <br>
 
@@ -179,3 +179,5 @@ zend.detect_unicode => On => On
 zend.signal_check => Off => Off
 zend.exception_ignore_args => Off => Off
 ```
+
+<br>

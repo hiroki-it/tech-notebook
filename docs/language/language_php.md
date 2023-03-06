@@ -98,8 +98,6 @@ PHPの起動時の値を設定する。
 
 設定ファイルを切り分ける場合、`/usr/local/etc/php/conf.d`ディレクトリ配下に`custom.php.ini`ファイルの名前で配置する。
 
-> ↪️ 参考：https://www.php.net/manual/ja/configuration.file.php
-
 ```bash
 $ php --ini
 
@@ -110,6 +108,8 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 /usr/local/etc/php/conf.d/docker-php-ext-pdo_mysql.ini,
 /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 ```
+
+> ↪️ 参考：https://www.php.net/manual/ja/configuration.file.php
 
 #### ▼ 本番/開発環境用`php.ini`ファイル
 
@@ -189,8 +189,6 @@ mbstring.language = Japanese
 
 元の値をコメントアウトで示す。
 
-> ↪️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
-
 ```ini
 zend.exception_ignore_args = on
 
@@ -246,6 +244,8 @@ opcache.huge_code_pages = 0
 opcache.preload = /var/www/preload.php
 opcache.preload_user = www-data
 ```
+
+> ↪️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
 <br>
 

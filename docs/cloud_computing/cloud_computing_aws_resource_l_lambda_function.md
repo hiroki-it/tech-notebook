@@ -169,8 +169,6 @@ Lamda関数を実行するための関数。
 
 もし含まれていない場合は、Lambdaで内部エラーが起こる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
-
 ```go
 package main
 
@@ -194,6 +192,8 @@ func main() {
 	lambda.Start(HandleRequest)
 }
 ```
+
+> ↪️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
 
 #### ▼ パラメータ
 

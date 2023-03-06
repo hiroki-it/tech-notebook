@@ -164,13 +164,13 @@ description: システム品質特性＠システムの知見を記録してい�
 
 #### ▼ 高可用性クラスターシステムとは
 
-![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
-
 `1`個の処理を分担できる複数の稼働中ノードと待機中ノードを設置する冗長化方法のこと。
 
 平常時は稼働中ノードのみにルーティングするようにしておき、`1`個の処理を分担させる。
 
 稼働中ノードで障害が発生した場合、待機中ノードを稼働中ノードに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
+
+![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
 
 > ↪️ 参考：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
 

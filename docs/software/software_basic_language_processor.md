@@ -141,9 +141,9 @@ exeファイルとなる。
 
 命令の結果はメモリに保管される。
 
-> ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
-
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interpreted_language.png)
+
+> ↪️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 <br>
 

@@ -394,17 +394,29 @@ Istiodコントロールプレーンを使用する代わりに、外部の中�
 
 ### メトリクス
 
-記入中...
+#### ▼ Prometheus
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/metrics/
+IstioによるEnvoyは、メトリクスを収集し、PrometheusやGrafanaに送信する。
+
+> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
 
 <br>
 
 ### ログ
 
-記入中...
+#### ▼ 標準出力
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/
+IstioによるEnvoyは、アクセスログを収集し、標準出力に出力する。
+
+アクセスログにデフォルトで役立つ値が出力される。
+
+> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/access-log/
+
+#### ▼ OpenTelemetryのコレクター
+
+IstioによるEnvoyは、アクセスログを収集し、OpenTelemetryのコレクターに出力する。
+
+> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
 <br>
 

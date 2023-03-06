@@ -117,7 +117,7 @@ metadata:
 
 #### ▼ toYamlとは
 
-`.yaml`形式でテンプレートを出力する。
+`yaml`形式でテンプレートを出力する。
 
 `values`ファイルの複数のキー値を出力する場合に使用する。
 
@@ -241,7 +241,7 @@ bar: bar
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-`fromYaml`アクションを使用して、テキスト形式を`.yaml`形式に変換する。
+`fromYaml`アクションを使用して、テキスト形式を`yaml`形式に変換する。
 
 その後、`range`アクションでキーと値を取得し、Secretのデータとして割り当てる。
 
@@ -338,7 +338,7 @@ data:
 
 #### ▼ fromYamlとは
 
-テキスト形式を`.yaml`形式に変換する。
+テキスト形式を`yaml`形式に変換する。
 
 **＊実装例＊**
 
@@ -357,7 +357,7 @@ bar: bar
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-`fromYaml`アクションを使用して、テキスト形式を`.yaml`形式に変換する。
+`fromYaml`アクションを使用して、テキスト形式を`yaml`形式に変換する。
 
 ```yaml
 {{ $decoded := .Values.config | b64dec | fromYaml }}

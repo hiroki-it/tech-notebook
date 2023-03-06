@@ -282,7 +282,7 @@ $ aws iam list-users --output json > data.json
 
 #### ▼ yaml
 
-`.yaml`形式で取得する。
+`yaml`形式で取得する。
 
 ```bash
 $ aws iam list-users --output yaml > data.yaml
