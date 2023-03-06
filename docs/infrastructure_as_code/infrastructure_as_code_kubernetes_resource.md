@@ -543,11 +543,11 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 #### ▼ Ingressコントローラーとは
 
-![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
-
 Ingressコントローラーは、Ingressの設定に基づいてNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
 
 Kubernetesの周辺ツール (Prometheus、AlertManager、Grafana、ArgoCD) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+
+![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
 
 > ↪️ 参考：
 >
@@ -590,11 +590,11 @@ Ingressコントローラーは、『`***-controller-admission`』というServi
 
 #### ▼ Serviceとは
 
-![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png)
-
 Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。
 
 マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
+
+![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png)
 
 > ↪️ 参考：
 >

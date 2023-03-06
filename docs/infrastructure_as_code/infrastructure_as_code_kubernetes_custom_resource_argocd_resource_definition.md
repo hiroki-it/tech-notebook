@@ -1447,6 +1447,8 @@ Kubernetesリソースや子Applicationが親Applicationを識別するための
 
 デフォルトは`app.kubernetes.io/instance`キーであり、コンフリクトしやすいキー名なため、変更した方が良い。
 
+ラベルのキー名は`1`個しか設定できない。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap

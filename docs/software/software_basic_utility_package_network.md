@@ -518,8 +518,6 @@ traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最�
 
 アスタリスクは検証が実行中であることを表し、アスタリスクのまま変わらない場合は、それ以降のルーターに通信が届いていない可能性がある。
 
-> ↪️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
-
 ```bash
 $ traceroute google.com
 
@@ -533,6 +531,8 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
  6  *  *  *
 ...
 ```
+
+> ↪️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
 
 <br>
 
@@ -558,11 +558,6 @@ IPアドレスの名前解決を実行せずに、ルーターの送信元IPア�
 
 ネットワークの境目がわかりやすくなる。
 
-> ↪️ 参考：
->
-> - https://webkaru.net/linux/traceroute-command/
-> - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
-
 **＊例＊**
 
 ```bash
@@ -579,6 +574,11 @@ traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
  8  209.85.251.239  2.383 ms  2.740 ms  2.400 ms
  9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms # 最後のルーター
 ```
+
+> ↪️ 参考：
+>
+> - https://webkaru.net/linux/traceroute-command/
+> - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 
 <br>
 
@@ -598,7 +598,7 @@ $ traceroute *.*.*.* -p 9000
 
 ### -T
 
-宛先にTCPプロトコルでパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
+宛先にTCPプロトコル (例：HTTP、HTTPS) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
 
 `traceroute`コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。
 
@@ -638,7 +638,7 @@ $ tracepath -n google.com
 
 #### ▼ tcptracerouteとは
 
-tracerouteコマンドのバージョンによっては、`-T`オプションがない場合があり、代わりとして`tcptraceroute`コマンドを使用する。
+`traceroute`コマンドのバージョンによっては、`-T`オプションがない場合があり、代わりとして`tcptraceroute`コマンドを使用する。
 
 > ↪️ 参考：https://succzero.hatenablog.com/entry/2013/09/01/181615
 

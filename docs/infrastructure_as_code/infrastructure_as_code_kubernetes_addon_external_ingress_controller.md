@@ -17,17 +17,16 @@ description: 外部Ingressコントローラー＠ワーカーNodeのアドオ�
 
 ### 外部Ingressコントローラーの種類
 
-Ingressコントローラーや、それに相当するもの (AWS LBコントローラー、Istio IngressGateway、Istio Ingress) が必要である。
+Ingressコントローラーや、それに相当するもの (AWS LBコントローラー、Istio Ingressコントローラー) が必要である。
 
-| コントローラー名                                              | 開発環境 | 本番環境 |
-| ------------------------------------------------------------- | :------: | :------: |
-| Nginx Ingressコントローラー                                   |    ✅    |    ✅    |
-| minikubeのingressアドオン (実体はNginx Ingressコントローラー) |    ✅    |          |
-| AWS LBコントローラー                                          |          |    ✅    |
-| GCP CLBコントローラー                                         |          |    ✅    |
-| Istio IngressGateway (NodePort Service、LoadBalancer Service) |    ✅    |    ✅    |
-| Istio Ingressコントローラー                                   |    ✅    |    ✅    |
-| ...                                                           |   ...    |   ...    |
+| コントローラー名                                              | Ingressの実体        | 開発環境 | 本番環境 |
+| ------------------------------------------------------------- | -------------------- | :------: | :------: |
+| Nginx Ingressコントローラー                                   | Nginx                |    ✅    |    ✅    |
+| minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                |    ✅    |          |
+| AWS LBコントローラー                                          | AWS ALB              |          |    ✅    |
+| GCP CLBコントローラー                                         | GCP CLB              |          |    ✅    |
+| Istio Ingressコントローラー                                   | Istio IngressGateway |    ✅    |    ✅    |
+| ...                                                           | ...                  |   ...    |   ...    |
 
 > ↪️ 参考：
 >
@@ -41,6 +40,8 @@ Ingressコントローラーや、それに相当するもの (AWS LBコント�
 ## 02. AWS LBコントローラー
 
 ### AWS LBコントローラーとは
+
+![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
 AWS LBコントローラーは、コントローラーの本体であるPod、TargetGroupBinding、から構成されている。
 
@@ -61,8 +62,6 @@ Pod
 `alb`が宣言されたIngressClassを検知して、AWS上に専用のALBを自動的にプロビジョニングする。
 
 また、TargetGroupBindingを介して、ALBのターゲットグループとIngressを紐づける。
-
-![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
 > ↪️ 参考：
 >
@@ -494,5 +493,13 @@ spec:
 ```
 
 > ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
+
+<br>
+
+## 03. Istio Ingressコントローラー
+
+Gateway、VirtualService、DestinationRoute、を個別に定義した場合と同様にして、IngressGatewayを作成する。
+
+> ↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
 
 <br>

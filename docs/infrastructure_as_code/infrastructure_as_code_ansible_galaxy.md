@@ -29,8 +29,6 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 `meta`ディレクトリ配下に、モジュールを宣言する設定ファイルを配置する。
 
-> ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
-
 ```yaml
 repository/
 ├── roles
@@ -40,6 +38,8 @@ repository/
 │   │   └── main.yml
 │   │
 ```
+
+> ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
 #### ▼ main.yml
 
@@ -59,8 +59,6 @@ dependencies: []
 
 `meta`ディレクトリ配下に、モジュールを宣言する設定ファイルを配置する。
 
-> ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
-
 ```yaml
 repository/
 ├── roles
@@ -71,9 +69,10 @@ repository/
 │   │
 │   └── requirements.yml
 │
----
 └── playbook.yml
 ```
+
+> ↪️ 参考：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
 #### ▼ requirements.yml
 
@@ -102,10 +101,10 @@ repository/
 
 Ansibleのコントロールノードで`ansible-galaxy`コマンドを実行し、管理対象ノードの`~/.ansible/roles`ディレクトリ配下にモジュールをインストールする。
 
-> ↪️ 参考：https://note.com/shift_tech/n/n087a9db743d1
-
 ```bash
 $ ansible-galaxy install <モジュール名>
 ```
+
+> ↪️ 参考：https://note.com/shift_tech/n/n087a9db743d1
 
 <br>

@@ -112,9 +112,9 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 この経路を、クリティカルパスという。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
-
 ![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p509.jpg)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ 最早結合点時刻
 
@@ -122,17 +122,17 @@ description: プロジェクト管理＠ソフトウェア開発手法の知見�
 
 クリティカルパスに影響されるので注意。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
-
 ![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-1.jpg)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ 最遅結合点時刻
 
 全体的な工程の中で、任意の結合点に取り掛かるために必要な最多日数のこと。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
-
 ![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-2.jpg)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
