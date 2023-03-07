@@ -239,6 +239,57 @@ plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 
 <br>
 
+## 03. クレデンシャル情報
+
+### 必要な情報
+
+`terraform`コマンドでクラウドプロバイダーとパケットを送受信ためには、クラウドプロバイダーへの認可スコープが必要にある。
+
+<br>
+
+### 設定方法
+
+#### ▼ ハードコーディングによる設定
+
+リージョンの他、アクセスキーIDとシークレットアクセスキーをハードコーディングで設定する。
+
+誤ってコミットしてしまう可能性があるため、ハードコーディングしないようにする。
+
+**＊実装例＊**
+
+```terraform
+# @ルートモジュール
+
+terraform {
+  required_version = "0.13.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.0"
+    }
+  }
+
+  backend "s3" {
+    bucket     = "prd-foo-tfstate-bucket"
+    key        = "terraform.tfstate"
+    region     = "ap-northeast-1"
+    # アクセスキーID
+    access_key = "*****"
+    # シークレットアクセスキー
+    secret_key = "*****"
+  }
+}
+
+provider "aws" {
+  region     = "ap-northeast-1"
+  # アクセスキーID
+  access_key = "*****"
+  # シークレットアクセスキー
+  secret_key = "*****"
+}
+```
+
 #### ▼ `credentials`ファイルによる設定
 
 クレデンシャル情報は、`~/.aws/credentials`ファイルに記載されている。
@@ -342,61 +393,9 @@ terraform {
   }
 }
 
-# リージョン、アクセスキーID、シークレットアクセスキーは不要
+# 環境変数から、アクセスキーID、シークレットアクセスキーを読み込む
+# リージョン、アクセスキーID、シークレットアクセスキー、の設定は不要
 provider "aws" {}
-```
-
-<br>
-
-## 03. クレデンシャル情報
-
-### 必要な情報
-
-`terraform`コマンドでクラウドプロバイダーとパケットを送受信ためには、クラウドプロバイダーへの認可スコープが必要にある。
-
-<br>
-
-### 設定方法
-
-#### ▼ ハードコーディングによる設定
-
-リージョンの他、アクセスキーIDとシークレットアクセスキーをハードコーディングで設定する。
-
-誤ってコミットしてしまう可能性があるため、ハードコーディングしないようにする。
-
-**＊実装例＊**
-
-```terraform
-# @ルートモジュール
-
-terraform {
-  required_version = "0.13.5"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "3.0"
-    }
-  }
-
-  backend "s3" {
-    bucket     = "prd-foo-tfstate-bucket"
-    key        = "terraform.tfstate"
-    region     = "ap-northeast-1"
-    # アクセスキーID
-    access_key = "*****"
-    # シークレットアクセスキー
-    secret_key = "*****"
-  }
-}
-
-provider "aws" {
-  region     = "ap-northeast-1"
-  # アクセスキーID
-  access_key = "*****"
-  # シークレットアクセスキー
-  secret_key = "*****"
-}
 ```
 
 <br>

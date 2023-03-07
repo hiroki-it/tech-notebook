@@ -62,7 +62,7 @@ $ terraform apply -destroy -var-file=foo.tfvars
 
 デフォルト値は`10`である。
 
-クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。
+クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を`5`ほどに小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。
 
 ```bash
 $ terraform apply \
@@ -76,6 +76,8 @@ $ terraform apply \
 $ export TF_CLI_ARGS_plan="--parallelism=50"
 $ export TF_CLI_ARGS_apply="--parallelism=50"
 ```
+
+> ↪️ 参考：https://developer.hashicorp.com/terraform/cli/commands/apply#parallelism-n
 
 #### ▼ -refresh-only
 
