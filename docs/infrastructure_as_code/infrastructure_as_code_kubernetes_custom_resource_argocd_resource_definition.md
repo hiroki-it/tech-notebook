@@ -722,11 +722,6 @@ ID  DATE                           REVISION
 
 チャートリポジトリとして扱うために、リポジトリのルート直下に`index.yaml`ファイルと`.tgz`ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。
 
-> ↪️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
-> - https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -739,13 +734,16 @@ spec:
     repoURL: https://github.com/hiroki.hasegawa/foo-repository
 ```
 
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+> - https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
+
 #### ▼ targetRevision
 
 監視対象のチャートレジストリ内のリポジトリにあるチャートのバージョンタグを設定する。
 
 バージョンタグは、`Chart.yaml`ファイルの`version`キーから確認する。
-
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -757,6 +755,8 @@ spec:
   source:
     targetRevision: <バージョンタグ>
 ```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 <br>
 

@@ -773,23 +773,23 @@ GitOpsの場合、CIパイプライン上だけでなく、CDパイプライン�
 本番環境に対して、手動またはCDツールを使用して `kubectl apply`コマンドを実行する。
 
 | 採用可能な戦略             | 方法                                                                                                                                                                                                   | 推奨/非推奨 |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| インプレースデプロイメント | KubernetesのDeploymentのReplace戦略を採用する。非推奨である。ダウンタイムが発生する。<br>↪️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/#toc2                                          | 非推奨      |
-| ローリングアップデート     | KubernetesのDeploymentのRollingUpdate戦略を採用する。                                                                                                                                                  | 推奨        |
-| BGデプロイメント           | Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツール (例：ArgoCD) のBGデプロイメント機能を採用する。<br>↪️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#blue-green      | 推奨        |
-| カナリアリリース           | Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：ArgoCD) のカナリアリリース機能を採用する。<br>↪️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#canary                       | 推奨        |
-| Progressive Delivery       | Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール (例：ArgoCD) のProgressive Delivery機能を採用する。<br>↪️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery | 推奨        |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------: |
+| インプレースデプロイメント | KubernetesのDeploymentのReplace戦略を採用する。非推奨である。ダウンタイムが発生する。<br>↪️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/#toc2                                          |   非推奨    |
+| ローリングアップデート     | KubernetesのDeploymentのRollingUpdate戦略を採用する。                                                                                                                                                  |    推奨     |
+| BGデプロイメント           | Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツール (例：ArgoCD) のBGデプロイメント機能を採用する。<br>↪️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#blue-green      |    推奨     |
+| カナリアリリース           | Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：ArgoCD) のカナリアリリース機能を採用する。<br>↪️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#canary                       |    推奨     |
+| Progressive Delivery       | Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール (例：ArgoCD) のProgressive Delivery機能を採用する。<br>↪️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery |    推奨     |
 
 <br>
 
 ### ロールバック
 
 | デプロイ方法の採用状況                           | 方法                                                                     | 推奨/非推奨 |
-| ------------------------------------------------ | ------------------------------------------------------------------------ | ----------- |
-| DeploymentのRollingUpdate戦略を採用している場合  | 過去のリリースタグ (リビジョン) を再デプロイする。                       | 非推奨      |
-| CDツールのBGデプロイメントを採用している場合     | 削除せずに残してある旧環境に再ルーティングする。手順は、CDツールによる。 | 推奨        |
-| CDツールのカナリアリリースを採用している場合     | 旧環境へのルーティングの重みづけを100%にする。手順は、CDツールによる。   | 推奨        |
-| CDツールのProgressive Deliveryを採用している場合 | 削除せずに残してある旧環境に再ルーティングする。手順はCDツールによる。   | 推奨        |
+| ------------------------------------------------ | ------------------------------------------------------------------------ | :---------: |
+| DeploymentのRollingUpdate戦略を採用している場合  | 過去のリリースタグ (リビジョン) を再デプロイする。                       |   非推奨    |
+| CDツールのBGデプロイメントを採用している場合     | 削除せずに残してある旧環境に再ルーティングする。手順は、CDツールによる。 |    推奨     |
+| CDツールのカナリアリリースを採用している場合     | 旧環境へのルーティングの重みづけを100%にする。手順は、CDツールによる。   |    推奨     |
+| CDツールのProgressive Deliveryを採用している場合 | 削除せずに残してある旧環境に再ルーティングする。手順はCDツールによる。   |    推奨     |
 
 <br>
 

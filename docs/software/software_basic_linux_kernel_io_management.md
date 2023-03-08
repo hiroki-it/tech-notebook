@@ -67,9 +67,9 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 プロセスごとに存在する。
 
-> ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
-
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stdin_stdout_stderr.png)
+
+> ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
 
 #### ▼ 標準出力に全て出力
 
@@ -109,11 +109,11 @@ $ cat /proc/1/fd/1
 
 パイプラインで`tee`コマンドを繋ぐと、標準出力とファイルの両方に出力できる。
 
-> ↪️ 参考：https://glorificatio.org/archives/2903
-
 ```bash
 $ echo "text" | tee stdout.log
 ```
+
+> ↪️ 参考：https://glorificatio.org/archives/2903
 
 <br>
 
@@ -243,9 +243,9 @@ $ echo 'Hello World' >| stdout.txt
 
 その後、パイプラインから出力内容をそのまま受け取り、別のプロセスに再び入力する。
 
-> ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
-
 ![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pipeline_shell.png)
+
+> ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 <br>
 
@@ -274,8 +274,6 @@ $ find ./* -name "*.png" -type f -printf "%s\n" \
 
 パケットのうちで、`443`番ポートに送信しているもののみを取得し、出力結果の３列目のみをフィルタリングする。
 
-> ↪️ 参考：https://it-ojisan.tokyo/awk-f/
-
 ```bash
 $ tcpdump dst port 443 \
     | awk -F ' ' '{print $3}'
@@ -284,6 +282,8 @@ $ tcpdump dst port 443 \
 *.*.*.*
 ...
 ```
+
+> ↪️ 参考：https://it-ojisan.tokyo/awk-f/
 
 #### ▼ echoプロセスに対する入力
 

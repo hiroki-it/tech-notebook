@@ -145,11 +145,6 @@ repository/
 ...
 ```
 
-> ↪️ 参考：
->
-> - https://www.terraform.io/language/values/outputs#output-values
-> - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
-
 **＊実装例＊**
 
 ルートモジュール内で`output`ブロックを使用したとする。
@@ -202,6 +197,11 @@ resource "bar" "this" {
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://www.terraform.io/language/values/outputs#output-values
+> - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
+
 #### ▼ ローカルモジュール内で使用する場合
 
 ローカルモジュール内の`resource`ブロックが持つ値を、ルートモジュールに出力する。
@@ -217,11 +217,6 @@ repository/
 │   │   ├── variables.tf
 ...
 ```
-
-> ↪️ 参考：
->
-> - https://www.terraform.io/language/values/outputs#output-values
-> - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
 **＊実装例＊**
 
@@ -256,6 +251,11 @@ resource "foo" "this" {
     foo_id = module.alb.alb_zone_id
 }
 ```
+
+> ↪️ 参考：
+>
+> - https://www.terraform.io/language/values/outputs#output-values
+> - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
 #### ▼ リモートモジュール内で使用する場合
 

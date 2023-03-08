@@ -246,7 +246,11 @@ metadata:
   name: foo.example.com
 spec:
   names:
-    plural: foo
+    plural: foos
+```
+
+```bash
+$ kubectl get foos
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
@@ -287,7 +291,7 @@ spec:
 ```
 
 ```bash
-$ kubectl get foo
+$ kubectl get fo
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
@@ -380,6 +384,8 @@ spec:
               properties:
                 # カスタムリソースの.spec.messageキーに文字列を設定できるようになる。
                 message:
+                  # 説明文
+                  description: Echo message
                   # string型
                   type: string
 ```

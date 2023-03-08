@@ -489,8 +489,6 @@ spec:
 
 Prometheusのローカルストレージの保持期間を設定する。
 
-> ↪️ 参考：https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
-
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
@@ -502,6 +500,8 @@ metadata:
 spec:
   retention: 31d
 ```
+
+> ↪️ 参考：https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
 
 <br>
 
@@ -746,8 +746,6 @@ spec:
 
 Serviceの待ち受けるパスを設定する。
 
-> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
-
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -759,11 +757,11 @@ spec:
     - path: /metrics
 ```
 
+> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+
 #### ▼ port
 
 Serviceの待ち受けるポート名を設定する。
-
-> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -775,6 +773,8 @@ spec:
   endpoints:
     - port: http-foo
 ```
+
+> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 #### ▼ scheme
 
@@ -833,8 +833,6 @@ spec:
 
 特定のNamespaceを収集対象として設定する。
 
-> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
-
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -855,6 +853,8 @@ metadata:
   namespace: kube-system
 ```
 
+> ↪️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+
 <br>
 
 ### .spec.selector
@@ -864,11 +864,6 @@ metadata:
 ![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor_match-labels.png)
 
 収集の対象とするServiceに付与された`.metadata.labels`キーを設定する。
-
-> ↪️ 参考：
->
-> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
-> - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -892,6 +887,11 @@ metadata:
     app.kubernetes.io/managed-by: prometheus-operator
     app.kubernetes.io/app: foo-service
 ```
+
+> ↪️ 参考：
+>
+> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
 
 <br>
 

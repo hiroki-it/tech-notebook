@@ -48,6 +48,8 @@ statefulset.apps/paylab-argocd-application-controller   1/1     119d
 
 #### ▼ argocd-serverとは
 
+![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argocd-server_dashboard.png)
+
 クライアント (`argocd`コマンド実行者) のエンドポイントやダッシュボードを公開する。
 
 自身に対するリクエストに応じて、kube-apiserverにリクエストを送信し、ArgoCDのApplicationを操作する。

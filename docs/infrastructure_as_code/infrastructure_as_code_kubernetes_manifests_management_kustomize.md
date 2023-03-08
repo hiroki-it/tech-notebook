@@ -13,6 +13,42 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 <br>
 
+## 01. `kustomize.yaml`ファイルの使用
+
+### 使用方法
+
+`kubectl`コマンドで`-k`オプションを有効化すると、`kustomize.yaml`ファイルを使用できる。
+
+`kustomize.yaml`ファイルのあるディレクトリを指定する。
+
+<br>
+
+### -k
+
+`kustomize.yaml`ファイルを使用して、`kubectl`コマンドを実行する。
+
+```bash
+$ kubectl diff -k ./ > kustomize.diff
+
+$ kubectl apply -k ./
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+
+<br>
+
+### kustomize
+
+`kustomize.yaml`ファイルを使用して、テンプレートからマニフェストを作成する。
+
+```bash
+$ kubectl kustomize ./
+```
+
+> ↪️ 参考：https://note.com/shift_tech/n/nd7f17e51d592
+
+<br>
+
 ## 01. `bases`ディレクトリ
 
 ### `kustomize.yaml`ファイル
@@ -20,18 +56,6 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 #### ▼ `kustomize.yaml`ファイルとは
 
 `base`ディレクトリ配下にあるファイルの処理方法を設定する。
-
-`kubectl`コマンドで`-k`オプションを有効化すると、`kustomize.yaml`ファイルを使用してマニフェストを生成できる。
-
-`kustomize.yaml`ファイルのあるディレクトリを指定する。
-
-```bash
-$ kubectl diff -k ./
-
-$ kubectl apply -k ./
-```
-
-> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 #### ▼ resources
 

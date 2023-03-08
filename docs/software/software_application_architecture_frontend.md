@@ -36,9 +36,9 @@ SPAでは、ページ全体の静的ファイルをリクエストするのは�
 
 ２回目以降は、ページ部分的にリクエストを行い、サーバー側からJSONを受け取っていく。
 
-> ↪️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
-
 ![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SPアプリにおけるデータ通信の仕組み.png)
+
+> ↪️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 
 <br>
 

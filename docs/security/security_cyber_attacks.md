@@ -45,9 +45,11 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 #### ▼ セッションID固定化とは
 
-> ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
+記入中...
 
 ![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-fixation.png)
+
+> ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
 
 <br>
 
@@ -120,6 +122,8 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 ![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/brute-force-attack_reverse-brute-force-attack.png)
 
 #### ▼ パスワードのパターン数
+
+記入中...
 
 ![パスワードのパターン数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パスワードのパターン数.png)
 

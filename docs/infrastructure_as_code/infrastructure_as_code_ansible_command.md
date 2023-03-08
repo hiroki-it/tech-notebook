@@ -22,7 +22,7 @@ ansible-vaultプラグインによって暗号化されたファイルを使用�
 > ↪️ 参考：<https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
 
 ```bash
-ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
+$ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
 ```
 
 **＊例＊**
@@ -30,7 +30,7 @@ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク�
 全てのインベントリーを指定し、また暗号化済みファイルを復号化し、プロビジョニングを実行する。
 
 ```bash
-ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
+$ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
 
 <br>
@@ -46,7 +46,7 @@ inventoryファイルを指定する。
 > ↪️ 参考：<https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
 
 ```bash
-ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
+$ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
 ```
 
 **＊例＊**
@@ -54,7 +54,7 @@ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク�
 fooインベントリのみを指定して、プロビジョニングを実行する。
 
 ```bash
-ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
+$ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 ```
 
 **＊例＊**
@@ -62,7 +62,7 @@ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 全てのインベントリーを指定して、プロビジョニングを実行する。
 
 ```bash
-ansible-playbook foo-playbook.yml -i ./inventories
+$ ansible-playbook foo-playbook.yml -i ./inventories
 ```
 
 <br>
@@ -76,7 +76,7 @@ ansible-playbook foo-playbook.yml -i ./inventories
 > ↪️ 参考：<https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
 
 ```bash
-ansible-vault decrypt parameters.yml
+$ ansible-vault decrypt parameters.yml
 ```
 
 <br>
@@ -118,13 +118,13 @@ $ANSIBLE_VAULT;1.1;AES256
 > ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 ```bash
-ansible-playbook -i <inventoryファイル/ディレクトリ> --list
+$ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
 ```
 
 **＊例＊**
 
 ```bash
-ansible-inventory -i ./inventories/inventory --list
+$ ansible-inventory -i ./inventories/inventory --list
 ```
 
 #### ▼ -y
@@ -134,13 +134,13 @@ ansible-inventory -i ./inventories/inventory --list
 > ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 ```bash
-ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
+$ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
 ```
 
 **＊例＊**
 
 ```bash
-ansible-inventory -i ./inventories/inventory --list -y
+$ ansible-inventory -i ./inventories/inventory --list -y
 ```
 
 <br>

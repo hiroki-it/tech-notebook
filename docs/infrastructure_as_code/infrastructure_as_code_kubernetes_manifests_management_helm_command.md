@@ -94,8 +94,6 @@ $ helm get <Helmリリース名>
 
 指定したHelmリリースの履歴を取得する。
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_history/
-
 ```bash
 $ helm history <Helmリリース名>
 
@@ -104,6 +102,8 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 <Helmリリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-1.1.0  1.1.0    Rolled back to 1
 <Helmリリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully
 ```
+
+> ↪️ 参考：https://helm.sh/docs/helm/helm_history/
 
 <br>
 
@@ -114,8 +114,6 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 チャートなどを指定し、Kubernetesリソースとして作成する。
 
 チャートへのパスを指定する以外にも、指定方法には種類がある。
-
-> ↪️ 参考：https://helm.sh/docs/helm/helm_install/
 
 ```bash
 $ helm install <Helmリリース名> <チャートへのパス>
@@ -128,6 +126,8 @@ $ helm install <Helmリリース名> <チャートへのパス>
 | チャートリポジトリURL                                                   | `https://example.com/foo-chart`                             |                                                                                                                                                                      |
 | `<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>` | `https://example.com/foo-chart foo-registry/foo-repository` |                                                                                                                                                                      |
 | チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values`ファイルを使用する場合、`values`ファイルはチャートアーカイブ (`.tgz`形式ファイル) の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
+
+> ↪️ 参考：https://helm.sh/docs/helm/helm_install/
 
 #### ▼ --disable-openapi-validation
 
@@ -244,14 +244,14 @@ Helmリリースの一覧を取得する。
 
 チャートは、バージョンによって中身の`.yaml`ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_list/
-
 ```bash
 $ helm list
 
 NAME         VERSION   UPDATED                   STATUS    CHART
 <Helmリリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-<バージョンタグ> # <-- チャートのバージョンがわかる。
 ```
+
+> ↪️ 参考：https://helm.sh/docs/helm/helm_list/
 
 <br>
 
@@ -267,13 +267,13 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 複数のチャートを指定できる。
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_package/
-
 ```bash
 $ helm package <fooチャートへのパス> <barチャートへのパス> <bazチャートへのパス>
 
 Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 ```
+
+> ↪️ 参考：https://helm.sh/docs/helm/helm_package/
 
 #### ▼ -d
 
@@ -335,12 +335,12 @@ $ helm pull <チャートリポジトリURL> -d <プル先のディレクトリ>
 
 OCIリポジトリからもプルできる。
 
-> ↪️ 参考：https://helm.sh/blog/storing-charts-in-oci/
-
 ```bash
 # AWSの場合
 $ helm pull oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
+
+> ↪️ 参考：https://helm.sh/blog/storing-charts-in-oci/
 
 #### ▼ --version
 
@@ -408,8 +408,6 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 `helm`コマンドの実行環境にチャートリポジトリを登録する。
 
-> ↪️ 参考：https://knowledge.sakura.ad.jp/23603/
-
 ```bash
 $ helm repo add <チャートリポジトリ名> <チャートリポジトリURL>
 
@@ -423,6 +421,8 @@ $ helm show all <チャートリポジトリ名>
 
 Error: failed to download "<チャートリポジトリ名>"
 ```
+
+> ↪️ 参考：https://knowledge.sakura.ad.jp/23603/
 
 #### ▼ index
 
@@ -471,8 +471,6 @@ $ helm repo remove foo-chart
 
 チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。
 
-> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
-
 ```bash
 $ helm repo update <チャートリポジトリ名>
 
@@ -480,6 +478,8 @@ Hang tight while we grab the latest from your chart repositories...
 ...
 Update Complete. ⎈Happy Helming!⎈
 ```
+
+> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
 
 <br>
 
@@ -546,8 +546,6 @@ version: <バージョンタグ>
 
 `values`ファイル本体は、チャートリポジトリで参照できる。
 
-> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
-
 ```bash
 $ helm show values <チャート名>
 
@@ -557,6 +555,8 @@ $ helm show values <チャート名>
 ```bash
 $ helm show values foo-chart
 ```
+
+> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
 
 <br>
 
