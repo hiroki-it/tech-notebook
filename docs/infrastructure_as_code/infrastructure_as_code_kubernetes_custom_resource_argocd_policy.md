@@ -13,50 +13,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 <br>
 
-## 01. リポジトリ構成ポリシー
-
-### リポジトリ分割のメリット
-
-リポジトリを分割することにより、以下のメリットがある。
-
-- 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
-
-<br>
-
-### 各Applicationを異なるリポジトリで管理
-
-監視対象リポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。
-
-```yaml
-repository/
-├── tes/
-│   └── foo-application.yaml # fooリポジトリを監視する。
-│
-├── stg/
-└── prd/
-```
-
-```yaml
-repository/
-├── tes/
-│   └── bar-application.yaml # barリポジトリを監視する。
-│
-├── stg/
-└── prd/
-```
-
-```yaml
-repository/
-├── tes/
-│   └── baz-application.yaml # bazリポジトリを監視する。
-│
-├── stg/
-└── prd/
-```
-
-<br>
-
-## 02-01. Clusterのデザインパターン
+## 01. 監視対象のClusterのデザインパターン
 
 ### 内部Clusterパターン
 
@@ -76,7 +33,67 @@ ArgoCDのApplicationと、監視対象のClusterを別々のClusterで管理す�
 
 <br>
 
-## 02-02. Applicationのデザインパターン
+## 02. リポジトリ構成ポリシー
+
+### リポジトリ分割のメリット
+
+リポジトリを分割することにより、以下のメリットがある。
+
+- 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
+
+<br>
+
+### マニフェストリポジトリ
+
+#### ▼ マニフェストリポジトリとは
+
+マニフェストやチャートを管理する。
+
+GitOpsのベストプラクティスに則って、アプリケーションリポジトリとマニフェストリポジトリに分割する。
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices
+
+#### ▼ アプリ領域
+
+アプリ領域のマニフェストやチャートは、ArgoCDとは別に管理する。
+
+```yaml
+# アプリ領域のマニフェスト
+app-manifest-repository/
+├── tes/
+│   ├── deployment.yaml
+│   ....
+│
+├── stg/
+└── prd/
+```
+
+#### ▼ インフラ領域
+
+インフラ領域のマニフェストやチャートは、ArgoCDとは別に管理する。
+
+```yaml
+# インフラ領域のマニフェスト
+infra-manifest-repository/
+├── tes/
+│   ├── deployment.yaml
+│   ....
+│
+├── stg/
+└── prd/
+```
+
+<br>
+
+### アプリリポジトリ
+
+アプリケーションのソースコードを管理する。
+
+説明は省略する。
+
+<br>
+
+## 03. Applicationのデザインパターン
 
 ### Appパターン (通常パターン)
 
@@ -132,9 +149,9 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 
 > ↪️ 参考：
 >
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
 > - https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c
 > - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
 
 #### ▼ root-application
 
@@ -160,8 +177,6 @@ root-argocd-repository/
 
 parent-applicationは、`default`プロジェクトや`root`プロジェクトに配置する。
 
-`metadata.labels`キー配下に、`argocd.argoproj.io/instance`キーを設定し、値はroot-applicationの名前とする。
-
 ```yaml
 # 親Application
 parent-argocd-repository/
@@ -180,8 +195,6 @@ parent-argocd-repository/
 マイクロサービス単位のマニフェストやチャートごとに作成すると良い。
 
 child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のプロジェクトに配置する。
-
-`metadata.labels`キー配下に、`argocd.argoproj.io/instance`キーを設定し、値はparent-applicationの名前とする。
 
 ```yaml
 # 子Application
@@ -207,39 +220,13 @@ child-argocd-repository/
 └── prd/
 ```
 
-アプリ領域やインフラ領域のマニフェストやチャートは以下の通りになっているとする。
-
-`metadata.labels`キー配下に、`argocd.argoproj.io/instance`キーを設定し、値はchild-applicationの名前とする。
-
-```yaml
-# アプリ領域のマニフェスト
-app-manifest-repository/
-├── tes/
-│   ├── deployment.yaml
-│   ....
-│
-├── stg/
-└── prd/
-```
-
-```yaml
-# インフラ領域のマニフェスト
-infra-manifest-repository/
-├── tes/
-│   ├── deployment.yaml
-│   ....
-│
-├── stg/
-└── prd/
-```
-
 #### ▼ grand-parent-application
 
 > ↪️ 参考：https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
 
 <br>
 
-## 02. ディレクトリ構成ポリシー
+## 04. ディレクトリ構成ポリシー
 
 ### 実行環境別 (必須)
 
@@ -258,15 +245,35 @@ repository/
 
 <br>
 
-## 03. 命名規則
+## 05. 命名規則
 
 ### Application
 
-ArgoCDでは、子Kubernetesリソースや子Applicationの`metadata.labels`キーにある`argocd.argoproj.io/instance`キーの値に基づいて、親Applicationを判断する。
+同じCluster内ではApplication名を一意にする必要がある。
 
-複数の親Applicationに紐づかないように、Applicationは一意にする必要がある。
+また、GUI上での実行環境の選択ミスを予防するために、実行環境名をつける。
 
-そのために、Application名にサービス名と実行環境名 (例：`<サービス名>-<実行環境名>`) で命名する。
+例えば、Application名にサービス名と実行環境名 (例：`<サービス名>-<実行環境名>`) で命名する。
+
+執筆時点 (2023/03/08) で、ArgoCDのConfigMapに、親Applicationを指定するためのラベル名を設定できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  application.instanceLabelKey: argocd.argoproj.io/instance
+```
+
+ArgoCDは、Kubernetesリソースの`.metadata.labels`キーにこのラベル (ここでは`argocd.argoproj.io/instance`キー) を自動的に設定する。
+
+たとえNamespaceが異なっていても、ラベル名が同じだとArgoCDは親Applicationと認識し、Kubernetesリソースが複数のApplicationに紐づいてしまう。
+
+これらの理由から、同じCluster内ではApplication名を一意にする必要がある。
 
 <br>
 
@@ -274,17 +281,19 @@ ArgoCDでは、子Kubernetesリソースや子Applicationの`metadata.labels`キ
 
 実行環境名とする。
 
+ArgoCDでは、認可スコープとProjectを紐づけられるため、実行環境別の操作権限を設定できるようになる。
+
 <br>
 
 ### Namespace
 
 プロダクト名とする。
 
-argocd-serverもプロダクトごとに作成して各Namespaceに配置すると、プロダクトごとにGUIに表示するApplicationを使い分けられる。
+同じCluster内に、複数のプロダクト用のArgoCDを配置できるようになる。
 
 <br>
 
-## 03. CDツールに関する脆弱性対策
+## 06. CDツールに関する脆弱性対策
 
 ### CDツールに関する脆弱性対策とは
 
@@ -294,25 +303,29 @@ argocd-serverもプロダクトごとに作成して各Namespaceに配置する�
 
 ### 認証/認可
 
-#### ▼ CDツールを操作できる開発者に関する認証/認可
+#### ▼ ArgoCDの操作ユーザーの場合
 
-CDツールを操作できる開発者を認証し、また認可スコープを付与する。
+ArgoCDのデフォルトの認証方法は、Bearer認証である。
 
-利便的かつ安全な認証/認可方法を選ぶ。
+利便性のためSSOを採用しつつ、二要素認証を組み合わせて強度を高める。
 
-| 認証/認可方法 | 二要素認証 | 推奨/非推奨 |
-| ------------- | ---------- | ----------- |
-| Bearer認証    | -          | 非推奨      |
-| OAuth         | あり       | 推奨        |
-|               | なし       | 非推奨      |
-| OIDC          | あり       | 推奨        |
-|               | なし       | 非推奨      |
-| SAML          | あり       | 推奨        |
-|               | なし       | 非推奨      |
+そのために、認証フェーズを信頼性の高い外部サービス (Auth0、GitHub、GitLab、など) に委譲し、SSO (OAuth、OIDC、SAML) を採用する。
 
-#### ▼ CDツール自体の認証/認可
+さらに、SSOと二要素認証を組み合わせ、上記の認証フェーズ時にPCやスマホのワンタイムパスワードを要求するようにする。
 
-CDツールのServiceAccountを認証し、またClusterRoleの認可スコープを付与する。
+| 認証/認可方法           | 二要素認証 | 推奨/非推奨 |
+| ----------------------- | ---------- | ----------- |
+| Bearer認証 (デフォルト) | -          | 非推奨      |
+| OAuth                   | あり       | 推奨        |
+|                         | なし       | 非推奨      |
+| OIDC                    | あり       | 推奨        |
+|                         | なし       | 非推奨      |
+| SAML                    | あり       | 推奨        |
+|                         | なし       | 非推奨      |
+
+#### ▼ ArgoCD自体の場合
+
+ArgoCDをServiceAccountで認証し、またClusterRoleで認可する。
 
 | 期限   | 説明                                                                 | 方法                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 推奨/非推奨 |
 | ------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
@@ -331,7 +344,7 @@ CDツールのServiceAccountを認証し、またClusterRoleの認可スコー�
 
 <br>
 
-## 04. 事後処理
+## 07. 事後処理
 
 ### 通知
 
@@ -341,7 +354,7 @@ CDパイプライン上で実行しているステップ (例：デプロイ、�
 
 <br>
 
-## 05. エラー解決
+## 08. エラー解決
 
 ### 削除できない系
 
@@ -450,7 +463,7 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 <br>
 
-## 06. システム品質特性の担保
+## 09. システム品質特性の担保
 
 ### 可用性の場合
 
@@ -458,7 +471,7 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 <br>
 
-## 07. アップグレード
+## 10. アップグレード
 
 ### ArgoCD自体のアップグレード
 
@@ -480,7 +493,7 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 
 <br>
 
-## 08. 権限設定
+## 11. 権限設定
 
 ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`kubectl logs`コマンド、`kubectl exec`コマンド) を実行できる機能がある。
 
@@ -488,7 +501,7 @@ ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`ku
 
 <br>
 
-## 09. 監視
+## 12. 監視
 
 記入中...
 
@@ -496,7 +509,7 @@ ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`ku
 
 <br>
 
-## 10. リリース/ロールバック
+## 13. リリース/ロールバック
 
 ### リリース
 

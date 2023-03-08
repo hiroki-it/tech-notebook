@@ -252,7 +252,7 @@ releases:
 
 #### ▼ createNamespace
 
-Helmリリース時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
+`helm install`コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
 
 デフォルトで`true`になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
 

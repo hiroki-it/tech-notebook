@@ -131,13 +131,13 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 #### ▼ パーティション、物理ボリューム、とは
 
-![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
-
 ストレージ上の仮想的な仕切りを『パーティション』、また仕切られた領域を『物理ボリューム』という。
 
 1つの領域を複数に見せかけられる。
 
 `/dev`ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
+
+![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
 
 > ↪️ 参考：
 >
@@ -244,9 +244,9 @@ $ diskutil list
 
 ### 論理ボリュームとは
 
-![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
-
 異なる物理ボリュームにまたがる領域を組み合わせ、`1`個の仮想的なボリュームとした扱ったもの。
+
+![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
 
 > ↪️ 参考：https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
 
@@ -259,8 +259,6 @@ $ diskutil list
 **＊例＊**
 
 Linuxでは論理ボリュームは、`lvdisplay`コマンドで確認できる。
-
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
 
 ```bash
 $ lvdisplay
@@ -294,6 +292,8 @@ $ lvdisplay
   Block device          253:1
 ```
 
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
+
 <br>
 
 ## 04. デバイスファイル
@@ -324,8 +324,6 @@ Linuxカーネルが入出力装置や標準入出力を操作できるように
 Linuxのデバイスファイルは`/dev`ディレクトリ配下にある。
 
 Dockerのデバイスファイルを確認すると、以下のデバイスファイルがある。
-
-> ↪️ 参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
 
 ```bash
 $ ls -l /dev
@@ -437,6 +435,8 @@ crw-------  watchdog              # システムリセット
 crw-------  watchdog0             # システムリセット
 crw-rw-rw-  zero                  # ゼロ出力 (読み込むとゼロ)
 ```
+
+> ↪️ 参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
 
 <br>
 

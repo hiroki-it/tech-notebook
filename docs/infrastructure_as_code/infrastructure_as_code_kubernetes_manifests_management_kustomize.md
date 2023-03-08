@@ -23,10 +23,12 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 `kubectl`コマンドで`-k`オプションを有効化すると、`kustomize.yaml`ファイルを使用してマニフェストを生成できる。
 
-```bash
-$ kubectl diff -k kustomization.yaml
+`kustomize.yaml`ファイルのあるディレクトリを指定する。
 
-$ kubectl apply -k kustomization.yaml
+```bash
+$ kubectl diff -k ./
+
+$ kubectl apply -k ./
 ```
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file

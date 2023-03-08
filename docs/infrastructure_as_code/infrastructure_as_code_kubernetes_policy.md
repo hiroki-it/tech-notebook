@@ -205,7 +205,7 @@ repository/
 └── persistent-volume-claim.yaml
 ```
 
-▼ ファイル名重複する場合
+#### ▼ ファイル名重複する場合
 
 `1`個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソース名をつけることができない。
 

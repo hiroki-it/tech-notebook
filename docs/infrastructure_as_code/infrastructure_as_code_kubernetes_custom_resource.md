@@ -146,7 +146,7 @@ spec:
 
 #### ▼ scopeとは
 
-カスタムリソースがNamespaceあるいはClusterのいずれかに属するかを設定する。
+カスタムリソースが存在可能な領域の範囲を設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -162,13 +162,53 @@ spec:
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
+#### ▼ Clusterの場合
+
+同じカスタムリソースがCluster内に`1`個のみ存在できるようにする。
+
+Namespaceごとにカスタムリソースを作成できなくなる。
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: foo.example.com
+spec:
+  scope: Cluster
+```
+
+> ↪️ 参考：
+>
+> - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
+> - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
+
+#### ▼ Namespacedの場合
+
+同じカスタムリソースがNamespace内に`1`個のみ存在できるようにする。
+
+Namespaceごとにカスタムリソースを作成できるようになる。
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: foo.example.com
+spec:
+  scope: Namespaced
+```
+
+> ↪️ 参考：
+>
+> - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
+> - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
+
 <br>
 
 ### .spec.names
 
 #### ▼ namesとは
 
-カスタムリソースの様々な場面での名前を設定する。
+カスタムリソースの名前を設定する。
 
 #### ▼ kind
 
@@ -197,7 +237,7 @@ spec: ...
 
 #### ▼ plural
 
-カスタムリソースをAPIからコールする時のURLで使用するリソースの複数形名を設定する。
+`kubectl`コマンドで使用するカスタムリソースの複数形名を設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -256,9 +296,33 @@ $ kubectl get foo
 
 ### .spec.versions
 
+#### ▼ versionsとは
+
+カスタムリソース定義に対応するカスタムリソースに関して、APIグループのバージョンを設定する。
+
+複数のバージョンのカスタムリソース定義をCluster内で同時に管理する場合、`.spec.versions[].name`キー配下に複数
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: foo.example.com
+spec:
+  versions:
+    - name: v1
+
+  ...
+
+    - name: v2
+
+  ...
+```
+
+> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#specify-multiple-versions
+
 #### ▼ name
 
-APIのバージョン名を設定する。
+APIグループのバージョン名を設定する。
 
 例えば『`v1`』というstring型のキーを設定すると、マニフェストの`.apiVersion`で、`/v1`を最後につけてコールすることになる。
 
@@ -276,7 +340,7 @@ spec:
 
 #### ▼ served
 
-APIのバージョンを有効化するかを設定する。
+APIグループのバージョンを有効化するかを設定する。
 
 もしカスタムリソースに複数のバージョンが存在する場合、旧バージョンを無効化し、マニフェストで使用できないようにできる。
 
@@ -294,9 +358,9 @@ spec:
 
 #### ▼ schema
 
-カスタムリソースの`.spec`キー以下に設定できるキーを設定する。
+カスタムリソースの`.spec`キー以下に設定できるキーと、これのデータ型を設定する。
 
-例えば『`message`』というstring型のキーを設定すると、カスタムリソースの`.spec.message`キーに任意の文字列を設定できるようになる。
+例えば『`message`』というstring型のキーを設定すると、カスタムリソースの`.spec.message`キーに任意のstring型を設定できるようになる。
 
 カスタムリソース内部のPodのデプロイ戦略は、Deployment、StatefulSet、DaemonSet、の設定値によって決まることになる。
 
@@ -314,7 +378,9 @@ spec:
             spec:
               type: object
               properties:
-                message: # カスタムリソースのspec.messageキーに文字列を設定できるようになる。
+                # カスタムリソースの.spec.messageキーに文字列を設定できるようになる。
+                message:
+                  # string型
                   type: string
 ```
 
@@ -325,7 +391,7 @@ spec:
 
 #### ▼ storage
 
-APIのバージョンをetcdのストレージに保存してもよいどうかを設定する。
+APIグループのバージョンをetcdのストレージに保存してもよいどうかを設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

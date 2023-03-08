@@ -45,8 +45,6 @@ AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登
 
 ただしAlpine Linuxでは、『`$BASH_ENV`』を使用して、複数の`run`間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。
 
-> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
-
 **＊実装例＊**
 
 ```yaml
@@ -72,6 +70,8 @@ jobs:
           aws-secret-access-key: $SECRET_ACCESS_KEY_ENV_VAR_NAME
           region: $AWS_REGION_ENV_VAR_NAME
 ```
+
+> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
 <br>
 
@@ -356,8 +356,6 @@ workflows:
 
 コマンドが実行された後に、AWS ECSタスクは自動的にStopped状態になる。
 
-上書きできるキーの参照リンク：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
-
 **＊実装例＊**
 
 例えば、DBマイグレーションを実行するためのAWS ECSタスクを起動する。
@@ -407,6 +405,8 @@ workflows:
               only:
                 - main
 ```
+
+> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 
 <br>
 

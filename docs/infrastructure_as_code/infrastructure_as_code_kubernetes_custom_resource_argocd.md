@@ -256,7 +256,11 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 `【３】`
 
-: CIツールは、マニフェストリポジトリをクローンし、マニフェストのコンテナイメージのハッシュ値を変更する。このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。変更したマニフェストをマニフェストリポジトリにプッシュする。
+: CIツールは、マニフェストリポジトリをクローンし、マニフェストのコンテナイメージのハッシュ値を変更する。
+
+     このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。
+
+     変更したマニフェストをマニフェストリポジトリにプッシュする。
 
 `【４】`
 
@@ -273,6 +277,8 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 > ↪️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
 #### ▼ テンプレート構成管理ツールを使用した場合
+
+![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks_helm.png)
 
 `【１】`
 
@@ -300,8 +306,6 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks_helm.png)
-
 > ↪️ 参考：
 >
 > - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
@@ -310,6 +314,8 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 <br>
 
 ### マニフェストリポジトリ起点
+
+![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_gcp.png)
 
 `【１】`
 
@@ -322,8 +328,6 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 `【３】`
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
-
-![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_gcp.png)
 
 > ↪️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 

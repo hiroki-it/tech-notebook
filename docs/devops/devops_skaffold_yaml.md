@@ -159,25 +159,25 @@ build:
 
 コミットIDをバージョンタグとして設定する。
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
-
 ```yaml
 build:
   tagPolicy:
     gitCommit: {}
 ```
 
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
+
 #### ▼ sha256
 
 sha256ハッシュ値と`latest`タグをバージョンタグとして設定する。
-
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
 ```yaml
 build:
   tagPolicy:
     sha256: {}
 ```
+
+> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
 <br>
 

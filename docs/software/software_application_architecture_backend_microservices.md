@@ -542,6 +542,15 @@ Kubernetes内で管理できるメリットがある。
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 > - https://codezine.jp/article/detail/11305?p=4
 
+#### ▼ Federated Gateway
+
+BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各API Gatewayのエンドポイントを統合する。
+
+> ↪️ 参考：
+>
+> - https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/
+> - https://tech.smartshopping.co.jp/backend-development-with-graphql
+
 <br>
 
 ## 06. DBの配置パターン

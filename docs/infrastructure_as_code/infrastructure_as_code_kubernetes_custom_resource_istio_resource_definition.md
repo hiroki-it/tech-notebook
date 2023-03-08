@@ -186,7 +186,7 @@ spec:
 
 ### .apiVersion
 
-Istio-APIのバージョンを設定する。
+IstioのAPIグループのバージョンを設定する。
 
 Kubernetesとは異なることに注意する。
 

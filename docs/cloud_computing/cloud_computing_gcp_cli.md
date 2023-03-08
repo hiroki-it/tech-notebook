@@ -33,8 +33,6 @@ GCP CLIによるGCPリソースへのアクセスを認証するために使用�
 
 `~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
 
-> ↪️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
-
 ```bash
 $ gcloud auth application-default login
 ```
@@ -50,6 +48,8 @@ $ gcloud auth application-default login
 }
 ```
 
+> ↪️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
+
 #### ▼ login
 
 GCP SDKによるGCPリソースへのアクセスを認証するために使用する。
@@ -62,13 +62,15 @@ $ gcloud auth login
 
 #### ▼ login --update-adc
 
-`gcloud auth application-default login`コマンドと`gcloud auth login`コマンドを同時に実行する。これにより、GCP CLIのための認証情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGCP SDKのための認証情報が更新される。
+`gcloud auth application-default login`コマンドと`gcloud auth login`コマンドを同時に実行する。
 
-> ↪️ 参考：https://blog.pokutuna.com/entry/application-default-credentials
+これにより、GCP CLIのための認証情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGCP SDKのための認証情報が更新される。
 
 ```bash
 $ gcloud auth login --update-adc
 ```
+
+> ↪️ 参考：https://blog.pokutuna.com/entry/application-default-credentials
 
 <br>
 

@@ -118,6 +118,8 @@ foo-release         ./charts/foo         0.0.1
 
 インストール済みの全てのチャートをアンインストールする。
 
+カスタムリソース定義も削除する。
+
 ```bash
 $ helmfile -e dev destroy
 ```
