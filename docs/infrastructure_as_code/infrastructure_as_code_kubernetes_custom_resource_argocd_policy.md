@@ -271,7 +271,7 @@ data:
 
 ArgoCDは、Kubernetesリソースの`.metadata.labels`キーにこのラベル (ここでは`argocd.argoproj.io/instance`キー) を自動的に設定する。
 
-たとえNamespaceが異なっていても、ラベル名が同じだとArgoCDは親Applicationと認識し、Kubernetesリソースが複数のApplicationに紐づいてしまう。
+たとえNamespaceが異なっていても、同じProjectで同じラベル名である限り、ArgoCDは親Applicationと認識し、Kubernetesリソースが複数のApplicationに紐づいてしまう。
 
 これらの理由から、同じCluster内ではApplication名を一意にする必要がある。
 

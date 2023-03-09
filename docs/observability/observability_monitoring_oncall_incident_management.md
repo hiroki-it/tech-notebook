@@ -371,11 +371,6 @@ fields @timestamp, @message, @logStream
 
 #### ▼ MTxxメトリクスとは
 
-> ↪️ 参考：
->
-> - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
-> - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
-
 ![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png)
 
 | メトリクス名                    |                                                                                                                                                                             | 補足                                                                         |
@@ -385,13 +380,16 @@ fields @timestamp, @message, @logStream
 | MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                    |                                                                              |
 | MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | ↪️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 
+> ↪️ 参考：
+>
+> - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
+> - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
+
 #### ▼ 稼働率
 
 システムの実際の稼働時間割合を表す。
 
 以下の計算式で算出できる。
-
-> ↪️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
 
 ```mathematica
 (稼働率)
@@ -411,6 +409,8 @@ fields @timestamp, @message, @logStream
 (稼働率)
 = 1 - (1 - 稼働率) × (1 - 稼働率)
 ```
+
+> ↪️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
 
 **＊例＊**
 
@@ -449,9 +449,9 @@ MTxxメトリクスをダッシュボード化する。
 
 DRI Hops (インシデントの直接的に責任者) の値を使用して人的コストを可視化することにより、エンジニアリングマネージャがインシデント管理を扱いやすくなる。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
-
 ![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics_dash-board.png)
+
+> ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 <br>
 
@@ -501,8 +501,6 @@ DRI Hops (インシデントの直接的に責任者) の値を使用して人�
 
 PagerDuty社が公開しているテンプレートがある。
 
-> ↪️ 参考：https://response.pagerduty.com/after/post_mortem_template/
-
 ```markdown
 # ポストモーテム
 
@@ -544,14 +542,16 @@ PagerDuty社が公開しているテンプレートがある。
 - 社外への周知内容
 ```
 
-#### ▼ その他の会社事例
+> ↪️ 参考：https://response.pagerduty.com/after/post_mortem_template/
 
-> ↪️ 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
+#### ▼ その他の会社事例
 
 | サービス | リンク                                                                                                  |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | AWS      | https://aws.amazon.com/jp/message/5467D2/                                                               |
 | Heroku   | https://status.heroku.com/incidents/151                                                                 |
 | Twilio   | https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html |
+
+> ↪️ 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
 
 <br>

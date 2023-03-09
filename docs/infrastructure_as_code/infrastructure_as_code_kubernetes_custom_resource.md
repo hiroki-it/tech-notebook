@@ -86,6 +86,14 @@ the server could not find the requested resource
 
 ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはカスタムコントローラーを作成する必要がある。
 
+<br>
+
+### カスタムリソースの宣言値の決まり方
+
+マニフェストの`.apiVersion`キーで、『`<.spec.groupキー名>/<.spec.versionキー名>`』と宣言し、カスタムリソースを使用する。
+
+例えば『`example.com`』というグループと『`v1`』というバージョンを定義したとすると、カスタムリソースからは`example.com/v1`というAPIからコールできるようになる。
+
 > ↪️ 参考：
 >
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
@@ -107,13 +115,17 @@ apiVersion: apiextensions.k8s.io/v1
 
 #### ▼ name
 
-カスタムリソースのAPIグループの名前を設定する。『`<pluralキー名>.<groupキー名>`』とする必要がある。
+カスタムリソースのAPIグループの名前を設定する。
+
+名前は、『`<.spec.names.pluralキー名>.<spec.groupキー名>`』とする必要がある。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: foo.example.com
+  # pluralキー名は、foos
+  # groupキー名は、example.com
+  name: foos.example.com
 ```
 
 <br>
@@ -123,8 +135,6 @@ metadata:
 #### ▼ groupとは
 
 カスタムリソースが属するAPIグループの名前を設定する。
-
-例えば『`example.com`』というグループに定義とすると、`example.com/v1`というAPIからコールできるようになる。
 
 カスタムリソースを管理する組織の完全修飾ドメイン名にすると良い。
 
@@ -141,6 +151,8 @@ spec:
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+
+<br>
 
 ### .spec.scope
 
@@ -239,6 +251,8 @@ spec: ...
 
 `kubectl`コマンドで使用するカスタムリソースの複数形名を設定する。
 
+例えば『`foos`』という宣言名にすると、`kubectl`コマンドで`foos`というカスタムリソース名で使用できるようになる。
+
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
@@ -259,6 +273,8 @@ $ kubectl get foos
 
 `kubectl`コマンドで使用するカスタムリソースの単数形名を設定する。
 
+例えば『`foo`』という宣言名にすると、`kubectl`コマンドで`foo`というカスタムリソース名で使用できるようになる。
+
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
@@ -278,6 +294,8 @@ $ kubectl get foo
 #### ▼ shortNames
 
 `kubectl`コマンドで使用するカスタムリソースの省略名を設定する。
+
+例えば『`fo`』という宣言名にすると、`kubectl`コマンドで`fo`というカスタムリソース名で使用できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

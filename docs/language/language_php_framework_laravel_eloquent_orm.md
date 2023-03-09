@@ -109,12 +109,6 @@ ER図における各テーブルのリレーションシップを元に、モデ
 
 `hasOne`メソッド、`hasMany`メソッド、`belongsTo`メソッドを使用して表す。
 
-> ↪️ 参考：
->
-> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
-> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
-> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
-
 **＊実装例＊**
 
 Departmentモデルで、`hasMany`メソッドを使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。
@@ -188,6 +182,12 @@ $department = Department::find(1);
 // 部署ID=1に紐付く全てのemployeeオブジェクトをarray型で取得
 $employees = $department->employees()
 ```
+
+> ↪️ 参考：
+>
+> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
+> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
+> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
 
 #### ▼ 主キーカラムの定義
 
@@ -623,11 +623,6 @@ Eloquentモデルには`create`メソッドがないため、代わりにEloquen
 
 これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。
 
-> ↪️ 参考：
->
-> - https://codelikes.com/laravel-eloquent-basic/#toc9
-> - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
-
 **＊実装例＊**
 
 ```php
@@ -682,6 +677,11 @@ class FooDTO extends Model
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://codelikes.com/laravel-eloquent-basic/#toc9
+> - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+
 <br>
 
 ### READ
@@ -697,12 +697,6 @@ Eloquentモデルには`all`メソッドがないため、代わりにEloquent�
 全てのプライマリーキーのCollection型を配列型として返却する。
 
 `toArray`メソッドで配列型に再帰的に変換できる。
-
-> ↪️ 参考：
->
-> - https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
-> - https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
-> - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models
 
 **＊実装例＊**
 
@@ -729,6 +723,12 @@ class FooController extends Controller
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
+> - https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
+> - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models
+
 #### ▼ `find`メソッド
 
 レコードを1つ取得するSELECT句を発行する。
@@ -738,11 +738,6 @@ Eloquentモデルには`find`メソッドがないため、代わりにEloquent�
 引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。
 
 `toArray`メソッドで配列型に変換できる。
-
-> ↪️ 参考：
->
-> - https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
-> - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
 
 **＊実装例＊**
 
@@ -769,6 +764,11 @@ class FooController extends Controller
     }
 }
 ```
+
+> ↪️ 参考：
+>
+> - https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
+> - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
 
 #### ▼ `first`メソッド
 
@@ -815,8 +815,6 @@ class FooController extends Controller
 
 これらのパラメーターはクエリパラメーターとして渡すと良い。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
-
 **＊実装例＊**
 
 ```php
@@ -846,6 +844,8 @@ class FooController extends Controller
 }
 ```
 
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+
 #### ▼ `orderBy`メソッド
 
 指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。
@@ -853,8 +853,6 @@ class FooController extends Controller
 並び替えた結果を取得するためには、`get`メソッドを使用する。
 
 プライマリーキーの昇順で取得する場合、`all`メソッドではなく、`orderBy`メソッドを使用して、プライマリーキーの昇順を明示的に設定する。
-
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
 **＊実装例＊**
 
@@ -893,11 +891,11 @@ class FooController extends Controller
 }
 ```
 
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+
 #### ▼ `sortBy`メソッド
 
 指定したカラムの昇順でレコードを並び替えるSELECT句を発行する。
-
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
 
 **＊実装例＊**
 
@@ -924,11 +922,11 @@ class FooController extends Controller
 }
 ```
 
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
+
 #### ▼ `sortByDesc`メソッド
 
 指定したカラムの降順でレコードを並び替えるSELECT句を発行する。
-
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
 
 ```php
 <?php
@@ -952,6 +950,8 @@ class FooController extends Controller
     }
 }
 ```
+
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
 
 #### ▼ `with`メソッド
 
@@ -1085,11 +1085,6 @@ Eloquentビルダーの`fill`メソッドで挿入先のカラムと値を設定
 
 `save`メソッドはCREATE処理も実行できるが、`fill`メソッドでID値を割り当てた場合は、UPDATE処理が実行される。
 
-> ↪️ 参考：
->
-> - https://codelikes.com/laravel-eloquent-basic/#toc9
-> - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
-
 **＊実装例＊**
 
 ```php
@@ -1136,6 +1131,11 @@ class FooDTO extends Model
     ];
 }
 ```
+
+> ↪️ 参考：
+>
+> - https://codelikes.com/laravel-eloquent-basic/#toc9
+> - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
 
 <br>
 

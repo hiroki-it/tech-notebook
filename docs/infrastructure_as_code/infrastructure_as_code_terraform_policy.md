@@ -1132,15 +1132,17 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 : 初期構築時にダミー値を割り当ててプロビジョニングする。
 
-     この時点で、```.tfstate```ファイルにはダミー値が書き込まれる。
+     この時点で、`.tfstate`ファイルにはダミー値が書き込まれる。
 
 `【２】`
 
-: `ignore_changes`引数を設定した後に、実際の値をコンソール画面から設定する。
+: 実際の値をSecretManagerやAWS RDSのコンソール画面から設定する。
 
 `【３】`
 
-: 以降のプロビジョニングで、`.tfstate`ファイル上はダミー値のままになる。
+: `ignore_changes`引数を設定する。
+
+     以降のプロビジョニングで、`.tfstate`ファイル上はダミー値のままになる。
 
 ```terraform
 # AWS RDSの場合
@@ -1159,6 +1161,12 @@ resource "aws_rds_cluster" "this" {
   }
 }
 ```
+
+#### ▼ `.tfstate`ファイルへの平文を妥協する
+
+`.tfstate`ファイルへ平文で定義されてしまうことを妥協する。
+
+その代わりに、クライアントとバックエンド間の通信時に盗まれたり、バックエンド管理時に参照されることを防げるように、バックエンドの暗号化機能やアクセスポリシーを使用する。
 
 <br>
 

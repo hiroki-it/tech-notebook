@@ -419,8 +419,6 @@ jobを実行する仮想環境を選択できる。
 
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png)
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
-
 **＊実装例＊**
 
 ```yaml
@@ -444,6 +442,8 @@ jobs:
       # コンテナイメージのDockerHubに対するデプロイ
       - run: docker push company/app:$CIRCLE_BRANCH
 ```
+
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
 #### ▼ machineタイプとは
 
@@ -480,8 +480,6 @@ CircleCIの実行環境のスペックを設定する。
 
 Workflow間のキャッシュの使い回しと同様にして、ビルドの完了までの速さを改善できる。
 
-> ↪️ 参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
-
 ```yaml
 version: 2.1
 
@@ -491,6 +489,8 @@ jobs:
       - image: circleci/foo
     resource_class: xlarge # vCPU 8、RAM 16GB
 ```
+
+> ↪️ 参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
 
 <br>
 
@@ -1003,12 +1003,12 @@ workflows:
 
 ただし、`docker`キーだけは例外的に出力できる。
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
-
 ```yaml
 # 出力できない
 working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 ```
+
+> ↪️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
 
 #### ▼ 環境変数の種類と参照範囲
 
@@ -1115,8 +1115,6 @@ CircleCIでは`run`キーを実行する時に『`$BASH_ENV`』が`source`キー
 
 ただし、Alpine Linuxでは、この共有を使用できないため注意する (かなりたくさんある) 。
 
-> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
-
 ```yaml
 version: 2.1
 
@@ -1139,6 +1137,8 @@ jobs:
             echo "$PATH"
             echo "$VERY_IMPORTANT"
 ```
+
+> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
 #### ▼ シェルスクリプトによる設定
 

@@ -37,9 +37,9 @@ description: 監視＠可観測性の知見を記録しています。
 
 プル型またはプッシュ型の収集方法があり、ログは全てプッシュ型になる。
 
-> ↪️ 参考：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
-
 ![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monitoring_collecting_pull_push.png)
+
+> ↪️ 参考：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
 
 #### ▼ データの保管
 
@@ -360,25 +360,25 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 ジョブの開始から最後のリクエストまでが、一定の時間内に完了するか否かを確認する。
 
-> ↪️ 参考：https://healthchecks.io/docs/monitoring_cron_jobs/
-
 ```bash
 # ジョブをCronを使用して実装する場合
 # 最後にhealthchecks.ioのエンドポイントをコールする。
   8 6 * * * /foo-cron.sh && curl -fsS --retry 5 -o /dev/null https://hc-ping.com/ping/<healthchecksのID>
 ```
 
+> ↪️ 参考：https://healthchecks.io/docs/monitoring_cron_jobs/
+
 #### ▼ `runitor`パッケージ
 
 `curl`コマンドの代わりとして`runitor`パッケージを使用すると、標準出力/標準エラー出力の内容を人間がわかりやすいように整形してくれる。
-
-> ↪️ 参考：https://github.com/bdd/runitor
 
 ```bash
 # ジョブをCronを使用して実装する場合
 # 最後にhealthchecks.ioのエンドポイントをコールする。
   8 6 * * * /usr/local/bin/runitor -api-url https://hc-ping.com/ping -uuid <healthchecksのID> -- /foo-cron.sh
 ```
+
+> ↪️ 参考：https://github.com/bdd/runitor
 
 <br>
 

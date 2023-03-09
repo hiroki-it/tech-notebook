@@ -34,8 +34,6 @@ $ yum install -y nodejs
 
 パッケージの作成者名を設定する。
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
-
 ```yaml
 {
   "author":
@@ -47,15 +45,17 @@ $ yum install -y nodejs
 }
 ```
 
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
+
 #### ▼ bug
 
 不具合の報告先のURLを設定する。
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
-
 ```yaml
 {"bugs": {"url": "https://github.com/hiroki-hasegawa/foo/issues"}}
 ```
+
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
 
 #### ▼ dependencies
 
@@ -80,11 +80,11 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 #### ▼ description
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
-
 ```yaml
 {"description": "This is foo package"}
 ```
+
+> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
 
 #### ▼ devDependencies
 

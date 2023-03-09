@@ -27,6 +27,8 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 `kustomize.yaml`ファイルを使用して、`kubectl`コマンドを実行する。
 
+ローカルマシンにある`kustomize.yaml`ファイルを使用する場合、パスを指定する。
+
 ```bash
 $ kubectl diff -k ./ > kustomize.diff
 
@@ -34,6 +36,16 @@ $ kubectl apply -k ./
 ```
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+
+リモートにある`kustomize.yaml`ファイルを使用する場合、URLを指定する。
+
+```bash
+$ kubectl diff -k "<リポジトリのURL>//<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>" > kustomize.diff
+
+$ kubectl apply -k "<リポジトリのURL>//<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>"
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#examples
 
 <br>
 

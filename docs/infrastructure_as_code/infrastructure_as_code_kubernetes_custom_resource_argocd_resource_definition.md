@@ -35,7 +35,19 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 カスタムリソース定義をHelmの管理外で作成する。
 
 ```bash
-$ kubectl apply -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=<バージョン>"
+$ git clone https://github.com/argoproj/argo-cd
+
+$ kubectl diff -k ./manifests/crds
+
+$ kubectl apply -k ./manifests/crds
+```
+
+これは、URLで指定しても良い。
+
+```bash
+$ kubectl diff -k "https://github.com/argoproj/argo-cd//manifests/crds?ref=<タグ>"
+
+$ kubectl apply -k "https://github.com/argoproj/argo-cd//manifests/crds?ref=<タグ>"
 ```
 
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
@@ -997,6 +1009,8 @@ spec:
 ### AppProjectとは
 
 Applicationの責務境界をProjectとして管理する。
+
+同じProject内では、ArgoCDのApplication名は一意にする必要がある。
 
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
 

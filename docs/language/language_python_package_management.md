@@ -130,8 +130,6 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 
 pipでインストールされたパッケージを元に、要件ファイルを作成する。
 
-> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
-
 ```bash
 # インストールのため
 $ pip3 freeze > requirements.txt
@@ -144,6 +142,8 @@ $ pip3 freeze >| requirements.txt
 # アンインストールのため
 $ pip3 freeze > uninstall.txt
 ```
+
+> ↪️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
 
 <br>
 

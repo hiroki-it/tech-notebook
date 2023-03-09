@@ -115,7 +115,7 @@ console.log(
     x: 1,
     y: 5,
     z: "test",
-  })
+  }),
 );
 
 // json形式オブジェクト
@@ -134,7 +134,7 @@ console.log(
     x: 1,
     y: 5,
     z: "test",
-  })
+  }),
 );
 
 // JavaScriptオブジェクト
@@ -310,7 +310,7 @@ const Object3 = () => {};
 console.log(
   object1.prototype, // undefined
   object2.prototype, // undefined
-  object3.prototype // Object3 {}
+  object3.prototype, // Object3 {}
 );
 ```
 
