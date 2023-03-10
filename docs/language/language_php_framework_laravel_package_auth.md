@@ -53,13 +53,6 @@ APIガードの認証で使用するトークンをJWTに変更したい時に�
 
 `auth.php`ファイルにて、例えばtokenドライバーを選択した場合は、TokenGuardクラスが返却される。
 
-> ↪️ 参考：
->
-> - https://teratail.com/questions/171582
-> - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
-> - https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
-> - https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user
-
 ```php
 <?php
 
@@ -82,6 +75,13 @@ return [
     ],
 ];
 ```
+
+> ↪️ 参考：
+>
+> - https://teratail.com/questions/171582
+> - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
+> - https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
+> - https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user
 
 #### ▼ ルーティングの保護
 
@@ -454,8 +454,6 @@ AuthorizeMiddlewareのエイリアスはデフォルトで`can`であり、Kerne
 
 認可に失敗した場合、`403`ステータスを含むレスポンスを返信する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
-
 **＊実装例＊**
 
 ```php
@@ -477,6 +475,8 @@ Route::group(['middleware' => ['auth:web']], function () {
 });
 ```
 
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
+
 #### ▼ `authorization`メソッドによる認可
 
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。
@@ -486,11 +486,6 @@ Route::group(['middleware' => ['auth:web']], function () {
 第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。
 
 認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で`403`ステータスのレスポンスする。
-
-> ↪️ 参考：
->
-> - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
-> - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
 **＊実装例＊**
 
@@ -537,6 +532,11 @@ class FooController extends Controller
 
 ```
 
+> ↪️ 参考：
+>
+> - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
+> - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
+
 #### ▼ `can`メソッドによる認可
 
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。
@@ -548,11 +548,6 @@ class FooController extends Controller
 DBアクセスが、そのユーザーの認可スコープの範囲内か否かを検証する。
 
 認可に失敗した場合に`false`を返却するため、その後は自前で`403`ステータスのレスポンスする。
-
-> ↪️ 参考：
->
-> - https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
-> - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
 **＊実装例＊**
 
@@ -593,6 +588,11 @@ class FooController extends Controller
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
+> - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
+
 <br>
 
 ## 03. Passportパッケージ
@@ -609,11 +609,11 @@ OAuthを実装できる。
 
 Composerでインストールする必要がある。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/passport.html
-
 ```bash
 $ composer require laravel/passport
 ```
+
+> ↪️ 参考：https://readouble.com/laravel/8.x/ja/passport.html
 
 #### ▼ OAuthのトークン管理テーブルを作成
 
@@ -758,7 +758,13 @@ return [
 
 `【３】`
 
-: `auth.php`ファイルにて、`driver`キーにeloquentドライバを設定する。また、`model`キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダーを使用したい場合は、`database`ドライバを設定する。
+: `auth.php`ファイルにて、`driver`キーにeloquentドライバを設定する。
+
+     また、`model`キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。
+
+     ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。
+
+     もしDBファサードのクエリビルダーを使用したい場合は、`database`ドライバを設定する。
 
 ```php
 return [
@@ -784,7 +790,9 @@ return [
 
 `【４】`
 
-: Userへのルーティング時に、`middleware`メソッドによる認証ガードを行う。これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
+: Userへのルーティング時に、`middleware`メソッドによる認証ガードを行う。
+
+     これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 
 **＊実装例＊**
 
@@ -817,7 +825,11 @@ class User extends Authenticatable
 
 `【６】`
 
-: Passportの`routes`メソッドをコールする。これにより、Passportの認証フェーズに関わる全てのルーティング (`/oauth/xxx`) が有効になる。また、アクセストークンを発行できるよになる。
+: Passportの`routes`メソッドをコールする。
+
+     これにより、Passportの認証フェーズに関わる全てのルーティング (`/oauth/xxx`) が有効になる。
+
+     また、アクセストークンを発行できるよになる。
 
 **＊実装例＊**
 
@@ -853,7 +865,11 @@ $ php artisan passport:client --password
 
 `【１】`
 
-: 『認証』のために、アクセストークンのリクエストを送信する。ユーザー側のアプリケーションは、`/oauth/authorize`へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
+: 『認証』のために、アクセストークンのリクエストを送信する。
+
+     ユーザー側のアプリケーションは、`/oauth/authorize`へリクエストを送信する必要がある。
+
+     ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
 
 **＊実装例＊**
 
@@ -886,7 +902,9 @@ $response = $http->post("http://your-app.com/oauth/token", [
 
 `【３】`
 
-: ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングに対して、リクエストを送信する。レスポンスのメッセージボディからデータを取得する。
+: ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングに対して、リクエストを送信する。
+
+     レスポンスのメッセージボディからデータを取得する。
 
 **＊実装例＊**
 
@@ -1131,3 +1149,5 @@ $ php artisan ui react --auth
 # Bootstrapを使用する場合。
 $ php artisan ui bootstrap --auth
 ```
+
+<br>

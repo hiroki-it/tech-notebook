@@ -153,11 +153,13 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 > - https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c
 > - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 
-#### ▼ root-application
+#### ▼ root-application (第１階層のApplication)
 
 全てのApplicationを監視する最上位Applicationのこと。
 
 状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。
+
+root-applicationは、`default`プロジェクトや`root`プロジェクトに配置する。
 
 ```yaml
 # 最上位Application
@@ -169,13 +171,13 @@ root-argocd-repository/
 └── prd/
 ```
 
-#### ▼ parent-application
+#### ▼ parent-application (第２階層のApplication)
 
 各AppProjectの子Applicationを監視する親Applicationのこと。
 
 管理チームごとにApplication (app-parent-application、infra-parent-application) を作成すると良い。
 
-parent-applicationは、`default`プロジェクトや`root`プロジェクトに配置する。
+parent-applicationは、実行環境名のプロジェクトに配置する。
 
 ```yaml
 # 親Application
@@ -188,13 +190,15 @@ parent-argocd-repository/
 └── prd/
 ```
 
-#### ▼ child-application
+#### ▼ child-application (第３階層のApplication)
 
 各AppProjectで、マニフェストリポジトリやチャートリポジトリを監視するApplicationのこと。
 
 マイクロサービス単位のマニフェストやチャートごとに作成すると良い。
 
 child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のプロジェクトに配置する。
+
+child-applicationは、実行環境名のプロジェクトに配置する。
 
 ```yaml
 # 子Application
@@ -271,7 +275,11 @@ data:
 
 ArgoCDは、Kubernetesリソースの`.metadata.labels`キーにこのラベル (ここでは`argocd.argoproj.io/instance`キー) を自動的に設定する。
 
-たとえNamespaceが異なっていても、同じProjectで同じラベル名である限り、ArgoCDは親Applicationと認識し、Kubernetesリソースが複数のApplicationに紐づいてしまう。
+Projectが異なる限り、同じCluster内にある同じ`argocd.argoproj.io/instance`キー値を持つApplicationは区別される。
+
+一方で、同じProjectにあるApplicationは、たとえNamespaceが異なっていても、区別できない。
+
+そのため、Kubernetesリソースが複数のApplicationに紐づいてしまう。
 
 これらの理由から、同じCluster内ではApplication名を一意にする必要がある。
 

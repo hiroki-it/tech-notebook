@@ -235,6 +235,8 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を分析する。
 
+リモート書き込みサイズではなく、送信サイズであるため、書き込みに成功していない可能性があることに注意する。
+
 この結果から、リモートストレージの必要サイズを推測できる。
 
 補足として、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要サイズを確認する方がより正確である。
@@ -243,6 +245,8 @@ Prometheusで収集されたデータポイントの全サイズうち、リモ�
 rate(prometheus_remote_storage_bytes_total[1h]) *
 60 * 60 * 24
 ```
+
+> ↪️ 参考：https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
 
 <br>
 
@@ -350,8 +354,6 @@ rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_t
 
 Nodeのパケットの受信サイズを取得する。
 
-> ↪️ 参考：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
-
 ```bash
 node_network_receive_packets_total
 ```
@@ -361,5 +363,7 @@ node_network_receive_packets_total
 ```bash
 (rate(node_network_receive_packets_total[5m]) / rate(node_network_receive_packets_total[5m] offset 5m)) > 10
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
 
 <br>

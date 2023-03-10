@@ -190,11 +190,6 @@ JavaScriptと同じような記法で実装できるNode.jsについて、Node.j
 
 そのため、後続の処理に非同期処理の結果を使用するものが含まれている場合、この処理だけは非同期処理の後に実行されるように定義する必要がある。
 
-> ↪️ 参考：
->
-> - https://engineer.recruit-lifestyle.co.jp/techblog/2019-12-13-node-async-io/
-> - https://blog.honjala.net/entry/2018/08/08/022027
-
 ```javascript
 const input;
 
@@ -207,5 +202,10 @@ fs.readFile("/foo.txt", "utf8", function(err, data) {
 // readFileメソッドの完了を待たずに実行されてしまう。
 console.log(input);
 ```
+
+> ↪️ 参考：
+>
+> - https://engineer.recruit-lifestyle.co.jp/techblog/2019-12-13-node-async-io/
+> - https://blog.honjala.net/entry/2018/08/08/022027
 
 <br>

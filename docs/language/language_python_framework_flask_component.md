@@ -25,8 +25,6 @@ WSGIアプリケーションの実行に関するメソッドを持つ。
 
 環境変数の`FLASK_APP`で指定したエントリーポイントでは、必ずFlaskクラスのインスタンスを作成する必要がある。
 
-> ↪️ 参考：https://flask.palletsprojects.com/Ien/2.0.x/api/
-
 ```python
 from flask import Flask
 
@@ -35,6 +33,8 @@ app = Flask(__name__)
 # src/app.py
 # app = Flask(src)
 ```
+
+> ↪️ 参考：https://flask.palletsprojects.com/Ien/2.0.x/api/
 
 <br>
 
@@ -67,8 +67,6 @@ PREFIX_FOO = "foo"
 
 開発環境のみで推奨される方法である。
 
-> ↪️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
-
 ```python
 from flask import Flask
 
@@ -82,12 +80,9 @@ PREFIX_FOO = "foo"
 app.run()
 ```
 
-#### ▼ 引数
+> ↪️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
 
-> ↪️ 参考：
->
-> - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
-> - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
+#### ▼ 引数
 
 | 引数           | 説明                                                                                                 |
 | -------------- | ---------------------------------------------------------------------------------------------------- |
@@ -96,6 +91,11 @@ app.run()
 | `load_dotenv`  | `dotenv`パッケージを読み込むか否かを設定する。これを有効化すれば、他の引数は環境変数から設定できる。 |
 | `port`         | インバウンド通信を待ち受けるポート番号を設定する。                                                   |
 | `use_reloader` | ホットリロードを有効化するか否かを設定する。                                                         |
+
+> ↪️ 参考：
+>
+> - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
+> - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
 
 <br>
 
@@ -126,12 +126,6 @@ app.run()
 
 Pythonのコードを配置するディレクトリに`__init__.py`ファイルを配置し、ここでFlaskクラスのインスタンスを作成するメソッドを定義する。
 
-> ↪️ 参考：
->
-> - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
-> - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
-> - https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask
-
 ```python
 # __init__.py
 from flask import Flask
@@ -146,13 +140,17 @@ def create_app():
     return app
 ```
 
+> ↪️ 参考：
+>
+> - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
+> - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
+> - https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask
+
 #### ▼ エントリーポイント
 
 プロジェクトのルートディレクトリに、`create_app`メソッドを実行するエントリーポイント (例：`main.py`ファイル) を配置する。
 
 名前空間を判定する条件分の外で`create_app`メソッドを実行しないと、uwsgiがapp変数を見つけられない。
-
-> ↪️ 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 
 ```python
 from src import create_app
@@ -162,6 +160,8 @@ app = create_app()
 if __name__ == '__main__':
     app.run()
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 
 #### ▼ 開発環境と本番環境の違い
 
@@ -175,3 +175,5 @@ if __name__ == '__main__':
 >
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
 > - https://serip39.hatenablog.com/entry/2020/07/06/070000
+
+<br>

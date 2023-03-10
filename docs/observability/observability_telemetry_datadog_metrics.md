@@ -114,3 +114,5 @@ Datadogに送信されなくなったメトリクスは、時間経過ととも�
 ## 04. 他テレメトリーとの相関付け
 
 > ↪️ 参考：https://docs.datadoghq.com/logs/guide/correlate-logs-with-metrics/
+
+<br>

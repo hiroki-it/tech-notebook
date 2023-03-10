@@ -78,7 +78,9 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 ### `datadog.yaml`ファイルとは
 
-datadogエージェントを設定する。 `/etc/datadog-agent`ディレクトリに配置される。datadogエージェントをインストールすると、`datadog.yaml.example`ファイルが作成されるため、これをコピーして作成する。
+datadogエージェントを設定する。 `/etc/datadog-agent`ディレクトリに配置される。
+
+datadogエージェントをインストールすると、`datadog.yaml.example`ファイルが作成されるため、これをコピーして作成する。
 
 > ↪️ 参考：
 >
@@ -125,7 +127,6 @@ api_key: <APIキー>
 ログの収集はデフォルトで無効化されているため、有効化する必要がある。
 
 ```yaml
----
 # ---------------------------------------------
 # Log collection Configuration
 # ---------------------------------------------
@@ -227,7 +228,13 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
     "image": "datadog/agent:latest",
     "essential": false,
     "portMappings":
-      [{ "containerPort": 8126, "hostPort": 8126, "protocol": "tcp" }],
+      [
+        {
+          "containerPort": 8126,
+          "hostPort": 8126,
+          "protocol": "tcp"
+        }
+      ],
     "logConfiguration":
       {
         "logDriver": "awslogs",

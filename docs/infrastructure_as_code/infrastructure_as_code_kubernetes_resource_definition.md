@@ -1962,7 +1962,7 @@ spec:
 
 > ↪️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
-もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じNodeにスケジューリングされることを避け、結果として全てのNodeにPodが`1`個ずつスケジューリングされるようになる。
+もし、複製するPodの名前を設定した場合、Podのレプリカ同志は同じNodeにスケジューリングされることを避け、結果として全てのNodeにPodが`1`個ずつスケジューリングされるようになる。
 
 ```yaml
 apiVersion: apps/v1
@@ -2511,6 +2511,18 @@ spec:
 
 <br>
 
+### .spec.containers[].securityContext
+
+#### ▼ securityContextとは
+
+Pod内の特定のコンテナに対して、認可スコープを設定する。
+
+オプションは、`.spec.securityContext`キーと同じである。
+
+> ↪️ 参考：https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
+
+<br>
+
 ### .spec.enableServiceLinks
 
 #### ▼ enableServiceLinks
@@ -2636,6 +2648,69 @@ spec:
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+
+<br>
+
+### .spec.securityContext
+
+#### ▼ securityContextとは
+
+Pod内の全てのコンテナに対して、認可スコープを設定する。
+
+> ↪️ 参考：https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
+
+#### ▼ runAsUser
+
+コンテナのプロセスのユーザーIDを設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  securityContext:
+    runAsUser: 1000
+```
+
+> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-07/#runasuser
+
+#### ▼ runAsGroup
+
+コンテナのプロセスのグループIDを設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  securityContext:
+    runAsGroup: 3000
+```
+
+> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-07/#runasgroup
+
+#### ▼ fsGroup
+
+Podにマウントされているボリュームのファイルに関して、アクセス権限を設定する。
+
+設定した番号を使用して、Podのボリューム`chown`コマンドと`chmod`コマンドを再帰的に実行する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  securityContext:
+    fsGroup: 999
+```
+
+> ↪️ 参考：
+>
+> - https://cstoku.dev/posts/2018/k8sdojo-07/#fsgroup
+> - https://learn.microsoft.com/ja-jp/azure/aks/faq#how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files
 
 <br>
 
