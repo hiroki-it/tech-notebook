@@ -165,7 +165,7 @@ $ kubectl config use-context <ClusterのARN>
 
 #### ▼ RBAC
 
-認証認可に関するKubernetesリソースと、AWSのIAMユーザーを紐づける仕組み。
+認証/認可に関するKubernetesリソースと、AWSのIAMユーザーを紐づける仕組み。
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
