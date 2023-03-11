@@ -193,6 +193,82 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 <br>
 
+## 02-02. 通信ルーティングのパターン
+
+### LoadBalancer Serviceの場合
+
+LoadBalancer Serviceを使用する場合、以下のようなネットワーク経路がある。
+
+**＊例＊**
+
+```
+パブリックネットワーク
+↓
+AWS Route53
+↓
+AWS ALB
+↓
+LoadBalancer Service (Istio IngressGateway)
+↓
+Gateway
+↓
+VirtualService
+↓
+Service
+↓
+Pod
+```
+
+<br>
+
+### NodePort Serviceの場合
+
+#### ▼ ロードバランサーがない場合
+
+NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
+
+**＊例＊**
+
+```
+パブリックネットワーク
+↓
+NodePort Service (Istio IngressGateway)
+↓
+Gateway
+↓
+VirtualService
+↓
+Service
+↓
+Pod
+```
+
+#### ▼ ロードバランサーがある場合
+
+パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に置く (このLBは、Ingressコントローラー由来ではない) 。
+
+**＊例＊**
+
+```
+パブリックネットワーク
+↓
+AWS Route53
+↓
+AWS ALB
+↓
+NodePort Service (Istio IngressGateway)
+↓
+Gateway
+↓
+VirtualService
+↓
+Service
+↓
+Pod
+```
+
+<br>
+
 ## 03. アウトバウンド通信に関するリソース
 
 ### EgressGateway

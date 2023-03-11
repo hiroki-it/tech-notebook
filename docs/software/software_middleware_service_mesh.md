@@ -75,11 +75,11 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 #### ▼ サイドカープロキシメッシュとは
 
-![service-mesh_sidecar-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy.png)
-
 マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。
 
 マイクロサービス間の通信を透過的にする (通信の存在を感じさせない) ことを思想としている。
+
+![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png)
 
 > ↪️ 参考：
 >
