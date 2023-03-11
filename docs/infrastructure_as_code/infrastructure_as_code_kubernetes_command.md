@@ -23,9 +23,10 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 #### ▼ configシンボリックリンク、--kubeconfig
 
-ユーザーが、`config`ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成するか、あるいはコマンドの実行時に`config`ファイルを明示的に指定する必要がある。
+ユーザーが、`config`ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成する。
 
-> ↪️ 参考：https://blog.inductor.me/entry/2021/03/13/205452
+または、コマンドの実行時に`config`ファイルを明示的に指定する。
+
 
 ```bash
 $ cd ~/.kube
@@ -37,6 +38,9 @@ $ ln -s /etc/kubernetes/kubeconfig config
 ```bash
 $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 ```
+
+> ↪️ 参考：https://blog.inductor.me/entry/2021/03/13/205452
+
 
 <br>
 
@@ -113,7 +117,6 @@ pod/foo-pod configured
 
 コントロールプレーンNodeの情報を取得する。
 
-> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
 
 ```bash
 $ kubectl cluster-info
@@ -122,6 +125,9 @@ Kubernetes control plane is running at https://*.*.*.*:443
 CoreDNS is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 ```
+
+> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
+
 
 <br>
 
@@ -278,7 +284,6 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 同じ識別子 (リソース名) のKubernetesリソースが存在する場合は重複エラーになる。
 
-> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
 **＊例＊**
 
@@ -295,6 +300,9 @@ $ kubectl create -f ./kubernetes/foo-service.yaml
 
 service/foo-service created
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+
 
 #### ▼ deployment
 
@@ -433,7 +441,6 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 
 簡易的な情報を参照する時は、`kubectl get`コマンドを使用する。
 
-> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 **＊例＊**
 
@@ -463,6 +470,9 @@ PolicyRule:
 ...
 
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+
 
 #### ▼ -A
 

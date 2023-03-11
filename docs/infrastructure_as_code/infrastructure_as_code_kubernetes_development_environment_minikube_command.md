@@ -260,7 +260,9 @@ $ minikube ip
 
 #### ▼ kubectlとは
 
-Minikubeのkube-apiserverをコンテキストとする`kubectl`コマンドを実行する。ローカルマシンに`kubectl`コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
+Minikubeのkube-apiserverをコンテキストとする`kubectl`コマンドを実行する。
+
+ローカルマシンに`kubectl`コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
 ```bash
 $ minikube kubectl -- version
