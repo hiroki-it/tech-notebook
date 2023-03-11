@@ -21,7 +21,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 サイドカープロキシメッシュは、サイドカープロキシ型のサービスメッシュを実装したものである。
 
-マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー収集、など) を解決するためのロジックをサイドカーとして切り分け、各アプリコンテナに共通的に提供することができる。
+マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決するためのロジックをサイドカーとして切り分け、各アプリコンテナに共通的に提供することができる。
 
 > ↪️ 参考：
 >
@@ -268,11 +268,13 @@ Istiodコントロールプレーンを使用する代わりに、外部の中�
 
 <br>
 
-## 06. テレメトリーの収集
+## 06. テレメトリーの作成
 
 ### 他のOSSとの連携
 
-各テレメトリー収集ツールは、プル型 (ツールがIstiodから収集) やプッシュ型 (Istiodがツールに送信) でテレメトリーを収集する。
+IstioによるEnvoyは、テレメトリーを作成する。
+
+各テレメトリー収集ツールは、プル型 (ツールがIstiodから収集) やプッシュ型 (Istiodがツールに送信) でこのテレメトリーを収集する。
 
 > ↪️ 参考：https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17
 
@@ -282,9 +284,32 @@ Istiodコントロールプレーンを使用する代わりに、外部の中�
 
 #### ▼ Prometheus
 
-IstioによるEnvoyは、メトリクスを収集し、PrometheusやGrafanaに送信する。
+IstiodによるEnvoyは、メトリクスを作成し、Istiodに送信する。
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
+Prometheusは、Istiodからメトリクスを収集する。
+
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
+> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22
+
+#### ▼ `istio-proxy`コンテナに関するメトリクス
+
+Prometheus上でメトリクスをクエリすると、Istiodから収集したメトリクスを取得できる。
+
+| メトリクス                                                          | 単位     | 説明                                                                                                                                                                                              | アラート条件例 (合致したら発火) |
+| ------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| 総リクエスト数 (`istio_requests_total`)                             | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                                 |
+| 総gRPCリクエスト数 (`istio_request_messages_total`)                 | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                         |                                 |
+| 総gRPCレスポンス数 (`istio_response_messages_total`)                | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                         |                                 |
+| Pod間通信リトライ数 (`envoy_cluster_upstream_rq_retry`)             | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                                  |                                 |
+| Pod間通信リトライ成功数 (`envoy_cluster_upstream_rq_retry_success`) | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                              |
+
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/reference/config/metrics/
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
+> - https://www.zhaohuabing.com/post/2023-02-14-istio-metrics-deep-dive/
 
 <br>
 
@@ -292,7 +317,7 @@ IstioによるEnvoyは、メトリクスを収集し、PrometheusやGrafanaに�
 
 #### ▼ 標準出力
 
-IstioによるEnvoyは、アクセスログを収集し、標準出力に出力する。
+IstioによるEnvoyは、アクセスログを作成し、標準出力に出力する。
 
 アクセスログにデフォルトで役立つ値が出力される。
 
@@ -300,7 +325,7 @@ IstioによるEnvoyは、アクセスログを収集し、標準出力に出力�
 
 #### ▼ OpenTelemetryのコレクター
 
-IstioによるEnvoyは、アクセスログを収集し、OpenTelemetryのコレクターに出力する。
+IstioによるEnvoyは、アクセスログを作成し、OpenTelemetryのコレクターに出力する。
 
 > ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
@@ -310,9 +335,9 @@ IstioによるEnvoyは、アクセスログを収集し、OpenTelemetryのコレ
 
 #### ▼ メタデータ伝播 (分散コンテキスト伝播)
 
-Istioは、分散トレースのためのメタデータを作成するが、これをアプリコンテナ間で伝播することはしない。
+Istioは、分散トレースのためのメタデータを作成し、Jaegerに送信する。
 
-そのため、伝播のための実装が必要になる。
+ただし、アプリコンテナ間で伝播することはしないため、伝播の実装が必要になる。
 
 > ↪️ 参考：
 >

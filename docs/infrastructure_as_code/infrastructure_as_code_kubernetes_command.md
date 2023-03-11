@@ -27,7 +27,6 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 または、コマンドの実行時に`config`ファイルを明示的に指定する。
 
-
 ```bash
 $ cd ~/.kube
 
@@ -40,7 +39,6 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 ```
 
 > ↪️ 参考：https://blog.inductor.me/entry/2021/03/13/205452
-
 
 <br>
 
@@ -117,7 +115,6 @@ pod/foo-pod configured
 
 コントロールプレーンNodeの情報を取得する。
 
-
 ```bash
 $ kubectl cluster-info
 
@@ -127,7 +124,6 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 ```
 
 > ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
-
 
 <br>
 
@@ -284,7 +280,6 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 同じ識別子 (リソース名) のKubernetesリソースが存在する場合は重複エラーになる。
 
-
 **＊例＊**
 
 マニフェストを指定し、`kubectl create`コマンドを実行する。
@@ -302,7 +297,6 @@ service/foo-service created
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
-
 
 #### ▼ deployment
 
@@ -441,7 +435,6 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 
 簡易的な情報を参照する時は、`kubectl get`コマンドを使用する。
 
-
 **＊例＊**
 
 ```bash
@@ -472,7 +465,6 @@ PolicyRule:
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
-
 
 #### ▼ -A
 
