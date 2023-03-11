@@ -250,11 +250,13 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 <br>
 
-### ４大シグナル
+### ゴールデンシグナル (４大シグナル)
 
-#### ▼ ４大シグナルとは
+#### ▼ ゴールデンシグナルとは
 
 特に重要なメトリクス (トラフィック、レイテンシー、エラー、サチュレーション) のこと。
+
+> ↪️ 参考：https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
 
 #### ▼ トラフィック
 

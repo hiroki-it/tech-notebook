@@ -41,7 +41,7 @@ Ingressコントローラーや、それに相当するもの (AWS LBコント�
 
 ### AWS LBコントローラーとは
 
-![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
+![aws_lb_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_lb_controller.png)
 
 AWS LBコントローラーは、コントローラーの本体であるPod、TargetGroupBinding、から構成されている。
 
@@ -59,7 +59,7 @@ ClusterIP Service
 Pod
 ```
 
-`alb`が宣言されたIngressClassを検知して、AWS上に専用のALBを自動的にプロビジョニングする。
+Ingressで`alb`のIngressClassを指定していること検知して、Ingressの設定に応じたAWS ALBを自動的にプロビジョニングする。
 
 また、TargetGroupBindingを介して、ALBのターゲットグループとIngressを紐づける。
 
@@ -67,6 +67,7 @@ Pod
 >
 > - https://blog.recruit.co.jp/rmp/infrastructure/post-21469/
 > - https://aws.amazon.com/cn/blogs/china/use-aws-load-balancer-controller-s-targetgroupbinding-function-to-realize-flexible-load-balancer-management/
+> - https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
 
 <br>
 
@@ -477,6 +478,8 @@ AWS ALBのリスナールールを定義するために、Ingressの`.spec.rules
 <br>
 
 ### TargetGroupBinding
+
+![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
 記入中...
 

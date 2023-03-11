@@ -44,7 +44,7 @@ OTelクライアントパッケージは、APIパッケージ、SDKパッケー�
 
 OpenTelemetry用パッケージからのテレメトリーデータを、APIパッケージで受け取り、最終的にOTelコレクターにこれを渡す。
 
-もし、サービスメッシュツール (例：Istio) のサイドカーメッシュとOpenTelemetryの両方を採用する場合、OTelクライアントパッケージの代わりにサイドカーを使用することになるため、OTelクライアントパッケージは不要になる。
+もし、サービスメッシュツール (例：Istio) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、OTelクライアントパッケージの代わりにサイドカーを使用することになるため、OTelクライアントパッケージは不要になる。
 
 ![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
 
@@ -58,7 +58,7 @@ OTelコレクターは、レシーバー、プロセッサー、エクスポー�
 
 OTelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
 
-もし、サービスメッシュツール (例：Istio) のサイドカーメッシュとOpenTelemetryの両方を採用する場合、OTelクライアントパッケージの代わりに、サイドカーがOTelコレクターにテレメトリーデータを送信する責務を持つ。
+もし、サービスメッシュツール (例：Istio) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、OTelクライアントパッケージの代わりに、サイドカーがOTelコレクターにテレメトリーデータを送信する責務を持つ。
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 

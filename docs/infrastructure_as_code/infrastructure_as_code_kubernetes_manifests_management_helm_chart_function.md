@@ -291,6 +291,28 @@ data:
 
 ## 05. 変数に関する関数
 
+### 変数
+
+#### ▼ 予約された変数
+
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+
+#### ▼ ローカル変数
+
+```yaml
+{{- $domain := "https://{{ .Values.serviceName }}.argocd.com" }}
+```
+
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+
+#### ▼ グローバル変数
+
+`_helpers.tpl`ファイルで定義する。
+
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+
+<br>
+
 ### b64enc
 
 #### ▼ b64encとは
@@ -464,18 +486,8 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/secret:
-          {
-            {
-              include (print $.Template.BasePath "/foo-secret.yaml") . | sha256sum,
-            },
-          }
-        checksum/config:
-          {
-            {
-              include (print $.Template.BasePath "/foo-configmap.yaml") . | sha256sum,
-            },
-          }
+        checksum/secret: "{{ include (print $.Template.BasePath '/foo-secret.yaml') . | sha256sum }}"
+        checksum/config: "{{ include (print $.Template.BasePath '/foo-configmap.yaml') . | sha256sum }}"
     spec:
       containers:
         - name: foo-gin

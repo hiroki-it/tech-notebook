@@ -788,7 +788,7 @@ module.exports = new Vuex.Store({
                 */
         (element) => {
           state.exArray.push(element);
-        },
+        }
 
         /* 
                 ※アロー関数を使用しなければ、以下の様に記述できる。
