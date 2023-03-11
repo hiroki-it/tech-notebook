@@ -322,7 +322,7 @@ $ kubectl get fo
 
 カスタムリソース定義に対応するカスタムリソースに関して、APIグループのバージョンを設定する。
 
-複数のバージョンのカスタムリソース定義をCluster内で同時に管理する場合、`.spec.versions[].name`キー配下に複数
+複数のバージョンのカスタムリソース定義をCluster内で同時に管理する場合、`.spec.versions[].name`キー配下に複数のスキーマを定義する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -383,8 +383,6 @@ spec:
 カスタムリソースの`.spec`キー以下に設定できるキーと、これのデータ型を設定する。
 
 例えば『`message`』というstring型のキーを設定すると、カスタムリソースの`.spec.message`キーに任意のstring型を設定できるようになる。
-
-カスタムリソース内部のPodのデプロイ戦略は、Deployment、StatefulSet、DaemonSet、の設定値によって決まることになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

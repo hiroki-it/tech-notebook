@@ -67,7 +67,7 @@
 ### サービスメッシュ系
 
 * #### [︎サービスメッシュ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh.html)
-* #### [︎サービスメッシュの担う責務](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_comparison.html)
+* #### [︎サービスメッシュの担う責務](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_responsibility.html)
 * #### <u>Envoy</u>
   > * ##### [︎Envoy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy.html)
   > * ##### [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_envoy_yaml.html)

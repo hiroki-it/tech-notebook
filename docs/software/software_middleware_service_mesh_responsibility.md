@@ -34,7 +34,7 @@ description: 各サービスメッシュツールが担う責務＠サービス�
 | 能力 (執筆時点2023/03/11) | Kubernetes (サービスメッシュ採用せず) | Istio | Linkerd | Consul | AWS App Mesh |
 | ------------------------- | :-----------------------------------: | :---: | :-----: | :----: | :----------: |
 | TCP                       |         Service + kube-proxy          |  ⭕️  |   ⭕️   |  ⭕️   |     ⭕️      |
-| gRPC                      |         Service + kube-proxy          |  ⭕️  |   ⭕️   |  ⭕️   |     ⭕️      |
+| gRPC                      |     Service + kube-proxy、Ingress     |  ⭕️  |   ⭕️   |  ⭕️   |     ⭕️      |
 | HTTP/1.2                  |                Ingress                |  ⭕️  |   ⭕️   |  ⭕️   |     ⭕️      |
 | HTTP/2.0                  |                Ingress                |  ⭕️  |   ⭕️   |  ⭕️   |     ⭕️      |
 
@@ -83,10 +83,10 @@ Kubernetesでは、Serviceは単一のバージョンのPodとしか通信でき
 
 Kubernetesでは、Podの作成に応じて証明書のKubernetesリソース (Certificate、CertificateSigningRequest、など) を作成する必要がある。
 
-| 能力 (執筆時点2023/03/11) | Kubernetes (サービスメッシュ採用せず) |            Istio             | Linkerd | Consul | AWS App Mesh |
-| ------------------------- | :-----------------------------------: | :--------------------------: | :-----: | :----: | :----------: |
-| SSL証明書のローテーション | SSL証明書管理ツール (例：CertManager) |             ⭕️              |    ×    |  ⭕️   |     ⭕️      |
-| 相互TLS                   |      相互TLSツール (例：Spiffe)       | ⭕️ (Spiffeへ置き換えできる) |   ⭕️   |  ⭕️   |     ⭕️      |
+| 能力 (執筆時点2023/03/11) | Kubernetes (サービスメッシュ採用せず) |              Istio              | Linkerd | Consul | AWS App Mesh |
+| ------------------------- | :-----------------------------------: | :-----------------------------: | :-----: | :----: | :----------: |
+| SSL証明書のローテーション | SSL証明書管理ツール (例：CertManager) |               ⭕️               |    ×    |  ⭕️   |     ⭕️      |
+| 相互TLS                   |      相互TLSツール (例：Spiffe)       | ⭕️<br>(Spiffeへ置き換えできる) |   ⭕️   |  ⭕️   |     ⭕️      |
 
 <br>
 
