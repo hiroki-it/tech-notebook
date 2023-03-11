@@ -194,6 +194,7 @@ nav:
               - 設定ファイル: software/software_middleware_security_falco_conf.md
       - ■ サービスメッシュ系:
           - サービスメッシュ: software/software_middleware_service_mesh.md
+          - サービスメッシュ採用に関わる比較: software/software_middleware_service_mesh_comparison.md
           - ■ Envoy:
               - Envoy: software/software_middleware_service_mesh_envoy.md
               - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
@@ -328,8 +329,8 @@ nav:
           - ■ OSI参照モデル:
               - OSI参照モデル: network/network_model_osi.md
               - ■ L5 - L7:
-                  L5 - L7: network/network_model_osi_l5_l7.md
-                  メッセージ: network/network_model_osi_l5_l7_message.md
+                  - L5 - L7: network/network_model_osi_l5_l7.md
+                  - メッセージ: network/network_model_osi_l5_l7_message.md
               - L4: network/network_model_osi_l4.md
               - L3: network/network_model_osi_l3.md
 
