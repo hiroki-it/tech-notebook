@@ -1,4 +1,6 @@
-# NOTE: JSONが不自然な位置で改行される場合は、コメントアウトを意図的に追加する
+# NOTE:
+# JSONが不自然な位置で改行される場合は、改行箇所にコメントアウトを追加する。
+# すると、prettierが改行をやめるようになる。
 trailingComma: all
 overrides:
   - files:
