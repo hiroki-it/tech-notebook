@@ -146,11 +146,16 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 #### ▼ 送信される構造化ログ
 
+`status`キー
+
 > ↪️ 参考：https://docs.datadoghq.com/logs/log_collection/javascript/#results
 
 ```yaml
-{"content": {
-      "attributes": {
+{
+  "content":
+    {
+      "attributes":
+        {
           "error": {"origin": "network", "stack": "Failed to load"},
           "http":
             {
@@ -159,12 +164,10 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
           "network": {"client": {"ip": "18.180.199.160"}},
           "service": "prd-foo-ssg",
           "session_id": "*****",
-          # コンソールログのステータス
+          `#コンソールログのステータス`
           "status": "error",
-          # ブラウザで表示されたWebページのURL。非同期リクエストのエラーは、こちらではなくmessage属性に記載される。
           "view": {"referrer": "", "url": "https://example.com/"},
         },
-      # コンソールログの内容。非同期リクエストのエラーは、view.urlではなくこちらに記載される。
       "message": "XHR error POST https://async.jp",
       "service": "prd-foo-ssg",
       "tags":
@@ -175,7 +178,9 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
           "source:browser",
           "env:prd",
         ],
-    }, "id": "*****"}
+    },
+  "id": "*****",
+}
 ```
 
 <br>
@@ -557,13 +562,7 @@ CRITICAL @http.status_code:[500 TO 599]
 補足として、`http.status_category`属性以外は元の構造化ログと同じため、省略している。
 
 ```yaml
-{? ...
-
-    "http"
-  : {? ...
-
-        status_category
-      : "info"}, ...}
+{"http": {status_category: "info"}, ...}
 ```
 
 これに対して、ステータスリマッパーのルールを定義する。
@@ -851,10 +850,16 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカ�
 補足として、`service`属性以外は元の構造化ログと同じため、省略している。
 
 ```yaml
-{"content": {? ...
+{
+  "content": {
 
-        "service"
-      : "foo-apigateway", ...}, ...}
+    ...
+
+    "service": "foo-apigateway"
+
+    ...
+  }
+}
 ```
 
 これに対して、サービスリマッパーのルールを定義する。
@@ -976,13 +981,13 @@ https://example.com%{http.url}
 これにより、以下の構造化ログが得られる。
 
 ```yaml
-{"date": 1609502400000, ? ...
+{
+  "date": 1609502400000,
 
-    "http"
-  : {? ...
+  "http": {"url_full": "https://example.com/users?paginate=10&fooId=1"},
 
-        "url_full"
-      : "https://example.com/users?paginate=10&fooId=1"}, ...}
+  ...,
+}
 ```
 
 <br>

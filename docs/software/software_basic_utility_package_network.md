@@ -623,13 +623,13 @@ $ traceroute *.*.*.* -T -p 443
 ```bash
 $ tracepath -n google.com
 
- 1?: [LOCALHOST]                                       pmtu 9001
- 1:  *.*.*.*                                           0.200ms pmtu 1500
- 1:  no reply
- 2:  no reply
- 3:  no reply
- 4:  no reply
- 5:  no reply
+1: [LOCALHOST]                                       pmtu 9001
+1:  *.*.*.*                                           0.200ms pmtu 1500
+1:  no reply
+2:  no reply
+3:  no reply
+4:  no reply
+5:  no reply
 ```
 
 <br>

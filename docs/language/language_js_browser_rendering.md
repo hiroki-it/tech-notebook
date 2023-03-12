@@ -516,7 +516,7 @@ document.getElementById("btn").onclick = () => {
     () => {
       console.log("クリックされました！");
     },
-    false
+    false,
   );
 </script>
 ```

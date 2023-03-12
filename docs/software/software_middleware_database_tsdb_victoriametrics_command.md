@@ -21,12 +21,6 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 データポイント数が少なくなるため、ストレージ容量を節約できる。
 
-> ↪️ 参考：
->
-> - https://docs.victoriametrics.com/#downsampling
-> - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
-
 **＊例＊**
 
 `30`日以前のデータを`5`分ごとダウンサンプリングにする。
@@ -34,6 +28,12 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 ```bash
 $ victoria-metrics-prod -downsampling.period=30d:5m
 ```
+
+> ↪️ 参考：
+>
+> - https://docs.victoriametrics.com/#downsampling
+> - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
+> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 <br>
 
@@ -47,16 +47,16 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 
 この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。
 
-> ↪️ 参考：
->
-> - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
-
 **＊例＊**
 
 ```bash
 $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 ```
+
+> ↪️ 参考：
+>
+> - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
+> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 <br>
 
@@ -78,13 +78,13 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 設定したディレクトリ配下に`data`ディレクトリを作成し、これの配下にメトリクスを保管する。
 
-> ↪️ 参考：https://docs.victoriametrics.com/#storage
-
 **＊例＊**
 
 ```bash
 $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 ```
+
+> ↪️ 参考：https://docs.victoriametrics.com/#storage
 
 <br>
 
@@ -94,16 +94,16 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 `h(ours)`、`d(ays)`、`w(eeks)`、`y(ears)`、単位なし (`month`) で期間の単位を指定できる。
 
-> ↪️ 参考：
->
-> - https://docs.victoriametrics.com/#retention
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
-
 **＊例＊**
 
 ```bash
 $ victoria-metrics-prod -retentionPeriod=90d
 ```
+
+> ↪️ 参考：
+>
+> - https://docs.victoriametrics.com/#retention
+> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 <br>
 

@@ -108,15 +108,15 @@ uWSGIの`uwsgi`プロセスのプールを設定する。
 
 デフォルト値は、`application`である。
 
-> ↪️ 参考：
->
-> - https://laplace-daemon.com/nginx-uwsgi-flask/
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
-
 ```ini
 [uwsgi]
 callable = app
 ```
+
+> ↪️ 参考：
+>
+> - https://laplace-daemon.com/nginx-uwsgi-flask/
+> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
 
 <br>
 
@@ -124,12 +124,12 @@ callable = app
 
 作業ディレクトリから移動する。
 
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
-
 ```ini
 [uwsgi]
 chdir=/var/www/foo
 ```
+
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
 
 <br>
 
@@ -137,23 +137,23 @@ chdir=/var/www/foo
 
 UNIXドメインソケットファイルの権限を設定する。
 
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
-
 ```ini
 [uwsgi]
 chmod-socket = 666
 ```
 
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
+
 <br>
 
 ### die-on-term
-
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
 
 ```ini
 [uwsgi]
 die-on-term = true
 ```
+
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
 
 <br>
 
@@ -176,12 +176,12 @@ http = 0.0.0.0:5000
 
 ログの出力先を設定する。
 
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
-
 ```ini
 [uwsgi]
 logto = /dev/stdout
 ```
+
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
 
 <br>
 
@@ -189,12 +189,12 @@ logto = /dev/stdout
 
 マスターモードで起動するか否かを設定する。
 
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
-
 ```ini
 [uwsgi]
 master = true
 ```
+
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
 
 <br>
 
@@ -202,34 +202,34 @@ master = true
 
 Pythonでアプリケーションファクトリーパターンを採用している場合、エントリーポイントのディレクトリ名とファクトリーメソッド名を設定する。
 
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
-
 ```ini
 [uwsgi]
 module = src:create_app()
 ```
 
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
+
 <br>
 
 ### processes
-
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
 
 ```ini
 [uwsgi]
 processes = 1
 ```
 
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
+
 <br>
 
 ### py-autoreload
-
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
 
 ```ini
 [uwsgi]
 py-autoreload = 1
 ```
+
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
 
 <br>
 
@@ -237,12 +237,12 @@ py-autoreload = 1
 
 アプリケーションのあるディレクトリを設定する。
 
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
-
 ```ini
 [uwsgi]
 python-path = /var/www/foo
 ```
+
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
 
 <br>
 
@@ -252,15 +252,15 @@ UNIXドメインソケットを使用する場合、ソケットファイルの�
 
 Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
 
-> ↪️ 参考：
-
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
-> - https://qiita.com/koyoru1214/items/57461b920dfc11f67683
-
 ```ini
 [uwsgi]
 socket = /etc/uwsgi/uwsgi.sock:5000
 ```
+
+> ↪️ 参考：
+
+> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
+> - https://qiita.com/koyoru1214/items/57461b920dfc11f67683
 
 <br>
 
@@ -268,12 +268,12 @@ socket = /etc/uwsgi/uwsgi.sock:5000
 
 uwsgiプロセス終了時にソケットファイルを削除するか否かを設定する。
 
-> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
-
 ```ini
 [uwsgi]
 vacuum = true
 ```
+
+> ↪️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
 
 <br>
 

@@ -51,9 +51,10 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-ebs-csi.html
 
 ```terraform
-module "iam_assumable_role_ebs_csi_driver_with_oidc" {
+module "iam_assumable_role_with_oidc_ebs_csi_driver" {
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
   version                       = "<モジュールのバージョン>"
 
   # EBS CSIコントローラーのPodに紐づけるIAMロール

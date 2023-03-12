@@ -47,18 +47,19 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 <br>
 
-### IAMユーザーの発行元
+## 02. IAMユーザーの発行元
 
-#### ▼ フェデレーテッドユーザー
+### フェデレーテッドユーザー
 
 任意のIDプロバイダーで認証されたユーザー (フェデレーテッドユーザー) にIAMロールを付与することで、AWSリソースにアクセスできるようにできる。
 
-> ↪️ 参考：
->
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers.html
 
-#### ▼ Cognito
+<br>
+
+### Web IDフェデレーション
+
+#### ▼ Cognitoの場合
 
 CognitoをIDプロバイダーとして使用するように、信頼されたエンティティを設定する。
 
@@ -80,7 +81,7 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 }
 ```
 
-#### ▼ EKS
+#### ▼ EKSの場合
 
 ![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
@@ -132,6 +133,15 @@ metadata:
 >
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
+> - https://moneyforward-dev.jp/entry/2021/12/19/irsa/
+
+<br>
+
+### SAMLベースフェデレーション
+
+記入中...
+
+> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_saml.html
 
 <br>
 
@@ -187,10 +197,21 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 フェデレーテッドユーザーは任意のIPプロバイダーで発行する。
 
 ```yaml
-{"Version": "2012-10-17", "Statement": {"Effect": "Allow", "Principal": {
-          # IDプロバイダーをCognitoとしている。
-          "Federated": "cognito-identity.amazonaws.com",
-        }, "Action": "sts:AssumeRoleWithWebIdentity", "Condition": {"StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"}, "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "unauthenticated"}}}}
+{
+  "Version": "2012-10-17",
+  "Statement":
+    {
+      "Effect": "Allow",
+      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition":
+        {
+          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
+          "ForAnyValue:StringLike":
+            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
+        },
+    },
+}
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
@@ -267,10 +288,7 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
         "Effect": "Allow",
         "Principal": {"AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
-        "Condition": {"StringEquals": {
-                # IAMユーザーを使用する場合は、外部IDが必要になる。
-                "sts:ExternalId": "<適当な文字列>",
-              }},
+        "Condition": {"StringEquals": {"sts:ExternalId": "<適当な文字列>"}},
       },
     ],
 }
@@ -345,17 +363,33 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 ```yaml
-# レスポンスデータ
-# ~/.aws/cli/cacheディレクトリ配下にも保存される。
-{"Credentials": {
-      "AccessKeyId": "<アクセスキーID>", # 必要になる値"
-      "SecretAccessKey": "<シークレットアクセスキー>", # 必要になる値
-      "SessionToken": "<セッショントークン文字列>", # 必要になる値
+{
+  "Credentials":
+    {
+      "AccessKeyId": "<アクセスキーID>",
+      "SecretAccessKey": "<シークレットアクセスキー>",
+      "SessionToken": "<セッショントークン文字列>",
       "Expiration": "<セッションの期限>",
-    }, "AssumeRoleUser": {
+    },
+  "AssumeRoleUser":
+    {
       "AssumedRoleId": "<セッションID>:<セッション名>",
-      "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>", # 一時的なIAMユーザー
-    }, "ResponseMetadata": {"RequestId": "*****", "HTTPStatusCode": 200, "HTTPHeaders": {"x-amzn-requestid": "*****", "content-type": "text/xml", "content-length": "1472", "date": "Fri, 01 Jul 2022 13:00:00 GMT"}, "RetryAttempts": 0}}
+      "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>",
+    },
+  "ResponseMetadata":
+    {
+      "RequestId": "*****",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders":
+        {
+          "x-amzn-requestid": "*****",
+          "content-type": "text/xml",
+          "content-length": "1472",
+          "date": "Fri, 01 Jul 2022 13:00:00 GMT",
+        },
+      "RetryAttempts": 0,
+    },
+}
 ```
 
 <br>

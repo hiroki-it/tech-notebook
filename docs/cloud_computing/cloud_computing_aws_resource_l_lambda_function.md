@@ -422,7 +422,7 @@ exports.handler = async (event) => {
     },
     (error) => {
       // 非同期処理が失敗した時の後続処理
-    }
+    },
   );
 };
 ```
@@ -507,7 +507,7 @@ const buildMessage = (event, app) => {
                 "%s環境",
                 event.detail.appId === process.env.AMPLIFY_APP_ID_PC
                   ? ":computer: PC"
-                  : ":iphone: SP"
+                  : ":iphone: SP",
               ),
             },
           },
@@ -518,7 +518,7 @@ const buildMessage = (event, app) => {
                 type: "mrkdwn",
                 text: format(
                   "*結果*: %s",
-                  event.detail.jobStatus === "SUCCEED" ? "成功" : "失敗"
+                  event.detail.jobStatus === "SUCCEED" ? "成功" : "失敗",
                 ),
               },
             ],
@@ -539,7 +539,7 @@ const buildMessage = (event, app) => {
                 type: "mrkdwn",
                 text: format(
                   "*プルリクエストURL*: https://github.com/foo-repository/compare/%s",
-                  event.detail.branchName
+                  event.detail.branchName,
                 ),
               },
             ],
@@ -552,7 +552,7 @@ const buildMessage = (event, app) => {
                 text: format(
                   "*検証URL*: https://%s.%s.amplifyapp.com",
                   app.branch.displayName,
-                  event.detail.appId
+                  event.detail.appId,
                 ),
               },
             ],
@@ -568,7 +568,7 @@ const buildMessage = (event, app) => {
                   event.region,
                   event.detail.appId,
                   app.branch.displayName,
-                  event.detail.jobId
+                  event.detail.jobId,
                 ),
               },
             ],
@@ -709,7 +709,7 @@ exports.handler = (event, context, callback) => {
       response.statusCode = 200;
       response.body = "OK";
       return callback(null, response);
-    }
+    },
   );
 };
 ```

@@ -120,7 +120,7 @@ const payload = {
 ```javascript
 const signature = HMACSHA256(
   base64urlEncoding(header) + "." + base64urlEncoding(payload),
-  secret
+  secret,
 );
 ```
 

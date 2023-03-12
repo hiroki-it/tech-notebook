@@ -44,29 +44,15 @@ $ sudo apt-get update && sudo apt-get install packer
 AMIを作成するリージョンを設定する。
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "region": "ap-northeast-1",
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "region": "ap-northeast-1"}]}
 ```
 
 #### ▼ source_ami
 
-AMIの基とするAMIを設定する。
+AMIの基とするAMI (例：Amazon Linux 2 AMI) を設定する。
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "source_ami": "ami-0b7546e839d7ace12", # Amazon Linux 2 AMI
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "source_ami": "ami-0b7546e839d7ace12"}]}
 ```
 
 #### ▼ ami_name
@@ -74,53 +60,25 @@ AMIの基とするAMIを設定する。
 AMIの名前を設定する。
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "ami_name": "bar-ami",
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "ami_name": "bar-ami"}]}
 ```
 
 #### ▼ ami_users
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "ami_users": "<アカウントID>",
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "ami_users": "<アカウントID>"}]}
 ```
 
 #### ▼ snapshot_users
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "snapshot_users": "<アカウントID>",
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "snapshot_users": "<アカウントID>"}]}
 ```
 
 #### ▼ instance_type
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "instance_type": "t2.micro",
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "instance_type": "t2.micro"}]}
 ```
 
 #### ▼ ssh_username
@@ -128,40 +86,19 @@ AMIの名前を設定する。
 EC2インスタンスへのSSH公開鍵認証時に使用するユーザー名を設定する。
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "ssh_username": "ec2-user",
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "ssh_username": "ec2-user"}]}
 ```
 
 #### ▼ ena_support
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "ena_support": true,
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "ena_support": true}]}
 ```
 
 #### ▼ encrypt_boot
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "encrypt_boot": false,
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "encrypt_boot": false}]}
 ```
 
 #### ▼ force_deregister
@@ -175,14 +112,7 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 そういった場合に必要になる。
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "force_deregister": true,
-    }
-  ]
-}
+{"builders": [{"type": "amazon-ebs", "force_deregister": true}]}
 ```
 
 #### ▼ launch_block_device_mappings
@@ -190,20 +120,22 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 EC2インスタンスに紐づけるルートデバイスボリュームを設定する。
 
 ```yaml
-}
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "launch_block_device_mappings": [
-        {
-          "device_name": "/dev/xvda",
-          "volume_type": "gp2",
-          "delete_on_termination": "true",
-          "volume_size": "300"
-        }
-      ]
-    }
-  ]
+{
+  "builders":
+    [
+      {
+        "type": "amazon-ebs",
+        "launch_block_device_mappings":
+          [
+            {
+              "device_name": "/dev/xvda",
+              "volume_type": "gp2",
+              "delete_on_termination": "true",
+              "volume_size": "300",
+            },
+          ],
+      },
+    ],
 }
 ```
 
@@ -224,27 +156,13 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 #### ▼ playbook_file
 
 ```yaml
-}
-  "provisioners": [
-    {
-      "type": "ansible",
-      "playbook_file": "./playbook.yml",
-    }
-  ]
-}
+{"provisioners": [{"type": "ansible", "playbook_file": "./playbook.yml"}]}
 ```
 
 #### ▼ user
 
 ```yaml
-}
-  "provisioners": [
-    {
-      "type": "ansible",
-      "user": "ec2-user"
-    }
-  ]
-}
+{"provisioners": [{"type": "ansible", "user": "ec2-user"}]}
 ```
 
 <br>
@@ -254,16 +172,7 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 #### ▼ inline
 
 ```yaml
-}
-  "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "echo Hello World"
-      ]
-    },
-  ]
-}
+{"provisioners": [{"type": "shell", "inline": ["echo Hello World"]}]}
 ```
 
 <br>

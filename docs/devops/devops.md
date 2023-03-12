@@ -107,6 +107,8 @@ DevOpsの実現方法には、CIOpsまたはGitOpsがある。
 
 #### ▼ CIOpsとは
 
+DevOpsを実現する技術的要素の一つ。
+
 CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。
 
 例えばCircleCIでアプリケーションのビルドからデプロイまでを実装する。
@@ -146,6 +148,8 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理
 #### ▼ GitOpsとは
 
 ![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
+
+DevOpsを実現する技術的要素の一つ。
 
 CIツールを使用してCIパイプラインを、またはCDツールを使用してCDパイプラインを、実装する手法のこと。
 

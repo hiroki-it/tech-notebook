@@ -62,7 +62,7 @@ GitOpsのベストプラクティスに則って、アプリケーションリ�
 app-manifest-repository/
 ├── tes/
 │   ├── deployment.yaml
-│   ....
+│   ...
 │
 ├── stg/
 └── prd/
@@ -77,7 +77,7 @@ app-manifest-repository/
 infra-manifest-repository/
 ├── tes/
 │   ├── deployment.yaml
-│   ....
+│   ...
 │
 ├── stg/
 └── prd/
@@ -127,7 +127,7 @@ app-manifest-repository/ # マニフェストリポジトリまたはチャー�
 infra-manifest-repository/ # マニフェストリポジトリまたはチャートリポジトリ
 ├── tes/
 │   ├── deployment.yaml
-│   ....
+│   ...
 │
 ├── stg/
 └── prd/

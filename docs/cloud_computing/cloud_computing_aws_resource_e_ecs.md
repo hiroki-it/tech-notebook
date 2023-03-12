@@ -726,13 +726,23 @@ Systems Managerを使用してコンテナに接続する場合、コンテナ�
      これにより、ECSタスクがセッションマネージャーにアクセスできるようになる。
 
 ```yaml
-{"Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Action": [
-            # ssmmessages APIへの認可スコープ
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Action":
+          [
             "ssmmessages:CreateControlChannel",
             "ssmmessages:CreateDataChannel",
             "ssmmessages:OpenControlChannel",
             "ssmmessages:OpenDataChannel",
-          ], "Resource": "*"}]}
+          ],
+        "Resource": "*",
+      },
+    ],
+}
 ```
 
 `【４】`

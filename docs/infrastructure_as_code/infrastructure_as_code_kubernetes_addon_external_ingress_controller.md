@@ -83,6 +83,7 @@ Terraformの公式モジュールを使用する。
 
 ```terraform
 module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
+
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
 
   version                       = "<モジュールのバージョン>"

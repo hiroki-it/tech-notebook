@@ -56,21 +56,16 @@ description: テレメトリー間の紐付け＠Datadog
 トレーシングパッケージを導入したコンテナの環境変数で値を設定する。
 
 ```yaml
-{? ...
-
-    "environment"
-  : [
+{
+  "environment":
+    [
       {"name": "DD_ENV", "value": "prd"},
-      {
-        "name": "DD_SERVICE_NAME", # フレームワーク
-        "value": "order",
-      },
-      {
-        "name": "DD_SERVICE_MAPPING", # フレームワーク以外
-        "value": "pdo:order-eloquent",
-      },
+      {"name": "DD_SERVICE_NAME", "value": "order"},
+      {"name": "DD_SERVICE_MAPPING", "value": "pdo:order-eloquent"},
       {"name": "DD_VERSION", "value": "1.0.0"},
-    ], ...}
+    ],
+  ...,
+}
 ```
 
 #### ▼ service

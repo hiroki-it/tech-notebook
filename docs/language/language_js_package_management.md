@@ -109,11 +109,10 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 パッケージのディレクトリ構造を設定する。
 
+`doc`キーでドキュメントのパス、`lib`でパッケージのパスを指定する。
+
 ```yaml
-{"directories": {
-      "doc": "foo/doc", # ドキュメント
-      "lib": "foo/lib", # 実装
-    }}
+{"directories": {"doc": "foo/doc", "lib": "foo/lib"}}
 ```
 
 > ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
@@ -284,7 +283,9 @@ $ npm run <エイリアス>
 補足として、実行するコマンドの中で、再び`npm run`コマンドも定義できる。
 
 ```yaml
-{"scripts": {
+{
+  # コマンド
+  "scripts": {
       # "<エイリアス>": "<実行するコマンド>",
       "dev": "npm run development",
       "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -293,7 +294,8 @@ $ npm run <エイリアス>
       "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
       "prod": "npm run production",
       "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    }}
+    },
+}
 ```
 
 <br>

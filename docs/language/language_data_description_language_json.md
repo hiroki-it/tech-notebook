@@ -17,11 +17,41 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 ### 配列
 
-#### ▼ 括弧
-
 ```yaml
 {"account": 200, "fruit": ["banana", "apple"]}
 ```
+
+<br>
+
+### オブジェクト
+
+```yaml
+{"account": 200, "fruit": {"banana": "BANANA", "apple": "APPLE"}}
+```
+
+<br>
+
+### コメントアウト
+
+JSONにはコメントアウトを定義できない。
+
+代わりに、`_comment`キーを定義する。
+
+アプリ側で、JSONの`_comment`キーを無視するような処理を実装する。
+
+```yaml
+{
+  "_comment": "金額",
+  "account": 200,
+  "_comment": "フルーツ",
+  "fruit": {
+    "banana": "BANANA",
+    "apple": "APPLE"
+  }
+}
+```
+
+> ↪️ 参考：https://stackoverflow.com/a/244858
 
 <br>
 

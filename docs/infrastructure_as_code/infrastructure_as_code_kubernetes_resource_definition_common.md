@@ -88,7 +88,7 @@ kind: Deployment
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"extensions/v1beta1","kind":"Deployment" ....
+      {"apiVersion":"extensions/v1beta1","kind":"Deployment" ... }
 ```
 
 > ↪️ 参考：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97

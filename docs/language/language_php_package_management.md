@@ -353,15 +353,7 @@ $ composer dump-autoload
 また、`autoload`プロパティに登録されているパスが誤っていないかも確認した方が良い。
 
 ```yaml
-{
-  ? ...
-
-    "autoload"
-  : {"psr-4": {}},
-
-  # パスが誤っていないか
-  ...,
-}
+{"autoload": {"psr-4": {}}}
 ```
 
 > ↪️ 参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-

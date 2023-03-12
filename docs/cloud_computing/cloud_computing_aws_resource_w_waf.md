@@ -145,10 +145,9 @@ WAFマネージドルールを採用している場合、マネージドルー�
 もし、Countアクションが実行されていれば、`excludedRules`キーにその旨とルールIDが格納される。
 
 ```yaml
-{? ...
-
-    "ruleGroupList"
-  : [
+{
+  "ruleGroupList":
+    [
       {
         "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
         "terminatingRule": null,
@@ -179,7 +178,10 @@ WAFマネージドルールを採用している場合、マネージドルー�
         "nonTerminatingMatchingRules": [],
         "excludedRules": null,
       },
-    ], ...}
+    ],
+
+  ...,
+}
 ```
 
 ### クオータ

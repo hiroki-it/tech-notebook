@@ -237,7 +237,7 @@ data:
 
 KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。
 
-EKSをOIDCのIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
+EKSをIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
 
 これにより、EKSで認証されたServiceAccountにIAMロールを紐づけることができるようになる。
 
