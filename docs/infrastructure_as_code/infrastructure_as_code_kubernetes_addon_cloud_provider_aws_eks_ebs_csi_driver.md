@@ -27,6 +27,12 @@ PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとし�
 
 ### EKSアドオンとして
 
+#### ▼ ServiveAccountに関して
+
+いずれの場合であっても、ServiceAccountのみはマニフェストで定義する。
+
+IRSAの仕組みによって、各場合で作成したIAMロールがServiceAccountに紐づく。
+
 #### ▼ Terraformの場合
 
 Terraformを使用する。
@@ -67,8 +73,9 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
   # IAMロールに紐づけるIAMポリシー
   role_policy_arns              = ["arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"]
 
-  # EBS CSIコントローラーのPodのサービスアカウント名
-  oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
+  # EBS CSIコントローラーのPodのServiceAccount名
+  # Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:foo-ebs-csi-controller"]
 }
 ```
 
@@ -105,6 +112,22 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 >
 > - https://kubernetes.io/ja/docs/concepts/storage/storage-classes/
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
+
+別途、EBS CSIドライバーのPodに紐づけるServiceAccountを作成し、IAMロールのARNを設定する。
+
+ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-ebs-csi-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
+```
+
+IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 #### ▼ Helmの場合
 

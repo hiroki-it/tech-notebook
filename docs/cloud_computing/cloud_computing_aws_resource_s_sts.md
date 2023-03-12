@@ -57,7 +57,13 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 <br>
 
-### Web IDフェデレーション
+### OIDC、Web IDフェデレーション
+
+#### ▼ OIDC、Web IDフェデレーション
+
+OIDCまたはWeb IDフェデレーションによる認証/認可を使用する。
+
+> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ Cognitoの場合
 
@@ -117,7 +123,9 @@ EKSをIDプロバイダーとして使用するように、`Federated`キーでE
 }
 ```
 
-その上で、実際のServiceAccountにIAMロールのARNを設定する。
+KubernetesのServiceAccountを作成し、IAMロールのARNを設定する。
+
+ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
 
 ```yaml
 apiVersion: v1
@@ -129,6 +137,8 @@ metadata:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
 ```
 
+IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
+
 > ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
@@ -139,7 +149,7 @@ metadata:
 
 ### SAMLベースフェデレーション
 
-記入中...
+SAMLによる認証/認可を使用する。
 
 > ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_saml.html
 

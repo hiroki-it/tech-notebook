@@ -98,7 +98,8 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
   # IAMロールに紐づけるIAMポリシー
   role_policy_arns              = [module.iam_policy_aws_load_balancer_controller.arn]
 
-  # AWS LBコントローラーのPodのサービスアカウント名
+  # AWS LBコントローラーのPodのServiceAccount名
+  # Terraformではなく、マニフェストで定義した方が良い
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:foo-aws-load-balancer-controller"]
 }
 
@@ -115,6 +116,20 @@ module "iam_policy_aws_load_balancer_controller" {
 ```
 
 > ↪️ 参考：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
+
+別途、AWS LBコントローラーのPodに紐づけるServiceAccountを作成し、IAMロールのARNを設定する。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-aws-load-balancer-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
+```
+
+IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
 
 #### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
 
@@ -187,17 +202,17 @@ $ eksctl create iamserviceaccount \
 ```bash
 $ eksctl get iamserviceaccount \
     --cluster foo-eks-cluster \
-    --name aws-load-balancer-controller \
+    --name foo-aws-load-balancer-controller \
     --namespace kube-system
 
 2022-06-06 13:47:33 [ℹ]  eksctl version 0.96.0
 2022-06-06 13:47:33 [ℹ]  using region ap-northeast-1
-NAMESPACE       NAME                            ROLE ARN
-kube-system     aws-load-balancer-controller    arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
+NAMESPACE       NAME                                ROLE ARN
+kube-system     foo-aws-load-balancer-controller    arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
 ```
 
 ```bash
-$ kubectl get serviceaccount -n kube-system aws-load-balancer-controller -o yaml
+$ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
 
 # 作成されたServiceAccount
 apiVersion: v1
@@ -208,12 +223,12 @@ metadata:
   creationTimestamp: "2022-05-29T12:59:15Z"
   labels:
     app.kubernetes.io/managed-by: eksctl
-  name: aws-load-balancer-controller
+  name: foo-aws-load-balancer-controller
   namespace: kube-system
   resourceVersion: "2103515"
   uid: *****
 secrets:
-- name: aws-load-balancer-controller-token-****
+- name: foo-aws-load-balancer-controller-token-****
 ```
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
@@ -230,7 +245,9 @@ AWS LBコントローラーのセットアップのうち、Kubernetes側で必�
 
 : 指定したリージョンにAWS LBコントローラーをデプロイする。
 
-     この時、事前に作成したServiceAcountをALBに紐づける。
+     この時、事前にマニフェストや`eksclt create iamserviceaccount`コマンドで作成したServiceAcountをALBに紐づける。
+
+     IRSAの仕組みにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
@@ -240,7 +257,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/aws-load-balan
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \
-    --set serviceAccount.name=aws-load-balancer-controller \
+    --set serviceAccount.name=foo-aws-load-balancer-controller \
     --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller \
     --set region=ap-northeast-1 \
     --set vpcId=vpc-*****
@@ -257,7 +274,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/aws-load-balan
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \
-    --set serviceAccount.name=aws-load-balancer-controller \
+    --set serviceAccount.name=foo-aws-load-balancer-controller \
     --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller
 
 
