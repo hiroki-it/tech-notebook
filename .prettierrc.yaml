@@ -1,3 +1,4 @@
+# NOTE: JSONが不自然な位置で改行される場合は、コメントアウトを意図的に追加する
 trailingComma: all
 overrides:
   - files:
