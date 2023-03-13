@@ -609,7 +609,7 @@ nav:
           - Prometheus: observability/observability_telemetry_prometheus.md
           - ■ OpenTelemetry:
               - OpenTelemetry: observability/observability_telemetry_open_telemetry.md
-              - トレーサー: observability/observability_telemetry_open_telemetry_tracer.md
+              - クライアントパッケージ: observability/observability_telemetry_open_telemetry_client_package.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_datadog_monitoring.md
@@ -619,7 +619,7 @@ nav:
                   - ログ収集: observability/observability_telemetry_datadog_log.md
                   - ■ 分散トレース収集:
                       - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
-                      - トレーサー: observability/observability_telemetry_datadog_distributed_trace_tracer.md
+                      - クライアントパッケージ: observability/observability_telemetry_datadog_distributed_trace_client_package.md
                   - テレメトリー間の紐づけ: observability/observability_telemetry_datadog_telemetry_association.md
           - ■ Googleアプリ:
               - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
