@@ -68,8 +68,8 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに
 
 | 方法                      | 説明                                                                                                                                                                              | 補足                                                                                                                                                                                          |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 起動ログの有効化          | 環境変数の`DD_TRACE_STARTUP_LOGS`を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、トレーサーの設定値を確認できる。                                 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                                |
-| デバッグログの有効化      | 各トレーサーが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                          |
+| 起動ログの有効化          | 環境変数の`DD_TRACE_STARTUP_LOGS`を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、パッケージの設定値を確認できる。                                 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                                |
+| デバッグログの有効化      | 各パッケージが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | ↪️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                          |
 | Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                                                      | ↪️ 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
 <br>
@@ -96,7 +96,7 @@ Datadogで、分散トレースは複数のスパンの配列データとして�
 
 #### ▼ スパンの構成
 
-Datadogで、スパンはJSON型データとして定義される。アプリケーション内のトレーサーで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。
+Datadogで、スパンはJSON型データとして定義される。アプリケーション内のパッケージで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。
 
 **＊実装例＊**
 
@@ -135,7 +135,7 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
 
 **＊実装例＊**
 
-PHPトレーサーでlaravel内からタグを収集した例
+PHP用パッケージでlaravel内からタグを収集した例
 
 ```yaml
 {
@@ -219,7 +219,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ マイクロサービスタイプとは
 
-トレーサによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の`4`個に分類される。
+分散トレースのクライアントパッケージによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の`4`個に分類される。
 
 各マイクロサービスの`span.type`属性に割り当てられるタイプ名から自動的に割り振られる。
 
@@ -236,11 +236,9 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ マイクロサービスのタグとは
 
-トレーサによって、マイクロサービスにタグを追加できる。
+PHP用パッケージによって、マイクロサービスにタグを追加できる。
 
-PHPトレーサの各インテグレーションのコードについては以下のリンクを参考にせよ。
-
-コードから、PHPトレーサーがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
+コードから、PHP用パッケージがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
 
 > ↪️ 参考：
 >

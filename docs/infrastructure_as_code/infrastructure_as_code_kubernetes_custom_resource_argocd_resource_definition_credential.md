@@ -13,7 +13,7 @@ description: 機密系＠リソース定義の知見を記録しています。
 
 <br>
 
-## 13. 専用Secret
+## 01. 専用Secret
 
 ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
 
@@ -21,7 +21,7 @@ ArgoCDの各種コンポーネントの機密な変数やファイルを管理�
 
 <br>
 
-## 13-02. argocd-repo
+## 02. argocd-repo
 
 ### argocd-repoとは
 
@@ -279,7 +279,7 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 <br>
 
-## 13-03. argocd-repo-creds
+## 03. argocd-repo-creds
 
 ### argocd-repo-credsとは
 
@@ -296,7 +296,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 
 <br>
 
-## 13-04. argo-secret (必須)
+## 04. argo-secret (必須)
 
 ### argocd-secretとは
 
@@ -329,7 +329,7 @@ data:
 
 <br>
 
-## 13-05. cluster-<エンドポイントURL>
+## 05. cluster-<エンドポイントURL>
 
 ### cluster-<エンドポイントURL>とは
 

@@ -103,7 +103,7 @@ creation_rules:
 ```
 
 ```bash
-# ファイル名が path_regexキーののルールに該当するため、AWS KMSを使用して暗号化される。
+# ファイル名が path_regexキーのルールに該当するため、AWS KMSを使用して暗号化される。
 $ sops -e ./values/foo-values.yaml
 ```
 

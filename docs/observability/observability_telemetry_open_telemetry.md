@@ -68,3 +68,11 @@ OTelクライアントパッケージからのテレメトリーデータを、�
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
 <br>
+
+## 02. テレメトリー間の紐付け
+
+記入中...
+
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
+
+<br>

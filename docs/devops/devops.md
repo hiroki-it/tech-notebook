@@ -153,7 +153,10 @@ DevOpsを実現する技術的要素の一つ。
 
 CIツールを使用してCIパイプラインを、またはCDツールを使用してCDパイプラインを、実装する手法のこと。
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+> ↪️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+> - https://github.com/argoproj/gitops-engine/blob/master/specs/design.md
 
 #### ▼ 技術ツール例
 

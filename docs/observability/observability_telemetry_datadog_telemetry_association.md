@@ -43,6 +43,8 @@ description: テレメトリー間の紐付け＠Datadog
 
 ### 各コンソール画面での使い方
 
+記入中...
+
 > ↪️ 参考：https://docs.datadoghq.com/getting_started/tagging/using_tags/
 
 <br>
@@ -87,7 +89,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 APMのservice名とAWS ECSタスク/ログのserviceタグは、名前の付け方が異なることに注意する。
 
-service名はインテグレーション名が自動的に割り当てられるが、トレーサーに環境変数を渡して変更もできる。
+service名はインテグレーション名が自動的に割り当てられるが、パッケージに環境変数を渡して変更もできる。
 
 フレームワークのインテグレーション名は `DD_SERVICE_NAME` から設定する一方で、それ以外のタグ名は `DD_SERVICE_MAPPING` から設定する。
 

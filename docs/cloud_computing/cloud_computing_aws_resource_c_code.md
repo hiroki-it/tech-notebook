@@ -280,13 +280,17 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
             {"name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD"},
             {"name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT"},
           ],
-        "logConfiguration": {"logDriver": "awslogs", "options": {
+        "logConfiguration": {
+            # ログドライバー
+            "logDriver": "awslogs",
+            "options": {
                 "awslogs-group": "<ログストリーム名>",
                 # スタックトレースのログを紐付けられるように、日付で区切るようにする。
                 "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
                 "awslogs-region": "ap-northeast-1",
                 "awslogs-stream-prefix": "<ログストリーム名の接頭辞>",
-              }},
+              },
+          },
       },
     ],
 }

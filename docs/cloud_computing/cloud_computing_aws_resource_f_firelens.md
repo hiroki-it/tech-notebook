@@ -148,12 +148,16 @@ log_routerという名前以外を設定できないことに注意する。
     "name": "log_router",
     "image": "<イメージリポジトリURL>:<バージョンタグ>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": false,
-    "logConfiguration": {"logDriver": "awslogs", "options": {
+    "logConfiguration": {
+        # ログドライバー
+        "logDriver": "awslogs",
+        "options": {
             # FireLensコンテナ自体がCloudWatchログにログアウトプット
             "awslogs-group": "<ログストリーム名>",
             "awslogs-region": "ap-northeast-1",
             "awslogs-stream-prefix": "<ログストリームの接頭辞>",
-          }},
+          },
+      },
     "firelensConfiguration": {
         # FireLensコンテナでFluentBitを稼働させる
         "type": "fluentbit",

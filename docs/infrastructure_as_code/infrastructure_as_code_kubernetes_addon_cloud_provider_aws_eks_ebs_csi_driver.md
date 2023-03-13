@@ -27,12 +27,6 @@ PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとし�
 
 ### EKSアドオンとして
 
-#### ▼ ServiveAccountに関して
-
-いずれの場合であっても、ServiceAccountのみはマニフェストで定義する。
-
-IRSAの仕組みによって、各場合で作成したIAMロールがServiceAccountに紐づく。
-
 #### ▼ Terraformの場合
 
 Terraformを使用する。

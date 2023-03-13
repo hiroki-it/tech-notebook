@@ -289,6 +289,33 @@ data:
 
 <br>
 
+### with
+
+YAMLの現在のパスを変更する。
+
+```yaml
+foo:
+  foo1: FOO1
+  foo2: FOO2
+```
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-config-map
+data:
+  # 現在のパスをfooに変更する。
+  {{- with .Values.foo }}
+  foo1: {{ .foo1 }}
+  foo2: {{ .foo2 }}
+  {{- end }}
+```
+
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with
+
+<br>
+
 ## 05. 変数に関する関数
 
 ### 変数
@@ -297,17 +324,45 @@ data:
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 
-#### ▼ ローカル変数
+#### ▼ ローカルスコープの変数
+
+同じファイル内で使用できる変数を定義する。
 
 ```yaml
 {{- $domain := "https://{{ .Values.serviceName }}.argocd.com" }}
 ```
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> ↪️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> - https://kb.novaordis.com/index.php/Helm_Variables
 
-#### ▼ グローバル変数
+#### ▼ 条件内スコープの変数
 
-`_helpers.tpl`ファイルで定義する。
+条件分岐で定義した変数は、`{{- end }}`までしか使用できない。
+
+```yaml
+{{- if .Values.isProduction }}
+
+  {{- $prefix := "prd" }}
+  ... 変数を使用する。
+
+{{- else }}
+
+  {{- $prefix := "nonprd" }}
+  ... 変数を使用する。
+
+{{- end }}
+```
+
+> ↪️ 参考：
+>
+> - https://stackoverflow.com/a/57600807
+> - https://stackoverflow.com/a/67886552
+
+#### ▼ グローバルスコープの変数
+
+テンプレートに関する関数 (例：`include`、`template`) 、`_helpers.tpl`ファイルで定義する。
 
 > ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 

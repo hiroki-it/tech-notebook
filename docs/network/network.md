@@ -235,11 +235,11 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ### インバウンド/アウトバウンド
 
-![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/inbound_outbound.png)
-
 サーバーを中心とした方向で通信を見た時、サーバーに流入する方向をインバウンドという。
 
 反対に、サーバーから流出する方向をアウトバウンドという。
+
+![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/inbound_outbound.png)
 
 > ↪️ 参考：
 >
@@ -250,11 +250,11 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ### アップストリーム/ダウンストリーム
 
-![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/upstream_downstream.png)
-
 通信の送受信全体の中の位置で通信を見た時、通信が送信された前半の位置を相対的にアップストリームという。
 
 反対に、通信が受信される後半の位置を相対的にダウンストリームという。
+
+![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/upstream_downstream.png)
 
 > ↪️ 参考：
 >

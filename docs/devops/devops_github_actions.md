@@ -102,8 +102,6 @@ jobs:
 
 同じ`steps`キー内の`run`キーが失敗しても成功扱いにするか否かを設定する。
 
-> ↪️ 参考：https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
-
 ```yaml
 jobs:
   build:
@@ -119,11 +117,11 @@ jobs:
           echo success
 ```
 
+> ↪️ 参考：https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
+
 #### ▼ if
 
 条件を満たした場合、後続の`run`キーを実行する。
-
-> ↪️ 参考：https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
 
 ```yaml
 jobs:
@@ -139,6 +137,8 @@ jobs:
         run: |
           echo success
 ```
+
+> ↪️ 参考：https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
 
 #### ▼ run
 
@@ -160,8 +160,6 @@ jobs:
 
 使用するActionsを設定する。
 
-> ↪️ 参考：https://github.com/marketplace?category=&query=&type=actions&verification=
-
 ```yaml
 jobs:
   foo:
@@ -170,6 +168,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 ```
+
+> ↪️ 参考：https://github.com/marketplace?category=&query=&type=actions&verification=
 
 #### ▼ with
 
@@ -255,8 +255,6 @@ compositeでは、Secretsを使用できない。
 
 そのため、`input`キーのパラメーターとして渡す必要がある。
 
-> ↪️ 参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
-
 ```yaml
 jobs:
   foo:
@@ -286,6 +284,8 @@ runs:
         echo ${{ inputs.foo }}
 ```
 
+> ↪️ 参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
+
 <br>
 
 #### ▼ Checkoutは使用不可
@@ -308,8 +308,6 @@ runs:
 
 もし`steps`を定義する場合は、`shell`キーでシェルの種類を指定する必要がある。
 
-> ↪️ 参考：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
-
 ```yaml
 runs:
   using: "composite"
@@ -319,6 +317,8 @@ runs:
       run: |
         echo foo
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
 
 <br>
 
@@ -336,8 +336,6 @@ runs:
 
 Secretの値を設定できない。
 
-> ↪️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
-
 ```yaml
 env:
   FOO: foo
@@ -352,6 +350,8 @@ jobs:
           echo ${{ env.FOO }}
 ```
 
+> ↪️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+
 <br>
 
 ### Jobsレベル
@@ -361,8 +361,6 @@ jobs:
 定義された`jobs`キー内でのみ参照できる。
 
 #### ▼ env
-
-> ↪️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 ```yaml
 jobs:
@@ -376,11 +374,11 @@ jobs:
           echo ${{ env.FOO }}
 ```
 
+> ↪️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+
 #### ▼ 環境ファイル
 
 環境ファイル (`GITHUB_ENV`) に値を入力することにより、`job`内の環境変数として使用できるようになる。
-
-> ↪️ 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 
 ```yaml
 jobs:
@@ -399,6 +397,8 @@ jobs:
 
 注意点として、マスキングされた値は入力できない。
 
+> ↪️ 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+
 <br>
 
 ### Stepレベル
@@ -408,8 +408,6 @@ jobs:
 定義された`step`キー内でのみ参照できる。
 
 #### ▼ env
-
-> ↪️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 ```yaml
 jobs:
@@ -422,6 +420,8 @@ jobs:
         run: |
           echo ${{ env.FOO }}
 ```
+
+> ↪️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 <br>
 
@@ -442,8 +442,6 @@ jobs:
 以降の全ての処理でマスキングが実行される。
 
 もちろん、`inputs`キーで渡した値にもマスキングが維持される。
-
-> ↪️ 参考：https://zenn.dev/kinjosan/articles/bd82e07aa69080
 
 ```yaml
 jobs:
@@ -469,6 +467,8 @@ runs:
       run: |
         FOO=${{ inputs.bar }}
 ```
+
+> ↪️ 参考：https://zenn.dev/kinjosan/articles/bd82e07aa69080
 
 これに関しては以前は非対応であったため、`add-mask`コマンドを使用した方法がネット上で見つかることに注意する。
 
@@ -521,8 +521,6 @@ runs:
 
 出力された変数の値は、以降の処理でマスキングされる。
 
-> ↪️ 参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
-
 ```yaml
 jobs:
   foo:
@@ -532,6 +530,8 @@ jobs:
         run: |
           echo ${{ secrets.FOO }}
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
 
 #### ▼ Actionレベル (Environment Secrets)
 
@@ -574,8 +574,6 @@ jobs:
 
 出力された変数の値は、以降の処理でマスキングされる。
 
-> ↪️ 参考：https://stackoverflow.com/a/61428342
-
 ```yaml
 jobs:
   foo:
@@ -588,6 +586,8 @@ jobs:
           echo ${{ secrets.FOO }}
           source ./bar.sh
 ```
+
+> ↪️ 参考：https://stackoverflow.com/a/61428342
 
 <br>
 
@@ -648,8 +648,6 @@ jobs:
 
 以降、ログに出力される場合は、『`***`』のようにアスタリスクで表示される。
 
-> ↪️ 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
-
 ```yaml
 jobs:
   foo:
@@ -664,6 +662,8 @@ jobs:
           echo $FOO
 ```
 
+> ↪️ 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
+
 <br>
 
 ### set-output
@@ -671,8 +671,6 @@ jobs:
 #### ▼ set-outputとは
 
 GitHub Actionsの独自パラメーターを入力する。
-
-> ↪️ 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
 ```yaml
 jobs:
@@ -686,6 +684,8 @@ jobs:
         run: |
           echo "::set-output name=FOO::foo"
 ```
+
+> ↪️ 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
 #### ▼ 同じstep内では使用不可
 
@@ -709,8 +709,6 @@ jobs:
 
 入力したパラメーターは、異なる`step`の間で出力できる。
 
-> ↪️ 参考：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
-
 ```yaml
 jobs:
   foo:
@@ -726,6 +724,8 @@ jobs:
         run: |
           echo "${{ steps.foo_id.outputs.FOO }}"
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
 
 Secretsや`add-mask`コマンドでマスキングされた値も共有でき、またマスキングを維持できる。
 
@@ -779,11 +779,6 @@ jobs:
           echo "${{ needs.foo.outputs.FOO }}"
 ```
 
-> ↪️ 参考：
->
-> - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
-> - https://swfz.hatenablog.com/entry/2020/04/18/160235
-
 ただし異なる`job`では、Secretsや`add-mask`コマンドでマスキングされた値は共有できず、空になってしまう。
 
 ```yaml
@@ -812,5 +807,10 @@ jobs:
         run: |
           echo "${{ needs.foo.outputs.FOO }}"
 ```
+
+> ↪️ 参考：
+>
+> - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+> - https://swfz.hatenablog.com/entry/2020/04/18/160235
 
 <br>

@@ -342,8 +342,6 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 
 サイズを拡張するためには、実際のストレージ (EBSボリューム) 、EBSボリューム内のパーティション、EC2内のファイルシステム、に関して作業が必要にある。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
-
 **＊例＊**
 
 `【１】`
@@ -420,6 +418,8 @@ Filesystem     Type  Size  Used  Avail  Use%  Mounted on
 /dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib
 ...
 ```
+
+> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
 
 #### ▼ EBSボリュームが複数のパーティションで区切られている場合
 

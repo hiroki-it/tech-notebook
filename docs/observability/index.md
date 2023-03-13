@@ -21,7 +21,7 @@
 * #### [Prometheus](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_prometheus.html)
 * #### <u>OpenTelemetry</u>
   > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry.html)
-  > * ##### [トレーサー](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_tracer.html)
+  > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_client_package.html)
 * #### <u>Datadog</u>
   > * ##### [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html)
   > * ##### [︎監視](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_monitoring.html)
@@ -31,7 +31,7 @@
   > > * ##### [︎ログ収集](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_log.html)
   > > * ##### <u>分散トレース収集</u>
   > > > * ##### [分散トレース収集](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_distributed_trace.html)
-  > > > * ##### [トレーサー](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_distributed_trace_tracer.html)
+  > > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_distributed_trace_client_package.html)
   > > * ##### [テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_telemetry_association.html)
 * #### <u>Googleアプリ</u>
   > * ##### [︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_google_analytics.html)

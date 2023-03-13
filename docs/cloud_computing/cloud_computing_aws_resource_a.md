@@ -188,11 +188,6 @@ SSGの場合、裏側ではS3、CloudFront、Route53などが作成され、静�
 
 SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、LambdaやCogniteが作成される。
 
-> ↪️ 参考：
->
-> - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html
-> - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
-
 ```yaml
 version: 1
 
@@ -269,6 +264,11 @@ test:
     # ビルドのアーティファクトのディレクトリ
     baseDirectory: <パス>
 ```
+
+> ↪️ 参考：
+>
+> - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html
+> - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
 
 <br>
 
