@@ -155,23 +155,27 @@ $ kubectl config use-context <ClusterのARN>
 
 ### 対応関係
 
-| コントロールプレーン上のAWSリソース | Kubernetesリソース       | 補足                                                                             |
-| ----------------------------------- | ------------------------ | -------------------------------------------------------------------------------- |
-| EKSコントロールプレーン             | コントロールプレーンNode | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
+| コントロールプレーン上のAWSリソース            | Kubernetesリソース       | 補足                                                                             |
+| ---------------------------------------------- | ------------------------ | -------------------------------------------------------------------------------- |
+| EKSコントロールプレーン                        | コントロールプレーンNode | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
+| kube-apiserver                                 | kube-apiserver           |                                                                                  |
+| kube-apiserverのロードバランサー (例：HAProxy) | NLB                      |                                                                                  |
 
 <br>
 
 ### kube-apiserver
 
-#### ▼ RBAC
-
-認証/認可に関するKubernetesリソースと、AWSのIAMユーザーを紐づける仕組み。
+#### ▼ Kubernetes RBACとの連携
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
+KubernetesのRBACと連携することにより、`kubectl`クライアントの認可スコープを制御する。
+
+Kubernetesリソースの認可スコープは、IRSAで制御する。
+
 `【１】`
 
-: あらかじめ、`kubectl`クライアントやKubernetesリソースに紐づくIAMユーザーを作成しておく。
+: あらかじめ、クライアント (`kubectl`クライアント、Kubernetesリソース) に紐づくIAMユーザーを作成しておく。
 
 `【２】`
 
@@ -191,7 +195,7 @@ $ kubectl config use-context <ClusterのARN>
 
      このConfigMapには、そのIAMユーザーに紐づくUserAccountやServiceAccount、RoleBindingやClusterRoleBinding、が定義されている。
 
-     この時、```kubectl```クライアントの場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
+     この時、`kubectl`クライアントの場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
 
 ```yaml
 apiVersion: v1
@@ -231,25 +235,42 @@ data:
 > - https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/
 > - https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces
 > - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737
-> - https://dev.to/aws-builders/eks-auth-deep-dive-4fib
+> - https://www.karakaram.com/eks-system-masters-group/
+> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
 
 #### ▼ IRSA：IAM Roles for Service Accounts
 
-KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。
+![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+
+特にKubernetesリソースの認可スコープを制御する仕組みのこと。
+
+`kubectl`クライアントの認可スコープは、RBACで制御する。
 
 EKSをIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
 
-これにより、EKSで認証されたServiceAccountにIAMロールを紐づけることができるようになる。
+ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証されたServiceAccountにIAMロールを紐づけることができるようになる。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
+  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
+  annotations:
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
+```
+
+もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、EC2ワーカーNodeやFargateワーカーNodeのIAMロールが使用される。
 
 IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate) にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
-
-![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
 > ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://www.bigtreetc.com/column/eks-irsa/
 > - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
+> - https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/
+> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#2.-eks%E3%81%8B%E3%82%89aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
 
 #### ▼ パブリックアクセス/プライベートアクセス
 
