@@ -17,7 +17,7 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-Deployment（argocd-server、repo-server、redis-server、dex-server）、StatefulSet（application-controller）、などから構成される。
+Deployment (argocd-server、repo-server、redis-server、dex-server) 、StatefulSet (application-controller) 、などから構成される。
 
 ```bash
 $ kubectl get deployment -n argocd

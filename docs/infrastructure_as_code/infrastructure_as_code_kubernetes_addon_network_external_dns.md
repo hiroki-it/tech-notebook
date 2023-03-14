@@ -17,7 +17,7 @@ description: ExternalDNS＠ネットワークアドオンの知見を記録し�
 
 ### アーキテクチャ
 
-ExternalDNSアドオンは、Deployment（ExternalDNSコントローラー）、Service、などから構成される。
+ExternalDNSアドオンは、Deployment (ExternalDNSコントローラー) 、Service、などから構成される。
 
 ネットワークからのアクセスにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。
 

@@ -17,7 +17,7 @@ description: CoreDNS＠ネットワークアドオンの知見を記録してい
 
 ### CoreDNSアドオンとは
 
-Deployment（CoreDNS）、Service（kube-dns）、ConfigMap、などから構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap、などから構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
@@ -25,9 +25,9 @@ Deployment（CoreDNS）、Service（kube-dns）、ConfigMap、などから構成
 
 <br>
 
-### Service（kube-dns）
+### Service (kube-dns)
 
-#### ▼ Service（kube-dns）
+#### ▼ Service (kube-dns)
 
 CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングする。
 
@@ -44,9 +44,9 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 <br>
 
-### Deployment（CoreDNS）
+### Deployment (CoreDNS)
 
-#### ▼ Deployment（CoreDNS）とは
+#### ▼ Deployment (CoreDNS) とは
 
 Podからの問い合わせに対して、名前解決を実行する。
 

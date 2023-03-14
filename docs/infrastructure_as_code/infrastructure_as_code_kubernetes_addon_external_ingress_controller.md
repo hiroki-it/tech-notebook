@@ -43,7 +43,7 @@ Ingressコントローラーや、それに相当するもの (AWS LBコント�
 
 ![aws_lb_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_lb_controller.png)
 
-AWS LBコントローラーは、Deployment（aws-lb-controller）、TargetGroupBinding、などから構成されている。
+AWS LBコントローラーは、Deployment (aws-lb-controller) 、TargetGroupBinding、などから構成されている。
 
 Ingressでインバウンド通信を受信する場合に使用し、NodePort Serviceの場合には使用しない。
 
