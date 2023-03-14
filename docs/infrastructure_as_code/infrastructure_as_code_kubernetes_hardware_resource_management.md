@@ -359,7 +359,7 @@ metrics-serverは、拡張APIサーバー、ローカルストレージ、スク
 
 KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスを収集しつつ、収集したメトリクスを拡張APIサーバーで公開する。
 
-クライアント (`kubectl`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。
+クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。
 
 似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
@@ -376,7 +376,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 #### ▼ 拡張APIサーバーとは
 
-ServiceとAPIServiceを介して、クライアント (`kubectl`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
+ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
 
 データポイントはローカルストレージに保管している。
 
@@ -387,7 +387,7 @@ ServiceとAPIServiceを介して、クライアント (`kubectl`コマンド実�
 
 #### ▼ 拡張APIサーバーへのリクエスト
 
-クライアントが`kubectl`コマンド実行者の場合は、`kubectl top`コマンドを実行する。
+`kubectl top`コマンドを受信する。
 
 ```bash
 # Nodeのメトリクスを取得

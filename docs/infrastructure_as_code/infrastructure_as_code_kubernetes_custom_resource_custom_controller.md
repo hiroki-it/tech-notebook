@@ -133,8 +133,6 @@ operator-controllerに不具合があると、etcd上のカスタムリソース
 
 operator-controllerがkube-apiserverにリクエストを送信できるように、operator-controllerに認可スコープを付与する。
 
-ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
-
 > ↪️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 
 <br>

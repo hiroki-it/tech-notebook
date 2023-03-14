@@ -17,7 +17,7 @@ description: CoreDNS＠ネットワークアドオンの知見を記録してい
 
 ### CoreDNSアドオンとは
 
-CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+Deployment（CoreDNS）、Service（kube-dns）、ConfigMap、などから構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
@@ -25,11 +25,11 @@ CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。
 
 <br>
 
-### CoreDNSのService
+### Service（kube-dns）
 
-#### ▼ CoreDNSのServiceとは
+#### ▼ Service（kube-dns）
 
-CoreDNSはNode内にPodとして稼働しており、これはCoreDNSのServiceによって管理されている。
+CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングする。
 
 ```bash
 $ kubectl get service -n kube-system
@@ -44,9 +44,11 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 <br>
 
-### CoreDNSのPod
+### Deployment（CoreDNS）
 
-#### ▼ CoreDNSのPodとは
+#### ▼ Deployment（CoreDNS）とは
+
+Podからの問い合わせに対して、名前解決を実行する。
 
 ```bash
 $ kubectl get pod -n kube-system
@@ -60,9 +62,9 @@ coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
 
 <br>
 
-### coredns-configmap
+### ConfigMap
 
-#### ▼ coredns-configmapとは
+#### ▼ ConfigMapとは
 
 ConfigMapの`.data.Corefile`キーに、`Corefile`ファイルの設定値を定義する。
 

@@ -43,7 +43,7 @@ Ingressコントローラーや、それに相当するもの (AWS LBコント�
 
 ![aws_lb_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_lb_controller.png)
 
-AWS LBコントローラーは、コントローラーの本体であるPod、TargetGroupBinding、から構成されている。
+AWS LBコントローラーは、Deployment（aws-lb-controller）、TargetGroupBinding、などから構成されている。
 
 Ingressでインバウンド通信を受信する場合に使用し、NodePort Serviceの場合には使用しない。
 
@@ -332,9 +332,9 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 <br>
 
-## 02-02. AWS ALB
+## 02-02. Ingress
 
-### AWS ALB
+### Ingress
 
 AWS LBコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 

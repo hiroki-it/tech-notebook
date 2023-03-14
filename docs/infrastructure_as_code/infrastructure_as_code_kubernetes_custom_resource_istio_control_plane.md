@@ -19,7 +19,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 サイドカープロキシメッシュのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号で`istio-proxy`コンテナからのリモートプロシージャーコールを待ち受ける。
 
-語尾の『`d`』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
+語尾の『`d`』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、Deploymentである。
 
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_ports.png)
 
@@ -39,15 +39,21 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 ## 02. コントロールプレーンの要素
 
-### istiod-deployment
+### コントロールプレーンの要素
 
-#### ▼ istiod-deploymentとは
+Istiodは、Deployment、Service、MutatingWebhookConfiguration、などから構成される。
+
+<br>
+
+### Deployment
+
+#### ▼ Deploymentとは
 
 コントロールプレーンのPodの可用性を高めるため、これを冗長化する。
 
 #### ▼ Pod
 
-istiod-deployment配下のPodは、Istiodコントロールプレーンの実体である。
+Deployment配下のPodは、Istiodコントロールプレーンの実体である。
 
 Pod内では`discovery`コンテナが稼働している。
 
@@ -133,7 +139,9 @@ ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 
 #### ▼ HorizontalPodAutoscaler
 
-istiod-deployment配下のPodには、HorizontalPodAutoscalerが設定されている。コントロールプレーンの可用性を高められる。
+Deployment配下のPodには、HorizontalPodAutoscalerが設定されている。
+
+コントロールプレーンの可用性を高められる。
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -157,9 +165,9 @@ spec:
 
 <br>
 
-### istiod-service
+### Service
 
-`istio-proxy`コンテナからのリクエストを、Istiodコントロールプレーン (istiod-deployment配下のPod) にポートフォワーディングする。
+`istio-proxy`コンテナからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。
 
 ```yaml
 apiVersion: v1
@@ -195,14 +203,14 @@ spec:
       protocol: TCP
       targetPort: 15014
   selector:
-    # ルーティング先のistiodコントールプレーン (istiod-deployment配下のPod)
+    # ルーティング先のistiodコントールプレーン (Deployment配下のPod)
     app: istiod
     istio.io/rev: <リビジョン番号>
 ```
 
 <br>
 
-### istio-sidecar-injector-configuration
+### MutatingWebhookConfiguration
 
 Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。
 
