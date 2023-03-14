@@ -244,7 +244,7 @@ metadata:
 type: Opaque
 data:
   name: foo-oci-repository # OCIリポジトリ名
-  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
+  url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: foo
   password: bar
@@ -261,7 +261,7 @@ metadata:
 type: Opaque
 data:
   name: bar-oci-repository # OCIリポジトリ名
-  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
+  url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: baz
   password: qux

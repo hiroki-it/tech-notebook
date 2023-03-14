@@ -542,53 +542,6 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 <br>
 
-### Ingressコントローラー
-
-#### ▼ Ingressコントローラーとは
-
-Ingressコントローラーは、Ingressの設定に基づいてNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
-
-Kubernetesの周辺ツール (Prometheus、AlertManager、Grafana、ArgoCD) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
-
-![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
-
-> ↪️ 参考：
->
-> - https://developers.freee.co.jp/entry/kubernetes-ingress-controller
-> - https://www.containiq.com/post/kubernetes-ingress
-> - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
-
-#### ▼ SSL証明書の割り当て
-
-Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー (例：Nginx) に渡す。
-
-![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
-
-> ↪️ 参考：
->
-> - https://blog.sakamo.dev/post/ingress-nginx/
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
-
-#### ▼ Ingressの設定値のバリデーション
-
-Ingressコントローラーは、『`***-controller-admission`』というServiceでwebhookサーバーを公開している。
-
-このwebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。
-
-これにより、不正なIngressが稼働することを防止できる。
-
-このwebhookサーバーの登録時、まず『`***-create`』というPodが有効期限の長いSSL証明書を持つSecretを作成する。
-
-その後、『`***-patch`』というPodがValidatingWebhookConfigurationにこのSSL証明書を設定し、webhookサーバーにSSL証明書が割り当てられる。
-
-> ↪️ 参考：
->
-> - https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration
-> - https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks
-> - https://blog.sakamo.dev/post/ingress-nginx/
-
-<br>
-
 ### Service
 
 #### ▼ Serviceとは

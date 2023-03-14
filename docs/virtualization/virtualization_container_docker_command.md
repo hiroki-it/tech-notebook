@@ -394,10 +394,10 @@ $ docker push <Docker Hubユーザー名>/<コンテナイメージ名>:<バー�
 ECRはタグ名がやや特殊のため、事前にタグを付け替える必要がある。
 
 ```bash
-# docker tag foo:latest <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+# docker tag foo:latest <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker tag <ローカルマシンでのコンテナイメージ名>:<ローカルマシンでのバージョンタグ> <イメージレジストリ名>/<イメージリポジトリ名>:<バージョンタグ>
 
-# docker push <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+# docker push <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker push <イメージレジストリ名>/<イメージリポジトリ名>:<バージョンタグ>
 ```
 

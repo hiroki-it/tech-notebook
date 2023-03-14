@@ -136,7 +136,7 @@ log_routerという名前以外を設定できないことに注意する。
 [
   {
     "name": "foo",
-    "image": "<イメージリポジトリURL>:<バージョンタグ>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+    "image": "<イメージリポジトリURL>:<バージョンタグ>", # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": false,
     "logConfiguration": {
         # FluentBitの設定はconfファイルで行うため、optionsキーは何も設定しない。
@@ -146,7 +146,7 @@ log_routerという名前以外を設定できないことに注意する。
   {
     # log_router以外の名前を設定できない
     "name": "log_router",
-    "image": "<イメージリポジトリURL>:<バージョンタグ>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+    "image": "<イメージリポジトリURL>:<バージョンタグ>", # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": false,
     "logConfiguration": {
         # ログドライバー
@@ -295,7 +295,7 @@ FireLensコンテナにカスタム値を設定する。
     Name record_modifier
     Match *
     Record ecs_cluster prd-foo-ecs-cluster
-    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:<アカウントID>:task/prd-foo-ecs-cluster/*****
+    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:<AWSアカウントID>:task/prd-foo-ecs-cluster/*****
     Record ecs_task_definition prd-foo-ecs-task-definition:1
 
 # fluent-bit.confファイルに、カスタムファイルを読み込むためのINCLUDE文が挿入される。

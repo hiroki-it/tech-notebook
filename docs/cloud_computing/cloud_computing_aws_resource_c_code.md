@@ -152,7 +152,7 @@ artifacts:
 ```yaml
 [
   {
-    "imageUri": "<イメージリポジトリURL>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+    "imageUri": "<イメージリポジトリURL>", # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "name": "<コンテナ名>",
   },
 ]

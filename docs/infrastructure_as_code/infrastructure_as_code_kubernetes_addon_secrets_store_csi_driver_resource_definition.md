@@ -155,7 +155,7 @@ spec:
   provider: aws
   parameters:
     # AWS Secrets Managerから取得する。
-    # objectNameキーに、ARN (arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<Secretストア名>) を指定しても良い。
+    # objectNameキーに、ARN (arn:aws:secretsmanager:ap-northeast-1:<AWSアカウントID>:secret:<Secretストア名>) を指定しても良い。
     # その場合、objectTypeキーは不要になる。
     objects: |
       - objectName: "<Secret名>"

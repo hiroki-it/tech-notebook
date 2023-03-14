@@ -207,11 +207,11 @@ data:
   mapAccounts: []
   mapUsers: []
   mapRoles: |
-    - rolearn: arn:aws:iam::<アカウントID>:role/foo-role # IAMロール名
+    - rolearn: arn:aws:iam::<AWSアカウントID>:role/foo-role # IAMロール名
       username: foo-iam-user # IAMユーザー名
       groups:
         - system:masters # ClusterRoleBindingに定義されたGroup名
-    - rolearn: arn:aws:iam::<アカウントID>:role/bar-role # ワーカーNodeに紐づけたロール名
+    - rolearn: arn:aws:iam::<AWSアカウントID>:role/bar-role # ワーカーNodeに紐づけたロール名
       username: system:node:{{EC2PrivateDNSName}} # ワーカーNodeの識別子
       groups:
         - system:bootstrappers
@@ -288,17 +288,17 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 
 ![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks.png)
 
-| データプレーン上のAWSリソース        | Kubernetesリソース          | 補足                                                                                                                                                                                                                                                                                           |
-| ------------------------------------ | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| FargateワーカーNode、EC2ワーカーNode | ワーカーNode                | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                                     |
-| EKS Cluster                          | Cluster                     | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                                        |
-| AWS ALB                              | Ingress                     | IngressはAWS ALBに置き換える必要がある。AWS LBコントローラーを作成すると、AWS ALBは自動的に作成される。<br>↪️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
-| AWS LBコントローラー                 | Ingressコントローラー       | AWS ALBを自動的に作成する。↪️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                                              |
-| API Gateway + NLB                    |                             | ↪️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                                                    |
-| EBS、EFS                             | PersistentVolume            | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                         |
-| Secrets Manager                      | Secret                      | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                                                  |
-| IAMユーザー                          | ServiceAccount、UserAccount | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                   |
-| IAMロール                            | Role、ClusterRole           | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                   |
+| データプレーン上のAWSリソース        | Kubernetesリソース          | 補足                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------ | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| FargateワーカーNode、EC2ワーカーNode | ワーカーNode                | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                                                |
+| EKS Cluster                          | Cluster                     | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                                                   |
+| AWS ALB                              | Ingress                     | IngressはAWS ALBに置き換える必要がある。AWS Load Balancerコントローラーを作成すると、AWS ALBは自動的に作成される。<br>↪️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| AWS Load Balancerコントローラー      | Ingressコントローラー       | AWS ALBを自動的に作成する。↪️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                                                         |
+| API Gateway + NLB                    |                             | ↪️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                                                               |
+| EBS、EFS                             | PersistentVolume            | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                                    |
+| Secrets Manager                      | Secret                      | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                                                             |
+| IAMユーザー                          | ServiceAccount、UserAccount | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                              |
+| IAMロール                            | Role、ClusterRole           | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                              |
 
 > ↪️ 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
 
@@ -430,7 +430,7 @@ EKSデータプレーンはプライベートサブネットで稼働させ、�
 
 EKSでは、Podをプライベートサブネットに配置する必要がある。
 
-そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
+そのため、パブリックネットワークからのインバウンド通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 

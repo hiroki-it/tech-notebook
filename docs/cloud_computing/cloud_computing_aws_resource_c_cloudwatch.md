@@ -443,7 +443,7 @@ cloudwatchエージェント全体を設定する。
       "run_as_user": "cwagent",
       "metrics_collection_interval": 60,
       `# 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール`
-      "credentials": "arn:aws:iam::<アカウントID>:role/<IAMロール名>",
+      "credentials": "arn:aws:iam::<AWSアカウントID>:role/<IAMロール名>",
     }}
 ```
 

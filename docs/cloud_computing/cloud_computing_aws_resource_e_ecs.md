@@ -621,10 +621,10 @@ exit ${EXIT_STATUS}
           ],
         "Resource":
           [
-            "arn:aws:ecs:*:<アカウントID>:service/*",
-            "arn:aws:ecs:*:<アカウントID>:task/*",
-            "arn:aws:ecs:*:<アカウントID>:task-definition/*",
-            "arn:aws:iam::<アカウントID>:role/*",
+            "arn:aws:ecs:*:<AWSアカウントID>:service/*",
+            "arn:aws:ecs:*:<AWSアカウントID>:task/*",
+            "arn:aws:ecs:*:<AWSアカウントID>:task-definition/*",
+            "arn:aws:iam::<AWSアカウントID>:role/*",
           ],
       },
     ],
@@ -759,8 +759,8 @@ Systems Managerを使用してコンテナに接続する場合、コンテナ�
         "Action": ["ecs:ExecuteCommand"],
         "Resource":
           [
-            "arn:aws:ecs:*:<アカウントID>:cluster/*",
-            "arn:aws:ecs:*:<アカウントID>:task/*",
+            "arn:aws:ecs:*:<AWSアカウントID>:cluster/*",
+            "arn:aws:ecs:*:<AWSアカウントID>:task/*",
           ],
       },
     ],

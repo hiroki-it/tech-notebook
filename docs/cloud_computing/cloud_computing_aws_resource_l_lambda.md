@@ -233,7 +233,7 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
       {
         "Effect": "Allow",
         "Action": "lambda:InvokeFunction",
-        "Resource": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:<関数名>*",
+        "Resource": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:<関数名>*",
       },
     ],
 }
@@ -321,12 +321,12 @@ Lambda@Edgeを実行するためには、最低限、以下の認可スコープ
       {
         "Effect": "Allow",
         "Action": ["lambda:GetFunction", "lambda:EnableReplication*"],
-        "Resource": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:<関数名>:<バージョン>",
+        "Resource": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:<関数名>:<バージョン>",
       },
       {
         "Effect": "Allow",
         "Action": ["cloudfront:UpdateDistribution"],
-        "Resource": "arn:aws:cloudfront::<アカウントID>:distribution/<DistributionID>",
+        "Resource": "arn:aws:cloudfront::<AWSアカウントID>:distribution/<DistributionID>",
       },
     ],
 }

@@ -171,7 +171,7 @@ AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する�
 
 ```ini
 [profile foo]
-role_arn = arn:aws:iam::<アカウントID>:role/foo-role
+role_arn = arn:aws:iam::<AWSアカウントID>:role/foo-role
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
@@ -726,10 +726,10 @@ Password: *****
 Authenticating as hiroki.hasegawa ...
 ? Security Token [000000] <MFAワンタイムコード>
 
-Selected role: arn:aws:iam::<アカウントID>:role/foo-role
+Selected role: arn:aws:iam::<AWSアカウントID>:role/foo-role
 Requesting AWS credentials using SAML assertion
 Saving credentials
-Logged in as: arn:aws:sts::<アカウントID>:assumed-role/foo-role/hiroki.hasegawa
+Logged in as: arn:aws:sts::<AWSアカウントID>:assumed-role/foo-role/hiroki.hasegawa
 
 Your new access key pair has been stored in the AWS configuration.
 Note that it will expire at 2022-01-01 12:00:00 +0900 JST

@@ -135,7 +135,7 @@ Lambda関数に紐づけるSQSを設定する。
 functions:
   main:
     events:
-      - sqs:arn:aws:sqs:region:<アカウントID>:prd-foo-queue
+      - sqs:arn:aws:sqs:region:<AWSアカウントID>:prd-foo-queue
 ```
 
 > ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
@@ -290,7 +290,7 @@ provider:
   ecr:
     images:
       base:
-        uri: <イメージリポジトリURL>@<バージョンタグ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+        uri: <イメージリポジトリURL>@<バージョンタグ> # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
 ```
 
 <br>

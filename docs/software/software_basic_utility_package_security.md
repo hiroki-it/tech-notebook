@@ -62,7 +62,7 @@ DB_PASSWORD: ENC[AES256...
 sops:
     # AWS KMS
     kms:
-      - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/<KMSのID>
+      - arn: arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/<KMSのID>
         created_at: '2021-01-01T12:00:00Z'
         enc: *****
         aws_profile: ""
@@ -91,7 +91,7 @@ creation_rules:
   # 特定の平文ファイル名を設定する。
   - path_regex: ./values/value\.yaml
     # AWS KMSを暗号化キーとして使用する。
-    kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
+    kms: "arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/*****"
 ```
 
 ```yaml
@@ -110,7 +110,7 @@ $ sops -e ./values/foo-values.yaml
 `.sops.yaml`ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
 
 ```bash
-$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
+$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/*****"
 
 $ sops -e ./values/foo-values.yaml
 ```
@@ -155,7 +155,7 @@ $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 
 ```bash
 # AWS KMSを暗号化キーとして使用する。
-$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
+$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/*****"
 
 $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.yamlファイル/.jsonファイル>
 ```

@@ -324,7 +324,7 @@ ECRパブリックギャラリーからPHP-FPMをインストールする場合�
 
 #### ▼ クラウドプロバイダー (プライベート)
 
-ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest`である。
+ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest`である。
 
 > ↪️ 参考：https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1
 

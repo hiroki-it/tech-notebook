@@ -1119,7 +1119,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 そのため、以下のようなエラーが発生する。
 
 ```bash
-Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:<アカウントID>:targetgroup/*****-tg/*****' is currently in use by a listener or a rule
+Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:<AWSアカウントID>:targetgroup/*****-tg/*****' is currently in use by a listener or a rule
 status code: 400, request id: *****
 ```
 
@@ -1418,9 +1418,9 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが作成される。
+ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<AWSアカウントID>』の名前でディレクトリが作成される。
 
-そのため、『`arn:aws:s3:::<バケット名>/*`』の部分を最小権限として、『`arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*`』にしても良い。
+そのため、『`arn:aws:s3:::<バケット名>/*`』の部分を最小権限として、『`arn:aws:s3:::<バケット名>/AWSLogs/<AWSアカウントID>/;*`』にしても良い。
 
 東京リージョンのELBサービスアカウントIDは『`582318560864`』である。
 
@@ -1464,9 +1464,9 @@ resource "aws_s3_bucket_policy" "nlb" {
 }
 ```
 
-NLBのアクセスログを送信するバケット内には、自動的に『`/AWSLogs/<アカウントID>`』の名前でディレクトリが作成される。
+NLBのアクセスログを送信するバケット内には、自動的に『`/AWSLogs/<AWSアカウントID>`』の名前でディレクトリが作成される。
 
-そのため、『`arn:aws:s3:::<バケット名>/*`』の部分を最小権限として、『`arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*`』にしても良い。
+そのため、『`arn:aws:s3:::<バケット名>/*`』の部分を最小権限として、『`arn:aws:s3:::<バケット名>/AWSLogs/<AWSアカウントID>/;*`』にしても良い。
 
 ```yaml
 {

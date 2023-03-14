@@ -217,7 +217,7 @@ Kubernetesリソースのテスト方法を定義する。
 
 ```yaml
 test:
-  - image: <イメージリポジトリURL> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+  - image: <イメージリポジトリURL> # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     structureTests:
       - ./structure-tests/foo.yaml
 ```

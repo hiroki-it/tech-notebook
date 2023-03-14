@@ -180,7 +180,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名> --kube-con
 
 ```bash
 # AWSの場合
-$ helm install <Helmリリース名> <チャートリポジトリ名> --kube-context <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
+$ helm install <Helmリリース名> <チャートリポジトリ名> --kube-context <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 ```
 
 <br>
@@ -337,7 +337,7 @@ OCIリポジトリからもプルできる。
 
 ```bash
 # AWSの場合
-$ helm pull oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
+$ helm pull oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
 > ↪️ 参考：https://helm.sh/blog/storing-charts-in-oci/
@@ -366,7 +366,7 @@ $ helm push <チャートアーカイブへのパス> <チャートリポジト�
 
 ```bash
 # AWSの場合
-$ helm push <チャートアーカイブへのパス> oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+$ helm push <チャートアーカイブへのパス> oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
 ```
 
 <br>
@@ -393,7 +393,7 @@ $ <チャートリポジトリのプロバイダーによる> | helm registry lo
 $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
     --username AWS \
     --password-stdin \
-    <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+    <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
 ```
 
 <br>

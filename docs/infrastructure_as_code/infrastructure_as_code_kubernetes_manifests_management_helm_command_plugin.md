@@ -159,7 +159,7 @@ foo: F799Q8CQ...
 
 sops:
   kms:
-    - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/<KMSのID>
+    - arn: arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/<KMSのID>
       created_at: '2017-12-19T11:02:39Z'
       enc: AQICA...
       aws_profile: ""

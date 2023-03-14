@@ -797,7 +797,7 @@ metadata:
 spec:
   source:
     # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
-    repoURL: oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
+    repoURL: oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
 > ↪️ 参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository

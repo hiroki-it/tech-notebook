@@ -160,7 +160,7 @@ $ aws rds describe-pending-maintenance-actions --output=table
 +---------------------------------------------------------------------------------+
 ||                           PendingMaintenanceActions                           ||
 |+---------------------+---------------------------------------------------------+|
-||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:<アカウントID>:db:prd-foo-instance   ||
+||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:<AWSアカウントID>:db:prd-foo-instance   ||
 |+---------------------+---------------------------------------------------------+|
 |||                       PendingMaintenanceActionDetails                       |||
 ||+--------------------------+--------------------------------------------------+||
@@ -172,7 +172,7 @@ $ aws rds describe-pending-maintenance-actions --output=table
 ||+--------------------------+--------------------------------------------------+||
 ||                           PendingMaintenanceActions                           ||
 |+---------------------+---------------------------------------------------------+|
-||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:<アカウントID>:db:prd-bar-instance   ||
+||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:<AWSアカウントID>:db:prd-bar-instance   ||
 |+---------------------+---------------------------------------------------------+|
 |||                       PendingMaintenanceActionDetails                       |||
 ||+--------------------------+--------------------------------------------------+||
@@ -186,7 +186,7 @@ $ aws rds describe-pending-maintenance-actions --output=table
 
 ```bash
 $ aws rds apply-pending-maintenance-action \
-  --resource-identifier arn:aws:rds:ap-northeast-1:<アカウントID>:db:prd-foo-instance \
+  --resource-identifier arn:aws:rds:ap-northeast-1:<AWSアカウントID>:db:prd-foo-instance \
   --opt-in-type undo-opt-in \
   --apply-action <取り消したいアクション名>
 ```

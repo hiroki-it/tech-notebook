@@ -389,7 +389,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
                   "owner": "123456789",
                 },
               "function_version": "$LATEST",
-              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
+              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
             },
           "caller": "-",
           "host": "prd-foo-api-access-log",
@@ -441,7 +441,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
                   "owner": "123456789",
                 },
               "function_version": "$LATEST",
-              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
+              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
             },
           "date_access": "01/Jan/2021:12:00:00 +0000",
           "host": "prd-foo-api-access-log",
@@ -653,7 +653,7 @@ AWS WAFから以下のような構造化ログを受信する例を考える。
 {
   "timestamp": 1639459445119,
   "formatVersion": 1,
-  "webaclId": "arn:aws:wafv2:ap-northeast-1:<アカウントID>:regional/webacl/prd-foo-alb-waf/123456789",
+  "webaclId": "arn:aws:wafv2:ap-northeast-1:<AWSアカウントID>:regional/webacl/prd-foo-alb-waf/123456789",
   "terminatingRuleId": "block-according-to-core-rule-set",
   "action": "ALLOW",
   "ruleGroupList":
@@ -804,7 +804,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
                   "owner": "123456789",
                 },
               "function_version": "$LATEST",
-              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
+              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
             },
           "caller": "-",
           "host": "prd-foo-api-access-log",
@@ -840,9 +840,9 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの`aws.invoked_function_arn`属性のARNに応じて、`service`属性にサービス値 (`foo-apigateway`、`bar-apigateway`、`baz-apigateway`) を付与する。この属性を使用する理由は、様々なAWSリソースの構造化ログが持っているためである (`owner`属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？) 。元の構造化ログにすでに`service`属性があるため、この値が上書きされる。
 
 ```
-foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
-bar-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
-baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
+foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
+bar-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
+baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
 ```
 
 これにより、構造化ログの`service`属性にサービス値が割り当てられる。

@@ -57,7 +57,7 @@ Login Succeeded
 : イメージにタグを付与する。
 
 ```bash
-# docker tag foo:latest <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+# docker tag foo:latest <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
 ```
 
@@ -66,7 +66,7 @@ $ docker tag <イメージID> <イメージリポジトリURL>:<バージョン�
 : ECRにコンテナイメージをプッシュする。
 
 ```bash
-# docker push <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+# docker push <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker push <イメージリポジトリURL>:<バージョンタグ>
 ```
 
@@ -207,7 +207,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
       "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
       "detail-type": "Amplify Deployment Status Change",
       "source": "aws.amplify",
-      "account": "<アカウントID>",
+      "account": "<AWSアカウントID>",
       "time": "<イベントの発生時間>",
       "region": "ap-northeast-1",
       "resources": ["<AmplifyのアプリケーションのARN>"],

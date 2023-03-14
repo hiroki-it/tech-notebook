@@ -842,7 +842,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     # ログストリーム名。予約変数あり。AWS ECSタスクIDなどアウトプットできる。
     log_stream_name   container/laravel/$(ecs_task_id)
     # ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。
-    role_arn          arn:aws:iam::<アカウントID>:role/prd-foo-flunetbit-role
+    role_arn          arn:aws:iam::<AWSアカウントID>:role/prd-foo-flunetbit-role
 
 [OUTPUT]
     Name              cloudwatch_logs
@@ -852,7 +852,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     log_group_name    /prd-foo-ecs-container/nginx/log
     log_stream_name   container/nginx/$(ecs_task_id)
     # ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。
-    role_arn          arn:aws:iam::<アカウントID>:role/prd-foo-flunetbit-role
+    role_arn          arn:aws:iam::<AWSアカウントID>:role/prd-foo-flunetbit-role
 ```
 
 CloudWatchログに送信されるデータはJSON型である。
@@ -868,7 +868,7 @@ CloudWatchログに送信されるデータはJSON型である。
   "container_id": "*****",
   "container_name": "foo",
   "ecs_cluster": "prd-foo-ecs-cluster",
-  "ecs_task_arn": "arn:aws:ecs:ap-northeast-1:<アカウントID>:task/cluster-name/*****",
+  "ecs_task_arn": "arn:aws:ecs:ap-northeast-1:<AWSアカウントID>:task/cluster-name/*****",
   "ecs_task_definition": "prd-foo-ecs-task-definition:1",
   "log": "<ログ>",
   "source": "stdout",

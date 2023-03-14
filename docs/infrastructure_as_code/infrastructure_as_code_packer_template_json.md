@@ -66,13 +66,13 @@ AMIの名前を設定する。
 #### ▼ ami_users
 
 ```yaml
-{"builders": [{"type": "amazon-ebs", "ami_users": "<アカウントID>"}]}
+{"builders": [{"type": "amazon-ebs", "ami_users": "<AWSアカウントID>"}]}
 ```
 
 #### ▼ snapshot_users
 
 ```yaml
-{"builders": [{"type": "amazon-ebs", "snapshot_users": "<アカウントID>"}]}
+{"builders": [{"type": "amazon-ebs", "snapshot_users": "<AWSアカウントID>"}]}
 ```
 
 #### ▼ instance_type

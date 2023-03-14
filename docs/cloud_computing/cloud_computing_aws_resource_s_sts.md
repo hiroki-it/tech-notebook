@@ -263,7 +263,7 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
         "Effect": "Allow",
         "Principal":
           {
-            "Federated": "arn:aws:iam::<アカウントID>:saml-provider/<プロバイダー名>",
+            "Federated": "arn:aws:iam::<AWSアカウントID>:saml-provider/<プロバイダー名>",
           },
         "Action": "sts:AssumeRole",
         "Condition":
@@ -296,7 +296,8 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
     [
       {
         "Effect": "Allow",
-        "Principal": {"AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>"},
+        "Principal":
+          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {"StringEquals": {"sts:ExternalId": "<適当な文字列>"}},
       },

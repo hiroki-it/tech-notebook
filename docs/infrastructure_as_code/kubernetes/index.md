@@ -30,9 +30,11 @@
 ### アドオン
 
 * #### <u>コントロールプレーンNodeのアドオン</u>
-   > * ##### [admission-controllers](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html)
+  > * ##### [admission-controllers](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html)
 
-* #### [外部Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_external_ingress_controller.html)
+* #### Ingressコントローラー
+  > * ##### [Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)
+  > * ##### [AWS Load Balancerコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)
 
 * #### <u>ネットワークアドオン</u>
   > * ##### [CoreDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html)

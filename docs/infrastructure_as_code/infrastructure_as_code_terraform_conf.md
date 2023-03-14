@@ -45,7 +45,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
         {
           "schema_version": 0,
           "attributes": {
-            "account_id": "<アカウントID>",
+            "account_id": "<AWSアカウントID>",
             "arn": "*****",
             "id": "*****",
             "user_id": "*****"
