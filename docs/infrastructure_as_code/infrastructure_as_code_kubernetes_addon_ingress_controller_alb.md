@@ -17,9 +17,23 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 ### AWS Load Balancerコントローラーとは
 
-![aws_lb_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_lb_controller.png)
+![aws_load_balancer_controller_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 
-AWS Load Balancerコントローラーは、Deployment (aws-Load Balancer-controller) 、Service (aws-Load Balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などから構成されている。
+AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などから構成されている.
+
+etcd上のIngressのマニフェストを検知し、設定値に応じたALBをプロビジョニングし、さらにALBのリスナールールごとにターゲットグループをプロビジョングする。
+
+TargetGroupBindingを介して、ALBのターゲットグループとIngressを紐づける。
+
+> ↪️ 参考：
+>
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
+> - https://blog.recruit.co.jp/rmp/infrastructure/post-21469/
+> - https://aws.amazon.com/cn/blogs/china/use-aws-load-balancer-controller-s-targetgroupbinding-function-to-realize-flexible-load-balancer-management/
+
+<br>
+
+### Serviceタイプ
 
 Ingressでインバウンド通信を受信する場合に使用し、NodePort Serviceの場合には使用しない。
 
@@ -35,19 +49,11 @@ ClusterIP Service
 Pod
 ```
 
-Ingressで`alb`のIngressClassを指定していること検知して、Ingressの設定に応じたAWS ALBを自動的にプロビジョニングする。
-
-また、TargetGroupBindingを介して、ALBのターゲットグループとIngressを紐づける。
-
-> ↪️ 参考：
->
-> - https://blog.recruit.co.jp/rmp/infrastructure/post-21469/
-> - https://aws.amazon.com/cn/blogs/china/use-aws-load-balancer-controller-s-targetgroupbinding-function-to-realize-flexible-load-balancer-management/
-> - https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
-
 <br>
 
-### Deployment (aws-Load Balancer-controller)
+### Deployment (aws-load-balancer-controller)
+
+![aws_load_balancer_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller.png)
 
 Deploymentは、Ingressで`alb`のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。
 
@@ -76,6 +82,8 @@ spec:
           name: metrics-server
           protocol: TCP
 ```
+
+> ↪️ 参考：https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
 
 <br>
 
@@ -447,6 +455,8 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 ### Ingressの設定
 
+Ingressで`alb`のIngressClassを指定していること検知する。
+
 AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
@@ -608,7 +618,7 @@ AWS ALBのリスナールールを定義するために、Ingressの`.spec.rules
 
 <br>
 
-### TargetGroupBinding
+## 03. TargetGroupBinding
 
 ![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
