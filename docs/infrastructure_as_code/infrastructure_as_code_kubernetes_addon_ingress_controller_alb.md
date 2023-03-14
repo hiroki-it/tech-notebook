@@ -53,8 +53,6 @@ Pod
 
 ### Deployment (aws-load-balancer-controller)
 
-![aws_load_balancer_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller.png)
-
 Deploymentは、Ingressで`alb`のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。
 
 ```yaml
@@ -249,6 +247,8 @@ metadata:
 ```
 
 IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
+
+![aws_load_balancer_controller_irsa](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_irsa.png)
 
 #### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
 
