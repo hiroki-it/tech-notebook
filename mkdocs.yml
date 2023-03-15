@@ -479,7 +479,6 @@ nav:
               - ■ コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
               - ■ Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
-          - ハードウェアリソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.md
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
       - ■ アドオン:
           - ■ コントロールプレーンNodeのアドオン:
@@ -498,6 +497,12 @@ nav:
               - ■ AWS EKSアドオン:
                   - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.md
                   - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.md
+      - ■ ハードウェアリソース管理:
+          - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.md
+          - cluster-autoscaler: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.md
+          - descheduler: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_descheduler.md
+          - karpenter: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.md
+          - metrics-server: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_metrics_server.md
       - ■ 開発:
           - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.md
           - ■ 開発環境:
