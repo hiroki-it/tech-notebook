@@ -59,10 +59,9 @@
 
 * #### [︎descheduler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_︎descheduler.html)
 
-* #### [karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_︎karpenter.html)
-/infrastructure_as_code_kubernetes_hardware_resource_management_︎descheduler.html)
+* #### [karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.html)
 
-* #### [metrics-server](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_︎metrics_server.html)
+* #### [metrics-server](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_metrics_server.html)
 
 <br>
 
