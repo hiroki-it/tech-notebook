@@ -19,9 +19,13 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 deschedulerは、Job (descheduler) 、などから構成されている。
 
+これは、現在のNodeからより適切なNodeにPodを再スケジューリングする。
+
 類似するkube-schedulerでは、既存のPodを削除して別のNodeに再スケジューリングすることはない。
 
-そのため、Nodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。
+そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。
+
+他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。
 
 `kubectl rollout restart`コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。
 

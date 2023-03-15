@@ -800,9 +800,9 @@ MinikubeのClusterに名前をつける。
 Minikubeを使用してマルチClusterを再現できる。
 
 ```bash
-$ minikube start --profile foo-cluster
+$ minikube start --profile foo-minikube-cluster
 
-$ kubectl config use-context foo-cluster
+$ kubectl config use-context foo-minikube-cluster
 Switched to context "foo-cluster".
 ```
 

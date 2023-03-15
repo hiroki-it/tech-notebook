@@ -393,23 +393,37 @@ data:
 
 ### セットアップ
 
-```bash
-# ArgoCDが指定するClusterをコンテキストとする。
-$ kubectl config current-context
-https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+#### ▼ AWS EKS Clusterの場合
 
-# ログインする。
+`【１】`
+
+: ArgoCDの稼働するClusterをコンテキストとする。
+
+```bash
+$ kubectl config use-context <ArgoCDの稼働するClusterのARN>
+```
+
+`【２】`
+
+: ArgoCDにログインする。
+
+```bash
 $ argocd login <ArgoCDのドメイン名> --grpc-web
 ```
 
-ArgoCDが指定するClusterをコンテキストとした上で、`argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行すると、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
+`【３】`
+
+: ArgoCDに監視させたいClusterをコンテキストとする。
 
 ```bash
-# ArgoCDが指定するClusterをコンテキストとする。
-$ kubectl config current-context
-https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+$ kubectl config use-context <ArgoCDに監視させたいClusterのARN>
+```
 
-# ClusterのURLを追加する。
+`【４】`
+
+: `argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行すると、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
+
+```bash
 $ argocd cluster add <ClusterのARN>
 
 INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system"
@@ -418,7 +432,9 @@ INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
 Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
 
-これを実施しないと、Applicationで指定するClusterのURLがArgoCDに登録されていないとして、以下のようなエラーになる。
+`【５】`
+
+: もし手順がうまく行っていない場合、Applicationで指定するClusterのURLがArgoCDに登録されていないとして、以下のようなエラーになる。
 
 ```bash
 cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured

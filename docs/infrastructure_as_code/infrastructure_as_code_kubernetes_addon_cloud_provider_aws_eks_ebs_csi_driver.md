@@ -15,11 +15,37 @@ description: AWS EBS CSIドライバー＠AWS EKSアドオンの知見を記録�
 
 ## 01. AWS EBS CSIドライバー
 
+### アーキテクチャ
+
 PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとして使用できるようにする。
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 > ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
+
+<br>
+
+### Deployment
+
+記入中...
+
+<br>
+
+### ServiceAccount
+
+IRSAの仕組みで、PodとIAMロールを紐づける。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-foo-ebs-csi-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/foo-ebs-csi-controller-role
+secrets:
+  - name: foo-ebs-csi-controller-token
+```
 
 <br>
 

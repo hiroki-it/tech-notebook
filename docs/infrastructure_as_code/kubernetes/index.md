@@ -48,7 +48,6 @@
   > > * ##### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)
   > > * ##### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html)
 
-
 <br>
 
 ### ︎ハードウェアリソース管理
@@ -57,7 +56,7 @@
 
 * #### [︎cluster-autoscaler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.html)
 
-* #### [︎descheduler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_︎descheduler.html)
+* #### [︎descheduler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_descheduler.html)
 
 * #### [karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.html)
 
@@ -102,7 +101,6 @@
 
 <br>
 
-
 ### Kubernetesリソース
 
 * #### [︎Kubernetesリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
@@ -141,7 +139,6 @@
   > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_conf.html)
   > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_command.html)
   > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_resource_definition.html)
-
 
 * #### <u>Grafana</u>
   > * ##### [︎Grafana](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)

@@ -83,7 +83,7 @@ spec:
           protocol: TCP
 ```
 
-> ↪️ 参考：https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
+> ↪️ 参考：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
 
 <br>
 
@@ -190,6 +190,24 @@ spec:
 
 <br>
 
+### ServiceAccount
+
+IRSAの仕組みで、PodとIAMロールを紐づける。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-aws-load-balancer-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/foo-aws-load-balancer-controller-role
+secrets:
+  - name: foo-aws-load-balancer-controller-token
+```
+
+<br>
+
 ### セットアップ (AWS側)
 
 #### ▼ Terraformの公式モジュールの場合
@@ -251,6 +269,8 @@ metadata:
 IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
 
 ![aws_load_balancer_controller_irsa](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_irsa.png)
+
+> ↪️ 参考：https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
 
 #### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
 
