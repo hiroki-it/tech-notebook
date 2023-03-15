@@ -177,7 +177,7 @@ root-argocd-repository/
 
 管理チームごとにApplication (app-parent-application、infra-parent-application) を作成すると良い。
 
-parent-applicationは、実行環境名のプロジェクトに配置する。
+parent-applicationは、実行環境名 (dev、stg、prd) のプロジェクトに配置する。
 
 ```yaml
 # 親Application
@@ -198,7 +198,7 @@ parent-argocd-repository/
 
 child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のプロジェクトに配置する。
 
-child-applicationは、実行環境名のプロジェクトに配置する。
+child-applicationは、実行環境名 (dev、stg、prd) のプロジェクトに配置する。
 
 ```yaml
 # 子Application
@@ -225,6 +225,8 @@ child-argocd-repository/
 ```
 
 #### ▼ grand-parent-application
+
+記入中...
 
 > ↪️ 参考：https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
 
@@ -275,9 +277,9 @@ data:
 
 ArgoCDは、Kubernetesリソースの`.metadata.labels`キーにこのラベル (ここでは`argocd.argoproj.io/instance`キー) を自動的に設定する。
 
-Projectが異なる限り、同じCluster内にある同じ`argocd.argoproj.io/instance`キー値を持つApplicationは区別される。
+AppProjectが異なる限り、同じCluster内にある同じ`argocd.argoproj.io/instance`キー値を持つApplicationは区別される。
 
-一方で、同じProjectにあるApplicationは、たとえNamespaceが異なっていても、区別できない。
+一方で、同じAppProjectにあるApplicationは、たとえNamespaceが異なっていても区別できない。
 
 そのため、Kubernetesリソースが複数のApplicationに紐づいてしまう。
 
@@ -285,11 +287,11 @@ Projectが異なる限り、同じCluster内にある同じ`argocd.argoproj.io/i
 
 <br>
 
-### Project
+### AppProject
 
-実行環境名とする。
+実行環境名 (dev、stg、prd) とする。
 
-ArgoCDでは、認可スコープとProjectを紐づけられるため、実行環境別の操作権限を設定できるようになる。
+ArgoCDでは、認可スコープとAppProjectを紐づけられるため、実行環境別の操作権限を設定できるようになる。
 
 <br>
 

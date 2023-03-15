@@ -89,6 +89,8 @@ DevOpsを実践しない状況では、開発者 (例：機能追加、機能変
 
 DevOpsの実現には、『技術的要素』『組織文化的要素』が必要である。
 
+DevOpsを実現するためには、これらの要素を満たす必要がある。
+
 DevOpsのこれらの要素を実践するエンジニアリングを『SREing』、また職種は『SREer』という。
 
 > ↪️ 参考：https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23

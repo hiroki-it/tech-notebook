@@ -892,10 +892,8 @@ spec:
 
 自動水平スケーリングのスケールアウト時の最大/最小Pod数を設定する。
 
-> ↪️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
-
 ```yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: foo-horizontal-pod-autoscaler
@@ -903,6 +901,8 @@ spec:
   maxReplicas: 5
   minReplicas: 1
 ```
+
+> ↪️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
 <br>
 
@@ -914,6 +914,10 @@ spec:
 
 #### ▼ type
 
+メトリクスの種類を設定する。
+
+以下のタイプを設定できる。
+
 | タイプ名   | 説明                                            | メトリクス例                                     |
 | ---------- | ----------------------------------------------- | ------------------------------------------------ |
 | `Resource` | リソースメトリクス                              | CPU使用率、メモリ使用率、など                    |
@@ -921,17 +925,10 @@ spec:
 | `Object`   | Pod以外のKubernetesリソースのカスタムメトリクス | Ingressに関するメトリクスなど                    |
 | `External` | Kubernetes以外の任意のメトリクス                | AWS、GCP、Azureに固有のメトリクス                |
 
-メトリクスの種類を設定する。
-
-以下のタイプを設定できる。
-
-> ↪️ 参考：
->
-> - https://zenn.dev/lapi/articles/e7ae967aa5161b#hpa%E3%81%AE%E8%A8%AD%E5%AE%9A
-> - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+#### ▼ Resourceの場合
 
 ```yaml
-apiVersion: io.k8s.api.autoscaling.v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: foo-horizontal-pod-autoscaler
@@ -943,6 +940,23 @@ spec:
         targetAverageUtilization: 60
 ```
 
+> ↪️ 参考：
+>
+> - https://zenn.dev/lapi/articles/e7ae967aa5161b#hpa%E3%81%AE%E8%A8%AD%E5%AE%9A
+> - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+
+#### ▼ Podsの場合
+
+記入中...
+
+#### ▼ Objectの場合
+
+記入中...
+
+#### ▼ Externalの場合
+
+記入中...
+
 <br>
 
 ### .spec.scaleTargetRef
@@ -951,10 +965,8 @@ spec:
 
 自動水平スケーリングを実行するKubernetesリソースを設定する。
 
-> ↪️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
-
 ```yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: foo-horizontal-pod-autoscaler
@@ -964,6 +976,8 @@ spec:
     kind: Deployment # Deploymentで自動水平スケーリングを実行する。
     name: foo-deployment
 ```
+
+> ↪️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
 <br>
 

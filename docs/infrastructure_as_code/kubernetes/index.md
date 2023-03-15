@@ -21,8 +21,6 @@
 
 * #### [ネットワーク](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)
 
-* #### [︎ハードウェアリソース管理](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.html)
-
 * #### [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
 
 <br>
@@ -50,6 +48,22 @@
   > > * ##### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)
   > > * ##### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html)
 
+
+<br>
+
+### ︎ハードウェアリソース管理
+
+* #### [︎addon-resizer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html)
+
+* #### [︎cluster-autoscaler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.html)
+
+* #### [︎descheduler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_︎descheduler.html)
+
+* #### [karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_︎karpenter.html)
+/infrastructure_as_code_kubernetes_hardware_resource_management_︎descheduler.html)
+
+* #### [metrics-server](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_︎metrics_server.html)
+
 <br>
 
 ### 開発
@@ -67,7 +81,6 @@
   > > * ##### [pluto](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_linter_pluto.html)
 
 <br>
-
 
 ### マニフェスト管理
 

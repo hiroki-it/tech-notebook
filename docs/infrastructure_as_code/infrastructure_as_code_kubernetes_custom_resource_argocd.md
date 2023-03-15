@@ -198,9 +198,11 @@ ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
 
 ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズを委譲することになる。
 
-`dex-server`は、ArgoCDが委譲先と通信する時のハブとして機能する。
+委譲先 (例：KeyCloak) は、認証サーバー (例：OIDCであればIDプロバイダー) を公開しており、`dex-server`は、ArgoCDが認証サーバーと通信する時のハブとして機能する。
 
 `dex-server`の起動に失敗すると、外部Webサイトに情報を送信できずにSSOに失敗してしまう。
+
+ただ、argocd-server自体が認証サーバーと通信することが可能なため、dex-serverを使用するか否かは任意である。
 
 > ↪️ 参考：
 >

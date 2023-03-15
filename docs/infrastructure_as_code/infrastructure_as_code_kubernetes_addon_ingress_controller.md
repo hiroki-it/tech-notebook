@@ -17,23 +17,29 @@ description: Ingressコントローラー＠ワーカーNodeのアドオンの�
 
 ### Ingressコントローラーとは
 
-Ingressコントローラーは、Ingressの設定に基づいてNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
+Ingressコントローラーは、kube-controllerのように単一/複数のIngressにwatchイベントを送信する、
 
-Kubernetesの周辺ツール (Prometheus、AlertManager、Grafana、ArgoCD) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+これのルールに応じたリバースプロキシやロードバランサー (Ingressコントローラーの種類による) を作成し、Node外からの受信したインバウンド通信をServiceにルーティングする。
+
+注意点として、IngressコントローラーがServiceにルーティングするのであって、Ingressはあくまでルーティングのルールを定義しているだけである。
+
+Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD、など) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
 
 > ↪️ 参考：
 >
+> - https://cloud.google.com/community/tutorials/nginx-ingress-gke
 > - https://developers.freee.co.jp/entry/kubernetes-ingress-controller
 > - https://www.containiq.com/post/kubernetes-ingress
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
+> - https://traefik.io/glossary/kubernetes-ingress-and-ingress-controller-101/
 
 <br>
 
 ### SSL証明書の割り当て
 
-Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これをロードバランサー (例：Nginx) に渡す。
+Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
 
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 
@@ -68,16 +74,16 @@ Ingressコントローラーは、『`***-controller-admission`』というServi
 
 ### 外部Ingressコントローラーの種類
 
-Ingressコントローラーや、それに相当するもの (AWS Load Balancerコントローラー、Istio Ingressコントローラー) が必要である。
+Ingressコントローラーには種類があり、コントローラーごとに作成するリバースプロキシやロードバランサーが異なる。
 
-| コントローラー名                                              | Ingressの実体        | 開発環境 | 本番環境 |
-| ------------------------------------------------------------- | -------------------- | :------: | :------: |
-| Nginx Ingressコントローラー                                   | Nginx                |    ✅    |    ✅    |
-| minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                |    ✅    |          |
-| AWS Load Balancerコントローラー                               | AWS ALB              |          |    ✅    |
-| GCP CLBコントローラー                                         | GCP CLB              |          |    ✅    |
-| Istio Ingressコントローラー                                   | Istio IngressGateway |    ✅    |    ✅    |
-| ...                                                           | ...                  |   ...    |   ...    |
+| Ingressコントローラー                                         | リバースプロキシ、ロードバランサー | 開発環境 | 本番環境 |
+| ------------------------------------------------------------- | ---------------------------------- | :------: | :------: |
+| Nginx Ingressコントローラー                                   | Nginx                              |    ✅    |    ✅    |
+| minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                              |    ✅    |          |
+| AWS Load Balancerコントローラー                               | AWS ALB                            |          |    ✅    |
+| GCP CLBコントローラー                                         | GCP CLB                            |          |    ✅    |
+| Istio Ingressコントローラー                                   | Istio IngressGateway               |    ✅    |    ✅    |
+| ...                                                           | ...                                |   ...    |   ...    |
 
 > ↪️ 参考：
 >

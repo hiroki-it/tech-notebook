@@ -17,13 +17,15 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 ### AWS Load Balancerコントローラーとは
 
-![aws_load_balancer_controller_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
-
 AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などから構成されている.
 
-etcd上のIngressのマニフェストを検知し、設定値に応じたALBをプロビジョニングし、さらにALBのリスナールールごとにターゲットグループをプロビジョングする。
+この時、Ingressコントローラーはetcd上のIngressのマニフェストを検知し、設定値に応じたALBをプロビジョニングする。
 
-TargetGroupBindingを介して、ALBのターゲットグループとIngressを紐づける。
+さらにALBのリスナールールごとにターゲットグループをプロビジョングする。
+
+その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐づける。
+
+![aws_load_balancer_controller_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 
 > ↪️ 参考：
 >

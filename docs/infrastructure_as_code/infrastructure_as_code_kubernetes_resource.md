@@ -585,7 +585,7 @@ Cluster-IPはNode外から宛先として指定できないため、インバウ
 ```
 パブリックネットワーク
 ↓
-Ingress、Ingressコントローラー
+Ingressコントローラー ⇄ Ingress
 ↓
 ClusterIP Service
 ↓
@@ -649,7 +649,7 @@ Pod
 ```
 パブリックネットワーク
 ↓
-Ingress、Ingressコントローラー
+Ingressコントローラー ⇄ Ingress
 ↓
 ClusterIP Service (実体はNodePort Service)
 ↓

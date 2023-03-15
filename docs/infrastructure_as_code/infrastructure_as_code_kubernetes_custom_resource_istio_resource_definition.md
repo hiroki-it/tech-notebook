@@ -999,8 +999,6 @@ metadata:
 
 ポート名を設定する。
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
-
 **＊実装例＊**
 
 ```yaml
@@ -1014,6 +1012,8 @@ spec:
     - port:
         name: http
 ```
+
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 #### ▼ port.number
 

@@ -31,7 +31,7 @@ Minikubeのアドオンを操作する。
 
 開発環境専用のIngressコントローラーとして、Nginx Ingressコントローラーを有効化するか否かを設定する。
 
-本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
+本番環境では、同じくNginx Ingressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 

@@ -1113,13 +1113,21 @@ $ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名
 
 #### ▼ replaceとは
 
-Kubernetesリソースを一度削除し、別のマニフェストで再作成する。
+Kubernetesリソースを安全に削除し、別のマニフェストで再作成する。
 
 ```bash
 $ kubectl replace -f foo.yaml
 ```
 
 > ↪️ 参考：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
+
+#### ▼ --force
+
+Kubernetesリソースを強制的に削除し、別のマニフェストで再作成する。
+
+```bash
+$ kubectl replace --force -f foo.yaml
+```
 
 <br>
 

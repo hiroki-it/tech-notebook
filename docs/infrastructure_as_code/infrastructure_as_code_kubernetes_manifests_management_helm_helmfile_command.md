@@ -30,7 +30,7 @@ $ helmfile <サブコマンド>
 
 #### ▼ -e
 
-Helmリリース対象の実行環境名を設定する。
+Helmリリース対象の実行環境名 (dev、stg、prd) を設定する。
 
 ```bash
 $ helmfile -e dev <コマンド>
