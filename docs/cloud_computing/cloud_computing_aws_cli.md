@@ -534,8 +534,6 @@ $ aws s3 ls s3://<バケット名> \
     --human-readable
 ```
 
-<br>
-
 #### ▼ sync
 
 指定したバケット内のファイルを他のバケットにコピーする。
@@ -581,8 +579,6 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 ```bash
 $ aws sqs get-queue-url --queue-name <キュー名>
 ```
-
-<br>
 
 #### ▼ receive-message
 

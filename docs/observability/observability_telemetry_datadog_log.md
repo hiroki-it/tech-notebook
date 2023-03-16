@@ -1043,8 +1043,6 @@ log-pipeline
 ...
 ```
 
-<br>
-
 #### ▼ source流入パターン
 
 sourceタグで流入させたログをserviceタグで振り分ける場合を示す。
@@ -1140,8 +1138,6 @@ autoFilledRule3 ...
 メトリクスを作成しておくと、ログのレポートとして使用できる。
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/1800568738
-
-<br>
 
 #### ▼ インデックス
 

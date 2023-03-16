@@ -50,6 +50,14 @@ $ kubectl diff -k "https://github.com/argoproj/argo-cd//manifests/crds?ref=<タ�
 $ kubectl apply -k "https://github.com/argoproj/argo-cd//manifests/crds?ref=<タグ>"
 ```
 
+例えば、argocd-cdチャートの`5.26.0`を使用する場合、これはArgoCDの`2.6.5`に対応しているため、以下の値で適用する。
+
+```bash
+$ kubectl diff -k "https://github.com/argoproj/argo-cd//manifests/crds?ref=v2.6.5"
+
+$ kubectl apply -k "https://github.com/argoproj/argo-cd//manifests/crds?ref=v2.6.5"
+```
+
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash

@@ -19,6 +19,15 @@ description: カスタムリソース＠Kubernetesの知見を記録していま
 
 Kubernetesに標準で備わっていないKubernetesリソースを提供する。
 
+カスタムリソースのマニフェストで定義できるオプションやデータ型は、CRDのスキーマ定義に応じて決まる。
+
+そのため、CRDのスキーマを変更すると、同じCluster内にある該当のカスタムリソースに影響が出る。
+
+具体的には、以下のような問題が起こる可能性がある。
+
+- CRDをアップグレードした場合に、スキーマに機能廃止があると、カスタムリソースで廃止されたその機能を使用できなくなる。
+- CRD自体を誤って削除すると、これに対応するカスタムリソースも自動的に削除される。
+
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/

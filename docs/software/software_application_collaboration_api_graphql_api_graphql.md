@@ -71,8 +71,6 @@ type User {
 
 > ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
-<br>
-
 #### ▼ クエリ
 
 データ読出のクエリを定義する。
@@ -143,8 +141,6 @@ input UserCreateInput {
 ```
 
 > ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#mutation
-
-<br>
 
 #### ▼ クエリ
 

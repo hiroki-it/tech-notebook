@@ -56,7 +56,7 @@ RESTful設計が使用されたWebAPIをRESTful-APIという。
 
 #### ▼ Uniform Interfaceであること
 
-HTTPプロトコルを使用したリクエストを、『リソースに対する操作』とらえ、リクエストにHTTPメソッドを対応づけるようにする。
+HTTPリクエストを、『リソースに対する操作』とらえ、リクエストにHTTPメソッドを対応づけるようにする。
 
 #### ▼ Addressabilityであること
 

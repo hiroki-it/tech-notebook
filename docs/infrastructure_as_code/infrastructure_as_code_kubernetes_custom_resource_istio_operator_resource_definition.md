@@ -560,7 +560,7 @@ spec:
 
 #### ▼ proxyHttpPort
 
-全ての`istio-proxy`コンテナに関して、Cluster外からのインバウンド通信 (特にHTTPプロトコル通信) を待ち受けるポート番号を設定する。
+全ての`istio-proxy`コンテナに関して、Cluster外からのインバウンド通信 (特にHTTPプロトコル) を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

@@ -216,7 +216,7 @@ Group apache
 
 #### ▼ KeepAliveとは
 
-HTTPプロトコルのリクエストのクライアントとの接続時に、クライアントの状態に応じて、その接続をタイムアウトにするか否かを制御する。
+HTTPリクエストのクライアントとの接続時に、クライアントの状態に応じて、その接続をタイムアウトにするか否かを制御する。
 
 > ↪️ 参考：https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
 

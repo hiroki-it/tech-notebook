@@ -200,8 +200,6 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 > ↪️ 参考：https://getcomposer.org/doc/04-schema.md#scripts
 
-<br>
-
 #### ▼ version
 
 Composerのバージョンを設定する。

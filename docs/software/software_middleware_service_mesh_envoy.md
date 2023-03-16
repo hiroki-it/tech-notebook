@@ -972,8 +972,6 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 > - https://openstandia.jp/oss_info/envoy/
 > - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
 
-<br>
-
 #### ▼ Pod外の場合 (フロントプロキシ)
 
 フロントプロキシと呼ばれている。

@@ -89,8 +89,6 @@ build:
 
 > ↪️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
 
-<br>
-
 #### ▼ docker
 
 | 項目       | 説明                                                         | 補足                                                                         |

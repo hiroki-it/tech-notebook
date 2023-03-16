@@ -88,8 +88,6 @@ data:
 
 Kubernetesでは非常に多くの証明書があるため、期限切れの証明書を特定することは大変である。
 
-> ↪️ 参考：https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
-
 ```bash
 $ cat <証明書が設定されたConfigのマニフェストへのパス> \
     | grep client-certificate-data \
@@ -110,6 +108,8 @@ Configによっては、証明書のパスが設定されている場合があ�
 ```bash
 $ openssl x509 -noout -dates -in <証明書へのパス>
 ```
+
+> ↪️ 参考：https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
 
 #### ▼ 更新方法
 

@@ -19,7 +19,7 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 deschedulerは、Job (descheduler) 、などから構成されている。
 
-これは、現在のNodeからより適切なNodeにPodを再スケジューリングする。
+これは、deschedulerは、ポリシーに応じて現在のNodeにあるPodを削除し、より適切なNodeにこれを再スケジューリングする。
 
 類似するkube-schedulerでは、既存のPodを削除して別のNodeに再スケジューリングすることはない。
 

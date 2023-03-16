@@ -219,9 +219,7 @@ worker_rlimit_nofile  8192;
 
 #### ▼ http
 
-全てのHTTPプロトコルによるインバウンド通信に共通する処理を設定する。
-
-> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
+全てのHTTPプロトコルのインバウンド通信に共通する処理を設定する。
 
 ```nginx
 http {
@@ -250,6 +248,8 @@ http {
     }
 }
 ```
+
+> ↪️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 
 #### ▼ location
 

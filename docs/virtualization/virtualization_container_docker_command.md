@@ -41,8 +41,6 @@ $ docker attach <起動中コンテナ名>
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --force-rm=true --no-cache .
 ```
 
-<br>
-
 #### ▼ --target
 
 ビルドするステージ名を設定する。

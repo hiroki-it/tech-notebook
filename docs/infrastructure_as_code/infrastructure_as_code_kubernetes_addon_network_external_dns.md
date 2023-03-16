@@ -19,7 +19,9 @@ description: ExternalDNS＠ネットワークアドオンの知見を記録し�
 
 ExternalDNSアドオンは、Deployment (ExternalDNSコントローラー) 、Service、などから構成される。
 
-ネットワークからのアクセスにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。
+ExternalDNSコントローラーは、ネットワークからのアクセスにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。
+
+Ingressコントローラー (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからの通信をArgoCDのダッシュボード (argocd-server) にルーティングできるようにする。
 
 ![external-dns_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
 
@@ -27,20 +29,6 @@ ExternalDNSアドオンは、Deployment (ExternalDNSコントローラー) 、Se
 >
 > - https://networkop.co.uk/post/2020-08-k8s-gateway/
 > - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#how-do-i-specify-a-dns-name-for-my-kubernetes-objects
-
-<br>
-
-### セットアップ
-
-#### ▼ Helmの場合
-
-```bash
-$ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/external-dns/
-
-$ helm install <リリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
-```
-
-> ↪️ 参考：https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
 
 <br>
 
@@ -133,9 +121,27 @@ subjects:
 
 <br>
 
-## 02. Ingressの場合
+## 02. セットアップ
 
-### AWS ALBの場合
+### Helmの場合
+
+Helmを使用する。
+
+別途、IngressやServiceの作成が必要である。
+
+```bash
+$ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/external-dns/
+
+$ helm install <リリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+
+<br>
+
+### Ingressの場合
+
+#### ▼ AWS ALBの場合
 
 以下のようなIngressを定義し、IPv4タイプのAWS ALBをプロビジョニングするとする。
 

@@ -248,8 +248,6 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 - Docker
 - Docker Compose
 
-<br>
-
 #### ▼ 複数ホストの場合
 
 複数ホスト上のコンテナが対象である。

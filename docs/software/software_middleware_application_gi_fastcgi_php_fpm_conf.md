@@ -406,8 +406,6 @@ PHPの`ini`ファイルで設定されたbool値以外のオプションを上�
 php_value[session.save_handler] = redis
 ```
 
-<br>
-
 #### ▼ php_value[session.save_path]
 
 セッションの保存場所のディレクトリを設定する。
@@ -422,8 +420,6 @@ php_value[session.save_handler] = redis
 [www]
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
-
-<br>
 
 #### ▼ php_value[soap.wsdl_cache_dir]
 

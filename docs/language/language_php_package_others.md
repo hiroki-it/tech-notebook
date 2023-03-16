@@ -53,8 +53,6 @@ $carbon = Carbon::instance($datetime);
 echo $carbon; // 2019-07-07 19:07:07
 ```
 
-<br>
-
 #### ▼ `create`メソッド
 
 日時の文字列からCarbonインスタンスを作成する。
@@ -68,8 +66,6 @@ $carbon = Carbon::create(2019, 07, 07, 19, 07, 07);
 
 echo $carbon; // 2019-07-07 19:07:07
 ```
-
-<br>
 
 #### ▼ `createFromXXX`メソッド
 
@@ -123,8 +119,6 @@ $carbonFromTimestamp = Carbon::createFromTimestamp(1562494027);
 
 echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 ```
-
-<br>
 
 #### ▼ `parse`メソッド
 

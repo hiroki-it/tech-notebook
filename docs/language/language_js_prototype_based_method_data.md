@@ -530,8 +530,6 @@ for (const property in object) {
 // baz
 ```
 
-<br>
-
 #### ▼ continueとは
 
 反復処理の現在のループをスキップし、次のループを開始する。

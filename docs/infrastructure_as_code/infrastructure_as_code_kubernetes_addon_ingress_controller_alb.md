@@ -13,17 +13,17 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 <br>
 
-## 01. AWS Load Balancerコントローラー
+## 01. AWS Load Balancerコントローラーの仕組み
 
-### AWS Load Balancerコントローラーとは
+### アーキテクチャ
 
 AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などから構成されている.
 
-この時、Ingressコントローラーはetcd上のIngressのマニフェストを検知し、設定値に応じたALBをプロビジョニングする。
-
-さらにALBのリスナールールごとにターゲットグループをプロビジョングする。
+aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBをプロビジョニングし、ALBのリスナールールごとにターゲットグループもプロビジョングする。
 
 その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐づける。
+
+これらにより、Cluster外からの通信をPodにルーティングできるようにする。
 
 ![aws_load_balancer_controller_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 
@@ -208,7 +208,31 @@ secrets:
 
 <br>
 
-### セットアップ (AWS側)
+### TargetGroupBinding
+
+記入中...
+
+```yaml
+kind: TargetGroupBinding
+metadata:
+  name: foo-target-group-binding
+  namespace: foo
+spec:
+  serviceRef:
+    name: foo-service
+    port: 80
+  targetGroupARN: <ターゲットグループのARN>
+```
+
+![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
+
+> ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
+
+<br>
+
+## 02. セットアップ
+
+### AWS側
 
 #### ▼ Terraformの公式モジュールの場合
 
@@ -376,7 +400,7 @@ secrets:
 
 <br>
 
-### セットアップ (Kubernetes側)
+### Kubernetes側
 
 #### ▼ Helmの場合
 
@@ -473,9 +497,9 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 <br>
 
-## 02. Ingressの設定
+## 03. Ingress
 
-### Ingressの設定
+### Ingress
 
 Ingressで`alb`のIngressClassを指定していること検知する。
 
@@ -637,27 +661,5 @@ metadata:
 AWS ALBのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
 
 > ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
-
-<br>
-
-## 03. TargetGroupBinding
-
-![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
-
-記入中...
-
-```yaml
-kind: TargetGroupBinding
-metadata:
-  name: foo-target-group-binding
-  namespace: foo
-spec:
-  serviceRef:
-    name: foo-service
-    port: 80
-  targetGroupARN: <ターゲットグループのARN>
-```
-
-> ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
 
 <br>

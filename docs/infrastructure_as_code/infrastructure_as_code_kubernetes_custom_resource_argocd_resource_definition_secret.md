@@ -405,13 +405,25 @@ $ kubectl config use-context <ArgoCDの稼働するClusterのARN>
 
 `【２】`
 
+: ArgoCDのパスワードを確認する。
+
+```bash
+$ kubectl get secret argocd-initial-admin-secret \
+    -n argocd \
+    -o jsonpath="{.data.password}" | base64 -d; echo
+```
+
+`【３】`
+
 : ArgoCDにログインする。
+
+     この時、ユーザー名は`admin`でパスワードは先に確認したものとする。
 
 ```bash
 $ argocd login <ArgoCDのドメイン名> --grpc-web
 ```
 
-`【３】`
+`【４】`
 
 : ArgoCDに監視させたいClusterをコンテキストとする。
 
@@ -419,7 +431,7 @@ $ argocd login <ArgoCDのドメイン名> --grpc-web
 $ kubectl config use-context <ArgoCDに監視させたいClusterのARN>
 ```
 
-`【４】`
+`【５】`
 
 : `argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行すると、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
 
@@ -432,7 +444,7 @@ INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
 Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
 
-`【５】`
+`【６】`
 
 : もし手順がうまく行っていない場合、Applicationで指定するClusterのURLがArgoCDに登録されていないとして、以下のようなエラーになる。
 

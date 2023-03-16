@@ -286,8 +286,6 @@ runs:
 
 > ↪️ 参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
 
-<br>
-
 #### ▼ Checkoutは使用不可
 
 チェックアウト処理は定義できない。

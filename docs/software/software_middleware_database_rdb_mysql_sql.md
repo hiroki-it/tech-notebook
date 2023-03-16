@@ -135,8 +135,6 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO "{ ユーザー名 }";
 GRANT SELECT ON {DB名}.* TO "{ ユーザー名 }";
 ```
 
-<br>
-
 #### ▼ ユーザー権限一覧
 
 ユーザーに付与されている権限を取得する。
@@ -399,8 +397,6 @@ FROM
 『users』テーブルと『items』テーブルの商品IDが一致しているデータと、元となる『users』テーブルにしか存在しないデータが、セットで取得される。
 
 ![LEFT_JOIN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEFT_JOIN.png)
-
-<br>
 
 #### ▼ `INNER JOIN` (内部結合)
 

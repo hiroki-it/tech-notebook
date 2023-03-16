@@ -29,62 +29,94 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 <br>
 
-### 起動方法の種類
+## 01-02. 起動方法の種類
 
-#### ▼ ログインシェル
+### ログインシェル
+
+#### ▼ ログインシェルとは
 
 認証情報を必要とし、認証後に最初に起動するシェルのこと。
 
 パスワードは、`/etc/passwd`ファイルに設定されている。
-
-```bash
-# ハイフンオプション有り
-$ su - <ユーザー名>
-```
-
-```bash
-# --loginオプション有り
-$ bash --login
-```
-
-```bash
-$ ssh
-```
 
 > ↪️ 参考：
 >
 > - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
-#### ▼ インタラクティブシェル
+#### ▼ su -
+
+特定のユーザーで認証し、シェルを起動する。
+
+```bash
+# ハイフンオプション有り
+$ su - <ユーザー名>
+```
+
+#### ▼ bash --login
+
+現在のユーザーで認証し、シェルを起動する。
+
+```bash
+# --loginオプション有り
+$ bash --login
+```
+
+#### ▼ ssh
+
+SSH公開鍵認証で認証し、シェルを起動する。
+
+```bash
+$ ssh
+```
+
+<br>
+
+### インタラクティブシェル
+
+#### ▼ インタラクティブシェルとは
 
 認証情報を必要とせず、最初に起動するシェルのこと。
 
 > ↪️ 参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+
+#### ▼ su <ユーザー名>
+
+特定のユーザーで、認証なしでシェルを起動する。
 
 ```bash
 # ハイフンオプション無し
 $ su <ユーザー名>
 ```
 
+#### ▼ bash
+
+現在のユーザーで、認証なしでシェルを起動する。
+
 ```bash
 # --loginオプション無し
 $ bash
 ```
 
-#### ▼ 非インタラクティブシェル
+<br>
+
+### 非インタラクティブシェル
+
+#### ▼ 非インタラクティブシェルとは
 
 シェルスクリプトを指定して実行するシェルのこと。
+
+#### ▼ bash -c
 
 ```bash
 $ bash -c foo.sh
 ```
 
-#### ▼ 確認方法
+<br>
+
+### 確認方法
 
 現在の起動方法の種類は、変数の『`$0`』に格納されたシェルスクリプトのファイル名から確認できる。
-
-> ↪️ 参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
 
 ```bash
 $ echo $0
@@ -100,9 +132,9 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 -bash # ログインシェルの場合、シェルの前にハイフンが付く。
 ```
 
-補足として、もしシェルスクリプト内でこれを実行した場合は、これのファイル名を取得できる。
+> ↪️ 参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
 
-> ↪️ 参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
+補足として、もしシェルスクリプト内でこれを実行した場合は、これのファイル名を取得できる。
 
 ```bash
 #!/bin/sh
@@ -110,6 +142,8 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 
 echo $0 # foo.sh
 ```
+
+> ↪️ 参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
 
 <br>
 

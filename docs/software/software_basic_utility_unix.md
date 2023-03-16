@@ -369,7 +369,16 @@ $ crontab -l
 
 ### curlとは
 
-HTTPリクエストを送信する。
+HTTPプロトコルでリクエストを送信する。
+
+テストサイト (例：httpbin.org) に送信すると、通信を検証できる。
+
+なお、TCPプロトコルでリクエストを送信する場合は`nc`コマンドを使用する。
+
+> ↪️ 参考：
+>
+> - https://yamitzky.hatenablog.com/entry/2016/05/13/204107
+> - https://qiita.com/toshihirock/items/c7279fdcf808d3128261
 
 <br>
 
@@ -807,6 +816,20 @@ $ find ./* -type f | xargs grep "<検索文字>"
 ```bash
 # パーミッションエラーなどのログを破棄して検索。
 $ find ./* -type f | xargs grep "<検索文字>" 2> /dev/null
+```
+
+**実行例**
+
+設定ファイルの場所を探す。
+
+```bash
+$ find ./* -type f | xargs grep ".conf" 2> /dev/null
+```
+
+SSL証明書の場所を探す。
+
+```bash
+$ find ./* -type f | xargs grep ".crt" 2> /dev/null
 ```
 
 <br>
@@ -1443,11 +1466,13 @@ $ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクト�
 
 指定したIPアドレス/ドメインに、TCPプロトコルでパケットを送信する。
 
-> ↪️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
+`curl`コマンドではHTTPプロトコルしか扱えず、TCPプロトコルで疎通確認したい場合に使用する。
 
 ```bash
 $ nc <IPアドレス/ドメイン> <ポート番号>
 ```
+
+> ↪️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
 
 <br>
 
@@ -1513,21 +1538,21 @@ $ od -Ad -tx <ファイルへのパス>
 
 指定したアルゴリズムを使用して、文字列を復号化する。
 
-> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
-
 ```bash
 $ opsnssl enc -aes-256-cbc -d -in encrypted.txt -out plane.txt
 ```
+
+> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
 
 #### ▼ -e
 
 指定したアルゴリズムを使用して、文字列を暗号化する。
 
-> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
-
 ```bash
 $ opsnssl enc -aes-256-cbc -e -in plan.txt -out encrypted.txt
 ```
+
+> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
 
 <br>
 
@@ -1536,8 +1561,6 @@ $ opsnssl enc -aes-256-cbc -e -in plan.txt -out encrypted.txt
 #### ▼ list-cipher-algorithmsとは
 
 使用できる暗号アルゴリズムの一覧を取得する。
-
-> ↪️ 参考：https://en.wikipedia.org/wiki/OpenSSL#Algorithms
 
 ```bash
 $ openssl list-cipher-algorithms
@@ -1577,6 +1600,8 @@ AES-256-OFB
 AES-256-XTS
 aes256 => AES-256-CBC
 ```
+
+> ↪️ 参考：https://en.wikipedia.org/wiki/OpenSSL#Algorithms
 
 <br>
 
