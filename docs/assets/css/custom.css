@@ -316,7 +316,7 @@ th, td {
     --md-code-hl-function-color:       hsla(291, 100%, 65%, 1);
 
     /* bool値の色 */
-    --md-code-hl-constant-color:       hsla(250, 100%, 70%, 1);
+    --md-code-hl-constant-color:       hsla(250, 50%, 70%, 1);
 
     /* キーの色 */
     --md-code-hl-keyword-color: hsl(220, 97%, 72%);;
