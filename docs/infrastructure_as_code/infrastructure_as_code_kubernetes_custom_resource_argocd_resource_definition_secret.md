@@ -21,7 +21,28 @@ ArgoCDの各種コンポーネントの機密な変数やファイルを管理�
 
 <br>
 
-## 02. argocd-repo
+## 02. argocd-initial-admin-secret
+
+### 初期パスワードの設定
+
+ArgoCDが`argocd-initial-admin-secret`というSecretを自動的に作成してくれる。
+
+これに、初期パスワードが設定されている。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: argocd-initial-admin-secret
+type: Opaque
+data:
+  password: *****
+```
+
+<br>
+
+## 03. argocd-repo
 
 ### argocd-repoとは
 
@@ -279,7 +300,7 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 <br>
 
-## 03. argocd-repo-creds
+## 04. argocd-repo-creds
 
 ### argocd-repo-credsとは
 
@@ -296,7 +317,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 
 <br>
 
-## 04. argo-secret (必須)
+## 05. argo-secret (必須)
 
 ### argocd-secretとは
 
@@ -310,26 +331,133 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 
 <br>
 
-### 初期パスワードの設定
+### admin
 
-ArgoCDが`argocd-initial-admin-secret`というSecretを自動的に作成してくれる。
-
-これに、初期パスワードが設定されている。
+記入中...
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
+  name: argocd-secret
   namespace: argocd
-  name: argocd-initial-admin-secret
+  labels:
+    app.kubernetes.io/part-of: argocd
 type: Opaque
 data:
-  password: *****
+  admin.password: ""
+  admin.passwordMtime: ""
 ```
 
 <br>
 
-## 05. cluster-<エンドポイントURL>
+### tls
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-secret
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: argocd
+type: Opaque
+data:
+  tls.crt: ""
+  tls.key: ""
+```
+
+<br>
+
+### server
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-secret
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: argocd
+type: Opaque
+data:
+  server.secretkey: ""
+```
+
+<br>
+
+### webhook
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-secret
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: argocd
+type: Opaque
+data:
+  webhook.github.secret: shhhh! it's a github secret
+  webhook.gitlab.secret: shhhh! it's a gitlab secret
+  webhook.bitbucket.uuid: your-bitbucket-uuid
+  webhook.bitbucketserver.secret: shhhh! it's a bitbucket server secret
+  webhook.gogs.secret: shhhh! it's a gogs server secret
+```
+
+<br>
+
+### ユーザー定義のキー
+
+#### ▼ OIDC
+
+例えば、OIDCによる認証で使用する値を管理する。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-secret
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: argocd
+type: Opaque
+data:
+  # base64方式でエンコードしたクライアントシークレット値
+  oidc.auth0.clientSecret: *****
+```
+
+argocd-cmにて、`$<Secret名>:<キー名>`を指定して、定義したクライアントシークレット値を出力する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  oidc.config: |
+    name: Auth0
+    clientID: *****
+    clientSecret: $argocd-secret:oidc.auth0.clientSecret
+
+  ...
+
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
+
+<br>
+
+## 06. cluster-<エンドポイントURL>
 
 ### cluster-<エンドポイントURL>とは
 

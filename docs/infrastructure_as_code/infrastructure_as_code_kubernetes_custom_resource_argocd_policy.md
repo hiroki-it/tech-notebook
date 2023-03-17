@@ -519,13 +519,17 @@ ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`ku
 
 <br>
 
-## 13. リリース/ロールバック
+## 13. CDパイプライン
 
-### リリース
+### デプロイ
 
-#### ▼ 自動Syncの有効化
+ArgoCD自体はArgoCD以外でデプロイする必要がある。
 
-リリース時には、自動Syncを有効化するようにする。
+GitOpsを採用できないため、CIOpsになる。
+
+本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。
+
+> ↪️ 参考：https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
 
 <br>
 

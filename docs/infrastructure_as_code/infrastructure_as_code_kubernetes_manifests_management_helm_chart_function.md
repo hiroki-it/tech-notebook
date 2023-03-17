@@ -117,9 +117,13 @@ metadata:
 
 #### ▼ toYamlとは
 
-`yaml`形式でテンプレートを出力する。
+出力されたデータをそのままの形で出力する。
 
-`values`ファイルの複数のキー値を出力する場合に使用する。
+`values`ファイルにmap型やlist型をそのまま出力する場合に使用する。
+
+#### ▼ map型の場合
+
+map型を出力する。
 
 ```yaml
 # values.yamlファイル
@@ -137,6 +141,26 @@ data: {{- toYaml .Values.parameters | nindent 2}}
 ```
 
 > ↪️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
+
+#### ▼ list型の場合
+
+list型を出力する。
+
+```yaml
+# values.yamlファイル
+containers:
+  - name: foo
+    image: foo:latest
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers: {{- toYaml .Values.containers | nindent 4}}
+```
 
 <br>
 
@@ -254,7 +278,7 @@ metadata:
 type: Opaque
 data:
   {{- range $key, $value := ($decoded) }}
-    {{ $key }}: {{ $value }}
+  {{ $key }}: {{ $value }}
   {{- end }}
 ```
 
@@ -281,7 +305,7 @@ data:
   # 『.』を指定し、反復的に出力する。
   ip-addresses: |
     {{- range .Values.ipAddresses }}
-      - {{ . }}
+    - {{ . }}
     {{- end }}
 ```
 
@@ -445,7 +469,7 @@ metadata:
 type: Opaque
 data:
   {{- range $key, $value := ($decoded) }}
-    {{ $key }}: {{ $value }}
+  {{ $key }}: {{ $value }}
   {{- end }}
 ```
 
@@ -567,13 +591,9 @@ spec:
 
 ### `-` (ハイフン)
 
-#### ▼ ハイフンとは
+#### ▼ `{{-`
 
 `{{-`であると、テンプレートの出力時にこれより前のインデントを削除する。
-
-反対に、`-}}`であると改行コードを削除し、不要な改行が挿入されないようにする。
-
-ただ、`-}}`は使用しない方が良いらしい。
 
 **＊実装例＊**
 
@@ -599,10 +619,15 @@ baz:
     bar: BAR
 ```
 
-> ↪️ 参考：
->
-> - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
-> - https://github.com/helm/helm/issues/4191#issuecomment-539149037
+> ↪️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
+
+#### ▼ `-}}`
+
+`-}}`であると改行コードを削除し、不要な改行が挿入されないようにする。
+
+ただ、`-}}`は使用しない方が良いらしい。
+
+> ↪️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-539149037
 
 <br>
 
@@ -690,9 +715,16 @@ baz:
 一方で、別途`enabled`キーを用意するのもありである。
 
 ```yaml
+foo:
+  baz:
+    - FOO
+    - BAR
+```
+
+```yaml
 {{- if hasKey .Values.foo "baz" }}
   baz:
-    {{- range baz.list }}
+    {{- range baz }}
     - {{ . }}
     {{- end }}
   ...
@@ -756,24 +788,24 @@ baz:
 
 Helmのテンプレート内にコメントアウトを定義する。
 
+`*/}}`にはスペースを含めずに、一繋ぎで定義する。
+
 YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
+
+Helmのコメントの前に不要な改行が挿入されないように、`{{-`とする方が良い。
 
 ```yaml
 {{- /* コメント */}}
+```
+
+もしコメントの後にも改行が挿入されてしまう場合は、`-}}`も付ける。
+
+```yaml
+{{- /* コメント */-}}
 ```
 
 > ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
 
-<br>
-
-### 細かな注意点
-
-また、改行コードを削除するためのハイフン (`-}}`) は、定義しないようにする。また、`*/}}`にはスペースを含めずに、一繋ぎで定義する。
-
-> ↪️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-417096290
-
-```yaml
-{{- /* コメント */}}
-```
+`*/}}`にはスペースを含めずに、一繋ぎで定義する。
 
 <br>

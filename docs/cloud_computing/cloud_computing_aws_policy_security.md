@@ -115,7 +115,7 @@ ALBからEC2にインバウンド通信をルーティングする場合、特�
 
 **＊例＊**
 
-社内の送信元IPアドレスのみ許可した状態で、CIツール (例：CircleCI) が社内サービスにアクセスできるようにする。
+社内の送信元IPアドレスのみ許可した状態で、CIツール (例：GitHub Actions、CircleCI、GitLab CI、など) が社内サービスにアクセスできるようにする。
 
 ルール：`allow-request-including-access-token`
 

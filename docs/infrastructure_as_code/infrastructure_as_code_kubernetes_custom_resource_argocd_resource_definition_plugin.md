@@ -35,39 +35,108 @@ ArgoCDと任意のツールを連携するためには、`argocd-repo-server`コ
 
 ツールとの連携にはマニフェストを定義する必要がある。
 
-ConfigManagementPluginsでそれらの処理を定義する。
+ConfigManagementPluginでそれらの処理を定義する。
+
+さらに、サイドカー (例：`spec.initContainers`キー、`spec.containers`キー) を介して、argocd-repo-serverがプラグインを使用できるように、ConfigMapの`plugin.yaml`キー配下で管理する。
 
 ConfigMapの`.data.configManagementPlugins`キーで設定することは非推奨である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmp-cm
+  namespace: argocd
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      namespace: argocd
+      name: foo-plugin
+      labels:
+        app.kubernetes.io/part-of: argocd
+    spec:
+      init:
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - |
+            # マニフェストの作成前に実行したい処理を定義する。
+      generate:
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - |
+            # 必要なマニフェストを定義する。
+```
 
 これらの処理は、ArgoCDのリポジトリの監視処理と同時に実行されるため、何らかのエラーがあると、監視処理のエラーとして扱われる。
 
 Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`ARGOCD_ENV_<環境変数名>`で出力される。
 
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: ConfigManagementPlugin
-metadata:
-  namespace: argocd
-  name: foo-plugin-argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-spec:
-  init:
-    command: ["/bin/bash", "-c"]
-    args:
-      - |
-        # マニフェストの作成前に実行したい処理を定義する。
-  generate:
-    command: ["/bin/bash", "-c"]
-    args:
-      - |
-        # 必要なマニフェストを定義する。
-```
+なお、ConfigManagementPluginはカスタムリソースではないため、カスタムリソース定義は不要である。
 
 > ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
+
+#### ▼ サイドカー
+
+argocd-repo-serverのサイドカー (例：`spec.initContainers`キー、`spec.containers`キー) では、`var/run/argocd/argocd-cmp-server`ファイルをエントリポイントとする。
+
+サイドカーのコンテナプロセスのユーザーIDは`999`とする。
+
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server-pod
+spec:
+  containers:
+    - name: repo-server
+      image: argocd:latest
+      command:
+        - entrypoint.sh
+      args:
+        - argocd-repo-server
+        - --port=8081
+        - --metrics-port=8084
+      volumeMounts:
+        # プラグインを置くパスを指定する。
+        - mountPath: /home/argocd/cmp-server/plugins
+          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でプラグインを使用する。
+          name: plugins
+
+    ...
+
+  initContainers:
+    - name: plugin
+      command:
+        - cp
+        - -n
+        - /usr/local/bin/argocd
+        - /var/run/argocd/argocd-cmp-server
+      image: busybox:latest
+      volumeMounts:
+        # プラグインの置かれた場所をマウントパスにする。
+        - mountPath: /home/argocd/cmp-server/plugins
+          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でプラグインを使用する。
+          name: plugins
+
+  # Podの共有ボリューム
+  volumes:
+    - name: plugins
+      emptyDir: {}
+```
+
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
+> - https://blog.argoproj.io/breaking-changes-in-argo-cd-2-4-29e3c2ac30c9
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
+> - https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/
 
 #### ▼ プラグイン名の指定
 
@@ -120,18 +189,17 @@ metadata:
   name: argocd-repo-server-pod
 spec:
   containers:
-    - name: argocd-repo-server
+    - name: repo-server
+      volumeMounts:
+        # helmfileのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/bin/helmfile
+          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でHelmfileを使用する。
+          name: custom-tools
+          subPath: helmfile
 
       ...
 
-      # Podのボリュームを介して、argocd-repo-serverのコンテナ内でHelmfileを使用する。
-      volumeMounts:
-        - mountPath: /usr/local/bin/helmfile
-          name: custom-tools
-          subPath: helmfile
-  volumes:
-    - name: custom-tools
-      emptyDir: {}
+
   initContainers:
     - name: install-helmfile
       image: alpine:3.8
@@ -142,10 +210,16 @@ spec:
           apk --update add wget
           wget -q -O /custom-tools/helmfile https://github.com/roboll/helmfile/releases/download/v0.141.0/helmfile_linux_amd64
           chmod +x /custom-tools/*
-      # PodのボリュームにHelmfileを配置する。
       volumeMounts:
+        # helmfileのバイナリファイルの置かれた場所をマウントパスにする。
         - mountPath: /custom-tools
+          # Podの共有ボリュームにHelmfileを配置する。
           name: custom-tools
+
+  # Podの共有ボリューム
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
 ```
 
 > ↪️ 参考：
@@ -159,20 +233,27 @@ spec:
 `helmfile template`コマンドを実行し、マニフェストファイルを作成する。
 
 ```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: ConfigManagementPlugin
+apiVersion: v1
+kind: ConfigMap
 metadata:
+  name: argocd-cmp-cm
   namespace: argocd
-  name: helmfile-argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-spec:
-  generate:
-    command: ["/bin/bash", "-c"]
-      args:
-        - |
-          set -euo pipefail
-          helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV" template"
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      namespace: argocd
+      name: helmfile
+      labels:
+        app.kubernetes.io/part-of: argocd
+    spec:
+      generate:
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - |
+            set -euo pipefail
+            helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV" template"
 ```
 
 > ↪️ 参考：
@@ -226,18 +307,16 @@ metadata:
   name: argocd-repo-server-pod
 spec:
   containers:
-    - name: argocd-repo-server
+    - name: repo-server
+      volumeMounts:
+        # sopsのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/bin/sops
+          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
+          name: custom-tools
+          subPath: sops
 
       ...
 
-      # Podのボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
-      volumeMounts:
-        - mountPath: /usr/local/bin/sops
-          name: custom-tools
-          subPath: sops
-  volumes:
-    - name: custom-tools
-      emptyDir: {}
   initContainers:
     - name: install-helm-secrets
       image: alpine:3.8
@@ -249,10 +328,16 @@ spec:
           wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<sopsのバージョン>/sops-<sopsのバージョン>.linux
           wget -q -O /custom-tools/helm-secrets https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-secrets -xzf-
           chmod +x /custom-tools/*
-      # Podのボリュームに、sops、helm-secrets、を配置する。
       volumeMounts:
+        # helm-secretsのバイナリファイルの置かれた場所をマウントパスにする
         - mountPath: /custom-tools
+          # Podの共有ボリュームに、sops、helm-secrets、を配置する。
           name: custom-tools
+
+  # Podの共有ボリューム
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
 ```
 
 > ↪️ 参考：
@@ -273,51 +358,65 @@ spec:
 新しい`helm-secrets`はjkroepke製であり、古いものはzendesk製である。
 
 ```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: ConfigManagementPlugin
+apiVersion: v1
+kind: ConfigMap
 metadata:
+  name: argocd-cmp-cm
   namespace: argocd
-  name: helm-secrets-argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-spec:
-  generate:
-    command: ["/bin/bash", "-c"]
-    # jkroepke製のhelm-secretsの場合
-    # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
-    args:
-      - >
-        set -euo pipefail &&
-        if [ -z "$VALUES" ];then
-          helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE
-        else              
-          helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE
-        fi
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      namespace: argocd
+      name: helm-secrets
+      labels:
+        app.kubernetes.io/part-of: argocd
+    spec:
+      generate:
+        command: [ "/bin/bash", "-c" ]
+        # jkroepke製のhelm-secretsの場合
+        # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        args:
+          - >
+            set -euo pipefail &&
+            if [ -z "$VALUES" ];then
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE
+            else              
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE
+            fi
 ```
 
 特に、zendesk製のhelm-secretsでは、helm secrets templateコマンドの出力内容の末尾に`decrypted`の文字が出力されるため、`| sed '$d'`が必要になる。
 
 ```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: ConfigManagementPlugin
+apiVersion: v1
+kind: ConfigMap
 metadata:
+  name: argocd-cmp-cm
   namespace: argocd
-  name: helm-secrets-argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-spec:
-  generate:
-    command: ["/bin/bash", "-c"]
-    # zendesk製のhelm-secretsの場合
-    # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
-    args:
-      - >
-        set -euo pipefail &&
-        if [ -z "$VALUES" ];then
-          helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE | sed '$d'
-        else              
-          helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE | sed '$d'
-        fi
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      namespace: argocd
+      name: helm-secrets
+      labels:
+        app.kubernetes.io/part-of: argocd
+    spec:
+      generate:
+        command: [ "/bin/bash", "-c" ]
+        # zendesk製のhelm-secretsの場合
+        # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        args:
+          - >
+            set -euo pipefail &&
+            if [ -z "$VALUES" ];then
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE | sed '$d'
+            else              
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE | sed '$d'
+            fi
 ```
 
 > ↪️ 参考：
@@ -429,26 +528,33 @@ spec:
 `helm template`コマンドを実行し、マニフェストファイルを作成する。
 
 ```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: ConfigManagementPlugin
+apiVersion: v1
+kind: ConfigMap
 metadata:
+  name: argocd-cmp-cm
   namespace: argocd
-  name: vault-argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-spec:
-  init:
-    command: ["/bin/bash", "-c"]
-    args:
-      - |
-        set -euo pipefail
-        helm dependency build
-  generate:
-    command: ["/bin/bash", "-c"]
-    args:
-      - |
-        set -euo pipefail
-        helm template $ARGOCD_ENV_HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      namespace: argocd
+      name: vault
+      labels:
+        app.kubernetes.io/part-of: argocd
+    spec:
+      init:
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - |
+            set -euo pipefail
+            helm dependency build
+      generate:
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - |
+            set -euo pipefail
+            helm template $ARGOCD_ENV_HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
 > ↪️ 参考：

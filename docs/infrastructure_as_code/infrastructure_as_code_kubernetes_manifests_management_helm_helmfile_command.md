@@ -164,9 +164,12 @@ $ helmfile -e dev diff
 
 #### ▼ --debug
 
-オプションの無い`helmfile diff`では、内部的な`helm upgrade --dry-run`コマンドのどの段階でエラーになったかがわからない。
+オプションの無い`helmfile diff`では、以下の出力になってしまう。
 
-`--debug`オプションであれば、`helm upgrade --dry-run`コマンドの結果を確認できる。
+- Secretに出力された値がエンコードされてしまっている。
+- `helm upgrade --dry-run`コマンドのどの段階でエラーになったかがわからない。
+
+`--debug`オプションであれば、これらを確認できる。
 
 ```bash
 $ helmfile -e dev --debug diff

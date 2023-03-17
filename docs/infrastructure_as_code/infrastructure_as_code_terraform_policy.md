@@ -578,7 +578,7 @@ CI/CDパイプライン上の`terraform`コマンドの実行で必要なシェ�
 
 ```yaml
 repository/
-├── .circleci/ # CIツールの設定ファイル
+├── .circleci/ # CIツール (例：GitHub Actions、CircleCI、GitLab CI、など) の設定ファイル
 └── ops/ # TerraformのCI/CDの自動化シェルスクリプト
 ```
 
@@ -1100,10 +1100,9 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 ## 06. CIツールに関する脆弱性対策
 
-> ↪️ 参考：
->
-> - https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
-> - https://hiroki-it.github.io/tech-notebook/devops/devops_circleci_policy.html
+記入中...
+
+> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
 
 <br>
 

@@ -2206,7 +2206,7 @@ foo-pod   foo-gin         1m           19Mi          # 19Mi ÷ 128Mi × 100 = 14
 foo-pod   istio-proxy     5m           85Mi
 ```
 
-#### ▼ volumeMount
+#### ▼ volumeMounts
 
 Pod内のコンテナのマウントポイントを設定する。
 

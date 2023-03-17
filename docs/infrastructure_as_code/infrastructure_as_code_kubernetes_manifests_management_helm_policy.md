@@ -222,7 +222,7 @@ metadata:
   name: foo-config-map
 data:
   {{- range $key, $value := .Values.config | fromYaml }}
-    {{ $key }}: {{ $value }}
+  {{ $key }}: {{ $value }}
   {{- end }}
 ```
 
