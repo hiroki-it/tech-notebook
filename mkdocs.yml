@@ -188,8 +188,8 @@ nav:
                   - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
           - ■ コネクションプールプロキシー:
               - ■ PgBouncer:
-                  - PgBouncer: software/software_middleware_database_rdb_connection_pool_proxy_pgbouncer.md
-                  - 設定ファイル: software/software_middleware_database_rdb_connection_pool_proxy_pgbouncer_conf.md
+                  - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
+                  - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
       - ■ セキュリティ系:
           - Linux標準: software/software_middleware_security_linux.md
           - ■ Falco:
