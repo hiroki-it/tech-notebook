@@ -532,13 +532,3 @@ GitOpsを採用できないため、CIOpsになる。
 > ↪️ 参考：https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
 
 <br>
-
-### ロールバック
-
-#### ▼ リバート
-
-ロールバック時には、ArgoCDのロールバック機能ではなく、GitHubのリバートを使用する。
-
-リバートした後に、再Syncを実行する。
-
-<br>

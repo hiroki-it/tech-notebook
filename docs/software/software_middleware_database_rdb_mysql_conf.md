@@ -33,7 +33,17 @@ $ dnf install -y mysql-server
 
 <br>
 
-### 接続確認
+### 動作確認
+
+#### ▼ ステータス確認
+
+MySQLのプロセスが稼働していることを確認する。
+
+```bash
+$ systemctl status mysql.service
+```
+
+#### ▼ 接続確認
 
 DBに接続する。
 

@@ -337,9 +337,9 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
-### その他のプロキシー
+### その他のプロキシ
 
-ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシーが、他にもいくつかある。
+ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシが、他にもいくつかある。
 
 - `kubectl proxy`コマンド
 - `minikube tunnel`コマンド

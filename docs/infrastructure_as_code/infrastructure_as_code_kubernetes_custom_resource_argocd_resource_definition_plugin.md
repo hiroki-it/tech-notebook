@@ -86,8 +86,6 @@ argocd-repo-serverのサイドカー (例：`spec.initContainers`キー、`spec.
 
 サイドカーのコンテナプロセスのユーザーIDは`999`とする。
 
-
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -120,9 +118,8 @@ spec:
         - /var/run/argocd/argocd-cmp-server
       image: busybox:latest
       volumeMounts:
-        # プラグインの置かれた場所をマウントパスにする。
+        # Podの共有ボリュームにプラグインを配置する。
         - mountPath: /home/argocd/cmp-server/plugins
-          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でプラグインを使用する。
           name: plugins
 
   # Podの共有ボリューム
@@ -211,9 +208,8 @@ spec:
           wget -q -O /custom-tools/helmfile https://github.com/roboll/helmfile/releases/download/v0.141.0/helmfile_linux_amd64
           chmod +x /custom-tools/*
       volumeMounts:
-        # helmfileのバイナリファイルの置かれた場所をマウントパスにする。
+        # Podの共有ボリュームにHelmfileを配置する。
         - mountPath: /custom-tools
-          # Podの共有ボリュームにHelmfileを配置する。
           name: custom-tools
 
   # Podの共有ボリューム
@@ -329,9 +325,8 @@ spec:
           wget -q -O /custom-tools/helm-secrets https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-secrets -xzf-
           chmod +x /custom-tools/*
       volumeMounts:
-        # helm-secretsのバイナリファイルの置かれた場所をマウントパスにする
+        # Podの共有ボリュームに、sops、helm-secrets、を配置する。
         - mountPath: /custom-tools
-          # Podの共有ボリュームに、sops、helm-secrets、を配置する。
           name: custom-tools
 
   # Podの共有ボリューム

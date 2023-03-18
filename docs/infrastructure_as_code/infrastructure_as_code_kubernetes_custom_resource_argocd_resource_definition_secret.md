@@ -404,11 +404,11 @@ metadata:
     app.kubernetes.io/part-of: argocd
 type: Opaque
 data:
-  webhook.github.secret: shhhh! it's a github secret
-  webhook.gitlab.secret: shhhh! it's a gitlab secret
-  webhook.bitbucket.uuid: your-bitbucket-uuid
-  webhook.bitbucketserver.secret: shhhh! it's a bitbucket server secret
-  webhook.gogs.secret: shhhh! it's a gogs server secret
+  webhook.github.secret: ""
+  webhook.gitlab.secret: ""
+  webhook.bitbucket.uuid: ""
+  webhook.bitbucketserver.secret: ""
+  webhook.gogs.secret: ""
 ```
 
 <br>
