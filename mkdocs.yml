@@ -162,7 +162,6 @@ nav:
               - apache.conf: software/software_middleware_web_apache_conf.md
               - コマンド: software/software_middleware_web_apache_command.md
       - ■ アプリケーション系:
-          - GI: software/software_middleware_application_gi.md
           - ■ FastCGI:
               - ■ PHP-FPM:
                   - PHP-FPM: software/software_middleware_application_gi_fastcgi_php_fpm.md
