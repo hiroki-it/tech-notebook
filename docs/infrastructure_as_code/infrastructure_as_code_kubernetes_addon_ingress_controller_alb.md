@@ -55,7 +55,7 @@ Pod
 
 ## 01-02. マニフェスト
 
-## マニフェストの種類
+### マニフェストの種類
 
 AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などのマニフェストから構成されている。
 

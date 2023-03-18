@@ -48,8 +48,8 @@ ExternalDNSアドオンは、Deployment (external-dns) 、Service、などのマ
 apiVersion: v1
 kind: Pod
 metadata:
-  name: argocd-dex-server
-  namespace: argocd
+  name: external-dns
+  namespace: kube-system
 spec:
   serviceAccountName: external-dns
   containers:
