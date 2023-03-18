@@ -23,11 +23,11 @@ ArgoCDの各種コンポーネントの機密な変数やファイルを管理�
 
 ## 02. argocd-initial-admin-secret
 
-### 初期パスワードの設定
+### password
 
 ArgoCDが`argocd-initial-admin-secret`というSecretを自動的に作成してくれる。
 
-これに、初期パスワードが設定されている。
+これに、adminユーザーの初期パスワードが設定されている。
 
 ```yaml
 apiVersion: v1
@@ -37,7 +37,7 @@ metadata:
   name: argocd-initial-admin-secret
 type: Opaque
 data:
-  password: *****
+  password: <adminユーザーの初期パスワード>
 ```
 
 <br>
@@ -48,9 +48,9 @@ data:
 
 ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
 
-`argocd-repo-creds`とは異なり、`1`個の認証情報で`1`個のリポジトリにアクセスできるようにする。
+argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジトリにアクセスできるようにする。
 
-パブリックリポジトリの場合は、不要である。
+なお、パブリックリポジトリの場合は、argocd-repo自体が不要である。
 
 > ↪️ 参考：
 >
@@ -59,7 +59,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 
 <br>
 
-### `.metadata.labels`キー
+### 共通部分
 
 #### ▼ `argocd.argoproj.io/secret-type`キー (必須)
 
@@ -79,16 +79,9 @@ Secretタイプは`repository`とする。
 
 プライベートなマニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。
 
-ただし、監視する複数のリポジトリが、全て`1`個のマニフェストレジストリ内にある場合は、Secretは`1`個でよい。
+#### ▼ HTTPS認証の場合
 
-> ↪️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
-> - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
-
-#### ▼ Bearer認証の場合
-
-Bearer認証に必要なユーザー名とパスワードを設定する。
+HTTPS認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
@@ -103,12 +96,13 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: foo-repository # マニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-manifest.git
+  # マニフェストリポジトリ名
+  name: foo-repository
+  url: https://github.com/hiroki-hasegawa/foo-manifest.git
   type: git
-  # Bearer認証に必要なユーザー名とパスワードを設定する。
+  # HTTPS認証に必要なユーザー名とパスワードを設定する。
   username: hiroki-it
-  password: *****
+  password: pass
 ---
 # bar-repositoryを監視するためのargocd-repo
 apiVersion: v1
@@ -120,12 +114,13 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: bar-repository # マニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/bar-manifest.git
+  # マニフェストリポジトリ名
+  name: bar-repository
+  url: https://github.com/hiroki-hasegawa/bar-manifest.git
   type: git
-  # Bearer認証に必要なユーザー名とパスワードを設定する。
+  # HTTPS認証に必要なユーザー名とパスワードを設定する。
   username: hiroki-it
-  password: *****
+  password: pass
 ```
 
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
@@ -147,7 +142,8 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: foo-repository # マニフェストリポジトリ名
+  # マニフェストリポジトリ名
+  name: foo-repository
   url: git@github.com:hiroki-hasegawa/foo-manifest.git
   type: git
   # SSH公開鍵認証に必要な秘密鍵を設定する。
@@ -164,7 +160,8 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: bar-repository # マニフェストリポジトリ名
+  # マニフェストリポジトリ名
+  name: bar-repository
   url: git@github.com:hiroki-hasegawa/bar-manifest.git
   type: git
   # SSH公開鍵認証に必要な秘密鍵を設定する。
@@ -187,9 +184,9 @@ data:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
-#### ▼ Bearer認証の場合
+#### ▼ HTTPS認証の場合
 
-Bearer認証に必要なユーザー名とパスワードを設定する。
+HTTPS認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートなチャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
@@ -204,8 +201,10 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: foo-repository # チャートリポジトリ名
-  url: https://github.com/hiroki.hasegawa/foo-charts # チャートリポジトリのURL
+  # チャートリポジトリ名
+  name: foo-repository
+  # チャートリポジトリのURL
+  url: https://github.com/hiroki.hasegawa/foo-charts
   type: helm
   username: foo
   password: bar
@@ -220,8 +219,10 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: bar-repository # チャートリポジトリ名
-  url: https://github.com/hiroki.hasegawa/bar-charts # チャートリポジトリのURL
+  # チャートリポジトリ名
+  name: bar-repository
+  # チャートリポジトリのURL
+  url: https://github.com/hiroki.hasegawa/bar-charts
   type: helm
   username: baz
   password: qux
@@ -247,9 +248,9 @@ OCIプロトコルの有効化 (`enableOCI`キー) が必要であるが、内�
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
-#### ▼ Bearer認証の場合
+#### ▼ HTTPS認証の場合
 
-Bearer認証に必要なユーザー名とパスワードを設定する。
+HTTPS認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートなOCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
@@ -264,8 +265,10 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: foo-oci-repository # OCIリポジトリ名
-  url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
+  # OCIリポジトリ名
+  name: foo-oci-repository
+  # OCIリポジトリのURL
+  url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: foo
   password: bar
@@ -281,12 +284,15 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  name: bar-oci-repository # OCIリポジトリ名
-  url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
+  # OCIリポジトリ名
+  name: bar-oci-repository
+  # OCIリポジトリのURL
+  url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: baz
   password: qux
-  enableOCI: true # OCIリポジトリを有効化する。
+  # OCIリポジトリを有効化する。
+  enableOCI: true
 ```
 
 AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
@@ -306,14 +312,88 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
 
-`argocd-repo`とは異なり、`1`個の認証情報で複数にリポジトリにアクセスできるようにする。
+argocd-repoとは異なり、`1`個の認証情報で複数にリポジトリにアクセスできるようにする。
 
-パブリックリポジトリの場合は、不要である。
+監視する複数のリポジトリが全て`1`個のマニフェストレジストリ内にある場合に、`1`個の認証情報で全てのマニフェストリポジトリを監視できるようにできる。
+
+なお、パブリックリポジトリの場合は、argocd-repo-creds自体が不要である。
 
 > ↪️ 参考：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+
+<br>
+
+### マニフェストリポジトリの場合
+
+#### ▼ HTTPS認証の場合
+
+設定できる項目は、argocd-repoと同じである。
+
+argocd-repo-credsに、各argocd-repoで共有する項目を設定する。
+
+argocd-repo-credsの`data.url`キーには、argocd-repoの`data.url`キーの上層のパス (ここでは`https://github.com/hiroki-hasegawa`) を設定する。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  # レジストリ内の全てのリポジトリに適用するため、レジストリ名がわかるような名前にする。
+  name: argocd-repo-creds-hiroki-hasegawa
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+type: Opaque
+data:
+  type: git
+  url: https://github.com/hiroki-hasegawa
+  # HTTPS認証に必要なユーザー名とパスワードを設定する。
+  username: hiroki-it
+  password: pass
+```
+
+また、argocd-repoには認証情報 (`data.username`キー、`data.password`キー) を設定しないようにする。
+
+```yaml
+# foo-repositoryを監視するためのargocd-repo
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-repo
+  labels:
+    argocd.argoproj.io/secret-type: repository
+type: Opaque
+data:
+  # 認証情報は設定しない。
+  # マニフェストリポジトリ名
+  name: foo-repository
+  # https://github.com/hiroki-hasegawa に最長一致する。
+  url: https://github.com/hiroki-hasegawa/foo-manifest.git
+---
+# bar-repositoryを監視するためのargocd-repo
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: bar-argocd-repo
+  labels:
+    argocd.argoproj.io/secret-type: repository
+type: Opaque
+data:
+  # 認証情報は設定しない。
+  # マニフェストリポジトリ名
+  name: bar-repository
+  # https://github.com/hiroki-hasegawa に最長一致する。
+  url: https://github.com/hiroki-hasegawa/bar-manifest.git
+```
+
+ArgoCDは、argocd-repo-credsの`data.url`キーを使用して、argocd-repoの`data.url`キーに対する最長一致を実施する。
+
+最長一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`data.username`キー、`data.password`キー) が適用される。
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
 <br>
 

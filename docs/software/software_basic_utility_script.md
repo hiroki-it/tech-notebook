@@ -62,8 +62,6 @@ echo bar
 
 コメントをバッククオートで囲い、バックスラッシュで区切る必要がある。
 
-> ↪️ 参考：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
-
 ```bash
 #!/bin/bash
 
@@ -73,6 +71,8 @@ echo foo \
   `# コメント` \
   baz
 ```
+
+> ↪️ 参考：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
 
 #### ▼ for
 
@@ -140,11 +140,11 @@ $ source hello.sh
 
 また、シェルスクリプト内 (子プロセス) で定義したシェル変数は、シェルスクリプトの実行後に破棄される。
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
-
 ```bash
 $ bash hello.sh
 ```
+
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 #### ▼ `.` (ドット)
 
@@ -162,11 +162,11 @@ $ . hello.sh
 
 実行するファイルをカレントディレクトリ配下に配置できない。
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
-
 ```bash
 $ ./hello.sh
 ```
+
+> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 <br>
 
@@ -202,11 +202,11 @@ $ apk add make
 
 また同時に、`set`コマンドのオプションを有効化でき、これは全てのターゲットに適用される。
 
-> ↪️ 参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
-
 ```makefile
 SHELL=/bin/bash -xeu
 ```
+
+> ↪️ 参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
 
 シェルによって使用できるオプションが少しだけ異なることに注意する。
 
@@ -257,8 +257,6 @@ baz: foo baz # foo、bazを事前に実行する。
 
 `.PHONY`を使用すると、ファイル名ではなくターゲットを明示できる。
 
-> ↪️ 参考：https://advancedinsight.jp/using_phony_target_for_makefile/
-
 ```makefile
 # ターゲットであることを明示する。
 .PHONY: foo bar baz qux
@@ -273,6 +271,8 @@ baz qux:
 	echo "baz"
 ```
 
+> ↪️ 参考：https://advancedinsight.jp/using_phony_target_for_makefile/
+
 <br>
 
 ### 変数
@@ -281,8 +281,6 @@ baz qux:
 
 変数の代入を定義したタイミングで変数の代入が行われる。
 
-> ↪️ 参考：https://make-muda.net/2014/10/1824/
-
 ```makefile
 FOO:=foo
 
@@ -290,11 +288,11 @@ echo:
 	echo "$FOO" # echo
 ```
 
+> ↪️ 参考：https://make-muda.net/2014/10/1824/
+
 #### ▼ 遅延評価代入
 
 変数をコールしたタイミングで変数の代入が行われる。
-
-> ↪️ 参考：https://make-muda.net/2014/10/1824/
 
 ```makefile
 FOO=foo
@@ -303,13 +301,13 @@ echo:
 	echo "$FOO" # echo foo
 ```
 
+> ↪️ 参考：https://make-muda.net/2014/10/1824/
+
 ターゲット内では、標準出力への出力をシェル変数に代入できない。
 
 そのため、シェル変数はターゲット外で定義する必要がある。
 
 また、遅延評価で代入し、`$(shell ...)`とする必要がある。
-
-> ↪️ 参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
 
 ```makefile
 FOO=$(shell echo "foo")
@@ -317,6 +315,8 @@ FOO=$(shell echo "foo")
 echo:
 	echo "$FOO"
 ```
+
+> ↪️ 参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
 
 <br>
 

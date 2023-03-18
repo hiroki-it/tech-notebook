@@ -67,6 +67,9 @@ spec:
       env:
         - name: AWS_DEFAULT_REGION
           value: ap-northeast-1
+
+  ...
+
 ```
 
 > ↪️ 参考：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled

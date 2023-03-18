@@ -115,7 +115,7 @@ IstioOperator管理でIstioリソースを作成する。
 
 #### ▼ `<component名>`.k8s
 
-各componentが共通して持つ設定項目である。
+各componentが共通的に持つ設定項目である。
 
 各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。
 

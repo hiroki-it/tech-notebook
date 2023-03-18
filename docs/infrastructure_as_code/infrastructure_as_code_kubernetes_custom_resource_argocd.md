@@ -222,7 +222,21 @@ statefulset.apps/argocd-application-controller   1/1     119d
 
 ### Deployment配下のPod
 
+#### ▼ argocd-server
+
+記入中...
+
+#### ▼ repo-server
+
+記入中...
+
+#### ▼ redis-server
+
+記入中...
+
 #### ▼ dex-server
+
+記入中...
 
 ```yaml
 apiVersion: v1
@@ -274,10 +288,18 @@ spec:
           mountPath: /tmp
         - name: argocd-dex-server-tls
           mountPath: /tls
-          
+
   ...
 
 ```
+
+<br>
+
+### StatefulSet
+
+#### ▼ application-controller
+
+記入中...
 
 <br>
 
@@ -287,11 +309,11 @@ spec:
 
 #### ▼ 基本構成
 
-![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd.png)
-
 指定したブランチのコードの状態を監視する。
 
 プッシュによってコードが変更された場合、Kubernetesの状態をこれにSyncする。
+
+![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd.png)
 
 > ↪️ 参考：
 >

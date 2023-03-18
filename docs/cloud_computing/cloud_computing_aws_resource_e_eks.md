@@ -208,7 +208,7 @@ data:
   mapUsers: []
   mapRoles: |
     - rolearn: arn:aws:iam::<AWSアカウントID>:role/foo-role # IAMロール名
-      username: foo-iam-user # IAMユーザー名
+      username: hiroki-it # IAMユーザー名
       groups:
         - system:masters # ClusterRoleBindingに定義されたGroup名
     - rolearn: arn:aws:iam::<AWSアカウントID>:role/bar-role # ワーカーNodeに紐づけたロール名

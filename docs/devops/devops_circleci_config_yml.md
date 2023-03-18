@@ -355,7 +355,7 @@ jobs:
     docker:
       - image: circleci/node:<< pipeline.parameters.image-tag >>
         auth:
-          username: mydockerhub-user
+          username: hiroki-it
           password: $DOCKERHUB_PASSWORD
     environment:
       IMAGETAG: << pipeline.parameters.image-tag >>
@@ -1096,7 +1096,7 @@ jobs:
     docker:
       - image: smaant/lein-flyway:2.7.1-4.0.3
         auth:
-          username: mydockerhub-user
+          username: hiroki-it
           password: $DOCKERHUB_PASSWORD
     steps:
       - run:
@@ -1123,7 +1123,7 @@ jobs:
     docker:
       - image: smaant/lein-flyway:2.7.1-4.0.3
         auth:
-          username: mydockerhub-user
+          username: hiroki-it
           password: $DOCKERHUB_PASSWORD
     steps:
       - run:
@@ -1154,7 +1154,7 @@ jobs:
     docker:
       - image: smaant/lein-flyway:2.7.1-4.0.3
         auth:
-          username: mydockerhub-user
+          username: hiroki-it
           password: $DOCKERHUB_PASSWORD
     steps:
       - run:

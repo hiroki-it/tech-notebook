@@ -404,8 +404,8 @@ Secretの`.data`キーでは、他のKubernetesリソースへの出力時に自
 
 ```yaml
 # values.yamlファイル
-username: root
-password: 12345
+username: hiroki-it
+password: pass
 ```
 
 ```yaml

@@ -76,8 +76,6 @@ $ kubectl exec \
 
 宛先情報が変わった場合、コントロールプレーンは`version_info`キーの値が変更する。
 
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
-
 ```yaml
 [
   {
@@ -94,6 +92,8 @@ $ kubectl exec \
 ]
 ```
 
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
+
 <br>
 
 ## 03. `/clusters`エンドポイント
@@ -102,12 +102,12 @@ $ kubectl exec \
 
 静的な設定値 (特に、クラスター) 、サービスディスカバリーによって動的に登録された設定値 (特に、クラスター) を、見やすい形式でレスポンスとして返信する。
 
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
-
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/clusters
 ```
+
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
 <br>
 
@@ -156,8 +156,6 @@ Envoyの現在の全ての設定値を、JSON形式でレスポンスとして�
 
 Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
 
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
-
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump
@@ -188,6 +186,8 @@ $ kubectl exec \
 - version_info
 ```
 
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
+
 <br>
 
 ### include_edsパラメーター
@@ -195,8 +195,6 @@ $ kubectl exec \
 #### ▼ include_edsパラメーターとは
 
 サービスディスカバリーによって動的に登録された設定値 (特に、エンドポイント) を、JSON形式でレスポンスとして返信する。
-
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -232,13 +230,13 @@ $ kubectl exec \
 - version_info
 ```
 
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
+
 #### ▼ `dynamic_endpoint_configs`キー
 
 準備済みのエンドポイント値が設定されている。
 
 `cluster_name`キーは、`/config_dump?resource={dynamic_active_clusters}`エンドポイントから取得できるJSONの`service_name`キーのエイリアスと紐づいている。
-
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
 
 **＊例＊**
 
@@ -329,6 +327,8 @@ configs:
     ...
 ```
 
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
+
 <br>
 
 ### resourceパラメーター
@@ -337,12 +337,12 @@ configs:
 
 `config_dump`エンドポイントのJSON形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。
 
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
-
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 ```
+
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
 
 #### ▼ dynamic_active_clusters
 
@@ -352,15 +352,15 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 
 `service_name`キーに紐づく宛先情報は、`/config_dump?include_eds`エンドポイントのレスポンスの`dynamic_endpoint_configs`キー配下にある`cluster_name`キーで確認できる。
 
-> ↪️ 参考：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster
-
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters} | grep ClustersConfigDump.DynamicCluster -A 120
 ```
+
+> ↪️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster
 
 **＊例＊**
 
@@ -409,16 +409,16 @@ configs:
 
 もしウォーミングアップ中の宛先にルーティングしてしまった場合は、`404`ステータスや`503`ステータス (特に、Istio) になる。
 
-> ↪️ 参考：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
-
 ```bash
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}
 
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
+
+> ↪️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
 
 **＊例＊**
 
@@ -447,12 +447,12 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 サービスディスカバリーによって動的に登録された設定値 (特に、リスナー) を、JSON形式でレスポンスとして返信する。
 
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
-
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}
 ```
+
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
 
 **＊例＊**
 
@@ -509,12 +509,12 @@ configs:
 
 サービスディスカバリーによって動的に登録された設定値 (特に、ルート) を、JSON形式でレスポンスとして返信する。
 
-> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
-
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}
 ```
+
+> ↪️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
 
 **＊例＊**
 

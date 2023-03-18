@@ -113,7 +113,7 @@ $ argocd repo add oci://<OCIレジストリ名> \
 $ argocd login 127.0.0.1:8080
 
 Username: admin
-Password: *****
+password: pass
 'admin:login' logged in successfully
 ```
 

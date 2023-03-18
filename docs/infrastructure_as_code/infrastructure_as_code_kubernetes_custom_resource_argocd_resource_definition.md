@@ -167,7 +167,7 @@ $ chmod +x /usr/local/bin/argocd
 $ argocd login 127.0.0.1:8080
 
 Username: admin
-Password: *****
+password: pass
 'admin:login' logged in successfully
 ```
 

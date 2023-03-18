@@ -80,7 +80,7 @@ repository/
 
 ```yaml
 - name: foo
-  src: https://github.com:hiroki-hasegawa/foo-ansible-module.git
+  src: https://github.com/hiroki-hasegawa/foo-ansible-module.git
   version: main
 ```
 

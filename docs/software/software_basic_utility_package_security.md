@@ -41,7 +41,7 @@ SOPSによって暗号化されたファイルであり、キーバリュー型�
 # 平文ファイル
 $ cat foo-values.yaml
 
-DB_USERNAME: foo-user
+DB_USERNAME: hiroki-it
 DB_PASSWORD: password
 ```
 
