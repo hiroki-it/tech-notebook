@@ -543,6 +543,7 @@ nav:
           - ■ ArgoCD:
               - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_command.md
+              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
               - ■ リソース定義:
                   - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
                   - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.md
@@ -550,7 +551,6 @@ nav:
                   - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_configmap.md
                   - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_secret.md
                   - Job系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_job.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
           - ■ CertManager:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.md
           - ■ FluentBit/Fluentd:
