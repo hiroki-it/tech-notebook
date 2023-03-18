@@ -17,7 +17,7 @@ description: Jaeger＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、OTelクライアントパッケージの使用が推奨) 、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、から構成されている。
+Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、OTelクライアントパッケージの使用が推奨) 、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、といったコンポーネントから構成されている。
 
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jaeger_architecture.png)
 

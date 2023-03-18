@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PgBouncer＠コネクションプールプロキシ系ミドルウェア
-description: PgBouncer＠コネクションプールプロキシ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】PgBouncer＠コネクションプールプロキシ
+description: PgBouncer＠コネクションプールプロキシの知見を記録しています。
 ---
 
-# PgBouncer＠コネクションプールプロキシ系ミドルウェア
+# PgBouncer＠コネクションプールプロキシ
 
 ## はじめに
 

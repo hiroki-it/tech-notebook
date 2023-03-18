@@ -17,7 +17,7 @@ description: SecretsストアCSIドライバー＠ワーカーNodeのアドオ�
 
 ### アーキテクチャ
 
-SecretsストアCSIドライバーは、CSIドライバー、CSIボリューム、から構成される。
+SecretsストアCSIドライバーは、CSIドライバー、CSIボリューム、などのコンポーネントから構成される。
 
 <br>
 

@@ -17,23 +17,7 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-Deployment (argocd-server、repo-server、redis-server、dex-server) 、StatefulSet (application-controller) 、などから構成される。
-
-```bash
-$ kubectl get deployment -n argocd
-
-NAME                                        READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/argocd-dex-server    1/1     1            1           119d
-deployment.apps/argocd-redis         1/1     1            1           119d
-deployment.apps/argocd-repo-server   1/1     1            1           119d
-deployment.apps/argocd-server        1/1     1            1           119d
-
-
-$ kubectl get statefulset -n argocd
-
-NAME                                                    READY   AGE
-statefulset.apps/argocd-application-controller   1/1     119d
-```
+ArgoCDは、argocd-server、repo-server、redis-server、dex-server、application-controller、といったコンポーネントから構成される。
 
 ![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_architecture.png)
 
@@ -209,6 +193,91 @@ ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズ�
 > - https://weseek.co.jp/tech/95/
 > - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
 > - https://zenn.dev/onsd/articles/a3ea24b01da413
+
+<br>
+
+## 01-02. マニフェスト
+
+### マニフェストの種類
+
+ArgoCDは、Deployment (argocd-server、repo-server、redis-server、dex-server)、StatefulSet (application-controller)、といったコンポーネントから構成される。
+
+```bash
+$ kubectl get deployment -n argocd
+
+NAME                                         READY    UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/argocd-dex-server    1/1     1        1            119d
+deployment.apps/argocd-redis         1/1     1        1            119d
+deployment.apps/argocd-repo-server   1/1     1        1            119d
+deployment.apps/argocd-server        1/1     1        1            119d
+
+
+$ kubectl get statefulset -n argocd
+
+NAME                                                    READY   AGE
+statefulset.apps/argocd-application-controller   1/1     119d
+```
+
+<br>
+
+### Deployment配下のPod
+
+#### ▼ dex-server
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-dex-server
+  namespace: argocd
+spec:
+  containers:
+    - name: dex-server
+      image: ghcr.io/dexidp/dex:v2.35.3
+      imagePullPolicy: IfNotPresent
+      command:
+        - /shared/argocd-dex
+      args:
+        - rundex
+      env:
+        - name: ARGOCD_DEX_SERVER_DISABLE_TLS
+          valueFrom:
+            configMapKeyRef:
+              name: argocd-cmd-params-cm
+              key: dexserver.disable.tls
+              optional: true
+      ports:
+        - name: http
+          containerPort: 5556
+          protocol: TCP
+        - name: grpc
+          containerPort: 5557
+          protocol: TCP
+        - name: metrics
+          containerPort: 5558
+          protocol: TCP
+      resources:
+        {}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: false
+        runAsNonRoot: false
+        seccompProfile:
+          type: RuntimeDefault
+      volumeMounts:
+        - name: static-files
+          mountPath: /shared
+        - name: dexconfig
+          mountPath: /tmp
+        - name: argocd-dex-server-tls
+          mountPath: /tls
+
+  ...
+
+```
 
 <br>
 

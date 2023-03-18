@@ -17,7 +17,7 @@ description: CoreDNS＠ネットワークアドオンの知見を記録してい
 
 ### CoreDNSアドオンとは
 
-Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap、などから構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
@@ -25,30 +25,11 @@ Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap、などから構成さ�
 
 <br>
 
-### Service (kube-dns)
+## 01-02. マニフェスト
 
-#### ▼ Service (kube-dns)
+### マニフェストの種類
 
-CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングする。
-
-```bash
-$ kubectl get service -n kube-system
-
-NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
-kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
-
-...
-```
-
-> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
-
-<br>
-
-### Deployment (CoreDNS)
-
-#### ▼ Deployment (CoreDNS) とは
-
-Podからの問い合わせに対して、名前解決を実行する。
+CoreDNSアドオンは、Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap (coredns-configmap) 、などのマニフェストから構成される。
 
 ```bash
 $ kubectl get pod -n kube-system
@@ -58,13 +39,39 @@ coredns-558bd4d5db-hg75t    1/1     Running   0          1m0s
 coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
 
 ...
+
+
+$ kubectl get service -n kube-system
+
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
+
+...
 ```
+
+<br>
+
+### Deployment
+
+#### ▼ CoreDNS
+
+Podからの問い合わせに対して、名前解決を実行する。
+
+<br>
+
+### Service
+
+#### ▼ kube-dns
+
+CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングする。
+
+> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 <br>
 
 ### ConfigMap
 
-#### ▼ ConfigMapとは
+#### ▼ coredns-configmap
 
 ConfigMapの`.data.Corefile`キーに、`Corefile`ファイルの設定値を定義する。
 

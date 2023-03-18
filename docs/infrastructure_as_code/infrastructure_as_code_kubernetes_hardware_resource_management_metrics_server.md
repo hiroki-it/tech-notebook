@@ -17,7 +17,7 @@ description: metrics-server＠ハードウェアリソース管理の知見を�
 
 ### アーキテクチャ
 
-metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、から構成される。
+metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。
 
 PodとNodeのメトリクスを収集し、`kubectl top`コマンドでこれを取得できる。
 

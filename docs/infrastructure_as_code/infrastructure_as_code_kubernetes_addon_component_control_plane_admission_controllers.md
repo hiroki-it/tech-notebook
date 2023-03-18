@@ -31,7 +31,7 @@ description: admission-controllers＠コントロールプレーンのアドオ�
 
 ### admission-controllersアドオンのステップ
 
-admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。
+admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、といったコンポーネントから構成されている。
 
 mutating-admissionステップは、リクエストの内容を変更する。
 

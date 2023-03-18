@@ -19,7 +19,7 @@ description: Nginx＠Web系ミドルウェアの知見を記録しています�
 
 ![nginx_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nginx_architecture.png)
 
-Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、から構成される。
+Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、といったコンポーネントから構成される。
 
 Nginxの起動時に最初にマスタープロセスが実行され、Nginxに設定を適用する。
 

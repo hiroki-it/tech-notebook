@@ -17,8 +17,6 @@ description: ExternalDNS＠ネットワークアドオンの知見を記録し�
 
 ### アーキテクチャ
 
-ExternalDNSアドオンは、Deployment (ExternalDNSコントローラー) 、Service、などから構成される。
-
 ExternalDNSコントローラーは、ネットワークからのアクセスにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。
 
 Ingressコントローラー (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからの通信をArgoCDのダッシュボード (argocd-server) にルーティングできるようにする。
@@ -32,49 +30,52 @@ Ingressコントローラー (例：aws-load-balancer-controller、glb-controlle
 
 <br>
 
-### ExternalDNSコントローラー
+## 02. マニフェスト
 
-#### ▼ Deployment
+### マニフェストの種類
+
+ExternalDNSアドオンは、Deployment (external-dns) 、Service、などのマニフェストから構成される。
+
+<br>
+
+### Deployment配下のPod
+
+#### ▼ external-dns
+
+記入中...
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: external-dns
-  labels:
-    app.kubernetes.io/name: external-dns
+  name: argocd-dex-server
+  namespace: argocd
 spec:
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: external-dns
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: external-dns
-    spec:
-      serviceAccountName: external-dns
-      containers:
-        - name: external-dns
-          image: registry.k8s.io/external-dns/external-dns:v0.13.2
-          args:
-            - --source=service
-            - --source=ingress
-            - --domain-filter=example.com
-            - --provider=aws
-            - --policy=upsert-only
-            - --aws-zone-type=public
-            - --registry=txt
-            - --txt-owner-id=external-dns
-          env:
-            - name: AWS_DEFAULT_REGION
-              value: ap-northeast-1
+  serviceAccountName: external-dns
+  containers:
+    - name: external-dns
+      image: registry.k8s.io/external-dns/external-dns:v0.13.2
+      args:
+        - --source=service
+        - --source=ingress
+        - --domain-filter=example.com
+        - --provider=aws
+        - --policy=upsert-only
+        - --aws-zone-type=public
+        - --registry=txt
+        - --txt-owner-id=external-dns
+      env:
+        - name: AWS_DEFAULT_REGION
+          value: ap-northeast-1
 ```
 
 > ↪️ 参考：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled
 
-#### ▼ ServiceAccount、ClusterRole
+<br>
+
+### ServiceAccount、ClusterRole
+
+#### ▼ external-dns
 
 ExternalDNSコントローラーがDNSプロバイダー (例：AWS Route53) にアクセスできるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。
 

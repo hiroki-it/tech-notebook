@@ -19,7 +19,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 #### ▼ リモートストレージとして
 
-ロードバランサー、vm-select、vm-storage、vm-insert、から構成されている。
+ロードバランサー、vm-select、vm-storage、vm-insert、といったコンポーネントから構成されている。
 
 リモートストレージとして、Prometheusで収集したメトリクスを保管する。
 
@@ -43,7 +43,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 #### ▼ 監視ツールとして
 
-vm-agent、vm-storage、vm-alert、から構成されている。
+vm-agent、vm-storage、vm-alert、といったコンポーネントから構成されている。
 
 また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。
 

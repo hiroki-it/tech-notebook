@@ -17,7 +17,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 ### アーキテクチャ
 
-PHP-FPMは、Server API、Zend Engine、から構成される。
+PHP-FPMは、Server API、Zend Engine、といったコンポーネントから構成される。
 
 > ↪️ 参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 

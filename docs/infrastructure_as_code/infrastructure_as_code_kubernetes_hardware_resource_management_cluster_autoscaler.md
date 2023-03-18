@@ -17,9 +17,7 @@ description: cluster-autoscaler＠ハードウェアリソース管理の知見�
 
 ### アーキテクチャ
 
-cluster-autoscalerは、Deployment (cluster-autoscaler) などから構成されている。
-
-これは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) と自動スケーリンググループ (例：AWS EC2 AutoScalingGroup) のAPIをコールし、Nodeの自動水平スケーリングを実行する。
+cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) と自動スケーリンググループ (例：AWS EC2 AutoScalingGroup) のAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
 metrics-serverから取得したPodのハードウェアの最大リソース消費量 (`.spec.resources`キーの合計値) と、Node全体のリソースの空き領域を比較し、Nodeをスケーリングさせる。
 
@@ -36,7 +34,17 @@ metrics-serverから取得したPodのハードウェアの最大リソース消
 
 <br>
 
-### Deployment (cluster-autoscaler)
+## 01-02. マニフェスト
+
+### マニフェストの種類
+
+cluster-autoscalerは、Deployment (cluster-autoscaler) などのマニフェストから構成されている。
+
+<br>
+
+### Deployment配下のPod
+
+#### ▼ cluster-autoscaler
 
 Nodeグループ名やこれのタグ値を使用して、コールするNodeグループをフィルタリングする。
 

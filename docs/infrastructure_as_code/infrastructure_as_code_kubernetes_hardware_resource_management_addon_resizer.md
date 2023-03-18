@@ -17,9 +17,7 @@ description: addon-resizer＠ハードウェアリソース管理の知見を記
 
 ### アーキテクチャ
 
-addon-resizerは、Deployment (nanny) 、ConfigMap (nanny-config) 、などから構成されている。
-
-サイドカーコンテナとして稼働し、指定したコンテナのハードウェアリソースの要求量を動的に垂直スケーリングする。
+addon-resizerは、サイドカーコンテナとして稼働し、指定したコンテナのハードウェアリソースの要求量を動的に垂直スケーリングする。
 
 マイクロサービスのためというよりは、インフラのために使用する。
 
@@ -35,7 +33,17 @@ addon-resizerは、Deployment (nanny) 、ConfigMap (nanny-config) 、などか�
 
 <br>
 
-### Deployment (nanny)
+## 01-02. マニフェスト
+
+### マニフェストの種類
+
+addon-resizerは、Deployment (nanny) 、ConfigMap (nanny-config) 、などのマニフェストから構成されている。
+
+<br>
+
+### Deployment配下のPod
+
+#### ▼ nanny
 
 記入中...
 

@@ -25,7 +25,7 @@ PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとし�
 
 <br>
 
-### Deployment
+### Deployment配下のPod
 
 記入中...
 

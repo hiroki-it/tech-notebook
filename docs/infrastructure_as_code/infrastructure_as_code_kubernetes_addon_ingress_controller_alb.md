@@ -17,7 +17,7 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 ### アーキテクチャ
 
-AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などから構成されている.
+AWS Load Balancerコントローラーは、aws-load-balancer-controller、TargetGroupBinding、といったコンポーネントから構成されている。
 
 aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBをプロビジョニングし、ALBのリスナールールごとにターゲットグループもプロビジョングする。
 
@@ -39,7 +39,7 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 Ingressでインバウンド通信を受信する場合に使用し、NodePort Serviceの場合には使用しない。
 
-```
+```yaml
 パブリックネットワーク
 ↓
 AWS Route53
@@ -53,7 +53,17 @@ Pod
 
 <br>
 
-### Deployment (aws-load-balancer-controller)
+## 01-02. マニフェスト
+
+## マニフェストの種類
+
+AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などのマニフェストから構成されている。
+
+<br>
+
+### Deployment配下のPod
+
+#### ▼ aws-load-balancer-controller
 
 Deploymentは、Ingressで`alb`のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。
 

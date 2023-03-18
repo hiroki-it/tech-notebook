@@ -17,7 +17,7 @@ description: Helm＠マニフェスト管理の知見を記録しています。
 
 ### アーキテクチャ
 
-Helmは、helmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。
+Helmは、helmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、といったコンポーネントから構成される。
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/helm_architecture.png)
 

@@ -29,7 +29,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 #### ▼ モノリシックカーネルの場合
 
-モノリシックカーネルアーキテクチャのLinuxカーネルは、システムコール、各種管理コンポーネント、デバイスドライバー、などから構成される。
+モノリシックカーネルアーキテクチャのLinuxカーネルは、システムコール、各種管理コンポーネント、デバイスドライバー、といったコンポーネントから構成される。
 
 ![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_architecture.png)
 

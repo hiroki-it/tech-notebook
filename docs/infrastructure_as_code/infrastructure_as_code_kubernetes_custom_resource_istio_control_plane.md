@@ -37,21 +37,19 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 <br>
 
-## 02. コントロールプレーンの要素
+## 01-02. マニフェスト
 
-### コントロールプレーンの要素
+### マニフェストの種類
 
-Istiodは、Deployment、Service、MutatingWebhookConfiguration、などから構成される。
+Istiodは、Deployment、Service、MutatingWebhookConfiguration、などのマニフェストから構成される。
 
 <br>
 
 ### Deployment
 
-#### ▼ Deploymentとは
+#### ▼ istiod
 
 コントロールプレーンのPodの可用性を高めるため、これを冗長化する。
-
-#### ▼ Pod
 
 Deployment配下のPodは、Istiodコントロールプレーンの実体である。
 
@@ -137,7 +135,9 @@ ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 
 > ↪️ 参考：https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
 
-#### ▼ HorizontalPodAutoscaler
+<br>
+
+### HorizontalPodAutoscaler
 
 Deployment配下のPodには、HorizontalPodAutoscalerが設定されている。
 
@@ -166,6 +166,8 @@ spec:
 <br>
 
 ### Service
+
+#### ▼ istiod
 
 `istio-proxy`コンテナからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。
 
@@ -211,6 +213,8 @@ spec:
 <br>
 
 ### MutatingWebhookConfiguration
+
+#### ▼ istio-revision-tag-default
 
 Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。
 

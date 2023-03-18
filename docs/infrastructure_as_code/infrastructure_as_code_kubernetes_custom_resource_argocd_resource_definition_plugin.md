@@ -31,58 +31,11 @@ ArgoCDと任意のツールを連携するためには、`argocd-repo-server`コ
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
 
-#### ▼ 必要なマニフェストの作成
+#### ▼ プラグインのインストール
 
-ツールとの連携にはマニフェストを定義する必要がある。
+argocd-repo-serverのサイドカー (例：`spec.initContainers`キー、`spec.containers`キー) でプラグインを使用できるようにインストールする。
 
-ConfigManagementPluginでそれらの処理を定義する。
-
-さらに、サイドカー (例：`spec.initContainers`キー、`spec.containers`キー) を介して、argocd-repo-serverがプラグインを使用できるように、ConfigMapの`plugin.yaml`キー配下で管理する。
-
-ConfigMapの`.data.configManagementPlugins`キーで設定することは非推奨である。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cmp-cm
-  namespace: argocd
-data:
-  plugin.yaml: |
-    apiVersion: argoproj.io/v1alpha1
-    kind: ConfigManagementPlugin
-    metadata:
-      namespace: argocd
-      name: foo-plugin
-      labels:
-        app.kubernetes.io/part-of: argocd
-    spec:
-      init:
-        command: [ "/bin/bash", "-c" ]
-        args:
-          - |
-            # マニフェストの作成前に実行したい処理を定義する。
-      generate:
-        command: [ "/bin/bash", "-c" ]
-        args:
-          - |
-            # 必要なマニフェストを定義する。
-```
-
-これらの処理は、ArgoCDのリポジトリの監視処理と同時に実行されるため、何らかのエラーがあると、監視処理のエラーとして扱われる。
-
-Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`ARGOCD_ENV_<環境変数名>`で出力される。
-
-なお、ConfigManagementPluginはカスタムリソースではないため、カスタムリソース定義は不要である。
-
-> ↪️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
-
-#### ▼ サイドカー
-
-argocd-repo-serverのサイドカー (例：`spec.initContainers`キー、`spec.containers`キー) では、`var/run/argocd/argocd-cmp-server`ファイルをエントリポイントとする。
+`var/run/argocd/argocd-cmp-server`ファイルをエントリポイントとする。
 
 サイドカーのコンテナプロセスのユーザーIDは`999`とする。
 
@@ -135,7 +88,54 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/
 
-#### ▼ プラグイン名の指定
+#### ▼ プラグインの処理の定義
+
+ConfigManagementPluginで、プラグインの処理を設定する。
+
+さらに、サイドカー (例：`spec.initContainers`キー、`spec.containers`キー) を介して、argocd-repo-serverがプラグインを使用できるように、ConfigMapの`plugin.yaml`キー配下で管理する。
+
+ConfigMapの`.data.configManagementPlugins`キーで設定することは非推奨である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmp-cm
+  namespace: argocd
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      namespace: argocd
+      name: foo-plugin
+      labels:
+        app.kubernetes.io/part-of: argocd
+    spec:
+      init:
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - |
+            # マニフェストの作成前に実行したい処理を定義する。
+      generate:
+        command: [ "/bin/bash", "-c" ]
+        args:
+          - |
+            # 必要なマニフェストを定義する。
+```
+
+これらの処理は、ArgoCDのリポジトリの監視処理と同時に実行されるため、何らかのエラーがあると、監視処理のエラーとして扱われる。
+
+Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`ARGOCD_ENV_<環境変数名>`で出力される。
+
+なお、ConfigManagementPluginはカスタムリソースではないため、カスタムリソース定義は不要である。
+
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
+
+#### ▼ プラグインの使用
 
 Applicationの`.spec.plugin.name`キーで、`.data.configManagementPlugins`キーで設定した独自のプラグイン名を設定する。
 
@@ -224,9 +224,9 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
 
-#### ▼ 必要なマニフェストの作成
+#### ▼ helmfileの処理の定義
 
-`helmfile template`コマンドを実行し、マニフェストファイルを作成する。
+`helmfile template`コマンドを実行し、マニフェストを作成する。
 
 ```yaml
 apiVersion: v1
@@ -257,7 +257,7 @@ data:
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
-#### ▼ プラグイン名の指定
+#### ▼ プラグインの使用
 
 Applicationでプラグイン名を指定する。
 
@@ -346,9 +346,9 @@ spec:
 
 ### セットアップ
 
-#### ▼ 必要なマニフェストの作成
+#### ▼ helm secretsの処理の定義
 
-`helm secrets template`コマンドを実行し、マニフェストファイルを作成する。
+`helm secrets template`コマンドでマニフェストを作成し、また変数を復号化する。
 
 新しい`helm-secrets`はjkroepke製であり、古いものはzendesk製である。
 
@@ -419,7 +419,7 @@ data:
 > - https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
-#### ▼ プラグイン名の指定
+#### ▼ プラグインの使用
 
 Applicationでプラグイン名を指定する。
 
@@ -518,9 +518,9 @@ spec:
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 
-#### ▼ 必要なマニフェストの作成
+#### ▼ vaultの処理の定義
 
-`helm template`コマンドを実行し、マニフェストファイルを作成する。
+`helm template`コマンドでマニフェストを作成し、またVaultで変数を復号化する。
 
 ```yaml
 apiVersion: v1
@@ -557,7 +557,7 @@ data:
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
-#### ▼ プラグイン名の指定
+#### ▼ プラグインの使用
 
 Applicationでプラグイン名を指定する。
 

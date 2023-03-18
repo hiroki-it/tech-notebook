@@ -17,7 +17,7 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 ### アーキテクチャ
 
-Dockerは、ホストOS、ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー、から構成される。
+Dockerは、ホストOS、ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー、といったコンポーネントから構成される。
 
 ![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_architecture.png)
 

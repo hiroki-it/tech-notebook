@@ -38,7 +38,7 @@ CNIアドオンは、kubeletによるPodの起動時に有効化される。
 
 ### オーバーレイモードとは
 
-オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIアドオンはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (`eth`) 、から構成される。
+オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIアドオンはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
 
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 

@@ -19,7 +19,7 @@ description: Anthos＠GCPの知見を記録しています。
 
 #### ▼ アーキテクチャ
 
-Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
+Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、といったコンポーネントから構成される。
 
 > ↪️ 参考：
 >
@@ -59,7 +59,7 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 #### ▼ Anthos Service Meshとは
 
-Traffic Director、Mesh CA、Managed backends、から構成される。
+Traffic Director、Mesh CA、Managed backends、といったコンポーネントから構成される。
 
 ![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_service_mesh.png)
 
@@ -152,7 +152,7 @@ cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネット�
 
 ### on-オンプレミスの仕組み
 
-on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。
+on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、といったコンポーネントから構成される。
 
 ワークステーションにて、GCPのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
 
@@ -185,7 +185,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 #### ▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)
 
-スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。
+スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、といったコンポーネントから構成される。
 
 ワークステーションにて、GCPのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 

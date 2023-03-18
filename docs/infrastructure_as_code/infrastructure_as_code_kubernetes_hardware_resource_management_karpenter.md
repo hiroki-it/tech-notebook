@@ -17,11 +17,9 @@ description: karpenter＠ハードウェアリソース管理の知見を記録�
 
 ### アーキテクチャ
 
-karpenterは、Deployment (karpenter) 、などから構成されている。
-
-AWSの場合、cluster-autoscalerの代わりにkarpenterを使用できる。
-
 karpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールし、Nodeの自動水平スケーリングを実行する。
+
+AWSの場合のみ、cluster-autoscalerの代わりにkarpenterを使用できる。
 
 karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
 

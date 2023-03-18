@@ -97,7 +97,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 #### ▼ アーキテクチャ
 
-Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、から構成されている。
+Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、といったコンポーネントから構成されている。
 
 ![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png)
 

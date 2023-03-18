@@ -33,7 +33,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png)
 
-サイドカープロキシメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。
+サイドカープロキシメッシュは、データプレーン、Isiodコントロールプレーン、といったコンポーネントから構成される。
 
 サイドカープロキシを使用して、サービスメッシュを実装する。
 
@@ -62,7 +62,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png)
 
-アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。
+アンビエントメッシュは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。
 
 ztunnel (実体はDaemonSet配下のPod) が`L4` (トランスポート層) のプロトコル (例：TCP、UDP、など) 、またwaypoint-proxy (実体はDeployment配下のPod) が`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。
 

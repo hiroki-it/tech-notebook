@@ -17,7 +17,7 @@ description: OpenPolicyAgent＠カスタムリソースの知見を記録して�
 
 ### アーキテクチャ
 
-OpenPolicyAgentは、OpenPolicyエージェント、`.rego`ファイル、DB、から構成される。
+OpenPolicyAgentは、OpenPolicyエージェント、`.rego`ファイル、DB、といったコンポーネントから構成される。
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 

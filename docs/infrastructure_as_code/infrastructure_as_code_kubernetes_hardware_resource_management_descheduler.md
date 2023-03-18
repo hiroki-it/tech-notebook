@@ -17,9 +17,7 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 ### アーキテクチャ
 
-deschedulerは、Job (descheduler) 、などから構成されている。
-
-これは、deschedulerは、ポリシーに応じて現在のNodeにあるPodを削除し、より適切なNodeにこれを再スケジューリングする。
+deschedulerは、ポリシーに応じて現在のNodeにあるPodを削除し、より適切なNodeにこれを再スケジューリングする。
 
 類似するkube-schedulerでは、既存のPodを削除して別のNodeに再スケジューリングすることはない。
 
@@ -38,6 +36,12 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 > - <https://sreake.com/blog/kubernetes-descheduler/>
 > - <https://torumakabe.github.io/post/k8s_descheduler/>
 > - <https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8>
+
+<br>
+
+## 01-02. マニフェスト
+
+deschedulerは、Job (descheduler) 、などのマニフェストから構成されている。
 
 <br>
 

@@ -45,7 +45,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ### バッファーの構造
 
-バッファーは、ステージ、キュー、から構成される。ログは、『`*-*.*.flb`』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
+バッファーは、ステージ、キュー、といったコンポーネントから構成される。ログは、『`*-*.*.flb`』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
 
 ![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
@@ -84,7 +84,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ### フォワーダーアグリゲーターパターン
 
-フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、から構成される。
+フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。
 
 フォワーダーのFluentBit/Fluentdの送信元で稼働させ、アグリゲーターを介して、宛先にログを送信する。
 
