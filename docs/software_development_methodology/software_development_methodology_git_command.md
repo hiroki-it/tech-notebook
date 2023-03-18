@@ -185,10 +185,10 @@ $ git init
 $ git init
 
 # Basic認証
-$ git remote add origin https://github.com/hiroki.hasegawa/example.git
+$ git remote add origin https://github.com/hiroki-hasegawa/example.git
 
 # 登録されたGitHubリポジトリ
-remote.origin.url=https://github.com/hiroki.hasegawa/example.git
+remote.origin.url=https://github.com/hiroki-hasegawa/example.git
 ```
 
 ```bash

@@ -204,7 +204,7 @@ data:
   # チャートリポジトリ名
   name: foo-repository
   # チャートリポジトリのURL
-  url: https://github.com/hiroki.hasegawa/foo-charts
+  url: https://github.com/hiroki-hasegawa/foo-charts.git
   type: helm
   username: foo
   password: bar
@@ -222,7 +222,7 @@ data:
   # チャートリポジトリ名
   name: bar-repository
   # チャートリポジトリのURL
-  url: https://github.com/hiroki.hasegawa/bar-charts
+  url: https://github.com/hiroki-hasegawa/bar-charts.git
   type: helm
   username: baz
   password: qux
@@ -236,7 +236,7 @@ data:
 
 #### ▼ 注意点
 
-OCIプロトコルの有効化 (`enableOCI`キー) が必要であるが、内部的にOCIプロトコルが`repoURL`キーの最初に追記されるため、プロトコルの設定は不要である。
+OCIプロトコルの有効化 (`data.enableOCI`キー) が必要であるが、内部的にOCIプロトコルが`data.repoURL`キーの最初に追記されるため、プロトコルの設定は不要である。
 
 プライベートなチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
 

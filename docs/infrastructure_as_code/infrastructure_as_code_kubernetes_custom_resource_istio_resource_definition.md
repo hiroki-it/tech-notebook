@@ -130,8 +130,6 @@ VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに�
 
 DeploymentやPodの`.metadata.anontations`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。
 
-Deploymentの場合は、`template`キーよりも下層の``.metadata.`キーを使用することに注意する。
-
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 #### ▼ `istio-proxy`コンテナの定義
@@ -231,9 +229,9 @@ metadata:
 
 指定したNamespaceに属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
 
-`istio.io/rev`キーとはコンフリクトを発生させるため、どちらかしか使えない (`istio-injection`キーの値が`disabled`の場合は共存できる) 。
+`.metadata.labels.istio.io/rev`キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection`キーの値が`disabled`の場合は共存できる) 。
 
-`istio-injection`キーを使用する場合、Istioのアップグレードがインプレース方式になる。
+`.metadata.labels.istio-injection`キーを使用する場合、Istioのアップグレードがインプレース方式になる。
 
 **＊実装例＊**
 
@@ -274,9 +272,9 @@ metadata:
 
 IstoOperatorの`.spec.revision`キーと同じである。
 
-`istio-injection`キーとはコンフリクトを発生させるため、どちらかしか使えない (`istio-injection`キーの値が`disabled`の場合は共存できる) 。
+`.metadata.labels.istio-injection`キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection`キーの値が`disabled`の場合は共存できる) 。
 
-`istio.io/rev`キーを使用する場合、Istioのアップグレードがカナリア方式になる。
+`.metadata.labels.istio.io/rev`キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
 **＊実装例＊**
 

@@ -179,7 +179,7 @@ $ istioctl install -y --set profile=demo
 
 #### ▼ `revision` (基本的に必須)
 
-インストールされるKubernetesリソース名や、`istio.io/rev`キーにリビジョン番号をつけて、Istioをインストールする。
+インストールされるKubernetesリソース名や、`.metadata.labels.istio.io/rev`キーにリビジョン番号をつけて、Istioをインストールする。
 
 バージョンは、ケバブケースで設定する必要がある。
 
@@ -866,11 +866,11 @@ $ istioctl x precheck
 
 ### tagとは
 
-Namespaceの`istio.io/rev`キーの値を書き換えずにアップグレードできるように、`istio.io/rev`キーにエイリアスタグを設定する。
+Namespaceの`.metadata.labels.istio.io/rev`キーの値を書き換えずにアップグレードできるように、`.metadata.labels.istio.io/rev`キーにエイリアスタグを設定する。
 
 エイリアスは、`default`や`stable`をよく使用するが、実際はなんでよい。
 
-具体的には、MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を操作する。
+具体的には、MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を操作する。
 
 > ↪️ 参考：
 >
@@ -884,7 +884,7 @@ Namespaceの`istio.io/rev`キーの値を書き換えずにアップグレード
 
 #### ▼ generateとは
 
-MutatingWebhookConfigurationの`.metadata.labels`キーに、エイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を作成する。
+MutatingWebhookConfigurationの`.metadata.labels`キーに、エイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を作成する。
 
 ```bash
 $ istioctl tag generate <エイリアス> --revision <エイリアスの実体>
@@ -892,13 +892,13 @@ $ istioctl tag generate <エイリアス> --revision <エイリアスの実体>
 
 **＊例＊**
 
-`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-10-0`を設定する。
+`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) として`1-10-0`を設定する。
 
 ```bash
 $ istioctl tag generate default --revision 1-10-0
 ```
 
-`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`istio.io/rev`キーの値) として`1-0-1`を設定する。
+`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) として`1-0-1`を設定する。
 
 ```bash
 $ istioctl tag generate default --revision 1-0-1
@@ -912,7 +912,7 @@ $ istioctl tag generate default --revision 1-0-1
 
 #### ▼ listとは
 
-MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`istio.io/rev`キーの値) を取得する。
+MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を取得する。
 
 カナリアアップグレード前に、現在のバージョンのエイリアスとリビジョン番号 (現在のIstioのバージョンタグ) を確認するために使用する。
 
@@ -940,7 +940,7 @@ istio.io/tag: default
 
 #### ▼ setとは
 
-MutatingWebhookConfigurationの`.metadata.labels`キーにある既存のエイリアス (`istio.io/tag`キーの値) に実体 (`istio.io/rev`キーの値) を設定する。
+MutatingWebhookConfigurationの`.metadata.labels`キーにある既存のエイリアス (`istio.io/tag`キーの値) に実体 (`.metadata.labels.istio.io/rev`キーの値) を設定する。
 
 カナリアアップグレード用のMutatingWebhookConfigurationを新しく作成するためや、既存のMutatingWebhookConfigurationにある現在のバージョンのエイリアスの実体を変更するために使用する。
 
@@ -954,7 +954,7 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --ove
 
 `【１】`
 
-: 現在のバージョンのエイリアス (`istio.io/tag`キーの値) が`default`、またバージョン (`istio.io/rev`キーの値) が`v1.10.0`とする。
+: 現在のバージョンのエイリアス (`istio.io/tag`キーの値) が`default`、またバージョン (`.metadata.labels.istio.io/rev`キーの値) が`v1.10.0`とする。
 
 ```bash
 $ istioctl tag list

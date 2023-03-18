@@ -188,7 +188,7 @@ repository/ # マニフェストリポジトリ
 ```yaml
 repository/
 ├── foo-chart/ # fooチャート
-│   ├── charts/ # 依存する他のチャートを配置する。
+│   ├── charts/ # 依存対象のサブチャートを配置する。
 │   ├── templates/ # ユーザー定義のチャートを配置する。ディレクトリ構造は自由である。
 │   │   ├── tests/
 │   │   ├── _helpers.tpl # ヘルパー関数のみを設定する。

@@ -131,7 +131,7 @@ releases:
 
 #### ▼ environments
 
-環境名のリストとして動作し、`helmfile`コマンド時に`helmfile.d`ファイル内に環境名を渡せる。
+`helmfile`コマンド時に`helmfile.d`ファイル内に環境名を渡せる。
 
 > ↪️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 
@@ -149,7 +149,7 @@ environments:
 
 repositories:
   - name: foo-repository
-    url: https://github.com/hiroki.hasegawa/foo-repository
+    url: https://github.com/hiroki-hasegawa/foo-repository
 
 releases:
   - name: foo
@@ -185,7 +185,7 @@ environments:
 
 repositories:
   - name: foo-repository
-    url: https://github.com/hiroki.hasegawa/foo-repository
+    url: https://github.com/hiroki-hasegawa/foo-repository
 
 releases:
   - name: foo
@@ -437,7 +437,7 @@ Helmでは`values`ファイルをテンプレート化できないが、Helmfile
 ```yaml
 repositories:
   - name: foo-repository
-    url: https://github.com/hiroki.hasegawa/foo-repository
+    url: https://github.com/hiroki-hasegawa/foo-repository
 
 releases:
   - name: foo

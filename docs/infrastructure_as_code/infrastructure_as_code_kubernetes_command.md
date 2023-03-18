@@ -938,7 +938,7 @@ baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
 
 **＊例＊**
 
-istioのコンテナインジェクションが有効されているNamespaceを確認するため、`istio.io/rev`キーを取得する。
+istioのコンテナインジェクションが有効されているNamespaceを確認するため、`.metadata.labels.istio.io/rev`キーを取得する。
 
 ```bash
 $ kubectl get namespace -L istio.io/rev
@@ -1053,7 +1053,7 @@ $ kubectl label --overwrite <リソースの種類> <リソース名> foo=bar
 
 **＊例＊**
 
-`istio-injection`キーを`istio.io/rev`キー (値は`1-0-0`) に上書きする。
+`.metadata.labels.istio-injection`キーを`.metadata.labels.istio.io/rev`キー (値は`1-0-0`) に上書きする。
 
 ```bash
 $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-

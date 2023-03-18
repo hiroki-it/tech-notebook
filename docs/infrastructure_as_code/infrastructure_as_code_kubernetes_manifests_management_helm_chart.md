@@ -129,21 +129,55 @@ description: The chart of foo
 
 #### ▼ dependenciesとは
 
-依存対象のチャートを設定する。
+依存対象のサブチャートを設定する。
 
-設定されたチャートは、`charts`ディレクトリにダウンロードされる。
+設定されたサブチャートは、`charts`ディレクトリにダウンロードされる。
 
 > ↪️ 参考：https://helm.sh/docs/topics/charts/#chart-dependencies
 
 ```yaml
 dependencies:
   - name: foo
-    version: 1.2.3
-    repository: https://foo.example.com/foo-chart
+    version: 1.0.0
+    repository: https://foo.com/foo-chart
   - name: bar
-    version: 3.2.1
-    repository: https://bar.example.com/bar-chart
+    version: 1.0.0
+    repository: https://bar.com/bar-chart
 ```
+
+#### ▼ サブチャート
+
+サブチャートは、`.<チャート名>.enabled`キーと`dependencies[]condition`キーで制御するとよい。
+
+サブチャートには、`values`ファイルで変数を渡せる。
+
+```yaml
+# 親チャートのvaluesファイル
+foo:
+  enabled: true
+  # fooサブチャートのvaluesファイルにある.replicasキーに値を渡す。
+  replicas: 2
+
+bar:
+  enabled: true
+  # barサブチャートのvaluesファイルにある.replicasキーに値を渡す。
+  replicas: 2
+```
+
+```yaml
+dependencies:
+  - name: foo
+    version: 1.0.0
+    repository: https://foo.com/foo-chart
+    # .<チャート名>.enabledキーが有効な場合のみ使用する。
+    condition: foo.enabled
+  - name: bar
+    version: 1.0.0
+    repository: https://bar.com/bar-chart
+    condition: foo.enabled
+```
+
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/subcharts_and_globals/#overriding-values-from-a-parent-chart
 
 <br>
 

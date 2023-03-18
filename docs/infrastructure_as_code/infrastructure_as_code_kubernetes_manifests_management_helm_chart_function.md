@@ -13,9 +13,91 @@ description: アクション＠チャートの知見を記録しています。
 
 <br>
 
-## 01. テンプレートに関する関数
+## 01. 変数
 
-### テンプレートに関する関数とは
+### 予約された変数
+
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+
+<br>
+
+### ローカルスコープの変数
+
+同じファイル内で使用できる変数を定義する。
+
+```yaml
+{{- $domain := "https://{{ .Values.serviceName }}.argocd.com" }}
+```
+
+> ↪️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> - https://kb.novaordis.com/index.php/Helm_Variables
+
+<br>
+
+### 条件内スコープの変数
+
+条件分岐で定義した変数は、`{{- end }}`までしか使用できない。
+
+```yaml
+{{- if .Values.isProduction }}
+
+  {{- $prefix := "prd" }}
+  ... 変数を使用する。
+
+{{- else }}
+
+  {{- $prefix := "nonprd" }}
+  ... 変数を使用する。
+
+{{- end }}
+```
+
+> ↪️ 参考：
+>
+> - https://stackoverflow.com/a/57600807
+> - https://stackoverflow.com/a/67886552
+
+<br>
+
+### グローバルスコープの変数
+
+テンプレートの関数 (例：`include`、`template`) 、`_helpers.tpl`ファイルで定義する。
+
+> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+
+<br>
+
+## 02. Helmのコメントアウト
+
+Helmのテンプレート内にコメントアウトを定義する。
+
+`*/}}`にはスペースを含めずに、一繋ぎで定義する。
+
+YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
+
+Helmのコメントの前に不要な改行が挿入されないように、`{{-`とする方が良い。
+
+```yaml
+{{- /* コメント */}}
+```
+
+もしコメントの後にも改行が挿入されてしまう場合は、`-}}`も付ける。
+
+```yaml
+{{- /* コメント */-}}
+```
+
+> ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
+
+`*/}}`にはスペースを含めずに、一繋ぎで定義する。
+
+<br>
+
+## 03. テンプレート作成の関数
+
+### テンプレート作成の関数とは
 
 `template`ディレクトリ配下のテンプレートを出力する。
 
@@ -53,7 +135,7 @@ description: アクション＠チャートの知見を記録しています。
 
 <br>
 
-## 02. `values`ファイルに関する関数
+## 04. `values`ファイルの関数
 
 ### Values
 
@@ -164,9 +246,9 @@ spec:
 
 <br>
 
-## 03. キーパスに関する関数
+## 05. キーパスの関数
 
-### キーパスに関する関数とは
+### キーパスの関数とは
 
 テンプレートや`values`ファイルを出力する時に、特定のキーパスにアクセスする。
 
@@ -213,9 +295,9 @@ baz:
 
 **＊実装例＊**
 
-`range`アクションを使用すると、`.yaml`ファイルへのアクセスのルートが変わってしまう。
+`range`関数を使用すると、`.yaml`ファイルへのアクセスのルートが変わってしまう。
 
-ルートを明示することにより、`range`アクション内でも`.yaml`ファイルの正しいルートにアクセスできるようなる。
+ルートを明示することにより、`range`関数内でも`.yaml`ファイルの正しいルートにアクセスできるようなる。
 
 ```yaml
 {{- range $.Values.foo.namespaces }}
@@ -234,7 +316,7 @@ metadata:
 
 <br>
 
-## 04. ループ
+## 06. ループの関数
 
 ### range
 
@@ -265,12 +347,12 @@ bar: bar
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-`fromYaml`アクションを使用して、テキスト形式を`yaml`形式に変換する。
+`fromYaml`関数を使用して、string型をmap型に変換する。
 
-その後、`range`アクションでキーと値を取得し、Secretのデータとして割り当てる。
+その後、`range`関数でキーと値を取得し、Secretのデータとして割り当てる。
 
 ```yaml
-{{ $decoded := .Values.config | b64dec | fromYaml }}
+{{- $decoded := .Values.config | b64dec | fromYaml }}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -340,57 +422,186 @@ data:
 
 <br>
 
-## 05. 変数に関する関数
+### required
 
-### 変数
+#### ▼ requiredとは
 
-#### ▼ 予約された変数
+記入中...
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
-
-#### ▼ ローカルスコープの変数
-
-同じファイル内で使用できる変数を定義する。
-
-```yaml
-{{- $domain := "https://{{ .Values.serviceName }}.argocd.com" }}
-```
-
-> ↪️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
-> - https://kb.novaordis.com/index.php/Helm_Variables
-
-#### ▼ 条件内スコープの変数
-
-条件分岐で定義した変数は、`{{- end }}`までしか使用できない。
-
-```yaml
-{{- if .Values.isProduction }}
-
-  {{- $prefix := "prd" }}
-  ... 変数を使用する。
-
-{{- else }}
-
-  {{- $prefix := "nonprd" }}
-  ... 変数を使用する。
-
-{{- end }}
-```
-
-> ↪️ 参考：
->
-> - https://stackoverflow.com/a/57600807
-> - https://stackoverflow.com/a/67886552
-
-#### ▼ グローバルスコープの変数
-
-テンプレートに関する関数 (例：`include`、`template`) 、`_helpers.tpl`ファイルで定義する。
-
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> ↪️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 
 <br>
+
+## 07. データ型変換の関数
+
+### fromYaml
+
+#### ▼ fromYamlとは
+
+string型をmap型に変換する。
+
+**＊実装例＊**
+
+もし、以下のような平文ファイルあるとする。
+
+```yaml
+# plane.yamlファイル
+foo: FOO
+bar: bar
+```
+
+これを`base64`方式で変換し、`values`ファイルの`config`キー配下に定義したとする。
+
+```yaml
+# valuesファイル
+config: eHh4OiB5eXkKenp6OiBxcXEK
+```
+
+`fromYaml`関数を使用して、string型をmap型に変換する。
+
+```yaml
+{{- $decoded := .Values.config | b64dec | fromYaml }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+type: Opaque
+data:
+  {{- range $key, $value := ($decoded) }}
+  {{ $key }}: {{ $value }}
+  {{- end }}
+```
+
+> ↪️ 参考：
+>
+> - https://helm.sh/docs/chart_template_guide/function_list/#fromyaml
+> - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
+> - https://stackoverflow.com/a/62832814
+
+<br>
+
+### splitList
+
+#### ▼ splitListとは
+
+string型を指定した文字で分割し、list型に変換する
+
+```yaml
+url: https://github.com/hiroki-hasegawa/foo-repository.git
+```
+
+```yaml
+# printf関数を使用して、一度strig型に変換している。
+{{- printf "%s" .Values.url | splitList "/"}}
+# [https:  github.com hiroki-hasegawa foo-repository.git]
+```
+
+> ↪️ 参考：https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+
+<br>
+
+## 08. string型の関数
+
+### printf
+
+#### ▼ printfとは
+
+様々なデータ型をstring型で出力する。
+
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/function_list/#printf
+
+#### ▼ エスケープ
+
+Helmのテンプレート内に、アクションや変数以外の理由で`{}`を出力する場合 (例：Alertmanagerのアラートの変数出力の定義) 、これらとして認識されないようにエスケープする必要がある。
+
+また、エスケープする場合は必ず改行 (`|`、`|-`、`|+`) で出力する必要がある。エスケープのために`printf`関数を使用することもできる。
+
+一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法 (例：`` {{`<記号を含む文字列全体>`}} ``、`{{"<記号>"}}`) を使用できる。
+
+エスケープしたい文字列にバッククオートが含まれる場合、『`` {{`<記号を含む文字列>`}} ``』を使用できず、他のエスケープ方法 (`{{"<記号>"}}`、`printf`関数) が必要になる。
+
+```yaml
+# Helmのテンプレート
+
+# Alertmanagerの通知内容の定義は以下を参考にした。
+# https://www.infinityworks.com/insights/slack-prometheus-alertmanager/
+
+---
+receivers:
+  - name: slack_webhook
+    slack_configs:
+      - channel: prd
+        send_resolved: true
+        api_url: https://hooks.slack.com/services/*****
+        # 波括弧 ({}) をエスケープするために、『{{``}}』とprintfを使用している。
+        # エスケープする場合は、必ず改行で出力する必要がある。
+        text: |
+          {{`{{ range .Alerts }}`}}
+          {{`*Summary:* {{ .Annotations.summary }}`}}
+          {{ printf "*Severity:* `{{ .Labels.severity }}`" }}
+          {{`*Description:* {{ .Annotations.description }}`}}
+          *Details:*
+          {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
+          {{`{{ end }}`}}
+          {{`{{ end }}`}}
+```
+
+> ↪️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
+
+<br>
+
+### trimSuffix
+
+#### ▼ trimSuffixとは
+
+string型から指定した文字を削除し、再取得する。
+
+```yaml
+url: https://github.com/hiroki-hasegawa/foo-repository.git
+```
+
+```yaml
+# printf関数を使用して、一度strig型に変換している。
+{{- $list := printf "%s" .Values.url | splitList "/" }}
+
+# [https:  github.com hiroki-hasegawa foo-repository.git]
+
+
+# リポジトリ名のみを取得する。
+{{- $repositoryName := last $list | trimSuffix ".git" }}
+
+# foo-repository
+```
+
+> ↪️ 参考：https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+
+<br>
+
+## 08-02. list型の関数
+
+### last
+
+#### ▼ lastとは
+
+list型の最後を取得する。
+
+```yaml
+lists:
+  - foo
+  - bar
+  - baz # これのみを取得する
+```
+
+```yaml
+{{.Values.lists | last}}
+# baz
+```
+
+> ↪️ 参考：https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast
+
+<br>
+
+## 09. セキュリティに関する機能
 
 ### b64enc
 
@@ -432,107 +643,6 @@ data:
 ```
 
 > ↪️ 参考：https://helm-playground.com/cheatsheet.html#variables
-
-<br>
-
-### fromYaml
-
-#### ▼ fromYamlとは
-
-テキスト形式を`yaml`形式に変換する。
-
-**＊実装例＊**
-
-もし、以下のような平文ファイルあるとする。
-
-```yaml
-# plane.yamlファイル
-foo: FOO
-bar: bar
-```
-
-これを`base64`方式で変換し、`values`ファイルの`config`キー配下に定義したとする。
-
-```yaml
-# valuesファイル
-config: eHh4OiB5eXkKenp6OiBxcXEK
-```
-
-`fromYaml`アクションを使用して、テキスト形式を`yaml`形式に変換する。
-
-```yaml
-{{ $decoded := .Values.config | b64dec | fromYaml }}
-apiVersion: v1
-kind: Secret
-metadata:
-  name: foo-secret
-type: Opaque
-data:
-  {{- range $key, $value := ($decoded) }}
-  {{ $key }}: {{ $value }}
-  {{- end }}
-```
-
-> ↪️ 参考：
->
-> - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
-> - https://stackoverflow.com/a/62832814
-
-<br>
-
-### printf
-
-#### ▼ printfとは
-
-変数を出力する。
-
-#### ▼ エスケープ
-
-Helmのテンプレート内に、アクションや変数以外の理由で`{}`を出力する場合 (例：Alertmanagerのアラートの変数出力の定義) 、これらとして認識されないようにエスケープする必要がある。
-
-また、エスケープする場合は必ず改行 (`|`、`|-`、`|+`) で出力する必要がある。エスケープのために`printf`アクションを使用することもできる。
-
-一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法 (例：`` {{`<記号を含む文字列全体>`}} ``、`{{"<記号>"}}`) を使用できる。
-
-エスケープしたい文字列にバッククオートが含まれる場合、『`` {{`<記号を含む文字列>`}} ``』を使用できず、他のエスケープ方法 (`{{"<記号>"}}`、`printf`アクション) が必要になる。
-
-```yaml
-# Helmのテンプレート
-
-# Alertmanagerの通知内容の定義は以下を参考にした。
-# https://www.infinityworks.com/insights/slack-prometheus-alertmanager/
-
----
-receivers:
-  - name: slack_webhook
-    slack_configs:
-      - channel: prd
-        send_resolved: true
-        api_url: https://hooks.slack.com/services/*****
-        # 波括弧 ({}) をエスケープするために、『{{``}}』とprintfを使用している。
-        # エスケープする場合は、必ず改行で出力する必要がある。
-        text: |
-          {{`{{ range .Alerts }}`}}
-          {{`*Summary:* {{ .Annotations.summary }}`}}
-          {{ printf "*Severity:* `{{ .Labels.severity }}`" }}
-          {{`*Description:* {{ .Annotations.description }}`}}
-          *Details:*
-          {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
-          {{`{{ end }}`}}
-          {{`{{ end }}`}}
-```
-
-> ↪️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
-
-<br>
-
-### required
-
-#### ▼ requiredとは
-
-記入中...
-
-> ↪️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 
 <br>
 
@@ -587,7 +697,7 @@ spec:
 
 <br>
 
-## 06. インデントに関する関数
+## 10. インデントの関数
 
 ### `-` (ハイフン)
 
@@ -663,7 +773,10 @@ baz:
     bar: BAR
 ```
 
-> ↪️ 参考：https://www.skyarch.net/blog/?p=16660#28
+> ↪️ 参考：
+>
+> - https://helm.sh/docs/chart_template_guide/function_list/#indent
+> - https://www.skyarch.net/blog/?p=16660#28
 
 <br>
 
@@ -700,11 +813,14 @@ baz:
     bar: BAR
 ```
 
-> ↪️ 参考：https://www.skyarch.net/blog/?p=16660#29
+> ↪️ 参考：
+>
+> - https://www.skyarch.net/blog/?p=16660#29
+> - https://helm.sh/docs/chart_template_guide/function_list/#nindent
 
 <br>
 
-## 07. 検証に関する関数
+## 11. 検証の関数
 
 ### hasKey
 
@@ -738,7 +854,7 @@ foo:
 
 <br>
 
-## 08. 条件分岐に関する関数
+## 12. 条件分岐の関数
 
 ### AND条件
 
@@ -779,33 +895,5 @@ foo:
 ```
 
 > ↪️ 参考：https://helm-playground.com/cheatsheet.html#conditionals
-
-<br>
-
-## 09. コメントアウト
-
-### Helmのコメントアウト
-
-Helmのテンプレート内にコメントアウトを定義する。
-
-`*/}}`にはスペースを含めずに、一繋ぎで定義する。
-
-YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
-
-Helmのコメントの前に不要な改行が挿入されないように、`{{-`とする方が良い。
-
-```yaml
-{{- /* コメント */}}
-```
-
-もしコメントの後にも改行が挿入されてしまう場合は、`-}}`も付ける。
-
-```yaml
-{{- /* コメント */-}}
-```
-
-> ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
-
-`*/}}`にはスペースを含めずに、一繋ぎで定義する。
 
 <br>

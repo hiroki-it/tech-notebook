@@ -59,7 +59,7 @@ $ kubectl delete crd <カスタムリソース定義名>
 
 #### ▼ build
 
-`requirements.yaml`ファイルに定義された依存対象のチャートを、`chart`ディレクトリ内にダウンロードする。
+`requirements.yaml`ファイルに定義された依存対象のサブチャートを、`chart`ディレクトリ内にダウンロードする。
 
 ```bash
 $ helm dependency build

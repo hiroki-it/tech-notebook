@@ -218,11 +218,11 @@ int型を割り当てようとするとエラーになり、これはHelmの`val
 
 `kubectl apply`コマンドで`--server-side`オプションを有効化した場合に作成される。
 
-`manager`キーで、クライアント (`kubectl`クライアント、Kubernetesリソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。
+`.metadata.managedFields[].manager`キーで、クライアント (`kubectl`クライアント、Kubernetesリソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。
 
-`manager`キーにないマネージャーはマニフェストを変更できない。
+`.metadata.managedFields[].manager`キーにないマネージャーはマニフェストを変更できない。
 
-`managedFields`キー配下にマネージャーを新しく追加するためには、基本的には`--force-conflicts`オプションを使用する必要がある (他にも方法はあるが) 。
+`.metadata.managedFields`キー配下にマネージャーを新しく追加するためには、基本的には`--force-conflicts`オプションを使用する必要がある (他にも方法はあるが) 。
 
 ただし、kube-controllerやOperatorでは常に`--force-conflicts`オプションを実行するようになっている。
 
@@ -235,7 +235,7 @@ int型を割り当てようとするとエラーになり、これはHelmの`val
 
 #### ▼ 確認方法
 
-`managedFields`キーを確認する場合、`kubectl get`コマンドで`-o`オプションと`--show-managed-fields `オプションを有効化する必要がある。
+`.metadata.managedFields`キーを確認する場合、`kubectl get`コマンドで`-o`オプションと`--show-managed-fields `オプションを有効化する必要がある。
 
 ```bash
 $ kubectl get deployment foo-deployment -o yaml --show-managed-fields
