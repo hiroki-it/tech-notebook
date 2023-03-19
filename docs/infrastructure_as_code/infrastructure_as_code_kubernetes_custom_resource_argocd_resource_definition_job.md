@@ -15,9 +15,13 @@ description: Job系＠リソース定義の知見を記録しています。
 
 ## 01. 専用Job
 
-### .metadata
+Jobに、ArgoCDのSyncに伴う処理を設定する。
 
-#### ▼ generateName
+<br>
+
+## 02.metadata
+
+### generateName
 
 `Sync`フェーズフック名を設定する。
 
@@ -34,11 +38,28 @@ metadata:
 
 <br>
 
-### .metadata.annotations
+### annotations
 
 #### ▼ argocd.argoproj.io/hook
 
-フックを設定する`Sync`フェーズ (Sync前、Sync時、Syncスキップ時、Sync後、Sync失敗時) を設定する。
+ArgoCDの`Sync`フェーズを設定する。
+
+設定したフェーズのタイミングで、ArgoCDはこのJobをフックする。
+
+| 設定項目 | 処理の実行タイミング | 適するJobの処理                                    |
+| -------- | -------------------- | -------------------------------------------------- |
+| PreSync  | Syncの前             | DBマイグレーション処理                             |
+| Sync     | Syncと同時           | Deploymentのアップデート戦略以外のデプロイ実行処理 |
+| Skip     | Syncスキップ時       |                                                    |
+| PostSync | Syncの後             | ヘルスチェック                                     |
+| SyncFail | Syncの失敗時         | Sync失敗の残骸となったKubernetesリソースの削除処理 |
+
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
+
+**＊実行例＊**
 
 ```yaml
 apiVersion: batch/v1
@@ -47,13 +68,28 @@ metadata:
   namespace: argocd
   name: foo-job
   annotations:
-    argocd.argoproj.io/hook: SyncFail # Sync失敗時
+    # Syncの前に実行する。
+    argocd.argoproj.io/hook: PreSync
+    # 次のフック前に削除する。
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    # 優先度を設定する。
+    argocd.argoproj.io/sync-wave: 1
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: foo-migration
+          image: foo-migration:1.0.0
+          args: ["success"]
+          envFrom:
+            - secretRef:
+                # DBの接続情報 (ホスト、ユーザー名、パスワード) はSecretに設定しておく。
+                name: foo-secret
+      restartPolicy: Never
 ```
 
-> ↪️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
+> ↪️ 参考：https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
 
 #### ▼ argocd.argoproj.io/sync-wave
 
@@ -62,6 +98,8 @@ metadata:
 正負の数字を設定でき、数字が小さい方が優先される。
 
 優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
+
+デフォルトでは優先度が`0`であるため、必ず明示的に設定しておく。
 
 ```yaml
 apiVersion: batch/v1
