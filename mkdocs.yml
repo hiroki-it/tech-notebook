@@ -355,7 +355,7 @@ nav:
               - トークン: security/security_auth_authentication_token.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
-              - OpenPolicyAgent: security/security_auth_open_policy_agent.md
+              - OpenPolicyAgent: security/security_auth_authorization_open_policy_agent.md
           - ■ SSO:
               - SSO: security/security_auth_sso.md
               - OAuth: security/security_auth_sso_oauth.md
