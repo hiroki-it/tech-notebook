@@ -197,7 +197,7 @@ nav:
               - 設定ファイル: software/software_middleware_security_falco_conf.md
       - ■ サービスメッシュ系:
           - サービスメッシュ: software/software_middleware_service_mesh.md
-          - 各サービスメッシュツールが担う責務: software/software_middleware_service_mesh_responsibility.md
+          - サービスメッシュの担う責務: software/software_middleware_service_mesh_responsibility.md
           - ■ Envoy:
               - Envoy: software/software_middleware_service_mesh_envoy.md
               - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
