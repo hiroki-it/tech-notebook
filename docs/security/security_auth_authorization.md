@@ -19,3 +19,18 @@ description: 認可＠認証/認可の知見を記録しています。
 
 <br>
 
+## 02. アプリケーションで実装する
+
+アプリケーションで、認可処理を実装する。
+
+クリーンアーキテクチャであれば、ドメインサービスやアプリケーションサービスである。
+
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+
+<br>
+
+## 03. 委譲する
+
+認可処理を実施してくれるツール (例：OpenPolicyAgent、など) に委譲する。
+
+<br>
