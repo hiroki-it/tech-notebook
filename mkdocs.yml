@@ -572,9 +572,11 @@ nav:
                   - データプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
               - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.md
               - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
+              - ■ リソース定義:
+                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
+                  - メタデータ: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition_metadata.md
           - ■ Jaeger:
               - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
           - ■ Kiali:
