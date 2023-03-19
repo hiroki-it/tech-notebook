@@ -445,7 +445,7 @@ Prometheusのセットアップ方法を決める。
 
 ### .spec.alerting
 
-アラートの送信先を設定する。
+アラートの宛先を設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

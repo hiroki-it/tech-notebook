@@ -238,11 +238,16 @@ Pod間通信時に、正しい送信元Envoyであることを認証する。
 
 > ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
-#### ▼ JWTによるBearer認証
+#### ▼ JWTによるBearer認証 (IDプロバイダーに認証フェーズを委譲)
 
 JWTによるBearer認証を実施し、送信元のPodを認証する。
 
-Istiodコントロールプレーンは、JWTの発行元 (例：Auth0、KeyCloak、AWS Cognito、Google Auth) と通信する必要があり、認証プロキシを配置してもよい。
+この場合、認証フェーズをIDプロバイダー (例：Auth0、KeyCloak、AWS Cognito、Google Auth) に委譲することになる。
+
+JWTの取得方法として、例えば以下の方法がある。
+
+- 送信元のPodがIDプロバイダーからJWTを直接取得する。
+- 送信元/宛先の間に認証プロキシ (例：oauth2-proxy) を配置し、認証プロキシでJWTを取得する。
 
 > ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 

@@ -99,7 +99,7 @@ spec:
 
 ### MutatingWebhookConfiguration
 
-Webhookの送信先のServiceを決定する。
+Webhookの宛先のServiceを決定する。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1

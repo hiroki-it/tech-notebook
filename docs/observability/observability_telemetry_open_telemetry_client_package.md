@@ -40,7 +40,7 @@ import (
 
 func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
-	// 分散トレースの送信先 (例：標準出力、Jaeger、Zipkin、など) を設定する。
+	// 分散トレースの宛先 (例：標準出力、Jaeger、Zipkin、など) を設定する。
 	exporter := stdouttrace.New(
 		stdouttrace.WithPrettyPrint(),
 		stdouttrace.WithWriter(os.Stderr),

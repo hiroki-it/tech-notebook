@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Authenticate (認証) ＠認証/認可
-description: Authenticate (認証) ＠認証/認可の知見を記録しています。
+title: 【IT技術の知見】認証＠認証/認可
+description: 認証＠認証/認可の知見を記録しています。
 ---
 
-# Authenticate (認証) ＠認証/認可
+# 認証＠認証/認可
 
 ## はじめに
 
