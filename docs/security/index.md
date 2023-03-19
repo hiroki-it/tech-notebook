@@ -31,6 +31,7 @@
   > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_open_policy_agent.html)
 
 * #### <u>SSO</u>
+  > * ##### [SSO](https://hiroki-it.github.io/tech-notebook/security/security_auth_sso.html)
   > * ##### [OAuth](https://hiroki-it.github.io/tech-notebook/security/security_auth_sso_oauth.html)
   > * ##### [SAML](https://hiroki-it.github.io/tech-notebook/security/security_auth_sso_saml.html)
   > * ##### [OIDC](https://hiroki-it.github.io/tech-notebook/security/security_auth_sso_oidc.html)
