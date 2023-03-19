@@ -109,7 +109,7 @@ OIDCを使用して、ArgoCDにログインできるようにする。
 
 ArgoCDから認証の委譲先のWebサイトに情報を直接的に接続する。
 
-OIDCに必要なクライアントIDやクライアントシークレット (例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される) を設定する。
+OIDCのIDプロバイダー (例：Auth0、KeyCloak、AWS Cognito、Google Auth) が発行したクライアントIDやクライアントシークレットを設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 

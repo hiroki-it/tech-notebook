@@ -705,11 +705,15 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 AWSにSSOでログインする。
 
-認証フェーズを外部 (Google Apps、AzureAD、KeyCloak、など) に委譲し、AWSでは認可フェーズのみを実施する。
+認証フェーズを外部 (Auth0、KeyCloak、AWS Cognito、Google Auth、など) に委譲し、AWSでは認可フェーズのみを実施する。
 
 追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
 
 > ↪️ 参考：https://github.com/Versent/saml2aws
+
+**＊実行例＊**
+
+ここでは、IPプロバイダーにKeyCloakを使用している。
 
 ```bash
 $ saml2aws login

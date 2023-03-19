@@ -272,7 +272,7 @@ ServiceAccountを作成すると、Bearerトークン (『`***-***-***-***-***-*
 
 アプリケーションの認可と同じように、クライアントの権限の範囲 (認可スコープ) を検証する。
 
-認証されたServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
+認証済みのServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
 
 > ↪️ 参考：
 >

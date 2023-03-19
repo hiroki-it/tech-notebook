@@ -13,21 +13,9 @@ description: リソース＠Istioの知見を記録しています。
 
 <br>
 
-## 01. リソースとオブジェクト
+## 01. トラフィック管理系リソース
 
-### Istioリソース
-
-Istioの各コンポーネントのことにより、Kubernetesのカスタムリソースとして定義されている。
-
-<br>
-
-### Istioオブジェクト
-
-マニフェストによって量産されたIstioリソースのインスタンスのこと。
-
-<br>
-
-## 02. インバウンド通信に関するリソース
+## 01-02. インバウンド通信
 
 ### IngressGateway
 
@@ -193,83 +181,7 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 <br>
 
-## 02-02. 通信ルーティングのパターン
-
-### LoadBalancer Serviceの場合
-
-LoadBalancer Serviceを使用する場合、以下のようなネットワーク経路がある。
-
-**＊例＊**
-
-```
-パブリックネットワーク
-↓
-AWS Route53
-↓
-AWS ALB
-↓
-LoadBalancer Service (Istio IngressGateway)
-↓
-Gateway
-↓
-VirtualService
-↓
-Service
-↓
-Pod
-```
-
-<br>
-
-### NodePort Serviceの場合
-
-#### ▼ ロードバランサーがない場合
-
-NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
-
-**＊例＊**
-
-```
-パブリックネットワーク
-↓
-NodePort Service (Istio IngressGateway)
-↓
-Gateway
-↓
-VirtualService
-↓
-Service
-↓
-Pod
-```
-
-#### ▼ ロードバランサーがある場合
-
-パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に置く (このLBは、Ingressコントローラー由来ではない) 。
-
-**＊例＊**
-
-```
-パブリックネットワーク
-↓
-AWS Route53
-↓
-AWS ALB
-↓
-NodePort Service (Istio IngressGateway)
-↓
-Gateway
-↓
-VirtualService
-↓
-Service
-↓
-Pod
-```
-
-<br>
-
-## 03. アウトバウンド通信に関するリソース
+## 01-03. アウトバウンド通信
 
 ### EgressGateway
 
@@ -295,7 +207,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 <br>
 
-## 04. 両方向通信に関するリソース
+## 01-04. 両方向通信に関するリソース
 
 ### DestinationRule
 
@@ -317,3 +229,19 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 > - https://sreake.com/blog/istio/
 
 <br>
+JW
+## 02. 認証系リソース
+
+### PeerAuthentication
+
+Pod間通時に、相互TLS認証を実施する。
+
+> ↪️ 参考：https://news.mynavi.jp/techplus/article/kubernetes-30/
+
+<br>
+
+### RequestAuthentication
+
+Pod間通信時に、JWTによるBearer認証を実施する。
+
+> ↪️ 参考：https://news.mynavi.jp/techplus/article/kubernetes-30/

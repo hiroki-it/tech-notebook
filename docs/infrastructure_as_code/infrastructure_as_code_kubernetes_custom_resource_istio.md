@@ -225,9 +225,24 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 #### ▼ 仕組み
 
-マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。
+Pod間通信時に、正しい送信元Envoyであることを認証する。
 
-そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実装する。
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
+> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+
+#### ▼ 相互TLS認証
+
+相互TLS認証を実施し、送信元のPodを認証する。
+
+> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
+
+#### ▼ JWTによるBearer認証
+
+JWTによるBearer認証を実施し、送信元のPodを認証する。
+
+Istiodコントロールプレーンは、JWTの発行元 (例：Auth0、KeyCloak、AWS Cognito、Google Auth) と通信する必要があり、認証プロキシを配置してもよい。
 
 > ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
@@ -237,21 +252,21 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 #### ▼ 仕組み
 
-Pod間の通信時に、通信可能なPod間の認可スコープを制御する。
+Pod間通信時に、AuthorizationPolicyを使用して、スコープに含まれる認証済みEnvoyのみを認可する。
 
-> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authorization-policies
+![istio_authorization-policy.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
+
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/concepts/security/#authorization-policies
+> - https://www.styra.com/blog/authorize-better-istio-traffic-policies-with-opa-styra-das/
+> - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
 <br>
 
 ## 05. 通信データの暗号化
 
-### 相互TLS
-
-記入中...
-
-<br>
-
-### 中間認証局
+### 中間認証局によるSSL/TLS化
 
 #### ▼ Istiodコントロールプレーン
 

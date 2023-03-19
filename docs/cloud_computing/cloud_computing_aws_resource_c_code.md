@@ -75,6 +75,7 @@ phases:
       - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
       # バージョンタグはコミットのハッシュ値を使用
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      # ハッシュ値だけでなく、プレフィクスに日付をつけてもよい。
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:

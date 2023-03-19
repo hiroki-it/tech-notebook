@@ -182,7 +182,7 @@ ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
 
 ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズを委譲することになる。
 
-委譲先 (例：KeyCloak) は、認証サーバー (例：OIDCであればIDプロバイダー) を公開しており、`dex-server`は、ArgoCDが認証サーバーと通信する時のハブとして機能する。
+委譲先 (例：Auth0、KeyCloak、AWS Cognito、Google Auth) は、認証サーバー (例：OIDCであればIDプロバイダー) を公開しており、`dex-server`は、ArgoCDが認証サーバーと通信する時のハブとして機能する。
 
 dex-serverの起動に失敗すると、外部Webサイトに情報を送信できずにSSOに失敗してしまう。
 
@@ -193,6 +193,24 @@ dex-serverの起動に失敗すると、外部Webサイトに情報を送信で�
 > - https://weseek.co.jp/tech/95/
 > - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
 > - https://zenn.dev/onsd/articles/a3ea24b01da413
+
+<br>
+
+### image-updater
+
+#### ▼ image-updaterとは
+
+GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。
+
+アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster内のマニフェストを自動的に書き換える。
+
+その後、マニフェストリポジトリに書き換えをコミットする。
+
+![gitops_with-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png)
+
+![gitops_without-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
+
+> ↪️ 参考：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
 
 <br>
 

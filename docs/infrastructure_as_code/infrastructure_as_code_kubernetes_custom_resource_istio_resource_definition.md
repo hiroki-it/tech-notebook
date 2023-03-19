@@ -60,6 +60,18 @@ $ kubectl apply -f istio-operator.yaml
 
 <br>
 
+### ローカルマシンのセットアップ
+
+#### ▼ Minikube
+
+Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
+
+```bash
+$ minikube start --cpus=4 --memory=16384
+```
+
+<br>
+
 ## 01-02. コンポーネント別セットアップ
 
 ### インストール
@@ -96,443 +108,128 @@ $ helm install <リリース名> <チャートリポジトリ名>/gateway -n ist
 
 <br>
 
-## 01-03. その他のセットアップ
+## 02. AuthorizationPolicy
 
-### Minikubeのセットアップ
+### .spec.action
 
-Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
+#### ▼ actionとは
 
-```bash
-$ minikube start --cpus=4 --memory=16384
-```
-
-<br>
-
-### Envoyのカスタマイズ
-
-#### ▼ VirtualService、DestinationRuleの定義
-
-VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに適用される。
-
-> ↪️ 参考：
->
-> - https://sreake.com/blog/istio/
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/
-
-#### ▼ EnvoyFilterの定義
-
-`istio-proxy`コンテナの設定を上書きできる。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
-
-#### ▼ annotationsの定義
-
-DeploymentやPodの`.metadata.anontations`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
-
-#### ▼ `istio-proxy`コンテナの定義
-
-DeploymentやPodで`istio-proxy`コンテナを定義することにより設定を上書きできる。
-
-**＊実装例＊**
+認可スコープで、認証済みの送信元を許可するか否かを設定する。
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
 metadata:
-  name: foo-deployment
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    spec:
-      containers:
-        - name: foo-gin
-          image: foo-gin
-        # istio-proxyコンテナの設定を上書きする。
-        - name: istio-proxy
-          lifecycle:
-            # istio-proxyコンテナ終了直前の処理
-            preStop:
-              exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
-                # envoyプロセスとpilot-agentプロセスの終了を待機する。
-                command:
-                  - "/bin/bash"
-                  - "-c"
-                  - |
-                    sleep 5
-                    while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
-            # istio-proxyコンテナ開始直後の処理
-            postStart:
-              exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。
-                # pilot-agentの起動完了を待機する。
-                command:
-                  - |
-                    pilot-agent wait
-```
-
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
-
-<br>
-
-## 03. 共通設定
-
-### .apiVersion
-
-IstioのAPIグループのバージョンを設定する。
-
-Kubernetesとは異なることに注意する。
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-```
-
-<br>
-
-### .kind
-
-作成するIstioリソースを設定する。
-
-- DestinationRule
-- Gateway
-- VirtualService
-
-<br>
-
-### .metadata
-
-#### ▼ metadataとは
-
-Istioリソースの一意に識別するための情報を設定する。
-
-#### ▼ namespace
-
-Istioリソースを作成するNamespaceを設定する。デフォルトで`istio-system`になる。
-
-**＊実装例＊**
-
-```yaml
-metadata:
+  name: bar-authorization-policy
   namespace: istio-system
-```
-
-<br>
-
-## 04. Namespaceの`.metadata.labels`キー
-
-### istio-injection
-
-指定したNamespaceに属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
-
-`.metadata.labels.istio.io/rev`キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection`キーの値が`disabled`の場合は共存できる) 。
-
-`.metadata.labels.istio-injection`キーを使用する場合、Istioのアップグレードがインプレース方式になる。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: app-namespace
-  labels:
-    istio-injection: enabled
-```
-
-アプリケーション以外のNamespaceでは`disabled`値を設定することが多い。
-
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: observability-namespace
-  labels:
-    istio-injection: disabled
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: chaos-mesh-namespace
-  labels:
-    istio-injection: disabled
-```
-
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
-
-<br>
-
-### istio.io/rev
-
-指定したNamespaceに属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
-
-IstoOperatorの`.spec.revision`キーと同じである。
-
-`.metadata.labels.istio-injection`キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection`キーの値が`disabled`の場合は共存できる) 。
-
-`.metadata.labels.istio.io/rev`キーを使用する場合、Istioのアップグレードがカナリア方式になる。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: app-namespace
-  labels:
-    istio.io/rev: default
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: observability-namespace
-  labels:
-    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: chaos-mesh-namespace
-  labels:
-    istio-injection: disabled
-```
-
-> ↪️ 参考：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
-
-<br>
-
-## 04-02. Podの`.metadata.annotations`キー
-
-### annotationsとは
-
-Deploymentの`.spec.template`キーや、Podの` .metadata.``キーにて、 `istio-proxy`コンテナごとのオプション値を設定する。Deploymentの`.metadata.``キーで定義しないように注意する。
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
-
-<br>
-
-### istio.io/rev
-
-IstoOperatorの`.spec.revision`キーと同じ。
-
-特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
-metadata:
-  name: foo-deployment
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        istio.io/rev: 1-10-0
-```
-
-<br>
-
-### proxy.istio.io
-
-#### ▼ proxy.istio.ioとは
-
-`istio-proxy`コンテナのプロセスの設定値を上書きし、ユーザー定義の値を設定する。
-
-#### ▼ configPath
-
-デフォルトでは、`./etc/istio/proxy`ディレクトリ配下に最終的な設定値ファイルが作成される。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
-metadata:
-  name: foo-deployment
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        proxy.istio.io/config: |
-          configPath: ./etc/istio/proxy
-```
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-
-#### ▼ parentShutdownDuration
-
-`istio-proxy`コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
-
-`istio-proxy`コンテナ自体の終了タイミングを決める`terminationDrainDuration`キーよりも、最低`5`秒以上長くすると良い。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
-metadata:
-  name: foo-deployment
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        proxy.istio.io/config: |
-          parentShutdownDuration: "80s"
+  action: ALLOW
 ```
 
 > ↪️ 参考：
 >
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s
-> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+> - https://istio.io/latest/docs/reference/config/security/authorization-policy/
+> - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
-#### ▼ terminationDrainDuration
+<br>
 
-SIGKILLシグナルを`istio-proxy`コンテナに送信するまでに待機する時間を設定する。
+### .spec.rules
 
-この待機時間を経た後に、SIGKILLシグナルを`istio-proxy`コンテナに送信する。
+#### ▼ rulesとは
+
+認可スコープで、実施条件 (例：いずれのKubernetesリソース、HTTPリクエストのメソッド、JWTの発行元の識別子) を設定する。
+
+その条件に合致した場合に、認証済みの送信元を許可するか否かを実施する。
+
+#### ▼ 認証が『相互TLS認証』の場合
+
+相互TLS認証の場合、送信元のPod紐づくServiceAccountが適切な場合に、認可を実施するように設定する。
 
 **＊実装例＊**
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
 metadata:
-  name: foo-deployment
+  name: bar-authorization-policy
+  namespace: istio-system
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        proxy.istio.io/config: |
-          terminationDrainDuration: "75s"
+  rules:
+    - from:
+        - source:
+            principals: ["cluster.local/ns/default/sa/inventory-sa"]
+      to:
+        - operation:
+            methods: ["GET"]
 ```
 
 > ↪️ 参考：
 >
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-drain-time-s
-> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+> - https://istiobyexample-ja.github.io/istiobyexample/authorization/
+> - https://istio.io/latest/docs/concepts/security/#dependency-on-mutual-tls
+> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview#best_practices
 
-<br>
+#### ▼ 認証が『JWTによるBearer認証』の場合
 
-### sidecar.istio.io/inject
-
-特定のPodで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。
+JWTによるBearer認証の場合、リクエストヘッダーにあるJWTの発行元が適切な場合に、認可を実施するように設定する。
 
 **＊実装例＊**
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
 metadata:
-  name: foo-deployment
+  name: bar-authorization-policy
+  namespace: istio-system
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/inject: false
+  rules:
+    - from:
+        - source:
+            namespaces: ["foo"]
+      to:
+        - operation:
+            methods: ["GET"]
+      when:
+        - key: request.auth.claims[iss]
+          values: ["<JWTの発行元の識別子 (issuer)>"]
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/reference/config/security/authorization-policy/
+> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview#best_practices
+> - https://openid-foundation-japan.github.io/draft-ietf-oauth-json-web-token-11.ja.html#issDef
 
 <br>
 
-### sidecar.istio.io/proxyCPU
+### .spec.selector
 
-`istio-proxy`コンテナで使用するCPUサイズを設定する。
+#### ▼ selectorとは
 
-**＊実装例＊**
+AuthorizationPolicyの設定を適用するKubernetesリソースを設定する。
+
+設定したKubernetesリソースに対して認証済みの送信元が通信した場合に、AuthorizationPolicyを適用する。
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
 metadata:
-  name: foo-deployment
+  name: bar-authorization-policy
+  namespace: istio-system
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/proxyCPU: 2
+      app: foo-pod
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/reference/config/security/authorization-policy/
+> - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
 <br>
 
-### sidecar.istio.io/proxyImage
-
-`istio-proxy`コンテナの作成に使用するコンテナイメージを設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
-metadata:
-  name: foo-deployment
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/proxyImage: foo-envoy
-```
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
-
-<br>
-
-### sidecar.istio.io/proxyMemory
-
-`istio-proxy`コンテナで使用するメモリサイズを設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくはPod
-metadata:
-  name: foo-deployment
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/app: foo-pod
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/proxyMemory: 4
-```
-
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
-
-<br>
-
-## 05. DestinationRule
+## 03. DestinationRule
 
 ### .spec.exportTo
 
@@ -783,14 +480,14 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: ISTIO_MUTUAL # 相互TLS
+      mode: ISTIO_MUTUAL # 相互TLS認証
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
 <br>
 
-## 06. EnvoyFilter
+## 04. EnvoyFilter
 
 ### .spec.configPatches
 
@@ -955,7 +652,77 @@ spec:
 
 <br>
 
-## 07. Gateway
+## 04-02. EnvoyFilter以外のカスタマイズ方法
+
+### VirtualService、DestinationRuleの定義
+
+VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに適用される。
+
+> ↪️ 参考：
+>
+> - https://sreake.com/blog/istio/
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/
+
+<br>
+
+### annotationsの定義
+
+DeploymentやPodの`.metadata.anontations`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。
+
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/annotations/
+
+<br>
+
+### `istio-proxy`コンテナの定義
+
+DeploymentやPodで`istio-proxy`コンテナを定義することにより設定を上書きできる。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  template:
+    spec:
+      containers:
+        - name: foo-gin
+          image: foo-gin
+        # istio-proxyコンテナの設定を上書きする。
+        - name: istio-proxy
+          lifecycle:
+            # istio-proxyコンテナ終了直前の処理
+            preStop:
+              exec:
+                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
+                # envoyプロセスとpilot-agentプロセスの終了を待機する。
+                command:
+                  - "/bin/bash"
+                  - "-c"
+                  - |
+                    sleep 5
+                    while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
+            # istio-proxyコンテナ開始直後の処理
+            postStart:
+              exec:
+                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。
+                # pilot-agentの起動完了を待機する。
+                command:
+                  - |
+                    pilot-agent wait
+```
+
+> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+
+<br>
+
+## 05. Gateway
 
 ### .spec.selector
 
@@ -1163,28 +930,28 @@ spec:
 
 <br>
 
-## 08. PeerAuthentication
+## 06. PeerAuthentication
 
 ### .spec.mtls
 
 #### ▼ mtls
 
-`istio-proxy`コンテナ間の通信で相互TLSを有効化するか否かを設定する。
+`istio-proxy`コンテナ間の通信で相互TLS認証を有効化するか否かを設定する。
 
-Kubernetesのみで相互TLSをセットアップしようとすると大変であり、Istioを使うとより簡単にセットアップできる。
+Kubernetesのみで相互TLS認証をセットアップしようとすると大変であり、Istioを使うとより簡単にセットアップできる。
 
 > ↪️ 参考：https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
 
 #### ▼ mode
 
-相互TLSのタイプを設定する。
+相互TLS認証のタイプを設定する。
 
-| 項目         | 説明                                                           |
-| ------------ | -------------------------------------------------------------- |
-| `UNSET`      | 記入中...                                                      |
-| `DISABLE`    | 相互TLSを使用しない。                                          |
-| `PERMISSIVE` | 相互TLSの時、プロトコルはHTTPSとHTTPの両方を許可する。         |
-| `STRICT`     | 相互TLSの時、プロトコルはHTTPSのみを許可し、HTTPを許可しない。 |
+| 項目         | 説明                                                               |
+| ------------ | ------------------------------------------------------------------ |
+| `UNSET`      | 記入中...                                                          |
+| `DISABLE`    | 相互TLS認証を使用しない。                                          |
+| `PERMISSIVE` | 相互TLS認証の時、プロトコルはHTTPSとHTTPの両方を許可する。         |
+| `STRICT`     | 相互TLS認証の時、プロトコルはHTTPSのみを許可し、HTTPを許可しない。 |
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
@@ -1198,10 +965,10 @@ metadata:
   name: peer-authentication
 spec:
   mtls:
-    mode: STRICT # 相互TLSを使用する。
+    mode: STRICT # 相互TLS認証を使用する。
 ```
 
-相互TLSを使用する場合はSSL証明書が必要になり、SSL証明書が無いと以下のようなエラーになる。
+相互TLS認証を使用する場合はSSL証明書が必要になり、SSL証明書が無いと以下のようなエラーになる。
 
 ```bash
 transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED
@@ -1209,7 +976,55 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 <br>
 
-## 09. ServiceEntry
+## 07. RequestAuthentication
+
+### .spec.jwtRules
+
+Bearer認証で使用するJWTの発行元を設定する。
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt"
+  namespace: istio-system
+spec:
+  jwtRules:
+    - issuer: foo-issuer
+      jwksUri: https://example.com/.well-known/jwks.json
+```
+
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/
+> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+
+<br>
+
+### .spec.selector
+
+JWTによるBearer認証を適用するKubernetesリソース名を設定する。
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt"
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+```
+
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/
+> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+
+<br>
+
+## 08. ServiceEntry
 
 ### .spec.hosts
 
@@ -1277,7 +1092,7 @@ spec:
 
 <br>
 
-## 10. VirtualService
+## 09. VirtualService
 
 ### .spec.exportTo
 

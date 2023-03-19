@@ -155,9 +155,11 @@
   > > * ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.html)
   > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.html)
   > * ##### [︎リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.html)
-  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html)
   > * ##### [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.html)
   > * ##### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.html)
+  > * ##### リソース定義
+  > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html)
+  > > * ##### [メタデータ](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition_metadata.html)
 
 * #### <u>Jaeger</u>
   > * ##### [︎Jaeger](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.html)

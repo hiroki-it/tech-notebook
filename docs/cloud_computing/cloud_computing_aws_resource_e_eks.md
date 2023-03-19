@@ -248,7 +248,7 @@ data:
 
 EKSをIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
 
-ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証されたServiceAccountにIAMロールを紐づけることができるようになる。
+ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証済みのServiceAccountにIAMロールを紐づけることができるようになる。
 
 ```yaml
 apiVersion: v1

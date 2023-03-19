@@ -339,7 +339,7 @@ $ aws iam create-policy \
 
 : EKS ClusterをOIDCプロバイダーとして使用する。
 
-     これにより、EKS Cluster内で認証されたServiceAccountにIAMロールを紐づけることができるようになる。
+     これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐づけることができるようになる。
 
 ```bash
 $ eksctl utils associate-iam-oidc-provider \

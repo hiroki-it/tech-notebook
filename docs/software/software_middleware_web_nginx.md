@@ -310,12 +310,12 @@ server {
 
    # Products API
    location /api/products {
-       proxy_pass http://products.api.com:8001;
+       proxy_pass http://products.api.com:80;
    }
 
    # Users API
    location /api/users {
-       proxy_pass http://products.api.com:8002;
+       proxy_pass http://users.api.com:80;
    }
 }
 ```

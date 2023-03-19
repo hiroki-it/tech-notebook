@@ -143,3 +143,25 @@ const signature = HMACSHA256(
 > - https://blog.flatt.tech/entry/auth0_access_token_poc
 
 <br>
+
+## 02. fernet token
+
+記入中...
+
+> ↪️ 参考：https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token
+
+<br>
+
+## 03. branca-token
+
+記入中...
+
+> ↪️ 参考：https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token
+
+<br>
+
+## 04. PASETO
+
+記入中...
+
+> ↪️ 参考：https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto

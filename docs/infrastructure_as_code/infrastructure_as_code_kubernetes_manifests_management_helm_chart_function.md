@@ -44,12 +44,14 @@ description: アクション＠チャートの知見を記録しています。
 {{- if .Values.isProduction }}
 
   {{- $prefix := "prd" }}
-  ... 変数を使用する。
+
+  ... # 変数を使用する。
 
 {{- else }}
 
   {{- $prefix := "nonprd" }}
-  ... 変数を使用する。
+
+  ... # 変数を使用する。
 
 {{- end }}
 ```

@@ -263,7 +263,7 @@ webhooks:
 
 <br>
 
-## 02-02. `discovery`コンテナ
+## 02. `discovery`コンテナ
 
 ### XDS-API
 
@@ -301,7 +301,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 		case req, ok := <-con.reqChan:
 			if ok {
 				// pilot-agentからリクエストを受信する。
-        // 受信内容に応じて、送信内容を作成する。
+                // 受信内容に応じて、送信内容を作成する。
 				if err := s.processRequest(req, con); err != nil {
 					return err
 				}
@@ -310,7 +310,8 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 			}
 
 		case pushEv := <-con.pushChannel:
-      // pilot-agentにリクエストを送信する。
+
+            // pilot-agentにリクエストを送信する。
 			err := s.pushConnection(con, pushEv)
 			pushEv.done()
 			if err != nil {
@@ -337,9 +338,11 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 ### インメモリストレージ
 
+記入中...
+
 <br>
 
-## 02-03. 待ち受けるポート番号
+## 02-02. 待ち受けるポート番号
 
 ### ポート番号の確認
 

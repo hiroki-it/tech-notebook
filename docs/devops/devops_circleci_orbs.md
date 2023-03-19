@@ -212,6 +212,7 @@ jobs:
     profile-name: myProfileName
     repo: "{$SERVICE}-repository"
     # CircleCIのハッシュ値によるバージョニング
+    # ハッシュ値だけでなく、プレフィクスに日付をつけてもよい。
     tag: $CIRCLE_SHA1
     # job内にて、attach_workspaceステップを実行。
     attach-workspace: true

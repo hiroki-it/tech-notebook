@@ -293,7 +293,24 @@ OAuthでは、認証スキーマとしてBearer認証が選択されることが
 
 OAuthとは異なる仕組みで認証/認可の両方を実装する。
 
-認証を担うIDプロバイダー、認可の委譲先のWebサイト、から構成される。
+<br>
+
+### SAMLの仕組み
+
+#### ▼ アーキテクチャ
+
+認証を担うIDプロバイダー 、認可の委譲先のWebサイト、から構成される。
+
+#### ▼ IDプロバイダー
+
+- Auth0
+- KeyCloak
+- AWS Cognito
+- Google Auth
+
+#### ▼ 認証の委譲先
+
+記入中...
 
 <br>
 
@@ -303,12 +320,34 @@ OAuthとは異なる仕組みで認証/認可の両方を実装する。
 
 OAuthをベースとして、認証フェーズを追加し、認証/認可を実装する。
 
+> ↪️ 参考：
+>
+> - https://baasinfo.net/?p=4418
+> - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
+
+<br>
+
+### OIDCの仕組み
+
+#### ▼ アーキテクチャ
+
 認証を担うIDプロバイダー、認可の委譲先のWebサイト、から構成される。
 
 > ↪️ 参考：
 >
 > - https://baasinfo.net/?p=4418
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
+
+#### ▼ IDプロバイダー
+
+- Auth0
+- KeyCloak
+- AWS Cognito
+- Google Auth
+
+#### ▼ 認証の委譲先
+
+記入中...
 
 <br>
 
