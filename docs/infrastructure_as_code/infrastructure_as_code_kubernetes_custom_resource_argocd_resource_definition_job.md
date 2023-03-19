@@ -23,7 +23,7 @@ Jobに、ArgoCDのSyncに伴う処理を設定する。
 
 ### generateName
 
-`Sync`フェーズフック名を設定する。
+Jobに、`Sync`フェーズフック名を設定する。
 
 ```yaml
 apiVersion: batch/v1
@@ -42,7 +42,7 @@ metadata:
 
 #### ▼ argocd.argoproj.io/hook
 
-ArgoCDの`Sync`フェーズを設定する。
+Jobに、ArgoCDの`Sync`フェーズを設定する。
 
 設定したフェーズのタイミングで、ArgoCDはこのJobをフックする。
 
@@ -79,9 +79,9 @@ spec:
   template:
     spec:
       containers:
-        - name: foo-migration
-          image: foo-migration:1.0.0
-          args: ["success"]
+        - name: foo-app
+          image: foo-app:1.0.0
+          args: ["<マイグレーションを実行するためのコマンド>"]
           envFrom:
             - secretRef:
                 # DBの接続情報 (ホスト、ユーザー名、パスワード) はSecretに設定しておく。
@@ -93,7 +93,7 @@ spec:
 
 #### ▼ argocd.argoproj.io/sync-wave
 
-同じ`Sync`フェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。
+同じ`Sync`フェーズに実行するように設定したJobが複数ある場合、Jobの実行の優先度付けを設定する。
 
 正負の数字を設定でき、数字が小さい方が優先される。
 

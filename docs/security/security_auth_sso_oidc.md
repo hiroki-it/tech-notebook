@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OIDC＠認可
-description: OIDC＠認可の知見を記録しています。
+title: 【IT技術の知見】OIDC＠SSO
+description: OIDC＠SSOの知見を記録しています。
 ---
 
-# OIDC＠認可
+# OIDC＠SSO
 
 ## はじめに
 
@@ -16,6 +16,8 @@ description: OIDC＠認可の知見を記録しています。
 ## 01. OIDC：OpenID Connect (外部ID連携)
 
 ### OIDCとは
+
+SSOの一種である。
 
 OAuthをベースとして、認証フェーズを追加し、認証/認可を実装する。
 

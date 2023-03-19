@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OAuth＠認可
-description: OAuth＠認可の知見を記録しています。
+title: 【IT技術の知見】OAuth＠SSO
+description: OAuth＠SSOの知見を記録しています。
 ---
 
-# OAuth＠認可
+# OAuth＠SSO
 
 ## はじめに
 
@@ -18,6 +18,8 @@ description: OAuth＠認可の知見を記録しています。
 ### OAuthとは
 
 ![oauth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_architecture.png)
+
+SSOの一種である。
 
 認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth』と呼ぶ。
 

@@ -28,6 +28,9 @@
 
 * #### <u>認可</u>
   > * ##### [︎認可](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization.html)
+  > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_open_policy_agent.html)
+
+* #### <u>SSO</u>
   > * ##### [OAuth](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_oauth.html)
   > * ##### [SAML](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_saml.html)
   > * ##### [OIDC](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_oidc.html)

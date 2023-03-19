@@ -15,6 +15,10 @@ description: リソース＠Istioの知見を記録しています。
 
 ## 01. トラフィック管理系リソース
 
+記入中...
+
+<br>
+
 ## 01-02. インバウンド通信
 
 ### IngressGateway
@@ -245,3 +249,5 @@ Pod間通時に、相互TLS認証を実施する。
 Pod間通信時に、JWTによるBearer認証を実施する。
 
 > ↪️ 参考：https://news.mynavi.jp/techplus/article/kubernetes-30/
+
+<br>

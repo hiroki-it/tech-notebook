@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SAML＠認可
-description: SAML＠認可の知見を記録しています。
+title: 【IT技術の知見】SAML＠SSO
+description: SAML＠SSOの知見を記録しています。
 ---
 
-# SAML＠認可
+# SAML＠SSO
 
 ## はじめに
 
@@ -16,6 +16,8 @@ description: SAML＠認可の知見を記録しています。
 ## 01. SAML：Security Assertion Markup Language
 
 ### SAMLとは
+
+SSOの一種である。
 
 OAuthとは異なる仕組みで認証/認可の両方を実装する。
 
