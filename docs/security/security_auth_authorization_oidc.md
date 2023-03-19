@@ -37,13 +37,6 @@ OAuthをベースとして、認証フェーズを追加し、認証/認可を�
 > - https://baasinfo.net/?p=4418
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
 
-#### ▼ 認証フェーズの委譲先 (IDプロバイダー)
-
-- Auth0
-- KeyCloak
-- AWS Cognito
-- Google Auth
-
 <br>
 
 ### OAuthとの違い

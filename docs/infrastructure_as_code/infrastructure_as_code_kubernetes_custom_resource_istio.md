@@ -247,7 +247,7 @@ JWTによるBearer認証を実施し、送信元のPodを認証する。
 JWTの取得方法として、例えば以下の方法がある。
 
 - 送信元のPodがIDプロバイダーからJWTを直接取得する。
-- 送信元/宛先の間に認証プロキシ (例：oauth2-proxy) を配置し、認証プロキシでJWTを取得する。
+- 送信元/宛先の間に認証プロキシ (例：oauth2-proxy) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。
 
 > ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
