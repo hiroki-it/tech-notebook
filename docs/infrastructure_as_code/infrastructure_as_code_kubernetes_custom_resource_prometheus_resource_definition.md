@@ -425,6 +425,8 @@ Alertmanagerのアラートグループや通知先ルールを決める。
 
 Podに対してPull型通信を送信し、これのデータポイントを収集する。
 
+Serviceを持つPodではServiceMonitorを使用し、これを持たないPodをPodMonitorで監視する。
+
 <br>
 
 ## 05. Probe
@@ -710,7 +712,11 @@ spec:
 
 ### ServiceMonitorとは
 
-指定したServiceに対してPull型通信を送信し、これに紐づくリソースに関するメトリクスのデータポイントを収集する。
+指定したServiceに対してPull型通信を送信し、これに紐づくPodのメトリクスのデータポイントを収集する。
+
+Prometheusは、Podから直接的にデータポイントを収集できるが、この時PodのIPアドレスは動的に変化してしまう。
+
+そのため、基本的にはServiceMonitorを使用し、Podを動的に検出できるようにする。
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 

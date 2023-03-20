@@ -17,9 +17,9 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 ### アーキテクチャ
 
-deschedulerは、ポリシーに応じて現在のNodeにあるPodを削除し、より適切なNodeにこれを再スケジューリングする。
+deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングする。
 
-類似するkube-schedulerでは、既存のPodを削除して別のNodeに再スケジューリングすることはない。
+類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングすることはない。
 
 そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。
 

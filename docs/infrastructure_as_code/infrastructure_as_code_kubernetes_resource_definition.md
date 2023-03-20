@@ -2640,7 +2640,38 @@ spec:
 
 <br>
 
+### .spec.priorityClassName
+
+#### ▼ priorityClassNameとは
+
+Podのスケジューリングの優先度を設定する。
+
+| 設定値                                              | 優先度 |
+|--------------------------------------------------| ------ |
+| `system-node-critical`、`system-cluster-critical` | 最優先 |
+| `high`                                           | v      |
+| `low-non-preemptible`                            | v      |
+| `low`                                            | 後回し |
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+  priorityClassName: system-node-critical
+```
+
+> ↪️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption
+
+<br>
+
 ### .spec.nodeSelector
+
+#### ▼ nodeSelectorとは
 
 kube-schedulerがPodをスケジューリングするNodeを設定する。
 
@@ -3214,7 +3245,7 @@ spec:
 
 ### .spec.minAvailable
 
-対象のPodを新しいNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。
+対象のPodを新しいNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを退避させられる。
 
 このスケジューリングを待機するPodの最低限数を設定する。
 
@@ -3256,7 +3287,25 @@ spec:
 
 <br>
 
-## 20. ReplicaController
+## 20. PriorityClass
+
+### value
+
+#### ▼ valueとは
+
+ユーザー定義のPriorityClassで優先度を設定する。
+
+```yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: foo-priority-class
+value: 1000000
+```
+
+<br>
+
+## 21. ReplicaController
 
 旧Deployment。
 
@@ -3266,7 +3315,7 @@ spec:
 
 <br>
 
-## 21. Role、ClusterRole
+## 22. Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -3341,7 +3390,7 @@ rules:
 
 <br>
 
-## 22. RoleBinding、ClusterRoleBinding
+## 23. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -3413,7 +3462,7 @@ subjects:
 
 <br>
 
-## 23. Secret
+## 24. Secret
 
 ### data
 
@@ -3649,7 +3698,7 @@ data:
 
 <br>
 
-## 24. Service
+## 25. Service
 
 ### .spec.ports
 
@@ -3968,7 +4017,7 @@ status:
 
 <br>
 
-## 25. ServiceAccount
+## 26. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -4011,7 +4060,7 @@ imagePullSecrets:
 
 <br>
 
-## 26. StatefulSet
+## 27. StatefulSet
 
 ### .spec.serviceName
 

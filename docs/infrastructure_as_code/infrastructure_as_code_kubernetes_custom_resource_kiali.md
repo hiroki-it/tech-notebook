@@ -33,6 +33,14 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 
 <br>
 
+### Istioとの対応
+
+Kialiのバージョンは、Istioと対応関係にある。
+
+> ↪️ 参考：https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility
+
+<br>
+
 ### ダッシュボードの基本的な使い方
 
 #### ▼ グラフタイプ
