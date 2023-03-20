@@ -180,8 +180,11 @@ nav:
                   - ACID: software/software_middleware_database_rdb_rdbms_acid.md
               - ■ My︎SQL:
                   - MySQL: software/software_middleware_database_rdb_mysql.md
-                  - SQL: software/software_middleware_database_rdb_mysql_sql.md
                   - 設定ファイル: software/software_middleware_database_rdb_mysql_conf.md
+                  - ■ SQL:
+                      - DML: software/software_middleware_database_rdb_mysql_sql_dml.md
+                      - DCL: software/software_middleware_database_rdb_mysql_sql_dcl.md
+                      - DDL: software/software_middleware_database_rdb_mysql_sql_ddl.md
           - ■ TSDB:
               - ■ VictoriaMetrics:
                   - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
