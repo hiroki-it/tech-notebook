@@ -1014,17 +1014,33 @@ PersistentVolumeClaimは、`annotation`キー配下の`volume.kubernetes.io/sele
 
 PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
 
-しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが`.spec.nodeAffinity`キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
+しかし、PersistentVolumeClaimが `volume.kubernetes.io/selected-node` キーで指定するNodeと、PodがスケジューリングされているNodeが異なるAZであると、以下のエラーになる。
 
 ```bash
 N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
+これが起こる原因は様々ある。
+
+例えば、Nodeのスケールアウト時に、PodのあるNodeのAZが変わることがある。
+
+例えば、もともと`a`ゾーンにいるPodがNodeのスケールアウトで再スケジューリングされ`c`ゾーンになったとする。
+
+しかし、Podに紐づくPersistentVolumeClaimは元々の`a`ゾーンのNodeのPersistentVolumeを指定してるため、`volume node affinity conflict`になる。
 
 `【１】`
 
-: PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
+: PodがいずれのNodeでスケジューリングされているのか確認する。
+
+```bash
+$ kubectl get pod <Pod名> -o wide
+```
+
+`【２】`
+
+: PersistentVolumeClaimの`volume.kubernetes.io/selected-node`キーで、いずれのNodeのPersistentVolumeを指定しているかを確認する。
+
+     おそらく（１）の手順で確認したNodeとは異なるゾーンであるはずである。
 
 ```bash
 $ kubectl describe pvc <PersistentVolumeClaim名>
@@ -1034,30 +1050,31 @@ $ kubectl describe pvc <PersistentVolumeClaim名>
 Annotations:   pv.kubernetes.io/bind-completed: yes
                pv.kubernetes.io/bound-by-controller: yes
                volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
-               volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal
+               volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal # これ
 
 ...
 ```
 
-`【２】`
-
-: PodがいずれのNodeでスケジューリングされているのかを確認する。
-
-```bash
-$ kubectl get pod <Pod名> -o wide
-```
-
 `【３】`
 
-: Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。
+: PersistentVolumeClaimを削除する。
 
-     そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
+     この時PersistentVolumeは削除されないため、保管データは削除されない。
 
 `【４】`
 
-: StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
+: StatefulSet自体を再作成する。
 
-> ↪️ 参考：https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
+`【５】`
+
+: StatefulSetがPersistentVolumeClaimを新しく作成する。
+
+     この時、PersistentVolumeClaimが適切なNodeのPersistentVolumeを指定するようになるため、問題を解消できる。
+
+> ↪️ 参考：
+>
+> - https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
+> - https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
 
 <br>
 

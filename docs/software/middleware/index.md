@@ -46,8 +46,11 @@
   > > * ##### [︎ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
   > * ##### <u>MySQL</u>
   > > * ##### [My︎SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html)
-  > > * ##### [SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql.html)
   > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html)
+  > > * ##### <u>SQL</u>
+  > > > * ##### [DML](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html)
+  > > > * ##### [DCL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html)
+  > > > * ##### [DDL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html)
 * #### <u>TSDB</u>
   > * ##### <u>VictoriaMetrics</u>
   > > * ##### [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html)

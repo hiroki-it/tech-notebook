@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SQL＠MySQL
-description: SQL＠MySQLの知見を記録しています。
+title: 【IT技術の知見】DML＠SQL
+description: DML＠SQLの知見を記録しています。
 ---
 
-# SQL＠MySQL
+# DML＠SQL
 
 ## はじめに
 
@@ -13,228 +13,9 @@ description: SQL＠MySQLの知見を記録しています。
 
 <br>
 
-## 01. テーブルの管理
-
-### `CREATE TABLE`句
-
-テーブルを作成する。
-
-**＊実装例＊**
-
-```sql
--- 注文テーブル作成
-CREATE TABLE order_data (
-
-    -- プライマリーキー制約
-    order_id INT(10) PRIMARY KEY COMMENT "注文ID",
-
-    -- Not Null制約
-    order_kbn INT(3) NOT NULL COMMENT "注文区分",
-    system_create_date_time DATETIME NOT NULL COMMENT "システム登録日時",
-    system_update_date_time DATETIME NOT NULL COMMENT "システム更新日時",
-    delete_flg INT(1) DEFAULT 0 NOT NULL COMMENT "0：通常、1：削除済",
-
-    -- 複合プライマリーキー制約 (これを指定する場合、上記のプライマリーキー制約の記述は不要)
-    PRIMARY KEY(order_id, order_kbn)
-
-    -- 参照制約キー
-    FOREIGN KEY order_kbn REFERENCES order_kbn_data
-)
-```
-
 <br>
 
-### `CREATE VIEW`句
-
-ビューとはある表の特定のカラムや指定した条件に合致するレコードなどを取り出した仮想の表。
-
-また、複数の表を結合したビューを作成できる。
-
-ビューを作成することによりユーザーに必要最小限のカラムやレコードのみにアクセスでき、また結合条件を指定しなくても既に結合された表にアクセスできる。
-
-⇒よくわからん…
-
-**＊実装例＊**
-
-```sql
-CREATE VIEW { テーブル名 } AS
-SELECT
-    *
-FROM
-    { テーブル名 };
-```
-
-<br>
-
-## 02. ユーザーの管理
-
-### CREATE
-
-#### ▼ ユーザー作成
-
-```sql
-CREATE USER "{ ユーザー名 }" IDENTIFIED BY "{ パスワード }";
-```
-
-#### ▼ ユーザー一覧
-
-ここで表示される特権と。
-
-ALL特権は異なる。
-
-```sql
-SELECT
-    *
-FROM
-    mysql.user;
-```
-
-<br>
-
-### DROP
-
-#### ▼ ユーザー削除
-
-```sql
--- ユーザー別のホスト名の確認
-SELECT * FROM mysql.user;
-
--- ホストが『%』だった場合
-DROP USER { ユーザー名 }@`%`;
-```
-
-<br>
-
-### GRANT
-
-#### ▼ 全ての認可スコープを付与
-
-DB名は、シングルクオーテーションで囲う必要が無い。
-
-全権限を付与する場合、`PRIVILEGES`は省略できるが、厳密には省略しないようほうが良い。
-
-```sql
--- 全てのDBに関する権限を付与
-GRANT ALL PRIVILEGES ON *.* TO "{ ユーザー名 }";
-
--- AWS AuroraまたはRDSの場合はこちら
-GRANT ALL PRIVILEGES ON `%`.* TO "{ ユーザー名 }";
-```
-
-```sql
--- AWS Auroraも同じく
--- 特定のDBに関する全権限を付与
-GRANT ALL PRIVILEGES ON {DB名}.* TO "{ ユーザー名 }";
-```
-
-#### ▼ 一部の認可スコープを付与
-
-特定のDBに関する読み出し権限のみ付与する。
-
-```sql
-GRANT SELECT ON {DB名}.* TO "{ ユーザー名 }";
-```
-
-#### ▼ ユーザー権限一覧
-
-ユーザーに付与されている権限を取得する。
-
-```sql
-SHOW GRANTS FOR "{ ユーザー名 }";
-```
-
-作成したのみで権限を何も付与してないユーザーの場合、『dbサーバー内の全DBに関して、全権限なし』を表す`USAGE`として表示される。
-
-```sql
-GRANT USAGE ON *.* TO "{ ユーザー名 }";
-```
-
-特定のDBの認可スコープを与えると、上記に加えて、付与したGRANT権限も表示されるようになる。
-
-<br>
-
-### REVOKE
-
-#### ▼ 全権限削除
-
-全権限を削除し、GRANT権限をUSAGEに戻す。
-
-```sql
--- AWS AuroraまたはRDSの場合
-REVOKE ALL PRIVILEGES ON `%`.*
-FROM
-    "{ ユーザー名 }";
-
-REVOKE ALL PRIVILEGES ON { DB名 }.*
-FROM
-    "{ ユーザー名 }";
-```
-
-#### ▼ ユーザー名変更
-
-```sql
-RENAME USER "{ 古いユーザー名 }" TO "{ 新しいユーザー名 }";
-```
-
-<br>
-
-## 03. ユーザーの準備手順
-
-### 1. ユーザーの作成
-
-CREATEで以下の４種類を作成する。
-
-パスワードは、例えば`8`文字のパスワードを割り当てる。
-
-```sql
-CREATE USER "{ ユーザー名 }" IDENTIFIED BY "{ パスワード }";
-```
-
-| ユーザーの種類            | 例                | 補足                                               |
-| ------------------------- | ----------------- | -------------------------------------------------- |
-| ルートユーザー            | root              | DBの作成時にrootユーザーが自動作成される場合は不要 |
-| アプリケーション          | foo_app           |                                                    |
-| 読み出し/書き込みユーザー | foo_user          |                                                    |
-| 読み出しのみユーザー      | foo_readonly_user |                                                    |
-
-<br>
-
-### 2. ユーザーへの権限付与
-
-#### ▼ ルートユーザー
-
-ルートユーザーには、最初から全てのDBに対して権限を付与されており不要。
-
-#### ▼ アプリケーション
-
-使用するDBに対する全権限を付与する。
-
-```sql
--- DB名をクオーテーションで囲う必要はない
-GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
-```
-
-#### ▼ 読み出し/書き込みユーザー
-
-使用するDBに対する全権限を付与する。
-
-```sql
--- DB名をクオーテーションで囲う必要はない
-GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
-```
-
-#### ▼ 読み出しのみユーザー
-
-使用するDBに対するSELECT権限を付与する。
-
-```sql
--- DB名をクオーテーションで囲う必要はない
-GRANT SELECT ON {DB名}.* TO '{ ユーザー名 }';
-```
-
-<br>
-
-## 04. レコードの読み出し
+## 01. レコードの読み出し
 
 ### はじめに
 
@@ -811,7 +592,7 @@ DBインデックスとして設定されたカラムのうちで、実際に利
 
 <br>
 
-## 05. レコードの作成
+## 02. レコードの作成
 
 ### バルクインサート
 
@@ -823,7 +604,7 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 <br>
 
-## 06. その他
+## 03. その他
 
 ### stored procedure
 

@@ -13,7 +13,6 @@ description: 認可＠認証/認可の知見を記録しています。
 
 <br>
 
-
 ## 02. SSO：Single Sign On
 
 ### SSOとは
