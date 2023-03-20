@@ -13,9 +13,7 @@ description: DML＠SQLの知見を記録しています。
 
 <br>
 
-<br>
-
-## 01. レコードの読み出し
+## 01. SELECT
 
 ### はじめに
 
@@ -514,9 +512,42 @@ WHERE
 
 <br>
 
-### `EXPLAIN`句
+## 01-02. Tips
 
-#### ▼ 使い方
+### 各DBサイズの確認
+
+```sql
+SELECT
+    table_schema,
+    sum(data_length) / 1024 / 1024 AS mb
+FROM
+    information_schema.tables
+GROUP BY
+    table_schema
+ORDER BY
+    sum(data_length + index_length) DESC;
+```
+
+<br>
+
+### カラムの検索
+
+```sql
+SELECT
+    table_name,
+    column_name
+FROM
+    information_schema.columns
+WHERE
+    column_name = { 検索したいカラム名 }
+    AND table_schema = { 検索対象のDB名 }
+```
+
+<br>
+
+## 02. `EXPLAIN`句
+
+### 実行計画
 
 設定した`SELECT`句が仮に実行された場合、いずれのテーブルのいずれのカラムを取得することになるか (実行計画) を取得する。
 
@@ -525,8 +556,7 @@ WHERE
 > ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
 
 ```sql
-EXPLAIN
-SELECT
+EXPLAIN SELECT
     *
 FROM
     t1,
@@ -561,6 +591,10 @@ possible_keys: index_t2_on_c3
         Extra: Using index
 ```
 
+<br>
+
+### 読み方
+
 #### ▼ `select_type`
 
 SQLの種類が表示される。
@@ -592,7 +626,7 @@ DBインデックスとして設定されたカラムのうちで、実際に利
 
 <br>
 
-## 02. レコードの作成
+## 03. INSERT
 
 ### バルクインサート
 
@@ -604,7 +638,7 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 <br>
 
-## 03. その他
+## 04. EXEC
 
 ### stored procedure
 
@@ -634,37 +668,6 @@ FROM
 ```sql
 -- PROCEDUREを実行
 EXEC SelectContact
-```
-
-<br>
-
-### 各DBサイズの確認
-
-```sql
-SELECT
-    table_schema,
-    sum(data_length) / 1024 / 1024 AS mb
-FROM
-    information_schema.tables
-GROUP BY
-    table_schema
-ORDER BY
-    sum(data_length + index_length) DESC;
-```
-
-<br>
-
-### カラムの検索
-
-```sql
-SELECT
-    table_name,
-    column_name
-FROM
-    information_schema.columns
-WHERE
-    column_name = { 検索したいカラム名 }
-    AND table_schema = { 検索対象のDB名 }
 ```
 
 <br>

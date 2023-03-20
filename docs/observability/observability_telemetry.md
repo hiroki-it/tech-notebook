@@ -77,16 +77,16 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 #### ▼ 組み合わせの例
 
-| アクション                           |             例1              |     例2      |
-| ------------------------------------ | :--------------------------: | :----------: |
-| ログの収集 (いずれもプッシュ型)      |      Fluentd/Fluentbit       |   Promtail   |
-| ↓                                    |              ↓               |      ↓       |
-| ビルトインローカルストレージへの保管 | CloudWatchログ/Cloudロギング | Grafana loki |
-| 分析                                 | CloudWatchログ/Cloudロギング | Grafana loki |
-| ダッシュボードによる可視化           | CloudWatchログ/Cloudロギング |   Grafana    |
-| レポートの作成                       |                              |              |
-| ↓                                    |              ↓               |      ↓       |
-| アラート                             | CloudWatchログ/Cloudロギング |              |
+| アクション                           |                 例1                 |      例2      |
+| ------------------------------------ |:----------------------------------:|:------------:|
+| ログの収集 (いずれもプッシュ型)      | Fluentd/Fluentbit、CloudWatchエージェント |   Promtail   |
+| ↓                                    |                 ↓                  |      ↓       |
+| ビルトインローカルストレージへの保管 |       CloudWatchログ/Cloudロギング       | Grafana loki |
+| 分析                                 |         CloudWatchログインサイト          | Grafana loki |
+| ダッシュボードによる可視化           |       CloudWatchログ/Cloudロギング       |   Grafana    |
+| レポートの作成                       |                                    |              |
+| ↓                                    |                 ↓                  |      ↓       |
+| アラート                             |       CloudWatchログ/Cloudロギング       |  Prometheus  |
 
 <br>
 
