@@ -39,16 +39,16 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 #### ▼ 組み合わせの例
 
-| アクション                                                |    例1     |                         例2                         |
-| --------------------------------------------------------- | :--------: | :-------------------------------------------------: |
-| メトリクスのデータポイントを収集 (プル型またはプッシュ型) | Prometheus | CloudWatchログエージェント/CloudLoggingエージェント |
-| ↓                                                         |     ↓      |                          ↓                          |
-| ビルトインローカルストレージへの保管                      | Prometheus |       CloudWatchメトリクス/Cloudモニタリング        |
-| 分析                                                      | Prometheus |       CloudWatchメトリクス/Cloudモニタリング        |
-| ダッシュボードによる可視化                                |  Grafana   |       CloudWatchメトリクス/Cloudモニタリング        |
-| レポートの作成                                            |            |                                                     |
-| ↓                                                         |     ↓      |                          ↓                          |
-| アラート                                                  | Prometheus |       CloudWatchメトリクス/Cloudモニタリング        |
+| アクション                                                |    例1     |                        例2                         |
+| --------------------------------------------------------- | :--------: |:-------------------------------------------------:|
+| メトリクスのデータポイントを収集 (プル型またはプッシュ型) | Prometheus |        CloudWatchエージェント/CloudLoggingエージェント        |
+| ↓                                                         |     ↓      |                         ↓                         |
+| ビルトインローカルストレージへの保管                      | Prometheus |            CloudWatchメトリクス/Cloudモニタリング            |
+| 分析                                                      | Prometheus |            CloudWatchメトリクス/Cloudモニタリング            |
+| ダッシュボードによる可視化                                |  Grafana   |            CloudWatchメトリクス/Cloudモニタリング            |
+| レポートの作成                                            |            |                                                   |
+| ↓                                                         |     ↓      |                         ↓                         |
+| アラート                                                  | Prometheus |            CloudWatchメトリクス/Cloudモニタリング            |
 
 <br>
 
@@ -77,16 +77,16 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 #### ▼ 組み合わせの例
 
-| アクション                           |                 例1                 |      例2      |
-| ------------------------------------ |:----------------------------------:|:------------:|
-| ログの収集 (いずれもプッシュ型)      | Fluentd/Fluentbit、CloudWatchエージェント |   Promtail   |
-| ↓                                    |                 ↓                  |      ↓       |
-| ビルトインローカルストレージへの保管 |       CloudWatchログ/Cloudロギング       | Grafana loki |
-| 分析                                 |         CloudWatchログインサイト          | Grafana loki |
-| ダッシュボードによる可視化           |       CloudWatchログ/Cloudロギング       |   Grafana    |
-| レポートの作成                       |                                    |              |
-| ↓                                    |                 ↓                  |      ↓       |
-| アラート                             |       CloudWatchログ/Cloudロギング       |  Prometheus  |
+| アクション                           |                     例1                      |      例2      |
+| ------------------------------------ |:-------------------------------------------:|:------------:|
+| ログの収集 (いずれもプッシュ型)      |     Fluentd/Fluentbit、CloudWatchエージェント      |   Promtail   |
+| ↓                                    |                      ↓                      |      ↓       |
+| ビルトインローカルストレージへの保管 |           CloudWatchログ/Cloudロギング            | Grafana loki |
+| 分析                                 | CloudWatchログインサイト、CloudWatchメトリクスによるログメトリクス | Grafana loki |
+| ダッシュボードによる可視化           |           CloudWatchログ/Cloudロギング            |   Grafana    |
+| レポートの作成                       |                                             |              |
+| ↓                                    |                      ↓                      |      ↓       |
+| アラート                             |           CloudWatchログ/Cloudロギング            |  Prometheus  |
 
 <br>
 
