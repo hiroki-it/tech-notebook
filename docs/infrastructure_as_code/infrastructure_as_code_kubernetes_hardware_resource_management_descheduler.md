@@ -17,6 +17,8 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 ### アーキテクチャ
 
+![descheduler_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
+
 deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングする。
 
 類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングすることはない。
@@ -36,6 +38,7 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 > - <https://sreake.com/blog/kubernetes-descheduler/>
 > - <https://torumakabe.github.io/post/k8s_descheduler/>
 > - <https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8>
+> - https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31
 
 <br>
 

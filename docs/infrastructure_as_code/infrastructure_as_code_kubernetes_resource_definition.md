@@ -622,8 +622,6 @@ Podの`.metadata.labels`キーを指定する。
 
 Podに複数の`.metadata.labels`キーが付与されている時は、これらを全て指定する必要がある。
 
-> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -641,6 +639,8 @@ spec:
         app.kubernetes.io/component: app
 ```
 
+> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
+
 <br>
 
 ### .spec.strategy
@@ -652,8 +652,6 @@ spec:
 #### ▼ Recreate
 
 インプレースデプロイメントを使用して、新しいPodを作成する。
-
-> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/
 
 ```yaml
 apiVersion: apps/v1
@@ -673,6 +671,8 @@ spec:
         app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
+
+> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/
 
 #### ▼ RollingUpdate
 
@@ -2124,7 +2124,13 @@ spec:
 
 #### ▼ resources
 
-Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。この時kube-schedulerは、コンテナの`resource`キーの値に基づいて、どのNodeにPodを作成するかを決めている。同じPod内に`resources`キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。
+
+各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。
+
+この時kube-schedulerは、コンテナの`resource`キーの値に基づいて、どのNodeにPodを作成するかを決めている。
+
+同じPod内に`resources`キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
 
 | キー名     | 説明                                             | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2615,7 +2621,7 @@ spec:
 
 プライベートリポジトリからコンテナイメージをプルするため、プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。
 
-別途、ServiceAccountの`imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐づける。
+別途、ServiceAccountの`.imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐づける。
 
 これにより、PodはSecretにあるプライベートリポジトリのクレデンシャル情報を使用できるようになる。
 
@@ -2646,12 +2652,14 @@ spec:
 
 Podのスケジューリングの優先度を設定する。
 
-| 設定値                                              | 優先度 |
-|--------------------------------------------------| ------ |
-| `system-node-critical`、`system-cluster-critical` | 最優先 |
-| `high`                                           | v      |
-| `low-non-preemptible`                            | v      |
-| `low`                                            | 後回し |
+何らかの理由 (例：ハードウェアリソース不足、など) でより優先度の高いPodをスケジューリングできない場合、より優先度の低いPodをNodeから退去させ、優先度の高いPodをスケジューリングする。
+
+| 設定値                                            | 優先度  |
+| ------------------------------------------------- |:----:|
+| `system-node-critical`、`system-cluster-critical` | 最優先  |
+| `high`                                            |      |
+| `low-non-preemptible`                             |      |
+| `low`                                             | 後回し  |
 
 ```yaml
 apiVersion: v1
@@ -2665,7 +2673,20 @@ spec:
   priorityClassName: system-node-critical
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption
+> ↪️ 参考：https://kubernetes.io/ja/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
+
+#### ▼ DaemonSet配下のPod
+
+DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリングされるようになっている。
+
+ただし何らかの理由(例：ハードウェアリソース不足、など) で、特定のNodeでDaemonSet配下のPodをスケジューリングできないことがある。
+
+こういった場合に備えて、DaemonSet配下のPodには必ず、`system-node-critical`のPriorityClassNameを設定しておく。
+
+> ↪️ 参考：
+> 
+> - https://stackoverflow.com/questions/74987515/k8s-daemonset-pod-placement
+> - https://stackoverflow.com/questions/55832300/cluster-autoscaler-not-triggering-scale-up-on-daemonset-deployment
 
 <br>
 
@@ -2877,7 +2898,7 @@ spec:
 
 #### ▼ maxSkew
 
-`topologyKey`キーで指定した分散の単位の間で、Podの個数差を設定する。
+`.spec.topologySpreadConstraints[].topologyKey`キーで指定した分散の単位の間で、Podの個数差を設定する。
 
 **＊実装例＊**
 
@@ -3303,6 +3324,8 @@ metadata:
 value: 1000000
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption
+
 <br>
 
 ## 21. ReplicaController
@@ -3476,8 +3499,6 @@ Secretで保持するstring型変数を設定する。
 
 使用時に`base64`方式で自動的にデコードされるため、あらかじめ`base64`方式でエンコードしておく必要がある。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
-
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -3489,9 +3510,9 @@ data:
   password: *****
 ```
 
-string型の変数しか設定できないため、`base64`方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
-> ↪️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+string型の変数しか設定できないため、`base64`方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
 ```yaml
 apiVersion: v1
@@ -3503,6 +3524,8 @@ data:
   enableFoo: "*****"
   number: "*****"
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
 #### ▼ 機密なファイルの管理
 
@@ -3539,8 +3562,6 @@ Secretで保持するstring型の変数を設定する。
 
 平文で設定しておく必要がある。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
-
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -3551,9 +3572,9 @@ stringData:
   password: baz
 ```
 
-string型の変数しか設定できないため、そのままだとinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
-> ↪️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+string型の変数しか設定できないため、そのままだとinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
 ```yaml
 apiVersion: v1
@@ -3564,6 +3585,8 @@ stringData:
   enableFoo: "true" # ダブルクオーテーションで囲う。
   number: "1"
 ```
+
+> ↪️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
 #### ▼ 機密なファイルの管理
 
@@ -3598,8 +3621,6 @@ Secretの種類を設定する。
 
 Basic認証のための変数を設定する。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
-
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -3611,15 +3632,11 @@ data:
   password: baz
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
+
 #### ▼ kubernetes.io/dockerconfigjson
 
 イメージレジストリの認証情報を設定する。
-
-> ↪️ 参考：
->
-> - https://kubernetes.io/docs/concepts/configuration/secret/#docker-config-secrets
-> - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-> - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
 
 ```yaml
 apiVersion: v1
@@ -3632,13 +3649,17 @@ data:
     UmVhbGx5IHJlYWxs ...
 ```
 
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/configuration/secret/#docker-config-secrets
+> - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+> - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
+
 #### ▼ kubernetes.io/service-account-token
 
 ServiceAccountのための変数を設定する。
 
 ただし、自動的に作成されるため、ユーザーが設定する必要はない。
-
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
 
 ```yaml
 apiVersion: v1
@@ -3652,6 +3673,8 @@ data:
   foo-token: bar
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
+
 #### ▼ kubernetes.io/tls
 
 SSL/TLSを使用するための変数を設定する。
@@ -3659,8 +3682,6 @@ SSL/TLSを使用するための変数を設定する。
 SSL証明書と秘密鍵の文字列が必要である。
 
 ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSでパケットを送受信する例がある。
-
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
 ```yaml
 apiVersion: v1
@@ -3677,13 +3698,13 @@ data:
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```
 
+> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+
 #### ▼ Opaque
 
 任意の変数を設定する。
 
 ほとんどのユースケースに適する。
-
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
 
 ```yaml
 apiVersion: v1
@@ -3695,6 +3716,8 @@ data:
   username: bar
   password: baz
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
 
 <br>
 
@@ -3926,8 +3949,6 @@ Serviceのタイプを設定する。
 
 ClusterIP Serviceを設定する。`.spec.clusterIP`キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
 
-> ↪️ 参考：https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
-
 ```yaml
 apiVersion: v1
 kind: Service
@@ -3944,6 +3965,8 @@ spec:
     app.kubernetes.io/app: foo-pod
   # clusterIP: *.*.*.*
 ```
+
+> ↪️ 参考：https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
 
 #### ▼ NodePortの場合
 
