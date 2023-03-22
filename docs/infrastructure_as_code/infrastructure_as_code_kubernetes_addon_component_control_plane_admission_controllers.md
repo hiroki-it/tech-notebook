@@ -17,9 +17,9 @@ description: admission-controllers＠コントロールプレーンのアドオ�
 
 ### admission-controllersアドオンとは
 
-![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png)
-
 有効化すると、kube-apiserverにて、認証ステップと認可ステップの後にadmissionプラグインを実行できる。
+
+![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png)
 
 > ↪️ 参考：
 >
@@ -104,9 +104,13 @@ SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`cre
 
 #### ▼ MutatingAdmissionWebhookプラグイン
 
-![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png)
+MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。
 
-MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
+独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
+
+webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
+
+![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png)
 
 > ↪️ 参考：
 >
@@ -115,11 +119,11 @@ MutatingAdmissionWebhookプラグインを使用すると、mutating-admission�
 
 #### ▼ MutatingWebhookConfiguration
 
-![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
-
 MutatingWebhookConfigurationで、MutatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 
 webhookサーバーは、Cluster内部に設置することが多い。
+
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
 
 **＊例＊**
 

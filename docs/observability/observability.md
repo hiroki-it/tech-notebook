@@ -144,12 +144,12 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 またメトリクスは、特定の方式 (平均、最大最小、合計、再カウント数) で再集計できる。
 
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
+
 > ↪️ 参考：
 >
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
-
-![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
 <br>
 

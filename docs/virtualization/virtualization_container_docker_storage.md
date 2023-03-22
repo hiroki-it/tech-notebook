@@ -19,12 +19,12 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 コンテナのファイルデータをホストのストレージに一時化/非永続化/永続化するための方法である。
 
+![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png)
+
 > ↪️ 参考：
 >
 > - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 > - https://maku77.github.io/docker/mount/
-
-![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png)
 
 <br>
 
@@ -32,13 +32,13 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ### バインドマウントとは
 
-![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
-
 ホスト側のストレージ上のディレクトリを、コンテナ側にマウントすることにより、データを永続化する。
 
 ホストで作成されるデータが継続的に変化する場合に適しており、例えば開発環境でアプリケーションをホストコンテナ間と共有する方法として推奨である。
 
 しかし、ホスト側のデータを永続化する方法としては不適である。
+
+![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
 
 > ↪️ 参考：
 >

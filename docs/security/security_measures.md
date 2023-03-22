@@ -453,7 +453,7 @@ Access-Control-Allow-Headers: *
 
 ### Domain属性
 
-#### ▼ Domain属性とh
+#### ▼ Domain属性とは
 
 リクエストが`Cookie`ヘッダーを持つことを許可した場合、サブドメインのオリジンにも`Cookie`ヘッダーの送信を許可するか否かを制御できる。
 

@@ -43,8 +43,6 @@ description: GitHub＠Gitの知見を記録しています。
 
 Issueのテンプレートに関して、代わりに`ISSUE_TEMPLATE`ディレクトリを配置し、任意の名前のmdファイルを配置すると、複数のテンプレートを作成できる。
 
-> ↪️ 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
-
 ```yaml
 repository/
 ├── .github/
@@ -63,6 +61,8 @@ repository/
 │   └── PULL_REQUEST_TEMPLATE.md
 │
 ```
+
+> ↪️ 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
 #### ▼ タイトル
 
@@ -207,12 +207,12 @@ DBからフロント出力までに至る実装をコミットする場合、以
 
 Gitでソフトウェアを開発する場合、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flowを簡略化したものに、GitHub-flowやGitlab-flowがある。
 
+![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png)
+
 > ↪️ 参考：
 >
 > - https://github.com/Voronenko/gitflow-release
 > - https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
-
-![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png)
 
 <br>
 
