@@ -102,6 +102,8 @@ Pod内のコンテナから宛先のPodにアウトバウンド通信を送信�
 
 ### PodのIPアドレスを指定する場合
 
+#### ▼ 仕組み
+
 Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直接的に指定する。
 
 ただし、PodのIPアドレスは動的に変化するため、現実的な方法ではない。
@@ -138,6 +140,8 @@ traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
 
 ### ServiceのIPアドレスを指定する場合
 
+#### ▼ 仕組み
+
 kubeletは、Pod内のコンテナにServiceの宛先情報 (プロトコル、IPアドレス、ポート番号) を出力する。
 
 Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
@@ -168,6 +172,8 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 ### Serviceの完全修飾ドメイン名を指定する場合
 
+#### ▼ 仕組み
+
 Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCorp Consul、など) は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。
 
 Podのスケジューリング時に、kubeletはPod内のコンテナの`/etc/resolv.conf`ファイルに権威DNSサーバーのIPアドレスを設定する。
@@ -176,12 +182,6 @@ Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルで権威DNS�
 
 レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにアウトバウンド通信を送信する。
 
-> ↪️ 参考：
->
-> - https://amateur-engineer-blog.com/kubernetes-dns/
-> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
-
 ```bash
 # Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
@@ -189,9 +189,40 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 # コンテナのresolv.confファイルの中身を確認する
 [root@<Pod名>] $ cat /etc/resolv.conf
 
-nameserver 10.96.0.10 # 権威DNSサーバーのIPアドレス
+# 権威DNSサーバーのIPアドレス
+nameserver 10.96.0.10
 search default.svc.cluster.local svc.cluster.local cluster.local
+# 名前解決時のローカルドメインの優先度
 options ndots:5
 ```
+
+> ↪️ 参考：
+>
+> - https://amateur-engineer-blog.com/kubernetes-dns/
+> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
+
+#### ▼ ndots
+
+宛先コンテナの名前解決時のドメインの厳格度を設定する。
+
+厳格度が高ければ高いほど、網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。
+
+例えば、`ndots:5`としたPodが`example.com`を名前解決する場合、最初は`example.com.default.svc.cluster.local.`から名前解決を始め、`example.com.`で終わる。
+
+（１）`example.com.default.svc.cluster.local.`
+
+（２）`example.com.svc.cluster.local.`
+
+（３）`example.com.cluster.local.`
+
+（４）`example.com.ec2.internal.`
+
+（５）`example.com.`
+
+> ↪️ 参考：
+>
+> - https://techblog.stanby.co.jp/entry/EKS_Coredns
+> - https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3
 
 <br>

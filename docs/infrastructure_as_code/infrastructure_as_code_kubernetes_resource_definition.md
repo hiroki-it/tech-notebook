@@ -2654,12 +2654,12 @@ Podのスケジューリングの優先度を設定する。
 
 何らかの理由 (例：ハードウェアリソース不足、など) でより優先度の高いPodをスケジューリングできない場合、より優先度の低いPodをNodeから退去させ、優先度の高いPodをスケジューリングする。
 
-| 設定値                                            | 優先度  |
-| ------------------------------------------------- |:----:|
-| `system-node-critical`、`system-cluster-critical` | 最優先  |
-| `high`                                            |      |
-| `low-non-preemptible`                             |      |
-| `low`                                             | 後回し  |
+| 設定値                                            | 優先度 |
+| ------------------------------------------------- | :----: |
+| `system-node-critical`、`system-cluster-critical` | 最優先 |
+| `high`                                            |        |
+| `low-non-preemptible`                             |        |
+| `low`                                             | 後回し |
 
 ```yaml
 apiVersion: v1
@@ -2684,7 +2684,7 @@ DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリ�
 こういった場合に備えて、DaemonSet配下のPodには必ず、`system-node-critical`のPriorityClassNameを設定しておく。
 
 > ↪️ 参考：
-> 
+>
 > - https://stackoverflow.com/questions/74987515/k8s-daemonset-pod-placement
 > - https://stackoverflow.com/questions/55832300/cluster-autoscaler-not-triggering-scale-up-on-daemonset-deployment
 

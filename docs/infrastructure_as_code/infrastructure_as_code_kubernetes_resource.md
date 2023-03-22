@@ -577,7 +577,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 nameserver *.*.*.* # ClusterネットワークのIPアドレス
 search default.svc.cluster.local svc.cluster.local cluster.local
-options ndots:5
+options ndots:5 # 名前解決時のローカルドメインの優先度
 ```
 
 Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。

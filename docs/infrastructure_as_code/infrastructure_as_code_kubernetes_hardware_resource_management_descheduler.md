@@ -17,8 +17,6 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 ### アーキテクチャ
 
-![descheduler_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
-
 deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングする。
 
 類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングすることはない。
@@ -32,6 +30,8 @@ deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避さ�
 deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
 
 このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。
+
+![descheduler_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
 
 > ↪️ 参考：
 >

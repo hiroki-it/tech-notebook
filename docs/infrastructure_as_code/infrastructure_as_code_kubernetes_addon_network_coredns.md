@@ -138,8 +138,10 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 # コンテナのresolv.confファイルの中身を確認する
 [root@<Pod名>] $ cat /etc/resolv.conf
 
-nameserver 10.96.0.10 # 権威DNSサーバーのIPアドレス
+# 権威DNSサーバーのIPアドレス
+nameserver 10.96.0.10
 search default.svc.cluster.local svc.cluster.local cluster.local
+# 名前解決時のローカルドメインの優先度
 options ndots:5
 ```
 
