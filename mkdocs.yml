@@ -8,7 +8,7 @@ site_author: Hiroki Hasegawa
 site_url: https://hiroki-it.github.io/tech-notebook/
 
 # 説明
-site_description: 俺（長谷川広樹）が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。
+site_description: 俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。
 
 # リポジトリ
 repo_name: GitHubアカウントはこちら
@@ -213,7 +213,7 @@ nav:
           - プロセス管理: software/software_basic_linux_kernel_process_management.md
           - メモリ管理: software/software_basic_linux_kernel_memory_management.md
           - ストレージ管理: software/software_basic_linux_kernel_storage_management.md
-          - I/O（入出力）管理: software/software_basic_linux_kernel_io_management.md
+          - I/O (入出力) 管理: software/software_basic_linux_kernel_io_management.md
           - ジョブ管理: software/software_basic_linux_kernel_job_management.md
       - ■ ユーティリティ:
           - ユーティリティ: software/software_basic_utility.md
