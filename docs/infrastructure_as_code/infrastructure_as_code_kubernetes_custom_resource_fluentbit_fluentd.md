@@ -84,11 +84,11 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ### フォワーダーアグリゲーターパターン
 
+#### ▼ フォワーダーアグリゲーターパターンとは
+
 フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。
 
 フォワーダーのFluentBit/Fluentdの送信元で稼働させ、アグリゲーターを介して、宛先にログを送信する。
-
-フォワーダーは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で`1`個ずつ稼働させる場合、がある。
 
 ![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
@@ -97,16 +97,27 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
 
+#### ▼ フォワーダーアグリゲーターパターンの例
+
+- FluentBit/Fluentdプロセスをサーバーで直接的に常駐させる
+- KubernetesのDaemonSetように、FluentBit/Fluentdコンテナを各Node上で`1`個ずつ稼働させる
+
 <br>
 
 ### エージェントパターン
 
-エージェントパターンは、FluentBit/Fluentdのエージェントをログの送信元に常駐させ、宛先にログを直接的に送信する。
+#### ▼ エージェントパターンとは
 
-エージェントは、サーバーで直接的に常駐させる場合や、KubernetesのDaemonSetようにコンテナを各Node上で`1`個ずつ稼働させる場合、KubernetesのPodようにサイドカーコンテナとして配置する場合、がある。
+エージェントパターンは、FluentBit/Fluentdのエージェントをログの送信元に常駐させ、宛先にログを直接的に送信する。
 
 ![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
 
 > ↪️ 参考：https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
+
+#### ▼ エージェントパターンの例
+
+- サーバーで直接的に常駐させる
+- KubernetesのDaemonSetようにコンテナを各Node上で`1`個ずつ稼働させる
+- KubernetesのPodようにサイドカーコンテナとして配置する
 
 <br>

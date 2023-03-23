@@ -373,11 +373,17 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 分散トレースを収集すると、マイクロサービス間の通信速度を可視化できる。
 
-特定のマイクロサービス間で通信速度が低ければ、その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、パフォーマンスに問題がないかを調査する必要がある。
+例えば、特定のマイクロサービス間で通信速度が低ければ、その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、パフォーマンスに問題がないかを調査する必要がある。
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 
 > ↪️ 参考：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
+
+#### ▼ 悪意のあるリクエストの検出
+
+分散トレースを収集すると、悪意のあるリクエストを検出できる。
+
+例えば、特定のマイクロサービスへのリクエストが異常に多ければ、そのマイクロサービスに悪意のあるリクエストが送信されている可能性がある。
 
 <br>
 

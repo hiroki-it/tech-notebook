@@ -222,7 +222,9 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 『APM (アプリケーションパフォーマンス監視) 』ともいう。
 
-特にパフォーマンスに関わるメトリクスのデータポイントを収集し、監視する。
+特にパフォーマンスに関わるメトリクス (例：CPU使用率、レスポンス時間、分散トレースにおけるマイクロサービス間の通信速度、エラー率、リクエスト数、連続稼働時間) のデータポイントを収集し、監視する。
+
+> ↪️ 参考：https://aws.amazon.com/what-is/application-performance-monitoring/#:~:text=Application%20performance%20monitoring%20(APM)%20is,receive%20a%20positive%20application%20experience.
 
 #### ▼ カスタムメトリクス
 

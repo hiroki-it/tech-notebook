@@ -35,9 +35,9 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。
 
-> ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
-
 ![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf.png)
+
+> ↪️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
 <br>
 

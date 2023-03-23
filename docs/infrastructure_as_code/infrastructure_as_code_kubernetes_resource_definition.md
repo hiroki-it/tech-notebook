@@ -641,6 +641,16 @@ spec:
 
 > ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
+#### ▼ `field is immutable`
+
+Deploymentの`.spec.selector.matchLabels`キーの値は変更できないため、もしこの値を変更する場合は、Deploymentを再作成する必要がある。
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#label-selector-updates
+> - https://github.com/kubernetes/client-go/issues/508#issuecomment-589296590
+> - https://shunyaueta.com/posts/2021-12-02/
+
 <br>
 
 ### .spec.strategy
@@ -3921,9 +3931,9 @@ spec:
 
 ### .spec.selector
 
-インバウンド通信の転送先とするPodの`.metadata.labels`キー名と値を設定する。
+#### ▼ selectorとは
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+インバウンド通信の転送先とするPodの`.metadata.labels`キー名と値を設定する。
 
 **＊実装例＊**
 
@@ -3936,6 +3946,8 @@ spec:
   selector:
     app.kubernetes.io/app: foo-pod
 ```
+
+> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 
 <br>
 

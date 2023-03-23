@@ -399,6 +399,20 @@ spec:
 
 全ての`istio-proxy`コンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
+代わりにConfigMapで定義する場合、`.data.mesh`キー配下で設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    accessLogEncoding: JSON
+    ...
+```
+
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 #### ▼ accessLogEncoding

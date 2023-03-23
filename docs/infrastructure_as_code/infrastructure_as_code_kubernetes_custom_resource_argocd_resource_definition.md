@@ -379,7 +379,9 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
-  ignoreDifferences: ...
+  ignoreDifferences:
+
+  ...
 
   syncPolicy:
     syncOptions:

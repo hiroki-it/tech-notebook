@@ -210,15 +210,15 @@ options ndots:5
 
 例えば、`ndots:5`としたPodが`example.com`を名前解決する場合、最初は`example.com.default.svc.cluster.local.`から名前解決を始め、`example.com.`で終わる。
 
-（１）`example.com.default.svc.cluster.local.`
+`【１】` `example.com.default.svc.cluster.local.`
 
-（２）`example.com.svc.cluster.local.`
+`【２】` `example.com.svc.cluster.local.`
 
-（３）`example.com.cluster.local.`
+`【３】` `example.com.cluster.local.`
 
-（４）`example.com.ec2.internal.`
+`【４】` `example.com.ec2.internal.`
 
-（５）`example.com.`
+`【５】` `example.com.`
 
 > ↪️ 参考：
 >

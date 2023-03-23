@@ -732,6 +732,15 @@ $ kubectl get pod -A
 $ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
 ```
 
+全てのPodのイメージをアルファベット順で取得する。
+
+```bash
+$ kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | \
+    tr -s '[[:space:]]' '\n' | \
+    sort | \
+    uniq -c
+```
+
 #### ▼ -o yaml
 
 指定したKubernetesリソースの設定を取得し、`yaml`形式で出力する。

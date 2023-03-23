@@ -615,8 +615,9 @@ kube-controllerが設定してくれるため、開発者が設定する必要�
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
-spec: ...
+spec:
 
+---
 status:
   observedGeneration: 3
   conditions: ...

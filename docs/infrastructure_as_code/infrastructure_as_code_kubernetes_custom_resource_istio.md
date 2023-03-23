@@ -267,6 +267,12 @@ Pod間通信時に、AuthorizationPolicyを使用して、スコープに含ま�
 > - https://www.styra.com/blog/authorize-better-istio-traffic-policies-with-opa-styra-das/
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
+#### ▼ 認可の委譲
+
+AuthorizationPolicyでIDプロバイダー (例：Auth0、KeyCloak、AWS Cognito、Google Auth) を指定し、認可フェーズを委譲できる。
+
+> ↪️ 参考：https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3
+
 <br>
 
 ## 05. 通信データの暗号化

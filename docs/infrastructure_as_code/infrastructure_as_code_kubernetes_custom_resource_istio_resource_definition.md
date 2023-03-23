@@ -133,6 +133,62 @@ spec:
 
 <br>
 
+### .spec.provider
+
+#### ▼ providerとは
+
+認可フェーズの委譲先のIDプロバイダーを設定する。
+
+事前に、ConfigMapの`data.mesh.extensionProvider`キーにIDプロバイダーを登録しておく必要がある。
+
+**＊実装例＊**
+
+ここでは、oauth2-proxyをIDプロバイダーとして使用する。
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: oauth2-proxy-authorization-policy
+  namespace: istio-system
+spec:
+  action: CUSTOM
+  provider:
+    name: oauth2-proxy
+  rules:
+    - to:
+        - operation:
+            paths: ["/login"]
+```
+
+oauth2-proxyのPodに紐づくServiceを識別できるようにする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    extensionProviders:
+      - name: oauth2-proxy
+        envoyExtAuthzHttp:
+          service: oauth2-proxy.auth.svc.cluster.local
+          port: 80
+        includeHeadersInCheck:
+          - cookie
+          - authorization
+```
+
+> ↪️ 参考：
+>
+> - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
+> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
+> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
+
+<br>
+
 ### .spec.rules
 
 #### ▼ rulesとは

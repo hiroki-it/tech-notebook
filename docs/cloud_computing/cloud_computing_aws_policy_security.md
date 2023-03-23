@@ -83,11 +83,11 @@ NLBはセキュリティグループに対応していない。
 
 ALBからEC2にインバウンド通信をルーティングする場合、特定のEC2のみへのルーティングを許可するために、アウトバウンドのルールでEC2のセキュリティグループIDを設定する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
-
 | タイプ | プロトコル | ポート | 宛先                              | 説明        |
 | ------ | ---------- | ------ | --------------------------------- | ----------- |
 | HTTPS  | TCP        | `443`  | 宛先のEC2のセキュリティグループID | Full access |
+
+> ↪️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
 
 <br>
 

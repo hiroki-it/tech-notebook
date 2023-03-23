@@ -99,6 +99,8 @@ func main() {
 
 ### 言語別の並行処理
 
+記入中...
+
 <br>
 
 ## 03. 並列処理 (Parallel processing)
