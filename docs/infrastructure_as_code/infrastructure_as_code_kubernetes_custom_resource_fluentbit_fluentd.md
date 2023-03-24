@@ -99,8 +99,8 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 #### ▼ フォワーダーアグリゲーターパターンの例
 
-- FluentBit/Fluentdプロセスをサーバーで直接的に常駐させる
-- KubernetesのDaemonSetように、FluentBit/Fluentdコンテナを各Node上で`1`個ずつ稼働させる
+- FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。
+- KubernetesのDaemonSet配下のPodとして常駐させる。
 
 <br>
 
@@ -116,8 +116,26 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 #### ▼ エージェントパターンの例
 
-- サーバーで直接的に常駐させる
-- KubernetesのDaemonSetようにコンテナを各Node上で`1`個ずつ稼働させる
-- KubernetesのPodようにサイドカーコンテナとして配置する
+- サーバーで直接的に常駐させる。
+- KubernetesのDaemonSet配下のPodとして常駐させる。
+- KubernetesのPod内のサイドカーとして配置する。
+
+> ↪️ 参考：https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
+
+#### ▼ DaemonSetとPod内サイドカーの比較
+
+|                                  | Pod内サイドカー | DaemonSet |
+| -------------------------------- | :-------------: | :-------: |
+| Nodeのハードウェアリソース消費量 |        ×        |    ⭕️    |
+| Nodeのストレージ使用量           |       ⭕️       |     △     |
+| FluentBit/Fluentdの冗長性        |      ⭕️️       |     △     |
+| アプリごとの設定カスタマイズ     |       ⭕️       |     △     |
+| 単純性                           |        ×        |    ⭕️    |
+
+> ↪️ 参考：
+>
+> - https://codersociety.com/blog/articles/kubernetes-logging
+> - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411
+> - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
 
 <br>

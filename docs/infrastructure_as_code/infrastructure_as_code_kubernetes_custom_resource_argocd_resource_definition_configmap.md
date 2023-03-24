@@ -222,11 +222,18 @@ data:
 
 ### argocd-cmd-params-cmとは
 
-ArgoCDの各コンポーネント (application-controller、dex-server、redis-server、repo-server) で個別に使用する値を設定する。
+ArgoCDの各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。
+
+> ↪️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
 
 <br>
 
-### 設定
+### 複数コンポーネント
+
+複数コンポーネントの起動コマンドのオプションを設定する。
 
 ```yaml
 apiVersion: v1
@@ -235,6 +242,29 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
+  # application-controllerとargocd-server
+  application.namespaces: "*" # 全てのNamespaceでApplicationを作成できるようにする
+```
+
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#change-workload-startup-parameters
+> - https://github.com/argoproj/argo-cd/issues/11638#issuecomment-1357963028
+
+<br>
+
+### application-controller
+
+application-controllerの起動コマンドのオプションを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  application.namespaces: "*" # 全てのNamespaceでApplicationを作成できるようにする
   controller.log.format: text
   controller.log.level: warn
   controller.operation.processors: "10"
@@ -242,11 +272,56 @@ data:
   controller.self.heal.timeout.seconds: "5"
   controller.status.processors: "20"
   otlp.address: ""
+```
+
+<br>
+
+### argocd-redis
+
+argocd-redisの起動コマンドのオプションを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
   redis.server: argocd-redis:6379
+```
+
+<br>
+
+### argocd-repo-server
+
+argocd-repo-serverの起動コマンドのオプションを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
   repo.server: argocd-repo-server:8081
   reposerver.log.format: text
   reposerver.log.level: warn
   reposerver.parallelism.limit: "0"
+```
+
+<br>
+
+### argocd-server
+
+argocd-serverの起動コマンドのオプションを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
   server.basehref: /
   server.dex.server: https://argocd-dex-server:5556
   server.dex.server.strict.tls: "false"
@@ -260,11 +335,6 @@ data:
   server.staticassets: /shared/app
   server.x.frame.options: sameorigin
 ```
-
-> ↪️ 参考：
->
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
 
 <br>
 

@@ -31,6 +31,14 @@ mysqlコマンド、dbサーバー機能、をインストールしたい場合�
 $ dnf install -y mysql-server
 ```
 
+#### ▼ yumリポジトリから
+
+```bash
+$ yum install -y mysql mysql-server
+```
+
+> ↪️ 参考：https://qiita.com/gologo13/items/1bdba6085ec79153bf1a
+
 <br>
 
 ### 動作確認
@@ -122,6 +130,66 @@ MySQLの起動時の値を設定する。
 !includedir /etc/mysql/mysql.conf.d/
 ```
 
+<br>
+
+## 03. mysqldセクション
+
+### mysqldセクション
+
+mysqlサーバーの`mysqld`プロセスのプールを設定する。
+
+<br>
+
+### character-set-server
+
+#### ▼ とは
+
+DBの作成時に適用する文字コードを設定する。
+
+```ini
+[mysql]
+character-set-server = utf8mb4
+```
+
+<br>
+
+### collation_server
+
+#### ▼ とは
+
+照合順序を設定する。
+
+```ini
+[mysqld]
+collation_server = utf8mb4_general_ci
+```
+
+<br>
+
+### default-time-zone
+
+#### ▼ default-time-zoneとは
+
+デフォルトのタイムゾーンを設定する。
+
+```ini
+[mysqld]
+default-time-zone = SYSTEM
+```
+
+<br>
+
+### datadir
+
+#### ▼ datadirとは
+
+DBの定義ファイルを配置するディレクトリを設定する。
+
+```ini
+[mysqld]
+datadir = /var/lib/mysql
+```
+
 #### ▼ `datadir`ディレクトリ
 
 DBの定義ファイルを管理する。
@@ -161,59 +229,9 @@ drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 
 <br>
 
-## 03. mysqldセクション
-
-### mysqldセクション
-
-mysqlサーバーの`mysqld`プロセスのプールを設定する。
-
-<br>
-
-### character-set-server
-
-DBの作成時に適用する文字コードを設定する。
-
-```ini
-[mysql]
-character-set-server = utf8mb4
-```
-
-<br>
-
-### collation_server
-
-照合順序を設定する。
-
-```ini
-[mysqld]
-collation_server = utf8mb4_general_ci
-```
-
-<br>
-
-### default-time-zone
-
-デフォルトのタイムゾーンを設定する。
-
-```ini
-[mysqld]
-default-time-zone = SYSTEM
-```
-
-<br>
-
-### datadir
-
-DBの定義ファイルを配置するディレクトリを設定する。
-
-```ini
-[mysqld]
-datadir = /var/lib/mysql
-```
-
-<br>
-
 ### log-error
+
+#### ▼ log-errorとは
 
 エラーログの出力先を設定する。
 
@@ -226,6 +244,8 @@ log-error = mysql-error.log
 
 ### log_timestamps
 
+#### ▼ log_timestampsとは
+
 ログのタイムゾーンを設定する。
 
 ```ini
@@ -236,6 +256,8 @@ log_timestamps = SYSTEM
 <br>
 
 ### general_log
+
+#### ▼ general_logとは
 
 一般ログを出力するか否かを設定する。
 
@@ -248,6 +270,8 @@ general_log = 1
 
 ### general_log_file
 
+#### ▼ general_log_fileとは
+
 一般ログの出力先のファイルを設定する。
 
 ```ini
@@ -258,6 +282,8 @@ general_log_file = mysql-general.log
 <br>
 
 ### log_queries_not_using_indexes
+
+#### ▼ log_queries_not_using_indexesとは
 
 DBインデックスを使用するか否かを設定する。
 
@@ -270,7 +296,9 @@ log_queries_not_using_indexes = 0
 
 ### long_query_time
 
-スロークエリログと見なす実行秒数を設定する。
+#### ▼ long_query_timeとは
+
+スロークエリを検出する時の閾値秒数を設定する。
 
 ```ini
 [mysqld]
@@ -280,6 +308,8 @@ long_query_time = 3
 <br>
 
 ### pid-file
+
+#### ▼ pid-fileとは
 
 プロセスIDが記載されたファイルの作成先を設定する。
 
@@ -292,6 +322,8 @@ pid-file = /var/run/mysqld/mysqld.pid
 
 ### secure-file-priv
 
+#### ▼ secure-file-privとは
+
 ```ini
 [mysqld]
 secure-file-priv = /var/lib/mysql-files
@@ -300,6 +332,8 @@ secure-file-priv = /var/lib/mysql-files
 <br>
 
 ### slow_query_log
+
+#### ▼ slow_query_logとは
 
 スロークエリログを出力するか否かを設定する。
 
@@ -312,6 +346,8 @@ slow_query_log = 1
 
 ### slow_query_log_file
 
+#### ▼ slow_query_log_fileとは
+
 スロークエリログの出力先のファイルを設定する。
 
 ```ini
@@ -323,6 +359,8 @@ slow_query_log_file = mysql-slow.log
 
 ### socket
 
+#### ▼ socketとは
+
 ```ini
 [mysqld]
 socket = /var/lib/mysql/mysql.sock
@@ -331,6 +369,8 @@ socket = /var/lib/mysql/mysql.sock
 <br>
 
 ### user
+
+#### ▼ userとは
 
 プロセスの実行ユーザー名を設定する。
 

@@ -645,6 +645,31 @@ spec:
 
 Deploymentの`.spec.selector.matchLabels`キーの値は変更できないため、もしこの値を変更する場合は、Deploymentを再作成する必要がある。
 
+例えば、以下のマニフェストの`.spec.selector.matchLabels`キーの値を変更しようとする。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod # 変更しようとする
+      app.kubernetes.io/component: app # 変更しようとする
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/component: app
+```
+
+すると、以下のようなエラーになる。
+
+```bash
+v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/app":"foo-pod", "app.kubernetes.io/component":"app"}, MatchExpressions:[]v1.LabelSelectorRequirement(nil)}: field is immutable
+```
+
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#label-selector-updates

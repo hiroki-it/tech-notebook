@@ -67,7 +67,7 @@ spec:
       env:
         - name: AWS_REGION
           value: ap-northeast-1
-      image: "k8s.gcr.io/autoscaling/cluster-autoscaler:v1.23.0"
+      image: "registry.k8s.io/autoscaling/cluster-autoscaler:v1.23.0"
       name: aws-cluster-autoscaler
       ports:
         - containerPort: 8085
@@ -108,7 +108,7 @@ spec:
 
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングのスケールインを実行する。
 
-クラウドプロバイダーのコンソール画面からNode数を増やして、正しくスケーリングされるかと`ScaleDown`のログから、cluster-autoscalerを動作確認できる。
+クラウドプロバイダーのコンソール画面からNode数を増やして、`ScaleDown`のログ上で正しくスケールインされたことから、cluster-autoscalerの動作を確認できる。
 
 `【１】`
 

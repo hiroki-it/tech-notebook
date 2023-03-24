@@ -632,6 +632,28 @@ data:
   password: {{.Values.password | b64enc}}
 ```
 
+#### ▼ 変化しない一意な名前
+
+セキュリティではなく、変化しない一意な名前のKubernetesリソース (特にConfigMap、Secret) を作成できるように、接尾辞にbase64方式のエンコード値を使用する。
+
+```yaml
+# values.yamlファイル
+repositoryUrls:
+  - https://github.com/argoproj/argo-cd
+```
+
+```yaml
+{{- range .Values.repositoryUrls | b64enc }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  # 名前が一意になるようにする。
+  name: foo-config-map-{{ . | b64enc }}
+data:
+  url: {{ . }}
+{{- end }}
+```
+
 <br>
 
 ### default

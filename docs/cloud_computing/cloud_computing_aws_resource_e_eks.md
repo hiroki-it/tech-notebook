@@ -86,7 +86,7 @@ module "eks" {
   # kube-apiserverにパブリックアクセスできるか否か
   cluster_endpoint_public_access       = false
 
-  # EKSのkube-apiserverにアクセスできるCIDR
+  # EKS Clusterのkube-apiserverにアクセスできるCIDR
   cluster_endpoint_public_access_cidrs = ["*.*.*.*/32", "*.*.*.*/32", "*.*.*.*/32"]
 
   # CloudWatchログに送信するログの種類
@@ -130,7 +130,7 @@ $ aws configure
 
 `【２】`
 
-: EKSのコンテキストを作成する。
+: EKS Clusterの名前を指定して、Clusterを登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -138,7 +138,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 
 `【３】`
 
-: `kubectl`コマンドの向き先を、EKSのkube-apiserverに変更する。
+: `kubectl`コマンドの向き先を、EKS Clusterのkube-apiserverに変更する。
 
 ```bash
 $ kubectl config use-context <ClusterのARN>
@@ -344,33 +344,33 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 
 `【１】`
 
-: EKSのコンテキストを作成する。
-
-> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+: EKS Clusterの名前を指定して、Clusterを登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
+> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+
 `【２】`
 
-: `kubectl`コマンドの向き先を、EKSのkube-apiserverに変更する。
-
-> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+: `kubectl`コマンドの向き先を、EKS Clusterのkube-apiserverに変更する。
 
 ```bash
 $ kubectl config use-context <ClusterのARN>
 ```
 
+> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+
 `【３】`
 
 : マニフェストを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
 
-> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
-
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
 ```
+
+> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 
 `【４】`
 

@@ -119,11 +119,34 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 `.spec.ttlSecondsAfterFinished`キーを使用すると、Podのみを自動削除できるようになる。
 
+定期的に実行する場合、CronJobのテンプレートとして定義する。
+
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/workloads/controllers/job/
 > - https://qiita.com/MahoTakara/items/82853097a1911671a704
 > - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
+
+#### ▼ CronJobの検証
+
+CronJob配下のJobは、決まった時間にならないと実行されない。
+
+任意の時間に実行するためには、CronJobを指定し、これの配下で一時的にJobを作成する。
+
+```bash
+$ kubectl create job test-job --from=cronjob/foo-cron-job -n foo
+```
+
+ただし、検証後はCronJobにJobを作らせたいので、そのJobは削除する。
+
+```bash
+$ kubectl delete job test-job -n foo
+```
+
+> ↪️ 参考：
+>
+> - https://zenn.dev/kennygt51/articles/2497931b8264de
+> - https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05
 
 <br>
 

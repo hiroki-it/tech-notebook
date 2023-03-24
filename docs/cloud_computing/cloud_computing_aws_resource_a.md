@@ -221,7 +221,7 @@ frontend:
     preBuild:
       commands:
         - npm install
-        # base64方式エンコード値をデコード
+        # base64方式のエンコード値をデコード
         - echo "$ENV" | base64 -d > .env
         - cat .env
     build:

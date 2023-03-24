@@ -51,24 +51,6 @@ ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド
 > - <https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html>
 > - <https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58>
 
-#### ▼ 拡張APIサーバーへのリクエスト
-
-`kubectl top`コマンドを受信する。
-
-```bash
-# Nodeのメトリクスを取得
-$ kubectl top node
-
-# Podのメトリクスを取得
-$ kubectl top pod -n <任意のNamespace>
-```
-
-また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、拡張APIサーバーからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
-
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
-
-> ↪️ 参考：<https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
-
 <br>
 
 ### ローカルストレージ
@@ -85,7 +67,62 @@ $ kubectl top pod -n <任意のNamespace>
 
 <br>
 
-## 02. Podの自動水平スケーリング/自動垂直スケーリング
+## 02. `kubectl top`コマンド
+
+### node
+
+#### ▼ nodeとは
+
+Nodeのハードウェアリソースの消費量を取得する。
+
+```bash
+# Nodeのメトリクスを取得
+$ kubectl top node
+
+NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+foo-node   174m         2%     8604Mi          30%
+bar-node   2917m        82%    16455Mi         57%
+baz-node   352m         4%     9430Mi          33%
+```
+
+また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、拡張APIサーバーからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
+
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
+
+> ↪️ 参考：<https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
+
+<br>
+
+### pod
+
+#### ▼ podとは
+
+Podのハードウェアリソースの消費量を取得する。
+
+```bash
+$ kubectl top pod -n foo-namespace
+
+NAME      CPU(cores)   MEMORY(bytes)
+foo-pod   5m           104Mi
+```
+
+#### ▼ --containers
+
+Podのコンテナに関して、ハードウェアリソースの消費量を取得する。
+
+コンテナのKubernetesリソース使用量を足した値が、Pod内で使用するリソース消費量になる。
+
+```bash
+$ kubectl top pod --container -n foo-namespace
+
+POD       NAME            CPU(cores)   MEMORY(bytes)
+foo-pod   foo-container   1m           19Mi
+foo-pod   istio-proxy     5m           85Mi
+```
+
+<br>
+
+## 03. Podの自動水平スケーリング/自動垂直スケーリング
 
 ### HorizontalPodAutoscaler
 

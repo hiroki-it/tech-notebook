@@ -131,7 +131,7 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 
 #### ▼ configとは
 
-`kubectl`コマンドに関するパラメーターを操作する。
+`~/.kube/config`ファイルのパラメーターを操作する。
 
 > ↪️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
@@ -176,7 +176,7 @@ $ kubectl config use-context minikube
 $ kubectl config use-context docker-desktop
 ```
 
-宛先をAWS EKSのkube-apiserverに変更する。
+宛先をAWS EKS Clusterのkube-apiserverに変更する。
 
 ```bash
 $ kubectl config use-context <ClusterのARN>
@@ -184,7 +184,7 @@ $ kubectl config use-context <ClusterのARN>
 
 #### ▼ view
 
-パラメーターのデフォルト値が設定された`~/.kude/config`ファイルを取得する。
+パラメーターのデフォルト値が設定された`~/.kube/config`ファイルを取得する。
 
 **＊例＊**
 
@@ -764,7 +764,7 @@ metadata:
   uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
 type: Opaque
 data:
-  FOO: ***** # base64方式エンコード値
+  FOO: ***** # base64方式のエンコード値
   BAR: *****
   BAZ: *****
 ```
@@ -1442,42 +1442,6 @@ $ kubectl taint node foo-node app=batch:NoSchedule-
 ```
 
 > ↪️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
-
-<br>
-
-### top
-
-#### ▼ topとは
-
-NodeやPodに関して、ハードウェアリソースの消費量を取得する。
-
-```bash
-$ kubectl top node
-
-NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
-minikube   523m         13%    4393Mi          27%
-```
-
-```bash
-$ kubectl top pod -n foo-namespace
-
-NAME      CPU(cores)   MEMORY(bytes)
-foo-pod   5m           104Mi
-```
-
-#### ▼ --containers
-
-Podのコンテナに関して、ハードウェアリソースの消費量を取得する。
-
-コンテナのKubernetesリソース使用量を足した値が、Pod内で使用するリソース消費量になる。
-
-```bash
-$ kubectl top pod --container -n foo-namespace
-
-POD       NAME            CPU(cores)   MEMORY(bytes)
-foo-pod   foo-container   1m           19Mi
-foo-pod   istio-proxy     5m           85Mi
-```
 
 <br>
 

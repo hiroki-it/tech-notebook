@@ -60,19 +60,56 @@ spec:
         - --source=ingress
         - --domain-filter=example.com
         - --provider=aws
-        - --policy=upsert-only
+        # Ingressからルールを削除した場合に、対応するAWSリソースも削除する
+        - --policy=sync
         - --aws-zone-type=public
         - --registry=txt
         - --txt-owner-id=external-dns
+        # 条件に合致するアノテーションを持つ場合、ExternalDNSの処理から除外する。
+        # https://github.com/kubernetes-sigs/external-dns/issues/1910#issuecomment-803640491
+        # --annotation-filter=<任意の.metadata.annotationsキー名> in <値>
+        # --annotation-filter=<任意の.metadata.annotationsキー名> notin <値>
       env:
         - name: AWS_DEFAULT_REGION
           value: ap-northeast-1
 
   ...
+```
+
+> ↪️ 参考：
+>
+> - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled
+> - https://qiita.com/nakamasato/items/8215b7b86add58f77810
+
+この時、`--annotation-filter`オプションを使用すると、条件に合致するアノテーションを持つIngressやServiceを、ExternalDNSの検知から除外する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: external-dns
+  namespace: kube-system
+spec:
+  serviceAccountName: external-dns
+  containers:
+    - name: external-dns
+      image: registry.k8s.io/external-dns/external-dns:v0.13.2
+      args:
+
+        ...
+
+
+        --annotation-filter=<任意の.metadata.annotationsキー名> in <値>
+        --annotation-filter=<任意の.metadata.annotationsキー名> notin <値>
+
+  ...
 
 ```
 
-> ↪️ 参考：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled
+> ↪️ 参考：
+>
+> - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#running-an-internal-and-external-dns-service
+> - https://github.com/kubernetes-sigs/external-dns/issues/1910#issuecomment-803640491
 
 <br>
 

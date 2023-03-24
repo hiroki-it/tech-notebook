@@ -553,8 +553,6 @@ WHERE
 
 また、想定実行時間も検出できるため、スロークエリの検出に役立つ。
 
-> ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
-
 ```sql
 EXPLAIN SELECT
     *
@@ -590,6 +588,8 @@ possible_keys: index_t2_on_c3
          rows: 1
         Extra: Using index
 ```
+
+> ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
 
 <br>
 

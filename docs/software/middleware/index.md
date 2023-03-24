@@ -51,6 +51,9 @@
   > > > * ##### [DML](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html)
   > > > * ##### [DCL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html)
   > > > * ##### [DDL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html)
+  > * ##### <u>PostgreSQL</u>
+  > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html)
+  > > * ##### [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
 * #### <u>TSDB</u>
   > * ##### <u>VictoriaMetrics</u>
   > > * ##### [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html)

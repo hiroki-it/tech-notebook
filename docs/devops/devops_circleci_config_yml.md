@@ -1046,7 +1046,7 @@ steps:
 ```bash
 $ cat .env | base64
 
-******************* # 表示されるbase64方式エンコード値をProject変数として管理
+******************* # 表示されるbase64方式のエンコード値をProject変数として管理
 *******************
 ```
 
@@ -1060,7 +1060,7 @@ jobs:
       - run:
           name: Make env file
           command: |
-            # base64方式エンコード値をデコードし、.envファイルを複製
+            # base64方式のエンコード値をデコードし、.envファイルを複製
             echo $ENV_FILE | base64 -di > .env
       - run:
           name: Install node module
