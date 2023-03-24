@@ -185,6 +185,8 @@ nav:
                       - DML: software/software_middleware_database_rdb_mysql_sql_dml.md
                       - DCL: software/software_middleware_database_rdb_mysql_sql_dcl.md
                       - DDL: software/software_middleware_database_rdb_mysql_sql_ddl.md
+              - ■ PostgreSQL:
+                  - 設定ファイル: software/software_middleware_database_rdb_postgresql_conf.md
           - ■ TSDB:
               - ■ VictoriaMetrics:
                   - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
