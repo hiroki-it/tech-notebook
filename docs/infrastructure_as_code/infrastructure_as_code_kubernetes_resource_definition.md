@@ -2632,7 +2632,7 @@ spec:
 
 Podが、自身の稼働するNodeのネットワークにアクセスできるかどうかを設定する。
 
-ユーザーが使用するうユースケースは少なく、例えばnode-exporterのPodで使用される。
+ユーザーが使用するうユースケースは少なく、例えばNode exporterのPodで使用される。
 
 ```yaml
 apiVersion: v1

@@ -130,11 +130,11 @@ scrape_configs:
     static_configs:
       - targets:
           - localhost:9090'
-  # node-exporterの稼働するサーバーを監視する。
+  # Node exporterの稼働するサーバーを監視する。
   - job_name: node-exporter
     static_configs:
       - targets:
-          - <node-exporterの稼働するサーバーのIPアドレス>:9100
+          - <Node exporterの稼働するサーバーのIPアドレス>:9100
 ```
 
 > ↪️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
@@ -155,7 +155,7 @@ scrape_configs:
           - name: tag:Name
             values:
               - foo-instance
-  # node-exporterの稼働するサーバーをサービスディスカバリーで監視する。
+  # Node exporterの稼働するサーバーをサービスディスカバリーで監視する。
   - job_name: node-exporter
     kubernetes_sd_configs:
       # Service配下のPodを対象とする。
@@ -290,7 +290,7 @@ receivers:
 サーバー内で各種Exporterをプロセスとして稼働させる場合、チャートリポジトリから直接インストールし、リソースを作成する。
 
 ```bash
-# node-exporterの場合
+# Node exporterの場合
 
 # tmpディレクトリ配下にダウンロードする。
 $ curl -L https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz -o /tmp/node_exporter-1.0.0.linux-amd64.tar.gz
@@ -327,7 +327,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-# node-exporterの場合
+# Node exporterの場合
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
 
 # kube-state-metricsの場合
@@ -347,7 +347,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mys
 
 ### バイナリによる設定
 
-#### ▼ node-exporterの場合
+#### ▼ Node exporterの場合
 
 バイナリに直接的にパラメーターを渡す。
 

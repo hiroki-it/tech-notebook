@@ -90,7 +90,7 @@ log_line_prefix = '%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x '
 
 ### log_min_duration_statement
 
-スロークエリを検出する時の閾値秒数を設定する。
+スロークエリログを出力する場合に、スロークエリと見なす閾値秒数を設定する。
 
 ```ini
 log_min_duration_statement = 100ms

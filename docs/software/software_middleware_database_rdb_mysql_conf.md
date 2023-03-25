@@ -19,19 +19,27 @@ description: 設定ファイル＠MySQLの知見を記録しています。
 
 #### ▼ dnfリポジトリから
 
-mysqlコマンドのみをインストールしたい場合
+`mysql`コマンドのみをインストールしたい場合はこちら。
 
 ```bash
 $ dnf install -y mysql
 ```
 
-mysqlコマンド、dbサーバー機能、をインストールしたい場合はこちら
+`mysql`コマンド、MySQLのRDBMS、をインストールしたい場合はこちら。
 
 ```bash
 $ dnf install -y mysql-server
 ```
 
 #### ▼ yumリポジトリから
+
+`mysql`コマンドのみをインストールしたい場合はこちら。
+
+```bash
+$ yum install -y mysql
+```
+
+`mysql`コマンド、MySQLのRDBMS、をインストールしたい場合はこちら。
 
 ```bash
 $ yum install -y mysql mysql-server
@@ -298,7 +306,7 @@ log_queries_not_using_indexes = 0
 
 #### ▼ long_query_timeとは
 
-スロークエリを検出する時の閾値秒数を設定する。
+スロークエリログを出力する場合に、スロークエリと見なす閾値秒数を設定する。
 
 ```ini
 [mysqld]

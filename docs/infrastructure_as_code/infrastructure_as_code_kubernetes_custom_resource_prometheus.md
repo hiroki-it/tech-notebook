@@ -257,65 +257,7 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 <br>
 
-## 03. Exporter
-
-### Exporterとは
-
-PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。
-
-基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter (例：外形監視のblack-exporter) は、Node外で稼働させる。
-
-Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。
-
-また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
-
-> ↪️ 参考：
->
-> - https://openstandia.jp/oss_info/prometheus
-> - https://danielfm.me/prometheus-for-developers/
-
-<br>
-
-### Exporterタイプ
-
-#### ▼ Exporterタイプの種類
-
-| タイプ       | 設置方法                                         |
-| ------------ | ------------------------------------------------ |
-| DaemonSet型  | 各Node内に、1つずつ設置する。                    |
-| Deployment型 | 各Node内のDeploymentに、1つずつ設置する。        |
-| Sidecar型    | 各Node内のPodに、1つずつ設置する。               |
-| 埋め込み型   | ライブラリとして、アプリケーション内に埋め込む。 |
-
-#### ▼ Exporterの具体例
-
-`exporter`という接尾辞がついていないExporterもある。
-
-**＊例＊**
-
-| Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                                                                                 | Exportタイプ | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名     |
-| :--------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | ------------------ | ---------------------- | ---------------- |
-| [node-exporter](https://github.com/prometheus/node_exporter)                             | Nodeに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                                   | DaemonSet型  | `9100`             | `/metrics`             | `node_*`         |
-| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>↪️ 参考：<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/ | Deployment型 | `8080`             | 同上                   | `kube_*`         |
-| [process-exporter](https://github.com/ncabatoff/process-exporter)                        | 任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>↪️ 参考：https://qiita.com/kkentaro/items/c01b8cf332da893791bb                                                                                                                                             | DaemonSet型  | `9256`             | 同上                   | `namedprocess_*` |
-| [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter)                      | Nginxに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                                  | Sidecar型    | `9113`             | 同上                   |                  |
-| [apache-exporter](https://github.com/Lusitaniae/apache_exporter)                         | Apacheに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                                 | Sidecar型    | `9117`             | 同上                   |                  |
-| [black box expoter](https://github.com/prometheus/blackbox_exporter)                     | 各種通信プロトコルの状況をメトリクスとして収集する。                                                                                                                                                                                                                                                                                 | Deployment型 | `9115`             | 同上                   |                  |
-| [mysqld-exporter](https://github.com/prometheus/mysqld_exporter)                         | MySQL/MariaDBに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                          | Sidecar型    | `9104`             | 同上                   |                  |
-| [postgres-exporter](https://github.com/prometheus-community/postgres_exporter)           | PostgreSQLに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                             | Sidecar型    | `9187`             | 同上                   |                  |
-| [oracledb-exporter](https://github.com/iamseth/oracledb_exporter)                        | Oracleに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                                 | Sidecar型    | `9121`             | 同上                   |                  |
-| [elasticsearch-exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                          | Deployment型 | `9114`             | 同上                   |                  |
-| [redis-exporter](https://github.com/oliver006/redis_exporter)                            | Redisに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                                  | Sidecar型    | `9121`             | 同上                   |                  |
-| open-telemetryのSDK                                                                      |                                                                                                                                                                                                                                                                                                                                      | 埋め込み型   |                    |                        |                  |
-
-> ↪️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
-> - https://prometheus.io/docs/instrumenting/exporters/
-
-<br>
-
-## 04. PushGateway
+## 03. PushGateway
 
 ### PushGatewayとは
 
@@ -325,11 +267,11 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 <br>
 
-## 05. ServiceDiscovery
+## 04. ServiceDiscovery
 
 ### ServiceDiscoveryとは
 
-Pull型通信の宛先のIPアドレスが動的に変化する場合 (例：スケーリングなど) 、宛先を動的に検出し、データポイントを収集し続けられるようにする。
+Pull型通信の宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
 > ↪️ 参考：https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
