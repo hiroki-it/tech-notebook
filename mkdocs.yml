@@ -588,6 +588,7 @@ nav:
               - ■ リソース定義:
                   - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
                   - メタデータ: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition_metadata.md
+                  - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition_configmap.md
           - ■ Jaeger:
               - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
           - ■ Kiali:
