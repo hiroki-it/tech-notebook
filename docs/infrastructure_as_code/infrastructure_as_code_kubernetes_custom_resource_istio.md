@@ -281,22 +281,29 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、KeyCloak、AWS Cognito
 
 ### SSL証明書のローテーション
 
-#### ▼ Istiodコントロールプレーン
+#### ▼ Istiod中間認証局を使用する場合
 
 デフォルトでは、Istiodコントロールプレーンが中間認証局として働く。
 
-Istiodコントロールプレーンは、SSL証明書を必要とするKubernetesリソースに証明書を提供する。
+Istiodコントロールプレーンは、秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
 
-また、SSL証明書をローテーションする。
+KubernetesリソースにSSL証明書を提供しつつ、これを定期的にローテーションする。
 
-#### ▼ 外部の中間認証局
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
+> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes_istio.html
 
-Istiodコントロールプレーンを使用する代わりに、外部の中間認証局を使用して、SSL証明書を必要とするKubernetesリソースに証明書を提供する。
+#### ▼ 外部の中間認証局を使用する場合
 
-また、SSL証明書をローテーションする。
+要求
+Istiodコントロールプレーンを使用する代わりに、外部の中間認証局 (例：cert-manager、自前のカスタムコントローラー) を使用する
 
-- cert-manager
-- カスタムコントローラー
+Istiodコントロールプレーンは、秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
+
+KubernetesリソースにSSL証明書を提供しつつ、これを定期的にローテーションする。
+
+> ↪️ 参考：https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 
 <br>
 

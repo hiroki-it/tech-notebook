@@ -161,7 +161,7 @@ $ istioctl install -y -f ./istio-operator.yaml
 
 #### ▼ `meshConfig.accessLogFile`
 
-アクセスログの出力先を標準出力に変更する。
+IstioOperatorを使用して、アクセスログの出力先を標準出力に変更する。
 
 ```bash
 $ istioctl install -y --set meshConfig.accessLogFile=/dev/stdout

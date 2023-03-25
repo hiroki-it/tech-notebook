@@ -27,11 +27,16 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 ### バックエンドコンポーネント
 
-バックエンドコンポーネントは、kube-apiserverからKubernetesリソース (例：Namespace、Deployment、Service、など) の情報を収集し、またPrometheusからIstioのメトリクスを収集する。
+バックエンドコンポーネントは、kube-apiserverからKubernetesリソース (例：Namespace、Deployment、Service、など) の情報を収集し、PrometheusからIstioのメトリクス (例：`istio_requests_total`、`istio_request_bytes_bucket`、`istio_request_bytes_count`、など) を収集する。
+
+そのため、Kialiが必要とするメトリクスをPrometheusで事前に収集していないと、Kialiが正しく機能しない。
 
 アーキテクチャの図中で点線は、バックエンドコンポーネントがIstiodコントロールプレーンに間接的に依存していることを表している。
 
-> ↪️ 参考：https://kiali.io/docs/architecture/architecture/#kiali-back-end
+> ↪️ 参考：
+>
+> - https://kiali.io/docs/architecture/architecture/#kiali-back-end
+> - https://kiali.io/docs/faq/general/#requiredmetrics
 
 <br>
 
@@ -171,6 +176,9 @@ data:
       view_only_mode: true
     external_services:
       custom_dashboards:
+        # Kialiのパフォーマンスが悪い場合は、自動て検出を無効化する。
+        # https://kiali.io/docs/faq/general/#why-is-the-workload-or-application-detail-page-so-slow-or-not-responding
+        discovery_enabled: false
         enabled: true
         prometheus:
           url: http://foo-prometheus.foo-namespace:9090
@@ -189,6 +197,8 @@ data:
               workload: var-workload
         enabled: true
         in_cluster_url: http://foo-grafana.foo-namespace
+      # IstiodのPodのステータスを確認するために、Istiodの宛先情報を設定する。
+      # https://v1-48.kiali.io/docs/features/istio-component-status/
       istio:
         istio_identity_domain: svc.cluster.local
         istio_sidecar_annotation: sidecar.istio.io/status
@@ -207,14 +217,14 @@ data:
       certificates_information_indicators:
         enabled: true
         secrets:
-        - cacerts
-        - istio-ca-secret
+          - cacerts
+          - istio-ca-secret
       clustering:
         enabled: true
       disabled_features: []
       validations:
         ignore:
-        - KIA1201
+          - KIA1201
     login_token:
       expiration_seconds: 86400
       signing_key: *****
@@ -267,7 +277,7 @@ spec:
 
 <br>
 
-## 02. ユースケース
+## 02. グラフの読み方
 
 ### グラフタイプ
 
@@ -280,15 +290,35 @@ spec:
 
 <br>
 
-### 凡例ラベル
+### 表示形式
 
-- デフォルトでは、最新`1`分に発生した通信しか表示しないため、表示期間を延長する。
-- デフォルトでは、全てのNamespaceが表示されて見にくいため、アプリコンテナのNamespaceのみをフィルタリングして表示する。
-- デフォルトでは、アプリコンテナ以外のコンポーネント (例：IstioのVirtual Service) が表示されて見にくいため、Appシェイプのみをフィルタリングして表示する。
+#### ▼ 表示期間
+
+デフォルトでは、最新`1`分に発生した通信しか表示しない。
+
+そのため、表示期間を延長する。
+
+#### ▼ Namespace
+
+デフォルトでは、全てのNamespaceが表示されて見にくい。
+
+そのため、アプリコンテナのNamespaceのみをフィルタリングして表示する。
+
+#### ▼ 相互TLS認証
+
+デフォルトでは、マイクロサービス間のいずれの通信が相互TLS認証になっているかを表示しない。
+
+そのため、Securityバッジを有効化する。
 
 <br>
 
-### 囲み線
+### 汎用ラベルの意味合い
+
+#### ▼ Nodeシェイプ
+
+デフォルトでは、アプリコンテナ以外のコンポーネント (例：IstioのVirtual Service) が表示されて見にくいため、Appシェイプのみをフィルタリングして表示する。
+
+#### ▼ 囲み線
 
 - 複数のNamespaceに`istio-proxy`コンテナをインジェクションしている場合、Serviceとマイクロサービスが`NS`とついた線で囲われる。
 - 特定のマイクロサービスに複数の`subset`値 (例：`v1`、`v2`) が付与されている場合、それらが`A`とついた線で囲われる。
