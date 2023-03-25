@@ -48,6 +48,8 @@ data:
     accessLogEncoding: JSON
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-AccessLogEncoding
+
 <br>
 
 ### accessLogFile
@@ -67,13 +69,15 @@ data:
     accessLogFile: /dev/stdout
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
 <br>
 
 ### caCertificates
 
 #### ▼ caCertificatesとは
 
-Istiodコントロールプレーンや外部中間認証局が作成したSSL証明書を設定する
+ルート認証局のルート証明書や、中間認証局名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -87,24 +91,21 @@ data:
       proxyMetadata:
         ISTIO_META_CERT_SIGNER: istio-system
     caCertificates:
+        # ルート認証局のルート証明書 
       - pem: |
           Ci0tLS0tQk...
-          certSigners:
-            - clusterissuers.cert-manager.io/istio-system
-      - pem: |
-          Ci0tLS0tQk...
-          certSigners:
-            - clusterissuers.cert-manager.io/foo
-      - pem: |
-          Ci0tLS0tQk...
-          certSigners:
-            - clusterissuers.cert-manager.io/bar
+        # 中間認証局名
+        certSigners:
+          - clusterissuers.cert-manager.io/istio-system
+          - clusterissuers.cert-manager.io/foo
+          - clusterissuers.cert-manager.io/bar
 ```
 
 > ↪️ 参考：
 >
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-CertificateData
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/#deploy-istio-with-default-cert-signer-info
+> - https://istio.io/latest/docs/ops/integrations/certmanager/
 
 <br>
 
@@ -130,7 +131,10 @@ data:
         BOOTSTRAP_XDS_AGENT: "true"
 ```
 
-> ↪️ 参考：https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+> - https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
 
 <br>
 
@@ -220,7 +224,7 @@ spec:
 
 > ↪️ 参考：
 >
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
@@ -310,6 +314,8 @@ data:
     ingressService: ingressgateway
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
 <br>
 
 ### proxyHttpPort
@@ -329,6 +335,8 @@ data:
     proxyHttpPort: 80
 ```
 
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
 <br>
 
 ### proxyListenPort
@@ -347,5 +355,7 @@ data:
   mesh: |-
     proxyListenPort: 80
 ```
+
+> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>

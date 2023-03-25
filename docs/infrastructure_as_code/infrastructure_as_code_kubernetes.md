@@ -29,7 +29,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ### デフォルトのルート認証局
 
-Kubernetesのルート認証局の証明書は、`kube-root-ca.crt`というConfigMapで定義されている。
+Kubernetesのルート認証局のルート証明書は、`kube-root-ca.crt`というConfigMapで定義されている。
 
 ```yaml
 apiVersion: v1

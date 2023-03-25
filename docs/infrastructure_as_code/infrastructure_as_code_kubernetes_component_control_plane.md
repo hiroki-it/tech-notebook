@@ -440,7 +440,7 @@ $ kube-controller-manager \
     --port=0 \
     --profiling=false \
     --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
-    `# ルート認証局の証明書` \
+    `# ルート認証局のルート証明書` \
     --root-ca-file=/etc/kubernetes/pki/ca.crt \
     `# kube-apiserverの認証/認可を通過するために必要なServiceAccountの秘密鍵` \
     `# kube-apiserverには、これと対になる公開鍵が割り当てられている。` \
