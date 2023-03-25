@@ -140,8 +140,8 @@ Applicationの`.spec.plugin.name`キーで、`.data.configManagementPlugins`キ�
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
   targetRevision: main
@@ -264,8 +264,8 @@ Applicationでプラグイン名を指定する。
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
   targetRevision: main
@@ -426,8 +426,8 @@ Applicationでプラグイン名を指定する。
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
   targetRevision: main
@@ -564,8 +564,8 @@ Applicationでプラグイン名を指定する。
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
   targetRevision: main

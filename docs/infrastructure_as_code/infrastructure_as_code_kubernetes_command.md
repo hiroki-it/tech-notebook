@@ -19,7 +19,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 #### ▼ `~/.kube/config`ファイル
 
-`kubectl`コマンドは、`~/.kube`以下にある`config`ファイルに設定された認証情報を基に、kube-apiserverにアクセスする。
+`kubectl`コマンドは、`~/.kube`以下にある`config`ファイルに設定されたClusterの認証情報を基に、kube-apiserverにアクセスする。
 
 #### ▼ configシンボリックリンク、--kubeconfig
 
@@ -194,7 +194,7 @@ $ kubectl config view
 apiVersion: v1
 clusters:
 # ---------------------------------------------
-# Docker for Desktopのコンテキスト情報
+# Docker for Desktopの認証情報
 # ---------------------------------------------
 - cluster:
     certificate-authority-data: DATA+OMITTED
@@ -206,7 +206,7 @@ contexts:
     user: docker-desktop
   name: docker-desktop
 # ---------------------------------------------
-# Minikubeのコンテキスト情報
+# Minikubeの認証情報
 # ---------------------------------------------
 - cluster:
     certificate-authority: /Users/h.hasegawa/.minikube/ca.crt
@@ -507,7 +507,7 @@ Name:               baz-node
 
 ```bash
 $ curl "https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crds/application-crd.yaml" \
-    | k diff -f -
+    | kubectl diff -f -
 ```
 
 <br>
@@ -718,6 +718,23 @@ $ kubectl get pod --no-headers | wc -l
 20
 ```
 
+**＊例＊**
+
+各Nodeで作成できるPodの上限数を確認する。
+
+```bash
+$ kubectl get node \
+    -o=custom-columns=NODE:.metadata.name,MAX_PODS:.status.allocatable.pods,CAPACITY_PODS:.status.capacity.pods,INSTANCE_TYPE:.metadata.labels."node\.kubernetes\.io/instance-type"
+```
+
+さらに、各Nodeで稼働中のPod数を確認する。
+
+```bash
+$ for node in $(kubectl get node | awk '{if (NR!=1) {print $1}}'); \
+    do echo""; echo "Checking ${node}..."; \
+    kubectl describe node ${node} | grep "Non-terminated" ; done
+```
+
 #### ▼ -A
 
 指定したKubernetesリソースをNamespaceに関係なく取得する。
@@ -735,7 +752,7 @@ $ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
 全てのPodのイメージをアルファベット順で取得する。
 
 ```bash
-$ kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | \
+$ kubectl get pod --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | \
     tr -s '[[:space:]]' '\n' | \
     sort | \
     uniq -c
@@ -761,7 +778,6 @@ metadata:
   name: swp-secret
   namespace: default
   resourceVersion: "18329"
-  uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
 type: Opaque
 data:
   FOO: ***** # base64方式のエンコード値
@@ -804,7 +820,7 @@ $ kubectl get pod \
 Podの現在のIPアドレスを取得する。
 
 ```bash
-$ kubectl get pods foo-pod \
+$ kubectl get pod foo-pod \
     -n foo-namespace \
     -o jsonpath="{.status.podIP}"
 ```

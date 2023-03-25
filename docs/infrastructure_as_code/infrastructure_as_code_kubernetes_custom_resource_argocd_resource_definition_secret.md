@@ -603,8 +603,9 @@ data:
 
 #### ▼ AWS EKS Clusterの場合
 
-ArgoCDがClusterを監視するためには、`~/.kube/config`ファイルにClusterを登録するのと同様にして、
-ClusterのARNをArgoCDに登録する必要がある。
+ArgoCDがClusterを監視するためには、ArgoCDにClusterの認証情報を登録する必要がある。
+
+これは、ローカルマシンで`kubectl`コマンドを実行する時に、`~/.kube/config`ファイルにClusterの認証情報を登録することと同じである。
 
 `【１】`
 

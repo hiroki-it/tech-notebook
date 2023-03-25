@@ -41,7 +41,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 ### マニフェストの種類
 
-Istiodは、Deployment、Service、MutatingWebhookConfiguration、などのマニフェストから構成される。
+Istiodコントロールプレーンは、Deployment、Service、MutatingWebhookConfiguration、などのマニフェストから構成される。
 
 <br>
 

@@ -477,13 +477,13 @@ $ kubectl apply -f ./asm/istio/istiod-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: istiod
-  namespace: istio-system
   labels:
     app: istiod
     istio: pilot
     istio.io/rev: asm-1140-0 # リビジョン番号を更新する。
     release: istio
+  name: istiod
+  namespace: istio-system
 spec:
   ports:
     - name: https-webhook

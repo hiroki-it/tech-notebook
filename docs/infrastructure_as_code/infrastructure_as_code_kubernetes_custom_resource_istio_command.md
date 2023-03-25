@@ -217,14 +217,14 @@ $ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
 istio.io/rev: 1-10-0
 istio.io/tag: default
 
-$ k get mutatingwebhookconfiguration istio-sidecar-injector-1-10-0 -o yaml \
+$ kubectl get mutatingwebhookconfiguration istio-sidecar-injector-1-10-0 -o yaml \
     | grep -e rev:
 
 istio.io/rev: 1-10-0
 ```
 
 ```bash
-k get all -n istio-system
+kubectl get all -n istio-system
 NAME                                        READY   STATUS    RESTARTS   AGE
 pod/istio-ingressgateway-*****              1/1     Running   0          35m
 pod/istiod-1-10-0-*****                     1/1     Running   0          35m

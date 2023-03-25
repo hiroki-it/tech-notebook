@@ -256,7 +256,7 @@ nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
      ここで、CoreDNSのPodのIPアドレス (ここでは`10.244.0.2`) を確認しておく。
 
 ```bash
-$ kubectl get pods -o wide -l k8s-app=kube-dns -n kube-system
+$ kubectl get pod -o wide -l k8s-app=kube-dns -n kube-system
 
 NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
 coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <none>           <none>

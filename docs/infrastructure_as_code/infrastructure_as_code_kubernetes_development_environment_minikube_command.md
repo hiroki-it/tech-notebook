@@ -367,7 +367,7 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 ### update-context
 
-Minikubeのコンテキスト情報が誤っている場合、正しく修正する。
+Minikubeの認証情報が誤っている場合、正しく修正する。
 
 ```bash
 $ minikube update-context

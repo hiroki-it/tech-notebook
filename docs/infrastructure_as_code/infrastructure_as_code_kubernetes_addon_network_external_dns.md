@@ -60,15 +60,11 @@ spec:
         - --source=ingress
         - --domain-filter=example.com
         - --provider=aws
-        # Ingressからルールを削除した場合に、対応するAWSリソースも削除する
+        # Ingressからルールを削除した場合に、対応するAWSリソース (ALBリスナールール、Route53 DNSレコード) も削除する
         - --policy=sync
         - --aws-zone-type=public
         - --registry=txt
         - --txt-owner-id=external-dns
-        # 条件に合致するアノテーションを持つ場合、ExternalDNSの処理から除外する。
-        # https://github.com/kubernetes-sigs/external-dns/issues/1910#issuecomment-803640491
-        # --annotation-filter=<任意の.metadata.annotationsキー名> in <値>
-        # --annotation-filter=<任意の.metadata.annotationsキー名> notin <値>
       env:
         - name: AWS_DEFAULT_REGION
           value: ap-northeast-1

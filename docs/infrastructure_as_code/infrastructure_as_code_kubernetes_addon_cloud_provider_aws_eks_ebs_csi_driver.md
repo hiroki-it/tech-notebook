@@ -25,6 +25,14 @@ PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとし�
 
 <br>
 
+## 01-02. マニフェスト
+
+### マニフェストの種類
+
+AWS EBS CSIドライバーは、Deployment (ebs-csi-controller) 、ServiceAccount、などのマニフェストから構成される。
+
+<br>
+
 ### Deployment配下のPod
 
 記入中...
@@ -141,10 +149,10 @@ ServiceAccountは、Terraformではなくマニフェストで定義した方が
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: foo-ebs-csi-controller
-  namespace: kube-system
   annotations:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
+  name: foo-ebs-csi-controller
+  namespace: kube-system
 ```
 
 IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。

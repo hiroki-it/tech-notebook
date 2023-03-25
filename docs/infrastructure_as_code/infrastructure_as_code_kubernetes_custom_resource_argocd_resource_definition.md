@@ -346,8 +346,8 @@ Sync後にKubernetesリソースが変化するような仕様 (動的な設定�
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   ignoreDifferences:
     # KubernetesリソースのAPIグループの名前
@@ -376,8 +376,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   ignoreDifferences:
 
@@ -469,8 +469,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     path: ./manifests
@@ -491,8 +491,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     path: ./manifests
@@ -504,8 +504,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     path: ./charts
@@ -524,8 +524,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
@@ -546,8 +546,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
   labels:
     app.kubernetes.io/env: prd
 spec:
@@ -560,8 +560,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
   labels:
     app.kubernetes.io/env: stg
 spec:
@@ -585,8 +585,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     chart: <チャート名>
@@ -619,8 +619,8 @@ helmfileと同じように`helm`コマンドを宣言的に実行しつつ、実
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     helm:
@@ -637,8 +637,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     helm:
@@ -655,8 +655,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     helm:
@@ -748,8 +748,8 @@ ID  DATE                           REVISION
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     # 例えば、GitHub内のGitHub Pagesをチャートリポジトリとして扱う。
@@ -771,8 +771,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     targetRevision: <バージョンタグ>
@@ -802,8 +802,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
@@ -820,8 +820,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   source:
     targetRevision: <バージョンタグ>
@@ -845,8 +845,8 @@ apply先のNamespaceを設定する。
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   destination:
     namespace: foo-namespace
@@ -871,8 +871,8 @@ ArgoCDの稼働しているClusterを指定する場合は、in-cluster (`https:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -883,8 +883,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   destination:
     # 外部のAWS EKS Clusterのkube-apiserverのエンドポイントを指定する。
@@ -924,8 +924,8 @@ GitOpsでのリポジトリ (例：GitHub、Helm、など) とKubernetesの間�
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   syncPolicy:
     automated:
@@ -951,8 +951,8 @@ GitOpsでのマニフェストのSync処理の詳細を設定する。
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  namespace: argocd
   name: foo-application
+  namespace: argocd
 spec:
   syncPolicy:
     syncOptions:

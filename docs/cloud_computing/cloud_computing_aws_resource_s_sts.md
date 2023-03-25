@@ -131,10 +131,10 @@ ServiceAccountは、Terraformではなくマニフェストで定義した方が
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
-  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
   annotations:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
+  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
+  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
 ```
 
 IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。

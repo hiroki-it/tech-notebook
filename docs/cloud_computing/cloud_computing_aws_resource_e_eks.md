@@ -118,7 +118,9 @@ module "eks" {
 
 <br>
 
-#### EKS Clusterのコンテキスト追加
+#### EKS Clusterの認証情報の追加
+
+`kubectl`コマンドでEKS Clusterを操作するためには、`~/.kube/config`ファイルへClusterの認証情報を登録する必要がある。
 
 `【１】`
 
@@ -130,7 +132,7 @@ $ aws configure
 
 `【２】`
 
-: EKS Clusterの名前を指定して、Clusterを登録する。
+: EKS Clusterの名前を指定して、Clusterの認証情報を登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -142,6 +144,14 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 
 ```bash
 $ kubectl config use-context <ClusterのARN>
+```
+
+`【４】`
+
+: `kubectl`コマンドの接続を確認する。
+
+```bash
+$ kubectl get pod
 ```
 
 > ↪️ 参考：
@@ -254,10 +264,10 @@ ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAM�
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
-  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
   annotations:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
+  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
+  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
 ```
 
 もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、EC2ワーカーNodeやFargateワーカーNodeのIAMロールが使用される。
@@ -344,7 +354,7 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 
 `【１】`
 
-: EKS Clusterの名前を指定して、Clusterを登録する。
+: EKS Clusterの名前を指定して、Clusterの認証情報を登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -719,9 +729,9 @@ sudo systemctl restart systemd-logind
 ```bash
 for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
   echo $ns
-  kubectl get pods -n $ns -o json \
+  kubectl get pod -n $ns -o json \
     | jq -r '.items[] | select(.status.phase == "Failed") | select(.status.reason == "Shutdown" or .status.reason == "NodeShutdown" or .status.reason == "Terminated") | .metadata.name' \
-    | xargs --no-run-if-empty --max-args=100 --verbose kubectl delete pods -n $ns
+    | xargs --no-run-if-empty --max-args=100 --verbose kubectl delete pod -n $ns
 done
 ```
 
