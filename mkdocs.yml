@@ -599,6 +599,7 @@ nav:
               - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_conf.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
               - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_promql.md
+              - Exporter: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_exporter.md
 
   - ♾️ DevOps:
       - devops/index.md
