@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PromQL＠Prometheus
-description: PromQL＠Prometheus
+title: 【IT技術の知見】PromQL＠メトリクス
+description: PromQL＠メトリクス
 ---
 
-# PromQL＠Prometheus
+# PromQL＠メトリクス
 
 ## はじめに
 
@@ -21,25 +21,37 @@ description: PromQL＠Prometheus
 
 特定の時点の時系列データのこと。
 
-> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：
+>
+> - https://prometheus.io/docs/prometheus/latest/querying/basics/#instant-vector-selectors
+> - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
 特定の期間の時系列データのこと。
 
-> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：
+>
+> - https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors
+> - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Scalar
 
 浮動小数点の数値型データのこと。
 
-> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：
+>
+> - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> - https://prometheus.io/docs/prometheus/latest/querying/basics/#float-literals
 
 #### ▼ String
 
 文字列型データのこと。
 
-> ↪️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ↪️ 参考：
+>
+> - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> - https://prometheus.io/docs/prometheus/latest/querying/basics/#string-literals
 
 <br>
 
@@ -106,63 +118,9 @@ rate(foo_metrics[5m])
 
 <br>
 
-### ディメンション
+## 02. データポイントの各種数値の算出
 
-#### ▼ 指定方法
-
-メトリクス名の後に`{<ディメンション名>}`を設定することにより、ディメンションを単位としてデータポイントを集計する。
-
-#### ▼ ディメンションの種類
-
-各メトリクスに共通するディメンションを示す。
-
-| 名前      | 説明                                       |
-| --------- | ------------------------------------------ |
-| container | コンテナ名                                 |
-| service   | Service名                                  |
-| instance  | NodeのIPアドレスとポート番号               |
-| job       | `scrape_configs`キー配下の`job_name`キー名 |
-
-<br>
-
-## 02. 標準メトリクス
-
-### ローカルストレージのメトリクス (`prometheus_tsdb_*`)
-
-#### ▼ prometheus_tsdb_head_samples_appended_total
-
-Prometheusが収集したデータポイントの合計数を表す。
-
-> ↪️ 参考：
->
-> - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
-
-#### ▼ prometheus_tsdb_compaction_chunk_size_bytes_sum
-
-Prometheusが作成したチャンクの合計サイズ (KB) を表す。
-
-> ↪️ 参考：
->
-> - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
-
-#### ▼ prometheus_tsdb_compaction_chunk_samples_sum
-
-Prometheusが作成したチャンクの合計数を表す。
-
-> ↪️ 参考：
->
-> - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
-
-<br>
-
-## 03. PromQLを使用したメトリクス分析
-
-### データポイントの各種数値の算出
-
-#### ▼ データポイントの平均サイズ (KB/秒) の増加率
+### データポイントの平均サイズ (KB/秒) の増加率
 
 Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を分析する。
 
@@ -171,7 +129,9 @@ rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 ```
 
-#### ▼ データポイントの合計数 (個/秒) の増加率
+<br>
+
+### データポイントの合計数 (個/秒) の増加率
 
 Prometheusで収集されたデータポイントの合計数 (個/秒) の増加率を分析する。
 
@@ -179,7 +139,9 @@ Prometheusで収集されたデータポイントの合計数 (個/秒) の増�
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
-#### ▼ データポイントの合計サイズ (KB/秒) の増加率
+<br>
+
+### データポイントの合計サイズ (KB/秒) の増加率
 
 Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の増加率を分析する。
 
@@ -193,7 +155,9 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 > ↪️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
-#### ▼ データポイントの合計サイズ (KB/日) の推移
+<br>
+
+### データポイントの合計サイズ (KB/日) の推移
 
 Prometheusで収集されたデータポイントの合計サイズ (KB/日) の推移を分析する。
 
@@ -206,9 +170,9 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 <br>
 
-### ストレージの各種数値の算出
+## 03. ストレージの各種数値の算出
 
-#### ▼ ローカルストレージの必要サイズ (KB/日)
+### ローカルストレージの必要サイズ (KB/日)
 
 データポイントの合計サイズ (KB/日) とローカルストレージの部品ファイルの合計を分析する。
 
@@ -231,7 +195,9 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 > - https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4
 > - https://gist.github.com/mikejoh/c172b2400909d33c37199c9114df61ef
 
-#### ▼ リモートストレージの必要サイズ (KB/日)
+<br>
+
+### リモートストレージの必要サイズ (KB/日)
 
 Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を分析する。
 

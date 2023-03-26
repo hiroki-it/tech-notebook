@@ -55,27 +55,27 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 
 | Exporter名                                                        | 説明                                                                                                                                                                                     | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名     |
 | :---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ---------------- |
-| [node-exporter](https://github.com/prometheus/node_exporter)      | Nodeに関するメトリクスのデータポイントを収集する。                                                                                                                                       | `9100`             | `/metrics`             | `node_*`         |
-| [process-exporter](https://github.com/ncabatoff/process-exporter) | 任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>↪️ 参考：https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
+| [Node exporter](https://github.com/prometheus/node_exporter)      | Nodeに関するメトリクスのデータポイントを収集する。                                                                                                                                       | `9100`             | `/metrics`             | `node_*`         |
+| [Process exporter](https://github.com/ncabatoff/process-exporter) | 任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>↪️ 参考：https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
 
 #### ▼ Deployment
 
 | Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                                                                                 | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
 | :--------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ---------------------- | ------------ |
 | [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>↪️ 参考：<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/ | `8080`             | 同上                   | `kube_*`     |
-| [black box expoter](https://github.com/prometheus/blackbox_exporter)                     | 各種通信プロトコルの状況をメトリクスとして収集する。                                                                                                                                                                                                                                                                                 | `9115`             | 同上                   |              |
-| [elasticsearch-exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                          | `9114`             | 同上                   |              |
+| [Black Box exporter](https://github.com/prometheus/blackbox_exporter)                    | 各種通信プロトコルの状況をメトリクスとして収集する。                                                                                                                                                                                                                                                                                 | `9115`             | 同上                   |              |
+| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                          | `9114`             | 同上                   |              |
 
 #### ▼ Pod内サイドカー
 
 | Exporter名                                                                     | 説明                                                                                                                                               | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
 | :----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ------------ |
-| [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter)            | Nginxに関するメトリクスのデータポイントを収集する。                                                                                                | `9113`             | 同上                   |              |
-| [apache-exporter](https://github.com/Lusitaniae/apache_exporter)               | Apacheに関するメトリクスのデータポイントを収集する。                                                                                               | `9117`             | 同上                   |              |
-| [mysqld-exporter](https://github.com/prometheus/mysqld_exporter)               | MySQL/MariaDBに関するメトリクスのデータポイントを収集する。                                                                                        | `9104`             | 同上                   |              |
-| [postgres-exporter](https://github.com/prometheus-community/postgres_exporter) | PostgreSQLに関するメトリクスのデータポイントを収集する。<br>↪️ 参考：https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage | `9187`             | 同上                   |              |
-| [oracledb-exporter](https://github.com/iamseth/oracledb_exporter)              | Oracleに関するメトリクスのデータポイントを収集する。                                                                                               | `9121`             | 同上                   |              |
-| [redis-exporter](https://github.com/oliver006/redis_exporter)                  | Redisに関するメトリクスのデータポイントを収集する。                                                                                                | `9121`             | 同上                   |              |
+| [Nginx Vts exporter](https://github.com/hnlq715/nginx-vts-exporter)            | Nginxに関するメトリクスのデータポイントを収集する。                                                                                                | `9113`             | 同上                   |              |
+| [Apache exporter](https://github.com/Lusitaniae/apache_exporter)               | Apacheに関するメトリクスのデータポイントを収集する。                                                                                               | `9117`             | 同上                   |              |
+| [Mysqld exporter](https://github.com/prometheus/mysqld_exporter)               | MySQL/MariaDBに関するメトリクスのデータポイントを収集する。                                                                                        | `9104`             | 同上                   |              |
+| [Postgres exporter](https://github.com/prometheus-community/postgres_exporter) | PostgreSQLに関するメトリクスのデータポイントを収集する。<br>↪️ 参考：https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage | `9187`             | 同上                   |              |
+| [Oracledb exporter](https://github.com/iamseth/oracledb_exporter)              | Oracleに関するメトリクスのデータポイントを収集する。                                                                                               | `9121`             | 同上                   |              |
+| [Redis exporter](https://github.com/oliver006/redis_exporter)                  | Redisに関するメトリクスのデータポイントを収集する。                                                                                                | `9121`             | 同上                   |              |
 
 ### ▼ 埋め込み型
 
@@ -85,11 +85,181 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 
 <br>
 
-## 02. Node exporter
+### セットアップ
 
-### メトリクスの種類
+#### ▼ チャートとして
 
-Node exporterの場合は、Nodeの`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+チャートリポジトリから複数のチャートを一括でインストールし、Kubernetesリソースを作成する。
+
+kube-prometheus-stackは、いくつかのExporterをサブチャートとしてインストールしてくれる。
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+
+$ helm repo update
+
+$ kubectl create namespace prometheus
+
+$ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+
+<br>
+
+## 02. kube-state-metrics
+
+### セットアップ
+
+#### ▼ チャートとして
+
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+
+$ helm repo update
+
+$ kubectl create namespace prometheus
+
+
+# kube-state-metricsの場合
+$ helm install <リリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
+
+<br>
+
+### メトリクスの一覧
+
+Node exporterの場合は、Nodeの『`127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+
+```bash
+$ curl http://217.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics
+
+...
+
+kube_node_info
+kube_pod_info
+
+...
+```
+
+> ↪️ 参考：
+>
+> - https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics
+> - https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/
+
+<br>
+
+## 03. MySQL exporter
+
+### セットアップ
+
+#### ▼ チャートとして
+
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+
+$ helm repo update
+
+$ kubectl create namespace prometheus
+
+# mysql-exporterの場合
+$ helm install <リリース名> <チャートリポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
+
+<br>
+
+### メトリクスの一覧
+
+PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9104/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+
+```bash
+# Node内でコールする。
+$ curl http://localhost:9104/metrics
+
+...
+
+postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version="0.0.1"} 1
+
+...
+```
+
+> ↪️ 参考：
+>
+> - https://grafana.com/oss/prometheus/exporters/postgres-exporter/
+> - https://grafana.com/oss/prometheus/exporters/postgres-exporter/assets/postgres_metrics_scrape.txt
+
+<br>
+
+## 04. Node exporter
+
+### セットアップ
+
+#### ▼ バイナリとして
+
+バイナリファイルをインストールする。
+
+```bash
+# GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
+# tmpディレクトリ配下にダウンロードする。
+$ curl -L https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz -o /tmp/node_exporter-1.0.0.linux-amd64.tar.gz
+$ tar xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
+
+# バイナリファイルだけを移動する。
+$ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_exporter
+```
+
+バイナリに直接的にパラメーターを渡せる。
+
+```bash
+$ /usr/local/bin/node_exporter --web.listen-address=":9100"
+```
+
+> ↪️ 参考：https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
+
+#### ▼ チャートとして
+
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+
+$ helm repo update
+
+$ kubectl create namespace prometheus
+
+# Node exporterの場合
+$ helm install <リリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
+
+複数のExporterを一括してインストールする場合、例えばkube-prometheus-stackチャートがある。
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+
+$ helm repo update
+
+$ kubectl create namespace prometheus
+
+$ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
+```
+
+> ↪️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+
+<br>
+
+### メトリクスの一覧
+
+Node exporterの場合は、Nodeの『`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
 # Node内でコールする。
@@ -201,35 +371,11 @@ node_network_receive_packets_total
 
 <br>
 
-## 03. MySQL exporter
+## 05. PostgreSQL exporter
 
-### メトリクスの種類
+### メトリクスの一覧
 
-PostgreSQL exporterの場合は、Nodeの`127.0.0.1:9104/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
-
-```bash
-# Node内でコールする。
-$ curl http://localhost:9104/metrics
-
-...
-
-postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version="0.0.1"} 1
-
-...
-```
-
-> ↪️ 参考：
->
-> - https://grafana.com/oss/prometheus/exporters/postgres-exporter/
-> - https://grafana.com/oss/prometheus/exporters/postgres-exporter/assets/postgres_metrics_scrape.txt
-
-<br>
-
-## 04. PostgreSQL exporter
-
-### メトリクスの種類
-
-PostgreSQL exporterの場合は、Nodeの`127.0.0.1:9187/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9187/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
 # Node内でコールする。
@@ -293,11 +439,54 @@ pg_replication_lag > 10
 
 <br>
 
-## 05. Redis exporter
+## 06. Process exporter
 
-### メトリクスの種類
+### セットアップ
 
-Redis exporterの場合は、Nodeの`127.0.0.1:9121/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+#### ▼ バイナリとして
+
+バイナリファイルをインストールする。
+
+```bash
+# GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
+# tmpディレクトリ配下にダウンロードする。
+$ curl -L https://github.com/ncabatoff/process-exporter/releases/download/v0.7.10/process-exporter-0.7.10.linux-amd64.tar.gz -o /tmp/process-exporter-0.7.10.linux-amd64.tar.gz
+
+$ tar xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
+```
+
+#### ▼ チャートとして
+
+執筆時点 (2023/03/26) 時点で、Process exporterのチャートはない。
+
+> ↪️ 参考：https://github.com/ncabatoff/process-exporter
+
+<br>
+
+### メトリクスの一覧
+
+Process exporterの場合は、Nodeの『`127.0.0.1:9256/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+
+```bash
+# Node内でコールする。
+$ curl http://localhost:9256/metrics
+
+...
+
+process_exporter_build_info{build_date="2021-03-11-03:26:58",commit_sha="d0597c841d2c9fa30ce8b6ded6251d1994822e27",golang_version="go1.16.1",version="v1.18.0"} 1
+
+...
+```
+
+> ↪️ 参考：https://github.com/ncabatoff/process-exporter#exposing-metrics-through-https
+
+<br>
+
+## 07. Redis exporter
+
+### メトリクスの一覧
+
+Redis exporterの場合は、Nodeの『`127.0.0.1:9121/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
 # Node内でコールする。

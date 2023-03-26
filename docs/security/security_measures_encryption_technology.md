@@ -242,7 +242,8 @@ Webサイトのドメインの購入者が、対になる秘密鍵と組み合�
 
 より下位の証明書から順番に連結していく。
 
-```text
+```yaml
+---
 -----BEGIN CERTIFICATE-----
 SSL証明書の内容
 -----END CERTIFICATE-----

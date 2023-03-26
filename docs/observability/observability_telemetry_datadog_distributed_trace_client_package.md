@@ -24,7 +24,7 @@ description: クライアントパッケージ＠分散トレース収集の知�
 サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用した方が良い。
 
 ```bash
-# GitHubリポジトリからパッケージをダウンロードする。
+# GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
 $ curl -L https://github.com/DataDog/dd-trace-php/releases/download/0.63.0/datadog-php-tracer_0.63.0_amd64.deb
 
 # パッケージをインストールをする。
@@ -77,7 +77,7 @@ env[DD_VERSION] = '<バージョンタグ>'
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
 
-# GitHubリポジトリからパッケージをダウンロードする。
+# GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
 RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb \
   `# パッケージをインストールする。` \
   && dpkg -i datadog-php-tracer.deb \

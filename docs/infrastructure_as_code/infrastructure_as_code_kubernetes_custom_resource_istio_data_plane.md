@@ -490,7 +490,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 `istio-proxy`コンテナの`15021`番ポートでは、kubeletからのReadinessProbeチェックを待ち受ける。
 
-Envoyが、`/healthz/ready`エンドポイントでReadinessProbeチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
+`istio-proxy`コンテナ内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
 
 > ↪️ 参考：
 >
@@ -509,9 +509,26 @@ Envoyが、`/healthz/ready`エンドポイントでReadinessProbeチェックを
 
 ### `15090`番
 
-`istio-proxy`コンテナの`15090`番ポートでは、`istio-proxy`コンテナのメトリクス収集ツールからのリクエストを待ち受け、Envoyに渡される。
+`istio-proxy`コンテナの`15090`番ポートでは、`istio-proxy`コンテナのメトリクス収集ツール (例：Prometheus) からのリクエストを待ち受け、Envoyに渡される。
 
-リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
+`istio-proxy`コンテナ内のEnvoyが、`/stats/prometheus`エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15090/stats/prometheus"
+
+istio_build{component="proxy",tag="<リビジョン番号>"} 1
+
+...
+
+istio_request_bytes_count{...}
+istio_request_messages_total{...}
+
+...
+```
 
 > ↪️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
