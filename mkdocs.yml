@@ -494,6 +494,15 @@ nav:
               - ■ Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
+                          - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
+      - ■ Kubernetesリソース:
+            - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
+            - ■ リソース定義:
+                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+                  - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
+      - ■ カスタムリソース:
+            - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
+            - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
       - ■ アドオン:
           - ■ コントロールプレーンNodeのアドオン:
               - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
@@ -542,15 +551,6 @@ nav:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.md
           - ■ Kustomize:
               - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
-      - ■ Kubernetesリソース:
-          - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
-          - ■ リソース定義:
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
-              - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
-      - ■ カスタムリソース:
-          - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
-          - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
 
   -  🌊 Kubernetesプロジェクト:
       - infrastructure_as_code/kubernetes_projects/index.md
