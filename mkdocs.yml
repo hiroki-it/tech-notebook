@@ -551,58 +551,61 @@ nav:
       - ■ カスタムリソース:
           - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
           - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
-          - ■ ArgoCD:
-              - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
-              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_command.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
-              - ■ リソース定義:
-                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
-                  - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.md
-                  - 認証/認可系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_auth.md
-                  - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_configmap.md
-                  - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_secret.md
-                  - Job系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_job.md
-          - ■ CertManager:
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.md
-          - ■ FluentBit/Fluentd:
-              - FluentBit/Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.md
-              - ■ FluentBit:
-                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_conf.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_command.md
-                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_resource_definition.md
-          - ■ Grafana:
-              - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
-          - ■ Kyverno:
-              - Kyverno: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno_resource_definition.md
-          - ■ Istio:
-              - ■ Istio:
-                  - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
-                  - コントロールプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_control_plane.md
-                  - データプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.md
-              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
+
+  -  🌊 Kubernetesプロジェクト:
+      - infrastructure_as_code/kubernetes_projects/index.md
+      - ■ ArgoCD:
+          - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
+          - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_command.md
+          - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
+          - ■ リソース定義:
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
+              - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.md
+              - 認証/認可系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_auth.md
+              - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_configmap.md
+              - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_secret.md
+              - Job系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_job.md
+      - ■ CertManager:
+          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.md
+      - ■ FluentBit/Fluentd:
+          - FluentBit/Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.md
+          - ■ FluentBit:
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_conf.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_command.md
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_resource_definition.md
+      - ■ Grafana:
+          - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
+          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
+      - ■ Kyverno:
+          - Kyverno: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno.md
+          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno_resource_definition.md
+      - ■ Istio:
+          - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
+          - コントロールプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_control_plane.md
+          - データプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.md
+          - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
+          - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.md
+          - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
+          - リソース:
               - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.md
-              - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
               - ■ リソース定義:
                   - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
                   - メタデータ: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition_metadata.md
                   - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition_configmap.md
-          - ■ Jaeger:
-              - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
-          - ■ Kiali:
-              - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
-          - ■ OpenPolicyAgent:
-              - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.md
-          - ■ Prometheus:
-              - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
-              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_conf.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
-              - Exporter: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_exporter.md
-              - ■ メトリクス:
-                  - メトリクス: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_metrics.md
-                  - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_metrics_promql.md
+      - ■ Jaeger:
+          - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
+      - ■ Kiali:
+          - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
+      - ■ OpenPolicyAgent:
+          - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.md
+      - ■ Prometheus:
+          - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
+          - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_conf.md
+          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
+          - Exporter: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_exporter.md
+          - ■ メトリクス:
+              - メトリクス: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_metrics.md
+              - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_metrics_promql.md
 
   - ♾️ DevOps:
       - devops/index.md
