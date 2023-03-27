@@ -494,7 +494,6 @@ nav:
               - ■ Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
-                          - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
       - ■ Kubernetesリソース:
             - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
             - ■ リソース定義:
@@ -551,6 +550,7 @@ nav:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.md
           - ■ Kustomize:
               - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
+              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
 
   -  🌊 Kubernetesプロジェクト:
       - infrastructure_as_code/kubernetes_projects/index.md
