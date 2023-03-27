@@ -233,7 +233,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 > - https://sreake.com/blog/istio/
 
 <br>
-JW
+
 ## 02. 認証系リソース
 
 ### PeerAuthentication

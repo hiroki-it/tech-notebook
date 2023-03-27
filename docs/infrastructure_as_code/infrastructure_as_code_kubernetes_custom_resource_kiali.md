@@ -77,6 +77,8 @@ Kialiは、Deployment、ConfigMap、Service、などのマニフェストから�
 
 #### ▼ 設定例
 
+記入中...
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -122,6 +124,8 @@ spec:
 ### ConfigMap
 
 #### ▼ 設定例
+
+記入中...
 
 ```yaml
 apiVersion: v1
@@ -292,6 +296,8 @@ Kialiのバージョンに応じたリビジョン番号のIstioを指定する�
 ### Service
 
 #### ▼ 設定例
+
+記入中...
 
 ```yaml
 apiVersion: v1
