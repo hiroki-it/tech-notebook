@@ -374,22 +374,26 @@ CDパイプライン上で実行しているステップ (例：デプロイ、�
 
 これに起因して、以下のようなエラーが出ることがある。
 
-```
+```bash
+# Applicationを作成できない
 application 'foo-application' in namespace 'foo-namespace' is not permitted to use project 'default'
 ```
 
-```
+```bash
+# Applicationが認識されないため、AppProjectも見つけられない
 error getting app project "foo-project": appproject.argoproj.io "foo-project" not found
 ```
 
 これは、AppProjectの`.spec.sourceNamespaces`キーで解決できる。
 
+Applicationの存在するNamespaceが認識されることにより、AppProjectを見つけられるようにある。
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: prd # 実行環境名、運用チーム名など
-  namespace: foo # サービス名、など
+  name: foo-project
+  namespace: foo
 spec:
   sourceNamespaces:
     - "*"

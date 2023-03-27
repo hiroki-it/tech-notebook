@@ -27,6 +27,8 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 ### バックエンドコンポーネント
 
+#### ▼ バックエンドコンポーネントとは
+
 バックエンドコンポーネントは、kube-apiserverからKubernetesリソース (例：Namespace、Deployment、Service、など) の情報を収集し、PrometheusからIstioのメトリクス (例：`istio_requests_total`、`istio_request_bytes_bucket`、`istio_request_bytes_count`、など) を収集する。
 
 そのため、Kialiが必要とするメトリクスをPrometheusで事前に収集していないと、Kialiが正しく機能しない。
@@ -42,6 +44,8 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 ### フロントエンドコンポーネント
 
+#### ▼ フロントエンドコンポーネントとは
+
 フロントエンドコンポーネントは、バックエンドからデータを取得し、ダッシュボード上にサービスメッシュトポロジーを作成する。
 
 サービスメッシュトポロジーから、マイクロサービス間の通信の依存関係や通信状況を確認できる。
@@ -49,6 +53,15 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 その他、テレメトリー収集ツール (例：Jaeger、Grafana) と連携し、Kiali上のデータから連携先のツールのURLにリダイレクトできるようにする。
 
 > ↪️ 参考：https://kiali.io/docs/architecture/architecture/#kiali-front-end
+
+#### ▼ グラフ化手法
+
+Kialiは、cytoscape.jsパッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istioから収集したメトリクスをグラフ化する。
+
+> ↪️ 参考：
+>
+> - https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs
+> - https://blog.js.cytoscape.org/2020/05/11/layouts/#choice-of-layout
 
 <br>
 
@@ -99,6 +112,7 @@ spec:
     - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
       name: kube-api-access-rbnbz
       readOnly: true
+
   ...
 
 ```
@@ -122,6 +136,7 @@ data:
       openshift:
         client_id_prefix: kiali
       strategy: anonymous
+
     deployment:
       accessible_namespaces:
         - '**'
@@ -174,6 +189,7 @@ data:
       tolerations: []
       version_label: v1.60.0
       view_only_mode: true
+
     external_services:
       custom_dashboards:
         # Kialiのパフォーマンスが悪い場合は、自動て検出を無効化する。
@@ -181,11 +197,15 @@ data:
         discovery_enabled: false
         enabled: true
         prometheus:
+          PrometheusのServiceの宛先情報を設定する。
           url: http://foo-prometheus.foo-namespace:9090
+      # https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/
       grafana:
         auth:
+          # GrafanaでBasic認証を使用している場合
           type: basic
           username: admin
+          password: prom-operator
         dashboards:
           - name: Istio Service Dashboard
             variables:
@@ -196,23 +216,40 @@ data:
               namespace: var-namespace
               workload: var-workload
         enabled: true
+        # GrafanaのServiceの宛先情報を設定する。
         in_cluster_url: http://foo-grafana.foo-namespace
+        # GrafanaダッシュボードのURLを設定する。
+        url: http://foo.grafana.com
       # IstiodのPodのステータスを確認するために、Istiodの宛先情報を設定する。
       # https://v1-48.kiali.io/docs/features/istio-component-status/
       istio:
+        component_status:
+          components:
+            - app_label: istiod
+            - app_label: istio-ingressgateway
+              namespace: istio-ingress
+          # Masthead indicatorを表示するかどうかを設定する。
+          # https://kiali.io/docs/features/security/#masthead-indicator
+          enabled: true
+        config_map_name: istio-<リビジョン番号>
         istio_identity_domain: svc.cluster.local
         istio_sidecar_annotation: sidecar.istio.io/status
         istio_status_enabled: true
         root_namespace: istio-system
         url_service_version: http://istiod-<リビジョン番号>:15014/version
+      # https://kiali.io/docs/configuration/p8s-jaeger-grafana/prometheus/
       prometheus:
+        # PrometheusのServiceの宛先情報を設定する。
         url: http://foo-prometheus.foo-namespace:9090
       tracing:
         enabled: false
+
     identity:
       cert_file: ""
       private_key_file: ""
+
     istio_namespace: istio-system
+
     kiali_feature_flags:
       certificates_information_indicators:
         enabled: true
@@ -225,9 +262,11 @@ data:
       validations:
         ignore:
           - KIA1201
+
     login_token:
       expiration_seconds: 86400
       signing_key: *****
+
     server:
       metrics_enabled: true
       metrics_port: 9090

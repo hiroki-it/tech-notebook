@@ -55,10 +55,16 @@ $ argocd app set foo-application --sync-policy automated
 
 指定したAplicationで、Syncのドライランを実行する。
 
+```bash
+$ argocd app sync foo-application --project foo-project
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/
+
 #### ▼ --dry-run
 
 ```bash
-$ argocd app sync foo-application --dry-run
+$ argocd app sync foo-application --dry-run --project foo-project
 ```
 
 #### ▼ --local
@@ -66,7 +72,7 @@ $ argocd app sync foo-application --dry-run
 指定したAplicationで、ローカルマシンのディレクトリをリポジトリとして監視する。
 
 ```bash
-$ argocd app sync foo-application --local=<ディレクトリへのパス>
+$ argocd app sync foo-application --local=<ディレクトリへのパス> --project foo-project
 ```
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
