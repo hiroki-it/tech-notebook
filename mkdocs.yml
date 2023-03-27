@@ -552,7 +552,7 @@ nav:
               - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
 
-  -  🌊 Kubernetesプロジェクト:
+  -  🌊 CNCFプロジェクト:
       - infrastructure_as_code/kubernetes_projects/index.md
       - ■ ArgoCD:
           - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
