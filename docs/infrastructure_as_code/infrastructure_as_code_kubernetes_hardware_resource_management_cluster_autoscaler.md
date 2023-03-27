@@ -97,8 +97,53 @@ metadata:
   name: cluster-autoscaler-status
   namespace: kube-system
 data:
-  status: |+
-    Cluster-autoscaler status at 2023-03-27 10:38:18.725943178 +0000 UTC:Cluster-wide:  Health:      Healthy (ready=10 unready=0 (resourceUnready=0) notStarted=0 longNotStarted=0 registered=10 longUnregistered=0)               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...  ScaleUp:     NoActivity (ready=10 registered=10)               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...  ScaleDown:   CandidatesPresent (candidates=2)               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...               LastTransitionTime: 2023-03-27 10:29:04.227287209 +0000 UTC ...NodeGroups:  # Nodeグループ名  Name:        foo-node-group  # registered：Nodeの現在数  # cloudProviderTarget：Nodeの必要数。cloudProviderTargetのNode数に合わせてスケーリングする。  # LastProbeTime：直近で確認した時間  # LastTransitionTime：直近でスケーリングを実施した時間  Health:      Healthy (ready=4 unready=0 (resourceUnready=0) notStarted=0 longNotStarted=0 registered=4 longUnregistered=0 cloudProviderTarget=4 (minSize=3, maxSize=10))               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...  # InProgress (スケーリング中)、Backoff (失敗後のコールド期間)、NoActivity (何もしていない)  # スケールアウトに関する情報  ScaleUp:     NoActivity (ready=4 cloudProviderTarget=4)               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...    # スケールインに関する情報  # CandidatesPresent (スケーリングのNode候補がいる)、NonCacdidates (スケーリングのNode候補がいる)  ScaleDown:   CandidatesPresent (candidates=2)               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...               LastTransitionTime: 2023-03-27 10:29:04.227287209 +0000 UTC ......
+  status: |
+
+    ...
+```
+
+`.data.status`キー配下に、以下のような情報を持つ。
+
+```yaml
+Cluster-autoscaler status at 2023-03-27 10:38:18.725943178 +0000 UTC:
+
+Cluster-wide:
+  Health:      Healthy (ready=10 unready=0 (resourceUnready=0) notStarted=0 longNotStarted=0 registered=10 longUnregistered=0)               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
+               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...
+
+  ScaleUp:     NoActivity (ready=10 registered=10)
+               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
+               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...
+
+  ScaleDown:   CandidatesPresent (candidates=2)
+               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
+               LastTransitionTime: 2023-03-27 10:29:04.227287209 +0000 UTC ...
+
+# Nodeグループ名
+NodeGroups:
+  Name:        foo-node-group
+
+  # registered：Nodeの現在数  # cloudProviderTarget：Nodeの必要数。cloudProviderTargetのNode数に合わせてスケーリングする。
+  # LastProbeTime：直近で確認した時間
+  # LastTransitionTime：直近でスケーリングを実施した時間
+  Health:      Healthy (ready=4 unready=0 (resourceUnready=0) notStarted=0 longNotStarted=0 registered=4 longUnregistered=0 cloudProviderTarget=4 (minSize=3, maxSize=10))
+               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
+               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...
+
+  # InProgress (スケーリング中)、Backoff (失敗後のコールド期間)、NoActivity (何もしていない)
+  # スケールアウトに関する情報
+  ScaleUp:     NoActivity (ready=4 cloudProviderTarget=4)
+               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
+               LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...
+
+  # スケールインに関する情報
+  # CandidatesPresent (スケーリングのNode候補がいる)、NonCacdidates (スケーリングのNode候補がいる)
+  ScaleDown:   CandidatesPresent (candidates=2)
+               LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
+               LastTransitionTime: 2023-03-27 10:29:04.227287209 +0000 UTC ...
+
+...
+
 ```
 
 > ↪️ 参考：https://speakerdeck.com/zuiurs/kubernetes-cluster-autoscaler-deep-dive?slide=33

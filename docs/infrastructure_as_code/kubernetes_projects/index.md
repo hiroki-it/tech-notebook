@@ -7,7 +7,7 @@
 
 <br>
 
-## 🌊 Kubernetes Projects (IaC)
+## 🌊 CNDFプロジェクト (IaC)
 
 ### ArgoCD
 
