@@ -32,6 +32,16 @@ Pull型通信により、アプリケーションはPrometheusの存在を知る
 
 <br>
 
+### 確認
+
+Nodeで動いているExporterを確認する。
+
+```bash
+$ ps -aux | grep exporter
+```
+
+<br>
+
 ### Exporterの種類
 
 #### ▼ タイプ
