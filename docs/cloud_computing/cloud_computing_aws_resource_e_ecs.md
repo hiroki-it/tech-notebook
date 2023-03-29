@@ -65,6 +65,8 @@ ECSタスクの管理グループ単位のこと。
 
 ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を行う。
 
+マイクロサービスは、ECSサービスを単位として作成する。
+
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html
 
 <br>
@@ -513,6 +515,16 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | ulimit                          | Linuxコマンドの<br>`--ulimit`に相当 |                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                          |
 
 > ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
+
+<br>
+
+## 05-03. ECSタスク
+
+### サイドカー
+
+マイクロサービスのコンテナからログを収集する場合に、AWS以外 (GCP CloudLogging) に送るのであればサイドカーパターンでログルーター (EC2ならFluentBit、FargateならFireLens) を採用しないといけない。
+
+ECSサービスを増えるたびにサイドカーの横展開していく。
 
 <br>
 

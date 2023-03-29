@@ -19,13 +19,27 @@ description: Repmgr＠PostgreSQLの知見を記録しています。
 
 Repmgrは、repmgr、repmgrd、といったコンポーネントから構成されている。
 
-repmgrは、PostgreSQLのDBをクラスターのインスタンス (プライマリーインスタンス、スタンバイインスタンス) として管理できるようにする。
+<br>
 
-repmgrdは、DBインスタンス間でフェイルオーバーできるようにする。
+### repmgr
+
+repmgrは、PostgreSQLのDBをクラスターのインスタンス (プライマリーインスタンス、スタンバイインスタンス) として管理できるようにする。
 
 ![repmgr_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgr_architecture.png)
 
 > ↪️ 参考：https://www.2ndquadrant.com/en/resources-old/repmgr/
+
+<br>
+
+### repmgrd
+
+repmgrdは、DBインスタンス間でフェイルオーバーできるようにする。
+
+プライマリインスタンスで障害が起こった場合、フェイルオーバーを実行し、スタンバイインスタンスをプライマリインスタンスに昇格させる。
+
+![repmgrd_fail-over](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgrd_fail-over.png)
+
+> ↪️ 参考：https://radondb.com/posts/211201_%E5%B7%A5%E5%85%B7_-pg-%E9%9B%86%E7%BE%A4%E5%A4%8D%E5%88%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-repmgr/
 
 <br>
 

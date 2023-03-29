@@ -64,13 +64,43 @@ $ export PGPASSWORD=<パスワード>
 
 ### log_directory
 
-ログの出力先のディレクトリを設定する。
+#### ▼ log_directoryとは
+
+実行ログの出力先のディレクトリを設定する。
 
 ```ini
 log_directory = /var/lib/pgsql
 ```
 
 > ↪️ 参考：https://zatoima.github.io/postgresql-about-monitoring-log.html
+
+#### ▼ ログのローテーション
+
+`log_directory`オプションで設定したディレクトリ配下で、PostgreSQLは、ローテーションされたログファイルを配置する。
+
+```bash
+$ ls -la /var/lib/pgsql
+
+drwx------.  2 postgres postgres      4096  7月  4  2022 .
+drwx------. 20 postgres postgres      4096  1月 07 00:00 ..
+-rw-------.  1 postgres postgres 155406014  1月 01 00:00 postgresql-Sun.log
+-rw-------.  1 postgres postgres 171692688  1月 02 23:59 postgresql-Mon.log
+-rw-------.  1 postgres postgres 145817641  1月 03 00:00 postgresql-Tue.log
+-rw-------.  1 postgres postgres 145711063  1月 04 00:00 postgresql-Wed.log
+-rw-------.  1 postgres postgres 184520145  1月 05 00:00 postgresql-Thu.log
+-rw-------.  1 postgres postgres 150962818  1月 06 00:00 postgresql-Fri.log
+-rw-------.  1 postgres postgres 120718679  1月 07 19:51 postgresql-Sat.log
+```
+
+#### ▼ クエリの確認
+
+実行ログから、クエリを確認できる。
+
+```bash
+$ cat /var/lib/postgresql-Sun.log | grep -E "^2023-01-01 12:00" | grep "statement: SELECT"
+
+$ cat /var/lib/postgresql-Sun.log | grep -E "^2023-01-01 12:00" | grep "statement: INSERT"
+```
 
 <br>
 

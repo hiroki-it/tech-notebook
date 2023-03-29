@@ -58,6 +58,8 @@ description: FireLens＠Fで始まるAWSリソースの知見を記録してい�
 
 AWSが提供するFluentBitイメージによって作成されるコンテナである。
 
+サイドカーパターンでFluentBitを採用したい場合に、FireLensを採用する。
+
 FireLensコンテナでは、FluentBitがログルーティングプロセスとして稼働する。
 
 FireLensコンテナを使用せずに、独自のコンテナを作成して稼働できるが、FireLensコンテナを使用すれば、主要なセットアップがされているため、より簡単な設定でFluentBitを使用できる。

@@ -13,7 +13,48 @@ description: 設定ファイル＠PgBouncerの知見を記録しています。
 
 <br>
 
-## 01. pgbouncerセクション
+## 01. 設定ファイル
+
+### `pgbouncer.ini`ファイル
+
+PgBouncerの設定ファイルである。
+
+<br>
+
+## 02. pgbouncerセクション
+
+### logfile
+
+ログファイルの場所を設定する。
+
+```ini
+[pgbouncer]
+logfile = /var/log/pgbouncer/pgbouncer.log
+```
+
+<br>
+
+### listen_addr
+
+クライアントからの通信を受信するアドレスを設定する。
+
+```ini
+[pgbouncer]
+listen_addr = *
+```
+
+<br>
+
+### listen_port
+
+クライアントからの通信を受信するポート番号を設定する。
+
+```ini
+[pgbouncer]
+listen_port = 5432
+```
+
+<br>
 
 ### server_reset_query
 
@@ -67,7 +108,7 @@ pool_mode = statement
 
 <br>
 
-## 02. databasesセクション
+## 03. databasesセクション
 
 ### DB名
 

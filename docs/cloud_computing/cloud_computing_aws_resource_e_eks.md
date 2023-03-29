@@ -941,17 +941,18 @@ EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode
 
 一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
 
+> ↪️ 参考：https://www.sunnycloud.jp/column/20210315-01/
+
+#### ▼ FargateワーカーNodeを使用できない場合
+
 以下の場合は、EC2ワーカーNodeを使用するようにする。
 
-- DaemonSetが必要
-- Fargateで設定可能な最大スペックを超えたスペックが必要
-- emptyDirボリューム以外が必要
+- FargateワーカーNodeでは、DaemonSetが使えない。サイドカーを配置する必要がある。
+- Fargateで設定可能な最大スペックを超えたスペックが必要である。
+- emptyDirボリューム以外が必要である。
+- FargateワーカーNodeでは、サービスメッシュにAppMeshしか使えない。もし、AppMeshを使いたくない場合は、EC2ワーカーNodeを使用する。
 
-> ↪️ 参考：
->
-> - https://www.sunnycloud.jp/column/20210315-01/
-> - https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/
-> - https://qiita.com/mumoshu/items/c9dea2d82a402b4f9c31#managed-node-group%E3%81%A8eks-on-fargate%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
+> ↪️ 参考：https://qiita.com/mumoshu/items/c9dea2d82a402b4f9c31#managed-node-group%E3%81%A8eks-on-fargate%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
 
 #### ▼ Fargateプロファイル
 

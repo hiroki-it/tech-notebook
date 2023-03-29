@@ -193,9 +193,14 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 #### ▼ 相互TLS認証 (mTLS)
 
+トランスポート層で、双方向のピア認証を実施する。
+
 通常のSSL/TLSを使用した通信では、通信の受信側のみSSL証明書を設定すればよいが、相互TLS認証では受信側のみでなく送信側にも設定が必要になる。
 
-> ↪️ 参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
+> ↪️ 参考：
+>
+> - https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
+> - https://docs.aws.amazon.com/ja_jp/app-mesh/latest/userguide/mutual-tls.html
 
 <br>
 
