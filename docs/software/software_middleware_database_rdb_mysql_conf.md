@@ -59,7 +59,7 @@ MySQLのプロセスが稼働していることを確認する。
 $ systemctl status mysql.service
 ```
 
-#### ▼ 接続確認
+#### ▼ コネクション確認
 
 DBに接続する。
 
