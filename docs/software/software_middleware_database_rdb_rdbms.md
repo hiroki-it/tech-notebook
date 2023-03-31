@@ -161,6 +161,4 @@ TCP/IPプロトコルを使用する。
 > - https://support.asteria.com/hc/ja/articles/228983127-%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B
 > - https://gihyo.jp/dev/serial/01/db-academy/000502
 
-#### 
-
 <br>

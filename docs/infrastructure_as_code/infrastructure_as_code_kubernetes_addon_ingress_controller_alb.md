@@ -19,7 +19,7 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 AWS Load Balancerコントローラーは、aws-load-balancer-controller、TargetGroupBinding、といったコンポーネントから構成されている。
 
-aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBをプロビジョニングし、ALBのリスナールールごとにターゲットグループもプロビジョングする。
+aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBやAWS NLBをプロビジョニングし、これらのリスナールールごとにターゲットグループもプロビジョングする。
 
 その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐づける。
 
@@ -30,8 +30,17 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 > ↪️ 参考：
 >
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/nlb/
 > - https://blog.recruit.co.jp/rmp/infrastructure/post-21469/
 > - https://aws.amazon.com/cn/blogs/china/use-aws-load-balancer-controller-s-targetgroupbinding-function-to-realize-flexible-load-balancer-management/
+
+<br>
+
+### AWS Load Balancerコントローラーを使用しない場合
+
+もしAWS CLBを作成したい場合は、AWS Load Balancerコントローラーを使用しない。
+
+LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-managerがAWS CLBを自動的にプロビジョニングする。
 
 <br>
 

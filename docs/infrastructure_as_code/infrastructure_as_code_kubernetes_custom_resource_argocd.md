@@ -244,7 +244,75 @@ statefulset.apps/argocd-application-controller   1/1     119d
 
 #### ▼ argocd-server
 
-記入中...
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-dex-server
+  namespace: argocd
+spec:
+  serviceAccountName: argocd-server
+  containers:
+    - name: argocd-server
+      image: quay.io/argoproj/argocd:latest
+      imagePullPolicy: Always
+      args:
+        - /usr/local/bin/argocd-server
+        # HTTPプロトコルで受信する
+        - --insecure
+      ports:
+        - containerPort: 8080
+        - containerPort: 8083
+      volumeMounts:
+        - name: ssh-known-hosts
+          mountPath: /app/config/ssh
+        - name: tls-certs
+          mountPath: /app/config/tls
+        - name: argocd-repo-server-tls
+          mountPath: /app/config/server/tls
+        - name: argocd-dex-server-tls
+          mountPath: /app/config/dex/tls
+        - mountPath: /home/argocd
+          name: plugins-home
+        - mountPath: /tmp
+          name: tmp
+  volumes:
+    - emptyDir: {}
+      name: plugins-home
+    - emptyDir: {}
+      name: tmp
+    - name: ssh-known-hosts
+      configMap:
+        name: argocd-ssh-known-hosts-cm
+    - name: tls-certs
+      configMap:
+        name: argocd-tls-certs-cm
+    - name: argocd-repo-server-tls
+      secret:
+        secretName: argocd-repo-server-tls
+        optional: true
+        items:
+          - key: tls.crt
+            path: tls.crt
+          - key: tls.key
+            path: tls.key
+          - key: ca.crt
+            path: ca.crt
+    - name: argocd-dex-server-tls
+      secret:
+        secretName: argocd-dex-server-tls
+        optional: true
+        items:
+          - key: tls.crt
+            path: tls.crt
+          - key: ca.crt
+            path: ca.crt
+```
+
+> ↪️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/blob/master/manifests/base/server/argocd-server-deployment.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#inbound-tls-options-for-argocd-server
 
 #### ▼ repo-server
 
@@ -312,6 +380,8 @@ spec:
   ...
 
 ```
+
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/manifests/base/dex/argocd-dex-server-deployment.yaml
 
 <br>
 

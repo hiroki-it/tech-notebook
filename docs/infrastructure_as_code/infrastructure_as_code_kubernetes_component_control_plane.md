@@ -102,6 +102,14 @@ cloud-controllerを使用して、kube-apiserverがクラウドインフラを�
 
 <br>
 
+### AWS EKSの場合
+
+AWS EKSの場合、LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-managerがAWS CLBを自動的にプロビジョニングする。
+
+もしAWS ALBやAWS NLBを作成したい場合、AWS Load Balancerコントローラーが必要である。
+
+<br>
+
 ## 04. etcd (エトセディー)
 
 ### etcdとは

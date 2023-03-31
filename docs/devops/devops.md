@@ -184,6 +184,54 @@ GitOpsでは、CIツールで実施する手順が少ないため、基本的に
 
 <br>
 
+### 全体像
+
+以下のフローで設計していく。
+
+```mermaid
+graph TD;
+A[はじめに] --> B[Opsの種類]
+
+B ---> | アプリを<br>コンテナ化していない | C[そのまま進む]
+B --> | アプリを<br>コンテナ化している | D[コンテナオーケストレーションツールの種類]
+
+C ---> | オンプレ | E[オンプレのための<br>CIOps]
+C ---> | AWS EC2, Google GCE | F[IaaSのための<br>CIOps]
+C ---> | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための<br>CIOps]
+
+D ----> | Docker compose  | H[Docker composeのための<br>CIOps]
+D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
+D --> | いずれも使っていない | J[そのまま進む]
+D ----> | オンプレ | K[オンプレのための<br>GitOps]
+D ----> | Google Anthos | L[IaaSのための<br>GitOps]
+D ----> | AWS EKS, Google GKE | M[CaaSのための<br>GitOps]
+
+J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
+J --> | dockerコマンド | O[dockerコマンドのための<br>CIOps]
+
+E ---> P[CIOpsのための<br>ブランチ戦略]
+
+F ---> P
+
+G ---> P
+
+H ---> P
+
+I ---> P
+
+K ---> Q[GitOpsのための<br>ブランチ戦略]
+
+L ---> Q
+
+M ---> Q
+
+N ---> P
+
+O ---> P
+```
+
+<br>
+
 ## 03. CI/CDパイプライン
 
 ### CI/CDパイプラインとは

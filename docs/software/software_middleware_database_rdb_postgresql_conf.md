@@ -60,6 +60,12 @@ $ export PGPASSWORD=<パスワード>
 
 <br>
 
+### オートバキューム
+
+PostgreSQLは、オートバキュームによってDBを定期的に自動最適化する。
+
+<br>
+
 ## セクション
 
 ### log_directory

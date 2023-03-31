@@ -91,6 +91,21 @@ baz-node   352m         4%     9430Mi          33%
 
 > ↪️ 参考：<https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
 
+### ▼ デバッグ
+
+metrics-serverが正しく動作していない場合、Nodeのハードウェアリソースの消費量が`<unknown>`になる。
+
+```bash
+$ kubectl top node
+
+NAME      CPU(cores)  CPU%       MEMORY(bytes)  MEMORY%
+master-1  192m        2%         10874Mi        68%
+node-1    582m        7%         9792Mi         61%
+node-2    <unknown>   <unknown>  <unknown>      <unknown>
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes
+
 <br>
 
 ### pod
@@ -119,6 +134,19 @@ POD       NAME            CPU(cores)   MEMORY(bytes)
 foo-pod   foo-container   1m           19Mi
 foo-pod   istio-proxy     5m           85Mi
 ```
+
+### ▼ デバッグ
+
+metrics-serverが正しく動作していない場合、Podのハードウェアリソースの消費量が`<unknown>`になる。
+
+```bash
+$ kubectl top pod
+
+NAME       CPU(cores)  CPU%       MEMORY(bytes)  MEMORY%
+foo-pod    <unknown>   <unknown>  <unknown>      <unknown>
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics
 
 <br>
 
@@ -159,6 +187,23 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
 
 > ↪️ 参考：<https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14>
+
+#### ▼ デバッグ
+
+Deployment配下のPodで、`spec.containers[]resources`キーに要求量を設定すると、HorizontalPodAutoscalerが要求量に対する使用量 (Target列) を取得できるようになる。
+
+一方でこれを取得できていない場合、設定が無いか、metrics-serverが正しく動作していない可能性がある。
+
+```bash
+$ kubectl get hpa -A
+
+NAMESPACE  NAME             REFERENCE                   TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+foo        foo-deployment   Deployment/foo-deployment   <unknown>/80%   1         1         1          391d
+bar        bar-deployment   Deployment/bar-deployment   <unknown>/80%   1         1         1          391d
+baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1         1         1          391d
+```
+
+> ↪️ 参考：https://blog.framinal.life/entry/2020/04/14/190601
 
 <br>
 
