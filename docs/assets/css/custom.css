@@ -282,7 +282,9 @@ th, td {
     font-size: 0.60rem;
 }
 
-/* テーブルの幅を一杯に広げる */
+/* テーブルの幅を一杯に広げる
+@see https://github.com/squidfunk/mkdocs-material/issues/175#issuecomment-616694465
+*/
 .md-typeset__table {
     min-width: 100%;
 }
