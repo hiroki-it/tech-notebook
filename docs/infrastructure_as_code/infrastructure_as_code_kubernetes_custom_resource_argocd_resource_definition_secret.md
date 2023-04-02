@@ -645,7 +645,7 @@ $ kubectl config use-context <ArgoCDに監視させたいClusterのARN>
 
 `【５】`
 
-: `argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行すると、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
+: `argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行することにより、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
 
 ```bash
 $ argocd cluster add <ClusterのARN>

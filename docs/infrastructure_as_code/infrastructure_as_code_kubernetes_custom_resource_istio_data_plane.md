@@ -25,6 +25,8 @@ description: データプレーン＠Istioの知見を記録しています。
 
 ### アンビエンドメッシュの場合
 
+記入中...
+
 <br>
 
 ## 02. データプレーンの要素
@@ -33,7 +35,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 #### ▼ `istio-init`コンテナとは
 
-コンテナの起動時に、`istio-iptables`コマンドを実行し、istio-iptablesをPodに適用する。
+コンテナの起動時に、`istio-iptables`コマンドを実行することにより、istio-iptablesをPodに適用する。
 
 > ↪️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 

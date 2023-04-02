@@ -93,7 +93,7 @@ dockerクライアントは、`docker`コマンドを使用してdockerデーモ
 
 dockerクライアントにdockerデーモンAPIを公開する。
 
-クライアントが`docker`コマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
+クライアントが`docker`コマンドを実行することにより、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png)
 

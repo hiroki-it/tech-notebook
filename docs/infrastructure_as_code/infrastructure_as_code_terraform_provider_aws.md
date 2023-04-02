@@ -1253,7 +1253,7 @@ Terraformに値をハードコーディングしたくない場合は、パラ�
 
 ### 【２】メンテナンスウインドウ時に変更適用
 
-メンテナンスウインドウ時の変更適用をTerraformで行う場合、一段階目に`apply_immediately`オプションを`false`に変更して`terraform apply`コマンドを実行し、二段階目に修正を`terraform apply`コマンドを実行する。
+メンテナンスウインドウ時の変更適用をTerraformで行う場合、一段階目に`apply_immediately`オプションを`false`に変更して`terraform apply`コマンドを実行することにより、二段階目に修正を`terraform apply`コマンドを実行する。
 
 <br>
 

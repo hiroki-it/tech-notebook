@@ -192,7 +192,7 @@ spec:
 
 #### ▼ Nodeの場合
 
-Node内で`ip addr`コマンドを実行すると、Nodeに割り当てられたCIDRブロックを確認できる。
+Node内で`ip addr`コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。
 
 > ↪️ 参考：https://nishipy.com/archives/1467
 

@@ -421,7 +421,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 #### ▼ 待ち受けるポート番号の確認
 
-Pod内のコンテナ内で`netstat`コマンドを実行すると、コンテナが待ち受けているポート番号を確認できる。
+Pod内のコンテナ内で`netstat`コマンドを実行することにより、コンテナが待ち受けているポート番号を確認できる。
 
 ```bash
 $ kubectl exec foo-istiod -n istio-system -- netstat -tulpn
@@ -898,7 +898,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 #### ▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffでない場合)
 
-Pod内で`df`コマンドを実行すると、PersistentVolumeの使用率を確認できる。
+Pod内で`df`コマンドを実行することにより、PersistentVolumeの使用率を確認できる。
 
 出力結果で、ファイルシステム全体の使用率を確認する。
 

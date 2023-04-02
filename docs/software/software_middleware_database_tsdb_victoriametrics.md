@@ -41,7 +41,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 > - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
 > - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
 
-#### ▼ 監視ツールとして
+#### ▼ メトリクス監視バックエンドとして
 
 vm-agent、vm-storage、vm-alert、といったコンポーネントから構成されている。
 
@@ -51,7 +51,7 @@ vm-agentがPull型でメトリクスのデータポイントを収集し、vm-st
 
 vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
 
-VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
+VictoriaMetricsをメトリクス監視バックエンドとして使用する場合はPrometheusは不要になる。
 
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
 

@@ -79,7 +79,7 @@ Do you really want to delete?
 
 #### ▼ apply
 
-まず`helmfile diff`コマンドを実行し、この時に差分があれば、`helmfile apply`コマンドを実行する。
+まず`helmfile diff`コマンドを実行することにより、この時に差分があれば、`helmfile apply`コマンドを実行する。
 
 `helmfile sync`コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。
 

@@ -559,7 +559,7 @@ SELinuxを無効化する。
 
 **＊実装例＊**
 
-管理対象ノードで`chown`コマンドを実行し、ファイルの所有権を設定する。
+管理対象ノードで`chown`コマンドを実行することにより、ファイルの所有権を設定する。
 
 ```yaml
 - name: Update foo-binary permission
@@ -717,7 +717,7 @@ SELinuxを無効化する。
 
 #### ▼ ansible.builtin.unarchiveとは
 
-コントロールノードまたは管理対象ノードで`tar`コマンドを実行し、圧縮ファイルを解凍する。
+コントロールノードまたは管理対象ノードで`tar`コマンドを実行することにより、圧縮ファイルを解凍する。
 
 > ↪️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
 

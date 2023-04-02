@@ -90,7 +90,7 @@ Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionW
 
 このSSL証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration、など) で管理している。
 
-SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行し、Configurationへの挿入は`patch`コマンドを実行することで実現している。
+SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行することにより、Configurationへの挿入は`patch`コマンドを実行することで実現している。
 
 > ↪️ 参考：
 >

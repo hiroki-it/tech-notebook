@@ -917,7 +917,7 @@ $ git commit --amend -m="<変更後のメッセージ>"
 
 `【４】`
 
-: `git rebase --continue`コマンドを実行し、変更を反映させる。
+: `git rebase --continue`コマンドを実行することにより、変更を反映させる。
 
 ```bash
 $ git rebase --continue

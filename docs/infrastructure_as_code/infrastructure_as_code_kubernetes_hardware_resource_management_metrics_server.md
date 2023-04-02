@@ -35,6 +35,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 >
 > - <https://speakerdeck.com/bells17/metrics-server?slide=20>
 > - <https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base>
+> - https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server
 
 <br>
 
@@ -64,6 +65,106 @@ ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド
 対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。
 
 収集のために、ServiceAccountとClusterRoleを作成する必要がある。
+
+<br>
+
+## 01-02. マニフェスト
+
+### Deployment配下のPod
+
+記入中...
+
+```yaml
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: metrics-server
+  namespace: kube-system
+spec:
+  containers:
+    - name: metrics-server
+      image: registry.k8s.io/metrics-server/metrics-server:v0.6.3
+      imagePullPolicy: IfNotPresent
+      args:
+        - --cert-dir=/tmp
+        - --secure-port=10250
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        - --kubelet-use-node-status-port
+        # メトリクスの収集間隔を最小にする。
+        # https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#how-often-metrics-are-scraped
+        - --metric-resolution=15s
+      resources:
+        requests:
+          cpu: 100m
+          memory: 200Mi
+      ports:
+        - name: https
+          containerPort: 10250
+          protocol: TCP
+      readinessProbe:
+        httpGet:
+          path: /readyz
+          port: https
+          scheme: HTTPS
+        periodSeconds: 10
+        failureThreshold: 3
+        initialDelaySeconds: 20
+      livenessProbe:
+        httpGet:
+          path: /livez
+          port: https
+          scheme: HTTPS
+        periodSeconds: 10
+        failureThreshold: 3
+        # metrics-serverの準備完了を待たずにReadinessProbeヘルスチェックを実施しないように、初回のヘルスチェックを開始するまでの待機時間を延長する
+        # https://github.com/kubernetes-sigs/metrics-server/issues/1056#issuecomment-1288198994
+        initialDelaySeconds: 80
+      securityContext:
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumeMounts:
+        - mountPath: /tmp
+          name: tmp-dir
+  priorityClassName: system-cluster-critical
+  serviceAccountName: metrics-server
+  volumes:
+    - emptyDir: {}
+      name: tmp-dir
+  serviceAccountName: metrics-server
+  volumes:
+    - name: tmp-dir
+      emptyDir: { }
+  priorityClassName: system-cluster-critical
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml
+
+<br>
+
+### APIService
+
+記入中...
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  labels:
+    k8s-app: metrics-server
+  name: v1beta1.metrics.k8s.io
+spec:
+  group: metrics.k8s.io
+  groupPriorityMinimum: 100
+  insecureSkipTLSVerify: true
+  service:
+    name: metrics-server
+    namespace: kube-system
+  version: v1beta1
+  versionPriority: 100
+```
+
+> ↪️ 参考：https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/apiservice.yaml
 
 <br>
 

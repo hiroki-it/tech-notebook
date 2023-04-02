@@ -105,6 +105,54 @@ DevOpsの実現方法には、CIOpsまたはGitOpsがある。
 
 ## 02. 技術的要素
 
+### Opsの選び方
+
+以下のフローで、要件にあったOpsを選んでいく。
+
+```mermaid
+graph TD;
+A[はじめに] --> B[Opsの種類]
+
+B ---> | アプリを<br>コンテナ化していない | C[そのまま進む]
+B --> | アプリを<br>コンテナ化している | D[コンテナオーケストレーションツールの種類]
+
+C ---> | オンプレ | E[オンプレのための<br>CIOps]
+C ---> | AWS EC2, Google GCE | F["IaaSのための<br>CIOps"]
+C ---> | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための<br>CIOps]
+
+D ----> | Docker compose  | H[Docker composeのための<br>CIOps]
+D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
+D --> | いずれも使っていない | J[そのまま進む]
+D ----> | オンプレ | K[オンプレのための<br>GitOps]
+D ----> | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための<br>GitOps]
+D ----> | AWS EKS, Google GKE | M[CaaSのための<br>GitOps]
+
+J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
+J --> | dockerコマンド | O[dockerコマンドのための<br>CIOps]
+
+E ---> P[CIOpsのための<br>ブランチ戦略]
+
+F ---> P
+
+G ---> P
+
+H ---> P
+
+I ---> P
+
+K ---> Q[GitOpsのための<br>ブランチ戦略]
+
+L ---> Q
+
+M ---> Q
+
+N ---> P
+
+O ---> P
+```
+
+<br>
+
 ### CIOps
 
 #### ▼ CIOpsとは
@@ -140,7 +188,7 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理
 
 | 理由           | 説明                                                                                                                                                                                                                                                                                                                                                  | 補足                                                                                                                                           |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| セキュリティ   | リポジトリ側に`~/.kube/config`ファイルを置く必要がある。`~/.kube/config`ファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、GCP KMS、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。                                                               | ↪️ 参考：<br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 <br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 |
+| セキュリティ   | リポジトリ側に`~/.kube/config`ファイルを置く必要がある。`~/.kube/config`ファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。                                                            | ↪️ 参考：<br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 <br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 |
 | 責務境界の分離 | CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。そのため、結果的にCIの構築/運用を担当するアプリエンジニアが、CDも構築/運用することになる。特に、CDはインフラに影響するため、アプリエンジニアチームが責任を持つべきではない。一方でGitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用をアプリチームとSREチームで分担できるようになる。 | ↪️ 参考：https://news.mynavi.jp/techplus/article/techp5025/                                                                                    |
 
 <br>
@@ -181,54 +229,6 @@ GitOpsでは、CIツールで実施する手順が少ないため、基本的に
 ただし、リポジトリの分割戦略にポリリポジトリ (マイクロサービスごとにリポジトリを用意する) を採用している場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分はは特定のリポジトリで中央集権的に管理し、他のリポジトリでこれを読み込むようにした方が楽である。
 
 外部リポジトリに置いた設定ファイルをリモート参照できるような機能を持つCIツール (例：GitLab CI) であれば、ポリリポジトリ戦略と相性が良い。
-
-<br>
-
-### 全体像
-
-以下のフローで設計していく。
-
-```mermaid
-graph TD;
-A[はじめに] --> B[Opsの種類]
-
-B ---> | アプリを<br>コンテナ化していない | C[そのまま進む]
-B --> | アプリを<br>コンテナ化している | D[コンテナオーケストレーションツールの種類]
-
-C ---> | オンプレ | E[オンプレのための<br>CIOps]
-C ---> | AWS EC2, Google GCE | F[IaaSのための<br>CIOps]
-C ---> | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための<br>CIOps]
-
-D ----> | Docker compose  | H[Docker composeのための<br>CIOps]
-D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
-D --> | いずれも使っていない | J[そのまま進む]
-D ----> | オンプレ | K[オンプレのための<br>GitOps]
-D ----> | Google Anthos | L[IaaSのための<br>GitOps]
-D ----> | AWS EKS, Google GKE | M[CaaSのための<br>GitOps]
-
-J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
-J --> | dockerコマンド | O[dockerコマンドのための<br>CIOps]
-
-E ---> P[CIOpsのための<br>ブランチ戦略]
-
-F ---> P
-
-G ---> P
-
-H ---> P
-
-I ---> P
-
-K ---> Q[GitOpsのための<br>ブランチ戦略]
-
-L ---> Q
-
-M ---> Q
-
-N ---> P
-
-O ---> P
-```
 
 <br>
 

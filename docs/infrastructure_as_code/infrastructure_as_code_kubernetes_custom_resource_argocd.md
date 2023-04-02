@@ -71,7 +71,7 @@ Applicationから返却された情報 (例：マニフェストの差分) を�
 
 監視対象リポジトリを`/tmp`ディレクトリ以下にクローンする。
 
-もしHelmやKustomizeを採用している場合は、repo-serverは`helm template`コマンドを実行し、Node内にマニフェストを出力する。
+もしHelmやKustomizeを採用している場合は、repo-serverは`helm template`コマンドを実行することにより、Node内にマニフェストを出力する。
 
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \

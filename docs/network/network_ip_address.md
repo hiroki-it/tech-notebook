@@ -248,7 +248,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 #### ▼ ドメイン
 
-ドメインレジストラ (例：AWS Route53、GCP Cloud DNS、お名前ドットコム) によって管理される。
+ドメインレジストラ (例：AWS Route53、Google Cloud DNS、お名前ドットコム) によって管理される。
 
 > ↪️ 参考：
 >

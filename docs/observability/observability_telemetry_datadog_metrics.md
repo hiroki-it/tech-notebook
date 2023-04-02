@@ -42,20 +42,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 > ↪️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
-### トレースエージェント
 
-#### ▼ トレースエージェントとは
-
-dockerエージェントにて、`DD_APM_ENABLED`の環境変数に`true`を割り当てると、トレースエージェントが有効になる。
-
-APMエージェントを有効化し、分散トレースを収集できる。
-
-APMでは、分散トレースを元にして、マイクロサービス間の依存関係をマイクロサービスマップとして確認できる。
-
-> ↪️ 参考：
->
-> - https://docs.datadoghq.com/agent/docker/apm/?tab=linux
-> - https://docs.datadoghq.com/tracing/#explore-datadog-apm
 
 <br>
 

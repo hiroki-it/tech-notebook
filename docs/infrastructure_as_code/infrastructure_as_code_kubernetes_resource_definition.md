@@ -1416,7 +1416,7 @@ spec:
 
 Kubernetesの実行時に自動的に作成される。
 
-もし手動で作成する場合は、`kubectl`コマンドを実行し、その時に`--register-node`キーを`false`とする必要がある。
+もし手動で作成する場合は、`kubectl`コマンドを実行することにより、その時に`--register-node`キーを`false`とする必要がある。
 
 <br>
 

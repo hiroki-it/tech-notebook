@@ -13,7 +13,7 @@ description: クライアントパッケージ＠分散トレース収集の知�
 
 <br>
 
-## 01. PHP用パッケージ
+## 01. PHP用のクライアントパッケージ
 
 ### セットアップ
 
@@ -27,7 +27,7 @@ description: クライアントパッケージ＠分散トレース収集の知�
 # GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
 $ curl -L https://github.com/DataDog/dd-trace-php/releases/download/0.63.0/datadog-php-tracer_0.63.0_amd64.deb
 
-# パッケージをインストールをする。
+# クライアントパッケージをインストールをする。
 $ dpkg -i datadog-php-tracer_0.69_amd64.deb
 
 # 残骸ファイルを削除する。
@@ -70,7 +70,7 @@ env[DD_VERSION] = '<バージョンタグ>'
 
 #### ▼ インストール (コンテナの場合)
 
-アプリコンテナのDockerfileにて、PHP用パッケージをインストールする。
+アプリコンテナのDockerfileにて、PHP用のクライアントパッケージをインストールする。
 
 また、コンテナの環境変数として、`DD_SERVICE`、`DD_ENV`、`DD_VERSION`を渡す。
 
@@ -79,7 +79,7 @@ ENV DD_TRACE_VERSION=0.63.0
 
 # GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
 RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb \
-  `# パッケージをインストールする。` \
+  `# クライアントパッケージをインストールする。` \
   && dpkg -i datadog-php-tracer.deb \
   `# 残骸ファイルを削除する。` \
   && rm datadog-php-tracer.deb
@@ -179,7 +179,7 @@ datadogコンテナにトレースが送信されている場合は、受信で�
 
 <br>
 
-## 02. Node.js用パッケージ
+## 02. Node.js用のクライアントパッケージ
 
 ### セットアップ
 
@@ -277,7 +277,7 @@ APMのマイクロサービスのタグ名に反映される。
 
 <br>
 
-## 03. Go用パッケージ
+## 03. Go用のクライアントパッケージ
 
 ### gRPCを使わない場合
 

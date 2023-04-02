@@ -19,20 +19,52 @@ description: cluster-autoscaler＠ハードウェアリソース管理の知見�
 
 cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) と自動スケーリンググループ (例：AWS EC2 AutoScalingGroup) のAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
-metrics-serverから取得したPodのハードウェアの最大リソース消費量 (`.spec.resources`キーの合計値) と、Node全体のリソースの空き領域を定期的 (`10`分ほど) に比較し、Nodeをスケーリングさせる。
-
-現在の空きサイズではPodを新しく作成できないようであればNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。
+自動水平スケーリングの条件を何にするかに応じて、アーキテクチャが異なる。
 
 コントロールプレーンNodeに配置することが推奨されている。
 
 クラウドプロバイダーのコンソール画面からNodeの希望数を手動で増やし、しばらくするとcluster-autoscalerがこれを適切な数に自動的に元に戻すことから、動作を確認できる。
 
-![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
-
 > ↪️ 参考：
 >
 > - <https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
 > - <https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html>
+
+<br>
+
+### 条件に応じたアーキテクチャ
+
+#### ▼ Podのスケジューリングの可否が条件の場合
+
+Podのスケジューリングの可否を条件とする場合は、metrics-serverを使用する。
+
+取得したPodのハードウェアの最大リソース消費量 (`.spec.resources`キーの合計値) と、Node全体のリソースの空き領域を定期的 (`10`分ほど) に比較し、Nodeをスケーリングさせる。
+
+この時、現在の空きサイズではPodを新しく作成できないようであればNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。
+
+そのため、Podのスケジューリングの可否を条件とする場合には、metrics-serverも採用する必要がある。
+
+![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
+
+> ↪️ 参考：https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler
+
+#### ▼ Kubernetes以外のメトリクスを条件するとする場合
+
+Kubernetes以外のメトリクス (例：AWS CloudWatch、Google CloudMonitoring) を条件とする場合は、metrics-serverは不要である。
+
+> ↪️ 参考：https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#%E5%A4%96%E9%83%A8%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpacloudwatchclusterautoscaler
+
+<br>
+
+### karpenterとの違い
+
+karpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。
+
+一方でcluster-autoscalerは、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールする。
+
+![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+
+> ↪️ 参考：https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
 
 <br>
 
@@ -154,8 +186,6 @@ NodeGroups:
 
 ### スケールアウトの場合
 
-![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
-
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングのスケールアウトを実行する。
 
 `【１】`
@@ -175,6 +205,8 @@ NodeGroups:
 `【４】`
 
 : 結果として、`2`台それぞれで`70`%を消費するPodがスケジューリングされている。
+
+> ↪️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=44
 
 <br>
 
