@@ -53,10 +53,6 @@ description: 監視＠可観測性の知見を記録しています。
 
 > ↪️ 参考：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
 
-#### ▼ データの可視化
-
-分析したデータを監視バックエンドとして収集し、目視できるように可視化する。
-
 #### ▼ データの保管
 
 収集したデータ (ログ、メトリクス) をストレージに保管する。
@@ -74,6 +70,10 @@ description: 監視＠可観測性の知見を記録しています。
 >
 > - https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/
 > - https://qiita.com/yamotuki/items/628f9bf399cc9b59f3cb
+
+#### ▼ データの可視化
+
+分析したデータを監視バックエンドとして収集し、目視できるように可視化する。
 
 #### ▼ データの分析
 
