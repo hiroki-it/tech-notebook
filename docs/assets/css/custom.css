@@ -282,6 +282,15 @@ th, td {
     font-size: 0.60rem;
 }
 
+/* テーブルの幅を一杯に広げる */
+.md-typeset__table {
+    min-width: 100%;
+}
+
+.md-typeset table:not([class]) {
+    display: table;
+}
+
 /***************
  URL
 ***************/
@@ -412,3 +421,4 @@ blockquote {
         font-size: 0.90em;
     }
 }
+
