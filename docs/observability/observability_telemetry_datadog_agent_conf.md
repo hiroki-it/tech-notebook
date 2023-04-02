@@ -318,12 +318,12 @@ datadogコンテナの環境変数として設定する。
 
 > ↪️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
 
-| 変数名        | 説明                                                                         | 補足                                                                                                                                                                        | DatadogコンソールURL                         |
-| ------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| `DD_API_KEY`  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である。         |                                                                                                                                                                             |                                              |
-| `DD_ENV`      | APMを使用する場合、マイクロサービスやトレースにて、`env`タグに値を設定する。 |                                                                                                                                                                             | https://app.datadoghq.com/apm/services       |
-| `DD_HOSTNAME` | コンテナのホスト名を設定する。                                               | AWS ECS Fargateの場合は、これを使用しないようにする。<br>↪️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
-| `ECS_FARGATE` | AWS ECS Fargateを使用する場合、これを宣言する。                              |                                                                                                                                                                             |                                              |
+| 変数名        | 説明                                                                             | 補足                                                                                                                                                                        | DatadogコンソールURL                         |
+| ------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| `DD_API_KEY`  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である。             |                                                                                                                                                                             |                                              |
+| `DD_ENV`      | APMを使用する場合、マイクロサービスや分散トレースにて、`env`タグに値を設定する。 |                                                                                                                                                                             | https://app.datadoghq.com/apm/services       |
+| `DD_HOSTNAME` | コンテナのホスト名を設定する。                                                   | AWS ECS Fargateの場合は、これを使用しないようにする。<br>↪️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
+| `ECS_FARGATE` | AWS ECS Fargateを使用する場合、これを宣言する。                                  |                                                                                                                                                                             |                                              |
 
 <br>
 

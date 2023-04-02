@@ -134,7 +134,7 @@ GCP上で`kubectl`コマンドを実行して各クラウドプロバイダー�
 
 #### ▼ fleet-workload-identity
 
-GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐づける。
+GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。
 
 これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 

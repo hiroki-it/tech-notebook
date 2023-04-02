@@ -171,7 +171,7 @@ DATADOG TRACER CONFIGURATION => { ... } # ここに設定のJSONが得られる
 
 #### ▼ 受信ログの確認
 
-datadogコンテナにトレースが送信されている場合は、受信できていることを表すログを確認できる。
+datadogコンテナが分散トレースを受信している場合は、受信できていることを表すログを確認できる。
 
 ```log
 2022-01-01 12:00:00 UTC | TRACE | INFO | (pkg/trace/info/stats.go:111 in LogStats) | [lang:php lang_version:8.0.8 interpreter:fpm-fcgi tracer_version:0.64.1 endpoint_version:v0.4] -> traces received: 7, traces filtered: 0, traces amount: 25546 bytes, events extracted: 0, events sampled: 0

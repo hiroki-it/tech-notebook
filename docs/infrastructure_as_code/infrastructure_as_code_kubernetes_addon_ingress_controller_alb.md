@@ -21,7 +21,7 @@ AWS Load Balancerコントローラーは、aws-load-balancer-controller、Targe
 
 aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBやAWS NLBをプロビジョニングし、これらのリスナールールごとにターゲットグループもプロビジョングする。
 
-その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐づける。
+その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐付ける。
 
 これらにより、Cluster外からの通信をPodにルーティングできるようにする。
 
@@ -211,7 +211,7 @@ spec:
 
 ### ServiceAccount
 
-IRSAの仕組みで、PodとIAMロールを紐づける。
+IRSAの仕組みで、PodとIAMロールを紐付ける。
 
 ```yaml
 apiVersion: v1
@@ -268,14 +268,14 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
 
   version                       = "<モジュールのバージョン>"
 
-  # AWS Load BalancerコントローラーのPodに紐づけるIAMロール
+  # AWS Load BalancerコントローラーのPodに紐付けるIAMロール
   create_role                   = true
   role_name                     = "foo-aws-load-balancer-controller"
 
   # EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
-  # IAMロールに紐づけるIAMポリシー
+  # IAMロールに紐付けるIAMポリシー
   role_policy_arns              = [module.iam_policy_aws_load_balancer_controller.arn]
 
   # AWS Load BalancerコントローラーのPodのServiceAccount名
@@ -297,7 +297,7 @@ module "iam_policy_aws_load_balancer_controller" {
 
 > ↪️ 参考：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
 
-別途、AWS Load BalancerコントローラーのPodに紐づけるServiceAccountを作成し、IAMロールのARNを設定する。
+別途、AWS Load BalancerコントローラーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
 
 ```yaml
 apiVersion: v1
@@ -336,7 +336,7 @@ $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-co
 
 `【２】`
 
-: `.json`ファイルを使用して、ServiceAccountのIAMロールに紐づけるためのIAMポリシーを作成する。
+: `.json`ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。
 
 ```bash
 $ aws iam create-policy \
@@ -348,7 +348,7 @@ $ aws iam create-policy \
 
 : EKS ClusterをOIDCプロバイダーとして使用する。
 
-     これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐づけることができるようになる。
+     これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
 ```bash
 $ eksctl utils associate-iam-oidc-provider \
@@ -377,7 +377,7 @@ $ eksctl create iamserviceaccount \
     --approve
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/adot-iam.html
+> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
 
 `【５】`
 
@@ -429,7 +429,7 @@ AWS Load Balancerコントローラーのセットアップのうち、Kubernete
 
 : 指定したリージョンにAWS Load Balancerコントローラーをデプロイする。
 
-     この時、事前にマニフェストや`eksclt create iamserviceaccount`コマンドで作成したServiceAcountをALBに紐づける。
+     この時、事前にマニフェストや`eksclt create iamserviceaccount`コマンドで作成したServiceAcountをALBに紐付ける。
 
      IRSAの仕組みにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
@@ -649,7 +649,7 @@ metadata:
 
 #### ▼ `alb.ingress.kubernetes.io/waf-acl-id`キー
 
-LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。
+LBに紐付けるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -662,7 +662,7 @@ metadata:
 
 #### ▼ `alb.ingress.kubernetes.io/wafv2-acl-arn`キー
 
-LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。
+LBに紐付けるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

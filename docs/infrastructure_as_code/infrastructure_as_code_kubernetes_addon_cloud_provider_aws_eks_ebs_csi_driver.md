@@ -17,7 +17,7 @@ description: AWS EBS CSIドライバー＠AWS EKSアドオンの知見を記録�
 
 ### アーキテクチャ
 
-PersistentVolumeにAWS EBSを紐づけ、PodがAWS EBSをPersistentVolumeとして使用できるようにする。
+PersistentVolumeにAWS EBSを紐付け、PodがAWS EBSをPersistentVolumeとして使用できるようにする。
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
@@ -41,7 +41,7 @@ AWS EBS CSIドライバーは、Deployment (ebs-csi-controller) 、ServiceAccoun
 
 ### ServiceAccount
 
-IRSAの仕組みで、PodとIAMロールを紐づける。
+IRSAの仕組みで、PodとIAMロールを紐付ける。
 
 ```yaml
 apiVersion: v1
@@ -82,7 +82,7 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 > ↪️ 参考：
 >
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon#example-usage
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-ebs-csi.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html
 
 ```terraform
 module "iam_assumable_role_with_oidc_ebs_csi_driver" {
@@ -91,14 +91,14 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
 
   version                       = "<モジュールのバージョン>"
 
-  # EBS CSIコントローラーのPodに紐づけるIAMロール
+  # EBS CSIコントローラーのPodに紐付けるIAMロール
   create_role                   = true
   role_name                     = "foo-ebs-csi-driver"
 
   # EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
-  # IAMロールに紐づけるIAMポリシー
+  # IAMロールに紐付けるIAMポリシー
   role_policy_arns              = ["arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"]
 
   # EBS CSIコントローラーのPodのServiceAccount名
@@ -141,7 +141,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 > - https://kubernetes.io/ja/docs/concepts/storage/storage-classes/
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
 
-別途、EBS CSIドライバーのPodに紐づけるServiceAccountを作成し、IAMロールのARNを設定する。
+別途、EBS CSIドライバーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
 
 ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
 

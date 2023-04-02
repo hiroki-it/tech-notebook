@@ -381,7 +381,7 @@ $ brew install <パッケージ名>@<バージョンタグ>
 
 #### ▼ link
 
-brewによって`~/usr/local/Cellar `ディレクトリにインストールされたパッケージと、`~/usr/local/bin`ディレクトリに作成されたパッケージへのエイリアスを紐づける。
+brewによって`~/usr/local/Cellar `ディレクトリにインストールされたパッケージと、`~/usr/local/bin`ディレクトリに作成されたパッケージへのエイリアスを紐付ける。
 
 ```bash
 $ brew link <パッケージ名>

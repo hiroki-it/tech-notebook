@@ -107,7 +107,7 @@ functions:
 
 #### ▼ eventBridge
 
-Lambda関数に紐づけて作成するEventBridgeを設定する。
+Lambda関数に紐付けて作成するEventBridgeを設定する。
 
 **＊実装例＊**
 
@@ -125,9 +125,9 @@ functions:
 
 #### ▼ sqs
 
-Lambda関数に紐づけるSQSを設定する。
+Lambda関数に紐付けるSQSを設定する。
 
-新しくSQSを作成できず、既存のSQSと紐づける動作しかないことに注意する。
+新しくSQSを作成できず、既存のSQSと紐付ける動作しかないことに注意する。
 
 **＊実装例＊**
 
@@ -205,7 +205,7 @@ functions:
 
 ### role
 
-Lambda関数に紐づけるIAMロールを設定する。
+Lambda関数に紐付けるIAMロールを設定する。
 
 **＊実装例＊**
 
@@ -388,7 +388,7 @@ IAMロールを作成する。
 
 **＊実装例＊**
 
-IAMロールに紐づけるIAMポリシーは、`.json`ファイルで切り分けておいた方が良い。
+IAMロールに紐付けるIAMポリシーは、`.json`ファイルで切り分けておいた方が良い。
 
 ```yaml
 resources:

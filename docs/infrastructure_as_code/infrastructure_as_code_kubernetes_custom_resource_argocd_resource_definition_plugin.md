@@ -451,7 +451,7 @@ spec:
 
 #### ▼ ServiceAccountの作成
 
-`argocd-repo-server`コンテを持つPodに紐づけるServiceAccountを作成する。
+`argocd-repo-server`コンテを持つPodに紐付けるServiceAccountを作成する。
 
 ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用できるようにする。
 
@@ -462,7 +462,7 @@ metadata:
   name: argocd-repo-server
   namespace: argocd
   annotations:
-    # AWS KMSに認可スコープを持つIAMロールと紐づけられるようにする。
+    # AWS KMSに認可スコープを持つIAMロールと紐付けられるようにする。
     eks.amazonaws.com/role-arn: <IAMロールのARN>
 automountServiceAccountToken: true
 ```

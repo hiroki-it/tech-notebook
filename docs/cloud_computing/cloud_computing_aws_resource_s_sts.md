@@ -53,7 +53,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 任意のIDプロバイダーで認証済みのユーザー (フェデレーテッドユーザー) にIAMロールを付与することにより、AWSリソースにアクセスできるようにできる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
 
 <br>
 
@@ -63,7 +63,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 OIDCまたはWeb IDフェデレーションによる認証/認可を使用する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ CognitoをIDプロバイダーとする場合
 
@@ -93,7 +93,7 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 EKSをIDプロバイダーとして使用するように、`Federated`キーでEKS Clusterの識別子を設定する。
 
-これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐づけることができるようになる。
+これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
 また、`Condition`キーで特定のServiceAccountを指定できるようにする。
 
@@ -157,7 +157,7 @@ IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 SAMLによる認証/認可を使用する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_saml.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
 
 <br>
 

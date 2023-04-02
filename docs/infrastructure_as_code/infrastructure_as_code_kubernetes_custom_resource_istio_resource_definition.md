@@ -1448,7 +1448,7 @@ spec:
 
 紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
 
-IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐づけたDestinationRuleのサブセットにルーティングされる。
+IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングされる。
 
 > ↪️ 参考：
 >

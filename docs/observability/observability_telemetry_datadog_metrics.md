@@ -42,8 +42,6 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 > ↪️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
-
-
 <br>
 
 ## 02-02. Cluster/Nodeエージェント (Kubernetesの場合)

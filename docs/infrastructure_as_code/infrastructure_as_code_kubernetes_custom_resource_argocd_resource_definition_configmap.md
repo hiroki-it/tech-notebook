@@ -340,7 +340,7 @@ data:
 
 ## 04. argocd-rbac-cm
 
-ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐づける。
+ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐付ける。
 
 > ↪️ 参考：
 >
@@ -353,7 +353,7 @@ ArgoCDを構成するKubernetesリソースにアクセスするための認可�
 
 #### ▼ 記法
 
-Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐づける。
+Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐付ける。
 
 | 記号 | 項目                                                                                                    | 説明                                                                        |
 | ---- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -395,12 +395,12 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐づける。
+    # ロールに認可スコープを紐付ける。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
 
-    # グループにロールを紐づける。
+    # グループにロールを紐付ける。
     g, admin, role:admin
     g, app-team, role:app
     g, infra-team, role:infra
@@ -432,12 +432,12 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐づける。
+    # ロールに認可スコープを紐付ける。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, *, allow
     p, role:infra, *, *, *, allow
 
-    # グループにロールを紐づける。
+    # グループにロールを紐付ける。
     g, admin, role:admin
     g, app-team, role:app
     g, infra-team, role:infra
@@ -448,7 +448,7 @@ data:
 
 ### ArgoCDの認証を外部Webサイトに委譲する場合 (SSOの場合)
 
-#### ▼ 外部Webサイトのチームに紐づける場合
+#### ▼ 外部Webサイトのチームに紐付ける場合
 
 **＊実装例＊**
 
@@ -472,12 +472,12 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐づける。
+    # ロールに認可スコープを紐付ける。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
 
-    # グループにロールを紐づける。
+    # グループにロールを紐付ける。
     g, example-org.github.com:admin, role:admin
     g, example-org.github.com:app-team, role:app
     g, example-org.github.com:infra-team, role:infra
@@ -508,21 +508,21 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐づける。
+    # ロールに認可スコープを紐付ける。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, *, allow
     p, role:infra, *, *, *, allow
 
-    # グループにロールを紐づける。
+    # グループにロールを紐付ける。
     g, example-org.github.com:admin, role:admin
     g, example-org.github.com:app-team, role:app
     g, example-org.github.com:infra-team, role:infra
   scopes: "[groups]"
 ```
 
-#### ▼ 外部Webサイトのメールアドレスに紐づける場合
+#### ▼ 外部Webサイトのメールアドレスに紐付ける場合
 
-以下のように、ロールと認可スコープを紐づける。
+以下のように、ロールと認可スコープを紐付ける。
 
 - `admin`ロールに、全ての認可スコープ
 - `app`ロールに、`app`プロジェクト配下の全ての認可スコープ
@@ -538,12 +538,12 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐づける。
+    # ロールに認可スコープを紐付ける。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
 
-    # グループにロールを紐づける。
+    # グループにロールを紐付ける。
     g, admin@gmail.com, role:admin
     g, app-team@gmail.com, role:app
     g, infra-team@gmail.com, role:infra

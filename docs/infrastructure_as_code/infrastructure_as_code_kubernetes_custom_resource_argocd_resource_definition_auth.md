@@ -124,7 +124,7 @@ rules:
 
 ## 02. 専用RoleBinding
 
-ServiceAccountとRoleを紐づけるために、RoleBindingを作成する。
+ServiceAccountとRoleを紐付けるために、RoleBindingを作成する。
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

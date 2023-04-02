@@ -286,7 +286,7 @@ spec:
 
 ### .spec.serviceAccountName
 
-AlertmanagerのPodに紐づけるServiceAccountの名前を設定する。
+AlertmanagerのPodに紐付けるServiceAccountの名前を設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

@@ -150,11 +150,11 @@ PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPod�
 
 aws-eks-vpc-cniアドオンは、他のCNIアドオンにない独自モードを持ち、Podの仮想ネットワークインターフェース (`veth`) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
 
-AWSでは、Node (EC2、Fargate) 上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの`2`つを付与できる。
+AWSでは、Node (EC2、Fargate) 上でスケジューリングするPodの数だけNodeにENIを紐付け、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの`2`つを付与できる。
 
-NodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
+NodeのENIとPodを紐付けることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
 
-Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する (2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり`1`個しかPodをスケジューリングできない) 。
+Nodeのインスタンスタイプごとに、紐付けられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する (2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり`1`個しかPodをスケジューリングできない) 。
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
 

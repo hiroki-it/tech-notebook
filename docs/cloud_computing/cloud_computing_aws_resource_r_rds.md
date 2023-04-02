@@ -345,7 +345,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 メジャーバージョンのアップグレードの場合は、グローバルクラスター自体をアップグレードする。
 
-> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html
+> ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html
 
 <br>
 

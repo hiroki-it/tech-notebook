@@ -629,7 +629,7 @@ metadata:
   name: foo-deployment
 spec:
   selector:
-    matchLabels: # Deploymentに紐づけるPodのmetadata.labelsキー
+    matchLabels: # Deploymentに紐付けるPodのmetadata.labelsキー
       app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
@@ -1193,7 +1193,7 @@ spec:
 
 #### ▼ controllerとは
 
-標準のIngressの代わりに外部Ingressを使用する場合、外部のIngressとIngressコントローラーを紐づけられるように、コントローラーのAPIグループを設定する。
+標準のIngressの代わりに外部Ingressを使用する場合、外部のIngressとIngressコントローラーを紐付けられるように、コントローラーのAPIグループを設定する。
 
 > ↪️ 参考：
 >
@@ -2060,7 +2060,7 @@ spec:
 
 Pod内で起動するコンテナを設定する。
 
-PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。
+PodをDeploymentやReplicaSetに紐付けずに使用することは非推奨である。
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
 
@@ -2656,7 +2656,7 @@ spec:
 
 プライベートリポジトリからコンテナイメージをプルするため、プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。
 
-別途、ServiceAccountの`.imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐づける。
+別途、ServiceAccountの`.imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。
 
 これにより、PodはSecretにあるプライベートリポジトリのクレデンシャル情報を使用できるようになる。
 
@@ -2875,7 +2875,7 @@ spec:
 
 #### ▼ serviceAccountNameとは
 
-PodにServiceAccountを紐づける。
+PodにServiceAccountを紐付ける。
 
 Podのプロセスに認証済みのIDが付与され、Kubernetesと通信できるようになる。
 
@@ -3454,7 +3454,7 @@ rules:
 
 #### ▼ roleRef.nameとは
 
-RoleBindingを使用して紐づけるRoleの名前を設定する。
+RoleBindingを使用して紐付けるRoleの名前を設定する。
 
 > ↪️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
@@ -3497,7 +3497,7 @@ metadata:
   name: foo-role-binding
 subjects:
   - apiGroup: ""
-    kind: ServiceAccount # ServiceAccountに紐づける。
+    kind: ServiceAccount # ServiceAccountに紐付ける。
     name: foo-service-account # ユーザー名 (system:useraccounts:foo-service-account) でもよい。
 ```
 
@@ -3508,7 +3508,7 @@ metadata:
   name: foo-cluster-role-binding
 subjects:
   - apiGroup: rbac.authorization.k8s.io
-    kind: User # UserAccountに紐づける。
+    kind: User # UserAccountに紐付ける。
     name: foo-user-account
 ```
 
@@ -4105,7 +4105,7 @@ automountServiceAccountToken: false
 
 プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。
 
-これにより、ServiceAccountが紐づけられたPodは、プライベートリポジトリのクレデンシャル情報を使用できるようになる。
+これにより、ServiceAccountが紐付けられたPodは、プライベートリポジトリのクレデンシャル情報を使用できるようになる。
 
 > ↪️ 参考：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
 

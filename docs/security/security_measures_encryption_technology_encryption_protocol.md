@@ -200,7 +200,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 > ↪️ 参考：
 >
 > - https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
-> - https://docs.aws.amazon.com/ja_jp/app-mesh/latest/userguide/mutual-tls.html
+> - https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html
 
 <br>
 

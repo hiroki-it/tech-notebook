@@ -221,7 +221,7 @@ data:
       username: hiroki-it # IAMユーザー名
       groups:
         - system:masters # ClusterRoleBindingに定義されたGroup名
-    - rolearn: arn:aws:iam::<AWSアカウントID>:role/bar-role # ワーカーNodeに紐づけたロール名
+    - rolearn: arn:aws:iam::<AWSアカウントID>:role/bar-role # ワーカーNodeに紐付けたロール名
       username: system:node:{{EC2PrivateDNSName}} # ワーカーNodeの識別子
       groups:
         - system:bootstrappers
@@ -258,7 +258,7 @@ data:
 
 EKSをIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
 
-ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証済みのServiceAccountにIAMロールを紐づけることができるようになる。
+ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
 ```yaml
 apiVersion: v1
@@ -272,7 +272,7 @@ metadata:
 
 もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、EC2ワーカーNodeやFargateワーカーNodeのIAMロールが使用される。
 
-IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate) にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
+IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate) にしかIAMロールを紐付けることができず、KubernetesリソースにIAMロールを直接的に紐付けることはできなかった。
 
 > ↪️ 参考：
 >

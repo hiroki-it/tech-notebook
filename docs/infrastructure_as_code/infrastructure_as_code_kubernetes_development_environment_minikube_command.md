@@ -812,7 +812,7 @@ Switched to context "foo-cluster".
 
 #### ▼ tunnelとは
 
-LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。
+LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐付ける。
 
 紐付けられたLoadBalancer Serviceには『External Endpoints (`http://127.0.0.1:80`) 』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。
 

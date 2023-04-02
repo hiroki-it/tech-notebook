@@ -684,7 +684,7 @@ NodeのNICの宛先情報は、Nodeの作成方法 (AWS EC2、GCP GCE、VMWare) 
 
 Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。
 
-この時、`1`個のNodeのポート番号につき、`1`個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。
+この時、`1`個のNodeのポート番号につき、`1`個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。
 
 一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
 
@@ -985,7 +985,7 @@ Node上にボリュームを作成し、これをコンテナにバインドマ�
 
 外部ストレージ (例：AWS EBS、NFS、など) 上のボリュームを作成し、コンテナにマウントする。
 
-この場合、StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部ストレージ上のボリュームを紐づける。
+この場合、StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部ストレージ上のボリュームを紐付ける。
 
 また、外部ストレージを使用する場合には、CSIドライバーも必要である。
 
@@ -1291,7 +1291,7 @@ kube-apiserverが、認証済みのKubernetesリソースからのリクエス�
 | ロール名    | 説明                                                                                 | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ----------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                    | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>↪️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+| ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                    | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐付ける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>↪️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
 
 > ↪️ 参考：
 >
@@ -1310,12 +1310,12 @@ Role、ClusterRole、を使用して認可スコープを制御する仕組み�
 
 #### ▼ RoleBinding、ClusterRoleBindingとは
 
-RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
+RoleやClusterRoleを、UserAccountやServiceAccountに紐付ける。
 
 | バインディング名   | 説明                             | 補足                                                               |
 | ------------------ | -------------------------------- | ------------------------------------------------------------------ |
-| RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。               |
-| ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+| RoleBinding        | RoleをAccountに紐付ける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。               |
+| ClusterRoleBinding | ClusterRoleをAccountに紐付ける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
 
 > ↪️ 参考：
 >

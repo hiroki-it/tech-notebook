@@ -132,8 +132,8 @@ $ git config --global core.autocrlf <値>
 
 | 設定値 | チェックアウト時 | コミット時 |
 | ------ | ---------------- | ---------- |
-| input  | 変換しない       | CRLF ➡︎ LF  |
-| true   | LF ➡︎ CRLF        | CRLF ➡︎ LF  |
+| input  | 変換しない       | CRLF ➡︎ LF |
+| true   | LF ➡︎ CRLF       | CRLF ➡︎ LF |
 | false  | 変換しない       | 変換しない |
 
 #### ▼ --global core.editor
@@ -150,7 +150,7 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 ### init
 
-ローカルマシンのディレクトリとGitHubリポジトリを紐づける。
+ローカルマシンのディレクトリとGitHubリポジトリを紐付ける。
 
 エディタにGitHubリポジトリを再反映するためにも使用できる。
 
