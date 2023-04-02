@@ -25,13 +25,37 @@
 
 ## セットアップ
 
-### Prettier
+1. プラグインのURLを確認する。
 
 ```bash
-# インストール
-$ yarn
+$ asdf plugin list all | grep <.tool-versionsファイルに記載のプラグイン名>
+```
 
-# フォーマッターを実行
+2. 確認したURLを使用して、プラグインを登録する。
+
+```bash
+$ asdf plugin add <プラグイン名> <URL>
+```
+
+3. プラグインをインストールする。
+
+```bash
+$ asdf install
+```
+
+<br>
+
+## 整形
+
+1. インストールする。
+
+```bash
+$ yarn
+```
+
+2. フォーマッターを実行する。
+
+```bash
 $ yarn prettier -w --no-bracket-spacing **/*.md
 ```
 
