@@ -21,9 +21,9 @@ description: Systems Manager (旧SSM) ＠Sで始まるAWSリソースの知見�
 
 ```
 チェンジカレンダー
-↓
+⬇︎
 オートメーション、EventBridge (カレンダー取得処理、対象リソースの開始停止処理、を定義)
-↓
+⬇︎
 EC2、RDS
 ```
 

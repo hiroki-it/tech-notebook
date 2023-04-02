@@ -82,8 +82,8 @@ description: テレメトリー間の紐付け＠Datadog
 
 なぜ接尾辞を付けないかというと、分散トレースと他のテレメトリーを紐づける時に、同じマイクロサービス名をタグに使用しなければならないためである。
 
-〇：`laravel` → `order`、`order-service`
-✕：`laravel` → `order-laravel`、`order-service-laravel`
+〇：`laravel` ➡︎ `order`、`order-service`
+✕：`laravel` ➡︎ `order-laravel`、`order-service-laravel`
 
 フレームワーク以外のパッケージなどの分散トレースに関しては、紐づけられないことを許容している。
 

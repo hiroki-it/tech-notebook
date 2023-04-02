@@ -125,7 +125,7 @@ D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
 D --> | いずれも使っていない | J[そのまま進む]
 D ----> | オンプレ | K[オンプレのための<br>GitOps]
 D ----> | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための<br>GitOps]
-D ----> | AWS EKS, Google GKE | M[CaaSのための<br>GitOps]
+D ----> | AWS EKS, GCP GKE | M[CaaSのための<br>GitOps]
 
 J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
 J --> | dockerコマンド | O[dockerコマンドのための<br>CIOps]

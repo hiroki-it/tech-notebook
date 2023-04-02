@@ -608,11 +608,11 @@ Cluster-IPはNode外から宛先として指定できないため、インバウ
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 Ingressコントローラー ⇄ Ingress
-↓
+⬇︎
 ClusterIP Service
-↓
+⬇︎
 Pod
 ```
 
@@ -644,9 +644,9 @@ NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定�
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 NodePort Service
-↓
+⬇︎
 Pod
 ```
 
@@ -654,13 +654,13 @@ Pod
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 AWS Route53
-↓
+⬇︎
 AWS ALB
-↓
+⬇︎
 NodePort Service
-↓
+⬇︎
 Pod
 ```
 
@@ -672,11 +672,11 @@ Pod
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 Ingressコントローラー ⇄ Ingress
-↓
+⬇︎
 ClusterIP Service (実体はNodePort Service)
-↓
+⬇︎
 Pod
 ```
 
@@ -700,13 +700,13 @@ External-IPはNode外から宛先IPアドレスとして指定できるため、
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 AWS Route53
-↓
+⬇︎
 AWS ALB
-↓
+⬇︎
 LoadBalancer Service
-↓
+⬇︎
 Pod
 ```
 

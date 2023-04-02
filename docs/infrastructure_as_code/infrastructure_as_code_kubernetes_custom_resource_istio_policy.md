@@ -196,19 +196,19 @@ LoadBalancer Serviceを使用する場合、以下のようなネットワーク
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 AWS Route53
-↓
+⬇︎
 AWS ALB
-↓
+⬇︎
 LoadBalancer Service (Istio IngressGateway)
-↓
+⬇︎
 Gateway
-↓
+⬇︎
 VirtualService
-↓
+⬇︎
 Service
-↓
+⬇︎
 Pod
 ```
 
@@ -224,15 +224,15 @@ NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定�
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 NodePort Service (Istio IngressGateway)
-↓
+⬇︎
 Gateway
-↓
+⬇︎
 VirtualService
-↓
+⬇︎
 Service
-↓
+⬇︎
 Pod
 ```
 
@@ -244,19 +244,19 @@ Pod
 
 ```
 パブリックネットワーク
-↓
+⬇︎
 AWS Route53
-↓
+⬇︎
 AWS ALB
-↓
+⬇︎
 NodePort Service (Istio IngressGateway)
-↓
+⬇︎
 Gateway
-↓
+⬇︎
 VirtualService
-↓
+⬇︎
 Service
-↓
+⬇︎
 Pod
 ```
 

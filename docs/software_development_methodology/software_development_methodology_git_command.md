@@ -132,8 +132,8 @@ $ git config --global core.autocrlf <値>
 
 | 設定値 | チェックアウト時 | コミット時 |
 | ------ | ---------------- | ---------- |
-| input  | 変換しない       | CRLF → LF  |
-| true   | LF → CRLF        | CRLF → LF  |
+| input  | 変換しない       | CRLF ➡︎ LF  |
+| true   | LF ➡︎ CRLF        | CRLF ➡︎ LF  |
 | false  | 変換しない       | 変換しない |
 
 #### ▼ --global core.editor

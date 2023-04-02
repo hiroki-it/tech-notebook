@@ -80,15 +80,15 @@ ztunnelのPodを経由した段階でHTTPSプロトコルになる。ハード�
 
 ```text
 外
-↓
+⬇︎
 ----- Node
-↓
+⬇︎
 リダイレクト
-↓
+⬇︎
 ztunnelのPod (L4)
-↓
+⬇︎
 waypointのPod (L7)
-↓
+⬇︎
 アプリコンテナのPod
 ```
 
@@ -96,15 +96,15 @@ waypointのPod (L7)
 
 ```text
 外
-↑
+⬆︎
 ----- Node
-↑
+⬆︎
 waypointのPod (L7)
-↑
+⬆︎
 ztunnelのPod (L4)
-↑
+⬆︎
 リダイレクト
-↑
+⬆︎
 アプリコンテナのPod
 ```
 

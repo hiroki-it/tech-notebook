@@ -35,7 +35,7 @@ description: L4層＠OSI参照モデルの知見を記録しています。
 
 ![トランスポート層からアプリケーション層へのパケットの移動](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランスポート層からアプリケーション層へのパケットの移動.PNG)
 
-#### ▼ クライアントからのリクエスト時 (図の 『`→`』 )
+#### ▼ クライアントからのリクエスト時 (図の 『`➡︎`』 )
 
 `【１】`
 

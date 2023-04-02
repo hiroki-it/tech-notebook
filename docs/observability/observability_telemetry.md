@@ -23,16 +23,19 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 プッシュ型の場合、メトリクス収集のためのエージェントが必要である。
 
-| アクション                          | CloudWatchメトリクス/Cloudモニタリング | Datadog |          OpenTelemetry          | Prometheus |
+`()`内では、各ツールのコンポーネント名を表す。
+
+| アクション                          | AWS CloudWatch | Datadog |          OpenTelemetry          | Prometheus |
 |--------------------------------| :------------------------------------: | :-----: | :-----------------------------: | :--------: |
-| メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) | ✅<br> (プッシュ型) | ✅<br> (プッシュ型) | ✅<br> (プッシュ型) |     ✅<br>(プル型)     |
+| メトリクスのデータポイントの作成 | ✅<br> (cloudwatchエージェント) | ✅<br> (datadogエージェント) | ✅<br/>(クライアントパッケージ) | ✅<br>(Exporter) |
+| メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) | ✅<br> (cloudwatchエージェント) | ✅<br> (datadogエージェント) | ✅<br> (OTelコレクター) |     ✅<br>(prometheusサーバー)     |
 | ⬇︎                              |⬇︎|    ⬇︎    |    ⬇︎     |   ⬇︎    |
-| ビルトインローカルストレージへの保管             |                   ✅                   |   ✅    |                                 |            |
-| 分析                             |                   ✅                   |   ✅    |                                 |     ✅     |
-| ダッシュボードによる可視化                  |                   ✅                   |   ✅    |                                 |     ✅     |
-| レポートの作成                        |                                        |   ✅    |                                 |            |
+| ビルトインローカルストレージへの保管             |                   ✅<br/>(AWS CloudWatchメトリクス)                   |   ✅    | - | - |
+| 分析                             |                   ✅<br/>(AWS CloudWatchメトリクス)                   |   ✅    | - |     -     |
+| ダッシュボードによる可視化                  |                   ✅<br/>(AWS CloudWatchメトリクス)                   |   ✅    | - |     -     |
+| レポートの作成                        | ✅<br/>(AWS CloudWatch Contributor Insights) |   ✅    | - | - |
 | ⬇︎                              |                   ⬇︎                    |    ⬇︎    |                ⬇︎                |     ⬇︎      |
-| アラート                           |                   ✅                   |   ✅    |                                 |     ✅     |
+| アラートの作成                        |                   ✅<br>(AWS CloudWatchアラーム)                   |   ✅    | - |     ✅     |
 
 > ↪️ 参考：
 >
@@ -41,16 +44,16 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 #### ▼ 組み合わせの例
 
-| アクション                                                   |            例1             |                       例2                       |
-| ------------------------------------------------------------ | :------------------------: | :---------------------------------------------: |
-| メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) | Exporter<br>またはcAdvisor | CloudWatchエージェント/CloudLoggingエージェント |
-| ⬇︎                                                            |             ⬇︎              |                        ⬇︎                        |
-| ビルトインローカルストレージへの保管                         |         Prometheus         |     CloudWatchメトリクス/Cloudモニタリング      |
-| 分析                                                         |         Prometheus         |     CloudWatchメトリクス/Cloudモニタリング      |
-| ダッシュボードによる可視化                                   |    Prometheus、Grafana     |     CloudWatchメトリクス/Cloudモニタリング      |
-| レポートの作成                                               |                            |                                                 |
-| ⬇︎                                                            |             ⬇︎              |                        ⬇︎                        |
-| アラート                                                     |         Prometheus         |     CloudWatchメトリクス/Cloudモニタリング      |
+| アクション                                                   |            例2             |            例1             |         例3         |
+| ------------------------------------------------------------ | :------------------------: | :------------------------: | :-----------------: |
+| メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) | AWS CloudWatchエージェント | Exporter<br>またはcAdvisor | datadogエージェント |
+| ⬇︎                                                            |             ⬇︎              |             ⬇︎              |          ⬇︎          |
+| ビルトインローカルストレージへの保管                         |  AWS CloudWatchメトリクス  |         Prometheus         |       Datadog       |
+| 分析                                                         |  AWS CloudWatchメトリクス  |         Prometheus         |       Datadog       |
+| ダッシュボードによる可視化                                   |  AWS CloudWatchメトリクス  |          Grafana           |       Datadog       |
+| レポートの作成                                               |             -              |             -              |       Datadog       |
+| ⬇︎                                                            |             ⬇︎              |             ⬇︎              |          ⬇︎          |
+| アラートの作成                                               |   AWS CloudWatchアラーム   |         Prometheus         |       Datadog       |
 
 <br>
 
@@ -62,16 +65,19 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 いずれもプッシュ型で、ログ収集のためのエージェントが必要である。
 
-| アクション              | CloudWatchログ/Cloudロギング | Elasticsearch | Fluentd/Fluentbit |  Grafana loki   | Logstash |          OpenTelemetry          | Promtail |
-|--------------------| :--------------------------: | :-----------: | :---------------: | :-------------: | :------: | :-----------------------------: | :------: |
-| ログの収集<br>(いずれもプッシュ型) | ✅ | ✅ |        ✅         |                 |    ✅    | ✅ |    ✅    |
-| ⬇︎                  |                              |       ⬇︎       |         ⬇︎         |        ⬇︎        |    ⬇︎     |                ⬇︎                |    ⬇︎     |
-| ビルトインローカルストレージへの保管 |              ✅              |      ✅       |                   | ✅<br> (BoltDB) |          |                                 |          |
-| 分析                 |              ✅              |      ✅       |                   |       ✅        |    ✅    |                                 |          |
-| ダッシュボードによる可視化      |              ✅              |      ✅       |                   |       ✅        |          |                                 |          |
-| レポートの作成            |                              |               |                   |                 |          |                                 |          |
-| ⬇︎                  |                              |       ⬇︎       |         ⬇︎         |        ⬇︎        |    ⬇︎     |                ⬇︎                |    ⬇︎     |
-| アラート               |              ✅              |               |                   |                 |          |                                 |          |
+`()`内では、各ツールのコンポーネント名を表す。
+
+| アクション              | AWS CloudWatch | Elasticsearch | Fluentd<br>Fluentbit | Grafana loki |          OpenTelemetry          |
+|--------------------| :--------------------------: | :-----------: | :---------------: | :------: | :-----------------------------: |
+| ログの作成<br>(アプリ側が実施する) | - | - | - | - | - |
+| ログの収集<br>(いずれもプッシュ型) | ✅<br>(cloudwatchエージェント) | ✅<br>(Logstach) |        ✅         |    ✅<br>(Promtail)    | ✅<br/>(OTelコレクター) |
+| ⬇︎                  |                              |       ⬇︎       |         ⬇︎         |    ⬇︎     |                ⬇︎                |
+| ビルトインローカルストレージへの保管 |              ✅<br/>(AWS CloudWatchログ)              | - | - | ✅<br> (BoltDB) | - |
+| 分析                 |              ✅<br>(AWS CloudWatchメトリクスのログメトリクス)              |      ✅       | - | ✅ | - |
+| ダッシュボードによる可視化      |              ✅<br/>(AWS CloudWatchログ)              |      ✅       | - | ✅ | - |
+| レポートの作成            | ✅<br/>(AWS CloudWatch Contributor Insights) | - | - | - | - |
+| ⬇︎                  | ⬇︎ |       ⬇︎       |         ⬇︎         |    ⬇︎     |                ⬇︎                |
+| アラートの作成            |              ✅<br/>(AWS CloudWatchアラーム)              | - | - | - | - |
 
 > ↪️ 参考：
 >
@@ -81,16 +87,16 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 #### ▼ 組み合わせの例
 
-| アクション                           |                             例1                              |     例2      |
-| ------------------------------------ | :----------------------------------------------------------: | :----------: |
-| ログの収集<br>(いずれもプッシュ型)   |          Fluentd/Fluentbit、CloudWatchエージェント           |   Promtail   |
-| ⬇︎                                    |                              ⬇︎                               |      ⬇︎       |
-| ビルトインローカルストレージへの保管 |                 CloudWatchログ/Cloudロギング                 | Grafana loki |
-| 分析                                 | CloudWatchログインサイト、CloudWatchメトリクスによるログメトリクス | Grafana loki |
-| ダッシュボードによる可視化           |                 CloudWatchログ/Cloudロギング                 |   Grafana    |
-| レポートの作成                       |                                                              |              |
-| ⬇︎                                    |                              ⬇︎                               |      ⬇︎       |
-| アラート                             |                 CloudWatchログ/Cloudロギング                 |  Prometheus  |
+| アクション                           |                     例1                      |     例2      |          例3          |
+| ------------------------------------ | :------------------------------------------: | :----------: | :-------------------: |
+| ログの収集<br>(いずれもプッシュ型)   |             Fluentd<br>Fluentbit             |   Promtail   | Fluentd<br/>Fluentbit |
+| ⬇︎                                    |                      ⬇︎                       |      ⬇︎       |           ⬇︎           |
+| ビルトインローカルストレージへの保管 |              AWS CloudWatchログ              | Grafana loki |        Datadog        |
+| 分析                                 |         AWS CloudWatchログインサイト         | Grafana loki |        Datadog        |
+| ダッシュボードによる可視化           | AWS CloudWatchメトリクスによるログメトリクス |   Grafana    |        Datadog        |
+| レポートの作成                       |                      -                       |      -       |        Datadog        |
+| ⬇︎                                    |                      ⬇︎                       |      ⬇︎       |           ⬇︎           |
+| アラートの作成                       |            AWS CloudWatchアラーム            |  Prometheus  |        Datadog        |
 
 <br>
 
@@ -102,20 +108,24 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 いずれもプッシュ型で、分散トレース収集のためのエージェントが必要である。
 
-| アクション                   | AWS X-Ray | Datadog |     Jaeger     |          OpenTelemetry          | Pinpoint | Zipkin |
-|-------------------------| :-------: | :-----: |:--------------:|:-------------------------------:| :------: | :----: |
-| 分散トレースの収集<br>(プッシュ型) |    ✅     |   ✅    |       ✅        |                ✅                |    ✅    |   ✅   |
-| ⬇︎                       |     ⬇︎     |    ⬇︎    |       ⬇︎        |                ⬇︎                |    ⬇︎     |   ⬇︎    |
-| ビルトインローカルストレージへの保管        |    ✅     |   ✅    | ✅<br> (Badger) | ✅<br> (Cassandra、Elasticsearch) |          |        |
-| 分析                                        |    ✅     |   ✅    |       ✅        |                ✅                |    ✅    |   ✅   |
-| ダッシュボードによる可視化                  |    ✅     |   ✅    |       ✅        |                                 |    ✅    |   ✅   |
-| レポートの作成                              |           |         |                |                                 |          |        |
-| ⬇︎                                           |     ⬇︎     |    ⬇︎    |       ⬇︎        |                ⬇︎                |    ⬇︎     |   ⬇︎    |
-| アラート                                    |           |         |                |                                 |          |        |
+`()`内では、各ツールのコンポーネント名を表す。
+
+| アクション                   | AWS X-Ray | Datadog |     Grafana Tempo     |     Jaeger     |          OpenTelemetry          | Zipkin |
+|-------------------------| :-------: | :-----: |:--------------:|:-------------------------------:| :------: |:-----------------------:|
+| スパンの作成 | ✅<br>(クライアントパッケージ) | ✅<br>(クライアントパッケージ) | - | ✅<br>(jaegerエージェント) | ✅<br>(クライアントパッケージ) | - |
+| 分散トレースの収集<br>(プッシュ型) | ✅<br>(xrayエージェント) |   ✅<br>(datadogエージェント)   | - |       ✅<br>(jaegerコレクター)       |                ✅<br>(OTelコレクター)                |   ✅<br>(zipkinコレクター)   |
+| ⬇︎                       |     ⬇︎     |    ⬇︎    | ⬇︎ |       ⬇︎        |                ⬇︎                |   ⬇︎    |
+| ビルトインローカルストレージへの保管        |    ✅     |   ✅    | - | ✅<br> (Badger) | ✅<br> (Cassandra、Elasticsearch) | - |
+| 分析                                        |    ✅     |   ✅    |       ✅       |       ✅        | - |   ✅   |
+| ダッシュボードによる可視化                  |    ✅     |   ✅    |       ✅       |       ✅        | - |   ✅   |
+| レポートの作成                              | - | - | - | - | - | - |
+| ⬇︎                                           |     ⬇︎     |    ⬇︎    |       ⬇︎      |       ⬇︎        |                ⬇︎                |   ⬇︎    |
+| アラートの作成                                 | - | - | - | - | - | - |
 
 > ↪️ 参考：
 >
 > - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 > - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
+> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#022
 
 <br>

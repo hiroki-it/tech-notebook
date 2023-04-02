@@ -122,15 +122,15 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 > ↪️ 参考：https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
 
-#### ▼ DaemonSetとPod内サイドカーの比較
+#### ▼ DaemonSetパターンとPod内サイドカーパターンの比較
 
-|                                  | Pod内サイドカー | DaemonSet |
-| -------------------------------- | :-------------: | :-------: |
-| Nodeのハードウェアリソース消費量 |        ×        |    ⭕️    |
-| Nodeのストレージ使用量           |       ⭕️       |     △     |
-| FluentBit/Fluentdの冗長性        |      ⭕️️       |     △     |
-| アプリごとの設定カスタマイズ     |       ⭕️       |     △     |
-| 単純性                           |        ×        |    ⭕️    |
+|                                  | Pod内サイドカーパターン | DaemonSetパターン |
+| -------------------------------- | :-------------: |:-------------:|
+| Nodeのハードウェアリソース消費量 |        ×        |      ⭕️       |
+| Nodeのストレージ使用量           |       ⭕️       |       △       |
+| FluentBit/Fluentdの冗長性        |      ⭕️️       |       △       |
+| アプリごとの設定カスタマイズ     |       ⭕️       |       △       |
+| 単純性                           |        ×        |      ⭕️       |
 
 > ↪️ 参考：
 >

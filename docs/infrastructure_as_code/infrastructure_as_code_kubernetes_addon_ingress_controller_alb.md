@@ -50,13 +50,13 @@ Ingressでインバウンド通信を受信する場合に使用し、NodePort S
 
 ```yaml
 パブリックネットワーク
-↓
+⬇︎
 AWS Route53
-↓
+⬇︎
 AWS Load Balancerコントローラー、AWS ALB (Ingressの設定で決まる)
-↓
+⬇︎
 ClusterIP Service
-↓
+⬇︎
 Pod
 ```
 
