@@ -130,6 +130,12 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 ### テレメトリー間の紐付け
 
+#### ▼ メトリクスと分散トレースの紐付け
+
+記入中...
+
+#### ▼ ログと分散トレースの紐付け
+
 記入中...
 
 <br>
@@ -500,5 +506,20 @@ SaaSツールによってJSON型の構造が異なる。
 : `a3`：アプリケーションがレスポンスをクライアントに返信する。
 
 ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png)
+
+<br>
+
+## 05. その他のテレメトリー
+
+メトリクス/ログ/分散トレースに加えて、新しいテレメトリーがいくつか提唱されている。
+
+- Events (ドメインイベントのようなユーザー定義の処理イベント)
+- Exception
+- Profiles
+
+> ↪️ 参考：
+>
+> - https://medium.com/@YuriShkuro/temple-six-pillars-of-observability-4ac3e3deb402
+> - https://www.appdynamics.com/ja_jp/topics/what-is-open-telemetry#~1-what-is-opentelemetry
 
 <br>

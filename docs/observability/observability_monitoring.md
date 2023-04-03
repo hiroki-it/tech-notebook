@@ -45,9 +45,9 @@ description: 監視＠可観測性の知見を記録しています。
 
 プル型の場合、監視バックエンド自体がデータを収集する。
 
-一方でプル型の場合、監視バックエンドがエージェントを提供しており、これがデータを収集する。
+一方でプル型の場合、監視バックエンドがエージェントを提供しており、これがデータを監視バックエンドに送信する。
 
-なお、ログは全てプッシュ型になる。
+メトリクスはプル型またはプッシュ型の収集ツールからなり、ログと分散トレースはプッシュ型の収集ツールのみからなる。
 
 ![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monitoring_collecting_pull_push.png)
 

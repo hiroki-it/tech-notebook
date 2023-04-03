@@ -19,9 +19,38 @@ Istioの各コンポーネントの機密でない変数やファイルを管理
 
 <br>
 
-## 02. istio-cm
+## 02 istio-ca-root-cert
 
-### istio-cmとは
+### istio-ca-root-certとは
+
+Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたルート証明書を設定する。
+
+<br>
+
+### root-cert.pem
+
+#### ▼ root-cert.pemとは
+
+ルート証明書を設定する。
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: istio-ca-root-cert
+  namespace: istio-system
+data:
+  root-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    *****
+    -----END CERTIFICATE-----
+```
+
+<br>
+
+## 03. istio-mesh-cm
+
+### istio-mesh-cmとは
 
 全ての`istio-proxy`コンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
@@ -41,7 +70,7 @@ Istioの各コンポーネントの機密でない変数やファイルを管理
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -62,7 +91,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -83,7 +112,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -121,7 +150,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -152,7 +181,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -188,7 +217,7 @@ oauth2-proxyのPodに紐づくServiceを識別できるようにする。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -241,7 +270,7 @@ istio-proxyコンテナが、必ずアプリコンテナよりも先に起動す
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -286,7 +315,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -307,7 +336,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -328,7 +357,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -349,7 +378,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-
@@ -357,5 +386,54 @@ data:
 ```
 
 > ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
+<br>
+
+## 04. istio-sidecar-injector
+
+### config
+
+Istioのサイドカーインジェクションの設定を定義する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-sidecar-injector-<リビジョン番号>
+  namespace: istio-system
+data:
+  config: |-
+    defaultTemplates: [sidecar]
+    policy: enabled
+    alwaysInjectSelector: []
+    neverInjectSelector:[]
+    injectedAnnotations:
+    template: "{{ Template_Version_And_Istio_Version_Mismatched_Check_Installation }}"
+    templates:
+      sidecar: |
+
+        ... # Helmのテンプレート
+```
+
+<br>
+
+### values
+
+Istioのサイドカーインジェクションの設定ファイルを、Helmのテンプレートから作成する場合に、これの`values`ファイルを管理する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-sidecar-injector-<リビジョン番号>
+  namespace: istio-system
+data:
+  values: |-
+    { 
+
+      ... # Helmのvalueファイル 
+
+    }
+```
 
 <br>

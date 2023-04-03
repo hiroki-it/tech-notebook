@@ -167,7 +167,7 @@ oauth2-proxyのPodに紐づくServiceを識別できるようにする。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-cm
+  name: istio-mesh-cm
   namespace: istio-system
 data:
   mesh: |-

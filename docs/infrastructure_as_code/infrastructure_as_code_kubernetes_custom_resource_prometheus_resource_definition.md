@@ -429,6 +429,37 @@ Serviceを持つPodではServiceMonitorを使用し、これを持たないPod�
 
 <br>
 
+### .spec.namespaceSelector
+
+PodMonitorを有効化する時の任意の`metadata.labels`キー設定する。
+
+Prometheusは、`metadata.labels`キー有効化したNamespace内のPodを監視する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: foo-pod-monitor
+spec:
+  namespaceSelector:
+    # 任意のmetadata.labelsキーを設定する。
+    prometheus-pod-monitor: enabled
+```
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    # PodMonitorを有効化したいNamespaceに付与する
+    prometheus-pod-monitor: enabled
+  name: foo-namespace
+```
+
+> ↪️ 参考：https://prometheus-operator.dev/docs/operator/design/#podmonitor
+
+<br>
+
 ## 05. Probe
 
 ### Probeとは

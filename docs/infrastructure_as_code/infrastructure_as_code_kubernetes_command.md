@@ -752,7 +752,7 @@ $ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
 全てのPodのイメージをアルファベット順で取得する。
 
 ```bash
-$ kubectl get pod --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | \
+$ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" | \
     tr -s '[[:space:]]' '\n' | \
     sort | \
     uniq -c

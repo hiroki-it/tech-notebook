@@ -1,0 +1,45 @@
+---
+title: 【IT技術の知見】Secret系＠リソース定義
+description: Secret系＠リソース定義の知見を記録しています。
+---
+
+# Secret系＠リソース定義
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+
+<br>
+
+## 01. 専用Secret
+
+Istioの各種コンポーネントの機密な変数やファイルを管理する。
+
+<br>
+
+## 02. istio-ca-secret
+
+### istio-ca-secretとは
+
+Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、中間CA証明書を設定する。
+
+ルート認証局から発行されたルート証明書は、istio-ca-root-cert (ConfigMap) に設定する。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: istio-ca-secret
+  namespace: istio-system
+type: istio.io/ca-root
+data:
+  ca-cert.pem: *****
+  ca-key.pem: ******
+  cert-chain.pem: ""
+  key.pem: ""
+  root-cert.pem: ""
+```
+
+<br>

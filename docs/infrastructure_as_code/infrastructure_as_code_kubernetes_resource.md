@@ -1052,44 +1052,57 @@ N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node a
 
 しかし、Podに紐づくPersistentVolumeClaimは元々の`a`ゾーンのNodeのPersistentVolumeを指定してるため、`volume node affinity conflict`になる。
 
+注意点として、何らかの理由 (例：スポットインスタンス) で、特定のAZにNodeを配置できない場合、この手順では解決できない。
+
 `【１】`
 
-: PodがいずれのNodeでスケジューリングされているのか確認する。
+: 起動できないPodをいずれのNodeでスケジューリングしようとしているのか確認する。
 
 ```bash
-$ kubectl get pod <Pod名> -o wide
+$ kubectl describe pod <Pod名> -o wide | grep Node:
 ```
 
 `【２】`
 
-: PersistentVolumeClaimの`volume.kubernetes.io/selected-node`キーで、いずれのNodeのPersistentVolumeを指定しているかを確認する。
-
-     おそらく（１）の手順で確認したNodeとは異なるゾーンであるはずである。
+: Nodeのあるゾーンを確認する。
 
 ```bash
-$ kubectl describe pvc <PersistentVolumeClaim名>
-
-...
-
-Annotations:   pv.kubernetes.io/bind-completed: yes
-               pv.kubernetes.io/bound-by-controller: yes
-               volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
-               volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal # これ
-
-...
+$ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
 ```
 
 `【３】`
+
+: PersistentVolumeClaimの`volume.kubernetes.io/selected-node`キーで、PodがいずれのNodeのPersistentVolumeを指定しているかを確認する。
+
+     このNode名をメモしておく。
+
+```bash
+$ kubectl describe pvc <PVC名> -n prometheus  | grep selected-node
+```
+
+`【４】`
+
+: Nodeのあるゾーンを確認する。
+
+```bash
+$ kubectl describe node  ip-*-*-*-*.ap-northeast-1.compute.internal  | grep zone
+```
+
+`【５】`
+
+: 【１】と【４】の手順で確認したNodeのゾーンが異なるゾーンであることを確認する。
+
+`【６】`
 
 : PersistentVolumeClaimを削除する。
 
      この時PersistentVolumeは削除されないため、保管データは削除されない。
 
-`【４】`
+`【７】`
 
 : StatefulSet自体を再作成する。
 
-`【５】`
+`【８】`
 
 : StatefulSetがPersistentVolumeClaimを新しく作成する。
 

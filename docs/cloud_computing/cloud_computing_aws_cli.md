@@ -697,6 +697,36 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 <br>
 
+### Security Group
+
+#### ▼ authorize-security-group-ingress
+
+指定したセキュリティグループで、インバウンドルールをまとめて作成する。
+
+```bash
+$ aws ec2 authorize-security-group-ingress \
+    --group-id sg-***** \
+    --security-group-rule-ids sgr-***** sgr-***** sgr-***** sgr-***** \
+    --region ap-northeast-1
+```
+
+> ↪️ 参考：https://michimani.net/post/aws-handle-security-group-via-cli/#%e3%82%a4%e3%83%b3%e3%83%90%e3%82%a6%e3%83%b3%e3%83%89%e3%83%ab%e3%83%bc%e3%83%ab%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4
+
+#### ▼ revoke-security-group-ingress
+
+指定したセキュリティグループで、インバウンドルールをまとめて削除する。
+
+```bash
+$ aws ec2 revoke-security-group-ingress \
+    --group-id sg-***** \
+    --security-group-rule-ids sgr-***** sgr-***** sgr-***** sgr-***** \
+    --region ap-northeast-1
+```
+
+> ↪️ 参考：https://michimani.net/post/aws-handle-security-group-via-cli/#%e3%82%a4%e3%83%b3%e3%83%90%e3%82%a6%e3%83%b3%e3%83%89%e3%83%ab%e3%83%bc%e3%83%ab%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4
+
+<br>
+
 ## 04. 認証/認可の手法
 
 ### SSO
