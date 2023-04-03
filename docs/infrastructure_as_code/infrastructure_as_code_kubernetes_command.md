@@ -666,7 +666,8 @@ NAME      STATUS   ROLES                  AGE   VERSION
 foo-node  Ready    worker                 12h   v1.22.0 # ワーカーNode
 bar-node  Ready    worker                 12h   v1.22.0 # 同上
 baz-node  Ready    worker                 12h   v1.22.0 # 同上
-# qux-node  Ready    control-plane,master   12h   v1.22.0 # セルフマネージドなコントロールプレーンNodeを使用する場合
+# qux-node  Ready    control-plane,master   12h   v1.22.0 # セルフマネージドなコントロールプレーンNodeを使用する場合はこれも表示される
+
 ```
 
 **＊例＊**

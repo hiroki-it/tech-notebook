@@ -52,7 +52,7 @@ data:
 
 ### istio-mesh-cmとは
 
-全ての`istio-proxy`コンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
+Istiodコントロールプレーン (`discovery`コンテナ) のため、全ての`istio-proxy`コンテナにグローバルに設定する変数を管理する。
 
 代わりに、IstioOperatorの`.spec.meshConfig`キーで定義することもできるが、これは非推奨である。
 
@@ -64,7 +64,7 @@ data:
 
 #### ▼ accessLogEncodingとは
 
-アクセスログのファイル形式を設定する。
+`istio-proxy`コンテナで作成するアクセスログのファイル形式を設定する。
 
 ```yaml
 apiVersion: v1
@@ -85,7 +85,7 @@ data:
 
 #### ▼ accessLogFileとは
 
-全ての`istio-proxy`コンテナに関して、アクセスログの出力先を設定する。
+`istio-proxy`コンテナで作成するアクセスログの出力先を設定する。
 
 ```yaml
 apiVersion: v1
@@ -142,9 +142,58 @@ data:
 
 #### ▼ defaultConfigとは
 
-`istio-proxy`コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。
+Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
 
-これを上書きしたい場合は、各Podの`.metadata.annotations.proxy.istio.io/config.configPath`キーにオプションを設定する。
+各Podで個別に設定したい場合、`.metadata.annotations.proxy.istio.io/config.configPath`キーにオプションを設定する。
+
+> ↪️ 参考：
+>
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+> - https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
+
+#### ▼ discoveryAddress
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    defaultConfig:
+      discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
+```
+
+#### ▼ enablePrometheusMerge
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    defaultConfig:
+      enablePrometheusMerge: true
+```
+
+#### ▼ holdApplicationUntilProxyStarts
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    defaultConfig:
+      holdApplicationUntilProxyStarts: true
+```
+
+#### ▼ proxyMetadata
 
 ```yaml
 apiVersion: v1
@@ -160,10 +209,57 @@ data:
         BOOTSTRAP_XDS_AGENT: "true"
 ```
 
-> ↪️ 参考：
->
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
+#### ▼ rootNamespace
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    defaultConfig:
+      rootNamespace: istio-system
+```
+
+#### ▼ tracing
+
+`istio-proxy`コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Jaeger、Zipkin、など) で計装するかを設定する。
+
+アプリコンテナからスパン作成に関する責務をサイドカーに切り分け、各アプリコンテナに共通的に提供できる。
+
+`.data.mesh.defaultConfig.enableTracing`キーを有効化する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    defaultConfig:
+      enableTracing: true
+      tracing:
+        sampling: 100
+        zipkin:
+          address: "jaeger-collector.observability:9411"
+```
+
+#### ▼ trustDomain
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |-
+    defaultConfig:
+      trustDomain: cluster.local
+```
 
 <br>
 
@@ -171,11 +267,9 @@ data:
 
 #### ▼ enableTracingとは
 
-`istio-proxy`コンテナで分散トレースのスパンを作成するか否かを設定する。
+`istio-proxy`コンテナでトレースIDとスパンIDを作成するか否かを設定する。
 
 これを有効化した場合に、`.data.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Jaeger、Zipkin、など) で計装するかを設定する。
-
-アプリコンテナからスパン作成に関する責務をサイドカーに切り分け、各アプリコンテナに共通的に提供できる。
 
 ```yaml
 apiVersion: v1
@@ -264,7 +358,7 @@ spec:
 
 #### ▼ holdApplicationUntilProxyStartsとは
 
-istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
+`istio-proxy`コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
 
 ```yaml
 apiVersion: v1
@@ -393,7 +487,7 @@ data:
 
 ### config
 
-Istioのサイドカーインジェクションの設定を定義する。
+Istiodコントロールプレーン (`discovery`コンテナ) のため、Istioのサイドカーインジェクションの変数や設定テンプレートを管理する。
 
 ```yaml
 apiVersion: v1
@@ -419,7 +513,7 @@ data:
 
 ### values
 
-Istioのサイドカーインジェクションの設定ファイルを、Helmのテンプレートから作成する場合に、これの`values`ファイルを管理する。
+istio-sidecar-injector (ConfigMap) に出力できる変数を管理する。
 
 ```yaml
 apiVersion: v1
@@ -430,9 +524,9 @@ metadata:
 data:
   values: |-
     { 
-
-      ... # Helmのvalueファイル 
-
+      global: { ... }
+      revision: <リビジョン番号>
+      sidecarInjectorWebhook: { ... }
     }
 ```
 

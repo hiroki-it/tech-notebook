@@ -1077,7 +1077,7 @@ $ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
      このNode名をメモしておく。
 
 ```bash
-$ kubectl describe pvc <PVC名> -n prometheus  | grep selected-node
+$ kubectl describe pvc <PVC名> -n prometheus | grep selected-node
 ```
 
 `【４】`
@@ -1085,7 +1085,7 @@ $ kubectl describe pvc <PVC名> -n prometheus  | grep selected-node
 : Nodeのあるゾーンを確認する。
 
 ```bash
-$ kubectl describe node  ip-*-*-*-*.ap-northeast-1.compute.internal  | grep zone
+$ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 ```
 
 `【５】`
