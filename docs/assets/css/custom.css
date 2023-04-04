@@ -413,6 +413,14 @@ blockquote {
     .md-sidebar {
         width: 14.0rem;
     }
+
+    .md-sidebar__scrollwrap {
+        width: 13rem;
+    }
+
+    .md-nav__list {
+        width: 12rem;
+    }
 }
 
 /* SPのみ */
