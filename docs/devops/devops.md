@@ -110,7 +110,6 @@ DevOpsの実現方法には、CIOpsまたはGitOpsがある。
 以下のフローで、要件にあったOpsを選んでいく。
 
 ```mermaid
-
 graph TD;
   A[はじめに] --> B[Opsの種類]
 
