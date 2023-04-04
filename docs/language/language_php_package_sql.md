@@ -142,7 +142,7 @@ $staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
 $staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
 
 
-// DBと接続 (イコールの間にスペースを入れるとエラーになる)
+// DBと接続 (イコールの間にスペースを入れるとエラーになってしまう)
 $dsn = "mysql:dbname=kizukeba_pronami_php;
 host=kizukebapronamiphp
 charaset=UTF-8";

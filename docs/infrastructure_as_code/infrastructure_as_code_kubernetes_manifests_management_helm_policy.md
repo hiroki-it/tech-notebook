@@ -328,7 +328,7 @@ Helmは、カスタムリソース定義を含むチャートのインストー�
 
      Helmは、カスタムリソース定義の更新に対応していない (作成には対応している) .
 
-     そのため、```kubectl```コマンドを使用してこれを更新する。
+     そのため、`kubectl`コマンドを使用してこれを更新する。
 
 ```bash
 $ kubectl apply -f <新バージョンのカスタムリソース定義のマニフェストのURL>
@@ -344,7 +344,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/foo-crd -n
 
 `【３】`
 
-: 補足として、もしカスタムリソース定義をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずにエラーになる。
+: 補足として、もしカスタムリソース定義をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずにエラーになってしまう。
 
 ```bash
 Error: unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "<カスタムリソース名>>" in version "<カスタムリソースのAPIグループ>"
@@ -354,7 +354,7 @@ Error: unable to build kubernetes objects from release manifest: [unable to reco
 
 : 旧バージョンのカスタムリソース定義を削除する。
 
-     Helmは、カスタムリソース定義の削除に対応していないため、```kubectl delete```コマンドを使用する。
+     Helmは、カスタムリソース定義の削除に対応していないため、`kubectl delete```コマンドを使用する。
 
 ```bash
 $ kubectl delete -f <旧バージョンのカスタムリソース定義のマニフェストのURL>

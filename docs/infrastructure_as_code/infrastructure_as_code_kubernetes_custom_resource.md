@@ -39,7 +39,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 #### ▼ 共通エラー
 
-以下のようなエラーになる場合、カスタムリソース定義が存在していないか、カスタムリソース定義が古くて新しいカスタムリソースが対応していない可能性がある。
+以下のようなエラーになってしまう場合、カスタムリソース定義が存在していないか、カスタムリソース定義が古くて新しいカスタムリソースが対応していない可能性がある。
 
 ```bash
 Failed to render chart: exit status 1: Error: unable to build kubernetes objects from release manifest: error validating ""

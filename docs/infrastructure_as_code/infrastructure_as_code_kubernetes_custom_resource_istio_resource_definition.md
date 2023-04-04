@@ -1024,7 +1024,7 @@ spec:
     mode: STRICT # 相互TLS認証を使用する。
 ```
 
-相互TLS認証を使用する場合はSSL証明書が必要になり、SSL証明書が無いと以下のようなエラーになる。
+相互TLS認証を使用する場合はSSL証明書が必要になり、SSL証明書が無いと以下のようなエラーになってしまう。
 
 ```bash
 transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED

@@ -1187,7 +1187,7 @@ func main() {
 	fmt.Printf("%#v\n", foo) // 1
 	fmt.Printf("%#v\n", bar) // 2
 
-	// エラーになる。
+	// エラーになってしまう。
 	// invalid operation: foo + bar (operator + not defined on interface)
 	baz := foo + bar
 
@@ -1842,7 +1842,7 @@ func main() {
 }
 ```
 
-変数に対する代入は関数内でしかできないため、宣言と代入を同時に行う型推論を使用するとエラーになる。
+変数に対する代入は関数内でしかできないため、宣言と代入を同時に行う型推論を使用するとエラーになってしまう。
 
 ```go
 package main
@@ -1851,7 +1851,7 @@ import (
     "fmt"
 )
 
-// エラーになる。
+// エラーになってしまう。
 text := "Hello World!"
 
 func main() {

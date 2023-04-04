@@ -349,4 +349,74 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 > ↪️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
 
+#### ▼ `istioctl`コマンドの場合
+
+> ↪️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
+
+#### ▼ `helm`コマンドの場合
+
+`【１】`
+
+: Helmではカスタムリソース定義を管理しないようにし、`kubectl`コマンドでこれを作成する。
+
+```bash
+$ kubectl diff -f https://raw.githubusercontent.com/istio/istio/1.15.3/manifests/charts/base/crds/crd-all.gen.yaml
+```
+
+`【２】`
+
+: istiodチャートを使用して、古いバージョンのMutatingWebhookConfigurationのみを削除する。
+
+    この時、既存のリリースは古いリリースとして扱う。
+
+```bash
+$ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
+```
+
+`【３】`
+
+: istiodチャートを使用して、新しいバージョンのMutatingWebhookConfigurationを作成しつつ、Istiodコントロールプレーンに関するKubernetesリソースを変更する。
+
+     この時、リリースを新しく命名する。
+
+```bash
+$ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <新しいバージョン>
+```
+
+`【４】`
+
+: 特定のNamespaceをアップグレードする。
+
+`【５】`
+
+: 動作確認し、問題なければ、残りのNamespaceもアップグレードする。
+
+`【６】`
+
+: istiodチャートを使用して、古いリリースで作成したIstiodコントロールプレーンに関するKubernetesリソースを削除する。
+
+```bash
+$ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
+```
+
+`【７】`
+
+: istio-baseを使用して、Istioに関するカスタムリソース定義を変更する。
+
+     この時、リリースを新しく命名する。
+
+```bash
+$ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/base -n istio-system --version <新しいバージョン>
+```
+
+`【８】`
+
+: gatewayチャートを使用して、IstioのIngressGatewayに関するKubernetesリソースを変更する。
+
+     この時、リリースを新しく命名する。
+
+```bash
+$ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/gateway -n istio-ingress --version <新しいバージョン>
+```
+
 <br>

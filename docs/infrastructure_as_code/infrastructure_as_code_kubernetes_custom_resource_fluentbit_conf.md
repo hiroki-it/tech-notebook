@@ -314,9 +314,13 @@ $ fluent-bit \
 
 <br>
 
-### criプラグイン
+### 独自criプラグイン
 
-#### ▼ criプラグインとは
+#### ▼ 独自criプラグインとは
+
+執筆時点 (2023/04/04) では、公式がcriプラグインを提供していない。
+
+そこで、独自のcriプラグインを定義する。
 
 Containerdのコンテナが作成する非構造化ログを構造化ログに変換する。
 
@@ -324,9 +328,27 @@ Containerdのコンテナが作成する非構造化ログを構造化ログに�
 
 **＊実装例＊**
 
+PARSERセクションで、criプラグインを定義する。
+
 ```bash
 [PARSER]
     Name        cri
+    Format      regex
+    Regex       ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<message>.*)$
+    Time_Key    time
+    Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+```
+
+INPUTセクションでcriプラグインを読み込む。
+
+```bash
+[INPUT]
+    Name            tail
+    Path            /var/log/containers/*.log
+    Parser          cri
+    Tag             kube.*
+    Mem_Buf_Limit   5MB
+    Skip_Long_Lines On
 ```
 
 例えば、以下のような非構造化ログがあったとする。
@@ -334,35 +356,22 @@ Containerdのコンテナが作成する非構造化ログを構造化ログに�
 criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキー>`を認識する。
 
 ```log
-2020-10-10T00:10:00.333333333Z stdout F Hello Fluentd
+2021-12-17T08:03:23.918838346+09:00 stderr F 2021/12/17 08:03:23 [INFO] start worker processes
 ```
 
 その場合、構造化されて以下のようなログとなる。
 
 ```yaml
 {
-  "time": "2020-10-10T00:10:00.333333333Z",
+  "time": "2021-12-17T08:03:23.918838346+09:00",
   "record":
     {
-      "stream": "stdout",
+      "stream": "stderr",
       "logtag": "F",
-      "message": "Hello Fluentd",
-      "time": "2020-10-10T00:10:00.333333333Z",
+      "message": "2021/12/17 08:03:23 [INFO] start worker processes",
+      "time": "2021-12-17T08:03:23.918838346+09:00",
     },
 }
-```
-
-> ↪️ 参考：https://github.com/fluent/fluent-plugin-parser-cri#log-and-configuration-example
-
-**＊実装例＊**
-
-```bash
-[PARSER]
-    Name        cri
-    Format      regex
-    Regex       ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$
-    Time_Key    time
-    Time_Format %Y-%m-%dT%H:%M:%S.%L%z
 ```
 
 > ↪️ 参考：https://docs.fluentbit.io/manual/installation/kubernetes#container-runtime-interface-cri-parser

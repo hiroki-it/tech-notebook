@@ -131,13 +131,13 @@ spec:
 ```bash
 $ kubelet \
     --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf \
-    ``# kubeletの設定ファイル` \
+    `# kubeletの設定ファイル` \
     --kubeconfig=/etc/kubernetes/kubelet.conf \
     --config=/var/lib/kubelet/config.yaml \
     --authentication-token-webhook=true
     --authorization-mode=Webhook \
     --container-runtime=remote \
-    ``# コンテナランタイムの設定` \
+    `# コンテナランタイムの設定` \
     --container-runtime-endpoint=unix:///run/containerd/containerd.sock \
     --max-pods=250 \
     --node-ip=*.*.*.* \

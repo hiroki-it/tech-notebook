@@ -184,7 +184,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 7.4
-          # これはエラーになる
+          # これはエラーになってしまう
           # php-version: $PHP_VERSION
 ```
 
@@ -198,7 +198,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          # これはエラーになる
+          # これはエラーになってしまう
           php-version: $PHP_VERSION
 ```
 
@@ -294,7 +294,7 @@ runs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout # これはエラーになる。
+    - name: Checkout # これはエラーになってしまう。
       uses: actions/checkout@v2
     - name: Echo
       shell: bash # シェルの種類を設定する。
@@ -495,7 +495,7 @@ jobs:
 
 ```yaml
 inputs:
-  foo: # マスキングされ、.yamlファイルの構文解析でエラーになる
+  foo: # マスキングされ、.yamlファイルの構文解析でエラーになってしまう
     required: true
 
 runs:

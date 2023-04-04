@@ -63,7 +63,11 @@ spec:
 
 `【３】`
 
-: `docker`プロセスが起動しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。 ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。
+: `docker`プロセスが起動しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。
+
+     ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。
+
+     Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。
 
 ```bash
 $ systemctl status docker
@@ -75,7 +79,9 @@ $ systemctl status docker
 
 `【４】`
 
-: `bmctl`コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるため、このログを`tail`コマンドで確認する。
+: `bmctl`コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。
+
+     また、ログの出力先が表示されるため、このログを`tail`コマンドで確認する。
 
 ```bash
 # カレントディレクトリは、baremetalである必要がある。
@@ -102,7 +108,9 @@ $ tail -f ~/baremetal/<ログの出力先>
 
 `【６】`
 
-: アップグレードが開始する。コントロールプレーンコンポーネントやNodeコンポーネントからエラーが発生するため、アラートで確認する。
+: アップグレードが開始する。
+
+     コントロールプレーンコンポーネントやNodeコンポーネントからエラーが発生するため、アラートで確認する。
 
 <br>
 
@@ -110,7 +118,9 @@ $ tail -f ~/baremetal/<ログの出力先>
 
 `【７】`
 
-: アップグレードが終了する。Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
+: アップグレードが終了する。
+
+     Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
 
 ```bash
 $ kubectl get cluster -A -o yaml
@@ -139,9 +149,9 @@ $ kubectl get node -o wide
 
 : Crash、Terminating、Error、などのPodがいないかを確認する。
 
-     また、Podの作成が始まらないと、```kubectl get pod```コマンドにPod自体が表示されない。
+     また、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
 
-     そのため、```kubectl get deployment```で、Podの管理リソース (例：Deployment) の全てのPodが```Ready```コンディションかどうかを確認しておく。
+     そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが`Ready`コンディションかどうかを確認しておく。
 
 ```bash
 $ kubectl get pod -A -o wide
@@ -244,7 +254,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 
 : 新しいIstiodコントロールプレーンをインストールする。
 
-     事前にバージョン管理している```asmcli```コマンドを使用して、```asmcli```コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
+     事前にバージョン管理している`asmcli`コマンドを使用して、`asmcli`コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
 
 ```bash
 $ ./repository/asmcli-1140-0 install \
@@ -272,7 +282,7 @@ $ ./repository/asmcli-1140-0 install \
 
 : Istiodコントロールプレーンがデプロイされたことを確認する。
 
-     補足として、```asmcli```コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。
+     補足として、`asmcli`コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。
 
 ```bash
 # Deployment
@@ -362,11 +372,11 @@ metadata:
 
 : Istioの`istio.io/rev`キーを使用して、特定のNamespaceの`istio-injection`キーを上書きする。
 
-     多くの場合、```istio-proxy```コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
+     多くの場合、`istio-proxy`コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
 
-     これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
+     これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは`istio.io/rev`キーを推奨している。
 
-     もしGitOpsツール (例：ArgoCD) でNamespaceを管理している場合は、```kubectl label```コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+     もしGitOpsツール (例：ArgoCD) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 ```bash
 # IngressGatewayの特定のNamespace
@@ -395,7 +405,7 @@ $ kubectl get namespace -L istio.io/rev
 
 : IngressGatewayのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
 
-     カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
+     カナリア方式のため、webhook-serviceがそのままで新しい`istio-proxy`コンテナをインジェクションできる。
 
 ```bash
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
@@ -405,7 +415,7 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 
 : 新バージョンの`istio-proxy`コンテナがインジェクションされたことを、イメージタグから確認する。
 
-     代わりに、```istioctl proxy-status```コマンドでも良い。
+     代わりに、`istioctl proxy-status`コマンドでも良い。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1140-0
@@ -427,7 +437,7 @@ $ istioctl proxy-status
 
 : アプリケーションのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
 
-     カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
+     カナリア方式のため、webhook-serviceがそのままで新しい`istio-proxy`コンテナをインジェクションできる。
 
 ```bash
 $ kubectl rollout restart deployment app-deployment -n app
@@ -437,7 +447,7 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 : 新バージョンの`istio-proxy`コンテナがインジェクションされたことを、イメージタグから確認する。
 
-     代わりに、```istioctl proxy-status```コマンドでも良い。
+     代わりに、`istioctl proxy-status`コマンドでも良い。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1140-0
@@ -531,9 +541,9 @@ istio.io/tag: default
 
 : Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。
 
-     MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス (```istio.io/tag```キーの値) の実体 (```istio.io/rev```キーの値) が旧バージョンのままなため、新バージョンに変更する。
+     MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス (`istio.io/tag`キーの値) の実体 (`istio.io/rev`キーの値) が旧バージョンのままなため、新バージョンに変更する。
 
-     ```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
+     `istioctl`コマンドは、`asmcli`コマンドの```output_dir```オプションで指定したディレクトリにある。
 
 ```bash
 # asmcliコマンドのoutput_dirオプションで指定したディレクトリのistioctlコマンド
@@ -618,9 +628,9 @@ $ kubectl get IstioOperator -n istio-system
 
 : 全てのPodが正常に稼働していることを確認する。
 
-     また、Podの作成が始まらないと、```kubectl get pod```コマンドにPod自体が表示されない。
+     また、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
 
-     そのため、```kubectl get deployment```で、Podの管理リソース (例：Deployment) の全てのPodが```Ready```コンディションかどうかを確認しておく。
+     そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが`Ready`コンディションかどうかを確認しておく。
 
 ```bash
 $ kubectl get pod -A -o wide

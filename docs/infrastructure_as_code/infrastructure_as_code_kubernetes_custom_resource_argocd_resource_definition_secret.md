@@ -658,7 +658,7 @@ Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 
 `【６】`
 
-: もし手順がうまく行っていない場合、Applicationで指定するClusterのURLがArgoCDに登録されていないとして、以下のようなエラーになる。
+: もし手順がうまく行っていない場合、Applicationで指定するClusterのURLがArgoCDに登録されていないとして、以下のようなエラーになってしまう。
 
 ```bash
 cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured

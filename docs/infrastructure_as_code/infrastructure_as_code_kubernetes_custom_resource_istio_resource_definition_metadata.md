@@ -196,7 +196,13 @@ SIGKILLシグナルを`istio-proxy`コンテナに送信するまでに待機す
 
 この待機時間を経た後に、SIGKILLシグナルを`istio-proxy`コンテナに送信する。
 
+時間が長すぎると、`istio-proxy`コンテナの終了に必要な時間が長くなり、Deploymentのローリングアップデートに必要以上に時間がかかってしまう。
+
+時間が短すぎると、Envoyが終了するのを待たずに`istio-proxy`コンテナが終了してしまうため、Envoyがエラーになってしまう。
+
 **＊実装例＊**
+
+`istio-proxy`コンテナを`75`秒後に終了し始める。
 
 ```yaml
 apiVersion: apps/v1

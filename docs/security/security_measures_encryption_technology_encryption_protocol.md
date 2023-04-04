@@ -72,10 +72,10 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 物理webサーバーであっても、webサーバーであっても、SSH公開鍵認証によるリモート通信/操作の仕組みは同じである。
 
-| 要素           | ツール例                        |
-| -------------- | ------------------------------- |
-| 送信元マシン内 | OpenSSH、TeraTerm、Putty、など  |
-| 宛先マシン内   | OpenSSH、Apache MINA/SSHD、など |
+| 要素           | OpenSSH | TeraTerm | Putty | Apache MINA/SSHD |
+| -------------- | ------- | -------- | ----- | ---------------- |
+| 送信元マシン内 | OpenSSH | TeraTerm | Putty | -                |
+| 宛先マシン内   | OpenSSH | -        | -     | Apache MINA/SSHD |
 
 #### ▼ SSHポートフォワーディング (SSHポート転送)
 
@@ -128,10 +128,10 @@ SSHを介して、ファイル転送を行う。
 
 SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をより拡張したものである。
 
-| 要素           | ツール例                |
-| -------------- | ----------------------- |
-| 送信元マシン内 | WinSCP、Filezilla、など |
-| 宛先マシン内   | なし                    |
+| 要素           | WinSCP | Filezilla |
+| -------------- | ------ | --------- |
+| 送信元マシン内 | WinSCP | Filezilla |
+| 宛先マシン内   | -      | -         |
 
 <br>
 
@@ -147,11 +147,11 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 その場合、ローカルマシンのコピーを一度リモート先にあるメモ帳などにペーストし、これを改めてコピーアンドペーストすると良い。
 
-| 要素                                     | ツール例                         |
-| ---------------------------------------- | -------------------------------- |
-| 送信元マシン内                           | Chromeリモートデスクトップ、など |
-| ゲートウェイマシン内                     | Guacamole (guardを含む) 、など   |
-| 宛先マシン (サーバー、デスクトップPC) 内 | なし                             |
+| 要素                                     | Chromeリモートデスクトップ | Guacamole               |
+| ---------------------------------------- | -------------------------- | ----------------------- |
+| 送信元マシン内                           | Chromeリモートデスクトップ | -                       |
+| ゲートウェイマシン内                     | -                          | Guacamole (guardを含む) |
+| 宛先マシン (サーバー、デスクトップPC) 内 | -                          | -                       |
 
 > ↪️ 参考：
 >
@@ -238,11 +238,11 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
-| 要素            | ツール例                                                                    |
-| --------------- | --------------------------------------------------------------------------- |
-| 送信元マシン内  | OpenVpnClient、FortiClient、Zapp (クラウドZscalerのクライアントツール) など |
-| 中継VPNマシン内 | OpenVpn、FortiGate、SDPゲートウェイ (クラウドZscalerのVPNマシン) など       |
-| 宛先マシン内    | なし                                                                        |
+| 要素            | OpenVPN       | Forti       | Zscaler                                      |
+| --------------- | ------------- | ----------- | -------------------------------------------- |
+| 送信元マシン内  | OpenVpnClient | FortiClient | Zapp (クラウドZscalerのクライアントツール)   |
+| 中継VPNマシン内 | OpenVpn       | FortiGate   | SDPゲートウェイ (クラウドZscalerのVPNマシン) |
+| 宛先マシン内    | -             | -           | -                                            |
 
 > ↪️ 参考：
 >
@@ -262,5 +262,15 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 ![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg)
 
 > ↪️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
+
+#### ▼ クライアント証明書
+
+SSL/TLSプロトコルで暗号化するためにクライアント証明書が必要である。
+
+このクライアント証明書は、ルート認証局としてのVPNツールで認証済みの証明書である必要がある。
+
+![vpn_certificate.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
+
+> ↪️ 参考：https://www.nrapki.jp/client-certificate/telework/
 
 <br>

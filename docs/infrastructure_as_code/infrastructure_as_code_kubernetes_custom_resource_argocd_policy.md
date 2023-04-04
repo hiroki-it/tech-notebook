@@ -417,7 +417,7 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
 : フォアグラウンドで削除すると、Applicationの`.metadata.finalizers`キーの値に削除中のリソースが設定される。
 
-     この配列を空配列に変更する。ArgoCDのUIからは変更できず、```kubectl patch```コマンドを使用する必要がある。
+     この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl patch`コマンドを使用する必要がある。
 
 ```bash
 $ kubectl patch crd applications.argoproj.io \

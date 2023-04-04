@@ -190,7 +190,7 @@ asyncFunc()
 console.log(asyncFunc()); // Promise { 'SUCCESS' }
 ```
 
-非同期処理内で両方をコールするとエラーになる。
+非同期処理内で両方をコールするとエラーになってしまう。
 
 ```javascript
 const asyncFunc = () => {
@@ -198,7 +198,7 @@ const asyncFunc = () => {
   Promise.reject("FAILED");
 };
 
-console.log(asyncFunc()); // エラーになる
+console.log(asyncFunc()); // エラーになってしまう
 ```
 
 ```yaml

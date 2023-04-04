@@ -664,7 +664,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-すると、以下のようなエラーになる。
+すると、以下のようなエラーになってしまう。
 
 ```bash
 v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/app":"foo-pod", "app.kubernetes.io/component":"app"}, MatchExpressions:[]v1.LabelSelectorRequirement(nil)}: field is immutable
@@ -2904,6 +2904,8 @@ spec:
 Podの削除プロセスを開始するまで待機時間を設定する。
 
 この時間を超えてもPodを削除できていない場合は、コンテナを強制的に停止する。
+
+なお、Pod側でコンテナの終了時間を制御することはできない。
 
 ```yaml
 apiVersion: v1

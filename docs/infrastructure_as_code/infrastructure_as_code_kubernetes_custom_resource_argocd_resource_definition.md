@@ -133,7 +133,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 
 : `443`番ポートにルーティングできるロードバランサーを作成する。
 
-     この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。
+     この時、IngressとIngressコントローラーを作成するか、`kubectl port-forward`コマンドなど実行することにより、ダッシュボードにアクセスする。
 
      ```minikube tunnel```ではポート番号を指定できないことに注意する。
 

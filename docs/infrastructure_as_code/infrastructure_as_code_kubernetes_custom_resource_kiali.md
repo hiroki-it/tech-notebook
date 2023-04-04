@@ -290,7 +290,10 @@ server:
 
 ```
 
-> ↪️ 参考：https://kiali.io/docs/configuration/kialis.kiali.io/#property-details
+> ↪️ 参考：
+>
+> - https://kiali.io/docs/configuration/
+> - https://kiali.io/docs/configuration/kialis.kiali.io/#property-details
 
 #### ▼ Istioとの対応
 
@@ -331,9 +334,15 @@ spec:
 
 <br>
 
-## 02. グラフの読み方
+## 02. コンソールの歩き方
 
-### グラフタイプ
+### Workloadsタブ
+
+基本的には、このタブを確認する。
+
+マイクロサービスを選ぶと、そのマイクロサービスと送受信の関係にあるマイクロサービスを表示してくれる。
+
+### Graphタブ
 
 アプリコンテナ間 (Pod間) の通信を表示するために、Appグラフを選択する。
 

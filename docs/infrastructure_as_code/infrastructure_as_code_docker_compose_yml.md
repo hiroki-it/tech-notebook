@@ -562,7 +562,7 @@ volumes:
     driver: local
 ```
 
-権限、バインドマウントで`datadir`ディレクトリにマウントしようとすると、権限エラーになる。
+権限、バインドマウントで`datadir`ディレクトリにマウントしようとすると、権限エラーになってしまう。
 
 ```bash
 mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)

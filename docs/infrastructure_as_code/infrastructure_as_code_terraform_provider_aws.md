@@ -609,7 +609,7 @@ Terraformは、特に依存関係を実装しない場合、『ターゲット�
 
 問題として、ALB/NLBやリスナーの作成が終了する前に、ECSサービスの作成が始まってしまう。
 
-ALB/NLBの作成 (※リスナーも含む可能性) が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになる。
+ALB/NLBの作成 (※リスナーも含む可能性) が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになってしまう。
 
 リスナーの後にECSサービスを作成するようにし、『ターゲットグループ ➡︎ ALB/NLB ➡︎ リスナー ➡︎ ECSサービス』の順で`resource`ブロックを作成できるようにする。
 
@@ -703,6 +703,91 @@ resource "aws_instance" "bastion" {
 Internet Gatewayの後にEC2を作成できるようにする。
 
 > ↪️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
+
+<br>
+
+## 08. EKS
+
+### まとめ
+
+```terraform
+resource "aws_eks_node_group" "this" {
+
+  cluster_name  = "foo-eks-cluster"
+  node_role_arn = ""
+  subnet_ids    = ""
+
+  scaling_config {
+    min_size     = 3
+    max_size     = 5
+    desired_size = 4
+  }
+
+  # Optional
+  node_group_name        = ""
+  node_group_name_prefix = ""
+
+
+  ami_type        = ""
+  release_version = ""
+  version         = ""
+
+  capacity_type        = ""
+  disk_size            = ""
+  force_update_version = ""
+  instance_types       = ""
+  labels               = ""
+
+  launch_template = {
+    id      = ""
+    version = ""
+  }
+
+  remote_access = {
+    ec2_ssh_key               = ""
+    source_security_group_ids = ""
+  }
+
+  taint = {
+    key    = ""
+    value  = ""
+    effect = ""
+  }
+
+  update_config {
+    max_unavailable_percentage = ""
+    max_unavailable            = ""
+  }
+
+  timeouts {
+    create = ""
+    update = ""
+    delete = ""
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes = [
+      # ※後述の説明を参考にせよ【１】
+      scaling_config[0].desired_size,
+    ]
+  }
+
+  tags = {
+    Name = ""
+  }
+}
+```
+
+> ↪️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#example-usage
+
+<br>
+
+### 【１】Node数の増減は無視
+
+EKSでは、cluster-autoscalerを使用して、Nodeをスケーリングさせる。
+
+この時のNode数の増減を無視できるようにしておく。
 
 <br>
 
@@ -2165,9 +2250,9 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 削除保護の無効化と`resource`ブロックの削除を同時にデプロイしないようにする。
 
-もし同時に行った場合、削除処理を先に実行するが、削除は保護されたままなため、エラーになる。
+もし同時に行った場合、削除処理を先に実行するが、削除は保護されたままなため、エラーになってしまう。
 
-エラーになる。
+エラーになってしまう。
 
 そのため、このAWSリソースを削除する時は、以下の通り`2`個の段階に分けてデプロイする。
 

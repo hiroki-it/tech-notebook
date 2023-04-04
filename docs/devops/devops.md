@@ -110,45 +110,46 @@ DevOpsの実現方法には、CIOpsまたはGitOpsがある。
 以下のフローで、要件にあったOpsを選んでいく。
 
 ```mermaid
+
 graph TD;
-A[はじめに] --> B[Opsの種類]
+  A[はじめに] --> B[Opsの種類]
 
-B ---> | アプリを<br>コンテナ化していない | C[そのまま進む]
-B --> | アプリを<br>コンテナ化している | D[コンテナオーケストレーションツールの種類]
+  B ---> | アプリを<br>コンテナ化していない | C[そのまま進む]
+  B --> | アプリを<br>コンテナ化している | D[コンテナオーケストレーションツールの種類]
 
-C ---> | オンプレ | E[オンプレのための<br>CIOps]
-C ---> | AWS EC2, Google GCE | F["IaaSのための<br>CIOps"]
-C ---> | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための<br>CIOps]
+  C ---> | オンプレ | E[オンプレのための<br>CIOps]
+  C ---> | AWS EC2, Google GCE | F["IaaSのための<br>CIOps"]
+  C ---> | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための<br>CIOps]
 
-D ----> | Docker compose  | H[Docker composeのための<br>CIOps]
-D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
-D --> | いずれも使っていない | J[そのまま進む]
-D ----> | オンプレ | K[オンプレのための<br>GitOps]
-D ----> | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための<br>GitOps]
-D ----> | AWS EKS, GCP GKE | M[CaaSのための<br>GitOps]
+  D ----> | Docker compose on オンプレ | H[Docker composeのための<br>CIOps]
+  D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
+  D --> | いずれも使っていない | J[そのまま進む]
+  D ----> | Kubeadm, Rancher, on オンプレ | K[オンプレのための<br>GitOps]
+  D ----> | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための<br>GitOps]
+  D ----> | AWS EKS, GCP GKE | M[CaaSのための<br>GitOps]
 
-J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
-J --> | dockerコマンド | O[dockerコマンドのための<br>CIOps]
+  J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
+  J --> | dockerコマンド on オンプレ| O[dockerコマンドのための<br>CIOps]
 
-E ---> P[CIOpsのための<br>ブランチ戦略]
+  E ---> P[CIOpsのための<br>ブランチ戦略]
 
-F ---> P
+  F ---> P
 
-G ---> P
+  G ---> P
 
-H ---> P
+  H ---> P
 
-I ---> P
+  I ---> P
 
-K ---> Q[GitOpsのための<br>ブランチ戦略]
+  K ---> Q[GitOpsのための<br>ブランチ戦略]
 
-L ---> Q
+  L ---> Q
 
-M ---> Q
+  M ---> Q
 
-N ---> P
+  N ---> P
 
-O ---> P
+  O ---> P
 ```
 
 <br>

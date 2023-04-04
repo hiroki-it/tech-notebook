@@ -1038,7 +1038,7 @@ PersistentVolumeClaimは、`annotation`キー配下の`volume.kubernetes.io/sele
 
 PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
 
-しかし、PersistentVolumeClaimが `volume.kubernetes.io/selected-node` キーで指定するNodeと、PodがスケジューリングされているNodeが異なるAZであると、以下のエラーになる。
+しかし、PersistentVolumeClaimが `volume.kubernetes.io/selected-node` キーで指定するNodeと、PodがスケジューリングされているNodeが異なるAZであると、以下のエラーになってしまう。
 
 ```bash
 N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector

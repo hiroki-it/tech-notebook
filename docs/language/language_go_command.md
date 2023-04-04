@@ -82,7 +82,7 @@ $ go build -o $HOME/go/bin
 $ go build -o $HOME/go/bin ./cmd
 ```
 
-補足として、事前のインストールに失敗に、ビルド対象が存在していないと、以下のようなエラーになる。
+補足として、事前のインストールに失敗に、ビルド対象が存在していないと、以下のようなエラーになってしまう。
 
 ```bash
 package foo is not in GOROOT (/usr/local/go/src/foo)
