@@ -1,7 +1,4 @@
----
-hide:
-  - toc
----
+
 
 # セクションの目次
 
@@ -29,7 +26,7 @@ hide:
 ### アプリケーション系
 
 * #### <u>FastCGI</u>
-  > * #### [︎PHP-FPM](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html)
+  > * ##### [︎PHP-FPM](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html)
   > * ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
 
 * #### <u>WSGI</u>
