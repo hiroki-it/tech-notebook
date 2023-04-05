@@ -500,13 +500,13 @@ nav:
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
       - ■ Kubernetesリソース:
-            - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
-            - ■ リソース定義:
-                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
-                  - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
+          - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
+          - ■ リソース定義:
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+              - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
       - ■ カスタムリソース:
-            - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
-            - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
+          - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
+          - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
       - ■ アドオン:
           - ■ コントロールプレーンNodeのアドオン:
               - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
@@ -557,7 +557,7 @@ nav:
               - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
 
-  -  🌊 CNCFプロジェクト:
+  - 🌊 CNCFプロジェクト:
       - infrastructure_as_code/cncf_projects/index.md
       - ■ ArgoCD:
           - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
@@ -580,7 +580,9 @@ nav:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_resource_definition.md
       - ■ Grafana:
           - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
+          - ■ リソース定義:
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
+              - ConfigMap: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition_configmap.md
       - ■ Kyverno:
           - Kyverno: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno.md
           - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno_resource_definition.md
