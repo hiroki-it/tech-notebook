@@ -602,6 +602,8 @@ nav:
           - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
       - ■ Kiali:
           - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
+          - ■ リソース定義:
+              - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali_resource_definition_configmap.md
       - ■ OpenPolicyAgent:
           - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.md
       - ■ Prometheus:
