@@ -1680,7 +1680,17 @@ PersistentVolumeの作成先とするNodeを設定する。
 
 作成先のNodeの`.metadata.labels`キーを指定するための条件 (`In`、`NotIn`、`Exists`) を設定する。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
+| 設定値        | 条件の説明                                                  |
+| ------------- | ----------------------------------------------------------- |
+| In            | 指定した`metadata.labels`キー配下に、指定した値を持つ。     |
+| NotIn         | 指定した`metadata.labels`キー配下に、指定した値を持たない。 |
+| Exists        | 指定した`metadata.labels`キーを持つ。                       |
+| DoesNotExists | 指定した`metadata.labels`キーを持たない。                   |
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
+> - https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/
 
 **＊実装例＊**
 
@@ -1940,7 +1950,7 @@ spec:
 > ↪️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
-> - https://zenn.dev/geek/articles/c74d204b00ba1a
+> - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
 
 #### ▼ podAffinity
 
@@ -1961,16 +1971,16 @@ spec:
     podAffinity:
       # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        # PodをスケジューリングしたいNodeのmetadata.labelsキー
+        # 分散単位
         - topologyKey: kubernetes.io/hostname
           labelSelector:
             - matchExpressions:
                 # Podのmetadata.labelsキー
-                - key: app.kubernetes.io/app
+                - key: app.kubernetes.io/name
                   operator: In
                   # 指定した値をキーに持つPodと同じNodeに、Podをスケジューリングする。
                   values:
-                    - bar-pod
+                    - bar-gin
 ```
 
 > ↪️ 参考：
@@ -1997,21 +2007,27 @@ spec:
     podAntiAffinity:
       # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        # PodをスケジューリングしたくないNodeのmetadata.labelsキー
+        # Podの分散単位
         - topologyKey: topology.kubernetes.io/zone
           labelSelector:
             - matchExpressions:
                 # Podのmetadata.labelsキー
-                - key: app.kubernetes.io/app
+                - key: app.kubernetes.io/name
                   operator: In
                   # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
                   values:
-                    - bar-pod
+                    - bar-gin
 ```
 
 > ↪️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
-もし、複製するPodの名前を設定した場合、Podのレプリカ同志は同じNodeにスケジューリングされることを避け、結果として全てのNodeにPodが`1`個ずつスケジューリングされるようになる。
+**＊スケジューリング例＊**
+
+もし、複製するPodの名前を設定した場合、Podのレプリカ同志は同じNodeにスケジューリングされることを避ける。
+
+また、分散単位に`topology.kubernetes.io/zone`を設定しているため、各AZにPodをバラバラにスケジューリングする。
+
+結果として、各AZのNodeにPodが`1`個ずつスケジューリングされるようになる。
 
 ```yaml
 apiVersion: apps/v1
@@ -2037,17 +2053,23 @@ spec:
         podAntiAffinity:
           # ハードアフィニティー
           requiredDuringSchedulingIgnoredDuringExecution:
-            # PodをスケジューリングしたくないNodeのmetadata.labelsキー
+            # Podの分散単位
             - topologyKey: topology.kubernetes.io/zone
               labelSelector:
                 - matchExpressions:
                     # Podのmetadata.labelsキー
-                    - key: app.kubernetes.io/app
+                    - key: app.kubernetes.io/name
                       operator: In
                       # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
                       values:
                         # 自身が複製するPodの名前
-                        - foo-pod
+                        - foo-gin
+```
+
+ただし、AWSのスポットインスタンスと相性が悪く、特定のAZでしかNodeが作成されなかった場合に、以下のようなエラーになってしまう。
+
+```bash
+N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
 ```
 
 > ↪️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88

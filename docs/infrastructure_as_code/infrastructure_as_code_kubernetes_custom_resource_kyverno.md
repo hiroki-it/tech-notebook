@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kyverno＠カスタムリソース
-description: Kyverno＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】Kyverno＠CNCFプロジェクト
+description: Kyverno＠CNCFプロジェクトの知見を記録しています。
 ---
 
-# Kyverno＠カスタムリソース
+# Kyverno＠CNCFプロジェクト
 
 ## はじめに
 

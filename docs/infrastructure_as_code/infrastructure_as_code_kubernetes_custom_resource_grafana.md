@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana＠カスタムリソース
-description: Grafana＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】Grafana＠CNCFプロジェクト
+description: Grafana＠CNCFプロジェクトの知見を記録しています。
 ---
 
-# Grafana＠カスタムリソース
+# Grafana＠CNCFプロジェクト
 
 ## はじめに
 

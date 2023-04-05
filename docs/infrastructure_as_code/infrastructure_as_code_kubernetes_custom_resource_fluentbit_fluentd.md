@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit/Fluentd＠カスタムリソース
-description: FluentBit/Fluentd＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】FluentBit/Fluentd＠CNCFプロジェクト
+description: FluentBit/Fluentd＠CNCFプロジェクトの知見を記録しています。
 ---
 
-# FluentBit/Fluentd＠カスタムリソース
+# FluentBit/Fluentd＠CNCFプロジェクト
 
 ## はじめに
 

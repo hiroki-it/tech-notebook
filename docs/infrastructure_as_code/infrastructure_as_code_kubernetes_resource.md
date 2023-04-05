@@ -879,7 +879,9 @@ Kubernetesで作成できるストレージは、作成場所で種類を分け�
 
 #### ▼ PersistentVolumeとは
 
-Pluggableなボリュームを作成し、これをコンテナにボリュームマウントする。
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+
+Node上のストレージをボリュームとして使用する。
 
 Node上のPod間でボリュームを共有できる。
 
@@ -993,148 +995,13 @@ Node上にボリュームを作成し、これをコンテナにバインドマ�
 
 <br>
 
-### PersistentVolumeClaim
-
-#### ▼ PersistentVolumeClaimとは
-
-設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
-
-> ↪️ 参考：https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
-
-#### ▼ 削除できない
-
-PersistentVolumeClaimを削除しようとすると、`.metadata.finalizers`キー配下に`kubernetes.io/pvc-protection`値が設定され、削除できなくなることがある。
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  finalizers:
-    - kubernetes.io/pvc-protection
-  name: foo-persistent-volume-claim
-spec: ...
-```
-
-この場合、`kubectl edit`コマンドなどで`.metadata.finalizers`キーを空配列に編集と、削除できるようになる。
-
-```bash
-$ kubectl edit pvc <PersistentVolumeClaim名>
-```
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  finalizers: []
-  name: foo-persistent-volume-claim
-spec: ...
-```
-
-> ↪️ 参考：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
-
-#### ▼ node affinityによるエラー
-
-PersistentVolumeClaimは、`annotation`キー配下の`volume.kubernetes.io/selected-node`キーで紐づくPersistentVolumeが配置されているNode名を指定している。
-
-PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
-
-しかし、PersistentVolumeClaimが `volume.kubernetes.io/selected-node` キーで指定するNodeと、PodがスケジューリングされているNodeが異なるAZであると、以下のエラーになってしまう。
-
-```bash
-N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
-```
-
-これが起こる原因は様々ある。
-
-例えば、Nodeのスケールアウト時に、PodのあるNodeのAZが変わることがある。
-
-例えば、もともと`a`ゾーンにいるPodがNodeのスケールアウトで再スケジューリングされ`c`ゾーンになったとする。
-
-しかし、Podに紐づくPersistentVolumeClaimは元々の`a`ゾーンのNodeのPersistentVolumeを指定してるため、`volume node affinity conflict`になる。
-
-注意点として、何らかの理由 (例：スポットインスタンス) で、特定のAZにNodeを配置できない場合、この手順では解決できない。
-
-`【１】`
-
-: 起動できないPodをいずれのNodeでスケジューリングしようとしているのか確認する。
-
-```bash
-$ kubectl describe pod <Pod名> -o wide | grep Node:
-```
-
-`【２】`
-
-: Nodeのあるゾーンを確認する。
-
-```bash
-$ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
-```
-
-`【３】`
-
-: PersistentVolumeClaimの`volume.kubernetes.io/selected-node`キーで、PodがいずれのNodeのPersistentVolumeを指定しているかを確認する。
-
-     このNode名をメモしておく。
-
-```bash
-$ kubectl describe pvc <PVC名> -n prometheus | grep selected-node
-```
-
-`【４】`
-
-: Nodeのあるゾーンを確認する。
-
-```bash
-$ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
-```
-
-`【５】`
-
-: 【１】と【４】の手順で確認したNodeのゾーンが異なるゾーンであることを確認する。
-
-`【６】`
-
-: PersistentVolumeClaimを削除する。
-
-     この時PersistentVolumeは削除されないため、保管データは削除されない。
-
-`【７】`
-
-: StatefulSet自体を再作成する。
-
-`【８】`
-
-: StatefulSetがPersistentVolumeClaimを新しく作成する。
-
-     この時、PersistentVolumeClaimが適切なNodeのPersistentVolumeを指定するようになるため、問題を解消できる。
-
-> ↪️ 参考：
->
-> - https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
-> - https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
-
-<br>
-
-### StorageClass
-
-#### ▼ StorageClassとは
-
-外部ストレージ上 (例：AWS EBS、など) を動的にプロビジョニングし、これのボリュームをPersistentVolumeClaimに提供する。
-
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
-
-> ↪️ 参考：
->
-> - https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning
-> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
-
-<br>
-
 ### Volume
 
 #### ▼ Volumeとは
 
-既存 (Node、NFS、iSCSI、Cephなど) のボリュームをそのままKubernetesのボリュームとして使用する。
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+
+既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのボリュームとして使用する。
 
 Podの`.spec.volumes`キーで指定する。
 
@@ -1240,6 +1107,159 @@ Node上のPod間でボリュームを共有できない。
 #### ▼ Volumeの代わりにPersistentVolumeを使用する
 
 Podの`.spec.volumes`キーでPersistentVolumeClaimを宣言すれば、Volumeの代わりにPersistentVolumeを使用できる。
+
+<br>
+
+## 06-02. ストレージ要求系
+
+### PersistentVolumeClaim
+
+#### ▼ PersistentVolumeClaimとは
+
+設定された条件に基づいて、Kubernetesで作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
+
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+
+> ↪️ 参考：https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
+
+#### ▼ 削除できない
+
+PersistentVolumeClaimを削除しようとすると、`.metadata.finalizers`キー配下に`kubernetes.io/pvc-protection`値が設定され、削除できなくなることがある。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  finalizers:
+    - kubernetes.io/pvc-protection
+  name: foo-persistent-volume-claim
+spec: ...
+```
+
+この場合、`kubectl edit`コマンドなどで`.metadata.finalizers`キーを空配列に編集と、削除できるようになる。
+
+```bash
+$ kubectl edit pvc <PersistentVolumeClaim名>
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  finalizers: []
+  name: foo-persistent-volume-claim
+spec: ...
+```
+
+> ↪️ 参考：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
+
+#### ▼ node affinityによるエラー
+
+PersistentVolumeClaimは、`annotation`キー配下の`volume.kubernetes.io/selected-node`キーで、紐づくPersistentVolumeが配置されているNode名を指定している。
+
+PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
+
+しかし、PersistentVolumeClaimが `volume.kubernetes.io/selected-node` キーで指定するNodeと、PodがスケジューリングされているNodeが異なるAZであると、以下のエラーになってしまう。
+
+```bash
+N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
+```
+
+これが起こる原因は様々ある (例：Nodeの再作成時にPodのあるNodeのAZが変わる、AWSのスポットインスタンスで特定のAZにしかNodeが作成されない)。
+
+**＊解決例＊**
+
+ここでは、Nodeの再作成でPodのあるNodeのAZが変わった場合の解決策を記載する。
+
+AWSのスポットインスタンスで特定のAZにしかNodeが作成されない問題では対処できない。
+
+例えば、もともと`a`ゾーンにいるPodがNodeの再作成で再スケジューリングされ、`c`ゾーンになったとする。
+
+しかし、Podに紐づくPersistentVolumeClaimは元々の`a`ゾーンのNodeのPersistentVolumeを指定したままになっており、`c`ゾーンのPodは`a`ゾーンのPersistentVolumeを指定できないため、`volume node affinity conflict`になる。
+
+以下の手順で、PersistentVolumeClaimとこれを指定するPodの両方を再作成し、PersistentVolumeClaimはPodと同じゾーンのPersistentVolumeを指定できるようにする。
+
+注意点として、何らかの理由 (例：スポットインスタンス) で、特定のAZにNodeを配置できない場合、この手順では解決できない。
+
+`【１】`
+
+: 起動できないPodをいずれのNodeでスケジューリングしようとしているのか確認する。
+
+```bash
+$ kubectl describe pod <Pod名> -o wide | grep Node:
+```
+
+`【２】`
+
+: Nodeのあるゾーンを確認する。
+
+```bash
+$ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
+```
+
+`【３】`
+
+: PersistentVolumeClaimの`volume.kubernetes.io/selected-node`キーで、PodがいずれのNodeのPersistentVolumeを指定しているかを確認する。
+
+     このNode名をメモしておく。
+
+```bash
+$ kubectl describe pvc <PVC名> -n prometheus | grep selected-node
+```
+
+`【４】`
+
+: Nodeのあるゾーンを確認する。
+
+```bash
+$ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
+```
+
+`【５】`
+
+: 【１】と【４】の手順で確認したNodeのゾーンが異なるゾーンであることを確認する。
+
+`【６】`
+
+: PersistentVolumeClaimを削除する。
+
+     この時PersistentVolumeは削除されないため、保管データは削除されない。
+
+`【７】`
+
+: StatefulSet自体を再作成する。
+
+`【８】`
+
+: StatefulSetがPersistentVolumeClaimを新しく作成する。
+
+`【９】`
+
+: PersistentVolumeClaimが、Podと同じゾーンのPersistentVolumeを指定できるようになる。
+
+> ↪️ 参考：
+>
+> - https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
+> - https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
+
+<br>
+
+### StorageClass
+
+#### ▼ StorageClassとは
+
+Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これのボリュームをPersistentVolumeClaimに提供する。
+
+そのため、PersistentVolumeも合わせて作成する必要がある。
+
+![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
+
+<br>
 
 <br>
 

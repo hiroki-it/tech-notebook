@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Prometheus＠Kubernetes
-description: Prometheus＠Kubernetes
+title: 【IT技術の知見】Prometheus＠CNCFプロジェクト
+description: Prometheus＠CNCFプロジェクト
 ---
 
-# Prometheus＠Kubernetes
+# Prometheus＠CNCFプロジェクト
 
 ## はじめに
 

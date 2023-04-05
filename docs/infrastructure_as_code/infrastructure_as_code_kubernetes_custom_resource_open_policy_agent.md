@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenPolicyAgent＠カスタムリソース
-description: OpenPolicyAgent＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】OpenPolicyAgent＠CNCFプロジェクト
+description: OpenPolicyAgent＠CNCFプロジェクトの知見を記録しています。
 ---
 
-# OpenPolicyAgent＠カスタムリソース
+# OpenPolicyAgent＠CNCFプロジェクト
 
 ## はじめに
 

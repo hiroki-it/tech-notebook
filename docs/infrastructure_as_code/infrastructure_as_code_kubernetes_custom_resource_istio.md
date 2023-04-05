@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Istio＠カスタムリソース
-description: Istio＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】Istio＠CNCFプロジェクト
+description: Istio＠CNCFプロジェクトの知見を記録しています。
 ---
 
-# Istio＠カスタムリソース
+# Istio＠CNCFプロジェクト
 
 ## はじめに
 
