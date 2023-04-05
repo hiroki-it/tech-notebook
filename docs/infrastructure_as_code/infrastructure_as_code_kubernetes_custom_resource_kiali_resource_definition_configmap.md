@@ -15,9 +15,9 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 ## kiali-cm
 
-### kiali-cm
+### kiali-cmファイルとは
 
-Kialiの設定ファイルを一元的に管理する。
+Kialiの`config.yaml`ファイルを管理する。
 
 <br>
 
@@ -29,12 +29,12 @@ Kialiの設定ファイルを一元的に管理する。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-kiali-config-map
+  name: foo-kiali-cm
   namespace: istio-system
 data:
   config.yaml: |
     auth:
-      openid: { }
+      openid: {}
       openshift:
         client_id_prefix: kiali
       # 認証なしでKialiにログインできるようにする
@@ -51,35 +51,35 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-kiali-config-map
+  name: foo-kiali-cm
   namespace: istio-system
 data:
   config.yaml: |
     deployment:
     accessible_namespaces:
       - '**'
-    additional_service_yaml: { }
+    additional_service_yaml: {}
     affinity:
-      node: { }
-      pod: { }
-      pod_anti: { }
-    configmap_annotations: { }
-    custom_secrets: [ ]
-    host_aliases: [ ]
+      node: {}
+      pod: {}
+      pod_anti: {}
+    configmap_annotations: {}
+    custom_secrets: []
+    host_aliases: []
     hpa:
       api_version: autoscaling/v2
-      spec: { }
+      spec: {}
     image_digest: ""
     image_name: quay.io/kiali/kiali
     image_pull_policy: Always
-    image_pull_secrets: [ ]
+    image_pull_secrets: []
     image_version: v1.60.0
     ingress:
-      additional_labels: { }
+      additional_labels: {}
       class_name: nginx
       enabled: false
       override_yaml:
-        metadata: { }
+        metadata: {}
     instance_name: kiali
     logger:
       log_format: text
@@ -88,9 +88,9 @@ data:
       time_field_format: 2006-01-02T15:04:05Z07:00
     namespace: istio-system
     override_ingress_yaml:
-      metadata: { }
-    pod_annotations: { }
-    pod_labels: { }
+      metadata: {}
+    pod_annotations: {}
+    pod_labels: {}
     priority_class_name: ""
     replicas: 1
     resources:
@@ -101,10 +101,10 @@ data:
         cpu: 200m
         memory: 128Mi
     secret_name: kiali
-    security_context: { }
-    service_annotations: { }
+    security_context: {}
+    service_annotations: {}
     service_type: ""
-    tolerations: [ ]
+    tolerations: []
     version_label: v1.60.0
     view_only_mode: true
 ```
@@ -115,12 +115,11 @@ data:
 
 記入中...
 
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-kiali-config-map
+  name: foo-kiali-cm
   namespace: istio-system
 data:
   config.yaml: |
@@ -187,12 +186,11 @@ data:
 
 記入中...
 
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-kiali-config-map
+  name: foo-kiali-cm
   namespace: istio-system
 data:
   config.yaml: |
@@ -207,12 +205,11 @@ data:
 
 記入中...
 
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-kiali-config-map
+  name: foo-kiali-cm
   namespace: istio-system
 data:
   config.yaml: |
@@ -225,12 +222,11 @@ data:
 
 記入中...
 
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-kiali-config-map
+  name: foo-kiali-cm
   namespace: istio-system
 data:
   config.yaml: |
@@ -242,11 +238,10 @@ data:
           - istio-ca-secret
       clustering:
         enabled: true
-      disabled_features: [ ]
+      disabled_features: []
       validations:
         ignore:
           - KIA1201
-
 ```
 
 <br>
@@ -255,12 +250,11 @@ data:
 
 記入中...
 
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-kiali-config-map
+  name: foo-kiali-cm
   namespace: istio-system
 data:
   config.yaml: |
@@ -274,7 +268,6 @@ data:
 ### server
 
 記入中...
-
 
 ```yaml
 apiVersion: v1
@@ -290,7 +283,6 @@ data:
       port: 20001
       web_root: /kiali
 ```
-
 
 > ↪️ 参考：
 >

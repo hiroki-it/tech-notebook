@@ -47,7 +47,9 @@
 
 * #### [︎Grafana](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)
 
-* #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
+* #### <u>リソース定義</u>
+  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
+  > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition=configmap.html)
 
 <br>
 
