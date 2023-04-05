@@ -495,8 +495,8 @@ nav:
           - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
           - ■ コンポーネント:
-              - ■ コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
-              - ■ Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
+              - コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
+              - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
       - ■ Kubernetesリソース:
