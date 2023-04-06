@@ -593,6 +593,23 @@ metadata:
     alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=foo-alb-ingress-backet,access_logs.s3.prefix=foo
 ```
 
+#### ▼ `alb.ingress.kubernetes.io/group.name`キー
+
+Ingressのグループ名を設定する。
+
+同じ`alb.ingress.kubernetes.io/group.name`キーのIngressを作成した場合、新しくALBを作成するのではなく、既存のALBにインバウンドルールのみを追加する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/group.name: foo-common-alb
+```
+
+> ↪️ 参考：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#ingressgroup
+
 #### ▼ `alb.ingress.kubernetes.io/scheme`キー
 
 AWS ALBのスキームを設定する。
