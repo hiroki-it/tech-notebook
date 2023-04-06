@@ -1153,7 +1153,7 @@ spec: ...
 
 > ↪️ 参考：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
 
-#### ▼ node affinityによるエラー
+#### ▼ node affinity conflict
 
 PersistentVolumeClaimは、`annotation`キー配下の`volume.kubernetes.io/selected-node`キーで、紐づくPersistentVolumeが配置されているNode名を指定している。
 

@@ -1904,22 +1904,35 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
-#### ▼ nodeAffinity
+<br>
 
-Nodeの`.metadata.labels`キーを指定することにより、そのNode内に新しいPodをスケジューリングする。
+### .spec.affinity.nodeAffinity
+
+#### ▼ affinity.nodeAffinityとは
+
+Nodeの`.metadata.labels`キーを指定することにより、kube-schedulerがPodをスケジューリングするNodeを設定する。
+
+`.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
+
+DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
 
 複数のNodeに同じ`.metadata.labels`キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
 
-アフィニティには種類がある。
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
+> - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
+> - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
-共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。
+#### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
+
+条件に合致するNodeにのみPodをスケジューリングする。
+
+もし条件に合致するNodeがない場合、Podのスケジューリングを待機し続ける。
+
+共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングしないといけない。
 
 Podが削除された後にNodeの`.metadata.labels`キーの値が変更されたとしても、一度スケジューリングされたPodが`.spec.affinity`キーの設定で再スケジューリングされることはない。
-
-| アフィニティタイプ                              | 別名   | 説明                                                              |
-| ----------------------------------------------- | ------ | ----------------------------------------------------------------- |
-| requiredDuringSchedulingIgnoredDuringExecution  | ハード | もし条件に合致するNodeがない場合、Podをスケジューリングしない。   |
-| preferredDuringSchedulingIgnoredDuringExecution | ソフト | もし条件に合致するNodeがない場合でも、Podをスケジューリングする。 |
 
 ```yaml
 apiVersion: v1
@@ -1952,7 +1965,28 @@ spec:
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
 
-#### ▼ podAffinity
+#### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
+
+条件に合致するNodeに優先的にPodをスケジューリングする。
+
+もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングする。
+
+条件に合致しないNodeの探索で重みづけルールを設定できる。
+
+共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングしないといけない。
+
+Podが削除された後にNodeの`.metadata.labels`キーの値が変更されたとしても、一度スケジューリングされたPodが`.spec.affinity`キーの設定で再スケジューリングされることはない。
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
+> - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
+
+<br>
+
+### .spec.affinity.podAffinity
+
+#### ▼ affinity.podAffinityとは
 
 Node内のPodを、`.metadata.labels`キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングする。
 
@@ -1988,7 +2022,19 @@ spec:
 > - https://qiita.com/Esfahan/items/a673317a29ca407e5ae7#pod-affinity
 > - https://zenn.dev/geek/articles/c74d204b00ba1a
 
-#### ▼ podAntiAffinity
+#### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
+
+`.spec.affinity.nodeAffinity`キーのPod版である。
+
+#### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
+
+`.spec.affinity.nodeAffinity`キーのPod版である。
+
+<br>
+
+### .spec.affinity.podAntiAffinity
+
+#### ▼ affinity.podAntiAffinityとは
 
 `.metadata.labels`キーを持つNodeとは異なるNode内に、そのPodをスケジューリングする。
 
@@ -2065,6 +2111,16 @@ spec:
                         # 自身が複製するPodの名前
                         - foo-gin
 ```
+
+#### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
+
+`.spec.affinity.nodeAffinity`キーのアンチPod版である。
+
+#### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
+
+`.spec.affinity.nodeAffinity`キーのアンチPod版である。
+
+#### ▼ node affinity conflict
 
 ただし、AWSのスポットインスタンスと相性が悪く、特定のAZでしかNodeが作成されなかった場合に、以下のようなエラーになってしまう。
 

@@ -45,6 +45,7 @@ data:
         type: prometheus
         url: http://<PrometheusのService名>.<PrometheusのNamespace名>:9090/
         access: proxy
+        # デフォルトのデータソースとするか否かを設定する
         isDefault: true
         jsonData:
           timeInterval: 30s
@@ -219,6 +220,23 @@ data:
   grafana.ini: |
     [users]
     default_theme = light
+```
+
+#### ▼ home_page
+
+Grafanaのダッシュボードのホームを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  grafana.ini: |
+    [users]
+    # foo.grafana.com/dashboards がホームになる。
+    home_page = dashboards
 ```
 
 <br>
