@@ -625,7 +625,7 @@ nav:
             - ドキュメンテーション: devops/devops_sreing_documentation.md
 
   - 🔄 CI/CD:
-      - devops/cicd_index.md
+      - devops/cicd/index.md
       - ■ CIツール:
           - GitHub Actions: devops/devops_cicd_ci_github_actions.md
           - GitLab CI: devops/devops_cicd_ci_gitlab_ci.md
