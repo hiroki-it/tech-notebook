@@ -619,6 +619,8 @@ nav:
   - ♾️ DevOps:
       - devops/index.md
       - DevOps: devops/devops.md
+      - ■ リリース:
+          - デプロイ手法: devops/devops_release_deploy.md
       - ■ SREing:
           - SREing: devops/devops_sreing.md
           - アンチパターン: devops/devops_sreing_antipattern.md
