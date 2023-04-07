@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Capistrano＠DevOps
-description: Capistrano＠DevOpsの知見を記録しています。
+title: 【IT技術の知見】Capistrano＠CIツール
+description: Capistrano＠CIツールの知見を記録しています。
 ---
 
-# Capistrano＠DevOps
+# Capistrano＠CIツール
 
 ## はじめに
 

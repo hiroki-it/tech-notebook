@@ -13,11 +13,58 @@ description: DevOpsの知見を記録しています。
 
 <br>
 
-## 01. DevOpsとは
+## 01. DevOps
 
-### 高品質なシステムの維持
+### DevOpsとは
 
-#### ▼ システムの品質とは
+開発者 (Dev) と運用者 (Ops) が協調して開発と運用を行い、ソフトウェアを継続的に改善する手法論のこと。
+
+DevOpsを実践しない状況では、開発者 (例：機能追加、機能変更) と運用者 (例：安定稼働のためになるべく機能追加/変更したくない) の利害が一致しないため、ソフトウェアを継続的に改善できない。
+
+> ↪️ 参考：
+>
+> - https://e-words.jp/w/DevOps.html
+> - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=12
+
+<br>
+
+### DevOpsの要素
+
+#### ▼ DevOpsの要素とは
+
+DevOpsには、以下の要素がある。
+
+DevOpsのこれらの要素を実践するエンジニアリングを『SREing』、また職種は『SREer』という。
+
+#### ▼ 技術的要素
+
+DevOpsの技術的要素は、CIとCDである。
+
+> ↪️ 参考：
+>
+> - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23
+> - https://www.veritis.com/blog/meet-full-devops-potential-with-devops-maturity-model/
+
+#### ▼ 組織文化的要素
+
+DevOpsの組織文化的要素は、開発者と運用者の協調や、許容の文化である。
+
+> ↪️ 参考：
+>
+> - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23
+> - https://www.veritis.com/blog/meet-full-devops-potential-with-devops-maturity-model/
+
+<br>
+
+## 02. DevOpsによる高品質の維持
+
+### 高品質なシステムの維持とは
+
+DevOpsにて、品質を維持する作業を自動化することにより、一定水準以上の品質を維持しやすくする。
+
+<br>
+
+### システムの品質とは
 
 ![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
 
@@ -31,6 +78,10 @@ description: DevOpsの知見を記録しています。
 - 安全性
 - 保守性
 - 移植性 (汎用性)
+
+<br>
+
+### 定量化
 
 #### ▼ 定量化の方法
 
@@ -72,481 +123,7 @@ description: DevOpsの知見を記録しています。
 
 <br>
 
-### DevOps
-
-#### ▼ DevOpsとは
-
-開発者 (Dev) と運用者 (Ops) が協調して開発と運用を行い、ソフトウェアを継続的に改善する手法論のこと。
-
-DevOpsを実践しない状況では、開発者 (例：機能追加、機能変更) と運用者 (例：安定稼働のためになるべく機能追加/変更したくない) の利害が一致しないため、ソフトウェアを継続的に改善できない。
-
-> ↪️ 参考：
->
-> - https://e-words.jp/w/DevOps.html
-> - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=12
-
-#### ▼ 実現要素
-
-DevOpsの実現には、『技術的要素』『組織文化的要素』が必要である。
-
-DevOpsを実現するためには、これらの要素を満たす必要がある。
-
-DevOpsのこれらの要素を実践するエンジニアリングを『SREing』、また職種は『SREer』という。
-
-> ↪️ 参考：https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23
-
-#### ▼ DevOpsと品質の関係
-
-DevOpsにて、品質を維持する作業を自動化することにより、一定水準以上の品質を維持しやすくする。
-
-DevOpsの実現方法には、CIOpsまたはGitOpsがある。
-
-<br>
-
-## 02. 技術的要素
-
-### Opsの選び方
-
-以下のフローで、要件にあったOpsを選んでいく。
-
-```mermaid
-graph TD;
-  A[はじめに] --> B[Opsの種類]
-
-  B ---> | アプリを<br>コンテナ化していない | C[そのまま進む]
-  B --> | アプリを<br>コンテナ化している | D[コンテナオーケストレーションツールの種類]
-
-  C ---> | オンプレ | E[オンプレのための<br>CIOps]
-  C ---> | AWS EC2, Google GCE | F["IaaSのための<br>CIOps"]
-  C ---> | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための<br>CIOps]
-
-  D ----> | Docker compose on オンプレ | H[Docker composeのための<br>CIOps]
-  D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
-  D --> | いずれも使っていない | J[そのまま進む]
-  D ----> | Kubeadm, Rancher, on オンプレ | K[オンプレのための<br>GitOps]
-  D ----> | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための<br>GitOps]
-  D ----> | AWS EKS, GCP GKE | M[CaaSのための<br>GitOps]
-
-  J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
-  J --> | dockerコマンド on オンプレ| O[dockerコマンドのための<br>CIOps]
-
-  E ---> P[CIOpsのための<br>ブランチ戦略]
-
-  F ---> P
-
-  G ---> P
-
-  H ---> P
-
-  I ---> P
-
-  K ---> Q[GitOpsのための<br>ブランチ戦略]
-
-  L ---> Q
-
-  M ---> Q
-
-  N ---> P
-
-  O ---> P
-```
-
-<br>
-
-### CIOps
-
-#### ▼ CIOpsとは
-
-DevOpsを実現する技術的要素の一つ。
-
-CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。
-
-例えばCircleCIでアプリケーションのビルドからデプロイまでを実装する。
-
-![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
-
-> ↪️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
-> - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
-
-#### ▼ 技術ツール例
-
-CIOpsでは、全ての手順をCIツールで実施する。
-
-そのため、多機能かつユーザーフレンドリーなツールが良い。
-
-- CircleCI
-- GitHub Actions
-- GitLab CI
-- Jenkins
-- CodePipeline
-
-#### ▼ アンチパターンとなる場合
-
-KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理由でCIOpsはアンチパターンとされている。
-
-| 理由           | 説明                                                                                                                                                                                                                                                                                                                                                  | 補足                                                                                                                                           |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| セキュリティ   | リポジトリ側に`~/.kube/config`ファイルを置く必要がある。`~/.kube/config`ファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。                                                            | ↪️ 参考：<br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 <br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 |
-| 責務境界の分離 | CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。そのため、結果的にCIの構築/運用を担当するアプリエンジニアが、CDも構築/運用することになる。特に、CDはインフラに影響するため、アプリエンジニアチームが責任を持つべきではない。一方でGitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用をアプリチームとSREチームで分担できるようになる。 | ↪️ 参考：https://news.mynavi.jp/techplus/article/techp5025/                                                                                    |
-
-<br>
-
-### GitOps
-
-#### ▼ GitOpsとは
-
-DevOpsを実現する技術的要素の一つ。
-
-CIツールを使用してCIパイプラインを、またはCDツールを使用してCDパイプラインを、実装する手法のこと。
-
-![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
-
-> ↪️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
-> - https://github.com/argoproj/gitops-engine/blob/master/specs/design.md
-
-#### ▼ 技術ツール例
-
-GitOpsでは、CDツールで実施する手順が多いため、多機能かつユーザーフレンドリーなツールが良い。
-
-執筆時点 (2022/11/09) ではどのようなユースケースでも、OSSの開発が活発なArgoCDが良いかも。
-
-- ArgoCD
-- Flux
-- Jenkins X
-- PipeCD
-- Harness
-
-#### ▼ 相性の良いCIツール
-
-CIOpsでなくGitOpsを採用する場合、アプリケーションはマイクロサービスアーキテクチャを採用しているはずである。
-
-GitOpsでは、CIツールで実施する手順が少ないため、基本的にいずれのツールを使用しても問題ない。
-
-ただし、リポジトリの分割戦略にポリリポジトリ (マイクロサービスごとにリポジトリを用意する) を採用している場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分はは特定のリポジトリで中央集権的に管理し、他のリポジトリでこれを読み込むようにした方が楽である。
-
-外部リポジトリに置いた設定ファイルをリモート参照できるような機能を持つCIツール (例：GitLab CI) であれば、ポリリポジトリ戦略と相性が良い。
-
-<br>
-
-## 03. CI/CDパイプライン
-
-### CI/CDパイプラインとは
-
-CIパイプラインとCDパイプラインを組み合わせた手法のこと。
-
-![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
-
-> ↪️ 参考：https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
-
-<br>
-
-### CI/CDパイプラインの構成要素
-
-#### ▼ CI：Continuous Integration
-
-アプリケーションの機能追加/変更/削除からテストまでを『自動的』かつ『継続的に』行う。
-
-| ステップ | 詳細                                                                     | 自動化の可否 | 説明                                                 |
-| -------- | ------------------------------------------------------------------------ | :----------: | ---------------------------------------------------- |
-| ビルド   | アプリケーションのビルド                                                 |    `⭕️`     | CIツールとIaCツールで自動化できる。                  |
-| テスト   | ホワイトボックステスト (単体テスト、機能テスト、回帰テスト、など) の実施 |    `⭕️`     | CIツールとテストフレームワークで自動化できる。       |
-|          | 結合テスト                                                               |      ×       | ブラックボックステストで、動作を確認する必要がある。 |
-|          | コーディング規約に関するレビュー                                         |    `⭕️`     | CIツールと静的解析ツールで自動化できる。             |
-|          | 仕様に関するレビュー                                                     |      ×       | GitHub上でレビューする必要がある。                   |
-
-> ↪️ 参考：https://tracpath.com/works/devops/11_topics_for_devops/
-
-#### ▼ CD：Continuous Delivery
-
-変更内容を『自動的』かつ『継続的に』ステージング環境と本番環境にデプロイする。
-
-| ステップ (ステージング環境の場合) | 詳細                                 | 自動化の可否 | 説明                     |
-| --------------------------------- | ------------------------------------ | :----------: | ------------------------ |
-| デプロイ                          | ステージング環境に対するデプロイ     |    `⭕️`     | CDツールで自動化できる。 |
-| DBマイグレーション                | ステージング環境のDBに対するデプロイ |    `⭕️`     | CDツールで自動化できる。 |
-
-本番環境へのデプロイ前に、承認ステップを設ける。
-
-| ステップ (本番環境の場合) | 詳細                           | 自動化の可否 | 説明                     |
-| ------------------------- | ------------------------------ | :----------: | ------------------------ |
-| 承認                      | 本番環境に対するデプロイの承認 |    `⭕️`     | CDツールで自動化できる。 |
-| デプロイ                  | 本番環境に対するデプロイ       |    `⭕️`     | CDツールで自動化できる。 |
-| DBマイグレーション        | 本番環境のDBに対するデプロイ   |    `⭕️`     | CDツールで自動化できる。 |
-
-> ↪️ 参考：https://blog.kyanny.me/entry/2014/12/24/145001
-
-#### ▼ PD：Progressive Delivery
-
-特にカナリアリリースやブルー/グリーンデプロイメントでデプロイされたアプリケーションに関して、ユーザーのアクセスから収集されたテレメトリーを分析し、問題が起これば自動的にロールバックする。
-
-問題の判定基準としては、障害の有無やSLO閾値未満がある。
-
-| ステップ | 詳細                                 | 自動化の可否 | 説明                                                         |
-| -------- | ------------------------------------ | :----------: | ------------------------------------------------------------ |
-| 分析     | ステージング環境のテレメトリーを分析 |    `⭕️`     | CDツールとテレメトリー収集ツールを組み合わせて自動化できる。 |
-|          | 本番環境のテレメトリーを分析         |    `⭕️`     | CDツールとテレメトリー収集ツールを組み合わせて自動化できる。 |
-
-> ↪️ 参考：
->
-> - https://r-kaga.com/blog/what-is-progressive-delivery
-> - https://codezine.jp/article/detail/14476
-> - https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
-
-<br>
-
-## 04. デプロイ手法の種類
-
-### インプレースデプロイメント
-
-#### ▼ インプレースデプロイメントとは
-
-最初に旧アプリケーションを停止し、サーバーのOSとミドルウェアの構成はそのままで、アプリケーションのみを上書きする。
-
-その後、アプリケーションを再起動する。
-
-> ↪️ 参考：
->
-> - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
-> - https://developer.hatenastaff.com/entry/2020/06/26/150300
-
-#### ▼ ダウンタイムの有無
-
-旧アプリケーションの停止から新アプリケーションの再起動まで、に相当する時間のダウンタイムが発生する。
-
-ただし、CodeDeployの様に、ロードバランサ－を使用して、旧環境と新環境に対するルーティングを切り替えるようにすると、ダウンタイムを防げる。
-
-> ↪️ 参考：
->
-> - https://garafu.blogspot.com/2018/11/release-strategy.html
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
-
-#### ▼ 技術ツール例
-
-- Capistrano
-- AWS (CodeDeploy)
-- Fablic
-- Git (手動で`git pull`コマンド)
-- Istio
-
-> ↪️ 参考：
->
-> - https://qiita.com/zaburo/items/8886be1a733aaf581045
-> - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
-
-<br>
-
-### ローリングアップデート (ローリングデプロイメント)
-
-#### ▼ ローリングアップデートとは
-
-特にアプリケーションが冗長化されている場合に使用するデプロイ手法。
-
-旧環境と新環境のインスタンスの合計数を維持しながら、新環境インスタンスを段階的にデプロイする。
-
-新環境インスタンスが起動が完了したことをヘルスチェックなどで確認し、起動が完了したことを確認できれば、社外を含む全てのアクセスのルーティング先を新環境インスタンスに自動的に切り替えていく。
-
-アクセスできる新環境インスタンスを増やしながら、旧環境インスタンスを少しずつ削除していく。
-
-この時、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。
-
-> ↪️ 参考：
->
-> - https://webapp.io/blog/what-are-rolling-deployments/
-> - https://www.designet.co.jp/ossinfo/kubernetes/update/
-
-補足として、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに属する。
-
-> ↪️ 参考：
->
-> - https://logmi.jp/tech/articles/323033
-> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
-
-#### ▼ 類似するブルー/グリーンデプロイメントとの違い
-
-ブルー/グリーンデプロイメントとは異なり、冗長化された新環境に自動的に切り替えられるため、開発者のリリース作業の工数が少なくなる。
-
-一方で、フロントエンド領域とバックエンド領域が異なるアプリケーションとして稼働している場合、これらのデプロイを同時に完了できない。
-
-また、新環境の起動のみしか自動的に確認されないため、具体的な動作が正常か否かをリリース作業後に確認する必要がある。
-
-#### ▼ ダウンタイムの有無
-
-新アプリケーションの起動を確認してから、旧アプリケーションを停止するため、ダウンタイムが発生しない。
-
-> ↪️ 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
-
-#### ▼ 技術ツール例
-
-- AWS ECS、AWS EKS)
-- Kubernetes
-
-<br>
-
-### ブルー/グリーンデプロイメント
-
-#### ▼ ブルー/グリーンデプロイメントとは
-
-`2`個の環境に名前をつける時に、優劣の印象がないように色が選ばれ、色の中でも無難な青と緑になった。
-
-『ブルー/グリーン』という言葉は、これに由来している。
-
-> ↪️ 参考：
->
-> - https://gitlab.com/snippets/1846041
-> - https://martinfowler.com/bliki/BlueGreenDeployment.html
-
-以下の手順で実施する。
-
-`【１】`
-
-: 旧環境 (Prodブルー) を残したまま、新環境 (Testグリーン) をデプロイする。
-
-`【２】`
-
-: 開発者のみが新環境にアクセスできるように (例：特定のポート番号を公開する) し、新環境で機能テストを実施する。
-
-`【３】`
-
-: 新環境の動作に問題が起こらなければ、社外を含む全てのアクセスのルーティング先を、新環境に手動で切り替える。
-
-`【４】`
-
-: 新環境に対する切り替えが完全に完了した後、新環境から旧環境にロールバックする場合に備えて、旧環境は削除せずに残しておく。
-
-     何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。
-
-     この時、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。
-
-> ↪️ 参考：
->
-> - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
-> - https://developer.hatenastaff.com/entry/2020/06/26/150300
-> - https://atmarkit.itmedia.co.jp/ait/articles/1612/13/news005_2.html
-
-#### ▼ 類似するローリングアップデートとの違い
-
-ローリングアップデートとは異なり、開発者のタイミングでルーティング先を新環境に切り替えられるため、フロントエンド領域とバックエンド領域が異なるアプリケーションとして稼働している場合、これらのデプロイを同時に完了できる。
-
-また、特定の動作が正常か否かをリリース作業前に確認できる。
-
-一方で、開発者のリリース作業の工数が多くなる。
-
-#### ▼ 類似するイミュータブルデプロイメントとの違い
-
-ブルー/グリーンデプロイメントと似たものとして、イミュータブルデプロイメントがある。
-
-これは、ブルー/グリーンデプロイメントと手順はほとんど同じであるが、リリース後に旧環境を削除してしまう。
-
-一方でブルー/グリーンデプロイメントでは、旧環境はリリース後も削除せずに稼働させたままにしておく。
-
-#### ▼ ダウンタイムの有無
-
-新アプリケーションの起動を確認してから、旧アプリケーションを停止するため、ダウンタイムが発生しない。
-
-> ↪️ 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
-
-#### ▼ 技術ツール例
-
-- AWS (CodeDeploy、ElasticBeanstalk)
-- ArgoCD
-
-<br>
-
-### カナリアリリース
-
-#### ▼ カナリアリリースとは
-
-昔、炭鉱内に一酸化炭素があるか否かを判断するために、炭鉱労働者が自身よりも先に死ぬカナリアを一緒に持ち歩いた。
-
-『カナリア』という言葉は、これに由来している。
-
-旧環境と新環境を用意した上で、一部のユーザー (由来のカナリアに相当) の手を借りて新環境を実地的にテストし (例：該当のエラーメトリクスが基準値を満たすか) 、新環境に問題が起こらなければ全てのユーザーを新環境にルーティングする。
-
-システムのユーザーがバグに寛容でないと採用できないリリース手法である。
-
-> ↪️ 参考：
->
-> - https://www.linkedin.com/pulse/canary-deployment-simple-words-jakub-hajek/
-> - https://codechacha.com/ja/what-is-canary-development-test/
-
-#### ▼ 手順
-
-以下の手順で実施する。
-
-`【１】`
-
-: 旧環境を残したまま、新環境をデプロイする。
-
-`【２】`
-
-: 一部の一般ユーザーのリクエストのみを新環境にルーティングし、実際のユーザー (由来のカナリアに相当) の手を借りて、本番環境で実地的に検証する (例：該当のエラーメトリクスが基準値を満たすか) 。
-
-     この実地的なテストで新環境で問題が起こらなければ、ルーティングされるユーザーを手動で段階的に増やしていく。
-
-`【３】`
-
-: 新環境に問題が起これば、ロールバックとして旧環境に対する重み付けを`100`%とする。
-
-`【４】`
-
-: 新環境に対する重み付けが`100`%になった後、旧環境を削除する。
-
-     この時、マネージドなデプロイツールを使用すると、ルーティング先の重み付け値の変更作業がより簡単になる。
-
-> ↪️ 参考：
->
-> - https://atmarkit.itmedia.co.jp/ait/articles/1804/12/news071.html
-> - https://www.techtarget.com/searchitoperations/answer/When-to-use-canary-vs-blue-green-vs-rolling-deployment
-
-#### ▼ 類似するダークカナリアリリースとの違い
-
-ダークカナリアリリースとは異なり、特定の関係者ではなく、一般ユーザーを新環境にルーティングする。
-
-#### ▼ 技術ツール例
-
-- AWS (API Gateway、Route53やALBによる重み付けルーティング)
-- ArgoCD
-
-<br>
-
-### ダークカナリアリリース
-
-#### ▼ ダークカナリアリリースとは
-
-特定の関係者 (社員、協力会社) のリクエストのみを新環境にルーティングし、これらの手を借りて、本番環境で実地的に検証する (例：該当のエラーメトリクスが基準値を満たすか) 。
-
-> ↪️ 参考：https://blog.bltinc.co.jp/entry/2020/04/27/090000
-
-#### ▼ 類似するカナリアリリースとの違い
-
-カナリアリリースとは異なり、一般ユーザーではなく、特定の関係者のみを新環境にルーティングする。
-
-<br>
-
-### ダークローンチ
-
-#### ▼ ダークローンチ
-
-全ての一般ユーザーがルーティングされるデプロイ手法 (例：カナリアリリース以外) と組み合わせる。
-
-ただし、機能をこっそりリリースしておく。
-
-を使用したいユーザーだけがトグルなどで有効化できるようにしておき、本番環境で実地的に検証する (例：該当のエラーメトリクスが基準値を満たすか) 。
-
-> ↪️ 参考：
->
-> - https://scrapbox.io/nobuoka-pub/%E3%83%80%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%83%81
-> - https://newrelic.com/jp/resources/undefined/next-phase-of-devops
-
-<br>
-
-## 05. 品質を高めるリリース
-
-### 品質を高めるリリースとその実現方法
+### 品質を高めるリリース
 
 #### ▼ リリースが自動化されていること
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GitHub Actions＠DevOps
-description: GitHub Actions＠DevOpsの知見を記録しています。
+title: 【IT技術の知見】GitHub Actions＠CIツール
+description: GitHub Actions＠CIツールの知見を記録しています。
 ---
 
-# GitHub Actions＠DevOps
+# GitHub Actions＠CIツール
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GitLab CI＠DevOps
-description: GitLab CI＠DevOpsの知見を記録しています。
+title: 【IT技術の知見】GitLab CI＠CIツール
+description: GitLab CI＠CIツールの知見を記録しています。
 ---
 
-# GitLab CI＠DevOps
+# GitLab CI＠CIツール
 
 ## はじめに
 

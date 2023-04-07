@@ -379,7 +379,7 @@ data:
             fi
 ```
 
-特に、zendesk製のhelm-secretsでは、helm secrets templateコマンドの出力内容の末尾に`decrypted`の文字が出力されるため、`| sed '$d'`が必要になる。
+特に、zendesk製のhelm-secretsでは、`helm secrets template`コマンドの出力内容の末尾に`decrypted`の文字が出力されるため、`| sed '$d'`が必要になる。
 
 ```yaml
 apiVersion: v1

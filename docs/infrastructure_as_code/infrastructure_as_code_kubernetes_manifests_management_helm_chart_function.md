@@ -648,7 +648,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   # 名前が一意になるようにする。
-  name: foo-config-map-{{ . | b64enc }}
+  name: foo-config-map-{{ . | b64enc -}}
 data:
   url: {{ . }}
 {{- end }}
@@ -759,9 +759,18 @@ baz:
 
 `-}}`であると改行コードを削除し、不要な改行が挿入されないようにする。
 
-ただ、`-}}`は使用しない方が良いらしい。
+base64方式でエンコードする場合に、改行コードが含まれているとエンコード値の最後に`Cg==`がついてしまうため、これをつけないようにするために使用する。
 
-> ↪️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-539149037
+```yaml
+password: {{.Values.password | b64enc -}}
+```
+
+ただし基本的には、`-}}`は使用しない方が良いらしい。
+
+> ↪️ 参考：
+>
+> - https://github.com/helm/helm/issues/4191#issuecomment-539149037
+> - https://racchai.hatenablog.com/entry/2016/05/24/070000
 
 <br>
 
