@@ -8,6 +8,12 @@
 
 <br>
 
+### リリース
+
+* #### [デプロイ手法](https://hiroki-it.github.io/tech-notebook/devops/devops_release_deploy.html)
+
+<br>
+
 ### SREing
 
 * #### [︎SREing](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing.html)
