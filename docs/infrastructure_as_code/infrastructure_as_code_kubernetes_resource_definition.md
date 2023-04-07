@@ -1924,7 +1924,7 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
-#### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
+#### ▼ requiredDuringSchedulingIgnoredDuringExecution (hard)
 
 条件に合致するNodeにのみPodをスケジューリングする。
 
@@ -1965,7 +1965,7 @@ spec:
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
 
-#### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
+#### ▼ preferredDuringSchedulingIgnoredDuringExecution (soft)
 
 条件に合致するNodeに優先的にPodをスケジューリングする。
 

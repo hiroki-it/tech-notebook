@@ -632,6 +632,48 @@ data:
   password: {{.Values.password | b64enc}}
 ```
 
+**＊実装例＊**
+
+リポジトリの認証情報を管理するSecretを繰り返し作成する。
+
+```yaml
+{{- range .Values.github.repositories }}
+{{- /*
+  URLからリポジトリ名を抽出する
+  Kubernetesのリソース名では一部の文字や記号を使用できないため、これに対処する
+  (例) "https://github.com/argoproj/argo-cd.git" から "argo-cd" のみを取得する
+*/}}
+{{- $repositoryName := printf "%s" . | splitList "/" | last | trimSuffix ".git" }}
+{{- $name := regexReplaceAllLiteral "_" $repositoryName "-" }}
+
+
+{{- /*
+  URLのbase64方式エンコード値を取得する
+  Kubernetesのリソース名では一部の文字や記号を使用できないため、これに対処する
+  (例) "https://github.com/argoproj/argo-cd.git" から "ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0" を取得する
+*/}}
+{{- $lowerbase64EncodedUrl := . | b64enc | lower }}
+{{- $id := regexReplaceAllLiteral "[^a-z0-9]" $lowerbase64EncodedUrl "" }}
+
+
+{{- /*
+  Secretの名前が必ず一意になるように、リポジトリ名とURLエンコード値で命名する
+  (例) "https://github.com/argoproj/argo-cd.git" のSecretの名前は "argo-cd-ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0" になる
+*/}}
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-{{ $name }}-{{ $id }}
+data:
+  # base64方式でエンコードする。
+  username: {{.Values.github.username | b64enc}}
+  password: {{.Values.github.password | b64enc}}
+
+{{- end }}
+```
+
 #### ▼ 変化しない一意な名前
 
 セキュリティではなく、変化しない一意な名前のKubernetesリソース (特にConfigMap、Secret) を作成できるように、接尾辞にbase64方式のエンコード値を使用する。
@@ -648,7 +690,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   # 名前が一意になるようにする。
-  name: foo-config-map-{{ . | b64enc -}}
+  name: foo-config-map-{{ . | b64enc }}
 data:
   url: {{ . }}
 {{- end }}
@@ -758,12 +800,6 @@ baz:
 #### ▼ `-}}`
 
 `-}}`であると改行コードを削除し、不要な改行が挿入されないようにする。
-
-base64方式でエンコードする場合に、改行コードが含まれているとエンコード値の最後に`Cg==`がついてしまうため、これをつけないようにするために使用する。
-
-```yaml
-password: {{.Values.password | b64enc -}}
-```
 
 ただし基本的には、`-}}`は使用しない方が良いらしい。
 

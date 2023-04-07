@@ -49,6 +49,13 @@ data:
         isDefault: true
         jsonData:
           timeInterval: 30s
+      - name: victoria-metrics
+        type: prometheus
+        url: http://<VictoriaMetricsのサーバーのIPアドレス>:8248/
+        access: proxy
+        isDefault: false
+        jsonData:
+          timeInterval: 30s
 ```
 
 > ↪️ 参考：

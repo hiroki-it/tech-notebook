@@ -1,5 +1,11 @@
 # セクションの目次
 
+!!! info "このセクションについて"
+
+    **量が多いため、[DevOpsセクション](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html) から切り分けています**
+
+<br>
+
 ## 🔄 CI/CD
 
 ### CI/CD

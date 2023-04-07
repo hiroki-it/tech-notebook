@@ -17,3 +17,9 @@
 * #### [︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing_documentation.html)
 
 <br>
+
+### CI/CD
+
+* ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html)
+
+<br>
