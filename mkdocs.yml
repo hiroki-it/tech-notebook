@@ -626,6 +626,7 @@ nav:
 
   - 🔄 CI/CD:
       - devops/cicd/index.md
+      - CI/CD: devops/devops_cicd.md
       - ■ CIツール:
           - GitHub Actions: devops/devops_cicd_ci_github_actions.md
           - GitLab CI: devops/devops_cicd_ci_gitlab_ci.md
