@@ -619,20 +619,22 @@ nav:
   - ♾️ DevOps:
       - devops/index.md
       - DevOps: devops/devops.md
+
+  -  DevOps:
       - ■ CIツール:
-          - GitHub Actions: devops/devops_ci_github_actions.md
-          - GitLab CI: devops/devops_ci_gitlab_ci.md
-          - Capistrano: devops/devops_ci_capistrano.md
+          - GitHub Actions: devops/devops_cicd_ci_github_actions.md
+          - GitLab CI: devops/devops_cicd_ci_gitlab_ci.md
+          - Capistrano: devops/devops_cicd_ci_capistrano.md
           - ■ CircleCI:
-              - CircleCI: devops/devops_ci_circleci.md
-              - config.yml: devops/devops_ci_circleci_config_yml.md
-              - orbs: devops/devops_ci_circleci_orbs.md
-              - 設計ポリシー: devops/devops_ci_circleci_policy.md
+              - CircleCI: devops/devops_cicd_ci_circleci.md
+              - config.yml: devops/devops_cicd_ci_circleci_config_yml.md
+              - orbs: devops/devops_cicd_ci_circleci_orbs.md
+              - 設計ポリシー: devops/devops_cicd_ci_circleci_policy.md
           - ■ Skaffold:
-              - skaffold.yaml: devops/devops_ci_skaffold_yaml.md
-              - コマンド: devops/devops_ci_skaffold_command.md
+              - skaffold.yaml: devops/devops_cicd_ci_skaffold_yaml.md
+              - コマンド: devops/devops_cicd_ci_skaffold_command.md
       - ■ CDツール:
-          - ArgoCD: devops/devops_cd_argocd.md
+          - ArgoCD: devops/devops_cicd_cd_argocd.md
 
   - 🔎 可観測性:
       - observability/index.md
