@@ -619,7 +619,7 @@ nav:
   - ♾️ DevOps:
       - devops/index.md
       - DevOps: devops/devops.md
-      - ■ CiOps:
+      - ■ CIツール:
           - GitHub Actions: devops/devops_github_actions.md
           - GitLab CI: devops/devops_gitlab_ci.md
           - Capistrano: devops/devops_capistrano.md
@@ -631,7 +631,7 @@ nav:
           - ■ Skaffold:
               - skaffold.yaml: devops/devops_skaffold_yaml.md
               - コマンド: devops/devops_skaffold_command.md
-      - ■ GitOps:
+      - ■ CDツール:
           - ArgoCD: devops/devops_argocd.md
 
   - 🔎 可観測性:
