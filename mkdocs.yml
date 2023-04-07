@@ -620,9 +620,9 @@ nav:
       - devops/index.md
       - DevOps: devops/devops.md
       - ■ SREing:
-            - SREing: devops/devops_sreing.md
-            - アンチパターン: devops/devops_sreing_antipattern.md
-            - ドキュメンテーション: devops/devops_sreing_documentation.md
+          - SREing: devops/devops_sreing.md
+          - アンチパターン: devops/devops_sreing_antipattern.md
+          - ドキュメンテーション: devops/devops_sreing_documentation.md
 
   - 🔄 CI/CD:
       - devops/cicd/index.md
