@@ -106,11 +106,9 @@ repo-apiserverと通信する。
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
 
-kube-controllerかつカスタムコントローラーとして動作し、KubernetesリソースとArgoCDのカスタムリソース (例: Application、AppProject、など) をetcd上の定義 (Kubernetesリソース定義、カスタムリソース定義、カスタムリソース) の宣言通りに作成/変更する。
+kube-controllerかつカスタムコントローラーとして動作する。
 
-また、監視対象リポジトリ上のマニフェストとetcd上のマニフェストの差分を定期的に検出する。
-
-注意点として、etcd上の定義自体はargocd-serverが作成/変更する。
+ArgoCDのカスタムリソース (例: Application、AppProject、など) とカスタムリソース定義をwatchし、etcd上にある宣言通りに作成/変更する。
 
 ```yaml
 # application-controllerのPodでログを確認してみる。
@@ -127,15 +125,17 @@ kube-controllerかつカスタムコントローラーとして動作し、Kuber
 }
 ```
 
+> ↪️ 参考：
+>
+> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+
+#### ▼ repo-serverとの通信
+
 repo-serverが取得したクローンからマニフェストを参照し、`kubectl diff`コマンドを実行することにより、差分を検出する。
 
 そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
-
-kube-apiserverにマニフェストを送信し、指定されたClusterにKubernetesリソースを作成する。
-
-Applicationが管理するKubernetesリソースのマニフェストと、監視対象リポジトリのマニフェストの間に、差分がないか否かを継続的に監視する。
-
-この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
 
 > ↪️ 参考：
 >
@@ -197,6 +197,7 @@ application-controllerの処理の結果のキャッシュを作成し、argocd-
 >
 > - https://weseek.co.jp/tech/95/
 > - https://blog.manabusakai.com/2021/04/argo-cd-cache/
+> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
 
 <br>
 
