@@ -206,7 +206,7 @@ ArgoCDが監視するClusterに関して、現在のマニフェスト状態の�
 
 ![argocd_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_repo-server.png)
 
-監視対象リポジトリのマニフェストの状態のキャッシュを作成し、`/tmp`ディレクトリ以下で保管する。
+監視対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下でキャッシュを作成して保管する。
 
 ArgoCDでHardRefreshすると、このキャッシュを削除し、監視リポジトリのマニフェストを改めてキャッシュを作成する。
 
