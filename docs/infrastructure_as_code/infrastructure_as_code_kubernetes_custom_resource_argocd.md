@@ -19,6 +19,8 @@ description: ArgoCD＠CNCFプロジェクトの知見を記録しています。
 
 ArgoCDは、argocd-server、repo-server、redis-server、dex-server、application-controller、といったコンポーネントから構成される。
 
+永続化するためのDBを持っておらず、ステートレスである。
+
 ![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_architecture.png)
 
 > ↪️ 参考：
@@ -104,7 +106,7 @@ repo-apiserverと通信する。
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
 
-kube-controllerかつカスタムコントローラーとして動作し、KubernetesリソースとArgoCDのカスタムリソースをetcd上の定義 (Kubernetesリソース定義、カスタムリソース定義、カスタムリソース) の宣言通りに作成/変更する。
+kube-controllerかつカスタムコントローラーとして動作し、KubernetesリソースとArgoCDのカスタムリソース (例: Application、AppProject、など) をetcd上の定義 (Kubernetesリソース定義、カスタムリソース定義、カスタムリソース) の宣言通りに作成/変更する。
 
 また、監視対象リポジトリ上のマニフェストとetcd上のマニフェストの差分を定期的に検出する。
 
@@ -189,9 +191,7 @@ GitOpsのステップの中で、マニフェストリポジトリ上にプル�
 
 #### ▼ redis-serverとは
 
-argocd-serverが使用するマニフェストのキャッシュを作成する。
-
-ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
+ArgoCDが監視するClusterに関して、現在のマニフェスト状態のキャッシュを作成する。
 
 > ↪️ 参考：
 >
@@ -204,7 +204,9 @@ ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
 
 #### ▼ repo-serverとは
 
-監視対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下で管理する。
+監視対象リポジトリのマニフェストの状態のキャッシュを作成し、`/tmp`ディレクトリ以下で保管する。
+
+ArgoCDでHardRefreshすると、このキャッシュを削除し、監視リポジトリのマニフェストを改めてキャッシュを作成する。
 
 もしHelmやKustomizeを採用している場合は、repo-serverは`helm template`コマンドを実行することにより、Node内にマニフェストを出力する。
 

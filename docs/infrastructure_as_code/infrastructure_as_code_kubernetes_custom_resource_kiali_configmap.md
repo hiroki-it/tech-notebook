@@ -288,3 +288,5 @@ data:
 >
 > - https://kiali.io/docs/configuration/
 > - https://kiali.io/docs/configuration/kialis.kiali.io/#property-details
+
+<br>
