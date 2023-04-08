@@ -618,17 +618,20 @@ nav:
 
   - ♾️ DevOps:
       - devops/index.md
-      - DevOps: devops/devops.md
-      - ■ リリース:
-          - デプロイ手法: devops/devops_release_deploy.md
-      - ■ SREing:
-          - SREing: devops/devops_sreing.md
-          - アンチパターン: devops/devops_sreing_antipattern.md
-          - ドキュメンテーション: devops/devops_sreing_documentation.md
+      - ■ DevOps:
+          - DevOps: devops/devops.md
+          - ■ SREing:
+              - SREing: devops/devops_sreing.md
+              - アンチパターン: devops/devops_sreing_antipattern.md
+      - ■ 技術的要素:
+          - ドキュメンテーション: devops/devops_documentation.md
+      - ■ 技術的要素:
+          - 文化: devops/devops_culture.md
 
   - 🔄 CI/CD:
       - devops/cicd/index.md
       - CI/CD: devops/devops_cicd.md
+      - デプロイ手法: devops/devops_cicd_deploy.md
       - ■ CIツール:
           - GitHub Actions: devops/devops_cicd_ci_github_actions.md
           - GitLab CI: devops/devops_cicd_ci_gitlab_ci.md
