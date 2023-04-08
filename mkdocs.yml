@@ -683,9 +683,9 @@ nav:
       - ■ インシデント管理ツール:
           - PagerDuty: observability/observability_incident_management_pagerduty.md
 
-  - 👥 ソフトウェア開発:
+  - 👥 開発手法:
       - software_development_methodology/index.md
-      - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
+      - 開発手法論: software_development_methodology/software_development_methodology.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
       - ■ バージョン管理:
           - ■ Git:
