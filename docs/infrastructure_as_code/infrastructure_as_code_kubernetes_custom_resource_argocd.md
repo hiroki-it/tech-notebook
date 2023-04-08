@@ -31,11 +31,11 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 <br>
 
-### argocd-server (argocd-api-server)
+### argocd-server (argocd-apiserver)
 
 #### ▼ argocd-serverとは
 
-『argocd-api-server』ともいう。
+『argocd-apiserver』ともいう。
 
 argocd-serverは、クライアントや他のargocdコンポーネントと通信する。
 
@@ -191,7 +191,7 @@ GitOpsのステップの中で、マニフェストリポジトリ上にプル�
 
 #### ▼ redis-serverとは
 
-ArgoCDが監視するClusterに関して、現在のマニフェスト状態のキャッシュを作成する。
+application-controllerの処理の結果のキャッシュを作成し、argocd-apiserverに提供する。
 
 > ↪️ 参考：
 >
