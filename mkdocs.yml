@@ -540,6 +540,7 @@ nav:
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
 
   - ⏬ Kubernetesアドオン:
+      - infrastructure_as_code/kubernetes_addon/index.md
       - ■ コントロールプレーンアドオン:
           - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
       - ■ Ingressコントローラーアドオン:
