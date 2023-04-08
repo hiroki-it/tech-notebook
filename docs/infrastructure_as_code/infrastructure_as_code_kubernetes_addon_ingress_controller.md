@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Ingressコントローラー＠ワーカーNodeのアドオン
-description: Ingressコントローラー＠ワーカーNodeのアドオンの知見を記録しています。
+title: 【IT技術の知見】Ingressコントローラー＠Ingressコントローラーアドオン
+description: Ingressコントローラー＠Ingressコントローラーアドオンの知見を記録しています。
 ---
 
-# Ingressコントローラー＠アドオン
+# Ingressコントローラー＠Ingressコントローラーアドオン
 
 ## はじめに
 

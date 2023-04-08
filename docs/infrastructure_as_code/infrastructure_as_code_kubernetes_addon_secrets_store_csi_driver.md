@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SecretsストアCSIドライバー＠ワーカーNodeのアドオン
-description: SecretsストアCSIドライバー＠ワーカーNodeのアドオンの知見を記録しています。
+title: 【IT技術の知見】SecretsストアCSIドライバー＠Secretアドオン
+description: SecretsストアCSIドライバー＠Secretアドオンの知見を記録しています。
 ---
 
-# SecretsストアCSIドライバー＠CSIドライバー
+# SecretsストアCSIドライバー＠Secretアドオン
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】admission-controllers＠コントロールプレーンのアドオン
-description: admission-controllers＠コントロールプレーンのアドオンの知見を記録しています。
+title: 【IT技術の知見】admission-controllers＠コントロールプレーンアドオン
+description: admission-controllers＠コントロールプレーンアドオンの知見を記録しています。
 ---
 
-# admission-controllers＠コントロールプレーンのアドオン
+# admission-controllers＠コントロールプレーンアドオン
 
 ## はじめに
 
