@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ドキュメンテーション＠SREing
-description: ドキュメンテーション＠SREingの知見を記録しています。
+title: 【IT技術の知見】ドキュメンテーション＠DevOps
+description: ドキュメンテーション＠DevOpsの知見を記録しています。
 ---
 
-# ドキュメンテーション＠SREing
+# ドキュメンテーション＠DevOps
 
 ## はじめに
 
