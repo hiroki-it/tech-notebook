@@ -506,23 +506,6 @@ nav:
       - ■ カスタムリソース:
           - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
           - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
-      - ■ アドオン:
-          - ■ コントロールプレーンNodeのアドオン:
-              - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
-          - ■ Ingressコントローラー:
-              - Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.md
-              - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
-          - ■ ネットワークアドオン:
-              - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
-              - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
-              - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
-          - ■ SecretsストアCSIドライバー:
-              - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver.md
-              - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver_resource_definition.md
-          - ■ クラウドプロバイダーアドオン:
-              - ■ AWS EKSアドオン:
-                  - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.md
-                  - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.md
       - ■ ハードウェアリソース管理:
           - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.md
           - cluster-autoscaler: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.md
@@ -555,6 +538,25 @@ nav:
           - ■ Kustomize:
               - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
+
+  - ⏬ Kubernetesアドオン:
+      - ■ コントロールプレーンアドオン:
+          - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
+      - ■ Ingressコントローラーアドオン:
+          - Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.md
+          - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
+      - ■ ネットワークアドオン:
+          - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
+          - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
+          - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
+      - ■ Secretアドオン:
+          - ■ SecretsストアCSIドライバー:
+              - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver.md
+              - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secrets_store_csi_driver_resource_definition.md
+      - ■ クラウドプロバイダーアドオン:
+          - ■ AWS EKSアドオン:
+              - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.md
+              - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.md
 
   - 🌊 CNCFプロジェクト:
       - infrastructure_as_code/cncf_projects/index.md
