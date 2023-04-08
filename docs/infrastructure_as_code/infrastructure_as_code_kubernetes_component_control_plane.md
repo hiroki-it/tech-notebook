@@ -465,9 +465,13 @@ $ kube-controller-manager \
 
 #### ▼ kube-controllerとは
 
-マニフェストとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。
+kube-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
 
-加えて、Kubernetesリソースのマニフェストの設定値をコマンド (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) で変更した場合に、etcd上でKubernetesリソースのマニフェストを検知し、実際にカスタムリソースの設定値を都度変更してくれる。
+Kubernetesリソースのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+
+すると、kube-controllerはetcd上でKubernetesリソースのマニフェストを検知し、実際にKubernetesリソースを作成/変更する。
+
+クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のKubernetesリソースを作成/変更しているわけではないことに注意する。
 
 > ↪️ 参考：
 >

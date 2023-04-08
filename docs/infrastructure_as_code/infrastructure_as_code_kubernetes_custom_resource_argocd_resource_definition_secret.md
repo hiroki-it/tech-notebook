@@ -405,7 +405,7 @@ ArgoCDは、argocd-repo-credsの`data.url`キーを使用して、argocd-repoの
 
 - クライアントが、任意の認証/認可方法でArgoCDにログインするためのユーザー名とパスワード
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
-- Webhookでリクエストを送信するためのSSL証明書
+- Webhookを送信するためのSSL証明書
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
 

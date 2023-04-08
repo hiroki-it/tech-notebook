@@ -25,18 +25,17 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 >
 > - https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 > - https://www.techmanyu.com/setup-a-gitops-deployment-model-on-your-local-development-environment-with-k3s-k3d-and-argocd-4be0f4f30820
+> - https://lab.mo-t.com/blog/kubernetes-argocd
 
 <br>
 
-### argocd-server
+### argocd-server (argocd-api-server)
 
 #### ▼ argocd-serverとは
 
-![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argocd-server_dashboard.png)
+『argocd-api-server』ともいう。
 
-クライアント (`argocd`コマンド実行者) のエンドポイントやダッシュボードを公開する。
-
-自身に対するリクエストに応じて、kube-apiserverにリクエストを送信し、ArgoCDのApplicationを操作する。
+argocd-serverは、クライアントや他のargocdコンポーネントと通信する。
 
 ```yaml
 {
@@ -53,15 +52,151 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 }
 ```
 
-Applicationから返却された情報 (例：マニフェストの差分) をダッシュボード上に公開する。
-
-リポジトリの監視やClusterへのリクエストに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
-
 > ↪️ 参考：
 >
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+
+#### ▼ クライアントとの通信
+
+クライアントと通信する。
+
+RESTful-APIとRPC-APIのエンドポイントを公開し、クライアント (例：ダッシュボード、`argocd`コマンド実行者、Webhookの送信元、など) からリクエストを受信する。
+
+また、application-controllerから返却された情報 (例：マニフェストの差分) をクライアントに返却する。
+
+ダッシュボードを使用する場合、これをServiveで後悔する必要がある。
+
+![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argocd-server_dashboard.png)
+
+#### ▼ dex-serverとの通信
+
+dex-serverと通信する
+
+SSOを採用する時に、認証フェーズに必要な情報をdex-serverに送信する。
+
+#### ▼ kube-apiserverとの通信
+
+kube-apiserverと通信する。
+
+クライアントから受信したリクエスト (例：ダッシュボード上のSync、`argocd app sync`コマンド) に基づいて、kube-apiserverにリクエストを送信する。
+
+#### ▼ redis-serverとの通信
+
+redis-apiserverと通信する。
+
+その都度、repo-server上の監視対象リポジトリのマニフェストを使用するのではなく、redis-serverのキャッシュを使用する。
+
+ダッシュボード上や`argocd app get --hard-refresh`コマンドでキャッシュを削除できる。
+
+#### ▼ repo-serverとの通信
+
+repo-apiserverと通信する。
+
+監視対象リポジトリのマニフェストの状態をリクエストし、これに基づいて差分を検出する。
+
+<br>
+
+### application-controller
+
+#### ▼ application-controllerとは
+
+![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
+
+kube-controllerかつカスタムコントローラーとして動作し、KubernetesリソースとArgoCDのカスタムリソースをetcd上の定義 (Kubernetesリソース定義、カスタムリソース定義、カスタムリソース) の宣言通りに作成/変更する。
+
+また、監視対象リポジトリ上のマニフェストとetcd上のマニフェストの差分を定期的に検出する。
+
+注意点として、etcd上の定義自体はargocd-serverが作成/変更する。
+
+```yaml
+# application-controllerのPodでログを確認してみる。
+{
+  "application": "foo-application",
+  "dest-name": "",
+  "dest-namespace": "foo",
+  "dest-server": "https://kubernetes.default.svc",
+  "fields.level": 3,
+  "level": "info",
+  "msg": "Reconciliation completed",
+  "time": "2023-01-27T04:19:18Z",
+  "time_ms": 14,
+}
+```
+
+repo-serverが取得したクローンからマニフェストを参照し、`kubectl diff`コマンドを実行することにより、差分を検出する。
+
+そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
+
+kube-apiserverにマニフェストを送信し、指定されたClusterにKubernetesリソースを作成する。
+
+Applicationが管理するKubernetesリソースのマニフェストと、監視対象リポジトリのマニフェストの間に、差分がないか否かを継続的に監視する。
+
+この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
+
+> ↪️ 参考：
+>
+> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+
+<br>
+
+### dex-server
+
+#### ▼ dex-serverとは
+
+ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズを委譲することになる。
+
+SSOの認証フェーズに必要な情報をIDプロバイダーに送信し、これに認証フェーズを委譲する。
+
+認証フェーズの委譲先 (例：Auth0、KeyCloak、AWS Cognito、Google Auth) は、認証サーバー (例：OIDCであればIDプロバイダー) を公開している。
+
+この時`dex-server`は、ArgoCDが認証サーバーと通信する時のハブとして機能する。
+
+dex-serverの起動に失敗すると、外部Webサイトに情報を送信できずにSSOに失敗してしまう。
+
+ただ、argocd-server自体が認証サーバーと通信することが可能なため、dex-serverを使用するか否かは任意である。
+
+> ↪️ 参考：
+>
+> - https://weseek.co.jp/tech/95/
+> - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
+> - https://zenn.dev/onsd/articles/a3ea24b01da413
+
+<br>
+
+### image-updater
+
+#### ▼ image-updaterとは
+
+GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。
+
+アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster内のマニフェストを自動的に書き換える。
+
+その後、マニフェストリポジトリに書き換えをコミットする。
+
+![gitops_with-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png)
+
+![gitops_without-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
+
+> ↪️ 参考：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
+
+<br>
+
+### redis-server
+
+#### ▼ redis-serverとは
+
+argocd-serverが使用するマニフェストのキャッシュを作成する。
+
+ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
+
+> ↪️ 参考：
+>
+> - https://weseek.co.jp/tech/95/
+> - https://blog.manabusakai.com/2021/04/argo-cd-cache/
 
 <br>
 
@@ -69,7 +204,7 @@ Applicationから返却された情報 (例：マニフェストの差分) を�
 
 #### ▼ repo-serverとは
 
-監視対象リポジトリを`/tmp`ディレクトリ以下にクローンする。
+監視対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下で管理する。
 
 もしHelmやKustomizeを採用している場合は、repo-serverは`helm template`コマンドを実行することにより、Node内にマニフェストを出力する。
 
@@ -115,104 +250,6 @@ $ kubectl -it exec foo-argocd-repo-server \
 ```
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
-
-<br>
-
-### application-controller
-
-#### ▼ application-controllerとは
-
-![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
-
-カスタムコントローラーとして動作し、ArgoCDのカスタムリソースをカスタムリソース定義の宣言通りに定期的に修復する。
-
-また、監視対象リポジトリ上のマニフェストとetcd上のマニフェストの差分を定期的に検出する。
-
-```yaml
-# application-controllerのPodでログを確認してみる。
-{
-  "application": "foo-application",
-  "dest-name": "",
-  "dest-namespace": "foo",
-  "dest-server": "https://kubernetes.default.svc",
-  "fields.level": 3,
-  "level": "info",
-  "msg": "Reconciliation completed",
-  "time": "2023-01-27T04:19:18Z",
-  "time_ms": 14,
-}
-```
-
-repo-serverが取得したクローンからマニフェストを参照し、`kubectl diff`コマンドを実行することにより、差分を検出する。
-
-そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
-
-kube-apiserverにマニフェストを送信し、指定されたClusterにKubernetesリソースを作成する。
-
-Applicationが管理するKubernetesリソースのマニフェストと、監視対象リポジトリのマニフェストの間に、差分がないか否かを継続的に監視する。
-
-この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
-
-> ↪️ 参考：
->
-> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
-> - https://weseek.co.jp/tech/95/#i-7
-> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
-
-<br>
-
-### redis-server
-
-#### ▼ redis-serverとは
-
-repo-server内のマニフェストのキャッシュを作成し、これを管理する。
-
-ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
-
-> ↪️ 参考：
->
-> - https://weseek.co.jp/tech/95/
-> - https://blog.manabusakai.com/2021/04/argo-cd-cache/
-
-<br>
-
-### dex-server
-
-#### ▼ dex-serverとは
-
-ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズを委譲することになる。
-
-認証フェーズの委譲先 (例：Auth0、KeyCloak、AWS Cognito、Google Auth) は、認証サーバー (例：OIDCであればIDプロバイダー) を公開している。
-
-この時`dex-server`は、ArgoCDが認証サーバーと通信する時のハブとして機能する。
-
-dex-serverの起動に失敗すると、外部Webサイトに情報を送信できずにSSOに失敗してしまう。
-
-ただ、argocd-server自体が認証サーバーと通信することが可能なため、dex-serverを使用するか否かは任意である。
-
-> ↪️ 参考：
->
-> - https://weseek.co.jp/tech/95/
-> - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
-> - https://zenn.dev/onsd/articles/a3ea24b01da413
-
-<br>
-
-### image-updater
-
-#### ▼ image-updaterとは
-
-GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。
-
-アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster内のマニフェストを自動的に書き換える。
-
-その後、マニフェストリポジトリに書き換えをコミットする。
-
-![gitops_with-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png)
-
-![gitops_without-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
-
-> ↪️ 参考：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
 
 <br>
 

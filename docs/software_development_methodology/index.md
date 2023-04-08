@@ -1,8 +1,8 @@
 # セクションの目次
 
-## 👥 ソフトウェア開発手法
+## 👥 開発手法
 
-* #### [︎手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)
+* #### [︎開発手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)
 
 * #### [︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_project_management.html)
 
