@@ -2,7 +2,7 @@
 
 !!! info "このセクションについて"
 
-    **量が多いため、[DevOpsセクション](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html) から切り分けています**
+    **量が多いため、[DevOpsセクション](https://hiroki-it.github.io/tech-notebook/devops/index.html) から切り分けています**
 
 <br>
 
@@ -11,6 +11,7 @@
 ### CI/CD
 
 * #### [CI/CD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd.html)
+* #### [デプロイ手法](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_deploy.html)
 
 <br>
 

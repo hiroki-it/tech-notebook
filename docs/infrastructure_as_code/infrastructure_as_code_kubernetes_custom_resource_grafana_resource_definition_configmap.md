@@ -49,13 +49,6 @@ data:
         isDefault: true
         jsonData:
           timeInterval: 30s
-      - name: victoria-metrics
-        type: prometheus
-        url: http://<VictoriaMetricsのサーバーのIPアドレス>:8248/
-        access: proxy
-        isDefault: false
-        jsonData:
-          timeInterval: 30s
 ```
 
 > ↪️ 参考：
@@ -78,12 +71,12 @@ data:
     apiVersion: 1
     datasources:
       - name: victoria-metrics
+        type: prometheus
+        url: http://<VictoriaMetricsのサーバーのIPアドレス>:8248/
         access: proxy
         isDefault: false
         jsonData:
-          tlsSkipVerify: true
-        type: prometheus
-        url: https://<VictoriaMetricsのService名>.<VictoriaMetricsのNamespace名>:8248/
+          timeInterval: 30s
 ```
 
 > ↪️ 参考：https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
