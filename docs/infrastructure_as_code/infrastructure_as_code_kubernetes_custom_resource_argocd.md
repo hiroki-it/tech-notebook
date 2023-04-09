@@ -62,7 +62,7 @@ argocd-serverは、クライアントや他のargocdコンポーネントと通�
 
 #### ▼ クライアントとの通信
 
-クライアントと通信する。
+argocd-serverは、クライアントからHTTPSリクエストを受信する。
 
 RESTful-APIとRPC-APIのエンドポイントを公開し、クライアント (例：ダッシュボード、`argocd`コマンド実行者、Webhookの送信元、など) からリクエストを受信する。
 
@@ -74,7 +74,7 @@ RESTful-APIとRPC-APIのエンドポイントを公開し、クライアント (
 
 #### ▼ dex-serverとの通信
 
-application-cotnrollerは、dex-serverのRESTful-APIのエンドポイントをコールする。
+argocd-serverは、dex-serverにHTTPSリクエストを送信する。
 
 SSOを採用する時に、SSOの認証認可処理の認証フェーズを外部のIDプロバイダー (例：Auth0、KeyCloak、AWS Cognito、Google Auth) に委譲できる。
 
@@ -92,13 +92,13 @@ argocd-apiserverは、取得した情報に基づいて、AuthZで認可処理�
 
 #### ▼ 監視対象Clusterのkube-apiserverとの通信
 
-監視対象Clusterのkube-apiserverと通信する。
+argocd-serverは、監視対象Clusterのkube-apiserverにHTTPSリクエストを送信する。
 
 クライアントから受信したリクエスト (例：ダッシュボード上のSync、`argocd app sync`コマンド) に基づいて、kube-apiserverにリクエストを送信する。
 
 #### ▼ redis-serverとの通信
 
-redis-apiserverと通信する。
+argocd-serverは、redis-serverにTCPリクエストを送信し、redis-serverからキャッシュを取得する。
 
 その都度、repo-server上の監視対象リポジトリのマニフェストを使用するのではなく、redis-serverのキャッシュを使用する。
 
@@ -141,7 +141,7 @@ ArgoCDのカスタムリソース (例: Application、AppProject、など) と�
 
 #### ▼ repo-serverとの通信
 
-repo-serverにマニフェストの成果物の作成をコールする。
+application-cotnrollerは、repo-serverにHTTPSリクエストを送信し、マニフェストの成果物の作成をコールする。
 
 また、repo-serverが保管するマニフェストのキャッシュを参照し、監視対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
 
@@ -158,9 +158,8 @@ repo-serverにマニフェストの成果物の作成をコールする。
 
 #### ▼ redis-serverとの通信
 
-application-cotnrollerは、redis-serverのRESTful-APIのエンドポイントをコールする。
+application-cotnrollerは、redis-serverにTCPリクエストを送信し、自身の処理の結果をredis-serverに保管する。
 
-自身の処理の結果をredis-serverに送信する。
 
 <br>
 
@@ -367,7 +366,7 @@ spec:
         name: argocd-styles-cm
         optional: true
       name: styles
-    # 他のコンポーネントとHTTPS通信するためのSSL証明書を読み込む
+    # repo-serverにHTTPSリクエストを送信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -380,6 +379,7 @@ spec:
             path: ca.crt
         optional: true
         secretName: argocd-repo-server-tls
+    # dex-serverにHTTPSリクエストを送信するために、SSL証明書を設定する
     - name: argocd-dex-server-tls
       secret:
         defaultMode: 420
@@ -475,6 +475,7 @@ spec:
         defaultMode: 420
         name: argocd-gpg-keys-cm
       name: gpg-keys
+    # 他のコンポーネントからHTTPSリクエストを受信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -563,6 +564,7 @@ spec:
 
   # 各種Secretを読み込む
   volumes:
+    # 他のコンポーネントからHTTPSリクエストを受信するために、SSL証明書を設定する
     - name: argocd-dex-server-tls
       secret:
         defaultMode: 420
@@ -635,6 +637,7 @@ spec:
               optional: true
   # 各種Secretを読み込む
   volumes:
+    # repo-serverとHTTPS通信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
