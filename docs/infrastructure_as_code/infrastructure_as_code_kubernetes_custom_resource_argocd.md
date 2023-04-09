@@ -104,12 +104,6 @@ redis-apiserverと通信する。
 
 ダッシュボード上や`argocd app get --hard-refresh`コマンドでキャッシュを削除できる。
 
-#### ▼ repo-serverとの通信
-
-repo-apiserverと通信する。
-
-監視対象リポジトリのマニフェストの状態をリクエストし、これに基づいて差分を検出する。
-
 <br>
 
 ### application-controller
@@ -118,9 +112,11 @@ repo-apiserverと通信する。
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
 
-kube-controllerかつカスタムコントローラーとして動作する。
+カスタムコントローラーかつ監視対象Clusterの`kubectl`クライアントとして動作する。
 
 ArgoCDのカスタムリソース (例: Application、AppProject、など) とカスタムリソース定義をwatchし、etcd上にある宣言通りに作成/変更する。
+
+また、ダッシュボードやCUIの操作に応じて、監視対象Clusterに`kubectl diff`コマンドや`kubectl apply`コマンドを実行する。
 
 ```yaml
 # application-controllerのPodでログを確認してみる。
@@ -145,15 +141,20 @@ ArgoCDのカスタムリソース (例: Application、AppProject、など) と�
 
 #### ▼ repo-serverとの通信
 
-repo-serverが取得したクローンからマニフェストを参照し、`kubectl diff`コマンドを実行することにより、差分を検出する。
+repo-serverが補完するマニフェストのキャッシュを参照し、監視対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
 
 そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
 
 > ↪️ 参考：
 >
+> - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+
+#### ▼ redis-serverとの通信
+
+自身の処理の結果をredis-serverに送信する。
 
 <br>
 
@@ -205,7 +206,7 @@ image-updaterは、アプリリポジトリからイメージリポジトリに�
 
 #### ▼ redis-serverとは
 
-application-controllerの処理の結果のキャッシュを作成し、argocd-apiserverに提供する。
+application-controllerの処理の結果のキャッシュを作成し、argocd-serverに提供する。
 
 > ↪️ 参考：
 >
@@ -221,11 +222,11 @@ application-controllerの処理の結果のキャッシュを作成し、argocd-
 
 ![argocd_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_repo-server.png)
 
-監視対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下でキャッシュを作成して保管する。
+監視対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下に保管する。
 
-ArgoCDでHardRefreshすると、このキャッシュを削除し、監視リポジトリのマニフェストを改めてキャッシュを作成する。
+マニフェスト管理ツール (例：Helm、Kustomize) を使用してマニフェストを作成し、またキャッシュを作成する。
 
-もしHelmやKustomizeを採用している場合は、repo-serverは`helm template`コマンドを実行することにより、Node内にマニフェストを出力する。
+そのため、repo-serverは`helm template`コマンドを手動で実行することにより、成果物を確認できる。
 
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
@@ -234,8 +235,11 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "ls -la /tmp"
 ```
 
+なお、ArgoCDでHardRefreshすると、マニフェストのキャッシュを削除し、監視リポジトリのマニフェストを改めてキャッシュを作成する。
+
 > ↪️ 参考：
 >
+> - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
@@ -452,8 +456,6 @@ spec:
         defaultMode: 420
         name: argocd-gpg-keys-cm
       name: gpg-keys
-    - emptyDir: {}
-      name: gpg-keyring
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
