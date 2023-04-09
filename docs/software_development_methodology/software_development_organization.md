@@ -28,7 +28,7 @@ description: 組織論＠開発手法の知見を記録しています。
 深く狭い`I`型人材になる傾向がある。
 
 > ↪️ 参考：
-> 
+>
 > - https://note.com/cwmasaki/n/nb181309fac93
 > - https://blog.trainocate.co.jp/blog/IT-engineer
 
@@ -43,7 +43,7 @@ description: 組織論＠開発手法の知見を記録しています。
 広く浅い`ー`型人材になる傾向がある。
 
 > ↪️ 参考：
-> 
+>
 > - https://note.com/cwmasaki/n/nb181309fac93
 > - https://thinkit.co.jp/article/17898
 

@@ -300,18 +300,19 @@ statefulset.apps/argocd-application-controller   1/1     119d
 
 #### ▼ argocd-server
 
+記入中...
+
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: argocd-dex-server
+  name: argocd-server
   namespace: argocd
 spec:
   serviceAccountName: argocd-server
   containers:
     - name: argocd-server
       image: quay.io/argoproj/argocd:latest
-      imagePullPolicy: Always
       args:
         - /usr/local/bin/argocd-server
         # HTTPプロトコルで受信する
@@ -319,34 +320,42 @@ spec:
       ports:
         - containerPort: 8080
         - containerPort: 8083
-      volumeMounts:
-        - name: ssh-known-hosts
-          mountPath: /app/config/ssh
-        - name: tls-certs
-          mountPath: /app/config/tls
-        - name: argocd-repo-server-tls
-          mountPath: /app/config/server/tls
-        - name: argocd-dex-server-tls
-          mountPath: /app/config/dex/tls
-        - mountPath: /home/argocd
-          name: plugins-home
-        - mountPath: /tmp
-          name: tmp
+      # 各種ConfigMapを読み込む。
+      env:
+        - name: *****
+          valueFrom:
+            configMapKeyRef:
+              key: *****
+              name: argocd-cmd-params-cm
+              optional: true
+        - name: *****
+          valueFrom:
+            secretKeyRef:
+              key: *****
+              name: argocd-redis
+              optional: true
+
+      ...
+
+  # 各種ConfigMapやSecretを読み込む
   volumes:
-    - emptyDir: {}
-      name: plugins-home
-    - emptyDir: {}
-      name: tmp
-    - name: ssh-known-hosts
-      configMap:
+    - configMap:
+        defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    - name: tls-certs
-      configMap:
+      name: ssh-known-hosts
+    - configMap:
+        defaultMode: 420
         name: argocd-tls-certs-cm
+      name: tls-certs
+    - configMap:
+        defaultMode: 420
+        name: argocd-styles-cm
+        optional: true
+      name: styles
+    # 他のコンポーネントとHTTPS通信するためのSSL証明書を読み込む
     - name: argocd-repo-server-tls
       secret:
-        secretName: argocd-repo-server-tls
-        optional: true
+        defaultMode: 420
         items:
           - key: tls.crt
             path: tls.crt
@@ -354,15 +363,18 @@ spec:
             path: tls.key
           - key: ca.crt
             path: ca.crt
+        optional: true
+        secretName: argocd-repo-server-tls
     - name: argocd-dex-server-tls
       secret:
-        secretName: argocd-dex-server-tls
-        optional: true
+        defaultMode: 420
         items:
           - key: tls.crt
             path: tls.crt
           - key: ca.crt
             path: ca.crt
+        optional: true
+        secretName: argocd-dex-server-tls
 ```
 
 > ↪️ 参考：
@@ -374,9 +386,118 @@ spec:
 
 記入中...
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server
+  namespace: argocd
+spec:
+  automountServiceAccountToken: false
+  containers:
+    - name: argocd-repo-server
+      image: quay.io/argoproj/argocd:latest
+      command:
+        - argocd-server
+        - --logformat
+        - json
+        - --loglevel
+        - info
+        - --insecure
+      # 各種ConfigMapを読み込む。
+      env:
+        - name: XDG_CONFIG_HOME
+          value: /.config
+        - name: HELM_PLUGINS
+          value: /helm-working-dir/helm/plugins
+        - name: *****
+          valueFrom:
+            configMapKeyRef:
+              key: *****
+              name: argocd-cm
+              optional: true
+        - name: *****
+          valueFrom:
+            configMapKeyRef:
+              key: *****
+              name: argocd-cmd-params-cm
+              optional: true
+        - name: *****
+          valueFrom:
+            secretKeyRef:
+              key: *****
+              name: argocd-redis
+              optional: true
+
+  # プラグインをインストールするInitContainer
+  initContainers:
+    - name: download-tools
+      command:
+        - cp
+        - -n
+        - /usr/local/bin/argocd
+        - /var/run/argocd/argocd-cmp-server
+
+  # 各種Secretを読み込む
+  volumes:
+    - configMap:
+        defaultMode: 420
+        name: argocd-ssh-known-hosts-cm
+      name: ssh-known-hosts
+    - configMap:
+        defaultMode: 420
+        name: argocd-tls-certs-cm
+      name: tls-certs
+    - configMap:
+        defaultMode: 420
+        name: argocd-gpg-keys-cm
+      name: gpg-keys
+    - emptyDir: {}
+      name: gpg-keyring
+    - name: argocd-repo-server-tls
+      secret:
+        defaultMode: 420
+        items:
+          - key: tls.crt
+            path: tls.crt
+          - key: tls.key
+            path: tls.key
+          - key: ca.crt
+            path: ca.crt
+        optional: true
+        secretName: argocd-repo-server-tls
+
+  ...
+
+```
+
 #### ▼ redis-server
 
 記入中...
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-redis-server
+  namespace: argocd
+spec:
+  containers:
+    - name: argocd-redis-server
+      image: redis:latest-alpine
+      args:
+        - --save
+        - ""
+        - --appendonly
+        - "no"
+      ports:
+        - containerPort: 6379
+          name: redis
+          protocol: TCP
+
+  ...
+
+```
 
 #### ▼ dex-server
 
@@ -390,20 +511,12 @@ metadata:
   namespace: argocd
 spec:
   containers:
-    - name: dex-server
-      image: ghcr.io/dexidp/dex:v2.35.3
-      imagePullPolicy: IfNotPresent
+    - name: argocd-dex-server
+      image: ghcr.io/dexidp/dex:latest
       command:
         - /shared/argocd-dex
       args:
         - rundex
-      env:
-        - name: ARGOCD_DEX_SERVER_DISABLE_TLS
-          valueFrom:
-            configMapKeyRef:
-              name: argocd-cmd-params-cm
-              key: dexserver.disable.tls
-              optional: true
       ports:
         - name: http
           containerPort: 5556
@@ -414,24 +527,31 @@ spec:
         - name: metrics
           containerPort: 5558
           protocol: TCP
-      resources:
-        {}
-      securityContext:
-        allowPrivilegeEscalation: false
-        capabilities:
-          drop:
-            - ALL
-        readOnlyRootFilesystem: false
-        runAsNonRoot: false
-        seccompProfile:
-          type: RuntimeDefault
-      volumeMounts:
-        - name: static-files
-          mountPath: /shared
-        - name: dexconfig
-          mountPath: /tmp
-        - name: argocd-dex-server-tls
-          mountPath: /tls
+      # 各種ConfigMapを読み込む
+      env:
+        - name: *****
+          valueFrom:
+            configMapKeyRef:
+              key: *****
+              name: argocd-cmd-params-cm
+              optional: true
+
+  ...
+
+  # 各種Secretを読み込む
+  volumes:
+    - name: argocd-dex-server-tls
+      secret:
+        defaultMode: 420
+        items:
+          - key: tls.crt
+            path: tls.crt
+          - key: tls.key
+            path: tls.key
+          - key: ca.crt
+            path: ca.crt
+        optional: true
+        secretName: argocd-dex-server-tls
 
   ...
 
@@ -446,6 +566,67 @@ spec:
 #### ▼ application-controller
 
 記入中...
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-application-controller
+  namespace: argocd
+spec:
+  containers:
+    - name: argocd-application-controller
+      image: quay.io/argoproj/argocd:latest
+      command:
+        - argocd-application-controller
+        - --logformat
+        - text
+        - --loglevel
+        - info
+        - --application-namespaces
+        - "*"
+      ports:
+        - containerPort: 8082
+          name: metrics
+          protocol: TCP
+      # 各種ConfigMapを読み込む
+      env:
+        - name: *****
+          valueFrom:
+            configMapKeyRef:
+              key: *****
+              name: argocd-cm
+              optional: true
+        - name: *****
+          valueFrom:
+            configMapKeyRef:
+              key: *****
+              name: argocd-cmd-params-cm
+              optional: true
+        - name: *****
+          valueFrom:
+            secretKeyRef:
+              key: ****
+              name: argocd-redis
+              optional: true
+  # 各種Secretを読み込む
+  volumes:
+    - name: argocd-repo-server-tls
+      secret:
+        defaultMode: 420
+        items:
+          - key: tls.crt
+            path: tls.crt
+          - key: tls.key
+            path: tls.key
+          - key: ca.crt
+            path: ca.crt
+        optional: true
+        secretName: argocd-repo-server-tls
+
+ ...
+
+```
 
 <br>
 
