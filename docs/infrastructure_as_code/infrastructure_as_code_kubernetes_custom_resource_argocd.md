@@ -78,11 +78,13 @@ dex-serverと通信する。
 
 SSOを採用する時に、SSOの認証認可処理の認証フェーズを外部のIDプロバイダーに委譲できる。
 
-この時、認証フェーズに必要な情報を直接的にIDプロバイダーに送信するのではなく、一旦dex-serverに送信する。
+この時、認証情報 (例：クライアントID、クライアントシークレット、など) を直接的にIDプロバイダーに送信するのではなく、dex-serverを介して送信できる。
 
 ArgoCDの認証認可処理は、AuthN (認証) と AuthZ (認可) から構成されている。
 
-このAuthNの処理にてdex-serverに情報を送信し、受信した認証情報に基づいてAuthZで認可処理を実施する。
+このAuthNの処理でdex-serverに認証情報を送信すると、dex-serverが適切なIDプロバイダーから認証フェーズの処理結果を取得してくれる。
+
+argocd-apiserverは、取得した情報に基づいて、AuthZで認可処理を実施する。
 
 ![argocd_auth_architecture.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_auth_architecture.jpg)
 
