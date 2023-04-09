@@ -141,7 +141,9 @@ ArgoCDのカスタムリソース (例: Application、AppProject、など) と�
 
 #### ▼ repo-serverとの通信
 
-repo-serverが補完するマニフェストのキャッシュを参照し、監視対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
+repo-serverにマニフェストの成果物の作成をコールする。
+
+また、repo-serverが保管するマニフェストのキャッシュを参照し、監視対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
 
 そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
 
