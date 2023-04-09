@@ -519,23 +519,23 @@ ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`ku
 
 ArgoCDはデータポイントを作成し、これをPrometheusで収集できる。
 
-| Prometheusのメトリクス                      | メトリクスの種類  | 説明                                                  |
-|---------------------------------------|:---------:|-----------------------------------------------------|
-| `argocd_app_info`                     |   Gauge   | Applicationの状態を表す。                                  |
-| `argocd_app_k8s_request_total`        |  Counter  | 差分の検出時に、Applicationから監視対象Clusterに送信されたリクエスト数を表す。    |
-| `argocd_app_labels`                   |   Gauge   | 記入中...                                              |
-| `argocd_app_reconcile`                | Histogram | Applicationのパフォーマンスを表す。                             |
-| `argocd_app_sync_total`               |  Counter  | ApplicationのSync数を表す。                               |
-| `argocd_cluster_api_resource_objects` |   Gauge   | 監視対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。 |
-| `argocd_cluster_api_resources`        |   Gauge   | 監視対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。    |
-| `argocd_cluster_cache_age_seconds`    |   Gauge   | 監視対象Clusterに関して、キャッシュの有効期間を表す。                      |
-| `argocd_cluster_connection_status`    |   Gauge   | 監視対象Clusterに関して、現在の接続状態を表す。                         |
-| `argocd_cluster_events_total`         |  Counter  | 監視対象Clusterに関して、イベントの合計数を表す。                        |
-| `argocd_cluster_info`                 |   Gauge   | 監視対象Clusterの状態を表す。                                  |
-| `argocd_kubectl_exec_pending`         |   Gauge   | ArgoCDのexecのPending数を表す。                            |
-| `argocd_kubectl_exec_total`           |  Counter  | ArgoCDのexecの合計数を表す。                                 |
-| `argocd_redis_request_duration`       | Histogram | Redisへのリクエストのレイテンシーを表す。                             |
-| `argocd_redis_request_total`          |  Counter  | Redisへのリクエスト数を表す。                                   |
+| Prometheusのメトリクス                | メトリクスの種類 | 説明                                                                                  |
+| ------------------------------------- | :--------------: | ------------------------------------------------------------------------------------- |
+| `argocd_app_info`                     |      Gauge       | Applicationの状態を表す。                                                             |
+| `argocd_app_k8s_request_total`        |     Counter      | 差分の検出時に、Applicationから監視対象Clusterに送信されたリクエスト数を表す。        |
+| `argocd_app_labels`                   |      Gauge       | 記入中...                                                                             |
+| `argocd_app_reconcile`                |    Histogram     | Applicationのパフォーマンスを表す。                                                   |
+| `argocd_app_sync_total`               |     Counter      | ApplicationのSync数を表す。                                                           |
+| `argocd_cluster_api_resource_objects` |      Gauge       | 監視対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。 |
+| `argocd_cluster_api_resources`        |      Gauge       | 監視対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。       |
+| `argocd_cluster_cache_age_seconds`    |      Gauge       | 監視対象Clusterに関して、キャッシュの有効期間を表す。                                 |
+| `argocd_cluster_connection_status`    |      Gauge       | 監視対象Clusterに関して、現在の接続状態を表す。                                       |
+| `argocd_cluster_events_total`         |     Counter      | 監視対象Clusterに関して、イベントの合計数を表す。                                     |
+| `argocd_cluster_info`                 |      Gauge       | 監視対象Clusterの状態を表す。                                                         |
+| `argocd_kubectl_exec_pending`         |      Gauge       | ArgoCDのexecのPending数を表す。                                                       |
+| `argocd_kubectl_exec_total`           |     Counter      | ArgoCDのexecの合計数を表す。                                                          |
+| `argocd_redis_request_duration`       |    Histogram     | Redisへのリクエストのレイテンシーを表す。                                             |
+| `argocd_redis_request_total`          |     Counter      | Redisへのリクエスト数を表す。                                                         |
 
 > ↪️ 参考：
 >

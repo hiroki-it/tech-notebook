@@ -145,6 +145,8 @@ repo-serverが補完するマニフェストのキャッシュを参照し、監
 
 そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
 
+![argocd_application-cotnroller_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-cotnroller_repo-server.png)
+
 > ↪️ 参考：
 >
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
