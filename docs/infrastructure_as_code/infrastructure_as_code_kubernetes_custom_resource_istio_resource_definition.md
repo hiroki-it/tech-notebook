@@ -1288,7 +1288,7 @@ spec:
 
 #### ▼ httpとは
 
-HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
+HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
 ルーティング先のServiceを厳格に指定するために、Serviceの`.spec.ports.appProtocol`キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 

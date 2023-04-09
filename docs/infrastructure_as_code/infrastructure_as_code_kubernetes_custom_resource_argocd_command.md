@@ -69,7 +69,7 @@ $ argocd app sync foo-application --dry-run --project foo-project
 
 #### ▼ --local
 
-指定したAplicationで、ローカルマシンのディレクトリをリポジトリとして監視する。
+指定したAplicationで、ローカルマシンのディレクトリをリポジトリとしてwatchする。
 
 ```bash
 $ argocd app sync foo-application --local=<ディレクトリへのパス> --project foo-project
@@ -85,11 +85,11 @@ $ argocd app sync foo-application --local=<ディレクトリへのパス> --pro
 
 #### ▼ repoとは
 
-ArgoCDがプライベートリポジトリを監視する場合に、リポジトリを操作する。
+ArgoCDがプライベートリポジトリをwatchする場合に、リポジトリを操作する。
 
 #### ▼ add
 
-プライベートリポジトリを監視する場合に、監視対象として追加する。
+プライベートリポジトリをwatchする場合に、watch対象として追加する。
 
 ```bash
 $ argocd repo add oci://<OCIレジストリ名> \

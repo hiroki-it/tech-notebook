@@ -559,7 +559,7 @@ data:
 
 ## 05. argocd-tls-cets-cm
 
-リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。
+リポジトリをHTTPSプロコトルでwatchするために、argocd-serverで必要なSSL証明書を設定する。
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 
@@ -567,7 +567,7 @@ data:
 
 ## 06. argocd-ssh-nown-hosts-cm
 
-SSH公開鍵認証でリポジトリに接続して監視する場合に、argocd-serverで必要な`known_hosts`ファイルを設定する。
+SSH公開鍵認証でリポジトリに接続してwatchする場合に、argocd-serverで必要な`known_hosts`ファイルを設定する。
 
 `known_hosts`ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
 

@@ -46,7 +46,7 @@ data:
 
 ### argocd-repoとは
 
-ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
+ArgoCDがプライベートリポジトリをwatchする時に必要な認証情報を設定する。
 
 argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジトリにアクセスできるようにする。
 
@@ -65,7 +65,7 @@ argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジト
 
 Secretタイプは`repository`とする。
 
-監視対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
+watch対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
 
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
@@ -86,7 +86,7 @@ HTTPS認証に必要なユーザー名とパスワードを設定する。
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
-# foo-repositoryを監視するためのargocd-repo
+# foo-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -104,7 +104,7 @@ data:
   username: hiroki-it
   password: pass
 ---
-# bar-repositoryを監視するためのargocd-repo
+# bar-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -132,7 +132,7 @@ SSH公開鍵認証に必要な秘密鍵を設定する。
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
-# foo-repositoryを監視するためのargocd-repo
+# foo-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -150,7 +150,7 @@ data:
   sshPrivateKey: |
     MIIC2 ...
 ---
-# bar-repositoryを監視するためのargocd-repo
+# bar-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -177,7 +177,7 @@ data:
 
 プライベートなチャートリポジトリごとに、異なるSecretで認証情報を設定する必要がある。
 
-ただし、監視する複数のプライベートなチャートリポジトリが、全て`1`個のチャートレジストリ内にある場合は、Secretは`1`個でよい。
+ただし、watchする複数のプライベートなチャートリポジトリが、全て`1`個のチャートレジストリ内にある場合は、Secretは`1`個でよい。
 
 > ↪️ 参考：
 >
@@ -191,7 +191,7 @@ HTTPS認証に必要なユーザー名とパスワードを設定する。
 ここでは、プライベートなチャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
-# foo-repositoryを監視するためのargocd-repo
+# foo-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -209,7 +209,7 @@ data:
   username: foo
   password: bar
 ---
-# bar-repositoryを監視するためのargocd-repo
+# bar-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -240,7 +240,7 @@ OCIプロトコルの有効化 (`data.enableOCI`キー) が必要であるが、
 
 プライベートなチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
 
-ただし、監視する複数のリポジトリが、全て`1`個のOCIレジストリ内にある場合は、Secretは`1`個でよい。
+ただし、watchする複数のリポジトリが、全て`1`個のOCIレジストリ内にある場合は、Secretは`1`個でよい。
 
 > ↪️ 参考：
 >
@@ -255,7 +255,7 @@ HTTPS認証に必要なユーザー名とパスワードを設定する。
 ここでは、プライベートなOCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
-# foo-repositoryを監視するためのargocd-repo
+# foo-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -274,7 +274,7 @@ data:
   password: bar
   enableOCI: true # OCIリポジトリを有効化する。
 ---
-# bar-repositoryを監視するためのargocd-repo
+# bar-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -310,11 +310,11 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 ### argocd-repo-credsとは
 
-ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
+ArgoCDがプライベートリポジトリをwatchする時に必要な認証情報を設定する。
 
 argocd-repoとは異なり、`1`個の認証情報で複数にリポジトリにアクセスできるようにする。
 
-監視する複数のリポジトリが全て`1`個のマニフェストレジストリ内にある場合に、`1`個の認証情報で全てのマニフェストリポジトリを監視できるようにできる。
+watchする複数のリポジトリが全て`1`個のマニフェストレジストリ内にある場合に、`1`個の認証情報で全てのマニフェストリポジトリをwatchできるようにできる。
 
 なお、パブリックリポジトリの場合は、argocd-repo-creds自体が不要である。
 
@@ -356,7 +356,7 @@ data:
 また、argocd-repoには認証情報 (`data.username`キー、`data.password`キー) を設定しないようにする。
 
 ```yaml
-# foo-repositoryを監視するためのargocd-repo
+# foo-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -372,7 +372,7 @@ data:
   # https://github.com/hiroki-hasegawa に最長一致する。
   url: https://github.com/hiroki-hasegawa/foo-manifest.git
 ---
-# bar-repositoryを監視するためのargocd-repo
+# bar-repositoryをwatchするためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -603,7 +603,7 @@ data:
 
 #### ▼ AWS EKS Clusterの場合
 
-ArgoCDがClusterを監視するためには、ArgoCDにClusterの認証情報を登録する必要がある。
+ArgoCDがClusterをwatchするためには、ArgoCDにClusterの認証情報を登録する必要がある。
 
 これは、ローカルマシンで`kubectl`コマンドを実行する時に、`~/.kube/config`ファイルにClusterの認証情報を登録することと同じである。
 
@@ -637,10 +637,10 @@ $ argocd login <ArgoCDのドメイン名> --grpc-web
 
 `【４】`
 
-: ArgoCDに監視させたいClusterをコンテキストとする。
+: ArgoCDにwatchさせたいClusterをコンテキストとする。
 
 ```bash
-$ kubectl config use-context <ArgoCDに監視させたいClusterのARN>
+$ kubectl config use-context <ArgoCDにwatchさせたいClusterのARN>
 ```
 
 `【５】`

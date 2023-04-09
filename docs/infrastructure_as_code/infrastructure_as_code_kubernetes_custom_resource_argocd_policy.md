@@ -13,11 +13,11 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 <br>
 
-## 01. 監視対象のClusterのデザインパターン
+## 01. watch対象のClusterのデザインパターン
 
 ### 内部Clusterパターン
 
-ArgoCDのApplicationと、監視対象のClusterを同じClusterで管理する。
+ArgoCDのApplicationと、watch対象のClusterを同じClusterで管理する。
 
 ApplicationとClusterを一括で管理できる。
 
@@ -25,7 +25,7 @@ ApplicationとClusterを一括で管理できる。
 
 ### 外部Clusterパターン
 
-ArgoCDのApplicationと、監視対象のClusterを別々のClusterで管理する。
+ArgoCDのApplicationと、watch対象のClusterを別々のClusterで管理する。
 
 複数のClusterにデプロイするApplicationを管理しやすい。
 
@@ -97,11 +97,11 @@ infra-manifest-repository/
 
 ### Appパターン (通常パターン)
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。
+watch対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。
 
 この時、全てのApplicationには親Applicationが存在しない。
 
-監視対象リポジトリにはKubernetesリソースのマニフェストやhelmチャートが管理されている。
+watch対象リポジトリにはKubernetesリソースのマニフェストやhelmチャートが管理されている。
 
 ```yaml
 argocd-repository/
@@ -155,7 +155,7 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 
 #### ▼ root-application (第１階層のApplication)
 
-全てのApplicationを監視する最上位Applicationのこと。
+全てのApplicationをwatchする最上位Applicationのこと。
 
 状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。
 
@@ -173,7 +173,7 @@ root-argocd-repository/
 
 #### ▼ parent-application (第２階層のApplication)
 
-各AppProjectの子Applicationを監視する親Applicationのこと。
+各AppProjectの子Applicationをwatchする親Applicationのこと。
 
 管理チームごとにApplication (app-parent-application、infra-parent-application) を作成すると良い。
 
@@ -183,8 +183,8 @@ parent-applicationは、実行環境名 (dev、stg、prd) のプロジェクト�
 # 親Application
 parent-argocd-repository/
 ├── tes/
-│   ├── app-parent-application.yaml # appプロジェクトを監視するapplication
-│   └── infra-parent-application.yaml # infraプロジェクトを監視するapplication
+│   ├── app-parent-application.yaml # appプロジェクトをwatchするapplication
+│   └── infra-parent-application.yaml # infraプロジェクトをwatchするapplication
 │
 ├── stg/
 └── prd/
@@ -192,7 +192,7 @@ parent-argocd-repository/
 
 #### ▼ child-application (第３階層のApplication)
 
-各AppProjectで、マニフェストリポジトリやチャートリポジトリを監視するApplicationのこと。
+各AppProjectで、マニフェストリポジトリやチャートリポジトリをwatchするApplicationのこと。
 
 マイクロサービス単位のマニフェストやチャートごとに作成すると良い。
 
@@ -240,7 +240,7 @@ child-argocd-repository/
 
 実行環境別に、Applicationを異なるディレクトリで管理する。
 
-Applicationでは、実行環境に対応するブランチのみを監視する。
+Applicationでは、実行環境に対応するブランチのみをwatchする。
 
 ```yaml
 repository/
@@ -447,9 +447,9 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 <br>
 
-### すでに削除されたPodが監視され続ける
+### すでに削除されたPodがwatchされ続ける
 
-すでに削除したPodを監視し続けてしまうことがあり、この場合Podが存在しないため、Podの削除すらできなくなってしまう。
+すでに削除したPodをwatchし続けてしまうことがあり、この場合Podが存在しないため、Podの削除すらできなくなってしまう。
 
 この問題が起こった場合、以下のいずれかで解決する。
 
@@ -515,23 +515,23 @@ ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`ku
 
 <br>
 
-## 12. 監視
+## 12. Prometheusによる監視
 
 ArgoCDはデータポイントを作成し、これをPrometheusで収集できる。
 
 | Prometheusのメトリクス                | メトリクスの種類 | 説明                                                                                  |
 | ------------------------------------- | :--------------: | ------------------------------------------------------------------------------------- |
 | `argocd_app_info`                     |      Gauge       | Applicationの状態を表す。                                                             |
-| `argocd_app_k8s_request_total`        |     Counter      | 差分の検出時に、Applicationから監視対象Clusterに送信されたリクエスト数を表す。        |
+| `argocd_app_k8s_request_total`        |     Counter      | 差分の検出時に、Applicationからwatch対象Clusterに送信されたリクエスト数を表す。        |
 | `argocd_app_labels`                   |      Gauge       | 記入中...                                                                             |
 | `argocd_app_reconcile`                |    Histogram     | Applicationのパフォーマンスを表す。                                                   |
 | `argocd_app_sync_total`               |     Counter      | ApplicationのSync数を表す。                                                           |
-| `argocd_cluster_api_resource_objects` |      Gauge       | 監視対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。 |
-| `argocd_cluster_api_resources`        |      Gauge       | 監視対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。       |
-| `argocd_cluster_cache_age_seconds`    |      Gauge       | 監視対象Clusterに関して、キャッシュの有効期間を表す。                                 |
-| `argocd_cluster_connection_status`    |      Gauge       | 監視対象Clusterに関して、現在の接続状態を表す。                                       |
-| `argocd_cluster_events_total`         |     Counter      | 監視対象Clusterに関して、イベントの合計数を表す。                                     |
-| `argocd_cluster_info`                 |      Gauge       | 監視対象Clusterの状態を表す。                                                         |
+| `argocd_cluster_api_resource_objects` |      Gauge       | watch対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。 |
+| `argocd_cluster_api_resources`        |      Gauge       | watch対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。       |
+| `argocd_cluster_cache_age_seconds`    |      Gauge       | watch対象Clusterに関して、キャッシュの有効期間を表す。                                 |
+| `argocd_cluster_connection_status`    |      Gauge       | watch対象Clusterに関して、現在の接続状態を表す。                                       |
+| `argocd_cluster_events_total`         |     Counter      | watch対象Clusterに関して、イベントの合計数を表す。                                     |
+| `argocd_cluster_info`                 |      Gauge       | watch対象Clusterの状態を表す。                                                         |
 | `argocd_kubectl_exec_pending`         |      Gauge       | ArgoCDのexecのPending数を表す。                                                       |
 | `argocd_kubectl_exec_total`           |     Counter      | ArgoCDのexecの合計数を表す。                                                          |
 | `argocd_redis_request_duration`       |    Histogram     | Redisへのリクエストのレイテンシーを表す。                                             |
