@@ -74,7 +74,7 @@ RESTful-APIとRPC-APIのエンドポイントを公開し、クライアント (
 
 #### ▼ dex-serverとの通信
 
-dex-serverと通信する。
+application-cotnrollerは、dex-serverのRESTful-APIのエンドポイントをコールする。
 
 SSOを採用する時に、SSOの認証認可処理の認証フェーズを外部のIDプロバイダー (例：Auth0、KeyCloak、AWS Cognito、Google Auth) に委譲できる。
 
@@ -157,6 +157,8 @@ repo-serverにマニフェストの成果物の作成をコールする。
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 
 #### ▼ redis-serverとの通信
+
+application-cotnrollerは、redis-serverのRESTful-APIのエンドポイントをコールする。
 
 自身の処理の結果をredis-serverに送信する。
 
@@ -325,9 +327,14 @@ spec:
         - /usr/local/bin/argocd-server
         # HTTPプロトコルで受信する
         - --insecure
+      # クライアント、Prometheus、からのリクエストを受信する
       ports:
         - containerPort: 8080
+          name: server
+          protocol: TCP
         - containerPort: 8083
+          name: metrics
+          protocol: TCP
       # 各種ConfigMapを読み込む。
       env:
         - name: *****
@@ -412,6 +419,14 @@ spec:
         - --loglevel
         - info
         - --insecure
+      # application-controller、Prometheus、からのリクエストを受信する
+      ports:
+        - containerPort: 8081
+          name: repo-server
+          protocol: TCP
+        - containerPort: 8084
+          name: metrics
+          protocol: TCP
       # 各種ConfigMapを読み込む。
       env:
         - name: XDG_CONFIG_HOME
@@ -490,12 +505,13 @@ metadata:
 spec:
   containers:
     - name: argocd-redis-server
-      image: redis:latest-alpine
+      image: public.ecr.aws/docker/library/redis:latest-alpine
       args:
         - --save
         - ""
         - --appendonly
         - "no"
+      # application-controllerからのリクエストを受信する
       ports:
         - containerPort: 6379
           name: redis
@@ -523,6 +539,7 @@ spec:
         - /shared/argocd-dex
       args:
         - rundex
+      # application-controller、Prometheus、からのリクエストを受信する
       ports:
         - name: http
           containerPort: 5556
@@ -591,6 +608,7 @@ spec:
         - info
         - --application-namespaces
         - "*"
+      # Prometheusからのリクエストを受信する
       ports:
         - containerPort: 8082
           name: metrics
