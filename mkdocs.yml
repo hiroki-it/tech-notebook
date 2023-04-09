@@ -686,8 +686,9 @@ nav:
   - 👥 開発手法:
       - software_development_methodology/index.md
       - 開発手法論: software_development_methodology/software_development_methodology.md
-      - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
+      - 組織論: software_development_methodology/software_development_organization.md
+      - プロジェクト管理: software_development_methodology/software_development_project_management.md
       - ■ バージョン管理:
           - ■ Git:
-              - コマンド: software_development_methodology/software_development_methodology_git_command.md
-              - GitHub: software_development_methodology/software_development_methodology_git_github.md
+              - コマンド: software_development_methodology/software_development_git_command.md
+              - GitHub: software_development_methodology/software_development_git_github.md
