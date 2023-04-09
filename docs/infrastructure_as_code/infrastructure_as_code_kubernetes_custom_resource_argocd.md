@@ -76,7 +76,7 @@ RESTful-APIとRPC-APIのエンドポイントを公開し、クライアント (
 
 dex-serverと通信する。
 
-SSOを採用する時に、SSOの認証認可処理の認証フェーズを外部のIDプロバイダーに委譲できる。
+SSOを採用する時に、SSOの認証認可処理の認証フェーズを外部のIDプロバイダー (例：Auth0、KeyCloak、AWS Cognito、Google Auth) に委譲できる。
 
 この時、認証情報 (例：クライアントID、クライアントシークレット、など) を直接的にIDプロバイダーに送信するのではなく、dex-serverを介して送信できる。
 
