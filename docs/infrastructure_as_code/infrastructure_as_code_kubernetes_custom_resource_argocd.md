@@ -90,9 +90,9 @@ argocd-apiserverは、取得した情報に基づいて、AuthZで認可処理�
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/architecture/authz-authn.md
 
-#### ▼ kube-apiserverとの通信
+#### ▼ 監視対象Clusterのkube-apiserverとの通信
 
-kube-apiserverと通信する。
+監視対象Clusterのkube-apiserverと通信する。
 
 クライアントから受信したリクエスト (例：ダッシュボード上のSync、`argocd app sync`コマンド) に基づいて、kube-apiserverにリクエストを送信する。
 
