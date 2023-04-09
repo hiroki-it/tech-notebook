@@ -76,9 +76,13 @@ RESTful-APIとRPC-APIのエンドポイントを公開し、クライアント (
 
 dex-serverと通信する。
 
-SSOを採用する時に、認証フェーズに必要な情報を直接的にIDプロバイダーに送信するのではなく、一旦dex-serverに送信する。
+SSOを採用する時に、SSOの認証認可処理の認証フェーズを外部のIDプロバイダーに委譲できる。
+
+この時、認証フェーズに必要な情報を直接的にIDプロバイダーに送信するのではなく、一旦dex-serverに送信する。
 
 ![argocd_auth_architecture.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_auth_architecture.jpg)
+
+> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/architecture/authz-authn.md
 
 #### ▼ kube-apiserverとの通信
 
