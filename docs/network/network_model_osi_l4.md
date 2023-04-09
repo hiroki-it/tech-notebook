@@ -85,11 +85,11 @@ GET http://127.0.0.1:8080
 
 #### ▼ Unixドメインソケットとは
 
-![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
-
 Unixで使用されるソケットのこと。
 
 ソケットファイルを介して、同じOS上のプロセス間でパケットを送受信する。
+
+![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
 
 > ↪️ 参考：
 >

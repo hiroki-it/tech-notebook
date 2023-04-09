@@ -80,6 +80,10 @@ SSOを採用する時に、SSOの認証認可処理の認証フェーズを外�
 
 この時、認証フェーズに必要な情報を直接的にIDプロバイダーに送信するのではなく、一旦dex-serverに送信する。
 
+ArgoCDの認証認可処理は、AuthN (認証) と AuthZ (認可) から構成されている。
+
+このAuthNの処理にてdex-serverに情報を送信し、受信した認証情報に基づいてAuthZで認可処理を実施する。
+
 ![argocd_auth_architecture.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_auth_architecture.jpg)
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/architecture/authz-authn.md
@@ -179,15 +183,17 @@ dex-serverの起動に失敗すると、外部Webサイトに情報を送信で�
 
 #### ▼ image-updaterとは
 
-GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。
+image-updaterを採用しない場合、GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップがある。
 
-アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster内のマニフェストを自動的に書き換える。
+![gitops_without-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
 
-その後、マニフェストリポジトリに書き換えをコミットする。
+一方で、image-updaterを採用すると、GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。
 
 ![gitops_with-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png)
 
-![gitops_without-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
+image-updaterは、アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster内のマニフェストを自動的に書き換える。
+
+その後、マニフェストリポジトリに書き換えをコミットする。
 
 > ↪️ 参考：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
 

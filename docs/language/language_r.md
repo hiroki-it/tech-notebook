@@ -301,6 +301,8 @@ plot(cluster1)
 
 ### `ggplot`メソッド
 
+![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ggplotの概念.png)
+
 `【１】`
 
 : `ggplot`メソッド：グラフのキャンバスを準備
@@ -312,7 +314,5 @@ plot(cluster1)
 `【３】`
 
 : `theme`メソッド：グラフを追加加工
-
-![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ggplotの概念.png)
 
 <br>

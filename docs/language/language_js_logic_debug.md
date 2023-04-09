@@ -30,3 +30,5 @@ description: デバッグの豆知識＠JavaScriptを記録しています。
 | `console.table`メソッド | 配列やオブジェクトなどの構造をテーブル表にして出力する                                |
 | `console.time`メソッド  | `time`メソッドから`timeEnd`メソッドまでの間にある処理を計測する                       |
 | `console.trace`メソッド | 呼び出し元を出力する。                                                                |
+
+<br>

@@ -101,8 +101,6 @@ $ cat data.json | jq '.baz[]' | jq -s
 
 パスの起点を表す。
 
-> ↪️ 参考：https://www.wakuwakubank.com/posts/676-linux-jq/
-
 ```bash
 $ cat data.json | jq '.'
 
@@ -119,6 +117,8 @@ $ cat data.json | jq '.'
   ]
 }
 ```
+
+> ↪️ 参考：https://www.wakuwakubank.com/posts/676-linux-jq/
 
 #### ▼ `[]`
 

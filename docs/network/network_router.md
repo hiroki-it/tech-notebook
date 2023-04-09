@@ -116,8 +116,6 @@ NAT処理を実行できるルーターのこと。
 
 #### ▼ NAT処理とは
 
-![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png)
-
 | 設置場所                                                 | 処理                                                                                                                                                          |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | パブリックネットワークとプライベートネットワークの境目   | NATルーターがグローバルIPアドレスを持ち、パブリックネットワークとプライベートネットワークの双方向に対する通信時に、プライベートIPアドレスに相互変換する。     |
@@ -131,6 +129,8 @@ NAT処理を実行できるルーターのこと。
 
 `1`個の通信で両方が必要である。
 
+![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png)
+
 > ↪️ 参考：
 >
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
@@ -138,11 +138,11 @@ NAT処理を実行できるルーターのこと。
 
 #### ▼ DNAT：Destination NAT
 
-![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グローバルからプライベートへのnat変換.png)
-
 NATルーターの処理のうち、宛先IPアドレスを変換すること (`グローバルIPアドレス` ➡︎ `プライベートIPアドレス`、`プライベートIPアドレス` ➡︎ `プライベートIPアドレス`) 。
 
 NATルーター自体を複数のプライベートネットワークで共有することがある。
+
+![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グローバルからプライベートへのnat変換.png)
 
 > ↪️ 参考：https://rainbow-engine.com/dnat-snat-difference/
 
@@ -229,8 +229,6 @@ NAPTの処理を持つルーターのこと。
 
 #### ▼ NAPT処理
 
-![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
-
 | 設置場所                                                 | 処理                                                                                                                                                           |
 | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | パブリックネットワークとプライベートネットワークの境目   | NAPTルーターがグローバルIPアドレスを持ち、パブリックネットワークとプライベートネットワークの双方向に対する通信時に、プライベートIPアドレスに相互変換する。     |
@@ -243,6 +241,8 @@ NAPTの処理を持つルーターのこと。
 `1`個のIPアドレスに対して、複数の内部IPアドレスを紐付けられる。
 
 AWSやGCPなどで使用されているようなNATルーターはこちらであり、IPアドレスとポート番号の両方を指定することにより、VPC内のプライベートIPアドレスに単一のパブリックIPアドレスを割り当てるようになっている。
+
+![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
 
 > ↪️ 参考：
 >
