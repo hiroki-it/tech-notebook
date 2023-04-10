@@ -258,14 +258,20 @@ metadata:
       # kube-apiserverに対するリクエスト内容。ここでは、kubectl applyコマンドの実行履歴を確認できる。
       operation: Apply
       # kubectlコマンドが管理するマニフェストのキー部分
-      fields: ...
+      fields: 
+      
+        ...
+      
     # kubectlコマンドによる管理
     - manager: kubectl # デフォルト値
       apiVersion: apps/v1
       # kube-apiserverに対するリクエスト内容。ここでは、kubectl editコマンドの実行履歴を確認できる。
       operation: Edit
       # kubectlコマンドが管理するマニフェストのキー部分
-      fields: ...
+      fields: 
+      
+        ...
+      
     # kube-controller-managerによる管理 (後からの変更)
     - manager: kube-controller-manager
       apiVersion: apps/v1
@@ -273,7 +279,10 @@ metadata:
       operation: Update
       time: "2022-01-01T16:00:00.000Z"
       # kube-controller-managerが管理するマニフェストのキー部分
-      fields: ...
+      fields: 
+      
+        ...
+      
     # operatorによる管理 (後からの変更)
     - manager: operator
       apiVersion: apps/v1
@@ -281,7 +290,21 @@ metadata:
       operation: Update
       time: "2022-01-01T16:00:00.000Z"
       # operatorが管理するマニフェストのキー部分
-      fields: ...
+      fields: 
+      
+        ...
+      
+    # ArgoCDのapplication-controllerによる管理 (後からの変更)
+    - manager: argocd-application-controller
+      apiVersion: apps/v1
+      # kube-apiserverに対するリクエスト内容
+      operation: Update
+      time: "2022-01-01T16:00:00.000Z"
+      # ArgoCDのapplication-controllerが管理するマニフェストのキー部分
+      fields:
+        
+        ...
+
 ```
 
 <br>
