@@ -1793,7 +1793,7 @@ spec:
 
 これは、PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる。
 
-異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
+注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
 
 **＊実装例＊**
 
@@ -1876,7 +1876,7 @@ spec:
 
 これを設定しない場合は、ストレージクラス名が`standard`のPersistentVolumeを要求する。
 
-異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
+注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
 
 **＊実装例＊**
 

@@ -288,6 +288,7 @@ AWS EBSは、AWS EBS CSIドライバーが自動で作成するため、作成�
 マニフェストまたはTerraformで定義する。
 
 ```yaml
+# マニフェストで定義した場合
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -299,6 +300,7 @@ parameters:
 ```
 
 ```terraform
+# Terraformで定義した場合
 resource "kubernetes_storage_class" "gp3_encrypted" {
 
   metadata {
@@ -322,7 +324,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 
 #### ▼ PersistentVolumeClaim
 
-PersistentVolumeClaimでStorageClassを指定し、外部Volumeを要求する。
+PersistentVolumeClaimでStorageClassを指定し、外部サービスが提供するVolumeを要求する。
 
 StorageClassが指定されたPersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。
 
@@ -341,6 +343,7 @@ spec:
   resources:
     requests:
       storage: 10Gi
+  # AWS EBS CSIドライバーがプロビジョナーに指定されたStorageClassを要求する
   storageClassName: foo-storage-class
 ```
 
