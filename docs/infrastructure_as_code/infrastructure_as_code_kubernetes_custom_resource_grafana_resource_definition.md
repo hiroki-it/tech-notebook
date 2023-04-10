@@ -147,6 +147,20 @@ spec:
 
 ConfigMapの`.data`キーにJSONを設定すると、ダッシュボードを作成できる。
 
+ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-grafana-dashboard
+  labels:
+    grafana_dashboard: "<labelValueに設定した値>"
+data:
+  data.json: |
+    # ダッシュボードを定義する。
+```
+
 > 参考：https://grafana.com/grafana/dashboards/
 
 <br>
@@ -158,6 +172,20 @@ ConfigMapの`.data`キーにJSONを設定すると、ダッシュボードを作
 独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。
 
 その場合、GitHubなどで公開されているJSONを、ConfigMapの`.data`キーに貼り付ける。
+
+ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-grafana-dashboard
+  labels:
+    grafana_dashboard: "<labelValueに設定した値>"
+data:
+  data.json: |
+    # ダッシュボードを定義する。
+```
 
 > ↪️ 参考：
 >

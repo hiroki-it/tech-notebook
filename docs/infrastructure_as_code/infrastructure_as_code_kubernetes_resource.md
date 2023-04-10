@@ -983,7 +983,7 @@ Node上にボリュームを作成し、これをコンテナにバインドマ�
 > - https://kubernetes.io/docs/concepts/storage/volumes/#local
 > - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
 
-#### ▼ 外部Volume
+#### ▼ 外部サービスのVolume
 
 外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。
 
@@ -1095,7 +1095,7 @@ Node上のPod間でボリュームを共有できない。
 
 > ↪️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
-#### ▼ 外部Volume
+#### ▼ 外部サービスのVolume
 
 外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。
 
