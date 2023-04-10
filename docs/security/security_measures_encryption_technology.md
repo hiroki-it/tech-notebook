@@ -230,6 +230,12 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 > ↪️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 
+#### ▼ リーフ証明書
+
+記入中...
+
+> ↪️ 参考：https://itkq.jp/blog/2020/06/20/x509-chain/
+
 #### ▼ SSL証明書
 
 デジタル証明書をSSLに使用する場合、特にSSL証明書という。

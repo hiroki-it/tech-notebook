@@ -265,12 +265,15 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 #### ▼ クライアント証明書
 
-SSL/TLSプロトコルで暗号化するためにクライアント証明書が必要である。
+SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler) が中間CA認証局として機能し、署名したクライアント証明書 (おそらくリーフ証明書と呼ぶ) を発行する。
 
-このクライアント証明書は、VPNツール (ルート認証局に相当) で認証しておく必要がある。
+このクライアント証明書をVPNのクライアント側に設定する必要がある。
 
 ![vpn_certificate.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
 
-> ↪️ 参考：https://www.nrapki.jp/client-certificate/telework/
+> ↪️ 参考：
+>
+> - https://www.nrapki.jp/client-certificate/telework/
+> - https://help.zscaler.com/zia/about-ssl-inspection
 
 <br>

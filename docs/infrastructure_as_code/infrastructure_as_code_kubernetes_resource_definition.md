@@ -1793,7 +1793,7 @@ spec:
 
 これは、PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
+異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
 
 **＊実装例＊**
 
@@ -1813,6 +1813,11 @@ spec:
 | standard | デフォルト値である。                  |                                                                                                                                                                                                               |
 | fast     | SSDをPersistentVolumeとして使用する。 | ↪️ 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 | slow     | HDをPersistentVolumeとして使用する。  | ↪️ 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
+> - https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes
 
 <br>
 
@@ -1871,7 +1876,7 @@ spec:
 
 これを設定しない場合は、ストレージクラス名が`standard`のPersistentVolumeを要求する。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
+異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
 
 **＊実装例＊**
 
@@ -1883,6 +1888,11 @@ metadata:
 spec:
   storageClassName: standard
 ```
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
+> - https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes
 
 <br>
 

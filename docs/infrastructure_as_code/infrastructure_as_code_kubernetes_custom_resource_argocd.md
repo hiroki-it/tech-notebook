@@ -138,6 +138,7 @@ ArgoCDのカスタムリソース (例：Application、AppProject、など) と�
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+> - https://www.amazon.co.jp/dp/1617297275
 
 #### ▼ repo-serverとの通信
 
@@ -159,7 +160,6 @@ application-cotnrollerは、repo-serverにHTTPSリクエストを送信し、マ
 #### ▼ redis-serverとの通信
 
 application-cotnrollerは、redis-serverにTCPリクエストを送信し、自身の処理の結果をredis-serverに保管する。
-
 
 <br>
 
@@ -248,6 +248,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+> - https://www.amazon.co.jp/dp/1617297275
 
 #### ▼ デバッグ
 

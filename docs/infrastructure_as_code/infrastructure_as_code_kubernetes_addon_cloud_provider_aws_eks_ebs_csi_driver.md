@@ -65,7 +65,7 @@ secrets:
 
 Terraformを使用する。
 
-Terraformの`aws_eks_addon`でEKSアドオンをインストールし、EBS CSIドライバーに関するKubernetesリソースを作成する。
+Terraformの`aws_eks_addon`でEKSアドオンをインストールし、AWS EBS CSIドライバーに関するKubernetesリソースを作成する。
 
 ```terraform
 # AWS EKSアドオンをインストールする。
@@ -123,6 +123,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
     }
   }
 
+  # AWS EBS CSIドライバーをプロビジョナーに設定する
   storage_provisioner = "ebs.csi.aws.com"
 
   parameters = {
@@ -141,7 +142,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 > - https://kubernetes.io/ja/docs/concepts/storage/storage-classes/
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
 
-別途、EBS CSIドライバーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
+別途、AWS EBS CSIドライバーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
 
 ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
 
@@ -185,7 +186,7 @@ $ helm install <リリース名> <リポジトリ名>/aws-ebs-csi-driver -n kube
 
 #### ▼ AWS EBS
 
-AWS EBSを手動で作成する。
+AWS EBSを手動で作成する必要がある。
 
 #### ▼ PersistentVolume
 
@@ -203,6 +204,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   csi:
+    # AWS EBS CSIドライバーをプロビジョナーに設定する
     driver: ebs.csi.aws.com
     # 手動で作成したAWS EBSのIDを設定する。
     volumeHandle: vol-*****
@@ -212,9 +214,9 @@ spec:
 
 #### ▼ PersistentVolumeClaim
 
-PersistentVolumeClaimでPersistentVolumeを指定する。
+PersistentVolumeClaimでVolumeを要求する。
 
-これにより、PodでPersistentVolumeClaimを指定すると、PersistentVolumeとそれに紐づくAWS EBSが自動的に作成される。
+PersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。
 
 Podの`.spec.nodeSelector`も不要である。
 
@@ -273,9 +275,11 @@ spec:
 
 #### ▼ AWS EBS
 
-AWS EBSは自動で作成されるため、作成不要である。
+AWS EBSは、AWS EBS CSIドライバーが自動で作成するため、作成は不要である。
 
 #### ▼ StorageClass
+
+動的プロビジョニングの場合、StorageClassが必要である。
 
 要求するAWS EBSのタイプをStorageClassで指定する。
 
@@ -291,22 +295,23 @@ metadata:
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
 parameters:
-  type: gp2
+  type: gp3
 ```
 
 ```terraform
-resource "kubernetes_storage_class" "gp2_encrypted" {
+resource "kubernetes_storage_class" "gp3_encrypted" {
 
   metadata {
     name = "foo-storage-class"
   }
 
+  # AWS EBS CSIドライバーをプロビジョナーに設定する
   storage_provisioner = "ebs.csi.aws.com"
 
   parameters = {
     encrypted = "true"
     fsType    = "ext4"
-    type      = "gp2"
+    type      = "gp3"
   }
 
   volume_binding_mode = "WaitForFirstConsumer"
@@ -317,9 +322,9 @@ resource "kubernetes_storage_class" "gp2_encrypted" {
 
 #### ▼ PersistentVolumeClaim
 
-PersistentVolumeClaimでStorageClassを指定する。
+PersistentVolumeClaimでStorageClassを指定し、外部Volumeを要求する。
 
-これにより、PodでPersistentVolumeClaimを指定すると、PersistentVolumeとそれに紐づくAWS EBSが自動的に作成される。
+StorageClassが指定されたPersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。
 
 Podの`.spec.nodeSelector`も不要である。
 

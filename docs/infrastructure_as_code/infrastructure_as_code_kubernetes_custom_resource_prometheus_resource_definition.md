@@ -397,7 +397,7 @@ spec:
         selector:
           matchLabels:
             app: foo-app
-        storageClassName: gp2-encrypted
+        storageClassName: gp3-encrypted
         accessModes:
           - "ReadWriteOnce"
         resources:
@@ -581,7 +581,7 @@ spec:
         resources:
           requests:
             storage: 200Gi
-        storageClassName: gp2-encrypted
+        storageClassName: gp3-encrypted
 ```
 
 <br>

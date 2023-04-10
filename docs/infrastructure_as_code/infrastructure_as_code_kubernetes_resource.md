@@ -927,7 +927,7 @@ $ kubectl exec -n prometheus foo-pod -- df -hT
 ```bash
 $ kubectl get pvc foo-prometheus-pvc -n prometheus
 NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS    AGE
-foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp2-encrypted   181d
+foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp3-encrypted   181d
 ```
 
 `【２】`

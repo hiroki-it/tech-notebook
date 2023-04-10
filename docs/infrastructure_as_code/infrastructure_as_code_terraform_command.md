@@ -896,11 +896,11 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 <br>
 
-## 02. 実インフラから取り込む
+## 02. 実インフラの全ての設定値を`.tfstate`ファイルに取り込む
 
 ### なぜ`import`コマンドが必要なのか
 
-Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を`resource`ブロックの設定値として`.tfstate`ファイルに書き込み、Terraformの管理下におく必要がある (`.tfstate`ファイル上では、`resource`ブロックは`managed`モードという表記になる) 。
+実インフラの全ての設定値を`.tfstate`ファイルに取り込む場合、これの設定値を`resource`ブロックの設定値として`.tfstate`ファイルに書き込み、Terraformの管理下におく必要がある (`.tfstate`ファイル上では、`resource`ブロックは`managed`モードという表記になる) 。
 
 執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを`1`個ずつ指定して、`.tfstate`ファイルに書き込んでいく必要がある。
 
@@ -948,17 +948,17 @@ terraform {
 $ terraform init -reconfigure
 ```
 
-#### ▼ `.tfstate`ファイルに実インフラの変更を取り込む
+#### ▼ 実インフラの設定値を`.tfstate`ファイルに取り込む
 
 `【４】`
 
 : `resource`タイプと`resource`ブロック名を指定し、`.tfstate`ファイルに実インフラの状態を書き込む。
 
-     パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。
+     パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、`terraform plan`コマンドの結果が参考になる。
 
      また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
 
-     何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
+     何らかの理由で`terraform import`コマンドを実行し直したい場合は、`terraform state rm`コマンドで```resource```ブロックを削除し、改めて書き込む。
 
 ```bash
 # 関数を使用せずに定義されている場合
@@ -1050,13 +1050,13 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 
-#### ▼ `.tf`ファイルに実インフラの変更を取り込む
+#### ▼ `.tf`ファイルに実インフラの設定値を取り込む
 
 `【５】`
 
 : `terraform import`コマンドの実行と`.tf`ファイルの変更を繰り返す。
 
-     この時、```.tfstate```ファイルの差分表記と反対に (例：```+```の場合は削除、```-```は追加、```→```は逆向き変更) になるように、tfファイルを修正する。
+     この時、`.tfstate`ファイルの差分表記と反対に (例：`+`の場合は削除、`-`は追加、`→`は逆向き変更) になるように、tfファイルを修正する。
 
 > ↪️ 参考：https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
@@ -1122,5 +1122,25 @@ Error: InvalidParameterException: Creation of service was not idempotent.
 ```bash
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
 ```
+
+<br>
+
+## 03. 実インフラの一部の設定値を`.tfstate`ファイルに取り込む
+
+実インフラから実インフラの一部の設定値を`.tfstate`ファイルに取り込む場合、以下の方法が便利である。
+
+`【１】`
+
+: 先にコンソール画面に設定値を変更する。
+
+`【２】`
+
+: `terraform apply -refresh-only`コマンドまたは`terraform apply`コマンドを実行する。
+
+`【３】`
+
+: 実インフラは変更されず、`.tfstate`ファイルに状態が書き込まれる。
+
+> ↪️ 参考：https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55
 
 <br>
