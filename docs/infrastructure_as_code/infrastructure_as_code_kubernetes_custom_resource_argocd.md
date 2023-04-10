@@ -25,6 +25,7 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 > ↪️ 参考：
 >
+> - https://www.amazon.co.jp/dp/1617297275
 > - https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 > - https://www.techmanyu.com/setup-a-gitops-deployment-model-on-your-local-development-environment-with-k3s-k3d-and-argocd-4be0f4f30820
 > - https://lab.mo-t.com/blog/kubernetes-argocd
