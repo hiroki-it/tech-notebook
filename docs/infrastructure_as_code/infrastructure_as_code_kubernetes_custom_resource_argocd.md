@@ -142,13 +142,13 @@ ArgoCDのカスタムリソース (例：Application、AppProject、など) と�
 
 #### ▼ repo-serverとの通信
 
-application-cotnrollerは、repo-serverにHTTPSリクエストを送信し、マニフェストの成果物の作成をコールする。
+application-controllerは、repo-serverにHTTPSリクエストを送信し、マニフェストの成果物の作成をコールする。
 
 また、repo-serverが保管するマニフェストのキャッシュを参照し、watch対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
 
 そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
 
-![argocd_application-cotnroller_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-cotnroller_repo-server.png)
+![argocd_application-controller_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller_repo-server.png)
 
 > ↪️ 参考：
 >
@@ -159,7 +159,7 @@ application-cotnrollerは、repo-serverにHTTPSリクエストを送信し、マ
 
 #### ▼ redis-serverとの通信
 
-application-cotnrollerは、redis-serverにTCPリクエストを送信し、自身の処理の結果をredis-serverに保管する。
+application-controllerは、redis-serverにTCPリクエストを送信し、自身の処理の結果をredis-serverに保管する。
 
 <br>
 
