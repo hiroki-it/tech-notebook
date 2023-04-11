@@ -87,20 +87,17 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version 1.0.0
 
 <br>
 
-### バックエンド
+### 使用可能なバックエンド
 
-#### ▼ バックエンドとは
-
-helm-secretsの内部で使用する暗号化ツールのこと。
-
-> ↪️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
-
-#### ▼ 使用可能なバックエンド例
+Secretの元となるデータを管理するバックエンドとして、以下を選べる。
 
 - SOPS
 - vals
 
-> ↪️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
+> ↪️ 参考：
+> 
+> - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
+> - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
 
 <br>
 

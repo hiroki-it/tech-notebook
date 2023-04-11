@@ -666,14 +666,14 @@ spec:
         - ./secrets.yaml
 ```
 
-あらかじめ、SOPSを使用して、`values`ファイルを暗号化し、キーバリュー型ストレージに設定しておく。
+あらかじめ、SOPSを使用して、`values`ファイルを暗号化し、キーバリュー型バックエンドに設定しておく。
 
-watch対象のリポジトリに`.sops.yaml`ファイルと`secrets`ファイル (キーバリュー型ストレージ) を配置しておく必要がある。
+watch対象のリポジトリに`.sops.yaml`ファイルと`secrets`ファイル (キーバリュー型バックエンド) を配置しておく必要がある。
 
 ```yaml
 # secretsファイル
 
-# キーバリュー型ストレージ
+# キーバリュー型バックエンド
 data:
   AWS_ACCESS_KEY: ENC[AES256...
   AWS_SECRET_ACCESS_KEY: ENC[AES256...
