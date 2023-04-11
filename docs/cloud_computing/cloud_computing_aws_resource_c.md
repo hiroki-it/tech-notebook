@@ -77,7 +77,22 @@ AWSリソースに、使用中かどうかわからずに、削除できない�
 
 ### ControlTowerとは
 
-複数のAWSアカウントとIAMグループを`1`個のダッシュボードで管理する。
+ControlTowerは、AWS Organizations、IdentityCenter (AWS SSOの後継)、Account Factory、AWS Config、AWS CloudTrail、を一括で作成する。
+
+> ↪️ 参考：
+>
+> - https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html
+> - https://ryonotes.com/difference-between-organizations-and-control-tower/
+> - https://product.st.inc/entry/2022/12/23/102300
+> - https://zenn.dev/sakojun/articles/20220716-aws-controltower#control-tower%E3%81%AF%E3%81%A9%E3%82%93%E3%81%AA%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%8B
+
+<br>
+
+### AWS Organizations
+
+AWS OrganizationsのCreateAccount-APIをコールして、AWSアカウントを作成する。
+
+さらにAWS Organizationsは、このAWSアカウントを作成する時に、AWSアカウント内にIAMロールを作成する。
 
 既存のアカウントをControlTowerに移行する場合、既存のアカウントで作成されたIAMユーザーとIAMグループが不要になるため、これらを削除する必要がある。
 
