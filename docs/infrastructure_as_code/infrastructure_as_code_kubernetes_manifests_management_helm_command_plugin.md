@@ -95,7 +95,7 @@ Secretの元となるデータを管理するバックエンドとして、以�
 - vals
 
 > ↪️ 参考：
-> 
+>
 > - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
 > - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
 

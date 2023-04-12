@@ -492,7 +492,7 @@ $ curl https://foo.example.com -v
 
 ### パスワードの保存方法
 
-平文で保存しておくと、流出した時に勝手に使用されてしまうため、ハッシュ値で保存するべきである。
+平文で保存しておくと、流出した時に勝手に使用されてしまうため、ハッシュ値で保存する必要がある。
 
 ![ハッシュ値で保存](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ値で保存.png)
 

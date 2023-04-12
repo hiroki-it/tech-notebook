@@ -85,7 +85,7 @@ $ httpd -l
 
 ### -L
 
-特定のディレクティブを実装するべき設定ファイルの一覧を取得する。
+特定のディレクティブを実装する必要がある設定ファイルの一覧を取得する。
 
 > ↪️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 

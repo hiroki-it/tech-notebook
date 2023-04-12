@@ -964,7 +964,7 @@ Successfully rebased and updated refs/heads/develop.
 
 過去の全てのコミットに対して、Author名とCommitter名を適用するコマンドもある。
 
-しかし、危険な方法であるため、個人利用のリポジトリのみで使用するようにするべきである。
+しかし、危険な方法であるため、個人利用のリポジトリのみで使用するようにする必要がある。
 
 ```bash
 #!/bin/bash
