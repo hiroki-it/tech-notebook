@@ -19,9 +19,15 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 アプリケーションを稼働させるには、最低限、webサーバーミドルウェア、アプリケーション、DBMSが必要である。
 
-これらのプロセスは、同じコンテナに共存させることなく、個別のコンテナで稼働させ、ネットワークで接続する。
+これらのプロセスは、同じコンテナに共存させることなく、個別のコンテナで稼働させ、ネットワークで接続するようにする。
 
 ![プロセス単位のコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロセス単位のコンテナ.png)
+
+また、各コンテナでは起動コマンドを単一の親プロセスとし、これに子プロセスが紐づくようにする。
+
+![container_processes.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png)
+
+> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container
 
 <br>
 
@@ -134,6 +140,8 @@ $ docker inspect <コンテナ名>
 README.md
 ```
 
+> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools
+
 #### ▼ キャッシュを削除する
 
 UNIXユーティリティをインストールするとキャッシュが残る。
@@ -154,11 +162,15 @@ RUN dnf upgrade -y \
   && rm -rf /var/cache/dnf
 ```
 
+> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#optimize-for-the-docker-build-cache
+
 #### ▼ できる限りOSイメージをベースとしない
 
 OSベンダーが提供するベースイメージを使用すると、不要なバイナリファイルが含まれてしまう。
 
 原則として、1つのコンテナで1つのプロセスしか実行せず、OS全体のシステムは不要なため、OSイメージをベースとしないようにする。
+
+> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible
 
 **＊実装例＊**
 

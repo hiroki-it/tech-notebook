@@ -215,7 +215,7 @@ description: システム品質特性＠システムの知見を記録してい�
 記入中...
 
 > ↪️ 参考：
-> 
+>
 > - https://github.com/YoshiiRyo1/document-templates-for-aws/blob/master/survey/doc_source/non-functional-requirement.md
 > - https://dev.classmethod.jp/articles/survey-non-functional-requirement/
 
@@ -236,7 +236,6 @@ description: システム品質特性＠システムの知見を記録してい�
 - SREingの文脈でのユーザーからの満足度
 
 ![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
-
 
 > ↪️ 参考：
 >

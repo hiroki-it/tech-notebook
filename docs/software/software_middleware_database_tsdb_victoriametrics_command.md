@@ -60,6 +60,34 @@ $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 
 <br>
 
+### -memory.allowedBytes
+
+VictoriaMetricsが使用できるメモリサイズを設定する。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -memory.allowedBytes=100000
+```
+
+> ↪️ 参考：https://docs.victoriametrics.com/#resource-usage-limits
+
+<br>
+
+### -memory.allowedPercent
+
+VictoriaMetricsが使用できるメモリサイズのうちで、許容するメモリ使用率を設定する。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -memory.allowedPercent=80
+```
+
+> ↪️ 参考：https://docs.victoriametrics.com/#resource-usage-limits
+
+<br>
+
 ### -httpListenAddr
 
 インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。

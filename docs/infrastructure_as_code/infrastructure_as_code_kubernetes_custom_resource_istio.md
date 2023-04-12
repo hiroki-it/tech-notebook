@@ -378,13 +378,45 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 
 <br>
 
-### ログ
+### ログ (アクセスログのみ)
 
 #### ▼ 標準出力
 
 IstioによるEnvoyは、アクセスログを作成し、標準出力に出力する。
 
 アクセスログにデフォルトで役立つ値が出力される。
+
+ログ収集ツール (例：FluentBit、Fluentd、など) をDaemonSetパターンやサイドカーパターンで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。
+
+```yaml
+# istio-proxyコンテナのアクセスログ
+{
+  "authority": null,
+  "bytes_received": 158,
+  "bytes_sent": 224,
+  "connection_termination_details": null,
+  "downstream_local_address": "*.*.*.*:50010",
+  "downstream_remote_address": "*.*.*.*:50011",
+  "duration": 12,
+  "method": null,
+  "path": null,
+  "protocol": null,
+  "request_id": null,
+  "requested_server_name": null,
+  "response_code": 0,
+  "response_code_details": null,
+  "response_flags": "-",
+  "route_name": null,
+  "start_time": "2023-04-12T06:11:46.996Z",
+  "upstream_cluster": "outbound|50000||foo-pod.foo-namespace.svc.cluster.local",
+  "upstream_host": "*.*.*.*:50000",
+  "upstream_local_address": "*.*.*.*:50001",
+  "upstream_service_time": null,
+  "upstream_transport_failure_reason": null,
+  "user_agent": null,
+  "x_forwarded_for": null,
+}
+```
 
 > ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/access-log/
 
