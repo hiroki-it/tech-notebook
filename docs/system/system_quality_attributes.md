@@ -208,7 +208,20 @@ description: システム品質特性＠システムの知見を記録してい�
 
 <br>
 
-## 08. 品質特性の定量化
+## 08. 要件定義
+
+### ヒアリングの項目
+
+記入中...
+
+> ↪️ 参考：
+> 
+> - https://github.com/YoshiiRyo1/document-templates-for-aws/blob/master/survey/doc_source/non-functional-requirement.md
+> - https://dev.classmethod.jp/articles/survey-non-functional-requirement/
+
+<br>
+
+## 09. 品質特性の定量化
 
 ### 定量化の方法
 
@@ -221,6 +234,9 @@ description: システム品質特性＠システムの知見を記録してい�
 - 移植性 (汎用性)
 - ソースコードのサイズ
 - SREingの文脈でのユーザーからの満足度
+
+![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
+
 
 > ↪️ 参考：
 >
