@@ -95,7 +95,8 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
   create_role                   = true
   role_name                     = "foo-ebs-csi-driver"
 
-  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # ArgoCDは、デプロイ専用のAWS EKS Cluster上で稼働している
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー

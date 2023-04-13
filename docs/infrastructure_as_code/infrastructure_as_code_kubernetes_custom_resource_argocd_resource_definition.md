@@ -34,7 +34,8 @@ module "iam_assumable_role_with_oidc_argocd_repo_server" {
   create_role                   = true
   role_name                     = "foo-argocd-reposerver"
 
-  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # ArgoCDは外部のAWS EKS Clusterで稼働している
   provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー

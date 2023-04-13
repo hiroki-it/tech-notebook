@@ -30,6 +30,45 @@ Ingressコントローラー (例：aws-load-balancer-controller、glb-controlle
 
 <br>
 
+### AWSの場合
+
+以下のようなIngressを定義したとする。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+spec:
+  ingressClassName: alb
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: foo-service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+```
+
+するとExternalDNSアドオンは、Ingressの`.spec.rules[].host`キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。
+
+```bash
+$ kubectl logs external-dns -n kube-system | grep example.com
+
+time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com A [Id: /hostedzone/*****]"
+time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com TXT [Id: /hostedzone/*****]"
+```
+
+> ↪️ 参考：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
+
+<br>
+
 ## 02. マニフェスト
 
 ### マニフェストの種類
@@ -160,7 +199,9 @@ subjects:
 
 ## 02. セットアップ
 
-### Helmの場合
+### Kubernetes側
+
+#### ▼ Helmの場合
 
 Helmを使用する。
 
@@ -176,43 +217,41 @@ $ helm install <リリース名> <チャートリポジトリ名>/external-dns -
 
 <br>
 
-### Ingressの場合
+### AWS側
 
-#### ▼ AWS ALBの場合
+#### ▼ Terraformの公式モジュールの場合
 
-以下のようなIngressを定義し、IPv4タイプのAWS ALBをプロビジョニングするとする。
+ArgoCDのセットアップのうち、AWS側で必要なものをまとめる。
 
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: foo-alb-ingress
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-spec:
-  ingressClassName: alb
-  rules:
-    - host: example.com
-      http:
-        paths:
-          - backend:
-              service:
-                name: foo-service
-                port:
-                  number: 80
-            path: /
-            pathType: Prefix
+ここでは、Terraformの公式モジュールを使用する。
+
+```terraform
+module "iam_assumable_role_with_oidc_external_dns" {
+
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<バージョン>"
+
+  # ExternalDNSのPodに紐付けるIAMロール
+  create_role                   = true
+  role_name                     = "foo-external-dns"
+
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
+
+  # AWS IAMロールに紐付けるIAMポリシー
+  role_policy_arns              = [
+    "arn:aws:iam::<AWSアカウントID>:policy/ExternalDNSIAMPolicy"
+  ]
+
+  # ExternalDNSのPodのServiceAccount名
+  # Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:kube-system:external-dns",
+    ...
+  ]
+
+}
 ```
-
-するとExternalDNSアドオンは、Ingressの`.spec.rules[].host`キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。
-
-```bash
-$ kubectl logs external-dns -n kube-system | grep example.com
-
-time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com A [Id: /hostedzone/*****]"
-time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com TXT [Id: /hostedzone/*****]"
-```
-
-> ↪️ 参考：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
 
 <br>

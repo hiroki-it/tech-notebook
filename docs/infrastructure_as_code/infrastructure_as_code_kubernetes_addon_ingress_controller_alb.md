@@ -272,7 +272,7 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
   create_role                   = true
   role_name                     = "foo-aws-load-balancer-controller"
 
-  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー
