@@ -15,7 +15,45 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 ## 01. セットアップ
 
-### インストール
+### AWS側
+
+#### ▼ Terraformの公式モジュールの場合
+
+ArgoCDのセットアップのうち、AWS側で必要なものをまとめる。
+
+ここでは、Terraformの公式モジュールを使用する。
+
+```terraform
+module "iam_assumable_role_with_oidc_argocd_repo_server" {
+
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<バージョン>"
+
+  # ArgoCDのrepo-serverのPodに紐付けるIAMロール
+  create_role                   = true
+  role_name                     = "foo-argocd-reposerver"
+
+  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
+
+  # AWS IAMロールに紐付けるIAMポリシー
+  role_policy_arns              = [
+    module.eks_argocd.iam_policy_argocd_reposerver.arn
+  ]
+
+  # ArgoCDのrepo-serverのPodのServiceAccount名
+  # Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:argocd:foo-argocd-repo-server",
+    ...
+  ]
+}
+```
+
+<br>
+
+### マニフェスト側
 
 #### ▼ 非チャートとして
 
@@ -71,73 +109,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n arg
 ```
 
 > ↪️ 参考：https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
-
-<br>
-
-### AWS側
-
-#### ▼ Terraformの公式モジュールの場合
-
-ArgoCDのセットアップのうち、AWS側で必要なものをまとめる。
-
-ここでは、Terraformの公式モジュールを使用する。
-
-```terraform
-module "iam_assumable_role_with_oidc_argocd_repo_server" {
-
-  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-
-  version                       = "<バージョン>"
-
-  # ArgoCDのrepo-serverのPodに紐付けるIAMロール
-  create_role                   = true
-  role_name                     = "foo-argocd-reposerver"
-
-  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
-  provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
-
-  # AWS IAMロールに紐付けるIAMポリシー
-  role_policy_arns              = [
-    module.eks_argocd.iam_policy_argocd_reposerver.arn
-  ]
-
-  # ArgoCDのrepo-serverのPodのServiceAccount名
-  # Terraformではなく、マニフェストで定義した方が良い
-  oidc_fully_qualified_subjects = [
-    "system:serviceaccount:argocd:foo-argocd-repo-server",
-    ...
-  ]
-}
-```
-
-<br>
-
-### アンインストール
-
-#### ▼ argocdコマンドを使用して
-
-ArgoCDのApplicationを削除する。`--cascade`オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。
-
-反対に無効化すると、Applicationのみを単体で削除する。
-
-```bash
-$ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
-```
-
-> ↪️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/faq/
-> - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
-
-#### ▼ `kubectl`コマンドを使用して
-
-ArgoCDのApplicationを削除する。
-
-```bash
-$ kubectl delete app <ArgoCDのアプリケーション名>
-```
-
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
 <br>
 

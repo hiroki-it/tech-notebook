@@ -37,6 +37,41 @@ $ argocd app create foo-application \
 
 <br>
 
+### delete
+
+#### ▼ deleteとは
+
+ArgoCDのApplicationを削除する。
+
+#### ▼ --cascade
+
+`--cascade`オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。
+
+```bash
+$ argocd app delete <ArgoCDのアプリケーション名> --cascade=true
+```
+
+反対に無効化すると、Applicationのみを単体で削除する。
+
+```bash
+$ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
+```
+
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/faq/
+> - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+
+代わりに、`kubectl`コマンドを使用して ArgoCDのApplicationを削除してもよい。
+
+```bash
+$ kubectl delete app <ArgoCDのアプリケーション名>
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
+
+<br>
+
 ### set
 
 #### ▼ setとは
