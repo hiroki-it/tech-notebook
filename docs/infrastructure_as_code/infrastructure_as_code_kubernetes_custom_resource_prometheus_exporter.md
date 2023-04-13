@@ -143,6 +143,8 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-state-met
 
 ### メトリクスの一覧
 
+#### ▼ 確認方法
+
 Node exporterの場合は、Nodeの『`127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
@@ -160,6 +162,22 @@ kube_pod_info
 >
 > - https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics
 > - https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/
+
+#### ▼ よく使うメトリクス
+
+| メトリクス                                       | メトリクスの種類 | 説明                                                                           | PromQL例                                                                                                               |
+| ------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `kube_node_status_condition`                     | 記入中...        | Nodeの現在のステータスを表す。                                                 | `kube_node_status_condition{job="kube-state-metrics",condition="Ready",status="true"}`                                 |
+| `kube_deployment_spec_replicas`                  | Count            | Deploymentで指定しているPodのレプリカ数を表す。                                | `kube_deployment_spec_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`                  |
+| `kube_deployment_status_replicas`                | Count            | Deploymentで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。 | `kube_deployment_status_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`                |
+| `kube_deployment_status_replicas_available`      | Count            | Deploymentで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。     | `kube_deployment_status_replicas_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`      |
+| `kube_deployment_status_replicas_unavailable`    | Count            | Deploymentで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。   | `kube_deployment_status_replicas_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`    |
+| `kube_daemonset_status_desired_number_scheduled` | Count            | DaemonSetで指定しているPodのレプリカ数を表す。                                 | `kube_daemonset_status_desired_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}` |
+| `kube_daemonset_status_current_number_scheduled` | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。  | `kube_daemonset_status_current_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}` |
+| `kube_daemonset_status_number_available`         | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。      | `kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`         |
+| `kube_daemonset_status_number_unavailable`       | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。    | `kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`       |
+
+> ↪️ 参考：https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1
 
 <br>
 
@@ -187,6 +205,8 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mys
 <br>
 
 ### メトリクスの一覧
+
+#### ▼ 確認方法
 
 PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9104/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
@@ -268,6 +288,8 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheu
 <br>
 
 ### メトリクスの一覧
+
+#### ▼ 確認方法
 
 Node exporterの場合は、Nodeの『`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
@@ -385,6 +407,8 @@ node_network_receive_packets_total
 
 ### メトリクスの一覧
 
+#### ▼ 確認方法
+
 PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9187/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
@@ -475,6 +499,8 @@ $ tar xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
 
 ### メトリクスの一覧
 
+#### ▼ 確認方法
+
 Process exporterの場合は、Nodeの『`127.0.0.1:9256/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
@@ -495,6 +521,8 @@ process_exporter_build_info{build_date="2021-03-11-03:26:58",commit_sha="d0597c8
 ## 07. Redis exporter
 
 ### メトリクスの一覧
+
+#### ▼ 確認方法
 
 Redis exporterの場合は、Nodeの『`127.0.0.1:9121/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 

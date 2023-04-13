@@ -27,7 +27,9 @@ Eメール検証の場合を示す。
 # ---------------------------------------------
 resource "aws_acm_certificate" "www_an1" {
   domain_name               = var.route53_domain_www
-  subject_alternative_names = ["*.${var.route53_domain_www}"]
+  subject_alternative_names = [
+    "*.${var.route53_domain_www}"
+  ]
   validation_method         = "EMAIL"
 
   tags = {
@@ -52,7 +54,9 @@ DNS検証の場合を示す。
 # ---------------------------------------------
 resource "aws_acm_certificate" "www_an1" {
   domain_name               = var.route53_domain_www
-  subject_alternative_names = ["*.${var.route53_domain_www}"]
+  subject_alternative_names = [
+    "*.${var.route53_domain_www}"
+  ]
   validation_method         = "DNS"
 
   tags = {

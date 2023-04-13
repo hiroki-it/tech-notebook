@@ -74,6 +74,44 @@ $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n arg
 
 <br>
 
+### AWS側
+
+#### ▼ Terraformの公式モジュールの場合
+
+ArgoCDのセットアップのうち、AWS側で必要なものをまとめる。
+
+ここでは、Terraformの公式モジュールを使用する。
+
+```terraform
+module "iam_assumable_role_with_oidc_argocd_repo_server" {
+
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<バージョン>"
+
+  # ArgoCDのrepo-serverのPodに紐付けるIAMロール
+  create_role                   = true
+  role_name                     = "foo-argocd-reposerver"
+
+  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
+
+  # AWS IAMロールに紐付けるIAMポリシー
+  role_policy_arns              = [
+    module.eks_argocd.iam_policy_argocd_reposerver.arn
+  ]
+
+  # ArgoCDのrepo-serverのPodのServiceAccount名
+  # Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:argocd:foo-argocd-repo-server",
+    ...
+  ]
+}
+```
+
+<br>
+
 ### アンインストール
 
 #### ▼ argocdコマンドを使用して

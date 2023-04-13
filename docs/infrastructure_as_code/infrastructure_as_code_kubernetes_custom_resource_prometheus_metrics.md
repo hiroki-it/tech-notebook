@@ -49,13 +49,17 @@ description: メトリクス＠Prometheus
 
 <br>
 
-## 01-02. メトリクスの例
+## 02. Prometheus自身のメトリクス
 
-### ローカルストレージのメトリクス (`prometheus_tsdb_*`)
+### ローカルストレージ (`prometheus_tsdb_*`)
 
 #### ▼ prometheus_tsdb_head_samples_appended_total
 
 Prometheusが収集したデータポイントの合計数を表す。
+
+```bash
+prometheus_tsdb_head_samples_appended_total
+```
 
 > ↪️ 参考：
 >
@@ -66,6 +70,10 @@ Prometheusが収集したデータポイントの合計数を表す。
 
 Prometheusが作成したチャンクの合計サイズ (KB) を表す。
 
+```bash
+prometheus_tsdb_compaction_chunk_size_bytes_sum
+```
+
 > ↪️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
@@ -75,6 +83,10 @@ Prometheusが作成したチャンクの合計サイズ (KB) を表す。
 
 Prometheusが作成したチャンクの合計数を表す。
 
+```bash
+prometheus_tsdb_compaction_chunk_samples_sum
+```
+
 > ↪️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
@@ -82,7 +94,23 @@ Prometheusが作成したチャンクの合計数を表す。
 
 <br>
 
-## 02. ディメンション
+## 02-02. 外部から収集したメトリクス
+
+### kubeletから収集したメトリクス
+
+#### ▼ container_cpu_usage_seconds_total
+
+CPUの使用時間を表す。
+
+```bash
+container_cpu_usage_seconds_total
+```
+
+> ↪️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+
+<br>
+
+## 03. ディメンション
 
 ### 指定方法
 

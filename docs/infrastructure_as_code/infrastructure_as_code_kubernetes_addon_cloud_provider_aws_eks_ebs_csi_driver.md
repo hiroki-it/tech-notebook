@@ -91,19 +91,23 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
 
   version                       = "<モジュールのバージョン>"
 
-  # EBS CSIコントローラーのPodに紐付けるIAMロール
+  # AWS EBS CSIコントローラーのPodに紐付けるIAMロール
   create_role                   = true
   role_name                     = "foo-ebs-csi-driver"
 
-  # EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
-  # IAMロールに紐付けるIAMポリシー
-  role_policy_arns              = ["arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"]
+  # AWS IAMロールに紐付けるIAMポリシー
+  role_policy_arns              = [
+    "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  ]
 
-  # EBS CSIコントローラーのPodのServiceAccount名
+  # AWS EBS CSIコントローラーのPodのServiceAccount名
   # Terraformではなく、マニフェストで定義した方が良い
-  oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:foo-ebs-csi-controller"]
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:kube-system:foo-ebs-csi-controller"
+  ]
 }
 ```
 

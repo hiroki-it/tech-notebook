@@ -69,7 +69,7 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ### Terraformの公式モジュールの場合
 
-Terraformの公式モジュールを使用する。
+ここでは、Terraformの公式モジュールを使用する。
 
 ```terraform
 module "eks" {

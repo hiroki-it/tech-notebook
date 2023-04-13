@@ -131,7 +131,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   namespace: argocd
-  name: argocd-argocd-repo-server
+  name: argocd-repo-server
   labels:
     app.kubernetes.io/part-of: argocd
 roleRef:

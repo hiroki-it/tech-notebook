@@ -263,7 +263,9 @@ resource "aws_acm_certificate" "example" {
   provider = aws
 
   domain_name               = "example.com"
-  subject_alternative_names = ["*.example.com"]
+  subject_alternative_names = [
+    "*.example.com"
+  ]
   validation_method         = "DNS"
 
   tags = {
@@ -275,6 +277,15 @@ resource "aws_acm_certificate" "example" {
   }
 }
 ```
+
+#### ▼ バージョン表記について
+
+| 表記 | 説明                             |
+| ---- | -------------------------------- |
+| `~>` | 指定したバージョンを上限とする。 |
+| `=`  | 指定したバージョンで固定する。   |
+
+> ↪️ 参考：https://dev.classmethod.jp/articles/about-terraform-version-required-constraints/
 
 <br>
 
@@ -463,7 +474,7 @@ Terraformの`2`個以上のブロックをパッケージ化することによ�
 
 #### ▼ ローカルモジュール
 
-ルートモジュールよりも下層のディレクトリにあるモジュールのこと。
+ルートモジュールと同じリポジトリにあるチャイルドモジュールのこと。
 
 任意の`resource`ブロックを含めて良いわけではなく、同じ責務を持つ`resource`ブロックをまとめ、凝集度が高くなるようにする。
 
@@ -473,7 +484,7 @@ Terraformの`2`個以上のブロックをパッケージ化することによ�
 
 #### ▼ リモートモジュール (パブリッシュモジュール)
 
-異なるリポジトリにあるモジュールのこと。
+ルートモジュールと異なるリポジトリにあるチャイルドモジュールのこと。
 
 パブリックに公開されている場合は、特に『パブリッシュモジュール』ともいう。
 

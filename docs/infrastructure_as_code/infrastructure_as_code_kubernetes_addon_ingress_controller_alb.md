@@ -257,7 +257,7 @@ spec:
 
 AWS Load Balancerコントローラーのセットアップのうち、AWS側で必要なものをまとめる。
 
-Terraformの公式モジュールを使用する。
+ここでは、Terraformの公式モジュールを使用する。
 
 コマンド (例：`eksctl`コマンド) を使用しても良い。
 
@@ -272,15 +272,19 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
   create_role                   = true
   role_name                     = "foo-aws-load-balancer-controller"
 
-  # EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # AWS EKSのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
-  # IAMロールに紐付けるIAMポリシー
-  role_policy_arns              = [module.iam_policy_aws_load_balancer_controller.arn]
+  # AWS IAMロールに紐付けるIAMポリシー
+  role_policy_arns              = [
+    module.iam_policy_aws_load_balancer_controller.arn
+  ]
 
   # AWS Load BalancerコントローラーのPodのServiceAccount名
   # Terraformではなく、マニフェストで定義した方が良い
-  oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:foo-aws-load-balancer-controller"]
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:kube-system:foo-aws-load-balancer-controller"
+  ]
 }
 
 module "iam_policy_aws_load_balancer_controller" {
