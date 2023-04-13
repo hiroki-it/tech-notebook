@@ -113,7 +113,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n arg
 
 <br>
 
-
 ## 01-02. ダッシュボード
 
 ### ネットワークに公開しない場合
@@ -282,8 +281,6 @@ spec:
 また、IngressClass (AWS ALB、Google CLB) に接続できるように、ドメインレジストリ (Route53、CloudDNS) にArgoCDのドメインを登録する。
 
 <br>
-
-
 
 ## 01-03. マニフェスト
 

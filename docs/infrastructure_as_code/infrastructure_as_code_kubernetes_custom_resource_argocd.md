@@ -32,9 +32,9 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 <br>
 
-### argocd-server (argocd-apiserver)
+## 02. argocd-server (argocd-apiserver)
 
-#### ▼ argocd-serverとは
+### argocd-serverとは
 
 『argocd-apiserver』ともいう。
 
@@ -60,6 +60,10 @@ argocd-serverは、クライアントや他のargocdコンポーネントと通�
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+
+<br>
+
+### 他のコンポーネントとの通信
 
 #### ▼ クライアントとの通信
 
@@ -107,9 +111,9 @@ argocd-serverは、redis-serverにTCPリクエストを送信し、redis-server�
 
 <br>
 
-### application-controller
+## 03. application-controller
 
-#### ▼ application-controllerとは
+### application-controllerとは
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
 
@@ -141,6 +145,36 @@ ArgoCDのカスタムリソース (例：Application、AppProject、など) と�
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 > - https://www.amazon.co.jp/dp/1617297275
 
+<br>
+
+### GitOpsエンジン
+
+ArgoCDや、その他のGitOpsのためのCDツール (例：Flux) は、GitOpsの基本的処理をgitops-engineパッケージから取得する。
+
+ArgoCDは、gitops-engineパッケージが公開するAPIをコールし、GitOpsの基本的な処理を実行する。
+
+```yaml
+gitops-engine
+├── pkg
+│   ├── cache
+│   ├── diff   # watch対象Clusterとrepo-serverの間のマニフェストの差分を検出する
+│   ├── engine # ArgoCDのApplicationから設定を取得する
+│   ├── health # watch対象Clusterのステータスを検出する
+│   ├── sync   # watch対象Clusterにマニフェストをデプロイする
+│   └── utils
+│
+...
+```
+
+> ↪️ 参考：
+> 
+> - https://github.com/argoproj/gitops-engine/blob/master/specs/design-top-down.md#design-details
+> - https://github.com/argoproj/gitops-engine/tree/master/pkg
+
+<br>
+
+### 他のコンポーネントとの通信
+
 #### ▼ repo-serverとの通信
 
 application-controllerは、repo-serverにHTTPSリクエストを送信し、マニフェストの成果物の作成をコールする。
@@ -164,9 +198,9 @@ application-controllerは、redis-serverにTCPリクエストを送信し、自�
 
 <br>
 
-### dex-server
+## 04. dex-server
 
-#### ▼ dex-serverとは
+### dex-serverとは
 
 ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズを委譲することになる。
 
@@ -188,9 +222,9 @@ dex-serverの起動に失敗すると、外部Webサイトに情報を送信で�
 
 <br>
 
-### image-updater
+## 05. image-updater
 
-#### ▼ image-updaterとは
+### image-updaterとは
 
 image-updaterを採用しない場合、GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップがある。
 
@@ -208,9 +242,9 @@ image-updaterは、アプリリポジトリからイメージリポジトリに�
 
 <br>
 
-### redis-server
+## 06. redis-server
 
-#### ▼ redis-serverとは
+### redis-serverとは
 
 application-controllerの処理の結果のキャッシュを作成し、argocd-serverに提供する。
 
@@ -222,9 +256,9 @@ application-controllerの処理の結果のキャッシュを作成し、argocd-
 
 <br>
 
-### repo-server
+## 07. repo-server
 
-#### ▼ repo-serverとは
+### repo-serverとは
 
 ![argocd_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_repo-server.png)
 
@@ -251,7 +285,9 @@ $ kubectl -it exec foo-argocd-repo-server \
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 > - https://www.amazon.co.jp/dp/1617297275
 
-#### ▼ デバッグ
+<br>
+
+### デバッグ
 
 `repo-server`コンテナには`kubectl exec`コマンドでは接続できないが、直接的にコマンドを送信することは可能である。
 
@@ -283,8 +319,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 <br>
 
-
-## 02. ユースケース
+## 08. ユースケース
 
 ### 共通
 

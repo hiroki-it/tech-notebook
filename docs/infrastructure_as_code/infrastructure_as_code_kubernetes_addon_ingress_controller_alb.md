@@ -62,7 +62,6 @@ Pod
 
 <br>
 
-
 ## 02. セットアップ
 
 ### AWS側
@@ -520,7 +519,6 @@ spec:
 > ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
 
 <br>
-
 
 ## 03. Ingress
 
