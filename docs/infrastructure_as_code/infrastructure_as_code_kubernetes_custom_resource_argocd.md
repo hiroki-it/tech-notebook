@@ -157,11 +157,11 @@ ArgoCDは、gitops-engineパッケージが公開するAPIをコールし、GitO
 gitops-engine
 ├── pkg
 │   ├── cache
-│   ├── diff   # watch対象Clusterとrepo-serverの間のマニフェストの差分を検出する
-│   ├── engine # ArgoCDのApplicationから設定を取得する
-│   ├── health # watch対象Clusterのステータスを検出する
-│   ├── sync   # watch対象Clusterにマニフェストをデプロイする
-│   └── utils
+│   ├── diff   # リポジトリとClusterの間のマニフェストの差分を検出する。ArgoCDのDiff機能に相当する。
+│   ├── engine # 他のパッケージを使い、GitOpsの一連の処理を実行する。
+│   ├── health # Clusterのステータスをチェックする。ArgoCDのヘルスチェック機能に相当する。
+│   ├── sync   # Clusterにマニフェストをデプロイする。ArgoCDのSync機能に相当する。
+│   └── utils  # 他のパッケージに汎用的な関数を提供する。
 │
 ...
 ```
