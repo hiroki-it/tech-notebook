@@ -62,192 +62,6 @@ Pod
 
 <br>
 
-## 01-02. マニフェスト
-
-### マニフェストの種類
-
-AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などのマニフェストから構成されている。
-
-<br>
-
-### Deployment配下のPod
-
-#### ▼ aws-load-balancer-controller
-
-Deploymentは、Ingressで`alb`のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: aws-load-balancer-controller
-  namespace: kube-system
-spec:
-  containers:
-    - args:
-        - "--cluster-name=foo-cluster"
-        - "--ingress-class=alb"
-        - "--aws-region=ap-northeast-1"
-        - "--aws-vpc-id=vpc-*****"
-      command:
-        - /controller
-      name: aws-load-balancer-controller
-      image: public.ecr.aws/eks/aws-load-balancer-controller:v2.4.0
-      ports:
-        - containerPort: 9443
-          name: webhook-server
-          protocol: TCP
-        - containerPort: 8080
-          name: metrics-server
-          protocol: TCP
-```
-
-> ↪️ 参考：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
-
-<br>
-
-### MutatingWebhookConfiguration
-
-Webhookの宛先のServiceを決定する。
-
-```yaml
-apiVersion: admissionregistration.k8s.io/v1
-kind: MutatingWebhookConfiguration
-metadata:
-  name: aws-load-balancer-webhook
-webhooks:
-  - admissionReviewVersions:
-      - v1beta1
-    clientConfig:
-      caBundle: ...
-      service:
-        name: aws-load-balancer-webhook-service
-        namespace: kube-system
-        path: /mutate-v1-pod
-        port: 443
-    failurePolicy: Fail
-    matchPolicy: Exact
-    name: mpod.elbv2.k8s.aws
-    namespaceSelector:
-      matchExpressions:
-        - key: elbv2.k8s.aws/pod-readiness-gate-inject
-          operator: In
-          values:
-            - enabled
-    objectSelector:
-      matchExpressions:
-        - key: app.kubernetes.io/name
-          operator: NotIn
-          values:
-            - aws-load-balancer-controller
-    reinvocationPolicy: Never
-    rules:
-      - apiGroups:
-          - ""
-        apiVersions:
-          - v1
-        operations:
-          - CREATE
-        resources:
-          - pods
-        scope: "*"
-    sideEffects: None
-    timeoutSeconds: 30
-  - admissionReviewVersions:
-      - v1beta1
-    clientConfig:
-      caBundle: ...
-      service:
-        name: aws-load-balancer-webhook-service
-        namespace: kube-system
-        path: /mutate-elbv2-k8s-aws-v1beta1-targetgroupbinding
-        port: 443
-    failurePolicy: Fail
-    matchPolicy: Exact
-    name: mtargetgroupbinding.elbv2.k8s.aws
-    namespaceSelector: {}
-    objectSelector: {}
-    reinvocationPolicy: Never
-    rules:
-      - apiGroups:
-          - elbv2.k8s.aws
-        apiVersions:
-          - v1beta1
-        operations:
-          - CREATE
-          - UPDATE
-        resources:
-          - targetgroupbindings
-        scope: "*"
-    sideEffects: None
-    timeoutSeconds: 30
-```
-
-<br>
-
-### Service
-
-AWS Load Balancerコントローラーが作成された場合に、WebhookサーバーにWebhookを送信する。
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: aws-load-balancer-webhook-service
-  namespace: kube-system
-spec:
-  ports:
-    - name: webhook-server
-      port: 443
-      protocol: TCP
-      targetPort: webhook-server
-  selector:
-    app.kubernetes.io/instance: aws-load-balancer-controller
-    app.kubernetes.io/name: aws-load-balancer-controller
-  type: ClusterIP
-```
-
-<br>
-
-### ServiceAccount
-
-IRSAの仕組みで、PodとIAMロールを紐付ける。
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: foo-aws-load-balancer-controller
-  namespace: kube-system
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/foo-aws-load-balancer-controller-role
-secrets:
-  - name: foo-aws-load-balancer-controller-token
-```
-
-<br>
-
-### TargetGroupBinding
-
-記入中...
-
-```yaml
-kind: TargetGroupBinding
-metadata:
-  name: foo-target-group-binding
-  namespace: foo
-spec:
-  serviceRef:
-    name: foo-service
-    port: 80
-  targetGroupARN: <ターゲットグループのARN>
-```
-
-![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
-
-> ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
-
-<br>
 
 ## 02. セットアップ
 
@@ -519,6 +333,194 @@ aws-load-balancer-controller   2/2     2            0           22m
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 <br>
+
+## 02-02. マニフェスト
+
+### マニフェストの種類
+
+AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などのマニフェストから構成されている。
+
+<br>
+
+### Deployment配下のPod
+
+#### ▼ aws-load-balancer-controller
+
+Deploymentは、Ingressで`alb`のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aws-load-balancer-controller
+  namespace: kube-system
+spec:
+  containers:
+    - args:
+        - "--cluster-name=foo-cluster"
+        - "--ingress-class=alb"
+        - "--aws-region=ap-northeast-1"
+        - "--aws-vpc-id=vpc-*****"
+      command:
+        - /controller
+      name: aws-load-balancer-controller
+      image: public.ecr.aws/eks/aws-load-balancer-controller:v2.4.0
+      ports:
+        - containerPort: 9443
+          name: webhook-server
+          protocol: TCP
+        - containerPort: 8080
+          name: metrics-server
+          protocol: TCP
+```
+
+> ↪️ 参考：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
+
+<br>
+
+### MutatingWebhookConfiguration
+
+Webhookの宛先のServiceを決定する。
+
+```yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: aws-load-balancer-webhook
+webhooks:
+  - admissionReviewVersions:
+      - v1beta1
+    clientConfig:
+      caBundle: ...
+      service:
+        name: aws-load-balancer-webhook-service
+        namespace: kube-system
+        path: /mutate-v1-pod
+        port: 443
+    failurePolicy: Fail
+    matchPolicy: Exact
+    name: mpod.elbv2.k8s.aws
+    namespaceSelector:
+      matchExpressions:
+        - key: elbv2.k8s.aws/pod-readiness-gate-inject
+          operator: In
+          values:
+            - enabled
+    objectSelector:
+      matchExpressions:
+        - key: app.kubernetes.io/name
+          operator: NotIn
+          values:
+            - aws-load-balancer-controller
+    reinvocationPolicy: Never
+    rules:
+      - apiGroups:
+          - ""
+        apiVersions:
+          - v1
+        operations:
+          - CREATE
+        resources:
+          - pods
+        scope: "*"
+    sideEffects: None
+    timeoutSeconds: 30
+  - admissionReviewVersions:
+      - v1beta1
+    clientConfig:
+      caBundle: ...
+      service:
+        name: aws-load-balancer-webhook-service
+        namespace: kube-system
+        path: /mutate-elbv2-k8s-aws-v1beta1-targetgroupbinding
+        port: 443
+    failurePolicy: Fail
+    matchPolicy: Exact
+    name: mtargetgroupbinding.elbv2.k8s.aws
+    namespaceSelector: {}
+    objectSelector: {}
+    reinvocationPolicy: Never
+    rules:
+      - apiGroups:
+          - elbv2.k8s.aws
+        apiVersions:
+          - v1beta1
+        operations:
+          - CREATE
+          - UPDATE
+        resources:
+          - targetgroupbindings
+        scope: "*"
+    sideEffects: None
+    timeoutSeconds: 30
+```
+
+<br>
+
+### Service
+
+AWS Load Balancerコントローラーが作成された場合に、WebhookサーバーにWebhookを送信する。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws-load-balancer-webhook-service
+  namespace: kube-system
+spec:
+  ports:
+    - name: webhook-server
+      port: 443
+      protocol: TCP
+      targetPort: webhook-server
+  selector:
+    app.kubernetes.io/instance: aws-load-balancer-controller
+    app.kubernetes.io/name: aws-load-balancer-controller
+  type: ClusterIP
+```
+
+<br>
+
+### ServiceAccount
+
+IRSAの仕組みで、PodとIAMロールを紐付ける。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-aws-load-balancer-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/foo-aws-load-balancer-controller-role
+secrets:
+  - name: foo-aws-load-balancer-controller-token
+```
+
+<br>
+
+### TargetGroupBinding
+
+記入中...
+
+```yaml
+kind: TargetGroupBinding
+metadata:
+  name: foo-target-group-binding
+  namespace: foo
+spec:
+  serviceRef:
+    name: foo-service
+    port: 80
+  targetGroupARN: <ターゲットグループのARN>
+```
+
+![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
+
+> ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
+
+<br>
+
 
 ## 03. Ingress
 

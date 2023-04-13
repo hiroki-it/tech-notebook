@@ -25,38 +25,6 @@ PersistentVolumeにAWS EBSを紐付け、PodがAWS EBSをPersistentVolumeとし�
 
 <br>
 
-## 01-02. マニフェスト
-
-### マニフェストの種類
-
-AWS EBS CSIドライバーは、Deployment (ebs-csi-controller) 、ServiceAccount、などのマニフェストから構成される。
-
-<br>
-
-### Deployment配下のPod
-
-記入中...
-
-<br>
-
-### ServiceAccount
-
-IRSAの仕組みで、PodとIAMロールを紐付ける。
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: foo-foo-ebs-csi-controller
-  namespace: kube-system
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/foo-ebs-csi-controller-role
-secrets:
-  - name: foo-ebs-csi-controller-token
-```
-
-<br>
-
 ## 02. セットアップ
 
 ### EKSアドオンとして
@@ -182,6 +150,38 @@ $ helm install <リリース名> <リポジトリ名>/aws-ebs-csi-driver -n kube
 > - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver
 > - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md#helm
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
+<br>
+
+## 02-02. マニフェスト
+
+### マニフェストの種類
+
+AWS EBS CSIドライバーは、Deployment (ebs-csi-controller) 、ServiceAccount、などのマニフェストから構成される。
+
+<br>
+
+### Deployment配下のPod
+
+記入中...
+
+<br>
+
+### ServiceAccount
+
+IRSAの仕組みで、PodとIAMロールを紐付ける。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-foo-ebs-csi-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/foo-ebs-csi-controller-role
+secrets:
+  - name: foo-ebs-csi-controller-token
+```
 
 <br>
 
