@@ -13,9 +13,7 @@ description: IAM＠Iで始まるAWSリソースの知見を記録しています
 
 <br>
 
-## 01. IAM：Identify and Access Management
-
-### IAMとは
+## 01. IAMとは：Identify and Access Management
 
 AWSリソースへのアクセスに関する認証/認可を制御する。
 
@@ -23,114 +21,13 @@ AWSリソースへのアクセスに関する認証/認可を制御する。
 
 <br>
 
-### IAMの構成要素
+## 02. IAMロール
 
-#### ▼ IAMロール
+### IAMロールとは
 
 IAMポリシーのセットを定義する。
 
-#### ▼ IAMポリシー
-
-IAMステートメントのセットを定義する。
-
-| IAMポリシーの種類                  | 説明                                                                  |
-| ---------------------------------- | --------------------------------------------------------------------- |
-| アイデンティティベースのポリシー   | IAMユーザー、IAMグループ、IAMロール、に紐付けるためのポリシーのこと。 |
-| リソースベースのインラインポリシー | 単一のAWSリソースにインポリシーのこと。                               |
-| アクセスコントロールポリシー       | `.json`形式で定義する必要が無いポリシーのこと。                       |
-
-**＊例＊**
-
-以下に、EC2インスタンスの読み出しのみ認可スコープ (`AmazonEC2ReadOnlyAccess`) を紐付けできるポリシーを示す。
-
-このIAMポリシーには、他のAWSリソースに対する認可スコープも含まれている。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    [
-      {"Effect": "Allow", "Action": "ec2:Describe*", "Resource": "*"},
-      {
-        "Effect": "Allow",
-        "Action": "elasticloadbalancing:Describe*",
-        "Resource": "*",
-      },
-      {
-        "Effect": "Allow",
-        "Action":
-          [
-            "cloudwatch:ListMetrics",
-            "cloudwatch:GetMetricStatistics",
-            "cloudwatch:Describe*",
-          ],
-        "Resource": "*",
-      },
-      {"Effect": "Allow", "Action": "autoscaling:Describe*", "Resource": "*"},
-    ],
-}
-```
-
-#### ▼ IAMステートメント
-
-AWSリソースに関する認可のスコープを定義する。
-
-各アクションについては以下のリンクを参考にせよ。
-
-| AWSリソースの種類 | リンク                                                                                  |
-| ----------------- | --------------------------------------------------------------------------------------- |
-| CloudWatchログ    | https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/permissions-reference-cwl.html |
-
-**＊例＊**
-
-以下のインラインポリシーが紐付けられたロールを持つAWSリソースは、任意の変数をパラメーターストアを取得できるようになる。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    [{"Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*"}],
-}
-```
-
-| Statementの項目 | 説明                                                 |
-| --------------- | ---------------------------------------------------- |
-| Sid             | 任意の一意な文字列を設定する。空文字でも良い。       |
-| Effect          | 許可/拒否を設定する。                                |
-| Action          | リソースに対して実行できるアクションを設定する。     |
-| Resource        | アクションの実行対象に選択できるリソースを設定する。 |
-
-以下に主要なアクションを示す。
-
-| アクション名 | 説明                   |
-| ------------ | ---------------------- |
-| Create       | リソースを作成する。   |
-| Describe     | リソースを表示する。   |
-| Delete       | リソースを削除する。   |
-| Get          | リソースを取得する。   |
-| Put          | リソースを上書きする。 |
-
-#### ▼ ARN：Amazon Resource Namespace
-
-AWSリソースの識別子のこと。リージョンのグループには、`aws`、`aws-cn` (中国系ネットワーク) 、`aws-cn` (政府系ネットワーク) 、がある。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Resource": "arn:<リージョンのグループ>:<AWSリソース>:ap-northeast-1:<AWSアカウントID>:<AWSリソースID>",
-      },
-    ],
-}
-```
-
-> ↪️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-
 <br>
-
-## 02. IAMロール
 
 ### サービスリンクロール
 
@@ -225,6 +122,38 @@ IAMロールにインラインポリシーを紐付ける。
 
 すでに紐付けられていると、他のものには紐付けできない。
 
+**＊例＊**
+
+以下に、EC2インスタンスの読み出しのみ認可スコープ (`AmazonEC2ReadOnlyAccess`) を紐付けできるポリシーを示す。
+
+このIAMポリシーには、他のAWSリソースに対する認可スコープも含まれている。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {"Effect": "Allow", "Action": "ec2:Describe*", "Resource": "*"},
+      {
+        "Effect": "Allow",
+        "Action": "elasticloadbalancing:Describe*",
+        "Resource": "*",
+      },
+      {
+        "Effect": "Allow",
+        "Action":
+          [
+            "cloudwatch:ListMetrics",
+            "cloudwatch:GetMetricStatistics",
+            "cloudwatch:Describe*",
+          ],
+        "Resource": "*",
+      },
+      {"Effect": "Allow", "Action": "autoscaling:Describe*", "Resource": "*"},
+    ],
+}
+```
+
 #### ▼ バケットポリシー
 
 S3に紐付けられる、自身へのアクセスを制御するためのインラインポリシーのこと。
@@ -307,7 +236,10 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
         "Principal":
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
-        "Condition": {"StringEquals": {"sts:ExternalId": "<適当な文字列>"}},
+        "Condition": {
+            # 完全一致
+            "StringEquals": {"sts:ExternalId": "<適当な文字列>"},
+          },
       },
     ],
 }
@@ -315,19 +247,163 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
 
 <br>
 
-### IAMポリシーを紐付けできる対象
+### アクセスコントロールポリシー
 
-#### ▼ IAMユーザーに対する紐付け
+`.json`形式で定義する必要が無いポリシーのこと。
+
+<br>
+
+## 03-02. IAMポリシーを紐付けできる対象
+
+### IAMユーザーに対する紐付け
 
 ![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
 
-#### ▼ IAMグループに対する紐付け
+<br>
+
+### IAMグループに対する紐付け
 
 ![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
 
-#### ▼ IAMロールに対する紐付け
+<br>
+
+### IAMロールに対する紐付け
 
 ![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
+
+<br>
+
+## 03-03. IAMポリシーの構造
+
+### 構造
+
+```yaml
+{
+  # Sid
+  "Sid": "foo",
+  # Version
+  "Version": "2012-10-17",
+  # Statement (IAMステートメント)
+  "Statement": [
+      {
+        # 許可する
+        "Effect": "Allow",
+        # SSMのAPIへのGetParametersのコールを指定する
+        "Action": ["ssm:GetParameters"],
+        # 任意のAWSソースを対象とする
+        "Resource": "*",
+      },
+    ],
+}
+```
+
+<br>
+
+### Sid
+
+任意の一意な文字列を設定する。
+
+空文字でも良い。
+
+<br>
+
+### Version
+
+記入中...
+
+<br>
+
+### Statement (IAMステートメント)
+
+#### ▼ Statementとは
+
+AWSリソースに関する認可のスコープを定義する。
+
+#### ▼ Effect
+
+許可/拒否を設定する。
+
+#### ▼ Action
+
+指定したAWSリソースのAPIに対するコールを設定する。
+
+以下に主要なアクションを示す。
+
+| アクション名 | 説明                   |
+| ------------ | ---------------------- |
+| Create       | リソースを作成する。   |
+| Describe     | リソースを表示する。   |
+| Delete       | リソースを削除する。   |
+| Get          | リソースを取得する。   |
+| Put          | リソースを上書きする。 |
+
+#### ▼ Resource
+
+アクションの実行対象に選択できるリソースを設定する。
+
+ARNでAWSリソースの識別子を設定する。
+
+リージョンのグループには、`aws`、`aws-cn` (中国系ネットワーク) 、`aws-cn` (政府系ネットワーク) 、がある。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Resource": "arn:<リージョンのグループ>:<AWSリソース>:ap-northeast-1:<AWSアカウントID>:<AWSリソースID>",
+      },
+    ],
+}
+```
+
+> ↪️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+
+#### ▼ Condition
+
+信頼されたエンティティの設定でよく使う。
+
+IAMポリシーの取得に使用する文字列の条件の厳格さを設定する。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Principal":
+          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
+        "Action": "sts:AssumeRole",
+        "Condition": {
+            # 完全一致
+            "StringEqual": {"sts:ExternalId": "foo"},
+          },
+      },
+    ],
+}
+```
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Principal":
+          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
+        "Action": "sts:AssumeRole",
+        "Condition": {
+            # 部分一致
+            "StringLike": {"sts:ExternalId": "foo-*"},
+          },
+      },
+    ],
+}
+```
+
+> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
 
 <br>
 

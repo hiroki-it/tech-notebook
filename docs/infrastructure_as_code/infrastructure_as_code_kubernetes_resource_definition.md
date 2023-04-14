@@ -487,8 +487,9 @@ spec:
             - name: foo-alpine
               image: alpine:latest
               # 定期的に実行するコマンドを設定する。
-              command: |
-                bin/sh -c "echo Hello World"
+              command: ["/bin/bash", "-c"]
+              args:
+                - echo Hello World
           restartPolicy: OnFailure
 ```
 
@@ -1383,8 +1384,9 @@ spec:
       containers:
         - name: foo-alpine
           image: alpine:latest
-          command: |
-            echo Hello World
+          command: ["/bin/bash", "-c"]
+          args:
+            - echo Hello World
       restartPolicy: OnFailure
 ```
 
@@ -1396,7 +1398,7 @@ spec:
 
 #### ▼ ttlSecondsAfterFinishedとは
 
-Jobが成功/失敗した後にJob自体を削除する場合に、その秒数を設定する。
+Jobが成功/失敗した場合のJob自体の削除を有効化しつつ、その秒数を設定する。
 
 ```yaml
 apiVersion: batch/v1
@@ -1404,6 +1406,7 @@ kind: Job
 metadata:
   name: foo-job
 spec:
+  # Job自体の削除を有効化しつつ、Jobの実行が終了してから30秒後とする
   ttlSecondsAfterFinished: 30
 ```
 

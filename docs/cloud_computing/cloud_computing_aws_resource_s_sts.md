@@ -77,8 +77,8 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
       "Effect": "Allow",
       "Principal": {"Federated": "cognito-identity.amazonaws.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition":
-        {
+      "Condition": {
+          # 完全一致
           "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
           "ForAnyValue:StringLike":
             {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
@@ -110,8 +110,8 @@ EKSをIDプロバイダーとして使用するように、`Federated`キーでE
             "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenIDConnectプロバイダーURL>",
           },
         "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition":
-          {
+        "Condition": {
+            # 完全一致
             "StringEquals":
               {
                 "<EKS ClusterのOpenIDConnectプロバイダーURL>:sub":
@@ -220,8 +220,8 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
       "Effect": "Allow",
       "Principal": {"Federated": "cognito-identity.amazonaws.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition":
-        {
+      "Condition": {
+          # 完全一致
           "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
           "ForAnyValue:StringLike":
             {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
@@ -244,8 +244,8 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
       "Effect": "Allow",
       "Principal": {"Federated": "accounts.google.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition":
-        {
+      "Condition": {
+          # 完全一致
           "StringEquals": {"accounts.google.com:aud": "*****"},
           "ForAnyValue:StringLike":
             {"accounts.google.com:amr": "unauthenticated"},
@@ -272,8 +272,10 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
             "Federated": "arn:aws:iam::<AWSアカウントID>:saml-provider/<プロバイダー名>",
           },
         "Action": "sts:AssumeRole",
-        "Condition":
-          {"StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"}},
+        "Condition": {
+            # 完全一致
+            "StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"},
+          },
       },
     ],
 }
@@ -305,7 +307,10 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
         "Principal":
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
-        "Condition": {"StringEquals": {"sts:ExternalId": "<適当な文字列>"}},
+        "Condition": {
+            # 完全一致
+            "StringEquals": {"sts:ExternalId": "<適当な文字列>"},
+          },
       },
     ],
 }

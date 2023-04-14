@@ -1568,8 +1568,10 @@ NLBのアクセスログを送信するバケット内には、自動的に『`/
         "Principal": {"Service": "delivery.logs.amazonaws.com"},
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::<バケット名>/*",
-        "Condition":
-          {"StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"}},
+        "Condition": {
+            # 完全一致
+            "StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"},
+          },
       },
       {
         "Sid": "AWSLogDeliveryAclCheck",
