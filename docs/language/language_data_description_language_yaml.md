@@ -106,8 +106,8 @@ command: |
 
 ```
 command: |+
-  echo fooe
-  cho bar
+  echo foo
+  echo bar
 ```
 
 ```yaml
