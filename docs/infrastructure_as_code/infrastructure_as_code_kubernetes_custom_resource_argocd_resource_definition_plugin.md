@@ -44,7 +44,7 @@ metadata:
 spec:
   containers:
     - name: repo-server
-      image: argocd:latest
+      image: quay.io/argoproj/argocd:latest
       command:
         - entrypoint.sh
       args:
@@ -184,6 +184,7 @@ metadata:
 spec:
   containers:
     - name: repo-server
+      image: quay.io/argoproj/argocd:latest
       volumeMounts:
         # helmfileのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/helmfile
@@ -197,7 +198,7 @@ spec:
   initContainers:
     - name: install-helmfile
       image: alpine:3.8
-      command: ["/bin/bash", "-c"]
+      command: ["/bin/sh", "-c"]
       # InitContainerにHelmfileをインストールする。
       args:
         - |
@@ -254,7 +255,9 @@ data:
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
-#### ▼ プラグインの使用
+<br>
+
+### プラグインの使用
 
 Applicationでプラグイン名を指定する。
 
@@ -301,6 +304,7 @@ metadata:
 spec:
   containers:
     - name: repo-server
+      image: quay.io/argoproj/argocd:latest
       volumeMounts:
         # SOPSのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/sops
@@ -313,7 +317,7 @@ spec:
   initContainers:
     - name: install-helm-secrets
       image: alpine:3.8
-      command: ["/bin/bash", "-c"]
+      command: ["/bin/sh", "-c"]
       # InitContainerに、SOPS、helm-secrets、をインストールする。
       args:
         - |
@@ -416,7 +420,9 @@ data:
 > - https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
-#### ▼ プラグインの使用
+<br>
+
+### プラグインの使用
 
 Applicationでプラグイン名を指定する。
 
@@ -526,19 +532,26 @@ metadata:
 spec:
   containers:
     - name: repo-server
+      image: quay.io/argoproj/argocd:latest
       volumeMounts:
+        # Kustomizeのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/bin/kustomize
+          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でKustomizeを使用する。
+          name: custom-tools
+          subPath: kustomize
         # KSOPSのバイナリファイルを置くパスを指定する。
-        - mountPath: /usr/local/bin/sops
+        - mountPath: /usr/local/bin/ksops
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でKSOPSを使用する。
           name: custom-tools
-          subPath: sops
+          subPath: ksops
 
       ...
 
   initContainers:
     - name: install-ksops
       image: viaductoss/ksops:v4.1.1
-      command: ["/bin/bash", "-c"]
+      command: ["/bin/sh", "-c"]
+      # InitContainerにHelmfileをインストールする。
       args:
         - |
           mv ksops /custom-tools/
@@ -559,6 +572,30 @@ spec:
 > - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
 > - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
 > - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
+
+<br>
+
+### プラグインの使用
+
+Applicationの`.spec.kustomize`キーで、使用するKustomizeのバージョンを指定する。
+
+各Applicationで異なるバージョンのKustomizeを指定できる。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+  targetRevision: main
+  path: .
+  kustomize:
+    version: v1.0.0
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
 
 <br>
 
@@ -614,7 +651,9 @@ data:
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
-#### ▼ プラグインの使用
+<br>
+
+### プラグインの使用
 
 Applicationでプラグイン名を指定する。
 
