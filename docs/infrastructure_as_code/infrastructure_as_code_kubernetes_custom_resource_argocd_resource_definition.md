@@ -463,7 +463,7 @@ spec:
 
   # プラグインをインストールするInitContainer
   initContainers:
-    - name: download-tools
+    - name: download-foo-tool
       command:
         - cp
         - -n

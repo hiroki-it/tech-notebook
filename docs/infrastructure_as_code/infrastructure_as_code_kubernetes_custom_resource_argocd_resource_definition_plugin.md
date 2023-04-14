@@ -204,7 +204,7 @@ spec:
         - |
           apk --update add wget
           wget -q -O /custom-tools/helmfile https://github.com/roboll/helmfile/releases/download/v0.141.0/helmfile_linux_amd64
-          chmod +x /custom-tools/*
+          chmod +x /custom-tools/helmfile
       volumeMounts:
         # Podの共有ボリュームにHelmfileを配置する。
         - mountPath: /custom-tools
@@ -306,25 +306,42 @@ spec:
     - name: repo-server
       image: quay.io/argoproj/argocd:latest
       volumeMounts:
+        # helm-secretsのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/sbin/helm
+          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でhelm-secretsを使用する。
+          name: custom-tools
+          subPath: helm
         # SOPSのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/sops
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
           name: custom-tools
           subPath: sops
-
       ...
 
   initContainers:
-    - name: install-helm-secrets
+    - name: install-sops
       image: alpine:3.8
       command: ["/bin/sh", "-c"]
-      # InitContainerに、SOPS、helm-secrets、をインストールする。
+      # InitContainerに、SOPSをインストールする。
       args:
         - |
           apk --update add wget
           wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<SOPSのバージョン>/sops-<SOPSのバージョン>.linux
-          wget -q -O /custom-tools/helm-secrets https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-secrets -xzf-
-          chmod +x /custom-tools/*
+          chmod +x /custom-tools/sops
+      volumeMounts:
+        # Podの共有ボリュームに、SOPSを配置する。
+        - mountPath: /custom-tools
+          name: custom-tools
+    - name: install-helm-plugins
+      image: alpine:3.8
+      command: ["/bin/sh", "-c"]
+      # InitContainerに、helm-secrets、をインストールする。
+      args:
+        - |
+          apk --update add wget
+          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-plugins -xzf-;
+          cp /custom-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /custom-tools/helm
+          chmod +x /custom-tools/helm
       volumeMounts:
         # Podの共有ボリュームに、SOPS、helm-secrets、を配置する。
         - mountPath: /custom-tools
