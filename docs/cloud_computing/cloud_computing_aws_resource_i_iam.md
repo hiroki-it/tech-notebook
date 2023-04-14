@@ -253,27 +253,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
 
 <br>
 
-## 03-02. IAMポリシーを紐付けできる対象
-
-### IAMユーザーに対する紐付け
-
-![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
-
-<br>
-
-### IAMグループに対する紐付け
-
-![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
-
-<br>
-
-### IAMロールに対する紐付け
-
-![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
-
-<br>
-
-## 03-03. IAMポリシーの構造
+## 03-02. IAMポリシーの構造
 
 ### 構造
 
@@ -404,6 +384,26 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
 ```
 
 > ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
+
+<br>
+
+## 03-03. IAMポリシーを紐付けできる対象
+
+### IAMユーザーに対する紐付け
+
+![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
+
+<br>
+
+### IAMグループに対する紐付け
+
+![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
+
+<br>
+
+### IAMロールに対する紐付け
+
+![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
 
 <br>
 
