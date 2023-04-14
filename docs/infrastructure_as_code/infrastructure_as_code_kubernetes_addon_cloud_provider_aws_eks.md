@@ -181,103 +181,30 @@ $ kubectl get daemonset aws-node \
     | jq .
 ```
 
-```yaml
-[
-  {
-    "name": "ADDITIONAL_ENI_TAGS",
-    "value": "{}"
-  },
-  {
-    "name": "AWS_VPC_CNI_NODE_PORT_SUPPORT",
-    "value": "true"
-  },
-  {
-    "name": "AWS_VPC_ENI_MTU",
-    "value": "9001"
-  },
-  {
-    "name": "AWS_VPC_K8S_CNI_CONFIGURE_RPFILTER",
-    "value": "false"
-  },
-  {
-    "name": "AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG",
-    "value": "false"
-  },
-  {
-    "name": "AWS_VPC_K8S_CNI_EXTERNALSNAT",
-    "value": "false"
-  },
-  {
-    "name": "AWS_VPC_K8S_CNI_LOGLEVEL",
-    "value": "DEBUG"
-  },
-  {
-    "name": "AWS_VPC_K8S_CNI_LOG_FILE",
-    "value": "/host/var/log/aws-routed-eni/ipamd.log"
-  },
-  {
-    "name": "AWS_VPC_K8S_CNI_RANDOMIZESNAT",
-    "value": "prng"
-  },
-  {
-    "name": "AWS_VPC_K8S_CNI_VETHPREFIX",
-    "value": "eni"
-  },
-  {
-    "name": "AWS_VPC_K8S_PLUGIN_LOG_FILE",
-    "value": "/var/log/aws-routed-eni/plugin.log"
-  },
-  {
-    "name": "AWS_VPC_K8S_PLUGIN_LOG_LEVEL",
-    "value": "DEBUG"
-  },
-  {
-    "name": "DISABLE_INTROSPECTION",
-    "value": "false"
-  },
-  {
-    "name": "DISABLE_METRICS",
-    "value": "false"
-  },
-  {
-    "name": "DISABLE_NETWORK_RESOURCE_PROVISIONING",
-    "value": "false"
-  },
-  {
-    "name": "ENABLE_IPv4",
-    "value": "true"
-  },
-  {
-    "name": "ENABLE_IPv6",
-    "value": "false"
-  },
-  {
-    "name": "ENABLE_POD_ENI",
-    "value": "false"
-  },
-  {
-    "name": "ENABLE_PREFIX_DELEGATION",
-    "value": "false"
-  },
-  {
-    "name": "MY_NODE_NAME",
-    "valueFrom": {
-      "fieldRef": {
-        "apiVersion": "v1",
-        "fieldPath": "spec.nodeName"
-      }
-    }
-  },
-  {
-    "name": "WARM_ENI_TARGET",
-    "value": "1"
-  },
-  {
-    "name": "WARM_PREFIX_TARGET",
-    "value": "1"
-  }
-]
-```
+| 環境変数名                              | 例                                                               |
+| --------------------------------------- | ---------------------------------------------------------------- |
+| `ADDITIONAL_ENI_TAGS`                   | `{}`                                                             |
+| `AWS_VPC_CNI_NODE_PORT_SUPPORT`         | `true`                                                           |
+| `AWS_VPC_ENI_MTU`                       | `9001`                                                           |
+| `AWS_VPC_K8S_CNI_CONFIGURE_RPFILTER`    | `false`                                                          |
+| `AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG`    | `false`                                                          |
+| `AWS_VPC_K8S_CNI_EXTERNALSNAT`          | `false`                                                          |
+| `AWS_VPC_K8S_CNI_LOGLEVEL`              | `DEBUG`                                                          |
+| `AWS_VPC_K8S_CNI_LOG_FILE`              | `/host/var/log/aws-routed-eni/ipamd.log`                         |
+| `AWS_VPC_K8S_CNI_RANDOMIZESNAT`         | `prng`                                                           |
+| `AWS_VPC_K8S_CNI_VETHPREFIX`            | `eni`                                                            |
+| `AWS_VPC_K8S_PLUGIN_LOG_FILE`           | `/var/log/aws-routed-eni/plugin.log`                             |
+| `AWS_VPC_K8S_PLUGIN_LOG_LEVEL`          | `DEBUG`                                                          |
+| `DISABLE_INTROSPECTION`                 | `false`                                                          |
+| `DISABLE_METRICS`                       | `false`                                                          |
+| `DISABLE_NETWORK_RESOURCE_PROVISIONING` | `false`                                                          |
+| `ENABLE_IPv4`                           | `true`                                                           |
+| `ENABLE_IPv6`                           | `false`                                                          |
+| `ENABLE_POD_ENI`                        | `false`                                                          |
+| `ENABLE_PREFIX_DELEGATION`              | `false`                                                          |
+| `MY_NODE_NAME`                          | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}` |
+| `WARM_ENI_TARGET`                       | `1`                                                              |
+| `WARM_PREFIX_TARGET`                    | `1`                                                              |
 
 > ↪️ 参考：https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
 
@@ -285,15 +212,14 @@ $ kubectl get daemonset aws-node \
 
 以下の環境変数の値を変更することで、Podの使用するIPアドレス数を変更する。
 
-| 環境変数                | 説明                                     |
-|---------------------|----------------------------------------|
-| `WARM_ENI_TARGET`   | AWS EC2/FargateワーカーNodeが最低限確保するENI数    |
+| 環境変数            | 説明                                                    |
+| ------------------- | ------------------------------------------------------- |
+| `WARM_ENI_TARGET`   | AWS EC2/FargateワーカーNodeが最低限確保するENI数        |
 | `WARM_IP_TARGET`    | AWS EC2/FargateワーカーNodeが余分に確保するIPアドレス数 |
 | `MINIMUM_IP_TARGET` | AWS EC2/FargateワーカーNodeが最低限確保するIPアドレス数 |
 
-
 > ↪️ 参考：
-> 
+>
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
 > - https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address
 > - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
