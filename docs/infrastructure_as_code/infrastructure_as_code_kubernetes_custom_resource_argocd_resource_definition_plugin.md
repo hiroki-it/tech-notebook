@@ -305,12 +305,14 @@ spec:
   containers:
     - name: repo-server
       image: quay.io/argoproj/argocd:latest
+      env:
+        - name: HELM_PLUGINS
+          value: /helm-working-dir/plugins
       volumeMounts:
         # helm-secretsのバイナリファイルを置くパスを指定する。
-        - mountPath: /usr/local/sbin/helm
+        - mountPath: /helm-working-dir/plugins
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でhelm-secretsを使用する。
           name: custom-tools
-          subPath: helm
         # SOPSのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/sops
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
@@ -335,16 +337,16 @@ spec:
     - name: install-helm-plugins
       image: alpine:latest
       command: ["/bin/sh", "-c"]
-      # InitContainerに、helm-secrets、をインストールする。
+      # InitContainerに、helmプラグインをインストールする。
       args:
         - |
           apk --update add wget
-          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-plugins -xzf-;
-          cp /custom-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /custom-tools/helm
-          chmod +x /custom-tools/helm
+          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz | tar -C /helm-plugins -xzf-
+          cp /helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-working-dir/plugins
+          chmod +x /helm-working-dir/plugins
       volumeMounts:
-        # Podの共有ボリュームに、helm-secrets、を配置する。
-        - mountPath: /custom-tools
+        # Podの共有ボリュームにhelmプラグインを配置する。
+        - mountPath: /helm-working-dir/plugins
           name: custom-tools
 
   # Podの共有ボリューム
