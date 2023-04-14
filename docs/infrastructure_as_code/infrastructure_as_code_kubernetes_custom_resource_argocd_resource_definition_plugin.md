@@ -174,7 +174,7 @@ ArgoCDとHelmfileを連携すれば、`helmfile`コマンドを宣言的に実�
 
 **＊実装例＊**
 
-ここでは、InitContainerを使用して、Helmfileをインストールする。
+ここでは軽量のInitContainerを定義し、起動時にHelmfileをインストールする。
 
 ```yaml
 apiVersion: v1
@@ -283,7 +283,7 @@ spec:
 
 ## 03. helm-secretsとの連携
 
-### セットアップ (共通手順)
+### セットアップ
 
 #### ▼ helm-secretsのインストール
 
@@ -291,7 +291,7 @@ argocd-repo-serverがhelm-secretsを使用できるように、helm-secretsを�
 
 **＊実装例＊**
 
-ここでは、InitContainerを使用して、helm-secretsをインストールする。
+ここでは軽量のInitContainerを定義し、起動時にhelm-secretsをインストールする。
 
 ```yaml
 apiVersion: v1
@@ -302,7 +302,7 @@ spec:
   containers:
     - name: repo-server
       volumeMounts:
-        # sopsのバイナリファイルを置くパスを指定する。
+        # SOPSのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/sops
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
           name: custom-tools
@@ -314,15 +314,15 @@ spec:
     - name: install-helm-secrets
       image: alpine:3.8
       command: ["/bin/bash", "-c"]
-      # InitContainerに、sops、helm-secrets、をインストールする。
+      # InitContainerに、SOPS、helm-secrets、をインストールする。
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<sopsのバージョン>/sops-<sopsのバージョン>.linux
+          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<SOPSのバージョン>/sops-<SOPSのバージョン>.linux
           wget -q -O /custom-tools/helm-secrets https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-secrets -xzf-
           chmod +x /custom-tools/*
       volumeMounts:
-        # Podの共有ボリュームに、sops、helm-secrets、を配置する。
+        # Podの共有ボリュームに、SOPS、helm-secrets、を配置する。
         - mountPath: /custom-tools
           name: custom-tools
 
@@ -368,7 +368,7 @@ data:
       generate:
         command: [ "/bin/bash", "-c" ]
         # jkroepke製のhelm-secretsの場合
-        # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
           - >
             set -euo pipefail &&
@@ -400,7 +400,7 @@ data:
       generate:
         command: [ "/bin/bash", "-c" ]
         # zendesk製のhelm-secretsの場合
-        # 暗号化されたvaluesファイル (sopsのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
           - >
             set -euo pipefail &&
@@ -502,7 +502,67 @@ spec:
 
 <br>
 
-## 04. Vaultとの連携
+## 04. KSOPS
+
+### セットアップ
+
+#### ▼ KSOPSのインストール
+
+argocd-repo-serverがKSOPSを使用できるように、KSOPSをインストールする。
+
+KSOPSはコンテナイメージがあるため、軽量のInitContainerを用意するのではなく、KSOPSのコンテナイメージを使用する。
+
+なお、KustomizeはArgoCDにデフォルトで組み込まれているため、インストールする必要はない。
+
+**＊実装例＊**
+
+ここでは軽量のInitContainerを定義し、起動時にhelm-secretsをインストールする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server-pod
+spec:
+  containers:
+    - name: repo-server
+      volumeMounts:
+        # KSOPSのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/bin/sops
+          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でKSOPSを使用する。
+          name: custom-tools
+          subPath: sops
+
+      ...
+
+  initContainers:
+    - name: install-ksops
+      image: viaductoss/ksops:v4.1.1
+      command: ["/bin/bash", "-c"]
+      args:
+        - |
+          mv ksops /custom-tools/
+          mv $GOPATH/bin/kustomize /custom-tools/
+      volumeMounts:
+        # Podの共有ボリュームに、KSOPSを配置する。
+        - mountPath: /custom-tools
+          name: custom-tools
+
+  # Podの共有ボリューム
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+```
+
+> ↪️ 参考：
+>
+> - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+> - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
+> - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
+
+<br>
+
+## 05. Vaultとの連携
 
 ### セットアップ
 

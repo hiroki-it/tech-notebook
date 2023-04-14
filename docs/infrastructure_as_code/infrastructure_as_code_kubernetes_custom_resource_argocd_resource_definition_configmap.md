@@ -101,9 +101,11 @@ spec: ...
 
 ### kustomize.buildOptions
 
+#### ▼ kustomize.buildOptionsとは
+
 Kustomizeの実行時に、コマンドに渡すパラメーターを設定する。
 
-特に、Kustomizeのプラグイン (例：kustomize-sopsなど) を使用する場合、`--enable-alpha-plugins`オプションを有効化する。
+特に、Kustomizeのプラグイン (例：ksopsなど) を使用する場合、`--enable-alpha-plugins`オプションと`--enable-exec`オプションを有効化する。
 
 ```yaml
 apiVersion: v1
@@ -114,18 +116,16 @@ metadata:
   labels:
     app.kubernetes.io/part-of: argocd
 data:
-  kustomize.buildOptions: --enable-alpha-plugins
+  kustomize.buildOptions: --enable-alpha-plugins --enable-exec
 ```
 
-> ↪️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
-> - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
-> - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
 
 <br>
 
 ### kustomize.path.<バージョン>
+
+#### ▼ kustomize.path.<バージョン>とは
 
 使用するKustomizeのバージョンと、バイナリファイルの置き場所を設定する。
 
@@ -144,7 +144,11 @@ data:
   kustomize.path.v2.0.0: /custom-tools/kustomize_2_0_0
 ```
 
+#### ▼ 各ApplicationでKustomizeを使用する
+
 Applicationの`.spec.kustomize.version`キーで、使用するKustomizeのバージョンを指定する。
+
+各Applicationで異なるバージョンのKustomizeを指定できる。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
