@@ -167,7 +167,7 @@ gitops-engine
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://github.com/argoproj/gitops-engine/blob/master/specs/design-top-down.md#design-details
 > - https://github.com/argoproj/gitops-engine/tree/master/pkg
 

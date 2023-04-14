@@ -168,7 +168,9 @@ Nodeのインスタンスタイプごとに、紐付けられるENI数に制限�
 
 ### 設定
 
-aws-eks-vpc-cniアドオンは、aws-nodeというDaemonSetとして稼働している。
+#### ▼ 確認方法
+
+aws-eks-vpc-cniアドオンは、`aws-node`というDaemonSetとして稼働している。
 
 これのコンテナの環境変数で、アドオンの設定が管理されている。
 
@@ -277,9 +279,23 @@ $ kubectl get daemonset aws-node \
 ]
 ```
 
+> ↪️ 参考：https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
+
+#### ▼ Podの使用するIPアドレス数の制御
+
+以下の環境変数の値を変更することで、Podの使用するIPアドレス数を変更する。
+
+| 環境変数                | 説明                                     |
+|---------------------|----------------------------------------|
+| `WARM_ENI_TARGET`   | AWS EC2/FargateワーカーNodeが最低限確保するENI数    |
+| `WARM_IP_TARGET`    | AWS EC2/FargateワーカーNodeが余分に確保するIPアドレス数 |
+| `MINIMUM_IP_TARGET` | AWS EC2/FargateワーカーNodeが最低限確保するIPアドレス数 |
+
+
 > ↪️ 参考：
->
-> - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
+> 
+> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
+> - https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address
 > - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
 > - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c
 

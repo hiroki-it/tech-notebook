@@ -389,12 +389,12 @@ $ istioctl proxy-config all foo-pod \
 ```
 
 ```yaml
-- '@type'
-- '@type'
-- '@type'
-- '@type'
-- '@type'
-- '@type'
+- "@type"
+- "@type"
+- "@type"
+- "@type"
+- "@type"
+- "@type"
 - bootstrap
 - dynamic_active_clusters
 - dynamic_active_secrets
@@ -450,25 +450,15 @@ bootstrap:
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
-  layeredRuntime:
+  layeredRuntime: ...
 
-    ...
+  node: ...
 
-  node:
+  staticResources: ...
 
-    ...
+  statsConfig: ...
 
-  staticResources:
-
-    ...
-
-  statsConfig:
-
-    ...
-
-  tracing:
-
-    ...
+  tracing: ...
 
 lastUpdated: "2022-11-16T08:12:07.162Z"
 ```
@@ -513,7 +503,7 @@ $ istioctl proxy-config cluster foo-pod \
 ```
 
 ```yaml
-  # クラスター名
+# クラスター名
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
   type: EDS
   edsClusterConfig:
@@ -526,8 +516,6 @@ $ istioctl proxy-config cluster foo-pod \
     # エンドポイント値はクラスター値と紐づいており、ADS-APIから取得したエンドポイント値をフィルタリングする。
     # エンドポイント値にはいくつかのインスタンスが紐づいており、1個を選んでルーティングする。
     serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
-
-...
 ```
 
 > ↪️ 参考：

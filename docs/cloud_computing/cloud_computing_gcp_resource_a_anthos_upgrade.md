@@ -50,7 +50,6 @@ metadata:
   namespace: foo-namespace
 spec:
   anthosBareMetalVersion: 1.12.0 # 現在のバージョン
-...
 ```
 
 また、Anthos GKE ClusterのバージョンとKubernetesのバージョンの対応関係を確認する。
@@ -126,7 +125,7 @@ $ tail -f ~/baremetal/<ログの出力先>
 
 ```bash
 $ kubectl get cluster -A -o yaml
-````
+```
 
 ```yaml
 apiVersion: baremetal.cluster.gke.io/v1
@@ -136,7 +135,6 @@ metadata:
   namespace: foo-namespace
 spec:
   anthosBareMetalVersion: 1.12.1 # 新バージョン
-...
 ```
 
 `【８】`
