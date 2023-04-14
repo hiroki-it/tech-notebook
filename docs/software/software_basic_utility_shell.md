@@ -294,3 +294,71 @@ $ apk add bash
 > - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
 
 <br>
+
+## 04. コマンドの実行タイミング
+
+### 順次実行
+
+#### ▼ 終了ステータスがいずれであっても
+
+連結したコマンドを順次実行する。
+
+前のコマンドがいずれかの終了ステータスで完了しない限り、後ろのコマンドを実行しない。
+
+```bash
+$ echo foo; echo bar; echo baz
+```
+
+> ↪️ 参考：
+>
+> - https://jehupc.exblog.jp/15729095/
+> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+
+#### ▼ 終了ステータスが`0`の場合のみ
+
+連結したコマンドを順次実行する。
+
+前のコマンドが終了ステータスが`0`で完了しない限り、後ろのコマンドを実行しない。
+
+```bash
+$ echo foo && echo bar && echo baz
+```
+
+> ↪️ 参考：
+>
+> - https://jehupc.exblog.jp/15729095/
+> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+
+#### ▼ 終了ステータスが`0`以外の場合のみ
+
+連結したコマンドを順次実行する。
+
+前のコマンドが終了ステータスが`0`以外で完了しない限り、後ろのコマンドを実行しない。
+
+```bash
+$ echo foo || echo bar || echo baz
+```
+
+> ↪️ 参考：
+>
+> - https://jehupc.exblog.jp/15729095/
+> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+
+<br>
+
+### 並列実行
+
+連結したコマンドを並列実行する。
+
+前のコマンドが完了しない限り、後ろのコマンドを実行しない。
+
+```bash
+$ echo foo & echo bar & echo baz
+```
+
+> ↪️ 参考：
+>
+> - https://jehupc.exblog.jp/15729095/
+> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+
+<br>

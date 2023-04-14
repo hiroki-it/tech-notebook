@@ -1581,8 +1581,10 @@ spec:
       # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
       command: ["/bin/bash", "-c"]
       args:
-        - |
-          until nc -z db 3306; do sleep 1; done
+        - >
+          until nc -z db 3306; do
+            sleep 1;
+          done
 ```
 
 > ↪️ 参考：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F

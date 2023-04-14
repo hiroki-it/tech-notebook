@@ -343,11 +343,33 @@ spec:
 
 <br>
 
+### プラグインの使用
+
+Applicationでプラグイン名を指定する。
+
+また、必要な環境変数を設定する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+  targetRevision: main
+  path: .
+  plugin:
+    name: helmfile
+```
+
+<br>
+
 ## 03-02. `.spec.plugin`キー配下で使用する場合
 
 ### セットアップ
 
-#### ▼ helm secretsの処理の定義
+#### ▼ helm-secretsの処理の定義
 
 `helm secrets template`コマンドでマニフェストを作成し、また変数を復号化する。
 
@@ -375,11 +397,11 @@ data:
         # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
           - >
-            set -euo pipefail &&
+            set -euo pipefail;
             if [ -z "$VALUES" ];then
-              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE;
             else              
-              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE;
             fi
 ```
 
@@ -407,11 +429,11 @@ data:
         # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
           - >
-            set -euo pipefail &&
+            set -euo pipefail;
             if [ -z "$VALUES" ];then
-              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE | sed '$d'
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE | sed '$d';
             else              
-              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE | sed '$d'
+              helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE | sed '$d';
             fi
 ```
 
@@ -551,7 +573,7 @@ spec:
     - name: install-ksops
       image: viaductoss/ksops:v4.1.1
       command: ["/bin/sh", "-c"]
-      # InitContainerにHelmfileをインストールする。
+      # InitContainerにKustomizeをインストールする。
       args:
         - |
           mv ksops /custom-tools/

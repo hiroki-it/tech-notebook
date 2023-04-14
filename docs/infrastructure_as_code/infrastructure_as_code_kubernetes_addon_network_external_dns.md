@@ -134,8 +134,8 @@ spec:
         ...
 
 
-        --annotation-filter=<任意の.metadata.annotationsキー名> in <値>
-        --annotation-filter=<任意の.metadata.annotationsキー名> notin <値>
+        - --annotation-filter=<任意の.metadata.annotationsキー名> in <値>
+        - --annotation-filter=<任意の.metadata.annotationsキー名> notin <値>
 
   ...
 
