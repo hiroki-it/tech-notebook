@@ -104,10 +104,10 @@ command: |
 
 コマンドを繋ぐ`&&`や`;`は不要である。
 
-```yaml
+```
 command: |+
-  echo foo
-  echo bar
+  echo fooe
+  cho bar
 ```
 
 ```yaml
@@ -184,9 +184,9 @@ command: >
 
 改行した異なるコマンドが、スペースを挟んで繋がってしまうため、`&&`や`;`で繋ぐ必要がある。
 
-```yaml
+```
 command: >+
-  echo foo && 
+  echo foo &&
   echo bar
 ```
 
