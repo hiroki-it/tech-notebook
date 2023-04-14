@@ -375,7 +375,7 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {
-            # 部分一致
+            # 部分一致 (ワイルドカードを使用できる)
             "StringLike": {"sts:ExternalId": "foo-*"},
           },
       },

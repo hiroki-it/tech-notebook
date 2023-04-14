@@ -99,6 +99,71 @@ spec: ...
 
 <br>
 
+### kustomize.buildOptions
+
+Kustomizeの実行時に、コマンドに渡すパラメーターを設定する。
+
+特に、Kustomizeのプラグイン (例：kustomize-sopsなど) を使用する場合、`--enable-alpha-plugins`オプションを有効化する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  kustomize.buildOptions: --enable-alpha-plugins
+```
+
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
+> - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
+> - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
+
+<br>
+
+### kustomize.path.<バージョン>
+
+使用するKustomizeのバージョンと、バイナリファイルの置き場所を設定する。
+
+複数のKustomizeを使用できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  kustomize.path.v1.0.0: /custom-tools/kustomize_1_0_0
+  kustomize.path.v2.0.0: /custom-tools/kustomize_2_0_0
+```
+
+Applicationの`.spec.kustomize.version`キーで、使用するKustomizeのバージョンを指定する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+  targetRevision: main
+  path: .
+  kustomize:
+    version: v1.0.0
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
+
+<br>
+
 ### oidc.config
 
 #### ▼ oidc.configとは

@@ -258,8 +258,6 @@ data:
 
 Applicationでプラグイン名を指定する。
 
-> ↪️ 参考：https://github.com/travisghansen/argo-cd-helmfile#intro
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -278,6 +276,8 @@ spec:
       - name: ENV
         value: prd
 ```
+
+> ↪️ 参考：https://github.com/travisghansen/argo-cd-helmfile#intro
 
 <br>
 

@@ -63,17 +63,16 @@ spec:
         - name: foo
           command: ["/bin/bash", "-c"]
           args:
-            - >
-              until curl -fsI http://localhost:15021/healthz/ready;
+            - |
+              until curl -fsI http://localhost:15021/healthz/ready
               do
-                echo "Waiting for Sidecar to be healthy";
-                sleep 3;
-              done;
-              echo "Sidecar available. Running job command...";
-              <CronJobのコマンド>;
-              x=$(echo $?);
-              curl -fsI -X POST http://localhost:15020/quitquitquit && 
-              exit $x
+                echo "Waiting for Sidecar to be healthy"
+                sleep 3
+              done
+              echo "Sidecar available. Running job command..."
+              <CronJobのコマンド>
+              x=$(echo $?)
+              curl -fsI -X POST http://localhost:15020/quitquitquit && exit $x
 ```
 
 > ↪️ 参考：
