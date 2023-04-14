@@ -165,3 +165,122 @@ Nodeのインスタンスタイプごとに、紐付けられるENI数に制限�
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 
 <br>
+
+### 設定
+
+aws-eks-vpc-cniアドオンは、aws-nodeというDaemonSetとして稼働している。
+
+これのコンテナの環境変数で、アドオンの設定が管理されている。
+
+```bash
+$ kubectl get daemonset aws-node \
+    -n kube-system -o \
+    jsonpath='{.spec.template.spec.containers[*].env}' \
+    | jq .
+```
+
+```yaml
+[
+  {
+    "name": "ADDITIONAL_ENI_TAGS",
+    "value": "{}"
+  },
+  {
+    "name": "AWS_VPC_CNI_NODE_PORT_SUPPORT",
+    "value": "true"
+  },
+  {
+    "name": "AWS_VPC_ENI_MTU",
+    "value": "9001"
+  },
+  {
+    "name": "AWS_VPC_K8S_CNI_CONFIGURE_RPFILTER",
+    "value": "false"
+  },
+  {
+    "name": "AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG",
+    "value": "false"
+  },
+  {
+    "name": "AWS_VPC_K8S_CNI_EXTERNALSNAT",
+    "value": "false"
+  },
+  {
+    "name": "AWS_VPC_K8S_CNI_LOGLEVEL",
+    "value": "DEBUG"
+  },
+  {
+    "name": "AWS_VPC_K8S_CNI_LOG_FILE",
+    "value": "/host/var/log/aws-routed-eni/ipamd.log"
+  },
+  {
+    "name": "AWS_VPC_K8S_CNI_RANDOMIZESNAT",
+    "value": "prng"
+  },
+  {
+    "name": "AWS_VPC_K8S_CNI_VETHPREFIX",
+    "value": "eni"
+  },
+  {
+    "name": "AWS_VPC_K8S_PLUGIN_LOG_FILE",
+    "value": "/var/log/aws-routed-eni/plugin.log"
+  },
+  {
+    "name": "AWS_VPC_K8S_PLUGIN_LOG_LEVEL",
+    "value": "DEBUG"
+  },
+  {
+    "name": "DISABLE_INTROSPECTION",
+    "value": "false"
+  },
+  {
+    "name": "DISABLE_METRICS",
+    "value": "false"
+  },
+  {
+    "name": "DISABLE_NETWORK_RESOURCE_PROVISIONING",
+    "value": "false"
+  },
+  {
+    "name": "ENABLE_IPv4",
+    "value": "true"
+  },
+  {
+    "name": "ENABLE_IPv6",
+    "value": "false"
+  },
+  {
+    "name": "ENABLE_POD_ENI",
+    "value": "false"
+  },
+  {
+    "name": "ENABLE_PREFIX_DELEGATION",
+    "value": "false"
+  },
+  {
+    "name": "MY_NODE_NAME",
+    "valueFrom": {
+      "fieldRef": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.nodeName"
+      }
+    }
+  },
+  {
+    "name": "WARM_ENI_TARGET",
+    "value": "1"
+  },
+  {
+    "name": "WARM_PREFIX_TARGET",
+    "value": "1"
+  }
+]
+```
+
+> ↪️ 参考：
+>
+> - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
+> - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
+> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c
+
+<br>

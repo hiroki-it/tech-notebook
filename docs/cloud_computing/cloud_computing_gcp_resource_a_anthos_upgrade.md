@@ -40,7 +40,9 @@ $ chmod a+x bmctl-1.12.0
 
 ```bash
 $ kubectl get cluster -A -o yaml
+```
 
+```yaml
 apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
@@ -124,7 +126,9 @@ $ tail -f ~/baremetal/<ログの出力先>
 
 ```bash
 $ kubectl get cluster -A -o yaml
+````
 
+```yaml
 apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
@@ -339,10 +343,13 @@ istiod-asm-1140-0    1/1     Running   0          27s   asm-1140-0
 $ kubectl get namespace ingress -L istio.io/rev
 NAME       STATUS    AGE     REV
 ingress    Active    2d18h   1130
+```
 
-
+```bash
 $ kubectl get namespace app -o yaml
+```
 
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -356,10 +363,13 @@ $ kubectl get namespace app -L istio.io/rev
 
 NAME   STATUS    AGE     REV
 app    Active    2d18h   1130
+```
 
-
+```bash
 $ kubectl get namespace app -o yaml
+```
 
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:

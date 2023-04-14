@@ -40,7 +40,7 @@ module "iam_assumable_role_with_oidc_argocd_repo_server" {
 
   # AWS IAMロールに紐付けるIAMポリシー
   role_policy_arns              = [
-    module.eks_argocd.iam_policy_argocd_reposerver.arn
+    aws_iam_policy.argocd_reposerver_policy.arn
   ]
 
   # ArgoCDのrepo-serverのPodのServiceAccount名
@@ -49,6 +49,14 @@ module "iam_assumable_role_with_oidc_argocd_repo_server" {
     "system:serviceaccount:argocd:foo-argocd-repo-server",
     ...
   ]
+}
+
+resource "aws_iam_policy" "argocd_reposerver_policy" {
+  name   = "foo-argocd-reposerver-policy"
+  policy = templatefile(
+    "${path.module}/policies/inline_policies/argocd_reposerver_policy.tpl",
+    {}
+  )
 }
 ```
 

@@ -214,7 +214,9 @@ kube-system     foo-aws-load-balancer-controller    arn:aws:iam::<AWSアカウ�
 
 ```bash
 $ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
+```
 
+```yaml
 # 作成されたServiceAccount
 apiVersion: v1
 kind: ServiceAccount

@@ -640,6 +640,7 @@ BFFではアプリケーションの種類ごとにAPI　Gatewayを作成した�
 
 > ↪️ 参考：
 >
+> - https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687
 > - https://thinkit.co.jp/article/14639?page=0%2C1
 > - https://qiita.com/nk2/items/d9e9a220190549107282
 > - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420

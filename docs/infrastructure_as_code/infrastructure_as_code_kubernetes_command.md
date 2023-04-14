@@ -771,7 +771,9 @@ $ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" | \
 
 ```bash
 $ kubectl get secret <Secret名> -o yaml
+```
 
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:

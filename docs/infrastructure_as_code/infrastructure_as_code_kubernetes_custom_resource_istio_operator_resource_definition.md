@@ -264,7 +264,9 @@ spec:
 
 ```bash
 $ kubectl get service istio-ingressgateway -o yaml -n istio-system
+```
 
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
