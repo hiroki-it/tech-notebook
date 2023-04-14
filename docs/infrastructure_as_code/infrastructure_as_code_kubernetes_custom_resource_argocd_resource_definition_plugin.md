@@ -326,7 +326,7 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<SOPSのバージョン>/sops-<SOPSのバージョン>.linux
+          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         # Podの共有ボリュームに、SOPSを配置する。
@@ -339,7 +339,7 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-plugins -xzf-;
+          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-plugins -xzf-;
           cp /custom-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /custom-tools/helm
           chmod +x /custom-tools/helm
       volumeMounts:
