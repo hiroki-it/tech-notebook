@@ -197,7 +197,7 @@ spec:
 
   initContainers:
     - name: install-helmfile
-      image: alpine:3.8
+      image: alpine:latest
       command: ["/bin/sh", "-c"]
       # InitContainerにHelmfileをインストールする。
       args:
@@ -284,17 +284,17 @@ spec:
 
 <br>
 
-## 03. helm-secretsとの連携
+## 03. helmプラグインとの連携
 
 ### セットアップ
 
-#### ▼ helm-secretsのインストール
+#### ▼ helmプラグインのインストール
 
-argocd-repo-serverがhelm-secretsを使用できるように、helm-secretsをインストールする。
+argocd-repo-serverがhelmプラグインを使用できるように、helmプラグインをインストールする。
 
 **＊実装例＊**
 
-ここでは軽量のInitContainerを定義し、起動時にhelm-secretsをインストールする。
+ここでは軽量のInitContainerを定義し、起動時にhelmプラグインのhelm-secretsをインストールする。
 
 ```yaml
 apiVersion: v1
@@ -320,7 +320,7 @@ spec:
 
   initContainers:
     - name: install-sops
-      image: alpine:3.8
+      image: alpine:latest
       command: ["/bin/sh", "-c"]
       # InitContainerに、SOPSをインストールする。
       args:
@@ -333,7 +333,7 @@ spec:
         - mountPath: /custom-tools
           name: custom-tools
     - name: install-helm-plugins
-      image: alpine:3.8
+      image: alpine:latest
       command: ["/bin/sh", "-c"]
       # InitContainerに、helm-secrets、をインストールする。
       args:
@@ -343,7 +343,7 @@ spec:
           cp /custom-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /custom-tools/helm
           chmod +x /custom-tools/helm
       volumeMounts:
-        # Podの共有ボリュームに、SOPS、helm-secrets、を配置する。
+        # Podの共有ボリュームに、helm-secrets、を配置する。
         - mountPath: /custom-tools
           name: custom-tools
 
