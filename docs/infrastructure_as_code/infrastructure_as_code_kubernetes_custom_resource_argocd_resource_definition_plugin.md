@@ -17,22 +17,88 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 ### セットアップ
 
-#### ▼ セットアップの内容
+#### ▼ InitContainerで連携先ツールをインストール
 
-ArgoCDと任意のツールを連携するためには、argocd-repo-serverが連携先ツールを使用できるようにセットアップする必要がある。
+連携先ツールをインストールするInitContainersを配置する。
 
 補足として、執筆時点 (2022/10/31) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がargocd-repo-serverのコンテナイメージにあらかじめインストールされている。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server
+  namespace: argocd
+spec:
+  containers:
+    - name: argocd-repo-server
+      image: quay.io/argoproj/argocd:latest
+
+
+  ...
+
+  initContainers:
+    # ConfigManagementPlugin用のサイドカーにargocd-cmp-serverバイナリをコピーするInitContainer
+    - name: copyutil
+      image: quay.io/argoproj/argocd:latest
+      command:
+        - cp
+        - -n
+        - /usr/local/bin/argocd
+        - /var/run/argocd/argocd-cmp-server
+      volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+    # お好きなツールをインストールするInitContainer
+    - name: sops-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+          chmod +x /custom-tools/sops
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+    - name: ksops-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          mv ksops /custom-tools/
+          mv $GOPATH/bin/kustomize /custom-tools/
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+    - name: helm-plugins-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/v4.4.2/helm-secrets.tar.gz | tar -C /helm-plugins -xzf-
+          cp /helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-working-dir/plugins
+          chmod +x /helm-working-dir/plugins
+      volumeMounts:
+        - mountPath: /helm-working-dir/plugins
+          name: custom-tools
+```
 
 > ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
 
-#### ▼ InitContainerとサイドカー
+#### ▼ サイドカーを配置
 
-連携先ツールをインストールするInitContainersを配置する。
-
-また、プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
+プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
 
 argo-reposerverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
 
@@ -112,7 +178,7 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
 > - https://github.com/argoproj/argo-cd/discussions/8216#discussion-3808729
 
-#### ▼ プラグインの処理の定義
+#### ▼ ConfigManagementPluginでプラグインの処理を定義
 
 ConfigManagementPluginで、プラグインの処理を設定する。
 
@@ -159,11 +225,7 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
 
-#### ▼ サイドカーの配置
-
-argocd-repo-serverがプラグインを使用できるように、サイドカーのVolumeを介して、ConfigMapの`plugin.yaml`キー配下で管理する。
-
-#### ▼ プラグインの使用
+#### ▼ Applicationでのプラグインを使用
 
 Applicationの`.spec.plugin.name`キーで、`.data.configManagementPlugins`キーで設定した独自のプラグイン名を設定する。
 

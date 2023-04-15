@@ -2712,7 +2712,7 @@ spec:
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://zaki-hmkc.hatenablog.com/entry/2020/12/27/211908#subPath%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88
 > - https://kubernetes.io/ja/docs/concepts/storage/volumes/#using-subpath
 
