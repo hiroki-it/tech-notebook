@@ -139,9 +139,9 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 
 ### 基本ソフトウェアの種類
 
-#### ▼ UNIX系OS
+#### ▼ Unix系OS
 
-UNIXを源流として派生したOS。
+Unixを源流として派生したOS。
 
 現在では主に、Linux系統 (緑色) 、BSD系統 (黄色) 、SystemV系統 (青色) の`3`個に分けられる。
 
@@ -165,13 +165,13 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 <br>
 
-## 04-02. UNIX系OS
+## 04-02. Unix系OS
 
 ### Linux系統
 
 #### ▼ Linux系統とは
 
-UNIXから分岐したLinuxは、加えて3系統 (Debian、RedHat、Slackware) に分岐する。
+Unixから分岐したLinuxは、加えて3系統 (Debian、RedHat、Slackware) に分岐する。
 
 ![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux-distribution.png)
 
@@ -214,7 +214,7 @@ Slackwareなど
 
 #### ▼ BSD系統とは
 
-UNIXから分岐したBSDは、加えて複数の系統 (例：MacOSなど) に分岐する。
+Unixから分岐したBSDは、加えて複数の系統 (例：MacOSなど) に分岐する。
 
 <br>
 

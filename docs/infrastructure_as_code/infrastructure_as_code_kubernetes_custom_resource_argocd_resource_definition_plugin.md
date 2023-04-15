@@ -78,7 +78,7 @@ spec:
     ...
 
   initContainers:
-    # ConfigManagementPlugin用のサイドカーにargocd-cmp-serverバイナリをコピーするInitContainer
+    # ConfigManagementPlugin用のサイドカーにargocdのバイナリをコピーするInitContainer
     - name: copyutil
       image: quay.io/argoproj/argocd:latest
       command:

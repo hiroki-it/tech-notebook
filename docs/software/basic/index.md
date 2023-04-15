@@ -30,7 +30,7 @@
 
 * #### [︎ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility.html)
 
-* #### [︎UNIX系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)
+* #### [︎Unix系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)
 
 * #### [︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html)
 

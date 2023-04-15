@@ -125,7 +125,7 @@ server {
     location ~ \.php$ {
         # ルーティング先のTCPソケット
         fastcgi_pass   localhost:9000;
-        # もしくは、UNIXドメインソケット
+        # もしくは、Unixドメインソケット
         # fastcgi_pass unix:/run/php-fpm/www.sock;
 
         # ルーティング先のURL (rootディレクティブ値+パスパラメータ)
