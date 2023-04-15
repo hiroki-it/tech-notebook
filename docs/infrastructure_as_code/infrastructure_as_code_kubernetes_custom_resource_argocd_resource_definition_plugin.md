@@ -17,7 +17,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 ### セットアップ
 
-#### ▼ 連携先ツールのインストール
+#### ▼ セットアップの内容
 
 ArgoCDと任意のツールを連携するためには、argocd-repo-serverが連携先ツールを使用できるようにセットアップする必要がある。
 
@@ -28,13 +28,11 @@ ArgoCDと任意のツールを連携するためには、argocd-repo-serverが�
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
 
-#### ▼ プラグインのインストール
+#### ▼ InitContainerとサイドカー
 
-argocd-repo-serverのサイドカー (例：`spec.initContainers`キー、`spec.containers`キー) でプラグインを使用できるようにインストールする。
+連携先ツールをインストールするInitContainersを配置する。
 
-`var/run/argocd/argocd-cmp-server`ファイルをエントリポイントとする。
-
-サイドカーのコンテナプロセスのユーザーIDは`999`とする。
+また、プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
 
 ```yaml
 apiVersion: v1
@@ -52,16 +50,17 @@ spec:
         - --port=8081
         - --metrics-port=8084
       volumeMounts:
-        # ConfigManagementPluginのマニフェストをコンテナにマウントする
-        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
-          name: foo-plugin
-          subPath: plugin.yaml
+        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
     - name: cmp-server
       image: alpine:lastest
       command:
+        # エントリポイントは固定である
         - /var/run/argocd/argocd-cmp-server
       securityContext:
         runAsNonRoot: true
+        # サイドカーのコンテナプロセスのユーザーIDは999とする。
         runAsUser: 999
       volumeMounts:
         - mountPath: /var/run/argocd
@@ -105,6 +104,7 @@ spec:
 > ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
+> - https://github.com/argoproj/argo-cd/blob/master/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
 > - https://github.com/argoproj/argo-cd/discussions/8216#discussion-3808729
@@ -158,7 +158,7 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 
 #### ▼ サイドカーの配置
 
-argocd-repo-serverがプラグインを使用できるように、サイドカー (例：`spec.initContainers`キー、`spec.containers`キー) のVolumeを介して、ConfigMapの`plugin.yaml`キー配下で管理する。
+argocd-repo-serverがプラグインを使用できるように、サイドカーのVolumeを介して、ConfigMapの`plugin.yaml`キー配下で管理する。
 
 #### ▼ プラグインの使用
 
