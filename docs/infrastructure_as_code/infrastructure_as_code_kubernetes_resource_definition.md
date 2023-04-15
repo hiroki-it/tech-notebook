@@ -487,7 +487,9 @@ spec:
             - name: foo-alpine
               image: alpine:latest
               # 定期的に実行するコマンドを設定する。
-              command: ["/bin/bash", "-c"]
+              command:
+                - /bin/bash
+                - -c
               args:
                 - echo Hello World
           restartPolicy: OnFailure
@@ -1384,7 +1386,9 @@ spec:
       containers:
         - name: foo-alpine
           image: alpine:latest
-          command: ["/bin/bash", "-c"]
+          command:
+            - /bin/bash
+            - -c
           args:
             - echo Hello World
       restartPolicy: OnFailure
@@ -1579,7 +1583,9 @@ spec:
       image: busybox:1.28
       # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのfoo-ginコンテナの起動を待機する。
       # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
-      command: ["/bin/bash", "-c"]
+      command:
+        - /bin/bash
+        - -c
       args:
         - >
           until nc -z db 3306; do
@@ -2865,6 +2871,9 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
   securityContext:
     runAsUser: 1000
 ```
@@ -2881,11 +2890,35 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
   securityContext:
     runAsGroup: 3000
 ```
 
 > ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-07/#runasgroup
+
+#### ▼ runAsNonRoot
+
+コンテナを特権モード (root権限) で実行できないようにする。
+
+もしこれを設定したコンテナがrootユーザーでプロセスを実行しようとすると、コンテナの起動に失敗する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+  securityContext:
+    runAsNonRoot: true
+```
+
+> ↪️ 参考：https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc#root%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%AE%E5%AE%9F%E8%A1%8C%E5%88%B6%E9%99%90
 
 #### ▼ fsGroup
 
@@ -2899,6 +2932,9 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
   securityContext:
     fsGroup: 999
 ```
@@ -3042,6 +3078,9 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
   topologySpreadConstraints:
     - maxSkew: 1
       topologyKey: topology.kubernetes.io/zone
@@ -3063,6 +3102,9 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
   topologySpreadConstraints:
     - topologyKey: topology.kubernetes.io/zone
 ```
@@ -3083,6 +3125,9 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
   topologySpreadConstraints:
     - whenUnsatisfiable: DoNotSchedule
 ```
@@ -3101,6 +3146,9 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
   topologySpreadConstraints:
     - labelSelector:
         app.kubernetes.io/app: foo-pod

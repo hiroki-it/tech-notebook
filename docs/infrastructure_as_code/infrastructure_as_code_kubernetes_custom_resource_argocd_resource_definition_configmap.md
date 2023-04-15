@@ -190,6 +190,7 @@ metadata:
   name: argocd-cm
 data:
   admin.enabled: true
+
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
     connectors:
@@ -201,6 +202,7 @@ data:
           clientSecret: *****
         # 委譲先のWebサイトがOIDCのリクエストを待ち受けるURLを設定する。
         redirectURI: https://example.com/api/dex
+
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
   # 開発環境では、https://localhost:8080
   url: <URL>
@@ -225,6 +227,7 @@ metadata:
   name: argocd-cm
 data:
   admin.enabled: true
+
   # OIDCに必要なIDやトークンを設定する。
   dex.config: |
     connectors:
@@ -236,6 +239,7 @@ data:
           clientSecret: *****
         # 委譲先のWebサイトがOIDCのリクエストを待ち受けるURLを設定する。
         redirectURI: https://example.com/api/dex
+
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
   # 開発環境では、https://localhost:8080
   url: <URL>

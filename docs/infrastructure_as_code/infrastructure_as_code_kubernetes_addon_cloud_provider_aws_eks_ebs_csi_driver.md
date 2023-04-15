@@ -260,7 +260,10 @@ spec:
       containers:
         - name: foo
           image: busybox
-          command: ["/bin/bash", "-c", "sleep 10000"]
+          command:
+            - /bin/bash
+            - -c
+            - sleep 10000
           volumeMounts:
             - mountPath: /app/data
               name: data
@@ -370,7 +373,10 @@ spec:
       containers:
         - name: foo
           image: busybox
-          command: ["/bin/bash", "-c", "sleep 10000"]
+          command:
+            - /bin/bash
+            - -c
+            - sleep 10000
           volumeMounts:
             - mountPath: /app/data
               name: data

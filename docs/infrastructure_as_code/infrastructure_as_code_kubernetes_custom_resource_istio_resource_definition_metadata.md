@@ -134,7 +134,7 @@ spec:
 
 #### ▼ proxy.istio.ioとは
 
-`istio-proxy`コンテナのプロセスの設定値を上書きし、ユーザー定義の値を設定する。
+`istio-proxy`コンテナの`envoy`プロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
 #### ▼ configPath
 

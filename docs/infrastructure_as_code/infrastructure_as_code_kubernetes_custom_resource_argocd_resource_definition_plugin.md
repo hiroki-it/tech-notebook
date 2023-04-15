@@ -110,12 +110,16 @@ data:
         app.kubernetes.io/part-of: argocd
     spec:
       init:
-        command: [ "/bin/bash", "-c" ]
+        command: 
+          - /bin/bash
+          - -c
         args:
           - |
             # マニフェストの作成前に実行したい処理を定義する。
       generate:
-        command: [ "/bin/bash", "-c" ]
+        command: 
+          - /bin/bash
+          - -c
         args:
           - |
             # 必要なマニフェストを定義する。
@@ -131,6 +135,12 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
+
+#### ▼ サイドカーの配置
+
+ConfigManagementPluginを持つConfigMapをマウントしたサイドカーを配置する。
+
+argocd-repo-serverは、このサイドカーを介してConfigManagementPluginを使用する。
 
 #### ▼ プラグインの使用
 
@@ -198,7 +208,9 @@ spec:
   initContainers:
     - name: install-helmfile
       image: alpine:latest
-      command: ["/bin/sh", "-c"]
+      command:
+        - /bin/sh
+        - -c
       # InitContainerにHelmfileをインストールする。
       args:
         - |
@@ -233,7 +245,7 @@ metadata:
   name: argocd-cmp-cm
   namespace: argocd
 data:
-  plugin.yaml: |
+  helmfile.yaml: |
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
@@ -242,8 +254,18 @@ data:
       labels:
         app.kubernetes.io/part-of: argocd
     spec:
+      init:
+        command: 
+          - /bin/bash
+          - -c
+        args:
+          - |
+            set -euo pipefail
+            helm dependency build
       generate:
-        command: [ "/bin/bash", "-c" ]
+        command: 
+          - /bin/bash
+          - -c
         args:
           - |
             set -euo pipefail
@@ -306,6 +328,7 @@ spec:
     - name: repo-server
       image: quay.io/argoproj/argocd:latest
       env:
+        # helmプラグインの場所を指定する。
         - name: HELM_PLUGINS
           value: /helm-working-dir/plugins
       volumeMounts:
@@ -323,7 +346,9 @@ spec:
   initContainers:
     - name: install-sops
       image: alpine:latest
-      command: ["/bin/sh", "-c"]
+      command:
+        - /bin/sh
+        - -c
       # InitContainerに、SOPSをインストールする。
       args:
         - |
@@ -336,7 +361,9 @@ spec:
           name: custom-tools
     - name: install-helm-plugins
       image: alpine:latest
-      command: ["/bin/sh", "-c"]
+      command:
+        - /bin/sh
+        - -c
       # InitContainerに、helmプラグインをインストールする。
       args:
         - |
@@ -359,6 +386,7 @@ spec:
 >
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#using-initcontainers
 
 <br>
 
@@ -388,9 +416,11 @@ spec:
 
 ### セットアップ
 
-#### ▼ helm-secretsの処理の定義
+#### ▼ helmプラグインの処理の定義
 
-`helm secrets template`コマンドでマニフェストを作成し、また変数を復号化する。
+helmプラグインの処理の定義する。
+
+ここでは、`helm secrets template`コマンドでマニフェストを作成し、また変数を復号化する。
 
 新しい`helm-secrets`はjkroepke製であり、古いものはzendesk製である。
 
@@ -401,7 +431,7 @@ metadata:
   name: argocd-cmp-cm
   namespace: argocd
 data:
-  plugin.yaml: |
+  helm-plugis.yaml: |
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
@@ -410,8 +440,18 @@ data:
       labels:
         app.kubernetes.io/part-of: argocd
     spec:
+      init:
+        command: 
+          - /bin/bash
+          - -c
+        args:
+          - |
+            set -euo pipefail
+            helm dependency build
       generate:
-        command: [ "/bin/bash", "-c" ]
+        command: 
+          - /bin/bash
+          - -c
         # jkroepke製のhelm-secretsの場合
         # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
@@ -433,7 +473,7 @@ metadata:
   name: argocd-cmp-cm
   namespace: argocd
 data:
-  plugin.yaml: |
+  helm-plugis.yaml: |
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
@@ -442,8 +482,18 @@ data:
       labels:
         app.kubernetes.io/part-of: argocd
     spec:
+      init:
+        command: 
+          - /bin/bash
+          - -c
+        args:
+          - |
+            set -euo pipefail
+            helm dependency build
       generate:
-        command: [ "/bin/bash", "-c" ]
+        command: 
+          - /bin/bash
+          - -c
         # zendesk製のhelm-secretsの場合
         # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
@@ -591,7 +641,9 @@ spec:
   initContainers:
     - name: install-ksops
       image: viaductoss/ksops:v4.1.1
-      command: ["/bin/sh", "-c"]
+      command:
+        - /bin/sh
+        - -c
       # InitContainerにKustomizeをインストールする。
       args:
         - |
@@ -664,7 +716,7 @@ metadata:
   name: argocd-cmp-cm
   namespace: argocd
 data:
-  plugin.yaml: |
+  vault.yaml: |
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
@@ -674,13 +726,17 @@ data:
         app.kubernetes.io/part-of: argocd
     spec:
       init:
-        command: [ "/bin/bash", "-c" ]
+        command: 
+          - /bin/bash
+          - -c
         args:
           - |
             set -euo pipefail
             helm dependency build
       generate:
-        command: [ "/bin/bash", "-c" ]
+        command: 
+          - /bin/bash
+          - -c
         args:
           - |
             set -euo pipefail

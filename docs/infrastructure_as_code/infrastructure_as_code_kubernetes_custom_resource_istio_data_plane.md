@@ -70,7 +70,7 @@ $ istio-iptables \
 
 `【１】`
 
-: `ps`コマンドを使用して、`istio-proxy`コンテナのプロセスのID (PID) を取得する。
+: `ps`コマンドを使用して、`istio-proxy`コンテナの`envoy`プロセスのID (PID) を取得する。
 
 ```bash
 # PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。

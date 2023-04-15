@@ -127,6 +127,34 @@ releases:
 
 <br>
 
+### `helmfile.d`ファイルで使える変数
+
+#### ▼ `.Environment.Name`
+
+`helmfile`コマンドの`-e`オプションに渡した値は、`helmfile.d`ファイル内の`.Environment.Name`に出力できる。
+
+```bash
+$ helmfile -e prd -f helmfile.yaml
+```
+
+```yaml
+{{.Environment.Name}}
+```
+
+#### ▼ `.Values`
+
+`helmfile`コマンドの`--state-values-set`オプションに渡した値は、`helmfile.d`ファイル内の`.Values`に出力できる。
+
+```bash
+$ helmfile -e prd -f helmfile.yaml --state-values-set region=tokyo
+```
+
+```yaml
+{{.Values.region}}
+```
+
+<br>
+
 ### environments
 
 #### ▼ environments

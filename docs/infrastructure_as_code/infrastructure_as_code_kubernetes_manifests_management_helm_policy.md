@@ -470,7 +470,7 @@ Helmには通知能力がなく、手動で知らせる必要がある。
 そこで、`helm diff`コマンドをGitOpsによるCDパイプライン上で実行していない (手動で実行している) 場合、`helm diff`コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
 
 ```bash
-$ helm diff <チャート名> -f values.yaml \
+$ helm diff <チャート名> -f values.yaml --no-color \
     | grep -A 1000 Comparing \
     | pbcopy
 ```
@@ -478,7 +478,7 @@ $ helm diff <チャート名> -f values.yaml \
 あるいは、Namespaceを指定すると、追加/変更/削除の箇所のみ取得できる。
 
 ```bash
-$ helm diff <チャート名> -f values.yaml \
+$ helm diff <チャート名> -f values.yaml --no-color \
     | grep foo-namespace \
     | pbcopy
 

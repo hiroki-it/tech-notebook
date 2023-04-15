@@ -417,17 +417,16 @@ metadata:
   name: argocd-repo-server
   namespace: argocd
 spec:
-  automountServiceAccountToken: false
   containers:
     - name: argocd-repo-server
       image: quay.io/argoproj/argocd:latest
+      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
       command:
-        - argocd-server
-        - --logformat
-        - json
-        - --loglevel
-        - info
-        - --insecure
+        - "entrypoint.sh"
+      args:
+        - argocd-repo-server
+        - --port=8081
+        - --metrics-port=8084
       # application-controller、Prometheus、からのリクエストを受信する
       ports:
         - containerPort: 8081
@@ -441,7 +440,7 @@ spec:
         - name: XDG_CONFIG_HOME
           value: /.config
         - name: HELM_PLUGINS
-          value: /helm-working-dir/helm/plugins
+          value: /helm-working-dir/plugins
         - name: *****
           valueFrom:
             configMapKeyRef:
@@ -460,15 +459,83 @@ spec:
               key: *****
               name: argocd-redis
               optional: true
+      volumeMounts:
+        # InitContainerでインストールしたバイナリファイルを含むVolumeを指定する
+        - mountPath: /usr/local/bin/sops
+          name: custom-tools
+          subPath: sops
+        - mountPath: /usr/local/bin/kustomize
+          name: custom-tools
+          subPath: kustomize
+        - mountPath: /usr/local/bin/ksops
+          name: custom-tools
+          subPath: ksops
+        - mountPath: /helm-working-dir/plugins
+          name: custom-tools
+        # SSL証明書を指定する
+        - mountPath: /app/config/ssh
+          name: ssh-known-hosts
+        - mountPath: /app/config/tls
+          name: tls-certs
+        - mountPath: /app/config/gpg/source
+          name: gpg-keys
+        - mountPath: /app/config/gpg/keys
+          name: gpg-keyring
+        - mountPath: /app/config/reposerver/tls
+          name: argocd-repo-server-tls
+        # ConfigManagementPluginのhelmコマンドを実行するディレクトリを指定する
+        - mountPath: /helm-working-dir
+          name: helm-working-dir
+        # サイドカーのVolumeを介してConfigManagementPluginを指定する
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /tmp
+          name: tmp
 
-  # プラグインをインストールするInitContainer
+
   initContainers:
-    - name: download-foo-tool
+    # ConfigManagementPlugin上のコマンドを実行するサイドカー
+    - name: cmp-provider
+      image: quay.io/argoproj/argocd:latest
       command:
         - cp
         - -n
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server
+      volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+    # お好きなツールをインストールするInitContainer
+    - name: sops-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+          chmod +x /custom-tools/sops
+    - name: ksops-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          mv ksops /custom-tools/
+          mv $GOPATH/bin/kustomize /custom-tools/
+    - name: helm-plugins-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/v4.4.2/helm-secrets.tar.gz | tar -C /helm-plugins -xzf-
+          cp /helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-working-dir/plugins
+          chmod +x /helm-working-dir/plugins
 
   # 各種Secretを読み込む
   volumes:
@@ -545,6 +612,7 @@ spec:
   containers:
     - name: argocd-dex-server
       image: ghcr.io/dexidp/dex:latest
+      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
       command:
         - /shared/argocd-dex
       args:
@@ -611,14 +679,10 @@ spec:
   containers:
     - name: argocd-application-controller
       image: quay.io/argoproj/argocd:latest
+      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
       command:
         - argocd-application-controller
-        - --logformat
-        - text
-        - --loglevel
-        - info
-        - --application-namespaces
-        - "*"
+        - --metrics-port=8082
       # Prometheusからのリクエストを受信する
       ports:
         - containerPort: 8082
@@ -644,6 +708,11 @@ spec:
               key: ****
               name: argocd-redis
               optional: true
+      volumeMounts:
+        - mountPath: /app/config/controller/tls
+          name: argocd-repo-server-tls
+        - mountPath: /home/argocd
+          name: argocd-home
   # 各種Secretを読み込む
   volumes:
     # repo-serverとHTTPS通信するために、SSL証明書を設定する
@@ -1688,7 +1757,9 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: ["/bin/bash", "-c"]
+          command:
+            - /bin/bash
+            - -c
           source: |
             echo "Hello World"
 ```
@@ -1758,7 +1829,9 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: ["/bin/bash", "-c"]
+          command:
+            - /bin/bash
+            - -c
           source: |
             echo "Hello World"
 ```

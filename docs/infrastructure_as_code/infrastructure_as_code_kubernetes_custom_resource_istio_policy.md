@@ -61,7 +61,9 @@ spec:
     spec:
       containers:
         - name: foo
-          command: ["/bin/bash", "-c"]
+          command:
+            - /bin/bash
+            - -c
           args:
             - >
               until curl -fsI http://localhost:15021/healthz/ready; do
