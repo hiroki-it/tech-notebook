@@ -52,11 +52,10 @@ spec:
         - --port=8081
         - --metrics-port=8084
       volumeMounts:
-        # ConfigManagementPluginファイルをマウントする
-        - mountPath: /home/argocd/cmp-server/config/foo-plugin.yaml
-          # Podの共有ボリュームを介して、cmp-server上でプラグインを実行する。
+        # ConfigManagementPluginのマニフェストをコンテナにマウントする
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           name: foo-plugin
-          subPath: foo-plugin.yaml
+          subPath: plugin.yaml
     - name: cmp-server
       image: alpine:lastest
       command:
@@ -67,12 +66,12 @@ spec:
       volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
-        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをマウントする
+        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
-        # ConfigManagementPluginファイルをマウントする
-        - mountPath: /home/argocd/cmp-server/config/foo-plugin.yaml
-          subPath: foo-plugin.yaml
+        # ConfigManagementPluginのマニフェストをコンテナにコンテナにマウントする
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          subPath: plugin.yaml
           name: foo-plugin
         - mountPath: /tmp
           name: tmp-dir

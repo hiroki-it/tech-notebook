@@ -2679,6 +2679,45 @@ Pod内の特定のコンテナに対して、認可スコープを設定する�
 
 <br>
 
+### .spec.containers[].volumeMounts
+
+#### ▼ volumeMountsとは
+
+PodのVolume内のディレクトリをコンテナにマウントする。
+
+#### ▼ subPath
+
+PodのVolume内のサブディレクトリ配下をコンテナにマウントする。
+
+これを指定しない場合。Volumeのルートディレクトリ配下をコンテナにマウントすることになる。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      volumeMounts:
+        # コンテナのvarディレクトリにマウントする
+        - mountPath: /var
+          name: foo-volume
+          # foo-volumeにあるbarディレクトリをマウントする
+          subPath: bar
+  volumes:
+    - name: foo-volume
+      emptyDir: {}
+```
+
+> ↪️ 参考：
+> 
+> - https://zaki-hmkc.hatenablog.com/entry/2020/12/27/211908#subPath%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88
+> - https://kubernetes.io/ja/docs/concepts/storage/volumes/#using-subpath
+
+<br>
+
 ### .spec.enableServiceLinks
 
 #### ▼ enableServiceLinks
