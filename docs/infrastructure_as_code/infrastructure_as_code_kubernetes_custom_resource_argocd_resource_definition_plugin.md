@@ -34,6 +34,8 @@ ArgoCDと任意のツールを連携するためには、argocd-repo-serverが�
 
 また、プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
 
+argo-reposerverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -103,8 +105,9 @@ spec:
 
 > ↪️ 参考：
 >
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
+> - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml#L17305-L17567
 > - https://github.com/argoproj/argo-cd/blob/master/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
 > - https://github.com/argoproj/argo-cd/discussions/8216#discussion-3808729
