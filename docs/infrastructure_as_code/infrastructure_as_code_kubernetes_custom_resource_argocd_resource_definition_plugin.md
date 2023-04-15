@@ -55,41 +55,62 @@ spec:
         # プラグインを置くパスを指定する。
         - mountPath: /home/argocd/cmp-server/plugins
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でプラグインを使用する。
+          name: plugin-file
+    - name: cmp-server
+      image: alpine:lastest
+      command:
+        - /var/run/argocd/argocd-cmp-server
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+      volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
+        # Podの共有ボリュームにプラグインを配置する。
+        - mountPath: /home/argocd/cmp-server/config/foo-plugin.yaml
+          subPath: foo-plugin.yaml
+          name: foo-plugin
+        - mountPath: /tmp
+          name: tmp-dir
 
     ...
 
   initContainers:
-    - name: plugin
+    # ConfigManagementPlugin用のサイドカーにargocd-cmp-serverバイナリをコピーするInitContainer
+    - name: copyutil
+      image: quay.io/argoproj/argocd:latest
       command:
         - cp
         - -n
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server
-      image: busybox:latest
       volumeMounts:
-        # Podの共有ボリュームにプラグインを配置する。
-        - mountPath: /home/argocd/cmp-server/plugins
-          name: plugins
+        - mountPath: /var/run/argocd
+          name: var-files
 
   # Podの共有ボリューム
   volumes:
+    - name: foo-plugin
+      configMap:
+        name: foo-plugin
     - name: plugins
+      emptyDir: {}
+    - name: var-files
       emptyDir: {}
 ```
 
 > ↪️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
-> - https://blog.argoproj.io/breaking-changes-in-argo-cd-2-4-29e3c2ac30c9
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
-> - https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/
+> - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
+> - https://github.com/argoproj/argo-cd/discussions/8216#discussion-3808729
 
 #### ▼ プラグインの処理の定義
 
 ConfigManagementPluginで、プラグインの処理を設定する。
-
-さらに、サイドカー (例：`spec.initContainers`キー、`spec.containers`キー) を介して、argocd-repo-serverがプラグインを使用できるように、ConfigMapの`plugin.yaml`キー配下で管理する。
 
 ConfigMapの`.data.configManagementPlugins`キーで設定することは非推奨である。
 
@@ -106,8 +127,6 @@ data:
     metadata:
       namespace: argocd
       name: foo-plugin
-      labels:
-        app.kubernetes.io/part-of: argocd
     spec:
       init:
         command: 
@@ -138,9 +157,7 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 
 #### ▼ サイドカーの配置
 
-ConfigManagementPluginを持つConfigMapをマウントしたサイドカーを配置する。
-
-argocd-repo-serverは、このサイドカーを介してConfigManagementPluginを使用する。
+argocd-repo-serverがプラグインを使用できるように、サイドカー (例：`spec.initContainers`キー、`spec.containers`キー) のVolumeを介して、ConfigMapの`plugin.yaml`キー配下で管理する。
 
 #### ▼ プラグインの使用
 
@@ -251,8 +268,6 @@ data:
     metadata:
       namespace: argocd
       name: helmfile
-      labels:
-        app.kubernetes.io/part-of: argocd
     spec:
       init:
         command: 
@@ -437,8 +452,6 @@ data:
     metadata:
       namespace: argocd
       name: helm-secrets
-      labels:
-        app.kubernetes.io/part-of: argocd
     spec:
       init:
         command: 
@@ -479,8 +492,6 @@ data:
     metadata:
       namespace: argocd
       name: helm-secrets
-      labels:
-        app.kubernetes.io/part-of: argocd
     spec:
       init:
         command: 
@@ -722,8 +733,6 @@ data:
     metadata:
       namespace: argocd
       name: vault
-      labels:
-        app.kubernetes.io/part-of: argocd
     spec:
       init:
         command: 

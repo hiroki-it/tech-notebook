@@ -881,15 +881,15 @@ Kubernetesで作成できるストレージは、作成場所で種類を分け�
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-Node上のストレージをボリュームとして使用する。
+Node上のストレージ上にVolumeを作成する。
 
-Node上のPod間でボリュームを共有できる。
+Node上のPod間でVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。
 
 PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimを指定する必要がある。
 
 アプリケーションのディレクトリ名を変更した場合は、PersistentVolumeを再作成しないと、アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある。
 
-Dockerのボリュームとは独立した機能であることに注意する。
+DockerのVolumeとは独立した機能であることに注意する。
 
 > ↪️ 参考：
 >
@@ -961,7 +961,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 #### ▼ HostPath (本番環境で非推奨)
 
-Nodeのストレージ上にボリュームを作成し、これをコンテナにバインドマウントする。
+Nodeのストレージ上にVolumeを作成し、これをコンテナにバインドマウントする。
 
 機能としては、Volumeの一種であるHostPathと同じである。
 
@@ -974,7 +974,7 @@ Nodeのストレージ上にボリュームを作成し、これをコンテナ�
 
 #### ▼ Local (本番環境で推奨)
 
-Node上にボリュームを作成し、これをコンテナにバインドマウントする。
+Node上にVolumeを作成し、これをコンテナにバインドマウントする。
 
 マルチNodeに対応している (明言されているわけではく、HostPathとの明確な違いがよくわからない) 。
 
@@ -1001,7 +1001,7 @@ StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サ�
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのボリュームとして使用する。
+既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのVolumeとして使用する。
 
 Podの`.spec.volumes`キーで指定する。
 
@@ -1035,9 +1035,11 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ▼ HostPath (本番環境で非推奨)
 
-Node上の既存のストレージ上にボリュームを作成し、コンテナにバインドマウントする。
+Node上の既存のストレージ上にVolumeを作成し、コンテナにバインドマウントする。
 
-バインドマウントは、NodeとPod内のコンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
+バインドマウントはNodeとPod内のコンテナ間で実行され、同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。
+
+また、Podが削除されてもこのVolumeは削除されない。
 
 HostPathは非推奨である。
 
@@ -1087,17 +1089,24 @@ $ docker inspect <コンテナID>
 
 #### ▼ EmptyDir
 
-Podの既存のストレージ上にボリュームを作成し、コンテナにボリュームマウントする。
+Podの既存のストレージ上にVolumeを作成し、コンテナにボリュームマウントする。
 
-そのため、Podが削除されると、このボリュームも同時に削除される。
+同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。
 
-Node上のPod間でボリュームを共有できない。
+また、Podが削除されるとこのVolumeも同時に削除されてしまう。
 
-> ↪️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+> ↪️ 参考：
+>
+> - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+> - https://cstoku.dev/posts/2018/k8sdojo-05/
 
 #### ▼ 外部サービスのVolume
 
 外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。
+
+同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。
+
+また、Podが削除されてもこのVolumeは削除されない。
 
 > ↪️ 参考：
 >
@@ -1248,7 +1257,7 @@ $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 
 #### ▼ StorageClassとは
 
-Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これのボリュームをPersistentVolumeClaimに提供する。
+Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これのVolumeをPersistentVolumeClaimに提供する。
 
 そのため、PersistentVolumeも合わせて作成する必要がある。
 

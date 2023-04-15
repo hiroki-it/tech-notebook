@@ -332,7 +332,9 @@ spec:
     - name: argocd-server
       image: quay.io/argoproj/argocd:latest
       args:
-        - /usr/local/bin/argocd-server
+        - argocd-server
+        - --port=8080
+        - --metrics-port=8083
         # HTTPプロトコルで受信する
         - --insecure
       # クライアント、Prometheus、からのリクエストを受信する
@@ -357,24 +359,43 @@ spec:
               key: *****
               name: argocd-redis
               optional: true
+      volumeMounts:
+        - mountPath: /app/config/ssh
+          name: ssh-known-hosts
+        - mountPath: /app/config/tls
+          name: tls-certs
+        - mountPath: /app/config/server/tls
+          name: argocd-repo-server-tls
+        - mountPath: /app/config/dex/tls
+          name: argocd-dex-server-tls
+        - mountPath: /home/argocd
+          name: plugins-home
+        - mountPath: /shared/app/custom
+          name: styles
+        - mountPath: /tmp
+          name: tmp
 
       ...
 
   # 各種ConfigMapやSecretを読み込む
   volumes:
-    - configMap:
+    - name: plugins-home
+      emptyDir: {}
+    - name: tmp
+      emptyDir: {}
+    - name: ssh-known-hosts
+      configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-      name: ssh-known-hosts
-    - configMap:
+    - name: tls-certs
+      configMap:
         defaultMode: 420
         name: argocd-tls-certs-cm
-      name: tls-certs
-    - configMap:
+    - name: styles
+      configMap:
         defaultMode: 420
         name: argocd-styles-cm
         optional: true
-      name: styles
     # repo-serverにHTTPSリクエストを送信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
@@ -494,8 +515,8 @@ spec:
 
 
   initContainers:
-    # ConfigManagementPlugin上のコマンドを実行するサイドカー
-    - name: cmp-provider
+    # ConfigManagementPlugin用のサイドカーにargocd-cmp-serverバイナリをコピーするInitContainer
+    - name: copyutil
       image: quay.io/argoproj/argocd:latest
       command:
         - cp
@@ -516,6 +537,9 @@ spec:
           apk --update add wget
           wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
     - name: ksops-installer
       image: alpine:latest
       command:
@@ -525,6 +549,9 @@ spec:
         - |
           mv ksops /custom-tools/
           mv $GOPATH/bin/kustomize /custom-tools/
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
     - name: helm-plugins-installer
       image: alpine:latest
       command:
@@ -536,21 +563,34 @@ spec:
           wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/v4.4.2/helm-secrets.tar.gz | tar -C /helm-plugins -xzf-
           cp /helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-working-dir/plugins
           chmod +x /helm-working-dir/plugins
+      volumeMounts:
+        - mountPath: /helm-working-dir/plugins
+          name: custom-tools
 
   # 各種Secretを読み込む
   volumes:
-    - configMap:
+    - emptyDir: {}
+      name: custom-tools
+    - name: helm-working-dir
+      emptyDir: {}
+    - name: plugins
+      emptyDir: {}
+    - name: var-files
+      emptyDir: {}
+    - name: tmp
+      emptyDir: {}
+    - name: ssh-known-hosts
+      configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-      name: ssh-known-hosts
-    - configMap:
+    - name: tls-certs
+      configMap:
         defaultMode: 420
         name: argocd-tls-certs-cm
-      name: tls-certs
-    - configMap:
+    - name: gpg-keys
+      configMap:
         defaultMode: 420
         name: argocd-gpg-keys-cm
-      name: gpg-keys
     # 他のコンポーネントからHTTPSリクエストを受信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
@@ -756,7 +796,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 > ↪️ 参考：
 >
-> - https://argo-cd.readthedocs.io/en/latest/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
 > - https://github.com/argoproj/argo-cd/discussions/7908
 > - https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49
 
