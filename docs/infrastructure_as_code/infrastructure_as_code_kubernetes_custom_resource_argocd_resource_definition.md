@@ -359,9 +359,13 @@ spec:
               key: *****
               name: argocd-redis
               optional: true
+      # Volumeの各種パスをマウントする
+      # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
       volumeMounts:
+        # SSH公開鍵認証既知ホストファイルをマウントする
         - mountPath: /app/config/ssh
           name: ssh-known-hosts
+        # リポジトリに接続するためのSSL証明書をマウントする
         - mountPath: /app/config/tls
           name: tls-certs
         - mountPath: /app/config/server/tls
@@ -480,8 +484,10 @@ spec:
               key: *****
               name: argocd-redis
               optional: true
+      # Volumeの各種パスをマウントする
+      # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
       volumeMounts:
-        # InitContainerでインストールしたバイナリファイルを含むVolumeを指定する
+        # InitContainerでインストールしたバイナリファイルをマウントする
         - mountPath: /usr/local/bin/sops
           name: custom-tools
           subPath: sops
@@ -493,9 +499,10 @@ spec:
           subPath: ksops
         - mountPath: /helm-working-dir/plugins
           name: custom-tools
-        # SSL証明書を指定する
+        # SSH公開鍵認証既知ホストファイルをマウントする
         - mountPath: /app/config/ssh
           name: ssh-known-hosts
+        # リポジトリに接続するためのSSL証明書をマウントする
         - mountPath: /app/config/tls
           name: tls-certs
         - mountPath: /app/config/gpg/source
@@ -504,10 +511,10 @@ spec:
           name: gpg-keyring
         - mountPath: /app/config/reposerver/tls
           name: argocd-repo-server-tls
-        # ConfigManagementPluginのhelmコマンドを実行するディレクトリを指定する
+        # ConfigManagementPluginのhelmコマンドを実行するディレクトリをマウントする
         - mountPath: /helm-working-dir
           name: helm-working-dir
-        # サイドカーのVolumeを介してConfigManagementPluginを指定する
+        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをマウントする
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
         - mountPath: /tmp
@@ -748,6 +755,8 @@ spec:
               key: ****
               name: argocd-redis
               optional: true
+      # Volumeの各種パスをマウントする
+      # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
       volumeMounts:
         - mountPath: /app/config/controller/tls
           name: argocd-repo-server-tls
