@@ -2186,7 +2186,7 @@ spec:
 
 #### ▼ envFrom
 
-`.spec.volumes.secret`キー (ファイルとしてコンテナにマウントする) とは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
+`.spec.volumes.secret`キーとは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
 
 **＊実装例＊**
 
@@ -3205,7 +3205,7 @@ Pod内で使用するボリュームを設定する。
 
 #### ▼ configMap
 
-ConfigMapをコンテナのディレクトリにファイルとしてマウントする。
+ConfigMapの`.data`キー配下のファイルをマウントする。
 
 Secretは、別の`.spec.volumes.secret`キーで設定することに注意する。
 
@@ -3222,12 +3222,15 @@ spec:
       image: fluent/fluent-bit:1.0.0
       volumeMounts:
         - name: foo-fluent-bit-conf-volume
-          mountPath: /fluent-bit/etc/ # ConfigMapをファイルとしてマウントするディレクトリ
+          # ConfigMapの持つファイル (ここではfluent-bit.confファイル) をコンテナにマウントする
+          mountPath: /fluent-bit/etc/
   volumes:
     - name: foo-fluent-bit-conf-volume
       configMap:
-        name: foo-fluent-bit-conf-config-map # ファイルとしてコンテナにマウントするConfigMap
-        defaultMode: 420 # ファイルの実行権限
+        # ファイルを持つConfigMap
+        name: foo-fluent-bit-conf-config-map
+        # ファイルの実行権限
+        defaultMode: 420
 ```
 
 ```yaml
@@ -3249,6 +3252,8 @@ data:
         log_stream_prefix container/fluent-bit/
         auto_create_group true
 ```
+
+> ↪️ 参考：https://amateur-engineer-blog.com/configmap-file-mount/
 
 #### ▼ emptyDir
 
@@ -3340,7 +3345,8 @@ spec:
     - name: foo-gin-volume
       hostPath:
         path: /data/src/foo
-        type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
+        # コンテナ内にディレクトリがなければ作成する
+        type: DirectoryOrCreate
 ```
 
 > ↪️ 参考：
@@ -3427,7 +3433,7 @@ spec:
 
 #### ▼ secret
 
-`.spec.containers[].envFrom`キー (環境変数としてコンテナに出力する) とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
+`.spec.containers[].envFrom`キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。
 
 ConfigMapは、別の`.spec.volumes.configMap`キーで設定することに注意する。
 
@@ -3443,18 +3449,24 @@ spec:
     - name: foo-gin
       volumeMounts:
         - name: foo-secret-volume
-          mountPath: /etc/secrets # Secretをファイルとしてマウントするディレクトリ
+          # Secretの.dataキー配下のファイルをコンテナにマウントする
+          mountPath: /etc/secrets
         - name: foo-config-map-volume
-          mountPath: /etc/config-maps # ConfigMapをファイルとしてマウントするディレクトリ
+          # ConfigMapをファイルとしてマウントするディレクトリ
+          mountPath: /etc/config-maps
   volumes:
     - name: foo-secret-volume
       secret:
-        secretName: foo-secret # ファイルとしてコンテナにマウントするSecret
-        defaultMode: 420 # ファイルの実行権限
+        # ファイルを持つSecret
+        secretName: foo-secret
+        # ファイルの実行権限
+        defaultMode: 420
     - name: foo-config-map-volume
       configMap:
-        name: foo-config-map # ファイルとしてコンテナにマウントするConfigMap
-        defaultMode: 420 # ファイルの実行権限
+        # ファイルを持つConfigMap
+        name: foo-config-map
+        # ファイルの実行権限
+        defaultMode: 420
 ```
 
 > ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
@@ -3495,10 +3507,12 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  minAvailable: 3 # 新しいNodeで、3個のPodのスケジューリングが完了するまで待機する。
+  # 新しいNodeで、3個のPodのスケジューリングが完了するまで待機する。
+  minAvailable: 3
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod # 対象のPod
+      # 対象のPod
+      app.kubernetes.io/app: foo-pod
 ```
 
 > ↪️ 参考：
@@ -3681,8 +3695,10 @@ metadata:
   name: foo-role-binding
 subjects:
   - apiGroup: ""
-    kind: ServiceAccount # ServiceAccountに紐付ける。
-    name: foo-service-account # ユーザー名 (system:useraccounts:foo-service-account) でもよい。
+    # ServiceAccountに紐付ける。
+    kind: ServiceAccount
+    # ユーザー名 (system:useraccounts:foo-service-account) でもよい。
+    name: foo-service-account
 ```
 
 ```yaml
@@ -3692,7 +3708,8 @@ metadata:
   name: foo-cluster-role-binding
 subjects:
   - apiGroup: rbac.authorization.k8s.io
-    kind: User # UserAccountに紐付ける。
+    # UserAccountに紐付ける。
+    kind: User
     name: foo-user-account
 ```
 
@@ -3725,7 +3742,8 @@ metadata:
   name: foo-secret
 type: Opaque
 data:
-  username: ***** # base64方式でエンコードされた値
+  # base64方式でエンコードされた値
+  username: *****
   password: *****
 ```
 
@@ -3801,7 +3819,8 @@ kind: Secret
 metadata:
   name: foo-secret
 stringData:
-  enableFoo: "true" # ダブルクオーテーションで囲う。
+  # ダブルクオーテーションで囲う。
+  enableFoo: "true"
   number: "1"
 ```
 

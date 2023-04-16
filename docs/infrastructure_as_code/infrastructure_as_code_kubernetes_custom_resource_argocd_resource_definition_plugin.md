@@ -136,7 +136,7 @@ spec:
         # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
-        # ConfigManagementPluginのマニフェストをコンテナにコンテナにマウントする
+        # ConfigManagementPluginのマニフェストをコンテナにマウントする
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: plugin.yaml
           name: foo-plugin
@@ -172,11 +172,11 @@ spec:
 > ↪️ 参考：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml#L17305-L17567
+> - https://argocd-operator.readthedocs.io/en/latest/usage/config_management_2.0/
 > - https://github.com/argoproj/argo-cd/blob/master/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
-> - https://github.com/argoproj/argo-cd/discussions/8216#discussion-3808729
 
 #### ▼ ConfigManagementPluginでプラグインの処理を定義
 
@@ -350,7 +350,7 @@ data:
         args:
           - |
             set -euo pipefail
-            helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV" template"
+            helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV template
 ```
 
 > ↪️ 参考：

@@ -61,6 +61,8 @@ $ kubectl delete crd <カスタムリソース定義名>
 
 `requirements.yaml`ファイルに定義された依存対象のサブチャートを、`chart`ディレクトリ内にダウンロードする。
 
+また、`Chart.lock`ファイルを作成する。
+
 ```bash
 $ helm dependency build
 
@@ -70,7 +72,10 @@ Update Complete. ⎈Happy Helming!⎈
 Saving 1 charts
 ```
 
-> ↪️ 参考：https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
+> ↪️ 参考：
+>
+> - https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
+> - https://selfnote.work/20211129/programming/learning-helm-6/#Dependencies
 
 <br>
 
