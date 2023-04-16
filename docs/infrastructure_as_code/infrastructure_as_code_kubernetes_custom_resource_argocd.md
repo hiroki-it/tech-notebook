@@ -149,9 +149,7 @@ ArgoCDのカスタムリソース (例：Application、AppProject、など) と�
 
 ### GitOpsエンジン
 
-ArgoCDや、その他のGitOpsのためのCDツール (例：Flux) は、GitOpsの基本的処理をgitops-engineパッケージから取得する。
-
-ArgoCDは、gitops-engineパッケージが公開するAPIをコールし、GitOpsの基本的な処理を実行する。
+ArgoCDや、その他のGitOpsのためのCDツール (例：Flux) は、gitops-engineパッケージをコールし、GitOpsの基本的な処理を実行する。
 
 ```yaml
 gitops-engine
@@ -170,6 +168,7 @@ gitops-engine
 >
 > - https://github.com/argoproj/gitops-engine/blob/master/specs/design-top-down.md#design-details
 > - https://github.com/argoproj/gitops-engine/tree/master/pkg
+> - https://github.com/argoproj/argo-cd/tree/master/pkg/apiclient
 
 <br>
 

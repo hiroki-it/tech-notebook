@@ -71,7 +71,7 @@ spec:
       image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
-      # Podにマウントする。
+      # Secretは使用せずにPod内コンテナにファイルとしてマウントする。
       volumeMounts:
         - name: foo-secrets-store-csi-volume
           mountPath: /etc/secrets

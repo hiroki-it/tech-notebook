@@ -25,9 +25,9 @@ SecretsストアCSIドライバーは、CSIドライバー、CSIボリューム�
 
 #### ▼ CSIドライバーとは
 
-CSIドライバーは、SecretProviderClassで定義されたプロバイダーのAPIと通信し、プロバイダーのSecretのデータを参照する。
+CSIドライバーは、SecretProviderClassで定義されたプロバイダーのAPIと通信し、プロバイダーのSecretストアから変数を取得する。
 
-その後、Secretを介さずにPodに直接的にマウントする。
+その後、Secretは使用せずにPod内コンテナのファイルとしてマウントする。
 
 ExternalSecretsOperatorと比較して、Secretを作成しない点で脆弱性が高い一方で、Kubernetesとプロバイダーが密結合になってしまう。
 
