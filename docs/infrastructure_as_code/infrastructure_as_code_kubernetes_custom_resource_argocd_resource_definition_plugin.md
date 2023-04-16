@@ -38,17 +38,6 @@ spec:
   ...
 
   initContainers:
-    # ConfigManagementPlugin用のサイドカーにargocd-cmp-serverバイナリをコピーするInitContainer
-    - name: copyutil
-      image: quay.io/argoproj/argocd:latest
-      command:
-        - cp
-        - -n
-        - /usr/local/bin/argocd
-        - /var/run/argocd/argocd-cmp-server
-      volumeMounts:
-        - mountPath: /var/run/argocd
-          name: var-files
     # お好きなツールをインストールするInitContainer
     - name: sops-installer
       image: alpine:latest
@@ -102,6 +91,8 @@ spec:
 
 argo-reposerverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
 
+このとき、事前準備として`argocd`コマンドをコピーするためのInitContainerが必要である。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -122,7 +113,7 @@ spec:
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
     - name: cmp-server
-      image: alpine:lastest
+      image: busybox:lastest
       command:
         # エントリポイントは固定である
         - /var/run/argocd/argocd-cmp-server
@@ -131,17 +122,20 @@ spec:
         # サイドカーのコンテナプロセスのユーザーIDは999とする。
         runAsUser: 999
       volumeMounts:
-        - mountPath: /var/run/argocd
-          name: var-files
+        - name: var-files
+          mountPath: /var/run/argocd
         # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
-        - mountPath: /home/argocd/cmp-server/plugins
-          name: plugins
+        - name: plugins
+          mountPath: /home/argocd/cmp-server/plugins
+        - name: cmp-tmp
+          mountPath: /tmp
         # ConfigManagementPluginのマニフェストをコンテナにマウントする
-        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
-          subPath: plugin.yaml
-          name: foo-plugin
-        - mountPath: /tmp
-          name: tmp-dir
+        - name: foo-plugin
+          mountPath: /home/argocd/cmp-server/config/foo-plugin.yaml
+          subPath: foo-plugin.yaml
+        - name: bar-plugin
+          mountPath: /home/argocd/cmp-server/config/bar-plugin.yaml
+          subPath: bar-plugin.yaml
 
     ...
 
@@ -163,6 +157,9 @@ spec:
     - name: foo-plugin
       configMap:
         name: foo-plugin
+    - name: bar-plugin
+      configMap:
+        name: bar-plugin
     - name: plugins
       emptyDir: {}
     - name: var-files

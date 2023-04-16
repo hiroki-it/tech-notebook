@@ -907,6 +907,7 @@ foo:
 ```
 
 ```yaml
+foo:
 {{- if hasKey .Values.foo "baz" }}
   baz:
     {{- range baz }}

@@ -3205,11 +3205,15 @@ Pod内で使用するボリュームを設定する。
 
 #### ▼ configMap
 
-ConfigMapの`.data`キー配下のファイルをマウントする。
+ConfigMapの`.data`キー配下のキーをファイルとしてマウントする。
 
-Secretは、別の`.spec.volumes.secret`キーで設定することに注意する。
+Secretをマウントする場合は、`.spec.volumes.secret`キーで設定することに注意する。
 
 **＊実装例＊**
+
+ConfigMapの持つキー (ここでは`fluent-bit.conf`キー) をコンテナにファイルとしてマウントする
+
+そのため、コンテナには`fluent-bit.conf`ファイルが配置されることになる。
 
 ```yaml
 apiVersion: v1
@@ -3222,7 +3226,7 @@ spec:
       image: fluent/fluent-bit:1.0.0
       volumeMounts:
         - name: foo-fluent-bit-conf-volume
-          # ConfigMapの持つファイル (ここではfluent-bit.confファイル) をコンテナにマウントする
+          # ConfigMapの持つキー (ここではfluent-bit.confキー) をコンテナにファイルとしてマウントする
           mountPath: /fluent-bit/etc/
   volumes:
     - name: foo-fluent-bit-conf-volume
@@ -3433,11 +3437,17 @@ spec:
 
 #### ▼ secret
 
+Secretの`.data`キー配下のキーをファイルとしてマウントする。
+
 `.spec.containers[].envFrom`キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。
 
-ConfigMapは、別の`.spec.volumes.configMap`キーで設定することに注意する。
+ConfigMapをマウントする場合は、`.spec.volumes.configMap`キーで設定することに注意する。
 
 **＊実装例＊**
+
+Secretの持つキー (ここでは`credentials.json`キー) をコンテナにファイルとしてマウントする
+
+そのため、コンテナには`credentials.json`ファイルが配置されることになる。
 
 ```yaml
 apiVersion: v1
@@ -3446,30 +3456,40 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
+    - name: foo-fluent-bit
+      image: fluent/fluent-bit:1.0.0
       volumeMounts:
-        - name: foo-secret-volume
-          # Secretの.dataキー配下のファイルをコンテナにマウントする
-          mountPath: /etc/secrets
-        - name: foo-config-map-volume
-          # ConfigMapをファイルとしてマウントするディレクトリ
-          mountPath: /etc/config-maps
+        - name: foo-fluent-bit-credentials-volume
+          # Secretの持つキー (ここではcredentials.jsonキー) をコンテナにファイルとしてマウントする
+          mountPath: /credentials
+        - name: foo-fluent-bit-conf-volume
+          mountPath: /fluent-bit/etc/
   volumes:
-    - name: foo-secret-volume
+    - name: foo-fluent-bit-secret-volume
       secret:
         # ファイルを持つSecret
-        secretName: foo-secret
+        secretName: foo-fluent-bit-credentials
         # ファイルの実行権限
         defaultMode: 420
-    - name: foo-config-map-volume
+    - name: foo-fluent-bit-conf-volume
       configMap:
-        # ファイルを持つConfigMap
-        name: foo-config-map
-        # ファイルの実行権限
+        name: foo-fluent-bit-conf-config-map
         defaultMode: 420
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-fluent-bit-credentials
+data:
+  credentials.json: *****
+```
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
+> - https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume
 
 <br>
 
