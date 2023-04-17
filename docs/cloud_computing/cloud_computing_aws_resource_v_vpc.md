@@ -308,6 +308,8 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 ### VPCピアリング接続
 
+異なるVPCのネットワークを接続する。
+
 ![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続.png)
 
 #### ▼ VPCピアリング接続とは
@@ -316,12 +318,12 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 #### ▼ VPCピアリング接続の可否
 
+VPCに複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じCIDRブロック ブロックがある場合は、VPC ピアリング接続はできない。
+
 | アカウント  | VPCのあるリージョン | VPC内のCIDRブロック   | 接続の可否 |
 | ----------- | ------------------- | --------------------- | ---------- |
 | 同じ/異なる | 同じ/異なる         | 全て異なる            | **〇**     |
 |             |                     | 同じものが1つでもある | ✕          |
-
-VPC に複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じCIDRブロック ブロックがある場合は、VPC ピアリング接続はできない。
 
 ![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-1.png)
 
@@ -335,7 +337,9 @@ VPC に複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じ
 
 #### ▼ VPCエンドポイントサービスとは
 
-VPCエンドポイントとは異なる能力なので注意。Interface型のVPCエンドポイント (プライベートリンク) をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。
+VPCエンドポイントとは異なる能力なので注意する。
+
+Interface型のVPCエンドポイント (プライベートリンク) をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。
 
 エンドポイントのサービス名は、『`com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****`』になる。
 
@@ -352,6 +356,19 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 『多対多』の関係で、『異なるVPC間』や『オンプレミス-VPC間』の双方向通信を可能にする。クラウドルーターとして働く。
 
 ![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
+
+<br>
+
+### VPC Lattice
+
+異なるVPCのネットワークをVPC Latticeサービスネットワークを介して接続する。
+
+![vpc-lattice.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
+
+> ↪️ 参考：
+>
+> - https://yuj1osm.hatenablog.com/entry/2023/04/16/170124
+> - https://qiita.com/k-sasaki-hisys-biz/items/28ba5762aa9544694021
 
 <br>
 
