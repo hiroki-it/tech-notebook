@@ -54,13 +54,11 @@ $ gcloud auth application-default login
 
 GCP SDKによるGCPリソースへのアクセスを認証するために使用する。
 
-
 ```bash
 $ gcloud auth login
 ```
 
 > ↪️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
-
 
 #### ▼ login --update-adc
 
@@ -200,7 +198,6 @@ GKE Node Poolの情報を取得する。
 
 アップグレードの手法を確認することもできる。
 
-
 **＊実行例＊**
 
 ```bash
@@ -218,7 +215,6 @@ upgradeSettings:
 ```
 
 > ↪️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
-
 
 #### ▼ update
 

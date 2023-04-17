@@ -105,7 +105,7 @@ spec: ...
 
 Kustomizeの実行時に、コマンドに渡すパラメーターを設定する。
 
-特に、Kustomizeのプラグイン (例：ksopsなど) を使用する場合、`--enable-alpha-plugins`オプションと`--enable-exec`オプションを有効化する。
+特に、Kustomizeのプラグイン (例：ksopsなど) を使用する場合、`--enable-alpha-plugins`オプションと`--enable-exec`オプションを有効化する必要がある。
 
 ```yaml
 apiVersion: v1

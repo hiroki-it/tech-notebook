@@ -559,7 +559,7 @@ spec:
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
-    - name: helm-plugins-installer
+    - name: helm-secrets-installer
       image: alpine:latest
       command:
         - /bin/sh

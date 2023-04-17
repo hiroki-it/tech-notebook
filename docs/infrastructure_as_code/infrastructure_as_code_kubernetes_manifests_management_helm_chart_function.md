@@ -368,6 +368,35 @@ data:
 
 > ↪️ 参考：https://helm-playground.com/cheatsheet.html#loops
 
+**＊実装例＊**
+
+マップ型の一番上層のキー名を反復的に取得する場合に役立つ。
+
+```yaml
+config:
+  foo:
+    foo-sub: FOO-SUB
+  bar:
+    bar-sub: BAR-SUB
+  baz:
+    baz-sub: BAZ-SUB
+```
+
+```yaml
+{{- range $key, $value := .Values.config }}
+{{- if or (eq $key "foo") (eq $key "baz") }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  # foo-map、baz-map、を作成できる。
+  # bar-mapは作成されない。
+  name: {{ $key }}-map
+data:
+  ...
+{{- end }}
+{{- end }}
+```
+
 #### ▼ 配列型を扱う場合
 
 配列型を入力値として使用できる。
@@ -925,6 +954,18 @@ foo:
 <br>
 
 ## 12. 条件分岐の関数
+
+### 単一条件
+
+`eq`演算子を使用する。
+
+```yaml
+{{- if eq .Values.enableFoo true }}
+  ...
+{{- end }}
+```
+
+<br>
 
 ### AND条件
 

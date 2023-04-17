@@ -39,6 +39,7 @@ spec:
 
   initContainers:
     # お好きなツールをインストールするInitContainer
+    # ツールごとにInitContainerを作成する
     - name: sops-installer
       image: alpine:latest
       command:
@@ -52,6 +53,8 @@ spec:
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
+    # KSOPS
+    # https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
     - name: ksops-installer
       image: alpine:latest
       command:
@@ -64,7 +67,8 @@ spec:
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
-    - name: helm-plugins-installer
+    # helm-secretsプラグイン
+    - name: helm-secrets-installer
       image: alpine:latest
       command:
         - /bin/sh
@@ -77,6 +81,20 @@ spec:
           chmod +x /helm-working-dir/plugins
       volumeMounts:
         - mountPath: /helm-working-dir/plugins
+          name: custom-tools
+    # Helmfile
+    - name: helmfile-installer
+      image: alpine:3.17.3
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q -O /custom-tools/helmfile https://github.com/helmfile/helmfile/releases/download/v0.152.0/helmfile_0.152.0_linux_amd64.tar.gz
+          chmod +x /custom-tools/helmfile
+      volumeMounts:
+        - mountPath: /custom-tools
           name: custom-tools
 ```
 
@@ -112,7 +130,9 @@ spec:
         # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
-    - name: cmp-server
+    # ConfigManagementPluginに定義した処理を実行するサイドカー
+    # argocd-cmp-serverコマンドは "plugin.yaml" の名前しか指定できないため、ConfigManagementPluginごとにサイドカーを作成する
+    - name: foo-plugin-cmp-server
       image: busybox:lastest
       command:
         # エントリポイントは固定である
@@ -129,12 +149,26 @@ spec:
           mountPath: /home/argocd/cmp-server/plugins
         - name: tmp
           mountPath: /tmp
-        # ConfigManagementPluginのマニフェストをコンテナにマウントする
+        # ConfigManagementPluginのマニフェスト (foo-plugin.yaml) を "plugin.yaml" の名前でコンテナにマウントする
         - name: argocd-cmp-cm
-          mountPath: /home/argocd/cmp-server/config/foo-plugin.yaml
+          mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: foo-plugin.yaml
+    - name: bar-plugin-cmp-server
+      image: busybox:lastest
+      command:
+        - /var/run/argocd/argocd-cmp-server
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+      volumeMounts:
+        - name: var-files
+          mountPath: /var/run/argocd
+        - name: plugins
+          mountPath: /home/argocd/cmp-server/plugins
+        - name: tmp
+          mountPath: /tmp
         - name: argocd-cmp-cm
-          mountPath: /home/argocd/cmp-server/config/bar-plugin.yaml
+          mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: bar-plugin.yaml
 
     ...
@@ -163,6 +197,30 @@ spec:
       emptyDir: {}
     - name: tmp
       emptyDir: {}
+```
+
+`argocd-cmp-server`コマンドは、実行に成功するとVolumeにUnixドメインソケットファイルを作成する。
+
+```bash
+$ kubectl logs argocd-repo-server -c foo-plugin-cmp-server
+
+time="2023-04-17T12:35:39Z" level=info msg="argocd-cmp-server v2.6.7+5bcd846 serving on /home/argocd/cmp-server/plugins/foo-plugin.sock"
+```
+
+なお、`plugin.yaml`ファイルと別のディレクトリに配置したい場合は、`argocd-cmp-server`コマンドの`--config-dir-path`オプションを使用する (`plugin.yaml`ファイルは、これ以外の名前を設定できない)。
+
+```bash
+[argocd@argocd-repo-server:~] $ argocd-cmp-server -h
+
+Usage:
+  argocd-cmp-server [flags]
+
+Flags:
+      --config-dir-path string   Config management plugin configuration file location, Default is '/home/argocd/cmp-server/config/' (default "/home/argocd/cmp-server/config")
+  -h, --help                     help for argocd-cmp-server
+      --logformat string         Set the logging format. One of: text|json (default "text")
+      --loglevel string          Set the logging level. One of: debug|info|warn|error (default "info")
+      --otlp-address string      OpenTelemetry collector address to send traces to
 ```
 
 > ↪️ 参考：
