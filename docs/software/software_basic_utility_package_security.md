@@ -80,7 +80,7 @@ sops:
 
 > ↪️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
-#### ▼ `.sops.yaml`ファイル
+#### ▼ `.sops.yaml`ファイルを使用する場合
 
 `sops`コマンドのパラメーターを定義する。
 
@@ -106,6 +106,8 @@ creation_rules:
 # ファイル名が path_regexキーのルールに該当するため、AWS KMSを使用して暗号化される。
 $ sops -e ./values/foo-values.yaml
 ```
+
+#### ▼ `.sops.yaml`ファイルを使用しない場合
 
 `.sops.yaml`ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
 

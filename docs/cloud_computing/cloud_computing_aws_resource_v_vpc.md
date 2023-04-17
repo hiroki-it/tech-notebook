@@ -369,21 +369,22 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 >
 > - https://yuj1osm.hatenablog.com/entry/2023/04/16/170124
 > - https://qiita.com/k-sasaki-hisys-biz/items/28ba5762aa9544694021
+> - https://qiita.com/minorun365/items/7f73aa1fe1ef2ca0c2c7#%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
 
 <br>
 
 ### 各サービスの比較
 
-| 能力                                          | VPCピアリング接続 |      VPCエンドポイントサービス      |    Transit gateway     |
-| --------------------------------------------- | :---------------: | :---------------------------------: | :--------------------: |
-| 通信できるVPC数                               |      一対一       |           一対一、一対多            | 一対一、一対多、多対多 |
-| 通信できるIPアドレスの種類                    |    IPv4、IPv6     |                IPv4                 |       IPv4、IPv6       |
-| 通信できるリソース                            |     制限なし      | NLBでルーティングできるリソースのみ |        制限なし        |
-| CIDRブロックがVPC間で被ることによる通信の可否 |        ×︎         |                 ⭕                  |           ×︎           |
-| クロスアカウント                              |        ⭕         |                 ⭕                  |           ⭕           |
-| クロスリージョン                              |        ⭕         |                 ×︎                  |           ⭕           |
-| VPC間                                         |        ⭕         |                 ⭕                  |           ⭕           |
-| VPC-オンプレミス間                            |        ×︎         |                 ×︎                  |           ⭕           |
+| 能力                                          | VPCピアリング接続 |         VPCエンドポイントサービス          |      Transit gateway       |                                                  VPC Lattice                                                   |
+| --------------------------------------------- | :---------------: | :----------------------------------------: | :------------------------: | :------------------------------------------------------------------------------------------------------------: |
+| 通信できるVPC数                               |      一対一       |              一対一<br>一対多              | 一対一<br>一対多<br>多対多 |                                           一対一<br>一対多<br>多対多                                           |
+| 通信できるIPアドレスの種類                    |    IPv4、IPv6     |                    IPv4                    |         IPv4、IPv6         |                                                   IPv4、IPv6                                                   |
+| 通信できるリソース                            |     制限なし      | NLBで`L4`ルーティングできるAWSリソースのみ |          制限なし          | ALBで`L7`ルーティングできるAWSリソースのみ<br>(例：EC2インスタンス、IPアドレス、Lambda、KubernetesのPod、など) |
+| CIDRブロックがVPC間で被ることによる通信の可否 |        ×︎         |                     ⭕                     |             ×︎             |                                                       ⭕                                                       |
+| クロスアカウント                              |        ⭕         |                     ⭕                     |             ⭕             |                                                       ⭕                                                       |
+| クロスリージョン                              |        ⭕         |                     ×︎                     |             ⭕             |                                                       ⭕                                                       |
+| VPC間                                         |        ⭕         |                     ⭕                     |             ⭕             |                                                       ⭕                                                       |
+| VPC-オンプレミス間                            |        ×︎         |                     ×︎                     |             ⭕             |                                                       ×︎                                                       |
 
 <br>
 
@@ -391,9 +392,9 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 VPC内のENIを通過するパケットをキャプチャできる。
 
-```log
-version account-id   interface-id  srcaddr         dstaddr        srcport         dstport       protocol    packets    bytes    start             end              action log-status
-2       <AWSアカウントID> eni-<ENIのID> <送信元IPアドレス> <宛先IPアドレス> <送信元ポート番号> <宛先ポート番号> <プロトコル> <パケット数> <バイト数> <開始タイムスタンプ> <終了タイムスタンプ> ACCEPT OK
+```bash
+version account-id       interface-id  srcaddr           dstaddr         srcport         dstport        protocol   packets    bytes     start            end               action log-status
+2       <AWSアカウントID>  eni-<ENIのID>  <送信元IPアドレス>  <宛先IPアドレス> <送信元ポート番号> <宛先ポート番号> <プロトコル> <パケット数> <バイト数> <開始タイムスタンプ> <終了タイムスタンプ> ACCEPT OK
 ...
 ```
 
