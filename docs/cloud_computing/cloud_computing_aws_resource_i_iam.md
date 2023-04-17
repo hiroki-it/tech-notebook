@@ -383,7 +383,7 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
 }
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
+> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
 
 <br>
 

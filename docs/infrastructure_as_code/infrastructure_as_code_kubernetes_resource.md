@@ -311,6 +311,11 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 - `kubectl describe nodes`コマンドで、PodがスケジューリングされているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。
 - `kubectl describe pods`コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。 (Containersの項目で、`kubectl logs`コマンドと同じ内容も確認できる)
 
+> ↪️ 参考：
+>
+> - https://sysdig.jp/blog/debug-kubernetes-crashloopbackoff/
+> - https://newrelic.com/jp/blog/how-to-relic/monitoring-kubernetes-part-three
+
 #### ▼ Podを安全に削除する方法
 
 Podの削除プロセスが始まると、以下のプロセスも開始する。

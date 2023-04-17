@@ -488,6 +488,8 @@ kube-controller-managerは、kube-controllerを反復的に実行する。
 
 これにより、Kubernetesリソースはリソース定義の宣言通りに定期的に修復される。
 
+注意点として、reconciliationループを実現しているのはkube-controllerではなくkube-controller-managerである。
+
 ![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_reconciliation-loop.png)
 
 > ↪️ 参考：

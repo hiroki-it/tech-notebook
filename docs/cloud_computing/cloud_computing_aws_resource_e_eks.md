@@ -572,14 +572,53 @@ Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオ�
 
 EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする (例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす) といった方法でもよい。
 
-| AMI名                       | 説明                                                                      | 特に相性の良いPod                                                               | 補足                                                                                                                                                              |
-| --------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EKS 最適化 Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。                |                                                                                 | ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html                                                                                  |
-| EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod (計算処理系、機械学習系のアプリケーション) |                                                                                                                                                                   |
-| EKS 最適化 Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。          |                                                                                 |                                                                                                                                                                   |
-| EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。                           |                                                                                 | ↪️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
-
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
+
+#### ▼ EKS 最適化 Amazon Linux
+
+EKSのための標準的なEC2インスタンスを作成できる。最も推奨である。
+
+`aws ssm get-parameter`コマンドを使用すると、公式が提供するマシンイメージのIDを確認できる。
+
+```bash
+$ aws ssm get-parameter \
+    --name /aws/service/eks/optimized-ami/<バージョン>/amazon-linux-2/recommended/image_id \
+    --region ap-northeast-1 \
+    --query "Parameter.Value" \
+    --output text
+```
+
+> ↪️ 参考：
+>
+> - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html
+
+#### ▼ EKS 最適化高速 Amazon Linux
+
+GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。
+
+GPUが必要なアプリケーションの含むPod (計算処理系、機械学習系のアプリケーション) と相性が良い。
+
+#### ▼ EKS 最適化 ARM Amazon Linux
+
+ARMベースのプロセッサーが搭載されたEC2インスタンスを作成できる。
+
+#### ▼ EKS 最適化 Bottlerocket AMI
+
+コンテナに特化したEC2インスタンスを作成できる。
+
+```bash
+$ aws ssm get-parameter \
+    --name /aws/service/bottlerocket/aws-k8s-<バージョン>/x86_64/latest/image_id \
+    --region ap-northeast-1 \
+    --query "Parameter.Value" \
+    --output text
+```
+
+> ↪️ 参考：
+>
+> - https://dev.classmethod.jp/articles/bottlerocket/#toc-1
+> - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html
 
 <br>
 

@@ -127,13 +127,13 @@ spec:
         # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
-        - name: cmp-tmp
+        - name: tmp
           mountPath: /tmp
         # ConfigManagementPluginのマニフェストをコンテナにマウントする
-        - name: foo-plugin
+        - name: argocd-cmp-cm
           mountPath: /home/argocd/cmp-server/config/foo-plugin.yaml
           subPath: foo-plugin.yaml
-        - name: bar-plugin
+        - name: argocd-cmp-cm
           mountPath: /home/argocd/cmp-server/config/bar-plugin.yaml
           subPath: bar-plugin.yaml
 
@@ -154,15 +154,14 @@ spec:
 
   # Podの共有ボリューム
   volumes:
-    - name: foo-plugin
+    - name: argocd-cmp-cm
       configMap:
-        name: foo-plugin
-    - name: bar-plugin
-      configMap:
-        name: bar-plugin
+        name: argocd-cmp-cm
     - name: plugins
       emptyDir: {}
     - name: var-files
+      emptyDir: {}
+    - name: tmp
       emptyDir: {}
 ```
 
@@ -177,6 +176,8 @@ spec:
 
 #### ▼ ConfigManagementPluginでプラグインの処理を定義
 
+ConfigMap配下で、ConfigManagementPluginを`plugin.yaml`ファイルとして管理する。
+
 ConfigManagementPluginで、プラグインの処理を設定する。
 
 ConfigMapの`.data.configManagementPlugins`キーで設定することは非推奨である。
@@ -188,7 +189,7 @@ metadata:
   name: argocd-cmp-cm
   namespace: argocd
 data:
-  plugin.yaml: |
+  foo-plugin.yaml: |
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
@@ -209,6 +210,8 @@ data:
         args:
           - |
             # 必要なマニフェストを定義する。
+  bar-plugin.yaml: |
+    ...
 ```
 
 これらの処理は、ArgoCDのリポジトリのwatch処理と同時に実行されるため、何らかのエラーがあると、watch処理のエラーとして扱われる。
