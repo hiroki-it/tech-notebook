@@ -817,7 +817,7 @@ Outputs
   plot                    Generate data file for GNU Plot
   slack                   Send events to a Slack channel
   splunk                  Send events to Splunk HTTP Event Collector
-  stackdriver             Send events to Google Stackdriver Logging
+  stackdriver             Send events to Google Stackdriver Logging # 現在は、Google CloudLoggingに改名
   stdout                  Prints events to STDOUT
   syslog                  Syslog
   tcp                     TCP Output
