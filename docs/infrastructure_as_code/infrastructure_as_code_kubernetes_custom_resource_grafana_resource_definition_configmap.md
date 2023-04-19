@@ -303,7 +303,13 @@ data:
 
 <br>
 
-## 04. dashboard.json
+## 04. grafana-dashboard-cm
+
+### grafana-dashboard-cmとは
+
+Grafanaの`dashboard.json`ファイルを管理する。
+
+<br>
 
 ### セットアップ
 
@@ -495,52 +501,52 @@ data:
 
 #### ▼ Alertmanager
 
-| コンポーネント    | ダッシュボード名          | 説明 |
-| ----------------- | ------------------------- | ---- |
-| AlertmanagerのPod | `Alertmanager / Overview` |      |
+| ダッシュボード名          | 監視対象          | 説明 |
+| ------------------------- | ----------------- | ---- |
+| `Alertmanager / Overview` | AlertmanagerのPod |      |
 
 #### ▼ CoreDNS
 
-| コンポーネント | ダッシュボード名 | 説明                                                                                               |
-| -------------- | ---------------- | -------------------------------------------------------------------------------------------------- |
-| CoreDNSのPod   | `CoreDNS`        | CoreDNSのPodに対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を取得する。 |
+| ダッシュボード名 | 監視対象     | 説明                                                                                               |
+| ---------------- | ------------ | -------------------------------------------------------------------------------------------------- |
+| `CoreDNS`        | CoreDNSのPod | CoreDNSのPodに対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を取得する。 |
 
 #### ▼ Kubernetesコンポーネント
 
-| コンポーネント          | ダッシュボード名                                         | 説明                                                                                                                                                                                                                                |
-| ----------------------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kube-apiserver          | `Kubernetes / API server`                                | kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率) を取得する。                                                                                                      |
-| Cluster                 | `Kubernetes / Networking / Cluster`                      | Clusterのネットワークのパフォーマンス指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を取得する。                                                                                                                       |
-| kube-controller-manager | `Kubernetes / Controller Manager`                        |                                                                                                                                                                                                                                     |
-| Cluster                 | `Kubernetes / Compute Resources / Cluster`               | Clusterのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                                                                             |
-| Pod                     | `Kubernetes / Compute Resources / Namespace (Pods)`      | Namespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNamespace複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。 |
-| Pod                     | `Kubernetes / Compute Resources / Node (Pods)`           | Node単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNodeの複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。         |
-| Pod                     | `Kubernetes / Compute Resources / Pod`                   | 各Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。個別のPodや特定のPodの状況を確認したい場合に便利である。                                                       |
-| Pod                     | `Kubernetes / Compute Resources / Workload`              | ワークロード (例：Deployment) 単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                                           |
-| Pod                     | `Kubernetes / Compute Resources / Namespace (Workloads)` | ワークロード (例：Deployment) 単位かつNamespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                          |
-| kubelet                 | `Kubernetes / Kubelet`                                   |                                                                                                                                                                                                                                     |
-| Pod                     | `Kubernetes / Networking / Namespace (Pods)`             | Namespace単位で、Podのネットワークに関するメトリクスを取得する。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。                                                                                  |
-|                         | `Kubernetes / Networking / Namespace (Workload)`         | ワークロード (例：Deployment) 単位で、Podのネットワークに関するメトリクスを取得する。                                                                                                                                               |
-|                         | `Kubernetes / Persistent Volumes`                        | Persistent Volumeの使用率に関するメトリクスを取得する。                                                                                                                                                                             |
-|                         | `Kubernetes / Networking / Pod`                          | 各Podのネットワークに関するメトリクスを取得する。Podを個別に確認したい場合に便利である。                                                                                                                                            |
-| kube-proxy              | `Kubernetes / Proxy`                                     |                                                                                                                                                                                                                                     |
-| kube-scheduler          | `Kubernetes / Scheduler`                                 |                                                                                                                                                                                                                                     |
-|                         | `Kubernetes / Networking / Workload`                     |                                                                                                                                                                                                                                     |
+| ダッシュボード名                                         | 監視対象                | 説明                                                                                                                                                                                                                                |
+| -------------------------------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Kubernetes / API server`                                | kube-apiserver          | kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率) を取得する。                                                                                                      |
+| `Kubernetes / Networking / Cluster`                      | 任意のCluster           | Clusterのネットワークのパフォーマンス指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を取得する。                                                                                                                       |
+| `Kubernetes / Controller Manager`                        | kube-controller-manager |                                                                                                                                                                                                                                     |
+| `Kubernetes / Compute Resources / Cluster`               | 任意のCluster           | Clusterのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                                                                             |
+| `Kubernetes / Compute Resources / Namespace (Pods)`      | 任意のPod               | Namespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNamespace複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。 |
+| `Kubernetes / Compute Resources / Node (Pods)`           | 任意のPod               | Node単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNodeの複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。         |
+| `Kubernetes / Compute Resources / Pod`                   | 任意のPod               | 各Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。個別のPodや特定のPodの状況を確認したい場合に便利である。                                                       |
+| `Kubernetes / Compute Resources / Workload`              | 任意のPod               | ワークロード (例：Deployment) 単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                                           |
+| `Kubernetes / Compute Resources / Namespace (Workloads)` | 任意のPod               | ワークロード (例：Deployment) 単位かつNamespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                          |
+| `Kubernetes / Kubelet`                                   | kubelet                 |                                                                                                                                                                                                                                     |
+| `Kubernetes / Networking / Namespace (Pods)`             | 任意のPod               | Namespace単位で、Podのネットワークに関するメトリクスを取得する。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。                                                                                  |
+| `Kubernetes / Networking / Namespace (Workload)`         | 任意のPod               | ワークロード (例：Deployment) 単位で、Podのネットワークに関するメトリクスを取得する。                                                                                                                                               |
+| `Kubernetes / Persistent Volumes`                        | 任意のPod               | Persistent Volumeの使用率に関するメトリクスを取得する。                                                                                                                                                                             |
+| `Kubernetes / Networking / Pod`                          | 任意のPod               | 各Podのネットワークに関するメトリクスを取得する。Podを個別に確認したい場合に便利である。                                                                                                                                            |
+| `Kubernetes / Proxy`                                     | kube-proxy              |                                                                                                                                                                                                                                     |
+| `Kubernetes / Scheduler`                                 | kube-scheduler          |                                                                                                                                                                                                                                     |
+| `Kubernetes / Networking / Workload`                     | kube-scheduler          |                                                                                                                                                                                                                                     |
 
 #### ▼ Node exporter
 
-| コンポーネント     | ダッシュボード名                       | 説明 |
-| ------------------ | -------------------------------------- | ---- |
-| Node exporterのPod | `Node Exporter / USE Method / Cluster` |      |
-|                    | `Node Exporter / USE Method / Node`    |      |
-|                    | `Node Exporter / Nodes`                |      |
+| ダッシュボード名                       | 監視対象           | 説明 |
+| -------------------------------------- | ------------------ | ---- |
+| `Node Exporter / USE Method / Cluster` | Node exporterのPod |      |
+| `Node Exporter / USE Method / Node`    | Node exporterのPod |      |
+| `Node Exporter / Nodes`                | Node exporterのPod |      |
 
 #### ▼ Prometheus
 
-| コンポーネント  | ダッシュボード名            | 説明 |
-| --------------- | --------------------------- | ---- |
-| PrometheusのPod | `Prometheus / Remote Write` |      |
-|                 | `Prometheus / Overview`     |      |
+| ダッシュボード名            | 監視対象        | 説明 |
+| --------------------------- | --------------- | ---- |
+| `Prometheus / Remote Write` | PrometheusのPod |      |
+| `Prometheus / Overview`     | PrometheusのPod |      |
 
 > ↪️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
 
@@ -548,15 +554,14 @@ data:
 
 `istioctl dashboard grafana`コマンドでインストールできるダッシュボード。
 
-| ダッシュボード名                 | 説明                                                                          |
-| -------------------------------- | ----------------------------------------------------------------------------- |
-| `Istio Wasm Extension Dashboard` |                                                                               |
-| `Istio Mesh Dashboard`           | HTTPとTCPのメトリクスを確認したい場合に便利である。                           |
-| `Istio Control Plane Dashboard`  |                                                                               |
-| `Istio Performance Dashboard`    |                                                                               |
-| `Istio Workload Dashboard`       |                                                                               |
-| `Istio Service Dashboard`        | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
-| `Istio Control Plane Dashboard`  |                                                                               |
+| ダッシュボード名                 |                               | 説明                                                                          |
+| -------------------------------- | ----------------------------- | ----------------------------------------------------------------------------- |
+| `Istio Wasm Extension Dashboard` |                               |                                                                               |
+| `Istio Mesh Dashboard`           |                               | HTTPとTCPのメトリクスを確認したい場合に便利である。                           |
+| `Istio Control Plane Dashboard`  | IsitiodのPod                  |                                                                               |
+| `Istio Performance Dashboard`    |                               |                                                                               |
+| `Istio Workload Dashboard`       | Istioの任意のカスタムリソース |                                                                               |
+| `Istio Service Dashboard`        | IstioのVirtualService         | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
 
 > ↪️ 参考：
 >
