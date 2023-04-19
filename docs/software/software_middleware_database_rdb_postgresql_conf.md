@@ -58,15 +58,58 @@ $ export PGPASSWORD=<パスワード>
 
 > ↪️ 参考：https://qiita.com/IysKG213/items/2af29ba1f6da87199de0
 
+#### ▼ オートバキュームの手動実行
+
+```bash
+# 全てのテーブルを指定する
+$ vacuum
+```
+
+```bash
+# 特定のテーブルを指定する
+$ vacuum <テーブル名>
+```
+
+> ↪️ 参考：
+>
+> - https://postgresweb.com/post-5194
+> - https://qiita.com/neustrashimy/items/b3d64b749582b32ad0ff
+
 <br>
 
-### オートバキューム
+## 02. セクション
 
-PostgreSQLは、オートバキュームによってDBを定期的に自動最適化する。
+### autovacuum
+
+オートバキュームを有効化する
+
+```ini
+autovacuum = on
+```
+
+#### ▼ オートバキュームとは
+
+PostgreSQLは、オートバキュームによってDB上の残骸タプルを自動的に削除する。
+
+デッドタプル率 (DBのストレージ全体量に対するタプル量) が`n`%以上になると、PostgreSQLはオートバキュームを実行するように設定できる。
+
+オートバキュームではDBで削除処理が実行されるため、ハードウェアリソースの消費量が高まってしまう。
+
+今回のオートバキュームと次回のそれの間で実行できるトランザクションは`20`億回と決まっているため、ある程度の間隔でオートバキュームを実行する必要がある。
+
+> ↪️ 参考：https://www.postgresql.jp/document/8.0/html/sql-vacuum.html
+
+#### ▼ タプルと残骸タプル
+
+テーブルのレコード (行) のこと。
+
+PostgreSQLでレコードをUPDATE/DELETEすると、操作前のレコードは削除されずに残骸となる。
+
+これを削除するために、オートバキュームが必要である。
+
+> ↪️ 参考：https://stackoverflow.com/questions/19799282/whats-the-difference-between-a-tuple-and-a-row-in-postgres
 
 <br>
-
-## セクション
 
 ### log_directory
 

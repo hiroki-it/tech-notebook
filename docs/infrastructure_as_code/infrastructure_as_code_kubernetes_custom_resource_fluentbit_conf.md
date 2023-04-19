@@ -322,6 +322,8 @@ $ fluent-bit \
 
 そこで、独自のcriプラグインを定義する。
 
+独自criプラグインでは、Containerdのテキスト形式ログにマッチできるような正規表現を設定する。
+
 Containerdのコンテナが作成する非構造化ログを構造化ログに変換する。
 
 #### ▼ セットアップ
@@ -334,6 +336,7 @@ PARSERセクションで、criプラグインを定義する。
 [PARSER]
     Name        cri
     Format      regex
+    # Containerdのテキスト形式ログにマッチできるような正規表現
     Regex       ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<message>.*)$
     Time_Key    time
     Time_Format %Y-%m-%dT%H:%M:%S.%L%z

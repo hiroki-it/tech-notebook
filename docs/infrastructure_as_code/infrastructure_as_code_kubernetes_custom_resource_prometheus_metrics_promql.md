@@ -122,7 +122,7 @@ rate(foo_metrics[5m])
 
 ### データポイントの平均サイズ (KB/秒) の増加率
 
-Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を分析する。
+Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を表す。
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -133,7 +133,7 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
 ### データポイントの合計数 (個/秒) の増加率
 
-Prometheusで収集されたデータポイントの合計数 (個/秒) の増加率を分析する。
+Prometheusで収集されたデータポイントの合計数 (個/秒) の増加率を表す。
 
 ```bash
 rate(prometheus_tsdb_head_samples_appended_total[1h])
@@ -143,7 +143,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 ### データポイントの合計サイズ (KB/秒) の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の増加率を分析する。
+Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の増加率を表す。
 
 計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
@@ -159,7 +159,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 ### データポイントの合計サイズ (KB/日) の推移
 
-Prometheusで収集されたデータポイントの合計サイズ (KB/日) の推移を分析する。
+Prometheusで収集されたデータポイントの合計サイズ (KB/日) の推移を表す。
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -174,7 +174,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 ### ローカルストレージの必要サイズ (KB/日)
 
-データポイントの合計サイズ (KB/日) とローカルストレージの部品ファイルの合計を分析する。
+データポイントの合計サイズ (KB/日) とローカルストレージの部品ファイルの合計を表す。
 
 ローカルストレージの部品ファイル分で、`20`%のサイズが必要になる。
 
@@ -199,7 +199,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 ### リモートストレージの必要サイズ (KB/日)
 
-Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を分析する。
+Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。
 
 リモート書き込みサイズではなく、送信サイズであるため、書き込みに成功していない可能性があることに注意する。
 

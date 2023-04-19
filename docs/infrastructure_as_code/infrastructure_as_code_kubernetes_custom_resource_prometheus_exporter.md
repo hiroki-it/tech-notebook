@@ -433,7 +433,7 @@ mysqld_exporter_build_info{branch="HEAD",goversion="go1.12.7",revision="48667bf7
 
 #### ▼ PostgreSQLのプロセスのステータス
 
-PostgreSQLのプロセスのステータスを分析する。
+PostgreSQLのプロセスのステータスを表す。
 
 `pg_up`は、PostgreSQLのプロセスのステータスを表す。
 
@@ -461,7 +461,7 @@ time() - pg_postmaster_start_time_seconds
 
 #### ▼ DBインスタンス間のデータ同期の遅延
 
-PostgreSQLで、RepmgrによるDBクラスターを採用している場合に、DBインスタンス間のデータ同期の遅延を分析する。
+PostgreSQLで、RepmgrによるDBクラスターを採用している場合に、DBインスタンス間のデータ同期の遅延を表す。
 
 `pg_replication_lag`は、DBインスタンス間のデータ同期にかかる時間を表す。
 
@@ -470,6 +470,16 @@ pg_replication_lag > 10
 ```
 
 > ↪️ 参考：https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
+
+#### ▼ 残骸タプルサイズ
+
+DBにたまっている残骸タプルのデータサイズを表す。
+
+```bash
+pg_stat_user_tables_n_dead_tup{datname="<DB名>"}
+```
+
+> ↪️ 参考：https://www.adyen.com/blog/postgresql-hot-updates-part2
 
 <br>
 
