@@ -348,7 +348,7 @@ metadata:
   labels:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
-  data.json: |
+  dashboard.json: |
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
@@ -395,7 +395,7 @@ metadata:
   labels:
     grafana_dashboard: "1"
 data:
-  data.json: |
+  dashboard.json: |
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
@@ -460,7 +460,7 @@ metadata:
   labels:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
-  data.json: |
+  dashboard.json: |
     # ダッシュボードを定義する。
 ```
 
@@ -486,7 +486,7 @@ metadata:
   labels:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
-  data.json: |
+  dashboard.json: |
     # ダッシュボードを定義する。
 ```
 
