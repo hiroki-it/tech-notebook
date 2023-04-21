@@ -49,7 +49,7 @@ $ kubectl apply -k "<リポジトリのURL>/<kustomize.yamlファイルのある
 
 **＊実行例＊**
 
-例えば、argocd-cdチャートの`5.28.0`を使用する場合、これはArgoCDの`2.6.7`に対応しているため、以下の値で適用する。
+例えば、argocd-cdチャートの`5.28.0`を使用する場合、これはArgoCDの`2.6.7`に対応しているため、以下の値で作成/変更する。
 
 ```bash
 $ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
@@ -57,7 +57,7 @@ $ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7
 $ kubectl apply -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
 ```
 
-例えば、aws-load-balancer-controllerチャートの`1.5.2`を使用する場合、これはaws-load-balancer-controllerの`2.5.1`に対応しているため、以下の値で適用する。
+例えば、aws-load-balancer-controllerチャートの`1.5.2`を使用する場合、これはaws-load-balancer-controllerの`2.5.1`に対応しているため、以下の値で作成/変更する。
 
 ```bash
 $ kubectl diff -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"

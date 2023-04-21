@@ -66,6 +66,19 @@ Pod
 
 ### AWS側
 
+#### ▼ 共通
+
+Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、AWS VPCサブネットに`kubernetes.io/role/elb`というタグ (値は`1`または空文字) を設定する。
+
+プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) を設定する。
+
+またいずれの場合であっても`kubernetes.io/cluster/<EKS Clusterの名前>` (値は、複数のEKS Clusterで共有するサブネットの場合は`shared`、単一のEKS Clusterの場合は`owned`とする) を設定する。
+
+> ↪️ 参考：
+> 
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
+> - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
+
 #### ▼ Terraformの公式モジュールの場合
 
 AWS Load Balancerコントローラーのセットアップのうち、AWS側で必要なものをまとめる。
