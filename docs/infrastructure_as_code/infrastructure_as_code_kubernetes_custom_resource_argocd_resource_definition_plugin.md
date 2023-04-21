@@ -276,7 +276,7 @@ data:
 
 Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`ARGOCD_ENV_<環境変数名>`で出力される。
 
-なお、ConfigManagementPluginはカスタムリソースではないため、カスタムリソース定義は不要である。
+なお、ConfigManagementPluginはカスタムリソースではないため、CRDは不要である。
 
 > ↪️ 参考：
 >

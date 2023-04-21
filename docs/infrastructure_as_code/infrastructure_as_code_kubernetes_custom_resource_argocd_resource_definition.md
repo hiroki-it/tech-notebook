@@ -79,7 +79,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 #### ▼ チャートとして
 
-カスタムリソース定義をHelmの管理外で作成する。
+CRDをHelmの管理外で作成する。
 
 ```bash
 $ git clone https://github.com/argoproj/argo-cd

@@ -40,7 +40,7 @@
 
 * #### [カスタムリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)
 
-* #### [カスタムコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.html)
+* #### [custom-controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.html)
 
 <br>
 

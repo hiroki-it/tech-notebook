@@ -117,9 +117,9 @@ argocd-serverは、redis-serverにTCPリクエストを送信し、redis-server�
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
 
-カスタムコントローラーかつwatch対象Clusterの`kubectl`クライアントとして動作する。
+custom-controllerかつwatch対象Clusterの`kubectl`クライアントとして動作する。
 
-ArgoCDのカスタムリソース (例：Application、AppProject、など) とカスタムリソース定義をwatchし、etcd上にある宣言通りに作成/変更する。
+ArgoCDのカスタムリソース (例：Application、AppProject、など) とCRDをwatchし、etcd上にある宣言通りに作成/変更する。
 
 また、ダッシュボードやCUIの操作に応じて、watch対象Clusterに`kubectl diff`コマンドや`kubectl apply`コマンドを実行する。
 

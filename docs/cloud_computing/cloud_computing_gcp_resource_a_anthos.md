@@ -116,7 +116,7 @@ Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他ク
 
 またkube-controller-managerはcluster-operatorを反復的に実行する。
 
-これにより、Anthos GKE Clusterはカスタムリソース定義の宣言通りに定期的に修復される (reconciliationループ) 。
+これにより、Anthos GKE ClusterはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
 
 > ↪️ 参考：https://www.jetstack.io/blog/anthos-aws/
 
@@ -264,7 +264,7 @@ $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 
 #### ▼ updateとは
 
-カスタムリソース定義の設定値を変更し、kube-apiserverに送信する。
+CRDの設定値を変更し、kube-apiserverに送信する。
 
 ```bash
 $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace

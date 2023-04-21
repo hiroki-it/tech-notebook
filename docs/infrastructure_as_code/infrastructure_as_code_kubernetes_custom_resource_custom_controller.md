@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】カスタムコントローラー＠カスタムリソース
-description: カスタムコントローラー＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】custom-controller＠カスタムリソース
+description: custom-controller＠カスタムリソースの知見を記録しています。
 ---
 
-# カスタムコントローラー＠カスタムリソース
+# custom-controller＠カスタムリソース
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: カスタムコントローラー＠カスタムリソースの知�
 
 <br>
 
-## 01. カスタムコントローラー
+## 01. custom-controller
 
-### カスタムコントローラーとは
+### custom-controllerとは
 
 カスタムリソースのためのkube-controllerに相当する。
 
@@ -27,21 +27,21 @@ description: カスタムコントローラー＠カスタムリソースの知�
 
 ![custom_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
 
-カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。
+custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
 
-カスタムリソースとカスタムリソース定義のマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
 
-すると、カスタムコントローラーはetcd上でカスタムリソースとカスタムリソース定義のマニフェストを検知し、実際にカスタムリソースを作成/変更する。
+するとcustom-controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 
 クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。
 
 その他、etcd上のカスタムリソースに応じて、外部サービスのAPI (例：証明書のFastly) をコールし、カスタムリソースと対になるもの (例：Fastlyの証明書) を作成することも可能である。
 
-注意点として、カスタムリソース定義を削除するとkube-controllerはカスタムリソースを削除する。
+注意点として、CRDを削除するとkube-controllerはカスタムリソースを削除する。
 
-この時カスタムリソース定義を改めて作成しても、kube-controllerはカスタムリソースを自動的に作成しない。
+この時CRDを改めて作成しても、kube-controllerはカスタムリソースを自動的に作成しない。
 
-kube-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
+kube-controllerに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。
 
 > ↪️ 参考：
 >
@@ -52,11 +52,11 @@ kube-controllerに不具合があると、etcd上のカスタムリソース定�
 
 ### reconciliationループ
 
-kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実行する。
+kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行する。
 
-これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される (reconciliationループ) 。
+これにより、カスタムリソースはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
 
-ただし、カスタムコントローラー自体は`kubectl`クライアントが作成する必要がある。
+ただし、custom-controller自体は`kubectl`クライアントが作成する必要がある。
 
 <br>
 
@@ -70,7 +70,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 ### 自前で実装する
 
-カスタムコントローラーを自前で実装する。
+custom-controllerを自前で実装する。
 
 > ↪️ 参考：
 >
@@ -83,7 +83,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 ### Operatorパターンとは
 
-カスタムコントローラーを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
+custom-controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
 
 > ↪️ 参考：https://zoetrope.github.io/kubebuilder-training/
 
@@ -93,7 +93,7 @@ kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実�
 
 #### ▼ アーキテクチャ
 
-Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、といったコンポーネントから構成されている。
+Operatorパターンは、カスタムリソース、custom-controllerのOperator、認可スコープ付与リソース、といったコンポーネントから構成されている。
 
 ![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png)
 
@@ -102,19 +102,19 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20200629-1/
 
-#### ▼ operator-controller
+#### ▼ Operator
 
-カスタムコントローラーとして動作する。
+custom-controllerとして動作する。
 
-operator-controllerが稼働している状況で、etcdにカスタムリソース定義とカスタムリソースの両方を永続化したとする。
+Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
 
-するとoperator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。
+するとOperatorは、operatorはetcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 
-反対に、カスタムリソース定義を削除すると、operator-controllerはカスタムリソースを削除する。
+反対に、CRDを削除すると、Operatorはカスタムリソースを削除する。
 
-この時カスタムリソース定義を改めて作成しても、operator-controllerはカスタムリソースを自動的に作成しない。
+この時CRDを改めて作成しても、Operatorはカスタムリソースを自動的に作成しない。
 
-operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
+Operatorに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator-controller.png)
 
@@ -127,7 +127,7 @@ operator-controllerに不具合があると、etcd上のカスタムリソース
 
 #### ▼ 認可スコープ付与リソース
 
-operator-controllerがkube-apiserverにリクエストを送信できるように、operator-controllerに認可スコープを付与する。
+Operatorがkube-apiserverにリクエストを送信できるように、Operatorに認可スコープを付与する。
 
 > ↪️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 

@@ -39,7 +39,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 #### ▼ 共通エラー
 
-以下のようなエラーになってしまう場合、カスタムリソース定義が存在していないか、カスタムリソース定義が古くて新しいカスタムリソースが対応していない可能性がある。
+以下のようなエラーになってしまう場合、CRDが存在していないか、CRDが古くて新しいカスタムリソースが対応していない可能性がある。
 
 ```bash
 Failed to render chart: exit status 1: Error: unable to build kubernetes objects from release manifest: error validating ""
@@ -61,9 +61,9 @@ Failed to render chart: exit status 1: Error: unable to build kubernetes objects
 
 #### ▼ 非チャートとして
 
-カスタムリソース定義のマニフェストを送信し、その後にカスタムリソースのマニフェストを送信する。
+CRDのマニフェストを送信し、その後にカスタムリソースのマニフェストを送信する。
 
-もしカスタムリソース定義を送信する前にカスタムリソースを送信してしまうと、kube-apiserverはカスタムリソース定義を見つけられずに、以下のエラーレスポンスを返信する。
+もしCRDを送信する前にカスタムリソースを送信してしまうと、kube-apiserverはCRDを見つけられずに、以下のエラーレスポンスを返信する。
 
 ```log
 the server could not find the requested resource
@@ -71,29 +71,29 @@ the server could not find the requested resource
 
 #### ▼ チャートとして
 
-カスタムリソース定義とカスタムリソースを含むチャートをインストールする。
+CRDとカスタムリソースを含むチャートをインストールする。
 
 <br>
 
-### カスタムコントローラーによる管理
+### custom-controllerによる管理
 
 #### ▼ 非チャートとして
 
-カスタムコントローラーのマニフェストを送信し、後はカスタムコントローラーにカスタムリソースを作成させる。
+custom-controllerのマニフェストを送信し、後はcustom-controllerにカスタムリソースを作成させる。
 
 #### ▼ チャートとして
 
-カスタムコントローラーのチャートをインストールし、後はカスタムコントローラーにカスタムリソースを作成させる。
+custom-controllerのチャートをインストールし、後はcustom-controllerにカスタムリソースを作成させる。
 
 <br>
 
-## 01-03. カスタムリソース定義
+## 01-03. CRD
 
-### カスタムリソース定義とは
+### CRDとは
 
 カスタムリソースを宣言的に定義する。
 
-ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはカスタムコントローラーを作成する必要がある。
+ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはcustom-controllerを作成する必要がある。
 
 <br>
 
@@ -112,7 +112,7 @@ the server could not find the requested resource
 
 ### .apiVersion
 
-カスタムリソース定義自体のAPIグループの名前を設定する。
+CRD自体のAPIグループの名前を設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
@@ -329,9 +329,9 @@ $ kubectl get fo
 
 #### ▼ versionsとは
 
-カスタムリソース定義に対応するカスタムリソースに関して、APIグループのバージョンを設定する。
+CRDに対応するカスタムリソースに関して、APIグループのバージョンを設定する。
 
-複数のバージョンのカスタムリソース定義をCluster内で同時に管理する場合、`.spec.versions[].name`キー配下に複数のスキーマを定義する。
+複数のバージョンのCRDをCluster内で同時に管理する場合、`.spec.versions[].name`キー配下に複数のスキーマを定義する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

@@ -704,7 +704,7 @@ spec:
            labels:
              env: prd
              app: foo
-             status: error
+             severity: error
              source: gin
 ```
 

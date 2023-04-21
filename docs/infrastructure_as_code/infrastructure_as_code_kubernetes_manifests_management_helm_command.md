@@ -39,16 +39,16 @@ $ helm create <チャートへのパス>
 $ helm destroy <Helmリリース名>
 ```
 
-Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
+Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
-そのため、`helm destroy`コマンド時にはカスタムリソース定義を削除しない仕様になっている。
+そのため、`helm destroy`コマンド時にはCRDを削除しない仕様になっている。
 
-カスタムリソース定義は手動で削除する必要がある。
+CRDは手動で削除する必要がある。
 
 ```bash
 $ kubectl get crd
 
-$ kubectl delete crd <カスタムリソース定義名>
+$ kubectl delete crd <CRD名>
 ```
 
 > ↪️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
@@ -138,7 +138,7 @@ $ helm install <Helmリリース名> <チャートへのパス>
 
 チャートをインストールする時に、OpenAPIを使用したマニフェストの静的解析を無効化する。
 
-特に、カスタムリソース定義のファイルサイズが大きすぎてインストールできない場合に使用する。
+特に、CRDのファイルサイズが大きすぎてインストールできない場合に使用する。
 
 ```bash
 $ helm install --disable-openapi-validation <Helmリリース名> <チャートへのパス>
@@ -610,7 +610,7 @@ foo:
 
 #### ▼ --include-crds
 
-カスタムリソース定義を含めて、マニフェストを出力する。
+CRDを含めて、マニフェストを出力する。
 
 ```bash
 $ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
@@ -654,9 +654,9 @@ $ helm uninstall foo-release
 
 指定したバージョンのチャートを使用して、Helmリリースをアップグレードする。
 
-Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
+Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
-そのため、`helm upgrade`コマンド時にはカスタムリソース定義のインストールを実行する仕様になっている。
+そのため、`helm upgrade`コマンド時にはCRDのインストールを実行する仕様になっている。
 
 > ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
@@ -694,7 +694,7 @@ TEST SUITE: None
 
 `install`オプションを有効化した上で、`--skip-crds`オプションを有効化する。
 
-これにより、`helm upgrade`コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールできる。
+これにより、`helm upgrade`コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。
 
 ```bash
 $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
@@ -702,7 +702,7 @@ $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへの�
 
 **＊例＊**
 
-`helm upgrade`コマンド時に、カスタムリソース定義の作成をスキップし、非カスタムリソース定義のみをインストールする。
+`helm upgrade`コマンド時に、CRDの作成をスキップし、非CRDのみをインストールする。
 
 ```bash
 $ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >| release.yaml

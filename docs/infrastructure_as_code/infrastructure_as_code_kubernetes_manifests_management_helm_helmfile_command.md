@@ -83,7 +83,7 @@ Do you really want to delete?
 
 `helmfile sync`コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。
 
-注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
+注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 
 ```bash
 $ helmfile -e dev apply
@@ -118,7 +118,7 @@ foo-release         ./charts/foo         0.0.1
 
 インストール済みの全てのチャートをアンインストールする。
 
-カスタムリソース定義も削除する。
+CRDも削除する。
 
 ```bash
 $ helmfile -e dev destroy
@@ -221,7 +221,7 @@ Source: project/manifests/persistent-volume.yaml
 
 `helmfile apply`コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョン番号を更新する。
 
-注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストは作成はできるが変更はできない。
+注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 
 ```bash
 $ helmfile -e dev sync
@@ -243,7 +243,7 @@ $ helmfile -e dev template
 
 #### ▼ --include-crds
 
-カスタムリソース定義も含めて、`helm template`コマンドを実行する。
+CRDも含めて、`helm template`コマンドを実行する。
 
 ```bash
 $ helmfile -e dev template --include-crds

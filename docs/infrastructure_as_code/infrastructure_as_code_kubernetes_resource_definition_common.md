@@ -348,7 +348,7 @@ metadata:
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
 
 ```yaml
 apiVersion: apps/v1
@@ -400,16 +400,16 @@ Helmの各リリースに紐づいており、別のリリースであれば、K
 そのため、一部のKubernetesリソースを別のチャートでリリースし直したい場合、Kubernetesリソース、カスタムリソース、スタムリソース定義の`meta.helm.sh`キーを手動で書き換える必要がある。
 
 ```bash
-# カスタムリソース定義の場合
-$ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm.sh/release-namespace="<新しいNamespace>"
-$ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm.sh/release-name="<新しいリリース名>"
+# CRDの場合
+$ kubectl annotate --overwrite crd <CRD名> meta.helm.sh/release-namespace="<新しいNamespace>"
+$ kubectl annotate --overwrite crd <CRD名> meta.helm.sh/release-name="<新しいリリース名>"
 ```
 
-また反対に、特定のKubernetesリソース (例：カスタムリソース定義) をHelmの管理外としたい場合、このキーを削除する必要がある。
+また反対に、特定のKubernetesリソース (例：CRD) をHelmの管理外としたい場合、このキーを削除する必要がある。
 
 ```bash
-$ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm.sh/release-namespace-
-$ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm.sh/release-name-
+$ kubectl annotate --overwrite crd <CRD名> meta.helm.sh/release-namespace-
+$ kubectl annotate --overwrite crd <CRD名> meta.helm.sh/release-name-
 ```
 
 補足として、ArgoCDを介してHelmを使用する場合、内部的には`kubectl apply`コマンドと同様の処理を実行しているため、この`meta.helm.sh`キーはない。
@@ -420,9 +420,9 @@ $ kubectl annotate --overwrite crd <カスタムリソース定義名> meta.helm
 | -------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `meta.helm.sh/release-name`      | `foo-release`   | Helmのリリース名を設定する。これを削除すると、helm-diffで削除判定になっても、実際には削除されない。                                                                                                                                                                                                                                                                                                                                                   |
 | `meta.helm.sh/release-namespace` | `foo-namespace` | `helm install`コマンド時のNamespaceを設定する。これを削除すると、helm-diffで削除判定になっても、実際には削除されない。                                                                                                                                                                                                                                                                                                                                |
-| `meta.helm.sh/resource-policy`   | `keep`          | Kubernetesリソース定義やカスタムリソース定義に付与することにより、 `helm install`コマンド時や`helm uninstall`コマンド時に、それの再作成処理や削除処理をスキップする。これは、特にカスタムリソース定義に付与した方がよい。公式チャートのアップグレード時に、特定のチャート内のKubernetesリソースを別チャートに移行したい場合に役立つ。他に、Helmリリースのアンインストール時に特定のKubernetesリソース (例：PersistentVolume) を残したい場合に役立つ。 |
+| `meta.helm.sh/resource-policy`   | `keep`          | Kubernetesリソース定義やCRDに付与することにより、 `helm install`コマンド時や`helm uninstall`コマンド時に、それの再作成処理や削除処理をスキップする。これは、特にCRDに付与した方がよい。公式チャートのアップグレード時に、特定のチャート内のKubernetesリソースを別チャートに移行したい場合に役立つ。他に、Helmリリースのアンインストール時に特定のKubernetesリソース (例：PersistentVolume) を残したい場合に役立つ。 |
 
-カスタムリソース定義に`meta.helm.sh/resource-policy`キーを付与しておくと、`helm destroy`コマンド時に削除をスキップできる。
+CRDに`meta.helm.sh/resource-policy`キーを付与しておくと、`helm destroy`コマンド時に削除をスキップできる。
 
 ```bash
 $ helm destroy <Helmリリース名>
@@ -533,7 +533,7 @@ kube-controllerが設定してくれるため、開発者が設定する必要�
 
 ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
 
-カスタムコントローラー (application-controller) が設定してくれるため、開発者が設定する必要はない。
+custom-controller (application-controller) が設定してくれるため、開発者が設定する必要はない。
 
 **＊例＊**
 
@@ -567,7 +567,7 @@ Kubernetesリソースの現在の状態を設定する。
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
 
 Kubernetesリソースごとに、`.status`キー配下の構造は異なっており、
 
@@ -581,7 +581,7 @@ Kubernetesリソースごとに、`.status`キー配下の構造は異なって�
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
 
 ```yaml
 apiVersion: apps/v1
@@ -616,13 +616,13 @@ status:
 
 #### ▼ observedGenerationとは
 
-kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した`.metadata.generation`キーの値を設定する。
+kube-controllerやcustom-controllerがKubernetesリソースの状態を管理している場合に、これらが検知した`.metadata.generation`キーの値を設定する。
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやカスタムコントローラーが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
 
-`.metadata.generation`キーよりも`.status.observedGeneration`キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
+`.metadata.generation`キーよりも`.status.observedGeneration`キーの方が世代数が小さい場合、kube-controllerやcustom-controllerがKubernetesリソースを検出できていない不具合を表す。
 
 ```yaml
 apiVersion: apps/v1
