@@ -151,11 +151,23 @@ $ argocd repo add oci://<OCIレジストリ名> \
 ダッシュボードにログインする。
 
 ```bash
-$ argocd login 127.0.0.1:8080
+$ argocd login <ArgoCDのドメイン名>
 
 Username: admin
 password: pass
 'admin:login' logged in successfully
 ```
+
+#### ▼ --sso、--sso-port
+
+SSOでログインする。
+
+コールバックURL先でIDプロバイダーで公開するポート番号を指定する。
+
+```bash
+$ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
+```
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_login/
 
 <br>

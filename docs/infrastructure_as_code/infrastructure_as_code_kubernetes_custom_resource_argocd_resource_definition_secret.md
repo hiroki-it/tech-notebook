@@ -632,8 +632,14 @@ $ kubectl get secret argocd-initial-admin-secret \
      この時、ユーザー名は`admin`でパスワードは先に確認したものとする。
 
 ```bash
-$ argocd login <ArgoCDのドメイン名> --grpc-web
+# Bearer認証の場合
+$ argocd login <ArgoCDのドメイン名> --grpc-web --skip-test-tls
+
+# SSOの場合
+$ argocd login <ArgoCDのドメイン名> --grpc-web --skip-test-tls --sso
 ```
+
+> ↪️ 参考：https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366
 
 `【４】`
 

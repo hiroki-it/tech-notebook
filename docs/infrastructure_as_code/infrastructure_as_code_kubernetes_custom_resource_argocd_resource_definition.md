@@ -204,7 +204,7 @@ $ chmod +x /usr/local/bin/argocd
 : ArgoCDにログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
 
 ```bash
-$ argocd login 127.0.0.1:8080
+$ argocd login <ArgoCDのドメイン名>
 
 Username: admin
 password: pass
