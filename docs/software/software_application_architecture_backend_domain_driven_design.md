@@ -206,7 +206,7 @@ ECサイトを運営するアスクルの例。
 
 #### ▼ ユビキタス言語とは
 
-同じ境界づけられたコンテキスト内で`1`個の意味合い/定義付けを持った『単語』や『動詞』のこと。
+同じ境界付けられたコンテキスト内で`1`個の意味合い/定義付けを持った『単語』や『動詞』のこと。
 
 ドメインエキスパート間で、特定の『単語』や『動詞』の意味合い/定義づけが異なる場合、これを異なる名前からなるユビキタス言語として定義づける。
 
@@ -283,6 +283,16 @@ ECサイトを運営するアスクルの例。
 >
 > - https://note.com/alpinc/n/nab47ab9273c6
 > - https://thealp.co.jp/
+
+**＊例＊**
+
+会計アプリケーションを提供するfreeeの例。
+
+財務会計コンテキスト、会計ワークフローコンテキスト、従業員管理コンテキスト、がある。
+
+![freee_bounded-context.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
+
+> ↪️ 参考：https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
 
 <br>
 

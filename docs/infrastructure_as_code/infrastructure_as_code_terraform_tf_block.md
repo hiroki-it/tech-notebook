@@ -248,7 +248,7 @@ module "alb" {
 }
 
 resource "foo" "this" {
-    foo_id = module.alb.alb_zone_id
+  foo_id = module.alb.alb_zone_id
 }
 ```
 
@@ -297,7 +297,7 @@ module "alb" {
 }
 
 resource "foo" "this" {
-    foo_id = module.alb.alb_zone_id
+  foo_id = module.alb.alb_zone_id
 }
 ```
 

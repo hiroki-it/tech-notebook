@@ -75,7 +75,7 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 またいずれの場合であっても`kubernetes.io/cluster/<EKS Clusterの名前>` (値は、複数のEKS Clusterで共有するサブネットの場合は`shared`、単一のEKS Clusterの場合は`owned`とする) を設定する。
 
 > ↪️ 参考：
-> 
+>
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
 
@@ -534,4 +534,3 @@ spec:
 > ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
 
 <br>
-
