@@ -505,7 +505,7 @@ nav:
               - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
       - ■ カスタムリソース:
           - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
-          - カスタムコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
+          - custom-controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
       - ■ ハードウェアリソース管理:
           - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.md
           - cluster-autoscaler: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.md
