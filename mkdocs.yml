@@ -545,7 +545,9 @@ nav:
           - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
       - ■ Ingressコントローラーアドオン:
           - Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.md
-          - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
+          - ■ AWS Load Balancerコントローラー:
+              - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.md
       - ■ ネットワークアドオン:
           - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
           - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
