@@ -40,12 +40,30 @@ $ kubectl apply -k ./
 リモートにある`kustomize.yaml`ファイルを使用する場合も、同じく`kustomize.yaml`ファイルのあるディレクトリのURLを指定する。
 
 ```bash
-$ kubectl diff -k "<リポジトリのURL>//<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>" > kustomize.diff
+$ kubectl diff -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>" > kustomize.diff
 
-$ kubectl apply -k "<リポジトリのURL>//<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>"
+$ kubectl apply -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>"
 ```
 
 > ↪️ 参考：https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#examples
+
+**＊実行例＊**
+
+例えば、argocd-cdチャートの`5.28.0`を使用する場合、これはArgoCDの`2.6.7`に対応しているため、以下の値で適用する。
+
+```bash
+$ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
+
+$ kubectl apply -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
+```
+
+例えば、aws-load-balancer-controllerチャートの`1.5.2`を使用する場合、これはaws-load-balancer-controllerの`2.5.1`に対応しているため、以下の値で適用する。
+
+```bash
+$ kubectl diff -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"
+
+$ kubectl apply -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"
+```
 
 <br>
 

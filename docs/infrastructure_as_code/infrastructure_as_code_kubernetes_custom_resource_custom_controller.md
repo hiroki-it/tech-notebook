@@ -175,7 +175,6 @@ Operatorの、作成、削除、を管理する。
 
 <br>
 
-
 ### 既存のOperatorをカスタマイズする場合
 
 #### ▼ client-goコンポーネント
@@ -197,4 +196,3 @@ Operatorの、作成、削除、を管理する。
 > - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
 
 <br>
-
