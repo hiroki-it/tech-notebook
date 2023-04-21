@@ -18,7 +18,9 @@
 
 * #### [Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)
 
-* #### [AWS Load Balancerコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)
+* #### <u>AWS Load Balancerコントローラー</u>
+  > * ##### [AWS Load Balancerコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)
+  > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb=resource_definition.html)
 
 <br>
 
