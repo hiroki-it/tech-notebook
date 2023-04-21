@@ -169,7 +169,7 @@ Bearer認証にて、トークンとして使用する。
 
 : 指定されたエンドポイントに対して、`POST`リクエストを送信する。
 
-     この時、```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする。
+     この時、`Content-Type`ヘッダーを`application/x-www-form-urlencoded`とする。
 
      必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
 

@@ -119,6 +119,28 @@ $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n arg
 
 > ↪️ 参考：https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
 
+#### ▼ Operatorとして
+
+ArgoCDOperatorを先にセットアップし、ArgoCDに関するカスタムリソースを作成させる。
+
+執筆時点 (2023/04/21) ではOpenShihtのみで使える。
+
+Operatorでインストールすることは非推奨である。
+
+```bash
+$ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/<バージョン>/install.sh | bash -s <バージョン>
+
+$ kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
+
+$ kubectl get csv -n operators
+```
+
+> ↪️ 参考：
+>
+> - https://blog.mosuke.tech/entry/2021/04/13/argocd/
+> - https://github.com/argoproj-labs/argocd-operator
+> - https://argocd-operator.readthedocs.io/en/latest/install/manual/
+
 <br>
 
 ## 01-02. ダッシュボード
@@ -153,7 +175,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 
      この時、IngressとIngressコントローラーを作成するか、`kubectl port-forward`コマンドなど実行することにより、ダッシュボードにアクセスする。
 
-     ```minikube tunnel```ではポート番号を指定できないことに注意する。
+     `minikube tunnel`コマンドでは、ポート番号を指定できないことに注意する。
 
 ```bash
 # Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。

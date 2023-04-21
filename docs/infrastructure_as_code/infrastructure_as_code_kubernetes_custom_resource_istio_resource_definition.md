@@ -37,7 +37,7 @@ $ istioctl install --manifests=foo-chart
 
 > ↪️ 参考：https://www.solo.io/blog/3-most-common-ways-install-istio/
 
-#### ▼ GCRから (ユーザー定義)
+#### ▼ Operatorとして (ユーザー定義)
 
 プロファイルを使用する代わりに、IstioOperatorを独自で定義しても良い。
 
@@ -49,7 +49,8 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  profile: demo # Istioのdemoチャートをインストールし、リソースを作成する。
+  # Istioのdemoチャートをインストールし、リソースを作成する。
+  profile: demo
 ```
 
 ```bash
@@ -1416,7 +1417,8 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い。
+            host: foo-service.foo-namespace.svc.cluster.local
 ```
 
 #### ▼ route.destination.port

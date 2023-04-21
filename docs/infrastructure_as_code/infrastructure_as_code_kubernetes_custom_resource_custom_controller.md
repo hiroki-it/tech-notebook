@@ -19,7 +19,9 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 カスタムリソースのためのkube-controllerに相当する。
 
-ただし、kube-controllerとは異なり、Node上で稼働する。
+ただし、kube-controllerとは異なりNode上で稼働する。
+
+実体はDeploymentやStatefulSet配下のPodであることが多い。
 
 <br>
 
@@ -106,6 +108,8 @@ Operatorパターンは、カスタムリソース、custom-controllerのOperato
 
 custom-controllerとして動作する。
 
+custom-controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。
+
 Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
 
 するとOperatorは、operatorはetcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
@@ -133,7 +137,44 @@ Operatorがkube-apiserverにリクエストを送信できるように、Operato
 
 <br>
 
+### Operatorパターンの例
+
+OperatorHubで公開されている。
+
+- ArgoCDOperator
+- IstioOperator
+- PrometheusOperator
+
+- ...
+
+> ↪️ 参考：https://operatorhub.io/
+
+<br>
+
 ## 03-02 Operatorの開発
+
+### 自前のOperatorを作成する場合
+
+#### ▼ OperatorFrameworkとは
+
+Operatorを開発するためのフレームワークのこと。
+
+> ↪️ 参考：https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes
+
+#### ▼ Operator SDK
+
+Operatorを、開発、テスト、リリース、ために必要なツールを提供する。
+
+#### ▼ Operator Lifecycle Manager
+
+Operatorの、作成、削除、を管理する。
+
+#### ▼ Operator Metering
+
+記入中...
+
+<br>
+
 
 ### 既存のOperatorをカスタマイズする場合
 
@@ -157,29 +198,3 @@ Operatorがkube-apiserverにリクエストを送信できるように、Operato
 
 <br>
 
-### 自前のOperatorを作成する場合
-
-#### ▼ OperatorFrameworkとは
-
-Operatorを開発するためのフレームワークのこと。
-
-OperatorHubで公開されている。
-
-> ↪️ 参考：
->
-> - https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes
-> - https://operatorhub.io/
-
-#### ▼ Operator SDK
-
-Operatorを、開発、テスト、リリース、ために必要なツールを提供する。
-
-#### ▼ Operator Lifecycle Manager
-
-Operatorの、作成、削除、を管理する。
-
-#### ▼ Operator Metering
-
-記入中...
-
-<br>
