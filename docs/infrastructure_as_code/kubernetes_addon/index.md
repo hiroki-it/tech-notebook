@@ -39,8 +39,8 @@
 * #### <u>SecretsストアCSIドライバー</u>
   > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html)
   > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html)
-* #### <u>ExternalSecresOperator</u>
-  > * ##### [ExternalSecresOperator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html)
+* #### <u>ExternalSecretsOperator</u>
+  > * ##### [ExternalSecretsOperator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html)
 
 <br>
 
