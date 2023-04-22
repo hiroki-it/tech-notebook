@@ -95,9 +95,9 @@ argocd-apiserverは、取得した情報に基づいて、AuthZで認可処理�
 
 > ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/architecture/authz-authn.md
 
-#### ▼ watch対象Clusterのkube-apiserverとの通信
+#### ▼ ポーリング対象Clusterのkube-apiserverとの通信
 
-argocd-serverは、watch対象Clusterのkube-apiserverにHTTPSリクエストを送信する。
+argocd-serverは、ポーリング対象Clusterのkube-apiserverにHTTPSリクエストを送信する。
 
 クライアントから受信したリクエスト (例：ダッシュボード上のSync、`argocd app sync`コマンド) に基づいて、kube-apiserverにリクエストを送信する。
 
@@ -105,7 +105,7 @@ argocd-serverは、watch対象Clusterのkube-apiserverにHTTPSリクエストを
 
 argocd-serverは、redis-serverにTCPリクエストを送信し、redis-serverからキャッシュを取得する。
 
-その都度、repo-server上のwatch対象リポジトリのマニフェストを使用するのではなく、redis-serverのキャッシュを使用する。
+その都度、repo-server上のポーリング対象リポジトリのマニフェストを使用するのではなく、redis-serverのキャッシュを使用する。
 
 ダッシュボード上や`argocd app get --hard-refresh`コマンドでキャッシュを削除できる。
 
@@ -117,11 +117,11 @@ argocd-serverは、redis-serverにTCPリクエストを送信し、redis-server�
 
 ![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
 
-custom-controllerかつwatch対象Clusterの`kubectl`クライアントとして動作する。
+custom-controllerかつポーリング対象Clusterの`kubectl`クライアントとして動作する。
 
-ArgoCDのカスタムリソース (例：Application、AppProject、など) とCRDをwatchし、etcd上にある宣言通りに作成/変更する。
+ArgoCDのカスタムリソース (例：Application、AppProject、など) とCRDをポーリングし、etcd上にある宣言通りに作成/変更する。
 
-また、ダッシュボードやCUIの操作に応じて、watch対象Clusterに`kubectl diff`コマンドや`kubectl apply`コマンドを実行する。
+また、ダッシュボードやCUIの操作に応じて、ポーリング対象Clusterに`kubectl diff`コマンドや`kubectl apply`コマンドを実行する。
 
 ```yaml
 # application-controllerのPodでログを確認してみる。
@@ -178,7 +178,7 @@ gitops-engine
 
 application-controllerは、repo-serverにHTTPSリクエストを送信し、マニフェストの成果物の作成をコールする。
 
-また、repo-serverが保管するマニフェストのキャッシュを参照し、watch対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
+また、repo-serverが保管するマニフェストのキャッシュを参照し、ポーリング対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
 
 そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
 
@@ -262,7 +262,7 @@ application-controllerの処理の結果のキャッシュを作成し、argocd-
 
 ![argocd_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_repo-server.png)
 
-watch対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下に保管する。
+ポーリング対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下に保管する。
 
 マニフェスト管理ツール (例：Helm、Kustomize) を使用してマニフェストを作成し、またキャッシュを作成する。
 
@@ -275,7 +275,7 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "ls -la /tmp"
 ```
 
-なお、ArgoCDでHardRefreshすると、マニフェストのキャッシュを削除し、watchリポジトリのマニフェストを改めてキャッシュを作成する。
+なお、ArgoCDでHardRefreshすると、マニフェストのキャッシュを削除し、ポーリングリポジトリのマニフェストを改めてキャッシュを作成する。
 
 > ↪️ 参考：
 >
@@ -325,7 +325,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 #### ▼ 基本構成
 
-指定したブランチのコードの状態をwatchする。
+指定したブランチのコードの状態をポーリングする。
 
 プッシュによってコードが変更された場合、Kubernetesの状態をこれにSyncする。
 
