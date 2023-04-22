@@ -171,7 +171,7 @@ $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_login/
 > - https://github.com/argoproj/argo-cd/issues/4104#issuecomment-685454997
 

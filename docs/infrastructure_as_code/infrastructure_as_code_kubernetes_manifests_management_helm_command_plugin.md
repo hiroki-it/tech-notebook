@@ -71,7 +71,9 @@ $ helm plugin install https://github.com/databus23/helm-diff --version 1.0.0
 
 ### helm-secretsとは
 
-暗号化ツールを使用して、`values`ファイルを暗号化/復号化しつつ、`helm`コマンドを実行する。
+暗号化ツールを使用して、`values`ファイルを復号化し、Secretのデータとして注入する。
+
+また反対に、Secretのデータを復号化する。
 
 > ↪️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 

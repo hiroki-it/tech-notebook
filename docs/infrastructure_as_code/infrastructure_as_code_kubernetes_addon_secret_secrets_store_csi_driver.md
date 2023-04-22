@@ -17,7 +17,7 @@ description: SecretsストアCSIドライバー＠Secretアドオンの知見を
 
 ### アーキテクチャ
 
-SecretsストアCSIドライバーは、CSIドライバー、CSIボリューム、などのコンポーネントから構成される。
+SecretsストアCSIドライバーは、CSIドライバーから構成される。
 
 <br>
 
@@ -29,7 +29,9 @@ CSIドライバーは、SecretProviderClassで定義されたプロバイダー 
 
 その後、Secretは使用せずにPod内コンテナのファイルとしてマウントする。
 
-ExternalSecretsOperatorと比較して、Secretを作成しない点で脆弱性が高い一方で、Kubernetesとプロバイダーが密結合になってしまう。
+Secretのデータとして注入するExternalSecretsOperatorやhelm-secretsと比較して、Secretを作成しない点で脆弱性が高い。
+
+一方で、Pod内コンテナに直接的にマウントするため、Kubernetesとプロバイダーがより密結合になってしまう。
 
 ![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/secrets-store-csi-volume.png)
 
@@ -38,17 +40,5 @@ ExternalSecretsOperatorと比較して、Secretを作成しない点で脆弱性
 > - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 > - https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129
 > - https://www.reddit.com/r/kubernetes/comments/uj4a56/external_secrets_operator_vs_secret_store_csi/
-
-<br>
-
-### CSIボリューム
-
-#### ▼ CSIボリュームとは
-
-CSIの仕様によって標準化された外部サービスが提供するVolume。
-
-外部ストレージ上にボリュームを作成し、これをVolumeとしてコンテナにバインドマウントする。
-
-> ↪️ 参考：https://thinkit.co.jp/article/17635
 
 <br>
