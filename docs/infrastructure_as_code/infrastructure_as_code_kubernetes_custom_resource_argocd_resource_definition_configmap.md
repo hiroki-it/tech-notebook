@@ -638,7 +638,7 @@ data:
 
 <br>
 
-## 06. argocd-ssh-nown-hosts-cm
+## 06. argocd-ssh-known-hosts-cm
 
 SSH公開鍵認証でリポジトリに接続してポーリングする場合に、argocd-serverで必要な`known_hosts`ファイルを設定する。
 

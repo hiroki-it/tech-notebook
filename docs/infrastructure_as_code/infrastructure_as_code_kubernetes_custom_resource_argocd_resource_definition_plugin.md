@@ -15,13 +15,23 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 ## 01. プラグイン
 
+### プラグインとは
+
+ArgoCDで任意のツールを使用する。
+
+復号化した変数をSecretのデータとして注入するようなツール (helm-secrets、argocd-vault-plugin、KSOPS) を使用する場合が多い。
+
+そのため、これらのツールを使用せずにSecretにデータを注入する場合、プラグインは採用しなくとも良い。
+
+<br>
+
 ### セットアップ
 
 #### ▼ InitContainerで連携先ツールをインストール
 
 連携先ツールをインストールするInitContainersを配置する。
 
-補足として、執筆時点 (2022/10/31) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がargocd-repo-serverのコンテナイメージにあらかじめインストールされている。
+補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がargocd-repo-serverのコンテナイメージにあらかじめインストールされている。
 
 ```yaml
 apiVersion: v1
@@ -232,13 +242,15 @@ Flags:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
 
-#### ▼ ConfigManagementPluginでプラグインの処理を定義
+#### ▼ argocd-cmp-cmでプラグインの処理を定義
 
-ConfigMap配下で、ConfigManagementPluginを`plugin.yaml`ファイルとして管理する。
+argocd-cmp-cm配下で、ConfigManagementPluginを`plugin.yaml`ファイルとして管理する。
 
 ConfigManagementPluginで、プラグインの処理を設定する。
 
-ConfigMapの`.data.configManagementPlugins`キーで設定することは非推奨である。
+argocd-cmp-cmの`.data.configManagementPlugins`キーで設定することは非推奨である。
+
+補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) をApplicationのオプションとして実行できるようになっており、これらはConfigManagementPluginで処理を定義する必要はない。
 
 ```yaml
 apiVersion: v1
@@ -561,7 +573,7 @@ helmプラグインの処理の定義する。
 
 ここでは、`helm secrets template`コマンドでマニフェストを作成し、また変数を復号化する。
 
-新しい`helm-secrets`はjkroepke製であり、古いものはzendesk製である。
+新しいhelm-secretsはjkroepke製であり、古いものはzendesk製である。
 
 ```yaml
 apiVersion: v1

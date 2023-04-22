@@ -29,7 +29,7 @@ CSIドライバーは、SecretProviderClassで定義されたプロバイダー 
 
 その後、Secretは使用せずにPod内コンテナのファイルとしてマウントする。
 
-Secretのデータとして注入するExternalSecretsOperatorやhelm-secretsと比較して、Secretを作成しない点で脆弱性が高い。
+Secretのデータとして注入するExternalSecretsOperatorやhelm-secrets/vault-helmと比較して、Secretを作成しない点で脆弱性が高い。
 
 一方で、Pod内コンテナに直接的にマウントするため、Kubernetesとプロバイダーがより密結合になってしまう。
 

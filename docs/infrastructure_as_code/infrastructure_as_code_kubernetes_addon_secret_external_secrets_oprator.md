@@ -21,7 +21,10 @@ ExternalSecretsOperatorは、external-secrets、external-secrets-controller、�
 
 ![external-secrets-operator_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-secrets-operator_architecture.png)
 
-> ↪️ 参考：https://techblog.zozo.com/entry/kubernetes-external-secrets-to-external-secrets-operator
+> ↪️ 参考：
+>
+> - https://external-secrets.io/v0.8.1/
+> - https://techblog.zozo.com/entry/kubernetes-external-secrets-to-external-secrets-operator
 
 <br>
 
@@ -39,6 +42,6 @@ external-secrets-controllerは、プロバイダー (例：AWS、GCP、Vault) �
 
 Secretを作成せずにPod内コンテナにマウントするSecretsストアCSIドライバーと比較して、Kubernetesとプロバイダーがより疎結合になる。
 
-一方で、同様にSecretのデータとして注入するhelm-secretsと比較して、関係するコンポーネントが増えるため脆弱性が高まる。
+一方で、同様にSecretのデータとして注入するhelm-secrets/vault-helmと比較して、関係するコンポーネントが増えるため脆弱性が高まる。
 
 <br>
