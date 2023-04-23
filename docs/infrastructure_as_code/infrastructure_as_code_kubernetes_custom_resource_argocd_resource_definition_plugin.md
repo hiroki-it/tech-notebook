@@ -58,7 +58,7 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -qO ./custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+          wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         - name: custom-tools
@@ -72,8 +72,8 @@ spec:
         - -c
       args:
         - |
-          cp ksops ./custom-tools/
-          cp $GOPATH/bin/kustomize ./custom-tools/
+          cp ksops /custom-tools/
+          cp $GOPATH/bin/kustomize /custom-tools/
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
@@ -88,9 +88,8 @@ spec:
           apk --update add wget
           wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
           tar -xvf helm-secrets.tar.gz
-          mkdir -p ./helm-working-dir/plugins
-          cp ./helm-secrets/scripts/wrapper/helm.sh ./helm-working-dir/plugins
-          chmod +x ./helm-working-dir/plugins
+          cp -R helm-secrets /helm-working-dir/plugins/
+          chmod +x /helm-working-dir/plugins/
       volumeMounts:
         - name: helm-working-dir 
           mountPath: /helm-working-dir/plugins
@@ -105,11 +104,34 @@ spec:
           apk --update add wget
           wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
           tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
-          cp helmfile ./custom-tools/
+          cp helmfile /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
+          
+  # 共有ボリューム
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+    - name: helm-working-dir
+      emptyDir: {}
+```
+
+Volumeへのマウントが成功していれば、Pod内のコンテナの`/usr/local/bin`ディレクトリで、バイナリファイルを確認できる。
+
+```bash
+argocd@repo-server:/usr/local/bin] $ ls -la
+
+...
+
+-rwxr-xr-x 1 root root    45125632 Mar 23 14:44 helm # 最初からインストールされている
+-rwxr-xr-x 1 root argocd  62750720 Apr 23 10:58 helmfile
+-rwxr-xr-x 1 root argocd  30818973 Apr 23 10:58 ksops
+-rwxr-xr-x 1 root argocd  27399472 Apr 23 10:58 kustomize
+-rwxr-xr-x 1 root argocd  29052413 May  9  2022 sops
+
+...
 ```
 
 > ↪️ 参考：
@@ -147,10 +169,15 @@ spec:
     # ConfigManagementPluginに定義した処理を実行するサイドカー
     # argocd-cmp-serverコマンドは "plugin.yaml" の名前しか指定できないため、ConfigManagementPluginごとにサイドカーを作成する
     - name: foo-plugin-cmp-server
-      image: busybox:lastest
+      # ビルトインのプラグインを使用したため、ArgoCDのイメージを使用する
+      image: quay.io/argoproj/argocd:lastest
       command:
         # エントリポイントは固定である
         - /var/run/argocd/argocd-cmp-server
+      env:
+        # helmプラグインの場所
+        - name: HELM_PLUGINS
+          value: /helm-working-dir/plugins
       securityContext:
         runAsNonRoot: true
         # サイドカーのコンテナプロセスのユーザーIDは999とする。
@@ -167,6 +194,21 @@ spec:
         - name: argocd-cmp-cm
           mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: foo-plugin.yaml
+        # 各ツールのバイナリをコンテナにマウントする
+        - mountPath: /bin/sops
+          name: custom-tools
+          subPath: sops
+        - mountPath: /bin/kustomize
+          name: custom-tools
+          subPath: kustomize
+        - mountPath: /bin/ksops
+          name: custom-tools
+          subPath: ksops
+        - mountPath: /bin/helmfile
+          name: custom-tools
+          subPath: helmfile
+        - mountPath: /helm-working-dir/plugins
+          name: helm-working-dir
     - name: bar-plugin-cmp-server
       image: busybox:lastest
       command:
@@ -177,6 +219,7 @@ spec:
       volumeMounts:
         - name: var-files
           mountPath: /var/run/argocd
+        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
         - name: tmp
@@ -375,7 +418,7 @@ spec:
           apk --update add wget
           wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
           tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
-          cp helmfile ./custom-tools/
+          cp helmfile /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
         # Podの共有ボリュームにHelmfileを配置する。
@@ -512,7 +555,7 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -qO ./custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+          wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         # Podの共有ボリュームに、SOPSを配置する。
@@ -529,9 +572,8 @@ spec:
           apk --update add wget
           wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
           tar -xvf helm-secrets.tar.gz
-          mkdir -p ./helm-working-dir/plugins
-          cp ./helm-secrets/scripts/wrapper/helm.sh ./helm-working-dir/plugins
-          chmod +x ./helm-working-dir/plugins
+          cp -R helm-secrets /helm-working-dir/plugins/
+          chmod +x /helm-working-dir/plugins/
       volumeMounts:
         # Podの共有ボリュームにhelmプラグインを配置する。
         - name: helm-working-dir
@@ -808,8 +850,8 @@ spec:
       # InitContainerにKustomizeをインストールする。
       args:
         - |
-          cp ksops ./custom-tools/
-          cp $GOPATH/bin/kustomize ./custom-tools/
+          cp ksops /custom-tools/
+          cp $GOPATH/bin/kustomize /custom-tools/
       volumeMounts:
         # Podの共有ボリュームに、KSOPSを配置する。
         - mountPath: /custom-tools
