@@ -89,31 +89,31 @@ metadata:
   namespace: istio-system
 spec:
   containers:
-    - command:
+    - name: kiali
+      image: quay.io/kiali/kiali:v1.60.0
+      command:
         - /opt/kiali/kiali
         - '-config'
         - /kiali-configuration/config.yaml
-  image: quay.io/kiali/kiali:v1.60.0
-  name: kiali
-  ports:
-    - containerPort: 20001
-      name: api-port
-      protocol: TCP
-    - containerPort: 9090
-      name: http-metrics
-      protocol: TCP
-  volumeMounts:
-    - mountPath: /kiali-configuration
-      name: kiali-configuration
-    - mountPath: /kiali-cert
-      name: kiali-cert
-    - mountPath: /kiali-secret
-      name: kiali-secret
-    - mountPath: /kiali-cabundle
-      name: kiali-cabundle
-    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-      name: kube-api-access-rbnbz
-      readOnly: true
+      ports:
+        - containerPort: 20001
+          name: api-port
+          protocol: TCP
+        - containerPort: 9090
+          name: http-metrics
+          protocol: TCP
+      volumeMounts:
+        - mountPath: /kiali-configuration
+          name: kiali-configuration
+        - mountPath: /kiali-cert
+          name: kiali-cert
+        - mountPath: /kiali-secret
+          name: kiali-secret
+        - mountPath: /kiali-cabundle
+          name: kiali-cabundle
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-rbnbz
+          readOnly: true
 
   ...
 

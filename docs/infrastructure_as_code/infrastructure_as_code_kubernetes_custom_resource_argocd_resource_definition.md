@@ -517,28 +517,26 @@ spec:
         - name: custom-tools
           subPath: ksops
           mountPath: /usr/local/bin/ksops
-        - name: custom-tools
-          mountPath: /helm-working-dir/plugins
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
         # リポジトリに接続するためのSSL証明書をコンテナにマウントする
-        - mountPath: /app/config/tls
-          name: tls-certs
-        - mountPath: /app/config/gpg/source
-          name: gpg-keys
-        - mountPath: /app/config/gpg/keys
-          name: gpg-keyring
-        - mountPath: /app/config/reposerver/tls
-          name: argocd-repo-server-tls
+        - name: tls-certs
+          mountPath: /app/config/tls
+        - name: gpg-keys
+          mountPath: /app/config/gpg/source
+        - name: gpg-keyring
+          mountPath: /app/config/gpg/keys
+        - name: argocd-repo-server-tls
+          mountPath: /app/config/reposerver/tls
         # ConfigManagementPluginのhelmコマンドを実行するディレクトリをコンテナにマウントする
         - name: helm-working-dir
           mountPath: /helm-working-dir
         # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
-        - mountPath: /tmp
-          name: tmp
+        - name: tmp
+          mountPath: /tmp
 
 
   initContainers:
@@ -585,9 +583,9 @@ spec:
         - |
           # インストール処理
       volumeMounts:
-        - mountPath: /helm-working-dir/plugins
-          name: helm-working-dir
-
+        - name: helm-working-dir
+          mountPath: /helm-working-dir/plugins
+          
   # 各種Secretを読み込む
   volumes:
     - name: custom-tools

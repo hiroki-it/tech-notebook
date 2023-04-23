@@ -62,8 +62,8 @@ spec:
           wget -qO ./custom-tools/sops/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
           chmod +x /custom-tools/sops
       volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
     # KSOPS
     # https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
     - name: ksops-installer
@@ -76,8 +76,8 @@ spec:
           mv ksops ./custom-tools/ksops
           mv $GOPATH/bin/kustomize ./custom-tools/ksops
       volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
     # helm-secretsプラグイン
     - name: helm-secrets-installer
       image: alpine:latest
@@ -93,8 +93,8 @@ spec:
           cp ./helm-secrets/scripts/wrapper/helm.sh ./helm-working-dir/plugins
           chmod +x ./helm-working-dir/plugins
       volumeMounts:
-        - mountPath: /helm-working-dir/plugins
-          name: custom-tools
+        - name: helm-working-dir 
+          mountPath: /helm-working-dir/plugins
     # Helmfile
     - name: helmfile-installer
       image: alpine:3.17.3
@@ -110,8 +110,8 @@ spec:
           cp helmfile ./custom-tools/helmfile
           chmod +x /custom-tools/helmfile
       volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
 ```
 
 > ↪️ 参考：
@@ -492,15 +492,16 @@ spec:
         - name: HELM_PLUGINS
           value: /helm-working-dir/plugins
       volumeMounts:
-        # helm-secretsのバイナリファイルを置くパスを指定する。
-        - mountPath: /helm-working-dir/plugins
-          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でhelm-secretsを使用する。
-          name: custom-tools
+        # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でhelm-secretsを使用する。
+        - name: custom-tools
+          # helm-secretsのバイナリファイルを置くパスを指定する。
+          mountPath: /helm-working-dir/plugins
         # SOPSのバイナリファイルを置くパスを指定する。
-        - mountPath: /usr/local/bin/sops
+        - name: custom-tools
+          mountPath: /usr/local/bin/sops
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
-          name: custom-tools
           subPath: sops
+          
       ...
 
   initContainers:
@@ -518,8 +519,8 @@ spec:
           chmod +x /custom-tools/sops
       volumeMounts:
         # Podの共有ボリュームに、SOPSを配置する。
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools    
     - name: helm-plugins-installer
       image: alpine:latest
       command:
@@ -536,8 +537,8 @@ spec:
           chmod +x ./helm-working-dir/plugins
       volumeMounts:
         # Podの共有ボリュームにhelmプラグインを配置する。
-        - mountPath: /helm-working-dir/plugins
-          name: custom-tools
+        - name: helm-working-dir
+          mountPath: /helm-working-dir/plugins
 
   # Podの共有ボリューム
   volumes:
