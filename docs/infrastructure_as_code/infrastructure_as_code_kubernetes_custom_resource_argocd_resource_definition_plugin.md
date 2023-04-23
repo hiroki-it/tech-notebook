@@ -73,8 +73,8 @@ spec:
         - -c
       args:
         - |
-          mv ksops /custom-tools/
-          mv $GOPATH/bin/kustomize /custom-tools/
+          mv ksops ./custom-tools/ksops
+          mv $GOPATH/bin/kustomize ./custom-tools/ksops
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -365,7 +365,7 @@ spec:
 
 
   initContainers:
-    - name: install-helmfile
+    - name: helmfile-installer
       image: alpine:latest
       command:
         - /bin/sh
@@ -504,7 +504,7 @@ spec:
       ...
 
   initContainers:
-    - name: install-sops
+    - name: sops-installer
       image: alpine:latest
       command:
         - /bin/sh
@@ -520,7 +520,7 @@ spec:
         # Podの共有ボリュームに、SOPSを配置する。
         - mountPath: /custom-tools
           name: custom-tools
-    - name: install-helm-plugins
+    - name: helm-plugins-installer
       image: alpine:latest
       command:
         - /bin/sh
@@ -798,7 +798,7 @@ spec:
       ...
 
   initContainers:
-    - name: install-ksops
+    - name: ksops-installer
       image: viaductoss/ksops:v4.1.1
       command:
         - /bin/sh
@@ -806,8 +806,8 @@ spec:
       # InitContainerにKustomizeをインストールする。
       args:
         - |
-          mv ksops /custom-tools/
-          mv $GOPATH/bin/kustomize /custom-tools/
+          mv ksops ./custom-tools/ksops
+          mv $GOPATH/bin/kustomize ./custom-tools/ksops
       volumeMounts:
         # Podの共有ボリュームに、KSOPSを配置する。
         - mountPath: /custom-tools

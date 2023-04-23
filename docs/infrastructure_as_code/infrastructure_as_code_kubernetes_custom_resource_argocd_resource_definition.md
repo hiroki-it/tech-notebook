@@ -561,9 +561,7 @@ spec:
         - -c
       args:
         - |
-          apk --update add wget
-          wget -q -o /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
-          chmod +x /custom-tools/sops
+          # インストール処理
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -574,8 +572,7 @@ spec:
         - -c
       args:
         - |
-          mv ksops /custom-tools/
-          mv $GOPATH/bin/kustomize /custom-tools/
+          # インストール処理
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -586,15 +583,10 @@ spec:
         - -c
       args:
         - |
-          apk --update add wget
-          wget -q https://github.com/jkroepke/helm-secrets/releases/download/v4.4.2/helm-secrets.tar.gz
-          tar -xvf helm-secrets.tar.gz
-          mkdir -p ./helm-working-dir/plugins
-          cp ./helm-secrets/scripts/wrapper/helm.sh ./helm-working-dir/plugins
-          chmod +x ./helm-working-dir/plugins
+          # インストール処理
       volumeMounts:
         - mountPath: /helm-working-dir/plugins
-          name: custom-tools
+          name: helm-working-dir
 
   # 各種Secretを読み込む
   volumes:
