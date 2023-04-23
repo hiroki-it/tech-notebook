@@ -58,8 +58,7 @@ spec:
       args:
         - |
           apk --update add wget
-          mkdir -p ./custom-tools/sops
-          wget -qO ./custom-tools/sops/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
+          wget -qO ./custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         - name: custom-tools
@@ -73,8 +72,8 @@ spec:
         - -c
       args:
         - |
-          mv ksops ./custom-tools/ksops
-          mv $GOPATH/bin/kustomize ./custom-tools/ksops
+          cp ksops ./custom-tools/
+          cp $GOPATH/bin/kustomize ./custom-tools/
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
@@ -106,9 +105,8 @@ spec:
           apk --update add wget
           wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
           tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
-          mkdir -p ./custom-tools/helmfile
-          cp helmfile ./custom-tools/helmfile
-          chmod +x /custom-tools/helmfile
+          cp helmfile ./custom-tools/
+          chmod +x /custom-tools
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
@@ -241,6 +239,7 @@ Flags:
 
 > ↪️ 参考：
 >
+> - https://thedatabaseme.de/2022/12/02/enhanced-with-plugins-make-argocd-more-powerful-with-plugins-running-as-sidecar/
 > - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml#L17305-L17567
 > - https://argocd-operator.readthedocs.io/en/latest/usage/config_management_2.0/
 > - https://github.com/argoproj/argo-cd/blob/master/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml
@@ -376,9 +375,8 @@ spec:
           apk --update add wget
           wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
           tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
-          mkdir -p ./custom-tools/helmfile
-          cp helmfile ./custom-tools/helmfile
-          chmod +x /custom-tools/helmfile
+          cp helmfile ./custom-tools/
+          chmod +x /custom-tools
       volumeMounts:
         # Podの共有ボリュームにHelmfileを配置する。
         - mountPath: /custom-tools
@@ -514,8 +512,7 @@ spec:
       args:
         - |
           apk --update add wget
-          mkdir -p ./custom-tools/sops
-          wget -qO ./custom-tools/sops/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
+          wget -qO ./custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         # Podの共有ボリュームに、SOPSを配置する。
@@ -542,7 +539,11 @@ spec:
 
   # Podの共有ボリューム
   volumes:
+    # SOPSなどを含む
     - name: custom-tools
+      emptyDir: {}
+    # helm-secretsを含む
+    - name: helm-working-dir
       emptyDir: {}
 ```
 
@@ -807,8 +808,8 @@ spec:
       # InitContainerにKustomizeをインストールする。
       args:
         - |
-          mv ksops ./custom-tools/ksops
-          mv $GOPATH/bin/kustomize ./custom-tools/ksops
+          cp ksops ./custom-tools/
+          cp $GOPATH/bin/kustomize ./custom-tools/
       volumeMounts:
         # Podの共有ボリュームに、KSOPSを配置する。
         - mountPath: /custom-tools

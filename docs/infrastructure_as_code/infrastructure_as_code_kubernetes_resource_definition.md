@@ -2687,7 +2687,7 @@ PodのVolume内のディレクトリをコンテナにマウントする。
 
 #### ▼ subPath
 
-PodのVolume内のサブディレクトリ配下をコンテナにマウントする。
+PodのVolume内のサブディレクトリを指定し、マウントできるようにする。
 
 これを指定しない場合。Volumeのルートディレクトリ配下をコンテナにマウントすることになる。
 
@@ -2701,11 +2701,12 @@ spec:
     - name: foo-gin
       image: foo-gin:1.0.0
       volumeMounts:
-        # コンテナのvarディレクトリにマウントする
-        - mountPath: /var
-          name: foo-volume
-          # foo-volumeにあるbarディレクトリをマウントする
-          subPath: bar
+        - name: foo-volume
+          # foo-volumeにあるwwwディレクトリを指定する
+          subPath: www
+          # コンテナのvarディレクトリをマウントする
+          mountPath: /var
+          
   volumes:
     - name: foo-volume
       emptyDir: {}
@@ -2715,6 +2716,32 @@ spec:
 >
 > - https://zaki-hmkc.hatenablog.com/entry/2020/12/27/211908#subPath%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88
 > - https://kubernetes.io/ja/docs/concepts/storage/volumes/#using-subpath
+
+ディレクトリではなく、ファイルを指定することもできる。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      volumeMounts:
+        - name: foo-volume
+          # foo-volumeにあるwww.confファイルを指定する
+          subPath: www.conf
+          # コンテナに/etc/www.confファイルとしてマウントする
+          mountPath: /etc/www.conf
+          
+  volumes:
+    - name: foo-volume
+      emptyDir: {}
+```
+
+
+> ↪️ 参考：https://stackoverflow.com/a/53503986
 
 <br>
 
