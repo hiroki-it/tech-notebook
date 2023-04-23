@@ -240,7 +240,7 @@ postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version=
 # GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
 # tmpディレクトリ配下にダウンロードする。
 $ curl -L https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz -o /tmp/node_exporter-1.0.0.linux-amd64.tar.gz
-$ tar xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
+$ tar -xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
 
 # バイナリファイルだけを移動する。
 $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_exporter
@@ -496,7 +496,7 @@ pg_stat_user_tables_n_dead_tup{datname="<DB名>"}
 # tmpディレクトリ配下にダウンロードする。
 $ curl -L https://github.com/ncabatoff/process-exporter/releases/download/v0.7.10/process-exporter-0.7.10.linux-amd64.tar.gz -o /tmp/process-exporter-0.7.10.linux-amd64.tar.gz
 
-$ tar xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
+$ tar -xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
 ```
 
 #### ▼ チャートとして

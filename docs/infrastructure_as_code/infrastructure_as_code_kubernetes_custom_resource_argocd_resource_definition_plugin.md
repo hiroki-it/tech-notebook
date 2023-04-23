@@ -58,7 +58,8 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+          mkdir -p ./custom-tools/sops
+          wget -qO ./custom-tools/sops/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         - mountPath: /custom-tools
@@ -86,9 +87,11 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/v4.4.2/helm-secrets.tar.gz | tar -C /helm-plugins -xzf-
-          cp /helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-working-dir/plugins
-          chmod +x /helm-working-dir/plugins
+          wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
+          tar -xvf helm-secrets.tar.gz
+          mkdir -p ./helm-working-dir/plugins
+          cp ./helm-secrets/scripts/wrapper/helm.sh ./helm-working-dir/plugins
+          chmod +x ./helm-working-dir/plugins
       volumeMounts:
         - mountPath: /helm-working-dir/plugins
           name: custom-tools
@@ -101,7 +104,10 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/helmfile https://github.com/helmfile/helmfile/releases/download/v0.152.0/helmfile_0.152.0_linux_amd64.tar.gz
+          wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
+          tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
+          mkdir -p ./custom-tools/helmfile
+          cp helmfile ./custom-tools/helmfile
           chmod +x /custom-tools/helmfile
       volumeMounts:
         - mountPath: /custom-tools
@@ -368,7 +374,10 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/helmfile https://github.com/roboll/helmfile/releases/download/v0.141.0/helmfile_linux_amd64
+          wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
+          tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
+          mkdir -p ./custom-tools/helmfile
+          cp helmfile ./custom-tools/helmfile
           chmod +x /custom-tools/helmfile
       volumeMounts:
         # Podの共有ボリュームにHelmfileを配置する。
@@ -504,7 +513,8 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
+          mkdir -p ./custom-tools/sops
+          wget -qO ./custom-tools/sops/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         # Podの共有ボリュームに、SOPSを配置する。
@@ -519,9 +529,11 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz | tar -C /helm-plugins -xzf-
-          cp /helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-working-dir/plugins
-          chmod +x /helm-working-dir/plugins
+          wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
+          tar -xvf helm-secrets.tar.gz
+          mkdir -p ./helm-working-dir/plugins
+          cp ./helm-secrets/scripts/wrapper/helm.sh ./helm-working-dir/plugins
+          chmod +x ./helm-working-dir/plugins
       volumeMounts:
         # Podの共有ボリュームにhelmプラグインを配置する。
         - mountPath: /helm-working-dir/plugins

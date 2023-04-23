@@ -2043,7 +2043,7 @@ $ tail -f foo.log
 
 ```bash
 $ mkdir /foo
-$ tar -xf foo.tar.gz -C /foo
+$ tar -xvf foo.tar.gz -C /foo
 ```
 
 > ↪️ 参考：https://www.itmedia.co.jp/help/tips/linux/l0418.html
@@ -2055,7 +2055,7 @@ $ tar -xf foo.tar.gz -C /foo
 圧縮ファイルを解凍する。
 
 ```bash
-$ tar -xf foo.tar.gz
+$ tar -xvf foo.tar.gz
 ```
 
 <br>
@@ -2067,7 +2067,7 @@ $ tar -xf foo.tar.gz
 これを付けない場合、テープドライブが指定される。
 
 ```bash
-$ tar -xf foo.tar.gz
+$ tar -xvf foo.tar.gz
 ```
 
 <br>
@@ -2097,8 +2097,11 @@ $ tar -xvf foo.tar.gz
 ただし、デフォルトで有効になっているため、オプションは付けないくても問題ない。
 
 ```bash
-$ tar -zxf foo.tar.gz
+# gオプションはデフォルトで有効になっている
+$ tar -xvf foo.tar.gz
 ```
+
+> ↪️ 参考：https://linuxfan.info/tar-z-option
 
 <br>
 
@@ -2199,6 +2202,58 @@ $ adduser -s /bin/false foo
 ```
 
 > ↪️ 参考：https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
+
+<br>
+
+### wget
+
+#### ▼ -o
+
+ダウンロードの実行ログの出力先のファイルを指定する。
+
+```bash
+$ wget -o wget.log http://www.example.com/
+```
+
+実行ログは例えば以下の通りである。
+
+```bash
+$ cat wget.log
+
+github.com (github.com) をDNSに問いあわせています... *.*.*.*
+
+...
+
+保存完了 [44368/44368]
+```
+
+> ↪️ 参考：https://prograshi.com/general/command/curl-o-and-wget-qo/
+
+#### ▼ -O
+
+保存先のファイル名を設定する。
+
+```bash
+$ wget -O foo.gz http://www.example.com/
+```
+
+> ↪️ 参考：https://www.karakaram.com/notes-on-curl-options/
+
+`-`の場合、標準出力に処理ログを出力することになり、ダウンロードは起こらない。
+
+```bash
+$ wget -O - http://www.example.com/
+```
+
+> ↪️ 参考：https://tech.kurojica.com/archives/990/
+
+#### ▼ -q
+
+ダウンロードの実行ログを取得しない。
+
+```bash
+$ wget -q http://www.example.com/
+```
 
 <br>
 

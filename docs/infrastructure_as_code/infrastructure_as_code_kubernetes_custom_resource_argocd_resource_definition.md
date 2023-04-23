@@ -508,20 +508,20 @@ spec:
       # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
       volumeMounts:
         # InitContainerでインストールしたバイナリファイルをコンテナにマウントする
-        - mountPath: /usr/local/bin/sops
-          name: custom-tools
+        - name: custom-tools
           subPath: sops
-        - mountPath: /usr/local/bin/kustomize
-          name: custom-tools
+          mountPath: /usr/local/bin/sops
+        - name: custom-tools
           subPath: kustomize
-        - mountPath: /usr/local/bin/ksops
-          name: custom-tools
+          mountPath: /usr/local/bin/kustomize
+        - name: custom-tools
           subPath: ksops
-        - mountPath: /helm-working-dir/plugins
-          name: custom-tools
+          mountPath: /usr/local/bin/ksops
+        - name: custom-tools
+          mountPath: /helm-working-dir/plugins
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
-        - mountPath: /app/config/ssh
-          name: ssh-known-hosts
+        - name: ssh-known-hosts
+          mountPath: /app/config/ssh
         # リポジトリに接続するためのSSL証明書をコンテナにマウントする
         - mountPath: /app/config/tls
           name: tls-certs
@@ -532,11 +532,11 @@ spec:
         - mountPath: /app/config/reposerver/tls
           name: argocd-repo-server-tls
         # ConfigManagementPluginのhelmコマンドを実行するディレクトリをコンテナにマウントする
-        - mountPath: /helm-working-dir
-          name: helm-working-dir
+        - name: helm-working-dir
+          mountPath: /helm-working-dir
         # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
-        - mountPath: /home/argocd/cmp-server/plugins
-          name: plugins
+        - name: plugins
+          mountPath: /home/argocd/cmp-server/plugins
         - mountPath: /tmp
           name: tmp
 
@@ -562,7 +562,7 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+          wget -q -o /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
         - mountPath: /custom-tools
@@ -587,17 +587,19 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O https://github.com/jkroepke/helm-secrets/releases/download/v4.4.2/helm-secrets.tar.gz | tar -C /helm-plugins -xzf-
-          cp /helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-working-dir/plugins
-          chmod +x /helm-working-dir/plugins
+          wget -q https://github.com/jkroepke/helm-secrets/releases/download/v4.4.2/helm-secrets.tar.gz
+          tar -xvf helm-secrets.tar.gz
+          mkdir -p ./helm-working-dir/plugins
+          cp ./helm-secrets/scripts/wrapper/helm.sh ./helm-working-dir/plugins
+          chmod +x ./helm-working-dir/plugins
       volumeMounts:
         - mountPath: /helm-working-dir/plugins
           name: custom-tools
 
   # 各種Secretを読み込む
   volumes:
-    - emptyDir: {}
-      name: custom-tools
+    - name: custom-tools
+      emptyDir: {}
     - name: helm-working-dir
       emptyDir: {}
     - name: plugins
