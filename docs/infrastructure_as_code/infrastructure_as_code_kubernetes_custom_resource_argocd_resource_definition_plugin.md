@@ -91,7 +91,7 @@ spec:
           cp -R helm-secrets /helm-working-dir/plugins/
           chmod +x /helm-working-dir/plugins/
       volumeMounts:
-        - name: helm-working-dir 
+        - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
     # Helmfile
     - name: helmfile-installer
@@ -109,7 +109,7 @@ spec:
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
-          
+
   # 共有ボリューム
   volumes:
     - name: custom-tools
@@ -146,6 +146,8 @@ argocd@repo-server:/usr/local/bin] $ ls -la
 argo-reposerverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
 
 このとき、事前準備として`argocd`コマンドをコピーするためのInitContainerが必要である。
+
+サイドカーで使用するベースイメージがArgoCDのコンテナイメージではなく、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) の場合、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。
 
 ```yaml
 apiVersion: v1
@@ -542,7 +544,7 @@ spec:
           mountPath: /usr/local/bin/sops
           # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
           subPath: sops
-          
+
       ...
 
   initContainers:
@@ -560,7 +562,7 @@ spec:
       volumeMounts:
         # Podの共有ボリュームに、SOPSを配置する。
         - name: custom-tools
-          mountPath: /custom-tools    
+          mountPath: /custom-tools
     - name: helm-plugins-installer
       image: alpine:latest
       command:

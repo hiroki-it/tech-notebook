@@ -2706,7 +2706,7 @@ spec:
           subPath: www
           # コンテナのvarディレクトリをマウントする
           mountPath: /var
-          
+
   volumes:
     - name: foo-volume
       emptyDir: {}
@@ -2734,12 +2734,11 @@ spec:
           subPath: www.conf
           # コンテナに/etc/www.confファイルとしてマウントする
           mountPath: /etc/www.conf
-          
+
   volumes:
     - name: foo-volume
       emptyDir: {}
 ```
-
 
 > ↪️ 参考：https://stackoverflow.com/a/53503986
 

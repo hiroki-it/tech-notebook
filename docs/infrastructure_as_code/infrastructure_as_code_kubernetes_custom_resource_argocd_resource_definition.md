@@ -585,7 +585,7 @@ spec:
       volumeMounts:
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
-          
+
   # 各種Secretを読み込む
   volumes:
     - name: custom-tools

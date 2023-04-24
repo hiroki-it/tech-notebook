@@ -296,11 +296,11 @@ status:
   reason: Evicted
 ```
 
-| 理由    | 説明                                                                    |
-| ------- |-----------------------------------------------------------------------|
-| Completed | コンテナが正常に終了した。InitContainerの実行後に見られる。                                  |
-| Evicted | Nodeのハードウェアリソース不足のため、Podが退避対象となった。`Evicted`が理由の場合、`Failed`フェーズが最後となる。 |
-| Unknown | 原因が不明である。                                                             |
+| 理由      | 説明                                                                                                               |
+| --------- | ------------------------------------------------------------------------------------------------------------------ |
+| Completed | コンテナが正常に終了した。InitContainerの実行後に見られる。                                                        |
+| Evicted   | Nodeのハードウェアリソース不足のため、Podが退避対象となった。`Evicted`が理由の場合、`Failed`フェーズが最後となる。 |
+| Unknown   | 原因が不明である。                                                                                                 |
 
 > ↪️ 参考：https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/developer_guide/diagnosing-evicted-pod
 

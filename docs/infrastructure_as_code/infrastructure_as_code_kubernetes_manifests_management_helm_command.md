@@ -79,6 +79,37 @@ Saving 1 charts
 
 <br>
 
+### env
+
+#### ▼ env
+
+Helmの環境変数を表示する。
+
+```bash
+$ helm env
+
+HELM_BIN="helm"
+HELM_CACHE_HOME="/Users/username/Library/Caches/helm"
+HELM_CONFIG_HOME="/Users/username/Library/Preferences/helm"
+HELM_DATA_HOME="/Users/username/Library/helm"
+HELM_DEBUG="false"
+HELM_KUBEAPISERVER=""
+HELM_KUBEASGROUPS=""
+HELM_KUBEASUSER=""
+HELM_KUBECAFILE=""
+HELM_KUBECONTEXT=""
+HELM_KUBETOKEN=""
+HELM_MAX_HISTORY="10"
+HELM_NAMESPACE="default"
+# Helmのプラグインの場所
+HELM_PLUGINS="/Users/username/Library/helm/plugins"
+HELM_REGISTRY_CONFIG="/Users/username/Library/Preferences/helm/registry.json"
+HELM_REPOSITORY_CACHE="/Users/username/Library/Caches/helm/repository"
+HELM_REPOSITORY_CONFIG="/Users/username/Library/Preferences/helm/repositories.yaml"
+```
+
+> ↪️ 参考：https://stackoverflow.com/questions/62924278/where-are-helm-charts-stored-locally/66416122#66416122
+
 ### get
 
 #### ▼ getとは
