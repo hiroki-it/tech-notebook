@@ -272,7 +272,7 @@ class Foo
     {
         try {
 
-            // ```【１】```
+            // `【１】`
 
 :
             echo "Aの直前です";
@@ -280,7 +280,7 @@ class Foo
 
         } catch (ExternalApiErrorException $exception) {
 
-            // ```【２】```
+            // `【２】`
 
 :
             echo "Bの直前です";
@@ -288,7 +288,7 @@ class Foo
 
         } catch (HttpRequestErrorException $exception) {
 
-            // ```【３】```
+            // `【３】`
 
 :
             echo "Cの直前です";
@@ -296,7 +296,7 @@ class Foo
 
         } catch (Exception $exception) {
 
-            // ```【４】```
+            // `【４】`
 
 :
             echo "Dの直前です";
@@ -319,28 +319,28 @@ class Foo
 : のいずれかで返却される時、返却の直前にfinally句が実行されることがわかる。
 
 ````php
-// ```【１】```
+// `【１】`
 
 :    の場合
 // Aの直前です。
 // Eです。
 // Aです。
 
-// ```【２】```
+// `【２】`
 
 :    の場合
 // Bの直前です。
 // Eです。
 // Bです。
 
-// ```【３】```
+// `【３】`
 
 :    の場合
 // Cの直前です。
 // Eです。
 // Cです。
 
-// ```【４】```
+// `【４】`
 
 :    の場合
 // Dの直前です。

@@ -76,7 +76,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: argocd
 data:
-  globalProjects: |-
+  globalProjects: |
     - projectName: foo-global-project
       labelSelector:
         matchExpressions:

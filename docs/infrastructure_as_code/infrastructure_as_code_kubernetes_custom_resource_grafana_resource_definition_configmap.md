@@ -38,7 +38,7 @@ metadata:
   name: grafana
   namespace: prometheus
 data:
-  datasource.yaml: |-
+  datasource.yaml: |
     apiVersion: 1
     datasources:
       - name: prometheus
@@ -67,7 +67,7 @@ metadata:
   name: grafana
   namespace: prometheus
 data:
-  datasource.yaml: |-
+  datasource.yaml: |
     apiVersion: 1
     datasources:
       - name: victoria-metrics
@@ -286,7 +286,7 @@ metadata:
   name: grafana
   namespace: prometheus
 data:
-  provider.yaml: |-
+  provider.yaml: |
     apiVersion: 1
     providers:
       - name: 'sidecarProvider'

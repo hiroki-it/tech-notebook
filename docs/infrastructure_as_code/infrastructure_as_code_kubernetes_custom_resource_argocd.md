@@ -149,14 +149,14 @@ ArgoCDのカスタムリソース (例：Application、AppProject、など) とC
 
 ### GitOpsエンジン
 
-ArgoCDや、その他のGitOpsのためのCDツール (例：Flux) は、gitops-engineパッケージをコールし、GitOpsの基本的な処理を実行する。
+ArgoCDや、その他のGitOpsのためのCDツール (例：Flux) は、gitops-engineパッケージをコールし、ヘルスチェックからデプロイまでの基本的な処理を実行する。
 
 ```yaml
 gitops-engine
 ├── pkg
 │   ├── cache
 │   ├── diff   # リポジトリとClusterの間のマニフェストの差分を検出する。ArgoCDのDiff機能に相当する。
-│   ├── engine # 他のパッケージを使い、GitOpsの一連の処理を実行する。
+│   ├── engine # 他のパッケージを使い、一連の処理を実行する。
 │   ├── health # Clusterのステータスをチェックする。ArgoCDのヘルスチェック機能に相当する。
 │   ├── sync   # Clusterにマニフェストをデプロイする。ArgoCDのSync機能に相当する。
 │   └── utils  # 他のパッケージに汎用的な関数を提供する。

@@ -531,16 +531,14 @@ document.addEventListener("DOMContentLoaded", () => {
 ````javascript
 // 1つ目
 document.getElementById("btn").addEventListener("click", () => {
-	console.log("イベントが発火しました```【１】```
+	console.log("イベントが発火しました`【１】`
 
 :    ");
 }, false);
 
 // 2つ目
 document.getElementById("btn").addEventListener("click", () => {
-	console.log("イベントが発火しました```【２】```
-
-:    ");
+	console.log("イベントが発火しました`【２】`");
 }, false);
 ````
 

@@ -308,15 +308,15 @@ if (PHP_VERSION_ID < 70000) {
     $kernel->loadClassCache();
 }
 
-$request = Request::createFromGlobals();  //```【１】```
+$request = Request::createFromGlobals();  //`【１】`
 
 :
 
-$response = $kernel->handle($request); //```【２】```
+$response = $kernel->handle($request); //`【２】`
 
 :
 
-$response->send(); //```【３】```
+$response->send(); //`【３】`
 
 :
 

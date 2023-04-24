@@ -171,7 +171,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     extensionProviders:
       - name: oauth2-proxy
         envoyExtAuthzHttp:

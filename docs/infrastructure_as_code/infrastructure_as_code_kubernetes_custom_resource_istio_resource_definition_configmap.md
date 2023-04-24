@@ -73,7 +73,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     accessLogEncoding: JSON
 ```
 
@@ -94,7 +94,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     accessLogFile: /dev/stdout
 ```
 
@@ -115,7 +115,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       proxyMetadata:
         ISTIO_META_CERT_SIGNER: istio-system
@@ -160,7 +160,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
 ```
@@ -174,7 +174,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       enablePrometheusMerge: true
 ```
@@ -188,7 +188,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       holdApplicationUntilProxyStarts: true
 ```
@@ -202,7 +202,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       proxyMetadata:
         ISTIO_META_DNS_CAPTURE: "true"
@@ -218,7 +218,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       rootNamespace: istio-system
 ```
@@ -238,7 +238,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       enableTracing: true
       tracing:
@@ -256,7 +256,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     defaultConfig:
       trustDomain: cluster.local
 ```
@@ -278,7 +278,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     enableTracing: true
     defaultConfig:
       tracing:
@@ -314,7 +314,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     extensionProviders:
       - name: oauth2-proxy
         envoyExtAuthzHttp:
@@ -367,7 +367,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     holdApplicationUntilProxyStarts: true
 ```
 
@@ -412,7 +412,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     ingressSelector: ingressgateway
 ```
 
@@ -433,7 +433,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     ingressService: ingressgateway
 ```
 
@@ -454,7 +454,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     proxyHttpPort: 80
 ```
 
@@ -475,7 +475,7 @@ metadata:
   name: istio-mesh-cm
   namespace: istio-system
 data:
-  mesh: |-
+  mesh: |
     proxyListenPort: 80
 ```
 
@@ -496,7 +496,7 @@ metadata:
   name: istio-sidecar-injector-<リビジョン番号>
   namespace: istio-system
 data:
-  config: |-
+  config: |
     defaultTemplates: [sidecar]
     policy: enabled
     alwaysInjectSelector: []
@@ -522,7 +522,7 @@ metadata:
   name: istio-sidecar-injector-<リビジョン番号>
   namespace: istio-system
 data:
-  values: |-
+  values: |
     { 
       global: { ... }
       revision: <リビジョン番号>
