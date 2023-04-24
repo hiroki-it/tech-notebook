@@ -532,7 +532,7 @@ spec:
         # ConfigManagementPluginのhelmコマンドを実行するディレクトリをコンテナにマウントする
         - name: helm-working-dir
           mountPath: /helm-working-dir
-        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
         - name: tmp

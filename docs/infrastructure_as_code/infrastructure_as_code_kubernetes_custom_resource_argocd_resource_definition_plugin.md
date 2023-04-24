@@ -165,14 +165,13 @@ spec:
         - --port=8081
         - --metrics-port=8084
       volumeMounts:
-        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
     # ConfigManagementPluginに定義した処理を実行するサイドカー
     # argocd-cmp-serverコマンドは "plugin.yaml" の名前しか指定できないため、ConfigManagementPluginごとにサイドカーを作成する
     - name: foo-plugin-cmp-server
-      # ビルトインのプラグインを使用したため、ArgoCDのイメージを使用する
-      image: quay.io/argoproj/argocd:lastest
+      image: ububtu:latest
       command:
         # エントリポイントは固定である
         - /var/run/argocd/argocd-cmp-server
@@ -187,7 +186,7 @@ spec:
       volumeMounts:
         - name: var-files
           mountPath: /var/run/argocd
-        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
         - name: tmp
@@ -197,8 +196,8 @@ spec:
           mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: foo-plugin.yaml
         # 各ツールのバイナリをコンテナにマウントする
-        - mountPath: /bin/sops
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /bin/sops
           subPath: sops
         - mountPath: /bin/kustomize
           name: custom-tools
@@ -212,7 +211,7 @@ spec:
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
     - name: bar-plugin-cmp-server
-      image: busybox:lastest
+      image: ubuntu:latest
       command:
         - /var/run/argocd/argocd-cmp-server
       securityContext:
@@ -221,7 +220,7 @@ spec:
       volumeMounts:
         - name: var-files
           mountPath: /var/run/argocd
-        # cmp-serverとパケットを送受信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
         - name: tmp
@@ -334,7 +333,7 @@ data:
           - -c
         args:
           - |
-            # 必要なマニフェストを定義する。
+            # マニフェストの作成時に実行したい処理を定義する。
   bar-plugin.yaml: |
     ...
 ```
