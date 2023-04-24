@@ -176,7 +176,7 @@ OIDCを使用して、ArgoCDにログインできるようにする。
 
 #### ▼ 委譲先Webサイトに直接的に接続する場合
 
-ArgoCDから認証フェーズの委譲先のWebサイトに情報を直接的に接続する。
+ArgoCDから認証フェーズの委譲先のIDプロバイダーに情報を直接的に接続する。
 
 OIDCのIDプロバイダー (例：Auth0、GitHub、KeyCloak、AWS Cognito、Google Auth) が発行したクライアントIDやクライアントシークレットを設定する。
 
@@ -200,7 +200,7 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # 委譲先のWebサイトがOIDCのリクエストを待ち受けるURLを設定する。
+        # 委譲先のIDプロバイダーがOIDCのリクエストを待ち受けるURLを設定する。
         redirectURI: https://example.com/api/dex
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
@@ -215,7 +215,7 @@ data:
 
 #### ▼ Dexを介して委譲先Webサイトに接続する場合
 
-ArgoCDから認証フェーズの委譲先のWebサイトに直接的に接続するのではなく、ハブとしてのDexを使用する。
+ArgoCDから認証フェーズの委譲先のIDプロバイダーに直接的に接続するのではなく、ハブとしてのDexを使用する。
 
 Dexは`dex-server`コンテナとして稼働させる。
 
@@ -228,7 +228,7 @@ metadata:
 data:
   admin.enabled: true
 
-  # OIDCに必要なIDやトークンを設定する。
+  # 必要なIDやトークンを設定する。
   dex.config: |
     connectors:
       - type: github
@@ -237,7 +237,7 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # 委譲先のWebサイトがOIDCのリクエストを待ち受けるURLを設定する。
+        # 委譲先のIDプロバイダーがリクエストを待ち受けるURLを設定する。
         redirectURI: https://example.com/api/dex
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
@@ -489,11 +489,10 @@ data:
 
 **＊実装例＊**
 
-実行環境 (`dev`、`tes`、`prd`) 別にプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
+実行環境 (`dev`、`prd`) 別にプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
 
-- `admin`ロールに、全ての認可スコープ
-- `app`ロールに、プロジェクト配下の全ての認可スコープ
-- `infra`ロールに、プロジェクト配下の全ての認可スコープ
+- `dev`ロールに、dev環境の認可スコープ
+- `prd`ロールに、prd環境の認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -506,14 +505,12 @@ data:
   policy.default: role:readonly
   policy.csv: |
     # ロールに認可スコープを紐付ける。
-    p, role:admin, *, *, *, allow
-    p, role:app, *, *, *, allow
-    p, role:infra, *, *, *, allow
+    p, role:developer, *, *, dev/*, allow
+    p, role:maintainer, *, *, *, allow
 
     # グループにロールを紐付ける。
-    g, admin, role:admin
-    g, app-team, role:app
-    g, infra-team, role:infra
+    g, developers, role:developer
+    g, maintainers, role:maintainer
   scopes: "[groups]"
 ```
 

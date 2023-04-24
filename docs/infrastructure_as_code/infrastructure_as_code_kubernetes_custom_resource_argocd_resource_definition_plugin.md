@@ -264,6 +264,11 @@ spec:
 $ kubectl logs argocd-repo-server -c foo-plugin-cmp-server
 
 time="2023-04-17T12:35:39Z" level=info msg="argocd-cmp-server v2.6.7+5bcd846 serving on /home/argocd/cmp-server/plugins/foo-plugin.sock"
+
+$ kubectl exec -it argocd-repo-server -c foo-plugin-cmp-server \
+    -- bash -c "ls /home/argocd/cmp-server/plugins/"
+
+foo-plugin.sock
 ```
 
 なお、`plugin.yaml`ファイルと別のディレクトリに配置したい場合は、`argocd-cmp-server`コマンドの`--config-dir-path`オプションを使用する (`plugin.yaml`ファイルは、これ以外の名前を設定できない)。

@@ -155,7 +155,7 @@ $ kubectl get csv -n operators
 
 ```bash
 $ kubectl patch service argocd-server \
-    -n argocd \
+    -n foo \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
@@ -165,7 +165,7 @@ $ kubectl patch service argocd-server \
 
 ```bash
 $ kubectl get secret argocd-initial-admin-secret \
-    -n argocd \
+    -n foo \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 

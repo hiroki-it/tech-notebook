@@ -339,8 +339,7 @@ argocd-repo-credsの`data.url`キーには、argocd-repoの`data.url`キーの�
 apiVersion: v1
 kind: Secret
 metadata:
-  # レジストリ内の全てのリポジトリに適用するため、レジストリ名がわかるような名前にする。
-  name: argocd-repo-creds-hiroki-hasegawa
+  name: argocd-repo-creds-github
   namespace: argocd
   labels:
     argocd.argoproj.io/secret-type: repo-creds
@@ -621,7 +620,7 @@ $ kubectl config use-context <ArgoCDの稼働するClusterのARN>
 
 ```bash
 $ kubectl get secret argocd-initial-admin-secret \
-    -n argocd \
+    -n foo \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 

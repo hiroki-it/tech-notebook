@@ -85,11 +85,13 @@ SSOを採用する時に、SSOの認証認可処理の認証フェーズを外�
 
 この時、認証情報 (例：クライアントID、クライアントシークレット、など) を直接的にIDプロバイダーに送信するのではなく、SSOプロキシであるdex-serverを介して送信できる。
 
-ArgoCDの認証認可処理は、AuthN (認証) と AuthZ (認可) から構成されている。
+argocd-serverの認証認可処理は、AuthN (認証) と AuthZ (認可) から構成されている。
 
 このAuthNの処理でdex-serverに認証情報を送信すると、dex-serverが適切なIDプロバイダーから認証フェーズの処理結果を取得してくれる。
 
-argocd-apiserverは、取得した情報に基づいて、AuthZで認可処理を実施する。
+SSO時、argocd-serverは、AuthNの認証処理をIDプロバイダーに委譲する。
+
+argocd-serverは、AuthZで認可処理を実施し、IDプロバイダーから取得したユーザーに認可スコープを紐づける。
 
 ![argocd_auth_architecture.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_auth_architecture.jpg)
 
@@ -271,7 +273,7 @@ application-controllerの処理 (マニフェスト取得、Clusterの状態確�
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argocd \
+    -n foo \
     -- bash -c "ls -la /tmp"
 ```
 
@@ -300,7 +302,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argocd \
+    -n foo \
     -- bash -c "sops --version"
 ```
 
@@ -311,7 +313,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argocd \
+    -n foo \
     -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-repository && helm template foo-chart -f values-prd.yaml"
 ```
 
@@ -403,7 +405,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : CIツールは、マニフェストリポジトリをクローンし、チャート内のマニフェストのコンテナイメージのハッシュ値を変更する。
 
-     このマニフェストの変更は、```yq```コマンドなどで直接的に実行する。
+     このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。
 
 `【４】`
 
