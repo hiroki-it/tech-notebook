@@ -197,15 +197,15 @@ spec:
           subPath: foo-plugin.yaml
         # 各ツールのバイナリをコンテナにマウントする
         - name: custom-tools
-          mountPath: /bin/sops
+          mountPath: /usr/local/bin/sops
           subPath: sops
-        - mountPath: /bin/kustomize
+        - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
-        - mountPath: /bin/ksops
+        - mountPath: /usr/local/bin/ksops
           name: custom-tools
           subPath: ksops
-        - mountPath: /bin/helmfile
+        - mountPath: /usr/local/bin/helmfile
           name: custom-tools
           subPath: helmfile
         - mountPath: /helm-working-dir/plugins
@@ -400,12 +400,20 @@ metadata:
   name: argocd-repo-server-pod
 spec:
   containers:
-    - name: repo-server
-      image: quay.io/argoproj/argocd:latest
+    - name: helmfile-plugin-cmp-server
+      image: ububtu:latest
+      command:
+        - /var/run/argocd/argocd-cmp-server
+      env:
+        - name: HELM_PLUGINS
+          value: /helm-working-dir/plugins
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
       volumeMounts:
         # helmfileのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/helmfile
-          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でHelmfileを使用する。
+          # Podの共有ボリュームを介して、コンテナ内でHelmfileを使用する。
           name: custom-tools
           subPath: helmfile
 
@@ -532,21 +540,25 @@ metadata:
   name: argocd-repo-server-pod
 spec:
   containers:
-    - name: repo-server
-      image: quay.io/argoproj/argocd:latest
+    - name: helm-plugin-cmp-server
+      image: ububtu:latest
+      command:
+        - /var/run/argocd/argocd-cmp-server
       env:
-        # helmプラグインの場所を指定する。
         - name: HELM_PLUGINS
           value: /helm-working-dir/plugins
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
       volumeMounts:
-        # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でhelm-secretsを使用する。
+        # Podの共有ボリュームを介して、コンテナ内でhelm-secretsを使用する。
         - name: custom-tools
           # helm-secretsのバイナリファイルを置くパスを指定する。
           mountPath: /helm-working-dir/plugins
         # SOPSのバイナリファイルを置くパスを指定する。
         - name: custom-tools
           mountPath: /usr/local/bin/sops
-          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でSOPSを使用する。
+          # Podの共有ボリュームを介して、コンテナ内でSOPSを使用する。
           subPath: sops
 
       ...
@@ -831,17 +843,25 @@ metadata:
   name: argocd-repo-server-pod
 spec:
   containers:
-    - name: repo-server
-      image: quay.io/argoproj/argocd:latest
+    - name: kustomize-plugin-cmp-server
+      image: ububtu:latest
+      command:
+        - /var/run/argocd/argocd-cmp-server
+      env:
+        - name: HELM_PLUGINS
+          value: /helm-working-dir/plugins
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
       volumeMounts:
         # Kustomizeのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/kustomize
-          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でKustomizeを使用する。
+          # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
           name: custom-tools
           subPath: kustomize
         # KSOPSのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/ksops
-          # Podの共有ボリュームを介して、argocd-repo-serverのコンテナ内でKSOPSを使用する。
+          # Podの共有ボリュームを介して、コンテナ内でKSOPSを使用する。
           name: custom-tools
           subPath: ksops
 

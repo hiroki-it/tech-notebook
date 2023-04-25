@@ -260,7 +260,7 @@ class Foo
 
 finally句は、try句やcatch句の返却処理が行われる直前に実行されるため、finally句では、`return`や`continue`を使用しないようにする。
 
-````php
+```php
 <?php
 
 use Exception\ExternalApiErrorException;
@@ -310,7 +310,7 @@ class Foo
         }
     }
 }
-````
+```
 
 `【１】`
 
@@ -318,7 +318,7 @@ class Foo
 
 : のいずれかで返却される時、返却の直前にfinally句が実行されることがわかる。
 
-````php
+```php
 // `【１】`
 
 :    の場合
@@ -346,7 +346,7 @@ class Foo
 // Dの直前です。
 // Eです。
 // Dです。
-````
+```
 
 <br>
 

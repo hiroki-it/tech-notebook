@@ -296,7 +296,7 @@ done
 
 **【app.phpの実装例】**
 
-````php
+```php
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
@@ -321,7 +321,7 @@ $response->send(); //`【３】`
 :
 
 $kernel->terminate($request, $response);
-````
+```
 
 上記の`handle`メソッドが定義されているファイル。
 

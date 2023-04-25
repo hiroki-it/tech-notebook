@@ -644,7 +644,7 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 #### ▼ stored procedureとは
 
-あらかじめ一連のSQL文をDBに格納しておき、Call文で呼び出す方式。
+あらかじめ一連のSQL文をDBに格納しておき、Call文でコールする方式。
 
 > ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
 

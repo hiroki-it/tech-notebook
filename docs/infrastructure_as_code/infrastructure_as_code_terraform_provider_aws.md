@@ -91,7 +91,7 @@ resource "aws_acm_certificate_validation" "www_an1" {
 
 DNS検証の場合を示す。
 
-````terraform
+```terraform
 # ---------------------------------------------
 # For www domain
 # ---------------------------------------------
@@ -102,7 +102,7 @@ resource "aws_acm_certificate_validation" "www_an1" {
   certificate_arn         = aws_acm_certificate.www_an1.arn
   validation_record_fqdns = [for record in var.www_an1_route53_record : record.fqdn]
 }
-````
+```
 
 #### `【１】`AWS以外でドメインを購入した場合は注意
 
@@ -1386,7 +1386,7 @@ Terraformを書き換えなくとも問題は起こらないが、Terraformの�
 
 <br>
 
-### `【６】``for_each`引数を使用して
+### ` 【６】``for_each `引数を使用して
 
 Auroraでは、クラスターにインスタンスを1つだけ紐付けると、プライマリーインスタンスとして作成される。
 

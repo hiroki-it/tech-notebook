@@ -528,7 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 ```
 
-````javascript
+```javascript
 // 1つ目
 document.getElementById("btn").addEventListener("click", () => {
 	console.log("イベントが発火しました`【１】`
@@ -540,7 +540,7 @@ document.getElementById("btn").addEventListener("click", () => {
 document.getElementById("btn").addEventListener("click", () => {
 	console.log("イベントが発火しました`【２】`");
 }, false);
-````
+```
 
 <br>
 
