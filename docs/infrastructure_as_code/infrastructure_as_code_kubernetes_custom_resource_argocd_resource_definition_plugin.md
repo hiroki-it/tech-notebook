@@ -31,8 +31,6 @@ ArgoCDで任意のツールを使用する。
 
 連携先ツールをインストールするInitContainersを配置する。
 
-補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がargocd-repo-serverのコンテナイメージにあらかじめインストールされている。
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -132,6 +130,30 @@ argocd@repo-server:/usr/local/bin] $ ls -la
 -rwxr-xr-x 1 root argocd  29052413 May  9  2022 sops
 
 ...
+```
+
+補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がargocd-repo-serverのコンテナイメージにあらかじめインストールされている。
+
+```bash
+$ ls -la /usr/local/bin
+total 193408
+drwxr-xr-x 1 root root       224 Mar 23 15:11 .
+drwxr-xr-x 1 root root        17 Mar  8 02:05 ..
+-rwxr-xr-x 1 root root 138527528 Mar 23 15:11 argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-application-controller -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-applicationset-controller -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-cmp-server -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-dex -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-k8s-auth -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-notifications -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-repo-server -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-server -> /usr/local/bin/argocd
+-rwxr-xr-x 1 root root       205 Mar 23 14:41 entrypoint.sh
+-rwxr-xr-x 1 root root       934 Mar 23 14:41 git-verify-wrapper.sh
+-rwxr-xr-x 1 root root       215 Mar 23 14:41 gpg-wrapper.sh
+-rwxr-xr-x 1 root root  45125632 Mar 23 14:44 helm
+-rwxr-xr-x 1 root root  14381056 Mar 23 14:44 kustomize
+lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bin/entrypoint.sh
 ```
 
 > ↪️ 参考：
@@ -273,7 +295,8 @@ foo-plugin.sock
 なお、`plugin.yaml`ファイルと別のディレクトリに配置したい場合は、`argocd-cmp-server`コマンドの`--config-dir-path`オプションを使用する (`plugin.yaml`ファイルは、これ以外の名前を設定できない)。
 
 ```bash
-[argocd@argocd-repo-server:~] $ argocd-cmp-server -h
+$ kubectl exec -it argocd-repo-server -c foo-plugin-cmp-server \
+    -- bash -c "argocd-cmp-server -h"
 
 Usage:
   argocd-cmp-server [flags]

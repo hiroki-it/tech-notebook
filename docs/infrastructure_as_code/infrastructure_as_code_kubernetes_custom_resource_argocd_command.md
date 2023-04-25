@@ -176,3 +176,29 @@ $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 > - https://github.com/argoproj/argo-cd/issues/4104#issuecomment-685454997
 
 <br>
+
+## 03. argocd-serverコマンド
+
+### version
+
+ArgoCDのrepo-serverに内蔵されているプラグインのバージョンを取得する。
+
+```bash
+$ argocd-server version
+
+{
+    "Version": "v2.6.7+5bcd846",
+    "BuildDate": "2023-03-23T14:57:27Z",
+    "GitCommit": "*****",
+    "GitTreeState": "clean",
+    "GoVersion": "go1.18.10",
+    "Compiler": "gc",
+    "Platform": "linux/amd64",
+    "KustomizeVersion": "v4.5.7 2022-08-02T16:35:54Z",
+    "HelmVersion": "v3.10.3+g835b733",
+    "KubectlVersion": "v0.24.2",
+    "JsonnetVersion": "v0.19.1"
+}
+```
+
+<br>

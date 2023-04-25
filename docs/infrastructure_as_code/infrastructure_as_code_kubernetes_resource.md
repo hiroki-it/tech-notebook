@@ -1034,6 +1034,28 @@ tmpfs           3.9G     0  3.9G   0% /proc/acpi
 tmpfs           3.9G     0  3.9G   0% /sys/firmware
 ```
 
+Podが持つVolumeの一覧は、`kubectl describe`コマンドで確認できる。
+
+```bash
+$ kubectl describe pod
+
+...
+
+Volumes:
+  foo-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  bar-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  baz-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      baz-cm
+    Optional:  false
+```
+
 > ↪️ 参考：
 >
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
