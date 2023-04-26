@@ -106,7 +106,7 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 `【７】`
 
-: JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示、のリスナーを追加する。これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルを元にした集計データを得られる。
+: JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示、のリスナーを追加する。これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルに基づく集計データを得られる。
 
 `【８】`
 

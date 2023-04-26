@@ -149,7 +149,7 @@ $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 
 #### ▼ -e
 
-外部の暗号化キー (例：AWS KMS、Google CKM、など) に基づいて、`.yaml`ファイルや`.json`ファイルの値の部分を暗号化する。
+外部の暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) に基づいて、`.yaml`ファイルや`.json`ファイルの値の部分を暗号化する。
 
 環境変数や`.sops.yaml`ファイルで暗号化ルールを定義しておく必要がある。
 

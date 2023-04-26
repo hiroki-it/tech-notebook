@@ -262,7 +262,7 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、セキュリ
 
 `~/.kube/config`ファイルは機密性が高く、漏洩させたくない。
 
-ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。
+ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。
 
 > ↪️ 参考：https://devops-blog.virtualtech.jp/entry/20220418/1650250499
 

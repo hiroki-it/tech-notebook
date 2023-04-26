@@ -54,7 +54,7 @@ Active Recordパターンで実装されている。
 
 ## 03. Eloquentモデル
 
-### テーブル設計を元にしたEloquentモデル
+### テーブル設計に基づくEloquentモデル
 
 #### ▼ Eloquentモデルの継承
 
