@@ -1044,11 +1044,11 @@ $ kubectl describe pod
 Volumes:
   foo-volume:
     Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
-    Medium:     
+    Medium:
     SizeLimit:  <unset>
   bar-volume:
     Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
-    Medium:     
+    Medium:
     SizeLimit:  <unset>
   baz-volume:
     Type:      ConfigMap (a volume populated by a ConfigMap)

@@ -48,6 +48,38 @@ spec:
   initContainers:
     # お好きなツールをインストールするInitContainer
     # ツールごとにInitContainerを作成する
+    # Helm
+    - name: helm-installer
+      image: alpine:3.17.3
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q https://get.helm.sh/helm-<バージョン>-linux-amd64.tar.gz
+          tar -xvf helm-<バージョン>-linux-amd64.tar.gz
+          cp helm /custom-tools/
+          chmod +x /custom-tools
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+    # Helmfile
+    - name: helmfile-installer
+      image: alpine:3.17.3
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
+          tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
+          cp helmfile /custom-tools/
+          chmod +x /custom-tools
+      volumeMounts:
+        - name: custom-tools
+          mountPath: /custom-tools
     - name: sops-installer
       image: alpine:latest
       command:
@@ -91,22 +123,6 @@ spec:
       volumeMounts:
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
-    # Helmfile
-    - name: helmfile-installer
-      image: alpine:3.17.3
-      command:
-        - /bin/sh
-        - -c
-      args:
-        - |
-          apk --update add wget
-          wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
-          tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
-          cp helmfile /custom-tools/
-          chmod +x /custom-tools
-      volumeMounts:
-        - name: custom-tools
-          mountPath: /custom-tools
 
   # 共有ボリューム
   volumes:
@@ -219,17 +235,20 @@ spec:
           subPath: foo-plugin.yaml
         # 各ツールのバイナリをコンテナにマウントする
         - name: custom-tools
+          subPath: helm
+          mountPath: /usr/local/bin/helm
+        - name: custom-tools
+          mountPath: /usr/local/bin/helmfile
+          subPath: helmfile
+        - name: custom-tools
           mountPath: /usr/local/bin/sops
           subPath: sops
-        - mountPath: /usr/local/bin/kustomize
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /usr/local/bin/kustomize
           subPath: kustomize
-        - mountPath: /usr/local/bin/ksops
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /usr/local/bin/ksops
           subPath: ksops
-        - mountPath: /usr/local/bin/helmfile
-          name: custom-tools
-          subPath: helmfile
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
     - name: bar-plugin-cmp-server
@@ -406,7 +425,7 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 #### ▼ Helmfileのインストール
 
-argocd-repo-serverがHelmfileを使用できるように、Helmfileをインストールする。
+Helmfileを使用できるように、Helmfileをインストールする。
 
 ArgoCDとHelmfileを連携すれば、`helmfile`コマンドを宣言的に実行しつつ、実行を自動化できる。
 
@@ -550,7 +569,7 @@ spec:
 
 #### ▼ helmプラグインのインストール
 
-argocd-repo-serverがhelmプラグインを使用できるように、helmプラグインをインストールする。
+helmプラグインを使用できるように、helmプラグインをインストールする。
 
 **＊実装例＊**
 
@@ -849,7 +868,7 @@ spec:
 
 #### ▼ KSOPSのインストール
 
-argocd-repo-serverがKSOPSを使用できるように、KSOPSをインストールする。
+KSOPSを使用できるように、KSOPSをインストールする。
 
 KSOPSはコンテナイメージがあるため、軽量のInitContainerを用意するのではなく、KSOPSのコンテナイメージを使用する。
 
@@ -920,6 +939,22 @@ spec:
 
 <br>
 
+#### ▼ オプションの有効化
+
+KSOPSを使用するために、Kustomizeの起動時にオプションが必要である。
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  kustomize.buildOptions: --enable-alpha-plugins --enable-exec
+  kustomize.path.v4.2.0: /custom-tools/kustomize_4_2_0
+```
+
 ### プラグインの使用
 
 Applicationの`.spec.kustomize`キーで、使用するKustomizeのバージョンを指定する。
@@ -950,7 +985,7 @@ spec:
 
 #### ▼ Vaultのインストール
 
-argocd-repo-serverがVaultを使用できるように、Vaultをインストールする。
+Vaultを使用できるように、Vaultをインストールする。
 
 > ↪️ 参考：
 >

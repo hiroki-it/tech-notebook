@@ -105,7 +105,7 @@ spec: ...
 
 Kustomizeの実行時に、コマンドに渡すパラメーターを設定する。
 
-特に、Kustomizeのプラグイン (例：ksopsなど) を使用する場合、`--enable-alpha-plugins`オプションと`--enable-exec`オプションを有効化する必要がある。
+特に、Kustomizeのプラグイン (例：KSOPSなど) を使用する場合、`--enable-alpha-plugins`オプションと`--enable-exec`オプションを有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -127,9 +127,9 @@ data:
 
 #### ▼ kustomize.path.<バージョン>とは
 
-使用するKustomizeのバージョンと、バイナリファイルの置き場所を設定する。
+デフォルトのKustomizeのバージョン以外のものも使用したい場合に、そののバージョンと、バイナリファイルの置き場所を設定する。
 
-複数のKustomizeを使用できる。
+複数のバージョンのKustomizeを使用できる。
 
 ```yaml
 apiVersion: v1

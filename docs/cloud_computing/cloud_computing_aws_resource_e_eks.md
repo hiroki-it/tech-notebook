@@ -902,7 +902,7 @@ FargateワーカーNode内のログを転送する上で、FargateはDaemonSet�
 
 : ログ転送コンテナのためのNamespaceを作成する。
 
-     名前は、必ず```aws-observability```とする。
+     名前は、必ず`aws-observability`とする。
 
 > ↪️ 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
@@ -921,7 +921,7 @@ metadata:
 
      これより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからCloudWatchログにログを送信できるようになる。
 
-     名前は、必ず```aws-logging```とする。
+     名前は、必ず`aws-logging`とする。
 
 > ↪️ 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 

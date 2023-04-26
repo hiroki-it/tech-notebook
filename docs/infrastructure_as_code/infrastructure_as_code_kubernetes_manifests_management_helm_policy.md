@@ -354,7 +354,7 @@ Error: unable to build kubernetes objects from release manifest: [unable to reco
 
 : 旧バージョンのCRDを削除する。
 
-     Helmは、CRDの削除に対応していないため、`kubectl delete```コマンドを使用する。
+     Helmは、CRDの削除に対応していないため、`kubectl delete`コマンドを使用する。
 
 ```bash
 $ kubectl delete -f <旧バージョンのCRDのマニフェストのURL>

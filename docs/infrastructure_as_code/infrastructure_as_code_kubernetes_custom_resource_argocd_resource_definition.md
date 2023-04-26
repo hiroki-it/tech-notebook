@@ -552,6 +552,22 @@ spec:
         - mountPath: /var/run/argocd
           name: var-files
     # お好きなツールをインストールするInitContainer
+    # Helm
+    - name: helm-installer
+      image: alpine:3.17.3
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apk --update add wget
+          wget -q https://get.helm.sh/helm-<バージョン>-linux-amd64.tar.gz
+          tar -xvf helm-<バージョン>-linux-amd64.tar.gz
+          cp helm /custom-tools/
+          chmod +x /custom-tools
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
     - name: sops-installer
       image: alpine:latest
       command:
