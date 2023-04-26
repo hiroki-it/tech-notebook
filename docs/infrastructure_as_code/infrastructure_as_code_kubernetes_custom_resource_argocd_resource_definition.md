@@ -396,6 +396,7 @@ spec:
           name: plugins-home
         - mountPath: /shared/app/custom
           name: styles
+        # リポジトリから取得したクローンを保管するディレクトリをコンテナにマウントする
         - mountPath: /tmp
           name: tmp
 
@@ -535,6 +536,7 @@ spec:
         # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
+        # リポジトリから取得したクローンを保管するディレクトリをコンテナにマウントする
         - name: tmp
           mountPath: /tmp
 

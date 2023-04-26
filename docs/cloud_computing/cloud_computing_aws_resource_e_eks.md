@@ -274,6 +274,21 @@ metadata:
 
 IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate) にしかIAMロールを紐付けることができず、KubernetesリソースにIAMロールを直接的に紐付けることはできなかった。
 
+ServiceAcccountのトークンは、コンテナにファイルとしてマウントされている。
+
+```bash
+printenv | sort -f
+
+AWS_DEFAULT_REGION=ap-northeast-1
+AWS_REGION=ap-northeast-1
+AWS_ROLE_ARN=arn:aws:iam::<アカウントID>:role/argocd-reposerver
+AWS_STS_REGIONAL_ENDPOINTS=regional
+# ServiceAccountのトークン文字列が記載されたファイル
+AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/token
+
+...
+```
+
 > ↪️ 参考：
 >
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
@@ -392,7 +407,7 @@ $ kubectl apply -f service-account.yml
 
 `【５】`
 
-: トークンの文字列を取得する。
+: トークン文字列を取得する。
 
 ```bash
 $ kubectl -n kube-system describe secret $(kubectl get secret -n kube-system | grep eks-admin | awk '{print $1}')

@@ -264,7 +264,7 @@ application-controllerの処理 (マニフェスト取得、Clusterの状態確�
 
 ![argocd_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_repo-server.png)
 
-ポーリング対象リポジトリのマニフェストをクローンし、`/tmp`ディレクトリ以下に保管する。
+ポーリング対象リポジトリのマニフェストをクローンし、`/tmp/_argocd-repo/<UUID>`ディレクトリ (`2.3`以前は`/tmp`ディレクトリ) に保管する。
 
 マニフェスト管理ツール (例：Helm、Kustomize) を使用してマニフェストを作成し、またキャッシュを作成する。
 
@@ -274,7 +274,24 @@ application-controllerの処理 (マニフェスト取得、Clusterの状態確�
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
     -n foo \
-    -- bash -c "ls -la /tmp"
+    -- bash -c "ls /_argocd-repo/<UUID>"
+
+# 古いバージョンでは、ディレクトリ名はURLで決まる。
+# https://github.com/argoproj/argo-cd/issues/1446#issue-432385992
+https___github.com_hiroki-hasegawa_foo-repository
+
+# 新しいバージョンでは、UUIDになる。
+# https://github.com/argoproj/argo-cd/discussions/9889#discussioncomment-3093809
+*****-*****-*****-*****
+```
+
+```bash
+$ kubectl -it exec foo-argocd-repo-server \
+    -c repo-server \
+    -n foo \
+    -- bash -c "ls /tmp/_argocd-repo/<UUID>/https___github.com_hiroki-hasegawa_foo-repository"
+
+Chart.yaml  README.md  templates  values.yaml
 ```
 
 なお、ArgoCDでHardRefreshすると、マニフェストのキャッシュを削除し、ポーリングリポジトリのマニフェストを改めてキャッシュを作成する。
@@ -308,16 +325,19 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 **＊例＊**
 
-`/tmp/<リポジトリ名>`ディレクトリ配下で、`helm template`コマンドを使用してSecretの値を確認する。
+`/tmp/_argocd-repo/<UUID>/<リポジトリ名>`ディレクトリ配下で、`helm template`コマンドを使用してSecretの値を確認する。
 
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
     -n foo \
-    -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-repository && helm template foo-chart -f values-prd.yaml"
+    -- bash -c "cd /tmp/_argocd-repo/<UUID>/https___github.com_hiroki-hasegawa_foo-repository && helm template foo-chart -f values-prd.yaml"
 ```
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
+> ↪️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/issues/1446#issue-432385992
+> - https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
 
 <br>
 
