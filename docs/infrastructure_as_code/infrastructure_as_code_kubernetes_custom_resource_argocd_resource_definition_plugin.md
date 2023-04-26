@@ -31,6 +31,8 @@ ArgoCDで任意のツールを使用する。
 
 連携先ツールをインストールするInitContainersを配置する。
 
+代わりに、ユーザー定義のコンテナイメージをあらかじめ作成しておいてもよい。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -59,11 +61,11 @@ spec:
           apk --update add wget
           wget -q https://get.helm.sh/helm-<バージョン>-linux-amd64.tar.gz
           tar -xvf helm-<バージョン>-linux-amd64.tar.gz
-          cp helm /custom-tools/
+          cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
     # Helmfile
     - name: helmfile-installer
       image: alpine:3.17.3
@@ -176,6 +178,7 @@ lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bi
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
+> - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
 
 #### ▼ サイドカーを配置
 
@@ -249,8 +252,8 @@ spec:
         - name: custom-tools
           mountPath: /usr/local/bin/ksops
           subPath: ksops
-        - mountPath: /helm-working-dir/plugins
-          name: helm-working-dir
+        - name: helm-working-dir
+          mountPath: /helm-working-dir/plugins
     - name: bar-plugin-cmp-server
       image: ubuntu:latest
       command:
@@ -282,8 +285,8 @@ spec:
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server
       volumeMounts:
-        - mountPath: /var/run/argocd
-          name: var-files
+        - name: var-files
+          mountPath: /var/run/argocd
 
   # Podの共有ボリューム
   volumes:
@@ -478,8 +481,8 @@ spec:
           chmod +x /custom-tools
       volumeMounts:
         # Podの共有ボリュームにHelmfileを配置する。
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
 
   # Podの共有ボリューム
   volumes:
@@ -922,8 +925,8 @@ spec:
           cp $GOPATH/bin/kustomize /custom-tools/
       volumeMounts:
         # Podの共有ボリュームに、KSOPSを配置する。
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
 
   # Podの共有ボリューム
   volumes:
@@ -952,8 +955,10 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   kustomize.buildOptions: --enable-alpha-plugins --enable-exec
-  kustomize.path.v4.2.0: /custom-tools/kustomize_4_2_0
+  kustomize.path.<バージョン>: /custom-tools/kustomize_<バージョン>
 ```
+
+> ↪️ 参考：https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
 
 ### プラグインの使用
 

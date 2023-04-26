@@ -321,6 +321,31 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 <br>
 
+### パフォーマンス改善
+
+#### ▼ 並列処理
+
+単一のリポジトリで管理するApplication数が多くなるほど、repo-serverの性能が落ちる。
+
+この場合、repo-serverの並列処理を有効化した方が良い。
+
+並列処理を有効化しない場合は、代わりにレプリカ数を増やす。
+
+> ↪️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
+> - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
+> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
+> - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
+
+#### ▼ メモリ拡張
+
+マニフェスト管理ツールの実行時にはメモリ使用量が増加する。
+
+> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-repo-server
+
+<br>
+
 ## 08. ユースケース
 
 ### 共通

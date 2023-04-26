@@ -560,14 +560,10 @@ spec:
         - -c
       args:
         - |
-          apk --update add wget
-          wget -q https://get.helm.sh/helm-<バージョン>-linux-amd64.tar.gz
-          tar -xvf helm-<バージョン>-linux-amd64.tar.gz
-          cp helm /custom-tools/
-          chmod +x /custom-tools
+          # インストール処理
       volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
     - name: sops-installer
       image: alpine:latest
       command:
@@ -577,8 +573,8 @@ spec:
         - |
           # インストール処理
       volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
     - name: ksops-installer
       image: alpine:latest
       command:
@@ -588,8 +584,8 @@ spec:
         - |
           # インストール処理
       volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /custom-tools
     - name: helm-secrets-installer
       image: alpine:latest
       command:

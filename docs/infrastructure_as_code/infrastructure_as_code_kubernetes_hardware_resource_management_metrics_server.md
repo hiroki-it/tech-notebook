@@ -306,6 +306,19 @@ baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1       
 
 > ↪️ 参考：https://blog.framinal.life/entry/2020/04/14/190601
 
+#### ▼ レプリカ数との衝突
+
+Deploymentのレプリカ数よりも、HorizontalPodAutoscalerが優先される。
+
+そのため、もしDeploymentにレプリカ数が設定されていると、マニフェストをデプロイした場合に一度レプリカ数に戻される。
+
+HorizontalPodAutoscalerを使用する場合、Deploymentのレプリカ数の設定を削除する。
+
+> ↪️ 参考：
+>
+> - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
+> - https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets
+
 <br>
 
 ### VerticalPodAutoscaler
