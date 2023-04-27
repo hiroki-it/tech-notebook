@@ -2930,6 +2930,8 @@ Pod内の全てのコンテナに対して、認可スコープを設定する�
 
 コンテナのプロセスのユーザーIDを設定する。
 
+コンテナがユーザーを提供していない場合、あらじかじめユーザーを作成する必要がある。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -2940,10 +2942,13 @@ spec:
     - name: foo-gin
       image: foo-gin:1.0.0
   securityContext:
-    runAsUser: 1000
+    runAsUser: 999
 ```
 
-> ↪️ 参考：https://cstoku.dev/posts/2018/k8sdojo-07/#runasuser
+> ↪️ 参考：
+> 
+> - https://cstoku.dev/posts/2018/k8sdojo-07/#runasuser
+> - https://qiita.com/SnykSec/items/3f3ee4948e90c0e7e3cc
 
 #### ▼ runAsGroup
 
