@@ -51,7 +51,7 @@ resource "aws_eks_addon" "coredns" {
   cluster_name      = aws_eks_cluster.foo.name
   addon_version     = "<バージョン>"
   addon_name        = "coredns"
-  resolve_conflicts = "PRESERVE"
+  resolve_conflicts = "OVERWRITE"
 }
 
 
@@ -60,7 +60,7 @@ resource "aws_eks_addon" "kube_proxy" {
   cluster_name      = aws_eks_cluster.foo.name
   addon_version     = "<バージョン>"
   addon_name        = "kube-proxy"
-  resolve_conflicts = "PRESERVE"
+  resolve_conflicts = "OVERWRITE"
 }
 
 
@@ -69,7 +69,7 @@ resource "aws_eks_addon" "vpc_cni" {
   cluster_name      = aws_eks_cluster.foo.name
   addon_version     = "<バージョン>"
   addon_name        = "vpc-cni"
-  resolve_conflicts = "PRESERVE"
+  resolve_conflicts = "OVERWRITE"
 }
 ```
 
@@ -105,6 +105,8 @@ EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働す�
 
 同じCluster内の全てのPodの名前解決を行う。
 
+aws-eks-corednsアドオンがEKS Cluster内に無い場合、外部 (例：IDプロバイダーなど) の名前解決を実行できなくなるため、必須である。
+
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
 <br>
@@ -123,6 +125,8 @@ EKSの各Node上で、`kube-proxy`という名前のDaemonSetとして稼働す�
 
 EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
+aws-eks-kube-proxyアドオンがEKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを一切管理できなくなるため、必須である。
+
 > ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
@@ -136,6 +140,8 @@ EKSのNode上で、`aws-node`という名前のDaemonSetとして稼働する。
 PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。
 
 これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
+
+aws-eks-vpc-cniアドオンがEKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのENIを作成できないため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 

@@ -537,6 +537,14 @@ $ asdf plugin list
 $ asdf install
 ```
 
+#### ▼ uninstall
+
+プラグインをアンインストールする。
+
+```bash
+$ asdf uninstall <プラグイン名> 1.0.0
+```
+
 <br>
 
 ## 04. 言語バージョン管理ユーティリティ
