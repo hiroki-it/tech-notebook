@@ -420,14 +420,14 @@ spec:
 
 ArgoCDと連携したツールでは、コマンドで以下の環境変数を使用できる。
 
-| 環境変数                                   |    例     | 説明                         |
-|----------------------------------------|:--------:|----------------------------|
-| `ARGOCD_RECONCILIATION_TIMEOUT`        |  `180s`  |                            |
-| `ARGOCD_REPO_SERVER_LOGFORMAT`         |          |                            |
-| `ARGOCD_REPO_SERVER_LOGLEVEL`          |          |                            |
-| `ARGOCD_REPO_SERVER_OTLP_ADDRESS`      |          |                            |
-| `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |          |                            |
-| `ARGOCD_USER_ID`                       |  `999`   | ArgoCDのプロセスの実行ユーザー番号を設定する。 |
+| 環境変数                               |   例   | 説明                                           |
+| -------------------------------------- | :----: | ---------------------------------------------- |
+| `ARGOCD_RECONCILIATION_TIMEOUT`        | `180s` |                                                |
+| `ARGOCD_REPO_SERVER_LOGFORMAT`         |        |                                                |
+| `ARGOCD_REPO_SERVER_LOGLEVEL`          |        |                                                |
+| `ARGOCD_REPO_SERVER_OTLP_ADDRESS`      |        |                                                |
+| `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |        |                                                |
+| `ARGOCD_USER_ID`                       | `999`  | ArgoCDのプロセスの実行ユーザー番号を設定する。 |
 
 > ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
 

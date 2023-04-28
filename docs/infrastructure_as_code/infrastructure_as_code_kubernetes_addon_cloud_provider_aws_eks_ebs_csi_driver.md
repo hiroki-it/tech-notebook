@@ -19,6 +19,8 @@ description: AWS EBS CSIドライバー＠AWS EKSアドオンの知見を記録�
 
 PersistentVolumeにAWS EBSを紐付け、PodがAWS EBSをPersistentVolumeとして使用できるようにする。
 
+ステートレスなアプリケーションでは、AWS EBSにデータを永続化する必要はないため、AWS EBS CSIドライバーは不要である。
+
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 > ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
@@ -41,7 +43,7 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 
   cluster_name             = data.aws_eks_cluster.cluster.name
   addon_name               = "aws-ebs-csi-driver"
-  addon_version            = "v1.10.0"
+  addon_version            = "<バージョン>"
   service_account_role_arn = module.iam_assumable_role_ebs_csi_driver[0].iam_role_arn
   resolve_conflicts        = "OVERWRITE"
 }

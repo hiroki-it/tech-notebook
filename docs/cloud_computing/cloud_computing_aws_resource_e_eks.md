@@ -73,45 +73,71 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ```terraform
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
+  source = "terraform-aws-modules/eks/aws"
 
   version = "<モジュールのバージョン>"
 
-  cluster_name                         = foo-eks-cluster
-  cluster_version                      = "<Kubernetesのバージョン>"
+  cluster_name    = foo-eks-cluster
+  cluster_version = "<Kubernetesのバージョン>"
 
   # kube-apiserverをプライベートアクセスにするか否か
-  cluster_endpoint_private_access      = true
+  cluster_endpoint_private_access = true
 
   # kube-apiserverにパブリックアクセスできるか否か
-  cluster_endpoint_public_access       = false
+  cluster_endpoint_public_access = false
 
   # EKS Clusterのkube-apiserverにアクセスできるCIDR
   cluster_endpoint_public_access_cidrs = ["*.*.*.*/32", "*.*.*.*/32", "*.*.*.*/32"]
 
   # CloudWatchログに送信するログの種類
-  cluster_enabled_log_types            = ["api", "audit", "authenticator", "controllerManager", "scheduler",]
+  cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler",]
 
   # ログの保管期間
-  cluster_log_retention_in_days        = 365
+  cluster_log_retention_in_days = 365
 
   # セキュリティグループを作成するか否か
-  cluster_create_security_group        = true
+  cluster_create_security_group = true
 
   # セキュリティグループのID
-  cluster_security_group_id            = "*****"
+  cluster_security_group_id = "*****"
 
   # IRSAを有効化するか否か
-  enable_irsa                          = true
+  enable_irsa = true
 
   # ワーカーNodeのセキュリティグループを作成するか否か
-  worker_create_security_group         = true
+  worker_create_security_group = true
 
   # VPCのID
-  vpc_id  = "vpc-*****"
+  vpc_id = "vpc-*****"
 
   # サブネットのID
   subnets = ["subnet-*****", "subnet-*****", "subnet-*****"]
+
+  # AWS EKSアドオン
+  cluster_addons = {
+
+    coredns = {
+      resolve_conflicts = "OVERWRITE"
+    }
+
+    kube-proxy = {
+      resolve_conflicts = "OVERWRITE"
+    }
+
+    vpc-cni = {
+      resolve_conflicts = "OVERWRITE"
+    }
+  }
+
+  # AWS EKSマネージドグループ
+  eks_managed_node_groups = {
+    node_group_name = "foo-group"
+    instance_types  = ["m5.large"]
+    min_size        = 3
+    max_size        = 4
+    desired_size    = 5
+  }
+}
 ```
 
 > ↪️ 参考：https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest#usage
@@ -248,55 +274,6 @@ data:
 > - https://www.karakaram.com/eks-system-masters-group/
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
 
-#### ▼ IRSA：IAM Roles for Service Accounts
-
-![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
-
-特にKubernetesリソースの認可スコープを制御する仕組みのこと。
-
-`kubectl`クライアントの認可スコープは、RBACで制御する。
-
-EKSをIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
-
-ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  annotations:
-    eks.amazonaws.com/role-arn: <IAMロールのARN>
-  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
-  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
-```
-
-もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、EC2ワーカーNodeやFargateワーカーNodeのIAMロールが使用される。
-
-IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate) にしかIAMロールを紐付けることができず、KubernetesリソースにIAMロールを直接的に紐付けることはできなかった。
-
-ServiceAcccountのトークンは、コンテナにファイルとしてマウントされている。
-
-```bash
-printenv | sort -f
-
-AWS_DEFAULT_REGION=ap-northeast-1
-AWS_REGION=ap-northeast-1
-AWS_ROLE_ARN=arn:aws:iam::<アカウントID>:role/argocd-reposerver
-AWS_STS_REGIONAL_ENDPOINTS=regional
-# ServiceAccountのトークン文字列が記載されたファイル
-AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/token
-
-...
-```
-
-> ↪️ 参考：
->
-> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
-> - https://www.bigtreetc.com/column/eks-irsa/
-> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
-> - https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/
-> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#2.-eks%E3%81%8B%E3%82%89aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
-
 #### ▼ パブリックアクセス/プライベートアクセス
 
 kube-apiserverのインターネットへの公開範囲を設定できる。
@@ -360,6 +337,120 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにする必要があり、PodのファイルはワーカーNodeの外で管理する必要がある。
 
 > ↪️ 参考：https://blog.linkode.co.jp/entry/2020/07/01/142155
+
+<br>
+
+### IRSA：IAM Roles for Service Accounts
+
+#### ▼ IRSAとは
+
+![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+
+特にKubernetesリソースの認可スコープを制御する仕組みのこと。
+
+`kubectl`クライアントの認可スコープは、RBACで制御する。
+
+EKSをIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
+
+#### ▼ セットアップ
+
+`【１】`
+
+: 『EKS ClusterのOpenIDConnectプロバイダーURL』『STSのエンドポイント (`sts.amazonaws.com`)』『サムプリント』を使用して、OIDCプロバイダーを作成する。
+
+> ↪️ 参考：
+> 
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
+> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1
+> - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
+
+`【２】`
+
+: IRSAで使用するIAMロールの信頼されたエンティティに、EKS ClusterのOpenIDConnectプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespace>:<ServiceAccount名>`) を設定する。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Sid": "",
+        "Effect": "Allow",
+        "Principal":
+          {
+            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenIDConnectプロバイダーURL>",
+          },
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+            # 完全一致
+            "StringEquals":
+              {
+                "<EKS ClusterのOpenIDConnectプロバイダーURL>:sub":
+                  ["system:serviceaccount:<Namespace>:<ServiceAccount名>"],
+              },
+          },
+      },
+    ],
+}
+```
+
+`【３】`
+
+: ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+
+     `automountServiceAccountToken`キーが有効化されていることを確認する。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
+  name: <信頼されたエンティティで指定したユーザー名にあるServiceAccount名>
+  namespace: <信頼されたエンティティで指定したユーザー名にあるNamespace名>
+automountServiceAccountToken: true
+```
+
+`【４】`
+
+: Podで、ServiceAccount名を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+  namespace: foo-namespace
+spec:
+  serviceAccountName: foo-sa
+```
+
+もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、EC2ワーカーNodeやFargateワーカーNodeのIAMロールが使用される。
+
+IRSAが登場するまでは、EKS上でのワーカーNode (例：EC2、Fargate) にしかIAMロールを紐付けることができず、KubernetesリソースにIAMロールを直接的に紐付けることはできなかった。
+
+ServiceAccountのトークンは、コンテナにファイルとしてマウントされている。
+
+```bash
+printenv | sort -f
+
+AWS_DEFAULT_REGION=ap-northeast-1
+AWS_REGION=ap-northeast-1
+AWS_ROLE_ARN=arn:aws:iam::<アカウントID>:role/argocd-reposerver
+AWS_STS_REGIONAL_ENDPOINTS=regional
+# ServiceAccountのトークン文字列が記載されたファイル
+AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/token
+
+...
+```
+
+> ↪️ 参考：
+>
+> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
+> - https://www.bigtreetc.com/column/eks-irsa/
+> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
+> - https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/
+> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#2.-eks%E3%81%8B%E3%82%89aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
 
 <br>
 

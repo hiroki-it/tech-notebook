@@ -2946,7 +2946,7 @@ spec:
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://cstoku.dev/posts/2018/k8sdojo-07/#runasuser
 > - https://qiita.com/SnykSec/items/3f3ee4948e90c0e7e3cc
 

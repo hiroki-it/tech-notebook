@@ -902,6 +902,8 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 実インフラの全ての設定値を`.tfstate`ファイルに取り込む場合、これの設定値を`resource`ブロックの設定値として`.tfstate`ファイルに書き込み、Terraformの管理下におく必要がある (`.tfstate`ファイル上では、`resource`ブロックは`managed`モードという表記になる) 。
 
+この時、`terraform import`コマンドを実行するか、コンソール画面から一度削除した上で`terraform apply`コマンドを実行する方法がある (前者が推奨)。
+
 執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを`1`個ずつ指定して、`.tfstate`ファイルに書き込んでいく必要がある。
 
 > ↪️ 参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
@@ -956,9 +958,9 @@ $ terraform init -reconfigure
 
      パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、`terraform plan`コマンドの結果が参考になる。
 
-     また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
+     また『ARN、ID、名前、など』は、`resource`タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
 
-     何らかの理由で`terraform import`コマンドを実行し直したい場合は、`terraform state rm`コマンドで```resource```ブロックを削除し、改めて書き込む。
+     何らかの理由で`terraform import`コマンドを実行し直したい場合は、`terraform state rm`コマンドで`resource`ブロックを削除し、改めて書き込む。
 
 ```bash
 # 関数を使用せずに定義されている場合
