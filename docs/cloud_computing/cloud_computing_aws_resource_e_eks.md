@@ -354,9 +354,21 @@ EKSをIDプロバイダーとして使用することにより、IAMの認証フ
 
 #### ▼ セットアップ
 
+ここでは、SSOの種類でOIDCを選ぶとする。
+
 `【１】`
 
-: 『EKS ClusterのOpenIDConnectプロバイダーURL』『STSのエンドポイント (`sts.amazonaws.com`)』『サムプリント』を使用して、OIDCプロバイダーを作成する。
+: IDプロバイダーのタイプは、OIDCとする。
+
+     『EKS ClusterのOpenID ConnectプロバイダーURLから取得したサムプリント』『対象者 (`sts.amazonaws.com`)』を使用して、OIDCプロバイダーを作成する。
+
+```terraform
+resource "aws_iam_openid_connect_provider" "this" {
+  url             = replace(module.eks_master.cluster_oidc_issuer_url, "https://", "")
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = data.tls_certificate.this[0].certificates[*].sha1_fingerprint
+}
+```
 
 > ↪️ 参考：
 > 
@@ -366,7 +378,7 @@ EKSをIDプロバイダーとして使用することにより、IAMの認証フ
 
 `【２】`
 
-: IRSAで使用するIAMロールの信頼されたエンティティに、EKS ClusterのOpenIDConnectプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespace>:<ServiceAccount名>`) を設定する。
+: IRSAで使用するIAMロールの信頼されたエンティティに、EKS ClusterのOpenID ConnectプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
 
 ```yaml
 {
@@ -378,15 +390,16 @@ EKSをIDプロバイダーとして使用することにより、IAMの認証フ
         "Effect": "Allow",
         "Principal":
           {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenIDConnectプロバイダーURL>",
+            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenID ConnectプロバイダーURL>",
           },
+        # AssumeRoleWithWebIdentityを使用する
         "Action": "sts:AssumeRoleWithWebIdentity",
         "Condition": {
             # 完全一致
             "StringEquals":
               {
-                "<EKS ClusterのOpenIDConnectプロバイダーURL>:sub":
-                  ["system:serviceaccount:<Namespace>:<ServiceAccount名>"],
+                "<EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
+                  ["system:serviceaccount:<Namespac名>:<ServiceAccount名>"],
               },
           },
       },

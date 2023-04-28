@@ -107,15 +107,16 @@ EKSをIDプロバイダーとして使用するように、`Federated`キーでE
         "Effect": "Allow",
         "Principal":
           {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenIDConnectプロバイダーURL>",
+            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenID ConnectプロバイダーURL>",
           },
+        # AssumeRoleWithWebIdentityを使用する
         "Action": "sts:AssumeRoleWithWebIdentity",
         "Condition": {
             # 完全一致
             "StringEquals":
               {
-                "<EKS ClusterのOpenIDConnectプロバイダーURL>:sub":
-                  ["system:serviceaccount:<Namespace>:<ServiceAccount名>"],
+                "<EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
+                  ["system:serviceaccount:<Namespac名>:<ServiceAccount名>"],
               },
           },
       },

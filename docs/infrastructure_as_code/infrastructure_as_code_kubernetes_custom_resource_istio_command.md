@@ -1012,7 +1012,7 @@ istio-revision-tag-default          1          7m56s # 現在のリビジョン�
 
 : エイリアス (`istio.io/tag`キーの値) を指定して、リビジョン番号を書き換える。
 
-     これにより、```istio-revision-tag-default```の```default```タグの値が変更される。
+     これにより、`istio-revision-tag-default`の`default`タグの値が変更される。
 
 ```bash
 $ istioctl tag set default --revision 1-11-0 --overwrite

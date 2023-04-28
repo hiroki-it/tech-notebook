@@ -167,7 +167,7 @@ x-api-key: <APIキー>
 ```yaml
 POST https://example.com/foo
 ---
-authorization: <Personal Acccess Token>
+authorization: <Personal Access Token>
 ```
 
 | サービス例 | トークン名            | 説明                                                                                                                                                                                                                                                                                       |
