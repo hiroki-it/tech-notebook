@@ -350,7 +350,7 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 
 `kubectl`クライアントの認可スコープは、RBACで制御する。
 
-EKSをIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
+EKSをSSOのIDプロバイダーとして使用することにより、IAMの認証フェーズをEKSに委譲する。
 
 #### ▼ セットアップ
 
@@ -358,13 +358,17 @@ EKSをIDプロバイダーとして使用することにより、IAMの認証フ
 
 `【１】`
 
-: IDプロバイダーのタイプは、OIDCとする。
+: SSOのIDプロバイダーのタイプは、OIDCとする。
 
-     『EKS ClusterのOpenID ConnectプロバイダーURLから取得したサムプリント』『対象者 (`sts.amazonaws.com`)』を使用して、OIDCプロバイダーを作成する。
+     『EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーから取得したサムプリント』『対象者 (`sts.amazonaws.com`)』を使用して、OIDCプロバイダーを作成する。
 
 ```terraform
+data "tls_certificate" "this" {
+  url = module.foo_eks.cluster_oidc_issuer_url
+}
+
 resource "aws_iam_openid_connect_provider" "this" {
-  url             = replace(module.eks_master.cluster_oidc_issuer_url, "https://", "")
+  url             = module.foo_eks.cluster_oidc_issuer_url
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = data.tls_certificate.this[0].certificates[*].sha1_fingerprint
 }
@@ -374,11 +378,12 @@ resource "aws_iam_openid_connect_provider" "this" {
 > 
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1
-> - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
+> - https://onsd.hatenablog.com/entry/2019/09/21/015522
+> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/main.tf#L223-L242
 
 `【２】`
 
-: IRSAで使用するIAMロールの信頼されたエンティティに、EKS ClusterのOpenID ConnectプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
+: IRSAで使用するIAMロールの信頼されたエンティティに、EKS ClusterのOIDCプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
 
 ```yaml
 {
@@ -390,7 +395,7 @@ resource "aws_iam_openid_connect_provider" "this" {
         "Effect": "Allow",
         "Principal":
           {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenID ConnectプロバイダーURL>",
+            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOIDCプロバイダーURL>",
           },
         # AssumeRoleWithWebIdentityを使用する
         "Action": "sts:AssumeRoleWithWebIdentity",
@@ -398,7 +403,7 @@ resource "aws_iam_openid_connect_provider" "this" {
             # 完全一致
             "StringEquals":
               {
-                "<EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
+                "<EKS ClusterのOIDCプロバイダーURL>:sub":
                   ["system:serviceaccount:<Namespac名>:<ServiceAccount名>"],
               },
           },

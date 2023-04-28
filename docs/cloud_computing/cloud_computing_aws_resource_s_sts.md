@@ -116,7 +116,7 @@ EKSをIDプロバイダーとして使用するように、`Federated`キーでE
             "StringEquals":
               {
                 "<EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
-                  ["system:serviceaccount:<Namespac名>:<ServiceAccount名>"],
+                  ["system:serviceaccount:<Namespace名>:<ServiceAccount名>"],
               },
           },
       },
