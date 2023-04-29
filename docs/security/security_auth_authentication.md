@@ -154,11 +154,11 @@ x-api-key: <APIキー>
 
 <br>
 
-### PAT：Personal Access Tokenによる認証
+### PAT：パーソナルアクセストークンによる認証
 
 #### ▼ PATによる認証
 
-クライアントがPersonal Access Token (個人用アクセストークン) の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する。
+クライアントがパーソナルアクセストークン (個人用アクセストークン) の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する。
 
 `Authorization`ヘッダーにPATを割りあてて、リクエストを送信する。
 
@@ -167,12 +167,12 @@ x-api-key: <APIキー>
 ```yaml
 POST https://example.com/foo
 ---
-authorization: <Personal Access Token>
+authorization: <パーソナルアクセストークン>
 ```
 
 | サービス例 | トークン名            | 説明                                                                                                                                                                                                                                                                                       |
 | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| GitHub     | Personal access Token | HTTPSを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>↪️ 参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+| GitHub     | パーソナルアクセストークン | HTTPSプロトコルを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSプロトコルを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>↪️ 参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
 
 > ↪️ 参考：https://www.contentful.com/help/personal-access-tokens/
 

@@ -305,6 +305,80 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 
 <br>
 
+### Terraformの場合
+
+#### ▼ 起動テンプレート
+
+```terraform
+resource "aws_launch_template" "foo" {
+
+  name = "foo-instance"
+
+  block_device_mappings {
+    device_name = "/dev/sdf"
+
+    ebs {
+      volume_size = 20
+    }
+  }
+
+  cpu_options {
+    core_count       = 4
+    threads_per_core = 2
+  }
+
+  ebs_optimized = true
+
+  iam_instance_profile {
+    name = aws_iam_role.instance_iam_role.name
+  }
+
+  # 最適化AMIを使用する
+  image_id = "ami-*****"
+
+  instance_market_options {
+    market_type = "spot"
+  }
+
+  instance_type = "t2.micro"
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+    instance_metadata_tags      = "enabled"
+  }
+
+  monitoring {
+    enabled = true
+  }
+
+  network_interfaces {
+    associate_public_ip_address = true
+    security_groups = [
+      "sg-*****",
+      "sg-*****",
+      "sg-*****",
+    ]
+  }
+
+  tag_specifications {
+    resource_type = "instance"
+
+    tags = {
+      Name = "test"
+    }
+  }
+
+  user_data = base64encode(templatefile(
+    "${path.module}/templates/userdata.sh.tpl",
+    {}
+  ))
+}
+```
+
+<br>
+
 ### シンプルスケーリング
 
 #### ▼ シンプルスケーリングとは

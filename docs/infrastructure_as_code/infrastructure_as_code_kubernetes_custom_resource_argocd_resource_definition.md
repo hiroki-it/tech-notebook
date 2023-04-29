@@ -412,6 +412,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
+    # PodからHTTPSプロトコルで通信するための証明書
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -616,6 +617,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
+    # PodからHTTPSプロトコルで通信するための証明書
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -790,7 +792,7 @@ spec:
           name: argocd-home
   # 各種Secretを読み込む
   volumes:
-    # repo-serverとHTTPS通信するために、SSL証明書を設定する
+    # repo-serverとHTTPSプロトコルで通信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420

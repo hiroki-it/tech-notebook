@@ -3970,7 +3970,7 @@ SSL/TLSを使用するための変数を設定する。
 
 SSL証明書と秘密鍵の文字列が必要である。
 
-ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSでパケットを送受信する例がある。
+ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSプロトコルでパケットを送受信する例がある。
 
 ```yaml
 apiVersion: v1

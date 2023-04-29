@@ -45,7 +45,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 仕組みとして、アプリコンテナの分散トレースのクライアントパッケージは分散トレースを作成し、datadogコンテナの『`http://localhost:8126`』にこれを送信する。
 
-datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
+datadogコンテナ内のdatadogエージェントはこれをHTTPSプロトコルでDatadogに転送する。
 
 ![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
 

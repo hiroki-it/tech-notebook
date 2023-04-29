@@ -727,10 +727,7 @@ resource "aws_eks_node_group" "this" {
     desired_size = 4
   }
 
-  # Optional
   node_group_name        = ""
-  node_group_name_prefix = ""
-
 
   ami_type        = ""
   release_version = ""

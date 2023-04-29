@@ -142,7 +142,7 @@ repository/
 
 ```yaml
 repository/
-├── aws/ # AWS
+├── aws/ # AWS、Kubernetes
 │   ├── backend.tf # aws/terraform.tfstateを指定
 │   ├── provider.tf
 │   ...
@@ -183,7 +183,7 @@ repository/
 
 ```yaml
 repository/
-├── aws/ # AWS
+├── aws/ # AWS、Kubernetes
 │   ├── provider.tf
 │   ├── tes/ # テスト環境
 │   │   ├── backend.tfvars # バックエンド内の/aws/terraform.tfstateを指定
@@ -244,7 +244,7 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 
 ```yaml
 repository/
-├── aws/ # AWS
+├── aws/ # AWS、Kubernetes
 │   ├── high-freq # 高頻度リソース (サーバー系、コンテナ系、セキュリティ系、監視系など)
 │   │   ├── provider.tf
 │   │   ├── tes # テスト環境
@@ -304,7 +304,7 @@ repository/
 
 ```yaml
 repository/
-├── aws/ # AWS
+├── aws/ # AWS、Kubernetes
 │   ├── foo-team # fooチーム
 │   │   ├── provider.tf
 │   │   ├── tes # テスト環境
@@ -368,7 +368,7 @@ repository/
 
 ```yaml
 repository/
-├── aws/ # AWS
+├── aws/ # AWS、Kubernetes
 │   ├── 01-foo/
 │   │   ├── provider.tf
 │   │   ├── tes # テスト環境

@@ -645,7 +645,7 @@ DBマイグレーション後、以下のテーブルが作成される。
 | oauth_access_tokens           | 全てのアクセストークンを管理する。                                                                                                                                                                      |
 | oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。                                                                                                                                                        |
 | oauth_clients                 | Passportで使用している付与タイプを管理する。                                                                                                                                                            |
-| oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する。                                                                                                                                                           |
+| oauth_personal_access_clients | パーソナルアクセストークンタイプの情報を管理する。                                                                                                                                                           |
 | oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>↪️ 参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ▼ トークンを作成
@@ -702,7 +702,7 @@ OAuthに関して、以下のトークン付与タイプを実装できる。
 
 | 認証方法              |
 | --------------------- |
-| Personal Access Token |
+| パーソナルアクセストークン |
 
 <br>
 
@@ -965,7 +965,7 @@ class CreateUsersTable extends Migration
 
 <br>
 
-### Personal Access Token
+### パーソナルアクセストークン
 
 #### ▼ バックエンド側の実装
 
