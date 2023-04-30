@@ -439,8 +439,7 @@ metadata:
   namespace: foo-namespace
 spec:
   serviceAccountName: foo-sa
-  containers:
-    ...
+  containers: ...
 ```
 
 もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、EC2ワーカーNodeやFargateワーカーNodeのIAMロールが使用される。

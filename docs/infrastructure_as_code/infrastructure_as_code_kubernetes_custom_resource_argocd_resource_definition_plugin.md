@@ -343,11 +343,11 @@ Flags:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
 
-#### ▼ argocd-cmp-cmでプラグインの処理を定義
+#### ▼ argocd-cmp-cmでマニフェスト作成時の追加処理を定義
 
 argocd-cmp-cm配下で、ConfigManagementPluginを`plugin.yaml`ファイルとして管理する。
 
-ConfigManagementPluginで、プラグインの処理を設定する。
+ConfigManagementPluginで、マニフェスト作成時の追加処理を設定する。
 
 argocd-cmp-cmの`.data.configManagementPlugins`キーで設定することは非推奨である。
 
@@ -504,7 +504,7 @@ spec:
 > ↪️ 参考：
 >
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#adding-tools-via-volume-mounts
 > - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
 
 #### ▼ helmfileの処理の定義
