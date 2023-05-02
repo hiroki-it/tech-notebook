@@ -9,7 +9,7 @@ description: SecretsストアCSIドライバー＠Secretアドオンの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -35,7 +35,7 @@ Secretのデータとして注入するExternalSecretsOperatorやhelm-secrets/va
 
 ![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/secrets-store-csi-volume.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 > - https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129

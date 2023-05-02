@@ -9,7 +9,7 @@ description: OIDC＠SSOの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ SSOの一種である。
 
 OAuthをベースとして、認証フェーズを追加し、認証/認可を実装する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://baasinfo.net/?p=4418
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
@@ -34,7 +34,7 @@ OAuthをベースとして、認証フェーズを追加し、認証/認可を�
 
 認証フェーズの委譲先のIDプロバイダー、ログインしたいWebサイト、から構成される。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://baasinfo.net/?p=4418
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
@@ -47,7 +47,7 @@ OIDCでは、OAuthとは異なり、アクセストークンではなく、IDト
 
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
-> ↪️ 参考：https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
+> ↪️：https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
 
 <br>
 

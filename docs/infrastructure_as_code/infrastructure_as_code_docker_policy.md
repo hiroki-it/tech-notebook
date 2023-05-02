@@ -9,7 +9,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 ![container_processes.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png)
 
-> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container
+> ↪️：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container
 
 <br>
 
@@ -51,7 +51,7 @@ USER foouser
 ENTRYPOINT ["/app"]
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.aquasec.com/docker-security-best-practices
 > - https://www.forcia.com/blog/002273.html
@@ -64,7 +64,7 @@ ENTRYPOINT ["/app"]
 
 インストールされているパッケージを把握できるベースイメージを使用する。
 
-> ↪️ 参考：https://www.forcia.com/blog/002273.html
+> ↪️：https://www.forcia.com/blog/002273.html
 
 #### ▼ ベースイメージの種類
 
@@ -77,7 +77,7 @@ ENTRYPOINT ["/app"]
 |                        | 接尾辞なし                                | 使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。 | イメージによる | 有                   | イメージによる                   |
 | distroless型           | 接尾辞なし                                | 最小限のパッケージのみをインストールしている。                               | イメージによる | 有 (非常に少ない)    | イメージによる                   |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://prograshi.com/platform/docker/docker-image-tags-difference/
 > - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
@@ -107,7 +107,7 @@ $ docker inspect <コンテナ名>
 }
 ```
 
-> ↪️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
+> ↪️：https://github.com/docker-library/official-images#architectures-other-than-amd64
 
 #### ▼ バージョン
 
@@ -120,7 +120,7 @@ $ docker inspect <コンテナ名>
 | `2`          | 『`2.X`』と『`2.0.X`』のマイナーアップデートのみを追跡する。 |
 | `latest`     | メジャーアップデートとマイナーアップデートを追跡する。       |
 
-> ↪️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
+> ↪️：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
 
 <br>
 
@@ -140,7 +140,7 @@ $ docker inspect <コンテナ名>
 README.md
 ```
 
-> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools
+> ↪️：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools
 
 #### ▼ キャッシュを削除する
 
@@ -162,7 +162,7 @@ RUN dnf upgrade -y \
   && rm -rf /var/cache/dnf
 ```
 
-> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#optimize-for-the-docker-build-cache
+> ↪️：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#optimize-for-the-docker-build-cache
 
 #### ▼ できる限りOSイメージをベースとしない
 
@@ -170,7 +170,7 @@ OSベンダーが提供するベースイメージを使用すると、不要な
 
 原則として、1つのコンテナで1つのプロセスしか実行せず、OS全体のシステムは不要なため、OSイメージをベースとしないようにする。
 
-> ↪️ 参考：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible
+> ↪️：https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible
 
 **＊実装例＊**
 
@@ -267,7 +267,7 @@ RUN yum -y install \
   && rm -Rf /var/cache/dnf
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.itbook.info/network/docker02.html
 > - https://yuhabeem.com/2021/03/27/311/
@@ -380,7 +380,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 `docker trust`コマンドの内部では、notaryが使用されている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
 > - https://codezine.jp/article/detail/15119
@@ -396,6 +396,6 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 | 文法の誤りテスト             | Dockerのビルトインのコマンド (例：`docker build`コマンド) を使用して、Dockerfileの文法の誤りを検証する。                                                                                                                                                                                                                |
 | ベストプラクティス違反テスト | 外部のベストプラクティス違反テストツール (例：hadolint) を使用して、Dockerfileのベストプラクティス違反を検証する。                                                                                                                                                                                                      |
 | 脆弱性テスト                 | 外部の脆弱性テストツール (例：hadolint) を使用して、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。補足として、イメージスキャン (例：trivy) は既にビルドされたコンテナイメージを検証するため、ここには含めない。                                                               |
-| コンテナ構造テスト           | 外部の脆弱性テストツール (例：container-structure-test) を使用して、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の`ENTRYPOINT`が正しく動作するか、など) 。 <br>↪️ 参考：https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF |
+| コンテナ構造テスト           | 外部の脆弱性テストツール (例：container-structure-test) を使用して、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の`ENTRYPOINT`が正しく動作するか、など) 。 <br>↪️：https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF |
 
 <br>

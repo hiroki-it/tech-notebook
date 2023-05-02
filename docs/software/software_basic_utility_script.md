@@ -9,7 +9,7 @@ description: スクリプト＠ユーティリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -72,7 +72,7 @@ echo foo \
   baz
 ```
 
-> ↪️ 参考：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
+> ↪️：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
 
 #### ▼ for
 
@@ -126,7 +126,7 @@ esac
 
 また、シェルスクリプト内で定義したシェル変数は、シェルスクリプトの実行後も維持される。
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 $ source hello.sh
@@ -144,7 +144,7 @@ $ source hello.sh
 $ bash hello.sh
 ```
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 #### ▼ `.` (ドット)
 
@@ -166,7 +166,7 @@ $ . hello.sh
 $ ./hello.sh
 ```
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 <br>
 
@@ -206,7 +206,7 @@ $ apk add make
 SHELL=/bin/bash -xeu
 ```
 
-> ↪️ 参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
+> ↪️：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
 
 シェルによって使用できるオプションが少しだけ異なることに注意する。
 
@@ -215,7 +215,7 @@ SHELL=/bin/bash -xeu
 SHELL=/bin/bash -o pipefail
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
+> ↪️：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
 
 #### ▼ ターゲット
 
@@ -271,7 +271,7 @@ baz qux:
 	echo "baz"
 ```
 
-> ↪️ 参考：https://advancedinsight.jp/using_phony_target_for_makefile/
+> ↪️：https://advancedinsight.jp/using_phony_target_for_makefile/
 
 <br>
 
@@ -288,7 +288,7 @@ echo:
 	echo "$FOO" # echo
 ```
 
-> ↪️ 参考：https://make-muda.net/2014/10/1824/
+> ↪️：https://make-muda.net/2014/10/1824/
 
 #### ▼ 遅延評価代入
 
@@ -301,7 +301,7 @@ echo:
 	echo "$FOO" # echo foo
 ```
 
-> ↪️ 参考：https://make-muda.net/2014/10/1824/
+> ↪️：https://make-muda.net/2014/10/1824/
 
 ターゲット内では、標準出力への出力をシェル変数に代入できない。
 
@@ -316,7 +316,7 @@ echo:
 	echo "$FOO"
 ```
 
-> ↪️ 参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
+> ↪️：https://qiita.com/vega77/items/5206c397258b5b372fc4
 
 <br>
 
@@ -353,7 +353,7 @@ foo:
 
 この時に慣例として、ターゲット名は`make` (ターゲット無し) と`install`になっていることが多い。
 
-> ↪️ 参考：https://qiita.com/chihiro/items/f270744d7e09c58a50a5
+> ↪️：https://qiita.com/chihiro/items/f270744d7e09c58a50a5
 
 `【１】`
 

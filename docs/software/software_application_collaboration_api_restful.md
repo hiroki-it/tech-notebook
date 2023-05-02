@@ -9,7 +9,7 @@ description: RESTful-API＠アプリケーション連携の知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -90,7 +90,7 @@ RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の`4`個を使
 | PUT`         | `https://example.com/users/{id}` | データの更新 (置換)                                                              | update          |
 | DELETE       | `https://example.com/users/{id}` | データの削除                                                                     | delete、destroy |
 
-> ↪️ 参考：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
+> ↪️：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
 
 POST送信とPUT送信の重要な違いについてまとめる。
 
@@ -103,7 +103,7 @@ POST送信とPUT送信の重要な違いについてまとめる。
 | データ作成の冪等性           | リクエスト1つにつき、`1`個のデータを作成 (非冪等的) | リクエスト数に限らず、`1`個のデータを作成する (冪等的) 。古いデータを新しいデータに置換する行為に近い。 |
 | リクエストパラメーターの場所 | メッセージボディにJSON型データなどを割り当てる。    | パスパラメーターにidなど、またメッセージボディにJSON型データなどを割り当てる。                          |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/a/2691891/12771072
 > - https://restfulapi.net/rest-put-vs-post/
@@ -118,14 +118,14 @@ POST送信とPUT送信の重要な違いについてまとめる。
 
 この時、アクセスするリソース名がわかりやすいような名詞を使用する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
 > - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
 
 ただし慣例として、認証のエンドポイントが動詞 (`login`、`logout`、`register`) になることは許容されている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/questions/7140074/restfully-design-login-or-register-resources
 > - https://www.developer.com/web-services/best-practices-restful-api
@@ -400,7 +400,7 @@ APIキーのヘッダー名の頭文字に『`X`』を付けるのは、独自�
 
 ただし、現在は非推奨である。
 
-> ↪️ 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
+> ↪️：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```yaml
 POST https://example.com
@@ -423,7 +423,7 @@ POST/PUTメソッドでは、処理後のデータを200レスポンスとして
 
 もし処理後のデータを返信しない場合、改めてGETリクエストを送信する必要があり、余分なAPIコールが必要になってしまう。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
 > - https://qiita.com/wim/items/dbb6def4e207f6048735
@@ -434,7 +434,7 @@ DELETEメソッドでは、メッセージのみを200レスポンスとして�
 
 空ボディ204レスポンスとして返信しても良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918
 > - https://qiita.com/fukuma_biz/items/a9e8d18467fe3e04068e#4-delete---%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4
@@ -465,7 +465,7 @@ JSONの場合、階層構造にすると、データサイズが増えてしま�
 
 ただし、見やすさによっては階層構造も許容される。
 
-> ↪️ 参考：https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864
+> ↪️：https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864
 
 **＊例＊**
 
@@ -517,6 +517,6 @@ GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 }
 ```
 
-> ↪️ 参考：https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
+> ↪️：https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
 
 <br>

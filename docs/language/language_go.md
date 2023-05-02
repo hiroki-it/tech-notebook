@@ -9,7 +9,7 @@ description: Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ $ yum install -y epel-release
 $ yum install -y golang
 ```
 
-> ↪️ 参考：https://www.cyberithub.com/install-go-on-centos/
+> ↪️：https://www.cyberithub.com/install-go-on-centos/
 
 <br>
 
@@ -150,7 +150,7 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
         └── template
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/golang-standards/project-layout
 > - https://nekonenene.hatenablog.com/entry/2019/02/12/021610
@@ -221,7 +221,7 @@ Goでは文の処理はセミコロンで区切られる。
 
 Goの命名規則は、GitHubのWikiに記載されている。
 
-> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments
+> ↪️：https://github.com/golang/go/wiki/CodeReviewComments
 
 #### ▼ ディレクトリ名
 
@@ -237,7 +237,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 ただし、テストファイルに関しては、パッケージ名を『`foo_test`』として良い。
 
-> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#package-names
+> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#package-names
 
 #### ▼ モジュール名
 
@@ -251,7 +251,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 例えばドメイン駆動設計の場合、ルートエンティティのファイル名とパッケージ名を合わせるように工夫できる。
 
-> ↪️ 参考：https://ja.stackoverflow.com/q/41599
+> ↪️：https://ja.stackoverflow.com/q/41599
 
 #### ▼ 関数、type、構造体
 
@@ -261,7 +261,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 末尾に『`er`』をつける。
 
-> ↪️ 参考：https://golang.org/doc/effective_go#interface-names
+> ↪️：https://golang.org/doc/effective_go#interface-names
 
 #### ▼ レシーバ名
 
@@ -279,7 +279,7 @@ httpClientであれば、修飾語は『`http`』被修飾語『`client`』で�
 
 そのため、レシーバ名または引数名では『`cl`』とする。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
 > - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
@@ -292,13 +292,13 @@ httpClientであれば、修飾語は『`http`』被修飾語『`client`』で�
 
 ただし、スコープの大きな変数に省略した名前をつけると、重複する可能性があるため、省略せずにローワーキャメルケースで命名しても良い。
 
-> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#variable-names
+> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#variable-names
 
 省略名については、略語検索サイトで探す。
 
 代わりに、Goリファレンスからその単語がどう省略されているかを探しても良い。
 
-> ↪️ 参考：https://www.allacronyms.com/
+> ↪️：https://www.allacronyms.com/
 
 #### ▼ モックの変数
 
@@ -346,13 +346,13 @@ func main() {
 
 記入中...
 
-> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
+> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
 
 #### ▼ Uber風のお作法
 
 Uber社が採用しているお作法。
 
-> ↪️ 参考：https://github.com/uber-go/guide/blob/master/style.md
+> ↪️：https://github.com/uber-go/guide/blob/master/style.md
 
 #### ▼ イミュータブルにできない
 
@@ -360,7 +360,7 @@ Goには、標準でイミュータブルの機能がなく、これを無理に
 
 そのため、イミュータブルにするか否かは慎重に判断する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://zenn.dev/nobonobo/articles/9a9f12b27bfde9#go%E3%81%AF%E3%81%AA%E3%81%9C%E3%82%A4%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%96%E3%83%AB%E4%BF%AE%E9%A3%BE%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%EF%BC%9F
 > - https://future-architect.github.io/articles/20190713/#Q-immutable%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%A7%E3%81%99%E3%81%8C%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F

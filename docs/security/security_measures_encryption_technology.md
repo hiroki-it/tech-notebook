@@ -9,7 +9,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -187,7 +187,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
 
-> ↪️ 参考：https://zeropasoakita.livedoor.blog/archives/20294837.html
+> ↪️：https://zeropasoakita.livedoor.blog/archives/20294837.html
 
 #### ▼ 認証局の例
 
@@ -201,7 +201,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 | AWS  | Amazon Trust Services | Starfield社    |
 | GCP  | Google Trust Services | 記入中...      |
 
-> ↪️ 参考：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
+> ↪️：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
 <br>
 
@@ -215,7 +215,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ルート認証局は、ブラウザの開発会社の厳しい監査を受けているため、ルート証明書を使用して自分で自分を証明できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 > - https://www.nic.ad.jp/ja/newsletter/No69/0800.html
@@ -228,13 +228,13 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 もしルート認証局に署名されていない中間認証局でSSL証明書を署名すると、『このWebサイトで提示されたセキュリティ証明書は、信頼された証明機関から発行されたものではありません』といったような警告文が出る。
 
-> ↪️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+> ↪️：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 
 #### ▼ リーフ証明書
 
 記入中...
 
-> ↪️ 参考：https://itkq.jp/blog/2020/06/20/x509-chain/
+> ↪️：https://itkq.jp/blog/2020/06/20/x509-chain/
 
 #### ▼ SSL証明書
 
@@ -261,7 +261,7 @@ SSL証明書の内容
 -----END CERTIFICATE-----
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.mtioutput.com/entry/2019/01/02/090000
 > - https://portal.kitcloud.net/documents/1356
@@ -273,7 +273,7 @@ SSL証明書の内容
 
 ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。
 
-> ↪️ 参考：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
+> ↪️：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
 
 <br>
 
@@ -299,7 +299,7 @@ SSL証明書の内容
 | 証明書署名要求 | 秘密鍵から作成され、公開鍵であるSSL証明書を作成するために使用する。 | `.csr`、`.txt`                        |
 | SSL証明書      | 秘密鍵と対になる公開鍵として動作する。                              | `pem`、`.crt`、`.cert`、`.ca`、`.txt` |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.ssl-concier.com/news/topics/164
 > - https://install-memo.hatenadiary.org/entry/20110906/1315291837
@@ -468,7 +468,7 @@ $ curl https://foo.example.com -v
 * Connection #0 to host foo.example.com left intact
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.karakaram.com/creating-self-signed-certificate/
 > - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd

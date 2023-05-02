@@ -9,7 +9,7 @@ description: addon-resizer＠ハードウェアリソース管理の知見を記
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
+> ↪️：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
@@ -25,7 +25,7 @@ addon-resizerは、サイドカーコンテナとして稼働し、指定した�
 
 コンテナの増加に合わせて要求量を動的に変更できるように、addon-resizerを使用する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - <https://github.com/kubernetes/autoscaler/tree/master/addon-resizer>
 > - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer/deploy
@@ -96,6 +96,6 @@ data:
     cpuPerNode: 1m
 ```
 
-> ↪️ 参考：<https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager>
+> ↪️：<https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager>
 
 <br>

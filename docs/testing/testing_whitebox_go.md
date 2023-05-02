@@ -9,7 +9,7 @@ description: Goの場合＠ホワイトボックステストの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -61,7 +61,7 @@ description: Goの場合＠ホワイトボックステストの知見を記録�
 
 補足として、Goでは1つのディレクトリ内に1つのパッケージ名しか宣言できないが、ブラックボックステストのために『`_test`』を加えることは許されている。
 
-> ↪️ 参考：https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36
+> ↪️：https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36
 
 <br>
 
@@ -142,6 +142,6 @@ func TestFoo(t *testing.T) {
 
 ```
 
-> ↪️ 参考：https://github.com/golang/go/wiki/TableDrivenTests
+> ↪️：https://github.com/golang/go/wiki/TableDrivenTests
 
 <br>

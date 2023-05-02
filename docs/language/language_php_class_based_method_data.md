@@ -8,7 +8,7 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -128,7 +128,7 @@ foo($data);
 
 同じクラス内と、その子クラス、その親クラスでのみ呼び出せる。
 
-> ↪️ 参考：https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
+> ↪️：https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
 
 #### ▼ オブジェクト指向の場合
 
@@ -486,7 +486,7 @@ PHPには最初からマジックメソッドは組み込まれているが、�
 
 オブジェクトの不変性は、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 **＊実装例＊**
 
@@ -764,7 +764,7 @@ $D = objB()->objC()->objC();
 
 以下のリンクも参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html
 
 `【１】`
 
@@ -993,7 +993,7 @@ $dispatcher->dispatch("foo", "test");
 
 以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
 
 ```php
 <?php
@@ -1435,7 +1435,7 @@ final class FlagConstant
 
 区分値をデータとして持つオブジェクトについては、ドメイン駆動設計の値オブジェクトを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ 数値計算、数値比較
 
@@ -1445,7 +1445,7 @@ final class FlagConstant
 
 ドメイン駆動設計の値オブジェクトを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ URL
 
@@ -1795,7 +1795,7 @@ var_dump($result); // true
 
 エスケープのために、必ずバックスラッシュを付ける必要がある。
 
-> ↪️ 参考：https://www-creators.com/archives/3102
+> ↪️：https://www-creators.com/archives/3102
 
 **＊実装例＊**
 
@@ -1817,7 +1817,7 @@ var_dump($result); // 1
 
 ドットは任意の文字、アスタリスクは直前の文字が`0`回以上反復すること、プラスは`1`回以上反復することを意味する。
 
-> ↪️ 参考：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
+> ↪️：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
 
 **＊実装例＊**
 
@@ -1847,7 +1847,7 @@ var_dump($result); // 1
 
 クエスチョンの前に記載された文字列に関して、あってもなくても問題ないことを意味する。
 
-> ↪️ 参考：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
+> ↪️：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
 
 ```php
 <?php
@@ -1892,7 +1892,7 @@ var_dump($result); // 1
 
 正規表現に規則性がある場合に有効である。
 
-> ↪️ 参考：http://www.turtle.gr.jp/techno/regular-expression.html
+> ↪️：http://www.turtle.gr.jp/techno/regular-expression.html
 
 ```php
 <?php

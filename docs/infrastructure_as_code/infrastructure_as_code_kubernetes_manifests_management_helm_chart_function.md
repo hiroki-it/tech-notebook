@@ -9,7 +9,7 @@ description: アクション＠チャートの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: アクション＠チャートの知見を記録しています。
 
 ### 予約された変数
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 
 <br>
 
@@ -29,7 +29,7 @@ description: アクション＠チャートの知見を記録しています。
 {{- $domain := "https://{{ .Values.serviceName }}.argocd.com" }}
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 > - https://kb.novaordis.com/index.php/Helm_Variables
@@ -56,7 +56,7 @@ description: アクション＠チャートの知見を記録しています。
 {{- end }}
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/a/57600807
 > - https://stackoverflow.com/a/67886552
@@ -67,7 +67,7 @@ description: アクション＠チャートの知見を記録しています。
 
 テンプレートの関数 (例：`include`、`template`) 、`_helpers.tpl`ファイルで定義する。
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 
 <br>
 
@@ -91,7 +91,7 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 {{- /* コメント */-}}
 ```
 
-> ↪️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
+> ↪️：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
 
 `*/}}`にはスペースを含めずに、一繋ぎで定義する。
 
@@ -103,7 +103,7 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 
 `template`ディレクトリ配下のテンプレートを出力する。
 
-> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -115,7 +115,7 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 
 加工内容はパラメーターで設定できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
@@ -130,7 +130,7 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 
 `template`関数では出力内容を変数に格納できないため、これが可能な`include`関数が推奨されている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da
@@ -163,7 +163,7 @@ metadata:
     app.kubernetes.io/app: {{ .Values.global.appName }}
 ```
 
-> ↪️ 参考：https://github.com/helm/helm/issues/8026
+> ↪️：https://github.com/helm/helm/issues/8026
 
 #### ▼ metadataキーで使用する場合の注意点
 
@@ -193,7 +193,7 @@ metadata:
     id: "{{ .Values.metadata.labels.id }}"
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
 <br>
 
@@ -224,7 +224,7 @@ metadata:
 data: {{- toYaml .Values.parameters | nindent 2}}
 ```
 
-> ↪️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
+> ↪️：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
 
 #### ▼ list型の場合
 
@@ -314,7 +314,7 @@ metadata:
 {{- end }}
 ```
 
-> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -326,7 +326,7 @@ metadata:
 
 同じ階層にある他の`.yaml`ファイルのキーとその値を格納し、foreach関数のように出力する。
 
-> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
 
 #### ▼ マップ型を扱う場合
 
@@ -366,7 +366,7 @@ data:
   {{- end }}
 ```
 
-> ↪️ 参考：https://helm-playground.com/cheatsheet.html#loops
+> ↪️：https://helm-playground.com/cheatsheet.html#loops
 
 **＊実装例＊**
 
@@ -422,7 +422,7 @@ data:
     {{- end }}
 ```
 
-> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -449,7 +449,7 @@ data:
   {{- end }}
 ```
 
-> ↪️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with
+> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with
 
 <br>
 
@@ -459,7 +459,7 @@ data:
 
 記入中...
 
-> ↪️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
+> ↪️：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 
 <br>
 
@@ -503,7 +503,7 @@ data:
   {{- end }}
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/chart_template_guide/function_list/#fromyaml
 > - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
@@ -527,7 +527,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 # [https:  github.com hiroki-hasegawa foo-repository.git]
 ```
 
-> ↪️ 参考：https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+> ↪️：https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
 
 <br>
 
@@ -539,7 +539,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 様々なデータ型をstring型で出力する。
 
-> ↪️ 参考：https://helm.sh/docs/chart_template_guide/function_list/#printf
+> ↪️：https://helm.sh/docs/chart_template_guide/function_list/#printf
 
 #### ▼ エスケープ
 
@@ -577,7 +577,7 @@ receivers:
           {{`{{ end }}`}}
 ```
 
-> ↪️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
+> ↪️：https://github.com/helm/helm/issues/2798#issuecomment-890478869
 
 <br>
 
@@ -604,7 +604,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 # foo-repository
 ```
 
-> ↪️ 参考：https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+> ↪️：https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
 
 <br>
 
@@ -628,7 +628,7 @@ lists:
 # baz
 ```
 
-> ↪️ 参考：https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast
+> ↪️：https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast
 
 <br>
 
@@ -737,7 +737,7 @@ data:
 {{.Values.foo | default "foo"}}
 ```
 
-> ↪️ 参考：https://helm-playground.com/cheatsheet.html#variables
+> ↪️：https://helm-playground.com/cheatsheet.html#variables
 
 <br>
 
@@ -785,7 +785,7 @@ spec:
                 name: foo-secret
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
 > - https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017
@@ -824,7 +824,7 @@ baz:
     bar: BAR
 ```
 
-> ↪️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
+> ↪️：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
 
 #### ▼ `-}}`
 
@@ -832,7 +832,7 @@ baz:
 
 ただし基本的には、`-}}`は使用しない方が良いらしい。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/helm/helm/issues/4191#issuecomment-539149037
 > - https://racchai.hatenablog.com/entry/2016/05/24/070000
@@ -871,7 +871,7 @@ baz:
     bar: BAR
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/chart_template_guide/function_list/#indent
 > - https://www.skyarch.net/blog/?p=16660#28
@@ -911,7 +911,7 @@ baz:
     bar: BAR
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.skyarch.net/blog/?p=16660#29
 > - https://helm.sh/docs/chart_template_guide/function_list/#nindent
@@ -946,7 +946,7 @@ foo:
 {{- end }}
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://lzone.de/blog/Helm-template-check-if-key-exists
 > - https://helm.sh/docs/chart_template_guide/function_list/#haskey
@@ -977,7 +977,7 @@ foo:
 {{- end }}
 ```
 
-> ↪️ 参考：https://stackoverflow.com/a/49819239
+> ↪️：https://stackoverflow.com/a/49819239
 
 <br>
 
@@ -991,7 +991,7 @@ foo:
 {{- end }}
 ```
 
-> ↪️ 参考：https://stackoverflow.com/a/49819239
+> ↪️：https://stackoverflow.com/a/49819239
 
 <br>
 
@@ -1005,6 +1005,6 @@ foo:
 {{- end }}
 ```
 
-> ↪️ 参考：https://helm-playground.com/cheatsheet.html#conditionals
+> ↪️：https://helm-playground.com/cheatsheet.html#conditionals
 
 <br>

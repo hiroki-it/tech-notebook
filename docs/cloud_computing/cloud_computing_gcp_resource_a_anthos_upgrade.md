@@ -9,7 +9,7 @@ description: アップグレード＠Anthosの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -60,7 +60,7 @@ spec:
 | `1.12`系                       | `v1.23.5-gke`          |
 | ...                            | ...                    |
 
-> ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
+> ↪️：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
 `【３】`
 
@@ -94,7 +94,7 @@ $ ~/baremetal/bmctl upgrade cluster \
     --kubeconfig <~/.kube/configファイルへのパス>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
 > - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
@@ -145,7 +145,7 @@ spec:
 $ kubectl get node -o wide
 ```
 
-> ↪️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
+> ↪️：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
 
 `【９】`
 
@@ -217,7 +217,7 @@ REV="${REV:=0}"; readonly REV;       # REV値
 $ mv asmcli asmcli_1140-0
 ```
 
-> ↪️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh
+> ↪️：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh
 
 <br>
 
@@ -272,7 +272,7 @@ $ ./repository/asmcli-1140-0 install \
     --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview#transitioning_from_install_asm
 > - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade#about_canary_upgrades
@@ -311,7 +311,7 @@ istio-sidecar-injector-1140-0          1          7m56s # 1140-0 (今回のア�
 istio-revision-tag-default             1          3m18s # 現在のリビジョン番号 (1130-0) を定義するdefaultタグを持つ
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview
@@ -402,7 +402,7 @@ $ kubectl label namespace app istio.io/rev=asm-1140-0 istio-injection- --overwri
 $ kubectl get namespace -L istio.io/rev
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
@@ -470,7 +470,7 @@ gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 $ istioctl proxy-status
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane

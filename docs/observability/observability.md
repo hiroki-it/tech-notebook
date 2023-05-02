@@ -9,7 +9,7 @@ description: 可観測性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: 可観測性の知見を記録しています。
 
 想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.thundra.io/observability-driven-development-for-serverless
 > - https://sookocheff.com/post/architecture/testing-in-production/
@@ -60,7 +60,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 また、AWSではCloudWatch (メトリクス+ログ) とX-Ray (分散トレース) を両方利用すると、これらの要素を満たせたことになり、可観測性を実現できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
 > - https://knowledge.sakura.ad.jp/26395/
@@ -75,7 +75,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 多くの場合、各テレメトリーの収集ツールは別々に用意する必要があるが、OpenTelemetryではこれらの収集機能をフレームワークとして提供しようとしている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
 > - https://www.splunk.com/en_us/data-insider/what-is-opentelemetry.html
@@ -90,7 +90,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 どのような種類のメトリクスを収集するかについては、監視の種類ごとに異なる。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 <br>
 
@@ -100,7 +100,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 どのような種類のログを収集するかについては、監視の種類ごとに異なる。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 #### ▼ ログの持つ情報
 
@@ -119,7 +119,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 #### ▼ スパンの持つ情報
 
-> ↪️ 参考：https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
+> ↪️：https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
 
 | 領域         | 内容           | 値                                                                                                                                         |
 | ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -152,7 +152,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
@@ -205,7 +205,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 メトリクスのデータポイントを保管する場合、分析対象の増加に注意する必要がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://whatis.techtarget.com/definition/data-point
 > - https://aws.amazon.com/jp/about-aws/whats-new/2017/12/amazon-cloudwatch-alarms-now-alerts-you-when-any-m-out-of-n-metric-datapoints-in-an-interval-are-above-your-threshold/
@@ -226,7 +226,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 ストレージの空きサイズが増え、長期間のデータポイントを保管できるようになる
 
-> ↪️ 参考：http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
+> ↪️：http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
 
 #### ▼ データポイントの重複排除
 
@@ -238,7 +238,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 重複排除のタイミングは、収集ツールの収集間隔と同じ値にすると良い。
 
-> ↪️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> ↪️：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 <br>
 
@@ -248,7 +248,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 同じ種類のメトリクスを特定のグループ (例：AWS CloudWatchならば、ディメンション、名前空間) に集約する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
+> ↪️：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
 
 #### ▼ 集計との違い
 
@@ -262,7 +262,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 特に重要なメトリクス (トラフィック、レイテンシー、エラー、サチュレーション) のこと。
 
-> ↪️ 参考：https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
+> ↪️：https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
 
 #### ▼ トラフィック
 
@@ -291,7 +291,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 サーバー監視対象のメトリクスに属する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://codezine.jp/article/detail/11472
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes4.html
@@ -304,7 +304,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 特定の瞬間に発生したイベントが記載されたデータのこと。
 
-> ↪️ 参考：https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
+> ↪️：https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
 
 <br>
 
@@ -342,7 +342,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 マイクロサービスアーキテクチャの各サービスから収集されたログを、バラバラに分析/管理する。
 
-> ↪️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+> ↪️：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 #### ▼ Centralized logging (集中ロギング)
 
@@ -350,7 +350,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 各ログに一意なIDを割り当て、人繋ぎに紐付ける必要がある。
 
-> ↪️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+> ↪️：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 <br>
 
@@ -364,7 +364,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 > - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
@@ -383,7 +383,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 
-> ↪️ 参考：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
+> ↪️：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
 
 #### ▼ 悪意のあるリクエストの検出
 
@@ -409,7 +409,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 | トレースIDヘッダー | トレースIDが割り当てられている。                                                   |
 | 親スパンIDヘッダー | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
@@ -425,7 +425,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
@@ -445,7 +445,7 @@ JSON型で定義されることが多い。
 
 SaaSツールによってJSON型の構造が異なる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://opentracing.io/docs/overview/spans/
 > - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
@@ -465,7 +465,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 ![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png)
 
-> ↪️ 参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
+> ↪️：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
 
 <br>
 
@@ -473,7 +473,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 モノリシックアーキテクチャなアプリケーションでは、システムが分散していないため、単なるトレースとなる。
 
-> ↪️ 参考：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
+> ↪️：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
 
 **＊例＊**
 
@@ -517,7 +517,7 @@ SaaSツールによってJSON型の構造が異なる。
 - Exception
 - Profiles
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://medium.com/@YuriShkuro/temple-six-pillars-of-observability-4ac3e3deb402
 > - https://www.appdynamics.com/ja_jp/topics/what-is-open-telemetry#~1-what-is-opentelemetry

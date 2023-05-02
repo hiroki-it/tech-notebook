@@ -9,7 +9,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ ArgoCDの各コンポーネントの機密でない変数やファイルを管�
 
 ConfigMapでは、`.metadata.labels`キー配下に、必ず`app.kubernetes.io/part-of: argocd`キーを割り当てる必要がある。
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
 <br>
 
@@ -29,7 +29,7 @@ ConfigMapでは、`.metadata.labels`キー配下に、必ず`app.kubernetes.io/p
 
 ArgoCDの各コンポーネントで共通する値を設定する。
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
 
 <br>
 
@@ -55,7 +55,7 @@ data:
   application.instanceLabelKey: argocd.argoproj.io/instance
 ```
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
+> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
 
 <br>
 
@@ -95,7 +95,7 @@ metadata:
 spec: ...
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#configuring-global-projects-v18
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#configuring-global-projects-v18
 
 <br>
 
@@ -119,7 +119,7 @@ data:
   kustomize.buildOptions: --enable-alpha-plugins --enable-exec
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
 
 <br>
 
@@ -164,7 +164,7 @@ spec:
     version: v1.0.0
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
 
 <br>
 
@@ -208,7 +208,7 @@ data:
   url: <URL>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
@@ -245,7 +245,7 @@ data:
   url: <URL>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
 > - https://dexidp.io/docs/connectors/oidc/
@@ -259,7 +259,7 @@ data:
 
 ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
 
 <br>
 
@@ -287,7 +287,7 @@ data:
       - /spec/metrics
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
 <br>
 
@@ -297,7 +297,7 @@ data:
 
 ArgoCDの各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
@@ -319,7 +319,7 @@ data:
   application.namespaces: "*" # 全てのNamespaceでApplicationを作成できるようにする
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#change-workload-startup-parameters
 > - https://github.com/argoproj/argo-cd/issues/11638#issuecomment-1357963028
@@ -415,7 +415,7 @@ data:
 
 ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐付ける。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
@@ -428,12 +428,12 @@ ArgoCDを構成するKubernetesリソースにアクセスするための認可�
 
 Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐付ける。
 
-| 記号 | 項目                                                                                                    | 説明                                                                        |
-| ---- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `p`  | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <プロジェクト名>/<Kubernetesリソースの識別名>` | ロールと認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
-| `g`  | `g, <グループ名> <ロール名>`                                                                            | グループにロールを紐付ける。                                                |
+| 記号            | 項目                          | 説明                                            |
+|---------------|-----------------------------|-----------------------------------------------|
+| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <プロジェクト名>/<Kubernetesリソースの識別名>` | ロールと認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
+| `g` (グループ)    | `g, <グループ名> <ロール名>`         | グループにロールを紐付ける。                                |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/a/73784100
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure
@@ -480,7 +480,7 @@ data:
   scopes: "[groups]"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://krrrr.hatenablog.com/entry/2022/01/23/201700
 > - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
@@ -554,7 +554,7 @@ data:
   scopes: "[groups]"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
@@ -620,7 +620,7 @@ data:
   scopes: "[email]"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
@@ -631,7 +631,7 @@ data:
 
 リポジトリをHTTPSプロコトルでポーリングするために、argocd-serverで必要なSSL証明書を設定する。
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
+> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 
 <br>
 
@@ -662,6 +662,6 @@ data:
     vs-ssh.visualstudio.com ssh-rsa AAAAB ...
 ```
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
+> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
 
 <br>

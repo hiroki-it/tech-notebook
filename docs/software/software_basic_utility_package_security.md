@@ -9,7 +9,7 @@ description: セキュリティ系＠パッケージの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -78,7 +78,7 @@ sops:
     version: 3.6.1
 ```
 
-> ↪️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
+> ↪️：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 #### ▼ `.sops.yaml`ファイルを使用する場合
 
@@ -117,7 +117,7 @@ $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/***
 $ sops -e ./values/foo-values.yaml
 ```
 
-> ↪️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
+> ↪️：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
 
 <br>
 
@@ -125,7 +125,7 @@ $ sops -e ./values/foo-values.yaml
 
 `EnvVar`キーの定義された項目を参照せよ。
 
-> ↪️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
+> ↪️：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
 
 <br>
 

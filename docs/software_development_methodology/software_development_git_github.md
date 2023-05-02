@@ -9,7 +9,7 @@ description: GitHub＠Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -62,7 +62,7 @@ repository/
 │
 ```
 
-> ↪️ 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
+> ↪️：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
 #### ▼ タイトル
 
@@ -110,7 +110,7 @@ GitHubだとプルリクエストであるが、GitLabだとマージリクエ�
 
 犯した罪は背負って生きていかなければならない。
 
-> ↪️ 参考：https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
+> ↪️：https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
 
 <br>
 
@@ -209,7 +209,7 @@ Gitでソフトウェアを開発する場合、役割を持たせたブラン�
 
 ![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/Voronenko/gitflow-release
 > - https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
@@ -299,7 +299,7 @@ CIツールやCDツールを使用して、コミット (マージコミット�
 
 『`release/v<セマンティックバージョニング>`』とする。タグの付与先対象とするブランチは、『`Taget: main`』を選択する。
 
-> ↪️ 参考：https://semver.org/lang/ja/
+> ↪️：https://semver.org/lang/ja/
 
 #### ▼ リリース名
 
@@ -405,13 +405,13 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 : プッシュする。この時、マージコミットを作成する時、基点ブランチ以外からマージしていると、差分のコミットが1つにまとまらず、
 
-> ↪️ 参考：http://www-creators.com/archives/1938
+> ↪️：http://www-creators.com/archives/1938
 
 #### ▼ GitHubを使用して
 
 プルリクエスト上に『Resolve conflicts』ボタンが出現し、ここからコンフリクトを修正できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github
 > - https://qiita.com/Kto_pi/items/4fd6bdec72e852763315

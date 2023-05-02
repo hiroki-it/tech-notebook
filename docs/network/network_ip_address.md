@@ -9,7 +9,7 @@ description: IPアドレス＠ネットワークの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ IPアドレスの例示では、`x`を使用しないようにする。
 
 ![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address.png)
 
-> ↪️ 参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
+> ↪️：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
 
 <br>
 
@@ -55,7 +55,7 @@ LAN内で使用される。
 | `172.16.0.0/12`           | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
 | `192.168.0.0/16`          | `192.168.0.0`～`192.168.255.255` | `65536`    |
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
+> ↪️：https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
 
 <br>
 
@@ -77,7 +77,7 @@ IPアドレスのオクテットは、ネットワーク部とホスト部に分
 
 ![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_portion.png)
 
-> ↪️ 参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
+> ↪️：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
 
 #### ▼ クラスによるホスト部とネットワーク部の定義
 
@@ -139,7 +139,7 @@ IPアドレスをクラスとして分類し、各クラスでIPアドレスの�
 
 ネットワーク内での位置情報であるIPアドレスに紐づき、ネットワーク上のIPアドレスの場所を人間にわかる識別子にしたもの。
 
-> ↪️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
+> ↪️：https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 
 <br>
 
@@ -163,7 +163,7 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 ![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_namespace.png)
 
-> ↪️ 参考：https://ascii.jp/elem/000/000/419/419685/2/
+> ↪️：https://ascii.jp/elem/000/000/419/419685/2/
 
 #### ▼ サブドメイン
 
@@ -191,7 +191,7 @@ URLやメールアドレスのドメイン名とIPアドレスを相互変換す
 
 そこで、グローバルIPアドレスの代わりとして、完全修飾ドメイン名をURLの一部として使用する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 > - https://www.kagoya.jp/howto/it-glossary/network/nameresolution/
@@ -220,7 +220,7 @@ webサーバーのIPアドレスがDNSサーバーに登録されていない時
 <IPアドレス> <ドメイン名>
 ```
 
-> ↪️ 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
+> ↪️：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
 
 #### ▼ `/etc/resolv.conf`ファイル
 
@@ -244,13 +244,13 @@ search      bar   baz # domain値で問い合わせに失敗した場合に使�
 $ nslookup example # 実際には、example.fooとなる
 ```
 
-> ↪️ 参考：https://linuc.org/study/knowledge/507/
+> ↪️：https://linuc.org/study/knowledge/507/
 
 #### ▼ ドメイン
 
 ドメインレジストラ (例：AWS Route53、Google Cloud DNS、お名前ドットコム) によって管理される。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.value-domain.com/media/registry-registrar/
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
@@ -263,7 +263,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 ドメイン名とIPアドレスのマッピングを管理する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-

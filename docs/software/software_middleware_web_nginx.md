@@ -9,7 +9,7 @@ description: Nginx＠Web系ミドルウェアの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ Nginxの起動時に最初にマスタープロセスが実行され、Nginxに�
 
 キャッシュマネージャは、保存されたキャッシュの有効期限を管理する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.codetd.com/en/article/12312272
 > - https://rainbow-engine.com/nginx-apache-difference/
@@ -249,7 +249,7 @@ server {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - http://nginx.org/en/docs/http/load_balancing.html
 > - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
@@ -282,7 +282,7 @@ stream {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://engineering.mercari.com/blog/entry/2016-08-17-170114/
 > - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
@@ -320,7 +320,7 @@ server {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/
 > - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/

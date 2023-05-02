@@ -9,7 +9,7 @@ description: 認証＠認証/認可の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: 認証＠認証/認可の知見を記録しています。
 
 ### HTTP認証
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html
 
 <br>
 
@@ -41,7 +41,7 @@ description: 認証＠認証/認可の知見を記録しています。
 
 `Cookie`ヘッダーによる送受信では、CSRFの危険性がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 > - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
@@ -107,7 +107,7 @@ cookie: sessionid=<セッションID>
 
 : 認証解除時、サーバーでセッションデータを削除する。
 
-> ↪️ 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
+> ↪️：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
 #### ▼ トークンを使用したForm認証の場合
 
@@ -117,7 +117,7 @@ cookie: sessionid=<セッションID>
 
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png)
 
-> ↪️ 参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
+> ↪️：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
 
 #### ▼ `Cookie`ヘッダーの値のクライアント保持
 
@@ -129,7 +129,7 @@ Chromeの場合は、Cookieストレージに保持される。
 
 確認方法については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://developer.chrome.com/docs/devtools/storage/cookies/
 > - https://qiita.com/cobachan/items/05fa537a4ffcb189d001
@@ -172,9 +172,9 @@ authorization: <パーソナルアクセストークン>
 
 | サービス例 | トークン名                 | 説明                                                                                                                                                                                                                                                                                                           |
 | ---------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GitHub     | パーソナルアクセストークン | HTTPSプロトコルを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSプロトコルを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>↪️ 参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+| GitHub     | パーソナルアクセストークン | HTTPSプロトコルを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSプロトコルを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>↪️：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
 
-> ↪️ 参考：https://www.contentful.com/help/personal-access-tokens/
+> ↪️：https://www.contentful.com/help/personal-access-tokens/
 
 <br>
 
@@ -211,7 +211,7 @@ authorization: <パーソナルアクセストークン>
 |                       | 指紋 (生体)                                                                             |
 | 暗証番号 (知識)       | キャッシュカード (所持)                                                                 |
 
-> ↪️ 参考：https://www.quix.jp/quix/two-factor-authentication/
+> ↪️：https://www.quix.jp/quix/two-factor-authentication/
 
 <br>
 

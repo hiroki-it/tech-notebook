@@ -9,7 +9,7 @@ description: L4層＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: L4層＠OSI参照モデルの知見を記録しています。
 
 アプリケーション層のプロトコルを適切なアプリケーションに振り分けるプロトコル (例：TCP、UDP、など) を処理するレイヤーである。
 
-> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4
+> ↪️：https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4
 
 <br>
 
@@ -91,7 +91,7 @@ Unixで使用されるソケットのこと。
 
 ![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://en.wikipedia.org/wiki/Unix_domain_socket
 > - https://ascii.jp/elem/000/001/415/1415088/
@@ -109,6 +109,6 @@ unix://./etc/foo.sock
 
 同じOS上で稼働するコンテナのプロセス間の通信でも使用できる。
 
-> ↪️ 参考：https://www.miketheman.net/2021/12/28/container-to-container-communication/
+> ↪️：https://www.miketheman.net/2021/12/28/container-to-container-communication/
 
 <br>

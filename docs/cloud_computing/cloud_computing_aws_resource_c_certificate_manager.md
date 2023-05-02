@@ -9,7 +9,7 @@ description: Certificate Manager＠Cで始まるAWSリソースを記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -56,7 +56,7 @@ DNS検証かEメール検証かを設定する。
 
 ドメインを購入できるサービス (例：AWS、GCP、GMO) に検証方法が用意されている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html
 > - https://jp.globalsign.com/support/proceeding/147.html
@@ -69,7 +69,7 @@ DNS検証かEメール検証かを設定する。
 
 古い証明書は削除しておく。
 
-> ↪️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
+> ↪️：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
 
 <br>
 
@@ -81,7 +81,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 注意点として、ドメインをAWS以外 (例：お名前ドットコム) で購入している場合は、NSレコード値を購入先のサービスのドメインレジストラに手作業で登録する必要があることに注意する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html
 > - https://dev.classmethod.jp/articles/route53-domain-onamae/
@@ -92,7 +92,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 ドメインをAWS以外 (例：お名前ドットコム) で購入している場合は、そちらで設定したメールアドレス宛に確認メールを送信する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
+> ↪️：https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
 
 <br>
 
@@ -163,6 +163,6 @@ ALBではSSL証明書の変更でダウンタイムは発生しない。
 
 CloudFrontは謎...
 
-> ↪️ 参考：https://aws.typepad.com/sajp/2014/04/elb-ssl.html
+> ↪️：https://aws.typepad.com/sajp/2014/04/elb-ssl.html
 
 <br>

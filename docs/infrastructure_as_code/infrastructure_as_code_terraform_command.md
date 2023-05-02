@@ -9,7 +9,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 コマンドを実行する作業ディレクトリを指定する。
 
-> ↪️ 参考：https://www.terraform.io/cli/commands#switching-working-directory-with-chdir
+> ↪️：https://www.terraform.io/cli/commands#switching-working-directory-with-chdir
 
 <br>
 
@@ -77,7 +77,7 @@ $ export TF_CLI_ARGS_plan="--parallelism=50"
 $ export TF_CLI_ARGS_apply="--parallelism=50"
 ```
 
-> ↪️ 参考：https://developer.hashicorp.com/terraform/cli/commands/apply#parallelism-n
+> ↪️：https://developer.hashicorp.com/terraform/cli/commands/apply#parallelism-n
 
 #### ▼ -refresh-only
 
@@ -93,7 +93,7 @@ $ terraform apply -refresh-only
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://learn.hashicorp.com/tutorials/terraform/refresh
 > - https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
@@ -181,7 +181,7 @@ Initializing provider plugins...
 - Installed foo/bar v2.3.0 (signed by a HashiCorp partner, key ID *****)
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://spacelift.io/blog/terraform-init
 > - https://reboooot.net/post/what-is-terraform/
@@ -202,7 +202,7 @@ $ terraform init -backend=false
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> init -backend=false
 ```
 
-> ↪️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
+> ↪️：https://www.terraform.io/cli/commands/init#backend-initialization
 
 #### ▼ -backend=true, -backend-config
 
@@ -237,14 +237,14 @@ $ terraform init \
 $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/cli/commands/init#backend-initialization
 > - https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
 
 また、開発時に一時的にlocalをバックエンドとして使用する場合にも役立つ。
 
-> ↪️ 参考：https://repl.info/archives/1435/
+> ↪️：https://repl.info/archives/1435/
 
 #### ▼ --migrate-state
 
@@ -256,7 +256,7 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 ```
 
-> ↪️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
+> ↪️：https://www.terraform.io/cli/commands/init#backend-initialization
 
 #### ▼ -upgrade
 
@@ -266,7 +266,7 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 $ terraform init -upgrade
 ```
 
-> ↪️ 参考：https://www.terraform.io/cli/commands/init#upgrade
+> ↪️：https://www.terraform.io/cli/commands/init#upgrade
 
 <br>
 
@@ -319,7 +319,7 @@ main.tf
 $ terraform get
 ```
 
-> ↪️ 参考：https://ozashu.hatenablog.com/entry/2019/05/07/000541
+> ↪️：https://ozashu.hatenablog.com/entry/2019/05/07/000541
 
 <br>
 
@@ -337,7 +337,7 @@ Graphvizのダウンロードが必要である。
 $ terraform graph | dot -Tsvg > graph.svg
 ```
 
-> ↪️ 参考：https://graphviz.org/download/
+> ↪️：https://graphviz.org/download/
 
 #### ▼ 図形の見方
 
@@ -348,7 +348,7 @@ $ terraform graph | dot -Tsvg > graph.svg
 | 四角   | `resource`ブロック、`data`ブロック                    |
 | ノート | `variable`ブロック、`output`ブロック、`local`ブロック |
 
-> ↪️ 参考：https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
+> ↪️：https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
 
 <br>
 
@@ -392,7 +392,7 @@ $ terraform output -json
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/cli/commands/output
 > - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
@@ -450,7 +450,7 @@ actions need to be performed.
 
 特定の`resource`ブロックを使用して、`terraform plan`コマンドを実行する。`terraform plan`コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。`-target`オプションで指定するアドレスは、`terraform plan`コマンド自身の出力結果や、`terraform state list`コマンドで確認できる。
 
-> ↪️ 参考：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
+> ↪️：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
 ```bash
 $ terraform plan \
@@ -510,7 +510,7 @@ $ terraform plan \
     -refresh=true
 ```
 
-> ↪️ 参考：https://github.com/hashicorp/terraform/issues/17311
+> ↪️：https://github.com/hashicorp/terraform/issues/17311
 
 #### ▼ -parallelism
 
@@ -605,7 +605,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 | `resource`ブロックにハードコーディングされた値を環境変数に変更 (`.tfvars`ファイルに移行) | されない        |
 | `variables`ブロック名の変更                                                              | されない        |
 
-> ↪️ 参考：https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
+> ↪️：https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
 
 <br>
 
@@ -634,7 +634,7 @@ $ terraform providers lock \
 $ rm .terraform.lock.hcl
 ```
 
-> ↪️ 参考：https://developer.hashicorp.com/terraform/cli/commands/providers/lock
+> ↪️：https://developer.hashicorp.com/terraform/cli/commands/providers/lock
 
 <br>
 
@@ -660,7 +660,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 `.tfstate`ファイルで定義されている`resource`ブロック (`.tfstate`ファイル上では`managed`モード) の一覧を取得する。`terraform apply`コマンドで`-target`オプションを使用する前にアドレスを確認したい場合や、`terraform apply`コマンドの実行に失敗した時に`.tfstate`ファイルと実インフラにどのような差分があるかを確認する場合に使用する。
 
-> ↪️ 参考：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
+> ↪️：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
 ```bash
 $ terraform state list
@@ -762,7 +762,7 @@ $ terraform state rm --dry-run 'module.ec2.aws_instance.bastion["<キー名2>"]'
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
@@ -906,7 +906,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを`1`個ずつ指定して、`.tfstate`ファイルに書き込んでいく必要がある。
 
-> ↪️ 参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
+> ↪️：https://dtan4.hatenablog.com/entry/2016/08/18/010652
 
 <br>
 
@@ -1046,7 +1046,7 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
@@ -1060,7 +1060,7 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 
      この時、`.tfstate`ファイルの差分表記と反対に (例：`+`の場合は削除、`-`は追加、`→`は逆向き変更) になるように、tfファイルを修正する。
 
-> ↪️ 参考：https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
+> ↪️：https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
 `【６】`
 
@@ -1143,6 +1143,6 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 : 実インフラは変更されず、`.tfstate`ファイルに状態が書き込まれる。
 
-> ↪️ 参考：https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55
+> ↪️：https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55
 
 <br>

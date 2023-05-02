@@ -9,7 +9,7 @@ description: Istio＠CNCFプロジェクトの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Istio＠CNCFプロジェクトの知見を記録しています。
 
 各PodにサイドカーとしてEnvoyを稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
 > - https://speakerdeck.com/16yuki0702/distributed-tracing-at-openshift-meetup-tokyo20191018?slide=35
@@ -39,7 +39,7 @@ description: Istio＠CNCFプロジェクトの知見を記録しています。
 
 サイドカーは、`L4` (トランスポート層) のプロトコル (例：TCP、UDP、など) と`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/ops/deployment/architecture/
 > - https://techblog.zozo.com/entry/zozotown-istio-production-ready
@@ -55,7 +55,7 @@ description: Istio＠CNCFプロジェクトの知見を記録しています。
 
 各Node上にエージェントとしてEnvoyを稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.csdn.net/cr7258/article/details/126870859
 > - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
@@ -108,7 +108,7 @@ ztunnelのPod (L4)
 アプリコンテナのPod
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/blog/2022/introducing-ambient-mesh/
 > - https://istio.io/latest/blog/2022/get-started-ambient/#install-istio-with-ambient-mode
@@ -151,7 +151,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 | サービスレジストリ                           | etcd                                                                                                                                                                                                                                         | etcd                         | etcd                                                |
 | Node外からのインバウンド通信のルーティング   | ・VirtualService + Gateway (内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である) <br>・Ingress + Istio Ingressコントローラー + ClusterIP Service | `route`キー + `listener`キー | Ingress + Ingressコントローラー + ClusterIP Service |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
@@ -164,7 +164,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 #### ▼ メリット
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.container-solutions.com/wtf-is-istio
 > - https://www.containiq.com/post/kubernetes-service-mesh
@@ -179,7 +179,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 | Nodeのハードウェアリソースの消費量増加 | IstioのPod間通信では、Kubernetesと比べて、通信に必要なコンポーネント (例：Istiodコントロールプレーン、`istio-proxy`コンテナ) が増える。そのため、Nodeのハードウェアリソースの消費量が増え、また宛先Podからのレスポンス速度が低くなる。 |
 | 学習コストの増加                       | Istioが多機能であり、学習コストが増加する。                                                                                                                                                                                            |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://arxiv.org/pdf/2004.00372.pdf
 > - https://www.containiq.com/post/kubernetes-service-mesh
@@ -196,7 +196,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 | BlackHoleCluster   | 設定されていない任意の宛先 |                                                           |
 | 外部のサービス     | Clusterの外にあるサービス  | ServiceEntryで設定できる。                                |
 
-> ↪️ 参考：https://istiobyexample.dev/monitoring-egress-traffic/
+> ↪️：https://istiobyexample.dev/monitoring-egress-traffic/
 
 <br>
 
@@ -208,14 +208,14 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 障害を意図的にインジェクションし、サービスメッシュの動作を検証する。
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+> ↪️：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 
 #### ▼ テストの種類
 
 | テスト名              | 内容                                                                                                                                                                                          |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Delayインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abortインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+| Delayインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>↪️：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abortインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>↪️：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
 <br>
 
@@ -233,7 +233,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 Pod間通信時に、正しい送信元Envoyの通信であることを認証する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
@@ -242,7 +242,7 @@ Pod間通信時に、正しい送信元Envoyの通信であることを認証す
 
 相互TLS認証を実施し、送信元のPodの通信を認証する。
 
-> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication
+> ↪️：https://istio.io/latest/docs/concepts/security/#authentication
 
 #### ▼ JWTによるBearer認証 (IDプロバイダーに認証フェーズを委譲)
 
@@ -255,7 +255,7 @@ JWTの取得方法として、例えば以下の方法がある。
 - 送信元のPodがIDプロバイダーからJWTを直接取得する。
 - 送信元/宛先の間にOAuth`2.0`プロキシ (例：oauth2-proxy、など) やSSOプロキシ(例：dex、など) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。
 
-> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
+> ↪️：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
 #### ▼ アプリの認証について
 
@@ -271,7 +271,7 @@ Pod間通信時に、AuthorizationPolicyを使用して、スコープに含ま�
 
 ![istio_authorization-policy.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/concepts/security/#authorization-policies
 > - https://www.styra.com/blog/authorize-better-istio-traffic-policies-with-opa-styra-das/
@@ -281,7 +281,7 @@ Pod間通信時に、AuthorizationPolicyを使用して、スコープに含ま�
 
 AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、KeyCloak、AWS Cognito、Google Auth) を指定し、認可フェーズを委譲できる。
 
-> ↪️ 参考：https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3
+> ↪️：https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3
 
 #### ▼ アプリの認可について
 
@@ -295,7 +295,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、KeyCloak、AW
 
 相互TLS認証を実施し、通信データを暗号化する。
 
-> ↪️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
+> ↪️：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
 <br>
 
@@ -311,7 +311,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、KeyCloak、AW
 
 KubernetesリソースにSSL証明書を提供しつつ、これを定期的にローテーションする。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes_istio.html
@@ -326,7 +326,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) を使用する�
 
 KubernetesリソースにSSL証明書を提供しつつ、これを定期的にローテーションする。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
@@ -341,7 +341,7 @@ IstioによるEnvoyは、テレメトリーを作成する。
 
 各テレメトリー収集ツールは、プル型 (ツールがIstiodから収集) やプッシュ型 (Istiodがツールに送信) でこのテレメトリーを収集する。
 
-> ↪️ 参考：https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17
+> ↪️：https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17
 
 <br>
 
@@ -353,7 +353,7 @@ IstioによるEnvoyは、メトリクスを作成し、Istiodコントロール�
 
 Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスを収集する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22
@@ -364,13 +364,13 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 
 | メトリクス                                                          | 単位     | 説明                                                                                                                                                                                              | アラート条件例 (合致したら発火) |
 | ------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| 総リクエスト数 (`istio_requests_total`)                             | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                                 |
+| 総リクエスト数 (`istio_requests_total`)                             | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                                 |
 | 総gRPCリクエスト数 (`istio_request_messages_total`)                 | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                         |                                 |
 | 総gRPCレスポンス数 (`istio_response_messages_total`)                | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                         |                                 |
 | Pod間通信リトライ数 (`envoy_cluster_upstream_rq_retry`)             | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                                  |                                 |
 | Pod間通信リトライ成功数 (`envoy_cluster_upstream_rq_retry_success`) | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                              |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/reference/config/metrics/
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
@@ -418,13 +418,13 @@ IstioによるEnvoyは、アクセスログを作成し、標準出力に出力�
 }
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/access-log/
+> ↪️：https://istio.io/latest/docs/tasks/observability/logs/access-log/
 
 #### ▼ OpenTelemetryのコレクター
 
 IstioによるEnvoyは、アクセスログを作成し、OpenTelemetryのコレクターに出力する。
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
+> ↪️：https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
 <br>
 
@@ -436,7 +436,7 @@ Istioは、分散トレースのためのメタデータを作成し、Jaegerに
 
 ただし、アプリコンテナ間で伝播することはしないため、伝播の実装が必要になる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
 > - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/productpage/productpage.py#L180-L237
@@ -450,7 +450,7 @@ Istioは、分散トレースのためのメタデータを作成し、Jaegerに
 
 複数のClusterのネットワークを横断的に管理するサービスメッシュ。
 
-> ↪️ 参考：https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
+> ↪️：https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
 
 <br>
 
@@ -464,7 +464,7 @@ Istioは、分散トレースのためのメタデータを作成し、Jaegerに
 
 ![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_same-network.png)
 
-> ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+> ↪️：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
@@ -474,7 +474,7 @@ Istioは、分散トレースのためのメタデータを作成し、Jaegerに
 
 ![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
 
-> ↪️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+> ↪️：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
 <br>
 
@@ -490,7 +490,7 @@ Istioは、分散トレースのためのメタデータを作成し、Jaegerに
 
 ![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png)
 
-> ↪️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
+> ↪️：https://istio.io/latest/docs/ops/deployment/vm-architecture/
 
 #### ▼ 異なるプライベートネットワーク内の場合
 

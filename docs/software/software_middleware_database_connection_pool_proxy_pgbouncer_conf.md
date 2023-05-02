@@ -9,7 +9,7 @@ description: 設定ファイル＠PgBouncerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -65,7 +65,7 @@ listen_port = 5432
 server_reset_query = DISCARD ALL
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#generic-settings
+> ↪️：https://www.pgbouncer.org/config.html#generic-settings
 
 <br>
 
@@ -82,7 +82,7 @@ server_reset_query = DISCARD ALL
 pool_mode = session
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#generic-settings
+> ↪️：https://www.pgbouncer.org/config.html#generic-settings
 
 #### ▼ transaction
 
@@ -93,7 +93,7 @@ pool_mode = session
 pool_mode = transaction
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#generic-settings
+> ↪️：https://www.pgbouncer.org/config.html#generic-settings
 
 #### ▼ statement
 
@@ -104,7 +104,7 @@ pool_mode = transaction
 pool_mode = statement
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#generic-settings
+> ↪️：https://www.pgbouncer.org/config.html#generic-settings
 
 <br>
 
@@ -134,7 +134,7 @@ foo_db = host=127.0.0.1 port=5432 dbname=foo_db
 query_wait_timeout = 30000
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#dangerous-timeouts
+> ↪️：https://www.pgbouncer.org/config.html#dangerous-timeouts
 
 <br>
 
@@ -147,7 +147,7 @@ DBが同時に受信できるクライアント接続の最大数を設定する
 max_client_conn = 100
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#section-databases
+> ↪️：https://www.pgbouncer.org/config.html#section-databases
 
 <br>
 
@@ -160,7 +160,7 @@ max_client_conn = 100
 default_pool_size = 20
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#section-databases
+> ↪️：https://www.pgbouncer.org/config.html#section-databases
 
 <br>
 
@@ -173,7 +173,7 @@ default_pool_size = 20
 min_pool_size = 10
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#section-databases
+> ↪️：https://www.pgbouncer.org/config.html#section-databases
 
 <br>
 
@@ -186,6 +186,6 @@ min_pool_size = 10
 reserve_pool_size = 5
 ```
 
-> ↪️ 参考：https://www.pgbouncer.org/config.html#section-databases
+> ↪️：https://www.pgbouncer.org/config.html#section-databases
 
 <br>

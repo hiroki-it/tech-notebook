@@ -9,7 +9,7 @@ description: 共通部分＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ kube-apiserverをアップグレードすると、APIグループの特定のバ
 apiVersion: v1
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/reference/using-api/#api-groups
 > - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
@@ -44,7 +44,7 @@ apiVersion: v1
 
 もしバージョンの`v2`にKubernetesが対応していなければ、`v1beta1`や`v2beta2`で回避する方法がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2008/27/news057.html
 > - https://qiita.com/tkusumi/items/cb2dc318875fbef19468
@@ -67,7 +67,7 @@ apiVersion: v1
 
 `.metadata.labels`キーとは異なり、設定できる情報に制約がない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
@@ -91,7 +91,7 @@ metadata:
       {"apiVersion":"extensions/v1beta1","kind":"Deployment" ... }
 ```
 
-> ↪️ 参考：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
+> ↪️：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
 
 #### ▼ kubernetes.io/ingress.class
 
@@ -107,7 +107,7 @@ metadata:
     kubernetes.io/ingress.class: foo-ingress-class
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+> ↪️：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
@@ -125,7 +125,7 @@ metadata:
     ingressclass.kubernetes.io/is-default-class: "true"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
@@ -149,7 +149,7 @@ metadata:
   deletionTimestamp: "2022-01-01T12:00:00Z"
 ```
 
-> ↪️ 参考：https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
+> ↪️：https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
 
 <br>
 
@@ -170,7 +170,7 @@ metadata:
   generation: 3
 ```
 
-> ↪️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -188,7 +188,7 @@ metadata:
     app.kubernetes.io/app: foo-deployment
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -198,7 +198,7 @@ metadata:
 
 キー名のプレフィクスとして、`kubernetes.io/`と`k8s.io/`は予約されている。
 
-> ↪️ 参考：https://kubernetes.io/docs/reference/labels-annotations-taints/
+> ↪️：https://kubernetes.io/docs/reference/labels-annotations-taints/
 
 #### ▼ データ型
 
@@ -206,7 +206,7 @@ string型である必要がある。
 
 int型を割り当てようとするとエラーになり、これはHelmの`values`ファイル経由で『数字』を出力しようとする場合に起こる。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
+> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <br>
 
@@ -226,7 +226,7 @@ int型を割り当てようとするとエラーになり、これはHelmの`val
 
 ただし、kube-controllerやOperatorでは常に`--force-conflicts`オプションを実行するようになっている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/superbrothers/items/aeba9406691388b6a19e
 > - https://speakerdeck.com/superbrothers/wakaru-metadata-dot-managedfields?slide=21
@@ -311,7 +311,7 @@ metadata:
   name: foo-deployment
 ```
 
-> ↪️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### ▼ 名前は変更不可
 
@@ -319,7 +319,7 @@ Kubernetesにとって`.metadata.name`キーはIDであり、後から変更で�
 
 もし別の名前に変更したい場合は、再作成する必要がある。
 
-> ↪️ 参考：https://stackoverflow.com/questions/39428409/rename-deployment-in-kubernetes
+> ↪️：https://stackoverflow.com/questions/39428409/rename-deployment-in-kubernetes
 
 <br>
 
@@ -336,7 +336,7 @@ metadata:
   namespace: foo-namespace
 ```
 
-> ↪️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -358,7 +358,7 @@ metadata:
 ...
 ```
 
-> ↪️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -440,7 +440,7 @@ $ kubectl get crd foo.io
 foo.io    2023-01-22T06:08:21Z
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#tell-helm-not-to-uninstall-a-resource
 > - https://codersociety.com/blog/articles/helm-best-practices#9-opt-out-of-resource-deletion-with-resource-policies
@@ -482,7 +482,7 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 | `app.kubernetes.io/type`       | `host` (PVのマウント対象)    | リソースの設定方法の種類名を設定する。                              |
 | `app.kubernetes.io/version`    | `5.7.21`                     | マイクロサービスのリリースバージョン名を設定する。                  |
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
 #### ▼ `kubernetes.io`キー
 
@@ -608,7 +608,7 @@ status:
       type: PodScheduled
 ```
 
-> ↪️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
 
 <br>
 
@@ -635,7 +635,7 @@ status:
   conditions: ...
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
 > - https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485

@@ -9,7 +9,7 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -156,7 +156,7 @@ func main() {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://opentelemetry.io/docs/instrumentation/go/manual/
 > - https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85
@@ -248,7 +248,7 @@ func main() {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101

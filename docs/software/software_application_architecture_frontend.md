@@ -9,7 +9,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -38,7 +38,7 @@ SPAでは、ページ全体の静的ファイルをリクエストするのは�
 
 ![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SPアプリにおけるデータ通信の仕組み.png)
 
-> ↪️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
+> ↪️：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 
 <br>
 
@@ -52,7 +52,7 @@ Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるよう�
 
 詳しくは、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html
 
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
 
@@ -66,13 +66,13 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
 
-> ↪️ 参考：https://www.switchitmaker2.com/seo/spa/
+> ↪️：https://www.switchitmaker2.com/seo/spa/
 
 #### ▼ SEO
 
 SPAは、Googleのクローラーがページを認識しにくく、Webページがインデックスされない可能性がある。
 
-> ↪️ 参考：https://www.switchitmaker2.com/seo/spa/
+> ↪️：https://www.switchitmaker2.com/seo/spa/
 
 <br>
 
@@ -91,7 +91,7 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 | Rendering                      | サーバー |
 | Paiting                        | ブラウザ |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
 > - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
@@ -106,7 +106,7 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 
 広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでSPAとして動作する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/rita0222/items/66fec6e7be5987bace3c
 > - https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89<br>
@@ -137,7 +137,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度レンダリングされる。
 
-> ↪️ 参考：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
+> ↪️：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
 
 <br>
 
@@ -147,7 +147,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 フロントエンドを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
 
-> ↪️ 参考：https://atomicdesign.bradfrost.com/
+> ↪️：https://atomicdesign.bradfrost.com/
 
 <br>
 
@@ -155,7 +155,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
-> ↪️ 参考：https://tec.tecotec.co.jp/entry/2020/03/27/090000
+> ↪️：https://tec.tecotec.co.jp/entry/2020/03/27/090000
 
 | Nuxt.jsのディレクトリ | Atomic Designのレイヤー     |
 | --------------------- | --------------------------- |

@@ -9,7 +9,7 @@ description: CI/CDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -62,7 +62,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 ![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
 
-> ↪️ 参考：https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
+> ↪️：https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
 
 <br>
 
@@ -78,7 +78,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 |          | コーディング規約に関するレビュー                                         |    `⭕️`     | CIツールと静的解析ツールで自動化できる。             |
 |          | 仕様に関するレビュー                                                     |      ×       | GitHub上でレビューする必要がある。                   |
 
-> ↪️ 参考：https://tracpath.com/works/devops/11_topics_for_devops/
+> ↪️：https://tracpath.com/works/devops/11_topics_for_devops/
 
 <br>
 
@@ -101,7 +101,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 | デプロイ                  | 本番環境に対するデプロイ       |    `⭕️`     | CDツールで自動化できる。 |
 | DBマイグレーション        | 本番環境のDBに対するデプロイ   |    `⭕️`     | CDツールで自動化できる。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.kyanny.me/entry/2014/12/24/145001
 > - https://aws.amazon.com/jp/devops/continuous-delivery/
@@ -119,7 +119,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 | 分析     | ステージング環境のテレメトリーを分析 |    `⭕️`     | CDツールとテレメトリー収集ツールを組み合わせて自動化できる。 |
 |          | 本番環境のテレメトリーを分析         |    `⭕️`     | CDツールとテレメトリー収集ツールを組み合わせて自動化できる。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://r-kaga.com/blog/what-is-progressive-delivery
 > - https://codezine.jp/article/detail/14476
@@ -231,7 +231,7 @@ CIツール (例：GitHub Actions、CircleCI、など) を使用して、CIパ�
 
 ![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 > - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
@@ -264,7 +264,7 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、セキュリ
 
 ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。
 
-> ↪️ 参考：https://devops-blog.virtualtech.jp/entry/20220418/1650250499
+> ↪️：https://devops-blog.virtualtech.jp/entry/20220418/1650250499
 
 #### ▼ 責務境界の分離
 
@@ -278,7 +278,7 @@ CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。
 
 一方でGitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用をアプリチームとSREチームで分担できるようになる。
 
-> ↪️ 参考：https://news.mynavi.jp/techplus/article/techp5025/
+> ↪️：https://news.mynavi.jp/techplus/article/techp5025/
 
 <br>
 
@@ -292,7 +292,7 @@ CIツール (例：GitHub Actions、CircleCI、など)を使用してCIパイプ
 
 ![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 > - https://github.com/argoproj/gitops-engine/blob/master/specs/design.md

@@ -9,7 +9,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -122,7 +122,7 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 これに合わせて、Terraformでもリリースを二回に分ける。
 
-> ↪️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
+> ↪️：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
 
 <br>
 
@@ -274,7 +274,7 @@ API Gatewayのステージ名を参照するためには、resourceを使用す�
 
 API Gatewayの各ARNについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
+> ↪️：https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
 
 **＊実装例＊**
 
@@ -603,7 +603,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
 
-> ↪️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
 <br>
 
@@ -617,7 +617,7 @@ ALB/NLBの作成 (※リスナーも含む可能性) が完全に完了しない
 
 リスナーの後にECSサービスを作成するようにし、『ターゲットグループ ➡︎ ALB/NLB ➡︎ リスナー ➡︎ ECSサービス』の順で`resource`ブロックを作成できるようにする。
 
-> ↪️ 参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
+> ↪️：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
 <br>
 
@@ -706,7 +706,7 @@ resource "aws_instance" "bastion" {
 
 Internet Gatewayの後にEC2を作成できるようにする。
 
-> ↪️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
 <br>
 
@@ -780,7 +780,7 @@ resource "aws_eks_node_group" "this" {
 }
 ```
 
-> ↪️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#example-usage
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#example-usage
 
 <br>
 
@@ -1184,7 +1184,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ、パスを設定できる。
 
-> ↪️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
 
 <br>
 
@@ -1194,7 +1194,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 リンクのNOTE文を参考にせよ。
 
-> ↪️ 参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
 <br>
 
@@ -1211,7 +1211,7 @@ status code: 400, request id: *****
 
 このエラーが発生した場合、コンソール画面上でリスナーを削除したうえで、もう一度`terraform apply`コマンドを実行する。
 
-> ↪️ 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
+> ↪️：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
 
 <br>
 
@@ -1351,7 +1351,7 @@ DBクラスターでは、レプリケーションのために、`3`個のAZが�
 
 Terraformがこれを認識しないように、`ignore_changes`引数でAZを指定しておく必要がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
 > - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
@@ -1391,7 +1391,7 @@ Auroraでは、クラスターにインスタンスを1つだけ紐付けると�
 
 AZのマップデータに対して`for_each`引数を使用することにより、各AZに最低1つのインスタンスを配置するように設定できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 > - https://github.com/hashicorp/terraform/issues/5333
@@ -1430,7 +1430,7 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 そのため、サブネットグループに複数のサブネットを紐付けるようにする。
 
-> ↪️ 参考：https://github.com/hashicorp/terraform/issues/5333
+> ↪️：https://github.com/hashicorp/terraform/issues/5333
 
 <br>
 
@@ -1510,7 +1510,7 @@ ALBのアクセスログを送信するバケット内には、自動的に『/A
 
 東京リージョンのELBサービスアカウントIDは『`582318560864`』である。
 
-> ↪️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+> ↪️：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
 ```yaml
 {
@@ -2208,7 +2208,7 @@ WAFのIPセットと他設定の依存関係に癖がある。
 | IAMユーザー                  | 全て                                 | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                                                                                                                                                      |
 | IAMユーザーグループ          | 全て                                 | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                                                                                                                                                      |
 | IAMロール                    | ユーザーに紐付くロール               | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                                                                                                                                                      |
-|                              | サービスリンクロール                 | サービスリンクロールは自動的に作成されるが、これが行われる前に事前にTerraformで作成でき、以下のリンクにて各AWSリソースにサービスリンクロールが存在しているのか否かを確認できる。しかし、数が多く、また初回作成時のみしかエラーは起こらないため、サービスリンクロールはTerraformで作成しないようにする。<br>↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
+|                              | サービスリンクロール                 | サービスリンクロールは自動的に作成されるが、これが行われる前に事前にTerraformで作成でき、以下のリンクにて各AWSリソースにサービスリンクロールが存在しているのか否かを確認できる。しかし、数が多く、また初回作成時のみしかエラーは起こらないため、サービスリンクロールはTerraformで作成しないようにする。<br>↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
 | IAMポリシー                  |                                      | ビジネスロジックを持ち、変更の要望頻度が高い。ただし、IPアドレス制限ポリシーなど、自動化した方が便利になる場合はこの限りではない。                                                                                                                                                                                                                                                                                  |
 | RDS                          | admin以外のユーザー                  | 個別のユーザー作成のために、mysql providerを使用する必要がある。ただし、moduleディレクトリ配下に`provider.tf`ファイルを配置する必要があるため、ディレクトリ構成ポリシーに難がある。                                                                                                                                                                                                                                 |
 | Route53                      | NSレコード                           | ホストゾーンを作成すると、レコードとして、NSレコード値が自動的に設定される。これは、Terraformの管理外である。                                                                                                                                                                                                                                                                                                       |

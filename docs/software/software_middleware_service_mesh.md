@@ -9,7 +9,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 しかし、マイクロサービスアーキテクチャ固有のインフラ領域の課題 (例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー作成、など) があり、非推奨である。
 
-> ↪️ 参考：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
+> ↪️：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
 
 <br>
 
@@ -39,7 +39,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://solace.com/blog/event-mesh-service-mesh-for-microservices/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html
@@ -66,7 +66,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念により、アプリケーションエンジニアがこれらのロジックを意識せずに (透過的に) 、インフラストラクチャ層より上層 (インターフェース層、ユースケース層、ドメイン層) の実装に注力できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 > - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
@@ -83,7 +83,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 ![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
@@ -96,7 +96,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
-> ↪️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
+> ↪️：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
 
 <br>
 
@@ -116,7 +116,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 | マイクロサービスごとの設定カスタマイズ |           `⭕️`            |              △               |
 | 単純性                                 |             ×              |            `⭕️`             |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://codersociety.com/blog/articles/kubernetes-logging
 > - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411
@@ -136,7 +136,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_control-plane.png)
 
-> ↪️ 参考：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
+> ↪️：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
 
 <br>
 
@@ -152,7 +152,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 | SPIRE   | Envoy                               | SPIRE                                 | SDSのみ                 |
 | ...     | ...                                 | ...                                   | ...                     |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
@@ -180,7 +180,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 - ロードバランサー
 - 名前解決 (DNSベースのサービスディスカバリーの場合のみ)
 
-> ↪️ 参考：https://www.baeldung.com/cs/service-discovery-microservices
+> ↪️：https://www.baeldung.com/cs/service-discovery-microservices
 
 <br>
 
@@ -202,7 +202,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 : 送信元マイクロサービスは、ロードバランサーを介して、宛先マイクロサービスにリクエストを送信する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://microservices.io/patterns/client-side-discovery.html
 > - https://www.baeldung.com/cs/service-discovery-microservices
@@ -235,7 +235,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 : ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://microservices.io/patterns/server-side-discovery.html
 > - https://www.baeldung.com/cs/service-discovery-microservices
@@ -256,6 +256,6 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 マイクロサービス間の通信方式でイベント駆動方式を採用した場合に使用するメッシュ。
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 
 <br>

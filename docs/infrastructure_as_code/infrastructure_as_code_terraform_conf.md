@@ -9,7 +9,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -82,7 +82,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 > - https://chroju.dev/blog/terraform_state_introduction
@@ -123,7 +123,7 @@ Lock Info:
 $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 ```
 
-> ↪️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
+> ↪️：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
 
 <br>
 
@@ -143,7 +143,7 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 $ terraform init -upgrade
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/language/files/dependency-lock
 > - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
@@ -206,7 +206,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 | `h1`   | 開発者が使用しているOSを表すハッシュ値を設定する。`zh`タグの`zip`パッケージのOS名に存在しないOS値が、`h1`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。                                                                |
 | `zh`   | プロバイダーの`zip`パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1`タグのOS値に存在しないOS名の`zip`パッケージが、`zh`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。 |
 
-> ↪️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+> ↪️：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 
 <br>
 
@@ -218,7 +218,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 `terraform`コマンドの実行者のみに適用する動作を設定する。
 
-> ↪️ 参考：https://www.terraform.io/cli/config/config-file#provider-plugin-cache
+> ↪️：https://www.terraform.io/cli/config/config-file#provider-plugin-cache
 
 #### ▼ plugin_cache_dir
 
@@ -232,7 +232,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.jhashimoto.net/entry/2021/12/24/090000
 > - https://www.terraform.io/cli/config/config-file#provider-plugin-cache

@@ -9,7 +9,7 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ $ helm repo update
 $ helm install <リリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
-> ↪️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
+> ↪️：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
 #### ▼ AWS EKS専用のチャートとして
 
@@ -49,7 +49,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/secrets-store-
 $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
 ```
 
-> ↪️ 参考：https://github.com/aws/secrets-store-csi-driver-provider-aws
+> ↪️：https://github.com/aws/secrets-store-csi-driver-provider-aws
 
 <br>
 
@@ -87,7 +87,7 @@ spec:
           secretProviderClass: foo-aws-secret-provider-class
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
 > - https://innablr.com.au/blog/what-is-secret-management-and-how-to-integrate-with-k8s-part-2/
@@ -111,7 +111,7 @@ metadata:
   namespace: foo-namespace # Podと同じNamespace
 ```
 
-> ↪️ 参考：https://www.bigtreetc.com/column/eks-secrets/
+> ↪️：https://www.bigtreetc.com/column/eks-secrets/
 
 <br>
 
@@ -130,7 +130,7 @@ spec:
   provider: aws
 ```
 
-> ↪️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> ↪️：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 <br>
 
@@ -140,7 +140,7 @@ spec:
 
 プロバイダーに応じて、参照するSecretのデータを設定する。
 
-> ↪️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> ↪️：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 #### ▼ objects (AWSプロバイダーの場合)
 
@@ -162,7 +162,7 @@ spec:
       - objectType: "secretsmanager"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
 > - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
@@ -183,7 +183,7 @@ spec:
         objectType: "ssmparameter"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
 > - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-systems-manager-parameter-store%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B

@@ -9,7 +9,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 サイドカープロキシメッシュのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
 
-> ↪️ 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
+> ↪️：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
 <br>
 
@@ -37,7 +37,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 コンテナの起動時に、`istio-iptables`コマンドを実行することにより、istio-iptablesをPodに適用する。
 
-> ↪️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> ↪️：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
 ![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
 
@@ -51,7 +51,7 @@ istio-iptablesは、`istio-proxy`コンテナを持つPod内のネットワー�
 
 サービスディスカバリーとしてPodのIPアドレスを持つのは`istio-proxy`コンテナであり、istio-iptablesではないことに注意する。
 
-> ↪️ 参考：https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
+> ↪️：https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
 
 ```bash
 # istio-initコンテナの起動時に実行する。
@@ -139,7 +139,7 @@ num  target     prot  opt  source     destination
 1    REDIRECT   tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15001
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
 > - https://www.mapion.co.jp/news/column/cobs2366068-1-all/
@@ -153,7 +153,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod
@@ -166,7 +166,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
@@ -177,7 +177,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png)
 
-> ↪️ 参考：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
+> ↪️：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
 <br>
 
@@ -207,7 +207,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 `istio-proxy`コンテナは、アプリコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の`istio-proxy`コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。一方で、アプリコンテナを持つPod間通信では、Pod内の`istio-proxy`コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが`2`個ある構成になってしまうことに注意する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
 > - https://www.amazon.co.jp/dp/1617295825
@@ -232,7 +232,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 もしistio-cniアドオンを使用する場合は、`istio-init`コンテナが不要になる代わりとして、`istio-validation`コンテナが必要になる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin
@@ -244,7 +244,7 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機するために、これが完了したかどうかを検証する。
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
+> ↪️：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 
 <br>
 
@@ -260,7 +260,7 @@ istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機す
 
 ADS-APIとの間で双方向ストリーミングRPCを確立し、EnvoyからのADS-APIへのリクエストと反対にADS-APIからのリクエストを仲介する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/6/5
 > - https://www.jianshu.com/p/60e45bc9c4ac
@@ -320,7 +320,7 @@ func (a *ADSC) Run() error {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L420-L446
 > - https://github.com/istio/istio/blob/
@@ -387,7 +387,7 @@ func (a *ADSC) handleRecv() {
 }
 ```
 
-> ↪️ 参考：https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
+> ↪️：https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
 
 #### ▼ ADSクライアントとしての`istioctl`コマンドの実装
 
@@ -413,7 +413,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 }
 ```
 
-> ↪️ 参考：https://github.com/istio/istio/blob/master/istioctl/pkg/xds/client.go#L44-L73
+> ↪️：https://github.com/istio/istio/blob/master/istioctl/pkg/xds/client.go#L44-L73
 
 <br>
 
@@ -423,7 +423,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 `istio-proxy`コンテナにて、リバースプロキシとして動作する。Envoyは、pilot-agentを介して、ADS-APIにリモートプロシージャーコールを実行する。また反対に、XDS-APIからのリモートプロシージャーコールをpilot-agentを介して受信する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://www.programmersought.com/article/5797698845/
@@ -442,7 +442,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#15000
@@ -456,7 +456,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 アプリコンテナからのアウトバウンド通信は、一度、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
 
-> ↪️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>
 
@@ -466,7 +466,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 用途がわからず記入中...
 
-> ↪️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#15004
+> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#15004
 
 <br>
 
@@ -476,7 +476,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 アプリコンテナへのインバウンド通信は、一度、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
 
-> ↪️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>
 
@@ -484,7 +484,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 `istio-proxy`コンテナの`15020`番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
 
-> ↪️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#15020
+> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#15020
 
 <br>
 
@@ -494,7 +494,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 `istio-proxy`コンテナ内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
@@ -505,7 +505,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 記入中...
 
-> ↪️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>
 
@@ -532,6 +532,6 @@ istio_request_messages_total{...}
 ...
 ```
 
-> ↪️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>

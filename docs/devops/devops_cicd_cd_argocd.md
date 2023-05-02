@@ -9,7 +9,7 @@ description: ArgoCD＠CDツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,6 +17,6 @@ description: ArgoCD＠CDツールの知見を記録しています。
 
 ArgoCDはセクションが重複しており、以下のセクションを参照してください。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html
 
 <br>

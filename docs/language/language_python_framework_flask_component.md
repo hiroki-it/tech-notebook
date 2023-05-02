@@ -9,7 +9,7 @@ description: コンポーネント＠Flaskの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ app = Flask(__name__)
 # app = Flask(src)
 ```
 
-> ↪️ 参考：https://flask.palletsprojects.com/Ien/2.0.x/api/
+> ↪️：https://flask.palletsprojects.com/Ien/2.0.x/api/
 
 <br>
 
@@ -80,7 +80,7 @@ PREFIX_FOO = "foo"
 app.run()
 ```
 
-> ↪️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
+> ↪️：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
 
 #### ▼ 引数
 
@@ -92,7 +92,7 @@ app.run()
 | `port`         | インバウンド通信を待ち受けるポート番号を設定する。                                                   |
 | `use_reloader` | ホットリロードを有効化するか否かを設定する。                                                         |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
@@ -114,7 +114,7 @@ app.run()
 | `module`            | モジュール名 (ファイル名) を設定する。                 |
 | `file.py`           | ファイル名を設定する。                                 |
 
-> ↪️ 参考：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
+> ↪️：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 
 <br>
 
@@ -140,7 +140,7 @@ def create_app():
     return app
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
 > - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     app.run()
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
+> ↪️：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 
 #### ▼ 開発環境と本番環境の違い
 
@@ -171,7 +171,7 @@ if __name__ == '__main__':
 
 本番環境と開発環境を同様にするために、本番環境のみでなく開発環境でもコマンドを使用しないようにしても良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
 > - https://serip39.hatenablog.com/entry/2020/07/06/070000

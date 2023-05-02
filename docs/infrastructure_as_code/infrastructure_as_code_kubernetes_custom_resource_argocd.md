@@ -9,7 +9,7 @@ description: ArgoCD＠CNCFプロジェクトの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.amazon.co.jp/dp/1617297275
 > - https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
@@ -55,7 +55,7 @@ argocd-serverは、クライアントや他のargocdコンポーネントと通�
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
@@ -95,7 +95,7 @@ argocd-serverは、AuthZで認可処理を実施し、IDプロバイダーから
 
 ![argocd_auth_architecture.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_auth_architecture.jpg)
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/architecture/authz-authn.md
+> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/architecture/authz-authn.md
 
 #### ▼ ポーリング対象Clusterのkube-apiserverとの通信
 
@@ -140,7 +140,7 @@ ArgoCDのカスタムリソース (例：Application、AppProject、など) とC
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
 > - https://weseek.co.jp/tech/95/#i-7
@@ -154,7 +154,7 @@ ArgoCDのカスタムリソース (例：Application、AppProject、など) とC
 ArgoCDや、その他のGitOpsのためのCDツール (例：Flux) は、gitops-engineパッケージをコールし、ヘルスチェックからデプロイまでの基本的な処理を実行する。
 
 ```yaml
-gitops-engine
+gitops-engine/
 ├── pkg
 │   ├── cache
 │   ├── diff   # リポジトリとClusterの間のマニフェストの差分を検出する。ArgoCDのDiff機能に相当する。
@@ -166,7 +166,7 @@ gitops-engine
 ...
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/argoproj/gitops-engine/blob/master/specs/design-top-down.md#design-details
 > - https://github.com/argoproj/gitops-engine/tree/master/pkg
@@ -186,7 +186,7 @@ application-controllerは、repo-serverにHTTPSリクエストを送信し、マ
 
 ![argocd_application-controller_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller_repo-server.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
@@ -215,7 +215,7 @@ dex-serverの起動に失敗すると、外部Webサイトに情報を送信で�
 
 ただ、argocd-server自体が認証サーバーと通信することが可能なため、dex-serverを使用するか否かは任意である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/dexidp/dex#connectors
 > - https://weseek.co.jp/tech/95/
@@ -240,7 +240,7 @@ image-updaterは、アプリリポジトリからイメージリポジトリに�
 
 その後、マニフェストリポジトリに書き換えをコミットする。
 
-> ↪️ 参考：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
+> ↪️：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
 
 <br>
 
@@ -250,7 +250,7 @@ image-updaterは、アプリリポジトリからイメージリポジトリに�
 
 application-controllerの処理 (マニフェスト取得、Clusterの状態確認、など) の結果のキャッシュを作成し、argocd-serverに提供する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://weseek.co.jp/tech/95/
 > - https://blog.manabusakai.com/2021/04/argo-cd-cache/
@@ -296,7 +296,7 @@ Chart.yaml  README.md  templates  values.yaml
 
 なお、ArgoCDでHardRefreshすると、マニフェストのキャッシュを削除し、ポーリングリポジトリのマニフェストを改めてキャッシュを作成する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
@@ -334,7 +334,7 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "cd /tmp/_argocd-repo/<URLに基づくUUID> && helm template foo-chart -f values-prd.yaml"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/argoproj/argo-cd/issues/1446#issue-432385992
 > - https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
@@ -351,7 +351,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 並列処理を有効化しない場合は、代わりにレプリカ数を増やす。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
@@ -362,7 +362,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 マニフェスト管理ツールの実行時にはメモリ使用量が増加する。
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-repo-server
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-repo-server
 
 <br>
 
@@ -378,7 +378,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.vpantry.net/2021/01/cicd-2/
 > - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
@@ -394,7 +394,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 注意点として、マニフェストに何かを追加するような変更は差分として認識されないため、Syncしても元に戻らない。
 
-> ↪️ 参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
+> ↪️：https://qiita.com/masahata/items/e22b0d30b77251b941d8
 
 <br>
 
@@ -432,7 +432,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-> ↪️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+> ↪️：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
 #### ▼ テンプレート構成管理ツールを使用した場合
 
@@ -464,7 +464,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
@@ -487,7 +487,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-> ↪️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
+> ↪️：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 
 <br>
 

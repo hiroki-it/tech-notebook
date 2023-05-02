@@ -9,7 +9,7 @@ description: PagerDuty＠インシデント管理ツールオンコールとイ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -41,7 +41,7 @@ CloudWatchアラームに通知されたアラートを、PagerDutyにインシ�
 
 : 問題を解決できれば、Resolved状態に移行する。
 
-> ↪️ 参考：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
+> ↪️：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
 
 <br>
 
@@ -65,7 +65,7 @@ PagerDutyでは、以下の解決フェーズを設定できる。
 
 ![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_incident_phase.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://thinkit.co.jp/article/13420
 > - https://support.pagerduty.com/docs/incidents#incident-statuses
@@ -76,7 +76,7 @@ PagerDutyでは、以下の解決フェーズを設定できる。
 
 注意点として、自動移行でResolvedになったインシデントは、同じインシデントが発生しない限り、Triggeredフェーズに戻ることはない。
 
-> ↪️ 参考：https://support.pagerduty.com/docs/configurable-service-settings#auto-resolution
+> ↪️：https://support.pagerduty.com/docs/configurable-service-settings#auto-resolution
 
 <br>
 
@@ -87,6 +87,6 @@ PagerDutyでは、以下の解決フェーズを設定できる。
 - エラーイベントの重要度レベルの調節
 - インシデントのグループ化
 
-> ↪️ 参考：https://thinkit.co.jp/article/13558
+> ↪️：https://thinkit.co.jp/article/13558
 
 <br>

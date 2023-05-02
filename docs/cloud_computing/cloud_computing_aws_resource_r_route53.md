@@ -9,7 +9,7 @@ description: Route53＠Rで始まるAWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Route53＠Rで始まるAWSリソース
 
 名前の由来は、名前解決時に`53`番ポートを使用するためである。
 
-> ↪️ 参考：https://go-journey.club/archives/2665
+> ↪️：https://go-journey.club/archives/2665
 
 <br>
 
@@ -44,7 +44,7 @@ description: Route53＠Rで始まるAWSリソース
 
 各ホストゾーンにドメインの名前解決方法を定義したDNSレコードを設定する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
+> ↪️：https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
 
 #### ▼ DNSレコードタイプの種類
 
@@ -106,7 +106,7 @@ DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーと
 
 ドメイン名の名前解決ルールを設定する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
 > - https://zenn.dev/seyama/articles/02118b0914183e

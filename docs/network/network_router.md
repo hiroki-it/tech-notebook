@@ -9,7 +9,7 @@ description: ルーター＠ネットワークの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: ルーター＠ネットワークの知見を記録しています�
 
 通信の宛先を制御することを表す場合、単に『転送する』よりも『ルーティングする』と表現した方が良い。
 
-> ↪️ 参考：https://www.infraexpert.com/study/routing.html
+> ↪️：https://www.infraexpert.com/study/routing.html
 
 #### ▼ パスベースルーティング
 
@@ -61,7 +61,7 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 
 ![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/
 > - https://michisugara.jp/modem_router
@@ -77,7 +77,7 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 | エッジルーター (エッジゲートウェイ)  | 一般企業内の拠点間WANネットワーク                  | 異なる支社や営業所のネットワーク間を繋ぐ。                                                                          |
 | ブロードバンドルーター、Wifiルーター | 自宅内のネットワーク                               | 自宅内/外のネットワーク間を繋ぐ。ブロードバンドルーターであれば有線、Wifiルーターであれば無線で接続することになる。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
 > - https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
@@ -92,7 +92,7 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 
 ホップ数は、`traceroute`コマンドで確認できる。
 
-> ↪️ 参考：https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
+> ↪️：https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
 
 #### ▼ ホップバイホップルーティング
 
@@ -100,7 +100,7 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 
 ![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpeg)
 
-> ↪️ 参考：https://ascii.jp/elem/000/000/444/444681/3/
+> ↪️：https://ascii.jp/elem/000/000/444/444681/3/
 
 <br>
 
@@ -131,7 +131,7 @@ NAT処理を実行できるルーターのこと。
 
 ![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 > - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
@@ -144,7 +144,7 @@ NATルーター自体を複数のプライベートネットワークで共有�
 
 ![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グローバルからプライベートへのnat変換.png)
 
-> ↪️ 参考：https://rainbow-engine.com/dnat-snat-difference/
+> ↪️：https://rainbow-engine.com/dnat-snat-difference/
 
 **＊例＊**
 
@@ -200,7 +200,7 @@ GET https://example.com:53
 
 : これらの『送信元プライベートIPアドレス』が、NATルーターで、グローバルIPアドレスに変換される。
 
-> ↪️ 参考：https://rainbow-engine.com/dnat-snat-difference/
+> ↪️：https://rainbow-engine.com/dnat-snat-difference/
 
 #### ▼ 外部IPアドレス、内部IPアドレス、ターゲットIPアドレス
 
@@ -244,7 +244,7 @@ AWSやGCPなどで使用されているようなNATルーターはこちらで�
 
 ![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 > - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
@@ -288,7 +288,7 @@ Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケット�
 | OUTPUT                          | パケットの送信時に、その送信を許可/拒否する。                          |
 | POSTROUTING                     | パケットの送信時に、パケットの送信元IPアドレスとポート番号を変換する。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://christina04.hatenablog.com/entry/iptables-outline
 > - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#nat%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
@@ -310,6 +310,6 @@ COMMIT
 ...
 ```
 
-> ↪️ 参考：https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
+> ↪️：https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
 
 <br>

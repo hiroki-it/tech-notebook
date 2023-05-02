@@ -9,7 +9,7 @@ description: Ginの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Ginの知見を記録しています。
 
 リクエストからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
 
-> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
+> ↪️：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
 
 <br>
 
@@ -31,7 +31,7 @@ description: Ginの知見を記録しています。
 
 `Content-Type`ヘッダーのMIMEタイプが`application/json`であることが前提である。リクエストからJSON型データを取得し、構造体に紐付ける。
 
-> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
+> ↪️：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
 <br>
 
@@ -51,7 +51,7 @@ description: Ginの知見を記録しています。
 
 値が存在しない場合は、第二返却値で`false`を返却する。
 
-> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
+> ↪️：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
 
 <br>
 
@@ -106,7 +106,7 @@ c.JSON(200, &Foo{
 
 値が存在しない場合は、ランタイムエラーとなる。
 
-> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
+> ↪️：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
 
 <br>
 
@@ -126,7 +126,7 @@ c.JSON(200, &Foo{
 
 当該のリクエストで利用できるマップ型データに、値を保存する。
 
-> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
+> ↪️：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
 
 #### ▼ 注意点
 
@@ -224,6 +224,6 @@ c.JSON(400, gin.H{
 
 標準のルールの一覧は、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
+> ↪️：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
 
 <br>

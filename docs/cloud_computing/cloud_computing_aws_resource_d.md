@@ -9,7 +9,7 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,10 +23,10 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 
 注意点として、DirectConnectは、それ専用の中継VPC内に作成する。
 
-> ↪️ 参考：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
+> ↪️：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 
 WANの種類については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/network/network.html
 
 <br>

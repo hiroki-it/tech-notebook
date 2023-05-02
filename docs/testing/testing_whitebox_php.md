@@ -9,7 +9,7 @@ description: PHPの場合＠ホワイトボックステストの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -161,7 +161,7 @@ PHPUnitの設定を行う。
 
 また、`Test`で終了するphpファイルを作成しておく必要がある。
 
-> ↪️ 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
+> ↪️：http://phpunit.readthedocs.io/ja/latest/configuration.html
 
 #### ▼ `testsuites`タグ
 
@@ -189,7 +189,7 @@ PHPUnitの設定を行う。
 </phpunit>
 ```
 
-> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
+> ↪️：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
 #### ▼ `php`タグ
 
@@ -197,7 +197,7 @@ PHPUnitの実行前に設定する`ini_set`関数、`define`関数、グロー�
 
 タグ名との対応関係については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
+> ↪️：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
 
 **＊実装例＊**
 
@@ -246,7 +246,7 @@ $this->assertTrue();
 self::assertTrue()
 ```
 
-> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
+> ↪️：https://phpunit.readthedocs.io/ja/latest/assertions.html
 
 #### ▼ assertTrue
 
@@ -288,7 +288,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。
 
-> ↪️ 参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
+> ↪️：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
 
 **＊実装例＊**
 
@@ -924,7 +924,7 @@ class FooControllerTest extends TestCase
 
 単体テストに必要なテストダブルを提供する。
 
-> ↪️ 参考：https://github.com/mlively/Phake#phake
+> ↪️：https://github.com/mlively/Phake#phake
 
 <br>
 

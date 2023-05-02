@@ -8,7 +8,7 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -45,7 +45,7 @@ $ yum install -y nodejs
 }
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
 
 #### ▼ bug
 
@@ -55,7 +55,7 @@ $ yum install -y nodejs
 {"bugs": {"url": "https://github.com/hiroki-hasegawa/foo/issues"}}
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
 
 #### ▼ dependencies
 
@@ -76,7 +76,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 }
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
 
 #### ▼ description
 
@@ -84,7 +84,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 {"description": "This is foo package"}
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
 
 #### ▼ devDependencies
 
@@ -103,7 +103,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 }
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
 
 #### ▼ directories
 
@@ -115,7 +115,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 {"directories": {"doc": "foo/doc", "lib": "foo/lib"}}
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
 
 #### ▼ engines
 
@@ -123,7 +123,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 使用するバージョンを強制し、他のバージョンではコマンドの実行で失敗させるようにする。
 
-> ↪️ 参考：https://qiita.com/suin/items/994458418c737cc9c3e8
+> ↪️：https://qiita.com/suin/items/994458418c737cc9c3e8
 
 ```yaml
 {"engines": {"node": "1.0.0", "npm": "1.0.0"}}
@@ -133,7 +133,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 パッケージを説明するWebサイトのリンクを設定する。
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage
 
 ```yaml
 {"homepage": "https://example.com"}
@@ -143,7 +143,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 エントリポイントとなるファイルを設定する。
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
 
 ```yaml
 {"main": "index.js"}
@@ -159,7 +159,7 @@ npmパッケージ名を設定する。
 {"name": "foo"}
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
 
 #### ▼ repository
 
@@ -170,7 +170,7 @@ npmパッケージ名を設定する。
 }
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
 
 #### ▼ scripts
 
@@ -180,7 +180,7 @@ npmパッケージ名を設定する。
 {"scripts": {"foo": "npm install"}}
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
 
 #### ▼ version
 
@@ -190,7 +190,7 @@ npmパッケージ名を設定する。
 {"version": "<バージョンタグ>"}
 ```
 
-> ↪️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
+> ↪️：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
 
 <br>
 
@@ -320,7 +320,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 $ apt-get install yarn
 ```
 
-> ↪️ 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
+> ↪️：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
 
 #### ▼ npmレジストリから
 
@@ -328,7 +328,7 @@ $ apt-get install yarn
 $ npm install --global yarn
 ```
 
-> ↪️ 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
+> ↪️：https://classic.yarnpkg.com/en/docs/install#mac-stable
 
 <br>
 
@@ -380,7 +380,7 @@ $ yarn add <パッケージ名>@<バージョンタグ>
 $ yarn install --check-files
 ```
 
-> ↪️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
+> ↪️：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
 
 <br>
 
@@ -414,7 +414,7 @@ $ yarn remove <パッケージ名>
 $ yarn upgrade <パッケージ名>@<バージョンタグ>
 ```
 
-> ↪️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> ↪️：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
 #### ▼ latest
 
@@ -424,7 +424,7 @@ $ yarn upgrade <パッケージ名>@<バージョンタグ>
 $ yarn upgrade --latest
 ```
 
-> ↪️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> ↪️：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
 <br>
 
@@ -438,7 +438,7 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる。
 
 `.html`ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
 
-> ↪️ 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
+> ↪️：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
 **＊例＊**
 

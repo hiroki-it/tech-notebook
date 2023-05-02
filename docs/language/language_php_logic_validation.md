@@ -9,7 +9,7 @@ description: 検証ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -48,7 +48,7 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 | **`array(1)`**    |               ✅                |                   ✅                    |
 | **使いどころ**    |   `null`のみを検証したい場合    | `null`、`0`、`""`、`[]`を検証したい場合 |
 
-> ↪️ 参考：https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62
+> ↪️：https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62
 
 <br>
 

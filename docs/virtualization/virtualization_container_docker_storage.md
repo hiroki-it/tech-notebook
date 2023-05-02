@@ -9,7 +9,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 > - https://maku77.github.io/docker/mount/
@@ -40,7 +40,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.docker.com/storage/bind-mounts/
 > - https://www.takapy.work/entry/2019/02/24/110932
@@ -108,7 +108,7 @@ $ cat settings.json
 
 ![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.docker.com/storage/volumes/
 > - https://www.takapy.work/entry/2019/02/24/110932
@@ -121,7 +121,7 @@ dockerエリア (`/var/lib/docker/volumes`ディレクトリ) に保存される
 
 また、デバイスファイルに紐づくディレクトリ (`/var/lib/docker/volumes/<ボリューム名>/_data`) をマウントポイントといい、マウントポイントに対してマウント処理が必要である。
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
 <br>
 
@@ -161,7 +161,7 @@ Docker on Linuxでのみ使用できる。
 
 コンテナが停止すると、tmpfsマウントは終了し、ディレクトリは削除される。
 
-> ↪️ 参考：https://docs.docker.com/storage/tmpfs/
+> ↪️：https://docs.docker.com/storage/tmpfs/
 
 <br>
 
@@ -179,7 +179,7 @@ Docker on Linuxでのみ使用できる。
 
 そのため、バインドマウントより安全である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 > - https://blog.logrocket.com/docker-volumes-vs-bind-mounts/
@@ -192,7 +192,7 @@ Docker on Linuxでのみ使用できる。
 
 脆弱性の観点から、本番環境ではボリュームマウント (`VOLUME`) や`COPY`を使用して、アプリケーションをコンテナイメージに組み込むようにする。
 
-> ↪️ 参考：https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
+> ↪️：https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
 
 その上で、ボリュームマウントでは、組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため、コードの組み込みとコンテナ起動の間にアプリケーションを加工する (例：ディレクトリの実行権限を変更するなど) 場合は`COPY`の方が便利である。
 
@@ -200,7 +200,7 @@ Docker on Linuxでのみ使用できる。
 
 これにより、本番環境ではこのコンテナイメージをプルしさえすれば、アプリケーションを使用できるようになる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.nyamucoro.com/entry/2018/03/15/200412
 > - https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/
@@ -215,9 +215,9 @@ Docker on Linuxでのみ使用できる。
 
 | コンテナへのコードの組み込み方 | パフォーマンスに関する説明                                                                                                                                                                                                                                                                                                                        | 補足                                                                                                                                                                                       |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| バインドマウント               | バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナのパフォーマンスは悪い。 | ↪️ 参考：<br>・https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison <br>・https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163 |
-| ボリュームマウント             | ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナのパフォーマンスが良い。                                                                                                                                                                  | ↪️ 参考：https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163                                                                                                                             |
+| バインドマウント               | バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナのパフォーマンスは悪い。 | ↪️：<br>・https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison <br>・https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163 |
+| ボリュームマウント             | ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナのパフォーマンスが良い。                                                                                                                                                                  | ↪️：https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163                                                                                                                             |
 | `COPY`                         | `COPY`では、コンテナイメージのビルド時にコードを組み込むのみで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナのパフォーマンスが良い。このことは、DockerのみでなくKubernetesでも同様である。                                                                             |                                                                                                                                                                                            |
-| NFS                            | NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナのパフォーマンスが良い。                                                                                                                                                                                                                                                  | ↪️ 参考：https://qiita.com/kunit/items/36d9e5fa710ad26f8010                                                                                                                                |
+| NFS                            | NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナのパフォーマンスが良い。                                                                                                                                                                                                                                                  | ↪️：https://qiita.com/kunit/items/36d9e5fa710ad26f8010                                                                                                                                |
 
 <br>

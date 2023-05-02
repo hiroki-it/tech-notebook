@@ -9,7 +9,7 @@ description: Cで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ AWSリソースのイベントを、EventBridge (CloudWatchイベント) を使�
 
 サポート対象のAWSリソースは以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
+> ↪️：https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
 
 #### ▼ インシデント
 
@@ -79,7 +79,7 @@ AWSリソースに、使用中かどうかわからずに、削除できない�
 
 ControlTowerは、AWS Organizations、IdentityCenter (AWS SSOの後継)、Account Factory、AWS Config、AWS CloudTrail、を一括で作成する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html
 > - https://ryonotes.com/difference-between-organizations-and-control-tower/

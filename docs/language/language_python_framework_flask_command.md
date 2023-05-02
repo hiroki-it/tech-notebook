@@ -9,7 +9,7 @@ description: コマンド＠Flaskの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: コマンド＠Flaskの知見を記録しています。
 $ export FLASK_APP=main.py
 ```
 
-> ↪️ 参考：https://flask.palletsprojects.com/en/2.0.x/cli/
+> ↪️：https://flask.palletsprojects.com/en/2.0.x/cli/
 
 <br>
 
@@ -59,7 +59,7 @@ Flaskクラスの`run`メソッドと同じ機能を持ち、インバウンド�
 $ flask run
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/cli.html
@@ -80,7 +80,7 @@ $ flask run --host=0.0.0.0
 $ flask run --reload
 ```
 
-> ↪️ 参考：https://www.subarunari.com/entry/2018/03/10/%E3%81%84%E3%81%BE%E3%81%95%E3%82%89%E3%81%AA%E3%81%8C%E3%82%89_Flask_%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B_%E3%80%9CDebugger%E3%80%9C
+> ↪️：https://www.subarunari.com/entry/2018/03/10/%E3%81%84%E3%81%BE%E3%81%95%E3%82%89%E3%81%AA%E3%81%8C%E3%82%89_Flask_%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B_%E3%80%9CDebugger%E3%80%9C
 
 #### ▼ --port
 

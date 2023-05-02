@@ -9,7 +9,7 @@ description: Ansible＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ Ansibleは、コントロールノード (デプロイサーバー) と管理対
 
 ![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible.png)
 
-> ↪️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
+> ↪️：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
 <br>
 
@@ -45,7 +45,7 @@ $ sudo apt -y install python3-pip
 $ pip3 install ansible
 ```
 
-> ↪️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> ↪️：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 <br>
 
@@ -68,7 +68,7 @@ repository/
 ...
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
@@ -85,7 +85,7 @@ repository/
 │
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
@@ -108,7 +108,7 @@ repository/
 ...
 ```
 
-> ↪️ 参考：https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
+> ↪️：https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 
 #### ▼ `roles`ディレクトリの構成
 
@@ -145,13 +145,13 @@ repository/
 ...
 ```
 
-> ↪️ 参考：https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-directory-structure
+> ↪️：https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-directory-structure
 
 <br>
 
 ### 命名規則
 
-> ↪️ 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
+> ↪️：http://tdoc.info/blog/2014/10/09/ansible_coding.html
 
 <br>
 
@@ -167,6 +167,6 @@ Ansibleの実行時にパスワードを要求し、これが正しければ復�
 
 ![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible_ansible-vault.png)
 
-> ↪️ 参考：https://redj.hatenablog.com/entry/2020/05/02/044527
+> ↪️：https://redj.hatenablog.com/entry/2020/05/02/044527
 
 <br>

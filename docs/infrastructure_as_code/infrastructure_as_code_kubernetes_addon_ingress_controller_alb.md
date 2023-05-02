@@ -9,7 +9,7 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 ![aws_load_balancer_controller_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/nlb/
@@ -74,7 +74,7 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 
 またいずれの場合であっても`kubernetes.io/cluster/<EKS Clusterの名前>` (値は、複数のEKS Clusterで共有するサブネットの場合は`shared`、単一のEKS Clusterの場合は`owned`とする) を設定する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
@@ -125,7 +125,7 @@ module "iam_policy_aws_load_balancer_controller" {
 }
 ```
 
-> ↪️ 参考：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
+> ↪️：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
 
 別途、AWS Load BalancerコントローラーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
 
@@ -143,7 +143,7 @@ IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
 
 ![aws_load_balancer_controller_irsa](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_irsa.png)
 
-> ↪️ 参考：https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
+> ↪️：https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
 
 #### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
 
@@ -159,7 +159,7 @@ AWS Load Balancerコントローラーのセットアップのうち、AWS側で
 $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount
@@ -207,7 +207,7 @@ $ eksctl create iamserviceaccount \
     --approve
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
+> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
 
 `【５】`
 
@@ -247,7 +247,7 @@ secrets:
 - name: foo-aws-load-balancer-controller-token-****
 ```
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 <br>
 
@@ -297,7 +297,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/aws-load-balan
 AWS Load Balancer controller installed!
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
@@ -344,7 +344,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
      以下の条件を満たす必要がある。
 
-> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
+> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 <br>
 
@@ -388,7 +388,7 @@ spec:
           protocol: TCP
 ```
 
-> ↪️ 参考：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
+> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
 
 <br>
 
@@ -531,6 +531,6 @@ spec:
 
 ![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
-> ↪️ 参考：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
+> ↪️：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
 
 <br>

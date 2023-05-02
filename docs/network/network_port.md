@@ -9,7 +9,7 @@ description: ポート＠ネットワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: ポート＠ネットワークの知見を記録しています。
 - USBポート
 - LANポート
 
-> ↪️ 参考：
+> ↪️：
 >
 > - http://faq3.dospara.co.jp/faq/show/3708?site_domain=default
 > - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
@@ -36,7 +36,7 @@ description: ポート＠ネットワークの知見を記録しています。
 
 `L7` (アプリケーション層) にて、物理サーバー、仮想サーバー、コンテナ内のアプリケーションのプロセスが待ち受けるポートのこと。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
 > - https://ascii.jp/elem/000/000/434/434183/2/
@@ -76,7 +76,7 @@ IANA：Internet Assigned Numbers Authority (インターネット割当番号公
 | SMTPs                                  | `465`              |
 | ...                                    | ...                |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
 > - https://abhp.net/it/IT_Port_No_100000.html
@@ -92,7 +92,7 @@ IANAが登録申請を受けて公開しているポート番号。
 | 企業が共有している | HTTP/1、HTTP/2 (例：gRPCなど)          | `8080`             |
 | ...                | ...                                    | ...                |
 
-> ↪️ 参考：https://abhp.net/it/IT_Port_No_100000.html
+> ↪️：https://abhp.net/it/IT_Port_No_100000.html
 
 #### ▼ 動的/非公式ポート番号 (`49152`～`65535`)
 
@@ -100,7 +100,7 @@ IANAが登録申請を受けて公開しているポート番号。
 
 もちろん、そのポート番号で待ち受ける必要がなければ、脆弱性から閉じておく方が良い。
 
-> ↪️ 参考：https://abhp.net/it/IT_Port_No_100000.html
+> ↪️：https://abhp.net/it/IT_Port_No_100000.html
 
 <br>
 

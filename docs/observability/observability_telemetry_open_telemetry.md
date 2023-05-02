@@ -9,7 +9,7 @@ description: OpenTelemetry＠テレメトリー収集ツールの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ OpenTelemetryを導入することにより、テレメトリーごとに異な�
 
 ![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://opentelemetry.io/docs/
 > - https://dzone.com/refcardz/getting-started-with-opentelemetry
@@ -48,7 +48,7 @@ OpenTelemetry用パッケージからのテレメトリーデータを、APIパ�
 
 ![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
 
-> ↪️ 参考：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
+> ↪️：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
 
 <br>
 
@@ -62,7 +62,7 @@ OTelクライアントパッケージからのテレメトリーデータを、�
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.logicmonitor.com/blog/what-is-an-otel-collector
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
@@ -73,6 +73,6 @@ OTelクライアントパッケージからのテレメトリーデータを、�
 
 記入中...
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
 
 <br>

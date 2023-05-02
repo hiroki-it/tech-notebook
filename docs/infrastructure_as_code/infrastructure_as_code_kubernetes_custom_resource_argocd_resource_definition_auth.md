@@ -9,7 +9,7 @@ description: 認証/認可系＠リソース定義の知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -168,7 +168,7 @@ secrets:
   - name: argocd-manager-token-*****
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
+> ↪️：https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
 
 <br>
 

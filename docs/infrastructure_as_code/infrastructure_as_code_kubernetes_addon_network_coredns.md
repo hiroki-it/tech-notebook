@@ -9,7 +9,7 @@ description: CoreDNS＠ネットワークアドオンの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
-> ↪️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+> ↪️：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 <br>
 
@@ -65,7 +65,7 @@ Podからの問い合わせに対して、名前解決を実行する。
 
 CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングする。
 
-> ↪️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+> ↪️：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 <br>
 
@@ -115,7 +115,7 @@ data:
     }
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
+> ↪️：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
 
 <br>
 
@@ -153,7 +153,7 @@ NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
@@ -180,7 +180,7 @@ DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 
 また、同じNamespace内でパケットを送受信する場合は、さらに『`<Namespace名>`』も省略でき、『`<Service名>`』のみで名前解決できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://ameblo.jp/bakery-diary/entry-12613605860.html
@@ -193,7 +193,7 @@ DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 
 Serviceの`.spec.ports.name`キー数だけ、完全修飾ドメイン名が作成される。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
@@ -231,7 +231,7 @@ Address:  10.105.157.184
 [root@<Pod名>:~] $ nslookup <Serviceの完全修飾ドメイン名>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
@@ -273,7 +273,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 10.101.67.107
 ```
 
-> ↪️ 参考：https://zenn.dev/tayusa/articles/c705cd65b6ee74
+> ↪️：https://zenn.dev/tayusa/articles/c705cd65b6ee74
 
 <br>
 
@@ -333,7 +333,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 対応する完全修飾ドメイン名は、『`<PodのIPアドレス>.<Namespace名>.pod.cluster.local`』である。
 
-> ↪️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
+> ↪️：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
 
 <br>
 
@@ -341,7 +341,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction

@@ -9,7 +9,7 @@ description: ConfigMap系＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -51,7 +51,7 @@ data:
           timeInterval: 30s
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://grafana.com/grafana/plugins/prometheus/
 > - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
@@ -79,7 +79,7 @@ data:
           timeInterval: 30s
 ```
 
-> ↪️ 参考：https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
+> ↪️：https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
 
 <br>
 
@@ -89,7 +89,7 @@ data:
 
 Grafanaの`grafana.ini`ファイルを管理する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location
 > - https://www.server-world.info/query?os=CentOS_Stream_9&p=grafana
@@ -112,7 +112,7 @@ data:
     ...
 ```
 
-> ↪️ 参考：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#paths
+> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#paths
 
 <br>
 
@@ -132,7 +132,7 @@ data:
     ...
 ```
 
-> ↪️ 参考：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#server
+> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#server
 
 <br>
 
@@ -156,7 +156,7 @@ data:
     min_refresh_interval = 5s
 ```
 
-> ↪️ 参考：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
+> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
 
 <br>
 
@@ -176,7 +176,7 @@ data:
     ...
 ```
 
-> ↪️ 参考：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#database
+> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#database
 
 <br>
 
@@ -196,7 +196,7 @@ data:
     ...
 ```
 
-> ↪️ 参考：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#remote_cache
+> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#remote_cache
 
 <br>
 
@@ -273,7 +273,7 @@ Grafanaの`provider.yaml`ファイルを管理する。
 
 ダッシュボードのフォルダを定義できる。
 
-> ↪️ 参考：https://github.com/ezienecker/grafana-sidecar-folder-sample/tree/master
+> ↪️：https://github.com/ezienecker/grafana-sidecar-folder-sample/tree/master
 
 <br>
 
@@ -352,7 +352,7 @@ data:
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-> ↪️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+> ↪️：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
 #### ▼ kube-prometheus-stackチャートの場合
 
@@ -381,7 +381,7 @@ kube-prometheus-stackチャートの`values`ファイルでは、`labelValue`に
       labelValue: "1"
 ```
 
-> ↪️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+> ↪️：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
 そのため、kube-prometheus-stackチャートを用いる場合は`grafana_dashboard`キーの値が`1`のConfigMapのみがダッシュボードの設定として読み込まれる。
 
@@ -399,13 +399,13 @@ data:
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-> ↪️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
+> ↪️：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 
 補足として、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されている。
 
 またその他に、kubernetes-mixinsも同時にインストールするようになっている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 > - https://monitoring.mixins.dev
@@ -490,7 +490,7 @@ data:
     # ダッシュボードを定義する。
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
@@ -548,7 +548,7 @@ data:
 | `Prometheus / Remote Write` | PrometheusのPod |      |
 | `Prometheus / Overview`     | PrometheusのPod |      |
 
-> ↪️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
+> ↪️：https://github.com/monitoring-mixins/website/tree/master/assets
 
 #### ▼ Istioダッシュボード
 
@@ -563,7 +563,7 @@ data:
 | `Istio Workload Dashboard`       | Istioの任意のカスタムリソース |                                                                               |
 | `Istio Service Dashboard`        | IstioのVirtualService         | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
 > - https://github.com/istio/istio/tree/master/manifests/addons/dashboards

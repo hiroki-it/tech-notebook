@@ -9,7 +9,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: コマンド＠Helmの知見を記録しています。
 $ helm create <チャートへのパス>
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_create/
+> ↪️：https://helm.sh/docs/helm/helm_create/
 
 <br>
 
@@ -51,7 +51,7 @@ $ kubectl get crd
 $ kubectl delete crd <CRD名>
 ```
 
-> ↪️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
+> ↪️：https://github.com/helm/helm/issues/7418#issuecomment-581849772
 
 <br>
 
@@ -72,7 +72,7 @@ Update Complete. ⎈Happy Helming!⎈
 Saving 1 charts
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
 > - https://selfnote.work/20211129/programming/learning-helm-6/#Dependencies
@@ -108,7 +108,7 @@ HELM_REPOSITORY_CACHE="/Users/username/Library/Caches/helm/repository"
 HELM_REPOSITORY_CONFIG="/Users/username/Library/Preferences/helm/repositories.yaml"
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/62924278/where-are-helm-charts-stored-locally/66416122#66416122
+> ↪️：https://stackoverflow.com/questions/62924278/where-are-helm-charts-stored-locally/66416122#66416122
 
 ### get
 
@@ -120,7 +120,7 @@ HELM_REPOSITORY_CONFIG="/Users/username/Library/Preferences/helm/repositories.ya
 $ helm get <Helmリリース名>
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
+> ↪️：https://helm.sh/docs/helm/helm_get_manifest/
 
 <br>
 
@@ -139,7 +139,7 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 <Helmリリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_history/
+> ↪️：https://helm.sh/docs/helm/helm_history/
 
 <br>
 
@@ -158,12 +158,12 @@ $ helm install <Helmリリース名> <チャートへのパス>
 | パラメーター                                                            | 例                                                          | 補足                                                                                                                                                                 |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | チャートへのパス                                                        | `./foo-chart`                                               |                                                                                                                                                                      |
-| `<チャートレジストリ名>/<チャートリポジトリ名>`                         | `foo-registry/foo-repository`                               | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                                            |
+| `<チャートレジストリ名>/<チャートリポジトリ名>`                         | `foo-registry/foo-repository`                               | ↪️：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                                            |
 | チャートリポジトリURL                                                   | `https://example.com/foo-chart`                             |                                                                                                                                                                      |
 | `<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>` | `https://example.com/foo-chart foo-registry/foo-repository` |                                                                                                                                                                      |
-| チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values`ファイルを使用する場合、`values`ファイルはチャートアーカイブ (`.tgz`形式ファイル) の外にある必要がある。<br>↪️ 参考：https://helm.sh/docs/helm/helm_install/ |
+| チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values`ファイルを使用する場合、`values`ファイルはチャートアーカイブ (`.tgz`形式ファイル) の外にある必要がある。<br>↪️：https://helm.sh/docs/helm/helm_install/ |
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_install/
+> ↪️：https://helm.sh/docs/helm/helm_install/
 
 #### ▼ --disable-openapi-validation
 
@@ -203,7 +203,7 @@ kind: Deployment
 $ helm install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_install/#options
+> ↪️：https://helm.sh/docs/helm/helm_install/#options
 
 #### ▼ kube-context
 
@@ -239,7 +239,7 @@ $ helm lint <チャートへのパス>
 1 chart(s) linted, 0 chart(s) failed
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/helm/helm_lint/
 > - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
@@ -287,7 +287,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 <Helmリリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-<バージョンタグ> # <-- チャートのバージョンがわかる。
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_list/
+> ↪️：https://helm.sh/docs/helm/helm_list/
 
 <br>
 
@@ -309,7 +309,7 @@ $ helm package <fooチャートへのパス> <barチャートへのパス> <baz�
 Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_package/
+> ↪️：https://helm.sh/docs/helm/helm_package/
 
 #### ▼ -d
 
@@ -376,7 +376,7 @@ OCIリポジトリからもプルできる。
 $ helm pull oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
-> ↪️ 参考：https://helm.sh/blog/storing-charts-in-oci/
+> ↪️：https://helm.sh/blog/storing-charts-in-oci/
 
 #### ▼ --version
 
@@ -458,7 +458,7 @@ $ helm show all <チャートリポジトリ名>
 Error: failed to download "<チャートリポジトリ名>"
 ```
 
-> ↪️ 参考：https://knowledge.sakura.ad.jp/23603/
+> ↪️：https://knowledge.sakura.ad.jp/23603/
 
 #### ▼ index
 
@@ -515,7 +515,7 @@ Hang tight while we grab the latest from your chart repositories...
 Update Complete. ⎈Happy Helming!⎈
 ```
 
-> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+> ↪️：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
 
 <br>
 
@@ -525,7 +525,7 @@ Update Complete. ⎈Happy Helming!⎈
 
 事前に`helm repo add`コマンドで追加しておいたチャートリポジトリを検索する。
 
-> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
+> ↪️：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 
 #### ▼ hub
 
@@ -592,7 +592,7 @@ $ helm show values <チャート名>
 $ helm show values foo-chart
 ```
 
-> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
+> ↪️：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
 
 <br>
 
@@ -655,7 +655,7 @@ $ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
 $ helm template ./foo-chart -f ./values.yaml --show-only ./foo-chart/templates/bar
 ```
 
-> ↪️ 参考：https://stackoverflow.com/a/63159075
+> ↪️：https://stackoverflow.com/a/63159075
 
 <br>
 
@@ -675,7 +675,7 @@ $ helm uninstall <Helmリリース名>
 $ helm uninstall foo-release
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_uninstall/
+> ↪️：https://helm.sh/docs/helm/helm_uninstall/
 
 <br>
 
@@ -689,7 +689,7 @@ Helmは、CRDを含むチャートのインストールはサポートしてい�
 
 そのため、`helm upgrade`コマンド時にはCRDのインストールを実行する仕様になっている。
 
-> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
+> ↪️：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
 #### ▼ --atomic
 
@@ -739,7 +739,7 @@ $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへの�
 $ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >| release.yaml
 ```
 
-> ↪️ 参考：https://helm.sh/docs/helm/helm_upgrade/
+> ↪️：https://helm.sh/docs/helm/helm_upgrade/
 
 #### ▼ --wait
 

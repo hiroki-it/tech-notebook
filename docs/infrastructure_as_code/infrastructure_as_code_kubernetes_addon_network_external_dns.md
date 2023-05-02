@@ -9,7 +9,7 @@ description: ExternalDNS＠ネットワークアドオンの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ Ingressコントローラー (例：aws-load-balancer-controller、glb-controlle
 
 ![external-dns_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://networkop.co.uk/post/2020-08-k8s-gateway/
 > - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#how-do-i-specify-a-dns-name-for-my-kubernetes-objects
@@ -65,7 +65,7 @@ time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com A
 time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com TXT [Id: /hostedzone/*****]"
 ```
 
-> ↪️ 参考：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
+> ↪️：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
 
 <br>
 
@@ -111,7 +111,7 @@ spec:
   ...
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled
 > - https://qiita.com/nakamasato/items/8215b7b86add58f77810
@@ -141,7 +141,7 @@ spec:
 
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#running-an-internal-and-external-dns-service
 > - https://github.com/kubernetes-sigs/external-dns/issues/1910#issuecomment-803640491
@@ -193,7 +193,7 @@ subjects:
     namespace: kube-system
 ```
 
-> ↪️ 参考：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/aws/#manifest-for-clusters-without-rbac-enabled
+> ↪️：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/aws/#manifest-for-clusters-without-rbac-enabled
 
 <br>
 
@@ -213,7 +213,7 @@ $ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/external-
 $ helm install <リリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
 ```
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+> ↪️：https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
 
 <br>
 

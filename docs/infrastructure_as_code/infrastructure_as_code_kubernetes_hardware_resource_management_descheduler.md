@@ -9,7 +9,7 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
+> ↪️：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
@@ -33,7 +33,7 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 ![descheduler_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - <https://sreake.com/blog/kubernetes-descheduler/>
 > - <https://torumakabe.github.io/post/k8s_descheduler/>
@@ -54,7 +54,7 @@ deschedulerは、Job (descheduler) 、などのマニフェストから構成さ
 
 再スケジューリングの対象とするPodの選定ルールを設定する。
 
-> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler#policy-and-strategies>
+> ↪️：<https://github.com/kubernetes-sigs/descheduler#policy-and-strategies>
 
 <br>
 
@@ -82,7 +82,7 @@ strategies:
           pods: 50
 ```
 
-> ↪️ 参考：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23>
+> ↪️：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23>
 
 #### ▼ RemoveDuplicates
 
@@ -96,7 +96,7 @@ strategies:
     enabled: true
 ```
 
-> ↪️ 参考：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18>
+> ↪️：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18>
 
 #### ▼ RemovePodsHavingTooManyRestarts
 
@@ -114,7 +114,7 @@ strategies:
         includingInitContainers: true
 ```
 
-> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 #### ▼ RemovePodsViolatingNodeAffinity
 
@@ -128,7 +128,7 @@ strategies:
     enabled: true
 ```
 
-> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
@@ -142,7 +142,7 @@ strategies:
     enabled: true
 ```
 
-> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 #### ▼ RemovePodsViolatingTopologySpreadConstraint
 
@@ -160,6 +160,6 @@ strategies:
         includingInitContainers: true
 ```
 
-> ↪️ 参考：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
 
 <br>

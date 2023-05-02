@@ -9,7 +9,7 @@ description: OAuth＠SSOの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,10 +33,10 @@ OAuthは認可フェーズのみで構成されているため、間違っても
 | ------------------ | -------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | クライアントアプリ | 認証     | 連携元アカウントを提供するアプリのこと。         | OAuthの文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを介したリダイレクトによって実装することに注意する。                                                                                                                                              |
 | リソースオーナー   | 認証     | クライアントアプリを使用しているユーザーである。 |                                                                                                                                                                                                                                                                                                                                  |
-| 認可サーバー       | 認可     | アクセストークンを発行するサーバーのことoauth))  | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>↪️ 参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
+| 認可サーバー       | 認可     | アクセストークンを発行するサーバーのことoauth))  | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>↪️：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | リソースサーバー   | 認可     | 連携先アカウントを提供するサーバーのこと。       |                                                                                                                                                                                                                                                                                                                                  |
 
-> ↪️ 参考：https://ssaits.jp/promapedia/technology/oauth.html
+> ↪️：https://ssaits.jp/promapedia/technology/oauth.html
 
 <br>
 
@@ -56,7 +56,7 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 
 ![oauth_authorization-code](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 > - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
@@ -71,17 +71,21 @@ Facebookで認証フェーズのみでログインし、連携先の免許証作
 
 ![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png)
 
-> ↪️ 参考：https://contents.saitolab.org/oauth/
+> ↪️：https://contents.saitolab.org/oauth/
 
 #### ▼ ブラウザ ⇄ SSOでログインしたいWebサイト
 
 `【１】`
 
-: ブラウザは、免許証作成サイトにログインしようとする。免許証作成サイトは、Facebookアカウントを使用するかどうかをレスポンスする。
+: ブラウザは、免許証作成サイトにログインしようとする。
+
+     免許証作成サイトは、Facebookアカウントを使用するかどうかをレスポンスする。
 
 `【２】`
 
-: ブラウザは、Facebookアカウントを使用することをリクエストする。免許証作成サイトはFacebookの認可サーバーに認可リクエストを送信する。
+: ブラウザは、Facebookアカウントを使用することをリクエストする。
+
+     免許証作成サイトはFacebookの認可サーバーに認可リクエストを送信する。
 
 ```yaml
 GET https://www.facebook.com/auth?<下表で説明>
@@ -99,7 +103,7 @@ HOST: authorization-server.com # 認可サーバーのホスト
 | `code_challenge`       | チャレンジ      | 任意           |
 | `code_challege_method` | メソッド        | 任意           |
 
-> ↪️ 参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
+> ↪️：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
 
 `【３】`
 
@@ -130,7 +134,7 @@ Location: https://www.免許証作成サイト.com/callback?<下表で説明>
 | `code`                       | 認可コード   | 必須                                                                  |
 | `state`                      | 任意の文字列 | 認可リクエストのクエリストリングで、`state`キーが使用されていれば必須 |
 
-> ↪️ 参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
+> ↪️：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
 
 #### ▼ ブラウザ ⇄ SSOでログインしたいWebサイト ⇄ 認証フェーズの委譲先のWebサイト
 
@@ -142,7 +146,7 @@ Location: https://www.免許証作成サイト.com/callback?<下表で説明>
 
 : 免許証作成サイトは、Facebookの認可サーバーに認可コードを送信する。
 
-> ↪️ 参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
+> ↪️：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
 
 ```yaml
 POST https://www.facebook.com/auth?
@@ -171,7 +175,7 @@ Content-Type: application/x-www-form-urlencoded
 
 : 免許証作成サイトは、Facebookの認可サーバーにアクセストークンをそのまま送信する。
 
-> ↪️ 参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
+> ↪️：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
 
 ```yaml
 HTTP/1.1 200 OK
@@ -211,12 +215,12 @@ OAuthでは、認証スキーマとしてBearer認証が選択されることが
 
 | 付与タイプ名             | 説明                                                                                                                                                                                                                                             | 使用例                                                                                                                                                         |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に使用する。推奨されている。<br>↪️ 参考：https://oauth.net/2/grant-types/authorization-code/                                                                                                          | 他のSNSアプリとのアカウント連携                                                                                                                                |
-| Client Credentials Grant | 推奨されている。<br>↪️ 参考：https://oauth.net/2/grant-types/client-credentials/                                                                                                                                                                 |                                                                                                                                                                |
-| Device Code              | 推奨されている。<br>↪️ 参考：https://oauth.net/2/grant-types/device-code/                                                                                                                                                                        |                                                                                                                                                                |
-| Implicit Grant           | 非推奨されている。<br>↪️ 参考：https://oauth.net/2/grant-types/implicit/                                                                                                                                                                         |                                                                                                                                                                |
-| Password Grant           | ユーザー名とパスワードを照合し、トークンを付与する。非推奨されている。<br>↪️ 参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br>↪️ 参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
+| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に使用する。推奨されている。<br>↪️：https://oauth.net/2/grant-types/authorization-code/                                                                                                          | 他のSNSアプリとのアカウント連携                                                                                                                                |
+| Client Credentials Grant | 推奨されている。<br>↪️：https://oauth.net/2/grant-types/client-credentials/                                                                                                                                                                 |                                                                                                                                                                |
+| Device Code              | 推奨されている。<br>↪️：https://oauth.net/2/grant-types/device-code/                                                                                                                                                                        |                                                                                                                                                                |
+| Implicit Grant           | 非推奨されている。<br>↪️：https://oauth.net/2/grant-types/implicit/                                                                                                                                                                         |                                                                                                                                                                |
+| Password Grant           | ユーザー名とパスワードを照合し、トークンを付与する。非推奨されている。<br>↪️：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br>↪️：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
 
-> ↪️ 参考：https://oauth.net/2/grant-types/
+> ↪️：https://oauth.net/2/grant-types/
 
 <br>

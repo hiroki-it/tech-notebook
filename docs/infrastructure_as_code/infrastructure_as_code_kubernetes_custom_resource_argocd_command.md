@@ -9,7 +9,7 @@ description: コマンド＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ $ argocd app create foo-application \
     --sync-option CreateNamespace=false
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
+> ↪️：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
 <br>
 
@@ -57,7 +57,7 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=true
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/faq/
 > - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
@@ -68,7 +68,7 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 $ kubectl delete app <ArgoCDのアプリケーション名>
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
 <br>
 
@@ -94,7 +94,7 @@ $ argocd app set foo-application --sync-policy automated
 $ argocd app sync foo-application --project foo-project
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/
 
 #### ▼ --dry-run
 
@@ -110,7 +110,7 @@ $ argocd app sync foo-application --dry-run --project foo-project
 $ argocd app sync foo-application --local=<ディレクトリへのパス> --project foo-project
 ```
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
+> ↪️：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
 
 <br>
 
@@ -135,7 +135,7 @@ $ argocd repo add oci://<OCIレジストリ名> \
     --password $(aws ecr get-login-password --region ap-northeast-1)
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://medium.com/@Technorite
 > - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
@@ -170,7 +170,7 @@ SSOでログインする。
 $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_login/
 > - https://github.com/argoproj/argo-cd/issues/4104#issuecomment-685454997

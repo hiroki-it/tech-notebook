@@ -9,7 +9,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -284,7 +284,7 @@ data:
       web_root: /kiali
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kiali.io/docs/configuration/
 > - https://kiali.io/docs/configuration/kialis.kiali.io/#property-details

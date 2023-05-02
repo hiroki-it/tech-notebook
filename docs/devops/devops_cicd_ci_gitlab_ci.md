@@ -9,7 +9,7 @@ description: GitLab CI＠CIツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ GitLab Runnerを処理の実行環境として、GitLabリポジトリの`gitlab
 
 ![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://subscription.packtpub.com/book/cloud-&-networking/9781789531282/19/ch19lvl1sec32/the-runner-client-architecture
 > - https://www.insight-tec.com/tech-blog/ci-cd/20201222_gitlab_runner/
@@ -65,7 +65,7 @@ include:
       - baz-job.yml
 ```
 
-> ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
+> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
 <br>
 
@@ -84,7 +84,7 @@ bar_job:
       - ./node_module
 ```
 
-> ↪️ 参考：https://www.serversus.work/topics/927zjvmew2491o2n1oob/
+> ↪️：https://www.serversus.work/topics/927zjvmew2491o2n1oob/
 
 <br>
 
@@ -98,7 +98,7 @@ bar_job:
     - foo_job
 ```
 
-> ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
+> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
 
 <br>
 
@@ -113,7 +113,7 @@ foo_job:
     entrypoint: ["sh"]
 ```
 
-> ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
+> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
 <br>
 
@@ -128,7 +128,7 @@ foo_job:
   stage: foo_stage
 ```
 
-> ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#stage
+> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#stage
 
 <br>
 
@@ -142,7 +142,7 @@ foo_job:
     - echo "Hello World"
 ```
 
-> ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#script
+> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#script
 
 <br>
 
@@ -184,7 +184,7 @@ bar:
     strategy: depend
 ```
 
-> ↪️ 参考：https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
+> ↪️：https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
 
 <br>
 
@@ -202,7 +202,7 @@ foo_job:
     QUX: qux
 ```
 
-> ↪️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
+> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
 #### ▼ `GIT_SUBMODULE_STRATEGY`
 
@@ -214,6 +214,6 @@ foo_job:
     GIT_SUBMODULE_STRATEGY: "recursive"
 ```
 
-> ↪️ 参考：https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
+> ↪️：https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
 
 <br>

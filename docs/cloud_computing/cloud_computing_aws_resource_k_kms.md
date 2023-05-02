@@ -9,7 +9,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 『フルマネージド型』と『カスタマーマネージド型』があるが、セキュリティ上の理由でカスタマーマネージド型の方が良い。
 
-> ↪️ 参考：https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
+> ↪️：https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
 
 <br>
 
@@ -41,7 +41,7 @@ description: KMS＠Kで始まるAWSリソースの知見を記録しています
 
 ![kms_multi-region.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_multi-region.png)
 
-> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
+> ↪️：https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
 
 <br>
 
@@ -88,7 +88,7 @@ KMSのアクセス制限を設定する。
 
 暗号化キーを対称型 (ペアは不要) または非対称 (パブリックとプライベートのペアが必要) とするかを設定する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#asymmetric-keys-concept
@@ -97,13 +97,13 @@ KMSのアクセス制限を設定する。
 
 記入中...
 
-> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin
+> ↪️：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin
 
 #### ▼ キーの仕様
 
 記入中...
 
-> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec
+> ↪️：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec
 
 #### ▼ キーの用途
 
@@ -113,7 +113,7 @@ KMSのアクセス制限を設定する。
 - 署名と検証 (`SIGN_VERIFY`)
 - MCの生成と検証 (`GENERATE_VERIFY_MAC`)
 
-> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage
+> ↪️：https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage
 
 <br>
 
@@ -123,6 +123,6 @@ KMSのアクセス制限を設定する。
 
 ![kms_key_rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
 
-> ↪️ 参考：https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
+> ↪️：https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
 
 <br>

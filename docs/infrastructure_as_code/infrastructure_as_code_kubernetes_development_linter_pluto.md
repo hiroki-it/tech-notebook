@@ -9,7 +9,7 @@ description: pluto＠非推奨apiVersionテストの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: pluto＠非推奨apiVersionテストの知見を記録していま�
 $ brew install pluto
 ```
 
-> ↪️ 参考：https://pluto.docs.fairwinds.com/installation/
+> ↪️：https://pluto.docs.fairwinds.com/installation/
 
 <br>
 
@@ -43,13 +43,13 @@ $ pluto detect - -o wide --target-versions k8s=v1.23.0
 $ pluto detect - -o wide
 ```
 
-> ↪️ 参考：https://pluto.docs.fairwinds.com/advanced/#display-options
+> ↪️：https://pluto.docs.fairwinds.com/advanced/#display-options
 
 ```bash
 $ pluto detect - -o markdown
 ```
 
-> ↪️ 参考：https://pluto.docs.fairwinds.com/advanced/#display-options
+> ↪️：https://pluto.docs.fairwinds.com/advanced/#display-options
 
 <br>
 
@@ -61,7 +61,7 @@ kube-apiserverからの返信、または標準入力で入力されたマニフ
 
 `pluto detect-api-resources`コマンドとの違いは記入中...
 
-> ↪️ 参考：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
+> ↪️：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
 
 ```bash
 $ pluto detect - -o wide
@@ -98,7 +98,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 ...
 ```
 
-> ↪️ 参考：https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
+> ↪️：https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
 
 <br>
 
@@ -110,7 +110,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 $ pluto detect-files - -o wide
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
 > - https://qiita.com/wadason/items/c9d5f6a475bf7764fc9d#%E6%A4%9C%E8%A8%BC
@@ -140,7 +140,7 @@ NAME       NAMESPACE       KIND                      VERSION               REPLA
 foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
-> ↪️ 参考：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
+> ↪️：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
 
 <br>
 

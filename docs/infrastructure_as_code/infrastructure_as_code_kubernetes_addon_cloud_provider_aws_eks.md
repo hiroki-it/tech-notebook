@@ -9,7 +9,7 @@ description: AWS EKSアドオン＠クラウドプロバイダーアドオンの
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html
 > - https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9
@@ -93,7 +93,7 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 $ helm install <リリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
 ```
 
-> ↪️ 参考：https://github.com/aws/eks-charts/tree/master/stable
+> ↪️：https://github.com/aws/eks-charts/tree/master/stable
 
 <br>
 
@@ -107,7 +107,7 @@ EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働す�
 
 aws-eks-corednsアドオンがEKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。
 
-> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
+> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
 <br>
 
@@ -127,7 +127,7 @@ EKSのコントロールプレーン上のkube-apiserverが、Node外からPod�
 
 aws-eks-kube-proxyアドオンがEKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを一切管理できなくなるため、必須である。
 
-> ↪️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
 
@@ -145,7 +145,7 @@ aws-eks-vpc-cniアドオンがEKS Cluster内に無い場合、EC2ワーカーNod
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
@@ -164,7 +164,7 @@ Nodeのインスタンスタイプごとに、紐付けられるENI数に制限�
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
@@ -212,7 +212,7 @@ $ kubectl get daemonset aws-node \
 | `WARM_ENI_TARGET`                       | `1`                                                              |
 | `WARM_PREFIX_TARGET`                    | `1`                                                              |
 
-> ↪️ 参考：https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
+> ↪️：https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
 
 #### ▼ Podの使用するIPアドレス数の制御
 
@@ -224,7 +224,7 @@ $ kubectl get daemonset aws-node \
 | `WARM_IP_TARGET`    | AWS EC2/FargateワーカーNodeが余分に確保するIPアドレス数 |
 | `MINIMUM_IP_TARGET` | AWS EC2/FargateワーカーNodeが最低限確保するIPアドレス数 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
 > - https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address

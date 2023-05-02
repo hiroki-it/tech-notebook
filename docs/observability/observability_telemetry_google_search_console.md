@@ -9,7 +9,7 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 ユーザーが検索エンジンを使用する時は、このDBインデックスを基に検索結果が表示される。
 
-> ↪️ 参考：https://smakoma.com/understand-search-engine.html
+> ↪️：https://smakoma.com/understand-search-engine.html
 
 #### ▼ クローラーの種類
 
@@ -39,7 +39,7 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 | Baiduspider  | Baidu        |
 | Mail.RU_Bot  | Mail.ru      |
 
-> ↪️ 参考：https://technical-seo.jp/crawler/
+> ↪️：https://technical-seo.jp/crawler/
 
 **例**
 
@@ -67,7 +67,7 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 - 検索エンジンにリクエストを送信し、サイトに訪問してくる。
 - Googleサーチコンソールに登録された`sitemap.xml`ファイルを基に、サイトに訪問してくる。
 
-> ↪️ 参考：https://www.allegro-inc.com/seo/xml-sitemap/
+> ↪️：https://www.allegro-inc.com/seo/xml-sitemap/
 
 <br>
 
@@ -79,7 +79,7 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 Googleサーチコンソールに登録でき、検索クローラーがサイトの情報を収集するのを助ける。
 
-> ↪️ 参考：https://www.allegro-inc.com/seo/xml-sitemap/
+> ↪️：https://www.allegro-inc.com/seo/xml-sitemap/
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -113,7 +113,7 @@ Googleサーチコンソールに登録でき、検索クローラーがサイ�
 
 Webサイトの全ページのうち、どのくらいが検索エンジンのDBインデックスの登録されたかを表す指標のこと。
 
-> ↪️ 参考：https://www.sakurasaku-labo.jp/blogs/index-coverage-report
+> ↪️：https://www.sakurasaku-labo.jp/blogs/index-coverage-report
 
 #### ▼ ステータスの種類
 
@@ -126,7 +126,7 @@ Webサイトの全ページのうち、どのくらいが検索エンジンのDB
 | エラー       | 登録されなかった             |
 | 除外         | 登録されなかった             |
 
-> ↪️ 参考：https://support.google.com/webmasters/answer/7440203#status_type
+> ↪️：https://support.google.com/webmasters/answer/7440203#status_type
 
 <br>
 

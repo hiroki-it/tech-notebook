@@ -11,7 +11,7 @@ description: CircleCI＠CIツールの知見を記録しています。
 
 ![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_architecture.png)
 
-> ↪️ 参考：https://circleci.com/docs/2.0/server-3-overview/
+> ↪️：https://circleci.com/docs/2.0/server-3-overview/
 
 <br>
 
@@ -53,7 +53,7 @@ CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシ
 
 注意点として、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
 
-> ↪️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
+> ↪️：https://circleci.com/docs/2.0/gh-bb-integration/
 
 #### ▼ デバッグの事前準備
 
@@ -135,13 +135,13 @@ $ pbcopy < ~/.ssh/github/<秘密鍵名>
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
 ```
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
+> ↪️：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
 #### ▼ Test Insights
 
 各テストのパフォーマンスや成功失敗率を確認できる。
 
-> ↪️ 参考：https://circleci.com/docs/2.0/insights-tests/
+> ↪️：https://circleci.com/docs/2.0/insights-tests/
 
 #### ▼ SSHキー
 
@@ -152,6 +152,6 @@ SSHキーを作成する必要がある。
 | デプロイキー | CircleCIコンテナがプロジェクトのGitHubリポジトリにアクセスするために必要である (例：CIOps) 。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。 |
 | ユーザーキー | CircleCIコンテナがプロジェクト以外のGitHubリポジトリにアクセスするために必要である (例：GitOps) 。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。 |
 
-> ↪️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
+> ↪️：https://circleci.com/docs/2.0/add-ssh-key/
 
 <br>

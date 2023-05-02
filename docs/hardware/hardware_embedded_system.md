@@ -9,7 +9,7 @@ description: 組み込み機器＠ハードウェアの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
+> ↪️：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
@@ -45,7 +45,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 ![p119-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p119-2.png)
 
-> ↪️ 参考：<https://www.amazon.co.jp/dp/4297124513>
+> ↪️：<https://www.amazon.co.jp/dp/4297124513>
 
 <br>
 
@@ -67,7 +67,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 ![p119-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p119-3.png)
 
-> ↪️ 参考：<https://www.amazon.co.jp/dp/4297124513>
+> ↪️：<https://www.amazon.co.jp/dp/4297124513>
 
 <br>
 
@@ -83,7 +83,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 ![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p120-1.png)
 
-> ↪️ 参考：<https://www.amazon.co.jp/dp/4297124513>
+> ↪️：<https://www.amazon.co.jp/dp/4297124513>
 
 #### ▼ フィードバック制御
 
@@ -95,7 +95,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 ![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p120-2.png)
 
-> ↪️ 参考：<https://www.amazon.co.jp/dp/4297124513>
+> ↪️：<https://www.amazon.co.jp/dp/4297124513>
 
 <br>
 

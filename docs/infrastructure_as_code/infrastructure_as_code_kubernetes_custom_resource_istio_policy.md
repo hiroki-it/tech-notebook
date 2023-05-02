@@ -9,7 +9,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 クラウドプロバイダー環境でIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを`1`個だけセットアップし、できるだけ多くのアプリコンテナのサービスメッシュとなるようにする。
 
-> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
+> ↪️：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
 
 <br>
 
@@ -27,7 +27,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 コントロールプレーンの可用性を高めるために、コントロールプレーンを異なるAZに冗長化させる。
 
-> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
+> ↪️：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
 
 <br>
 
@@ -77,7 +77,7 @@ spec:
               exit $x
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.kabegiwablog.com/entry/2020/08/31/224827
 > - https://github.com/istio/istio/issues/6324#issuecomment-760156652
@@ -93,7 +93,7 @@ spec:
 
 セキュリティ上の理由から、IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway
+> ↪️：https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway
 
 #### ▼ NodePort Serviceを選ぶ
 
@@ -111,7 +111,7 @@ LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKub
 
 NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/bd9ae57cc00a44810496989ec3fa34649d6c8516/manifests/charts/gateway/values.yaml#L39
@@ -143,7 +143,7 @@ spec:
             subset: v1
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
+> ↪️：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
 
 <br>
 
@@ -169,7 +169,7 @@ spec:
             host: myservice
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
+> ↪️：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
 
 <br>
 
@@ -183,7 +183,7 @@ DestinationRuleを更新する前に新しいサブセットを持つVirtualServ
 
 DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
 
-> ↪️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
+> ↪️：https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
 
 <br>
 
@@ -273,7 +273,7 @@ Istioでは、マイナーバージョンごとのアップグレードを推奨
 
 実質的に半年ごとにアップグレード工数が発生する。
 
-> ↪️ 参考：https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases
+> ↪️：https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases
 
 #### ▼ マイナーバージョン単位でアップグレード
 
@@ -281,7 +281,7 @@ Istioの開発プロジェクトでは、マイナーバージョンを`1`個ず
 
 そのため、マイナーバージョンを`2`個以上跨いだアップグレードを推奨していない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/setup/upgrade/
 > - https://thenewstack.io/upgrading-istio-without-downtime/
@@ -294,13 +294,13 @@ Istiodコントロールプレーンでダウンタイムが発生すると、`i
 
 Istiodコントロールプレーンをカナリアアップグレードを採用する。
 
-> ↪️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
+> ↪️：https://thenewstack.io/upgrading-istio-without-downtime/
 
 #### ▼ IngressGatewayでダウンタイムを発生させない
 
 IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
 
-> ↪️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
+> ↪️：https://thenewstack.io/upgrading-istio-without-downtime/
 
 <br>
 
@@ -340,7 +340,7 @@ $ istioctl upgrade
 $ kubectl rollout restart deployment app-deployment -n app
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
+> ↪️：https://istio.io/latest/docs/setup/upgrade/in-place/
 
 <br>
 
@@ -348,11 +348,11 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 #### ▼ カナリア方式とは
 
-> ↪️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
+> ↪️：https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
 
 #### ▼ `istioctl`コマンドの場合
 
-> ↪️ 参考：https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
+> ↪️：https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
 
 #### ▼ `helm`コマンドの場合
 

@@ -9,7 +9,7 @@ description: コマンド@PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -109,7 +109,7 @@ Array
 )
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
+> ↪️：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
 
 <br>
 
@@ -142,7 +142,7 @@ $ php -r '
   '
 ```
 
-> ↪️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
+> ↪️：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
 <br>
 

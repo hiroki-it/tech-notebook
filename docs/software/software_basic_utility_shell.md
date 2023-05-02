@@ -9,7 +9,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 基本的には、いずれのシェルも同じ仕組みである。
 
-> ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> ↪️：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 ![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell.png)
 
@@ -39,7 +39,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 パスワードは、`/etc/passwd`ファイルに設定されている。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
@@ -78,7 +78,7 @@ $ ssh
 
 認証情報を必要とせず、最初に起動するシェルのこと。
 
-> ↪️ 参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> ↪️：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
 #### ▼ su <ユーザー名>
 
@@ -132,7 +132,7 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 -bash # ログインシェルの場合、シェルの前にハイフンが付く。
 ```
 
-> ↪️ 参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
+> ↪️：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
 
 補足として、もしシェルスクリプト内でこれを実行した場合は、これのファイル名を取得できる。
 
@@ -143,7 +143,7 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 echo $0 # foo.sh
 ```
 
-> ↪️ 参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
+> ↪️：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
 
 <br>
 
@@ -153,7 +153,7 @@ echo $0 # foo.sh
 
 ![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_history.png)
 
-> ↪️ 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
+> ↪️：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
 
 #### ▼ 設定ファイル
 
@@ -169,7 +169,7 @@ echo $0 # foo.sh
 | `~/.bash_login`ファイル   | `~/.zlogin`ファイル   | ログインシェルの起動時。profileファイルと機能が重複するため、個人的には使用しない。 |
 | `~/.bash_logout`ファイル  | `~/.zlogout`ファイル  | `exit`コマンド時                                                                    |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 > - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
@@ -193,7 +193,7 @@ $ echo $SHELL
 
 シェルでは、変数のスコープがプロセスの親子関係によって決まる。
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_variable_scope.png)
 
@@ -203,7 +203,7 @@ $ echo $SHELL
 
 そのため、`source`コマンド以外の方法で実行されたシェルスクリプトでは、親プロセスで定義されたシェル変数を使用できない。
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -230,7 +230,7 @@ FOO=$(echo "foo")
 
 そのため、シェルスクリプトの実行コマンドに限らず使用できる。
 
-> ↪️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ↪️：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -270,7 +270,7 @@ $ apk add bash
 
 子プロセスの終了時に、親プロセスに終了ステータス (`0`〜`255`) が返却される。
 
-> ↪️ 参考：https://en.wikipedia.org/wiki/Exit_status
+> ↪️：https://en.wikipedia.org/wiki/Exit_status
 
 <br>
 
@@ -288,7 +288,7 @@ $ apk add bash
 | `128 + 2` | スクリプトが `Ctrl+C`で終了            | `Ctrl+C`はシグナル`2`で終了するため、`Ctrl+C`が実行された可能性がある。 (`128 + 2 = 130`) | Ctrl+C                                       |
 | `255`     | 範囲外の終了ステータス                 | `exit`コマンドに0〜255以外の整数を渡している可能性がある。                                | `$ exit -1`                                  |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://tldp.org/LDP/abs/html/exitcodes.html
 > - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
@@ -309,7 +309,7 @@ $ apk add bash
 $ echo foo; echo bar; echo baz
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
@@ -324,7 +324,7 @@ $ echo foo; echo bar; echo baz
 $ echo foo && echo bar && echo baz
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
@@ -339,7 +339,7 @@ $ echo foo && echo bar && echo baz
 $ echo foo || echo bar || echo baz
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
@@ -356,7 +356,7 @@ $ echo foo || echo bar || echo baz
 $ echo foo & echo bar & echo baz
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf

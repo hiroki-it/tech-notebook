@@ -9,7 +9,7 @@ description: I/O (入出力) 管理＠Linuxカーネルの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -26,7 +26,7 @@ I/Oは、文脈によって意味合いが異なる。
 | ストレージの場合       | ストレージへの読み書き               |
 | ネットワークの場合     | インバウンド通信、アウトバウンド通信 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.idcf.jp/words/io.html
 > - https://itkq.jp/blog/2017/05/10/linux-file-and-io/
@@ -39,7 +39,7 @@ I/Oは、文脈によって意味合いが異なる。
 
 I/O自体が文脈によって意味合いが異なるが、IOPSはストレージの文脈でしか使わない。
 
-> ↪️ 参考：https://dev-labo.com/aws/difference-iops-throughput/
+> ↪️：https://dev-labo.com/aws/difference-iops-throughput/
 
 <br>
 
@@ -55,7 +55,7 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stdin_stdout_stderr.png)
 
-> ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
+> ↪️：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
 
 <br>
 
@@ -69,13 +69,13 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stdin_stdout_stderr.png)
 
-> ↪️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
+> ↪️：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
 
 #### ▼ 標準出力に全て出力
 
 コマンド処理の後に、『`2>&1`』を追加すると、標準エラー出力に対する出力を標準出力にリダイレクトすることにより、処理の全ての結果を標準出力に出力できるうになる。
 
-> ↪️ 参考：https://teratail.com/questions/1285
+> ↪️：https://teratail.com/questions/1285
 
 **＊例＊**
 
@@ -103,7 +103,7 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/1
 ```
 
-> ↪️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> ↪️：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
 
 #### ▼ 標準出力とファイルに出力
 
@@ -113,7 +113,7 @@ $ cat /proc/1/fd/1
 $ echo "text" | tee stdout.log
 ```
 
-> ↪️ 参考：https://glorificatio.org/archives/2903
+> ↪️：https://glorificatio.org/archives/2903
 
 <br>
 
@@ -129,7 +129,7 @@ $ echo "text" | tee stdout.log
 
 コマンド処理の後に、『`1>&2`』を追加すると、標準出力に対する出力を標準エラー出力にリダイレクトすることにより、処理の全ての結果を標準エラー出力に出力できるうになる。
 
-> ↪️ 参考：https://teratail.com/questions/1285
+> ↪️：https://teratail.com/questions/1285
 
 ```bash
 $ echo "text" 1>&2
@@ -155,7 +155,7 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/2
 ```
 
-> ↪️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> ↪️：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
 
 <br>
 
@@ -169,7 +169,7 @@ $ cat /proc/1/fd/2
 
 プロセスの標準入力に対する転送は、多くの場合にユーティリティのパラメーターにファイルを渡すことと同じである。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
 > - https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
@@ -245,7 +245,7 @@ $ echo 'Hello World' >| stdout.txt
 
 ![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pipeline_shell.png)
 
-> ↪️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> ↪️：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 <br>
 
@@ -283,7 +283,7 @@ $ tcpdump dst port 443 \
 ...
 ```
 
-> ↪️ 参考：https://it-ojisan.tokyo/awk-f/
+> ↪️：https://it-ojisan.tokyo/awk-f/
 
 #### ▼ echoプロセスに対する入力
 
@@ -333,7 +333,7 @@ $ sudo pgrep \
 | `Ctrl + b` | 一ページ戻り                         |
 | `/文字列`  | 以降の文字を検索し、ハイライトする。 |
 
-> ↪️ 参考：https://tech.pjin.jp/blog/infra_engneer/more-less/
+> ↪️：https://tech.pjin.jp/blog/infra_engneer/more-less/
 
 **＊例＊**
 

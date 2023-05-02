@@ -9,7 +9,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![アドレス空間管理の種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アドレス空間管理の種類.png)
 
-> ↪️ 参考：https://itmanabi.com/real-memory-mng/
+> ↪️：https://itmanabi.com/real-memory-mng/
 
 <br>
 
@@ -35,7 +35,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単一区画方式.png)
 
-> ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+> ↪️：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 #### ▼ 多重区画方式とは
 
@@ -43,7 +43,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 複数のプロセスを読み込めるが、単一区画方式と同様に、物理メモリの余ったアドレス空間は利用できない。
 
-> ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+> ↪️：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![多重区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重区画方式.png)
 
@@ -59,7 +59,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/可変区画方式.png)
 
-> ↪️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+> ↪️：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 <br>
 
@@ -73,7 +73,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://itmanabi.com/real-memory-mng/
 > - https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97
@@ -114,7 +114,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
 
-> ↪️ 参考：http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
+> ↪️：http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
 
 #### ▼ ページイン/ページアウト
 
@@ -126,13 +126,13 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![ページインとページアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページインとページアウト.png)
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ 仮想メモリとのマッピングによる大容量アドレス空間の実現
 
 仮想メモリのアドレス空間を、物理メモリのアドレス空間とストレージにマッピングすることによって、物理メモリのアドレス空間を疑似的に大きく見せかけられる。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_1.png)
 
@@ -160,7 +160,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 この仕組みを、『動的アドレス変換機構』と呼ぶ。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![メモリ管理ユニット](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリ管理ユニット.png)
 
@@ -184,7 +184,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_4.png)
 
@@ -210,7 +210,7 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 #### ▼ 『FIFO方式：First In First Out』と『LIFO方式：Last In First Out』
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-2.png)
 
@@ -218,7 +218,7 @@ CPUによって稼働したプロセスが、仮想メモリのアドレス空�
 
 #### ▼ 『LRU方式：Least Recently Used』と『LFU方式：Least Frequently Used』
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-1.png)
 

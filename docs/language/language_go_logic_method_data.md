@@ -9,7 +9,7 @@ description: メソッド/データ@Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -279,7 +279,7 @@ func main() {
 
 詳しくは、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ```go
 package main
@@ -657,7 +657,7 @@ func main() {
 
 PHPにおけるポインタは、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html
 
 **＊実装例＊**
 
@@ -739,7 +739,7 @@ type slice struct {
 }
 ```
 
-> ↪️ 参考：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
+> ↪️：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
 
 #### ▼ 宣言と代入
 
@@ -1088,7 +1088,7 @@ func main() {
 
 アップキャストの可否を使用して、意図的にエラーを発生させるテクニックがある。
 
-> ↪️ 参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
+> ↪️：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
 
 ```go
 package main
@@ -1382,7 +1382,7 @@ func main() {
 
 引数の型として、構造体の場合はポインタ型、それ以外のデータの場合はポインタ型以外が推奨される。
 
-> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#pass-values
+> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#pass-values
 
 #### ▼ Closure (無名関数) とは
 
@@ -2052,7 +2052,7 @@ func main() {
 
 結果、終了する順番は順不同になる。
 
-> ↪️ 参考：https://golang.org/pkg/sync/
+> ↪️：https://golang.org/pkg/sync/
 
 **＊実装例＊**
 
@@ -2082,7 +2082,7 @@ func main() {
 
 キューに値を送信し、加えてキューから値を受信できる。
 
-> ↪️ 参考：https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
+> ↪️：https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
 ```go
 package main
@@ -2174,7 +2174,7 @@ func main() {
 
 チャンネルに対する格納を非同期で待機する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.spinute.org/go-by-example/select.html
 > - https://leben.mobi/go/channel-and-select/go-programming/
@@ -2232,7 +2232,7 @@ func main() {
 
 例外スローの意義は、以下の参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html
 
 #### ▼ Goには例外が無い
 
@@ -2310,7 +2310,7 @@ errorsパッケージの`New`メソッドにエラーを設定する。
 
 errorインターフェースはErrorメソッドを自動的に実行する。
 
-> ↪️ 参考：https://golang.org/pkg/errors/#New
+> ↪️：https://golang.org/pkg/errors/#New
 
 **＊実装例＊**
 
@@ -2351,7 +2351,7 @@ fmtパッケージの`Errorf`メソッドで独自エラーを作成できる。
 
 errorインターフェースはErrorメソッドを自動的に実行する。
 
-> ↪️ 参考：https://golang.org/pkg/fmt/#Errorf
+> ↪️：https://golang.org/pkg/fmt/#Errorf
 
 **＊実装例＊**
 
@@ -2498,7 +2498,7 @@ Goにはデフォルトで、ロギング用パッケージが用意されてい
 
 ただし、機能が乏しいため、外部パッケージ (例：logrus) も推奨である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://pkg.go.dev/log
 > - https://github.com/sirupsen/logrus
@@ -2540,7 +2540,7 @@ if err != nil {
 
 ただし、`panic`ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
 
-> ↪️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 
 **＊実装例＊**
 
@@ -2599,7 +2599,7 @@ Goのコメントの前に不要な改行が挿入されないように、`{{-`�
 
 各記号を`{{ "<記号>" }}`のように挟み、エスケープする。
 
-> ↪️ 参考：https://stackoverflow.com/a/17642427
+> ↪️：https://stackoverflow.com/a/17642427
 
 ```yaml
 {{ "{{ " }} foo {{ " }}" }}
@@ -2609,7 +2609,7 @@ Goのコメントの前に不要な改行が挿入されないように、`{{-`�
 
 記号を含む文字ごと`` {{ `<記号を含む文字列全体>` }} ``のように挟み、エスケープする。
 
-> ↪️ 参考：https://stackoverflow.com/a/38941123
+> ↪️：https://stackoverflow.com/a/38941123
 
 ```yaml
 {{ `{{  foo  }}` }}
@@ -2621,7 +2621,7 @@ Goのコメントの前に不要な改行が挿入されないように、`{{-`�
 
 ### パッケージのコード
 
-> ↪️ 参考：https://golang.org/pkg/
+> ↪️：https://golang.org/pkg/
 
 <br>
 
@@ -2666,7 +2666,7 @@ func main() {
 
 ただし、他の多くの関数がポインタ型を引数型としていることから、それに合わせてポインタ型で渡すことが多い。
 
-> ↪️ 参考：https://golang.org/pkg/encoding/json/#Marshal
+> ↪️：https://golang.org/pkg/encoding/json/#Marshal
 
 **＊実装例＊**
 
@@ -2768,7 +2768,7 @@ JSONを構造体に変換する。
 
 `Unmarshal`関数に渡す構造体のフィールドはパブリックが必要であるが、`Marshal`関数と同様にして、`UnMarshalJSON`関数を構造体に定義すれば、代わりにこれをコールできる。
 
-> ↪️ 参考：https://golang.org/pkg/encoding/json/#Unmarshal
+> ↪️：https://golang.org/pkg/encoding/json/#Unmarshal
 
 **＊実装例＊**
 
@@ -2815,7 +2815,7 @@ CloudWatchは様々なイベントを処理するため、一部のJSON構造が
 
 そのため、`RawMessage`関数が使用されている。
 
-> ↪️ 参考：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
+> ↪️：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
 
 ```go
 package events
@@ -2928,7 +2928,7 @@ func main() {
 
 複数の引数をスペースを挟んで繋ぐ。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://golang.org/pkg/fmt/#Print
 > - https://golang.org/pkg/fmt/#Fprint
@@ -2990,7 +2990,7 @@ func main() {
 
 標準出力に出力できる他の関数の引数として渡す必要がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://golang.org/pkg/fmt/#Sprint
 > - https://golang.org/pkg/fmt/#Sprintf
@@ -3008,7 +3008,7 @@ package mainimport "fmt"func main() {        // Sprintは返却するだけ    f
 
 複数の引数をスペースを挟んで繋ぎ、最後に改行を挿入して結合する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://golang.org/pkg/fmt/#Println
 > - https://golang.org/pkg/fmt/#Fprintln
@@ -3042,7 +3042,7 @@ func main() {
 | `%+v`              | フィールドを含む構造体として | データの構造を確認できるため、デバッグに有効である。 |
 | `%#v`              | Go構文として                 | データの構造を確認できるため、デバッグに有効である。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://golang.org/pkg/fmt/#Printf
 > - https://golang.org/pkg/fmt/#Fprintf
@@ -3132,7 +3132,7 @@ HTTPクライアントまたはWebサーバを提供する。
 
 ただし、Goによるwebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用した方が良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go

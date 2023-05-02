@@ -9,7 +9,7 @@ description: トークン＠認証の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ Bear認証やOAuthのトークンとして使用できる。
 
 ランダムな文字列をこれら認証のトークンとするより、JWTを使用した方がより安全である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://meetup-jp.toast.com/3511
 > - https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
@@ -60,7 +60,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 JWTは以下のサイトから取得できる。
 
-> ↪️ 参考：https://jwt.io/
+> ↪️：https://jwt.io/
 
 JWTの作成時に、例えばJavaScriptであれば、以下のような処理が実行されている。
 
@@ -137,7 +137,7 @@ const signature = HMACSHA256(
 | `Cookie`ヘッダー                                                       | CSRFトークン           |     ⭕     |                                                                     |
 | SameSiteCookie                                                         |                        |     ⭕     | SPAとAPIが同一オリジンの必要がある。                                |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 > - https://blog.flatt.tech/entry/auth0_access_token_poc
@@ -148,7 +148,7 @@ const signature = HMACSHA256(
 
 記入中...
 
-> ↪️ 参考：https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token
+> ↪️：https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token
 
 <br>
 
@@ -156,7 +156,7 @@ const signature = HMACSHA256(
 
 記入中...
 
-> ↪️ 参考：https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token
+> ↪️：https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token
 
 <br>
 
@@ -164,4 +164,4 @@ const signature = HMACSHA256(
 
 記入中...
 
-> ↪️ 参考：https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto
+> ↪️：https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto

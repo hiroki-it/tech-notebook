@@ -9,7 +9,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 $ victoria-metrics-prod -downsampling.period=30d:5m
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.victoriametrics.com/#downsampling
 > - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
@@ -53,7 +53,7 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
@@ -70,7 +70,7 @@ VictoriaMetricsが使用できるメモリサイズを設定する。
 $ victoria-metrics-prod -memory.allowedBytes=100000
 ```
 
-> ↪️ 参考：https://docs.victoriametrics.com/#resource-usage-limits
+> ↪️：https://docs.victoriametrics.com/#resource-usage-limits
 
 <br>
 
@@ -84,7 +84,7 @@ VictoriaMetricsが使用できるメモリサイズのうちで、許容する�
 $ victoria-metrics-prod -memory.allowedPercent=80
 ```
 
-> ↪️ 参考：https://docs.victoriametrics.com/#resource-usage-limits
+> ↪️：https://docs.victoriametrics.com/#resource-usage-limits
 
 <br>
 
@@ -112,7 +112,7 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 ```
 
-> ↪️ 参考：https://docs.victoriametrics.com/#storage
+> ↪️：https://docs.victoriametrics.com/#storage
 
 <br>
 
@@ -128,7 +128,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 $ victoria-metrics-prod -retentionPeriod=90d
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.victoriametrics.com/#retention
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/

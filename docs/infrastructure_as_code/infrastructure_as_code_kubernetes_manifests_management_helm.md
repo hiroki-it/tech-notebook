@@ -9,7 +9,7 @@ description: Helm＠マニフェスト管理の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Helmは、helmクライアント、チャートレジストリ、複数のチャ
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/helm_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/
 > - https://helm.sh/ja/docs/glossary/
@@ -35,7 +35,7 @@ Helmは、helmクライアント、チャートレジストリ、複数のチャ
 
 HelmのHelmリリースでは、バージョン管理に関する戦略を採用している。
 
-> ↪️ 参考：https://medium.com/@koteswar.meesala/git-fast-forward-merge-vs-three-way-merge-8591434dd350
+> ↪️：https://medium.com/@koteswar.meesala/git-fast-forward-merge-vs-three-way-merge-8591434dd350
 
 #### ▼ 2方向の戦略的マージパッチ
 
@@ -45,7 +45,7 @@ Helmの `v2`では、2方向の戦略的マージパッチを採用している�
 
 そのため、Helm以外の方法 (例：`kubectl edit`コマンド、`kubectl apply`コマンド) でマニフェストが変更されたことを検知できず、チャートの宣言通りにHelmリリースやロールバックを実施できなかった。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
 > - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
@@ -62,7 +62,7 @@ Helmの `v3`では、3方向の戦略的マージパッチを採用している�
 
 そのため、チャートと現在のマニフェストと比較できない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
 > - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
@@ -89,8 +89,8 @@ helmクライアントは、リポジトリからインストールしたチャ�
 
 | レジストリ             | 補足                                                      |
 | ---------------------- | --------------------------------------------------------- |
-| ArtifactHub (Helm公式) | ↪️ 参考：https://helm.sh/docs/topics/chart_repository/    |
-| GitHub、GitHub Pages   | ↪️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+| ArtifactHub (Helm公式) | ↪️：https://helm.sh/docs/topics/chart_repository/    |
+| GitHub、GitHub Pages   | ↪️：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
 | AWSリソース (ECR、S3)  |                                                           |
 | GCPリソース            |                                                           |
 
@@ -111,7 +111,7 @@ helmクライアントは、リポジトリからインストールしたチャ�
 | 形式 | `https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>` |
 | 例   | `https://example.com/foo-chart`                                   |
 
-> ↪️ 参考：https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
+> ↪️：https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
 
 <br>
 
@@ -151,7 +151,7 @@ repository/ # チャートリポジトリ
 ...
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
 > - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
@@ -171,7 +171,7 @@ repository/ # マニフェストリポジトリ
 ...
 ```
 
-> ↪️ 参考：https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional
+> ↪️：https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional
 
 <br>
 
@@ -203,7 +203,7 @@ repository/
 ...
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://helm.sh/docs/topics/charts/#the-chart-file-structure
 > - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
@@ -222,6 +222,6 @@ repository/
 
 実際にインストールされたチャートのインスタンスのこと。
 
-> ↪️ 参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
+> ↪️：https://helm.sh/docs/intro/using_helm/#three-big-concepts
 
 <br>

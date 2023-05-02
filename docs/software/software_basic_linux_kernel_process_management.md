@@ -9,7 +9,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 何かのプロセスを正しく終了できないと、メモリ上に不要なプロセスが溜まっていき、メモリ使用率が高くなってしまう。
 
-> ↪️ 参考：https://jpazamu.com/thread_process/#index_id5
+> ↪️：https://jpazamu.com/thread_process/#index_id5
 
 <br>
 
@@ -35,7 +35,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 OSが起動している間、メモリ上のアドレス空間の区画に恒常的に割り当てられているプロセスを、特に『デーモン (常駐プログラム) 』という。
 
-> ↪️ 参考：https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html
+> ↪️：https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html
 
 <br>
 
@@ -57,7 +57,7 @@ PID  TTY  TIME     CMD
   1  ??   9:23.33  /sbin/launchd
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
 > - https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
@@ -86,7 +86,7 @@ PID  TTY  TIME     CMD
 
 ![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/process.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
 > - https://webpia.jp/thread_process/
@@ -101,7 +101,7 @@ PID  TTY  TIME     CMD
 
 現在割り当てられているプロセスのうち、最も使用領域の大きいプロセスを強制的に終了する。
 
-> ↪️ 参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
+> ↪️：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
 
 #### ▼ 確認方法
 
@@ -114,7 +114,7 @@ Jan  1 00:00:00 localhost kernel: Out of memory: Kill process 17143 (java) score
 Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-vm:7790724kB, anon-rss:4108910kB, file-rss:6822kB, shmem-rss:0kB
 ```
 
-> ↪️ 参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
+> ↪️：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
 
 <br>
 
@@ -128,7 +128,7 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 ![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
 > - https://webpia.jp/thread_process/
@@ -147,7 +147,7 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 各スレッドがプロセスに割り当てられているアドレスを共有して使用する。
 
-> ↪️ 参考：https://webpia.jp/thread_process/
+> ↪️：https://webpia.jp/thread_process/
 
 ![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multi-thread.png)
 
@@ -161,7 +161,7 @@ CPUのコアが単一のスレッドが紐付くようなマルチスレッド�
 
 ![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png)
 
-> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+> ↪️：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 #### ▼ 同時マルチスレッド
 
@@ -169,7 +169,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png)
 
-> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+> ↪️：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 <br>
 

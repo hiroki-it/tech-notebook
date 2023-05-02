@@ -9,7 +9,7 @@ description: Bで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: Bで始まるAWSリソース＠AWSの知見を記録しています
 
 ### 対応AWSリソース
 
-> ↪️ 参考：https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources
+> ↪️：https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources
 
 | AWSリソースの種類 | バックアップ内容                                                                |
 | ----------------- | ------------------------------------------------------------------------------- |
@@ -38,7 +38,7 @@ description: Bで始まるAWSリソース＠AWSの知見を記録しています
 
 メインリージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/shinon_uk/items/5ee4dcf360b8d5c88779
 > - https://techblog.finatext.com/aws-cross-region-cross-account-backup-5952a990c1c1

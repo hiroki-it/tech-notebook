@@ -9,7 +9,7 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -35,7 +35,7 @@ $ kubectl diff -k ./ > kustomize.diff
 $ kubectl apply -k ./
 ```
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+> ↪️：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 リモートにある`kustomize.yaml`ファイルを使用する場合も、同じく`kustomize.yaml`ファイルのあるディレクトリのURLを指定する。
 
@@ -45,7 +45,7 @@ $ kubectl diff -k "<リポジトリのURL>/<kustomize.yamlファイルのある�
 $ kubectl apply -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>"
 ```
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#examples
+> ↪️：https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#examples
 
 **＊実行例＊**
 
@@ -75,7 +75,7 @@ $ kubectl apply -k "https://github.com/kubernetes-sigs/aws-load-balancer-control
 $ kubectl kustomize ./
 ```
 
-> ↪️ 参考：https://note.com/shift_tech/n/nd7f17e51d592
+> ↪️：https://note.com/shift_tech/n/nd7f17e51d592
 
 <br>
 
@@ -111,7 +111,7 @@ resources:
   - applicationset-crd.yaml
 ```
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/tree/master/manifests/crds
+> ↪️：https://github.com/argoproj/argo-cd/tree/master/manifests/crds
 
 <br>
 
@@ -153,7 +153,7 @@ spec:
               mountPath: /go/src
 ```
 
-> ↪️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+> ↪️：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 <br>
 
@@ -165,7 +165,7 @@ spec:
 
 `overlays`ディレクトリ配下にあるファイルの処理方法を設定する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 > - https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d

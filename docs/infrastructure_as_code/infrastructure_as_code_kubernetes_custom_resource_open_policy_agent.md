@@ -9,7 +9,7 @@ description: OpenPolicyAgent＠CNCFプロジェクトの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ OpenPolicyAgentは、OpenPolicyエージェント、`.rego`ファイル、DB、�
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.velotio.com/engineering-blog/deploy-opa-on-kubernetes
 > - https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
@@ -36,7 +36,7 @@ DBからアカウント情報を読み出し、`.rego`ファイルのロジッ�
 
 ![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
 
-> ↪️ 参考：https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
+> ↪️：https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
 
 <br>
 
@@ -70,7 +70,7 @@ DBからアカウント情報を読み出し、`.rego`ファイルのロジッ�
 
      ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
 
-> ↪️ 参考：https://thinkit.co.jp/article/17511
+> ↪️：https://thinkit.co.jp/article/17511
 
 ```yaml
 # subordinates.jsonファイル
@@ -95,7 +95,7 @@ $ curl \
 
 : 認可スコープ定義のロジックを`.rego`形式で作成する。
 
-> ↪️ 参考：https://thinkit.co.jp/article/17511
+> ↪️：https://thinkit.co.jp/article/17511
 
 ```erlang
 package httpapi.authz
@@ -182,7 +182,7 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 
 ![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_open-policy-agent.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/
 > - https://www.infracloud.io/blogs/opa-and-gatekeeper/

@@ -9,7 +9,7 @@ description: JMeter＠総合テストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: JMeter＠総合テストの知見を記録しています。
 
 JMeterをインストールし、環境を作成する。
 
-> ↪️ 参考：https://jmeter.apache.org/download_jmeter.cgi
+> ↪️：https://jmeter.apache.org/download_jmeter.cgi
 
 <br>
 
@@ -29,7 +29,7 @@ JMeterは、以下のコンポーネントから構成されている。
 
 ![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jmeter_architecuture.png)
 
-> ↪️ 参考：https://www.guru99.com/jmeter-element-reference.html
+> ↪️：https://www.guru99.com/jmeter-element-reference.html
 
 <br>
 
@@ -39,7 +39,7 @@ JMeterは、以下のコンポーネントから構成されている。
 
 ![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stress-test_parameter.png)
 
-> ↪️ 参考：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
+> ↪️：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
 
 #### ▼ スレッド数
 
@@ -71,7 +71,7 @@ JMeterは、以下のコンポーネントから構成されている。
 
 : JMeterのGUI版にて、シナリオ (`jmx`ファイル) を作成する。スループットコントローラーでURLリスト (`csv`ファイル) をJMeterのビルトイン関数で読み込むようにする。csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
 
-> ↪️ 参考：https://jmeter.apache.org/usermanual/functions.html#__Random
+> ↪️：https://jmeter.apache.org/usermanual/functions.html#__Random
 
 `【３】`
 

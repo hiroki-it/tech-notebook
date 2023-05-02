@@ -9,7 +9,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 #### ▼ printとは
 
-> ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
+> ↪️：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
 
 ```bash
 $ serverless print
@@ -39,7 +39,7 @@ $ serverless print --FOO foo
 
 クラウドインフラを作成する。
 
-> ↪️ 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
+> ↪️：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
 ```bash
 $ serverless deploy

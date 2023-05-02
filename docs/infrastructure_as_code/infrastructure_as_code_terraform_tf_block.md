@@ -9,7 +9,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 リソースとTerraformの`resource`タイプはおおよそ一致している。
 
-> ↪️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+> ↪️：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
 <br>
 
@@ -125,7 +125,7 @@ data "aws_ami" "bastion" {
 
 可読性の観点から、`resource`ブロック一括で出力するのではなく、`resource`ブロックの特定の`attribute`値を出力するようにした方が良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
@@ -197,7 +197,7 @@ resource "bar" "this" {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
@@ -252,7 +252,7 @@ resource "foo" "this" {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
@@ -301,7 +301,7 @@ resource "foo" "this" {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
@@ -414,7 +414,7 @@ resource "aws_instance" "example" {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.terraform.io/language/values/locals
 > - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
@@ -728,7 +728,7 @@ resource "aws_instance" "server" {
 
 フラグ値を渡さない場合は、デフォルト値を渡すようにする。
 
-> ↪️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
+> ↪️：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
 
 ```terraform
 # 特定の実行環境の.terraform.tfvarsファイル
@@ -852,7 +852,7 @@ resource "aws_kms_replica_key" "foo" {
 }
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/71484962/conditional-creation-of-parent-child-resources/71490413#71490413
+> ↪️：https://stackoverflow.com/questions/71484962/conditional-creation-of-parent-child-resources/71490413#71490413
 
 #### ▼ `count`関数で作成されなかった`output`ブロックは`null`
 
@@ -866,7 +866,7 @@ output "foo_kms_key_arn" {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://discuss.hashicorp.com/t/output-from-a-module-that-has-conditional-count-0/17234/2
 > - https://github.com/hashicorp/terraform/issues/23222#issuecomment-547462883
@@ -1096,7 +1096,7 @@ resource "aws_lb" "this" {
 
 指定したブロックを繰り返し作成する。
 
-> ↪️ 参考：https://www.terraform.io/language/expressions/dynamic-blocks
+> ↪️：https://www.terraform.io/language/expressions/dynamic-blocks
 
 #### ▼ map型の場合
 
@@ -1507,7 +1507,7 @@ resource "aws_s3_bucket_policy" "alb" {
 | `path.root`           | `module`ディレクトリのルートパス                            | `/project/module/`     |
 | `terraform.workplace` | 現在使用しているワークスペース名                            | `prd`                  |
 
-> ↪️ 参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
+> ↪️：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 
 <br>
 

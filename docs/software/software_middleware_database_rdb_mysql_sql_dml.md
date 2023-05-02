@@ -9,7 +9,7 @@ description: DML＠SQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ FROM ---> JOIN ---> WHERE ---> GROUP BY ---> HAVING ---> SELECT ---> ORDER BY
 
 MySQLでは、取得結果の並び順が毎回異なるため、プライマリーキーの昇順で取得したい場合は、`ORDER BY`句を使用して、明示的に並び替えるようにする。
 
-> ↪️ 参考：https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
+> ↪️：https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
 
 ```sql
 SELECT
@@ -589,7 +589,7 @@ possible_keys: index_t2_on_c3
         Extra: Using index
 ```
 
-> ↪️ 参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
+> ↪️：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
 
 <br>
 
@@ -646,7 +646,7 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 あらかじめ一連のSQL文をDBに格納しておき、Call文でコールする方式。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p325.gif)
 

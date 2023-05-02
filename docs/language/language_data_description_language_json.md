@@ -9,7 +9,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -51,7 +51,7 @@ JSONにはコメントアウトを定義できない。
 }
 ```
 
-> ↪️ 参考：https://stackoverflow.com/a/244858
+> ↪️：https://stackoverflow.com/a/244858
 
 <br>
 
@@ -150,7 +150,7 @@ json["prefecture"] = "Tokyo";
 
 以下のサイトで並び替えられる。
 
-> ↪️ 参考：https://r37r0m0d3l.github.io/json_sort/
+> ↪️：https://r37r0m0d3l.github.io/json_sort/
 
 <br>
 

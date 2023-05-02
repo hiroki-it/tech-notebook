@@ -9,7 +9,7 @@ description: メトリクス＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,19 +21,19 @@ description: メトリクス＠Prometheus
 
 数を単位とするメトリクス (例：`go_gc_duration_seconds_count`) が属する。
 
-> ↪️ 参考：https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
+> ↪️：https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
 
 #### ▼ Gauge
 
 動的に増減するメトリクス (例：`go_memstats_heap_alloc_bytes`) が属する。
 
-> ↪️ 参考：https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
+> ↪️：https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
 
 #### ▼ Histogram
 
 時間の範囲を単位とするメトリクス (例：`prometheus_http_request_duration_seconds_bucket`) が属する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram
 > - https://prometheus.io/docs/practices/histograms/
@@ -42,7 +42,7 @@ description: メトリクス＠Prometheus
 
 統計的な分位数を単位とするメトリクス
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#summary
 > - https://prometheus.io/docs/practices/histograms/
@@ -61,7 +61,7 @@ Prometheusが収集したデータポイントの合計数を表す。
 prometheus_tsdb_head_samples_appended_total
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -74,7 +74,7 @@ Prometheusが作成したチャンクの合計サイズ (KB) を表す。
 prometheus_tsdb_compaction_chunk_size_bytes_sum
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -87,7 +87,7 @@ Prometheusが作成したチャンクの合計数を表す。
 prometheus_tsdb_compaction_chunk_samples_sum
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -106,7 +106,7 @@ CPUの使用時間を表す。
 container_cpu_usage_seconds_total
 ```
 
-> ↪️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+> ↪️：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
 <br>
 

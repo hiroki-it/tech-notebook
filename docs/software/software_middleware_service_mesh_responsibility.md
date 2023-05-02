@@ -9,7 +9,7 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 一方で要件として不要ならば、サービスメッシュツール自体を採用する必要はない、という判断になる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://servicemesh.es/
@@ -93,7 +93,7 @@ Kubernetesでは、Serviceは単一のバージョンのPodとしか通信でき
 | 相互TLS認証         | 相互TLS認証ツール<br>(例：Spiffe)                                                      | `⭕️`<br>(Spiffeへ置き換えできる) |  `⭕️`  | `⭕️`  |    `⭕️`     |
 | JWTによるBearer認証 | アプリで実装、OAuth`2.0`プロキシ (例：oauth2-proxy、など) やSSOプロキシ(例：dex、など) |               `⭕️`               |    ×    | `⭕️`  |      ×       |
 
-> ↪️ 参考：https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
+> ↪️：https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
 
 <br>
 
@@ -108,7 +108,7 @@ Kubernetesでは、Podの作成に応じて証明書のKubernetesリソース (C
 | 相互TLS認証               | 相互TLS認証ツール<br>(例：Spiffe)        | `⭕️`<br>(Spiffeへ置き換えできる) |  `⭕️`  | `⭕️`  |    `⭕️`     |
 | SSL証明書のローテーション | SSL証明書管理ツール<br>(例：CertManager) |               `⭕️`               |    ×    | `⭕️`  |    `⭕️`     |
 
-> ↪️ 参考：https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
+> ↪️：https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
 
 <br>
 

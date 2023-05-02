@@ -9,7 +9,7 @@ description: リソース定義＠AWS Load Balancerコントローラーの知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Ingressで`alb`のIngressClassを指定していること検知する。
 
 AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 <br>
 
@@ -31,7 +31,7 @@ AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キ
 
 AWS ALBをリスナールール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
@@ -49,7 +49,7 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:<AWSアカウントID>:certificate/*****
 ```
 
-> ↪️ 参考：https://nobelabo.hatenablog.com/entry/2022/10/01/201138
+> ↪️：https://nobelabo.hatenablog.com/entry/2022/10/01/201138
 
 #### ▼ `alb.ingress.kubernetes.io/healthcheck-path`キー
 
@@ -105,7 +105,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: foo-common-alb
 ```
 
-> ↪️ 参考：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#ingressgroup
+> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#ingressgroup
 
 #### ▼ `alb.ingress.kubernetes.io/scheme`キー
 
@@ -193,6 +193,6 @@ metadata:
 
 AWS ALBのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 <br>

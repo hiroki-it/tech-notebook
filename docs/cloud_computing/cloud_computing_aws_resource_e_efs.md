@@ -9,7 +9,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | パフォーマンスモード     |                                                                                                                                     |                                                                                                                                                                                                                                                                                                                     |
 | スループットモード       | EFSのスループット性能を設定する。                                                                                                   |                                                                                                                                                                                                                                                                                                                     |
-| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス (IA：Infrequent Access) ストレージクラスに移動保存するまでの期限を設定する。 | ・ライフサイクルポリシーを有効にしない場合、スタンダードストレージクラスのみが使用される。<br>・画面から両ストレージのサイズを確認できる。<br>↪️ 参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6                                                       |
+| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス (IA：Infrequent Access) ストレージクラスに移動保存するまでの期限を設定する。 | ・ライフサイクルポリシーを有効にしない場合、スタンダードストレージクラスのみが使用される。<br>・画面から両ストレージのサイズを確認できる。<br>↪️：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6                                                       |
 | ファイルシステムポリシー | 他のAWSリソースがEFSを利用する時のポリシーを設定する。                                                                              |                                                                                                                                                                                                                                                                                                                     |
 | 自動バックアップ         | AWS Backupに定期的に保存するか否かを設定する。                                                                                      |                                                                                                                                                                                                                                                                                                                     |
 | ネットワーク             | マウントターゲットを設置するサブネット、セキュリティグループを設定する。                                                            | ・サブネットは、ファイル供給の速度の観点から、マウントターゲットにアクセスするAWSリソースと同じにする。<br>・セキュリティグループは、EC2からのNFSプロトコルアクセスを許可したものを設定する。EC2のセキュリティグループを通過したアクセスのみを許可するために、IPアドレスでは、EC2のセキュリティグループを設定する。 |
@@ -52,7 +52,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 元の残高は、ファイルシステムのスタンダードストレージクラスのサイズに応じて大きくなる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
+> ↪️：https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-size.png)
 
@@ -60,7 +60,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である。
 
-> ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
+> ↪️：https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
 
 #### ▼ プロビジョニングモードの仕組み
 
@@ -68,7 +68,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
 
-> ↪️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput
+> ↪️：https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput
 
 <br>
 
@@ -78,7 +78,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 `mount`コマンドと`unmount`コマンドで、EFSに対してマウントポイントの登録と解除を実行できる。
 
-> ↪️ 参考：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
+> ↪️：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
 
 #### ▼ 登録
 

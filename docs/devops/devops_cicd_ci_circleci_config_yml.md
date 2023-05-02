@@ -9,7 +9,7 @@ description: config.yml@CircleCIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -443,7 +443,7 @@ jobs:
       - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
+> ↪️：https://circleci.com/docs/ja/2.0/building-docker-images/
 
 #### ▼ machineタイプとは
 
@@ -490,7 +490,7 @@ jobs:
     resource_class: xlarge # vCPU 8、RAM 16GB
 ```
 
-> ↪️ 参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
+> ↪️：https://circleci.com/docs/ja/configuration-reference#resourceclass
 
 <br>
 
@@ -556,7 +556,7 @@ Workflow間で使いまわせるキャッシュを作成する。
 
 この能力は、複数のworkflowの間のみでなく、`1`個のworkflowの中でも利用できる。
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
+> ↪️：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
 **＊実装例＊**
 
@@ -986,7 +986,7 @@ workflows:
 | job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executorまたはjobでworking_directoryを宣言できる。両方で宣言していた場合は、executorの値が優先される。 |
 | steps         | 指定したディレクトリーに移動する。                                                                                                                             |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.engilaboo.com/circleci-working-directory/
 > - https://nju33.com/notes/circleci/articles
@@ -1008,7 +1008,7 @@ workflows:
 working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 ```
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
+> ↪️：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
 
 #### ▼ 環境変数の種類と参照範囲
 
@@ -1084,7 +1084,7 @@ jobs:
 
 定義したものを使用するためには、『`$BASH_ENV`』を`source`キーで読み込む必要があるために注意する。
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
+> ↪️：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
 
 **＊実装例＊**
 
@@ -1138,7 +1138,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
+> ↪️：https://github.com/circleci/circleci-docs/issues/1650
 
 #### ▼ シェルスクリプトによる設定
 
@@ -1272,7 +1272,7 @@ jobs:
 
 実行環境にmachineタイプを選択した場合、docker-composeがプリインストールされている。
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
+> ↪️：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
 
 <br>
 
@@ -1292,7 +1292,7 @@ Docker Composeは、コンテナの作成の順番を制御できるものの、
 
 代わりに、sleepコマンドを使用しても良い。
 
-> ↪️ 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
+> ↪️：https://github.com/docker/compose/issues/374#issuecomment-126312313
 
 **＊実装例＊**
 

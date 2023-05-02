@@ -9,7 +9,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -56,7 +56,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) のため、全�
 
 代わりに、IstioOperatorの`.spec.meshConfig`キーで定義することもできるが、これは非推奨である。
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> ↪️：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>
 
@@ -77,7 +77,7 @@ data:
     accessLogEncoding: JSON
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-AccessLogEncoding
+> ↪️：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-AccessLogEncoding
 
 <br>
 
@@ -98,7 +98,7 @@ data:
     accessLogFile: /dev/stdout
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> ↪️：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>
 
@@ -130,7 +130,7 @@ data:
           - clusterissuers.cert-manager.io/bar
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-CertificateData
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/#deploy-istio-with-default-cert-signer-info
@@ -146,7 +146,7 @@ Istioの全てのコンポーネントに適用する変数のデフォルト値
 
 各Podで個別に設定したい場合、`.metadata.annotations.proxy.istio.io/config.configPath`キーにオプションを設定する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
@@ -288,7 +288,7 @@ data:
           address: "jaeger-collector.observability:9411"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/mesh-and-proxy-config/#available-tracing-configurations
 > - https://istio.io/latest/docs/ops/integrations/jaeger/
@@ -345,7 +345,7 @@ spec:
             paths: ["/login"]
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
@@ -371,7 +371,7 @@ data:
     holdApplicationUntilProxyStarts: true
 ```
 
-> ↪️ 参考：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
+> ↪️：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 
 オプションを有効化すると、`istio-proxy`コンテナの`spec.containers[].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
 
@@ -393,7 +393,7 @@ spec:
 ...
 ```
 
-> ↪️ 参考：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
+> ↪️：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
 
 <br>
 
@@ -437,7 +437,7 @@ data:
     ingressService: ingressgateway
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> ↪️：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>
 
@@ -458,7 +458,7 @@ data:
     proxyHttpPort: 80
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> ↪️：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>
 
@@ -479,7 +479,7 @@ data:
     proxyListenPort: 80
 ```
 
-> ↪️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> ↪️：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>
 

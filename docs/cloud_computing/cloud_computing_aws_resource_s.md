@@ -9,7 +9,7 @@ description: Sで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,13 +43,13 @@ description: Sで始まるAWSリソース＠AWSの知見を記録しています
 
 リソースのIPアドレスが動的に変化する場合、有効な方法である。
 
-> ↪️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
+> ↪️：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
 
 #### ▼ 自己参照
 
 許可する送信元IPアドレスに、自分自身のセキュリティグループIDを設定した場合、同じセキュリティグループが紐付けられている同士で通信できるようになる。
 
-> ↪️ 参考：https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
+> ↪️：https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
 
 <br>
 
@@ -63,7 +63,7 @@ description: Sで始まるAWSリソース＠AWSの知見を記録しています
 
 Kubernetesのシークレットの概念が取り入れられている。
 
-> ↪️ 参考：https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
+> ↪️：https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
 
 <br>
 
@@ -142,7 +142,7 @@ Sandboxモードでは以下の制限がかかっており。
 
 一般的なSMTP-AUTHでは、クライアントユーザーの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。送信元となるアプリケーションにIAMユーザーを紐付け、このIAMユーザーにはユーザー名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザー名とパスワードを使用した認証を実行する。ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
 
 <br>
 
@@ -171,7 +171,7 @@ Sandboxモードでは以下の制限がかかっており。
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | サブスクリプション       | サブスクリプションを登録する。                                                                                                                                             |
 | アクセスポリシー         | トピックへの認可スコープを設定する。                                                                                                                                       |
-| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>↪️ 参考：https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
+| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>↪️：https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
 | 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する。                                                                                                 |
 | 暗号化                   |                                                                                                                                                                            |
 
@@ -230,7 +230,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ APIコールできるリソース
 
-> ↪️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+> ↪️：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
 #### ▼ Lambda
 
@@ -275,7 +275,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 | アクション   | StartExecution |                             |
 | 実行ロール   | IAMロールのARN | StartExecutionを許可する。  |
 
-> ↪️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
+> ↪️：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
 
 ```yaml
 {

@@ -9,7 +9,7 @@ description: Job系＠リソース定義の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ metadata:
   generateName: foo-hook
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
 
 <br>
 
@@ -54,7 +54,7 @@ Jobに、ArgoCDの`Sync`フェーズを設定する。
 | PostSync | Syncの後             | ヘルスチェック                                     |
 | SyncFail | Syncの失敗時         | Sync失敗の残骸となったKubernetesリソースの削除処理 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
@@ -89,7 +89,7 @@ spec:
       restartPolicy: Never
 ```
 
-> ↪️ 参考：https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
+> ↪️：https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
 
 #### ▼ argocd.argoproj.io/sync-wave
 
@@ -134,7 +134,7 @@ metadata:
     argocd.argoproj.io/sync-wave: 1 # 優先度1
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://weseek.co.jp/tech/95/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves

@@ -9,7 +9,7 @@ description: Aで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ Webサイトのクラウドインフラの実行環境ごとに作成したほ�
 
 アカウントIDは機密ではないため、仮にバージョン管理してしまうようなことがあっても問題ない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html
 > - https://www.lastweekinaws.com/blog/are-aws-account-ids-sensitive-information/
@@ -66,7 +66,7 @@ AZに跨いで冗長化すると、いずれかのデータセンターで障害
 
 サーバーレスアプリケーションを作成するためのクラウドインフラストラクチャのフレームワーク。
 
-> ↪️ 参考：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
+> ↪️：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
 
 <br>
 
@@ -117,7 +117,7 @@ GitHubのブランチごとにアプリケーションのCI/CDパイプライン
 
 ただし、App Runnerを使用した方がよいかもしれない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://zenn.dev/intercept6/articles/4016e9d61ab36761685d
 > - https://devblog.thebase.in/entry/2021/12/22/110000
@@ -169,7 +169,7 @@ $ amplify publish
 
 #### ▼ 連携できるバージョン管理システム
 
-> ↪️ 参考：https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
+> ↪️：https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
 
 #### ▼ 対応するバージョン管理リポジトリ構造
 
@@ -267,7 +267,7 @@ test:
     baseDirectory: <パス>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html
 > - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
@@ -286,7 +286,7 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 
 ![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png)
 
-> ↪️ 参考：https://www.a-frontier.jp/technology/aws10/
+> ↪️：https://www.a-frontier.jp/technology/aws10/
 
 <br>
 
@@ -409,7 +409,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 記入中...
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
+> ↪️：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
 
 <br>
 
@@ -464,7 +464,7 @@ CPU平均使用率に段階的な閾値を設定する。
 | スケールインクールダウン期間       | スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。                      |                                                                                                                                                                                                                                   |
 | スケールインの無効化               |                                                                                                       |                                                                                                                                                                                                                                   |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
+> ↪️：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
 
 <br>
 
@@ -476,7 +476,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 負荷に合わせて動的にスケーリングするのではなく、一定の間隔で規則的にスケーリングする。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.takuros.net/entry/2020/08/11/082712
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html

@@ -9,7 +9,7 @@ description: コマンド@Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ login <ユーザー名>
 password <パスワード>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
 > - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
@@ -84,7 +84,7 @@ $ git config --local --list
 
 Macでは、`1`個のマシンで`2`個のGutHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
 
-> ↪️ 参考：https://sy-base.com/myrobotics/others/git-push_403error/
+> ↪️：https://sy-base.com/myrobotics/others/git-push_403error/
 
 #### ▼ --<影響範囲> user.name
 
@@ -171,7 +171,7 @@ $ git init
 .idea/
 ```
 
-> ↪️ 参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
+> ↪️：https://zenn.dev/phi/articles/gitignore-global-ds-store
 
 <br>
 
@@ -274,7 +274,7 @@ and the repository exists.
 
 そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。
 
-> ↪️ 参考：https://qiita.com/kohashi/items/f4a50c5436b326e9475b
+> ↪️：https://qiita.com/kohashi/items/f4a50c5436b326e9475b
 
 #### ▼ add
 
@@ -293,7 +293,7 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 	branch = main
 ```
 
-> ↪️ 参考：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
+> ↪️：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
 
 #### ▼ update
 
@@ -313,7 +313,7 @@ $ git submodule update --remote <.gitmodulesに定義されたサブモジュー
 
 GitHubとSSH公開鍵認証を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
 
-> ↪️ 参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
+> ↪️：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
 `【１】`
 
@@ -640,7 +640,7 @@ addステージやcommitステージにファイルが存在しているか否�
 
 CIの自動化で使うことが多い。
 
-> ↪️ 参考：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
+> ↪️：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
 
 ```bash
  $ git status --porcelain

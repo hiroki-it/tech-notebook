@@ -9,7 +9,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,11 +23,11 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 異なるシステムでも同じルールを共有する必要がある』というようなことを述べている。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/B07FSBHS2V
+> ↪️：https://www.amazon.co.jp/dp/B07FSBHS2V
 
 #### ▼ 構成
 
-> ↪️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+> ↪️：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
@@ -74,7 +74,7 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 | 入力時/出力時 | 責務                                                                                                                             | 補足                                                                                                                                                                           |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 入力          | インフラ層のルーターから入力される認証情報を照合し、認証を実行する。                                                             | 認証はインターフェース層あるいはユースケース層に実装する。<br>↪️ 参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/173                                            |
+| 入力          | インフラ層のルーターから入力される認証情報を照合し、認証を実行する。                                                             | 認証はインターフェース層あるいはユースケース層に実装する。<br>↪️：<br>・https://github.com/little-hands/ddd-q-and-a/issues/173                                            |
 |               | インフラ層のルーターから入力されるパラメーターをAPI仕様 (必須、書式、など) と照らし合わせ、バリデーションを実行する。            | データの値がAPI仕様と比較して正しいか否かを検証することに止まり、データの値が正しいか否かの検証は、ユースケース層やドメイン層に実装する。                                      |
 |               | インフラ層のルーターから入力されるパラメーターをリクエストモデルに変換し、ユースケース層のインターラクターに入力する。           | リクエストモデル作成処理で、ドメイン層への依存が必要になる。リクエストモデル作成処理を切り分け、ユースケース層に配置すると、コントローラーがドメイン層に依存することを防げる。 |
 | 出力          | ユースケース層のインターラクターから出力されるレスポンスモデルを、JSON型データとしてフロントエンドにに返信する。                 | バックエンドをAPIとして使用する場合、プレゼンターは不要である。                                                                                                                |
@@ -94,7 +94,7 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 補足として、アウトプットバウンダリはプレゼンターのインターフェースのため、プレゼンターを使用しなければ、アウトプットバウンダリも使用しない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://izumisy.work/entry/2019/12/12/000521
 > - https://codezine.jp/article/detail/9749
@@ -153,7 +153,7 @@ class FormatValidator
 
 ![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master//images/clean-architecture_flow.png)
 
-> ↪️ 参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
+> ↪️：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
 
 <br>
 
@@ -191,14 +191,14 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 | showFoo             | showFooRequest                    | showFooResponse                     |                                                                                                                                                                                           |
 | createFoo           | createFooRequest                  | createFooResponse                   |                                                                                                                                                                                           |
 | updateFoo           | updateFooRequest                  | updateFooResponse                   |                                                                                                                                                                                           |
-| saveFoo (upsertFoo) | saveFooRequest (upsertFooRequest) | saveFooResponse (upsertFooResponse) | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>↪️ 参考：https://github.com/little-hands/ddd-q-and-a/issues/241 |
+| saveFoo (upsertFoo) | saveFooRequest (upsertFooRequest) | saveFooResponse (upsertFooResponse) | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>↪️：https://github.com/little-hands/ddd-q-and-a/issues/241 |
 | deleteFoo           | deleteFooRequest                  | deleteFooResponse                   |                                                                                                                                                                                           |
 
 #### ▼ ユースケース図
 
 ユースケース図については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -874,7 +874,7 @@ class YmdType extends Type
 
 補足として、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/little-hands/ddd-q-and-a/issues/159
 > - https://www.amazon.co.jp/dp/B082WXZVPC
@@ -886,7 +886,7 @@ class YmdType extends Type
 
 ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
 > - https://www.amazon.co.jp/dp/B082WXZVPC
@@ -938,7 +938,7 @@ class CheckDuplicateFooService
 
 ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
 > - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
@@ -1191,7 +1191,7 @@ final class User
 
 ドメイン層とユースケース層のアプリケーションサービスのいずれに実装する必要があるかは、モデリングの対象がビジネスルールに基づくものなのか、ソフトウェア利用者のユースケースに基づくものなのかである。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/B082WXZVPC
+> ↪️：https://www.amazon.co.jp/dp/B082WXZVPC
 
 <br>
 
@@ -2244,7 +2244,7 @@ class DogOrder
 
 依存関係の観点からみた集約については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 <br>
 
@@ -2256,7 +2256,7 @@ class DogOrder
 
 そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけると良い。
 
-> ↪️ 参考：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
+> ↪️：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 
 <br>
 
@@ -2266,7 +2266,7 @@ class DogOrder
 
 #### ▼ DIP (依存性逆転の原則) とは
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ### リポジトリ
 
@@ -2289,10 +2289,10 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 | findAllByCriteria | Criteria型                           | ドメインモデル型を持つ配列 | 条件に合致した全てのドメインモデルを取得する。                                                                                                                                                                                                                                                                         |
 | create            | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成する。                                                                                                                                                                                                                                                                         |
 | update            | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを更新する。                                                                                                                                                                                                                                                                         |
-| save (upsert)     | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるか否かを確認する。取得できない場合は、更新処理を実行する。<br>↪️ 参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/241<br>・https://github.com/little-hands/ddd-q-and-a/issues/129 |
+| save (upsert)     | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるか否かを確認する。取得できない場合は、更新処理を実行する。<br>↪️：<br>・https://github.com/little-hands/ddd-q-and-a/issues/241<br>・https://github.com/little-hands/ddd-q-and-a/issues/129 |
 | delete            | Id型                                 | void型                     | ルートエンティティのドメインモデルを削除する。                                                                                                                                                                                                                                                                         |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://codewithshadman.com/repository-pattern-csharp/
 > - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
@@ -2302,8 +2302,8 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 | デザインパターン | 駆動の種類   | ドメインモデルとテーブルの関連度合い                                                                                                                                                           | 採用パッケージ例                                                   | 適所                                                                                                                       | 補足                                                                                                                                           |
 | ---------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Active Record    | DB駆動       | ・非常に強い。<br>・手順としてテーブル設計が先にあり、`1`個のドメインモデルが`1`個のテーブルに対応している。<br>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。 | ・Eloquent (PHP) <br>・Active Record (Ruby) <br>・Hibernate (Java) | ビジネスロジックが複雑でないアプリケーション<br>↪️ 参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく、ORMの実装方法の1つである。<br>↪️ 参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/   |
-| Data Mapper      | ドメイン駆動 | ・弱い<br>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。                                                                                                                       | Doctrine                                                           | ビジネスロジックが複雑なアプリケーション<br>↪️ 参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3     | ActiveRecordパターンと同じく、ORMの実装方法の1つである。<br>↪️ 参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
+| Active Record    | DB駆動       | ・非常に強い。<br>・手順としてテーブル設計が先にあり、`1`個のドメインモデルが`1`個のテーブルに対応している。<br>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。 | ・Eloquent (PHP) <br>・Active Record (Ruby) <br>・Hibernate (Java) | ビジネスロジックが複雑でないアプリケーション<br>↪️：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく、ORMの実装方法の1つである。<br>↪️：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/   |
+| Data Mapper      | ドメイン駆動 | ・弱い<br>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。                                                                                                                       | Doctrine                                                           | ビジネスロジックが複雑なアプリケーション<br>↪️：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3     | ActiveRecordパターンと同じく、ORMの実装方法の1つである。<br>↪️：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
 | Repository       | ドメイン駆動 | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。`1`個のドメインモデルが複数のテーブルを参照しても良い。                                        |                                                                    | ビジネスロジックが複雑なアプリケーション                                                                                   | DB、RDMS、NoSQL、なんでもでも良い。                                                                                                            |
 | なし             | なし         | 非常に弱い                                                                                                                                                                                     | DBファサード                                                       |                                                                                                                            |                                                                                                                                                |
 
@@ -2321,7 +2321,7 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 これにより、ルートエンティティとDBテーブルを別々に設計できる。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
 
 #### ▼ インターフェースリポジトリ
 
@@ -2401,7 +2401,7 @@ DBに対する書き込み操作を行う。
 
 : ルートエンティティをレコードとしてDBに挿入する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -2545,7 +2545,7 @@ DBに対する書き込み操作を行う。
 
 : リポジトリからルートエンティティを返却し、ユースケース層に渡す。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -2704,7 +2704,7 @@ class DogComboFactory
 
 フレームワークの機能に依存することになるため、実装の詳細をインフラ層におく。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
 > - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
@@ -2715,7 +2715,7 @@ class DogComboFactory
 
 そのため、名前は『イベント名』+Listener (Handler) となる。
 
-> ↪️ 参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
+> ↪️：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 
 <br>
 
@@ -2735,7 +2735,7 @@ class DogComboFactory
 
 パスワードのハッシュ化。
 
-> ↪️ 参考：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
+> ↪️：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
 
 <br>
 
@@ -2751,7 +2751,7 @@ class DogComboFactory
 
 例外スローの意義については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
 
 <br>
 

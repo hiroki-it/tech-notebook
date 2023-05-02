@@ -9,7 +9,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -35,7 +35,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 ![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 > - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
@@ -55,7 +55,7 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 > - https://www.sobyte.net/post/2022-05/vmalert/
@@ -81,7 +81,7 @@ $ curl \
     -d 'query=vm_http_request_errors_total'
 ```
 
-> ↪️ 参考：https://docs.victoriametrics.com/url-examples.html#apiv1query
+> ↪️：https://docs.victoriametrics.com/url-examples.html#apiv1query
 
 #### ▼ 書き込みエンドポイント
 
@@ -114,7 +114,7 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 
 公式での情報は見つからなかったが、圧縮率は約`10%`らしい。
 
-> ↪️ 参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
+> ↪️：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
 
 #### ▼ ディレクトリ構成
 
@@ -152,7 +152,7 @@ ReadOnlyモードにより、vm-storageの空きサイズが`minFreeDiskSpaceByt
 
 これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
 
-> ↪️ 参考：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
+> ↪️：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
 
 #### ▼ 保管期間
 
@@ -160,7 +160,7 @@ vm-storageは、一定期間だけ経過したメトリクスファイル (主�
 
 VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retentionPeriod`オプションで指定できる。
 
-> ↪️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> ↪️：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 #### ▼ ストレージの必要サイズの見積もり
 
@@ -168,7 +168,7 @@ vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日
 
 また、`20`%の空きサイズを考慮するために、増加量を`1.2`倍する必要がある。
 
-> ↪️ 参考：https://docs.victoriametrics.com/#capacity-planning
+> ↪️：https://docs.victoriametrics.com/#capacity-planning
 
 **＊例＊**
 
@@ -266,7 +266,7 @@ $ systemctl daemon-reload
 $ systemctl start victoriametrics
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/package/victoria-metrics.service
 > - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/

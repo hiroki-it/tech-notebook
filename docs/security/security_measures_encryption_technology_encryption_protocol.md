@@ -9,7 +9,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
-> ↪️ 参考：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
+> ↪️：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
 
 <br>
 
@@ -38,7 +38,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg)
 
-> ↪️ 参考：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
+> ↪️：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
 
 <br>
 
@@ -153,7 +153,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 | ゲートウェイマシン内                     | -                                | Guacamole (guardを含む) |
 | 宛先マシン (サーバー、デスクトップPC) 内 | -                                | -                       |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1
 > - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
@@ -165,7 +165,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。
 
-> ↪️ 参考：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
+> ↪️：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
 
 <br>
 
@@ -197,7 +197,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 通常のSSL/TLSを使用した通信では、通信の受信側のみSSL証明書を設定すればよいが、相互TLS認証では受信側のみでなく送信側にも設定が必要になる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
 > - https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html
@@ -244,7 +244,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 | 中継VPNマシン内 | FortiGate   | OpenVpn       | SDPゲートウェイ (クラウドZscalerのVPNマシン) |
 | 宛先マシン内    | -           | -             | -                                            |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/
@@ -261,7 +261,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 ![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg)
 
-> ↪️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
+> ↪️：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
 
 #### ▼ クライアント証明書
 
@@ -271,7 +271,7 @@ SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler)
 
 ![vpn_certificate.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.nrapki.jp/client-certificate/telework/
 > - https://help.zscaler.com/zia/about-ssl-inspection

@@ -9,7 +9,7 @@ description: EC2＠Eで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: EC2＠Eで始まるAWSリソースの知見を記録しています
 
 ベストプラクティスについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html
 
 <br>
 
@@ -89,7 +89,7 @@ AMIのOSのバージョンによっては、新しく登場したインスタン
 | 世代   | `t2`、`t3`、`t3a`、`t4g`、`a1`                          |
 | 大きさ | `nano`、`small`、`medium`、`large`、`xlarge`、`2xlarge` |
 
-> ↪️ 参考：https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
+> ↪️：https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
 
 #### ▼ CPUバーストモード
 
@@ -103,7 +103,7 @@ CPUクレジットは一定の割合で復旧する。
 
 詳しくは以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
 
 <br>
 
@@ -123,7 +123,7 @@ EC2インスタンスでは、ブロックデバイスにルートデバイス�
 
 複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
@@ -142,7 +142,7 @@ EBSで保管されているルートデバイスボリュームで、推奨の�
 
 また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
@@ -160,7 +160,7 @@ EBSボリュームとは異なり、コンピューティングとして動作�
 
 そのため、インスタンスストアボリュームは、EC2インスタンスを削除すると一緒に削除されてしまう。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
@@ -182,7 +182,7 @@ EC2インスタンスのライフサイクルにはフェーズがある。
 | shutting-down | インスタンスを削除している途中である。                             |
 | terminated    | インスタンスの削除が完了した。                                     |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 
 <br>
 
@@ -210,7 +210,7 @@ $ openssl pkcs8 \
 
 EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とEBSボリュームの両方が内蔵されたコピーのこと。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
@@ -223,13 +223,13 @@ EC2インスタンスのマシンイメージであり、EC2インスタンス�
 
 EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 #### ▼ instance store-backed AMI
 
 インスタンスストアボリュームを持つEC2インスタンスを作成するAMIのこと。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 <br>
 
@@ -241,7 +241,7 @@ EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 | 特定のアカウント間              | `⭕️` |
 | 全てのアカウント間 (パブリック) | `⭕️` |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html
 
 <br>
 
@@ -251,19 +251,19 @@ EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 
 Linuxディストリビューション別にAMI OSを配布している。
 
-> ↪️ 参考：https://aws.amazon.com/jp/mp/linux/
+> ↪️：https://aws.amazon.com/jp/mp/linux/
 
 #### ▼ Amazon Linux
 
 EC2インスタンスを作成するために最適化されたLinuxのこと。
 
-> ↪️ 参考：https://www.acrovision.jp/service/aws/?p=609
+> ↪️：https://www.acrovision.jp/service/aws/?p=609
 
 #### ▼ CentOS
 
 ベンダー公式あるいは非公式が提供しているAMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。
 
-> ↪️ 参考：https://wiki.centos.org/Cloud/AWS
+> ↪️：https://wiki.centos.org/Cloud/AWS
 
 <br>
 
@@ -285,9 +285,9 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 | --------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ボリュームタイプ      | EBSボリュームの種類を設定する。                                              |                                                                                                                                                               |
 | サイズ                | 選択したボリュームタイプでのサイズを設定する。                               |                                                                                                                                                               |
-| IOPS (I/O per second) | EC2インスタンスとEBSボリューム間のI/O処理のリクエスト数 (個/秒) を設定する。 | ストレージのI/O処理は、読み書き処理に相当する。そのため、IOPSの数値が高いほど、高速で読み書きできることを表す。<br>↪️ 参考：https://www.idcf.jp/words/io.html |
+| IOPS (I/O per second) | EC2インスタンスとEBSボリューム間のI/O処理のリクエスト数 (個/秒) を設定する。 | ストレージのI/O処理は、読み書き処理に相当する。そのため、IOPSの数値が高いほど、高速で読み書きできることを表す。<br>↪️：https://www.idcf.jp/words/io.html |
 | AZ                    | EBSボリュームを作成するAZ。                                                  | EC2インスタンスは、同じAZにあるEBSボリュームしか選択できないので注意する。                                                                                    |
-| 暗号化                | EC2インスタンスとEBSボリューム間のI/O処理を暗号化するか否かを設定する。      | ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html                                                                               |
+| 暗号化                | EC2インスタンスとEBSボリューム間のI/O処理を暗号化するか否かを設定する。      | ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html                                                                               |
 
 <br>
 
@@ -332,7 +332,7 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 /dev/xvda1     xfs       8.0G  1.2G  6.9G  15% /
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html
 
 <br>
 
@@ -419,7 +419,7 @@ Filesystem     Type  Size  Used  Avail  Use%  Mounted on
 ...
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
 
 #### ▼ EBSボリュームが複数のパーティションで区切られている場合
 
@@ -515,7 +515,7 @@ EC2インスタンスの初期作成時に、ストレージの追加の項目�
 
 これにより、EC2インスタンスが削除されても、EBSボリュームを削除しないようにできる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
 
 #### ▼ EC2インスタンスの作成後に永続化する
 
@@ -546,7 +546,7 @@ EC2インスタンスにオートスケーリングを適用している場合�
 
 オートスケーリングのスケールイン時に、削除されたEC2インスタンスのEBSボリュームが削除されないため、未使用のEBSボリュームがどんどん溜まっていく問題が起こる。
 
-> ↪️ 参考：https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2
+> ↪️：https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2
 
 <br>
 
@@ -558,7 +558,7 @@ EBSボリュームのコピーのこと。
 
 ソフトウェアとEBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
 
-> ↪️ 参考：https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
+> ↪️：https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
 
 #### ▼ セットアップ
 
@@ -591,7 +591,7 @@ EBSボリュームのコピーのこと。
 
 ![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html
 > - https://dev.classmethod.jp/articles/ssh-through-session-manager/
@@ -602,7 +602,7 @@ Systems Managerを使用してEC2インスタンスに接続する場合、EC2�
 
 カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
 
-> ↪️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
+> ↪️：https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
 
 #### ▼ VPCエンドポイントの作成
 
@@ -612,6 +612,6 @@ Systems Managerを使用してEC2インスタンスに接続する場合、EC2�
 | Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`  | Secrets Managerを使用するため。                                    |
 
-> ↪️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
+> ↪️：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
 
 <br>

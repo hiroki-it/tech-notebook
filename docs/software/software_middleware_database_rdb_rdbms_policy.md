@@ -9,7 +9,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 ドメインのうちで、ID、識別コード、名前などに関するデータを管理する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
@@ -34,7 +34,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 ドメインのうちで、履歴、数量、日付などに関するデータを管理する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
@@ -181,7 +181,7 @@ DBインデックスとして保存されたカラムから特定のレコード
 
 DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。
 
-> ↪️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+> ↪️：https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 #### ▼ クラスターDBインデックス
 
@@ -209,7 +209,7 @@ CREATE INDEX foo_index
 
 そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保存される。
 
-> ↪️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+> ↪️：https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 ```sql
 CREATE INDEX foo_index

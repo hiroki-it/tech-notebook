@@ -9,7 +9,7 @@ description: template.json＠Packerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: template.json＠Packerの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-> ↪️ 参考：https://www.packer.io/downloads
+> ↪️：https://www.packer.io/downloads
 
 ```bash
 $ curl -L https://apt.releases.hashicorp.com/gpg | sudo apt-key add -

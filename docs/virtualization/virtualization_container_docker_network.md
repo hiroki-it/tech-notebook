@@ -9,7 +9,7 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ bridgeネットワークは、コンテナのネットワークインターフ�
 
 また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。
 
-> ↪️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+> ↪️：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
 `brctl`コマンドを使用し、`docker0`ブリッジがどの仮想インターフェースと接続されているかを確認できる。
 
@@ -83,7 +83,7 @@ hostネットワークは、コンテナのネットワークインターフェ�
 
 コンテナのIPアドレスは、ホストのIPアドレスになる。
 
-> ↪️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+> ↪️：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
 ```bash
 $ docker network list
@@ -131,7 +131,7 @@ $ curl --fail http://127.0.0.1:8080
 
 コンテナのホスト名の定義方法については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 **＊例＊**
 

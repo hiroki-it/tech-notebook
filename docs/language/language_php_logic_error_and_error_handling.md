@@ -9,7 +9,7 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -87,7 +87,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 以下リンクを参考にせよ。
 
-> ↪️ 参考：https://www.php.net/manual/ja/reserved.exceptions.php
+> ↪️：https://www.php.net/manual/ja/reserved.exceptions.php
 
 <br>
 
@@ -101,7 +101,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 エラーコードのデフォルト値はゼロである。
 
-> ↪️ 参考：https://www.php.net/manual/ja/exception.construct.php
+> ↪️：https://www.php.net/manual/ja/exception.construct.php
 
 エラーコードはステータスコードと異なり、例外を識別するためのものである。
 
@@ -111,7 +111,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 ステータスコードはコントローラーにおけるレスポンス処理で割り当てる。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 **＊実装例＊**
 
@@ -154,7 +154,7 @@ function foo(string $foo) {
 
 - InvalidArgumentException
 
-> ↪️ 参考：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
+> ↪️：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
 
 <br>
 
@@ -358,7 +358,7 @@ class Foo
 
 補足として、この例外をロギングする場合、スタックトレースログとして出力される。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - http://blog.tojiru.net/article/455279557.html
 > - https://www.php.net/manual/ja/exception.construct.php
@@ -371,7 +371,7 @@ class Foo
 
 想定外のエラーも含めて、全てのエラーを検出できるように、コントローラーまたはミドルウェアにtry-catch文を実装する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 > - https://softwareengineering.stackexchange.com/questions/393307/where-would-you-handle-exceptions-controller-service-repository
@@ -380,7 +380,7 @@ class Foo
 
 コントローラーの実装をより単純にするべく、より下位のユースケースにtry-catch文を実装する。
 
-> ↪️ 参考：https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
+> ↪️：https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 
 <br>
 
@@ -390,7 +390,7 @@ class Foo
 
 #### ▼ `error_log`関数
 
-> ↪️ 参考：https://www.php.net/manual/ja/function.error-log.php
+> ↪️：https://www.php.net/manual/ja/function.error-log.php
 
 ```php
 error_log(
@@ -432,7 +432,7 @@ class Notification
 
 他に、Loggerインターフェースを使用することも多い。
 
-> ↪️ 参考：https://github.com/php-fig/log
+> ↪️：https://github.com/php-fig/log
 
 ```php
 <?php

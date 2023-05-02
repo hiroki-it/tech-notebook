@@ -9,7 +9,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,11 +19,11 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 構成ファイルの実装に基づくプロビジョニングによって、インフラの構成を管理する手法のこと。
 
-> ↪️ 参考：https://en.wikipedia.org/wiki/Infrastructure_as_code
+> ↪️：https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 補足として、ここでいう『インフラ』は、ハードウェアと一部のソフトウェア (OS、ミドルウェア) を合わせたものである。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software.html
 
 <br>
 
@@ -89,7 +89,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 一方で、順番さえ理解していれば、構成ファイルを簡単に実装できるため、学習コストが低い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
 > - https://techblog.locoguide.co.jp/entry/2021/05/24/145342
@@ -133,7 +133,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 その一方で、最終的な状態を定義しさえすれば、作成/更新/削除の順序はツールが解決してくれるため、インフラの構成管理のコストが少ない。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
 > - https://techblog.locoguide.co.jp/entry/2021/05/24/145342
@@ -171,7 +171,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 - Docker Swarm
 - Kubernetes
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/kounan13/items/57adfbf3a5f209afa586
 > - https://knowledge.sakura.ad.jp/9473/
@@ -205,7 +205,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 サーバーを最終的な状態に至らせるまでの一連の処理のこと。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://securesamba.com/term/%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0/
 > - https://www.redhat.com/ja/topics/automation/what-is-provisioning#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0
@@ -234,7 +234,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 複数のコンテナの稼働 (プロビジョニング、デプロイメインと、スケーリング、コンテナ間ネットワーク、など) を一括で管理する。
 
-> ↪️ 参考：https://www.vmware.com/topics/glossary/content/container-orchestration.html
+> ↪️：https://www.vmware.com/topics/glossary/content/container-orchestration.html
 
 <br>
 
@@ -258,7 +258,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 - Docker Swarm
 - Kubernetes
 
-> ↪️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
+> ↪️：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
 <br>
 
@@ -289,7 +289,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 サイドカーパターンではないが、このプロキシコンテナのことをサイドカーコンテナともいう。
 
-> ↪️ 参考：https://logmi.jp/tech/articles/321841
+> ↪️：https://logmi.jp/tech/articles/321841
 
 <br>
 

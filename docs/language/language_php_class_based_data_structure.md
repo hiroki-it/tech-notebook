@@ -8,7 +8,7 @@ title: 【IT技術の知見】データ構造＠PHP
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -256,19 +256,19 @@ PHPの連想配列に相当する。
 
 #### ▼ 単方向List
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-1.gif)
 
 #### ▼ 双方向List
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-2.gif)
 
 #### ▼ 循環List
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 ![p555-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-3.gif)
 
@@ -296,7 +296,7 @@ PHPの連想配列に相当する。
 
 以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://www.php.net/manual/ja/language.types.intro.php
+> ↪️：https://www.php.net/manual/ja/language.types.intro.php
 
 <br>
 

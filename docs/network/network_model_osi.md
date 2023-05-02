@@ -9,7 +9,7 @@ description: OSI参照モデル＠ネットワークの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: OSI参照モデル＠ネットワークの知見を記録してい�
 
 OSI参照モデルは、物理層 (`L1`) 、データリンク層 (`L2`) 、ネットワーク層 (`L3`) 、トランスポート層 (`L4`) 、セッション層 (`L5`) 、プレゼンテーション層 (`L6`) 、アプリケーション層 (`L7`) 、から構成される。
 
-> ↪️ 参考：https://www.infraexpert.com/study/networking3.html
+> ↪️：https://www.infraexpert.com/study/networking3.html
 
 ![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデル.png)
 
@@ -31,7 +31,7 @@ OSI参照モデルは、物理層 (`L1`) 、データリンク層 (`L2`) 、ネ�
 
 レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
 
-> ↪️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+> ↪️：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
@@ -79,7 +79,7 @@ OSI参照モデルは、物理層 (`L1`) 、データリンク層 (`L2`) 、ネ�
 
 : パケットをHTTPリクエストとして送信する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.infraexpert.com/study/networking3.html
 > - https://www.infraexpert.com/study/networking4.html
@@ -129,7 +129,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 : サーバーにて、アプリケーションのプロセスが特定のポート番で受信している。アプリケーションによってパケットが処理される。
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
 
 <br>
 
@@ -137,7 +137,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 送信元で作成されたパケットは、非カプセル化されながら、通信機器に認識される。
 
-> ↪️ 参考：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
+> ↪️：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
 
 ![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png)
 

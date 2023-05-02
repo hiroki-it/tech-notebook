@@ -9,7 +9,7 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 ![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline_tools.png)
 
-> ↪️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
+> ↪️：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
 
 <br>
 
@@ -49,7 +49,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 コンテナイメージのビルド方法を定義する。
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/builders/
+> ↪️：https://skaffold.dev/docs/pipeline-stages/builders/
 
 <br>
 
@@ -68,7 +68,7 @@ build:
     - image: bar-web
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
+> ↪️：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
 
 #### ▼ context
 
@@ -87,7 +87,7 @@ build:
       context: ./src/bar
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
+> ↪️：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
 
 #### ▼ docker
 
@@ -147,7 +147,7 @@ build:
     useBuildkit: false
 ```
 
-> ↪️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
+> ↪️：https://genzouw.com/entry/2021/07/17/100615/2724/
 
 <br>
 
@@ -163,7 +163,7 @@ build:
     gitCommit: {}
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
+> ↪️：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
 
 #### ▼ sha256
 
@@ -175,7 +175,7 @@ build:
     sha256: {}
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
+> ↪️：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
 <br>
 
@@ -205,7 +205,7 @@ portForward:
 
 Kubernetesリソースのテスト方法を定義する。
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/testers/
+> ↪️：https://skaffold.dev/docs/pipeline-stages/testers/
 
 <br>
 
@@ -230,7 +230,7 @@ fileExistenceTests:
     shouldExist: true
 ```
 
-> ↪️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
+> ↪️：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
 
 <br>
 
@@ -240,7 +240,7 @@ fileExistenceTests:
 
 Kubernetesリソースのデプロイ手法を定義する。
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
+> ↪️：https://skaffold.dev/docs/pipeline-stages/deployers/
 
 <br>
 
@@ -260,7 +260,7 @@ deploy:
       - ./**/**/**.yaml # ワイルドカードを使用できる。
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
+> ↪️：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
 <br>
 
@@ -281,6 +281,6 @@ deploy:
           helm: {}
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
+> ↪️：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
 
 <br>

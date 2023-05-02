@@ -9,7 +9,7 @@ description: Eで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,9 +29,9 @@ description: Eで始まるAWSリソース＠AWSの知見を記録しています
 
 | 設定項目                 | 説明                                                                                                             | 補足                                                                                                   |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| 可視性                   | イメージリポジトリをパブリックあるいはプライベートにするかを設定する。                                           | 様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>↪️ 参考：https://gallery.ecr.aws/ |
+| 可視性                   | イメージリポジトリをパブリックあるいはプライベートにするかを設定する。                                           | 様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>↪️：https://gallery.ecr.aws/ |
 | タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合、バージョンタグを上書きできる/できないかを設定できる。                  | -                                                                                                      |
-| プッシュ時にスキャン     | イメージがプッシュされた時に、コンテナイメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html                    |
+| プッシュ時にスキャン     | イメージがプッシュされた時に、コンテナイメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | ↪️：https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html                    |
 | 暗号化設定               | -                                                                                                                | -                                                                                                      |
 
 <br>
@@ -70,13 +70,13 @@ $ docker tag <イメージID> <イメージリポジトリURL>:<バージョン�
 $ docker push <イメージリポジトリURL>:<バージョンタグ>
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+> ↪️：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
 #### ▼ helmチャートの場合
 
 調査中...
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
+> ↪️：https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
 
 <br>
 
@@ -102,7 +102,7 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 代わりとして、コンテナイメージのバージョンごとに異なるタグ名になるようハッシュ値 (例：GitHubのコミットID) を使用する。
 
-> ↪️ 参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
+> ↪️：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
 
 <br>
 
@@ -114,7 +114,7 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 サポート対象のAWSリソースは以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
+> ↪️：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
 
 <br>
 
@@ -154,7 +154,7 @@ Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Sta
 }
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
+> ↪️：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
 #### ▼ スケジュール
 
@@ -162,7 +162,7 @@ cron式またはrate式を使用して、スケジュールを定義する。
 
 これとLambdaを組み合わせることにより、ジョブを実行できる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
+> ↪️：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
 
 <br>
 
@@ -170,7 +170,7 @@ cron式またはrate式を使用して、スケジュールを定義する。
 
 #### ▼ ターゲットの一覧
 
-> ↪️ 参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
+> ↪️：https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
 
 #### ▼ デバッグ
 
@@ -306,6 +306,6 @@ Slackに送信するメッセージの作成ツールは、以下のリンクを
 
 ```
 
-> ↪️ 参考：https://app.slack.com/block-kit-builder
+> ↪️：https://app.slack.com/block-kit-builder
 
 <br>

@@ -9,7 +9,7 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,13 +21,13 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 各設定の頭文字は大文字とする。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section
+> ↪️：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section
 
 **＊実装例＊**
 
 フラッシュについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
+> ↪️：https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
 
 ```bash
 [SERVICE]
@@ -99,11 +99,11 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png)
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
+> ↪️：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
 プラグインを使用して、ログのインプット方法を設定する。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/inputs
+> ↪️：https://docs.fluentbit.io/manual/pipeline/inputs
 
 コマンドの`-i`オプションでINPUT名を指定し、実行もできる。
 
@@ -150,7 +150,7 @@ Inputs
 
 開発環境でパイプラインの動作を確認するために役立つ。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
 > - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
@@ -188,7 +188,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 #### ▼ セットアップ
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/inputs/forward
+> ↪️：https://docs.fluentbit.io/manual/pipeline/inputs/forward
 
 **＊実装例＊**
 
@@ -242,7 +242,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 #### ▼ セットアップ
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail
+> ↪️：https://docs.fluentbit.io/manual/pipeline/inputs/tail
 
 **＊実装例＊**
 
@@ -271,7 +271,7 @@ log_router:
 
 **＊例＊**
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line
+> ↪️：https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line
 
 ```bash
 $ fluent-bit \
@@ -310,7 +310,7 @@ $ fluent-bit \
 
 ![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_parser.png)
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/parser
+> ↪️：https://docs.fluentbit.io/manual/concepts/data-pipeline/parser
 
 <br>
 
@@ -377,7 +377,7 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 }
 ```
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/installation/kubernetes#container-runtime-interface-cri-parser
+> ↪️：https://docs.fluentbit.io/manual/installation/kubernetes#container-runtime-interface-cri-parser
 
 <br>
 
@@ -389,7 +389,7 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 
 ![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/filter
 > - https://docs.fluentbit.io/manual/concepts/key-concepts#filtering
@@ -402,7 +402,7 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 
 ログが構造化ログの場合、条件にマッチしたログのみを取得する。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/filters/grep
+> ↪️：https://docs.fluentbit.io/manual/pipeline/filters/grep
 
 #### ▼ セットアップ
 
@@ -440,7 +440,7 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
     Remove_wildcard ignored_key
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.fluentbit.io/manual/pipeline/filters/modify
 > - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
@@ -457,7 +457,7 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 
 ただし、本番環境ではログが複数行にならないようにアプリケーション側で実装を行い、ログを収集して可視化する段階でフィルタリングできれば問題ない、という考え方もある。
 
-> ↪️ 参考：https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
+> ↪️：https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
 
 #### ▼ セットアップ
 
@@ -498,7 +498,7 @@ Filters
   geoip2                  add geoip information to records
 ```
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+> ↪️：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
 
 #### ▼ MULTILINE_PARSER
 
@@ -532,7 +532,7 @@ Laravelのスタックトレースを結合する。
     rule          "cont" "/・.*/" "cont"
 ```
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
+> ↪️：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
 
 <br>
 
@@ -542,14 +542,14 @@ Laravelのスタックトレースを結合する。
 
 マッチしたログを解析し、正規表現の名前付きキャプチャ機能 (`?<foo>`) を使用して新しいキーに文字列を抽出する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.fluentbit.io/manual/pipeline/filters/parser
 > - https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression
 
 FluentBitでの名前付きキャプチャについては、Fluentdのドキュメントを参考にせよ。
 
-> ↪️ 参考：https://docs.fluentd.org/parser/regexp
+> ↪️：https://docs.fluentd.org/parser/regexp
 
 #### ▼ バリデーション
 
@@ -557,15 +557,15 @@ FluentBitは、内部的にはruby製関数を使用して正規表現を検証�
 
 そのため、これを確認できるバリデーションツールを使用する。
 
-> ↪️ 参考：http://rubular.com/
+> ↪️：http://rubular.com/
 
 代わりに、Fluentdの正規表現チェッカーでも良い。
 
-> ↪️ 参考：http://fluentular.herokuapp.com/
+> ↪️：http://fluentular.herokuapp.com/
 
 #### ▼ セットアップ
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
+> ↪️：https://docs.fluentbit.io/manual/pipeline/filters/parser
 
 <br>
 
@@ -577,7 +577,7 @@ FluentBitは、内部的にはruby製関数を使用して正規表現を検証�
 
 FILTERまでのパイプラインが正しく動作しているかのデバッグとして役立つ。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/filters/standard-output
+> ↪️：https://docs.fluentbit.io/manual/pipeline/filters/standard-output
 
 #### ▼ セットアップ
 
@@ -639,7 +639,7 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png)
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
+> ↪️：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
 <br>
 
@@ -649,7 +649,7 @@ Fluent Bit v1.8.6
 
 STREAM_TASKセッションは、独自のSQLステートメントで定義される。
 
-> ↪️ 参考：https://github.com/fluent/fluent-bit/tree/master/src/stream_processor
+> ↪️：https://github.com/fluent/fluent-bit/tree/master/src/stream_processor
 
 #### ▼ CREATE STREAM
 
@@ -669,7 +669,7 @@ SELECTステートメントの結果を使用して、データストリーム�
     Exec CREATE STREAM bar WITH (tag='bar') AS SELECT * FROM TAG:'bar';
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement
 > - https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example
@@ -697,7 +697,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 ]
 ```
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement
+> ↪️：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement
 
 <br>
 
@@ -709,7 +709,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer
 > - https://docs.fluentbit.io/manual/administration/buffering-and-storage
@@ -732,7 +732,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 デフォルト値である。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
+> ↪️：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
 ```bash
 [SERVICE]
@@ -749,7 +749,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ファイル上でバッファリングを実行する。
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
+> ↪️：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
 ```bash
 [SERVICE]
@@ -836,7 +836,7 @@ Outputs
   s3                      Send to S3
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
@@ -853,7 +853,7 @@ Outputs
 
 AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを使用する。
 
-> ↪️ 参考：https://github.com/aws/aws-for-fluent-bit
+> ↪️：https://github.com/aws/aws-for-fluent-bit
 
 <br>
 
@@ -867,11 +867,11 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 cloudwatch_logsプラグインがプリインストールされているベースイメージを使用する。
 
-> ↪️ 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
+> ↪️：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
 
 設定ファイルに予約されたAWS変数については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
+> ↪️：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
 
 ```bash
 # ---------------------------------------------
@@ -924,7 +924,7 @@ CloudWatchログに送信されるデータはJSON型である。
 }
 ```
 
-> ↪️ 参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
+> ↪️：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
 
 <br>
 
@@ -974,7 +974,7 @@ CloudWatchログに送信されるデータはJSON型である。
     dd_tags           env:prd-foo
 ```
 
-> ↪️ 参考：https://github.com/DataDog/fluent-plugin-datadog
+> ↪️：https://github.com/DataDog/fluent-plugin-datadog
 
 <br>
 
@@ -986,7 +986,7 @@ CloudWatchログに送信されるデータはJSON型である。
 
 kinesis_firehoseプラグインがプリインストールされているベースイメージを使用する。
 
-> ↪️ 参考：https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
+> ↪️：https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
 
 <br>
 
@@ -998,7 +998,7 @@ kinesis_firehoseプラグインがプリインストールされているベー�
 
 kinesis_streamsプラグインがプリインストールされているベースイメージを使用する。
 
-> ↪️ 参考：https://github.com/aws/amazon-kinesis-streams-for-fluent-bit
+> ↪️：https://github.com/aws/amazon-kinesis-streams-for-fluent-bit
 
 <br>
 
@@ -1012,7 +1012,7 @@ kinesis_streamsプラグインがプリインストールされているベー�
 
 newRelicプラグインがプリインストールされているベースイメージを使用する。
 
-> ↪️ 参考：https://github.com/newrelic/newrelic-fluent-bit-output
+> ↪️：https://github.com/newrelic/newrelic-fluent-bit-output
 
 <br>
 
@@ -1056,6 +1056,6 @@ $ /fluent-bit/bin/fluent-bit \
     -o null
 ```
 
-> ↪️ 参考：https://docs.fluentbit.io/manual/pipeline/outputs/null
+> ↪️：https://docs.fluentbit.io/manual/pipeline/outputs/null
 
 <br>

@@ -9,7 +9,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | 14  | View                                                    | `blade.php`ファイルを基に静的ファイルが作成される。                                                                   |
 | 15  | レスポンスを返信する。                                  |                                                                                                                       |
 
-> ↪️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
+> ↪️：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
 <br>
 
@@ -51,7 +51,7 @@ Laravelの各コンポーネントには、似たような名前のメソッド�
 
 その時、各メソッドがブラックボックスにならないように、処理の違いをコードから確認する必要がある。
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate.html
+> ↪️：https://laravel.com/api/8.x/Illuminate.html
 
 <br>
 
@@ -173,7 +173,7 @@ class FooCommand extends Command
 $ php artisan command:do-foo
 ```
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
+> ↪️：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
 <br>
 
@@ -294,7 +294,7 @@ return [
 
 この場合、環境変数に`2`個のインスタンスのエンドポイントを実装する必要がある。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
+> ↪️：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
 
 ```
 DB_HOST_PRIMARY=<プライマリーインスタンスのエンドポイント>
@@ -305,7 +305,7 @@ DB_HOST_READ=<リードレプリカのエンドポイント>
 
 プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。
 
-> ↪️ 参考：https://imanengineer.net/laravel-how-to-configure-master-slave-db/
+> ↪️：https://imanengineer.net/laravel-how-to-configure-master-slave-db/
 
 ```php
 <?php
@@ -376,7 +376,7 @@ REDIS_PORT=<Redisのポート>
 
 イベントに関するデータを保持するのみで、ビジネスロジックを持たない構成となる。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
+> ↪️：https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
 **＊実装例＊**
 
@@ -418,7 +418,7 @@ Eloquentモデルでは、DBアクセスに関するメソッドの実行開始�
 
 紐付けるために、プロパティで定義するか、あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
+> ↪️：https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
 **＊実装例＊**
 
@@ -734,7 +734,7 @@ class ExecutorConstant
 }
 ```
 
-> ↪️ 参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
+> ↪️：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
 
 <br>
 
@@ -750,7 +750,7 @@ LaravelではデフォルトでHandlerクラスが全てのステップをカバ
 
 エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
 
 <br>
 
@@ -760,7 +760,7 @@ LaravelではデフォルトでHandlerクラスが全てのステップをカバ
 
 ドキュメントとしてまとめられていないが、デフォルトで様々な例外が備わっている。
 
-> ↪️ 参考：https://laravel.com/api/8.x/search.html?search=exception
+> ↪️：https://laravel.com/api/8.x/search.html?search=exception
 
 #### ▼ スタックトレース
 
@@ -774,7 +774,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 
 補足として、ログの詳細度は`APP_DEBUG`環境変数で制御できる。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
+> ↪️：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
 ```bash
 [2021-09-00 00:00:00] local.ERROR: ***** (エラーメッセージ)
@@ -826,7 +826,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 
 Laravel内部でキャッチされた例外を基に、ロギングを実行する。
 
-> ↪️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
+> ↪️：https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
@@ -864,7 +864,7 @@ Laravel内部でキャッチされた例外を基に、異常系レスポンス�
 
 代わりとして、各コントローラーに`try-catch`と異常系レスポンスの返信処理を実装する。
 
-> ↪️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
+> ↪️：https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
@@ -1068,7 +1068,7 @@ Active Recordのロジックを持たないため、Repositoryパターンのロ
 
 参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
 
-> ↪️ 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
+> ↪️：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
 **＊実装例＊**
 
@@ -1328,7 +1328,7 @@ Route::prefix("foos")->group(function () {
 
 または、RouteServiceProviderクラスに`pattern`メソッドを定義すると、各エンドポイントに対する正規表現を一括で実行できる。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+> ↪️：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
 **＊実装例＊**
 
@@ -1710,13 +1710,13 @@ class FooController extends Controller
 
 どちらを使用するかは好みである。
 
-> ↪️ 参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
+> ↪️：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
 
 #### ▼ 一覧
 
 以下リンクを参考にせよ。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-view
+> ↪️：https://readouble.com/laravel/8.x/ja/helpers.html#method-view
 
 <br>
 
@@ -1726,7 +1726,7 @@ class FooController extends Controller
 
 認証処理を持つAuthManagerクラスのインスタンスを返却する。
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
+> ↪️：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 
 ```php
 <?php
@@ -1786,7 +1786,7 @@ return [
 
 ### `bcrypt`ヘルパー
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
+> ↪️：https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
 
 ```php
 <?php
@@ -1798,7 +1798,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 ### `redirect`ヘルパー
 
-> ↪️ 参考：https://blog.capilano-fw.com/?p=566
+> ↪️：https://blog.capilano-fw.com/?p=566
 
 <br>
 
@@ -1810,7 +1810,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 `response`ヘルパーは初期値として`200`ステータスが設定されているが、`view`メソッドや`setStatusCode`メソッドを使用して、明示的に設定しても良い。
 
-> ↪️ 参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
+> ↪️：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
 
 **＊実装例＊**
 
@@ -1905,7 +1905,7 @@ class FooController extends Controller
 
 ドメインは自動的に補完される。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
+> ↪️：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
 
 ```php
 <?php
@@ -1978,7 +1978,7 @@ $path = storage_path("app/file.txt");
 
 ドメインは自動的に補完される。
 
-> ↪️ 参考：https://readouble.com/laravel/5.7/ja/urls.html
+> ↪️：https://readouble.com/laravel/5.7/ja/urls.html
 
 ```php
 <?php
@@ -2001,7 +2001,7 @@ Farkerクラスは、プロパティにランダムなデータを保持して�
 
 このプロパティを特に、Formattersという。
 
-> ↪️ 参考：https://fwhy.github.io/faker-docs/
+> ↪️：https://fwhy.github.io/faker-docs/
 
 #### ▼ Factoryによるレコード定義
 
@@ -2042,7 +2042,7 @@ class FooFactory extends Factory
 
 Factoryに対応するEloquentモデルで使用する必要がある。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
+> ↪️：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
 ```php
 class Foo
@@ -2172,7 +2172,7 @@ class DatabaseSeeder extends Seeder
 
 バリデーションでエラーが発生した場合、Handlerクラスの`invalid`メソッドがコールされ、元のWebページにリダイレクトされる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
 > - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
@@ -2359,7 +2359,7 @@ Routeファサードの`pattern`メソッドまたは`where`メソッドで定�
 
 日本語翻訳`validation.php`ファイルについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
+> ↪️：https://readouble.com/laravel/8.x/ja/validation-php.html
 
 ```php
 <?php
@@ -2435,7 +2435,7 @@ return [
 )
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
 > - https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
@@ -2448,7 +2448,7 @@ return [
 
 指定されたテーブルのカラムに値が存在しているかを検証する。
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
+> ↪️：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
 
 ```php
 <?php
@@ -2510,7 +2510,7 @@ class FooRequest extends FormRequest
 
 決められた複数の値に合致する値であるか否かを検証する。
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
+> ↪️：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
 
 ```php
 <?php
@@ -2548,7 +2548,7 @@ class FooRequest extends FormRequest
 
 `validation.php`ファイルでメッセージを定義し、これを参照しても良い。
 
-> ↪️ 参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
+> ↪️：https://laravel.com/docs/8.x/validation#custom-validation-rules
 
 **＊実装例＊**
 
@@ -2776,19 +2776,19 @@ class FooAfterMiddleware
 
 暗号化したくない場合は、`Cookie`ヘッダーのキー名を`except`プロパティに設定する。
 
-> ↪️ 参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
+> ↪️：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
 
 #### ▼ StartSession
 
 セッションの開始の開始点になる。
 
-> ↪️ 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
+> ↪️：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 
 また、同一セッションで一意なCSRFトークンを作成する。
 
 CSRFトークンによるCSRFの防御については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
 
 #### ▼ VerifyCsrfToken
 
@@ -2798,7 +2798,7 @@ CSRFトークンによるCSRFの防御については、以下のリンクを参
 
 一般的に、CSRFトークンは`Cookie`ヘッダーに割り当てることもできるが、Laravelではリクエストボディを使用する必要がある。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
+> ↪️：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
 
 <br>
 
@@ -2903,7 +2903,7 @@ class Kernel extends HttpKernel
 
 クエリパラメーターとメッセージボディの両方を取得する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+> ↪️：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
 
@@ -2942,7 +2942,7 @@ class FooController extends Controller
 
 クエリパラメーターを取得する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+> ↪️：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
 
@@ -2971,7 +2971,7 @@ class FooController extends Controller
 
 パスパラメーターを取得する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://technote.space/posts/wpdb-laravel-get-url-parameter/
 > - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
@@ -3032,7 +3032,7 @@ class FooController extends Controller
 
 Requestではなく、FormRequestを使用した方がバリデーションがおすすめである。
 
-> ↪️ 参考：https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
+> ↪️：https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
 
 ```php
 namespace App\Http\Controllers;
@@ -3066,7 +3066,7 @@ class FooController extends Controller
 
 `logging.php`ファイルから、指定された設定が選択される。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
+> ↪️：https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
 
 ```
 LOG_CHANNEL=<オプション名>
@@ -3085,7 +3085,7 @@ $ chmod -R 777 /var/www/foo/storage
 
 LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Laravelのログの出力先を変更しても、PHP-FPMのログの出力先は変更されない。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html
 
 #### ▼ `stack`キー
 
@@ -3561,7 +3561,7 @@ $ php artisan migrate
 
 自動増分のカラムは`1`個のテーブルに1つしか定義できず、他のIDカラムは`unsignedBigInteger`メソッドを使用して定義する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
+> ↪️：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
 **＊実装例＊**
 
@@ -3583,7 +3583,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 プライマリーキーではないIDカラムのために使用する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
+> ↪️：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
 ```php
 Schema::create("foos", function (Blueprint $table) {
@@ -3718,7 +3718,7 @@ MailMessageクラスのメソッドを使用して、Eメール通知の内容�
 
 `markdown`メソッドを使用することにより、マークダウン形式で定義できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message
 > - https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
@@ -3773,7 +3773,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ SMS通知内容の定義
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
+> ↪️：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
 
 ```php
 <?php
@@ -3816,13 +3816,13 @@ class TfaTokenNotification extends Notification
 
 #### ▼ Slack通知内容の定義
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
+> ↪️：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
 
 #### ▼ DB通知内容の定義
 
 配列でDBに保存する内容を定義する。
 
-> ↪️ 参考：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
+> ↪️：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
 
 ```php
 <?php
@@ -3955,7 +3955,7 @@ Notifiableトレイトを継承する。
 
 これにより、`notify`メソッドを使用できるようになる。
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
+> ↪️：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
 
 ```php
 <?php
@@ -3975,7 +3975,7 @@ class User extends Authenticatable
 
 これにより、通知処理が実行される。
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
+> ↪️：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
 ```php
 <?php
@@ -4015,7 +4015,7 @@ Notification::send($users, new FooNotification());
 
 オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
 > - https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
@@ -4226,7 +4226,7 @@ class Kernel extends HttpKernel
 
 ルーティング時に使用するパラメーター名とコントローラーのメソッドの引数型と変数名が同じであり、かつパラメーターに数値が割り当てられた場合、その数値をIDとするEloquentモデルが自動的にインジェクションされる。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
+> ↪️：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
 
 **＊実装例＊**
 
@@ -4276,7 +4276,7 @@ class UserController extends Controller
 
 Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html
+> ↪️：https://readouble.com/laravel/8.x/ja/csrf.html
 
 ```html
 <form method="POST" action="/profile">@csrf ...</form>
@@ -4284,7 +4284,7 @@ Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグ
 
 Bladeを使用しない場合、セッション開始時のレスポンスの`Set-Cookie`にCSRFトークンが割り当てられるため、これを取り出して`X-CSRF-TOKEN`ヘッダーや`X-XSRF-TOKEN`ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
@@ -4429,7 +4429,7 @@ DBファサードを使用するよりも。
 
 この時、`LOAD DATA LOCAL INFILE`文を使用すると、高速で処理できる。
 
-> ↪️ 参考：https://i-407.com/blog/tech/n3/
+> ↪️：https://i-407.com/blog/tech/n3/
 
 ```php
 <?php
@@ -4580,7 +4580,7 @@ class DatabaseSeeder extends Seeder
 
 ServiceContainer、バインド、リゾルブについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ```php
 <?php
@@ -4632,7 +4632,7 @@ Laravelでは、クラスはServiceContainerに自動的にバインドされて
 
 ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
+> ↪️：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 
 **＊実装例＊**
 
@@ -4859,7 +4859,7 @@ class Interactor
 
 `make`メソッドの引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
+> ↪️：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
 
 **＊実装例＊**
 
@@ -5023,7 +5023,7 @@ return [
 
 また、全てのルーティングに適用する処理を定義する。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+> ↪️：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
 **＊実装例＊**
 
@@ -5069,7 +5069,7 @@ class RouteServiceProvider extends ServiceProvider
 
 加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、`configureRateLimiting`メソッドによって、`429`ステータスでレスポンスが返信される。
 
-> ↪️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
+> ↪️：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
 
 **＊実装例＊**
 
@@ -5229,7 +5229,7 @@ FormRequestクラスの`session`メソッドはStoreクラスを返却する。
 | `pull`     | セッションのキー名を指定して、`1`個の値を取得し、取得後に削除する。                          |
 | `has`      | セッションのキー名を指定して、値が存在しているかを検証する。`null`は`false`として判定する。  |
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Session/Store.html
+> ↪️：https://laravel.com/api/8.x/Illuminate/Session/Store.html
 
 **＊実装例＊**
 
@@ -5288,7 +5288,7 @@ Sessionクラスのメソッドは、`attribute`プロパティを使用して�
 
 最終的に,`handleStatefulRequest`では、`saveSession`メソッドの中の`save`メソッドが実行され、セッションデータに新しい値が書き込まれる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handle
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handleStatefulRequest
@@ -5329,7 +5329,7 @@ Controllerクラスから返却されたデータは、`{{ 変数名 }}`で取�
 
 MessageBagクラスは、Blade上で`errors`変数に格納されており、各メソッドをコールしてエラーメッセージを出力できる。
 
-> ↪️ 参考：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
+> ↪️：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
 **＊実装例＊**
 

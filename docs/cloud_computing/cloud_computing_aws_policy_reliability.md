@@ -9,7 +9,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ RFC1918では、以下のCIDRブロックが推奨されている。
 | `172.16.0.0/12`           | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
 | `192.168.0.0/16`          | `192.168.0.0`～`192.168.255.255` | `65536`    |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://note.com/takashi_sakurada/n/n502fb0299938
 > - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
@@ -54,7 +54,7 @@ RFC1918では、以下のCIDRブロックが推奨されている。
 
 また、VPCで許可されるIPアドレスの個数は最多`65536`個 (`/16`) で最少16個 (`/28`) であり、実際は`512`個 (`/23`) ほどあれば問題ないため、`10.200.48.0/23`を設定する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
+> ↪️：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
 
 <br>
 
@@ -84,7 +84,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 | ECS、EKS           | Elastic Network Interface 数と同じ個数      |
 | Lambda             | Elastic Network Interface 数と同じ個数      |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
 > - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
@@ -101,7 +101,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 | protectedサブネット | プライベート | 内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じVPC内からのインバウンド通信のみを待ち受ける。また、publicサブネットのNAT Gatewayを介してアウトバウンド通信を送信する。 | EC2、Fargate     |
 | privateサブネット   | プライベート | 内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述のprotectedサブネット内からのインバウンド通信のみを待ち受ける。また、アウトバウンド通信を送信しない。                  | RDS、Redis       |
 
-> ↪️ 参考：https://mihono-bourbon.com/aws-network-1/
+> ↪️：https://mihono-bourbon.com/aws-network-1/
 
 #### ▼ コンポーネントタイプ別の命名
 
@@ -115,7 +115,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 | applicationサブネット | プライベート | 内部ネットワークとして動作する。appサーバー、リバースプロキシサーバー、を配置する。 | EC2、Fargate     |
 | datastoreサブネット   | プライベート | 内部ネットワークとして動作する。dbサーバーを配置する。                              | RDS、Redis       |
 
-> ↪️ 参考：https://dev.classmethod.jp/articles/create_nat_gateway/
+> ↪️：https://dev.classmethod.jp/articles/create_nat_gateway/
 
 <br>
 
@@ -156,7 +156,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 | :---------------------------------------: | :----: |
 | `10.0.0.0/24` (サブネット1のCIDRブロック) | local  |
 
-> ↪️ 参考：https://koejima.com/archives/1950/
+> ↪️：https://koejima.com/archives/1950/
 
 <br>
 
@@ -174,7 +174,7 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | データリンク層       | `L2`        | VPC                                            |
 | 物理層               | `L1`        | 仮想化のため、意識しなくても良い。             |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
@@ -209,7 +209,7 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | `TargetConnectionErrorCount`     | カウント | ターゲットグループ内のターゲットに対する通信でエラーが発生した数をデータポイントとする。        |                                                               |
 | `TargetTLSNegotiationErrorCount` | カウント | ターゲットグループ内のターゲットへのHTTPSプロトコルでエラーが発生した数をデータポイントとする。 |                                                               |
 
-> ↪️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
+> ↪️：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
 #### ▼ API Gateway
 
@@ -222,7 +222,7 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | `4XXError`           | カウント   | `400`系ステータスコードの数をデータポイントとする。                                                                                 | ・統計 : 期間内合計数<br>・期間 : `24`時間<br>・閾値 : `>= 1` |
 | `5XXError`           | カウント   | `500`系ステータスコードの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。       | ・統計 : 期間内合計数<br>・期間 : `5`分<br>・閾値 : `>= 1`    |
 
-> ↪️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
+> ↪️：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
 
 #### ▼ EC2
 
@@ -232,16 +232,16 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | ---------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `CPUUtilization`             | %        | EC2インスタンスで使用されているCPU使用率をデータポイントとする。                                                                                                                                                                                                                                                                                                                          | ・統計 : 期間内平均使用率<br>・期間 : `5`分<br>・閾値 : `>= 80` |
 | `MemoryUtilization`          | %        | EC2インスタンスで使用されているメモリ使用率をデータポイントとする。                                                                                                                                                                                                                                                                                                                       | ・統計 : 期間内平均使用率<br>・期間 : `5`分<br>・閾値 : `>= 80` |
-| `StatusCheckFailed_Instance` | カウント | インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                                 |
-| `StatusCheckFailed_System`   | カウント | インスタンスのシステムステータスの失敗数をデータポイントとする。AWSの障害によるインシデントの検出に適する。<br>↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks                                                                                                                                  |                                                                 |
+| `StatusCheckFailed_Instance` | カウント | インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                                 |
+| `StatusCheckFailed_System`   | カウント | インスタンスのシステムステータスの失敗数をデータポイントとする。AWSの障害によるインシデントの検出に適する。<br>↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks                                                                                                                                  |                                                                 |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
+> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
 
 似たメトリクスに`StatusCheckFailed_System`や`StatusCheckFailed_Instance`がある。
 
 これらはAWS側が原因のメトリクスであるため、ユーザーが監視する必要はない。
 
-> ↪️ 参考：https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html
+> ↪️：https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html
 
 #### ▼ ECS
 
@@ -255,7 +255,7 @@ ClusterNameディメンションとServiceNameディメンションを使用し�
 | `MemoryUtilization` | %        | ECSクラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : `5`分<br>・閾値 : `>= 80` |                                                                 |
 | `RunningTaskCount`  | カウント | 稼働中のECSタスク数をデータポイントとする。                                     |                                                                 | ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。 |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
+> ↪️：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
 
 #### ▼ ElastiCache Redis
 
@@ -266,9 +266,9 @@ ClusterNameディメンションとServiceNameディメンションを使用し�
 | `BytesUsedForCache` | バイト数 | Redisで使用されているメモリ使用サイズをデータポイントとする。             | ・統計 : 期間内合計サイズ<br>・期間 : `5`分<br>・閾値 : `>= 8`GB  |                                                                                                                                         |
 | `CPUUtilization`    | %        | ノードのCPU使用率をデータポイントとする。                                 | ・統計 : 期間内平均使用率<br>・期間 : `5`分<br>・閾値 : `>= 80`   |                                                                                                                                         |
 | `Evictions`         | カウント | 空きサイズを確保するために削除されたRedisのキー数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `5`分<br>・閾値 : `>= 1`        |                                                                                                                                         |
-| `SwapUsage`         | バイト数 | ストレージ上のスワップ領域の使用サイズをデータポイントとする。            | ・統計 : 期間内最大サイズ<br>・期間 : `5`分<br>・閾値 : `>= 50`GB | 使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br>↪️ 参考：https://zenn.dev/dehio3/scraps/710a9714ce9496 |
+| `SwapUsage`         | バイト数 | ストレージ上のスワップ領域の使用サイズをデータポイントとする。            | ・統計 : 期間内最大サイズ<br>・期間 : `5`分<br>・閾値 : `>= 50`GB | 使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br>↪️：https://zenn.dev/dehio3/scraps/710a9714ce9496 |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
+> ↪️：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
 
 #### ▼ RDS (Aurora)
 
@@ -286,7 +286,7 @@ ClusterNameディメンションとServiceNameディメンションを使用し�
 | `FreeLocalStorage`    | バイト数   | Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。                                     | ・統計 : 期間内最大サイズ<br>・期間 : `5`分<br>・閾値 : `>= 10`GB | DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。                         |
 | `LoginFailures`       | カウント   | Aurora DBへのログインの失敗回数をデータポイントとする。                                                                         | ・統計 : 期間内合計数<br>・期間 : `5`分<br>・閾値 : `>= 1`        |                                                                                                      |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
+> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
 
 #### ▼ RDS (非Aurora)
 
@@ -300,7 +300,7 @@ RDSのコンソール画面にも同じメトリクスが表示されるが、�
 | `DatabaseConnections` | カウント | DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | ・統計 : 期間内合計数<br>・期間 : `5`分<br>・閾値 : `>= 400`     | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
 | `FreeableMemory`      | バイト数 | DBインスタンスの使用できるメモリサイズをデータポイントとする。                                                           | ・統計 : 期間内最大サイズ<br>・期間 : `5`分<br>・閾値 : `>= 2`GB |                                                                                                      |
 
-> ↪️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
+> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
 
 #### ▼ S3
 

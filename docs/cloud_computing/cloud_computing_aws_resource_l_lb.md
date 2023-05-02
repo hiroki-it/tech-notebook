@@ -9,7 +9,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -22,7 +22,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 | GLB：Gateway Load Balancer     | `L3` (ネットワーク層) 、`L4` | IP                             | IPアドレス、インスタンス         | 不可                      | IPアドレスフィールド、ポート番号フィールド | 不可                 |
 | CLB：Classic Load Balancer     | `L4`、`L7`                   | HTTP、HTTPS、TCP、SSL/TLS      | なし                             | URL、HTTPヘッダー         | IPアドレスフィールド、ポート番号フィールド | 可                   |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
 > - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
@@ -40,7 +40,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 
 ![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png)
 
-> ↪️ 参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer/24
+> ↪️：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer/24
 
 <br>
 
@@ -54,7 +54,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | リスナー             | ALBに割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。 |                                                                                                                                                                                                                                                                       |
 | スキマー             | パブリックネットワークからのインバウンド通信を待ち受けるか、あるいはプライベートネットワークからのインバウンド通信を待ち受けるかを設定する。                    |                                                                                                                                                                                                                                                                       |
-| セキュリティポリシー | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、ALBが受信できるこれらのバージョンを設定する。                                  | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、転送元のAWSリソース (例：CloudFrontなど) 、などを含む。<br>・↪️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies |
+| セキュリティポリシー | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、ALBが受信できるこれらのバージョンを設定する。                                  | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、転送元のAWSリソース (例：CloudFrontなど) 、などを含む。<br>・↪️：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies |
 | ルール               | リクエストのルーティングのロジックを設定する。                                                                                                                  |                                                                                                                                                                                                                                                                       |
 | ターゲットグループ   | ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。                                                                                          | ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックがOKになっているターゲットにルーティングされる。                                                                                                                                                  |
 | ヘルスチェック       | ターゲットグループに属するプロトコルとアプリケーションのポート番号を指定して、定期的にリクエストを送信する。                                                    |                                                                                                                                                                                                                                                                       |
@@ -88,7 +88,7 @@ ALBの実体で、各ALBインスタンスが異なるグローバルIPアドレ
 
 ![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb-instance.png)
 
-> ↪️ 参考：https://blog.takuros.net/entry/2019/08/27/075726
+> ↪️：https://blog.takuros.net/entry/2019/08/27/075726
 
 #### ▼ 割り当てられるIPアドレス
 
@@ -102,7 +102,7 @@ ALBに割り当てられるIPアドレスには、VPCのものが適用される
 
 #### ▼ `500`系ステータスコードの原因
 
-> ↪️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
+> ↪️：https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
 
 #### ▼ ALBのセキュリティグループ
 
@@ -122,7 +122,7 @@ Route53からルーティングされるパブリックIPアドレスを受信�
 
 常時SSLがデフォルトになっていないアプリケーションであれば、これは起こらない。
 
-> ↪️ 参考：https://cloudpack.media/525
+> ↪️：https://cloudpack.media/525
 
 #### ▼ webサーバーにおける対処方法
 
@@ -140,7 +140,7 @@ ALBを経由したリクエストには、リクエストヘッダーに`X-Forwa
 SetEnvIf X-Forwarded-Proto https HTTPS=on
 ```
 
-> ↪️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+> ↪️：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 #### ▼ アプリケーションにおける対処方法
 
@@ -164,7 +164,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 }
 ```
 
-> ↪️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+> ↪️：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 <br>
 
@@ -174,7 +174,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 ターゲットに対するリクエスト転送時の加重ルールを設定する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
+> ↪️：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
 
 #### ▼ ラウンドロビン方式
 
@@ -184,7 +184,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 受信したリクエストを、未処理のリクエスト数が最も少ないターゲットにルーティングする。
 
-> ↪️ 参考：https://www.infraexpert.com/study/loadbalancer4.html
+> ↪️：https://www.infraexpert.com/study/loadbalancer4.html
 
 <br>
 

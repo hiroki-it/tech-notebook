@@ -9,7 +9,7 @@ description: Code系＠Cで始まるAWSリソースの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -49,7 +49,7 @@ ECSのために、CodeBuildの設定を行う。
 
 ルートディレクトリの直下に配置しておく。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/ecs-cd-pipeline.html
@@ -96,7 +96,7 @@ artifacts:
   files: imageDetail.json
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
+> ↪️：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
 
 <br>
 
@@ -106,19 +106,19 @@ artifacts:
 
 インプレースデプロイ、ブルー/グリーンデプロイメント、を利用できる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
 ### インプレースデプロイメント
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
 
 <br>
 
 ### ブルー/グリーンデプロイメント
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
 
 <br>
 
@@ -128,7 +128,7 @@ artifacts:
 
 ブルー/グリーンデプロイメント、を利用できる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
@@ -138,7 +138,7 @@ artifacts:
 
 ローリングアップデート、ブルー/グリーンデプロイメント、を利用できる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
@@ -159,7 +159,7 @@ artifacts:
 ]
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
@@ -208,7 +208,7 @@ artifacts:
 
 : 元の旧環境 (Prodブルー) は削除される。
 
-> ↪️ 参考：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
+> ↪️：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
 
 #### ▼ `appspec.yml`ファイル
 
@@ -233,7 +233,7 @@ Resources:
         PlatformVersion: "1.4.0"
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
 
 #### ▼ `imageDetail.json`ファイル
 
@@ -241,7 +241,7 @@ Resources:
 
 これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
@@ -297,7 +297,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
@@ -308,7 +308,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
 
 ### オートスケーリング
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
 
 <br>
 
@@ -322,6 +322,6 @@ CodeDeployのデプロイの途中、ターゲットグループからインス�
 
 デプロイが正常に完了次第、ターゲットグループにインスタンスを再登録し、アクセスできるようにする。
 
-> ↪️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 
 <br>

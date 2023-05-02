@@ -9,7 +9,7 @@ description: 認可＠認証/認可の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: 認可＠認証/認可の知見を記録しています。
 
 クリーンアーキテクチャであれば、ドメインサービスやアプリケーションサービスである。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
 <br>
 

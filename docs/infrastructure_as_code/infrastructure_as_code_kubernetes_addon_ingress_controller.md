@@ -9,7 +9,7 @@ description: Ingressコントローラー＠Ingressコントローラーアド�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/community/tutorials/nginx-ingress-gke
 > - https://developers.freee.co.jp/entry/kubernetes-ingress-controller
@@ -43,7 +43,7 @@ Ingressコントローラーは、Secretに設定されたSSL証明書を参照�
 
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://blog.sakamo.dev/post/ingress-nginx/
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
@@ -62,7 +62,7 @@ Ingressコントローラーは、『`***-controller-admission`』というServi
 
 その後、『`***-patch`』というJob配下のPodが、ValidatingWebhookConfigurationにこのSSL証明書を設定し、webhookサーバーにSSL証明書が割り当てられる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration
 > - https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks
@@ -85,7 +85,7 @@ Ingressコントローラーには種類があり、コントローラーごと�
 | Istio Ingressコントローラー                                   | Istio IngressGateway               |    ✅    |    ✅    |
 | ...                                                           | ...                                |   ...    |   ...    |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/

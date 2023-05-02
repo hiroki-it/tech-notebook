@@ -9,7 +9,7 @@ description: ソフトウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: ソフトウェアの知見を記録しています。
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
-> ↪️ 参考：https://thinkit.co.jp/article/11526
+> ↪️：https://thinkit.co.jp/article/11526
 
 <br>
 
@@ -45,7 +45,7 @@ description: ソフトウェアの知見を記録しています。
 
 ![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネイティブアプリ.png)
 
-> ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
+> ↪️：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -65,7 +65,7 @@ URLをwebサーバーにリクエストすることにより利用でき、随�
 
 全ての人が無料で利用できるものと、お金を払った人だけが利用できるものがある。
 
-> ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
+> ↪️：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -93,7 +93,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 
 ![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッドアプリ.png)
 
-> ↪️ 参考：https://www.sbbit.jp/article/cont1/28197
+> ↪️：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -109,7 +109,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 - Nginx
 - IIS
 
-> ↪️ 参考：https://thinkit.co.jp/article/11837
+> ↪️：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -120,7 +120,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 - NGINX Unit (webサーバーのNginxと組み合わせて使用できるミドルウェア)
 - Tomcat
 
-> ↪️ 参考：https://thinkit.co.jp/article/11837
+> ↪️：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -131,7 +131,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 - PostgreSQL
 - Oracle Database
 
-> ↪️ 参考：https://thinkit.co.jp/article/11837
+> ↪️：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -161,7 +161,7 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 ![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/基本ソフトウェアの構成.png)
 
-> ↪️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> ↪️：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 <br>
 
@@ -175,7 +175,7 @@ Unixから分岐したLinuxは、加えて3系統 (Debian、RedHat、Slackware) 
 
 ![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux-distribution.png)
 
-> ↪️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
+> ↪️：http://officemiyajima.com/index.php?What%20is%20Linux
 
 #### ▼ Debian系統
 
@@ -188,7 +188,7 @@ $ cat /etc/issue
 Debian GNU/Linux 10 \n \l
 ```
 
-> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+> ↪️：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 #### ▼ RedHat系統
 
@@ -202,7 +202,7 @@ CentOS release 5.5 (Final)
 Kernel \r on an \m
 ```
 
-> ↪️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+> ↪️：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 #### ▼ Slackware系統
 
@@ -271,6 +271,6 @@ Windows 8以降で採用されている新しいFirmware
 
 ![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSS一覧.png)
 
-> ↪️ 参考：https://openstandia.jp/oss_info/
+> ↪️：https://openstandia.jp/oss_info/
 
 <br>

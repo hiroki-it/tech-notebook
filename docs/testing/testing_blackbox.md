@@ -9,7 +9,7 @@ description: ブラックボックステストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_black-box-test.png)
 
-> ↪️ 参考：https://service.shiftinc.jp/column/4801/
+> ↪️：https://service.shiftinc.jp/column/4801/
 
 <br>
 
@@ -38,7 +38,7 @@ description: ブラックボックステストの知見を記録しています�
 - 回帰テスト
 - 総合テスト
 
-> ↪️ 参考：https://service.shiftinc.jp/column/4801/
+> ↪️：https://service.shiftinc.jp/column/4801/
 
 <br>
 
@@ -51,7 +51,7 @@ description: ブラックボックステストの知見を記録しています�
 | ステージング環境 (ユーザー受け入れ環境) | stg (ua)   | 共有の環境であり、システムの依頼者が社内にいる場合に、その依頼者が動作を確認するために使用する。システムの依頼者が社外にいる場合、ユーザー受け入れ環境と呼ぶことがある。 |
 | 本番環境                                | prd        | インターネットに公開された環境であり、Testing in productionを採用する場合は、一般のユーザーに動作を確認してもらう。                                                      |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www-creators.com/archives/780
 > - https://www.quora.com/What-is-difference-between-testing-environment-and-staging
@@ -68,7 +68,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
-> ↪️ 参考：https://pm-rasinban.com/ut-it-st
+> ↪️：https://pm-rasinban.com/ut-it-st
 
 <br>
 
@@ -80,7 +80,7 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | -------------------------------------------------------- |
 | 正常系       | 特定のシステムコンポーネントの処理を正しく操作できるか。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://webrage.jp/techblog/non_functional_testing
 > - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
@@ -91,7 +91,7 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | ------------------------------------------------------------------ |
 | 正常系       | 特定のシステムコンポーネントのヘルスチェックが正常になっているか。 |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://webrage.jp/techblog/non_functional_testing
 > - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
@@ -106,7 +106,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
-> ↪️ 参考：https://pm-rasinban.com/ut-it-st
+> ↪️：https://pm-rasinban.com/ut-it-st
 
 <br>
 
@@ -118,7 +118,7 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | -------------------------------------------------- |
 | 正常系       | システムコンポーネント間の処理を正しく操作できるか |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://webrage.jp/techblog/non_functional_testing
 > - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
@@ -129,7 +129,7 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | ------------------------------------------------ |
 | 正常系       | システムコンポーネント間で正しく連携できているか |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://webrage.jp/techblog/non_functional_testing
 > - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
@@ -172,7 +172,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p496.jpg)
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -277,6 +277,6 @@ Fluentdのテストケース例を示す。
 
 ## 05. 総合テスト (システムテスト)
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html
 
 <br>

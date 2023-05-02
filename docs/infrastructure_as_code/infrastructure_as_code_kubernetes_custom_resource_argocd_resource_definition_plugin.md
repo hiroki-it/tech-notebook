@@ -9,7 +9,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -174,7 +174,7 @@ lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-server -> /usr/local/bin/ar
 lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bin/entrypoint.sh
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
@@ -333,7 +333,7 @@ Flags:
       --otlp-address string      OpenTelemetry collector address to send traces to
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://thedatabaseme.de/2022/12/02/enhanced-with-plugins-make-argocd-more-powerful-with-plugins-running-as-sidecar/
 > - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml#L17305-L17567
@@ -391,7 +391,7 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 
 なお、ConfigManagementPluginはカスタムリソースではないため、CRDは不要である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
@@ -429,7 +429,7 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 | `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |        |                                                |
 | `ARGOCD_USER_ID`                       | `999`  | ArgoCDのプロセスの実行ユーザー番号を設定する。 |
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
 
 <br>
 
@@ -501,7 +501,7 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#adding-tools-via-volume-mounts
@@ -543,7 +543,7 @@ data:
             helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV template
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
@@ -573,7 +573,7 @@ spec:
         value: prd
 ```
 
-> ↪️ 参考：https://github.com/travisghansen/argo-cd-helmfile#intro
+> ↪️：https://github.com/travisghansen/argo-cd-helmfile#intro
 
 <br>
 
@@ -663,7 +663,7 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
@@ -783,7 +783,7 @@ data:
             fi
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
@@ -841,7 +841,7 @@ metadata:
 automountServiceAccountToken: true
 ```
 
-> ↪️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
+> ↪️：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
 
 #### ▼ helm-secretsの使用
 
@@ -872,7 +872,7 @@ spec:
         - secrets://secrets.yaml
 ```
 
-> ↪️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
+> ↪️：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
 
 <br>
 
@@ -945,7 +945,7 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
 > - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
@@ -969,7 +969,7 @@ data:
   kustomize.path.<バージョン>: /custom-tools/kustomize_<バージョン>
 ```
 
-> ↪️ 参考：https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+> ↪️：https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
 
 ### プラグインの使用
 
@@ -991,7 +991,7 @@ spec:
     version: v1.0.0
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
 
 <br>
 
@@ -1003,7 +1003,7 @@ spec:
 
 Vaultを使用できるように、Vaultをインストールする。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
@@ -1044,7 +1044,7 @@ data:
             helm template $ARGOCD_ENV_HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
@@ -1074,6 +1074,6 @@ spec:
         value: foo
 ```
 
-> ↪️ 参考：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
+> ↪️：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
 
 <br>

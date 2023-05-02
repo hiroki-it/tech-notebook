@@ -9,7 +9,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 オブジェクト指向分析設計をより強化するために考案され、特に機能要件の多いアプリケーションに有効である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
 > - https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88
@@ -50,7 +50,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 : コンテキストマップを作成し、境界付けられたコンテキスト間の関係を明らかにする。
 
-> ↪️ 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> ↪️：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 <br>
 
@@ -82,7 +82,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 : 運用後に問題が発生した場合、特にオブジェクト図とドメインモデル図を修正する。場合によっては、デザインパターンに切り分ける。
 
-> ↪️ 参考：https://booth.pm/ja/items/3363104
+> ↪️：https://booth.pm/ja/items/3363104
 
 <br>
 
@@ -108,7 +108,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 例えば、ToCなドメインとしては、マーケーティング部による業務 (ユーザー集客業務、広告運用業務) がある。
 
-> ↪️ 参考：https://github.com/little-hands/ddd-q-and-a/issues/191
+> ↪️：https://github.com/little-hands/ddd-q-and-a/issues/191
 
 **＊例＊**
 
@@ -122,7 +122,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet_advertising_agency_domain.png)
 
-> ↪️ 参考：https://labs.septeni.co.jp/entry/2021/04/15/130000
+> ↪️：https://labs.septeni.co.jp/entry/2021/04/15/130000
 
 **＊例＊**
 
@@ -138,7 +138,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_domain.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
@@ -155,7 +155,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 > - https://labs.septeni.co.jp/entry/2021/04/15/130000
@@ -168,7 +168,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ただ、コアドメインが外部に依存すると、そのSaaSで障害が起こった時にコアドメインのシステムも停止する可能性があるため、注意が必要である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://medium.com/nick-tune-tech-strategy-blog/core-domain-patterns-941f89446af5
 > - https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26
@@ -185,7 +185,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
@@ -198,7 +198,7 @@ ECサイトを運営するアスクルの例。
 
 配送/注文/商品/ユーザ管理/在庫/受注をそれぞれサブドメインとしている (コアドメインは明言されていない) 。
 
-> ↪️ 参考：https://speakerdeck.com/askul/ddd-and-clean-architecture-at-lohaco?slide=28
+> ↪️：https://speakerdeck.com/askul/ddd-and-clean-architecture-at-lohaco?slide=28
 
 <br>
 
@@ -212,7 +212,7 @@ ECサイトを運営するアスクルの例。
 
 ![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain-model.png)
 
-> ↪️ 参考：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
+> ↪️：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
 
 <br>
 
@@ -250,7 +250,7 @@ ECサイトを運営するアスクルの例。
 
 ![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
 
-> ↪️ 参考：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
+> ↪️：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
 
 **＊例＊**
 
@@ -262,7 +262,7 @@ ECサイトを運営するアスクルの例。
 
 ![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
@@ -279,7 +279,7 @@ ECサイトを運営するアスクルの例。
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://note.com/alpinc/n/nab47ab9273c6
 > - https://thealp.co.jp/
@@ -292,7 +292,7 @@ ECサイトを運営するアスクルの例。
 
 ![freee_bounded-context.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
 
-> ↪️ 参考：https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
+> ↪️：https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
 
 <br>
 
@@ -312,7 +312,7 @@ ECサイトを運営するアスクルの例。
 
 ![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/context-map.png)
 
-> ↪️ 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> ↪️：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 #### ▼ 記法
 
@@ -360,7 +360,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png)
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4798121967
+> ↪️：https://www.amazon.co.jp/dp/4798121967
 
 #### ▼ ヘキサゴナルアーキテクチャ
 
@@ -374,7 +374,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 本質的には、他の『オニオンアーキテクチャ』『クリーンアーキテクチャ』に同じである。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/B00UX9VJGW/ref=cm_sw_r_tw_dp_S20HJ24MHWTSED7T0ZCP
+> ↪️：https://www.amazon.co.jp/dp/B00UX9VJGW/ref=cm_sw_r_tw_dp_S20HJ24MHWTSED7T0ZCP
 
 #### ▼ オニオンアーキテクチャ
 
@@ -388,7 +388,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/onion-architecture.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 > - https://little-hands.hatenablog.com/entry/2017/10/11/075634
@@ -405,7 +405,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
-> ↪️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+> ↪️：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
 <br>
 
@@ -413,7 +413,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 #### ▼ DDDデザインパターン集
 
-> ↪️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
+> ↪️：https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
 
 <br>
 
@@ -427,7 +427,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 この『具体例から抽象を導く』という作業により、オブジェクト思考分析よりも現実に沿ったモデリングが可能になる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://booth.pm/ja/items/3363104
 > - https://qiita.com/little_hand_s/items/dfa4b156f533ba1a1491
@@ -438,7 +438,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 
-> ↪️ 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> ↪️：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 #### ▼ 記法
 
@@ -452,7 +452,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ビジネスルール/制約を吹き出しに書き込むことにより、ソフトウェアの構造のみでなくビジネスルール/制約も表す。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://booth.pm/ja/items/3363104
 > - https://www.eureka-moments-blog.com/entry/2018/12/29/145802
@@ -464,7 +464,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 いずれの方も非常に参考になる (モデリングは難しい) 。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cinemacity.co.jp/ticket/
 > - https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar

@@ -9,7 +9,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
 <br>
 
@@ -52,7 +52,7 @@ argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジト
 
 なお、パブリックリポジトリの場合は、argocd-repo自体が不要である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repositories.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
@@ -67,7 +67,7 @@ Secretタイプは`repository`とする。
 
 ポーリング対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
 <br>
 
@@ -123,7 +123,7 @@ data:
   password: pass
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> ↪️：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 
 #### ▼ SSH公開鍵認証の場合
 
@@ -179,7 +179,7 @@ data:
 
 ただし、ポーリングする複数のプライベートなチャートリポジトリが、全て`1`個のチャートレジストリ内にある場合は、Secretは`1`個でよい。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
@@ -228,7 +228,7 @@ data:
   password: qux
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> ↪️：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 
 <br>
 
@@ -242,7 +242,7 @@ OCIプロトコルの有効化 (`data.enableOCI`キー) が必要であるが、
 
 ただし、ポーリングする複数のリポジトリが、全て`1`個のOCIレジストリ内にある場合は、Secretは`1`個でよい。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
@@ -297,7 +297,7 @@ data:
 
 AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 > - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
@@ -318,7 +318,7 @@ argocd-repoとは異なり、`1`個の認証情報で複数にリポジトリに
 
 なお、パブリックリポジトリの場合は、argocd-repo-creds自体が不要である。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
@@ -392,7 +392,7 @@ ArgoCDは、argocd-repo-credsの`data.url`キーを使用して、argocd-repoの
 
 最長一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`data.username`キー、`data.password`キー) が適用される。
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
 <br>
 
@@ -406,7 +406,7 @@ ArgoCDは、argocd-repo-credsの`data.url`キーを使用して、argocd-repoの
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
 - Webhookを送信するためのSSL証明書
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
 
 <br>
 
@@ -532,7 +532,7 @@ data:
 
 ```
 
-> ↪️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
 
 <br>
 
@@ -591,7 +591,7 @@ data:
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
 > - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
@@ -645,7 +645,7 @@ $ argocd login <ArgoCDのドメイン名> \
     --sso
 ```
 
-> ↪️ 参考：https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366
+> ↪️：https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366
 
 `【４】`
 
@@ -680,7 +680,7 @@ cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been config
 
 もしタイムアウトになる場合、kube-apiserverのIPアドレスのアクセス制限に引っ掛かっていないかを確認する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 > - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125

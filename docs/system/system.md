@@ -9,7 +9,7 @@ description: システムの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: システムの知見を記録しています。
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
-> ↪️ 参考：https://thinkit.co.jp/article/11526
+> ↪️：https://thinkit.co.jp/article/11526
 
 <br>
 
@@ -47,7 +47,7 @@ description: システムの知見を記録しています。
 
 ![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-server_app-server_db-server.png)
 
-> ↪️ 参考：http://www.iwass.co.jp/dev/devweb.html
+> ↪️：http://www.iwass.co.jp/dev/devweb.html
 
 <br>
 

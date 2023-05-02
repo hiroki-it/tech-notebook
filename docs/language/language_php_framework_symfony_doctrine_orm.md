@@ -9,7 +9,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ Symfonyに組み込まれているORM。
 
 Data Mapperパターンで実装されている。
 
-> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/tutorials/getting-started.html
+> ↪️：https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/tutorials/getting-started.html
 
 <br>
 
@@ -40,7 +40,7 @@ CRUD処理に必要なSQLを保持し、トランザクションによってSQL�
 $queryBuilder = $this->createQueryBuilder();
 ```
 
-> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
+> ↪️：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
 
 <br>
 
@@ -140,7 +140,7 @@ $queryBuilder->getConnection()
 
 SQLインジェクションについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
 
 **＊実装例＊**
 
@@ -253,6 +253,6 @@ try{
 }
 ```
 
-> ↪️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
+> ↪️：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
 
 <br>

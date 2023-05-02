@@ -9,13 +9,13 @@ description: システム品質特性＠システムの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. 一覧
 
-> ↪️ 参考：https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
+> ↪️：https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
 
 <br>
 
@@ -25,7 +25,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 システムで仮に障害が起こったとしても、システムの利用可能な時間をどれだけ長くできるかを程度を表す。
 
-> ↪️ 参考：https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
+> ↪️：https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
 
 <br>
 
@@ -39,7 +39,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 ただし、複数のハードウェアを用意することは大変なため、仮想環境の文脈で説明されることが多い。
 
-> ↪️ 参考：https://it-trend.jp/words/availability
+> ↪️：https://it-trend.jp/words/availability
 
 #### ▼ ロードバランシング
 
@@ -47,7 +47,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 また、いずれかのコンポーネントで障害が起こった場合に、正常なコンポーネントにルーティングするようにし、システム全体としての稼働時間を長くする。
 
-> ↪️ 参考：https://knowledge.sakura.ad.jp/6274/#i-3
+> ↪️：https://knowledge.sakura.ad.jp/6274/#i-3
 
 <br>
 
@@ -65,7 +65,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 いずれかの稼働中インスタンスで障害が発生した場合、障害が発生したインスタンスをロードバランサーから切り離す。
 
-> ↪️ 参考：https://www.fe-siken.com/kakomon/29_aki/q13.html
+> ↪️：https://www.fe-siken.com/kakomon/29_aki/q13.html
 
 <br>
 
@@ -81,7 +81,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 稼働中インスタンスで障害が発生した場合、待機中インスタンスを稼働中インスタンスに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.idcf.jp/words/failover.html
 > - https://www.itpassportsiken.com/kakomon/02_yosou/q60.html
@@ -90,7 +90,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 インバウンド通信のルーティング先を待機中インスタンスに切り替える時、手動で切り替えることを『スイッチオーバー』、自動的に切り替えることを『フェイルオーバー』という。
 
-> ↪️ 参考：https://www.idcf.jp/words/failover.html
+> ↪️：https://www.idcf.jp/words/failover.html
 
 <br>
 
@@ -122,7 +122,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 システムが求められる能力を、定められた条件下で定められた期間にわたり、障害を発生させることなく実行する程度のこと。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4873117917
+> ↪️：https://www.amazon.co.jp/dp/4873117917
 
 <br>
 
@@ -136,7 +136,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 #### ▼ SLOの遵守
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_site_reliability_engineering.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_site_reliability_engineering.html
 
 <br>
 
@@ -150,7 +150,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 ![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアップ.png)
 
-> ↪️ 参考：https://www.idcf.jp/words/scale-out.html
+> ↪️：https://www.idcf.jp/words/scale-out.html
 
 <br>
 
@@ -162,7 +162,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 ![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアウト.png)
 
-> ↪️ 参考：https://www.idcf.jp/words/scale-out.html
+> ↪️：https://www.idcf.jp/words/scale-out.html
 
 <br>
 
@@ -178,7 +178,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 ![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
 
-> ↪️ 参考：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+> ↪️：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
 
 #### ▼ スイッチオーバー、フェイルオーバー
 
@@ -192,13 +192,13 @@ description: システム品質特性＠システムの知見を記録してい�
 
 `1`個の処理を分担できる複数の稼働中ノード (プライマリーインスタンス、スタンバイインスタンス) を設置しつつ、ロードバランシングできるようにした冗長化方法のこと。
 
-> ↪️ 参考：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+> ↪️：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
 
 #### ▼ スプリットブレイン問題
 
 プライマリーインスタンスとスタンバイインスタンスの間で通信障害が起こり、複数のプライマリーインスタンスが存在してしまう問題のこと。
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
 
 <br>
 
@@ -214,7 +214,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 記入中...
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/YoshiiRyo1/document-templates-for-aws/blob/master/survey/doc_source/non-functional-requirement.md
 > - https://dev.classmethod.jp/articles/survey-non-functional-requirement/
@@ -237,7 +237,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 ![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
 > - https://en.wikipedia.org/wiki/List_of_system_quality_attributes

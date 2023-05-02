@@ -9,7 +9,7 @@ description: Kiali＠CNCFプロジェクトの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 ![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kiali_architecture.png)
 
-> ↪️ 参考：https://kiali.io/docs/architecture/architecture/
+> ↪️：https://kiali.io/docs/architecture/architecture/
 
 <br>
 
@@ -35,7 +35,7 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 アーキテクチャの図中で点線は、バックエンドコンポーネントがIstiodコントロールプレーンに間接的に依存していることを表している。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kiali.io/docs/architecture/architecture/#kiali-back-end
 > - https://kiali.io/docs/faq/general/#requiredmetrics
@@ -52,13 +52,13 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 その他、テレメトリー収集ツール (例：Jaeger、Grafana) と連携し、Kiali上のデータから連携先のツールのURLにリダイレクトできるようにする。
 
-> ↪️ 参考：https://kiali.io/docs/architecture/architecture/#kiali-front-end
+> ↪️：https://kiali.io/docs/architecture/architecture/#kiali-front-end
 
 #### ▼ グラフ化手法
 
 Kialiは、cytoscape.jsパッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istioから収集したメトリクスをグラフ化する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs
 > - https://blog.js.cytoscape.org/2020/05/11/layouts/#choice-of-layout
@@ -144,7 +144,7 @@ Kialiのバージョンは、Istioと対応関係にある。
 
 Kialiのバージョンに応じたリビジョン番号のIstioを指定する。
 
-> ↪️ 参考：https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility
+> ↪️：https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility
 
 <br>
 
@@ -189,7 +189,7 @@ spec:
 
 アプリコンテナ間 (Pod間) の通信を表示するために、Appグラフを選択する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kiali.io/docs/features/topology/#graph-types
 > - https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml
@@ -229,7 +229,7 @@ spec:
 - 複数のNamespaceに`istio-proxy`コンテナをインジェクションしている場合、Serviceとマイクロサービスが`NS`とついた線で囲われる。
 - 特定のマイクロサービスに複数の`subset`値 (例：`v1`、`v2`) が付与されている場合、それらが`A`とついた線で囲われる。
 
-> ↪️ 参考：https://istio.io/v1.14/docs/tasks/observability/kiali/#generating-a-graph
+> ↪️：https://istio.io/v1.14/docs/tasks/observability/kiali/#generating-a-graph
 
 <br>
 
@@ -239,7 +239,7 @@ Kialiでは、Istioのマニフェストを検証できる。
 
 ダッシュボード (Serviceタブ、Istio Configタブ) のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
+> ↪️：https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
 
 <br>
 
@@ -247,7 +247,7 @@ Kialiでは、Istioのマニフェストを検証できる。
 
 レスポンスタイムやエラー率を基点として、原因になっているマイクロサービスを特定していく。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021
@@ -260,16 +260,16 @@ Kialiでは、Istioのマニフェストを検証できる。
 
 #### ▼ メトリクスとの紐付け
 
-> ↪️ 参考：https://kiali.io/docs/features/tracing/#metric-correlation
+> ↪️：https://kiali.io/docs/features/tracing/#metric-correlation
 
 #### ▼ ログとの紐付け
 
-> ↪️ 参考：https://kiali.io/docs/features/tracing/#logs-correlation
+> ↪️：https://kiali.io/docs/features/tracing/#logs-correlation
 
 <br>
 
 ### サービスメッシュトポロジーとの紐付け
 
-> ↪️ 参考：https://kiali.io/docs/features/tracing/#graph-correlation
+> ↪️：https://kiali.io/docs/features/tracing/#graph-correlation
 
 <br>

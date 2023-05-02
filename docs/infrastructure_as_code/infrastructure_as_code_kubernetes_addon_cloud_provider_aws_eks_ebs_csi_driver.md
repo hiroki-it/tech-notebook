@@ -9,7 +9,7 @@ description: AWS EBS CSIドライバー＠AWS EKSアドオンの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ PersistentVolumeにAWS EBSを紐付け、PodがAWS EBSをPersistentVolumeとし�
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-> ↪️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
+> ↪️：https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
 <br>
 
@@ -49,7 +49,7 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon#example-usage
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html
@@ -82,7 +82,7 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
 }
 ```
 
-> ↪️ 参考：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
+> ↪️：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
 
 また、StorageClassを定義する必要があるが、これはTerraformでもマニフェストでもどちらでもよい。
 
@@ -112,7 +112,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/ja/docs/concepts/storage/storage-classes/
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
@@ -147,7 +147,7 @@ $ helm repo update
 $ helm install <リリース名> <リポジトリ名>/aws-ebs-csi-driver -n kube-system --version=<バージョンタグ>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver
 > - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md#helm
@@ -217,7 +217,7 @@ spec:
     volumeHandle: vol-*****
 ```
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 #### ▼ PersistentVolumeClaim
 
@@ -277,7 +277,7 @@ spec:
             claimName: foo-persistent-volume-claim
 ```
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 <br>
 
@@ -330,7 +330,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 }
 ```
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 #### ▼ PersistentVolumeClaim
 
@@ -388,6 +388,6 @@ spec:
             claimName: foo-persistent-volume-claim
 ```
 
-> ↪️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0
+> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0
 
 <br>

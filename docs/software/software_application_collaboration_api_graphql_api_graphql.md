@@ -9,7 +9,7 @@ description: GraphQL＠RESTful-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ GraphQL-APIは、スキーマ、クエリ、から構成される。
 
 ![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/graphql-api.png)
 
-> ↪️ 参考：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
+> ↪️：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
 
 <br>
 
@@ -33,7 +33,7 @@ GraphQL-APIは、スキーマ、クエリ、から構成される。
 
 GraphQL-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
 
-> ↪️ 参考：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88
+> ↪️：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88
 
 <br>
 
@@ -41,7 +41,7 @@ GraphQL-APIが受信するCRUDのデータ型や必須データを定義した�
 
 GraphQL-APIに送信するCRUDの実際のデータを定義したもの。
 
-> ↪️ 参考：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E5%95%8F%E5%90%88%E3%81%9B%E8%A8%80%E8%AA%9E
+> ↪️：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E5%95%8F%E5%90%88%E3%81%9B%E8%A8%80%E8%AA%9E
 
 <br>
 
@@ -69,13 +69,13 @@ type User {
 }
 ```
 
-> ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
+> ↪️：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
 #### ▼ クエリ
 
 データ読出のクエリを定義する。
 
-> ↪️ 参考：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E3%82%AF%E3%82%A8%E3%83%AA
+> ↪️：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E3%82%AF%E3%82%A8%E3%83%AA
 
 **＊例＊**
 
@@ -107,7 +107,7 @@ $ curl \
 }
 ```
 
-> ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
+> ↪️：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
 <br>
 
@@ -140,13 +140,13 @@ input UserCreateInput {
 }
 ```
 
-> ↪️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#mutation
+> ↪️：https://zenn.dev/offers/articles/20220609-graphql-onboarding#mutation
 
 #### ▼ クエリ
 
 データ作成/更新/削除のクエリを定義する。
 
-> ↪️ 参考：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%83%9F%E3%83%A5%E3%83%BC%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+> ↪️：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%83%9F%E3%83%A5%E3%83%BC%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 **＊例＊**
 
@@ -176,7 +176,7 @@ $ curl \
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://zenn.dev/offers/articles/20220609-graphql-onboarding#mutation
 > - https://stackoverflow.com/a/64110554

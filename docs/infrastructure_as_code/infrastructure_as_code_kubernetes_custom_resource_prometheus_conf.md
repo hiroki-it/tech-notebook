@@ -9,7 +9,7 @@ description: 設定ファイル＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ Prometheusを設定する。
 
 `/etc/prometheus`ディレクトリ配下におく。
 
-> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
 <br>
 
@@ -37,7 +37,7 @@ global:
   evaluation_interval: 15s
 ```
 
-> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
+> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 
 <br>
 
@@ -53,7 +53,7 @@ alerting:
             - alertmanager:9093
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://amateur-engineer-blog.com/alertmanager-docker-compose/
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
@@ -111,13 +111,13 @@ groups:
           description: 【 {{ $labels.app }} 】{{ $labels.env }} 環境で、Podのメモリ使用率が {{ $value }} になりました。
 ```
 
-> ↪️ 参考：https://amateur-engineer-blog.com/alertmanager-docker-compose/
+> ↪️：https://amateur-engineer-blog.com/alertmanager-docker-compose/
 
 #### ▼ scrape_configsセクション
 
 Retrievalのルールを設定する。
 
-> ↪️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
+> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 
 #### ▼ static_configs
 
@@ -137,7 +137,7 @@ scrape_configs:
           - <Node exporterの稼働するサーバーのIPアドレス>:9100
 ```
 
-> ↪️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
+> ↪️：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
 
 #### ▼ sd_configs
 
@@ -169,7 +169,7 @@ scrape_configs:
         action: keep
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
 > - https://christina04.hatenablog.com/entry/prometheus-service-discovery
@@ -188,7 +188,7 @@ global:
   resolve_timeout: 5m
 ```
 
-> ↪️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
+> ↪️：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
 
 <br>
 
@@ -216,7 +216,7 @@ route:
       severity: critical
 ```
 
-> ↪️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#route
+> ↪️：https://prometheus.io/docs/alerting/latest/configuration/#route
 
 #### ▼ match
 
@@ -256,7 +256,7 @@ receivers:
       - routing_key: *****
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config

@@ -9,7 +9,7 @@ description: PromQL＠メトリクス
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: PromQL＠メトリクス
 
 特定の時点の時系列データのこと。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#instant-vector-selectors
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
@@ -30,7 +30,7 @@ description: PromQL＠メトリクス
 
 特定の期間の時系列データのこと。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
@@ -39,7 +39,7 @@ description: PromQL＠メトリクス
 
 浮動小数点の数値型データのこと。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#float-literals
@@ -48,7 +48,7 @@ description: PromQL＠メトリクス
 
 文字列型データのこと。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#string-literals
@@ -66,13 +66,13 @@ description: PromQL＠メトリクス
 sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destination_app)
 ```
 
-> ↪️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
+> ↪️：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
 
 #### ▼ count
 
 期間内の合計数を算出する。
 
-> ↪️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
+> ↪️：https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
@@ -85,7 +85,7 @@ increase(foo_metrics[5m])
 = rate(foo_metrics[1h]) * 5 * 60
 ```
 
-> ↪️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+> ↪️：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 #### ▼ rate
 
@@ -98,7 +98,7 @@ increase(foo_metrics[5m])
 rate(foo_metrics[1h])
 ```
 
-> ↪️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
+> ↪️：https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ `[]` (ウィンドウ)
 
@@ -109,7 +109,7 @@ rate(foo_metrics[1h])
 rate(foo_metrics[5m])
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
 > - https://christina04.hatenablog.com/entry/prometheus-rate
@@ -153,7 +153,7 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
-> ↪️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> ↪️：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 <br>
 
@@ -188,7 +188,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 1.2
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
 > - https://www.robustperception.io/how-much-space-does-the-wal-take-up/
@@ -212,6 +212,6 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 60 * 60 * 24
 ```
 
-> ↪️ 参考：https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
+> ↪️：https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
 
 <br>

@@ -9,7 +9,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 #### ▼ インストール
 
-> ↪️ 参考：https://getcomposer.org/download/
+> ↪️：https://getcomposer.org/download/
 
 ```bash
 # インストーラーをダウンロードする。
@@ -68,7 +68,7 @@ $ php -r "unlink('composer-setup.php');"
 }
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://getcomposer.org/doc/04-schema.md#autoload
 > - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
@@ -93,7 +93,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#config
+> ↪️：https://getcomposer.org/doc/04-schema.md#config
 
 #### ▼ require
 
@@ -167,7 +167,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#package-links
+> ↪️：https://getcomposer.org/doc/04-schema.md#package-links
 
 #### ▼ scripts
 
@@ -198,7 +198,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#scripts
+> ↪️：https://getcomposer.org/doc/04-schema.md#scripts
 
 #### ▼ version
 
@@ -216,7 +216,7 @@ Composerのバージョンを設定する。
 }
 ```
 
-> ↪️ 参考：https://getcomposer.org/doc/04-schema.md#version
+> ↪️：https://getcomposer.org/doc/04-schema.md#version
 
 <br>
 
@@ -312,7 +312,7 @@ $ composer clear-cache
 $ composer create-project --prefer-dist laravel/lumen .
 ```
 
-> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#create-project
+> ↪️：https://getcomposer.org/doc/03-cli.md#create-project
 
 <br>
 
@@ -354,7 +354,7 @@ $ composer dump-autoload
 {"autoload": {"psr-4": {}}}
 ```
 
-> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
+> ↪️：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
 
 <br>
 
@@ -366,7 +366,7 @@ $ composer dump-autoload
 $ composer init
 ```
 
-> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#init
+> ↪️：https://getcomposer.org/doc/03-cli.md#init
 
 <br>
 
@@ -380,7 +380,7 @@ $ composer init
 $ composer install
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://getcomposer.org/doc/03-cli.md#install-i
 > - https://prograshi.com/framework/laravel/require-update-install/
@@ -429,7 +429,7 @@ $ composer install --prefer-source
 
 指定したパッケージをアンインストールした後、再インストールする。
 
-> ↪️ 参考：https://getcomposer.org/doc/03-cli.md#reinstall
+> ↪️：https://getcomposer.org/doc/03-cli.md#reinstall
 
 ```bash
 $ composer reinstall <パッケージ名>
@@ -457,7 +457,7 @@ $ composer install -vvv
 $ composer remove <パッケージ名>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/
 > - https://getcomposer.org/doc/03-cli.md#remove
@@ -474,7 +474,7 @@ $ composer remove <パッケージ名>
 
 コマンドを使用せずに自分で実装しても良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://getcomposer.org/doc/03-cli.md#require
 > - https://prograshi.com/framework/laravel/require-update-install/
@@ -512,7 +512,7 @@ $ composer <スクリプト名>
 $ composer update
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://getcomposer.org/doc/03-cli.md#update
 > - https://prograshi.com/framework/laravel/require-update-install/

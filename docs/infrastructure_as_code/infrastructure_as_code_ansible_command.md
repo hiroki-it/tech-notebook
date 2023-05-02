@@ -9,7 +9,7 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：<https://hiroki-it.github.io/tech-notebook/>
+> ↪️：<https://hiroki-it.github.io/tech-notebook/>
 
 <br>
 
@@ -19,7 +19,7 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 ansible-vaultプラグインによって暗号化されたファイルを使用して、プロビジョニングを実行する。
 
-> ↪️ 参考：<https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
+> ↪️：<https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
@@ -43,7 +43,7 @@ inventoryファイルを指定する。
 
 基本的には、ディレクトリを指定した方が良い。
 
-> ↪️ 参考：<https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
+> ↪️：<https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
@@ -73,7 +73,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories
 
 指定した暗号化済みファイルを復号化する。
 
-> ↪️ 参考：<https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
+> ↪️：<https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
 
 ```bash
 $ ansible-vault decrypt parameters.yml
@@ -100,7 +100,7 @@ $ANSIBLE_VAULT;1.1;AES256
 *****
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - <https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
 > - <https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
@@ -115,7 +115,7 @@ $ANSIBLE_VAULT;1.1;AES256
 
 `inventory`ファイルを指定し、`json`形式に変換する。
 
-> ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
+> ↪️：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 ```bash
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
@@ -131,7 +131,7 @@ $ ansible-inventory -i ./inventories/inventory --list
 
 `inventory`ファイルを指定し、`yml`形式に変換する。
 
-> ↪️ 参考：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
+> ↪️：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 ```bash
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y

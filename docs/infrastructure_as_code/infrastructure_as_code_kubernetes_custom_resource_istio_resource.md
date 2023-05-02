@@ -9,7 +9,7 @@ description: リソース＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Node外からイ�
 
 KubernetesリソースのIngressの代わりとして使用できる。
 
-> ↪️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
+> ↪️：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 
 #### ▼ IngressGatewayの仕組み
 
@@ -111,7 +111,7 @@ spec:
 # 重要なところ以外を省略しているため、全体像はその都度確認すること。
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
@@ -129,7 +129,7 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
@@ -138,7 +138,7 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/a/73824193
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
@@ -155,7 +155,7 @@ IngressGatewayの能力のうち、IngressGatewayで受信したインバウン�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
@@ -168,7 +168,7 @@ Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件�
 
 VirtualServiceの設定値は、Envoyのフロントプロキシの設定値としてIstioリソースに適用される。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
@@ -181,7 +181,7 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 | API GatewayをIstioで管理する場合   | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。                                    |
 | API GatewayをIstioで管理しない場合 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
 
-> ↪️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+> ↪️：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
 <br>
 
@@ -195,7 +195,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
-> ↪️ 参考：https://knowledge.sakura.ad.jp/20489/
+> ↪️：https://knowledge.sakura.ad.jp/20489/
 
 <br>
 
@@ -207,7 +207,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 ![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
 
-> ↪️ 参考：https://tech.uzabase.com/entry/2018/11/26/110407
+> ↪️：https://tech.uzabase.com/entry/2018/11/26/110407
 
 <br>
 
@@ -220,13 +220,13 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 | 通信方向       | 能力                                                                                                                                                                                   | 補足                                                                                                   |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                                                                        |
-| アウトバウンド | `istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。                                                                                         | ↪️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+| アウトバウンド | `istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。                                                                                         | ↪️：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 
 DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値として`istio-proxy`コンテナに適用される。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
@@ -240,7 +240,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 Pod間通時に、相互TLS認証を実施する。
 
-> ↪️ 参考：https://news.mynavi.jp/techplus/article/kubernetes-30/
+> ↪️：https://news.mynavi.jp/techplus/article/kubernetes-30/
 
 <br>
 
@@ -248,6 +248,6 @@ Pod間通時に、相互TLS認証を実施する。
 
 Pod間通信時に、JWTによるBearer認証を実施する。
 
-> ↪️ 参考：https://news.mynavi.jp/techplus/article/kubernetes-30/
+> ↪️：https://news.mynavi.jp/techplus/article/kubernetes-30/
 
 <br>

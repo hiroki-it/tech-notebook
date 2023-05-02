@@ -9,7 +9,7 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内での�
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
-> ↪️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
+> ↪️：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
 
 <br>
 
@@ -43,7 +43,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
 
-> ↪️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
+> ↪️：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
 <br>
 
@@ -53,7 +53,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 任意のIDプロバイダーで認証済みのユーザー (フェデレーテッドユーザー) にIAMロールを付与することにより、AWSリソースにアクセスできるようにできる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
 
 <br>
 
@@ -63,7 +63,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 OIDCまたはWeb IDフェデレーションによる認証/認可を使用する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ CognitoをIDプロバイダーとする場合
 
@@ -139,7 +139,7 @@ metadata:
 
 IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
@@ -157,7 +157,7 @@ IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 SAMLによる認証/認可を使用する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
 
 <br>
 
@@ -169,7 +169,7 @@ IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIA
 
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
 
-> ↪️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
+> ↪️：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
 
 <br>
 
@@ -181,7 +181,7 @@ IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲で�
 
 IAMユーザーの場合、外部IDが必要になる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
 #### ▼ AWSリソース
 
@@ -189,7 +189,7 @@ IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲で�
 
 IAMリソースの場合、外部IDが必要になる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
 
 #### ▼ フェデレーテッドユーザー
 
@@ -197,7 +197,7 @@ OIDC、SAML、によって発行されたユーザーに委譲できる。
 
 OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
@@ -230,7 +230,7 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 }
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ 外部OIDC
 
@@ -254,7 +254,7 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
 }
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ AWS SAML
 
@@ -281,7 +281,7 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 }
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 <br>
 
@@ -382,7 +382,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 クレデンシャルの失効時間に合わせて、STSはこの`.json`ファイルを定期的に更新する。
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
+> ↪️：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 ```yaml
 {
@@ -426,7 +426,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 クレデンシャル情報を環境変数として出力し、使用できるようにする。
 
-> ↪️ 参考：https://stedolan.github.io/jq/
+> ↪️：https://stedolan.github.io/jq/
 
 ```bash
 #!/bin/bash

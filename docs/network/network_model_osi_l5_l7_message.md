@@ -9,7 +9,7 @@ description: メッセージ＠L5 - L7の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -37,7 +37,7 @@ description: メッセージ＠L5 - L7の知見を記録しています。
 
 コンテキストクラスが用意されている。
 
-> ↪️ 参考：https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8
+> ↪️：https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8
 
 #### ▼ Ginの場合
 
@@ -45,7 +45,7 @@ Goのフレームワーク。
 
 コンテキスト構造体が用意されている。
 
-> ↪️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context
+> ↪️：https://pkg.go.dev/github.com/gin-gonic/gin#Context
 
 #### ▼ Nuxt.jsの場合
 
@@ -53,7 +53,7 @@ JavaScriptのフレームワーク。
 
 コンテキストオブジェクトが用意されている。
 
-> ↪️ 参考：https://nuxtjs.org/ja/docs/internals-glossary/context/
+> ↪️：https://nuxtjs.org/ja/docs/internals-glossary/context/
 
 #### ▼ Lambdaの場合
 
@@ -151,7 +151,7 @@ text=a&text2=b
 
 GET送信ではあるが、ボディにクエリパラメーターを記述して送信する方法がある。
 
-> ↪️ 参考：https://github.com/postmanlabs/postman-app-support/issues/131
+> ↪️：https://github.com/postmanlabs/postman-app-support/issues/131
 
 <br>
 
@@ -257,14 +257,14 @@ X-Powered-By: PHP/7.3.22
 | `401`  | 認証エラー                                     | 誤ったリクエストである。認証プロセスで正しいトークンが発行されず、認可プロセスのリクエストでこの誤ったトークンを送信したことを表す。認可の失敗ではなく、認証の失敗であることに注意する。                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `403`  | 認可エラーによるトークン所有者の認可スコープ外 | 誤ったリクエストである。APIに認証プロセスが存在し、トークンの発行が必要だとする。認証プロセスにて正しいトークンが発行されたが、認可プロセスにてトークンの所有者の認可スコープ外と判定されたことを表す。                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | 同上   | 送信元IPアドレスの参照禁止                     | 誤ったリクエストである。APIに認証/認可プロセスが存在せず、トークン発行と参照権限検証が不要だとする。送信元IPアドレスに参照権限がないと判定されてことを表す。                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `404`  | Webページが見つからない                        | 誤ったリクエストである。存在しないWebページをリクエストしていることを表す。もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが`404`ステータスを自動的に返信してくれるが、独自の`404`ページを用意した場合は、そのままでは検索エンジンは`200`ステータスを返信してしまうため、アプリケーション側で明示的に`404`ステータスを返信する必要がある。アプリケーションは`404`ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを`200`ステータスと扱ってしまう (ブラウザでは`200`ステータスが返信される) 現象を『ソフト`404`』という。<br>↪️ 参考：https://www.sakurasaku-labo.jp/blogs/soft-404-error |
+| `404`  | Webページが見つからない                        | 誤ったリクエストである。存在しないWebページをリクエストしていることを表す。もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが`404`ステータスを自動的に返信してくれるが、独自の`404`ページを用意した場合は、そのままでは検索エンジンは`200`ステータスを返信してしまうため、アプリケーション側で明示的に`404`ステータスを返信する必要がある。アプリケーションは`404`ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを`200`ステータスと扱ってしまう (ブラウザでは`200`ステータスが返信される) 現象を『ソフト`404`』という。<br>↪️：https://www.sakurasaku-labo.jp/blogs/soft-404-error |
 | `405`  | 許可されていないHTTPメソッド                   | 誤ったリクエストである。エンドポイントのパスは正しいが、HTTPメソッドは誤っていることを表す。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `409`  | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html                                                                                                                                                                                                                                                                                           |
+| `409`  | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>↪️：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html                                                                                                                                                                                                                                                                                           |
 | `412`  | リソースアクセスエラー                         | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `422`  | バリデーションエラー                           | 誤ったリクエストである。送信されたパラメーターが誤っていることを表す。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `499`  | 接続切断エラー                                 | 誤ったリクエストである。リバースプロキシサーバー (例：Nginx) が持つ非標準のステータスコードであり、一般的には使用されない。プロキシの先のシステムからのレスポンスの返信が遅く (またはレスポンスがなく) 、途中でプロキシが接続を切断してしまったことを表す。`504`とやや似ている。<br>↪️ 参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200                                                                                                                                                                                                                                                                                    |
+| `499`  | 接続切断エラー                                 | 誤ったリクエストである。リバースプロキシサーバー (例：Nginx) が持つ非標準のステータスコードであり、一般的には使用されない。プロキシの先のシステムからのレスポンスの返信が遅く (またはレスポンスがなく) 、途中でプロキシが接続を切断してしまったことを表す。`504`とやや似ている。<br>↪️：https://secure.netowl.jp/bbs/detail.cgi?td=4200                                                                                                                                                                                                                                                                                    |
 | `500`  | サーバーエラー                                 | サーバーの処理でランタイムエラーが起こっていることを表す。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `502`  | プロキシ先からのエラーレスポンス               | 誤ったリクエストである。リクエストがプロキシを介して他のシステムにリダイレクトされる場合に、プロキシとその先のシステムまではリクエストが送信されているが、`504`ステータスとは異なり、何らかのエラーのレスポンスが返信されていることを表す。<br>↪️ 参考：https://e-words.jp/w/502%E3%82%A8%E3%83%A9%E3%83%BC.html                                                                                                                                                                                                                                                                                                                |
+| `502`  | プロキシ先からのエラーレスポンス               | 誤ったリクエストである。リクエストがプロキシを介して他のシステムにリダイレクトされる場合に、プロキシとその先のシステムまではリクエストが送信されているが、`504`ステータスとは異なり、何らかのエラーのレスポンスが返信されていることを表す。<br>↪️：https://e-words.jp/w/502%E3%82%A8%E3%83%A9%E3%83%BC.html                                                                                                                                                                                                                                                                                                                |
 | `503`  | ビジネスロジックエラー                         | エラーは起こらないが、ビジネス上ありえないデータをリクエストしていることを表す。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `504`  | プロキシ先からのレスポンス返信なし             | 誤ったリクエストである。リクエストがプロキシを介して他のシステムにリダイレクトされる場合に、プロキシまではリクエストが送信されているが、`502`ステータスとは異なり、その先のシステムからレスポンスが全く返信されないことを表す。                                                                                                                                                                                                                                                                                                                                                                                                 |
 
@@ -272,7 +272,7 @@ X-Powered-By: PHP/7.3.22
 
 ### 似たレスポンスの違い
 
-> ↪️ 参考：https://qiita.com/unsoluble_sugar/items/b080a16701946fcfce70
+> ↪️：https://qiita.com/unsoluble_sugar/items/b080a16701946fcfce70
 
 #### ▼ リダイレクトとリライトの違い
 
@@ -286,7 +286,7 @@ X-Powered-By: PHP/7.3.22
 
 その他の違いについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
+> ↪️：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
 
 #### ▼ リライトとフォワードの違い
 
@@ -314,7 +314,7 @@ POST/PUT送信で、ボディパラメーターのデータ形式を表す識別
 
 GET送信には不要である。
 
-> ↪️ 参考：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
+> ↪️：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
 | トップレベルタイプ | サブレベルタイプ      | 意味                                |
 | ------------------ | --------------------- | ----------------------------------- |
@@ -330,7 +330,7 @@ GET送信には不要である。
 |                    | jpeg                  | jpegファイル                        |
 |                    | gif                   | gifファイル                         |
 
-> ↪️ 参考：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
+> ↪️：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
 #### ▼ データ型の指定方法
 
@@ -454,7 +454,7 @@ Set-Cookie: sessionId=<セッションID>
 
 GoogleConsoleにおけるセッションについては、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://support.google.com/analytics/answer/6086069?hl=ja
+> ↪️：https://support.google.com/analytics/answer/6086069?hl=ja
 
 #### ▼ セッションIDの発行、セッションデータの作成
 
@@ -508,7 +508,7 @@ php_value[session.save_handler] = redis
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://github.com/phpredis/phpredis/issues/1097
 > - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
@@ -534,7 +534,7 @@ session.gc_probability = 1
 session.gc_divisor = 1
 ```
 
-> ↪️ 参考：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
+> ↪️：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
 
 #### ▼ 仕組み
 

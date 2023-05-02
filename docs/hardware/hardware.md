@@ -9,7 +9,7 @@ description: ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: ハードウェアの知見を記録しています。
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
-> ↪️ 参考：https://thinkit.co.jp/article/11526
+> ↪️：https://thinkit.co.jp/article/11526
 
 <br>
 
@@ -29,6 +29,6 @@ description: ハードウェアの知見を記録しています。
 
 ![hardware_computer_five-parts](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware_computer_five-parts.png)
 
-> ↪️ 参考：https://living-maou.com/computer-composition/
+> ↪️：https://living-maou.com/computer-composition/
 
 <br>

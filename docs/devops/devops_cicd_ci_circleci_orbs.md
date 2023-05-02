@@ -9,7 +9,7 @@ description: Orbs＠CircleCIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -71,7 +71,7 @@ jobs:
           region: $AWS_REGION_ENV_VAR_NAME
 ```
 
-> ↪️ 参考：https://github.com/circleci/circleci-docs/issues/1650
+> ↪️：https://github.com/circleci/circleci-docs/issues/1650
 
 <br>
 
@@ -239,7 +239,7 @@ ECRイメージを使用して、新しいリビジョン番号のECSタスク�
 
 オプションを使用して、`max-poll-attempts` (ポーリングの最大試行回数) と`poll-interval` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
 
-> ↪️ 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
+> ↪️：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
 **＊実装例＊**
 
@@ -407,7 +407,7 @@ workflows:
                 - main
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
+> ↪️：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 
 <br>
 

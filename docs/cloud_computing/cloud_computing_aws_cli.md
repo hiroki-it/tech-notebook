@@ -9,7 +9,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -40,7 +40,7 @@ Default region name [None]: <リージョン名>
 Default output format [None]: <アウトプット形式>
 ```
 
-> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
+> ↪️：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
 
 <br>
 
@@ -111,7 +111,7 @@ AWS CLIを実行するアカウントのアクセスキーIDを設定する。
 aws_access_key_id = *****
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ aws_secret_access_key
 
@@ -124,7 +124,7 @@ AWS CLIを実行するアカウントのシークレットアクセスキーID�
 aws_secret_access_key = *****
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ aws_session_token
 
@@ -137,7 +137,7 @@ aws_secret_access_key = *****
 aws_session_token = *****
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 <br>
 
@@ -152,7 +152,7 @@ AWS CLIの返却値のデータ形式を設定する。
 output = json
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ region
 
@@ -163,7 +163,7 @@ AWS CLIで操作するAWSリソースのリージョンを設定する。
 region = ap-northeast-1
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ role_arn
 
@@ -174,7 +174,7 @@ AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する�
 role_arn = arn:aws:iam::<AWSアカウントID>:role/foo-role
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ role_session_name
 
@@ -185,7 +185,7 @@ IAMロールの委譲後のIAMユーザーの一時的な名前を設定する�
 role_session_name = hiroki.hasegawa
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 #### ▼ source_profile
 
@@ -196,7 +196,7 @@ IAMロールの委譲先のIAMユーザーのプロファイル名を設定す�
 source_profile = default
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 <br>
 
@@ -220,7 +220,7 @@ $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 $ export AWS_DEFAULT_PROFILE=default
 ```
 
-> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+> ↪️：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 #### ▼ AWS_DEFAULT_REGION
 
@@ -240,7 +240,7 @@ $ export AWS_DEFAULT_REGION=ap-northeast-1
 $ export AWS_PROFILE=foo-profile
 ```
 
-> ↪️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+> ↪️：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 #### ▼ AWS_SECRET_ACCESS_KEY
 
@@ -270,7 +270,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 返却されるデータの形式を設定できる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
 
 #### ▼ json
 
@@ -306,7 +306,7 @@ $ aws iam list-users --output text > data.tsv
 
 返却されるデータのページングを設定できる。
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
 
 #### ▼ --max-items
 
@@ -344,7 +344,7 @@ AWSリソースごとに専用のオプションがある。
 
 代わりとして、`jq`コマンドの`select`関数を使用しても良い。
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
 #### ▼ --filter
 
@@ -401,7 +401,7 @@ $ aws ec2 describe-instances \
     --query "SecurityGroups[*].GroupId"
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
+> ↪️：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
 
 <br>
 
@@ -458,7 +458,7 @@ $ aws cloudwatch get-metric-statistics \
       | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
+> ↪️：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
 <br>
 
@@ -499,7 +499,7 @@ $ aws resourcegroupstaggingapi get-resources \
     --tag-filters Key=<タグ名>,Values=<タグ値>
 ```
 
-> ↪️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
+> ↪️：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
 AWSリソースの種類 (ec2、alb、など) を指定して、特定のAWSリソースのみを取得することもできる。
 
@@ -631,7 +631,7 @@ $ aws secretsmanager get-secret-value \
     --output=text
 ```
 
-> ↪️ 参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
+> ↪️：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
 
 <br>
 
@@ -695,7 +695,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
  }
 ```
 
-> ↪️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
+> ↪️：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
 
 <br>
 
@@ -712,7 +712,7 @@ $ aws ec2 authorize-security-group-ingress \
     --region ap-northeast-1
 ```
 
-> ↪️ 参考：https://michimani.net/post/aws-handle-security-group-via-cli/#%e3%82%a4%e3%83%b3%e3%83%90%e3%82%a6%e3%83%b3%e3%83%89%e3%83%ab%e3%83%bc%e3%83%ab%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4
+> ↪️：https://michimani.net/post/aws-handle-security-group-via-cli/#%e3%82%a4%e3%83%b3%e3%83%90%e3%82%a6%e3%83%b3%e3%83%89%e3%83%ab%e3%83%bc%e3%83%ab%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4
 
 #### ▼ revoke-security-group-ingress
 
@@ -725,7 +725,7 @@ $ aws ec2 revoke-security-group-ingress \
     --region ap-northeast-1
 ```
 
-> ↪️ 参考：https://michimani.net/post/aws-handle-security-group-via-cli/#%e3%82%a4%e3%83%b3%e3%83%90%e3%82%a6%e3%83%b3%e3%83%89%e3%83%ab%e3%83%bc%e3%83%ab%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4
+> ↪️：https://michimani.net/post/aws-handle-security-group-via-cli/#%e3%82%a4%e3%83%b3%e3%83%90%e3%82%a6%e3%83%b3%e3%83%89%e3%83%ab%e3%83%bc%e3%83%ab%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4
 
 <br>
 
@@ -741,7 +741,7 @@ AWSにSSOでログインする。
 
 追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
 
-> ↪️ 参考：https://github.com/Versent/saml2aws
+> ↪️：https://github.com/Versent/saml2aws
 
 **＊実行例＊**
 

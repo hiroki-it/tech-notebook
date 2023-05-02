@@ -9,7 +9,7 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: コマンド＠Skaffoldの知見を記録しています。
 $ skaffold <任意のパラメーター> --verbosity=debug
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/references/cli/#skaffold
+> ↪️：https://skaffold.dev/docs/references/cli/#skaffold
 
 <br>
 
@@ -41,7 +41,7 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 $ skaffold build
 ```
 
-> ↪️ 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
+> ↪️：https://skaffold.dev/docs/references/cli/#skaffold-build
 
 #### ▼ --cache-artifacts
 
@@ -147,6 +147,6 @@ $ skaffold run --port-forward
 | `skaffold run`                    | ポートフォワーディングを実行しない |
 | `skaffold run --port-forward`     | ユーザー定義を参照                 |
 
-> ↪️ 参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
+> ↪️：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
 
 <br>

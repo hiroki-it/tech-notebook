@@ -9,7 +9,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -22,7 +22,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 | 工期     | 開発を完了するために必要な『期間』を表す。                                                          |
 | 工数     | 1人が1ヶ月働いた時の作業サイズを`1`と定義した場合、開発を完了するために必要な『作業サイズ』を表す。 |
 
-> ↪️ 参考：https://www.ipa.go.jp/files/000003910.pdf#page12
+> ↪️：https://www.ipa.go.jp/files/000003910.pdf#page12
 
 <br>
 
@@ -38,7 +38,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 この時、『開発規模 (か) 』『工数 (こ) 』『生産性 (せ) 』の単位間の関係は、『みはじ』と同じになる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://monoist.itmedia.co.jp/mn/articles/1109/14/news011.html
 > - https://e-words.jp/w/%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E6%95%B0.html
@@ -114,7 +114,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 ![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p509.jpg)
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ 最早結合点時刻
 
@@ -124,7 +124,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 ![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-1.jpg)
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ 最遅結合点時刻
 
@@ -132,7 +132,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 ![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-2.jpg)
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -140,7 +140,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 チーム内で各タスクを相対的に見積もる方法のこと。
 
-> ↪️ 参考：https://www.mof-mof.co.jp/blog/column/agile-estimation-planning-poker
+> ↪️：https://www.mof-mof.co.jp/blog/column/agile-estimation-planning-poker
 
 <br>
 

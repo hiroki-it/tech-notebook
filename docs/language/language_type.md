@@ -9,7 +9,7 @@ description: 言語の種類＠言語を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: 言語の種類＠言語を記録しています。
 
 ![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プログラミング言語と設計手法の歴史.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
@@ -52,7 +52,7 @@ description: 言語の種類＠言語を記録しています。
 | Scala      |          |        |         ✅         |        |   ✅   |   ✅   |        |
 | SQL        |          |        |                    |        |   ✅   |        |        |
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://web-camp.io/magazine/archives/61816
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
@@ -108,7 +108,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 - Groovy
 - Kotlin
 
-> ↪️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
+> ↪️：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
 <br>
 
@@ -118,7 +118,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 
 プログラミングの構成要素 (データ、変数、関数) に対して、『型』という特性を付与する仕組みのこと。
 
-> ↪️ 参考：https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
+> ↪️：https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
 
 <br>
 

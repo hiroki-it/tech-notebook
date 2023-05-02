@@ -9,7 +9,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 サービスレベルの指標とするメトリクスのこと。
 
-> ↪️ 参考：https://newrelic.com/jp/topics/what-are-slos-slis-slas#toc-sli-
+> ↪️：https://newrelic.com/jp/topics/what-are-slos-slis-slas#toc-sli-
 
 <br>
 
@@ -31,7 +31,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 ユーザーが問題を解決するために辿る一連の行動のこと。
 
-> ↪️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
+> ↪️：https://quaffmedia.com/what-is-critical-user-journey/
 
 #### ▼ クリティカルユーザージャーニーとSLI
 
@@ -39,7 +39,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 クリティカルジャーニーで実行されるアプリケーション機能に関するページのメトリクス (例：ステータスコード、レイテンシー) をSLIとする。
 
-> ↪️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
+> ↪️：https://quaffmedia.com/what-is-critical-user-journey/
 
 **＊例＊**
 
@@ -61,7 +61,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 
 : 商品を購入する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos
 > - https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
@@ -74,7 +74,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 
 クリティカルユーザージャーニーの満足度に影響を与えるメトリクス (リクエストとレスポンスの可用性/遅延/品質、データ処理のカバレッジ/正確性/鮮度/スループット、ストレージのスループット/遅延、など) をSLIとすると良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
 > - https://medium.com/google-cloud-jp/sre-slo-d7c6aee1fb0e
@@ -87,7 +87,7 @@ MTtxメトリクスをSLIとし、そのダッシュボードを作成すると�
 
 具体的には、可用性は稼働時間を基に定量化できる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
@@ -113,7 +113,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 ![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_user-happiness.png)
 
-> ↪️ 参考：https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en
+> ↪️：https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en
 
 <br>
 
@@ -139,7 +139,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 累計`7.2`時間のSLO違反は許容できる。
 
-> ↪️ 参考：https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6
+> ↪️：https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6
 
 #### ▼ バーンレート
 
@@ -153,7 +153,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 ![burn-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burn-rate.png)
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://sre.google/workbook/alerting-on-slos/
 > - https://engineering.mercari.com/blog/entry/20211215-practical_alerting_methods_based_on_customer_impact/
@@ -178,11 +178,11 @@ Datadogでは、平常時のメトリクスのデータから予測値を算出�
 | レスポンスのステータスコード率 | `24`時間当たりの全リクエストのうちで、`50`% 以上のリクエストが`200`ステータスコードになること。            |
 | スループット                   | `24`hのうちの`0.1`(%) 以下の時間にスループット低下を抑えること。                                           |
 
-> ↪️ 参考：https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear
+> ↪️：https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear
 
 #### ▼ 目標値の例 (Google)
 
-> ↪️ 参考：https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons
+> ↪️：https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons
 
 <br>
 
@@ -230,7 +230,7 @@ SLAとして、例えば以下がある。
 
 経産省がSLAのガイドラインを策定している。
 
-> ↪️ 参考：https://www.meti.go.jp/policy/netsecurity/secdoc/contents/downloadfils/080121saasgl.pdf#page=27
+> ↪️：https://www.meti.go.jp/policy/netsecurity/secdoc/contents/downloadfils/080121saasgl.pdf#page=27
 
 #### ▼ 返金率の例 (AWS)
 
@@ -240,7 +240,7 @@ AWSではサービスレベルの項目として、サーバー稼働率を採�
 
 各リソースにSLAが定義されている。
 
-> ↪️ 参考：https://aws.amazon.com/jp/legal/service-level-agreements/
+> ↪️：https://aws.amazon.com/jp/legal/service-level-agreements/
 
 **＊例＊**
 
@@ -256,7 +256,7 @@ AWS EC2、EBS、ECS、EKS、の例を示す。
 
 記入中...
 
-> ↪️ 参考：https://jp-help.mypurecloud.com/articles/service-level-agreements/
+> ↪️：https://jp-help.mypurecloud.com/articles/service-level-agreements/
 
 #### ▼ 保証期間の例 (Google)
 
@@ -268,6 +268,6 @@ SLAの補償期間は一日単位で設定すると良い。
 
 SLA違反の場合には、返金を補償とする場合があるが、これ以外の補償方法でも良い。
 
-> ↪️ 参考：https://www.amazon.co.jp/dp/4873119618
+> ↪️：https://www.amazon.co.jp/dp/4873119618
 
 <br>

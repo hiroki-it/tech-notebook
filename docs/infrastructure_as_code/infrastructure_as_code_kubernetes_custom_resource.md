@@ -9,7 +9,7 @@ description: カスタムリソース＠Kubernetesの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ CRDは、作成も変更もHelmの管理外 (`kubectl`コマンド) で作成/�
 - CRDをアップグレードした場合に、スキーマに機能廃止があると、カスタムリソースで廃止されたその機能を使用できなくなる。
 - CRD自体を誤って削除すると、これに対応するカスタムリソースも自動的に削除される。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
@@ -114,7 +114,7 @@ custom-controllerのチャートをインストールし、後はcustom-controll
 
 例えば『`example.com`』というグループと『`v1`』というバージョンを定義したとすると、カスタムリソースからは`example.com/v1`というAPIからコールできるようになる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
 > - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
@@ -167,7 +167,7 @@ spec:
   group: example.com
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
@@ -189,7 +189,7 @@ spec:
   scope: Namespaced
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
@@ -209,7 +209,7 @@ spec:
   scope: Cluster
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
 > - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
@@ -229,7 +229,7 @@ spec:
   scope: Namespaced
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
 > - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
@@ -265,7 +265,7 @@ kind: Foo
 spec: ...
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ plural
 
@@ -287,7 +287,7 @@ spec:
 $ kubectl get foos
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ singular
 
@@ -309,7 +309,7 @@ spec:
 $ kubectl get foo
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ shortNames
 
@@ -332,7 +332,7 @@ spec:
 $ kubectl get fo
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 <br>
 
@@ -360,7 +360,7 @@ spec:
   ...
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#specify-multiple-versions
+> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#specify-multiple-versions
 
 #### ▼ name
 
@@ -378,7 +378,7 @@ spec:
     - name: v1
 ```
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 #### ▼ served
 
@@ -396,7 +396,7 @@ spec:
     - served: true
 ```
 
-> ↪️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ schema
 
@@ -426,7 +426,7 @@ spec:
                   type: string
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
@@ -445,7 +445,7 @@ spec:
     - storage: true
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
 > - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5

@@ -9,7 +9,7 @@ description: Unix系標準ユーティリティ＠ユーティリティの知見
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> ↪️：https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ $ chmod 600 <ファイルへのパス>
 $ chmod 600 <ファイルへのパス>
 ```
 
-> ↪️ 参考：https://kazmax.zpp.jp/linux_beginner/chmod.html
+> ↪️：https://kazmax.zpp.jp/linux_beginner/chmod.html
 
 <br>
 
@@ -43,7 +43,7 @@ $ chmod 600 <ファイルへのパス>
 $ chmod -R 600 <ディレクトリ名>/
 ```
 
-> ↪️ 参考：http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
+> ↪️：http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
 
 <br>
 
@@ -91,7 +91,7 @@ $ chmod -R 600 <ディレクトリ名>/
 | `g`      | ディレクトリやファイルの所有グループを表す。 |
 | `o`      | その他のアカウントを表す。                   |
 
-> ↪️ 参考：https://kazmax.zpp.jp/linux_beginner/chmod.html
+> ↪️：https://kazmax.zpp.jp/linux_beginner/chmod.html
 
 **＊例＊**
 
@@ -115,7 +115,7 @@ $ chmod -R u+rwx foo
 
 現在の`chmod`コマンドの実行者以外に認可スコープを付与する。
 
-> ↪️ 参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
+> ↪️：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
 
 ```bash
 $ chmod go+r <ファイルへのパス>
@@ -129,7 +129,7 @@ $ chmod go+r <ファイルへのパス>
 
 ユーザー所有権、グループ所有権、を変更する。
 
-> ↪️ 参考：https://webkaru.net/linux/chown-command/
+> ↪️：https://webkaru.net/linux/chown-command/
 
 ```bash
 $ chown <ユーザー所有権>:<グループ所有権> <ファイル名>
@@ -386,7 +386,7 @@ foo.txt: ASCII text
 
 エディタを開き、登録済みのcronファイルを変更/削除する。
 
-> ↪️ 参考：https://nontitle.xyz/archives/1065
+> ↪️：https://nontitle.xyz/archives/1065
 
 ```bash
 $ crontab -e
@@ -422,7 +422,7 @@ HTTPプロトコルでリクエストを送信する。
 
 ダウンロードのためのユーティリティとしては、`curl`コマンドよりも`wget`コマンドの方が良い。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://yamitzky.hatenablog.com/entry/2016/05/13/204107
 > - https://qiita.com/toshihirock/items/c7279fdcf808d3128261
@@ -626,7 +626,7 @@ total                                 557167 390644      140909            74%  
 
 一方で`fdisk`コマンドでは、マウントされているか否かに関わらず、パーティションで区切られた全てのストレージを取得する。
 
-> ↪️ 参考：https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command
+> ↪️：https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command
 
 <br>
 
@@ -638,7 +638,7 @@ total                                 557167 390644      140909            74%  
 
 別途、`colordiff`パッケージを入れると見やすくなる。
 
-> ↪️ 参考：https://kimuson.dev/blog/shell/color_diff/
+> ↪️：https://kimuson.dev/blog/shell/color_diff/
 
 <br>
 
@@ -676,7 +676,7 @@ $ du ./ | sort -n
 
 読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズ、ディレクトリ全体の合計サイズ (KB) 、を再帰的に取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、`-h`オプションを使用しないようにする。
 
-> ↪️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+> ↪️：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 ```bash
 $ du -h ./
@@ -710,7 +710,7 @@ $ du -h ./vendor/foo --max-depth=1
 
 指定したディレクトリ内の合計サイズ (KB) を取得する。
 
-> ↪️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+> ↪️：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 ```bash
 $ du -s ./
@@ -748,7 +748,7 @@ $ echo "$<変数名>"
 
 シェル変数と環境変数については、以下のリンクを参考にせよ。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
 
 ```bash
 # シェル変数を設定
@@ -807,7 +807,7 @@ export PATH
 
 パーティションの一覧を取得する。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
 > - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
@@ -931,7 +931,7 @@ Swap:             0           0           0
 
 メモリ使用率は、以下の計算式で算出できる。
 
-> ↪️ 参考：https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
+> ↪️：https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
 
 ```mathematica
 メモリ使用率 =
@@ -972,7 +972,7 @@ $ cat foo.txt | grep bar
 
 `grep`コマンドを忘れると、後続のコマンドに取得内容をパラメーターとして渡すことになるが、これで問題が起こることがある。
 
-> ↪️ 参考：https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5
+> ↪️：https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5
 
 <br>
 
@@ -1082,7 +1082,7 @@ uid=999 gid=0(root) groups=0(root),999
 | `groups` | プライマリグループのグループ番号を表す。Rootユーザーの場合は、`(root)`がつく。 |
 | `番号`   | プライマリグループ名を表す。                                                   |
 
-> ↪️ 参考：https://kcfran.com/2022/04/06/linux-command-id/
+> ↪️：https://kcfran.com/2022/04/06/linux-command-id/
 
 <br>
 
@@ -1100,7 +1100,7 @@ iptablesの設定を取得/変更する。
 
 全てのChainのルールの一覧を取得する。
 
-> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L
@@ -1136,7 +1136,7 @@ $ iptables -L <Chain名>
 
 全てのChainのルールをコマンド形式で取得する。
 
-> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -S
@@ -1157,7 +1157,7 @@ $ iptables -S
 
 Chain内の各ルールを番号付きで取得する。
 
-> ↪️ 参考：http://redcinfo-c.blogspot.com/2010/09/iptables.html
+> ↪️：http://redcinfo-c.blogspot.com/2010/09/iptables.html
 
 ```bash
 $ iptables --line-number
@@ -1167,7 +1167,7 @@ $ iptables --line-number
 
 指定したテーブル (`filter`、`nat`、`mangle`、`Raw`) を持つChainのみを取得する。
 
-> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L -t nat
@@ -1177,7 +1177,7 @@ $ iptables -L -t nat
 
 ChainのIPアドレスを名前解決せずに、IPアドレスのまま取得する。
 
-> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L -n
@@ -1187,7 +1187,7 @@ $ iptables -L -n
 
 Chain内のルールを詳しく取得する。
 
-> ↪️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> ↪️：https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -L -v
@@ -1259,7 +1259,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ローテションされた過去のログファイルでは、ファイル名の末尾に最終日付 (例：`-20220101`) をつけておく。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - http://proger.blog10.fc2.com/blog-entry-66.html
 > - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
@@ -1396,7 +1396,7 @@ $ lvdisplay
   Block device          253:1
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
 > - https://centossrv.com/lvm-extend.shtml
@@ -1409,7 +1409,7 @@ $ lvdisplay
 
 論理ボリュームに紐づくデバイスファイルを指定し、論理ボリュームのサイズを拡張する。
 
-> ↪️ 参考：https://centossrv.com/lvm-extend.shtml
+> ↪️：https://centossrv.com/lvm-extend.shtml
 
 <br>
 
@@ -1417,7 +1417,7 @@ $ lvdisplay
 
 指定した条件で、論理ボリュームを拡張する。
 
-> ↪️ 参考：https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
+> ↪️：https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
 
 **＊例＊**
 
@@ -1521,7 +1521,7 @@ $ swapoff /swap_volume
 $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
@@ -1534,7 +1534,7 @@ $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 
 種類によって、パラメーターの入力方法が異なる。
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html
 > - https://webkaru.net/linux/mount-command/
@@ -1559,7 +1559,7 @@ $ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクト�
 $ nc <IPアドレス/ドメイン> <ポート番号>
 ```
 
-> ↪️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
+> ↪️：https://qiita.com/chenglin/items/70f06e146db19de5a659
 
 <br>
 
@@ -1567,7 +1567,7 @@ $ nc <IPアドレス/ドメイン> <ポート番号>
 
 ログを出力しつつ、`nc`コマンドを実行する。
 
-> ↪️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
+> ↪️：https://qiita.com/chenglin/items/70f06e146db19de5a659
 
 ```bash
 $ nc -v <IPアドレス/ドメイン> <ポート番号>
@@ -1615,7 +1615,7 @@ $ od -Ad -tx <ファイルへのパス>
 
 指定した暗号アルゴリズムを使用して、文字列を暗号化/復号化する。
 
-> ↪️ 参考：https://memo.open-code.club/OpenSSL/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7.html
+> ↪️：https://memo.open-code.club/OpenSSL/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7.html
 
 <br>
 
@@ -1629,7 +1629,7 @@ $ od -Ad -tx <ファイルへのパス>
 $ opsnssl enc -aes-256-cbc -d -in encrypted.txt -out plane.txt
 ```
 
-> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
+> ↪️：https://www.karakaram.com/file-encryption-using-openssl/
 
 #### ▼ -e
 
@@ -1639,7 +1639,7 @@ $ opsnssl enc -aes-256-cbc -d -in encrypted.txt -out plane.txt
 $ opsnssl enc -aes-256-cbc -e -in plan.txt -out encrypted.txt
 ```
 
-> ↪️ 参考：https://www.karakaram.com/file-encryption-using-openssl/
+> ↪️：https://www.karakaram.com/file-encryption-using-openssl/
 
 <br>
 
@@ -1688,7 +1688,7 @@ AES-256-XTS
 aes256 => AES-256-CBC
 ```
 
-> ↪️ 参考：https://en.wikipedia.org/wiki/OpenSSL#Algorithms
+> ↪️：https://en.wikipedia.org/wiki/OpenSSL#Algorithms
 
 <br>
 
@@ -1705,7 +1705,7 @@ notBefore=Dec  9 09:31:55 2020 GMT # 開始日
 notAfter=Jan 10 09:31:55 2022 GMT  # 終了日
 ```
 
-> ↪️ 参考：https://pcvogel.sarakura.net/2019/01/07/31902
+> ↪️：https://pcvogel.sarakura.net/2019/01/07/31902
 
 <br>
 
@@ -1748,7 +1748,7 @@ $ printenv VAR
 $ ps -aux | grep <検索文字>
 ```
 
-> ↪️ 参考：https://ten-snapon.com/archives/2646
+> ↪️：https://ten-snapon.com/archives/2646
 
 #### ▼ -ef
 
@@ -1761,7 +1761,7 @@ $ ps -aux | grep <検索文字>
 $ ps -ef | grep <検索文字>
 ```
 
-> ↪️ 参考：https://ten-snapon.com/archives/2646
+> ↪️：https://ten-snapon.com/archives/2646
 
 <br>
 
@@ -1831,7 +1831,7 @@ $ find ./* \
     -type f | xargs sed -i '' '1s/^/一行目にFooを挿入して改行\n\n/'
 ```
 
-> ↪️ 参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
+> ↪️：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
 
 <br>
 
@@ -1848,7 +1848,7 @@ $ find ./* \
     -type f | xargs sed -i '' -e '/foo/! {/bar/! {/baz/! {/qux/! s/before/after/g;} ;} ;}'
 ```
 
-> ↪️ 参考：
+> ↪️：
 >
 > - https://www.jh4vaj.com/archives/24778
 > - https://bi.biopapyrus.jp/os/linux/sed.html
@@ -2071,7 +2071,7 @@ getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("*.
 $ strace -p <プロセスID>
 ```
 
-> ↪️ 参考：https://tech-lab.sios.jp/archives/17394
+> ↪️：https://tech-lab.sios.jp/archives/17394
 
 <br>
 
@@ -2087,7 +2087,7 @@ $ strace -p <プロセスID>
 $ tail foo.log
 ```
 
-> ↪️ 参考：https://eng-entrance.com/linux-command-tail
+> ↪️：https://eng-entrance.com/linux-command-tail
 
 <br>
 
@@ -2114,7 +2114,7 @@ $ mkdir /foo
 $ tar -xvf foo.tar.gz -C /foo
 ```
 
-> ↪️ 参考：https://www.itmedia.co.jp/help/tips/linux/l0418.html
+> ↪️：https://www.itmedia.co.jp/help/tips/linux/l0418.html
 
 <br>
 
@@ -2169,7 +2169,7 @@ $ tar -xvf foo.tar.gz
 $ tar -xvf foo.tar.gz
 ```
 
-> ↪️ 参考：https://linuxfan.info/tar-z-option
+> ↪️：https://linuxfan.info/tar-z-option
 
 <br>
 
@@ -2269,7 +2269,7 @@ $ unlink <シンボリックリンク名>
 $ adduser -s /bin/false foo
 ```
 
-> ↪️ 参考：https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
+> ↪️：https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
 
 <br>
 
@@ -2295,7 +2295,7 @@ github.com (github.com) をDNSに問いあわせています... *.*.*.*
 保存完了 [44368/44368]
 ```
 
-> ↪️ 参考：https://prograshi.com/general/command/curl-o-and-wget-qo/
+> ↪️：https://prograshi.com/general/command/curl-o-and-wget-qo/
 
 #### ▼ -O
 
@@ -2305,7 +2305,7 @@ github.com (github.com) をDNSに問いあわせています... *.*.*.*
 $ wget -O foo.gz http://www.example.com/
 ```
 
-> ↪️ 参考：https://www.karakaram.com/notes-on-curl-options/
+> ↪️：https://www.karakaram.com/notes-on-curl-options/
 
 `-`の場合、標準出力に処理ログを出力することになり、ダウンロードは起こらない。
 
@@ -2313,7 +2313,7 @@ $ wget -O foo.gz http://www.example.com/
 $ wget -O - http://www.example.com/
 ```
 
-> ↪️ 参考：https://tech.kurojica.com/archives/990/
+> ↪️：https://tech.kurojica.com/archives/990/
 
 #### ▼ -q
 
