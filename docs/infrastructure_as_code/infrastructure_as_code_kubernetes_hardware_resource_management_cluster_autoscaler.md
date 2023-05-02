@@ -94,7 +94,7 @@ spec:
         - ./cluster-autoscaler
         - "--cloud-provider=aws"
         - "--namespace=kube-system"
-        - "--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/foo-node-group"
+        - "--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/<Cluster名>"
         - "--logtostderr=true"
         - "--stderrthreshold=info"
         - "--v=4"

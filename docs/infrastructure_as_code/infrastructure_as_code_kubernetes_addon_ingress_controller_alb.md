@@ -371,9 +371,13 @@ metadata:
 spec:
   containers:
     - args:
+        # Cluster名を設定する
         - "--cluster-name=foo-cluster"
+        # Ingressに紐づけるIngressClassを設定する
         - "--ingress-class=alb"
+        # AWS ALBのあるリージョンを設定する
         - "--aws-region=ap-northeast-1"
+        # AWS ALBのあるVPCのIDを設定する
         - "--aws-vpc-id=vpc-*****"
       command:
         - /controller

@@ -153,25 +153,41 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 ### 完全修飾ドメイン名
 
-#### ▼ 完全修飾ドメイン名の構成
+#### ▼ 完全修飾ドメイン名とは
 
-完全修飾ドメイン名は、所属ネットワークを指すドメイン名と、そのネットワークにおける具体的なサーバーを指すホスト名からなる。
-
-ただし、サーバーのホスト名が『www』である場合、クライアントはURLの指定時にホスト名を省略できる。
-
-例えば、『`www.example.com`』という完全修飾ドメイン名をURLで指定する場合、『`example.com`』としても良い。
+完全修飾ドメイン名は、ドメイン名、ホスト名からなる。
 
 ![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_namespace.png)
 
 > ↪️：https://ascii.jp/elem/000/000/419/419685/2/
 
-#### ▼ サブドメイン
+#### ▼ DNSゾーン
+
+同じドメイン名を持つ様々な完全修飾ドメイン名 (`www.example.com`、`www.stg.example.com`、`www.dev.example.com`) の集合のこと。
+
+一般的なパブリックネットワークで使用するDNSゾーンタイプを『パブリックゾーン』、一方でプライベートネットワークの場合を『プライベートゾーン』という。
+
+> ↪️：https://milestone-of-se.nesuke.com/l7protocol/dns/zone-transfer/
+
+#### ▼ ホスト名
+
+そのネットワークにおける具体的なサーバーを指す。
+
+サーバーのホスト名が『www』である場合、クライアントはURLの指定時にホスト名を省略できる。
+
+例えば、『`www.example.com`』という完全修飾ドメイン名をURLで指定する場合、『`example.com`』としても良い。
+
+#### ▼ ドメイン名
+
+所属ネットワークを指す。
+
+#### ▼ サブドメイン名
 
 完全修飾ドメイン名は、ドメイン名の子関係にあるサブドメイン名を持てる。
 
 ホスト名 (以下では省略されている) と、ドメイン名の間につける。
 
-![サブドメイン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サブドメイン.png)
+![subdomain-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subdomain-name.png)
 
 <br>
 
