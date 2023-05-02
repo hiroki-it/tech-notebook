@@ -72,6 +72,18 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
+### get
+
+#### ▼ --hard-refresh
+
+redis-server上に保管されたapplication-controllerのキャッシュを削除し、再作成する。
+
+```bash
+$ argocd app get --hard-refresh
+```
+
+<br>
+
 ### set
 
 #### ▼ setとは

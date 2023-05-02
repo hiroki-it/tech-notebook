@@ -43,8 +43,8 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロバイダーの種類
 
-| プロバイダー名 | 補足                                                         |
-| -------------- | ------------------------------------------------------------ |
+| プロバイダー名 | 補足                                                    |
+| -------------- | ------------------------------------------------------- |
 | VirtualBox     | ↪️：https://www.vagrantup.com/docs/providers/virtualbox |
 | VMWare         | ↪️：https://www.vagrantup.com/docs/providers/vmware     |
 | Docker         | ↪️：https://www.vagrantup.com/docs/providers/docker     |
@@ -64,8 +64,8 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロビジョナーの種類
 
-| プロビジョナー名 | ユースケース                                                                              | 補足                                                              |
-| ---------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| プロビジョナー名 | ユースケース                                                                              | 補足                                                         |
+| ---------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。                                   | ↪️：https://www.vagrantup.com/docs/provisioning/shell        |
 | Ansible          | Vagrantfileでプロビジョニングを実行する代わりとして、Ansibleを使用する。                  | ↪️：https://www.vagrantup.com/docs/provisioning/ansible      |
 | CFEngine         | Vagrantfileでプロビジョニングを実行する代わりとして、CFEngineを使用する。                 | ↪️：https://www.vagrantup.com/docs/provisioning/cfengine     |

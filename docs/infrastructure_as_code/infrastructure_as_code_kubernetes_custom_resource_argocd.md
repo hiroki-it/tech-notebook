@@ -32,13 +32,99 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 <br>
 
-## 02. argocd-server (argocd-apiserver)
+## 02. repo-server
+
+### repo-serverとは
+
+> ↪️：
+>
+> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+> - https://www.amazon.co.jp/dp/1617297275
+
+<br>
+
+## 03. application-controller
+
+### application-controllerとは
+
+> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+> - https://www.amazon.co.jp/dp/1617297275
+
+<br>
+
+### GitOpsエンジン
+
+> ↪️：
+>
+> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - https://github.com/argoproj/gitops-engine/tree/master/pkg
+> - https://github.com/argoproj/argo-cd/tree/master/pkg/apiclient
+
+<br>
+
+### 他のコンポーネントとの通信
+
+> ↪️：
+>
+> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
+> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
+
+<br>
+
+## 04. redis-server
+
+> ↪️：
+>
+> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - https://weseek.co.jp/tech/95/
+> - https://blog.manabusakai.com/2021/04/argo-cd-cache/
+> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
+
+<br>
+
+## 05. dex-server
+
+### dex-serverとは
+
+> ↪️：
+>
+> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - https://github.com/dexidp/dex#connectors
+> - https://weseek.co.jp/tech/95/
+> - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
+> - https://zenn.dev/onsd/articles/a3ea24b01da413
+
+<br>
+
+## 06. argocd-server (argocd-apiserver)
 
 ### argocd-serverとは
 
-『argocd-apiserver』ともいう。
+> ↪️：
+>
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
+> - https://weseek.co.jp/tech/95/#i-7
+> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 
-argocd-serverは、クライアントや他のargocdコンポーネントと通信する。
+<br>
+
+### 他のコンポーネントとの通信
+
+> ↪️：https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+
+<br>
+
+### ログ
 
 ```yaml
 {
@@ -55,176 +141,9 @@ argocd-serverは、クライアントや他のargocdコンポーネントと通�
 }
 ```
 
-> ↪️：
->
-> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
-> - https://weseek.co.jp/tech/95/#i-7
-> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
-
 <br>
 
-### 他のコンポーネントとの通信
-
-#### ▼ クライアントとの通信
-
-argocd-serverは、クライアントからHTTPSリクエストを受信する。
-
-RESTful-APIとRPC-APIのエンドポイントを公開し、クライアント (例：ダッシュボード、`argocd`コマンド実行者、Webhookの送信元、など) からリクエストを受信する。
-
-また、application-controllerから返却された情報 (例：マニフェストの差分) をクライアントに返却する。
-
-ダッシュボードを使用する場合、これをServiveで後悔する必要がある。
-
-![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argocd-server_dashboard.png)
-
-#### ▼ dex-serverとの通信
-
-argocd-serverは、dex-serverにHTTPSリクエストを送信する。
-
-SSOを採用する時に、SSOの認証認可処理の認証フェーズを外部のIDプロバイダー (例：Auth0、GitHub、KeyCloak、AWS Cognito、Google Auth) に委譲できる。
-
-この時、認証情報 (例：クライアントID、クライアントシークレット、など) を直接的にIDプロバイダーに送信するのではなく、SSOプロキシであるdex-serverを介して送信できる。
-
-argocd-serverの認証認可処理は、AuthN (認証) と AuthZ (認可) から構成されている。
-
-このAuthNの処理でdex-serverに認証情報を送信すると、dex-serverが適切なIDプロバイダーから認証フェーズの処理結果を取得してくれる。
-
-SSO時、argocd-serverは、AuthNの認証処理をIDプロバイダーに委譲する。
-
-argocd-serverは、AuthZで認可処理を実施し、IDプロバイダーから取得したユーザーに認可スコープを紐づける。
-
-![argocd_auth_architecture.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_auth_architecture.jpg)
-
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/architecture/authz-authn.md
-
-#### ▼ ポーリング対象Clusterのkube-apiserverとの通信
-
-argocd-serverは、ポーリング対象Clusterのkube-apiserverにHTTPSリクエストを送信する。
-
-クライアントから受信したリクエスト (例：ダッシュボード上のSync、`argocd app sync`コマンド) に基づいて、kube-apiserverにリクエストを送信する。
-
-#### ▼ redis-serverとの通信
-
-argocd-serverは、redis-serverにTCPリクエストを送信し、redis-serverからキャッシュを取得する。
-
-その都度、repo-server上のポーリング対象リポジトリのマニフェストを使用するのではなく、redis-serverのキャッシュを使用する。
-
-ダッシュボード上や`argocd app get --hard-refresh`コマンドでキャッシュを削除できる。
-
-<br>
-
-## 03. application-controller
-
-### application-controllerとは
-
-![argocd_application-controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller.png)
-
-custom-controllerかつポーリング対象Clusterの`kubectl`クライアントとして動作する。
-
-ArgoCDのカスタムリソース (例：Application、AppProject、など) とCRDをポーリングし、etcd上にある宣言通りに作成/変更する。
-
-また、ダッシュボードやCUIの操作に応じて、ポーリング対象Clusterに`kubectl diff`コマンドや`kubectl apply`コマンドを実行する。
-
-```yaml
-# application-controllerのPodでログを確認してみる。
-{
-  "application": "foo-application",
-  "dest-name": "",
-  "dest-namespace": "foo",
-  "dest-server": "https://kubernetes.default.svc",
-  "fields.level": 3,
-  "level": "info",
-  "msg": "Reconciliation completed",
-  "time": "2023-01-27T04:19:18Z",
-  "time_ms": 14,
-}
-```
-
-> ↪️：
->
-> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
-> - https://weseek.co.jp/tech/95/#i-7
-> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
-> - https://www.amazon.co.jp/dp/1617297275
-
-<br>
-
-### GitOpsエンジン
-
-ArgoCDや、その他のGitOpsのためのCDツール (例：Flux) は、gitops-engineパッケージをコールし、ヘルスチェックからデプロイまでの基本的な処理を実行する。
-
-```yaml
-gitops-engine/
-├── pkg
-│   ├── cache
-│   ├── diff   # リポジトリとClusterの間のマニフェストの差分を検出する。ArgoCDのDiff機能に相当する。
-│   ├── engine # 他のパッケージを使い、一連の処理を実行する。
-│   ├── health # Clusterのステータスをチェックする。ArgoCDのヘルスチェック機能に相当する。
-│   ├── sync   # Clusterにマニフェストをデプロイする。ArgoCDのSync機能に相当する。
-│   └── utils  # 他のパッケージに汎用的な関数を提供する。
-│
-...
-```
-
-> ↪️：
->
-> - https://github.com/argoproj/gitops-engine/blob/master/specs/design-top-down.md#design-details
-> - https://github.com/argoproj/gitops-engine/tree/master/pkg
-> - https://github.com/argoproj/argo-cd/tree/master/pkg/apiclient
-
-<br>
-
-### 他のコンポーネントとの通信
-
-#### ▼ repo-serverとの通信
-
-application-controllerは、repo-serverにHTTPSリクエストを送信し、マニフェストの成果物の作成をコールする。
-
-また、repo-serverが保管するマニフェストのキャッシュを参照し、ポーリング対象Clusterに対して`kubectl diff`コマンドを実行することにより、差分を検出する。
-
-そのため、もしArgoCDでHelmを使用していたとしても、カスタムリソースのマニフェストの差分を検出できる (通常、Helmではカスタムリソースのマニフェストの差分を検出できない) 。
-
-![argocd_application-controller_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_application-controller_repo-server.png)
-
-> ↪️：
->
-> - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
-> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
-> - https://weseek.co.jp/tech/95/#i-7
-> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
-
-#### ▼ redis-serverとの通信
-
-application-controllerは、redis-serverにTCPリクエストを送信し、自身の処理の結果をredis-serverに保管する。
-
-<br>
-
-## 04. dex-server
-
-### dex-serverとは
-
-ArgoCDでSSOを実施する場合は、外部Webサイトに認証フェーズを委譲することになる。
-
-SSOの認証フェーズに必要な情報をIDプロバイダーに送信し、これに認証フェーズを委譲する。
-
-認証フェーズの委譲先 (例：Auth0、GitHub、KeyCloak、AWS Cognito、Google Auth) は、認証サーバー (例：OIDCであればIDプロバイダー) を公開している。
-
-この時`dex-server`は、ArgoCDが認証サーバーと通信する時のハブとして機能する。
-
-dex-serverの起動に失敗すると、外部Webサイトに情報を送信できずにSSOに失敗してしまう。
-
-ただ、argocd-server自体が認証サーバーと通信することが可能なため、dex-serverを使用するか否かは任意である。
-
-> ↪️：
->
-> - https://github.com/dexidp/dex#connectors
-> - https://weseek.co.jp/tech/95/
-> - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
-> - https://zenn.dev/onsd/articles/a3ea24b01da413
-
-<br>
-
-## 05. image-updater
+## 07. image-updater
 
 ### image-updaterとは
 
@@ -241,68 +160,6 @@ image-updaterは、アプリリポジトリからイメージリポジトリに�
 その後、マニフェストリポジトリに書き換えをコミットする。
 
 > ↪️：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
-
-<br>
-
-## 06. redis-server
-
-### redis-serverとは
-
-application-controllerの処理 (マニフェスト取得、Clusterの状態確認、など) の結果のキャッシュを作成し、argocd-serverに提供する。
-
-> ↪️：
->
-> - https://weseek.co.jp/tech/95/
-> - https://blog.manabusakai.com/2021/04/argo-cd-cache/
-> - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
-
-<br>
-
-## 07. repo-server
-
-### repo-serverとは
-
-![argocd_repo-server.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_repo-server.png)
-
-ポーリング対象リポジトリのマニフェストをクローンし、`/tmp/_argocd-repo`ディレクトリ (`2.3`以前は`/tmp`ディレクトリ) に保管する。
-
-また、リポジトリ名はUUID (`2.3`以前は`https___github.com_hiroki-hasegawa_foo-repository`といったようなURLに基づくディレクトリ名) になる。
-
-マニフェスト管理ツール (例：Helm、Kustomize) を使用してマニフェストを作成し、またキャッシュを作成する。
-
-そのため、repo-serverは`helm template`コマンドを手動で実行することにより、成果物を確認できる。
-
-```bash
-$ kubectl -it exec foo-argocd-repo-server \
-    -c repo-server \
-    -n foo \
-    -- bash -c "ls /tmp/_argocd-repo"
-
-# 新しいバージョンでは、UUIDになる。
-# https://github.com/argoproj/argo-cd/discussions/9889#discussioncomment-3093809
-<URLに基づくUUID>
-<URLに基づくUUID>
-<URLに基づくUUID>
-```
-
-```bash
-$ kubectl -it exec foo-argocd-repo-server \
-    -c repo-server \
-    -n foo \
-    -- bash -c "ls /tmp/_argocd-repo/<URLに基づくUUID>"
-
-Chart.yaml  README.md  templates  values.yaml
-```
-
-なお、ArgoCDでHardRefreshすると、マニフェストのキャッシュを削除し、ポーリングリポジトリのマニフェストを改めてキャッシュを作成する。
-
-> ↪️：
->
-> - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
-> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
-> - https://weseek.co.jp/tech/95/#i-7
-> - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
-> - https://www.amazon.co.jp/dp/1617297275
 
 <br>
 
