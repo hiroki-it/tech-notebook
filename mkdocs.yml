@@ -530,6 +530,7 @@ nav:
                   - helmプラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.md
               - ■ チャート:
                   - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.md
+                  - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.md
                   - 関数: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
               - ■ Helmfile:
@@ -571,6 +572,7 @@ nav:
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
           - ■ リソース定義:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
+              - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_common.md
               - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.md
               - 認証/認可系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_auth.md
               - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_configmap.md
