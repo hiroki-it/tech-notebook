@@ -13,7 +13,7 @@ description: 共通部分＠リソース定義の知見を記録しています�
 
 <br>
 
-## 01.  ArgoCDの`.metadata.labels`キー
+## 01. ArgoCDの`.metadata.labels`キー
 
 ### ArgoCDの`.metadata.labels`キーとは
 
