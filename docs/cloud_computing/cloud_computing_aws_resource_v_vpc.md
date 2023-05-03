@@ -70,11 +70,29 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 クラウドネットワークインターフェースとして働く。
 
-対象のAWSリソースに、自身に紐付けられたIPアドレスを割り当てる。
+ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。
 
 物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
 
 > ↪️：https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
+
+<br>
+
+### ENIの種類
+
+#### ▼ プライマリーENI (`eth0`)
+
+ENIが必要なAWSリソースには、デフォルトでプライマリーENIが紐づいている。
+
+これを解除することはできない。
+
+> ↪️：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+
+#### ▼ セカンダリーENI (`eth1`)
+
+プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。
+
+> ↪️：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/scenarios-enis.html
 
 <br>
 

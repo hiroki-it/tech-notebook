@@ -62,6 +62,16 @@ GitHubの自身の公開鍵を登録する必要がある。
 $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<GitHubリポジトリ名>.git
 ```
 
+#### ▼ --recursive
+
+リポジトリがサブモジュールを含む場合、サブモジュールも合わせてクローンする。
+
+```bash
+$ git clone --recursive
+```
+
+> ↪️：https://blog.kyanny.me/entry/2020/07/04/172905
+
 <br>
 
 ### config
@@ -272,9 +282,14 @@ and the repository exists.
 
 フォークと似た仕組みであり、`git submodule update`コマンドを実行しないと、サブモジュールの更新を取り込めない。
 
+また、`git clone`コマンドの実行時には`--recursive`オプションを有効化しないと、サブモジュールも合わせてクローンできない。
+
 そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。
 
-> ↪️：https://qiita.com/kohashi/items/f4a50c5436b326e9475b
+> ↪️：
+>
+> - https://qiita.com/kohashi/items/f4a50c5436b326e9475b
+> - https://blog.kyanny.me/entry/2020/07/04/172905
 
 #### ▼ add
 

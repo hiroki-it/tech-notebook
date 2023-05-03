@@ -15,18 +15,22 @@ description: 共通部分＠リソース定義の知見を記録しています�
 
 ## 01. ArgoCDの`.metadata.labels`キー
 
-### ArgoCDの`.metadata.labels`キーとは
+### 任意のKubernetesリソースの場合
 
 ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
 
 custom-controller (application-controller) が設定してくれるため、開発者が設定する必要はない。
 
-<br>
-
-### 種類
-
 | キー                          | 値の例            | 説明                                                                                                                                                            |
 | ----------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `argocd.argoproj.io/instance` | `foo-application` | ArgoCDのApplication名を設定する。もしKubernetesリソースに設定すれば親Applicationが自動的に紐付き、Applicationに設定さればApp-of-Appsでの親Applicationが紐づく。 |
+
+<br>
+
+### ArgoCDの使用するKubernetesリソースの場合
+
+| キー                        | 値の例   | 説明                                                                                   |
+| --------------------------- | -------- | -------------------------------------------------------------------------------------- |
+| `app.kubernetes.io/part-of` | `argocd` | ArgoCDのコンポーネントが使用するKubernetesリソースを宣言するために、それらに設定する。 |
 
 <br>

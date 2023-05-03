@@ -141,7 +141,7 @@ PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPod�
 
 これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
 
-aws-eks-vpc-cniアドオンがEKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのENIを作成できないため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
+aws-eks-vpc-cniアドオンがEKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのENIを作成できずに一切の通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 

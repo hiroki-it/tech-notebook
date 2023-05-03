@@ -33,7 +33,7 @@ Helmが設定してくれるため、開発者が設定する必要はない。
 
 <br>
 
-## 02. Helmの`metadata.annotation`キー
+## 02. Helmのmetadata.annotation
 
 ### `meta.helm.sh`キー
 

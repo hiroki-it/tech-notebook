@@ -561,9 +561,7 @@ EKSデータプレーンはプライベートサブネットで稼働させ、�
 
 #### ▼ Podへのインバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。
-
-そのため、パブリックネットワークからのインバウンド通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
+Podをプライベートサブネットに配置した場合に、パブリックネットワークからのインバウンド通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 
@@ -929,6 +927,14 @@ done
 
 <br>
 
+### パブリックサブネット内のデータプレーンからのアウトバウンド通信
+
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、特に必要なものは無い。
+
+この時、アウトバウンド通信のIPアドレスは、EC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスになる。
+
+<br>
+
 ### プライベートサブネット内のデータプレーンからのアウトバウンド通信
 
 #### ▼ 宛先情報の管理方法
@@ -953,9 +959,7 @@ data:
 
 #### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。
-
-プライベートサブネットにを配置した場合、VPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
 
