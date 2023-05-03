@@ -64,7 +64,7 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 <br>
 
-## 01-02. ENI：Elastic Network Interface
+## 02. ENI：Elastic Network Interface
 
 ### ENIとは
 
@@ -96,30 +96,71 @@ ENIが必要なAWSリソースには、デフォルトでプライマリーENI�
 
 <br>
 
-## 01-03. セットアップ
+### 割り当てられるIPアドレス数
 
-### コンソール画面の場合
+#### ▼ パブリックの場合
 
-#### ▼ 割り当てられるIPアドレス数
+ENIには、パブリックIPアドレスを割り当てられる。
 
-| IPアドレス (IPv4) の種類 | 説明                                                                                                                                                                                                              |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| パブリック               | ENIには、パブリックIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに`1`個のパブリックIPアドレスを追加できる。                                                     |
-| プライベート             | ENIには、プライマリープライベートIPアドレスとセカンダリープライベートIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに`2`個のプライベートIPアドレスを追加できる。 |
+これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに`1`個のパブリックIPアドレスを追加できる。
 
-#### ▼ 紐付けられるリソース
+#### ▼ プライベート
 
-| リソースの種類       | 役割                                                                                                                                   | 補足                                                                                                                          |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ALB                  | ENIに紐付けられたIPアドレスを、ALBに割り当てる。                                                                                       |                                                                                                                               |
-| EC2                  | ENIに紐付けられたIPアドレスを、EC2に割り当てる。                                                                                       | ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics                                             |
-| Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。           | Fargate環境のホストがEC2とは明言されていない。<br>↪️：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
-| Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。           | ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses                |
-| GlobalAccelerator    |                                                                                                                                        |                                                                                                                               |
-| NAT Gateway          | ENIに紐付けられたパブリックIPアドレスを、NAT Gatewayに割り当てる。                                                                     |                                                                                                                               |
-| RDS                  |                                                                                                                                        |                                                                                                                               |
-| セキュリティグループ | ENIにセキュリティグループが紐付けれる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。 |                                                                                                                               |
-| VPCエンドポイント    | Interface型のVPCエンドポイントとして動作する。                                                                                         |                                                                                                                               |
+ENIには、プライマリープライベートIPアドレスとセカンダリープライベートIPアドレスを割り当てられる。
+
+これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに`2`個のプライベートIPアドレスを追加できる。
+
+<br>
+
+### 紐付けられるリソース
+
+#### ▼ ALB
+
+ENIに紐付けられたIPアドレスを、ALBに割り当てる。
+
+#### ▼ EC2
+
+ENIに紐付けられたIPアドレスを、EC2に割り当てる。
+
+↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+
+#### ▼ Fargate環境のEC2
+
+明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。
+
+Fargate環境のホストがEC2とは明言されていない。
+
+↪️：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+
+#### ▼ Elastic IP
+
+ENIにElastic IPアドレスが紐付けられる。
+
+このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。
+
+↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses
+
+#### ▼ GlobalAccelerator
+
+記入中...
+
+#### ▼ NAT Gateway
+
+ENIに紐付けられたパブリックIPアドレスを、NAT Gatewayに割り当てる。
+
+#### ▼ RDS
+
+記入中...
+
+#### ▼ セキュリティグループ
+
+ENIにセキュリティグループが紐付けられる。
+
+このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。
+
+#### ▼ VPCエンドポイント
+
+Interface型のVPCエンドポイントとして動作する。
 
 <br>
 
@@ -138,7 +179,7 @@ VPCエンドポイントを経由すれば異なるVPCに送信することも�
 
 <br>
 
-## 01-03. VPCサブネット
+## 03. VPCサブネット
 
 ### VPCサブネットとは
 
@@ -164,7 +205,7 @@ LAN内の内部ネットワークに相当する。
 
 <br>
 
-## 01-04. Network ACL：Network Access Control List
+## 04. Network ACL：Network Access Control List
 
 ### Network ACLとは
 
@@ -191,7 +232,7 @@ LAN内の内部ネットワークに相当する。
 
 <br>
 
-## 01-05. ルートテーブル
+## 05. ルートテーブル
 
 ### ルートテーブルとは
 
@@ -223,7 +264,7 @@ VPCの作成時に自動的に作成される。
 
 <br>
 
-## 01-06. VPCエンドポイント
+## 06. VPCエンドポイント
 
 ### VPCエンドポイントとは
 
@@ -280,7 +321,7 @@ S3、DynamoDBのみ
 
 <br>
 
-## 01-07. Internet Gateway、NAT Gateway
+## 07. Internet Gateway、NAT Gateway
 
 ### Internet Gateway
 
@@ -322,7 +363,7 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 <br>
 
-## 01-08. VPC間、VPC-オンプレミス間の通信
+## 08. VPC間、VPC-オンプレミス間の通信
 
 ### VPCピアリング接続
 
@@ -406,7 +447,7 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 <br>
 
-## 01-09. VPCフローログ
+## 09. VPCフローログ
 
 VPC内のENIを通過するパケットをキャプチャできる。
 
