@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】IPアドレス＠L4
-description: IPアドレス＠L4の知見を記録しています。
+title: 【IT技術の知見】IPアドレス＠L3
+description: IPアドレス＠L3の知見を記録しています。
 ---
 
-# IPアドレス＠`L4`
+# IPアドレス＠`L3`
 
 ## はじめに
 
