@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】L5 - L7＠OSI参照モデル
-description: L5 - L7＠OSI参照モデルの知見を記録しています。
+title: 【IT技術の知見】L5 ~ L7＠OSI参照モデル
+description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 ---
 
-# L5 - L7＠OSI参照モデル
+# `L5` ~ `L7`＠OSI参照モデル
 
 ## はじめに
 

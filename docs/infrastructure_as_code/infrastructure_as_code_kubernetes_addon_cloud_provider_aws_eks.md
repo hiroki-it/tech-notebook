@@ -141,7 +141,7 @@ PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPod�
 
 これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
 
-aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのENIを作成できずに一切の通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
+aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できずに一切の通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 
@@ -149,18 +149,25 @@ aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカ�
 >
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
+> - https://medium.com/engineered-publicis-sapient/container-network-interface-cni-for-eks-4b1cbfff0f4e
 
 <br>
 
 ### 仕組み
 
-aws-eks-vpc-cniアドオンは、他のCNIアドオンにない独自モードを持ち、Podの仮想ネットワークインターフェース (`veth`) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
+#### ▼ アーキテクチャ
 
-AWSでは、Node (EC2、Fargate) 上でスケジューリングするPodの数だけNodeにENIを紐付け、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの`2`つを付与できる。
+aws-eks-vpc-cniアドオンは、L-IPAMデーモン、CNIプラグイン、といったコンポーネントから構成されています。
 
-NodeのENIとPodを紐付けることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
+#### ▼ L-IPAM
 
-Nodeのインスタンスタイプごとに、紐付けられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する (2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり`1`個しかPodをスケジューリングできない) 。
+他のCNIアドオンにない独自モードを持つ。
+
+Podに仮想NI (`veth`) 、またはNodeにAWS ENI (`eth`) を紐づける。
+
+AWSでは、Node (EC2、Fargate) 上でスケジューリングするPodの数だけNodeにAWS ENIを紐付け、さらにこのAWS ENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの`2`つを付与できる。
+
+NodeのAWS ENIとPodを紐付けることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
 
@@ -168,7 +175,7 @@ Nodeのインスタンスタイプごとに、紐付けられるENI数に制限�
 >
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
-> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
+> -
 
 <br>
 
@@ -206,7 +213,7 @@ Nodeのインスタンスタイプごとに、紐付けられるENI数に制限�
 | `MY_POD_NAME`                           | Pod名が設定されているマニフェストのキーを設定する。                                                  | `"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}`                 |
 | `POD_SECURITY_GROUP_ENFORCING_MODE`     | Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。 | `standard` (`standard`の場合は、プライマリーENIのセキュリティグループを適用する) |
 | `VPC_ID`                                | AWS VPCのIDを設定する。。                                                                            | `vpc-*****`                                                                      |
-| `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNodeが`1`個あたりで最低限確保するENI数を設定する。                            | `1`                                                                              |
+| `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNodeが`1`個あたりで最低限確保するAWS ENI数を設定する。                        | `1`                                                                              |
 | `WARM_PREFIX_TARGET`                    |                                                                                                      | `1`                                                                              |
 | `WARM_IP_TARGET`                        | AWS EC2/FargateワーカーNodeが`1`個あたりで余分に確保するIPアドレス数を設定する。                     | `2`                                                                              |
 
@@ -230,5 +237,11 @@ $ kubectl get daemonset aws-node \
     jsonpath='{.spec.template.spec.containers[*].env}' \
     | jq .
 ```
+
+#### ▼ AWS ENIとPodの最大数
+
+Nodeのインスタンスタイプごとに、紐付けられるAWS ENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する (2022/09/24時点でFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングできない) 。
+
+> ↪️：https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 
 <br>
