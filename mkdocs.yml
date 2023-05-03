@@ -342,10 +342,10 @@ nav:
                   - メッセージ: network/network_model_osi_l5_l7_message.md
               - ■ L4:
                   - L4: network/network_model_osi_l4.md
-                  - IPアドレス: network/network_model_osi_l4_ip_address.md
                   - ポート: network/network_model_osi_l4_port.md
               - ■ L3:
                   - L3: network/network_model_osi_l3.md
+                  - IPアドレス: network/network_model_osi_l3_ip_address.md
                   - ルーター: network/network_model_osi_l3_router.md
           - TCP階層モデル: network/network_model_tcp.md
 
