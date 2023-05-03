@@ -23,7 +23,7 @@ description: L2＠OSI参照モデルの知見を記録しています。
 
 <br>
 
-## MACアドレス：Media Access Control address
+## 02. MACアドレス：Media Access Control address
 
 NIC、有線LAN、無線LAN、スマートフォン、などに紐づけられた機器固有の識別子のこと。
 
