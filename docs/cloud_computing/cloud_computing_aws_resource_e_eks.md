@@ -929,9 +929,14 @@ done
 
 ### パブリックサブネット内のデータプレーンからのアウトバウンド通信
 
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、特に必要なものは無い。
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するために特に必要なものは無い。
 
-この時、アウトバウンド通信のIPアドレスは、EC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスになる。
+この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
+
+> ↪️：
+>
+> - https://note.com/tyrwzl/n/n715a8ef3c28a
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/security-groups-for-pods.html
 
 <br>
 
@@ -960,6 +965,8 @@ data:
 #### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
 
 Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+
+この時、Podのアウトバウンド通信の送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
 
