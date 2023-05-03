@@ -337,9 +337,9 @@ nav:
       - ■ モデル:
           - ■ OSI参照モデル:
               - OSI参照モデル: network/network_model_osi.md
-              - ■ L5 - L7:
-                  - L5 - L7: network/network_model_osi_l5_l7.md
-                  - メッセージ: network/network_model_osi_l5_l7_message.md
+              - ■ L5 ~ L7:
+                  - L5 ~ L7: network/network_model_osi_l5_l7.md
+                  - HTTP: network/network_model_osi_l5_l7_http.md
               - ■ L4:
                   - L4: network/network_model_osi_l4.md
                   - ポート: network/network_model_osi_l4_port.md
@@ -347,6 +347,7 @@ nav:
                   - L3: network/network_model_osi_l3.md
                   - IPアドレス: network/network_model_osi_l3_ip_address.md
                   - ルーター: network/network_model_osi_l3_router.md
+              - L1: network/network_model_osi_l1.md
           - TCP階層モデル: network/network_model_tcp.md
 
   - 🔐 セキュリティ:
