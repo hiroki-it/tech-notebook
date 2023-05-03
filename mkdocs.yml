@@ -347,6 +347,7 @@ nav:
                   - L3: network/network_model_osi_l3.md
                   - IPアドレス: network/network_model_osi_l3_ip_address.md
                   - ルーター: network/network_model_osi_l3_router.md
+              - L2: network/network_model_osi_l2.md
               - L1: network/network_model_osi_l1.md
           - TCP階層モデル: network/network_model_tcp.md
 
