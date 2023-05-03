@@ -112,3 +112,15 @@ unix://./etc/foo.sock
 > ↪️：https://www.miketheman.net/2021/12/28/container-to-container-communication/
 
 <br>
+
+## 03. `L4`ロードバランサー
+
+`L4`のプロトコルの通信をロードバランシングする。
+
+- `L4`のプロトコル
+- IPアドレス
+- ポート番号
+
+> ↪️：https://www.infraexpert.com/study/tcpip8.html\
+
+<br>
