@@ -23,7 +23,7 @@
 > > * ##### [︎IPアドレス](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3_ip_address.html)
 > > * ##### [︎ルーター](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3_router.html)
 > * ##### [`L2`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l2.html)
-> * ##### [`L1`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_ll.html)
+> * ##### [`L1`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l1.html)
 
 * #### [︎TCP階層モデル](https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html)
 

@@ -161,6 +161,8 @@ aws-eks-vpc-cniアドオンは、L-IPAMデーモン、CNIプラグイン、と�
 
 #### ▼ L-IPAM
 
+`aws-node`のDaemonSet配下のコンテナのプロセスとして稼働している。
+
 他のCNIアドオンにない独自モードを持つ。
 
 Podに仮想NI (`veth`) 、またはNodeにAWS ENI (`eth`) を紐づける。
