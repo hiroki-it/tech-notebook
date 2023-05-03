@@ -333,20 +333,22 @@ nav:
 
   - 🌏 ネットワーク:
       - network/index.md
-      - ■ ネットワーク:
-          - ネットワーク: network/network.md
-          - IPアドレス: network/network_ip_address.md
-          - ポート: network/network_port.md
-          - ルーター: network/network_router.md
+      - ■ ネットワーク: network/network.md
       - ■ モデル:
-          - TCP階層モデル: network/network_model_tcp.md
           - ■ OSI参照モデル:
               - OSI参照モデル: network/network_model_osi.md
               - ■ L5 - L7:
                   - L5 - L7: network/network_model_osi_l5_l7.md
                   - メッセージ: network/network_model_osi_l5_l7_message.md
-              - L4: network/network_model_osi_l4.md
-              - L3: network/network_model_osi_l3.md
+              - ■ L4:
+                  - L4: network/network_model_osi_l4.md
+                  - IPアドレス: network/network_model_osi_l4_ip_address.md
+                  - ポート: network/network_model_osi_l4_port.md
+              - ■ L3:
+                  - L3: network/network_model_osi_l3.md
+                  - ルーター: network/network_model_osi_l3_router.md
+          - TCP階層モデル: network/network_model_tcp.md
+
 
   - 🔐 セキュリティ:
       - security/index.md
