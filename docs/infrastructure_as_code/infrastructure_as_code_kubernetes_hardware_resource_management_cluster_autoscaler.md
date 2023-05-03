@@ -92,8 +92,10 @@ spec:
   containers:
     - command:
         - ./cluster-autoscaler
+        # クラウドプロバイダーを設定する。
         - "--cloud-provider=aws"
         - "--namespace=kube-system"
+        # Nodeグループが設定されたClusterを設定する。
         - "--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/<Cluster名>"
         - "--logtostderr=true"
         - "--stderrthreshold=info"

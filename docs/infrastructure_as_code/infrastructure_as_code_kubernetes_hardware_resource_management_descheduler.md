@@ -42,9 +42,115 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 <br>
 
-## 01-02. マニフェスト
+## 01-02
 
-deschedulerは、Job (descheduler) 、などのマニフェストから構成されている。
+### マニフェストの種類
+
+deschedulerは、Job (descheduler) 、ConfigMap、などのマニフェストから構成されている。
+
+<br>
+
+### Job
+
+ここでは、CronJob配下で定義したとする。
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  labels:
+    app.kubernetes.io/name: descheduler
+  name: descheduler
+  namespace: descheduler
+spec:
+  schedule: <Cronのルール>
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            checksum/config: *****
+          labels:
+            app.kubernetes.io/name: descheduler
+          name: descheduler
+        spec:
+          containers:
+            - name: descheduler
+              image: registry.k8s.io/descheduler/descheduler:latest
+              command:
+                - /bin/descheduler
+              args:
+                - '--policy-config-file'
+                - /policy-dir/policy.yaml
+                - '--v'
+                - '3'
+              volumeMounts:
+                - mountPath: /policy-dir
+                  name: policy-volume
+          # ポリシーの設定ファイルを読み込む
+          volumes:
+            - configMap:
+                name: descheduler
+              name: policy-volume
+```
+
+<br>
+
+### ConfigMap
+
+deschedulerで有効化するポリシーを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: descheduler
+  name: descheduler
+  namespace: descheduler
+data:
+  policy.yaml: |
+    apiVersion: "descheduler/v1alpha1"
+    kind: "DeschedulerPolicy"
+    evictLocalStoragePods: true
+    strategies:
+      HighNodeUtilization:
+        enabled: true
+      LowNodeUtilization:
+        enabled: true
+        params:
+          nodeResourceUtilizationThresholds:
+            targetThresholds:
+              cpu: 50
+              memory: 50
+              pods: 50
+            thresholds:
+              cpu: 20
+              memory: 20
+              pods: 20
+      PodLifeTime:
+        enabled: true
+      RemoveDuplicates:
+        enabled: true
+      RemoveFailedPods:
+        enabled: true
+      RemovePodsHavingTooManyRestarts:
+        enabled: true
+      RemovePodsViolatingInterPodAntiAffinity:
+        enabled: true
+      RemovePodsViolatingNodeAffinity:
+        enabled: true
+        params:
+          nodeAffinityType:
+          - requiredDuringSchedulingIgnoredDuringExecution
+      RemovePodsViolatingNodeTaints:
+        enabled: true
+      RemovePodsViolatingTopologySpreadConstraint:
+        enabled: true
+```
 
 <br>
 

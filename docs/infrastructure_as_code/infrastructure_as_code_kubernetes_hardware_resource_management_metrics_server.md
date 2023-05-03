@@ -87,7 +87,7 @@ spec:
       imagePullPolicy: IfNotPresent
       args:
         - --cert-dir=/tmp
-        - --secure-port=10250
+        - --secure-port=4443
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --kubelet-use-node-status-port
         # メトリクスの収集間隔を最小にする。
@@ -99,7 +99,7 @@ spec:
           memory: 200Mi
       ports:
         - name: https
-          containerPort: 10250
+          containerPort: 4443
           protocol: TCP
       readinessProbe:
         httpGet:
@@ -131,11 +131,6 @@ spec:
   volumes:
     - emptyDir: {}
       name: tmp-dir
-  serviceAccountName: metrics-server
-  volumes:
-    - name: tmp-dir
-      emptyDir: {}
-  priorityClassName: system-cluster-critical
 ```
 
 > ↪️：https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml

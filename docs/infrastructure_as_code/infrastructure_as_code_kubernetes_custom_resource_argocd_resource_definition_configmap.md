@@ -468,7 +468,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐付ける。
+    # ロールと認可スコープを定義する。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
@@ -504,7 +504,7 @@ data:
   # デフォルトのロール
   policy.default: role:developer
   policy.csv: |
-    # ロールに認可スコープを紐付ける。
+    # ロールと認可スコープを定義する。
     p, role:developer, *, *, dev/*, allow
     p, role:maintainer, *, *, *, allow
 
@@ -542,7 +542,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐付ける。
+    # ロールと認可スコープを定義する。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
@@ -578,7 +578,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐付ける。
+    # ロールと認可スコープを定義する。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, *, allow
     p, role:infra, *, *, *, allow
@@ -608,7 +608,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールに認可スコープを紐付ける。
+    # ロールと認可スコープを定義する。
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
