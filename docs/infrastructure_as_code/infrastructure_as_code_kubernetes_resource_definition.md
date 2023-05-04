@@ -3819,8 +3819,6 @@ data:
 
 パイプ (` |`) を使用すれば、ファイルを変数として設定できる。
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
-
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -3835,6 +3833,8 @@ data:
   foo.key: |
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```
+
+> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
 <br>
 
@@ -3881,8 +3881,6 @@ stringData:
 
 パイプ (` |`) を使用すれば、ファイルを変数として設定できる。
 
-> ↪️：https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/#specify-unencoded-data-when-creating-a-secret
-
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -3895,6 +3893,8 @@ data:
     username: bar
     password: baz
 ```
+
+> ↪️：https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/#specify-unencoded-data-when-creating-a-secret
 
 <br>
 
@@ -4180,8 +4180,6 @@ Pod内で最初にインバウンド通信を受信するコンテナの`contain
 
 デフォルトでは、`.spec.ports.port`キーと同じに値になる。
 
-> ↪️：https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9
-
 **＊実装例＊**
 
 ```yaml
@@ -4205,6 +4203,8 @@ spec:
     - port: 9000
       targetPort: 9000 # デフォルトでは、spec.ports.portキーと同じ値になる。
 ```
+
+> ↪️：https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9
 
 <br>
 
@@ -4341,8 +4341,6 @@ ServiceAccountのPodへの自動紐付けの有効化する。
 
 デフォルトで有効化されている。
 
-> ↪️：https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
-
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -4350,6 +4348,8 @@ metadata:
   name: foo-service-account
 automountServiceAccountToken: false
 ```
+
+> ↪️：https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
 
 <br>
 
@@ -4361,8 +4361,6 @@ automountServiceAccountToken: false
 
 これにより、ServiceAccountが紐付けられたPodは、プライベートリポジトリのクレデンシャル情報を使用できるようになる。
 
-> ↪️：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
-
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -4371,6 +4369,53 @@ metadata:
 imagePullSecrets:
   - name: foo-repository-credentials-secret
 ```
+
+> ↪️：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
+
+<br>
+
+### secrets
+
+#### ▼ secretsとは
+
+ServiceAccountのトークンを管理するSecret名を設定する。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-service-account
+secrets:
+  - name: foo-service-account-token
+```
+
+Kubernetesの`v1.24`以降では、Secretが自動的に作成されないようになっている。
+
+`.metadata.annotation`キーと`.type`キーを設定したSecretを作成すると、Kubernetesはこれの`data`キー配下にトークン文字列を自動的に追加する。
+
+ServiceAccountを削除すると、Kubernetesはトークン文字列を自動的に削除する。
+
+このトークンには、失効期限がない。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-service-account-token
+  annotations:
+    # ServiceAccountの名前を設定する
+    kubernetes.io/service-account.name: foo-service-account
+# トークンを管理するSecretであることを宣言する
+type: kubernetes.io/service-account-token
+# 自動的に設定される
+data:
+  token: xxxxxxxxxx
+```
+
+> ↪️：
+>
+> - https://zaki-hmkc.hatenablog.com/entry/2022/07/27/002213
+> - https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
 
 <br>
 
