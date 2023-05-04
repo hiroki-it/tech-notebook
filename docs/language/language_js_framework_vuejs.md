@@ -149,7 +149,7 @@ Vueコンストラクタ関数を使用して、インスタンス化するこ�
 
 ```javascript
 // ルートVueインスタンス
-// 変数に対する格納を省略してもよい
+// 変数に対する格納を省略しても良い
 var vm = new Vue({
   // Vueインスタンスを使用するdivタグを設定.
   el: "#app",
@@ -417,7 +417,7 @@ index.jsの`methods:`内には、イベントハンドラ関数として`result`
 **＊実装例＊**
 
 ```javascript
-// 変数に対する格納を省略してもよい
+// 変数に対する格納を省略しても良い
 var vm = new Vue({
   // Vueインスタンスを使用するdivタグを設定.
   el: "#app",
@@ -450,7 +450,7 @@ var vm = new Vue({
 </template>
 
 <script>
-  // 変数に対する格納を省略してもよい
+  // 変数に対する格納を省略しても良い
   var vm = new Vue({
     // イベントハンドラ関数を定義
     methods: {
@@ -542,7 +542,7 @@ Vue.component("v-foo-component", {
   template: require("./xxx/xxx/foo"),
 });
 
-// 変数に対する格納を省略してもよい
+// 変数に対する格納を省略しても良い
 var vm = new Vue({
   el: "#app",
 });
@@ -558,7 +558,7 @@ var vFooComponent = {
   template: require("./xxx/xxx/foo"),
 };
 
-// 変数に対する格納を省略してもよい
+// 変数に対する格納を省略しても良い
 var vm = new Vue({
   el: "#app",
 
@@ -574,7 +574,7 @@ var vm = new Vue({
 **＊実装例＊**
 
 ```javascript
-// 変数に対する格納を省略してもよい
+// 変数に対する格納を省略しても良い
 var vm = new Vue({
   el: "#app",
 
@@ -624,7 +624,7 @@ module.exports = router;
 ```javascript
 import router from "./router";
 
-// 変数に対する格納を省略してもよい
+// 変数に対する格納を省略しても良い
 var vm = new Vue({
   // routerオプション
   router,
@@ -977,7 +977,7 @@ createdフックの動作を検証する。
   <div>{{ name }}</div>
 </template>
 <script>
-  // 変数に対する格納を省略してもよい
+  // 変数に対する格納を省略しても良い
   var vm = new Vue({
     data() {
       return {
@@ -1014,7 +1014,7 @@ beforeMountフックの動作を検証する。
   <div>{{ name }}</div>
 </template>
 <script>
-  // 変数に対する格納を省略してもよい
+  // 変数に対する格納を省略しても良い
   var vm = new Vue({
     data() {
       return {
@@ -1063,7 +1063,7 @@ beforeMountフックの動作を検証する。
   <div>{{ name }}</div>
 </template>
 <script>
-  // 変数に対する格納を省略してもよい
+  // 変数に対する格納を省略しても良い
   var vm = new Vue({
     data() {
       return {
@@ -1090,7 +1090,7 @@ beforeMountフックの動作を検証する。
   <div>{{ name }}</div>
 </template>
 <script>
-  // 変数に対する格納を省略してもよい
+  // 変数に対する格納を省略しても良い
   var vm = new Vue({
     data() {
       return {
@@ -1124,7 +1124,7 @@ WindowオブジェクトやDocumentオブジェクトのメソッドによる要
   <div>{{ name }}</div>
 </template>
 <script>
-  // 変数に対する格納を省略してもよい
+  // 変数に対する格納を省略しても良い
   var vm = new Vue({
     data() {
       return {
@@ -1161,7 +1161,7 @@ WindowオブジェクトやDocumentオブジェクトのメソッドによる要
   <div>{{ name }}</div>
 </template>
 <script>
-  // 変数に対する格納を省略してもよい
+  // 変数に対する格納を省略しても良い
   var vm = new Vue({
     data() {
       return {

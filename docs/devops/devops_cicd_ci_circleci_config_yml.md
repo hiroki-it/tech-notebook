@@ -683,7 +683,7 @@ jobs:
     steps:
       # ディレクトリ配下
       - attach_workspace:
-        # jobAとは異なるディレクトリ配下にファイルをダウンロードしてもよい
+        # jobAとは異なるディレクトリ配下にファイルをダウンロードしても良い
         at: /tmp/workspace
 ```
 

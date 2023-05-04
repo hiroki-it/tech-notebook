@@ -629,23 +629,55 @@ data:
 
 ## 05. SSL証明書系ConfigMap
 
+### SSL証明書系ConfigMapとは
+
+argocd-server、repo-server、dex-server、はHTTPSリクエストを受信できる。
+
+これらのコンポーネントにHTTPSリクエストを送信する場合、ConfigMap上のSSL証明書をクライアント側のコンテナにマウントする必要がある。
+
+反対にHTTPリクエストを送信する場合は、このConfigMapが不要である。
+
+ConfigMap上のSSL証明書の代わりに、ArgoCD外のSSL証明書 (例：CertManager) を使用しても良い。
+
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration
+
+<br>
+
 ### argocd-dex-server-tls
 
-いくつかのコンポーネントがargocd-dex-serverに対してHTTPSリクエストを送信するために、SSL証明書を設定する。
+argocd-serverはdex-serverに対してHTTPSリクエストを送信する。
+
+このConfigMapは、そのためのSSL証明書を管理する。
+
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server
 
 <br>
 
 ### argocd-repo-server-tls
 
-いくつかのコンポーネント (例：application-controller、argocd-server) がrepo-serverに対してHTTPSリクエストを送信するために、SSL証明書を設定する。
+application-controller、argocd-server、はrepo-serverに対してHTTPSリクエストを送信する。
+
+このConfigMapは、そのためのSSL証明書を管理する。
 
 > ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components
 
 <br>
 
+### argocd-server-tls
+
+クライアントはargocd-serverに対してHTTPSリクエストを送信する。
+
+このConfigMapは、そのためのSSL証明書を管理する。
+
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server
+
+<br>
+
 ### argocd-tls-certs-cm
 
-ArgoCD外にHTTPSリクエストを送信するために、SSL証明書を設定する。
+ArgoCDは、ArgoCDの外にHTTPSリクエストを送信する。
+
+このConfigMapは、そのためのSSL証明書を管理する。
 
 > ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 

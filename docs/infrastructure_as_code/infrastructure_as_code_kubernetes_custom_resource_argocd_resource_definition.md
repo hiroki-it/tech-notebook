@@ -355,7 +355,7 @@ spec:
         - argocd-server
         - --port=8080
         - --metrics-port=8083
-        # HTTPプロトコルで受信する
+        # argocd-serverのHTTPSプロトコルの受信を無効化する
         - --insecure
       # クライアント、Prometheus、からのリクエストを受信する
       ports:

@@ -117,7 +117,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 `【１】`
 
-: CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。
+: CircleCI用に鍵を作成しても良いが、ここではGitHubの鍵をそのまま使用することとする。
 
      GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。
 

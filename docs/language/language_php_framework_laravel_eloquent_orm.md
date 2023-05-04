@@ -776,7 +776,7 @@ class FooController extends Controller
 
 ユニーク制約の課せられたカラムを`where`メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。
 
-foreachを使用してコレクションからEloquentモデルを取り出してもよいが、無駄が多い。
+foreachを使用してコレクションからEloquentモデルを取り出しても良いが、無駄が多い。
 
 そこで、`first`メソッドを使用して、Eloquentモデルを直接的に取得する。
 

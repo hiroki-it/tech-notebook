@@ -1540,7 +1540,7 @@ AWSアカウントの認証情報を環境変数として設定するか、ま�
 事前に、`filesystems.php`ファイルに設定が必要である。
 
 ```bash
-# S3アクセスポリシーをEC2やECSタスクに付与してもよい
+# S3アクセスポリシーをEC2やECSタスクに付与しても良い
 AWS_ACCESS_KEY_ID=<アクセスキーID>
 AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 AWS_DEFAULT_REGION=ap-northeast-1
