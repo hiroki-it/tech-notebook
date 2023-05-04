@@ -35,7 +35,7 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 パケットのデータは検査しない。
 
-ファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが設置されている。
+ファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが配置されている。
 
 > ↪️：
 >
@@ -208,9 +208,9 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 | WAFの種類        | 説明                                                                              | 例                                                                |
 | ---------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| ソフトウェア型   | WAFの能力を持つソフトウェアを自社サーバーにセットアップし、これを設置する。       | SuiteGuard、SmartCloud、など                                      |
-| アプライアンス型 | WAFのソフトウェアがすでにセットアップされたハードウェアを購入し、これを設置する。 | FortiWeb、Imperva SecureSphere、SiteGuard、など                   |
-| クラウド型       | クラウドプロバイダーが提供するWAFを設置する。                                     | AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrike、など |
+| ソフトウェア型   | WAFの能力を持つソフトウェアを自社サーバーにセットアップし、これを配置する。       | SuiteGuard、SmartCloud、など                                      |
+| アプライアンス型 | WAFのソフトウェアがすでにセットアップされたハードウェアを購入し、これを配置する。 | FortiWeb、Imperva SecureSphere、SiteGuard、など                   |
+| クラウド型       | クラウドプロバイダーが提供するWAFを配置する。                                     | AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrike、など |
 
 <br>
 

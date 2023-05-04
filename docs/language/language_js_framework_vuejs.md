@@ -57,7 +57,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 `【３】`
 
-: Model層では、Vuex (`store.js`)やJavaScriptからなるモデル (`foo.js`) を設置する。
+: Model層では、Vuex (`store.js`)やJavaScriptからなるモデル (`foo.js`) を配置する。
 
 `【４】`
 

@@ -60,7 +60,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 #### ▼ それ以外のディレクトリに置いた場合
 
-設置したディレクトリ配下の階層のファイルに対して適用される。
+配置したディレクトリ配下の階層のファイルに対して適用される。
 
 ![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲_2.png)
 
@@ -86,7 +86,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 ServerRoot /etc/httpd
 ```
 
-CentOSのEPELリポジトリ経由でインストールした場合、Apacheのインストール後に、optディレクトリ配下にconfファイルが設置される。
+CentOSのEPELリポジトリ経由でインストールした場合、Apacheのインストール後に、optディレクトリ配下にconfファイルが配置される。
 
 ```apacheconf
 ServerRoot /opt/rh/httpd24/root/etc/httpd

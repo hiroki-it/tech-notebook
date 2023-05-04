@@ -222,7 +222,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
 
-もしNAT Gatewayを設置したとする。
+もしNAT Gatewayを配置したとする。
 
 この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
 
@@ -230,7 +230,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 > ↪️：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
-代わりとして、VPCエンドポイントを設置する。
+代わりとして、VPCエンドポイントを配置する。
 
 より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
 

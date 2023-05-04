@@ -289,6 +289,29 @@ SSL証明書の内容
 
 <br>
 
+### SSL証明書と秘密鍵の配置場所
+
+#### ▼ ミドルウェアの場合
+
+ミドルウェアごとに、デフォルトのディレクトリが異なる。
+
+例えばNginxならば、`/etc/nginx/ssl`ディレクトリ配下にSSL証明書 (`.crt`) と`/etc/ssl/private`ディレクトリ配下に秘密鍵 (`.key`) の両方を配置する。
+
+> ↪️：
+> 
+> - https://www.networkinghowtos.com/howto/configure-nginx-to-use-ssl-certificates/
+> - https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213
+
+#### ▼ OSの場合
+
+OSごとに、デフォルトのディレクトリが異なる。
+
+例えばUbuntuならば、`/etc/ssl/certs`ディレクトリ配下にSSL証明書 (`.crt`) を、`/etc/ssl/private`ディレクトリ配下に秘密鍵 (`.key`) を配置する。
+
+> ↪️：https://ubuntu.com/server/docs/security-certificates
+
+<br>
+
 ### 自己署名SSL証明書の作成
 
 #### ▼ SSL証明書の作成に必要なもの
@@ -510,8 +533,8 @@ $ curl https://foo.example.com -v
 
 ### Web beacon
 
-webページに、サーバーに対してHTTPリクエストを送信するプログラムを設置し、送信されたリクエストを集計するアクセス解析方法。
+webページに、サーバーに対してHTTPリクエストを送信するプログラムを配置し、送信されたリクエストを集計するアクセス解析方法。
 
-例えば、1x1の小さなGif『画像』などを設置する。
+例えば、1x1の小さなGif『画像』などを配置する。
 
 <br>

@@ -385,7 +385,7 @@ spec:
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - mountPath: /app/config/ssh
           name: ssh-known-hosts
-        # リポジトリに接続するためのSSL証明書をコンテナにマウントする
+        # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書をコンテナにマウントする
         - mountPath: /app/config/tls
           name: tls-certs
         - mountPath: /app/config/server/tls
@@ -412,7 +412,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # PodからHTTPSプロトコルで通信するための証明書
+    # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書を設定する
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -522,7 +522,7 @@ spec:
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
-        # リポジトリに接続するためのSSL証明書をコンテナにマウントする
+        # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書を設定する
         - name: tls-certs
           mountPath: /app/config/tls
         - name: gpg-keys
@@ -617,7 +617,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # PodからHTTPSプロトコルで通信するための証明書
+    # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書をコンテナにマウントする
     - name: tls-certs
       configMap:
         defaultMode: 420

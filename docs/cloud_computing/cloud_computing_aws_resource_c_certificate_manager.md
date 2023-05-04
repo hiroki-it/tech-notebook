@@ -124,19 +124,20 @@ SSL証明書は、PKIによる公開鍵検証に使用される。
 
 <br>
 
-### SSL証明書の設置場所パターン
+### SSL証明書の配置場所パターン
 
 #### ▼ SSL終端
 
 HTTPSによるSSLプロトコルを受け付けるネットワークの最終地点のことを、SSL終端という。
 
-SSL証明書の設置場所は、SSL終端をどこにするかで決める。
+SSL証明書の配置場所は、SSL終端をどこにするかで決める。
 
-AWSの使用上、ACMのSSL証明書を設置できないAWSリソースに対しては、外部のSSL証明書を手に入れて設置する。
+AWSの使用上、ACMのSSL証明書を配置できないAWSリソースに対しては、外部のSSL証明書を手に入れて配置する。
 
 #### ▼ Route53 ➡︎ ALB、NLB、の場合
 
-| パターン<br>(Route53には必ず設置)                             | SSL終端<br>(HTTPSの最終地点) |
+
+| パターン<br>(Route53には必ず配置)                             | SSL終端<br>(HTTPSの最終地点) |
 | ------------------------------------------------------------- | ---------------------------- |
 | Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2                        | ALB                          |
 | Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2 (AWS外のSSL証明書)       | EC2                          |
@@ -145,12 +146,12 @@ AWSの使用上、ACMのSSL証明書を設置できないAWSリソースに対�
 
 #### ▼ Route53 ➡︎ LB コントローラー由来) の場合
 
-Podに設定する証明書には、CertManagerやIstioの証明書がある。
+AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS外のSSL証明書 (Let’s Encrypt、CertManager、Istio) しか紐づけられない。
 
-| パターン<br>(Route53には必ず設置)                                                 | SSL終端<br>(HTTPSの最終地点) |
-|-------------------------------------------------------------------------| ---------------------------- |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎︎ Service / Pod                     | ALB                          |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod       | Ingressコントローラー        |
+| パターン<br>(Route53には必ず配置)                                                              | SSL終端<br>(HTTPSの最終地点) |
+|--------------------------------------------------------------------------------------| ---------------------------- |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎︎ Service / Pod                                  | ALB                          |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod                                   | Ingressコントローラー        |
 | Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS外のSSL証明書) | Pod                          |
 
 > ↪️：
@@ -160,13 +161,13 @@ Podに設定する証明書には、CertManagerやIstioの証明書がある。
 
 #### ▼ Route53 ➡︎ CloudFrontの場合
 
-CloudFrontからALBにHTTPSプロトコルで通信する場合、それぞれにSSL証明書を設置する必要がある。
+CloudFrontからALBにHTTPSプロトコルで通信する場合、それぞれにSSL証明書を配置する必要がある。
 
 ただ、CloudForntはバージニア北部で、またALBは東京リージョンで証明書を作成する必要がある。
 
 CloudFrontに送信されたHTTPSリクエストをALBにルーティングするために、両方に紐付ける証明書で承認するドメインは、一致させる必要がある。
 
-| パターン<br>(Route53には必ず設置)                                    | SSL終端<br>(HTTPSの最終地点) |
+| パターン<br>(Route53には必ず配置)                                    | SSL終端<br>(HTTPSの最終地点) |
 | -------------------------------------------------------------------- | ---------------------------- |
 | Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ ALB(ACMのSSL証明書) ➡︎ EC2 | ALB                          |
 | Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ EC2                        | CloudFront                   |
@@ -174,7 +175,7 @@ CloudFrontに送信されたHTTPSリクエストをALBにルーティングす�
 
 #### ▼ Route53 ➡︎ EC2、Lightsail、の場合
 
-| パターン<br>(Route53には必ず設置)     | SSL終端<br>(HTTPSの最終地点) |
+| パターン<br>(Route53には必ず配置)     | SSL終端<br>(HTTPSの最終地点) |
 | ------------------------------------- | ---------------------------- |
 |                                       |
 | Route53 ➡︎ EC2 (AWS外のSSL証明書)       | EC2                          |

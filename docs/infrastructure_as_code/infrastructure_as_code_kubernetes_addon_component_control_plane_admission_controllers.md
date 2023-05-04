@@ -121,7 +121,7 @@ webhookサーバーから返信されたAdmissionReviewを含むレスポンス�
 
 MutatingWebhookConfigurationで、MutatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 
-webhookサーバーは、Cluster内部に設置することが多い。
+webhookサーバーは、Cluster内部に配置することが多い。
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
 
@@ -194,7 +194,7 @@ ValidatingAdmissionWebhookプラグインを使用すると、validating-admissi
 
 ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 
-webhookサーバーは、Cluster内部に設置することが多い。
+webhookサーバーは、Cluster内部に配置することが多い。
 
 **＊例＊**
 

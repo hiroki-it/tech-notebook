@@ -46,13 +46,13 @@ $ ps -aux | grep exporter
 
 #### ▼ パターン
 
-Exporterには、KubernetesのNode上でどう稼働させるかに応じて、設置パターンがある。
+Exporterには、KubernetesのNode上でどう稼働させるかに応じて、配置パターンがある。
 
-| タイプ                  | 設置方法                                         |
+| タイプ                  | 配置方法                                         |
 | ----------------------- | ------------------------------------------------ |
-| DaemonSetパターン       | 各Node上にDaemonSetとして設置する。              |
-| Deploymentパターン      | 各Node上にDeploymentとして設置する。             |
-| Pod内サイドカーパターン | Pod内にサイドカーとして設置する。                |
+| DaemonSetパターン       | 各Node上にDaemonSetとして配置する。              |
+| Deploymentパターン      | 各Node上にDeploymentとして配置する。             |
+| Pod内サイドカーパターン | Pod内にサイドカーとして配置する。                |
 | 埋め込み型パターン      | ライブラリとして、アプリケーション内に埋め込む。 |
 
 > ↪️：
