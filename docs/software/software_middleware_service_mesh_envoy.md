@@ -640,7 +640,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
             prefix: /
           route:
             cluster: PassthroughCluster
-# Node外からbar-podにアウトバウンド通信を送信する時に選ばれる。
+# Node外からbar-podにリクエストを送信する時に選ばれる。
 - name: "50002"
   virtualHosts:
     - name: bar-service.bar-namespace.svc.cluster.local:50002
@@ -668,7 +668,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
             prefix: /
           route:
             cluster: PassthroughCluster
-# Node外からbaz-podにアウトバウンド通信を送信する時に選ばれる。
+# Node外からbaz-podにリクエストを送信する時に選ばれる。
 - name: "50003"
   virtualHosts:
     - name: baz-service.baz-namespace.svc.cluster.local:50003

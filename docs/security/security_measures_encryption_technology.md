@@ -298,7 +298,7 @@ SSL証明書の内容
 例えばNginxならば、`/etc/nginx/ssl`ディレクトリ配下にSSL証明書 (`.crt`) と`/etc/ssl/private`ディレクトリ配下に秘密鍵 (`.key`) の両方を配置する。
 
 > ↪️：
-> 
+>
 > - https://www.networkinghowtos.com/howto/configure-nginx-to-use-ssl-certificates/
 > - https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213
 

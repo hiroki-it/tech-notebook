@@ -753,7 +753,7 @@ $ istioctl proxy-config routes foo-pod \
           ...
 
       includeRequestAttemptCount: true
-    # foo-podからbar-podにアウトバウンド通信を送信する時に選ばれる。
+    # foo-podからbar-podにリクエストを送信する時に選ばれる。
     - name: bar-service.bar-namespace.svc.cluster.local:50002
       domains:
         - bar-service.bar-namespace.svc.cluster.local
@@ -780,7 +780,7 @@ $ istioctl proxy-config routes foo-pod \
           ...
 
       includeRequestAttemptCount: true
-    # foo-podからbaz-podにアウトバウンド通信を送信する時に選ばれる。
+    # foo-podからbaz-podにリクエストを送信する時に選ばれる。
     - name: baz-service.baz-namespace.svc.cluster.local:50003
       domains:
         - baz-service.baz-namespace.svc.cluster.local
@@ -807,7 +807,7 @@ $ istioctl proxy-config routes foo-pod \
 
     ...
 
-    # 条件に合致しない任意のアウトバウンド通信を送信する時に選ばれる。
+    # 条件に合致しない任意のリクエストを送信する時に選ばれる。
     - name: allow_any
       domains:
         - '*'

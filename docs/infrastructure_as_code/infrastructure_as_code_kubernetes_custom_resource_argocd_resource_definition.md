@@ -383,22 +383,24 @@ spec:
       # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
       volumeMounts:
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
-        - mountPath: /app/config/ssh
-          name: ssh-known-hosts
-        # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書をコンテナにマウントする
-        - mountPath: /app/config/tls
-          name: tls-certs
+        - name: ssh-known-hosts
+          mountPath: /app/config/ssh
+        # ArgoCD外にHTTPSリクエストを送信するためのSSL証明書をコンテナにマウントする
+        - name: tls-certs
+          mountPath: /app/config/tls
+        # repo-serverに対してHTTPSリクエストするためのSSL証明書をコンテナにマウントする
         - mountPath: /app/config/server/tls
           name: argocd-repo-server-tls
-        - mountPath: /app/config/dex/tls
-          name: argocd-dex-server-tls
-        - mountPath: /home/argocd
-          name: plugins-home
-        - mountPath: /shared/app/custom
-          name: styles
+        # dex-serverに対してHTTPSリクエストするためのSSL証明書をコンテナにマウントする
+        - name: argocd-dex-server-tls
+          mountPath: /app/config/dex/tls
+        - name: plugins-home
+          mountPath: /home/argocd
+        - name: styles
+          mountPath: /shared/app/custom
         # リポジトリから取得したクローンを保管するディレクトリをコンテナにマウントする
-        - mountPath: /tmp
-          name: tmp
+        - name: tmp
+          mountPath: /tmp
 
       ...
 
@@ -412,7 +414,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書を設定する
+    # ArgoCD外にHTTPSリクエストを送信するために、SSL証明書を設定する。
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -522,7 +524,7 @@ spec:
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
-        # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書を設定する
+        # ArgoCD外にHTTPSリクエストを送信するために、SSL証明書を設定する。
         - name: tls-certs
           mountPath: /app/config/tls
         - name: gpg-keys
@@ -617,7 +619,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # HTTPSプロトコルのアウトバウンド通信を送信するためのSSL証明書をコンテナにマウントする
+    # ArgoCD外にHTTPSリクエストを送信するためのSSL証明書をコンテナにマウントする
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -792,7 +794,7 @@ spec:
           name: argocd-home
   # 各種Secretを読み込む
   volumes:
-    # repo-serverとHTTPSプロトコルで通信するために、SSL証明書を設定する
+    # repo-serverとHTTPSリクエストを送信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420

@@ -149,7 +149,7 @@ func main() {
 
 	defer cleanUp()
 
-	// 後続のマイクロサービスにアウトバウンド通信を送信する。
+	// 後続のマイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -241,7 +241,7 @@ func main() {
 
 	defer cleanUp()
 
-	// 後続のマイクロサービスにアウトバウンド通信を送信する。
+	// 後続のマイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}

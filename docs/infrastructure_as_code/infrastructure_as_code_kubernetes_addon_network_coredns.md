@@ -129,7 +129,7 @@ Podのスケジューリング時に、kubeletはPod内のコンテナの`/etc/r
 
 Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルを使用して、CoreDNSのServiceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。
 
-このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
+このServiceのIPアドレスを指定し、Podにリクエストを送信する。
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -306,7 +306,7 @@ $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 
 #### ▼ Serviceを介したアウトバウンド通信の送信
 
-Serviceを介して、宛先のPodにHTTPSプロトコルでアウトバウンド通信を送信する。
+Serviceを介して、宛先のPodにHTTPSリクエストを送信する。
 
 完全修飾ドメイン名またはIPアドレスを指定できる。
 

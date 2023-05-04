@@ -536,7 +536,7 @@ configs:
       name: 50002
       virtual_hosts:
         # 仮想ホスト名
-        # foo-podからbar-podにアウトバウンド通信を送信する時に選ばれる。
+        # foo-podからbar-podにリクエストを送信する時に選ばれる。
         - name: bar-service.bar-namespace.svc.cluster.local:50002
           domains:
             - bar-service.bar-namespace.svc.cluster.local

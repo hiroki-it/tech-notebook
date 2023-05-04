@@ -349,9 +349,9 @@ data:
 
 <br>
 
-### argocd-redis
+### redis-server
 
-argocd-redisの起動コマンドのオプションを設定する。
+redis-serverの起動コマンドのオプションを設定する。
 
 ```yaml
 apiVersion: v1
@@ -365,9 +365,9 @@ data:
 
 <br>
 
-### argocd-repo-server
+### repo-server
 
-argocd-repo-serverの起動コマンドのオプションを設定する。
+repo-serverの起動コマンドのオプションを設定する。
 
 ```yaml
 apiVersion: v1
@@ -627,9 +627,25 @@ data:
 
 <br>
 
-## 05. argocd-tls-cets-cm
+## 05. SSL証明書系ConfigMap
 
-リポジトリをHTTPSプロコトルでポーリングするために、argocd-serverで必要なSSL証明書を設定する。
+### argocd-dex-server-tls
+
+いくつかのコンポーネントがargocd-dex-serverに対してHTTPSリクエストを送信するために、SSL証明書を設定する。
+
+<br>
+
+### argocd-repo-server-tls
+
+いくつかのコンポーネント (例：application-controller、argocd-server) がrepo-serverに対してHTTPSリクエストを送信するために、SSL証明書を設定する。
+
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components
+
+<br>
+
+### argocd-tls-certs-cm
+
+ArgoCD外にHTTPSリクエストを送信するために、SSL証明書を設定する。
 
 > ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 

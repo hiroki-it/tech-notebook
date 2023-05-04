@@ -150,7 +150,7 @@ argocd@repo-server:/usr/local/bin] $ ls -la
 ...
 ```
 
-補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がargocd-repo-serverのコンテナイメージにあらかじめインストールされている。
+補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がrepo-serverのコンテナイメージにあらかじめインストールされている。
 
 ```bash
 $ ls -la /usr/local/bin
@@ -825,7 +825,7 @@ spec:
 
 #### ▼ ServiceAccountの作成
 
-`argocd-repo-server`コンテを持つPodに紐付けるServiceAccountを作成する。
+`repo-server`コンテを持つPodに紐付けるServiceAccountを作成する。
 
 ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用できるようにする。
 

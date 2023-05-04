@@ -98,7 +98,7 @@ spec:
         # DNSレコード追加のために検知するKubernetesリソースを設定する
         - --source=service
         - --source=ingress
-        # DNSゾーン (例；AWS Route53のホストゾーン) を設定する
+        # DNSゾーン (例：AWS Route53のホストゾーン) を設定する
         - --domain-filter=example.com
         - --provider=aws
         # Ingressからルールを削除した場合に、対応するAWSリソース (ALBリスナールール、Route53 DNSレコード) も削除する
