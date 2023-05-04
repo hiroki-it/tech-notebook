@@ -200,8 +200,8 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # 委譲先のIDプロバイダーがOIDCのリクエストを待ち受けるURLを設定する。
-        redirectURI: https://example.com/api/dex
+        # 認可レスポンスを受信するURLを設定する
+        redirectURI: https://example.com/api/dex/callback
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
   # 開発環境では、https://localhost:8080
@@ -237,8 +237,8 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # 委譲先のIDプロバイダーがリクエストを待ち受けるURLを設定する。
-        redirectURI: https://example.com/api/dex
+        # 認可レスポンスを受信するURLを設定する
+        redirectURI: https://example.com/api/dex/callback
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
   # 開発環境では、https://localhost:8080

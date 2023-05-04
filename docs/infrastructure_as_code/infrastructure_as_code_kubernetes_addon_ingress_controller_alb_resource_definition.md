@@ -38,7 +38,9 @@ AWS ALBをリスナールール以外を設定するために、Ingressの`.meta
 
 #### ▼ `alb.ingress.kubernetes.io/certificate-arn`キー
 
-AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したSSL証明書のARNを設定する。
+AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したACMのSSL証明書のARNを設定する。
+
+AWS LBコントローラーは、プロビジョニングしたALBにACMのSSL証明書を自動的に紐づける。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -49,7 +51,10 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:<AWSアカウントID>:certificate/*****
 ```
 
-> ↪️：https://nobelabo.hatenablog.com/entry/2022/10/01/201138
+> ↪️：
+>
+> - https://nobelabo.hatenablog.com/entry/2022/10/01/201138
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/
 
 #### ▼ `alb.ingress.kubernetes.io/healthcheck-path`キー
 

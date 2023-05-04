@@ -160,7 +160,7 @@ aws-eks-vpc-cniアドオンは、L-IPAMデーモン (ipamd) 、CNIプラグイ�
 
 #### ▼ L-IPAM
 
-`aws-node`のDaemonSet配下のコンテナのプロセスとして稼働している。
+`aws-node`のDaemonSet配下のコンテナ上で、デーモンとして稼働している。
 
 他のCNIアドオンにない独自モードを持つ。
 
@@ -168,7 +168,7 @@ L-IPAMは、NodeのAWS ENIに紐づけられたセカンダリープライベー
 
 この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。
 
-執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングできない)。
+執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングできない。
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
 
@@ -178,7 +178,6 @@ L-IPAMは、NodeのAWS ENIに紐づけられたセカンダリープライベー
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-
 
 <br>
 
@@ -240,7 +239,5 @@ $ kubectl get daemonset aws-node \
     jsonpath='{.spec.template.spec.containers[*].env}' \
     | jq .
 ```
-
-
 
 <br>
