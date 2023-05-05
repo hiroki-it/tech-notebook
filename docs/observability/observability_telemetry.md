@@ -49,19 +49,19 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 #### ▼ 組み合わせの例
 
-| アクション                                                   |    AWS CloudWatchベース    |    Datadogベース    |                       Istioベース                        |  Prometheusベース  |
-| ------------------------------------------------------------ | :------------------------: | :-----------------: | :------------------------------------------------------: | :----------------: |
-| メトリクスのデータポイントの作成                             | AWS CloudWatchエージェント | datadogエージェント | Exporter<br>+<br>Envoyによるリクエスト系メトリクスの作成 |      Exporter      |
-| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                            |         ⬇︎         |
-| メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) | AWS CloudWatchエージェント | datadogエージェント |  Exporter<br>+<br>Istiodコントロールプレーンによる収集   |      Exporter      |
-| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                            |         ⬇︎         |
-| ビルトインローカルストレージへの保管                         |  AWS CloudWatchメトリクス  |       Datadog       |                            -                             |         -          |
-| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                            |         ⬇︎         |
-| 監視バックエンドとして可視化                                 |  AWS CloudWatchメトリクス  |       Datadog       |                    prometheusサーバー                    | prometheusサーバー |
-| 分析                                                         |  AWS CloudWatchメトリクス  |       Datadog       |                            -                             |         -          |
-| レポートの作成                                               |             -              |       Datadog       |                            -                             |         -          |
-| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                            |         ⬇︎         |
-| アラートの作成                                               |   AWS CloudWatchアラーム   |       Datadog       |                    prometheusサーバー                    | prometheusサーバー |
+| アクション                                                   |    AWS CloudWatchベース    |    Datadogベース    |                        Istioベース                        |  Prometheusベース  |
+| ------------------------------------------------------------ | :------------------------: | :-----------------: | :-------------------------------------------------------: | :----------------: |
+| メトリクスのデータポイントの作成                             | AWS CloudWatchエージェント | datadogエージェント | Exporter<br>+ <br>Envoyによるリクエスト系メトリクスの作成 |      Exporter      |
+| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                             |         ⬇︎         |
+| メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) | AWS CloudWatchエージェント | datadogエージェント |  Exporter<br>+ <br>Istiodコントロールプレーンによる収集   |      Exporter      |
+| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                             |         ⬇︎         |
+| ビルトインローカルストレージへの保管                         |  AWS CloudWatchメトリクス  |       Datadog       |                             -                             |         -          |
+| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                             |         ⬇︎         |
+| 監視バックエンドとして可視化                                 |  AWS CloudWatchメトリクス  |       Datadog       |                    prometheusサーバー                     | prometheusサーバー |
+| 分析                                                         |  AWS CloudWatchメトリクス  |       Datadog       |                             -                             |         -          |
+| レポートの作成                                               |             -              |       Datadog       |                             -                             |         -          |
+| ⬇︎                                                           |             ⬇︎             |         ⬇︎          |                            ⬇︎                             |         ⬇︎         |
+| アラートの作成                                               |   AWS CloudWatchアラーム   |       Datadog       |                    prometheusサーバー                     | prometheusサーバー |
 
 <br>
 

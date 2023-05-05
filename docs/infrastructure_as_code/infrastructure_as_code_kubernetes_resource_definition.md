@@ -3946,23 +3946,43 @@ data:
 
 #### ▼ kubernetes.io/service-account-token
 
-ServiceAccountのための変数を設定する。
+Kubernetesの`v1.24`以降では、Secretが自動的に作成されないようになっている。
 
-ただし、自動的に作成されるため、ユーザーが設定する必要はない。
+`.metadata.annotation`キーと`.type`キーを設定したSecretを作成すると、Kubernetesはこれの`data`キー配下にトークン文字列を自動的に追加する。
+
+このトークンには、失効期限がない。
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: foo-account-token-secret
+  name: foo-service-account-token
   annotations:
-    kubernetes.io/service-account.name: foo-account
+    # ServiceAccountの名前を設定する
+    kubernetes.io/service-account.name: foo-service-account
+# トークンを管理するSecretであることを宣言する
 type: kubernetes.io/service-account-token
+# 自動的に追加される
 data:
-  foo-token: bar
+  token: xxxxxxxxxx
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
+ServiceAccountでは、このSecretを指定する。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-service-account
+secrets:
+  - name: foo-service-account-token
+```
+
+> ↪️：
+>
+> - https://zaki-hmkc.hatenablog.com/entry/2022/07/27/002213
+> - https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
+> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#token-controller
 
 #### ▼ kubernetes.io/tls
 
@@ -4337,9 +4357,13 @@ status:
 
 #### ▼ automountServiceAccountTokenとは
 
-ServiceAccountのPodへの自動紐付けの有効化する。
+ServiceAccountのPod内のコンテナへのマウントを有効化する。
 
 デフォルトで有効化されている。
+
+service-account-admission-controllerは、Podの作成時にVolume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナにマウントする。
+
+トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
 
 ```yaml
 apiVersion: v1
@@ -4349,7 +4373,10 @@ metadata:
 automountServiceAccountToken: false
 ```
 
-> ↪️：https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
+> ↪️：
+>
+> - https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
+> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#serviceaccount-admission-controller
 
 <br>
 
@@ -4389,13 +4416,7 @@ secrets:
   - name: foo-service-account-token
 ```
 
-Kubernetesの`v1.24`以降では、Secretが自動的に作成されないようになっている。
-
-`.metadata.annotation`キーと`.type`キーを設定したSecretを作成すると、Kubernetesはこれの`data`キー配下にトークン文字列を自動的に追加する。
-
-ServiceAccountを削除すると、Kubernetesはトークン文字列を自動的に削除する。
-
-このトークンには、失効期限がない。
+Secretでは、ServiceAccountの名前を指定する。
 
 ```yaml
 apiVersion: v1
@@ -4403,19 +4424,11 @@ kind: Secret
 metadata:
   name: foo-service-account-token
   annotations:
-    # ServiceAccountの名前を設定する
     kubernetes.io/service-account.name: foo-service-account
-# トークンを管理するSecretであることを宣言する
 type: kubernetes.io/service-account-token
-# 自動的に設定される
 data:
   token: xxxxxxxxxx
 ```
-
-> ↪️：
->
-> - https://zaki-hmkc.hatenablog.com/entry/2022/07/27/002213
-> - https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
 
 <br>
 

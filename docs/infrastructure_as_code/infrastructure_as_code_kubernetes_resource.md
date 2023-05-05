@@ -1314,24 +1314,37 @@ Kubernetes外部でプロビジョニングされたストレージ (例：AWS E
 
 <br>
 
-### ServiceAccount、UserAccount
+### ServiceAccount
 
-#### ▼ ServiceAccount、UserAccountとは
+#### ▼ ServiceAccountとは
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
 kube-apiserverが、リクエストの送信元を認証できるようにする。
 
-| アカウント名   | 説明                                                                                                                                                                         | 補足                                                                                                                                                                                                                                                                                                                                         |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ServiceAccount | kube-apiserverが、Kubernetesリソース (特にPod) を認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>↪️：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
-| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                      | クライアントの認証に必要なクライアント証明書は、`~/.kube/config`ファイルに登録する必要がある。                                                                                                                                                                                                                                               |
+kube-apiserverが、Kubernetesリソース (特にPod) を認証できるようにする。
+
+別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。
+
+標準のKubernetesリソースには自動的にServiceAccountが設定される。
 
 > ↪️：
 >
 > - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
+#### ▼ ServiceAccountの仕組み
+
+ServiceAccountは、ServiceAccount本体、service-account-controller、token-controller、service-account-admission-controller、といったコンポーネントから構成されている。
+
+| コンポーネント                       |                                                                                                                                                                                                                                                                      |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| service-account-controller           | Namespace内に`default`というServiceAccountを自動的に作成する。                                                                                                                                                                                                       |
+| token-controller                     | ServiceAccount用のSecretの作成をポーリングし、Secretにトークン文字列を追加する。一方で、Secretの削除をポーリングし、ServiceAccountからSecretの指定を削除する。また、ServiceAccountの削除をポーリングし、token-controllerはSecretのトークン文字列を自動的に削除する。 |
+| service-account-admission-controller | AdmissionWebhookの仕組みの中で、Podの作成時に、Volume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナにマウントする。トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。                    |
+
+> ↪️：https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details
 
 #### ▼ ServiceAccountのユーザー名
 
@@ -1347,6 +1360,24 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 > - https://knowledge.sakura.ad.jp/21129/
 
 <br>
+
+### UserAccount
+
+#### ▼ UserAccountとは
+
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
+
+kube-apiserverが、リクエストの送信元を認証できるようにする。
+
+kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。
+
+クライアントの認証に必要なクライアント証明書は、`~/.kube/config`ファイルに登録する必要がある。
+
+> ↪️：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
 ## 08. 認可系リソース
 
