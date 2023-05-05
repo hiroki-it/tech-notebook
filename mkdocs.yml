@@ -333,7 +333,7 @@ nav:
 
   - 🌏 ネットワーク:
       - network/index.md
-      - ■ ネットワーク: network/network.md
+      - ネットワーク: network/network.md
       - ■ モデル:
           - ■ OSI参照モデル:
               - OSI参照モデル: network/network_model_osi.md
