@@ -19,11 +19,11 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 #### ▼ printとは
 
-> ↪️：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
-
 ```bash
 $ serverless print
 ```
+
+> ↪️：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
 
 #### ▼ パラメーター有
 
@@ -39,11 +39,11 @@ $ serverless print --FOO foo
 
 クラウドインフラを作成する。
 
-> ↪️：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
-
 ```bash
 $ serverless deploy
 ```
+
+> ↪️：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
 #### ▼ パラメーター
 

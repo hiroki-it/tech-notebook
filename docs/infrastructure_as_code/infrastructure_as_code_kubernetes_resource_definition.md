@@ -3998,7 +3998,7 @@ data:
   token: xxxxxxxxxx
 ```
 
-ServiceAccountでは、このSecretを指定する。
+ServiceAccountでは、PodがこのSecretを使用できるように、その名前を設定する。
 
 ```yaml
 apiVersion: v1
@@ -4011,6 +4011,7 @@ secrets:
 
 > ↪️：
 >
+> - https://stackoverflow.com/a/72258300
 > - https://zaki-hmkc.hatenablog.com/entry/2022/07/27/002213
 > - https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
 > - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#token-controller
@@ -4392,8 +4393,6 @@ ServiceAccountのPod内のコンテナへのマウントを有効化する。
 
 デフォルトで有効化されている。
 
-
-
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -4402,9 +4401,9 @@ metadata:
 automountServiceAccountToken: true
 ```
 
-service-account-admission-controllerは、Podの作成時にVolume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナに自動的にマウントする。
+service-account-admission-controllerは、AdmissionWebhookの仕組みでPodの作成時にマニフェストを変更する。
 
-トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
+これにより、Volume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナに自動的にマウントするようになる。
 
 ```yaml
 apiVersion: v1
@@ -4420,27 +4419,65 @@ spec:
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
           name: kube-api-access-*****
           readOnly: true
+        - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+          name: aws-iam-token
+          readOnly: true
   volumes:
+    # kube-apiserverへのリクエストに必要なトークンが設定される
     - name: kube-api-access-*****
       projected:
         defaultMode: 420
         sources:
-        # ServiceAccountのトークン
-        - serviceAccountToken:
-            expirationSeconds: 3607
-            path: token
-        # kube-apiserverにリクエストを送信するためのSSL証明書
-        - configMap:
-            items:
-            - key: ca.crt
-              path: ca.crt
-            name: kube-root-ca.crt
-        - downwardAPI:
-            items:
-            - fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
-              path: namespace
+          # ServiceAccountのトークン
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          # kube-apiserverにリクエストを送信するためのSSL証明書
+          - configMap:
+              items:
+                - key: ca.crt
+                  path: ca.crt
+              name: kube-root-ca.crt
+          - downwardAPI:
+              items:
+                - fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+                  path: namespace
+    # AWS EKSを使用している場合、AWS-APIへのリクエストに必要なトークンも設定される
+    - name: aws-iam-token
+      projected:
+        defaultMode: 420
+        sources:
+          - serviceAccountToken:
+              # IDプロバイダーによるトークンの発行対象
+              audience: sts.amazonaws.com
+              expirationSeconds: 86400
+              path: token
+```
+
+
+
+マウント後、トークンの文字列はコンテナの`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
+
+もし、AWS EKSを使用している場合、加えて`/var/run/secrets/eks.amazonaws.com/serviceaccount/token`ファイルにもトークンの文字列が記載されている。
+
+```yaml
+[root@<foo-pod:/] $ cat /var/run/secrets/kubernetes.io/serviceaccount/token | base64 -d; echo
+
+{
+  "alg":"RS256",
+  "kid":"*****"
+}
+
+# AWS EKSを使用している場合
+[root@<foo-pod:/] $ cat /var/run/secrets/eks.amazonaws.com/serviceaccount/token | base64 -d; echo
+
+{
+  "alg":"RS256",
+  "kid":"*****"
+}
+
 ```
 
 > ↪️：
@@ -4448,6 +4485,7 @@ spec:
 > - https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
 > - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#serviceaccount-admission-controller
 > - https://qiita.com/hiyosi/items/35c22507b2a85892c707
+> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 
 <br>
 
@@ -4476,7 +4514,9 @@ imagePullSecrets:
 
 #### ▼ secretsとは
 
-ServiceAccountのトークンを管理するSecret名を設定する。
+ServiceAccountに紐付けたPodが使用できるSecretの一覧を設定する。
+
+ServiceAccountにトークンを持つSecretを紐づけるために使用することがある。
 
 ```yaml
 apiVersion: v1

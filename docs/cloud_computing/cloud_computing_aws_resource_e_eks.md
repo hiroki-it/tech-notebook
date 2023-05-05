@@ -360,7 +360,7 @@ EKSをSSOのIDプロバイダーとして使用することにより、IAMの認
 
 : SSOのIDプロバイダーのタイプは、OIDCとする。
 
-     『EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSL証明書を署名する中間CA認証局 (例：CertificateManagerなど) のサムプリント』『対象者 (`sts.amazonaws.com`)』を使用して、OIDCプロバイダーを作成する。
+     『EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSL証明書を署名する中間CA認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (`sts.amazonaws.com`)』を使用して、OIDCプロバイダーを作成する。
 
 ```terraform
 data "tls_certificate" "this" {
@@ -373,6 +373,54 @@ resource "aws_iam_openid_connect_provider" "this" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = data.tls_certificate.this[0].certificates[*].sha1_fingerprint
 }
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-*****
+          readOnly: true
+        # OIDCのプロバイダーによるトークンをコンテナにマウントする
+        - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+          name: aws-iam-token
+          readOnly: true
+  volumes:
+    - name: kube-api-access-*****
+      projected:
+        defaultMode: 420
+        sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              items:
+                - key: ca.crt
+                  path: ca.crt
+              name: kube-root-ca.crt
+          - downwardAPI:
+              items:
+                - fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+                  path: namespace
+    # AWS EKSを使用している場合、AWS-APIへのリクエストに必要なトークンも設定される
+    - name: aws-iam-token
+      projected:
+        defaultMode: 420
+        sources:
+          - serviceAccountToken:
+              # OIDCのIDプロバイダーによるトークンの発行対象
+              audience: sts.amazonaws.com
+              expirationSeconds: 86400
+              path: token
 ```
 
 > ↪️：
