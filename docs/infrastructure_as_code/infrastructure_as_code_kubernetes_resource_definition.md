@@ -3408,6 +3408,37 @@ spec:
     - name: foo-gin-volume
 ```
 
+#### ▼ projected:
+
+複数のソース (Secret、downwardAPI、ConfigMap、ServiceAccountのToken) を同じVolume上のディレクトリに配置する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      volumeMounts:
+        - name: foo-gin-volume
+          mountPath: /go/src
+  volumes:
+    - name: foo-gin-volume
+      projected:
+        sources:
+          - configMap:
+              name: foo-cm
+          - configMap:
+              name: bar-cm
+          - configMap:
+              name: baz-cm
+```
+
+> ↪️：https://amateur-engineer-blog.com/multi-configmap-by-projected-volume/
+
 #### ▼ persistentVolumeClaim
 
 PersistentVolumeを使用する場合、PersistentVolumeClaimを設定する。
@@ -4361,22 +4392,62 @@ ServiceAccountのPod内のコンテナへのマウントを有効化する。
 
 デフォルトで有効化されている。
 
-service-account-admission-controllerは、Podの作成時にVolume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナにマウントする。
 
-トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
 
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: foo-service-account
-automountServiceAccountToken: false
+automountServiceAccountToken: true
+```
+
+service-account-admission-controllerは、Podの作成時にVolume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナに自動的にマウントする。
+
+トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      volumeMounts:
+        # service-account-admission-controllerは、コンテナに自動的にマウントする
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-*****
+          readOnly: true
+  volumes:
+    - name: kube-api-access-*****
+      projected:
+        defaultMode: 420
+        sources:
+        # ServiceAccountのトークン
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        # kube-apiserverにリクエストを送信するためのSSL証明書
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
 ```
 
 > ↪️：
 >
 > - https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
 > - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#serviceaccount-admission-controller
+> - https://qiita.com/hiyosi/items/35c22507b2a85892c707
 
 <br>
 

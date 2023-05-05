@@ -170,7 +170,7 @@ spec:
     spec:
       containers:
         - name: foo-gin
-          image: foo-gin:dev
+          image: foo-gin:1.0.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

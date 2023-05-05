@@ -200,7 +200,7 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # 認可レスポンスを受信するURLを設定する
+        # dex-serverが認可レスポンスを受信するURLを設定する
         redirectURI: https://example.com/api/dex/callback
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
@@ -212,6 +212,7 @@ data:
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+> - https://dexidp.io/docs/connectors/github/#configuration
 
 #### ▼ Dexを介して委譲先Webサイトに接続する場合
 
@@ -237,7 +238,7 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # 認可レスポンスを受信するURLを設定する
+        # dex-serverが認可レスポンスを受信するURLを設定する
         redirectURI: https://example.com/api/dex/callback
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
@@ -247,8 +248,8 @@ data:
 
 > ↪️：
 >
+> - https://dexidp.io/docs/connectors/github/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
-> - https://dexidp.io/docs/connectors/oidc/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
 
 <br>
