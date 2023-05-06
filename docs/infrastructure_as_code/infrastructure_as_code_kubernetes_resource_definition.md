@@ -780,8 +780,8 @@ spec:
         app.kubernetes.io/app: foo-pod
     spec:
       containers:
-        - name: foo-gin
-          image: foo-gin:1.0.0
+        - name: app
+          image: app:1.0.0
           ports:
             - containerPort: 8080
 ```
@@ -1577,17 +1577,17 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   initContainers:
     - name: readiness-check-db
       image: busybox:1.28
-      # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのfoo-ginコンテナの起動を待機する。
+      # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのappコンテナの起動を待機する。
       # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
       command:
         - /bin/bash
@@ -1637,12 +1637,12 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
         - name: certificate-volume
           mountPath: /etc/ssl
@@ -2034,8 +2034,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
   affinity:
@@ -2090,8 +2090,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
   affinity:
@@ -2138,8 +2138,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
   affinity:
@@ -2184,8 +2184,8 @@ spec:
         app.kubernetes.io/app: foo-pod
     spec:
       containers:
-        - name: foo-gin
-          image: foo-gin:1.0.0
+        - name: app
+          image: app:1.0.0
           ports:
             - containerPort: 8080
       affinity:
@@ -2202,7 +2202,7 @@ spec:
                       # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
                       values:
                         # 自身が複製するPodの名前
-                        - foo-gin
+                        - app
 ```
 
 #### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
@@ -2248,8 +2248,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
 ```
@@ -2267,8 +2267,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
       envFrom:
@@ -2291,8 +2291,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       # 待ち受けるポート番号の仕様
       ports:
         - containerPort: 8080
@@ -2319,8 +2319,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8080
@@ -2391,8 +2391,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       resources:
         # 下限必要サイズ
         requests:
@@ -2413,9 +2413,9 @@ spec:
 ```bash
 $ kubectl top pod --container -n foo-namespace
 
-POD       NAME            CPU(cores)   MEMORY(bytes)
-foo-pod   foo-gin         1m           19Mi          # 19Mi ÷ 128Mi × 100 = 14%
-foo-pod   istio-proxy     5m           85Mi
+POD       NAME          CPU(cores)   MEMORY(bytes)
+foo-pod   app           1m           19Mi          # 19Mi ÷ 128Mi × 100 = 14%
+foo-pod   istio-proxy   5m           85Mi
 ```
 
 #### ▼ volumeMounts
@@ -2437,15 +2437,15 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   volumes:
-    - name: foo-gin-volume
+    - name: app-volume
       persistentVolumeClaim:
         claimName: foo-persistent-volume-claim
 ```
@@ -2465,8 +2465,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
       workingDir: /go/src
@@ -2510,8 +2510,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       livenessProbe:
         httpGet:
           port: 80
@@ -2529,8 +2529,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       livenessProbe:
         failureThreshold: 5
 ```
@@ -2552,8 +2552,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       livenessProbe:
         # 2回目以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。
         gracePeriodSeconds: 5
@@ -2576,8 +2576,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       livenessProbe:
         # 初回以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。
         initialDelaySeconds: 5
@@ -2596,8 +2596,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       livenessProbe:
         # LivenessProbeヘルスチェックのタイムアウト時間を30秒とする。
         timeoutSeconds: 30
@@ -2614,8 +2614,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       livenessProbe:
         # 5秒ごとにLivenessProbeヘルスチェックを実行する。
         periodSeconds: 5
@@ -2768,8 +2768,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       volumeMounts:
         - name: foo-volume
           # foo-volumeにあるwwwディレクトリを指定する
@@ -2796,8 +2796,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       volumeMounts:
         - name: foo-volume
           # foo-volumeにあるwww.confファイルを指定する
@@ -2827,8 +2827,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   enableServiceLinks: false
 ```
 
@@ -2853,8 +2853,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   hostname: foo-pod
 ```
 
@@ -2903,8 +2903,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: private-foo-gin:1.0.0 # プライベートリポジトリ
+    - name: app
+      image: private-app:1.0.0 # プライベートリポジトリ
   imagePullSecrets:
     - name: foo-repository-credentials-secret # プライベートリポジトリのクレデンシャル情報を持つSecret
 ```
@@ -2939,8 +2939,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   priorityClassName: system-node-critical
 ```
 
@@ -2978,8 +2978,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   nodeSelector:
     node.kubernetes.io/nodegroup: foo-node-group
 ```
@@ -3009,8 +3009,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   securityContext:
     runAsUser: 999
 ```
@@ -3031,8 +3031,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   securityContext:
     runAsGroup: 3000
 ```
@@ -3052,8 +3052,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   securityContext:
     runAsNonRoot: true
 ```
@@ -3073,8 +3073,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   securityContext:
     fsGroup: 999
 ```
@@ -3103,8 +3103,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   restartPolicy: Always
 ```
 
@@ -3119,8 +3119,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   restartPolicy: Never
 ```
 
@@ -3135,8 +3135,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   restartPolicy: OnFailure
 ```
 
@@ -3159,8 +3159,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   serviceAccountName: foo-service-account
 ```
 
@@ -3185,8 +3185,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   terminationGracePeriodSeconds: 300
 ```
 
@@ -3219,8 +3219,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   topologySpreadConstraints:
     - maxSkew: 1
       topologyKey: topology.kubernetes.io/zone
@@ -3243,8 +3243,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   topologySpreadConstraints:
     - topologyKey: topology.kubernetes.io/zone
 ```
@@ -3266,8 +3266,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   topologySpreadConstraints:
     - whenUnsatisfiable: DoNotSchedule
 ```
@@ -3287,8 +3287,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
   topologySpreadConstraints:
     - labelSelector:
         app.kubernetes.io/app: foo-pod
@@ -3377,13 +3377,13 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   volumes:
-    - name: foo-gin-volume
+    - name: app-volume
       emptyDir: {}
 ```
 
@@ -3405,13 +3405,13 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   volumes:
-    - name: foo-gin-volume
+    - name: app-volume
       emptyDir:
         medium: Memory
         sizeLimit: 1Gi
@@ -3441,13 +3441,13 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   volumes:
-    - name: foo-gin-volume
+    - name: app-volume
       hostPath:
         path: /data/src/foo
         # コンテナ内にディレクトリがなければ作成する
@@ -3470,12 +3470,12 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
+    - name: app
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   volumes:
-    - name: foo-gin-volume
+    - name: app-volume
 ```
 
 #### ▼ projected:
@@ -3491,12 +3491,12 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
+    - name: app
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   volumes:
-    - name: foo-gin-volume
+    - name: app-volume
       projected:
         sources:
           - configMap:
@@ -3522,12 +3522,12 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
+    - name: app
       volumeMounts:
-        - name: foo-gin-volume
+        - name: app-volume
           mountPath: /go/src
   volumes:
-    - name: foo-gin-volume
+    - name: app-volume
       persistentVolumeClaim:
         claimName: foo-standard-volume-claim
 ```
@@ -4482,8 +4482,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       volumeMounts:
         # service-account-admission-controllerは、コンテナに自動的にマウントする
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount

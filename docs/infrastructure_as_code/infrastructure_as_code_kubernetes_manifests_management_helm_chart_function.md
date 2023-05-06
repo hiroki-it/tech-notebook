@@ -774,8 +774,8 @@ spec:
         checksum/config: "{{ include (print $.Template.BasePath '/foo-configmap.yaml') . | sha256sum }}"
     spec:
       containers:
-        - name: foo-gin
-          image: foo-gin:1.0.0
+        - name: app
+          image: app:1.0.0
           ports:
             - containerPort: 8080
           envFrom:

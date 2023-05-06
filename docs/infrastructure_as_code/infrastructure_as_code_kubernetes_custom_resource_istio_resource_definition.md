@@ -749,8 +749,8 @@ spec:
   template:
     spec:
       containers:
-        - name: foo-gin
-          image: foo-gin
+        - name: app
+          image: app
         # istio-proxyコンテナの設定を上書きする。
         - name: istio-proxy
           lifecycle:

@@ -67,8 +67,8 @@ metadata:
   namespace: foo-namespace
 spec:
   containers:
-    - name: foo-gin
-      image: foo-gin:1.0.0
+    - name: app
+      image: app:1.0.0
       ports:
         - containerPort: 8080
       # Secretは使用せずにPod内コンテナにファイルとしてマウントする。

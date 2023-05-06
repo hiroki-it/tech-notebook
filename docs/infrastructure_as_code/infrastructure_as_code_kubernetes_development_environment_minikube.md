@@ -169,16 +169,16 @@ spec:
         app.kubernetes.io/app: foo-pod
     spec:
       containers:
-        - name: foo-gin
-          image: foo-gin:1.0.0
+        - name: app
+          image: app:1.0.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: foo-gin
+            - name: app
               mountPath: /go/src
       volumes:
-        - name: foo-gin
+        - name: app
           hostPath:
             path: /data
             type: DirectoryOrCreate
