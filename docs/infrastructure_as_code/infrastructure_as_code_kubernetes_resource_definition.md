@@ -1564,6 +1564,12 @@ spec:
 
 `.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
 
+事前処理 (例：待機処理、ツールのインストール処理、など) のために使用する。
+
+**＊実行例＊**
+
+dbコンテナが起動するために時間が必要であり、appコンテナではそれを待機できるようにする。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -1593,7 +1599,71 @@ spec:
           done
 ```
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-db
+      image: mysql:1.0.0
+      ports:
+        - containerPort: 3306
+      volumeMounts:
+        - name: foo-db-volume
+          mountPath: /var/lib
+  volumes:
+    - name: foo-db-volume
+      emptyDir: {}
+```
+
 > ↪️：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
+
+**＊実行例＊**
+
+appコンテナからHTTPSプロトコルで通信する場合に、SSL証明書が必要になる。
+
+これはすでに署名されている必要があり、例えばubuntuの`ca-certificates`パッケージをインストールする。
+
+すると、`/etc/ssl`ディレクトリ配下にSSL証明書に関する一連のファイルがインストールされる。
+
+これを、共有Volumeを介して、appコンテナにマウントする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: foo-gin-volume
+          mountPath: /go/src
+        - name: certificate-volume
+          mountPath: /etc/ssl
+  initContainers:
+    - name: certificate-installer
+      image: ubuntu:22.04
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apt-get update -y
+          apt-get install -y ca-certificates
+          update-ca-certificates
+      volumeMounts:
+        - mountPath: /etc/ssl
+          name: certificate
+  volumes:
+    - name: certificate
+      emptyDir: {}
+```
 
 <br>
 
@@ -4455,8 +4525,6 @@ spec:
               expirationSeconds: 86400
               path: token
 ```
-
-
 
 マウント後、トークンの文字列はコンテナの`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
 

@@ -676,11 +676,16 @@ application-controller、argocd-server、はrepo-serverに対してHTTPSリク�
 
 ### argocd-tls-certs-cm
 
-ArgoCDは、ArgoCDの外にHTTPSリクエストを送信する。
+ArgoCDは、ArgoCDの外 (特にリポジトリ) にHTTPSリクエストを送信する。
 
-このConfigMapは、そのためのSSL証明書を管理する。
+ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフォルトのSSL証明書が配置されているが、ユーザー定義のSSL証明書を使用したい場合がある。
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
+このConfigMapは、そのためのユーザー定義のSSL証明書を管理する。
+
+> ↪️：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 
 <br>
 

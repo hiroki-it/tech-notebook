@@ -414,7 +414,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # ArgoCD外にHTTPSリクエストを送信するために、SSL証明書を設定する。
+    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するために、SSL証明書を設定する。
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -513,14 +513,7 @@ spec:
       volumeMounts:
         # InitContainerでインストールしたバイナリファイルをコンテナにマウントする
         - name: custom-tools
-          subPath: sops
-          mountPath: /usr/local/bin/sops
-        - name: custom-tools
-          subPath: kustomize
-          mountPath: /usr/local/bin/kustomize
-        - name: custom-tools
-          subPath: ksops
-          mountPath: /usr/local/bin/ksops
+          mountPath: /usr/local/bin
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
@@ -619,7 +612,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # ArgoCD外にHTTPSリクエストを送信するためのSSL証明書をコンテナにマウントする
+    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するためのSSL証明書をコンテナにマウントする
     - name: tls-certs
       configMap:
         defaultMode: 420

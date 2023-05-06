@@ -43,7 +43,9 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 FROM alpine:3.12
 
 # 実行ユーザーを作成し、必要最低限の認可スコープを付与する。
-RUN adduser -D foouser && chown -R foouser /app-data
+RUN adduser -D foouser \
+  `# ディレクトリに作成した実行ユーザーを設定する。` \
+  && chown -R foouser /app-data
 
 # コンテナのプロセスの実行ユーザーを指定する。
 USER foouser
@@ -82,6 +84,7 @@ ENTRYPOINT ["/app"]
 > - https://prograshi.com/platform/docker/docker-image-tags-difference/
 > - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
 > - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
+> - https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E)
 
 #### ▼ 対応できるCPUアーキテクチャの種類
 

@@ -308,7 +308,10 @@ OSごとに、デフォルトのディレクトリが異なる。
 
 例えばUbuntuならば、`/etc/ssl/certs`ディレクトリ配下にSSL証明書 (`.crt`) を、`/etc/ssl/private`ディレクトリ配下に秘密鍵 (`.key`) を配置する。
 
-> ↪️：https://ubuntu.com/server/docs/security-certificates
+> ↪️：
+>
+> - https://ubuntu.com/server/docs/security-certificates
+> - https://scrapbox.io/nwtgck/Ubuntu%E3%81%A7SSL%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AB%E7%BD%AE%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%8B%EF%BC%9F
 
 <br>
 

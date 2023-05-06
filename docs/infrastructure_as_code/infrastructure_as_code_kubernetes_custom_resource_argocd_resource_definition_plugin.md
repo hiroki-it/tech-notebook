@@ -239,20 +239,7 @@ spec:
           subPath: foo-plugin.yaml
         # 各ツールのバイナリをコンテナにマウントする
         - name: custom-tools
-          subPath: helm
-          mountPath: /usr/local/bin/helm
-        - name: custom-tools
-          mountPath: /usr/local/bin/helmfile
-          subPath: helmfile
-        - name: custom-tools
-          mountPath: /usr/local/bin/sops
-          subPath: sops
-        - name: custom-tools
-          mountPath: /usr/local/bin/kustomize
-          subPath: kustomize
-        - name: custom-tools
-          mountPath: /usr/local/bin/ksops
-          subPath: ksops
+          mountPath: /usr/local/bin
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
     - name: bar-plugin-cmp-server
@@ -471,7 +458,6 @@ spec:
         - mountPath: /usr/local/bin/helmfile
           # Podの共有ボリュームを介して、コンテナ内でHelmfileを使用する。
           name: custom-tools
-          subPath: helmfile
 
       ...
 
@@ -614,8 +600,6 @@ spec:
         # SOPSのバイナリファイルを置くパスを指定する。
         - name: custom-tools
           mountPath: /usr/local/bin/sops
-          # Podの共有ボリュームを介して、コンテナ内でSOPSを使用する。
-          subPath: sops
 
       ...
 
@@ -914,12 +898,10 @@ spec:
         - mountPath: /usr/local/bin/kustomize
           # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
           name: custom-tools
-          subPath: kustomize
         # KSOPSのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/ksops
           # Podの共有ボリュームを介して、コンテナ内でKSOPSを使用する。
           name: custom-tools
-          subPath: ksops
 
       ...
 
