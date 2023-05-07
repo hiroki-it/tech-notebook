@@ -647,7 +647,7 @@ Fluent Bit v1.8.6
 
 #### ▼ SQLステートメントとは
 
-STREAM_TASKセッションは、独自のSQLステートメントで定義される。
+STREAM_TASKセッションは、ユーザー定義のSQLステートメントで定義される。
 
 > ↪️：https://github.com/fluent/fluent-bit/tree/master/src/stream_processor
 

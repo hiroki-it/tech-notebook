@@ -93,9 +93,17 @@ MTtxメトリクスをSLIとし、そのダッシュボードを作成すると�
 > - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
 > - https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso
 
+#### ▼ REDメトリクス
+
+REDメトリクスをSLIとして使用する。
+
+> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
+
+
 <br>
 
 ## 02. SLO：Service Level Objective (サービスレベル目標)
+
 
 ### SLOとは
 

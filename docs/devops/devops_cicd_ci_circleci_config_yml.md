@@ -524,7 +524,7 @@ jobs:
       - when:
           condition: << parameters.custom_checkout_parameters >>
           steps:
-            - run: echo "独自のチェックアウト処理"
+            - run: echo "ユーザー定義のチェックアウト処理"
       # 引数がfalseの場合
       - unless:
           condition: << parameters.custom_checkout_parameters >>

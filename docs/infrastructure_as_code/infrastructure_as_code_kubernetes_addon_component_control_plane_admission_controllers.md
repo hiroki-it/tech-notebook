@@ -37,7 +37,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 またvalidating-admissionステップは、リクエストを許可するか否かを決める。
 
-クライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、独自処理) を発火させられる。
+クライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 
@@ -55,7 +55,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 #### ▼ admissionプラグインとは
 
-admissionプラグインは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。
+admissionプラグインは、ビルトイン処理やユーザー定義の処理を発火させられるアドオンから構成されている。
 
 kube-apiserverの起動時に実行される`kube-apiserver`コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。
 
@@ -104,9 +104,9 @@ SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`cre
 
 #### ▼ MutatingAdmissionWebhookプラグイン
 
-MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。
+MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。
 
-独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
+ユーザー定義の処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
 webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
 
@@ -182,9 +182,9 @@ webhooks:
 
 #### ▼ ValidatingAdmissionWebhookプラグイン
 
-ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。
+ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。
 
-独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
+ユーザー定義の処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
 > ↪️：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 

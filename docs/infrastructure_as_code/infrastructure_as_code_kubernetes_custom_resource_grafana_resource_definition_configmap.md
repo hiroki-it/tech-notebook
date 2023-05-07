@@ -440,13 +440,13 @@ data:
 }
 ```
 
-> 参考：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model
+> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model
 
 <br>
 
-## 04-02. 独自ダッシュボード
+## 04-02. ユーザー定義のダッシュボード
 
-### 独自ダッシュボードとは
+### ユーザー定義のダッシュボードとは
 
 ConfigMapの`.data`キーにJSONを設定すると、ダッシュボードを作成できる。
 
@@ -464,7 +464,15 @@ data:
     # ダッシュボードを定義する。
 ```
 
-> 参考：https://grafana.com/grafana/dashboards/
+> ↪️：https://grafana.com/grafana/dashboards/
+
+<br>
+
+### ホームダッシュボード
+
+ユーザー定義のホームダッシュボードを作成し、ダッシュボードの使い方を文字で説明する。
+
+> ↪️：https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#the-home-dashboards
 
 <br>
 
@@ -472,7 +480,7 @@ data:
 
 ### 公開ダッシュボードとは
 
-独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。
+ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。
 
 その場合、GitHubなどで公開されているJSONを、ConfigMapの`.data`キーに貼り付ける。
 
@@ -494,6 +502,33 @@ data:
 >
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
+
+<br>
+
+### 公開ダッシュボードの共通仕様
+
+#### ▼ USEメトリクス
+
+『`USE`』という名前を含む公開ダッシュボードがある。
+
+ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーション、など) を表示できる。
+
+> ↪️：
+> 
+> - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method
+> - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
+
+#### ▼ REDメトリクス
+
+『`RED`』という名前を含む公開ダッシュボードがある。
+
+
+ダッシュボードは、REDメトリクスを表示できる。
+
+> ↪️：
+> 
+> - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#red-method
+> - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
 
 <br>
 

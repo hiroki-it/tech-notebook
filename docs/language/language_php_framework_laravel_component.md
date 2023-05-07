@@ -3868,7 +3868,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ Channel
 
-Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、独自の受信チャンネルを定義する。
+Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、ユーザー定義の受信チャンネルを定義する。
 
 これは、Notificationクラスの`via`メソッドで使用される。
 

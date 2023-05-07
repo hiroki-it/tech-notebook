@@ -253,7 +253,7 @@ spec:
                 targetPort: 80
 ```
 
-補足として、以下の方法で独自のIngressGatewayを作成できる (かなり大変) 。
+補足として、以下の方法でユーザー定義のIngressGatewayを作成できる (かなり大変) 。
 
 > ↪️：
 >

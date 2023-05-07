@@ -668,7 +668,7 @@ jobs:
 
 #### ▼ set-outputとは
 
-GitHub Actionsの独自パラメーターを入力する。
+GitHub Actionsのユーザー定義のパラメーターを入力する。
 
 ```yaml
 jobs:
