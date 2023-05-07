@@ -421,6 +421,9 @@ data:
   "title": "New dashboard",
   "tags": [],
   "style": "dark",
+  # 公開ダッシュボードを使用している場合、ダッシュボードIDを設定する
+  # 反対に、nullであればユーザー定義のダッシュボードである
+  "gnetId": 1,
   "timezone": "browser",
   # ダッシュボードをGUIから編集可能かを設定する
   "editable": false,

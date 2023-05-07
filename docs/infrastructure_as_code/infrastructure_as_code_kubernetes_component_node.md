@@ -91,6 +91,7 @@ metadata:
   labels:
     node.kubernetes.io/nodegroup: batch
 spec:
+  ...
 ```
 
 > ↪️：https://logmi.jp/tech/articles/323803#s3
