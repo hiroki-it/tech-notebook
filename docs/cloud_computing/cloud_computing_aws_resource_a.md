@@ -302,6 +302,7 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 | 起動テンプレート     | スケーリングで起動するインスタンスの詳細 (例：マシンイメージ、インスタンスタイプ、など) を設定する。 |                                                                                                   |
 | ネットワーク         | いずれのAZのサブネットでインスタンスを作成するかを設定する。                                         | 選択したAZの個数よりも少ない個数のEC2インスタンスを作成する場合、作成先のAZをランダムに選択する。 |
 | スケーリングポリシー | スケーリングの方法を設定する。                                                                       |                                                                                                   |
+| アクティビティ通知   | スケーリング時のイベントをSNSに通知するように設定する。                                              |                                                                                                   |
 
 <br>
 
@@ -310,6 +311,7 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 #### ▼ スケーリンググループ
 
 ```terraform
+# オートスケーリンググループ
 resource "aws_autoscaling_group" "foo" {
   name                      = "foo-group"
   max_size                  = 5
@@ -358,10 +360,12 @@ resource "aws_autoscaling_group" "foo" {
   }
 }
 
+# ALBターゲットグループ
 resource "aws_lb_target_group" "foo" {
   ...
 }
 
+# 起動テンプレート
 resource "aws_launch_template" "foo" {
   ...
 }
@@ -372,6 +376,7 @@ resource "aws_launch_template" "foo" {
 #### ▼ 起動テンプレート
 
 ```terraform
+# 起動テンプレート
 resource "aws_launch_template" "foo" {
 
   name = "foo-instance"
@@ -438,6 +443,50 @@ resource "aws_launch_template" "foo" {
   ))
 }
 ```
+
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
+
+#### ▼ アクティビティ通知
+
+```terraform
+# アクティビティ通知
+resource "aws_autoscaling_notification" "foo" {
+
+  group_names = [
+    aws_autoscaling_group.bar.name,
+    aws_autoscaling_group.baz.name,
+  ]
+
+  # 通知したいイベントを設定する
+  notifications = [
+    "autoscaling:EC2_INSTANCE_LAUNCH",
+    "autoscaling:EC2_INSTANCE_TERMINATE",
+    "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
+    "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
+  ]
+
+  topic_arn = aws_sns_topic.foo.arn
+}
+
+
+# オートスケーリンググループ
+resource "aws_autoscaling_group" "bar" {
+  ...
+}
+
+
+resource "aws_autoscaling_group" "baz" {
+  ...
+}
+
+# SNS
+resource "aws_sns_topic" "foo" {
+  ...
+}
+
+```
+
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification
 
 <br>
 

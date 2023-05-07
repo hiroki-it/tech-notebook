@@ -729,6 +729,8 @@ data:
 
 ### default
 
+#### ▼ defaultとは
+
 出力された値が空文字 (`""`) や`false`の場合に、それを上書きしてデフォルト値として出力する。
 
 キー自体は存在しなければならず、省略することはできないことに注意する。
@@ -738,6 +740,30 @@ data:
 ```
 
 > ↪️：https://helm-playground.com/cheatsheet.html#variables
+
+#### ▼ キーが存在しなくてもデフォルト値を表現
+
+`isFoo`キーが存在し、また`true`だった場合にマニフェストを出力する。
+
+これにより、キーが存在しなくとも`false`が設定されているように振る舞える。
+
+```yaml
+foo:
+  isFoo: true
+  params: FOO
+bar:
+  params: BAR
+```
+
+```yaml
+{{- if hasKey .Values.foo "isFoo" }}
+{{- if eq .Values.foo.isFoo }}
+  ...
+{{- end }}
+{{- else }}
+  ...
+{{- end }}
+```
 
 <br>
 

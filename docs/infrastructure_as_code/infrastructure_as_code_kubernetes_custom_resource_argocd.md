@@ -184,11 +184,13 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 `/tmp/_argocd-repo/<URLに基づくUUID>`ディレクトリ配下で、`helm template`コマンドを使用してSecretの値を確認する。
 
+この時、`nl`コマンドを使用すると、作成したマニフェストの行数を表示できる。
+
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
     -n foo \
-    -- bash -c "cd /tmp/_argocd-repo/<URLに基づくUUID> && helm template foo-chart -f values-prd.yaml"
+    -- bash -c "cd /tmp/_argocd-repo/<URLに基づくUUID> && helm template foo-chart -f values-prd.yaml | nl"
 ```
 
 > ↪️：

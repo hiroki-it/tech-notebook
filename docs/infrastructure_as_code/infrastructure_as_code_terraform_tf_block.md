@@ -794,8 +794,8 @@ variable "env" {
 resource "aws_instance" "server" {
   # dev環境とstg環境以外でプロビジョニングする
   count = (
-    var.env != "dev"
-    || var.env != "stg"
+    var.environment != "dev"
+    || var.environment != "stg"
   ) ? 1 : 0
 
   ami           = "ami-a1b2c3d4"
@@ -1433,7 +1433,7 @@ resource "aws_security_group" "ec2" {
   dynamic ingress {
     # 環境が複数あるとする (prd-1、prd-2、stg-1、stg-2) 。
     # 環境名がprdという文字を含むキーがあった場合、全てprdキーの方を使用する。
-    for_each = length(regexall("prd", var.env)) > 0 ? var.security_group_ingress_ec2_ssh.prd : var.security_group_ingress_ec2_ssh.stg
+    for_each = length(regexall("prd", var.environment)) > 0 ? var.security_group_ingress_ec2_ssh.prd : var.security_group_ingress_ec2_ssh.stg
     content {
       cidr_blocks = [ ingress.value["cidr_blocks"] ]
       description = ingress.value["description"]

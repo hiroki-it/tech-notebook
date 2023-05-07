@@ -1587,6 +1587,18 @@ Connection to 127.0.0.1 9000 port [tcp/*] succeeded!
 
 <br>
 
+## nl
+
+### nlとは
+
+標準出力に出力した文字に行数を追加する。
+
+```bash
+$ cat foo.txt | nl
+```
+
+<br>
+
 ## od：octal dump
 
 ### odとは

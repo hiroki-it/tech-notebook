@@ -1053,6 +1053,7 @@ VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュ�
 起動テンプレートを使用し、EC2ワーカーNodeを作成する。
 
 ```terraform
+# Nodeグループ
 resource "aws_eks_node_group" "foo" {
 
   ...
@@ -1068,18 +1069,19 @@ resource "aws_eks_node_group" "foo" {
     version = "$Latest"
   }
 
-  # タグ付けは任意である
-  tag_specifications {
-    tags = {
-      Name = "foo-instance"
-      Env  = "dev"
-    }
-  }
-
   ...
 }
 
+# 起動テンプレート
 resource "aws_launch_template" "foo" {
+
+  # タグ付けは任意である
+  tag_specifications {
+    tags = {
+      Env  = var.environment
+    }
+  }
+
   ...
 }
 ```
