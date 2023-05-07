@@ -714,6 +714,8 @@ Internet Gatewayの後にEC2を作成できるようにする。
 
 ### まとめ
 
+EKSのNodeグループをマネージドとする場合、起動テンプレートも合わせて設定する必要がある。
+
 ```terraform
 resource "aws_eks_node_group" "this" {
 
@@ -739,6 +741,7 @@ resource "aws_eks_node_group" "this" {
   instance_types       = ""
   labels               = ""
 
+  # 起動テンプレートを紐づける
   launch_template = {
     id      = ""
     version = ""

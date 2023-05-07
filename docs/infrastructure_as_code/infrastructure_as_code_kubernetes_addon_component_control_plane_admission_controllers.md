@@ -86,7 +86,7 @@ ValidatingAdmissionWebhook,
 
 #### ▼ Webhook系プラグインのSSL証明書
 
-Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook、など) では、kube-apiserverからwebhookサーバーにHTTPSプロトコルで通信する時に、webhookサーバーのためにSL証明書が必要である。
+Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook、など) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信する時に、webhookサーバーのためにSL証明書が必要である。
 
 このSSL証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration、など) で管理している。
 

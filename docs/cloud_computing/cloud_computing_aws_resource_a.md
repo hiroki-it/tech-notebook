@@ -307,6 +307,68 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 
 ### Terraformの場合
 
+#### ▼ スケーリンググループ
+
+```terraform
+resource "aws_autoscaling_group" "foo" {
+  name                      = "foo-group"
+  max_size                  = 5
+  min_size                  = 2
+  health_check_grace_period = 300
+  health_check_type         = "EC2"
+  desired_capacity          = 4
+  force_delete              = true
+  vpc_zone_identifier       = ["subnet-*****", "subnet-*****"]
+
+  target_group_arns = [
+    aws_alb_target_group.foo.arn
+  ]
+
+  # Nodeグループの種類だけ、起動テンプレートを設定する
+  launch_template {
+    id      = aws_launch_template.foo1.id
+    version = "$Latest"
+  }
+
+  launch_template {
+    id      = aws_launch_template.foo2.id
+    version = "$Latest"
+  }
+
+  timeouts {
+    delete = "15m"
+  }
+
+  tag {
+    key                 = "Name"
+    value               = "foo-instance"
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "Service"
+    value               = "foo"
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "Env"
+    value               = "dev"
+    propagate_at_launch = true
+  }
+}
+
+resource "aws_lb_target_group" "foo" {
+  ...
+}
+
+resource "aws_launch_template" "foo" {
+  ...
+}
+```
+
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
+
 #### ▼ 起動テンプレート
 
 ```terraform

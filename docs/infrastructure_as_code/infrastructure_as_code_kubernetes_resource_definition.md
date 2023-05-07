@@ -1622,11 +1622,11 @@ spec:
 
 **＊実行例＊**
 
-appコンテナからHTTPSプロトコルで通信する場合に、SSL証明書が必要になる。
+appコンテナからHTTPSリクエストを送信する場合に、SSL証明書が必要になる。
 
-これはすでに署名されている必要があり、例えばubuntuの`ca-certificates`パッケージをインストールする。
+これはすでに署名されている必要があり、例えばubuntuでは、ルート証明書 (CA証明書) を含む`ca-certificates`パッケージをインストールする。
 
-すると、`/etc/ssl`ディレクトリ配下にSSL証明書に関する一連のファイルがインストールされる。
+すると、`/etc/ssl`ディレクトリ配下にルート証明書に関する一連のファイルがインストールされる。
 
 これを、共有Volumeを介して、appコンテナにマウントする。
 
@@ -1655,7 +1655,9 @@ spec:
       args:
         - |
           apt-get update -y
+          # ルート証明書をインストールする
           apt-get install -y ca-certificates
+          # 証明書を更新する
           update-ca-certificates
       volumeMounts:
         - mountPath: /etc/ssl

@@ -19,8 +19,6 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 ansible-vaultプラグインによって暗号化されたファイルを使用して、プロビジョニングを実行する。
 
-> ↪️：<https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
-
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
 ```
@@ -33,6 +31,8 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
 
+> ↪️：<https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
+
 <br>
 
 ### -i
@@ -42,8 +42,6 @@ inventoryファイルを指定する。
 これにより、プロビジョニングの実行先の管理対象ノードを指定できる。
 
 基本的には、ディレクトリを指定した方が良い。
-
-> ↪️：<https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
@@ -65,6 +63,8 @@ $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 $ ansible-playbook foo-playbook.yml -i ./inventories
 ```
 
+> ↪️：<https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
+
 <br>
 
 ## 02. ansible-vaultコマンド
@@ -73,11 +73,11 @@ $ ansible-playbook foo-playbook.yml -i ./inventories
 
 指定した暗号化済みファイルを復号化する。
 
-> ↪️：<https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
-
 ```bash
 $ ansible-vault decrypt parameters.yml
 ```
+
+> ↪️：<https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
 
 <br>
 
@@ -115,8 +115,6 @@ $ANSIBLE_VAULT;1.1;AES256
 
 `inventory`ファイルを指定し、`json`形式に変換する。
 
-> ↪️：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
-
 ```bash
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
 ```
@@ -127,11 +125,11 @@ $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
 $ ansible-inventory -i ./inventories/inventory --list
 ```
 
+> ↪️：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
+
 #### ▼ -y
 
 `inventory`ファイルを指定し、`yml`形式に変換する。
-
-> ↪️：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 ```bash
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
@@ -142,5 +140,7 @@ $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
 ```bash
 $ ansible-inventory -i ./inventories/inventory --list -y
 ```
+
+> ↪️：<https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/>
 
 <br>

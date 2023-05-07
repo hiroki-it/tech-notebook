@@ -160,7 +160,7 @@ AWSリソースにはACMのSSL証明書を紐づけられるが、Kubernetesリ�
 
 #### ▼ Route53 ➡︎ CloudFrontの場合
 
-CloudFrontからALBにHTTPSプロトコルで通信する場合、それぞれにSSL証明書を配置する必要がある。
+CloudFrontからALBにHTTPSリクエストを送信する場合、それぞれにSSL証明書を配置する必要がある。
 
 ただ、CloudForntはバージニア北部で、またALBは東京リージョンで証明書を作成する必要がある。
 

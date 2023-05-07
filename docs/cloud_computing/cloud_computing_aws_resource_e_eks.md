@@ -144,7 +144,7 @@ module "eks" {
 
 <br>
 
-#### EKS Clusterの認証情報の追加
+### EKS Clusterの認証情報の追加
 
 `kubectl`コマンドでEKS Clusterを操作するためには、`~/.kube/config`ファイルへClusterの認証情報を登録する必要がある。
 
@@ -689,12 +689,6 @@ Nodeグループ内の各EC2ワーカーNodeと、Nodeグループに紐づく�
 
 オートスケーリングの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
 
-#### ▼ Nodeのセットアップ方法
-
-起動テンプレートを使用し、EC2ワーカーNodeを作成する。
-
-EC2にタグ付けする場合は、起動テンプレートのタグ付け機能を使用する。
-
 #### ▼ タグ付けを使用した
 
 同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。
@@ -715,17 +709,6 @@ EKSのテスト環境の請求料金を節約するために、昼間に通常�
 Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。
 
 オートスケーリングの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
-
-#### ▼ Nodeのセットアップ方法
-
-任意のオートスケーリングでEC2ワーカーNodeを作成する。
-
-オートスケーリングのタグ付け機能で、`kubernetes.io/cluster/<クラスター名>`タグをつけ、Nodeグループに参加させる。
-
-> ↪️：
->
-> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
-> - https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
 
 <br>
 
@@ -959,19 +942,12 @@ done
 
 #### ▼ セルフマネージドNodeグループ
 
-| タグ                                   | 値                    | 説明                                                                                                                                         |
-| -------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Name`                                 | EC2ワーカーNodeの名前 | EC2インスタンスの名前は`Name`タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの`Name`タグに、ワーカーNode名を設定しておく。 |
-| `kubernetes.io/cluster/<クラスター名>` | `owned`               | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。           |
+| タグ                                    | 値                    | 説明                                                                                                                                         |
+| --------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Name`                                  | EC2ワーカーNodeの名前 | EC2インスタンスの名前は`Name`タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの`Name`タグに、ワーカーNode名を設定しておく。 |
+| `kubernetes.io/cluster/<EKS Cluster名>` | `owned`               | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。           |
 
 > ↪️：https://docs.aws.amazon.com/eks/latest/userguide/worker.html
-
-#### ▼ その他
-
-| アドオン名         | タグ                                       | 値      | 説明                                                                                                                                                                       |
-| ------------------ | ------------------------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cluster-autoscaler | `k8s.io/cluster-autoscaler/<クラスター名>` | `owned` | cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>↪️：https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
-| 同上               | `k8s.io/cluster-autoscaler/enabled`        | `true`  | 同上                                                                                                                                                                       |
 
 <br>
 
@@ -1042,6 +1018,103 @@ EKS Clusterを作成すると、ENIも作成する。
 #### ▼ VPC内の他のAWSリソースへのアウトバウンド通信
 
 VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
+
+<br>
+
+## 04-03. セットアップ
+
+### コンソール画面の場合
+
+#### ▼ マネージドNodeグループの場合
+
+起動テンプレートを使用し、EC2ワーカーNodeを作成する。
+
+起動テンプレートのタグ付け機能を使用してEC2にタグ付けでき、これは任意である。
+
+#### ▼ セルフマネージドNodeグループの場合
+
+任意のオートスケーリングにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。
+
+オートスケーリングのタグ付け機能を使用して、`kubernetes.io/cluster/<EKS Cluster名>`タグ (値は`owned`) をつけ、Nodeグループに明示的に参加させる必要がある。
+
+なお、起動テンプレートも合わせて使用でき、これは任意である。
+
+> ↪️：
+>
+> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
+
+<br>
+
+### Terraformの場合
+
+#### ▼ マネージドNodeグループの場合
+
+起動テンプレートを使用し、EC2ワーカーNodeを作成する。
+
+```terraform
+resource "aws_eks_node_group" "foo" {
+
+  ...
+
+  # Nodeグループの種類だけ、起動テンプレートを設定する
+  launch_template {
+    id      = aws_launch_template.foo1.id
+    version = "$Latest"
+  }
+
+  launch_template {
+    id      = aws_launch_template.foo2.id
+    version = "$Latest"
+  }
+
+  # タグ付けは任意である
+  tag_specifications {
+    tags = {
+      Name = "foo-instance"
+      Env  = "dev"
+    }
+  }
+
+  ...
+}
+
+resource "aws_launch_template" "foo" {
+  ...
+}
+```
+
+> ↪️：https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/modules/eks-managed-node-group/main.tf
+
+#### ▼ セルフマネージドNodeグループの場合
+
+任意のオートスケーリングにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。
+
+```terraform
+resource "aws_autoscaling_group" "foo" {
+
+  tag {
+    key   = "Name"
+    value = "foo-instance"
+  }
+
+  # オートスケーリングのタグに kubernetes.io/cluster/<EKS Cluster名> をつける必要がある
+  tag {
+    key   = "kubernetes.io/cluster/<EKS Cluster名>"
+    value = "owned"
+  }
+
+  # 起動テンプレートは任意である
+  launch_template {
+    id      = aws_launch_template.foo.id
+    version = "$Latest"
+  }
+
+  ...
+}
+```
+
+> ↪️：https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/modules/self-managed-node-group/main.tf
 
 <br>
 

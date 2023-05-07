@@ -184,7 +184,20 @@ NodeGroups:
 
 <br>
 
-## 02. スケーリングの仕組み
+## 02. セットアップ
+
+### AWS側
+
+| アドオン名         | タグ                                        | 値      | 説明                                                                                                                                                                       |
+| ------------------ | ------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cluster-autoscaler | `k8s.io/cluster-autoscaler/<EKS Cluster名>` | `owned` | cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>↪️：https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
+| 同上               | `k8s.io/cluster-autoscaler/enabled`         | `true`  | 同上                                                                                                                                                                       |
+
+> ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html
+
+<br>
+
+## 03. スケーリングの仕組み
 
 ### スケールアウトの場合
 
@@ -236,7 +249,7 @@ NodeGroups:
 
 <br>
 
-## 03. 共通部分
+## 04. 共通部分
 
 ### metadata.annotation
 

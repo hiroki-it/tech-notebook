@@ -466,7 +466,7 @@ $ curl -sSL https://example.com/foo
 
 SSL証明書のエラーを無視する。
 
-自己署名SSL証明書を使用している場合に、以下のようなエラーでHTTPSプロトコルで通信できないため、これを無視する。
+自己署名SSL証明書を使用している場合に、以下のようなエラーでHTTPSリクエストを送信できないため、これを無視する。
 
 ```bash
 $ curl https://*.*.*.* -H 'Host:example.com'

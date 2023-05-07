@@ -321,7 +321,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
 
 # 最終イメージ
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+# コンテナからHTTPSリクエストを送信するために、ルート証明書をインストールする
+RUN apk --no-cache add ca-certificates \
+  && update-ca-certificates
 WORKDIR /root/
 COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
 CMD ["./app"]

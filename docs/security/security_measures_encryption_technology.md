@@ -135,17 +135,17 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ## 03. ドメイン認証
 
-### ドメイン認証の仕組み
+### 公開鍵基盤
 
-#### ▼ 公開鍵基盤
+#### ▼ 公開鍵基盤とは
 
-秘密鍵とデジタル証明書はドメインの正当性 (偽のサイトではないこと) を担保するものである。
+公開鍵検証を使用して、秘密鍵とデジタル証明書はドメインの正当性 (偽のサイトではないこと) を担保する仕組みのこと。
 
 デジタル署名に使用した秘密鍵に対応する公開鍵は、成りすました人物による偽の公開鍵である可能性がある。
 
 第三者機関の認証局によって、公開鍵を検証するインフラのことを、公開鍵基盤という。
 
-#### ▼ 公開鍵基盤による公開鍵検証の仕組み
+#### ▼ 公開鍵基盤の仕組み
 
 ![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.gif)
 
@@ -177,19 +177,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ### 認証局
 
-#### ▼ 認証局そのものの成りすましの防止策
-
-デジタル証明書 (S/MIME証明書、SSL証明書) を発行する認証局そのものが、成りすましの可能性がある。
-
-そこで、認証局をランク付けし、ルート認証局が下位ランクの認証局に権限を与えることにより、下位の認証局の信頼性を持たせている。
-
-注意点として、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましである可能性は非常に低い。
-
-![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
-
-> ↪️：https://zeropasoakita.livedoor.blog/archives/20294837.html
-
-#### ▼ 認証局の例
+#### ▼ 認証局とは
 
 自前の中間認証局あるいはクラウドプロバイダーが中間認証局を利用し、デジタル証明書を認証する。
 
@@ -203,21 +191,48 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 > ↪️：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
+#### ▼ 中間認証局をルート認証局で署名する理由
+
+デジタル証明書 (S/MIME証明書、SSL証明書) を発行する中間認証局そのものが、成りすましの可能性がある。
+
+そこで、認証局をランク付けし、ルート認証局が下位ランクの認証局に権限を与えることにより、下位の認証局の信頼性を持たせている。
+
+注意点として、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましである可能性は非常に低い。
+
+![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
+
+> ↪️：https://zeropasoakita.livedoor.blog/archives/20294837.html
+
 <br>
+
+## 03-02. 証明書
 
 ### 証明書の種類
 
-#### ▼ ルート証明書 (トラストアンカー)
+#### ▼ ルート証明書 (CA証明書、トラストアンカー)
 
-『トラストアンカー』ともいう。
+『CA証明書』『トラストアンカー』ともいう。
 
 ルート認証局が、自身の信頼性を担保するために発行する証明書のこと。
 
 ルート認証局は、ブラウザの開発会社の厳しい監査を受けているため、ルート証明書を使用して自分で自分を証明できる。
 
+ルート証明書は、各種OSでインストールできる。
+
+```bash
+# Ubuntuの場合
+# https://ubuntu.com/server/docs/security-trust-store
+$ apt-get install -y ca-certificates
+
+# Redhatの場合
+# https://jermsmit.com/install-a-ca-certificate-on-red-hat-enterprise-linux/
+$ yum install -y ca-certificates
+```
+
 > ↪️：
 >
 > - https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+> - https://www.quora.com/What-is-the-difference-between-CA-certificate-and-SSL-certificate
 > - https://www.nic.ad.jp/ja/newsletter/No69/0800.html
 
 #### ▼ 中間CA証明書
@@ -275,11 +290,7 @@ SSL証明書の内容
 
 > ↪️：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
 
-<br>
-
-### クライアント証明書
-
-#### ▼ クライアント証明書とは
+#### ▼ クライアント証明書
 
 クライアント側に配置する証明書である。
 
@@ -339,7 +350,7 @@ OSごとに、デフォルトのディレクトリが異なる。
 
 `【１】`
 
-: SSL証明書の有効期限が切れてしまい、HTTPSプロトコルで通信できなくなってしまったとする。
+: SSL証明書の有効期限が切れてしまい、HTTPSリクエストを送信できなくなってしまったとする。
 
 ```bash
 $ curl https://foo.example.com -v
