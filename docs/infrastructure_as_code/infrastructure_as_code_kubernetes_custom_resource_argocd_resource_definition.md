@@ -352,7 +352,7 @@ spec:
     - name: argocd-server
       image: quay.io/argoproj/argocd:latest
       args:
-        - argocd-server
+        - /usr/local/bin/argocd-server
         - --port=8080
         - --metrics-port=8083
         # argocd-serverのHTTPSプロトコルの受信を無効化する
@@ -470,10 +470,8 @@ spec:
     - name: argocd-repo-server
       image: quay.io/argoproj/argocd:latest
       # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
-      command:
-        - "entrypoint.sh"
       args:
-        - argocd-repo-server
+        - /usr/local/bin/argocd-repo-server
         - --port=8081
         - --metrics-port=8084
       # application-controller、Prometheus、からのリクエストを受信する
@@ -542,7 +540,7 @@ spec:
     - name: copyutil
       image: quay.io/argoproj/argocd:latest
       command:
-        - cp
+        - /bin/cp
         - -n
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server
@@ -750,8 +748,8 @@ spec:
     - name: argocd-application-controller
       image: quay.io/argoproj/argocd:latest
       # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
-      command:
-        - argocd-application-controller
+      args:
+        - /usr/local/bin/argocd-application-controller
         - --metrics-port=8082
       # Prometheusからのリクエストを受信する
       ports:

@@ -199,10 +199,9 @@ spec:
   containers:
     - name: repo-server
       image: quay.io/argoproj/argocd:latest
-      command:
-        - entrypoint.sh
+      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
       args:
-        - argocd-repo-server
+        - /usr/local/bin/argocd-repo-server
         - --port=8081
         - --metrics-port=8084
       volumeMounts:
@@ -269,7 +268,7 @@ spec:
     - name: copyutil
       image: quay.io/argoproj/argocd:latest
       command:
-        - cp
+        - - /bin/cp
         - -n
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server

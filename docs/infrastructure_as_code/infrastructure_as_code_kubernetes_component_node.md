@@ -90,8 +90,7 @@ metadata:
   name: foo-pod
   labels:
     node.kubernetes.io/nodegroup: batch
-spec:
-  ...
+spec: ...
 ```
 
 > ↪️：https://logmi.jp/tech/articles/323803#s3

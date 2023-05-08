@@ -114,7 +114,7 @@ $ sops -e ./values/foo-values.yaml
 ```bash
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/*****"
 
-$ sops -e ./values/foo-values.yaml
+$ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 ```
 
 > ↪️：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files

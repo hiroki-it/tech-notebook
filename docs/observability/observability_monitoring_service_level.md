@@ -99,11 +99,9 @@ REDメトリクスをSLIとして使用する。
 
 > ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
 
-
 <br>
 
 ## 02. SLO：Service Level Objective (サービスレベル目標)
-
 
 ### SLOとは
 

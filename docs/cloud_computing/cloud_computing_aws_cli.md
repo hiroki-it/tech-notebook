@@ -651,6 +651,33 @@ $ aws sts get-caller-identity --profile foo
 
 ### Systems Manager (旧SSM)
 
+#### ▼ create-activation
+
+サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシン、など) をSystems Managerで管理するために、IDとコードを発行する。
+
+```bash
+$ aws ssm create-activation \
+    --default-instance-name foo-vm \
+    --iam-role foo-vm-role \
+    --region ap-northeast-1 \
+    --registration-limit 2
+```
+
+発行したIDとコードは、`amazon-ssm-agent`コマンドの実行時に必要になる。
+
+```bash
+$ amazon-ssm-agent -register
+    -id "<ID>" \
+    -code "<コード>" \
+    -region "ap-northeast-1"
+```
+
+> ↪️：
+>
+> - https://docs.aws.amazon.com/cli/latest/reference/ssm/create-activation.html
+> - https://zenn.dev/daimatsu/articles/ef1ae49bb7816b#ssm-agent-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%A6activation-(ubuntu-arm64)
+> - https://dev.classmethod.jp/articles/aws-systems-manager-reactivation/#toc-5
+
 #### ▼ get-parameters-by-path
 
 特定のパスで始まる全ての変数をパラメーターストアから取得する。

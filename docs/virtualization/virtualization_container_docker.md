@@ -113,11 +113,27 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ▼ json-file
 
-標準出力/標準エラー出力に出力されたログを、`/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log`ファイルに転送する。デフォルトの設定値である。
+標準出力/標準エラー出力に出力されたログを、`/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log`ファイルに転送する。
+
+デフォルトの設定値である。
+
+`labels`キーで文字列リストを設定すると、属性キーを付与できる。
 
 ```yaml
-{"log-driver": "json-file", "log-opts": {"max-size": "10m", "max-file": "3"}}
+{
+  "log-driver": "json-file",
+  # ドライバーのオプション
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3",
+    # JSONに付与する属性キー
+    "labels": "app,env"
+    }
+  },
+}
 ```
+
+> ↪️：https://docs.docker.com/config/containers/logging/configure/#use-environment-variables-or-labels-with-logging-drivers
 
 #### ▼ fluentd
 
@@ -128,6 +144,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 ```bash
  {
    "log-driver": "fluentd",
+    # ドライバーのオプション
    "log-opts": {
      "fluentd-address": "<Fluentdコンテナのホスト名>:24224"
    }
@@ -150,7 +167,11 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
 
 ```yaml
-{"log-driver": "awslogs", "log-opts": {"awslogs-region": "us-east-1"}}
+{
+  "log-driver": "awslogs",
+  # ドライバーのオプション
+  "log-opts": {"awslogs-region": "us-east-1"},
+}
 ```
 
 > ↪️：https://docs.docker.com/config/containers/logging/awslogs/
@@ -162,6 +183,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 ```yaml
 {
   "log-driver": "gcplogs",
+  # ドライバーのオプション
   "log-opts": {"gcp-meta-name": "example-instance-12345"},
 }
 ```

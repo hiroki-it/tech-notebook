@@ -74,7 +74,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheu
 
 #### ▼ チャートとして (prometheus)
 
-チャートとしてprometheusをインストールし、リソースを作成する。
+チャートとしてPrometheusをインストールし、リソースを作成する。
 
 kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporter、など) のKubernetesリソースも合わせて作成する。
 
@@ -89,6 +89,39 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus -n 
 ```
 
 > ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+
+#### ▼ バイナリとして
+
+バイナリとして監視系ツール (Prometheus、Alertmanager、など) をインストールし、サーバー上でPrometheusを稼働させる。
+
+```bash
+$ /opt/prometheus/prometheus \
+    --config.file=/opt/prometheus/prometheus.yml \
+    --web.console.templates=/opt/prometheus/consoles \
+    --web.console.libraries=/opt/prometheus/console_libraries \
+    --web.external-url="https://foo.prometheus.com/" \
+    --web.route-prefix=/ \
+    --storage.tsdb.retention.time=3d \
+    --storage.tsdb.path=/var/lib/prometheus
+```
+
+Alertmanagerをクラスター化する場合、インスタンス間で相互TLS認証を実施できるように、
+
+```bash
+$ /opt/alertmanager/alertmanager \
+    --config.file=/opt/alertmanager/alertmanager.yml \
+    --web.listen-address=:9093 \
+    --web.external-url="https://foo.alertmanager.com/" \
+    --web.route-prefix=/ \
+    --log.format=json \
+    --data.retention=120h \
+    --storage.path=/var/lib/alertmanager \
+    --cluster.listen-address=0.0.0.0:9094 \
+    --cluster.peer=<サーバーのIPアドレス>:9094 \
+    --cluster.reconnect-timeout=5m
+```
+
+> ↪️：https://qiita.com/nis_nagaid_1984/items/81f4b3575ee5ce1fe892
 
 <br>
 
@@ -619,15 +652,15 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 
 ### アラート内で使用できる予約変数
 
-| 変数名            | データ型 | デフォルトラベル例                                                                | 説明                                                                                                                                                                                                |
-| ----------------- | -------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Receiver          | string型 | `.Receiver`                                                                       | アラートの受信者が割り当てられている。                                                                                                                                                              |
-| Status            | string型 | `.Status`                                                                         | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                                             |
-| Alerts            | map型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>↪️：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                         |
+| 変数名            | データ型 | デフォルトラベル例                                                                | 説明                                                                                                                                                                                                        |
+| ----------------- | -------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Receiver          | string型 | `.Receiver`                                                                       | アラートの受信者が割り当てられている。                                                                                                                                                                      |
+| Status            | string型 | `.Status`                                                                         | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                                                     |
+| Alerts            | map型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>↪️：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                                 |
 | GroupLabels       | map型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[].rules[].labels`キー配下で設定したユーザー定義のラベルも含む。<br>↪️：https://prometheus.io/docs/alerting/latest/notifications/#kv |
-| CommonLabels      | map型    | `.CommonLabels.alertname`                                                         | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                                                |
+| CommonLabels      | map型    | `.CommonLabels.alertname`                                                         | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                                                        |
 | CommonAnnotations | map型    | `.CommonAnnotations.summary`                                                      | 全てのアラートに共通するアノテーションが割り当てられている。`.spec.groups[].rules[].labels`キー配下で設定したユーザー定義のアノテーションも含む。                                                           |
-| ExternalURL       | string型 | `.ExternalURL`                                                                    | AlertmangerのURLが割り当てられている。                                                                                                                                                              |
+| ExternalURL       | string型 | `.ExternalURL`                                                                    | AlertmangerのURLが割り当てられている。                                                                                                                                                                      |
 
 > ↪️：
 >

@@ -15,9 +15,9 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 ## 01. ansible-playbookコマンド
 
-### --ask-vault-pass
+### --ask-vault-pass (ask-vault-password)
 
-ansible-vaultプラグインによって暗号化されたファイルを使用して、プロビジョニングを実行する。
+ansible-vaultプラグインによって暗号化されたパスワードファイルを復号化し、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
@@ -32,6 +32,18 @@ $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
 
 > ↪️：<https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
+
+<br>
+
+### --vault-password-file
+
+ansible-vaultプラグインによって暗号化されたパスワードファイルを直接的に指定し、プロビジョニングを実行する。
+
+```bash
+$ ansible-playbook foo-playbook.yml -i ./inventories --vault-password-file foo-file
+```
+
+> ↪️：https://tekunabe.hatenablog.jp/entry/2022/03/02/211657
 
 <br>
 

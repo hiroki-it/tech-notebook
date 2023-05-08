@@ -421,6 +421,9 @@ data:
   "title": "New dashboard",
   "tags": [],
   "style": "dark",
+  # ダッシュボード名とそのバージョンを設定する
+  # 公開ダッシュボードによってはバージョンの記載がないものがある
+  "description": "Foo Dashboard version 1.0.0",
   # 公開ダッシュボードを使用している場合、ダッシュボードIDを設定する
   # 反対に、nullであればユーザー定義のダッシュボードである
   "gnetId": 1,
@@ -517,7 +520,7 @@ data:
 ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーション、など) を表示できる。
 
 > ↪️：
-> 
+>
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method
 > - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
 
@@ -525,11 +528,10 @@ data:
 
 『`RED`』という名前を含む公開ダッシュボードがある。
 
-
 ダッシュボードは、REDメトリクスを表示できる。
 
 > ↪️：
-> 
+>
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#red-method
 > - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
 
