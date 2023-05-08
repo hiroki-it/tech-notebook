@@ -666,7 +666,8 @@ $ aws ssm create-activation \
 発行したIDとコードは、`amazon-ssm-agent`コマンドの実行時に必要になる。
 
 ```bash
-$ amazon-ssm-agent -register
+$ amazon-ssm-agent \
+    -register \
     -id "<ID>" \
     -code "<コード>" \
     -region "ap-northeast-1"

@@ -526,8 +526,11 @@ $ kube-scheduler \
     --leader-elect=true \
     --port=0 \
     --profiling=false \
+    --secure-port=10259 \
     ...
 ```
+
+> ↪️：https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
 
 <br>
 
@@ -539,7 +542,11 @@ $ kube-scheduler \
 
 `【２】`
 
-: スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
+: スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたNodeに点数をつける。
+
+     その後、点数に基づいて、Pod作成に最も望ましいNodeを選定する。
+
+     この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
 
 ![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler_flow.png)
 

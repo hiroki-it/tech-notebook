@@ -118,7 +118,21 @@ rate(foo_metrics[5m])
 
 <br>
 
-## 02. データポイントの各種数値の算出
+## 02. データポイントの有無
+
+### コンテナが起動/停止しているか
+
+Prometheusでデータポイントを収集できるか否かで、コンテナの起動/停止を表す。
+
+```bash
+absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
+```
+
+> ↪️：https://zenn.dev/big_tanukiudon/scraps/3c44bbd33de4d3
+
+<br>
+
+## 03. データポイントの各種数値の算出
 
 ### データポイントの平均サイズ (KB/秒) の増加率
 
@@ -170,7 +184,10 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 <br>
 
-## 03. ストレージの各種数値の算出
+
+
+
+## 04. ストレージの各種数値の算出
 
 ### ローカルストレージの必要サイズ (KB/日)
 
