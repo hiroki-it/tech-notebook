@@ -568,12 +568,12 @@ templatingセクションを有効化する。
           {
             # デフォルトのフィルタリング値
             # プルダウンの値を変更すれば、current値も動的に変わる
-            "current":
-              {
-                
-                "selected": false, "text": "Prometheus", 
-                # デフォルトのフィルタリング値をPrometheusとする
-                "value": "Prometheus"},
+            "current": {
+                "selected": false,
+                # デフォルトのデータソースのフィルタリング値をPrometheusとする
+                "text": "Prometheus",
+                "value": "Prometheus",
+              },
             "description": null,
             "error": null,
             # プルダウンを常に表示できるように 0 (false) とする
@@ -592,8 +592,14 @@ templatingセクションを有効化する。
           # clusterラベル値のフィルタリング
           {
             "allValue": null,
-            "current":
-              {"isNone": true, "selected": false, "text": "None", "value": ""},
+            "current": {
+                "isNone": true,
+                # デフォルトのclusterラベルのフィルタリング値を null とする
+                "selected": false,
+                "text": "None",
+                "value": "",
+              },
+            # データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
@@ -621,8 +627,13 @@ templatingセクションを有効化する。
           # namespaceラベル値のフィルタリング
           {
             "allValue": null,
-            "current":
-              {"selected": false, "text": "prometheus", "value": "prometheus"},
+            "current": {
+                "selected": false,
+                # デフォルトのNamespaceのフィルタリング値を prometheus とする
+                "text": "prometheus",
+                "value": "prometheus",
+              },
+            # データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
