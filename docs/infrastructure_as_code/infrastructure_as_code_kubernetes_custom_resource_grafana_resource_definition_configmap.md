@@ -570,6 +570,7 @@ templatingセクションを有効化する。
               {"selected": false, "text": "Prometheus", "value": "Prometheus"},
             "description": null,
             "error": null,
+            # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
             "includeAll": false,
             "label": null,
@@ -591,6 +592,7 @@ templatingセクションを有効化する。
             "definition": "",
             "description": null,
             "error": null,
+            # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
             "includeAll": false,
             "label": null,
@@ -620,6 +622,7 @@ templatingセクションを有効化する。
             "definition": "",
             "description": null,
             "error": null,
+            # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
             "includeAll": false,
             "label": null,
