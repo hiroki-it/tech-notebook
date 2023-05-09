@@ -412,45 +412,289 @@ data:
 
 <br>
 
-### セクション
+## 04-02. セクション
 
-```yaml
-{
-  "id": null,
-  "uid": "cLV5GDCkz",
-  "title": "New dashboard",
-  "tags": [],
-  "style": "dark",
-  # ダッシュボード名とそのバージョンを設定する
-  # 公開ダッシュボードによってはバージョンの記載がないものがある
-  "description": "Foo Dashboard version 1.0.0",
-  # 公開ダッシュボードを使用している場合、ダッシュボードIDを設定する
-  # 反対に、nullであればユーザー定義のダッシュボードである
-  "gnetId": 1,
-  "timezone": "browser",
-  # ダッシュボードをGUIから編集可能かを設定する
-  "editable": false,
-  "graphTooltip": 1,
-  "panels": [],
-  "time": {"from": "now-6h", "to": "now"},
-  # ダッシュボードのデフォルトの時間間隔を設定する
-  "timepicker": {"time_options": [], "refresh_intervals": []},
-  # ドロップダウンの変数を設定する
-  "templating": {"list": []},
-  "annotations": {"list": []},
-  # 自動更新間隔を設定する
-  "refresh": "5s",
-  "schemaVersion": 17,
-  "version": 0,
-  "links": [],
-}
-```
+### セクション一覧
 
 > ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model
 
 <br>
 
-## 04-02. ユーザー定義のダッシュボード
+### id
+
+```yaml
+{"id": null}
+```
+
+<br>
+
+### uid
+
+```yaml
+{"uid": "cLV5GDCkz"}
+```
+
+<br>
+
+### title
+
+```yaml
+{"title": "New dashboard"}
+```
+
+<br>
+
+### tags
+
+```yaml
+{"tags": []}
+```
+
+<br>
+
+### style
+
+```yaml
+{"style": "dark"}
+```
+
+<br>
+
+### description
+
+ダッシュボード名とそのバージョンを設定する。
+
+公開ダッシュボードによってはバージョンの記載がないものがある。
+
+```yaml
+{"description": "Foo Dashboard version 1.0.0"}
+```
+
+<br>
+
+### gnetId
+
+公開ダッシュボードを使用している場合、ダッシュボードIDを設定する。
+
+反対に、nullであればユーザー定義のダッシュボードである。
+
+```yaml
+{"gnetId": 1}
+```
+
+<br>
+
+### timezone
+
+```yaml
+{"timezone": "browser"}
+```
+
+<br>
+
+### editable
+
+ダッシュボードをGUIから編集可能かを設定する。
+
+```yaml
+{"editable": false}
+```
+
+<br>
+
+### graphTooltip
+
+```yaml
+{"graphTooltip": 1}
+```
+
+<br>
+
+### panels
+
+```yaml
+{"panels": []}
+```
+
+<br>
+
+### time
+
+```yaml
+{"time": {"from": "now-6h", "to": "now"}}
+```
+
+<br>
+
+### timepicker
+
+ダッシュボードのデフォルトの時間間隔を設定する。
+
+```yaml
+{"timepicker": {"time_options": [], "refresh_intervals": []}}
+```
+
+<br>
+
+### templating
+
+#### ▼ templating
+
+> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#templating
+
+#### ▼ enable
+
+templatingセクションを有効化する。
+
+デフォルトで`true`である。
+
+```yaml
+{"templating": {"enable": true}
+```
+
+#### ▼ list
+
+プルダウンでフィルタリングできるようにする。
+
+ラベル値でフィルタリングする場合、指定したデータソースでクエリした時のメトリクスがそのラベルを持っている必要がある。
+
+例えば、clusterラベル値でフィルタリングする場合、クエリした時のメトリクスがclusterラベルを持っている『VictoriaMetrics』をデータソースとして指定する必要がある。
+
+```yaml
+{"templating": {
+      # listセクション
+      "list": [
+          # データソース値のフィルタリング
+          {
+            "current":
+              {"selected": false, "text": "Prometheus", "value": "Prometheus"},
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "includeAll": false,
+            "label": null,
+            "multi": false,
+            "name": "datasource",
+            "options": [],
+            "query": "prometheus",
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "type": "datasource",
+          },
+          # clusterラベル値のフィルタリング
+          {
+            "allValue": null,
+            "current":
+              {"isNone": true, "selected": false, "text": "None", "value": ""},
+            "datasource": "$datasource",
+            "definition": "",
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "includeAll": false,
+            "label": null,
+            "multi": false,
+            "name": "cluster",
+            "options": [],
+            "query": {
+                # 指定したデータソースの時に、kube_pod_infoメトリクスがclusterラベルを持っている必要がある。
+                "query": "label_values(kube_pod_info, cluster)",
+                "refId": "Prometheus-cluster-Variable-Query",
+              },
+            "refresh": 2,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false,
+          },
+          # namespaceラベル値のフィルタリング
+          {
+            "allValue": null,
+            "current":
+              {"selected": false, "text": "prometheus", "value": "prometheus"},
+            "datasource": "$datasource",
+            "definition": "",
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "includeAll": false,
+            "label": null,
+            "multi": false,
+            "name": "namespace",
+            "options": [],
+            "query": {
+                # 指定したデータソースの時に、kube_pod_infoメトリクスがnamespaceラベルを持っている必要がある。
+                "query": 'label_values(kube_pod_info{cluster="$cluster"}, namespace)',
+                "refId": "Prometheus-namespace-Variable-Query",
+              },
+            "refresh": 2,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false,
+          },
+        ],
+    }}
+```
+
+> ↪️：
+>
+> - https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top
+> - https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p
+> - https://qiita.com/prodigy413/items/c0c2304e1bc28f644526
+
+<br>
+
+### annotations
+
+```yaml
+{"annotations": {"list": []}}
+```
+
+<br>
+
+### refresh
+
+自動更新間隔を設定する。
+
+```yaml
+{"refresh": "5s"}
+```
+
+<br>
+
+### schemaVersion
+
+```yaml
+{"schemaVersion": 17}
+```
+
+<br>
+
+### version
+
+```yaml
+{"version": 0}
+```
+
+<br>
+
+### links
+
+```yaml
+{"links": []}
+```
+
+<br>
+
+## 04-03. ユーザー定義のダッシュボード
 
 ### ユーザー定義のダッシュボードとは
 
@@ -484,7 +728,7 @@ data:
 
 <br>
 
-## 04-03. 公開ダッシュボード
+## 04-04. 公開ダッシュボード
 
 ### 公開ダッシュボードとは
 
