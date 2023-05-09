@@ -458,6 +458,8 @@ ConfigMapの`.data`キーにJSONを設定すると、ダッシュボードを作
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
 
+注意点として、特定の記号はGoテンプレート上でエスケープする必要がある (例：`{{ "{{" }}`) 。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -492,6 +494,8 @@ data:
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
 
+注意点として、特定の記号はGoテンプレート上でエスケープする必要がある (例：`{{ "{{" }}`) 。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -508,6 +512,82 @@ data:
 >
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
+
+<br>
+
+### 公開ダッシュボードのアップグレード方法
+
+#### 【１】ダッシュボードの検索
+
+公開ダッシュボードのJSONは、[Grafana Labs](https://grafana.com/grafana/dashboards/) からダウンロードできる。
+
+公開ダッシュボードのIDはJSONの`gnetId`キーから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。
+
+反対に、`gnetId`キーが`null`になっているものは、ユーザー定義のダッシュボードである。
+
+```yaml
+{"gnetId": 1}
+```
+
+また、公開ダッシュボードのバージョンは、`description`キーから確認できる (公開ダッシュボードによってはバージョンの記載がないものがある)。
+
+```yaml
+{"description": "Foo Dashboard version 1.0.0"}
+```
+
+#### 【２】ダッシュボードのバージョンの選択
+
+ダッシュボードの`__requires`キーで、PrometheusとGrafanaの最低バージョンを確認する。
+
+Kubernetesで稼働するPrometheusとGrafanaのバージョンに応じたダッシュボードを選ぶ。
+
+```yaml
+{
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "<最低バージョン>"
+    },
+
+    ...
+
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "<最低バージョン>"
+    },
+
+    ...
+
+  ]
+}
+```
+
+#### 【３】整形
+
+[任意のサイト](https://r37r0m0d3l.github.io/json_sort/) で、アルファベット順かつスペース`2`個で整形する。
+
+これは、運用方針による。
+
+#### 【４】貼り付け
+
+ConfigMapのJSONファイルのデータとして貼り付ける。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-dashboard
+  namespace: prometheus
+  labels:
+    grafana_dashboard: "1"
+data:
+  foo-dashboard.json: |-
+    # ここに貼り付け
+```
 
 <br>
 

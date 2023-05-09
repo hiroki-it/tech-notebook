@@ -184,9 +184,6 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 <br>
 
-
-
-
 ## 04. ストレージの各種数値の算出
 
 ### ローカルストレージの必要サイズ (KB/日)

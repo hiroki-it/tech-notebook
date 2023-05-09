@@ -62,12 +62,21 @@ GitHubの自身の公開鍵を登録する必要がある。
 $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<GitHubリポジトリ名>.git
 ```
 
+#### ▼ 名前指定
+
+リポジトリのクローンを別名でクローンする。
+
+```bash
+# fooという名前でクローン
+$ git clone https://github.com/hiroki-hasegawa/foo-repository.git foo
+```
+
 #### ▼ --recursive
 
 リポジトリがサブモジュールを含む場合、サブモジュールも合わせてクローンする。
 
 ```bash
-$ git clone --recursive
+$ git clone --recursive https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
 > ↪️：https://blog.kyanny.me/entry/2020/07/04/172905
