@@ -566,8 +566,14 @@ templatingセクションを有効化する。
       "list": [
           # データソース値のフィルタリング
           {
+            # デフォルトのフィルタリング値
+            # プルダウンの値を変更すれば、current値も動的に変わる
             "current":
-              {"selected": false, "text": "Prometheus", "value": "Prometheus"},
+              {
+                
+                "selected": false, "text": "Prometheus", 
+                # デフォルトのフィルタリング値をPrometheusとする
+                "value": "Prometheus"},
             "description": null,
             "error": null,
             # プルダウンを常に表示できるように 0 (false) とする
@@ -592,7 +598,6 @@ templatingセクションを有効化する。
             "definition": "",
             "description": null,
             "error": null,
-            # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
             "includeAll": false,
             "label": null,
@@ -622,7 +627,6 @@ templatingセクションを有効化する。
             "definition": "",
             "description": null,
             "error": null,
-            # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
             "includeAll": false,
             "label": null,
