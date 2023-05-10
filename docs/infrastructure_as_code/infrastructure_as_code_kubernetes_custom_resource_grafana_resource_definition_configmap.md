@@ -549,7 +549,7 @@ templatingセクションを有効化する。
 デフォルトで`true`である。
 
 ```yaml
-{"templating": {"enable": true}
+{"templating": {"enable": true}}
 ```
 
 #### ▼ list

@@ -87,13 +87,17 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 > - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 > - https://chroju.dev/blog/terraform_state_introduction
 
-#### ▼ `.tfstate`ファイルのロック
+#### ▼ `state.lock`ファイル
 
 `.tfstate`ファイルの競合を防ぐために、`terraform apply`コマンドの処理中に`.tfstate`ファイルはロックされる。
+
+ロックの状態は、`state.lock`ファイルやクラウドプロバイダーのDB (例：DynamoDB) に記載する。
 
 `terraform apply`コマンドが完了すれば、ロックは解除される。
 
 ロックされている間、他のユーザーは一連の`terraform`コマンドを実行できなくなる。
+
+> ↪️：https://blog-benri-life.com/terraform-state-lock-s3/
 
 #### ▼ 残骸ロックの解除方法
 

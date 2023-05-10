@@ -355,7 +355,7 @@ resource "aws_autoscaling_group" "foo" {
 
   tag {
     key                 = "Env"
-    value               = "dev"
+    value               = "prd"
     propagate_at_launch = true
   }
 }
