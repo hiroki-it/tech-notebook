@@ -505,11 +505,11 @@ data:
   # デフォルトのロール
   policy.default: role:developer
   policy.csv: |
-    # ロールと認可スコープを定義する。
+    # ロールと認可スコープを定義する
     p, role:developer, *, *, dev/*, allow
     p, role:maintainer, *, *, *, allow
 
-    # グループにロールを紐付ける。
+    # グループにロールを紐付ける
     g, developers, role:developer
     g, maintainers, role:maintainer
   scopes: "[groups]"
@@ -517,9 +517,11 @@ data:
 
 <br>
 
-### ArgoCDの認証を外部Webサイトに委譲する場合 (SSOの場合)
+### ArgoCDの認証をIDプロバイダーに委譲する場合 (SSOの場合)
 
-#### ▼ 外部Webサイトのチームに紐付ける場合
+#### ▼ IDプロバイダーのチームに紐付ける場合
+
+IDプロバイダーに委譲する場合、グループ名はIDプロバイダーで認証されたものにする必要がある。
 
 **＊実装例＊**
 
@@ -543,12 +545,12 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールと認可スコープを定義する。
+    # ロールと認可スコープを定義する
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
 
-    # グループにロールを紐付ける。
+    # IDプロバイダーで認証されたグループにロールを紐付ける
     g, example-org.github.com:admin, role:admin
     g, example-org.github.com:app-team, role:app
     g, example-org.github.com:infra-team, role:infra
@@ -559,7 +561,7 @@ data:
 >
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.scsv
 
 **＊実装例＊**
 
@@ -579,19 +581,19 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールと認可スコープを定義する。
+    # ロールと認可スコープを定義する
     p, role:admin, *, *, *, allow
     p, role:app, *, *, *, allow
     p, role:infra, *, *, *, allow
 
-    # グループにロールを紐付ける。
+    # IDプロバイダーで認証されたグループにロールを紐付ける
     g, example-org.github.com:admin, role:admin
     g, example-org.github.com:app-team, role:app
     g, example-org.github.com:infra-team, role:infra
   scopes: "[groups]"
 ```
 
-#### ▼ 外部Webサイトのメールアドレスに紐付ける場合
+#### ▼ IDプロバイダーのメールアドレスに紐付ける場合
 
 以下のように、ロールと認可スコープを紐付ける。
 
@@ -609,12 +611,12 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールと認可スコープを定義する。
+    # ロールと認可スコープを定義する
     p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
 
-    # グループにロールを紐付ける。
+    # IDプロバイダーで認証されたグループにロールを紐付ける
     g, admin@gmail.com, role:admin
     g, app-team@gmail.com, role:app
     g, infra-team@gmail.com, role:infra

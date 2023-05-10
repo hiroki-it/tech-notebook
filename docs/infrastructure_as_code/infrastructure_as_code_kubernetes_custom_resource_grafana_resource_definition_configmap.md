@@ -581,6 +581,7 @@ templatingセクションを有効化する。
             "includeAll": false,
             "label": null,
             "multi": false,
+            # データソースの変数名
             "name": "datasource",
             "options": [],
             "query": "prometheus",
