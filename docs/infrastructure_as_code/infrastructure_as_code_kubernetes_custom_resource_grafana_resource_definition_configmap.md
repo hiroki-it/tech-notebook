@@ -569,7 +569,8 @@ templatingセクションを有効化する。
             # デフォルトのフィルタリング値
             # プルダウンの値を変更すれば、current値も動的に変わる
             "current": {
-                "selected": false,
+                # 固定できるように true としておく
+                "selected": true,
                 # デフォルトのデータソースのフィルタリング値をPrometheusとする
                 "text": "Prometheus",
                 "value": "Prometheus",
@@ -594,8 +595,9 @@ templatingセクションを有効化する。
           {
             "allValue": null,
             "current": {
-                "isNone": true,
                 # デフォルトのclusterラベルのフィルタリング値を null とする
+                "isNone": true,
+                # ラベルが選ばれない限り表示されないため、 false としておく
                 "selected": false,
                 "text": "None",
                 "value": "",
@@ -629,10 +631,11 @@ templatingセクションを有効化する。
           {
             "allValue": null,
             "current": {
+                # ラベルが選ばれない限り表示されないため、 false としておく
                 "selected": false,
-                # デフォルトのNamespaceのフィルタリング値を prometheus とする
-                "text": "prometheus",
-                "value": "prometheus",
+                # デフォルトのNamespaceのフィルタリング値を foo-namespace とする
+                "text": "foo-namespace",
+                "value": "foo-namespace",
               },
             # データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
@@ -648,6 +651,40 @@ templatingセクションを有効化する。
             "query": {
                 # 指定したデータソースの時に、kube_pod_infoメトリクスがnamespaceラベルを持っている必要がある。
                 "query": 'label_values(kube_pod_info{cluster="$cluster"}, namespace)',
+                "refId": "Prometheus-namespace-Variable-Query",
+              },
+            "refresh": 2,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false,
+          },
+          {
+            "allValue": null,
+            "current": {
+                # ラベルが選ばれない限り表示されないため、 false としておく
+                "selected": false,
+                # デフォルトのNamespaceのフィルタリング値を foo とする
+                "text": "foo-pod",
+                "value": "foo-pod",
+              },
+            # データソースの指定時に、それを変数として取得する
+            "datasource": "$datasource",
+            "definition": "",
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "includeAll": false,
+            "label": null,
+            "multi": false,
+            "name": "pod",
+            "options": [],
+            "query": {
+                # 指定したデータソースの時に、kube_pod_infoメトリクスがpodラベルを持っている必要がある。
+                "query": 'label_values(kube_pod_info{cluster="$cluster"}, pod)',
                 "refId": "Prometheus-namespace-Variable-Query",
               },
             "refresh": 2,
