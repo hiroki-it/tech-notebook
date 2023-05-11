@@ -323,11 +323,6 @@ AWS管理ポリシーである『`AmazonECSTaskExecutionRolePolicy`』が紐付�
 
 ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
 
-> ↪️：
->
-> - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
-> - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
-
 ```yaml
 {
   "Version": "2012-10-17",
@@ -372,6 +367,11 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
     ],
 }
 ```
+
+> ↪️：
+>
+> - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
+> - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 
 <br>
 

@@ -225,7 +225,26 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 <br>
 
-## 08. ユースケース
+## 08. workflow-controller
+
+### workflow-controllerとは
+
+![argocd_argo-workflow_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argo-workflow_architecture.png)
+
+特にArgoCD Workflowのcustom-controllerとして、ArgoCD Workflowのマニフェストを作成/変更する。
+
+application-controllerを分離されている理由は、ArgoCD WorkflowのマニフェストはArgoCDのデプロイ先Clusterに作成するためである。
+
+なお、フロントエンド部分としてargocd-serverが必要である。
+
+> ↪️：
+>
+> - https://argoproj.github.io/argo-workflows/architecture/
+> - https://www.wantedly.com/companies/wantedly/post_articles/302473
+
+<br>
+
+## 09. ユースケース
 
 ### 共通
 

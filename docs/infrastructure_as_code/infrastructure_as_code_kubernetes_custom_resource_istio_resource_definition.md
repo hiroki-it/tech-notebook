@@ -360,9 +360,11 @@ spec:
 
 #### ▼ subsetsとは
 
-![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
+ルーティング先のPodの`.metadata.labels`キーを設定する。
 
-ルーティング先のPodの`.metadata.labels`キーを設定する
+`.spec.subsets[].name`キーの値は、VirtualServiceで設定した`.spec.http[].route[].destination.subset`キーに合わせる必要がある。
+
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
 > ↪️：
 >
@@ -454,6 +456,8 @@ Podへのルーティング時に使用するロードバランシングアル�
 
 **＊実装例＊**
 
+複数のゾーンのPodに対して、ラウンドロビンでルーティングする。
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -463,10 +467,40 @@ metadata:
 spec:
   trafficPolicy:
     loadBalancer:
+      # ラウンドロビン
       simple: ROUND_ROBIN
 ```
 
 > ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
+
+**＊実装例＊**
+
+指定したゾーンのPodに対して、指定した重みづけでルーティングする。
+
+リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キー、など) の値を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      localityLbSetting:
+        enabled: true
+        distribute:
+          - from: <リージョン名>/<ゾーン名>/*
+            to:
+              "<リージョン名>/<ゾーン名>/*": 70
+              "<リージョン名>/<ゾーン名>/*": 30
+```
+
+> ↪️：
+>
+> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
+> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/
 
 #### ▼ portLevelSettings.loadBalancer
 
@@ -1482,7 +1516,9 @@ spec:
 
 #### ▼ route.weight
 
-重み付けルーティングの割合を設定する。
+Serviceの重み付けルーティングの割合を設定する。
+
+`.spec.http[].route[].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[].name`キーに合わせる必要がある。
 
 > ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 

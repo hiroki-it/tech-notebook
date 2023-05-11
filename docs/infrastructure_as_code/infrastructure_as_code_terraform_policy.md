@@ -364,8 +364,6 @@ repository/
 
 `.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
-> ↪️：https://sreake.com/blog/terraform-state-structure/
-
 ```yaml
 repository/
 ├── aws/ # AWS、Kubernetes
@@ -393,6 +391,15 @@ repository/
 ├── healthchecks/
 └── pagerduty/
 ```
+
+コンポーネントとしては、例えば以下の分け方がある。
+
+| 分け方 | 例                                   |
+| ------ | ------------------------------------ |
+| 領域   | `network`、`database`、`k8s_cluster` |
+|        |                                      |
+
+> ↪️：https://sreake.com/blog/terraform-state-structure/
 
 <br>
 

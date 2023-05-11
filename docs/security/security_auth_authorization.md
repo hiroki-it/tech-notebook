@@ -17,6 +17,10 @@ description: 認可＠認証/認可の知見を記録しています。
 
 認証済みのユーザーに対して、アクセス可能な権限範囲 (認可スコープ) を付与する。
 
+基本的に、認可の実装は認証に依存する。
+
+> ↪️：https://dev.classmethod.jp/articles/authentication-and-authorization/#toc-2
+
 <br>
 
 ## 02. アプリケーションで実装する

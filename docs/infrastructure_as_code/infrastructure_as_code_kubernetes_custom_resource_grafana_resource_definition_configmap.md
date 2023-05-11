@@ -512,6 +512,8 @@ data:
 
 ### panels
 
+メトリクスをクエリして表示するパネルを定義する。
+
 ```yaml
 {"panels": []}
 ```
@@ -558,7 +560,11 @@ templatingセクションを有効化する。
 
 ラベル値でフィルタリングする場合、指定したデータソースでクエリした時のメトリクスがそのラベルを持っている必要がある。
 
-例えば、clusterラベル値でフィルタリングする場合、クエリした時のメトリクスがclusterラベルを持っている『VictoriaMetrics』をデータソースとして指定する必要がある。
+例えば、`kube_pod_info`メトリクスをラベル参照のために使用する場合、これがプルダウンのラベルを持っていなければならない。
+
+加えて、ダッシュボード上のパネルのメトリクスもプルダウンのラベルでフィルタリングできるように、PromQLを定義する必要がある。
+
+例えば、clusterラベル値でフィルタリングする場合、パネル上のPromQLでも`<メトリクス>{cluster=\"$cluster\"}`と定義しなければならない。
 
 ```yaml
 {"templating": {
@@ -582,7 +588,7 @@ templatingセクションを有効化する。
             "includeAll": false,
             "label": null,
             "multi": false,
-            # データソースの変数名
+            # データソース名。変数名としても使用できるようになる。
             "name": "datasource",
             "options": [],
             "query": "prometheus",
@@ -611,9 +617,11 @@ templatingセクションを有効化する。
             "includeAll": false,
             "label": null,
             "multi": false,
+            # ラベル名。変数名としても使用できるようになる。
             "name": "cluster",
             "options": [],
             "query": {
+                # メトリクスと、それから取得するラベルを設定する。
                 # 指定したデータソースの時に、kube_pod_infoメトリクスがclusterラベルを持っている必要がある。
                 "query": "label_values(kube_pod_info, cluster)",
                 "refId": "Prometheus-cluster-Variable-Query",
@@ -628,74 +636,39 @@ templatingセクションを有効化する。
             "useTags": false,
           },
           # namespaceラベル値のフィルタリング
-          {
-            "allValue": null,
-            "current": {
+          {"allValue": null, "current": {
                 # ラベルが選ばれない限り表示されないため、 false としておく
                 "selected": false,
                 # デフォルトのNamespaceのフィルタリング値を foo-namespace とする
                 "text": "foo-namespace",
                 "value": "foo-namespace",
-              },
-            # データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            "includeAll": false,
-            "label": null,
-            "multi": false,
-            "name": "namespace",
-            "options": [],
-            "query": {
-                # 指定したデータソースの時に、kube_pod_infoメトリクスがnamespaceラベルを持っている必要がある。
+              }, "datasource": "$datasource", "definition": "", "description": null, "error": null, "hide": 0, "includeAll": false, "label": null, "multi": false, "name": "namespace", "options": [], "query": {
+                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_pod_info{cluster="$cluster"}, namespace)',
                 "refId": "Prometheus-namespace-Variable-Query",
-              },
-            "refresh": 2,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false,
-          },
-          {
-            "allValue": null,
-            "current": {
+              }, "refresh": 2, "regex": "", "skipUrlSync": false, "sort": 1, "tagValuesQuery": "", "tagsQuery": "", "type": "query", "useTags": false},
+          {"allValue": null, "current": {
                 # ラベルが選ばれない限り表示されないため、 false としておく
                 "selected": false,
                 # デフォルトのNamespaceのフィルタリング値を foo とする
                 "text": "foo-pod",
                 "value": "foo-pod",
-              },
-            # データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            "includeAll": false,
-            "label": null,
-            "multi": false,
-            "name": "pod",
-            "options": [],
-            "query": {
-                # 指定したデータソースの時に、kube_pod_infoメトリクスがpodラベルを持っている必要がある。
-                "query": 'label_values(kube_pod_info{cluster="$cluster"}, pod)',
-                "refId": "Prometheus-namespace-Variable-Query",
-              },
-            "refresh": 2,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false,
-          },
+              }, "datasource": "$datasource", "definition": "", "description": null, "error": null, "hide": 0, "includeAll": false, "label": null, "multi": false, "name": "pod", "options": [], "query": {
+                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
+                "query": 'label_values(kube_pod_info{cluster="$cluster", namespace="$namespace"}, pod)',
+                "refId": "Prometheus-pod-Variable-Query",
+              }, "refresh": 2, "regex": "", "skipUrlSync": false, "sort": 1, "tagValuesQuery": "", "tagsQuery": "", "type": "query", "useTags": false},
+          # nodeラベル値のフィルタリング
+          {"allValue": null, "current": {
+                # デフォルトでは全てのラベルを表示する
+                "selected": true,
+                "text": ["All"],
+                "value": ["$__all"],
+              }, "datasource": "$datasource", "definition": "", "description": null, "error": null, "hide": 0, "includeAll": false, "label": null, "multi": false, "name": "namespace", "options": [], "query": {
+                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
+                "query": 'label_values(kube_pod_info{cluster="$cluster", namespace="$namespace", pod="$pod"}, node)',
+                "refId": "Prometheus-node-Variable-Query",
+              }, "refresh": 2, "regex": "", "skipUrlSync": false, "sort": 1, "tagValuesQuery": "", "tagsQuery": "", "type": "query", "useTags": false},
         ],
     }}
 ```
