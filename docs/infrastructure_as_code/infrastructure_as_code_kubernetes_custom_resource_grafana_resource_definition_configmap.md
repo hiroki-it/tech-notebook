@@ -309,6 +309,10 @@ data:
 
 Grafanaの`dashboard.json`ファイルを管理する。
 
+ファイルサイズが大きくなってしまうため、一つのConfigMapで一つの`dashboard.json`ファイルを管理する方が良い。
+
+これをGrafanaのコンテナにマウントする。
+
 <br>
 
 ### セットアップ
@@ -446,8 +450,12 @@ data:
 
 ### tags
 
+何らかのチャート (例：kube-prometheus-stack) を使用した場合に、ダッシュボードが作成されることがある。
+
+これと区別できるように、本リポジトリのダッシュボードには`<リポジトリ名>.git`というタグをつけると良い。
+
 ```yaml
-{"tags": []}
+{"tags": ["<リポジトリ名>.git"]}
 ```
 
 <br>
@@ -514,8 +522,24 @@ data:
 
 メトリクスをクエリして表示するパネルを定義する。
 
+複数のラベルをOR条件で表示するようなパネルの場合、Grafanaがクエリ上にOR条件の正規表現を生成する。
+
+そのため、`=~`演算子を使用するようにする。
+
 ```yaml
-{"panels": []}
+{
+  "panels":
+    [
+      {
+        "targets":
+          [
+            {
+              "expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}',
+            },
+          ],
+      },
+    ],
+}
 ```
 
 <br>
@@ -739,6 +763,43 @@ templatingセクションを有効化する。
                 # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_pod_info{cluster="$cluster", namespace="$namespace", pod="$pod"}, node)',
                 "refId": "Prometheus-node-Variable-Query",
+              },
+            "refresh": 2,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false,
+          },
+          # containerラベル値のフィルタリング
+          {
+            "allValue": null,
+            # プルダウンが選ばれていない時のデフォルト値を設定する
+            "current": {
+                # デフォルトでは全てのラベルを表示する
+                # multiラベルの場合は、配列とする
+                "selected": true,
+                "text": ["All"],
+                "value": ["$__all"],
+              },
+            # データソースの指定時に、それを変数として取得する
+            "datasource": "$datasource",
+            "definition": "",
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "includeAll": false,
+            "label": null,
+            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            "multi": true,
+            "name": "container",
+            "options": [],
+            "query": {
+                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
+                "query": 'label_values(kube_pod_container_info{cluster=\"$cluster\",pod=~\"$pod\"}, container)',
+                "refId": "Prometheus-container-Variable-Query",
               },
             "refresh": 2,
             "regex": "",

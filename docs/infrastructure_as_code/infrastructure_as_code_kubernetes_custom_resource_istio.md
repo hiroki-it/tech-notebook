@@ -362,19 +362,36 @@ Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイン�
 
 Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (`discovery`コンテナ) から収集したメトリクスを取得できる。
 
-| メトリクス                                                          | 単位     | 説明                                                                                                                                                                                         | アラート条件例 (合致したら発火) |
-| ------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| 総リクエスト数 (`istio_requests_total`)                             | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                                 |
-| 総gRPCリクエスト数 (`istio_request_messages_total`)                 | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                    |                                 |
-| 総gRPCレスポンス数 (`istio_response_messages_total`)                | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                    |                                 |
-| Pod間通信リトライ数 (`envoy_cluster_upstream_rq_retry`)             | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                             |                                 |
-| Pod間通信リトライ成功数 (`envoy_cluster_upstream_rq_retry_success`) | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                         |
+| メトリクス名                              | 単位     | 説明                                                                                                                                                                                         | アラート条件例 (合致したら発火) |
+| ----------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `istio_requests_total`                    | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |                                 |
+| `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                    |                                 |
+| `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                    |                                 |
+| `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                    |                                 |
+| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                             |                                 |
+| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                         |                                 |
 
 > ↪️：
 >
-> - https://istio.io/latest/docs/reference/config/metrics/
+> - https://istio.io/latest/docs/reference/config/metrics/#metrics
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
 > - https://www.zhaohuabing.com/post/2023-02-14-istio-metrics-deep-dive/
+
+#### ▼ メトリクスのラベル
+
+メトリクスをフィルタリングできるように、Istioでは任意のメトリクスにデフォルトでラベルがついている。
+
+| ラベル                           | 説明                                                                              | 例                                                                     |
+| -------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `destination_service`            | リクエストの宛先のService名を表す。                                               | `foo-service`                                                          |
+| `destination_workload`           | リクエストの宛先のKubernetesリソース名を表す。                                    |                                                                        |
+| `destination_workload_namespace` | リクエストの送信元のNamespace名を表す。                                           |                                                                        |
+| `reporter`                       | メトリクスの収集者を表す。`istio-proxy`コンテナかIngressGatewayのいずれかである。 | ・`destination` (`istio-proxy`コンテナ)<br>・`source` (IngressGateway) |
+| `response_flags`                 | Envoyの`%RESPONSE_FLAGS%`値を表す。                                               |                                                                        |
+| `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `400`                                                                  |
+| `source_workload`                | リクエストの送信元のKubernetesリソース名を表す。                                  |                                                                        |
+
+> ↪️：https://istio.io/latest/docs/reference/config/metrics/#labels
 
 <br>
 
