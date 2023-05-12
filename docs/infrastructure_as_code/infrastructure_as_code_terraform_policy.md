@@ -394,10 +394,10 @@ repository/
 
 コンポーネントとしては、例えば以下の分け方がある。
 
-| 分け方 | 例                                   |
-| ------ | ------------------------------------ |
-| 領域   | `network`、`database`、`k8s_cluster` |
-|        |                                      |
+| 分け方    | 例                                                 |
+| --------- | -------------------------------------------------- |
+| 領域      | `network`、`database`、`k8s_cluster`、`monotoring` |
+| 記入中... | 記入中...                                          |
 
 > ↪️：https://sreake.com/blog/terraform-state-structure/
 
