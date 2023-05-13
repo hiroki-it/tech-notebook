@@ -474,7 +474,7 @@ data:
 
 ダッシュボード名とそのバージョンを設定する。
 
-公開ダッシュボードによってはバージョンの記載がないものがある。
+Labsダッシュボードによってはバージョンの記載がないものがある。
 
 ```yaml
 {"description": "Foo Dashboard version 1.0.0"}
@@ -484,7 +484,7 @@ data:
 
 ### gnetId
 
-公開ダッシュボードを使用している場合、ダッシュボードIDを設定する。
+Labsダッシュボードを使用している場合、ダッシュボードIDを設定する。
 
 反対に、nullであればユーザー定義のダッシュボードである。
 
@@ -538,21 +538,20 @@ PromQLを定義する。
 
 そのため、`=~`演算子を使用するようにする。
 
+ラベル変数を使用する場合は、`templating`セクションでその定義が必要である。
+
 ```yaml
 {
-  "panels": [
+  "panels":
+    [
       {
         "targets":
           [
             {
               "expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}',
             },
-            {
-              "expr": '...',
-            },
-            {
-              "expr": '...',
-            }
+            {"expr": "..."},
+            {"expr": "..."},
           ],
       },
     ],
@@ -641,6 +640,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "refresh": 1,
             "regex": "",
             "skipUrlSync": false,
+            # 変数タイプを設定する。
             "type": "datasource",
           },
           # clusterラベル値のフィルタリング
@@ -842,6 +842,24 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
 > - https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p
 > - https://qiita.com/prodigy413/items/c0c2304e1bc28f644526
 
+その上で`panel`セクションで`cluser`ラベルを定義すると、 メトリクスを`cluster`ラベルでフィルタリングできるようになる。
+
+```yaml
+{
+  "panels": [
+    {
+      "targets":
+        [
+          {
+            "expr": "sum(rate(sidecar_injection_success_total{cluster=\"$cluster\"}[1m]))"
+          }
+        ]
+    }
+  ]
+}
+}
+```
+
 <br>
 
 ### annotations
@@ -948,9 +966,9 @@ data:
 
 <br>
 
-## 04-04. 公開ダッシュボード
+## 04-04. Labsダッシュボード
 
-### 公開ダッシュボードとは
+### Labsダッシュボードとは
 
 ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。
 
@@ -971,21 +989,21 @@ ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのG
 
 <br>
 
-### 公開ダッシュボードのアップグレード方法
+### Labsダッシュボードの採用
 
 #### 【１】ダッシュボードの検索
 
-公開ダッシュボードのJSONは、[Grafana Labs](https://grafana.com/grafana/dashboards/) からダウンロードできる。
+LabsダッシュボードのJSONは、[Grafana Labs](https://grafana.com/grafana/dashboards/) からダウンロードできる。
 
-公開ダッシュボードのIDはJSONの`gnetId`キーから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。
+LabsダッシュボードのIDはJSONの`gnetId`セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。
 
-反対に、`gnetId`キーが`null`になっているものは、ユーザー定義のダッシュボードである。
+反対に、`gnetId`セクションが`null`になっているものは、ユーザー定義のダッシュボードである。
 
 ```yaml
 {"gnetId": 1}
 ```
 
-また、公開ダッシュボードのバージョンは、`description`キーから確認できる (公開ダッシュボードによってはバージョンの記載がないものがある)。
+また、Labsダッシュボードのバージョンは、`description`セクションから確認できる (Labsダッシュボードによってはバージョンの記載がないものがある)。
 
 ```yaml
 {"description": "Foo Dashboard version 1.0.0"}
@@ -993,7 +1011,7 @@ ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのG
 
 #### 【２】ダッシュボードのバージョンの選択
 
-ダッシュボードの`__requires`キーで、PrometheusとGrafanaの最低バージョンを確認する。
+ダッシュボードの`__requires`セクションで、PrometheusとGrafanaの最低バージョンを確認する。
 
 Kubernetesで稼働するPrometheusとGrafanaのバージョンに応じたダッシュボードを選ぶ。
 
@@ -1038,6 +1056,8 @@ ConfigMapのJSONファイルのデータとして貼り付ける。
 
 エスケープするのを忘れない。
 
+なお、後々アップグレードしていくことになるため、運用が複雑にならないように、Labsダッシュボードはいじらない方が良い。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1053,83 +1073,13 @@ data:
     ` }}
 ```
 
-#### 【５】メトリクスにフィルタリング用ラベル
-
-ダッシュボード上でユーザー定義のプルダウンを用意している場合に、各メトリクスにラベル定義
-
-そのため、もし新しいダッシュボードを管理する場合は、全てのメトリクスのラベル変数に値を出力できるような定義が必要である。
-
-例えば、VictoriaMetricsをGrafanaのデータソースとして選ぶ場合に、メトリクスを`cluster`ラベルでフィルタリングできるようになる。
-
-[公開ダッシュボード](https://grafana.com/grafana/dashboards/) からJSONをコピーした上では、メトリクスを`cluster`ラベルでフィルタリングする定義はない。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: grafana-dashboard-foo
-  labels:
-    grafana_dashboard: "1"
-data:
-  foo.json: |-
-    {{ `
-    {
-      ...
-
-      "panels": [
-          {
-            "targets":
-              [
-                {
-                  "expr": "sum(rate(sidecar_injection_success_total[1m]))"
-                }
-              ]
-          }
-        ]
-
-      ...
-    }
-    ` }}
-```
-
-そのため、メトリクスに`cluster`ラベルでフィルタリングする定義を追加する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: grafana-dashboard-foo
-  labels:
-    grafana_dashboard: "1"
-data:
-  foo.json: |-
-    {{ `
-    {
-      ...
-
-      "panels": [
-          {
-            "targets":
-              [
-                {
-                  "expr": "sum(rate(sidecar_injection_success_total{cluster=\"$cluster\"}[1m]))"
-                }
-              ]
-          }
-        ]
-
-      ...
-    }
-    ` }}
-```
-
 <br>
 
-### 公開ダッシュボードの共通仕様
+### Labsダッシュボードの共通仕様
 
 #### ▼ USEメトリクス
 
-『`USE`』という名前を含む公開ダッシュボードがある。
+『`USE`』という名前を含むLabsダッシュボードがある。
 
 ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーション、など) を表示できる。
 
@@ -1140,7 +1090,7 @@ data:
 
 #### ▼ REDメトリクス
 
-『`RED`』という名前を含む公開ダッシュボードがある。
+『`RED`』という名前を含むLabsダッシュボードがある。
 
 ダッシュボードは、REDメトリクスを表示できる。
 
