@@ -540,8 +540,7 @@ PromQLを定義する。
 
 ```yaml
 {
-  "panels":
-    [
+  "panels": [
       {
         "targets":
           [
@@ -1075,13 +1074,20 @@ data:
   foo.json: |-
     {{ `
     {
-
       ...
 
-      "expr": "sum(rate(sidecar_injection_success_total[1m]))"
+      "panels": [
+          {
+            "targets":
+              [
+                {
+                  "expr": "sum(rate(sidecar_injection_success_total[1m]))"
+                }
+              ]
+          }
+        ]
 
       ...
-
     }
     ` }}
 ```
@@ -1099,13 +1105,20 @@ data:
   foo.json: |-
     {{ `
     {
-
       ...
 
-      "expr": "sum(rate(sidecar_injection_success_total{cluster=\"$cluster\"}[1m]))"
+      "panels": [
+          {
+            "targets":
+              [
+                {
+                  "expr": "sum(rate(sidecar_injection_success_total{cluster=\"$cluster\"}[1m]))"
+                }
+              ]
+          }
+        ]
 
       ...
-
     }
     ` }}
 ```
