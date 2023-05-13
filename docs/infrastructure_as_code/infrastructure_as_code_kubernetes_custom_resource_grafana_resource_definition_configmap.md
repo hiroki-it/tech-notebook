@@ -400,7 +400,9 @@ metadata:
     grafana_dashboard: "1"
 data:
   dashboard.json: |
-    # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
+    {{ `
+    ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
+    ` }}
 ```
 
 > ↪️：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
@@ -872,7 +874,6 @@ ConfigMapの`.data`キーにJSONを設定すると、ダッシュボードを作
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
 
-注意点として、特定の記号はGoテンプレート上でエスケープする必要がある (例：`{{ "{{" }}`) 。
 
 ```yaml
 apiVersion: v1
@@ -883,10 +884,41 @@ metadata:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
   dashboard.json: |
-    # ダッシュボードを定義する。
+    {{ `
+    ダッシュボードを定義する。
+    ` }}
 ```
 
 > ↪️：https://grafana.com/grafana/dashboards/
+
+<br>
+
+### エスケープ
+
+Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジックで使用される。
+
+ダッシュボードのJSONではこれを使用するため、ロジックとして認識されないようにエスケープする必要がある。
+
+エスケープの方法は数種があるが、一番簡単な方法を採用する。
+
+記号を含む文字ごと`` {{ `<記号を含む文字列全体>` }} ``のように挟み、エスケープする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-foo
+  labels:
+    grafana_dashboard: "1"
+data:
+  foo.json: |-
+    {{ `
+    ダッシュボードのJSON
+    ` }}
+```
+
+> ↪️：https://stackoverflow.com/a/38941123
+
 
 <br>
 
@@ -908,24 +940,19 @@ data:
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
 
-注意点として、特定の記号はGoテンプレート上でエスケープする必要がある (例：`{{ "{{" }}`) 。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: foo-grafana-dashboard
-  labels:
-    grafana_dashboard: "<labelValueに設定した値>"
-data:
-  dashboard.json: |
-    # ダッシュボードを定義する。
-```
 
 > ↪️：
 >
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
+
+
+<br>
+
+### エスケープ
+
+
+注意点として、ユーザー定義のダッシュボードと同様にして、記号をエスケープする必要がある。
 
 <br>
 
@@ -954,6 +981,10 @@ data:
 ダッシュボードの`__requires`キーで、PrometheusとGrafanaの最低バージョンを確認する。
 
 Kubernetesで稼働するPrometheusとGrafanaのバージョンに応じたダッシュボードを選ぶ。
+
+他には、ツールとダッシュボードの両方のバージョンが対応関係にある場合がある (例：Istioとダッシュボードの両方のバージョンは対応する)。
+
+ただし、Prometheusの方のバージョンは気にしなくて良さそう (よくあるPrometheusの`5.0.0`なんてバージョンは存在しない)。
 
 ```yaml
 {
@@ -999,8 +1030,10 @@ metadata:
   labels:
     grafana_dashboard: "1"
 data:
-  foo-dashboard.json: |-
-    # ここに貼り付け
+  foo.json: |-
+    {{ `
+    ここに貼り付け
+    ` }}
 ```
 
 <br>
@@ -1088,14 +1121,14 @@ data:
 
 `istioctl dashboard grafana`コマンドでインストールできるダッシュボード。
 
-| ダッシュボード名                 | 監視対象                             | 説明                                                                          |
-| -------------------------------- |----------------------------------| ----------------------------------------------------------------------------- |
-| `Istio Wasm Extension Dashboard` |                                  |                                                                               |
-| `Istio Mesh Dashboard`           |                                  | HTTPとTCPのメトリクスを確認したい場合に便利である。                           |
-| `Istio Control Plane Dashboard`  | IstiodのPod                       |                                                                               |
+| ダッシュボード名                 | 監視対象                              | 説明                                                                          |
+| -------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------- |
+| `Istio Wasm Extension Dashboard` |                                       |                                                                               |
+| `Istio Mesh Dashboard`           |                                       | HTTPとTCPのメトリクスを確認したい場合に便利である。                           |
+| `Istio Control Plane Dashboard`  | IstiodのPod                           |                                                                               |
 | `Istio Performance Dashboard`    | IngressGateway、`istio-proxy`コンテナ |                                                                               |
-| `Istio Workload Dashboard`       | Istioの任意のカスタムリソース                |                                                                               |
-| `Istio Service Dashboard`        | IstioのVirtualService             | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
+| `Istio Workload Dashboard`       | Istioの任意のカスタムリソース         |                                                                               |
+| `Istio Service Dashboard`        | IstioのVirtualService                 | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
 
 > ↪️：
 >

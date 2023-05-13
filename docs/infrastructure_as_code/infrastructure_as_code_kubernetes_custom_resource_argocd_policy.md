@@ -396,7 +396,19 @@ metadata:
   namespace: foo
 spec:
   sourceNamespaces:
-    - "*"
+    - "<AppProjectやApplicationが属するNamespace>"
+```
+
+なお、argocd-cmd-params-cmでも設定が必要である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  application.namespaces: "<AppProjectやApplicationが属するNamespace>"
 ```
 
 > ↪️：https://github.com/argoproj/argo-cd/pull/9755

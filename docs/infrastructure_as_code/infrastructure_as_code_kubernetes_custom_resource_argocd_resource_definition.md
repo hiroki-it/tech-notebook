@@ -355,7 +355,7 @@ spec:
         - /usr/local/bin/argocd-server
         - --port=8080
         - --metrics-port=8083
-        # argocd-serverのHTTPSプロトコルの受信を無効化する
+        # AWS ALBがHTTPリクエストでルーティングするように設定しているため、HTTPリクエストを許可する
         - --insecure
       # クライアント、Prometheus、からのリクエストを受信する
       ports:
@@ -1559,11 +1559,15 @@ Applicationの責務境界をProjectとして管理する。
 
 <br>
 
-### sourceNamespace
+### sourceNamespaces
 
 AppProject配下のKubernetesリソースを作成できるNamespaceを設定する。
 
 ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
+
+単一のArgoCD用Clusterで複数プロダクトのApplicationを管理し、Applicationをプロダクト別のAppProjectで分割している場合に役立つ。
+
+全てのNamespaceを許可する場合は、`*` (アスタリスク) を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1573,10 +1577,25 @@ metadata:
   namespace: foo # サービス名、など
 spec:
   sourceNamespaces:
-    - "*"
+    - "<AppProjectやApplicationが属するNamespace>"
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#implementation-details
+なお、argocd-cmd-params-cmでも設定が必要である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  application.namespaces: "<AppProjectやApplicationが属するNamespace>"
+```
+
+> ↪️：
+>
+> - https://github.com/argoproj/argo-cd/pull/9755
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#implementation-details
 
 <br>
 

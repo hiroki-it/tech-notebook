@@ -13,9 +13,21 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 
 <br>
 
-## 01. 金銭的コスト最適化の観点
+## 01. 金銭的コスト最適化戦略
+
+### 金銭的コスト最適化の項目
 
 スペック、時間単価、数量、月額料金
+
+<br>
+
+### 項目の選び方
+
+ビジネスドメインの性質に応じて、戦略を考える。
+
+例えばChatWorkのビジネスドメイン (ビジネスチャットツール) では、夜間や土日にトラフィックが減少する傾向があるため、それに応じた料金体系を選んでいる。
+
+> ↪️：https://speakerdeck.com/taishin/jaws-ug-sre-coverage?slide=8
 
 <br>
 
@@ -89,7 +101,10 @@ EBSボリュームは、ボリュームの使用率に関わらず、最大サ�
 | リザーブドインスタンス   | EC2インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。                                                                                                                 |                                                                                      |
 | スポットインスタンス     | 休止しているEC2インスタンスを使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
 
-> ↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
+> ↪️：
+>
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
+> - https://tech.nri-net.com/entry/2021/04/21/094600
 
 #### ▼ 実行時間
 

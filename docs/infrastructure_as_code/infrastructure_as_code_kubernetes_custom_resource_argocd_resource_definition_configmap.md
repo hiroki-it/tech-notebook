@@ -317,7 +317,7 @@ metadata:
   namespace: argocd
 data:
   # application-controllerとargocd-server
-  application.namespaces: "*" # 全てのNamespaceでApplicationを作成できるようにする
+  application.namespaces: "<AppProjectやApplicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
 ```
 
 > ↪️：
@@ -338,7 +338,7 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
-  application.namespaces: "*" # 全てのNamespaceでApplicationを作成できるようにする
+  application.namespaces: "<AppProjectやApplicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
   controller.log.format: text
   controller.log.level: warn
   controller.operation.processors: "10"
@@ -401,7 +401,8 @@ data:
   server.dex.server.strict.tls: "false"
   server.disable.auth: "false"
   server.enable.gzip: "false"
-  server.insecure: "false"
+  # ロードバランサーで、リクエストをHTTPで転送するように設定している場合に、argocd-serverでHTTPの受信を許可するようにする
+  server.insecure: "true"
   server.log.format: text
   server.log.level: warn
   server.repo.server.strict.tls: "false"
