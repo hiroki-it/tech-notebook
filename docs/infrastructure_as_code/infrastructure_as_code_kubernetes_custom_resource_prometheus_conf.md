@@ -130,14 +130,36 @@ scrape_configs:
     static_configs:
       - targets:
           - localhost:9090'
+        labels:
+          cluster: prd
   # Node exporterの稼働するサーバーを監視する。
   - job_name: node-exporter
     static_configs:
       - targets:
           - <Node exporterの稼働するサーバーのIPアドレス>:9100
+        labels:
+          cluster: prd
 ```
 
 > ↪️：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
+
+`labels`キーを使用して、メトリクスにフィルタリング用ラベルを追加できる。
+
+```yaml
+scrape_configs:
+  - job_name: victoria-metrics
+    static_configs:
+      - targets:
+          - <VictoriaMetricsのIPアドレス>:9100
+        # メトリクスに追加するラベルを設定する
+        labels:
+          cluster: prd
+```
+
+> ↪️：
+>
+> - https://stackoverflow.com/a/55700165
+> - https://stackoverflow.com/a/48021873
 
 #### ▼ sd_configs
 

@@ -140,7 +140,7 @@ data:
 
 #### ▼ min_refresh_interval
 
-ダッシュボードのクエリの自動更新間隔の最小値を設定する。
+ダッシュボードのPromQLの自動更新間隔の最小値を設定する。
 
 自動更新間隔のデフォルト値が変わるわけではないことに注意する。
 
@@ -522,9 +522,19 @@ data:
 
 ### panels
 
-メトリクスをクエリして表示するパネルを定義する。
+#### ▼ panelsとは
 
-複数のラベルをOR条件で表示するようなパネルの場合、Grafanaがクエリ上にOR条件の正規表現を生成する。
+メトリクスをPromQLでクエリして表示するパネルを定義する。
+
+一番最初にGUIでパネルを作成し、これのJSONを取得する方が実装しやすい。
+
+> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels
+
+#### ▼ expr
+
+PromQLを定義する。
+
+複数のラベルをOR条件で表示するようなパネルの場合、GrafanaがPromQL上にOR条件の正規表現を生成する。
 
 そのため、`=~`演算子を使用するようにする。
 
@@ -538,11 +548,21 @@ data:
             {
               "expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}',
             },
+            {
+              "expr": '...',
+            },
+            {
+              "expr": '...',
+            }
           ],
       },
     ],
 }
 ```
+
+#### type
+
+パネルのタイプを設定する。
 
 <br>
 
@@ -582,15 +602,15 @@ templatingセクションを有効化する。
 
 #### ▼ list
 
-プルダウンでフィルタリングできるようにする。
+PromQLのラベル変数に値を挿入し、メトリクスをフィルタリングできるように、プルダウンを定義する。
 
-ラベル値でフィルタリングする場合、指定したデータソースでクエリした時のメトリクスがそのラベルを持っている必要がある。
+ラベル変数でフィルタリングする場合、指定したデータソースでクエリした時のメトリクスがそのラベルを持っている必要がある。
 
 例えば、`kube_pod_info`メトリクスをラベル参照のために使用する場合、これがプルダウンのラベルを持っていなければならない。
 
 加えて、ダッシュボード上のパネルのメトリクスもプルダウンのラベルでフィルタリングできるように、PromQLを定義する必要がある。
 
-例えば、clusterラベル値でフィルタリングする場合、パネル上のPromQLでも`<メトリクス>{cluster=\"$cluster\"}`と定義しなければならない。
+例えば、`cluster`ラベル値でフィルタリングする場合、パネル上のPromQLでも`<メトリクス>{cluster=\"$cluster\"}`と定義しなければならない。
 
 ```yaml
 {"templating": {
@@ -617,6 +637,7 @@ templatingセクションを有効化する。
             # データソース名。変数名としても使用できるようになる。
             "name": "datasource",
             "options": [],
+            # 最初のデータソースはPrometheusとする。
             "query": "prometheus",
             "refresh": 1,
             "regex": "",
@@ -874,7 +895,6 @@ ConfigMapの`.data`キーにJSONを設定すると、ダッシュボードを作
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
 
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -919,7 +939,6 @@ data:
 
 > ↪️：https://stackoverflow.com/a/38941123
 
-
 <br>
 
 ### ホームダッシュボード
@@ -940,17 +959,14 @@ data:
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
 
-
 > ↪️：
 >
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
 
-
 <br>
 
 ### エスケープ
-
 
 注意点として、ユーザー定義のダッシュボードと同様にして、記号をエスケープする必要がある。
 
@@ -1021,6 +1037,8 @@ Kubernetesで稼働するPrometheusとGrafanaのバージョンに応じたダ�
 
 ConfigMapのJSONファイルのデータとして貼り付ける。
 
+エスケープするのを忘れない。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1033,6 +1051,62 @@ data:
   foo.json: |-
     {{ `
     ここに貼り付け
+    ` }}
+```
+
+#### 【５】メトリクスにフィルタリング用ラベル
+
+ダッシュボード上でユーザー定義のプルダウンを用意している場合に、各メトリクスにラベル定義
+
+そのため、もし新しいダッシュボードを管理する場合は、全てのメトリクスのラベル変数に値を出力できるような定義が必要である。
+
+例えば、VictoriaMetricsをGrafanaのデータソースとして選ぶ場合に、メトリクスを`cluster`ラベルでフィルタリングできるようになる。
+
+[公開ダッシュボード](https://grafana.com/grafana/dashboards/) からJSONをコピーした上では、メトリクスを`cluster`ラベルでフィルタリングする定義はない。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-foo
+  labels:
+    grafana_dashboard: "1"
+data:
+  foo.json: |-
+    {{ `
+    {
+
+      ...
+
+      "expr": "sum(rate(sidecar_injection_success_total[1m]))"
+
+      ...
+
+    }
+    ` }}
+```
+
+そのため、メトリクスに`cluster`ラベルでフィルタリングする定義を追加する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-foo
+  labels:
+    grafana_dashboard: "1"
+data:
+  foo.json: |-
+    {{ `
+    {
+
+      ...
+
+      "expr": "sum(rate(sidecar_injection_success_total{cluster=\"$cluster\"}[1m]))"
+
+      ...
+
+    }
     ` }}
 ```
 
