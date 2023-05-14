@@ -79,10 +79,10 @@ sum(<メトリクス名>) by (<ラベル>)
 
 **例**
 
-直近1時間に関して、Istioのistio-proxyコンテナの受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
+直近1時間に関して、Istioの`istio-proxy`コンテナの受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
 
 ```bash
-sum(rate(istio_requests_total[1h])) by (destination_app)
+sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 # 結果
 {destination_app="foo-container"} <算出値>
@@ -92,10 +92,10 @@ sum(rate(istio_requests_total[1h])) by (destination_app)
 
 複数の種類で集約することもできる。
 
-直近1時間に関して、Istioのistio-proxyコンテナが受信したアプリコンテナからのレスポンス補足情報 (RESPONSE_FLAGS変数) を、Pod名、変数値、の種類ごとに集約する。
+直近1時間に関して、Istioの`istio-proxy`コンテナで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値、の種類ごとに集約する。
 
 ```bash
-sum(rate(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
+sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
 
 # 結果
 {pod_name="ingressgateway-pod", response_flags="DC"} <算出値>

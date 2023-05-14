@@ -180,9 +180,9 @@ description: ブラックボックステストの知見を記録しています�
 
 #### ▼ 背景
 
-KubernetesのNode上で、Kubernetesリソースとアプリケーションが稼働するシステムを運用しており、kube-prometheus-stackチャートを使用してPrometheusをインストールしている。
+KubernetesのNode上で、Kubernetesリソースとアプリケーションが稼働するシステムを運用している。
 
-今回、kube-prometheus-stackチャートをアップグレードすることになった。
+今回、Kubernetesリソースをアップグレードすることになった。
 
 回帰テストを実施し、アップグレードによる機能追加/変更が、既存のコンポーネントに影響を与えていないかを検証する。
 
