@@ -765,7 +765,7 @@ $ aws ec2 revoke-security-group-ingress \
 
 AWSにSSOでログインする。
 
-認証フェーズを外部 (Auth0、GitHub、KeyCloak、AWS Cognito、Google Auth、など) に委譲し、AWSでは認可フェーズのみを実施する。
+認証フェーズを外部 (Auth0、GitHub、Keycloak、AWS Cognito、Google Auth、など) に委譲し、AWSでは認可フェーズのみを実施する。
 
 追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
 
@@ -773,12 +773,12 @@ AWSにSSOでログインする。
 
 **＊実行例＊**
 
-ここでは、IPプロバイダーにKeyCloakを使用している。
+ここでは、IPプロバイダーにKeycloakを使用している。
 
 ```bash
 $ saml2aws login
 
-Using IdP Account default to access KeyCloak https://external.example/api
+Using IdP Account default to access Keycloak https://external.example/api
 To use saved password just hit enter.
 Username: hiroki.hasegawa
 Password: *****

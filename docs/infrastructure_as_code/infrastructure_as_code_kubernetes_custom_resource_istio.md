@@ -248,7 +248,7 @@ Pod間通信時に、正しい送信元Envoyの通信であることを認証す
 
 JWTによるBearer認証を実施し、送信元のPodの通信を認証する。
 
-この場合、認証フェーズをIDプロバイダー (例：Auth0、GitHub、KeyCloak、AWS Cognito、Google Auth) に委譲することになる。
+この場合、認証フェーズをIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、Google Auth) に委譲することになる。
 
 JWTの取得方法として、例えば以下の方法がある。
 
@@ -279,7 +279,7 @@ Pod間通信時に、AuthorizationPolicyを使用して、スコープに含ま�
 
 #### ▼ 通信の認可の委譲
 
-AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、KeyCloak、AWS Cognito、Google Auth) を指定し、認可フェーズを委譲できる。
+AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、Google Auth) を指定し、認可フェーズを委譲できる。
 
 > ↪️：https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3
 
@@ -353,6 +353,8 @@ IstioによるEnvoyは、メトリクスを作成し、Istiodコントロール�
 
 Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスを収集する。
 
+なお、`istio-proxy`コンテナにも`/stats/prometheus`エンドポイントはある。
+
 > ↪️：
 >
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
@@ -390,7 +392,7 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 | `destination_workload`           | リクエストの宛先のDeployment名を表す。                                            | `foo-deployment                                                        |
 | `destination_workload_namespace` | リクエストの送信元のNamespace名を表す。                                           |                                                                        |
 | `reporter`                       | メトリクスの収集者を表す。`istio-proxy`コンテナかIngressGatewayのいずれかである。 | ・`destination` (`istio-proxy`コンテナ)<br>・`source` (IngressGateway) |
-| `response_flags`                 | Envoyの`%RESPONSE_FLAGS%`値を表す。                                               | `-`                                                                    |
+| `response_flags`                 | Envoyの`%RESPONSE_FLAGS%`値を表す。                                               | `-` (値なし)                                                           |
 | `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`                                                           |
 | `source_app`                     | リクエストの送信元のコンテナ名を表す。                                            | `foo-container`                                                        |
 | `source_cluster`                 | リクエストの送信元のCluster名を表す。                                             | `Kubernetes`                                                           |
@@ -404,7 +406,7 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 
 #### ▼ 標準出力
 
-IstioによるEnvoyは、アクセスログを作成し、標準出力に出力する。
+IstioによるEnvoyは、アプリコンテナへのアクセスログを作成し、標準出力に出力する。
 
 アクセスログにデフォルトで役立つ値が出力される。
 

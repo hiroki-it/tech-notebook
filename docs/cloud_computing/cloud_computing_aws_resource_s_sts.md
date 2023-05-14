@@ -148,7 +148,7 @@ IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 #### ▼ その他のIDプロバイダー
 
 - Auth0
-- KeyCloak
+- Keycloak
 - Google Auth
 
 <br>

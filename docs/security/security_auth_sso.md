@@ -85,7 +85,7 @@ APIクライアントは、IDプロバイダーに認証情報 (例：クライ�
 
 - Auth0
 - Facebook
-- KeyCloak
+- Keycloak
 - AWS Cognito
 - Google Auth
 

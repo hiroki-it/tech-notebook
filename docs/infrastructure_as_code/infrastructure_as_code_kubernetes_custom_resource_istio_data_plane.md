@@ -511,9 +511,11 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15090`番
 
-`istio-proxy`コンテナの`15090`番ポートでは、`istio-proxy`コンテナのメトリクス収集ツール (例：Prometheus) からのリクエストを待ち受け、Envoyに渡される。
+`istio-proxy`コンテナの`15090`番ポートでは、`istio-proxy`コンテナのメトリクス収集ツール (例：Prometheus) からのリクエストを待ち受ける。
 
 `istio-proxy`コンテナ内のEnvoyが、`/stats/prometheus`エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
+
+ただ、`discovery`コンテナにも`/stats/prometheus`エンドポイントがあり、メトリクス収集ツールはこれを指定することが多い。
 
 ```bash
 $ kubectl exec \

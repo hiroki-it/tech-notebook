@@ -90,7 +90,7 @@ Envoyでは、YAMLファイルのキー名がスネークケースになって�
 
 #### ▼ access_log_pathとは
 
-Envoyのログの出力先を設定する。
+Envoyのアクセスログの出力先を設定する。
 
 **＊実装例＊**
 
@@ -233,8 +233,6 @@ static_resources:
 
 特定のインバウンド通信を処理するフィルターを設定する。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
-
 **＊実装例＊**
 
 ```yaml
@@ -245,13 +243,15 @@ static_resources:
             - name: envoy.filters.network.http_connection_manager
 ```
 
+> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
+
 #### ▼ typed_config.access_log
 
 Envoyのアクセスログの出力方法を設定する。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
-
 **＊実装例＊**
+
+標準出力に出力する。
 
 ```yaml
 static_resources:
@@ -265,14 +265,11 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
 ```
 
+> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
+
 #### ▼ typed_config.http_filters
 
 記入中...
-
-> ↪️：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
-> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
 **＊実装例＊**
 
@@ -286,6 +283,11 @@ static_resources:
                   - name: envoy.filters.http.router
 ```
 
+> ↪️：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
+> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+
 #### ▼ typed_config.route_config
 
 特定のルーティング先に関する処理を設定する。
@@ -294,11 +296,6 @@ static_resources:
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`          | ルート名を設定する。                                                                                                                                                                                      |
 | `virtual_hosts` | ルーティング先を設定する。特に`domains`キーには、受信するインバウンド通信の`Host`ヘッダーの値を設定する。補足として`Host`ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。 |
-
-> ↪️：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
-> - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
 
 **＊実装例＊**
 
@@ -323,14 +320,14 @@ static_resources:
                             cluster: foo_cluster
 ```
 
+> ↪️：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
+> - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+
 #### ▼ typed_config.stat_prefix
 
 統計ダッシュボードのメトリクスの接頭辞を設定する。
-
-> ↪️：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
-> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
 **＊実装例＊**
 
@@ -343,6 +340,11 @@ static_resources:
                 stat_prefix: ingress_http
 ```
 
+> ↪️：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
+> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+
 #### ▼ typed_config."@type"
 
 使用する拡張機能名を設定する。
@@ -352,11 +354,6 @@ static_resources:
 これは、Envoy特有の機能ではなく、gRPCの機能である。
 
 RPCでは、JSON内のデータのデータ型を指定するために使用する。
-
-> ↪️：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
-> - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
 
 **＊実装例＊**
 
@@ -369,6 +366,11 @@ static_resources:
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
+> ↪️：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
+> - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
+
 <br>
 
 ### name
@@ -377,8 +379,6 @@ static_resources:
 
 インバウンド通信を受信するリスナーの名前を設定する。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
-
 **＊実装例＊**
 
 ```yaml
@@ -386,6 +386,8 @@ static_resources:
   listeners:
     - name: foo_listener
 ```
+
+> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
 
 <br>
 
@@ -409,8 +411,6 @@ static_resources:
 
 制限を超過した場合、宛先へのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers
-
 **＊実装例＊**
 
 ```yaml
@@ -427,6 +427,8 @@ static_resources:
             "max_pending_requests": 100000,
             "max_requests": 100000
 ```
+
+> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers
 
 <br>
 
@@ -672,13 +674,6 @@ ADS-APIとして使用するクラスター名を設定する。クラスター�
 
 サービスメッシュツールを使用せずに、`envoy`コンテナを直接的に稼働させるとする。
 
-> ↪️：
->
-> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15
-> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40
-> - https://github.com/salrashid123/envoy_discovery/blob/master/envoy_config.yaml#L39-L74
-> - https://i-beam.org/2019/03/13/envoy-xds-server/
-
 ```yaml
 dynamic_resources:
   ads_config:
@@ -724,6 +719,13 @@ static_resources:
               - envoy_grpc:
                   cluster_name: xds_cluster
 ```
+
+> ↪️：
+>
+> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15
+> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40
+> - https://github.com/salrashid123/envoy_discovery/blob/master/envoy_config.yaml#L39-L74
+> - https://i-beam.org/2019/03/13/envoy-xds-server/
 
 **＊実装例＊**
 
