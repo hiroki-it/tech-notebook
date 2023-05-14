@@ -48,22 +48,22 @@ Envoyは、アプリコンテナへのアクセスログを作成し、標準出
 アウトバウンド通信に関する補足メッセージは以下の通りである。
 
 | 名前  | 正式名称                          | ステータスコード | 説明                                                                                                                  |
-| ----- | --------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `NC`  | `NO_CLUSTER_FOUND`                | なし             | アウトバウンド通信にて、クラスターの設定が見つからず、Envoyはアプリコンテナに接続できなかった。                       |
-| `UC`  | `UPSTREAM_CONNECTION_TERMINATION` | `503`            | 遭遇率が一番高い。アウトバウンド通信にて、Envoyは何らかの理由でアプリコンテナに接続できなかった。                     |
-| `UF`  | `UPSTREAM_CONNECTION_FAILURE`     | `503`            | アウトバウンド通信にて、Envoyは通信障害でアプリコンテナに接続できなかった。                                           |
-| `UT`  | `UPSTREAM_REQUEST_TIMEOUT`        | `503`            | アウトバウンド通信にて、Envoyはタイムアウトでアプリコンテナに接続できなかった。                                       |
-| `UO`  | `UPSTREAM_OVERFLOW`               | `503`            | アウトバウンド通信にて、意図的なサーキットブレイカーで、Envoyはアプリコンテナに接続できなかった。                     |
-| `URX` | `UPSTREAM_RETRY_LIMIT_EXCEEDED`   | なし             | アウトバウンド通信にて、アプリコンテナの通信試行回数制限の上限超過で、Envoyはアプリコンテナに接続拒否されてしまった。 |
-| `UH`  | `NO_HEALTHY_UPSTREAM`             | `503`            | アウトバウンド通信にて、Envoyはアプリコンテナの異常で接続できなかった。                                               |
+| ----- | --------------------------------- | :--------------: | --------------------------------------------------------------------------------------------------------------------- |
+| `NC`  | `NO_CLUSTER_FOUND`                |       なし       | アウトバウンド通信にて、クラスターの設定が見つからず、Envoyはアプリコンテナに接続できなかった。                       |
+| `UC`  | `UPSTREAM_CONNECTION_TERMINATION` |      `503`       | 遭遇率が一番高い。アウトバウンド通信にて、Envoyは何らかの理由でアプリコンテナに接続できなかった。                     |
+| `UF`  | `UPSTREAM_CONNECTION_FAILURE`     |      `503`       | アウトバウンド通信にて、Envoyは通信障害でアプリコンテナに接続できなかった。                                           |
+| `UT`  | `UPSTREAM_REQUEST_TIMEOUT`        |      `503`       | アウトバウンド通信にて、Envoyはタイムアウトでアプリコンテナに接続できなかった。                                       |
+| `UO`  | `UPSTREAM_OVERFLOW`               |      `503`       | アウトバウンド通信にて、意図的なサーキットブレイカーで、Envoyはアプリコンテナに接続できなかった。                     |
+| `URX` | `UPSTREAM_RETRY_LIMIT_EXCEEDED`   |       なし       | アウトバウンド通信にて、アプリコンテナの通信試行回数制限の上限超過で、Envoyはアプリコンテナに接続拒否されてしまった。 |
+| `UH`  | `NO_HEALTHY_UPSTREAM`             |      `503`       | アウトバウンド通信にて、Envoyはアプリコンテナの異常で接続できなかった。                                               |
 
 インバウンド通信に関する補足メッセージは以下の通りである。
 
 | 名前  | 正式名称                            | ステータスコード | 説明                                                                                                          |
-| ----- | ----------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------- |
-| `DC`  | `DOWNSTREAM_CONNECTION_TERMINATION` | なし             | インバウンド通信にて、Envoyのアプリコンテナへの通信が中断され、Envoyはレスポンスを受信できなかった。          |
-| `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         | なし             | インバウンド通信にて、EnvoyはHTTPプロトコルのエラーでアプリコンテナに接続できなかった。                       |
-| `NR`  | `NO_ROUTE_FOUND`                    | `404`            | インバウンド通信にて、ルートやフィルターチェーンの設定が見つからず、Envoyはアプリコンテナに接続できなかった。 |
+| ----- | ----------------------------------- | :--------------: | ------------------------------------------------------------------------------------------------------------- |
+| `DC`  | `DOWNSTREAM_CONNECTION_TERMINATION` |       なし       | インバウンド通信にて、Envoyのアプリコンテナへの通信が中断され、Envoyはレスポンスを受信できなかった。          |
+| `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | インバウンド通信にて、EnvoyはHTTPプロトコルのエラーでアプリコンテナに接続できなかった。                       |
+| `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | インバウンド通信にて、ルートやフィルターチェーンの設定が見つからず、Envoyはアプリコンテナに接続できなかった。 |
 
 > ↪️：
 >
@@ -76,6 +76,60 @@ Envoyは、アプリコンテナへのアクセスログを作成し、標準出
 <br>
 
 ## 02. メトリクス
+
+### メトリクスの種類
+
+#### ▼ メトリクス名のルール
+
+Envoyのメトリクスには、、
+
+#### ▼ 通信全体に関するメトリクス
+
+`envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) のメトリクスがある。
+
+> ↪️：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/stats
+> - https://docs.aws.amazon.com/ja_jp/app-mesh/latest/userguide/envoy-metrics.html
+
+#### ▼ Envoy自身系
+
+`envoy_server_*****`をプレフィクスとするメトリクスがある。
+
+注意点として、ドキュメントではプレフィクスが省略されてしまっている。
+
+> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/statistics
+
+#### ▼ リスナー系
+
+`envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) をプレフィクスとするメトリクスがある。
+
+注意点として、ドキュメントではプレフィクスが省略されてしまっている。
+
+> ↪️：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/stats
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter#statistics
+
+#### ▼ ルート系
+
+記入中...
+
+#### ▼ クラスター系
+
+`envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) をプレフィクスとするメトリクスがある。
+
+注意点として、ドキュメントではプレフィクスが省略されてしまっている。
+
+> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats#config-cluster-manager-cluster-stats
+
+#### ▼ エンドポイント系
+
+記入中...
+
+<br>
+
+### エンドポイント
 
 Envoyの`15090`番ポートでは、メトリクス収集ツール (例：Prometheus) からのリクエストを待ち受ける。
 
