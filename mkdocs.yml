@@ -212,7 +212,7 @@ nav:
           - ■ Envoy:
               - Envoy: software/software_middleware_service_mesh_envoy.md
               - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
-              - 可観測性: software/software_middleware_service_mesh_envoy_observability.md
+              - テレメトリー: software/software_middleware_service_mesh_envoy_telemetry.md
               - API: software/software_middleware_service_mesh_envoy_api.md
 
   - 🐧 OS:
