@@ -903,6 +903,8 @@ baz:
 
 改行せずに、そのままスペースを挿入した上で、内容を出力する。
 
+`nindent`関数とは、改行しない点で異なる。
+
 **＊実装例＊**
 
 ```yaml
@@ -941,6 +943,8 @@ baz:
 #### ▼ nindentとは
 
 改行しつつ、スペースを挿入した上で、内容を出力する。
+
+`indent`関数とは、改行する点で異なる。
 
 **＊実装例＊**
 
@@ -1064,5 +1068,35 @@ foo:
 ```
 
 > ↪️：https://helm-playground.com/cheatsheet.html#conditionals
+
+<br>
+
+## 13. ファイル系
+
+### Files
+
+ファイルから内容を取得する。
+
+`.Files.Glob`関数で複数のファイルをmap型で取得できる。
+
+```yaml
+{{ range $fileName, $_ := .Files.Glob "*-dashboards/*.json" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-{{- $fileName | replace ".json" "" }}
+  namespace: prometheus
+  labels:
+    grafana_dashboard: "1"
+data:
+  {{ base $fileName }}: |-
+    {{ $.Files.Get $fileName }} | indent 4 }}
+{{ end }}
+```
+
+> ↪️：
+>
+> - https://helm.sh/docs/chart_template_guide/function_list/#file-functions
+> - https://helm.sh/docs/chart_template_guide/accessing_files/
 
 <br>

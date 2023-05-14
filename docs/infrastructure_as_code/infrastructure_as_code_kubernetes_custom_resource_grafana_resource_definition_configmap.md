@@ -353,7 +353,9 @@ metadata:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
   dashboard.json: |
-    # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
+    {{ `
+    ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
+    ` }}
 ```
 
 > ↪️：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
@@ -452,7 +454,7 @@ data:
 
 ### tags
 
-何らかのチャート (例：kube-prometheus-stack) を使用した場合に、ダッシュボードが作成されることがある。
+他の何らかのチャート (例：kube-prometheus-stack) を使用した場合に、ダッシュボードが作成されることがある。
 
 これと区別できるように、本リポジトリのダッシュボードには`<リポジトリ名>.git`というタグをつけると良い。
 
@@ -474,7 +476,7 @@ data:
 
 ダッシュボード名とそのバージョンを設定する。
 
-Labsダッシュボードによってはバージョンの記載がないものがある。
+コミュニティダッシュボードによってはバージョンの記載がないものがある。
 
 ```yaml
 {"description": "Foo Dashboard version 1.0.0"}
@@ -484,7 +486,7 @@ Labsダッシュボードによってはバージョンの記載がないもの�
 
 ### gnetId
 
-Labsダッシュボードを使用している場合、ダッシュボードIDを設定する。
+コミュニティダッシュボードを使用している場合、ダッシュボードIDを設定する。
 
 反対に、nullであればユーザー定義のダッシュボードである。
 
@@ -930,6 +932,23 @@ data:
 
 <br>
 
+### 管理方法
+
+ユーザー定義のダッシュボードを専用のディレクトリで管理する。
+
+```yaml
+.
+├── Chart.yaml
+├── README.md
+├── templates
+│   ├── custom-dashboards
+│   │   ├── slo-1.json
+│   │   └── slo-2.json
+│   │
+```
+
+<br>
+
 ### エスケープ
 
 Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジックで使用される。
@@ -956,6 +975,27 @@ data:
 
 > ↪️：https://stackoverflow.com/a/38941123
 
+### Helm管理
+
+ダッシュボードはJSONファイルとして管理し、これをConfigMapのテンプレートに出力するようにすると、管理しやすい。
+
+```yaml
+{{ range $fileName, $_ := .Files.Glob "*-dashboards/*.json" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-{{- $fileName | replace ".json" "" }}
+  namespace: prometheus
+  labels:
+    grafana_dashboard: "1"
+data:
+  {{ base $fileName }}: |-
+    {{ $.Files.Get $fileName }} | indent 4 }}
+{{ end }}
+```
+
+> ↪️：https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
+
 <br>
 
 ### ホームダッシュボード
@@ -966,15 +1006,37 @@ data:
 
 <br>
 
-## 04-04. Labsダッシュボード
+## 04-04. コミュニティダッシュボード
 
-### Labsダッシュボードとは
+### コミュニティダッシュボードとは
 
 ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。
 
 その場合、GitHubなどで公開されているJSONを、ConfigMapの`.data`キーに貼り付ける。
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
+
+<br>
+
+### 管理方法
+
+コミュニティダッシュボードを専用のディレクトリで管理する。
+
+ツールのいずれのバージョンに対応するダッシュボードなのかを、ケバブケースでファイル名に記載すると管理しやすい。
+
+```yaml
+.
+├── Chart.yaml
+├── README.md
+├── templates
+│   ├── community-dashboards
+│   │   ├── istio-control-plane-1-15-3.json
+│   │   ├── istio-mesh-1-15-3.json
+│   │   ├── istio-performance-1-15-3.json
+│   │   ├── istio-service-1-15-3.json
+│   │   └── istio-workload-1-15-3.json
+│   │
+```
 
 > ↪️：
 >
@@ -989,13 +1051,13 @@ ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのG
 
 <br>
 
-### Labsダッシュボードの採用
+### コミュニティダッシュボードの採用
 
 #### 【１】ダッシュボードの検索
 
-LabsダッシュボードのJSONは、[Grafana Labs](https://grafana.com/grafana/dashboards/) からダウンロードできる。
+コミュニティダッシュボードのJSONは、[Grafana Labs](https://grafana.com/grafana/dashboards/) からダウンロードできる。
 
-LabsダッシュボードのIDはJSONの`gnetId`セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。
+コミュニティダッシュボードのIDはJSONの`gnetId`セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。
 
 反対に、`gnetId`セクションが`null`になっているものは、ユーザー定義のダッシュボードである。
 
@@ -1003,7 +1065,7 @@ LabsダッシュボードのIDはJSONの`gnetId`セクションから確認で�
 {"gnetId": 1}
 ```
 
-また、Labsダッシュボードのバージョンは、`description`セクションから確認できる (Labsダッシュボードによってはバージョンの記載がないものがある)。
+また、コミュニティダッシュボードのバージョンは、`description`セクションから確認できる (コミュニティダッシュボードによってはバージョンの記載がないものがある)。
 
 ```yaml
 {"description": "Foo Dashboard version 1.0.0"}
@@ -1056,7 +1118,7 @@ ConfigMapのJSONファイルのデータとして貼り付ける。
 
 エスケープするのを忘れない。
 
-なお、後々アップグレードしていくことになるため、運用が複雑にならないように、Labsダッシュボードはいじらない方が良い。
+なお、後々アップグレードしていくことになるため、運用が複雑にならないように、コミュニティダッシュボードはいじらない方が良い。
 
 ```yaml
 apiVersion: v1
@@ -1075,11 +1137,11 @@ data:
 
 <br>
 
-### Labsダッシュボードの共通仕様
+### コミュニティダッシュボードの共通仕様
 
 #### ▼ USEメトリクス
 
-『`USE`』という名前を含むLabsダッシュボードがある。
+『`USE`』という名前を含むコミュニティダッシュボードがある。
 
 ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーション、など) を表示できる。
 
@@ -1090,7 +1152,7 @@ data:
 
 #### ▼ REDメトリクス
 
-『`RED`』という名前を含むLabsダッシュボードがある。
+『`RED`』という名前を含むコミュニティダッシュボードがある。
 
 ダッシュボードは、REDメトリクスを表示できる。
 

@@ -1562,6 +1562,8 @@ spec:
 
 ### .spec.initContainers
 
+#### ▼ initContainersとは
+
 `.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
 
 事前処理 (例：待機処理、ツールのインストール処理、など) のために使用する。
@@ -1666,6 +1668,15 @@ spec:
     - name: certificate
       emptyDir: {}
 ```
+
+#### ▼ サイドカー
+
+執筆時点 (2023/05/14) で、Kubernetesにビルトインサイドカーの導入が進められている。
+
+> ↪️：
+>
+> - https://github.com/kubernetes/enhancements/issues/753
+> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
 
 <br>
 
