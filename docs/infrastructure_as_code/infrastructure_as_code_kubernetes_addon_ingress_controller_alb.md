@@ -65,7 +65,7 @@ Pod
 ```
 
 > ↪️：
-> 
+>
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://qiita.com/mksamba/items/c0e41a2a63e62a50aea3#21-%E5%85%AC%E9%96%8B%E5%AF%BE%E8%B1%A1%E3%81%AEdeploymentservice%E3%81%AE%E4%BD%9C%E6%88%90
 

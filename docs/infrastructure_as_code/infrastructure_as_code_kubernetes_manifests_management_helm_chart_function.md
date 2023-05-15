@@ -1080,23 +1080,27 @@ foo:
 `.Files.Glob`関数で複数のファイルをmap型で取得できる。
 
 ```yaml
-{{ range $fileName, $_ := .Files.Glob "*-dashboards/*.json" }}
+{{-  range $filePath, $_ := .Files.Glob "dashboards/*.json" }}
+{{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard-{{- $fileName | replace ".json" "" }}
+  name: grafana-dashboard-{{ $dashboardName }}
   namespace: prometheus
   labels:
     grafana_dashboard: "1"
 data:
-  {{ base $fileName }}: |-
-    {{ $.Files.Get $fileName }} | indent 4 }}
-{{ end }}
+  {{ $dashboardName }}.json: {{ $.Files.Get $filePath }}
+{{- end }}
 ```
 
 > ↪️：
 >
+> -
 > - https://helm.sh/docs/chart_template_guide/function_list/#file-functions
 > - https://helm.sh/docs/chart_template_guide/accessing_files/
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+> - https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
+> - https://github.com/helm/helm/issues/4515#issuecomment-415303665
 
 <br>

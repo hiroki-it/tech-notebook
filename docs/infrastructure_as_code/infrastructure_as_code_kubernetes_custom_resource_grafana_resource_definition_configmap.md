@@ -316,15 +316,124 @@ Grafanaの`dashboard.json`ファイルを管理する。
 
 <br>
 
+### grafana-dashboard-cm用の補助コンテナ
+
+#### ▼ サイドカー
+
+Kubernetesの通常の仕組みであれば、ConfigMapの数だけVolumeMountでマウントする必要がある。
+
+これに関して、ダッシュボードのConfigMapの数だけVolumeMountを実行してくれるサイドカーが開発されている。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana-pod
+  namespace: prometheus
+spec:
+  containers:
+    # grafanaコンテナ
+    - name: grafana
+      image: grafana/grafana:8.0.0
+
+      ...
+
+    # サイドカー
+    - name: grafana-sc-dashboard
+      image: quay.io/kiwigrid/k8s-sidecar:1.14.2
+
+      ...
+
+
+      env:
+          - name: METHOD
+            value: WATCH
+          - name: LABEL
+            value: grafana_dashboard
+          - name: FOLDER
+            value: /tmp/dashboards
+          - name: RESOURCE
+            value: both
+          - name: NAMESPACE
+            value: ALL
+      volumeMounts:
+        - mountPath: /tmp/dashboards
+          name: sc-dashboard-volume
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-*****
+          readOnly: true
+```
+
+サイドカーがConfigMapを検知できるように、`metadata.labels`キーにデフォルトで`grafana_dashboard: "1"`を設定する必要がある。
+
+言い方を変えれば、`grafana_dashboard: "1"キーを持つConfigMapのみをダッシュボードの設定として読み込ませられる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-dashboard
+  labels:
+    grafana_dashboard: "1"
+data:
+  foo.json: |-
+    ...
+```
+
+> ↪️：
+>
+> - https://www.grugrut.net/posts/202008032123/
+> - https://github.com/helm/charts/tree/master/stable/grafana#sidecar-for-dashboards
+
+#### ▼ InitContainer
+
+Grafanaのコンテナが起動する前に、データソースをセットアップする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana-pod
+  namespace: prometheus
+spec:
+  containers:
+    # grafanaコンテナ
+    - name: grafana
+      image: grafana/grafana:8.0.0
+
+      ...
+
+  # InitContainer
+  initContainers:
+    - name: grafana-sc-datasources
+      image: quay.io/kiwigrid/k8s-sidecar:1.14.2
+
+      ...
+
+      env:
+        - name: METHOD
+          value: LIST
+        - name: LABEL
+          value: grafana_datasource
+        - name: FOLDER
+          value: /etc/grafana/provisioning/datasources
+        - name: RESOURCE
+          value: both
+      volumeMounts:
+        - mountPath: /etc/grafana/provisioning/datasources
+          name: sc-datasources-volume
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-****
+          readOnly: true
+```
+
+<br>
+
 ### セットアップ
 
 #### ▼ grafanaチャートの場合
 
-grafanaチャートでは、`values`ファイルの`dashboards.label`キーや`dashboards.labelValue`キーを使用して、ダッシュボードのマニフェスト化を制御している。
-
-デフォルト値として`dashboards.label`キーに`grafana_dashboard`が設定されている。
-
-これにより、`dashboards.label`キーに`grafana_dashboard`値を持つConfigMapのみがダッシュボードの設定として読み込まれる。
+grafanaチャートでは、`values`ファイルの`dashboards.label`キーや`dashboards.labelValue`キーを使用して、サイドカーが検知するConfigMapを設定できる。
 
 ```yaml
 # valuesファイル
@@ -332,7 +441,9 @@ grafanaチャートでは、`values`ファイルの`dashboards.label`キーや`d
 
     ...
 
+    # サイドカー検知用の.metadata.labelsキー
     label: grafana_dashboard
+    # .metadata.labelsキーの値
     labelValue: null
 
     ...
@@ -365,7 +476,7 @@ data:
 
 kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。
 
-kube-prometheus-stackチャートの`values`ファイルでは、`labelValue`に`1`が割り当てられている。
+kube-prometheus-stackチャートの`values`ファイルでは、サイドカー用の`grafana_dashboard`キーに`1`が割り当てられている。
 
 ```yaml
 # valuesファイル
@@ -375,7 +486,9 @@ kube-prometheus-stackチャートの`values`ファイルでは、`labelValue`に
 
       ...
 
+      # サイドカー検知用の.metadata.labelsキー
       label: grafana_dashboard
+      # .metadata.labelsキーの値
       labelValue: "1"
 
       ...
@@ -989,8 +1102,8 @@ data:
 ただ、Helmのバグか何かで、JSONの読み込みエラーが起こることが多く、ConfigMapにそのまま定義した方が良さそう。
 
 > ↪️：
-> 
-> -https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+>
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 > - https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
 
 <br>
@@ -1006,98 +1119,86 @@ data:
     default_home_dashboard_path = /tmp/dashboards/home.json
 ```
 
-```json    
+```json
 {
-      "annotations": {
-        "list": [
-          {
-            "builtIn": 1,
-            "datasource": "-- Grafana --",
-            "enable": true,
-            "hide": true,
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "type": "dashboard"
-          }
-        ]
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 36,
+        "w": 24,
+        "x": 0,
+        "y": 0
       },
-      "editable": true,
-      "gnetId": null,
-      "graphTooltip": 0,
-      "id": null,
+      "id": 3,
       "links": [],
-      "panels": [
-        {
-          "datasource": null,
-          "gridPos": {
-            "h": 36,
-            "w": 24,
-            "x": 0,
-            "y": 0
-          },
-          "id": 3,
-          "links": [],
-          "options": {
-            "folderId": 0,
-            "maxItems": 100,
-            "query": "",
-            "showHeadings": true,
-            "showRecentlyViewed": false,
-            "showSearch": true,
-            "showStarred": false,
-            "tags": []
-          },
-          "pluginVersion": "8.0.0",
-          "tags": [],
-          "title": "Dashboards",
-          "type": "dashlist"
-        }
-      ],
-      "refresh": "",
-      "schemaVersion": 30,
-      "style": "dark",
-      "tags": [
-        "<リポジトリ名>.git"
-      ],
-      "templating": {
-        "list": []
+      "options": {
+        "folderId": 0,
+        "maxItems": 100,
+        "query": "",
+        "showHeadings": true,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": []
       },
-      "time": {
-        "from": "now-6h",
-        "to": "now"
-      },
-      "timepicker": {
-        "hidden": true,
-        "refresh_intervals": [
-          "5s",
-          "10s",
-          "30s",
-          "1m",
-          "5m",
-          "15m",
-          "30m",
-          "1h",
-          "2h",
-          "1d"
-        ],
-        "time_options": [
-          "5m",
-          "15m",
-          "1h",
-          "6h",
-          "12h",
-          "24h",
-          "2d",
-          "7d",
-          "30d"
-        ],
-        "type": "timepicker"
-      },
-      "timezone": "browser",
-      "title": "Home",
-      "uid": null,
-      "version": 0
+      "pluginVersion": "8.0.0",
+      "tags": [],
+      "title": "Dashboards",
+      "type": "dashlist"
     }
+  ],
+  "refresh": "",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": ["<リポジトリ名>.git"],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
+    "type": "timepicker"
+  },
+  "timezone": "browser",
+  "title": "Home",
+  "uid": null,
+  "version": 0
+}
 ```
 
 > ↪️：https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#the-home-dashboards

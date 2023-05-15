@@ -1826,7 +1826,6 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、P
 
 クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために使用することが多い。
 
-
 **＊実装例＊**
 
 ```yaml
@@ -1839,7 +1838,6 @@ spec:
 ```
 
 > ↪️：https://www.amazon.co.jp/dp/B07HFS7TDT
-
 
 #### ▼ Recycle (非推奨)
 
@@ -4784,6 +4782,62 @@ spec:
         resources:
           requests:
             storage: 2Gi
+```
+
+<br>
+
+## 28. StorageClass
+
+### parameters
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: foo-storage-class
+parameters:
+  type: gp3
+```
+
+<br>
+
+### provisioner
+
+Volumeを自動的にプロビジョニングする外部サービスのプロビジョナーを設定する。
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: foo-storage-class
+# AWS EBS CSIドライバー
+provisioner: ebs.csi.aws.com
+```
+
+<br>
+
+### reclaimPolicy
+
+PersistentVolumeClaimが削除された時に、外部サービス (例：AWS EBS、NFS、など) が提供するVolumeを削除する否かを設定する。
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: foo-storage-class
+reclaimPolicy: Delete
+```
+
+<br>
+
+### volumeBindingMode
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: foo-storage-class
+volumeBindingMode: WaitForFirstConsumer
 ```
 
 <br>

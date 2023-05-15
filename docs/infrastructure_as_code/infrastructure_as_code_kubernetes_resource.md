@@ -1304,6 +1304,10 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 > - https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
+#### ▼ AWS EBSを要求する場合
+
+> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html
+
 <br>
 
 <br>

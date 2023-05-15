@@ -362,22 +362,22 @@ Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイン�
 
 #### ▼ Istiod全体に関するメトリクス
 
-| メトリクス名 | 単位   | 説明                                                                                     |
-|--------|------|----------------------------------------------------------------------------------------|
-| `istio_build`                    | カウント | Istioの各コンポーネントの情報を表す。`istio_build{component="pilot"}`とすることで、Istiodコントロールプレーンの情報を取得できる。 |
+| メトリクス名  | 単位     | 説明                                                                                                                              |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `istio_build` | カウント | Istioの各コンポーネントの情報を表す。`istio_build{component="pilot"}`とすることで、Istiodコントロールプレーンの情報を取得できる。 |
 
 #### ▼ `istio-proxy`コンテナに関するメトリクス
 
 Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (`discovery`コンテナ) から収集したメトリクスを取得できる。
 
-| メトリクス名                                    | 単位   | 説明                                                                                                                                       |
-|-------------------------------------------|------|------------------------------------------------------------------------------------------------------------------------------------------|
+| メトリクス名                              | 単位     | 説明                                                                                                                                                                                         |
+| ----------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `istio_requests_total`                    | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>↪️：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
-| `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                              |
-| `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                    |
-| `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                    |
-| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                 |
-| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                               |
+| `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                    |
+| `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                    |
+| `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                    |
+| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                             |
+| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                         |
 
 > ↪️：
 >
