@@ -21,6 +21,52 @@ Grafanaの`datasource.yaml`ファイルを管理する。
 
 <br>
 
+### ### grafana-datasource-cm用のInitContainer
+
+Grafanaのコンテナが起動する前に、データソースをセットアップする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana-pod
+  namespace: prometheus
+spec:
+  containers:
+    # grafanaコンテナ
+    - name: grafana
+      image: grafana/grafana:8.0.0
+
+      ...
+
+  # InitContainer
+  initContainers:
+    - name: grafana-sc-datasources
+      image: quay.io/kiwigrid/k8s-sidecar:1.14.2
+
+      ...
+
+      env:
+        - name: METHOD
+          value: LIST
+        - name: LABEL
+          value: grafana_datasource
+        - name: FOLDER
+          value: /etc/grafana/provisioning/datasources
+        - name: RESOURCE
+          value: both
+      volumeMounts:
+        - mountPath: /etc/grafana/provisioning/datasources
+          name: sc-datasources-volume
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-****
+          readOnly: true
+```
+
+> ↪️：https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-datasources
+
+<br>
+
 ### datasources
 
 #### ▼ datasourcesとは
@@ -316,9 +362,7 @@ Grafanaの`dashboard.json`ファイルを管理する。
 
 <br>
 
-### grafana-dashboard-cm用の補助コンテナ
-
-#### ▼ サイドカー
+### grafana-dashboard-cm用のサイドカー
 
 Kubernetesの通常の仕組みであれば、ConfigMapの数だけVolumeMountでマウントする必要がある。
 
@@ -350,10 +394,12 @@ spec:
             value: WATCH
           - name: LABEL
             value: grafana_dashboard
+          # ダッシュボードのJSONファイルを配置するgrafanaコンテナのディレクトリ
           - name: FOLDER
             value: /tmp/dashboards
           - name: RESOURCE
             value: both
+          # サイドカーがConfigMapを検知するNamespace
           - name: NAMESPACE
             value: ALL
       volumeMounts:
@@ -383,49 +429,7 @@ data:
 > ↪️：
 >
 > - https://www.grugrut.net/posts/202008032123/
-> - https://github.com/helm/charts/tree/master/stable/grafana#sidecar-for-dashboards
-
-#### ▼ InitContainer
-
-Grafanaのコンテナが起動する前に、データソースをセットアップする。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: grafana-pod
-  namespace: prometheus
-spec:
-  containers:
-    # grafanaコンテナ
-    - name: grafana
-      image: grafana/grafana:8.0.0
-
-      ...
-
-  # InitContainer
-  initContainers:
-    - name: grafana-sc-datasources
-      image: quay.io/kiwigrid/k8s-sidecar:1.14.2
-
-      ...
-
-      env:
-        - name: METHOD
-          value: LIST
-        - name: LABEL
-          value: grafana_datasource
-        - name: FOLDER
-          value: /etc/grafana/provisioning/datasources
-        - name: RESOURCE
-          value: both
-      volumeMounts:
-        - mountPath: /etc/grafana/provisioning/datasources
-          name: sc-datasources-volume
-        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-          name: kube-api-access-****
-          readOnly: true
-```
+> - https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
 
 <br>
 
