@@ -1279,6 +1279,12 @@ $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 > - https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
 > - https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
 
+#### ▼ サイズを拡張する
+
+PVCの値が変われば、使用するPVを変えられる。
+
+> ↪️：https://stackoverflow.com/questions/40335179/can-a-persistent-volume-be-resized
+
 <br>
 
 ### StorageClass
@@ -1288,6 +1294,8 @@ $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これのVolumeをPersistentVolumeClaimに提供する。
 
 そのため、PersistentVolumeも合わせて作成する必要がある。
+
+StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageClass側で`reclaimPolicy`キーとして設定する。
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 

@@ -46,7 +46,11 @@ LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-manager�
 
 ### Serviceタイプ
 
-Ingressでインバウンド通信を受信する場合に使用し、NodePort Serviceの場合には使用しない。
+NodePort Serviceを使用しなければならない。
+
+AWS Load Balancerコントローラーを使用しない場合と、NodePort Serviceのポート番号に合わせてAWSターゲットグループを作成する必要がある。
+
+AWS Load Balancerコントローラーを使用する場合は、NodePort Serviceのポート番号をランダムにしても、そのポート番号を指定するAWSターゲットグループをAWS Load Balancerコントローラーがプロビジョニングしてくれる。
 
 ```yaml
 パブリックネットワーク
@@ -55,10 +59,15 @@ AWS Route53
 ⬇︎
 AWS Load Balancerコントローラー、AWS ALB (Ingressの設定で決まる)
 ⬇︎
-ClusterIP Service
+NodePort Service (ポート番号はランダムでよい)
 ⬇︎
 Pod
 ```
+
+> ↪️：
+> 
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
+> - https://qiita.com/mksamba/items/c0e41a2a63e62a50aea3#21-%E5%85%AC%E9%96%8B%E5%AF%BE%E8%B1%A1%E3%81%AEdeploymentservice%E3%81%AE%E4%BD%9C%E6%88%90
 
 <br>
 

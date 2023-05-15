@@ -1826,7 +1826,6 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、P
 
 クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために使用することが多い。
 
-> ↪️：https://www.amazon.co.jp/dp/B07HFS7TDT
 
 **＊実装例＊**
 
@@ -1838,6 +1837,9 @@ metadata:
 spec:
   persistentVolumeReclaimPolicy: Delete
 ```
+
+> ↪️：https://www.amazon.co.jp/dp/B07HFS7TDT
+
 
 #### ▼ Recycle (非推奨)
 

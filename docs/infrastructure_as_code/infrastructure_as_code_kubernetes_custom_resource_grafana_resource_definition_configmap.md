@@ -154,6 +154,7 @@ data:
   grafana.ini: |
     [dashboard]
     min_refresh_interval = 5s
+    default_home_dashboard_path = /tmp/dashboards/home.json
 ```
 
 > ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
@@ -631,6 +632,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "error": null,
             # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
+            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
             "includeAll": false,
             "label": null,
             "multi": false,
@@ -663,6 +665,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
+            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
             "includeAll": false,
             "label": null,
             # clusterは1つだけ選ぶようにする
@@ -703,6 +706,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
+            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
             "includeAll": false,
             "label": null,
             # 全ての値の中から複数選択して選べるようにする。
@@ -740,6 +744,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
+            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
             "includeAll": false,
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -777,6 +782,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
+            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
             "includeAll": false,
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -814,6 +820,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
+            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
             "includeAll": false,
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -951,7 +958,7 @@ data:
 
 ### エスケープ
 
-Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジックで使用される。
+Goのテンプレートでは、『`{{`』と『`}}`』の記号がロジックで使用される。
 
 ダッシュボードのJSONではこれを使用するため、ロジックとして認識されないようにエスケープする必要がある。
 
@@ -979,28 +986,119 @@ data:
 
 ダッシュボードはJSONファイルとして管理し、これをConfigMapのテンプレートに出力するようにすると、管理しやすい。
 
-```yaml
-{{ range $fileName, $_ := .Files.Glob "*-dashboards/*.json" }}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: grafana-dashboard-{{- $fileName | replace ".json" "" }}
-  namespace: prometheus
-  labels:
-    grafana_dashboard: "1"
-data:
-  {{ base $fileName }}: |-
-    {{ $.Files.Get $fileName }} | indent 4 }}
-{{ end }}
-```
+ただ、Helmのバグか何かで、JSONの読み込みエラーが起こることが多く、ConfigMapにそのまま定義した方が良さそう。
 
-> ↪️：https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
+> ↪️：
+> 
+> -https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+> - https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
 
 <br>
 
 ### ホームダッシュボード
 
-ユーザー定義のホームダッシュボードを作成し、ダッシュボードの使い方を文字で説明する。
+ホームダッシュボードとして、ダッシュボードの一覧を表示すると、検索する手間が省ける。
+
+```ini
+# grafana.iniファイル
+[dashboard]
+    min_refresh_interval = 5s
+    default_home_dashboard_path = /tmp/dashboards/home.json
+```
+
+```json    
+{
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "gnetId": null,
+      "graphTooltip": 0,
+      "id": null,
+      "links": [],
+      "panels": [
+        {
+          "datasource": null,
+          "gridPos": {
+            "h": 36,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "id": 3,
+          "links": [],
+          "options": {
+            "folderId": 0,
+            "maxItems": 100,
+            "query": "",
+            "showHeadings": true,
+            "showRecentlyViewed": false,
+            "showSearch": true,
+            "showStarred": false,
+            "tags": []
+          },
+          "pluginVersion": "8.0.0",
+          "tags": [],
+          "title": "Dashboards",
+          "type": "dashlist"
+        }
+      ],
+      "refresh": "",
+      "schemaVersion": 30,
+      "style": "dark",
+      "tags": [
+        "<リポジトリ名>.git"
+      ],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {
+        "hidden": true,
+        "refresh_intervals": [
+          "5s",
+          "10s",
+          "30s",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "1h",
+          "2h",
+          "1d"
+        ],
+        "time_options": [
+          "5m",
+          "15m",
+          "1h",
+          "6h",
+          "12h",
+          "24h",
+          "2d",
+          "7d",
+          "30d"
+        ],
+        "type": "timepicker"
+      },
+      "timezone": "browser",
+      "title": "Home",
+      "uid": null,
+      "version": 0
+    }
+```
 
 > ↪️：https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#the-home-dashboards
 

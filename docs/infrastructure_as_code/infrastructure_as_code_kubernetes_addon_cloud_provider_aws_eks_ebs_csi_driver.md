@@ -299,14 +299,16 @@ AWS EBSは、AWS EBS CSIドライバーが自動で作成するため、作成�
 
 ```yaml
 # マニフェストで定義した場合
-kind: StorageClass
 apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
   name: foo-storage-class
-provisioner: ebs.csi.aws.com
-volumeBindingMode: WaitForFirstConsumer
 parameters:
   type: gp3
+provisioner: ebs.csi.aws.com
+# PersistentVolumeClaimが削除された時に、AWS EBSも自動的に削除できるようにする
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
 ```
 
 ```terraform
