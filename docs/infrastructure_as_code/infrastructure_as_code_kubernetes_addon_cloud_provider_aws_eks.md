@@ -113,7 +113,11 @@ aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サー�
 
 ## 03. aws-eks-distro-for-opentelemetry
 
-記入中...
+テレメトリーの収集をマネージドにする。
+
+メトリクスの場合、ストレージとアラートをマネージドにしたManaged Prometheusと組み合わせると、データの収集 (プル型のみ) から保管までをマネージドにできる。
+
+> ↪️：https://speakerdeck.com/k6s4i53rx/opentelemetrywoyong-itaobservabilityji-pan-noshi-zhuang-with-aws-distro-for-opentelemetry?slide=13
 
 <br>
 

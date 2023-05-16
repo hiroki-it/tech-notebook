@@ -772,15 +772,39 @@ GitOpsの場合、CIパイプライン上だけでなく、CDパイプライン�
 
 ### デプロイ
 
+#### ▼ デプロイとは
+
 本番環境に対して、ローカルマシンまたはCDツールを使用して、マニフェストをデプロイする。
 
-| 採用可能な戦略             | 方法                                                                                                                                                                                              | 推奨/非推奨 |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------: |
-| インプレースデプロイメント | KubernetesのDeploymentのReplace戦略を採用する。非推奨である。ダウンタイムが発生する。<br>↪️：https://amateur-engineer-blog.com/kubernetes-recreate/#toc2                                          |   非推奨    |
-| ローリングアップデート     | KubernetesのDeploymentのRollingUpdate戦略を採用する。                                                                                                                                             |    推奨     |
-| BGデプロイメント           | Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツール (例：ArgoCD) のBGデプロイメント機能を採用する。<br>↪️：https://argoproj.github.io/argo-rollouts/concepts/#blue-green      |    推奨     |
-| カナリアリリース           | Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：ArgoCD) のカナリアリリース機能を採用する。<br>↪️：https://argoproj.github.io/argo-rollouts/concepts/#canary                       |    推奨     |
-| Progressive Delivery       | Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール (例：ArgoCD) のProgressive Delivery機能を採用する。<br>↪️：https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery |    推奨     |
+#### ▼ インプレースデプロイメント (非推奨)
+
+KubernetesのDeploymentのReplace戦略を採用する。非推奨である。ダウンタイムが発生する。
+
+> ↪️：https://amateur-engineer-blog.com/kubernetes-recreate/#toc2
+
+#### ▼ ローリングアップデート (推奨)
+
+KubernetesのDeploymentのRollingUpdate戦略を採用する。
+
+#### ▼ BGデプロイメント (推奨)
+
+Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツール (例：Argo Rollout) のBGデプロイメント機能を採用する。
+
+> ↪️：https://argoproj.github.io/argo-rollouts/concepts/#blue-green
+
+#### ▼ カナリアリリース (推奨)
+
+Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：Argo Rollout) やサービスメッシュツール (例：Istio、Linkerd、など) のカナリアリリース機能を採用する。
+
+注意点として、サービスメッシュツールであると、重み付けの段階的な変更が手動になってしまう。
+
+> ↪️：https://argoproj.github.io/argo-rollouts/concepts/#canary
+
+#### ▼ Progressive Delivery (推奨)
+
+Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール (例：Argo Rollout) のProgressive Delivery機能を採用する。
+
+> ↪️：https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery
 
 <br>
 

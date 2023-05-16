@@ -38,3 +38,14 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 > ↪️：https://qiita.com/MetricFire/items/15e024aea40785be622c
 
 <br>
+
+
+## 02. マネージドGrafana
+
+Grafanaのコンポーネントを部分的にマネージドにしたサービス。
+
+執筆時点 (2023/05/16時点) では、フルマネージドにしてくれる。
+
+> ↪️：https://docs.aws.amazon.com/ja_jp/grafana/latest/userguide/AMG-configure-vpc.html
+
+<br>

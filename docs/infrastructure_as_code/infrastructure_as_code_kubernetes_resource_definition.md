@@ -4820,6 +4820,8 @@ provisioner: ebs.csi.aws.com
 
 PersistentVolumeClaimが削除された時に、外部サービス (例：AWS EBS、NFS、など) が提供するVolumeを削除する否かを設定する。
 
+PersistentVolumeにも同様の機能がある。
+
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass

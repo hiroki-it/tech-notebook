@@ -419,11 +419,14 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: foo-dashboard
+  namespace: prometheus
   labels:
     grafana_dashboard: "1"
 data:
   foo.json: |-
-    ...
+    {{ `
+    ダッシュボードのJSON
+    ` }}
 ```
 
 > ↪️：
@@ -468,9 +471,9 @@ metadata:
   labels:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
-  dashboard.json: |
+  foo.json: |-
     {{ `
-    ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
+    ダッシュボードのJSON
     ` }}
 ```
 
@@ -516,12 +519,13 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: foo-grafana-dashboard
+  namespace: prometheus
   labels:
     grafana_dashboard: "1"
 data:
-  dashboard.json: |
+  foo.json: |-
     {{ `
-    ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
+    ダッシュボードのJSON
     ` }}
 ```
 
@@ -1046,9 +1050,9 @@ metadata:
   labels:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
-  dashboard.json: |
+  foo.json: |-
     {{ `
-    ダッシュボードを定義する。
+    ダッシュボードのJSON
     ` }}
 ```
 
@@ -1087,7 +1091,8 @@ Goのテンプレートでは、『`{{`』と『`}}`』の記号がロジック�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard-foo
+  name: foo-grafana-dashboard
+  namespace: prometheus
   labels:
     grafana_dashboard: "1"
 data:
@@ -1099,11 +1104,11 @@ data:
 
 > ↪️：https://stackoverflow.com/a/38941123
 
-### Helm管理
+### HelmテンプレートによるConfigMap作成
 
 ダッシュボードはJSONファイルとして管理し、これをConfigMapのテンプレートに出力するようにすると、管理しやすい。
 
-ただ、Helmのバグか何かで、JSONの読み込みエラーが起こることが多く、ConfigMapにそのまま定義した方が良さそう。
+ただ出力時にHelm起因のエラーが多発するため、自分はこれを不採用とした。
 
 > ↪️：
 >
@@ -1119,8 +1124,8 @@ data:
 ```ini
 # grafana.iniファイル
 [dashboard]
-    min_refresh_interval = 5s
-    default_home_dashboard_path = /tmp/dashboards/home.json
+# Grafanaコンテナでホームダッシュボードのあるパス
+default_home_dashboard_path = /tmp/dashboards/home.json
 ```
 
 ```json
@@ -1338,7 +1343,7 @@ metadata:
 data:
   foo.json: |-
     {{ `
-    ここに貼り付け
+    ダッシュボードのJSON
     ` }}
 ```
 

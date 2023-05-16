@@ -276,3 +276,13 @@ Pull型通信の宛先のIPアドレスが動的に変化する (例：スケー
 > ↪️：https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
 <br>
+
+## 04. マネージドPrometheus
+
+Prometheusのコンポーネントを部分的にマネージドにしたサービス。
+
+執筆時点 (2023/05/16時点) では、リモートストレージ、Alertmanager、をマネージドにしてくれる。
+
+> ↪️：https://www.infoq.com/jp/news/2021/01/aws-grafana-prometheus/
+
+<br>

@@ -1555,7 +1555,12 @@ Applicationの責務境界をProjectとして管理する。
 
 同じProject内では、ArgoCDのApplication名は一意にする必要がある。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
+なお、最も認可スコープの大きいdefaultのAppProjectは、自動的に作成される。
+
+> ↪️：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#the-default-project
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
 
 <br>
 
@@ -1801,6 +1806,29 @@ spec:
 > - https://argoproj.github.io/argo-rollouts/features/canary/
 > - https://argoproj.github.io/argo-rollouts/concepts/#canary
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
+
+
+サービスメッシュツールでは手動カナリアリリースを実装できるが、これと連携し、サービスメッシュツールで自動カナリアリリースを実現できる。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  namespace: argocd
+  name: foo-canary-rollout
+spec:
+  strategy:
+    # カナリアリリース
+    canary:
+      steps:
+        canaryService: canary-virtual-service
+        stableService: stable-virtual-service
+
+...        
+```
+
+> ↪️：https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/
+
 
 <br>
 
