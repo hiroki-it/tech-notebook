@@ -430,10 +430,12 @@ ArgoCDを構成するKubernetesリソースにアクセスするための認可�
 
 Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐付ける。
 
-| 記号                 | 項目                                                                                                    | 説明                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <プロジェクト名>/<Kubernetesリソースの識別名>` | ロールと認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
-| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                            | グループにロールを紐付ける。                                                |
+`readonly`と`admin`というロールは、デフォルトで定義済みである。
+
+| 記号                 | 項目                                                                                   | 説明                                                                        |
+| -------------------- |--------------------------------------------------------------------------------------| --------------------------------------------------------------------------- |
+| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<Namespace名>/<Kubernetesリソースの識別名>` | ロールと認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
+| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                  | グループにロールを紐付ける。                                                |
 
 > ↪️：
 >
@@ -441,6 +443,7 @@ Casbinの記法を使用して、ロールと認可スコープを定義しつ�
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure
 > - https://github.com/argoproj/argo-cd/blob/master/assets/model.conf
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#application-rbac
 
 <br>
 
@@ -488,6 +491,7 @@ data:
 > - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 > - https://weseek.co.jp/tech/95/#SSO_RBAC
+> - https://techblog.zozo.com/entry/mlops-argocd
 
 **＊実装例＊**
 
@@ -562,7 +566,7 @@ data:
 >
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.scsv
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 
 **＊実装例＊**
 

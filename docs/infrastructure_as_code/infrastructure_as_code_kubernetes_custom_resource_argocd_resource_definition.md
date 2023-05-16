@@ -932,11 +932,11 @@ spec:
 
 #### ▼ projectとは
 
-アプリケーションのプロジェクト名を設定する。
+アプリケーションの属するAppProject名を設定する。
 
-プロジェクト名は『`default`』は必ず作成する必要がある。
+AppProject名は『`default`』は必ず作成する必要がある。
 
-`default`以外のプロジェクトは、認可スコープと紐付けられるように、チーム別や実行環境別に作成すると良い。
+`default`以外のAppProjectは、認可スコープと紐付けられるように、チーム別や実行環境別に作成すると良い。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1554,6 +1554,25 @@ spec:
 単一のCluster内で、Applicationの責務境界のテナントを作成する。
 
 ArgoCDは、最も認可スコープの大きい`default`のAppProjectを自動的に作成する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: foo
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+# 執筆時点 (2023/05/17) では、defaultのAppProjectでsourceNamespacesキーは使用できない
+# sourceNamespaces
+```
 
 それ以外のユーザー定義のAppProjectを使用して、テナントを作成する。
 
