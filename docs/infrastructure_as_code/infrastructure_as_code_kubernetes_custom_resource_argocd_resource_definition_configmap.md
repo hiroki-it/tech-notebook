@@ -317,7 +317,7 @@ metadata:
   namespace: argocd
 data:
   # application-controllerとargocd-server
-  application.namespaces: "<AppProjectやApplicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
+  application.namespaces: "<Applicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
 ```
 
 > ↪️：
@@ -338,7 +338,7 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
-  application.namespaces: "<AppProjectやApplicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
+  application.namespaces: "<Applicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
   controller.log.format: text
   controller.log.level: warn
   controller.operation.processors: "10"

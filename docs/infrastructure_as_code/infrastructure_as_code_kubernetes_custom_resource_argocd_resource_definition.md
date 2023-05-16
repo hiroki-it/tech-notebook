@@ -1572,7 +1572,7 @@ ArgoCDは、最も認可スコープの大きい`default`のAppProjectを自動�
 
 ### sourceNamespaces
 
-AppProject配下のKubernetesリソース (Applicationを含む) を作成できるNamespaceを設定する。
+AppProjectに属するApplicationを作成できるNamespaceを設定する。
 
 ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
 
@@ -1588,7 +1588,7 @@ metadata:
   namespace: foo # サービス名、など
 spec:
   sourceNamespaces:
-    - "<AppProjectやApplicationが属するNamespace>"
+    - "<Applicationが属するNamespace>"
 ```
 
 なお、argocd-cmd-params-cmでも設定が必要である。
@@ -1598,9 +1598,9 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-cmd-params-cm
-  namespace: argocd
+  namespace: foo
 data:
-  application.namespaces: "<AppProjectやApplicationが属するNamespace>"
+  application.namespaces: "<Applicationが属するNamespace>"
 ```
 
 > ↪️：

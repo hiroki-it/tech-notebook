@@ -396,7 +396,7 @@ metadata:
   namespace: foo
 spec:
   sourceNamespaces:
-    - "<AppProjectやApplicationが属するNamespace>"
+    - "<Applicationが属するNamespace>"
 ```
 
 なお、argocd-cmd-params-cmでも設定が必要である。
@@ -408,7 +408,7 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
-  application.namespaces: "<AppProjectやApplicationが属するNamespace>"
+  application.namespaces: "<Applicationが属するNamespace>"
 ```
 
 > ↪️：https://github.com/argoproj/argo-cd/pull/9755
