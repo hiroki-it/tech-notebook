@@ -1551,28 +1551,34 @@ spec:
 
 ### AppProjectとは
 
-Applicationの責務境界をProjectとして管理する。
+単一のCluster内で、Applicationの責務境界のテナントを作成する。
 
-同じProject内では、ArgoCDのApplication名は一意にする必要がある。
+ArgoCDは、最も認可スコープの大きい`default`のAppProjectを自動的に作成する。
 
-なお、最も認可スコープの大きいdefaultのAppProjectは、自動的に作成される。
+それ以外のユーザー定義のAppProjectを使用して、テナントを作成する。
+
+基本的には`default`のAppProjectには、Applicationを何も作成しない方が良い。
+
+なお同じAppProject内では、ArgoCDのApplication名は一意にする必要がある。
+
 
 > ↪️：
 > 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#the-default-project
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
+> - https://techstep.hatenablog.com/entry/2021/12/30/233323#Project%E3%81%A8%E3%81%AF
 
 <br>
 
 ### sourceNamespaces
 
-AppProject配下のKubernetesリソースを作成できるNamespaceを設定する。
+AppProject配下のKubernetesリソース (Applicationを含む) を作成できるNamespaceを設定する。
 
 ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
 
 単一のArgoCD用Clusterで複数プロダクトのApplicationを管理し、Applicationをプロダクト別のAppProjectで分割している場合に役立つ。
 
-全てのNamespaceを許可する場合は、`*` (アスタリスク) を設定する。
+もし全てのNamespaceを許可する場合は、`*` (アスタリスク) を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

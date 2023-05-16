@@ -129,7 +129,7 @@ EKSの各Node上で、`kube-proxy`という名前のDaemonSetとして稼働す�
 
 EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
-aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを一切管理できなくなるため、必須である。
+aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。
 
 > ↪️：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
@@ -141,7 +141,7 @@ aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内の�
 
 EKSのNode上で、`aws-node`という名前のDaemonSetとして稼働する。
 
-aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できずに一切の通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
+aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できずに、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 

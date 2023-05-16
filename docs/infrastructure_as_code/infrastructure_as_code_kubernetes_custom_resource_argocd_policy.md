@@ -453,6 +453,16 @@ $ kubectl patch ns argocd \
 
 <br>
 
+### Helmチャートが大きすぎるとArgoCDがフリーズする
+
+今現在、Helmにはインストールしたチャートのキャッシュを作成する機能がない。
+
+そのため、大きすぎるチャートをArgoCDで使用すると、毎回大きなチャートをインストールすることになり、ArgoCDが高負荷でフリーズすることがある。
+
+> ↪️：https://github.com/helm/community/pull/185
+
+<br>
+
 ### ConfigMapやSecretの設定変更が反映されない
 
 ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定変更を反映する場合、Deployment/StatefulSet/DaemonSetを再起動する必要がある。
