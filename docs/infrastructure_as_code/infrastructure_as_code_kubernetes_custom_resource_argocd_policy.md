@@ -366,6 +366,16 @@ CDパイプライン上で実行しているステップ (例：デプロイ、�
 
 ## 08. エラー解決
 
+### AppProjectが見つからない
+
+application-controllerが、Applicationで指定されたAppProjectを見つけられず、以下のエラーを返すことがある。
+
+```bash
+Application referencing project foo-project which does not exist
+```
+
+<br>
+
 ### 削除できない系
 
 #### ▼ `argocd`というNamespace以外でApplicationを作成できない
@@ -394,6 +404,8 @@ kind: AppProject
 metadata:
   name: foo-project
   namespace: foo
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   sourceNamespaces:
     - "<Applicationが属するNamespace>"
@@ -407,6 +419,8 @@ kind: ConfigMap
 metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 data:
   application.namespaces: "<Applicationが属するNamespace>"
 ```

@@ -881,6 +881,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   ignoreDifferences:
     # KubernetesリソースのAPIグループの名前
@@ -911,6 +913,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   ignoreDifferences:
 
@@ -944,6 +948,8 @@ kind: Application
 metadata:
   namespace: argocd
   name: root-application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: root # アプリケーションコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ---
@@ -952,6 +958,8 @@ kind: Application
 metadata:
   namespace: argocd
   name: foo-infra-application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: infra # インフラコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ---
@@ -960,6 +968,8 @@ kind: Application
 metadata:
   namespace: argocd
   name: foo-app-application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: app # アプリケーションコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ```
@@ -1004,6 +1014,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     path: ./manifests
@@ -1026,6 +1038,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     path: ./manifests
@@ -1039,6 +1053,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     path: ./charts
@@ -1059,6 +1075,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
@@ -1083,6 +1101,8 @@ metadata:
   namespace: argocd
   labels:
     app.kubernetes.io/env: prd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: main # 本番環境に対応するブランチ
@@ -1097,6 +1117,8 @@ metadata:
   namespace: argocd
   labels:
     app.kubernetes.io/env: stg
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: develop # ステージング環境に対応するブランチ
@@ -1120,6 +1142,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     chart: <チャート名>
@@ -1154,6 +1178,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     helm:
@@ -1172,6 +1198,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     helm:
@@ -1190,6 +1218,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     helm:
@@ -1283,6 +1313,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     # 例えば、GitHub内のGitHub Pagesをチャートリポジトリとして扱う。
@@ -1306,6 +1338,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: <バージョンタグ>
@@ -1337,6 +1371,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
@@ -1355,6 +1391,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: <バージョンタグ>
@@ -1380,6 +1418,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: foo-namespace
@@ -1406,6 +1446,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -1418,6 +1460,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     # 外部のAWS EKS Clusterのkube-apiserverのエンドポイントを指定する。
@@ -1459,6 +1503,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     automated:
@@ -1486,6 +1532,8 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     syncOptions:
@@ -1561,28 +1609,31 @@ kind: AppProject
 metadata:
   name: default
   namespace: foo
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
+    - group: "*"
+      kind: "*"
   destinations:
-  - namespace: '*'
-    server: '*'
+    - namespace: "*"
+      server: "*"
   sourceRepos:
-  - '*'
+    - "*"
 # 執筆時点 (2023/05/17) では、defaultのAppProjectでsourceNamespacesキーは使用できない
 # sourceNamespaces
 ```
 
 それ以外のユーザー定義のAppProjectを使用して、テナントを作成する。
 
-基本的には`default`のAppProjectには、Applicationを何も作成しない方が良い。
+`default`のAppProjectには全てのNamespaceにアクセスできる権限があるため、`default`のAppProjectにApplicationを作成すると、そのApplicationは全てのApplicationにアクセスできるようになってしまう。
+
+もしAppProjectに合わせてNamespaceも責務境界のテナントとしていると、`default`に属するApplicationが他のテナントにもアクセスできるようになってしまう。
 
 なお同じAppProject内では、ArgoCDのApplication名は一意にする必要がある。
 
-
 > ↪️：
-> 
+>
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#the-default-project
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
 > - https://techstep.hatenablog.com/entry/2021/12/30/233323#Project%E3%81%A8%E3%81%AF
@@ -1605,6 +1656,8 @@ kind: AppProject
 metadata:
   name: prd
   namespace: foo # サービス名、など
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   sourceNamespaces:
     - "<Applicationが属するNamespace>"
@@ -1639,6 +1692,8 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   sourceRepos:
     - "*"
@@ -1654,6 +1709,8 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   description: This is application in prd environment
 ```
@@ -1670,6 +1727,8 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destinations:
     - namespace: "*" # 属するApplictionは、全てのNamespaceにデプロイできる。
@@ -1688,6 +1747,8 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   clusterResourceWhitelist:
     - group: "*"
@@ -1832,7 +1893,6 @@ spec:
 > - https://argoproj.github.io/argo-rollouts/concepts/#canary
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
-
 サービスメッシュツールでは手動カナリアリリースを実装できるが、これと連携し、サービスメッシュツールで自動カナリアリリースを実現できる。
 
 ```yaml
@@ -1848,12 +1908,9 @@ spec:
       steps:
         canaryService: canary-virtual-service
         stableService: stable-virtual-service
-
-...        
 ```
 
 > ↪️：https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/
-
 
 <br>
 
