@@ -1631,7 +1631,7 @@ data:
 
 ### sourceRepos
 
-プロジェクト内でポーリング可能なリポジトリを設定する。
+AppProject内でポーリング可能なリポジトリを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1662,7 +1662,7 @@ spec:
 
 ### destinations
 
-プロジェクトに属するApplicationが指定可能なClusterを設定する。
+AppProjectに属するApplicationが指定可能なClusterを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1680,7 +1680,7 @@ spec:
 
 ### clusterResourceWhitelist
 
-プロジェクト内でデプロイ可能なリソースを設定する。
+AppProject内でデプロイ可能なリソースを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

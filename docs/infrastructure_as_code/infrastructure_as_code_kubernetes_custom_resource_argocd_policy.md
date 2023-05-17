@@ -159,7 +159,7 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 
 状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。
 
-root-applicationは、`default`プロジェクトや`root`プロジェクトに配置する。
+root-applicationは、`default`や`root`のAppProjectに配置する。
 
 ```yaml
 # 最上位Application
@@ -177,14 +177,14 @@ root-argocd-repository/
 
 管理チームごとにApplication (app-parent-application、infra-parent-application) を作成すると良い。
 
-parent-applicationは、実行環境名 (dev、stg、prd) のプロジェクトに配置する。
+parent-applicationは、実行環境名 (dev、stg、prd) のAppProjectに配置する。
 
 ```yaml
 # 親Application
 parent-argocd-repository/
 ├── tes/
-│   ├── app-parent-application.yaml # appプロジェクトをポーリングするapplication
-│   └── infra-parent-application.yaml # infraプロジェクトをポーリングするapplication
+│   ├── app-parent-application.yaml # appのAppProjectをポーリングするapplication
+│   └── infra-parent-application.yaml # infraのAppProjectをポーリングするapplication
 │
 ├── stg/
 └── prd/
@@ -196,9 +196,9 @@ parent-argocd-repository/
 
 マイクロサービス単位のマニフェストやチャートごとに作成すると良い。
 
-child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のプロジェクトに配置する。
+child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のAppProjectに配置する。
 
-child-applicationは、実行環境名 (dev、stg、prd) のプロジェクトに配置する。
+child-applicationは、実行環境名 (dev、stg、prd) のAppProjectに配置する。
 
 ```yaml
 # 子Application
