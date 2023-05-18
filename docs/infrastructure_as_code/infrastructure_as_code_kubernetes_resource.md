@@ -798,6 +798,12 @@ Namespaceが異なれば、`.metadata`キーに同じ値 (例：同じ名前、�
 
 > ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
 
+#### ▼ NamespaceがTerminatingのままになる
+
+以下の方法で対処する。
+
+> ↪️：https://komeiy.hatenablog.com/entry/2019/07/28/232356
+
 <br>
 
 ## 05. 設定系リソース

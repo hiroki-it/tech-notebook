@@ -368,7 +368,7 @@ CDパイプライン上で実行しているステップ (例：デプロイ、�
 
 ### AppProjectが見つからない
 
-application-controllerが、Applicationで指定されたAppProjectを見つけられず、以下のエラーを返すことがある。
+argocd-serverまたはapplication-controllerが、Applicationで指定されたAppProjectを見つけられず、以下のエラーを返すことがある。
 
 ```bash
 Application referencing project foo-project which does not exist

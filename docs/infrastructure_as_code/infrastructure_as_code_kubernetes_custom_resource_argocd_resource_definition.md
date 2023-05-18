@@ -1603,6 +1603,12 @@ spec:
 
 ArgoCDは、最も認可スコープの大きい`default`のAppProjectを自動的に作成する。
 
+`default`のAppProjectでは、任意のNamespaceでApplicationを作成できる。
+
+テナントを完全に分離するために、`default`のAppProjectにはApplicationを作成せずに、ユーザー定義のAppProjectを使用するようにする。
+
+なお同じAppProject内では、ArgoCDのApplication名は一意にする必要がある。
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
@@ -1624,25 +1630,21 @@ spec:
 # sourceNamespaces
 ```
 
-それ以外のユーザー定義のAppProjectを使用して、テナントを作成する。
-
-`default`のAppProjectには全てのNamespaceにアクセスできる権限があるため、`default`のAppProjectにApplicationを作成すると、そのApplicationは全てのApplicationにアクセスできるようになってしまう。
-
-もしAppProjectに合わせてNamespaceも責務境界のテナントとしていると、`default`に属するApplicationが他のテナントにもアクセスできるようになってしまう。
-
-なお同じAppProject内では、ArgoCDのApplication名は一意にする必要がある。
-
 > ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#the-default-project
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
 > - https://techstep.hatenablog.com/entry/2021/12/30/233323#Project%E3%81%A8%E3%81%AF
+> - https://github.com/argoproj/argo-cd/issues/11058
+> - https://blog.cybozu.io/entry/2020/02/04/110000
 
 <br>
 
 ### sourceNamespaces
 
-AppProjectに属するApplicationを作成できるNamespaceを設定する。
+そのAppProjectに属するApplicationを作成できるNamespace (argocd-serverとapplication-controllerがアクセス可能なNamespace) を設定する。
+
+argocd-serverとapplication-controllerは、ClusterRoleにより全てのKubernetesリソースにアクセスできるようになっており、これを特定のAppProjectに制限できる。
 
 ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
 
@@ -1739,7 +1741,7 @@ spec:
 
 ### clusterResourceWhitelist
 
-AppProject内でデプロイ可能なリソースを設定する。
+AppProject内でApplicationがデプロイできるClusterスコープ (Namespaceのない) なリソースを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1751,6 +1753,24 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+```
+
+### namespaceResourceWhitelist
+
+AppProject内でApplicationがデプロイできるNamespaceスコープ (Namespaceのある) なリソースを設定する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prd # 実行環境名、運用チーム名など
+  namespace: foo # サービス名、など
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  namespaceResourceWhitelist:
     - group: "*"
       kind: "*"
 ```

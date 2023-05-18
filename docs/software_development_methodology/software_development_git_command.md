@@ -963,7 +963,7 @@ $ git merge <ブランチ名> --allow-unrelated-histories
 
 `【１】`
 
-: ハッシュ値を指定して、`rebase`コマンドを実行する。
+: ハッシュ値を指定して、`git rebase`コマンドを実行する。
 
 ```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
@@ -971,7 +971,7 @@ $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 
 `【２】`
 
-: `commit --amend`に`reset-author`オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
+: `git commit --amend`コマンドに`reset-author`オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
 
 ```bash
 $ git commit --amend --reset-author
@@ -979,7 +979,7 @@ $ git commit --amend --reset-author
 
 `【３】`
 
-: `rebase --continue`を実行し、変更を反映させる。
+: `git rebase --continue`コマンドを実行し、変更を反映させる。
 
 ```bash
 $ git rebase --continue
