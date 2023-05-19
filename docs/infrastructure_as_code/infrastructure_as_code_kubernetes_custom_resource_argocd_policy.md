@@ -380,53 +380,6 @@ Application referencing project foo-project which does not exist
 
 ### 削除できない系
 
-#### ▼ `argocd`というNamespace以外でApplicationを作成できない
-
-古いArgoCDでは、`argocd`というNamespace以外でApplicationを作成できない。
-
-これに起因して、以下のようなエラーが出ることがある。
-
-```bash
-# Applicationを作成できない
-application 'foo-application' in namespace 'foo-namespace' is not permitted to use project 'default'
-```
-
-```bash
-# Applicationが認識されないため、AppProjectも見つけられない
-error getting app project "foo-project": appproject.argoproj.io "foo-project" not found
-```
-
-これは、AppProjectの`.spec.sourceNamespaces`キーで解決できる。
-
-Applicationの存在するNamespaceが認識されることにより、AppProjectを見つけられるようにある。
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: foo-project
-  namespace: foo
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  sourceNamespaces:
-    - "<Applicationが属するNamespace>"
-```
-
-なお、argocd-cmd-params-cmでも設定が必要である。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cmd-params-cm
-  namespace: argocd
-data:
-  application.namespaces: "<Applicationが属するNamespace>"
-```
-
-> ↪️：https://github.com/argoproj/argo-cd/pull/9755
-
 #### ▼ Applicationを削除できない
 
 PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、Applicationを削除できないことがある。

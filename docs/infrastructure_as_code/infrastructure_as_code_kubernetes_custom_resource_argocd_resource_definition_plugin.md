@@ -353,26 +353,26 @@ data:
       namespace: argocd
       name: foo-plugin
     spec:
+      # マニフェストの作成前に必要なファイル (例：Chart.yamlなど) がリポジトリにあるかの確認処理を定義する
       discover:
         find:
-          command:
-            - bash
-            - -c
-            - find . -name *.yaml
+          glob: "<正規表現>" 
+      # マニフェストの作成前に実行したい処理を定義する
       init:
         command: 
           - /bin/bash
           - -c
         args:
           - |
-            # マニフェストの作成前に実行したい処理を定義する。
+            # マニフェスト作成の事前処理
+      # マニフェストの作成処理をプラグインの実行も含めて定義する
       generate:
         command: 
           - /bin/bash
           - -c
         args:
           - |
-            # マニフェストの作成時に実行したい処理を定義する。
+            # マニフェスト作成の作成処理         
   bar-plugin.yaml: |
     ...
 ```
