@@ -157,6 +157,8 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 
 全てのApplicationをポーリングする最上位Applicationのこと。
 
+root-applicationとAppProjectは同じNamespaceに属する必要がある。
+
 状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。
 
 root-applicationは、`default`や`root`のAppProjectに配置する。
@@ -419,8 +421,6 @@ kind: ConfigMap
 metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 data:
   application.namespaces: "<Applicationが属するNamespace>"
 ```

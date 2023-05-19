@@ -49,6 +49,8 @@ $ ansible-playbook foo-playbook.yml -i ./inventories --vault-password-file foo-f
 
 ### -i
 
+#### ▼ -iとは
+
 inventoryファイルを指定する。
 
 これにより、プロビジョニングの実行先の管理対象ノードを指定できる。
@@ -76,6 +78,18 @@ $ ansible-playbook foo-playbook.yml -i ./inventories
 ```
 
 > ↪️：<https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
+
+<br>
+
+### -u
+
+実行ユーザーを明示的に設定する。
+
+設定しない場合、現在のターミナルの実行ユーザーをそのまま使う。
+
+```bash
+$ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/ディレクトリ>
+```
 
 <br>
 

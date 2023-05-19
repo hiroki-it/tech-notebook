@@ -353,6 +353,12 @@ data:
       namespace: argocd
       name: foo-plugin
     spec:
+      discover:
+        find:
+          command:
+            - bash
+            - -c
+            - find . -name *.yaml
       init:
         command: 
           - /bin/bash
@@ -392,8 +398,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
   targetRevision: main
@@ -547,8 +551,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
   targetRevision: main
@@ -670,8 +672,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
   targetRevision: main
@@ -791,8 +791,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
   targetRevision: main
@@ -853,8 +851,6 @@ kind: Application
 metadata:
   name: app
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
@@ -975,8 +971,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
   targetRevision: main
@@ -1057,8 +1051,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
   targetRevision: main

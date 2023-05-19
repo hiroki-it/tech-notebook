@@ -100,7 +100,32 @@ artifacts:
 
 <br>
 
-## 03. CodeDeploy (EC2の場合)
+## 03. CodeDeploy (オンプレミスのサーバーの場合)
+
+### 利用できるデプロイメント手法
+
+インプレースデプロイメントを利用できる。
+
+<br>
+
+### インプレースデプロイメント
+
+#### ▼ CodeDeployエージェント
+
+オンプレミスサーバーにCodeDeployエージェントをインストールし、CodeDeployエージェントにサーバー情報を登録する必要がある。
+
+CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェントがS3バケットからソースコードの圧縮ファイルをプルする。
+
+![code-deploy_agent.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-deploy_agent.png)
+
+> ↪️：
+>
+> - https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/instances-on-premises.html
+> - https://inokara.hateblo.jp/entry/2015/07/15/175955
+
+<br>
+
+## 04. CodeDeploy (EC2の場合)
 
 ### 利用できるデプロイメント手法
 
@@ -122,7 +147,7 @@ artifacts:
 
 <br>
 
-## 03-02. CodeDeploy (Lambdaの場合)
+## 04-02. CodeDeploy (Lambdaの場合)
 
 ### 利用できるデプロイメント手法
 
@@ -132,7 +157,7 @@ artifacts:
 
 <br>
 
-## 03-03. CodeDeploy (ECSの場合)
+## 04-03. CodeDeploy (ECSの場合)
 
 ### 利用できるデプロイメント手法
 
@@ -304,7 +329,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
 
 <br>
 
-## 03-04. CodeDeployと他のAWSリソースとの連携
+## 04-04. CodeDeployと他のAWSリソースとの連携
 
 ### オートスケーリング
 

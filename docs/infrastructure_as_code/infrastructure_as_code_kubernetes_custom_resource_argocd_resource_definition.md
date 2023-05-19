@@ -881,8 +881,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   ignoreDifferences:
     # KubernetesリソースのAPIグループの名前
@@ -913,8 +911,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   ignoreDifferences:
 
@@ -1014,8 +1010,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     path: ./manifests
@@ -1038,8 +1032,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     path: ./manifests
@@ -1053,8 +1045,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     path: ./charts
@@ -1075,8 +1065,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
@@ -1142,8 +1130,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     chart: <チャート名>
@@ -1178,8 +1164,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-    finalizers:
-      - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     helm:
@@ -1198,8 +1182,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     helm:
@@ -1218,8 +1200,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     helm:
@@ -1313,8 +1293,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     # 例えば、GitHub内のGitHub Pagesをチャートリポジトリとして扱う。
@@ -1338,8 +1316,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: <バージョンタグ>
@@ -1371,8 +1347,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
@@ -1391,8 +1365,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: <バージョンタグ>
@@ -1418,8 +1390,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: foo-namespace
@@ -1446,8 +1416,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -1460,8 +1428,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     # 外部のAWS EKS Clusterのkube-apiserverのエンドポイントを指定する。
@@ -1503,8 +1469,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     automated:
@@ -1532,8 +1496,6 @@ kind: Application
 metadata:
   name: foo-application
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     syncOptions:
@@ -1601,6 +1563,9 @@ spec:
 
 単一のCluster内で、Applicationの責務境界のテナントを作成する。
 
+CRDの設定 (`scoped: Namespace`
+) からもわかるように、Namespacedなカスタムリソースである。
+
 ArgoCDは、最も認可スコープの大きい`default`のAppProjectを自動的に作成する。
 
 `default`のAppProjectでは、任意のNamespaceでApplicationを作成できる。
@@ -1644,7 +1609,7 @@ spec:
 
 そのAppProjectに属するApplicationを作成できるNamespace (argocd-serverとapplication-controllerがアクセス可能なNamespace) を設定する。
 
-argocd-serverとapplication-controllerは、ClusterRoleにより全てのKubernetesリソースにアクセスできるようになっており、これを特定のAppProjectに制限できる。
+argocd-serverとapplication-controllerは、ClusterRoleにより全てのKubernetesリソースにアクセスできるようにする必要があり、これを特定のAppProjectに制限できる。
 
 ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
 
@@ -1681,6 +1646,7 @@ data:
 >
 > - https://github.com/argoproj/argo-cd/pull/9755
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#implementation-details
+> - https://developers.redhat.com/articles/2022/04/13/manage-namespaces-multitenant-clusters-argo-cd-kustomize-and-helm#a_simple_argo_cd_application
 
 <br>
 

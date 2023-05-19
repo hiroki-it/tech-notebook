@@ -462,6 +462,21 @@ $ aws cloudwatch get-metric-statistics \
 
 <br>
 
+### CodeDeploy
+
+#### ▼ register-on-premises-instance
+
+オンプレミスのサーバーをCodeDeployのデプロイ先として設定する。
+
+```bash
+$ aws deploy register-on-premises-instance \
+    --region ap-northeast-1 \
+    --instance-name foo-on-premises-instance \
+    --iam_session_arn <IAM Session ARN>
+```
+
+<br>
+
 ### ECR
 
 #### ▼ get-login-password

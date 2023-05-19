@@ -190,8 +190,6 @@ Kubernetesリソースに親子関係がある場合に、親リソースより�
 
 関連する子リソースが削除されると、`.metadata.finalizers`キーが削除され、親リソースも削除されるようになる。
 
-例えば、ArgoCDのApplicationとAppProjectの`.metadata.finalizers`キーに`resources-finalizer.argocd.argoproj.io`をつけると、Applicationより後にAppProjectを削除できるようになる。
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
