@@ -1401,16 +1401,22 @@ kube-apiserverが、クライアントを認証できるようにする。別途
 
 ### Role、ClusterRole
 
-#### ▼ Role、ClusterRoleとは
+#### ▼ Role
+
+NamespacedスコープなKubernetesリソースやカスタムリソース (Namespaceを設定できるKubernetesリソース) に関する認可スコープを設定する。
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
-kube-apiserverが、認証済みのKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
+> ↪️：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
-| ロール名    | 説明                                                                                 | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ----------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                                                                                             |
-| ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                    | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐付ける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>↪️：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+#### ▼ ClusterRoleとは
+
+ClusterスコープなKubernetesリソースやカスタムリソース (Namespaceを設定できないKubernetesリソース) に関する認可スコープを設定する。
+
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
 > ↪️：
 >
@@ -1425,19 +1431,33 @@ Role、ClusterRole、を使用して認可スコープを制御する仕組み�
 
 <br>
 
-### RoleBinding、ClusterRoleBinding
+### RoleBinding
 
-#### ▼ RoleBinding、ClusterRoleBindingとは
+#### ▼ ClusterRoleBinding
 
-RoleやClusterRoleを、UserAccountやServiceAccountに紐付ける。
+ClusterRoleを、UserAccount / ServiceAccount / Groupに紐付ける。
 
-| バインディング名   | 説明                             | 補足                                                               |
-| ------------------ | -------------------------------- | ------------------------------------------------------------------ |
-| RoleBinding        | RoleをAccountに紐付ける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。               |
-| ClusterRoleBinding | ClusterRoleをAccountに紐付ける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+注意点として、ClusterRoleのみの紐付けに使用できる。
 
 > ↪️：
 >
+> - https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
+#### ▼ RoleBinding
+
+RoleやClusterRoleを、UserAccount / ServiceAccount / Groupに紐付ける。
+
+注意点として、RoleとClusterRoleの両方の紐付けに使用できる。
+
+もしRoleを紐づけた場合は、そのUserAccount / ServiceAccount / Groupは、NamespacedスコープのKubernetesリソースやカスタムリソースに関する権限を得る。
+
+もしClusterRoleを紐づけた場合は、そのUserAccount / ServiceAccount / Groupは、ClusterスコープのKubernetesリソースやカスタムリソースに関する権限を得る。
+
+> ↪️：
+>
+> - https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 

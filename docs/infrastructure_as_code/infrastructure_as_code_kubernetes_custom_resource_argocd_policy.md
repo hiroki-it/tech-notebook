@@ -593,3 +593,23 @@ GitOpsを採用できないため、CIOpsになる。
 > ↪️：https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
 
 <br>
+
+## 14. マルチテナント
+
+異なるClusterをデプロイ先とするArgoCDを同じClusterで管理する場合、ArgoCDはNamespace単位でテナント分割できない。
+
+ArgoCDのコンポーネント (特に、application-controller、argocd-server) には、ClusterスコープなKubernetesリソース (例：ClusterRoleの認可スコープを紐づける) が必要である。
+
+そのため、NamespaceごとにArgoCDのコンポーネントを分割したとしても、argocd-serverが異なるNamespaceのapplication-controllerの処理結果を取得してしまい、想定外のエラーが起こる。
+
+そこで、異なるCluster用のArgoCDを単一のClusterで管理する場合、以下方法でマルチテナントを実現する。
+
+- 単一のArgoCDをAppProject単位でテナント分割する
+- Cluster内に仮想Cluster (例：vcluster) を構築し、各仮想Cluster上で単一のArgoCDを作成する
+
+> ↪️：
+> 
+> - https://github.com/argoproj/argo-cd/issues/11116
+> - https://zenn.dev/hodagi/articles/2bc3fa10df186c
+
+<br>

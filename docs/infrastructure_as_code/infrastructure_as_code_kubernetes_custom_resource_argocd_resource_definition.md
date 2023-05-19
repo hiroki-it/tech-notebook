@@ -1563,8 +1563,21 @@ spec:
 
 単一のCluster内で、Applicationの責務境界のテナントを作成する。
 
-CRDの設定 (`scoped: Namespace`
-) からもわかるように、Namespacedなカスタムリソースである。
+CRDの設定 (`scoped: Namespace`) からもわかるように、AppProjectはNamespacedスコープなカスタムリソースである。
+
+Applicationが選べるAppProjectを制限できるように、Applicationが選べるAppProjectはNamespace単位で分割する。
+
+もし全てのApplicationとAppProjectを同じNamespaceで管理してしまうと、自由にAppProjectを変更して、そのProjectにデプロイできてしまう。
+
+> ↪️：
+>
+> - https://techstep.hatenablog.com/entry/2021/12/30/233323#Project%E3%81%A8%E3%81%AF
+> - https://github.com/argoproj/argo-cd/issues/11058
+> - https://blog.cybozu.io/entry/2020/02/04/110000
+
+<br>
+
+### default AppProject
 
 ArgoCDは、最も認可スコープの大きい`default`のAppProjectを自動的に作成する。
 
@@ -1599,9 +1612,6 @@ spec:
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#the-default-project
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
-> - https://techstep.hatenablog.com/entry/2021/12/30/233323#Project%E3%81%A8%E3%81%AF
-> - https://github.com/argoproj/argo-cd/issues/11058
-> - https://blog.cybozu.io/entry/2020/02/04/110000
 
 <br>
 

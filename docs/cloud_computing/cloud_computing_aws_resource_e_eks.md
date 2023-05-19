@@ -229,7 +229,7 @@ Kubernetesリソースの認可スコープは、IRSAで制御する。
 
 : もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。
 
-     このConfigMapには、そのIAMユーザーに紐づくUserAccountやServiceAccount、RoleBindingやClusterRoleBinding、が定義されている。
+     このConfigMapには、そのIAMユーザーに紐づくUserAccount / ServiceAccount / Group、RoleBinding / ClusterRoleBinding、が定義されている。
 
      この時、`kubectl`クライアントの場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
 
@@ -256,13 +256,13 @@ data:
 
 `【５】`
 
-: aws-iam-authenticator-serverは、UserAccountやServiceAccount、RoleBindingやClusterRoleBinding、の情報を含むレスポンスをkube-apiserverに返信する。
+: aws-iam-authenticator-serverは、UserAccount / ServiceAccount / Group、RoleBindingやClusterRoleBinding、の情報を含むレスポンスをkube-apiserverに返信する。
 
 `【６】`
 
 : あとは、Kubernetesの標準の認可の仕組みである。
 
-     kube-apiserverは、UserAccountやServiceAccountに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを介して取得する。
+     kube-apiserverは、UserAccount / ServiceAccount / Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを介して取得する。
 
      IAMユーザーは、Kubernetesリソースを操作できる。
 

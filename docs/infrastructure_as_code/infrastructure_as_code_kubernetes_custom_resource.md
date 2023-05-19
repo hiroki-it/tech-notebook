@@ -178,7 +178,7 @@ spec:
 
 #### ▼ scopeとは
 
-カスタムリソースが存在可能な領域の範囲を設定する。
+カスタムリソースのスコープを『Namespaced』あるいは『Cluster』なKubernetesリソースとするかを設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
