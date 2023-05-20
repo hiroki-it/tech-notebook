@@ -563,9 +563,11 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 <br>
 
-### AppProjectを使用する場合 (一番簡単)
+### AppProjectを使用する場合
 
 単一Cluster上に複数のAppProjectを作成し、これを単位としてArgoCDを作成する。
+
+各テナントは、ArgoCDを共有する。
 
 この場合、高負荷になるため、レプリカ数や処理並列数などを考慮する必要がある。
 
@@ -581,6 +583,8 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 単一Cluster内に仮想Cluster (例：vcluster) を構築し、これを単位としてArgoCDを作成する。
 
+各テナントは、ArgoCDを共有しない。
+
 > ↪️：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
 <br>
@@ -588,5 +592,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 ### 異なるClusterによる分割の場合
 
 異なるClusterを作成し、これを単位としてArgoCDを作成する。
+
+各テナントは、ArgoCDを共有しない。
 
 <br>
