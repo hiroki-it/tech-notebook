@@ -2684,7 +2684,7 @@ public function authorize()
 
 #### ▼ Authファサード
 
-ノート内の[こちら](#Authファサード)を参考にせよ。
+ノート内の『Authファサード』の項目を参照せよ。
 
 <br>
 

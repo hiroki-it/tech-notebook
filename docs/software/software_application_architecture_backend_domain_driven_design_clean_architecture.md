@@ -179,7 +179,7 @@ class FormatValidator
 
 そのため、メソッド名はユースケースを適切に表現した自由な英単語を使用する。
 
-Laravelの基本的なメソッド名 (index、store、create、show、update、) が参考になる。
+フレームワークのLaravelの基本的なメソッド名 (index、store、create、show、update) が参考になる。
 
 CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
@@ -595,7 +595,7 @@ class FooInteractor
 
 #### ▼ エンティティとは
 
-ノート内の[こちら](#04-03. エンティティ)を参考にせよ。
+ノート内の『エンティティ』の項目を参照せよ。
 
 <br>
 
@@ -603,7 +603,7 @@ class FooInteractor
 
 #### ▼ 値オブジェクトとは
 
-ノート内の[こちら](#04-04. 値オブジェクト)を参考にせよ。
+ノート内の『値オブジェクト』の項目を参照せよ。
 
 <br>
 
