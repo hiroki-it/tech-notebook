@@ -88,7 +88,8 @@ Helmの環境変数を表示する。
 ```bash
 $ helm env
 
-HELM_BIN="helm"
+# Helmのバイナリファイルの場所を
+HELM_BIN="/usr/local/bin/helm"
 HELM_CACHE_HOME="/Users/username/Library/Caches/helm"
 HELM_CONFIG_HOME="/Users/username/Library/Preferences/helm"
 HELM_DATA_HOME="/Users/username/Library/helm"

@@ -293,7 +293,7 @@ AppProjectが異なる限り、同じCluster内にある同じ`argocd.argoproj.i
 
 実行環境名 (dev、stg、prd) とする。
 
-ArgoCDでは、認可スコープとAppProjectを紐付けられるため、実行環境別の操作権限を設定できるようになる。
+ArgoCDでは、認可スコープ (argocd-rbac-cm) とAppProjectを紐付けられるため、特定の実行環境のAppProjectに属するArgoCD系リソースのみを操作できるようになる。
 
 <br>
 

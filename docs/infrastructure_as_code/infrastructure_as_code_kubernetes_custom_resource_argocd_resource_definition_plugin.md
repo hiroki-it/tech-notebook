@@ -134,14 +134,17 @@ spec:
       emptyDir: {}
 ```
 
-Volumeへのマウントが成功していれば、Pod内のコンテナの`/usr/local/bin`ディレクトリで、バイナリファイルを確認できる。
+Volumeへのマウントが成功していれば、Pod内のサイドカーコンテナの`/usr/local/bin`ディレクトリで、バイナリファイルを確認できる。
+
+
 
 ```bash
-argocd@repo-server:/usr/local/bin] $ ls -la
+# サイドカーのVolume
+argocd@cmp-server:/usr/local/bin] $ ls -la
 
 ...
 
--rwxr-xr-x 1 root root    45125632 Mar 23 14:44 helm # 最初からインストールされている
+-rwxr-xr-x 1 root root    45125632 Mar 23 14:44 helm
 -rwxr-xr-x 1 root argocd  62750720 Apr 23 10:58 helmfile
 -rwxr-xr-x 1 root argocd  30818973 Apr 23 10:58 ksops
 -rwxr-xr-x 1 root argocd  27399472 Apr 23 10:58 kustomize
@@ -150,10 +153,12 @@ argocd@repo-server:/usr/local/bin] $ ls -la
 ...
 ```
 
-補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がrepo-serverのコンテナイメージにあらかじめインストールされている。
+補足として、執筆時点 (2023/04/22) では、argocd系コマンドやいくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がrepo-serverのコンテナイメージにあらかじめインストールされている。
+
+サイドカーを使用する場合、argocd-serverのツールのバイナリファイルは使用しない。
 
 ```bash
-$ ls -la /usr/local/bin
+argocd@repo-server:/usr/local/bin] $ ls -la /usr/local/bin
 total 193408
 drwxr-xr-x 1 root root       224 Mar 23 15:11 .
 drwxr-xr-x 1 root root        17 Mar  8 02:05 ..
