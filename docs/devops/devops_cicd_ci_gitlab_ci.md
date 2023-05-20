@@ -117,6 +117,37 @@ foo_job:
 
 <br>
 
+### rules
+
+Jobの発火条件を設定する。
+
+ブランチ名やタグを使用した発火を定義できる。
+
+```yaml
+check_tag:
+  # AND条件
+  rules:
+    # mainブランチのみ
+    - if: $CI_COMMIT_BRANCH == "main"
+      variables:
+        TAG_NAME: main
+
+    # hotfixから始まるブランチのみ
+    - if: $CI_COMMIT_BRANCH =~ /^hotfix.*$/
+      variables:
+        TAG_NAME: hotfix-$CI_COMMIT_SHA
+
+    # 任意の名前のタグがついている場合のみ
+    - if: $CI_COMMIT_TAG
+      variables:
+        TAG_NAME: $CI_COMMIT_TAG
+
+```
+
+> ↪️：https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
+
+<br>
+
 ### stage
 
 Jobが属するステージを設定する。

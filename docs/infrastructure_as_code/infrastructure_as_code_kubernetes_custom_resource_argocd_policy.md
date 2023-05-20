@@ -560,9 +560,14 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 - 単一のArgoCDをAppProject単位でテナント分割する
 - Cluster内に仮想Cluster (例：vcluster) を構築し、各仮想Cluster上で単一のArgoCDを作成する
 
+単一のArgoCDをAppProject単位でテナント分割する場合、高負荷になるため、レプリカ数や処理並列数などを考慮する必要がある。
+
 > ↪️：
-> 
+>
+> - https://akuity.io/blog/argo-cd-architectures-explained/
 > - https://github.com/argoproj/argo-cd/issues/11116
+> - https://techblog.zozo.com/entry/measure-argocd-introduction
 > - https://zenn.dev/hodagi/articles/2bc3fa10df186c
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
 <br>

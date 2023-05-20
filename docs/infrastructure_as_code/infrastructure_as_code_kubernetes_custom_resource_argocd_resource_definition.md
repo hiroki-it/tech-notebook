@@ -1680,10 +1680,9 @@ error getting app project "foo-project": appproject.argoproj.io "foo-project" no
 ```
 
 > ↪️：
-> 
+>
 > - https://github.com/argoproj/argo-cd/pull/9755
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#cluster-scoped-argo-cd-installation
-
 
 <br>
 

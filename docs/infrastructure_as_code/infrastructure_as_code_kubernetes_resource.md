@@ -1397,6 +1397,8 @@ kube-apiserverが、クライアントを認証できるようにする。別途
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
+<br>
+
 ## 08. 認可系リソース
 
 ### Role、ClusterRole
