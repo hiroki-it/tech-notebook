@@ -153,6 +153,11 @@ argocd@cmp-server:/usr/local/bin] $ ls -la
 
 補足として、執筆時点 (2023/04/22) では、argocd系コマンドやいくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がrepo-serverのコンテナイメージにあらかじめインストールされている。
 
+> ↪️：
+> 
+> - https://github.com/argoproj/argo-cd/blob/main/Dockerfile#L58-L62
+> - https://github.com/argoproj/argo-cd/blob/main/hack/tool-versions.sh
+
 サイドカーを使用する場合、argocd-serverのツールのバイナリファイルは使用しない。
 
 ```bash
