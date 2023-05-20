@@ -206,7 +206,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 Anthos Clusterの作成時やアップグレード時に、`bmctl`コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
 
-Kindはコンテナを構築し、そのコンテナ内でブートストラップクラスターを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。
+Kindはコンテナを構築し、そのコンテナ内でブートストラップClusterを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。
 
 Kindがコンテナを構築するために、Anthos Clusterの構築前に、`docker`プロセスを起動しておく必要がある。
 
@@ -214,11 +214,13 @@ Kindがコンテナを構築するために、Anthos Clusterの構築前に、`d
 $ systemctl start docker
 ```
 
-#### ▼ ブートストラップクラスター
+#### ▼ ブートストラップCluster
 
-Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。
+Kindがコンテナ内で作成する仮想Anthos Clusterのこと。
 
-`~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig`ファイルを指定することにより、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
+VClusterを使用して、仮想Anthos Clusterを作成している。
+
+`~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig`ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。
 
 ```bash
 $ kubectl get pod \
@@ -286,7 +288,7 @@ $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace
 
 #### ▼ --reuse-bootstrap-cluster
 
-既存のブートストラップクラスターを再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
+既存のブートストラップClusterを再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
 
 ```bash
 $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reuse-bootstrap-cluster

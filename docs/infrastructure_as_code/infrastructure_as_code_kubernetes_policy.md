@@ -834,3 +834,29 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。
 
 <br>
+
+## 09. マルチテナント
+
+### Cluster分割の場合
+
+Cluster自体を分割し、テナントを実装する。
+
+一番簡単である。
+
+<br>
+
+### 階層Namespaceの場合
+
+Namespaceに親子関係を定義し、テナントを実装する。
+
+> ↪️：https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
+
+<br>
+
+### 仮想Clusterの場合
+
+ホストCluster上に仮想Clusterを作成し、テナントを実装する。
+
+> ↪️：https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
+
+<br>

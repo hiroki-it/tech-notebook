@@ -1761,7 +1761,7 @@ spec:
 
 ### namespaceResourceWhitelist
 
-AppProject内でApplicationがデプロイできるNamespaceスコープ (Namespaceのある) なリソースを設定する。
+AppProject内でApplicationがデプロイできるNamespacedスコープ (Namespaceのある) なリソースを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

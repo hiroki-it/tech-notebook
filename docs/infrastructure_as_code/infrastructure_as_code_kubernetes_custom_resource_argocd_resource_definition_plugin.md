@@ -136,8 +136,6 @@ spec:
 
 Volumeへのマウントが成功していれば、Pod内のサイドカーコンテナの`/usr/local/bin`ディレクトリで、バイナリファイルを確認できる。
 
-
-
 ```bash
 # サイドカーのVolume
 argocd@cmp-server:/usr/local/bin] $ ls -la

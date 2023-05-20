@@ -178,7 +178,9 @@ spec:
 
 #### ▼ scopeとは
 
-カスタムリソースのスコープを『Namespaced』あるいは『Cluster』なKubernetesリソースとするかを設定する。
+カスタムリソースを『Namespacedスコープ』あるいは『Clusterスコープ』なKubernetesリソースとするかを設定する。
+
+注意点として、CRD自体はClusterスコープなKubernetesリソースである。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

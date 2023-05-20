@@ -549,6 +549,8 @@ GitOpsを採用できないため、CIOpsになる。
 
 ## 14. マルチテナント
 
+### ArgoCDでテナント分割が必要な理由
+
 異なるClusterをデプロイ先とするArgoCDを同じClusterで管理する場合、ArgoCDはNamespace単位でテナント分割できない。
 
 ArgoCDのコンポーネント (特に、application-controller、argocd-server) には、ClusterスコープなKubernetesリソース (例：ClusterRoleの認可スコープを紐づける) が必要である。
@@ -557,17 +559,34 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 そこで、異なるCluster用のArgoCDを単一のClusterで管理する場合、以下方法でマルチテナントを実現する。
 
-- 単一のArgoCDをAppProject単位でテナント分割する
-- Cluster内に仮想Cluster (例：vcluster) を構築し、各仮想Cluster上で単一のArgoCDを作成する
+> ↪️：https://akuity.io/blog/argo-cd-architectures-explained/
 
-単一のArgoCDをAppProject単位でテナント分割する場合、高負荷になるため、レプリカ数や処理並列数などを考慮する必要がある。
+<br>
+
+### AppProjectを使用する場合 (一番簡単)
+
+単一Cluster上に複数のAppProjectを作成し、これを単位としてArgoCDを作成する。
+
+この場合、高負荷になるため、レプリカ数や処理並列数などを考慮する必要がある。
 
 > ↪️：
 >
-> - https://akuity.io/blog/argo-cd-architectures-explained/
 > - https://github.com/argoproj/argo-cd/issues/11116
 > - https://techblog.zozo.com/entry/measure-argocd-introduction
 > - https://zenn.dev/hodagi/articles/2bc3fa10df186c
-> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
+
+<br>
+
+### 仮想Cluster単位の場合
+
+単一Cluster内に仮想Cluster (例：vcluster) を構築し、これを単位としてArgoCDを作成する。
+
+> ↪️：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
+
+<br>
+
+### 異なるClusterによる分割の場合
+
+異なるClusterを作成し、これを単位としてArgoCDを作成する。
 
 <br>

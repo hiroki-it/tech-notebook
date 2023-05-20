@@ -141,7 +141,6 @@ check_tag:
     - if: $CI_COMMIT_TAG
       variables:
         TAG_NAME: $CI_COMMIT_TAG
-
 ```
 
 > ↪️：https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
