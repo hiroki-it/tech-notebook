@@ -944,8 +944,6 @@ kind: Application
 metadata:
   namespace: argocd
   name: root-application
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: root # アプリケーションコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ---
@@ -954,8 +952,6 @@ kind: Application
 metadata:
   namespace: argocd
   name: foo-infra-application
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: infra # インフラコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ---
@@ -964,8 +960,6 @@ kind: Application
 metadata:
   namespace: argocd
   name: foo-app-application
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: app # アプリケーションコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ```
@@ -1089,8 +1083,6 @@ metadata:
   namespace: argocd
   labels:
     app.kubernetes.io/env: prd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: main # 本番環境に対応するブランチ
@@ -1105,8 +1097,6 @@ metadata:
   namespace: argocd
   labels:
     app.kubernetes.io/env: stg
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   source:
     targetRevision: develop # ステージング環境に対応するブランチ
@@ -1593,8 +1583,6 @@ kind: AppProject
 metadata:
   name: default
   namespace: foo
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   clusterResourceWhitelist:
     - group: "*"
@@ -1619,6 +1607,8 @@ spec:
 
 #### ▼ sourceNamespacesによるClusterスコープモード
 
+AppProjectを単位としたテナント分割のために使用する。
+
 そのAppProjectに属するApplicationを作成できるNamespace (argocd-serverとapplication-controllerがアクセス可能なNamespace) を設定する。
 
 これにより、ArgoCDはClusterスコープモードになる。
@@ -1637,14 +1627,14 @@ kind: AppProject
 metadata:
   name: prd
   namespace: foo # サービス名、など
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   sourceNamespaces:
     - "<Applicationが属するNamespace>"
 ```
 
-なお、argocd-cmd-params-cmでも設定が必要である。
+なお、application-controllerとargocd-serverは全てのNamespaceにアクセスできるようにする必要がある。
+
+argocd-cmd-params-cmの`data.application.namespaces`では、アスタリスク (`*`) としておく。
 
 ```yaml
 apiVersion: v1
@@ -1653,7 +1643,7 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: foo
 data:
-  application.namespaces: "<Applicationが属するNamespace>"
+  application.namespaces: "*"
 ```
 
 > ↪️：
@@ -1696,8 +1686,6 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   sourceRepos:
     - "*"
@@ -1713,8 +1701,6 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   description: This is application in prd environment
 ```
@@ -1731,8 +1717,6 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   destinations:
     - namespace: "*" # 属するApplictionは、全てのNamespaceにデプロイできる。
@@ -1751,8 +1735,6 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   clusterResourceWhitelist:
     - group: "*"
@@ -1769,8 +1751,6 @@ kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
   namespace: foo # サービス名、など
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   namespaceResourceWhitelist:
     - group: "*"

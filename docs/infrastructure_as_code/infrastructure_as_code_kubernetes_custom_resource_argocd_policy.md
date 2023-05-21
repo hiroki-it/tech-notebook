@@ -589,9 +589,9 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 <br>
 
-### 異なるClusterによる分割の場合
+### 実Cluster単位の場合
 
-異なるClusterを作成し、これを単位としてArgoCDを作成する。
+テナントごとに異なる実Clusterを作成し、これを単位としてArgoCDを作成する。
 
 各テナントは、ArgoCDを共有しない。
 

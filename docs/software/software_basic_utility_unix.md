@@ -450,6 +450,15 @@ $ curl -X POST -H "Content-Type:application/json" -d '{}' https://example.com/fo
 $ curl -sL https://example.com/foo
 ```
 
+`curl`コマンドの結果から、特定の文字を抽出することができる。
+
+```bash
+# 『=』より後ろのバージョンを取得する
+$ curl -s https://example.com/foo.txt | grep version= | sed -e 's/^[^=]*=//'
+```
+
+> ↪️：https://teratail.com/questions/315235#reply-439456
+
 <br>
 
 ### -sS (小文字)

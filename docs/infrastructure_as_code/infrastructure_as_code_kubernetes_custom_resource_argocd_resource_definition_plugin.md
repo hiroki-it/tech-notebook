@@ -153,13 +153,6 @@ argocd@cmp-server:/usr/local/bin] $ ls -la
 
 補足として、執筆時点 (2023/04/22) では、argocd系コマンドやいくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がrepo-serverのコンテナイメージにあらかじめインストールされている。
 
-> ↪️：
-> 
-> - https://github.com/argoproj/argo-cd/blob/main/Dockerfile#L58-L62
-> - https://github.com/argoproj/argo-cd/blob/main/hack/tool-versions.sh
-
-サイドカーを使用する場合、argocd-serverのツールのバイナリファイルは使用しない。
-
 ```bash
 argocd@repo-server:/usr/local/bin] $ ls -la /usr/local/bin
 total 193408
@@ -187,6 +180,18 @@ lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bi
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
 > - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
+
+各ツールの推奨バージョンは、以下のコマンドで取得できる。
+
+```bash
+$ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-versions.sh \
+    | grep version=
+```
+
+> ↪️：
+>
+> - https://github.com/argoproj/argo-cd/blob/main/Dockerfile#L58-L62
+> - https://github.com/argoproj/argo-cd/blob/main/hack/tool-versions.sh
 
 #### ▼ サイドカーを配置
 

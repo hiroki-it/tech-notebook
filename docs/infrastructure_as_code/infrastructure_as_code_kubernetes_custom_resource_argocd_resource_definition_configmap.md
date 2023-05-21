@@ -459,11 +459,9 @@ AppProjectに属するArgoCD系リソースのみへのアクセスを許可す�
 
 これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
 
-- `admin`ロールに、全てにアクセスできる認可スコープ
-- `app`ロールに、`app`のAppProject配下の全てにアクセスできる認可スコープ
-- `infra`ロールに、`infra`のAppProject配下の全てにアクセスできる認可スコープ
-
-なお、実行環境名は`.metadata.labels`キーに設定しておく。
+- `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra`ロールに、`infra`のみを操作できる認可スコープ
+- `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -476,14 +474,15 @@ data:
   policy.default: role:readonly
   policy.csv: |
     # ロールと認可スコープを定義する。
-    p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
+    p, role:maintainer, *, *, app/*, allow
+    p, role:maintainer, *, *, infra/*, allow
 
     # グループにロールを紐付ける。
-    g, admin, role:admin
     g, app-team, role:app
     g, infra-team, role:infra
+    g, admin, role:maintainer
   scopes: "[groups]"
 ```
 
@@ -499,8 +498,8 @@ data:
 
 実行環境 (`dev`、`prd`) 別にAppProjectを作成した上で、AppProjectに属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
-- `dev`ロールに、dev環境を操作できる認可スコープ
-- `prd`ロールに、全ての環境を操作できる認可スコープ
+- `developer`ロールに、dev環境のAppProject内に属するArgoCD系リソースのみを操作できる認可スコープ
+- `maintainer`ロールに、dev環境とprd環境の両方を操作できる認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -514,7 +513,8 @@ data:
   policy.csv: |
     # ロールと認可スコープを定義する
     p, role:developer, *, *, dev/*, allow
-    p, role:maintainer, *, *, *, allow
+    p, role:maintainer, *, *, dev/*, allow
+    p, role:maintainer, *, *, prd/*, allow
 
     # グループにロールを紐付ける
     g, developers, role:developer
@@ -532,15 +532,13 @@ IDプロバイダーに委譲する場合、グループ名はIDプロバイダ�
 
 **＊実装例＊**
 
-管理チーム (`app`、`infra`) 単位でAppProjectを作成した上で、AppProjectに属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+IDプロバイダー側で、チームによる認証グループがすでに存在しているとする。
 
-これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
+以下のように、ロールと認可スコープを紐付ける。
 
-- `admin`ロールに、全てにアクセスできる認可スコープ
-- `app`ロールに、`app`のAppProject配下の全てにアクセスできる認可スコープ
-- `infra`ロールに、`infra`のAppProject配下の全てにアクセスできる認可スコープ
-
-なお、実行環境名は`.metadata.labels`キーに設定しておく。
+- `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra`ロールに、`infra`のみを操作できる認可スコープ
+- `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -553,14 +551,50 @@ data:
   policy.default: role:readonly
   policy.csv: |
     # ロールと認可スコープを定義する
-    p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
+    p, role:maintainer, *, *, app/*, allow
+    p, role:maintainer, *, *, infra/*, allow
 
     # IDプロバイダーで認証されたグループにロールを紐付ける
-    g, example-org.github.com:admin, role:admin
     g, example-org.github.com:app-team, role:app
     g, example-org.github.com:infra-team, role:infra
+    g, example-org.github.com:maintainer, role:maintainer
+  scopes: "[groups]"
+```
+
+**＊実装例＊**
+
+IDプロバイダー側で、チームによる認証グループがすでに存在しているとする。
+
+実行環境 (`dev-*`、`prd-*`) 別にAppProjectを作成した上で、AppProjectに属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+
+以下のように、ロールと認可スコープを紐付ける。
+
+- `app`ロールに、`dev-app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra`ロールに、`dev-infra`のみを操作できる認可スコープ
+- `maintainer`ロールに、`dev-app`と`dev-infra`の両方を操作できる認可スコープ
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  # デフォルトのロール
+  policy.default: role:readonly
+  policy.csv: |
+    # ロールと認可スコープを定義する
+    p, role:app, *, *, dev-app/*, allow
+    p, role:infra, *, *, dev-infra/*, allow
+    p, role:maintainer, *, *, dev-app/*, allow
+    p, role:maintainer, *, *, dev-infra/*, allow
+
+    # IDプロバイダーで認証されたグループにロールを紐付ける
+    g, example-org.github.com:app-team, role:app
+    g, example-org.github.com:infra-team, role:infra
+    g, example-org.github.com:maintainer, role:maintainer
   scopes: "[groups]"
 ```
 
@@ -570,43 +604,15 @@ data:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 
-**＊実装例＊**
-
-実行環境 (`dev`、`tes`、`prd`) 別にAppProjectを作成した上で、AppProjectに属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
-
-- `admin`ロールに、全てにアクセスできる認可スコープ
-- `app`ロールに、AppProject配下の全てにアクセスできる認可スコープ
-- `infra`ロールに、AppProject配下の全てにアクセスできる認可スコープ
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-rbac-cm
-  namespace: argocd
-data:
-  # デフォルトのロール
-  policy.default: role:readonly
-  policy.csv: |
-    # ロールと認可スコープを定義する
-    p, role:admin, *, *, *, allow
-    p, role:app, *, *, *, allow
-    p, role:infra, *, *, *, allow
-
-    # IDプロバイダーで認証されたグループにロールを紐付ける
-    g, example-org.github.com:admin, role:admin
-    g, example-org.github.com:app-team, role:app
-    g, example-org.github.com:infra-team, role:infra
-  scopes: "[groups]"
-```
-
 #### ▼ IDプロバイダーのメールアドレスに紐付ける場合
+
+IDプロバイダー側で、メールアドレスによる認証グループがすでに存在しているとする。
 
 以下のように、ロールと認可スコープを紐付ける。
 
-- `admin`ロールに、全てにアクセスできる認可スコープ
-- `app`ロールに、`app`のAppProject配下の全てにアクセスできる認可スコープ
-- `infra`ロールに、`infra`のAppProject配下の全てにアクセスできる認可スコープ
+- `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra`ロールに、`infra`のみを操作できる認可スコープ
+- `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -619,14 +625,15 @@ data:
   policy.default: role:readonly
   policy.csv: |
     # ロールと認可スコープを定義する
-    p, role:admin, *, *, *, allow
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
+    p, role:maintainer, *, *, app/*, allow
+    p, role:maintainer, *, *, infra/*, allow
 
     # IDプロバイダーで認証されたグループにロールを紐付ける
-    g, admin@gmail.com, role:admin
     g, app-team@gmail.com, role:app
     g, infra-team@gmail.com, role:infra
+    g, maintainer@gmail.com, role:maintainer
   scopes: "[email]"
 ```
 
