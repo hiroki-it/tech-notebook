@@ -542,6 +542,7 @@ nav:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.md
           - ■ Kustomize:
               - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_command.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
 
   - ⏬ K8sアドオン:
