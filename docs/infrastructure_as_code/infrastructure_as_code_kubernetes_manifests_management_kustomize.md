@@ -13,72 +13,6 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 <br>
 
-## 01. `kustomize.yaml`ファイルの使用
-
-### 使用方法
-
-`kubectl`コマンドで`-k`オプションを有効化すると、`kustomize.yaml`ファイルを使用できる。
-
-`kustomize.yaml`ファイルのあるディレクトリを指定する。
-
-<br>
-
-### -k
-
-`kustomize.yaml`ファイルを使用して、`kubectl`コマンドを実行する。
-
-ローカルマシンにある`kustomize.yaml`ファイルを使用する場合、`kustomize.yaml`ファイルのあるパスを指定する。
-
-```bash
-$ kubectl diff -k ./ > kustomize.diff
-
-$ kubectl apply -k ./
-```
-
-> ↪️：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
-
-リモートにある`kustomize.yaml`ファイルを使用する場合も、同じく`kustomize.yaml`ファイルのあるディレクトリのURLを指定する。
-
-```bash
-$ kubectl diff -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>" > kustomize.diff
-
-$ kubectl apply -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>"
-```
-
-> ↪️：https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#examples
-
-**＊実行例＊**
-
-例えば、argocd-cdチャートの`5.28.0`を使用する場合、これはArgoCDの`2.6.7`に対応しているため、以下の値で作成/変更する。
-
-```bash
-$ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
-
-$ kubectl apply -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
-```
-
-例えば、aws-load-balancer-controllerチャートの`1.5.2`を使用する場合、これはaws-load-balancer-controllerの`2.5.1`に対応しているため、以下の値で作成/変更する。
-
-```bash
-$ kubectl diff -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"
-
-$ kubectl apply -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"
-```
-
-<br>
-
-### kustomize
-
-`kustomize.yaml`ファイルを使用して、テンプレートからマニフェストを作成する。
-
-```bash
-$ kubectl kustomize ./
-```
-
-> ↪️：https://note.com/shift_tech/n/nd7f17e51d592
-
-<br>
-
 ## 01. `bases`ディレクトリ
 
 ### `kustomize.yaml`ファイル
@@ -86,6 +20,10 @@ $ kubectl kustomize ./
 #### ▼ `kustomize.yaml`ファイルとは
 
 `base`ディレクトリ配下にあるファイルの処理方法を設定する。
+
+`kubectl`コマンドで`-k`オプションを有効化すると、`kustomize.yaml`ファイルを使用できる。
+
+`kustomize.yaml`ファイルのあるディレクトリを指定する。
 
 #### ▼ resources
 
@@ -229,3 +167,42 @@ spec:
 ```
 
 <br>
+
+## 03. プラグイン
+
+### プラグインとは
+
+Kustomizeのプラグインには、GeneratorとTransformerの種類がある。
+
+Generator (例：SecretGenerator、ConfigMapGenerator) のプラグインは、マニフェストを作成する。
+
+一歩でTransformerは、マニフェストを部分的に書き換える。
+
+> ↪️：
+> 
+> - https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md
+> - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
+> - https://www.techscore.com/blog/2019/08/01/change-kustomize-build-behavior/
+
+<br>
+
+### セットアップ
+
+`/.config/kustomize/plugin`ディレクトリ配下にプラグインをおく必要がある。
+
+```bash
+$ ls /.config/kustomize/plugin
+
+viaduct.ai/v1/ksops/ksops
+```
+
+また、設定ファイルを`.config`ディレクトリ配下におく必要があり、`XDG_CONFIG_HOME`変数で定義されている。
+
+```bash
+$ export XDG_DATA_DIRS=/.config
+```
+
+> ↪️：https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling
+
+<br>
+

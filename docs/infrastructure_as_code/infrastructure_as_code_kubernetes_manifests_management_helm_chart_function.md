@@ -789,7 +789,7 @@ bar:
 
 ```yaml
 {{- if hasKey .Values.foo "isFoo" }}
-{{- if eq .Values.foo.isFoo }}
+{{- if eq .Values.foo.isFoo true }}
   ...
 {{- end }}
 {{- else }}

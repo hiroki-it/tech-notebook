@@ -59,7 +59,9 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q https://get.helm.sh/helm-<バージョン>-linux-amd64.tar.gz
+          ARGOCD_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-helm/argo-cd-<バージョン>/charts/argo-cd/Chart.yaml | grep appVersion | sed -e 's/^[^: ]*: //')
+          HELM_RECOMMENDED_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-cd/"${ARGOCD_VERSION}"/hack/tool-versions.sh | grep helm3_version | sed -e 's/^[^=]*=//')
+          wget -q https://get.helm.sh/helm-v"${HELM_RECOMMENDED_VERSION}"-linux-amd64.tar.gz
           tar -xvf helm-<バージョン>-linux-amd64.tar.gz
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
@@ -926,6 +928,8 @@ spec:
 
   initContainers:
     - name: ksops-installer
+      # Kustomizeのバージョンに合わせて、インストールするべきバージョンを決める
+      # https://github.com/viaduct-ai/kustomize-sops/blob/master/scripts/install-kustomize.sh
       image: viaductoss/ksops:v4.1.1
       command:
         - /bin/sh
