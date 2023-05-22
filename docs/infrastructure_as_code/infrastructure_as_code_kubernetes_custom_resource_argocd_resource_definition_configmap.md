@@ -119,6 +119,21 @@ data:
   kustomize.buildOptions: --enable-alpha-plugins --enable-exec
 ```
 
+複数のバージョンで異なるオプションを使用できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  kustomize.buildOptions.v1.0.0: --enable-alpha-plugins --enable-exec
+  kustomize.buildOptions.v2.0.0: --enable-alpha-plugins --enable-exec 
+```
+
 > ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
 
 <br>
