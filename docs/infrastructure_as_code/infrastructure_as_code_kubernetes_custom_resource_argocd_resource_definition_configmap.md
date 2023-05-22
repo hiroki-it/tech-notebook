@@ -129,6 +129,18 @@ data:
 
 デフォルトのKustomizeのバージョン以外のものも使用したい場合に、そののバージョンと、バイナリファイルの置き場所を設定する。
 
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  kustomize.path.v1.0.0: /usr/local/bin/kustomize
+```
+
 複数のバージョンのKustomizeを使用できる。
 
 ```yaml
@@ -140,8 +152,8 @@ metadata:
   labels:
     app.kubernetes.io/part-of: argocd
 data:
-  kustomize.path.v1.0.0: /custom-tools/kustomize_1_0_0
-  kustomize.path.v2.0.0: /custom-tools/kustomize_2_0_0
+  kustomize.path.v1.0.0: /usr/local/bin/kustomize_1_0_0
+  kustomize.path.v2.0.0: /usr/local/bin/kustomize_2_0_0
 ```
 
 #### ▼ 各ApplicationでKustomizeを使用する
