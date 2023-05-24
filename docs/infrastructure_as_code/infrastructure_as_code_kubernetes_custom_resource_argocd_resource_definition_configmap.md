@@ -119,7 +119,7 @@ data:
   kustomize.buildOptions: --enable-alpha-plugins --enable-exec
 ```
 
-複数のバージョンで異なるオプションを使用できる。
+なお、`kustomize.path.<バージョン>`オプションを使用している場合、`kustomize.buildOptions.<バージョン>`オプションの使用が必須であり、バージョンごとにオプションを設定できる。
 
 ```yaml
 apiVersion: v1
@@ -131,7 +131,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   kustomize.buildOptions.v1.0.0: --enable-alpha-plugins --enable-exec
-  kustomize.buildOptions.v2.0.0: --enable-alpha-plugins --enable-exec 
+  kustomize.buildOptions.v2.0.0: --enable-alpha-plugins --enable-exec
 ```
 
 > ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters

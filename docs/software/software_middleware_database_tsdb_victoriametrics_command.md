@@ -78,6 +78,8 @@ $ victoria-metrics-prod -memory.allowedBytes=100000
 
 VictoriaMetricsが使用できるメモリサイズのうちで、許容するメモリ使用率を設定する。
 
+これが小さいと、VictoriaMetricsがOOMキラーで停止してしまう。
+
 **＊例＊**
 
 ```bash

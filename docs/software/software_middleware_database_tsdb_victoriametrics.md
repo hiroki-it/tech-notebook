@@ -53,6 +53,8 @@ vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件�
 
 VictoriaMetricsをメトリクス監視バックエンドとして使用する場合はPrometheusは不要になる。
 
+各コンポーネントがメモリを使用するため、
+
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
 
 > ↪️：
@@ -101,6 +103,17 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 #### ▼ vm-selectとは
 
 クライアントから読み出しリクエストを受信し、vm-storageからデータを読み出す。
+
+#### ▼ vm-selectの仕組み
+
+VictoriaMetricsは、クエリの実行前に、ディスクに永続化したデータポイントを一度メモリに移動する。
+
+そのため、ストレージのデータ量が多くなるのに伴って、メモリ上のデータポイントが常時/突発的に多くなり、OOMキラーになることがある。
+
+> ↪️：
+>
+> - https://docs.victoriametrics.com/FAQ.html#how-to-set-a-memory-limit-for-victoriametrics-components
+> - https://docs.victoriametrics.com/#storage
 
 <br>
 

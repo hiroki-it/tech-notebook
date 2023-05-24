@@ -677,6 +677,25 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 
 <br>
 
+### セットアップ
+
+#### ▼ IAMポリシー
+
+EC2ワーカーNodeが、自身の属するClusterにアクセスできるように、EC2ワーカーNodeに`AmazonEKSWorkerNodePolicy`を付与する必要がある。
+
+EC2ワーカーNode内のPodがECRからコンテナイメージをプルできるように、EC2ワーカーNodeに`AmazonEC2ContainerRegistryReadOnly`を付与する必要がある。
+
+`aws-node`のPodがAWSのネットワーク系のAPIにアクセスできるように、IRSA用のServiceAccountに`AmazonEKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
+
+> ↪️：
+>
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-node-role.html
+> - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html
+> - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html
+> - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html
+
+<br>
+
 ## 04-02. Nodeグループ (on-EC2)
 
 ### マネージド
@@ -1254,12 +1273,12 @@ EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode
 
 Fargateを設定する。
 
-| コンポーネント名           | 説明                                                                                                     | 補足                                                                                                                                                                                                                                                                            |
-| -------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pod実行ロール              | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。                                      | ・実行ポリシー (AmazonEKSFargatePodExecutionRolePolicy) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>↪️：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
-| サブネット                 | EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                                | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                    |
-| ポッドセレクタ (Namespace) | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、PodのNamespaceの値を設定する。       | ・`kube-system`や`default`を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                   |
-| ポッドセレクタ (Label)     | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                                                                 |
+| コンポーネント名           | 説明                                                                                                     | 補足                                                                                                                                                                                                                                                                              |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pod実行ロール              | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。                                      | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>↪️：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| サブネット                 | EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                                | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                      |
+| ポッドセレクタ (Namespace) | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、PodのNamespaceの値を設定する。       | ・`kube-system`や`default`を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                     |
+| ポッドセレクタ (Label)     | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                                                                   |
 
 > ↪️：https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 

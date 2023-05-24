@@ -130,13 +130,15 @@ data "aws_ami" "bastion" {
 
 <br>
 
-### 循環参照エラー
+### 循環参照エラー (`Error: Cycle`)
 
 `output`ブロックで値を出力するモジュールは、コール元に依存することになる。
 
-コール元も`output`ブロックを出力するモジュールを使用する場合、互いに依存し合うので、循環参照エラーが発生する。
+コール元も`output`ブロックを出力するモジュールを使用する場合、相互依存するために循環参照エラーが発生する。
 
 循環参照エラーは、ローカルモジュール / 自前リモートモジュール内で公式リモートモジュールを使用する場合に起こる。
+
+> ↪️：https://serverfault.com/questions/1005761/what-does-error-cycle-means-in-terraform
 
 <br>
 
@@ -1571,7 +1573,10 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
     # ECRのURL。タグを指定しない場合はlatestが割り当てられる。
     "image": "${laravel_ecr_repository_url}",
     "essential": true,
-    "portMappings": [{"containerPort": 80, "hostPort": 80, "protocol": "tcp"}],
+    "portMappings": [
+        # AWS ECSのホストとコンテナのポートマッピング
+        {"containerPort": 80, "hostPort": 80, "protocol": "tcp"},
+      ],
     "secrets": [
         {
           # アプリケーションの環境変数名
@@ -1586,7 +1591,10 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
         {"name": "REDIS_PASSWORD", "valueFrom": "/prd-foo/REDIS_PASSWORD"},
         {"name": "REDIS_PORT", "valueFrom": "/prd-foo/REDIS_PORT"},
       ],
-    "logConfiguration": {"logDriver": "awslogs", "options": {
+    "logConfiguration": {
+        # ログドライバー
+        "logDriver": "awslogs",
+        "options": {
             # ロググループ名
             "awslogs-group": "/prd-foo/laravel/log",
             # スタックトレースのグループ化 (同時刻ログのグループ化)
@@ -1595,7 +1603,8 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
             "awslogs-region": "ap-northeast-1",
             # ログストリーム名の接頭辞
             "awslogs-stream-prefix": "/container",
-          }},
+          },
+      },
   },
 ]
 ```

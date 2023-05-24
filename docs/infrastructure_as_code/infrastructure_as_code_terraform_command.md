@@ -268,6 +268,25 @@ $ terraform init -upgrade
 
 > ↪️：https://www.terraform.io/cli/commands/init#upgrade
 
+#### ▼ 問題が起こる場合
+
+`terraform init`コマンドでエラーが起こる場合、以下のいずれかで解決できることがある。
+
+```bash
+$ rm -r $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/aws/
+```
+
+```bash
+PROVIDER_VER="<バージョン>"
+PROVIDER_NAME="aws"
+ARCH=$(if [ `uname -m` = 'arm64' ] ; then ; echo "darwin_arm64" ; else ; echo "darwin_amd64" ; fi)
+
+$ mkdir -p $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/${PROVIDER_NAME}/${PROVIDER_VER}/${ARCH}/ \
+    && wget "https://releases.hashicorp.com/terraform-provider-${PROVIDER_NAME}/${PROVIDER_VER}/terraform-provider-${PROVIDER_NAME}_${PROVIDER_VER}_${ARCH}.zip" \
+    && unzip "terraform-provider-${PROVIDER_NAME}_${PROVIDER_VER}_${ARCH}.zip" -d $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/${PROVIDER_NAME}/${PROVIDER_VER}/${ARCH}/ \
+    && rm -f "terraform-provider-${PROVIDER_NAME}_${PROVIDER_VER}_${ARCH}.zip"
+```
+
 <br>
 
 ### fmt
@@ -334,10 +353,22 @@ rosource間の依存関係をグラフ化する。
 Graphvizのダウンロードが必要である。
 
 ```bash
-$ terraform graph | dot -Tsvg > graph.svg
+$ brew install graphviz
+
+$ terraform graph | dot -Tpng > graph.png
 ```
 
 > ↪️：https://graphviz.org/download/
+
+#### ▼ -draw-cycles
+
+グラフの中で循環参照の矢印を色付きで表示する。
+
+```bash
+$ terraform graph -draw-cycles | dot -Tpng > graph.png
+```
+
+> ↪️：https://qiita.com/ringo/items/d06d936209d7abd9dcff
 
 #### ▼ 図形の見方
 

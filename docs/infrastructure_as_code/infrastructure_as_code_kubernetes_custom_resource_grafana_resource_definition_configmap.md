@@ -104,7 +104,9 @@ data:
 
 #### ▼ VictoriaMetricsの場合
 
-VictoriaMetricsの場合、ビルトインのプラグインを使用できる。
+VictoriaMetricsの場合、ビルトインの`prometheus`タイプを使用できる。
+
+VictoriaMetricsからメトリクスを収集するために、PromQLを実行する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -126,6 +128,34 @@ data:
 ```
 
 > ↪️：https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
+
+#### ▼ CloudWatchの場合
+
+CloudWatchの場合、`cloudwatch`タイプを指定する。
+
+CloudWatch-APIからメトリクスを収集するために、独自のクエリを実行する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  datasource.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: CloudWatch
+        type: cloudwatch
+        jsonData:
+          authType: default
+          defaultRegion: ap-northeast-1
+```
+
+> ↪️：
+>
+> - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#provision-the-data-source
+> - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/query-editor/#common-query-editor-fields
 
 <br>
 

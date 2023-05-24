@@ -179,30 +179,48 @@ Generator (例：SecretGenerator、ConfigMapGenerator) のプラグインは、�
 一歩でTransformerは、マニフェストを部分的に書き換える。
 
 > ↪️：
-> 
+>
 > - https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md
 > - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
 > - https://www.techscore.com/blog/2019/08/01/change-kustomize-build-behavior/
 
 <br>
 
-### セットアップ
+### 設定
 
-`/.config/kustomize/plugin`ディレクトリ配下にプラグインをおく必要がある。
+#### ▼ 環境変数
+
+プラグインをおくディレクトリを環境変数で定義する必要がある。
 
 ```bash
-$ ls /.config/kustomize/plugin
+$ export XDG_CONFIG_HOME=$HOME/.config
+$ export KUSTOMIZE_PLUGIN_HOME=$XDG_CONFIG_HOME/kustomize/plugin
+```
+
+#### ▼ ディレクトリ
+
+環境変数の値に応じて、ディレクトリは変わる。
+
+デフォルトでは、`$XDG_CONFIG_HOME/kustomize/plugin`ディレクトリ配下にプラグインをおく必要がある。
+
+```bash
+$ ls $XDG_CONFIG_HOME/kustomize/plugin
 
 viaduct.ai/v1/ksops/ksops
 ```
 
-また、設定ファイルを`.config`ディレクトリ配下におく必要があり、`XDG_CONFIG_HOME`変数で定義されている。
-
-```bash
-$ export XDG_DATA_DIRS=/.config
-```
-
-> ↪️：https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling
-
 <br>
 
+### KSOPS
+
+#### ▼ KSOPSとは
+
+SOPSを使用して、復号化したデータをSecretにデータを注入する。
+
+> ↪️：
+>
+> - https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling
+> - https://github.com/viaduct-ai/kustomize-sops/issues/117#issuecomment-852174964
+> - https://github.com/viaduct-ai/kustomize-sops/blob/master/Dockerfile
+
+<br>
