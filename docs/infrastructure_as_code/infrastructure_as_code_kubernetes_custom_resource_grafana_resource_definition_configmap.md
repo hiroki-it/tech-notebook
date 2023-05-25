@@ -828,6 +828,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
                 # メトリクスと、それから取得するラベルを設定する。
                 # 指定したデータソースの時に、kube_pod_infoメトリクスがclusterラベルを持っている必要がある。
                 "query": "label_values(kube_pod_info, cluster)",
+                # query<小文字から始まる任意の識別子>で事前定義しておくこともできる。
+                # 小文字から始まる文字列は、"^[a-z][a-zA-Z0-9_]*$"の正規表現内の文字列にする必要がある。
                 "refId": "Prometheus-cluster-Variable-Query",
               },
             "refresh": 2,

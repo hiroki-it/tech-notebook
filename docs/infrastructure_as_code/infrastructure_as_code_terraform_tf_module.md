@@ -470,7 +470,14 @@ TF_VAR_ecr_version_tag=foo
 
 Terraformの`2`個以上のブロックをパッケージ化することにより、複数の`resource`ブロックをまとめ、`1`個の`resource`ブロックのように扱う。
 
-> ↪️：https://www.terraform.io/language/modules#child-modules
+チャイルドモジュール内でチャイルドモジュールを作成すると、チャイルドモジュール内に`provider`ブロックを定義することになり、チャイルドモジュールを削除できない問題になる。
+
+そのため、チャイルドモジュール内でチャイルドモジュールを作成しないようにする。
+
+> ↪️：
+> 
+> - https://www.terraform.io/language/modules#child-modules
+> - https://qiita.com/bigwheel/items/2b420183639416b5c6bb#%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AE%E7%90%86%E7%94%B1-3
 
 #### ▼ ローカルモジュール
 

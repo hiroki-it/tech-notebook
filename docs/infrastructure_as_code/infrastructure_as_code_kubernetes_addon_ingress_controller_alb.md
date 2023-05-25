@@ -77,6 +77,8 @@ Pod
 
 #### ▼ 共通
 
+AWS Load Balancerコントローラーは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。
+
 Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、`kubernetes.io/role/elb`というタグ (値は`1`または空文字) を全てのAWS VPCサブネットに設定する。
 
 プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) を設定する。
@@ -87,6 +89,8 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 >
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
+
+
 
 #### ▼ Terraformの公式モジュールの場合
 

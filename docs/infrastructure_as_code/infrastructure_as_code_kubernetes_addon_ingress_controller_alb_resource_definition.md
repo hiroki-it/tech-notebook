@@ -56,6 +56,15 @@ metadata:
 > - https://nobelabo.hatenablog.com/entry/2022/10/01/201138
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/
 
+あるいは、自動検出機能を使用することもできる。
+
+aws-load-balancer-controllerは、Ingressの`spec.hosts`キーに基づいて、適切なACMのSSL証明書をALBに自動的に紐づける。
+
+例えばIngressで`spec.hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をACMから探す。
+
+
+> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
+
 #### ▼ `alb.ingress.kubernetes.io/healthcheck-path`キー
 
 ヘルスチェックのパスを設定する。
@@ -179,6 +188,8 @@ metadata:
     alb.ingress.kubernetes.io/waf-acl-id: *****
 ```
 
+> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
+
 #### ▼ `alb.ingress.kubernetes.io/wafv2-acl-arn`キー
 
 LBに紐付けるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。
@@ -191,6 +202,8 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/wafv2-acl-arn: *****
 ```
+
+> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
 
 <br>
 
