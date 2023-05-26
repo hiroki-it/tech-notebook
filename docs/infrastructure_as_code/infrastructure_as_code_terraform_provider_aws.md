@@ -13,7 +13,17 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 <br>
 
-## 01. ACM
+## 01. AWSプロバイダーとは
+
+TerraformがAWSリソースのAPIと通信できるようにする。
+
+これにより、Terraformを使用してAWSリソースを作成できるようになる。
+
+> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
+<br>
+
+## 02. ACM
 
 ### SSL証明書のリクエスト
 
@@ -126,7 +136,7 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 <br>
 
-## 02. AMI
+## 03. AMI
 
 ### まとめ
 
@@ -191,7 +201,7 @@ AWS BackupでEC2のAMIを作成している場合に、フィルターの条件�
 
 <br>
 
-## 03. API Gateway
+## 04. API Gateway
 
 ### まとめ
 
@@ -294,7 +304,7 @@ resource "aws_wafv2_web_acl_association" "api_gateway" {
 
 <br>
 
-## 04. CloudWatchログ
+## 05. CloudWatchログ
 
 ### まとめ
 
@@ -314,7 +324,7 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 
 <br>
 
-## 04. CloudFront
+## 06. CloudFront
 
 ### まとめ
 
@@ -491,7 +501,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 <br>
 
-## 05. ECR
+## 07. ECR
 
 ### ライフサイクルポリシー
 
@@ -531,7 +541,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
 
 <br>
 
-## 06. ECS
+## 08. ECS
 
 ### まとめ
 
@@ -663,7 +673,7 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 <br>
 
-## 07. EC2
+## 09. EC2
 
 ### まとめ
 
@@ -710,7 +720,7 @@ Internet Gatewayの後にEC2を作成できるようにする。
 
 <br>
 
-## 08. EKS
+## 10. EKS
 
 ### まとめ
 
@@ -795,7 +805,7 @@ EKSでは、cluster-autoscalerを使用して、Nodeをスケーリングさせ�
 
 <br>
 
-## 08. IAMユーザー
+## 11. IAMユーザー
 
 ### カスタマー管理ポリシーを持つロール
 
@@ -881,7 +891,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 <br>
 
-## 09. IAMロール
+## 12. IAMロール
 
 ### 信頼ポリシーを持つロール
 
@@ -1136,7 +1146,7 @@ resource "aws_appautoscaling_target" "ecs" {
 
 <br>
 
-## 10. リスナーとターゲットグループ
+## 13. リスナーとターゲットグループ
 
 ### まとめ
 
@@ -1218,7 +1228,7 @@ status code: 400, request id: *****
 
 <br>
 
-## 11. RDS (Aurora) の場合
+## 14. RDS (Aurora) の場合
 
 ### まとめ
 
@@ -1437,7 +1447,7 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 <br>
 
-## 12. Route53
+## 15. Route53
 
 ### まとめ
 
@@ -1466,7 +1476,7 @@ resource "aws_route53_record" "foo" {
 
 <br>
 
-## 13. ルートテーブル
+## 16. ルートテーブル
 
 ### メインルートテーブルは自動作成
 
@@ -1476,7 +1486,7 @@ Terraformを使用してVPCを作成した時、メインルートテーブル�
 
 <br>
 
-## 14. S3
+## 17. S3
 
 ### バケットポリシー
 
@@ -1586,7 +1596,7 @@ NLBのアクセスログを送信するバケット内には、自動的に『`/
 
 <br>
 
-## 15. Systems Manager
+## 18. Systems Manager
 
 ### まとめ
 
@@ -1623,7 +1633,7 @@ CIの`terraform plan`コマンド時に値が公開されないように`output`
 
 <br>
 
-## 11. VPC
+## 19. VPC
 
 ### まとめ
 
@@ -1821,7 +1831,7 @@ AZを上長化している場合、VPC内のサブネットと関連のAWSリソ
 
 <br>
 
-## 18. VPC endpoint
+## 20. VPC endpoint
 
 ### まとめ
 
@@ -1909,7 +1919,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 
 <br>
 
-## 19. WAF
+## 21. WAF
 
 ### ruleブロック
 
@@ -2162,7 +2172,7 @@ WAFのIPセットと他設定の依存関係に癖がある。
 
 <br>
 
-## 20. Terraform管理外のAWSリソース
+## 22. Terraform管理外のAWSリソース
 
 ### 判断基準
 
@@ -2382,7 +2392,7 @@ resource "aws_dynamodb_table" "tfstate" {
 
 <br>
 
-## 21. 複数のAWSリソースに共通のプラクティス
+## 23. 複数のAWSリソースに共通のプラクティス
 
 ### 環境変数
 
