@@ -114,7 +114,7 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
 
   # AWS IAMロールに紐付けるIAMポリシー
   role_policy_arns              = [
-    module.iam_policy_aws_load_balancer_controller.arn
+    aws_iam_policy.aws_load_balancer_controller.arn
   ]
 
   # AWS Load BalancerコントローラーのPodのServiceAccount名
@@ -124,15 +124,14 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
   ]
 }
 
-module "iam_policy_aws_load_balancer_controller" {
-  source      = "terraform-aws-modules/iam/aws//modules/iam-policy"
-  version     = "<モジュールのバージョン>"
-  name        = "foo-aws-load-balancer-controller"
-  description = "This is the policy of AWS LB Controller"
-  policy      = templatefile(
-    "${path.module}/policies/aws_load_balancer_controller_policy.tpl",
-    {}
-  )
+# GitHubからIAMポリシーのファイルを取得する
+data "http" "aws_load_balancer_controller" {
+  url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json"
+}
+
+resource "aws_iam_policy" "aws_load_balancer_controller" {
+  name   = "foo-aws-load-balancer-controller"
+  policy = data.http.aws_load_balancer_controller.url
 }
 ```
 

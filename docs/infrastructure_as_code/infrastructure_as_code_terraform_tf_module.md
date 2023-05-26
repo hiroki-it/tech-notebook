@@ -228,6 +228,41 @@ provider "aws" {
 }
 ```
 
+#### ▼ default_tags
+
+Terraformで作成するリソースに一括してタグを設定できる。
+
+```terraform
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.67.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "ap-northeast-1"
+
+  default_tags {
+    tags = local.tags
+  }
+}
+
+locals {
+  service = "foo"
+  system  = "bar"
+
+  tags = {
+    Service   = local.service
+    Env       = var.env
+    # 管理するリポジトリ
+    ManagedBy = "https://github.com/hiroki-hasegawa/foo-terraform.git"
+  }
+}
+```
+
 #### ▼ モジュールに渡すプロバイダーを切り替える
 
 モジュールにプロバイダーをパラメーターとして設定する場合、`provider`ブロックを使用する。

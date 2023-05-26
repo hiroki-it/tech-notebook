@@ -270,13 +270,27 @@ $ terraform init -upgrade
 
 #### ▼ 問題が起こる場合
 
-`terraform init`コマンドでエラーが起こる場合、以下のいずれかで解決できることがある。
+`terraform init`コマンドで以下のようなエラーが起こる場合がある。
 
 ```bash
+│ Error: Failed to query available provider packages
+│
+│ Could not retrieve the list of available versions for provider hashicorp/aws: the previously-selected version <バージョン> is no longer available
+╵
+```
+
+その場合、以下のいずれかで解決できることがある。
+
+```bash
+# プロバイダーの削除
 $ rm -r $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/aws/
+
+# 再インストール
+$ terraform init --reconfigure
 ```
 
 ```bash
+# プロバイダーの置き換え
 $ PROVIDER_VER="<バージョン>"
 $ PROVIDER_NAME="aws"
 $ ARCH=$(if [ `uname -m` = 'arm64' ] ; then ; echo "darwin_arm64" ; else ; echo "darwin_amd64" ; fi)

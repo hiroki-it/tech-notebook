@@ -435,6 +435,22 @@ resource "aws_instance" "example" {
 > - https://www.terraform.io/language/values/locals
 > - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
 
+#### ▼ よくある
+
+```terraform
+locals {
+  service = "foo"
+  prefix    = "${local.service}-${var.env}"
+
+  tags = {
+    Service   = local.service
+    Env       = var.env
+    # 管理するリポジトリ
+    ManagedBy = "https://github.com/hiroki-hasegawa/foo-terraform.git"
+  }
+}
+```
+
 <br>
 
 ## 05. `variable`ブロック

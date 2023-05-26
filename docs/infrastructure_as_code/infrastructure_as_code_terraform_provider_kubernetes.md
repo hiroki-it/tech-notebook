@@ -13,7 +13,6 @@ description: Kubernetesプロバイダー＠Terraformの知見を記録してい
 
 <br>
 
-
 ## 01. Kubernetesプロバイダー
 
 ### Kubernetesプロバイダーとは
