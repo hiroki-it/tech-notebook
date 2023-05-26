@@ -111,6 +111,16 @@ aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サー�
 
 <br>
 
+### 設定
+
+#### ▼ バージョン
+
+Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
+
+> ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
+
+<br>
+
 ## 03. aws-eks-distro-for-opentelemetry
 
 テレメトリーの収集をマネージドにする。
@@ -135,6 +145,16 @@ aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内の�
 
 <br>
 
+### 設定
+
+#### ▼ バージョン
+
+Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
+
+> ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
+
+<br>
+
 ## 05. aws-eks-vpc-cniアドオン
 
 ### aws-eks-vpc-cniアドオンとは
@@ -154,19 +174,29 @@ aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカ�
 
 <br>
 
-### 仕組み
+## 05-02. aws-eks-vpc-cniアドオンの仕組み
 
-#### ▼ アーキテクチャ
+### アーキテクチャ
 
 aws-eks-vpc-cniアドオンは、L-IPAMデーモン (ipamd) 、CNIプラグイン、といったコンポーネントから構成されている。
 
 > ↪️：https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 
-#### ▼ L-IPAM
+<br>
+
+### L-IPAM
+
+### L-IPAMとは
 
 `aws-node`のDaemonSet配下のコンテナ上で、デーモンとして稼働している。
 
 他のCNIアドオンにない独自モードを持つ。
+
+<br>
+
+### IPアドレス割り当てモード
+
+#### ▼ 通常モード
 
 L-IPAMは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
 
@@ -183,9 +213,23 @@ L-IPAMは、NodeのAWS ENIに紐づけられたセカンダリープライベー
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 
+#### ▼ Prefix Delegationモード
+
+L-IPAMは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+
+Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
+
+> ↪️：https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
+
 <br>
 
 ### 設定
+
+#### ▼ バージョン
+
+Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
+
+> ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update
 
 #### ▼ 環境変数
 

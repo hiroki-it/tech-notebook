@@ -49,7 +49,10 @@ kube-apiserverとクライアント側のバージョン差は、前方/後方�
 
 そのため、client-goパッケージを定期的にアップグレードする必要がある。
 
-> ↪️：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
+> ↪️：
+>
+> - https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
+> - https://kubernetes.io/releases/version-skew-policy/#kubectl
 
 #### ▼ client-goパッケージとマニフェストの間
 
@@ -71,7 +74,9 @@ ArgoCDの`2.3.0`では、client-goパッケージのバージョンが`0.23.1`�
 
 > ↪️：https://github.com/argoproj/argo-cd/blob/v2.3.0/go.mod#L83
 
-このことから、ArgoCDの`2.3.0`がKubernetesの`1.23.1`に対応しているとわかる。
+このことから、ArgoCDは`2.3.0`がKubernetesの`1.23.1`で稼働できることがわかる。
+
+なお、デプロイ先のClusterとしていずれのバージョンに対応しているかは、`gitops-engine`パッケージを確認する必要がある。
 
 Kubernetesの`1.23.1`が対応しているAPIグループのバージョンから、マニフェストで使用できる`.apiVersion`がわかる。
 

@@ -62,7 +62,6 @@ aws-load-balancer-controllerは、Ingressの`spec.hosts`キーに基づいて、
 
 例えばIngressで`spec.hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をACMから探す。
 
-
 > ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
 
 #### ▼ `alb.ingress.kubernetes.io/healthcheck-path`キー

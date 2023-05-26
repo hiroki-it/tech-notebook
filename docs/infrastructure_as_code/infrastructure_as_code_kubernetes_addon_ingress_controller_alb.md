@@ -90,8 +90,6 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
 
-
-
 #### ▼ Terraformの公式モジュールの場合
 
 AWS Load Balancerコントローラーのセットアップのうち、AWS側で必要なものをまとめる。

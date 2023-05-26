@@ -271,6 +271,18 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 5 chart(s) linted, 0 chart(s) failed
 ```
 
+#### ▼ --strict
+
+`values`ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。
+
+執筆時点 (2023/05/26) でまだリリースされていない。
+
+```bash
+$ helm lint --strict
+```
+
+> ↪️：https://github.com/helm/helm/pull/11760
+
 <br>
 
 ### list

@@ -377,7 +377,6 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
         "Condition": {
             # 部分一致 (ワイルドカードを使用できる)
             "StringLike": {"sts:ExternalId": "foo-*"},
-
           },
       },
     ],

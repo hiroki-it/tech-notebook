@@ -33,6 +33,7 @@ description: 静的解析ツール＠Kubernetesの知見を記録しています
 
 ## 04. 脆弱性テスト
 
+- kics
 - kube-score
 
 <br>
