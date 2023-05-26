@@ -487,6 +487,7 @@ nav:
                   - モジュール: infrastructure_as_code/infrastructure_as_code_terraform_tf_module.md
               - ■ プロバイダー:
                   - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.md
+                  - Kubernetesプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
               - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
           - ■ Vagrant:
