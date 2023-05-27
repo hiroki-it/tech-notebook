@@ -490,8 +490,8 @@ nav:
                   - Kubernetesプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.md
               - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
               - ■ 設計ポリシー:
-                - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
-                - tfstateファイル分割: infrastructure_as_code/infrastructure_as_code_terraform_policy_tfstate.md
+                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
+                  - tfstateファイル分割: infrastructure_as_code/infrastructure_as_code_terraform_policy_tfstate.md
 
           - ■ Vagrant:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
