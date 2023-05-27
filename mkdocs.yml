@@ -492,7 +492,6 @@ nav:
               - ■ 設計ポリシー:
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
                   - tfstateファイル分割: infrastructure_as_code/infrastructure_as_code_terraform_policy_tfstate.md
-
           - ■ Vagrant:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
