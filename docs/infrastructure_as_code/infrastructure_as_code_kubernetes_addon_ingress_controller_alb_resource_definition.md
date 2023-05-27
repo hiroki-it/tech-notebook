@@ -199,7 +199,7 @@ kind: Ingress
 metadata:
   name: foo-alb-ingress
   annotations:
-    alb.ingress.kubernetes.io/wafv2-acl-arn: *****
+    alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:ap-northeast-1:<AWSアカウントID>:regional/webacl/<WAFのACL名>/<ID>
 ```
 
 > ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn

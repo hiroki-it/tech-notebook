@@ -489,6 +489,7 @@ AppProjectに属するArgoCD系リソースのみへのアクセスを許可す�
 - `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly`になる。
 
 ```yaml
 apiVersion: v1
@@ -527,6 +528,7 @@ data:
 
 - `developer`ロールに、dev環境のAppProject内に属するArgoCD系リソースのみを操作できる認可スコープ
 - `maintainer`ロールに、dev環境とprd環境の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly`になる。
 
 ```yaml
 apiVersion: v1
@@ -536,7 +538,7 @@ metadata:
   namespace: argocd
 data:
   # デフォルトのロール
-  policy.default: role:developer
+  policy.default: role:readonly
   policy.csv: |
     # ロールと認可スコープを定義する
     p, role:developer, *, *, dev/*, allow
@@ -566,6 +568,7 @@ IDプロバイダー側で、チームによる認証グループがすでに存
 - `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly`になる。
 
 ```yaml
 apiVersion: v1
@@ -601,6 +604,7 @@ IDプロバイダー側で、チームによる認証グループがすでに存
 - `app`ロールに、`dev-app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`dev-infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`dev-app`と`dev-infra`の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly`になる。
 
 ```yaml
 apiVersion: v1
@@ -640,6 +644,7 @@ IDプロバイダー側で、メールアドレスによる認証グループが
 - `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly`になる。
 
 ```yaml
 apiVersion: v1

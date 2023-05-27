@@ -478,6 +478,23 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 ### ArgoCD自体のアップグレード
 
+#### ▼ 対応バージョンについて
+
+ArgoCDのアップグレードでは、ArgoCD自身が動くClusterと、デプロイ先Clusterの両方のバージョンを考慮する必要がある。
+
+これは、ArgoCDのrepo-serverとapplication-controllerのgitops-engineの両方で、client-goパッケージを使用しているためである。
+
+ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3sを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。
+
+例えば、ArgoCDの`v2.7.3`は、K3sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`に対応しているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
+
+> ↪️：
+>
+> - https://github.com/argoproj/argo-cd/blob/master/.github/workflows/ci-build.yaml#L359-L462
+> - https://github.com/argoproj/argo-cd/tree/master/test/e2e
+
+#### ▼ CRDについて
+
 ArgoCD自体をArgoCDで管理することはできないため、手動やマニフェスト管理ツール (Helm、Kustomize) でArgoCDをアップグレードする必要がある。
 
 特にCRDは、マニフェスト管理ツールで更新できない (作成はできる) 場合がある。

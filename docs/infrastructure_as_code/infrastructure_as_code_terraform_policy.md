@@ -88,8 +88,9 @@ repository/
 
 `.tfstate`ファイルを分割することにより、以下のメリットがある。
 
-- `terraform apply`コマンドの実行途中に問題が発生し、`.tfstate`ファイルが破損したとしても、影響範囲をその`.tfstate`ファイルのリソース内に閉じられる。
+- `terraform plan`コマンドや`terraform apply`コマンドをバックエンド間で独立させられ (同じバックエンド内で異なるディレクトリ配下に`tfstate`ファイルを配置している場合も含む) 、特定のバックエンドを変更しても他のバックエンドには差分として表示されない。
 - `terraform plan`コマンドや`terraform apply`コマンドの実行時間を短縮できる。
+- `terraform apply`コマンドの実行途中に問題が発生し、`.tfstate`ファイルが破損したとしても、影響範囲をその`.tfstate`ファイルのリソース内に閉じられる。
 - リソースタイプが同じであっても、同じ名前を付けられる。
 - 複数人が同時にTerraformの実装を修正する場合、異なる`.tfstate`ファイルの間では、誰かのプロビジョニングによって他の誰かのプロビジョニングを元に戻してしまうような、作業の衝突が起こらない。
 
@@ -1541,5 +1542,60 @@ Terraformには通知能力がなく、手動で知らせる必要がある。
 #### ▼ Terraform以外を使用する場合
 
 通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に`terraform apply`コマンドの結果が通知されるようにする。
+
+<br>
+
+## 09. モノリスな`tfstate`ファイルを分割する
+
+モノリスな`tfstate`ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て一つの`tfstate`ファイルで管理している場合である。
+
+AWSリソース値を参照しない関係であれば、これらは別の`tfstate`ファイルに分割できる。
+
+`【１】`
+
+: 既存のバックエンド内に新しいディレクトリを作成し、その配下に`tfstate`ファイルを新しく作成する。
+
+     ここでは、サブシステムを分割するとする。
+
+```terraform
+terraform {
+  backend "s3" {
+    bucket = "foo-tfstate"
+    key    = "foo-sub-system/terraform.tfstate"
+    region = "ap-northeast-1"
+  }
+}
+```
+
+`【２】`
+
+: モノリスな`tfstate`ファイルから、サブシステムの状態を削除する。
+
+     事前に、バックエンドをモノリスな`tfstate`ファイルに切り替える。
+
+```bash
+$ terraform init -reconfigure -backend-config=foo-backend.tfvars
+$ terraform state rm <サブシステムの状態>
+```
+
+`【３】`
+
+: 新しい`tfstate`ファイルに、既存のサブシステムの状態をインポートする。
+
+     事前に、バックエンドを新しいサブシステムの`tfstate`ファイルに切り替える。
+
+```bash
+$ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
+$ terraform import
+```
+
+`【４】`
+
+: サブシステムの`tfstate`ファイルで差分がないことを確認する。
+
+```bash
+$ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
+$ terraform plan
+```
 
 <br>
