@@ -426,6 +426,8 @@ $ kubectl patch ns argocd \
 
 そのため、大きすぎるチャートをArgoCDで使用すると、毎回大きなチャートをインストールすることになり、ArgoCDが高負荷でフリーズすることがある。
 
+Helmで、チャートのキャッシュ機能が実装されれば、ArgoCDのフリーズも解消できるはずである。
+
 > ↪️：https://github.com/helm/community/pull/185
 
 <br>
