@@ -257,4 +257,33 @@ module "iam_assumable_role_with_oidc_external_dns" {
 }
 ```
 
+```terraform
+module "acm" {
+  source  = "terraform-aws-modules/acm/aws"
+  version = "~> 4.3.2"
+
+  domain_name = aws_route53_zone.foo.name
+  zone_id     = aws_route53_zone.foo.zone_id
+  # ワイルドカード証明書とする
+  subject_alternative_names = [
+    "*.example.com"
+  ]
+}
+
+resource "aws_route53_zone" "foo" {
+  name = "example.com"
+}
+
+resource "aws_route53_record" "foo" {
+  zone_id = aws_route53_zone.foo.id
+  name    = "foo.example.com"
+  # Route53のTerraformとExternalDNSのマニフェストを分離するために、NSタイプを使用する
+  type    = "NS"
+  ttl     = 30
+  records = aws_route53_zone.foo.*.name_servers[0]
+}
+
+
+```
+
 <br>

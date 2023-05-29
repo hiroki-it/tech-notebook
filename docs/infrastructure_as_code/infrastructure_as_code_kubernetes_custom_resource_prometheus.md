@@ -50,6 +50,23 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 <br>
 
+### エンドポイント
+
+#### ▼ `/metrics`
+
+Prometheusで使用できるメトリクスの一覧を取得できる。
+
+```bash
+$ curl http://localhost:3000/metrics
+```
+
+> ↪️：
+>
+> - https://www.redhat.com/sysadmin/introduction-prometheus-metrics-and-performance-monitoring
+> - https://itnext.io/prometheus-for-beginners-5f20c2e89b6c
+
+<br>
+
 ### Retrieval
 
 #### ▼ Retrievalとは

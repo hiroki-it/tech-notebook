@@ -78,6 +78,32 @@ repository/
 ...
 ```
 
+#### ▼ ローカルモジュール / リモートモジュールの両方を使用する
+
+ルートモジュールでは、ローカルモジュールとリモートモジュールのコールを実行する。
+
+```yaml
+repository/
+├── foo-system # 今後新しく作る他のシステム
+├── bar-system
+└── baz-system
+    ├── module/ # まとめられるresourceブロックはローカルモジュール
+    ├── README.md
+    ├── acm.tf
+    ├── eks.tf # eksのリモートモジュールをコール
+    ├── iam.tf
+    ├── locals.tf
+    ├── nonprd
+    │   ├── backend.tf
+    │   └── terraform.tfvars # baz-system/terraform.tfstate
+    ├── provider.tf
+    ├── remote_state.tf
+    ├── route53.tf
+    ├── ssm.tf
+    ├── sts.tf
+    └── variable.tf
+```
+
 <br>
 
 ## 03. ローカルモジュールのディレクトリ構成ポリシー
@@ -576,6 +602,24 @@ output "nginx_ecr_repository_url" {
 基本的には英語で説明する。
 
 また、文章ではなく、『関係代名詞/形容詞/副詞/前置詞 + 単語』を使用して、『〇〇 な △△』『〇〇 の △△』といった説明になるようにする。
+
+```terraform
+variable "foo" {
+  description = "説明文です"
+  type = string
+}
+```
+
+ヒアドキュメントを使用して、複数行で定義することもできる。
+
+```terraform
+variable "foo" {
+  description = <<EOT
+  説明文です。
+EOT
+  type = string
+}
+```
 
 <br>
 

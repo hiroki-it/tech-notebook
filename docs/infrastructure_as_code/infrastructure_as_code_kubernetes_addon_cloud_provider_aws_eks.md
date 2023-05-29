@@ -52,6 +52,14 @@ resource "aws_eks_addon" "coredns" {
   addon_version     = "<バージョン>"
   addon_name        = "coredns"
   resolve_conflicts = "OVERWRITE"
+  # スケジューリングするNodeを設定する
+  configuration_values = jsonencode(
+    {
+      nodeSelector = {
+        "node.kubernetes.io/nodegroup" = "system"
+      }
+    }
+  )
 }
 
 
@@ -70,6 +78,15 @@ resource "aws_eks_addon" "vpc_cni" {
   addon_version     = "<バージョン>"
   addon_name        = "vpc-cni"
   resolve_conflicts = "OVERWRITE"
+  # 環境変数を設定する
+  configuration_values = jsonencode(
+    {
+      env = {
+        MINIMUM_IP_TARGET = "10"
+        WARM_IP_TARGET    = "5"
+      }
+    }
+  )
 }
 ```
 

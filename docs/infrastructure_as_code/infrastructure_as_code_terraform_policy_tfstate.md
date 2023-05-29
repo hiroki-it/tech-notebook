@@ -101,7 +101,7 @@ repository/
 │
 ├── bar/
 │   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
-│   ├── data.tf # terraform_remote_stateブロックを使用し、fooのtfstateファイルに依存してもよい
+│   ├── remote_state.tf # terraform_remote_stateブロックを使用し、fooのtfstateファイルに依存してもよい
 │   ├── provider.tf
 │   ...
 │
@@ -295,17 +295,17 @@ repository/
 │   │   ├── provider.tf
 │   │   ├── tes # テスト環境
 │   │   │   ├── backend.tfvars # バックエンド内のaws/terraform.tfstateaws/high-freq/terraform.tfstate
-│   │   │   ├── data.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
 │   │   │   ├── backend.tfvars # バックエンド内のaws/low-freq/terraform.tfstate
-│   │   │   ├── data.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
 │   │       ├── backend.tfvars # バックエンド内のaws/middle-freq/terraform.tfstate
-│   │   │   ├── data.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
 │   │       ...
 │   │
 │   ├── low-freq # 低頻度リソース（ネットワーク系、ストレージ系、など）
@@ -326,17 +326,17 @@ repository/
 │       ├── provider.tf
 │       ├── tes
 │       │   ├── backend.tfvars
-│       │   ├── data.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│       │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
 │       │   ...
 │       │
 │       ├── stg
 │       │   ├── backend.tfvars
-│       │   ├── data.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│       │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
 │       │   ...
 │       │
 │       └── prd
 │           ├── backend.tfvars
-│           ├── data.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│           ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
 │           ...
 │
 ├── datadog/ # Datadog
@@ -378,34 +378,34 @@ repository/
 │   │   ├── provider.tf
 │   │   ├── tes # テスト環境
 │   │   │   ├── backend.tfvars # バックエンド内の/aws/foo-team/terraform.tfstate
-│   │   │   ├── data.tf # terraform_remote_stateブロックを使用し、bar-teamのtfstateファイルに依存してもよい
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、bar-teamのtfstateファイルに依存してもよい
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
 │   │   │   ├── backend.tfvars # バックエンド内の/aws/bar-team/terraform.tfstate
-│   │   │   ├── data.tf # terraform_remote_stateブロックを使用し、bar-teamのtfstateファイルに依存してもよい
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、bar-teamのtfstateファイルに依存してもよい
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
 │   │       ├── backend.tfvars # バックエンド内の/aws/baz-team/terraform.tfstate
-│   │       ├── data.tf # terraform_remote_stateブロックを使用し、bar-teamのtfstateファイルに依存してもよい
+│   │       ├── remote_state.tf # terraform_remote_stateブロックを使用し、bar-teamのtfstateファイルに依存してもよい
 │   │       ...
 │   │
 │   ├── bar-team # barチーム
 │   │   ├── provider.tf
 │   │   ├── tes
 │   │   │   ├── backend.tfvars
-│   │   │   ├── data.tf # terraform_remote_stateブロックを使用し、foo-teamのtfstateファイルに依存してもよい
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、foo-teamのtfstateファイルに依存してもよい
 │   │   │   ...
 │   │   │
 │   │   ├── stg
 │   │   │   ├── backend.tfvars
-│   │   │   ├── data.tf # terraform_remote_stateブロックを使用し、foo-teamのtfstateファイルに依存してもよい
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、foo-teamのtfstateファイルに依存してもよい
 │   │   │   ...
 │   │   │
 │   │   └── prd
 │   │       ├── backend.tfvars
-│   │       ├── data.tf # terraform_remote_stateブロックを使用し、foo-teamのtfstateファイルに依存してもよい
+│   │       ├── remote_state.tf # terraform_remote_stateブロックを使用し、foo-teamのtfstateファイルに依存してもよい
 │   │       ...
 │   │
 │   └── baz-team # bazチーム
@@ -516,7 +516,7 @@ repository/
 │
 ├── bar/
 │   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
-│   ├── data.tfvars # terraform_remote_stateブロックを使用し、fooのtfstateファイルに依存してもよい
+│   ├── remote_state.tfvars # terraform_remote_stateブロックを使用し、fooのtfstateファイルに依存してもよい
 │   ├── provider.tf
 │   ...
 │

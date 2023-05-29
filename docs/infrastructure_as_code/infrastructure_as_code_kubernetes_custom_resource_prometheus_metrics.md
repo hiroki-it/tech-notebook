@@ -51,6 +51,27 @@ description: メトリクス＠Prometheus
 
 ## 02. Prometheus自身のメトリクス
 
+### 命名規則
+
+```bash
+# Prometheusサーバー
+prometheus_notifications_total
+```
+
+```bash
+# process-exporter
+process_cpu_seconds_total
+```
+
+```bash
+# HTTPリクエスト
+http_request_duration_seconds
+```
+
+> ↪️：https://prometheus.io/docs/practices/naming/#metric-names
+
+<br>
+
 ### ローカルストレージ (`prometheus_tsdb_*`)
 
 #### ▼ prometheus_tsdb_head_samples_appended_total

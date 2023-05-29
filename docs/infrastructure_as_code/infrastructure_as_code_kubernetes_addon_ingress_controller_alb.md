@@ -124,14 +124,15 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
   ]
 }
 
-# GitHubからIAMポリシーのファイルを取得する
+# GitHubにリクエストを送信し、IAMポリシーのファイルを取得する
 data "http" "aws_load_balancer_controller_policy" {
   url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json"
 }
 
+# レスポンスからJSONファイルの内容を取得する
 resource "aws_iam_policy" "aws_load_balancer_controller" {
   name   = "foo-aws-load-balancer-controller"
-  policy = data.http.aws_load_balancer_controller_policy.url
+  policy = data.http.aws_load_balancer_controller_policy.response_body
 }
 ```
 

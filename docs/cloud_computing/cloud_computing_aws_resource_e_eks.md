@@ -897,9 +897,11 @@ kubeletを使用してワーカーNodeの停止を待機し、Podが終了する
 
 待機中に終了できたPodは`Failed`ステータスとなる。
 
-`--shutdown-grace-period`オプションで、ワーカーNodeの停止を待機する期間を設定する。
+kubeletの`--shutdown-grace-period`オプション (`shutdownGracePeriod`) で、ワーカーNodeの停止を待機する期間を設定する。
 
-`--shutdown-grace-period-critical-pods`オプションで、特に重要なPodの終了のために待機する時間を設定する。
+また`--shutdown-grace-period-critical-pods`オプション (`shutdownGracePeriodCriticalPods`) で、特に重要なPodの終了のために待機する時間を設定する。
+
+`InhibitDelayMaxSec`には、`--shutdown-grace-period`オプションと同じ秒数 (単位は不要) を設定する。
 
 **＊実装例＊**
 
@@ -915,13 +917,13 @@ set -o xtrace
 # --shutdown-grace-periodオプションに値が既に設定されていなければ、設定を挿入する。
 if ! grep -q shutdownGracePeriod /etc/kubernetes/kubelet/kubelet-config.json;
 then
-    sed -i '/"apiVersion*/a \ \ "shutdownGracePeriod": "6m",' /etc/kubernetes/kubelet/kubelet-config.json
+    sed -i '/"apiVersion*/a \ \ "shutdownGracePeriod": "360s",' /etc/kubernetes/kubelet/kubelet-config.json
 fi
 
 # --shutdown-grace-period-critical-podsオプションに値が既に設定されていなければ、設定を挿入する。
 if ! grep -q shutdownGracePeriodCriticalPods /etc/kubernetes/kubelet/kubelet-config.json;
 then
-    sed -i '/"shutdownGracePeriod*/a \ \ "shutdownGracePeriodCriticalPods": "2m",' /etc/kubernetes/kubelet/kubelet-config.json
+    sed -i '/"shutdownGracePeriod*/a \ \ "shutdownGracePeriodCriticalPods": "120s",' /etc/kubernetes/kubelet/kubelet-config.json
 fi
 
 mkdir -p /etc/systemd/logind.conf.d
