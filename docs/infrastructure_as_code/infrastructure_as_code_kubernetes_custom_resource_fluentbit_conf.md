@@ -857,11 +857,15 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 <br>
 
-### cloudwatch_logプラグイン
+### cloudwatch_logプラグイン (旧cloudwatchプラグイン)
 
 #### ▼ cloudwatch_logプラグインとは
 
 ログをCloudWatchログにルーティングする。
+
+元々、『cloudwatchプラグイン』という名前だった。
+
+> ↪️：https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4
 
 #### ▼ セットアップ
 
@@ -1016,6 +1020,29 @@ newRelicプラグインがプリインストールされているベースイメ
 
 <br>
 
+### stackdriverプラグイン
+
+#### ▼ stackdriverプラグインとは
+
+ログをCloudLoggingにルーティングする。
+
+#### ▼ セットアップ
+
+FluentBitはデフォルトでstackdriverプラグインを持つ。
+
+```bash
+[OUTPUT]
+    Name   stackdriver
+    match  *
+```
+
+> ↪️：
+>
+> - https://docs.fluentbit.io/manual/pipeline/outputs/stackdriver
+> - https://qiita.com/suzuyui/items/2217a357099130fc7236#stackdriver-output-plugin
+
+<br>
+
 ### stdoutプラグイン
 
 #### ▼ stdoutプラグインとは
@@ -1023,7 +1050,7 @@ newRelicプラグインがプリインストールされているベースイメ
 標準出力にアウトプットする、FluentBitの実行ログに混じって、対象のログがアウトプットされることになる。
 
 ```bash
- [OUTPUT]
+[OUTPUT]
     Name   stdout
     match  *
 ```

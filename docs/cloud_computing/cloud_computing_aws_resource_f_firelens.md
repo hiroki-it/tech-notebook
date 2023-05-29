@@ -318,8 +318,6 @@ FireLensコンテナにカスタム値を設定する。
 
 ただし、デフォルトの設定ファイルには、INPUTがすでに定義されているため、`fluent-bit_custom.conf`ファイルではINPUTを定義しなくても問題ない。
 
-> ↪️：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
-
 ```bash
 [INPUT]
     Name        forward
@@ -334,6 +332,8 @@ FireLensコンテナにカスタム値を設定する。
     log_stream_prefix from-fluent-bit-
     auto_create_group true
 ```
+
+> ↪️：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
 
 #### ▼ OUTPUTセクションとプラグイン
 
@@ -371,16 +371,19 @@ AWSから提供されているベースイメージには、AWSリソースに�
 
 ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
 
-> ↪️：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
-
 ```bash
 [root@<コンテナID>:/fluent-bit]$ ls -la
 
--rw-r--r-- 1 root root 26624256 Sep  1 18:04 cloudwatch.so # 旧cloudwatch_logsプラグイン
+-rw-r--r-- 1 root root 26624256 Sep  1 18:04 cloudwatch.so # 執筆時点 (2023/05/29) でcloudwatch_logsプラグインという名前に変わった模様
 -rw-r--r-- 1 root root 26032656 Sep  1 18:04 firehose.so   # kinesis_firehoseプラグイン
 -rw-r--r-- 1 root root 30016544 Sep  1 18:03 kinesis.so    # kinesis_streamsプラグイン
 ...
 ```
+
+> ↪️：
+>
+> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
+> - https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4
 
 <br>
 
