@@ -194,6 +194,7 @@ nav:
                   - 設定ファイル: software/software_middleware_database_rdb_postgresql_conf.md
                   - Repmgr: software/software_middleware_database_rdb_postgresql_repmgr.md
           - ■ TSDB:
+              - TSDB: software/software_middleware_database_tsdb.md
               - ■ VictoriaMetrics:
                   - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
                   - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
