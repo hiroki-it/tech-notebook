@@ -1030,6 +1030,8 @@ newRelicプラグインがプリインストールされているベースイメ
 
 FluentBitはデフォルトでstackdriverプラグインを持つ。
 
+つまり、特に追加のセットアップなくCloudLoggingにログをルーティングできる。
+
 ```bash
 [OUTPUT]
     Name   stackdriver

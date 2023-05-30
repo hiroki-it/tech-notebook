@@ -115,6 +115,16 @@ VictoriaMetricsは、クエリの実行前に、ディスクに永続化した�
 > - https://docs.victoriametrics.com/FAQ.html#how-to-set-a-memory-limit-for-victoriametrics-components
 > - https://docs.victoriametrics.com/#storage
 
+#### ▼ カーディナリティ
+
+とある期間で区切った時の固有な時系列データの断片数である。
+
+この断片数が多くなる程、読み出しで負荷がかかる。
+
+![victoria-metrics_cardinality.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/victoria-metrics_cardinality.png)
+
+> ↪️：https://victoriametrics.com/blog/cardinality-explorer/
+
 <br>
 
 ### vm-storage
