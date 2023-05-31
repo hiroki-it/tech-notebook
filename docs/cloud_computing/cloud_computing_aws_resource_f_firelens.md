@@ -383,6 +383,7 @@ ECRパブリックギャラリーからプルしたコンテナイメージを�
 > ↪️：
 >
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
+> - https://github.com/aws/aws-for-fluent-bit/blob/mainline/examples/fluent-bit/systems-manager-ec2/plugins.conf
 > - https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4
 
 <br>

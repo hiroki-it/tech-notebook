@@ -368,7 +368,14 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 マイクロサービスアーキテクチャの各サービスから収集されたログを、一元的に分析/管理する。
 
-各ログに一意なIDを割り当て、人繋ぎに紐付ける必要がある。
+各コンテナ (例：アプリコンテナ、サービスメッシュサイドカー) が作成するログに一意なIDを割り当て、人繋ぎに紐付ける必要がある。
+
+例えば、ログ監視バックエンドでこのログをクエリしさえすれば、リクエストの経路がわかる。
+
+```bash
+# CloudLoggingでログをクエリする
+jsonPayload.traceId="<トレースID>"
+```
 
 > ↪️：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 

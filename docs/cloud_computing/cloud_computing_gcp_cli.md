@@ -171,8 +171,6 @@ Updated property [compute/region].
 
 GKE Clusterの一覧を取得する。
 
-> ↪️：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
-
 **＊実行例＊**
 
 ```bash
@@ -181,6 +179,8 @@ $ gcloud container clusters list
 NAME               LOCATION         MASTER_VERSION   MASTER_IP  MACHINE_TYPE  NODE_VERSION    NUM_NODES  STATUS
 foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.22.0-gke      3          RUNNING
 ```
+
+> ↪️：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
 
 <br>
 

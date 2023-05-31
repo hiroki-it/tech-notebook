@@ -140,6 +140,14 @@ Inputs
 
 <br>
 
+### ビルトインのプラグイン
+
+デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
+
+> ↪️：https://github.com/fluent/fluent-bit/blob/master/CMakeLists.txt#L157-L275
+
+<br>
+
 ### dummyプラグイン
 
 #### ▼ dummyプラグインとは
@@ -393,6 +401,14 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 >
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/filter
 > - https://docs.fluentbit.io/manual/concepts/key-concepts#filtering
+
+<br>
+
+### ビルトインのプラグイン
+
+デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
+
+> ↪️：https://github.com/fluent/fluent-bit/blob/master/CMakeLists.txt#L157-L275
 
 <br>
 
@@ -840,6 +856,14 @@ Outputs
 >
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
+
+<br>
+
+### ビルトインのプラグイン
+
+デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
+
+> ↪️：https://github.com/fluent/fluent-bit/blob/master/CMakeLists.txt#L157-L275
 
 <br>
 
