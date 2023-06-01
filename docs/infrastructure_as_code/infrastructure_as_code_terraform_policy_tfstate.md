@@ -77,10 +77,10 @@ Terraformの`.tfstate`ファイルの分割の境目を見つけるコツは、�
 
      CloudFormationの分割プラクティスをTerraformにも適用する。
 
-     - クラウドインフラのリソースの変更頻度
      - 運用チームの責務範囲
-     - blast radius (影響範囲、障害範囲)
      - プロダクトのサブコンポーネント
+     - リソースの状態の変更頻度
+     - blast radius (影響範囲、障害範囲)
 
      > ↪️：
      > - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
@@ -422,15 +422,15 @@ repository/
 
 <br>
 
-#### ▼ 変更頻度
+#### ▼ リソースの状態の変更頻度
 
-インフラリソースの設定値をどの程度の頻度で変更するか別にディレクトリを分割する。
+リソースの状態をどの程度の頻度で変更するか別にディレクトリを分割する。
 
 `.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 頻度別のディレクトリの名前は一例であり、任意である。
 
-変更頻度の大きい方 (例：EC2、セキュリティグループ、CloudWatch、s3) がそれの小さい方 (例：VPC、Route53) に依存することがあり、変更頻度の大きい方がterraform_remote_stateブロックを使用する可能性がある。
+リソースの状態の変更頻度の大きい方 (例：EC2、セキュリティグループ、CloudWatch、s3) がそれの小さい方 (例：VPC、Route53) に依存することがあり、リソースの状態の変更頻度の大きい方がterraform_remote_stateブロックを使用する可能性がある。
 
 （例）
 
