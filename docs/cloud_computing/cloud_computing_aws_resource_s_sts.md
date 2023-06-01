@@ -461,7 +461,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 ロールを引き受けた新しいアカウントを使用して、AWSリソースに認証認可できるか否かを確認する。
 
-クレデンシャル情報の取得方法として`credentials`ファイルの作成を選択した場合、`profile`オプションが必要である。
+クレデンシャル情報の取得方法として`credentials`ファイルの作成を`.tfstate`ファイル択した場合、`profile`オプションが必要である。
 
 ```bash
 #!/bin/bash

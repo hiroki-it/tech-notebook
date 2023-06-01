@@ -98,7 +98,7 @@ terraform {
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
-    # .tfstateファイル名
+    # tfstateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
     # credentialsファイルへのパス

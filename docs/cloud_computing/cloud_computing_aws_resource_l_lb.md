@@ -15,6 +15,8 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 
 ## 01. LB
 
+ロードバランシングしたいプロトコルに合わせて、使用するロードバランサーを選択する。
+
 | LB名                           | OSI階層モデルのレイヤー      | リスナーが処理できるプロトコル | ターゲット                       | リクエストヘッダー (`L7`) | パケットヘッダーのフィールド (`L4`)        | セキュリティグループ |
 | ------------------------------ | ---------------------------- | ------------------------------ | -------------------------------- | ------------------------- | ------------------------------------------ | -------------------- |
 | ALB：Application Load Balancer | `L7` (アプリケーション層)    | HTTP、HTTPS、gRPC              | IPアドレス、インスタンス、Lambda | URL、HTTPヘッダー         | ポート番号フィールド                       | 可                   |
@@ -27,6 +29,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
 > - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
 > - https://www.infraexpert.com/study/tcpip8.html
+> - https://aws.amazon.com/jp/elasticloadbalancing/faqs/
 
 <br>
 
@@ -34,7 +37,7 @@ description: LB＠Lで始まるAWSリソースの知見を記録しています�
 
 ### ALBとは
 
-クラウドリバースプロキシサーバー、かつクラウドロードバランサーとして働く。
+クラウドリバースプロキシサーバー、かつクラウド`L7`ロードバランサーとして働く。
 
 リクエストを代理で受信し、EC2インスタンスへのアクセスをバランスよく分配することによって、サーバーへの負荷を緩和する。
 
@@ -188,6 +191,16 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 <br>
 
-## 03. NLB：Network Load Balancer
+## 03. CLB: Classic Load Balancer
+
+キューを持ち、クラウド`L4`/`L7`ロードバランサーとして働く。
+
+> ↪️：https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting
+
+<br>
+
+## 04. NLB：Network Load Balancer
+
+クラウド`L4`ロードバランサーとして働く。
 
 <br>

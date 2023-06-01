@@ -43,7 +43,7 @@ description: コマンド＠Terraformの知見を記録しています。
 # 初期化
 $ terraform init -reconfigure -backend-config=backend.tfvars
 
-# 現状のtfstateファイルと実インフラの間に、差分がないことを確認する。
+# 現状の.tfstateファイルと実インフラの間に、差分がないことを確認する。
 $ terraform plan -var-file=terraform.tfvars
 
 No changes. Your infrastructure matches the configuration.
@@ -738,7 +738,7 @@ module.vpc_module.aws_vpc.vpc
 リモートにある`.tfstate`ファイルをローカルマシンにダウンロードする。
 
 ```bash
-$ terraform state pull > <tfstateファイル名>
+$ terraform state pull > <.tfstateファイル名>
 ```
 
 #### ▼ rm
@@ -965,10 +965,10 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 ```bash
 # バックエンドがS3バケットの場合
-$ aws s3 cp s3://<S3バケット名>/<tfstateファイルへのパス> <ローカルマシンのパス>
+$ aws s3 cp s3://<S3バケット名>/<.tfstateファイルへのパス> <ローカルマシンのパス>
 
 # バックエンドがGCSの場合
-$ gsutil cp gs://<GCS名>/<tfstateファイルへのパス> <ローカルマシンのパス>
+$ gsutil cp gs://<GCS名>/<.tfstateファイルへのパス> <ローカルマシンのパス>
 ```
 
 `【２】`
@@ -1125,10 +1125,10 @@ No changes. Infrastructure is up-to-date.
 
 ```bash
 # バックエンドがS3バケットの場合
-$ aws s3 cp <ローカルマシンのパス> s3://<S3バケット名>/<tfstateファイルへのパス>
+$ aws s3 cp <ローカルマシンのパス> s3://<S3バケット名>/<.tfstateファイルへのパス>
 
 # バックエンドがGCSの場合
-$ gsutil cp <ローカルマシンのパス> gs://<GCS名>/<tfstateファイルへのパス>
+$ gsutil cp <ローカルマシンのパス> gs://<GCS名>/<.tfstateファイルへのパス>
 ```
 
 `【８】`

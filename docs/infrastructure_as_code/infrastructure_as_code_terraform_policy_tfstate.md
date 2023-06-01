@@ -3,7 +3,7 @@ title: 【IT技術の知見】tfstateファイルの分割＠設計ポリシー
 description: tfstateファイルの分割＠設計ポリシーの知見を記録しています。
 ---
 
-# `tfstate`ファイルの分割＠設計ポリシー
+# `.tfstate`ファイルの分割＠設計ポリシー
 
 ## はじめに
 
@@ -21,21 +21,27 @@ description: tfstateファイルの分割＠設計ポリシーの知見を記録
 
 アプリケーション開発の文脈で対象を “使用すること” を “依存” と表現するため、それに合わせている。
 
-Terraformの`tfstate`ファイルの分割の境目を見つけるコツは、 他の状態にできるだけ依存しない (`terraform_remote_state`ブロックで他の`tfstate`ファイルを参照しない) リソースの関係に注目することである。
-
-たまに遭遇する循環参照エラー (リソースが互いに依存し合う) も、この依存方向の設計ミスが原因である。
+Terraformに限らずアプリケーションでも注意が必要ですが、例えば循環参照エラーは相互依存が原因である。
 
 <br>
 
-## 02 `.tfstate`ファイルを含むルートモジュールの分割
+## 02 `.tfstate`ファイルを含むディレクトリ構成
 
-### `.tfstate`ファイルを含むルートモジュールの分割とは
+### `.tfstate`ファイルの分割
+
+#### ▼ 分割とは
+
+Terraformの`.tfstate`ファイルの分割の境目を見つけるコツは、“他の状態にできるだけ依存しない (`terraform_remote_state`ブロックで他のtfstateファイルを参照しない) リソースの関係” に注目することである。
+
+`terraform_remote_state`ブロック以外の方法 (例：dataリソースで他のtfstateファイル由来のリソースをタグ等から取得) で他の`.tfstate`ファイルを取得できるが、考え方は同じである。
+
+分割した`.tfstate`ファイルの依存方向図を書きながら設計することをお勧めする。
 
 #### ▼ メリット
 
 `.tfstate`ファイルを分割することにより、以下のメリットがある。
 
-- `terraform plan`コマンドや`terraform apply`コマンドをバックエンド間で独立させられ (同じバックエンド内で異なるディレクトリ配下に`tfstate`ファイルを配置している場合も含む) 、特定のバックエンドを変更しても他のバックエンドには差分として表示されない。
+- `terraform plan`コマンドや`terraform apply`コマンドをバックエンド間で独立させられ (同じバックエンド内で異なるディレクトリ配下に`.tfstate`ファイルを配置している場合も含む) 、特定のバックエンドを変更しても他のバックエンドには差分として表示されない。
 - `terraform plan`コマンドや`terraform apply`コマンドの実行時間を短縮できる。
 - `terraform apply`コマンドの実行途中に問題が発生し、`.tfstate`ファイルが破損したとしても、影響範囲をその`.tfstate`ファイルのリソース内に閉じられる。
 - リソースタイプが同じであっても、同じ名前を付けられる。
@@ -67,30 +73,34 @@ Terraformの`tfstate`ファイルの分割の境目を見つけるコツは、 �
 
 `【３】`
 
-: 中間層を以下のいずれかで切る。
-
-     分割の粒度としては、可能な限りお互いのtfstateファイル間で依存がないほど、terraform planコマンド時に差分が混在しなくなるため、targetオプションの使用頻度が減ってよい。
-
-     プロジェクトによっては、特に中間層ディレクトリで複数の設計ポリシーを組み合わせている場合があり、一つだけ採用されているとは限らないことに注意する。
+: 中間層を以下のいずれか / 組み合わせで切る。
 
      CloudFormationの分割プラクティスをTerraformにも適用する。
 
      - クラウドインフラのリソースの変更頻度
      - 運用チームの責務範囲
      - blast radius (影響範囲、障害範囲)
-     - システムコンポーネント
+     - プロダクトのサブコンポーネント
 
-     > ↪️：https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
+     > ↪️：
+     > - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
+     > - https://zoo200.net/terraform-tutorial-module-and-directory/
+     > - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
+     > - https://zenn.dev/hajimeni/articles/e17b9808e0e82e
 
-#### ▼ ほかの`tfstate`ファイルに依存する場合
+プロジェクトによっては、特に中間層ディレクトリで複数の設計ポリシーを組み合わせている場合があり、一つだけ採用されているとは限らないことに注意する。
 
-tfstateファイルを分割するということは、互いリソース値に依存しない想定である (はじめにの項目に記載がある通り)。
+おそらく一番現実的なのが、後述の通り、運用チームの責務範囲とサブコンポーネントを組み合わせて分割する方法である。
 
-(例えば、AWSリソースのブロックがGoogleCloudリソースのブロックに依存することはない)
+#### ▼ ほかの`.tfstate`ファイルに依存する場合
 
-しかしtfstateファイルを分割したとしても、一方のtfstateファイルがもう一方に依存せざるを得ない場合がある。
+`.tfstate`ファイルを分割するということは、互いリソース値に依存しない想定である (はじめにの項目に記載がある通り)。
 
-tfstateファイルが他から独立している想定で分割しているので、あまり望ましくないが、他のtfstateファイルに依存する場合terraform_remote_stateブロックを使用する
+例えば、AWSリソースのブロックがGoogleCloudリソースのブロックに依存することはない
+
+しかし`.tfstate`ファイルを分割したとしても、一方の`.tfstate`ファイルがもう一方に依存せざるを得ない場合がある。
+
+`.tfstate`ファイルが他から独立している想定で分割しているので、あまり望ましくないが、他の`.tfstate`ファイルに依存する場合、`terraform_remote_state`ブロックを使用する
 
 ```yaml
 repository/
@@ -127,16 +137,16 @@ data "terraform_remote_state" "foo" {
 
 #### ▼ クラウドプロバイダー別 (必須)
 
-最上層ディレクトリはプロバイダー別にtfstateファイルとディレクトリを分割する。
+この場合は、ディレクトリではなくリポジトリ自体を別にしてしまっても良い。
 
-tfstateファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
+最上層ディレクトリはプロバイダー別で`.tfstate`ファイルを含むディレクトリを分割する。
 
 `.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
-プロバイダーが他プロバイダーのtfstateファイルに依存することはない想定なので、`terraform_remote_state`ブロックを使用せずに完全に分割できるはずである。
+プロバイダーが他プロバイダーの`.tfstate`ファイルに依存することはない想定なので、`terraform_remote_state`ブロックを使用せずに完全に分割できるはずである。
 
 ```mermaid
-graph TD
+graph TB
     subgraph pagerduty
     A[tfstate]
     end
@@ -169,9 +179,9 @@ repository/
 │   ...
 │
 └── pagerduty/ # PagerDuty
-├── backend.tf
-├── provider.tf
-...
+    ├── backend.tf
+    ├── provider.tf
+    ...
 ```
 
 <br>
@@ -180,14 +190,16 @@ repository/
 
 #### ▼ 実行環境別 (必須)
 
-実行環境別にtfstateファイルとディレクトリを分割する。
+この場合は、リポジトリ自体は分割しない。
 
-tfstateファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
+実行環境別に`.tfstate`ファイルを含むディレクトリを分割する。
 
-実行環境が他実行環境のtfstateファイルに依存することはない想定なので、`terraform_remote_state`ブロックを使用せずに完全に分割できるはずである。
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
+
+実行環境が他実行環境の`.tfstate`ファイルに依存することはない想定なので、`terraform_remote_state`ブロックを使用せずに完全に分割できるはずである。
 
 ```mermaid
-graph TD
+graph TB
     subgraph pagerduty
     J[tes-tfstate]
     K[stg-tfstate]
@@ -234,133 +246,43 @@ repository/
 │   └── prd/ # 本番環
 │
 └── pagerduty/ # PagerDuty
-├── provider.tf
-├── tes/ # テスト環境
-├── stg/ # ステージング環境
-└── prd/ # 本番環境
+    ├── provider.tf
+    ├── tes/ # テスト環境
+    ├── stg/ # ステージング環境
+    └── prd/ # 本番環境
 ```
 
 <br>
 
 ### 中間層ディレクトリ
 
-#### ▼ 分割の目安
-
-CloudFormationでは、クラウドインフラのリソースの実装変更頻度、運用チームの責務範囲、blast-radius、システムコンポーネント、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。
-
-これらの観点の分割が混在してしまうと可読性が悪くなるため、個人的にはいずれかの観点に統一した方が良い。
-
-> ↪️：
->
-> - https://zoo200.net/terraform-tutorial-module-and-directory/
-> - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
-> - https://zenn.dev/hajimeni/articles/e17b9808e0e82e
-
-#### ▼ クラウドインフラのリソースの変更頻度
-
-インフラリソースの設定値をどの程度の頻度で変更するか別にtfstateファイルとディレクトリを分割する。
-
-tfstateファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
-
-頻度別のディレクトリの名前は一例であり、任意である。
-
-変更頻度の大きい方 (例：EC2) が小さい方 (例：VPC) に依存することがあり、変更頻度の小さい方が`terraform_remote_state`ブロックを使用する可能性がある
-
-> ↪️：
->
-> - https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
-> - https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
-
-```mermaid
-graph TD
-    subgraph aws
-    subgraph tes
-    A[high-freq-tfstate]-->C
-    B[middle-freq-tfstate]-->C
-    C[low-freq-tfstate]
-    end
-    subgraph stg
-    D[tfstate]
-    end
-    subgraph prd
-    e[tfstate]
-    end
-    end
-```
-
-```yaml
-repository/
-├── aws/ # AWS
-│   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系など）
-│   │   ├── provider.tf
-│   │   ├── tes # テスト環境
-│   │   │   ├── backend.tfvars # バックエンド内のaws/terraform.tfstateaws/high-freq/terraform.tfstate
-│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
-│   │   │   ...
-│   │   │
-│   │   ├── stg # ステージング環境
-│   │   │   ├── backend.tfvars # バックエンド内のaws/low-freq/terraform.tfstate
-│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
-│   │   │   ...
-│   │   │
-│   │   └── prd # 本番環境
-│   │       ├── backend.tfvars # バックエンド内のaws/middle-freq/terraform.tfstate
-│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
-│   │       ...
-│   │
-│   ├── low-freq # 低頻度リソース（ネットワーク系、ストレージ系、など）
-│   │   ├── provider.tf
-│   │   ├── tes
-│   │   │   ├── backend.tfvars
-│   │   │   ...
-│   │   │
-│   │   ├── stg
-│   │   │   ├── backend.tfvars
-│   │   │   ...
-│   │   │
-│   │   └── prd
-│   │       ├── backend.tfvars
-│   │       ...
-│   │
-│   └── middle-freq # 中頻度リソース（高頻度とも低頻度とも言えないリソース）
-│       ├── provider.tf
-│       ├── tes
-│       │   ├── backend.tfvars
-│       │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
-│       │   ...
-│       │
-│       ├── stg
-│       │   ├── backend.tfvars
-│       │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
-│       │   ...
-│       │
-│       └── prd
-│           ├── backend.tfvars
-│           ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
-│           ...
-│
-├── datadog/ # Datadog
-├── healthchecks/ # Healthchecks
-└── pagerduty/ # PagerDuty
-```
-
 #### ▼ 運用チームの責務範囲
 
-運用チームの責務範囲を分割の粒度とする。バックエンド（例：AWS S3、GCP GCS、など）のポリシー（例：IAM、バケットポリシー、など）で認可スコープを制御する。
+この場合は、ディレクトリではなくリポジトリ自体を別にしてしまっても良い。
 
-tfstateファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
+運用チームのリソースの責務範囲別でディレクトリを分割する。
+
+この時、バックエンド（例：AWS S3、GCP GCS、など）のポリシー（例：IAM、バケットポリシー、など）で認可スコープを制御する。
+
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 チーム別のディレクトリの名前は一例であり、任意である。
 
 互いに依存することがあり、各運用チームが`terraform_remote_state`ブロックを使用する可能性がある
 
+（例）
+
+2つのappチーム / sreチーム、があるとする。
+
+appチーム間では不本意ながら相互依存があり、両方のappチームからsreチームに依存方向がある。
+
 ```mermaid
-graph TD
+graph TB
     subgraph aws
     subgraph tes
-    A[foo-team-tfstate]-->B
-    B[bar-team-tfstate]-->A
-    B-->C[baz-team-tfstate]
+    A[foo-app-team-tfstate]-->B
+    B[bar-app-team-tfstate]-->A
+    B-->C[baz-sre-team-tfstate]
     end
     subgraph stg
     D[tfstate]
@@ -427,25 +349,33 @@ repository/
 └── pagerduty/ # PagerDuty
 ```
 
-#### ▼ システムコンポーネント
+#### ▼ サブコンポーネント
 
-blast radius、システムコンポーネント（システムの規模、プロダクトのフェーズ、による）別にtfstateファイルとディレクトリを分割する。
+一つのプロダクトを構成するサブコンポーネント（どの程度の大きさかはシステムの規模、プロダクトのフェーズ、による）別でディレクトリを分割する。
 
-番号をつけて、依存関係の方向を明示するなどもあり。
+ディレクトリ名に番号をつけて、番号の小さい方から大きい方に依存関係の方向があることを明示するなどもあり。
 
-tfstateファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
 
 ディレクトリの名前は一例であり、任意である。
 
-より上位コンポーネントが土台の下位コンポーネントに依存することがあり、上位コンポーネントがterraform_remote_stateブロックを使用する可能性がある
+多くのリソースを要する上位のコンポーネント (例：EKS、EC2) がそれだけで完結する下位のコンポーネント (例：VPC、Route53) に依存することがあり、前者がterraform_remote_stateブロックを使用する可能性がある。
+
+(例)
+
+それだけで完結するnetwork系コンポーネント (例：VPC、Route53)
+
+他の多くのリソース値に依存するアプリケーション系 (例：AWS ECS、AWS EKS) やdatastore / storage系 (例：AWS Aurora RDS)のコンポーネントがあるとする。
+
+applicationコンポーネントとdatastoreコンポーネントからnetworkコンポーネントに依存方向がある。
 
 ```mermaid
-graph TD
+graph TB
     subgraph aws
     subgraph tes
-    A[foo-component-tfstate]-->B
-    B[bar-component-tfstate]-->C
-    C[baz-component-tfstate]
+    A[foo-application-tfstate]-->C
+    B[bar-datastore-tfstate]-->C
+    C[baz-network-tfstate]
     end
     subgraph stg
     D[tfstate]
@@ -459,7 +389,7 @@ graph TD
 ```yaml
 repository/
 ├── aws/ # AWS
-│   ├── 01-foo/
+│   ├── foo-application/
 │   │   ├── provider.tf
 │   │   ├── tes # テスト環境
 │   │   │   ├── backend.tfvars # バックエンド内の/aws/foo-team/terraform.tfstate
@@ -473,11 +403,8 @@ repository/
 │   │       ├── backend.tfvars # バックエンド内の/aws/baz-team/terraform.tfstate
 │   │       ...
 │   │
-│   ├── 02-bar/
-│   ├── 03-baz/
-│   ├── 04-qux/
-│   ├── 05-quux/
-│   └── 06-corge/
+│   ├── bar-datastore/
+│   └── baz-network
 │
 ├── datadog/ # Datadog
 ├── healthchecks/
@@ -495,15 +422,125 @@ repository/
 
 <br>
 
-## 03. モノリスな`tfstate`ファイルを分割する
+#### ▼ 変更頻度
 
-モノリスな`tfstate`ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て一つの`tfstate`ファイルで管理している場合である。
+インフラリソースの設定値をどの程度の頻度で変更するか別にディレクトリを分割する。
 
-AWSリソース値を参照しない関係であれば、これらは別の`tfstate`ファイルに分割できる。
+`.tfstate`ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。
+
+頻度別のディレクトリの名前は一例であり、任意である。
+
+変更頻度の大きい方 (例：EC2、セキュリティグループ、CloudWatch、s3) がそれの小さい方 (例：VPC、Route53) に依存することがあり、変更頻度の大きい方がterraform_remote_stateブロックを使用する可能性がある。
+
+（例）
+
+変更高頻度 / 中頻度 / 低頻度なコンポーネント があるとする。
+
+変更高頻度と中頻度なコンポーネントから、低頻度なそれに依存方向がある。
+
+```mermaid
+graph TB
+    subgraph aws
+    subgraph tes
+    A[high-freq-tfstate]-->C
+    B[middle-freq-tfstate]-->C
+    C[low-freq-tfstate]
+    end
+    subgraph stg
+    D[tfstate]
+    end
+    subgraph prd
+    e[tfstate]
+    end
+    end
+```
+
+```yaml
+repository/
+├── aws/ # AWS
+│   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系、ストレージ系など）
+│   │   ├── provider.tf
+│   │   ├── tes # テスト環境
+│   │   │   ├── backend.tfvars # バックエンド内のaws/terraform.tfstateaws/high-freq/terraform.tfstate
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│   │   │   ...
+│   │   │
+│   │   ├── stg # ステージング環境
+│   │   │   ├── backend.tfvars # バックエンド内のaws/low-freq/terraform.tfstate
+│   │   │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│   │   │   ...
+│   │   │
+│   │   └── prd # 本番環境
+│   │       ├── backend.tfvars # バックエンド内のaws/middle-freq/terraform.tfstate
+│   │       ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│   │       ...
+│   │
+│   ├── low-freq # 低頻度リソース（ネットワーク系、など）
+│   │   ├── provider.tf
+│   │   ├── tes
+│   │   │   ├── backend.tfvars
+│   │   │   ...
+│   │   │
+│   │   ├── stg
+│   │   │   ├── backend.tfvars
+│   │   │   ...
+│   │   │
+│   │   └── prd
+│   │       ├── backend.tfvars
+│   │       ...
+│   │
+│   └── middle-freq # 中頻度リソース（高頻度とも低頻度とも言えないリソース）
+│       ├── provider.tf
+│       ├── tes
+│       │   ├── backend.tfvars
+│       │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│       │   ...
+│       │
+│       ├── stg
+│       │   ├── backend.tfvars
+│       │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│       │   ...
+│       │
+│       └── prd
+│           ├── backend.tfvars
+│           ├── remote_state.tf # terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい
+│           ...
+│
+├── datadog/ # Datadog
+├── healthchecks/ # Healthchecks
+└── pagerduty/ # PagerDuty
+```
+
+> ↪️：
+>
+> - https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
+> - https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+
+#### ▼ blast radius (障害範囲、影響範囲)
+
+記入中...
+
+#### ▼ 運用チーム × サブコンポーネント
+
+最初の手順の項目にも記載したが、運用チームとサブコンポーネントの組み合わせが一番現実的かも。
+
+なお、Terraformの運用チームが一つだけしかなければ、サブコンポーネントのみになる。
+
+組み合わせる場合は、まず大きく運用チームでディレクトリを切って、その下に各運用チームでサブコンポーネントを分割していく。
+
+運用チームとサブコンポーネントそれぞれについては前述の説明を参照。
+
+<br>
+
+## 03. モノリスな`.tfstate`ファイルを分割する
+
+モノリスな`.tfstate`ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て一つの`.tfstate`ファイルで管理している場合である。
+
+AWSリソース値を参照しない関係であれば、これらは別の`.tfstate`ファイルに分割できる。
 
 `【１】`
 
-: 既存のバックエンド内に新しいディレクトリを作成し、その配下に`tfstate`ファイルを新しく作成する。
+: 既存のバックエンド内に新しいディレクトリを作成し、その配下に`.tfstate`ファイルを新しく作成する。
 
      ここでは、サブシステムを分割するとする。
 
@@ -535,7 +572,7 @@ terraform {
 
 `【２】`
 
-: bar側では、foo側の`tfstate`ファイルからリソース値を取得しつつ、
+: bar側では、foo側の`.tfstate`ファイルからリソース値を取得しつつ、
 
 ```terraform
 # 分割した異なるfooというtfstateファイルから取得する
@@ -552,9 +589,9 @@ data "terraform_remote_state" "foo" {
 
 `【３】`
 
-: 新しい`tfstate`ファイルに、既存のサブシステムの状態をインポートする。
+: 新しい`.tfstate`ファイルに、既存のサブシステムの状態をインポートする。
 
-     事前に、バックエンドを新しいサブシステムの`tfstate`ファイルに切り替える。
+     事前に、バックエンドを新しいサブシステムの`.tfstate`ファイルに切り替える。
 
 ```bash
 $ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
@@ -563,7 +600,7 @@ $ terraform import
 
 `【４】`
 
-: サブシステムの`tfstate`ファイルで差分がないことを確認する。
+: サブシステムの`.tfstate`ファイルで差分がないことを確認する。
 
 ```bash
 $ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
@@ -572,9 +609,9 @@ $ terraform plan
 
 `【５】`
 
-: モノリスな`tfstate`ファイルから、サブシステムの状態を削除する。
+: モノリスな`.tfstate`ファイルから、サブシステムの状態を削除する。
 
-     事前に、バックエンドをモノリスな`tfstate`ファイルに切り替える。
+     事前に、バックエンドをモノリスな`.tfstate`ファイルに切り替える。
 
 ```bash
 $ terraform init -reconfigure -backend-config=foo-backend.tfvars
