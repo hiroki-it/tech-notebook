@@ -177,6 +177,20 @@ users:
       client-key: /var/lib/kubelet/pki/kubelet-client-current.pem
 ```
 
+#### ▼ ログローテション
+
+kubeletは、Pod内のコンテナが標準出力に出力したログを取得し、サイズが一定量を超過するとNode上に保管する。
+
+また、ローテーションの結果で作成されるファイルの世代数が一定数を超過すると、古い世代順に削除する。
+
+これらは、`containerLogMaxSize`と`containerLogMaxFiles`で設定できる。
+
+kubeletではログの保管期間を設定できないため、もし保管期間を設定したい場合はNode上にログローテーションツール (例：logrotate) をインストールする必要がある。
+
+![kubernetes_kubelet_log-rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
+
+> ↪️：https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/
+
 <br>
 
 ### ログ

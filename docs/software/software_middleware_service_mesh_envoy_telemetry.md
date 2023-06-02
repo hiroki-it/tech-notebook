@@ -35,6 +35,14 @@ Envoyは、アプリコンテナへのアクセスログを作成し、標準出
 
 > ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#default-format-string
 
+なお、`%REQ()`を使用して、好きなリクエストヘッダーの値を出力できる。
+
+これは、例えばユーザー定義のトレースIDを使用している場合に役立つ。
+
+```log
+[%START_TIME%] %REQ(<リクエストヘッダー名 (例：ユーザー定義のトレースIDのヘッダー)>)% ...
+```
+
 <br>
 
 ### 変数

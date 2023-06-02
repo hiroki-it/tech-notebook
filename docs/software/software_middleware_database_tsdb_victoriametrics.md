@@ -115,6 +115,14 @@ VictoriaMetricsは、クエリの実行前に、ディスクに永続化した�
 > - https://docs.victoriametrics.com/FAQ.html#how-to-set-a-memory-limit-for-victoriametrics-components
 > - https://docs.victoriametrics.com/#storage
 
+#### ▼ クエリ言語
+
+クエリ言語はMetricsQLである。
+
+これはPromQLではないが、文法はほぼほぼPromQLと同じである。
+
+> ↪️：https://docs.victoriametrics.com/MetricsQL.html
+
 #### ▼ カーディナリティ
 
 とある期間で区切った時の固有な時系列データの断片数である。
