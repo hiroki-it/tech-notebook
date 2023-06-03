@@ -1184,7 +1184,7 @@ $ git filter-branch -f --tree-filter \
     'rm -f <パス>' \
     HEAD
 
-# ガベージコレクションを実行
+# ガベージコレクションを実行する
 $ git gc --aggressive --prune=now
 ```
 
