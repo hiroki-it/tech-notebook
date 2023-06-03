@@ -198,7 +198,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 ALB、NLB、では元々実装されていたキューを廃止した経緯がある。
 
 > ↪️：
-> 
+>
 > - https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting
 > - https://stackoverflow.com/a/49421971
 
