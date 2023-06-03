@@ -193,7 +193,6 @@ kubeletは、`5`分ごとにコンテナイメージ、`10`分ごとにコンテ
 > - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144
 > - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/images/image_gc_manager.go#L63-L76
 
-
 #### ▼ ログローテション
 
 kubeletは、Pod内のコンテナが標準出力に出力したログを取得し、サイズが一定量を超過するとNode上に`.zip`形式で圧縮して保管する。
@@ -207,7 +206,7 @@ kubeletではログの保管期間を設定できないため、もし保管期�
 ![kubernetes_kubelet_log-rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
 
 > ↪️：
-> 
+>
 > - https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/
 > - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/logs/container_log_manager.go
 
