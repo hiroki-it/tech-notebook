@@ -84,22 +84,6 @@ Terraformに限らずアプリケーションでも注意が必要ですが、�
 
 `.tfstate`ファイルが他から独立している想定で分割しているので、あまり望ましくないが、依存先の`.tfstate`ファイルから状態を取得するような定義が必要になる。
 
-```yaml
-repository/
-├── foo/
-│   ├── backend.tf # バックエンド内の/foo/terraform.tfstate
-│   ├── provider.tf
-│   ...
-│
-├── bar/
-│   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
-│   ├── remote_state.tf # terraform_remote_stateブロックを使用し、fooのtfstateファイルに依存してもよい
-│   ├── provider.tf
-│   ...
-│
-...
-```
-
 #### ▼ `terraform_remote_state`ブロックを使用する場合
 
 `terraform_remote_state`ブロックを使用する場合、依存先のリソースに関わらず、同じ`terraform_remote_state`ブロックを使い回すことができる一方で、別途`output`ブロックの定義が必要になってわかりにくい。
@@ -122,6 +106,22 @@ resource "example" "bar" {
   vpc_id     = data.terraform_remote_state.foo.outputs.vpc_id
   subnet_ids = data.terraform_remote_state.foo.outputs.vpc_private_subnet_ids
 }
+```
+
+```yaml
+repository/
+├── foo/
+│   ├── backend.tf # バックエンド内の/foo/terraform.tfstate
+│   ├── provider.tf
+│   ...
+│
+├── bar/
+│   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
+│   ├── remote_state.tf # terraform_remote_stateブロックを使用し、fooのtfstateファイルに依存してもよい
+│   ├── provider.tf
+│   ...
+│
+...
 ```
 
 #### ▼ `data`ブロックを使用する場合
@@ -149,6 +149,22 @@ resource "example" "bar" {
    vpc_id     = data.aws_vpc.foo.id
    subnet_ids = data.aws_subnet.foo_private.ids
 }
+```
+
+```yaml
+repository/
+├── foo/
+│   ├── backend.tf # バックエンド内の/foo/terraform.tfstate
+│   ├── provider.tf
+│   ...
+│
+├── bar/
+│   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
+│   ├── data.tf # dataブロックを使用し、fooのtfstateファイルに依存してもよい
+│   ├── provider.tf
+│   ...
+│
+...
 ```
 
 <br>
@@ -1151,7 +1167,7 @@ aws-sre-team-repository/
 
 <br>
 
-## 依存リソース別
+### 依存リソース別
 
 依存先の多いリソースに関して、依存先のリソース別にローカルモジュールを分割する。
 
@@ -1250,7 +1266,7 @@ aws-remote-repository/
 
 ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。
 
-```bash
+```yaml
 aws-repository/
 └── modules/ # ローカルモジュール
     ├── acm/ # ACM
