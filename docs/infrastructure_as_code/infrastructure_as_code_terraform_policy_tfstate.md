@@ -31,6 +31,8 @@ Terraformに限らずアプリケーションでも注意が必要ですが、�
 
 まず、Terraformのディレクトリ構成は`tfstate`ファイルの粒度に合わせること。
 
+ディレクトリを分割しているのに、各ディレクトリ配下で使う`tfstate`ファイルが同じであると、ディレクトリを分割する旨みがなさそう。
+
 そしてTerraformの`tfstate`ファイルの分割の境目を見つけるコツは、
 
 “**他の状態にできるだけ依存しない (`terraform_remote_state`ブロックや`data`ブロックで他の`tfstate`ファイルを参照しない) リソースの関係”**
@@ -84,7 +86,14 @@ Terraformに限らずアプリケーションでも注意が必要ですが、�
 
 #### ▼ `terraform_remote_state`ブロックを使用する場合
 
-`terraform_remote_state`ブロックを使用する場合、依存先のリソースに関わらず、同じ`terraform_remote_state`ブロックを使い回すことができる一方で、別途`output`ブロックの定義が必要になって可読性が低い。
+`terraform_remote_state`ブロックを使用する場合、以下のメリットがある。
+
+- 依存先のリソースに関わらず、同じ`terraform_remote_state`ブロックを使い回すことができる
+
+一方で、以下のデメリットがある。
+
+- 別途`output`ブロックの定義が必要になり、可読性が低くなる。
+- 依存先と依存元の間でTerraformのバージョンに差がありすぎると、`tfstate`ファイル間で互換性がなくなり、`terraform_remote_state`ブロックで状態を参照できない場合もある。
 
 今回は、状態参照の一般的な方法であるこちらで話を進める。
 
@@ -129,9 +138,14 @@ repository/
 
 #### ▼ `data`ブロックを使用する場合
 
-`data`ブロックを使用する場合、可読性が高い一方で、依存先のリソースごとに`data`ブロックを定義する必要がある。
+`data`ブロックを使用する場合、以下のメリットがある。
 
-`data`ブロックは、tfstateファイルが自身以外 (例：コンソール画面) で作成されたリソースの状態を参照するために使用でき、異なるtfstateファイルから状態を参照することにも使用できる。
+- `output`ブロックが不要で可読性が高い。
+- `data`ブロックは、tfstateファイルが自身以外 (例：コンソール画面) で作成されたリソースの状態を参照するために使用でき、異なるtfstateファイルから状態を参照することにも使用できる。
+
+一方で以下のデメリットがある。
+
+- 依存先のリソースごとにdataブロックを定義する必要がある。
 
 今回は`data`ブロックでは話を進めないが、こちらの方法で採用しても “他のtfstateファイルに依存する” という考え方は同じである。
 
@@ -445,8 +459,8 @@ aws-repository/
 │
 └── network-firewall
     ├── provider.tf
+    ├── security_group.tf # ファイアウォール系のリソース
     ├── vpc.tf # ネットワーク系のリソース
-    ├── security-group.tf # ファイアウォール系のリソース
     ├── tes # テスト環境
     │   ├── backend.tfvars # tes用バックエンド内の/aws/network-firewall/terraform.tfstate
     │   ...
@@ -501,6 +515,7 @@ aws-bar-product-repository/
 ```yaml
 aws-network-firewall-repository
 ├── provider.tf
+├── security_group.tf # ファイアウォール系のリソース
 ├── vpc.tf # ネットワーク系のリソース
 ├── tes # テスト環境
 │   ├── backend.tfvars # tes用バックエンド内の/aws/network-firewall/terraform.tfstate
@@ -855,8 +870,8 @@ aws-repository/
 │
 └── network-firewall
     ├── provider.tf
-    ├── security-group.tf
-    ├── vpc.tf
+    ├── security_group.tf # ファイアウォール系のリソース
+    ├── vpc.tf # ネットワーク系のリソース
     ├── tes # テスト環境
     │   ├── backend.tfvars # tes用バックエンド内の/aws/network-firewall/terraform.tfstate
     │   ...
@@ -1140,7 +1155,8 @@ aws-sre-team-repository/
 │
 └── network-firewall
     ├── provider.tf
-    ├── vpc.tf
+    ├── security_group.tf # ファイアウォール系のリソース
+    ├── vpc.tf # ネットワーク系のリソース
     ├── tes # テスト環境
     │   ├── backend.tfvars # バックエンド内の/aws/sre-team/network-firewall/terraform.tfstate
     │   ...

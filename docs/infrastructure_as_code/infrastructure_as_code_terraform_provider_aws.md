@@ -165,7 +165,6 @@ data "aws_ami" "bastion" {
 
 # 後述の説明を参考にせよ。【３】
 
-:
 data "aws_ami" "backuped" {
   most_recent = true
 
