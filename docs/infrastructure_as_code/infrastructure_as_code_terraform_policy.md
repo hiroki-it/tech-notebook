@@ -846,9 +846,9 @@ The backend configuration argument "bucket" given on the command line is not exp
 | GitHubリポジトリ + キーバリュー型バックエンド         | ⭕             | `base64`方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で暗号化した上で、リポジトリ上でキーバリュー型バックエンド (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に`base64`方式エンコード値に復号化する。                                        |
 | GitHubリポジトリ + クラウドキーバリュー型バックエンド | ×              | `base64`方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型バックエンド (例：AWS パラメーターストア、Google SecretManager、など) で管理する。クラウドインフラへのプロビジョニング時に`base64`方式エンコード値に復号化する。 |
 
-#### ▼ `.tfstate`ファイルへの書き込みを防ぐ
+#### ▼ `tfstate`ファイルへの書き込みを防ぐ
 
-機密な変数を`ignore_changes`引数を使用して、`.tfstate`ファイルへの書き込みを防ぐ。
+機密な変数を`ignore_changes`引数を使用して、`tfstate`ファイルへの書き込みを防ぐ。
 
 その上で、特定の方法 (例：SOPS、AWS Secrets Manager) で実際の値を管理し、これを`data`ブロックで参照する。
 
@@ -861,7 +861,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 : 初期構築時にダミー値を割り当ててプロビジョニングする。
 
-     この時点で、`.tfstate`ファイルにはダミー値が書き込まれる。
+     この時点で、`tfstate`ファイルにはダミー値が書き込まれる。
 
 `【２】`
 
@@ -871,7 +871,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 : `ignore_changes`引数を設定する。
 
-     以降のプロビジョニングで、`.tfstate`ファイル上はダミー値のままになる。
+     以降のプロビジョニングで、`tfstate`ファイル上はダミー値のままになる。
 
 ```terraform
 # AWS RDSの場合
@@ -883,7 +883,7 @@ resource "aws_rds_cluster" "this" {
 
   lifecycle {
     ignore_changes = [
-      # ユーザー名とパスワードが.tfstateファイルに書き込まれなくなる。
+      # ユーザー名とパスワードがtfstateファイルに書き込まれなくなる。
       master_username,
       master_password
     ]
@@ -891,19 +891,19 @@ resource "aws_rds_cluster" "this" {
 }
 ```
 
-#### ▼ `.tfstate`ファイルへの平文を妥協する
+#### ▼ `tfstate`ファイルへの平文を妥協する
 
-`.tfstate`ファイルへ平文で定義されてしまうことを妥協する。
+`tfstate`ファイルへ平文で定義されてしまうことを妥協する。
 
 その代わりに、クライアントとバックエンド間の通信時に盗まれたり、バックエンド管理時に参照されることを防げるように、バックエンドの暗号化機能やアクセスポリシーを使用する。
 
 <br>
 
-### `.tfstate`ファイルの暗号化
+### `tfstate`ファイルの暗号化
 
 バックエンドのファイル暗号化を使用する。
 
-バックエンド内の`.tfstate`ファイルを暗号化しておき、ダウンロード時だけ復号化するようにしておく。
+バックエンド内の`tfstate`ファイルを暗号化しておき、ダウンロード時だけ復号化するようにしておく。
 
 > ↪️：https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state
 
@@ -953,7 +953,7 @@ Terraformでは、マイナーバージョン単位でアップグレードを�
 
 警告/エラーを解決できるように、記法やオプション値を修正する。
 
-場合によっては`.tfstate`ファイルの差分として表示されているのみで、実インフラとの差分ではない場合もあるため、`terraform plan`コマンド時に差分があったとしても、実インフラに影響がなければ問題ない。
+場合によっては`tfstate`ファイルの差分として表示されているのみで、実インフラとの差分ではない場合もあるため、`terraform plan`コマンド時に差分があったとしても、実インフラに影響がなければ問題ない。
 
 #### `【５】` プロバイダーをアップグレードしたい場合はTerraformもアップグレード
 

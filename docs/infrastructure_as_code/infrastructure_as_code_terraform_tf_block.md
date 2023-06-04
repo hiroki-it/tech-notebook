@@ -1359,9 +1359,9 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ▼ ignore_changes
 
-実インフラのみで発生した`resource`ブロックの作成・更新・削除を無視し、`.tfstate`ファイルに反映しないようにする。
+実インフラのみで発生した`resource`ブロックの作成・更新・削除を無視し、`tfstate`ファイルに反映しないようにする。
 
-これにより、`ignore_changes`引数を定義したタイミング以降、実インフラと`.tfstate`ファイルに差分があっても、`.tfstate`ファイルの値が更新されなくなる。
+これにより、`ignore_changes`引数を定義したタイミング以降、実インフラと`tfstate`ファイルに差分があっても、`tfstate`ファイルの値が更新されなくなる。
 
 **＊実装例＊**
 

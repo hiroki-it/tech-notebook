@@ -15,9 +15,9 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 ## 01. バックエンド内のファイル
 
-### `.tfstate`ファイル
+### `tfstate`ファイル
 
-#### ▼ `.tfstate`ファイルとは
+#### ▼ `tfstate`ファイルとは
 
 実インフラのインフラの状態が定義されたjsonファイルのこと。
 
@@ -89,7 +89,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 #### ▼ `state.lock`ファイル
 
-`.tfstate`ファイルの競合を防ぐために、`terraform apply`コマンドの処理中に`.tfstate`ファイルはロックされる。
+`tfstate`ファイルの競合を防ぐために、`terraform apply`コマンドの処理中に`tfstate`ファイルはロックされる。
 
 ロックの状態は、`state.lock`ファイルやクラウドプロバイダーのDB (例：DynamoDB) に記載する。
 
@@ -393,7 +393,7 @@ terraform {
   # リージョン、アクセスキーID、シークレットアクセスキーは不要
   backend "s3" {
     bucket  = "<バケット名>"
-    key     = "<.tfstateファイル名とバケット内ディレクトリ構造>"
+    key     = "<tfstateファイル名とバケット内ディレクトリ構造>"
   }
 }
 
