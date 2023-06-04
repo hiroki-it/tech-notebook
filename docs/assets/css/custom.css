@@ -306,6 +306,14 @@ th, td {
 }
 
 /***************
+ 検索
+***************/
+.md-search-result .md-typeset h1 {
+    color: white;
+    font-weight: bold;
+}
+
+/***************
  コードブロック
 ***************/
 
