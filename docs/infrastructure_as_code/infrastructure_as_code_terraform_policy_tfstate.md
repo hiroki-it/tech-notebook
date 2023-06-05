@@ -100,7 +100,7 @@ Terraformに限らずアプリケーションでも注意が必要ですが、�
 ```terraform
 # VPCの状態は、fooのtfstateファイルで管理している
 data "terraform_remote_state" "foo" {
-   
+
    backend = "s3"
 
    config = {
@@ -153,7 +153,7 @@ repository/
 ```terraform
 # VPCの状態は、fooのtfstateファイルで管理している
 data "aws_vpc" "foo" {
-   
+
    filter {
       name   = "tag:Name"
       values = ["<異なるtfstateファイルで管理しているVPCの名前>"]
@@ -166,7 +166,7 @@ data "aws_subnet" "foo_private" {
       name   = "vpc-id"
       values = [data.aws_vpc.foo.id]
    }
-   
+
    filter {
       name = "tag:Name"
       values = ["<異なるtfstateファイルで管理しているVPCのプライベートサブネットの名前>"]
@@ -307,24 +307,24 @@ pagerduty-repository/ # PagerDuty
 ```mermaid
 graph TB
     subgraph pagerduty
-    J[tes-tfstate]
-    K[stg-tfstate]
-    L[prd-tfstate]
+        PagerDuty[tfstate]
     end
     subgraph healthchecks
-    G[tes-tfstate]
-    H[stg-tfstate]
-    I[prd-tfstate]
+        HealthChecks[tfstate]
     end
     subgraph datadog
-    D[tes-tfstate]
-    E[stg-tfstate]
-    F[prd-tfstate]
+        Datadog[tfstate]
     end
     subgraph aws
-    A[tes-tfstate]
-    B[stg-tfstate]
-    C[prd-tfstate]
+        subgraph tes-bucket
+            Tes[tfstate]
+        end
+        subgraph stg-bucket
+            Stg[tfstate]
+        end
+        subgraph prd-bucket
+            Prd[tfstate]
+        end
     end
 ```
 
@@ -399,28 +399,27 @@ pagerduty-repository/
 ```mermaid
 graph TB
     subgraph pagerduty
-    Pagerduty[tfstate]
+        Pagerduty[tfstate]
     end
     subgraph healthchecks
-    Healthchecks[tfstate]
+        Healthchecks[tfstate]
     end
     subgraph datadog
-    Datadog[tfstate]
+        Datadog[tfstate]
     end
     subgraph aws
-    subgraph tes
-    A[foo-product-tfstate]-->C
-    B[bar-product-tfstate]-->C
-    C[network/firewall-tfstate]
+        subgraph tes-bucket
+            Foo[foo-product-tfstate]-->Network
+            Bar[bar-product-tfstate]-->Network
+            Network[network/firewall-tfstate]
+        end
+    subgraph stg-bucket
+        Stg[tfstate]
     end
-    subgraph stg
-    D[tfstate]
-    end
-    subgraph prd
-    E[tfstate]
+    subgraph prd-bucket
+        Prd[tfstate]
     end
     end
-
 ```
 
 この場合のディレクトリ構成例は以下の通りである。
@@ -434,7 +433,6 @@ graph TB
 分割した各`tfstate`ファイルを同じリポジトリで管理する場合
 
 ```yaml
-
 # ディレクトリの名前は一例であり、任意である。
 aws-repository/
 ├── foo-product/
@@ -480,7 +478,6 @@ aws-repository/
     └── prd # 本番環境
         ├── backend.tfvars # prd用バックエンド内の/aws/network-firewall/terraform.tfstate
         ...
-
 ```
 
 (例)
@@ -561,26 +558,26 @@ aws-network-firewall-repository
 ```mermaid
 graph TB
     subgraph pagerduty
-    Pagerduty[tfstate]
+        Pagerduty[tfstate]
     end
     subgraph healthchecks
-    Healthchecks[tfstate]
+        Healthchecks[tfstate]
     end
     subgraph datadog
-    Datadog[tfstate]
+        Datadog[tfstate]
     end
     subgraph aws
-    subgraph tes
-    A[backend-team-tfstate]-->B
-    B[frontend-team-tfstate]-->A
-    A-->C[sre-team-tfstate]
-    B-->C[sre-team-tfstate]
+        subgraph tes-bucket
+            Backend[backend-team-tfstate]-->Frontend
+            Frontend[frontend-team-tfstate]-->Backend
+            Backend-->Sre[sre-team-tfstate]
+            Frontend-->Sre[sre-team-tfstate]
+        end
+    subgraph stg-bucket
+        Stg[tfstate]
     end
-    subgraph stg
-    D[tfstate]
-    end
-    subgraph prd
-    e[tfstate]
+    subgraph prd-bucket
+        Prd[tfstate]
     end
     end
 ```
@@ -755,32 +752,32 @@ aws-sre-team-repository/ # baz-sreチーム
 ```mermaid
 graph TB
     subgraph pagerduty
-    Pagerduty[tfstate]
+        Pagerduty[tfstate]
     end
     subgraph healthchecks
-    Healthchecks[tfstate]
+        Healthchecks[tfstate]
     end
     subgraph datadog
-    Datadog[tfstate]
+        Datadog[tfstate]
     end
     subgraph aws
-    subgraph tes
-    Cicd[cicd-tfstate]-->Application
-    Cicd[cicd-tfstate]-->Network
-    Cicd[cicd-tfstate]-->Auth
-    Application[application-tfstate]-->Network
-    Application[application-tfstate]-->Auth
-    Datastore[datastore-tfstate]-->Network
-    Datastore[datastore-tfstate]-->Auth
-    Monitor[monitor-tfstate]-->Application
-    Network[network/firewall-tfstate]
-    Auth[auth-tfstate]
+    subgraph tes-bucket
+        Cicd[cicd-tfstate]-->Application
+        Cicd[cicd-tfstate]-->Network
+        Cicd[cicd-tfstate]-->Auth
+        Application[application-tfstate]-->Network
+        Application[application-tfstate]-->Auth
+        Datastore[datastore-tfstate]-->Network
+        Datastore[datastore-tfstate]-->Auth
+        Monitor[monitor-tfstate]-->Application
+        Network[network/firewall-tfstate]
+        Auth[auth-tfstate]
     end
-    subgraph stg
-    Stgtfstate[tfstate]
+    subgraph stg-bucket
+        Stg[tfstate]
     end
-    subgraph prd
-    Prdtfstate[tfstate]
+    subgraph prd-bucket
+        Prd[tfstate]
     end
     end
 ```
@@ -912,25 +909,25 @@ aws-repository/
 ```mermaid
 graph TB
     subgraph pagerduty
-    Pagerduty[tfstate]
+        Pagerduty[tfstate]
     end
     subgraph healthchecks
-    Healthchecks[tfstate]
+        Healthchecks[tfstate]
     end
     subgraph datadog
-    Datadog[tfstate]
+        Datadog[tfstate]
     end
     subgraph aws
-    subgraph tes
-    A[high-freq-tfstate]-->C
-    B[middle-freq-tfstate]-->C
-    C[low-freq-tfstate]
+        subgraph tes-bucket
+            High[high-freq-tfstate]-->C
+            Middle[middle-freq-tfstate]-->C
+            Low[low-freq-tfstate]
+        end
+    subgraph stg-bucket
+        Stg[tfstate]
     end
-    subgraph stg
-    D[tfstate]
-    end
-    subgraph prd
-    e[tfstate]
+    subgraph prd-bucket
+        Prd[tfstate]
     end
     end
 ```
@@ -1023,22 +1020,22 @@ aws-repository/
 ```mermaid
 graph TB
     subgraph pagerduty
-    Pagerduty[tfstate]
+        Pagerduty[tfstate]
     end
     subgraph healthchecks
-    Healthchecks[tfstate]
+        Healthchecks[tfstate]
     end
     subgraph datadog
-    Datadog[tfstate]
+        Datadog[tfstate]
     end
     subgraph aws
-    subgraph tes
-    subgraph frontend-team
-    Frontdatastore[frontend-datastore-tfstate]
-    end
-    subgraph backend-team
-    Cicd[cicd-tfstate]
-    Backenddatastore[backend-datastore-tfstate]
+        subgraph tes-bucket
+            subgraph frontend-team
+                Frontdatastore[frontend-datastore-tfstate]
+            end
+        subgraph backend-team
+        Cicd[cicd-tfstate]
+        Backenddatastore[backend-datastore-tfstate]
     end
     Cicd[cicd-tfstate]-->Application
     Cicd[cicd-tfstate]-->Network-firewall
@@ -1047,21 +1044,21 @@ graph TB
     Backenddatastore[backend-datastore-tfstate]-->Network-firewall
     Backenddatastore[backend-datastore-tfstate]-->Auth
     subgraph sre-team
-    Application[application-tfstate]
-    Auth[auth-tfstate]
-    Monitor[monitor-tfstate]
-    Network-firewall[network/firewall-tfstate]
+        Application[application-tfstate]
+        Auth[auth-tfstate]
+        Monitor[monitor-tfstate]
+        Network-firewall[network/firewall-tfstate]
     end
     Application[application-tfstate]-->Network-firewall
     Application[application-tfstate]-->Auth
     Monitor[monitor-tfstate]-->Application
     Auth[auth-tfstate]
     end
-    subgraph stg
-    Stgtfstate[tfstate]
+    subgraph stg-bucket
+        Stgtfstate[tfstate]
     end
-    subgraph prd
-    Prdtfstate[tfstate]
+    subgraph prd-bucket
+        Prdtfstate[tfstate]
     end
     end
 ```

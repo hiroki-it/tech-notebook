@@ -459,10 +459,10 @@ Casbinの記法を使用して、ロールと認可スコープを定義しつ�
 
 `readonly`と`admin`というロールは、デフォルトで定義済みである。
 
-| 記号                 | 項目                                                                                                                | 説明                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<Namespace名>/<Kubernetesリソースの識別名>` | ロールと認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
-| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                |
+| 記号                 | 項目                                                                                                                | 説明                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<Namespace名>/<Kubernetesリソースの識別名>` | ロールとArgoCD系リソースの認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
+| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                  |
 
 > ↪️：
 >
@@ -501,7 +501,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールと認可スコープを定義する。
+    # ロールと認可スコープを定義する
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
     p, role:maintainer, *, *, app/*, allow
@@ -580,7 +580,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールと認可スコープを定義する
+    # ロールとArgoCD系リソースの認可スコープを定義する
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
     p, role:maintainer, *, *, app/*, allow
@@ -616,7 +616,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールと認可スコープを定義する
+    # ロールとArgoCD系リソースの認可スコープを定義する
     p, role:app, *, *, dev-app/*, allow
     p, role:infra, *, *, dev-infra/*, allow
     p, role:maintainer, *, *, dev-app/*, allow
@@ -656,7 +656,7 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールと認可スコープを定義する
+    # ロールとArgoCD系リソースの認可スコープを定義する
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
     p, role:maintainer, *, *, app/*, allow

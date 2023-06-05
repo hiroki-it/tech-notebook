@@ -798,7 +798,7 @@ resource "aws_instance" "server" {
 
 ```terraform
 resource "foo" "server" {
-  foo = aws_instance.server.0.ami
+  foo = aws_instance.server[0].ami
 }
 ```
 
@@ -865,7 +865,7 @@ resource "aws_kms_alias" "foo" {
   count = length(aws_kms_key.foo)
 
   name          = "alias/foo"
-  target_key_id = aws_kms_key.foo.0.key_id
+  target_key_id = aws_kms_key.foo[0].key_id
 }
 
 resource "aws_kms_replica_key" "foo" {
@@ -875,7 +875,7 @@ resource "aws_kms_replica_key" "foo" {
 
   provider = aws.ap-northeast-3
 
-  primary_key_arn = aws_kms_key.foo.0.arn
+  primary_key_arn = aws_kms_key.foo[0].arn
   policy          = data.aws_iam_policy_document.foo.json
 
   tags = {
@@ -894,7 +894,7 @@ resource "aws_kms_replica_key" "foo" {
 
 ```terraform
 output "foo_kms_key_arn" {
-  value = length(aws_kms_key.foo) > 0 ? aws_kms_key.foo.0.arn : null
+  value = length(aws_kms_key.foo) > 0 ? aws_kms_key.foo[0].arn : null
 }
 ```
 
