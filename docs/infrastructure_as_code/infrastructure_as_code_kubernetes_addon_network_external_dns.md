@@ -280,7 +280,7 @@ resource "aws_route53_record" "foo" {
   # Route53のTerraformとExternalDNSのマニフェストを分離するために、NSタイプを使用する
   type    = "NS"
   ttl     = 30
-  records = aws_route53_zone.foo.*.name_servers[0]
+  records = aws_route53_zone.foo.name_servers
 }
 
 

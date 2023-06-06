@@ -1473,6 +1473,28 @@ resource "aws_route53_record" "foo" {
 }
 ```
 
+\*＊実装例＊\*\*
+
+```terraform
+# ---------------------------------------------
+# For foo domain
+# ---------------------------------------------
+resource "aws_route53_zone" "foo" {
+  name = var.route53_domain_foo
+}
+
+resource "aws_route53_record" "foo" {
+  zone_id = aws_route53_zone.foo.id
+  name    = var.route53_domain_foo
+  type    = "NS"
+  ttl     = 30
+  # NSレコードのリストを出力する
+  records = aws_route53_record.foo.name_servers
+  # AWSが自動的に作成するNSレコードとTerraformによるそれが衝突するため、上書きできるようにする
+  allow_overwrite = true
+}
+```
+
 <br>
 
 ## 16. ルートテーブル

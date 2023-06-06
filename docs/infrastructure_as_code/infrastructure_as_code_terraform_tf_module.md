@@ -169,6 +169,30 @@ provider "aws" {
 
 **＊実装例＊**
 
+`terraform`ブロックとは異なり、`provider`ブロックでは変数を使用できる。
+
+```terraform
+# @ルートモジュール
+
+terraform {
+  # 変数を使用できない
+}
+
+# awsプロバイダを指定
+provider "aws" {
+
+  # 出力
+  region = var.region
+}
+```
+
+```terraform
+# リージョンは変数として定義しておく
+region = "ap-northeast-1"
+```
+
+**＊実装例＊**
+
 ```terraform
 # @ルートモジュール
 
