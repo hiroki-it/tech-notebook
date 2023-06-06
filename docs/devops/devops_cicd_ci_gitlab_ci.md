@@ -71,6 +71,29 @@ include:
 
 ## 04. Job
 
+### allow_failure
+
+```yaml
+stages:
+  - fmt
+
+# terraform fmt
+fmt:
+  services:
+    - docker:19.03.11-dind
+  image: hashicorp/terraform:1.4.6
+  stage: fmt
+  script:
+    - terraform fmt -check -recursive
+  # インデントを揃えるべき場所がある場合に、Jobを失敗させる
+  allow_failure: true
+  rules:
+    # MRを作成/更新したタイミングで発火する
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_BRANCH != 'main'
+```
+
+<br>
+
 ### cache
 
 指定したディレクトリのキャッシュを作成する。

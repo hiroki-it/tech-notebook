@@ -895,7 +895,7 @@ fi
 
 kubeletを使用してワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeを退避する) までの時間を稼ぐ。
 
-待機中に終了できたPodは`Failed`ステータスとなる。
+ワーカーNodeの停止までの待機中に終了できたPodは、`Failed`ステータスとなる。
 
 kubeletの`--shutdown-grace-period`オプション (`shutdownGracePeriod`) で、ワーカーNodeの停止を待機する期間を設定する。
 
