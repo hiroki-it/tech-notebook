@@ -13,7 +13,15 @@ description: DML＠SQLの知見を記録しています。
 
 <br>
 
-## 01. SELECT
+## 01. DMLとは
+
+テーブル上のレコードを操作するクエリのこと。
+
+> ↪️：https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DML-Data-Manipulation-Language
+
+<br>
+
+## 02. SELECT
 
 ### はじめに
 
@@ -512,9 +520,9 @@ WHERE
 
 <br>
 
-## 01-02. Tips
+### Tips
 
-### 各DBサイズの確認
+#### ▼ 各DBサイズの確認
 
 ```sql
 SELECT
@@ -528,9 +536,7 @@ ORDER BY
     sum(data_length + index_length) DESC;
 ```
 
-<br>
-
-### カラムの検索
+#### ▼ カラムの検索
 
 ```sql
 SELECT
@@ -545,7 +551,7 @@ WHERE
 
 <br>
 
-## 02. `EXPLAIN`句
+## 03. EXPLAIN
 
 ### 実行計画
 
@@ -626,7 +632,7 @@ DBインデックスとして設定されたカラムのうちで、実際に利
 
 <br>
 
-## 03. INSERT
+## 05. INSERT
 
 ### バルクインサート
 
@@ -638,7 +644,7 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 <br>
 
-## 04. EXEC
+## 06. EXEC
 
 ### stored procedure
 
@@ -646,9 +652,9 @@ INSERT INTO { テーブル名 } VALUES ('<カラム名>','<レコード値>'), (
 
 あらかじめ一連のSQL文をDBに格納しておき、Call文でコールする方式。
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
-
 ![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p325.gif)
+
+> ↪️：https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ 使い方
 

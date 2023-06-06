@@ -13,7 +13,47 @@ description: DCL＠SQLの知見を記録しています。
 
 <br>
 
-## 01. GRANT
+## 01. DCLとは
+
+トランザクションを制御するクエリのこと。
+
+> ↪️：https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DCL-Data-Control-Language
+
+<br>
+
+## 02. BEGIN (START TRANSACTION)
+
+### BEGINとは
+
+トランザクションを開始する。
+
+`START TRANSACTION`としてもよい。
+
+```sql
+BEGIN;
+```
+
+```sql
+START TRANSACTION;
+```
+
+<br>
+
+## 03. COMMIT
+
+トランザクションを終了する。
+
+```sql
+BEGIN;
+
+-- 何らかのクエリ
+
+COMMIT;
+```
+
+<br>
+
+## 04. GRANT
 
 ### ユーザーの種類
 
@@ -100,7 +140,7 @@ GRANT USAGE ON *.* TO "{ ユーザー名 }";
 
 <br>
 
-## 02. REVOKE
+## 05. REVOKE
 
 ### 全権限削除
 
@@ -124,5 +164,41 @@ FROM
 ```sql
 RENAME USER "{ 古いユーザー名 }" TO "{ 新しいユーザー名 }";
 ```
+
+<br>
+
+## 06. ROLLBACK
+
+### ROLLBACKとは
+
+トランザクション中の一連のステートメントを取り消し、元の状態に戻す。
+
+RDBMSでいう『ロールバック』の概念を実装する。
+
+```sql
+-- トランザクション開始
+BEGIN;
+
+-- テーブルのデータを削除する
+DELETE FROM score;
+
+-- データがなくなる
+SELECT *
+FROM score;
+
+-- ここで、トランザクションに何らかの問題が起こる
+
+-- ロールバックする
+ROLLBACK;
+
+-- データが復元される
+SELECT *
+FROM score;
+
+-- トランザクション終了
+COMMIT;
+```
+
+> ↪️：https://tech.pjin.jp/blog/2020/11/30/%E3%80%90sql%E5%85%A5%E9%96%80%E3%80%91%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF/
 
 <br>

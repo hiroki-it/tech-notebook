@@ -13,7 +13,15 @@ description: DDL＠SQLの知見を記録しています。
 
 <br>
 
-## 01. CREATE
+## 01. DDLとは
+
+テーブル、DBオブジェクトの操作、に関するクエリのこと。
+
+> ↪️：https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DDL-Data-Definition-Language
+
+<br>
+
+## 02. CREATE
 
 ### テーブルの管理
 
@@ -98,7 +106,7 @@ FROM
 
 <br>
 
-## 02. DROP
+## 03. DROP
 
 ### ユーザー管理
 

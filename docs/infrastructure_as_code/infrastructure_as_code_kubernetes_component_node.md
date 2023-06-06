@@ -150,31 +150,51 @@ $ kubelet \
 
 > ↪️：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
 
-#### ▼ kubelet.confファイル
+#### ▼ kubelet-config.jsonファイル
 
-`/etc/kubernetes/kubelet.conf`ファイルにkubeletを設定する。
+kubeletを設定する。
 
 ```yaml
-apiVersion: v1
-clusters:
-  - cluster:
-      certificate-authority-data: MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
-server: https://*.*.*.*:443
-name: default-cluster
-contexts:
-  - context:
-      cluster: default-cluster
-      namespace: default
-      user: default-auth
-    name: default-context
-current-context: default-context
-kind: Config
-preferences: {}
-users:
-  - name: default-auth
-    user:
-      client-certificate: /var/lib/kubelet/pki/kubelet-client-current.pem
-      client-key: /var/lib/kubelet/pki/kubelet-client-current.pem
+{
+  "kind": "KubeletConfiguration",
+  "apiVersion": "kubelet.config.k8s.io/v1beta1",
+  "address": "0.0.0.0",
+  "authentication":
+    {
+      "anonymous": {"enabled": false},
+      "webhook": {"cacheTTL": "2m0s", "enabled": true},
+      "x509": {"clientCAFile": "/etc/kubernetes/pki/ca.crt"},
+    },
+  "authorization":
+    {
+      "mode": "Webhook",
+      "webhook": {"cacheAuthorizedTTL": "5m0s", "cacheUnauthorizedTTL": "30s"},
+    },
+  "clusterDomain": "cluster.local",
+  "hairpinMode": "hairpin-veth",
+  "readOnlyPort": 0,
+  "cgroupDriver": "cgroupfs",
+  "cgroupRoot": "/",
+  "featureGates": {"RotateKubeletServerCertificate": true},
+  "protectKernelDefaults": true,
+  "serializeImagePulls": false,
+  "serverTLSBootstrap": true,
+  "tlsCipherSuites":
+    [
+      "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+      "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
+      "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+      "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305",
+      "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+      "TLS_RSA_WITH_AES_256_GCM_SHA384",
+      "TLS_RSA_WITH_AES_128_GCM_SHA256",
+    ],
+  # コンテナのログのローテーション閾値
+  "containerLogMaxSize": "100Mi",
+  # コンテナのログの最大世代数
+  "containerLogMaxFiles": 2,
+}
 ```
 
 <br>
