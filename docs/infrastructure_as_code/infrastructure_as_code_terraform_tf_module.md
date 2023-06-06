@@ -256,6 +256,8 @@ provider "aws" {
 
 Terraformで作成するリソースに一括してタグを設定できる。
 
+**＊実装例＊**
+
 ```terraform
 terraform {
   required_providers {
@@ -287,6 +289,49 @@ locals {
   }
 }
 ```
+
+反対に、default_tagsを無効化する`provider`ブロックを定義しておくと良い。
+
+**＊実装例＊**
+
+```terraform
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.67.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "ap-northeast-1"
+
+  default_tags {
+    tags = local.tags
+  }
+}
+
+# デフォルトタグを無効化したいリソースでは、こちらのプロバイダーを設定する
+provider "aws" {
+  region = "ap-northeast-1"
+  alias  = "disable_default_tags"
+}
+
+# デフォルトタグあり
+resource "aws_s3_bucket" "foo" {
+  bucket = "foo-bucket"
+}
+
+# デフォルトタグ無し
+resource "aws_s3_bucket" "bar" {
+  provider = aws.disable_default_tags
+
+  bucket = "bar-bucket"
+}
+```
+
+> ↪️：https://dev.to/drewmullen/terraform-prevent-defaulttags-on-a-specific-resource-n19
 
 #### ▼ モジュールに渡すプロバイダーを切り替える
 
