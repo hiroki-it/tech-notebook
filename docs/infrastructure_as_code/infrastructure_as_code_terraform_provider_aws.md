@@ -106,8 +106,6 @@ DNS検証の場合を示す。
 # For www domain
 # ---------------------------------------------
 # 後述の説明を参考にせよ。`【２】`
-
-:
 resource "aws_acm_certificate_validation" "www_an1" {
   certificate_arn         = aws_acm_certificate.www_an1.arn
   validation_record_fqdns = [for record in var.www_an1_route53_record : record.fqdn]
@@ -1489,8 +1487,8 @@ resource "aws_route53_record" "foo" {
   type    = "NS"
   ttl     = 30
   # NSレコードのリストを出力する
-  records = aws_route53_record.foo.name_servers
-  # AWSが自動的に作成するNSレコードとTerraformによるそれが衝突するため、上書きできるようにする
+  records = aws_route53_zone.foo.name_servers
+  # AWSが自動的に作成するNSレコードとTerraformによるそれが衝突するため、Terraform側が上書きできるようにする
   allow_overwrite = true
 }
 ```

@@ -189,6 +189,16 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 ![subdomain-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subdomain-name.png)
 
+#### ▼ サブ-サブドメイン
+
+サブドメインのサブドメインである。
+
+この場合、一つ上の階層のサブドメインをドメインとして扱うために、一度サブドメインをドメインレジストリに登録する必要がある。
+
+このサブドメインに、サブサブドメインのDNSレコードを登録すると、サブサブドメインをSSL証明書で署名できるようになる。
+
+> ↪️：https://stackoverflow.com/a/57680951
+
 <br>
 
 ## 03. 名前解決
@@ -271,11 +281,13 @@ $ nslookup example # 実際には、example.fooとなる
 > - https://www.value-domain.com/media/registry-registrar/
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
 
+
+
 #### ▼ DNSサーバー (ネームサーバー、権威DNSサーバー)
 
 『ネームサーバー』『権威DNSサーバー』ともいう。
 
-ドメインレジストラがドメインと合わせて管理することが多いが、DNSサーバーの管理をDNSプロバイダーに委譲することもできる (例：お名前ドットコムをドメインレジストラ、AWS Route53をDNSプロバイダーとする) 。
+ドメインレジストラがドメインと合わせてDNSサーバーも管理することが多いが、DNSサーバーの管理を外部のDNSプロバイダーに委譲することもできる (例：お名前ドットコムをドメインレジストラ、AWS Route53をDNSプロバイダーとする) 。
 
 ドメイン名とIPアドレスのマッピングを管理する。
 

@@ -1121,7 +1121,7 @@ resource "aws_autoscaling_group_tag" "foo" {
     key                 = each.key
     value               = each.value
     # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するオートスケーリンググループにタグ付けできない
-    # terraform planのたびにタグ付けしようとする差分がでてしまうため、タグ付け自体を無効化する
+    # terraform planのたびに、オートスケーリンググループにタグ付けしようとする差分がでてしまうため、タグ付け自体を無効化する
     # @see
     # https://github.com/aws/containers-roadmap/issues/608
     # https://github.com/terraform-aws-modules/terraform-aws-eks/issues/1558#issuecomment-1030633280
