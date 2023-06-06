@@ -712,7 +712,7 @@ Nodeグループ内の各EC2ワーカーNodeと、Nodeグループに紐づく�
 
 > ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html
 
-#### ▼ タグ付けを使用した
+#### ▼ Nodeグループの定期アクション
 
 同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。
 
@@ -1108,6 +1108,25 @@ resource "aws_launch_template" "foo" {
   }
 
   ...
+}
+
+# Nodeグループのタグ
+resource "aws_autoscaling_group_tag" "foo" {
+  for_each = local.tags
+
+  autoscaling_group_name = aws_eks_node_group.foo.name
+
+  # Nodeグループに設定する全てのタグに対して適用する 
+  tag {
+    key                 = each.key
+    value               = each.value
+    # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するオートスケーリンググループにタグ付けできない
+    # terraform planのたびにタグ付けしようとする差分がでてしまうため、タグ付け自体を無効化する
+    # @see
+    # https://github.com/aws/containers-roadmap/issues/608
+    # https://github.com/terraform-aws-modules/terraform-aws-eks/issues/1558#issuecomment-1030633280
+    propagate_at_launch = false
+  }
 }
 ```
 

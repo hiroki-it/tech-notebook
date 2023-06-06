@@ -276,7 +276,8 @@ provider "aws" {
 
 locals {
   service = "foo"
-  system  = "bar"
+  # プロダクト名
+  name    = "bar"
 
   tags = {
     Service   = local.service
