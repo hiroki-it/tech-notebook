@@ -956,176 +956,6 @@ final class User
 
 <br>
 
-### 結合度
-
-#### ▼ 結合度とは
-
-依存には、引数の渡し方によって、程度がある。
-
-それによって、処理を、どのクラスのデータと操作に振り分けていくかが決まる。
-
-結合度はモジュール間の依存度合いについて使用される用語であるが、より理解しやすくするために、特にクラスを使用して説明する。
-
-#### ▼ データ結合とは
-
-最も理想的な結合。
-
-スカラ型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡すような関係。
-
-**＊実装例＊**
-
-ModuleAとModuleBは、データ結合の関係にある。
-
-```php
-<?php
-
-class ModuleA // コールされる側
-{
-    public function methodA(int $a, int $b, string $c)
-    {
-        return "$a + $b".$c;
-    }
-}
-```
-
-```php
-<?php
-
-class ModuleB // コールする側
-{
-    public function methodB()
-    {
-        $moduleA= new ModuleA();
-        $result = $moduleA->methodA(1, 2, "です."); // スカラ型データを渡すだけ
-    }
-}
-```
-
-**＊実装例＊**
-
-デザインパターンのFactoryクラスでは、スカラ型データの値に応じて、インスタンスを作り分ける。
-
-Factoryクラスのインスタンスと、これをコールする他インスタンス は、データ結合の関係にある。
-
-```php
-<?php
-
-/**
- * コールされる側
- *
- * 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス
- */
-class TransportationMethodsFactory
-{
-    public static function createInstance($distance)
-    {
-        $walking = new Walking($distance);
-        $car = new Car($distance);
-
-        if($walking->needsWalking()) {
-            return $walking;
-        }
-
-        return $car;
-    }
-}
-```
-
-#### ▼ スタンプ結合とは
-
-object型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡す関係。
-
-**＊実装例＊**
-
-ModuleAとModuleBは、スタンプ結合の関係にある。
-
-```php
-<?php
-
-class Shared
-{
-    private $value;
-
-    public function __construct(int $value)
-    {
-        $this->value = $value;
-    }
-
-
-    public function getValue()
-    {
-        return $this->value;
-    }
-}
-```
-
-```php
-<?php
-
-class ModuleA
-{
-    public function methodA()
-    {
-        $shared = new Shared(1);
-
-        $moduleB = new ModuleB;
-
-        return $moduleB->methodB($shared); // 1
-    }
-}
-```
-
-```php
-<?php
-
-class ModuleB
-{
-    public function methodB(Shared $shared)
-    {
-        return $shared->getValue(); // 1
-    }
-}
-```
-
-<br>
-
-### 凝集度
-
-#### ▼ 凝集度とは
-
-凝集度は、『モジュール内の責務の統一度合い』について使用される用語であるが、より理解しやすくするために、特にクラスを使用して説明する。
-
-#### ▼ 機能的強度
-
-最も理想的な凝集。
-
-クラスの責務が機能単位になるように、ロジックを振り分ける。
-
-#### ▼ LCOM：Lack Of Conhension of Methods
-
-凝集度の程度を表す指標のこと。
-
-LCOMの計測方法にはいくつか種類がある。
-
-LCOM4は、クラスの各メソッド内で、保持する全てのデータにアクセスしているほど、凝集度が高いと見なす方法である。
-
-> ↪️：
->
-> - https://www.amazon.co.jp/dp/B082WXZVPC
-> - https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
-
-<br>
-
-### 低結合と高凝集
-
-各モジュールは、結合度が低く、凝集度が高いほど良い。
-
-例として、以下の画像では、道具モジュールを、キッチン引き出しモジュールとガレージ工具箱モジュールに分け、各クラスの結合度を低く、凝集度を高くするように対応している・
-
-![低結合度高凝集度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/低結合度高凝集度.png)
-
-<br>
-
 ### DI：Dependency Injection (依存オブジェクト注入)
 
 #### ▼ DIとは
@@ -1472,3 +1302,189 @@ $sample = new Sample($container);
 インターフェースリポジトリは、実装リポジトリよりも定義が簡潔である。
 
 そのため、実装リポジトリではなくインターフェースリポジトリを確認することにより、そのリポジトリがどの集約に対してCRUD処理を行うのかを認識しやすい。
+
+<br>
+
+## 04. モジュール性
+
+### 結合度
+
+#### ▼ 結合度とは
+
+依存には、引数の渡し方によって、程度がある。
+
+それによって、処理を、どのクラスのデータと操作に振り分けていくかが決まる。
+
+結合度はモジュール間の依存度合いについて使用される用語であるが、より理解しやすくするために、特にクラスを使用して説明する。
+
+#### ▼ データ結合とは
+
+最も理想的な結合。
+
+スカラ型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡すような関係。
+
+**＊実装例＊**
+
+ModuleAとModuleBは、データ結合の関係にある。
+
+```php
+<?php
+
+class ModuleA // コールされる側
+{
+    public function methodA(int $a, int $b, string $c)
+    {
+        return "$a + $b".$c;
+    }
+}
+```
+
+```php
+<?php
+
+class ModuleB // コールする側
+{
+    public function methodB()
+    {
+        $moduleA= new ModuleA();
+        $result = $moduleA->methodA(1, 2, "です."); // スカラ型データを渡すだけ
+    }
+}
+```
+
+**＊実装例＊**
+
+デザインパターンのFactoryクラスでは、スカラ型データの値に応じて、インスタンスを作り分ける。
+
+Factoryクラスのインスタンスと、これをコールする他インスタンス は、データ結合の関係にある。
+
+```php
+<?php
+
+/**
+ * コールされる側
+ *
+ * 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス
+ */
+class TransportationMethodsFactory
+{
+    public static function createInstance($distance)
+    {
+        $walking = new Walking($distance);
+        $car = new Car($distance);
+
+        if($walking->needsWalking()) {
+            return $walking;
+        }
+
+        return $car;
+    }
+}
+```
+
+#### ▼ スタンプ結合とは
+
+object型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡す関係。
+
+**＊実装例＊**
+
+ModuleAとModuleBは、スタンプ結合の関係にある。
+
+```php
+<?php
+
+class Shared
+{
+    private $value;
+
+    public function __construct(int $value)
+    {
+        $this->value = $value;
+    }
+
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+}
+```
+
+```php
+<?php
+
+class ModuleA
+{
+    public function methodA()
+    {
+        $shared = new Shared(1);
+
+        $moduleB = new ModuleB;
+
+        return $moduleB->methodB($shared); // 1
+    }
+}
+```
+
+```php
+<?php
+
+class ModuleB
+{
+    public function methodB(Shared $shared)
+    {
+        return $shared->getValue(); // 1
+    }
+}
+```
+
+<br>
+
+### 凝集度
+
+#### ▼ 凝集度とは
+
+凝集度は、『モジュール内の責務の統一度合い』について使用される用語であるが、より理解しやすくするために、特にクラスを使用して説明する。
+
+#### ▼ 機能的強度
+
+最も理想的な凝集。
+
+クラスの責務が機能単位になるように、ロジックを振り分ける。
+
+#### ▼ LCOM：Lack Of Conhension of Methods
+
+凝集度の程度を表す指標のこと。
+
+LCOMの計測方法にはいくつか種類がある。
+
+LCOM4は、クラスの各メソッド内で、保持する全てのデータにアクセスしているほど、凝集度が高いと見なす方法である。
+
+> ↪️：
+>
+> - https://www.amazon.co.jp/dp/B082WXZVPC
+> - https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
+
+<br>
+
+### コナーセンス
+
+#### ▼ 静的コナーセンス
+
+コードの実行前の結合度のこと。
+
+#### ▼ 動的コナーセンス
+
+コードの実行時の結合度のこと。
+
+<br>
+
+### 低結合と高凝集
+
+各モジュールは、結合度が低く、凝集度が高いほど良い。
+
+例として、以下の画像では、道具モジュールを、キッチン引き出しモジュールとガレージ工具箱モジュールに分け、各クラスの結合度を低く、凝集度を高くするように対応している。
+
+![低結合度高凝集度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/低結合度高凝集度.png)
+
+<br>
