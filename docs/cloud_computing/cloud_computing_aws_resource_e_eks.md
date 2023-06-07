@@ -918,6 +918,8 @@ kubeletの`--shutdown-grace-period`オプション (`shutdownGracePeriod`) で�
 
 `InhibitDelayMaxSec`には、`--shutdown-grace-period`オプションと同じ秒数 (単位は不要) を設定する。
 
+注意点として、この時間が長すぎると、ワーカーNodeの停止の全体時間が長くなるため、結果的にローリングアップグレードでNodeの所要時間も長くなってしまう。
+
 **＊実装例＊**
 
 ワーカーNodeの停止を`6`分だけ待機し、その後に停止を始める。
