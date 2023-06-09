@@ -601,7 +601,7 @@ output "nginx_ecr_repository_url" {
 
 基本的には英語で説明する。
 
-また、文章ではなく、『関係代名詞/形容詞/副詞/前置詞 + 単語』を使用して、『〇〇 な △△』『〇〇 の △△』といった説明になるようにする。
+また、文章ではなく、『関係代名詞/形容詞/副詞/前置詞 + 単語』を使用して、『`〇〇` な `△△`』『`〇〇` の `△△`』といった説明になるようにする。
 
 ```terraform
 variable "foo" {
@@ -825,6 +825,22 @@ Error: Invalid backend configuration argument
 
 The backend configuration argument "bucket" given on the command line is not expected for the selected backend type.
 ```
+
+<br>
+
+### `.gitignore`
+
+Terraformを開発する上でバージョン管理するべきではないファイルを`.gitignore`ファイルに記載する。
+
+```bash
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+```
+
+> ↪️：https://github.com/github/gitignore/blob/main/Terraform.gitignore
 
 <br>
 

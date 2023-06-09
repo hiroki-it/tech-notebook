@@ -23,6 +23,8 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 バックエンドの場所に限らず、`terraform apply`コマンドを実行した後、成功もしくは失敗したタイミングで初めて作成される。
 
+`tfstate`ファイル間では、Terraformやプロバイダーのバージョンに差が開きすぎると、互換性がなくなる。
+
 ```yaml
 {
   "version": 4,

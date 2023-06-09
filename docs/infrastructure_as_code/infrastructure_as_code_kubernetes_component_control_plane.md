@@ -291,6 +291,56 @@ ServiceAccountを作成すると、Bearerトークン (『`***-***-***-***-***-*
 
 ### 公開するエンドポイント
 
+#### ▼ Kubernetesリソース情報
+
+指定したKubernetesリソースの情報を取得する。
+
+```bash
+$ kubectl get --raw /apis/apps/v1
+
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "apps/v1",
+  "resources": [
+    ...
+  ]
+}
+```
+
+複数のAPIバージョンが存在するKubernetesリソースの場合、利用可能なバージョンと推奨バージョンを確認できる。
+
+```bash
+$ kubectl get --raw /apis/autoscaling | jq .                                                                                                                          (arn:aws:eks:ap-northeast-1:329512992440:cluster/paylab-nonprd-argocd-unif)
+
+{
+  "kind": "APIGroup",
+  "apiVersion": "v1",
+  "name": "autoscaling",
+  # 利用可能なバージョン
+  "versions": [
+    {
+      "groupVersion": "autoscaling/v2",
+      "version": "v2"
+    },
+    {
+      "groupVersion": "autoscaling/v1",
+      "version": "v1"
+    }
+  ],
+  # 推奨バージョン
+  "preferredVersion": {
+    "groupVersion": "autoscaling/v2",
+    "version": "v2"
+  }
+}
+```
+
+> ↪️：
+>
+> - https://zenn.dev/bells17/scraps/81b6ade4cbd40d
+> - https://stackoverflow.com/questions/70884866/understand-capabilities-apiversions-has-in-helm
+
 #### ▼ ヘルスチェック
 
 kube-apiserverは、ヘルスチェック (Healthy、LivenessProbe、ReadinessProbe) ごとにエンドポイントを持つ。
@@ -298,8 +348,8 @@ kube-apiserverは、ヘルスチェック (Healthy、LivenessProbe、ReadinessPr
 `kubectl get`コマンドでヘルスチェックを実行できる。
 
 ```bash
-# readinessエンドポイントにリクエストを送信する。
-$ kubectl get --raw='/readyz?verbose'
+# kube-apiserverのreadinessエンドポイントにリクエストを送信する。
+$ kubectl get --raw=/readyz?verbose
 
 [+]ping ok
 [+]log ok
