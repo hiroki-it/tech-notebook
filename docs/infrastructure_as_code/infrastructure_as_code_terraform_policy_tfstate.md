@@ -106,7 +106,7 @@ Terraformに限らずアプリケーションでも注意が必要ですが、�
 
 今回は、状態参照の一般的な方法であるこちらで話を進める。
 
-```bash
+```terraform
 # VPCの状態は、fooのtfstateファイルで管理している
 data "terraform_remote_state" "foo" {
 
@@ -120,7 +120,7 @@ data "terraform_remote_state" "foo" {
 }
 ```
 
-```bash
+```terraform
 
 # barリソースは、fooのtfstateとは異なるbarのtfstateで管理している
 # barのtfstateは、fooのtfstateに依存していると考えることができる
@@ -134,13 +134,14 @@ resource "example" "bar" {
 repository/
 ├── foo/
 │   ├── backend.tf # バックエンド内の/foo/terraform.tfstate
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── provider.tf
 │   ...
 │
 ├── bar/
 │   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
 │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、fooのtfstateファイルから状態を参照する
-│   ├── resource.tf # fooのtfstateファイルから参照した状態を使用する
+│   ├── resource.tf # fooのtfstateファイルから参照した状態を使用する   
 │   ├── provider.tf
 │   ...
 │
@@ -160,7 +161,7 @@ repository/
 
 今回は`data`ブロックでは話を進めないが、こちらの方法で採用しても “他の`tfstate`ファイルに依存する” という考え方は同じである。
 
-```yaml
+```terraform
 # VPCの状態は、fooのtfstateファイルで管理している
 data "aws_vpc" "foo" {
 
@@ -184,8 +185,7 @@ values = ["<異なるtfstateファイルで管理しているVPCのプライベ�
 }
 ```
 
-```bash
-
+```terraform
 # barリソースは、fooのtfstateとは異なるbarのtfstateで管理している
 # barのtfstateは、fooのtfstateに依存していると考えることができる
 resource "example" "bar" {
@@ -224,18 +224,19 @@ repository/
 **プロバイダーが他プロバイダーの`tfstate`ファイルに依存することはない想定なので、`terraform_remote_state`ブロックを使用せずに完全に分割できるはずである。**
 
 ```mermaid
+%%{init:{'theme':'natural'}}%%
 flowchart TB
     subgraph pagerduty
-    A[tfstate]
+        PagerDuty[tfstate]
     end
     subgraph healthchecks
-    B[tfstate]
+        Healthchecks[tfstate]
     end
     subgraph datadog
-    C[tfstate]
+        Datadog[tfstate]
     end
     subgraph aws
-    D[tfstate]
+        Aws[tfstate]
     end
 ```
 
@@ -320,7 +321,7 @@ flowchart TB
         PagerDuty[tfstate]
     end
     subgraph healthchecks
-        HealthChecks[tfstate]
+        Healthchecks[tfstate]
     end
     subgraph datadog
         Datadog[tfstate]
