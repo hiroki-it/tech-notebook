@@ -296,7 +296,8 @@ ServiceAccountを作成すると、Bearerトークン (『`***-***-***-***-***-*
 指定したKubernetesリソースの情報を取得する。
 
 ```bash
-$ kubectl get --raw /apis/apps/v1
+# apps/v1の場合
+$ kubectl get --raw /apis/apps/v1 | jq .
 
 {
   "kind": "APIResourceList",
@@ -311,6 +312,7 @@ $ kubectl get --raw /apis/apps/v1
 複数のAPIバージョンが存在するKubernetesリソースの場合、利用可能なバージョンと推奨バージョンを確認できる。
 
 ```bash
+# autoscalingの場合
 $ kubectl get --raw /apis/autoscaling | jq .                                                                                                                          (arn:aws:eks:ap-northeast-1:329512992440:cluster/paylab-nonprd-argocd-unif)
 
 {

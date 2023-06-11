@@ -17,7 +17,14 @@ description: API Gateway＠Aで始まるAWSリソースの知見を記録して�
 
 異なるクライアントからのリクエストを受信して差分を吸収し、適切なAPIに振り分けられる。
 
+内部的にはCloudFrontを使用しているらしい。
+
 ![API Gatewayの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/APIGatewayの仕組み.png)
+
+> ↪️：
+>
+> - https://dev.classmethod.jp/articles/edge-computing-by-api-gateway/
+> - https://dev.classmethod.jp/articles/cache-api-gateway-by-cloudfront/
 
 <br>
 
