@@ -476,6 +476,7 @@ aws-repository/
 │
 └── network
     ├── provider.tf
+    ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
     ├── route53.tf
     ├── vpc.tf
     ├── tes # テスト環境
@@ -531,6 +532,7 @@ aws-bar-product-repository/
 ```yaml
 aws-network-repository
 ├── provider.tf
+├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 ├── route53.tf
 ├── vpc.tf
 ├── tes # テスト環境
@@ -633,6 +635,7 @@ flowchart TB
 aws-repository/
 ├── frontend-team # frontendチーム
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── cloudfront.tf
 │   ├── s3.tf
 │   ├── tes # テスト環境
@@ -649,9 +652,10 @@ aws-repository/
 │       ├── backend.tfvars # prd用バックエンド内の/frontend-team/terraform.tfstate
 │       ├── remote_state.tf # terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している
 │       ...
-│
+│   
 ├── backend-team # backendチーム
-│   ├── provider.tf
+│   ├── provider.tf    
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── elasticache.tf
 │   ├── ses.tf
 │   ├── sns.tf
@@ -670,12 +674,13 @@ aws-repository/
 │       ├── backend.tfvars # prd用バックエンド内の/backend-team/terraform.tfstate
 │       ├── remote_state.tf # terraform_remote_stateブロックを使用し、frontend-teamとsre-teamのtfstateファイルに依存している
 │       ...
-│
+│    
 └── sre-team # sreチーム
-    ├── provider.tf
+    ├── provider.tf  
+    ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
     ├── alb.tf
-    ├── cloudwatch.tf
-    ├── ec2.tf
+    ├── cloudwatch.tf  
+    ├── ec2.tf 
     ├── ecs.tf
     ├── eks.tf
     ├── iam.tf
@@ -699,19 +704,20 @@ aws-repository/
 
 ```yaml
 aws-frontend-team-repository/ # frontendチーム
-├── provider.tf
+├── provider.tf    
+├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 ├── cloudfront.tf
 ├── s3.tf
 ├── tes # テスト環境
 │   ├── backend.tfvars # tes用バックエンド内の/frontend-team/terraform.tfstate
 │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している
 │   ...
-│
+│  
 ├── stg # ステージング環境
 │   ├── backend.tfvars # stg用バックエンド内の/frontend-team/terraform.tfstate
 │   ├── remote_state.tf # terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している
 │   ...
-│
+│   
 └── prd # 本番環境
     ├── backend.tfvars # prd用バックエンド内の/frontend-team/terraform.tfstate
     ├── remote_state.tf # terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している
@@ -720,7 +726,8 @@ aws-frontend-team-repository/ # frontendチーム
 
 ```yaml
 aws-backend-team-repository/ # backendチーム
-├── provider.tf
+├── provider.tf  
+├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する  
 ├── elasticache.tf
 ├── ses.tf
 ├── sns.tf
@@ -743,10 +750,11 @@ aws-backend-team-repository/ # backendチーム
 
 ```yaml
 aws-sre-team-repository/ # sreチーム
-├── provider.tf
+├── provider.tf  
+├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 ├── alb.tf
-├── cloudwatch.tf
-├── ec2.tf
+├── cloudwatch.tf  
+├── ec2.tf 
 ├── ecs.tf
 ├── eks.tf
 ├── iam.tf
@@ -847,10 +855,11 @@ flowchart TB
 
 aws-repository/
 ├── application/
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── provider.tf
 │   ├── alb.tf
 │   ├── cloudfront.tf
-│   ├── ec2.tf
+│   ├── ec2.tf 
 │   ├── ecs.tf
 │   ├── eks.tf
 │   ├── ses.tf
@@ -866,10 +875,11 @@ aws-repository/
 │   └── prd # 本番環境
 │       ├── backend.tfvars # prd用バックエンド内の/application/terraform.tfstate
 │       ...
-│
+│   
 ├── auth/
-│   ├── iam.tf
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
+│   ├── iam.tf 
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # tes用バックエンド内の/auth/terraform.tfstate
 │   │   ...
@@ -884,7 +894,7 @@ aws-repository/
 │
 ├── monitor/
 │   ├── provider.tf
-│   ├── cloudwatch.tf
+│   ├── cloudwatch.tf 
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # tes用バックエンド内の/monitor/terraform.tfstate
 │   │   ...
@@ -896,9 +906,10 @@ aws-repository/
 │   └── prd # 本番環境
 │       ├── backend.tfvars # prd用バックエンド内の/monitor/terraform.tfstate
 │       ...
-│
+│    
 └── network
     ├── provider.tf
+    ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
     ├── route53.tf
     ├── vpc.tf
     ├── tes # テスト環境
@@ -1001,10 +1012,11 @@ flowchart TB
 aws-repository/
 ├── application/
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── alb.tf
-│   ├── api_gateway.tf
+│   ├── api_gateway.tf 
 │   ├── cloudfront.tf
-│   ├── ec2.tf
+│   ├── ec2.tf 
 │   ├── ecs.tf
 │   ├── eks.tf
 │   ├── ses.tf
@@ -1020,10 +1032,11 @@ aws-repository/
 │   └── prd # 本番環境
 │       ├── backend.tfvars # prd用バックエンド内の/application/terraform.tfstate
 │       ...
-│
+│   
 ├── auth/
-│   ├── iam.tf
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
+│   ├── iam.tf 
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # tes用バックエンド内の/auth/terraform.tfstate
 │   │   ...
@@ -1038,7 +1051,7 @@ aws-repository/
 │
 ├── cicd/
 │   ├── provider.tf
-│   ├── codebuild.tf
+│   ├── codebuild.tf 
 │   ├── codecommit.tf
 │   ├── codedeploy.tf
 │   ├── tes # テスト環境
@@ -1055,8 +1068,9 @@ aws-repository/
 │
 ├── datastore/
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── elasticache.tf
-│   ├── rds.tf
+│   ├── rds.tf 
 │   ├── s3.tf
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # tes用バックエンド内の/datastore/terraform.tfstate
@@ -1072,7 +1086,7 @@ aws-repository/
 │
 ├── monitor/
 │   ├── provider.tf
-│   ├── cloudwatch.tf
+│   ├── cloudwatch.tf 
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # tes用バックエンド内の/monitor/terraform.tfstate
 │   │   ...
@@ -1084,9 +1098,10 @@ aws-repository/
 │   └── prd # 本番環境
 │       ├── backend.tfvars # prd用バックエンド内の/monitor/terraform.tfstate
 │       ...
-│
+│    
 └── network
     ├── provider.tf
+    ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
     ├── route53.tf
     ├── vpc.tf
     ├── tes # テスト環境
@@ -1123,7 +1138,7 @@ tes-bucket/
 │   └── terraform.tfstate
 │
 └── network
-└── terraform.tfstate
+    └── terraform.tfstate
 ```
 
 #### ▼ AWSリソースの状態の変更頻度別
@@ -1208,6 +1223,7 @@ aws-repository/
 │
 ├── low-freq # 低頻度変更リソース
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── route53.tf
 │   ├── vpc.tf
 │   ├── tes
@@ -1301,7 +1317,6 @@ backendチームとfrontendチームがいずれのAWSリソースを運用で�
 依存方向は矢印の通り。
 
 ```mermaid
-
 %%{init:{'theme':'natural'}}%%
 flowchart TB
     subgraph pagerduty
@@ -1354,20 +1369,38 @@ flowchart TB
 なお、クラウドプロバイダーはリポジトリで分割した前提とする。
 
 ```yaml
+
 aws-frontend-team-repository/
-└── datastore/
+├── application/
+│   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
+│   ├── cloudfront.tf
+│   ├── ses.tf
+│   ├── tes # テスト環境
+│   │   ├── backend.tfvars # tes用バックエンド内の/frontend-team/application/terraform.tfstate
+│   │   ...
+│   │
+│   ├── stg # ステージング環境
+│   │   ├── backend.tfvars # stg用バックエンド内の/frontend-team/application/terraform.tfstate
+│   │   ...
+│   │
+│   └── prd # 本番環境
+│       ├── backend.tfvars # prd用バックエンド内の/frontend-team/application/terraform.tfstate
+│       ...
+│
+└── monitor/
     ├── provider.tf
-    ├── s3.tf
+    ├── cloudwatch.tf 
     ├── tes # テスト環境
-    │   ├── backend.tfvars # tes用バックエンド内の/frontend-team/datastore/terraform.tfstate
+    │   ├── backend.tfvars # tes用バックエンド内の/frontend-team/monitor/terraform.tfstate
     │   ...
     │
     ├── stg # ステージング環境
-    │   ├── backend.tfvars # stg用バックエンド内の/frontend-team/datastore/terraform.tfstate
+    │   ├── backend.tfvars # stg用バックエンド内の/frontend-team/monitor/terraform.tfstate
     │   ...
     │
     └── prd # 本番環境
-        ├── backend.tfvars # prd用バックエンド内の/frontend-team/datastore/terraform.tfstate
+        ├── backend.tfvars # prd用バックエンド内の/frontend-team/monitor/terraform.tfstate
         ...
 ```
 
@@ -1375,7 +1408,12 @@ aws-frontend-team-repository/
 aws-backend-team-repository/
 ├── application/
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
+│   ├── api_gateway.tf
+│   ├── elasticache.tf
+│   ├── rds.tf
 │   ├── ses.tf
+│   ├── sns.tf
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # tes用バックエンド内の/backend-team/application/terraform.tfstate
 │   │   ...
@@ -1388,20 +1426,19 @@ aws-backend-team-repository/
 │       ├── backend.tfvars # prd用バックエンド内の/backend-team/application/terraform.tfstate
 │       ...
 │
-└── datastore/
+└── monitor/
     ├── provider.tf
-    ├── elasticache.tf
-    ├── rds.tf
+    ├── cloudwatch.tf 
     ├── tes # テスト環境
-    │   ├── backend.tfvars # tes用バックエンド内の/backend-team/datastore/terraform.tfstate
+    │   ├── backend.tfvars # tes用バックエンド内の/backend-team/monitor/terraform.tfstate
     │   ...
     │
     ├── stg # ステージング環境
-    │   ├── backend.tfvars # stg用バックエンド内の/backend-team/datastore/terraform.tfstate
+    │   ├── backend.tfvars # stg用バックエンド内の/backend-team/monitor/terraform.tfstate
     │   ...
     │
     └── prd # 本番環境
-        ├── backend.tfvars # prd用バックエンド内の/backend-team/datastore/terraform.tfstate
+        ├── backend.tfvars # prd用バックエンド内の/backend-team/monitor/terraform.tfstate
         ...
 ```
 
@@ -1409,9 +1446,9 @@ aws-backend-team-repository/
 aws-sre-team-repository/
 ├── application/
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── alb.tf
-│   ├── cloudfront.tf
-│   ├── ec2.tf
+│   ├── ec2.tf 
 │   ├── ecs.tf
 │   ├── eks.tf
 │   ├── tes # テスト環境
@@ -1428,6 +1465,7 @@ aws-sre-team-repository/
 │
 ├── auth/
 │   ├── provider.tf
+│   ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
 │   ├── iam.tf
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # バックエンド内の/sre-team/application/terraform.tfstate
@@ -1443,7 +1481,7 @@ aws-sre-team-repository/
 │
 ├── monitor/
 │   ├── provider.tf
-│   ├── cloudwatch.tf
+│   ├── cloudwatch.tf 
 │   ├── tes # テスト環境
 │   │   ├── backend.tfvars # tes用バックエンド内の/sre-team/monitor/terraform.tfstate
 │   │   ...
@@ -1458,6 +1496,7 @@ aws-sre-team-repository/
 │
 └── network
     ├── provider.tf
+    ├── output.tf # 他のtfstateが参照できるように、outputブロックを定義する
     ├── route53.tf
     ├── vpc.tf
     ├── tes # テスト環境
