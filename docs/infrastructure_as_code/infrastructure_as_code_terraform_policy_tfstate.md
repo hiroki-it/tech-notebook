@@ -57,8 +57,9 @@ Terraformに限らずアプリケーションでも注意が必要ですが、�
 2. 最下層を実行環境別で分割する。
 3. 中間層を以下のいずれか / 組み合わせで分割する。
 
+<br>
 
-#### 中間層について
+### 中間層について
 
 中間層の分割方法が一番難しい。
 
@@ -927,8 +928,7 @@ tes-bucket/
 │   └── terraform.tfstate
 │
 └── network
-    └── terraform.tfstate
-
+└── terraform.tfstate
 ```
 
 > ↪️：
@@ -1122,7 +1122,7 @@ tes-bucket/
 │   └── terraform.tfstate
 │
 └── network
-    └── terraform.tfstate
+└── terraform.tfstate
 ```
 
 #### ▼ AWSリソースの状態の変更頻度別
@@ -1256,7 +1256,7 @@ tes-bucket/
 │   └── terraform.tfstate
 │
 └── low-freq
-    └── terraform.tfstate
+└── terraform.tfstate
 ```
 
 #### ▼ blast radius別：障害範囲、影響範囲
@@ -1278,16 +1278,16 @@ tes-bucket/
 以下のコンポーネントがあるとする。
 
 - frontendチーム
-  * application
-  * monitor
+  - application
+  - monitor
 - backendチーム
-  * application
-  * monitor
+  - application
+  - monitor
 - sreチーム
-  * application
-  * auth
-  * monitor
-  * network
+  - application
+  - auth
+  - monitor
+  - network
 
 **依存関係が一方向になるなら、異なるコンポーネントに分けなくてもよい場合がある (applicationとmonitorは同じ`tfstate`ファイルで管理するなど)。**
 
