@@ -1278,16 +1278,16 @@ tes-bucket/
 以下のコンポーネントがあるとする。
 
 - frontendチーム
-  - application
-  - monitor
+  * application
+  * monitor
 - backendチーム
-  - application
-  - monitor
+  * application
+  * monitor
 - sreチーム
-  - application
-  - auth
-  - monitor
-  - network
+  * application
+  * auth
+  * monitor
+  * network
 
 **依存関係が一方向になるなら、異なるコンポーネントに分けなくてもよい場合がある (applicationとmonitorは同じ`tfstate`ファイルで管理するなど)。**
 
