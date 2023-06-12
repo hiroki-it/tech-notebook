@@ -15,6 +15,8 @@ description: CloudFormation＠AWSの知見を記録しています。
 
 ## 01. セットアップ
 
+記入中...
+
 <br>
 
 ## 02. リージョン
