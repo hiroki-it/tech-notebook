@@ -446,7 +446,6 @@ nav:
               - CloudLogging: cloud_computing/cloud_computing_gcp_resource_cloudlogging.md
               - IAM: cloud_computing/cloud_computing_gcp_resource_iam.md
 
-
   - 📦 仮想化:
       - virtualization/index.md
       - 仮想化: virtualization/virtualization.md
