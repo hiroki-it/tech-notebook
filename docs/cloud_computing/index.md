@@ -21,6 +21,7 @@
   > * ##### [Backup](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_backup.html)
   > * ##### [Certificate Manager](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_certificate_manager.html)
   > * ##### [Chartbot](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_chatbot.html)
+  > * ##### [CloudFormation](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudformation.html)
   > * ##### [CloudFront](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudfront.html)
   > * ##### [CloudTrail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudtrail.html)
   > * ##### [CloudWatch](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudwatch.html)
