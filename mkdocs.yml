@@ -384,52 +384,48 @@ nav:
       - ■ AWS:
           - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
           - ■ AWSリソース:
-              - ■ Aで始まるAWSリソース:
-                  - Aで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_a.md
-                  - ︎API Gateway: cloud_computing/cloud_computing_aws_resource_a_api_gateway.md
-                  - ︎API Gatewayに対するymlインポート: cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.md
-              - Bで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_b.md
-              - ■ Cで始まるAWSリソース:
-                  - Cで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_c.md
-                  - CertificateManager: cloud_computing/cloud_computing_aws_resource_c_certificate_manager.md
-                  - CloudFront: cloud_computing/cloud_computing_aws_resource_c_cloudfront.md
-                  - CloudWatch: cloud_computing/cloud_computing_aws_resource_c_cloudwatch.md
-                  - Code系: cloud_computing/cloud_computing_aws_resource_c_code.md
-              - Dで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_d.md
-              - ■ Eで始まるAWSリソース:
-                  - Eで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_e.md
-                  - EC2: cloud_computing/cloud_computing_aws_resource_e_ec2.md
-                  - ECS: cloud_computing/cloud_computing_aws_resource_e_ecs.md
-                  - EFS: cloud_computing/cloud_computing_aws_resource_e_efs.md
-                  - EKS: cloud_computing/cloud_computing_aws_resource_e_eks.md
-                  - ︎ElastiCache: cloud_computing/cloud_computing_aws_resource_e_elasticache.md
-              - ■ Fで始まるAWSリソース:
-                  - FireLens: cloud_computing/cloud_computing_aws_resource_f_firelens.md
-              - Gで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_g.md
-              - ■ Iで始まるAWSリソース:
-                  - IAM: cloud_computing/cloud_computing_aws_resource_i_iam.md
-              - ■ Kで始まるAWSリソース:
-                  - Kinesis: cloud_computing/cloud_computing_aws_resource_k_kinesis.md
-                  - KMS: cloud_computing/cloud_computing_aws_resource_k_kms.md
-              - ■ Lで始まるAWSリソース:
-                  - Lambda: cloud_computing/cloud_computing_aws_resource_l_lambda.md
-                  - Lambda関数: cloud_computing/cloud_computing_aws_resource_l_lambda_function.md
-                  - LB: cloud_computing/cloud_computing_aws_resource_l_lb.md
-              - ■ Rで始まるAWSリソース:
-                  - Rで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_r.md
-                  - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
-                  - Route53: cloud_computing/cloud_computing_aws_resource_r_route53.md
-              - ■ Sで始まるAWSリソース:
-                  - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
-                  - S3: cloud_computing/cloud_computing_aws_resource_s_s3.md
-                  - STS: cloud_computing/cloud_computing_aws_resource_s_sts.md
-                  - Systems Manager: cloud_computing/cloud_computing_aws_resource_s_systems_manager.md
-              - Tで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_t.md
-              - ■ Vで始まるAWSリソース:
-                  - VPC: cloud_computing/cloud_computing_aws_resource_v_vpc.md
-              - ■ Wで始まるAWSリソース:
-                  - Wで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_w.md
-                  - WAF: cloud_computing/cloud_computing_aws_resource_w_waf.md
+              - アカウント: cloud_computing/cloud_computing_aws_resource_account.md
+              - Amplify: cloud_computing/cloud_computing_aws_resource_amplify.md
+              - ■ API Gateway:
+                - ︎API Gateway: cloud_computing/cloud_computing_aws_resource_api_gateway.md
+                - ︎API Gatewayに対するymlインポート: cloud_computing/cloud_computing_aws_resource_api_gateway_import.md
+              - オートスケーリング: cloud_computing/cloud_computing_aws_resource_autoscaling.md
+              - Backup: cloud_computing/cloud_computing_aws_resource_backup.md
+              - Certificate Manager: cloud_computing/cloud_computing_aws_resource_certificate_manager.md
+              - Chatbot: cloud_computing/cloud_computing_aws_resource_chatbot.md
+              - CloudFront: cloud_computing/cloud_computing_aws_resource_cloudfront.md
+              - CloudTrail: cloud_computing/cloud_computing_aws_resource_cloudtrail.md
+              - CloudWatch: cloud_computing/cloud_computing_aws_resource_cloudwatch.md
+              - Code系: cloud_computing/cloud_computing_aws_resource_code.md
+              - Control Tower: cloud_computing/cloud_computing_aws_resource_control_tower.md
+              - DirectConnect: cloud_computing/cloud_computing_aws_resource_direct_connect.md
+              - EC2: cloud_computing/cloud_computing_aws_resource_ec2.md
+              - ECR: cloud_computing/cloud_computing_aws_resource_ecr.md
+              - ECS: cloud_computing/cloud_computing_aws_resource_ecs.md
+              - EFS: cloud_computing/cloud_computing_aws_resource_efs.md
+              - EKS: cloud_computing/cloud_computing_aws_resource_eks.md
+              - ︎ElastiCache: cloud_computing/cloud_computing_aws_resource_elasticache.md
+              - EventBridge: cloud_computing/cloud_computing_aws_resource_eventbridge.md
+              - FireLens: cloud_computing/cloud_computing_aws_resource_firelens.md
+              - Global Accelerator: cloud_computing/cloud_computing_aws_resource_global_accelerator.md
+              - Glue: cloud_computing/cloud_computing_aws_resource_glue.md
+              - IAM: cloud_computing/cloud_computing_aws_resource_iam.md
+              - Kinesis: cloud_computing/cloud_computing_aws_resource_kinesis.md
+              - KMS: cloud_computing/cloud_computing_aws_resource_kms.md
+              - ■ Lambda:
+                - Lambda: cloud_computing/cloud_computing_aws_resource_lambda.md
+                - Lambda関数: cloud_computing/cloud_computing_aws_resource_lambda_function.md
+              - LB: cloud_computing/cloud_computing_aws_resource_lb.md
+              - RDS: cloud_computing/cloud_computing_aws_resource_rds.md
+              - Redshift: cloud_computing/cloud_computing_aws_resource_redshift.md
+              - Route53: cloud_computing/cloud_computing_aws_resource_route53.md
+              - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
+              - S3: cloud_computing/cloud_computing_aws_resource_s3.md
+              - STS: cloud_computing/cloud_computing_aws_resource_sts.md
+              - Systems Manager: cloud_computing/cloud_computing_aws_resource_systems_manager.md
+              - VPC: cloud_computing/cloud_computing_aws_resource_vpc.md
+              - WAF: cloud_computing/cloud_computing_aws_resource_waf.md
+              - WorkMail: cloud_computing/cloud_computing_aws_resource_work_mail.md
           - ■ 設計ポリシー:
               - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
@@ -439,10 +435,9 @@ nav:
       - ■ GCP:
           - GCP CLI: cloud_computing/cloud_computing_gcp_cli.md
           - ■ GCPリソース:
-              - ■ Aで始まるGCPリソース:
                   - ■ Anthos:
-                      - Anthos: cloud_computing/cloud_computing_gcp_resource_a_anthos.md
-                      - アップグレード: cloud_computing/cloud_computing_gcp_resource_a_anthos_upgrade.md
+                      - Anthos: cloud_computing/cloud_computing_gcp_resource_anthos.md
+                      - アップグレード: cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.md
 
   - 📦 仮想化:
       - virtualization/index.md
