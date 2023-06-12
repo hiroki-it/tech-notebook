@@ -251,8 +251,6 @@ repository/
 
 注意点として、`templatefile`関数でこれを読みこむ時、`bash`ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。
 
-> ↪️：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
-
 ```yaml
 repository/
 └── modules/ # ローカルモジュール
@@ -283,6 +281,8 @@ repository/
         └── policies/ # バケットポリシー
             └── alb_bucket_policy.tpl
 ```
+
+> ↪️：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
 
 #### ▼ opsディレクトリ
 

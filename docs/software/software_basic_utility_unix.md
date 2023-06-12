@@ -2294,9 +2294,25 @@ $ adduser -s /bin/false foo
 
 <br>
 
-### wget
+## wc
 
-#### ▼ -o
+### -l
+
+行数を数える。
+
+`echo`の改行を無効化 (`-n`) して、行数としてカウントされないようにする。
+
+```bash
+$ echo -n diff | wc -l
+```
+
+> ↪️：https://stackoverflow.com/questions/19791077/why-wc-adds-plus-one
+
+<br>
+
+## wget
+
+### -o
 
 ダウンロードの実行ログの出力先のファイルを指定する。
 
@@ -2318,7 +2334,9 @@ github.com (github.com) をDNSに問いあわせています... *.*.*.*
 
 > ↪️：https://prograshi.com/general/command/curl-o-and-wget-qo/
 
-#### ▼ -O
+<br>
+
+### -O
 
 保存先のファイル名を設定する。
 
@@ -2336,7 +2354,9 @@ $ wget -O - http://www.example.com/
 
 > ↪️：https://tech.kurojica.com/archives/990/
 
-#### ▼ -q
+<br>
+
+### -q
 
 ダウンロードの実行ログを取得しない。
 
