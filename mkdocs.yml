@@ -387,8 +387,8 @@ nav:
               - アカウント: cloud_computing/cloud_computing_aws_resource_account.md
               - Amplify: cloud_computing/cloud_computing_aws_resource_amplify.md
               - ■ API Gateway:
-                - ︎API Gateway: cloud_computing/cloud_computing_aws_resource_api_gateway.md
-                - ︎API Gatewayに対するymlインポート: cloud_computing/cloud_computing_aws_resource_api_gateway_import.md
+                  - ︎API Gateway: cloud_computing/cloud_computing_aws_resource_api_gateway.md
+                  - ︎API Gatewayに対するymlインポート: cloud_computing/cloud_computing_aws_resource_api_gateway_import.md
               - オートスケーリング: cloud_computing/cloud_computing_aws_resource_autoscaling.md
               - Backup: cloud_computing/cloud_computing_aws_resource_backup.md
               - Certificate Manager: cloud_computing/cloud_computing_aws_resource_certificate_manager.md
@@ -413,8 +413,8 @@ nav:
               - Kinesis: cloud_computing/cloud_computing_aws_resource_kinesis.md
               - KMS: cloud_computing/cloud_computing_aws_resource_kms.md
               - ■ Lambda:
-                - Lambda: cloud_computing/cloud_computing_aws_resource_lambda.md
-                - Lambda関数: cloud_computing/cloud_computing_aws_resource_lambda_function.md
+                  - Lambda: cloud_computing/cloud_computing_aws_resource_lambda.md
+                  - Lambda関数: cloud_computing/cloud_computing_aws_resource_lambda_function.md
               - LB: cloud_computing/cloud_computing_aws_resource_lb.md
               - RDS: cloud_computing/cloud_computing_aws_resource_rds.md
               - Redshift: cloud_computing/cloud_computing_aws_resource_redshift.md
@@ -435,9 +435,9 @@ nav:
       - ■ GCP:
           - GCP CLI: cloud_computing/cloud_computing_gcp_cli.md
           - ■ GCPリソース:
-                  - ■ Anthos:
-                      - Anthos: cloud_computing/cloud_computing_gcp_resource_anthos.md
-                      - アップグレード: cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.md
+              - ■ Anthos:
+                  - Anthos: cloud_computing/cloud_computing_gcp_resource_anthos.md
+                  - アップグレード: cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.md
 
   - 📦 仮想化:
       - virtualization/index.md
