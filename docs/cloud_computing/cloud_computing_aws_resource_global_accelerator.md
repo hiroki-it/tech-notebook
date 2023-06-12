@@ -77,4 +77,3 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 > ↪️：https://speedtest.globalaccelerator.aws/#/
 
 <br>
-

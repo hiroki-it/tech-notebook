@@ -226,4 +226,3 @@ test:
 > - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
 
 <br>
-
