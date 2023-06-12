@@ -419,8 +419,12 @@ nav:
               - RDS: cloud_computing/cloud_computing_aws_resource_rds.md
               - Redshift: cloud_computing/cloud_computing_aws_resource_redshift.md
               - Route53: cloud_computing/cloud_computing_aws_resource_route53.md
-              - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
               - S3: cloud_computing/cloud_computing_aws_resource_s3.md
+              - Secrets Manager: cloud_computing/cloud_computing_aws_resource_secrets_manager.md
+              - SES: cloud_computing/cloud_computing_aws_resource_ses.md
+              - SNS: cloud_computing/cloud_computing_aws_resource_sns.md
+              - SQS: cloud_computing/cloud_computing_aws_resource_sqs.md
+              - Step Functions: cloud_computing/cloud_computing_aws_resource_step_functions.md
               - STS: cloud_computing/cloud_computing_aws_resource_sts.md
               - Systems Manager: cloud_computing/cloud_computing_aws_resource_systems_manager.md
               - VPC: cloud_computing/cloud_computing_aws_resource_vpc.md
