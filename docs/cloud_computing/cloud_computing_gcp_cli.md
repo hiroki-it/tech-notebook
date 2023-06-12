@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GCP CLI＠GCP
-description: GCP CLI＠GCPの知見を記録しています。
+title: 【IT技術の知見】GCP CLI＠GCPリソース
+description: GCP CLI＠GCPリソースの知見を記録しています。
 ---
 
-# GCP CLI＠GCP
+# GCP CLI＠GCPリソース
 
 ## はじめに
 

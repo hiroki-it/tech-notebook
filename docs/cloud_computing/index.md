@@ -75,5 +75,7 @@
   > * ##### <u>Anthos</u>
   > > * ##### [︎Anthos](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_gcp_resource_anthos.html)
   > > * ##### [︎アップグレード](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.html)
+> * ##### [CloudLogging](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_gcp_resource_cloudlogging.html)
+> * ##### [IAM](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_gcp_resource_iam.html)
 
 <br>
