@@ -393,6 +393,7 @@ nav:
               - Backup: cloud_computing/cloud_computing_aws_resource_backup.md
               - Certificate Manager: cloud_computing/cloud_computing_aws_resource_certificate_manager.md
               - Chatbot: cloud_computing/cloud_computing_aws_resource_chatbot.md
+              - CloudFormation: cloud_computing/cloud_computing_aws_resource_cloudformation.md
               - CloudFront: cloud_computing/cloud_computing_aws_resource_cloudfront.md
               - CloudTrail: cloud_computing/cloud_computing_aws_resource_cloudtrail.md
               - CloudWatch: cloud_computing/cloud_computing_aws_resource_cloudwatch.md
