@@ -13,9 +13,15 @@ description: CloudLogging＠GCPリソースの知見を記録しています。
 
 <br>
 
-## 01. Cloud Logging
+## 01. Cloud Loggingとは
 
-### コンソール画面からのセットアップ
+記入中...
+
+<br>
+
+## 02. セットアップ
+
+### コンソール画面の場合
 
 ログを収集/保管できる。
 
