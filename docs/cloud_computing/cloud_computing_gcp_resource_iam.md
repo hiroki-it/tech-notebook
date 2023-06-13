@@ -105,7 +105,7 @@ $ gcloud info
 ```
 
 > ↪️ 参考：
-> 
+>
 > - https://cloud.google.com/sdk/docs/authorizing?hl=ja#service-account
 > - https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
 

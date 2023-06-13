@@ -310,7 +310,6 @@ User Config Directory: [/home/USERNAME/.config/gcloud]
 
 > ↪️：https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
 
-
 <br>
 
 ### project

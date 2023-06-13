@@ -13,9 +13,7 @@ description: SNS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. SNS：Simple Notification Service
-
-### SNSとは
+## 01. SNSとは：Simple Notification Service
 
 パブリッシャーから発信されたメッセージをエンドポイントで受信し、サブスクライバーに転送するAWSリソース。
 

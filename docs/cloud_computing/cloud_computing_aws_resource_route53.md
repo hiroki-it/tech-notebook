@@ -13,9 +13,7 @@ description: Route53＠AWSリソース
 
 <br>
 
-## 01. Route53
-
-### Route53とは
+## 01. Route53とは
 
 クラウドDNSサーバーとして働く。
 

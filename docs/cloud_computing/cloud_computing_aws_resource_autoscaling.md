@@ -13,9 +13,7 @@ description: AutoScaling＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. AutoScaling
-
-### AutoScalingとは
+## 01. AutoScalingとは
 
 ALBを使用して、起動テンプレートを基にしたEC2インスタンスの自動水平スケーリングを実行する。
 

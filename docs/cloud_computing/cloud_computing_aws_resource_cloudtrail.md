@@ -13,17 +13,19 @@ description: CloudTrail＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. CloudTrail
+## 01. CloudTrailとは
 
-### CloudTrailとは
-
-IAMユーザーによる操作や、ロールの紐付けの履歴を記録し、ログファイルとしてS3に転送する。
+IAMユーザーによる操作や、ロールの紐付けの履歴 (証跡) を記録し、ログファイルとしてS3に転送する。
 
 CloudWatchと連携もできる。
 
 ![CloudTrailとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudTrailとは.jpeg)
 
-### 使用履歴の確認
+<br>
+
+## 02. 証跡
+
+### 使用履歴
 
 AWSリソースに、使用中かどうかわからずに、削除できないものがあるとする。
 

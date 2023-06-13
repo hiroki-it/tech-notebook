@@ -13,9 +13,7 @@ description: EventBridge＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. EventBridge (CloudWatchイベント)
-
-### EventBridge (CloudWatchイベント) とは
+## 01. EventBridgeとは
 
 AWSリソースで発生したイベントを、他のAWSリソースに転送する。
 
@@ -24,6 +22,8 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 > ↪️：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
 
 <br>
+
+## 02. セットアップ
 
 ### パターン
 

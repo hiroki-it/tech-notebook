@@ -13,13 +13,13 @@ description: Step Functions＠AWSリソースの知見を記録しています�
 
 <br>
 
-## 01. Step Functions
-
-### Step Functionsとは
+## 01. Step Functionsとは
 
 AWSサービスを組み合わせて、イベント駆動型アプリケーションを作成できる。
 
 <br>
+
+## 02. セットアップ
 
 ### AWSリソースのAPIコール
 

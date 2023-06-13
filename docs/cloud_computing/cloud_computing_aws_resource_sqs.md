@@ -13,11 +13,7 @@ description: SQS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 07. SQS：Simple Queue Service
-
-### SQSとは
-
-![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQS.jpeg)
+## 01. SQSとは：Simple Queue Service
 
 クラウドメッセージキューとして働く。
 
@@ -27,9 +23,11 @@ description: SQS＠AWSリソースの知見を記録しています。
 
 異なるVPC間でも、メッセージキューを同期できる。
 
+![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQS.jpeg)
+
 <br>
 
-## 07-02. セットアップ
+## 02. セットアップ
 
 ### コンソール画面の場合
 

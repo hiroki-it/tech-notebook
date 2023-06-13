@@ -13,9 +13,7 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 <br>
 
-## 01. Direct Connect
-
-### Direct Connectとは
+## 01. Direct Connectとは
 
 ![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
 
@@ -30,6 +28,8 @@ WANの種類については、以下のリンクを参考にせよ。
 > ↪️：https://hiroki-it.github.io/tech-notebook/network/network.html
 
 <br>
+
+## 02. セットアップ
 
 ### アタッチメント
 

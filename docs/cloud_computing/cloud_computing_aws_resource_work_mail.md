@@ -13,15 +13,13 @@ description: WorkMail＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 02. WorkMail
-
-### WorkMailとは
+## 01. WorkMailとは
 
 Gmail、サンダーバード、Yahooメールなどと同類のメール管理アプリケーション。
 
 <br>
 
-## 02-02. セットアップ
+## 02. セットアップ
 
 ### コンソール画面の場合
 
