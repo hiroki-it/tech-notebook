@@ -397,7 +397,7 @@ nav:
               - CloudFront: cloud_computing/cloud_computing_aws_resource_cloudfront.md
               - CloudTrail: cloud_computing/cloud_computing_aws_resource_cloudtrail.md
               - CloudWatch: cloud_computing/cloud_computing_aws_resource_cloudwatch.md
-              - Code系: cloud_computing/cloud_computing_aws_resource_code.md
+              - Code兄弟: cloud_computing/cloud_computing_aws_resource_code.md
               - Control Tower: cloud_computing/cloud_computing_aws_resource_control_tower.md
               - DirectConnect: cloud_computing/cloud_computing_aws_resource_direct_connect.md
               - EC2: cloud_computing/cloud_computing_aws_resource_ec2.md
