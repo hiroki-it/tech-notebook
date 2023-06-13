@@ -15,17 +15,13 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 ## 01. Direct Connectとは
 
-![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
-
 専用線方式のWANとして動作し、AWS側の単一のプライベートネットワーク (VPC) と、ユーザー側のプライベートネットワークの間を接続する。
 
 注意点として、DirectConnectは、それ専用の中継VPC内に作成する。
 
 > ↪️：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 
-WANの種類については、以下のリンクを参考にせよ。
-
-> ↪️：https://hiroki-it.github.io/tech-notebook/network/network.html
+![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
 
 <br>
 
