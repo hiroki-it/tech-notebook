@@ -703,14 +703,14 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 #### ▼ マネージドNodeグループ
 
 - Nodeグループ内の各EC2ワーカーNodeの作成
-- Nodeグループに紐づくオートスケーリンググループの作成
+- Nodeグループに紐づくAutoScalingグループの作成
 - EC2ワーカーNodeのOSやミドルウェアの各種アップグレード
 
 を自動化する。
 
-Nodeグループは、EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングするように、オートスケーリンググループに各AZを自動的に設定する。
+Nodeグループは、EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングするように、AutoScalingグループに各AZを自動的に設定する。
 
-オートスケーリングの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
+AutoScalingの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
 
 > ↪️：
 >
@@ -736,12 +736,12 @@ EKSのテスト環境の請求料金を節約するために、昼間に通常�
 #### ▼ セルフマネージドNodeグループ
 
 - Nodeグループ内の各EC2ワーカーNodeの作成
-- Nodeグループに紐づくオートスケーリンググループの作成
+- Nodeグループに紐づくAutoScalingグループの作成
 - EC2ワーカーNodeのOSやミドルウェアの各種アップグレード
 
 をユーザーが管理する。
 
-オートスケーリングの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
+AutoScalingの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
 
 > ↪️：
 >
@@ -1075,9 +1075,9 @@ VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュ�
 
 #### ▼ セルフマネージドNodeグループの場合
 
-任意のオートスケーリングにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。
+任意のAutoScalingにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。
 
-オートスケーリングのタグ付け機能を使用して、`kubernetes.io/cluster/<EKS Cluster名>`タグ (値は`owned`) をつけ、Nodeグループに明示的に参加させる必要がある。
+AutoScalingのタグ付け機能を使用して、`kubernetes.io/cluster/<EKS Cluster名>`タグ (値は`owned`) をつけ、Nodeグループに明示的に参加させる必要がある。
 
 なお、起動テンプレートも合わせて使用でき、これは任意である。
 
@@ -1137,8 +1137,8 @@ resource "aws_autoscaling_group_tag" "foo" {
   tag {
     key                 = each.key
     value               = each.value
-    # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するオートスケーリンググループにタグ付けできない
-    # そのままではterraform planのたびに、オートスケーリンググループにタグ付けしようとする差分がでてしまうため、Nodeグループ外からオートスケーリンググループのタグ付けを有効化する
+    # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するAutoScalingグループにタグ付けできない
+    # そのままではterraform planのたびに、AutoScalingグループにタグ付けしようとする差分がでてしまうため、Nodeグループ外からAutoScalingグループのタグ付けを有効化する
     # @see
     # https://github.com/aws/containers-roadmap/issues/608
     # https://github.com/terraform-aws-modules/terraform-aws-eks/issues/1558#issuecomment-1030633280
@@ -1151,7 +1151,7 @@ resource "aws_autoscaling_group_tag" "foo" {
 
 #### ▼ セルフマネージドNodeグループの場合
 
-任意のオートスケーリングにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。
+任意のAutoScalingにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。
 
 ```terraform
 resource "aws_autoscaling_group" "foo" {
@@ -1161,7 +1161,7 @@ resource "aws_autoscaling_group" "foo" {
     value = "foo-instance"
   }
 
-  # オートスケーリングのタグに kubernetes.io/cluster/<EKS Cluster名> をつける必要がある
+  # AutoScalingのタグに kubernetes.io/cluster/<EKS Cluster名> をつける必要がある
   tag {
     key   = "kubernetes.io/cluster/<EKS Cluster名>"
     value = "owned"
@@ -1353,7 +1353,7 @@ AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレード�
 
 EKS Clusterのアップグレード時、以下の仕組みでデータプレーンのワーカーNodeをローリングアップグレードする。
 
-また、Nodeグループに紐づくオートスケーリンググループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。
+また、Nodeグループに紐づくAutoScalingグループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。
 
 `【１】`
 

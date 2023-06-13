@@ -208,7 +208,7 @@ repository/
 repository/
 └── modules/ # ローカルモジュール
     └── eks/ # AWS EKS
-        ├── auto_scaling/ # オートスケーリング
+        ├── auto_scaling/ # AutoScaling
         │   ├── main.tf
         │   ├── outputs.tf
         │   └── variables.tf

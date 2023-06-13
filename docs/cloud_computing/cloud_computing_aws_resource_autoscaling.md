@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】オートスケーリング＠AWSリソース
-description: オートスケーリング＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AutoScaling＠AWSリソース
+description: AutoScaling＠AWSリソースの知見を記録しています。
 ---
 
-# オートスケーリング＠AWSリソース
+# AutoScaling＠AWSリソース
 
 ## はじめに
 
@@ -13,15 +13,15 @@ description: オートスケーリング＠AWSリソースの知見を記録し�
 
 <br>
 
-## 01. オートスケーリング
+## 01. AutoScaling
 
-### オートスケーリングとは
+### AutoScalingとは
 
 ALBを使用して、起動テンプレートを基にしたEC2インスタンスの自動水平スケーリングを実行する。
 
-注意点として、オートスケーリングに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。
+注意点として、AutoScalingに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。
 
-言い換えると、オートスケーリングにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。
+言い換えると、AutoScalingにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。
 
 ![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png)
 
@@ -50,7 +50,7 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 #### ▼ スケーリンググループ
 
 ```terraform
-# オートスケーリンググループ
+# AutoScalingグループ
 resource "aws_autoscaling_group" "foo" {
   name                      = "foo-group"
   max_size                  = 5
@@ -83,21 +83,21 @@ resource "aws_autoscaling_group" "foo" {
   tag {
     key                 = "Name"
     value               = "foo-instance"
-    # オートスケーリングで起動したEC2インスタンスにタグを伝搬する
+    # AutoScalingで起動したEC2インスタンスにタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Service"
     value               = "foo"
-    # オートスケーリングで起動したEC2インスタンスにタグを伝搬する
+    # AutoScalingで起動したEC2インスタンスにタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Env"
     value               = "prd"
-    # オートスケーリングで起動したEC2インスタンスにタグを伝搬する
+    # AutoScalingで起動したEC2インスタンスにタグを伝搬する
     propagate_at_launch = true
   }
 }
@@ -211,7 +211,7 @@ resource "aws_autoscaling_notification" "foo" {
 }
 
 
-# オートスケーリンググループ
+# AutoScalingグループ
 resource "aws_autoscaling_group" "bar" {
   ...
 }

@@ -628,9 +628,9 @@ ALB/NLBの作成 (※リスナーも含む可能性) が完全に完了しない
 
 <br>
 
-### `【４】`オートスケーリングによるECSタスク数の増減を無視
+### `【４】`AutoScalingによるECSタスク数の増減を無視
 
-オートスケーリングによって、ECSタスク数が増減するため、これを無視する。
+AutoScalingによって、ECSタスク数が増減するため、これを無視する。
 
 <br>
 
@@ -1100,7 +1100,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 
 **＊実装例＊**
 
-サービス名を指定して、Applicationオートスケーリングのサービスリンクロールを作成する。
+サービス名を指定して、ApplicationAutoScalingのサービスリンクロールを作成する。
 
 ```terraform
 # ---------------------------------------------
@@ -1121,7 +1121,7 @@ output "ecs_service_auto_scaling_iam_service_linked_role_arn" {
 }
 ```
 
-Applicationオートスケーリングにサービスリンクロールを紐付ける。
+ApplicationAutoScalingにサービスリンクロールを紐付ける。
 
 手動でも設定できるが、Terraformの管理外で自動的に紐付けられるため、あえて妥協しても良い。
 
@@ -1136,7 +1136,7 @@ resource "aws_appautoscaling_target" "ecs" {
   max_capacity       = 4
   min_capacity       = 2
 
-  # この設定がなくとも、サービスリンクロールが自動的に作成され、オートスケーリングに紐付けられる。
+  # この設定がなくとも、サービスリンクロールが自動的に作成され、AutoScalingに紐付けられる。
   role_arn           = var.ecs_service_auto_scaling_iam_service_linked_role_arn
 }
 ```

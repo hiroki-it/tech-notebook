@@ -15,6 +15,10 @@ description: tfstateファイルの分割＠設計ポリシーの知見を記録
 
 ## 01. `tfstate`ファイルの分割について
 
+一つのバケット内でtfstateファイルをいい感じに分割し、適切な依存関係にしたい…？
+
+その夢、叶えます。
+
 ディレクトリをゼロから設計する場合や、既存のディレクトリの設計ポリシーを察する場合に使っている見方を整理した。
 
 Terraformのディレクトリ構成は新興宗教で、あくまで以下は私の宗派である (他の人にとっては邪教かも)。
@@ -1586,7 +1590,7 @@ tes-bucket/
 aws-repository/
 └── modules/ # ローカルモジュール
     └── eks/ # EKS
-        ├── auto_scaling/ # オートスケーリング
+        ├── auto_scaling/ # AutoScaling
         │   ├── main.tf
         │   ├── outputs.tf
         │   └── variables.tf
@@ -1624,7 +1628,7 @@ aws-repository/
 ```yaml
 aws-remote-repository/
 └── eks/ # EKS
-    ├── auto_scaling/ # オートスケーリング
+    ├── auto_scaling/ # AutoScaling
     │   ├── main.tf
     │   ├── outputs.tf
     │   └── variables.tf
