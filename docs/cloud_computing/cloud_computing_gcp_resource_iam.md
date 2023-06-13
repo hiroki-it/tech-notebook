@@ -62,7 +62,7 @@ $ gcloud auth login
 
 ### サービスアカウントとは
 
-サービスアカウントを実際のGCPリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報 (`credentials.json`ファイル) をこれに持たせる必要がある。
+サービスアカウントを実際のGCPリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。
 
 <br>
 
@@ -92,13 +92,13 @@ $ gcloud auth login
 
 ### 開発者が使用する場合
 
-`credentials.json`ファイルのパスを設定する。
+認証情報ファイルのパスを設定する。
 
 ```bash
-$ gcloud auth login --cred-file="<credentials.jsonファイルパス>"
+$ gcloud auth login --cred-file="<認証情報ファイルのパス>"
 ```
 
-`credentials.json`ファイルの現在のパスは、`gcloud info`コマンドで確認する。
+認証情報ファイルの現在のパスは、`gcloud info`コマンドで確認する。
 
 ```bash
 $ gcloud info
@@ -115,7 +115,7 @@ $ gcloud info
 
 #### ▼ 自動認証
 
-認証情報 (`credentials.json`ファイル) を環境変数の`GOOGLE_APPLICATION_CREDENTIALS`に設定する。
+認証情報ファイルを環境変数の`GOOGLE_APPLICATION_CREDENTIALS`に設定する。
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
@@ -128,7 +128,7 @@ $ gcloud info
 サービスアカウントとしてのリソースは、これを読み込み、サービスアカウントに紐づく。
 
 ```bash
-$ export GOOGLE_APPLICATION_CREDENTIALS="<credentials.jsonファイルパス>"
+$ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 ```
 
 > ↪️ 参考：https://cloud.google.com/docs/authentication/production?hl=ja#passing_variable

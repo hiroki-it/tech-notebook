@@ -138,6 +138,7 @@ $ gcloud config list
 [core]
 account = hiroki.hasegawa
 disable_usage_reporting = True
+project = foo-project
 
 Your active configuration is: [default]
 ```

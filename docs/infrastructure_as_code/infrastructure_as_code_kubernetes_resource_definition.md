@@ -3590,9 +3590,9 @@ ConfigMapをマウントする場合は、`.spec.volumes.configMap`キーで設�
 
 **＊実装例＊**
 
-Secretの持つキー (ここでは`credentials.json`キー) をコンテナにファイルとしてマウントする
+Secretが持つ認証情報ファイル (ここでは`credentials.json`キー) をコンテナにファイルとしてマウントする
 
-そのため、コンテナには`credentials.json`ファイルが配置されることになる。
+そのため、コンテナには認証情報ファイルが配置されることになる。
 
 ```yaml
 apiVersion: v1
