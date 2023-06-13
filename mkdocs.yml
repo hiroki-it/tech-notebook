@@ -389,7 +389,7 @@ nav:
               - ■ API Gateway:
                   - ︎API Gateway: cloud_computing/cloud_computing_aws_resource_api_gateway.md
                   - ︎API Gatewayに対するymlインポート: cloud_computing/cloud_computing_aws_resource_api_gateway_import.md
-              - オートスケーリング: cloud_computing/cloud_computing_aws_resource_autoscaling.md
+              - AutoScaling: cloud_computing/cloud_computing_aws_resource_autoscaling.md
               - Backup: cloud_computing/cloud_computing_aws_resource_backup.md
               - Certificate Manager: cloud_computing/cloud_computing_aws_resource_certificate_manager.md
               - Chatbot: cloud_computing/cloud_computing_aws_resource_chatbot.md
