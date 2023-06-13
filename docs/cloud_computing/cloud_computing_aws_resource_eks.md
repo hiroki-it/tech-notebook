@@ -150,7 +150,7 @@ module "eks" {
 
 `【１】`
 
-: AWS CLIにクレデンシャル情報を設定する。
+: AWS CLIに認証情報を設定する。
 
 ```bash
 $ aws configure

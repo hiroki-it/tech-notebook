@@ -326,7 +326,7 @@ spec:
             region: ap-northeast-1
             accessKeyID: <AWSアカウントID>
             secretAccessKeySecretRef:
-              # Route53にアクセスするためのクレデンシャル情報を保持するSecret
+              # Route53にアクセスするための認証情報を保持するSecret
               name: foo-route53-credentials-secret
               # シークレットアクセスキー名
               key: foo-secret-access-key

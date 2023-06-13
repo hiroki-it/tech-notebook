@@ -39,7 +39,7 @@ Orbsのパッケージの処理の最小単位は`step`である。
 
 #### ▼ オプションへの引数の渡し方と注意点
 
-AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動的に入力してくれる。
+AWSの認証情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動的に入力してくれる。
 
 オプションが`env_var_name`型は、基本的に全てのスコープレベルの環境変数を受け付ける。
 
@@ -167,7 +167,7 @@ case "$APP_ENV" in
     ;;
 esac
 
-# defaultプロファイルにクレデンシャル情報を設定する。
+# defaultプロファイルに認証情報を設定する。
 aws configure << EOF
 $(echo $AWS_ACCESS_KEY_ID)
 $(echo $AWS_SECRET_ACCESS_KEY)

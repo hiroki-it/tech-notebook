@@ -27,11 +27,11 @@ GCPアカウントの認証を行う。
 
 GCP CLIによるGCPリソースへのアクセスを認証するために使用する。
 
-`~/.config/gcloud/application_default_credentials.json`ファイルを作成し、クレデンシャル情報を定義する。
+`~/.config/gcloud/application_default_credentials.json`ファイルを作成し、認証情報を定義する。
 
 また、これ使用してGCPにログインする。
 
-`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
+`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のアカウントの認証情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
 
 ```bash
 $ gcloud auth application-default login
@@ -51,6 +51,8 @@ $ gcloud auth application-default login
 > ↪️：https://christina04.hatenablog.com/entry/gcp-auth
 
 #### ▼ login
+
+IAMユーザーを認証する。
 
 GCP SDKによるGCPリソースへのアクセスを認証するために使用する。
 
@@ -126,7 +128,7 @@ The latest available version is: 400.0.0
 
 #### ▼ list
 
-認証情報を取得する。
+現在の認証情報を取得する。
 
 **＊実行例＊**
 
@@ -291,6 +293,23 @@ Pick cloud project to use:
 
 Please enter numeric choice or text value (must exactly match list item): 3 # デフォルトのプロジェクト名を設定する。
 ```
+
+<br>
+
+### info
+
+#### ▼ infoとは
+
+現在使用している認証情報ファイルの場所を取得する。
+
+```bash
+$ gcloud info
+
+User Config Directory: [/home/USERNAME/.config/gcloud]
+```
+
+> ↪️：https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
+
 
 <br>
 

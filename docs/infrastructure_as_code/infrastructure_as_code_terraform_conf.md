@@ -245,7 +245,7 @@ plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 
 <br>
 
-## 03. クレデンシャル情報
+## 03. 認証情報
 
 ### 必要な情報
 
@@ -298,7 +298,7 @@ provider "aws" {
 
 #### ▼ `credentials`ファイルによる設定
 
-クレデンシャル情報は、`~/.aws/credentials`ファイルに記載されている。
+認証情報は、`~/.aws/credentials`ファイルに記載されている。
 
 ```ini
 # 標準プロファイル
@@ -312,7 +312,7 @@ aws_access_key_id=*****
 aws_secret_access_key=*****
 ```
 
-`credentials`ファイルを読み出し、プロファイル名を設定することにより、クレデンシャル情報を参照できる。
+`credentials`ファイルを読み出し、プロファイル名を設定することにより、認証情報を参照できる。
 
 **＊実装例＊**
 

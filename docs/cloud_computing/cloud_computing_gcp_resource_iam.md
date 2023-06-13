@@ -23,8 +23,8 @@ description: IAM＠GCPリソースの知見を記録しています。
 
 ### 種類
 
-- IAMユーザー
-- IAMサービスアカウント (GCPリソース)
+- ユーザー
+- サービスアカウント (GCPリソース)
 - IAMグループ
 - ドメイン
 - KubernetesのServiceAccount
@@ -36,9 +36,37 @@ description: IAM＠GCPリソースの知見を記録しています。
 
 <br>
 
-### サービスアカウント
+## 01-02. ユーザー
+
+### ユーザーとは
+
+記入中...
+
+<br>
+
+### 認証
+
+#### ▼ 認証情報
+
+記入中...
+
+#### ▼ 手動認証
+
+```bash
+$ gcloud auth login
+```
+
+<br>
+
+## 01-03. サービスアカウント
+
+### サービスアカウントとは
 
 サービスアカウントを実際のGCPリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報 (`credentials.json`ファイル) をこれに持たせる必要がある。
+
+<br>
+
+### 認証情報
 
 ```yaml
 {
@@ -62,24 +90,45 @@ description: IAM＠GCPリソースの知見を記録しています。
 
 <br>
 
-### 認証
+### 開発者が使用する場合
 
-#### ▼ 自動
+`credentials.json`ファイルのパスを設定する。
 
-認証情報 (`credentials.json`ファイル) をGCPからダウンロードし、環境変数の`GOOGLE_APPLICATION_CREDENTIALS`にこれを設定する。
+```bash
+$ gcloud auth login --cred-file="<credentials.jsonファイルパス>"
+```
+
+`credentials.json`ファイルの現在のパスは、`gcloud info`コマンドで確認する。
+
+```bash
+$ gcloud info
+```
+
+> ↪️ 参考：
+> 
+> - https://cloud.google.com/sdk/docs/authorizing?hl=ja#service-account
+> - https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
+
+<br>
+
+### アプリケーションが使用する場合
+
+#### ▼ 自動認証
+
+認証情報 (`credentials.json`ファイル) を環境変数の`GOOGLE_APPLICATION_CREDENTIALS`に設定する。
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
 > ↪️ 参考：https://cloud.google.com/docs/authentication/production?hl=ja#automatically
 
-#### ▼ 手動
+#### ▼ 手動認証
 
 認証情報のファイルパスを設定する。
 
 サービスアカウントとしてのリソースは、これを読み込み、サービスアカウントに紐づく。
 
 ```bash
-$ export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/service-account-file.json"
+$ export GOOGLE_APPLICATION_CREDENTIALS="<credentials.jsonファイルパス>"
 ```
 
 > ↪️ 参考：https://cloud.google.com/docs/authentication/production?hl=ja#passing_variable

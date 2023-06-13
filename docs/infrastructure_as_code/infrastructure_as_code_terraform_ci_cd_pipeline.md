@@ -298,7 +298,7 @@ case "$ENV" in
     ;;
 esac
 
-# 信頼されたエンティティのクレデンシャル情報を設定する。
+# 信頼されたエンティティの認証情報を設定する。
 aws configure set aws_access_key_id "$aws_account_id"
 aws configure set aws_secret_access_key "$aws_secret_access_key"
 aws configure set aws_default_region "ap-northeast-1"
@@ -312,7 +312,7 @@ aws_sts_credentials="$(aws sts assume-role \
   --query "Credentials" \
   --output "json")"
 
-# クレデンシャル情報を環境変数に出力するためのスクリプトを作成する。
+# 認証情報を環境変数に出力するためのスクリプトを作成する。
 cat << EOT > "export_aws_envs.sh"
 export AWS_ACCESS_KEY_ID="$(echo "$aws_sts_credentials" | jq -r '.AccessKeyId')"
 export AWS_SECRET_ACCESS_KEY="$(echo "$aws_sts_credentials" | jq -r '.SecretAccessKey')"

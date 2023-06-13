@@ -2903,11 +2903,11 @@ spec:
 
 #### ▼ imagePullSecretsとは
 
-プライベートリポジトリからコンテナイメージをプルするため、プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。
+プライベートリポジトリからコンテナイメージをプルするため、プライベートリポジトリの認証情報を持つSecretを設定する。
 
 別途、ServiceAccountの`.imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。
 
-これにより、PodはSecretにあるプライベートリポジトリのクレデンシャル情報を使用できるようになる。
+これにより、PodはSecretにあるプライベートリポジトリの認証情報を使用できるようになる。
 
 ```yaml
 apiVersion: v1
@@ -2919,7 +2919,7 @@ spec:
     - name: app
       image: private-app:1.0.0 # プライベートリポジトリ
   imagePullSecrets:
-    - name: foo-repository-credentials-secret # プライベートリポジトリのクレデンシャル情報を持つSecret
+    - name: foo-repository-credentials-secret # プライベートリポジトリの認証情報を持つSecret
 ```
 
 > ↪️：
@@ -4574,9 +4574,9 @@ spec:
 
 #### ▼ imagePullSecretsとは
 
-プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。
+プライベートリポジトリの認証情報を持つSecretを設定する。
 
-これにより、ServiceAccountが紐付けられたPodは、プライベートリポジトリのクレデンシャル情報を使用できるようになる。
+これにより、ServiceAccountが紐付けられたPodは、プライベートリポジトリの認証情報を使用できるようになる。
 
 ```yaml
 apiVersion: v1

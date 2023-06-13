@@ -15,7 +15,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 ## 01. STSとは：Security Token Service
 
-認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的なクレデンシャル情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つIAMユーザーを発行する。
+認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な認証情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つIAMユーザーを発行する。
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/STS.jpg)
 
@@ -318,7 +318,7 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 
 <br>
 
-### 2. ロールを引き受けたクレデンシャル情報をリクエスト
+### 2. ロールを引き受けた認証情報をリクエスト
 
 信頼されたエンティティから、STSのエンドポイント (`https://sts.amazonaws.com`) に対して、ロールの紐付けをリクエストする。
 
@@ -357,7 +357,7 @@ case "$ENV" in
     ;;
 esac
 
-# 信頼されたエンティティのクレデンシャル情報を設定する。
+# 信頼されたエンティティの認証情報を設定する。
 aws configure set aws_access_key_id "$aws_account_id"
 aws configure set aws_secret_access_key "$aws_secret_access_key"
 aws configure set aws_default_region "ap-northeast-1"
@@ -374,13 +374,13 @@ aws_sts_credentials="$(aws sts assume-role \
 
 <br>
 
-### 3. 返信されたレスポンスからクレデンシャル情報を取得
+### 3. 返信されたレスポンスから認証情報を取得
 
-STSのエンドポイントから一時的なクレデンシャル情報が発行される。
+STSのエンドポイントから一時的な認証情報が発行される。
 
-また同時に、このクレデンシャル情報は、ローカルマシンの`~/.aws/cli/cache`ディレクトリ配下にも`.json`ファイルで保管される。
+また同時に、この認証情報は、ローカルマシンの`~/.aws/cli/cache`ディレクトリ配下にも`.json`ファイルで保管される。
 
-クレデンシャルの失効時間に合わせて、STSはこの`.json`ファイルを定期的に更新する。
+認証情報の失効時間に合わせて、STSはこの`.json`ファイルを定期的に更新する。
 
 > ↪️：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
@@ -416,15 +416,15 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 <br>
 
-### 4. クレデンシャル情報を取得
+### 4. 認証情報を取得
 
-レスポンスされたデータからクレデンシャル情報を抽出する。
+レスポンスされたデータから認証情報を抽出する。
 
 この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。
 
 代わりとして、`~/.aws/cli/cache`ディレクトリ配下の`.json`ファイルから取得しても良い。
 
-クレデンシャル情報を環境変数として出力し、使用できるようにする。
+認証情報を環境変数として出力し、使用できるようにする。
 
 > ↪️：https://stedolan.github.io/jq/
 
@@ -440,7 +440,7 @@ export AWS_DEFAULT_REGION="ap-northeast-1"
 EOF
 ```
 
-環境変数に登録する代わりとして、AWSの`credentials`ファイルを作成しても良い。
+環境変数に登録する代わりとして、AWSの認証情報ファイルを作成しても良い。
 
 ```bash
 #!/bin/bash
@@ -461,7 +461,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 ロールを引き受けた新しいアカウントを使用して、AWSリソースに認証認可できるか否かを確認する。
 
-クレデンシャル情報の取得方法として`credentials`ファイルの作成を`tfstate`ファイル択した場合、`profile`オプションが必要である。
+認証情報の取得方法として認証情報ファイルの作成を`tfstate`ファイル択した場合、`profile`オプションが必要である。
 
 ```bash
 #!/bin/bash

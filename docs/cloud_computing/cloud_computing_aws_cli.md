@@ -19,7 +19,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 #### ▼ configure
 
-クレデンシャル情報を設定する。
+認証情報を設定する。
 
 OSによって、`credentials`ファイルが配置される場所が異なる。
 
@@ -48,7 +48,7 @@ Default output format [None]: <アウトプット形式>
 
 #### ▼ listとは
 
-現在設定されているクレデンシャル情報を取得する。
+現在設定されている認証情報を取得する。
 
 ```bash
 $ aws configure list
@@ -60,10 +60,10 @@ $ aws configure list
 
 #### ▼ setとは
 
-クレデンシャル情報の特定の項目を設定する。
+認証情報の特定の項目を設定する。
 
 ```bash
-$ aws configure set <クレデンシャル情報の項目>
+$ aws configure set <認証情報の項目>
 ```
 
 アクセスキーIDを設定する。
@@ -94,7 +94,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 #### ▼ `~/.aws/confidentials`ファイルとは
 
-クレデンシャル情報を設定する。
+認証情報を設定する。
 
 LinuxやUnixの場合は、`$HOME/.aws/<credentialsファイル名>`に配置される。
 
@@ -254,7 +254,7 @@ $ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 
 現在のターミナルで使用するセッショントークンを設定する。
 
-AWS STSで発行された一時的なクレデンシャル情報に含まれ、このクレデンシャル情報を使用する時に、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
+AWS STSで発行された一時的な認証情報に含まれ、この認証情報を使用する時に、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
 
 ```bash
 $ export AWS_SESSION_TOKEN=<セッショントークン>
