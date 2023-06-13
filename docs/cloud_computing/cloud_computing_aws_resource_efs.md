@@ -40,9 +40,9 @@ description: EFS＠AWSリソースの知見を記録しています。
 
 <br>
 
-### スペック
+## 02. スペック
 
-#### ▼ バーストモードの仕組み
+### バーストモードの仕組み
 
 スループット性能の自動スケーリングに残高があり、ベースラインを超過した分だけ自動スケーリング残高が減っていく。
 
@@ -62,7 +62,9 @@ description: EFS＠AWSリソースの知見を記録しています。
 
 > ↪️：https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
 
-#### ▼ プロビジョニングモードの仕組み
+<br>
+
+### プロビジョニングモードの仕組み
 
 スループット性能の自動スケーリング機能は無いが、一定の性能は保証されている。
 
@@ -72,22 +74,24 @@ description: EFS＠AWSリソースの知見を記録しています。
 
 <br>
 
-### マウントポイントの登録と解除
+## マウントポイント
 
-#### ▼ マウントポイントの登録と解除とは
+### 登録
 
-`mount`コマンドと`unmount`コマンドで、EFSに対してマウントポイントの登録と解除を実行できる。
-
-> ↪️：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
-
-#### ▼ 登録
+`mount`コマンドを使用して、EFSに対してマウントポイントを登録する。
 
 ```bash
 # mount -t efs -o tls <ファイルシステムID>:<マウント元ディレクトリ> <マウントポイント>
 $ mount -t efs -o tls fs-*****:/ /var/www/foo
 ```
 
-#### ▼ 解除
+> ↪️：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
+
+<br>
+
+### 解除
+
+`unmount`コマンドを使用して、マウントポイントを解除する。
 
 `df`コマンドで、EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、`unmount`コマンドを実行する。
 
@@ -98,5 +102,7 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 
 $ umount /var/www/foo
 ```
+
+> ↪️：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
 
 <br>
