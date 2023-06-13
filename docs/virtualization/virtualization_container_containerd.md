@@ -60,13 +60,15 @@ WantedBy=multi-user.target
 
 ## 04. ログ
 
-### Containerdのログ
-
-### ▼ Containerdのログとは
+### 形式
 
 Containerdは、テキスト形式ログを作成する。
 
 ログメッセージの箇所が文字列またはJSONの場合がある。
+
+<br>
+
+### ログメッセージの構造
 
 #### ▼ 文字列
 
