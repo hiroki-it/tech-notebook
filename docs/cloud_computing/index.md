@@ -25,7 +25,7 @@
   > * ##### [CloudFront](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudfront.html)
   > * ##### [CloudTrail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudtrail.html)
   > * ##### [CloudWatch](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudwatch.html)
-  > * ##### [Code系](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_code.html)
+  > * ##### [Code兄弟](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_code.html)
   > * ##### [Control Tower](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_control_tower.html)
   > * ##### [Direct Connect](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_direct_connect.html)
   > * ##### [︎EC2](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_ec2.html)

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Code系＠AWSリソース
-description: Code系＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Code兄弟＠AWSリソース
+description: Code兄弟＠AWSリソースの知見を記録しています。
 ---
 
-# Code系＠AWSリソース
+# Code兄弟＠AWSリソース
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: Code系＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. Code系サービス
+## 01. Code兄弟サービス
 
-### Code系サービス
+### Code兄弟サービス
 
 #### ▼ CodePipeline
 
