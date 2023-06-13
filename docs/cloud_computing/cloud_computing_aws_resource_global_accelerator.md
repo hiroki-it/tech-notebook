@@ -13,13 +13,13 @@ description: Global Accelerator＠AWSリソースの知見を記録していま�
 
 <br>
 
-## 01. Global Accelerator
+## 01. Global Acceleratorとは
 
-### Global Acceleratorとは
+記入中...
 
 <br>
 
-## 01-02. セットアップ
+## 02. セットアップ
 
 ### コンソール画面の場合
 
