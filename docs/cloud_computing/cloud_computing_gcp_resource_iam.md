@@ -66,7 +66,7 @@ description: IAM＠GCPリソースの知見を記録しています。
 
 #### ▼ 自動
 
-認証情報をGCPからダウンロードし、対象の`GOOGLE_APPLICATION_CREDENTIALS`環境変数にこれを設定する。
+認証情報 (`credentials.json`ファイル) をGCPからダウンロードし、環境変数の`GOOGLE_APPLICATION_CREDENTIALS`にこれを設定する。
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 

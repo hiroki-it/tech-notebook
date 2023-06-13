@@ -1625,6 +1625,8 @@ AppProjectを単位としたテナント分割のために使用する。
 
 そのAppProjectに属するApplicationを作成できるNamespace (argocd-serverとapplication-controllerがアクセス可能なNamespace) を設定する。
 
+異なるNamespace間で同じ親Applicationがあると、Namespaceを超えて親を共有してしまう。
+
 これにより、ArgoCDはClusterスコープモードになる。
 
 argocd-serverとapplication-controllerは、ClusterRoleにより全てのKubernetesリソースにアクセスできるようにする必要があり、これを特定のAppProjectに制限できる。
@@ -1660,28 +1662,25 @@ data:
   application.namespaces: "*"
 ```
 
+あるいは、application-controllerの起動時にパラメーターとして渡しても良い。
+
+```bash
+$ argocd-application-controller --application-namespaces="*"
+```
+
 > ↪️：
 >
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#cluster-scoped-argo-cd-installation
 > - https://github.com/argoproj/argo-cd/pull/9755
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#implementation-details
 > - https://developers.redhat.com/articles/2022/04/13/manage-namespaces-multitenant-clusters-argo-cd-kustomize-and-helm#a_simple_argo_cd_application
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
 
 #### ▼ デフォルトのNamespacedスコープモード
 
-デフォルトのNamespacedスコープモードのArgoCDでは、`argocd`というNamespace以外でApplicationを作成できない。
+デフォルトのNamespacedスコープモードのArgoCDでは、application-controllerとrepo-serverが自分自身のNamespaceのみを見る。
 
-もし`argocd`以外のNamespaceでこれを作成しようとすると、以下のエラーになる。
-
-```bash
-# Applicationを作成できない
-application 'foo-application' in namespace 'foo-namespace' is not permitted to use project 'default'
-```
-
-```bash
-# Applicationが認識されないため、AppProjectも見つけられない
-error getting app project "foo-project": appproject.argoproj.io "foo-project" not found
-```
+そのため、異なるNamespace間で同じ親Applicationがあっても、Namespaceを超えて親を共有してしまうことがない。
 
 > ↪️：
 >
