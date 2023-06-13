@@ -21,271 +21,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 02. STSで発行されるIAMユーザー
-
-### IAMユーザーのローテーション
-
-STSで発行されたIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。
-
-この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。
-
-秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
-
-![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
-
-> ↪️：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
-
-<br>
-
-### 発行するIAMユーザーの切り替え
-
-IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
-
-![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
-
-> ↪️：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
-
-<br>
-
-## 02. IAMユーザーの発行元
-
-### フェデレーテッドユーザー
-
-任意のIDプロバイダーで認証済みのユーザー (フェデレーテッドユーザー) にIAMロールを付与することにより、AWSリソースにアクセスできるようにできる。
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
-
-<br>
-
-### OIDC、Web IDフェデレーション
-
-#### ▼ OIDC、Web IDフェデレーションとは
-
-OIDCまたはWeb IDフェデレーションによる認証/認可を使用する。
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
-
-#### ▼ CognitoをIDプロバイダーとする場合
-
-CognitoをIDプロバイダーとして使用するように、信頼されたエンティティを設定する。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    {
-      "Effect": "Allow",
-      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-          # 完全一致
-          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
-          "ForAnyValue:StringLike":
-            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
-        },
-    },
-}
-```
-
-#### ▼ EKSをIDプロバイダーとする場合
-
-![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
-
-EKSをIDプロバイダーとして使用するように、`Federated`キーでEKS Clusterの識別子を設定する。
-
-これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
-
-また、`Condition`キーで特定のServiceAccountを指定できるようにする。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Sid": "",
-        "Effect": "Allow",
-        "Principal":
-          {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenID ConnectプロバイダーURL>",
-          },
-        "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition": {
-            # 完全一致
-            "StringEquals":
-              {
-                "<EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
-                  ["system:serviceaccount:<Namespace名>:<ServiceAccount名>"],
-              },
-          },
-      },
-    ],
-}
-```
-
-KubernetesのServiceAccountを作成し、IAMロールのARNを設定する。
-
-ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  annotations:
-    eks.amazonaws.com/role-arn: <IAMロールのARN>
-  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
-  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
-```
-
-IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
-
-> ↪️：
->
-> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
-> - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
-> - https://moneyforward-dev.jp/entry/2021/12/19/irsa/
-
-#### ▼ その他のIDプロバイダー
-
-- Auth0
-- Keycloak
-- Google Auth
-
-<br>
-
-### SAMLベースフェデレーション
-
-SAMLによる認証/認可を使用する。
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
-
-<br>
-
-## 03. IAMロールの委譲先ユーザー
-
-### IAMロールの委譲先ユーザー
-
-IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIAMロールを委譲できる。
-
-![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
-
-> ↪️：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
-
-<br>
-
-### IAMロールの委譲先ユーザーの種類
-
-#### ▼ IAMユーザー
-
-IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲できる。
-
-IAMユーザーの場合、外部IDが必要になる。
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
-
-#### ▼ AWSリソース
-
-IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。
-
-IAMリソースの場合、外部IDが必要になる。
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
-
-#### ▼ フェデレーテッドユーザー
-
-OIDC、SAML、によって発行されたユーザーに委譲できる。
-
-OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
-
-> ↪️：
->
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
-
-<br>
-
-### フェデレーテッドユーザー
-
-#### ▼ AWS OIDC
-
-IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
-
-フェデレーテッドユーザーは任意のIPプロバイダーで発行する。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    {
-      "Effect": "Allow",
-      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-          # 完全一致
-          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
-          "ForAnyValue:StringLike":
-            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
-        },
-    },
-}
-```
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
-
-#### ▼ 外部OIDC
-
-IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    {
-      "Effect": "Allow",
-      "Principal": {"Federated": "accounts.google.com"},
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-          # 完全一致
-          "StringEquals": {"accounts.google.com:aud": "*****"},
-          "ForAnyValue:StringLike":
-            {"accounts.google.com:amr": "unauthenticated"},
-        },
-    },
-}
-```
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
-
-#### ▼ AWS SAML
-
-IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:saml-provider/<プロバイダー名>",
-          },
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            # 完全一致
-            "StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"},
-          },
-      },
-    ],
-}
-```
-
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
-
-<br>
-
-## 04. セットアップ
+## 02. セットアップ
 
 ### 1. IAMロールに信頼ポリシーを紐付け
 
@@ -469,5 +205,269 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 # credentialsファイルを参照するオプションが必要がある。
 aws s3 ls --profile <プロファイル名> <tfstateファイルが管理されるバケット名>
 ```
+
+<br>
+
+## 03. STSで発行されるIAMユーザー
+
+### IAMユーザーのローテーション
+
+STSで発行されたIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。
+
+この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。
+
+秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+
+![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
+
+> ↪️：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
+
+<br>
+
+### 発行するIAMユーザーの切り替え
+
+IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
+
+![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
+
+> ↪️：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
+
+<br>
+
+## 02. IAMユーザーの発行元
+
+### フェデレーテッドユーザー
+
+任意のIDプロバイダーで認証済みのユーザー (フェデレーテッドユーザー) にIAMロールを付与することにより、AWSリソースにアクセスできるようにできる。
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
+
+<br>
+
+### OIDC、Web IDフェデレーション
+
+#### ▼ OIDC、Web IDフェデレーションとは
+
+OIDCまたはWeb IDフェデレーションによる認証/認可を使用する。
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+
+#### ▼ CognitoをIDプロバイダーとする場合
+
+CognitoをIDプロバイダーとして使用するように、信頼されたエンティティを設定する。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    {
+      "Effect": "Allow",
+      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+          # 完全一致
+          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
+          "ForAnyValue:StringLike":
+            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
+        },
+    },
+}
+```
+
+#### ▼ EKSをIDプロバイダーとする場合
+
+![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+
+EKSをIDプロバイダーとして使用するように、`Federated`キーでEKS Clusterの識別子を設定する。
+
+これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+
+また、`Condition`キーで特定のServiceAccountを指定できるようにする。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Sid": "",
+        "Effect": "Allow",
+        "Principal":
+          {
+            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenID ConnectプロバイダーURL>",
+          },
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+            # 完全一致
+            "StringEquals":
+              {
+                "<EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
+                  ["system:serviceaccount:<Namespace名>:<ServiceAccount名>"],
+              },
+          },
+      },
+    ],
+}
+```
+
+KubernetesのServiceAccountを作成し、IAMロールのARNを設定する。
+
+ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
+  name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
+  namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
+```
+
+IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
+
+> ↪️：
+>
+> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
+> - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
+> - https://moneyforward-dev.jp/entry/2021/12/19/irsa/
+
+#### ▼ その他のIDプロバイダー
+
+- Auth0
+- Keycloak
+- Google Auth
+
+<br>
+
+### SAMLベースフェデレーション
+
+SAMLによる認証/認可を使用する。
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
+
+<br>
+
+## 04. IAMロールの委譲先ユーザー
+
+### IAMロールの委譲先ユーザー
+
+IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIAMロールを委譲できる。
+
+![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
+
+> ↪️：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
+
+<br>
+
+### IAMロールの委譲先ユーザーの種類
+
+#### ▼ IAMユーザー
+
+IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲できる。
+
+IAMユーザーの場合、外部IDが必要になる。
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+
+#### ▼ AWSリソース
+
+IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。
+
+IAMリソースの場合、外部IDが必要になる。
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+
+#### ▼ フェデレーテッドユーザー
+
+OIDC、SAML、によって発行されたユーザーに委譲できる。
+
+OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
+
+> ↪️：
+>
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+
+<br>
+
+### フェデレーテッドユーザー
+
+#### ▼ AWS OIDC
+
+IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
+
+フェデレーテッドユーザーは任意のIPプロバイダーで発行する。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    {
+      "Effect": "Allow",
+      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+          # 完全一致
+          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
+          "ForAnyValue:StringLike":
+            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
+        },
+    },
+}
+```
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+
+#### ▼ 外部OIDC
+
+IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    {
+      "Effect": "Allow",
+      "Principal": {"Federated": "accounts.google.com"},
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+          # 完全一致
+          "StringEquals": {"accounts.google.com:aud": "*****"},
+          "ForAnyValue:StringLike":
+            {"accounts.google.com:amr": "unauthenticated"},
+        },
+    },
+}
+```
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+
+#### ▼ AWS SAML
+
+IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Principal":
+          {
+            "Federated": "arn:aws:iam::<AWSアカウントID>:saml-provider/<プロバイダー名>",
+          },
+        "Action": "sts:AssumeRole",
+        "Condition": {
+            # 完全一致
+            "StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"},
+          },
+      },
+    ],
+}
+```
+
+> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 <br>
