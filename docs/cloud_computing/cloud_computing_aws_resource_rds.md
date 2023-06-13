@@ -3,7 +3,7 @@ title: 【IT技術の知見】RDS＠AWSリソース
 description: RDS＠AWSリソース
 ---
 
-# RDS＠`R`で始まるAWSリソース
+# RDS＠AWSリソース
 
 ## はじめに
 

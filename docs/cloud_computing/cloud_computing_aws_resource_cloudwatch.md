@@ -3,7 +3,7 @@ title: 【IT技術の知見】CloudWatch＠AWSリソース
 description: CloudWatch＠AWSリソースの知見を記録しています。
 ---
 
-# CloudWatch＠`C`で始まるAWSリソース
+# CloudWatch＠AWSリソース
 
 ## はじめに
 

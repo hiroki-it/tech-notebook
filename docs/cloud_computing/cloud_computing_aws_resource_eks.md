@@ -3,7 +3,7 @@ title: 【IT技術の知見】EKS＠AWSリソース
 description: EKS＠AWSリソースの知見を記録しています。
 ---
 
-# EKS＠`E`で始まるAWSリソース
+# EKS＠AWSリソース
 
 ## はじめに
 

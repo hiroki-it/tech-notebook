@@ -3,7 +3,7 @@ title: 【IT技術の知見】Chatbot＠AWSリソース
 description: Chatbot＠AWSリソースの知見を記録しています。
 ---
 
-# `C`で始まるAWSリソース＠AWS
+# Chatbot＠AWSリソース
 
 ## はじめに
 
