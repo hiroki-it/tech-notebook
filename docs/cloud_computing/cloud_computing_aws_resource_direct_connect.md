@@ -19,9 +19,9 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 注意点として、DirectConnectは、それ専用の中継VPC内に作成する。
 
-> ↪️：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
-
 ![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
+
+> ↪️：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 
 <br>
 
