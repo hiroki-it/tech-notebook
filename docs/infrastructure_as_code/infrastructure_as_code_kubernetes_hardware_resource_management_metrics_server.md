@@ -187,7 +187,7 @@ baz-node   352m         4%     9430Mi          33%
 
 > ↪️：<https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
 
-### ▼ デバッグ
+#### ▼ デバッグ
 
 metrics-serverが正しく動作していない場合、Nodeのハードウェアリソースの消費量が`<unknown>`になる。
 
@@ -231,7 +231,7 @@ foo-pod   foo-container   1m           19Mi
 foo-pod   istio-proxy     5m           85Mi
 ```
 
-### ▼ デバッグ
+#### ▼ デバッグ
 
 metrics-serverが正しく動作していない場合、Podのハードウェアリソースの消費量が`<unknown>`になる。
 
