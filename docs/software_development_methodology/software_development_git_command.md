@@ -200,6 +200,10 @@ $ git init
 
 プライベートリポジトリのURLを登録し、プッシュ/プルできるようにする。
 
+**＊実行例＊**
+
+Basic認証の場合、以下の通りである。
+
 ```bash
 $ git init
 
@@ -209,6 +213,10 @@ $ git remote add origin https://github.com/hiroki-hasegawa/example.git
 # 登録されたGitHubリポジトリ
 remote.origin.url=https://github.com/hiroki-hasegawa/example.git
 ```
+
+**＊実行例＊**
+
+SSH公開鍵認証の場合、以下の通りである。
 
 ```bash
 $ git init
@@ -234,6 +242,27 @@ remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHub�
 
 一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で再設定する。
 
+**＊実行例＊**
+
+Basic認証の場合、以下の通りである。
+
+```bash
+# Basic認証
+$ git remote set-url origin https://github.com/hiroki-hasegawa/example.git
+
+# 登録されたGitHubリポジトリ
+remote.origin.url=https://github.com/hiroki-hasegawa/example.git
+
+$ git config --local --list
+
+# 変更されたURL
+remote.origin.url=https://github.com/hiroki-hasegawa/example.git
+```
+
+**＊実行例＊**
+
+SSH公開鍵認証の場合、以下の通りである。
+
 ```bash
 # SSH公開鍵認証
 # 使用頻度の高いアカウントで所有するリポジトリ
@@ -241,6 +270,8 @@ $ git remote set-url origin git@github.com:<組織名またはgitユーザー名
 
 # 使用頻度の低いアカウントで所有するリポジトリ
 $ git remote set-url origin git@<任意の接続名>:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
+
+$ git config --local --list
 
 # 変更されたURL
 remote.origin.url=git@<任意の接続名>:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
