@@ -23,6 +23,24 @@ GCPアカウントの認証を行う。
 
 > ↪️：https://cloud.google.com/sdk/gcloud/reference/auth
 
+#### ▼ activate-service-account
+
+指定したServiceAccountでログインする。
+
+認証情報ファイルは使用後に削除した方が良いらしい。
+
+```bash
+$ gcloud auth activate-service-account <サービスアカウント名> \
+    --key-file <認証情報ファイル> \
+    --project <プロジェクト名>
+```
+
+> ↪️：
+>
+> - https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account
+> - https://qiita.com/zaru/items/a419f306385f240e4fe6#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E8%AA%8D%E8%A8%BC
+> - https://stackoverflow.com/a/52387709
+
 #### ▼ application-default login
 
 GCP CLIによるGCPリソースへのアクセスを認証するために使用する。
@@ -73,6 +91,20 @@ $ gcloud auth login --update-adc
 ```
 
 > ↪️：https://blog.pokutuna.com/entry/application-default-credentials
+
+#### ▼ print-access-token
+
+認証のトークンを取得する。
+
+```bash
+$ gcloud auth print-access-token
+```
+
+環境変数に設定して使用すると良い。
+
+```bash
+$ export GCP_AUTH_TOKEN=`gcloud auth print-access-token`
+```
 
 <br>
 
@@ -301,12 +333,15 @@ Please enter numeric choice or text value (must exactly match list item): 3 # �
 
 #### ▼ infoとは
 
-現在使用している認証情報ファイルの場所を取得する。
+現在使用している設定ファイルの場所を取得する。
 
 ```bash
 $ gcloud info
 
-User Config Directory: [/home/USERNAME/.config/gcloud]
+# 認証情報ファイル
+User Config Directory: /root/.config/gcloud]
+
+...
 ```
 
 > ↪️：https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
