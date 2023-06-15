@@ -19,7 +19,7 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 
 #### ▼ authとは
 
-GCPアカウントの認証を行う。
+プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、KubernetesのServiceAccount) の認証を行う。
 
 > ↪️：https://cloud.google.com/sdk/gcloud/reference/auth
 
@@ -49,7 +49,7 @@ GCP CLIによるGCPリソースへのアクセスを認証するために使用�
 
 また、これ使用してGCPにログインする。
 
-`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のアカウントの認証情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
+`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のプリンシパルの認証情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。
 
 ```bash
 $ gcloud auth application-default login
@@ -67,6 +67,20 @@ $ gcloud auth application-default login
 ```
 
 > ↪️：https://christina04.hatenablog.com/entry/gcp-auth
+
+#### ▼ list
+
+切り替え可能なプリンシパルの一覧を取得する。
+
+```bash
+$ gcloud auth list
+
+Credentialed Accounts
+
+ACTIVE  ACCOUNT
+        example1@gmail.com
+*       example2@gmail.com
+```
 
 #### ▼ login
 
@@ -154,19 +168,27 @@ The latest available version is: 400.0.0
 
 ### config
 
-#### ▼ config
+#### ▼ configとは
 
 認証時のデフォルト値を設定する。
 
 #### ▼ configuration
 
-現在の認証情報を表で取得する。
+複数のプロジェクトがある場合に、これらを切り替える。
+
+```bash
+$ gcloud config configurations activate foo-project
+
+Activated [foo-project].
+```
+
+全ての認証情報を一覧で取得する。
 
 ```bash
 $ gcloud config configurations list
 
-NAME     IS_ACTIVE  ACCOUNT                                               PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
-default  True       hiroki.hasegawa@foo-project.iam.gserviceaccount.com   foo-project
+NAME         IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo-project  True       example@gmail.com   foo-project
 ```
 
 `gcloud`コマンド上でのプロジェクトを作成する。
@@ -174,7 +196,7 @@ default  True       hiroki.hasegawa@foo-project.iam.gserviceaccount.com   foo-pr
 GoogleCloudにプロジェクトを作成するわけではない。
 
 ```bash
-$ gcloud config configurations create foo-project
+$ gcloud config configurations create bar-project
 
 Created [foo-project].
 Activated [foo-project].
@@ -183,9 +205,9 @@ Activated [foo-project].
 # 新しいプロジェクトが追加されたことを確認できる。
 $ gcloud config configurations list
 
-NAME          IS_ACTIVE  ACCOUNT                                               PROJECT              COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
-default       False      hiroki.hasegawa@foo-project.iam.gserviceaccount.com   foo-project
-foo-project   True
+NAME          IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo-project   False      example@gmail.com   foo-project
+bar-project   True
 ```
 
 > ↪️：https://note.com/shimakaze_soft/n/nb8f5f938f7e8
@@ -200,11 +222,11 @@ foo-project   True
 $ gcloud config list
 
 [core]
-account = hiroki.hasegawa@foo-project.iam.gserviceaccount.com
+account = example@gmail.com
 disable_usage_reporting = True
 project = foo-project
 
-Your active configuration is: [default]
+Your active configuration is: [foo-project]
 ```
 
 #### ▼ set
@@ -218,8 +240,8 @@ Your active configuration is: [default]
 $ gcloud config configurations create foo-project
 
 
-# アカウントを設定する。
-$ gcloud config set core/account hiroki.hasegawa@foo-project.iam.gserviceaccount.com
+# プリンシパルを設定する。
+$ gcloud config set core/account example@gmail.com
 
 Updated property [core/project].
 
@@ -240,10 +262,15 @@ Updated property [compute/region].
 # 新しいプロジェクトが追加されたことを確認できる。
 $ gcloud config configurations list
 
-NAME          IS_ACTIVE  ACCOUNT                                               PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
-foo-project   False      hiroki.hasegawa@foo-project.iam.gserviceaccount.com   foo-project     	                  asia-northeast1-a
-bar-project   True       hiroki.hasegawa@bar-project.iam.gserviceaccount.com   foo-project                        asia-northeast1-a
+NAME          IS_ACTIVE  ACCOUNT             PROJECT       COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo-project   False      example@gmail.com   foo-project   asia-northeast1-a
+bar-project   True       example@gmail.com   bar-project   asia-northeast1-a
 ```
+
+> ↪️：
+>
+> - https://qiita.com/sonots/items/906798c408132e26b41c
+> - https://note.com/shimakaze_soft/n/nb8f5f938f7e8
 
 <br>
 
@@ -351,7 +378,7 @@ core:
 Pick configuration to use:
  [1] Re-initialize this configuration [default] with new settings
  [2] Create a new configuration
-Please enter your numeric choice:  1 # 再設定か新しいアカウントの設定かを選択する。
+Please enter your numeric choice:  1 # 再設定か新しいプリンシパルの設定かを選択する。
 
 Your current configuration has been set to: [default]
 
@@ -366,7 +393,7 @@ Network diagnostic passed (1/1 checks passed).
 Choose the account you would like to use to perform operations for this configuration:
 [1] hiroki.hasegawa
 [2] Log in with a new account
-Please enter your numeric choice:  1 # デフォルトのアカウントを設定する。
+Please enter your numeric choice:  1 # デフォルトのプリンシパルを設定する。
 
 You are logged in as: [hiroki.hasegawa].
 
@@ -403,7 +430,13 @@ User Config Directory: /root/.config/gcloud]
 
 #### ▼ projectとは
 
-認可スコープの範囲内になるプロジェクトの一覧を取得する。
+記入中...
+
+#### ▼ list
+
+現在のプリンシパルが使用できるプロジェクトの一覧を取得する。
+
+注意点として、全てのプロジェクトではない。
 
 **＊実行例＊**
 
@@ -414,6 +447,8 @@ PROJECT_ID   NAME      PROJECT_NUMBER
 foo-stg      foo-stg   *****
 foo-prd      foo-prd   *****
 ```
+
+> ↪️：https://cloud.google.com/sdk/gcloud/reference/projects/list
 
 <br>
 

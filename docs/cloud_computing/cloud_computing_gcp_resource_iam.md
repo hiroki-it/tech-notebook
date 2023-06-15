@@ -24,8 +24,8 @@ description: IAM＠GCPリソースの知見を記録しています。
 ### 種類
 
 - ユーザー
-- サービスアカウント (GCPリソース)
-- IAMグループ
+- サービスアカウント
+- グループ
 - ドメイン
 - KubernetesのServiceAccount
 
