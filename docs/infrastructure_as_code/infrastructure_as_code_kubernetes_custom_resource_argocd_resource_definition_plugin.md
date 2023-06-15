@@ -414,11 +414,12 @@ metadata:
   name: foo-application
   namespace: argocd
 spec:
-  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-  targetRevision: main
-  path: .
-  plugin:
-    name: foo-plugin
+  source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+    targetRevision: main
+    path: .
+    plugin:
+      name: foo-plugin
 ```
 
 <br>
@@ -688,11 +689,12 @@ metadata:
   name: foo-application
   namespace: argocd
 spec:
-  repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
-  targetRevision: main
-  path: .
-  plugin:
-    name: helmfile
+  source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+    targetRevision: main
+    path: .
+    plugin:
+      name: helmfile
 ```
 
 <br>
@@ -807,18 +809,19 @@ metadata:
   name: foo-application
   namespace: argocd
 spec:
-  repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
-  targetRevision: main
-  path: .
-  plugin:
-    name: helm-secrets
-    env:
-      - name: HELM_RELEASE_NAME
-        value: foo
-      - name: SOPS_SECRETS_FILE
-        value: ./sops/secret.prd.yaml
-      - name: VALUES_FILE
-        value: ./values/values-prd.yaml
+  source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+    targetRevision: main
+    path: .
+    plugin:
+      name: helm-secrets
+      env:
+        - name: HELM_RELEASE_NAME
+          value: foo
+        - name: SOPS_SECRETS_FILE
+          value: ./sops/secret.prd.yaml
+        - name: VALUES_FILE
+          value: ./values/values-prd.yaml
 ```
 
 <br>
@@ -1069,14 +1072,15 @@ metadata:
   name: foo-application
   namespace: argocd
 spec:
-  repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
-  targetRevision: main
-  path: .
-  plugin:
-    name: vault
-    env:
-      - name: HELM_RELEASE_NAME
-        value: foo
+  source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+    targetRevision: main
+    path: .
+    plugin:
+      name: vault
+      env:
+        - name: HELM_RELEASE_NAME
+          value: foo
 ```
 
 > ↪️：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
