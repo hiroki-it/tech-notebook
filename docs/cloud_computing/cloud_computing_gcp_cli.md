@@ -158,6 +158,38 @@ The latest available version is: 400.0.0
 
 認証時のデフォルト値を設定する。
 
+#### ▼ configuration
+
+現在の認証情報を表で取得する。
+
+```bash
+$ gcloud config configurations list
+
+NAME     IS_ACTIVE  ACCOUNT                                               PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+default  True       hiroki.hasegawa@foo-project.iam.gserviceaccount.com   foo-project
+```
+
+`gcloud`コマンド上でのプロジェクトを作成する。
+
+GoogleCloudにプロジェクトを作成するわけではない。
+
+```bash
+$ gcloud config configurations create foo-project
+
+Created [foo-project].
+Activated [foo-project].
+
+
+# 新しいプロジェクトが追加されたことを確認できる。
+$ gcloud config configurations list
+
+NAME          IS_ACTIVE  ACCOUNT                                               PROJECT              COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+default       False      hiroki.hasegawa@foo-project.iam.gserviceaccount.com   foo-project
+foo-project   True
+```
+
+> ↪️：https://note.com/shimakaze_soft/n/nb8f5f938f7e8
+
 #### ▼ list
 
 現在の認証情報を取得する。
@@ -168,7 +200,7 @@ The latest available version is: 400.0.0
 $ gcloud config list
 
 [core]
-account = hiroki.hasegawa
+account = hiroki.hasegawa@foo-project.iam.gserviceaccount.com
 disable_usage_reporting = True
 project = foo-project
 
@@ -182,16 +214,35 @@ Your active configuration is: [default]
 **＊実行例＊**
 
 ```bash
-$ gcloud config set project <プロジェクト名>
+# プロジェクトを作成する
+$ gcloud config configurations create foo-project
+
+
+# アカウントを設定する。
+$ gcloud config set core/account hiroki.hasegawa@foo-project.iam.gserviceaccount.com
 
 Updated property [core/project].
-```
 
-```bash
-$ gcloud config set compute/region <リージョン名>
+
+# プロジェクト名を設定する
+$ gcloud config set core/project foo-project
+
+Updated property [core/project].
+
+
+# リージョンを設定する。
+$ gcloud config set compute/region asia-northeast1-a
 
 WARNING: Property validation for compute/region was skipped.
 Updated property [compute/region].
+
+
+# 新しいプロジェクトが追加されたことを確認できる。
+$ gcloud config configurations list
+
+NAME          IS_ACTIVE  ACCOUNT                                               PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo-project   False      hiroki.hasegawa@foo-project.iam.gserviceaccount.com   foo-project     	                  asia-northeast1-a
+bar-project   True       hiroki.hasegawa@bar-project.iam.gserviceaccount.com   foo-project                        asia-northeast1-a
 ```
 
 <br>
@@ -211,8 +262,8 @@ GKE Clusterの一覧を取得する。
 ```bash
 $ gcloud container clusters list
 
-NAME               LOCATION         MASTER_VERSION   MASTER_IP  MACHINE_TYPE  NODE_VERSION    NUM_NODES  STATUS
-foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.22.0-gke      3          RUNNING
+NAME               LOCATION         MASTER_VERSION   MASTER_IP    MACHINE_TYPE   NODE_VERSION    NUM_NODES   STATUS
+foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium      1.22.0-gke      3           RUNNING
 ```
 
 > ↪️：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
