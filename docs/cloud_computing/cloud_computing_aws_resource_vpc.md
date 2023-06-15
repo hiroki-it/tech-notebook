@@ -352,6 +352,8 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、`1`個のパブリックIPアドレスで送信する。
 
+そのため、送信元はこのパブリックIPアドレスになる。
+
 この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png)

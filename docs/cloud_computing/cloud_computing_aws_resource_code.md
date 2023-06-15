@@ -294,14 +294,22 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
         "name": "<コンテナ名>",
         "image": "<IMAGE1_NAME>",
         "essential": true,
-        "portMappings":
-          [{"containerPort": 80, "hostPort": 80, "protocol": "tcp"}],
-        "secrets":
-          [
+        "portMappings": [
+            {
+              # コンテナポート
+              "containerPort": 80,
+              # ECSのホストのポート
+              "hostPort": 80,
+              "protocol": "tcp",
+            },
+          ],
+        "secrets": [
+            # データ永続化用のDBの接続情報
             {"name": "DB_HOST", "valueFrom": "/ecs/DB_HOST"},
             {"name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE"},
             {"name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD"},
             {"name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME"},
+            # セッションキャッシュ用のインメモリDBの接続情報
             {"name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST"},
             {"name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD"},
             {"name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT"},

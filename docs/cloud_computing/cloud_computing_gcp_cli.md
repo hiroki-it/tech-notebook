@@ -30,9 +30,29 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 認証情報ファイルは使用後に削除した方が良いらしい。
 
 ```bash
-$ gcloud auth activate-service-account <サービスアカウント名> \
-    --key-file <認証情報ファイル> \
-    --project <プロジェクト名>
+$ gcloud auth activate-service-account bar-serviceaccount \
+    --key-file foo1-credentials.json \
+
+$ gcloud auth list
+                  Credentialed Accounts
+ACTIVE  ACCOUNT
+
+        foo1-serviceaccount@foo-project.iam.gserviceaccount.com
+*       foo2-serviceaccount@foo-project.iam.gserviceaccount.com
+```
+
+```bash
+$ gcloud auth activate-service-account bar-serviceaccount \
+    --key-file bar-credentials.json \
+    --project bar-project
+
+$ gcloud auth list
+                  Credentialed Accounts
+ACTIVE  ACCOUNT
+
+        foo1-serviceaccount@foo-project.iam.gserviceaccount.com
+        foo2-serviceaccount@foo-project.iam.gserviceaccount.com
+*       bar-serviceaccount@bar-project.iam.gserviceaccount.com
 ```
 
 > ↪️：
@@ -120,6 +140,14 @@ $ gcloud auth print-access-token
 $ export GCP_AUTH_TOKEN=`gcloud auth print-access-token`
 ```
 
+#### ▼ revoke
+
+現在使用しているプリンシパルを削除する。
+
+```bash
+$ gcloud auth revoke example@gmail.com
+```
+
 <br>
 
 ### component
@@ -182,13 +210,14 @@ $ gcloud config configurations activate foo-project
 Activated [foo-project].
 ```
 
-全ての認証情報を一覧で取得する。
+全てのプロジェクトと、現在有効になっているプリンシパルとを一覧で取得する。
 
 ```bash
 $ gcloud config configurations list
 
-NAME         IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
-foo-project  True       example@gmail.com   foo-project
+NAME          IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo-project   False      example@gmail.com   foo-project
+bar-project   True       example@gmail.com   bar-project
 ```
 
 `gcloud`コマンド上でのプロジェクトを作成する。
