@@ -134,7 +134,7 @@ $ helm get <Helmリリース名>
 ```bash
 $ helm history <Helmリリース名>
 
-REVISION     UPDATED                    STATUS     CHART               APP VERSION            DESCRIPTION
+REVISION         UPDATED                    STATUS     CHART               APP VERSION               DESCRIPTION
 <Helmリリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-<バージョンタグ>   <バージョンタグ>          Initial install
 <Helmリリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-1.1.0  1.1.0    Rolled back to 1
 <Helmリリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully

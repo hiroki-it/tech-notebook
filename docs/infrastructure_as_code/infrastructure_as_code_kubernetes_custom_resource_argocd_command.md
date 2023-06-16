@@ -205,8 +205,20 @@ application-controllerのコンテナの起動コマンドとしても使われ�
 
 #### ▼ --namespace
 
+application-controllerの処理対象のNamespaceを設定する。
+
+設定しても効果がないため、存在意義がわからない...
+
 ```bash
 $ argocd-application-controller --namespace foo-namespace ...
+```
+
+#### ▼ --application-namespaces
+
+ArgoCDがClusterスコープモードの場合に、Applicationを作成できるNamespaceを設定する。
+
+```bash
+$ argocd-application-controller --application-namespaces "*"
 ```
 
 <br>
@@ -226,6 +238,10 @@ argocd-serverのコンテナの起動コマンドとしても使われている�
 ### グローバルオプション
 
 #### ▼ --namespace
+
+argocd-serverの処理対象のNamespaceを設定する。
+
+設定しても効果がないため、存在意義がわからない...
 
 ```bash
 $ argocd-server --namespace foo-namespace ...

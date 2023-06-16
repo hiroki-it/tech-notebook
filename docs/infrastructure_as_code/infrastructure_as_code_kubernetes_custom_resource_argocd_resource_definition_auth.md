@@ -158,6 +158,11 @@ ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働
 
 `argocd cluster add <デプロイ先のClusterのコンテキスト>`コマンドで、`argocd-manager`というServiceAccountを作成できる。
 
+```bash
+# デフォルトでkube-systemに作成するため、nオプションは不要である
+$ argocd cluster add <デプロイ先ClusterのARN> -n kube-system
+```
+
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -168,7 +173,10 @@ secrets:
   - name: argocd-manager-token-*****
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
+> ↪️：
+>
+> - https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
 
 <br>
 

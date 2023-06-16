@@ -660,13 +660,16 @@ $ kubectl config use-context <ArgoCDにポーリングさせたいClusterのARN>
 : `argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行することにより、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
 
 ```bash
-$ argocd cluster add <ClusterのARN>
+# デフォルトでkube-systemに作成するため、nオプションは不要である
+$ argocd cluster add <デプロイ先のClusterのARN> -n kube-system
 
 INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system"
 INFO[0011] ClusterRole "argocd-manager-role" updated
 INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
 Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
+
+> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
 
 `【６】`
 

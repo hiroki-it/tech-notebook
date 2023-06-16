@@ -1665,7 +1665,7 @@ data:
 あるいは、application-controllerの起動時にパラメーターとして渡しても良い。
 
 ```bash
-$ argocd-application-controller --application-namespaces="*"
+$ argocd-application-controller --application-namespaces "*"
 ```
 
 > ↪️：

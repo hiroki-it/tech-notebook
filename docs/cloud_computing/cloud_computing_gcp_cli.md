@@ -30,13 +30,13 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 認証情報ファイルは使用後に削除した方が良いらしい。
 
 ```bash
-$ gcloud auth activate-service-account bar-serviceaccount \
+$ gcloud auth activate-service-account foo1-serviceaccount \
     --key-file foo1-credentials.json \
 
 $ gcloud auth list
-                  Credentialed Accounts
-ACTIVE  ACCOUNT
 
+Credentialed Accounts
+ACTIVE  ACCOUNT
         foo1-serviceaccount@foo-project.iam.gserviceaccount.com
 *       foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 ```
@@ -47,9 +47,9 @@ $ gcloud auth activate-service-account bar-serviceaccount \
     --project bar-project
 
 $ gcloud auth list
-                  Credentialed Accounts
-ACTIVE  ACCOUNT
 
+Credentialed Accounts
+ACTIVE  ACCOUNT
         foo1-serviceaccount@foo-project.iam.gserviceaccount.com
         foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 *       bar-serviceaccount@bar-project.iam.gserviceaccount.com
@@ -96,7 +96,6 @@ $ gcloud auth application-default login
 $ gcloud auth list
 
 Credentialed Accounts
-
 ACTIVE  ACCOUNT
         example1@gmail.com
 *       example2@gmail.com
