@@ -189,11 +189,53 @@ $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 
 <br>
 
-## 03. argocd-serverコマンド
+## 03. argocd-application-controllerコマンド
+
+### argocd-application-controllerコマンドとは
+
+application-controllerを操作するコマンドである。
+
+application-controllerのコンテナの起動コマンドとしても使われている。
+
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
+
+<br>
+
+### グローバルオプション
+
+#### ▼ --namespace
+
+```bash
+$ argocd-application-controller --namespace foo-namespace ...
+```
+
+<br>
+
+## 04. argocd-serverコマンド
+
+### argocd-serverコマンドとは
+
+argocd-serverを操作するコマンドである。
+
+argocd-serverのコンテナの起動コマンドとしても使われている。
+
+> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-server/
+
+<br>
+
+### グローバルオプション
+
+#### ▼ --namespace
+
+```bash
+$ argocd-server --namespace foo-namespace ...
+```
+
+<br>
 
 ### version
 
-ArgoCDのrepo-serverに内蔵されているプラグインのバージョンを取得する。
+ArgoCDのargocd-serverに内蔵されているプラグインのバージョンを取得する。
 
 ```bash
 $ argocd-server version
