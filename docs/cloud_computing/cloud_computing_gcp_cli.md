@@ -251,6 +251,8 @@ foo   False      example@gmail.com   foo-project
 bar   True       example@gmail.com   bar-project
 ```
 
+> ↪️：https://cloud.google.com/sdk/gcloud/reference/config/configurations/list
+
 #### ▼ rename
 
 現在、非アクティブになっているConfigurationの特定の名前を変更する。
@@ -280,6 +282,30 @@ bar       True       example@gmail.com   bar-project   asia-northeast1-a
 
 # Configurationを切り替える
 $ gcloud config configurations activate foo-foo
+```
+
+> ↪️：https://cloud.google.com/sdk/gcloud/reference/config/configurations/rename
+
+<br>
+
+### config list
+
+#### ▼ list
+
+現在の認証情報を取得する。
+
+**＊実行例＊**
+
+```bash
+$ gcloud config list
+
+[core]
+account = example@gmail.com
+disable_usage_reporting = True
+project = foo-project
+
+# 現在アクティブになっているConfiguration
+Your active configuration is: [foo]
 ```
 
 #### ▼ set
@@ -323,26 +349,6 @@ bar   True       example@gmail.com   bar-project   asia-northeast1-a
 > ↪️：https://qiita.com/sonots/items/906798c408132e26b41c
 
 <br>
-
-### config list
-
-#### ▼ list
-
-現在の認証情報を取得する。
-
-**＊実行例＊**
-
-```bash
-$ gcloud config list
-
-[core]
-account = example@gmail.com
-disable_usage_reporting = True
-project = foo-project
-
-# 現在アクティブになっているConfiguration
-Your active configuration is: [foo]
-```
 
 ### container clusters
 
