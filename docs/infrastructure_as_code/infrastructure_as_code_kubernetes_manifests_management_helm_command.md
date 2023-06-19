@@ -88,8 +88,9 @@ Helmの環境変数を表示する。
 ```bash
 $ helm env
 
-# Helmのバイナリファイルの場所を
+# Helmのバイナリファイルの場所
 HELM_BIN="/usr/local/bin/helm"
+# Helmのキャッシュファイルの場所
 HELM_CACHE_HOME="/.cache/helm"
 HELM_CONFIG_HOME="/.config/helm"
 HELM_DATA_HOME="/.local/share/helm"
@@ -104,6 +105,7 @@ HELM_MAX_HISTORY="10"
 HELM_NAMESPACE="default"
 # Helmのプラグインの場所
 HELM_PLUGINS="/helm-working-dir/plugins"
+# イメージ/チャートリポジトリの情報
 HELM_REGISTRY_CONFIG="/.config/helm/registry.json"
 HELM_REPOSITORY_CACHE="/.config/helm/repository"
 HELM_REPOSITORY_CONFIG="/.config/helm/repositories.yaml"
