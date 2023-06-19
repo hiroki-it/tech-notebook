@@ -308,6 +308,10 @@ project = foo-project
 Your active configuration is: [foo]
 ```
 
+<br>
+
+### config set
+
 #### ▼ set
 
 認証の特定の項目のデフォルト値を設定する。
