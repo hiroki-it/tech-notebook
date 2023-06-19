@@ -90,9 +90,9 @@ $ helm env
 
 # Helmのバイナリファイルの場所を
 HELM_BIN="/usr/local/bin/helm"
-HELM_CACHE_HOME="/Users/username/Library/Caches/helm"
-HELM_CONFIG_HOME="/Users/username/Library/Preferences/helm"
-HELM_DATA_HOME="/Users/username/Library/helm"
+HELM_CACHE_HOME="/.cache/helm"
+HELM_CONFIG_HOME="/.config/helm"
+HELM_DATA_HOME="/.local/share/helm"
 HELM_DEBUG="false"
 HELM_KUBEAPISERVER=""
 HELM_KUBEASGROUPS=""
@@ -103,13 +103,16 @@ HELM_KUBETOKEN=""
 HELM_MAX_HISTORY="10"
 HELM_NAMESPACE="default"
 # Helmのプラグインの場所
-HELM_PLUGINS="/Users/username/Library/helm/plugins"
-HELM_REGISTRY_CONFIG="/Users/username/Library/Preferences/helm/registry.json"
-HELM_REPOSITORY_CACHE="/Users/username/Library/Caches/helm/repository"
-HELM_REPOSITORY_CONFIG="/Users/username/Library/Preferences/helm/repositories.yaml"
+HELM_PLUGINS="/helm-working-dir/plugins"
+HELM_REGISTRY_CONFIG="/.config/helm/registry.json"
+HELM_REPOSITORY_CACHE="/.config/helm/repository"
+HELM_REPOSITORY_CONFIG="/.config/helm/repositories.yaml"
 ```
 
-> ↪️：https://stackoverflow.com/questions/62924278/where-are-helm-charts-stored-locally/66416122#66416122
+> ↪️：
+>
+> - https://helm.sh/docs/helm/helm/
+> - https://stackoverflow.com/questions/62924278/where-are-helm-charts-stored-locally/66416122#66416122
 
 ### get
 

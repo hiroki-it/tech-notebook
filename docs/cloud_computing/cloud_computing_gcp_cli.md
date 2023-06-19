@@ -152,6 +152,7 @@ ACTIVE  ACCOUNT
         foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 *       bar-serviceaccount@bar-project.iam.gserviceaccount.com
 
+
 # foo2-serviceaccount@foo-project.iam.gserviceaccount.com を削除する
 $ gcloud auth revoke foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 ```
@@ -223,13 +224,14 @@ Activated [foo].
 Configurationを新しく作成する。
 
 ```bash
+# barというConfigurationを新しく作成する
 $ gcloud config configurations create bar
 
 Created [bar].
 Activated [bar].
 
 
-# アクティブなConfigurationに新しいプロジェクトが設定されたことを確認できる。
+# barというConfigurationに新しい作成されたことを確認できる
 $ gcloud config configurations list
 
 NAME  IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
@@ -543,6 +545,8 @@ CloudLoggingからログを読み出す。
 ```bash
 $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
 ```
+
+> ↪️：https://cloud.google.com/sdk/gcloud/reference/logging/read
 
 ### GCS
 
