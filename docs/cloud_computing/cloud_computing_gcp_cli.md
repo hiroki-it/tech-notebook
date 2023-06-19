@@ -141,10 +141,19 @@ $ export GCP_AUTH_TOKEN=`gcloud auth print-access-token`
 
 #### ▼ revoke
 
-現在使用しているプリンシパルを削除する。
+Configurationに設定されているプリンシパルを削除する。
 
 ```bash
-$ gcloud auth revoke example@gmail.com
+$ gcloud auth list
+
+Credentialed Accounts
+ACTIVE  ACCOUNT
+        foo1-serviceaccount@foo-project.iam.gserviceaccount.com
+        foo2-serviceaccount@foo-project.iam.gserviceaccount.com
+*       bar-serviceaccount@bar-project.iam.gserviceaccount.com
+
+# foo2-serviceaccount@foo-project.iam.gserviceaccount.com を削除する
+$ gcloud auth revoke foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 ```
 
 <br>
