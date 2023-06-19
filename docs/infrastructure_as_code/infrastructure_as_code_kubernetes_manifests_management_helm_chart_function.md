@@ -38,7 +38,7 @@ description: アクション＠チャートの知見を記録しています。
 
 ### 条件内スコープの変数
 
-条件分岐で定義した変数は、`{{- end }}`までしか使用できない。
+条件分岐で定義した変数は、`{{- if }}`から`{{- end }}`までしか使用できない。
 
 ```yaml
 {{- if .Values.isProduction }}
@@ -54,6 +54,17 @@ description: アクション＠チャートの知見を記録しています。
   ... # 変数を使用する。
 
 {{- end }}
+```
+
+条件数が2`個しかない場合であれば、三項演算子の結果を変数に格納できる。
+
+そのため、`{{- if }}`から`{{- end }}`の外側でも変数を使用できる。
+
+```yaml
+# 実行環境はdevかprdしかないものとする。
+# .values.environmentが "prd" の場合はprintf関数でサブドメインを作成し、それではない場合は空文字とする
+{{- $subDomain := ternary (printf "%s." .values.environment ) "" .values.environment "prd" }}
+url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 ```
 
 > ↪️：
