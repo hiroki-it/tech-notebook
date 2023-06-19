@@ -193,52 +193,129 @@ The latest available version is: 400.0.0
 
 <br>
 
-### config
+### config configuration
 
-#### ▼ configとは
+#### ▼ config configurationとは
 
-認証時のデフォルト値を設定する。
+`gcloud`コマンドのConfigurationを操作する。
 
-#### ▼ configuration
+#### ▼ activate
 
-複数のプロジェクトがある場合に、これらを切り替える。
+複数のConfigurationがある場合に、これらを切り替える。
 
 ```bash
-$ gcloud config configurations activate foo-project
+$ gcloud config configurations activate foo
 
-Activated [foo-project].
+Activated [foo].
 ```
 
-全てのプロジェクトと、現在有効になっているプリンシパルとを一覧で取得する。
+#### ▼ create
+
+Configurationを新しく作成する。
+
+```bash
+$ gcloud config configurations create bar
+
+Created [bar].
+Activated [bar].
+
+
+# アクティブなConfigurationに新しいプロジェクトが設定されたことを確認できる。
+$ gcloud config configurations list
+
+NAME  IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo   False      example@gmail.com   foo-project
+bar   True
+```
+
+> ↪️：https://cloud.google.com/sdk/gcloud/reference/config/configurations/create
+
+#### ▼ list
+
+全てのConfigurationと、アクティブプリンシパルとを一覧で取得する。
 
 ```bash
 $ gcloud config configurations list
 
-NAME          IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
-foo-project   False      example@gmail.com   foo-project
-bar-project   True       example@gmail.com   bar-project
+NAME  IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo   False      example@gmail.com   foo-project
+bar   True       example@gmail.com   bar-project
 ```
 
-`gcloud`コマンド上でのプロジェクトを作成する。
+#### ▼ rename
 
-GoogleCloudにプロジェクトを作成するわけではない。
+現在、非アクティブになっているConfigurationの特定の名前を変更する。
 
 ```bash
-$ gcloud config configurations create bar-project
-
-Created [foo-project].
-Activated [foo-project].
+# barというConfigurationをアクティブにする
+$ gcloud config configurations activate bar
 
 
-# 新しいプロジェクトが追加されたことを確認できる。
+# fooというConfigurationが非アクティブになっていることを確認する
 $ gcloud config configurations list
 
-NAME          IS_ACTIVE  ACCOUNT             PROJECT      COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
-foo-project   False      example@gmail.com   foo-project
-bar-project   True
+NAME  IS_ACTIVE  ACCOUNT             PROJECT       COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo   False      example@gmail.com   foo-project   asia-northeast1-a
+bar   True       example@gmail.com   bar-project   asia-northeast1-a
+
+
+# fooというConfigurationの名前をfoo-fooに変更する
+$ gcloud config configurations rename foo --new-name=foo-foo
+
+
+# Configurationの名前が変わっている
+NAME      IS_ACTIVE  ACCOUNT             PROJECT       COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo-foo   False      example@gmail.com   foo-project   asia-northeast1-a
+bar       True       example@gmail.com   bar-project   asia-northeast1-a
+
+
+# Configurationを切り替える
+$ gcloud config configurations activate foo-foo
 ```
 
-> ↪️：https://note.com/shimakaze_soft/n/nb8f5f938f7e8
+#### ▼ set
+
+認証の特定の項目のデフォルト値を設定する。
+
+**＊実行例＊**
+
+```bash
+# Configurationを新しく作成する
+$ gcloud config configurations create foo
+
+
+# アクティブなConfiguration上にプリンシパルを設定する。
+$ gcloud config set core/account example@gmail.com
+
+Updated property [core/project].
+
+
+# アクティブなConfiguration上にプロジェクト名を設定する
+$ gcloud config set core/project foo-project
+
+Updated property [core/project].
+
+
+# アクティブなConfiguration上にリージョンを設定する。
+$ gcloud config set compute/region asia-northeast1-a
+
+WARNING: Property validation for compute/region was skipped.
+Updated property [compute/region].
+
+
+# アクティブなConfigurationに一通り値が設定されたことを確認する。
+$ gcloud config configurations list
+
+NAME  IS_ACTIVE  ACCOUNT             PROJECT       COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
+foo   False      example@gmail.com   foo-project   asia-northeast1-a
+bar   True       example@gmail.com   bar-project   asia-northeast1-a
+```
+
+> ↪️：https://qiita.com/sonots/items/906798c408132e26b41c
+
+<br>
+
+### config list
 
 #### ▼ list
 
@@ -254,53 +331,9 @@ account = example@gmail.com
 disable_usage_reporting = True
 project = foo-project
 
-Your active configuration is: [foo-project]
+# 現在アクティブになっているConfiguration
+Your active configuration is: [foo]
 ```
-
-#### ▼ set
-
-認証の特定の項目のデフォルト値を設定する。
-
-**＊実行例＊**
-
-```bash
-# プロジェクトを作成する
-$ gcloud config configurations create foo-project
-
-
-# プリンシパルを設定する。
-$ gcloud config set core/account example@gmail.com
-
-Updated property [core/project].
-
-
-# プロジェクト名を設定する
-$ gcloud config set core/project foo-project
-
-Updated property [core/project].
-
-
-# リージョンを設定する。
-$ gcloud config set compute/region asia-northeast1-a
-
-WARNING: Property validation for compute/region was skipped.
-Updated property [compute/region].
-
-
-# 新しいプロジェクトが追加されたことを確認できる。
-$ gcloud config configurations list
-
-NAME          IS_ACTIVE  ACCOUNT             PROJECT       COMPUTE_DEFAULT_ZONE  COMPUTE_DEFAULT_REGION
-foo-project   False      example@gmail.com   foo-project   asia-northeast1-a
-bar-project   True       example@gmail.com   bar-project   asia-northeast1-a
-```
-
-> ↪️：
->
-> - https://qiita.com/sonots/items/906798c408132e26b41c
-> - https://note.com/shimakaze_soft/n/nb8f5f938f7e8
-
-<br>
 
 ### container clusters
 
@@ -471,9 +504,9 @@ User Config Directory: /root/.config/gcloud]
 ```bash
 $ gcloud projects list
 
-PROJECT_ID   NAME      PROJECT_NUMBER
-foo-stg      foo-stg   *****
-foo-prd      foo-prd   *****
+PROJECT_ID         NAME          PROJECT_NUMBER
+foo-project-***    foo-project   *****
+bar-project-***    bar-project   *****
 ```
 
 > ↪️：https://cloud.google.com/sdk/gcloud/reference/projects/list
@@ -481,6 +514,16 @@ foo-prd      foo-prd   *****
 <br>
 
 ## 02. GCPリソース別のプラクティス
+
+### CloudLogging
+
+#### ▼ read
+
+CloudLoggingからログを読み出す。
+
+```bash
+$ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
+```
 
 ### GCS
 
@@ -502,7 +545,7 @@ $ gcloud storage cp --recursive gs://<GCS名>/<オブジェクトのファイル
 
 <br>
 
-### kms
+### KMS
 
 #### ▼ describeとは
 
