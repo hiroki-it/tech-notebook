@@ -1363,6 +1363,8 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 これにより、`ignore_changes`引数を定義したタイミング以降、実インフラと`tfstate`ファイルに差分があっても、`tfstate`ファイルの値が更新されなくなる。
 
+ただし、リソースによっては`ignore_changes`引数を使えないものがある (例：SSMパラメーターストア) 。
+
 **＊実装例＊**
 
 例として、ECSを示す。
@@ -1427,6 +1429,8 @@ resource "aws_foo" "foo" {
   }
 }
 ```
+
+> ↪️：https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-4
 
 <br>
 

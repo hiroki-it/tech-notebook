@@ -868,6 +868,8 @@ crash.*.log
 
 その上で、特定の方法 (例：SOPS、AWS Secrets Manager) で実際の値を管理し、これを`data`ブロックで参照する。
 
+ただし、リソースによっては`ignore_changes`引数を使えないものがある (例：SSMパラメーターストア) 。
+
 > ↪️：
 >
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
