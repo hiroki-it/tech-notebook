@@ -144,7 +144,7 @@ terraform {
 # @ルートモジュール
 
 terraform {
-  required_version = "0.13.5"
+  required_version = "1.3.0"
 
   required_providers {
     # awsプロバイダを定義
@@ -197,7 +197,7 @@ region = "ap-northeast-1"
 # @ルートモジュール
 
 terraform {
-  required_version = "0.13.5"
+  required_version = "1.3.0"
 
   required_providers {
     # gcpプロバイダを定義
@@ -220,6 +220,40 @@ provider "google" {
 }
 ```
 
+**＊実装例＊**
+
+PagerDutyの状態をAWS S3バケットで管理する場合。
+
+```terraform
+terraform {
+
+  backend "s3" {}
+
+  required_version = "1.3.0"
+
+  required_providers {
+
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.19.0"
+    }
+
+    pagerduty = {
+      source  = "pagerduty/pagerduty"
+      version = ">= 3.19.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "ap-northeast-1"
+}
+
+provider "pagerduty" {
+  token = "<PagerDutyのトークン>"
+}
+```
+
 #### ▼ マルチprovidersとは
 
 複数の`provider`ブロックを実装し、エイリアスを使用して、これらを動的に切り替える方法。
@@ -230,7 +264,7 @@ provider "google" {
 # @ルートモジュール
 
 terraform {
-  required_version = "0.13.5"
+  required_version = "1.3.0"
 
   required_providers {
     aws = {

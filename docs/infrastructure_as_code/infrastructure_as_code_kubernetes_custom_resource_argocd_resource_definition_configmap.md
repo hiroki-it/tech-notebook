@@ -57,6 +57,22 @@ data:
 
 > ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
 
+#### ▼ 親Application名の重複
+
+単一のClusterでNamespaceスコープのArgoCDを構築している時、親Applicationを`default`というAppProjectに配置すると、この問題が起こる可能性がある。
+
+`default`のAppProjectに所属したApplicationは、Namespaceスコープのapplication-controllerであって、他のNamespaceも見てしまうようである。
+
+親Application名が重複している場合、たとえNamespaceが異なっていても、Namespace間で親Applicationを共有してしまう。
+
+ちなみに、ClusterスコープのArgoCDに限り、`spec.sourceNamespaces`キーを使用して、この重複を許可できる。
+
+> ↪️：
+>
+> - https://github.com/argoproj/argo-cd/issues/9420
+> - https://github.com/argoproj/argo-cd/issues/2352
+> - https://github.com/argoproj/argo-cd/issues/2785
+
 <br>
 
 ### globalProjects

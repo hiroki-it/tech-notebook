@@ -556,6 +556,27 @@ $ git log
 
 <br>
 
+### diff
+
+#### ▼ --quiet
+
+結果に応じた終了コードをを出力する。
+
+```bash
+git diff --quiet origin/main
+
+case $? in
+  0) echo "N差分なし" ;;
+  1) echo "差分あり" ;;
+  128) echo "パラーメーターが誤っている" ;;
+  *) echo "予期せぬエラー" ;;
+esac
+```
+
+> ↪️：https://stackoverflow.com/a/74817582
+
+<br>
+
 ### stash
 
 #### ▼ stashとは

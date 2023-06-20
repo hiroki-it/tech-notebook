@@ -267,7 +267,7 @@ plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 # @ルートモジュール
 
 terraform {
-  required_version = "0.13.5"
+  required_version = "1.3.0"
 
   required_providers {
     aws = {
@@ -320,7 +320,7 @@ aws_secret_access_key=*****
 # @ルートモジュール
 
 terraform {
-  required_version = "0.13.5"
+  required_version = "1.3.0"
 
   required_providers {
 
@@ -383,7 +383,7 @@ CircleCIのような、一時的に環境変数が必要になるような状況
 # @ルートモジュール
 
 terraform {
-  required_version = "0.13.5"
+  required_version = "1.3.0"
 
   required_providers {
     aws = {

@@ -31,7 +31,8 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 
 ```bash
 $ gcloud auth activate-service-account foo1-serviceaccount \
-    --key-file foo1-credentials.json \
+    --key-file foo1-credentials.json
+
 
 $ gcloud auth list
 
@@ -45,6 +46,7 @@ ACTIVE  ACCOUNT
 $ gcloud auth activate-service-account bar-serviceaccount \
     --key-file bar-credentials.json \
     --project bar-project
+
 
 $ gcloud auth list
 

@@ -2340,7 +2340,7 @@ aws dynamodb create-table\
 terraform {
   backend "local" {}
 
-  required_version = ">= 1.3.0"
+  required_version = "1.3.0"
 
   required_providers {
     aws = {
