@@ -564,6 +564,12 @@ session.gc_divisor = 1
 
 ## 06. フォワード/リバースプロキシサーバー
 
+### フォワード/リバースプロキシサーバーとは
+
+クライアントとアプリケーションの間にあり、代理ルーティングやキャッシュ作成を担う。
+
+<br>
+
 ### 処理
 
 #### ▼ 代理ルーティング
@@ -601,6 +607,14 @@ session.gc_divisor = 1
 #### ▼ クラウド上の場合
 
 クラウドの場合も、仮想環境が作成されるのみで、配置場所は同じである。
+
+- Akamai
+- AWS CloudFront
+- CDNetworks
+- Cloudflare
+- Fastly
+
+> ↪️：https://www.underworks.co.jp/dmj/2023/01/23/content-delivery-network-service/
 
 <br>
 
