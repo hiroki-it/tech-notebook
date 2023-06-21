@@ -126,7 +126,7 @@ nav:
   - 🌳 システム:
       - system/index.md
       - システム: system/system.md
-      - システム品質特性: system/system_quality_attributes.md
+      - アーキテクチャ特性: system/system_architecture_characteristics.md
 
   - 🧬 ソフトウェア:
       - software/index.md
