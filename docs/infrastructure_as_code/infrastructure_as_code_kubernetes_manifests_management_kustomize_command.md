@@ -39,12 +39,28 @@ $ kubectl apply -k kustomization.yaml
 
 > ↪️：https://qiita.com/os1ma/items/076a57b25e74e54476ba#%E7%B5%B1%E5%90%88%E5%89%8D%E3%81%AE-kustomize-%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B
 
-#### ▼ enable-alpha-plugins
+#### ▼ --enable-alpha-plugins
 
 プラグインを使用して、`kustomize build`コマンドを実行する。
 
 ```bash
 $ kustomize build --enable-alpha-plugins ./kustomize/overlay
+```
+
+#### ▼ --enable-helm
+
+Kustomizeを使用して、Helmを実行できるようにする。
+
+```bash
+$ kustomize build --enable-helm ./chart
+```
+
+#### ▼ --output
+
+作成したマニフェストをファイルとして出力する。
+
+```bash
+$ kustomize build --output ./tmp ./kustomize/overlay
 ```
 
 <br>

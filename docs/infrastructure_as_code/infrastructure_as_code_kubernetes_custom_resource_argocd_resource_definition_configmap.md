@@ -57,13 +57,13 @@ data:
 
 > ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
 
-#### ▼ 親Application名の重複
+#### ▼ RootのApplication名の重複
 
-単一のClusterでNamespaceスコープのArgoCDを構築している時、親Applicationを`default`というAppProjectに配置すると、この問題が起こる可能性がある。
+単一のClusterでNamespaceスコープのArgoCDを構築している時、RootのApplicationを`default`というAppProjectに配置すると、この問題が起こる可能性がある。
 
 `default`のAppProjectに所属したApplicationは、Namespaceスコープのapplication-controllerであって、他のNamespaceも見てしまうようである。
 
-親Application名が重複している場合、たとえNamespaceが異なっていても、Namespace間で親Applicationを共有してしまう。
+RootのApplication名が重複している場合、たとえNamespaceが異なっていても、Namespace間でRootのApplicationを共有してしまう。
 
 ちなみに、ClusterスコープのArgoCDに限り、`spec.sourceNamespaces`キーを使用して、この重複を許可できる。
 
@@ -159,6 +159,8 @@ data:
 #### ▼ kustomize.path.<バージョン>とは
 
 デフォルトのKustomizeのバージョン以外のものも使用したい場合に、そののバージョンと、バイナリファイルの置き場所を設定する。
+
+ArgoCDで一つのバージョンのKustomizeしか使用しない場合、`kustomize.path.<バージョン>`で`/usr/local/bin/kustomize`を指定する。
 
 ```yaml
 apiVersion: v1

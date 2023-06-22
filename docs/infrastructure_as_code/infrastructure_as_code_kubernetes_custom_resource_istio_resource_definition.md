@@ -340,8 +340,6 @@ spec:
 
 これにより、Envoyは特定のServiceからのルーティングのみ受信するようになる。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
-
 **＊実装例＊**
 
 ```yaml
@@ -353,6 +351,8 @@ metadata:
 spec:
   host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い。
 ```
+
+> ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 
 <br>
 

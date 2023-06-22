@@ -58,13 +58,7 @@ spec:
         - -c
       args:
         - |
-          apk --update add wget
-          ARGOCD_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-helm/argo-cd-<バージョン>/charts/argo-cd/Chart.yaml | grep appVersion | sed -e 's/^[^: ]*: //')
-          HELM_RECOMMENDED_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-cd/"${ARGOCD_VERSION}"/hack/tool-versions.sh | grep helm3_version | sed -e 's/^[^=]*=//')
-          wget -q https://get.helm.sh/helm-v"${HELM_RECOMMENDED_VERSION}"-linux-amd64.tar.gz
-          tar -xvf helm-<バージョン>-linux-amd64.tar.gz
-          cp ./linux-amd64/helm /custom-tools/
-          chmod +x /custom-tools
+          # ...
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
@@ -76,29 +70,35 @@ spec:
         - -c
       args:
         - |
-          apk --update add wget
-          wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
-          tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
-          cp helmfile /custom-tools/
-          chmod +x /custom-tools
+          # ...
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
-    - name: sops-installer
+    # helm-secretsプラグイン
+    - name: helm-secrets-installer
       image: alpine:latest
       command:
         - /bin/sh
         - -c
       args:
         - |
-          apk --update add wget
-          wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
-          chmod +x /custom-tools/sops
+          # ...
       volumeMounts:
-        - name: custom-tools
-          mountPath: /custom-tools
+        - name: helm-working-dir
+          mountPath: /helm-working-dir/plugins
+    # Kustomize
+    - name: kustomize-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          #
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
     # KSOPS
-    # https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
     - name: ksops-installer
       image: alpine:latest
       command:
@@ -111,8 +111,8 @@ spec:
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
-    # helm-secretsプラグイン
-    - name: helm-secrets-installer
+    # SOPS
+    - name: sops-installer
       image: alpine:latest
       command:
         - /bin/sh
@@ -120,13 +120,11 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
-          tar -xvf helm-secrets.tar.gz
-          cp -R helm-secrets /helm-working-dir/plugins/
-          chmod +x /helm-working-dir/plugins/
+          wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
+          chmod +x /custom-tools/sops
       volumeMounts:
-        - name: helm-working-dir
-          mountPath: /helm-working-dir/plugins
+        - name: custom-tools
+          mountPath: /custom-tools
 
   # 共有ボリューム
   volumes:
@@ -226,7 +224,7 @@ spec:
     # ConfigManagementPluginに定義した処理を実行するサイドカー
     # argocd-cmp-serverコマンドは "plugin.yaml" の名前しか指定できないため、ConfigManagementPluginごとにサイドカーを作成する
     - name: foo-plugin-cmp-server
-      image: ububtu:latest
+      image: ubuntu:latest
       command:
         # エントリポイントは固定である
         - /var/run/argocd/argocd-cmp-server
@@ -441,7 +439,67 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 <br>
 
-## 02. Helmfileとの連携
+## 02. Helmとの連携
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server-pod
+spec:
+  containers:
+    - name: helm-plugin-cmp-server
+      image: ubuntu:latest
+      command:
+        - /var/run/argocd/argocd-cmp-server
+      env:
+        - name: HELM_PLUGINS
+          value: /helm-working-dir/plugins
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+      volumeMounts:
+        # helmfileのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/bin
+          # Podの共有ボリュームを介して、コンテナ内でHelmを使用する。
+          name: custom-tools
+          subPath: helm
+
+
+      ...
+
+
+  initContainers:
+    # Helm
+    - name: helm-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      # InitContainerにHelmfileをインストールする。
+      args:
+        - |
+          apk --update add wget
+          ARGOCD_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-helm/argo-cd-<バージョン>/charts/argo-cd/Chart.yaml | grep appVersion | sed -e 's/^[^: ]*: //')
+          HELM_RECOMMENDED_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-cd/"${ARGOCD_VERSION}"/hack/tool-versions.sh | grep helm3_version | sed -e 's/^[^=]*=//')
+          wget -q https://get.helm.sh/helm-v"${HELM_RECOMMENDED_VERSION}"-linux-amd64.tar.gz
+          tar -xvf helm-<バージョン>-linux-amd64.tar.gz
+          cp ./linux-amd64/helm /custom-tools/
+          chmod +x /custom-tools
+      volumeMounts:
+        # Podの共有ボリュームにHelmfileを配置する。
+        - name: custom-tools
+          mountPath: /custom-tools
+
+  # Podの共有ボリューム
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+```
+
+<br>
+
+## 03. Helmfileとの連携
 
 ### セットアップ
 
@@ -465,7 +523,7 @@ metadata:
 spec:
   containers:
     - name: helmfile-plugin-cmp-server
-      image: ububtu:latest
+      image: ubuntu:latest
       command:
         - /var/run/argocd/argocd-cmp-server
       env:
@@ -476,14 +534,16 @@ spec:
         runAsUser: 999
       volumeMounts:
         # helmfileのバイナリファイルを置くパスを指定する。
-        - mountPath: /usr/local/bin/helmfile
+        - mountPath: /usr/local/bin
           # Podの共有ボリュームを介して、コンテナ内でHelmfileを使用する。
           name: custom-tools
+          subPath: helmfile
 
       ...
 
 
   initContainers:
+    # Helmfile
     - name: helmfile-installer
       image: alpine:latest
       command:
@@ -494,7 +554,7 @@ spec:
         - |
           apk --update add wget
           wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
-          tar -xvf helmfile_0.152.0_linux_amd64.tar.gz
+          tar -xvf helmfile_<バージョン>_linux_amd64.tar.gz
           cp helmfile /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
@@ -584,7 +644,7 @@ spec:
 
 <br>
 
-## 03. helmプラグインとの連携
+## 04. helmプラグインとの連携
 
 ### セットアップ
 
@@ -604,7 +664,7 @@ metadata:
 spec:
   containers:
     - name: helm-plugin-cmp-server
-      image: ububtu:latest
+      image: ubuntu:latest
       command:
         - /var/run/argocd/argocd-cmp-server
       env:
@@ -620,11 +680,12 @@ spec:
           mountPath: /helm-working-dir/plugins
         # SOPSのバイナリファイルを置くパスを指定する。
         - name: custom-tools
-          mountPath: /usr/local/bin/sops
+          mountPath: /usr/local/bin
 
       ...
 
   initContainers:
+    # SOPS
     - name: sops-installer
       image: alpine:latest
       command:
@@ -652,7 +713,8 @@ spec:
           wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
           tar -xvf helm-secrets.tar.gz
           cp -R helm-secrets /helm-working-dir/plugins/
-          chmod +x /helm-working-dir/plugins/
+          chown -R 999 /helm-working-dir/plugins/
+          chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
         # Podの共有ボリュームにhelmプラグインを配置する。
         - name: helm-working-dir
@@ -699,7 +761,7 @@ spec:
 
 <br>
 
-## 03-02. `.spec.plugin`キー配下で使用する場合
+## 05-02. `.spec.plugin`キー配下で使用する場合
 
 ### セットアップ
 
@@ -826,7 +888,7 @@ spec:
 
 <br>
 
-## 03-03. `.spec.source.helm`キー配下で使用する場合
+## 05-03. `.spec.source.helm`キー配下で使用する場合
 
 ### クラウドプロバイダー上の暗号化キーを使用する場合
 
@@ -884,7 +946,108 @@ spec:
 
 <br>
 
-## 04. KSOPS
+## 06. Kustomize
+
+### セットアップ
+
+#### ▼ Kustomizeのインストール
+
+Kustomizeを使用できるように、Kustomizeをインストールする。
+
+ただし、cmp-serverではなくrepo-serverにVolumeMountする。
+
+**＊実装例＊**
+
+ここでは軽量のInitContainerを定義し、起動時にKustomizeをインストールする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server-pod
+spec:
+  containers:
+    - name: argocd-repo-server
+      image: quay.io/argoproj/argocd:latest
+      volumeMounts:
+        # Kustomizeのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/bin/kustomize
+          # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
+          name: custom-tools
+          subPath: kustomize
+
+      ...
+
+
+  initContainers:
+    # Kustomize
+    # ArgoCDにデフォルトでインストールされているバージョン以外は、InitContainerでインストールする必要がある
+    - name: kustomize-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      # InitContainerにKustomizeをインストールする。
+      args:
+        - |
+          apk --update add wget
+          wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F<バージョン>/kustomize_<バージョン>_linux_amd64.tar.gz
+          tar -xvf kustomize_<バージョン>_linux_amd64.tar.gz
+          cp kustomize /custom-tools/
+          chmod +x /custom-tools/kustomize
+      volumeMounts:
+        # Podの共有ボリュームにHelmfileを配置する。
+        - name: custom-tools
+          mountPath: /custom-tools
+
+  # Podの共有ボリューム
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+```
+
+#### ▼ オプションの有効化
+
+Kustomizeを使用するために、Kustomizeの起動時にオプションが必要である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  kustomize.path.<バージョン>: /usr/local/bin/kustomize
+```
+
+> ↪️：https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+
+<br>
+
+### プラグインの使用
+
+Applicationの`.spec.kustomize`キーで、使用するKustomizeのバージョンを指定する。
+
+各Applicationで異なるバージョンのKustomizeを指定できる。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+  targetRevision: main
+  path: .
+  kustomize:
+    version: v1.0.0
+```
+
+<br>
+
+## 07. KSOPS
 
 ### セットアップ
 
@@ -898,7 +1061,7 @@ KSOPSはコンテナイメージがあるため、軽量のInitContainerを用�
 
 **＊実装例＊**
 
-ここでは軽量のInitContainerを定義し、起動時にhelm-secretsをインストールする。
+ここでは軽量のInitContainerを定義し、起動時にKSOPSをインストールする。
 
 ```yaml
 apiVersion: v1
@@ -907,29 +1070,28 @@ metadata:
   name: argocd-repo-server-pod
 spec:
   containers:
-    - name: kustomize-plugin-cmp-server
-      image: ububtu:latest
-      command:
-        - /var/run/argocd/argocd-cmp-server
+    - name: argocd-repo-server
+      image: quay.io/argoproj/argocd:latest
       env:
-        - name: HELM_PLUGINS
-          value: /helm-working-dir/plugins
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 999
+        - name: XDG_CONFIG_HOME
+          value: /.config
       volumeMounts:
+        # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
+        - name: custom-tools
         # Kustomizeのバイナリファイルを置くパスを指定する。
-        - mountPath: /usr/local/bin/kustomize
-          # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
-          name: custom-tools
-        # KSOPSのバイナリファイルを置くパスを指定する。
-        - mountPath: /usr/local/bin/ksops
-          # Podの共有ボリュームを介して、コンテナ内でKSOPSを使用する。
-          name: custom-tools
+          mountPath: /usr/local/bin/kustomize
+          subPath: kustomize
+        # ArgoCDは、repo-server上でKustomizeを実行するための専用オプションが多く持っている
+        # これを活かすためにKSOPSはサイドカーではなくrepo-serverで実行する
+        - name: custom-tools
+          subPath: ksops
+          mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
 
       ...
 
   initContainers:
+    # KSOPS
+    # https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
     - name: ksops-installer
       # Kustomizeのバージョンに合わせて、インストールするべきバージョンを決める
       # https://github.com/viaduct-ai/kustomize-sops/blob/master/scripts/install-kustomize.sh
@@ -965,7 +1127,7 @@ spec:
 
 KSOPSを使用するために、Kustomizeの起動時にオプションが必要である。
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -974,7 +1136,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   kustomize.buildOptions: --enable-alpha-plugins --enable-exec
-  kustomize.path.<バージョン>: /custom-tools/kustomize_<バージョン>
+  kustomize.path.<バージョン>: /usr/local/bin/kustomize
 ```
 
 > ↪️：https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
@@ -1003,7 +1165,7 @@ spec:
 
 <br>
 
-## 05. Vaultとの連携
+## 08. Vaultとの連携
 
 ### セットアップ
 

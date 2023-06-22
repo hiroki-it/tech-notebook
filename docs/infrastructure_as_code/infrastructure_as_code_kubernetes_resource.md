@@ -1123,7 +1123,7 @@ $ docker inspect <コンテナID>
 
 #### ▼ EmptyDir
 
-Podの既存のストレージ上にVolumeを作成し、コンテナにボリュームマウントする。
+Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<pod-uid>/volumes/kubernetes.io~empty-dir/`ディレクトリ) を作成し、コンテナにボリュームマウントする。
 
 同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。
 
