@@ -668,6 +668,12 @@ spec:
       command:
         - /var/run/argocd/argocd-cmp-server
       env:
+        - name: HELM_CACHE_HOME
+          value: /helm-working-dir
+        - name: HELM_CONFIG_HOME
+          value: /helm-working-dir
+        - name: HELM_DATA_HOME
+          value: /helm-working-dir
         - name: HELM_PLUGINS
           value: /helm-working-dir/plugins
       securityContext:

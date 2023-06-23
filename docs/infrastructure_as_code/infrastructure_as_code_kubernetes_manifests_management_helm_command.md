@@ -90,6 +90,8 @@ $ helm env
 
 # Helmのバイナリファイルの場所
 HELM_BIN="/usr/local/bin/helm"
+# CRDのパフォーマンス制限
+HELM_BURST_LIMIT="100"
 # Helmのキャッシュファイルの場所
 HELM_CACHE_HOME="/.cache/helm"
 HELM_CONFIG_HOME="/.config/helm"
@@ -100,11 +102,12 @@ HELM_KUBEASGROUPS=""
 HELM_KUBEASUSER=""
 HELM_KUBECAFILE=""
 HELM_KUBECONTEXT=""
+HELM_KUBEINSECURE_SKIP_TLS_VERIFY="false"
 HELM_KUBETOKEN=""
 HELM_MAX_HISTORY="10"
 HELM_NAMESPACE="default"
 # Helmのプラグインの場所
-HELM_PLUGINS="/helm-working-dir/plugins"
+HELM_PLUGINS="/.config/plugins"
 # イメージ/チャートリポジトリの情報
 HELM_REGISTRY_CONFIG="/.config/helm/registry.json"
 HELM_REPOSITORY_CACHE="/.config/helm/repository"
