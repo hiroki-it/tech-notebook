@@ -185,7 +185,7 @@ PHPにおける`composer.lock`ファイルに相当する。
 
 以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html
 
 <br>
 

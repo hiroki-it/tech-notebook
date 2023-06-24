@@ -398,6 +398,8 @@ Kubernetesの通常の仕組みであれば、ConfigMapの数だけVolumeMount�
 
 これに関して、ダッシュボードのConfigMapの数だけVolumeMountを実行してくれるサイドカーが開発されている。
 
+なお、ダッシュボードが増えるほどConfigMapのVolumeMountが必要になるため、Podで必要なストレージの容量が増えていく。
+
 ```yaml
 apiVersion: v1
 kind: Pod

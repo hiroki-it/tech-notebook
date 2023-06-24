@@ -564,7 +564,7 @@ metadata:
   labels:
     app.kubernetes.io/app: foo
 spec:
-  retention: 31d
+  retention: 14d
 ```
 
 > ↪️：https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282

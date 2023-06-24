@@ -97,7 +97,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 
 以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html
 
 #### ▼ CORSの有効化
 

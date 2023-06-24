@@ -199,6 +199,8 @@ $ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-
 
 argo-reposerverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
 
+ArgoCD公式の方針で、デフォルトで組み込まれているツール (Helmなど) のプラグイン (helm-secrets、Helmfile、など) を使う場合は、サイドカーでこのプラグインのバイナリを持たないといけない。
+
 このとき、事前準備として`argocd`コマンドをコピーするためのInitContainerが必要である。
 
 サイドカーで使用するベースイメージがArgoCDのコンテナイメージではなく、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) の場合、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。
@@ -341,6 +343,14 @@ Flags:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
+
+ArgoCDの公式の仕様で、サイドカーは単一のプラグインしか実行できない。
+
+そのため、プラグインごとにサイドカーを作成する必要がある。
+
+もし、部分的に重複するプラグイン (例：純粋なhelm-secrets、helm-secretsを使うHelmfile) をArgoCDが使用する場合、それぞれのサイドカーにバイナリ (例：一方にはhelm-secrets、もう一方にはHelmfileとhelm-secrets) を用意する必要がある。
+
+> ↪️：https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514
 
 #### ▼ argocd-cmp-cmでマニフェスト作成時の追加処理を定義
 

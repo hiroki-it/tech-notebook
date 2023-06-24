@@ -171,7 +171,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 #### ▼ SLOの遵守
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_site_reliability_engineering.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_service_level.html
 
 <br>
 

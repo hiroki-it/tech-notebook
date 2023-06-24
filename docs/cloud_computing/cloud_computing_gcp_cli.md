@@ -25,13 +25,12 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 
 #### ▼ activate-service-account
 
-指定したServiceAccountでログインする。
+認証情報ファイルを使用して、ServiceAccountにログインする。
 
 認証情報ファイルは使用後に削除した方が良いらしい。
 
 ```bash
-$ gcloud auth activate-service-account foo1-serviceaccount \
-    --key-file foo1-credentials.json
+$ gcloud auth activate-service-account --key-file foo1-credentials.json
 
 
 $ gcloud auth list
@@ -43,7 +42,7 @@ ACTIVE  ACCOUNT
 ```
 
 ```bash
-$ gcloud auth activate-service-account bar-serviceaccount \
+$ gcloud auth activate-service-account \
     --key-file bar-credentials.json \
     --project bar-project
 
@@ -296,7 +295,7 @@ $ gcloud config configurations activate foo-foo
 
 #### ▼ list
 
-現在の認証情報を取得する。
+現在のログインしているプリンシパルの認証情報を取得する。
 
 **＊実行例＊**
 
