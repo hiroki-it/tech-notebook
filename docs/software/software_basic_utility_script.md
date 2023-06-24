@@ -114,6 +114,40 @@ case "$ENV" in
 esac
 ```
 
+#### ▼ 条件
+
+```bash
+#!/bin/bash
+
+if [ $VAR = "" ]; then
+  echo "空文字です";
+else
+  echo "空文字ではありません";
+fi
+```
+
+```bash
+#!/bin/bash
+
+if [ -z "$VAR" ]; then
+  echo "変数なし or 空文字です";
+else
+  echo "変数が設定されています";
+fi
+```
+
+```bash
+#!/bin/bash
+
+if [ -n "$VAR" ]; then
+  echo "NULLです";
+else
+  echo "NULLではありません";
+fi
+```
+
+> ↪️：https://stackoverflow.com/a/13864829
+
 <br>
 
 ### 実行方法

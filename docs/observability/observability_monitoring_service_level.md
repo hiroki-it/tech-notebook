@@ -64,7 +64,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 > ↪️：
 >
 > - https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos
-> - https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
+> - https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
 
 <br>
 

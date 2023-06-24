@@ -558,15 +558,29 @@ $ git log
 
 ### diff
 
-#### ▼ --quiet
-
 結果に応じた終了コードをを出力する。
 
-```bash
-git diff --quiet origin/main
+空文字を`false`として判定できるようにする。
 
-case $? in
-  0) echo "N差分なし" ;;
+```bash
+DIFF=$(git diff origin/main)
+
+# 差分があるかどうかを検証する
+if [ $DIFF = "" ] ; then
+  echo "差分なし"
+else
+  echo "差分あり"
+fi
+```
+
+> ↪️：https://stackoverflow.com/a/74817537
+
+```bash
+DIFF=$(git diff origin/main --quiet)
+
+# 差分があるかどうかを検証する
+case $DIFF in
+  0) echo "差分なし" ;;
   1) echo "差分あり" ;;
   128) echo "パラーメーターが誤っている" ;;
   *) echo "予期せぬエラー" ;;
