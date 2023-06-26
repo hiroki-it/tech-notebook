@@ -13,7 +13,43 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 
 <br>
 
-## 01. GCP CLIのセットアップ
+## 01. 設定ファイル
+
+### Configuration
+
+現在の認証情報を設定する。
+
+```bash
+$ cat /root/.config/gcloud/configurations/config_<プロジェクト名>
+
+[core]
+account = example@gmail.com
+project = foo-project
+```
+
+<br>
+
+### ログファイル
+
+`gcloud`コマンドのログを出力する。
+
+`gcloud`コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。
+
+```bash
+$ cat /root/.config/gcloud/logs/<タイムスタンプ>/<タイムスタンプ>.log
+
+2023-06-26 06:23:43,998 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2023-06-26 06:23:44,000 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'activate_service_account']
+2023-06-26 06:23:44,003 DEBUG    root            Running [gcloud.auth.activate-service-account] with arguments: [--key-file: "foo-credential.json", ACCOUNT: "foo-serviceaccount@foo-project.iam.gserviceaccount.com"]
+2023-06-26 06:23:44,003 DEBUG    root            'str' object has no attribute 'get'
+
+# エラーがあれば
+Traceback (most recent call last):
+```
+
+<br>
+
+## 02. GCP CLIのセットアップ
 
 ### auth
 
@@ -30,7 +66,8 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 認証情報ファイルは使用後に削除した方が良いらしい。
 
 ```bash
-$ gcloud auth activate-service-account --key-file foo1-credentials.json
+$ gcloud auth activate-service-account foo-service-account@foo-project.iam.gserviceaccount.com \
+    --key-file foo1-credentials.json
 
 
 $ gcloud auth list
@@ -42,7 +79,7 @@ ACTIVE  ACCOUNT
 ```
 
 ```bash
-$ gcloud auth activate-service-account \
+$ gcloud auth activate-service-account bar-service-account@bar-project.iam.gserviceaccount.com \
     --key-file bar-credentials.json \
     --project bar-project
 
@@ -215,6 +252,7 @@ The latest available version is: 400.0.0
 複数のConfigurationがある場合に、これらを切り替える。
 
 ```bash
+# fooというConfigurationに切り替える
 $ gcloud config configurations activate foo
 
 Activated [foo].
@@ -535,7 +573,7 @@ bar-project-***    bar-project   *****
 
 <br>
 
-## 02. GCPリソース別のプラクティス
+## 03. GCPリソース別のプラクティス
 
 ### CloudLogging
 

@@ -119,7 +119,7 @@ esac
 ```bash
 #!/bin/bash
 
-if [ $VAR = "" ]; then
+if [ $VAR="" ]; then
   echo "空文字です";
 else
   echo "空文字ではありません";

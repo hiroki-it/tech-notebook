@@ -21,7 +21,7 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 永続化するためのDBを持っておらず、ステートレスである。
 
-![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_architecture.png)
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/argocd/argocd_architecture.png)
 
 > ↪️：
 >

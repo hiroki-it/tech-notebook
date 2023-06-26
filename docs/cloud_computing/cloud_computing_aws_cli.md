@@ -88,7 +88,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 <br>
 
-## 01-02. 設定ファイル、環境変数
+## 01-02. 設定ファイル
 
 ### `~/.aws/confidentials`ファイル
 
@@ -200,9 +200,9 @@ source_profile = default
 
 <br>
 
-### 環境変数
+## 01-03. 環境変数
 
-#### ▼ AWS_ACCESS_KEY_ID
+### AWS_ACCESS_KEY_ID
 
 現在のターミナルで使用するアクセスキーIDを設定する。
 
@@ -210,7 +210,9 @@ source_profile = default
 $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 ```
 
-#### ▼ AWS_DEFAULT_PROFILE
+<br>
+
+### AWS_DEFAULT_PROFILE
 
 現在のターミナルで使用するプロファイルを設定する。
 
@@ -222,7 +224,9 @@ $ export AWS_DEFAULT_PROFILE=default
 
 > ↪️：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
-#### ▼ AWS_DEFAULT_REGION
+<br>
+
+### AWS_DEFAULT_REGION
 
 現在のターミナルで使用するリージョンを設定する。
 
@@ -232,7 +236,9 @@ $ export AWS_DEFAULT_PROFILE=default
 $ export AWS_DEFAULT_REGION=ap-northeast-1
 ```
 
-#### ▼ AWS_PROFILE
+<br>
+
+### AWS_PROFILE
 
 現在のターミナルで使用するプロファイルを設定する。
 
@@ -242,7 +248,9 @@ $ export AWS_PROFILE=foo-profile
 
 > ↪️：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
-#### ▼ AWS_SECRET_ACCESS_KEY
+<br>
+
+### AWS_SECRET_ACCESS_KEY
 
 現在のターミナルで使用するシークレットアクセスキーを設定する。
 
@@ -250,7 +258,9 @@ $ export AWS_PROFILE=foo-profile
 $ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 ```
 
-#### ▼ AWS_SESSION_TOKEN
+<br>
+
+### AWS_SESSION_TOKEN
 
 現在のターミナルで使用するセッショントークンを設定する。
 
