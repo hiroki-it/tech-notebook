@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Redshift＠AWS
-description: Redshift＠AWSの知見を記録しています。
+title: 【IT技術の知見】Redshift＠AWSリソース
+description: Redshift＠AWSリソースの知見を記録しています。
 ---
 
-# Redshift＠AWS
+# Redshift＠AWSリソース
 
 ## はじめに
 

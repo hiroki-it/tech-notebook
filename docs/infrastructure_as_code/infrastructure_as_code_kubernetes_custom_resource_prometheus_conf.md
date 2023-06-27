@@ -169,7 +169,7 @@ IPアドレスやポート番号が動的に変化する対象を監視する。
 
 ```yaml
 scrape_configs:
-  # AWS EC2をサービスディスカバリーで監視する。
+  # AWS EC2をサービスディスカバリーで監視する
   - job_name: aws-ec2
     ec2_sd_configs:
       - port: 9100
@@ -177,22 +177,35 @@ scrape_configs:
           - name: tag:Name
             values:
               - foo-instance
-  # Node exporterの稼働するサーバーをサービスディスカバリーで監視する。
-  - job_name: node-exporter
+  # https://prometheus.io/docs/prometheus/latest/configuration/configuration/#endpoints
+  - job_name: foo-endpoints
     kubernetes_sd_configs:
-      # Service配下のPodを対象とする。
-      # ingress、node、pod (Serviceに関連づけない) 、service、がある。
+      # Service配下のEndpointを監視する
       - role: endpoints
-      # 特定のPodのみを監視対象とする。
+      # ラベルでフィルタリングする
       - source_labels:
           - __meta_kubernetes_namespace
-          - __meta_kubernetes_pod_container_port_number
-        regex: foo-namespace;9100
+          - __meta_kubernetes_endpoint_port_name
+        # ラベル値
+        regex: foo-namespace;http-foo
+        action: keep
+  # https://prometheus.io/docs/prometheus/latest/configuration/configuration/#endpointslice
+  - job_name: bar-endpointslice
+    kubernetes_sd_configs:
+      # Service配下のEndpointSliceを監視する
+      - role: endpointslice
+      # ラベルでフィルタリングする
+      - source_labels:
+          - __meta_kubernetes_namespace
+          - __meta_kubernetes_endpoint_port_name
+        # ラベル値
+        regex: bar-namespace;http-bar
         action: keep
 ```
 
 > ↪️：
 >
+> - https://changineer.info/server/monitoring/monitoring_prometheus_discovery_kubernetes.html
 > - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
 > - https://christina04.hatenablog.com/entry/prometheus-service-discovery
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ECR＠AWS
-description: ECR＠AWSの知見を記録しています。
+title: 【IT技術の知見】ECR＠AWSリソース
+description: ECR＠AWSリソースの知見を記録しています。
 ---
 
-# ECR＠AWS
+# ECR＠AWSリソース
 
 ## はじめに
 

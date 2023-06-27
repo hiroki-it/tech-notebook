@@ -649,11 +649,29 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 特定のSecretに格納されている文字列を取得する。
 
+注意点として、出力した文字列はダブルクオーテーションで囲われている。
+
+```bash
+$ aws secretsmanager get-secret-value \
+    --secret-id=<シークレット名> \
+    --query=SecretString
+
+# ダブルクオーテーションで囲われている
+"..."
+```
+
+もしSecret ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
+
+そのため、`--output`オプションで`text`使用してダブルクオーテーションを削除する必要がある。
+
 ```bash
 $ aws secretsmanager get-secret-value \
     --secret-id=<シークレット名> \
     --query=SecretString \
     --output=text
+
+# ダブルクオーテーションを除去
+{...}
 ```
 
 > ↪️：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html

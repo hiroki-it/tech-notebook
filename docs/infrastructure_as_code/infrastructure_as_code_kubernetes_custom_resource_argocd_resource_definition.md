@@ -1524,6 +1524,8 @@ ArgoCDのApplicationは、`1`個のClusterにしかマニフェストを送信�
 
 一方で、ApplicationSetであれば、異なるClusterに対応するApplicationを一括して管理できる。
 
+なお、Helmを使用している場合は、ApplicationSetの代わりに`range`関数を使用できる。
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet

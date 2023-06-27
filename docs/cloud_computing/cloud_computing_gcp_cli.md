@@ -45,6 +45,7 @@ $ cat /root/.config/gcloud/logs/<タイムスタンプ>/<タイムスタンプ>.
 
 # エラーがあれば
 Traceback (most recent call last):
+...
 ```
 
 <br>
