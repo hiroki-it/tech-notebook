@@ -17,7 +17,7 @@ description: Unix系標準ユーティリティ＠ユーティリティの知見
 
 ### `<数字／シンボル>`
 
-ファイルの権限を変更する
+ファイルやディレクトリの権限を変更する
 
 数字モードとシンボルモードがある。
 
@@ -26,10 +26,13 @@ description: Unix系標準ユーティリティ＠ユーティリティの知見
 ```bash
 $ chmod 600 <ファイルへのパス>
 
-$ chmod 600 <ファイルへのパス>
+$ chmod 600 <ディレクトリへのパス>
 ```
 
-> ↪️：https://kazmax.zpp.jp/linux_beginner/chmod.html
+> ↪️：
+>
+> - https://kazmax.zpp.jp/linux_beginner/chmod.html
+> - http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
 
 <br>
 

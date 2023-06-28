@@ -33,7 +33,7 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 [SERVICE]
     # バッファに蓄えられた全てのログを宛先にアウトプットする間隔
     Flush 1
-    # 猶予時間
+    # FluentBitのプロセスを終了する待機時間
     Grace 30
     # FluentBit自体のログレベル
     Log_Level info
@@ -41,6 +41,8 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
     Parsers_File parsers_multiline.conf
     # 読み込まれるStream Processorファイルの名前
     Streams_File stream_processor.conf
+    # 監視ツール (Prometheys) で監視する場合は、有効化する
+    Http_Server On
 ```
 
 <br>

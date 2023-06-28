@@ -648,16 +648,19 @@ $ helm template ./foo-chart -f ./values.yaml >| release.yaml
 
 デフォルト値を上書きし、`helm template`コマンドを実行する。
 
-機密な変数を一時的に出力する場合に使うと良い。
+マニフェストの暗号化ツール (例：SOPS) を使用している場合に、暗号化キーを使用せずに機密な変数のテスト値をSecretに出力する場合に使うと良い。
+
+また、CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与することなく、マニフェストを展開できるようになる。
 
 ```bash
-$ helm template <チャートへのパス> -f <valuesファイルへのパス> -set foo.user.password=$PASSWPRD >| <出力先ファイル>
+# 暗号化ツールを使用せずにSecretを作成する
+$ helm template <チャートへのパス> -f <valuesファイルへのパス> -set user.password=test >| <出力先ファイル>
 ```
 
 ```yaml
 # valuesファイル
-foo:
-  bar: QUX # 上書きされる
+user:
+  password: ***** # 上書きされる
 ```
 
 #### ▼ --include-crds
