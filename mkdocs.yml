@@ -316,8 +316,16 @@ nav:
       - testing/index.md
       - ■ ホワイトボックステスト:
           - ホワイトボックステスト: testing/testing_whitebox.md
-          - PHPの場合: testing/testing_whitebox_php.md
-          - Goの場合: testing/testing_whitebox_go.md
+          - ■ アプリ:
+              - PHPの場合: testing/testing_whitebox_application_php.md
+              - Goの場合: testing/testing_whitebox_application_go.md
+          - ■ インフラ:
+              - ■ 静的解析:
+                  - Checkov: testing/testing_whitebox_infrastructure_linter_checkov.md
+                  - Kics: testing/testing_whitebox_infrastructure_linter_kics.md
+                  - Kubeconform: testing/testing_whitebox_infrastructure_linter_kubeconform.md
+                  - Pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
+                  - Trivy: testing/testing_whitebox_infrastructure_linter_trivy.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
           - ■ 総合テスト:
@@ -529,10 +537,6 @@ nav:
               - ■ Minikube:
                   - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.md
-          - ■ 開発ツール:
-              - ■ 静的解析ツール:
-                  - 静的解析ツール: infrastructure_as_code/infrastructure_as_code_kubernetes_development_linter.md
-                  - pluto: infrastructure_as_code/infrastructure_as_code_kubernetes_development_linter_pluto.md
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
