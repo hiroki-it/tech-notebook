@@ -15,13 +15,13 @@ description: 静的解析ツール＠Kubernetesの知見を記録しています
 
 ## 01. 文法の誤りテスト
 
-記入中...
+- kubeconform
 
 <br>
 
 ## 02. ベストプラクティス違反テスト
 
-記入中...
+- poralis
 
 <br>
 
@@ -33,7 +33,9 @@ description: 静的解析ツール＠Kubernetesの知見を記録しています
 
 ## 04. 脆弱性テスト
 
+- checkov
 - kics
 - kube-score
+- trivy
 
 <br>
