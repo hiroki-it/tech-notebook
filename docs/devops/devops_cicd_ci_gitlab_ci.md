@@ -142,9 +142,17 @@ foo_job:
 
 ### rules
 
+#### ▼ rulesとは
+
 Jobの発火条件を設定する。
 
+#### ▼ if
+
+条件に合致した場合のみ、ジョブを発火する。
+
 ブランチ名やタグを使用した発火を定義できる。
+
+イベントの種類が設定された`CI_PIPELINE_SOURCE`変数を使用できる。
 
 ```yaml
 check_tag:
@@ -166,7 +174,31 @@ check_tag:
         TAG_NAME: $CI_COMMIT_TAG
 ```
 
-> ↪️：https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
+> ↪️：
+>
+> - https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
+
+#### ▼ changes
+
+プッシュ時に、指定したファイルやディレクトリで差分があれば、ジョブを発火する。
+
+`if`キーと組み合わせると、OR条件を定義できる。
+
+```yaml
+gemerate_template:
+  script:
+    - helm template foo . --set secret.CREDENTIALS=test > tmp.yaml
+  rules:
+    # webイベント (パイプライン実行ボタン) の場合
+    - if: $CI_PIPELINE_SOURCE == "web"
+    # ファイルやディレクトリ内に差分があった場合
+    - changes:
+        - template/**/*
+        - values.yaml
+```
+
+> ↪️：https://gitlab-docs.creationline.com/ee/ci/yaml/#ruleschanges
 
 <br>
 
