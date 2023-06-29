@@ -30,7 +30,7 @@ $ brew install pluto
 plutoで検証する非推奨項目のKubernetesバージョンを指定する。
 
 ```bash
-$ pluto detect - -o wide --target-versions k8s=v1.23.0
+$ pluto detect - -o wide --target-versions k8s=<Kubernetesのバージョン>
 ```
 
 <br>
