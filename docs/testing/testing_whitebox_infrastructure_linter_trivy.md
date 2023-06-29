@@ -41,4 +41,11 @@ $ docker run aquasec/trivy
 $ trivy config --exit-code 1 <マニフェストファイル>
 ```
 
+マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
+
+```bash
+$ helm template foo . --set secret.PASSWORD=test > tmp.yaml
+  && trivy config --exit-code 1 --debug tmp.yaml
+```
+
 <br>

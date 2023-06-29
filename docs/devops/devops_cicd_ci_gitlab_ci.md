@@ -146,6 +146,8 @@ foo_job:
 
 Jobの発火条件を設定する。
 
+複数の条件 (複数の`if`キー、`if`キーと`changes`キーの組み合わせ)　　を並べた場合、上から順番に条件を検証していく。
+
 #### ▼ if
 
 条件に合致した場合のみ、ジョブを発火する。
@@ -183,12 +185,10 @@ check_tag:
 
 プッシュ時に、指定したファイルやディレクトリで差分があれば、ジョブを発火する。
 
-`if`キーと組み合わせると、OR条件を定義できる。
-
 ```yaml
 gemerate_template:
   script:
-    - helm template foo . --set secret.CREDENTIALS=test > tmp.yaml
+    - helm template foo . --set secret.PASSWORD=test > tmp.yaml
   rules:
     # webイベント (パイプライン実行ボタン) の場合
     - if: $CI_PIPELINE_SOURCE == "web"

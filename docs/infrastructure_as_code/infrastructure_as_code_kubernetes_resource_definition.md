@@ -1158,6 +1158,7 @@ spec:
 >
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
 > - https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
+> - https://github.com/kubernetes-sigs/aws-load-balancer-controller/issues/2066
 
 #### ▼ .spec.rules[].http.paths[].backend
 

@@ -43,10 +43,15 @@ $ checkov --directory <ディレクトリ名>
 
 単一のファイルを再帰的に処理する。
 
-マニフェスト管理ツール (Helm。Kustomize) の作成したマニフェストファイルを渡しても良い。
-
 ```bash
 $ checkov -f <マニフェストファイル> --quiet
+```
+
+マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
+
+```bash
+$ helm template foo . --set secret.PASSWORD=test > tmp.yaml
+  && checkov -f tmp.yaml --quiet
 ```
 
 <br>

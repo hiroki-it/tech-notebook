@@ -31,12 +31,27 @@ $ brew install kics
 
 > ↪️：https://docs.kics.io/latest/commands/#scan_command_options
 
+#### ▼ --exclude-severities
+
+出力する重要度レベルを設定する。
+
+```bash
+$ kics scan --no-progress -p <パス> --exclude-severities info
+```
+
 #### ▼ -p
 
 ディレクトリ内のファイルを再帰的に処理する。
 
 ```bash
 $ kics scan --no-progress -p <パス>
+```
+
+マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
+
+```bash
+$ helm template foo . --set secret.PASSWPRD=test > tmp.yaml
+  && kics scan -p tmp.yaml --no-progress --exclude-severities info
 ```
 
 <br>
