@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 pluto＠非推奨apiVersionテスト
-description: pluto＠非推奨apiVersionテストの知見を記録しています。
+title: 【IT技術の知見】 Pluto＠非推奨apiVersionテスト
+description: Pluto＠非推奨apiVersionテストの知見を記録しています。
 ---
 
-# pluto＠非推奨apiVersionテスト
+# Pluto＠非推奨apiVersionテスト
 
 ## はじめに
 

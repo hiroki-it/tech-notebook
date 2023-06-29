@@ -800,6 +800,6 @@ GRANT ALL ON *.* TO 'foo'@'%' ;
 
 PHPUnitで接続するDBを指定する方法については、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
+> ↪️：https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html
 
 <br>
