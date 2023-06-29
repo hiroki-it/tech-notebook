@@ -33,7 +33,7 @@ $ brew install kics
 
 #### ▼ --exclude-severities
 
-出力する重要度レベルを設定する。
+検出する最低の重要度レベルを設定する。
 
 ```bash
 $ kics scan --no-progress -p <パス> --exclude-severities info

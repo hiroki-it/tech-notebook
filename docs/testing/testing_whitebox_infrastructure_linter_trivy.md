@@ -31,6 +31,8 @@ $ docker run aquasec/trivy
 
 ### config
 
+#### ▼ configとは
+
 > ↪️：https://aquasecurity.github.io/trivy/v0.42/docs/references/configuration/cli/trivy_config/
 
 #### ▼ --exit-code
@@ -38,7 +40,7 @@ $ docker run aquasec/trivy
 脆弱性が検出された時の終了コードを設定する。
 
 ```bash
-$ trivy config --exit-code 1 <マニフェストファイル>
+$ trivy config --exit-code 1 <ファイル>
 ```
 
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
@@ -47,5 +49,15 @@ $ trivy config --exit-code 1 <マニフェストファイル>
 $ helm template foo . --set secret.PASSWORD=test > tmp.yaml
   && trivy config --exit-code 1 --debug tmp.yaml
 ```
+
+### ▼ --severity
+
+検出する最低の重要度レベルを設定する。
+
+```bash
+$ trivy config --severity CRITICAL,HIGH <ファイル>
+```
+
+> ↪️：https://csblog.casareal.co.jp/archives/382
 
 <br>

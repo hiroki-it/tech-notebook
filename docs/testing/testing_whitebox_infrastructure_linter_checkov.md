@@ -44,7 +44,7 @@ $ checkov --directory <ディレクトリ名>
 単一のファイルを再帰的に処理する。
 
 ```bash
-$ checkov -f <マニフェストファイル> --quiet
+$ checkov -f <ファイル> --quiet
 ```
 
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
