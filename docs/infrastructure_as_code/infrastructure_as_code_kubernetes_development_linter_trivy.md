@@ -19,11 +19,15 @@ description: trivy＠脆弱性テストの知見を記録しています。
 $ brew install trivy
 ```
 
-> ↪️：https://pluto.docs.fairwinds.com/installation/
+```bash
+$ docker run aquasec/trivy
+```
+
+> ↪️：https://aquasecurity.github.io/trivy/v0.42/
 
 <br>
 
-## 02. サブコマンド
+## 02. オプション
 
 ### --exit-code
 

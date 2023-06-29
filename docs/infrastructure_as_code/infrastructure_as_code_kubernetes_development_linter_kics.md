@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 checkov＠脆弱性テスト
-description: checkov＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 trivy＠脆弱性テスト
+description: trivy＠脆弱性テストの知見を記録しています。
 ---
 
-# checkov＠脆弱性テスト
+# trivy＠脆弱性テスト
 
 ## はじめに
 
@@ -16,7 +16,7 @@ description: checkov＠脆弱性テストの知見を記録しています。
 ## 01. セットアップ
 
 ```bash
-$ brew install checkov
+$ brew install kics
 ```
 
 > ↪️：https://pluto.docs.fairwinds.com/installation/
@@ -25,12 +25,12 @@ $ brew install checkov
 
 ## 02. オプション
 
-### -f
+### -p
 
 検出対象のマニフェストファイルを指定する。
 
 ```bash
-$ checkov -f tmp.yaml --quiet
+$ kics scan --no-progress -p tmp.yaml
 ```
 
 <br>
