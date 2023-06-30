@@ -230,10 +230,6 @@ spec:
       command:
         # エントリポイントは固定である
         - /var/run/argocd/argocd-cmp-server
-      env:
-        # helmプラグインの場所
-        - name: HELM_PLUGINS
-          value: /helm-working-dir/plugins
       securityContext:
         runAsNonRoot: true
         # サイドカーのコンテナプロセスのユーザーIDは999とする。
@@ -254,8 +250,6 @@ spec:
         # 各ツールのバイナリをコンテナにマウントする
         - name: custom-tools
           mountPath: /usr/local/bin
-        - name: helm-working-dir
-          mountPath: /helm-working-dir/plugins
     - name: bar-plugin-cmp-server
       image: ubuntu:latest
       command:
@@ -537,17 +531,38 @@ spec:
       command:
         - /var/run/argocd/argocd-cmp-server
       env:
+        - name: HELM_CACHE_HOME
+          value: /helm-working-dir
+        - name: HELM_CONFIG_HOME
+          value: /helm-working-dir
+        - name: HELM_DATA_HOME
+          value: /helm-working-dir
         - name: HELM_PLUGINS
           value: /helm-working-dir/plugins
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
       volumeMounts:
-        # helmfileのバイナリファイルを置くパスを指定する。
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /tmp
+          name: tmp
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          name: argocd-cmp-cm
+          subPath: helmfile.yaml
+        # Podの共有ボリュームを介して、コンテナ内でHelmfileを使用する。
         - mountPath: /usr/local/bin
-          # Podの共有ボリュームを介して、コンテナ内でHelmfileを使用する。
           name: custom-tools
-          subPath: helmfile
+        - mountPath: /etc/ssl
+          name: certificate
+        - mountPath: /helm-working-dir
+          name: helmfile-working-dir
+        # Podの共有ボリュームを介して、コンテナ内でhelmプラグインを使用する。
+        - mountPath: /helm-working-dir/plugins
+          name: helm-working-dir
+
 
       ...
 
@@ -566,15 +581,56 @@ spec:
           wget -q https://github.com/helmfile/helmfile/releases/download/<バージョン>/helmfile_<バージョン>_linux_amd64.tar.gz
           tar -xvf helmfile_<バージョン>_linux_amd64.tar.gz
           cp helmfile /custom-tools/
-          chmod +x /custom-tools
+          chmod +x /custom-tools/helmfile
+          mkdir -p /helm-working-dir/plugins
+          chown -R 999 /helm-working-dir
+          chmod -R u+rwx /helm-working-dir
       volumeMounts:
         # Podの共有ボリュームにHelmfileを配置する。
         - name: custom-tools
           mountPath: /custom-tools
+    # SOPS
+    - name: sops-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      # InitContainerに、SOPSをインストールする。
+      args:
+        - |
+          apk --update add wget
+          wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+          chmod +x /custom-tools/sops
+      volumeMounts:
+        # Podの共有ボリュームに、SOPSを配置する。
+        - name: custom-tools
+          mountPath: /custom-tools
+    - name: helm-plugins-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      # InitContainerに、helmプラグインをインストールする。
+      args:
+        - |
+          apk --update add wget
+          wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
+          tar -xvf helm-secrets.tar.gz
+          cp -R helm-secrets /helm-working-dir/plugins/
+          chown -R 999 /helm-working-dir/plugins/
+          chmod -R u+rwx /helm-working-dir/plugins/
+      volumeMounts:
+        # Podの共有ボリュームにhelmプラグインを配置する。
+        - name: helm-working-dir
+          mountPath: /helm-working-dir/plugins
 
   # Podの共有ボリューム
   volumes:
+    # SOPSなどを含む
     - name: custom-tools
+      emptyDir: {}
+    # helm-secretsを含む
+    - name: helm-working-dir
       emptyDir: {}
 ```
 
@@ -690,13 +746,23 @@ spec:
         runAsNonRoot: true
         runAsUser: 999
       volumeMounts:
-        # Podの共有ボリュームを介して、コンテナ内でhelm-secretsを使用する。
-        - name: custom-tools
-          # helm-secretsのバイナリファイルを置くパスを指定する。
-          mountPath: /helm-working-dir/plugins
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /tmp
+          name: tmp
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          name: argocd-cmp-cm
+          subPath: helm-secrets.yaml
         # SOPSのバイナリファイルを置くパスを指定する。
-        - name: custom-tools
-          mountPath: /usr/local/bin
+        - mountPath: /usr/local/bin
+          name: custom-tools
+        - mountPath: /etc/ssl
+          name: certificate
+        # Podの共有ボリュームを介して、コンテナ内でhelm-secretsを使用する。
+        - mountPath: /helm-working-dir/plugins
+          name: helm-working-dir
 
       ...
 
