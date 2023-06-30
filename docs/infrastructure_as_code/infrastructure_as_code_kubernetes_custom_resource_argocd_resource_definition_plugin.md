@@ -151,7 +151,8 @@ argocd@cmp-server:/usr/local/bin] $ ls -la
 ...
 ```
 
-補足として、執筆時点 (2023/04/22) では、argocd系コマンドやいくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) がrepo-serverのコンテナイメージにあらかじめインストールされている。
+補足として、執筆時点 (2023/04/22) では、argocd系コマンドやいくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など)
+がrepo-serverのコンテナイメージにあらかじめインストールされている。
 
 ```bash
 argocd@repo-server:/usr/local/bin] $ ls -la /usr/local/bin
@@ -203,7 +204,8 @@ ArgoCD公式の方針で、デフォルトで組み込まれているツール (
 
 このとき、事前準備として`argocd`コマンドをコピーするためのInitContainerが必要である。
 
-サイドカーで使用するベースイメージがArgoCDのコンテナイメージではなく、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) の場合、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。
+サイドカーで使用するベースイメージがArgoCDのコンテナイメージではなく、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) の場合、いくつかのツール (
+例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。
 
 ```yaml
 apiVersion: v1
@@ -311,7 +313,8 @@ $ kubectl exec -it argocd-repo-server -c foo-plugin-cmp-server \
 foo-plugin.sock
 ```
 
-なお、`plugin.yaml`ファイルと別のディレクトリに配置したい場合は、`argocd-cmp-server`コマンドの`--config-dir-path`オプションを使用する (`plugin.yaml`ファイルは、これ以外の名前を設定できない)。
+なお、`plugin.yaml`ファイルと別のディレクトリに配置したい場合は、`argocd-cmp-server`コマンドの`--config-dir-path`オプションを使用する (`plugin.yaml`
+ファイルは、これ以外の名前を設定できない)。
 
 ```bash
 $ kubectl exec -it argocd-repo-server -c foo-plugin-cmp-server \
@@ -342,7 +345,8 @@ ArgoCDの公式の仕様で、サイドカーは単一のプラグインしか�
 
 そのため、プラグインごとにサイドカーを作成する必要がある。
 
-もし、部分的に重複するプラグイン (例：純粋なhelm-secrets、helm-secretsを使うHelmfile) をArgoCDが使用する場合、それぞれのサイドカーにバイナリ (例：一方にはhelm-secrets、もう一方にはHelmfileとhelm-secrets) を用意する必要がある。
+もし、部分的に重複するプラグイン (例：純粋なhelm-secrets、helm-secretsを使うHelmfile) をArgoCDが使用する場合、それぞれのサイドカーにバイナリ (
+例：一方にはhelm-secrets、もう一方にはHelmfileとhelm-secrets) を用意する必要がある。
 
 > ↪️：https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514
 
@@ -354,7 +358,8 @@ ConfigManagementPluginで、マニフェスト作成時の追加処理を設定�
 
 argocd-cmp-cmの`.data.configManagementPlugins`キーで設定することは非推奨である。
 
-補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など) をApplicationのオプションとして実行できるようになっており、これらはConfigManagementPluginで処理を定義する必要はない。
+補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など)
+をApplicationのオプションとして実行できるようになっており、これらはConfigManagementPluginで処理を定義する必要はない。
 
 ```yaml
 apiVersion: v1
@@ -445,6 +450,14 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 ## 02. Helmとの連携
 
+デフォルトでArgoCDにインストールされているHelmのバージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。
+
+Helmを使用できるように、Helmをインストールする。
+
+**＊実装例＊**
+
+ここでは軽量のInitContainerを定義し、起動時にHelmをインストールする。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -452,26 +465,16 @@ metadata:
   name: argocd-repo-server-pod
 spec:
   containers:
-    - name: helm-plugin-cmp-server
-      image: ubuntu:latest
-      command:
-        - /var/run/argocd/argocd-cmp-server
-      env:
-        - name: HELM_PLUGINS
-          value: /helm-working-dir/plugins
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 999
+    - name: argocd-repo-server
+      image: quay.io/argoproj/argocd:latest
       volumeMounts:
-        # helmfileのバイナリファイルを置くパスを指定する。
-        - mountPath: /usr/local/bin
+        # Helmのバイナリファイルを置くパスを指定する。
+        - mountPath: /usr/local/bin/helm
           # Podの共有ボリュームを介して、コンテナ内でHelmを使用する。
           name: custom-tools
           subPath: helm
 
-
       ...
-
 
   initContainers:
     # Helm
@@ -480,7 +483,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerにHelmfileをインストールする。
+      # InitContainerにHelmをインストールする。
       args:
         - |
           apk --update add wget
@@ -491,7 +494,7 @@ spec:
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        # Podの共有ボリュームにHelmfileを配置する。
+        # Podの共有ボリュームにHelmを配置する。
         - name: custom-tools
           mountPath: /custom-tools
 
@@ -513,7 +516,8 @@ Helmfileを使用できるように、Helmfileをインストールする。
 
 ArgoCDとHelmfileを連携すれば、`helmfile`コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-`helm`コマンドを宣言的に実行するのであれば、`.spec.source.helm`キーを使用すれば十分ではあるが、`helmfile`を使用すればHelmfileの機能 (例：複数の`values`ファイルを参照する、など) も活用できる。
+`helm`コマンドを宣言的に実行するのであれば、`.spec.source.helm`キーを使用すれば十分ではあるが、`helmfile`を使用すればHelmfileの機能 (例：複数の`values`
+ファイルを参照する、など) も活用できる。
 
 **＊実装例＊**
 
@@ -1034,9 +1038,9 @@ spec:
 
 #### ▼ Kustomizeのインストール
 
-Kustomizeを使用できるように、Kustomizeをインストールする。
+デフォルトでArgoCDにインストールされているKustomizeのバージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。
 
-ただし、cmp-serverではなくrepo-serverにVolumeMountする。
+Kustomizeを使用できるように、Kustomizeをインストールする。
 
 **＊実装例＊**
 
@@ -1078,9 +1082,10 @@ spec:
           cp kustomize /custom-tools/
           chmod +x /custom-tools/kustomize
       volumeMounts:
-        # Podの共有ボリュームにHelmfileを配置する。
-        - name: custom-tools
-          mountPath: /custom-tools
+        # Podの共有ボリュームにKustomizeを配置する。
+        - mountPath: /usr/local/bin/kustomize
+          name: custom-tools
+          subPath: kustomize
 
   # Podの共有ボリューム
   volumes:
@@ -1124,6 +1129,7 @@ spec:
   targetRevision: main
   path: .
   kustomize:
+    # Kustomizeにデフォルトでインストールされていないバージョンを指定する
     version: v1.0.0
 ```
 
@@ -1139,9 +1145,11 @@ KSOPSを使用できるように、KSOPSをインストールする。
 
 KSOPSはコンテナイメージがあるため、軽量のInitContainerを用意するのではなく、KSOPSのコンテナイメージを使用する。
 
-なお、KustomizeはArgoCDにデフォルトで組み込まれているため、インストールする必要はない。
+ArgoCDにデフォルトで組み込まれているKustomizeのバージョンの場合、これをインストールする必要はない。
 
 **＊実装例＊**
+
+ArgoCDのKustomize系オプションを活用するために、KSOPSはサイドカーで実行しない。
 
 ここでは軽量のInitContainerを定義し、起動時にKSOPSをインストールする。
 
@@ -1160,7 +1168,7 @@ spec:
       volumeMounts:
         # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
         - name: custom-tools
-        # Kustomizeのバイナリファイルを置くパスを指定する。
+          # Kustomizeのバイナリファイルを置くパスを指定する。
           mountPath: /usr/local/bin/kustomize
           subPath: kustomize
         # ArgoCDは、repo-server上でKustomizeを実行するための専用オプションが多く持っている
@@ -1328,5 +1336,46 @@ spec:
 ```
 
 > ↪️：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
+
+<br>
+
+## 09. 証明書
+
+マニフェストを復号化するツールとクラウド暗号化キーを使用している場合、暗号化キーがHTTPSを要求することがある。
+
+この時、SSL証明書をサイドカーに設定する必要がある。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server-pod
+spec:
+  containers:
+    - name: decrypt-plugin-cmp-server
+      image: ubuntu:latest
+      command:
+        - /var/run/argocd/argocd-cmp-server
+      volumeMounts:
+        - mountPath: /etc/ssl
+          name: certificate
+
+  initContainers:
+    - command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apt-get update -y
+          apt-get install -y ca-certificates
+          update-ca-certificates
+          chown -R 999 /etc/ssl
+
+      image: ubuntu:22.04
+      name: utilities-installer
+      volumeMounts:
+        - mountPath: /etc/ssl
+          name: certificate
+```
 
 <br>
