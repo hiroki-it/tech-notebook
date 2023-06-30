@@ -556,6 +556,50 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 <br>
 
+### ツール別
+
+#### ▼ ArgoCD
+
+ArgoCDの場合、チャート (ArgoCDのコンテナイメージ) とCRDの両方のアップグレードする。
+
+ArgoCDをNamespacedスコープで分割している場合、カスタムリソースがCluster内に1つしかないCRDを共有しているため、CRDをアップグレードすると全サービスのカスタムリソースに影響が出る。
+
+この場合、カスタムリソースへの影響を考えて、CRDの差分がないバージョンまではArgoCDをアップグレードできる。
+
+`kubectl diff`コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。
+
+```bash
+$ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=<アップグレード先のArgoCDのバージョン>"
+```
+
+もしCRDに差分がある大きなアップグレードの場合、別のClusterを新しく構築し、その上で新ArgoCDも構築することとする。
+
+#### ▼ aws-loadbalancer-controller
+
+aws-loadbalancer-controllerの場合、チャートをアップグレードする。
+
+各サービスのALBへの影響を考えて、CRDの差分がないバージョンまではaws-loadbalancer-controllerをアップグレードできる。
+
+`kubectl diff`コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。
+
+```bash
+$ kubectl diff -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=<アップグレード先のaws-loadbalancer-controllerのバージョン>"
+```
+
+#### ▼ descheduler
+
+deschedulerの場合、チャートをアップグレードする。
+
+ArgoCDのリソースに影響がないため、アップグレードは問題ない。
+
+#### ▼ external-dns
+
+external-dnsの場合、チャートをアップグレードする。
+
+ArgoCDのリソースに影響がないため、アップグレードは問題ない。
+
+<br>
+
 ## 06. CIDRブロックの設計
 
 ### ワーカーNodeの場合

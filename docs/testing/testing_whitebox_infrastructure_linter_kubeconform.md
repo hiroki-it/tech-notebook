@@ -38,4 +38,22 @@ $ kubeconform \
     <ファイル>
 ```
 
+現在と次のKubernetesバージョンを指定した処理をCI上で実行すれば、アップグレードに備えられる。
+
+```bash
+$ kubeconform \
+    -kubernetes-version <Kubernetesの現在のバージョン> \
+    -strict \
+    -summary \
+    -output text \
+    <ファイル>
+
+$ kubeconform \
+    -kubernetes-version <Kubernetesの次のバージョン> \
+    -strict \
+    -summary \
+    -output text \
+    <ファイル>
+```
+
 <br>
