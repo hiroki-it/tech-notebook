@@ -1089,7 +1089,7 @@ foo:
 `.Files.Glob`関数で複数のファイルをmap型で取得できる。
 
 ```yaml
-{{-  range $filePath, $_ := .Files.Glob "dashboards/*.json" }}
+{{- range $filePath, $_ := .Files.Glob "dashboards/*.json" }}
 {{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
 apiVersion: v1
 kind: ConfigMap
@@ -1111,5 +1111,25 @@ data:
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 > - https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
 > - https://github.com/helm/helm/issues/4515#issuecomment-415303665
+
+<br>
+
+## 14. 例外処理系
+
+## fail
+
+エラーメッセージを含む例外をスローし、意図的に処理を失敗させる。
+
+他のメンバーに設計方針を強制したり、問題が起こりうる設定を予防するために、使用する。
+
+```yaml
+{{- if not (contains .Values.foo $bar) }}
+{{- fail "〇〇であると△△のため、barにはfooを含むようにしてください" }}
+{{- else }}
+...
+{{- end }}
+```
+
+> ↪️：https://austindewey.com/2018/12/28/helm-tricks-input-validation-with-required-and-fail/
 
 <br>

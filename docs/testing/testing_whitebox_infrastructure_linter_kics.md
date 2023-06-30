@@ -50,8 +50,8 @@ $ kics scan --no-progress -p <パス>
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template foo . --set secret.PASSWPRD=test > tmp.yaml
-  && kics scan -p tmp.yaml --no-progress --exclude-severities info
+$ helm template foo . --set secret.PASSWPRD=test > manifest.yaml
+  && kics scan -p manifest.yaml --no-progress --exclude-severities info
 ```
 
 <br>
