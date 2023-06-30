@@ -94,7 +94,7 @@ spec:
         - -c
       args:
         - |
-          #
+          # ...
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -106,8 +106,7 @@ spec:
         - -c
       args:
         - |
-          cp ksops /custom-tools/
-          cp $GOPATH/bin/kustomize /custom-tools/
+          # ...
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
@@ -119,9 +118,7 @@ spec:
         - -c
       args:
         - |
-          apk --update add wget
-          wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/<バージョン>/sops-<バージョン>.linux
-          chmod +x /custom-tools/sops
+          # ...
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
@@ -450,7 +447,7 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 ## 02. Helmとの連携
 
-デフォルトでArgoCDにインストールされているHelmのバージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。
+デフォルトでArgoCDにインストールされているHelmの推奨バージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。
 
 Helmを使用できるように、Helmをインストールする。
 
@@ -472,7 +469,6 @@ spec:
         - mountPath: /usr/local/bin/helm
           # Podの共有ボリュームを介して、コンテナ内でHelmを使用する。
           name: custom-tools
-          subPath: helm
 
       ...
 
@@ -487,9 +483,7 @@ spec:
       args:
         - |
           apk --update add wget
-          ARGOCD_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-helm/argo-cd-<バージョン>/charts/argo-cd/Chart.yaml | grep appVersion | sed -e 's/^[^: ]*: //')
-          HELM_RECOMMENDED_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-cd/"${ARGOCD_VERSION}"/hack/tool-versions.sh | grep helm3_version | sed -e 's/^[^=]*=//')
-          wget -q https://get.helm.sh/helm-v"${HELM_RECOMMENDED_VERSION}"-linux-amd64.tar.gz
+          wget -q https://get.helm.sh/helm-<バージョン>-linux-amd64.tar.gz
           tar -xvf helm-<バージョン>-linux-amd64.tar.gz
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
@@ -771,6 +765,26 @@ spec:
       ...
 
   initContainers:
+    # Helm
+    - name: helm-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      # InitContainerにHelmをインストールする。
+      args:
+        - |
+          apk --update add wget
+          ARGOCD_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-helm/argo-cd-<バージョン>/charts/argo-cd/Chart.yaml | grep appVersion | sed -e 's/^[^: ]*: //')
+          HELM_RECOMMENDED_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-cd/"${ARGOCD_VERSION}"/hack/tool-versions.sh | grep helm3_version | sed -e 's/^[^=]*=//')
+          wget -q https://get.helm.sh/helm-v"${HELM_RECOMMENDED_VERSION}"-linux-amd64.tar.gz
+          tar -xvf helm-<バージョン>-linux-amd64.tar.gz
+          cp ./linux-amd64/helm /custom-tools/
+          chmod +x /custom-tools
+      volumeMounts:
+        # Podの共有ボリュームにHelmを配置する。
+        - name: custom-tools
+          mountPath: /custom-tools
     # SOPS
     - name: sops-installer
       image: alpine:latest
@@ -1038,7 +1052,7 @@ spec:
 
 #### ▼ Kustomizeのインストール
 
-デフォルトでArgoCDにインストールされているKustomizeのバージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。
+デフォルトでArgoCDにインストールされているKustomizeの推奨バージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。
 
 Kustomizeを使用できるように、Kustomizeをインストールする。
 
@@ -1169,6 +1183,7 @@ spec:
         # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
         - name: custom-tools
           # Kustomizeのバイナリファイルを置くパスを指定する。
+          # ArgoCDにデフォルトでインストールされたKustomizeを上書きする
           mountPath: /usr/local/bin/kustomize
           subPath: kustomize
         # ArgoCDは、repo-server上でKustomizeを実行するための専用オプションが多く持っている
@@ -1191,13 +1206,33 @@ spec:
         - -c
       # InitContainerにKustomizeをインストールする。
       args:
+        # Kustomizeは別のInitContainerでインストールしているため、ここではKSOPSのバイナリのみをコピーする
         - |
           cp ksops /custom-tools/
-          cp $GOPATH/bin/kustomize /custom-tools/
       volumeMounts:
         # Podの共有ボリュームに、KSOPSを配置する。
         - name: custom-tools
           mountPath: /custom-tools
+    # Kustomize
+    # ArgoCDにデフォルトでインストールされているバージョン以外は、InitContainerでインストールする必要がある
+    - name: kustomize-installer
+      image: alpine:latest
+      command:
+        - /bin/sh
+        - -c
+      # InitContainerにKustomizeをインストールする。
+      args:
+        - |
+          apk --update add wget
+          wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F<バージョン>/kustomize_<バージョン>_linux_amd64.tar.gz
+          tar -xvf kustomize_<バージョン>_linux_amd64.tar.gz
+          cp kustomize /custom-tools/
+          chmod +x /custom-tools/kustomize
+      volumeMounts:
+        # Podの共有ボリュームにKustomizeを配置する。
+        - mountPath: /usr/local/bin/kustomize
+          name: custom-tools
+          subPath: kustomize
 
   # Podの共有ボリューム
   volumes:
