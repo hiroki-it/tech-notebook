@@ -69,6 +69,32 @@ include:
 
 <br>
 
+### 予約変数
+
+#### ▼ `CI_COMMIT_BRANCH`
+
+現在のブランチ名が割り当てられている。
+
+#### ▼ `CI_PIPELINE_SOURCE`
+
+現在のパイプラインを発火させたイベント名が割り当てられている。
+
+> ↪️：https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
+
+#### ▼ `GIT_SUBMODULE_STRATEGY`
+
+デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。
+
+```yaml
+foo_job:
+  variables:
+    GIT_SUBMODULE_STRATEGY: "recursive"
+```
+
+> ↪️：https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
+
+<br>
+
 ## 04. Job
 
 ### allow_failure
@@ -288,17 +314,5 @@ foo_job:
 ```
 
 > ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
-
-#### ▼ `GIT_SUBMODULE_STRATEGY`
-
-デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。
-
-```yaml
-foo_job:
-  variables:
-    GIT_SUBMODULE_STRATEGY: "recursive"
-```
-
-> ↪️：https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
 
 <br>
