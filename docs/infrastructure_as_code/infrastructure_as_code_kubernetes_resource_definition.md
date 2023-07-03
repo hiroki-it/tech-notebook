@@ -2803,7 +2803,7 @@ spec:
 > ↪️：
 >
 > - https://zaki-hmkc.hatenablog.com/entry/2020/12/27/211908#subPath%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88
-> - https://kubernetes.io/ja/docs/concepts/storage/volumes/#using-subpath
+> - https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath
 
 ディレクトリではなく、ファイルを指定することもできる。
 
@@ -2962,13 +2962,13 @@ spec:
   priorityClassName: system-node-critical
 ```
 
-> ↪️：https://kubernetes.io/ja/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
+> ↪️：https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
 
 #### ▼ DaemonSet配下のPod
 
 DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリングされるようになっている。
 
-ただし何らかの理由(例：ハードウェアリソース不足、など) で、特定のNodeでDaemonSet配下のPodをスケジューリングできないことがある。
+ただし何らかの理由 (例：ハードウェアリソース不足、など) で、特定のNodeでDaemonSet配下のPodをスケジューリングできないことがある。
 
 こういった場合に備えて、DaemonSet配下のPodには必ず、`system-node-critical`のPriorityClassNameを設定しておく。
 
@@ -3003,6 +3003,12 @@ spec:
 ```
 
 > ↪️：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+
+#### ▼ DaemonSet配下のPod
+
+DaemonSetでは、特定のNodeにPodをスケジューリングさせられる。
+
+> ↪️：https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes
 
 <br>
 

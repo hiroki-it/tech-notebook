@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 Kubeconform＠脆弱性テスト
-description: Kubeconform＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 Kubeconform＠文法の誤りテスト
+description: Kubeconform＠文法の誤りテストの知見を記録しています。
 ---
 
-# Kubeconform＠脆弱性テスト
+# Kubeconform＠文法の誤りテスト
 
 ## はじめに
 

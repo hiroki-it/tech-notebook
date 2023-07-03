@@ -15,6 +15,8 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 ## 01. 文法の誤りテスト
 
+各Kubernetesリソースのスキーマを使用して、マニフェストの文法の誤りを検出する。
+
 - kubeconform
 
 <br>
@@ -32,6 +34,9 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 <br>
 
 ## 04. 脆弱性テスト
+
+指定したKubernetesバージョンから、マニフェストの非推奨なapiVersionを検出する。
+
 
 - checkov
 - kics

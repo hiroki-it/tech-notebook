@@ -114,7 +114,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 
 > ↪️：
 >
-> - https://kubernetes.io/ja/docs/concepts/storage/storage-classes/
+> - https://kubernetes.io/docs/concepts/storage/storage-classes/
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
 
 別途、AWS EBS CSIドライバーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
