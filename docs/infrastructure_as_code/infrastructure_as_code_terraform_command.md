@@ -360,7 +360,7 @@ $ terraform get
 
 #### ▼ graphとは
 
-rosource間の依存関係をグラフ化する。
+`tfstate`ファイルに基づいて、リソース間の依存関係をグラフ化する。
 
 これにより、どの`resource`ブロックが他のどの`resource`ブロックを使用しているかがわかる。
 
@@ -394,6 +394,21 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 | ノート | `variable`ブロック、`output`ブロック、`local`ブロック |
 
 > ↪️：https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
+
+#### ▼ 他のツール
+
+`terraform graph`コマンドを使用する以外に、リソース間の依存関係をグラフ化する。
+
+- Terraform graph beautifie
+- Rover
+- Terraform Visual
+- Inframap
+- Pluralith
+
+> ↪️：
+> 
+> - https://gkzz.dev/posts/alternative-terraform-graph/
+> - https://dev.classmethod.jp/articles/terraform-visualise-pluralith/
 
 <br>
 

@@ -38,12 +38,20 @@ $ brew install kics
 検出する最低の重要度レベルを設定する。
 
 ```bash
-$ kics scan --no-progress -p <パス> --exclude-severities info
+$ kics scan -p <パス> --exclude-severities info
 ```
 
 #### ▼ -p
 
 ディレクトリ内のファイルを再帰的に処理する。
+
+```bash
+$ kics scan -p <パス>
+```
+
+#### ▼ --no-progress
+
+処理実行時のプログレスバーを非表示にする。
 
 ```bash
 $ kics scan --no-progress -p <パス>

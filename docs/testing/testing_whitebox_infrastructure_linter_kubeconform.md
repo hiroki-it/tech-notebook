@@ -40,6 +40,8 @@ $ helm template foo . --set secret.PASSWPRD=test \
 
 ### -kubernetes-version
 
+#### ▼ -kubernetes-versionとは
+
 Kubernetesのバージョンを指定する。
 
 ```bash
@@ -51,7 +53,11 @@ $ kubeconform \
     <ファイル>
 ```
 
-現在と次のKubernetesバージョンを指定した処理をCI上で実行すれば、アップグレードに備えられる。
+#### ▼ 現在のバージョンと次のバージョンを指定
+
+現在と次のKubernetesバージョンを指定した処理を自動化すれば、アップグレードに備えられる。
+
+継続的に検出できるように、CI上で自動化すると良い。
 
 ```bash
 $ kubeconform \

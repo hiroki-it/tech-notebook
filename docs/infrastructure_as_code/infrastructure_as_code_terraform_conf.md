@@ -145,6 +145,8 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 
 これにより、`.terraform.lock.hcl`ファイルのアップグレード/ダウングレードが実行される。
 
+`.terraform.lock.hcl`ファイルを更新してアップグレードするには、`-upgrade`オプションが必要である。
+
 ```bash
 $ terraform init -upgrade
 ```
