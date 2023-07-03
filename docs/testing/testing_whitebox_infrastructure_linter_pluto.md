@@ -25,20 +25,49 @@ $ brew install pluto
 
 ## 02. グローバルオプション
 
-### --target-versions
+### 標準入力
+
+標準入力からマニフェストを渡す。
+
+CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
+
+```bash
+helm template fluentd . --set secret.GCP_CREDENTIALS=test | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
+
+NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
+foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+```
+
+```bash
+$ helm template foo-chart -f values-prd.yaml | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
+
+NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
+foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+```
+
+```bash
+$ helm template foo-chart -f values-prd.yaml | pluto detect-helm -t k8s=<Kubernetesのバージョン> - -o wide
+
+NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
+foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+```
+
+<br>
+
+### -t
 
 plutoで検証する非推奨項目のKubernetesバージョンを指定する。
 
 ```bash
-$ pluto detect - -o wide --target-versions k8s=<Kubernetesのバージョン>
+$ pluto detect - -o wide -t k8s=<Kubernetesのバージョン>
 ```
 
 現在と次のKubernetesバージョンを指定した処理をCI上で実行すれば、アップグレードに備えられる。
 
 ```bash
-$ pluto detect - -o wide --target-versions k8s=<Kubernetesの現在のバージョン>
+$ pluto detect - -o wide -t k8s=<Kubernetesの現在のバージョン>
 
-$ pluto detect - -o wide --target-versions k8s=<Kubernetesの次のバージョン>
+$ pluto detect - -o wide -t k8s=<Kubernetesの次のバージョン>
 ```
 
 <br>
@@ -67,8 +96,6 @@ $ pluto detect - -o markdown
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
 
-CI上でこれを実行する場合、リポジトリ内のマニフェストを渡せば良いので、必ずしもkube-apiserverと通信する必要はない。
-
 `pluto detect-api-resources`コマンドとの違いは記入中...
 
 > ↪️：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
@@ -81,13 +108,6 @@ foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v
 bar-pdb  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0
 baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0
 ...
-```
-
-```bash
-$ helm template foo-chart -f values-prd.yaml | pluto detect - -o wide
-
-NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
 <br>
@@ -131,8 +151,6 @@ $ pluto detect-files - -o wide
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨のapiVersionを検出する。
 
-ローカルマシンのチャートを検証するわけでない。
-
 ```bash
 $ pluto detect-helm - -o wide
 
@@ -141,13 +159,6 @@ foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch
 bar-chart  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/v1        true         v1.21.0         false     v1.25.0
 baz-chart  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0
 ...
-```
-
-```bash
-$ helm template foo-chart -f values-prd.yaml | pluto detect-helm - -o wide
-
-NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
 > ↪️：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory

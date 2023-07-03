@@ -27,6 +27,8 @@ $ brew install kics
 
 ### scan
 
+#### ▼ scanとは
+
 ファイルから脆弱性を検出する。
 
 > ↪️：https://docs.kics.io/latest/commands/#scan_command_options
@@ -45,13 +47,6 @@ $ kics scan --no-progress -p <パス> --exclude-severities info
 
 ```bash
 $ kics scan --no-progress -p <パス>
-```
-
-マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
-
-```bash
-$ helm template foo . --set secret.PASSWPRD=test > manifest.yaml
-  && kics scan -p manifest.yaml --no-progress --exclude-severities info
 ```
 
 <br>

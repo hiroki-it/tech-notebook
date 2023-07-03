@@ -25,6 +25,19 @@ $ brew install kubeconform
 
 ## オプション
 
+### 標準入力
+
+標準入力からマニフェストを渡す。
+
+CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
+
+```bash
+$ helm template foo . --set secret.PASSWPRD=test \
+  | kubeconform -kubernetes-version <Kubernetesのバージョン> -
+```
+
+<br>
+
 ### -kubernetes-version
 
 Kubernetesのバージョンを指定する。
