@@ -649,7 +649,9 @@ nav:
               - SREing: devops/devops_sreing.md
               - アンチパターン: devops/devops_sreing_antipattern.md
       - ■ 技術的要素:
-          - ドキュメンテーション: devops/devops_documentation.md
+          - ■ ドキュメンテーション:
+              - ドキュメンテーション: devops/devops_documentation.md
+              - Mermaid: devops/devops_documentation_mermaid.md
       - ■ 技術的要素:
           - 文化: devops/devops_culture.md
 
