@@ -392,14 +392,14 @@ spec:
         - "--aws-region=ap-northeast-1"
         # AWS ALBのあるVPCのIDを設定する
         - "--aws-vpc-id=vpc-*****"
-      command:
-        - /controller
       name: aws-load-balancer-controller
       image: public.ecr.aws/eks/aws-load-balancer-controller:v2.4.0
       ports:
+        # 内蔵されているwebhookサーバー
         - containerPort: 9443
           name: webhook-server
           protocol: TCP
+          # 内蔵されているmetricsサーバー
         - containerPort: 8080
           name: metrics-server
           protocol: TCP
@@ -412,6 +412,12 @@ spec:
 ### MutatingWebhookConfiguration
 
 Webhookの宛先のServiceを決定する。
+
+Serviceを介して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookを送信する。
+
+このwebhookサーバーがAdmissionResponseを作成し、これをkube-apiserverに返信する。
+
+AdmissionResponseに応じて、kube-apiserverはマニフェストを変更する。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1

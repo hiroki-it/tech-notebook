@@ -95,17 +95,19 @@ spec:
     - name: external-dns
       image: registry.k8s.io/external-dns/external-dns:v0.13.2
       args:
+        # DNSゾーンタイプを設定する
+        - --aws-zone-type=public
+        - --log-level=info
+        - --log-format=text
+        - --registry=txt
         # DNSレコード追加のために検知するKubernetesリソースを設定する
         - --source=service
         - --source=ingress
         # DNSゾーン (例：AWS Route53のホストゾーン) を設定する
         - --domain-filter=example.com
-        - --provider=aws
         # Ingressからルールを削除した場合に、対応するAWSリソース (ALBリスナールール、Route53 DNSレコード) も削除する
         - --policy=sync
-        # DNSゾーンタイプを設定する
-        - --aws-zone-type=public
-        - --registry=txt
+        - --provider=aws
         - --txt-owner-id=external-dns
       env:
         - name: AWS_DEFAULT_REGION
