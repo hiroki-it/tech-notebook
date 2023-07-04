@@ -41,6 +41,8 @@ flowchart LR
     pagerDuty -...-> aws
 ```
 
+<br>
+
 > ↪️：https://mermaid.js.org/syntax/flowchart.html?id=flowcharts-basic-syntax
 
 ## Gitグラフ
@@ -76,6 +78,8 @@ gitGraph
 %%{init:{'theme':'default'}}%%
 gantt
   title プロジェクトのスケジュール
+  %% 現在の日時を表示する
+  dateFormat MM-DD
 
   section インフラ
     設計 : 07-01, 07-14
