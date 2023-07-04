@@ -406,7 +406,7 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 - Pluralith
 
 > ↪️：
-> 
+>
 > - https://gkzz.dev/posts/alternative-terraform-graph/
 > - https://dev.classmethod.jp/articles/terraform-visualise-pluralith/
 

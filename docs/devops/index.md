@@ -16,7 +16,9 @@
 * #### <u>CI/CD</u>
 > * ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html)
 
-* #### [︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation.html)
+* #### <u>︎ドキュメンテーション</u>
+> * ##### [︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation.html)
+> * ##### [Mermaid](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation_mermaid.html)
 
 <br>
 
