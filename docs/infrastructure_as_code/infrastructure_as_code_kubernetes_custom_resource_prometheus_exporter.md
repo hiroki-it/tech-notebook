@@ -70,11 +70,11 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 
 #### ▼ Deploymentパターン
 
-| Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                                                                            | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
-| :--------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ------------ |
+| Exporter名                                                                               | 説明                                                                                                                                                                                                                                                        | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
+| :--------------------------------------------------------------------------------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------------------ | ---------------------- | ------------ |
 | [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>↪️：<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/ | `8080`             | 同上                   | `kube_*`     |
-| [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)                     | 指定したプロトコルで外形監視を実施する。リクエストの成否以外にも、各種メトリクス (レスポンス時間、HTTPステータス、など) を収集できる。<br>↪️：https://handon.hatenablog.jp/entry/2019/01/29/005935                                                                                                                              | `9115`             | 同上                   |              |
-| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                     | `9114`             | 同上                   |              |
+| [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)                     | 指定したプロトコルで外形監視を実施する。リクエストの成否以外にも、各種メトリクス (レスポンス時間、HTTPステータス、など) を収集できる。<br>↪️：<br>・https://handon.hatenablog.jp/entry/2019/01/29/005935 <br>・https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5                                                                                                             | `9115`             | 同上                   |              |
+| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                      | `9114`             | 同上                   |              |
 
 #### ▼ Pod内サイドカーパターン
 
@@ -117,7 +117,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheu
 
 <br>
 
-## 02. kube-state-metrics
+## 02. Blackbox exporter
 
 ### セットアップ
 
@@ -132,8 +132,26 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
+$ helm install <リリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
+```
 
-# kube-state-metricsの場合
+<br>
+
+## 03. kube-state-metrics
+
+### セットアップ
+
+#### ▼ チャートとして
+
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+
+$ helm repo update
+
+$ kubectl create namespace prometheus
+
 $ helm install <リリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
 ```
 
@@ -181,7 +199,7 @@ kube_pod_info
 
 <br>
 
-## 03. MySQL exporter
+## 04. MySQL exporter
 
 ### セットアップ
 
@@ -196,7 +214,6 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-# mysql-exporterの場合
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
 ```
 
@@ -228,7 +245,7 @@ postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version=
 
 <br>
 
-## 04. Node exporter
+## 05. Node exporter
 
 ### セットアップ
 
@@ -265,7 +282,6 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-# Node exporterの場合
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
 ```
 
@@ -403,7 +419,7 @@ node_network_receive_packets_total
 
 <br>
 
-## 05. PostgreSQL exporter
+## 06. PostgreSQL exporter
 
 ### メトリクスの一覧
 

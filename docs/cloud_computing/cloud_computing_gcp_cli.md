@@ -204,6 +204,35 @@ $ gcloud auth revoke foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 
 `gcloud`コマンドのコンポーネントを管理する。
 
+#### ▼ install
+
+`gcloud`コマンドのコンポーネントをインストールする。
+
+```bash
+$ gcloud components install
+```
+
+別途、コンポーネントを読みこむ必要がある。
+
+```bash
+$ brew info google-cloud-sdk
+
+To add gcloud components to your PATH, add this to your profile:
+
+  for bash users
+    source "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
+
+  for zsh users
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+  for fish users
+    source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
+
+```
+
+> ↪️：https://stackoverflow.com/a/74733176
+
 #### ▼ update
 
 `gcloud`コマンドのコンポーネントをアップグレードする。
