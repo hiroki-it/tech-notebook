@@ -433,6 +433,60 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 
 <br>
 
+### modify
+
+#### ▼ modifyプラグインとは
+
+ログが構造化ログの場合、ログの構造を変更する。
+
+#### ▼ セットアップ
+
+変更前の構造化ログが以下だとする。
+
+```bash
+[0] memory: [1488543156, {"Mem.total"=>1016044, "Mem.used"=>841388, "Mem.free"=>174656, "Swap.total"=>2064380, "Swap.used"=>139888, "Swap.free"=>1924492}]
+...
+```
+
+FILTERセクションで、modifyプラグインを定義する。
+
+```bash
+[INPUT]
+    Name mem
+    Tag  mem.local
+
+[OUTPUT]
+    Name  stdout
+    Match *
+
+[FILTER]
+    Name modify
+    Match *
+
+    # キーとその値を構造化ログに追加する。
+    Add Service1 SOMEVALUE
+    Add Service3 SOMEVALUE3
+    Add Mem.total2 TOTALMEM2
+    Add Mem.total TOTALMEM
+
+    # マッチしたキー名を変更する。
+    Rename Mem.free MEMFREE
+    Rename Mem.used MEMUSED
+    Rename Swap.total SWAPTOTAL
+```
+
+以下の構造化ログに変更される。
+
+```bash
+[2018/04/06 01:35:13] [ info] [engine] started
+[0] mem.local: [1522980610.006892802, {"Mem.total"=>4050908, "MEMUSED"=>738100, "MEMFREE"=>3312808, "SWAPTOTAL"=>1046524, "Swap.used"=>0, "Swap.free"=>1046524, "Service1"=>"SOMEVALUE", "Service3"=>"SOMEVALUE3", "Mem.total2"=>"TOTALMEM2"}]
+...
+```
+
+> ↪️：https://docs.fluentbit.io/manual/pipeline/filters/modify#configuration-file
+
+<br>
+
 ### modifyプラグイン
 
 #### ▼ modifyプラグインとは

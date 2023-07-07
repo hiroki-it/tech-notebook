@@ -437,7 +437,8 @@ PARSERセクションでコンテナ名を抽出したおかげで、STREAM_TASK
 # WHERE句でコンテナ名を指定
 [STREAM_TASK]
     Name foo-stream-task
-    Exec CREATE STREAM bar WITH (tag='foo') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
+    # SELECT句の結果に、WITH句でfooタグを付与し、fooデータストリームを作成する。
+    Exec CREATE STREAM foo WITH (tag='foo') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
 ```
 
 <br>
@@ -490,19 +491,19 @@ FireLensコンテナで処理中のログのタグ名は『`<コンテナ名>-fi
 
 補足として、STREAM_TASKでタグ付けされたログは、INPUTから再び処理し直される。
 
-> ↪️：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
-
 ＊実装例＊
 
 ```bash
 # laravelコンテナのログへのタグ付け
 [STREAM_TASK]
     Name laravel
+    # SELECT句の結果に、WITH句でfooタグを付与し、laravelデータストリームを作成する。
     Exec CREATE STREAM laravel WITH (tag='foo') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
 
 # nginxコンテナのログへのタグ付け
 [STREAM_TASK]
     Name nginx
+    # SELECT句の結果に、WITH句でbarタグを付与し、nginxデータストリームを作成する。
     Exec CREATE STREAM nginx WITH (tag='bar') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'bar';
 
 # 全てのコンテナのログへのタグ付け
@@ -516,5 +517,7 @@ FireLensコンテナで処理中のログのタグ名は『`<コンテナ名>-fi
     ...
     Streams_File stream_processor.conf
 ```
+
+> ↪️：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 <br>

@@ -87,7 +87,7 @@ RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の`4`個を使
 | GET          | `https://example.com/users`      | ・全データのインデックス取得<br>・条件に基づくデータの取得                       | index           |
 |              | `https://example.com/users/{id}` | IDに基づくデータの取得                                                           | show            |
 | POST         | `https://example.com/users`      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン/ログアウト | create、store   |
-| PUT`         | `https://example.com/users/{id}` | データの更新 (置換)                                                              | update          |
+| PUT          | `https://example.com/users/{id}` | データの更新 (置換)                                                              | update          |
 | DELETE       | `https://example.com/users/{id}` | データの削除                                                                     | delete、destroy |
 
 > ↪️：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
@@ -406,7 +406,7 @@ APIキーのヘッダー名の頭文字に『`X`』を付けるのは、独自�
 POST https://example.com
 ---
 # Authorizationヘッダー
-authorization: Bearer ${Token}
+authorization: Bearer <トークン>
 # APIキーヘッダー
 x-api-key: *****
 ```

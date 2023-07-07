@@ -574,6 +574,20 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 ## 08. string型の関数
 
+### contains
+
+指定した文字列が含まれているかを検証する。
+
+```yaml
+{{- if contains .Values.env "prd"}}
+... # prd という文字が含まれている場合
+
+{{- else}}
+... # prd という文字が含まれていない場合
+
+{{- end}}
+```
+
 ### printf
 
 #### ▼ printfとは
