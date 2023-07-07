@@ -139,25 +139,87 @@ $ helm install <リリース名> <チャートリポジトリ名>/prometheus-bla
 
 <br>
 
-### config.yml
+### module
 
+#### ▼ http
 
-#### ▼ http_2xx
+外形監視でHTTPリクエストを送信する。
 
-外形監視にて、HTTPプロトコルでGETリクエストを送信する。
+```yaml
+modules:
+  <好きな名前>:
+    prober: http
+    http: ...
+```
+
+#### ▼ tcp
+
+外形監視でTCPリクエストを送信する。
+
+```yaml
+modules:
+  <好きな名前>:
+    prober: tcp
+    tcp: ...
+```
+
+#### ▼ dns
+
+外形監視でHTTPリクエストを送信する。
+
+```yaml
+modules:
+  <好きな名前>:
+    prober: dns
+    dns: ...
+```
+
+#### ▼ icmp
+
+外形監視でICMPリクエストを送信する。
+
+```yaml
+modules:
+  <好きな名前>:
+    prober: icmp
+    http: ...
+```
+
+#### ▼ grpc
+
+外形監視でgRPCリクエストを送信する。
+
+```yaml
+modules:
+  <好きな名前>:
+    prober: grpc
+    http: ...
+```
+
+<br>
+
+### http probe
+
+#### ▼ GETリクエストの場合
+
+外形監視でGETリクエストを送信する。
 
 ```yaml
 modules:
   # GETの場合
-  http_2xx:
+  http_2xx_get:
+    # HTTPプロトコルを使用する
     prober: http
     timeout: 5s
+    # http probe
     http:
       # レスポンスの期待ステータスコード
       valid_http_versions:
         - HTTP/1.1
         - HTTP/2.0
+      # 優先するIPアドレスの種類
       preferred_ip_protocol: ip4
+      # IPV6が使えない場合に、IPv4に切り替える
       ip_protocol_fallback: true
       follow_redirects: true
     tcp:
@@ -169,25 +231,32 @@ modules:
       recursion_desired: true
 ```
 
-> ↪️：https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
+> ↪️：
+>
+> - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
+> - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
 
-#### ▼ http_post_2xx
+#### ▼ POSTリクエストの場合
 
 外形監視にて、HTTPプロトコルでPOSTリクエストを送信する。
 
 ```yaml
 # POSTの場合
-http_post_2xx:
+http_2xx_post:
+  # HTTPプロトコルを使用する
   prober: http
   timeout: 30s
+  # http probe
   http:
     # レスポンスの期待ステータスコード
     valid_status_codes:
       - 200
+    # IPV6が使えない場合に、IPv4に切り替える
     ip_protocol_fallback: true
     method: POST
     # リクエストヘッダー
     headers:
+      # データ形式
       Accept: application/json
       # 入力フォームへのデータ送信に必要
       Content-Type: application/x-www-form-urlencode
@@ -201,8 +270,10 @@ http_post_2xx:
     recursion_desired: true
 ```
 
-> ↪️：https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
-
+> ↪️：
+>
+> - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
+> - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
 
 <br>
 
