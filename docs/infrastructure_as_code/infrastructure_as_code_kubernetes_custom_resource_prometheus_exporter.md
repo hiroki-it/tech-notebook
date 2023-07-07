@@ -70,11 +70,11 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 
 #### ▼ Deploymentパターン
 
-| Exporter名                                                                               | 説明                                                                                                                                                                                                                                                        | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
-| :--------------------------------------------------------------------------------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------------------ | ---------------------- | ------------ |
-| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>↪️：<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/ | `8080`             | 同上                   | `kube_*`     |
-| [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)                     | 指定したプロトコルで外形監視を実施する。リクエストの成否以外にも、各種メトリクス (レスポンス時間、HTTPステータス、など) を収集できる。<br>↪️：<br>・https://handon.hatenablog.jp/entry/2019/01/29/005935 <br>・https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5                                                                                                             | `9115`             | 同上                   |              |
-| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                      | `9114`             | 同上                   |              |
+| Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                                                                                | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
+| :--------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ------------ |
+| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>↪️：<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/     | `8080`             | 同上                   | `kube_*`     |
+| [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)                     | 指定したプロトコルで外形監視を実施する。リクエストの成否以外にも、各種メトリクス (レスポンス時間、HTTPステータス、など) を収集できる。<br>↪️：<br>・https://handon.hatenablog.jp/entry/2019/01/29/005935 <br>・https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5 | `9115`             | 同上                   |              |
+| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                         | `9114`             | 同上                   |              |
 
 #### ▼ Pod内サイドカーパターン
 
@@ -132,8 +132,77 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
+$ helm install <リリース名> <チャートリポジトリ名>/prometheus-blackbox-exporter -n prometheus --version <バージョンタグ>
 ```
+
+> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart
+
+<br>
+
+### config.yml
+
+
+#### ▼ http_2xx
+
+外形監視にて、HTTPプロトコルでGETリクエストを送信する。
+
+```yaml
+modules:
+  # GETの場合
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      # レスポンスの期待ステータスコード
+      valid_http_versions:
+        - HTTP/1.1
+        - HTTP/2.0
+      preferred_ip_protocol: ip4
+      ip_protocol_fallback: true
+      follow_redirects: true
+    tcp:
+      ip_protocol_fallback: true
+    icmp:
+      ip_protocol_fallback: true
+    dns:
+      ip_protocol_fallback: true
+      recursion_desired: true
+```
+
+> ↪️：https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
+
+#### ▼ http_post_2xx
+
+外形監視にて、HTTPプロトコルでPOSTリクエストを送信する。
+
+```yaml
+# POSTの場合
+http_post_2xx:
+  prober: http
+  timeout: 30s
+  http:
+    # レスポンスの期待ステータスコード
+    valid_status_codes:
+      - 200
+    ip_protocol_fallback: true
+    method: POST
+    # リクエストヘッダー
+    headers:
+      Accept: application/json
+      # 入力フォームへのデータ送信に必要
+      Content-Type: application/x-www-form-urlencode
+    follow_redirects: true
+  tcp:
+    ip_protocol_fallback: true
+  icmp:
+    ip_protocol_fallback: true
+  dns:
+    ip_protocol_fallback: true
+    recursion_desired: true
+```
+
+> ↪️：https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
+
 
 <br>
 
