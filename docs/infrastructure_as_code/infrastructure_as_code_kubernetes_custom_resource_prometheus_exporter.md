@@ -206,8 +206,8 @@ modules:
 
 ```yaml
 modules:
-  # GETの場合
-  http_2xx_get:
+  # GETの場合 (HTTPS)
+  https_2xx_get:
     # HTTPプロトコルを使用する
     prober: http
     timeout: 5s
@@ -229,6 +229,24 @@ modules:
     dns:
       ip_protocol_fallback: true
       recursion_desired: true
+
+  # GETの場合 (HTTPS)
+  http_2xx_get:
+    # HTTPプロトコルを使用する
+    prober: http
+    timeout: 5s
+    # http probe
+    http:
+      # レスポンスの期待ステータスコード
+      valid_http_versions:
+        - HTTP/1.1
+      # 優先するIPアドレスの種類
+      preferred_ip_protocol: ip4
+      # IPV6が使えない場合に、IPv4に切り替える
+      ip_protocol_fallback: true
+      tls_config:
+        # SSL証明書を任意にする
+        insecure_skip_verify: true
 ```
 
 > ↪️：
@@ -241,33 +259,34 @@ modules:
 外形監視にて、HTTPプロトコルでPOSTリクエストを送信する。
 
 ```yaml
-# POSTの場合
-http_2xx_post:
-  # HTTPプロトコルを使用する
-  prober: http
-  timeout: 30s
-  # http probe
-  http:
-    # レスポンスの期待ステータスコード
-    valid_status_codes:
-      - 200
-    # IPV6が使えない場合に、IPv4に切り替える
-    ip_protocol_fallback: true
-    method: POST
-    # リクエストヘッダー
-    headers:
-      # データ形式
-      Accept: application/json
-      # 入力フォームへのデータ送信に必要
-      Content-Type: application/x-www-form-urlencode
-    follow_redirects: true
-  tcp:
-    ip_protocol_fallback: true
-  icmp:
-    ip_protocol_fallback: true
-  dns:
-    ip_protocol_fallback: true
-    recursion_desired: true
+modules:
+  # POSTの場合
+  http_2xx_post:
+    # HTTPプロトコルを使用する
+    prober: http
+    timeout: 30s
+    # http probe
+    http:
+      # レスポンスの期待ステータスコード
+      valid_status_codes:
+        - 200
+      # IPV6が使えない場合に、IPv4に切り替える
+      ip_protocol_fallback: true
+      method: POST
+      # リクエストヘッダー
+      headers:
+        # データ形式
+        Accept: application/json
+        # 入力フォームへのデータ送信に必要
+        Content-Type: application/x-www-form-urlencode
+      follow_redirects: true
+    tcp:
+      ip_protocol_fallback: true
+    icmp:
+      ip_protocol_fallback: true
+    dns:
+      ip_protocol_fallback: true
+      recursion_desired: true
 ```
 
 > ↪️：
