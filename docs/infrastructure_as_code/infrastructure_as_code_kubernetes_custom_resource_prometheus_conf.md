@@ -129,7 +129,7 @@ scrape_configs:
   - job_name: prometheus
     static_configs:
       - targets:
-          - localhost:9090'
+          - 127.0.0.1:9090'
         labels:
           cluster: prd
   # Node exporterの稼働するサーバーを監視する。

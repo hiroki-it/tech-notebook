@@ -140,7 +140,7 @@ $ docker run \
 ```bash
 # ハンドラー関数の引数に合ったJSON型データを送信する。
 $ curl \
-    -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+    -XPOST "http://127.0.0.1:9000/2015-03-31/functions/function/invocations" \
     -d '{}'
 ```
 
@@ -173,7 +173,7 @@ docker compose up lambda
 
 ```bash
 $ curl \
-    -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+    -XPOST "http://127.0.0.1:9000/2015-03-31/functions/function/invocations" \
     -d '{}'
 ```
 

@@ -406,12 +406,12 @@ server_name example.com;
 server_name 192.168.0.0;
 ```
 
-注意点として、同じIPアドレスからのインバウンド通信のみを受信する場合は、インバウンド通信の`Host`ヘッダーの値は常に`localhost` (`127.0.0.1`) であるため、`localhost`を設定できる。
+注意点として、同じIPアドレスからのインバウンド通信のみを受信する場合は、インバウンド通信の`Host`ヘッダーの値は常に`127.0.0.1` (`127.0.0.1`) であるため、`127.0.0.1`を設定できる。
 
-`127.0.0.1`としても良いが、`localhost`のIPアドレスが`127.0.0.1`でない場合も考慮して、`localhost`とした方が良い。
+`127.0.0.1`としても良いが、`127.0.0.1`のIPアドレスが`127.0.0.1`でない場合も考慮して、`127.0.0.1`とした方が良い。
 
 ```nginx
-server_name localhost;
+server_name 127.0.0.1;
 ```
 
 #### ▼ ssl
@@ -511,7 +511,7 @@ location / {
 # 内部リダイレクト後は、『/index.php?foo=bar』のため、以下で処理される。
 location ~ \.php$ {
     # php-fpmにルーティングされる。
-    fastcgi_pass  localhost:9000;
+    fastcgi_pass  127.0.0.1:9000;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include       fastcgi_params;
 }
@@ -657,7 +657,7 @@ FastCGIプロトコルでインバウンド通信をルーティングする場�
 **＊実装例＊**
 
 ```nginx
-fastcgi_pass localhost:9000;
+fastcgi_pass 127.0.0.1:9000;
 ```
 
 <br>
@@ -675,7 +675,7 @@ HTTPプロトコルでインバウンド通信をルーティングする場合�
 **＊実装例＊**
 
 ```nginx
-proxy_pass http://localhost:80;
+proxy_pass http://127.0.0.1:80;
 ```
 
 <br>

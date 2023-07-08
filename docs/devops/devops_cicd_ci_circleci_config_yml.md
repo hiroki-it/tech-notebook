@@ -1360,7 +1360,7 @@ jobs:
           name: Wait for MySQL to be ready
           command: |
             # 代わりにsleepコマンドでも良い。
-            dockerize -wait tcp://localhost:3306 -timeout 1m
+            dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
       # コンテナに対してDBマイグレーションコマンドを送信
       - run:
           name: Run artisan migration

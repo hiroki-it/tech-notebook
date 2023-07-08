@@ -86,7 +86,7 @@ $ curl \
     -X PUT \
     -H 'Content-Type:application/json' \
     --data-binary @subordinates.json \
-    localhost:8181/v1/data/subordinates
+    127.0.0.1:8181/v1/data/subordinates
 ```
 
 #### ▼ 認可スコープの定義
@@ -131,7 +131,7 @@ $ curl \
     -X PUT \
     -H 'Content-Type: text/plain'\
     --data-binary @httpapi_authz.rego \
-    localhost:8181/v1/policies/httpapi_authz
+    127.0.0.1:8181/v1/policies/httpapi_authz
 ```
 
 #### ▼ 認可スコープのリクエスト
@@ -161,7 +161,7 @@ $ curl \
     -X POST \
     -H 'Content-Type:application/json' \
     --data-binary @request.json \
-    localhost:8181/v1/data/httpapi/authz/allow | jq .
+    127.0.0.1:8181/v1/data/httpapi/authz/allow | jq .
 
 {
   "result": true

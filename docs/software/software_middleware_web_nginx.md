@@ -79,7 +79,7 @@ server {
     # 動的ファイルであればwebサーバーにルーティング
     #-------------------------------------
     location / {
-        proxy_pass http://localhost:8080;
+        proxy_pass http://127.0.0.1:8080;
     }
 }
 ```
@@ -124,7 +124,7 @@ server {
     #--------------------------------------------------
     location ~ \.php$ {
         # ルーティング先のTCPソケット
-        fastcgi_pass   localhost:9000;
+        fastcgi_pass   127.0.0.1:9000;
         # もしくは、Unixドメインソケット
         # fastcgi_pass unix:/run/php-fpm/www.sock;
 

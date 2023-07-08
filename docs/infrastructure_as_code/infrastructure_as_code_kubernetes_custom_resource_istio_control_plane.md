@@ -372,11 +372,11 @@ tcp6       0      0 :::15014                :::*                    LISTEN      
 # ポートフォワーディングを実行する。
 $ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system
 
-$ go tool pprof -http=:8080 localhost:15014/debug/pprof/heap
+$ go tool pprof -http=:8080 127.0.0.1:15014/debug/pprof/heap
 
-Fetching profile over HTTP from http://localhost:15014/debug/pprof/heap
+Fetching profile over HTTP from http://127.0.0.1:15014/debug/pprof/heap
 Saved profile in /Users/hiroki-hasegawa/pprof/pprof.pilot-discovery.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
-Serving web UI on http://localhost:8080
+Serving web UI on http://127.0.0.1:8080
 
 # どのパッケージでどのくらいハードウェアリソースを消費しているか
 $ curl http://127.0.0.1:8080/ui/flamegraph?si=alloc_objects

@@ -582,7 +582,7 @@ $ kubectl proxy
 : ダッシュボードに接続する。
 
 ```yaml
-GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
+GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
 ```
 
 #### ▼ ワーカーNodeへの接続

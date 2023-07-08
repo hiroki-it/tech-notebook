@@ -257,8 +257,8 @@ services:
 ```bash
 $ cat /etc/hosts
 
-127.0.0.1       localhost
-::1     localhost ip6-localhost ip6-loopback
+127.0.0.1       127.0.0.1
+::1     127.0.0.1 ip6-127.0.0.1 ip6-loopback
 fe00::0 ip6-localnet
 ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
@@ -291,8 +291,8 @@ services:
 ```bash
 $ cat /etc/hosts
 
-127.0.0.1       localhost
-::1     localhost ip6-localhost ip6-loopback
+127.0.0.1       127.0.0.1
+::1     127.0.0.1 ip6-127.0.0.1 ip6-loopback
 fe00::0 ip6-localnet
 ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
@@ -337,7 +337,7 @@ services:
     logging:
       driver: fluentd
       options:
-        fluentd-address: localhost:24224
+        fluentd-address: 127.0.0.1:24224
         tag: app
     depends_on:
       - log_router

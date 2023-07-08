@@ -279,6 +279,8 @@ modules:
         Accept: application/json
         # 入力フォームへのデータ送信に必要
         Content-Type: application/x-www-form-urlencode
+      # メッセージボディ
+      body: "{}"
       follow_redirects: true
     tcp:
       ip_protocol_fallback: true
@@ -292,6 +294,7 @@ modules:
 > ↪️：
 >
 > - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
+> - https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter
 > - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
 
 <br>
@@ -325,7 +328,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/kube-state-met
 Node exporterの場合は、Nodeの『`127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
-$ curl http://217.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics
+$ curl http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics
 
 ...
 
@@ -388,7 +391,7 @@ PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9104/metrics`』をコー
 
 ```bash
 # Node内でコールする。
-$ curl http://localhost:9104/metrics
+$ curl http://127.0.0.1:9104/metrics
 
 ...
 
@@ -588,7 +591,7 @@ PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9187/metrics`』をコー
 
 ```bash
 # Node内でコールする。
-$ curl http://localhost:9187/metrics
+$ curl http://127.0.0.1:9187/metrics
 
 ...
 
@@ -690,7 +693,7 @@ Process exporterの場合は、Nodeの『`127.0.0.1:9256/metrics`』をコール
 
 ```bash
 # Node内でコールする。
-$ curl http://localhost:9256/metrics
+$ curl http://127.0.0.1:9256/metrics
 
 ...
 
@@ -713,7 +716,7 @@ Redis exporterの場合は、Nodeの『`127.0.0.1:9121/metrics`』をコール�
 
 ```bash
 # Node内でコールする。
-$ curl http://localhost:9121/metrics
+$ curl http://127.0.0.1:9121/metrics
 
 ...
 
