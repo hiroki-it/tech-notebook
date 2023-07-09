@@ -19,8 +19,6 @@ Ansible自体を設定する。
 
 代わりに、環境変数を使用しても良い。
 
-> ↪️：
->
 > - http://yamada.daiji.ro/blog/?p=618
 > - https://docs.ansible.com/ansible/2.9_ja/reference_appendices/general_precedence.html#id2
 
@@ -84,8 +82,6 @@ private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 host_key_checking = False
 ```
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking
 > - https://tekunabe.hatenablog.jp/entry/2021/01/17/ansible_stumble_26
 
@@ -104,8 +100,6 @@ host_key_checking = False
 host_pattern_mismatch = error
 ```
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-pattern-mismatch
 > - https://zenn.dev/akira6592/scraps/24a748660fdea4
 

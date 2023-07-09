@@ -9,7 +9,7 @@ description: CloudFormation＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,8 +39,6 @@ StackSetsを使用すると、複数のリージョンのみでなく、複数�
 
 ![cloudformation_stacksets](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudformation_stacksets.png)
 
-> ↪️ 参考：
->
 > - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html
 > - https://dev.classmethod.jp/articles/introducing-cloudformation-stacksets/clou
 
@@ -87,7 +85,7 @@ Resources:
       Addresses: !Ref AllowAddresses
 ```
 
-> ↪️ 参考：https://dev.classmethod.jp/articles/cloudfromation-used-commadelimitedlist/
+> - https://dev.classmethod.jp/articles/cloudfromation-used-commadelimitedlist/
 
 <br>
 
@@ -95,6 +93,6 @@ Resources:
 
 特定のスタックで作成されたリソース値を他のスタックで使用できるようにする。
 
-> ↪️ 参考：https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
+> - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
 
 <br>

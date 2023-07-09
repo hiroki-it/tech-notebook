@@ -21,8 +21,6 @@ description: PromQL＠メトリクス
 
 特定の時点の時系列データのこと。
 
-> ↪️：
->
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#instant-vector-selectors
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
@@ -30,8 +28,6 @@ description: PromQL＠メトリクス
 
 特定の期間の時系列データのこと。
 
-> ↪️：
->
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
@@ -39,8 +35,6 @@ description: PromQL＠メトリクス
 
 浮動小数点の数値型データのこと。
 
-> ↪️：
->
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#float-literals
 
@@ -48,8 +42,6 @@ description: PromQL＠メトリクス
 
 文字列型データのこと。
 
-> ↪️：
->
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#string-literals
 
@@ -159,8 +151,6 @@ rate(<メトリクス名>[1h])
 rate(<メトリクス名>[5m])
 ```
 
-> ↪️：
->
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
 > - https://christina04.hatenablog.com/entry/prometheus-rate
 > - https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#3-0-range-vector%E3%81%A8instant-vector>
@@ -267,8 +257,6 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="foo-prometheus-service"} <算出値>
 ```
 
-> ↪️：
->
 > - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
 > - https://www.robustperception.io/how-much-space-does-the-wal-take-up/
 > - https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4

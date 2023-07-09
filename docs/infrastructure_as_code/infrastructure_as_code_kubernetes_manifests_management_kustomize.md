@@ -103,8 +103,6 @@ spec:
 
 `overlays`ディレクトリ配下にあるファイルの処理方法を設定する。
 
-> ↪️：
->
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 > - https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d
 
@@ -178,8 +176,6 @@ Generator (例：SecretGenerator、ConfigMapGenerator) のプラグインは、�
 
 一歩でTransformerは、マニフェストを部分的に書き換える。
 
-> ↪️：
->
 > - https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md
 > - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
 > - https://www.techscore.com/blog/2019/08/01/change-kustomize-build-behavior/
@@ -217,8 +213,6 @@ viaduct.ai/v1/ksops/ksops
 
 SOPSを使用して、復号化したデータをSecretにデータを注入する。
 
-> ↪️：
->
 > - https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling
 > - https://github.com/viaduct-ai/kustomize-sops/issues/117#issuecomment-852174964
 > - https://github.com/viaduct-ai/kustomize-sops/blob/master/Dockerfile

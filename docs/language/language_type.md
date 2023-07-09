@@ -21,8 +21,6 @@ description: 言語の種類＠言語を記録しています。
 
 ![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プログラミング言語と設計手法の歴史.png)
 
-> ↪️：
->
 > - https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
 > - https://umtp-japan.org/event-seminar/4233
@@ -52,8 +50,6 @@ description: 言語の種類＠言語を記録しています。
 | Scala      |          |        |         ✅         |        |   ✅   |   ✅   |        |
 | SQL        |          |        |                    |        |   ✅   |        |        |
 
-> ↪️：
->
 > - https://web-camp.io/magazine/archives/61816
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
 > - https://style.potepan.com/articles/12941.html

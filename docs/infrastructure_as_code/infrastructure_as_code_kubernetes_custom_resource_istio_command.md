@@ -73,8 +73,6 @@ Istioの機能のセットを提供する。
 | istio-ingressgateway |    ✅    |    ✅    |                 なし                  |   なし   |         なし         |    ？     |   ✅    |   ？   |
 | istiod               |    ✅    |    ✅    |                 なし                  |   なし   |          ✅          |    ？     |   ✅    |   ？   |
 
-> ↪️：
->
 > - https://github.com/istio/istio/tree/master/manifests/profiles
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 > - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
@@ -262,8 +260,6 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0          Deployment/istiod-1-1
 
 代わりに、`enabled`値が割り当てられた`.metadata.labels,istio-injection`キーをNamespaceに付与しても良い。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
 
@@ -352,8 +348,6 @@ Istio上で管理されるEnvoyの構成情報を取得する。
 $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
 > - https://sreake.com/blog/istio/
@@ -487,8 +481,6 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 ...
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
 
@@ -518,8 +510,6 @@ $ istioctl proxy-config cluster foo-pod \
     serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 > - https://www.amazon.co.jp/Istio-Action-Christian-Posta/dp/1617295825
 
@@ -869,8 +859,6 @@ Namespaceの`.metadata.labels.istio.io/rev`キーの値を書き換えずにア�
 
 具体的には、MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を操作する。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 > - https://fabianlee.org/2021/09/20/istio-canary-upgrade-of-operator-between-istio-1-7-and-1-8/

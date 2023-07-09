@@ -9,7 +9,7 @@ description: CloudLogging＠GCPリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,8 +33,6 @@ Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を
 | ログルーター、シンク | 合致した文字列を持つログをトリガーとして、指定したPub/Subトピックに振り分ける。                                                |
 | ログストレージ       | ログを保管する。                                                                                                               |
 
-> ↪️ 参考：
->
 > - https://cloud.google.com/logging/docs
 > - https://blog.querier.io/posts/detail/1cgugqqa1ujf/
 
@@ -109,8 +107,6 @@ Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を
 }
 ```
 
-> ↪️ 参考：
->
 > - https://cloud.google.com/logging/docs/structured-logging?hl=ja#special-payload-fields
 > - https://qiita.com/ys_nishida/items/8b5274d8f3ec740ffa16
 
@@ -120,7 +116,7 @@ Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を
 
 #### ▼ レシピ
 
-> ↪️ 参考：https://cloud.google.com/logging/docs/view/query-library#container_queries
+> - https://cloud.google.com/logging/docs/view/query-library#container_queries
 
 #### ▼ テキスト検索
 
@@ -138,8 +134,6 @@ foo-pod
 resource.labels.pod_name=~"foo-pod-.*"
 ```
 
-> ↪️ 参考：
->
 > - https://cloud.google.com/logging/docs/view/logging-query-language#regular-expressions
 > - https://stackoverflow.com/questions/71922754/google-cloud-platform-logging-how-to-search-wildcard-strings-in-all-logs
 

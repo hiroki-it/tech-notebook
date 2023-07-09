@@ -53,8 +53,6 @@ alerting:
             - alertmanager:9093
 ```
 
-> ↪️：
->
 > - https://amateur-engineer-blog.com/alertmanager-docker-compose/
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
 
@@ -156,8 +154,6 @@ scrape_configs:
           cluster: prd
 ```
 
-> ↪️：
->
 > - https://stackoverflow.com/a/55700165
 > - https://stackoverflow.com/a/48021873
 
@@ -203,8 +199,6 @@ scrape_configs:
         action: keep
 ```
 
-> ↪️：
->
 > - https://changineer.info/server/monitoring/monitoring_prometheus_discovery_kubernetes.html
 > - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
 > - https://christina04.hatenablog.com/entry/prometheus-service-discovery
@@ -291,8 +285,6 @@ receivers:
       - routing_key: *****
 ```
 
-> ↪️：
->
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
 

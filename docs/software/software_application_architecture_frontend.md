@@ -91,8 +91,6 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 | Rendering                      | サーバー |
 | Paiting                        | ブラウザ |
 
-> ↪️：
->
 > - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
 > - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
 
@@ -106,8 +104,6 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 
 広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでSPAとして動作する。
 
-> ↪️：
->
 > - https://qiita.com/rita0222/items/66fec6e7be5987bace3c
 > - https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89<br>
 

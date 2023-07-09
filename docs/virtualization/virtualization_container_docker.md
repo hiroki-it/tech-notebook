@@ -54,8 +54,6 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 }
 ```
 
-> ↪️：
->
 > - https://www.creationline.com/lab/35518
 > - https://tech-lab.sios.jp/archives/21103#OverlayFS
 
@@ -151,8 +149,6 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
  }
 ```
 
-> ↪️：
->
 > - https://docs.docker.com/config/containers/logging/fluentd/
 > - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 

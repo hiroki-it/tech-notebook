@@ -25,8 +25,6 @@ Pull型通信により、アプリケーションはPrometheusの存在を知る
 
 また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
-> ↪️：
->
 > - https://openstandia.jp/oss_info/prometheus
 > - https://danielfm.me/prometheus-for-developers/
 
@@ -55,8 +53,6 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 | Pod内サイドカーパターン | Pod内にサイドカーとして配置する。                |
 | 埋め込み型パターン      | ライブラリとして、アプリケーション内に埋め込む。 |
 
-> ↪️：
->
 > - https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
 > - https://prometheus.io/docs/instrumenting/exporters/
 > - https://grafana.com/oss/prometheus/exporters/
@@ -70,11 +66,11 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 
 #### ▼ Deploymentパターン
 
-| Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                                                                                | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
-| :--------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ------------ |
+| Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                                                                        | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
+| :--------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ------------ |
 | [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/     | `8080`             | 同上                   | `kube_*`     |
 | [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)                     | 指定したプロトコルで外形監視を実施する。リクエストの成否以外にも、各種メトリクス (レスポンス時間、HTTPステータス、など) を収集できる。<br>・https://handon.hatenablog.jp/entry/2019/01/29/005935 <br>・https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5 | `9115`             | 同上                   |              |
-| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                         | `9114`             | 同上                   |              |
+| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                 | `9114`             | 同上                   |              |
 
 #### ▼ Pod内サイドカーパターン
 
@@ -249,8 +245,6 @@ modules:
         insecure_skip_verify: true
 ```
 
-> ↪️：
->
 > - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
 > - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
 
@@ -291,8 +285,6 @@ modules:
       recursion_desired: true
 ```
 
-> ↪️：
->
 > - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
 > - https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter
 > - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
@@ -338,8 +330,6 @@ kube_pod_info
 ...
 ```
 
-> ↪️：
->
 > - https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics
 > - https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/
 
@@ -400,8 +390,6 @@ postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version=
 ...
 ```
 
-> ↪️：
->
 > - https://grafana.com/oss/prometheus/exporters/postgres-exporter/
 > - https://grafana.com/oss/prometheus/exporters/postgres-exporter/assets/postgres_metrics_scrape.txt
 
@@ -482,8 +470,6 @@ node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da7
 ...
 ```
 
-> ↪️：
->
 > - https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
 > - https://grafana.com/oss/prometheus/exporters/node-exporter/assets/node_exporter_sample_scrape.txt
 
@@ -543,8 +529,6 @@ Nodeのディスク使用率を取得する。
 rate(node_disk_io_time_seconds_total[1m])
 ```
 
-> ↪️：
->
 > - https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc
 > - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
 > - https://www.qoosky.io/techs/42affa2c4b
@@ -600,8 +584,6 @@ mysqld_exporter_build_info{branch="HEAD",goversion="go1.12.7",revision="48667bf7
 ...
 ```
 
-> ↪️：
->
 > - https://grafana.com/oss/prometheus/exporters/mysql-exporter/
 > - https://grafana.com/oss/prometheus/exporters/mysql-exporter/assets/mysql_metrics_scrape.txt
 
@@ -631,8 +613,6 @@ pg_up == 0
 time() - pg_postmaster_start_time_seconds
 ```
 
-> ↪️：
->
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
 > - https://www.oreilly.com/library/view/postgresql-9-administration/9781849519069/ch02s03.html
 > - https://www.ashisuto.co.jp/db_blog/article/20151221_pg_monitoring.html
@@ -725,8 +705,6 @@ redis_exporter_build_info{build_date="2021-03-11-03:26:58",commit_sha="d0597c841
 ...
 ```
 
-> ↪️：
->
 > - https://grafana.com/oss/prometheus/exporters/redis-exporter/
 > - https://grafana.com/oss/prometheus/exporters/redis-exporter/assets/sample_scrape.out.txt
 

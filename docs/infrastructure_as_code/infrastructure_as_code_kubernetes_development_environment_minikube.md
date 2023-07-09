@@ -25,8 +25,6 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_virtual_machine_driver.png)
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/commands/
 > - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 
@@ -343,8 +341,6 @@ timeout 5
 $ curl http://foo.minikube
 ```
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
 
@@ -364,8 +360,6 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 
 妥協策として、開発環境のみで使用するNodePort Serviceを作成する。
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
 

@@ -33,8 +33,6 @@ description: メトリクス＠Prometheus
 
 時間の範囲を単位とするメトリクス (例：`prometheus_http_request_duration_seconds_bucket`) が属する。
 
-> ↪️：
->
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram
 > - https://prometheus.io/docs/practices/histograms/
 
@@ -42,8 +40,6 @@ description: メトリクス＠Prometheus
 
 統計的な分位数を単位とするメトリクス
 
-> ↪️：
->
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#summary
 > - https://prometheus.io/docs/practices/histograms/
 
@@ -82,8 +78,6 @@ Prometheusが収集したデータポイントの合計数を表す。
 prometheus_tsdb_head_samples_appended_total
 ```
 
-> ↪️：
->
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
@@ -95,8 +89,6 @@ Prometheusが作成したチャンクの合計サイズ (KB) を表す。
 prometheus_tsdb_compaction_chunk_size_bytes_sum
 ```
 
-> ↪️：
->
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
@@ -108,8 +100,6 @@ Prometheusが作成したチャンクの合計数を表す。
 prometheus_tsdb_compaction_chunk_samples_sum
 ```
 
-> ↪️：
->
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 

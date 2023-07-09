@@ -39,8 +39,6 @@ Serviceネットワークの作成は、Kubernetesが担う。
 
 ![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_service-network.png)
 
-> ↪️：
->
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=39
 
@@ -146,8 +144,6 @@ kubeletは、Pod内のコンテナにServiceの宛先情報 (プロトコル、I
 
 Pod内のコンテナは、これを使用し、Serviceを介してPodにリクエストを送信する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A
 
@@ -196,8 +192,6 @@ search default.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
 ```
 
-> ↪️：
->
 > - https://amateur-engineer-blog.com/kubernetes-dns/
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
@@ -220,8 +214,6 @@ options ndots:5
 
 `【５】` `example.com.`
 
-> ↪️：
->
 > - https://techblog.stanby.co.jp/entry/EKS_Coredns
 > - https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3
 

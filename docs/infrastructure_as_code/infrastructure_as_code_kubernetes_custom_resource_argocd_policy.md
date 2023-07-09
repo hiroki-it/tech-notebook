@@ -147,8 +147,6 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 
 ![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
 > - https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c
 > - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
@@ -461,8 +459,6 @@ Ingress、StatefulSet、DaemonSet、で特定の設定値を使用している�
 
 Sync後にKubernetesリソースの状態が変更されるような場合、SyncしてもSyncedステータスではなくOutOfSyncステータスになってしまう。
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
 > - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
 
@@ -490,8 +486,6 @@ ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの
 
 例えば、ArgoCDの`v2.7.3`は、K3sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`に対応しているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/blob/master/.github/workflows/ci-build.yaml#L359-L462
 > - https://github.com/argoproj/argo-cd/tree/master/test/e2e
 
@@ -545,8 +539,6 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 | `argocd_redis_request_duration`       |    Histogram     | Redisへのリクエストのレイテンシーを表す。                                                   |
 | `argocd_redis_request_total`          |     Counter      | Redisへのリクエスト数を表す。                                                               |
 
-> ↪️：
->
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/
 
@@ -590,8 +582,6 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 この場合、高負荷になるため、レプリカ数や処理並列数などを考慮する必要がある。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/issues/11116
 > - https://techblog.zozo.com/entry/measure-argocd-introduction
 > - https://zenn.dev/hodagi/articles/2bc3fa10df186c

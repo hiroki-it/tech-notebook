@@ -47,8 +47,6 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 カーネルを操作できる関数 (例：read、write、など) である。
 
-> ↪️：
->
 > - http://curtaincall.weblike.jp/portfolio-unix/api.html
 > - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
 

@@ -54,8 +54,6 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 
-> ↪️：
->
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 > - https://blog.serverworks.co.jp/k8s-datadog
 
@@ -65,8 +63,6 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
 
-> ↪️：
->
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
 > - https://docs.datadoghq.com/integrations/istio/
 

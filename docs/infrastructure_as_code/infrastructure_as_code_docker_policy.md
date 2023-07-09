@@ -57,8 +57,6 @@ USER foouser
 ENTRYPOINT ["/app"]
 ```
 
-> ↪️：
->
 > - https://blog.aquasec.com/docker-security-best-practices
 > - https://www.forcia.com/blog/002273.html
 
@@ -83,8 +81,6 @@ ENTRYPOINT ["/app"]
 |                        | 接尾辞なし                                | 使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。 | イメージによる | 有                   | イメージによる                   |
 | distroless型           | 接尾辞なし                                | 最小限のパッケージのみをインストールしている。                               | イメージによる | 有 (非常に少ない)    | イメージによる                   |
 
-> ↪️：
->
 > - https://prograshi.com/platform/docker/docker-image-tags-difference/
 > - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
 > - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
@@ -274,8 +270,6 @@ RUN yum -y install \
   && rm -Rf /var/cache/dnf
 ```
 
-> ↪️：
->
 > - https://www.itbook.info/network/docker02.html
 > - https://yuhabeem.com/2021/03/27/311/
 
@@ -389,8 +383,6 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 `docker trust`コマンドの内部では、notaryが使用されている。
 
-> ↪️：
->
 > - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
 > - https://codezine.jp/article/detail/15119
 

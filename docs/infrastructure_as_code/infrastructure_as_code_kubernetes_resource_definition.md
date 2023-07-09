@@ -155,8 +155,6 @@ spec:
     - client auth
 ```
 
-> ↪️：
->
 > - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
 > - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
 
@@ -576,8 +574,6 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deployment-v1-apps
 > - https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
@@ -675,8 +671,6 @@ spec:
 v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/app":"foo-pod", "app.kubernetes.io/component":"app"}, MatchExpressions:[]v1.LabelSelectorRequirement(nil)}: field is immutable
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#label-selector-updates
 > - https://github.com/kubernetes/client-go/issues/508#issuecomment-589296590
 > - https://shunyaueta.com/posts/2021-12-02/
@@ -980,8 +974,6 @@ spec:
         targetAverageUtilization: 60
 ```
 
-> ↪️：
->
 > - https://zenn.dev/lapi/articles/e7ae967aa5161b#hpa%E3%81%AE%E8%A8%AD%E5%AE%9A
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
@@ -1046,8 +1038,6 @@ spec:
   ingressClassName: foo-ingress-class
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
@@ -1154,8 +1144,6 @@ spec:
             pathType: Prefix
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
 > - https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/issues/2066
@@ -1201,8 +1189,6 @@ spec:
 
 標準のIngressの代わりに外部Ingressを使用する場合、外部のIngressとIngressコントローラーを紐付けられるように、コントローラーのAPIグループを設定する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-class-v1/#IngressClassSpec
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
@@ -1272,8 +1258,6 @@ spec:
     name: foo-alb-ingress-class-params
 ```
 
-> ↪️：
->
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclass
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclassparams
 
@@ -1419,8 +1403,6 @@ spec:
   ttlSecondsAfterFinished: 30
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically
 > - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
 
@@ -1678,8 +1660,6 @@ spec:
 
 執筆時点 (2023/05/14) で、Kubernetesにビルトインサイドカーの導入が進められている。
 
-> ↪️：
->
 > - https://github.com/kubernetes/enhancements/issues/753
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
 
@@ -1693,8 +1673,6 @@ Node上にストレージ上にボリュームを作成する。
 
 `.spec.nodeAffinity`キーの設定が必須であり、Nodeを明示的に指定できる。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity
 
@@ -1761,8 +1739,6 @@ spec:
     path: /data/src/foo
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
 > - https://ytsuboi.jp/archives/505
 > - https://qiita.com/reoring/items/4d80a04dd31e991dd233
@@ -1788,8 +1764,6 @@ PersistentVolumeの作成先とするNodeを設定する。
 | Exists        | 指定した`metadata.labels`キーを持つ。                       |
 | DoesNotExists | 指定した`metadata.labels`キーを持たない。                   |
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
 > - https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/
 
@@ -1915,8 +1889,6 @@ spec:
 | fast     | SSDをPersistentVolumeとして使用する。 | - https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 | slow     | HDをPersistentVolumeとして使用する。  | - https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
 > - https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes
 
@@ -1990,8 +1962,6 @@ spec:
   storageClassName: standard
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
 > - https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes
 
@@ -2009,8 +1979,6 @@ kube-schedulerがPodをスケジューリングするNodeを設定する。
 
 DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
@@ -2029,8 +1997,6 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 
 複数のNodeに同じ`.metadata.labels`キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
@@ -2071,8 +2037,6 @@ spec:
                   - app
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
 
@@ -2088,8 +2052,6 @@ spec:
 
 Podが削除された後にNodeの`.metadata.labels`キーの値が変更されたとしても、一度スケジューリングされたPodが`.spec.affinity`キーの設定で再スケジューリングされることはない。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
 
@@ -2128,8 +2090,6 @@ spec:
                     - bar-gin
 ```
 
-> ↪️：
->
 > - https://qiita.com/Esfahan/items/a673317a29ca407e5ae7#pod-affinity
 > - https://zenn.dev/geek/articles/c74d204b00ba1a
 
@@ -2390,8 +2350,6 @@ Allocatable:
 ...
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
 > - https://smallit.co.jp/blog/667/
 
@@ -2502,8 +2460,6 @@ ReadinessProbeチェックよりもヘルスチェックの意味合いが強い
 
 コンテナのLivenessProbeヘルスチェックに失敗すると、Podはコンテナを自動的に再起動する。
 
-> ↪️：
->
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/
 
@@ -2649,8 +2605,6 @@ kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼�
 
 コンテナが起動してもプロセスの起動に時間がかかる場合 (例：DB) などで使用する。
 
-> ↪️：
->
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
 
@@ -2800,8 +2754,6 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️：
->
 > - https://zaki-hmkc.hatenablog.com/entry/2020/12/27/211908#subPath%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88
 > - https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath
 
@@ -2927,8 +2879,6 @@ spec:
     - name: foo-repository-credentials-secret # プライベートリポジトリの認証情報を持つSecret
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
 > - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret
 > - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
@@ -2972,8 +2922,6 @@ DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリ�
 
 こういった場合に備えて、DaemonSet配下のPodには必ず、`system-node-critical`のPriorityClassNameを設定しておく。
 
-> ↪️：
->
 > - https://stackoverflow.com/questions/74987515/k8s-daemonset-pod-placement
 > - https://stackoverflow.com/questions/55832300/cluster-autoscaler-not-triggering-scale-up-on-daemonset-deployment
 
@@ -3039,8 +2987,6 @@ spec:
     runAsUser: 999
 ```
 
-> ↪️：
->
 > - https://cstoku.dev/posts/2018/k8sdojo-07/#runasuser
 > - https://qiita.com/SnykSec/items/3f3ee4948e90c0e7e3cc
 
@@ -3103,8 +3049,6 @@ spec:
     fsGroup: 999
 ```
 
-> ↪️：
->
 > - https://cstoku.dev/posts/2018/k8sdojo-07/#fsgroup
 > - https://learn.microsoft.com/ja-jp/azure/aks/faq#how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files
 
@@ -3214,8 +3158,6 @@ spec:
   terminationGracePeriodSeconds: 300
 ```
 
-> ↪️：
->
 > - https://nulab.com/ja/blog/backlog/graceful-shutdown-of-kubernetes-application/
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
@@ -3441,8 +3383,6 @@ spec:
         sizeLimit: 1Gi
 ```
 
-> ↪️：
->
 > - https://www.linkedin.com/pulse/planning-use-memory-backed-volumes-kubernetes-read-once-banerjee/?trk=articles_directory
 > - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 
@@ -3478,8 +3418,6 @@ spec:
         type: DirectoryOrCreate
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -3642,8 +3580,6 @@ data:
   credentials.json: *****
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
 > - https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume
 
@@ -3691,8 +3627,6 @@ spec:
       app.kubernetes.io/app: foo-pod
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
 > - https://zenn.dev/sasakiki/articles/a71d9158020266
 
@@ -3889,8 +3823,6 @@ subjects:
     name: foo-user-account
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-binding-examples
 > - https://knowledge.sakura.ad.jp/21129/
@@ -4063,8 +3995,6 @@ data:
     UmVhbGx5IHJlYWxs ...
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/configuration/secret/#docker-config-secrets
 > - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 > - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
@@ -4103,8 +4033,6 @@ secrets:
   - name: foo-service-account-token
 ```
 
-> ↪️：
->
 > - https://stackoverflow.com/a/72258300
 > - https://zaki-hmkc.hatenablog.com/entry/2022/07/27/002213
 > - https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
@@ -4287,8 +4215,6 @@ spec:
 
 補足として、FastCGIプロトコルには変換できず、別にNginxを使用してプロトコルを変換する必要がある。
 
-> ↪️：
->
 > - https://github.com/search?q=php-fpm+kubernetes
 > - https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
 
@@ -4572,8 +4498,6 @@ spec:
 
 ```
 
-> ↪️：
->
 > - https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
 > - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#serviceaccount-admission-controller
 > - https://qiita.com/hiyosi/items/35c22507b2a85892c707

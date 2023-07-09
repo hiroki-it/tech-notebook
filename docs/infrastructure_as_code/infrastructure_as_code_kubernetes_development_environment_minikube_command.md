@@ -146,8 +146,6 @@ Kubernetesのバージョンのデフォルト値を設定する。
 $ minikube config set kubernetes-version=v1.23.0
 ```
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/commands/config/
 > - https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
 
@@ -294,8 +292,6 @@ Server Version: version.Info{
 }
 ```
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
 > - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
 
@@ -407,8 +403,6 @@ Opening service <Service名> in default browser...
 $ minikube service istio-ingressgateway -n istio-ingress
 ```
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/commands/service/
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
@@ -485,8 +479,6 @@ http://127.0.0.1:<自動的に発行されたポート番号>
 $ minikube service istio-ingressgateway --url -n istio-ingress
 ```
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
@@ -567,8 +559,6 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 [root@<コンテナID>:~] $ ls -la
 ```
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/commands/ssh/
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
@@ -832,8 +822,6 @@ $ minikube tunnel
 🏃  Starting tunnel for service <Service名>.
 ```
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 

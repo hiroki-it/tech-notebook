@@ -27,8 +27,6 @@ CNIアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 CNIアドオンは、kubeletによるPodの起動時に有効化される。
 
-> ↪️：
->
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=30
 > - https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
@@ -44,8 +42,6 @@ CNIアドオンは、kubeletによるPodの起動時に有効化される。
 
 ![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png)
 
-> ↪️：
->
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://www1.gifu-u.ac.jp/~hry_lab/rs-overlay.html
@@ -91,8 +87,6 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ルーティングテーブル (`L3`) を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
-> ↪️：
->
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 

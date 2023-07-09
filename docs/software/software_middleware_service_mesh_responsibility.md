@@ -27,8 +27,6 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 一方で要件として不要ならば、サービスメッシュツール自体を採用する必要はない、という判断になる。
 
-> ↪️：
->
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://servicemesh.es/
 > - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.html

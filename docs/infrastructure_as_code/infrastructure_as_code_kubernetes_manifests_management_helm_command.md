@@ -72,8 +72,6 @@ Update Complete. ⎈Happy Helming!⎈
 Saving 1 charts
 ```
 
-> ↪️：
->
 > - https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
 > - https://selfnote.work/20211129/programming/learning-helm-6/#Dependencies
 
@@ -114,8 +112,6 @@ HELM_REPOSITORY_CACHE="/.config/helm/repository"
 HELM_REPOSITORY_CONFIG="/.config/helm/repositories.yaml"
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/helm/helm/
 > - https://stackoverflow.com/questions/62924278/where-are-helm-charts-stored-locally/66416122#66416122
 
@@ -248,8 +244,6 @@ $ helm lint <チャートへのパス>
 1 chart(s) linted, 0 chart(s) failed
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/helm/helm_lint/
 > - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
 

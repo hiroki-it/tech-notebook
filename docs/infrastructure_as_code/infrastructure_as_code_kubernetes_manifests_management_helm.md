@@ -21,8 +21,6 @@ Helmは、helmクライアント、チャートレジストリ、複数のチャ
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/helm_architecture.png)
 
-> ↪️：
->
 > - https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/
 > - https://helm.sh/ja/docs/glossary/
 > - https://deeeet.com/writing/2018/01/10/kubernetes-yaml/
@@ -45,8 +43,6 @@ Helmの `v2`では、2方向の戦略的マージパッチを採用している�
 
 そのため、Helm以外の方法 (例：`kubectl edit`コマンド、`kubectl apply`コマンド) でマニフェストが変更されたことを検知できず、チャートの宣言通りにHelmリリースやロールバックを実施できなかった。
 
-> ↪️：
->
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
 > - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
 
@@ -62,8 +58,6 @@ Helmの `v3`では、3方向の戦略的マージパッチを採用している�
 
 そのため、チャートと現在のマニフェストと比較できない。
 
-> ↪️：
->
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
 > - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
 
@@ -165,8 +159,6 @@ repository/ # チャートリポジトリ
 ...
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
 > - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
 
@@ -217,8 +209,6 @@ repository/
 ...
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/topics/charts/#the-chart-file-structure
 > - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
 > - https://helm.sh/docs/helm/helm_package/

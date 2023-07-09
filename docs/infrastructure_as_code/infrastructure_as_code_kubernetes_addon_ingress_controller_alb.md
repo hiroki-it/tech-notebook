@@ -27,8 +27,6 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 ![aws_load_balancer_controller_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 
-> ↪️：
->
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/nlb/
 > - https://blog.recruit.co.jp/rmp/infrastructure/post-21469/
@@ -64,8 +62,6 @@ NodePort Service (ポート番号はランダムでよい)
 Pod
 ```
 
-> ↪️：
->
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://qiita.com/mksamba/items/c0e41a2a63e62a50aea3#21-%E5%85%AC%E9%96%8B%E5%AF%BE%E8%B1%A1%E3%81%AEdeploymentservice%E3%81%AE%E4%BD%9C%E6%88%90
 
@@ -85,8 +81,6 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 
 またいずれの場合であっても`kubernetes.io/cluster/<EKS Clusterの名前>` (値は、複数のEKS Clusterで共有するサブネットの場合は`shared`、単一のEKS Clusterの場合は`owned`とする) を設定する。
 
-> ↪️：
->
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
 
@@ -172,8 +166,6 @@ AWS Load Balancerコントローラーのセットアップのうち、AWS側で
 $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
 ```
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount
 
@@ -310,8 +302,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/aws-load-balan
 AWS Load Balancer controller installed!
 ```
 
-> ↪️：
->
 > - https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
 

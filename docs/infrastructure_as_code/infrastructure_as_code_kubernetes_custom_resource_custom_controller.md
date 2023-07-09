@@ -45,8 +45,6 @@ custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを�
 
 kube-controllerに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。
 
-> ↪️：
->
 > - https://youtu.be/pw8AVOJQ5uw?t=1372
 > - https://note.varu3.me/n/n461302e3ac79
 
@@ -74,8 +72,6 @@ kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行
 
 custom-controllerを自前で実装する。
 
-> ↪️：
->
 > - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
 > - https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go
 
@@ -99,8 +95,6 @@ Operatorパターンは、カスタムリソース、custom-controllerのOperato
 
 ![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png)
 
-> ↪️：
->
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20200629-1/
 
@@ -122,8 +116,6 @@ Operatorに不具合があると、etcd上のCRDの通りにカスタムリソ�
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator-controller.png)
 
-> ↪️：
->
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://stackoverflow.com/questions/47848258/what-is-the-difference-between-a-kubernetes-controller-and-a-kubernetes-operator
 > - https://www.howtogeek.com/devops/what-are-kubernetes-controllers-and-operators/
@@ -181,8 +173,6 @@ Operatorの、作成、削除、を管理する。
 
 記入中...
 
-> ↪️：
->
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
 > - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
 
@@ -190,8 +180,6 @@ Operatorの、作成、削除、を管理する。
 
 記入中...
 
-> ↪️：
->
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
 > - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
 

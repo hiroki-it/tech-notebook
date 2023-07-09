@@ -35,8 +35,6 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 アーキテクチャの図中で点線は、バックエンドコンポーネントがIstiodコントロールプレーンに間接的に依存していることを表している。
 
-> ↪️：
->
 > - https://kiali.io/docs/architecture/architecture/#kiali-back-end
 > - https://kiali.io/docs/faq/general/#requiredmetrics
 
@@ -58,8 +56,6 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 Kialiは、cytoscape.jsパッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istioから収集したメトリクスをグラフ化する。
 
-> ↪️：
->
 > - https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs
 > - https://blog.js.cytoscape.org/2020/05/11/layouts/#choice-of-layout
 
@@ -189,8 +185,6 @@ spec:
 
 アプリコンテナ間 (Pod間) の通信を表示するために、Appグラフを選択する。
 
-> ↪️：
->
 > - https://kiali.io/docs/features/topology/#graph-types
 > - https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml
 
@@ -247,8 +241,6 @@ Kialiでは、Istioのマニフェストを検証できる。
 
 レスポンスタイムやエラー率を基点として、原因になっているマイクロサービスを特定していく。
 
-> ↪️：
->
 > - https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021
 

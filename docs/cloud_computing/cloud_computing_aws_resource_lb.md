@@ -24,8 +24,6 @@ description: LB＠AWSリソースの知見を記録しています。
 | GLB：Gateway Load Balancer     | `L3` (ネットワーク層) 、`L4` | IP                             | IPアドレス、インスタンス         | 不可                      | IPアドレスフィールド、ポート番号フィールド | 不可                 |
 | CLB：Classic Load Balancer     | `L4`、`L7`                   | HTTP、HTTPS、TCP、SSL/TLS      | なし                             | URL、HTTPヘッダー         | IPアドレスフィールド、ポート番号フィールド | 可                   |
 
-> ↪️：
->
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
 > - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
 > - https://www.infraexpert.com/study/tcpip8.html
@@ -197,8 +195,6 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 ALB、NLB、では元々実装されていたキューを廃止した経緯がある。
 
-> ↪️：
->
 > - https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting
 > - https://stackoverflow.com/a/49421971
 

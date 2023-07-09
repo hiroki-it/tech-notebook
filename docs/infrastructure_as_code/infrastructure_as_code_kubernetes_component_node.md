@@ -17,8 +17,6 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 ワーカーNode上で稼働するKubernetesコンポーネントのこと。
 
-> ↪️：
->
 > - https://cstoku.dev/posts/2018/k8sdojo-24/
 > - https://kubernetes.io/docs/concepts/overview/components/
 
@@ -32,8 +30,6 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 もし手動で作成する場合は、`kubectl`コマンドで`--register-node=false`とする必要がある。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/architecture/nodes/
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration
 
@@ -61,8 +57,6 @@ KubernetesにはNodeグループというリソースがなく、グループを
 
 Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。
 
-> ↪️：
->
 > - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
 
@@ -105,8 +99,6 @@ spec: ...
 
 ただし、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
 
-> ↪️：
->
 > - https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#cluster-autoscaler
 > - https://blog.inductor.me/entry/2021/12/06/165743
 
@@ -209,8 +201,6 @@ kubeletは、`5`分ごとにコンテナイメージ、`10`分ごとにコンテ
 
 コンテナイメージのガベージコレクションであれば、Nodeのストレージ使用量が`85`%を超過していると、kubeletは`80`%未満になるようにコンテナイメージの残骸を削除する。
 
-> ↪️：
->
 > - https://zenn.dev/tmoka/articles/d7e428da4026a5#%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
 > - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144
 > - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/images/image_gc_manager.go#L63-L76
@@ -227,8 +217,6 @@ kubeletではログの保管期間を設定できないため、もし保管期�
 
 ![kubernetes_kubelet_log-rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
 
-> ↪️：
->
 > - https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/
 > - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/logs/container_log_manager.go
 
@@ -280,8 +268,6 @@ kubelet[405976]: I0421 14:22:01.838974  405976 server.go:440] "Kubelet version" 
 
 kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、IPアドレスベースのサービスディスカバリー、検出したサービス (Pod) に対する`L4`ロードバランサー、として働く。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 > - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
 
@@ -312,8 +298,6 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
 
-> ↪️：
->
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
 > - https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/
@@ -347,8 +331,6 @@ num  target                     prot   opt   source      destination
 6    KUBE-NODEPORTS             all    --    0.0.0.0/0   0.0.0.0/0            /* kubernetes service nodeports; NOTE: this must be the last rule in this chain */ ADDRTYPE match dst-type LOCAL
 ```
 
-> ↪️：
->
 > - https://dream.jp/vps/support/manual/mnl_security_04.html
 > - https://zenn.dev/tayusa/articles/c705cd65b6ee74
 
@@ -367,8 +349,6 @@ num  target                     prot   opt   source      destination
 | IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
 | `L4`のロードバランシングアルゴリズム     | ランダム方式のみ。                                                                                                                |
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://github.com/kubernetes/kubernetes/pull/81430
@@ -382,8 +362,6 @@ num  target                     prot   opt   source      destination
 | IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
 | `L4`のロードバランシングアルゴリズム     | ラウンドロビン方式のみ。                                                                                                          |
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
@@ -398,8 +376,6 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 | IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
 | `L4`のロードバランシングアルゴリズム     | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
 
-> ↪️：
->
 > - https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
 > - https://github.com/kubernetes/kubernetes/pull/81430

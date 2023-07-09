@@ -49,8 +49,6 @@ kube-apiserverとクライアント側のバージョン差は、前方/後方�
 
 そのため、client-goパッケージを定期的にアップグレードする必要がある。
 
-> ↪️：
->
 > - https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
 > - https://kubernetes.io/releases/version-skew-policy/#kubectl
 

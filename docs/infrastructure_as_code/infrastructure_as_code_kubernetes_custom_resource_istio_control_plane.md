@@ -23,8 +23,6 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_ports.png)
 
-> ↪️：
->
 > - https://www.amazon.co.jp/dp/1617295825
 > - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
 > - https://istio.io/latest/docs/ops/integrations/prometheus/#configuration
@@ -122,8 +120,6 @@ spec:
 
 Dockerfileとしては、最後に`pilot-discovery`プロセスを実行している。
 
-> ↪️：
->
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.pilot
 > - https://zenn.dev/link/comments/e8a978a00c6325
 
@@ -271,8 +267,6 @@ webhooks:
 
 pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
 
-> ↪️：
->
 > - https://cloudnative.to/blog/istio-pilot-3/
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources
@@ -324,8 +318,6 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 }
 ```
 
-> ↪️：
->
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307-L348
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
@@ -390,8 +382,6 @@ $ curl http://127.0.0.1:8080/ui/flamegraph?si=alloc_objects
 
 ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/ops/diagnostic-tools/controlz/
 > - https://jimmysong.io/en/blog/istio-components-and-ports/
 
@@ -415,8 +405,6 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 `discovery`コンテナは、取得した宛先情報を自身に保管する。
 
-> ↪️：
->
 > - https://juejin.cn/post/7028572651421433892
 > - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
 > - https://github.com/istio/istio/blob/693d97627e70f1e4eadeaede8bb5a18136c8feed/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
@@ -455,8 +443,6 @@ $ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system
 $ curl http://127.0.0.1:15014/debug
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
 > - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#istio-%E8%B0%83%E8%AF%95%E6%8E%A5%E5%8F%A3
 

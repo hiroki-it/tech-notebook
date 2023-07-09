@@ -153,8 +153,6 @@ NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 ```
 
-> ↪️：
->
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
@@ -180,8 +178,6 @@ DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 
 また、同じNamespace内でパケットを送受信する場合は、さらに『`<Namespace名>`』も省略でき、『`<Service名>`』のみで名前解決できる。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://ameblo.jp/bakery-diary/entry-12613605860.html
 > - https://eng-blog.iij.ad.jp/archives/9998
@@ -193,8 +189,6 @@ DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 
 Serviceの`.spec.ports.name`キー数だけ、完全修飾ドメイン名が作成される。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
 
@@ -231,8 +225,6 @@ Address:  10.105.157.184
 [root@<Pod名>:~] $ nslookup <Serviceの完全修飾ドメイン名>
 ```
 
-> ↪️：
->
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 
@@ -341,8 +333,6 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
 
-> ↪️：
->
 > - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
 

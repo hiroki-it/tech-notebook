@@ -88,8 +88,6 @@ KMSのアクセス制限を設定する。
 
 暗号化キーを対称型 (ペアは不要) または非対称 (パブリックとプライベートのペアが必要) とするかを設定する。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#asymmetric-keys-concept
 

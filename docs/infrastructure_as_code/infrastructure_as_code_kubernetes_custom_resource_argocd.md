@@ -23,8 +23,6 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/argocd/argocd_architecture.png)
 
-> ↪️：
->
 > - https://www.amazon.co.jp/dp/1617297275
 > - https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 > - https://www.techmanyu.com/setup-a-gitops-deployment-model-on-your-local-development-environment-with-k3s-k3d-and-argocd-4be0f4f30820
@@ -36,8 +34,6 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### repo-serverとは
 
-> ↪️：
->
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
@@ -61,8 +57,6 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### GitOpsエンジン
 
-> ↪️：
->
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://github.com/argoproj/gitops-engine/tree/master/pkg
 > - https://github.com/argoproj/argo-cd/tree/master/pkg/apiclient
@@ -71,8 +65,6 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### 他のコンポーネントとの通信
 
-> ↪️：
->
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
@@ -83,8 +75,6 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ## 04. redis-server
 
-> ↪️：
->
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://weseek.co.jp/tech/95/
 > - https://blog.manabusakai.com/2021/04/argo-cd-cache/
@@ -96,8 +86,6 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### dex-serverとは
 
-> ↪️：
->
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://github.com/dexidp/dex#connectors
 > - https://weseek.co.jp/tech/95/
@@ -110,8 +98,6 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### argocd-serverとは
 
-> ↪️：
->
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
@@ -203,8 +189,6 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "cd /tmp/_argocd-repo/<URLに基づくUUID> && helm template foo-chart -f values-prd.yaml | nl"
 ```
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/issues/1446#issue-432385992
 > - https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
 
@@ -220,8 +204,6 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 並列処理を有効化しない場合は、代わりにレプリカ数を増やす。
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
@@ -247,8 +229,6 @@ application-controllerを分離されている理由は、ArgoCD Workflowのマ�
 
 ![argocd_argo-workflow_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argo-workflow_architecture.png)
 
-> ↪️：
->
 > - https://argoproj.github.io/argo-workflows/architecture/
 > - https://www.wantedly.com/companies/wantedly/post_articles/302473
 
@@ -266,8 +246,6 @@ application-controllerを分離されている理由は、ArgoCD Workflowのマ�
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd.png)
 
-> ↪️：
->
 > - https://blog.vpantry.net/2021/01/cicd-2/
 > - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 > - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
@@ -352,8 +330,6 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-> ↪️：
->
 > - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
 

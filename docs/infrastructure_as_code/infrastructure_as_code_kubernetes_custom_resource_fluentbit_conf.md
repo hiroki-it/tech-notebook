@@ -160,8 +160,6 @@ Inputs
 
 開発環境でパイプラインの動作を確認するために役立つ。
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
 > - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
 
@@ -399,8 +397,6 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 
 ![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png)
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/filter
 > - https://docs.fluentbit.io/manual/concepts/key-concepts#filtering
 
@@ -512,8 +508,6 @@ FILTERセクションで、modifyプラグインを定義する。
     Remove_wildcard ignored_key
 ```
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/pipeline/filters/modify
 > - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
 
@@ -614,8 +608,6 @@ Laravelのスタックトレースを結合する。
 
 マッチしたログを解析し、正規表現の名前付きキャプチャ機能 (`?<foo>`) を使用して新しいキーに文字列を抽出する。
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/pipeline/filters/parser
 > - https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression
 
@@ -741,8 +733,6 @@ SELECTステートメントの結果を使用して、データストリーム�
     Exec CREATE STREAM bar WITH (tag='bar') AS SELECT * FROM TAG:'bar';
 ```
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement
 > - https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example
 
@@ -781,8 +771,6 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png)
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer
 > - https://docs.fluentbit.io/manual/administration/buffering-and-storage
 
@@ -908,8 +896,6 @@ Outputs
   s3                      Send to S3
 ```
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 
@@ -1118,8 +1104,6 @@ FluentBitはデフォルトでstackdriverプラグインを持つ。
     match  *
 ```
 
-> ↪️：
->
 > - https://docs.fluentbit.io/manual/pipeline/outputs/stackdriver
 > - https://qiita.com/suzuyui/items/2217a357099130fc7236#stackdriver-output-plugin
 

@@ -9,13 +9,13 @@ description: Containerd＠仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
 ## 01. 仕組み
 
-> ↪️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
 
 <br>
 
@@ -48,13 +48,13 @@ OOMScoreAdjust=-999
 WantedBy=multi-user.target
 ```
 
-> ↪️ 参考：https://github.com/containerd/containerd/blob/main/containerd.service
+> - https://github.com/containerd/containerd/blob/main/containerd.service
 
 <br>
 
 ## 03. コマンド
 
-> ↪️ 参考：https://intl.cloud.tencent.com/jp/document/product/457/31088
+> - https://intl.cloud.tencent.com/jp/document/product/457/31088
 
 <br>
 
@@ -96,7 +96,7 @@ Containerdは、テキスト形式ログを作成する。
 }
 ```
 
-> ↪️ 参考：https://sotoiwa.hatenablog.com/entry/2021/09/14/081727
+> - https://sotoiwa.hatenablog.com/entry/2021/09/14/081727
 
 <br>
 
@@ -112,6 +112,6 @@ Dockerは、JSON形式をログを作成する。
 }
 ```
 
-> ↪️ 参考：https://smallit.co.jp/blog/958/
+> - https://smallit.co.jp/blog/958/
 
 <br>

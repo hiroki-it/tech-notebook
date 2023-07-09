@@ -139,8 +139,6 @@ num  target     prot  opt  source     destination
 1    REDIRECT   tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15001
 ```
 
-> ↪️：
->
 > - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
 > - https://www.mapion.co.jp/news/column/cobs2366068-1-all/
 > - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d
@@ -153,8 +151,6 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
 
-> ↪️：
->
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod
 
@@ -166,8 +162,6 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png)
 
-> ↪️：
->
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
 
@@ -213,8 +207,6 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが`2`個ある構成になってしまうことに注意する。
 
-> ↪️：
->
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
 > - https://www.amazon.co.jp/dp/1617295825
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
@@ -238,8 +230,6 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 もしistio-cniアドオンを使用する場合は、`istio-init`コンテナが不要になる代わりとして、`istio-validation`コンテナが必要になる。
 
-> ↪️：
->
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin
 > - https://en.wikipedia.org/wiki/Iptables
@@ -266,8 +256,6 @@ istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機す
 
 ADS-APIとの間で双方向ストリーミングRPCを確立し、EnvoyからのADS-APIへのリクエストと反対にADS-APIからのリクエストを仲介する。
 
-> ↪️：
->
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/6/5
 > - https://www.jianshu.com/p/60e45bc9c4ac
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
@@ -326,8 +314,6 @@ func (a *ADSC) Run() error {
 }
 ```
 
-> ↪️：
->
 > - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L420-L446
 > - https://github.com/istio/istio/blob/
 
@@ -429,8 +415,6 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 `istio-proxy`コンテナにて、リバースプロキシとして動作する。Envoyは、pilot-agentを介して、ADS-APIにリモートプロシージャーコールを実行する。また反対に、XDS-APIからのリモートプロシージャーコールをpilot-agentを介して受信する。
 
-> ↪️：
->
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://www.programmersought.com/article/5797698845/
 > - https://blog.51cto.com/wangguishe/5800533
@@ -448,8 +432,6 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 ```
 
-> ↪️：
->
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#15000
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin
@@ -500,8 +482,6 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 `istio-proxy`コンテナ内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
 
-> ↪️：
->
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
 

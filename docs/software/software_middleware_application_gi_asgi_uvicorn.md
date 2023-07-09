@@ -78,8 +78,6 @@ if __name__ == "__main__":
 
 `w`オプションを使用して、プロセスの並列数を設定できる。
 
-> ↪️：
->
 > - https://www.uvicorn.org/#running-with-gunicorn
 > - https://www.uvicorn.org/deployment/#gunicorn
 > - https://breezymind.com/uvicorn-0-16-0-performance-problem/

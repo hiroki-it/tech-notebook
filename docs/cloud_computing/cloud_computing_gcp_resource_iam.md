@@ -9,7 +9,7 @@ description: IAM＠GCPリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️ 参考：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,8 +29,6 @@ description: IAM＠GCPリソースの知見を記録しています。
 - ドメイン
 - KubernetesのServiceAccount
 
-> ↪️ 参考：
->
 > - https://cloud.google.com/iam/docs/principal-identifiers?hl=ja
 > - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
 
@@ -83,8 +81,6 @@ $ gcloud auth login
 }
 ```
 
-> ↪️ 参考：
->
 > - https://cloud.google.com/docs/authentication/production
 > - https://cloud.google.com/iam/docs/creating-managing-service-account-keys
 
@@ -104,8 +100,6 @@ $ gcloud auth login --cred-file="<認証情報ファイルのパス>"
 $ gcloud info
 ```
 
-> ↪️ 参考：
->
 > - https://cloud.google.com/sdk/docs/authorizing?hl=ja#service-account
 > - https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
 
@@ -119,7 +113,7 @@ $ gcloud info
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
-> ↪️ 参考：https://cloud.google.com/docs/authentication/production?hl=ja#automatically
+> - https://cloud.google.com/docs/authentication/production?hl=ja#automatically
 
 #### ▼ 手動認証
 
@@ -131,7 +125,7 @@ $ gcloud info
 $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 ```
 
-> ↪️ 参考：https://cloud.google.com/docs/authentication/production?hl=ja#passing_variable
+> - https://cloud.google.com/docs/authentication/production?hl=ja#passing_variable
 
 <br>
 
@@ -159,12 +153,12 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 パーミッションのセットのこと。
 
-> ↪️ 参考：https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
+> - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
 
 <br>
 
 ## 03. ポリシー
 
-> ↪️ 参考：https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
+> - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
 
 <br>

@@ -45,8 +45,6 @@ env[DD_ENV] = 'prd'
 env[DD_VERSION] = '<バージョンタグ>'
 ```
 
-> ↪️：
->
 > - https://docs.datadoghq.com/tracing/setup/php/
 > - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
@@ -425,8 +423,6 @@ func main() {
 }
 ```
 
-> ↪️：
->
 > - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
 > - https://github.com/muroon/datadog_sample/blob/master/grpcserver/main.go#L75-L127
 > - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
@@ -470,8 +466,6 @@ func main() {
 }
 ```
 
-> ↪️：
->
 > - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
 > - https://github.com/muroon/datadog_sample/blob/master/httpserver/usecases/grpc.go#L23-L70
 > - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
