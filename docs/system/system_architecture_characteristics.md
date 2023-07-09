@@ -21,8 +21,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ただ、非機能要件や品質特性だとその性質を正しく表現できないとして、アーキテクチャ特性と表現した方が良い。
 
-> ↪️：
->
+
 > - https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
 > - https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch04.xhtml
 
@@ -112,8 +111,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 稼働中インスタンスで障害が発生した場合、待機中インスタンスを稼働中インスタンスに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
 
-> ↪️：
->
+
 > - https://www.idcf.jp/words/failover.html
 > - https://www.itpassportsiken.com/kakomon/02_yosou/q60.html
 
@@ -249,8 +247,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 記入中...
 
-> ↪️：
->
+
 > - https://github.com/YoshiiRyo1/document-templates-for-aws/blob/master/survey/doc_source/non-functional-requirement.md
 > - https://dev.classmethod.jp/articles/survey-non-functional-requirement/
 
@@ -272,8 +269,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
 
-> ↪️：
->
+
 > - https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
 > - https://en.wikipedia.org/wiki/List_of_system_quality_attributes
 > - https://en.wikipedia.org/wiki/Software_quality#Measurement

@@ -26,8 +26,7 @@ I/Oは、文脈によって意味合いが異なる。
 | ストレージの場合       | ストレージへの読み書き               |
 | ネットワークの場合     | インバウンド通信、アウトバウンド通信 |
 
-> ↪️：
->
+
 > - https://www.idcf.jp/words/io.html
 > - https://itkq.jp/blog/2017/05/10/linux-file-and-io/
 
@@ -169,8 +168,7 @@ $ cat /proc/1/fd/2
 
 プロセスの標準入力に対する転送は、多くの場合にユーティリティのパラメーターにファイルを渡すことと同じである。
 
-> ↪️：
->
+
 > - https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
 > - https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
 

@@ -56,8 +56,7 @@ rules_file:
   - /etc/falco/rules.d
 ```
 
-> ↪️：
->
+
 > - https://github.com/falcosecurity/falco/tree/master/rules
 > - https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90
 

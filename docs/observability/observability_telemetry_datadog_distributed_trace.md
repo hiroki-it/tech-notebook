@@ -49,8 +49,7 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSプロトコ�
 
 ![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
 
-> ↪️：
->
+
 > - https://docs.datadoghq.com/tracing/
 > - https://inokara.hateblo.jp/entry/2017/10/01/164446
 
@@ -64,8 +63,7 @@ dockerエージェントにて、`DD_APM_ENABLED`の環境変数に`true`を割�
 
 APMエージェントを有効化し、分散トレース監視バックエンドを送信できる。
 
-> ↪️：
->
+
 > - https://docs.datadoghq.com/agent/docker/apm/?tab=linux
 > - https://docs.datadoghq.com/tracing/#explore-datadog-apm
 
@@ -236,8 +234,7 @@ PHP用のクライアントパッケージでlaravel内からタグを収集し�
 
 タイプ名の種類については、以下のリンクを参考にせよ。
 
-> ↪️：
->
+
 > - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
 > - https://docs.datadoghq.com/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
 
@@ -251,8 +248,7 @@ PHP用のクライアントパッケージによって、マイクロサービ�
 
 コードから、PHP用のクライアントパッケージがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
 
-> ↪️：
->
+
 > - https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
 > - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
 

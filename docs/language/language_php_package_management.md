@@ -68,8 +68,7 @@ $ php -r "unlink('composer-setup.php');"
 }
 ```
 
-> ↪️：
->
+
 > - https://getcomposer.org/doc/04-schema.md#autoload
 > - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
 
@@ -380,8 +379,7 @@ $ composer init
 $ composer install
 ```
 
-> ↪️：
->
+
 > - https://getcomposer.org/doc/03-cli.md#install-i
 > - https://prograshi.com/framework/laravel/require-update-install/
 
@@ -457,8 +455,7 @@ $ composer install -vvv
 $ composer remove <パッケージ名>
 ```
 
-> ↪️：
->
+
 > - https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/
 > - https://getcomposer.org/doc/03-cli.md#remove
 
@@ -474,8 +471,7 @@ $ composer remove <パッケージ名>
 
 コマンドを使用せずに自分で実装しても良い。
 
-> ↪️：
->
+
 > - https://getcomposer.org/doc/03-cli.md#require
 > - https://prograshi.com/framework/laravel/require-update-install/
 
@@ -512,8 +508,7 @@ $ composer <スクリプト名>
 $ composer update
 ```
 
-> ↪️：
->
+
 > - https://getcomposer.org/doc/03-cli.md#update
 > - https://prograshi.com/framework/laravel/require-update-install/
 

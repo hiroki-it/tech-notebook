@@ -76,8 +76,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 #### ▼ dapr
 
-> ↪️：
->
+
 > - https://www.publickey1.jp/blog/19/dapr.html
 > - https://github.com/dapr/dapr
 
@@ -95,8 +94,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ただし、バージョン管理システム (例：GitHub) によっては、リポジトリのディレクトリ単位で認可スコープを設定できるものがある。
 
-> ↪️：
->
+
 > - https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 > - https://qiita.com/FumiyaShibusawa/items/c7a3ff4d0793ca2d281f
 
@@ -112,8 +110,7 @@ Googleではモノリポジトリによるマイクロサービスアーキテ�
 
 ![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png)
 
-> ↪️：
->
+
 > - https://en.wikipedia.org/w/index.php?title=Monorepo
 > - https://www.fourtheorem.com/blog/monorepo
 > - https://www.school.ctc-g.co.jp/columns/nakai2/nakai220.html
@@ -264,8 +261,7 @@ CQRSでは、これはプロセスマネージャパターンとして知られ�
 
 一方でSagaパターンとも呼ばれるが、分散トランザクションでも同じ用語があるため、混乱を避けるためにプロセスマネージャパターンとする。
 
-> ↪️：
->
+
 > - https://github.com/czeslavo/process-manager
 > - https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
 > - https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
@@ -312,8 +308,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_bounded-context.png)
 
-> ↪️：
->
+
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries
 > - https://microservices.io/patterns/decomposition/decompose-by-subdomain.html
 > - https://www.amazon.co.jp/dp/4873119316/
@@ -333,8 +328,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 その他、各マイクロサービスでDBを完全に独立させることや、SAGAパターンを使用すること、がある。
 
-> ↪️：
->
+
 > - https://www.koslib.com/posts/entity-services-anti-pattern/
 > - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
 > - https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
@@ -373,8 +367,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 分散モノリスにならないように、マイクロサービス間で使用するライブラリが重複することを許容する必要がある。
 
-> ↪️：
->
+
 > - https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/
 > - https://r-kaga.com/blog/what-is-distributed-monolith
 
@@ -419,8 +412,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 送信側と受信側で通信処理が独立して実行されるため、メッセージキューを介した非同期通信を行うことになる。
 
-> ↪️：
->
+
 > - https://en.wikipedia.org/wiki/Message_queue
 > - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
@@ -436,8 +428,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 メッセージキューはPub/Subデザインパターンで自前で実装するか、または外部サービス (例：AWS-SQS、Kafka、など) を使用する。
 
-> ↪️：
->
+
 > - https://en.wikipedia.org/wiki/Message_queue
 > - https://www.scaleuptech.com/de/blog/api-gateway-vs-service-mesh-vs-message-queue/
 
@@ -455,8 +446,7 @@ v2では、アプリケーションがプレゼンテーション層、アプリ
 
 続くマイクロサービスアーキテクチャでは、残りのアプリケーション層、ドメイン層、インフラ層、を分離していく。
 
-> ↪️：
->
+
 > - https://cloud.google.com/architecture/devops/devops-tech-architecture
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
 > - https://bliki-ja.github.io/PresentationDomainSeparation/
@@ -478,8 +468,7 @@ v2では、アプリケーションがプレゼンテーション層、アプリ
 - キャッシュの作成
 - リクエスト制限
 
-> ↪️：
->
+
 > - https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
 > - https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/
 
@@ -545,8 +534,7 @@ Kubernetes内で管理できるメリットがある。
 
 ![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
-> ↪️：
->
+
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 > - https://codezine.jp/article/detail/11305?p=4
 
@@ -554,8 +542,7 @@ Kubernetes内で管理できるメリットがある。
 
 BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各API Gatewayのエンドポイントを統合する。
 
-> ↪️：
->
+
 > - https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/
 > - https://tech.smartshopping.co.jp/backend-development-with-graphql
 > - https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32
@@ -572,8 +559,7 @@ BFFではアプリケーションの種類ごとにAPI　Gatewayを作成した�
 
 この場合、単一のDB上で、スキーマやテーブルをマイクロサービスごとに作成する必要がある。
 
-> ↪️：
->
+
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 > - https://microservices.io/patterns/data/shared-database.html
 
@@ -647,8 +633,7 @@ BFFではアプリケーションの種類ごとにAPI　Gatewayを作成した�
 
 補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される。
 
-> ↪️：
->
+
 > - https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687
 > - https://thinkit.co.jp/article/14639?page=0%2C1
 > - https://qiita.com/nk2/items/d9e9a220190549107282
@@ -686,8 +671,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
 
-> ↪️：
->
+
 > - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 > - https://news.mynavi.jp/itsearch/article/devsoft/1598
 > - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
@@ -705,8 +689,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 ![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png)
 
-> ↪️：
->
+
 > - https://www.12-technology.com/2021/08/dbsaga.html
 > - https://qiita.com/somen440/items/a6c323695627235128e9
 > - https://www.12-technology.com/2021/08/dbsaga.html
@@ -723,8 +706,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
 
-> ↪️：
->
+
 > - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 > - https://zenn.dev/yoshii0110/articles/74dfcf4132a805
 > - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
@@ -765,8 +747,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 CQRSと相性が良い。
 
-> ↪️：
->
+
 > - https://qiita.com/suin/items/f559e3dcde7c811ed4e1
 > - https://martinfowler.com/articles/201701-event-driven.html
 
@@ -806,8 +787,7 @@ CQRSと相性が良い。
 
 ![micro-auth_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_sso.png)
 
-> ↪️：
->
+
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
@@ -823,8 +803,7 @@ CQRSと相性が良い。
 
 ![micro-auth_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_centralization.png)
 
-> ↪️：
->
+
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
@@ -840,8 +819,7 @@ JWTを作成する認証マイクロサービスを`1`個だけ配置し、Cooki
 
 ![micro-auth_type_distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_distribution.png)
 
-> ↪️：
->
+
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
@@ -859,8 +837,7 @@ JWTを作成する認証マイクロサービスを`1`個だけ配置し、Cooki
 
 ![micro-auth_type_gateway-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_gateway-distribution.png)
 
-> ↪️：
->
+
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 

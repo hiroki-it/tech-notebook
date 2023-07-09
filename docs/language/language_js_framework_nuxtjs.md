@@ -294,8 +294,7 @@ export function foo() {
 }
 ```
 
-> ↪️：
->
+
 > - https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
@@ -335,8 +334,7 @@ export function foo() {
 }
 ```
 
-> ↪️：
->
+
 > - https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
@@ -413,8 +411,7 @@ SSGモードの`generate`コマンドの実行時に、アーティファクト�
 
 ### `plugin`ディレクトリ
 
-> ↪️：
->
+
 > - https://nuxtjs.org/docs/directory-structure/plugins/
 > - https://github.com/nuxt/nuxt.js/issues/2820
 

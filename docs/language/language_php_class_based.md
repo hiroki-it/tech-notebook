@@ -542,8 +542,7 @@ class Mammal implements Animal
 
 類似するものとして、プロトタイプチェーンは以下のリンクを参考にせよ。
 
-> ↪️：
->
+
 > - https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based.html
 > - https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based_method_data.html
 
@@ -919,8 +918,7 @@ class Bar
 
 クラスＡがクラスＢを引数型/返却値型として使用する関係性のこと。
 
-> ↪️：
->
+
 > - https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
 > - https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
 
@@ -964,8 +962,7 @@ final class User
 
 『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。
 
-> ↪️：
->
+
 > - https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection
 > - https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection
 
@@ -1460,8 +1457,7 @@ LCOMの計測方法にはいくつか種類がある。
 
 LCOM4は、クラスの各メソッド内で、保持する全てのデータにアクセスしているほど、凝集度が高いと見なす方法である。
 
-> ↪️：
->
+
 > - https://www.amazon.co.jp/dp/B082WXZVPC
 > - https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
 

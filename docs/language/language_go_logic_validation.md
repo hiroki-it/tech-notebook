@@ -34,8 +34,7 @@ description: 検証ロジック＠Goの知見を記録しています。
 | **`true`**            | ✅         |                    |                 |                                                   |
 | **`[]`** (空スライス) |            |                    |                 |                                                   |
 
-> ↪️：
->
+
 > - https://stackoverflow.com/a/18595217
 > - https://www.geeksforgeeks.org/zero-value-in-golang/
 > - https://stackoverflow.com/a/61877328

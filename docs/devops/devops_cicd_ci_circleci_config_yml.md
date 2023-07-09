@@ -986,8 +986,7 @@ workflows:
 | job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executorまたはjobでworking_directoryを宣言できる。両方で宣言していた場合は、executorの値が優先される。 |
 | steps         | 指定したディレクトリーに移動する。                                                                                                                             |
 
-> ↪️：
->
+
 > - https://www.engilaboo.com/circleci-working-directory/
 > - https://nju33.com/notes/circleci/articles
 

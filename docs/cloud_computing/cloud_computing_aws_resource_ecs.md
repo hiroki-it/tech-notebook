@@ -89,8 +89,7 @@ Fargateの場合、ECSコンテナエージェントがプリインストール�
 
 ![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png)
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 > - https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/
 
@@ -145,8 +144,7 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 ![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_service-discovery.png)
 
-> ↪️：
->
+
 > - https://practical-aws.dev/p/ecs-service-discovery/
 > - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
 > - https://dev.classmethod.jp/articles/ecs-service-discovery/
@@ -199,8 +197,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 ![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png)
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
 
@@ -250,8 +247,7 @@ ECSサービスがECSタスクを操作するために必要なロールであ�
 
 サービスリンクロールに含まれ、ECSの作成時に自動的に紐付けられる。
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 
@@ -263,8 +259,7 @@ Fargateの場合、不要である。
 
 ![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_container-instance-role.png)
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 
@@ -276,8 +271,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 ![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png)
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 
@@ -368,8 +362,7 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 }
 ```
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
 > - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 
@@ -390,8 +383,7 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 | `awslogs-region`          | ログ宛先のCloudWatchログのリージョンを設定する。                                       |                                                                                                                                                                                                                                    |
 | `awslogs-stream-prefix`   | ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。                 | ログストリームには、『`<プレフィックス名>/<コンテナ名>/<タスクID>`』の形式で送信される。                                                                                                                                           |
 
-> ↪️：
->
+
 > - https://docs.docker.com/config/containers/logging/awslogs/
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
 
@@ -703,8 +695,7 @@ NAT GatewayとVPCエンドポイントの両方を作成している場合、ル
 
 注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec
 > - https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 > - https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/
@@ -822,8 +813,7 @@ aws ecs execute-command \
     --command "bash"
 ```
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
 > - https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e

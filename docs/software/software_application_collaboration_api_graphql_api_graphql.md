@@ -176,8 +176,7 @@ $ curl \
 }
 ```
 
-> ↪️：
->
+
 > - https://zenn.dev/offers/articles/20220609-graphql-onboarding#mutation
 > - https://stackoverflow.com/a/64110554
 

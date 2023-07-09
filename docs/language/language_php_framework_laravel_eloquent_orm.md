@@ -21,8 +21,7 @@ Active Recordパターンで実装されている。
 
 内部にはPDOが使用されており、Laravelクエリビルダーよりも抽象度が高い。
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/eloquent.html
 > - https://codezine.jp/article/detail/12805
 
@@ -183,8 +182,7 @@ $department = Department::find(1);
 $employees = $department->employees()
 ```
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
@@ -569,8 +567,7 @@ Eloquentモデルにはより上位のメソッドが定義されていないこ
 | Eloquentリレーション | `Illuminate\Database\Eloquent\Relations\Relation` | Queryビルダー、Eloquentビルダー、                     |
 | Eloquentモデル       | `Illuminate\Database\Eloquent\Model`              | Queryビルダー、Eloquentビルダー、Eloquentリレーション |
 
-> ↪️：
->
+
 > - https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
 > - https://qiita.com/mpyw/items/7c7e8dc665584122a275
 
@@ -677,8 +674,7 @@ class FooDTO extends Model
 }
 ```
 
-> ↪️：
->
+
 > - https://codelikes.com/laravel-eloquent-basic/#toc9
 > - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
 
@@ -723,8 +719,7 @@ class FooController extends Controller
 }
 ```
 
-> ↪️：
->
+
 > - https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
 > - https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
 > - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models
@@ -765,8 +760,7 @@ class FooController extends Controller
 }
 ```
 
-> ↪️：
->
+
 > - https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
 > - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
 
@@ -1132,8 +1126,7 @@ class FooDTO extends Model
 }
 ```
 
-> ↪️：
->
+
 > - https://codelikes.com/laravel-eloquent-basic/#toc9
 > - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
 

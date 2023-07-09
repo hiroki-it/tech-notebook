@@ -29,8 +29,7 @@ Envoyには静的/動的な設定がある。
 
 Envoyは、xDSサーバーとの間で、リモートプロシージャーコールを双方向で起動時/定期的に実行し、取得した宛先情報を自身に登録する。
 
-> ↪️：
->
+
 > - https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
 > - https://github.com/salrashid123/envoy_discovery#prerequsites
@@ -61,8 +60,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
@@ -75,8 +73,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -86,8 +83,7 @@ Envoyの実行時に、ルーティング先のClusterの設定を動的に検�
 
 Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -97,8 +93,7 @@ Envoyの実行時に、ルーティング先のClusterに含まれるメンバ�
 
 Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -108,8 +103,7 @@ Envoyの実行時に、リスナーの設定を動的に検出できるように
 
 Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -119,8 +113,7 @@ Envoyの実行時に、ルーティングの設定を動的に検出できるよ
 
 Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -138,8 +131,7 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出でき
 
 Envoyを使用するサービスディスカバリーツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに`go-control-plane`パッケージが使用されている。
 
-> ↪️：
->
+
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/resource/v3/resource.go#L34-L43
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/server/v3/gateway.go#L38-L98
 
@@ -220,8 +212,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 データプレーンの処理は、コンポーネント (リスナー、ルート、クラスター、エンドポイント) から構成される。
 
-> ↪️：
->
+
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -231,8 +222,7 @@ Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双�
 
 Envoyが組み込まれたサービスメッシュツール (例：Istio、Linkerd) では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
 
@@ -282,8 +272,7 @@ message DiscoveryResponse {
 }
 ```
 
-> ↪️：
->
+
 > - https://skyao.io/learning-envoy/xds/overview/
 > - https://skyao.io/learning-envoy/xds/overview/discovery-message.html
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L47-L97
@@ -388,8 +377,7 @@ static_resources:
                               cluster: PassthroughCluster
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
@@ -427,8 +415,7 @@ service ListenerDiscoveryService {
 
 ```
 
-> ↪️：
->
+
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/listener/v3/lds.proto#L23-L42
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
@@ -558,8 +545,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 `static_resources.listeners`キー配下で、リスナーと合わせて設定する。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
@@ -597,8 +583,7 @@ service RouteDiscoveryService {
 
 ```
 
-> ↪️：
->
+
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/route/v3/rds.proto#L22-L42
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
@@ -777,8 +762,7 @@ static_resources:
                       port_value: 80
 ```
 
-> ↪️：
->
+
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
@@ -816,8 +800,7 @@ service ClusterDiscoveryService {
 
 ```
 
-> ↪️：
->
+
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/cluster/v3/cds.proto#L22-L38
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
@@ -905,8 +888,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 `static_resources.clusters`キー配下で、リスナーと合わせて設定する。
 
-> ↪️：
->
+
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
@@ -966,8 +948,7 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト宛先マイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
 
-> ↪️：
->
+
 > - https://blog.linkode.co.jp/entry/2020/07/06/162915
 > - https://openstandia.jp/oss_info/envoy/
 > - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33

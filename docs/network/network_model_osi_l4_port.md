@@ -25,8 +25,7 @@ description: ポート＠L4の知見を記録しています。
 - USBポート
 - LANポート
 
-> ↪️：
->
+
 > - http://faq3.dospara.co.jp/faq/show/3708?site_domain=default
 > - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
 
@@ -36,8 +35,7 @@ description: ポート＠L4の知見を記録しています。
 
 `L7` (アプリケーション層) にて、物理サーバー、仮想サーバー、コンテナ内のアプリケーションのプロセスが待ち受けるポートのこと。
 
-> ↪️：
->
+
 > - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
 > - https://ascii.jp/elem/000/000/434/434183/2/
 
@@ -76,8 +74,7 @@ IANA：Internet Assigned Numbers Authority (インターネット割当番号公
 | SMTPs                                  | `465`              |
 | ...                                    | ...                |
 
-> ↪️：
->
+
 > - https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
 > - https://abhp.net/it/IT_Port_No_100000.html
 

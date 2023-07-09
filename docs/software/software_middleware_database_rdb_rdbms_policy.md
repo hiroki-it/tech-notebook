@@ -23,8 +23,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 ドメインのうちで、ID、識別コード、名前などに関するデータを管理する。
 
-> ↪️：
->
+
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
 
@@ -34,8 +33,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 ドメインのうちで、履歴、数量、日付などに関するデータを管理する。
 
-> ↪️：
->
+
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
 

@@ -206,8 +206,7 @@ $ aws rds modify-db-instance \
     --apply-immediately
 ```
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
 > - https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
 
@@ -328,8 +327,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 : DRリージョンをフェイルオーバーさせる。メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/
 > - https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
 
@@ -418,8 +416,7 @@ Auroraをエンジンバージョンに選択した場合に使用できる。
 
 : リードレプリカが再起動され、この時に`20`～`30`秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。
 
-> ↪️：
->
+
 > - https://qiita.com/tonishy/items/542f7dd10cc43fd299ab
 > - https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f
 > - https://noname.work/2407.html
@@ -654,8 +651,7 @@ DBインスタンスに応じたエンドポイントが用意されている。
 
 注意点として、RDS (非Aurora) スケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
 > - https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
 > - https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0
@@ -802,8 +798,7 @@ RDSプロキシは、RDSの同時接続の上限数を考慮しつつ、コネ�
 
 ![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy.png)
 
-> ↪️：
->
+
 > - https://blog.denet.co.jp/service-relay-2021-0711/
 > - https://blog.sgnet.co.jp/2020/10/java-db.html
 

@@ -36,8 +36,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 システムが非機能的な品質を満たしているかを検証する。
 
-> ↪️：
->
+
 > - https://www.qbook.jp/column/20180806_667.html
 > - https://thinkit.co.jp/article/17647
 
@@ -94,8 +93,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 ストレステストには、性能テスト、限界テスト、耐久テストがある。
 
-> ↪️：
->
+
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
 
@@ -143,8 +141,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 これらを運用時の監視の参考値にする。
 
-> ↪️：
->
+
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/#%E8%B2%A0%E8%8D%B7%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E6%B5%81%E3%82%8C
 
@@ -166,8 +163,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 具体的にはテスト時に、障害回避処理以外の動作 (エラー、間違った処理、障害復旧後にも復旧できない、システムダウン) が起こらないか否かを確認する。
 
-> ↪️：
->
+
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
 
@@ -183,8 +179,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 これにより、どんな問題が起こるか否かを確認する。
 
-> ↪️：
->
+
 > - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 > - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
 
@@ -198,8 +193,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 ストレステストとは区別すること。
 
-> ↪️：
->
+
 > - https://stackify.com/what-is-load-testing/
 > - https://webrage.jp/techblog/non_functional_testing/
 
@@ -389,8 +383,7 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 本格的なカオスエンジニアリングを採用している日系企業は少なく、国内事例はまだ少ない。
 
-> ↪️：
->
+
 > - https://principlesofchaos.org/
 > - https://codezine.jp/article/detail/14526
 > - https://dev.classmethod.jp/articles/what-is-suitable-for-chaos-engineering-chaosconf2019-recap/#toc-6

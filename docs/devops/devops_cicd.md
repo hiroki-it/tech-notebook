@@ -101,8 +101,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 | デプロイ                  | 本番環境に対するデプロイ       |    `⭕️`     | CDツールで自動化できる。 |
 | DBマイグレーション        | 本番環境のDBに対するデプロイ   |    `⭕️`     | CDツールで自動化できる。 |
 
-> ↪️：
->
+
 > - https://blog.kyanny.me/entry/2014/12/24/145001
 > - https://aws.amazon.com/jp/devops/continuous-delivery/
 
@@ -119,8 +118,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 | 分析     | ステージング環境のテレメトリーを分析 |    `⭕️`     | CDツールとテレメトリー収集ツールを組み合わせて自動化できる。 |
 |          | 本番環境のテレメトリーを分析         |    `⭕️`     | CDツールとテレメトリー収集ツールを組み合わせて自動化できる。 |
 
-> ↪️：
->
+
 > - https://r-kaga.com/blog/what-is-progressive-delivery
 > - https://codezine.jp/article/detail/14476
 > - https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
@@ -253,8 +251,7 @@ CIツール (例：GitHub Actions、CircleCI、など) を使用して、CIパ�
 
 ![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
 
-> ↪️：
->
+
 > - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 > - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
 
@@ -314,8 +311,7 @@ CIツール (例：GitHub Actions、CircleCI、など)を使用してCIパイプ
 
 ![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
 
-> ↪️：
->
+
 > - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 > - https://github.com/argoproj/gitops-engine/blob/master/specs/design.md
 

@@ -19,8 +19,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 オブジェクト指向分析設計をより強化するために考案され、特に機能要件の多いアプリケーションに有効である。
 
-> ↪️：
->
+
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
 > - https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88
 
@@ -138,8 +137,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_domain.png)
 
-> ↪️：
->
+
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
 
@@ -155,8 +153,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
 
-> ↪️：
->
+
 > - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 > - https://labs.septeni.co.jp/entry/2021/04/15/130000
 
@@ -168,8 +165,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ただ、コアドメインが外部に依存すると、そのSaaSで障害が起こった時にコアドメインのシステムも停止する可能性があるため、注意が必要である。
 
-> ↪️：
->
+
 > - https://medium.com/nick-tune-tech-strategy-blog/core-domain-patterns-941f89446af5
 > - https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26
 
@@ -185,8 +181,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain.png)
 
-> ↪️：
->
+
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
 
@@ -262,8 +257,7 @@ ECサイトを運営するアスクルの例。
 
 ![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
 
-> ↪️：
->
+
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
 
@@ -279,8 +273,7 @@ ECサイトを運営するアスクルの例。
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
-> ↪️：
->
+
 > - https://note.com/alpinc/n/nab47ab9273c6
 > - https://thealp.co.jp/
 
@@ -388,8 +381,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/onion-architecture.png)
 
-> ↪️：
->
+
 > - https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 > - https://little-hands.hatenablog.com/entry/2017/10/11/075634
 
@@ -427,8 +419,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 この『具体例から抽象を導く』という作業により、オブジェクト思考分析よりも現実に沿ったモデリングが可能になる。
 
-> ↪️：
->
+
 > - https://booth.pm/ja/items/3363104
 > - https://qiita.com/little_hand_s/items/dfa4b156f533ba1a1491
 
@@ -452,8 +443,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ビジネスルール/制約を吹き出しに書き込むことにより、ソフトウェアの構造のみでなくビジネスルール/制約も表す。
 
-> ↪️：
->
+
 > - https://booth.pm/ja/items/3363104
 > - https://www.eureka-moments-blog.com/entry/2018/12/29/145802
 > - https://github.com/ShisatoYano/PlantUML/blob/master/DomainModelDiagram/DomainModelDiagram.pdf
@@ -464,8 +454,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 いずれの方も非常に参考になる (モデリングは難しい) 。
 
-> ↪️：
->
+
 > - https://cinemacity.co.jp/ticket/
 > - https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar
 > - https://github.com/bookreadking/ddd-modeling-impplementation-guilde/tree/master/ticket-modeling/eichisanden

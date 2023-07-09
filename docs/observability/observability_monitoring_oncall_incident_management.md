@@ -141,8 +141,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 サービスの停止を起こし得る想定外のイベントのこと。
 
-> ↪️：
->
+
 > - https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management
 > - https://response.pagerduty.com/before/what_is_an_incident/
 
@@ -380,8 +379,7 @@ fields @timestamp, @message, @logStream
 | MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                    |                                                                         |
 | MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | - https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 
-> ↪️：
->
+
 > - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
 
@@ -436,8 +434,7 @@ fields @timestamp, @message, @logStream
 | MTTE         | インシデントがオンコール担当にアラートされ、オンコール担当本人/アサインされたエンジニアがタスクとして着手するまで。 |     |
 | MTTF         | オンコール担当がタスクに着手してから、これを完了するまで。                                                          |     |
 
-> ↪️：
->
+
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262
 

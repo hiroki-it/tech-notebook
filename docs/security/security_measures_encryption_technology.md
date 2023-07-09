@@ -229,8 +229,7 @@ $ apt-get install -y ca-certificates
 $ yum install -y ca-certificates
 ```
 
-> ↪️：
->
+
 > - https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 > - https://www.quora.com/What-is-the-difference-between-CA-certificate-and-SSL-certificate
 > - https://www.nic.ad.jp/ja/newsletter/No69/0800.html
@@ -276,8 +275,7 @@ SSL証明書の内容
 -----END CERTIFICATE-----
 ```
 
-> ↪️：
->
+
 > - https://www.mtioutput.com/entry/2019/01/02/090000
 > - https://portal.kitcloud.net/documents/1356
 > - https://diary.bis5.net/2013/12/10/450.html
@@ -308,8 +306,7 @@ SSL証明書の内容
 
 例えばNginxならば、`/etc/nginx/ssl`ディレクトリ配下にSSL証明書 (`.crt`) と`/etc/ssl/private`ディレクトリ配下に秘密鍵 (`.key`) の両方を配置する。
 
-> ↪️：
->
+
 > - https://www.networkinghowtos.com/howto/configure-nginx-to-use-ssl-certificates/
 > - https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213
 
@@ -319,8 +316,7 @@ OSごとに、デフォルトのディレクトリが異なる。
 
 例えばUbuntuならば、`/etc/ssl/certs`ディレクトリ配下にSSL証明書 (`.crt`) を、`/etc/ssl/private`ディレクトリ配下に秘密鍵 (`.key`) を配置する。
 
-> ↪️：
->
+
 > - https://ubuntu.com/server/docs/security-certificates
 > - https://scrapbox.io/nwtgck/Ubuntu%E3%81%A7SSL%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AB%E7%BD%AE%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%8B%EF%BC%9F
 
@@ -336,8 +332,7 @@ OSごとに、デフォルトのディレクトリが異なる。
 | 証明書署名要求 | 秘密鍵から作成され、公開鍵であるSSL証明書を作成するために使用する。 | `.csr`、`.txt`                        |
 | SSL証明書      | 秘密鍵と対になる公開鍵として動作する。                              | `pem`、`.crt`、`.cert`、`.ca`、`.txt` |
 
-> ↪️：
->
+
 > - https://www.ssl-concier.com/news/topics/164
 > - https://install-memo.hatenadiary.org/entry/20110906/1315291837
 > - https://qiita.com/kunichiko/items/12cbccaadcbf41c72735#crt-cer-key-csr%E3%81%AF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E5%86%85%E5%AE%B9%E3%82%92%E8%A1%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B
@@ -505,8 +500,7 @@ $ curl https://foo.example.com -v
 * Connection #0 to host foo.example.com left intact
 ```
 
-> ↪️：
->
+
 > - https://www.karakaram.com/creating-self-signed-certificate/
 > - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd
 > - https://weblabo.oscasierra.net/openssl-gencert-1/

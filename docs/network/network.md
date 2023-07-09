@@ -45,8 +45,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/inbound_outbound.png)
 
-> ↪️：
->
+
 > - https://www.amazon.co.jp/dp/B0043D2EKO/
 > - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
 
@@ -60,8 +59,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/upstream_downstream.png)
 
-> ↪️：
->
+
 > - https://www.amazon.co.jp/dp/B0043D2EKO/
 > - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
 

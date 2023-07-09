@@ -21,8 +21,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png)
 
-> ↪️：
->
+
 > - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 > - https://maku77.github.io/docker/mount/
 
@@ -40,8 +39,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
 
-> ↪️：
->
+
 > - https://docs.docker.com/storage/bind-mounts/
 > - https://www.takapy.work/entry/2019/02/24/110932
 
@@ -108,8 +106,7 @@ $ cat settings.json
 
 ![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
 
-> ↪️：
->
+
 > - https://docs.docker.com/storage/volumes/
 > - https://www.takapy.work/entry/2019/02/24/110932
 
@@ -179,8 +176,7 @@ Docker on Linuxでのみ使用できる。
 
 そのため、バインドマウントより安全である。
 
-> ↪️：
->
+
 > - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 > - https://blog.logrocket.com/docker-volumes-vs-bind-mounts/
 > - https://devops4solutions.com/storage-options-in-docker/
@@ -200,8 +196,7 @@ Docker on Linuxでのみ使用できる。
 
 これにより、本番環境ではこのコンテナイメージをプルしさえすれば、アプリケーションを使用できるようになる。
 
-> ↪️：
->
+
 > - https://www.nyamucoro.com/entry/2018/03/15/200412
 > - https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/
 

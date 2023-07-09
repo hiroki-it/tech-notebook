@@ -470,8 +470,7 @@ runs:
 
 これに関しては以前は非対応であったため、`add-mask`コマンドを使用した方法がネット上で見つかることに注意する。
 
-> ↪️：
->
+
 > - https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
 > - https://github.com/actions/runner/issues/643#issuecomment-708228940
 > - https://github.com/actions/runner/issues/475#issuecomment-1092734499
@@ -556,8 +555,7 @@ jobs:
           source ./bar.sh
 ```
 
-> ↪️：
->
+
 > - https://btj0.com/blog/github/use-env/
 > - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
 > - https://stackoverflow.com/a/61428342
@@ -806,8 +804,7 @@ jobs:
           echo "${{ needs.foo.outputs.FOO }}"
 ```
 
-> ↪️：
->
+
 > - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 > - https://swfz.hatenablog.com/entry/2020/04/18/160235
 

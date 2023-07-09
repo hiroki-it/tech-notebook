@@ -39,8 +39,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 パスワードは、`/etc/passwd`ファイルに設定されている。
 
-> ↪️：
->
+
 > - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
@@ -169,8 +168,7 @@ echo $0 # foo.sh
 | `~/.bash_login`ファイル   | `~/.zlogin`ファイル   | ログインシェルの起動時。profileファイルと機能が重複するため、個人的には使用しない。 |
 | `~/.bash_logout`ファイル  | `~/.zlogout`ファイル  | `exit`コマンド時                                                                    |
 
-> ↪️：
->
+
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 > - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
 > - https://suwaru.tokyo/zshenv/
@@ -288,8 +286,7 @@ $ apk add bash
 | `128 + 2` | スクリプトが `Ctrl+C`で終了            | `Ctrl+C`はシグナル`2`で終了するため、`Ctrl+C`が実行された可能性がある。 (`128 + 2 = 130`) | Ctrl+C                                       |
 | `255`     | 範囲外の終了ステータス                 | `exit`コマンドに0〜255以外の整数を渡している可能性がある。                                | `$ exit -1`                                  |
 
-> ↪️：
->
+
 > - https://tldp.org/LDP/abs/html/exitcodes.html
 > - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
 
@@ -309,8 +306,7 @@ $ apk add bash
 $ echo foo; echo bar; echo baz
 ```
 
-> ↪️：
->
+
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
 
@@ -324,8 +320,7 @@ $ echo foo; echo bar; echo baz
 $ echo foo && echo bar && echo baz
 ```
 
-> ↪️：
->
+
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
 
@@ -339,8 +334,7 @@ $ echo foo && echo bar && echo baz
 $ echo foo || echo bar || echo baz
 ```
 
-> ↪️：
->
+
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
 
@@ -356,8 +350,7 @@ $ echo foo || echo bar || echo baz
 $ echo foo & echo bar & echo baz
 ```
 
-> ↪️：
->
+
 > - https://jehupc.exblog.jp/15729095/
 > - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
 

@@ -41,8 +41,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 |                              ⬇︎                              |                     ⬇︎                      |             ⬇︎              |                       ⬇︎                        |                                   ⬇︎                                   |               ⬇︎               |             ⬇︎             |
 |                        アラートの作成                        |       ✅<br>(AWS CloudWatchアラーム)        |             ✅              |                        -                        |                       ✅<br>(prometheusサーバー)                       |               -                | ✅<br>(prometheusサーバー) |
 
-> ↪️：
->
+
 > - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19
@@ -90,8 +89,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ⬇︎                                               |                        ⬇︎                        |        ⬇︎        |          ⬇︎          |        ⬇︎        |                 ⬇︎                  |                        ⬇︎                        |           ⬇︎           |
 | アラートの作成                                   |          ✅<br>(AWS CloudWatchアラーム)          |        -         |          -           |        -         |                  -                  |                        -                         |           -            |
 
-> ↪️：
->
+
 > - https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
 > - https://qiita.com/kazookie/items/eef3071a0667cb4d5136
 > - https://www.reddit.com/r/kubernetes/comments/qv6qqx/comment/hkul7kb/?utm_source=share&utm_medium=web2x&context=3
@@ -141,8 +139,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ⬇︎                                                       |                 ⬇︎                  |                  ⬇︎                   |      ⬇︎       |               ⬇︎                |                          ⬇︎                          |                ⬇︎                |                 ⬇︎                 |            ⬇︎            |
 | アラートの作成                                           |                  -                  |                   -                   |       -       |                -                |                          -                           |                -                 |                 -                  |            -             |
 
-> ↪️：
->
+
 > - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 > - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
 > - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#022
@@ -180,8 +177,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ログと分散トレース間の紐付け       |        ✅<br>(ログはAWS CloudWatchログに要保管)         | ✅<br>(ログはDatadogに要保管) | ✅<br>(ログの保管ツールの種類に制限あり) |
 | メトリクスと分散トレース間の紐付け | ✅<br>(一部の言語のx-rayクライアントパッケージのみ対応) | ✅<br>(ログはDatadogに要保管) | ✅<br>(ログの保管ツールの種類に制限あり) |
 
-> ↪️：
->
+
 > - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03
 > - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#04
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy_servicelens_CloudWatch_agent_logintegration.html

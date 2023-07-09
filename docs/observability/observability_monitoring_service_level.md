@@ -61,8 +61,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 
 : 商品を購入する。
 
-> ↪️：
->
+
 > - https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos
 > - https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
 
@@ -74,8 +73,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 
 クリティカルユーザージャーニーの満足度に影響を与えるメトリクス (リクエストとレスポンスの可用性/遅延/品質、データ処理のカバレッジ/正確性/鮮度/スループット、ストレージのスループット/遅延、など) をSLIとすると良い。
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
 > - https://medium.com/google-cloud-jp/sre-slo-d7c6aee1fb0e
 
@@ -87,8 +85,7 @@ MTtxメトリクスをSLIとし、そのダッシュボードを作成すると�
 
 具体的には、可用性は稼働時間を基に定量化できる。
 
-> ↪️：
->
+
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
 > - https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso
@@ -159,8 +156,7 @@ SLOだけがユーザーの満足度を決めるわけではなく、新機能�
 
 ![burn-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burn-rate.png)
 
-> ↪️：
->
+
 > - https://sre.google/workbook/alerting-on-slos/
 > - https://engineering.mercari.com/blog/entry/20211215-practical_alerting_methods_based_on_customer_impact/
 

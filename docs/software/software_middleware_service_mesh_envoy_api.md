@@ -63,8 +63,7 @@ $ kubectl exec \
   /stats/recentlookups/enable: enable recording of reset stat-name lookup names
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface
 
@@ -359,8 +358,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters} | grep ClustersConfigDump.DynamicCluster -A 120
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster
 
@@ -398,8 +396,7 @@ configs:
   ...
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response
@@ -417,8 +414,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
 

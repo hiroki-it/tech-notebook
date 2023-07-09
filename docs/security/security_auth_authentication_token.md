@@ -23,8 +23,7 @@ Bear認証やOAuthのトークンとして使用できる。
 
 ランダムな文字列をこれら認証のトークンとするより、JWTを使用した方がより安全である。
 
-> ↪️：
->
+
 > - https://meetup-jp.toast.com/3511
 > - https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
 
@@ -137,8 +136,7 @@ const signature = HMACSHA256(
 | `Cookie`ヘッダー                                                       | CSRFトークン           |     ⭕     |                                                                     |
 | SameSiteCookie                                                         |                        |     ⭕     | SPAとAPIが同一オリジンの必要がある。                                |
 
-> ↪️：
->
+
 > - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 > - https://blog.flatt.tech/entry/auth0_access_token_poc
 

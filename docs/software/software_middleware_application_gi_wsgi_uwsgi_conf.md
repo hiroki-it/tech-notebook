@@ -35,8 +35,7 @@ uWSGIの起動時の値を設定する。
 
 `.json`形式やXML形式でも問題ない。
 
-> ↪️：
->
+
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 > - https://qiita.com/11ohina017/items/da2ae5b039257752e558
 
@@ -113,8 +112,7 @@ uWSGIの`uwsgi`プロセスのプールを設定する。
 callable = app
 ```
 
-> ↪️：
->
+
 > - https://laplace-daemon.com/nginx-uwsgi-flask/
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
 
@@ -286,8 +284,7 @@ vacuum = true
 wsgi-file = main.py
 ```
 
-> ↪️：
->
+
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
 > - https://django.kurodigi.com/uwsgi-basic/
 

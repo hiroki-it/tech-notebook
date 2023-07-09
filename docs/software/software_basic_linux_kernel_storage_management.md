@@ -139,8 +139,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
 
-> ↪️：
->
+
 > - https://win2012r2.com/2018/05/13/post-268/
 > - http://www.miloweb.net/partition.html
 
@@ -194,8 +193,7 @@ tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
 tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 ```
 
-> ↪️：
->
+
 > - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
 > - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html
 
@@ -308,8 +306,7 @@ Linuxカーネルが入出力装置や標準入出力を操作できるように
 
 デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。
 
-> ↪️：
->
+
 > - https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
 > - https://qiita.com/angel_p_57/items/1faafa275525469788b4
 
@@ -474,8 +471,7 @@ HHD (`/dev/hd`) 、メモリ、などがある。
 
 パーティション内のファイルをデータとして使用できるようにする機能のこと。
 
-> ↪️：
->
+
 > - https://www.infraeye.com/study/linuxz22.html
 > - https://ameblo.jp/bakery-diary/entry-12639340661.html
 
@@ -496,8 +492,7 @@ $ mkfs -t <ファイルシステムのタイプ> <パーティションのデバ
 $ mkfs -t xfs /dev/sda5
 ```
 
-> ↪️：
->
+
 > - https://kazmax.zpp.jp/linux_beginner/mkfs.html
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
 
@@ -514,8 +509,7 @@ $ mke2fs -t <ファイルシステムのタイプ> <パーティションのデ�
 $ mke2fs -t ext4 /dev/sda5
 ```
 
-> ↪️：
->
+
 > - https://xtech.nikkei.com/it/article/COLUMN/20140324/545285/
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
 

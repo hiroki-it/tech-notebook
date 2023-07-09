@@ -180,8 +180,7 @@ $ kubectl config use-context <ClusterのARN>
 $ kubectl get pod
 ```
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
 > - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
@@ -266,8 +265,7 @@ data:
 
      IAMユーザーは、Kubernetesリソースを操作できる。
 
-> ↪️：
->
+
 > - https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/
 > - https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces
 > - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737
@@ -423,8 +421,7 @@ spec:
               path: token
 ```
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1
 > - https://onsd.hatenablog.com/entry/2019/09/21/015522
@@ -509,8 +506,7 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 ...
 ```
 
-> ↪️：
->
+
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://www.bigtreetc.com/column/eks-irsa/
 > - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
@@ -651,8 +647,7 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのア
 | VPC内の踏み台EC2インスタンス | セッションマネージャー、SSH |
 | VPC内のCloud9                | セッションマネージャー、SSH |
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 > - https://note.com/tyrwzl/n/nf28cd4372b18
 > - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
@@ -687,8 +682,7 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 
 `aws-node`のPodがAWSのネットワーク系のAPIにアクセスできるように、IRSA用のServiceAccountに`AmazonEKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-node-role.html
 > - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html
 > - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html
@@ -712,8 +706,7 @@ Nodeグループは、EC2ワーカーNodeが配置されるプライベートサ
 
 AutoScalingの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
@@ -724,8 +717,7 @@ AutoScalingの機能を使用すれば、EC2ワーカーNodeの自動的な起�
 
 EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に`0`個にスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 > - https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
 
@@ -743,8 +735,7 @@ EKSのテスト環境の請求料金を節約するために、昼間に通常�
 
 AutoScalingの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
 
-> ↪️：
->
+
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
 
@@ -778,8 +769,7 @@ $ aws ssm get-parameter \
     --output text
 ```
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 > - https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html
 
@@ -805,8 +795,7 @@ $ aws ssm get-parameter \
     --output text
 ```
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/bottlerocket/#toc-1
 > - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html
 
@@ -867,8 +856,7 @@ source "${EXPORT_ENVS}"
   --container-runtime containerd
 ```
 
-> ↪️：
->
+
 > - https://qiita.com/th_/items/8ffb28dd6d27779a6c9d
 > - https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html
 
@@ -952,8 +940,7 @@ EOF
 sudo systemctl restart systemd-logind
 ```
 
-> ↪️：
->
+
 > - https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown
 
@@ -999,8 +986,7 @@ Podをプライベートサブネットに配置した場合に、パブリッ�
 
 この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
-> ↪️：
->
+
 > - https://note.com/tyrwzl/n/n715a8ef3c28a
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/security-groups-for-pods.html
 
@@ -1052,8 +1038,7 @@ EKS Clusterを作成すると、ENIも作成する。
 
 執筆時点 (2022/05/27) では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/eks_basic/
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
@@ -1081,8 +1066,7 @@ AutoScalingのタグ付け機能を使用して、`kubernetes.io/cluster/<EKS Cl
 
 なお、起動テンプレートも合わせて使用でき、これは任意である。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
 > - https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
 
@@ -1195,8 +1179,7 @@ resource "aws_autoscaling_group" "foo" {
 
 EC2にはない制約については、以下のリンクを参考にせよ。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html
 
@@ -1274,8 +1257,7 @@ data:
 
      そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにアクセスする認可スコープなど) に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
-> ↪️：
->
+
 > - https://nishipy.com/archives/1122
 > - https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html
@@ -1342,8 +1324,7 @@ AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレード�
 
 執筆時点 (2022/01/28) では、AWSのAPIを介して`updateConfig`値を設定すれば、アップグレード時のサージ数を設定できる。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
 > - https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateNodegroupConfig.html#API_UpdateNodegroupConfig_RequestSyntax
 
@@ -1383,8 +1364,7 @@ EKS Clusterのアップグレード時、以下の仕組みでデータプレー
 
 : 最終的に、アップグレード前のワーカーNode数 (Node希望数) に戻る。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#common-scenarios-termination-rebalancing

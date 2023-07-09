@@ -102,8 +102,7 @@ NginxからPHP-FPMにインバウンド通信をルーティングする場合�
 
 補足として、『`www-data`』は`apache`プロセスのユーザー名のデフォルト値である。
 
-> ↪️：
->
+
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
@@ -119,8 +118,7 @@ PHP-FPMの仕様では、同じプールに同じオプションを設定した�
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 ```
 
-> ↪️：
->
+
 > - https://www.kengotakimoto.com/posts/laravel_with_docker-compose
 > - https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template
 
@@ -184,8 +182,7 @@ pid = /run/php-fpm/php-fpm.pid
 
 PHP-FPMの`www`プロセスのプールを設定する。
 
-> ↪️：
->
+
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://hackers-high.com/linux/php-fpm-config/
 
@@ -314,8 +311,7 @@ PHPの`ini`ファイルで設定されたbool値のオプションを上書き�
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> ↪️：
->
+
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag
 > - https://www.php.net/manual/en/ini.list.php
 
@@ -338,8 +334,7 @@ PHPの`ini`ファイルで設定されたbool値以外のオプションを上�
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> ↪️：
->
+
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value
 > - https://www.php.net/manual/en/ini.list.php
 
@@ -362,8 +357,7 @@ PHPの`ini`ファイルで設定されたbool値のオプションを上書き�
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> ↪️：
->
+
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag
 > - https://www.php.net/manual/en/ini.list.php
 
@@ -386,8 +380,7 @@ PHPの`ini`ファイルで設定されたbool値以外のオプションを上�
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> ↪️：
->
+
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value
 > - https://www.php.net/manual/en/ini.list.php
 

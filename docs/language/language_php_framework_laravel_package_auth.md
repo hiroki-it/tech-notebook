@@ -76,8 +76,7 @@ return [
 ];
 ```
 
-> ↪️：
->
+
 > - https://teratail.com/questions/171582
 > - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 > - https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
@@ -532,8 +531,7 @@ class FooController extends Controller
 
 ```
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
@@ -588,8 +586,7 @@ class FooController extends Controller
 }
 ```
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
@@ -1043,8 +1040,7 @@ $ composer require laravel/sanctum
 
 フロントエンド (外部のアプリケーションを含む) は任意とし、APIのみを実装する場合、使用が適している。
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
 > - https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
@@ -1055,8 +1051,7 @@ $ composer require laravel/sanctum
 
 フロントエンドにファーストパーティのSPA (自社のSPA) を使用して、バックエンドのAPIを実装する場合、使用が適している。
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
 > - https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
@@ -1069,8 +1064,7 @@ $ composer require laravel/sanctum
 
 Laravelが持つ全ての認証機能のバックエンド処理を提供する。
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/fortify.html
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
 
@@ -1082,8 +1076,7 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 
 Laravelが持つ全ての認証機能のバックエンド (認証+ルーティング+DBアクセス) 処理と、これに対応するフロントエンド処理を提供する。
 
-> ↪️：
->
+
 > - https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
 

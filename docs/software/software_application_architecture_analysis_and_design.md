@@ -63,8 +63,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 システムシーケンス図とシーケンス図の違いについて、以下のリンクを参考にせよ。
 
-> ↪️：
->
+
 > - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd>
 > - https://en.wikipedia.org/wiki/Sequence_diagram>
 
@@ -179,8 +178,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)                     | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                     |                              |
 | ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                       | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>- https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                              |
 
-> ↪️：
->
+
 > - https://it-koala.com/usecasediagrams-1832>
 > - https://www.itsenka.com/contents/development/uml/usecase.html>
 
@@ -237,8 +235,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system-sequence-diagram.png)
 
-> ↪️：
->
+
 > - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd>
 > - https://digitalgyan.org/difference-between-sequence-diagram-and-a-system-sequence-diagram/
 > - https://katzn.hatenablog.com/entry/2013/05/08/235531
@@ -309,8 +306,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | スロット         | インスタンスが保持する具体的なデータを表す。『`<属性名>:<データ型> = <値>`』で表記する。                                                 |
 | リンク           | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                                       |
 
-> ↪️：
->
+
 > - https://thinkit.co.jp/article/40/3/3.html>
 > - https://www.itsenka.com/contents/development/uml/object.html>
 
@@ -495,8 +491,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 | 返却メッセージ                      | コールの結果を他のライフラインに返却することを表す。                                                                                 |                                                                                                                                                                                                                                         |
 | 複合フラグメント (結合フラグメント) | 条件分岐、繰り返し、などによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を`alt` (`alternative`) 、繰り返しの場合は`loop`とする。<br>- https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88> |
 
-> ↪️：
->
+
 > - https://rainbow-engine.com/sequence-diagram-sample/
 > - https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html>
 
@@ -536,8 +531,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 | 提供側インターフェース |                            |
 | 要求側インターフェース |                            |
 
-> ↪️：
->
+
 > - https://www.itsenka.com/contents/development/uml/component.html
 > - https://www.bcm.co.jp/site/2002/uml/uml10.htm
 

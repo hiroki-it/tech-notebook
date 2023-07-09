@@ -55,8 +55,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 そのため、特にインタプリタ方式言語では実施した方が良い。
 
-> ↪️：
->
+
 > - https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5
 > - https://devblog.thebase.in/entry/2018/12/24/110000
 
@@ -309,8 +308,7 @@ AとBは、『1』または『0』になり得るとする。
 | `50`以上     | テストできない               | `70`%      |
 | `75`以上     | 変更によって誤修正が生じる。 | `98`%      |
 
-> ↪️：
->
+
 > - https://jp.mathworks.com/discovery/cyclomatic-complexity.html
 > - https://szk-takanori.hatenablog.com/entry/20111219/p1
 
@@ -350,8 +348,7 @@ AとBは、『1』または『0』になり得るとする。
 
 実際のユーザーの一連の操作を模したリクエストをアプリケーションに送信し、全てのコンポーネント結合テストを実施する。
 
-> ↪️：
->
+
 > - https://www.chalkboard.me/2020/08/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%86%E3%82%B9%E3%83%88%E6%96%B9%E6%B3%95%E3%81%AE%E8%AA%BF%E6%9F%BB/
 > - https://speakerdeck.com/hgsgtk/real-world-e2e-testing?slide=4
 
@@ -373,8 +370,7 @@ AとBは、『1』または『0』になり得るとする。
 
 マイクロサービスのクラスや構造体のメソッドが、それ単体で正しく動作するかを検証する。
 
-> ↪️：
->
+
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices
@@ -393,8 +389,7 @@ AとBは、『1』または『0』になり得るとする。
 
 下流のマイクロサービスは検証対象ではないため、サービスモックとする。
 
-> ↪️：
->
+
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices
@@ -419,8 +414,7 @@ AとBは、『1』または『0』になり得るとする。
 
 またパイプライン実行環境がマイクロサービスのエンドポイントにリクエストを送信できるよう、パイプライン実行環境からマイクロサービスまでの通信経路を用意する必要がある。
 
-> ↪️：
->
+
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices
@@ -435,8 +429,7 @@ AとBは、『1』または『0』になり得るとする。
 
 記入中...
 
-> ↪️：
->
+
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices

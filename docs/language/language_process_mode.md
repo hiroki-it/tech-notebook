@@ -89,8 +89,7 @@ func main() {
 
 開始も終了もバラバラであるが、処理の実行が重複する場合がある。
 
-> ↪️：
->
+
 > - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 > - https://moz.hatenablog.jp/entry/2018/04/10/175643
 > - https://zenn.dev/hsaki/books/golang-concurrency/viewer/term
@@ -111,8 +110,7 @@ func main() {
 
 開始は同時であるが、終了はバラバラになる。
 
-> ↪️：
->
+
 > - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 > - https://moz.hatenablog.jp/entry/2018/04/10/175643
 
@@ -124,8 +122,7 @@ func main() {
 
 parallelパッケージを使用する。
 
-> ↪️：
->
+
 > - https://github.com/krakjoe/parallel
 > - https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405
 
@@ -143,8 +140,7 @@ Goroutinesを使用する。
 
 それが理由か否かはわからないが、Goのドキュメントでは、Goroutinesは`concurrency`の項目に記載されている。
 
-> ↪️：
->
+
 > - https://medium.com/sprocket-inc/goroutine-concurrent-and-parallel-programming-669eaae55e73
 > - https://golang.org/doc/effective_go#concurrency
 > - https://qiita.com/taigamikami/items/fc798cdd6a4eaf9a7d5e
@@ -165,8 +161,7 @@ Goroutinesを使用する。
 
 完了を待たずに後続の処理が始まり、後続の処理と同時に実行されるような処理のこと。
 
-> ↪️：
->
+
 > - https://qiita.com/kiyodori/items/da434d169755cbb20447
 > - https://qiita.com/klme_u6/items/ea155f82cbe44d6f5d88
 
@@ -205,8 +200,7 @@ fs.readFile("/foo.txt", "utf8", function(err, data) {
 console.log(input);
 ```
 
-> ↪️：
->
+
 > - https://engineer.recruit-lifestyle.co.jp/techblog/2019-12-13-node-async-io/
 > - https://blog.honjala.net/entry/2018/08/08/022027
 

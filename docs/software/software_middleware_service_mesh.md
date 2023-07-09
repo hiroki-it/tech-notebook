@@ -39,8 +39,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。
 
-> ↪️：
->
+
 > - https://solace.com/blog/event-mesh-service-mesh-for-microservices/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html
 
@@ -66,8 +65,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念により、アプリケーションエンジニアがこれらのロジックを意識せずに (透過的に) 、インフラストラクチャ層より上層 (インターフェース層、ユースケース層、ドメイン層) の実装に注力できる。
 
-> ↪️：
->
+
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 > - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
 
@@ -83,8 +81,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 ![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png)
 
-> ↪️：
->
+
 > - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
 
@@ -116,8 +113,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 | マイクロサービスごとの設定カスタマイズ |           `⭕️`            |              △               |
 | 単純性                                 |             ×              |            `⭕️`             |
 
-> ↪️：
->
+
 > - https://codersociety.com/blog/articles/kubernetes-logging
 > - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411
 > - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
@@ -152,8 +148,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 | SPIRE   | Envoy                               | SPIRE                                 | SDSのみ                 |
 | ...     | ...                                 | ...                                   | ...                     |
 
-> ↪️：
->
+
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
 > - https://qiita.com/ryysud/items/bbfc730e17f53be65ce0
@@ -202,8 +197,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 : 送信元マイクロサービスは、ロードバランサーを介して、宛先マイクロサービスにリクエストを送信する。
 
-> ↪️：
->
+
 > - https://microservices.io/patterns/client-side-discovery.html
 > - https://www.baeldung.com/cs/service-discovery-microservices
 > - https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509
@@ -235,8 +229,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 : ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
 
-> ↪️：
->
+
 > - https://microservices.io/patterns/server-side-discovery.html
 > - https://www.baeldung.com/cs/service-discovery-microservices
 > - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/

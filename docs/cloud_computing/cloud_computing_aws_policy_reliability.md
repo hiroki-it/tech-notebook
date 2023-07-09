@@ -31,8 +31,7 @@ RFC1918では、以下のCIDRブロックが推奨されている。
 | `172.16.0.0/12`           | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
 | `192.168.0.0/16`          | `192.168.0.0`～`192.168.255.255` | `65536`    |
 
-> ↪️：
->
+
 > - https://note.com/takashi_sakurada/n/n502fb0299938
 > - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
 
@@ -84,8 +83,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 | ECS、EKS          | Elastic Network Interface 数と同じ個数      |
 | Lambda            | Elastic Network Interface 数と同じ個数      |
 
-> ↪️：
->
+
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
 > - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
 
@@ -174,8 +172,7 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | データリンク層       | `L2`        | VPC                                            |
 | 物理層               | `L1`        | 仮想化のため、意識しなくても良い。             |
 
-> ↪️：
->
+
 > - https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
 

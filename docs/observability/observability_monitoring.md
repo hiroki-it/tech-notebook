@@ -21,8 +21,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 想定内という点で、可観測性と区別できる。
 
-> ↪️：
->
+
 > - https://en.wikipedia.org/wiki/Website_monitoring
 > - https://blog.thundra.io/observability-driven-development-for-serverless
 > - https://www.amazon.co.jp/dp/4873118646
@@ -67,8 +66,7 @@ description: 監視＠可観測性の知見を記録しています。
 | ローテーション                        | ログファイルやメトリクスファイルのローテーション期間 (例：`7`日) をポリシーとして決めておくと良い。ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付 (例：`-20220101`) をつけておく。 |
 | 世代数                                | ローテションの結果作成されるファイルの世代数 (例：`5`) をポリシーとして決めておくと良い。ただ、これは設定できないツールがある。                                                                                        |
 
-> ↪️：
->
+
 > - https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/
 > - https://qiita.com/yamotuki/items/628f9bf399cc9b59f3cb
 
@@ -158,8 +156,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 リアルユーザー監視の一種ともみなせるが、パフォーマンスの監視が主目的ではなく、リアルユーザー監視と補完し合う監視方法である。
 
-> ↪️：
->
+
 > - https://blog.uptrends.com/web-performance/rum-and-google-analytics-understanding-the-difference/
 > - https://developer.akamai.com/blog/2017/03/29/RUM-data-google-analytics
 > - https://www.amazon.co.jp/dp/4873118646
@@ -168,8 +165,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 検索エンジン上 (サイト訪問前) のユーザーエンゲージメントのデータポイントを収集し、監視する。
 
-> ↪️：
->
+
 > - https://support.google.com/webmasters/answer/9128668?hl=en
 > - https://semlabo.com/seo/blog/difference-between-ga-and-gsc/
 
@@ -185,8 +181,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 特に、クリティカルユーザージャーニーの一連の操作を監視すると良い。
 
-> ↪️：
->
+
 > - https://takehora.hatenadiary.jp/entry/2019/07/05/012036
 > - https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
 > - https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
@@ -241,8 +236,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
 > - https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538
 
@@ -357,8 +351,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 | `L4`チェック     | `L1`から`L4` (トランスポート層) まで   | サーバー/コンテナのポートにTCPリクエストを送信し、TCPレスポンスを検証する。TCPコネクションが確立されれば、サーバー/コンテナの開放ポートまでのネットワークが正しく動作していると判断できる。                                                                     |
 | `L7`チェック     | `L1`から`L7` (アプリケーション層) まで | サーバー/コンテナ上のアプリケーションのエンドポイントにHTTPリクエストを送信し、HTTPレスポンスを検証する。正しいHTTPレスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。                                             |
 
-> ↪️：
->
+
 > - https://www.f5.com/ja_jp/services/resources/glossary/health-check
 > - https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html
 > - https://www.fujitsu.com/jp/products/network/security-bandwidth-control-load-balancer/ipcom/material/data/1/7.html
@@ -407,8 +400,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 クラウドプロバイダーの多くがステータスページを公開しているため、これを監視する。
 
-> ↪️：
->
+
 > - https://health.aws.amazon.com/health/status
 > - https://status.cloud.google.com/?hl=ja
 > - https://status.azure.com/ja-jp/status
@@ -435,8 +427,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 ビジネス指標の監視に特化したメトリクス監視バックエンドを、特に『BIツール (例：Redash、Metabase) 』ともいう。
 
-> ↪️：
->
+
 > - https://www.datadoghq.com/solutions/real-time-business-intelligence/
 > - https://qiita.com/tomo_will/items/e0f00b3f08ac607286da#bi%E3%83%84%E3%83%BC%E3%83%AB%E6%AF%8E%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9
 

@@ -56,8 +56,7 @@ DNS検証かEメール検証かを設定する。
 
 ドメインを購入できるサービス (例：AWS、GCP、GMO) に検証方法が用意されている。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html
 > - https://jp.globalsign.com/support/proceeding/147.html
 
@@ -81,8 +80,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 注意点として、ドメインをAWS以外 (例：お名前ドットコム) で購入している場合は、NSレコード値を購入先のサービスのドメインレジストラに手作業で登録する必要があることに注意する。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html
 > - https://dev.classmethod.jp/articles/route53-domain-onamae/
 
@@ -153,8 +151,7 @@ AWSリソースにはACMのSSL証明書を紐づけられるが、Kubernetesリ�
 | Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod                    | Ingressコントローラー        |
 | Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS外のSSL証明書) | Pod                          |
 
-> ↪️：
->
+
 > - https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/
 > - https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/
 

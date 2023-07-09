@@ -134,8 +134,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 
 Pythonの命名規則は、PEPに記載されている。
 
-> ↪️：
->
+
 > - https://www.python.org/dev/peps/pep-0007/
 > - https://pep8-ja.readthedocs.io/ja/latest/
 > - https://qiita.com/naomi7325/items/4eb1d2a40277361e898b
@@ -184,8 +183,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 ディレクトリに相当する。
 
-> ↪️：
->
+
 > - https://docs.python.org/ja/3/reference/import.html#packages
 
 #### ▼ 基本的には`__init__.py`ファイルを配置すること
@@ -196,8 +194,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 一方で、名前空間パッケージではこれが不要である。
 
-> ↪️：
->
+
 > - https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
 > - https://rinatz.github.io/python-book/ch04-02-packages/
 
@@ -209,8 +206,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 パッケージ内の各ファイルに相当する。
 
-> ↪️：
->
+
 > - https://rinatz.github.io/python-book/ch04-01-modules/
 > - https://qiita.com/msi/items/d91ea3900373ff8b09d7
 

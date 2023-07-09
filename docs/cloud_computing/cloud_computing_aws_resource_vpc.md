@@ -39,8 +39,7 @@ VPCのパケット通信の仕組みについては、以下のリンクを参�
 | プライベートIPアドレス | 自動/手動 | プライベート            | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再作成すると変化する。   |
 | Elastic IP             | 手動      | グローバル              | 静的IPアドレス | 静的なIPアドレスのため、インスタンスを再作成しても保持される。 |
 
-> ↪️：
->
+
 > - https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html
 > - https://qiita.com/masato930/items/ba242f0171a76ce0994f
 
@@ -50,8 +49,7 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 `enableDnsHostnames`オプションと`enableDnsSupport`オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
 
@@ -172,8 +170,7 @@ VPCエンドポイントを経由すれば異なるVPCに送信することも�
 
 ![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png)
 
-> ↪️：
->
+
 > - https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/
 > - https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/
 
@@ -314,8 +311,7 @@ VPCエンドポイントとして動作し、AWSリソースからアウトバ�
 
 S3、DynamoDBのみ
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-gateway.html
 > - https://yassanabc.com/2022/02/17/%E3%80%90vpc%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%80%91gateway%E5%9E%8B%E3%81%A8interface%E5%9E%8B%E3%81%AE%E9%81%95%E3%81%84%E3%80%90s3%E3%80%91/
 
@@ -335,8 +331,7 @@ DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス)
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png)
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
@@ -358,8 +353,7 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png)
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
@@ -426,8 +420,7 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 ![vpc-lattice.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
 
-> ↪️：
->
+
 > - https://yuj1osm.hatenablog.com/entry/2023/04/16/170124
 > - https://qiita.com/k-sasaki-hisys-biz/items/28ba5762aa9544694021
 > - https://qiita.com/minorun365/items/7f73aa1fe1ef2ca0c2c7#%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
@@ -459,8 +452,7 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 ...
 ```
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 > - https://kikuchitk7.hatenablog.com/entry/2022/03/28/152414
 

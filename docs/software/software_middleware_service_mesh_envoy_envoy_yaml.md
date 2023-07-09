@@ -47,8 +47,7 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 Istioは、Envoyをベースとしたリバースプロキシを自動的に挿入する。この場合、`/etc/istio/proxy/envoy-rev0.json`ファイルを設定ファイルとして扱う。
 
-> ↪️：
->
+
 > - https://istio.io/latest/docs/ops/deployment/architecture/#envoy
 > - https://cloud.tencent.com/developer/article/1701214
 
@@ -162,8 +161,7 @@ admin:
 
 執筆時点 (2022/11/12) では、`listeners`キーと`clusters`キーのみを設定できる。
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap
 
@@ -283,8 +281,7 @@ static_resources:
                   - name: envoy.filters.http.router
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 > - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
@@ -320,8 +317,7 @@ static_resources:
                             cluster: foo_cluster
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
 > - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
 
@@ -340,8 +336,7 @@ static_resources:
                 stat_prefix: ingress_http
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
 > - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
@@ -366,8 +361,7 @@ static_resources:
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
-> ↪️：
->
+
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
 > - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
 
@@ -720,8 +714,7 @@ static_resources:
                   cluster_name: xds_cluster
 ```
 
-> ↪️：
->
+
 > - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15
 > - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40
 > - https://github.com/salrashid123/envoy_discovery/blob/master/envoy_config.yaml#L39-L74

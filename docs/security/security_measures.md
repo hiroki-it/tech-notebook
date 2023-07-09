@@ -37,8 +37,7 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 ファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが配置されている。
 
-> ↪️：
->
+
 > - https://www.rworks.jp/system/system-column/sys-entry/21277/
 > - https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/
 
@@ -71,8 +70,7 @@ COMMIT
 ...
 ```
 
-> ↪️：
->
+
 > - https://christina04.hatenablog.com/entry/iptables-outline-
 > - https://linuc.org/study/knowledge/540/
 > - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
@@ -83,8 +81,7 @@ CentOSでのfirewalldは、標準的なパケットフィルタリング型フ�
 
 デフォルトでは、全てのインバウンド通信が拒否、全てのアウトバウンド通信が許可、となっている。
 
-> ↪️：
->
+
 > - https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html
 > - https://knowledge.sakura.ad.jp/22269/
 
@@ -195,8 +192,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
-> ↪️：
->
+
 > - https://digital-jyoshisu.com/archives/468
 > - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
 
@@ -299,8 +295,7 @@ x-csrf-token: <トークン>
 
      トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、`401`ステータスを返却する。
 
-> ↪️：
->
+
 > - https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700
 > - https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95
 
@@ -411,8 +406,7 @@ return new Promise((resolve, reject) => {
 
      例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、`405`ステータスでエラーレスポンスが返信される。
 
-> ↪️：
->
+
 > - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
 > - https://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
 
@@ -463,8 +457,7 @@ Access-Control-Allow-Headers: *
 
 ドメインではなく、オリジンであることに注意する。
 
-> ↪️：
->
+
 > - https://zenn.dev/agektmr/articles/f8dcd345a88c97
 > - https://azisava.sakura.ne.jp/programming/0017.html#sec4-1
 
@@ -566,8 +559,7 @@ Blowfish方式では、同じパスワードの文字列であっても異なる
 
 Blowfish方式で作成されたハッシュ値は、異なるルールで作成された複数のハッシュ値の組み合わせである。
 
-> ↪️：
->
+
 > - https://medium-company.com/%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0/
 > - https://medium-company.com/bcrypt/
 

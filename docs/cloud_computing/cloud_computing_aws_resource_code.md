@@ -49,8 +49,7 @@ ECSのために、CodeBuildの設定を行う。
 
 ルートディレクトリの直下に配置しておく。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/ecs-cd-pipeline.html
 
@@ -118,8 +117,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 ![code-deploy_agent.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-deploy_agent.png)
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/instances-on-premises.html
 > - https://inokara.hateblo.jp/entry/2015/07/15/175955
 
@@ -184,8 +182,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 ]
 ```
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 
@@ -266,8 +263,7 @@ Resources:
 
 これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。
 
-> ↪️：
->
+
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 
@@ -330,8 +326,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
 }
 ```
 
-> ↪️：
->
+
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
 

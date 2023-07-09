@@ -92,8 +92,7 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 補足として、アウトプットバウンダリはプレゼンターのインターフェースのため、プレゼンターを使用しなければ、アウトプットバウンダリも使用しない。
 
-> ↪️：
->
+
 > - https://izumisy.work/entry/2019/12/12/000521
 > - https://codezine.jp/article/detail/9749
 
@@ -872,8 +871,7 @@ class YmdType extends Type
 
 補足として、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。
 
-> ↪️：
->
+
 > - https://github.com/little-hands/ddd-q-and-a/issues/159
 > - https://www.amazon.co.jp/dp/B082WXZVPC
 > - https://codezine.jp/article/detail/10318
@@ -884,8 +882,7 @@ class YmdType extends Type
 
 ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-> ↪️：
->
+
 > - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
 > - https://www.amazon.co.jp/dp/B082WXZVPC
 > - https://github.com/little-hands/ddd-q-and-a/issues/573
@@ -936,8 +933,7 @@ class CheckDuplicateFooService
 
 ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-> ↪️：
->
+
 > - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
 > - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
 > - https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
@@ -2290,8 +2286,7 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 | save (upsert)     | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるか否かを確認する。取得できない場合は、更新処理を実行する。<br>↪️：<br>・https://github.com/little-hands/ddd-q-and-a/issues/241<br>・https://github.com/little-hands/ddd-q-and-a/issues/129 |
 | delete            | Id型                                 | void型                     | ルートエンティティのドメインモデルを削除する。                                                                                                                                                                                                                                                                    |
 
-> ↪️：
->
+
 > - https://codewithshadman.com/repository-pattern-csharp/
 > - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
 > - https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
@@ -2399,8 +2394,7 @@ DBに対する書き込み操作を行う。
 
 : ルートエンティティをレコードとしてDBに挿入する。
 
-> ↪️：
->
+
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
@@ -2543,8 +2537,7 @@ DBに対する書き込み操作を行う。
 
 : リポジトリからルートエンティティを返却し、ユースケース層に渡す。
 
-> ↪️：
->
+
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
@@ -2702,8 +2695,7 @@ class DogComboFactory
 
 フレームワークの機能に依存することになるため、実装の詳細をインフラ層におく。
 
-> ↪️：
->
+
 > - https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
 > - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
 
