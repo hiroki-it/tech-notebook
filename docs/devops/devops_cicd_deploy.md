@@ -47,7 +47,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 デプロイノートやPRRモデルを導入することによりこれを実装する。
 
-
 > - https://www.atlassian.com/ja/agile/software-development/release
 > - https://tech-blog.optim.co.jp/entry/2020/07/01/080000
 
@@ -61,7 +60,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 その後、アプリケーションを再起動する。
 
-
 > - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
 > - https://developer.hatenastaff.com/entry/2020/06/26/150300
 
@@ -72,7 +70,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 旧アプリケーションの停止から新アプリケーションの再起動まで、に相当する時間のダウンタイムが発生する。
 
 ただし、CodeDeployの様に、ロードバランサ－を使用して、旧環境と新環境に対するルーティングを切り替えるようにすると、ダウンタイムを防げる。
-
 
 > - https://garafu.blogspot.com/2018/11/release-strategy.html
 > - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
@@ -86,7 +83,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 - Fablic
 - Git (手動で`git pull`コマンド)
 - Istio
-
 
 > - https://qiita.com/zaburo/items/8886be1a733aaf581045
 > - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
@@ -107,12 +103,10 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 この時、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。
 
-
 > - https://webapp.io/blog/what-are-rolling-deployments/
 > - https://www.designet.co.jp/ossinfo/kubernetes/update/
 
 補足として、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに属する。
-
 
 > - https://logmi.jp/tech/articles/323033
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
@@ -152,7 +146,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 『ブルー/グリーン』という言葉は、これに由来している。
 
-
 > - https://gitlab.com/snippets/1846041
 > - https://martinfowler.com/bliki/BlueGreenDeployment.html
 
@@ -177,7 +170,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
      何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。
 
      この時、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。
-
 
 > - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
 > - https://developer.hatenastaff.com/entry/2020/06/26/150300
@@ -232,7 +224,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 システムのユーザーがバグに寛容でないと採用できないリリース手法である。
 
-
 > - https://www.linkedin.com/pulse/canary-deployment-simple-words-jakub-hajek/
 > - https://codechacha.com/ja/what-is-canary-development-test/
 
@@ -261,7 +252,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 : 新環境に対する重み付けが`100`%になった後、旧環境を削除する。
 
      この時、マネージドなデプロイツールを使用すると、ルーティング先の重み付け値の変更作業がより簡単になる。
-
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/1804/12/news071.html
 > - https://www.techtarget.com/searchitoperations/answer/When-to-use-canary-vs-blue-green-vs-rolling-deployment
@@ -310,7 +300,6 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 ただし、機能をこっそりリリースしておく。
 
 を使用したいユーザーだけがトグルなどで有効化できるようにしておき、本番環境で実地的に検証する (例：該当のエラーメトリクスが基準値を満たすか) 。
-
 
 > - https://scrapbox.io/nobuoka-pub/%E3%83%80%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%83%81
 > - https://newrelic.com/jp/resources/undefined/next-phase-of-devops

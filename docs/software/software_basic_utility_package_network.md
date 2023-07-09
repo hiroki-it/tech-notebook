@@ -19,7 +19,6 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 正引きの名前解決を実行する
 
-
 > - https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
 > - https://dev.classmethod.jp/articles/dig-route53-begginer/
 
@@ -160,7 +159,6 @@ Address:  172.217.175.3 # IPv4アドレス
 ```
 
 権威DNSサーバーを使用して名前解決する場合、引数なしで`nslookup`コマンドを実行する。
-
 
 > - http://linux.kororo.jp/cont/server/nslookup_dns.php
 > - https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
@@ -346,7 +344,6 @@ $ tcpdump
 [時間] IP [送信元IPアドレス].[シーケンス番号] > [宛先サーバー].[ポート番号]: [パケットの説明]
 ```
 
-
 > - http://blog.livedoor.jp/sonots/archives/18239717.html
 > - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
 > - https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html
@@ -477,7 +474,6 @@ $ tcpdump src port 80
 
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traceroute.png)
 
-
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 > - https://beginners-network.com/tracert_traceroute.html
@@ -570,7 +566,6 @@ traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
  8  209.85.251.239  2.383 ms  2.740 ms  2.400 ms
  9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms # 最後のルーター
 ```
-
 
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false

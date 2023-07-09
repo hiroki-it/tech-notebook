@@ -153,7 +153,6 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 | ゲートウェイマシン内                     | -                                | Guacamole (guardを含む) |
 | 宛先マシン (サーバー、デスクトップPC) 内 | -                                | -                       |
 
-
 > - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1
 > - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
 > - https://openstandia.jp/oss_info/guacamole/
@@ -195,7 +194,6 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 トランスポート層で、双方向のピア認証を実施する。
 
 通常のSSL/TLSを使用した通信では、通信の受信側のみSSL証明書を設定すればよいが、相互TLS認証では受信側のみでなく送信側にも設定が必要になる。
-
 
 > - https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
 > - https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html
@@ -242,7 +240,6 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 | 中継VPNマシン内 | FortiGate   | OpenVpn       | SDPゲートウェイ (クラウドZscalerのVPNマシン) |
 | 宛先マシン内    | -           | -             | -                                            |
 
-
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/
 > - https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols
@@ -267,7 +264,6 @@ SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler)
 このクライアント証明書をVPNのクライアント側に設定する必要がある。
 
 ![vpn_certificate.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
-
 
 > - https://www.nrapki.jp/client-certificate/telework/
 > - https://help.zscaler.com/zia/about-ssl-inspection

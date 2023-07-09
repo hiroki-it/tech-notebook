@@ -217,7 +217,6 @@ URLやメールアドレスのドメイン名とIPアドレスを相互変換す
 
 そこで、グローバルIPアドレスの代わりとして、完全修飾ドメイン名をURLの一部として使用する。
 
-
 > - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 > - https://www.kagoya.jp/howto/it-glossary/network/nameresolution/
 
@@ -275,7 +274,6 @@ $ nslookup example # 実際には、example.fooとなる
 
 ドメインレジストラ (例：AWS Route53、Google Cloud DNS、お名前ドットコム) によって管理される。
 
-
 > - https://www.value-domain.com/media/registry-registrar/
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
 
@@ -286,7 +284,6 @@ $ nslookup example # 実際には、example.fooとなる
 ドメインレジストラがドメインと合わせてDNSサーバーも管理することが多いが、DNSサーバーの管理を外部のDNSプロバイダーに委譲することもできる (例：お名前ドットコムをドメインレジストラ、AWS Route53をDNSプロバイダーとする) 。
 
 ドメイン名とIPアドレスのマッピングを管理する。
-
 
 > - https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-

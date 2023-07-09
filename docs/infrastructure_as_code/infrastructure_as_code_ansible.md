@@ -68,8 +68,6 @@ repository/
 ...
 ```
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
@@ -85,8 +83,6 @@ repository/
 │
 ```
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871

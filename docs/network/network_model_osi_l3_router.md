@@ -61,7 +61,6 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 
 ![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router.png)
 
-
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/
 > - https://michisugara.jp/modem_router
 
@@ -75,7 +74,6 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 | センタールーター                     | 一般企業内の拠点間WANネットワーク                  | 本社と支社のネットワーク間を繋ぐ。                                                                                  |
 | エッジルーター (エッジゲートウェイ)  | 一般企業内の拠点間WANネットワーク                  | 異なる支社や営業所のネットワーク間を繋ぐ。                                                                          |
 | ブロードバンドルーター、Wifiルーター | 自宅内のネットワーク                               | 自宅内/外のネットワーク間を繋ぐ。ブロードバンドルーターであれば有線、Wifiルーターであれば無線で接続することになる。 |
-
 
 > - https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
 > - https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
@@ -128,7 +126,6 @@ NAT処理を実行できるルーターのこと。
 `1`個の通信で両方が必要である。
 
 ![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png)
-
 
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 > - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
@@ -241,7 +238,6 @@ AWSやGCPなどで使用されているようなNATルーターはこちらで�
 
 ![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
 
-
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 > - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
 
@@ -283,7 +279,6 @@ Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケット�
 | PREROUTING                      | パケットの受信時に、パケットの送信元IPアドレスとポート番号を変換する。 |
 | OUTPUT                          | パケットの送信時に、その送信を許可/拒否する。                          |
 | POSTROUTING                     | パケットの送信時に、パケットの送信元IPアドレスとポート番号を変換する。 |
-
 
 > - https://christina04.hatenablog.com/entry/iptables-outline
 > - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#nat%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB

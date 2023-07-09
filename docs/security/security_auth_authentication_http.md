@@ -23,7 +23,6 @@ HTTPプロトコルの中で認証を行う認証スキームのこと。
 
 認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
 
-
 > - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
 > - https://architecting.hateblo.jp/entry/2020/03/27/130535
 > - https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
@@ -172,7 +171,6 @@ Bearer認証にて、トークンとして使用する。
 
      必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
 
-
 > - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 > - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
@@ -190,7 +188,6 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 : レスポンスボディにBearerトークンを含むレスポンスが返信される。
 
      他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
-
 
 > - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 > - https://ja.developer.box.com/reference/resources/access-token/
@@ -214,7 +211,6 @@ Content-Type: application/json
 : 発行されたBearerトークンを指定された認証スキーマで`Authorization`ヘッダーに割り当て、リクエストを送信する。
 
      ここでは詳しく言及しないが、BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある。
-
 
 > - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
 > - https://ja.developer.box.com/reference/post-oauth2-token/#response
@@ -244,7 +240,6 @@ WWW-Authenticate: Bearer realm=""
 : 認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。
 
      またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
-
 
 > - https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
 > - https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6
@@ -302,7 +297,6 @@ Chromeでは、ローカルストレージあるいはセッションストレ�
 ローカルストレージはセッションストレージと比べて保管期間が長いため、XSSの危険性がより高い。
 
 これらの場所の確認方法については、以下のリンクを参考にせよ
-
 
 > - https://developer.chrome.com/docs/devtools/storage/localstorage/
 > - https://developer.chrome.com/docs/devtools/storage/sessionstorage/

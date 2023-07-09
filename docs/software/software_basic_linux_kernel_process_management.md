@@ -57,7 +57,6 @@ PID  TTY  TIME     CMD
   1  ??   9:23.33  /sbin/launchd
 ```
 
-
 > - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
 > - https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
 
@@ -84,7 +83,6 @@ PID  TTY  TIME     CMD
 現代のハードウェアのほとんどがマルチプロセシングの機能を持つ。
 
 ![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/process.png)
-
 
 > - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
 > - https://webpia.jp/thread_process/
@@ -125,7 +123,6 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 CPUのコアと紐付くプロセスの実行単位を『スレッド』という。
 
 ![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png)
-
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
 > - https://webpia.jp/thread_process/

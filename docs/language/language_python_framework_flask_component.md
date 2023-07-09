@@ -92,7 +92,6 @@ app.run()
 | `port`         | インバウンド通信を待ち受けるポート番号を設定する。                                                   |
 | `use_reloader` | ホットリロードを有効化するか否かを設定する。                                                         |
 
-
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
 
@@ -139,7 +138,6 @@ def create_app():
     return app
 ```
 
-
 > - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
 > - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
 > - https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask
@@ -168,7 +166,6 @@ if __name__ == '__main__':
 代わりとして、uWSGIやgunicornを使用して、エントリーポイントの関数を直接的にコールする。
 
 本番環境と開発環境を同様にするために、本番環境のみでなく開発環境でもコマンドを使用しないようにしても良い。
-
 
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
 > - https://serip39.hatenablog.com/entry/2020/07/06/070000

@@ -21,7 +21,6 @@ GitLab Runnerを処理の実行環境として、GitLabリポジトリの`gitlab
 
 ![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png)
 
-
 > - https://subscription.packtpub.com/book/cloud-&-networking/9781789531282/19/ch19lvl1sec32/the-runner-client-architecture
 > - https://www.insight-tec.com/tech-blog/ci-cd/20201222_gitlab_runner/
 
@@ -200,7 +199,6 @@ check_tag:
       variables:
         TAG_NAME: $CI_COMMIT_TAG
 ```
-
 
 > - https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
 > - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif

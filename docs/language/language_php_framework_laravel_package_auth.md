@@ -76,7 +76,6 @@ return [
 ];
 ```
 
-
 > - https://teratail.com/questions/171582
 > - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 > - https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
@@ -531,7 +530,6 @@ class FooController extends Controller
 
 ```
 
-
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
@@ -586,7 +584,6 @@ class FooController extends Controller
 }
 ```
 
-
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
@@ -637,12 +634,12 @@ Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
 
 DBマイグレーション後、以下のテーブルが作成される。
 
-| テーブル名                    | 説明                                                                                                                                                                                               |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| oauth_access_tokens           | 全てのアクセストークンを管理する。                                                                                                                                                                 |
-| oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。                                                                                                                                                   |
-| oauth_clients                 | Passportで使用している付与タイプを管理する。                                                                                                                                                       |
-| oauth_personal_access_clients | パーソナルアクセストークンタイプの情報を管理する。                                                                                                                                                 |
+| テーブル名                    | 説明                                                                                                                                                                                             |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| oauth_access_tokens           | 全てのアクセストークンを管理する。                                                                                                                                                               |
+| oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。                                                                                                                                                 |
+| oauth_clients                 | Passportで使用している付与タイプを管理する。                                                                                                                                                     |
+| oauth_personal_access_clients | パーソナルアクセストークンタイプの情報を管理する。                                                                                                                                               |
 | oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>- https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ▼ トークンを作成
@@ -1040,7 +1037,6 @@ $ composer require laravel/sanctum
 
 フロントエンド (外部のアプリケーションを含む) は任意とし、APIのみを実装する場合、使用が適している。
 
-
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
 > - https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
@@ -1050,7 +1046,6 @@ $ composer require laravel/sanctum
 ### SPA認証
 
 フロントエンドにファーストパーティのSPA (自社のSPA) を使用して、バックエンドのAPIを実装する場合、使用が適している。
-
 
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
@@ -1064,7 +1059,6 @@ $ composer require laravel/sanctum
 
 Laravelが持つ全ての認証機能のバックエンド処理を提供する。
 
-
 > - https://readouble.com/laravel/8.x/ja/fortify.html
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
 
@@ -1075,7 +1069,6 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 ### Breezeパッケージとは
 
 Laravelが持つ全ての認証機能のバックエンド (認証+ルーティング+DBアクセス) 処理と、これに対応するフロントエンド処理を提供する。
-
 
 > - https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum

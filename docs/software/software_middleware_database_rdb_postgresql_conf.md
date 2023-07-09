@@ -70,8 +70,6 @@ $ vacuum
 $ vacuum <テーブル名>
 ```
 
-> ↪️：
->
 > - https://postgresweb.com/post-5194
 > - https://qiita.com/neustrashimy/items/b3d64b749582b32ad0ff
 

@@ -168,7 +168,6 @@ PHPにおける`composer.lock`ファイルに相当する。
 
 ポインタ型からstring型に変換する`ToString`関数や、反対にstring型からポインタ型に変換する`String`関数をよく使用する。
 
-
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
 
@@ -585,7 +584,6 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 | `Mock.On`メソッド                 | 関数の検証時に使用する。関数内部のスタブに引数として渡される値と、その時の返却値を定義する。   |
 | `Mock.AssertExpectations`メソッド | 関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。                   |
 | `assert.Exactly`メソッド          | 関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。 |
-
 
 > - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 > - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions

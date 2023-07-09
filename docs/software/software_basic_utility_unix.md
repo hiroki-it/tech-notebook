@@ -29,7 +29,6 @@ $ chmod 600 <ファイルへのパス>
 $ chmod 600 <ディレクトリへのパス>
 ```
 
-
 > - https://kazmax.zpp.jp/linux_beginner/chmod.html
 > - http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
 
@@ -424,7 +423,6 @@ HTTPプロトコルでリクエストを送信する。
 
 ダウンロードのためのユーティリティとしては、`curl`コマンドよりも`wget`コマンドの方が良い。
 
-
 > - https://yamitzky.hatenablog.com/entry/2016/05/13/204107
 > - https://qiita.com/toshihirock/items/c7279fdcf808d3128261
 > - https://medium.com/@topefolorunso/curl-or-wget-which-is-better-cdb5ddabadfb
@@ -816,7 +814,6 @@ export PATH
 ### -l
 
 パーティションの一覧を取得する。
-
 
 > - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
 > - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
@@ -1268,7 +1265,6 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ローテションされた過去のログファイルでは、ファイル名の末尾に最終日付 (例：`-20220101`) をつけておく。
 
-
 > - http://proger.blog10.fc2.com/blog-entry-66.html
 > - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
 
@@ -1404,7 +1400,6 @@ $ lvdisplay
   Block device          253:1
 ```
 
-
 > - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
 > - https://centossrv.com/lvm-extend.shtml
 
@@ -1528,7 +1523,6 @@ $ swapoff /swap_volume
 $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 ```
 
-
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
@@ -1539,7 +1533,6 @@ $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 マウントのファイル共有システムの種類を設定する。
 
 種類によって、パラメーターの入力方法が異なる。
-
 
 > - https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html
 > - https://webkaru.net/linux/mount-command/
@@ -1864,7 +1857,6 @@ $ find ./* \
     -name "*.md" \
     -type f | xargs sed -i '' -e '/foo/! {/bar/! {/baz/! {/qux/! s/before/after/g;} ;} ;}'
 ```
-
 
 > - https://www.jh4vaj.com/archives/24778
 > - https://bi.biopapyrus.jp/os/linux/sed.html

@@ -21,7 +21,6 @@ description: Anthos＠GCPリソースの知見を記録しています。
 
 Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、といったコンポーネントから構成される。
 
-
 > - https://www.fsi.co.jp/blog/5939/
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
 
@@ -41,7 +40,6 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 ![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_attached_cluster.png)
 
-
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/previous-generation/how-to/attach-kubernetes-clusters
 > - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
@@ -60,7 +58,6 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 Traffic Director、Mesh CA、Managed backends、といったコンポーネントから構成される。
 
 ![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_service_mesh.png)
-
 
 > - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=20
@@ -96,7 +93,6 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 一連のacm-operator (cluster-operator、など) は、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management_gitops.png)
-
 
 > - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
@@ -174,7 +170,6 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 ![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png)
 
-
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
@@ -187,7 +182,6 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png)
-
 
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116

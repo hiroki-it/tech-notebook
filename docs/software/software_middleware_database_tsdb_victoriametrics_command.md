@@ -29,7 +29,6 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 $ victoria-metrics-prod -downsampling.period=30d:5m
 ```
 
-
 > - https://docs.victoriametrics.com/#downsampling
 > - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
@@ -51,7 +50,6 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 ```bash
 $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 ```
-
 
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
@@ -127,7 +125,6 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 ```bash
 $ victoria-metrics-prod -retentionPeriod=90d
 ```
-
 
 > - https://docs.victoriametrics.com/#retention
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/

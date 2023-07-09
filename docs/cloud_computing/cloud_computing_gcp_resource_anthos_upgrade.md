@@ -94,7 +94,6 @@ $ ~/baremetal/bmctl upgrade cluster \
     --kubeconfig <~/.kube/configファイルへのパス>
 ```
 
-
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
 > - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
 
@@ -271,7 +270,6 @@ $ ./repository/asmcli-1140-0 install \
     --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```
 
-
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview#transitioning_from_install_asm
 > - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade#about_canary_upgrades
 > - https://istio.io/latest/docs/setup/upgrade/canary/
@@ -308,7 +306,6 @@ istio-sidecar-injector-1130-0          1          7m56s # 1130-0
 istio-sidecar-injector-1140-0          1          7m56s # 1140-0 (今回のアップグレード先)
 istio-revision-tag-default             1          3m18s # 現在のリビジョン番号 (1130-0) を定義するdefaultタグを持つ
 ```
-
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview
@@ -399,7 +396,6 @@ $ kubectl label namespace app istio.io/rev=asm-1140-0 istio-injection- --overwri
 $ kubectl get namespace -L istio.io/rev
 ```
 
-
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
 
@@ -465,7 +461,6 @@ gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 # 代わりに、istioctl proxy-statusコマンドでも良い。
 $ istioctl proxy-status
 ```
-
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane

@@ -212,8 +212,8 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 #### ▼ テストの種類
 
-| テスト名              | 内容                                                                                                                                                                                     |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| テスト名              | 内容                                                                                                                                                                                   |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Delayインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>- https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
 | Abortインジェクション | アプリコンテナに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>- https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
@@ -378,14 +378,14 @@ Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイン�
 
 Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (`discovery`コンテナ) から収集したメトリクスを取得できる。
 
-| メトリクス名                              | 単位     | 説明                                                                                                                                                                                         |
-| ----------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| メトリクス名                              | 単位     | 説明                                                                                                                                                                                       |
+| ----------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `istio_requests_total`                    | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>- https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
-| `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                    |
-| `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                    |
-| `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                    |
-| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                             |
-| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                         |
+| `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                  |
+| `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                  |
+| `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                  |
+| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへの通信に関するリトライ数を表す。                                                                                                                           |
+| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへの通信に関するリトライ成功数を表す。                                                                                                                       |
 
 > ↪️：
 >

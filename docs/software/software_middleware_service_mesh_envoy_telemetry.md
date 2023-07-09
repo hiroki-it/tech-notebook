@@ -73,7 +73,6 @@ Envoyは、アプリコンテナへのアクセスログを作成し、標準出
 | `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | インバウンド通信にて、EnvoyはHTTPプロトコルのエラーでアプリコンテナに接続できなかった。                       |
 | `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | インバウンド通信にて、ルートやフィルターチェーンの設定が見つからず、Envoyはアプリコンテナに接続できなかった。 |
 
-
 > - https://github.com/istio/proxy/blob/main/extensions/common/util.cc#L29-L55
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
 > - https://medium.com/expedia-group-tech/all-about-istio-proxy-5xx-issues-e0221b29e692
@@ -94,7 +93,6 @@ Envoyのメトリクスには、、
 
 `envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) のメトリクスがある。
 
-
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/stats
 > - https://docs.aws.amazon.com/ja_jp/app-mesh/latest/userguide/envoy-metrics.html
 
@@ -111,7 +109,6 @@ Envoyのメトリクスには、、
 `envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) をプレフィクスとするメトリクスがある。
 
 注意点として、ドキュメントではプレフィクスが省略されてしまっている。
-
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/stats
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter#statistics

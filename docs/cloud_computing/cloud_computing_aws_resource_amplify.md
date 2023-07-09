@@ -70,8 +70,6 @@ GitHubのブランチごとにアプリケーションのCI/CDパイプライン
 
 ただし、App Runnerを使用した方がよいかもしれない。
 
-> ↪️：
->
 > - https://zenn.dev/intercept6/articles/4016e9d61ab36761685d
 > - https://devblog.thebase.in/entry/2021/12/22/110000
 
@@ -220,8 +218,6 @@ test:
     baseDirectory: <パス>
 ```
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html
 > - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
 

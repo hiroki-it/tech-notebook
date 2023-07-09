@@ -101,12 +101,12 @@ Kubernetesをアップグレードした場合に、Helmもアップグレード
 
 チャートレジストリ内にリポジトリを配置する。
 
-| レジストリ             | 補足                                                 |
-| ---------------------- | ---------------------------------------------------- |
+| レジストリ             | 補足                                               |
+| ---------------------- | -------------------------------------------------- |
 | ArtifactHub (Helm公式) | - https://helm.sh/docs/topics/chart_repository/    |
 | GitHub、GitHub Pages   | - https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
-| AWSリソース (ECR、S3)  |                                                      |
-| GCPリソース            |                                                      |
+| AWSリソース (ECR、S3)  |                                                    |
+| GCPリソース            |                                                    |
 
 <br>
 

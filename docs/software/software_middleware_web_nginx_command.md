@@ -35,7 +35,6 @@ $ nginx -c ./custom-nginx.conf
 $ nginx -s reload
 ```
 
-
 > - https://serverfault.com/questions/378581/nginx-config-reload-without-downtime
 > - https://www.nyamucoro.com/entry/2019/07/27/222829
 

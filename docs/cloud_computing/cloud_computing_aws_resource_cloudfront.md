@@ -50,15 +50,15 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 
 #### ▼ General
 
-| 設定項目            | 説明                                                                                                                                  | 補足                                                                                                                                                                                                                                                        |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Price Class         | 使用するエッジロケーションを設定する。                                                                                                | Asiaが含まれているものを選択。                                                                                                                                                                                                                              |
-| WAF                 | CloudFrontに紐付けるWAFを設定する。                                                                                                   |                                                                                                                                                                                                                                                             |
-| CNAME               | CloudFrontのデフォルトドメイン名 (`*****.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                                        | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                               |
-| SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                                                           | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                         |
+| 設定項目            | 説明                                                                                                                                  | 補足                                                                                                                                                                                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Price Class         | 使用するエッジロケーションを設定する。                                                                                                | Asiaが含まれているものを選択。                                                                                                                                                                                                                            |
+| WAF                 | CloudFrontに紐付けるWAFを設定する。                                                                                                   |                                                                                                                                                                                                                                                           |
+| CNAME               | CloudFrontのデフォルトドメイン名 (`*****.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                                        | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                             |
+| SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                                                           | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                       |
 | Security Policy     | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソース、などを含む。<br>・- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
-| Default Root Object | オリジンのドキュメントルートを設定する。                                                                                              | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『`/`』でリクエストした時に、オリジンのルートディレクトリ配下にある`index,html`ファイルがドキュメントルートになる。       |
-| Standard Logging    | CloudFrontのアクセスログをS3に作成するか否かを設定する。                                                                              |                                                                                                                                                                                                                                                             |
+| Default Root Object | オリジンのドキュメントルートを設定する。                                                                                              | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『`/`』でリクエストした時に、オリジンのルートディレクトリ配下にある`index,html`ファイルがドキュメントルートになる。     |
+| Standard Logging    | CloudFrontのアクセスログをS3に作成するか否かを設定する。                                                                              |                                                                                                                                                                                                                                                           |
 
 #### ▼ Origin and Origin Groups
 
@@ -82,7 +82,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定   | ・パスパターンが静的ファイルに対するリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。                                                                                                                                                                   |
 | Object Caching                 | CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。               | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                    |
 | TTL                            | CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。                     | ・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダーの値の組み合わせによって決まる。 |
-| Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                         |
+| Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                           |
 | Restrict Viewer Access         | リクエストの送信元を制限するか否かを設定できる。                               | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                                                                      |
 | Compress Objects Automatically | レスポンス時に`.gzip`ファイルとして圧縮するか否かを設定                        | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                               |
 
@@ -165,8 +165,6 @@ CloudFrontではリクエストがJSONとして扱われており、JSONの値�
 
 最終的に、対象のファイルがCloudFrontのキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『`X-Cache:`』が『`Hit from cloudfront`』または『`Miss from cloudfront`』のどちらで判断できる。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
 
@@ -254,8 +252,6 @@ CloudFrontは、クエリストリングによってオリジンからレスポ�
 
 キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html#query-string-parameters-optimizing-caching
 

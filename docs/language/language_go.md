@@ -150,7 +150,6 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
         └── template
 ```
 
-
 > - https://github.com/golang-standards/project-layout
 > - https://nekonenene.hatenablog.com/entry/2019/02/12/021610
 
@@ -278,7 +277,6 @@ httpClientであれば、修飾語は『`http`』被修飾語『`client`』で�
 
 そのため、レシーバ名または引数名では『`cl`』とする。
 
-
 > - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
 > - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
 
@@ -357,7 +355,6 @@ Uber社が採用しているお作法。
 Goには、標準でイミュータブルの機能がなく、これを無理に実現しようとすると逆に保守性が低くなることがある。
 
 そのため、イミュータブルにするか否かは慎重に判断する。
-
 
 > - https://zenn.dev/nobonobo/articles/9a9f12b27bfde9#go%E3%81%AF%E3%81%AA%E3%81%9C%E3%82%A4%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%96%E3%83%AB%E4%BF%AE%E9%A3%BE%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%EF%BC%9F
 > - https://future-architect.github.io/articles/20190713/#Q-immutable%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%A7%E3%81%99%E3%81%8C%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F

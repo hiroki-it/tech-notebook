@@ -84,8 +84,6 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 }
 ```
 
-> ↪️：
->
 > - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 > - https://chroju.dev/blog/terraform_state_introduction
 
@@ -151,8 +149,6 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 $ terraform init -upgrade
 ```
 
-> ↪️：
->
 > - https://www.terraform.io/language/files/dependency-lock
 > - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
 > - https://qiita.com/mziyut/items/0f4109c425165f5011df
@@ -240,8 +236,6 @@ provider "registry.terraform.io/hashicorp/aws" {
 plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 ```
 
-> ↪️：
->
 > - https://blog.jhashimoto.net/entry/2021/12/24/090000
 > - https://www.terraform.io/cli/config/config-file#provider-plugin-cache
 

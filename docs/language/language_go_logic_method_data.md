@@ -2174,7 +2174,6 @@ func main() {
 
 チャンネルに対する格納を非同期で待機する。
 
-
 > - https://www.spinute.org/go-by-example/select.html
 > - https://leben.mobi/go/channel-and-select/go-programming/
 
@@ -2496,7 +2495,6 @@ func main() {
 Goにはデフォルトで、ロギング用パッケージが用意されている。
 
 ただし、機能が乏しいため、外部パッケージ (例：logrus) も推奨である。
-
 
 > - https://pkg.go.dev/log
 > - https://github.com/sirupsen/logrus
@@ -2928,7 +2926,6 @@ func main() {
 
 複数の引数をスペースを挟んで繋ぐ。
 
-
 > - https://golang.org/pkg/fmt/#Print
 > - https://golang.org/pkg/fmt/#Fprint
 > - https://golang.org/pkg/fmt/#Sprint
@@ -2989,7 +2986,6 @@ func main() {
 
 標準出力に出力できる他の関数の引数として渡す必要がある。
 
-
 > - https://golang.org/pkg/fmt/#Sprint
 > - https://golang.org/pkg/fmt/#Sprintf
 > - https://golang.org/pkg/fmt/#Sprintln
@@ -3005,7 +3001,6 @@ package mainimport "fmt"func main() {        // Sprintは返却するだけ    f
 接尾辞に`ln`のあるメソッド (例：`Println`メソッド、`Fprintln`メソッド、`Sprintln`メソッド、など) が属する。
 
 複数の引数をスペースを挟んで繋ぎ、最後に改行を挿入して結合する。
-
 
 > - https://golang.org/pkg/fmt/#Println
 > - https://golang.org/pkg/fmt/#Fprintln
@@ -3038,7 +3033,6 @@ func main() {
 | `%p`               | ポインタとして               |                                                      |
 | `%+v`              | フィールドを含む構造体として | データの構造を確認できるため、デバッグに有効である。 |
 | `%#v`              | Go構文として                 | データの構造を確認できるため、デバッグに有効である。 |
-
 
 > - https://golang.org/pkg/fmt/#Printf
 > - https://golang.org/pkg/fmt/#Fprintf
@@ -3127,7 +3121,6 @@ HTTPクライアントまたはWebサーバを提供する。
 そのため、GoではNginxやApacheが不要である。
 
 ただし、Goによるwebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用した方が良い。
-
 
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go

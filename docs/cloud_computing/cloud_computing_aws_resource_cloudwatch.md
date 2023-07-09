@@ -29,7 +29,6 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
-
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18
 
@@ -39,7 +38,6 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ディメンション | インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZ、など) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、EC2のストレージで、`/var/lib/foo`パーティションのディスク使用率のデータポイントが `30`%だとする。EC2のインスタンスIDをディメンションにした場合に、`/var/lib/foo`以外のパーティションが `30`%より低いため、インスタンスIDのディメンション全体としては `10%`ほどのディスク使用率になる) 。CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。 |
 | 名前空間       | AWSリソースをグループとした集約のこと (例：EC2、RDS、ALB、など) 。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスを収集すると、名前空間はCWAgentになる。                                                                                                                                                                                                                                                                                                                                                                                                   |
-
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
@@ -69,7 +67,6 @@ RDS (Aurora、非Aurora) のパフォーマンスに関するメトリクスの�
 パラメーターグループの `performance_schema`を有効化する必要がある。
 
 対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
-
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html
@@ -123,7 +120,6 @@ AWSリソースで作成されたログを収集できる。
 ログ内で検知する文字列を設定する。
 
 大文字と小文字を区別するため、網羅的に設定する必要がある。
-
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html
 > - https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb
@@ -324,7 +320,6 @@ Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: /opt/aws/amazon-cloudwa
 Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: I! Detecting run_as_user...
 ```
 
-
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
 > - https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/cloudwatch-memory-metrics-ec2/
@@ -508,7 +503,6 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 }
 ```
 
-
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html
 
@@ -611,10 +605,10 @@ AWS外 (オンプレミス、他のクラウドプロバイダー) のサーバ�
 
 #### ▼ 条件
 
-| 設定項目                         | 説明                                                       | 補足                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| -------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 閾値の種類                       |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| アラートを実行するデータポイント | アラートを発生させるデータポイント数を設定する。           |                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 設定項目                         | 説明                                                       | 補足                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| -------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 閾値の種類                       |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| アラートを実行するデータポイント | アラートを発生させるデータポイント数を設定する。           |                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 欠落データの処理                 | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが何も発生しないことを正常とし、これが発生することを異常とする場合 (例：エラーイベント、など) は『`notBreaching`』とする。反対に、データポイントが継続的に発生することを正常とし、これが発生しないことを異常とする場合 (例：CPU使用率、メモリ使用率、など) は、『`breaching`』とする。<br>- https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
 
 <br>

@@ -92,7 +92,6 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 補足として、アウトプットバウンダリはプレゼンターのインターフェースのため、プレゼンターを使用しなければ、アウトプットバウンダリも使用しない。
 
-
 > - https://izumisy.work/entry/2019/12/12/000521
 > - https://codezine.jp/article/detail/9749
 
@@ -182,14 +181,14 @@ class FormatValidator
 
 CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
-| メソッド名          | 引数型                            | 返却値型                            | 処理内容                                                                                                                                                                             |
-| ------------------- | --------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| indexFoo            | indexFooRequest                   | indexFooResponse                    |                                                                                                                                                                                      |
-| showFoo             | showFooRequest                    | showFooResponse                     |                                                                                                                                                                                      |
-| createFoo           | createFooRequest                  | createFooResponse                   |                                                                                                                                                                                      |
-| updateFoo           | updateFooRequest                  | updateFooResponse                   |                                                                                                                                                                                      |
+| メソッド名          | 引数型                            | 返却値型                            | 処理内容                                                                                                                                                                           |
+| ------------------- | --------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| indexFoo            | indexFooRequest                   | indexFooResponse                    |                                                                                                                                                                                    |
+| showFoo             | showFooRequest                    | showFooResponse                     |                                                                                                                                                                                    |
+| createFoo           | createFooRequest                  | createFooResponse                   |                                                                                                                                                                                    |
+| updateFoo           | updateFooRequest                  | updateFooResponse                   |                                                                                                                                                                                    |
 | saveFoo (upsertFoo) | saveFooRequest (upsertFooRequest) | saveFooResponse (upsertFooResponse) | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>- https://github.com/little-hands/ddd-q-and-a/issues/241 |
-| deleteFoo           | deleteFooRequest                  | deleteFooResponse                   |                                                                                                                                                                                      |
+| deleteFoo           | deleteFooRequest                  | deleteFooResponse                   |                                                                                                                                                                                    |
 
 #### ▼ ユースケース図
 
@@ -871,7 +870,6 @@ class YmdType extends Type
 
 補足として、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。
 
-
 > - https://github.com/little-hands/ddd-q-and-a/issues/159
 > - https://www.amazon.co.jp/dp/B082WXZVPC
 > - https://codezine.jp/article/detail/10318
@@ -881,7 +879,6 @@ class YmdType extends Type
 ドメイン層のリポジトリを使用して、該当の名前のエンティティがDBに存在するか否かを検証する。
 
 ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
-
 
 > - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
 > - https://www.amazon.co.jp/dp/B082WXZVPC
@@ -932,7 +929,6 @@ class CheckDuplicateFooService
 ドメイン層のリポジトリを使用して、該当のIDのエンティティに対してアクセスできるかを検証する。
 
 ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
-
 
 > - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
 > - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
@@ -2286,19 +2282,18 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 | save (upsert)     | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるか否かを確認する。取得できない場合は、更新処理を実行する。<br>↪️：<br>・https://github.com/little-hands/ddd-q-and-a/issues/241<br>・https://github.com/little-hands/ddd-q-and-a/issues/129 |
 | delete            | Id型                                 | void型                     | ルートエンティティのドメインモデルを削除する。                                                                                                                                                                                                                                                                    |
 
-
 > - https://codewithshadman.com/repository-pattern-csharp/
 > - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
 > - https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
 
 #### ▼ 他の類似するデザインパターンとの比較
 
-| デザインパターン | 駆動の種類   | ドメインモデルとテーブルの関連度合い                                                                                                                                                           | 採用パッケージ例                                                   | 適所                                                                                                                  | 補足                                                                                                                                      |
-| ---------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| デザインパターン | 駆動の種類   | ドメインモデルとテーブルの関連度合い                                                                                                                                                           | 採用パッケージ例                                                   | 適所                                                                                                                | 補足                                                                                                                                    |
+| ---------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | Active Record    | DB駆動       | ・非常に強い。<br>・手順としてテーブル設計が先にあり、`1`個のドメインモデルが`1`個のテーブルに対応している。<br>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。 | ・Eloquent (PHP) <br>・Active Record (Ruby) <br>・Hibernate (Java) | ビジネスロジックが複雑でないアプリケーション<br>- https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく、ORMの実装方法の1つである。<br>- https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/   |
 | Data Mapper      | ドメイン駆動 | ・弱い<br>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。                                                                                                                       | Doctrine                                                           | ビジネスロジックが複雑なアプリケーション<br>- https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3     | ActiveRecordパターンと同じく、ORMの実装方法の1つである。<br>- https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
-| Repository       | ドメイン駆動 | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。`1`個のドメインモデルが複数のテーブルを参照しても良い。                                        |                                                                    | ビジネスロジックが複雑なアプリケーション                                                                              | DB、RDMS、NoSQL、なんでもでも良い。                                                                                                       |
-| なし             | なし         | 非常に弱い                                                                                                                                                                                     | DBファサード                                                       |                                                                                                                       |                                                                                                                                           |
+| Repository       | ドメイン駆動 | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。`1`個のドメインモデルが複数のテーブルを参照しても良い。                                        |                                                                    | ビジネスロジックが複雑なアプリケーション                                                                            | DB、RDMS、NoSQL、なんでもでも良い。                                                                                                     |
+| なし             | なし         | 非常に弱い                                                                                                                                                                                     | DBファサード                                                       |                                                                                                                     |                                                                                                                                         |
 
 #### ▼ 実装リポジトリ
 
@@ -2393,7 +2388,6 @@ DBに対する書き込み操作を行う。
 `【４】`
 
 : ルートエンティティをレコードとしてDBに挿入する。
-
 
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -2536,7 +2530,6 @@ DBに対する書き込み操作を行う。
 `【４】`
 
 : リポジトリからルートエンティティを返却し、ユースケース層に渡す。
-
 
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -2694,7 +2687,6 @@ class DogComboFactory
 ドメインイベントが発生した場合、それに紐付く処理を実行する。
 
 フレームワークの機能に依存することになるため、実装の詳細をインフラ層におく。
-
 
 > - https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
 > - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01

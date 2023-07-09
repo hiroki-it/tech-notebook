@@ -716,8 +716,6 @@ $ amazon-ssm-agent \
     -region "ap-northeast-1"
 ```
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/cli/latest/reference/ssm/create-activation.html
 > - https://zenn.dev/daimatsu/articles/ef1ae49bb7816b#ssm-agent-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%A6activation-(ubuntu-arm64)
 > - https://dev.classmethod.jp/articles/aws-systems-manager-reactivation/#toc-5

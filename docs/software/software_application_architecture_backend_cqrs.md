@@ -31,7 +31,6 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 `N+1`問題にも対処できる。
 
-
 > - https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 
@@ -85,7 +84,6 @@ CREATE、UPDATE、DELETE処理を実行する処理フローのこと。
 
 : インターフェース層のコントローラーにて、レスポンスモデルをJSONに変換し、レスポンスを返信する。
 
-
 > - https://stackoverflow.com/questions/19620404/entity-vs-dto-in-cqrs
 > - https://softwareengineering.stackexchange.com/questions/378909/in-what-layer-are-the-dtos-stored-with-cqrs
 > - https://github.com/exceptionnotfound/SampleCQRS
@@ -114,7 +112,6 @@ READ処理を実行するオブジェクトのこと。
 
 : インターフェース層のコントローラーにて、DTOをJSONに変換し、レスポンスを返信する。
 
-
 > - https://stackoverflow.com/questions/19620404/entity-vs-dto-in-cqrs
 > - https://softwareengineering.stackexchange.com/questions/378909/in-what-layer-are-the-dtos-stored-with-cqrs
 > - https://github.com/exceptionnotfound/SampleCQRS
@@ -128,7 +125,6 @@ READ処理を実行するオブジェクトのこと。
 イベントソーシングの実装方法は様々ある。
 
 イベントソーシングではDBアクセスの処理を更新系と参照系に分離することになるため、CQRSの方法論と相性が良い。
-
 
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 > - https://postd.cc/using-cqrs-with-event-sourcing/

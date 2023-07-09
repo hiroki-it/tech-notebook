@@ -39,7 +39,6 @@ RPOは最後のバックアップ時点である。
 
 一方で金銭的コストが低い。
 
-
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/
 > - https://aws.amazon.com/jp/cdp/cdp-dr/
@@ -62,7 +61,6 @@ RPOは最後の同期時点である。
 
 一方で金銭的コストが低い。
 
-
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/
 
@@ -84,7 +82,6 @@ RPOは最後の同期時点である。
 
 一方で、金銭的コストが高い。
 
-
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/
 
@@ -103,7 +100,6 @@ DRリージョンにメインリージョンと同等なアプリケーション
 RPOは最後の同期時点である。
 
 一方で、金銭的コストが高い。
-
 
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/

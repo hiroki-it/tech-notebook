@@ -23,8 +23,8 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 | 年代         | アーキテクチャ                     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 補足                                                                                                                                                                                                                           |
 | ------------ | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1999         | モノリシックアーキテクチャ         | 1999年台、バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。しかし、モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文 (『大きな泥だんご』) で指摘された。                                                                                                                                                                                                                                                                                             | - https://en.wikipedia.org/wiki/Big_ball_of_mud                                                                                                                                                                              |
-| 2000 〜 2004 | サービス指向アーキテクチャ         | モノリシックアーキテクチャの批判を受け、〇〇 (考案者が見つからず) がアプリケーションを機能の粒度で分割するアーキテクチャを考案した。ただ『機能』という粒度が抽象的で、概念としては提唱されていても、実装方法の確立にまでは至らなかった。                                                                                                                                                                                                                                                                           | - https://en.wikipedia.org/wiki/Service-oriented_architecture                                                                                                                                                                |
+| 1999         | モノリシックアーキテクチャ         | 1999年台、バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。しかし、モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文 (『大きな泥だんご』) で指摘された。                                                                                                                                                                                                                                                                                             | - https://en.wikipedia.org/wiki/Big_ball_of_mud                                                                                                                                                                                |
+| 2000 〜 2004 | サービス指向アーキテクチャ         | モノリシックアーキテクチャの批判を受け、〇〇 (考案者が見つからず) がアプリケーションを機能の粒度で分割するアーキテクチャを考案した。ただ『機能』という粒度が抽象的で、概念としては提唱されていても、実装方法の確立にまでは至らなかった。                                                                                                                                                                                                                                                                           | - https://en.wikipedia.org/wiki/Service-oriented_architecture                                                                                                                                                                  |
 | 2014         | マイクロサービスアーキテクチャ     | 2014年にThoughtWorks社は、サービス指向アーキテクチャとドメイン駆動設計を統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャを考案した。                                                                                                                                                                                                                                                                                                                                             | ↪️：<br>・https://martinfowler.com/articles/microservices.html <br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html                                                                                          |
 | 2017         | ミニマイクロサービスアーキテクチャ | マイクロサービスアーキテクチャのマイクロサービス自体を独立したモノリスなアプリケーションと捉えると、その分だけ開発チーム (マネージャーとエンジニア) が必要になってしまう。2017年にCloud Elements社は、これに対処するためにミニマイクロサービスアーキテクチャを考案した。このアーキテクチャでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリケーションを複数のマイクロサービスに分割する。この粒度を、マイクロサービスに対抗して『ミニマイクロサービス』または『MASA』とよぶ。 | ↪️：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture <br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html                                                                          |
 | 2018         | モジュラーモノリス                 | ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの、複数のマイクロサービスが必要になることは変わらず、その分だけ開発チームが必要になる問題は解決されなかった。そこで、Root Insurance社はモジュラモノリスを考案した。モジュラモノリスでは、マイクロサービスの概念を取り入れずに、アプリケーションを細かいモジュールに分割する。反対に、最初モジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。                                           | ↪️：<br>・https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4 <br>・https://creators-note.chatwork.com/entry/2020/12/02/090000 <br>・https://eh-career.com/engineerhub/entry/2022/07/25/093000 |
@@ -35,12 +35,12 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_deployment_comparison.png)
 
-| モジュールの大きさ | 粒度名               | 説明                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 一番大きい         | モノリシック         | アプリケーションのモジュールが分割されておらず、アプリケーションをデプロイの単位とする。                                                                                                                                                                                                                                                                                                                             |
+| モジュールの大きさ | 粒度名               | 説明                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 一番大きい         | モノリシック         | アプリケーションのモジュールが分割されておらず、アプリケーションをデプロイの単位とする。                                                                                                                                                                                                                                                                                                                           |
 |                    | モジュラー           | アプリケーションがモジュールに分割されており、アプリケーションをデプロイの単位とする。モジュール間のデータのやり取りに通信を使うか否かや、モジュール間でDBを共有するか否かの選択によって、作成パターンがいくつかある。<br>- https://scrapbox.io/tsuwatch/%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%81%82%E3%81%84%E3%81%A0 |
-|                    | ミニマイクロサービス | アプリケーションがサブドメイン (または境界付けられたコンテキスト) を単位としたマイクロサービスに分割されており、アプリケーションを構成するマイクロサービスのある程度のまとまりをデプロイの単位とする。また、DBを各マイクロサービスで共有する。                                                                                                                                                                       |
-| 一番小さい         | マイクロ             | アプリケーションがサブドメイン (または境界付けられたコンテキスト) を単位としたマイクロサービスまたはルートエンティティに分割されており、アプリケーションを構成するマイクロサービスそれぞれをデプロイの単位とする。また、DBを各マイクロサービスで共有せずに、マイクロサービスごとに配置する。                                                                                                                         |
+|                    | ミニマイクロサービス | アプリケーションがサブドメイン (または境界付けられたコンテキスト) を単位としたマイクロサービスに分割されており、アプリケーションを構成するマイクロサービスのある程度のまとまりをデプロイの単位とする。また、DBを各マイクロサービスで共有する。                                                                                                                                                                     |
+| 一番小さい         | マイクロ             | アプリケーションがサブドメイン (または境界付けられたコンテキスト) を単位としたマイクロサービスまたはルートエンティティに分割されており、アプリケーションを構成するマイクロサービスそれぞれをデプロイの単位とする。また、DBを各マイクロサービスで共有せずに、マイクロサービスごとに配置する。                                                                                                                       |
 
 > - https://tech-blog.rakus.co.jp/entry/20201218/architecture
 
@@ -76,7 +76,6 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 #### ▼ dapr
 
-
 > - https://www.publickey1.jp/blog/19/dapr.html
 > - https://github.com/dapr/dapr
 
@@ -94,7 +93,6 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ただし、バージョン管理システム (例：GitHub) によっては、リポジトリのディレクトリ単位で認可スコープを設定できるものがある。
 
-
 > - https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 > - https://qiita.com/FumiyaShibusawa/items/c7a3ff4d0793ca2d281f
 
@@ -109,7 +107,6 @@ Googleではモノリポジトリによるマイクロサービスアーキテ�
 その他にも、アメリカのIT大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitter、など) でもモノリポを採用している。
 
 ![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png)
-
 
 > - https://en.wikipedia.org/w/index.php?title=Monorepo
 > - https://www.fourtheorem.com/blog/monorepo
@@ -261,7 +258,6 @@ CQRSでは、これはプロセスマネージャパターンとして知られ�
 
 一方でSagaパターンとも呼ばれるが、分散トランザクションでも同じ用語があるため、混乱を避けるためにプロセスマネージャパターンとする。
 
-
 > - https://github.com/czeslavo/process-manager
 > - https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
 > - https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
@@ -308,7 +304,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_bounded-context.png)
 
-
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries
 > - https://microservices.io/patterns/decomposition/decompose-by-subdomain.html
 > - https://www.amazon.co.jp/dp/4873119316/
@@ -328,7 +323,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 その他、各マイクロサービスでDBを完全に独立させることや、SAGAパターンを使用すること、がある。
 
-
 > - https://www.koslib.com/posts/entity-services-anti-pattern/
 > - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
 > - https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
@@ -347,8 +341,8 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ### 分割例
 
-| ユースケース     | 分割方法                   | マイクロサービスの種類                                                                                                                                                 | ディレクトリ構成ポリシー                                             | リンク                                                                                                                                                                                                  |
-| ---------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ユースケース     | 分割方法                   | マイクロサービスの種類                                                                                                                                                 | ディレクトリ構成ポリシー                                             | リンク                                                                                                                                                                                                |
+| ---------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Eコマース        | 境界付けられたコンテキスト | ・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視 | `src`ディレクトリに各マイクロサービスのディレクトリを配置する。      | ![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)<br> - https://github.com/GoogleCloudPlatform/microservices-demo                  |
 | Eコマース        | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                                                                               | `services`ディレクトリに各マイクロサービスのディレクトリを配置する。 | ![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)<br> - https://github.com/mercari/mercari-microservices-example                 |
 | Eコマース        | 境界付けられたコンテキスト | ・広告<br>・割引                                                                                                                                                       | ルートに各マイクロサービスのディレクトリを配置する。                 | - https://github.com/DataDog/ecommerce-workshop                                                                                                                                                       |
@@ -366,7 +360,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 例えば、マイクロサービス間で重複するロギングライブラリをマイクロサービスとして分離した結果、複数のマイクロサービスがこのロギングマイクロサービスに依存してしまうような場合がある。
 
 分散モノリスにならないように、マイクロサービス間で使用するライブラリが重複することを許容する必要がある。
-
 
 > - https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/
 > - https://r-kaga.com/blog/what-is-distributed-monolith
@@ -395,9 +388,9 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 使用することのできる通信プロトコルは以下の通りである。
 
-| プロコトル   | 説明                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 従来のTCP/IP | 従来のTCP/IPプロトコルを使用する。                                                                                                                                                                                                                                                                                                                                                                                   |
+| プロコトル   | 説明                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 従来のTCP/IP | 従来のTCP/IPプロトコルを使用する。                                                                                                                                                                                                                                                                                                                                                                                 |
 | gRPC         | HTTP/1.1に代わるHTTP/2が組み込まれたgRPCプロトコルを使用する。HTTPプロトコルであると、通信相手のマイクロサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のマイクロサービスのメソッドを直接的に実行できる。そのため、HTTPよりもマイクロサービスの連携に適している。<br>- https://techdozo.dev/grpc-for-microservices-communication/ |
 
 <br>
@@ -411,7 +404,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 マイクロサービスからマイクロサービスに一方通行の通信を行う。
 
 送信側と受信側で通信処理が独立して実行されるため、メッセージキューを介した非同期通信を行うことになる。
-
 
 > - https://en.wikipedia.org/wiki/Message_queue
 > - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
@@ -427,7 +419,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 もしマイクロサービス間双方向に送信したい場合は、上流マイクロサービスからメッセージを受信するメッセージキューと、下流マイクロサービスから受信するメッセージキューを、別々に配置する。
 
 メッセージキューはPub/Subデザインパターンで自前で実装するか、または外部サービス (例：AWS-SQS、Kafka、など) を使用する。
-
 
 > - https://en.wikipedia.org/wiki/Message_queue
 > - https://www.scaleuptech.com/de/blog/api-gateway-vs-service-mesh-vs-message-queue/
@@ -445,7 +436,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 v2では、アプリケーションがプレゼンテーション層、アプリケーション層、ドメイン層、インフラ層、を持っており、このうちプレゼンテーション層がフロントエンドアプリケーションとして分離されている。
 
 続くマイクロサービスアーキテクチャでは、残りのアプリケーション層、ドメイン層、インフラ層、を分離していく。
-
 
 > - https://cloud.google.com/architecture/devops/devops-tech-architecture
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
@@ -467,7 +457,6 @@ v2では、アプリケーションがプレゼンテーション層、アプリ
 - トレースIDの付与
 - キャッシュの作成
 - リクエスト制限
-
 
 > - https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
 > - https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/
@@ -534,14 +523,12 @@ Kubernetes内で管理できるメリットがある。
 
 ![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
-
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 > - https://codezine.jp/article/detail/11305?p=4
 
 #### ▼ Federated Gateway
 
 BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各API Gatewayのエンドポイントを統合する。
-
 
 > - https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/
 > - https://tech.smartshopping.co.jp/backend-development-with-graphql
@@ -558,7 +545,6 @@ BFFではアプリケーションの種類ごとにAPI　Gatewayを作成した�
 各マイクロサービスで共有して使用するDBを`1`個だけ用意する。
 
 この場合、単一のDB上で、スキーマやテーブルをマイクロサービスごとに作成する必要がある。
-
 
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 > - https://microservices.io/patterns/data/shared-database.html
@@ -633,7 +619,6 @@ BFFではアプリケーションの種類ごとにAPI　Gatewayを作成した�
 
 補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される。
 
-
 > - https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687
 > - https://thinkit.co.jp/article/14639?page=0%2C1
 > - https://qiita.com/nk2/items/d9e9a220190549107282
@@ -671,7 +656,6 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
 
-
 > - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 > - https://news.mynavi.jp/itsearch/article/devsoft/1598
 > - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
@@ -689,7 +673,6 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 ![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png)
 
-
 > - https://www.12-technology.com/2021/08/dbsaga.html
 > - https://qiita.com/somen440/items/a6c323695627235128e9
 > - https://www.12-technology.com/2021/08/dbsaga.html
@@ -705,7 +688,6 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 `1`個のリクエストが送信された時に、マイクロサービスからマイクロサービスに処理が繋がっていく。
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
-
 
 > - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 > - https://zenn.dev/yoshii0110/articles/74dfcf4132a805
@@ -747,7 +729,6 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 CQRSと相性が良い。
 
-
 > - https://qiita.com/suin/items/f559e3dcde7c811ed4e1
 > - https://martinfowler.com/articles/201701-event-driven.html
 
@@ -787,7 +768,6 @@ CQRSと相性が良い。
 
 ![micro-auth_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_sso.png)
 
-
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
@@ -803,7 +783,6 @@ CQRSと相性が良い。
 
 ![micro-auth_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_centralization.png)
 
-
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
@@ -818,7 +797,6 @@ JWTを作成する認証マイクロサービスを`1`個だけ配置し、Cooki
 クライアント側に保存されたJWTの失効が難しいというデメリットがある。
 
 ![micro-auth_type_distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_distribution.png)
-
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -836,7 +814,6 @@ JWTを作成する認証マイクロサービスを`1`個だけ配置し、Cooki
 また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。
 
 ![micro-auth_type_gateway-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_gateway-distribution.png)
-
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549

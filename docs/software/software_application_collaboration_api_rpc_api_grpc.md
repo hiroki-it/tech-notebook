@@ -25,7 +25,6 @@ RESTful-APIに対するリクエストではリクエストのヘッダーやボ
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png)
 
-
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://openstandia.jp/oss_info/grpc/
 > - https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
@@ -118,7 +117,6 @@ service Chat {
 }
 ```
 
-
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
 > - https://reboooot.net/post/hello-grpc/
 > - https://christina04.hatenablog.com/entry/2017/11/13/203000
@@ -195,7 +193,6 @@ repository/
     │           │
     ...         ...
 ```
-
 
 > - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 > - https://lab.mo-t.com/blog/protocol-buffers
@@ -375,7 +372,6 @@ func main() {
 }
 ```
 
-
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://entgo.io/ja/docs/grpc-server-and-client/
 
@@ -460,7 +456,6 @@ service FooService {
 }
 ```
 
-
 > - https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://christina04.hatenablog.com/entry/protoc-usage
@@ -487,7 +482,6 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 // 〜 中略 〜
 ```
-
 
 > - https://christina04.hatenablog.com/entry/protoc-usage
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96

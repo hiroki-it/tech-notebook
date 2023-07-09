@@ -27,7 +27,6 @@ description: 可観測性の知見を記録しています。
 
 想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。
 
-
 > - https://blog.thundra.io/observability-driven-development-for-serverless
 > - https://sookocheff.com/post/architecture/testing-in-production/
 > - https://www.sentinelone.com/blog/observability-production-systems-why-how/
@@ -59,7 +58,6 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 また、AWSではCloudWatch (メトリクス+ログ) とX-Ray (分散トレース) を両方利用すると、これらの要素を満たせたことになり、可観測性を実現できる。
 
-
 > - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
 > - https://knowledge.sakura.ad.jp/26395/
 
@@ -72,7 +70,6 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 計装するためには、メトリクス収集用のツール、ロギングパッケージ、分散トレースのためのリクエストIDの付与、などを用意する必要がある。
 
 多くの場合、各テレメトリーの収集ツールは別々に用意する必要があるが、OpenTelemetryではこれらの収集機能をフレームワークとして提供しようとしている。
-
 
 > - https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
 > - https://www.splunk.com/en_us/data-insider/what-is-opentelemetry.html
@@ -149,7 +146,6 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
-
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
 
@@ -200,7 +196,6 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 分析の対象 (スケーリングで増えるインスタンスも含む) が増えるほど、データポイントは増える。
 
 メトリクスのデータポイントを保管する場合、分析対象の増加に注意する必要がある。
-
 
 > - https://whatis.techtarget.com/definition/data-point
 > - https://aws.amazon.com/jp/about-aws/whats-new/2017/12/amazon-cloudwatch-alarms-now-alerts-you-when-any-m-out-of-n-metric-datapoints-in-an-interval-are-above-your-threshold/
@@ -287,7 +282,6 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 `60`～`70`%で、警告ラインを設けておく必要がある。
 
 サーバー監視対象のメトリクスに属する。
-
 
 > - https://codezine.jp/article/detail/11472
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes4.html
@@ -387,7 +381,6 @@ jsonPayload.traceId="<トレースID>"
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png)
 
-
 > - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 > - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
 > - https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058
@@ -431,7 +424,6 @@ jsonPayload.traceId="<トレースID>"
 | トレースIDヘッダー | トレースIDが割り当てられている。                                                   |
 | 親スパンIDヘッダー | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
 
-
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 > - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
@@ -445,7 +437,6 @@ jsonPayload.traceId="<トレースID>"
 各分散トレースの収集ツール (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからメタデータを簡単に取り出せるパッケージを使用すると良い。
 
 インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
-
 
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
@@ -464,7 +455,6 @@ jsonPayload.traceId="<トレースID>"
 JSON型で定義されることが多い。
 
 SaaSツールによってJSON型の構造が異なる。
-
 
 > - https://opentracing.io/docs/overview/spans/
 > - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
@@ -535,7 +525,6 @@ SaaSツールによってJSON型の構造が異なる。
 - Events (ドメインイベントのようなユーザー定義の処理イベント)
 - Exception
 - Profiles
-
 
 > - https://medium.com/@YuriShkuro/temple-six-pillars-of-observability-4ac3e3deb402
 > - https://www.appdynamics.com/ja_jp/topics/what-is-open-telemetry#~1-what-is-opentelemetry

@@ -85,7 +85,6 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 メトリクスと分散トレースであれば収集できる。
 
-
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_metrics.html
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_distributed_trace.html
 
@@ -111,7 +110,6 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 
-
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 > - https://blog.serverworks.co.jp/k8s-datadog
 
@@ -120,7 +118,6 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 記入中...
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
-
 
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
 > - https://docs.datadoghq.com/integrations/istio/
@@ -576,7 +573,6 @@ CRITICAL @http.status_code:[500 TO 599]
 
 パースルール (`%{<マッチャー名>:<エクストラクト名>:<フィルター名>}`) を使用して、`message`属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extractを使用すると、`message`属性以外に対してGrokパーサーを使用できるようになるため、構造化ログも扱えるようになる。
 
-
 > - https://docs.datadoghq.com/logs/processing/parsing/?tab=matcher
 > - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
 > - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-a-specific-text-attribute
@@ -585,9 +581,9 @@ CRITICAL @http.status_code:[500 TO 599]
 
 | 名前             | 説明                                                                                                       | 補足                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| マッチャー名     | パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を行う。 | - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter |
+| マッチャー名     | パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を行う。 | - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter   |
 | エクストラクト名 | 処理結果の出力先の属性を設定する。                                                                         | 出力先の属性が存在しない場合、これを新しく作成する。存在する場合は、既存の属性値を上書きする。 |
-| フィルター名     | マッチャーの追加処理を行うフィルター関数を設定する。                                                       | - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter  |
+| フィルター名     | マッチャーの追加処理を行うフィルター関数を設定する。                                                       | - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter    |
 
 #### ▼ 例１
 
@@ -1140,7 +1136,6 @@ autoFilledRule3 ...
 パイプラインで処理を終えたログをグループ化し、ログの破棄ルールや保管期間をグループごとに定義できる。
 
 インデックスを使用すれば、Datadogのログ保管のネックになる保管料金を抑えられる。
-
 
 > - https://docs.datadoghq.com/logs/indexes/
 > - https://tech-blog.abeja.asia/entry/why-datadog

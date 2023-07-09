@@ -35,7 +35,6 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 ![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
 
-
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 > - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
 > - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
@@ -55,7 +54,6 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 各コンポーネントがメモリを使用するため、
 
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
-
 
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 > - https://www.sobyte.net/post/2022-05/vmalert/
@@ -107,7 +105,6 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 VictoriaMetricsは、クエリの実行前に、ディスクに永続化したデータポイントを一度メモリに移動する。
 
 そのため、ストレージのデータ量が多くなるのに伴って、メモリ上のデータポイントが常時/突発的に多くなり、OOMキラーになることがある。
-
 
 > - https://docs.victoriametrics.com/FAQ.html#how-to-set-a-memory-limit-for-victoriametrics-components
 > - https://docs.victoriametrics.com/#storage
@@ -293,7 +290,6 @@ WantedBy=multi-user.target
 $ systemctl daemon-reload
 $ systemctl start victoriametrics
 ```
-
 
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/package/victoria-metrics.service
 > - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/

@@ -123,7 +123,6 @@ EC2インスタンスでは、ブロックデバイスにルートデバイス�
 
 複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。
 
-
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
@@ -141,7 +140,6 @@ EBSで保管されているルートデバイスボリュームで、推奨の�
 
 また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
-
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
@@ -157,7 +155,6 @@ EBSで保管されているルートデバイスボリュームで、推奨の�
 EBSボリュームとは異なり、コンピューティングとして動作するEC2インスタンス内にルートデバイスボリュームが存在している。
 
 そのため、インスタンスストアボリュームは、EC2インスタンスを削除すると一緒に削除されてしまう。
-
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
@@ -206,7 +203,6 @@ $ openssl pkcs8 \
 ### AMIとは
 
 EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とEBSボリュームの両方が内蔵されたコピーのこと。
-
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
@@ -277,12 +273,12 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 
 #### ▼ 設定項目と説明
 
-| 設定項目              | 説明                                                                         | 補足                                                                                                                                                     |
-| --------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ボリュームタイプ      | EBSボリュームの種類を設定する。                                              |                                                                                                                                                          |
-| サイズ                | 選択したボリュームタイプでのサイズを設定する。                               |                                                                                                                                                          |
+| 設定項目              | 説明                                                                         | 補足                                                                                                                                                   |
+| --------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ボリュームタイプ      | EBSボリュームの種類を設定する。                                              |                                                                                                                                                        |
+| サイズ                | 選択したボリュームタイプでのサイズを設定する。                               |                                                                                                                                                        |
 | IOPS (I/O per second) | EC2インスタンスとEBSボリューム間のI/O処理のリクエスト数 (個/秒) を設定する。 | ストレージのI/O処理は、読み書き処理に相当する。そのため、IOPSの数値が高いほど、高速で読み書きできることを表す。<br>- https://www.idcf.jp/words/io.html |
-| AZ                    | EBSボリュームを作成するAZ。                                                  | EC2インスタンスは、同じAZにあるEBSボリュームしか選択できないので注意する。                                                                               |
+| AZ                    | EBSボリュームを作成するAZ。                                                  | EC2インスタンスは、同じAZにあるEBSボリュームしか選択できないので注意する。                                                                             |
 | 暗号化                | EC2インスタンスとEBSボリューム間のI/O処理を暗号化するか否かを設定する。      | - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html                                                                               |
 
 <br>
@@ -586,7 +582,6 @@ EBSボリュームのコピーのこと。
 セッションマネージャーを使用してEC2インスタンスに接続し、ログインシェルを起動する。
 
 ![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png)
-
 
 > - https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html
 > - https://dev.classmethod.jp/articles/ssh-through-session-manager/

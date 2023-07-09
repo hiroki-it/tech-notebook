@@ -104,8 +104,6 @@ DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーと
 
 ドメイン名の名前解決ルールを設定する。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
 > - https://zenn.dev/seyama/articles/02118b0914183e
 

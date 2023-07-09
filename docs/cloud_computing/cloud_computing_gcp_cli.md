@@ -94,8 +94,6 @@ ACTIVE  ACCOUNT
 *       bar-serviceaccount@bar-project.iam.gserviceaccount.com
 ```
 
-> ↪️：
->
 > - https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account
 > - https://qiita.com/zaru/items/a419f306385f240e4fe6#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E8%AA%8D%E8%A8%BC
 > - https://stackoverflow.com/a/52387709

@@ -25,7 +25,6 @@ description: 仮想化の知見を記録しています。
 
 物理サーバー上で、物理サーバーのハードウェアとソフトウェアの要素を完全に仮想化する。
 
-
 > - https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization
 > - https://www.paloaltonetworks.jp/company/in-the-news/2019/making-containers-more-isolated-an-overview-of-sandboxed-container-technologies
 
@@ -70,7 +69,6 @@ description: 仮想化の知見を記録しています。
 
 物理サーバー上で、ソフトウェアであるOSを部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。
 
-
 > - https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization\
 > - https://www.paloaltonetworks.jp/company/in-the-news/2019/making-containers-more-isolated-an-overview-of-sandboxed-container-technologies
 
@@ -93,7 +91,6 @@ description: 仮想化の知見を記録しています。
 - Podman
 - LXC
 - OpenVZ
-
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
 > - https://news.mynavi.jp/techplus/article/zerocontena-7/

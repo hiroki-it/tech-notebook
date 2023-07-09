@@ -41,8 +41,6 @@ DirectConnectと複数のプライベートネットワーク (VPC) をアタッ
 
 TransitGatewayが必要になるため、各VPC上にそのためのルートテーブルを作成する必要がある。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/ja_jp/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect-aws-transit-gateway.html
 > - https://medium.com/@datapath_io/aws-direct-connect-vs-vpn-vs-direct-connect-gateway-97900cdf7d04
 

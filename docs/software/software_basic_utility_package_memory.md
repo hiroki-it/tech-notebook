@@ -71,7 +71,6 @@ Python製のユーティリティである。
 
 メモリ上のプロセスをデーモン化し、一括で管理する。
 
-
 > - http://supervisord.org/index.html
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
@@ -173,7 +172,6 @@ user=root
 #### ▼ programセクションとは
 
 デーモン化されたプロセスを設定する。
-
 
 > - http://supervisord.org/configuration.html#program-x-section-settings
 > - https://christina04.hatenablog.com/entry/2015/07/21/215525
@@ -342,7 +340,6 @@ $ supervisorctl update
 
 メモリ上のプロセスをデーモン化する機能を持つsystemdを制御する。
 
-
 > - https://cameong.hatenablog.com/entry/2016/10/18/121400
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
@@ -385,7 +382,6 @@ $ apt-get install systemd
 デフォルト値が定義されたファイルは`/usr/lib/systemd/system`ディレクトリ配下に配置され、これは変更できない。
 
 カスタムユニットファイルは、`/etc/sytemd/system`ディレクトリ配下に配置する。
-
 
 > - https://tex2e.github.io/blog/linux/create-my-systemd-service
 > - https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
@@ -665,7 +661,6 @@ $ journalctl -u foo.service | grep error
 デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、`OnFailure`オプションを使用する。
 
 この時に指定するユニットファイル名には、「`@%i`』が必要である (実際のファイル名に`%i`は不要である) 。
-
 
 > - https://serverfault.com/a/924434
 > - https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html

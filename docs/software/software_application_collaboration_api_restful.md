@@ -103,7 +103,6 @@ POST送信とPUT送信の重要な違いについてまとめる。
 | データ作成の冪等性           | リクエスト1つにつき、`1`個のデータを作成 (非冪等的) | リクエスト数に限らず、`1`個のデータを作成する (冪等的) 。古いデータを新しいデータに置換する行為に近い。 |
 | リクエストパラメーターの場所 | メッセージボディにJSON型データなどを割り当てる。    | パスパラメーターにidなど、またメッセージボディにJSON型データなどを割り当てる。                          |
 
-
 > - https://stackoverflow.com/a/2691891/12771072
 > - https://restfulapi.net/rest-put-vs-post/
 
@@ -117,12 +116,10 @@ POST送信とPUT送信の重要な違いについてまとめる。
 
 この時、アクセスするリソース名がわかりやすいような名詞を使用する。
 
-
 > - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
 > - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
 
 ただし慣例として、認証のエンドポイントが動詞 (`login`、`logout`、`register`) になることは許容されている。
-
 
 > - https://stackoverflow.com/questions/7140074/restfully-design-login-or-register-resources
 > - https://www.developer.com/web-services/best-practices-restful-api
@@ -420,7 +417,6 @@ POST/PUTメソッドでは、処理後のデータを200レスポンスとして
 
 もし処理後のデータを返信しない場合、改めてGETリクエストを送信する必要があり、余分なAPIコールが必要になってしまう。
 
-
 > - https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
 > - https://qiita.com/wim/items/dbb6def4e207f6048735
 
@@ -429,7 +425,6 @@ POST/PUTメソッドでは、処理後のデータを200レスポンスとして
 DELETEメソッドでは、メッセージのみを200レスポンスとして返信する。
 
 空ボディ204レスポンスとして返信しても良い。
-
 
 > - https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918
 > - https://qiita.com/fukuma_biz/items/a9e8d18467fe3e04068e#4-delete---%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4
