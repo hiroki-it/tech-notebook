@@ -9,7 +9,7 @@ description: Secrets Manager＠AWSリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Secrets Manager＠AWSリソースの知見を記録しています�
 
 Kubernetesのシークレットの概念が取り入れられている。
 
-> ↪️：https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
+> - https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
 
 <br>
 

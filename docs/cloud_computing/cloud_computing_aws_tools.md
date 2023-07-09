@@ -9,7 +9,7 @@ description: ツール＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: ツール＠AWSの知見を記録しています。
 
 記入中...
 
-> ↪️：https://aws.amazon.com/jp/solutions/browse-all/?solutions-all.sort-by=item.additionalFields.headline&solutions-all.sort-order=asc&awsf.Content-Type=content-type%23solution&awsf.AWS-Product%20Category=*all
+> - https://aws.amazon.com/jp/solutions/browse-all/?solutions-all.sort-by=item.additionalFields.headline&solutions-all.sort-order=asc&awsf.Content-Type=content-type%23solution&awsf.AWS-Product%20Category=*all
 
 <br>
 
@@ -31,7 +31,7 @@ description: ツール＠AWSの知見を記録しています。
 
 CloudFormationで作成でき、ECS Fargateを使用して、ユーザーからのリクエストを擬似的に再現できる。
 
-> ↪️：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
+> - https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
 
 #### ▼ インフラ構成
 

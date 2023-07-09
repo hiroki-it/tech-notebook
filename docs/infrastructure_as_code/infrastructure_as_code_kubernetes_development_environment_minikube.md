@@ -9,7 +9,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -38,7 +38,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_docker_driver.png)
 
-> ↪️：https://zenn.dev/castaneai/articles/local-kubernetes-networking
+> - https://zenn.dev/castaneai/articles/local-kubernetes-networking
 
 <br>
 
@@ -50,7 +50,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ホスト側のOS (Linux、MacOS、Windows) や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
-> ↪️：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
+> - https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
 #### ▼ ドライバーの種類
 
@@ -60,7 +60,7 @@ description: Minikube＠開発環境の知見を記録しています。
 | MacOS        | VirtualBox、Docker、HyperKit、... |
 | Windows      | VirtualBox、Docker、Hyper-V、...  |
 
-> ↪️：https://minikube.sigs.k8s.io/docs/drivers/
+> - https://minikube.sigs.k8s.io/docs/drivers/
 
 <br>
 
@@ -81,7 +81,7 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 $ minikube start
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/filesync/
+> - https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
 #### ▼ 各ドライバーのホストとNode間マウント
 
@@ -96,7 +96,7 @@ $ minikube start
 | KVM           | Linux        | なし                     |                                      |
 | HyperKit      | Linux        | なし (NFSマウントを参照) |                                      |
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
+> - https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
 <br>
 
@@ -119,7 +119,7 @@ $ minikube start
 - `/tmp/hostpath_pv`
 - `/tmp/hostpath-provisioner`
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+> - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
 <br>
 
@@ -135,7 +135,7 @@ Minikubeでは、`mount`コマンド、ホスト側の`$MINIKUBE_HOME/files`デ�
 
 このように、ホストからNode、NodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
 
-> ↪️：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
+> - https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
 #### ▼ HyperKitドライバーを使用する場合
 
@@ -194,7 +194,7 @@ spec:
 
 Node内で`ip addr`コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。
 
-> ↪️：https://nishipy.com/archives/1467
+> - https://nishipy.com/archives/1467
 
 **＊例＊**
 
@@ -254,7 +254,7 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 }
 ```
 
-> ↪️：https://nishipy.com/archives/1467
+> - https://nishipy.com/archives/1467
 
 <br>
 
@@ -266,7 +266,7 @@ Minikubeは、クラウドプロバイダーとは状況が異なり、Minikube�
 
 そのため、ホストからMinikube仮想サーバーに接続するための操作が必要である。
 
-> ↪️：https://unicorn.limited/jp/rd/kubernetes/20180521-minikube-access.html
+> - https://unicorn.limited/jp/rd/kubernetes/20180521-minikube-access.html
 
 <br>
 
@@ -288,7 +288,7 @@ $ curl http://127.0.0.1:<自動的に発行されたポート番号>
 $ minikube service istio-ingressgateway --url -n istio-ingress
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
+> - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
 
 <br>
 
@@ -302,7 +302,7 @@ $ minikube tunnel
 $ curl http://<minikube tunnelコマンドでLoadBalancer Serviceに割り当てられるIPアドレス>:<LoadBalancer Serviceが待ち受けるポート番号>
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
+> - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
 
 ### ClusterIP Serviceの場合
 

@@ -9,7 +9,7 @@ description: Lambda＠AWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：<https://hiroki-it.github.io/tech-notebook/>
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Lambda＠AWSリソース
 
 ![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サーバーレスアーキテクチャとは.png)
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html>
+> - https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html>
 
 <br>
 
@@ -36,7 +36,7 @@ description: Lambda＠AWSリソース
 | ランタイム                         | 関数の実装に使用する言語を設定する。                                            | コンテナイメージの関数では使用できない。                                                                                                                                                                                                                                                                                |
 | ハンドラ                           | 関数の実行時にコールしたい具体的メソッド名を設定する。                          | ・コンテナイメージの関数では使用できない。<br>・Node.js：`index.js` というファイル名で `exports.handler` メソッドを呼び出したい場合、ハンドラ名を`index.handler`とする                                                                                                                                                  |
 | レイヤー                           | 異なる関数の間で、特定の処理を共通化できる。                                    | コンテナイメージの関数では使用できない。                                                                                                                                                                                                                                                                                |
-| メモリ                             | Lambdaに割り当てるメモリサイズを設定する。                                      | 最大10240MBまで増設でき、増設するほどパフォーマンスが上がる。<br>↪️：<https://www.business-on-it.com/2003-aws-lambda-performance-check/>                                                                                                                                                                                |
+| メモリ                             | Lambdaに割り当てるメモリサイズを設定する。                                      | 最大10240MBまで増設でき、増設するほどパフォーマンスが上がる。<br>- https://www.business-on-it.com/2003-aws-lambda-performance-check/                                                                                                                                                                                |
 | タイムアウト                       |                                                                                 |                                                                                                                                                                                                                                                                                                                         |
 | 実行ロール                         | Lambda内のメソッドが実行される時に必要なポリシーを持つロールを設定する。        |                                                                                                                                                                                                                                                                                                                         |
 | 既存ロール                         | Lambdaにロールを設定する。                                                      |                                                                                                                                                                                                                                                                                                                         |
@@ -52,7 +52,7 @@ description: Lambda＠AWSリソース
 
 ### 設定のベストプラクティス
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration>
+> - https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration>
 
 <br>
 
@@ -70,11 +70,11 @@ Lambdaは、API (ランタイムAPI、ログAPI、拡張API) と実行環境か�
 
 関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle>
+> - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle>
 
 実行環境には、`3`個のフェーズがある。
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle>
+> - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle>
 
 ![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png)
 
@@ -102,7 +102,7 @@ Lambdaは関数を実行する。
 
 #### ▼ ベースイメージの準備
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp>
+> - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp>
 
 #### ▼ RIC：Runtime Interface Clients
 
@@ -110,7 +110,7 @@ Lambdaは関数を実行する。
 
 言語別にRICパッケージが用意されている。
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client>
+> - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client>
 
 #### ▼ RIE：Runtime Interface Emulator
 
@@ -118,11 +118,11 @@ Lambdaは関数を実行する。
 
 全ての言語で共通のRIEパッケージが用意されている。
 
-> ↪️：<https://github.com/aws/aws-lambda-runtime-interface-emulator>
+> - https://github.com/aws/aws-lambda-runtime-interface-emulator>
 
 RIEであっても、稼働させるためにAWSの認証情報 (アクセスキーID、シークレットアクセスキー、リージョン) が必要なため、環境変数や`credentials`ファイルを使用して、Lambdaにこれらの値を出力する。
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env>
+> - https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env>
 
 **＊参考＊**
 
@@ -193,7 +193,7 @@ Lambdaは、関数の実行中に再びリクエストを受信すると、関�
 
 同時実行の予約数を`0`個とした場合、Lambdaがスケーリングしなくなる。
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved>
+> - https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved>
 
 ![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda_concurrency-model.png)
 
@@ -253,7 +253,7 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 ローカルマシンまたはS3からアップロードできる。
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip>
+> - https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip>
 
 #### ▼ ECRにおけるイメージ
 
@@ -263,7 +263,7 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 ECRからアップロードできる。
 
-> ↪️：<https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images>
+> - https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images>
 
 <br>
 
@@ -298,7 +298,7 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 
 各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
 
-> ↪️：<https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html>
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html>
 
 <br>
 

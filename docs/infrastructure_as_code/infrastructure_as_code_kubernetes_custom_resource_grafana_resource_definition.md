@@ -9,7 +9,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -32,7 +32,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/grafana -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/grafana/helm-charts/tree/main/charts/grafana
+> - https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
 Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
@@ -60,7 +60,7 @@ Grafanaのドキュメントから`.yaml`ファイルをコピーし、`grafana.
 
 これを作成する。
 
-> ↪️：https://grafana.com/docs/grafana/latest/installation/kubernetes/
+> - https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
 ```bash
 $ kubectl apply -f grafana.yaml

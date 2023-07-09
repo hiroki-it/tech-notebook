@@ -9,7 +9,7 @@ description: ポート＠L4の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -92,7 +92,7 @@ IANAが登録申請を受けて公開しているポート番号。
 | 企業が共有している | HTTP/1、HTTP/2 (例：gRPCなど)          | `8080`             |
 | ...                | ...                                    | ...                |
 
-> ↪️：https://abhp.net/it/IT_Port_No_100000.html
+> - https://abhp.net/it/IT_Port_No_100000.html
 
 #### ▼ 動的/非公式ポート番号 (`49152`～`65535`)
 
@@ -100,7 +100,7 @@ IANAが登録申請を受けて公開しているポート番号。
 
 もちろん、そのポート番号で待ち受ける必要がなければ、脆弱性から閉じておく方が良い。
 
-> ↪️：https://abhp.net/it/IT_Port_No_100000.html
+> - https://abhp.net/it/IT_Port_No_100000.html
 
 <br>
 

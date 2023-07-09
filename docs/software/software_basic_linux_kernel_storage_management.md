@@ -9,7 +9,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 ### ストレージ管理の仕組み
 
-> ↪️：https://hogetech.info/linux/kernel/basic4
+> - https://hogetech.info/linux/kernel/basic4
 
 <br>
 
@@ -35,7 +35,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 : パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。
 
-> ↪️：https://isleofhoso.com/linux-lvm-extend/
+> - https://isleofhoso.com/linux-lvm-extend/
 
 ```bash
 $ lsblk
@@ -152,7 +152,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 パーティションにアクセスできるディレクトリのこと。
 
-> ↪️：https://allabout.co.jp/gm/gc/438839/
+> - https://allabout.co.jp/gm/gc/438839/
 
 <br>
 
@@ -203,13 +203,13 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 Windowsでは、CドライブとDドライブがパーティションに相当する。
 
-> ↪️：http://www.miloweb.net/partition.html
+> - http://www.miloweb.net/partition.html
 
 #### ▼ MacOSの場合
 
 MacOSでは、`diskutil`コマンドを実行することにより、パーティションとマウントポイントを確認できる。
 
-> ↪️：https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
+> - https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
 
 **＊例＊**
 
@@ -248,7 +248,7 @@ $ diskutil list
 
 ![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
 
-> ↪️：https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
+> - https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
 
 <br>
 
@@ -292,7 +292,7 @@ $ lvdisplay
   Block device          253:1
 ```
 
-> ↪️：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
+> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
 
 <br>
 
@@ -436,7 +436,7 @@ crw-------  watchdog0             # システムリセット
 crw-rw-rw-  zero                  # ゼロ出力 (読み込むとゼロ)
 ```
 
-> ↪️：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
+> - https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
 
 <br>
 
@@ -448,7 +448,7 @@ crw-rw-rw-  zero                  # ゼロ出力 (読み込むとゼロ)
 
 HHD (`/dev/hd`) 、メモリ、などがある。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 #### ▼ キャラクターデバイス (キャラクタースペシャルファイル)
 
@@ -456,7 +456,7 @@ HHD (`/dev/hd`) 、メモリ、などがある。
 
 プリンター (`/dev/lp`) 、モデム、ターミナル、などがある。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 #### ▼ 擬似デバイス
 
@@ -464,7 +464,7 @@ HHD (`/dev/hd`) 、メモリ、などがある。
 
 標準入出力 (`/dev/stdin`、`/dev/stdout`) や破棄 (`/dev/null`) などがある。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 <br>
 
@@ -539,7 +539,7 @@ NFSサーバーに配置されたファイルを、他のサーバー (NFSクラ
 
 : ホスト側のMacOSにて、`/etc/exports`ファイルにマウントオプションを設定する。また、`/etc/exports`ファイルを検証する。
 
-> ↪️：https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
+> - https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
 
 ```bash
 # マウントオプションを設定する。
@@ -574,7 +574,7 @@ Exports list on localhost:
 
 : NFSクライアントにて、必要なパッケージをインストールする。
 
-> ↪️：https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
+> - https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
 
 ```bash
 # Ubuntuの場合

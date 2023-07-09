@@ -9,7 +9,7 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -93,7 +93,7 @@ Kubernetesでは、Serviceは単一のバージョンのPodとしか通信でき
 | 相互TLS認証         | 相互TLS認証ツール<br>(例：Spiffe)                                                      | `⭕️`<br>(Spiffeへ置き換えできる) |  `⭕️`  | `⭕️`  |    `⭕️`     |
 | JWTによるBearer認証 | アプリで実装、OAuth`2.0`プロキシ (例：oauth2-proxy、など) やSSOプロキシ(例：dex、など) |               `⭕️`               |    ×    | `⭕️`  |      ×       |
 
-> ↪️：https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
+> - https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
 
 <br>
 
@@ -108,7 +108,7 @@ Kubernetesでは、Podの作成に応じて証明書のKubernetesリソース (C
 | 相互TLS認証         | 相互TLS認証ツール<br>(例：Spiffe)        | `⭕️`<br>(Spiffeへ置き換えできる) |  `⭕️`  | `⭕️`  |    `⭕️`     |
 | SSL証明書の自動更新 | SSL証明書管理ツール<br>(例：CertManager) |               `⭕️`               |    ×    | `⭕️`  |    `⭕️`     |
 
-> ↪️：https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
+> - https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
 
 <br>
 

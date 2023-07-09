@@ -9,7 +9,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -44,7 +44,7 @@ RDBMSは、リレーショナルエンジン、DBエンジン (ストレージ�
 
 記入中...
 
-> ↪️：https://qiita.com/ishishow/items/280a9d049b8f7bcbc14a
+> - https://qiita.com/ishishow/items/280a9d049b8f7bcbc14a
 
 <br>
 
@@ -124,7 +124,7 @@ RDBMSの種類に応じたクエリが必要になる。
 | クエリビルダー   | RDB固有のクエリを実装しやすくしたパッケージのこと。                                                                 |
 | ORM              | アプリケーション側にDBテーブルに対応したモデルを定義し、これを使用してRDBに固有のクエリを実行するパッケージのこと。 |
 
-> ↪️：https://levelup.gitconnected.com/raw-sql-vs-query-builder-vs-orm-eee72dbdd275
+> - https://levelup.gitconnected.com/raw-sql-vs-query-builder-vs-orm-eee72dbdd275
 
 <br>
 
@@ -136,7 +136,7 @@ RDBMSの種類に応じたクエリが必要になる。
 
 TCP/IPプロトコルを使用する。
 
-> ↪️：https://en.wikipedia.org/wiki/Database_connection
+> - https://en.wikipedia.org/wiki/Database_connection
 
 #### ▼ コネクションプロキシ
 

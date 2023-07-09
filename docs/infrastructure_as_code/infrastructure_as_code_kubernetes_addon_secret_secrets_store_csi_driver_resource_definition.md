@@ -9,7 +9,7 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ $ helm repo update
 $ helm install <リリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
-> ↪️：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
+> - https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
 #### ▼ AWS EKS専用のチャートとして
 
@@ -49,7 +49,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/secrets-store-
 $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
 ```
 
-> ↪️：https://github.com/aws/secrets-store-csi-driver-provider-aws
+> - https://github.com/aws/secrets-store-csi-driver-provider-aws
 
 <br>
 
@@ -111,7 +111,7 @@ metadata:
   namespace: foo-namespace # Podと同じNamespace
 ```
 
-> ↪️：https://www.bigtreetc.com/column/eks-secrets/
+> - https://www.bigtreetc.com/column/eks-secrets/
 
 <br>
 
@@ -130,7 +130,7 @@ spec:
   provider: aws
 ```
 
-> ↪️：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 <br>
 
@@ -140,7 +140,7 @@ spec:
 
 プロバイダーに応じて、参照するSecretのデータを設定する。
 
-> ↪️：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 #### ▼ objects (AWSプロバイダーの場合)
 

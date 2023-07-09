@@ -9,7 +9,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -118,7 +118,7 @@ spec:
 # 重要なところ以外を省略しているので、全体像はその都度確認すること。
 ```
 
-> ↪️：https://github.com/istio/istio/blob/master/pilot/pkg/bootstrap/server.go#L412-L476
+> - https://github.com/istio/istio/blob/master/pilot/pkg/bootstrap/server.go#L412-L476
 
 Dockerfileとしては、最後に`pilot-discovery`プロセスを実行している。
 
@@ -133,7 +133,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 
 そのため、`pilot-discovery`プロセスの実体は、GitHubの`pilot-discovery`ディレクトリ配下の`main.go`ファイルで実行されるGoのバイナリファイルである。
 
-> ↪️：https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
+> - https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
 
 <br>
 
@@ -332,7 +332,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
 
-> ↪️：https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
+> - https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
 
 <br>
 
@@ -366,7 +366,7 @@ tcp6       0      0 :::15014                :::*                    LISTEN      
 
 `discovery`コンテナの`15014`番ポートにポートフォワーディングしながら、別に` go tool pprof`コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
 
-> ↪️：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
+> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
 
 ```bash
 # ポートフォワーディングを実行する。
@@ -407,7 +407,7 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 `istio-proxy`コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービスディスカバリー) 。
 
-> ↪️：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
+> - https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
 ![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-registry.png)
 
@@ -437,7 +437,7 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png)
 
-> ↪️：https://istio.io/latest/docs/concepts/security/#pki
+> - https://istio.io/latest/docs/concepts/security/#pki
 
 <br>
 

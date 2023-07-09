@@ -9,7 +9,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 エントリーポイントのファイルや関数を開始点として、そのプログラムの全てのファイルの処理が実行される。
 
-> ↪️：https://en.wikipedia.org/wiki/Entry_point
+> - https://en.wikipedia.org/wiki/Entry_point
 
 <br>
 
@@ -133,7 +133,7 @@ parallelパッケージを使用する。
 
 Web Workerを使用する。
 
-> ↪️：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
+> - https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
 
 #### ▼ Goの場合
 
@@ -184,7 +184,7 @@ Goroutinesを使用する。
 
 #### ▼ JavaScriptの場合
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html
 
 #### ▼ Node.jsの場合
 

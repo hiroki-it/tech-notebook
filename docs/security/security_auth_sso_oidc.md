@@ -9,7 +9,7 @@ description: OIDC＠SSOの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -47,7 +47,7 @@ OIDCでは、OAuthとは異なり、アクセストークンではなく、IDト
 
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
-> ↪️：https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
+> - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
 
 <br>
 

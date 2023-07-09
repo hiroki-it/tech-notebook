@@ -9,7 +9,7 @@ description: ConfigMap系＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -63,7 +63,7 @@ spec:
           readOnly: true
 ```
 
-> ↪️：https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-datasources
+> - https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-datasources
 
 <br>
 
@@ -127,7 +127,7 @@ data:
           timeInterval: 30s
 ```
 
-> ↪️：https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
+> - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
 
 #### ▼ CloudWatchの場合
 
@@ -188,7 +188,7 @@ data:
     ...
 ```
 
-> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#paths
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#paths
 
 <br>
 
@@ -208,7 +208,7 @@ data:
     ...
 ```
 
-> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#server
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#server
 
 <br>
 
@@ -233,7 +233,7 @@ data:
     default_home_dashboard_path = /tmp/dashboards/home.json
 ```
 
-> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
 
 <br>
 
@@ -253,7 +253,7 @@ data:
     ...
 ```
 
-> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#database
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#database
 
 <br>
 
@@ -273,7 +273,7 @@ data:
     ...
 ```
 
-> ↪️：https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#remote_cache
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#remote_cache
 
 <br>
 
@@ -350,7 +350,7 @@ Grafanaの`provider.yaml`ファイルを管理する。
 
 ダッシュボードのフォルダを定義できる。
 
-> ↪️：https://github.com/ezienecker/grafana-sidecar-folder-sample/tree/master
+> - https://github.com/ezienecker/grafana-sidecar-folder-sample/tree/master
 
 <br>
 
@@ -509,7 +509,7 @@ data:
     ` }}
 ```
 
-> ↪️：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+> - https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
 #### ▼ kube-prometheus-stackチャートの場合
 
@@ -540,7 +540,7 @@ kube-prometheus-stackチャートの`values`ファイルでは、サイドカー
       labelValue: "1"
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+> - https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
 そのため、kube-prometheus-stackチャートを用いる場合は`grafana_dashboard`キーの値が`1`のConfigMapのみがダッシュボードの設定として読み込まれる。
 
@@ -561,7 +561,7 @@ data:
     ` }}
 ```
 
-> ↪️：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
+> - https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 
 補足として、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されている。
 
@@ -578,7 +578,7 @@ data:
 
 ### セクション一覧
 
-> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model
+> - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model
 
 <br>
 
@@ -684,7 +684,7 @@ data:
 
 一番最初にGUIでパネルを作成し、これのJSONを取得する方が実装しやすい。
 
-> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels
+> - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels
 
 #### ▼ expr
 
@@ -742,7 +742,7 @@ PromQLを定義する。
 
 #### ▼ templating
 
-> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#templating
+> - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#templating
 
 #### ▼ enable
 
@@ -1090,7 +1090,7 @@ data:
     ` }}
 ```
 
-> ↪️：https://grafana.com/grafana/dashboards/
+> - https://grafana.com/grafana/dashboards/
 
 <br>
 
@@ -1138,7 +1138,7 @@ data:
     ` }}
 ```
 
-> ↪️：https://stackoverflow.com/a/38941123
+> - https://stackoverflow.com/a/38941123
 
 ### HelmテンプレートによるConfigMap作成
 
@@ -1246,7 +1246,7 @@ default_home_dashboard_path = /tmp/dashboards/home.json
 }
 ```
 
-> ↪️：https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#the-home-dashboards
+> - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#the-home-dashboards
 
 <br>
 
@@ -1462,7 +1462,7 @@ data:
 | `Prometheus / Remote Write` | PrometheusのPod |      |
 | `Prometheus / Overview`     | PrometheusのPod |      |
 
-> ↪️：https://github.com/monitoring-mixins/website/tree/master/assets
+> - https://github.com/monitoring-mixins/website/tree/master/assets
 
 #### ▼ Istioダッシュボード
 

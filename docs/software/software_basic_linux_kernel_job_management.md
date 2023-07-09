@@ -9,7 +9,7 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -63,7 +63,7 @@ Unixでは`at`や`cron`に、またWindowsではタスクスケジューラー�
 
 ややこしいことに、タスクスケジューラーとも呼ぶ。
 
-> ↪️：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
+> - https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
 
 <br>
 

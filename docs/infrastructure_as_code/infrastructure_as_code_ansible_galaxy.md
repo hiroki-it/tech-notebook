@@ -9,7 +9,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 `role`ディレクトリ配下をモジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。
 
-> ↪️：https://knowledge.sakura.ad.jp/3118/
+> - https://knowledge.sakura.ad.jp/3118/
 
 <br>
 
@@ -39,7 +39,7 @@ repository/
 │   │
 ```
 
-> ↪️：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+> - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
 #### ▼ main.yml
 
@@ -72,7 +72,7 @@ repository/
 └── playbook.yml
 ```
 
-> ↪️：https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+> - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
 #### ▼ requirements.yml
 
@@ -105,6 +105,6 @@ Ansibleのコントロールノードで`ansible-galaxy`コマンドを実行す
 $ ansible-galaxy install <モジュール名>
 ```
 
-> ↪️：https://note.com/shift_tech/n/n087a9db743d1
+> - https://note.com/shift_tech/n/n087a9db743d1
 
 <br>

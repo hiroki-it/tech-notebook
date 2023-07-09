@@ -9,7 +9,7 @@ description: マーメイド＠開発手法の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ flowchart LR
 
 <br>
 
-> ↪️：https://mermaid.js.org/syntax/flowchart.html?id=flowcharts-basic-syntax
+> - https://mermaid.js.org/syntax/flowchart.html?id=flowcharts-basic-syntax
 
 ## Gitグラフ
 
@@ -68,7 +68,7 @@ gitGraph
      commit id: "bazさんがPlan"
 ```
 
-> ↪️：https://mermaid.js.org/syntax/gitgraph.html
+> - https://mermaid.js.org/syntax/gitgraph.html
 
 <br>
 
@@ -97,6 +97,6 @@ gantt
     テスト : 07-14, 07-31
 ```
 
-> ↪️：https://mermaid.js.org/syntax/gantt.html
+> - https://mermaid.js.org/syntax/gantt.html
 
 <br>

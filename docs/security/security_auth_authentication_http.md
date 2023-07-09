@@ -9,7 +9,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -97,7 +97,7 @@ WWW-Authenticate: Basic realm=""
 
 : 認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
 
-> ↪️：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
+> - https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 ```yaml
 POST https://example.com/foo-form/logout
@@ -159,7 +159,7 @@ Bearer認証にて、トークンとして使用する。
 
 そのため、トークン文字列が流出してしまわないよう、厳重に管理する必要がある。
 
-> ↪️：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
+> - https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
 <br>
 
@@ -264,7 +264,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ### 正常系/異常系レスポンス
 
-> ↪️：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
+> - https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
 
 成功の場合は、realm属性を空にしたレスポンスを返信する。
 

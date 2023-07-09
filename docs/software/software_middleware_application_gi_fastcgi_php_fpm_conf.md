@@ -9,7 +9,7 @@ description: 設定ファイル＠PHP-FPMの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -84,7 +84,7 @@ daemonize = yes
 ; See /etc/php-fpm.d/*.conf
 ```
 
-> ↪️：https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
+> - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
 <br>
 
@@ -204,7 +204,7 @@ PHP-FPMの`www`プロセスのプールを設定する。
 clear_env = no
 ```
 
-> ↪️：https://takapi86.hatenablog.com/entry/2019/07/29/225558
+> - https://takapi86.hatenablog.com/entry/2019/07/29/225558
 
 <br>
 
@@ -399,7 +399,7 @@ PHPの`ini`ファイルで設定されたbool値以外のオプションを上�
 
 `redis`レコード形式でセッションDB (例：PHP Redis、ElastiCache Redisなど) に保存するように設定もできる。
 
-> ↪️：https://zapanet.info/blog/item/3364
+> - https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -414,7 +414,7 @@ php_value[session.save_handler] = redis
 
 デフォルト値は`/var/lib/php/session`ディレクトリである。
 
-> ↪️：https://zapanet.info/blog/item/3364
+> - https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -436,7 +436,7 @@ php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 
 `static`の場合は、リクエスト数によらず一定数の子プロセスをメモリに割り当て、`dynamic`の場合はリクエスト数によって子プロセスを増減させる。
 
-> ↪️：https://life.iua.jp/?p=230
+> - https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -451,7 +451,7 @@ pm = dynamic
 
 子プロセスの最大数は、同時に処理できるリクエストの最大数に相当する。
 
-> ↪️：https://life.iua.jp/?p=230
+> - https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -464,7 +464,7 @@ pm.max_children = 50
 
 アイドル状態にしておく子プロセスの最大数を設定する。
 
-> ↪️：https://life.iua.jp/?p=230
+> - https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -477,7 +477,7 @@ pm.max_spare_servers = 35
 
 アイドル状態にしておく子プロセスの最小数を設定する。
 
-> ↪️：https://life.iua.jp/?p=230
+> - https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -490,7 +490,7 @@ pm.min_spare_servers = 5
 
 PHP-FPM起動時の子プロセス数を設定する。
 
-> ↪️：https://life.iua.jp/?p=230
+> - https://life.iua.jp/?p=230
 
 ```ini
 [www]

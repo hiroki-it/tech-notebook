@@ -9,7 +9,7 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 ![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_architecture.png)
 
-> ↪️：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
+> - https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
 
 <br>
 
@@ -67,7 +67,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 ![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
-> ↪️：https://blog.codecamp.jp/programming-docker-image-container
+> - https://blog.codecamp.jp/programming-docker-image-container
 
 <br>
 
@@ -81,7 +81,7 @@ dockerクライアントは、`docker`コマンドを使用してdockerデーモ
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png)
 
-> ↪️：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
+> - https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
 
 <br>
 
@@ -133,7 +133,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 }
 ```
 
-> ↪️：https://docs.docker.com/config/containers/logging/configure/#use-environment-variables-or-labels-with-logging-drivers
+> - https://docs.docker.com/config/containers/logging/configure/#use-environment-variables-or-labels-with-logging-drivers
 
 #### ▼ fluentd
 
@@ -174,7 +174,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 }
 ```
 
-> ↪️：https://docs.docker.com/config/containers/logging/awslogs/
+> - https://docs.docker.com/config/containers/logging/awslogs/
 
 #### ▼ gcplogs
 
@@ -188,7 +188,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 }
 ```
 
-> ↪️：https://docs.docker.com/config/containers/logging/gcplogs/
+> - https://docs.docker.com/config/containers/logging/gcplogs/
 
 <br>
 
@@ -229,7 +229,7 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 これにより、これらのファイルに対するログの出力は、`/dev/stdout`と`/dev/stderr`に転送される。
 
-> ↪️：https://docs.docker.com/config/containers/logging/
+> - https://docs.docker.com/config/containers/logging/
 
 #### ▼ php-fpmイメージ
 

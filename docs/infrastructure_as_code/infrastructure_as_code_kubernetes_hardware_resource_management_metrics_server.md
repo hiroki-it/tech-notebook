@@ -9,7 +9,7 @@ description: metrics-server＠ハードウェアリソース管理の知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：<https://hiroki-it.github.io/tech-notebook/>
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,8 +33,8 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 > ↪️：
 >
-> - <https://speakerdeck.com/bells17/metrics-server?slide=20>
-> - <https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base>
+> - https://speakerdeck.com/bells17/metrics-server?slide=20>
+> - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base>
 > - https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server
 
 <br>
@@ -49,8 +49,8 @@ ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド
 
 > ↪️：
 >
-> - <https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html>
-> - <https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58>
+> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html>
+> - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58>
 
 <br>
 
@@ -133,7 +133,7 @@ spec:
       name: tmp-dir
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml
+> - https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml
 
 <br>
 
@@ -159,7 +159,7 @@ spec:
   versionPriority: 100
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/apiservice.yaml
+> - https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/apiservice.yaml
 
 <br>
 
@@ -185,7 +185,7 @@ baz-node   352m         4%     9430Mi          33%
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
-> ↪️：<https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
+> - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 
 #### ▼ デバッグ
 
@@ -200,7 +200,7 @@ node-1    582m        7%         9792Mi         61%
 node-2    <unknown>   <unknown>  <unknown>      <unknown>
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes
+> - https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes
 
 <br>
 
@@ -242,7 +242,7 @@ NAME       CPU(cores)  CPU%       MEMORY(bytes)  MEMORY%
 foo-pod    <unknown>   <unknown>  <unknown>      <unknown>
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics
+> - https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics
 
 <br>
 
@@ -264,8 +264,8 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 > ↪️：
 >
-> - <https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/>
-> - <https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/>
+> - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
+> - https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/
 
 #### ▼ 最大Pod数の求め方
 
@@ -282,7 +282,7 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
 
-> ↪️：<https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14>
+> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14>
 
 #### ▼ デバッグ
 
@@ -299,7 +299,7 @@ bar        bar-deployment   Deployment/bar-deployment   <unknown>/80%   1       
 baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1         1         1          391d
 ```
 
-> ↪️：https://blog.framinal.life/entry/2020/04/14/190601
+> - https://blog.framinal.life/entry/2020/04/14/190601
 
 #### ▼ レプリカ数との衝突
 
@@ -324,8 +324,8 @@ Podの垂直スケーリングを実行する。
 
 > ↪️：
 >
-> - <https://ccvanishing.hateblo.jp/entry/2018/10/02/203205>
-> - <https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
+> - https://ccvanishing.hateblo.jp/entry/2018/10/02/203205>
+> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
 
 #### ▼ Podの再作成のない垂直スケーリング
 
@@ -340,8 +340,8 @@ Podの垂直スケーリングを実行する。
 
 > ↪️：
 >
-> - <https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12>
-> - <https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet>
-> - <https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode>
+> - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12>
+> - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet>
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode>
 
 <br>

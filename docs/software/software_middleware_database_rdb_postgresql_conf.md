@@ -9,7 +9,7 @@ description: 設定ファイル＠PostgreSQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -56,7 +56,7 @@ $ psql -U <ユーザー名> -h <DBホスト名> -p <ポート番号> -d <DB名>
 $ export PGPASSWORD=<パスワード>
 ```
 
-> ↪️：https://qiita.com/IysKG213/items/2af29ba1f6da87199de0
+> - https://qiita.com/IysKG213/items/2af29ba1f6da87199de0
 
 #### ▼ オートバキュームの手動実行
 
@@ -97,7 +97,7 @@ PostgreSQLは、オートバキュームによってDB上の残骸タプルを�
 
 今回のオートバキュームと次回のそれの間で実行できるトランザクションは`20`億回と決まっているため、ある程度の間隔でオートバキュームを実行する必要がある。
 
-> ↪️：https://www.postgresql.jp/document/8.0/html/sql-vacuum.html
+> - https://www.postgresql.jp/document/8.0/html/sql-vacuum.html
 
 #### ▼ タプルと残骸タプル
 
@@ -107,7 +107,7 @@ PostgreSQLでレコードをUPDATE/DELETEすると、操作前のレコードは
 
 これを削除するために、オートバキュームが必要である。
 
-> ↪️：https://stackoverflow.com/questions/19799282/whats-the-difference-between-a-tuple-and-a-row-in-postgres
+> - https://stackoverflow.com/questions/19799282/whats-the-difference-between-a-tuple-and-a-row-in-postgres
 
 <br>
 
@@ -121,7 +121,7 @@ PostgreSQLでレコードをUPDATE/DELETEすると、操作前のレコードは
 log_directory = /var/lib/pgsql
 ```
 
-> ↪️：https://zatoima.github.io/postgresql-about-monitoring-log.html
+> - https://zatoima.github.io/postgresql-about-monitoring-log.html
 
 #### ▼ ログローテーション
 
@@ -163,7 +163,7 @@ $ cat /var/lib/postgresql-Sun.log | grep -E "^2023-01-01 12:00" | grep "statemen
 log_line_prefix = '%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x '
 ```
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html
 
 <br>
 
@@ -175,7 +175,7 @@ log_line_prefix = '%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x '
 log_min_duration_statement = 100ms
 ```
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html
 
 <br>
 

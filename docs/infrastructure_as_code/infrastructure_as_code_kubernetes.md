@@ -9,7 +9,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_architecture.png)
 
-> ↪️：https://kubernetes.io/docs/concepts/overview/components/
+> - https://kubernetes.io/docs/concepts/overview/components/
 
 <br>
 
@@ -44,7 +44,7 @@ data:
     -----END CERTIFICATE-----
 ```
 
-> ↪️：https://qiita.com/uesyn/items/f46b066772781317653d#introducing-rootcaconfigmap
+> - https://qiita.com/uesyn/items/f46b066772781317653d#introducing-rootcaconfigmap
 
 <br>
 
@@ -109,12 +109,12 @@ Configによっては、証明書のパスが設定されている場合があ�
 $ openssl x509 -noout -dates -in <証明書へのパス>
 ```
 
-> ↪️：https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
+> - https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
 
 #### ▼ 更新方法
 
 `kubelet`プロセスの実行時に、`--rotate-certificates`オプションを有効化すると、証明書の更新処理を自動化できる。
 
-> ↪️：https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation
+> - https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation
 
 <br>

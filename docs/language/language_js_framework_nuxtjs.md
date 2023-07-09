@@ -9,7 +9,7 @@ description: Nuxt.jsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Nuxt.jsの知見を記録しています。
 
 アプリケーションをSSRとして稼働させる。
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 #### ▼ `dev`
 
@@ -29,7 +29,7 @@ description: Nuxt.jsの知見を記録しています。
 
 Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 ```bash
 # リファレンスでは nuxt devとなっているが、yarn devで問題ない。
@@ -38,7 +38,7 @@ $ yarn dev
 
 補足として、`yarn dev`コマンドを実行した場合、環境変数の`NODE_ENV`が`development`になる。
 
-> ↪️：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 #### ▼ `build`
 
@@ -57,7 +57,7 @@ minifyにより、不要な改行やインデントが削除され、パッケ�
 $ yarn build
 ```
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 #### ▼ `start`
 
@@ -70,11 +70,11 @@ SSRモードのために使用する。
 $ yarn start
 ```
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+> - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 補足として、`yarn start`コマンドを実行した場合、環境変数の`NODE_ENV`が`production`になる。
 
-> ↪️：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 <br>
 
@@ -84,7 +84,7 @@ $ yarn start
 
 アプリケーションをSSGとして稼働させる。
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
+> - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
 
 #### ▼ `dev`
 
@@ -101,11 +101,11 @@ Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイ
 $ yarn dev
 ```
 
-> ↪️：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
+> - https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 補足として、`yarn dev`コマンドを実行した場合、環境変数の`NODE_ENV`が`development`になる。
 
-> ↪️：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 #### ▼ `generate`
 
@@ -124,7 +124,7 @@ SSGモードのために使用する。
 $ yarn generate
 ```
 
-> ↪️：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
+> - https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 #### ▼ `start`
 
@@ -137,7 +137,7 @@ $ yarn start
 
 補足として、`yarn start`コマンドを実行した場合、環境変数の`NODE_ENV`が`production`になる。
 
-> ↪️：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 <br>
 
@@ -147,7 +147,7 @@ SSRモードとSSGモードで、`build`コマンド時に使用されるWebpack
 
 `
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
+> - https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
 <br>
 
@@ -179,7 +179,7 @@ const nuxtConfig: Configuration = {
 };
 ```
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
+> - https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
 
 <br>
 
@@ -227,7 +227,7 @@ const nuxtConfig: Configuration = {
 };
 ```
 
-> ↪️：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
+> - https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
 
 <br>
 
@@ -251,7 +251,7 @@ const nuxtConfig: Configuration = {
 };
 ```
 
-> ↪️：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
+> - https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
 
 #### ▼ privateRuntimeConfig
 
@@ -356,7 +356,7 @@ const nuxtConfig: Configuration = {
 };
 ```
 
-> ↪️：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
+> - https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 
 #### ▼ serverMiddleware
 
@@ -375,7 +375,7 @@ const nuxtConfig: Configuration = {
 };
 ```
 
-> ↪️：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
+> - https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 
 <br>
 
@@ -391,7 +391,7 @@ const nuxtConfig: Configuration = {
 };
 ```
 
-> ↪️：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
+> - https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 
 <br>
 
@@ -401,13 +401,13 @@ const nuxtConfig: Configuration = {
 
 SSGモードの`generate`コマンドの実行時に、アーティファクトが配置される。
 
-> ↪️：https://nuxtjs.org/ja/docs/directory-structure/dist
+> - https://nuxtjs.org/ja/docs/directory-structure/dist
 
 <br>
 
 ### `module`ディレクトリ
 
-> ↪️：https://nuxtjs.org/docs/directory-structure/modules
+> - https://nuxtjs.org/docs/directory-structure/modules
 
 <br>
 

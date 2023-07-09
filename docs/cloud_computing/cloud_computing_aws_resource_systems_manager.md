@@ -9,7 +9,7 @@ description: Systems Manager (旧SSM) ＠AWSリソースの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ EC2、RDS
 
 ![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sm-change-calender_scheduling.png)
 
-> ↪️：https://www.skyarch.net/blog/?p=22277
+> - https://www.skyarch.net/blog/?p=22277
 
 <br>
 
@@ -79,8 +79,8 @@ AWSリソースを変更するためには『ランブック (ドキュメント
 
 | タイプ           | 説明                                                                                                                                                                                                  | 補足                                                                                                                                                                                                                                                                  |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている (たぶん) 。<br>↪️：https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                                            |
-| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>↪️：https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types   | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
+| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている (たぶん) 。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                                            |
+| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types   | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
 | Sessionタイプ    |                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                       |
 
 <br>
@@ -95,7 +95,7 @@ AWSリソースを変更するためには『ランブック (ドキュメント
 
 ただし、指定した認可スコープを持つユーザーはテンプレートの承認をスキップするように設定できる。
 
-> ↪️：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
 
 ### 変更リクエスト
 
@@ -105,7 +105,7 @@ AWSリソースを変更するためには『ランブック (ドキュメント
 
 承認が必要になる。
 
-> ↪️：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
 
 <br>
 
@@ -121,7 +121,7 @@ Kubernetesのシークレットの概念が取り入れられている。
 
 パラメーターのタイプは全て『SecureString』とした方が良い。
 
-> ↪️：https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
+> - https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
 
 <br>
 

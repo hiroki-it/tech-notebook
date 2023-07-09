@@ -9,7 +9,7 @@ description: Kubeconform＠文法の誤りテストの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Kubeconform＠文法の誤りテストの知見を記録してい�
 $ brew install kubeconform
 ```
 
-> ↪️：https://github.com/yannh/kubeconform#installation
+> - https://github.com/yannh/kubeconform#installation
 
 <br>
 

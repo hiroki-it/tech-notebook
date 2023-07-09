@@ -9,7 +9,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 サイドカープロキシメッシュのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
 
-> ↪️：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
+> - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
 <br>
 
@@ -37,7 +37,7 @@ description: データプレーン＠Istioの知見を記録しています。
 
 コンテナの起動時に、`istio-iptables`コマンドを実行することにより、istio-iptablesをPodに適用する。
 
-> ↪️：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
 ![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
 
@@ -51,7 +51,7 @@ istio-iptablesは、`istio-proxy`コンテナを持つPod内のネットワー�
 
 サービスディスカバリーとしてPodのIPアドレスを持つのは`istio-proxy`コンテナであり、istio-iptablesではないことに注意する。
 
-> ↪️：https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
+> - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
 
 ```bash
 # istio-initコンテナの起動時に実行する。
@@ -177,7 +177,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png)
 
-> ↪️：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
+> - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
 <br>
 
@@ -250,7 +250,7 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機するために、これが完了したかどうかを検証する。
 
-> ↪️：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
+> - https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 
 <br>
 
@@ -393,7 +393,7 @@ func (a *ADSC) handleRecv() {
 }
 ```
 
-> ↪️：https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
+> - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
 
 #### ▼ ADSクライアントとしての`istioctl`コマンドの実装
 
@@ -419,7 +419,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 }
 ```
 
-> ↪️：https://github.com/istio/istio/blob/master/istioctl/pkg/xds/client.go#L44-L73
+> - https://github.com/istio/istio/blob/master/istioctl/pkg/xds/client.go#L44-L73
 
 <br>
 
@@ -462,7 +462,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 アプリコンテナからのアウトバウンド通信は、一度、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
 
-> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>
 
@@ -472,7 +472,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 用途がわからず記入中...
 
-> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#15004
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#15004
 
 <br>
 
@@ -482,7 +482,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 アプリコンテナへのインバウンド通信は、一度、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
 
-> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>
 
@@ -490,7 +490,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 `istio-proxy`コンテナの`15020`番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
 
-> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#15020
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#15020
 
 <br>
 
@@ -511,7 +511,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 記入中...
 
-> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>
 
@@ -540,6 +540,6 @@ istio_request_messages_total{...}
 ...
 ```
 
-> ↪️：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 <br>

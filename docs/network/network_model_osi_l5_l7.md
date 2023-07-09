@@ -9,7 +9,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 アプリケーションが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を処理するレイヤーである。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
+> - https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
 
 <br>
 
@@ -41,7 +41,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 $ sudo lsof -i -P | grep LISTEN
 ```
 
-> ↪️：https://netdekagaku.com/netstat-command/
+> - https://netdekagaku.com/netstat-command/
 
 <br>
 
@@ -65,7 +65,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 ![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png)
 
-> ↪️：https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
+> - https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
 #### ▼ 送信側のメールサーバーのモック
 
@@ -77,7 +77,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 Mailtrapがおすすめである。
 
-> ↪️：https://mailtrap.io/
+> - https://mailtrap.io/
 
 <br>
 

@@ -9,7 +9,7 @@ description: Prometheus＠CNCFプロジェクト
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -82,7 +82,7 @@ $ curl http://localhost:3000/metrics
 | アラートルール       | 収集されたデータポイントがアラート条件に合致する場合、アラートを作成し、Alertmanagerにこれを送信する。 |
 | レコーディングルール | 収集されたデータポイントをローカルストレージに保管する。                                               |
 
-> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 #### ▼ 設定ファイル
 
@@ -142,7 +142,7 @@ Prometheusは、`data`ディレクトリ配下をTSDBとして、収集した全
 
 これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
-> ↪️：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
+> - https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
 ```yaml
 data/
@@ -178,11 +178,11 @@ TSDBのディレクトリはNodeにマウントされるため、Nodeのスト�
 
 ストレージサイズが大きすぎると、Prometheusのコンテナが起動できなくなることがあり、その場合はNode側でメトリクスのブロックを削除する必要がある。
 
-> ↪️：https://github.com/prometheus/prometheus/issues/8298#issuecomment-747603392
+> - https://github.com/prometheus/prometheus/issues/8298#issuecomment-747603392
 
 対処方法として、データポイント数を減らし、データポイント全体のデータサイズを小さくすると良い。
 
-> ↪️：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> - https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 #### ▼ 独自TSDB
 
@@ -232,7 +232,7 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png)
 
-> ↪️：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+> - https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 
 <br>
 
@@ -270,7 +270,7 @@ $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-
 
 Silenceされている期間、無効化されたアラートはAlertmanagerのUI上から削除され、通知されなくなる。
 
-> ↪️：https://amateur-engineer-blog.com/alertmanager-silence/
+> - https://amateur-engineer-blog.com/alertmanager-silence/
 
 <br>
 
@@ -280,7 +280,7 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして動作する。
 
-> ↪️：https://prometheus.io/docs/practices/pushing/
+> - https://prometheus.io/docs/practices/pushing/
 
 <br>
 
@@ -290,7 +290,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 Pull型通信の宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
-> ↪️：https://christina04.hatenablog.com/entry/prometheus-service-discovery
+> - https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
 <br>
 
@@ -300,6 +300,6 @@ Prometheusのコンポーネントを部分的にマネージドにしたサー�
 
 執筆時点 (2023/05/16時点) では、リモートストレージ、Alertmanager、をマネージドにしてくれる。
 
-> ↪️：https://www.infoq.com/jp/news/2021/01/aws-grafana-prometheus/
+> - https://www.infoq.com/jp/news/2021/01/aws-grafana-prometheus/
 
 <br>

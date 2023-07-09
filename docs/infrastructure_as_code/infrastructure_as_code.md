@@ -9,7 +9,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,11 +19,11 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 構成ファイルの実装に基づくプロビジョニングによって、インフラの構成を管理する手法のこと。
 
-> ↪️：https://en.wikipedia.org/wiki/Infrastructure_as_code
+> - https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 補足として、ここでいう『インフラ』は、ハードウェアと一部のソフトウェア (OS、ミドルウェア) を合わせたものである。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software.html
+> - https://hiroki-it.github.io/tech-notebook/software/software.html
 
 <br>
 
@@ -234,7 +234,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 複数のコンテナの稼働 (プロビジョニング、デプロイメインと、スケーリング、コンテナ間ネットワーク、など) を一括で管理する。
 
-> ↪️：https://www.vmware.com/topics/glossary/content/container-orchestration.html
+> - https://www.vmware.com/topics/glossary/content/container-orchestration.html
 
 <br>
 
@@ -258,7 +258,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 - Docker Swarm
 - Kubernetes
 
-> ↪️：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
+> - https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
 <br>
 
@@ -289,7 +289,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 サイドカーパターンではないが、このプロキシコンテナのことをサイドカーコンテナともいう。
 
-> ↪️：https://logmi.jp/tech/articles/321841
+> - https://logmi.jp/tech/articles/321841
 
 <br>
 

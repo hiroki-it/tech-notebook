@@ -9,7 +9,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,6 +29,6 @@ TCP/IPモデルで使用されるプロトコルのうち、最も代表的な�
 
 基本的に、OSI階層モデルに寄せて整理しているため、以下のノートを参照してください。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html
+> - https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html
 
 <br>

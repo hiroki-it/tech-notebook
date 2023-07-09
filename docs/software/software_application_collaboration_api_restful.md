@@ -9,7 +9,7 @@ description: RESTful-API＠アプリケーション連携の知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -90,7 +90,7 @@ RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の`4`個を使
 | PUT          | `https://example.com/users/{id}` | データの更新 (置換)                                                              | update          |
 | DELETE       | `https://example.com/users/{id}` | データの削除                                                                     | delete、destroy |
 
-> ↪️：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
+> - https://noumenon-th.net/programming/2020/01/30/laravel-crud/
 
 POST送信とPUT送信の重要な違いについてまとめる。
 
@@ -400,7 +400,7 @@ APIキーのヘッダー名の頭文字に『`X`』を付けるのは、独自�
 
 ただし、現在は非推奨である。
 
-> ↪️：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
+> - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```yaml
 POST https://example.com
@@ -465,7 +465,7 @@ JSONの場合、階層構造にすると、データサイズが増えてしま�
 
 ただし、見やすさによっては階層構造も許容される。
 
-> ↪️：https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864
+> - https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864
 
 **＊例＊**
 
@@ -517,6 +517,6 @@ GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 }
 ```
 
-> ↪️：https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
+> - https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
 
 <br>

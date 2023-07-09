@@ -9,7 +9,7 @@ description: 機械語と進数の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -51,7 +51,7 @@ description: 機械語と進数の知見を記録しています。
 
 1000 Byte = 1k Byte
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p106](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p106.png)
 
@@ -375,7 +375,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 無限小数
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p067-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p067-1.png)
 
@@ -391,7 +391,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 これは、経験値が16bit (2 Byte) で表されており、桁溢れが起きることを防ぐために`65535`以上は計算しないようになっていた。
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p068](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p068.png)
 
@@ -399,7 +399,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 情報落ち
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p069](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p069.png)
 
@@ -409,7 +409,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 円周率は、途中で計算を打ち切る。
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p070-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p070-1.png)
 
@@ -417,7 +417,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 桁落ち
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p070-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p070-2.png)
 
@@ -425,7 +425,7 @@ CPUは、数値に対し、特定の位置に小数点を打つ。
 
 ### 丸め誤差
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p071](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p071.png)
 
@@ -694,7 +694,7 @@ Reset側に『1』を入力すると、両方の出力結果は変化する。
 0000 0000 0000 1000
 ```
 
-> ↪️：https://ameblo.jp/kou05/entry-10883110086.html
+> - https://ameblo.jp/kou05/entry-10883110086.html
 
 **＊例題＊**
 

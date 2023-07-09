@@ -9,7 +9,7 @@ description: SQLパッケージ＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,13 +21,13 @@ SQLの種類が異なっていても、共通のロジックでクエリを実�
 
 ![php_sql_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php_sql_package.png)
 
-> ↪️：https://thinkit.co.jp/free/marugoto/1/4/1/
+> - https://thinkit.co.jp/free/marugoto/1/4/1/
 
 ## 02. PDO
 
 ### PDOとは
 
-> ↪️：https://www.javadrive.jp/php/pdo/
+> - https://www.javadrive.jp/php/pdo/
 
 <br>
 

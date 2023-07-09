@@ -9,7 +9,7 @@ description: IPアドレス＠L3の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ IPアドレスの例示では、`x`を使用しないようにする。
 
 ![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address.png)
 
-> ↪️：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
+> - https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
 
 <br>
 
@@ -55,7 +55,7 @@ LAN内で使用される。
 | `172.16.0.0/12`           | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
 | `192.168.0.0/16`          | `192.168.0.0`～`192.168.255.255` | `65536`    |
 
-> ↪️：https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
+> - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
 
 <br>
 
@@ -77,7 +77,7 @@ IPアドレスのオクテットは、ネットワーク部とホスト部に分
 
 ![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_portion.png)
 
-> ↪️：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
+> - https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
 
 #### ▼ クラスによるホスト部とネットワーク部の定義
 
@@ -139,7 +139,7 @@ IPアドレスをクラスとして分類し、各クラスでIPアドレスの�
 
 ネットワーク内での位置情報であるIPアドレスに紐づき、ネットワーク上のIPアドレスの場所を人間にわかる識別子にしたもの。
 
-> ↪️：https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
+> - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 
 <br>
 
@@ -159,7 +159,7 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 ![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_namespace.png)
 
-> ↪️：https://ascii.jp/elem/000/000/419/419685/2/
+> - https://ascii.jp/elem/000/000/419/419685/2/
 
 #### ▼ DNSゾーン
 
@@ -167,7 +167,7 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 一般的なパブリックネットワークで使用するDNSゾーンタイプを『パブリックゾーン』、一方でプライベートネットワークの場合を『プライベートゾーン』という。
 
-> ↪️：https://milestone-of-se.nesuke.com/l7protocol/dns/zone-transfer/
+> - https://milestone-of-se.nesuke.com/l7protocol/dns/zone-transfer/
 
 #### ▼ ホスト名
 
@@ -197,7 +197,7 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 このドメインとしてのサブドメイン (例：サブドメインのRoute53ホストゾーン) にサブサブドメインのDNSレコード (例：Route53レコード) を登録すると、サブサブドメインの所有者であることをSSL証明書 (例：AWS ACM) で証明できるようになる。
 
-> ↪️：https://stackoverflow.com/a/57680951
+> - https://stackoverflow.com/a/57680951
 
 <br>
 
@@ -246,7 +246,7 @@ webサーバーのIPアドレスがDNSサーバーに登録されていない時
 <IPアドレス> <ドメイン名>
 ```
 
-> ↪️：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
+> - https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
 
 #### ▼ `/etc/resolv.conf`ファイル
 
@@ -270,7 +270,7 @@ search      bar   baz # domain値で問い合わせに失敗した場合に使�
 $ nslookup example # 実際には、example.fooとなる
 ```
 
-> ↪️：https://linuc.org/study/knowledge/507/
+> - https://linuc.org/study/knowledge/507/
 
 #### ▼ ドメイン
 

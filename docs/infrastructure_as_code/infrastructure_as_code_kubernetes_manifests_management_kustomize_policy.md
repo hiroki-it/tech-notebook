@@ -9,7 +9,7 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -37,6 +37,6 @@ repository/
 └── stg/
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
+> - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 
 <br>

@@ -9,7 +9,7 @@ description: IAM＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ AWSリソースを作成した時に自動的に作成されるロール。
 
 サービスリンクロールの一覧については、以下のリンクを参考にせよ。
 
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
 
 <br>
 
@@ -337,7 +337,7 @@ ARNでAWSリソースの識別子を設定する。
 }
 ```
 
-> ↪️：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+> - https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
 #### ▼ Condition
 
@@ -383,7 +383,7 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
 }
 ```
 
-> ↪️：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
 
 <br>
 

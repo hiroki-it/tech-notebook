@@ -9,7 +9,7 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 ### Carbonとは
 
-> ↪️：https://github.com/briannesbitt/Carbon
+> - https://github.com/briannesbitt/Carbon
 
 <br>
 
@@ -144,7 +144,7 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 他の同様パッケージとして、Linqがある。
 
-> ↪️：https://github.com/TimeToogo/Pinq/
+> - https://github.com/TimeToogo/Pinq/
 
 <br>
 
@@ -189,7 +189,7 @@ class Foo
 
 しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ (例：外部のAPIなど) に対して、リクエストの送受信できる。
 
-> ↪️：https://github.com/guzzle/guzzle
+> - https://github.com/guzzle/guzzle
 
 <br>
 
@@ -218,7 +218,7 @@ $response = $client->request(
 );
 ```
 
-> ↪️：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
+> - https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
 #### ▼ POST送信
 
@@ -250,7 +250,7 @@ $response = $client->request(
 );
 ```
 
-> ↪️：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
+> - https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
 
 <br>
 
@@ -298,7 +298,7 @@ $body = json_decode($response->getBody(), true);
 
 ローカルまたは指定したURLの`.html`ファイルから、PDFや画像のファイルを作成するパッケージ。
 
-> ↪️：https://github.com/KnpLabs/snappy
+> - https://github.com/KnpLabs/snappy
 
 <br>
 
@@ -328,7 +328,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 フロントエンドからリクエストされるデータに関しては、JavaScriptとPHPの両方によるバリデーションが必要である。
 
-> ↪️：https://github.com/Respect/Validation
+> - https://github.com/Respect/Validation
 
 ```php
 <?php

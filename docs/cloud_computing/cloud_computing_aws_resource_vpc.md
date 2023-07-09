@@ -9,7 +9,7 @@ description: VPC＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: VPC＠AWSリソースの知見を記録しています。
 
 VPCのパケット通信の仕組みについては、以下のリンクを参考にせよ。
 
-> ↪️：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
 ![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCが提供できるネットワークの範囲.png)
 
@@ -59,8 +59,8 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 | 紐付け名      | 補足                                                                                                          |
 | ------------- | ------------------------------------------------------------------------------------------------------------- |
-| EC2との紐付け | 非推奨の方法である。<br>↪️：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview   |
-| ENIとの紐付け | 推奨される方法である。<br>↪️：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| EC2との紐付け | 非推奨の方法である。<br>- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview   |
+| ENIとの紐付け | 推奨される方法である。<br>- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 
 <br>
 
@@ -74,7 +74,7 @@ ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけ
 
 物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
+> - https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
 
 <br>
 
@@ -86,13 +86,13 @@ ENIが必要なAWSリソースには、デフォルトでプライマリーENI�
 
 これを解除することはできない。
 
-> ↪️：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+> - https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
 
 #### ▼ セカンダリーENI (`eth1`)
 
 プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。
 
-> ↪️：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/scenarios-enis.html
+> - https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/scenarios-enis.html
 
 <br>
 
@@ -122,7 +122,7 @@ ENIに紐付けられたIPアドレスを、ALBに割り当てる。
 
 ENIに紐付けられたIPアドレスを、EC2に割り当てる。
 
-↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
 
 #### ▼ Fargate環境のEC2
 
@@ -130,7 +130,7 @@ ENIに紐付けられたIPアドレスを、EC2に割り当てる。
 
 Fargate環境のホストがEC2とは明言されていない。
 
-↪️：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+- https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
 #### ▼ Elastic IP
 
@@ -138,7 +138,7 @@ ENIにElastic IPアドレスが紐付けられる。
 
 このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。
 
-↪️：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses
 
 #### ▼ GlobalAccelerator
 
@@ -242,7 +242,7 @@ LAN内の内部ネットワークに相当する。
 
 注意点として、Network ACLよりも後に評価される。
 
-> ↪️：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
+> - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
 
 | Destination (宛先のIPの範囲) |               Target                |
 | :--------------------------: | :---------------------------------: |
@@ -298,7 +298,7 @@ NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金
 
 もし、このプライベートIPアドレスにプライベートDNSを紐付ける場合は、VPCの`enableDnsHostnames`オプションと`enableDnsSupport`オプションを有効化する必要がある。
 
-> ↪️：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
+> - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 
 **＊リソース例＊**
 
@@ -496,12 +496,12 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 リソースのIPアドレスが動的に変化する場合、有効な方法である。
 
-> ↪️：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
+> - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
 
 #### ▼ 自己参照
 
 許可する送信元IPアドレスに、自分自身のセキュリティグループIDを設定した場合、同じセキュリティグループが紐付けられている同士で通信できるようになる。
 
-> ↪️：https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
+> - https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
 
 <br>

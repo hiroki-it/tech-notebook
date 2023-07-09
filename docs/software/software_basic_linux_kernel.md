@@ -9,7 +9,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 広義のOSは、ユーティリティや言語プロセッサーも含む基本ソフトウェア全体である。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB
+> - https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB
 
 <br>
 
@@ -33,7 +33,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 ![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_architecture.png)
 
-> ↪️：https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
+> - https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
 
 #### ▼ マイクロカーネルの場合
 
@@ -58,7 +58,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 システムコールはパラメーターに応じてカーネルを操作し、上位のソフトウェアのプロセスにカーネルの処理結果を返却する。
 
-> ↪️：https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
+> - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
 
 ![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_system-call.png)
 
@@ -68,40 +68,40 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 #### ▼ プロセス管理
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html
 
 #### ▼ メモリ管理
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_memory_management.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_memory_management.html
 
 #### ▼ ストレージ管理
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_storage_management.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_storage_management.html
 
 #### ▼ I/O (入出力) 管理
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_io_management.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_io_management.html
 
 #### ▼ ジョブ管理
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html
 
 #### ▼ 通信管理
 
 デバイスドライバーとミドルウェア間で実行されるデータ通信処理を管理する。
 
-> ↪️：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> - http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 #### ▼ 運用管理
 
 ミドルウェアやアプリケーションの運用処理 (メトリクス収集、障害対応、記憶情報の保護) を管理する。
 
-> ↪️：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> - http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 #### ▼ 障害管理
 
 ソフトウェアに障害が発生した時の障害修復を管理する。
 
-> ↪️：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+> - http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 <br>

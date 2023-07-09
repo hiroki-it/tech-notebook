@@ -9,7 +9,7 @@ description: 安全性＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -87,7 +87,7 @@ ALBからEC2にインバウンド通信をルーティングする場合、特�
 | ------ | ---------- | ------ | --------------------------------- | ----------- |
 | HTTPS  | TCP        | `443`  | 宛先のEC2のセキュリティグループID | Full access |
 
-> ↪️：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
+> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
 
 <br>
 

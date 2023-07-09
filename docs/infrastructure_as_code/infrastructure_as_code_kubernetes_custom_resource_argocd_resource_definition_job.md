@@ -9,7 +9,7 @@ description: Job系＠リソース定義の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ metadata:
   generateName: foo-hook
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
 
 <br>
 
@@ -89,7 +89,7 @@ spec:
       restartPolicy: Never
 ```
 
-> ↪️：https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
+> - https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
 
 #### ▼ argocd.argoproj.io/sync-wave
 

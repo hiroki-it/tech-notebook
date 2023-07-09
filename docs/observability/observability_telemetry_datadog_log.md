@@ -9,7 +9,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 : ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 
-> ↪️：https://developers.cyberagent.co.jp/blog/archives/12565/
+> - https://developers.cyberagent.co.jp/blog/archives/12565/
 
 <br>
 
@@ -49,7 +49,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 : ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 
-> ↪️：https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89
+> - https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89
 
 <br>
 
@@ -61,7 +61,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 アプリケーションからログを収集し、Datadogに転送する。
 
-> ↪️：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
@@ -71,7 +71,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 #### ▼ `/etc/datadog-agent/datadog.yaml`ファイル
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -98,7 +98,7 @@ FluentBitを稼働させたコンテナのこと。
 
 Datadogの代わりにログを収集する。
 
-> ↪️：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
+> - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
 
 <br>
 
@@ -138,17 +138,17 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 ブラウザ上のJavaScriptで実行され、`console.error`メソッドの実行結果、キャッチされていない例外、ネットワークエラー、を含む構造化ログをDatadogに送信する。
 
-> ↪️：https://docs.datadoghq.com/logs/log_collection/javascript
+> - https://docs.datadoghq.com/logs/log_collection/javascript
 
 #### ▼ パラメーター
 
-> ↪️：https://docs.datadoghq.com/logs/log_collection/javascript/#initialization-parameters
+> - https://docs.datadoghq.com/logs/log_collection/javascript/#initialization-parameters
 
 #### ▼ 送信される構造化ログ
 
 `status`キー
 
-> ↪️：https://docs.datadoghq.com/logs/log_collection/javascript/#results
+> - https://docs.datadoghq.com/logs/log_collection/javascript/#results
 
 ```yaml
 {
@@ -288,19 +288,19 @@ export default browserLogsForSsgPlugin;
 | `trace_id` | ログを分散トレースやスパンと紐付けるIDを示す。 |                                                                                                                                                                                                                                                                                                                                       |                                                                                       |
 | `message`  | ログメッセージを示す。                         | 受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの`message`属性に割り当てられる。一方で、構造化ログであった場合は`message`属性は使用されない。                                                                                                                                                                         |                                                                                       |
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/
+> - https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/
 
 #### ▼ 標準属性
 
 デフォルトで用意された属性。
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#standard-attributes
+> - https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#standard-attributes
 
 #### ▼ スタックトレース属性
 
 スタックトレースログを構成する要素に付与される属性のこと。
 
-> ↪️：https://docs.datadoghq.com/logs/log_collection/?tab=host#attributes-for-stack-traces
+> - https://docs.datadoghq.com/logs/log_collection/?tab=host#attributes-for-stack-traces
 
 | 属性名               | 説明                                             |
 | -------------------- | ------------------------------------------------ |
@@ -314,7 +314,7 @@ export default browserLogsForSsgPlugin;
 
 ### タグ
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_telemetry_association.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_telemetry_association.html
 
 ## 06. 収集されたログの送信
 
@@ -340,7 +340,7 @@ logs:
     sourcecategory: sourcecode
 ```
 
-> ↪️：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
+> - https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
 
 <br>
 
@@ -488,7 +488,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 ![datadog_status-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_status-facet.png)
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
+> - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
 
 #### ▼ サービスリマッパー
 
@@ -496,7 +496,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 ![datadog_service-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_service-facet.png)
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper
+> - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper
 
 <br>
 
@@ -548,7 +548,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 ```bash
 INFO @http.status_code:[200 TO 299]
@@ -589,9 +589,9 @@ CRITICAL @http.status_code:[500 TO 599]
 
 | 名前             | 説明                                                                                                       | 補足                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| マッチャー名     | パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を行う。 | ↪️：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter |
+| マッチャー名     | パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を行う。 | - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter |
 | エクストラクト名 | 処理結果の出力先の属性を設定する。                                                                         | 出力先の属性が存在しない場合、これを新しく作成する。存在する場合は、既存の属性値を上書きする。 |
-| フィルター名     | マッチャーの追加処理を行うフィルター関数を設定する。                                                       | ↪️：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter  |
+| フィルター名     | マッチャーの追加処理を行うフィルター関数を設定する。                                                       | - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter  |
 
 #### ▼ 例１
 
@@ -630,7 +630,7 @@ Laravelから、以下のような非構造化ログを受信する例を考え�
 
 `date`マッチャーのタイムスタンプ形式の指定は以下を参考にせよ。
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-dates
+> - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-dates
 
 ```
 FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
@@ -722,7 +722,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 
 構造化ログのURL値からパスパラメーターやクエリパラメーターを検出し、詳細な属性として新しく付与する。
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#url-parser
+> - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#url-parser
 
 #### ▼ 例１
 
@@ -949,7 +949,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 また、配列状のオブジェクトのキー名にアクセスするようにルールを定義した場合、各オブジェクトの同キーの値をカンマ区切りで出力できる。
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#string-builder-processor
+> - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#string-builder-processor
 
 #### ▼ 例１
 
@@ -1082,7 +1082,7 @@ log-pipeline
 
 ログの種類が1つしかない場合は任意であるが、ログの種類が複数あり、それぞれを解析するルールも複数ある場合は必ずコメントする。
 
-> ↪️：https://docs.datadoghq.com/logs/guide/log-parsing-best-practice/
+> - https://docs.datadoghq.com/logs/guide/log-parsing-best-practice/
 
 ```bash
 # [2022-01-20 19:02:48] production.INFO: ...
@@ -1099,7 +1099,7 @@ autoFilledRule3 ...
 
 ヘルパールールを使用すると、正規表現ルールを共通化し、複数のルールで使いまわせる。
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#using-helper-rules-to-factorize-multiple-parsing-rules
+> - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#using-helper-rules-to-factorize-multiple-parsing-rules
 
 <br>
 
@@ -1115,7 +1115,7 @@ autoFilledRule3 ...
 
 一方で、構造化ログであった場合は`message`属性は使用されない。
 
-> ↪️：https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#preprocessing
+> - https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#preprocessing
 
 <br>
 
@@ -1129,7 +1129,7 @@ autoFilledRule3 ...
 
 ログパイプライン処理後のログをリアルタイムで確認できる。
 
-> ↪️：https://docs.datadoghq.com/logs/explorer/live_tail/
+> - https://docs.datadoghq.com/logs/explorer/live_tail/
 
 #### ▼ ログのメトリクス
 
@@ -1137,7 +1137,7 @@ autoFilledRule3 ...
 
 メトリクスを作成しておくと、ログのレポートとして使用できる。
 
-> ↪️：https://www.amazon.co.jp/dp/1800568738
+> - https://www.amazon.co.jp/dp/1800568738
 
 #### ▼ インデックス
 
@@ -1164,7 +1164,7 @@ autoFilledRule3 ...
 
 構造化ログの属性名と値を基に、ログを絞り込める。
 
-> ↪️：https://docs.datadoghq.com/logs/explorer/search_syntax/
+> - https://docs.datadoghq.com/logs/explorer/search_syntax/
 
 #### ▼ オートコンプリート
 
@@ -1208,7 +1208,7 @@ autoFilledRule3 ...
 
 属性/タグの値を基に、ログをグルーピングしたもの。
 
-> ↪️：https://docs.datadoghq.com/logs/explorer/facets/#facet-panel
+> - https://docs.datadoghq.com/logs/explorer/facets/#facet-panel
 
 #### ▼ 属性のファセット化
 

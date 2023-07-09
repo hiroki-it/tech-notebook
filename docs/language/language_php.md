@@ -9,7 +9,7 @@ description: PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -32,7 +32,7 @@ $ apt-get update
 $ apt -y install php=1.0.0
 ```
 
-> ↪️：https://loop-never-ends.com/ubuntu-php-install/
+> - https://loop-never-ends.com/ubuntu-php-install/
 
 <br>
 
@@ -109,7 +109,7 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 ```
 
-> ↪️：https://www.php.net/manual/ja/configuration.file.php
+> - https://www.php.net/manual/ja/configuration.file.php
 
 #### ▼ 本番/開発環境用`php.ini`ファイル
 
@@ -181,7 +181,7 @@ zend.assertions = 1
 mbstring.language = Japanese
 ```
 
-> ↪️：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+> - https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
 #### ▼ 本番環境用`php.ini`ファイル例
 
@@ -245,7 +245,7 @@ opcache.preload = /var/www/preload.php
 opcache.preload_user = www-data
 ```
 
-> ↪️：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+> - https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
 <br>
 
@@ -261,6 +261,6 @@ opcache.preload_user = www-data
 
 これにより、PHPのコードの実行が高速化される。
 
-> ↪️：https://weblabo.oscasierra.net/php-opcache/
+> - https://weblabo.oscasierra.net/php-opcache/
 
 <br>

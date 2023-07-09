@@ -9,7 +9,7 @@ description: 組織論＠開発手法の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -55,7 +55,7 @@ description: 組織論＠開発手法の知見を記録しています。
 
 広く浅い`ー`型人材になる傾向がある。
 
-> ↪️：https://note.com/cwmasaki/n/nb181309fac93
+> - https://note.com/cwmasaki/n/nb181309fac93
 
 <br>
 
@@ -65,6 +65,6 @@ description: 組織論＠開発手法の知見を記録しています。
 
 より良いプロダクトを開発するためには、チームにこれらの人材全てが揃っているべきである。
 
-> ↪️：https://note.com/cwmasaki/n/nb181309fac93
+> - https://note.com/cwmasaki/n/nb181309fac93
 
 <br>

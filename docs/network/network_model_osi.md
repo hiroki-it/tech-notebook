@@ -9,7 +9,7 @@ description: OSI参照モデル＠ネットワークの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ OSI参照モデルは、物理層 (`L1`) 、データリンク層 (`L2`) 、ネ�
 
 ![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデル.png)
 
-> ↪️：https://www.infraexpert.com/study/networking3.html
+> - https://www.infraexpert.com/study/networking3.html
 
 <br>
 
@@ -33,7 +33,7 @@ OSI参照モデルは、物理層 (`L1`) 、データリンク層 (`L2`) 、ネ�
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
-> ↪️：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+> - https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
 <br>
 
@@ -129,7 +129,7 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 : サーバーにて、アプリケーションのプロセスが特定のポート番で受信している。アプリケーションによってパケットが処理される。
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
 
 <br>
 
@@ -139,6 +139,6 @@ OSI参照モデルの各レイヤーと通信機器の間の対応関係は以�
 
 ![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png)
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
+> - https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
 
 <br>

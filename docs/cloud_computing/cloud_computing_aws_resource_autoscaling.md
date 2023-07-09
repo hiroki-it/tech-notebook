@@ -9,7 +9,7 @@ description: AutoScaling＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 
 ![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png)
 
-> ↪️：https://www.a-frontier.jp/technology/aws10/
+> - https://www.a-frontier.jp/technology/aws10/
 
 <br>
 
@@ -111,7 +111,7 @@ resource "aws_launch_template" "foo" {
 }
 ```
 
-> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
 
 #### ▼ 起動テンプレート
 
@@ -184,7 +184,7 @@ resource "aws_launch_template" "foo" {
 }
 ```
 
-> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
 
 #### ▼ アクティビティ通知
 
@@ -226,7 +226,7 @@ resource "aws_sns_topic" "foo" {
 
 ```
 
-> ↪️：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification
 
 <br>
 
@@ -262,7 +262,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 記入中...
 
-> ↪️：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
+> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
 
 <br>
 
@@ -317,7 +317,7 @@ CPU平均使用率に段階的な閾値を設定する。
 | スケールインクールダウン期間       | スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。                      |                                                                                                                                                                                                                                   |
 | スケールインの無効化               |                                                                                                       |                                                                                                                                                                                                                                   |
 
-> ↪️：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
+> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
 
 <br>
 

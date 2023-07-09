@@ -9,7 +9,7 @@ description: API仕様書＠RESTful-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ RESTful-APIの仕様を実装により説明するためのフォーマットの
 
 いくつかのフィールドから構成されている。
 
-> ↪️：https://spec.openapis.org/oas/v3.1.0#fixed-fields
+> - https://spec.openapis.org/oas/v3.1.0#fixed-fields
 
 ```yaml
 openapi: # openapiフィールド
@@ -51,7 +51,7 @@ externalDocs: # externalDocsフィールド
 
 ReDocを使用して、OpenAPI仕様から`.html`ファイルを作成する。
 
-> ↪️：https://qiita.com/icck/items/97d00495ec324e1902d6
+> - https://qiita.com/icck/items/97d00495ec324e1902d6
 
 ```bash
 $ npm install -g redoc-cli
@@ -67,7 +67,7 @@ $ redoc-cli bundle openapi.yaml redoc.html
 
 API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html
+> - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html
 
 <br>
 
@@ -514,6 +514,6 @@ RESTful-APIが受信するCRUDのデータ型や必須データを定義した�
 }
 ```
 
-> ↪️：https://spec.openapis.org/oas/v3.1.0#data-types
+> - https://spec.openapis.org/oas/v3.1.0#data-types
 
 <br>

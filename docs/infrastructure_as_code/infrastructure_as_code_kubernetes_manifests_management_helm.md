@@ -9,7 +9,7 @@ description: Helm＠マニフェスト管理の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -35,7 +35,7 @@ Helmは、helmクライアント、チャートレジストリ、複数のチャ
 
 HelmのHelmリリースでは、バージョン管理に関する戦略を採用している。
 
-> ↪️：https://medium.com/@koteswar.meesala/git-fast-forward-merge-vs-three-way-merge-8591434dd350
+> - https://medium.com/@koteswar.meesala/git-fast-forward-merge-vs-three-way-merge-8591434dd350
 
 #### ▼ 2方向の戦略的マージパッチ
 
@@ -89,7 +89,7 @@ Kubernetesをアップグレードした場合に、Helmもアップグレード
 
 このロジックでは、Kubernetesの新しいバージョンでコントロールプレーンコンポーネントに変更があった場合に、それに対応するような処理を実行する。
 
-> ↪️：https://helm.sh/docs/topics/version_skew/#supported-version-skew
+> - https://helm.sh/docs/topics/version_skew/#supported-version-skew
 
 <br>
 
@@ -103,8 +103,8 @@ Kubernetesをアップグレードした場合に、Helmもアップグレード
 
 | レジストリ             | 補足                                                 |
 | ---------------------- | ---------------------------------------------------- |
-| ArtifactHub (Helm公式) | ↪️：https://helm.sh/docs/topics/chart_repository/    |
-| GitHub、GitHub Pages   | ↪️：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+| ArtifactHub (Helm公式) | - https://helm.sh/docs/topics/chart_repository/    |
+| GitHub、GitHub Pages   | - https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
 | AWSリソース (ECR、S3)  |                                                      |
 | GCPリソース            |                                                      |
 
@@ -125,7 +125,7 @@ Kubernetesをアップグレードした場合に、Helmもアップグレード
 | 形式 | `https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>` |
 | 例   | `https://example.com/foo-chart`                                   |
 
-> ↪️：https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
+> - https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
 
 <br>
 
@@ -185,7 +185,7 @@ repository/ # マニフェストリポジトリ
 ...
 ```
 
-> ↪️：https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional
+> - https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional
 
 <br>
 
@@ -236,6 +236,6 @@ repository/
 
 実際にインストールされたチャートのインスタンスのこと。
 
-> ↪️：https://helm.sh/docs/intro/using_helm/#three-big-concepts
+> - https://helm.sh/docs/intro/using_helm/#three-big-concepts
 
 <br>

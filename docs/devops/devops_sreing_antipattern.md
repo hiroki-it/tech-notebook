@@ -9,7 +9,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 ### はじめに
 
-> ↪️：https://www.amazon.co.jp/dp/4873119618
+> - https://www.amazon.co.jp/dp/4873119618
 
 <br>
 
@@ -32,11 +32,11 @@ description: アンチパターン@SREingの知見を記録しています。
 - SREerの作業内容には、システム運用だけなく、開発も含まれる。またこの開発では、できるだけ人の手を離れていて、障害の発生頻度が少ないようなシステムを構築する必要がある。
 - NOCのような場所は、作業に集中できる環境ではない。
 
-  - > ↪️：https://k-tai.watch.impress.co.jp/docs/news/1077992.html
+  - > - https://k-tai.watch.impress.co.jp/docs/news/1077992.html
 
 - ヒーローパターンはアンチパターン。
   - ヒーローパターンでは作業が属人化するため、チームが育たず、またドキュンメントが残らずに本人がいなくなってしまうことがある。
-  - > ↪️：https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c
+  - > - https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c
 
 ![noc_ntt-docomo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/noc_ntt-docomo.jpeg)
 
@@ -173,7 +173,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 ![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_mutable_immutable.jpeg)
 
-> ↪️：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
+> - https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
 
 #### ▼ 問題点
 
@@ -218,7 +218,7 @@ SREerの役割の`1`個として、システムの設計段階でレビュー (�
 
 一方で、システムの数が多くなると、コンサルのステップがボトルネックになり、リリースの頻度が低くなる。
 
-> ↪️：https://x-tech5.co.jp/2022/02/21/204/
+> - https://x-tech5.co.jp/2022/02/21/204/
 
 #### ▼ 解決策
 
@@ -262,7 +262,7 @@ SREingの実現に必要なツールをアプリ開発チームに導入した�
 - ロールフォワード、ロールバックの自動化
   - リリース前の予防を完璧にしない代わりとして、リスクヘッジとして、リリース後のロールフォワードとロールバックを自動的に実行できるようにしておく。
     - Progressive Deliveryを採用し、SLOを判定基準とした自動ロールバックを実現する。
-    - > ↪️：https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
+    - > - https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
 
 <br>
 
@@ -303,7 +303,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 機能変更によって、コンポーネント間にどのような依存関係が新しく追加されるかを自動的に検出し、記録できるようにする。
 
-> ↪️：https://github.com/ortelius/ortelius
+> - https://github.com/ortelius/ortelius
 
 <br>
 
@@ -347,7 +347,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 またSLOは高過ぎれば良いということもなく、例えば`99.5`%と`99.9`%の信頼性の間でユーザー評価が変わらないのであれば、労力をかけて`99.99`%にする必要はない。
 
-> ↪️：https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
+> - https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
 
 <br>
 

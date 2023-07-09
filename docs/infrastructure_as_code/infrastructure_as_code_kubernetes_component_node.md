@@ -9,7 +9,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -43,7 +43,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 ワーカーNodeがパケットを待ち受けるデフォルトのポート番号は、以下の通りである。
 
-> ↪️：https://kubernetes.io/docs/reference/ports-and-protocols/#node
+> - https://kubernetes.io/docs/reference/ports-and-protocols/#node
 
 <br>
 
@@ -93,7 +93,7 @@ metadata:
 spec: ...
 ```
 
-> ↪️：https://logmi.jp/tech/articles/323803#s3
+> - https://logmi.jp/tech/articles/323803#s3
 
 <br>
 
@@ -122,7 +122,7 @@ spec: ...
 
 ![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet.png)
 
-> ↪️：https://thinkit.co.jp/article/17453
+> - https://thinkit.co.jp/article/17453
 
 <br>
 
@@ -150,7 +150,7 @@ $ kubelet \
     ...
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
+> - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
 
 #### ▼ kubelet-config.jsonファイル
 
@@ -260,7 +260,7 @@ ExecStart=
 ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
 ```
 
-> ↪️：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd
+> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd
 
 #### ▼ kubeletのバージョン
 
@@ -324,7 +324,7 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
 #### ▼ 確認方法
 
@@ -414,7 +414,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 - `minikube tunnel`コマンド
 - LoadBalancer
 
-> ↪️：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
+> - https://kubernetes.io/docs/concepts/cluster-administration/proxies/
 
 <br>
 
@@ -424,7 +424,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
 
-> ↪️：https://thinkit.co.jp/article/17453
+> - https://thinkit.co.jp/article/17453
 
 <br>
 
@@ -436,7 +436,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 : `/etc/modules-load.d/containerd.conf`ファイルに、カーネルモジュールを設定する。
 
-> ↪️：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
+> - https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
 
 ```bash
 overlay
@@ -456,7 +456,7 @@ $ modprobe br_netfilter
 
 : `/etc/sysctl.d/99-kubernetes-cri.conf`ファイルに、カーネルパラメーターを設定する。
 
-> ↪️：https://www.memotansu.jp/kubernetes/3790/#toc2
+> - https://www.memotansu.jp/kubernetes/3790/#toc2
 
 ```bash
 net.bridge.bridge-nf-call-iptables=1
@@ -514,7 +514,7 @@ $ add-apt-repository \
 $ apt-get update && apt-get install containerd.io
 ```
 
-> ↪️：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 #### ▼ Containerdの設定ファイルの準備
 
@@ -522,7 +522,7 @@ $ apt-get update && apt-get install containerd.io
 
 : 設定ファイルとして、`/etc/containerd/config.toml`ファイルを作成する。
 
-> ↪️：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 ```bash
 $ mkdir -p /etc/containerd
@@ -548,7 +548,7 @@ $ kubelet \
     ...
 ```
 
-> ↪️：https://repl.info/archives/2894/
+> - https://repl.info/archives/2894/
 
 <br>
 
@@ -577,6 +577,6 @@ $ journalctl -u containerd.service
 | Running    | コンテナの起動が完了し、実行中である。                        |
 | Terminated | コンテナが正常/異常に停止した。                               |
 
-> ↪️：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
+> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
 
 <br>

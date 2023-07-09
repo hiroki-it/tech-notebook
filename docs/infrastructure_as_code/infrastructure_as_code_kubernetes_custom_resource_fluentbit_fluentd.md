@@ -9,7 +9,7 @@ description: FluentBit/Fluentd＠CNCFプロジェクトの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -49,7 +49,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
-> ↪️：https://www.alpha.co.jp/blog/202103_01
+> - https://www.alpha.co.jp/blog/202103_01
 
 <br>
 
@@ -63,7 +63,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_message-queue.png)
 
-> ↪️：https://www.forcia.com/blog/001316.html
+> - https://www.forcia.com/blog/001316.html
 
 <br>
 
@@ -112,7 +112,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
 
-> ↪️：https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
+> - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 
 #### ▼ エージェントパターンの例
 
@@ -120,7 +120,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 - KubernetesのDaemonSet配下のPodとして常駐させる。
 - KubernetesのPod内のサイドカーとして配置する。
 
-> ↪️：https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
+> - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
 
 #### ▼ DaemonSetパターンとPod内サイドカーパターンの比較
 

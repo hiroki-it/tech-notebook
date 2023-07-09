@@ -9,7 +9,7 @@ description: admission-controllers＠コントロールプレーンアドオン�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -82,7 +82,7 @@ TaintNodesByCondition,
 ValidatingAdmissionWebhook,
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
+> - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
 #### ▼ Webhook系プラグインのSSL証明書
 
@@ -186,7 +186,7 @@ ValidatingAdmissionWebhookプラグインを使用すると、validating-admissi
 
 ユーザー定義の処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
-> ↪️：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
 #### ▼ ValidatingWebhookConfiguration
 
@@ -246,7 +246,7 @@ AdmissionReviewは、リクエストを定義するAdmissionRequestと、レス�
 
 admission-controllerアドオンとwebhookサーバーの間のリクエスト/レスポンスのデータである。
 
-> ↪️：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 ```yaml
 {
@@ -378,7 +378,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
 
 kube-apiserverは、mutating-admissionステップと同じAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
 
-> ↪️：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 #### ▼ AdmissionResponse
 

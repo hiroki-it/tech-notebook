@@ -9,7 +9,7 @@ description: ArgoCD＠CNCFプロジェクトの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -120,7 +120,7 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### 他のコンポーネントとの通信
 
-> ↪️：https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 
 <br>
 
@@ -149,7 +149,7 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 Argo Rolloutをダッシュボードで操作する場合、執筆時点 (2023/05/24) で拡張機能としてインストールする必要がある。
 
-> ↪️：https://github.com/argoproj-labs/rollout-extension
+> - https://github.com/argoproj-labs/rollout-extension
 
 <br>
 
@@ -169,7 +169,7 @@ image-updaterは、アプリリポジトリからイメージリポジトリに�
 
 その後、マニフェストリポジトリに書き換えをコミットする。
 
-> ↪️：https://zenn.dev/nekoshita/articles/02c1e59a487fb4
+> - https://zenn.dev/nekoshita/articles/02c1e59a487fb4
 
 <br>
 
@@ -231,7 +231,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 マニフェスト管理ツールの実行時にはメモリ使用量が増加する。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-repo-server
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-repo-server
 
 <br>
 
@@ -282,7 +282,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 注意点として、マニフェストに何かを追加するような変更は差分として認識されないため、Syncしても元に戻らない。
 
-> ↪️：https://qiita.com/masahata/items/e22b0d30b77251b941d8
+> - https://qiita.com/masahata/items/e22b0d30b77251b941d8
 
 <br>
 
@@ -320,7 +320,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-> ↪️：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+> - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
 #### ▼ テンプレート構成管理ツールを使用した場合
 
@@ -375,7 +375,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
-> ↪️：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
+> - https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 
 <br>
 

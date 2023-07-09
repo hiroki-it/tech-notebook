@@ -9,7 +9,7 @@ description: コマンド＠Nginxの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -54,7 +54,7 @@ $ nginx -s reload
 $ nginx -t
 ```
 
-> ↪️：https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
+> - https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
 
 <br>
 
@@ -64,7 +64,7 @@ $ nginx -t
 
 Nginxの設定ファイルのバリデーションを実行する。
 
-> ↪️：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 ```bash
 $ service nginx configtest

@@ -9,7 +9,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,11 +23,11 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 異なるシステムでも同じルールを共有する必要がある』というようなことを述べている。
 
-> ↪️：https://www.amazon.co.jp/dp/B07FSBHS2V
+> - https://www.amazon.co.jp/dp/B07FSBHS2V
 
 #### ▼ 構成
 
-> ↪️：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+> - https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
@@ -151,7 +151,7 @@ class FormatValidator
 
 ![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master//images/clean-architecture_flow.png)
 
-> ↪️：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
+> - http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
 
 <br>
 
@@ -189,14 +189,14 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 | showFoo             | showFooRequest                    | showFooResponse                     |                                                                                                                                                                                      |
 | createFoo           | createFooRequest                  | createFooResponse                   |                                                                                                                                                                                      |
 | updateFoo           | updateFooRequest                  | updateFooResponse                   |                                                                                                                                                                                      |
-| saveFoo (upsertFoo) | saveFooRequest (upsertFooRequest) | saveFooResponse (upsertFooResponse) | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>↪️：https://github.com/little-hands/ddd-q-and-a/issues/241 |
+| saveFoo (upsertFoo) | saveFooRequest (upsertFooRequest) | saveFooResponse (upsertFooResponse) | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>- https://github.com/little-hands/ddd-q-and-a/issues/241 |
 | deleteFoo           | deleteFooRequest                  | deleteFooResponse                   |                                                                                                                                                                                      |
 
 #### ▼ ユースケース図
 
 ユースケース図については、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -1189,7 +1189,7 @@ final class User
 
 ドメイン層とユースケース層のアプリケーションサービスのいずれに実装する必要があるかは、モデリングの対象がビジネスルールに基づくものなのか、ソフトウェア利用者のユースケースに基づくものなのかである。
 
-> ↪️：https://www.amazon.co.jp/dp/B082WXZVPC
+> - https://www.amazon.co.jp/dp/B082WXZVPC
 
 <br>
 
@@ -2242,7 +2242,7 @@ class DogOrder
 
 依存関係の観点からみた集約については、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 <br>
 
@@ -2254,7 +2254,7 @@ class DogOrder
 
 そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけると良い。
 
-> ↪️：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
+> - https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 
 <br>
 
@@ -2264,7 +2264,7 @@ class DogOrder
 
 #### ▼ DIP (依存性逆転の原則) とは
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ### リポジトリ
 
@@ -2300,8 +2300,8 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 | デザインパターン | 駆動の種類   | ドメインモデルとテーブルの関連度合い                                                                                                                                                           | 採用パッケージ例                                                   | 適所                                                                                                                  | 補足                                                                                                                                      |
 | ---------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Active Record    | DB駆動       | ・非常に強い。<br>・手順としてテーブル設計が先にあり、`1`個のドメインモデルが`1`個のテーブルに対応している。<br>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。 | ・Eloquent (PHP) <br>・Active Record (Ruby) <br>・Hibernate (Java) | ビジネスロジックが複雑でないアプリケーション<br>↪️：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく、ORMの実装方法の1つである。<br>↪️：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/   |
-| Data Mapper      | ドメイン駆動 | ・弱い<br>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。                                                                                                                       | Doctrine                                                           | ビジネスロジックが複雑なアプリケーション<br>↪️：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3     | ActiveRecordパターンと同じく、ORMの実装方法の1つである。<br>↪️：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
+| Active Record    | DB駆動       | ・非常に強い。<br>・手順としてテーブル設計が先にあり、`1`個のドメインモデルが`1`個のテーブルに対応している。<br>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。 | ・Eloquent (PHP) <br>・Active Record (Ruby) <br>・Hibernate (Java) | ビジネスロジックが複雑でないアプリケーション<br>- https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく、ORMの実装方法の1つである。<br>- https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/   |
+| Data Mapper      | ドメイン駆動 | ・弱い<br>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。                                                                                                                       | Doctrine                                                           | ビジネスロジックが複雑なアプリケーション<br>- https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3     | ActiveRecordパターンと同じく、ORMの実装方法の1つである。<br>- https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
 | Repository       | ドメイン駆動 | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。`1`個のドメインモデルが複数のテーブルを参照しても良い。                                        |                                                                    | ビジネスロジックが複雑なアプリケーション                                                                              | DB、RDMS、NoSQL、なんでもでも良い。                                                                                                       |
 | なし             | なし         | 非常に弱い                                                                                                                                                                                     | DBファサード                                                       |                                                                                                                       |                                                                                                                                           |
 
@@ -2319,7 +2319,7 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 これにより、ルートエンティティとDBテーブルを別々に設計できる。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
 
 #### ▼ インターフェースリポジトリ
 
@@ -2713,7 +2713,7 @@ class DogComboFactory
 
 そのため、名前は『イベント名』+Listener (Handler) となる。
 
-> ↪️：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
+> - https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 
 <br>
 
@@ -2733,7 +2733,7 @@ class DogComboFactory
 
 パスワードのハッシュ化。
 
-> ↪️：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
+> - https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
 
 <br>
 
@@ -2749,7 +2749,7 @@ class DogComboFactory
 
 例外スローの意義については、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
 
 <br>
 

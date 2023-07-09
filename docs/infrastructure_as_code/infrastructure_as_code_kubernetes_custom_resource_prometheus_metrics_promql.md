@@ -9,7 +9,7 @@ description: PromQL＠メトリクス
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -107,13 +107,13 @@ sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, respons
 ...
 ```
 
-> ↪️：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
+> - https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
 
 #### ▼ count
 
 期間内の合計数を算出する。
 
-> ↪️：https://www.opsramp.com/prometheus-monitoring/promql/
+> - https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
@@ -129,7 +129,7 @@ increase(<メトリクス名>[5m])
 = rate(<メトリクス名>[1h]) * 5 * 60
 ```
 
-> ↪️：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+> - https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 #### ▼ rate
 
@@ -145,7 +145,7 @@ increase(<メトリクス名>[5m])
 rate(<メトリクス名>[1h])
 ```
 
-> ↪️：https://www.opsramp.com/prometheus-monitoring/promql/
+> - https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ `[]` (ウィンドウ)
 
@@ -178,7 +178,7 @@ Prometheusでデータポイントを収集できるか否かで、コンテナ�
 absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
 ```
 
-> ↪️：https://zenn.dev/big_tanukiudon/scraps/3c44bbd33de4d3
+> - https://zenn.dev/big_tanukiudon/scraps/3c44bbd33de4d3
 
 <br>
 
@@ -226,7 +226,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <算出値>
 ```
 
-> ↪️：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> - https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 <br>
 
@@ -294,6 +294,6 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <算出値>
 ```
 
-> ↪️：https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
+> - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
 
 <br>

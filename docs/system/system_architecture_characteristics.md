@@ -9,7 +9,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 - パフォーマンス
 
-> ↪️：https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch04.xhtml
+> - https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch04.xhtml
 
 <br>
 
@@ -46,7 +46,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 - 信頼性
 - セキュリティ
 
-> ↪️：https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch04.xhtml
+> - https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch04.xhtml
 
 <br>
 
@@ -56,7 +56,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 システムで仮に障害が起こったとしても、システムの利用可能な時間をどれだけ長くできるかを程度を表す。
 
-> ↪️：https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
+> - https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
 
 <br>
 
@@ -70,7 +70,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ただし、複数のハードウェアを用意することは大変なため、仮想環境の文脈で説明されることが多い。
 
-> ↪️：https://it-trend.jp/words/availability
+> - https://it-trend.jp/words/availability
 
 #### ▼ ロードバランシング
 
@@ -78,7 +78,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 また、いずれかのコンポーネントで障害が起こった場合に、正常なコンポーネントにルーティングするようにし、システム全体としての稼働時間を長くする。
 
-> ↪️：https://knowledge.sakura.ad.jp/6274/#i-3
+> - https://knowledge.sakura.ad.jp/6274/#i-3
 
 <br>
 
@@ -96,7 +96,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 いずれかの稼働中インスタンスで障害が発生した場合、障害が発生したインスタンスをロードバランサーから切り離す。
 
-> ↪️：https://www.fe-siken.com/kakomon/29_aki/q13.html
+> - https://www.fe-siken.com/kakomon/29_aki/q13.html
 
 <br>
 
@@ -121,7 +121,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 インバウンド通信のルーティング先を待機中インスタンスに切り替える時、手動で切り替えることを『スイッチオーバー』、自動的に切り替えることを『フェイルオーバー』という。
 
-> ↪️：https://www.idcf.jp/words/failover.html
+> - https://www.idcf.jp/words/failover.html
 
 <br>
 
@@ -157,7 +157,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 システムが求められる能力を、定められた条件下で定められた期間にわたり、障害を発生させることなく実行する程度のこと。
 
-> ↪️：https://www.amazon.co.jp/dp/4873117917
+> - https://www.amazon.co.jp/dp/4873117917
 
 <br>
 
@@ -171,7 +171,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 #### ▼ SLOの遵守
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_service_level.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_service_level.html
 
 <br>
 
@@ -185,7 +185,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアップ.png)
 
-> ↪️：https://www.idcf.jp/words/scale-out.html
+> - https://www.idcf.jp/words/scale-out.html
 
 <br>
 
@@ -197,7 +197,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアウト.png)
 
-> ↪️：https://www.idcf.jp/words/scale-out.html
+> - https://www.idcf.jp/words/scale-out.html
 
 <br>
 
@@ -213,7 +213,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
 
-> ↪️：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
 
 #### ▼ スイッチオーバー、フェイルオーバー
 
@@ -227,13 +227,13 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 `1`個の処理を分担できる複数の稼働中ノード (プライマリーインスタンス、スタンバイインスタンス) を配置しつつ、ロードバランシングできるようにした冗長化方法のこと。
 
-> ↪️：https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
 
 #### ▼ スプリットブレイン問題
 
 プライマリーインスタンスとスタンバイインスタンスの間で通信障害が起こり、複数のプライマリーインスタンスが存在してしまう問題のこと。
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
 
 <br>
 

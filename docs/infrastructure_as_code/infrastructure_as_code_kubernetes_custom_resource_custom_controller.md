@@ -9,7 +9,7 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -66,7 +66,7 @@ kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行
 
 ### 既にあるものを使用する
 
-> ↪️：https://github.com/mercari/certificate-expiry-monitor-controller
+> - https://github.com/mercari/certificate-expiry-monitor-controller
 
 <br>
 
@@ -87,7 +87,7 @@ custom-controllerを自前で実装する。
 
 custom-controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
 
-> ↪️：https://zoetrope.github.io/kubebuilder-training/
+> - https://zoetrope.github.io/kubebuilder-training/
 
 <br>
 
@@ -133,7 +133,7 @@ Operatorに不具合があると、etcd上のCRDの通りにカスタムリソ�
 
 Operatorがkube-apiserverにリクエストを送信できるように、Operatorに認可スコープを付与する。
 
-> ↪️：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
+> - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 
 <br>
 
@@ -147,7 +147,7 @@ OperatorHubで公開されている。
 
 - ...
 
-> ↪️：https://operatorhub.io/
+> - https://operatorhub.io/
 
 <br>
 
@@ -159,7 +159,7 @@ OperatorHubで公開されている。
 
 Operatorを開発するためのフレームワークのこと。
 
-> ↪️：https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes
+> - https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes
 
 #### ▼ Operator SDK
 

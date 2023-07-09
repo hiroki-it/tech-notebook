@@ -9,7 +9,7 @@ description: メトリクス＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,13 +21,13 @@ description: メトリクス＠Prometheus
 
 数を単位とするメトリクス (例：`go_gc_duration_seconds_count`) が属する。
 
-> ↪️：https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
+> - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
 
 #### ▼ Gauge
 
 動的に増減するメトリクス (例：`go_memstats_heap_alloc_bytes`) が属する。
 
-> ↪️：https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
+> - https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
 
 #### ▼ Histogram
 
@@ -68,7 +68,7 @@ process_cpu_seconds_total
 http_request_duration_seconds
 ```
 
-> ↪️：https://prometheus.io/docs/practices/naming/#metric-names
+> - https://prometheus.io/docs/practices/naming/#metric-names
 
 <br>
 
@@ -127,7 +127,7 @@ CPUの使用時間を表す。
 container_cpu_usage_seconds_total
 ```
 
-> ↪️：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+> - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
 <br>
 

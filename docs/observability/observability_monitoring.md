@@ -9,7 +9,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -51,7 +51,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 ![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monitoring_collecting_pull_push.png)
 
-> ↪️：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
+> - https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
 
 #### ▼ データの保管
 
@@ -142,7 +142,7 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 
 JavaScriptにNavigation-timing-APIにリクエストを送信する処理を組み込むと、ページパフォーマンスに関するメトリクスのデータポイントを収集できる。
 
-> ↪️：https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
+> - https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
 
 ページローディング時間は特に重要である。
 
@@ -150,7 +150,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 `4`秒以下を目指すと良い。
 
-> ↪️：https://bit.ly/2y494hq
+> - https://bit.ly/2y494hq
 
 #### ▼ Googleアナリティクスによる監視
 
@@ -223,7 +223,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 | パーセンテージ系 | データポイントのタイムスタンプ、パーセンテージ | 割合を単位とするアプリケーションのバックエンド領域のメトリクス                                                                                       |
 | 時分秒系         | データポイントのタイムスタンプ、処理時間       | 時間を単位とするアプリケーションのバックエンド領域のメトリクス (例：SQLにかかる時間、ビルドまたはデプロイの開始/完了時間、外部APIコールにかかる時間) |
 
-> ↪️：https://prometheus.io/docs/concepts/metric_types/
+> - https://prometheus.io/docs/concepts/metric_types/
 
 #### ▼ パフォーマンス (APM)
 
@@ -231,13 +231,13 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 特にパフォーマンスに関わるメトリクス (例：CPU使用率、レスポンス時間、分散トレースにおけるマイクロサービス間の通信速度、エラー率、リクエスト数、連続稼働時間) のデータポイントを収集し、監視する。
 
-> ↪️：https://aws.amazon.com/what-is/application-performance-monitoring/#:~:text=Application%20performance%20monitoring%20(APM)%20is,receive%20a%20positive%20application%20experience.
+> - https://aws.amazon.com/what-is/application-performance-monitoring/#:~:text=Application%20performance%20monitoring%20(APM)%20is,receive%20a%20positive%20application%20experience.
 
 #### ▼ カスタムメトリクス
 
 サーバー内にStatsDエージェントをデーモンとして常駐させ、アプリケーションで`statsd`パッケージを使用すると、ユーザーの定義したカスタムメトリクスのデータポイントを収集できる。
 
-> ↪️：https://github.com/statsd/statsd/wiki
+> - https://github.com/statsd/statsd/wiki
 
 CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
 
@@ -256,7 +256,7 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 | ログの種類                                                     | 説明                                                                                                                                                    |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| システムログ (`/var/log/message`ファイル)                      | 基本的にはOSやミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>↪️：https://thinkit.co.jp/article/724/1 |
+| システムログ (`/var/log/message`ファイル)                      | 基本的にはOSやミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>- https://thinkit.co.jp/article/724/1 |
 | アプリケーションログ (ログファイルはフレームワークによる)      | アプリケーションの任意の重要な処理 (アクセスログ、ログイン、ログアウト、など) のログを出力する。                                                        |
 | クエリログ (`/var/log/<ベンダー名>/general-query.log`ファイル) | アプリケーションからDBへのクエリ処理の内容をログとして出力する。                                                                                        |
 
@@ -298,14 +298,14 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 | ログの種類                                   | 説明                                                                              |
 | -------------------------------------------- | --------------------------------------------------------------------------------- |
-| システムログ (`/var/log/message`ファイル)    | OSやミドルウェアの処理ログを出力する。<br>↪️：https://thinkit.co.jp/article/724/1 |
+| システムログ (`/var/log/message`ファイル)    | OSやミドルウェアの処理ログを出力する。<br>- https://thinkit.co.jp/article/724/1 |
 | セキュリティログ (`/var/log/secure`ファイル) | OSのセキュリティ処理のログを出力する。                                            |
 | cronログ (`/var/log/cron`ファイル)           | OSのジョブ処理 (例：Unixであればcron) のログを出力する。                          |
 | メールログ (`/var/log/maillog`ファイル)      | OSのメール処理のログを出力する。                                                  |
 | 印刷ログ (`/var/log/spooler`ファイル)        | OSの印刷処理のログを出力する。                                                    |
 | OSブートログ (`/var/log/boot.log`ファイル)   | OSの起動処理のログを出力する。                                                    |
 
-> ↪️：https://www.infraeye.com/study/linuxz46.html
+> - https://www.infraeye.com/study/linuxz46.html
 
 <br>
 
@@ -353,7 +353,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 | ヘルスチェック名 | ヘルスチェックの範囲                   | 方法                                                                                                                                                                                                                                                            |
 | ---------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `L3`チェック     | `L1`から`L3` (ネットワーク層) まで     | サーバー/コンテナのIPアドレスにPINGリクエスト (ICMP echo) を送信し、レスポンスを検証する。正しいPINGレスポンスが返信されれば、サーバー/コンテナまでのネットワークが正しく動作していると判断できる。<br>↪️：https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/ |
+| `L3`チェック     | `L1`から`L3` (ネットワーク層) まで     | サーバー/コンテナのIPアドレスにPINGリクエスト (ICMP echo) を送信し、レスポンスを検証する。正しいPINGレスポンスが返信されれば、サーバー/コンテナまでのネットワークが正しく動作していると判断できる。<br>- https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/ |
 | `L4`チェック     | `L1`から`L4` (トランスポート層) まで   | サーバー/コンテナのポートにTCPリクエストを送信し、TCPレスポンスを検証する。TCPコネクションが確立されれば、サーバー/コンテナの開放ポートまでのネットワークが正しく動作していると判断できる。                                                                     |
 | `L7`チェック     | `L1`から`L7` (アプリケーション層) まで | サーバー/コンテナ上のアプリケーションのエンドポイントにHTTPリクエストを送信し、HTTPレスポンスを検証する。正しいHTTPレスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。                                             |
 
@@ -383,7 +383,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
   8 6 * * * /foo-cron.sh && curl -fsS --retry 5 -o /dev/null https://hc-ping.com/ping/<healthchecksのID>
 ```
 
-> ↪️：https://healthchecks.io/docs/monitoring_cron_jobs/
+> - https://healthchecks.io/docs/monitoring_cron_jobs/
 
 #### ▼ `runitor`パッケージ
 
@@ -395,7 +395,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
   8 6 * * * /usr/local/bin/runitor -api-url https://hc-ping.com/ping -uuid <healthchecksのID> -- /foo-cron.sh
 ```
 
-> ↪️：https://github.com/bdd/runitor
+> - https://github.com/bdd/runitor
 
 <br>
 
@@ -423,7 +423,7 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 アクティブ型とは異なり、ユーザーを犠牲することになるため、Webサイトの信頼性が低下する可能性がある。
 
-> ↪️：https://neinvalli.hatenablog.com/entry/2017/10/31/002839
+> - https://neinvalli.hatenablog.com/entry/2017/10/31/002839
 
 <br>
 

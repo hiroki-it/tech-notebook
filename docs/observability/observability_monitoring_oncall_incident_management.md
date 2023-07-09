@@ -9,7 +9,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 アラートが通知された時に、エラー修正の担当者に連絡できる状態 (メールアドレス、電話番号、SMS、など) にあること。
 
-> ↪️：https://response.pagerduty.com/oncall/being_oncall/
+> - https://response.pagerduty.com/oncall/being_oncall/
 
 <br>
 
@@ -106,7 +106,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 エラーイベントと見なすログステータスの目安は以下の通りである。
 
-> ↪️：https://engineering.otobank.co.jp/entry/2016/09/20/181756
+> - https://engineering.otobank.co.jp/entry/2016/09/20/181756
 
 | ログステータス | 説明                                             | 重要度レベルへの変換例 |
 | -------------- | ------------------------------------------------ | ---------------------- |
@@ -160,7 +160,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 これらを自動化するためのツールがいくつかある。
 
-> ↪️：https://smart-stage.jp/topics/itsm_keyword_relate/p3/
+> - https://smart-stage.jp/topics/itsm_keyword_relate/p3/
 
 **＊技術ツール例＊**
 
@@ -201,7 +201,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 | low                          | いつかは解決する必要がある。       |
 | notification                 | 解決する必要はない。               |
 
-> ↪️：https://response.pagerduty.com/oncall/alerting_principles/
+> - https://response.pagerduty.com/oncall/alerting_principles/
 
 <br>
 
@@ -273,7 +273,7 @@ fields @timestamp, @message, @logStream
 
 インシデントの発生時に、組織が混乱せずに問題に対処できるようにするためのマネージメント手法のこと。
 
-> ↪️：https://fastalert.jp/column/disaster-prevention/incident-command-system
+> - https://fastalert.jp/column/disaster-prevention/incident-command-system
 
 #### ▼ 指揮
 
@@ -319,7 +319,7 @@ fields @timestamp, @message, @logStream
 
 いくつかのアラートをグループ化するようにし、アラートの通知数を減らす。
 
-> ↪️：https://knowledge.sakura.ad.jp/11635/
+> - https://knowledge.sakura.ad.jp/11635/
 
 #### ▼ アラートの条件の調節
 
@@ -335,19 +335,19 @@ fields @timestamp, @message, @logStream
 
 そういった場合は、インシデントの通知を抑制する。
 
-> ↪️：https://pagerduty.digitalstacks.net/blog/suppress-your-data/
+> - https://pagerduty.digitalstacks.net/blog/suppress-your-data/
 
 #### ▼ 特定のシステムを無視
 
 特定のシステムにて、発生したインシデントを全て無視し、インシデントが恒久的に通知されないようにする。
 
-> ↪️：https://thinkit.co.jp/article/13558
+> - https://thinkit.co.jp/article/13558
 
 #### ▼ インシデントの一時無効化
 
 特定のシステムにて、指定した期間に発生したインシデントを無視し、インシデントが一定期間だけ通知されないようにする。
 
-> ↪️：https://thinkit.co.jp/article/13558
+> - https://thinkit.co.jp/article/13558
 
 #### ▼ エラーイベントの重要度レベルの調節
 
@@ -355,13 +355,13 @@ fields @timestamp, @message, @logStream
 
 特定のインシデント以外は通知されないようにする。
 
-> ↪️：https://thinkit.co.jp/article/13558
+> - https://thinkit.co.jp/article/13558
 
 #### ▼ インシデントのグループ化
 
 特定のシステムにて、いくつかのインシデントをグループ化するようにし、インシデントの通知数を減らす。
 
-> ↪️：https://knowledge.sakura.ad.jp/11635/
+> - https://knowledge.sakura.ad.jp/11635/
 
 <br>
 
@@ -375,10 +375,10 @@ fields @timestamp, @message, @logStream
 
 | メトリクス名                    |                                                                                                                                                                             | 補足                                                                    |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                                        | ↪️：https://e-words.jp/w/MTTF.html                                      |
-| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                                            | ↪️：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                                        | - https://e-words.jp/w/MTTF.html                                      |
+| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                                            | - https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 | MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                    |                                                                         |
-| MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | ↪️：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | - https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 
 > ↪️：
 >
@@ -410,7 +410,7 @@ fields @timestamp, @message, @logStream
 = 1 - (1 - 稼働率) × (1 - 稼働率)
 ```
 
-> ↪️：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
+> - https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
 
 **＊例＊**
 
@@ -451,7 +451,7 @@ DRI Hops (インシデントの直接的に責任者) の値を使用して人�
 
 ![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics_dash-board.png)
 
-> ↪️：https://www.amazon.co.jp/dp/4873119618
+> - https://www.amazon.co.jp/dp/4873119618
 
 <br>
 
@@ -542,7 +542,7 @@ PagerDuty社が公開しているテンプレートがある。
 - 社外への周知内容
 ```
 
-> ↪️：https://response.pagerduty.com/after/post_mortem_template/
+> - https://response.pagerduty.com/after/post_mortem_template/
 
 #### ▼ その他の会社事例
 
@@ -552,6 +552,6 @@ PagerDuty社が公開しているテンプレートがある。
 | Heroku   | https://status.heroku.com/incidents/151                                                                 |
 | Twilio   | https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html |
 
-> ↪️：https://response.pagerduty.com/after/effective_post_mortems/#examples
+> - https://response.pagerduty.com/after/effective_post_mortems/#examples
 
 <br>

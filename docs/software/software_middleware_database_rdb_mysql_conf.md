@@ -9,7 +9,7 @@ description: 設定ファイル＠MySQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -45,7 +45,7 @@ $ yum install -y mysql
 $ yum install -y mysql mysql-server
 ```
 
-> ↪️：https://qiita.com/gologo13/items/1bdba6085ec79153bf1a
+> - https://qiita.com/gologo13/items/1bdba6085ec79153bf1a
 
 <br>
 
@@ -208,7 +208,7 @@ DB固有の情報は、DB名のディレクトリで管理されている。
 
 dockerエリアのマウントポイントとして指定される。
 
-> ↪️：https://dev.mysql.com/doc/refman/8.0/ja/data-directory.html
+> - https://dev.mysql.com/doc/refman/8.0/ja/data-directory.html
 
 ```bash
 [root@<コンテナID>:/var/lib/mysql] $ ls -la

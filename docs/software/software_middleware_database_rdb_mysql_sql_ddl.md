@@ -9,7 +9,7 @@ description: DDL＠SQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: DDL＠SQLの知見を記録しています。
 
 テーブル、DBオブジェクトの操作、に関するクエリのこと。
 
-> ↪️：https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DDL-Data-Definition-Language
+> - https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DDL-Data-Definition-Language
 
 <br>
 

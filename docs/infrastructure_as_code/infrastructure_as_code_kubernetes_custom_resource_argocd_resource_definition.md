@@ -9,7 +9,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -131,7 +131,7 @@ $ kubectl create namespace argocd
 $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
+> - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
 
 #### ▼ Operatorとして
 
@@ -205,7 +205,7 @@ $ curl http://127.0.0.1:8080
 
 : `argocd`コマンドをインストールする。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/cli_installation/
+> - https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
 ```bash
 $ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
@@ -288,7 +288,7 @@ spec:
   type: ClusterIP
 ```
 
-> ↪️：https://techstep.hatenablog.com/entry/2020/11/15/121503
+> - https://techstep.hatenablog.com/entry/2020/11/15/121503
 
 #### ▼ 開発環境の場合
 
@@ -741,7 +741,7 @@ spec:
 
 ```
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/manifests/base/dex/argocd-dex-server-deployment.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/manifests/base/dex/argocd-dex-server-deployment.yaml
 
 <br>
 
@@ -851,7 +851,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Sync         | ポーリング対象リポジトリとのマニフェストの差分を確認し、差分があれば`kubectl apply`コマンドを実行する。                                                                                             |
 | Refresh      | ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                                                                                 |
 | Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                         |
-| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetesリソースを作成することはない。<br>↪️：https://twitter.com/reoring/status/1476046977599406087 |
+| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetesリソースを作成することはない。<br>- https://twitter.com/reoring/status/1476046977599406087 |
 
 > ↪️：
 >
@@ -869,7 +869,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Missing      | 記入中...                                                                                                                                                              |
 | Unknown      | 記入中...                                                                                                                                                              |
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 
 #### ▼ Namespace
 
@@ -877,7 +877,7 @@ Applicationは任意のNamespaceに作成できる。
 
 ただし、ルートのApplicationはargocd-serverと同じNamespaceに配置しないと、UI上にApplicationを表示できない。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/
 
 <br>
 
@@ -978,7 +978,7 @@ spec:
   project: app # アプリケーションコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ```
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 <br>
 
@@ -994,7 +994,7 @@ spec:
 | チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ) | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
 | OCIリポジトリ (例：ECR内のリポジトリ)                              | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 <br>
 
@@ -1078,7 +1078,7 @@ spec:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 #### ▼ targetRevision
 
@@ -1116,7 +1116,7 @@ spec:
     targetRevision: develop # ステージング環境に対応するブランチ
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 <br>
 
@@ -1139,7 +1139,7 @@ spec:
     chart: <チャート名>
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
 #### ▼ helm
 
@@ -1196,7 +1196,7 @@ spec:
 
 暗号化された`values`ファイルを使用することもできる。
 
-> ↪️：https://github.com/camptocamp/argocd-helm-sops-example
+> - https://github.com/camptocamp/argocd-helm-sops-example
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1248,7 +1248,7 @@ ArgoCDはHelmの`v2`と`v3`の両方を保持している。
 
 リリースするチャートの`.apiVersion`キーの値が`v1`であれば、ArgoCDはHelmの`v2`を使用して、一方で`.apiVersion`キーの値が`v2`であれば、Helmの`v3`を使用するようになっている。
 
-> ↪️：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
+> - https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
 
 ArgoCDを介してHelmを実行する場合、内部的には`helm template`コマンドとetcd上のマニフェストを`kubectl diff`コマンドで比較し、生じた差分を`kubectl apply`コマンドを使用してデプロイしている。
 
@@ -1325,7 +1325,7 @@ spec:
     targetRevision: <バージョンタグ>
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 <br>
 
@@ -1357,7 +1357,7 @@ spec:
     repoURL: oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
-> ↪️：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
+> - https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
 
 #### ▼ targetRevision
 
@@ -1382,7 +1382,7 @@ spec:
 
 apply先のKubernetesを設定する。
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 #### ▼ namespace
 
@@ -1464,8 +1464,8 @@ GitOpsでのリポジトリ (例：GitHub、Helm、など) とKubernetesの間�
 | 設定項目     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 補足                                                                                                                                                                                                                         |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `allowEmpty` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空 (配下にリソースがない) 状態を許可するか否かを設定する。                                                                                                                                                                                                                                                                                                                                                                     | ↪️：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
-| `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。`rev:<番号>`という表記があるKubernetesリソースは、`prune`を忘れて新旧バージョンが存在していることを表す。Applicationを削除する時には、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。 | ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                         |
-| `selfHeal`   | ArgoCD以外の方法でCluster内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動Syncする。デフォルトでは、ArgoCD以外の方法で変更しても、自動Syncは実行しない。                                                                                                                                                                                                                                                                                                                                                      | ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                    |
+| `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。`rev:<番号>`という表記があるKubernetesリソースは、`prune`を忘れて新旧バージョンが存在していることを表す。Applicationを削除する時には、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。 | - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                         |
+| `selfHeal`   | ArgoCD以外の方法でCluster内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動Syncする。デフォルトでは、ArgoCD以外の方法で変更しても、自動Syncは実行しない。                                                                                                                                                                                                                                                                                                                                                      | - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                    |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1481,7 +1481,7 @@ spec:
       selfHeal: true
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
 #### ▼ syncOptions
 
@@ -1492,7 +1492,7 @@ GitOpsでのマニフェストのSync処理の詳細を設定する。
 | `CreateNamespace`        | Applicationの作成対象のNamespaceを自動的に作成する。                                                                                                                                     | Namespaceので出どころがわからなくなるため、ArgoCDの`createNamespace`オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。                                                                                 |
 | `Validate`               |                                                                                                                                                                                          |                                                                                                                                                                                                                           |
 | `PrunePropagationPolicy` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、KubernetesでのKubernetesリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ↪️：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| `PruneLast`              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。     | ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                          |
+| `PruneLast`              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。     | - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                          |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1782,13 +1782,13 @@ spec:
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
 ```
 
-> ↪️：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
+> - https://argocd-notifications.readthedocs.io/en/stable/#getting-started
 
 <br>
 
 ## 06. ConfigManagementPlugin
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.html
 
 <br>
 
@@ -1800,7 +1800,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/arg
 
 Progressive Deliveryを使用する場合、詳細を設定する。
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 #### ▼ successfulRunHistoryLimit
 
@@ -1927,7 +1927,7 @@ spec:
         stableService: stable-virtual-service
 ```
 
-> ↪️：https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/
+> - https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/
 
 <br>
 
@@ -1949,7 +1949,7 @@ spec:
   entrypoint: foo-template
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 <br>
 
@@ -1980,7 +1980,7 @@ spec:
             echo "Hello World"
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 <br>
 
@@ -2001,7 +2001,7 @@ spec:
     name: hello-world-workflow-template
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 <br>
 
@@ -2028,7 +2028,7 @@ spec:
             echo "Hello World"
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 #### ▼ script
 
@@ -2052,11 +2052,11 @@ spec:
             echo "Hello World"
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 #### ▼ steps
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
 <br>
 
@@ -2087,7 +2087,7 @@ data:
       send: [app-sync-succeeded]
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
+> - https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
 
 #### ▼ data.service
 
@@ -2106,7 +2106,7 @@ data:
     token: *****
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
+> - https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
 
 #### ▼ data.template
 
@@ -2128,6 +2128,6 @@ data:
     message: "ArgoCD sync in {{ .context.env }}"
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
+> - https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
 
 <br>

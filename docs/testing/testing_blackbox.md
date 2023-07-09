@@ -9,7 +9,7 @@ description: ブラックボックステストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_black-box-test.png)
 
-> ↪️：https://service.shiftinc.jp/column/4801/
+> - https://service.shiftinc.jp/column/4801/
 
 <br>
 
@@ -38,7 +38,7 @@ description: ブラックボックステストの知見を記録しています�
 - 回帰テスト
 - 総合テスト
 
-> ↪️：https://service.shiftinc.jp/column/4801/
+> - https://service.shiftinc.jp/column/4801/
 
 <br>
 
@@ -68,7 +68,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
-> ↪️：https://pm-rasinban.com/ut-it-st
+> - https://pm-rasinban.com/ut-it-st
 
 <br>
 
@@ -106,7 +106,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
-> ↪️：https://pm-rasinban.com/ut-it-st
+> - https://pm-rasinban.com/ut-it-st
 
 <br>
 
@@ -172,7 +172,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p496.jpg)
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -298,6 +298,6 @@ metrics-serverのテストケース例を示す。
 
 ## 05. 総合テスト (システムテスト)
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html
+> - https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html
 
 <br>

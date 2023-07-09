@@ -9,7 +9,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -345,7 +345,7 @@ ArgoCDの公式の仕様で、サイドカーは単一のプラグインしか�
 もし、部分的に重複するプラグイン (例：純粋なhelm-secrets、helm-secretsを使うHelmfile) をArgoCDが使用する場合、それぞれのサイドカーにバイナリ (
 例：一方にはhelm-secrets、もう一方にはHelmfileとhelm-secrets) を用意する必要がある。
 
-> ↪️：https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514
+> - https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514
 
 #### ▼ argocd-cmp-cmでマニフェスト作成時の追加処理を定義
 
@@ -441,7 +441,7 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 | `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |        |                                                |
 | `ARGOCD_USER_ID`                       | `999`  | ArgoCDのプロセスの実行ユーザー番号を設定する。 |
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
 
 <br>
 
@@ -704,7 +704,7 @@ spec:
         value: prd
 ```
 
-> ↪️：https://github.com/travisghansen/argo-cd-helmfile#intro
+> - https://github.com/travisghansen/argo-cd-helmfile#intro
 
 <br>
 
@@ -1010,7 +1010,7 @@ metadata:
 automountServiceAccountToken: true
 ```
 
-> ↪️：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
+> - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
 
 #### ▼ helm-secretsの使用
 
@@ -1042,7 +1042,7 @@ spec:
         - secrets://secrets.yaml
 ```
 
-> ↪️：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
+> - https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
 
 <br>
 
@@ -1122,7 +1122,7 @@ data:
   kustomize.path.<バージョン>: /usr/local/bin/kustomize
 ```
 
-> ↪️：https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+> - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
 
 <br>
 
@@ -1264,7 +1264,7 @@ data:
   kustomize.path.<バージョン>: /usr/local/bin/kustomize
 ```
 
-> ↪️：https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+> - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
 
 ### プラグインの使用
 
@@ -1286,7 +1286,7 @@ spec:
     version: v1.0.0
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
 
 <br>
 
@@ -1370,7 +1370,7 @@ spec:
           value: foo
 ```
 
-> ↪️：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
+> - https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
 
 <br>
 

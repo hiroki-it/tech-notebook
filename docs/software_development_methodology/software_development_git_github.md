@@ -9,7 +9,7 @@ description: GitHub＠Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -62,7 +62,7 @@ repository/
 │
 ```
 
-> ↪️：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
+> - https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
 #### ▼ タイトル
 
@@ -110,7 +110,7 @@ GitHubだとプルリクエストであるが、GitLabだとマージリクエ�
 
 犯した罪は背負って生きていかなければならない。
 
-> ↪️：https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
+> - https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
 
 <br>
 
@@ -299,7 +299,7 @@ CIツールやCDツールを使用して、コミット (マージコミット�
 
 『`release/v<セマンティックバージョニング>`』とする。タグの付与先対象とするブランチは、『`Taget: main`』を選択する。
 
-> ↪️：https://semver.org/lang/ja/
+> - https://semver.org/lang/ja/
 
 #### ▼ リリース名
 
@@ -405,7 +405,7 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 : プッシュする。この時、マージコミットを作成する時、基点ブランチ以外からマージしていると、差分のコミットが1つにまとまらず、
 
-> ↪️：http://www-creators.com/archives/1938
+> - http://www-creators.com/archives/1938
 
 #### ▼ GitHubを使用して
 

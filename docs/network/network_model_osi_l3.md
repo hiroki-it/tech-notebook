@@ -9,7 +9,7 @@ description: L3＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: L3＠OSI参照モデルの知見を記録しています。
 
 異なるネットワーク間でパケットを相互に転送するプロトコル (例：IP、ICMP、NDP、など) を処理するレイヤーである。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E5%B1%A4
+> - https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E5%B1%A4
 
 <br>
 

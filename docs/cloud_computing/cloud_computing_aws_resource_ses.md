@@ -9,7 +9,7 @@ description: SES＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -76,7 +76,7 @@ Sandboxモードでは以下の制限がかかっており。
 
 一般的なSMTP-AUTHでは、クライアントユーザーの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。送信元となるアプリケーションにIAMユーザーを紐付け、このIAMユーザーにはユーザー名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザー名とパスワードを使用した認証を実行する。ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
+> - https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
 
 <br>
 

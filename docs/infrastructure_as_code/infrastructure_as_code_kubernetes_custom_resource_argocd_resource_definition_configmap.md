@@ -9,7 +9,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ ArgoCDの各コンポーネントの機密でない変数やファイルを管�
 
 ConfigMapでは、`.metadata.labels`キー配下に、必ず`app.kubernetes.io/part-of: argocd`キーを割り当てる必要がある。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
 <br>
 
@@ -29,7 +29,7 @@ ConfigMapでは、`.metadata.labels`キー配下に、必ず`app.kubernetes.io/p
 
 ArgoCDの各コンポーネントで共通する値を設定する。
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
 
 <br>
 
@@ -55,7 +55,7 @@ data:
   application.instanceLabelKey: argocd.argoproj.io/instance
 ```
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
 
 #### ▼ RootのApplication名の重複
 
@@ -111,7 +111,7 @@ metadata:
 spec: ...
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#configuring-global-projects-v18
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#configuring-global-projects-v18
 
 <br>
 
@@ -150,7 +150,7 @@ data:
   kustomize.buildOptions.v2.0.0: --enable-alpha-plugins --enable-exec
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
 
 <br>
 
@@ -209,7 +209,7 @@ spec:
     version: v1.0.0
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
 
 <br>
 
@@ -305,7 +305,7 @@ data:
 
 ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
 
 <br>
 
@@ -333,7 +333,7 @@ data:
       - /spec/metrics
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
 <br>
 
@@ -706,7 +706,7 @@ argocd-server、repo-server、dex-server、はHTTPSリクエストを受信で�
 
 ConfigMap上のSSL証明書の代わりに、ArgoCD外のSSL証明書 (例：CertManager) を使用しても良い。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration
 
 <br>
 
@@ -716,7 +716,7 @@ argocd-serverはdex-serverに対してHTTPSリクエストを送信する。
 
 このConfigMapは、そのためのSSL証明書を管理する。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server
 
 <br>
 
@@ -726,7 +726,7 @@ application-controller、argocd-server、はrepo-serverに対してHTTPSリク�
 
 このConfigMapは、そのためのSSL証明書を管理する。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components
 
 <br>
 
@@ -736,7 +736,7 @@ application-controller、argocd-server、はrepo-serverに対してHTTPSリク�
 
 このConfigMapは、そのためのSSL証明書を管理する。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server
 
 <br>
 
@@ -782,6 +782,6 @@ data:
     vs-ssh.visualstudio.com ssh-rsa AAAAB ...
 ```
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
 
 <br>

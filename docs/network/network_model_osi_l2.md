@@ -9,7 +9,7 @@ description: L2＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: L2＠OSI参照モデルの知見を記録しています。
 
 物理的に接続された機器とのパケット送受信を処理するレイヤーである。
 
-> ↪️：https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%AF%E5%B1%A4.html
+> - https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%AF%E5%B1%A4.html
 
 <br>
 

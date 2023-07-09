@@ -9,7 +9,7 @@ description: モジュール＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: モジュール＠Terraformの知見を記録しています。
 
 ルートモジュールのみでも問題なく動作するが、チャイルドモジュールを使用する場合、これをコールする実装が必要になる。
 
-> ↪️：https://www.terraform.io/language/modules#the-root-module
+> - https://www.terraform.io/language/modules#the-root-module
 
 <br>
 
@@ -73,7 +73,7 @@ S3などの実インフラで管理する場合、認証情報を設定する必
 
 通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは`providers.tf`ファイルの`backend`オプションを参照し、CDの中で`terraform init`コマンドのオプションを使用して値を渡すようにする。
 
-> ↪️：https://www.terraform.io/language/settings/backends/s3
+> - https://www.terraform.io/language/settings/backends/s3
 
 **＊実装例＊**
 
@@ -365,7 +365,7 @@ resource "aws_s3_bucket" "bar" {
 }
 ```
 
-> ↪️：https://dev.to/drewmullen/terraform-prevent-defaulttags-on-a-specific-resource-n19
+> - https://dev.to/drewmullen/terraform-prevent-defaulttags-on-a-specific-resource-n19
 
 #### ▼ モジュールに渡すプロバイダーを切り替える
 
@@ -424,7 +424,7 @@ resource "aws_acm_certificate" "example" {
 | `~>` | 指定したバージョンを上限とする。 |
 | `=`  | 指定したバージョンで固定する。   |
 
-> ↪️：https://dev.classmethod.jp/articles/about-terraform-version-required-constraints/
+> - https://dev.classmethod.jp/articles/about-terraform-version-required-constraints/
 
 <br>
 
@@ -489,7 +489,7 @@ module "alb" {
 
 サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ (`//`) つけ、その後にパスを続ける。
 
-> ↪️：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+> - https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
 
 ```terraform
 # @ルートモジュール
@@ -513,7 +513,7 @@ module "alb" {
 
 #### ▼ 環境変数の優先順位
 
-> ↪️：https://www.terraform.io/language/values/variables#variable-definition-precedence
+> - https://www.terraform.io/language/values/variables#variable-definition-precedence
 
 #### ▼ `-var`、`-var-file`
 
@@ -626,7 +626,7 @@ Terraformの`2`個以上のブロックをパッケージ化することによ�
 
 ローカルモジュール間で変数を受け渡すときは、必ずルートモジュールを経由し、ローカルモジュール内でローカルモジュールをコールすることはしない。
 
-> ↪️：https://learn.hashicorp.com/tutorials/terraform/module#local-and-remote-modules
+> - https://learn.hashicorp.com/tutorials/terraform/module#local-and-remote-modules
 
 #### ▼ リモートモジュール (パブリッシュモジュール)
 

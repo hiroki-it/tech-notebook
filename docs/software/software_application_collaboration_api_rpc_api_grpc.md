@@ -9,7 +9,7 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -44,7 +44,7 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 ![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png)
 
-> ↪️：https://fintan.jp/page/1521/
+> - https://fintan.jp/page/1521/
 
 #### ▼ Unary RPC (単項RPC)
 
@@ -59,7 +59,7 @@ service Request {
 }
 ```
 
-> ↪️：https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
+> - https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
 
 #### ▼ Server Streaming RPC (サーバーストリーミングRPC)
 
@@ -74,7 +74,7 @@ service Notification {
 }
 ```
 
-> ↪️：https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
+> - https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
 
 #### ▼ Client Streaming RPC (クライアントストリーミングRPC)
 
@@ -89,7 +89,7 @@ service Upload {
 }
 ```
 
-> ↪️：https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
+> - https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
 
 #### ▼ Bidirectional Streaming RPC (双方向ストリーミングRPC)
 
@@ -241,7 +241,7 @@ $ npm install grpc-tools
 
 サーバーをgRPCサーバーとして登録する必要がある。
 
-> ↪️：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
 <br>
 
@@ -279,7 +279,7 @@ $ npm install grpc
 
 gRPCサーバーをリモートプロシージャーコールする。
 
-> ↪️：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
 <br>
 
@@ -301,7 +301,7 @@ $ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
 $ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
 ```
 
-> ↪️：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
+> - https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
 <br>
 
@@ -429,7 +429,7 @@ func main() {
 }
 ```
 
-> ↪️：https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 <br>
 

@@ -9,7 +9,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -189,7 +189,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 | AWS  | Amazon Trust Services | Starfield社    |
 | GCP  | Google Trust Services | 記入中...      |
 
-> ↪️：https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
+> - https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
 #### ▼ 中間認証局をルート認証局で署名する理由
 
@@ -201,7 +201,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
 
-> ↪️：https://zeropasoakita.livedoor.blog/archives/20294837.html
+> - https://zeropasoakita.livedoor.blog/archives/20294837.html
 
 <br>
 
@@ -243,13 +243,13 @@ $ yum install -y ca-certificates
 
 もしルート認証局に署名されていない中間認証局でSSL証明書を署名すると、『このWebサイトで提示されたセキュリティ証明書は、信頼された証明機関から発行されたものではありません』といったような警告文が出る。
 
-> ↪️：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+> - https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 
 #### ▼ リーフ証明書
 
 記入中...
 
-> ↪️：https://itkq.jp/blog/2020/06/20/x509-chain/
+> - https://itkq.jp/blog/2020/06/20/x509-chain/
 
 #### ▼ SSL証明書
 
@@ -288,7 +288,7 @@ SSL証明書の内容
 
 ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。
 
-> ↪️：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
+> - https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
 
 #### ▼ クライアント証明書
 

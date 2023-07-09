@@ -9,7 +9,7 @@ description: コマンド＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ $ argocd app create foo-application \
     --sync-option CreateNamespace=false
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
+> - https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
 <br>
 
@@ -68,7 +68,7 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 $ kubectl delete app <ArgoCDのアプリケーション名>
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
 <br>
 
@@ -106,7 +106,7 @@ $ argocd app set foo-application --sync-policy automated
 $ argocd app sync foo-application --project foo-project
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/
 
 #### ▼ --dry-run
 
@@ -122,7 +122,7 @@ $ argocd app sync foo-application --dry-run --project foo-project
 $ argocd app sync foo-application --local=<ディレクトリへのパス> --project foo-project
 ```
 
-> ↪️：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
+> - https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
 
 <br>
 
@@ -197,7 +197,7 @@ application-controllerを操作するコマンドである。
 
 application-controllerのコンテナの起動コマンドとしても使われている。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
 
 <br>
 
@@ -231,7 +231,7 @@ argocd-serverを操作するコマンドである。
 
 argocd-serverのコンテナの起動コマンドとしても使われている。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-server/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-server/
 
 <br>
 

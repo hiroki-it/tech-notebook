@@ -9,7 +9,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -26,7 +26,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 $ helmfile <サブコマンド>
 ```
 
-> ↪️：https://helmfile.readthedocs.io/en/latest/#cli-reference
+> - https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 #### ▼ -e
 
@@ -36,7 +36,7 @@ Helmリリース対象の実行環境名 (dev、stg、prd) を設定する。
 $ helmfile -e dev <コマンド>
 ```
 
-> ↪️：https://helmfile.readthedocs.io/en/latest/#cli-reference
+> - https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 **＊例＊**
 
@@ -56,7 +56,7 @@ $ helmfile -e dev apply
 $ helmfile -e dev -f ./helmfile.yaml <コマンド>
 ```
 
-> ↪️：https://helmfile.readthedocs.io/en/latest/#cli-reference
+> - https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 #### ▼ --interactive
 
@@ -124,7 +124,7 @@ CRDも削除する。
 $ helmfile -e dev destroy
 ```
 
-> ↪️：https://helmfile.readthedocs.io/en/latest/#destroy
+> - https://helmfile.readthedocs.io/en/latest/#destroy
 
 <br>
 
@@ -185,7 +185,7 @@ $ helmfile -e dev --debug diff
 $ HELM_DIFF_COLOR=true helmfile -e dev diff
 ```
 
-> ↪️：https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
+> - https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
 
 #### ▼ grepとの組み合わせ
 
@@ -227,7 +227,7 @@ Source: project/manifests/persistent-volume.yaml
 $ helmfile -e dev sync
 ```
 
-> ↪️：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+> - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 <br>
 

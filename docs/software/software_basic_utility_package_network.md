@@ -9,7 +9,7 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -70,7 +70,7 @@ yahoo.co.jp.            35      IN      A       182.22.25.252
 
 逆引きの名前解決を実行する。
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
 
 ```bash
 $ dig -x 182.22.28.252
@@ -131,7 +131,7 @@ $ yum install -y bind-utils
 
 #### ▼ オプション無し
 
-> ↪️：https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
+> - https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
 
 **＊例＊**
 
@@ -243,7 +243,7 @@ $ yum install -y net-tools
 
 ### 接続状態の一覧
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html
 
 <br>
 
@@ -253,7 +253,7 @@ $ yum install -y net-tools
 
 オプション (`-p`、`-l`、`-u`、`-n`、`-t`) の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
 
-> ↪️：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
+> - https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
 
 ```bash
 $ netstat -plunt
@@ -308,7 +308,7 @@ Testing upload
 Upload: 182.00 Mbit/s # アップロード速度
 ```
 
-> ↪️：https://www.speedtest.net/ja
+> - https://www.speedtest.net/ja
 
 <br>
 
@@ -356,13 +356,13 @@ $ tcpdump
 
 インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。
 
-> ↪️：https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
+> - https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
 
 **＊例＊**
 
 スリーウェイハンドシェイクのパケットの例。
 
-> ↪️：https://please-sleep.cou929.nu/tcpdump-study-pt1.html
+> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
 
 ```bash
 # クライアントからサーバーへのSYNCリクエスト
@@ -389,7 +389,7 @@ $ tcpdump <コマンド/オプション> \
 
 `ping`コマンドの宛先で、通信を受信できていることを確認する。
 
-> ↪️：https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/
+> - https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/
 
 ```bash
 # デフォルトでは、eth0のパケットを確認する。。
@@ -406,7 +406,7 @@ $ tcpdump icmp -i eth0
 $ tcpdump -i eth0
 ```
 
-> ↪️：https://qiita.com/tossh/items/4cd33693965ef231bd2a
+> - https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
 <br>
 
@@ -414,7 +414,7 @@ $ tcpdump -i eth0
 
 全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を取得する。
 
-> ↪️：https://go-journey.club/archives/1472
+> - https://go-journey.club/archives/1472
 
 ```bash
 $ tcpdump -nn ip
@@ -428,7 +428,7 @@ $ tcpdump -nn ip
 
 全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を取得する。
 
-> ↪️：https://go-journey.club/archives/1472
+> - https://go-journey.club/archives/1472
 
 ```bash
 $ tcpdump -nn port 80
@@ -442,7 +442,7 @@ $ tcpdump -nn port 80
 
 パケットを宛先情報でフィルタリングし、パケットを取得する。
 
-> ↪️：https://orebibou.com/ja/home/201505/20150525_001/
+> - https://orebibou.com/ja/home/201505/20150525_001/
 
 #### ▼ port
 
@@ -460,7 +460,7 @@ $ tcpdump dst port 80
 
 パケットを送信元情報でフィルタリングし、パケットを取得する。
 
-> ↪️：https://orebibou.com/ja/home/201505/20150525_001/
+> - https://orebibou.com/ja/home/201505/20150525_001/
 
 #### ▼ port
 
@@ -532,7 +532,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 ...
 ```
 
-> ↪️：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
+> - https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
 
 <br>
 
@@ -616,7 +616,7 @@ $ traceroute *.*.*.* -T -p 443
 
 ### tracepath
 
-> ↪️：https://qiita.com/chellwo/items/d81f35944aec09bd9a84#tracepath
+> - https://qiita.com/chellwo/items/d81f35944aec09bd9a84#tracepath
 
 **＊例＊**
 
@@ -640,7 +640,7 @@ $ tracepath -n google.com
 
 `traceroute`コマンドのバージョンによっては、`-T`オプションがない場合があり、代わりとして`tcptraceroute`コマンドを使用する。
 
-> ↪️：https://succzero.hatenablog.com/entry/2013/09/01/181615
+> - https://succzero.hatenablog.com/entry/2013/09/01/181615
 
 **＊例＊**
 

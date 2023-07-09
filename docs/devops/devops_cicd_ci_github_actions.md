@@ -9,7 +9,7 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -92,7 +92,7 @@ jobs:
 
 使用するOSに応じて、いくつかの汎用的なソフトウェアがプリインストールされている。
 
-> ↪️：https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
+> - https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
 
 <br>
 
@@ -117,7 +117,7 @@ jobs:
           echo success
 ```
 
-> ↪️：https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
+> - https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
 
 #### ▼ if
 
@@ -138,7 +138,7 @@ jobs:
           echo success
 ```
 
-> ↪️：https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
+> - https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
 
 #### ▼ run
 
@@ -169,7 +169,7 @@ jobs:
         uses: actions/checkout@v2
 ```
 
-> ↪️：https://github.com/marketplace?category=&query=&type=actions&verification=
+> - https://github.com/marketplace?category=&query=&type=actions&verification=
 
 #### ▼ with
 
@@ -284,7 +284,7 @@ runs:
         echo ${{ inputs.foo }}
 ```
 
-> ↪️：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
+> - https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
 
 #### ▼ Checkoutは使用不可
 
@@ -316,7 +316,7 @@ runs:
         echo foo
 ```
 
-> ↪️：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
+> - https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
 
 <br>
 
@@ -348,7 +348,7 @@ jobs:
           echo ${{ env.FOO }}
 ```
 
-> ↪️：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+> - https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 <br>
 
@@ -372,7 +372,7 @@ jobs:
           echo ${{ env.FOO }}
 ```
 
-> ↪️：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+> - https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 #### ▼ 環境ファイル
 
@@ -395,7 +395,7 @@ jobs:
 
 注意点として、マスキングされた値は入力できない。
 
-> ↪️：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+> - https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 
 <br>
 
@@ -419,7 +419,7 @@ jobs:
           echo ${{ env.FOO }}
 ```
 
-> ↪️：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+> - https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 <br>
 
@@ -466,7 +466,7 @@ runs:
         FOO=${{ inputs.bar }}
 ```
 
-> ↪️：https://zenn.dev/kinjosan/articles/bd82e07aa69080
+> - https://zenn.dev/kinjosan/articles/bd82e07aa69080
 
 これに関しては以前は非対応であったため、`add-mask`コマンドを使用した方法がネット上で見つかることに注意する。
 
@@ -529,7 +529,7 @@ jobs:
           echo ${{ secrets.FOO }}
 ```
 
-> ↪️：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
+> - https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
 
 #### ▼ Actionレベル (Environment Secrets)
 
@@ -585,7 +585,7 @@ jobs:
           source ./bar.sh
 ```
 
-> ↪️：https://stackoverflow.com/a/61428342
+> - https://stackoverflow.com/a/61428342
 
 <br>
 
@@ -660,7 +660,7 @@ jobs:
           echo $FOO
 ```
 
-> ↪️：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
+> - https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
 
 <br>
 
@@ -683,7 +683,7 @@ jobs:
           echo "::set-output name=FOO::foo"
 ```
 
-> ↪️：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
+> - https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
 #### ▼ 同じstep内では使用不可
 
@@ -723,7 +723,7 @@ jobs:
           echo "${{ steps.foo_id.outputs.FOO }}"
 ```
 
-> ↪️：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
+> - https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
 
 Secretsや`add-mask`コマンドでマスキングされた値も共有でき、またマスキングを維持できる。
 

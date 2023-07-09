@@ -9,7 +9,7 @@ description: カスタムリソース＠Kubernetesの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -267,7 +267,7 @@ kind: Foo
 spec: ...
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ plural
 
@@ -289,7 +289,7 @@ spec:
 $ kubectl get foos
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ singular
 
@@ -311,7 +311,7 @@ spec:
 $ kubectl get foo
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ shortNames
 
@@ -334,7 +334,7 @@ spec:
 $ kubectl get fo
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 <br>
 
@@ -362,7 +362,7 @@ spec:
   ...
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#specify-multiple-versions
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#specify-multiple-versions
 
 #### ▼ name
 
@@ -380,7 +380,7 @@ spec:
     - name: v1
 ```
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 #### ▼ served
 
@@ -398,7 +398,7 @@ spec:
     - served: true
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 #### ▼ schema
 

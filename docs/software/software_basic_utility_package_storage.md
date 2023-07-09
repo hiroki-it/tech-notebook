@@ -9,7 +9,7 @@ description: ストレージ系＠パッケージの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: ストレージ系＠パッケージの知見を記録していま�
 
 パーティションのデバイスファイル名を指定し、パーティションのサイズを拡張する。
 
-> ↪️：https://blog.denet.co.jp/try-growpart/
+> - https://blog.denet.co.jp/try-growpart/
 
 ```bash
 $ growpart <パーティションのデバイスファイル名> <パーティションの番号>
@@ -108,7 +108,7 @@ $ growpart --dry-run /dev/xvda 1
 
 ファイルシステムを指定し、ファイルシステムのサイズを拡張する。
 
-> ↪️：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a069expandlvm.html
+> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a069expandlvm.html
 
 ```bash
 # 空き領域の100%を使用して拡張する。

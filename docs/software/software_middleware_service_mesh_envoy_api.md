@@ -9,7 +9,7 @@ description: API＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -94,7 +94,7 @@ $ kubectl exec \
 ]
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
+> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
 
 <br>
 
@@ -109,7 +109,7 @@ $ kubectl exec \
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/clusters
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
 <br>
 
@@ -188,7 +188,7 @@ $ kubectl exec \
 - version_info
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
 
 <br>
 
@@ -232,7 +232,7 @@ $ kubectl exec \
 - version_info
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
 #### ▼ `dynamic_endpoint_configs`キー
 
@@ -329,7 +329,7 @@ configs:
     ...
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
 
 <br>
 
@@ -344,7 +344,7 @@ configs:
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
 
 #### ▼ dynamic_active_clusters
 
@@ -454,7 +454,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
 
 **＊例＊**
 
@@ -516,7 +516,7 @@ configs:
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
 
 **＊例＊**
 

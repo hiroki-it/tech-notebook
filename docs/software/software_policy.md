@@ -9,7 +9,7 @@ description: 設計ポリシー＠ソフトウェアの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: 設計ポリシー＠ソフトウェアの知見を記録してい�
 
 マイナーバージョンごとにアップグレードを検証する。
 
-> ↪️：https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33
+> - https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33
 
 #### ▼ 対応日時の決定
 

@@ -9,7 +9,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -38,7 +38,7 @@ SPAでは、ページ全体の静的ファイルをリクエストするのは�
 
 ![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SPアプリにおけるデータ通信の仕組み.png)
 
-> ↪️：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
+> - https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 
 <br>
 
@@ -52,7 +52,7 @@ Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるよう�
 
 詳しくは、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html
 
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
 
@@ -66,13 +66,13 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
 
-> ↪️：https://www.switchitmaker2.com/seo/spa/
+> - https://www.switchitmaker2.com/seo/spa/
 
 #### ▼ SEO
 
 SPAは、Googleのクローラーがページを認識しにくく、Webページがインデックスされない可能性がある。
 
-> ↪️：https://www.switchitmaker2.com/seo/spa/
+> - https://www.switchitmaker2.com/seo/spa/
 
 <br>
 
@@ -137,7 +137,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度レンダリングされる。
 
-> ↪️：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
+> - https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
 
 <br>
 
@@ -147,7 +147,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 フロントエンドを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
 
-> ↪️：https://atomicdesign.bradfrost.com/
+> - https://atomicdesign.bradfrost.com/
 
 <br>
 
@@ -155,7 +155,7 @@ SSGとは異なり、事前にビルドせず、静的ファイルを作成し�
 
 Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
-> ↪️：https://tec.tecotec.co.jp/entry/2020/03/27/090000
+> - https://tec.tecotec.co.jp/entry/2020/03/27/090000
 
 | Nuxt.jsのディレクトリ | Atomic Designのレイヤー     |
 | --------------------- | --------------------------- |

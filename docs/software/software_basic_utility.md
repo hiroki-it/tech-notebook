@@ -9,7 +9,7 @@ description: ユーティリティ (サービスプログラム) ＠基本ソフ
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: ユーティリティ (サービスプログラム) ＠基本ソフ
 
 ### Unix系の標準ユーティリティ
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html
 
 <br>
 

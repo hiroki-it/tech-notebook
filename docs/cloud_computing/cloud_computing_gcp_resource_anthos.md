@@ -9,7 +9,7 @@ description: Anthos＠GCPリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -51,7 +51,7 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 #### ▼ Anthos、Kubernetesのバージョンの対応
 
-> ↪️：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
+> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
 
 <br>
 
@@ -72,7 +72,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 サービスディスカバリーとして、`istio-proxy`コンテナに他の宛先の情報を提供する。
 
-> ↪️：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
+> - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
 
 #### ▼ Mesh CA
 
@@ -80,7 +80,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 また、SSL証明書が失効すれば更新する。
 
-> ↪️：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=27
+> - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=27
 
 <br>
 
@@ -92,7 +92,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management.png)
 
-> ↪️：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
+> - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
 
 #### ▼ acm-operatorの仕組み
 
@@ -118,7 +118,7 @@ Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他ク
 
 これにより、Anthos GKE ClusterはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
 
-> ↪️：https://www.jetstack.io/blog/anthos-aws/
+> - https://www.jetstack.io/blog/anthos-aws/
 
 <br>
 
@@ -130,7 +130,7 @@ GCP上で`kubectl`コマンドを実行して各クラウドプロバイダー�
 
 ![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png)
 
-> ↪️：https://www.topgate.co.jp/anthos-gke#connect-gateway
+> - https://www.topgate.co.jp/anthos-gke#connect-gateway
 
 #### ▼ fleet-workload-identity
 
@@ -138,13 +138,13 @@ GCP側のアカウント情報と、各クラウドプロバイダーのAnthos�
 
 これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 
-> ↪️：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
+> - https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
 
 #### ▼ anetd
 
 cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
 
-> ↪️：https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
 
 <br>
 
@@ -160,7 +160,7 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 ![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png)
 
-> ↪️：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
+> - https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
 
 <br>
 
@@ -274,7 +274,7 @@ CRDの設定値を変更し、kube-apiserverに送信する。
 $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 ```
 
-> ↪️：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
+> - https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
 
 <br>
 

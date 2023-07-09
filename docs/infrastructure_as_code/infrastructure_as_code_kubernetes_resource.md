@@ -9,7 +9,7 @@ description: Kubernetesリソース＠Kubernetesの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 マニフェストによって量産されたKubernetesリソースのインスタンスのこと。
 
-> ↪️：https://qiita.com/cvusk/items/773e222e0971a5391a51
+> - https://qiita.com/cvusk/items/773e222e0971a5391a51
 
 <br>
 
@@ -35,7 +35,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 コンテナの実行に関する機能を提供する。
 
-> ↪️：https://thinkit.co.jp/article/13542
+> - https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -89,7 +89,7 @@ PodTemplate (`.spec.template`キー) を変更した場合、Deploymentは新し
 
 ![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png)
 
-> ↪️：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
+> - https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
 
 #### ▼ Podのレプリカ数の維持
 
@@ -97,13 +97,13 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数を増やす。
 
-> ↪️：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
+> - https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
 #### ▼ PersistentVolumeとの関係性
 
 DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有する。
 
-> ↪️：https://www.amazon.com/dp/1617297615
+> - https://www.amazon.com/dp/1617297615
 
 ![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png)
 
@@ -174,7 +174,7 @@ Kubernetesリソースを配置するサーバーのこと。
 
 Podを単位として、コンテナ起動/停止や水平スケールアウト/スケールインを実行する。
 
-> ↪️：https://kubernetes.io/docs/concepts/workloads/pods/
+> - https://kubernetes.io/docs/concepts/workloads/pods/
 
 **＊例＊**
 
@@ -202,7 +202,7 @@ $ kubectl describe node <ワーカーNode名> | grep -i taint
 Taints: <none>
 ```
 
-> ↪️：https://stackoverflow.com/questions/43147941/allow-scheduling-of-pods-on-kubernetes-master
+> - https://stackoverflow.com/questions/43147941/allow-scheduling-of-pods-on-kubernetes-master
 
 ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。
 
@@ -302,7 +302,7 @@ status:
 | Evicted   | Nodeのハードウェアリソース不足のため、Podが退避対象となった。`Evicted`が理由の場合、`Failed`フェーズが最後となる。 |
 | Unknown   | 原因が不明である。                                                                                                 |
 
-> ↪️：https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/developer_guide/diagnosing-evicted-pod
+> - https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/developer_guide/diagnosing-evicted-pod
 
 #### ▼ CrashLoopBackOffのデバッグ
 
@@ -341,7 +341,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 補足として、サービスメッシュツール (例：Istio、Linkerd) のサイドカーを持つPodを安全に削除する場合も、サイドカーコンテナが停止した上でPodを削除できるように、Podの削除プロセスの完了を待機する必要がある。
 
-> ↪️：https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
@@ -401,7 +401,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 | `m`：millicores | `1`コア = `1000`ユニット = `1000`m |
 | `Mi`：mebibyte  | `1`Mi = `1.04858`MB                |
 
-> ↪️：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
+> - https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 #### ▼ クライアントがPod内のログを参照できる仕組み
 
@@ -419,11 +419,11 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png)
 
-> ↪️：https://www.creationline.com/lab/29281
+> - https://www.creationline.com/lab/29281
 
 補足として、DaemonSetとして稼働するFluentdは、Nodeの`/var/log`ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
 
-> ↪️：https://note.com/shift_tech/n/n503b32e5cd35
+> - https://note.com/shift_tech/n/n503b32e5cd35
 
 #### ▼ 待ち受けるポート番号の確認
 
@@ -501,7 +501,7 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 
 そのためDeploymentやReplicaSetと比べて、全てのPodが揃うのに時間がかかる。
 
-> ↪️：https://thinkit.co.jp/article/13611
+> - https://thinkit.co.jp/article/13611
 
 <br>
 
@@ -527,7 +527,7 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 ![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_endpoint-slices.png)
 
-> ↪️：https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api
+> - https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api
 
 <br>
 
@@ -558,7 +558,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 ![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_path.png)
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout
 
 #### ▼ ホストベースルーティング
 
@@ -568,7 +568,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 ![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png)
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting
 
 <br>
 
@@ -638,7 +638,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 これを使用すれば、ClusterIP Serviceでも、クラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
 
-> ↪️：https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8
+> - https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8
 
 #### ▼ NodePort Service
 
@@ -694,7 +694,7 @@ Serviceのポート番号と紐づくNodeのNICのポート番号はデフォル
 
 一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
 
-> ↪️：https://stackoverflow.com/a/64605782
+> - https://stackoverflow.com/a/64605782
 
 #### ▼ LoadBalancer Service
 
@@ -728,7 +728,7 @@ Pod
 
 Serviceに対するインバウンド通信をCNAMEレコードを介してPodにルーティングする。
 
-> ↪️：https://thinkit.co.jp/article/13739
+> - https://thinkit.co.jp/article/13739
 
 #### ▼ Headless Service
 
@@ -765,7 +765,7 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 <Pod名>.<Serviceの完全修飾ドメイン名>. 30 IN A 10.8.0.30
 ```
 
-> ↪️：https://thinkit.co.jp/article/13739
+> - https://thinkit.co.jp/article/13739
 
 <br>
 
@@ -775,7 +775,7 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 Cluster全体に渡る機能を提供する。
 
-> ↪️：https://thinkit.co.jp/article/13542
+> - https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -796,13 +796,13 @@ Namespaceが異なれば、`.metadata`キーに同じ値 (例：同じ名前、�
 | `kube-public`     | 全てのクライアント (`kubectl`クライアント、Kubernetesリソース) に公開しても良いKubernetesリソースを配置する。 |
 | `kube-system`     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。                      |
 
-> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
 
 #### ▼ NamespaceがTerminatingのままになる
 
 以下の方法で対処する。
 
-> ↪️：https://komeiy.hatenablog.com/entry/2019/07/28/232356
+> - https://komeiy.hatenablog.com/entry/2019/07/28/232356
 
 <br>
 
@@ -843,7 +843,7 @@ Namespaceが異なれば、`.metadata`キーに同じ値 (例：同じ名前、�
 
 永続化されている間は`base64`方式でエンコードされており、デコードした上で、変数やファイルとして対象のPodに出力する。
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets
+> - https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets
 
 #### ▼ 機密ではない変数の例
 
@@ -859,13 +859,13 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 
 Secretに永続化された値を復号化し、`kubectl`コマンドにパラメーターとして出力できる。
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets
+> - https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets
 
 #### ▼ コンテナの環境変数として
 
 永続化された値を復号化し、Pod内のコンテナに環境変数として出力できる。
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
+> - https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
 <br>
 
@@ -883,7 +883,7 @@ Kubernetesで作成できるストレージは、作成場所で種類を分け�
 | Node内ストレージ | HostPath       | HostPath、Local  |
 | Node外ストレージ | 外部ストレージ | 外部ストレージ   |
 
-> ↪️：https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
 <br>
 
@@ -922,11 +922,11 @@ $ kubectl exec -n prometheus foo-pod -- df -hT
 
 ただし、CrashLoopBackOffなどが理由で、コンテナがそもそも起動しない場合、この方法で確認できない。
 
-> ↪️：https://stackoverflow.com/questions/53200828/how-to-identify-the-storage-space-left-in-a-persistent-volume-claim
+> - https://stackoverflow.com/questions/53200828/how-to-identify-the-storage-space-left-in-a-persistent-volume-claim
 
 また、Grafanaのkubernetes-mixinsには、起動中のPodのPersistentVolumeの使用率を可視化できるダッシュボードがある。
 
-> ↪️：https://github.com/monitoring-mixins/website/blob/master/assets/kubernetes/dashboards/persistentvolumesusage.json
+> - https://github.com/monitoring-mixins/website/blob/master/assets/kubernetes/dashboards/persistentvolumesusage.json
 
 #### ▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffの場合)
 
@@ -1017,7 +1017,7 @@ StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サ�
 
 Podの`.spec.volumes`キーで指定する。
 
-> ↪️：https://thinkit.co.jp/article/14195
+> - https://thinkit.co.jp/article/14195
 
 Dockerのボリュームとは独立した機能であることに注意する。
 
@@ -1165,7 +1165,7 @@ Podの`.spec.volumes`キーでPersistentVolumeClaimを宣言すれば、Volume�
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-> ↪️：https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
+> - https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
 
 #### ▼ 削除できない
 
@@ -1196,7 +1196,7 @@ metadata:
 spec: ...
 ```
 
-> ↪️：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
+> - https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
 
 #### ▼ node affinity conflict
 
@@ -1291,7 +1291,7 @@ $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 
 PVCの値が変われば、使用するPVを変えられる。
 
-> ↪️：https://stackoverflow.com/questions/40335179/can-a-persistent-volume-be-resized
+> - https://stackoverflow.com/questions/40335179/can-a-persistent-volume-be-resized
 
 <br>
 
@@ -1314,7 +1314,7 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 
 #### ▼ AWS EBSを要求する場合
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html
 
 <br>
 
@@ -1330,7 +1330,7 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 
 別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。
 
-> ↪️：https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
+> - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
 
 <br>
 
@@ -1364,7 +1364,7 @@ ServiceAccountは、ServiceAccount本体、service-account-controller、token-co
 | token-controller                     | ServiceAccount用のSecretの作成をポーリングし、Secretにトークン文字列を追加する。一方で、Secretの削除をポーリングし、ServiceAccountからSecretの指定を削除する。また、ServiceAccountの削除をポーリングし、token-controllerはSecretのトークン文字列を自動的に削除する。 |
 | service-account-admission-controller | AdmissionWebhookの仕組みの中で、Podの作成時に、Volume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナにマウントする。トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。                    |
 
-> ↪️：https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details
+> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details
 
 #### ▼ ServiceAccountのユーザー名
 
@@ -1431,7 +1431,7 @@ ClusterスコープなKubernetesリソースやカスタムリソース (Namespa
 
 Role、ClusterRole、を使用して認可スコープを制御する仕組みのこと。
 
-> ↪️：https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <br>
 

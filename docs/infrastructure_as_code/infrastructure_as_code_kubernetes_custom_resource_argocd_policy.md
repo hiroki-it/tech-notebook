@@ -9,7 +9,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ ArgoCDのApplicationと、ポーリング対象のClusterを別々のClusterで�
 
 複数のClusterにデプロイするApplicationを管理しやすい。
 
-> ↪️：https://twitter.com/yaml_villager/status/1625857205928075267
+> - https://twitter.com/yaml_villager/status/1625857205928075267
 
 <br>
 
@@ -51,7 +51,7 @@ ArgoCDのApplicationと、ポーリング対象のClusterを別々のClusterで�
 
 GitOpsのベストプラクティスに則って、アプリケーションリポジトリとマニフェストリポジトリに分割する。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices
 
 #### ▼ アプリ領域
 
@@ -133,7 +133,7 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 └── prd/
 ```
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
+> - https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
 <br>
 
@@ -230,7 +230,7 @@ child-argocd-repository/
 
 記入中...
 
-> ↪️：https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
+> - https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
 
 <br>
 
@@ -352,7 +352,7 @@ ArgoCDをServiceAccountで認証し、またClusterRoleで認可する。
 
 記入中...
 
-> ↪️：https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
+> - https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
 
 <br>
 
@@ -386,7 +386,7 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
 これらの場合には、以下の手順でApplicationを削除する。
 
-> ↪️：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
+> - https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
 `【１】`
 
@@ -404,7 +404,7 @@ $ kubectl patch crd applications.argoproj.io \
     --type=merge
 ```
 
-> ↪️：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+> - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
 `【３】`
 
@@ -428,7 +428,7 @@ $ kubectl patch ns argocd \
 
 Helmで、チャートのキャッシュ機能が実装されれば、ArgoCDのフリーズも解消できるはずである。
 
-> ↪️：https://github.com/helm/community/pull/185
+> - https://github.com/helm/community/pull/185
 
 <br>
 
@@ -453,7 +453,7 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの`Progressing`状態でスタックすることがある。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
+> - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
 
 <br>
 
@@ -562,7 +562,7 @@ GitOpsを採用できないため、CIOpsになる。
 
 本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。
 
-> ↪️：https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
+> - https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
 
 <br>
 
@@ -578,7 +578,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 そこで、異なるCluster用のArgoCDを単一のClusterで管理する場合、以下方法でマルチテナントを実現する。
 
-> ↪️：https://akuity.io/blog/argo-cd-architectures-explained/
+> - https://akuity.io/blog/argo-cd-architectures-explained/
 
 <br>
 
@@ -604,7 +604,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 各テナントは、ArgoCDを共有しない。
 
-> ↪️：https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
 <br>
 

@@ -9,7 +9,7 @@ description: コマンド＠Minikubeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ Minikubeのアドオンを操作する。
 
 アドオンを有効化するか否かを設定する。
 
-> ↪️：https://minikube.sigs.k8s.io/docs/commands/addons/
+> - https://minikube.sigs.k8s.io/docs/commands/addons/
 
 **＊例＊**
 
@@ -33,7 +33,7 @@ Minikubeのアドオンを操作する。
 
 本番環境では、同じくNginx Ingressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
 
-> ↪️：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+> - https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
 ```bash
 $ minikube addons enable ingress
@@ -106,7 +106,7 @@ $ minikube start --cni=bridge
 $ minikube start --cni=cilium
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/commands/start/
+> - https://minikube.sigs.k8s.io/docs/commands/start/
 
 <br>
 
@@ -230,7 +230,7 @@ docker-env:
 	eval $(shell minikube -p minikube docker-env)
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/commands/docker-env/
+> - https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
 #### ▼ -u
 
@@ -333,7 +333,7 @@ $ kubectl label node minikube-m02 node-type=deploy
 $ kubectl label node minikube-m02 node-type=ingress
 ```
 
-> ↪️：https://qiita.com/zaburo/items/efd7315161281d9822ed
+> - https://qiita.com/zaburo/items/efd7315161281d9822ed
 
 <br>
 
@@ -361,7 +361,7 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 📌  NOTE: This process must stay alive for the mount to be accessible ...
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/mount/
+> - https://minikube.sigs.k8s.io/docs/handbook/mount/
 
 <br>
 
@@ -376,7 +376,7 @@ $ minikube update-context
 💗  Current context is "minikube"
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/commands/update-context/
+> - https://minikube.sigs.k8s.io/docs/commands/update-context/
 
 <br>
 
@@ -425,7 +425,7 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
-> ↪️：https://mome-n.com/posts/minikube-service-fixed-port/
+> - https://mome-n.com/posts/minikube-service-fixed-port/
 
 ServiceのIPアドレスがNodeのIPアドレスと一致することは、`minikube ip`コマンドから確認できる。
 
@@ -444,7 +444,7 @@ $ minikube ssh
 $ curl -X GET http://*.*.*.*:57761
 ```
 
-> ↪️：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
+> - https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
 #### ▼ list
 
@@ -628,7 +628,7 @@ NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/commands/start/
+> - https://minikube.sigs.k8s.io/docs/commands/start/
 
 #### ▼ --container-runtime
 
@@ -652,7 +652,7 @@ $ minikube start --container-runtime=containerd
 $ minikube start --container-runtime=cri-o
 ```
 
-> ↪️：https://github.com/kubernetes/minikube/issues/11101#issuecomment-819917618
+> - https://github.com/kubernetes/minikube/issues/11101#issuecomment-819917618
 
 #### ▼ --cpus、--memory
 
@@ -722,7 +722,7 @@ $ minikube start --docker-env
 $ minikube start --driver=virtualbox
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/drivers/
+> - https://minikube.sigs.k8s.io/docs/drivers/
 
 #### ▼ --kubernetes-vsersion
 
@@ -732,7 +732,7 @@ Minikubeで稼働させるKubernetesのバージョンを指定しつつ、`star
 $ minikube start --kubernetes-version=v1.23.0
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
+> - https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
 #### ▼ --mount、--mount--string
 
@@ -791,7 +791,7 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.3   minikub
 nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikube-m02   <none>           <none>
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+> - https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
 #### ▼ --profile
 
@@ -849,6 +849,6 @@ $ minikube tunnel
 $ minikube start --alsologtostderr
 ```
 
-> ↪️：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
+> - https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
 
 <br>

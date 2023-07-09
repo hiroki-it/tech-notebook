@@ -9,7 +9,7 @@ description: Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ $ yum install -y epel-release
 $ yum install -y golang
 ```
 
-> ↪️：https://www.cyberithub.com/install-go-on-centos/
+> - https://www.cyberithub.com/install-go-on-centos/
 
 <br>
 
@@ -221,7 +221,7 @@ Goでは文の処理はセミコロンで区切られる。
 
 Goの命名規則は、GitHubのWikiに記載されている。
 
-> ↪️：https://github.com/golang/go/wiki/CodeReviewComments
+> - https://github.com/golang/go/wiki/CodeReviewComments
 
 #### ▼ ディレクトリ名
 
@@ -237,7 +237,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 ただし、テストファイルに関しては、パッケージ名を『`foo_test`』として良い。
 
-> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#package-names
+> - https://github.com/golang/go/wiki/CodeReviewComments#package-names
 
 #### ▼ モジュール名
 
@@ -251,7 +251,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 例えばドメイン駆動設計の場合、ルートエンティティのファイル名とパッケージ名を合わせるように工夫できる。
 
-> ↪️：https://ja.stackoverflow.com/q/41599
+> - https://ja.stackoverflow.com/q/41599
 
 #### ▼ 関数、type、構造体
 
@@ -261,7 +261,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 末尾に『`er`』をつける。
 
-> ↪️：https://golang.org/doc/effective_go#interface-names
+> - https://golang.org/doc/effective_go#interface-names
 
 #### ▼ レシーバ名
 
@@ -292,13 +292,13 @@ httpClientであれば、修飾語は『`http`』被修飾語『`client`』で�
 
 ただし、スコープの大きな変数に省略した名前をつけると、重複する可能性があるため、省略せずにローワーキャメルケースで命名しても良い。
 
-> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#variable-names
+> - https://github.com/golang/go/wiki/CodeReviewComments#variable-names
 
 省略名については、略語検索サイトで探す。
 
 代わりに、Goリファレンスからその単語がどう省略されているかを探しても良い。
 
-> ↪️：https://www.allacronyms.com/
+> - https://www.allacronyms.com/
 
 #### ▼ モックの変数
 
@@ -346,13 +346,13 @@ func main() {
 
 記入中...
 
-> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
+> - https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
 
 #### ▼ Uber風のお作法
 
 Uber社が採用しているお作法。
 
-> ↪️：https://github.com/uber-go/guide/blob/master/style.md
+> - https://github.com/uber-go/guide/blob/master/style.md
 
 #### ▼ イミュータブルにできない
 

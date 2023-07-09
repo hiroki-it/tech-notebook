@@ -9,7 +9,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -50,7 +50,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 : コンテキストマップを作成し、境界付けられたコンテキスト間の関係を明らかにする。
 
-> ↪️：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 <br>
 
@@ -82,7 +82,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 : 運用後に問題が発生した場合、特にオブジェクト図とドメインモデル図を修正する。場合によっては、デザインパターンに切り分ける。
 
-> ↪️：https://booth.pm/ja/items/3363104
+> - https://booth.pm/ja/items/3363104
 
 <br>
 
@@ -108,7 +108,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 例えば、ToCなドメインとしては、マーケーティング部による業務 (ユーザー集客業務、広告運用業務) がある。
 
-> ↪️：https://github.com/little-hands/ddd-q-and-a/issues/191
+> - https://github.com/little-hands/ddd-q-and-a/issues/191
 
 **＊例＊**
 
@@ -122,7 +122,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet_advertising_agency_domain.png)
 
-> ↪️：https://labs.septeni.co.jp/entry/2021/04/15/130000
+> - https://labs.septeni.co.jp/entry/2021/04/15/130000
 
 **＊例＊**
 
@@ -198,7 +198,7 @@ ECサイトを運営するアスクルの例。
 
 配送/注文/商品/ユーザ管理/在庫/受注をそれぞれサブドメインとしている (コアドメインは明言されていない) 。
 
-> ↪️：https://speakerdeck.com/askul/ddd-and-clean-architecture-at-lohaco?slide=28
+> - https://speakerdeck.com/askul/ddd-and-clean-architecture-at-lohaco?slide=28
 
 <br>
 
@@ -212,7 +212,7 @@ ECサイトを運営するアスクルの例。
 
 ![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain-model.png)
 
-> ↪️：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
+> - https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
 
 <br>
 
@@ -250,7 +250,7 @@ ECサイトを運営するアスクルの例。
 
 ![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
 
-> ↪️：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
+> - https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
 
 **＊例＊**
 
@@ -292,7 +292,7 @@ ECサイトを運営するアスクルの例。
 
 ![freee_bounded-context.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
 
-> ↪️：https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
+> - https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
 
 <br>
 
@@ -312,7 +312,7 @@ ECサイトを運営するアスクルの例。
 
 ![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/context-map.png)
 
-> ↪️：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 #### ▼ 記法
 
@@ -360,7 +360,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png)
 
-> ↪️：https://www.amazon.co.jp/dp/4798121967
+> - https://www.amazon.co.jp/dp/4798121967
 
 #### ▼ ヘキサゴナルアーキテクチャ
 
@@ -374,7 +374,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 本質的には、他の『オニオンアーキテクチャ』『クリーンアーキテクチャ』に同じである。
 
-> ↪️：https://www.amazon.co.jp/dp/B00UX9VJGW/ref=cm_sw_r_tw_dp_S20HJ24MHWTSED7T0ZCP
+> - https://www.amazon.co.jp/dp/B00UX9VJGW/ref=cm_sw_r_tw_dp_S20HJ24MHWTSED7T0ZCP
 
 #### ▼ オニオンアーキテクチャ
 
@@ -405,7 +405,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
-> ↪️：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+> - https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
 <br>
 
@@ -413,7 +413,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 #### ▼ DDDデザインパターン集
 
-> ↪️：https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
+> - https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
 
 <br>
 
@@ -438,7 +438,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 ![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 
-> ↪️：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 #### ▼ 記法
 

@@ -9,7 +9,7 @@ description: SNS＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -36,7 +36,7 @@ description: SNS＠AWSリソースの知見を記録しています。
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | サブスクリプション       | サブスクリプションを登録する。                                                                                                                                        |
 | アクセスポリシー         | トピックへの認可スコープを設定する。                                                                                                                                  |
-| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>↪️：https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
+| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>- https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
 | 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する。                                                                                            |
 | 暗号化                   |                                                                                                                                                                       |
 

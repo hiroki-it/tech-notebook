@@ -9,7 +9,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -49,7 +49,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
 
-> ↪️：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
+> - https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
 
 ```bash
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --target dev .
@@ -444,7 +444,7 @@ ff02::2	ip6-allrouters
 
 指定したホストポートとコンテナポートのマッピングを実行する。`--publish-all`オプションではホストポートをランダムに選択してポートマッピングを実行する。
 
-> ↪️：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+> - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
 $ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
@@ -458,7 +458,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイ�
 
 補足として、プロセスの受信するポートと合わせる必要がある。
 
-> ↪️：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+> - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
 $ docker run -d -it --name <コンテナ名> --expose=80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
@@ -544,13 +544,13 @@ $ docker start -i <停止中コンテナ名>
 
 コンテナイメージを署名する。
 
-> ↪️：https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
+> - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
 
 #### ▼ inspect
 
 署名されたコンテナイメージか否かを確認する。
 
-> ↪️：https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/
+> - https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/
 
 ```bash
 $ docker trust inspect <コンテナイメージ名>:<バージョンタグ>

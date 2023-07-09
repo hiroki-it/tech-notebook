@@ -9,7 +9,7 @@ description: トークン＠認証の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -60,7 +60,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 JWTは以下のサイトから取得できる。
 
-> ↪️：https://jwt.io/
+> - https://jwt.io/
 
 JWTの作成時に、例えばJavaScriptであれば、以下のような処理が実行されている。
 
@@ -148,7 +148,7 @@ const signature = HMACSHA256(
 
 記入中...
 
-> ↪️：https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token
+> - https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token
 
 <br>
 
@@ -156,7 +156,7 @@ const signature = HMACSHA256(
 
 記入中...
 
-> ↪️：https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token
+> - https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token
 
 <br>
 
@@ -164,4 +164,4 @@ const signature = HMACSHA256(
 
 記入中...
 
-> ↪️：https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto
+> - https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto

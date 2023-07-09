@@ -9,7 +9,7 @@ description: Checkov＠脆弱性テストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ $ pip3 install checkov
 $ brew install checkov
 ```
 
-> ↪️：https://www.checkov.io/2.Basics/Installing%20Checkov.html
+> - https://www.checkov.io/2.Basics/Installing%20Checkov.html
 
 <br>
 

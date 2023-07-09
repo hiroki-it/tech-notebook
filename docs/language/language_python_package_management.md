@@ -9,7 +9,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 ### セットアップ
 
-> ↪️：https://pip.pypa.io/en/stable/installation/
+> - https://pip.pypa.io/en/stable/installation/
 
 <br>
 
@@ -65,7 +65,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 $ pip3 install <パッケージ名>
 ```
 
-> ↪️：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
+> - https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
 
 #### ▼ --upgrade
 
@@ -92,7 +92,7 @@ $ pip3 freeze --local \
     | xargs -n1 pip3 install -U
 ```
 
-> ↪️：https://gist.github.com/e8l/c20ab194091dd02fafe7
+> - https://gist.github.com/e8l/c20ab194091dd02fafe7
 
 pip自身をアップグレードする。
 
@@ -100,7 +100,7 @@ pip自身をアップグレードする。
 $ pip3 install --upgrade pip
 ```
 
-> ↪️：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
+> - https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
 
 #### ▼ --user
 
@@ -143,7 +143,7 @@ $ pip3 freeze >| requirements.txt
 $ pip3 freeze > uninstall.txt
 ```
 
-> ↪️：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
+> - https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
 
 <br>
 
@@ -211,7 +211,7 @@ Requires: sphinxcontrib-applehelp, imagesize, docutils, sphinxcontrib-serializin
 Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 ```
 
-> ↪️：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
+> - https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
 
 <br>
 
@@ -231,6 +231,6 @@ $ pip3 uninstall -y <パッケージ名>
 $ pip3 uninstall -y -r uninstall.txt
 ```
 
-> ↪️：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
+> - https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
 
 <br>

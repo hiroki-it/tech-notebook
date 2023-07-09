@@ -9,7 +9,7 @@ description: addon-resizer＠ハードウェアリソース管理の知見を記
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：<https://hiroki-it.github.io/tech-notebook/>
+> ↪️：<https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,9 +27,9 @@ addon-resizerは、サイドカーコンテナとして稼働し、指定した�
 
 > ↪️：
 >
-> - <https://github.com/kubernetes/autoscaler/tree/master/addon-resizer>
+> - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer>
 > - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer/deploy
-> - <https://qiita.com/superbrothers/items/650d6591aa6531bdbd08>
+> - https://qiita.com/superbrothers/items/650d6591aa6531bdbd08>
 
 <br>
 

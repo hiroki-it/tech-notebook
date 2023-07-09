@@ -13,7 +13,7 @@ WebpackをLaravelを介して操作できるパッケージのこと。
 
 Breezeパッケージにも同梱されている。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/mix.html
+> - https://readouble.com/laravel/8.x/ja/mix.html
 
 <br>
 
@@ -39,7 +39,7 @@ $ npm run watch
 
 ## 02. 認証系パッケージ
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html
 
 <br>
 
@@ -49,7 +49,7 @@ $ npm run watch
 
 #### ▼ コード
 
-> ↪️：https://github.com/BenSampo/laravel-enum
+> - https://github.com/BenSampo/laravel-enum
 
 #### ▼ Enumクラスの定義
 
@@ -185,7 +185,7 @@ return [
 
 PHPStromで、メソッドが定義された場所にジャンプできるように、`_ide_helper.php`ファイルを作成する。
 
-> ↪️：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
+> - https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
 ```bash
 $ php artisan ide-helper:generate
@@ -195,7 +195,7 @@ $ php artisan ide-helper:generate
 
 PHPStromで、LaravelのEloquentモデルでのアノテーションを自動作成する。
 
-> ↪️：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
+> - https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
 ```bash
 $ php artisan ide-helper:models
@@ -205,7 +205,7 @@ $ php artisan ide-helper:models
 
 PHPStromで、Laravelのメソッドを予測表示できるように、`phpstorm.meta.php`ファイルを作成する。
 
-> ↪️：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+> - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 
 ```bash
 $ php artisan ide-helper:meta

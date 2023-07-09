@@ -9,7 +9,7 @@ description: OpenPolicyAgent＠CNCFプロジェクトの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -36,7 +36,7 @@ DBからアカウント情報を読み出し、`.rego`ファイルのロジッ�
 
 ![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
 
-> ↪️：https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
+> - https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
 
 <br>
 
@@ -70,7 +70,7 @@ DBからアカウント情報を読み出し、`.rego`ファイルのロジッ�
 
      ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
 
-> ↪️：https://thinkit.co.jp/article/17511
+> - https://thinkit.co.jp/article/17511
 
 ```yaml
 # subordinates.jsonファイル
@@ -95,7 +95,7 @@ $ curl \
 
 : 認可スコープ定義のロジックを`.rego`形式で作成する。
 
-> ↪️：https://thinkit.co.jp/article/17511
+> - https://thinkit.co.jp/article/17511
 
 ```erlang
 package httpapi.authz

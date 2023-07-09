@@ -9,7 +9,7 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ $ apt-get install -y \
     docker-ce-cli
 ```
 
-> ↪️：https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
+> - https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
 
 `docker`プロセスをデーモンとして起動する。
 
@@ -35,7 +35,7 @@ $ apt-get install -y \
 $ systemctl start docker
 ```
 
-> ↪️：https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
+> - https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
 
 <br>
 
@@ -71,7 +71,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 また、URLを直接的に指定して、ダウンロードから解凍までを実行もできる。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#add
+> - https://docs.docker.com/engine/reference/builder/#add
 
 <br>
 
@@ -179,7 +179,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 パラメーターの記述形式には、文字列形式、`.json`形式がある。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#cmd
+> - https://docs.docker.com/engine/reference/builder/#cmd
 
 <br>
 
@@ -222,7 +222,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 設定ファイル (例：`nginx.conf`ファイル、`php.ini`ファイル) をホストからコンテナにコピーしたい時によく使用する。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#copy
+> - https://docs.docker.com/engine/reference/builder/#copy
 
 <br>
 
@@ -232,7 +232,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 イメージのプロセスの起動コマンドを実行する。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#entrypoint
+> - https://docs.docker.com/engine/reference/builder/#entrypoint
 
 <br>
 
@@ -259,7 +259,7 @@ $ docker run --rm -it <コンテナイメージ名>:<バージョンタグ> /bin
 
 OS上のコマンド処理で展開できる変数を定義できる。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#env
+> - https://docs.docker.com/engine/reference/builder/#env
 
 <br>
 
@@ -298,7 +298,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 ベースのコンテナイメージを、コンテナにインストールする。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#from
+> - https://docs.docker.com/engine/reference/builder/#from
 
 ```dockerfile
 FROM python:latest-slim
@@ -314,19 +314,19 @@ FROM python:latest-slim
 
 PHP-FPMをインストールする場合は、`php:8.0-fpm`である。
 
-> ↪️：https://hub.docker.com/_/php
+> - https://hub.docker.com/_/php
 
 #### ▼ クラウドプロバイダー (パブリック)
 
 ECRパブリックギャラリーからPHP-FPMをインストールする場合は、`public.ecr.aws/bitnami/php-fpm:latest`である。
 
-> ↪️：https://gallery.ecr.aws/bitnami/php-fpm
+> - https://gallery.ecr.aws/bitnami/php-fpm
 
 #### ▼ クラウドプロバイダー (プライベート)
 
 ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest`である。
 
-> ↪️：https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1
+> - https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1
 
 <br>
 
@@ -340,7 +340,7 @@ CIパイプライン上でコンテナイメージをビルドしていると、
 
 クラウドプロバイダーのレートリミットの方が寛容なため、クラウドプロバイダー (パブリック/プライベート) からプルする方法もよい。
 
-> ↪️：https://www.docker.com/increase-rate-limits/
+> - https://www.docker.com/increase-rate-limits/
 
 <br>
 
@@ -350,7 +350,7 @@ CIパイプライン上でコンテナイメージをビルドしていると、
 
 ただし、DockerがマシンのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
 
-> ↪️：https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
+> - https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
 
 ```dockerfile
 FROM --platform=linux/amd64 python:latest-slim
@@ -364,7 +364,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 ベースイメージ上に、ソフトウェアをインストールする。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#run
+> - https://docs.docker.com/engine/reference/builder/#run
 
 <br>
 
@@ -389,6 +389,6 @@ FROM --platform=linux/amd64 python:latest-slim
 
 また、コンテナ接続時の最初のディレクトリも定義できる。
 
-> ↪️：https://docs.docker.com/engine/reference/builder/#workdir
+> - https://docs.docker.com/engine/reference/builder/#workdir
 
 <br>

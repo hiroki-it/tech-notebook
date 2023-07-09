@@ -9,7 +9,7 @@ description: Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -228,13 +228,13 @@ Pythonの命名規則は、PEPに記載されている。
 from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名、関数名>
 ```
 
-> ↪️：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
+> - https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
 
 #### ▼ アスタリスクを使用しないこと
 
 アスタリスクによるインポートは非推奨である。
 
-> ↪️：https://python.civic-apps.com/wildcard-import/
+> - https://python.civic-apps.com/wildcard-import/
 
 #### ▼ 絶対パスを使用すること
 
@@ -275,7 +275,7 @@ def bar():
 
 複数のパッケージをインポートする場合、カンマで繋ぐこともできるが、`1`個ずつインポートした方が良い。
 
-> ↪️：https://www.tech-teacher.jp/blog/python-import/
+> - https://www.tech-teacher.jp/blog/python-import/
 
 ```python
 # import foo, bar

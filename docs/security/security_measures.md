@@ -9,7 +9,7 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 `L2` (データリンク層) から`L4` (トランスポート層) までに対するサイバー攻撃 (例：そもそものネットワークへの侵入、ポートスキャン、など) を防御する。
 
-> ↪️：https://digital-jyoshisu.com/archives/468
+> - https://digital-jyoshisu.com/archives/468
 
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
@@ -112,7 +112,7 @@ public (active)
 
 アクセスが許可されている送信元IPアドレスを確認する。
 
-> ↪️：https://kaede.jp/2018/02/11022556/
+> - https://kaede.jp/2018/02/11022556/
 
 ```bash
 $ firewall-cmd --get-active-zones
@@ -129,7 +129,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif)
 
-> ↪️：https://pc-karuma.net/windows-10-firewall-open-port/
+> - https://pc-karuma.net/windows-10-firewall-open-port/
 
 **＊例＊**
 
@@ -139,7 +139,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 パケットのデータに基づいて、パケットを許可する必要があるか否かを決める。
 
-> ↪️：https://www.rworks.jp/system/system-column/sys-entry/21277/
+> - https://www.rworks.jp/system/system-column/sys-entry/21277/
 
 <br>
 
@@ -147,7 +147,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 `L4` (トランスポート層) の段階でサイバー攻撃を遮断するファイアウォールのこと。
 
-> ↪️：https://www.rworks.jp/system/system-column/sys-entry/21277/
+> - https://www.rworks.jp/system/system-column/sys-entry/21277/
 
 <br>
 
@@ -157,7 +157,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 `L3` (ネットワーク層) から`L6` (プレゼンテーション層) までに対するサイバー攻撃 (Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃、など) を遮断するセキュリティシステムのこと。
 
-> ↪️：https://digital-jyoshisu.com/archives/468
+> - https://digital-jyoshisu.com/archives/468
 
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
@@ -183,7 +183,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 `L3` (ネットワーク層) から`L7` (アプリケーション層) までに対するサイバー攻撃を防御する。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_encryption_protocol.html
+> - https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_encryption_protocol.html
 
 <br>
 
@@ -204,7 +204,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 ### WAFの種類
 
-> ↪️：hhttps://liskul.com/waf-15products-35757
+> - hhttps://liskul.com/waf-15products-35757
 
 | WAFの種類        | 説明                                                                              | 例                                                                |
 | ---------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
@@ -224,7 +224,7 @@ sha256によって作成された文字列をファイル情報として添付�
 
 通信データを暗号化するわけではない。
 
-> ↪️：https://academy.gmocloud.com/know/20200116/8627
+> - https://academy.gmocloud.com/know/20200116/8627
 
 <br>
 
@@ -240,7 +240,7 @@ sha256によって作成された文字列をファイル情報として添付�
 
 ![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf-token.png)
 
-> ↪️：https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
+> - https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
 
 <br>
 
@@ -324,7 +324,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 例えば、WAFを使用する。
 
-> ↪️：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
+> - https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
 
 <br>
 
@@ -338,7 +338,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 プレースホルダーについては、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html
 
 <br>
 
@@ -356,7 +356,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 ![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cors.png)
 
-> ↪️：https://developer.mozilla.org/ja/docs/Glossary/Origin
+> - https://developer.mozilla.org/ja/docs/Glossary/Origin
 
 <br>
 
@@ -372,7 +372,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
      JavaScriptのパッケージによってオプション名が異なるため注意する。
 
-> ↪️：https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
+> - https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
 
 ```yaml
 GET https://foo.com/bar
@@ -522,7 +522,7 @@ Set-Cookie: HttpOnly
 
 ここでリクエストを制御しているのは、オリジンではなく、ドメインであることに注意する。
 
-> ↪️：https://zenn.dev/agektmr/articles/f8dcd345a88c97
+> - https://zenn.dev/agektmr/articles/f8dcd345a88c97
 
 ```yaml
 200 OK

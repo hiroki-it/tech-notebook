@@ -9,7 +9,7 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -51,7 +51,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 コントロールプレーンのXDS-APIは、Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
-> ↪️：https://skyao.io/learning-envoy/xds/
+> - https://skyao.io/learning-envoy/xds/
 
 #### ▼ ADS-API：Aggregated XDS
 
@@ -132,7 +132,7 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出でき
 
 コントロールプレーンのXDS-APIにはエンドポイントがある。Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信する。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
 
 #### ▼ 実装
 
@@ -293,7 +293,7 @@ message DiscoveryResponse {
 
 記入中...
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types
+> - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types
 
 <br>
 
@@ -552,7 +552,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 ルートでは、リスナーで処理した通信を受け取り、特定のクラスターにルーティングする。
 
-> ↪️：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ ルート値の静的な登録
 
@@ -899,7 +899,7 @@ Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワ
 
 エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IPアドレスとポート番号を指定して、宛先に送信する。
 
-> ↪️：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ エンドポイント値の静的な登録
 
@@ -944,7 +944,7 @@ service EndpointDiscoveryService {
 
 ```
 
-> ↪️：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
 <br>
 
@@ -976,7 +976,7 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 フロントプロキシと呼ばれている。
 
-> ↪️：https://tech.uzabase.com/entry/2020/09/28/140046
+> - https://tech.uzabase.com/entry/2020/09/28/140046
 
 <br>
 

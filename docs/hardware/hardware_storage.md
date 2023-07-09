@@ -9,7 +9,7 @@ description: ストレージ＠ハードウェアの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -58,7 +58,7 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 ![p184-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p184-2.png)
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ RAID：Redundant Arrays of Inexpensive Disks
 
@@ -72,7 +72,7 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RAIDの種類.png)
 
-> ↪️：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
+> - https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 
 <br>
 

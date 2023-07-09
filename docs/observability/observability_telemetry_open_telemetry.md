@@ -9,7 +9,7 @@ description: OpenTelemetry＠テレメトリー収集ツールの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -48,7 +48,7 @@ OpenTelemetry用パッケージからのテレメトリーデータを、APIパ�
 
 ![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
 
-> ↪️：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
+> - https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
 
 <br>
 
@@ -73,6 +73,6 @@ OTelクライアントパッケージからのテレメトリーデータを、�
 
 記入中...
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
 
 <br>

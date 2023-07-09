@@ -9,7 +9,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -38,7 +38,7 @@ $ ln -s /etc/kubernetes/kubeconfig config
 $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 ```
 
-> ↪️：https://blog.inductor.me/entry/2021/03/13/205452
+> - https://blog.inductor.me/entry/2021/03/13/205452
 
 <br>
 
@@ -76,7 +76,7 @@ $ kubectl annotate --overwrite pod foo-pod <キー名>- -n foo-namespace
 
 全ての項目を更新できるわけでない。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 #### ▼ -f -R
 
@@ -123,7 +123,7 @@ CoreDNS is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services
 Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 ```
 
-> ↪️：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
+> - https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
 
 <br>
 
@@ -133,7 +133,7 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 
 `~/.kube/config`ファイルのパラメーターを操作する。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 #### ▼ current-context
 
@@ -254,7 +254,7 @@ users:
 
 ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
 #### ▼ オプション無し
 
@@ -296,7 +296,7 @@ $ kubectl create -f ./kubernetes/foo-service.yaml
 service/foo-service created
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
 #### ▼ deployment
 
@@ -374,7 +374,7 @@ SSL証明書を持つSecretを作成する。
 $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
 
 <br>
 
@@ -398,7 +398,7 @@ Podの場合、オプションの無い`kubectl delete`コマンドが安全な�
 $ kubectl delete pod foo-pod
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
+> - https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
 
 **＊例＊**
 
@@ -464,7 +464,7 @@ PolicyRule:
 
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 #### ▼ -A
 
@@ -555,7 +555,7 @@ $ kubectl edit deployment foo-deployment
 $ kubectl edit statefulset foo-statefulset
 ```
 
-> ↪️：https://github.com/kubernetes/kubernetes/issues/24913
+> - https://github.com/kubernetes/kubernetes/issues/24913
 
 <br>
 
@@ -565,7 +565,7 @@ $ kubectl edit statefulset foo-statefulset
 
 指定したPod内のコンテナでコマンドを実行する。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
 #### ▼ -it
 
@@ -643,13 +643,13 @@ $ kubectl expose <Service名> \
 
 詳細な情報を参照する時は、`kubectl describe`コマンドを使用する。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 **＊例＊**
 
 特定のNamespaceの全てのKubernetesリソースを取得する。
 
-> ↪️：https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
+> - https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
 
 ```bash
 $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')" -n foo-namespace
@@ -711,7 +711,7 @@ bar-pod    2/2     Running            0          5m01s
 
 これにより、Podの個数を確認できる。
 
-> ↪️：https://stackoverflow.com/a/61634879
+> - https://stackoverflow.com/a/61634879
 
 ```bash
 $ kubectl get pod --no-headers | wc -l
@@ -1037,7 +1037,7 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 $ kubectl get pod -w
 ```
 
-> ↪️：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
+> - https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
 
 <br>
 
@@ -1095,7 +1095,7 @@ $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 
 指定したリソースのログを取得する。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
 #### ▼ -c
 
@@ -1147,7 +1147,7 @@ Kubernetesリソースを安全に削除し、別のマニフェストで再作�
 $ kubectl replace -f foo.yaml
 ```
 
-> ↪️：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
+> - https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
 
 #### ▼ --force
 
@@ -1208,7 +1208,7 @@ JSON/`yaml`形式を入力値として、リソースの設定値を変更する
 
 ただし、マニフェストは変更されない。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
 
 #### ▼ pv
 
@@ -1218,7 +1218,7 @@ PersistentVolumeの設定値を変更する。
 
 削除されないボリュームを削除する。
 
-> ↪️：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
+> - https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
 
 ```bash
 $ kubectl get pv \
@@ -1278,7 +1278,7 @@ $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'
 Starting to serve on [::]:8001
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
+> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
 <br>
 
@@ -1288,7 +1288,7 @@ Starting to serve on [::]:8001
 
 Deployment、Pod、Jobを作成する。
 
-> ↪️：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+> - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
 #### ▼ --restart、--image、--port
 
@@ -1397,7 +1397,7 @@ $ kubectl taint node foo-node app=batch:NoSchedule
 
 これにより、以下の`.spec.tolerations`キーが付与されたPodしかスケジューリングできない。
 
-> ↪️：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+> - https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
 
 ```yaml
 apiVersion: v1
@@ -1448,7 +1448,7 @@ spec:
       effect: NoSchedule
 ```
 
-> ↪️：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+> - https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
 
 #### ▼ `-` (ラベル値のハイフン)
 
@@ -1460,7 +1460,7 @@ spec:
 $ kubectl taint node foo-node app=batch:NoSchedule-
 ```
 
-> ↪️：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
+> - https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
 
 <br>
 

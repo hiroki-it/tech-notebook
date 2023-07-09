@@ -9,7 +9,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -64,7 +64,7 @@ repository/
 └── baz/ # bazサービス
 ```
 
-> ↪️：https://speakerdeck.com/j5ik2o/helmfilenituite
+> - https://speakerdeck.com/j5ik2o/helmfilenituite
 
 <br>
 
@@ -161,7 +161,7 @@ $ helmfile -e prd -f helmfile.yaml --state-values-set region=tokyo
 
 `helmfile`コマンド時に`helmfile.d`ファイル内に環境名を渡せる。
 
-> ↪️：https://helmfile.readthedocs.io/en/latest/#environment-values
+> - https://helmfile.readthedocs.io/en/latest/#environment-values
 
 #### ▼ 実行環境名を渡したいだけの場合
 
@@ -190,7 +190,7 @@ releases:
 $ helmfile -e dev apply
 ```
 
-> ↪️：https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
+> - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
 
 #### ▼ 実行環境名を渡す以外こともやりたい場合
 
@@ -239,7 +239,7 @@ helmfiles:
   - path: ./helmfile.d/baz.yaml
 ```
 
-> ↪️：https://helmfile.readthedocs.io/en/latest/#selectors
+> - https://helmfile.readthedocs.io/en/latest/#selectors
 
 <br>
 
@@ -392,7 +392,7 @@ secrets:
   - ./foo-secrets.yaml
 ```
 
-> ↪️：https://helmfile.readthedocs.io/en/latest/#secrets
+> - https://helmfile.readthedocs.io/en/latest/#secrets
 
 <br>
 
@@ -446,7 +446,7 @@ data:
 #     foo, bar, baz
 ```
 
-> ↪️：https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
+> - https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
 
 <br>
 

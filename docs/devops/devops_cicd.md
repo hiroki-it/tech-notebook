@@ -9,7 +9,7 @@ description: CI/CDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -62,7 +62,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 ![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
 
-> ↪️：https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
+> - https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
 
 <br>
 
@@ -78,7 +78,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 |          | コーディング規約に関するレビュー                                         |    `⭕️`     | CIツールと静的解析ツールで自動化できる。                                                                                          |
 |          | 仕様に関するレビュー                                                     |      ×       | GitHub上でレビューする必要がある。                                                                                                |
 
-> ↪️：https://tracpath.com/works/devops/11_topics_for_devops/
+> - https://tracpath.com/works/devops/11_topics_for_devops/
 
 <br>
 
@@ -286,7 +286,7 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、セキュリ
 
 ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。
 
-> ↪️：https://devops-blog.virtualtech.jp/entry/20220418/1650250499
+> - https://devops-blog.virtualtech.jp/entry/20220418/1650250499
 
 #### ▼ 責務境界の分離
 
@@ -300,7 +300,7 @@ CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。
 
 一方でGitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用をアプリチームとSREチームで分担できるようになる。
 
-> ↪️：https://news.mynavi.jp/techplus/article/techp5025/
+> - https://news.mynavi.jp/techplus/article/techp5025/
 
 <br>
 

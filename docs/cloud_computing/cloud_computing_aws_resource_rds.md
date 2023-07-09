@@ -9,7 +9,7 @@ description: RDS＠AWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -50,7 +50,7 @@ RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害�
 
 ただし、その分費用が高いことに注意する。
 
-> ↪️：https://www.ragate.co.jp/blog/articles/10234
+> - https://www.ragate.co.jp/blog/articles/10234
 
 <br>
 
@@ -62,7 +62,7 @@ RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが�
 
 そのためdbサーバーのようには操作できず、OSのバージョン確認やSSH公開鍵認証を行えない。
 
-> ↪️：https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
+> - https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
 
 #### ▼ 確認方法
 
@@ -113,7 +113,7 @@ SHOW variables LIKE '%version%';
 
 DBクラスター/DBインスタンスの設定の変更をスケジューリングする。
 
-> ↪️：https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
+> - https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
 
 #### ▼ メンテナンスの適切な曜日/時間帯
 
@@ -129,13 +129,13 @@ CloudWatchメトリクスの`DatabaseConnections`メトリクスから、DBの�
 
 『次のメンテナンスウィンドウ』を選択すれば実行タイミングをメンテナンスウィンドウの間設定できるが、これを行わない場合は『日付の適用』に表示された時間帯に強制実行される。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
 
 補足として保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
 
 ![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance_action.png)
 
-> ↪️：https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
+> - https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
 
 #### ▼ 保留中のメンテナンスの状態
 
@@ -191,7 +191,7 @@ $ aws rds apply-pending-maintenance-action \
   --apply-action <取り消したいアクション名>
 ```
 
-> ↪️：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
+> - https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
 
 #### ▼ 『保留中の変更』の取り消し
 
@@ -229,7 +229,7 @@ $ aws rds modify-db-instance \
 
 | 設定項目                | 説明                                                                                                                         | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| レプリケーション        | 単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。 | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、DBクラスターをクローンできないなどのデメリットもある。<br>↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| レプリケーション        | 単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。 | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、DBクラスターをクローンできないなどのデメリットもある。<br>- https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | DBクラスター識別子      | DBクラスター名を設定する。                                                                                                   | インスタンス名は、最初に設定できず、RDSの作成後に設定できる。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | VPCとサブネットグループ | DBクラスターを配置するVPCとサブネットを設定する。                                                                            | DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにアクセスできないようにする。<br>![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | パラメーターグループ    | グローバルパラメーターを設定する。                                                                                           | デフォルトを使用せずに独自定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、全てのインスタンスに同じパラメーターループを設定する必要があるなため、クラスターパラメーターを使用すれば良い。各パラメーターに適用タイプ (dynamic/static) があり、dynamicタイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定すると良い。<br>・`time_zone=Asia/Tokyo`<br>・`character_set_client=utf8mb4`<br>・`character_set_connection=utf8mb4`<br>・`character_set_database=utf8mb4`<br>・`character_set_results=utf8mb4`<br>・`character_set_server=utf8mb4`<br>・`server_audit_logging=1` (監査ログをCloudWatchに送信するか否か) <br>・`server_audit_logs_upload=1`<br>・`general_log=1` (通常クエリログをCloudWatchに送信するか否か) <br>・`slow_query_log=1` (スロークエリログをCloudWatchに送信するか否か) <br>・`long_query_time=3` (スロークエリと見なす最短秒数) |
@@ -239,9 +239,9 @@ $ aws rds modify-db-instance \
 | バックアップ保持期間    | DBクラスター がバックアップを保持する期間を設定する。                                                                        | `7`日間にしておく。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ログのエクスポート      | CloudWatchログに送信するログを設定する。                                                                                     | 必ず、全てのログを選択すること。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | セキュリティグループ    | DBクラスターのセキュリティグループを設定する。                                                                               | コンピューティングからのインバウンド通信のみを許可するように、これらのプライベートIPアドレス (`*.*.*.*/32`) を設定する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 削除保護                | DBクラスターの削除を防ぐ。                                                                                                   | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにアクセスできる。<br>↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 削除保護                | DBクラスターの削除を防ぐ。                                                                                                   | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにアクセスできる。<br>- https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
-> ↪️：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
 #### ▼ DBインスタンス
 
@@ -256,7 +256,7 @@ $ aws rds modify-db-instance \
 | 最初のDB名                             | DBインスタンスに自動的に作成されるDB名を設定                                               |                                                                                                                                                            |
 | マイナーバージョンの自動アップグレード | DBインスタンスのDBエンジンのバージョンを自動的に更新するかを設定する。                     | 開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。   |
 
-> ↪️：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
 <br>
 
@@ -274,7 +274,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 ![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster.png)
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
 
 <br>
 
@@ -290,7 +290,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 これは、TerraformがAWS-APIをコールした作成を行っているためである。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
 
 <br>
 
@@ -335,7 +335,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 注意点として、通常のAurora DBクラスターと比較して、機能が制限される。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations
 
 #### ▼ アップグレード
 
@@ -345,7 +345,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 メジャーバージョンのアップグレードの場合は、グローバルクラスター自体をアップグレードする。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html
 
 <br>
 
@@ -355,7 +355,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 そのため、メインリージョンのプライマリークラスターでスナップショットを作成し、これをDRリージョンにコピーするようにする。
 
-> ↪️：https://dev.classmethod.jp/articles/lim-rds-move-region-jp/#toc-7
+> - https://dev.classmethod.jp/articles/lim-rds-move-region-jp/#toc-7
 
 <br>
 
@@ -384,8 +384,8 @@ DBインスタンスとクラスターボリュームから構成されている
 
 | エンドポイント名           | 役割              | エンドポイント：ポート番号                                                       | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | -------------------------- | ----------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| クラスターエンドポイント   | 書き込み/読み出し | `<DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>`    | プライマリーインスタンスに通信できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。<br>↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster                                                                                                                                                    |
-| リーダーエンドポイント     | 読み出し          | `<DBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>` | リードレプリカに通信できる。DBインスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。もしリードレプリカが全てダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスに転送するようになる。<br>↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader |
+| クラスターエンドポイント   | 書き込み/読み出し | `<DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>`    | プライマリーインスタンスに通信できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。<br>- https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster                                                                                                                                                    |
+| リーダーエンドポイント     | 読み出し          | `<DBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>` | リードレプリカに通信できる。DBインスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。もしリードレプリカが全てダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスに転送するようになる。<br>- https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader |
 | インスタンスエンドポイント |                   | `<DBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>`  | 選択したDBインスタンスに通信できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントそのままなため、アプリケーションが影響を付ける。非推奨である。                                                                                                                                                                                                                                                                                                                |
 
 <br>
@@ -443,7 +443,7 @@ Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のア
 
 ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
 #### ▼ エンジンタイプによるダウンタイムの最小化
 
@@ -576,7 +576,7 @@ DBクラスター内の全てのDBインスタンスが同じAZに配置され�
 
 リードレプリカが存在している場合、これがプライマリーインスタンスに昇格する。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance
 
 #### ▼ フェイルオーバーによるダウンタイムの最小化
 
@@ -600,7 +600,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
      ただし、これよりは時間が短いため、相対的にダウンタイムを短縮できる。
 
-> ↪️：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
+> - https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
 #### ▼ DBインスタンスの昇格優先順位
 
@@ -624,7 +624,7 @@ DBインスタンスごとにフェイルオーバーの優先度 (`0`～`15`) �
 
 : 同じサブネット
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
 
 #### ▼ ダウンタイムを最小化できない場合
 
@@ -713,7 +713,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html
 
 <br>
 
@@ -727,16 +727,16 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 | ------------------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | インスタンスクラス                   | あり               | ・`2`個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかる通り、長いダウンタイム (約`6`～`8`分) が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>↪️ 参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/ <br>・プライマリーインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png) |
 | サブネットグループ                   | あり               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| エンジンバージョン                   | あり               | `20`～`30`秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>↪️：<br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html <br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU <br>また、メジャーバージョンのアップグレードには`10`分のダウンタイムが発生する。<br>↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview                                                                                                                               |
+| エンジンバージョン                   | あり               | `20`～`30`秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>↪️：<br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html <br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU <br>また、メジャーバージョンのアップグレードには`10`分のダウンタイムが発生する。<br>- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview                                                                                                                               |
 | メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの`performance_schema`を有効化する必要がある。パラメーターグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | バックアップウインドウ               | 条件付きでなし     | `0`から`0`以外の値、`0`以外の値から`0`に変更した場合、ダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| パラメーターグループ                 | なし               | パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これをDBインスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br>↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html                                                                                                                                                                                                                                                                                                                                                                                              |
+| パラメーターグループ                 | なし               | パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これをDBインスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br>- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html                                                                                                                                                                                                                                                                                                                                                                                              |
 | セキュリティグループ                 | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ストレージのAutoScaling              | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
 <br>
 
@@ -746,13 +746,13 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 スタンバイレプリカがプライマリーインスタンスに昇格する。
 
-↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
+- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
 
 #### ▼ フェイルオーバーによるダウンタイムの最小化
 
 DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。
 
-> ↪️：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
+> - https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
 `【１】`
 
@@ -762,11 +762,11 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 : 特定の条件下でのみ、フェイルオーバーが自動的に実行される。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
 
 (3) 非AuroraのRDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
 
 (4) フェイルオーバー時に約`1`～`2`分のダウンタイムが発生する。
 
@@ -778,7 +778,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
 
-> ↪️：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html
 
 <br>
 

@@ -9,7 +9,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 例えば、Kubernetesではローワーキャメルケースに統一されている。
 
-> ↪️：https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects
+> - https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects
 
 ```yaml
 fooBarBaz: ""
@@ -39,7 +39,7 @@ fooBarBaz: ""
 foo_bar_baz: ""
 ```
 
-> ↪️：https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
+> - https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
 
 #### ▼ ケバブケース
 
@@ -94,7 +94,7 @@ command: |
 { "command" => "echo foo\necho bar\n" }
 ```
 
-> ↪️：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 #### ▼ `|+` (パイプ、プラス)
 
@@ -115,7 +115,7 @@ command: |+
 { "command" => "echo foo\necho bar\n" }
 ```
 
-> ↪️：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 #### ▼ `|-` (パイプ、マイナス)
 
@@ -136,7 +136,7 @@ command: |-
 { "command" => "echo foo\necho bar" }
 ```
 
-> ↪️：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 #### ▼ `>` (大なり)
 
@@ -172,7 +172,7 @@ command: >
   fi
 ```
 
-> ↪️：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 #### ▼ `>+` (大なり、プラス)
 
@@ -195,7 +195,7 @@ command: >+
 { "command" => "echo foo && echo bar\n" }
 ```
 
-> ↪️：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 #### ▼ `>-` (大なり、マイナス)
 
@@ -218,6 +218,6 @@ command: >-
 { "command" => "echo foo && echo bar" }
 ```
 
-> ↪️：https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
 
 <br>

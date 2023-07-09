@@ -9,7 +9,7 @@ description: karpenter＠ハードウェアリソース管理の知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：<https://hiroki-it.github.io/tech-notebook/>
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,8 +31,8 @@ karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 > ↪️：
 >
-> - <https://sreake.com/blog/learn-about-karpenter/>
-> - <https://blog.inductor.me/entry/2021/12/06/165743>
+> - https://sreake.com/blog/learn-about-karpenter/
+> - https://blog.inductor.me/entry/2021/12/06/165743
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
 > - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
 

@@ -9,7 +9,7 @@ description: 可観測性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -90,7 +90,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 どのような種類のメトリクスを収集するかについては、監視の種類ごとに異なる。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 <br>
 
@@ -100,7 +100,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 どのような種類のログを収集するかについては、監視の種類ごとに異なる。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 
 #### ▼ ログの持つ情報
 
@@ -119,7 +119,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 #### ▼ スパンの持つ情報
 
-> ↪️：https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
+> - https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
 
 | 領域         | 内容           | 値                                                                                                                                         |
 | ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -228,7 +228,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 ストレージの空きサイズが増え、長期間のデータポイントを保管できるようになる
 
-> ↪️：http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
+> - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
 
 #### ▼ データポイントの重複排除
 
@@ -240,7 +240,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 重複排除のタイミングは、収集ツールの収集間隔と同じ値にすると良い。
 
-> ↪️：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 <br>
 
@@ -250,7 +250,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 同じ種類のメトリクスを特定のグループ (例：AWS CloudWatchならば、ディメンション、名前空間) に集約する。
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
 
 #### ▼ 集計との違い
 
@@ -264,7 +264,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 特に重要なメトリクス (トラフィック、レイテンシー、エラー、サチュレーション) のこと。
 
-> ↪️：https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
+> - https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
 
 #### ▼ トラフィック
 
@@ -308,7 +308,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 CPU、メモリ、ストレージ、ネットワーク、などに関する`USE`メトリクス (例：CPU使用率、CPUサチュレーション、など) を含む。
 
-> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
+> - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
 
 #### ▼ REDメトリクス
 
@@ -316,7 +316,7 @@ CPU、メモリ、ストレージ、ネットワーク、などに関する`USE`
 
 SLIによく使用されるメトリクスである。
 
-> ↪️：https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
+> - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
 
 <br>
 
@@ -326,7 +326,7 @@ SLIによく使用されるメトリクスである。
 
 特定の瞬間に発生したイベントが記載されたデータのこと。
 
-> ↪️：https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
+> - https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
 
 <br>
 
@@ -364,7 +364,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 
 マイクロサービスアーキテクチャの各サービスから収集されたログを、バラバラに分析/管理する。
 
-> ↪️：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+> - https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 #### ▼ Centralized logging (集中ロギング)
 
@@ -379,7 +379,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 jsonPayload.traceId="<トレースID>"
 ```
 
-> ↪️：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+> - https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 <br>
 
@@ -412,7 +412,7 @@ jsonPayload.traceId="<トレースID>"
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 
-> ↪️：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
+> - https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
 
 #### ▼ 悪意のあるリクエストの検出
 
@@ -494,7 +494,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 ![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png)
 
-> ↪️：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
+> - https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
 
 <br>
 
@@ -502,7 +502,7 @@ SaaSツールによってJSON型の構造が異なる。
 
 モノリシックアーキテクチャなアプリケーションでは、システムが分散していないため、単なるトレースとなる。
 
-> ↪️：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
+> - https://deepsource.io/blog/distributed-tracing/#monolithic-observability
 
 **＊例＊**
 

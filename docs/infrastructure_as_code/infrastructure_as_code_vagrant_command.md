@@ -9,7 +9,7 @@ description: コマンド＠Vagrantの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: コマンド＠Vagrantの知見を記録しています。
 $ vagrant box add <ボックス名> <URL>
 ```
 
-> ↪️：https://www.vagrantup.com/docs/cli/box#box-add
+> - https://www.vagrantup.com/docs/cli/box#box-add
 
 <br>
 
@@ -35,7 +35,7 @@ $ vagrant box add <ボックス名> <URL>
 $ vagrant box list
 ```
 
-> ↪️：https://www.vagrantup.com/docs/cli/box#box-list
+> - https://www.vagrantup.com/docs/cli/box#box-list
 
 <br>
 
@@ -47,7 +47,7 @@ $ vagrant box list
 $ vagrant global-status
 ```
 
-> ↪️：https://www.vagrantup.com/docs/cli/global-status
+> - https://www.vagrantup.com/docs/cli/global-status
 
 <br>
 
@@ -59,7 +59,7 @@ $ vagrant global-status
 $ vagrant halt
 ```
 
-> ↪️：https://www.vagrantup.com/docs/cli/halt
+> - https://www.vagrantup.com/docs/cli/halt
 
 <br>
 
@@ -81,7 +81,7 @@ $ vagrant reload
 $ vagrant ssh
 ```
 
-> ↪️：https://www.vagrantup.com/docs/cli/ssh
+> - https://www.vagrantup.com/docs/cli/ssh
 
 <br>
 
@@ -93,6 +93,6 @@ $ vagrant ssh
 $ vagrant up
 ```
 
-> ↪️：https://www.vagrantup.com/docs/cli/up
+> - https://www.vagrantup.com/docs/cli/up
 
 <br>

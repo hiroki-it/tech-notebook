@@ -9,7 +9,7 @@ description: コマンド@Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -79,7 +79,7 @@ $ git clone https://github.com/hiroki-hasegawa/foo-repository.git foo
 $ git clone --recursive https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
-> ↪️：https://blog.kyanny.me/entry/2020/07/04/172905
+> - https://blog.kyanny.me/entry/2020/07/04/172905
 
 <br>
 
@@ -103,7 +103,7 @@ $ git config --local --list
 
 Macでは、`1`個のマシンで`2`個のGutHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
 
-> ↪️：https://sy-base.com/myrobotics/others/git-push_403error/
+> - https://sy-base.com/myrobotics/others/git-push_403error/
 
 #### ▼ --<影響範囲> user.name
 
@@ -190,7 +190,7 @@ $ git init
 .idea/
 ```
 
-> ↪️：https://zenn.dev/phi/articles/gitignore-global-ds-store
+> - https://zenn.dev/phi/articles/gitignore-global-ds-store
 
 <br>
 
@@ -348,7 +348,7 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 	branch = main
 ```
 
-> ↪️：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
+> - https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
 
 #### ▼ update
 
@@ -368,7 +368,7 @@ $ git submodule update --remote <.gitmodulesに定義されたサブモジュー
 
 GitHubとSSH公開鍵認証を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
 
-> ↪️：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
+> - https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
 `【１】`
 
@@ -573,7 +573,7 @@ else
 fi
 ```
 
-> ↪️：https://stackoverflow.com/a/74817537
+> - https://stackoverflow.com/a/74817537
 
 ```bash
 DIFF=$(git diff origin/main --quiet)
@@ -587,7 +587,7 @@ case $DIFF in
 esac
 ```
 
-> ↪️：https://stackoverflow.com/a/74817582
+> - https://stackoverflow.com/a/74817582
 
 <br>
 
@@ -730,7 +730,7 @@ addステージやcommitステージにファイルが存在しているか否�
 
 CIの自動化で使うことが多い。
 
-> ↪️：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
+> - https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
 
 ```bash
  $ git status --porcelain
@@ -1254,7 +1254,7 @@ $ git filter-branch --force --env-filter '
     ' -- --all
 ```
 
-> ↪️：https://zenn.dev/flyingbarbarian/articles/241627cae5988a
+> - https://zenn.dev/flyingbarbarian/articles/241627cae5988a
 
 #### ▼ -f --tree-filter
 

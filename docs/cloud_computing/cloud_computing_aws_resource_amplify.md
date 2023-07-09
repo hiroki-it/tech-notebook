@@ -9,7 +9,7 @@ description: Amplify＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: Amplify＠AWSリソースの知見を記録しています。
 
 サーバーレスアプリケーションを作成するためのクラウドインフラストラクチャのフレームワーク。
 
-> ↪️：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
+> - https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
 
 <br>
 
@@ -122,7 +122,7 @@ $ amplify publish
 
 #### ▼ 連携できるバージョン管理システム
 
-> ↪️：https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
+> - https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
 
 #### ▼ 対応するバージョン管理リポジトリ構造
 

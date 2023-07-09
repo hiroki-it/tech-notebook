@@ -9,7 +9,7 @@ description: コントロールプレーンコンポーネント＠Kubernetesの
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -56,7 +56,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 コントロールプレーンコンポーネントのために、コントロールプレーンNodeがパケットを待ち受けるデフォルトのポート番号は、以下の通りである。
 
-> ↪️：https://kubernetes.io/docs/reference/ports-and-protocols/#control-plane
+> - https://kubernetes.io/docs/reference/ports-and-protocols/#control-plane
 
 <br>
 
@@ -80,13 +80,13 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 各コントロールプレーンNode内にetcdのストレージを配置するデザインパターン。
 
-> ↪️：https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
+> - https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
 
 #### ▼ External-etcd-topologyパターン
 
 各コントロールプレーンNode外にetcdのストレージを配置するデザインパターン。
 
-> ↪️：https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
+> - https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
 
 <br>
 
@@ -374,7 +374,7 @@ $ kubectl get --raw=/readyz?verbose
 healthz check passed
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/using-api/health-checks/
+> - https://kubernetes.io/docs/reference/using-api/health-checks/
 
 <br>
 
@@ -459,7 +459,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 - metrics-server
 - kube-discovery
 
-> ↪️：https://itnext.io/comparing-kubernetes-api-extension-mechanisms-of-custom-resource-definition-and-aggregated-api-64f4ca6d0966
+> - https://itnext.io/comparing-kubernetes-api-extension-mechanisms-of-custom-resource-definition-and-aggregated-api-64f4ca6d0966
 
 <br>
 
@@ -471,7 +471,7 @@ kube-controllerを一括で管理する。
 
 kube-controllerを使用して、kube-apiserverがKubernetesリソースを操作できるようにする。
 
-> ↪️：https://thinkit.co.jp/article/17453
+> - https://thinkit.co.jp/article/17453
 
 <br>
 
@@ -558,7 +558,7 @@ kube-controller-managerは、kube-controllerを反復的に実行する。
 
 Nodeが複数ある場合、NodeとPodのスペックを基に、Podをスケジューリングする必要があるNodeを判定する。
 
-> ↪️：https://thinkit.co.jp/article/17453
+> - https://thinkit.co.jp/article/17453
 
 ![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler.png)
 
@@ -582,7 +582,7 @@ $ kube-scheduler \
     ...
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
+> - https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
 
 <br>
 

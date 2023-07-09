@@ -9,7 +9,7 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ Nodeネットワークの作成は、Kubernetesの実行環境のネットワー
 
 ![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node-network.png)
 
-> ↪️：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
 <br>
 
@@ -56,7 +56,7 @@ Clusterネットワークの作成は、CNIアドオンが担う。
 
 ![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-network.png)
 
-> ↪️：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 
 <br>
 
@@ -68,7 +68,7 @@ Pod内のネットワークのみを経由して、他のコンテナにリク�
 
 Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
 
-> ↪️：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+> - https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
 #### ▼ 通信方法
 
@@ -96,7 +96,7 @@ Pod内のコンテナから宛先のPodにリクエストを送信する。
 | Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
 | Nodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
 
-> ↪️：https://kubernetes.io/docs/concepts/cluster-administration/networking/
+> - https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 <br>
 

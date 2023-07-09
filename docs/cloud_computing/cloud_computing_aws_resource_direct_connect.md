@@ -9,7 +9,7 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 ![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
 
-> ↪️：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
+> - https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 
 <br>
 

@@ -9,7 +9,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 ![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_whitebox-test.png)
 
-> ↪️：https://hldc.co.jp/blog/2018/05/25/1387/
+> - https://hldc.co.jp/blog/2018/05/25/1387/
 
 <br>
 
@@ -39,7 +39,7 @@ description: ホワイトボックステストの知見を記録しています�
 - 回帰テスト
 - 結合テスト
 
-> ↪️：https://xtech.nikkei.com/it/article/Watcher/20060809/245528/
+> - https://xtech.nikkei.com/it/article/Watcher/20060809/245528/
 
 <br>
 
@@ -90,7 +90,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 テスト用DBを`docker-compose.yml`ファイルによって用意する方法については、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 <br>
 
@@ -114,13 +114,13 @@ Roy Osherove氏の命名規則に従って、『テスト対象のメソッド�
 
 Roy Osherove氏の命名規則については、以下のリンクを参考にせよ。
 
-> ↪️：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+> - https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
 #### ▼ アサーションの比較値
 
 単体テストのアサーションメソッドで、期待値と実際値を比較する場合、期待値を定数として管理した方が良い。
 
-> ↪️：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+> - https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
 <br>
 
@@ -130,7 +130,7 @@ Roy Osherove氏の命名規則については、以下のリンクを参考に�
 
 単体テストでは、各コンポーネントの依存対象のコンポーネントをテストダブル (代替品) に置き換える。
 
-> ↪️：https://en.wikipedia.org/wiki/Test_double
+> - https://en.wikipedia.org/wiki/Test_double
 
 <br>
 
@@ -157,7 +157,7 @@ PHPUnitにおけるモックについては、以下のリンクを参考にせ�
 | PHPUnit  | メソッドは、`null`を返却する。                                                                           | 注意点として、`final`、`private`なメソッドはモック化されず、実体をそのまま引き継ぐ。また、`static`なメソッドは`BadMethodCallException`をスローするモックに置き換わる。 |
 | JUnit    | メソッドは、元のオブジェクトのメソッドの返却値の型を基に、初期値を返却する<br>(例：boolean型なら`false`) |                                                                                                                                                                        |
 
-> ↪️：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
+> - https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
 
 #### ▼ スタブ
 
@@ -177,7 +177,7 @@ PHPUnitにおけるモックについては、以下のリンクを参考にせ�
 
 PHPUnitにおけるスタブについては、以下のリンクを参考にせよ。
 
-> ↪️：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
+> - https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
 
 <br>
 
@@ -202,7 +202,7 @@ PHPUnitにおけるスタブについては、以下のリンクを参考にせ�
 
 言語やツールごとに網羅率を解析する方法が異なり、PHPのPHPUnitでは以下のリンクを参考にせよ。
 
-> ↪️：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
+> - https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
 
 <br>
 
@@ -222,7 +222,7 @@ AとBは、『1』または『0』になり得るとする。
 | ------------ | ---------------------------- |
 | A = 1、B = 1 | `return X`が実行されること。 |
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ C１：Decision Coverage (判定条件網羅/分岐網羅)
 
@@ -239,7 +239,7 @@ AとBは、『1』または『0』になり得るとする。
 | A = 1、B = 1 | `return X`が実行されること。   |
 | A = 1、B = 0 | `return X`が実行されないこと。 |
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ C２：Condition Coverage (条件網羅)
 
@@ -263,7 +263,7 @@ AとBは、『1』または『0』になり得るとする。
 | A = 1、B = 1 | `return X`が実行されること。   |
 | A = 0、B = 0 | `return X`が実行されないこと。 |
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ MCC：Multiple Condition Coverage (複数条件網羅)
 
@@ -284,7 +284,7 @@ AとBは、『1』または『0』になり得るとする。
 | A = 0、B = 1 | `return X`が実行されないこと。 |
 | A = 0、B = 0 | `return X`が実行されないこと。 |
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -328,7 +328,7 @@ AとBは、『1』または『0』になり得るとする。
 
 ブラックボックステストの機能テストとは意味合いが異なることに注意する。
 
-> ↪️：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
+> - https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
 
 <br>
 
@@ -340,7 +340,7 @@ AとBは、『1』または『0』になり得るとする。
 
 ゴールデン (金) は化学的に安定した物質であることに由来しており、『安定したプロダクト』とかけている。
 
-> ↪️：https://softwareengineering.stackexchange.com/a/358792
+> - https://softwareengineering.stackexchange.com/a/358792
 
 <br>
 

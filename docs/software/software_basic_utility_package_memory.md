@@ -9,7 +9,7 @@ description: メモリ系＠パッケージの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -55,7 +55,7 @@ $ pstree
 
 #### ▼ pipリポジトリから
 
-> ↪️：http://supervisord.org/installing.html#installing-a-distribution-package
+> - http://supervisord.org/installing.html#installing-a-distribution-package
 
 ```bash
 $ pip3 install supervisor
@@ -80,13 +80,13 @@ Python製のユーティリティである。
 
 supervisordを操作する。
 
-> ↪️：http://supervisord.org/introduction.html#supervisor-components
+> - http://supervisord.org/introduction.html#supervisor-components
 
 #### ▼ supervisord
 
 supervisor自体のプロセスのこと。
 
-> ↪️：http://supervisord.org/introduction.html#supervisor-components
+> - http://supervisord.org/introduction.html#supervisor-components
 
 <br>
 
@@ -96,7 +96,7 @@ supervisor自体のプロセスのこと。
 
 supervisorの`supervisord`プロセスのプールを設定する。
 
-> ↪️：http://supervisord.org/configuration.html#supervisord-section-settings
+> - http://supervisord.org/configuration.html#supervisord-section-settings
 
 ```ini
 [supervisord]
@@ -243,7 +243,7 @@ startretries=10
 
 もし、`/dev/stdout`ディレクトリまたは`/dev/stderr`ディレクトリを使用する場合は、`logfile_maxbytes `オプションの値を`0` (無制限) とする必要がある。
 
-> ↪️：http://supervisord.org/configuration.html#supervisord-section-values
+> - http://supervisord.org/configuration.html#supervisord-section-values
 
 ```ini
 [program:foo]
@@ -318,7 +318,7 @@ programs=bar,baz
 
 `all`とした場合は、全てを再起動する。
 
-> ↪️：http://supervisord.org/running.html#supervisorctl-actions
+> - http://supervisord.org/running.html#supervisorctl-actions
 
 ```bash
 $ supervisorctl restart <デーモン名>
@@ -328,7 +328,7 @@ $ supervisorctl restart <デーモン名>
 
 もし`supervisord.conf`ファイルの設定を変更した場合、これを再読み出しする。
 
-> ↪️：http://supervisord.org/running.html#supervisorctl-actions
+> - http://supervisord.org/running.html#supervisorctl-actions
 
 ```bash
 $ supervisorctl update
@@ -355,7 +355,7 @@ $ supervisorctl update
 
 ユニットは拡張子の違いで判別する。
 
-> ↪️：https://www.kabegiwablog.com/entry/2018/06/11/100000
+> - https://www.kabegiwablog.com/entry/2018/06/11/100000
 
 | ユニットタイプ  | ユニットの拡張子 | 説明                                         |
 | --------------- | ---------------- | -------------------------------------------- |
@@ -414,7 +414,7 @@ OnFailure=notify-email@%i.service
 
 serviceユニットのオプションを設定する。
 
-> ↪️：https://serverfault.com/a/806620
+> - https://serverfault.com/a/806620
 
 ```ini
 [Service]
@@ -466,7 +466,7 @@ WantedBy=multi-user.target
 $ systemctl daemon-reload
 ```
 
-> ↪️：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
+> - https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
 
 #### ▼ disable
 
@@ -498,7 +498,7 @@ $ systemctl enable httpd.service
 
 `grep`と組み合わせて、起動中 (`active`) 、停止中 (`inactive`) 、起動失敗 (`failed`) のデーモンのみを取得すると良い。
 
-> ↪️：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 ```bash
 $ systemctl list-units --type=<ユニットの拡張子>
@@ -603,7 +603,7 @@ $ systemctl start nginx.service
 
 デーモン化されたプロセスの状態を確認する。
 
-> ↪️：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 ```bash
 $ systemctl status <ユニット名>
@@ -646,7 +646,7 @@ systemで管理する全てのユニットのログを取得する。
 
 `grep`コマンドで特定のエラーログレベルに絞る必要がある。
 
-> ↪️：https://qiita.com/aosho235/items/9fbff75e9cccf351345c
+> - https://qiita.com/aosho235/items/9fbff75e9cccf351345c
 
 ```bash
 $ journalctl | grep error
@@ -706,7 +706,7 @@ WantedBy=multi-user.target
 
 一度、ログとして出力し、このログをCloudWatchログなどに送信する。
 
-> ↪️：https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
+> - https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
 
 ```ini
 [Service]
@@ -745,7 +745,7 @@ $ yum install -y xclip
 
 標準出力/標準エラー出力の内容をコピーし、メモリ上に保持する。
 
-> ↪️：https://linux.die.net/man/1/xclip
+> - https://linux.die.net/man/1/xclip
 
 <br>
 
@@ -755,7 +755,7 @@ $ yum install -y xclip
 
 コピーした内容を保持する場所を選択する。
 
-> ↪️：https://linuxfan.info/xclip
+> - https://linuxfan.info/xclip
 
 **＊例＊**
 
@@ -777,7 +777,7 @@ $ ls -la | xclip -selection clipboard
 
 保持した内容をファイルに出力する。
 
-> ↪️：https://linuxfan.info/xclip
+> - https://linuxfan.info/xclip
 
 **＊例＊**
 

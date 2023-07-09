@@ -9,7 +9,7 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -52,7 +52,7 @@ description: アプリケーション間通信＠アプリケーション連携�
 - gRPCの双方向ストリーミングRPC
 - Websocket
 
-> ↪️：https://qiita.com/namusyaka/items/71cf27fd3242adbf348c
+> - https://qiita.com/namusyaka/items/71cf27fd3242adbf348c
 
 <br>
 
@@ -126,13 +126,13 @@ JavaScriptのビルトインオブジェクトである。
 
 今では使用することは少ないが、Ajaxが登場した初期の頃によく使われた。
 
-> ↪️：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+> - https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 
 #### ▼ `fetch`メソッド
 
 JavaScriptのビルトイン関数である。
 
-> ↪️：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
+> - https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
 
 #### ▼ JQueryオブジェクト
 
@@ -147,7 +147,7 @@ JQueryパッケージである。
 
 Axiosパッケージである。
 
-> ↪️：https://github.com/axios/axios#request-method-aliases
+> - https://github.com/axios/axios#request-method-aliases
 
 <br>
 
@@ -180,7 +180,7 @@ xhr.onload = () => {
 xhr.send();
 ```
 
-> ↪️：https://blog.capilano-fw.com/?p=6920#Ajax
+> - https://blog.capilano-fw.com/?p=6920#Ajax
 
 #### ▼ POST送信
 
@@ -226,7 +226,7 @@ xhr.onload = () => {
 xhr.send(queryString);
 ```
 
-> ↪️：https://blog.capilano-fw.com/?p=6920#Ajax
+> - https://blog.capilano-fw.com/?p=6920#Ajax
 
 <br>
 
@@ -264,7 +264,7 @@ $.post(url, params);
 
 Promiseオブジェクトを返却する。
 
-> ↪️：https://api.jquery.com/jquery.ajax
+> - https://api.jquery.com/jquery.ajax
 
 **＊実装例＊**
 

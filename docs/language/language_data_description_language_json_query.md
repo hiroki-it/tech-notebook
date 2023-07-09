@@ -9,7 +9,7 @@ description: JSONクエリ＠JSONの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -70,7 +70,7 @@ BAR
 BAZ
 ```
 
-> ↪️：https://qiita.com/takeshinoda@github/items/2dec7a72930ec1f658af#%E3%83%80%E3%83%96%E3%83%AB%E3%82%AF%E3%82%A9%E3%83%BC%E3%83%88%E3%81%8C%E9%82%AA%E9%AD%94
+> - https://qiita.com/takeshinoda@github/items/2dec7a72930ec1f658af#%E3%83%80%E3%83%96%E3%83%AB%E3%82%AF%E3%82%A9%E3%83%BC%E3%83%88%E3%81%8C%E9%82%AA%E9%AD%94
 
 <br>
 
@@ -118,7 +118,7 @@ $ cat data.json | jq '.'
 }
 ```
 
-> ↪️：https://www.wakuwakubank.com/posts/676-linux-jq/
+> - https://www.wakuwakubank.com/posts/676-linux-jq/
 
 #### ▼ `[]`
 
@@ -165,7 +165,7 @@ $ cat list.json | jq '.[]'
 }
 ```
 
-> ↪️：https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4#slicing-and-filtering
+> - https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4#slicing-and-filtering
 
 #### ▼ 変数
 
@@ -232,6 +232,6 @@ cat list.json | jq '[.[].foo] | join(" ")'
 FOO BAR BAZ
 ```
 
-> ↪️：https://stackoverflow.com/questions/63238759/replace-n-with-space-in-jq-query-command-output-without-tr-and-sed-commands
+> - https://stackoverflow.com/questions/63238759/replace-n-with-space-in-jq-query-command-output-without-tr-and-sed-commands
 
 <br>

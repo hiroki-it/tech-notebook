@@ -9,7 +9,7 @@ description: 言語の種類＠言語を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -108,7 +108,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 - Groovy
 - Kotlin
 
-> ↪️：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
+> - https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
 <br>
 
@@ -118,7 +118,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 
 プログラミングの構成要素 (データ、変数、関数) に対して、『型』という特性を付与する仕組みのこと。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
+> - https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
 
 <br>
 

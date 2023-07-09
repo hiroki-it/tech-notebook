@@ -9,7 +9,7 @@ description: Falco＠セキュリティ系ミドルウェアの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -41,7 +41,7 @@ Falco自体は、デーモンやDaemonSet配下のPodとして稼働させる。
 
 システムコールのイベントを記載したログを作成する。
 
-> ↪️：https://falco.org/docs/event-sources/kubernetes-audit/#kubernetes-audit-rules
+> - https://falco.org/docs/event-sources/kubernetes-audit/#kubernetes-audit-rules
 
 **＊実行例＊**
 
@@ -53,6 +53,6 @@ Pod内のコンテナに接続し、コマンドを実行したとする。
 09:21:30.694701115: Notice Unexpected process spawned in container (command=cat /etc/hostname pid=24018 user=root k8s.ns=defalut k8s.pod=foo-pod container=foo image=foo@sha256:*****)\n,
 ```
 
-> ↪️：https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%97%E3%81%9Flog%E3%81%AE%E7%A2%BA%E8%AA%8D
+> - https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%97%E3%81%9Flog%E3%81%AE%E7%A2%BA%E8%AA%8D
 
 <br>

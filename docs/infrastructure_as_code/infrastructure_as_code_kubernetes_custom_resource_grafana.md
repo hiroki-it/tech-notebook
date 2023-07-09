@@ -9,7 +9,7 @@ description: Grafana＠CNCFプロジェクトの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images//grafana_architecture.png)
 
-> ↪️：https://community.grafana.com/t/architecture-of-grafana/50090
+> - https://community.grafana.com/t/architecture-of-grafana/50090
 
 <br>
 
@@ -35,7 +35,7 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 | RDB                  | MySQL、PostgreSQL                                           |
 | クラウドデータソース | AWS CloudWatch、Google CloudLogging                         |
 
-> ↪️：https://qiita.com/MetricFire/items/15e024aea40785be622c
+> - https://qiita.com/MetricFire/items/15e024aea40785be622c
 
 <br>
 
@@ -45,6 +45,6 @@ Grafanaのコンポーネントを部分的にマネージドにしたサービ�
 
 執筆時点 (2023/05/16時点) では、フルマネージドにしてくれる。
 
-> ↪️：https://docs.aws.amazon.com/ja_jp/grafana/latest/userguide/AMG-configure-vpc.html
+> - https://docs.aws.amazon.com/ja_jp/grafana/latest/userguide/AMG-configure-vpc.html
 
 <br>

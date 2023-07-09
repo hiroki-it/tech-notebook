@@ -9,7 +9,7 @@ description: Exporter＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -66,7 +66,7 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 | Exporter名                                                        | 説明                                                                                                                                                                                | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名     |
 | :---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ---------------- |
 | [Node exporter](https://github.com/prometheus/node_exporter)      | Nodeに関するメトリクスのデータポイントを収集する。                                                                                                                                  | `9100`             | `/metrics`             | `node_*`         |
-| [Process exporter](https://github.com/ncabatoff/process-exporter) | 任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>↪️：https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
+| [Process exporter](https://github.com/ncabatoff/process-exporter) | 任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>- https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
 
 #### ▼ Deploymentパターン
 
@@ -83,7 +83,7 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 | [Nginx Vts exporter](https://github.com/hnlq715/nginx-vts-exporter)            | Nginxに関するメトリクスのデータポイントを収集する。                                                                                           | `9113`             | 同上                   |              |
 | [Apache exporter](https://github.com/Lusitaniae/apache_exporter)               | Apacheに関するメトリクスのデータポイントを収集する。                                                                                          | `9117`             | 同上                   |              |
 | [Mysqld exporter](https://github.com/prometheus/mysqld_exporter)               | MySQL/MariaDBに関するメトリクスのデータポイントを収集する。                                                                                   | `9104`             | 同上                   |              |
-| [Postgres exporter](https://github.com/prometheus-community/postgres_exporter) | PostgreSQLに関するメトリクスのデータポイントを収集する。<br>↪️：https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage | `9187`             | 同上                   |              |
+| [Postgres exporter](https://github.com/prometheus-community/postgres_exporter) | PostgreSQLに関するメトリクスのデータポイントを収集する。<br>- https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage | `9187`             | 同上                   |              |
 | [Oracledb exporter](https://github.com/iamseth/oracledb_exporter)              | Oracleに関するメトリクスのデータポイントを収集する。                                                                                          | `9121`             | 同上                   |              |
 | [Redis exporter](https://github.com/oliver006/redis_exporter)                  | Redisに関するメトリクスのデータポイントを収集する。                                                                                           | `9121`             | 同上                   |              |
 
@@ -113,7 +113,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 
 <br>
 
@@ -135,7 +135,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus-blackbox-exporter -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart
 
 <br>
 
@@ -317,7 +317,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
 
 <br>
 
@@ -357,7 +357,7 @@ kube_pod_info
 | `kube_daemonset_status_number_available`         | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。      | `kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`         |
 | `kube_daemonset_status_number_unavailable`       | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。    | `kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`       |
 
-> ↪️：https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1
+> - https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1
 
 <br>
 
@@ -379,7 +379,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
 
 <br>
 
@@ -431,7 +431,7 @@ $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_expo
 $ /usr/local/bin/node_exporter --web.listen-address=":9100"
 ```
 
-> ↪️：https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
+> - https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
 
 #### ▼ チャートとして
 
@@ -447,7 +447,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
 
 複数のExporterを一括してインストールする場合、例えばkube-prometheus-stackチャートがある。
 
@@ -461,7 +461,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 
 <br>
 
@@ -499,7 +499,7 @@ NodeのCPU使用率を取得する。
 rate(node_cpu_seconds_total[1m])
 ```
 
-> ↪️：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
+> - https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
 
 #### ▼ メモリ使用率
 
@@ -509,7 +509,7 @@ Nodeのメモリ使用率を取得する。
 node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
 ```
 
-> ↪️：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
+> - https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
 
 #### ▼ ディスク使用率
 
@@ -531,7 +531,7 @@ Nodeのディスク使用率を取得する。
 100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
 ```
 
-> ↪️：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
+> - https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
 
 #### ▼ ディスクのI/OによるCPU使用率
 
@@ -561,7 +561,7 @@ rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_tot
 rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
 ```
 
-> ↪️：https://christina04.hatenablog.com/entry/prometheus-node-monitoring
+> - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
 
 #### ▼ パケットの受信サイズ
 
@@ -577,7 +577,7 @@ node_network_receive_packets_total
 (rate(node_network_receive_packets_total[5m]) / rate(node_network_receive_packets_total[5m] offset 5m)) > 10
 ```
 
-> ↪️：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
+> - https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
 
 <br>
 
@@ -621,7 +621,7 @@ PostgreSQLのプロセスのステータスを表す。
 pg_up == 0
 ```
 
-> ↪️：https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
+> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
 
 #### ▼ PostgreSQLの連続稼働時間
 
@@ -647,7 +647,7 @@ PostgreSQLで、RepmgrによるDBクラスターを採用している場合に�
 pg_replication_lag > 10
 ```
 
-> ↪️：https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
+> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
 
 #### ▼ 残骸タプルサイズ
 
@@ -657,7 +657,7 @@ DBにたまっている残骸タプルのデータサイズを表す。
 pg_stat_user_tables_n_dead_tup{datname="<DB名>"}
 ```
 
-> ↪️：https://www.adyen.com/blog/postgresql-hot-updates-part2
+> - https://www.adyen.com/blog/postgresql-hot-updates-part2
 
 <br>
 
@@ -681,7 +681,7 @@ $ tar -xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
 
 執筆時点 (2023/03/26) 時点で、Process exporterのチャートはない。
 
-> ↪️：https://github.com/ncabatoff/process-exporter
+> - https://github.com/ncabatoff/process-exporter
 
 <br>
 
@@ -702,7 +702,7 @@ process_exporter_build_info{build_date="2021-03-11-03:26:58",commit_sha="d0597c8
 ...
 ```
 
-> ↪️：https://github.com/ncabatoff/process-exporter#exposing-metrics-through-https
+> - https://github.com/ncabatoff/process-exporter#exposing-metrics-through-https
 
 <br>
 

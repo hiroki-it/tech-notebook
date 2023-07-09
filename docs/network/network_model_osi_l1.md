@@ -9,7 +9,7 @@ description: L1＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: L1＠OSI参照モデルの知見を記録しています。
 
 ケーブルや通信信号を処理するレイヤーである。
 
-> ↪️：https://hogetech.info/network/osi/layer1
+> - https://hogetech.info/network/osi/layer1
 
 <br>
 
@@ -35,7 +35,7 @@ LAN内に配置されたNATルーターが、WAN内のグローバルIPアドレ
 
 ![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_lan.jpeg)
 
-> ↪️：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
+> - http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
 
 <br>
 
@@ -101,7 +101,7 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 
 他のLANから閉じられた専用のアクセス回線であり、特定のLAN間でのみデータ通信を行う。
 
-> ↪️：http://makiyamashinji.web.fc2.com/emprus/design/wan.html
+> - http://makiyamashinji.web.fc2.com/emprus/design/wan.html
 
 #### ▼ 回線交換方式
 

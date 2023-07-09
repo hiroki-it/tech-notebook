@@ -9,7 +9,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 しかし、マイクロサービスアーキテクチャ固有のインフラ領域の課題 (例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー作成、など) があり、非推奨である。
 
-> ↪️：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
+> - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
 
 <br>
 
@@ -96,7 +96,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
-> ↪️：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
+> - https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
 
 <br>
 
@@ -136,7 +136,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_control-plane.png)
 
-> ↪️：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
+> - https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
 
 <br>
 
@@ -180,7 +180,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 - ロードバランサー
 - 名前解決 (DNSベースのサービスディスカバリーの場合のみ)
 
-> ↪️：https://www.baeldung.com/cs/service-discovery-microservices
+> - https://www.baeldung.com/cs/service-discovery-microservices
 
 <br>
 
@@ -249,7 +249,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 - サービスメッシュツール (例：Istio、Linkerd、など) のサイドカー
 - サービスディスカバリー機能を持つリバースプロキシ (例：素のEnvoy、Traefik、など)
 
-> ↪️：https://traefik.io/glossary/service-discovery/
+> - https://traefik.io/glossary/service-discovery/
 
 <br>
 
@@ -259,6 +259,6 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 マイクロサービス間の通信方式でイベント駆動方式を採用した場合に使用するメッシュ。
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+> - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 
 <br>

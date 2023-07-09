@@ -9,7 +9,7 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：<https://hiroki-it.github.io/tech-notebook/>
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -35,9 +35,9 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 > ↪️：
 >
-> - <https://sreake.com/blog/kubernetes-descheduler/>
-> - <https://torumakabe.github.io/post/k8s_descheduler/>
-> - <https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8>
+> - https://sreake.com/blog/kubernetes-descheduler/
+> - https://torumakabe.github.io/post/k8s_descheduler/
+> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8>
 > - https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31
 
 <br>
@@ -160,7 +160,7 @@ data:
 
 再スケジューリングの対象とするPodの選定ルールを設定する。
 
-> ↪️：<https://github.com/kubernetes-sigs/descheduler#policy-and-strategies>
+> - https://github.com/kubernetes-sigs/descheduler#policy-and-strategies>
 
 <br>
 
@@ -188,7 +188,7 @@ strategies:
           pods: 50
 ```
 
-> ↪️：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23>
+> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
 
 #### ▼ RemoveDuplicates
 
@@ -202,7 +202,7 @@ strategies:
     enabled: true
 ```
 
-> ↪️：<https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18>
+> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
 
 #### ▼ RemovePodsHavingTooManyRestarts
 
@@ -220,7 +220,7 @@ strategies:
         includingInitContainers: true
 ```
 
-> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 #### ▼ RemovePodsViolatingNodeAffinity
 
@@ -234,7 +234,7 @@ strategies:
     enabled: true
 ```
 
-> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
@@ -248,7 +248,7 @@ strategies:
     enabled: true
 ```
 
-> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 #### ▼ RemovePodsViolatingTopologySpreadConstraint
 
@@ -266,6 +266,6 @@ strategies:
         includingInitContainers: true
 ```
 
-> ↪️：<https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml>
+> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
 <br>

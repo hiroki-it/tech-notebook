@@ -9,7 +9,7 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -26,17 +26,17 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 | Webガード    | セッションIDを使用したForm認証のために使用する。       |
 | APIガード    | Bearer認証、APIキー認証、OAuth、などのために使用する。 |
 
-> ↪️：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+> - https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 #### ▼ カスタムガード
 
 Laravelがデフォルトで持たないドライバーとプロバイダーを持つガードを定義する。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
+> - https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
 APIガードの認証で使用するトークンをJWTに変更したい時には、以下のパッケージがおすすめ。
 
-> ↪️：https://github.com/tymondesigns/jwt-auth
+> - https://github.com/tymondesigns/jwt-auth
 
 <br>
 
@@ -89,7 +89,7 @@ BeforeMiddlwareで認証済みのユーザーか否かを検証し、もし未�
 
 これにより、未認証のユーザーがコントローラーを実行することを防ぐ。
 
-> ↪️：https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
+> - https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
 
 <br>
 
@@ -99,7 +99,7 @@ BeforeMiddlwareで認証済みのユーザーか否かを検証し、もし未�
 
 認証データをDBから取得するオブジェクトを定義する。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+> - https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 <br>
 
@@ -117,7 +117,7 @@ SessionGuardクラスの`attempt`メソッドをコールしてパスワード�
 
 `redirect`メソッドで、認証後の初期ページにリダイレクトする。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
+> - https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
 
 ```php
 <?php
@@ -172,7 +172,7 @@ class RouteServiceProvider extends ServiceProvider
 
 ユーザーごとに認証方法を区別しつつ、同じ認証後のWebページにリダイレクトさせられる。
 
-> ↪️：https://blog.capilano-fw.com/?p=8159
+> - https://blog.capilano-fw.com/?p=8159
 
 **＊実装例＊**
 
@@ -351,7 +351,7 @@ Policyクラスのメソッドによって、リクエスト中の認証済み�
 
 EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
 
-> ↪️：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
+> - https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
 
 ```php
 <?php
@@ -475,7 +475,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 });
 ```
 
-> ↪️：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
+> - https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
 #### ▼ `authorization`メソッドによる認可
 
@@ -613,7 +613,7 @@ Composerでインストールする必要がある。
 $ composer require laravel/passport
 ```
 
-> ↪️：https://readouble.com/laravel/8.x/ja/passport.html
+> - https://readouble.com/laravel/8.x/ja/passport.html
 
 #### ▼ OAuthのトークン管理テーブルを作成
 
@@ -646,7 +646,7 @@ DBマイグレーション後、以下のテーブルが作成される。
 | oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。                                                                                                                                                   |
 | oauth_clients                 | Passportで使用している付与タイプを管理する。                                                                                                                                                       |
 | oauth_personal_access_clients | パーソナルアクセストークンタイプの情報を管理する。                                                                                                                                                 |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>↪️：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>- https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ▼ トークンを作成
 
@@ -1025,7 +1025,7 @@ APIキー認証とセッションIDを使用したForm認証機能の認証処�
 
 ルーティングとDBアクセスに関する処理は提供しない。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/sanctum.html
+> - https://readouble.com/laravel/8.x/ja/sanctum.html
 
 <br>
 
@@ -1091,7 +1091,7 @@ Laravelが持つ全ての認証機能のバックエンド (認証+ルーティ�
 
 ### セットアップ
 
-> ↪️：https://github.com/laravel/breeze
+> - https://github.com/laravel/breeze
 
 #### ▼ インストール
 
@@ -1119,7 +1119,7 @@ $ php artisan breeze:install
 
 Laravelが持つ全ての認証機能のバックエンド (認証+ルーティング+DBアクセス) 処理と、これに対応するフロントエンド処理を提供する。
 
-> ↪️：https://readouble.com/laravel/7.x/ja/authentication.html
+> - https://readouble.com/laravel/7.x/ja/authentication.html
 
 <br>
 

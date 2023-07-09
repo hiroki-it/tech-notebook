@@ -9,7 +9,7 @@ description: Global Accelerator＠AWSリソースの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -74,6 +74,6 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 以下のサイトで、Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる。
 
-> ↪️：https://speedtest.globalaccelerator.aws/#/
+> - https://speedtest.globalaccelerator.aws/#/
 
 <br>

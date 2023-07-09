@@ -9,7 +9,7 @@ description: コマンド＠Kustomizeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -37,7 +37,7 @@ $ kustomize build kubectl apply -f -
 $ kubectl apply -k kustomization.yaml
 ```
 
-> ↪️：https://qiita.com/os1ma/items/076a57b25e74e54476ba#%E7%B5%B1%E5%90%88%E5%89%8D%E3%81%AE-kustomize-%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B
+> - https://qiita.com/os1ma/items/076a57b25e74e54476ba#%E7%B5%B1%E5%90%88%E5%89%8D%E3%81%AE-kustomize-%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B
 
 #### ▼ --enable-alpha-plugins
 
@@ -79,7 +79,7 @@ $ kubectl diff -k ./ > kustomize.diff
 $ kubectl apply -k ./
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+> - https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 リモートにある`kustomize.yaml`ファイルを使用する場合も、同じく`kustomize.yaml`ファイルのあるディレクトリのURLを指定する。
 
@@ -89,7 +89,7 @@ $ kubectl diff -k "<リポジトリのURL>/<kustomize.yamlファイルのある�
 $ kubectl apply -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>"
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#examples
+> - https://github.com/kubernetes-sigs/kustomize/blob/master/examples/remoteBuild.md#examples
 
 **＊実行例＊**
 
@@ -119,6 +119,6 @@ $ kubectl apply -k "https://github.com/kubernetes-sigs/aws-load-balancer-control
 $ kubectl kustomize ./
 ```
 
-> ↪️：https://note.com/shift_tech/n/nd7f17e51d592
+> - https://note.com/shift_tech/n/nd7f17e51d592
 
 <br>

@@ -9,7 +9,7 @@ description: CloudFront＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -46,7 +46,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | Restriction              |                                                                    |      |
 | Invalidation             | CloudFrontに保存されているキャッシュを削除できる。                 |      |
 
-> ↪️：https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
+> - https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
 
 #### ▼ General
 
@@ -56,7 +56,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | WAF                 | CloudFrontに紐付けるWAFを設定する。                                                                                                   |                                                                                                                                                                                                                                                             |
 | CNAME               | CloudFrontのデフォルトドメイン名 (`*****.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                                        | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                               |
 | SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                                                           | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                         |
-| Security Policy     | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソース、などを含む。<br>・↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
+| Security Policy     | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソース、などを含む。<br>・- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
 | Default Root Object | オリジンのドキュメントルートを設定する。                                                                                              | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『`/`』でリクエストした時に、オリジンのルートディレクトリ配下にある`index,html`ファイルがドキュメントルートになる。       |
 | Standard Logging    | CloudFrontのアクセスログをS3に作成するか否かを設定する。                                                                              |                                                                                                                                                                                                                                                             |
 
@@ -82,7 +82,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定   | ・パスパターンが静的ファイルに対するリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。                                                                                                                                                                   |
 | Object Caching                 | CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。               | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                    |
 | TTL                            | CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。                     | ・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダーの値の組み合わせによって決まる。 |
-| Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                         |
+| Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                         |
 | Restrict Viewer Access         | リクエストの送信元を制限するか否かを設定できる。                               | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                                                                      |
 | Compress Objects Automatically | レスポンス時に`.gzip`ファイルとして圧縮するか否かを設定                        | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                               |
 
@@ -182,7 +182,7 @@ Cookieとクエリストリングと比べて、同じ設定でもキャッシ�
 | 一部ルーティング | 一部のヘッダーのルーティングを拒否し、ヘッダーの無いリクエストをルーティングする。 | 指定したヘッダーのみをキャッシュキーとみなす。日付に関するヘッダー (例：Accept-Datetime) などの動的な値をキャッシュキーとしてしまうと。同一と見なすリクエストがほとんどなくなり、ヒットしなくなる。そのため、ヘッダーをオリジンにルーティングしつつ、動的になりやすい値を持つヘッダーをキャッシュキーにしないようにする必要がある。ヒット率の向上のため、クエリストリングやCookieの静的な値をキャッシュキーに設定すると良い。 |
 | 全拒否           | 全てのヘッダーのルーティングを拒否し、ヘッダーの無いリクエストをルーティングする。 | キャッシュを作成しない。                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web
 
 #### ▼ Cookieに基づくキャッシュ作成
 
@@ -206,7 +206,7 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 | 一部ルーティング | 一部のCookieのルーティングを拒否し、Cookieの無いリクエストをルーティングする。 | 指定したCookieのみキャッシュキーとみなす。Cookieはユーザーごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でキャッシュを判定するようになるため、同一と見なすリクエストが増え、ヒット率の向上につながる。 |
 | 全拒否           | 全てのCookieのルーティングを拒否し、Cookieの無いリクエストをルーティングする。 | キャッシュを作成しない。                                                                                                                                                                                                         |
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
 
 #### ▼ クエリストリングに基づくキャッシュ作成
 
@@ -220,7 +220,7 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 | 一部拒否 | 一部のクエリストリングのルーティングを拒否し、クエリストリングの無いリクエストをオリジンにルーティングする。 | 指定したクエリストリングのみをキャッシュキーとみなす。 |
 | 全拒否   | 全てのクエリストリングのルーティングを拒否し、クエリストリングの無いリクエストをルーティングする。           | キャッシュを作成しない。                               |
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
 
 #### ▼ Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
 
@@ -234,7 +234,7 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 
 #### ▼ ヒット率の向上について
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html
 
 <br>
 
@@ -242,7 +242,7 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 
 #### ▼ ヒット率の向上について
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
 
 <br>
 
@@ -315,7 +315,7 @@ CloudFrontに関するエラーページが表示された場合、不具合を�
 
 CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
 
-> ↪️：https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
+> - https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
 
 <br>
 
@@ -332,7 +332,7 @@ $ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
 
 もしくは、以下のリンクを直接的に参考し、『`"service": "CLOUDFRONT"`』となっている部分を探す。
 
-> ↪️：https://ip-ranges.amazonaws.com/ip-ranges.json
+> - https://ip-ranges.amazonaws.com/ip-ranges.json
 
 <br>
 
@@ -377,6 +377,6 @@ The document tree is shown below.
 
 Lamnda@Edgeを使用したCloudFrontの場合は、Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
 
 <br>

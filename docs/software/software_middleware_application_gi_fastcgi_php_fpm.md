@@ -9,7 +9,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 PHP-FPMは、Server API、Zend Engine、といったコンポーネントから構成される。
 
-> ↪️：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
+> - https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 
 ![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_architecture.png)
 
@@ -33,7 +33,7 @@ PHP-FPMでは、リクエストのたびにプロセスを起動するわけで�
 
 あらかじめ準備されたプロセス群を『プール』という。
 
-> ↪️：https://hackers-high.com/linux/php-fpm-config/#php-fpm
+> - https://hackers-high.com/linux/php-fpm-config/#php-fpm
 
 <br>
 

@@ -9,7 +9,7 @@ description: メタデータ＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -52,7 +52,7 @@ metadata:
     istio-injection: disabled
 ```
 
-> ↪️：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
 <br>
 
@@ -91,7 +91,7 @@ metadata:
     istio-injection: disabled
 ```
 
-> ↪️：https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+> - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 
 <br>
 
@@ -101,7 +101,7 @@ metadata:
 
 Deploymentの`.spec.template`キーや、Podの` .metadata.``キーにて、 `istio-proxy`コンテナごとのオプション値を設定する。Deploymentの`.metadata.``キーで定義しないように注意する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/annotations/
+> - https://istio.io/latest/docs/reference/config/annotations/
 
 <br>
 
@@ -158,7 +158,7 @@ spec:
           configPath: ./etc/istio/proxy
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
 #### ▼ parentShutdownDuration
 
@@ -249,7 +249,7 @@ spec:
         sidecar.istio.io/inject: false
 ```
 
-> ↪️：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
 <br>
 
@@ -274,7 +274,7 @@ spec:
         sidecar.istio.io/proxyCPU: 2
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/annotations/
+> - https://istio.io/latest/docs/reference/config/annotations/
 
 <br>
 
@@ -299,7 +299,7 @@ spec:
         sidecar.istio.io/proxyImage: foo-envoy
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/annotations/
+> - https://istio.io/latest/docs/reference/config/annotations/
 
 <br>
 
@@ -324,6 +324,6 @@ spec:
         sidecar.istio.io/proxyMemory: 4
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/annotations/
+> - https://istio.io/latest/docs/reference/config/annotations/
 
 <br>

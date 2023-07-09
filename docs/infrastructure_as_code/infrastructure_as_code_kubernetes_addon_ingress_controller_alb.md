@@ -9,7 +9,7 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -138,7 +138,7 @@ resource "aws_iam_policy" "aws_load_balancer_controller" {
 }
 ```
 
-> ↪️：https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
+> - https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
 
 別途、AWS Load BalancerコントローラーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
 
@@ -156,7 +156,7 @@ IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
 
 ![aws_load_balancer_controller_irsa](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_irsa.png)
 
-> ↪️：https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
+> - https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
 
 #### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
 
@@ -220,7 +220,7 @@ $ eksctl create iamserviceaccount \
     --approve
 ```
 
-> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
 
 `【５】`
 
@@ -260,7 +260,7 @@ secrets:
 - name: foo-aws-load-balancer-controller-token-****
 ```
 
-> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 <br>
 
@@ -357,7 +357,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
      以下の条件を満たす必要がある。
 
-> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 <br>
 
@@ -405,7 +405,7 @@ spec:
           protocol: TCP
 ```
 
-> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
 
 <br>
 
@@ -554,6 +554,6 @@ spec:
 
 ![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
-> ↪️：https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
+> - https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
 
 <br>

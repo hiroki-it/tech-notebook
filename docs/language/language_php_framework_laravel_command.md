@@ -9,7 +9,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 アプリケーションの開発に役立つコマンドを提供する。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/artisan.html
+> - https://readouble.com/laravel/8.x/ja/artisan.html
 
 <br>
 
@@ -140,7 +140,7 @@ $ php artisan migrate:status
 
 指定した履歴数だけ、ロールバックする。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```bash
 $ php artisan migrate:rollback --step=<ロールバック数>
@@ -160,7 +160,7 @@ $ php artisan migrate
 
 初期の状態まで、全てロールバックする。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```bash
 $ php artisan migrate:reset
@@ -174,7 +174,7 @@ $ php artisan migrate:reset
 $ php artisan migrate:refresh
 ```
 
-> ↪️：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
+> - https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
 #### ▼ fresh
 
@@ -196,7 +196,7 @@ DBマイグレーション時、テーブルがすでに存在するエラーが
 SQLSTATE[42S01]: <テーブル名> table or view already exists
 ```
 
-> ↪️：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
+> - https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
 
 #### ▼ --force
 
@@ -208,7 +208,7 @@ CI/CDパイプライン時に、この確認画面でYes/Noを入力できない
 $ php artisan migrate --force
 ```
 
-> ↪️：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
+> - https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
 <br>
 

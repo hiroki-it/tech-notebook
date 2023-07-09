@@ -9,7 +9,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -162,7 +162,7 @@ $ yum list | grep <検索文字>
 
 リポジトリか有効か否かの一覧を取得する。
 
-> ↪️：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
+> - https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
 ```bash
 $ yum repolist all
@@ -339,7 +339,7 @@ $ brew autoremove --dry-run
 $ brew autoremove
 ```
 
-> ↪️：https://parashuto.com/rriver/tools/homebrew-most-used-commands
+> - https://parashuto.com/rriver/tools/homebrew-most-used-commands
 
 #### ▼ cleanup
 
@@ -349,7 +349,7 @@ $ brew autoremove
 $ brew cleanup
 ```
 
-> ↪️：https://qiita.com/akameco/items/9e5026e892661b75e7b3
+> - https://qiita.com/akameco/items/9e5026e892661b75e7b3
 
 #### ▼ doctor
 
@@ -387,7 +387,7 @@ brewによって`~/usr/local/Cellar `ディレクトリにインストールさ�
 $ brew link <パッケージ名>
 ```
 
-> ↪️：https://hacknote.jp/archives/23816/
+> - https://hacknote.jp/archives/23816/
 
 #### ▼ update
 
@@ -397,7 +397,7 @@ brew本体をアップグレードする。
 $ brew update
 ```
 
-> ↪️：https://qiita.com/akameco/items/9e5026e892661b75e7b3
+> - https://qiita.com/akameco/items/9e5026e892661b75e7b3
 
 #### ▼ upgrade
 
@@ -407,7 +407,7 @@ brew本体とパッケージの両方をアップグレードする。
 $ brew upgrade
 ```
 
-> ↪️：https://www.curict.com/item/bc/bcc0607.html
+> - https://www.curict.com/item/bc/bcc0607.html
 
 <br>
 
@@ -452,7 +452,7 @@ sops <バージョン>
 $ brew install asdf
 ```
 
-> ↪️：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+> - https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 #### ▼ global
 

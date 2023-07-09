@@ -9,7 +9,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
-> ↪️：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
+> - https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
 
 <br>
 
@@ -38,7 +38,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg)
 
-> ↪️：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
+> - https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
 
 <br>
 
@@ -165,7 +165,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。
 
-> ↪️：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
+> - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
 
 <br>
 
@@ -261,7 +261,7 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 ![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg)
 
-> ↪️：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
+> - https://www.n-study.com/internet-vpn/ssl-vpn-overview/
 
 #### ▼ クライアント証明書
 

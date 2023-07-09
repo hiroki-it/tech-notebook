@@ -9,7 +9,7 @@ description: L4＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: L4＠OSI参照モデルの知見を記録しています。
 
 アプリケーション層のプロトコルを適切なアプリケーションに振り分けるプロトコル (例：TCP、UDP、など) を処理するレイヤーである。
 
-> ↪️：https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4
+> - https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4
 
 <br>
 
@@ -109,7 +109,7 @@ unix://./etc/foo.sock
 
 同じOS上で稼働するコンテナのプロセス間の通信でも使用できる。
 
-> ↪️：https://www.miketheman.net/2021/12/28/container-to-container-communication/
+> - https://www.miketheman.net/2021/12/28/container-to-container-communication/
 
 <br>
 
@@ -121,6 +121,6 @@ unix://./etc/foo.sock
 - IPアドレス
 - ポート番号
 
-> ↪️：https://www.infraexpert.com/study/tcpip8.html\
+> - https://www.infraexpert.com/study/tcpip8.html\
 
 <br>

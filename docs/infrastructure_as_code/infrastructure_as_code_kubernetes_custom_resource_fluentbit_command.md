@@ -9,7 +9,7 @@ description: コマンド＠FluentBitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -61,6 +61,6 @@ Available Options
 $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 ```
 
-> ↪️：https://cloud.calyptia.com/visualizer
+> - https://cloud.calyptia.com/visualizer
 
 <br>

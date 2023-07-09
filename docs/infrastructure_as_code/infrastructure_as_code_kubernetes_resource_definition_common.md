@@ -9,7 +9,7 @@ description: 共通部分＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -93,7 +93,7 @@ metadata:
       {"apiVersion":"extensions/v1beta1","kind":"Deployment" ... }
 ```
 
-> ↪️：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
+> - https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
 
 #### ▼ `kubernetes.io`キー
 
@@ -123,7 +123,7 @@ metadata:
     kubernetes.io/ingress.class: foo-ingress-class
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
@@ -199,7 +199,7 @@ metadata:
   deletionTimestamp: "2022-01-01T12:00:00Z"
 ```
 
-> ↪️：https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
+> - https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
 
 <br>
 
@@ -220,7 +220,7 @@ metadata:
   generation: 3
 ```
 
-> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -248,7 +248,7 @@ metadata:
 
 int型を割り当てようとするとエラーになり、これはHelmの`values`ファイル経由で『数字』を出力しようとする場合に起こる。
 
-> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <br>
 
@@ -256,7 +256,7 @@ int型を割り当てようとするとエラーになり、これはHelmの`val
 
 キー名のプレフィクスとして、`kubernetes.io/`と`k8s.io/`は予約されている。
 
-> ↪️：https://kubernetes.io/docs/reference/labels-annotations-taints/
+> - https://kubernetes.io/docs/reference/labels-annotations-taints/
 
 <br>
 
@@ -280,7 +280,7 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 | `app.kubernetes.io/type`       | `host` (PVのマウント対象)    | リソースの設定方法の種類名を設定する。                              |
 | `app.kubernetes.io/version`    | `5.7.21`                     | マイクロサービスのリリースバージョン名を設定する。                  |
 
-> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
 <br>
 
@@ -454,7 +454,7 @@ metadata:
   name: foo-deployment
 ```
 
-> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -464,7 +464,7 @@ Kubernetesにとって`.metadata.name`キーはIDであり、後から変更で�
 
 もし別の名前に変更したい場合は、再作成する必要がある。
 
-> ↪️：https://stackoverflow.com/questions/39428409/rename-deployment-in-kubernetes
+> - https://stackoverflow.com/questions/39428409/rename-deployment-in-kubernetes
 
 <br>
 
@@ -481,7 +481,7 @@ metadata:
   namespace: foo-namespace
 ```
 
-> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -503,7 +503,7 @@ metadata:
 ...
 ```
 
-> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 <br>
 
@@ -558,7 +558,7 @@ status:
       type: PodScheduled
 ```
 
-> ↪️：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
 
 <br>
 

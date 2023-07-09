@@ -9,7 +9,7 @@ description: ExternalDNS＠ネットワークアドオンの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -65,7 +65,7 @@ time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com A
 time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com TXT [Id: /hostedzone/*****]"
 ```
 
-> ↪️：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
+> - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
 
 <br>
 
@@ -198,7 +198,7 @@ subjects:
     namespace: kube-system
 ```
 
-> ↪️：https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/aws/#manifest-for-clusters-without-rbac-enabled
+> - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/aws/#manifest-for-clusters-without-rbac-enabled
 
 <br>
 
@@ -218,7 +218,7 @@ $ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/external-
 $ helm install <リリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+> - https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
 
 <br>
 

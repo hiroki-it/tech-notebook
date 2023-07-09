@@ -9,7 +9,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 リソースとTerraformの`resource`タイプはおおよそ一致している。
 
-> ↪️：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+> - https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
 <br>
 
@@ -138,7 +138,7 @@ data "aws_ami" "bastion" {
 
 循環参照エラーは、ローカルモジュール / 自前リモートモジュール内で公式リモートモジュールを使用する場合に起こる。
 
-> ↪️：https://serverfault.com/questions/1005761/what-does-error-cycle-means-in-terraform
+> - https://serverfault.com/questions/1005761/what-does-error-cycle-means-in-terraform
 
 <br>
 
@@ -760,7 +760,7 @@ resource "aws_instance" "server" {
 
 フラグ値を渡さない場合は、デフォルト値を渡すようにする。
 
-> ↪️：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
+> - https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
 
 ```terraform
 # 特定の実行環境の.terraform.tfvarsファイル
@@ -884,7 +884,7 @@ resource "aws_kms_replica_key" "foo" {
 }
 ```
 
-> ↪️：https://stackoverflow.com/questions/71484962/conditional-creation-of-parent-child-resources/71490413#71490413
+> - https://stackoverflow.com/questions/71484962/conditional-creation-of-parent-child-resources/71490413#71490413
 
 #### ▼ `count`関数で作成されなかった`output`ブロックは`null`
 
@@ -1128,7 +1128,7 @@ resource "aws_lb" "this" {
 
 指定したブロックを繰り返し作成する。
 
-> ↪️：https://www.terraform.io/language/expressions/dynamic-blocks
+> - https://www.terraform.io/language/expressions/dynamic-blocks
 
 #### ▼ map型の場合
 
@@ -1430,7 +1430,7 @@ resource "aws_foo" "foo" {
 }
 ```
 
-> ↪️：https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-4
+> - https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-4
 
 <br>
 
@@ -1543,7 +1543,7 @@ resource "aws_s3_bucket_policy" "alb" {
 | `path.root`           | `module`ディレクトリのルートパス                            | `/project/module/`     |
 | `terraform.workplace` | 現在使用しているワークスペース名                            | `prd`                  |
 
-> ↪️：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
+> - https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 
 <br>
 

@@ -9,7 +9,7 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -30,7 +30,7 @@ spec:
   group: foo.k8s.io
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+> - https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -49,7 +49,7 @@ spec:
   groupPriorityMinimum: 100
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+> - https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -66,7 +66,7 @@ spec:
   insecureSkipTLSVerify: true
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+> - https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -88,7 +88,7 @@ spec:
     port: 443
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+> - https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -107,7 +107,7 @@ spec:
   version: v1beta1
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+> - https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -126,7 +126,7 @@ spec:
   versionPriority: 100
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+> - https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 <br>
 
@@ -180,7 +180,7 @@ $ kubectl get csr foo-csr -o jsonpath='{.status.certificate}'| base64 -d > foo.c
 
 `kubectl`コマンドの向き先となるClusterを設定する。
 
-> ↪️：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+> - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 #### ▼ name
 
@@ -246,7 +246,7 @@ clusters:
 
 `kubectl`コマンドの向き先の候補を設定する。
 
-> ↪️：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+> - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 #### ▼ name
 
@@ -317,7 +317,7 @@ kind: Config
 current-context: <ClusterのARN>
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+> - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 <br>
 
@@ -331,7 +331,7 @@ kind: Config
 preferences: {}
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+> - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 <br>
 
@@ -341,7 +341,7 @@ preferences: {}
 
 kube-apiserverのクライアント (特に`kubectl`コマン実行者) のUserAccountの情報を設定する。
 
-> ↪️：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+> - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 #### ▼ name
 
@@ -436,7 +436,7 @@ data:
   number: "1"
 ```
 
-> ↪️：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+> - https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
 #### ▼ ファイルに管理
 
@@ -611,7 +611,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deployment-v1-apps
+> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deployment-v1-apps
 
 <br>
 
@@ -644,7 +644,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-> ↪️：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
+> - https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
 #### ▼ `field is immutable`
 
@@ -712,7 +712,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-> ↪️：https://amateur-engineer-blog.com/kubernetes-recreate/
+> - https://amateur-engineer-blog.com/kubernetes-recreate/
 
 #### ▼ RollingUpdate
 
@@ -746,7 +746,7 @@ spec:
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png)
 
-> ↪️：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
+> - https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
 <br>
 
@@ -760,7 +760,7 @@ Deploymentで維持管理するPodのテンプレートを設定する。
 
 Deployment自体の`.metadata.labels`キーを更新した場合はPodは再作成しないが、`.spec.template`キー配下の`.metadata.labels`キーの場合は、Podの再作成となる。
 
-> ↪️：https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
+> - https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
 
 **＊実装例＊**
 
@@ -942,7 +942,7 @@ spec:
   minReplicas: 1
 ```
 
-> ↪️：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+> - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
 <br>
 
@@ -1017,7 +1017,7 @@ spec:
     name: foo-deployment
 ```
 
-> ↪️：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+> - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
 <br>
 
@@ -1082,7 +1082,7 @@ Serviceへのルーティングルールを設定する。
 
 Ingressを使用する場合、ルーティング先のServiceは、ClusterIP Serviceとする。
 
-> ↪️：https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
+> - https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
 #### ▼ .spec.rules[].host
 
@@ -1124,7 +1124,7 @@ spec:
           - path: /bar
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
 
 #### ▼ .spec.rules[].http.paths[].pathType
 
@@ -1246,7 +1246,7 @@ spec:
   controller: istio.io/ingress-controller
 ```
 
-> ↪️：https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
+> - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
 
 <br>
 
@@ -1330,7 +1330,7 @@ spec:
   activeDeadlineSeconds: 20
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/workloads/controllers/job/#job-termination-and-cleanup
+> - https://kubernetes.io/docs/concepts/workloads/controllers/job/#job-termination-and-cleanup
 
 <br>
 
@@ -1366,7 +1366,7 @@ spec:
   parallelism: 3
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling-parallelism
+> - https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling-parallelism
 
 <br>
 
@@ -1395,7 +1395,7 @@ spec:
       restartPolicy: OnFailure
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template
+> - https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template
 
 <br>
 
@@ -1442,7 +1442,7 @@ Kubernetesの実行時に自動的に作成される。
 
 ボリュームへの認可スコープを設定する。
 
-> ↪️：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 
 #### ▼ ReadWriteMany
 
@@ -1506,7 +1506,7 @@ spec:
 
 ストレージの最大サイズを設定する。
 
-> ↪️：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
 
 **＊実装例＊**
 
@@ -1530,7 +1530,7 @@ PersistentVolumeの一種であるHostPathボリュームを作成する。
 
 Volumeの一種であるHostPathボリュームとは区別すること。
 
-> ↪️：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 #### ▼ path
 
@@ -1625,7 +1625,7 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
+> - https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
 
 **＊実行例＊**
 
@@ -1734,7 +1734,7 @@ spec:
     - hard
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
 
 <br>
 
@@ -1775,7 +1775,7 @@ spec:
 
 PersistentVolumeの作成先とするNodeを設定する。
 
-> ↪️：https://qiita.com/ysakashita/items/67a452e76260b1211920
+> - https://qiita.com/ysakashita/items/67a452e76260b1211920
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
@@ -1823,7 +1823,7 @@ spec:
 
 PersistentVolumeのライフサイクルを設定する。
 
-> ↪️：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy
 
 #### ▼ Delete
 
@@ -1842,7 +1842,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
 ```
 
-> ↪️：https://www.amazon.co.jp/dp/B07HFS7TDT
+> - https://www.amazon.co.jp/dp/B07HFS7TDT
 
 #### ▼ Recycle (非推奨)
 
@@ -1850,7 +1850,7 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、P
 
 将来的に廃止予定のため、非推奨。
 
-> ↪️：https://www.amazon.co.jp/dp/B07HFS7TDT
+> - https://www.amazon.co.jp/dp/B07HFS7TDT
 
 **＊実装例＊**
 
@@ -1871,7 +1871,7 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除されたとして�
 
 一度、Releasedステータスになると、他のPersistentVolumeClaimからは指定できなくなる。
 
-> ↪️：https://www.amazon.co.jp/dp/B07HFS7TDT
+> - https://www.amazon.co.jp/dp/B07HFS7TDT
 
 **＊実装例＊**
 
@@ -1912,8 +1912,8 @@ spec:
 | クラス名 | 説明                                  | 補足                                                                                                                                                                                                     |
 | -------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | standard | デフォルト値である。                  |                                                                                                                                                                                                          |
-| fast     | SSDをPersistentVolumeとして使用する。 | ↪️：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
-| slow     | HDをPersistentVolumeとして使用する。  | ↪️：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
+| fast     | SSDをPersistentVolumeとして使用する。 | - https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
+| slow     | HDをPersistentVolumeとして使用する。  | - https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 
 > ↪️：
 >
@@ -2176,7 +2176,7 @@ spec:
                     - bar-gin
 ```
 
-> ↪️：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
+> - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
 **＊スケジューリング例＊**
 
@@ -2239,7 +2239,7 @@ spec:
 N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
 ```
 
-> ↪️：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
+> - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
 <br>
 
@@ -2251,7 +2251,7 @@ Pod内で起動するコンテナを設定する。
 
 PodをDeploymentやReplicaSetに紐付けずに使用することは非推奨である。
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
+> - https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
 
 #### ▼ name、image
 
@@ -2316,7 +2316,7 @@ spec:
         - containerPort: 8080
 ```
 
-> ↪️：https://qiita.com/masahata/items/f3792d4ee06b42376cbc
+> - https://qiita.com/masahata/items/f3792d4ee06b42376cbc
 
 #### ▼ imagePullPolicy
 
@@ -2344,7 +2344,7 @@ spec:
         - containerPort: 8080
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
+> - https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
 
 #### ▼ resources
 
@@ -2358,10 +2358,10 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 
 | キー名     | 説明                                             | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requests` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>↪️：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                                                                               |
-| `limits`   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>↪️：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>↪️： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
+| `requests` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>- https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                                                                               |
+| `limits`   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>- https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>↪️： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
-> ↪️：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
+> - https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
 補足として、Node全体のハードウェアリソースは、`kubectl describe`コマンドから確認できる。
 
@@ -2468,7 +2468,7 @@ spec:
         claimName: foo-persistent-volume-claim
 ```
 
-> ↪️：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
+> - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
 #### ▼ workingDir
 
@@ -2763,7 +2763,7 @@ Pod内の特定のコンテナに対して、認可スコープを設定する�
 
 オプションは、`.spec.securityContext`キーと同じである。
 
-> ↪️：https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
+> - https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
 
 <br>
 
@@ -2828,7 +2828,7 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️：https://stackoverflow.com/a/53503986
+> - https://stackoverflow.com/a/53503986
 
 <br>
 
@@ -2850,7 +2850,7 @@ spec:
   enableServiceLinks: false
 ```
 
-> ↪️：https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
+> - https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
 
 <br>
 
@@ -2876,7 +2876,7 @@ spec:
   hostname: foo-pod
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
+> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 
 <br>
 
@@ -2900,7 +2900,7 @@ spec:
   hostNetwork: true
 ```
 
-> ↪️：https://stackoverflow.com/a/64793701
+> - https://stackoverflow.com/a/64793701
 
 <br>
 
@@ -2962,7 +2962,7 @@ spec:
   priorityClassName: system-node-critical
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
 
 #### ▼ DaemonSet配下のPod
 
@@ -3002,13 +3002,13 @@ spec:
     node.kubernetes.io/nodegroup: foo-node-group
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 
 #### ▼ DaemonSet配下のPod
 
 DaemonSetでは、特定のNodeにPodをスケジューリングさせられる。
 
-> ↪️：https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes
+> - https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes
 
 <br>
 
@@ -3018,7 +3018,7 @@ DaemonSetでは、特定のNodeにPodをスケジューリングさせられる�
 
 Pod内の全てのコンテナに対して、認可スコープを設定する。
 
-> ↪️：https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
+> - https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
 
 #### ▼ runAsUser
 
@@ -3061,7 +3061,7 @@ spec:
     runAsGroup: 3000
 ```
 
-> ↪️：https://cstoku.dev/posts/2018/k8sdojo-07/#runasgroup
+> - https://cstoku.dev/posts/2018/k8sdojo-07/#runasgroup
 
 #### ▼ runAsNonRoot
 
@@ -3082,7 +3082,7 @@ spec:
     runAsNonRoot: true
 ```
 
-> ↪️：https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc#root%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%AE%E5%AE%9F%E8%A1%8C%E5%88%B6%E9%99%90
+> - https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc#root%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%AE%E5%AE%9F%E8%A1%8C%E5%88%B6%E9%99%90
 
 #### ▼ fsGroup
 
@@ -3250,7 +3250,7 @@ spec:
       topologyKey: topology.kubernetes.io/zone
 ```
 
-> ↪️：https://zenn.dev/tmrekk/articles/07f30b09c26b50#maxskew%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - https://zenn.dev/tmrekk/articles/07f30b09c26b50#maxskew%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ topologyKey
 
@@ -3273,7 +3273,7 @@ spec:
     - topologyKey: topology.kubernetes.io/zone
 ```
 
-> ↪️：https://zenn.dev/tmrekk/articles/07f30b09c26b50#topologykey%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - https://zenn.dev/tmrekk/articles/07f30b09c26b50#topologykey%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ whenUnsatisfiable
 
@@ -3296,7 +3296,7 @@ spec:
     - whenUnsatisfiable: DoNotSchedule
 ```
 
-> ↪️：https://zenn.dev/tmrekk/articles/07f30b09c26b50#whenunsatisfiable%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - https://zenn.dev/tmrekk/articles/07f30b09c26b50#whenunsatisfiable%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ labelSelector
 
@@ -3318,7 +3318,7 @@ spec:
         app.kubernetes.io/app: foo-pod
 ```
 
-> ↪️：https://zenn.dev/tmrekk/articles/07f30b09c26b50#labelselector%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - https://zenn.dev/tmrekk/articles/07f30b09c26b50#labelselector%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 <br>
 
@@ -3382,7 +3382,7 @@ data:
         auto_create_group true
 ```
 
-> ↪️：https://amateur-engineer-blog.com/configmap-file-mount/
+> - https://amateur-engineer-blog.com/configmap-file-mount/
 
 #### ▼ emptyDir
 
@@ -3531,7 +3531,7 @@ spec:
               name: baz-cm
 ```
 
-> ↪️：https://amateur-engineer-blog.com/multi-configmap-by-projected-volume/
+> - https://amateur-engineer-blog.com/multi-configmap-by-projected-volume/
 
 #### ▼ persistentVolumeClaim
 
@@ -3589,7 +3589,7 @@ spec:
     type: DirectoryOrCreate
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 #### ▼ secret
 
@@ -3667,7 +3667,7 @@ spec:
       app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
-> ↪️：https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
+> - https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
 
 <br>
 
@@ -3713,7 +3713,7 @@ spec:
       app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+> - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
 
 <br>
 
@@ -3733,7 +3733,7 @@ metadata:
 value: 1000000
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption
 
 <br>
 
@@ -3743,7 +3743,7 @@ value: 1000000
 
 非推奨である。
 
-> ↪️：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes
+> - https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes
 
 <br>
 
@@ -3766,7 +3766,7 @@ rules:
   - apiGroups: [""]
 ```
 
-> ↪️：https://kubernetes.io/docs/reference/using-api/#api-groups
+> - https://kubernetes.io/docs/reference/using-api/#api-groups
 
 <br>
 
@@ -3830,7 +3830,7 @@ rules:
 
 RoleBindingを使用して紐付けるRoleの名前を設定する。
 
-> ↪️：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -3923,7 +3923,7 @@ data:
   password: *****
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
+> - https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
 string型の変数しか設定できないため、`base64`方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
@@ -3938,7 +3938,7 @@ data:
   number: "*****"
 ```
 
-> ↪️：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+> - https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
 #### ▼ 機密なファイルの管理
 
@@ -3959,7 +3959,7 @@ data:
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+> - https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
 <br>
 
@@ -3985,7 +3985,7 @@ stringData:
   password: baz
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
+> - https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
 string型の変数しか設定できないため、そのままだとinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
@@ -4000,7 +4000,7 @@ stringData:
   number: "1"
 ```
 
-> ↪️：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+> - https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
 #### ▼ 機密なファイルの管理
 
@@ -4019,7 +4019,7 @@ data:
     password: baz
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/#specify-unencoded-data-when-creating-a-secret
+> - https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/#specify-unencoded-data-when-creating-a-secret
 
 <br>
 
@@ -4029,7 +4029,7 @@ data:
 
 Secretの種類を設定する。
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
+> - https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
 
 #### ▼ kubernetes.io/basic-auth
 
@@ -4046,7 +4046,7 @@ data:
   password: baz
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
+> - https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
 
 #### ▼ kubernetes.io/dockerconfigjson
 
@@ -4133,7 +4133,7 @@ data:
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+> - https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
 #### ▼ Opaque
 
@@ -4152,7 +4152,7 @@ data:
   password: baz
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
+> - https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
 
 <br>
 
@@ -4194,7 +4194,7 @@ spec:
 
 もしIstio VirtualServiceからインバウンド通信を受信する場合、`.spec.ports.appProtocol`キーが使用しなければ、`.spec.ports.name`キーを『`<プロトコル名>-<任意の文字列>`』で命名しなければならない。
 
-> ↪️：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 
 ```yaml
 # appProtocolを使用しない場合
@@ -4350,7 +4350,7 @@ spec:
       targetPort: 9000 # デフォルトでは、spec.ports.portキーと同じ値になる。
 ```
 
-> ↪️：https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9
+> - https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9
 
 <br>
 
@@ -4372,7 +4372,7 @@ spec:
     app.kubernetes.io/app: foo-pod
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 
 <br>
 
@@ -4403,7 +4403,7 @@ spec:
   # clusterIP: *.*.*.*
 ```
 
-> ↪️：https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
+> - https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
 
 #### ▼ NodePortの場合
 
@@ -4436,7 +4436,7 @@ NodePortのポート番号は、`30000` 〜 `32767`番である必要がある�
 spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid range. The range of valid ports is 30000-32767
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
+> - https://kubernetes.io/docs/concepts/services-networking/service/#nodeport
 
 #### ▼ LoadBalancerの場合
 
@@ -4473,7 +4473,7 @@ status:
       - ip: 192.0.2.127
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
+> - https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
 
 <br>
 
@@ -4598,7 +4598,7 @@ imagePullSecrets:
   - name: foo-repository-credentials-secret
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
 
 <br>
 

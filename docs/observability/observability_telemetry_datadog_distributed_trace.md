@@ -9,7 +9,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
-> ↪️：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 <br>
 
@@ -31,7 +31,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 #### ▼ `/etc/datadog-agent/datadog.yaml`ファイル
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -73,14 +73,14 @@ APMエージェントを有効化し、分散トレース監視バックエン�
 
 記入中...
 
-> ↪️：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+> - https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
 
 #### ▼ デバッグ
 
 | 方法                      | 説明                                                                                                                                                                                          | 補足                                                                                                                                                                                     |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 起動ログの有効化          | 環境変数の`DD_TRACE_STARTUP_LOGS`を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、クライアントパッケージの設定値を確認できる。                                 | ↪️：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                                |
-| デバッグログの有効化      | 各クライアントパッケージが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | ↪️：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                          |
+| 起動ログの有効化          | 環境変数の`DD_TRACE_STARTUP_LOGS`を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、クライアントパッケージの設定値を確認できる。                                 | - https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                                |
+| デバッグログの有効化      | 各クライアントパッケージが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | - https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                          |
 | Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                                                                  | ↪️：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
 <br>
@@ -103,7 +103,7 @@ Datadogで、分散トレースは複数のスパンの配列データとして�
 [trace1, trace2, trace3]
 ```
 
-> ↪️：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+> - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 #### ▼ スパンの構成
 
@@ -136,7 +136,7 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
 ]
 ```
 
-> ↪️：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+> - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 #### ▼ メタデータ
 
@@ -181,13 +181,13 @@ PHP用のクライアントパッケージでlaravel内からタグを収集し�
 
 スパンの持つデータをデータポイントとして集計すると、メトリクスのデータポイントを収集できる。
 
-> ↪️：https://docs.datadoghq.com/tracing/generate_metrics/
+> - https://docs.datadoghq.com/tracing/generate_metrics/
 
 #### ▼ メトリクス名の構成要素
 
 メトリクス名は『`trace.<スパン名>.<メトリクス接尾辞名>`』の名前で構成される。
 
-> ↪️：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
+> - https://docs.datadoghq.com/tracing/guide/metrics_namespace/
 
 #### ▼ メトリクスのスパン名
 
@@ -210,7 +210,7 @@ PHP用のクライアントパッケージでlaravel内からタグを収集し�
 - `trace.<スパン名>.duration.by.*****` (該当スパンの処理時間の割合)
 - `trace.<スパン名>.errors.*****` (該当スパンにおけるエラー数)
 
-> ↪️：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
+> - https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 
 <br>
 
@@ -220,7 +220,7 @@ PHP用のクライアントパッケージでlaravel内からタグを収集し�
 
 記入中...
 
-> ↪️：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
+> - https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
 
 <br>
 

@@ -8,7 +8,7 @@ title: 【IT技術の知見】メソッド/データ＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -316,7 +316,7 @@ var foo = "foo"; // 宣言と代入により、実際は宣言処理を実装し
 
 これは関数の代入時にも起こる。
 
-> ↪️：https://jsprimer.net/basic/function-scope/#function-declaration-hoisting
+> - https://jsprimer.net/basic/function-scope/#function-declaration-hoisting
 
 ```javascript
 // 内部的には、最初に宣言処理したことになる
@@ -557,15 +557,15 @@ for (const [key, value] of array.entries()) {
 
 `continue`を使用するより、こちらの方が良い。
 
-> ↪️：https://www.deep-rain.com/programming/javascript/778#continue
+> - https://www.deep-rain.com/programming/javascript/778#continue
 
 PHPにも、`forEach`関数と同様に配列に対してコールバック関数を適用する関数 (`find`、`fliter`、`map`、`reduce`、`some`) があり、用途に合わせて使い分ける。
 
-> ↪️：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
+> - https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
 補足としてPHPにも、`forEach`関数と同じような使い方をする`array_walk`関数がある。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html
 
 ```javascript
 const array = ["foo", "bar", "baz"];

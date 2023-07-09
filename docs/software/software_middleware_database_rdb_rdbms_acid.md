@@ -9,7 +9,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -70,7 +70,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### 一連の流れ
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
@@ -96,7 +96,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 複数のSQLをセットで扱い、まとめてDBに書き込む。
 
-> ↪️：https://oss-db.jp/dojo/dojo_01
+> - https://oss-db.jp/dojo/dojo_01
 
 #### ▼ PDOによるRDBの書き込み系の操作
 
@@ -133,7 +133,7 @@ try{
 
 詳しくは、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
 
 <br>
 
@@ -153,7 +153,7 @@ try{
 
 ![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
-> ↪️：https://www.kimullaa.com/posts/201910271500/
+> - https://www.kimullaa.com/posts/201910271500/
 
 #### ▼ WAL：Write ahead log (ログ先行書き込み)
 
@@ -182,7 +182,7 @@ try{
 
 この時、チェックポイントは、自動実行または手動実行で作成する。
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 ![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランザクション.jpg)
 
@@ -217,7 +217,7 @@ try{
 
 障害によって、トランザクションの終了後に一連のステートメントの更新結果がストレージに反映されなかった場合、ストレージ上のジャーナルファイルの更新後ログを使用して、ストレージ上のデータベースファイルに更新結果を反映させる。
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 #### ▼ システム障害からの復旧
 
@@ -237,7 +237,7 @@ try{
 
 ![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/媒体障害の障害回復機能.jpg)
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 **＊例＊**
 
@@ -300,7 +300,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 結果として、ユーザBのUPDATE処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。
 
-> ↪️：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
+> - https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
 
 ![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png)
 
@@ -319,7 +319,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 | 共有/占有ロック     | DBによるロック機能。                       |
 | 楽観的/悲観的ロック | アプリケーションまたはDBによるロック機能。 |
 
-> ↪️：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
+> - https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 
 #### ▼ UPDATE処理競合問題の許容
 
@@ -341,7 +341,7 @@ DBで、CRUDのREAD処理以外の処理を実行できなくする。
 
 MySQLでは、『`SELECT ... LOCK IN SHARE MODE`』を使用する。
 
-> ↪️：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
+> - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ 占有ロック
 
@@ -351,7 +351,7 @@ DBで、CRUDの全ての処理を実行できなくする。
 
 MySQLでは、『`SELECT ... FOR UPDATE`』を使用する。
 
-> ↪️：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
+> - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ デッドロック現象
 
@@ -455,9 +455,9 @@ SQLの種類に合わせてツールが用意されている。
 
 | SQLの種類  | ポイントインタイムリカバリーのツール例 | 補足                                                             |
 | ---------- | -------------------------------------- | ---------------------------------------------------------------- |
-| MySQL      | XtraBackup                             | ↪️：https://developers.cyberagent.co.jp/blog/archives/28454/     |
-| PostgreSQL | Barman                                 | ↪️：https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
-| MariaDB    | Xpand                                  | ↪️：https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
+| MySQL      | XtraBackup                             | - https://developers.cyberagent.co.jp/blog/archives/28454/     |
+| PostgreSQL | Barman                                 | - https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
+| MariaDB    | Xpand                                  | - https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
 
 ```bash
 # 例えば、一週間分の保管期間を設定した場合

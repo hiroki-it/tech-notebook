@@ -9,7 +9,7 @@ description: 文化＠組織文化的要素の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -39,7 +39,7 @@ description: 文化＠組織文化的要素の知見を記録しています。
 
 そこで、心理的安全性のみを最適化するわけではなく、チームの生産性などの他の要素も考慮に入れながら、バランスの良い最適化を図るようにする。
 
-> ↪️：https://www.amazon.co.jp/dp/4873119618
+> - https://www.amazon.co.jp/dp/4873119618
 
 <br>
 
@@ -47,6 +47,6 @@ description: 文化＠組織文化的要素の知見を記録しています。
 
 改善のきっかけは失敗であることが前提にあるため、失敗が許されない文化がある会社組織でも動作しない。
 
-> ↪️：https://eh-career.com/engineerhub/entry/2019/12/05/103000
+> - https://eh-career.com/engineerhub/entry/2019/12/05/103000
 
 <br>

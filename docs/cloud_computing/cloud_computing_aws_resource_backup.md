@@ -9,7 +9,7 @@ description: Backup＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ description: Backup＠AWSの知見を記録しています。
 
 ### 対応AWSリソース
 
-> ↪️：https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources
+> - https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources
 
 | AWSリソースの種類 | バックアップ内容                                                                |
 | ----------------- | ------------------------------------------------------------------------------- |

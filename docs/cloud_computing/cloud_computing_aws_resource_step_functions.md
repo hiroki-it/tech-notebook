@@ -9,7 +9,7 @@ description: Step Functions＠AWSリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -25,7 +25,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ APIコールできるリソース
 
-> ↪️：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+> - https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
 #### ▼ Lambda
 
@@ -70,7 +70,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 | アクション   | StartExecution |                             |
 | 実行ロール   | IAMロールのARN | StartExecutionを許可する。  |
 
-> ↪️：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
+> - https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
 
 ```yaml
 {

@@ -9,7 +9,7 @@ description: OpenPolicyAgent＠認可の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,6 +17,6 @@ description: OpenPolicyAgent＠認可の知見を記録しています。
 
 OpenPolicyAgentはセクションが重複しており、以下のセクションを参照してください。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.html
 
 <br>

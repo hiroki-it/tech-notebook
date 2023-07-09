@@ -9,7 +9,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 二者間の通信に割り込み、盗聴/改竄/成りすましによって通信を攻撃する。
 
-> ↪️：https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
+> - https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
 
 <br>
 
@@ -37,7 +37,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 ![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf.png)
 
-> ↪️：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
+> - https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
 <br>
 
@@ -49,7 +49,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 ![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-fixation.png)
 
-> ↪️：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
+> - https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
 
 <br>
 

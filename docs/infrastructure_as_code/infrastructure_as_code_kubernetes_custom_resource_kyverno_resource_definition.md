@@ -9,7 +9,7 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ $ kubectl create namespace kyverno
 $ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
 ```
 
-> ↪️：https://kyverno.github.io/kyverno/
+> - https://kyverno.github.io/kyverno/
 
 <br>
 
@@ -53,7 +53,7 @@ spec:
   validationFailureAction: enforce
 ```
 
-> ↪️：https://kyverno.io/docs/writing-policies/validate/#validation-failure-action
+> - https://kyverno.io/docs/writing-policies/validate/#validation-failure-action
 
 <br>
 
@@ -73,7 +73,7 @@ spec:
   background: false
 ```
 
-> ↪️：https://kyverno.io/docs/writing-policies/background/
+> - https://kyverno.io/docs/writing-policies/background/
 
 <br>
 
@@ -111,7 +111,7 @@ spec:
                 imagePullPolicy: "IfNotPresent"
 ```
 
-> ↪️：https://kyverno.io/docs/writing-policies/mutate/
+> - https://kyverno.io/docs/writing-policies/mutate/
 
 #### ▼ Validateルールの場合
 
@@ -149,6 +149,6 @@ spec:
                     cpu: "?*"
 ```
 
-> ↪️：https://kyverno.io/docs/writing-policies/validate/#basic-validations
+> - https://kyverno.io/docs/writing-policies/validate/#basic-validations
 
 <br>

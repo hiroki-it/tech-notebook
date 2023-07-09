@@ -9,7 +9,7 @@ description: ネットワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -130,12 +130,12 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 ![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィック.png)
 
-> ↪️：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
+> - https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
 
 総務省のデータで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。
 
 ![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィックのグラフ.png)
 
-> ↪️：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
+> - https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
 
 <br>

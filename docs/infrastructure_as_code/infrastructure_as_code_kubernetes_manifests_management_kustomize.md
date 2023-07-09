@@ -9,7 +9,7 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -49,7 +49,7 @@ resources:
   - applicationset-crd.yaml
 ```
 
-> ↪️：https://github.com/argoproj/argo-cd/tree/master/manifests/crds
+> - https://github.com/argoproj/argo-cd/tree/master/manifests/crds
 
 <br>
 
@@ -91,7 +91,7 @@ spec:
               mountPath: /go/src
 ```
 
-> ↪️：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+> - https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 <br>
 

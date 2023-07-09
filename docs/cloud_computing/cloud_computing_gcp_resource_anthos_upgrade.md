@@ -9,7 +9,7 @@ description: アップグレード＠Anthosの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -60,7 +60,7 @@ spec:
 | `1.12`系                       | `v1.23.5-gke`          |
 | ...                            | ...                    |
 
-> ↪️：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
+> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
 `【３】`
 
@@ -145,7 +145,7 @@ spec:
 $ kubectl get node -o wide
 ```
 
-> ↪️：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
+> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
 
 `【９】`
 
@@ -217,7 +217,7 @@ REV="${REV:=0}"; readonly REV;       # REV値
 $ mv asmcli asmcli_1140-0
 ```
 
-> ↪️：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh
+> - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh
 
 <br>
 

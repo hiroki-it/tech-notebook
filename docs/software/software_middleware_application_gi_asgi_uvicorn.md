@@ -9,7 +9,7 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 開発のしやすさから、開発環境ではUvicornを直接的に実行し、その時に`reload`オプションを使用した方が良い。
 
-> ↪️：https://www.uvicorn.org/deployment/#running-from-the-command-line
+> - https://www.uvicorn.org/deployment/#running-from-the-command-line
 
 ```dockerfile
 FROM python:3.10-slim
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
 ```
 
-> ↪️：https://www.uvicorn.org/deployment/#running-programmatically
+> - https://www.uvicorn.org/deployment/#running-programmatically
 
 <br>
 
@@ -94,7 +94,7 @@ CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "
 
 注意点として、Gunicornを使用する場合には、standardタイプのUvicornをインストールする必要がある。
 
-> ↪️：https://www.uvicorn.org/#quickstart
+> - https://www.uvicorn.org/#quickstart
 
 ```bash
 $ pip3 install uvicorn[standard]

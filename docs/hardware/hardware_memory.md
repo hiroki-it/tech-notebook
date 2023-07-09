@@ -9,7 +9,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,7 +31,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ Mask ROMとは
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png)
 
@@ -41,7 +41,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ Programmable ROMとは
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png)
 
@@ -145,7 +145,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 ### 実効アクセス時間
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p171-1.png)
 
@@ -167,7 +167,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 ![what_and_where_to_cache.jpeg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpeg)
 
-> ↪️：https://twitter.com/pvergadia/status/1633216210308595712/photo/1
+> - https://twitter.com/pvergadia/status/1633216210308595712/photo/1
 
 <br>
 
@@ -179,7 +179,7 @@ Chromeの場合は、CacheStorageに保持される。
 
 ![client_side_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client_side_cache.png)
 
-> ↪️：https://developer.chrome.com/docs/devtools/storage/cache/
+> - https://developer.chrome.com/docs/devtools/storage/cache/
 
 <br>
 
@@ -211,7 +211,7 @@ AWSでは、CloudFrontにおけるキャッシュがこれに相当する。
 
 Laravelのキャッシュ機能については、以下のリンクを参考にせよ。
 
-> ↪️：https://readouble.com/laravel/8.x/ja/cache.html
+> - https://readouble.com/laravel/8.x/ja/cache.html
 
 #### ▼ DBキャッシュ
 
@@ -397,7 +397,7 @@ GPUとVRAMのサイズによって、扱うことのできる解像度と色数�
 
 色数によって、`1`ドット当たり何ビットを要するが異なる。
 
-> ↪️：https://www.amazon.co.jp/dp/4297124513
+> - https://www.amazon.co.jp/dp/4297124513
 
 ![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p204.jpg)
 

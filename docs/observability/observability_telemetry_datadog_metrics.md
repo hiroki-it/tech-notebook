@@ -8,7 +8,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -22,7 +22,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
-> ↪️：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 <br>
 
@@ -30,7 +30,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 #### ▼ `/etc/datadog-agent/datadog.yaml`ファイル
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
+> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -40,7 +40,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 サーバーの場合と同様にして、アプリケーションからメトリクスを受信し、Datadogに転送する。
 
-> ↪️：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
+> - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
 <br>
 
@@ -78,7 +78,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 いくつかの方法で、収集されたメトリクスを送信できる。
 
-> ↪️：https://docs.datadoghq.com/metrics/#submitting-metrics-to-datadog
+> - https://docs.datadoghq.com/metrics/#submitting-metrics-to-datadog
 
 <br>
 
@@ -92,12 +92,12 @@ Datadogでインテグレーションを有効化すると同時に、アプリ�
 
 Datadogに送信されなくなったメトリクスは、時間経過とともにDatadogから削除される。
 
-> ↪️：https://docs.datadoghq.com/dashboards/faq/historical-data/
+> - https://docs.datadoghq.com/dashboards/faq/historical-data/
 
 <br>
 
 ## 04. 他テレメトリーとの相関付け
 
-> ↪️：https://docs.datadoghq.com/logs/guide/correlate-logs-with-metrics/
+> - https://docs.datadoghq.com/logs/guide/correlate-logs-with-metrics/
 
 <br>

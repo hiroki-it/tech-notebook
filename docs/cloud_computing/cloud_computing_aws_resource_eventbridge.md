@@ -9,7 +9,7 @@ description: EventBridge＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 サポート対象のAWSリソースは以下のリンクを参考にせよ。
 
-> ↪️：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
+> - https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
 
 <br>
 
@@ -62,7 +62,7 @@ Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Sta
 }
 ```
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
 #### ▼ スケジュール
 
@@ -70,7 +70,7 @@ cron式またはrate式を使用して、スケジュールを定義する。
 
 これとLambdaを組み合わせることにより、ジョブを実行できる。
 
-> ↪️：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
 
 <br>
 
@@ -78,7 +78,7 @@ cron式またはrate式を使用して、スケジュールを定義する。
 
 #### ▼ ターゲットの一覧
 
-> ↪️：https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
+> - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
 
 #### ▼ デバッグ
 
@@ -214,6 +214,6 @@ Slackに送信するメッセージの作成ツールは、以下のリンクを
 
 ```
 
-> ↪️：https://app.slack.com/block-kit-builder
+> - https://app.slack.com/block-kit-builder
 
 <br>

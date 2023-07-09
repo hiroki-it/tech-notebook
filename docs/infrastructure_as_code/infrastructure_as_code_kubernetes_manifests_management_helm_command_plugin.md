@@ -9,7 +9,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 `helm`コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴、など) をダッシュボードで表示する。
 
-> ↪️：https://github.com/komodorio/helm-dashboard
+> - https://github.com/komodorio/helm-dashboard
 
 <br>
 
@@ -27,7 +27,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 #### ▼ インストール
 
-> ↪️：https://github.com/komodorio/helm-dashboard#installing
+> - https://github.com/komodorio/helm-dashboard#installing
 
 ```bash
 $ helm plugin install https://github.com/komodorio/helm-dashboard.git
@@ -35,7 +35,7 @@ $ helm plugin install https://github.com/komodorio/helm-dashboard.git
 
 #### ▼ 起動
 
-> ↪️：https://github.com/komodorio/helm-dashboard#running
+> - https://github.com/komodorio/helm-dashboard#running
 
 ```bash
 $ helm dashboard
@@ -53,7 +53,7 @@ $ helm dashboard
 $ helm diff
 ```
 
-> ↪️：https://github.com/databus23/helm-diff/pull/304
+> - https://github.com/databus23/helm-diff/pull/304
 
 <br>
 
@@ -75,7 +75,7 @@ $ helm plugin install https://github.com/databus23/helm-diff --version 1.0.0
 
 また反対に、Secretのデータを復号化する。
 
-> ↪️：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
+> - https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
 <br>
 
@@ -132,7 +132,7 @@ SOPSの`secrets`ファイルを指定する時に`secrets://`を使用すると�
 $ helm template ./foo-chart -f secrets://secrets.yaml
 ```
 
-> ↪️：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
+> - https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
 
 <br>
 
@@ -199,7 +199,7 @@ data:
   foo: Rjc5OVE4Q1E=...
 ```
 
-> ↪️：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
+> - https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
 
 <br>
 
@@ -222,7 +222,7 @@ db:
   password: password
 ```
 
-> ↪️：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> - https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 #### ▼ encrypt
 
@@ -247,7 +247,7 @@ sops:
   ...
 ```
 
-> ↪️：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> - https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 #### ▼ view
 
@@ -261,6 +261,6 @@ db:
   password: password
 ```
 
-> ↪️：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> - https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 <br>

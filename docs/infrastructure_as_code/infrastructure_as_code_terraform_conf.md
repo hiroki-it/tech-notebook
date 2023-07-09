@@ -9,7 +9,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -99,7 +99,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 ロックされている間、他のユーザーは一連の`terraform`コマンドを実行できなくなる。
 
-> ↪️：https://blog-benri-life.com/terraform-state-lock-s3/
+> - https://blog-benri-life.com/terraform-state-lock-s3/
 
 #### ▼ 残骸ロックの解除方法
 
@@ -129,7 +129,7 @@ Lock Info:
 $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 ```
 
-> ↪️：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
+> - https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
 
 <br>
 
@@ -214,7 +214,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 | `h1`   | 開発者が使用しているOSを表すハッシュ値を設定する。`zh`タグの`zip`パッケージのOS名に存在しないOS値が、`h1`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。                                                                |
 | `zh`   | プロバイダーの`zip`パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1`タグのOS値に存在しないOS名の`zip`パッケージが、`zh`タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。 |
 
-> ↪️：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+> - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 
 <br>
 
@@ -226,7 +226,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 `terraform`コマンドの実行者のみに適用する動作を設定する。
 
-> ↪️：https://www.terraform.io/cli/config/config-file#provider-plugin-cache
+> - https://www.terraform.io/cli/config/config-file#provider-plugin-cache
 
 #### ▼ plugin_cache_dir
 

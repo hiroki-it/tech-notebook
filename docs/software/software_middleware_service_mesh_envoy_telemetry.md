@@ -9,7 +9,7 @@ description: テレメトリー＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -33,7 +33,7 @@ Envoyは、アプリコンテナへのアクセスログを作成し、標準出
 "nsq2http" "cc21d9b0-cf5c-432b-8c7e-98aeb7988cd2" "locations" "tcp://10.0.2.1:80"
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#default-format-string
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#default-format-string
 
 なお、`%REQ()`を使用して、好きなリクエストヘッダーの値を出力できる。
 
@@ -106,7 +106,7 @@ Envoyのメトリクスには、、
 
 注意点として、ドキュメントではプレフィクスが省略されてしまっている。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/statistics
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/statistics
 
 #### ▼ リスナー系
 
@@ -129,7 +129,7 @@ Envoyのメトリクスには、、
 
 注意点として、ドキュメントではプレフィクスが省略されてしまっている。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats#config-cluster-manager-cluster-stats
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats#config-cluster-manager-cluster-stats
 
 #### ▼ エンドポイント系
 
@@ -162,7 +162,7 @@ $ kubectl exec \
 
 Envoyは、分散トレースを作成できるように、自分で自分を通過した通信にHTTPヘッダーやRPCヘッダーに分散トレースIDを割り当てる。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 
 <br>
 
@@ -174,7 +174,7 @@ Envoyは、分散トレースを作成できるように、自分で自分を通
 | -------------- | -------------------------------- |
 | `X-REQUEST-ID` | トレースIDが割り当てられている。 |
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
 #### ▼ zipkin系ヘッダー
 
@@ -187,7 +187,7 @@ Envoyは、Zipkinが使用するヘッダーを追加する。
 | `X-B3-TRACEID`      | トレースIDが割り当てられている。                                                   |
 | `X-B3-PARENTSPANId` | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
 #### ▼ AWS X-Ray系ヘッダー
 
@@ -197,7 +197,7 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 | ----------------- | -------------------------------- |
 | `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。 |
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
 <br>
 
@@ -209,6 +209,6 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 | ---------------- | -------------------------------- |
 | `GRPC-TRACE-BIN` | トレースIDが割り当てられている。 |
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
 
 <br>

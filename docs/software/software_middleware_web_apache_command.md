@@ -9,7 +9,7 @@ description: コマンド＠Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: コマンド＠Apacheの知見を記録しています。
 
 設定ファイルのバリデーションを実行する。
 
-> ↪️：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
 $ apachectl configtest
@@ -33,7 +33,7 @@ Apacheを段階的に再起動する。
 
 安全に再起動できる。
 
-> ↪️：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
 $ apachectl graceful
@@ -45,7 +45,7 @@ $ apachectl graceful
 
 設定ファイルのバリデーションを実行する。
 
-> ↪️：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
 $ apachectl -t
@@ -61,7 +61,7 @@ $ apachectl -t
 
 この結果から、使われていない`conf`ファイルもを検出できる。
 
-> ↪️：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
@@ -75,7 +75,7 @@ $ httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 
 表示されているからといって、読み込まれているとは限らない。
 
-> ↪️：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -l
@@ -87,7 +87,7 @@ $ httpd -l
 
 特定のディレクティブを実装する必要がある設定ファイルの一覧を取得する。
 
-> ↪️：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -L
@@ -99,7 +99,7 @@ $ httpd -L
 
 コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを取得する。
 
-> ↪️：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -M
@@ -111,7 +111,7 @@ $ httpd -M
 
 実際に読み込まれたVirtualHostの設定を取得する。
 
-> ↪️：https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ httpd -S
@@ -125,7 +125,7 @@ $ httpd -S
 
 Apacheの設定ファイルのバリデーションを実行する。
 
-> ↪️：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 ```bash
 $ service httpd configtest

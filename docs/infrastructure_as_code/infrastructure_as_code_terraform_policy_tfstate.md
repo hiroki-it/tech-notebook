@@ -9,7 +9,7 @@ description: tfstateファイルの分割＠設計ポリシーの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 

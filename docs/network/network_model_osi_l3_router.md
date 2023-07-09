@@ -9,7 +9,7 @@ description: ルーター＠L3の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -29,7 +29,7 @@ description: ルーター＠L3の知見を記録しています。
 
 通信の宛先を制御することを表す場合、単に『転送する』よりも『ルーティングする』と表現した方が良い。
 
-> ↪️：https://www.infraexpert.com/study/routing.html
+> - https://www.infraexpert.com/study/routing.html
 
 #### ▼ パスベースルーティング
 
@@ -92,7 +92,7 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 
 ホップ数は、`traceroute`コマンドで確認できる。
 
-> ↪️：https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
+> - https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
 
 #### ▼ ホップバイホップルーティング
 
@@ -100,7 +100,7 @@ URLを基点としたパスに応じて、通信のルーティング先を決�
 
 ![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpeg)
 
-> ↪️：https://ascii.jp/elem/000/000/444/444681/3/
+> - https://ascii.jp/elem/000/000/444/444681/3/
 
 <br>
 
@@ -144,7 +144,7 @@ NATルーター自体を複数のプライベートネットワークで共有�
 
 ![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グローバルからプライベートへのnat変換.png)
 
-> ↪️：https://rainbow-engine.com/dnat-snat-difference/
+> - https://rainbow-engine.com/dnat-snat-difference/
 
 **＊例＊**
 
@@ -200,7 +200,7 @@ GET https://example.com:53
 
 : これらの『送信元プライベートIPアドレス』が、NATルーターで、グローバルIPアドレスに変換される。
 
-> ↪️：https://rainbow-engine.com/dnat-snat-difference/
+> - https://rainbow-engine.com/dnat-snat-difference/
 
 #### ▼ 外部IPアドレス、内部IPアドレス、ターゲットIPアドレス
 
@@ -310,6 +310,6 @@ COMMIT
 ...
 ```
 
-> ↪️：https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
+> - https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
 
 <br>

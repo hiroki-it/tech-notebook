@@ -9,7 +9,7 @@ description: リソース定義＠AWS Load Balancerコントローラーの知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Ingressで`alb`のIngressClassを指定していること検知する。
 
 AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
-> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 <br>
 
@@ -62,7 +62,7 @@ aws-load-balancer-controllerは、Ingressの`spec.hosts`キーに基づいて、
 
 例えばIngressで`spec.hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をACMから探す。
 
-> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
 
 #### ▼ `alb.ingress.kubernetes.io/healthcheck-path`キー
 
@@ -118,7 +118,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: foo-common-alb
 ```
 
-> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#ingressgroup
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#ingressgroup
 
 #### ▼ `alb.ingress.kubernetes.io/scheme`キー
 
@@ -187,7 +187,7 @@ metadata:
     alb.ingress.kubernetes.io/waf-acl-id: *****
 ```
 
-> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
 
 #### ▼ `alb.ingress.kubernetes.io/wafv2-acl-arn`キー
 
@@ -202,7 +202,7 @@ metadata:
     alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:ap-northeast-1:<AWSアカウントID>:regional/webacl/<WAFのACL名>/<ID>
 ```
 
-> ↪️：https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
 
 <br>
 
@@ -210,6 +210,6 @@ metadata:
 
 AWS ALBのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
 
-> ↪️：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 <br>

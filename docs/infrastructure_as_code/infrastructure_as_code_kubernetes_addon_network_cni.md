@@ -9,7 +9,7 @@ description: CNI＠ネットワークアドオンの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -61,7 +61,7 @@ CNIアドオンは、kubeletによるPodの起動時に有効化される。
 - Weave
 - Cilium
 
-> ↪️：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 
 <br>
 
@@ -73,7 +73,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
 
-> ↪️：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
+> - https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
 
 #### ▼ 同一Node上のPod間通信
 
@@ -81,7 +81,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
 
-> ↪️：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
+> - https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
 
 <br>
 
@@ -104,7 +104,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 - flannel-hostgw
 - sriov
 
-> ↪️：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 
 <br>
 
@@ -114,7 +114,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
-> ↪️：https://www.netstars.co.jp/kubestarblog/k8s-3/
+> - https://www.netstars.co.jp/kubestarblog/k8s-3/
 
 <br>
 
@@ -128,7 +128,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### AWSの独自モードとは
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html
 
 <br>
 

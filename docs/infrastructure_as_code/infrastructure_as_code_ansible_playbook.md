@@ -9,7 +9,7 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 ## 01. playbookファイル
 
@@ -77,7 +77,7 @@ repository/
 │
 ```
 
-> ↪️：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
+> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
 
 ## 01-02. playbookファイルの切り分け
 
@@ -89,7 +89,7 @@ repository/
 
 `playbook.yml`ファイルを切り分けるために使用する。
 
-> ↪️：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
+> - https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
 
 #### ▼ handlersディレクトリ
 
@@ -192,7 +192,7 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 
 自動的に読み込まれ、`playbook`ファイルや`inventory`ファイルで出力できる。
 
-> ↪️：https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
+> - https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
 
 #### ▼ group_varファイル
 
@@ -214,7 +214,7 @@ ports:
 
 ポート番号のリストを`playbook`ファイルで出力する
 
-> ↪️：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
+> - https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
 
 ```yaml
 ---
@@ -252,7 +252,7 @@ ports:
 
 Ansibleの実行時に、`-i`オプションでディレクトリを指定する。
 
-> ↪️：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
+> - https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
@@ -448,7 +448,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 必須である。
 
-> ↪️：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 ### name
 
@@ -501,7 +501,7 @@ root以外であれば、`become_user`キーを設定する。
 
 必須である。
 
-> ↪️：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 ### ansible.builtin.apt
 
@@ -536,7 +536,7 @@ root以外であれば、`become_user`キーを設定する。
 
 SELinuxを無効化する。
 
-> ↪️：https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook
+> - https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook
 
 **＊実装例＊**
 
@@ -555,7 +555,7 @@ SELinuxを無効化する。
 
 管理対象ノードでファイルを操作する。
 
-> ↪️：https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro
+> - https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro
 
 **＊実装例＊**
 
@@ -594,7 +594,7 @@ SELinuxを無効化する。
 
 管理対象ノードで`curl`コマンドを実行する。
 
-> ↪️：https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url
+> - https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url
 
 ```yaml
 - name: Download tool
@@ -609,7 +609,7 @@ SELinuxを無効化する。
 
 管理対象ノードで`service`コマンドの実行を設定する。
 
-> ↪️：https://docs.ansible.com/ansible/2.9/modules/service_module.html
+> - https://docs.ansible.com/ansible/2.9/modules/service_module.html
 
 **＊実装例＊**
 
@@ -659,7 +659,7 @@ SELinuxを無効化する。
 
 管理対象ノードで`systemctl`コマンドの実行を設定する。
 
-> ↪️：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
 
 **＊実装例＊**
 
@@ -696,7 +696,7 @@ SELinuxを無効化する。
 | `started`   | 最終的な状態として停止しているように、ユニットを起動する。            |
 | `stopped`   | 最終的な状態として停止しているさうに、ユニットを停止する。            |
 
-> ↪️：https://dekitakotono.blogspot.com/2019/05/systemd.html
+> - https://dekitakotono.blogspot.com/2019/05/systemd.html
 
 ### ansible.builtin.template
 
@@ -719,7 +719,7 @@ SELinuxを無効化する。
 
 コントロールノードまたは管理対象ノードで`tar`コマンドを実行することにより、圧縮ファイルを解凍する。
 
-> ↪️：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
 
 **＊実装例＊**
 
@@ -743,7 +743,7 @@ SELinuxを無効化する。
 
 無効なシェルを設定し、ログインできないようにしておく。
 
-> ↪️：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
 
 ```yaml
 - name: add user
@@ -817,7 +817,7 @@ SELinuxを無効化する。
 
 task内で出力できる環境変数を設定する。
 
-> ↪️：https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
+> - https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
 
 **＊実装例＊**
 

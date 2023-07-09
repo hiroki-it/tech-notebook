@@ -9,7 +9,7 @@ description: Trivy＠脆弱性テストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ $ brew install trivy
 $ docker run aquasec/trivy
 ```
 
-> ↪️：https://aquasecurity.github.io/trivy/v0.42/
+> - https://aquasecurity.github.io/trivy/v0.42/
 
 <br>
 
@@ -33,7 +33,7 @@ $ docker run aquasec/trivy
 
 #### ▼ configとは
 
-> ↪️：https://aquasecurity.github.io/trivy/v0.42/docs/references/configuration/cli/trivy_config/
+> - https://aquasecurity.github.io/trivy/v0.42/docs/references/configuration/cli/trivy_config/
 
 #### ▼ --exit-code
 
@@ -58,6 +58,6 @@ $ helm template foo . --set secret.PASSWORD=test > manifest.yaml
 $ trivy config --severity CRITICAL,HIGH <ファイル>
 ```
 
-> ↪️：https://csblog.casareal.co.jp/archives/382
+> - https://csblog.casareal.co.jp/archives/382
 
 <br>

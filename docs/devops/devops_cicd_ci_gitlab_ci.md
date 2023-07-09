@@ -9,7 +9,7 @@ description: GitLab CI＠CIツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -65,7 +65,7 @@ include:
       - baz-job.yml
 ```
 
-> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#image
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
 <br>
 
@@ -79,7 +79,7 @@ include:
 
 現在のパイプラインを発火させたイベント名が割り当てられている。
 
-> ↪️：https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
 
 #### ▼ `GIT_SUBMODULE_STRATEGY`
 
@@ -91,7 +91,7 @@ foo_job:
     GIT_SUBMODULE_STRATEGY: "recursive"
 ```
 
-> ↪️：https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
+> - https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
 
 <br>
 
@@ -133,7 +133,7 @@ bar_job:
       - ./node_module
 ```
 
-> ↪️：https://www.serversus.work/topics/927zjvmew2491o2n1oob/
+> - https://www.serversus.work/topics/927zjvmew2491o2n1oob/
 
 <br>
 
@@ -147,7 +147,7 @@ bar_job:
     - foo_job
 ```
 
-> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
 
 <br>
 
@@ -162,7 +162,7 @@ foo_job:
     entrypoint: ["sh"]
 ```
 
-> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#image
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
 <br>
 
@@ -224,7 +224,7 @@ gemerate_template:
         - values.yaml
 ```
 
-> ↪️：https://gitlab-docs.creationline.com/ee/ci/yaml/#ruleschanges
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#ruleschanges
 
 <br>
 
@@ -239,7 +239,7 @@ foo_job:
   stage: foo_stage
 ```
 
-> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#stage
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#stage
 
 <br>
 
@@ -253,7 +253,7 @@ foo_job:
     - echo "Hello World"
 ```
 
-> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#script
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#script
 
 <br>
 
@@ -295,7 +295,7 @@ bar:
     strategy: depend
 ```
 
-> ↪️：https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
+> - https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
 
 <br>
 
@@ -313,6 +313,6 @@ foo_job:
     QUX: qux
 ```
 
-> ↪️：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
 <br>

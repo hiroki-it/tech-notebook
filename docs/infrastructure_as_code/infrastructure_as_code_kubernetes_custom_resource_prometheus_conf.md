@@ -9,7 +9,7 @@ description: 設定ファイル＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -23,7 +23,7 @@ Prometheusを設定する。
 
 `/etc/prometheus`ディレクトリ配下におく。
 
-> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
 <br>
 
@@ -37,7 +37,7 @@ global:
   evaluation_interval: 15s
 ```
 
-> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
+> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 
 <br>
 
@@ -111,13 +111,13 @@ groups:
           description: 【 {{ $labels.app }} 】{{ $labels.env }} 環境で、Podのメモリ使用率が {{ $value }} になりました。
 ```
 
-> ↪️：https://amateur-engineer-blog.com/alertmanager-docker-compose/
+> - https://amateur-engineer-blog.com/alertmanager-docker-compose/
 
 #### ▼ scrape_configsセクション
 
 Retrievalのルールを設定する。
 
-> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
+> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 
 #### ▼ static_configs
 
@@ -141,7 +141,7 @@ scrape_configs:
           cluster: prd
 ```
 
-> ↪️：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
+> - https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
 
 `labels`キーを使用して、メトリクスにフィルタリング用ラベルを追加できる。
 
@@ -223,7 +223,7 @@ global:
   resolve_timeout: 5m
 ```
 
-> ↪️：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
+> - https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
 
 <br>
 
@@ -251,7 +251,7 @@ route:
       severity: critical
 ```
 
-> ↪️：https://prometheus.io/docs/alerting/latest/configuration/#route
+> - https://prometheus.io/docs/alerting/latest/configuration/#route
 
 #### ▼ match
 

@@ -9,7 +9,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -50,7 +50,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 そのため、更新系では集約の単位をそのままにして、集約とは無関係な参照系処理を設計できる。
 
-> ↪️：https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
+> - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 
 <br>
 

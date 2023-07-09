@@ -9,7 +9,7 @@ description: Kics＠脆弱性テストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Kics＠脆弱性テストの知見を記録しています。
 $ brew install kics
 ```
 
-> ↪️：https://pluto.docs.fairwinds.com/installation/
+> - https://pluto.docs.fairwinds.com/installation/
 
 <br>
 
@@ -31,7 +31,7 @@ $ brew install kics
 
 ファイルから脆弱性を検出する。
 
-> ↪️：https://docs.kics.io/latest/commands/#scan_command_options
+> - https://docs.kics.io/latest/commands/#scan_command_options
 
 #### ▼ --exclude-severities
 

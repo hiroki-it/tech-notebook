@@ -9,7 +9,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
 <br>
 
@@ -67,7 +67,7 @@ Secretタイプは`repository`とする。
 
 ポーリング対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
 <br>
 
@@ -123,7 +123,7 @@ data:
   password: pass
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 
 #### ▼ SSH公開鍵認証の場合
 
@@ -228,7 +228,7 @@ data:
   password: qux
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 
 <br>
 
@@ -392,7 +392,7 @@ ArgoCDは、argocd-repo-credsの`data.url`キーを使用して、argocd-repoの
 
 最長一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`data.username`キー、`data.password`キー) が適用される。
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
 <br>
 
@@ -406,7 +406,7 @@ ArgoCDは、argocd-repo-credsの`data.url`キーを使用して、argocd-repoの
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
 - Webhookを送信するためのSSL証明書
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
 
 <br>
 
@@ -532,7 +532,7 @@ data:
 
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
 
 <br>
 
@@ -645,7 +645,7 @@ $ argocd login <ArgoCDのドメイン名> \
     --sso
 ```
 
-> ↪️：https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366
+> - https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366
 
 `【４】`
 
@@ -669,7 +669,7 @@ INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
 Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
 
-> ↪️：https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
 
 `【６】`
 

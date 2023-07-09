@@ -9,7 +9,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ $ git clone https://github.com/prometheus-operator/prometheus-operator.git
 $ kubectl create -f bundle.yaml
 ```
 
-> ↪️：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
+> - https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
 
 #### ▼ 非チャートとして (kube-prometheus)
 
@@ -43,7 +43,7 @@ $ kubectl wait --for condition=Established --all CustomResourceDefinition --name
 $ kubectl apply -f manifests/
 ```
 
-> ↪️：https://github.com/prometheus-operator/kube-prometheus
+> - https://github.com/prometheus-operator/kube-prometheus
 
 #### ▼ チャートとして (kube-prometheus-stack)
 
@@ -88,7 +88,7 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/prometheus -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
 
 #### ▼ バイナリとして
 
@@ -121,7 +121,7 @@ $ /opt/alertmanager/alertmanager \
     --cluster.reconnect-timeout=5m
 ```
 
-> ↪️：https://qiita.com/nis_nagaid_1984/items/81f4b3575ee5ce1fe892
+> - https://qiita.com/nis_nagaid_1984/items/81f4b3575ee5ce1fe892
 
 <br>
 
@@ -295,7 +295,7 @@ spec:
 
 Alertmanagerのセットアップ方法を決める。
 
-> ↪️：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager
+> - https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager
 
 ### .spec.version
 
@@ -413,7 +413,7 @@ spec:
 
 Alertmanagerのハードウェアリソースの要求量を設定する。
 
-> ↪️：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec
+> - https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -489,7 +489,7 @@ metadata:
   name: foo-namespace
 ```
 
-> ↪️：https://prometheus-operator.dev/docs/operator/design/#podmonitor
+> - https://prometheus-operator.dev/docs/operator/design/#podmonitor
 
 <br>
 
@@ -567,7 +567,7 @@ spec:
   retention: 14d
 ```
 
-> ↪️：https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
+> - https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
 
 <br>
 
@@ -642,11 +642,11 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 
 独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins) を使用した方が良い。
 
-> ↪️：https://monitoring.mixins.dev
+> - https://monitoring.mixins.dev
 
 #### ▼ kubernetes-mixinsのPrometheusRule
 
-> ↪️：https://github.com/monitoring-mixins/website/tree/master/assets
+> - https://github.com/monitoring-mixins/website/tree/master/assets
 
 <br>
 
@@ -656,8 +656,8 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 | ----------------- | -------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Receiver          | string型 | `.Receiver`                                                                       | アラートの受信者が割り当てられている。                                                                                                                                                                      |
 | Status            | string型 | `.Status`                                                                         | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                                                     |
-| Alerts            | map型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>↪️：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                                 |
-| GroupLabels       | map型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[].rules[].labels`キー配下で設定したユーザー定義のラベルも含む。<br>↪️：https://prometheus.io/docs/alerting/latest/notifications/#kv |
+| Alerts            | map型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>- https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                                 |
+| GroupLabels       | map型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[].rules[].labels`キー配下で設定したユーザー定義のラベルも含む。<br>- https://prometheus.io/docs/alerting/latest/notifications/#kv |
 | CommonLabels      | map型    | `.CommonLabels.alertname`                                                         | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                                                        |
 | CommonAnnotations | map型    | `.CommonAnnotations.summary`                                                      | 全てのアラートに共通するアノテーションが割り当てられている。`.spec.groups[].rules[].labels`キー配下で設定したユーザー定義のアノテーションも含む。                                                           |
 | ExternalURL       | string型 | `.ExternalURL`                                                                    | AlertmangerのURLが割り当てられている。                                                                                                                                                                      |
@@ -678,7 +678,7 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 
 アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節すると良い。
 
-> ↪️：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
+> - https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
 
 #### ▼ name
 
@@ -741,7 +741,7 @@ spec:
              source: gin
 ```
 
-> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+> - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 #### ▼ rules (レコーディングルールの場合)
 
@@ -768,7 +768,7 @@ spec:
           expr: ...
 ```
 
-> ↪️：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 <br>
 
@@ -827,7 +827,7 @@ spec:
     - path: /metrics
 ```
 
-> ↪️：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 #### ▼ port
 
@@ -844,7 +844,7 @@ spec:
     - port: http-foo
 ```
 
-> ↪️：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 #### ▼ scheme
 
@@ -923,7 +923,7 @@ metadata:
   namespace: kube-system
 ```
 
-> ↪️：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 <br>
 

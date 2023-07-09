@@ -9,7 +9,7 @@ description: Code兄弟＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -96,7 +96,7 @@ artifacts:
   files: imageDetail.json
 ```
 
-> ↪️：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
+> - https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
 
 <br>
 
@@ -131,19 +131,19 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 インプレースデプロイ、ブルー/グリーンデプロイメント、を利用できる。
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
 ### インプレースデプロイメント
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
 
 <br>
 
 ### ブルー/グリーンデプロイメント
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
 
 <br>
 
@@ -153,7 +153,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 ブルー/グリーンデプロイメント、を利用できる。
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
@@ -163,7 +163,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 ローリングアップデート、ブルー/グリーンデプロイメント、を利用できる。
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
@@ -233,7 +233,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 : 元の旧環境 (Prodブルー) は削除される。
 
-> ↪️：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
+> - https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
 
 #### ▼ `appspec.yml`ファイル
 
@@ -258,7 +258,7 @@ Resources:
         PlatformVersion: "1.4.0"
 ```
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
 
 #### ▼ `imageDetail.json`ファイル
 
@@ -341,7 +341,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
 
 ### AutoScaling
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
 
 <br>
 
@@ -355,6 +355,6 @@ CodeDeployのデプロイの途中、ターゲットグループからインス�
 
 デプロイが正常に完了次第、ターゲットグループにインスタンスを再登録し、アクセスできるようにする。
 
-> ↪️：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 
 <br>

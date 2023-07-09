@@ -9,7 +9,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 #### ▼ インストール
 
-> ↪️：https://getcomposer.org/download/
+> - https://getcomposer.org/download/
 
 ```bash
 # インストーラーをダウンロードする。
@@ -93,7 +93,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
-> ↪️：https://getcomposer.org/doc/04-schema.md#config
+> - https://getcomposer.org/doc/04-schema.md#config
 
 #### ▼ require
 
@@ -167,7 +167,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
-> ↪️：https://getcomposer.org/doc/04-schema.md#package-links
+> - https://getcomposer.org/doc/04-schema.md#package-links
 
 #### ▼ scripts
 
@@ -198,7 +198,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 }
 ```
 
-> ↪️：https://getcomposer.org/doc/04-schema.md#scripts
+> - https://getcomposer.org/doc/04-schema.md#scripts
 
 #### ▼ version
 
@@ -216,7 +216,7 @@ Composerのバージョンを設定する。
 }
 ```
 
-> ↪️：https://getcomposer.org/doc/04-schema.md#version
+> - https://getcomposer.org/doc/04-schema.md#version
 
 <br>
 
@@ -312,7 +312,7 @@ $ composer clear-cache
 $ composer create-project --prefer-dist laravel/lumen .
 ```
 
-> ↪️：https://getcomposer.org/doc/03-cli.md#create-project
+> - https://getcomposer.org/doc/03-cli.md#create-project
 
 <br>
 
@@ -354,7 +354,7 @@ $ composer dump-autoload
 {"autoload": {"psr-4": {}}}
 ```
 
-> ↪️：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
+> - https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
 
 <br>
 
@@ -366,7 +366,7 @@ $ composer dump-autoload
 $ composer init
 ```
 
-> ↪️：https://getcomposer.org/doc/03-cli.md#init
+> - https://getcomposer.org/doc/03-cli.md#init
 
 <br>
 
@@ -429,7 +429,7 @@ $ composer install --prefer-source
 
 指定したパッケージをアンインストールした後、再インストールする。
 
-> ↪️：https://getcomposer.org/doc/03-cli.md#reinstall
+> - https://getcomposer.org/doc/03-cli.md#reinstall
 
 ```bash
 $ composer reinstall <パッケージ名>

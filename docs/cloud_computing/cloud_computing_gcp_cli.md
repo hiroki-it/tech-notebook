@@ -9,7 +9,7 @@ description: GCP CLI＠GCPリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -58,7 +58,7 @@ Traceback (most recent call last):
 
 プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、KubernetesのServiceAccount) の認証を行う。
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/auth
+> - https://cloud.google.com/sdk/gcloud/reference/auth
 
 #### ▼ activate-service-account
 
@@ -125,7 +125,7 @@ $ gcloud auth application-default login
 }
 ```
 
-> ↪️：https://christina04.hatenablog.com/entry/gcp-auth
+> - https://christina04.hatenablog.com/entry/gcp-auth
 
 #### ▼ list
 
@@ -150,7 +150,7 @@ GCP SDKによるGCPリソースへのアクセスを認証するために使用�
 $ gcloud auth login
 ```
 
-> ↪️：https://christina04.hatenablog.com/entry/gcp-auth
+> - https://christina04.hatenablog.com/entry/gcp-auth
 
 #### ▼ login --update-adc
 
@@ -162,7 +162,7 @@ $ gcloud auth login
 $ gcloud auth login --update-adc
 ```
 
-> ↪️：https://blog.pokutuna.com/entry/application-default-credentials
+> - https://blog.pokutuna.com/entry/application-default-credentials
 
 #### ▼ print-access-token
 
@@ -231,7 +231,7 @@ To add gcloud components to your PATH, add this to your profile:
 
 ```
 
-> ↪️：https://stackoverflow.com/a/74733176
+> - https://stackoverflow.com/a/74733176
 
 #### ▼ update
 
@@ -267,7 +267,7 @@ The latest available version is: 400.0.0
 └──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
 ```
 
-> ↪️：https://cloud.google.com/sdk/docs/components
+> - https://cloud.google.com/sdk/docs/components
 
 <br>
 
@@ -308,7 +308,7 @@ foo   False      example@gmail.com   foo-project
 bar   True
 ```
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/config/configurations/create
+> - https://cloud.google.com/sdk/gcloud/reference/config/configurations/create
 
 #### ▼ list
 
@@ -322,7 +322,7 @@ foo   False      example@gmail.com   foo-project
 bar   True       example@gmail.com   bar-project
 ```
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/config/configurations/list
+> - https://cloud.google.com/sdk/gcloud/reference/config/configurations/list
 
 #### ▼ rename
 
@@ -355,7 +355,7 @@ bar       True       example@gmail.com   bar-project   asia-northeast1-a
 $ gcloud config configurations activate foo-foo
 ```
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/config/configurations/rename
+> - https://cloud.google.com/sdk/gcloud/reference/config/configurations/rename
 
 <br>
 
@@ -421,7 +421,7 @@ foo   False      example@gmail.com   foo-project   asia-northeast1-a
 bar   True       example@gmail.com   bar-project   asia-northeast1-a
 ```
 
-> ↪️：https://qiita.com/sonots/items/906798c408132e26b41c
+> - https://qiita.com/sonots/items/906798c408132e26b41c
 
 <br>
 
@@ -429,7 +429,7 @@ bar   True       example@gmail.com   bar-project   asia-northeast1-a
 
 #### ▼ container clustersとは
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/container/clusters
+> - https://cloud.google.com/sdk/gcloud/reference/container/clusters
 
 #### ▼ list
 
@@ -444,7 +444,7 @@ NAME               LOCATION         MASTER_VERSION   MASTER_IP    MACHINE_TYPE  
 foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium      1.22.0-gke      3           RUNNING
 ```
 
-> ↪️：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
+> - https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
 
 <br>
 
@@ -454,7 +454,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium     
 
 記入中...
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
+> - https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
 
 #### ▼ describe
 
@@ -478,7 +478,7 @@ upgradeSettings:
   strategy: BLUE_GREEN # ブルー/グリーンアップグレード
 ```
 
-> ↪️：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
+> - https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
 
 #### ▼ update
 
@@ -503,7 +503,7 @@ $ gcloud container node-pools update foo-node-pool \
     --max-unavailable-upgrade=1
 ```
 
-> ↪️：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
+> - https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
 
 <br>
 
@@ -573,7 +573,7 @@ User Config Directory: /root/.config/gcloud]
 ...
 ```
 
-> ↪️：https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
+> - https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
 
 <br>
 
@@ -599,7 +599,7 @@ foo-project-***    foo-project   *****
 bar-project-***    bar-project   *****
 ```
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/projects/list
+> - https://cloud.google.com/sdk/gcloud/reference/projects/list
 
 <br>
 
@@ -615,7 +615,7 @@ CloudLoggingからログを読み出す。
 $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
 ```
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/logging/read
+> - https://cloud.google.com/sdk/gcloud/reference/logging/read
 
 ### GCS
 
@@ -627,7 +627,7 @@ $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
 $ gcloud storage cp gs://<GCS名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
-> ↪️：https://cloud.google.com/sdk/gcloud/reference/storage/cp
+> - https://cloud.google.com/sdk/gcloud/reference/storage/cp
 
 ディレクトリごとコピーする場合は、`--recursive`オプションを使用する。
 

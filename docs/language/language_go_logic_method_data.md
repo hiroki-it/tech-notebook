@@ -9,7 +9,7 @@ description: メソッド/データ@Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -279,7 +279,7 @@ func main() {
 
 詳しくは、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 ```go
 package main
@@ -657,7 +657,7 @@ func main() {
 
 PHPにおけるポインタは、以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html
 
 **＊実装例＊**
 
@@ -739,7 +739,7 @@ type slice struct {
 }
 ```
 
-> ↪️：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
+> - https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
 
 #### ▼ 宣言と代入
 
@@ -1088,7 +1088,7 @@ func main() {
 
 アップキャストの可否を使用して、意図的にエラーを発生させるテクニックがある。
 
-> ↪️：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
+> - https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
 
 ```go
 package main
@@ -1382,7 +1382,7 @@ func main() {
 
 引数の型として、構造体の場合はポインタ型、それ以外のデータの場合はポインタ型以外が推奨される。
 
-> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#pass-values
+> - https://github.com/golang/go/wiki/CodeReviewComments#pass-values
 
 #### ▼ Closure (無名関数) とは
 
@@ -2052,7 +2052,7 @@ func main() {
 
 結果、終了する順番は順不同になる。
 
-> ↪️：https://golang.org/pkg/sync/
+> - https://golang.org/pkg/sync/
 
 **＊実装例＊**
 
@@ -2082,7 +2082,7 @@ func main() {
 
 キューに値を送信し、加えてキューから値を受信できる。
 
-> ↪️：https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
+> - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
 ```go
 package main
@@ -2232,7 +2232,7 @@ func main() {
 
 例外スローの意義は、以下の参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html
 
 #### ▼ Goには例外が無い
 
@@ -2310,7 +2310,7 @@ errorsパッケージの`New`メソッドにエラーを設定する。
 
 errorインターフェースはErrorメソッドを自動的に実行する。
 
-> ↪️：https://golang.org/pkg/errors/#New
+> - https://golang.org/pkg/errors/#New
 
 **＊実装例＊**
 
@@ -2351,7 +2351,7 @@ fmtパッケージの`Errorf`メソッドで独自エラーを作成できる。
 
 errorインターフェースはErrorメソッドを自動的に実行する。
 
-> ↪️：https://golang.org/pkg/fmt/#Errorf
+> - https://golang.org/pkg/fmt/#Errorf
 
 **＊実装例＊**
 
@@ -2540,7 +2540,7 @@ if err != nil {
 
 ただし、`panic`ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
 
-> ↪️：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+> - https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 
 **＊実装例＊**
 
@@ -2603,7 +2603,7 @@ Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジック
 {{ " {{ " }} foo {{ " }} " }}
 ```
 
-> ↪️：https://stackoverflow.com/a/17642427
+> - https://stackoverflow.com/a/17642427
 
 #### ▼ {{ `<記号を含む文字>` }}
 
@@ -2615,7 +2615,7 @@ Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジック
 {{ `{{  foo  }}` }}
 ```
 
-> ↪️：https://stackoverflow.com/a/38941123
+> - https://stackoverflow.com/a/38941123
 
 <br>
 
@@ -2623,7 +2623,7 @@ Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジック
 
 ### パッケージのコード
 
-> ↪️：https://golang.org/pkg/
+> - https://golang.org/pkg/
 
 <br>
 
@@ -2668,7 +2668,7 @@ func main() {
 
 ただし、他の多くの関数がポインタ型を引数型としていることから、それに合わせてポインタ型で渡すことが多い。
 
-> ↪️：https://golang.org/pkg/encoding/json/#Marshal
+> - https://golang.org/pkg/encoding/json/#Marshal
 
 **＊実装例＊**
 
@@ -2770,7 +2770,7 @@ JSONを構造体に変換する。
 
 `Unmarshal`関数に渡す構造体のフィールドはパブリックが必要であるが、`Marshal`関数と同様にして、`UnMarshalJSON`関数を構造体に定義すれば、代わりにこれをコールできる。
 
-> ↪️：https://golang.org/pkg/encoding/json/#Unmarshal
+> - https://golang.org/pkg/encoding/json/#Unmarshal
 
 **＊実装例＊**
 
@@ -2817,7 +2817,7 @@ CloudWatchは様々なイベントを処理するため、一部のJSON構造が
 
 そのため、`RawMessage`関数が使用されている。
 
-> ↪️：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
+> - https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
 
 ```go
 package events

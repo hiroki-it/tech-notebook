@@ -9,7 +9,7 @@ description: クライアントパッケージ＠開発の知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。
 
 使用できるAPIの型を拡張するために、`k8s.io/api`パッケージや`k8s.io/apimachinery`パッケージも必要になる。
 
-> ↪️：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
+> - https://zenn.dev/castaneai/articles/k8s-go-client-first-step
 
 <br>
 
@@ -29,7 +29,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。
 
 kube-apiserverの認証/認可を通過するために、`~/.kube/config`ファイルをコンテナにマウントする必要がある。
 
-> ↪️：https://nishipy.com/archives/1363
+> - https://nishipy.com/archives/1363
 
 <br>
 
@@ -66,13 +66,13 @@ kube-apiserverのバージョンに応じて、公式リポジトリが用意す
 
 そのため、client-goパッケージを定期的にアップグレードする必要がある。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
+> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
 
 #### ▼ 調査例
 
 ArgoCDの`2.3.0`では、client-goパッケージのバージョンが`0.23.1`であった。
 
-> ↪️：https://github.com/argoproj/argo-cd/blob/v2.3.0/go.mod#L83
+> - https://github.com/argoproj/argo-cd/blob/v2.3.0/go.mod#L83
 
 このことから、ArgoCDは`2.3.0`がKubernetesの`1.23.1`で稼働できることがわかる。
 
@@ -80,6 +80,6 @@ ArgoCDの`2.3.0`では、client-goパッケージのバージョンが`0.23.1`�
 
 Kubernetesの`1.23.1`が対応しているAPIグループのバージョンから、マニフェストで使用できる`.apiVersion`がわかる。
 
-> ↪️：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
+> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
 
 <br>

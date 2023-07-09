@@ -9,7 +9,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 ### アーキテクチャ
 
-> ↪️：http://delftswa.github.io/chapters/vagrant/
+> - http://delftswa.github.io/chapters/vagrant/
 
 ### ユースケース
 
@@ -27,7 +27,7 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 仮想環境として仮想サーバーとコンテナを選択できるが、Vagrantは仮想サーバーの作成のために使用することが多い。
 
-> ↪️：https://computationalmodelling.bitbucket.io/tools/vagrant.html
+> - https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
 ![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vagrant_provider_provisioner.png)
 
@@ -39,16 +39,16 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 仮想環境を提供する。
 
-> ↪️：https://www.vagrantup.com/docs/providers
+> - https://www.vagrantup.com/docs/providers
 
 #### ▼ プロバイダーの種類
 
 | プロバイダー名 | 補足                                                    |
 | -------------- | ------------------------------------------------------- |
-| VirtualBox     | ↪️：https://www.vagrantup.com/docs/providers/virtualbox |
-| VMWare         | ↪️：https://www.vagrantup.com/docs/providers/vmware     |
-| Docker         | ↪️：https://www.vagrantup.com/docs/providers/docker     |
-| Hyper-V        | ↪️：https://www.vagrantup.com/docs/providers/hyperv     |
+| VirtualBox     | - https://www.vagrantup.com/docs/providers/virtualbox |
+| VMWare         | - https://www.vagrantup.com/docs/providers/vmware     |
+| Docker         | - https://www.vagrantup.com/docs/providers/docker     |
+| Hyper-V        | - https://www.vagrantup.com/docs/providers/hyperv     |
 
 <br>
 
@@ -60,18 +60,18 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 具体的には、プログラミング言語やファイアウォールをインストールする。
 
-> ↪️：https://www.vagrantup.com/docs/provisioning
+> - https://www.vagrantup.com/docs/provisioning
 
 #### ▼ プロビジョナーの種類
 
 | プロビジョナー名 | ユースケース                                                                              | 補足                                                         |
 | ---------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。                                   | ↪️：https://www.vagrantup.com/docs/provisioning/shell        |
-| Ansible          | Vagrantfileでプロビジョニングを実行する代わりとして、Ansibleを使用する。                  | ↪️：https://www.vagrantup.com/docs/provisioning/ansible      |
-| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりとして、CFEngineを使用する。                 | ↪️：https://www.vagrantup.com/docs/provisioning/cfengine     |
-| Chef             | Vagrantfileでプロビジョニングを実行する代わりとして、Chefを使用する。                     | ↪️：https://www.vagrantup.com/docs/provisioning/chef_common  |
-| Docker           | Vagrantfileでプロビジョニングを実行する代わりとして、Dockerfile (に似た記述) を使用する。 | ↪️：https://www.vagrantup.com/docs/provisioning/docker       |
-| Puppet           | Vagrantfileでプロビジョニングを実行する代わりとして、Puppetを使用する。                   | ↪️：https://www.vagrantup.com/docs/provisioning/puppet_apply |
+| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。                                   | - https://www.vagrantup.com/docs/provisioning/shell        |
+| Ansible          | Vagrantfileでプロビジョニングを実行する代わりとして、Ansibleを使用する。                  | - https://www.vagrantup.com/docs/provisioning/ansible      |
+| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりとして、CFEngineを使用する。                 | - https://www.vagrantup.com/docs/provisioning/cfengine     |
+| Chef             | Vagrantfileでプロビジョニングを実行する代わりとして、Chefを使用する。                     | - https://www.vagrantup.com/docs/provisioning/chef_common  |
+| Docker           | Vagrantfileでプロビジョニングを実行する代わりとして、Dockerfile (に似た記述) を使用する。 | - https://www.vagrantup.com/docs/provisioning/docker       |
+| Puppet           | Vagrantfileでプロビジョニングを実行する代わりとして、Puppetを使用する。                   | - https://www.vagrantup.com/docs/provisioning/puppet_apply |
 
 <br>
 
@@ -91,7 +91,7 @@ Vagrantfileにプロバイダーとプロビジョナーの操作を設定して
 
 Vagrantfileのバージョンを設定する。
 
-> ↪️：https://www.vagrantup.com/docs/vagrantfile/version
+> - https://www.vagrantup.com/docs/vagrantfile/version
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -125,7 +125,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
+> - https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
 <br>
 
@@ -167,7 +167,7 @@ end
 
 仮想環境のネットワークを設定する。
 
-> ↪️：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
+> - https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
 
 #### ▼ forwarded_port
 
@@ -181,7 +181,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/networking/forwarded_ports
+> - https://www.vagrantup.com/docs/networking/forwarded_ports
 
 #### ▼ private_network
 
@@ -199,7 +199,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/networking/private_network
+> - https://www.vagrantup.com/docs/networking/private_network
 
 <br>
 
@@ -209,7 +209,7 @@ end
 
 プロバイダー固有のオプションを設定する。
 
-> ↪️：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
+> - https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
 #### ▼ virtualbox
 
@@ -225,7 +225,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/providers/virtualbox/configuration
+> - https://www.vagrantup.com/docs/providers/virtualbox/configuration
 
 #### ▼ docker
 
@@ -240,7 +240,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/providers/docker/configuration
+> - https://www.vagrantup.com/docs/providers/docker/configuration
 
 <br>
 
@@ -250,7 +250,7 @@ end
 
 仮想環境のプロビジョニングを設定する。
 
-> ↪️：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
+> - https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
 #### ▼ shell
 
@@ -290,7 +290,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/provisioning/ansible
+> - https://www.vagrantup.com/docs/provisioning/ansible
 
 #### ▼ ansible_local
 
@@ -350,7 +350,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/synced-folders/basic_usage
+> - https://www.vagrantup.com/docs/synced-folders/basic_usage
 
 #### ▼ type
 
@@ -368,13 +368,13 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
+> - https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
 ホストと仮想環境間のファイルの入出力の速度差によって、パフォーマンスに差がある。
 
 以下のリンクで、ロードテストを実施したところ、『`RSync > SMB > VirtualBox共有ディレクトリ`』の順でパフォーマンスが良かった。
 
-> ↪️：http://tech.respect-pal.jp/vagrant-synced_folder-type/
+> - http://tech.respect-pal.jp/vagrant-synced_folder-type/
 
 また、『`RSync > NFS`』『`NFS > SMB`』である。
 

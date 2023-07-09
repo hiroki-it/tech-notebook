@@ -9,7 +9,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 かなり大変なため、DockerfileやIstio経由でインストールすることが推奨。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/start/install
+> - https://www.envoyproxy.io/docs/envoy/latest/start/install
 
 <br>
 
@@ -31,7 +31,7 @@ Dockerfileにて、独自の`/etc/envoy/envoy.yaml`ファイルを組み込む�
 
 拡張子は、`.yml`ではなく、`.yaml`とする。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/start/docker
+> - https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
 ```dockerfile
 FROM envoyproxy/envoy:v1.20.1
@@ -64,7 +64,7 @@ Istioは、Envoyをベースとしたリバースプロキシを自動的に挿�
 
 そのため、設定ファイルのドキュメントで探す代わりに、APIのドキュメントを確認した方が良い。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/api
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/api
 
 #### ▼ 設計ポリシーについて
 
@@ -72,7 +72,7 @@ Envoyでは、YAMLファイルのキー名がスネークケースになって�
 
 一方で、サービスメッシュツール (例：Istio、Linkerd) では、ローワーキャメルケースを使用している。
 
-> ↪️：https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
+> - https://docs.solo.io/gloo-edge/master/guides/security/rate_limiting/envoy/
 
 <br>
 
@@ -82,7 +82,7 @@ Envoyでは、YAMLファイルのキー名がスネークケースになって�
 
 記入中...
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin
 
 <br>
 
@@ -175,7 +175,7 @@ admin:
 
 受信するインバウンド通信のリスナーを設定する。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
 <br>
 
@@ -243,7 +243,7 @@ static_resources:
             - name: envoy.filters.network.http_connection_manager
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
 
 #### ▼ typed_config.access_log
 
@@ -265,7 +265,7 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
 
 #### ▼ typed_config.http_filters
 
@@ -387,7 +387,7 @@ static_resources:
     - name: foo_listener
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
 
 <br>
 
@@ -399,7 +399,7 @@ static_resources:
 
 対象が`1`個であっても、`clusters`キーは必須である。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
 <br>
 
@@ -428,7 +428,7 @@ static_resources:
             "max_requests": 100000
 ```
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers
 
 <br>
 
@@ -486,7 +486,7 @@ static_resources:
 
 ルーティング先のIPアドレスとポート番号のリストを設定する。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 
 **＊実装例＊**
 
@@ -563,7 +563,7 @@ HTTPSリクエストを送受信する場合に、証明書を設定する。
 
 また、静的な値を設定したとする。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource
 
 ```yaml
 static_resources:
@@ -622,7 +622,7 @@ static_resources:
 
 サービスメッシュツールを使用せずに、`envoy`コンテナを直接的に稼働させるとする。また、コントロールプレーンのSDS-APIから取得した動的な値を設定したとする。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server
 
 <br>
 
@@ -634,7 +634,7 @@ static_resources:
 
 ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合、必須である。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
 
 **＊実装例＊**
 
@@ -652,7 +652,7 @@ static_resources:
 
 動的に宛先情報を設定する。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources
 
 <br>
 
@@ -662,13 +662,13 @@ static_resources:
 
 ADS-APIに関して設定する。EnvoyがADS-APIにリクエストを送信するように設定できる。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 
 #### ▼ grpc_services
 
 ADS-APIとして使用するクラスター名を設定する。クラスターとはgRPCを使用してパケットを送受信する。ADS-APIの宛先情報は、`static_resources.clusters`キー配下で設定しておく。
 
-> ↪️：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
 
 **＊実装例＊**
 

@@ -9,7 +9,7 @@ description: チャート＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: チャート＠Helmの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-> ↪️：https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+> - https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 
 ```bash
 $ curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
@@ -39,7 +39,7 @@ $ sudo apt-get install helm
 
 `helm repo index`コマンドによって、`Chart.yaml`ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
 
-> ↪️：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> - https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -47,7 +47,7 @@ $ sudo apt-get install helm
 
 #### ▼ apiVersionとは
 
-> ↪️：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> - https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -55,7 +55,7 @@ $ sudo apt-get install helm
 
 #### ▼ entriesとは
 
-> ↪️：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> - https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -133,7 +133,7 @@ description: The chart of foo
 
 設定されたサブチャートは、`charts`ディレクトリにダウンロードされる。
 
-> ↪️：https://helm.sh/docs/topics/charts/#chart-dependencies
+> - https://helm.sh/docs/topics/charts/#chart-dependencies
 
 ```yaml
 dependencies:
@@ -177,7 +177,7 @@ dependencies:
     condition: foo.enabled
 ```
 
-> ↪️：https://helm.sh/docs/chart_template_guide/subcharts_and_globals/#overriding-values-from-a-parent-chart
+> - https://helm.sh/docs/chart_template_guide/subcharts_and_globals/#overriding-values-from-a-parent-chart
 
 <br>
 
@@ -212,7 +212,7 @@ maintainers:
 
 Helmで作成されるKubernetesリソースの接頭辞を設定する。
 
-> ↪️：https://helm.sh/docs/topics/charts/#the-chartyaml-file
+> - https://helm.sh/docs/topics/charts/#the-chartyaml-file
 
 ```yaml
 name: foo
@@ -230,7 +230,7 @@ name: foo
 type: application
 ```
 
-> ↪️：https://helm.sh/docs/topics/charts/#chart-types
+> - https://helm.sh/docs/topics/charts/#chart-types
 
 <br>
 
@@ -246,7 +246,7 @@ type: application
 version: <バージョンタグ>
 ```
 
-> ↪️：https://helm.sh/docs/topics/charts/#charts-and-versioning
+> - https://helm.sh/docs/topics/charts/#charts-and-versioning
 
 <br>
 
@@ -258,7 +258,7 @@ version: <バージョンタグ>
 
 汎用的なテンプレート (`.metadata.labels`キーなど) の出力で使用する。
 
-> ↪️：https://helm.sh/docs/chart_template_guide/builtin_objects/
+> - https://helm.sh/docs/chart_template_guide/builtin_objects/
 
 <br>
 
@@ -284,7 +284,7 @@ metadata:
   labels: {{include "global.template.labels" . | indent 4}} # まとめて出力する。
 ```
 
-> ↪️：https://codersociety.com/blog/articles/helm-best-practices#3-use-labels-to-find-resources-easily
+> - https://codersociety.com/blog/articles/helm-best-practices#3-use-labels-to-find-resources-easily
 
 <br>
 
@@ -298,7 +298,7 @@ metadata:
 
 共通オプションは、外部チャート内の`_help.tpl`ファイルに出力される。
 
-> ↪️：https://knowledge.sakura.ad.jp/23603/
+> - https://knowledge.sakura.ad.jp/23603/
 
 #### ▼ affinity
 

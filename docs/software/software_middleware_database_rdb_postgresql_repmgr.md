@@ -9,7 +9,7 @@ description: Repmgr＠PostgreSQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -27,7 +27,7 @@ repmgrは、PostgreSQLのDBをクラスターのインスタンス (プライマ
 
 ![repmgr_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgr_architecture.png)
 
-> ↪️：https://www.2ndquadrant.com/en/resources-old/repmgr/
+> - https://www.2ndquadrant.com/en/resources-old/repmgr/
 
 <br>
 
@@ -39,7 +39,7 @@ repmgrdは、DBインスタンス間でフェイルオーバーできるよう�
 
 ![repmgrd_fail-over](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgrd_fail-over.png)
 
-> ↪️：https://radondb.com/posts/211201_%E5%B7%A5%E5%85%B7_-pg-%E9%9B%86%E7%BE%A4%E5%A4%8D%E5%88%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-repmgr/
+> - https://radondb.com/posts/211201_%E5%B7%A5%E5%85%B7_-pg-%E9%9B%86%E7%BE%A4%E5%A4%8D%E5%88%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-repmgr/
 
 <br>
 
@@ -47,7 +47,7 @@ repmgrdは、DBインスタンス間でフェイルオーバーできるよう�
 
 記入中...
 
-> ↪️：https://repmgr.org/docs/current/installation-packages.html
+> - https://repmgr.org/docs/current/installation-packages.html
 
 <br>
 
@@ -71,6 +71,6 @@ ID | Name  | Role    | Status    | Upstream | Location | Priority | Timeline | C
 5  | node5 | witness | * running | node1    | default  | 0        | n/a      | host=db_node5 dbname=repmgr user=repmgr
 ```
 
-> ↪️：https://repmgr.org/docs/current/repmgr-cluster-show.html
+> - https://repmgr.org/docs/current/repmgr-cluster-show.html
 
 <br>

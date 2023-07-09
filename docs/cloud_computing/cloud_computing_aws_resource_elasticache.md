@@ -9,7 +9,7 @@ description: ElastiCache＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -46,7 +46,7 @@ RedisとMemcachedがある。
 | マルチAZ                         | プライマリーノードとリードレプリカを異なるAZに配置するか否かを設定する。合わせて、自動フェイルオーバーを実行できるようになる。 |                                                                                                                                                                                                   |
 | サブネットグループ               | Redisにアクセスできるサブネットを設定する。                                                                                    |                                                                                                                                                                                                   |
 | セキュリティ                     | セキュリティグループを設定する。                                                                                               |                                                                                                                                                                                                   |
-| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを作成する。                                                | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>↪️：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
+| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを作成する。                                                | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>- https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
 | バックアップ                     | バックアップの有効化、保持期間、時間を設定する。                                                                               | バックアップを取るほどでもないため、無効化しておいて問題ない。                                                                                                                                    |
 | メンテナンス                     | メンテナンスの時間を設定する。                                                                                                 |                                                                                                                                                                                                   |
 
@@ -74,7 +74,7 @@ RedisとMemcachedがある。
 
 反対に無効化すると、シャードは `1`個だけ作成される。
 
-> ↪️：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
+> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
 
 <br>
 
@@ -90,7 +90,7 @@ Redisノードのグループ。
 
 一方で、AuroraのDBクラスターはこれに相当する概念である。
 
-> ↪️：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
+> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
 
 <br>
 
@@ -114,7 +114,7 @@ Redisノードのグループ。
 
 ![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ElastiCacheのセッション管理機能.png)
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 <br>
 

@@ -9,7 +9,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,11 +31,11 @@ $ istioctl install --set profile=demo revision=1-10-0
 $ istioctl install --manifests=foo-chart
 ```
 
-> ↪️：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
+> - https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
 執筆時点 (2023/01/16) でIstioOperatorは非推奨になっている。
 
-> ↪️：https://www.solo.io/blog/3-most-common-ways-install-istio/
+> - https://www.solo.io/blog/3-most-common-ways-install-istio/
 
 #### ▼ Operatorとして (ユーザー定義)
 
@@ -57,7 +57,7 @@ spec:
 $ kubectl apply -f istio-operator.yaml
 ```
 
-> ↪️：https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
+> - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 <br>
 
@@ -105,7 +105,7 @@ IngressGatewayのインストールは必須ではない。
 $ helm install <リリース名> <チャートリポジトリ名>/gateway -n istio-system --version <バージョンタグ>
 ```
 
-> ↪️：https://istio.io/latest/docs/setup/install/helm/#installation-steps
+> - https://istio.io/latest/docs/setup/install/helm/#installation-steps
 
 <br>
 
@@ -294,7 +294,7 @@ spec:
 
 そのDestinationRuleを使用できるNamespaceを設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ `*` (アスタリスク)
 
@@ -352,7 +352,7 @@ spec:
   host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い。
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 
 <br>
 
@@ -448,7 +448,7 @@ spec:
       maxEjectionPercent: 99
 ```
 
-> ↪️：https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://speakerdeck.com/nutslove/istioru-men?slide=25
 
 #### ▼ loadBalancer
 
@@ -471,7 +471,7 @@ spec:
       simple: ROUND_ROBIN
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
 
 **＊実装例＊**
 
@@ -521,7 +521,7 @@ spec:
           simple: ROUND_ROBIN
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 #### ▼ portLevelSettings.port
 
@@ -542,7 +542,7 @@ spec:
           number: 80
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 #### ▼ tls.mode
 
@@ -574,7 +574,7 @@ spec:
       mode: ISTIO_MUTUAL # 相互TLS認証
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
 <br>
 
@@ -599,7 +599,7 @@ spec:
     - applyTo: NETWORK_FILTER
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
 #### ▼ match
 
@@ -641,7 +641,7 @@ spec:
               name: "envoy.filters.network.http_connection_manager"
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
 
 #### ▼ PatchContext
 
@@ -661,7 +661,7 @@ spec:
         context: SIDECAR_INBOUND
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
 #### ▼ patch
 
@@ -739,7 +739,7 @@ spec:
               state: STATE_PREBIND
 ```
 
-> ↪️：https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
+> - https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
 
 <br>
 
@@ -761,7 +761,7 @@ VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに�
 
 DeploymentやPodの`.metadata.anontations`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/annotations/
+> - https://istio.io/latest/docs/reference/config/annotations/
 
 <br>
 
@@ -809,7 +809,7 @@ spec:
                     pilot-agent wait
 ```
 
-> ↪️：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 
 <br>
 
@@ -823,7 +823,7 @@ Gatewayの適用対象のIngressGatewayに付与された`.metadata.labels`キ�
 
 デフォルトでは、IngressGatewayには`istio`ラベルがあり、値は`ingressgateway`である。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
 **＊実装例＊**
 
@@ -869,7 +869,7 @@ spec:
         name: http
 ```
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 #### ▼ port.number
 
@@ -879,7 +879,7 @@ IngressGatewayの内部的なServiceのタイプに関して、NodePort Service�
 
 一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
 
@@ -899,7 +899,7 @@ spec:
 
 受信するインバウンド通信のプロトコルを設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
 
@@ -919,7 +919,7 @@ spec:
 
 ServiceEntryで追加したサービスディスカバリーの宛先のポート番号を設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
 
@@ -963,7 +963,7 @@ SSL証明書のファイルを指定する場合は、`.spec.servers[].tls.serve
 
 Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
 
-> ↪️：https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert
+> - https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert
 
 **＊実装例＊**
 
@@ -981,7 +981,7 @@ spec:
 
 #### ▼ tls.privateKey
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
 **＊実装例＊**
 
@@ -1003,7 +1003,7 @@ GatewayでHTTPSプロトコルのインバウンド通信を受信する場合�
 
 SSL証明書を保持するSecretを指定する場合は、`.spec.servers[].tls.credentialName`キーを設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
 **＊実装例＊**
 
@@ -1031,7 +1031,7 @@ spec:
 
 Kubernetesのみで相互TLS認証をセットアップしようとすると大変であり、Istioを使うとより簡単にセットアップできる。
 
-> ↪️：https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
+> - https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
 
 #### ▼ mode
 
@@ -1044,7 +1044,7 @@ Kubernetesのみで相互TLS認証をセットアップしようとすると大�
 | `PERMISSIVE` | 相互TLS認証の時、プロトコルはHTTPSとHTTPの両方を許可する。         |
 | `STRICT`     | 相互TLS認証の時、プロトコルはHTTPSのみを許可し、HTTPを許可しない。 |
 
-> ↪️：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
+> - https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
 **＊実装例＊**
 
@@ -1191,7 +1191,7 @@ spec:
 
 そのVirtualServiceを使用できるNamespaceを設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ `*` (アスタリスク)
 
@@ -1260,7 +1260,7 @@ spec:
 
 インバウンド通信をいずれのGatewayから受信するかを設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ `<Namespace名>/<Gateway名>`
 
@@ -1353,7 +1353,7 @@ spec:
               value: 100 # エラーを発生させる確率
 ```
 
-> ↪️：https://speakerdeck.com/nutslove/istioru-men?slide=19
+> - https://speakerdeck.com/nutslove/istioru-men?slide=19
 
 #### ▼ match
 
@@ -1379,7 +1379,7 @@ spec:
 
 受信したインバウンド通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
 
-> ↪️：https://istiobyexample.dev/path-based-routing/
+> - https://istiobyexample.dev/path-based-routing/
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1440,7 +1440,7 @@ spec:
 
 受信したインバウンド通信でルーティング先のServiceのドメイン名 (あるいはService名) を設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 **＊実装例＊**
 
@@ -1459,7 +1459,7 @@ spec:
 
 受信するインバウンド通信でルーティング先のポート番号を設定する。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 **＊実装例＊**
 
@@ -1520,7 +1520,7 @@ Serviceの重み付けルーティングの割合を設定する。
 
 `.spec.http[].route[].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[].name`キーに合わせる必要がある。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
 **＊実装例＊**
 
@@ -1555,7 +1555,7 @@ spec:
 
 TCP/IPのプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
-> ↪️：https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
 #### ▼ match
 

@@ -9,7 +9,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -70,7 +70,7 @@ VictoriaMetricsが使用できるメモリサイズを設定する。
 $ victoria-metrics-prod -memory.allowedBytes=100000
 ```
 
-> ↪️：https://docs.victoriametrics.com/#resource-usage-limits
+> - https://docs.victoriametrics.com/#resource-usage-limits
 
 <br>
 
@@ -86,7 +86,7 @@ VictoriaMetricsが使用できるメモリサイズのうちで、許容する�
 $ victoria-metrics-prod -memory.allowedPercent=80
 ```
 
-> ↪️：https://docs.victoriametrics.com/#resource-usage-limits
+> - https://docs.victoriametrics.com/#resource-usage-limits
 
 <br>
 
@@ -114,7 +114,7 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 ```
 
-> ↪️：https://docs.victoriametrics.com/#storage
+> - https://docs.victoriametrics.com/#storage
 
 <br>
 

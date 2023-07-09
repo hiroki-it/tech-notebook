@@ -9,7 +9,7 @@ description: Prometheus＠テレメトリー収集ツールの知見を記録し
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,6 +17,6 @@ description: Prometheus＠テレメトリー収集ツールの知見を記録し
 
 Prometheusはセクションが重複しており、以下のセクションを参照してください。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html
 
 <br>

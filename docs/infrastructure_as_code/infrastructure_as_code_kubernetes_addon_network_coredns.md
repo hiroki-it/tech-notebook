@@ -9,7 +9,7 @@ description: CoreDNS＠ネットワークアドオンの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
-> ↪️：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 <br>
 
@@ -65,7 +65,7 @@ Podからの問い合わせに対して、名前解決を実行する。
 
 CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングする。
 
-> ↪️：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+> - https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 <br>
 
@@ -115,7 +115,7 @@ data:
     }
 ```
 
-> ↪️：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
+> - https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
 
 <br>
 
@@ -273,7 +273,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 10.101.67.107
 ```
 
-> ↪️：https://zenn.dev/tayusa/articles/c705cd65b6ee74
+> - https://zenn.dev/tayusa/articles/c705cd65b6ee74
 
 <br>
 
@@ -333,7 +333,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 対応する完全修飾ドメイン名は、『`<PodのIPアドレス>.<Namespace名>.pod.cluster.local`』である。
 
-> ↪️：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
+> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
 
 <br>
 

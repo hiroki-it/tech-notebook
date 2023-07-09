@@ -9,7 +9,7 @@ description: AWS EKSアドオン＠クラウドプロバイダーアドオンの
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -110,7 +110,7 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 $ helm install <リリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
 ```
 
-> ↪️：https://github.com/aws/eks-charts/tree/master/stable
+> - https://github.com/aws/eks-charts/tree/master/stable
 
 <br>
 
@@ -124,7 +124,7 @@ EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働す�
 
 aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。
 
-> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
 <br>
 
@@ -134,7 +134,7 @@ aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サー�
 
 Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
 
 <br>
 
@@ -144,7 +144,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 メトリクスの場合、ストレージとアラートをマネージドにしたManaged Prometheusと組み合わせると、データの収集 (プル型のみ) から保管までをマネージドにできる。
 
-> ↪️：https://speakerdeck.com/k6s4i53rx/opentelemetrywoyong-itaobservabilityji-pan-noshi-zhuang-with-aws-distro-for-opentelemetry?slide=13
+> - https://speakerdeck.com/k6s4i53rx/opentelemetrywoyong-itaobservabilityji-pan-noshi-zhuang-with-aws-distro-for-opentelemetry?slide=13
 
 <br>
 
@@ -158,7 +158,7 @@ EKSのコントロールプレーン上のkube-apiserverが、Node外からPod�
 
 aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。
 
-> ↪️：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
 
@@ -168,7 +168,7 @@ aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内の�
 
 Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
 
@@ -197,7 +197,7 @@ aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカ�
 
 aws-eks-vpc-cniアドオンは、L-IPAMデーモン (ipamd) 、CNIプラグイン、といったコンポーネントから構成されている。
 
-> ↪️：https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 
 <br>
 
@@ -236,7 +236,7 @@ L-IPAMは、NodeのENIにCIDR (`/28`) を割り当て、これから取得した
 
 Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
 
-> ↪️：https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
+> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
 
 <br>
 
@@ -246,7 +246,7 @@ Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネッ�
 
 Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> ↪️：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update
 
 #### ▼ 環境変数
 

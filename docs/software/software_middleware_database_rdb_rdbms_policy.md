@@ -9,7 +9,7 @@ description: 設計ポリシー＠RDBMSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -181,7 +181,7 @@ DBインデックスとして保存されたカラムから特定のレコード
 
 DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。
 
-> ↪️：https://qiita.com/towtow/items/4089dad004b7c25985e3
+> - https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 #### ▼ クラスターDBインデックス
 
@@ -209,7 +209,7 @@ CREATE INDEX foo_index
 
 そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保存される。
 
-> ↪️：https://qiita.com/towtow/items/4089dad004b7c25985e3
+> - https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 ```sql
 CREATE INDEX foo_index

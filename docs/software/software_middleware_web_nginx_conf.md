@@ -9,7 +9,7 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -21,7 +21,7 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 nginxを`apt-get`コマンドでインストールすると、旧バージョンが指定されるため、`apt`コマンドを使用する。
 
-> ↪️：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+> - https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
 ```bash
 $ apt install nginx
@@ -101,7 +101,7 @@ OSやそのバージョンによっては、変数のデフォルト値が異な
 
 Debian10の設定ファイルを以下に示す。
 
-> ↪️：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
+> - https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
 
 **＊実装例＊**
 
@@ -143,7 +143,7 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 #### ▼ events
 
-> ↪️：https://nginx.org/en/docs/ngx_core_module.html#events
+> - https://nginx.org/en/docs/ngx_core_module.html#events
 
 **＊実装例＊**
 
@@ -193,7 +193,7 @@ pid  logs/nginx.pid;
 
 workerプロセスが同時に処理できるコネクションの最大数を設定する。
 
-> ↪️：https://nginx.org/en/docs/ngx_core_module.html#worker_connections
+> - https://nginx.org/en/docs/ngx_core_module.html#worker_connections
 
 ```nginx
 worker_connections  1024;
@@ -249,13 +249,13 @@ http {
 }
 ```
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 
 #### ▼ location
 
 特定のパスのインバウンド通信に関する処理を設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#location
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 
 **＊実装例＊**
 
@@ -303,7 +303,7 @@ location / {
 
 特定のルーティング先に関する処理を設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server
 
 **＊実装例＊**
 
@@ -332,7 +332,7 @@ server {
 
 以下のリンクを参考にせよ。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 <br>
 
@@ -342,7 +342,7 @@ server {
 
 `Content-Type`ヘッダーの値が`mime.types`ファイルにないMIME typeであった場合に適用するMIME typeを設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
 
 **＊実装例＊**
 
@@ -356,7 +356,7 @@ default_type application/octet-stream
 
 インバウンド通信を待ち受けるポート番号を設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
 **＊実装例＊**
 
@@ -380,7 +380,7 @@ listen 443 ssl;
 
 使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
 
 **＊実装例＊**
 
@@ -394,7 +394,7 @@ sendfile on;
 
 補足として`Host`ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 
 ```nginx
 server_name example.com;
@@ -418,7 +418,7 @@ server_name 127.0.0.1;
 
 HTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効にする必要がある。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
 **＊実装例＊**
 
@@ -484,7 +484,7 @@ tcp_nopush on;
 
 内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
 
 ```nginx
 location / {
@@ -580,7 +580,7 @@ server {
 
 リクエストのURLがトレイリングスラッシュで終了する全ての場合、指定されたファイルをURLの末尾に追加する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_index_module.html
+> - https://nginx.org/en/docs/http/ngx_http_index_module.html
 
 **＊実装例＊**
 
@@ -598,7 +598,7 @@ index index.php;
 
 レスポンス時に付与するレスポンスヘッダーを設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
+> - https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
 
 **＊実装例＊**
 
@@ -619,7 +619,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
+> - https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
 
 **＊実装例＊**
 
@@ -640,7 +640,7 @@ upstream foo_servers {
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
+> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
 
 **＊実装例＊**
 
@@ -652,7 +652,7 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
+> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
 **＊実装例＊**
 
@@ -670,7 +670,7 @@ fastcgi_pass 127.0.0.1:9000;
 
 HTTPプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
-> ↪️：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
+> - https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 
 **＊実装例＊**
 

@@ -9,7 +9,7 @@ description: クラウド (クラウドコンピューティング) の知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -31,13 +31,13 @@ description: クラウド (クラウドコンピューティング) の知見を
 
 ベンダーが、システムを稼働させるために必要なソフトウェアとハードウェアをどこまで提供するかによって、サービスの名称が異なる。
 
-> ↪️：https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
+> - https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
 
 #### ▼ パブリッククラウド
 
 あらゆるユーザーが利用できるように公開されているクラウドサービスのこと。
 
-> ↪️：https://www.gadgeblo.com/cloud-service-brand/
+> - https://www.gadgeblo.com/cloud-service-brand/
 
 **＊例＊**
 
@@ -55,7 +55,7 @@ description: クラウド (クラウドコンピューティング) の知見を
 
 エンジニアを潤沢に用意できる大企業が所有していることが多い。
 
-> ↪️：https://www.cyberagent.co.jp/way/list/detail/id=26235
+> - https://www.cyberagent.co.jp/way/list/detail/id=26235
 
 **＊例＊**
 
@@ -155,7 +155,7 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 | GCP        | Google Cloud Functions |
 | Azure      | Azure Logc Apps        |
 
-> ↪️：https://cloudsecurityalliance.jp/newblog/2021/02/09/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E9%80%B2%E5%8C%96%E3%81%A8%E6%96%B0%E3%81%9F%E3%81%AA%E8%B2%AC%E4%BB%BB/
+> - https://cloudsecurityalliance.jp/newblog/2021/02/09/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E9%80%B2%E5%8C%96%E3%81%A8%E6%96%B0%E3%81%9F%E3%81%AA%E8%B2%AC%E4%BB%BB/
 
 #### ▼ SaaS
 
@@ -175,6 +175,6 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 
 特定のクラウドプロバイダーに依存しないような設計が必要になる。
 
-> ↪️：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
+> - https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
 
 <br>

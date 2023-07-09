@@ -9,7 +9,7 @@ description: コンポーネント＠Flaskの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -34,7 +34,7 @@ app = Flask(__name__)
 # app = Flask(src)
 ```
 
-> ↪️：https://flask.palletsprojects.com/Ien/2.0.x/api/
+> - https://flask.palletsprojects.com/Ien/2.0.x/api/
 
 <br>
 
@@ -80,7 +80,7 @@ PREFIX_FOO = "foo"
 app.run()
 ```
 
-> ↪️：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
+> - https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
 
 #### ▼ 引数
 
@@ -114,7 +114,7 @@ app.run()
 | `module`            | モジュール名 (ファイル名) を設定する。                 |
 | `file.py`           | ファイル名を設定する。                                 |
 
-> ↪️：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
+> - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 
 <br>
 
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     app.run()
 ```
 
-> ↪️：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
+> - https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 
 #### ▼ 開発環境と本番環境の違い
 

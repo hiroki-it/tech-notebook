@@ -9,7 +9,7 @@ description: アクション＠チャートの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,7 +17,7 @@ description: アクション＠チャートの知見を記録しています。
 
 ### 予約された変数
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 
 <br>
 
@@ -78,7 +78,7 @@ url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 
 テンプレートの関数 (例：`include`、`template`) 、`_helpers.tpl`ファイルで定義する。
 
-> ↪️：https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 
 <br>
 
@@ -102,7 +102,7 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 {{- /* コメント */-}}
 ```
 
-> ↪️：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
+> - https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
 
 `*/}}`にはスペースを含めずに、一繋ぎで定義する。
 
@@ -139,12 +139,12 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 | `Chart.AppVersion`             | Chart.yamlに記載されるコンテナアプリのバージョン                                                                                                                                                                                                                                                                                    |
 | `Chart.Deprecated`             | Chart.yamlに記載されるチャートの推奨／非推奨（boolean値）                                                                                                                                                                                                                                                                           |
 | `Capabilities.APIVersions`     | Kubernetesリソースのバージョン                                                                                                                                                                                                                                                                                                      |
-| `Capabilities.APIVersions.Has` | そのkube-apiserverのバージョンで、そのAPIバージョンを使用可能かどうか。例えば、EndpointSliceは特定のバージョン以降でしか使用できない。<br>↪️：https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91 |
+| `Capabilities.APIVersions.Has` | そのkube-apiserverのバージョンで、そのAPIバージョンを使用可能かどうか。例えば、EndpointSliceは特定のバージョン以降でしか使用できない。<br>- https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91 |
 | `Capabilities.KubeVersion`     | コンテキストのKubernetesバージョン                                                                                                                                                                                                                                                                                                  |
 | `Template.Name`                | カレントパスの相対ファイルパス                                                                                                                                                                                                                                                                                                      |
 | `Template.BasePath`            | チャートのtemplatesディレクトリの相対パス                                                                                                                                                                                                                                                                                           |
 
-> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
+> - https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -204,7 +204,7 @@ metadata:
     app.kubernetes.io/app: {{ .Values.global.appName }}
 ```
 
-> ↪️：https://github.com/helm/helm/issues/8026
+> - https://github.com/helm/helm/issues/8026
 
 #### ▼ metadataキーで使用する場合の注意点
 
@@ -234,7 +234,7 @@ metadata:
     id: "{{ .Values.metadata.labels.id }}"
 ```
 
-> ↪️：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
 <br>
 
@@ -265,7 +265,7 @@ metadata:
 data: {{- toYaml .Values.parameters | nindent 2}}
 ```
 
-> ↪️：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
+> - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
 
 #### ▼ list型の場合
 
@@ -355,7 +355,7 @@ metadata:
 {{- end }}
 ```
 
-> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
+> - https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -367,7 +367,7 @@ metadata:
 
 同じ階層にある他の`.yaml`ファイルのキーとその値を格納し、foreach関数のように出力する。
 
-> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
+> - https://helm.sh/docs/chart_template_guide/control_structures/
 
 #### ▼ マップ型を扱う場合
 
@@ -407,7 +407,7 @@ data:
   {{- end }}
 ```
 
-> ↪️：https://helm-playground.com/cheatsheet.html#loops
+> - https://helm-playground.com/cheatsheet.html#loops
 
 **＊実装例＊**
 
@@ -463,7 +463,7 @@ data:
     {{- end }}
 ```
 
-> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/
+> - https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -490,7 +490,7 @@ data:
   {{- end }}
 ```
 
-> ↪️：https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with
+> - https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with
 
 <br>
 
@@ -500,7 +500,7 @@ data:
 
 記入中...
 
-> ↪️：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
+> - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 
 <br>
 
@@ -568,7 +568,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 # [https:  github.com hiroki-hasegawa foo-repository.git]
 ```
 
-> ↪️：https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+> - https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
 
 <br>
 
@@ -594,7 +594,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 様々なデータ型をstring型で出力する。
 
-> ↪️：https://helm.sh/docs/chart_template_guide/function_list/#printf
+> - https://helm.sh/docs/chart_template_guide/function_list/#printf
 
 #### ▼ エスケープ
 
@@ -632,7 +632,7 @@ receivers:
           {{`{{ end }}`}}
 ```
 
-> ↪️：https://github.com/helm/helm/issues/2798#issuecomment-890478869
+> - https://github.com/helm/helm/issues/2798#issuecomment-890478869
 
 <br>
 
@@ -659,7 +659,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 # foo-repository
 ```
 
-> ↪️：https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+> - https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
 
 <br>
 
@@ -683,7 +683,7 @@ lists:
 # baz
 ```
 
-> ↪️：https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast
+> - https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast
 
 <br>
 
@@ -794,7 +794,7 @@ data:
 {{.Values.foo | default "foo"}}
 ```
 
-> ↪️：https://helm-playground.com/cheatsheet.html#variables
+> - https://helm-playground.com/cheatsheet.html#variables
 
 #### ▼ キーが存在しなくてもデフォルト値を表現
 
@@ -905,7 +905,7 @@ baz:
     bar: BAR
 ```
 
-> ↪️：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
+> - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
 
 #### ▼ `-}}`
 
@@ -1062,7 +1062,7 @@ foo:
 {{- end }}
 ```
 
-> ↪️：https://stackoverflow.com/a/49819239
+> - https://stackoverflow.com/a/49819239
 
 <br>
 
@@ -1076,7 +1076,7 @@ foo:
 {{- end }}
 ```
 
-> ↪️：https://stackoverflow.com/a/49819239
+> - https://stackoverflow.com/a/49819239
 
 <br>
 
@@ -1090,7 +1090,7 @@ foo:
 {{- end }}
 ```
 
-> ↪️：https://helm-playground.com/cheatsheet.html#conditionals
+> - https://helm-playground.com/cheatsheet.html#conditionals
 
 <br>
 
@@ -1144,6 +1144,6 @@ data:
 {{- end }}
 ```
 
-> ↪️：https://austindewey.com/2018/12/28/helm-tricks-input-validation-with-required-and-fail/
+> - https://austindewey.com/2018/12/28/helm-tricks-input-validation-with-required-and-fail/
 
 <br>

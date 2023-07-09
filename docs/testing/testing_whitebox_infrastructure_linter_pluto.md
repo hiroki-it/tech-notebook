@@ -9,7 +9,7 @@ description: Pluto＠非推奨apiVersionテストの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ↪️：https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -19,7 +19,7 @@ description: Pluto＠非推奨apiVersionテストの知見を記録していま�
 $ brew install pluto
 ```
 
-> ↪️：https://pluto.docs.fairwinds.com/installation/
+> - https://pluto.docs.fairwinds.com/installation/
 
 <br>
 
@@ -82,13 +82,13 @@ $ pluto detect - -o wide -t k8s=<Kubernetesの次のバージョン>
 $ pluto detect - -o wide
 ```
 
-> ↪️：https://pluto.docs.fairwinds.com/advanced/#display-options
+> - https://pluto.docs.fairwinds.com/advanced/#display-options
 
 ```bash
 $ pluto detect - -o markdown
 ```
 
-> ↪️：https://pluto.docs.fairwinds.com/advanced/#display-options
+> - https://pluto.docs.fairwinds.com/advanced/#display-options
 
 <br>
 
@@ -100,7 +100,7 @@ kube-apiserverからの返信、または標準入力で入力されたマニフ
 
 `pluto detect-api-resources`コマンドとの違いは記入中...
 
-> ↪️：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
+> - https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
 
 ```bash
 $ pluto detect - -o wide
@@ -130,7 +130,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 ...
 ```
 
-> ↪️：https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
+> - https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
 
 <br>
 
@@ -163,7 +163,7 @@ baz-chart  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autos
 ...
 ```
 
-> ↪️：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
+> - https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
 
 <br>
 
