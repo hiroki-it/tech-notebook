@@ -25,8 +25,6 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 ![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_architecture.png)
 
-> ↪️：
->
 > - https://danielfm.me/prometheus-for-developers/
 > - https://prometheus.io/docs/introduction/overview/
 > - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
@@ -43,8 +41,6 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、`/etc/prometheus/prometheus.yml`ファイルで定義する。
 
-> ↪️：
->
 > - https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
 > - https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
 
@@ -60,8 +56,6 @@ Prometheusで使用できるメトリクスの一覧を取得できる。
 $ curl http://localhost:3000/metrics
 ```
 
-> ↪️：
->
 > - https://www.redhat.com/sysadmin/introduction-prometheus-metrics-and-performance-monitoring
 > - https://itnext.io/prometheus-for-beginners-5f20c2e89b6c
 
@@ -113,8 +107,6 @@ prometheus-prometheus-kube-prometheus-prometheus-operator.yaml
 prometheus-prometheus-kube-prometheus-prometheus.yaml
 ```
 
-> ↪️：
->
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 > - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
@@ -197,8 +189,6 @@ Prometheusでは、TSDB (`data`ディレクトリ配下) を採用している�
 | `2022-01-01` | `foo-cluster` | `foo-namespace` | ... | `10` | `10`   |
 | `2022-01-02` | `foo-cluster` | `foo-namespace` | ... | `20` | `30`   |
 
-> ↪️：
->
 > - https://db-engines.com/en/system/InfluxDB%3BLevelDB%3BPrometheus
 > - https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734
 
@@ -218,8 +208,6 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_remote-storage.png)
 
-> ↪️：
->
 > - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
 > - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
 > - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
@@ -246,8 +234,6 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 
 ![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alertmanager.png)
 
-> ↪️：
->
 > - https://prometheus.io/docs/alerting/latest/alertmanager/
 > - https://www.designet.co.jp/ossinfo/alertmanager/
 > - https://knowledge.sakura.ad.jp/11635/#Prometheus-3

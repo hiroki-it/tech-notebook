@@ -326,8 +326,6 @@ $ kubectl create secret docker-registry foo-secret \
     -n foo-namespace
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
 > - https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
 
@@ -361,8 +359,6 @@ $ kubectl create secret generic foo-secret --from-literal=username="bar" --from-
 secret/foo-secret created
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
 > - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
 
@@ -420,8 +416,6 @@ Podを強制的に削除する。
 $ kubectl delete pod <TerminatingステータスのままのPod名> --force --grace-period=0
 ```
 
-> ↪️：
->
 > - https://www.opensourcetech.tokyo/entry/20211207/1638879696
 > - https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion
 
@@ -526,8 +520,6 @@ $ kubectl drain <Node名>
 
 ![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_drain_node.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service
 > - https://amazon.co.jp/dp/1491979682
 > - https://cstoku.dev/posts/2018/k8sdojo-21/
@@ -597,8 +589,6 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 Serviceを作成する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
 > - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
@@ -1165,8 +1155,6 @@ $ kubectl replace --force -f foo.yaml
 
 Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
 > - https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
 
@@ -1193,8 +1181,6 @@ $ kubectl rollout restart daemonset foo-daemonset -n foo-namespace
 $ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
 ```
 
-> ↪️：
->
 > - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
 > - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
 
@@ -1252,8 +1238,6 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Serviceの�
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 > - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
 > - https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B
@@ -1366,8 +1350,6 @@ $ kubectl debug node/<Node名> \
 $ kubectl delete -n default node-debugger-*****
 ```
 
-> ↪️：
->
 > - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
 > - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
 
@@ -1500,8 +1482,6 @@ Server Version: version.Info{
 }
 ```
 
-> ↪️：
->
 > - https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
 > - https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194
 

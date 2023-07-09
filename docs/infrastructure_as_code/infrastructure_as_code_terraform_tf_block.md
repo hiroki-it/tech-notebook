@@ -123,8 +123,6 @@ data "aws_ami" "bastion" {
 
 可読性の観点から、`resource`ブロック一括で出力するのではなく、`resource`ブロックの特定の`attribute`値を出力するようにした方が良い。
 
-> ↪️：
->
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
@@ -209,8 +207,6 @@ resource "bar" "this" {
 }
 ```
 
-> ↪️：
->
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
@@ -266,8 +262,6 @@ resource "foo" "this" {
 }
 ```
 
-> ↪️：
->
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
@@ -317,8 +311,6 @@ resource "foo" "this" {
 }
 ```
 
-> ↪️：
->
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
 
@@ -430,8 +422,6 @@ resource "aws_instance" "example" {
 }
 ```
 
-> ↪️：
->
 > - https://www.terraform.io/language/values/locals
 > - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
 
@@ -898,8 +888,6 @@ output "foo_kms_key_arn" {
 }
 ```
 
-> ↪️：
->
 > - https://discuss.hashicorp.com/t/output-from-a-module-that-has-conditional-count-0/17234/2
 > - https://github.com/hashicorp/terraform/issues/23222#issuecomment-547462883
 > - https://www.bioerrorlog.work/entry/terraform-count-resource-output

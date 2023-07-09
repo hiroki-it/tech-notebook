@@ -275,8 +275,6 @@ repository/
 | Nodeのカスタマイズ性   | 高い                                                                                                                                                            | 低い                                                                           | 高い                                                                                | 高い                                                                                                      |
 | 料金                   | 無料                                                                                                                                                            | 無料                                                                           | 無料                                                                                | 非常に高い                                                                                                |
 
-> ↪️：
->
 > - https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 > - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
 > - https://blog.cybozu.io/entry/2019/07/03/170000
@@ -414,8 +412,6 @@ Clusterの複数の実行環境 (`dev-*`、`stg-*`、`prd-*`) を用意したい
 
 必要であれば、コントロールプレーンNodeのアドオン (例：aws-eks-corednsアドオン、aws-eks-kubeproxyアドオン、aws-vpc-cniアドオン) を別々にアップグレードする。
 
-> ↪️：
->
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/
 
@@ -502,8 +498,6 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png)
 
-> ↪️：
->
 > - https://dunkshoot.hatenablog.com/
 > - https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/
 
@@ -515,8 +509,6 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 : 動作が問題なければ、旧Nodeグループを削除する。
 
-> ↪️：
->
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 > - https://logmi.jp/tech/articles/323032
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
@@ -547,8 +539,6 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 : 動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterにロールバックする場合に備えて、旧Clusterは削除せずに残しておく。
 
-> ↪️：
->
 > - https://logmi.jp/tech/articles/323032
 > - https://logmi.jp/tech/articles/323033
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
@@ -697,8 +687,6 @@ spec:
           protocol: TCP
 ```
 
-> ↪️：
->
 > - https://hub.docker.com/r/paulbouwer/hello-kubernetes/
 > - https://hub.docker.com/_/nginx
 
@@ -715,8 +703,6 @@ $ kubectl debug node/<Node名> \
     --image=praqma/network-multitool
 ```
 
-> ↪️：
->
 > - https://hub.docker.com/r/praqma/network-multitool
 > - https://hub.docker.com/r/nicolaka/netshoot
 
@@ -739,8 +725,6 @@ RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープ
 
 Podの `.spec.securityContext`キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 > - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
 
@@ -760,8 +744,6 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 | GitHubリポジトリ + キーバリュー型バックエンド         |      ⭕️       | `base64`方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で暗号化した上で、リポジトリ上やCluster内でキーバリュー型バックエンド (例：SOPS、Hashicorp Vault、Secrets Store CSI Driver、External Secrets、External Secrets Operator) で管理する。kube-apiserverへの送信前に `base64`方式エンコード値に復号化する。 |
 | GitHubリポジトリ + クラウドキーバリュー型バックエンド |       ×        | `base64`方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型バックエンド (例：AWS パラメーターストア、Google SecretManager、など) で管理する。kube-apiserverへの送信前に `base64`方式エンコード値に復号化する。                                            |
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
 > - https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
 > - https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
@@ -780,7 +762,7 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 | 文法の誤りテスト             | 外部の文法の誤りテストツール ( (例：kubeconform) を使用する。Kubernetesリソースのスキーマに基づいて、マニフェストの文法の誤りを検証する。                                                                                                                                                         | - https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06                                                                                                                                                                                                                                                                     |
 | ベストプラクティス違反テスト | 外部のベストプラクティス違反テストツール (例：polaris) を使用する。報告されている脆弱性レポートに基づいて、チャートの実装方法に起因する脆弱性を検証する。                                                                                                                                         | - https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3 |
 | 非推奨apiVersionテスト       | 外部の非推奨apiVersionテストツール (例：pluto) を使用する。指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。                                                                                                                                                   | - https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically                                                                                                                                                                                                                                                |
-| 脆弱性テスト                 | 外部の脆弱性テストツール (例：kics、kube-score) を使用する。報告されている脆弱性レポートに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。補足として、Kubernetesリソースのセキュリティスキャン (例：trivy) は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。 | ↪️：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 <br>・https://zenn.dev/tayusa/articles/ad9fafa197888b                                                                                                                                                             |
+| 脆弱性テスト                 | 外部の脆弱性テストツール (例：kics、kube-score) を使用する。報告されている脆弱性レポートに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。補足として、Kubernetesリソースのセキュリティスキャン (例：trivy) は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。 | ・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 <br>・https://zenn.dev/tayusa/articles/ad9fafa197888b                                                                                                                                                             |
 
 <br>
 
@@ -917,12 +899,20 @@ Namespaceに親子関係を定義し、テナントを実装する。
 
 単一のClusterをNamespaceで分割する。
 
+#### ▼ 実行環境別
+
+実行環境別にNamespaceを分割する。
+
+ただそもそも、Namespaceだけでは実行間環境間の分割が足りないため、Cluster自体を分割した方がよい。
+
+> - https://aptakube.com/blog/namespaces-best-practices
+> - https://www.appvia.io/blog/best-practices-for-kubernetes-namespaces/
+> - https://cloud.redhat.com/blog/kubernetes-namespaces-demystified-how-to-make-the-most-of-them
+
 #### ▼ チーム別
 
 チーム別にNamespaceを分割する。
 
-> ↪️：
->
 > - https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en
 > - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
 

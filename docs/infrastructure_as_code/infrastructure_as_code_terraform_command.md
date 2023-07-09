@@ -93,8 +93,6 @@ $ terraform apply -refresh-only
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
 ```
 
-> ↪️：
->
 > - https://learn.hashicorp.com/tutorials/terraform/refresh
 > - https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
 > - https://rurukblog.com/post/terraform-refresh-onlyt/
@@ -181,8 +179,6 @@ Initializing provider plugins...
 - Installed foo/bar v2.3.0 (signed by a HashiCorp partner, key ID *****)
 ```
 
-> ↪️：
->
 > - https://spacelift.io/blog/terraform-init
 > - https://reboooot.net/post/what-is-terraform/
 > - https://www.terraform.io/cli/commands/init#usage
@@ -237,8 +233,6 @@ $ terraform init \
 $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 ```
 
-> ↪️：
->
 > - https://www.terraform.io/cli/commands/init#backend-initialization
 > - https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
 
@@ -405,8 +399,6 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 - Inframap
 - Pluralith
 
-> ↪️：
->
 > - https://gkzz.dev/posts/alternative-terraform-graph/
 > - https://dev.classmethod.jp/articles/terraform-visualise-pluralith/
 
@@ -452,8 +444,6 @@ $ terraform output -json
 }
 ```
 
-> ↪️：
->
 > - https://www.terraform.io/cli/commands/output
 > - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
 
@@ -822,8 +812,6 @@ $ terraform state rm --dry-run 'module.ec2.aws_instance.bastion["<キー名2>"]'
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
 
-> ↪️：
->
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
@@ -1106,8 +1094,6 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
 ```
 
-> ↪️：
->
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6

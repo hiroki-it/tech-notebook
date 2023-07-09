@@ -268,8 +268,6 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：
->
 > - https://www.vagrantup.com/docs/provisioning/shell
 > - https://monologu.com/vagrant-shell-provisioning/
 
@@ -329,8 +327,6 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-> ↪️：
->
 > - https://www.vagrantup.com/docs/provisioning/ansible_local
 > - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
 
@@ -380,8 +376,6 @@ end
 
 これらから、おおよそ『`RSync > NFS > SMB > VirtualBox共有ディレクトリ`』の順でパフォーマンスが良くなると考えておけばよい。
 
-> ↪️：
->
 > - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
 > - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
 

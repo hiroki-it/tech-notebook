@@ -270,8 +270,6 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat
 > - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
 > - https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible_inventory_ini
@@ -511,8 +509,6 @@ root以外であれば、`become_user`キーを設定する。
 
 任意のバージョンのパッケージをインストールする場合は、`name`キーにそれを指定し、`state`キーの値は`present`とする。
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
 > - https://qiita.com/tkit/items/7ad3e93070e97033f604
 
@@ -628,8 +624,6 @@ SELinuxを無効化する。
 
 管理対象ノードでシェルを実行する。複数行に渡る場合は、『`|`』を使用する。
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
 > - https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
 
@@ -760,8 +754,6 @@ SELinuxを無効化する。
 
 任意のバージョンのパッケージをインストールする場合は、`name`キーにそれを指定し、`state`キーの値は`present`とする。
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
 > - https://qiita.com/tkit/items/7ad3e93070e97033f604
 
@@ -791,8 +783,6 @@ SELinuxを無効化する。
 
 `gather_facts`オプションを有効化する必要がある。
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 > - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
 
@@ -838,8 +828,6 @@ task内で出力できる環境変数を設定する。
 
 設定した変数は、`ansible.builtin.template`オプションを使用して`j2`ファイルに出力できる。
 
-> ↪️：
->
 > - https://blog.katsubemakito.net/ansible/ansible-1st-4
 > - https://ksaito11.hatenablog.com/entry/2018/10/24/232929
 
@@ -868,8 +856,6 @@ task内で出力できる環境変数を設定する。
 
 コントロールノードに設定された環境変数を出力する。
 
-> ↪️：
->
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 > - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
 

@@ -111,8 +111,6 @@ spec:
 # 重要なところ以外を省略しているため、全体像はその都度確認すること。
 ```
 
-> ↪️：
->
 > - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
@@ -129,8 +127,6 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
-> ↪️：
->
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
@@ -138,8 +134,6 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
 
-> ↪️：
->
 > - https://stackoverflow.com/a/73824193
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
@@ -155,8 +149,6 @@ IngressGatewayの能力のうち、IngressGatewayで受信したインバウン�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
-> ↪️：
->
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
 
@@ -168,8 +160,6 @@ Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件�
 
 VirtualServiceの設定値は、Envoyのフロントプロキシの設定値としてIstioリソースに適用される。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
 > - https://sreake.com/blog/istio/
@@ -226,8 +216,6 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値として`istio-proxy`コンテナに適用される。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
 > - https://sreake.com/blog/istio/

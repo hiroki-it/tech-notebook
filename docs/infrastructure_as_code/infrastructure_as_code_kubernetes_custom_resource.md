@@ -39,8 +39,6 @@ CRDは、作成も変更もHelmの管理外 (`kubectl`コマンド) で作成/�
 - CRDをアップグレードした場合に、スキーマに機能廃止があると、カスタムリソースで廃止されたその機能を使用できなくなる。
 - CRD自体を誤って削除すると、これに対応するカスタムリソースも自動的に削除される。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
 
@@ -114,8 +112,6 @@ custom-controllerのチャートをインストールし、後はcustom-controll
 
 例えば『`example.com`』というグループと『`v1`』というバージョンを定義したとすると、カスタムリソースからは`example.com/v1`というAPIからコールできるようになる。
 
-> ↪️：
->
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
 > - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
 
@@ -167,8 +163,6 @@ spec:
   group: example.com
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
@@ -191,8 +185,6 @@ spec:
   scope: Namespaced
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
@@ -211,8 +203,6 @@ spec:
   scope: Cluster
 ```
 
-> ↪️：
->
 > - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
 > - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
 
@@ -231,8 +221,6 @@ spec:
   scope: Namespaced
 ```
 
-> ↪️：
->
 > - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
 > - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
 
@@ -428,8 +416,6 @@ spec:
                   type: string
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
@@ -447,8 +433,6 @@ spec:
     - storage: true
 ```
 
-> ↪️：
->
 > - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
 > - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5
 

@@ -27,8 +27,6 @@ kube-apiserverをアップグレードすると、APIグループの特定のバ
 apiVersion: v1
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/using-api/#api-groups
 > - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
 
@@ -44,8 +42,6 @@ apiVersion: v1
 
 もしバージョンの`v2`にKubernetesが対応していなければ、`v1beta1`や`v2beta2`で回避する方法がある。
 
-> ↪️：
->
 > - https://atmarkit.itmedia.co.jp/ait/articles/2008/27/news057.html
 > - https://qiita.com/tkusumi/items/cb2dc318875fbef19468
 
@@ -65,8 +61,6 @@ apiVersion: v1
 
 `.metadata.labels`キーとは異なり、設定できる情報に制約がない。
 
-> ↪️：
->
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
@@ -141,8 +135,6 @@ metadata:
     ingressclass.kubernetes.io/is-default-class: "true"
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
@@ -238,8 +230,6 @@ metadata:
     app.kubernetes.io/app: foo-deployment
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
@@ -367,8 +357,6 @@ rules: ... # 特定のKubernetesリソースの認可スコープを狭めたい
 
 ただし、kube-controllerやOperatorでは常に`--force-conflicts`オプションを実行するようになっている。
 
-> ↪️：
->
 > - https://qiita.com/superbrothers/items/aeba9406691388b6a19e
 > - https://speakerdeck.com/superbrothers/wakaru-metadata-dot-managedfields?slide=21
 > - https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management
@@ -585,8 +573,6 @@ status:
   conditions: ...
 ```
 
-> ↪️：
->
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
 > - https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485
 

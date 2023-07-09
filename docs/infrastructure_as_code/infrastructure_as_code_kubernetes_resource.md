@@ -53,8 +53,6 @@ Nodeで1つだけ稼働させる必要のあるプロセス (例：kube-proxy、
 
 こういったプロセスが稼働するコンテナは、Node内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
-> ↪️：
->
 > - https://thinkit.co.jp/article/13611
 > - https://github.com/kubernetes/kops/issues/6527#issue-413870064
 
@@ -76,8 +74,6 @@ Podの負荷に合わせてPodの自動水平スケーリングを実行しな�
 
 ただしStatefulSetとは異なり、ストレートレス (例：アプリコンテナ) なコンテナを含むPodを冗長化することに適する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 > - https://sorarinu.dev/2021/08/kubernetes_01/
 
@@ -121,8 +117,6 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 定期的に実行する場合、CronJobのテンプレートとして定義する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/workloads/controllers/job/
 > - https://qiita.com/MahoTakara/items/82853097a1911671a704
 > - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
@@ -143,8 +137,6 @@ $ kubectl create job test-job --from=cronjob/foo-cron-job -n foo
 $ kubectl delete job test-job -n foo
 ```
 
-> ↪️：
->
 > - https://zenn.dev/kennygt51/articles/2497931b8264de
 > - https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05
 > - https://serverfault.com/questions/809632/is-it-possible-to-rerun-kubernetes-job
@@ -239,8 +231,6 @@ status:
 | Succeed              | Pod内の全てのコンテナの起動が完了し、その後に正常に停止した。                                     |                                                                                                                                                                                                                                                     |
 | Unknown              | NodeとPodの間の通信に異常があり、NodeがPodから情報を取得できなかった。                            |                                                                                                                                                                                                                                                     |
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase
 > - https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98
 
@@ -281,8 +271,6 @@ status:
 | Initialized                  | 全ての`init`コンテナの起動が完了した。                                                               |
 | Ready                        | Pod全体の準備が完了した。                                                                            |
 
-> ↪️：
->
 > - https://stackoverflow.com/a/59354112
 > - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions
 
@@ -312,8 +300,6 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 - `kubectl describe nodes`コマンドで、PodがスケジューリングされているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。
 - `kubectl describe pods`コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。ContainersのLastStateの項目で、メッセージを確認できる。これは、`kubectl logs`コマンドと同じ内容である。
 
-> ↪️：
->
 > - https://sysdig.jp/blog/debug-kubernetes-crashloopbackoff/
 > - https://newrelic.com/jp/blog/how-to-relic/monitoring-kubernetes-part-three
 
@@ -385,8 +371,6 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 : Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
 
-> ↪️：
->
 > - https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
@@ -457,8 +441,6 @@ DaemonSetとは異なり、Podを指定した個数に維持管理できる。
 
 ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
 > - https://thinkit.co.jp/article/13611
 
@@ -488,8 +470,6 @@ Podが削除されてもPersistentVolumeClaimsは削除されないため、新�
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
 > - https://sorarinu.dev/2021/08/kubernetes_01/
 
@@ -545,8 +525,6 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
 > - https://thinkit.co.jp/article/18263
 > - https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
@@ -584,8 +562,6 @@ kube-proxyが更新したNode上で稼働するiptablesを使用し、またロ�
 
 ![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/service/
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5)
@@ -628,8 +604,6 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 そのため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
-> ↪️：
->
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://thinkit.co.jp/article/18263
 > - https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
@@ -718,8 +692,6 @@ Pod
 
 クラウドプロバイダー環境 (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする`L4`ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
-> ↪️：
->
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 > - https://thinkit.co.jp/article/18263
@@ -748,8 +720,6 @@ $ dig <Serviceの完全修飾ドメイン名>
 <Serviceの完全修飾ドメイン名>. 30 IN A       10.8.2.55
 ```
 
-> ↪️：
->
 > - https://thinkit.co.jp/article/13739
 > - https://hyoublog.com/2020/05/22/kubernetes-headless-service/
 
@@ -903,8 +873,6 @@ PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPers
 
 DockerのVolumeとは独立した機能であることに注意する。
 
-> ↪️：
->
 > - https://thinkit.co.jp/article/14195
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
@@ -979,8 +947,6 @@ Nodeのストレージ上にVolumeを作成し、これをコンテナにバイ�
 
 マルチNodeには対応していないため、本番環境では非推奨である。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
 > - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
@@ -990,8 +956,6 @@ Node上にVolumeを作成し、これをコンテナにバインドマウント�
 
 マルチNodeに対応している (明言されているわけではく、HostPathとの明確な違いがよくわからない) 。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/volumes/#local
 > - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
 
@@ -1062,8 +1026,6 @@ Volumes:
     Optional:  false
 ```
 
-> ↪️：
->
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 
@@ -1116,8 +1078,6 @@ $ docker inspect <コンテナID>
     }
 ```
 
-> ↪️：
->
 > - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -1131,8 +1091,6 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 
 保持期間を設定できるツール (例：Prometheus、Victoria Metrics、など) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。
 
-> ↪️：
->
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 > - https://cstoku.dev/posts/2018/k8sdojo-05/
 
@@ -1144,8 +1102,6 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 
 また、Podが削除されてもこのVolumeは削除されない。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/volumes/
 > - https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
@@ -1282,8 +1238,6 @@ $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 
 : PersistentVolumeClaimが、Podと同じゾーンのPersistentVolumeを指定できるようになる。
 
-> ↪️：
->
 > - https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
 > - https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
 
@@ -1307,8 +1261,6 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 
 ![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
@@ -1348,8 +1300,6 @@ kube-apiserverが、Kubernetesリソース (特にPod) を認証できるよう�
 
 標準のKubernetesリソースには自動的にServiceAccountが設定される。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
@@ -1374,8 +1324,6 @@ ServiceAccountは、ServiceAccount本体、service-account-controller、token-co
 
 これは、RoleBindingやClusterBindingの定義時に使用できる。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects
 > - https://knowledge.sakura.ad.jp/21129/
 
@@ -1393,8 +1341,6 @@ kube-apiserverが、クライアントを認証できるようにする。別途
 
 クライアントの認証に必要なクライアント証明書は、`~/.kube/config`ファイルに登録する必要がある。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
@@ -1411,8 +1357,6 @@ NamespacedスコープなKubernetesリソースやカスタムリソース (Name
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
@@ -1422,8 +1366,6 @@ ClusterスコープなKubernetesリソースやカスタムリソース (Namespa
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
@@ -1443,8 +1385,6 @@ ClusterRoleを、UserAccount / ServiceAccount / Groupに紐付ける。
 
 注意点として、ClusterRoleのみの紐付けに使用できる。
 
-> ↪️：
->
 > - https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
@@ -1459,8 +1399,6 @@ RoleやClusterRoleを、UserAccount / ServiceAccount / Groupに紐付ける。
 
 もしClusterRoleを紐づけた場合は、そのUserAccount / ServiceAccount / Groupは、ClusterスコープのKubernetesリソースやカスタムリソースに関する権限を得る。
 
-> ↪️：
->
 > - https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
@@ -1475,8 +1413,6 @@ RoleやClusterRoleを、UserAccount / ServiceAccount / Groupに紐付ける。
 
 Pod間通信でのインバウンド/アウトバウンド通信の送受信ルールを設定する。
 
-> ↪️：
->
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
 > - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
 

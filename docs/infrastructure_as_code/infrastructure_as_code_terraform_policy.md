@@ -870,8 +870,6 @@ crash.*.log
 
 ただし、リソースによっては`ignore_changes`引数を使えないものがある (例：SSMパラメーターストア) 。
 
-> ↪️：
->
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 > - https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9
 
@@ -983,8 +981,6 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 アップグレードガイドについては、以下のリンクを参考せよ。
 
-> ↪️：
->
 > - Terraform：https://www.terraform.io/language/upgrade-guides
 > - AWSプロバイダー：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-4-upgrade
 
@@ -1090,8 +1086,6 @@ Terraformの整形コマンド (`terraform fmt`コマンド) を使用して、�
 
 残骸のリソースが残ることがあるため、合わせてテスト環境の全てのリソースをツール (例：cloud-nuke) で削除する。
 
-> ↪️：
->
 > - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test
 

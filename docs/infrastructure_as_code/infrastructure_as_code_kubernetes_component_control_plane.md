@@ -23,8 +23,6 @@ description: コントロールプレーンコンポーネント＠Kubernetesの
 
 これは、コントロールプレーンNode上でデーモンとして直接的に常駐させる場合と、DeploymentやDaemonSetで複製されたPod内でコンテナとして常駐させる場合がある。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/overview/components/#control-plane-components
 > - https://cstoku.dev/posts/2018/k8sdojo-24/
 > - https://kubernetes.io/docs/concepts/overview/components/
@@ -40,8 +38,6 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 クライアント (`kubectl`クライアント、Kubernetesリソース) がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
 > - https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
 > - https://qiita.com/baby-degu/items/ce26507bd954621d6dc5
@@ -70,8 +66,6 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 補足として、仮想IPアドレスを管理するkeepalivedと、通信を受信して負荷分散するHAProxyを組み合わせ、`L7`ロードバランサーとして使用する多い。
 
-> ↪️：
->
 > - https://biscuit.ninja/posts/creating-a-kubernetes-cluster-using-keepalived-and-haproxy-with-ansible/
 > - https://blog.adachin.me/archives/3048
 > - https://www.opensourcetech.tokyo/entry/20200805/1596611637
@@ -124,8 +118,6 @@ Kubernetesに標準で組み込まれているが、別のOSSである。
 
 デフォルトでは、コントロールプレーンNodeで直接的に稼働させる場合でも、あるいはPod内で稼働させる場合でも、`/var/lib/etcd`ディレクトリをローカルストレージとする。
 
-> ↪️：
->
 > - https://thinkit.co.jp/article/17453
 > - https://uzimihsr.github.io/post/2019-11-25-kubernetes-components/
 > - https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
@@ -180,8 +172,6 @@ $ etcd \
 the server could not find the requested resource
 ```
 
-> ↪️：
->
 > - https://thinkit.co.jp/article/17453
 > - https://vamdemicsystem.black/kubernetes/%E3%80%90macosx%E3%80%91%E3%80%90kubernetes%E3%80%91kubectl-apply%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%80%8Cfailed-to-download-openapi-the-server-could-not-find-the-requested-resource-falling-bac
 
@@ -268,8 +258,6 @@ ServiceAccountを作成すると、Bearerトークン (『`***-***-***-***-***-*
 
 このトークンは、Kubernetes `v1.22`以降で定期的に更新されるようになった。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/security/controlling-access/#authentication
 > - https://knowledge.sakura.ad.jp/21129/
 > - https://santakalog.com/2020/02/28/k8s-architecture/
@@ -282,8 +270,6 @@ ServiceAccountを作成すると、Bearerトークン (『`***-***-***-***-***-*
 
 認証済みのServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/security/controlling-access/#authorization
 > - https://santakalog.com/2020/02/28/k8s-architecture/
 
@@ -338,8 +324,6 @@ $ kubectl get --raw /apis/autoscaling | jq .                                    
 }
 ```
 
-> ↪️：
->
 > - https://zenn.dev/bells17/scraps/81b6ade4cbd40d
 > - https://stackoverflow.com/questions/70884866/understand-capabilities-apiversions-has-in-helm
 
@@ -382,8 +366,6 @@ healthz check passed
 
 kube-apiserverには、SLIとSLOが設定されている。
 
-> ↪️：
->
 > - https://povilasv.me/kubernetes-api-server-slo-alerts-the-definitive-guide/
 > - https://github.com/kubernetes/community/tree/master/sig-scalability/slos
 
@@ -435,8 +417,6 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 : kube-apiserverは、Podの作成完了をetcdに永続化する。
 
-> ↪️：
->
 > - https://blog.vpantry.net/2020/05/k8s-5/
 > - https://medium.com/jorgeacetozi/kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler-3a0179fc8186
 
@@ -448,8 +428,6 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 標準のkube-apiserverを拡張したapiserverのこと。
 
-> ↪️：
->
 > - https://itnext.io/comparing-kubernetes-api-extension-mechanisms-of-custom-resource-definition-and-aggregated-api-64f4ca6d0966
 > - https://qiita.com/go_vargo/items/c7a526c0d4dbc9199dd4
 > - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
@@ -525,8 +503,6 @@ Kubernetesリソースのマニフェストを何らかの方法 (例：`kubectl
 
 クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のKubernetesリソースを作成/変更しているわけではないことに注意する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/architecture/controller/
 > - https://github.com/kubernetes/kubernetes/tree/master/pkg/controller
 
@@ -544,8 +520,6 @@ kube-controller-managerは、kube-controllerを反復的に実行する。
 
 ![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_reconciliation-loop.png)
 
-> ↪️：
->
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work#how_operators_reconcile_kubernetes_cluster_states
 > - https://www.oreilly.com/library/view/programming-kubernetes/9781492047094/ch01.html
 > - https://speakerdeck.com/yosshi_/korekaraxue-hukubernetesfalsereconciliation-loop?slide=27
@@ -602,8 +576,6 @@ $ kube-scheduler \
 
 ![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler_flow.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/
 > - https://techblog.ap-com.co.jp/entry/2019/06/20/191459
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node%E3%81%AE%E9%9A%94%E9%9B%A2%E3%82%84%E5%88%B6%E9%99%90

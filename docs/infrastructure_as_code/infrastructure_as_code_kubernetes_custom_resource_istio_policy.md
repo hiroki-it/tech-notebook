@@ -77,8 +77,6 @@ spec:
               exit $x
 ```
 
-> ↪️：
->
 > - https://www.kabegiwablog.com/entry/2020/08/31/224827
 > - https://github.com/istio/istio/issues/6324#issuecomment-760156652
 > - https://youtu.be/2_Nan81j03o?t=1915
@@ -111,8 +109,6 @@ LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKub
 
 NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
 
-> ↪️：
->
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/bd9ae57cc00a44810496989ec3fa34649d6c8516/manifests/charts/gateway/values.yaml#L39
 
@@ -281,8 +277,6 @@ Istioの開発プロジェクトでは、マイナーバージョンを`1`個ず
 
 そのため、マイナーバージョンを`2`個以上跨いだアップグレードを推奨していない。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/setup/upgrade/
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
