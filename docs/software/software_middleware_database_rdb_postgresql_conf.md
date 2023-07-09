@@ -123,9 +123,9 @@ log_directory = /var/lib/pgsql
 
 > ↪️：https://zatoima.github.io/postgresql-about-monitoring-log.html
 
-#### ▼ ログのローテーション
+#### ▼ ログローテーション
 
-`log_directory`オプションで設定したディレクトリ配下で、PostgreSQLは、ローテーションされたログファイルを配置する。
+`log_directory`オプションで設定したディレクトリ配下で、PostgreSQLは、ログローテーションされたログファイルを配置する。
 
 ```bash
 $ ls -la /var/lib/pgsql

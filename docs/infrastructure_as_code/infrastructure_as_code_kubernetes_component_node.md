@@ -192,7 +192,7 @@ kubeletを設定する。
       "TLS_RSA_WITH_AES_256_GCM_SHA384",
       "TLS_RSA_WITH_AES_128_GCM_SHA256",
     ],
-  # コンテナのログのローテーション閾値
+  # コンテナのログローテーションの閾値
   "containerLogMaxSize": "100Mi",
   # コンテナのログの最大世代数
   "containerLogMaxFiles": 2,
@@ -219,7 +219,7 @@ kubeletは、`5`分ごとにコンテナイメージ、`10`分ごとにコンテ
 
 kubeletは、Pod内のコンテナが標準出力に出力したログを取得し、サイズが一定量を超過するとNode上に`.zip`形式で圧縮して保管する。
 
-また、ローテーションの結果で作成されるファイルの世代数が一定数を超過すると、古い世代順に削除する。
+また、ログローテーションの結果で作成されるファイルの世代数が一定数を超過すると、古い世代順に削除する。
 
 これらは、`containerLogMaxSize`と`containerLogMaxFiles`で設定できる。
 

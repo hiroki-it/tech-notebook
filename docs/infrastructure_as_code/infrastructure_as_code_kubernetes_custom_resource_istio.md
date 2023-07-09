@@ -307,7 +307,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 <br>
 
-### SSL証明書のローテーション
+### SSL証明書の自動更新
 
 #### ▼ Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合
 
@@ -317,7 +317,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 `discovery`コンテナは、秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
 
-KubernetesリソースにSSL証明書を提供しつつ、これを定期的にローテーションする。
+KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。
 
 > ↪️：
 >
@@ -332,7 +332,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) を使用する�
 
 外部中間認証局は、秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
 
-KubernetesリソースにSSL証明書を提供しつつ、これを定期的にローテーションする。
+KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。
 
 > ↪️：
 >

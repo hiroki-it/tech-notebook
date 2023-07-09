@@ -117,9 +117,9 @@ KMSのアクセス制限を設定する。
 
 <br>
 
-### キーローテーション
+### キー自動更新
 
-暗号化キーのキーマテリアルを一定期間で自動的にローテーションする。
+暗号化キーのキーマテリアルを一定期間で自動的に更新する。
 
 ![kms_key_rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
 
