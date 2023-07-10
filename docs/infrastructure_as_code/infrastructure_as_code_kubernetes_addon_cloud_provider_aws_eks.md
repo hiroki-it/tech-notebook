@@ -23,8 +23,6 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html
 > - https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9
 
@@ -182,8 +180,6 @@ aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカ�
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 
-> ↪️：
->
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
@@ -223,8 +219,6 @@ L-IPAMは、NodeのAWS ENIに紐づけられたセカンダリープライベー
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
 
-> ↪️：
->
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
@@ -284,8 +278,6 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 | `WARM_PREFIX_TARGET`                    |                                                                                                      | `1`                                                                              |
 | `WARM_IP_TARGET`                        | AWS EC2/FargateワーカーNodeが`1`個あたりで余分に確保するIPアドレス数を設定する。                     | `2`                                                                              |
 
-> ↪️：
->
 > - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
 > - https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address

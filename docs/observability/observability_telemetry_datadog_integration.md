@@ -37,8 +37,6 @@ Datedogエージェントが稼働する言語/フレームワーク/ツール�
 
 ログの作成元に合わせて、プロセッサーのセットが組み込まれたパイプラインを提供してくれる。
 
-> ↪️：
->
 > - https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#integration-pipelines
 > - https://docs.datadoghq.com/integrations/#cat-log-collection
 

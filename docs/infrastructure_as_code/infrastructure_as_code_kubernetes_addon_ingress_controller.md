@@ -27,8 +27,6 @@ Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
 
-> ↪️：
->
 > - https://cloud.google.com/community/tutorials/nginx-ingress-gke
 > - https://developers.freee.co.jp/entry/kubernetes-ingress-controller
 > - https://www.containiq.com/post/kubernetes-ingress
@@ -43,8 +41,6 @@ Ingressコントローラーは、Secretに設定されたSSL証明書を参照�
 
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 
-> ↪️：
->
 > - https://blog.sakamo.dev/post/ingress-nginx/
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
 
@@ -62,8 +58,6 @@ Ingressコントローラーは、『`***-controller-admission`』というServi
 
 その後、『`***-patch`』というJob配下のPodが、ValidatingWebhookConfigurationにこのSSL証明書を設定し、webhookサーバーにSSL証明書が割り当てられる。
 
-> ↪️：
->
 > - https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration
 > - https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks
 > - https://blog.sakamo.dev/post/ingress-nginx/
@@ -85,8 +79,6 @@ Ingressコントローラーには種類があり、コントローラーごと�
 | Istio Ingressコントローラー                                   | Istio IngressGateway               |    ✅    |    ✅    |
 | ...                                                           | ...                                |   ...    |   ...    |
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 > - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/

@@ -51,8 +51,6 @@ PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行され�
 
 ![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_fastcgi.png)
 
-> ↪️：
->
 > - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
 > - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_component.html
 

@@ -82,8 +82,6 @@ datadogエージェントを設定する。 `/etc/datadog-agent`ディレクト�
 
 datadogエージェントをインストールすると、`datadog.yaml.example`ファイルが作成されるため、これをコピーして作成する。
 
-> ↪️：
->
 > - https://app.datadoghq.com/account/settings#agent
 > - https://docs.datadoghq.com/getting_started/agent/#configuration
 > - https://docs.datadoghq.com/agent/guide/agent-configuration-files/
@@ -172,8 +170,6 @@ datadogエージェントにデフォルトで内蔵されている設定をそ�
 [{"name": "datadog", "image": "public.ecr.aws/datadog/agent:latest"}]
 ```
 
-> ↪️：
->
 > - https://gallery.ecr.aws/datadog/agent
 > - https://github.com/DataDog/datadog-agent
 

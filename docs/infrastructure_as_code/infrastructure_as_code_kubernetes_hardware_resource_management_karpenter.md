@@ -29,8 +29,6 @@ karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 ![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
-> ↪️：
->
 > - https://sreake.com/blog/learn-about-karpenter/
 > - https://blog.inductor.me/entry/2021/12/06/165743
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
@@ -48,8 +46,6 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 ![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
-> ↪️：
->
 > - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
 > - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html

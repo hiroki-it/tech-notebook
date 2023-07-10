@@ -127,8 +127,6 @@ spec:
   action: ALLOW
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/security/authorization-policy/
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
@@ -182,8 +180,6 @@ data:
           - authorization
 ```
 
-> ↪️：
->
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
@@ -220,8 +216,6 @@ spec:
             methods: ["GET"]
 ```
 
-> ↪️：
->
 > - https://istiobyexample-ja.github.io/istiobyexample/authorization/
 > - https://istio.io/latest/docs/concepts/security/#dependency-on-mutual-tls
 > - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview#best_practices
@@ -251,8 +245,6 @@ spec:
           values: ["<JWTの発行元の識別子 (issuer)>"]
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/security/authorization-policy/
 > - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview#best_practices
 > - https://openid-foundation-japan.github.io/draft-ietf-oauth-json-web-token-11.ja.html#issDef
@@ -279,8 +271,6 @@ spec:
       app: foo-pod
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/security/authorization-policy/
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
@@ -366,8 +356,6 @@ spec:
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
 > - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
 > - https://blog.1q77.com/2020/03/istio-part3/
@@ -422,8 +410,6 @@ spec:
         maxConnections: 100
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
 > - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
 
@@ -497,8 +483,6 @@ spec:
               "<リージョン名>/<ゾーン名>/*": 30
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
 > - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/
 
@@ -685,8 +669,6 @@ spec:
             "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager"
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass
@@ -749,8 +731,6 @@ spec:
 
 VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに適用される。
 
-> ↪️：
->
 > - https://sreake.com/blog/istio/
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/
@@ -1085,8 +1065,6 @@ spec:
       jwksUri: https://example.com/.well-known/jwks.json
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
@@ -1108,8 +1086,6 @@ spec:
       app: istio-ingressgateway
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
@@ -1327,8 +1303,6 @@ HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウ�
 
 ルーティング先のServiceを厳格に指定するために、Serviceの`.spec.ports.appProtocol`キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
 
@@ -1417,8 +1391,6 @@ spec:
 
 再試行する失敗理由を設定する。`istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
 
-> ↪️：
->
 > - https://sreake.com/blog/istio/
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 
@@ -1486,8 +1458,6 @@ spec:
 
 IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングされる。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 > - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
 

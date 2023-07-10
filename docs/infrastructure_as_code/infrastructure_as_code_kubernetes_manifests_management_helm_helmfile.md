@@ -480,8 +480,6 @@ environments:
       - values-{{ .Environment.Name }}.yaml # values.yaml.gotmplファイルに値を渡すvaluesファイル
 ```
 
-> ↪️：
->
 > - https://helmfile.readthedocs.io/en/latest/#environment-values
 > - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
 > - https://zenn.dev/johnmanjiro13/articles/3f12eeda0762b9#%E7%8B%AC%E8%87%AA%E3%81%AEhelm-chart%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6helmfile%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B

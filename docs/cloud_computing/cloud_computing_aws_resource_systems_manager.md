@@ -172,7 +172,7 @@ SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmess
 
 TLS、Sigv4、KMSを使用して暗号化された接続のこと。
 
-> ↪️：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
 
 <br>
 

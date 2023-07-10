@@ -156,8 +156,6 @@ func main() {
 }
 ```
 
-> ↪️：
->
 > - https://opentelemetry.io/docs/instrumentation/go/manual/
 > - https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
@@ -248,8 +246,6 @@ func main() {
 }
 ```
 
-> ↪️：
->
 > - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
 

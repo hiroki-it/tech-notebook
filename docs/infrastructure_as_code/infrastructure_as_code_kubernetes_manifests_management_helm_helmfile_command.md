@@ -105,8 +105,6 @@ NAME                CHART                VERSION
 foo-release         ./charts/foo         0.0.1
 ```
 
-> ↪️：
->
 > - https://helmfile.readthedocs.io/en/latest/#apply
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
@@ -157,8 +155,6 @@ helm-diffプラグインでは、前回のHelmリリースと、今回の`helm u
 $ helmfile -e dev diff
 ```
 
-> ↪️：
->
 > - https://helmfile.readthedocs.io/en/latest/#diff
 > - https://github.com/databus23/helm-diff#helm-diff-plugin
 

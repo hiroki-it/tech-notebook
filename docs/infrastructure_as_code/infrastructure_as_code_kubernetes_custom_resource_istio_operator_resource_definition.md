@@ -62,8 +62,6 @@ $ kubectl apply -f istio-operator.yaml
 istiooperator.install.istio.io/istio-operator created
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 > - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
@@ -77,8 +75,6 @@ istiooperator.install.istio.io/istio-operator created
 $ helm install <リリース名> manifests/charts/istio-operator -n istio-operator --version <バージョンタグ>
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/setup/install/operator/#deploy-the-istio-operator
 > - https://tech.griphone.co.jp/2020/12/12/istio-operator-101/
 
@@ -108,8 +104,6 @@ metadata:
 
 IstioOperator管理でIstioリソースを作成する。
 
-> ↪️：
->
 > - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 > - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
 
@@ -155,8 +149,6 @@ baseコンポーネントのオプションを設定する。
 
 baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
 
-> ↪️：
->
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://github.com/istio/istio/issues/22491#issuecomment-604745090
 
@@ -255,8 +247,6 @@ spec:
 
 補足として、以下の方法でユーザー定義のIngressGatewayを作成できる (かなり大変) 。
 
-> ↪️：
->
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 > - https://github.com/istio/istio/issues/23303
 
@@ -445,8 +435,6 @@ Istiodコントロールプレーンをカナリアリリースを使用して�
 
 バージョンの表記方法がハイフン繋ぎであることに注意する。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 > - https://istio.io/latest/docs/setup/upgrade/canary/
 
@@ -468,8 +456,6 @@ spec:
 
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
-> ↪️：
->
 > - https://hub.docker.com/r/istio/proxyv2/tags
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
 

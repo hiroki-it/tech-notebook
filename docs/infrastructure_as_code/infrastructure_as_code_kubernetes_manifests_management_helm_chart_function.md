@@ -29,8 +29,6 @@ description: アクション＠チャートの知見を記録しています。
 {{- $domain := "https://{{ .Values.serviceName }}.argocd.com" }}
 ```
 
-> ↪️：
->
 > - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
 > - https://kb.novaordis.com/index.php/Helm_Variables
 
@@ -67,8 +65,6 @@ description: アクション＠チャートの知見を記録しています。
 url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 ```
 
-> ↪️：
->
 > - https://stackoverflow.com/a/57600807
 > - https://stackoverflow.com/a/67886552
 
@@ -156,8 +152,6 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 
 加工内容はパラメーターで設定できる。
 
-> ↪️：
->
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
 
@@ -171,8 +165,6 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 
 `template`関数では出力内容を変数に格納できないため、これが可能な`include`関数が推奨されている。
 
-> ↪️：
->
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da
 
@@ -544,8 +536,6 @@ data:
   {{- end }}
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/chart_template_guide/function_list/#fromyaml
 > - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
 > - https://stackoverflow.com/a/62832814
@@ -866,8 +856,6 @@ spec:
                 name: foo-secret
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
 > - https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017
 
@@ -913,8 +901,6 @@ baz:
 
 ただし基本的には、`-}}`は使用しない方が良いらしい。
 
-> ↪️：
->
 > - https://github.com/helm/helm/issues/4191#issuecomment-539149037
 > - https://racchai.hatenablog.com/entry/2016/05/24/070000
 
@@ -954,8 +940,6 @@ baz:
     bar: BAR
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/chart_template_guide/function_list/#indent
 > - https://www.skyarch.net/blog/?p=16660#28
 
@@ -996,8 +980,6 @@ baz:
     bar: BAR
 ```
 
-> ↪️：
->
 > - https://www.skyarch.net/blog/?p=16660#29
 > - https://helm.sh/docs/chart_template_guide/function_list/#nindent
 
@@ -1031,8 +1013,6 @@ foo:
 {{- end }}
 ```
 
-> ↪️：
->
 > - https://lzone.de/blog/Helm-template-check-if-key-exists
 > - https://helm.sh/docs/chart_template_guide/function_list/#haskey
 
@@ -1117,8 +1097,6 @@ data:
 {{- end }}
 ```
 
-> ↪️：
->
 > -
 > - https://helm.sh/docs/chart_template_guide/function_list/#file-functions
 > - https://helm.sh/docs/chart_template_guide/accessing_files/

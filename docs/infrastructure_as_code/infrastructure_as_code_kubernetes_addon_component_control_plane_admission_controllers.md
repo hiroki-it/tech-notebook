@@ -21,8 +21,6 @@ description: admission-controllers＠コントロールプレーンアドオン�
 
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png)
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 > - https://knowledge.sakura.ad.jp/21129/
 > - https://www.sobyte.net/post/2022-07/k8s-auth/
@@ -41,8 +39,6 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 
-> ↪️：
->
 > - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
 > - https://www.digihunch.com/2022/01/kubernetes-admission-control/
 > - https://gashirar.hatenablog.com/entry/2020/10/31/141357
@@ -92,8 +88,6 @@ Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionW
 
 SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行することにより、Configurationへの挿入は`patch`コマンドを実行することで実現している。
 
-> ↪️：
->
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch
 > - https://tokibi.hatenablog.com/entry/2020/01/07/150359
@@ -112,8 +106,6 @@ webhookサーバーから返信されたAdmissionReviewを含むレスポンス�
 
 ![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png)
 
-> ↪️：
->
 > - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 > - https://medium.com/ibm-cloud/diving-into-kubernetes-mutatingadmissionwebhook-6ef3c5695f74
 
@@ -171,8 +163,6 @@ webhooks:
             - <エイリアス>
 ```
 
-> ↪️：
->
 > - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 
@@ -230,8 +220,6 @@ webhooks:
       caBundle: Ci0tLS0tQk...
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 > - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
 > - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
@@ -318,8 +306,6 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 }
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
 > - https://tokibi.hatenablog.com/entry/2020/01/07/150359
 > - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
@@ -363,8 +349,6 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
 ]
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
 > - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 > - https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225
@@ -404,8 +388,6 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 }
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
 > - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 

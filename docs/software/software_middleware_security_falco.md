@@ -27,8 +27,6 @@ description: Falco＠セキュリティ系ミドルウェアの知見を記録�
 
 Falco自体は、デーモンやDaemonSet配下のPodとして稼働させる。
 
-> ↪️：
->
 > - https://www.designet.co.jp/ossinfo/kubernetes/falco/
 > - https://sysdig.jp/blog/sysdig-contributes-falco-kernel-ebpf-cncf-2/
 > - https://gihyo.jp/admin/column/newyear/2022/cloudnative-prospect

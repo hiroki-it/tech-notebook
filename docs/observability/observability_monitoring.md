@@ -373,11 +373,14 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 #### ▼ `runitor`パッケージ
 
-`curl`コマンドの代わりとして`runitor`パッケージを使用すると、標準出力/標準エラー出力の内容を人間がわかりやすいように整形してくれる。
+`curl`コマンドの代わりとしてRunitorを使用すると、標準出力/標準エラー出力の内容を人間がわかりやすいように整形してくれる。
+
+Runitorを使わない場合、Cronの標準出力/標準エラー出力の内容をそのままhealthchecks.ioに送信することになる。
 
 ```bash
-# ジョブをCronを使用して実装する場合
-# 最後にhealthchecks.ioのエンドポイントをコールする。
+# -api-url：healthchecks.ioのエンドポイント
+# -uuid：healthchecks.ioのID
+# --：cronの実行
   8 6 * * * /usr/local/bin/runitor -api-url https://hc-ping.com/ping -uuid <healthchecksのID> -- /foo-cron.sh
 ```
 

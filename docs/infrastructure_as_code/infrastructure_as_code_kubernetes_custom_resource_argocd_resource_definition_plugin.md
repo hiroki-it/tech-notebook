@@ -173,8 +173,6 @@ lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-server -> /usr/local/bin/ar
 lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bin/entrypoint.sh
 ```
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
 > - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
@@ -186,8 +184,6 @@ $ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-
     | grep version=
 ```
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/blob/main/Dockerfile#L58-L62
 > - https://github.com/argoproj/argo-cd/blob/main/hack/tool-versions.sh
 
@@ -328,8 +324,6 @@ Flags:
       --otlp-address string      OpenTelemetry collector address to send traces to
 ```
 
-> ↪️：
->
 > - https://thedatabaseme.de/2022/12/02/enhanced-with-plugins-make-argocd-more-powerful-with-plugins-running-as-sidecar/
 > - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml#L17305-L17567
 > - https://argocd-operator.readthedocs.io/en/latest/usage/config_management_2.0/
@@ -402,8 +396,6 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 
 なお、ConfigManagementPluginはカスタムリソースではないため、CRDは不要である。
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
 
@@ -632,8 +624,6 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️：
->
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#adding-tools-via-volume-mounts
 > - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
@@ -674,8 +664,6 @@ data:
             helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV template
 ```
 
-> ↪️：
->
 > - https://github.com/travisghansen/argo-cd-helmfile#installation
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
@@ -830,8 +818,6 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️：
->
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#using-initcontainers
@@ -951,8 +937,6 @@ data:
             fi
 ```
 
-> ↪️：
->
 > - https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 
@@ -1240,8 +1224,6 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️：
->
 > - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
 > - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
 > - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
@@ -1298,8 +1280,6 @@ spec:
 
 Vaultを使用できるように、Vaultをインストールする。
 
-> ↪️：
->
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 
@@ -1339,8 +1319,6 @@ data:
             helm template $ARGOCD_ENV_HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
-> ↪️：
->
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 

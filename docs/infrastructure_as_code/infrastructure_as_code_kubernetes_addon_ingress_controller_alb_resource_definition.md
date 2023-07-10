@@ -31,8 +31,6 @@ AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キ
 
 AWS ALBをリスナールール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
 
-> ↪️：
->
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
 
@@ -51,8 +49,6 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:<AWSアカウントID>:certificate/*****
 ```
 
-> ↪️：
->
 > - https://nobelabo.hatenablog.com/entry/2022/10/01/201138
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/
 

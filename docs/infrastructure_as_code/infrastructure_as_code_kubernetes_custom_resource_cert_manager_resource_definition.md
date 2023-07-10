@@ -39,8 +39,6 @@ $ helm install <リリース名> <チャートリポジトリ名>/cert-manager -
 
 証明書自体は、紐づくSecretに割り当てられる。
 
-> ↪️：
->
 > - https://cert-manager.io/docs/concepts/certificate/
 > - https://zenn.dev/masaaania/articles/e54119948bbaa2#issuer
 
@@ -140,8 +138,6 @@ spec:
 
 秘密鍵から、証明書署名要求 (`.csr`ファイル) を作成する。
 
-> ↪️：
->
 > - https://cert-manager.io/docs/concepts/certificaterequest/
 > - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate
 

@@ -67,8 +67,6 @@ RootのApplication名が重複している場合、たとえNamespaceが異な�
 
 ちなみに、ClusterスコープのArgoCDに限り、`spec.sourceNamespaces`キーを使用して、この重複を許可できる。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/issues/9420
 > - https://github.com/argoproj/argo-cd/issues/2352
 > - https://github.com/argoproj/argo-cd/issues/2785
@@ -253,8 +251,6 @@ data:
   url: <URL>
 ```
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
 > - https://dexidp.io/docs/connectors/github/#configuration
@@ -291,8 +287,6 @@ data:
   url: <URL>
 ```
 
-> ↪️：
->
 > - https://dexidp.io/docs/connectors/github/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
@@ -343,8 +337,6 @@ data:
 
 ArgoCDの各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
 
@@ -365,8 +357,6 @@ data:
   application.namespaces: "<Applicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
 ```
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#change-workload-startup-parameters
 > - https://github.com/argoproj/argo-cd/issues/11638#issuecomment-1357963028
 
@@ -462,8 +452,6 @@ data:
 
 ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐付ける。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
 
@@ -482,8 +470,6 @@ Casbinの記法を使用して、ロールと認可スコープを定義しつ�
 | `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<Namespace名>/<Kubernetesリソースの識別名>` | ロールとArgoCD系リソースの認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
 | `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                  |
 
-> ↪️：
->
 > - https://stackoverflow.com/a/73784100
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure
 > - https://github.com/argoproj/argo-cd/blob/master/assets/model.conf
@@ -532,8 +518,6 @@ data:
   scopes: "[groups]"
 ```
 
-> ↪️：
->
 > - https://krrrr.hatenablog.com/entry/2022/01/23/201700
 > - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
@@ -647,8 +631,6 @@ data:
   scopes: "[groups]"
 ```
 
-> ↪️：
->
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
@@ -687,8 +669,6 @@ data:
   scopes: "[email]"
 ```
 
-> ↪️：
->
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 
@@ -748,8 +728,6 @@ ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフ�
 
 このConfigMapは、そのためのユーザー定義のSSL証明書を管理する。
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 

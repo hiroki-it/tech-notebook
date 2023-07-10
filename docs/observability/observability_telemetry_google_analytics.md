@@ -21,8 +21,6 @@ description: Googleアナリティクス＠テレメトリー収集ツールの�
 
 Webページのローディング時に、非同期通信を使用してGoogleのCollection-APIにメトリクスを送信する。送信されたデータは、Googleアナリティクスコンソールから確認できる。
 
-> ↪️：
->
 > - https://developers.google.com/analytics/devguides/collection/gtagjs
 > - https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
 

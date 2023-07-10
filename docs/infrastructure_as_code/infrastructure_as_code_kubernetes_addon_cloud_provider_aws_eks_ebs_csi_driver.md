@@ -49,8 +49,6 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 }
 ```
 
-> ↪️：
->
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon#example-usage
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html
 
@@ -112,8 +110,6 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 }
 ```
 
-> ↪️：
->
 > - https://kubernetes.io/docs/concepts/storage/storage-classes/
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
 
@@ -147,8 +143,6 @@ $ helm repo update
 $ helm install <リリース名> <リポジトリ名>/aws-ebs-csi-driver -n kube-system --version=<バージョンタグ>
 ```
 
-> ↪️：
->
 > - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver
 > - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md#helm
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB

@@ -43,8 +43,6 @@ login <ユーザー名>
 password <パスワード>
 ```
 
-> ↪️：
->
 > - https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
 > - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
 
@@ -326,8 +324,6 @@ and the repository exists.
 
 そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。
 
-> ↪️：
->
 > - https://qiita.com/kohashi/items/f4a50c5436b326e9475b
 > - https://blog.kyanny.me/entry/2020/07/04/172905
 

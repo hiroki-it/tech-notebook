@@ -142,8 +142,6 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 $ pluto detect-files - -o wide
 ```
 
-> ↪️：
->
 > - https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
 > - https://qiita.com/wadason/items/c9d5f6a475bf7764fc9d#%E6%A4%9C%E8%A8%BC
 

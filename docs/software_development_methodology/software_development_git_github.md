@@ -209,8 +209,6 @@ Gitでソフトウェアを開発する場合、役割を持たせたブラン�
 
 ![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png)
 
-> ↪️：
->
 > - https://github.com/Voronenko/gitflow-release
 > - https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
 
@@ -411,8 +409,6 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 プルリクエスト上に『Resolve conflicts』ボタンが出現し、ここからコンフリクトを修正できる。
 
-> ↪️：
->
 > - https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github
 > - https://qiita.com/Kto_pi/items/4fd6bdec72e852763315
 

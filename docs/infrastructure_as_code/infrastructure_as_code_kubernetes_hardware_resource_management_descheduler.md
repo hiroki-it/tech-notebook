@@ -33,8 +33,6 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に再�
 
 ![descheduler_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
 
-> ↪️：
->
 > - https://sreake.com/blog/kubernetes-descheduler/
 > - https://torumakabe.github.io/post/k8s_descheduler/
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8>

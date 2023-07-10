@@ -23,8 +23,6 @@ OpenTelemetryを導入することにより、テレメトリーごとに異な�
 
 ![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png)
 
-> ↪️：
->
 > - https://opentelemetry.io/docs/
 > - https://dzone.com/refcardz/getting-started-with-opentelemetry
 
@@ -62,8 +60,6 @@ OTelクライアントパッケージからのテレメトリーデータを、�
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
-> ↪️：
->
 > - https://www.logicmonitor.com/blog/what-is-an-otel-collector
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 

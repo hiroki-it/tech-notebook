@@ -79,8 +79,6 @@ OSI参照モデルは、物理層 (`L1`) 、データリンク層 (`L2`) 、ネ�
 
 : パケットをHTTPリクエストとして送信する。
 
-> ↪️：
->
 > - https://www.infraexpert.com/study/networking3.html
 > - https://www.infraexpert.com/study/networking4.html
 > - https://www.n-study.com/network-architecture/osi-communication-flow/

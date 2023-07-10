@@ -31,8 +31,6 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
-> ↪️：
->
 > - https://speakerdeck.com/bells17/metrics-server?slide=20>
 > - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base>
 > - https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server
@@ -47,8 +45,6 @@ ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド
 
 データポイントはローカルストレージに保管している。
 
-> ↪️：
->
 > - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html>
 > - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58>
 
@@ -262,8 +258,6 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
-> ↪️：
->
 > - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 > - https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/
 
@@ -309,8 +303,6 @@ Deploymentのレプリカ数よりも、HorizontalPodAutoscalerが優先され�
 
 HorizontalPodAutoscalerを使用する場合、Deploymentのレプリカ数の設定を削除する。
 
-> ↪️：
->
 > - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
 > - https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets
 
@@ -322,8 +314,6 @@ HorizontalPodAutoscalerを使用する場合、Deploymentのレプリカ数の�
 
 Podの垂直スケーリングを実行する。
 
-> ↪️：
->
 > - https://ccvanishing.hateblo.jp/entry/2018/10/02/203205>
 > - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
 
@@ -338,8 +328,6 @@ Podの垂直スケーリングを実行する。
 | マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値 (例：`.spec.containers[].resources[].resizePolicy`キー) を追加する。 |
 | eBPFによるインプレース変更       | ハードウェアリソースの不足が検知された時に、eBPFを使用して、Podのマニフェストを変更するJSONPatch処理をフックする。            |
 
-> ↪️：
->
 > - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12>
 > - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet>
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode>

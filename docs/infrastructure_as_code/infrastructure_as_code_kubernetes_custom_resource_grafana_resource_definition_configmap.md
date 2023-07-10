@@ -97,8 +97,6 @@ data:
           timeInterval: 30s
 ```
 
-> ↪️：
->
 > - https://grafana.com/grafana/plugins/prometheus/
 > - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
 
@@ -152,8 +150,6 @@ data:
           defaultRegion: ap-northeast-1
 ```
 
-> ↪️：
->
 > - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#provision-the-data-source
 > - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/query-editor/#common-query-editor-fields
 
@@ -165,8 +161,6 @@ data:
 
 Grafanaの`grafana.ini`ファイルを管理する。
 
-> ↪️：
->
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location
 > - https://www.server-world.info/query?os=CentOS_Stream_9&p=grafana
 
@@ -461,8 +455,6 @@ data:
     ` }}
 ```
 
-> ↪️：
->
 > - https://www.grugrut.net/posts/202008032123/
 > - https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
 
@@ -567,8 +559,6 @@ data:
 
 またその他に、kubernetes-mixinsも同時にインストールするようになっている。
 
-> ↪️：
->
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 > - https://monitoring.mixins.dev
 
@@ -1000,8 +990,6 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
     }}
 ```
 
-> ↪️：
->
 > - https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top
 > - https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p
 > - https://qiita.com/prodigy413/items/c0c2304e1bc28f644526
@@ -1146,8 +1134,6 @@ data:
 
 ただ出力時にHelm起因のエラーが多発するため、自分はこれを不採用とした。
 
-> ↪️：
->
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 > - https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
 
@@ -1286,8 +1272,6 @@ Istio関連のコミュニティダッシュボードを使用する場合は、
 │   │
 ```
 
-> ↪️：
->
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
 
@@ -1393,8 +1377,6 @@ data:
 
 ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーション、など) を表示できる。
 
-> ↪️：
->
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method
 > - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
 
@@ -1404,8 +1386,6 @@ data:
 
 ダッシュボードは、REDメトリクスを表示できる。
 
-> ↪️：
->
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#red-method
 > - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
 
@@ -1477,8 +1457,6 @@ data:
 | `Istio Workload Dashboard`       | Istioの任意のカスタムリソース         |                                                                               |
 | `Istio Service Dashboard`        | IstioのVirtualService                 | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
 > - https://github.com/istio/istio/tree/master/manifests/addons/dashboards
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#viewing-the-istio-dashboard

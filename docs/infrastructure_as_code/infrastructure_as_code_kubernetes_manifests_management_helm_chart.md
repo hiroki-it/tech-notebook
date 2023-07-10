@@ -85,8 +85,6 @@ Helmのバージョンを設定する。
 apiVersion: v2
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/topics/charts/#the-apiversion-field
 > - https://helm.sh/docs/topics/v2_v3_migration/
 
@@ -106,8 +104,6 @@ Kubernetes上で稼働するアプリケーションのリリースバージョ�
 appVersion: <バージョンタグ>
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/topics/charts/#the-appversion-field
 > - https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/templates/_common.tpl#L38
 

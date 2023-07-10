@@ -326,8 +326,6 @@ metadata:
 
 IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
-> ↪️：
->
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
 > - https://moneyforward-dev.jp/entry/2021/12/19/irsa/
@@ -384,8 +382,6 @@ OIDC、SAML、によって発行されたユーザーに委譲できる。
 
 OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 

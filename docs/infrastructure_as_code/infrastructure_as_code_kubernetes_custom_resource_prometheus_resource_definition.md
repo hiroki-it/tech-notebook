@@ -59,16 +59,12 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> ↪️：
->
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 > - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 > - https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
 
 他のインストール方法と名前が似ていることに注意する。
 
-> ↪️：
->
 > - https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart
 > - https://stackoverflow.com/questions/54422566/what-is-the-difference-between-the-core-os-projects-kube-prometheus-and-promethe
 
@@ -629,8 +625,6 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 
 独自アラートルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたアラートルール (例：kubernetes-mixins) を使用した方が良い。
 
-> ↪️：
->
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 > - https://monitoring.mixins.dev/
 
@@ -662,8 +656,6 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 | CommonAnnotations | map型    | `.CommonAnnotations.summary`                                                      | 全てのアラートに共通するアノテーションが割り当てられている。`.spec.groups[].rules[].labels`キー配下で設定したユーザー定義のアノテーションも含む。                                                         |
 | ExternalURL       | string型 | `.ExternalURL`                                                                    | AlertmangerのURLが割り当てられている。                                                                                                                                                                    |
 
-> ↪️：
->
 > - https://www.amazon.co.jp/dp/4910313001
 > - https://prometheus.io/docs/alerting/latest/notifications/
 > - https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/
@@ -784,8 +776,6 @@ Prometheusは、Podから直接的にデータポイントを収集できるが�
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 
-> ↪️：
->
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
@@ -958,8 +948,6 @@ metadata:
     app.kubernetes.io/app: foo-service
 ```
 
-> ↪️：
->
 > - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 > - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
 

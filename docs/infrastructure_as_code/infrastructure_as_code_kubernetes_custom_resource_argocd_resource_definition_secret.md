@@ -52,8 +52,6 @@ argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジト
 
 なお、パブリックリポジトリの場合は、argocd-repo自体が不要である。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repositories.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
@@ -179,8 +177,6 @@ data:
 
 ただし、ポーリングする複数のプライベートなチャートリポジトリが、全て`1`個のチャートレジストリ内にある場合は、Secretは`1`個でよい。
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
@@ -242,8 +238,6 @@ OCIプロトコルの有効化 (`data.enableOCI`キー) が必要であるが、
 
 ただし、ポーリングする複数のリポジトリが、全て`1`個のOCIレジストリ内にある場合は、Secretは`1`個でよい。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
@@ -297,8 +291,6 @@ data:
 
 AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 > - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
 > - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
@@ -318,8 +310,6 @@ argocd-repoとは異なり、`1`個の認証情報で複数にリポジトリに
 
 なお、パブリックリポジトリの場合は、argocd-repo-creds自体が不要である。
 
-> ↪️：
->
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
@@ -591,8 +581,6 @@ data:
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
 > - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
 
@@ -683,8 +671,6 @@ cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been config
 
 もしタイムアウトになる場合、kube-apiserverのIPアドレスのアクセス制限に引っ掛かっていないかを確認する。
 
-> ↪️：
->
 > - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 > - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
 

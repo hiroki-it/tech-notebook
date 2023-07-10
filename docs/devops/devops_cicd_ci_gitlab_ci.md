@@ -224,6 +224,20 @@ gemerate_template:
 
 <br>
 
+### services
+
+メイン実行環境とは別のサブ実行環境を作成するため、イメージ名を設定する。
+
+```yaml
+foo_job:
+  services: docker:19-dind
+```
+
+> - https://www.ted027.com/post/gitlabci-services-host/
+> - https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example
+
+<br>
+
 ### stage
 
 Jobが属するステージを設定する。

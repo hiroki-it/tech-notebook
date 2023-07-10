@@ -96,8 +96,6 @@ Secretの元となるデータを管理するバックエンドとして、以�
 - SOPS
 - vals
 
-> ↪️：
->
 > - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
 > - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
 
@@ -115,8 +113,6 @@ zendesk製を使用している場合、SOPSの`secrets`ファイルの名前を
 
 一方でjkeroepke製では、執筆時点 (2022/11/29) で、`secrets`ファイルの名前が任意である。
 
-> ↪️：
->
 > - https://github.com/zendesk/helm-secrets#usage-and-examples
 > - https://github.com/jkroepke/helm-secrets/wiki/Usage
 
