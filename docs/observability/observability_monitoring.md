@@ -359,28 +359,34 @@ OSI参照モデルのいずれのレイヤーまでの動作を確認するか�
 
 ジョブの実装方法としては、例えばUnixのCronがある。
 
-ジョブの最後に、ジョブの標準出力/標準エラー出力の内容を含むリクエストを実行する。
+#### ▼ Healthchecks.io
 
-ジョブの開始から最後のリクエストまでが、一定の時間内に完了するか否かを確認する。
+Cronの処理結果を監視する。
+
+ジョブの最後に、ジョブの標準出力/標準エラー出力の内容をHealthchecks.ioに送信する。
+
+これにより、ジョブの開始から最後のリクエストまでが、一定の時間内に完了するか否かを確認する。
 
 ```bash
-# ジョブをCronを使用して実装する場合
-# 最後にhealthchecks.ioのエンドポイントをコールする。
+# Cronの実行結果をHealthchecks.ioに直接的に送信する場合
+
   8 6 * * * /foo-cron.sh && curl -fsS --retry 5 -o /dev/null https://hc-ping.com/ping/<healthchecksのID>
 ```
 
 > - https://healthchecks.io/docs/monitoring_cron_jobs/
 
-#### ▼ `runitor`パッケージ
+#### ▼ Healthchecks.io と Runitor
 
 `curl`コマンドの代わりとしてRunitorを使用すると、標準出力/標準エラー出力の内容を人間がわかりやすいように整形してくれる。
 
 Runitorを使わない場合、Cronの標準出力/標準エラー出力の内容をそのままhealthchecks.ioに送信することになる。
 
 ```bash
+# Runitorを介して、Cronの実行結果をHealthchecks.
+
 # -api-url：healthchecks.ioのエンドポイント
 # -uuid：healthchecks.ioのID
-# --：cronの実行
+# --：ジョブの実行
   8 6 * * * /usr/local/bin/runitor -api-url https://hc-ping.com/ping -uuid <healthchecksのID> -- /foo-cron.sh
 ```
 
