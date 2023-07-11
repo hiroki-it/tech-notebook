@@ -754,6 +754,8 @@ $ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" | \
 
 指定したKubernetesリソースの情報でユーザー定義のカラムで取得する。
 
+カスタムリソースの情報をいい感じに取得する時に役立つ。
+
 **＊例＊**
 
 Serviceの指定した情報をユーザー定義のカラムで取得する。
@@ -769,6 +771,21 @@ kubernetes-dashboard   10.0.0.250   9090
 ```
 
 > - https://stackoverflow.com/a/43521302
+
+**＊例＊**
+
+Applicationの指定した情報をユーザー定義のカラムを取得する。
+
+```bash
+$ kubectl get application\
+    -n foo \
+    -o custom-columns='Name:metadata.name,Project:spec.project,Status:status.sync.status'
+
+Name              Project        Status
+foo-application   foo-project    Synced
+bar-application   bar-project    OutOfSync
+baz-application   baz-project    OutOfSync
+```
 
 #### ▼ -o jsonpath
 
