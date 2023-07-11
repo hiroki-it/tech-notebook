@@ -556,7 +556,9 @@ $ kubectl edit statefulset foo-statefulset
 
 #### ▼ execとは
 
-指定したPod内のコンテナでコマンドを実行する。
+指定したPod内のコンテナのシェルを実行し、コンテナにログインする。
+
+注意点として、シェルのないコンテナ (distroless型など) はそもそもシェルを実行できないため、ログインもできない。
 
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
@@ -794,6 +796,17 @@ NAME               PROJECT        STATUS
 foo-application    foo-project    Synced
 bar-application    bar-project    OutOfSync
 baz-application    baz-project    Unknown
+```
+
+**＊例＊**
+
+`kubectl`コマンドの結果をマークダウンの表にして出力する。
+
+```bash
+$ kubectl get application \
+    -n foo \
+    -o custom-columns='NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status' \
+    | awk 'BEGIN {FS="  *"; OFS=" | "} { if(NR==1) { for(i=1; i<=NF; i++) { gsub(/ */, "", $i); printf "| %s ", $i } print "|\n" ; for(i=1; i<=NF; i++) { gsub(/./, "-", $i); printf "|-%s-", $i } print "|" } else { for(i=1; i<=NF; i++) { printf "| %s ", $i } print "|" } }'
 ```
 
 #### ▼ -o custom-columns-file
