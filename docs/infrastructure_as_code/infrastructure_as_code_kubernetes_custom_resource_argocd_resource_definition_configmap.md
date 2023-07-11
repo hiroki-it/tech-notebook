@@ -33,6 +33,70 @@ ArgoCDの各コンポーネントで共通する値を設定する。
 
 <br>
 
+### exec
+
+#### ▼ exec.enabled
+
+Exec機能を有効化する。
+
+`kubectl exec`コマンドのようにして、ArgoCDのダッシュボード上からコンテナにログインできる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  exec.enabled: true
+```
+
+argocd-serverに紐づけるClusterRoleでは、Podの`exec`リソースと`create`アクションを許可する必要がある。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  namespace: argocd
+  name: argocd-server
+  labels:
+    app.kubernetes.io/part-of: argocd
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods/exec
+    verbs:
+      - create
+```
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/#enabling-the-terminal
+> - https://qiita.com/tkusumi/items/300c566a74b6b64e7e89#rbac%E3%81%A7%E3%81%AE%E6%A8%A9%E9%99%90%E8%A8%AD%E5%AE%9A
+
+#### ▼ exec.enabled
+
+全てのコンテナにExecできるわけではなく、ArgoCDが対応しているシェルでログインできるコンテナにのみ、Execが可能である。
+
+ログイン時に使用できるシェルを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  exec.shells: bash,sh,powershell,cmd
+```
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/#changing-allowed-shells
+
+<br>
+
 ### application.instanceLabelKey
 
 #### ▼ application.instanceLabelKeyとは
