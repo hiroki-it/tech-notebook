@@ -25,7 +25,7 @@ $ brew install jq
 
 <br>
 
-## 01-02. オプション
+## 02. オプション
 
 ### 例で使うJSON
 
@@ -93,7 +93,7 @@ $ cat data.json | jq '.baz[]' | jq -s
 
 <br>
 
-## 01-03. フィルタリング
+## 03. フィルタリング
 
 ### パス指定によるフィルタリング
 
@@ -218,7 +218,7 @@ $ cat list.json | jq '.[] | select (.foo == "FOO" or .foo == "BAZ")' | jq -s '.'
 
 <br>
 
-## 01-04. 結合
+## 04. 結合
 
 ### join
 
@@ -233,5 +233,43 @@ FOO BAR BAZ
 ```
 
 > - https://stackoverflow.com/questions/63238759/replace-n-with-space-in-jq-query-command-output-without-tr-and-sed-commands
+
+<br>
+
+## 05. 変換
+
+### text
+
+text形式に変換する。
+
+```bash
+cat list.json | jq '. | @text'
+```
+
+> - https://jqlang.github.io/jq/manual
+
+<br>
+
+### tsv
+
+tsv形式 (タブ切り) に変換する。
+
+```bash
+cat list.json | jq '. | @text'
+```
+
+> - https://jqlang.github.io/jq/manual
+
+<br>
+
+### csv
+
+csv形式 (カンマ切り) に変換する。
+
+```bash
+cat list.json | jq '. | @text'
+```
+
+> - https://jqlang.github.io/jq/manual
 
 <br>
