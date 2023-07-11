@@ -401,7 +401,8 @@ $ kubectl delete pod foo-pod
 指定した名前のPodを全て削除する。
 
 ```bash
-$ kubectl delete pod -n foo $(kubectl get pod --no-headers -o custom-columns=":metadata.name" -n foo | grep '<指定した名前>'  | tr -s '\n' ' ')
+$ kubectl delete pod -n foo \
+    $(kubectl get pod --no-headers -o custom-columns=":metadata.name" -n foo | grep '<指定した名前>'  | tr -s '\n' ' ')
 ```
 
 #### ▼ --force
@@ -749,34 +750,25 @@ $ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" | \
     uniq -c
 ```
 
-#### ▼ -o yaml
+#### ▼ -o custom-columns
 
-指定したKubernetesリソースの設定を取得し、`yaml`形式で出力する。
+指定したKubernetesリソースの情報でユーザー定義のカラムで取得する。
 
 **＊例＊**
 
-指定したSecretを`yaml`形式で取得する。
-
-正規表現と同様に、一部の文字列ではエスケープする必要がある。
+Serviceの指定した情報をユーザー定義のカラムで取得する。
 
 ```bash
-$ kubectl get secret <Secret名> -o yaml
+$ kubectl get service \
+    -n kube-system \
+    -o custom-columns='NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort'
+
+NAME                   IP           PORT
+kube-dns               10.0.0.10    53,53
+kubernetes-dashboard   10.0.0.250   9090
 ```
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  creationTimestamp: "2021-12-00T00:00:00Z"
-  name: swp-secret
-  namespace: default
-  resourceVersion: "18329"
-type: Opaque
-data:
-  FOO: ***** # base64方式のエンコード値
-  BAR: *****
-  BAZ: *****
-```
+> - https://stackoverflow.com/a/43521302
 
 #### ▼ -o jsonpath
 
@@ -878,6 +870,35 @@ foo-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 bar-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
 baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
 # qux-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0 # セルフマネージドなコントロールプレーンNodeを使用する場合
+```
+
+#### ▼ -o yaml
+
+指定したKubernetesリソースの設定を取得し、`yaml`形式で出力する。
+
+**＊例＊**
+
+指定したSecretを`yaml`形式で取得する。
+
+正規表現と同様に、一部の文字列ではエスケープする必要がある。
+
+```bash
+$ kubectl get secret <Secret名> -o yaml
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: "2021-12-00T00:00:00Z"
+  name: swp-secret
+  namespace: default
+  resourceVersion: "18329"
+type: Opaque
+data:
+  FOO: ***** # base64方式のエンコード値
+  BAR: *****
+  BAZ: *****
 ```
 
 #### ▼ -l

@@ -35,6 +35,10 @@ ArgoCDの各コンポーネントで共通する値を設定する。
 
 ### exec
 
+#### ▼ execとは
+
+ArgoCDのExec機能を設定する。
+
 #### ▼ exec.enabled
 
 Exec機能を有効化する。
