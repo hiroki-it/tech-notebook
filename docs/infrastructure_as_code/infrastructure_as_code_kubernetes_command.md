@@ -788,12 +788,12 @@ Applicationの指定した情報をユーザー定義のカラムを取得する
 ```bash
 $ kubectl get application \
     -n foo \
-    -o custom-columns='Name:metadata.name,Project:spec.project,Status:status.sync.status'
+    -o custom-columns="NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status"
 
-Name              Project        Status
-foo-application   foo-project    Synced
-bar-application   bar-project    OutOfSync
-baz-application   baz-project    OutOfSync
+NAME               PROJECT        STATUS
+foo-application    foo-project    Synced
+bar-application    bar-project    OutOfSync
+baz-application    baz-project    Unknown
 ```
 
 #### ▼ -o custom-columns-file
@@ -806,17 +806,17 @@ Applicationの指定した情報をユーザー定義のカラムを取得する
 
 ```bash
 $ cat columns-file
-Name:metadata.name,Project:spec.project,Status:status.sync.status
+NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status
 
 
 $ kubectl get application \
     -n foo \
     -o custom-columns-file=columns-file
 
-Name              Project        Status
-foo-application   foo-project    Synced
-bar-application   bar-project    OutOfSync
-baz-application   baz-project    OutOfSync
+NAME               PROJECT        STATUS
+foo-application    foo-project    Synced
+bar-application    bar-project    OutOfSync
+baz-application    baz-project    Unknown
 ```
 
 > - https://kubernetes.io/docs/reference/kubectl/#formatting-output
