@@ -465,7 +465,7 @@ $ apt-get update -y \
 
 `【２】`
 
-: Dockerの公式GPGキーを追加する。
+: Docker公式の提供するGPGキーを追加する。
 
 ```bash
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -

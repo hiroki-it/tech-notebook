@@ -1143,7 +1143,11 @@ KSOPSを使用できるように、KSOPSをインストールする。
 
 KSOPSはコンテナイメージがあるため、軽量のInitContainerを用意するのではなく、KSOPSのコンテナイメージを使用する。
 
-ArgoCDにデフォルトで組み込まれているKustomizeのバージョンの場合、これをインストールする必要はない。
+このコンテナイメージには、SOPSのGoバイナリが内蔵されている。
+
+ArgoCDにデフォルトで組み込まれているKustomizeのバージョンの場合、Kustomizeをインストールする必要はない。
+
+> - https://github.com/viaduct-ai/kustomize-sops/blob/v4.2.1/Makefile#L29-L30
 
 **＊実装例＊**
 
