@@ -255,7 +255,7 @@ cat list.json | jq '. | @text'
 tsv形式 (タブ切り) に変換する。
 
 ```bash
-cat list.json | jq '. | @text'
+cat list.json | jq '. | @tsv'
 ```
 
 > - https://jqlang.github.io/jq/manual
@@ -267,7 +267,7 @@ cat list.json | jq '. | @text'
 csv形式 (カンマ切り) に変換する。
 
 ```bash
-cat list.json | jq '. | @text'
+cat list.json | jq '. | @csv'
 ```
 
 > - https://jqlang.github.io/jq/manual
