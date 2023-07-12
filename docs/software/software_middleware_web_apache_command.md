@@ -64,7 +64,9 @@ $ apachectl -t
 > - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
-$ httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
+$ httpd -t -D DUMP_CONFIG 2>/dev/null \
+    | grep "# In" \
+    | awk "{print $4}"
 ```
 
 <br>

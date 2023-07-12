@@ -746,10 +746,10 @@ $ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
 全てのPodのイメージをアルファベット順で取得する。
 
 ```bash
-$ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" | \
-    tr -s '[[:space:]]' '\n' | \
-    sort | \
-    uniq -c
+$ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" \
+    | tr -s '[[:space:]]' '\n' \
+    | sort \
+    | uniq -c
 ```
 
 #### ▼ -o custom-columns
@@ -805,8 +805,8 @@ baz-application    baz-project    Unknown
 ```bash
 $ kubectl get application \
     -n foo \
-    -o custom-columns='NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status' \
-    | awk '
+    -o custom-columns='NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status' \ | 
+    awk '
       BEGIN {
         FS="  *"
         OFS=" | "
@@ -1316,9 +1316,9 @@ PersistentVolumeの設定値を変更する。
 
 ```bash
 $ kubectl get pv \
-    | tail -n+2 \
-    | awk '{print $1}' \
-    | xargs -I{} kubectl patch pv {} -p '{"metadata":{"finalizers": null}}'
+    |  tail -n+2 \
+    |  awk '{print $1}' \
+    |  xargs -I{} kubectl patch pv {} -p '{"metadata":{"finalizers": null}}'
 ```
 
 <br>
