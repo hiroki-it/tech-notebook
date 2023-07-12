@@ -806,7 +806,30 @@ baz-application    baz-project    Unknown
 $ kubectl get application \
     -n foo \
     -o custom-columns='NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status' \
-    | awk 'BEGIN {FS="  *"; OFS=" | "} { if(NR==1) { for(i=1; i<=NF; i++) { gsub(/ */, "", $i); printf "| %s ", $i } print "|\n" ; for(i=1; i<=NF; i++) { gsub(/./, "-", $i); printf "|-%s-", $i } print "|" } else { for(i=1; i<=NF; i++) { printf "| %s ", $i } print "|" } }'
+    | awk '
+      BEGIN {
+        FS="  *"
+        OFS=" | "
+      }
+      {
+        if (NR==1) {
+          for(i=1; i<=NF; i++) {
+            gsub(/ */, "", $i)
+            printf "| %s ", $i
+          }
+          print "|"
+          for(i=1; i<=NF; i++) {
+            gsub(/./, "-", $i)
+            printf "|-%s-", $i
+          }
+          print "|"
+        } else {
+          for(i=1; i<=NF; i++) {
+            printf "| %s ", $i
+          }
+          print "|"
+        }
+      }'
 ```
 
 #### ▼ -o custom-columns-file
