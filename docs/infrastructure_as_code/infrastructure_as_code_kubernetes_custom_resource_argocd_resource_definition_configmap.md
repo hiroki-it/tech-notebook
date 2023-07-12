@@ -125,6 +125,16 @@ data:
 
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
 
+#### ▼ ラベル挿入のタイミング
+
+`argocd.argoproj.io/instance`ラベルの挿入は、application-controllerが実行する。
+
+そのため挿入のタイミングは、マニフェスト作成のタイミングではなく、Syncの直前である。
+
+ConfigMapやSecretのファイル変更に合わせてチェックサム値を更新するようなロジックがチャートあったとしても、repo-serverがマニフェスト作成時に`argocd.argoproj.io/instance`ラベルを挿入するわけではないので、チェックサム値は変更にならない。
+
+> - https://github.com/argoproj/argo-cd/blob/master/controller/sync.go#L246
+
 #### ▼ RootのApplication名の重複
 
 単一のClusterでNamespaceスコープのArgoCDを構築している時、RootのApplicationを`default`というAppProjectに配置すると、この問題が起こる可能性がある。
