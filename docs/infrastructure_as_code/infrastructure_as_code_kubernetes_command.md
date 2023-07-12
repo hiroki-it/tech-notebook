@@ -805,8 +805,8 @@ baz-application    baz-project    Unknown
 ```bash
 $ kubectl get application \
     -n foo \
-    -o custom-columns='NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status' \ | 
-    awk '
+    -o custom-columns='NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status' \
+    | awk '
       BEGIN {
         FS="  *"
         OFS=" | "
@@ -830,6 +830,76 @@ $ kubectl get application \
           print "|"
         }
       }'
+```
+
+複数の結果をマージして、マークダウンの表にして出力する。
+
+```bash
+#!/bin/bash
+
+# 各Applicationを全て抽出する。
+kubectl get application \
+  -n foo \
+  -o custom-columns='NAME:metadata.name,PROJECT:spec.project' >| foo.txt
+
+kubectl get application \
+  -n bar \
+  -o custom-columns='NAME:metadata.name,PROJECT:spec.project' >| bar.txt
+
+kubectl get application \
+  -n baz \
+  -o custom-columns='NAME:metadata.name,PROJECT:spec.project' >| baz.txt
+
+# ヘッダーを削除する。
+tail -n +2 foo.txt >| foo-without-header.txt
+tail -n +2 bar.txt >| bar-without-header.txt
+tail -n +2 baz.txt >| baz-without-header.txt
+
+# ソートする。
+# 後述のuniqコマンドでは、隣り合う重複しか削除できないため、ここでソートしておく。
+cat foo-without-header.txt bar-without-header.txt baz-without-header.txt \
+  | sort >| sorted.txt
+
+# 並び替える。
+cat sorted.txt \
+  | uniq >| uniq.txt
+
+# ヘッダーをつけ直す。
+echo 'Application Project' >| merged.txt
+
+# ヘッダーとそれ移行を接続する
+cat uniq.txt >> merged.txt
+
+# マークダウン表として出力する。
+cat merged.txt | awk '
+      BEGIN {
+        FS="  *"
+        OFS=" | "
+      }
+      {
+        if (NR==1) {
+          for(i=1; i<=NF; i++) {
+            gsub(/ */, "", $i)
+            printf "| %s ", $i
+          }
+          print "|"
+          for(i=1; i<=NF; i++) {
+            gsub(/./, "-", $i)
+            printf "|-%s-", $i
+          }
+          print "|"
+        } else {
+          for(i=1; i<=NF; i++) {
+            printf "| %s ", $i
+          }
+          print "|"
+        }
+      }' >| merged.md
+
+
+# 場合によっては、他のフォーマットに変換する
+# 例えばWiki記法の表に変換する
+md2confl merged.md >| merged.wiki
 ```
 
 #### ▼ -o custom-columns-file
