@@ -650,8 +650,6 @@ const postMessageToSlack = (message) => {
 };
 ```
 
-> ↪️：
->
 > - https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 > - https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js
 

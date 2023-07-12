@@ -448,8 +448,6 @@ Helmの単体テストコマンド (`helm test`コマンド) を使用して、�
 
 そのため、`helm upgrade`コマンドでインストールされるHelmリリースにテストコードも含まれてしまうことに注意する。
 
-> ↪️：
->
 > - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 > - https://camunda.com/blog/2022/03/test/
 
@@ -504,8 +502,6 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 これは、CDパイプライン上で実施しても良いが、デメリットとして`helm upgrade`コマンドで出力される警告ログを確認できなくなってしまう。
 
-> ↪️：
->
 > - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 > - https://camunda.com/blog/2022/03/test/
 > - https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test

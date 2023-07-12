@@ -130,8 +130,6 @@ data:
           - clusterissuers.cert-manager.io/bar
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-CertificateData
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/#deploy-istio-with-default-cert-signer-info
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
@@ -146,8 +144,6 @@ Istioの全てのコンポーネントに適用する変数のデフォルト値
 
 各Podで個別に設定したい場合、`.metadata.annotations.proxy.istio.io/config.configPath`キーにオプションを設定する。
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
 
@@ -288,8 +284,6 @@ data:
           address: "jaeger-collector.observability:9411"
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/mesh-and-proxy-config/#available-tracing-configurations
 > - https://istio.io/latest/docs/ops/integrations/jaeger/
 > - https://istio.io/latest/docs/ops/integrations/zipkin/#option-2-customizable-install
@@ -345,8 +339,6 @@ spec:
             paths: ["/login"]
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1

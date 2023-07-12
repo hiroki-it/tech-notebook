@@ -43,8 +43,6 @@ description: 認証＠認証/認可の知見を記録しています。
 
 `Cookie`ヘッダーによる送受信では、CSRFの危険性がある。
 
-> ↪️：
->
 > - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 > - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
@@ -137,8 +135,6 @@ Chromeの場合は、Cookieストレージに保持される。
 
 確認方法については、以下のリンクを参考にせよ。
 
-> ↪️：
->
 > - https://developer.chrome.com/docs/devtools/storage/cookies/
 > - https://qiita.com/cobachan/items/05fa537a4ffcb189d001
 

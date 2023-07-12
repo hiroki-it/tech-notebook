@@ -73,8 +73,6 @@ tinc: /usr/share/doc/tinc/tinc.html/zlib.html
 zlib1g-dev: /usr/include/zlib.h
 ```
 
-> ↪️：
->
 > - https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
 > - https://embedded.hatenadiary.org/entry/20081101/p3
 
@@ -322,8 +320,6 @@ Linuxで使用できるパッケージを管理する。
 
 最新バージョンしか管理できず、以前のバージョンを管理できない。
 
-> ↪️：
->
 > - https://docs.brew.sh/FAQ#how-do-i-keep-old-versions-of-a-formula-when-upgrading
 > - https://christina04.hatenablog.com/entry/install-old-version-with-homebrew
 

@@ -105,8 +105,6 @@ RUN mkdir -p /usr/src/things \
   && make -C /usr/src/things all
 ```
 
-> ↪️：
->
 > - https://qiita.com/zembutsu/items/a96b68277d699f79418d
 > - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles/44
 
@@ -273,8 +271,6 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 ホスト側からはアクセスできないことに注意する。
 
-> ↪️：
->
 > - https://docs.docker.com/engine/reference/builder/#expose
 > - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
@@ -374,8 +370,6 @@ FROM --platform=linux/amd64 python:latest-slim
 
 ボリュームマウントを行う。
 
-> ↪️：
->
 > - https://docs.docker.com/engine/reference/builder/#volume
 > - https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d
 

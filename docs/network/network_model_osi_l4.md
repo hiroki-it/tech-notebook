@@ -91,8 +91,6 @@ Unixで使用されるソケットのこと。
 
 ![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
 
-> ↪️：
->
 > - https://en.wikipedia.org/wiki/Unix_domain_socket
 > - https://ascii.jp/elem/000/001/415/1415088/
 > - https://blog.bnikka.com/server/unix-socket.html

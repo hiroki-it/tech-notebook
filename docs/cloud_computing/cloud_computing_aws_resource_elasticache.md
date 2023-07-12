@@ -62,10 +62,7 @@ RedisとMemcachedがある。
 
 `1`個のリクエストを処理するグループ単位である。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
-
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Clusters
 
 #### ▼ クラスターモード

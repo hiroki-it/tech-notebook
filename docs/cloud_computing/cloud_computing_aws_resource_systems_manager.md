@@ -137,8 +137,6 @@ KMSの暗号化キーを使用すると、パラメーターストアに永続�
 
 ![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png)
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
 > - https://note.com/hamaa_affix_tech/n/n02eb412d0327
 > - https://tech.libry.jp/entry/2020/09/17/130042
@@ -161,8 +159,6 @@ SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmess
 
 接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
 
-> ↪️：
->
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
 > - https://blog.denet.co.jp/aws-systems-manager-session-manager/
 

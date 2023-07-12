@@ -138,8 +138,6 @@ JavaScriptのビルトイン関数である。
 
 JQueryパッケージである。
 
-> ↪️：
->
 > - https://api.jquery.com/category/ajax/shorthand-methods/
 > - https://api.jquery.com/jquery.ajax
 

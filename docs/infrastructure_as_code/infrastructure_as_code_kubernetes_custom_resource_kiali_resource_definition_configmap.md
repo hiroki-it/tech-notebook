@@ -248,7 +248,9 @@ data:
 
 ### login_token
 
-記入中...
+認証に必要なアクセストークンを設定する。
+
+定期的に自動更新される (デフォルトだと`24`時間) ため、デプロイツール (例：ArgoCD) ではアクセストークンの差分を無視した方がよい。
 
 ```yaml
 apiVersion: v1
@@ -262,6 +264,8 @@ data:
       expiration_seconds: 86400
       signing_key: *****
 ```
+
+> - https://kiali.io/docs/configuration/authentication/session-configs/
 
 <br>
 

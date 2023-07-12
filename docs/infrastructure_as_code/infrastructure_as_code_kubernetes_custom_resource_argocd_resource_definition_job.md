@@ -54,8 +54,6 @@ Jobに、ArgoCDの`Sync`フェーズを設定する。
 | PostSync | Syncの後             | ヘルスチェック                                     |
 | SyncFail | Syncの失敗時         | Sync失敗の残骸となったKubernetesリソースの削除処理 |
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
 
@@ -134,8 +132,6 @@ metadata:
     argocd.argoproj.io/sync-wave: 1 # 優先度1
 ```
 
-> ↪️：
->
 > - https://weseek.co.jp/tech/95/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
 

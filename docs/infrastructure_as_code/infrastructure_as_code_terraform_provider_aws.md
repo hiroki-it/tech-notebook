@@ -1361,8 +1361,6 @@ DBクラスターでは、レプリケーションのために、`3`個のAZが�
 
 Terraformがこれを認識しないように、`ignore_changes`引数でAZを指定しておく必要がある。
 
-> ↪️：
->
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
 > - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
 > - https://github.com/hashicorp/terraform-provider-aws/issues/1111
@@ -1401,8 +1399,6 @@ Auroraでは、クラスターにインスタンスを1つだけ紐付けると�
 
 AZのマップデータに対して`for_each`引数を使用することにより、各AZに最低1つのインスタンスを配置するように設定できる。
 
-> ↪️：
->
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 > - https://github.com/hashicorp/terraform/issues/5333
 
