@@ -480,7 +480,12 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 ArgoCDのアップグレードでは、ArgoCD自身が動くClusterと、デプロイ先Clusterの両方のバージョンを考慮する必要がある。
 
-これは、ArgoCDのrepo-serverとapplication-controllerのgitops-engineの両方で、client-goパッケージを使用しているためである。
+ArgoCDのコンポーネントのうちで、argocd-serverはclient-goパッケージを使用して、自身が動くClusterのkube-apiserverと通信する。
+
+一方で、application-controllerも同様にclient-goパッケージ (gitops-engineがこれを持つ) を使用して通信する。
+
+> - https://github.com/argoproj/argo-cd/blob/master/go.mod#L94
+> - https://github.com/argoproj/gitops-engine/blob/master/go.mod#L17
 
 ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3sを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。
 

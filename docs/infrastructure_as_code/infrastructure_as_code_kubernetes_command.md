@@ -800,7 +800,6 @@ baz-application    baz-project    Unknown
 
 **＊例＊**
 
-
 `kubectl`コマンドの結果をマークダウンの表にして出力する。
 
 ```bash

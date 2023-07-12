@@ -19,9 +19,63 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 ArgoCDで任意のツールを使用する。
 
-復号化した変数をSecretのデータとして注入するようなツール (helm-secrets、argocd-vault-plugin、KSOPS) を使用する場合が多い。
+ArgoCDの仕様上、一部のツール (Helmfile、helmプラグイン、argocd-vault-plugin、など) はサイドカーでプラグインとして実行する必要がある。
 
 そのため、これらのツールを使用せずにSecretにデータを注入する場合、プラグインは採用しなくとも良い。
+
+<br>
+
+### デフォルトツール
+
+執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など)
+をApplicationのオプションとして実行できるようになっている。
+
+すなわち、これらのrepo-serverはこれらのツールを実行できる。
+
+`/usr/local/bin`ディレクトリ配下でバイナリを確認できる。
+
+```bash
+argocd@repo-server:/usr/local/bin] $ ls -la /usr/local/bin
+total 193408
+drwxr-xr-x 1 root root       224 Mar 23 15:11 .
+drwxr-xr-x 1 root root        17 Mar  8 02:05 ..
+-rwxr-xr-x 1 root root 138527528 Mar 23 15:11 argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-application-controller -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-applicationset-controller -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-cmp-server -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-dex -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-k8s-auth -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-notifications -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-repo-server -> /usr/local/bin/argocd
+lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-server -> /usr/local/bin/argocd
+-rwxr-xr-x 1 root root       205 Mar 23 14:41 entrypoint.sh
+-rwxr-xr-x 1 root root       934 Mar 23 14:41 git-verify-wrapper.sh
+-rwxr-xr-x 1 root root       215 Mar 23 14:41 gpg-wrapper.sh
+-rwxr-xr-x 1 root root  45125632 Mar 23 14:44 helm
+-rwxr-xr-x 1 root root  14381056 Mar 23 14:44 kustomize
+lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bin/entrypoint.sh
+```
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+> - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
+> - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
+
+各ツールの推奨バージョンは、以下のコマンドで取得できる。
+
+```bash
+$ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-versions.sh \
+    | grep version=
+```
+
+> - https://github.com/argoproj/argo-cd/blob/main/Dockerfile#L58-L62
+> - https://github.com/argoproj/argo-cd/blob/main/hack/tool-versions.sh
+
+`tool-version.sh`ファイルで定義した変数は、`install.sh`ファイルで出力されている。
+
+Dockerfile上で`install.sh`ファイルを実行し、ツールをインストールしている。
+
+> - https://github.com/argoproj/argo-cd/blob/master/Dockerfile#L31-L32
+> - https://github.com/argoproj/argo-cd/blob/master/hack/install.sh#L26
 
 <br>
 
@@ -148,57 +202,18 @@ argocd@cmp-server:/usr/local/bin] $ ls -la
 ...
 ```
 
-補足として、執筆時点 (2023/04/22) では、argocd系コマンドやいくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など)
-がrepo-serverのコンテナイメージにあらかじめインストールされている。
-
-```bash
-argocd@repo-server:/usr/local/bin] $ ls -la /usr/local/bin
-total 193408
-drwxr-xr-x 1 root root       224 Mar 23 15:11 .
-drwxr-xr-x 1 root root        17 Mar  8 02:05 ..
--rwxr-xr-x 1 root root 138527528 Mar 23 15:11 argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-application-controller -> /usr/local/bin/argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-applicationset-controller -> /usr/local/bin/argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-cmp-server -> /usr/local/bin/argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-dex -> /usr/local/bin/argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-k8s-auth -> /usr/local/bin/argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-notifications -> /usr/local/bin/argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-repo-server -> /usr/local/bin/argocd
-lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-server -> /usr/local/bin/argocd
--rwxr-xr-x 1 root root       205 Mar 23 14:41 entrypoint.sh
--rwxr-xr-x 1 root root       934 Mar 23 14:41 git-verify-wrapper.sh
--rwxr-xr-x 1 root root       215 Mar 23 14:41 gpg-wrapper.sh
--rwxr-xr-x 1 root root  45125632 Mar 23 14:44 helm
--rwxr-xr-x 1 root root  14381056 Mar 23 14:44 kustomize
-lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bin/entrypoint.sh
-```
-
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
-> - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
-> - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
-
-各ツールの推奨バージョンは、以下のコマンドで取得できる。
-
-```bash
-$ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-versions.sh \
-    | grep version=
-```
-
-> - https://github.com/argoproj/argo-cd/blob/main/Dockerfile#L58-L62
-> - https://github.com/argoproj/argo-cd/blob/main/hack/tool-versions.sh
-
 #### ▼ サイドカーを配置
 
 プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
 
 argo-reposerverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
 
-ArgoCD公式の方針で、デフォルトで組み込まれているツール (Helmなど) のプラグイン (helm-secrets、Helmfile、など) を使う場合は、サイドカーでこのプラグインのバイナリを持たないといけない。
+ArgoCD公式ではサイドカーのベースイメージが用意されていない。
+
+サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) とするかを選ぶことができ、いくつかのツール (
+例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。
 
 このとき、事前準備として`argocd`コマンドをコピーするためのInitContainerが必要である。
-
-サイドカーで使用するベースイメージがArgoCDのコンテナイメージではなく、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) の場合、いくつかのツール (
-例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。
 
 ```yaml
 apiVersion: v1
@@ -349,9 +364,6 @@ ConfigManagementPluginで、マニフェスト作成時の追加処理を設定�
 
 argocd-cmp-cmの`.data.configManagementPlugins`キーで設定することは非推奨である。
 
-補足として、執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など)
-をApplicationのオプションとして実行できるようになっており、これらはConfigManagementPluginで処理を定義する必要はない。
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -439,6 +451,8 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 ## 02. Helmとの連携
 
+repo-serverはHelmを実行できるため、これのサイドカーは不要である。
+
 デフォルトでArgoCDにインストールされているHelmの推奨バージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。
 
 Helmを使用できるように、Helmをインストールする。
@@ -493,6 +507,12 @@ spec:
 <br>
 
 ## 03. Helmfileとの連携
+
+### Helmfileの実行方法
+
+repo-serverはHelmfileを実行できず、サイドカーが必要である。
+
+<br>
 
 ### セットアップ
 
@@ -697,6 +717,12 @@ spec:
 <br>
 
 ## 04. helmプラグインとの連携
+
+### helmプラグインの実行方法
+
+repo-serverはhelmプラグインを実行できず、サイドカーが必要である。
+
+<br>
 
 ### セットアップ
 
@@ -1032,6 +1058,10 @@ spec:
 
 ## 06. Kustomize
 
+### Kustomizeの実行方法
+
+repo-serverはKustomizeを実行できるため、これのサイドカーは不要である。
+
 ### セットアップ
 
 #### ▼ Kustomizeのインストール
@@ -1134,6 +1164,12 @@ spec:
 <br>
 
 ## 07. KSOPS
+
+### KSOPSの実行方法
+
+repo-serverはKSOPSを実行できる (`kustomize`コマンドで`--enable-alpha-plugins`オプションを有効化するだけのため) ため、これのサイドカーは不要である。
+
+<br>
 
 ### セットアップ
 
@@ -1277,6 +1313,12 @@ spec:
 <br>
 
 ## 08. Vaultとの連携
+
+### Vaultの実行方法
+
+repo-serverはVaultを実行できず、サイドカーが必要である。
+
+<br>
 
 ### セットアップ
 
