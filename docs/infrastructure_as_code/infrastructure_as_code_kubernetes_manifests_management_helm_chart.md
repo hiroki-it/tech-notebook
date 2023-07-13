@@ -266,9 +266,13 @@ version: <バージョンタグ>
 
 ```yaml
 {{- define "global.template.labels" }}
+# リリース名
 app.kubernetes.io/instance: {{ .Release.Name }}
+# ツール名 (v2ならTiller、v3ならHelm)
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+# チャートバージョン
+app.kubernetes.io/version: {{ .Chart.AppVersion }}
+# チャート名
 helm.sh/chart: {{ .Chart.Name }}
 {{- end }}
 ```

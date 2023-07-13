@@ -705,6 +705,15 @@ v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/app":"foo-pod"
 
 デプロイメントの方法を設定する。
 
+以下のタイミングでDeploymentはPodを再デプロイする。
+
+| 箇所                                | 説明                                                             |
+| ----------------------------------- | ---------------------------------------------------------------- |
+| `.spec.replicas`キー                | Podのレプリカ数を変更すると、DeploymentはPodを再デプロイする。   |
+| `spec.template`キー配下の任意のキー | Podテンプレートを変更した場合、DeploymentはPodを再デプロイする。 |
+
+> - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
+
 #### ▼ Recreate
 
 インプレースデプロイメントを使用して、新しいPodを作成する。
@@ -733,6 +742,10 @@ spec:
 #### ▼ RollingUpdate
 
 ローリングアップデートを使用して、新しいPodを作成する。
+
+ダウンタイムなしでPodを入れ替えられる。
+
+> - https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/
 
 ```yaml
 apiVersion: apps/v1
@@ -770,7 +783,7 @@ spec:
 
 #### ▼ templateとは (設定項目はPodと同じ)
 
-Deploymentで維持管理するPodのテンプレートを設定する。
+Deploymentで維持管理するPodテンプレートを設定する。
 
 設定項目はPodと同じである。
 

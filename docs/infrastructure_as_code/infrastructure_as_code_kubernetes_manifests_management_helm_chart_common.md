@@ -25,11 +25,11 @@ Helmが設定してくれるため、開発者が設定する必要はない。
 
 ### 種類
 
-| キー                     | 値の例                            | 説明                                               |
-| ------------------------ | --------------------------------- | -------------------------------------------------- |
-| `chart`、`helm.sh/chart` | `foo-chart`                       | 使用しているチャート名を設定する。                 |
-| `release`                | `foo-release`、`foo-application`  | Helmリリース名、ArogoCDのApplication名を設定する。 |
-| `heritage`               | `Helm`、`Tiller` (古いHelmの場合) | 記入中...                                          |
+| キー                     | 値の例                           | 説明                                               |
+| ------------------------ | -------------------------------- | -------------------------------------------------- |
+| `chart`、`helm.sh/chart` | `foo-chart`                      | 使用しているチャート名を設定する。                 |
+| `release`                | `foo-release`、`foo-application` | Helmリリース名、ArogoCDのApplication名を設定する。 |
+| `heritage`               | `Helm`、`Tiller`                 | `v3`の場合は`Helm`、`v2`の場合は`Tiller`になる。   |
 
 <br>
 
