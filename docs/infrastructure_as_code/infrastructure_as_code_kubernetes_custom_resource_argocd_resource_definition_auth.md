@@ -173,8 +173,6 @@ secrets:
   - name: argocd-manager-token-*****
 ```
 
-> ↪️：
->
 > - https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
 

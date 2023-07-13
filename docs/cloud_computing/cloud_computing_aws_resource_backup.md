@@ -44,8 +44,6 @@ description: Backup＠AWSの知見を記録しています。
 
 メインリージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。
 
-> ↪️：
->
 > - https://qiita.com/shinon_uk/items/5ee4dcf360b8d5c88779
 > - https://techblog.finatext.com/aws-cross-region-cross-account-backup-5952a990c1c1
 

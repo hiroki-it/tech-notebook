@@ -65,8 +65,6 @@ PagerDutyでは、以下の解決フェーズを設定できる。
 
 ![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_incident_phase.png)
 
-> ↪️：
->
 > - https://thinkit.co.jp/article/13420
 > - https://support.pagerduty.com/docs/incidents#incident-statuses
 

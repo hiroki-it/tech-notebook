@@ -358,8 +358,6 @@ class Foo
 
 補足として、この例外をロギングする場合、スタックトレースログとして出力される。
 
-> ↪️：
->
 > - http://blog.tojiru.net/article/455279557.html
 > - https://www.php.net/manual/ja/exception.construct.php
 
@@ -371,8 +369,6 @@ class Foo
 
 想定外のエラーも含めて、全てのエラーを検出できるように、コントローラーまたはミドルウェアにtry-catch文を実装する。
 
-> ↪️：
->
 > - https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 > - https://softwareengineering.stackexchange.com/questions/393307/where-would-you-handle-exceptions-controller-service-repository
 

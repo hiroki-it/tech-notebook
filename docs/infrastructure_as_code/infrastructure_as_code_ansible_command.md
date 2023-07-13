@@ -126,8 +126,6 @@ $ANSIBLE_VAULT;1.1;AES256
 *****
 ```
 
-> ↪️：
->
 > - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
 > - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
 

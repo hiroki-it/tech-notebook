@@ -211,8 +211,6 @@ $ cat list.json | jq '.[] | select (.foo == "FOO" or .foo == "BAZ")' | jq -s '.'
 ]
 ```
 
-> ↪️：
->
 > - https://stedolan.github.io/jq/manual/#select(boolean_expression)
 > - https://qiita.com/kenyabe/items/29b7c615c4b6634a388e
 

@@ -27,8 +27,6 @@ cluster-autoscalerを使用しない場合、クラウドプロバイダーのNo
 
 クラウドプロバイダーのコンソール画面からNodeの希望数を手動で増やし、しばらくするとcluster-autoscalerがこれを適切な数に自動的に元に戻すことから、動作を確認できる。
 
-> ↪️：
->
 > - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html>
 

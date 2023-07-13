@@ -26,8 +26,6 @@ description: テレメトリー間の紐付け＠Datadog
 | `env`     | メトリクス、ログ、分散トレースの作成元の実行環境名 (dev、stg、prd) を示す。                                        |
 | `version` | メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。                                                 |
 
-> ↪️：
->
 > - https://docs.datadoghq.com/getting_started/tagging/
 > - https://www.datadoghq.com/ja/blog/tagging-best-practices/
 

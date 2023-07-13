@@ -184,8 +184,6 @@ spec:
           parentShutdownDuration: "80s"
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
@@ -220,8 +218,6 @@ spec:
           terminationDrainDuration: "75s"
 ```
 
-> ↪️：
->
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-drain-time-s
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy

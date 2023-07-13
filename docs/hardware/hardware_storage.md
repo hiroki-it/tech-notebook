@@ -39,8 +39,6 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 仮想ドライブ上のファイルを変更すると、Google Driveにその状態が同期される。
 
-> ↪️：
->
 > - https://jisaku-pc.net/hddnavi/disk_drive.html
 > - https://pctrouble.net/storage/disk_drive.html
 

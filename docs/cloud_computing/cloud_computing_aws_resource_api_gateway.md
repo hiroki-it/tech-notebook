@@ -21,8 +21,6 @@ description: API Gateway＠AWSリソースの知見を記録しています。
 
 ![API Gatewayの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/APIGatewayの仕組み.png)
 
-> ↪️：
->
 > - https://dev.classmethod.jp/articles/edge-computing-by-api-gateway/
 > - https://dev.classmethod.jp/articles/cache-api-gateway-by-cloudfront/
 

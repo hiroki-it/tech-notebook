@@ -946,8 +946,6 @@ tes-bucket/
 └── terraform.tfstate
 ```
 
-> ↪️：
->
 > - https://charotamine.medium.com/terraform-organization-part-i-what-if-you-split-your-components-2fa3e8bf34b1
 > - https://www.endava.com/en/blog/Engineering/2019/11-Things-I-wish-I-knew-before-working-with-Terraform-I
 

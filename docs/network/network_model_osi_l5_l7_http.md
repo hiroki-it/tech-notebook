@@ -508,8 +508,6 @@ php_value[session.save_handler] = redis
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
-> ↪️：
->
 > - https://github.com/phpredis/phpredis/issues/1097
 > - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
 

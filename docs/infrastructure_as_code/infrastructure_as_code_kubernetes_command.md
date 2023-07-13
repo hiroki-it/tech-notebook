@@ -851,16 +851,17 @@ kubectl get application \
   -o custom-columns='NAME:metadata.name,PROJECT:spec.project' >| baz.txt
 
 # ヘッダーを削除する。
+# https://akiniwa.hatenablog.jp/entry/2014/05/01/123126
 tail -n +2 foo.txt >| foo-without-header.txt
 tail -n +2 bar.txt >| bar-without-header.txt
 tail -n +2 baz.txt >| baz-without-header.txt
 
-# ソートする。
+# 並び替える。
 # 後述のuniqコマンドでは、隣り合う重複しか削除できないため、ここでソートしておく。
 cat foo-without-header.txt bar-without-header.txt baz-without-header.txt \
   | sort >| sorted.txt
 
-# 並び替える。
+# 行の重複を削除する。
 cat sorted.txt \
   | uniq >| uniq.txt
 

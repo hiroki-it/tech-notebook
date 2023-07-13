@@ -21,8 +21,6 @@ OpenPolicyAgentは、OpenPolicyエージェント、`.rego`ファイル、DB、�
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
-> ↪️：
->
 > - https://www.velotio.com/engineering-blog/deploy-opa-on-kubernetes
 > - https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
 
@@ -182,8 +180,6 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 
 ![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_open-policy-agent.png)
 
-> ↪️：
->
 > - https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/
 > - https://www.infracloud.io/blogs/opa-and-gatekeeper/
 
