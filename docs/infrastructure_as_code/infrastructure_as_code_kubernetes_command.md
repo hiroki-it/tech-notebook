@@ -107,6 +107,28 @@ $ kubectl apply -f <マニフェストのあるディレクトリ> -R
 pod/foo-pod configured
 ```
 
+#### ▼ --server-side
+
+ServerSideApplyを実行する。
+
+```bash
+$ kubectl apply --server-side -f manifests.yaml
+```
+
+ServerSideApplyではない通常のApplyは、ClientSideApplyという。
+
+ClientSideApplyでは、クライアント側がkube-apiserverからマニフェストの実体を取得し、これを変更してからkube-apiserverに送信する。
+
+一方でServerSideApplyでは、kube-apiserver側でマニフェストを変更する。
+
+ClientSideApplyでは、クライアント側の制約により`metadata.annotations`キーのサイズ制限でエラーになる。
+
+そういった場合は、ServerSideApplyで解決できる。
+
+> - https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller
+> - https://zenn.dev/ap_com/articles/63d61765d43983
+> - https://github.com/prometheus-operator/prometheus-operator/issues/4439
+
 <br>
 
 ### cluster-info

@@ -70,7 +70,8 @@ spec:
       template:
         metadata:
           annotations:
-            checksum/config: *****
+            # ConfigMapの変更に応じて、Jobを更新する。
+            checksum/configmap: *****
           labels:
             app.kubernetes.io/name: descheduler
           name: descheduler

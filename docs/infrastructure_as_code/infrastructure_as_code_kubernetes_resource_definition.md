@@ -529,6 +529,28 @@ spec:
 
 <br>
 
+### .spec.startingDeadlineSeconds
+
+#### ▼ startingDeadlineSeconds
+
+JobがCronのスケジュール通りに実行されなかった場合に、遅れを何秒まで許容するかを設定する。
+
+指定した秒数を過ぎると、失敗とみなす。
+
+```yaml
+apiVersion: io.k8s.api.batch.v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  startingDeadlineSeconds: 100
+```
+
+> - https://kubernetes.io/ja/docs/concepts/workloads/controllers/cron-jobs/#cron-job-limitations
+> - https://qiita.com/tmshn/items/aedf0d739a43a1d6423d#%E3%82%B1%E3%83%BC%E3%82%B93-startingdeadlineseconds
+
+<br>
+
 ### .spec.successfulJobsHistoryLimit
 
 #### ▼ successfulJobsHistoryLimitとは
@@ -734,7 +756,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-もし`maxSurge`キーを`100`%、また`maxUnavailable`キーを`0`%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
+もし`spec.strategy.rollingUpdate.maxSurge`キーを`100`%、また`maxUnavailable`キーを`0`%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 
