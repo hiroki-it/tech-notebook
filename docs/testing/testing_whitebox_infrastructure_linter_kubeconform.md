@@ -17,8 +17,6 @@ description: Kubeconform＠文法の誤りテストの知見を記録してい�
 
 Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検出する。
 
-カスタムリソースの場合、あらかじめKubeconformと対象範囲内にJSON形式のCRDを配置 (あるいは動的に取得) しておく必要がある。
-
 <br>
 
 ## 02. セットアップ
@@ -35,19 +33,21 @@ $ brew install kubeconform
 
 ### カスタムリソースのスキーマの用意
 
-カスタムリソースの静的解析を実行する場合、JSON形式のCRDが必要である。
+カスタムリソースの静的解析を実行する場合、そのスキーマをCRDから作成する必要がある。
 
-`openapi2jsonschema`を使うと、YAML形式からJSON形式に変換できる。
+まずは、CRDをインストールする。
+
+その後、`openapi2jsonschema`を使い、CRDから各カスタムリソースのスキーマをJSON形式で作成する。
 
 ```bash
 # リポジトリからCRDを取得する
-$ wget https://github.com/hiroki-hasegawa/foo-repository/foo-crds.yaml
+$ wget https://github.com/hiroki-hasegawa/foo-repository/crds.yaml
 
 # 変換後のJSONスキーマのファイル形式を設定する
 $ export FILENAME_FORMAT='{kind}-{version}'
 
-# CRDのYAMLファイルをJSONスキーマに変換する
-$ ./openapi2jsonschema.py foo-crds.yaml
+# 各カスタムリソースのスキーマをJSON形式で作成する
+$ ./openapi2jsonschema.py crds.yaml
 
 # ファイル形式は {kind}-{version} になっている
 JSON schema written to foo-v1.json
