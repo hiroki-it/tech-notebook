@@ -22,10 +22,15 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 ## 02. ベストプラクティス違反テスト
 
 - poralis
+- tflint
+
+> - https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6
 
 <br>
 
-## 03. 非推奨apiVersionテスト
+## 03. 非推奨テスト
+
+### KubernetesのapiVersion
 
 - pluto
 
@@ -37,5 +42,8 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 - kics
 - kube-score
 - trivy
+- tfsec
+
+> - https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6
 
 <br>

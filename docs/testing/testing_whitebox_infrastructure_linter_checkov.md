@@ -13,7 +13,13 @@ description: Checkov＠脆弱性テストの知見を記録しています。
 
 <br>
 
-## 01. セットアップ
+## 01. Checkovの仕組み
+
+報告されているIaC (例、Terraform、Kubernetes) の脆弱性レポートに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
+
+<br>
+
+## 02. セットアップ
 
 ```bash
 $ pip3 install checkov
@@ -27,7 +33,7 @@ $ brew install checkov
 
 <br>
 
-## 02. オプション
+## 03. オプション
 
 ### --directory
 

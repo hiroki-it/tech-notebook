@@ -40,15 +40,16 @@ $ brew install kubeconform
 `openapi2jsonschema`を使うと、YAML形式からJSON形式に変換できる。
 
 ```bash
-# リポジトリからCRDを取得する。
+# リポジトリからCRDを取得する
 $ wget https://github.com/hiroki-hasegawa/foo-repository/foo-crds.yaml
 
-# 変換後のJSONスキーマのファイル形式
+# 変換後のJSONスキーマのファイル形式を設定する
 $ export FILENAME_FORMAT='{kind}-{version}'
 
-# CRDのYAMLファイルをJSONスキーマに変換する。
+# CRDのYAMLファイルをJSONスキーマに変換する
 $ ./openapi2jsonschema.py foo-crds.yaml
 
+# ファイル形式は {kind}-{version} になっている
 JSON schema written to foo-v1.json
 JSON schema written to foo-v1alpha2.json
 JSON schema written to foo-v1alpha3.json
