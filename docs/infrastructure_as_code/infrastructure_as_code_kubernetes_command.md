@@ -751,6 +751,33 @@ $ for node in $(kubectl get node | awk '{if (NR!=1) {print $1}}'); \
     kubectl describe node ${node} | grep "Non-terminated" ; done
 ```
 
+**＊例＊**
+
+ArgoCDのApplicationから、`argocd app diff`コマンドで反復的に差分を確認する。
+
+```bash
+#!/bin/bash
+
+application=$(kubectl get application -A | grep foo )
+
+# 一列目の実を取得する。
+application_names=$(echo "$application" | awk '{if(NR>1) print $1}')
+
+# 差分を取得する。
+for application_name in "${application_names[@]}"; do
+  argocd app diff "$application_name"
+done
+```
+
+**＊例＊**
+
+特定の値を持つマニフェストのみを取得する。
+
+```bash
+$ kubectl get applications -o yaml -n foo \
+    | yq eval '.items[] | select(.spec.destination.namespace == "foo")'
+```
+
 #### ▼ -A
 
 指定したKubernetesリソースをNamespaceに関係なく取得する。

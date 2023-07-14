@@ -13,7 +13,13 @@ description: Pluto＠非推奨apiVersionテストの知見を記録していま�
 
 <br>
 
-## 01. セットアップ
+## 01. Plutoの仕組み
+
+指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。
+
+<br>
+
+## 02. セットアップ
 
 ```bash
 $ brew install pluto
@@ -23,7 +29,7 @@ $ brew install pluto
 
 <br>
 
-## 02. グローバルオプション
+## 03. グローバルオプション
 
 ### 標準入力
 

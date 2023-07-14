@@ -548,6 +548,10 @@ $ git cherry-pick -m 1 d7e49b04
 
 # 指定したコミットのみがマージされているか否かを確認する。
 $ git log
+
+# releaseブランチをmainブランチにマージする。
+$ git checkout main
+$ git merge release
 ```
 
 <br>

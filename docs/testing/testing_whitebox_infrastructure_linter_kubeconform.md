@@ -13,7 +13,13 @@ description: Kubeconform＠文法の誤りテストの知見を記録してい�
 
 <br>
 
-## 01. セットアップ
+## 01. Kubeconformの仕組み
+
+Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検出する。
+
+<br>
+
+## 02. セットアップ
 
 ```bash
 $ brew install kubeconform
