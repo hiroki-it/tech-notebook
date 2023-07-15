@@ -21,9 +21,11 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 ## 02. ベストプラクティス違反テスト
 
+- kube-score
 - poralis
 - tflint
 
+> - https://tech.andpad.co.jp/entry/2022/08/30/100000
 > - https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6
 
 <br>
@@ -40,7 +42,6 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 - checkov
 - kics
-- kube-score
 - trivy
 - tfsec
 

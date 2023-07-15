@@ -61,7 +61,7 @@ spec:
 
 #### ▼ backgroundとは
 
-Kyvernoの導入後に作成/更新されるKubernetesだけでなく、既存のKubernetesリソースもKyvernoの対象とするかを設定する。
+Kyvernoの導入後に作成/更新されるKubernetesだけでなく、導入前の既存のKubernetesリソースもKyvernoの検査対象とするかを設定する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -134,7 +134,7 @@ spec:
               kinds:
                 - Pod
       validate:
-        message: "'app.kubernetes.io/name' label is required"
+        message: "Label ('app.kubernetes.io/name') is required"
         pattern:
           metadata:
             labels:

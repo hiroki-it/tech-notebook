@@ -14,6 +14,7 @@
 > * ##### [静的解析ツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter.html)
 > * ##### [Checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_checkov.html)
 > * ##### [Kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kics.html)
+> * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kube_score.html)
 > * ##### [Kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kubeconform.html)
 > * ##### [Pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_pluto.html)
 > * ##### [Trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_trivy.html)
