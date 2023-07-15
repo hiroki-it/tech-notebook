@@ -322,12 +322,12 @@ nav:
           - ■ インフラ:
               - ■ 静的解析:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_linter.md
-                  - Checkov: testing/testing_whitebox_infrastructure_linter_checkov.md
-                  - Confest: testing/testing_whitebox_infrastructure_linter_confest.md
-                  - Kics: testing/testing_whitebox_infrastructure_linter_kics.md
+                  - checkov: testing/testing_whitebox_infrastructure_linter_checkov.md
+                  - confest: testing/testing_whitebox_infrastructure_linter_confest.md
+                  - kics: testing/testing_whitebox_infrastructure_linter_kics.md
                   - kube-score: testing/testing_whitebox_infrastructure_linter_kube_score.md
-                  - Kubeconform: testing/testing_whitebox_infrastructure_linter_kubeconform.md
-                  - Pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
+                  - kubeconform: testing/testing_whitebox_infrastructure_linter_kubeconform.md
+                  - pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
                   - Trivy: testing/testing_whitebox_infrastructure_linter_trivy.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
