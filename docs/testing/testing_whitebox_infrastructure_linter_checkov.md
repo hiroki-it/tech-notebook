@@ -15,7 +15,7 @@ description: Checkov＠脆弱性テストの知見を記録しています。
 
 ## 01. Checkovの仕組み
 
-報告されているIaC (例、Terraform、Kubernetes) の脆弱性レポートに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
+報告されているIaC (例、Terraform、Kubernetes) の脆弱性レポートに基づいて、IaCの設定ファイルの実装方法に起因する脆弱性を検証する。
 
 <br>
 
