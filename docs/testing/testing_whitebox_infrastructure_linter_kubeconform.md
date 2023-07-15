@@ -43,7 +43,7 @@ $ brew install kubeconform
 # リポジトリからCRDを取得する
 $ wget https://github.com/hiroki-hasegawa/foo-repository/crds.yaml
 
-# 変換後のJSONスキーマのファイル形式を設定する
+# 各カスタムリソースのJSONスキーマのファイル形式を設定する
 $ export FILENAME_FORMAT='{kind}-{version}'
 
 # 各カスタムリソースのスキーマをJSON形式で作成する
