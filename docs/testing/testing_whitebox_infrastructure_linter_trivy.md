@@ -21,6 +21,8 @@ description: Trivy＠脆弱性テストの知見を記録しています。
 
 ## 02. セットアップ
 
+### インストール
+
 ```bash
 $ brew install trivy
 ```

@@ -692,7 +692,7 @@ $ aws sts get-caller-identity --profile foo
 
 <br>
 
-### Systems Manager (旧SSM)
+### Systems Manager (新SSM)
 
 #### ▼ create-activation
 

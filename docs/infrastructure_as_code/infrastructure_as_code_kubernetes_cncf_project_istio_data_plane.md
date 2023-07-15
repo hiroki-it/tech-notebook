@@ -246,7 +246,7 @@ istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機す
 
 ## 02-02. `istio-proxy`コンテナ
 
-### pilot-agent (旧istio-agent)
+### pilot-agent (新istio-agent)
 
 #### ▼ pilot-agentとは
 

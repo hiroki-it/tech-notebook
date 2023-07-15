@@ -21,6 +21,8 @@ description: Pluto＠非推奨apiVersionテストの知見を記録していま�
 
 ## 02. セットアップ
 
+### インストール
+
 ```bash
 $ brew install pluto
 ```

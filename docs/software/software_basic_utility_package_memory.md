@@ -332,7 +332,7 @@ $ supervisorctl update
 
 <br>
 
-## 03. systemctl：system control (旧service)
+## 03. systemctl：system control (新service)
 
 ### systemctlの構成要素
 

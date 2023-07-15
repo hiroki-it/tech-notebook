@@ -923,7 +923,7 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 <br>
 
-### cloudwatch_logプラグイン (旧cloudwatchプラグイン)
+### cloudwatch_logプラグイン (新cloudwatchプラグイン)
 
 #### ▼ cloudwatch_logプラグインとは
 

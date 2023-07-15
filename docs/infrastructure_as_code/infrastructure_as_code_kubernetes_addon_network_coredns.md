@@ -13,7 +13,7 @@ description: CoreDNS＠ネットワークアドオンの知見を記録してい
 
 <br>
 
-## 01. CoreDNSアドオン (旧kube-dns)
+## 01. CoreDNSアドオン (新kube-dns)
 
 ### CoreDNSアドオンとは
 

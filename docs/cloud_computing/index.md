@@ -55,7 +55,7 @@
   > * ##### [SQS](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_sqs.html)
   > * ##### [Step Functions](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_step_functions.html)
   > * ##### [STS](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_sts.html)
-  > * ##### [Systems Manager (旧SSM) ](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_systems_manager.html)
+  > * ##### [Systems Manager (新SSM) ](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_systems_manager.html)
   > * ##### [VPC](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_vpc.html)
   > * ##### [WAF](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_waf.html)
   > * ##### [WorkMail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_work_mail.html)
