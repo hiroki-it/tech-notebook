@@ -17,6 +17,6 @@ description: Grafana＠テレメトリー収集ツールの知見を記録して
 
 Grafanaはセクションが重複しており、以下のセクションを参照してください。
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html
 
 <br>

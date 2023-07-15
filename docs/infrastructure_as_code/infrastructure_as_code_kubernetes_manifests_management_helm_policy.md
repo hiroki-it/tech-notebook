@@ -539,6 +539,6 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 ### デプロイの通知
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html
 
 <br>

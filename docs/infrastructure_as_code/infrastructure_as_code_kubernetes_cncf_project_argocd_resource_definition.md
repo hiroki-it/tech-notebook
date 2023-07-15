@@ -1751,7 +1751,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/arg
 
 ## 06. ConfigManagementPlugin
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_plugin.html
 
 <br>
 

@@ -17,6 +17,6 @@ description: FluentBit/Fluentd＠テレメトリー収集ツールの知見を�
 
 FluentBit/Fluentdはセクションが重複しており、以下のセクションを参照してください。
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.html
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html
 
 <br>
