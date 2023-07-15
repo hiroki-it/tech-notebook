@@ -12,10 +12,11 @@
 > * ##### [︎Goの場合](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go.html)
 * #### <u>インフラ</u>
 > * ##### [静的解析ツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter.html)
-> * ##### [Checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_checkov.html)
-> * ##### [Kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kics.html)
+> * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_checkov.html)
+> * ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_confest.html)
+> * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kics.html)
 > * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kube_score.html)
-> * ##### [Kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kubeconform.html)
+> * ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kubeconform.html)
 > * ##### [Pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_pluto.html)
 > * ##### [Trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_trivy.html)
 

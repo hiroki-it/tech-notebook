@@ -19,7 +19,7 @@ description: Kyverno＠CNCFプロジェクトの知見を記録しています�
 
 Kyvernoは、admission-controllersアドオン、webhookサーバー、Controller、などのコンポーネトから構成されている。
 
-文法の誤りテストを実施する静的解析ツール (例：Kubeconform) とは異なり、kube-apiserverにマニフェストが送信された後に静的解析を実行する。
+文法の誤りテストを実施する静的解析ツール (例：kubeconform) とは異なり、kube-apiserverにマニフェストが送信された後に静的解析を実行する。
 
 kube-apiserverのmutating-admissionステップとvalidating-admissionステップでKyvernoのwebhookサーバーにWebhookが送信される。
 

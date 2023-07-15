@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 Pluto＠非推奨apiVersionテスト
-description: Pluto＠非推奨apiVersionテストの知見を記録しています。
+title: 【IT技術の知見】 pluto＠非推奨apiVersionテスト
+description: pluto＠非推奨apiVersionテストの知見を記録しています。
 ---
 
-# Pluto＠非推奨apiVersionテスト
+# pluto＠非推奨apiVersionテスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Pluto＠非推奨apiVersionテストの知見を記録していま�
 
 <br>
 
-## 01. Plutoの仕組み
+## 01. plutoの仕組み
 
 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。
 

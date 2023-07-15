@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 Kubeconform＠文法の誤りテスト
-description: Kubeconform＠文法の誤りテストの知見を記録しています。
+title: 【IT技術の知見】 kubeconform＠文法の誤りテスト
+description: kubeconform＠文法の誤りテストの知見を記録しています。
 ---
 
-# Kubeconform＠文法の誤りテスト
+# kubeconform＠文法の誤りテスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Kubeconform＠文法の誤りテストの知見を記録してい�
 
 <br>
 
-## 01. Kubeconformの仕組み
+## 01. kubeconformの仕組み
 
 Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検出する。
 

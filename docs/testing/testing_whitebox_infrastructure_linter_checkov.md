@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 Checkov＠脆弱性テスト
-description: Checkov＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 checkov＠脆弱性テスト
+description: checkov＠脆弱性テストの知見を記録しています。
 ---
 
-# Checkov＠脆弱性テスト
+# checkov＠脆弱性テスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Checkov＠脆弱性テストの知見を記録しています。
 
 <br>
 
-## 01. Checkovの仕組み
+## 01. checkovの仕組み
 
 報告されているIaC (例、Terraform、Kubernetes) の脆弱性レポートに基づいて、IaCの設定ファイルの実装方法に起因する脆弱性を検証する。
 

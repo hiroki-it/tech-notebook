@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 Kics＠脆弱性テスト
-description: Kics＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 kics＠脆弱性テスト
+description: kics＠脆弱性テストの知見を記録しています。
 ---
 
-# Kics＠脆弱性テスト
+# kics＠脆弱性テスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Kics＠脆弱性テストの知見を記録しています。
 
 <br>
 
-## 01. Kicsの仕組み
+## 01. kicsの仕組み
 
 報告されているKubernetesの脆弱性レポートに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。
 
