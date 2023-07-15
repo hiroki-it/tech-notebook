@@ -63,7 +63,6 @@ $ kubectl create namespace vcluster
 $ helm install <リリース名> <リポジトリ名>/vcluster-eks -n vcluster --version <バージョンタグ>
 ```
 
-
 > - https://github.com/loft-sh/vcluster/tree/main/charts/eks#get-helm-repository-info
 
 <br>
