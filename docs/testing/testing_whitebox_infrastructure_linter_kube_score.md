@@ -15,7 +15,7 @@ description: kube-score＠ベストプラクティス違反の知見を記録し
 
 ## 01. kube-scoreの仕組み
 
-Kubernetesの公式ドキュメントや著名な書籍に基づいて、マニフェストのベストプラクティス違反 (例：設定漏れ、セキュリティ) を検証する。
+Kubernetesの公式ドキュメントや著名な書籍に基づいて、マニフェストのベストプラクティス違反 (例：設定漏れ、推奨値、脆弱性を高めてしまう設定値、など) を検証する。
 
 > - https://github.com/zegl/kube-score/blob/master/README_CHECKS.md
 > - https://github.com/zegl/kube-score/blob/master/README_PROBES.md
@@ -29,6 +29,8 @@ Kubernetesの公式ドキュメントや著名な書籍に基づいて、マニ�
 $ brew install kube-score
 ```
 
+> - https://github.com/zegl/kube-score/tree/master#installation
+
 <br>
 
 ## 03. グローバルオプション
@@ -39,8 +41,14 @@ $ brew install kube-score
 
 ### score
 
+マニフェストを検査する。
+
 ```bash
 $ helm template foo-chart -f values-prd.yaml | kube-score score -
+```
+
+```bash
+$ kustomize build . | kube-score score -
 ```
 
 > - https://github.com/zegl/kube-score/tree/master#usage-in-ci
