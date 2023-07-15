@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 Trivy＠脆弱性テスト
-description: Trivy＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 trivy＠脆弱性テスト
+description: trivy＠脆弱性テストの知見を記録しています。
 ---
 
-# Trivy＠脆弱性テスト
+# trivy＠脆弱性テスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Trivy＠脆弱性テストの知見を記録しています。
 
 <br>
 
-## 01. Trivyの仕組み
+## 01. trivyの仕組み
 
 報告されているIaC (例、Terraform、Kubernetes、Dockerfile、など) の脆弱性レポートに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
 
