@@ -323,6 +323,7 @@ nav:
               - ■ 静的解析:
                   - Checkov: testing/testing_whitebox_infrastructure_linter_checkov.md
                   - Kics: testing/testing_whitebox_infrastructure_linter_kics.md
+                  - kube-score: testing/testing_whitebox_infrastructure_linter_kube_score.md
                   - Kubeconform: testing/testing_whitebox_infrastructure_linter_kubeconform.md
                   - Pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
                   - Trivy: testing/testing_whitebox_infrastructure_linter_trivy.md
