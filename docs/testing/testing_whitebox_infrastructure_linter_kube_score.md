@@ -15,7 +15,7 @@ description: kube-score＠ベストプラクティス違反の知見を記録し
 
 ## 01. kube-scoreの仕組み
 
-組み込みのベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：設定漏れ、推奨値、脆弱性を高めてしまう設定値、など) を検証する。
+組み込みのベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：設定漏れ、推奨値、脆弱性、など) を検証する。
 
 > - https://github.com/zegl/kube-score/blob/master/README_CHECKS.md
 > - https://github.com/zegl/kube-score/blob/master/README_PROBES.md

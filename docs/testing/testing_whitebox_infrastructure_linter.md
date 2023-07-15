@@ -23,12 +23,13 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 ## 02. ベストプラクティス違反テスト
 
+ベストプラクティスを幅広く検証するため、他のテスト (例：脆弱性テスト) と検査項目が重複する場合がある。
+
 - confest
-- copper
-- kubeconform (新kubeval)
+- kube-linter
 - kubevious
 - kube-score
-- poralis
+- polaris
 - tflint
 
 > - https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools
@@ -53,7 +54,7 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 - kube-bench
 - kube-hunter
 - kube-scan
-- kubelinter
+- kube-score
 - kubesec
 - krane
 - trivy
