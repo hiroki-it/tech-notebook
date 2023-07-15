@@ -47,7 +47,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyv
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: containers-need-have-resources-key-cluster-policy
+  name: foo-policy
   namespace: kyverno
 spec:
   validationFailureAction: enforce
@@ -67,7 +67,7 @@ Kyvernoの導入後に作成/更新されるKubernetesだけでなく、既存�
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: containers-need-have-resources-key-cluster-policy
+  name: foo-policy
   namespace: kyverno
 spec:
   background: false
@@ -93,11 +93,11 @@ Webhook時に実行するKyvernoのルールを設定する。
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: containers-need-have-resources-key-cluster-policy
+  name: foo-policy
   namespace: kyverno
 spec:
   rules:
-    - name: pod-need-have-image-pull-policy-key-mutator
+    - name: pod-image-pull-policy-mutator
       match:
         any:
           - resources:
@@ -117,17 +117,45 @@ spec:
 
 **＊実装例＊**
 
+Podのマニフェストの`metadata.labels`キー以下に、`app.kubernetes.io/name`キーがあるか否かを検証する。
+
+```yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: foo-policy
+  namespace: kyverno
+spec:
+  rules:
+    - name: pod-labels-validator
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      validate:
+        message: "'app.kubernetes.io/name' label is required"
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/name: "?*"
+```
+
+> - https://zenn.dev/k6s4i53rx/articles/5942b9e77b041b#dry-run-%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B
+
+**＊実装例＊**
+
 Podのマニフェストの`.spec.containers`キー以下に、`resources`キーがあるか否かを検証する。
 
 ```yaml
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: pod-need-have-resources-key-cluster-policy
+  name: foo-policy
   namespace: kyverno
 spec:
   rules:
-    - name: pod-need-have-resources-key-validator
+    - name: pod-container-resources-validator
       match:
         resources:
           kinds:
@@ -135,7 +163,7 @@ spec:
           namespaces:
             - foo
       validate:
-        message: "Containers need have resources key"
+        message: "Container resources is required"
         pattern:
           spec:
             containers:

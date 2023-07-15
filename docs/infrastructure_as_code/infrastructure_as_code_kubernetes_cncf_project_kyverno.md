@@ -13,7 +13,7 @@ description: Kyverno＠CNCFプロジェクトの知見を記録しています�
 
 <br>
 
-## 01. Kyverno
+## 01. Kyvernoの仕組み
 
 ![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kyverno_architecture.png)
 

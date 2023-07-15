@@ -49,7 +49,23 @@ VClusterは、コントロールプレーン、Syncer、といったコンポー
 
 ### インストール
 
-#### ▼ AWS EKSの場合
+#### ▼ vcluster cliの場合
+
+```bash
+# vcluster cliをインストールする
+$ curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-arm64" && sudo install -c -m 0755 vcluster /usr/local/bin
+
+# 仮想Clusterを作成する
+$ vcluster create <Cluster名> \
+    -n <ClusterのNamespace名> \
+    -f values.yaml \
+    --kubernetes-version=<バージョン>
+```
+
+> - https://www.vcluster.com/docs/getting-started/deployment
+> - https://github.com/loft-sh/vcluster/tree/main/charts/eks#get-helm-repository-info
+
+#### ▼ Helmの場合
 
 AWS EKS上で仮想Clusterを作成する。
 
@@ -60,9 +76,11 @@ $ helm repo update
 
 $ kubectl create namespace vcluster
 
+# 仮想Clusterを作成する
 $ helm install <リリース名> <リポジトリ名>/vcluster-eks -n vcluster --version <バージョンタグ>
 ```
 
+> - https://www.vcluster.com/docs/getting-started/deployment
 > - https://github.com/loft-sh/vcluster/tree/main/charts/eks#get-helm-repository-info
 
 <br>
@@ -70,6 +88,19 @@ $ helm install <リリース名> <リポジトリ名>/vcluster-eks -n vcluster -
 ## 03. vclusterコマンド
 
 ### create
+
+#### ▼ createとは
+
+仮想Clusterを作成する。
+
+```bash
+$ vcluster create <Cluster名> \
+    -n <ClusterのNamespace名> \
+    -f values.yaml \
+    --kubernetes-version=<バージョン>
+```
+
+> - https://www.vcluster.com/docs/getting-started/deployment
 
 #### ▼ --upgrade
 

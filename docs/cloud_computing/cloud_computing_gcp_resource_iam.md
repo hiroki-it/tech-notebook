@@ -162,3 +162,23 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 > - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
 
 <br>
+
+## Workload Identity
+
+GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにアクセスする場合に、外部リソースをサービスアカウントに紐づけて、APIにアクセスできるようにする仕組みのこと。
+
+1. GoogleCloudリソース外で認証を実行する。
+2. 認証が成功する。
+3. 認証情報をGoogleCloud STSに送信する。
+4. Workload Identityプールにて、認証情報を検証する。
+5. 検証が成功し、一時的なトークンを発行する。
+6. GoogleCloudリソース外のリソースにトークンを送信する。
+7. GoogleCloudリソース外のリソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
+8. GoogleCloudリソースのAPIにアクセスできるようになる。
+
+![google-cloud_workload-identity.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
+
+> - https://christina04.hatenablog.com/entry/workload-identity-federation
+> - https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9
+
+<br>
