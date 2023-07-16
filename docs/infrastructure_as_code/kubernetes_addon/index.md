@@ -2,7 +2,7 @@
 
 !!! info "このセクションについて"
 
-    **量が多いため、[Kubernetes](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/kubernetes/index.html) から切り分けています**
+    **量が多いため、[K8sセクション](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/kubernetes/index.html) から切り分けています**
 
 <br>
 
