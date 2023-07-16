@@ -863,6 +863,40 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 ## 09. マルチテナント
 
+### マルチテナントの目的
+
+#### ▼ ソフトマルチテナント
+
+信頼できる開発者のみがClusterにアクセスする場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
+
+> - https://www.amazon.co.jp/dp/B09JD8Z56X
+> - https://techstep.hatenablog.com/entry/2020/09/06/160435
+
+#### ▼ ハードマルチテナント
+
+信頼できない開発者もClusterにアクセスする場合に、悪意ある操作を防ぐ目的でマルチテナント化する。
+
+> - https://www.amazon.co.jp/dp/B09JD8Z56X
+> - https://techstep.hatenablog.com/entry/2020/09/06/160435
+
+<br>
+
+### マルチテナントの要件
+
+#### ▼ アクセスの分離
+
+一方のテナントに属する開発者は、他のテナントにはアクセスできない。
+
+#### ▼ ハードウェアリソースの分離
+
+テナント間では、ハードウェアリソースの要求は分離されている。
+
+一方のテナントでハードウェアリソースの要求量が増えても、他方のテナントには影響しない。
+
+<br>
+
+## 09-02. マルチテナントのパターン
+
 ### 実Cluster分割の場合
 
 #### ▼ 実Cluster単位のテナントとは
@@ -904,8 +938,11 @@ Namespaceに親子関係を定義し、テナントを実装する。
 
 実行環境別にNamespaceを分割する。
 
-ただそもそも、Namespaceだけでは実行間環境間の分割が足りないため、Cluster自体を分割した方がよい。
+ただそもそも、Namespaceだけでは実行間環境間の分割が足りず、安全性が低い。
 
+そのため、Cluster自体を分割した方がよい。
+
+> - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
 > - https://aptakube.com/blog/namespaces-best-practices
 > - https://www.appvia.io/blog/best-practices-for-kubernetes-namespaces/
 > - https://cloud.redhat.com/blog/kubernetes-namespaces-demystified-how-to-make-the-most-of-them

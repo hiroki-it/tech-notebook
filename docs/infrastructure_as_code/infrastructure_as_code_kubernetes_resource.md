@@ -35,6 +35,8 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 ![namespaced-scope_vs_cluster-scoped.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png)
 
+> - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
+
 <br>
 
 ## 02. Workload系リソース

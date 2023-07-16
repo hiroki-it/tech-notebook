@@ -111,7 +111,6 @@ kube-apiserverからの返信、または標準入力で入力されたマニフ
 
 `pluto detect-api-resources`コマンドとの違いは記入中...
 
-
 ```bash
 $ pluto detect - -o wide
 
@@ -123,7 +122,6 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 ```
 
 > - https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
-
 
 <br>
 
