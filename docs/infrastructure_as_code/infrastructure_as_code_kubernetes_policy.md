@@ -881,20 +881,6 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-### マルチテナントの要件
-
-#### ▼ アクセスの分離
-
-一方のテナントに属する開発者は、他のテナントにはアクセスできない。
-
-#### ▼ ハードウェアリソースの分離
-
-テナント間では、ハードウェアリソースの要求は分離されている。
-
-一方のテナントでハードウェアリソースの要求量が増えても、他方のテナントには影響しない。
-
-<br>
-
 ## 09-02. マルチテナントのパターン
 
 ### 実Cluster分割の場合
@@ -961,9 +947,18 @@ Namespaceに親子関係を定義し、テナントを実装する。
 
 機密性の高さに応じて、Namespaceを分割する。
 
-NamespaceにNetwork Policyを設定し、Namespace間の通信を制限するようにする。
+NamespaceにNetwork Policyを設定し、Namespace間でKubernetesリソースの通信を制限できる。
 
 > - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
+> - https://techstep.hatenablog.com/entry/2020/09/06/160435
+
+#### ▼ ハードウェアリソースの隔離
+
+テナント間では、ハードウェアリソースの要求は分離されている。
+
+NamespaceにResourceQuotaやLimitRangeを設定し、一方のNamespaceでハードウェアリソースの要求量が増えても、他方のNamespaceには影響しないようにできる。
+
+> - https://techstep.hatenablog.com/entry/2020/09/06/160435
 
 #### ▼ プロダクト別
 
