@@ -890,6 +890,7 @@ Namespaceに親子関係を定義し、テナントを実装する。
 ホストCluster上に仮想Clusterを作成し、テナントを実装する。
 
 > - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
+> - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
 
 <br>
 
@@ -913,8 +914,11 @@ Namespaceに親子関係を定義し、テナントを実装する。
 
 チーム別にNamespaceを分割する。
 
+![namespace_teams.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespace_teams.png)
+
 > - https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en
 > - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
+> - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
 
 #### ▼ 機密性の高さ別
 

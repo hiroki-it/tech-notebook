@@ -40,21 +40,24 @@ $ brew install pluto
 CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
 
 ```bash
-helm template fluentd . --set secret.GCP_CREDENTIALS=test | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
+$ helm template fluentd . --set secret.GCP_CREDENTIALS=test \
+    | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
 
 NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
 ```bash
-$ helm template foo-chart -f values-prd.yaml | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
+$ helm template foo-chart -f values-prd.yaml \
+    | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
 
 NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
 ```bash
-$ helm template foo-chart -f values-prd.yaml | pluto detect-helm -t k8s=<Kubernetesのバージョン> - -o wide
+$ helm template foo-chart -f values-prd.yaml \
+    | pluto detect-helm -t k8s=<Kubernetesのバージョン> - -o wide
 
 NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
@@ -108,7 +111,6 @@ kube-apiserverからの返信、または標準入力で入力されたマニフ
 
 `pluto detect-api-resources`コマンドとの違いは記入中...
 
-> - https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
 
 ```bash
 $ pluto detect - -o wide
@@ -119,6 +121,9 @@ bar-pdb  bar-namespace   PodDisruptionBudget       policy/v1beta1        policy/
 baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autoscaling/v2   true         v1.22.0         false     v1.25.0
 ...
 ```
+
+> - https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
+
 
 <br>
 
