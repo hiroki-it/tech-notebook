@@ -867,7 +867,8 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 各Kubernetesリソースの処理範囲を制限するために、Kubernetesリソースをグルーピングする。
 
-> https://kubernetes.io/docs/concepts/security/multi-tenancy/
+> - https://kubernetes.io/docs/concepts/security/multi-tenancy/
+> - https://www.slideshare.net/sanjeevrampal9/kubecon-us-2019-kubernetes-multitenancy-wg-deep-dive#10
 
 <br>
 
@@ -890,6 +891,7 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 > - https://kubernetes.io/docs/concepts/security/multi-tenancy/#multiple-customers
 
 <br>
+
 
 ## 09-02. マルチテナントのパターン
 
@@ -997,5 +999,19 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 #### ▼ ハードウェアリソースの要求量別
 
 コンテナのハードウェアリソースの要求量に応じて、Nodeグループを分割する。
+
+<br>
+
+### その他ツールを使用する場合
+
+ツールのテナントカスタムリソースを使用して、単一のClusterを分割する。
+
+- Capsule
+- Kiosk
+- kubeplus
+
+> - https://github.com/clastix/capsule
+> - https://github.com/loft-sh/kiosk
+> - https://github.com/cloud-ark/kubeplus
 
 <br>
