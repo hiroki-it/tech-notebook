@@ -511,7 +511,7 @@ nav:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
 
-  - ☸️ Kubernetes:
+  - ☸️ K8s:
       - infrastructure_as_code/kubernetes/index.md
       - ■ Kubernetes:
           - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
