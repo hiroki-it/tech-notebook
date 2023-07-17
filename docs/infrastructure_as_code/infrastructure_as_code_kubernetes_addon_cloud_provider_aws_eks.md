@@ -273,7 +273,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 | `MY_NODE_NAME`                          | ワーカーNode名が設定されているマニフェストのキーを設定する。                                         | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}`                 |
 | `MY_POD_NAME`                           | Pod名が設定されているマニフェストのキーを設定する。                                                  | `"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}`                 |
 | `POD_SECURITY_GROUP_ENFORCING_MODE`     | Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。 | `standard` (`standard`の場合は、プライマリーENIのセキュリティグループを適用する) |
-| `VPC_ID`                                | AWS VPCのIDを設定する。。                                                                            | `vpc-*****`                                                                      |
+| `VPC_ID`                                | AWS VPCのIDを設定する。                                                                            | `vpc-*****`                                                                      |
 | `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNodeが`1`個あたりで最低限確保するAWS ENI数を設定する。                        | `1`                                                                              |
 | `WARM_PREFIX_TARGET`                    |                                                                                                      | `1`                                                                              |
 | `WARM_IP_TARGET`                        | AWS EC2/FargateワーカーNodeが`1`個あたりで余分に確保するIPアドレス数を設定する。                     | `2`                                                                              |

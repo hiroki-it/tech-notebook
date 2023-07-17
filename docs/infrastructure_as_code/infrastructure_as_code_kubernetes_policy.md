@@ -988,7 +988,7 @@ Namespaceに親子関係を定義し、テナントを実装する。
 
 機密性の高さに応じて、Namespaceを分割する。
 
-NamespaceにNetwork Policyを設定し、Namespace間でKubernetesリソースの通信を制限できる。
+NamespaceにNetworkPolicyを設定し、Namespace間でKubernetesリソースの通信を制限できる。
 
 > - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
 > - https://techstep.hatenablog.com/entry/2020/09/06/160435
