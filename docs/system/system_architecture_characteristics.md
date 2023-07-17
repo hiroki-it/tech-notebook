@@ -155,6 +155,8 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ## 06. Recoverability (復旧力)
 
+### 復旧力とは
+
 障害が発生した場合に、どれだけ早く復旧できるかの、程度を表す。
 
 <br>
@@ -275,8 +277,18 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 ### ヒアリングの項目
 
-記入中...
+| 項目    | ファクター         | 達成するべき要件 | 検証方法 |
+|-------|---------------|----------|------|
+| 可用性   | ダウンタイム、など     | ...      | ...  |
+| 性能    | 同時アクセス、など     |  ...        |  ...    |
+| 拡張性   | DBレコード数、など    |  ...        | ...     |
+| 安全性   | DoS攻撃、など      |    ...      |  ...    |
+| 保守性   | 機能変更/修正、など    |  ...        | ...     |
+| 運用性   | アップグレード、監視、など |   ...       |   ...   |
+| 可搬性   | 新旧移行方法、など     |     ...     |   ...   |
+| 使いやすさ | ペルソナ、エラー処理    |   ...       | ...     |
 
+> - https://thinkit.co.jp/article/17647
 > - https://github.com/YoshiiRyo1/document-templates-for-aws/blob/master/survey/doc_source/non-functional-requirement.md
 > - https://dev.classmethod.jp/articles/survey-non-functional-requirement/
 
