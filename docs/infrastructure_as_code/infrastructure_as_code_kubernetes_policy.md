@@ -872,28 +872,29 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-### ソフトマルチテナント
-
-信頼できる開発者のみがClusterにアクセスする場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
-
-> - https://www.amazon.co.jp/dp/B09JD8Z56X
-> - https://techstep.hatenablog.com/entry/2020/09/06/160435
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#multiple-teams
-
-<br>
-
 ### ハードマルチテナント
 
 信頼できない開発者もClusterにアクセスする場合 (例：複数の協力会社がいる、Kubernetesをサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
 
-> - https://www.amazon.co.jp/dp/B09JD8Z56X
-> - https://techstep.hatenablog.com/entry/2020/09/06/160435
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#multiple-customers
+> - https://www.amazon.co.jp/dp/B072TS9ZQZ
+> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
+> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#hard-multi-tenancy
 
 <br>
 
+### ソフトマルチテナント
 
-## 09-02. マルチテナントのパターン
+信頼できる開発者のみがClusterにアクセスする場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
+
+例えば、Cluster内にアクセスする開発者が、プロダクトの開発チーム (フロントエンドチーム、バックエンドチーム、インフラチーム) の場合である。
+
+> - https://www.amazon.co.jp/dp/B072TS9ZQZ
+> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
+> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy
+
+<br>
+
+## 09-02. ハードマルチテナンシー
 
 ### 実Cluster分割の場合
 
@@ -903,15 +904,15 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 一番簡単である。
 
-<br>
+#### ▼ 複数のClusterを一元管理
 
-### 階層Namespaceの場合
+以下のツールを使用して、複数のClusterを一元管理できる。
 
-#### ▼ 階層Namespace単位のテナントとは
+- Rancher Multi-cluster Apps
+- Gardener
 
-Namespaceに親子関係を定義し、テナントを実装する。
-
-> - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
+> - https://ranchermanager.docs.rancher.com/v2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps
+> - https://github.com/gardener/gardener
 
 <br>
 
@@ -923,6 +924,19 @@ Namespaceに親子関係を定義し、テナントを実装する。
 
 > - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
 > - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
+> - https://www.linkedin.com/pulse/kubernetes-virtual-clusters-enabling-hard-cost-gokul-chandra/
+
+<br>
+
+## 09-03. ソフトマルチテナンシー
+
+### 階層Namespaceの場合
+
+#### ▼ 階層Namespace単位のテナントとは
+
+Namespaceに親子関係を定義し、テナントを実装する。
+
+> - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
 
 <br>
 
@@ -949,8 +963,11 @@ Namespaceに親子関係を定義し、テナントを実装する。
 
 チーム別にNamespaceを分割する。
 
+著名な書籍に一番多いテナントである。
+
 ![namespace_teams.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespace_teams.png)
 
+> - https://www.amazon.co.jp/dp/1617293725
 > - https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en
 > - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
 > - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
@@ -1002,9 +1019,11 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 
 <br>
 
-### その他ツールを使用する場合
+### ツール固有のテナントの場合
 
-ツールのテナントカスタムリソースを使用して、単一のClusterを分割する。
+#### ▼ ツール固有のテナントとは
+
+テナントカスタムリソースを使用して、単一のClusterを分割する。
 
 - Capsule
 - Kiosk
