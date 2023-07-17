@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
 ![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uvicorn_with-gunicorn.png)
 
-パフォーマンス上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行した方が良い。
+性能上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行した方が良い。
 
 `w`オプションを使用して、プロセスの並列数を設定できる。
 

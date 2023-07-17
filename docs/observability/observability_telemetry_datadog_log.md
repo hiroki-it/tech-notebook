@@ -248,7 +248,7 @@ import {Plugin, Context} from "@nuxt/types";
 import {datadogLogs} from "@datadog/browser-logs";
 
 const browserLogsForSsgPlugin: Plugin = ({$config}: Context) => {
-  // パフォーマンスとログの重要性の観点から、開発環境のログを送信しないようにする
+  // 性能とログの重要性の観点から、開発環境のログを送信しないようにする
   if (!$config.datadog.clientToken) {
     return;
   }

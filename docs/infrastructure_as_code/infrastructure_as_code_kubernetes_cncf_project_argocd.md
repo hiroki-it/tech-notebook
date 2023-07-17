@@ -194,7 +194,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 <br>
 
-### パフォーマンス改善
+### 性能改善
 
 #### ▼ 並列処理
 

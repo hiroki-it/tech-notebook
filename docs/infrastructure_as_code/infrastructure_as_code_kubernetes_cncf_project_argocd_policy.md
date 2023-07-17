@@ -531,7 +531,7 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 | `argocd_app_info`                     |      Gauge       | Applicationの状態を表す。                                                                   |
 | `argocd_app_k8s_request_total`        |     Counter      | 差分の検出時に、Applicationからポーリング対象Clusterに送信されたリクエスト数を表す。        |
 | `argocd_app_labels`                   |      Gauge       | 記入中...                                                                                   |
-| `argocd_app_reconcile`                |    Histogram     | Applicationのパフォーマンスを表す。                                                         |
+| `argocd_app_reconcile`                |    Histogram     | Applicationの性能を表す。                                                         |
 | `argocd_app_sync_total`               |     Counter      | ApplicationのSync数を表す。                                                                 |
 | `argocd_cluster_api_resource_objects` |      Gauge       | ポーリング対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。 |
 | `argocd_cluster_api_resources`        |      Gauge       | ポーリング対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。       |

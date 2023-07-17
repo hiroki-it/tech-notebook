@@ -132,11 +132,11 @@ description: 監視＠可観測性の知見を記録しています。
 
 #### ▼ リアルユーザー監視 (RUM)
 
-特にページパフォーマンスに関するメトリクスのデータポイントを収集し、監視する。
+特にページ性能に関するメトリクスのデータポイントを収集し、監視する。
 
-Webページのローディング時に、Navigation-timing-APIに対してリクエストを送信すると、Webページパフォーマンスに関するメトリクスのデータポイントを収集できる。
+Webページのローディング時に、Navigation-timing-APIに対してリクエストを送信すると、Webページ性能に関するメトリクスのデータポイントを収集できる。
 
-JavaScriptにNavigation-timing-APIにリクエストを送信する処理を組み込むと、ページパフォーマンスに関するメトリクスのデータポイントを収集できる。
+JavaScriptにNavigation-timing-APIにリクエストを送信する処理を組み込むと、ページ性能に関するメトリクスのデータポイントを収集できる。
 
 > - https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
 
@@ -152,7 +152,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 特にサイト訪問後のユーザーエンゲージメントのデータポイントを収集し、監視する。
 
-リアルユーザー監視の一種ともみなせるが、パフォーマンスの監視が主目的ではなく、リアルユーザー監視と補完し合う監視方法である。
+リアルユーザー監視の一種ともみなせるが、性能の監視が主目的ではなく、リアルユーザー監視と補完し合う監視方法である。
 
 > - https://blog.uptrends.com/web-performance/rum-and-google-analytics-understanding-the-difference/
 > - https://developer.akamai.com/blog/2017/03/29/RUM-data-google-analytics
@@ -215,11 +215,11 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 > - https://prometheus.io/docs/concepts/metric_types/
 
-#### ▼ パフォーマンス (APM)
+#### ▼ 性能 (APM)
 
-『APM (アプリケーションパフォーマンス監視) 』ともいう。
+『APM (アプリケーション性能監視) 』ともいう。
 
-特にパフォーマンスに関わるメトリクス (例：CPU使用率、レスポンス時間、分散トレースにおけるマイクロサービス間の通信速度、エラー率、リクエスト数、連続稼働時間) のデータポイントを収集し、監視する。
+特に性能に関わるメトリクス (例：CPU使用率、レスポンス時間、分散トレースにおけるマイクロサービス間の通信速度、エラー率、リクエスト数、連続稼働時間) のデータポイントを収集し、監視する。
 
 > - https://aws.amazon.com/what-is/application-performance-monitoring/#:~:text=Application%20performance%20monitoring%20(APM)%20is,receive%20a%20positive%20application%20experience.
 

@@ -125,7 +125,7 @@ data:
   config.yaml: |
     external_services:
       custom_dashboards:
-        # Kialiのパフォーマンスが悪い場合は、自動て検出を無効化する。
+        # Kialiの性能が悪い場合は、自動検出を無効化する。
         # https://kiali.io/docs/faq/general/#why-is-the-workload-or-application-detail-page-so-slow-or-not-responding
         discovery_enabled: false
         enabled: true

@@ -394,7 +394,7 @@ jsonPayload.traceId="<トレースID>"
 
 分散トレースを収集すると、マイクロサービス間の通信速度を可視化できる。
 
-例えば、特定のマイクロサービス間で通信速度が低ければ、その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、パフォーマンスに問題がないかを調査する必要がある。
+例えば、特定のマイクロサービス間で通信速度が低ければ、その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 

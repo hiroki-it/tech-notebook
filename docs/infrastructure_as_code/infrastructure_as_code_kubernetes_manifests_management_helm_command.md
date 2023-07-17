@@ -88,7 +88,7 @@ $ helm env
 
 # Helmのバイナリファイルの場所
 HELM_BIN="/usr/local/bin/helm"
-# CRDのパフォーマンス制限
+# CRDの性能制限
 HELM_BURST_LIMIT="100"
 # Helmのキャッシュファイルの場所
 HELM_CACHE_HOME="/.cache/helm"

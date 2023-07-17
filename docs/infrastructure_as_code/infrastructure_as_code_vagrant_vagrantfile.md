@@ -366,15 +366,15 @@ end
 
 > - https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
-ホストと仮想環境間のファイルの入出力の速度差によって、パフォーマンスに差がある。
+ホストと仮想環境間のファイルの入出力の速度差によって、性能に差がある。
 
-以下のリンクで、ロードテストを実施したところ、『`RSync > SMB > VirtualBox共有ディレクトリ`』の順でパフォーマンスが良かった。
+以下のリンクで、ロードテストを実施したところ、『`RSync > SMB > VirtualBox共有ディレクトリ`』の順で性能が良かった。
 
 > - http://tech.respect-pal.jp/vagrant-synced_folder-type/
 
 また、『`RSync > NFS`』『`NFS > SMB`』である。
 
-これらから、おおよそ『`RSync > NFS > SMB > VirtualBox共有ディレクトリ`』の順でパフォーマンスが良くなると考えておけばよい。
+これらから、おおよそ『`RSync > NFS > SMB > VirtualBox共有ディレクトリ`』の順で性能が良くなると考えておけばよい。
 
 > - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
 > - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/

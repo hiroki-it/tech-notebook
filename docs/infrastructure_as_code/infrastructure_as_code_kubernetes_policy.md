@@ -922,9 +922,21 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 ホストCluster上に仮想Clusterを作成し、テナントを実装する。
 
+仮想Cluster間でコントロールプレーンは分離されている。
+
 > - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
-> - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
 > - https://www.linkedin.com/pulse/kubernetes-virtual-clusters-enabling-hard-cost-gokul-chandra/
+> - https://loft.sh/blog/kubernetes-multi-tenancy-why-virtual-clusters-are-the-best-solution/
+
+#### ▼ 仮想Clusterプロビジョニングツール
+
+- VirtualCluster
+- vcluster
+- kcp
+
+> - https://github.com/kubernetes-retired/multi-tenancy/tree/master/incubator/virtualcluster
+> - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
+> - https://github.com/kcp-dev/kcp
 
 <br>
 
