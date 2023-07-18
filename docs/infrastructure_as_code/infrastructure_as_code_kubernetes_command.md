@@ -17,9 +17,11 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 ### セットアップ
 
-#### ▼ `~/.kube/config`ファイル
+#### ▼ `kubeconfig`ファイル
 
-`kubectl`コマンドは、`~/.kube`以下にある`config`ファイルに設定されたClusterの認証情報を基に、kube-apiserverにアクセスする。
+`~/.kube/config`配下にあり、Clusterの認証情報が定義されている。
+
+`kubectl`コマンドは、`kubeconfig`ファイル上のClusterの認証情報を基に、kube-apiserverにアクセスする。
 
 #### ▼ configシンボリックリンク、--kubeconfig
 
@@ -153,7 +155,7 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 
 #### ▼ configとは
 
-`~/.kube/config`ファイルのパラメーターを操作する。
+`kubeconfig`ファイルのパラメーターを操作する。
 
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
@@ -206,7 +208,7 @@ $ kubectl config use-context <ClusterのARN>
 
 #### ▼ view
 
-パラメーターのデフォルト値が設定された`~/.kube/config`ファイルを取得する。
+パラメーターのデフォルト値が設定された`kubeconfig`ファイルを取得する。
 
 **＊例＊**
 

@@ -1349,7 +1349,7 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。
 
-クライアントの認証に必要なクライアント証明書は、`~/.kube/config`ファイルに登録する必要がある。
+クライアントの認証に必要なクライアント証明書は、`kubeconfig`ファイルに登録する必要がある。
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/

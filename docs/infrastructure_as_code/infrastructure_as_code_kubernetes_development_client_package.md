@@ -27,7 +27,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。
 
 ### セットアップ
 
-kube-apiserverの認証/認可を通過するために、`~/.kube/config`ファイルをコンテナにマウントする必要がある。
+kube-apiserverの認証/認可を通過するために、`kubeconfig`ファイルをコンテナにマウントする必要がある。
 
 > - https://nishipy.com/archives/1363
 

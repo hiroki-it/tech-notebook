@@ -146,7 +146,7 @@ module "eks" {
 
 ### EKS Clusterの認証情報の追加
 
-`kubectl`コマンドでEKS Clusterを操作するためには、`~/.kube/config`ファイルへClusterの認証情報を登録する必要がある。
+`kubectl`コマンドでEKS Clusterを操作するためには、`kubeconfig`ファイルへClusterの認証情報を登録する必要がある。
 
 `【１】`
 
@@ -158,7 +158,7 @@ $ aws configure
 
 `【２】`
 
-: EKS Clusterの名前を指定して、Clusterの認証情報を登録する。
+: EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの認証情報を登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -517,7 +517,7 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 
 `【１】`
 
-: EKS Clusterの名前を指定して、Clusterの認証情報を登録する。
+: EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの認証情報を登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster

@@ -592,7 +592,7 @@ data:
 
 ArgoCDがClusterをポーリングするためには、ArgoCDにClusterの認証情報を登録する必要がある。
 
-これは、ローカルマシンで`kubectl`コマンドを実行する時に、`~/.kube/config`ファイルにClusterの認証情報を登録することと同じである。
+これは、ローカルマシンで`kubectl`コマンドを実行する時に、`kubeconfig`ファイルにClusterの認証情報を登録することと同じである。
 
 `【１】`
 

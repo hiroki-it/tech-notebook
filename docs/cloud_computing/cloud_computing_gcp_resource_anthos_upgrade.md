@@ -91,7 +91,7 @@ baremetal
 
 $ ~/baremetal/bmctl upgrade cluster \
     -c <Cluster名> \
-    --kubeconfig <~/.kube/configファイルへのパス>
+    --kubeconfig <kubeconfigファイルへのパス>
 ```
 
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
@@ -258,7 +258,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 
 ```bash
 $ ./repository/asmcli-1140-0 install \
-    --kubeconfig <~/.kube/configファイルへのパス> \
+    --kubeconfig <kubeconfigファイルへのパス> \
     `# GCP以外 (オンプレ、AWS、Azure、など) で稼働させることを宣言する。` \
     --platform multicloud \
     --fleet_id <フリートのグループID> \

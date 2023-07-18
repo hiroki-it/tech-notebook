@@ -274,11 +274,11 @@ CIOpsでは、全ての手順をCIツールで実施する。
 
 KubernetesのCI/CDパイプラインにCIOpsを採用する場合、セキュリティ上の理由でCIOpsはアンチパターンとされている。
 
-リポジトリ側に`~/.kube/config`ファイルを置く必要がある。
+リポジトリ側に`kubeconfig`ファイルを置く必要がある。
 
-`~/.kube/config`ファイルは機密性が高く、漏洩させたくない。
+`kubeconfig`ファイルは機密性が高く、漏洩させたくない。
 
-ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、GPG、PGP、など) で`~/.kube/config`ファイルを暗号化しておき、これをCIパイプライン内に出力する。
+ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、GPG、PGP、など) で`kubeconfig`ファイルを暗号化しておき、これをCIパイプライン内に出力する。
 
 > - https://devops-blog.virtualtech.jp/entry/20220418/1650250499
 
