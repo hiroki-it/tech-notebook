@@ -42,6 +42,22 @@ baz:
   - quux: QUUX
 ```
 
+注意点として、`yq`コマンドはGoテンプレートに対応していない。
+
+> - https://github.com/mikefarah/yq/issues/636
+
+<br>
+
+### `{}`
+
+標準入力からファイル名を入力する。
+
+`find`コマンドと組み合わせて、複数のファイルを操作する場合に使用する。
+
+```bash
+$ find ./* -name "*.yaml" -exec yq 'del(.spec.foo)' -i {} \;
+```
+
 <br>
 
 ### keys
@@ -57,6 +73,16 @@ $ cat data.yaml | yq '.baz[] | keys'
 
 - qux
 - quux
+```
+
+<br>
+
+### -i
+
+指定したファイルのパスの値を変更する。
+
+```bash
+$ yq -i '.metadata.namespace = "foo"' manifest.yaml
 ```
 
 <br>

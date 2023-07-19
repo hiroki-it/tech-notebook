@@ -1824,26 +1824,44 @@ $ find ./* \
 
 <br>
 
-### `1s/^`
+### `<行数>s/^`
 
-ファイルの一行目にテキストを追加する。
+ハット (`^`) が先頭であることを表す。
+
+ファイルの指定した行の先頭にテキストを追加する。
 
 ```bash
+# １行目先頭に挿入しつつ、改行する
 $ find ./* \
     -name "*.md" \
-    -type f | xargs sed -i '1s/^/一行目にFooを挿入して改行\n\n/'
+    -type f | xargs sed -i '1s/^/Foo\n\n/g'
 ```
 
 ```bash
 # MacOSの場合
+# １行目先頭に挿入しつつ、改行する
 $ find ./* \
     -name "*.md" \
-    -type f | xargs sed -i '' '1s/^/一行目にFooを挿入して改行\n\n/'
+    -type f | xargs sed -i '' '1s/^/Foo\n\n/g'
 ```
 
 > - https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
 
 <br>
+
+### `<行数>s/$`
+
+ドル (`$`) が先頭であることを表す。
+
+ファイルの指定した行の末尾にテキストを追加する。
+
+```bash
+# MacOSの場合
+# ２行目末尾に挿入しする
+$ find ./* \
+    -name "*.md" \
+    -type f | xargs sed -i '' '2s/$/Foo/g'
+```
 
 ### 条件
 

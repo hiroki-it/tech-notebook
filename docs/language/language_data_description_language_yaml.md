@@ -157,7 +157,7 @@ command: >
 { "command" => "echo foo;echo bar\n" }
 ```
 
-`>`を使用すれば、一行の条件文を複数行で定義することもできる。
+`>`を使用すれば、１行の条件文を複数行で定義することもできる。
 
 ```yaml
 command: if [ -z "$VAR" ];then echo foo; else echo bar; fi

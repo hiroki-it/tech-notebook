@@ -267,7 +267,7 @@ th, td {
     border: 1px solid var(--md-typeset-table-color);
 }
 
-/* テーブル一行目 */
+/* テーブル１行目 */
 .md-typeset table:not([class]) th {
     background-color: #313131;
     color: white;

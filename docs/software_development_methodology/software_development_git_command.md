@@ -979,7 +979,7 @@ $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 pick b1b5c0f add #0 *****
 ```
 
-『挿入モード』に変更し、この一行の`pick`を`edit`に変更。
+『挿入モード』に変更し、この１行の`pick`を`edit`に変更。
 
 その後、
 
