@@ -15,7 +15,11 @@ description: checkov＠脆弱性テストの知見を記録しています。
 
 ## 01. checkovの仕組み
 
-報告されているIaC (例、Terraform、Kubernetes) の脆弱性レポートに基づいて、IaCの設定ファイルの実装方法に起因する脆弱性を検証する。
+様々なツールで報告されている脆弱性レポートに基づいて、そのツールの設定ファイルの実装方法に起因する脆弱性を検証する。
+
+検査できるツールは、`--framework`オプションの説明から確認できる。
+
+> - https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference
 
 <br>
 
@@ -35,13 +39,27 @@ $ brew install checkov
 
 ## 03. オプション
 
-### --directory
+### -d
 
 ディレクトリ内のファイルを再帰的に処理する。
 
 ```bash
-$ checkov --directory <ディレクトリ名>
+$ checkov -d <ディレクトリ名>
 ```
+
+> - https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference
+
+<br>
+
+### --framework
+
+検査するツール名を設定する。
+
+```bash
+$ checkov --framework <ツール名>
+```
+
+
 
 <br>
 
@@ -59,5 +77,7 @@ $ checkov -f <ファイル> --quiet
 $ helm template foo . --set secret.PASSWORD=test > manifest.yaml
   && checkov -f manifest.yaml --quiet
 ```
+
+> - https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference
 
 <br>
