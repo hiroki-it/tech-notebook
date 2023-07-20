@@ -58,6 +58,8 @@ baz:
 $ find ./* -name "*.yaml" -exec yq 'del(.spec.foo)' -i {} \;
 ```
 
+> - https://stackoverflow.com/a/75893234
+
 <br>
 
 ### keys

@@ -1863,6 +1863,10 @@ $ find ./* \
     -type f | xargs sed -i '' '2s/$/Foo/g'
 ```
 
+> - https://orebibou.com/ja/home/201602/20160227_001/
+
+<br>
+
 ### 条件
 
 #### ▼ OR条件

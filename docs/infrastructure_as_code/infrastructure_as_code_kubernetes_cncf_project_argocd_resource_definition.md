@@ -1418,26 +1418,28 @@ spec:
 
 #### ▼ syncPolicyとは
 
+Syncのオプションを設定する。
+
+#### ▼ automated
+
 GitOpsでのリポジトリ (例：GitHub、Helm、など) とKubernetesの間の自動Syncを設定する。
 
 ArgoCDはリポジトリを`3`分間ごとにポーリングしており、このタイミングでリポジトリとの間でマニフェストの状態を同期する。
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L113
-
-#### ▼ automated
-
-GitOpsでのリポジトリ (例：GitHub、Helm、など) とKubernetesの間の自動Syncを有効化するか否かを設定する。
-
 開発者には参照権限のみの認可スコープを付与し、ArgoCDの自動Syncを有効化すれば、開発者がデプロイできなくなり、安全性が増す。
 
-また、複数の実行環境ある場合に、Sync漏れを防げる。
+また、複数の実行環境やチームがある場合に、Sync漏れを防げる。
+
+一方で、App-Of-Appsを採用している場合に、親のApplicationの自動Syncが有効になっていると、子Applicationの設定値 (例：ターゲットブランチ) を変更できず煩わしい。
 
 | 設定項目     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 補足                                                                                                                                                                                                                 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `allowEmpty` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空 (配下にリソースがない) 状態を許可するか否かを設定する。                                                                                                                                                                                                                                                                                                                                                                     | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 | `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。`rev:<番号>`という表記があるKubernetesリソースは、`prune`を忘れて新旧バージョンが存在していることを表す。Applicationを削除する時には、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。 | - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                   |
 | `selfHeal`   | ArgoCD以外の方法でCluster内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動Syncする。デフォルトでは、ArgoCD以外の方法で変更しても、自動Syncは実行しない。                                                                                                                                                                                                                                                                                                                                                      | - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                              |
+
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L113
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

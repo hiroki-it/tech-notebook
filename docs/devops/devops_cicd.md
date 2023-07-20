@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CI/CD
-description: CI/CDの知見を記録しています。
+title: 【IT技術の知見】CI/CD＠技術的要素
+description: CI/CD＠技術的要素の知見を記録しています。
 ---
 
-# CI/CD
+# CI/CD＠技術的要素
 
 ## はじめに
 
