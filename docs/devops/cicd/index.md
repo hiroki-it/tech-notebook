@@ -38,8 +38,8 @@
 
 <br>
 
-### ChatOps
+### 自動レビュー
 
-* #### [︎tfnotify](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_chatops_reviewdog.html)
+* #### [︎tfnotify](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_reviewdog.html)
 
 <br>

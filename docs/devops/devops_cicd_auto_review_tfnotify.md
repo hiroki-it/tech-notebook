@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】tfnotify＠ChatOps
-description: tfnotify＠ChatOpsの知見を記録しています。
+title: 【IT技術の知見】tfnotify＠自動レビュー
+description: tfnotify＠自動レビューの知見を記録しています。
 ---
 
-# tfnotify＠ChatOps
+# tfnotify＠自動レビュー
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: tfnotify＠ChatOpsの知見を記録しています。
 
 ## 01. tfnotifyとは
 
-Terraform専用のChatOpsツールである。
+Terraform専用の自動レビューツールである。
 
 `terraform`コマンドの処理結果を、GitHubのプルリクエスト上にPOSTで送信する。
 

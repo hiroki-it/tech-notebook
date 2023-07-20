@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ReviewDog＠ChatOps
-description: ReviewDog＠ChatOpsの知見を記録しています。
+title: 【IT技術の知見】ReviewDog＠自動レビュー
+description: ReviewDog＠自動レビューの知見を記録しています。
 ---
 
-# ReviewDog＠ChatOps
+# ReviewDog＠自動レビュー
 
 ## はじめに
 
