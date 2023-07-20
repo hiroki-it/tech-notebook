@@ -679,7 +679,7 @@ nav:
       - ■ CDツール:
           - ArgoCD: devops/devops_cicd_cd_argocd.md
       - ■ ChatOps:
-          - tfnotify: devops/devops_cicd_chatops_reviewdog.md
+          - tfnotify: devops/devops_cicd_chatops_tfnotify.md
 
   - 🔎 可観測性:
       - observability/index.md
