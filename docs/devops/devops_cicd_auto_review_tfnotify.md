@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】tfnotify＠自動レビュー
-description: tfnotify＠自動レビューの知見を記録しています。
+title: 【IT技術の知見】tfnotify＠自動レビューツール
+description: tfnotify＠自動レビューツールの知見を記録しています。
 ---
 
-# tfnotify＠自動レビュー
+# tfnotify＠自動レビューツール
 
 ## はじめに
 
