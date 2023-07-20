@@ -678,7 +678,7 @@ nav:
               - コマンド: devops/devops_cicd_ci_skaffold_command.md
       - ■ CDツール:
           - ArgoCD: devops/devops_cicd_cd_argocd.md
-      - ■ 自動レビュー:
+      - ■ 自動レビューツール:
           - tfnotify: devops/devops_cicd_auto_review_tfnotify.md
 
   - 🔎 可観測性:
