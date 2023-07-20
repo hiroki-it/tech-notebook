@@ -15,11 +15,21 @@ description: ReviewDog＠自動レビューツールの知見を記録してい�
 
 ## 01. ReviewDogとは
 
-任意のツールの標準エラー出力の結果を、GitHubのプルリクエスト上にPOSTで送信する。
+任意のツールの標準エラー出力の結果を、宛先にPOSTで送信する。
 
 <br>
 
 ## 02. コマンド
+
+### -conf
+
+`reviewdog.yml`ファイルを指定して、`review`コマンドを実行する。
+
+```bash
+$ reviewdog -conf=.reviewdog.yml
+```
+
+<br>
 
 ### -f
 
@@ -40,7 +50,7 @@ $ ./vendor/bin/phpstan analyse --error-format=raw --no-progress -l 5 index.php \
 
 #### ▼ --listとは
 
-ReviewDogがコメントを送信する時の組み込みフォーマットを表示する。
+宛先に送信する組み込みのエラーフォーマットを表示する。
 
 `-f`オプションで指定できる。
 
@@ -62,8 +72,48 @@ yamllint        (yamllint -f parsable) A linter for YAML files                  
 
 ## 03. `.reviewdog.yml`ファイル
 
-```yaml
+`reviewdog`コマンドのオプションを宣言的に設定できる。
 
+```yaml
+runner:
+  golint:
+    cmd: golint $(go list ./... | grep -v /vendor/)
+    format: golint
+    level: warning
+  govet:
+    cmd: go vet $(go list ./... | grep -v /vendor/)
+    format: govet
+  errcheck:
+    cmd: errcheck -asserts -ignoretests -blank $(go list ./... | grep -v /vendor/)
+    errorformat:
+      - "%f:%l:%c:%m"
+    level: warning
+  staticcheck:
+    cmd: staticcheck $(go list ./... | grep -v /vendor/)
+    errorformat:
+      - "%f:%l:%c: %m"
+  misspell:
+    cmd: misspell $(git ls-files)
+    errorformat:
+      - "%f:%l:%c: %m"
+  unparam:
+    cmd: unparam $(go list ./... | grep -v /vendor/)
+    errorformat:
+      - "%f:%l:%c: %m"
+  revive:
+    cmd: revive -config=.revive.toml $(go list ./... | grep -v /vendor/)
+    format: golint
+    level: warning
+  golangci:
+    cmd: golangci-lint run --out-format=line-number ./...
+    errorformat:
+      - '%E%f:%l:%c: %m'
+      - '%E%f:%l: %m'
+      - '%C%.%#'
+    level: warning
 ```
+
+> - https://github.com/reviewdog/reviewdog/tree/master#reviewdog-config-file
+> - https://github.com/reviewdog/reviewdog/blob/master/.reviewdog.yml
 
 <br>
