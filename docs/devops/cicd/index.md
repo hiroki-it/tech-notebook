@@ -40,7 +40,7 @@
 
 ### 自動レビューツール
 
-* #### [ReviewDog](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_reviewdog.html)
+* #### [reviewdog](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_reviewdog.html)
 * #### [︎tfnotify](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_tfnotify.html)
 
 <br>

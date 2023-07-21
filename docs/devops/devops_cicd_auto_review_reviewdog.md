@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ReviewDog＠自動レビューツール
-description: ReviewDog＠自動レビューツールの知見を記録しています。
+title: 【IT技術の知見】reviewdog＠自動レビューツール
+description: reviewdog＠自動レビューツールの知見を記録しています。
 ---
 
-# ReviewDog＠自動レビューツール
+# reviewdog＠自動レビューツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ReviewDog＠自動レビューツールの知見を記録してい�
 
 <br>
 
-## 01. ReviewDogとは
+## 01. reviewdogとは
 
 任意のツールの標準エラー出力の結果を、宛先にPOSTで送信する。
 

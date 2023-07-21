@@ -27,6 +27,14 @@ CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナ�
 
 > - https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
+tfnotifyをより強化したtfcmtというツールがある。
+
+> - https://github.com/suzuki-shunsuke/tfcmt
+
+tfnotifyもtfcmtもGitHubのAPIにしか対応しておらず、GitLabの場合はtfcmt-gitlabを使用すると良い。
+
+> - https://github.com/hirosassa/tfcmt-gitlab
+
 <br>
 
 ## 02. コマンド
