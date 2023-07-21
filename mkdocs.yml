@@ -679,7 +679,7 @@ nav:
       - ■ CDツール:
           - ArgoCD: devops/devops_cicd_cd_argocd.md
       - ■ 自動レビューツール:
-          - ReviewDog: devops/devops_cicd_auto_review_reviewdog.md
+          - reviewdog: devops/devops_cicd_auto_review_reviewdog.md
           - tfnotify: devops/devops_cicd_auto_review_tfnotify.md
 
   - 🔎 可観測性:
