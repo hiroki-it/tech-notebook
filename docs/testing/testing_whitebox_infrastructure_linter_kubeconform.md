@@ -15,6 +15,8 @@ description: kubeconform＠文法の誤りテストの知見を記録してい�
 
 ## 01. kubeconformの仕組み
 
+### 検出項目
+
 Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検出する。
 
 <br>

@@ -15,7 +15,11 @@ description: confest＠実装ポリシー違反の知見を記録しています
 
 ## 01. confestの仕組み
 
-Regoの実装ポリシー定義に基づいて、IaC (例：Terraform、Kubernetes、Dockerfile、など) の設定ファイルの実装ポリシー違反を検証する。
+### 検出項目
+
+Regoの実装ポリシー定義に基づいて、様々なツールの設定ファイルの実装ポリシー違反を検証する。
+
+ビルトインの実装ポリシーを持っていない。
 
 > - https://github.com/open-policy-agent/conftest
 > - https://www.conftest.dev/examples/

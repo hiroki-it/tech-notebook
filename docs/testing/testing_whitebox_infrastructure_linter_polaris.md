@@ -15,7 +15,9 @@ description: polaris＠ベストプラクティス違反の知見を記録して
 
 ## 01. polarisの仕組み
 
-組み込みのベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：脆弱性、効率性、信頼性、など) を検証する。
+### 検出項目
+
+一般に知られているベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：脆弱性、効率性、信頼性、など) を検証する。
 
 > - https://polaris.docs.fairwinds.com/checks/security/
 > - https://polaris.docs.fairwinds.com/checks/efficiency/

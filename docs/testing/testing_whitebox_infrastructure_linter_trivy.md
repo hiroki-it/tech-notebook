@@ -15,7 +15,11 @@ description: trivy＠脆弱性テストの知見を記録しています。
 
 ## 01. trivyの仕組み
 
-報告されているIaC (例、Terraform、Kubernetes、Dockerfile、など) の脆弱性レポートに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
+### 検出項目
+
+様々なツールで報告された脆弱性レポートに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
+
+Regoでカスタムポリシーを実装できる。
 
 <br>
 
@@ -54,8 +58,8 @@ $ trivy config --exit-code 1 <ファイル>
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template foo . --set secret.PASSWORD=test > manifest.yaml
-  && trivy config --exit-code 1 --debug manifest.yaml
+$ helm template foo . --set secret.PASSWORD=test > foo.yaml
+    && trivy config --exit-code 1 --debug foo.yaml
 ```
 
 ### ▼ --severity

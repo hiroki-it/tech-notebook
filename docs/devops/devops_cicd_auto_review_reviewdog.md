@@ -55,7 +55,7 @@ $ ./vendor/bin/phpstan analyse --error-format=raw --no-progress -l 5 index.php \
 
 #### ▼ --listとは
 
-宛先に送信する組み込みのエラーフォーマットを表示する。
+宛先に送信するビルトインのエラーフォーマットを表示する。
 
 `-f`オプションで指定できる。
 

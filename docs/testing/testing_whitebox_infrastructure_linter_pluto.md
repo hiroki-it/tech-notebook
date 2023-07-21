@@ -15,6 +15,8 @@ description: pluto＠非推奨apiVersionテストの知見を記録していま�
 
 ## 01. plutoの仕組み
 
+### 検出項目
+
 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。
 
 <br>

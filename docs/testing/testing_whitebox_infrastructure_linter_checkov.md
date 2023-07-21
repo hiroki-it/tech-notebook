@@ -15,7 +15,15 @@ description: checkov＠脆弱性テストの知見を記録しています。
 
 ## 01. checkovの仕組み
 
-様々なツールで報告されている脆弱性レポートに基づいて、そのツールの設定ファイルの実装方法に起因する脆弱性を検証する。
+### 検出内容
+
+様々なツールで報告された脆弱性レポートに基づいて、そのツールの設定ファイルの実装方法に起因する脆弱性を検証する。
+
+PythonやYAMLでカスタムポリシーを実装できる。
+
+<br>
+
+### 対象ツール
 
 検査できるツールは、`--framework`オプションの説明から確認できる。
 
@@ -24,6 +32,8 @@ description: checkov＠脆弱性テストの知見を記録しています。
 <br>
 
 ## 02. セットアップ
+
+### インストール
 
 ```bash
 $ pip3 install checkov
@@ -38,6 +48,18 @@ $ brew install checkov
 <br>
 
 ## 03. オプション
+
+### --compact
+
+問題のあるコード箇所を非表示にして、結果を表示する。
+
+`compact`オプションを有効化しない場合、問題のあるコード箇所を表示する。
+
+```bash
+$ checkov -f foo.yaml --compact
+```
+
+<br>
 
 ### -d
 
@@ -73,7 +95,7 @@ $ checkov -f <ファイル>
 
 ```bash
 $ helm template foo . --set secret.PASSWORD=test > foo.yaml
-  && checkov -f foo.yaml
+    && checkov -f foo.yaml
 ```
 
 > - https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference
