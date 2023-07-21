@@ -328,6 +328,7 @@ nav:
                   - kube-score: testing/testing_whitebox_infrastructure_linter_kube_score.md
                   - kubeconform: testing/testing_whitebox_infrastructure_linter_kubeconform.md
                   - pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
+                  - polaris: testing/testing_whitebox_infrastructure_linter_polaris.md
                   - trivy: testing/testing_whitebox_infrastructure_linter_trivy.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
