@@ -12,14 +12,19 @@
 > * ##### [︎Goの場合](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go.html)
 * #### <u>インフラ</u>
 > * ##### [静的解析ツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter.html)
-> * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_checkov.html)
-> * ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_confest.html)
-> * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kics.html)
-> * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kube_score.html)
-> * ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kubeconform.html)
-> * ##### [pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_pluto.html)
-> * ##### [polaris.html](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_polaris.html)
-> * ##### [trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_trivy.html)
+> * ##### <u>文法の誤りテスト</u>
+> > * ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kubeconform.html)
+> * ##### <u>実装ポリシー違反テスト</u>
+> > * ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_confest.html)
+> * ##### <u>ベストプラクティス違反テスト</u>
+> > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_polaris.html)
+> * ##### <u>非推奨違反テスト</u>
+> > * ##### [pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_pluto.html)
+> * ##### <u>脆弱性テスト</u>
+> > * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_checkov.html)
+> > * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kics.html)
+> > * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kube_score.html)
+> > * ##### [trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_trivy.html)
 
 ### ブラックボックステスト
 

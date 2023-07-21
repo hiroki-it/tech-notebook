@@ -43,9 +43,7 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 <br>
 
-## 03. 非推奨テスト
-
-### KubernetesのapiVersion
+## 03. 非推奨apiVersionテスト
 
 - pluto
 
