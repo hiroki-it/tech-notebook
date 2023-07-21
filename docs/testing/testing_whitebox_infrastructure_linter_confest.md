@@ -38,27 +38,46 @@ $ brew install conftest
 
 <br>
 
-### 実装ポリシーの定義
+## 実装ポリシー
+
+### 重要度レベル
+
+#### ▼ deny
+
+実装ポリシーに違反した場合に、終了コード `1` を出力する。
 
 ```erlang
 package main
 
 deny[msg] {
   input.kind == "Deployment"
+
   not input.spec.template.spec.securityContext.runAsNonRoot
 
   msg := "Containers must not run as root"
 }
-
-deny[msg] {
-  input.kind == "Deployment"
-  not input.spec.selector.matchLabels.app
-
-  msg := "Containers must provide app label for pod selectors"
-}
 ```
 
 > - https://github.com/open-policy-agent/conftest
+> - https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B
+
+#### ▼ violation
+
+実装ポリシーに違反した場合に、終了コード `0` を出力する。
+
+```erlang
+package main
+
+violation[msg] {
+  input.kind == "Deployment"
+
+  not input.spec.template.spec.securityContext.runAsNonRoot
+
+  msg := "Containers must not run as root"
+}
+```
+
+> - https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B
 
 <br>
 
@@ -66,10 +85,16 @@ deny[msg] {
 
 ### test
 
-IaCの設定ファイルを検査する。
+#### ▼ testとは
+
+設定ファイルを検査する。
+
+#### ▼ -p
+
+Regoファイルのあるディレクトリ名を設定する。
 
 ```bash
-$ conftest test deployment.yaml
+$ conftest test deployment.yaml -p ./policies
 FAIL - deployment.yaml - Containers must not run as root
 FAIL - deployment.yaml - Containers must provide app label for pod selectors
 
