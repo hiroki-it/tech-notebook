@@ -59,25 +59,35 @@ $ checkov -d <ディレクトリ名>
 $ checkov --framework <ツール名>
 ```
 
-
-
 <br>
 
 ### -f
 
-単一のファイルを再帰的に処理する。
+単一のファイルを処理する。
 
 ```bash
-$ checkov -f <ファイル> --quiet
+$ checkov -f <ファイル>
 ```
 
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template foo . --set secret.PASSWORD=test > manifest.yaml
-  && checkov -f manifest.yaml --quiet
+$ helm template foo . --set secret.PASSWORD=test > foo.yaml
+  && checkov -f foo.yaml
 ```
 
 > - https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference
+
+<br>
+
+### quiet
+
+失敗した項目のみを結果として出力する。
+
+`--quiet`オプションを有効化しない場合は、成功と失敗の両方の項目を出力する。
+
+```bash
+$ checkov -f foo.yaml --quiet
+```
 
 <br>

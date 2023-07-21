@@ -35,15 +35,20 @@ $ reviewdog -conf=.reviewdog.yml
 
 #### ▼ -fとは
 
-標準エラー出力のフォーマットを設定する。
+`reviewdog`コマンドに渡す時の標準出力/標準エラー出力のフォーマットを設定する。
+
+このフォーマットに基づいて、`reviewdog`コマンドは処理結果を認識する。
 
 #### ▼ phpstanの場合
+
+PHPStanが標準出力/標準エラー出力に出力する結果のフォーマットを設定する。
 
 ```bash
 $ ./vendor/bin/phpstan analyse --error-format=raw --no-progress -l 5 index.php \
     | reviewdog -reporter=github-pr-review -f=phpstan
 ```
 
+> - https://qiita.com/ishii1648/items/4878b01823113b50128d#%E5%AE%9F%E8%A3%85
 > - https://r-tech14.com/reviewdog/#toc2
 
 ### --list
@@ -107,9 +112,9 @@ runner:
   golangci:
     cmd: golangci-lint run --out-format=line-number ./...
     errorformat:
-      - '%E%f:%l:%c: %m'
-      - '%E%f:%l: %m'
-      - '%C%.%#'
+      - "%E%f:%l:%c: %m"
+      - "%E%f:%l: %m"
+      - "%C%.%#"
     level: warning
 ```
 
