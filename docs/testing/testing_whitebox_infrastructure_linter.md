@@ -38,6 +38,7 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 - tflint
 
 > - https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools
+> - https://github.com/kubevious/cli#-key-capabilities
 > - https://tech.andpad.co.jp/entry/2022/08/30/100000
 > - https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6
 

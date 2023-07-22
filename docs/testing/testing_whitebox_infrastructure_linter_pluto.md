@@ -45,8 +45,8 @@ CI上でこれを実行する場合、リポジトリ内のマニフェストを
 $ helm template fluentd . --set secret.GCP_CREDENTIALS=test \
     | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
 
-NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
+foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
 ```bash
@@ -61,8 +61,8 @@ foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v
 $ helm template foo-chart -f values-prd.yaml \
     | pluto detect-helm -t k8s=<Kubernetesのバージョン> - -o wide
 
-NAME       NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
+foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
 <br>

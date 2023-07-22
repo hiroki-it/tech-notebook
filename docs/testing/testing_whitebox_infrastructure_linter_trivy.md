@@ -62,7 +62,7 @@ $ helm template foo . --set secret.PASSWORD=test > foo.yaml
     && trivy config --exit-code 1 --debug foo.yaml
 ```
 
-### ▼ --severity
+#### ▼ --severity
 
 検出する最低の重要度レベルを設定する。
 
