@@ -893,7 +893,7 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-### X-as-a-Serviceモデル
+### X-as-a-Service
 
 後述する。
 
@@ -904,11 +904,11 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09-02. Clusters-as-a-Serviceモデル
+## 09-02. Clusters-as-a-Service
 
-### Clusters-as-a-Serviceモデルとは
+### Clusters-as-a-Serviceとは
 
-各Clusterをテナントとして扱うモデル。
+テナントごとにClusterを作成する。
 
 <br>
 
@@ -916,7 +916,7 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 #### ▼ 実Cluster単位のテナントとは
 
-実際のCluster自体を分割し、各Clusterをテナントとする。
+テナントごとに、独立したClusterを提供する。
 
 一番簡単である。
 
@@ -932,13 +932,11 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09-03. Control-planes-as-a-Serviceモデル
+## 09-03. Control-planes-as-a-Service
 
-### Control-planes-as-a-Serviceモデルとは
+### Control-planes-as-a-Serviceとは
 
-仮想Clusterをテナントとして扱うモデル。
-
-各仮想Clusterがコントロールプレーンを持ち、これらが独立したコントロールプレーンのコンポーネントを持つため、『Control-planes-as-a-Serviceモデル』という。
+テナントごとに、独立したコントロールプレーンを提供する。
 
 <br>
 
@@ -946,7 +944,9 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 #### ▼ 仮想Cluster単位のテナントとは
 
-ホストCluster上に仮想Clusterを作成し、各仮想Clusterをテナントとする。
+ホストCluster上にテナントごとに仮想Clusterを作成する。
+
+各仮想Clusterがコントロールプレーンを持ち、これらが独立したコントロールプレーンのコンポーネントを持つ。
 
 仮想Cluster間でコントロールプレーンは分離されている。
 
@@ -956,10 +956,12 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 #### ▼ 仮想Clusterプロビジョニングツール
 
-- virtualcluster
-- vcluster
+アルファベット順
+
 - kcp
 - tensile-kube
+- vcluster
+- virtual cluster
 
 > - https://github.com/kubernetes-retired/multi-tenancy/tree/master/incubator/virtualcluster
 > - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
@@ -976,11 +978,11 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09-03. Namespaces-as-a-Serviceモデル
+## 09-03. Namespaces-as-a-Service
 
-### Namespaces-as-a-Serviceモデルとは
+### Namespaces-as-a-Serviceとは
 
-各Namespaceをテナントとして扱うモデル。
+テナントごとに、独立したNamespaceを提供する。
 
 <br>
 
@@ -998,7 +1000,7 @@ Namespaceに親子関係を定義し、各Namespaceをテナントとする。
 
 #### ▼ Namespace単位のテナントとは
 
-単一のClusterをNamespaceで分割する。
+単一のCluster上に、テナントごとにNamespaceを作成する。
 
 #### ▼ 実行環境別
 
@@ -1077,12 +1079,14 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 
 #### ▼ カスタムリソーステナントとは
 
-テナントカスタムリソースを使用して、Namespaces-as-a-Serviceモデルなマルチテナントを実現する。
+テナントカスタムリソースを使用して、Namespaces-as-a-Serviceなマルチテナントを実現する。
+
+アルファベット順
 
 - capsule
 - kiosk
-- kubezoo
 - kubeplus
+- kubezoo
 
 > - https://github.com/clastix/capsule
 > - https://github.com/loft-sh/kiosk
