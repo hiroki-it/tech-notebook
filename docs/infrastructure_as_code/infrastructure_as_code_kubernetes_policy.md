@@ -1124,6 +1124,10 @@ spec:
     - kind: Group
       name: foo-team
       apiGroup: rbac.authorization.k8s.io
+  space:
+    templateInstances:
+      - spec:
+          template: space-template
 ```
 
 Space (foo-space) を作成し、Account (`foo-account`) に所属させる。
@@ -1143,13 +1147,7 @@ spec:
 apiVersion: config.kiosk.sh/v1alpha1
 kind: Template
 metadata:
-  name: space-restrictions
-parameters:
-  - name: DEFAULT_CPU_LIMIT
-    value: "1"
-  - name: DEFAULT_CPU_REQUESTS
-    value: "0.5"
-    validation: "^[0-9]*\\.?[0-9]+$"
+  name: space-template
 resources:
   manifests:
     - kind: NetworkPolicy
@@ -1169,9 +1167,9 @@ resources:
       spec:
         limits:
           - default:
-              cpu: "${{DEFAULT_CPU_LIMIT}}"
+              cpu: 1
             defaultRequest:
-              cpu: "${{DEFAULT_CPU_REQUESTS}}"
+              cpu: 0.5
             type: Container
 ```
 
