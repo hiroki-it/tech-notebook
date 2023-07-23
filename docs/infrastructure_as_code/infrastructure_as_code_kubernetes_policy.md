@@ -869,7 +869,6 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 > - https://kubernetes.io/docs/concepts/security/multi-tenancy/
 
-
 <br>
 
 ### ハード vs ソフト
@@ -894,13 +893,14 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-### as-a-Serviceモデル
+### X-as-a-Serviceモデル
 
 後述する。
 
 > - https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes/
 > - https://www.cognixia.com/blog/what-are-the-three-tenancy-models-for-kubernetes/
-> - https://www.slideshare.net/sanjeevrampal9/kubecon-us-2019-kubernetes-multitenancy-wg-deep-dive#10
+> - https://medium.com/eureka-engineering/pairs-eureka-%E3%81%AEeks-production%E7%92%B0%E5%A2%83%E3%81%AE%E8%A8%AD%E8%A8%88%E3%81%A8%E9%81%8B%E7%94%A8%E3%81%AE%E3%81%8A%E8%A9%B1-74608ff640df
+> - https://tag-app-delivery.cncf.io/blog/clusters-for-all-cloud-tenants/
 
 <br>
 
@@ -908,13 +908,15 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 ### Clusters-as-a-Serviceモデルとは
 
+各Clusterをテナントとして扱うモデル。
+
 <br>
 
 ### 実Cluster分割の場合
 
 #### ▼ 実Cluster単位のテナントとは
 
-実際のCluster自体を分割し、テナントを実装する。
+実際のCluster自体を分割し、各Clusterをテナントとする。
 
 一番簡単である。
 
@@ -934,13 +936,17 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 ### Control-planes-as-a-Serviceモデルとは
 
+仮想Clusterをテナントとして扱うモデル。
+
+各仮想Clusterがコントロールプレーンを持ち、これらが独立したコントロールプレーンのコンポーネントを持つため、『Control-planes-as-a-Serviceモデル』という。
+
 <br>
 
 ### 仮想Clusterの場合
 
 #### ▼ 仮想Cluster単位のテナントとは
 
-ホストCluster上に仮想Clusterを作成し、テナントを実装する。
+ホストCluster上に仮想Clusterを作成し、各仮想Clusterをテナントとする。
 
 仮想Cluster間でコントロールプレーンは分離されている。
 
@@ -950,13 +956,15 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 #### ▼ 仮想Clusterプロビジョニングツール
 
-- VirtualCluster
+- virtualcluster
 - vcluster
 - kcp
+- tensile-kube
 
 > - https://github.com/kubernetes-retired/multi-tenancy/tree/master/incubator/virtualcluster
 > - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
 > - https://github.com/kcp-dev/kcp
+> - https://github.com/virtual-kubelet/tensile-kube
 
 <br>
 
@@ -972,11 +980,15 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 ### Namespaces-as-a-Serviceモデルとは
 
+各Namespaceをテナントとして扱うモデル。
+
+<br>
+
 ### 階層Namespaceの場合
 
 #### ▼ 階層Namespace単位のテナントとは
 
-Namespaceに親子関係を定義し、テナントを実装する。
+Namespaceに親子関係を定義し、各Namespaceをテナントとする。
 
 > - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
 
@@ -1122,7 +1134,7 @@ metadata:
 
 > - https://capsule.clastix.io/docs/general/tutorial/#assign-multiple-tenants
 
-#### ▼ kiosk
+#### ▼ kioskの場合
 
 kioskでは、Accountというカスタムリソースを作成し、テナントを実装する。
 
