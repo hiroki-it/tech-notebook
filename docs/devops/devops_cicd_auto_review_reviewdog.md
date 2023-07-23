@@ -67,7 +67,7 @@ rdjsonl         Reviewdog Diagnostic JSONL Format (JSONL of Diagnostic message) 
 diff            Unified Diff Format                                                                                             - https://en.wikipedia.org/wiki/Diff#Unified_format
 
 ...
-                                                                                     - https://www.typescriptlang.org/
+
 tslint          An extensible linter for the TypeScript language                                                                - https://github.com/palantir/tslint
 typos           Source code spell checker                                                                                       - https://github.com/crate-ci/typos
 yamllint        (yamllint -f parsable) A linter for YAML files                                                                  - https://github.com/adrienverge/yamllint

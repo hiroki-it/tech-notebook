@@ -364,6 +364,8 @@ AとBは、『1』または『0』になり得るとする。
 各コンポーネントに対して実際のユーザーの一連の操作を模したリクエストを送信する。
 
 > - https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/test-e2e.md
+> - https://github.com/argoproj/argo-cd/blob/master/hack/test.sh
+> - https://github.com/argoproj/argo-cd/blob/5120026d154ee5e34a37535cac6275a6ea9e4091/Makefile#L131C41-L131C41
 
 #### ▼ フロントエンド系ツール
 
@@ -436,7 +438,6 @@ AとBは、『1』または『0』になり得るとする。
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices
-
 
 <br>
 

@@ -940,6 +940,14 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
+### カスタムリソーステナントの場合
+
+#### ▼ カスタムリソーステナントとは
+
+記入中...
+
+<br>
+
 ## 09-03. ソフトマルチテナンシー
 
 ### 階層Namespaceの場合
@@ -1031,18 +1039,104 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 
 <br>
 
-### ツール固有のテナントの場合
+### カスタムリソーステナントの場合
 
-#### ▼ ツール固有のテナントとは
+#### ▼ カスタムリソーステナントとは
 
-テナントカスタムリソースを使用して、単一のClusterを分割する。
+テナントカスタムリソースを使用して、ソフトマルチテナントを実現する。
 
-- Capsule
-- Kiosk
+- capsule
+- kiosk
 - kubeplus
 
 > - https://github.com/clastix/capsule
 > - https://github.com/loft-sh/kiosk
 > - https://github.com/cloud-ark/kubeplus
+> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy
+
+#### ▼ capsuleの場合
+
+capsuleでは、Tenantというカスタムリソースを作成し、テナントを実装する。
+
+Tenantには、複数のNamespaceが所属できる。
+
+![capsule_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capsule_architecture.png)
+
+> - https://capsule.clastix.io/docs/
+
+**＊実装例＊**
+
+fooチームが使用するfooテナント (`foo-tenant`) を作成する。
+
+```yaml
+apiVersion: capsule.clastix.io/v1beta2
+kind: Tenant
+metadata:
+  name: foo-tenant
+spec:
+  owners:
+    - name: foo-team
+      kind: Group
+```
+
+`capsule.clastix.io/tenant`キーを使用して、fooチームが操作するNamespaceをfooテナントに所属させる。
+
+```yaml
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: foo-1
+  labels:
+    capsule.clastix.io/tenant: foo-tenant
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: foo-2
+  labels:
+    capsule.clastix.io/tenant: foo-tenant
+```
+
+> - https://capsule.clastix.io/docs/general/tutorial/#assign-multiple-tenants
+
+#### ▼ kiosk
+
+kioskでは、Accountというカスタムリソースを作成し、テナントを実装する。
+
+SpaceはNamespaceと紐づいており、Namespace内の制限に関するKubernetesリソース (例：NetworkPolicy、LimitRange) を一括して設定できる。
+
+Accountは、Spaceを介して、複数のNamespaceを管理する。
+
+> - https://github.com/loft-sh/kiosk#workflow--interactions
+> - https://github.com/loft-sh/kiosk#3-working-with-spaces
+
+**＊実装例＊**
+
+fooチームが使用するfooテナント (`foo-account`) を作成する。
+
+```yaml
+apiVersion: tenancy.kiosk.sh/v1alpha1
+kind: Account
+metadata:
+  name: foo-account
+spec:
+  subjects:
+    - kind: Group
+      name: foo-team
+      apiGroup: rbac.authorization.k8s.io
+```
+
+Space (foo-space) を作成し、Account (`foo-account`) に所属させる。
+
+```yaml
+apiVersion: tenancy.kiosk.sh/v1alpha1
+kind: Space
+metadata:
+  name: foo-space
+spec:
+  account: foo-account
+```
+
+> - https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/
 
 <br>
