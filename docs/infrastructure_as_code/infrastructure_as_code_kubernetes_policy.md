@@ -868,21 +868,13 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 各Kubernetesリソースの処理範囲を制限するために、Kubernetesリソースをグルーピングする。
 
 > - https://kubernetes.io/docs/concepts/security/multi-tenancy/
-> - https://www.slideshare.net/sanjeevrampal9/kubecon-us-2019-kubernetes-multitenancy-wg-deep-dive#10
+
 
 <br>
 
-### ハードマルチテナント
+### ハード vs ソフト
 
-信頼できない開発者もClusterにアクセスする場合 (例：複数の協力会社がいる、Kubernetesをサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
-
-> - https://www.amazon.co.jp/dp/B072TS9ZQZ
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
-> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#hard-multi-tenancy
-
-<br>
-
-### ソフトマルチテナント
+#### ▼ ハードマルチテナンシー
 
 信頼できる開発者のみがClusterにアクセスする場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
 
@@ -892,9 +884,31 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 > - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
 > - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy
 
+#### ▼ ソフトマルチテナンシー
+
+信頼できない開発者もClusterにアクセスする場合 (例：複数の協力会社がいる、Kubernetesをサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
+
+> - https://www.amazon.co.jp/dp/B072TS9ZQZ
+> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
+> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#hard-multi-tenancy
+
 <br>
 
-## 09-02. ハードマルチテナンシー
+### as-a-Serviceモデル
+
+後述する。
+
+> - https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes/
+> - https://www.cognixia.com/blog/what-are-the-three-tenancy-models-for-kubernetes/
+> - https://www.slideshare.net/sanjeevrampal9/kubecon-us-2019-kubernetes-multitenancy-wg-deep-dive#10
+
+<br>
+
+## 09-02. Clusters-as-a-Serviceモデル
+
+### Clusters-as-a-Serviceモデルとは
+
+<br>
 
 ### 実Cluster分割の場合
 
@@ -913,6 +927,12 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 > - https://ranchermanager.docs.rancher.com/v2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps
 > - https://github.com/gardener/gardener
+
+<br>
+
+## 09-03. Control-planes-as-a-Serviceモデル
+
+### Control-planes-as-a-Serviceモデルとは
 
 <br>
 
@@ -948,7 +968,9 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09-03. ソフトマルチテナンシー
+## 09-03. Namespaces-as-a-Serviceモデル
+
+### Namespaces-as-a-Serviceモデルとは
 
 ### 階層Namespaceの場合
 
@@ -1043,16 +1065,17 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 
 #### ▼ カスタムリソーステナントとは
 
-テナントカスタムリソースを使用して、ソフトマルチテナントを実現する。
+テナントカスタムリソースを使用して、Namespaces-as-a-Serviceモデルなマルチテナントを実現する。
 
 - capsule
 - kiosk
+- kubezoo
 - kubeplus
 
 > - https://github.com/clastix/capsule
 > - https://github.com/loft-sh/kiosk
+> - https://github.com/kubewharf/kubezoo
 > - https://github.com/cloud-ark/kubeplus
-> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy
 
 #### ▼ capsuleの場合
 
