@@ -1103,7 +1103,7 @@ metadata:
 
 kioskでは、Accountというカスタムリソースを作成し、テナントを実装する。
 
-SpaceはNamespaceと紐づいており、Namespace内の制限に関するKubernetesリソース (例：NetworkPolicy、LimitRange) を一括して設定できる。
+SpaceはNamespaceと紐づいている。
 
 Accountは、Spaceを介して、複数のNamespaceを管理する。
 
@@ -1137,6 +1137,47 @@ spec:
   account: foo-account
 ```
 
+またTemplateを使用して、Namespace内の制限に関するKubernetesリソース (例：NetworkPolicy、LimitRange、など) を一括して設定する。
+
+```yaml
+apiVersion: config.kiosk.sh/v1alpha1
+kind: Template
+metadata:
+  name: space-restrictions
+parameters:
+  - name: DEFAULT_CPU_LIMIT
+    value: "1"
+  - name: DEFAULT_CPU_REQUESTS
+    value: "0.5"
+    validation: "^[0-9]*\\.?[0-9]+$"
+resources:
+  manifests:
+    - kind: NetworkPolicy
+      apiVersion: networking.k8s.io/v1
+      metadata:
+        name: deny-cross-ns-traffic
+      spec:
+        podSelector:
+          matchLabels:
+        ingress:
+          - from:
+              - podSelector: {}
+    - apiVersion: v1
+      kind: LimitRange
+      metadata:
+        name: space-limit-range
+      spec:
+        limits:
+          - default:
+              cpu: "${{DEFAULT_CPU_LIMIT}}"
+            defaultRequest:
+              cpu: "${{DEFAULT_CPU_REQUESTS}}"
+            type: Container
+```
+
+実装方法がなかなか複雑で、移行の実装方法は記入中...
+
 > - https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/
+> - https://github.com/loft-sh/kiosk#51-manifest-templates
 
 <br>
