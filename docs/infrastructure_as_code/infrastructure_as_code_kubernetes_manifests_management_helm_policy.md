@@ -498,15 +498,20 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 <br>
 
-## 06-02. CDパイプライン
+### チャートのブラックボックステスト
 
-### ブラックボックステストの実行環境
+#### ▼ ブラックボックステストの実行環境
 
 Helmで作成したマニフェストをClusterにデプロイし、動作を検証する。
 
-実際のClusterで検証してもよいし、CIにClusterに相当する実行環境を作成してもよい。
+実際のClusterで検証してもよいし、本番のCluster (例：AWS EKS、GCP GKE、Kind、など) に相当する実行環境 (例：Kind、K3s、Minikube、など) をCI上に作成してもよい。
+
+GitHub Actionsであれば、CI上にCluster構築するActionが提供されている。
 
 > - https://github.com/helm/kind-action
+> - https://github.com/medyagh/setup-minikube
+> - https://github.com/debianmaster/actions-k3s
+> - https://github.com/AbsaOSS/k3d-action
 
 #### ▼ 結合テスト
 
@@ -527,7 +532,7 @@ Helmで作成したマニフェストをClusterにデプロイし、動作を検
 
 > - https://camunda.com/blog/2022/03/test/
 
-<br>
+## 06-02. CDパイプライン
 
 ### デプロイ
 
