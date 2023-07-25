@@ -287,6 +287,8 @@ AWS EBSは、AWS EBS CSIドライバーが自動で作成するため、作成�
 
 要求するAWS EBSのタイプをStorageClassで指定する。
 
+`reclaimPolicy`が`Delete`になっているPersistentVolumeClaimを削除すれば、StorageClassがEBSもよしなに削除してくれる。
+
 **＊実装例＊**
 
 マニフェストまたはTerraformで定義する。
@@ -326,6 +328,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 }
 ```
 
+> - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 #### ▼ PersistentVolumeClaim

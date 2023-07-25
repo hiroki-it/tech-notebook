@@ -1263,7 +1263,7 @@ PVCの値が変われば、使用するPVを変えられる。
 
 #### ▼ StorageClassとは
 
-Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これのVolumeをPersistentVolumeClaimに提供する。
+Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。
 
 そのため、PersistentVolumeも合わせて作成する必要がある。
 
@@ -1276,7 +1276,9 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 
 #### ▼ AWS EBSを要求する場合
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html
+`reclaimPolicy`が`Delete`になっているPersistentVolumeClaimを削除すれば、StorageClassがAWS EBSもよしなに削除してくれる。
+
+> - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071
 
 <br>
 
