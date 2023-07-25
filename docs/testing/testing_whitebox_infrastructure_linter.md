@@ -32,8 +32,8 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 ベストプラクティスを幅広く検証するため、他のテスト (例：脆弱性テスト) と検査項目が重複する場合がある。
 
 - kube-linter
-- kubevious
 - kube-score
+- kubevious
 - polaris
 - tflint
 
@@ -54,15 +54,15 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 - checkov
 - kics
+- krane
 - kubeaudit
 - kube-bench
 - kube-hunter
 - kube-scan
 - kube-score
 - kubesec
-- krane
-- trivy
 - tfsec
+- trivy
 
 > - https://kubevious.io/blog/post/top-kubernetes-security-vulnerability-scanners
 > - https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools

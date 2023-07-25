@@ -428,3 +428,5 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 株式会社LACによるペネトレーションテストサービス
 
 ![ペネトレーションテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ペネトレーションテスト.png)
+
+<br>
