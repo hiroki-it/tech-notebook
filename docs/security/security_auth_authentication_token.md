@@ -93,13 +93,13 @@ const header = {
 
 必ず設定しなければならない『予約済みクレーム』と、ユーザー側が自由に定義できる『プライベートクレーム』がある。
 
-| 予約済みクレーム名     | 役割                      | 例         |
-| ---------------------- | ------------------------- | ---------- |
-| `sub`：Subject         | 一意な識別子を設定する。  | ユーザーID |
-| `iss`：Issuer          |                           |            |
-| `aud`：Audience        |                           |            |
-| `exp`：Expiration Time | JWTの有効期限を設定する。 |            |
-| `jti`：JWT ID          |                           |            |
+| パラメーター名 | 対応するクレーム | 役割                      | 例         |
+| -------------- | ---------------- | ------------------------- | ---------- |
+| `sub`          | Subject          | 一意な識別子を設定する。  | ユーザーID |
+| `iss`          | Issuer           |                           |            |
+| `aud`          | Audience         |                           |            |
+| `exp`          | Expiration Time  | JWTの有効期限を設定する。 |            |
+| `jti`          | JWT ID           |                           |            |
 
 ```javascript
 const payload = {
@@ -110,6 +110,8 @@ const payload = {
   iat: 1452565568,
 };
 ```
+
+> - https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0
 
 #### ▼ 署名のJSON型データの作成
 
