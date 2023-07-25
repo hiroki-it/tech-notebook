@@ -893,7 +893,7 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-### X-as-a-Service
+### X as-a-Service
 
 後述する。
 
@@ -904,9 +904,9 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09-02. Clusters-as-a-Service
+## 09-02. Clusters as-a-Service
 
-### Clusters-as-a-Serviceとは
+### Clusters as-a-Serviceとは
 
 テナントごとにClusterを作成する。
 
@@ -932,9 +932,9 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09-03. Control-planes-as-a-Service
+## 09-03. Control-planes as-a-Service
 
-### Control-planes-as-a-Serviceとは
+### Control-planes as-a-Serviceとは
 
 テナントごとに、独立したコントロールプレーンを提供する。
 
@@ -978,9 +978,9 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09-03. Namespaces-as-a-Service
+## 09-03. Namespaces as-a-Service
 
-### Namespaces-as-a-Serviceとは
+### Namespaces as-a-Serviceとは
 
 テナントごとに、独立したNamespaceを提供する。
 
@@ -1079,7 +1079,7 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 
 #### ▼ カスタムリソーステナントとは
 
-テナントカスタムリソースを使用して、Namespaces-as-a-Serviceなマルチテナントを実現する。
+テナントカスタムリソースを使用して、Namespaces as-a-Serviceなマルチテナントを実現する。
 
 アルファベット順
 

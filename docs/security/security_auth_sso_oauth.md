@@ -124,7 +124,7 @@ HOST: authorization-server.com # 認可サーバーのホスト
 ```yaml
 302 Found
 ---
-Location: https://www.免許証作成サイト.com/callback?<下表で説明>
+Location: https://www.免許証作成サイト.com/callback?code=<認可コード>&state=<任意の文字列>
 ```
 
 | クエリストリングのキーの種類 | 値           | 必須/任意                                                             |
@@ -143,8 +143,6 @@ Location: https://www.免許証作成サイト.com/callback?<下表で説明>
 `【７】`
 
 : 免許証作成サイトは、Facebookの認可サーバーに認可コードを送信する。
-
-> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
 
 ```yaml
 POST https://www.facebook.com/auth?
@@ -165,15 +163,15 @@ Content-Type: application/x-www-form-urlencoded
 | `client_id`        | クライアントID     | 条件により必須                                                                |
 | `client_secret`    | シークレット値     | 条件により必須                                                                |
 
+> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
+
 `【８】`
 
 : Facebookの認可サーバーは、アクセストークンを免許証作成サイトに送信する。
 
 `【９】`
 
-: 免許証作成サイトは、Facebookの認可サーバーにアクセストークンをそのまま送信する。
-
-> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
+: 免許証作成サイトはアクセストーンを受信し、Facebookの認可サーバーにアクセストークンを再度送信する。
 
 ```yaml
 HTTP/1.1 200 OK
@@ -193,9 +191,15 @@ Pragma: no-cache
 }
 ```
 
+> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
+
 `【１０】`
 
-: Facebookは、免許証作成サイトを認可し、アカウント情報を送信する。
+: Facebookは認証を完了させ、Facebookのアカウント情報を送信する。
+
+`【１１】`
+
+: 免許証作成サイトは認可を実施し、Facebookのアカウント情報の権限に応じた処理をクライアントに提供する。
 
 <br>
 
