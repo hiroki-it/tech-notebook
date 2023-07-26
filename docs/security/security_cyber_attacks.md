@@ -36,6 +36,7 @@ GitHubから登録されたCVEは、GitHub Advisory Databaseで検索できる�
 
 また、各リポジトリのセキュリティの項目で各OSSのCVEを確認できる。
 
+> - https://docs.github.com/ja/code-security/getting-started/adding-a-security-policy-to-your-repository
 > - https://github.com/argoproj/argo-cd/security
 > - https://github.com/istio/istio/security
 

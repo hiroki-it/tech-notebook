@@ -13,7 +13,15 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 <br>
 
-## 01. 文法の誤りテスト
+## 01. ソースコードの静的解析
+
+### ソースコードの静的解析とは
+
+インフラのIaCのソースコードを解析する。
+
+<br>
+
+### 文法の誤りテスト
 
 - kubeconform (新kubeval)
 
@@ -21,13 +29,13 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 <br>
 
-## 02. 実装ポリシー違反テスト
+### 実装ポリシー違反テスト
 
 - confest
 
 <br>
 
-## 02. ベストプラクティス違反テスト
+### ベストプラクティス違反テスト
 
 ベストプラクティスを幅広く検証するため、他のテスト (例：脆弱性テスト) と検査項目が重複する場合がある。
 
@@ -44,13 +52,13 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 <br>
 
-## 03. 非推奨apiVersionテスト
+### 非推奨apiVersionテスト
 
 - pluto
 
 <br>
 
-## 04. 脆弱性テスト
+### 脆弱性テスト
 
 - checkov
 - kics
@@ -67,5 +75,30 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 > - https://kubevious.io/blog/post/top-kubernetes-security-vulnerability-scanners
 > - https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools
 > - https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6
+
+<br>
+
+## 02. コンテナの静的解析
+
+### コンテナの静的解析とは
+
+コンテナのイメージレイヤーごとに解析する。
+
+<br>
+
+### 脆弱性テスト
+
+- trivy
+
+> - https://snyk.io/learn/container-security/container-scanning/
+> - https://thinkit.co.jp/article/17525
+
+<br>
+
+## 03. コンテナの動的解析
+
+### コンテナの動的解析とは
+
+起動中のコンテナを解析する。
 
 <br>
