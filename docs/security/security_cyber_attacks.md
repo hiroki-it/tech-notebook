@@ -13,13 +13,14 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 <br>
 
-## 01. CVE
+## 01. CVE：Common Vulnerabilities and Exposures)
 
 ### CVEとは
 
-報告された脆弱性について、一意な番号をつけて管理したリストのこと。
+報告された脆弱性レポートについて、一意な番号をつけて管理したリストのこと。
 
 > - https://www.nic.ad.jp/ja/basics/terms/cve.html
+> - https://www.toyo.co.jp/onetech_blog/articles/detail/id=36064
 
 <br>
 
@@ -29,10 +30,26 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 GitHubで脆弱性に関するIssueが立てられ、これが致命的であると、CVEに掲載れる。
 
-GitHub上ので脆弱性は、セキュリティの項目に整理されている。
+GitHubから登録されたCVEは、GitHub Advisory Databaseで検索できる。
+
+> - https://github.com/advisories
+
+また、各リポジトリのセキュリティの項目で各OSSのCVEを確認できる。
 
 > - https://github.com/argoproj/argo-cd/security
 > - https://github.com/istio/istio/security
+
+#### ▼ GitLab
+
+GitLabから登録されたCVEは、GitLab Advisory Databaseで検索できる。
+
+> - https://advisories.gitlab.com/
+
+#### ▼ RedHat
+
+RedHatから登録されたCVEは、Security Advisoriesで検索できる。
+
+> - https://access.redhat.com/security/security-updates/
 
 <br>
 
