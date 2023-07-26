@@ -17,19 +17,27 @@ description: Goの場合＠アプリのホワイトボックステストの知�
 
 ### 整形
 
-標準の`go fmt`コマンド
+- 標準の`go fmt`コマンド
 
 <br>
 
 ### 静的解析
 
-標準の`go vet`コマンド
+#### ▼ ベストプラクティス
+
+- 標準の`go vet`コマンド
+
+#### ▼ 脆弱性
+
+- govulncheck
+
+> - https://go.dev/blog/vuln
 
 <br>
 
 ### 単体テスト、機能テストツール
 
-標準の`go fmt`コマンド
+- 標準の`go fmt`コマンド
 
 <br>
 

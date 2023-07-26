@@ -24,9 +24,13 @@ description: PHPの場合＠ホワイトボックステストの知見を記録�
 
 ### 静的解析
 
-- PhpStorm
+#### ▼ 文法の誤り
+
 - PHPStan
-- Larastan
+
+#### ▼ 脆弱性
+
+- PHPStan
 
 <br>
 

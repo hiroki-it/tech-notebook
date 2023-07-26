@@ -87,11 +87,14 @@ Podの負荷に合わせてPodの自動水平スケーリングを実行しな�
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 > - https://sorarinu.dev/2021/08/kubernetes_01/
 
-#### ▼ ReplicaSetの置き換え
+#### ▼ ReplicaSetの置き換えが起こる条件
 
-PodTemplate (`.spec.template`キー) を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。
+Deploymentでは、以下の設定値の変更で、ReplicaSetの置き換えが起こる。
 
-レプリカ数 (`.spec.replicas`キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
+| 条件                                | 説明                                                                                                                          |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `spec.replicas`キーの変更           | レプリカ数 (`.spec.replicas`キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。 |
+| `spec.template`キー配下の任意の変更 | PodTemplate (`.spec.template`キー) を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。   |
 
 ![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png)
 

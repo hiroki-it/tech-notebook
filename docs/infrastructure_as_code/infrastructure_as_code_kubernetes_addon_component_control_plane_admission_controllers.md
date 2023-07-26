@@ -341,7 +341,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
   {
     # 追加処理を実行する。
     "op": "add",
-    # .spec.replicasをターゲットとする。
+    # .spec.replicasキーをターゲットとする。
     "path": "/spec/replicas",
     # 値は3とする。
     "value": 3,

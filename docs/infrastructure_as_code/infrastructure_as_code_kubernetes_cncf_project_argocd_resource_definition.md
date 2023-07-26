@@ -889,7 +889,7 @@ spec:
     - group: apps
       kind: Deployment
       jsonPointers:
-        # .spec.replicas (インスタンス数) の設定値の変化を無視する。
+        # .spec.replicasキー (インスタンス数) の設定値の変化を無視する。
         - /spec/replicas
     - group: autoscaling
       kind: HorizontalPodAutoscaler

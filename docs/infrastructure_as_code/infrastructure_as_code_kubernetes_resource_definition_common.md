@@ -261,7 +261,7 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 | `app.kubernetes.io/app`        | `foo`、`foo-service`         | マイクロサービス名を設定する。                                      |
 | `app.kubernetes.io/component`  | `database`                   | コンテナの役割名を設定する。                                        |
 | `app.kubernetes.io/created-by` | `kube-controller-manager`    | このKubernetesリソースを作成したリソースやユーザーを設定する。      |
-| `app.kubernetes.io/env`        | `prd`、`stg`、`dev`          | アプリケーションの実行環境名を設定する。                            |
+| `app.kubernetes.io/env`        | `prd`、`stg`、`tes`、`dev`   | アプリケーションの実行環境名を設定する。                            |
 | `app.kubernetes.io/instance`   | `mysql-12345`                | アプリコンテナのインスタンス名を設定する。                          |
 | `app.kubernetes.io/managed-by` | `helm`、`foo-operator`       | アプリケーションの管理ツール名を設定する。                          |
 | `app.kubernetes.io/name`       | `mysql`                      | マイクロサービスを構成するコンテナのベンダー名を設定する。          |

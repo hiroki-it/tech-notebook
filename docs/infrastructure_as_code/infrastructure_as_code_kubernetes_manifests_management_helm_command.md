@@ -237,11 +237,23 @@ Helmの構文をバリデーションを実行する。
 ```bash
 $ helm lint <チャートへのパス>
 
-==> Linting kubernetes
+==> Linting foo-chart
 [INFO] Chart.yaml: icon is recommended
 [INFO] values.yaml: file does not exist
 
-1 chart(s) linted, 0 chart(s) failed
+Error: 0 chart(s) linted, 0 chart(s) failed
+```
+
+```bash
+$ helm lint  <チャートへのパス>
+
+==> Linting foo-chart
+[ERROR] Chart.yaml: version is required
+[INFO] Chart.yaml: icon is recommended
+[ERROR] templates/: validation: chart.metadata.version is required
+[ERROR] : unable to load chart validation: chart.metadata.version is required
+
+Error: 1 chart(s) linted, 1 chart(s) failed
 ```
 
 > - https://helm.sh/docs/helm/helm_lint/

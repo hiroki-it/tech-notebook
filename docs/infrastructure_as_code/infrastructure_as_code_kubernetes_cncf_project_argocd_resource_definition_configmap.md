@@ -398,7 +398,7 @@ metadata:
 data:
   resource.customizations.ignoreDifferences.all: |
     jsonPointers:
-      # .spec.replicas (インスタンス数) の設定値の変化を無視する。
+      # .spec.replicasキー (インスタンス数) の設定値の変化を無視する。
       - /spec/replicas
     jqPathExpressions:
       # .spec.metrics (ターゲット対象のメトリクス) の自動整形を無視する。

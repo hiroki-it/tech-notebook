@@ -229,6 +229,8 @@ Gitでソフトウェアを開発する場合、役割を持たせたブラン�
 | ステージング環境 (ユーザー受け入れ環境) | `develop/staging` (`develop/ua`)      |
 | 本番環境                                | `release`                             |
 
+> - https://note.com/gunj/n/nf139710d0e4a
+
 #### ▼ `main`ブランチ (production)
 
 本番環境にデプロイする機能を準備するためのブランチ。

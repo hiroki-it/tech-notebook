@@ -51,6 +51,9 @@ description: ブラックボックステストの知見を記録しています�
 | ステージング環境 (ユーザー受け入れ環境) | stg (ua)   | 共有の環境であり、システムの依頼者が社内にいる場合に、その依頼者が動作を確認するために使用する。システムの依頼者が社外にいる場合、ユーザー受け入れ環境と呼ぶことがある。 |
 | 本番環境                                | prd        | インターネットに公開された環境であり、Testing in productionを採用する場合は、一般のユーザーに動作を確認してもらう。                                                      |
 
+![environments.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/environments.png)
+
+> - https://note.com/gunj/n/nf139710d0e4a
 > - https://www-creators.com/archives/780
 > - https://www.quora.com/What-is-difference-between-testing-environment-and-staging
 
