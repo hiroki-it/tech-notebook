@@ -14,7 +14,7 @@
 > * ##### [静的解析ツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter.html)
 > * ##### <u>文法の誤りテスト</u>
 > > * ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kubeconform.html)
-> * ##### <u>実装ポリシー違反テスト</u>
+> * ##### <u>コード規約違反テスト</u>
 > > * ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_confest.html)
 > * ##### <u>ベストプラクティス違反テスト</u>
 > > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_polaris.html)

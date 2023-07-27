@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設計ポリシー＠Docker
-description: 設計ポリシー＠Dockerの知見を記録しています。
+title: 【IT技術の知見】設計規約＠Docker
+description: 設計規約＠Dockerの知見を記録しています。
 ---
 
-# 設計ポリシー＠Docker
+# 設計規約＠Docker
 
 ## はじめに
 

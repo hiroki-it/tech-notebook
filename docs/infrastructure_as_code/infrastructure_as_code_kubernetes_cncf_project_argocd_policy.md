@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設計ポリシー＠ArgoCD
-description: 設計ポリシー＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】設計規約＠ArgoCD
+description: 設計規約＠ArgoCDの知見を記録しています。
 ---
 
-# 設計ポリシー＠ArgoCD
+# 設計規約＠ArgoCD
 
 ## はじめに
 
@@ -33,7 +33,7 @@ ArgoCDのApplicationと、ポーリング対象のClusterを別々のClusterで�
 
 <br>
 
-## 02. リポジトリ構成ポリシー
+## 02. リポジトリ構成規約
 
 ### リポジトリ分割のメリット
 
@@ -232,7 +232,7 @@ child-argocd-repository/
 
 <br>
 
-## 04. ディレクトリ構成ポリシー
+## 04. ディレクトリ構成規約
 
 ### 実行環境別 (必須)
 

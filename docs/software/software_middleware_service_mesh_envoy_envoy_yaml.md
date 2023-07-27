@@ -64,7 +64,7 @@ Istioは、Envoyをベースとしたリバースプロキシを自動的に挿�
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/api
 
-#### ▼ 設計ポリシーについて
+#### ▼ 設計規約について
 
 Envoyでは、YAMLファイルのキー名がスネークケースになっている。
 
@@ -717,7 +717,7 @@ static_resources:
 
 Istioを使用して、`envoy`コンテナを稼働させるとする。
 
-Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
+Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
 ```yaml
 dynamicResources:

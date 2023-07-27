@@ -56,7 +56,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 | テスト            | ホワイトボックス         |                                | `go test`コマンド、PHPUnit                                                 |
 |                   | ブラックボックス         |                                | ChaosMesh、Postman、Taurus                                                 |
 
-#### ▼ 設計ポリシー書
+#### ▼ 設計規約書
 
 - アーキテクチャ
 - 命名規則

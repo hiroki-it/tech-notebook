@@ -410,7 +410,7 @@ service ListenerDiscoveryService {
 
 Istioを使用して、`envoy`コンテナを稼働させるとする。
 
-Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
+Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
@@ -576,7 +576,7 @@ service RouteDiscoveryService {
 
 Istioを使用して、`envoy`コンテナを稼働させるとする。
 
-Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
+Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
 ```yaml
 - name: "50001"
@@ -791,7 +791,7 @@ service ClusterDiscoveryService {
 
 Istioを使用して、`envoy`コンテナを稼働させるとする。
 
-Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
+Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 confest＠実装ポリシー違反
-description: confest＠実装ポリシー違反の知見を記録しています。
+title: 【IT技術の知見】 confest＠コード規約違反
+description: confest＠コード規約違反の知見を記録しています。
 ---
 
-# confest＠実装ポリシー違反
+# confest＠コード規約違反
 
 ## はじめに
 
@@ -17,9 +17,9 @@ description: confest＠実装ポリシー違反の知見を記録しています
 
 ### 検出項目
 
-Regoのユーザー定義のポリシーに基づいて、様々なツールの設定ファイルの実装ポリシー違反を検証する。
+Regoのユーザー定義のポリシーに基づいて、様々なツールの設定ファイルのコード規約違反を検証する。
 
-ビルトインの実装ポリシーを持っていない。
+ビルトインのコード規約を持っていない。
 
 > - https://github.com/open-policy-agent/conftest
 > - https://www.conftest.dev/examples/
@@ -38,13 +38,13 @@ $ brew install conftest
 
 <br>
 
-## 実装ポリシー
+## コード規約
 
 ### 重要度レベル
 
 #### ▼ deny
 
-実装ポリシーに違反した場合に、終了コード `1` を出力する。
+コード規約に違反した場合に、終了コード `1` を出力する。
 
 ```erlang
 package main
@@ -63,7 +63,7 @@ deny[msg] {
 
 #### ▼ violation
 
-実装ポリシーに違反した場合に、終了コード `0` を出力する。
+コード規約に違反した場合に、終了コード `0` を出力する。
 
 ```erlang
 package main

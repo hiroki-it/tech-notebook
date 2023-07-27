@@ -1,9 +1,9 @@
 ---
-titlIe: 【IT技術の知見】設計ポリシー＠RDBMS
-description: 設計ポリシー＠RDBMSの知見を記録しています。
+titlIe: 【IT技術の知見】設計規約＠RDBMS
+description: 設計規約＠RDBMSの知見を記録しています。
 ---
 
-# 設計ポリシー＠RDBMS
+# 設計規約＠RDBMS
 
 ## はじめに
 

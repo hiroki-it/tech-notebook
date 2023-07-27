@@ -27,7 +27,7 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 > - https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools
 
-### ▼ 実装ポリシー違反テスト
+### ▼ コード規約違反テスト
 
 - confest
 

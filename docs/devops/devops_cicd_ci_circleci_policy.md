@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設計ポリシー＠CircleCI
-description: 設計ポリシー＠CircleCIの知見を記録しています。
+title: 【IT技術の知見】設計規約＠CircleCI
+description: 設計規約＠CircleCIの知見を記録しています。
 ---
 
-# 設計ポリシー＠CircleCI
+# 設計規約＠CircleCI
 
 ## はじめに
 

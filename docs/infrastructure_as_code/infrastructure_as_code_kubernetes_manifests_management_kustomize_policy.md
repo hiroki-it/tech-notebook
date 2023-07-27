@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設計ポリシー＠Kustomize
-description: 設計ポリシー＠Kustomizeの知見を記録しています。
+title: 【IT技術の知見】設計規約＠Kustomize
+description: 設計規約＠Kustomizeの知見を記録しています。
 ---
 
-# 設計ポリシー＠Kustomize
+# 設計規約＠Kustomize
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 
 <br>
 
-## 01. ディレクトリ構成ポリシー
+## 01. ディレクトリ構成規約
 
 ### `overlays`ディレクトリの場合
 
