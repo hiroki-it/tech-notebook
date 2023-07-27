@@ -30,7 +30,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 GitHubで脆弱性に関するIssueが立てられ、これが致命的であると、CVEに掲載れる。
 
-GitHubから登録されたCVEは、GitHub Advisory Databaseで検索できる。
+GitHub上のOSSのCVEは、GitHub Advisory Databaseで検索できる。
 
 > - https://github.com/advisories
 
@@ -42,13 +42,13 @@ GitHubから登録されたCVEは、GitHub Advisory Databaseで検索できる�
 
 #### ▼ GitLab
 
-GitLabから登録されたCVEは、GitLab Advisory Databaseで検索できる。
+GitLab上のOSSのCVEは、GitLab Advisory Databaseで検索できる。
 
 > - https://advisories.gitlab.com/
 
 #### ▼ RedHat
 
-RedHatから登録されたCVEは、Security Advisoriesで検索できる。
+RedHat上のOSSのCVEは、Security Advisoriesで検索できる。
 
 > - https://access.redhat.com/security/security-updates/
 
