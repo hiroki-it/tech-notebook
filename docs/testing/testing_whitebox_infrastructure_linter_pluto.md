@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 pluto＠非推奨apiVersionテスト
-description: pluto＠非推奨apiVersionテストの知見を記録しています。
+title: 【IT技術の知見】 pluto＠バージョンテスト
+description: pluto＠バージョンテストの知見を記録しています。
 ---
 
-# pluto＠非推奨apiVersionテスト
+# pluto＠バージョンテスト
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: pluto＠非推奨apiVersionテストの知見を記録していま�
 
 ### 検出項目
 
-指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。
+指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (apiVersion) を検証する。
 
 <br>
 
