@@ -131,7 +131,7 @@ nav:
   - 🧬 ソフトウェア:
       - software/index.md
       - ソフトウェア: software/software.md
-      - 設計ポリシー: software/software_policy.md
+      - 設計規約: software/software_policy.md
 
   - 🚀 アプリ:
       - software/application/index.md
@@ -181,7 +181,7 @@ nav:
           - ■ RDB:
               - ■ RDBMS:
                   - RDBMS: software/software_middleware_database_rdb_rdbms.md
-                  - 設計ポリシー: software/software_middleware_database_rdb_rdbms_policy.md
+                  - 設計規約: software/software_middleware_database_rdb_rdbms_policy.md
                   - ACID: software/software_middleware_database_rdb_rdbms_acid.md
               - ■ My︎SQL:
                   - MySQL: software/software_middleware_database_rdb_mysql.md
@@ -324,11 +324,11 @@ nav:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_linter.md
                   - ■ 文法の誤りテスト:
                       - kubeconform: testing/testing_whitebox_infrastructure_linter_kubeconform.md
-                  - ■ 実装ポリシー違反テスト:
+                  - ■ コード規約違反テスト:
                       - confest: testing/testing_whitebox_infrastructure_linter_confest.md
                   - ■ ベストプラクティス違反テスト:
                       - polaris: testing/testing_whitebox_infrastructure_linter_polaris.md
-                  - ■ 非推奨apiVersionテスト:
+                  - ■ バージョンテスト:
                       - pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
                   - ■ 脆弱性テスト:
                       - checkov: testing/testing_whitebox_infrastructure_linter_checkov.md
@@ -448,7 +448,7 @@ nav:
               - VPC: cloud_computing/cloud_computing_aws_resource_vpc.md
               - WAF: cloud_computing/cloud_computing_aws_resource_waf.md
               - WorkMail: cloud_computing/cloud_computing_aws_resource_work_mail.md
-          - ■ 設計ポリシー:
+          - ■ 設計規約:
               - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
               - 安全性: cloud_computing/cloud_computing_aws_policy_security.md
@@ -489,7 +489,7 @@ nav:
           - ■ Docker:
               - Dockerfile: infrastructure_as_code/infrastructure_as_code_docker_dockerfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_command.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_docker_policy.md
+              - 設計規約: infrastructure_as_code/infrastructure_as_code_docker_policy.md
       - ■ 宣言型:
           - ■ Docker Compose:
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
@@ -510,8 +510,8 @@ nav:
                   - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.md
                   - Kubernetesプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.md
               - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
-              - ■ 設計ポリシー:
-                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
+              - ■ 設計規約:
+                  - 設計規約: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
                   - tfstateファイル分割: infrastructure_as_code/infrastructure_as_code_terraform_policy_tfstate.md
           - ■ Vagrant:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
@@ -525,7 +525,7 @@ nav:
           - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
-          - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
+          - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
       - ■ Kubernetesリソース:
           - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
           - ■ リソース定義:
@@ -556,14 +556,14 @@ nav:
                   - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.md
                   - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.md
                   - 関数: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
+              - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
               - ■ Helmfile:
                   - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.md
           - ■ Kustomize:
               - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_command.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
+              - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
 
   - ⏬ K8sアドオン:
       - infrastructure_as_code/kubernetes_addon/index.md
@@ -594,7 +594,7 @@ nav:
       - ■ ArgoCD:
           - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_command.md
-          - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.md
+          - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.md
           - ■ リソース定義:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.md
               - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_common.md
@@ -624,7 +624,7 @@ nav:
           - コントロールプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_control_plane.md
           - データプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_data_plane.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_command.md
-          - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_policy.md
+          - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_policy.md
           - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.md
           - リソース:
               - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource.md
@@ -678,7 +678,7 @@ nav:
               - CircleCI: devops/devops_cicd_ci_circleci.md
               - config.yml: devops/devops_cicd_ci_circleci_config_yml.md
               - orbs: devops/devops_cicd_ci_circleci_orbs.md
-              - 設計ポリシー: devops/devops_cicd_ci_circleci_policy.md
+              - 設計規約: devops/devops_cicd_ci_circleci_policy.md
           - ■ Skaffold:
               - skaffold.yaml: devops/devops_cicd_ci_skaffold_yaml.md
               - コマンド: devops/devops_cicd_ci_skaffold_command.md
