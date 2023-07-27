@@ -38,8 +38,8 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 - kube-linter
 - kube-score
 - kubevious
+- goldilocks
 - polaris
-- tflint
 
 > - https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools
 > - https://github.com/kubevious/cli#-key-capabilities
@@ -61,12 +61,28 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 - kube-scan
 - kube-score
 - kubesec
-- tfsec
 - trivy
 
 > - https://kubevious.io/blog/post/top-kubernetes-security-vulnerability-scanners
 > - https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools
 > - https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6
+
+<br>
+
+### Terraform
+
+#### ▼ 文法の誤りテスト
+
+- `terraform validate`コマンド
+
+#### ▼ 脆弱性テスト
+
+- tfsec
+- trivy
+
+#### ▼ ベストプラクティス
+
+- tflint
 
 <br>
 
@@ -76,10 +92,13 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 
 マニフェストになる前のHelmチャートを解析する。
 
-#### ▼ ベストプラクティス
+#### ▼ 文法/構造などの誤りテスト
 
-- goldilocks (IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較する)
-- nova (Helmのチャートリポジトリ上のチャートバージョンと、Cluster上の実際のバージョンを比較する)
+- `helm lint`コマンド
+
+#### ▼ バージョンテスト
+
+- nova
 
 <br>
 
@@ -109,5 +128,7 @@ description: 静的解析ツール＠インフラのホワイトボックステ�
 #### ▼ 脆弱性テスト
 
 起動中のコンテナを解析する。
+
+- trivy
 
 <br>

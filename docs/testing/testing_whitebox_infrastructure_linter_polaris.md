@@ -19,6 +19,8 @@ description: polaris＠ベストプラクティス違反の知見を記録して
 
 一般に知られているベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：脆弱性、効率性、信頼性、など) を検証する。
 
+Helmチャートのまま検査できず、一度マニフェストとして渡す必要がある。
+
 > - https://polaris.docs.fairwinds.com/checks/security/
 > - https://polaris.docs.fairwinds.com/checks/efficiency/
 > - https://polaris.docs.fairwinds.com/checks/reliability/
