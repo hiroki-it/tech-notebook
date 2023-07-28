@@ -118,6 +118,33 @@ fmt:
 
 <br>
 
+### artifacts
+
+ジョブ間でファイルを共有する。
+
+次のジョブの同じディレクトリにファイルが配置される。
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    ...
+  artifacts:
+    paths:
+      - path/tmp/
+
+bar_job:
+  stage: deploy
+  script:
+    # path/tmp/を使用する
+    ...
+```
+
+> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html
+> - https://ngyuki.hatenablog.com/entry/2019/03/28/085717
+
+<br>
+
 ### cache
 
 指定したディレクトリのキャッシュを作成する。
@@ -126,6 +153,7 @@ fmt:
 
 ```yaml
 bar_job:
+  stage: build
   cache:
     paths:
       - ./node_module
@@ -140,7 +168,15 @@ bar_job:
 先に実行するJobを設定する。
 
 ```yaml
+stages:
+  - build
+  - deploy
+
+foo_job:
+  stage: build
+  
 bar_job:
+  stage: deploy
   dependencies:
     - foo_job
 ```
@@ -155,6 +191,7 @@ Jobの実行環境を設定する。
 
 ```yaml
 foo_job:
+  stage: build
   image:
     name: alpine:1.0.0
     entrypoint: ["sh"]
@@ -246,7 +283,7 @@ Jobが属するステージを設定する。
 
 ```yaml
 foo_job:
-  stage: foo_stage
+  stage: build
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#stage
@@ -259,6 +296,7 @@ Jobで実行する処理を設定する。
 
 ```yaml
 foo_job:
+  stage: build
   script:
     - echo "Hello World"
 ```
