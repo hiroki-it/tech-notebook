@@ -124,7 +124,37 @@ $ argocd app sync foo-application --local=<ディレクトリへのパス> --pro
 
 <br>
 
-## 02. argocd repoコマンド
+## 02. argocd clusterコマンド
+
+### add
+
+#### ▼ addとは
+
+ArgoCDに監視させたいClusterを登録する。
+
+```bash
+$ argocd cluster add <ArgoCDに監視させたいClusterのARN>
+```
+
+#### ▼ --name
+
+ダッシュボードでCluster名を使用してフィルタリングする時に、その表示名を設定する。
+
+```bash
+$ argocd cluster add <ArgoCDに監視させたいClusterのARN> --name <ダッシュボード上でのClusterの表示名>
+```
+
+#### ▼ --upsert
+
+すでにClusterを登録済みの場合に、これを上書きする。
+
+```bash
+$ argocd cluster add <ArgoCDに監視させたいClusterのARN> --name <ダッシュボード上でのClusterの表示名> --upsert
+```
+
+<br>
+
+## 03. argocd repoコマンド
 
 ### repo
 
@@ -150,7 +180,7 @@ $ argocd repo add oci://<OCIレジストリ名> \
 
 <br>
 
-## 03. argocd loginコマンド
+## 04. argocd loginコマンド
 
 ### login
 
@@ -183,7 +213,7 @@ $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 
 <br>
 
-## 03. argocd-application-controllerコマンド
+## 05. argocd-application-controllerコマンド
 
 ### argocd-application-controllerコマンドとは
 
@@ -217,7 +247,7 @@ $ argocd-application-controller --application-namespaces "*"
 
 <br>
 
-## 04. argocd-serverコマンド
+## 06. argocd-serverコマンド
 
 ### argocd-serverコマンドとは
 

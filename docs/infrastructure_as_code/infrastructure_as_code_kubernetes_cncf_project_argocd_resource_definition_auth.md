@@ -160,7 +160,7 @@ ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働
 
 ```bash
 # デフォルトでkube-systemに作成するため、nオプションは不要である
-$ argocd cluster add <デプロイ先ClusterのARN> -n kube-system
+$ argocd cluster add <デプロイ先ClusterのARN> --name <ダッシュボード上のCluster名>  -n kube-system
 ```
 
 ```yaml
