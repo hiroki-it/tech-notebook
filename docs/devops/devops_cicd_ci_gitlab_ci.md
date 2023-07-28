@@ -127,8 +127,7 @@ fmt:
 ```yaml
 foo_job:
   stage: build
-  script:
-    ...
+  script: ...
   artifacts:
     paths:
       - path/tmp/
@@ -174,7 +173,7 @@ stages:
 
 foo_job:
   stage: build
-  
+
 bar_job:
   stage: deploy
   dependencies:
