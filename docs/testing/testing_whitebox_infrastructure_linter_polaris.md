@@ -31,11 +31,23 @@ Helmチャートのまま検査できず、一度マニフェストとして渡�
 
 #### ▼ GUI
 
+```bash
+$ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/stable
+
+$ kubectl create namespace polaris
+
+$ helm install <リリース名> <チャートリポジトリ名>/polaris --namespace polaris
+
+$ kubectl port-forward --namespace polaris svc/polaris-dashboard 8080:80
+```
+
 > - https://polaris.docs.fairwinds.com/dashboard/#installation
 
 #### ▼ CLI
 
 ```bash
+$ brew tap FairwindsOps/tap
+
 $ brew install FairwindsOps/tap/polaris
 ```
 
@@ -44,13 +56,9 @@ $ brew install FairwindsOps/tap/polaris
 #### ▼ Admission Controller
 
 ```bash
-$ helm repo add fairwinds-stable https://charts.fairwinds.com/stable
+$ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/stable
 
-$ helm upgrade \
-    --install polaris fairwinds-stable/polaris \
-    --namespace polaris --create-namespace \
-    --set webhook.enable=true \
-    --set dashboard.enable=false
+$ helm install <リリース名> <チャートリポジトリ名>/polaris --namespace polaris --set webhook.enable=true --set dashboard.enable=false
 ```
 
 > - https://polaris.docs.fairwinds.com/admission-controller/#installation
@@ -149,7 +157,7 @@ exemptions:
 
 ```bash
 # 結果を読みやすく出力する。
-$ polaris audit --audit-path . --format=pretty
+$ polaris audit --audit-path manifest.yaml --format=pretty
 ```
 
 > - https://polaris.docs.fairwinds.com/infrastructure-as-code/#pretty-print-results
@@ -159,7 +167,7 @@ $ polaris audit --audit-path . --format=pretty
 失敗した結果のみを出力する。
 
 ```bash
-$ polaris audit --audit-path . --only-show-failed-tests true
+$ polaris audit --audit-path manifest.yaml --only-show-failed-tests true
 ```
 
 > - https://polaris.docs.fairwinds.com/infrastructure-as-code/#output-only-showing-failed-tests

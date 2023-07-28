@@ -17,7 +17,9 @@ description: ChaosMesh＠総合テストの知見を記録しています。
 
 ### アーキテクチャ
 
-ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、といったコンポーネントから構成されている。Chaos monkeyやChaos Kongと比べて、Kubernetesにより合った手法でカオスエンジニアリングを実行できる。
+ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、といったコンポーネントから構成されている。
+
+Chaos monkeyやChaos Kongと比べて、Kubernetesにより合った手法でカオスエンジニアリングを実行できる。
 
 ![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/chaos-mesh_architecture.png)
 
@@ -41,7 +43,7 @@ $ helm repo update
 
 $ kubectl create namespace chaos-testing
 
-$ helm install <リリース名> <リポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
+$ helm install <リリース名> <チャートリポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
 ```
 
 > - https://chaos-mesh.org/docs/production-installation-using-helm/

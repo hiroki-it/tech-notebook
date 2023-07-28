@@ -207,7 +207,7 @@ Helmを使用する。
 別途、IngressやServiceの作成が必要である。
 
 ```bash
-$ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/external-dns/
+$ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.io/external-dns/
 
 $ helm install <リリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
 ```

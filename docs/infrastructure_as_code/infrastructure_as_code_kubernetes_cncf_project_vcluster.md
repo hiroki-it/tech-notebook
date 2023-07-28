@@ -80,7 +80,7 @@ $ helm repo update
 $ kubectl create namespace vcluster
 
 # 仮想Clusterを作成する
-$ helm install <リリース名> <リポジトリ名>/vcluster-eks -n vcluster --version <バージョンタグ>
+$ helm install <リリース名> <チャートリポジトリ名>/vcluster-eks -n vcluster --version <バージョンタグ>
 ```
 
 > - https://www.vcluster.com/docs/getting-started/deployment

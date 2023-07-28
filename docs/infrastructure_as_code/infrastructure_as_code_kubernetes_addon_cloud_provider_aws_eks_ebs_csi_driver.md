@@ -136,7 +136,7 @@ Helmを使用する。
 KubernetesよりもAWSに依存している要素が多いため、Terraformによるセットアップの方が個人的にはおすすめである。
 
 ```bash
-$ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+$ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.io/aws-ebs-csi-driver
 
 $ helm repo update
 

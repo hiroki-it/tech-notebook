@@ -28,7 +28,7 @@ $ helm repo update
 
 $ kubectl create namespace falco
 
-$ helm install <リリース名> <リポジトリ名>/falco -n falco --version <バージョンタグ>
+$ helm install <リリース名> <チャートリポジトリ名>/falco -n falco --version <バージョンタグ>
 ```
 
 > - https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
