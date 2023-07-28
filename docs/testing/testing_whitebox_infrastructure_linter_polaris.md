@@ -27,7 +27,37 @@ Helmチャートのまま検査できず、一度マニフェストとして渡�
 
 <br>
 
-## `config.yaml`ファイル
+### セットアップ
+
+#### ▼ GUI
+
+> - https://polaris.docs.fairwinds.com/dashboard/#installation
+
+#### ▼ CLI
+
+```bash
+$ brew install FairwindsOps/tap/polaris
+```
+
+> - https://polaris.docs.fairwinds.com/infrastructure-as-code/
+
+#### ▼ Admission Controller
+
+```bash
+$ helm repo add fairwinds-stable https://charts.fairwinds.com/stable
+
+$ helm upgrade \
+    --install polaris fairwinds-stable/polaris \
+    --namespace polaris --create-namespace \
+    --set webhook.enable=true \
+    --set dashboard.enable=false
+```
+
+> - https://polaris.docs.fairwinds.com/admission-controller/#installation
+
+<br>
+
+## 02. `config.yaml`ファイル
 
 ### checks
 
@@ -106,5 +136,42 @@ exemptions:
 
 > - https://polaris.docs.fairwinds.com/customization/checks/
 > - https://github.com/FairwindsOps/polaris/blob/master/examples/config.yaml
+
+<br>
+
+## 03. コマンド
+
+### audit
+
+#### ▼ --format
+
+結果の形式を指定する。
+
+```bash
+# 結果を読みやすく出力する。
+$ polaris audit --audit-path . --format=pretty
+```
+
+> - https://polaris.docs.fairwinds.com/infrastructure-as-code/#pretty-print-results
+
+#### ▼ --only-show-failed-tests
+
+失敗した結果のみを出力する。
+
+```bash
+$ polaris audit --audit-path . --only-show-failed-tests true
+```
+
+> - https://polaris.docs.fairwinds.com/infrastructure-as-code/#output-only-showing-failed-tests
+
+#### ▼ --helm-chart、--helm-values
+
+Helmチャートを指定する。
+
+```bash
+$ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
+```
+
+> - https://polaris.docs.fairwinds.com/infrastructure-as-code/#audit-helm-charts
 
 <br>
