@@ -53,7 +53,7 @@ $ brew install checkov
 
 問題のあるコード箇所を非表示にして、結果を表示する。
 
-`compact`オプションを有効化しない場合、問題のあるコード箇所を表示する。
+`--compact`オプションを有効化しない場合、問題のあるコード箇所を表示する。
 
 ```bash
 $ checkov -f foo.yaml --compact

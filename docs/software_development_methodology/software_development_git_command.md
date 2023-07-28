@@ -999,7 +999,7 @@ pick b1b5c0f add #0 *****
 
 `【３】`
 
-: `git commit --amend`に`m`オプションを付けて、メッセージを変更する。
+: `git commit --amend`に`-m`オプションを付けて、メッセージを変更する。
 
 ```bash
 $ git commit --amend -m="<変更後のメッセージ>"
@@ -1037,7 +1037,7 @@ $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 
 `【２】`
 
-: `git commit --amend`コマンドに`reset-author`オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
+: `git commit --amend`コマンドに`--reset-author`オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
 
 ```bash
 $ git commit --amend --reset-author

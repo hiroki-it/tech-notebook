@@ -751,7 +751,7 @@ TEST SUITE: None
 
 #### ▼ --skip-crds
 
-`install`オプションを有効化した上で、`--skip-crds`オプションを有効化する。
+`--install`オプションを有効化した上で、`--skip-crds`オプションを有効化する。
 
 これにより、`helm upgrade`コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。
 
