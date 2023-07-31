@@ -45,50 +45,77 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 ## 04. `github-comment.yaml`ファイル
 
+### `github-comment.yaml`ファイルとは
+
 GitHubに送信するコメントのテンプレートを設定する。
 
-````yaml
+文法は、Goテンプレートと同じである。
+
+```yaml
 ---
 # github-comment execコマンドで使用するテンプレート
 exec:
   # テンプレート名
   test:
-    # 終了コードが成功以外の場合
+    ...
+```
+
+<br>
+
+### template
+
+#### ▼ template
+
+コメントの内容を定義する。
+
+#### ▼ link
+
+ジョブへのリンクを表示する。
+
+```yaml
+---
+exec:
+  test:
+    ## :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
+
+      {{ template "link" . }}
+
+      ```bash
+      $ {{ .Command }}
+
+      {{ if eq .ExitCode 0 }}
+      {{ .Stdout }}
+      {{ else }}
+      {{ .Stderr }}
+      {{ end }}
+      ```
+```
+
+> - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
+
+<br>
+
+### when
+
+特定の条件の場合のみ、テンプレートを使用する。
+
+```yaml
+````yaml
+---
+exec:
+  test:
+      # 終了コードが成功以外の場合
     - when: ExitCode != 0
       template: |
 
-        ## 静的解析
+        ## ## :x:
 
-        ```
+        ```bash
         ${{.Command}}
-        ```
 
-        ## 結果
-
-        CIが失敗しました。
-
-        ```
         {{.Stderr}}
         ```
-
-    # 終了コードが成功以外の場合
-    - when: ExitCode == 0
-      template: |
-
-        ## 静的解析
-
-        ```
-        ${{.Command}}
-        ```
-
-        ## 結果
-
-        CIが成功しました。
-
-        ```
-        {{.Stdout}}
-        ```
-````
+```
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
 
