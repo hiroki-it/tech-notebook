@@ -99,9 +99,29 @@ exec:
   test:
     - when: true
       template: |
+
         Result: {{ template "status" . }}
 
         Job: {{ template "link" . }}
+
+        ```bash
+        $ {{ .Command }}
+
+        {{ .CombinedOutput | AvoidHTMLEscape }}
+        ```
+````
+
+````yaml
+---
+exec:
+  test:
+    - when: true
+      template: |
+
+        | 項目 | 結果 |
+        |--------|---------------------------|
+        | 成否 | {{ template "status" . }} |
+        | 実行ジョブ    | {{ template "link" . }}   |
 
         ```bash
         $ {{ .Command }}
@@ -127,6 +147,7 @@ exec:
     # 必ず実行する場合
     - when: true
       template: |
+
         Job: {{ template "link" . }}
 
         ```bash
@@ -143,6 +164,7 @@ exec:
     # 終了コードが成功以外の場合
     - when: ExitCode != 0
       template: |
+
         Result: :x:
 
         Job: {{ template "link" . }}
