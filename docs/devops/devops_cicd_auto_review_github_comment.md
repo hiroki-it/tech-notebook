@@ -45,14 +45,14 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 #### ▼ テンプレートに出力できる変数
 
-| 変数                    | 説明                                   |
-| ----------------------- | -------------------------------------- |
-| `{{ .Stdout }}`         | 標準出力への出力内容                   |
-| `{{ .Stderr }}`         | 標準エラー出力への出力内容             |
+| 変数                    | 説明                  |
+| ----------------------- |---------------------|
+| `{{ .Stdout }}`         | 標準出力への出力内容          |
+| `{{ .Stderr }}`         | 標準エラー出力への出力内容       |
 | `{{ .CombinedOutput }}` | 標準出力と標準エラー出力を結合した内容 |
-| `{{ .Command }}`        | 実行コマンド                           |
-| `{{ .JoinCommand }}`    | 実行コマンドと引数を結合した内容       |
-| `{{ .ExitCode }}`       | 終了ステータスコード                   |
+| `{{ .Command }}`        | 絶対パスの実行コマンド名        |
+| `{{ .JoinCommand }}`    | バイナリ名のみの実行コマンド名     |
+| `{{ .ExitCode }}`       | 終了ステータスコード          |
 
 > - https://suzuki-shunsuke.github.io/github-comment/config/#exec
 
@@ -92,14 +92,14 @@ exec:
   test:
     - template: |
 
-        ## :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
+        :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
 
         {{ template "link" . }}
 
         ```bash
         $ {{ .Command }}
 
-        {{ if eq .ExitCode 0 }}{{ .Stdout }}{{ else }}{{ .Stderr }}{{ end }}
+        {{ .CombinedOutput | AvoidHTMLEscape }}
         ```
 ````
 
@@ -120,12 +120,12 @@ exec:
     - when: ExitCode != 0
       template: |
 
-        ## :x:
+        :x:
 
         ```bash
-        ${{.Command}}
+        $ {{ .Command }}
 
-        {{.Stderr}}
+        {{ .CombinedOutput | AvoidHTMLEscape }}
         ```
 `````
 
