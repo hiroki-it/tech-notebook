@@ -70,6 +70,7 @@ $ helm template foo . --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
 $ trivy config --severity CRITICAL,HIGH <ファイル>
 ```
 
+> - https://aquasecurity.github.io/trivy/v0.19.2/vulnerability/examples/filter/#by-severity
 > - https://csblog.casareal.co.jp/archives/382
 
 <br>

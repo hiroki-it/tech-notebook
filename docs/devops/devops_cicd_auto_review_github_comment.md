@@ -117,11 +117,16 @@ exec:
   test:
     - when: true
       template: |
+        
+        ## 概要
 
-        | 項目 | 結果 |
-        |--------|---------------------------|
+        | 項目 | 内容 |
+        |-----|--------------------|
+        | 解析コマンド | `{{ .JoinCommand }}` |
         | 成否 | {{ template "status" . }} |
-        | 実行ジョブ    | {{ template "link" . }}   |
+        | 実行ジョブ | {{ template "link" . }} |
+
+        ## 詳細
 
         ```bash
         $ {{ .Command }}
