@@ -19,7 +19,9 @@ description: confest＠コード規約違反の知見を記録しています。
 
 Regoのユーザー定義のポリシーに基づいて、様々なツールの設定ファイルのコード規約違反を検証する。
 
-ビルトインのコード規約はなく、ユーザーがRegoで規約を実装しないといけない。
+自由にコード規約を定義できる。
+
+一方でビルトインのコード規約はなく、ユーザーがRegoで規約を実装しないといけない。
 
 > - https://github.com/open-policy-agent/conftest
 > - https://www.conftest.dev/examples/

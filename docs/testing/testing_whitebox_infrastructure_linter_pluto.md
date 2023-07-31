@@ -21,6 +21,17 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 <br>
 
+### 対応するKubernetesリソース
+
+標準のK8sリソースだけでなく、一部のカスタムリソース (Istioも含む) も対応している。
+
+ただ、全てのカスタムリソースに対応しているわけではない。
+
+> - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
+> - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
+
+<br>
+
 ## 02. セットアップ
 
 ### インストール

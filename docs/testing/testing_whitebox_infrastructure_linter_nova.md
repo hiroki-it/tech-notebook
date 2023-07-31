@@ -19,7 +19,7 @@ Helmのチャートリポジトリ上のチャートバージョンと、Cluster
 
 実際のClusterにアクセスしないと解析できない。
 
-ArgoCDを使っていると、Helmでインストールした履歴が残らないので、novaを使えない。
+また、ArgoCDを使っていると、Helmでインストールした履歴が残らないので、novaを使えない。
 
 > - https://github.com/FairwindsOps/nova/issues/45
 

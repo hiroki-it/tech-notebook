@@ -13,7 +13,7 @@ description: metrics-server＠ハードウェアリソース管理の知見を�
 
 <br>
 
-## 01. metrics-server
+## 01. metrics-serverの仕組み
 
 ### アーキテクチャ
 
@@ -66,7 +66,7 @@ ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド
 
 ### ローカルストレージ
 
-メトリクスのデータポイントを保存する。
+クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保存する。
 
 <br>
 
