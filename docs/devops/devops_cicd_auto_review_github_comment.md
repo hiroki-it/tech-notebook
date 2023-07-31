@@ -36,7 +36,7 @@ $ tar zxvf github-comment_<バージョン>_linux_amd64.tar.gz
 コマンドを実行し、標準出力/標準エラー出力の出力内容からコメントを作成する。
 
 ```bash
-$ ./github-comment exec -k <テンプレートのキー名> -- <好きなコマンド>
+$ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 ```
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
@@ -48,9 +48,8 @@ $ ./github-comment exec -k <テンプレートのキー名> -- <好きなコマ�
 GitHubに送信するコメントのテンプレートを設定する。
 
 ````yaml
-# https://suzuki-shunsuke.github.io/github-comment/getting-started
 ---
-# github-commentのコマンド名
+# github-comment execコマンドで使用するテンプレート
 exec:
   # テンプレート名
   test:
@@ -90,3 +89,7 @@ exec:
         {{.Stdout}}
         ```
 ````
+
+> - https://suzuki-shunsuke.github.io/github-comment/getting-started
+
+<br>

@@ -508,7 +508,7 @@ GitOpsツールの差分を使用して、差分画面のURLを共有する。�
 
 Helmで作成したマニフェストをClusterにデプロイし、動作を検証する。
 
-実際のClusterで検証してもよいし、本番のCluster (例：AWS EKS、GCP GKE、Kind、など) に相当する実行環境 (例：Kind、K3s、Minikube、など) をCI上に作成してもよい。
+実際のCluster上でマニフェストを検証してもよいし、本番のCluster (例：AWS EKS、GCP GKE、Kind、など) に相当する実行環境 (例：Kind、K3s、Minikube、など) をCI上に作成してもよい。
 
 GitHub Actionsであれば、CI上にCluster構築するActionが提供されている。
 
