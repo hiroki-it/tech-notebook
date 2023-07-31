@@ -33,6 +33,8 @@ $ tar zxvf github-comment_<バージョン>_linux_amd64.tar.gz
 
 ### exec
 
+#### ▼ execとは
+
 コマンドを実行し、標準出力/標準エラー出力の出力内容からコメントを作成する。
 
 ```bash
@@ -40,6 +42,19 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 ```
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
+
+#### ▼ テンプレートに出力できる変数
+
+| 変数                    | 説明                                   |
+| ----------------------- | -------------------------------------- |
+| `{{ .Stdout }}`         | 標準出力への出力内容                   |
+| `{{ .Stderr }}`         | 標準エラー出力への出力内容             |
+| `{{ .CombinedOutput }}` | 標準出力と標準エラー出力を結合した内容 |
+| `{{ .Command }}`        | 実行コマンド                           |
+| `{{ .JoinCommand }}`    | 実行コマンドと引数を結合した内容       |
+| `{{ .ExitCode }}`       | 終了ステータスコード                   |
+
+> - https://suzuki-shunsuke.github.io/github-comment/config/#exec
 
 <br>
 
@@ -56,8 +71,7 @@ GitHubに送信するコメントのテンプレートを設定する。
 # github-comment execコマンドで使用するテンプレート
 exec:
   # テンプレート名
-  test:
-    ...
+  test: ...
 ```
 
 <br>
@@ -72,11 +86,13 @@ exec:
 
 ジョブへのリンクを表示する。
 
-```yaml
+````yaml
 ---
 exec:
   test:
-    ## :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
+    template: |
+
+      ## :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
 
       {{ template "link" . }}
 
@@ -89,7 +105,7 @@ exec:
       {{ .Stderr }}
       {{ end }}
       ```
-```
+````
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
 
@@ -99,7 +115,7 @@ exec:
 
 特定の条件の場合のみ、テンプレートを使用する。
 
-```yaml
+`````yaml
 ````yaml
 ---
 exec:
@@ -108,14 +124,14 @@ exec:
     - when: ExitCode != 0
       template: |
 
-        ## ## :x:
+        ## :x:
 
         ```bash
         ${{.Command}}
 
         {{.Stderr}}
         ```
-```
+`````
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
 
