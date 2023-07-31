@@ -82,6 +82,13 @@ exec:
 
 コメントの内容を定義する。
 
+| 記法                        | 説明                                               | 中身                                                            |
+| --------------------------- | -------------------------------------------------- | --------------------------------------------------------------- |
+| `{{ template "status" . }}` | 終了ステータスコードが`0`なら ✅ 、それ以外なら ❌ | `:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:` |
+| `{{ template "link" . }}`   | Jobへのリンク                                      | CIツールによって異なる。                                        |
+
+> - https://suzuki-shunsuke.github.io/github-comment/builtin-template
+
 #### ▼ link
 
 ジョブへのリンクを表示する。
@@ -92,10 +99,9 @@ exec:
   test:
     - when: true
       template: |
+        Result: {{ template "status" . }}
 
-        :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
-
-        {{ template "link" . }}
+        Job: {{ template "link" . }}
 
         ```bash
         $ {{ .Command }}
@@ -121,6 +127,7 @@ exec:
     # 必ず実行する場合
     - when: true
       template: |
+        Job: {{ template "link" . }}
 
         ```bash
         $ {{ .Command }}
@@ -136,8 +143,9 @@ exec:
     # 終了コードが成功以外の場合
     - when: ExitCode != 0
       template: |
+        Result: :x:
 
-        :x:
+        Job: {{ template "link" . }}
 
         ```bash
         $ {{ .Command }}
