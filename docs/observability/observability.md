@@ -82,7 +82,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 #### ▼ メトリクスの種類
 
-どのような種類のメトリクスを収集するかについては、監視の種類ごとに異なる。
+どのような種類のメトリクスのデータポイントを収集するかについては、監視の種類ごとに異なる。
 
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
 

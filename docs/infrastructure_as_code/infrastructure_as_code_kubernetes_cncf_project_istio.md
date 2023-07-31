@@ -337,7 +337,7 @@ IstioによるEnvoyは、テレメトリーを作成する。
 
 IstioによるEnvoyは、メトリクスを作成し、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
 
-Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスを収集する。
+Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスのデータポイントを収集する。
 
 なお、`istio-proxy`コンテナにも`/stats/prometheus`エンドポイントはある。
 

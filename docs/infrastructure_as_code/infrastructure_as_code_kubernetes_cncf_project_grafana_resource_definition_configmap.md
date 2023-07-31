@@ -104,7 +104,7 @@ data:
 
 VictoriaMetricsの場合、ビルトインの`prometheus`タイプを使用できる。
 
-VictoriaMetricsからメトリクスを収集するために、PromQLを実行する必要がある。
+VictoriaMetricsからメトリクスのデータポイントを収集するために、PromQLを実行する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -131,7 +131,7 @@ data:
 
 CloudWatchの場合、`cloudwatch`タイプを指定する。
 
-CloudWatch-APIからメトリクスを収集するために、独自のクエリを実行する必要がある。
+CloudWatch-APIからメトリクスのデータポイントを収集するために、独自のクエリを実行する必要がある。
 
 ```yaml
 apiVersion: v1

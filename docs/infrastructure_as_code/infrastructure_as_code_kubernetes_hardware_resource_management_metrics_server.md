@@ -19,15 +19,29 @@ description: metrics-server＠ハードウェアリソース管理の知見を�
 
 metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。
 
-PodとNodeのメトリクスを収集し、`kubectl top`コマンドでこれを取得できる。
+PodとNodeのメトリクスのデータポイントを収集し、`kubectl top`コマンドでこれを取得できる。
 
 また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。
 
-KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスを収集しつつ、収集したメトリクスを拡張APIサーバーで公開する。
-
-クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。
+KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスのデータポイントを収集しつつ、収集したメトリクスを拡張APIサーバーで公開する。
 
 似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+
+`(1)`
+
+: クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照しようとする。
+
+`(2)`
+
+: クライアントは、kube-apiserverにリクエストが送信する。
+
+`(3)`
+
+: kube-apiserverは、metrics-serverのプロキシ (APIService) にリクストを転送する。
+
+`(4)`
+
+: APIServiceは、クライアントにメトリクスを返信する。
 
 ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
@@ -58,7 +72,7 @@ ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド
 
 ### スクレイパー
 
-対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。
+PodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。
 
 収集のために、ServiceAccountとClusterRoleを作成する必要がある。
 
