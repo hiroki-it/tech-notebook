@@ -330,6 +330,7 @@ nav:
                       - polaris: testing/testing_whitebox_infrastructure_linter_polaris.md
                   - ■ バージョンテスト:
                       - pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
+                      - nova: testing/testing_whitebox_infrastructure_linter_nova.md
                   - ■ 脆弱性テスト:
                       - checkov: testing/testing_whitebox_infrastructure_linter_checkov.md
                       - kics: testing/testing_whitebox_infrastructure_linter_kics.md
