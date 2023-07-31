@@ -20,6 +20,7 @@
 > > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_polaris.html)
 > * ##### <u>バージョンテスト</u>
 > > * ##### [pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_pluto.html)
+> > * ##### [nova](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_nova.html)
 > * ##### <u>脆弱性テスト</u>
 > > * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_checkov.html)
 > > * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_linter_kics.html)
