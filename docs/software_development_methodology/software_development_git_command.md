@@ -464,19 +464,19 @@ $ git branch --delete --remote origin/<ローカルブランチ名>
 ```bash
 $ git branch --all
 
-* master
-  remotes/origin/2019/Symfony_Nyumon/master
-  remotes/origin/master
+* main
+  remotes/origin/2019/Symfony_Nyumon/main
+  remotes/origin/main
 ```
 
 `【２】`
 
-: `remotes/origin/2019/Symfony_Nyumon/master`を削除する。
+: `remotes/origin/2019/Symfony_Nyumon/main`を削除する。
 
 ```bash
-$ git branch -d -r origin/2019/Symfony_Nyumon/master
+$ git branch -d -r origin/2019/Symfony_Nyumon/main
 
-Deleted remote-tracking branch origin/2019/Symfony_Nyumon/master (was 18a31b5).
+Deleted remote-tracking branch origin/2019/Symfony_Nyumon/main (was 18a31b5).
 ```
 
 `【３】`
@@ -485,8 +485,8 @@ Deleted remote-tracking branch origin/2019/Symfony_Nyumon/master (was 18a31b5).
 
 ```bash
 $ git branch --all
-* master
-  remotes/origin/master
+* main
+  remotes/origin/main
 ```
 
 #### ▼ checkout -b
@@ -541,7 +541,7 @@ fatal: cherry-pick failed
 # mオプションを有効化する
 $ git cherry-pick -m 1 d7e49b04
 
-[master a9ebcb4] Merge pull request #276 from feature/123
+[main a9ebcb4] Merge pull request #276 from feature/123
  Author: hiroki.hasegawa <*****@users.noreply.github.com>
  Date: Wed Sep 15 00:00:00 2021 +0900
  1 file changed, 7 insertions(+)
@@ -600,7 +600,7 @@ esac
 ```bash
 $ git checkout 2019/Symfony2_Ny
 
-umon/master
+umon/main
 error: Your local changes to the following files would be overwritten by checkout:
         app/config/config.yml
         src/AppBundle/Entity/Inquiry.php
@@ -867,12 +867,12 @@ $ git reset --hard <コミットID>
 ```bash
 $ git log
 
-commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/foo-repository/master)
+commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> main, 2019/foo-repository/main)
 Merge: 41cc21b f81c813
 Author: hiroki.hasegawa <example@gmail.com>
 Date:   Wed Mar 20 22:56:32 2019 +0900
 
-    Merge remote-tracking branch "refs/remotes/origin/master"
+    Merge remote-tracking branch "refs/remotes/origin/main"
 
 commit 41cc21bb53a8597270b5deae3259751df18bce81
 Author: hiroki.hasegawa <example@gmail.com>
@@ -902,7 +902,7 @@ $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
 ```bash
 $ git log
 
-commit f81c813a1ead9a968c109671e6d83934debcab2e (HEAD -> master)
+commit f81c813a1ead9a968c109671e6d83934debcab2e (HEAD -> main)
 Author: Hiroki Hasegawa <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
 
@@ -919,7 +919,7 @@ $ git push --force
 
 Total 0 (delta 0), reused 0 (delta 0)
 To github.com:hiroki-hasegawa/foo-repository.git
- + f0d8b1a...f81c813 master -> master (forced update)
+ + f0d8b1a...f81c813 main -> main (forced update)
 ```
 
 <br>
@@ -945,12 +945,12 @@ To github.com:hiroki-hasegawa/foo-repository.git
 ```bash
 $ git log
 
-commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/foo-repository/master)
+commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> main, 2019/foo-repository/main)
 Merge: 41cc21b f81c813
 Author: Hiroki Hasegawa <example@gmail.com>
 Date:   Wed Mar 20 22:56:32 2019 +0900
 
-    Merge remote-tracking branch "refs/remotes/origin/master"
+    Merge remote-tracking branch "refs/remotes/origin/main"
 
 commit 41cc21bb53a8597270b5deae3259751df18bce81
 Author: Hiroki Hasegawa <example@gmail.com>
@@ -1122,16 +1122,16 @@ Could not apply 37bee65... update #0 README.mdに本レポジトリのタイト�
 
 やりかけの`rebase`を取り消し。
 
-作業中のローカルブランチにおける`(master|REBASE-i)`が、` (master)`に変更されていることからも確認可能。
+作業中のローカルブランチにおける`(main|REBASE-i)`が、` (main)`に変更されていることからも確認可能。
 
 ```bash
-hiroki.hasegawa@PC /var/www/foo (master)
+hiroki.hasegawa@PC /var/www/foo (main)
 $ git rebase --interactive
 
-hiroki.hasegawa@PC /var/www/foo (master|REBASE-i)
+hiroki.hasegawa@PC /var/www/foo (main|REBASE-i)
 $ git rebase --abort
 
-hiroki.hasegawa@PC /var/www/foo (master)
+hiroki.hasegawa@PC /var/www/foo (main)
 $
 ```
 
@@ -1168,12 +1168,12 @@ $ git pull --all
 $ git push -u origin <作成したブランチ名>
 ```
 
-#### ▼ origin <コミットID>:master
+#### ▼ origin <コミットID>:main
 
 トラウマコマンド。
 
 ```bash
-$ git push origin <コミットID>:master
+$ git push origin <コミットID>:main
 ```
 
 #### ▼ --delete origin <バージョンタグ>

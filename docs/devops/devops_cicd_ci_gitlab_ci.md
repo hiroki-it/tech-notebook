@@ -56,7 +56,7 @@ GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで�
 ```yaml
 include:
   - project: hiroki-hasegawa/gitlab-ci-job-repository
-    ref: master
+    ref: main
     file:
       - foo-job.yml
       - bar-job.yml
@@ -206,7 +206,7 @@ foo_job:
 
 Jobの発火条件を設定する。
 
-複数の条件 (複数の`if`キー、`if`キーと`changes`キーの組み合わせ)　　を並べた場合、上から順番に条件を検証していく。
+複数の条件 (複数の`if`キー、`if`キーと`changes`キーの組み合わせ) を並べた場合、上から順番に条件を検証していくため、OR条件になる。
 
 #### ▼ if
 
@@ -218,7 +218,7 @@ Jobの発火条件を設定する。
 
 ```yaml
 check_tag:
-  # AND条件
+  # OR条件
   rules:
     # mainブランチのみ
     - if: $CI_COMMIT_BRANCH == "main"
@@ -361,5 +361,48 @@ foo_job:
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#variables
+
+<br>
+
+### workflow
+
+#### ▼ workflowとは
+
+GitLab CI自体が発火する条件を設定する。
+
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#workflowrules
+
+#### ▼ if
+
+```yaml
+# ブランチ名に応じて、CIで使用する実行環境名を切り替える
+workflow:
+  rules:
+    # featureブランチの場合
+    - if: $CI_COMMIT_REF_NAME =~ /^feature.*/
+      # ついでに環境変数を設定する
+      variables:
+        ENV: dev
+    # developブランチの場合
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      variables:
+        ENV: dev
+    # mainブランチの場合
+    - if: $CI_COMMIT_REF_NAME == "main"
+      variables:
+        ENV: prd
+```
+
+> - https://natsuhide.hatenablog.com/entry/2022/04/23/192420
+
+#### ▼ changes
+
+```yaml
+workflow:
+  rules:
+    - changes: foo/**/*
+```
+
+> - https://blogs.networld.co.jp/entry/2022/11/01/090000?_gl=1*1wxr8jb*_gcl_au*MTg4NDE0MjQ1My4xNjkwODAzOTEy
 
 <br>
