@@ -45,14 +45,14 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 #### ▼ テンプレートに出力できる変数
 
-| 変数                    | 説明                  |
-| ----------------------- |---------------------|
-| `{{ .Stdout }}`         | 標準出力への出力内容          |
-| `{{ .Stderr }}`         | 標準エラー出力への出力内容       |
+| 変数                    | 説明                                   |
+| ----------------------- | -------------------------------------- |
+| `{{ .Stdout }}`         | 標準出力への出力内容                   |
+| `{{ .Stderr }}`         | 標準エラー出力への出力内容             |
 | `{{ .CombinedOutput }}` | 標準出力と標準エラー出力を結合した内容 |
-| `{{ .Command }}`        | 絶対パスの実行コマンド名        |
-| `{{ .JoinCommand }}`    | バイナリ名のみの実行コマンド名     |
-| `{{ .ExitCode }}`       | 終了ステータスコード          |
+| `{{ .Command }}`        | 絶対パスの実行コマンド名               |
+| `{{ .JoinCommand }}`    | バイナリ名のみの実行コマンド名         |
+| `{{ .ExitCode }}`       | 終了ステータスコード                   |
 
 > - https://suzuki-shunsuke.github.io/github-comment/config/#exec
 
@@ -90,7 +90,8 @@ exec:
 ---
 exec:
   test:
-    - template: |
+    - when: true
+      template: |
 
         :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
 
@@ -109,14 +110,30 @@ exec:
 
 ### when
 
-特定の条件の場合のみ、テンプレートを使用する。
+#### ▼ whenとは
 
-`````yaml
+テンプレートを使用する条件を設定する。
+
 ````yaml
 ---
 exec:
   test:
-      # 終了コードが成功以外の場合
+    # 必ず実行する場合
+    - when: true
+      template: |
+
+        ```bash
+        $ {{ .Command }}
+
+        {{ .CombinedOutput | AvoidHTMLEscape }}
+        ```
+````
+
+````yaml
+---
+exec:
+  test:
+    # 終了コードが成功以外の場合
     - when: ExitCode != 0
       template: |
 
@@ -127,7 +144,7 @@ exec:
 
         {{ .CombinedOutput | AvoidHTMLEscape }}
         ```
-`````
+````
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
 
