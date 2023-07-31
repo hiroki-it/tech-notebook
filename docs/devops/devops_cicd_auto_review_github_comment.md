@@ -90,21 +90,17 @@ exec:
 ---
 exec:
   test:
-    template: |
+    - template: |
 
-      ## :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
+        ## :{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:
 
-      {{ template "link" . }}
+        {{ template "link" . }}
 
-      ```bash
-      $ {{ .Command }}
+        ```bash
+        $ {{ .Command }}
 
-      {{ if eq .ExitCode 0 }}
-      {{ .Stdout }}
-      {{ else }}
-      {{ .Stderr }}
-      {{ end }}
-      ```
+        {{ if eq .ExitCode 0 }}{{ .Stdout }}{{ else }}{{ .Stderr }}{{ end }}
+        ```
 ````
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
