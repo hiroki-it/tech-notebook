@@ -276,13 +276,40 @@ foo_job:
 
 ### stage
 
+#### ▼ stage
+
 Jobが属するステージを設定する。
+
+より前のステージ内のJobが全て成功しない限り、後続のJobを開始しない。
 
 同じステージに属するJobは、並行的に実行される。
 
 ```yaml
+stages:
+  - build
+  - test
+  - deploy
+
+# ----------
+# build
+# ----------
 foo_job:
   stage: build
+
+bar_job:
+  stage: build
+
+# ----------
+# test
+# ----------
+baz_job:
+  stage: test
+
+# ----------
+# deploy
+# ----------
+qux_job:
+  stage: deploy
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#stage
