@@ -47,6 +47,16 @@ $ docker run aquasec/trivy
 
 > - https://aquasecurity.github.io/trivy/v0.42/docs/references/configuration/cli/trivy_config/
 
+#### ▼ --debug
+
+デバッグモードを有効化する。
+
+```bash
+$ trivy config --debug <ファイル>
+```
+
+> - https://aquasecurity.github.io/trivy/v0.17.2/usage/
+
 #### ▼ --exit-code
 
 脆弱性が検出された時の終了コードを設定する。
@@ -59,8 +69,18 @@ $ trivy config --exit-code 1 <ファイル>
 
 ```bash
 $ helm template foo . --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
-    && trivy config --exit-code 1 --debug foo.yaml
+    && trivy config --exit-code 1 foo.yaml
 ```
+
+#### ▼ --quiet
+
+処理中のプログレスバーを非表示にする。
+
+```bash
+$ trivy config --quiet <ファイル>
+```
+
+> - https://aquasecurity.github.io/trivy/v0.17.2/usage/
 
 #### ▼ --severity
 
