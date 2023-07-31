@@ -61,7 +61,7 @@ $ curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/downl
 # 仮想Clusterを作成する
 $ vcluster create <Cluster名> \
     -n <ClusterのNamespace名> \
-    -f values.yaml \
+    -f foo-values.yaml \
     --kubernetes-version=<バージョン>
 ```
 
@@ -99,7 +99,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/vcluster-eks -
 ```bash
 $ vcluster create <Cluster名> \
     -n <ClusterのNamespace名> \
-    -f values.yaml \
+    -f foo-values.yaml \
     --kubernetes-version=<バージョン>
 ```
 
@@ -113,7 +113,7 @@ $ vcluster create <Cluster名> \
 $ vcluster create <Cluster名> \
     -n <ClusterのNamespace名> \
     --upgrade \
-    -f values.yaml \
+    -f foo-values.yaml \
     --kubernetes-version=<バージョン>
 ```
 

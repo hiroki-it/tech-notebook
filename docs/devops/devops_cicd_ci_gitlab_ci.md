@@ -246,7 +246,7 @@ check_tag:
 ```yaml
 gemerate_template:
   script:
-    - helm template foo . --set secret.PASSWORD=test > foo.yaml
+    - helm template foo . --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
   rules:
     # webイベント (パイプライン実行ボタン) の場合
     - if: $CI_PIPELINE_SOURCE == "web"

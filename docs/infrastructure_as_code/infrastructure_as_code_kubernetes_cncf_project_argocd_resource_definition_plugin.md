@@ -991,9 +991,9 @@ spec:
         - name: HELM_RELEASE_NAME
           value: foo
         - name: SOPS_SECRETS_FILE
-          value: ./sops/secret.prd.yaml
+          value: ./sops/secret.yaml
         - name: VALUES_FILE
-          value: ./values/values-prd.yaml
+          value: ./values/values.yaml
 ```
 
 <br>

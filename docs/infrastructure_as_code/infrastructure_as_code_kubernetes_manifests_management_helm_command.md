@@ -233,7 +233,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名> --kube-con
 チャートの構造の誤り (例：`values`ファイルや`Chart.yaml`ファイルがあるか) を実行する。
 
 ```bash
-$ helm lint <チャートへのパス>
+$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 
 ==> Linting foo-chart
 [INFO] Chart.yaml: icon is recommended
@@ -243,7 +243,7 @@ Error: 0 chart(s) linted, 0 chart(s) failed
 ```
 
 ```bash
-$ helm lint  <チャートへのパス>
+$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 
 ==> Linting foo-chart
 [ERROR] Chart.yaml: version is required
@@ -290,7 +290,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 執筆時点 (2023/05/26) でまだリリースされていない。
 
 ```bash
-$ helm lint --strict
+$ helm lint --strict <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
 > - https://github.com/helm/helm/pull/11760
@@ -631,7 +631,7 @@ Kubernetesに作成されるリソースのマニフェストを出力する。
 
 ```bash
 # チャート名をreleasesとしている場合
-$ helm template . -f values.yaml >| releases.yaml
+$ helm template . -f foo-values.yaml >| releases.yaml
 ```
 
 #### ▼ -f

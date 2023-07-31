@@ -58,7 +58,7 @@ $ trivy config --exit-code 1 <ファイル>
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template foo . --set secret.PASSWORD=test > foo.yaml
+$ helm template foo . --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
     && trivy config --exit-code 1 --debug foo.yaml
 ```
 

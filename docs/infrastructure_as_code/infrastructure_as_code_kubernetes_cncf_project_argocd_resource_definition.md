@@ -1042,7 +1042,7 @@ spec:
     path: ./charts
     helm:
       valueFiles:
-        - ./values/values-prd.yaml
+        - ./values/values.yaml
 ```
 
 #### ▼ repoURL

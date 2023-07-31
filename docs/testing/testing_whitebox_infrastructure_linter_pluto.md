@@ -23,7 +23,7 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 ### 対応するKubernetesリソース
 
-標準のK8sリソースだけでなく、一部のカスタムリソース (Istioも含む) も対応している。
+標準のKubernetesリソースだけでなく、一部のカスタムリソース (Istioも含む) も対応している。
 
 ただ、全てのカスタムリソースに対応しているわけではない。
 
@@ -50,18 +50,8 @@ $ brew install pluto
 
 標準入力からマニフェストを渡す。
 
-CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
-
 ```bash
-$ helm template fluentd . --set secret.GCP_CREDENTIALS=test \
-    | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
-
-NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
-foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
-```
-
-```bash
-$ helm template foo-chart -f values-prd.yaml \
+$ helm template foo-chart -f foo-values.yaml \
     | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
 
 NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
@@ -69,8 +59,18 @@ foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v
 ```
 
 ```bash
-$ helm template foo-chart -f values-prd.yaml \
+$ helm template foo-chart -f foo-values.yaml \
     | pluto detect-helm -t k8s=<Kubernetesのバージョン> - -o wide
+
+NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
+foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
+```
+
+CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
+
+```bash
+$ helm template foo-chart . --set secret.GCP_CREDENTIALS=test -f foo-values.yaml \
+    | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
 
 NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
