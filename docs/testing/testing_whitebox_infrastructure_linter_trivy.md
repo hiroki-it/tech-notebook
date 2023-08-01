@@ -100,10 +100,10 @@ $ trivy config --quiet <ファイル>
 
 #### ▼ --severity
 
-検出する最低の重要度レベルを設定する。
+検出する最低の重要度レベル (UNKNOWN、LOW、MEDIUM、HIGH、CRITICAL) を設定する。
 
 ```bash
-$ trivy config --severity CRITICAL,HIGH <ファイル>
+$ trivy config --severity HIGH,CRITICAL <ファイル>
 ```
 
 > - https://aquasecurity.github.io/trivy/v0.19.2/vulnerability/examples/filter/#by-severity

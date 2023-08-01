@@ -102,7 +102,7 @@ $ helm template foo-chart. --set secret.PASSWORD=test > foo.yaml
 
 <br>
 
-### quiet
+### --quiet
 
 失敗した項目のみを結果として出力する。
 
@@ -111,5 +111,17 @@ $ helm template foo-chart. --set secret.PASSWORD=test > foo.yaml
 ```bash
 $ checkov -f foo.yaml --quiet
 ```
+
+<br>
+
+### --skip-check
+
+検出から除外する重要度レベル (LOW,MEDIUM,HIGH) やCVEのIDを設定する。
+
+```bash
+$ checkov -f foo.yaml --skip-check HIGH,CKV_*** --bc-api-key <APIキー>
+```
+
+> - https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html#platform-enforcement-rules
 
 <br>

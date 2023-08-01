@@ -45,10 +45,11 @@ $ brew install kics
 
 #### ▼ --exclude-severities
 
-検出する最低の重要度レベルを設定する。
+検出から除外する重要度レベル (info、low、medium、high) を設定する。
 
 ```bash
-$ kics scan -p <パス> --exclude-severities info,low
+# highレベルのみを検出する
+$ kics scan -p <パス> --exclude-severities info,low,medium
 ```
 
 > - https://github.com/Checkmarx/kics/blob/master/docs/commands.md

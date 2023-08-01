@@ -1021,29 +1021,8 @@ $ terraform-docs markdown . --output-file=README.md
 
 <!-- BEGIN_TF_DOCS -->
 
-## Requirements
-
-...
-
-## Providers
-
-...
-
-## Modules
-
-...
-
-## Resources
-
-...
-
-## Inputs
-
-...
-
-## Outputs
-
-...
+## Requirements ... ## Providers ... ## Modules ... ## Resources ... ## Inputs
+... ## Outputs ...
 
 <!-- END_TF_DOCS -->
 ```

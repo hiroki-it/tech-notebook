@@ -44,7 +44,6 @@ $ brew install pluto
 
 > - https://pluto.docs.fairwinds.com/installation/
 
-
 <br>
 
 ## 03. グローバルオプション

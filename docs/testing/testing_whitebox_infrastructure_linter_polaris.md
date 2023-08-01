@@ -72,7 +72,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --
 
 ### checks
 
-検査項目ごとに、検出する最低の重要度レベルを設定する。
+検査項目ごとに重要度レベル (ignore、warning、danger) を設定する。
 
 ```yaml
 checks:
@@ -187,7 +187,7 @@ $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 
 #### ▼ --severity
 
-検出する最低の重要度レベルを設定する。
+検出する最低の重要度レベル (warning、danger) を設定する。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml --severity danger

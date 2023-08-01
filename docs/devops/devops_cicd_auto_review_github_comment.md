@@ -162,7 +162,7 @@ exec:
         | 実行ジョブ | {{ template "link" . }} |
 
         ## 詳細
-        
+
         <details>
         <summary>クリックで開く</summary>
 
@@ -173,7 +173,6 @@ exec:
         ```
 
         </details>
-
 ````
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
@@ -212,9 +211,8 @@ exec:
 
         {{ .CombinedOutput | AvoidHTMLEscape }}
         ```
-        
-        </details>
 
+        </details>
 ````
 
 ````yaml
@@ -245,7 +243,6 @@ exec:
         ```
 
         </details>
-
 ````
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
