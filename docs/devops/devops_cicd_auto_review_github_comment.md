@@ -72,6 +72,7 @@ $ ./github-comment hide -k <テンプレート名>
 
 > - https://tech-blog.yayoi-kk.co.jp/entry/2022/05/10/110000
 > - https://studist.tech/terraform-plan-9429ab6392a9
+> - https://suzuki-shunsuke.github.io/github-comment/hide/
 
 <br>
 
@@ -152,24 +153,6 @@ exec:
     - when: true
       template: |
 
-        Result: {{ template "status" . }}
-
-        Job: {{ template "link" . }}
-
-        ```bash
-        $ {{ .Command }}
-
-        {{ .CombinedOutput | AvoidHTMLEscape }}
-        ```
-````
-
-````yaml
----
-exec:
-  test:
-    - when: true
-      template: |
-
         ## 概要
 
         | 項目 | 内容 |
@@ -179,12 +162,18 @@ exec:
         | 実行ジョブ | {{ template "link" . }} |
 
         ## 詳細
+        
+        <details>
+        <summary>クリックで開く</summary>
 
         ```bash
-        $ {{ .Command }}
+        $ {{ .JoinCommand }}
 
         {{ .CombinedOutput | AvoidHTMLEscape }}
         ```
+
+        </details>
+
 ````
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
@@ -205,13 +194,27 @@ exec:
     - when: true
       template: |
 
-        Job: {{ template "link" . }}
+        ## 概要
+
+        | 項目 | 内容 |
+        |-----|--------------------|
+        | 解析コマンド | `{{ .JoinCommand }}` |
+        | 成否 | {{ template "status" . }} |
+        | 実行ジョブ | {{ template "link" . }} |
+
+        ## 詳細
+
+        <details>
+        <summary>クリックで開く</summary>
 
         ```bash
-        $ {{ .Command }}
+        $ {{ .JoinCommand }}
 
         {{ .CombinedOutput | AvoidHTMLEscape }}
         ```
+        
+        </details>
+
 ````
 
 ````yaml
@@ -222,15 +225,27 @@ exec:
     - when: ExitCode != 0
       template: |
 
-        Result: :x:
+        ## 概要
 
-        Job: {{ template "link" . }}
+        | 項目 | 内容 |
+        |-----|--------------------|
+        | 解析コマンド | `{{ .JoinCommand }}` |
+        | 成否 | :x: |
+        | 実行ジョブ | {{ template "link" . }} |
+
+        ## 詳細
+
+        <details>
+        <summary>クリックで開く</summary>
 
         ```bash
-        $ {{ .Command }}
+        $ {{ .JoinCommand }}
 
         {{ .CombinedOutput | AvoidHTMLEscape }}
         ```
+
+        </details>
+
 ````
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
