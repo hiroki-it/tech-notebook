@@ -56,7 +56,7 @@ $ brew install checkov
 `--compact`オプションを有効化しない場合、問題のあるコード箇所を表示する。
 
 ```bash
-$ checkov -f foo.yaml --compact
+$ checkov -f <IaCファイル> --compact
 ```
 
 <br>
@@ -88,14 +88,15 @@ $ checkov --framework <ツール名>
 単一のファイルを処理する。
 
 ```bash
-$ checkov -f <ファイル>
+$ checkov -f <IaCファイル>
 ```
 
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template foo-chart. --set secret.PASSWORD=test > foo.yaml
-    && checkov -f foo.yaml
+$ helm template foo-chart. --set secret.PASSWORD=test > manifest.yaml
+
+$ checkov -f manifest.yaml
 ```
 
 > - https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference
@@ -109,7 +110,7 @@ $ helm template foo-chart. --set secret.PASSWORD=test > foo.yaml
 `--quiet`オプションを有効化しない場合は、成功と失敗の両方の項目を出力する。
 
 ```bash
-$ checkov -f foo.yaml --quiet
+$ checkov -f <IaCファイル> --quiet
 ```
 
 <br>
@@ -118,8 +119,10 @@ $ checkov -f foo.yaml --quiet
 
 検出から除外する重要度レベル (LOW,MEDIUM,HIGH) やCVEのIDを設定する。
 
+BC-APIキーが必要で、これはBridgecrewダッシュボードから取得する必要がある。
+
 ```bash
-$ checkov -f foo.yaml --skip-check HIGH,CKV_*** --bc-api-key <APIキー>
+$ checkov -f <IaCファイル> --skip-check HIGH,CKV_*** --bc-api-key <BC-APIキー>
 ```
 
 > - https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html#platform-enforcement-rules

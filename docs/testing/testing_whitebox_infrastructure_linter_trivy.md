@@ -68,7 +68,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/trivy -n t
 デバッグモードを有効化する。
 
 ```bash
-$ trivy config --debug <ファイル>
+$ trivy config --debug <IaCファイル>
 ```
 
 > - https://aquasecurity.github.io/trivy/v0.17.2/usage/
@@ -78,14 +78,15 @@ $ trivy config --debug <ファイル>
 脆弱性が検出された時の終了コードを設定する。
 
 ```bash
-$ trivy config --exit-code 1 <ファイル>
+$ trivy config --exit-code 1 <IaCファイル>
 ```
 
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template foo-chart. --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
-    && trivy config --exit-code 1 foo.yaml
+$ helm template foo-chart. --set secret.PASSWORD=test -f foo-values.yaml > manifest.yaml
+
+$ trivy config --exit-code 1 manifest.yaml
 ```
 
 #### ▼ --quiet
@@ -93,7 +94,7 @@ $ helm template foo-chart. --set secret.PASSWORD=test -f foo-values.yaml > foo.y
 処理中のプログレスバーを非表示にする。
 
 ```bash
-$ trivy config --quiet <ファイル>
+$ trivy config --quiet <IaCファイル>
 ```
 
 > - https://aquasecurity.github.io/trivy/v0.17.2/usage/
@@ -103,7 +104,7 @@ $ trivy config --quiet <ファイル>
 検出する最低の重要度レベル (UNKNOWN、LOW、MEDIUM、HIGH、CRITICAL) を設定する。
 
 ```bash
-$ trivy config --severity HIGH,CRITICAL <ファイル>
+$ trivy config --severity HIGH,CRITICAL <IaCファイル>
 ```
 
 > - https://aquasecurity.github.io/trivy/v0.19.2/vulnerability/examples/filter/#by-severity

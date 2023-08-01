@@ -98,7 +98,7 @@ $ kubeconform \
     -strict \
     -summary \
     -output text \
-    <ファイル>
+    manifest.yaml
 ```
 
 #### ▼ 現在のバージョンと次のバージョンを指定
