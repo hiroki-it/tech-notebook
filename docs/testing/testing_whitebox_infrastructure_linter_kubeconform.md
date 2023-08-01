@@ -72,7 +72,7 @@ JSON schema written to foo-v1beta1.json
 CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
 
 ```bash
-$ helm template foo . --set secret.PASSWPRD=test \
+$ helm template foo-chart. --set secret.PASSWPRD=test \
   | kubeconform -kubernetes-version <Kubernetesのバージョン> -
 ```
 

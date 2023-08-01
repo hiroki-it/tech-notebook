@@ -301,7 +301,7 @@ $ asdf install
 : `helm upgrade`コマンドを実行することにより、インストール済みのチャートをアップグレードする。
 
 ```bash
-$ helm upgrade <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス> --version <バージョンタグ> --wait
+$ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --version <バージョンタグ> --wait
 ```
 
 `【２】`

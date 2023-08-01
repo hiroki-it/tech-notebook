@@ -94,7 +94,7 @@ $ checkov -f <ファイル>
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template foo . --set secret.PASSWORD=test > foo.yaml
+$ helm template foo-chart. --set secret.PASSWORD=test > foo.yaml
     && checkov -f foo.yaml
 ```
 

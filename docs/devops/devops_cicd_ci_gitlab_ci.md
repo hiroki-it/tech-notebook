@@ -146,6 +146,8 @@ bar_job:
 
 ### cache
 
+### ▼ cacheとは
+
 指定したディレクトリのキャッシュを作成する。
 
 これにより、他のパイプラインでこのディレクトリを再利用し、CIの時間を短縮できる。
@@ -159,6 +161,32 @@ bar_job:
 ```
 
 > - https://www.serversus.work/topics/927zjvmew2491o2n1oob/
+
+### ▼ policy
+
+キャッシュ作成のルールを設定する。
+
+```yaml
+bar_job:
+  stage: build
+  cache:
+    paths:
+      - ./node_module
+    # キャッシュのダウンロードのみを実行する
+    policy: pull
+```
+
+```yaml
+bar_job:
+  stage: build
+  cache:
+    paths:
+      - ./node_module
+    # キャッシュのアップロードのみを実行する
+    policy: push
+```
+
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#cachepolicy
 
 <br>
 
@@ -274,7 +302,7 @@ check_tag:
 ```yaml
 gemerate_template:
   script:
-    - helm template foo . --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
+    - helm template foo-chart. --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
   rules:
     # webイベント (パイプライン実行ボタン) の場合
     - if: $CI_PIPELINE_SOURCE == "web"
@@ -446,6 +474,15 @@ workflow:
     - if: $CI_COMMIT_REF_NAME == "main"
       variables:
         ENV: prd
+
+setup-manifest:
+  stage: build
+  image: alpine/helm:latest
+  # ブランチ名に応じて、valuesファイルを切り替える
+  script:
+    - helm lint . -f values.${ENV}.yaml
+    - helm template foo-chart. -f values.${ENV}.yaml > manifest.yaml
+    - cat manifest.yaml
 ```
 
 > - https://natsuhide.hatenablog.com/entry/2022/04/23/192420

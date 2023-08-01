@@ -205,7 +205,7 @@ kind: Deployment
 これ以外の名前の場合は、オプションによる`values`ファイルの指定が必要になる。
 
 ```bash
-$ helm install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
 
 > - https://helm.sh/docs/helm/helm_install/#options
@@ -233,7 +233,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名> --kube-con
 チャートの構造の誤り (例：`values`ファイルや`Chart.yaml`ファイルがあるか) を実行する。
 
 ```bash
-$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
+$ helm lint <チャートへのパス> -f foo-values.yaml
 
 ==> Linting foo-chart
 [INFO] Chart.yaml: icon is recommended
@@ -243,7 +243,7 @@ Error: 0 chart(s) linted, 0 chart(s) failed
 ```
 
 ```bash
-$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
+$ helm lint <チャートへのパス> -f foo-values.yaml
 
 ==> Linting foo-chart
 [ERROR] Chart.yaml: version is required
@@ -262,7 +262,7 @@ Error: 1 chart(s) linted, 1 chart(s) failed
 指定した`values`ファイル使用して、`helm lint`コマンドを実行する。
 
 ```bash
-$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
+$ helm lint <チャートへのパス> -f foo-values.yaml
 
 ==> Linting kubernetes
 [INFO] Chart.yaml: icon is recommended
@@ -274,7 +274,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 複数のチャートに対して、同じ`values`ファイルを渡すこともできる。
 
 ```bash
-$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
+$ helm lint <チャートへのパス> -f foo-values.yaml
 
 ==> Linting <チャート>
 [INFO] Chart.yaml: icon is recommended
@@ -290,7 +290,7 @@ $ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 執筆時点 (2023/05/26) でまだリリースされていない。
 
 ```bash
-$ helm lint --strict <チャートへのパス> -f <valuesファイルへのパス>
+$ helm lint --strict <チャートへのパス> -f foo-values.yaml
 ```
 
 > - https://github.com/helm/helm/pull/11760
@@ -639,7 +639,7 @@ $ helm template . -f foo-values.yaml >| releases.yaml
 指定した`values`ファイル使用して、`helm template`コマンドを実行する。
 
 ```bash
-$ helm template <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
+$ helm template <チャートへのパス> -f foo-values.yaml >| <出力先ファイル>
 ```
 
 **＊例＊**
@@ -658,7 +658,7 @@ $ helm template ./foo-chart -f ./values.yaml >| release.yaml
 
 ```bash
 # 暗号化ツールを使用せずにSecretを作成する
-$ helm template <チャートへのパス> -f <valuesファイルへのパス> -set user.password=test >| <出力先ファイル>
+$ helm template <チャートへのパス> -f foo-values.yaml -set user.password=test >| <出力先ファイル>
 ```
 
 ```yaml
@@ -724,7 +724,7 @@ Helmは、CRDを含むチャートのインストールはサポートしてい�
 `helm upgrade`コマンドが正常に完了しなかった場合に、自動的にロールバックする。
 
 ```bash
-$ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
 
 **＊例＊**
@@ -738,7 +738,7 @@ $ helm template --atomic ./foo-chart -f ./values.yaml >| release.yaml
 新しいリビジョン番号を作成し、インストール済のHelmリリースをアップグレードする。
 
 ```bash
-$ helm upgrade --install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --install <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 
 Release "<Helmリリース名>" has been upgraded. Happy Helming!
 NAME: <Helmリリース名>
@@ -756,7 +756,7 @@ TEST SUITE: None
 これにより、`helm upgrade`コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。
 
 ```bash
-$ helm upgrade --skip-crds --install <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --skip-crds --install <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
 
 **＊例＊**
@@ -774,7 +774,7 @@ $ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >|
 作成したPodがReady状態になるまで、`helm upgrade`コマンドの完了を待機する。
 
 ```bash
-$ helm upgrade --wait <Helmリリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --wait <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
 
 **＊例＊**

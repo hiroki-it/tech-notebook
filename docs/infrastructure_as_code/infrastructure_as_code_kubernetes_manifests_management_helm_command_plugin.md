@@ -141,7 +141,7 @@ $ helm template ./foo-chart -f secrets://secrets.yaml
 補足としてこの時、`values`ファイル側には`secrets`ファイルの値を設定しておく必要はない。
 
 ```bash
-$ helm secrets template <チャートへのパス> -f <SOPSが作成したsecretsファイルへのパス> -f <valuesファイルへのパス>
+$ helm secrets template <チャートへのパス> -f <SOPSが作成したsecretsファイルへのパス> -f foo-values.yaml
 ```
 
 **＊例＊**
