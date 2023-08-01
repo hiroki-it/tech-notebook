@@ -36,11 +36,14 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 ### インストール
 
+#### ▼ バイナリとして
+
 ```bash
 $ brew install pluto
 ```
 
 > - https://pluto.docs.fairwinds.com/installation/
+
 
 <br>
 

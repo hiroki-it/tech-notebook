@@ -35,16 +35,24 @@ $ brew install kubeconform
 
 ### カスタムリソースのスキーマの用意
 
-カスタムリソースの静的解析を実行する場合、そのスキーマをCRDから作成する必要がある。
+#### ▼ CRDのマニフェストのインストール
 
-まずは、CRDをインストールする。
-
-その後、`openapi2jsonschema`を使い、CRDから各カスタムリソースのスキーマをJSON形式で作成する。
+CRDのマニフェストをインストールする。
 
 ```bash
 # リポジトリからCRDを取得する
 $ wget https://github.com/hiroki-hasegawa/foo-repository/crds.yaml
+```
 
+あるいは、JSON形式のスキーマを直接インストールしてもよい。
+
+この場合、後述のスキーマの作成は不要になる。
+
+#### ▼ スキーマの作成
+
+`openapi2jsonschema`を使い、CRDのマニフェストから各カスタムリソースのスキーマをJSON形式で作成する。
+
+```bash
 # 各カスタムリソースのJSONスキーマのファイル形式を設定する
 $ export FILENAME_FORMAT='{kind}-{version}'
 
@@ -105,14 +113,37 @@ $ kubeconform \
     -strict \
     -summary \
     -output text \
-    <ファイル>
+    manifest.yaml
 
 $ kubeconform \
     -kubernetes-version <Kubernetesの次のバージョン> \
     -strict \
     -summary \
     -output text \
-    <ファイル>
+    manifest.yaml
 ```
+
+<br>
+
+### -schema-location
+
+#### ▼ -schema-locationとは
+
+JSON形式のスキーマの場所を明示的に設定する。
+
+Goテンプレートのように、マニフェスト内の値をスキーマのパスに出力できる。
+
+```bash
+$ kubeconform \
+    -schema-location default \
+    -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json' \
+    manifest.yaml
+```
+
+Kubernetesリソースのスキーマは、`default`エイリアス (`https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{.NormalizedKubernetesVersion}}-standalone{{.StrictSuffix}}/{{.ResourceKind}}{{.KindSuffix}}.json`) にある。
+
+CRDのスキーマは、`https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json` にある。
+
+> - https://github.com/yannh/kubeconform#overriding-schemas-location
 
 <br>

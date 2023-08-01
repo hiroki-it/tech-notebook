@@ -56,6 +56,8 @@ $ brew install FairwindsOps/tap/polaris
 
 #### ▼ Admission Controller
 
+Admission Controllerとして、実際にデプロイされたマニフェストに対して静的解析を実行する。
+
 ```bash
 $ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/stable
 
@@ -182,5 +184,13 @@ $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 ```
 
 > - https://polaris.docs.fairwinds.com/infrastructure-as-code/#audit-helm-charts
+
+#### ▼ --severity
+
+検出する最低の重要度レベルを設定する。
+
+```bash
+$ polaris audit --audit-path manifest.yaml --severity danger
+```
 
 <br>
