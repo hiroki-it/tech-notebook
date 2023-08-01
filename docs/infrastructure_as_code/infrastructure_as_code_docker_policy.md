@@ -127,6 +127,19 @@ $ docker inspect <コンテナ名>
 
 <br>
 
+### Docker in Docker
+
+コンテナの中でコンテナを作成するという入れ子構造のこと。
+
+Docker in Dockerは、特権モードが必要になり、安全性に問題がある。
+
+一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。
+
+> - https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/
+> - https://shisho.dev/blog/posts/docker-in-docker/
+
+<br>
+
 ## 03. イメージサイズ
 
 ### 不要なファイルの除外

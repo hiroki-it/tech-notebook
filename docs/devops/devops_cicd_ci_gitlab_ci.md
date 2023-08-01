@@ -200,6 +200,34 @@ foo_job:
 
 <br>
 
+### needs
+
+Job間の依存関係を設定する。
+
+同じステージ内に複数のJobがある場合に役立つ。
+
+```yaml
+stages:
+  - build
+
+foo_job:
+  stage: build
+
+# fooの後に、baz_jobと並行実行する
+bar_job:
+  stage: build
+  needs:
+    - foo_job
+
+# fooの後に、bar_jobと並行実行する
+baz_job:
+  stage: build
+  needs:
+    - foo_job
+```
+
+<br>
+
 ### rules
 
 #### ▼ rulesとは

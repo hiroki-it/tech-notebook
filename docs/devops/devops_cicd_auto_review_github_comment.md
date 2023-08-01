@@ -58,6 +58,23 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 <br>
 
+### hide
+
+#### ▼ hideとは
+
+テンプレートで定義した条件に応じて、コメントを非表示にする。
+
+テンプレート名は
+
+```bash
+$ ./github-comment hide -k <テンプレート名>
+```
+
+> - https://tech-blog.yayoi-kk.co.jp/entry/2022/05/10/110000
+> - https://studist.tech/terraform-plan-9429ab6392a9
+
+<br>
+
 ## 04. `github-comment.yaml`ファイル
 
 ### `github-comment.yaml`ファイルとは
@@ -73,6 +90,41 @@ exec:
   # テンプレート名
   test: ...
 ```
+
+```bash
+$ ./github-comment exec -k test -- <好きなコマンド>
+```
+
+<br>
+
+### hide
+
+非表示にするコメントの条件を設定する。
+
+```yaml
+---
+exec:
+  test:
+    - when: true
+      template: |
+        ...
+hide:
+  old-comment:
+    - when: true
+      # 一致しないコミットによるコメントは非表示にする
+      template: |
+        Comment.HasMeta && Comment.Meta.SHA1 != Commit.SHA1
+```
+
+各コメントには、以下のようなメタデータが設定されている。
+
+これを非表示の条件に使用する。
+
+```md
+<!-- github-comment: {"SHA1":"*****","TemplateKey":"test","Vars":{"target":""}} -->
+```
+
+> - https://github.com/suzuki-shunsuke/tfaction-example/blob/main/github-comment.yaml
 
 <br>
 
@@ -117,7 +169,7 @@ exec:
   test:
     - when: true
       template: |
-        
+
         ## 概要
 
         | 項目 | 内容 |
