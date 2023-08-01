@@ -97,7 +97,7 @@ done
 ```bash
 #!/bin/bash
 
-case "$ENV" in
+case "${ENV}" in
     "tes")
         VAR="foo"
     ;;
@@ -108,7 +108,7 @@ case "$ENV" in
         VAR="baz"
     ;;
     *)
-        echo "The parameter "$ENV" is invalid."
+        echo "The parameter "${ENV}" is invalid."
         exit 1
     ;;
 esac

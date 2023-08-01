@@ -107,7 +107,7 @@ description: 監視＠Datadogの知見を記録しています。
 
 タイトルに変数を出力できる。
 
-```markdown
+```html
 <!-- タグ変数を出力する -->
 
 【{{ log.attributes.service }}】{{ log.attributes.env }}環境でエラーを検知しました。
@@ -119,7 +119,7 @@ description: 監視＠Datadogの知見を記録しています。
 
 マークダウン記法を使用できる。
 
-```markdown
+```html
 <!-- Datadogに設定した通知先 -->
 
 <!-- アラート状態の時に表示するテキスト -->

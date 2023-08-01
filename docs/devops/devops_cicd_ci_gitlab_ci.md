@@ -451,11 +451,13 @@ foo_job:
 
 #### ▼ workflowとは
 
-GitLab CI自体が発火する条件を設定する。
+GitLab CI自体の発火を制御する。
 
 > - https://gitlab-docs.creationline.com/ee/ci/yaml/#workflowrules
 
 #### ▼ if
+
+GitLab CIが発火する条件を設定する。
 
 ```yaml
 # ブランチ名に応じて、CIで使用する実行環境名を切り替える
@@ -469,7 +471,7 @@ workflow:
     # developブランチの場合
     - if: $CI_COMMIT_REF_NAME == "develop"
       variables:
-        ENV: dev
+        ENV: tes
     # mainブランチの場合
     - if: $CI_COMMIT_REF_NAME == "main"
       variables:
@@ -480,8 +482,8 @@ setup-manifest:
   image: alpine/helm:latest
   # ブランチ名に応じて、valuesファイルを切り替える
   script:
-    - helm lint . -f values.${ENV}.yaml
-    - helm template foo-chart. -f values.${ENV}.yaml > manifest.yaml
+    - helm lint . -f values-${ENV}.yaml
+    - helm template foo-chart. -f values-${ENV}.yaml > manifest.yaml
     - cat manifest.yaml
 ```
 

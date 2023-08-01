@@ -121,7 +121,7 @@ hide:
 
 これを非表示の条件に使用する。
 
-```md
+```html
 <!-- github-comment: {"SHA1":"*****","TemplateKey":"test","Vars":{"target":""}} -->
 ```
 

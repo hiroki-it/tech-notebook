@@ -380,7 +380,7 @@ helm-docsを使用して、`values`ファイルの仕様書を作成する。
 $ helm-docs -f <valuesファイル名>
 ```
 
-```markdown
+```html
 # チャート名
 
 ![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)

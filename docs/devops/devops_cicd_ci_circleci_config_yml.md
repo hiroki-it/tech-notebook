@@ -1329,7 +1329,7 @@ jobs:
       - run:
           name: Make env file
           command: |
-            echo "$ENV" | base64 -d > .env
+            echo "${ENV}" | base64 -d > .env
       - run:
           name: Make env docker file
           command: |

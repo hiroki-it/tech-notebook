@@ -50,9 +50,9 @@ tfnotifyもtfcmtもGitHubのAPIにしか対応しておらず、GitLabの場合�
 
 set -xeuo pipefail
 
-terraform -chdir=./"$ENV" plan \
-  -out="$ENV".tfplan \
-  -parallelism=30 | ./ops/tfnotify --config ./"$ENV"/tfnotify.yml plan
+terraform -chdir=./"${ENV}" plan \
+  -out="${ENV}".tfplan \
+  -parallelism=30 | ./ops/tfnotify --config ./"${ENV}"/tfnotify.yml plan
 ```
 
 ```bash
@@ -63,9 +63,9 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./"$ENV" apply \
+terraform -chdir=./"${ENV}" apply \
   -parallelism=30 \
-  "$ENV".tfplan | ./ops/tfnotify --config ./"$ENV"/tfnotify.yml apply
+  "${ENV}".tfplan | ./ops/tfnotify --config ./"${ENV}"/tfnotify.yml apply
 ```
 
 <br>

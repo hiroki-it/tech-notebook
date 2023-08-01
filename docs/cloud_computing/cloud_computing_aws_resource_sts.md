@@ -68,7 +68,7 @@ OIDCによるフェデレーションユーザーの場合は、`--external-id`�
 set -xeuo pipefail
 
 # 事前に環境変数に実行環境名を代入する。
-case "$ENV" in
+case "${ENV}" in
     "tes")
         aws_account_id="<テスト環境アカウントID>"
         aws_access_key_id="<テスト環境アクセスキーID>"
@@ -88,7 +88,7 @@ case "$ENV" in
         aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
     ;;
     *)
-        echo "The parameter "$ENV" is invalid."
+        echo "The parameter "${ENV}" is invalid."
         exit 1
     ;;
 esac
@@ -100,7 +100,7 @@ aws configure set aws_default_region "ap-northeast-1"
 
 # https://sts.amazonaws.com に、ロールの紐付けをリクエストする。
 aws_sts_credentials="$(aws sts assume-role \
-  --role-arn "arn:aws:iam::${aws_access_key_id}:role/"$ENV"-<紐付けしたいIAMロール名>" \
+  --role-arn "arn:aws:iam::${aws_access_key_id}:role/"${ENV}"-<紐付けしたいIAMロール名>" \
   --role-session-name "<任意のセッション名>" \
   --external-id "$aws_iam_role_external_id" \
   --duration-seconds "<セッションの有効秒数>" \
@@ -181,7 +181,7 @@ EOF
 ```bash
 #!/bin/bash
 
-aws configure --profile "$ENV"-repository << EOF
+aws configure --profile "${ENV}"-repository << EOF
 $(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")
 $(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")
 ap-northeast-1

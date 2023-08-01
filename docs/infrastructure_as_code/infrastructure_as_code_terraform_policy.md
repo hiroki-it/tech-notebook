@@ -747,13 +747,13 @@ goのバイナリファイルを実行するためには、`docker-compose run`�
 env=
 
 init:
-	docker-compose run --rm terraform -chdir=./"$ENV" init -reconfigure
+	docker-compose run --rm terraform -chdir=./"${ENV}" init -reconfigure
 
 fmt:
 	docker-compose run --rm terraform fmt -recursive
 
 validate: init fmt
-	docker-compose run --rm terraform -chdir=./"$ENV" validate
+	docker-compose run --rm terraform -chdir=./"${ENV}" validate
 ```
 
 #### ▼ asdfパッケージを使用する場合
@@ -1016,7 +1016,7 @@ $ terraform-docs markdown . --output-file=README.md
 
 `TF_DOCS`タグで囲われた場所のみを自動的に追記/更新してくれる。
 
-```markdown
+```html
 # foo-terraformリポジトリ
 
 <!-- BEGIN_TF_DOCS -->
