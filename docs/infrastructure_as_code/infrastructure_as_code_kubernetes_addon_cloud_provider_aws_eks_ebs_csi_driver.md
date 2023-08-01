@@ -140,7 +140,7 @@ $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.
 
 $ helm repo update
 
-$ helm install <リリース名> <リポジトリ名>/aws-ebs-csi-driver -n kube-system --version=<バージョンタグ>
+$ helm install <Helmリリース名> <リポジトリ名>/aws-ebs-csi-driver -n kube-system --version=<バージョンタグ>
 ```
 
 > - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver

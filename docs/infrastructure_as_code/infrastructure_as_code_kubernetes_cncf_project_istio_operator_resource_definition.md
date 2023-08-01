@@ -72,7 +72,7 @@ istiooperator.install.istio.io/istio-operator created
 チャートは、`istioctl`コマンドインストール時の`manifests`ディレクトリ以下に同梱されている。
 
 ```bash
-$ helm install <リリース名> manifests/charts/istio-operator -n istio-operator --version <バージョンタグ>
+$ helm install <Helmリリース名> manifests/charts/istio-operator -n istio-operator --version <バージョンタグ>
 ```
 
 > - https://istio.io/latest/docs/setup/install/operator/#deploy-the-istio-operator

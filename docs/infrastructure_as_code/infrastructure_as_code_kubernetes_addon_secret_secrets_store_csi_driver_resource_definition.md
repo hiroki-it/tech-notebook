@@ -26,7 +26,7 @@ $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.
 
 $ helm repo update
 
-$ helm install <リリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
 > - https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
@@ -40,7 +40,7 @@ $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.
 
 $ helm repo update
 
-$ helm install <リリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
 また、AWS EKSのために必要なマニフェストをインストールする。

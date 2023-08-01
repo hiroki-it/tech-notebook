@@ -126,7 +126,7 @@ $ helm repo update
 
 $ kubectl create namespace argocd
 
-$ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
 ```
 
 > - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart

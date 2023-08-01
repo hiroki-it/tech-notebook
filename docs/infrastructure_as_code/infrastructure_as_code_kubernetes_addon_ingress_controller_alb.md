@@ -274,7 +274,7 @@ AWS Load Balancerコントローラーのセットアップのうち、Kubernete
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
 
 # FargateにAWS Load Balancerコントローラーをデプロイする場合
-$ helm install <リリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
+$ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \
@@ -291,7 +291,7 @@ AWS Load Balancer controller installed!
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
 
 # EC2にAWS Load Balancerコントローラーをデプロイする場合
-$ helm install <リリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
+$ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \

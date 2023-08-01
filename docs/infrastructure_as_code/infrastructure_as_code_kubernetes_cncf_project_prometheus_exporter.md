@@ -106,7 +106,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
@@ -128,7 +128,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/prometheus-blackbox-exporter -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-blackbox-exporter -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart
@@ -306,7 +306,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
@@ -366,7 +366,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
@@ -432,7 +432,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
@@ -446,7 +446,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack

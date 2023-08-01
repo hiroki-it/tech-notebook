@@ -28,7 +28,7 @@ $ helm repo update
 
 $ kubectl create namespace victoria-metrics
 
-$ helm install <リリース名> <チャートリポジトリ名>/victoria-metrics-cluster -n victoria-metrics --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/victoria-metrics-cluster -n victoria-metrics --version <バージョンタグ>
 ```
 
 > - https://github.com/VictoriaMetrics/helm-charts

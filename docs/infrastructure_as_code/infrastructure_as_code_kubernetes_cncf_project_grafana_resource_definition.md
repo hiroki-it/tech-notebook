@@ -29,7 +29,7 @@ $ helm repo update
 $ kubectl create namespace prometheus
 
 # Prometheusと連携するために、Prometheusと同じNamespaceにインストールする。
-$ helm install <リリース名> <チャートリポジトリ名>/grafana -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/grafana -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/grafana/helm-charts/tree/main/charts/grafana
@@ -43,7 +43,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-operator/prometheus-operator#helm-chart

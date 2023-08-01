@@ -105,7 +105,7 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 
 
 # aws-vpc-cniアドオン
-$ helm install <リリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
 ```
 
 > - https://github.com/aws/eks-charts/tree/master/stable

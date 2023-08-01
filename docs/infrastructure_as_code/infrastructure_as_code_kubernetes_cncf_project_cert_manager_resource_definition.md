@@ -24,7 +24,7 @@ $ helm repo update
 
 $ kubectl create namespace cert-manager
 
-$ helm install <リリース名> <チャートリポジトリ名>/cert-manager -n cert-manager --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manager -n cert-manager --version <バージョンタグ>
 ```
 
 > - https://cert-manager.io/docs/installation/helm/#steps

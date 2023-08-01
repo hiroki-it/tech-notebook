@@ -43,7 +43,7 @@ $ helm repo update
 
 $ kubectl create namespace chaos-testing
 
-$ helm install <リリース名> <チャートリポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
 ```
 
 > - https://chaos-mesh.org/docs/production-installation-using-helm/

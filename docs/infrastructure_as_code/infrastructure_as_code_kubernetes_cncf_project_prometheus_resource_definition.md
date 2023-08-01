@@ -56,7 +56,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
@@ -81,7 +81,7 @@ $ helm repo update
 
 $ kubectl create namespace prometheus
 
-$ helm install <リリース名> <チャートリポジトリ名>/prometheus -n prometheus --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus -n prometheus --version <バージョンタグ>
 ```
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus

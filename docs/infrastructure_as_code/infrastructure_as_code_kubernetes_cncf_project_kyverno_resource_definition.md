@@ -28,7 +28,7 @@ $ helm repo update
 
 $ kubectl create namespace kyverno
 
-$ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
 ```
 
 > - https://kyverno.github.io/kyverno/

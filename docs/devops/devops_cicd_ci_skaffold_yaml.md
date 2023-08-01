@@ -274,7 +274,7 @@ Helmを使用して、Kubernetesリソースをデプロイする。
 deploy:
   helm:
     releases:
-      - name: <リリース名>
+      - name: <Helmリリース名>
         artifactOverrides:
           image: <コンテナイメージ名> # buildステージのartifactsのコンテナイメージ名と合わせる。
         imageStrategy:

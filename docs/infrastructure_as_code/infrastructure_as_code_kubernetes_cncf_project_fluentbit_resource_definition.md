@@ -28,7 +28,7 @@ $ helm repo update
 
 $ kubectl create namespace fluent
 
-$ helm install <リリース名> <リポジトリ名>/fluent-bit -n fluent --version <バージョンタグ>
+$ helm install <Helmリリース名> <リポジトリ名>/fluent-bit -n fluent --version <バージョンタグ>
 ```
 
 > - https://github.com/fluent/helm-charts/tree/main/charts/fluent-bit
@@ -42,7 +42,7 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 
 $ helm repo update
 
-$ helm install <リリース名> <リポジトリ名>/aws-for-fluent-bit -n kube-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <リポジトリ名>/aws-for-fluent-bit -n kube-system --version <バージョンタグ>
 ```
 
 > - https://github.com/aws/eks-charts/tree/master/stable/aws-for-fluent-bit

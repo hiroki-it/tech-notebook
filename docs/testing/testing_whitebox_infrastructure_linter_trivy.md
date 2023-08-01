@@ -27,12 +27,28 @@ Regoでカスタムポリシーを実装できる。
 
 ### インストール
 
+#### ▼ バイナリとして
+
 ```bash
 $ brew install trivy
 ```
 
+#### ▼ コンテナとして
+
 ```bash
 $ docker run aquasec/trivy
+```
+
+#### ▼ チャートとして
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://aquasecurity.github.io/helm-charts/
+
+$ helm repo update
+
+$ kubectl create namespace trivy
+
+$ helm install <Helmリリース名> <チャートリポジトリ名>/trivy -n trivy
 ```
 
 > - https://aquasecurity.github.io/trivy/v0.42/

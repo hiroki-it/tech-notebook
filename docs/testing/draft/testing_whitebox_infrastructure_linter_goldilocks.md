@@ -20,3 +20,28 @@ IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際
 実際のClusterにアクセスしないと解析できない。
 
 <br>
+
+## 02. セットアップ
+
+### GUI
+
+```bash
+$ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/stable
+
+$ kubectl create namespace goldilocks
+
+$ helm install <Helmリリース名> <チャートリポジトリ名>/goldilocks --namespace goldilocks
+
+# ダッシュボードにアクセスする
+$ kubectl -n goldilocks port-forward svc/goldilocks-dashboard 8080:80
+```
+
+> - https://goldilocks.docs.fairwinds.com/installation/#installation-2
+
+<br>
+
+### CLI
+
+記入中...
+
+<br>

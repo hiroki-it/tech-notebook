@@ -209,7 +209,7 @@ Helmを使用する。
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.io/external-dns/
 
-$ helm install <リリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
 ```
 
 > - https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns

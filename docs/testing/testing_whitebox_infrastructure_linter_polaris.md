@@ -36,8 +36,9 @@ $ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/st
 
 $ kubectl create namespace polaris
 
-$ helm install <リリース名> <チャートリポジトリ名>/polaris --namespace polaris
+$ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --namespace polaris
 
+# ダッシュボードにアクセスする
 $ kubectl port-forward --namespace polaris svc/polaris-dashboard 8080:80
 ```
 
@@ -58,7 +59,7 @@ $ brew install FairwindsOps/tap/polaris
 ```bash
 $ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/stable
 
-$ helm install <リリース名> <チャートリポジトリ名>/polaris --namespace polaris --set webhook.enable=true --set dashboard.enable=false
+$ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --namespace polaris --set webhook.enable=true --set dashboard.enable=false
 ```
 
 > - https://polaris.docs.fairwinds.com/admission-controller/#installation

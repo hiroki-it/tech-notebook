@@ -90,11 +90,11 @@ $ kubectl create namespace istio-system
 
 # 共通部分 (IstioBase) のみ
 # baseチャート
-$ helm install <リリース名> <チャートリポジトリ名>/base -n istio-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/base -n istio-system --version <バージョンタグ>
 
 # Istiodコントロールプレーンのみ
 # istiodチャート
-$ helm install <リリース名> <チャートリポジトリ名>/istiod -n istio-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <バージョンタグ>
 ```
 
 IngressGatewayのインストールは必須ではない。
@@ -102,7 +102,7 @@ IngressGatewayのインストールは必須ではない。
 ```bash
 # IngressGatewayのみ
 # gatewayチャート
-$ helm install <リリース名> <チャートリポジトリ名>/gateway -n istio-system --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/gateway -n istio-system --version <バージョンタグ>
 ```
 
 > - https://istio.io/latest/docs/setup/install/helm/#installation-steps
