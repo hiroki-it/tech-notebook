@@ -160,7 +160,7 @@ exemptions:
 
 ```bash
 # 結果を読みやすく出力する。
-$ polaris audit --audit-path manifest.yaml --format=pretty
+$ polaris audit --audit-path manifest.yaml --format pretty
 ```
 
 > - https://polaris.docs.fairwinds.com/infrastructure-as-code/#pretty-print-results
@@ -184,6 +184,16 @@ $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 ```
 
 > - https://polaris.docs.fairwinds.com/infrastructure-as-code/#audit-helm-charts
+
+#### ▼ --set-exit-code-on-danger
+
+dangerラベルが検出された場合の終了コードを設定する。
+
+デフォルトは`0`である。
+
+```bash
+$ polaris audit --audit-path manifest.yaml --severity danger --set-exit-code-on-danger 1
+```
 
 #### ▼ --severity
 
