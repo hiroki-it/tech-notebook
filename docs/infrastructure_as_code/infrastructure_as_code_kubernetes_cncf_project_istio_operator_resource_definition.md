@@ -23,7 +23,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 プロファイルは、設定済みのIstioOperatorのチャートであり、`istioctl`コマンドインストール時に`manifests`ディレクトリ以下に同梱される。
 
-`【１】`
+`(1)`
 
 : `istioctl`コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで`istio-system`にIstioリソースを作成するようになっている。
 
@@ -38,7 +38,7 @@ Operator controller will watch namespaces: istio-system
 ✅ Installation complete
 ```
 
-`【２】`
+`(2)`
 
 : IstioOperatorが定義されたマニフェストを、`istioctl`コマンドまたは`kubectl`コマンドを使用して、Istioリソースを作成する。
 

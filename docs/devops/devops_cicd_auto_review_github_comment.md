@@ -90,10 +90,9 @@ GitHubに送信するコメントのテンプレートを設定する。
 
 #### ▼ execとは
 
-```github-comment exec```コマンドの結果に使用するテンプレート
+`github-comment exec`コマンドの結果に使用するテンプレート
 
 #### ▼ テンプレート名
-
 
 ```yaml
 ---
@@ -119,7 +118,7 @@ exec:
   build:
     template: |
       ...
-      
+
   test:
     template: |
       ...
@@ -189,7 +188,7 @@ hide:
 
 ジョブへのリンクを表示する。
 
-```yaml
+````yaml
 ---
 exec:
   default:
@@ -216,7 +215,7 @@ exec:
         ```
 
         </details>
-```
+````
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
 
@@ -232,7 +231,7 @@ exec:
 
 テンプレートが1つの場合は、`when`キーを`true`とする
 
-```yaml
+````yaml
 ---
 exec:
   test:
@@ -260,13 +259,13 @@ exec:
         ```
 
         </details>
-```
+````
 
 **※実装例※**
 
 終了コードを条件とする場合、`ExitCode`を使用する。
 
-```yaml
+````yaml
 ---
 exec:
   test:
@@ -294,7 +293,7 @@ exec:
         ```
 
         </details>
-```
+````
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
 

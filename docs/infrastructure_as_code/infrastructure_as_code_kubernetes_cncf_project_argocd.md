@@ -270,15 +270,15 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 ![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks.png)
 
-`【１】`
+`(1)`
 
 : アプリケーションリポジトリで、開発者がアプリケーションの変更を`main`ブランチにマージする。
 
-`【２】`
+`(2)`
 
 : CIツールが、コンテナイメージをECRにプッシュする。
 
-`【３】`
+`(3)`
 
 : CIツールは、マニフェストリポジトリをクローンし、マニフェストのコンテナイメージのハッシュ値を変更する。
 
@@ -286,15 +286,15 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
      変更したマニフェストをマニフェストリポジトリにプッシュする。
 
-`【４】`
+`(4)`
 
 : プルリクエストを自動作成する。
 
-`【５】`
+`(5)`
 
 : マニフェストリポジトリで、リリース責任者がプルリクエストを`main`ブランチにマージする。
 
-`【６】`
+`(6)`
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
@@ -304,29 +304,29 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 ![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks_helm.png)
 
-`【１】`
+`(1)`
 
 : 同じ
 
-`【２】`
+`(2)`
 
 : 同じ
 
-`【３】`
+`(3)`
 
 : CIツールは、マニフェストリポジトリをクローンし、チャート内のマニフェストのコンテナイメージのハッシュ値を変更する。
 
      このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。
 
-`【４】`
+`(4)`
 
 : 同じ
 
-`【５】`
+`(5)`
 
 : 同じ
 
-`【６】`
+`(6)`
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 
@@ -339,15 +339,15 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 ![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_gcp.png)
 
-`【１】`
+`(1)`
 
 : マニフェストリポジトリで、開発者がマニフェストの変更を`main`ブランチにマージする。
 
-`【２】`
+`(2)`
 
 : マニフェストリポジトリで、リリース責任者がマニフェストやチャートの変更を`main`ブランチにマージする。
 
-`【３】`
+`(3)`
 
 : ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。
 

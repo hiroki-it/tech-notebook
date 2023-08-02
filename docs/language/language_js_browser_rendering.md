@@ -248,19 +248,19 @@ Downloading処理が終了したリソースから、次のParse処理に進ん�
 
 #### ▼ リソースの優先順位
 
-`【１】`
+`(1)`
 
 : HTML
 
-`【２】`
+`(2)`
 
 : CSS
 
-`【３】`
+`(3)`
 
 : JS
 
-`【４】`
+`(4)`
 
 : 画像
 
@@ -531,14 +531,14 @@ document.addEventListener("DOMContentLoaded", () => {
 ```javascript
 // 1つ目
 document.getElementById("btn").addEventListener("click", () => {
-	console.log("イベントが発火しました`【１】`
+	console.log("イベントが発火しました`(1)`
 
 :    ");
 }, false);
 
 // 2つ目
 document.getElementById("btn").addEventListener("click", () => {
-	console.log("イベントが発火しました`【２】`");
+	console.log("イベントが発火しました`(2)`");
 }, false);
 ```
 

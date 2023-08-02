@@ -377,43 +377,43 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 ![kubernetes_kube-apiserver_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver_communication.png)
 
-`【１】`
+`(1)`
 
 : クライアントやKubernetesリソースがPodの作成リクエストを送信する。
 
-`【２】`
+`(2)`
 
 : kube-apiserverはリクエストを受信し、Podの作成宣言の情報をetcdに永続化する。
 
-`【３】`
+`(3)`
 
 : しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、etcdとNode上のKubernetesリソースの間に差分があることを検知する。さらに、kube-schedulerにPodのスケジューリングをコールする。
 
-`【４】`
+`(4)`
 
 : kube-schedulerは、フィルタリングとスコアリングの結果に基づいて、Podのスケジューリング対象となるNodeを決める。
 
-`【５】`
+`(5)`
 
 : kube-apiserverは、バインディング情報 (スケジューリング対象NodeとPod間の紐付き情報) をetcdに永続化する。
 
-`【６】`
+`(6)`
 
 : しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、バインディング情報が永続化されたことを検知する。さらに、etcdのバインディング情報に基づいて、特定のNode上のkubeletにPodの作成をコールする。
 
-`【７】`
+`(7)`
 
 : kubeletは、コンテナランタイム (例：Docker、Containerd) のデーモンにコンテナの作成をコールする。
 
-`【８】`
+`(8)`
 
 : コンテナランタイムのデーモンは、コンテナを作成する。
 
-`【９】`
+`(9)`
 
 : kubeletは、Podが作成されたことをkube-apiserverに返信する。
 
-`【１０】`
+`(10)`
 
 : kube-apiserverは、Podの作成完了をetcdに永続化する。
 
@@ -562,11 +562,11 @@ $ kube-scheduler \
 
 ### kube-schedulerの仕組み
 
-`【１】`
+`(1)`
 
 : フィルタリングを行う。フィルタリングステップでは、まず全てのNodeの一覧を取得する。その後、Pod作成の条件を満たすNodeを選定する。
 
-`【２】`
+`(2)`
 
 : スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたNodeに点数をつける。
 

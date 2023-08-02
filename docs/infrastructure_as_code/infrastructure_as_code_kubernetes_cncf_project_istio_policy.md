@@ -306,7 +306,7 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 
 #### ▼ 手順
 
-`【１】`
+`(1)`
 
 : CRDを更新する。
 
@@ -318,7 +318,7 @@ $ git clone https://github.com/istio/istio.git
 $ kubectl apply -f manifests/charts/base/crds
 ```
 
-`【２】`
+`(2)`
 
 : IstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
 
@@ -326,7 +326,7 @@ $ kubectl apply -f manifests/charts/base/crds
 $ istioctl upgrade
 ```
 
-`【３】`
+`(3)`
 
 : データプレーンの`istio-proxy`コンテナを再インジェクションする。
 
@@ -350,7 +350,7 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 #### ▼ `helm`コマンドの場合
 
-`【１】`
+`(1)`
 
 : HelmではCRDを管理しないようにし、`kubectl`コマンドでこれを作成する。
 
@@ -358,7 +358,7 @@ $ kubectl rollout restart deployment app-deployment -n app
 $ kubectl diff -f https://raw.githubusercontent.com/istio/istio/1.15.3/manifests/charts/base/crds/crd-all.gen.yaml
 ```
 
-`【２】`
+`(2)`
 
 : istiodチャートを使用して、古いバージョンのMutatingWebhookConfigurationのみを削除する。
 
@@ -368,7 +368,7 @@ $ kubectl diff -f https://raw.githubusercontent.com/istio/istio/1.15.3/manifests
 $ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
 ```
 
-`【３】`
+`(3)`
 
 : istiodチャートを使用して、新しいバージョンのMutatingWebhookConfigurationを作成しつつ、Istiodコントロールプレーンに関するKubernetesリソースを変更する。
 
@@ -378,15 +378,15 @@ $ helm upgrade <古いバージョンのリリース名> <チャートリポジ�
 $ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <新しいバージョン>
 ```
 
-`【４】`
+`(4)`
 
 : 特定のNamespaceをアップグレードする。
 
-`【５】`
+`(5)`
 
 : 動作確認し、問題なければ、残りのNamespaceもアップグレードする。
 
-`【６】`
+`(6)`
 
 : istiodチャートを使用して、古いリリースで作成したIstiodコントロールプレーンに関するKubernetesリソースを削除する。
 
@@ -394,7 +394,7 @@ $ helm upgrade <新しいバージョンのリリース名> <チャートリポ�
 $ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
 ```
 
-`【７】`
+`(7)`
 
 : istio-baseを使用して、Istioに関するCRDを変更する。
 
@@ -404,7 +404,7 @@ $ helm upgrade <古いバージョンのリリース名> <チャートリポジ�
 $ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/base -n istio-system --version <新しいバージョン>
 ```
 
-`【８】`
+`(8)`
 
 : gatewayチャートを使用して、IstioのIngressGatewayに関するKubernetesリソースを変更する。
 

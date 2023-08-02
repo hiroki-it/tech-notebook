@@ -594,7 +594,7 @@ ArgoCDがClusterをポーリングするためには、ArgoCDにClusterの認証
 
 これは、ローカルマシンで`kubectl`コマンドを実行する時に、`kubeconfig`ファイルにClusterの認証情報を登録することと同じである。
 
-`【１】`
+`(1)`
 
 : ArgoCDの稼働するClusterをコンテキストとする。
 
@@ -602,7 +602,7 @@ ArgoCDがClusterをポーリングするためには、ArgoCDにClusterの認証
 $ kubectl config use-context <ArgoCDの稼働するClusterのARN>
 ```
 
-`【２】`
+`(2)`
 
 : ArgoCDのパスワードを確認する。
 
@@ -612,7 +612,7 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-`【３】`
+`(3)`
 
 : ArgoCDにログインする。
 
@@ -635,7 +635,7 @@ $ argocd login <ArgoCDのドメイン名> \
 
 > - https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366
 
-`【４】`
+`(4)`
 
 : ArgoCDにポーリングさせたいClusterをコンテキストとする。
 
@@ -643,7 +643,7 @@ $ argocd login <ArgoCDのドメイン名> \
 $ kubectl config use-context <ArgoCDにポーリングさせたいClusterのARN>
 ```
 
-`【５】`
+`(5)`
 
 : `argocd cluster add <デプロイ先のClusterのARN>`コマンドを実行することにより、Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) 、を作成できる。
 
@@ -659,7 +659,7 @@ Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
 
-`【６】`
+`(6)`
 
 : もし手順がうまく行っていない場合、Applicationで指定するClusterのURLがArgoCDに登録されていないとして、以下のようなエラーになってしまう。
 

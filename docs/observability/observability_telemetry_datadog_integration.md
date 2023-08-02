@@ -64,13 +64,13 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 > - https://docs.datadoghq.com/integrations/amazon_web_services/?tab=roledelegation#setup
 
-`【１】`
+`(1)`
 
 : DatadogのAWSアカウントの登録画面で、CloudFormationによる自動セットアップを選択する。これにより、AWSコンソール画面に自動的に遷移する。CloudFormationのテンプレートを使用して、スタックを作成できる。ほとんどのパラメーターはデフォルト値が設定されており、空欄部分 (APIキーなど) に値を入力する。
 
 > - https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
-`【２】`
+`(2)`
 
 : CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを作成する。このIAMロール (`DatadogIntegrationRole`) には、DatadogのIAMユーザー (`464622532012`) に委譲できるように、AWS STSの設定がなされている。Datadogの設定画面にアカウントIDとロール名を入力することにより、設定画完了する。
 
@@ -82,35 +82,35 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 #### ▼ メトリクス、分散トレースの可視化
 
-`【１】`
+`(1)`
 
 : 共通の手順を参照。
 
-`【２】`
+`(2)`
 
 : 共通の手順を参照。
 
-`【３】`
+`(3)`
 
 : 収集したメトリクスを可視化できるように、各AWSリソースのインテグレーションをインストールする。インストール後、しばらく待つと、AWSインフラのメトリクスや分散トレースが収集されていることを確認できる。
 
 #### ▼ ログの収集
 
-`【１】`
+`(1)`
 
 : 共通の手順を参照。
 
-`【２】`
+`(2)`
 
 : 共通の手順を参照。
 
-`【３】`
+`(3)`
 
 : ログを収集できるように、LambdaのトリガーとしてCloudWatchログやS3を設定する。トリガーとして設定せずに、自動的にも収集できるが、自動認識されるログの種類が少ないので、手動で設定した方が良い。
 
 > - https://docs.datadoghq.com/logs/guide/send-aws-services-logs-with-the-datadog-lambda-function/?tab=awsconsole#automatically-set-up-triggers
 
-`【４】`
+`(4)`
 
 : トリガーとするAWSリソースの命名によって、ログの`service`属性の値が変わる。例えば、CloudWatchログのロググループ名が『`api-gateway-*****`』から始まる場合、`service`属性の値は`apigateway`になる。
 

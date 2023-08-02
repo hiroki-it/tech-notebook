@@ -216,27 +216,27 @@ Envoyが組み込まれたサービスメッシュツール (例：Istio、Linke
 > - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
 
-`【１】`
+`(1)`
 
 : Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。
 
      取得した宛先情報を自身に設定する。
 
-`【２】`
+`(2)`
 
 : Envoyは、リスナー値に紐付ける必要のあるルート値を特定する。
 
-`【３】`
+`(3)`
 
 : Envoyは、クラスター値に紐付ける必要のあるエンドポイント値を特定する。
 
-`【４】`
+`(4)`
 
 : Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。
 
      取得した宛先情報を自身に設定する。
 
-`【５】`
+`(5)`
 
 : Envoyは、リスナー値とクラスター値をXDS-APIから定期的に取得する。
 

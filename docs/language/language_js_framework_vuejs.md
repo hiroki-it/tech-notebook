@@ -23,13 +23,13 @@ description: Vue.jsの知見を記録しています。
 
 #### ▼ MVVMアーキテクチャにおける各層の責務
 
-`【１】`
+`(1)`
 
 : View層 (`foo.html`、`/foo.twig`、`foo-component.vue`の`template`タグ部分)
 
      ViewModel層から渡されたデータを出力するだけ。
 
-`【２】`
+`(2)`
 
 : ViewModel層 (`index.js`、`foo-component.vue`の`script`タグ部分)
 
@@ -37,7 +37,7 @@ description: Vue.jsの知見を記録しています。
 
      scriptタグによって、JavaScriptが組み込まれている。
 
-`【３】`
+`(3)`
 
 : Model層 (`store.js`または`foo.js`)
 
@@ -47,19 +47,19 @@ description: Vue.jsの知見を記録しています。
 
 Vueは、アプリケーションの設計にMVVMアーキテクチャを使用することを前提として、双方向データバインディングを実現できるような機能を提供する。
 
-`【１】`
+`(1)`
 
 : View層では、`foo.html`、`/foo.twig`、`foo-component.vue`の`template`タグ部分)
 
-`【２】`
+`(2)`
 
 : ViewModel層では、`index.js`、`foo-component.vue`の`script`タグ部分
 
-`【３】`
+`(3)`
 
 : Model層では、Vuex (`store.js`)やJavaScriptからなるモデル (`foo.js`) を配置する。
 
-`【４】`
+`(4)`
 
 : これの元、双方向データバインディングが実現される仕組みとして、View層でイベントが起こると、ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる。
 
@@ -431,10 +431,10 @@ var vm = new Vue({
 });
 ```
 
-`【１】`
+`(1)`
 
 : 『検索ボタンを押す』という`submit`イベントの発火によって、`form`タグでイベントに紐付けられているイベントハンドラ関数 (`search`メソッド) がコールされる。
-`【２】`
+`(2)`
 
 : イベントハンドラ関数内の`emit`メソッドが、親コンポーネントの`search`イベントを発火させる。これに紐付くイベントハンドラ関数 (`result`メソッド) がコールされる。
 

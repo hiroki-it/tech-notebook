@@ -27,7 +27,7 @@ Linuxにデフォルトで導入されているミドルウェアで、セキュ
 
 アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため、基本的には無効にしておく。
 
-`【１】`
+`(1)`
 
 : SELinuxの状態を確認
 
@@ -38,7 +38,7 @@ $ getenforce
 Enforcing
 ```
 
-`【２】`
+`(2)`
 
 : `/etc/selinux/config`を修正する。
 
@@ -59,7 +59,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-`【３】`
+`(3)`
 
 : OSを再起動
 

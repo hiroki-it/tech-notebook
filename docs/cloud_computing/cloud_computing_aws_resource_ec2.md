@@ -336,11 +336,11 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 
 **＊例＊**
 
-`【１】`
+`(1)`
 
 : 任意で、バックアップのために拡張対象のEC2インスタンスのAMIを作成しておく。
 
-`【２】`
+`(2)`
 
 : EC2インスタンスのEBSボリュームを`8`GiBから`16`GiBに拡張する例を考える。
 
@@ -369,7 +369,7 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 ...
 ```
 
-`【３】`
+`(3)`
 
 : コンソール画面から、EBSボリュームを`16`GiBに拡張する。
 
@@ -398,7 +398,7 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 ...
 ```
 
-`【４】`
+`(4)`
 
 : パーティションに紐づくファイルシステムのタイプを確認する。今回は`ext4`タイプである。
 
@@ -415,7 +415,7 @@ Filesystem     Type  Size  Used  Avail  Use%  Mounted on
 
 #### ▼ EBSボリュームが複数のパーティションで区切られている場合
 
-`【５】`
+`(5)`
 
 : `lsblk`コマンドの結果、EBSボリュームが複数のパーティションで区切られている場合、この手順が必要になる。
 
@@ -428,7 +428,7 @@ Filesystem     Type  Size  Used  Avail  Use%  Mounted on
 $ growpart /dev/xvda 1
 ```
 
-`【６】`
+`(6)`
 
 : 改めて`lsblk`コマンドを実行することにより、パーティションのサイズが拡張されていることを確認できる。
 
@@ -443,7 +443,7 @@ xvda    202:0    0  16G  0 disk            # ストレージ (EBSボリューム
 
 #### ▼ `ext4`タイプの場合
 
-`【５】`
+`(5)`
 
 : ファイルシステムのサイズを拡張していく。
 
@@ -455,7 +455,7 @@ xvda    202:0    0  16G  0 disk            # ストレージ (EBSボリューム
 $ sudo resize2fs /dev/xvda1
 ```
 
-`【６】`
+`(6)`
 
 : 改めて`df`コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
 
@@ -469,7 +469,7 @@ Filesystem  Type  Size  Used  Avail  Use%  Mounted on
 
 #### ▼ `xfs`タイプの場合
 
-`【５】`
+`(5)`
 
 : ファイルシステムのサイズを拡張していく。
 
@@ -485,7 +485,7 @@ $ xfs_growfs -d /var/lib
 # yum install xfsprogs
 ```
 
-`【６】`
+`(6)`
 
 : 改めて`df`コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
 

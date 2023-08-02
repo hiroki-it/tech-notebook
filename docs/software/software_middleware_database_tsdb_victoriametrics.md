@@ -251,7 +251,7 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 
 `systemctl`コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
 
-`【１】`
+`(1)`
 
 : ユニットファイルを作成する。
 

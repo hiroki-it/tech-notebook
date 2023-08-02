@@ -1793,7 +1793,7 @@ aws-remote-repository/
 
 AWSリソース値を参照しない関係であれば、これらは別の`tfstate`ファイルに分割できる。
 
-`【１】`
+`(1)`
 
 : 既存のバックエンド内に新しいディレクトリを作成し、その配下に`tfstate`ファイルを新しく作成する。
 
@@ -1826,7 +1826,7 @@ terraform {
 }
 ```
 
-`【２】`
+`(2)`
 
 : bar側では、foo側の`tfstate`ファイルからリソース値を取得しつつ、
 
@@ -1843,7 +1843,7 @@ data "terraform_remote_state" "foo" {
 }
 ```
 
-`【３】`
+`(3)`
 
 : 新しい`tfstate`ファイルに、既存のサブシステムの状態をインポートする。
 
@@ -1854,7 +1854,7 @@ $ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
 $ terraform import
 ```
 
-`【４】`
+`(4)`
 
 : サブシステムの`tfstate`ファイルで差分がないことを確認する。
 
@@ -1863,7 +1863,7 @@ $ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
 $ terraform plan
 ```
 
-`【５】`
+`(5)`
 
 : モノリスな`tfstate`ファイルから、サブシステムの状態を削除する。
 

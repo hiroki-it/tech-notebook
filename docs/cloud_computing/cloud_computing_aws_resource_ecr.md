@@ -40,7 +40,7 @@ description: ECR＠AWSリソースの知見を記録しています。
 
 #### ▼ コンテナイメージの場合
 
-`【１】`
+`(1)`
 
 : ECRにログインする。
 
@@ -52,7 +52,7 @@ $ aws ecr get-login-password --region ap-northeast-1 | docker login \
 Login Succeeded
 ```
 
-`【２】`
+`(2)`
 
 : イメージにタグを付与する。
 
@@ -61,7 +61,7 @@ Login Succeeded
 $ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
 ```
 
-`【３】`
+`(3)`
 
 : ECRにコンテナイメージをプッシュする。
 

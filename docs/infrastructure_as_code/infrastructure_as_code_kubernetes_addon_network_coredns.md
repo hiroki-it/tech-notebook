@@ -230,7 +230,7 @@ Address:  10.105.157.184
 
 #### ▼ Pod外からServiceに対する正引き名前解決
 
-`【１】`
+`(1)`
 
 : NginxのPodにルーティングするServiceが稼働しているとする。
 
@@ -241,7 +241,7 @@ NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
 ```
 
-`【２】`
+`(2)`
 
 : CoreDNSのPodが稼働しているとする。
 
@@ -254,7 +254,7 @@ NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOM
 coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <none>           <none>
 ```
 
-`【３】`
+`(3)`
 
 : ここで、Node内に接続する。Serviceの完全修飾ドメイン名 (ここでは`nginx-service.default.svc.cluster.local`) をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
 
@@ -273,7 +273,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 
 #### ▼ 事前確認
 
-`【１】`
+`(1)`
 
 : Serviceがルーティング先のポート番号を確認する。
 
@@ -281,7 +281,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 $ kubectl get service <Service名> -o yaml | grep targetPort:
 ```
 
-`【２】`
+`(2)`
 
 : Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、`.spec.containers[].ports`キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
@@ -292,7 +292,7 @@ $ kubectl get pod -l <名前>=<値> -o wide
 $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 ```
 
-`【３】`
+`(3)`
 
 : 両方のポート番号が一致しているかを確認する。
 

@@ -19,15 +19,15 @@ description: FireLens＠AWSリソースの知見を記録しています。
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_aws-firelens.png)
 
-`【１】`
+`(1)`
 
 : awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり、ログをFireLensコンテナに送信する。Fluentdログドライバーについては、以下のリンクを参考にせよ。
 
-`【２】`
+`(2)`
 
 : FireLensコンテナは、これを受信する。
 
-`【３】`
+`(3)`
 
 : コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され、FluentBitはログを処理する。FireLensコンテナのパイプラインでは、ログは『`<コンテナ名>-firelens-<ECSタスクID>`』というタグ名で処理されている。
 
@@ -45,7 +45,7 @@ description: FireLens＠AWSリソースの知見を記録しています。
 ]
 ```
 
-`【４】`
+`(4)`
 
 : OUTPUTに渡され、FluentBitは指定した外部にログをルーティングする。
 

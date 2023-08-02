@@ -344,43 +344,43 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
-`【１】`
+`(1)`
 
 : クライアントは、`kubectl`コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
-`【２】`
+`(2)`
 
 : Podのマニフェストに`deletionTimestamp`キーが追加され、Podが`Terminating`フェーズとなり、削除プロセスを開始する。
 
-`【３】`
+`(3)`
 
 : Podの`.spec.terminationGracePeriodSeconds`キーに応じて、Podの削除プロセス完了の待機時間を開始する。
 
-`【４】`
+`(4)`
 
 : 最初にpreStopフックが起動し、`.spec.containers[].lifecycle.preStop`キーで設定した待機処理をコンテナが実行する。
 
-`【５】`
+`(5)`
 
 : DeploymentがPodを切り離す。また、Serviceとkube-proxyがPodの宛先情報を削除する。
 
-`【６】`
+`(6)`
 
 : `.spec.containers[].lifecycle.preStop`キーによるコンテナの待機処理が終了する。
 
-`【７】`
+`(7)`
 
 : 待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに`SIGTERM`シグナルを送信する。
 
      これにより、コンテナの停止処理が開始する。
 
-`【８】`
+`(8)`
 
 : `.spec.terminationGracePeriodSeconds`キーによるPodの削除プロセス完了の待機時間が終了する。
 
      この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
 
-`【９】`
+`(9)`
 
 : Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。
 
@@ -402,15 +402,15 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 #### ▼ クライアントがPod内のログを参照できる仕組み
 
-`【１】`
+`(1)`
 
 : クライアント (特に`kubectl`コマンド実行者) が`kubectl logs`コマンドを実行する。
 
-`【２】`
+`(2)`
 
 : kube-apiserverが、`/logs/pods/<ログへのパス>`エンドポイントにリクエストを送信する。
 
-`【３】`
+`(3)`
 
 : kubeletはリクエストを受信し、Nodeの`/var/log`ディレクトリを読み込む。Nodeの`/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log`ファイルは、Pod内のコンテナの`/var/lib/docker/container/<ID>/<ID>-json.log`ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
 
@@ -913,7 +913,7 @@ $ kubectl exec -n prometheus foo-pod -- df -hT
 
 ここでは、Prometheusを例に挙げる。
 
-`【１】`
+`(1)`
 
 : PrometheusのPodに紐づくPersistentVolumeは、最大200Giを要求していることがわかる。
 
@@ -923,7 +923,7 @@ NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS
 foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp3-encrypted   181d
 ```
 
-`【２】`
+`(2)`
 
 : Node内 (AWS EKSのEC2ワーカーNodeの場合) で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
 
@@ -941,7 +941,7 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 ```
 
-`【３】`
+`(3)`
 
 : `df`コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。
 
@@ -1195,7 +1195,7 @@ AWSのスポットインスタンスで特定のAZにしかNodeが作成され�
 
 注意点として、何らかの理由 (例：スポットインスタンス) で、特定のAZにNodeを配置できない場合、この手順では解決できない。
 
-`【１】`
+`(1)`
 
 : 起動できないPodをいずれのNodeでスケジューリングしようとしているのか確認する。
 
@@ -1203,7 +1203,7 @@ AWSのスポットインスタンスで特定のAZにしかNodeが作成され�
 $ kubectl describe pod <Pod名> -o wide | grep Node:
 ```
 
-`【２】`
+`(2)`
 
 : Nodeのあるゾーンを確認する。
 
@@ -1211,7 +1211,7 @@ $ kubectl describe pod <Pod名> -o wide | grep Node:
 $ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
 ```
 
-`【３】`
+`(3)`
 
 : PersistentVolumeClaimの`volume.kubernetes.io/selected-node`キーで、PodがいずれのNodeのPersistentVolumeを指定しているかを確認する。
 
@@ -1221,7 +1221,7 @@ $ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
 $ kubectl describe pvc <PVC名> -n prometheus | grep selected-node
 ```
 
-`【４】`
+`(4)`
 
 : Nodeのあるゾーンを確認する。
 
@@ -1229,25 +1229,25 @@ $ kubectl describe pvc <PVC名> -n prometheus | grep selected-node
 $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 ```
 
-`【５】`
+`(5)`
 
-: 【１】と【４】の手順で確認したNodeのゾーンが異なるゾーンであることを確認する。
+: (1)と(4)の手順で確認したNodeのゾーンが異なるゾーンであることを確認する。
 
-`【６】`
+`(6)`
 
 : PersistentVolumeClaimを削除する。
 
      この時PersistentVolumeは削除されないため、保管データは削除されない。
 
-`【７】`
+`(7)`
 
 : StatefulSet自体を再作成する。
 
-`【８】`
+`(8)`
 
 : StatefulSetがPersistentVolumeClaimを新しく作成する。
 
-`【９】`
+`(9)`
 
 : PersistentVolumeClaimが、Podと同じゾーンのPersistentVolumeを指定できるようになる。
 

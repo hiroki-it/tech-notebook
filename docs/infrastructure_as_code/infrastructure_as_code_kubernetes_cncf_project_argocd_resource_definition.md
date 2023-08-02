@@ -159,7 +159,7 @@ $ kubectl get csv -n operators
 
 #### ▼ `kubectl`コマンドを使用して
 
-`【１】`
+`(1)`
 
 : 既存のServiceをLoadBalancer Serviceに変更する。
 
@@ -169,7 +169,7 @@ $ kubectl patch service argocd-server \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
-`【２】`
+`(2)`
 
 : Kubernetes上のArgoCDダッシュボードのパスワードを取得する。
 
@@ -179,7 +179,7 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-`【３】`
+`(3)`
 
 : `443`番ポートにルーティングできるロードバランサーを作成する。
 
@@ -197,7 +197,7 @@ $ curl http://127.0.0.1:8080
 
 #### ▼ `argocd`コマンドを使用して
 
-`【１】`
+`(1)`
 
 : `argocd`コマンドをインストールする。
 
@@ -209,7 +209,7 @@ $ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/
 $ chmod +x /usr/local/bin/argocd
 ```
 
-`【２】`
+`(2)`
 
 : ArgoCDにログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
 

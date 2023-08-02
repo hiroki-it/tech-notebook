@@ -390,11 +390,11 @@ $_COOKIE = ["Cookie名" => "値"]
 
 ![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cookie.png)
 
-`【１】`
+`(1)`
 
 : 最初、ブラウザはリクエストを送信する。
 
-`【２】`
+`(2)`
 
 : サーバーは、レスポンスヘッダーの`Set-Cookie`ヘッダーにCookie情報を埋め込んで送信する。
 
@@ -412,11 +412,11 @@ setcookie(
     )
 ```
 
-`【３】`
+`(3)`
 
 : ブラウザは、そのCookie情報を保存する。
 
-`【４】`
+`(4)`
 
 : `2`回目以降のリクエストでは、ブラウザは、リクエストヘッダーの`Cookie`ヘッダーにCookie情報を埋め込んでサーバーに送信する。
 
@@ -538,21 +538,21 @@ session.gc_divisor = 1
 
 ![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id.png)
 
-`【１】`
+`(1)`
 
 : 最初、ブラウザはリクエストを送信する。
 
      セッションIDを発行し、セッションIDごとに```sess_*****```ファイルを作成。
 
-`【２】`
+`(2)`
 
 : サーバーは、レスポンスヘッダー情報の`Cookie`ヘッダーを使用して、セッションIDを送信する。
 
-`【３】`
+`(3)`
 
 : ブラウザは、そのセッションIDを保存する。
 
-`【４】`
+`(4)`
 
 : 2回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の`Cookie`ヘッダーを使用して、セッションIDをサーバーに送信する。
 

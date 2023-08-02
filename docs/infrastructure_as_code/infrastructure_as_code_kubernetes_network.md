@@ -204,15 +204,15 @@ options ndots:5
 
 例えば、`ndots:5`としたPodが`example.com`を名前解決する場合、最初は`example.com.default.svc.cluster.local.`から名前解決を始め、`example.com.`で終わる。
 
-`【１】` `example.com.default.svc.cluster.local.`
+`(1)` `example.com.default.svc.cluster.local.`
 
-`【２】` `example.com.svc.cluster.local.`
+`(2)` `example.com.svc.cluster.local.`
 
-`【３】` `example.com.cluster.local.`
+`(3)` `example.com.cluster.local.`
 
-`【４】` `example.com.ec2.internal.`
+`(4)` `example.com.ec2.internal.`
 
-`【５】` `example.com.`
+`(5)` `example.com.`
 
 > - https://techblog.stanby.co.jp/entry/EKS_Coredns
 > - https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3

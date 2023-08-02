@@ -21,15 +21,15 @@ description: Capistrano＠CIツールの知見を記録しています。
 
 ![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png)
 
-`【１】`
+`(1)`
 
 : 自身のパソコンからデプロイサーバーにリモート通信する。
 
-`【２】`
+`(2)`
 
 : デプロイサーバーの自動デプロイツール (例：Capistrano) が、デプロイサーバーからwebサーバーにリモート通信する。
 
-`【３】`
+`(3)`
 
 : 自動デプロイツールが、webサーバーのGitを操作し、`git pull`コマンドあるいは`git clone`コマンドを実行する。
 

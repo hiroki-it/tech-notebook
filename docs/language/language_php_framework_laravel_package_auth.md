@@ -704,7 +704,7 @@ OAuthに関して、以下のトークン付与タイプを実装できる。
 
 #### ▼ バックエンド側の実装
 
-`【１】`
+`(1)`
 
 : `guards`キーにて、認証方式を設定する。ここでは、`api`を設定する。
 
@@ -722,7 +722,7 @@ return [
 ];
 ```
 
-`【２】`
+`(2)`
 
 : OAuth (認証フェーズ + 認可フェーズ) を行うために、`auth.php`ファイルで、`driver`キーにpassportドライバを設定する。また、`provider`キーで、`users`を設定する。
 
@@ -750,7 +750,7 @@ return [
 ];
 ```
 
-`【３】`
+`(3)`
 
 : `auth.php`ファイルにて、`driver`キーにeloquentドライバを設定する。
 
@@ -782,7 +782,7 @@ return [
 ];
 ```
 
-`【４】`
+`(4)`
 
 : Userへのルーティング時に、`middleware`メソッドによる認証ガードを行う。
 
@@ -794,7 +794,7 @@ return [
 Route::get("user", "UserController@index")->middleware("auth:api");
 ```
 
-`【５】`
+`(5)`
 
 : 認証ガードを行ったEloquentモデルに対して、HasAPIToken、NotifiableのTraitをコールする。
 
@@ -817,7 +817,7 @@ class User extends Authenticatable
 }
 ```
 
-`【６】`
+`(6)`
 
 : Passportの`routes`メソッドをコールする。
 
@@ -845,7 +845,7 @@ class AuthServiceProvider extends ServiceProvider
 }
 ```
 
-`【７】`
+`(7)`
 
 : 暗号キーとユーザーを作成する。
 
@@ -857,7 +857,7 @@ $ php artisan passport:client --password
 
 #### ▼ クライアントアプリ側の実装
 
-`【１】`
+`(1)`
 
 : 『認証』のために、アクセストークンのリクエストを送信する。
 
@@ -884,7 +884,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 ]);
 ```
 
-`【２】`
+`(2)`
 
 : アクセストークンを含むJSON型データを受信する。
 
@@ -894,7 +894,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 {"token_type": "Bearer", "expires_in": 31536000, "access_token": "*****"}
 ```
 
-`【３】`
+`(3)`
 
 : ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングに対して、リクエストを送信する。
 
@@ -963,7 +963,7 @@ class CreateUsersTable extends Migration
 
 #### ▼ バックエンド側の実装
 
-`【１】`
+`(1)`
 
 : 暗号キーとユーザーを作成する。
 
@@ -973,7 +973,7 @@ $ php artisan passport:keys
 $ php artisan passport:client --personal
 ```
 
-`【２】`
+`(2)`
 
 : 作成したユーザーに、クライアントIDを付与する。
 
@@ -993,7 +993,7 @@ public function boot()
 }
 ```
 
-`【３】`
+`(3)`
 
 : ユーザーからのリクエスト時、クライアントIDを元に『認証』を行い、アクセストークンをレスポンスする。
 

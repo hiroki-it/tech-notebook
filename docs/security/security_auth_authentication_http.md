@@ -47,7 +47,7 @@ HTTPプロトコルの中で認証を行う認証スキームのこと。
 | ユーザー     | クライアントを使用している人物のこと。                                                                                          |
 | サーバー     | クライアントからリクエストを受信し、レスポンスを返信するアプリケーションのこと。                                                |
 
-`【１】`
+`(1)`
 
 : 最初、クライアントは、認証後にアクセスできるWebページのリクエストをサーバーに送信する。
 
@@ -55,7 +55,7 @@ HTTPプロトコルの中で認証を行う認証スキームのこと。
 GET https://example.com/foo-form
 ```
 
-`【２】`
+`(2)`
 
 : サーバーは、これ拒否し、`401`ステータスで認証領域を設定し、レスポンスを返信する。
 
@@ -69,7 +69,7 @@ GET https://example.com/foo-form
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-`【３】`
+`(3)`
 
 : 『`<ユーザー名>:<パスワード>`』をbase64方式でエンコードした値を`authorization`ヘッダーに割り当て、リクエストを送信する。
 
@@ -79,7 +79,7 @@ POST https://example.com/foo-form
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
-`【４】`
+`(4)`
 
 : サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。
 
@@ -91,7 +91,7 @@ authorization: Basic bG9naW46cGFzc3dvcmQ=
 WWW-Authenticate: Basic realm=""
 ```
 
-`【５】`
+`(5)`
 
 : 認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
 
@@ -103,7 +103,7 @@ POST https://example.com/foo-form/logout
 authorization: Basic <誤った認証情報>
 ```
 
-`【６】`
+`(6)`
 
 : サーバーは、`401`ステータスでレスポンスを返信し、認証が解除される。
 
@@ -163,7 +163,7 @@ Bearer認証にて、トークンとして使用する。
 
 ### Bearer認証の仕組み
 
-`【１】`
+`(1)`
 
 : 指定されたエンドポイントに対して、`POST`リクエストを送信する。
 
@@ -183,7 +183,7 @@ Content-Type: application/x-www-form-urlencoded
 client_id=*****&grant_type=client_credentials&scope=messaging:push
 ```
 
-`【２】`
+`(2)`
 
 : レスポンスボディにBearerトークンを含むレスポンスが返信される。
 
@@ -206,7 +206,7 @@ Content-Type: application/json
 }
 ```
 
-`【３】`
+`(3)`
 
 : 発行されたBearerトークンを指定された認証スキーマで`Authorization`ヘッダーに割り当て、リクエストを送信する。
 
@@ -221,7 +221,7 @@ POST https://example.com/foo
 authorization: Bearer <Bearerトークン>
 ```
 
-`【４】`
+`(4)`
 
 : サーバーは、Bearerトークンを照合し、合致していれば、認証後のWebページを返信する。
 
@@ -235,11 +235,11 @@ authorization: Bearer <Bearerトークン>
 WWW-Authenticate: Bearer realm=""
 ```
 
-`【５】`
+`(5)`
 
 : 認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。
 
-     またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
+     またサーバーは、`401`ステータスでレスポンスを返信し、認証が解除される。
 
 > - https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
 > - https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6

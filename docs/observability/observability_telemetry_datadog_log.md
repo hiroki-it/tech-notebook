@@ -19,15 +19,15 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 ![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-collection.png)
 
-`【１】`
+`(1)`
 
 : サーバーの場合、稼働するdatadogエージェントが、datadog-APIにアプリケーションログを送信する。コンテナの場合、FluentBitが代わりにアプリケーションログを送信する。
 
-`【２】`
+`(2)`
 
 : Datadogにて、ログはパイプラインで処理され、構造化ログになる。
 
-`【３】`
+`(3)`
 
 : ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 
@@ -37,15 +37,15 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 ### フロントエンド
 
-`【１】`
+`(1)`
 
 : ブラウザのコンソールに出力されるログを収集する。
 
-`【２】`
+`(2)`
 
 : Datadogにて、ログはパイプラインで処理され、構造化ログになる。
 
-`【３】`
+`(3)`
 
 : ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 

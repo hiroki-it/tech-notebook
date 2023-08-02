@@ -148,7 +148,7 @@ module "eks" {
 
 `kubectl`コマンドでEKS Clusterを操作するためには、`kubeconfig`ファイルへClusterの認証情報を登録する必要がある。
 
-`【１】`
+`(1)`
 
 : AWS CLIに認証情報を設定する。
 
@@ -156,7 +156,7 @@ module "eks" {
 $ aws configure
 ```
 
-`【２】`
+`(2)`
 
 : EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの認証情報を登録する。
 
@@ -164,7 +164,7 @@ $ aws configure
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-`【３】`
+`(3)`
 
 : `kubectl`コマンドの向き先を、EKS Clusterのkube-apiserverに変更する。
 
@@ -172,7 +172,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context <ClusterのARN>
 ```
 
-`【４】`
+`(4)`
 
 : `kubectl`コマンドの接続を確認する。
 
@@ -207,11 +207,11 @@ KubernetesのRBACと連携することにより、`kubectl`クライアントの
 
 Kubernetesリソースの認可スコープは、IRSAで制御する。
 
-`【１】`
+`(1)`
 
 : あらかじめ、クライアント (`kubectl`クライアント、Kubernetesリソース) に紐づくIAMユーザーを作成しておく。
 
-`【２】`
+`(2)`
 
 : IAMユーザーがkube-apiserverのURLにリクエストを送信する。
 
@@ -219,11 +219,11 @@ Kubernetesリソースの認可スコープは、IRSAで制御する。
 
      admission-controllersアドオンのWebhookではないことに注意する。
 
-`【３】`
+`(3)`
 
 : コントロールプレーンNode上のaws-iam-authenticator-serverは、IAM APIを使用してIAMユーザーを認証する。
 
-`【４】`
+`(4)`
 
 : もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。
 
@@ -252,11 +252,11 @@ data:
         - system:nodes
 ```
 
-`【５】`
+`(5)`
 
 : aws-iam-authenticator-serverは、UserAccount / ServiceAccount / Group、RoleBindingやClusterRoleBinding、の情報を含むレスポンスをkube-apiserverに返信する。
 
-`【６】`
+`(6)`
 
 : あとは、Kubernetesの標準の認可の仕組みである。
 
@@ -352,7 +352,7 @@ EKSをSSOのIDプロバイダーとして使用することにより、IAMの認
 
 ここでは、SSOの種類でOIDCを選ぶとする。
 
-`【１】`
+`(1)`
 
 : SSOのIDプロバイダーのタイプは、OIDCとする。
 
@@ -425,7 +425,7 @@ spec:
 > - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/main.tf#L223-L242
 > - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
 
-`【２】`
+`(2)`
 
 : IRSAで使用するIAMロールの信頼されたエンティティに、EKS ClusterのOIDCプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
 
@@ -452,7 +452,7 @@ spec:
     ]}
 ```
 
-`【３】`
+`(3)`
 
 : ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
@@ -469,7 +469,7 @@ metadata:
 automountServiceAccountToken: true
 ```
 
-`【４】`
+`(4)`
 
 : Podで、ServiceAccount名を設定する。
 
@@ -515,7 +515,7 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 
 #### ▼ ダッシュボード
 
-`【１】`
+`(1)`
 
 : EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの認証情報を登録する。
 
@@ -525,7 +525,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
 
-`【２】`
+`(2)`
 
 : `kubectl`コマンドの向き先を、EKS Clusterのkube-apiserverに変更する。
 
@@ -535,7 +535,7 @@ $ kubectl config use-context <ClusterのARN>
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
-`【３】`
+`(3)`
 
 : マニフェストを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
 
@@ -545,7 +545,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 
-`【４】`
+`(4)`
 
 : ダッシュボードに安全に接続するために、ServiceAccountをEKSにデプロイする
 
@@ -553,7 +553,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5
 $ kubectl apply -f service-account.yml
 ```
 
-`【５】`
+`(5)`
 
 : トークン文字列を取得する。
 
@@ -561,7 +561,7 @@ $ kubectl apply -f service-account.yml
 $ kubectl -n kube-system describe secret $(kubectl get secret -n kube-system | grep eks-admin | awk '{print $1}')
 ```
 
-`【６】`
+`(6)`
 
 : ローカルマシンからEKSにポートフォワーディングを実行する。
 
@@ -569,7 +569,7 @@ $ kubectl -n kube-system describe secret $(kubectl get secret -n kube-system | g
 $ kubectl proxy
 ```
 
-`【７】`
+`(7)`
 
 : ダッシュボードに接続する。
 
@@ -1182,7 +1182,7 @@ FargateワーカーNode内のログを転送する上で、FargateはDaemonSet�
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html
 
-`【１】`
+`(1)`
 
 : ログ転送コンテナのためのNamespaceを作成する。
 
@@ -1199,7 +1199,7 @@ metadata:
     aws-observability: enabled
 ```
 
-`【２】`
+`(2)`
 
 : `aws-observability`内で`aws-logging`という名前のConfigMapを作成する。
 
@@ -1230,7 +1230,7 @@ data:
         auto_create_group true
 ```
 
-`【３】`
+`(3)`
 
 : FargateワーカーNodeにECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。
 
@@ -1317,11 +1317,11 @@ EKS Clusterのアップグレード時、以下の仕組みでデータプレー
 
 また、Nodeグループに紐づくAutoScalingグループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。
 
-`【１】`
+`(1)`
 
 : Nodeグループ単位でローリングアップグレードできるように、EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を自動的に増加させる。
 
-`【２】`
+`(2)`
 
 : 旧ワーカーNodeを残して、新しいAMIを使用したワーカーNodeを作成する。
 
@@ -1329,19 +1329,19 @@ EKS Clusterのアップグレード時、以下の仕組みでデータプレー
 
      旧ワーカーNodeを残せるのは、あらかじめEKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を増加させているためである。
 
-`【３】`
+`(3)`
 
 : 各AZで新ワーカーNodeを正しく作成できることを検証する。
 
-`【４】`
+`(4)`
 
 : AZリバランシングが成功すれば、旧ワーカーNodeでDrainが開始され、Podのスケジューリングが無効化される。
 
-`【５】`
+`(5)`
 
 : 新ワーカーNode上でPodをスケジューリングし直し、旧ワーカーNodeを削除する。
 
-`【６】`
+`(6)`
 
 : 最終的に、アップグレード前のワーカーNode数 (Node希望数) に戻る。
 
@@ -1353,17 +1353,17 @@ EKS Clusterのアップグレード時、以下の仕組みでデータプレー
 
 EKS Clusterはおおよそ以下の方法でアップグレードする。
 
-`【１】`
+`(1)`
 
 : コントロールプレーンNodeをアップグレードする。
 
-`【２】`
+`(2)`
 
 : ワーカーNodeをアップグレードする。
 
      コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAMIを使用して、ワーカーNodeを再作成する。
 
-`【３】`
+`(3)`
 
 : ワーカーNode上のAWS EKSアドオン (例：aws-eks-codednsアドオン、aws-eks-kube-proxyアドオン、aws-eks-vpc-cniアドオン、など) をアップグレードする。
 

@@ -962,7 +962,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ はじめに
 
-`【１】`
+`(1)`
 
 : バックエンドがリモートの場合、ローカルマシンに`tfstate`ファイルをダウンロードする。
 
@@ -974,7 +974,7 @@ $ aws s3 cp s3://<S3バケット名>/<tfstateファイルへのパス> <ロー�
 $ gsutil cp gs://<GCS名>/<tfstateファイルへのパス> <ローカルマシンのパス>
 ```
 
-`【２】`
+`(2)`
 
 : ダウンロードした`tfstate`ファイルを`local`バックエンドで指定する。
 
@@ -990,7 +990,7 @@ terraform {
 
 #### ▼ 初期化
 
-`【３】`
+`(3)`
 
 : `local`バックエンドで初期化する。
 
@@ -1000,7 +1000,7 @@ $ terraform init -reconfigure
 
 #### ▼ 実インフラの設定値を`tfstate`ファイルに取り込む
 
-`【４】`
+`(4)`
 
 : `resource`タイプと`resource`ブロック名を指定し、`tfstate`ファイルに実インフラの状態を書き込む。
 
@@ -1100,7 +1100,7 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 
 #### ▼ `.tf`ファイルに実インフラの設定値を取り込む
 
-`【５】`
+`(5)`
 
 : `terraform import`コマンドの実行と`.tf`ファイルの変更を繰り返す。
 
@@ -1108,7 +1108,7 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 
 > - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
-`【６】`
+`(6)`
 
 : `tfstate`ファイルと実インフラの差分が無くなったら完了である。
 
@@ -1120,7 +1120,7 @@ No changes. Infrastructure is up-to-date.
 
 #### ▼ さいごに
 
-`【７】`
+`(7)`
 
 : ローカルマシンの`tfstate`ファイルをリモートバックエンドにアップロードし、上書きする。
 
@@ -1132,7 +1132,7 @@ $ aws s3 cp <ローカルマシンのパス> s3://<S3バケット名>/<tfstate�
 $ gsutil cp <ローカルマシンのパス> gs://<GCS名>/<tfstateファイルへのパス>
 ```
 
-`【８】`
+`(8)`
 
 : ローカルマシンの`tfstate`ファイルを削除する。
 
@@ -1177,15 +1177,15 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 実インフラから実インフラの一部の設定値を`tfstate`ファイルに取り込む場合、以下の方法が便利である。
 
-`【１】`
+`(1)`
 
 : 先にコンソール画面に設定値を変更する。
 
-`【２】`
+`(2)`
 
 : `terraform apply -refresh-only`コマンドまたは`terraform apply`コマンドを実行する。
 
-`【３】`
+`(3)`
 
 : 実インフラは変更されず、`tfstate`ファイルに状態が書き込まれる。
 

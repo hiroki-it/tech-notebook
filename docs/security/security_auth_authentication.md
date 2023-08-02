@@ -48,11 +48,11 @@ description: 認証＠認証/認可の知見を記録しています。
 
 #### ▼ セッションIDを使用したForm認証の場合
 
-`【１】`
+`(1)`
 
 : セッションIDを`Cookie`ヘッダーに割り当て、リクエストを送信する。
 
-`【２】`
+`(2)`
 
 : 最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保存する。
 
@@ -63,7 +63,7 @@ POST https://example.com/users
 {"email_address": "foo@gmail.com", "password": "foo"}
 ```
 
-`【３】`
+`(3)`
 
 : 次回の認証時に、再びユーザーが認証情報を送信する。
 
@@ -74,7 +74,7 @@ POST https://example.com/foo-form
 {"email_address": "foo@gmail.com", "password": "foo"}
 ```
 
-`【４】`
+`(4)`
 
 : サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。
 
@@ -83,7 +83,7 @@ POST https://example.com/foo-form
 { sessionid: ***** }
 ```
 
-`【５】`
+`(5)`
 
 : レスポンスの`Set-Cookie`ヘッダーを使用して、セッションIDをクライアントに送信する。
 
@@ -93,7 +93,7 @@ POST https://example.com/foo-form
 Set-Cookie: sessionid=<セッションID>
 ```
 
-`【６】`
+`(6)`
 
 : サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。
 
@@ -109,7 +109,7 @@ POST https://example.com/foo-form
 cookie: sessionid=<セッションID>
 ```
 
-`【７】`
+`(7)`
 
 : 認証解除時、サーバーでセッションデータを削除する。
 

@@ -158,7 +158,7 @@ AWS Load Balancerコントローラーのセットアップのうち、AWS側で
 
 ここではコマンドを使用しているが、IaC (例：Terraform) を使用しても良い。
 
-`【１】`
+`(1)`
 
 : ローカルマシンにIAMポリシーの`.json`ファイルをダウンロードする。
 
@@ -169,7 +169,7 @@ $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-co
 > - https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount
 
-`【２】`
+`(2)`
 
 : `.json`ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。
 
@@ -179,7 +179,7 @@ $ aws iam create-policy \
     --policy-document file://iam_policy.json
 ```
 
-`【３】`
+`(3)`
 
 : EKS ClusterをOIDCプロバイダーとして使用する。
 
@@ -198,7 +198,7 @@ $ eksctl utils associate-iam-oidc-provider \
 
 <br>
 
-`【４】`
+`(4)`
 
 : AWS Load BalancerコントローラーのPodのServiceAccountと、これに紐づくIAMロールを作成する。
 
@@ -214,7 +214,7 @@ $ eksctl create iamserviceaccount \
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
 
-`【５】`
+`(5)`
 
 : ServiceAccountを作成できたことを確認する。IAMロールはコンソール画面から確認する。
 
@@ -262,7 +262,7 @@ secrets:
 
 AWS Load Balancerコントローラーのセットアップのうち、Kubernetes側で必要なものをまとめる。
 
-`【１】`
+`(1)`
 
 : 指定したリージョンにAWS Load Balancerコントローラーをデプロイする。
 
@@ -305,7 +305,7 @@ AWS Load Balancer controller installed!
 > - https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
 
-`【２】`
+`(2)`
 
 : AWS Load Balancerコントローラーがデプロイされ、READY状態になっていることを確認する。
 
@@ -323,7 +323,7 @@ NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 aws-load-balancer-controller   2/2     2            0           22m
 ```
 
-`【３】`
+`(3)`
 
 : もし、以下の様に、`53`番ポートへの接続でエラーになってしまう場合は、CoreDNSによる名前解決が正しくできていない。
 
@@ -341,7 +341,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 }
 ```
 
-`【４】`
+`(4)`
 
 : Ingressをデプロイし、IngressからAWS ALBを自動的に作成させる。
 

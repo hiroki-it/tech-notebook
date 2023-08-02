@@ -25,7 +25,7 @@ $ brew install istioctl
 
 #### ▼ チャートとして
 
-`【１】`
+`(1)`
 
 : インストール先のディレクトリに移動する。
 
@@ -33,7 +33,7 @@ $ brew install istioctl
 $ cd /Users/hiroki.hasegawa/projects
 ```
 
-`【２】`
+`(2)`
 
 : `istioctl`コマンドをインストールする。
 
@@ -41,7 +41,7 @@ $ cd /Users/hiroki.hasegawa/projects
 $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
 ```
 
-`【３】`
+`(3)`
 
 : `istioctl`コマンドへのパスを環境変数に登録する。
 
@@ -937,7 +937,7 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --ove
 
 **＊例＊**
 
-`【１】`
+`(1)`
 
 : 現在のバージョンのエイリアス (`istio.io/tag`キーの値) が`default`、またバージョン (`.metadata.labels.istio.io/rev`キーの値) が`v1.10.0`とする。
 
@@ -948,7 +948,7 @@ TAG      REVISION   NAMESPACES
 default   1-10-0      app
 ```
 
-`【２】`
+`(2)`
 
 : `default`タグを持つMutatingWebhookConfigurationを確認する。
 
@@ -961,7 +961,7 @@ istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
 istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するdefaultタグを持つ
 ```
 
-`【３】`
+`(3)`
 
 : もし、ここでIstioをアップグレードしたとする。
 
@@ -969,7 +969,7 @@ istio-revision-tag-default          1          7m56s # 現在のリビジョン�
 $ istioctl install --set revision=1-11-0
 ```
 
-`【４】`
+`(4)`
 
 : すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。
 
@@ -996,7 +996,7 @@ istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアッ�
 istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するdefaultタグを持つ
 ```
 
-`【３】`
+`(3)`
 
 : エイリアス (`istio.io/tag`キーの値) を指定して、リビジョン番号を書き換える。
 
@@ -1014,7 +1014,7 @@ istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアッ�
 istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.11.0) 定義するdefaultタグを持つ
 ```
 
-`【４】`
+`(4)`
 
 : また、`istioctl tag list`コマンドでも、リビジョン番号が`v1.10.0`になったことを確認できる。
 

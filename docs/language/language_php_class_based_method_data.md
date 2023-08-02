@@ -766,19 +766,19 @@ $D = objB()->objC()->objC();
 
 > - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html
 
-`【１】`
+`(1)`
 
 : 適当な値を基準値 (Pivot) とする (※できれば中央値が望ましい)
 
-`【２】`
+`(2)`
 
 : Pivotより小さい数を前方、大きい数を後方に分割する。
 
-`【３】`
+`(3)`
 
 : 二分割された各々のデータを、それぞれ並び替える。
 
-`【４】`
+`(4)`
 
 : ソートを繰り返し実行する。
 

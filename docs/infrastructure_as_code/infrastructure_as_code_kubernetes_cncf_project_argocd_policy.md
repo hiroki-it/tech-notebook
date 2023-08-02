@@ -393,11 +393,11 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
 > - https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
-`【１】`
+`(1)`
 
 : Applicationの`.spec.syncPolicy.allowEmpty`キーを有効化する。
 
-`【２】`
+`(2)`
 
 : フォアグラウンドで削除すると、Applicationの`.metadata.finalizers`キーの値に削除中のリソースが設定される。
 
@@ -411,7 +411,7 @@ $ kubectl patch crd applications.argoproj.io \
 
 > - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
-`【３】`
+`(3)`
 
 : 1つ目の`.spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
 

@@ -408,7 +408,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 #### ▼ Containerdのインストールの事前作業
 
-`【１】`
+`(1)`
 
 : `/etc/modules-load.d/containerd.conf`ファイルに、カーネルモジュールを設定する。
 
@@ -419,7 +419,7 @@ overlay
 br_netfilter
 ```
 
-`【２】`
+`(2)`
 
 : カーネルモジュールを読み込む。
 
@@ -428,7 +428,7 @@ $ modprobe overlay
 $ modprobe br_netfilter
 ```
 
-`【３】`
+`(3)`
 
 : `/etc/sysctl.d/99-kubernetes-cri.conf`ファイルに、カーネルパラメーターを設定する。
 
@@ -440,7 +440,7 @@ net.ipv4.ip_forward=1
 net.bridge.bridge-nf-call-ip6tables=1
 ```
 
-`【４】`
+`(4)`
 
 : カーネルに設定を反映する。
 
@@ -450,7 +450,7 @@ $ sysctl --system
 
 #### ▼ Containerdのインストール
 
-`【１】`
+`(1)`
 
 : 要件のパッケージをインストールする。
 
@@ -463,7 +463,7 @@ $ apt-get update -y \
     software-properties-common
 ```
 
-`【２】`
+`(2)`
 
 : Docker公式の提供するGPGキーを追加する。
 
@@ -471,7 +471,7 @@ $ apt-get update -y \
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 ```
 
-`【３】`
+`(3)`
 
 : リポジトリを追加する。
 
@@ -482,7 +482,7 @@ $ add-apt-repository \
     stable"
 ```
 
-`【４】`
+`(4)`
 
 : Containerdをインストールする。
 
@@ -494,7 +494,7 @@ $ apt-get update && apt-get install containerd.io
 
 #### ▼ Containerdの設定ファイルの準備
 
-`【１】`
+`(1)`
 
 : 設定ファイルとして、`/etc/containerd/config.toml`ファイルを作成する。
 
@@ -505,7 +505,7 @@ $ mkdir -p /etc/containerd
 $ containerd config default | sudo tee /etc/containerd/config.toml
 ```
 
-`【２】`
+`(2)`
 
 : Containerdに設定を反映する。
 

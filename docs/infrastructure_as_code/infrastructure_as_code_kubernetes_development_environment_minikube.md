@@ -139,7 +139,7 @@ Minikubeでは、`mount`コマンド、ホスト側の`$MINIKUBE_HOME/files`デ�
 
 **＊例＊**
 
-`【１】`
+`(1)`
 
 : HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで`mount`コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。
 
@@ -147,7 +147,7 @@ Minikubeでは、`mount`コマンド、ホスト側の`$MINIKUBE_HOME/files`デ�
 $ minikube start --driver=hyperkit --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
 
-`【２】`
+`(2)`
 
 : NodeのボリュームをPod内のコンテナにマウントする。
 

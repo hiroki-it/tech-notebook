@@ -17,23 +17,23 @@ description: CircleCI＠CIツールの知見を記録しています。
 
 ### CIパイプライン/CDパイプライン
 
-`【１】`
+`(1)`
 
 : テストクラスを実装したうえで、新機能を設計実装する。
 
-`【２】`
+`(2)`
 
 : リポジトリへプッシュすると、CIツールがGituHubからブランチの状態を取得する。
 
-`【３】`
+`(3)`
 
 : CIツールによって、CIパイプラインが実行される。
 
-`【４】`
+`(4)`
 
 : CIOpsを採用している場合に、CDパイプラインも実行される。
 
-`【５】`
+`(5)`
 
 : 結果を通知することも可能。
 
@@ -115,7 +115,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ▼ CircleCIコンテナにSSH公開鍵認証
 
-`【１】`
+`(1)`
 
 : CircleCI用に鍵を作成しても良いが、ここではGitHubの鍵をそのまま使用することとする。
 
@@ -127,7 +127,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 $ pbcopy < ~/.ssh/github/<秘密鍵名>
 ```
 
-`【３】`
+`(3)`
 
 : CircleCIの`Enable SSH`ステップに表示された`ssh`コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を行う。
 

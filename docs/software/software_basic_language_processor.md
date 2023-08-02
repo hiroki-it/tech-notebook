@@ -61,7 +61,7 @@ exeファイルとなる。
 
 ![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lexical_syntax_semantics.png)
 
-#### `【１】` Lexical analysis (字句解析)
+#### `(1)` Lexical analysis (字句解析)
 
 コードの文字列を言語の最小単位 (トークン) の列に分解する。
 
@@ -75,7 +75,7 @@ exeファイルとなる。
 
 > - https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
 
-#### `【２】` Syntax analysis (構文解析)
+#### `(2)` Syntax analysis (構文解析)
 
 トークンの列をツリー構造に変換する。
 
@@ -87,25 +87,25 @@ exeファイルとなる。
 
 > - https://ja.wikipedia.org/wiki/Bison
 
-#### `【３】` Semantics analysis (意味解析)
+#### `(3)` Semantics analysis (意味解析)
 
 ツリー構造を基に、コードに論理的な誤りがないかを解析する。
 
-#### `【４】` Code optimization (コード最適化)
+#### `(4)` Code optimization (コード最適化)
 
 コードの冗長な部分を削除または編集する。
 
 機械語をより短くできる。
 
-#### `【５】` Code generation (コード作成)
+#### `(5)` Code generation (コード作成)
 
 最適化されたコードをバイナリ形式のコードに変換する。
 
-#### `【６】` リンク
+#### `(6)` リンク
 
 バイナリ形式のコードをリンクする。
 
-#### `【７】` 命令の実行
+#### `(7)` 命令の実行
 
 リンクされたバイナリ形式のコードを基に、命令が実行される。
 
@@ -135,23 +135,23 @@ exeファイルとなる。
 
 ### 機械語翻訳とは
 
-#### `【１】` Lexical analysis (字句解析)
+#### `(1)` Lexical analysis (字句解析)
 
 コンパイラ型言語と同じである。
 
-#### `【２】` Syntax analysis (構文解析)
+#### `(2)` Syntax analysis (構文解析)
 
 コンパイラ型言語と同じである。
 
-#### `【３】` Semantics analysis (意味解析)
+#### `(3)` Semantics analysis (意味解析)
 
 コンパイラ型言語と同じである。
 
-#### `【４】` 命令の実行
+#### `(4)` 命令の実行
 
 コンパイラ型言語と同じである。
 
-#### `【５】`
+#### `(5)`
 
 １から４をコード行ごとに繰り返す
 
@@ -165,15 +165,15 @@ exeファイルとなる。
 
 ### 仕組み
 
-`【１】`
+`(1)`
 
 : JavaまたはJVM型言語のコードを、Javaバイトコードを含むクラスファイルに変換する。
 
-`【２】`
+`(2)`
 
 : JVM：Java Virtual Machine内で、インタプリタによって、クラスデータを機械語に翻訳する。
 
-`【３】`
+`(3)`
 
 : 結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。
 

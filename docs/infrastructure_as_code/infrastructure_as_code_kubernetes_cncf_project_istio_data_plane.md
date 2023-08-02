@@ -68,7 +68,7 @@ $ istio-iptables \
 
 #### ▼ ルール
 
-`【１】`
+`(1)`
 
 : `ps`コマンドを使用して、`istio-proxy`コンテナの`envoy`プロセスのID (PID) を取得する。
 
@@ -81,7 +81,7 @@ $ ps aux | grep envoy | awk '{print $2}'
 3456789
 ```
 
-`【２】`
+`(2)`
 
 : `nsenter`コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに`iptables`コマンドを送信する。Istioによって管理されているChainのルールを取得できる。
 
