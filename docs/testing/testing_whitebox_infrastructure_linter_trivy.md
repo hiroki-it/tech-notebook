@@ -41,6 +41,8 @@ $ docker run aquasec/trivy
 
 #### ▼ チャートとして
 
+trivy-operatorをインストールする。
+
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aquasecurity.github.io/helm-charts/
 
@@ -48,10 +50,10 @@ $ helm repo update
 
 $ kubectl create namespace trivy
 
-$ helm install <Helmリリース名> <チャートリポジトリ名>/trivy -n trivy
+$ helm install <Helmリリース名> <チャートリポジトリ名>/trivy-operator -n trivy
 ```
 
-> - https://aquasecurity.github.io/trivy/v0.42/
+> - https://aquasecurity.github.io/trivy-operator/v0.15.1/getting-started/installation/helm/
 
 <br>
 
@@ -62,7 +64,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/trivy -n t
 #### ▼ configとは
 
 > - https://aquasecurity.github.io/trivy/v0.44/docs/scanner/misconfiguration/
-> - https://aquasecurity.github.io/trivy/v0.42/docs/references/configuration/cli/trivy_config/
+> - https://aquasecurity.github.io/trivy/v0.44/docs/references/configuration/cli/trivy_config/
 
 #### ▼ --debug
 
@@ -88,7 +90,7 @@ $ trivy config --debug <IaCファイル>
 2023-08-02T04:52:36.192Z	DEBUG	Scanned config file: <IaCファイル>
 ```
 
-> - https://aquasecurity.github.io/trivy/v0.44/usage/
+> - https://aquasecurity.github.io/trivy/v0.44/docs/scanner/misconfiguration/
 
 #### ▼ --exit-code
 
@@ -110,6 +112,18 @@ $ trivy config --exit-code 1 manifest.yaml
 
 > - https://aquasecurity.github.io/trivy/v0.44/docs/configuration/others/#exit-code
 
+#### ▼ --include-non-failures
+
+もし解析結果に何も問題がなければ、成功したことを表示できるようにする。
+
+デフォルトであると、成功が表示されない。
+
+```bash
+$ trivy config --include-non-failures <IaCファイル>
+```
+
+> - https://aquasecurity.github.io/trivy/v0.44/docs/references/configuration/cli/trivy_config/
+
 #### ▼ --quiet
 
 処理中のプログレスバー処理ログの両方を非表示にする。
@@ -128,7 +142,7 @@ $ trivy config <IaCファイル>
 2023-08-02T04:50:08.303Z	INFO	Detected config files: 1
 ```
 
-> - https://aquasecurity.github.io/trivy/v0.44/usage/
+> - https://aquasecurity.github.io/trivy/v0.44/docs/scanner/misconfiguration/
 
 #### ▼ --severity
 
@@ -138,7 +152,7 @@ $ trivy config <IaCファイル>
 $ trivy config --severity HIGH,CRITICAL <IaCファイル>
 ```
 
-> - https://aquasecurity.github.io/trivy/v0.19.2/vulnerability/examples/filter/#by-severity
+> - https://aquasecurity.github.io/trivy/v0.44/docs/configuration/filtering/#by-severity
 > - https://csblog.casareal.co.jp/archives/382
 
 <br>
