@@ -80,15 +80,37 @@ repo-serverは、リポジトリでコミットが更新されるたびにキャ
 
 ### 性能改善
 
-#### ▼ Applicationが多すぎる場合
-
-application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまで面倒見られる。
+#### ▼ 問題
 
 テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。
 
-レプリカ数 (Pod数) やCPUの並列処理数を増やすと、application-controller当たりの負荷を下げられる。
+application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまで面倒見られる。
 
-CPUの並列処理数を増やす場合、Clusterのヘルスチェックの並列処理数は`--status-processors`オプションで、Diff/Sync処理のそれは`--operation-processors`オプションで変更できる。
+大量のApplicationを処理する場合、次のような対処方法がある。
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
+
+#### ▼ Reconciliation頻度の低減
+
+application-controllerのReconciliationの頻度を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  timeout.reconciliation: 180s
+```
+
+> - https://foxutech.medium.com/how-to-modify-the-application-reconciliation-timeout-in-argo-cd-833fedf8ebbd
+
+#### ▼ 処理効率の向上
+
+CPUの並列処理数を増やすと、application-controller当たりの処理効率を上げられる。
+
+Clusterのヘルスチェックの並列処理数は`--status-processors`オプションで、Diff/Sync処理のそれは`--operation-processors`オプションで変更できる。
 
 ```yaml
 apiVersion: v1
@@ -106,9 +128,11 @@ data:
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
-#### ▼ Cluster数が多すぎる場合
+#### ▼ 負荷の低減
 
-`ARGOCD_CONTROLLER_REPLICAS`変数で、複数のClusterに対する処理をapplication-controllerの異なるレプリカに分散できる。
+application-controllerのレプリカ数を増やすと、application-controller当たりの負荷を下げられる。
+
+`ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerのApplication操作を異なるレプリカに分散できる。
 
 ```yaml
 apiVersion: apps/v1
