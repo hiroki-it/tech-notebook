@@ -123,7 +123,7 @@ exec:
   test:
     template: |
       ...
- ```
+```
 
 #### ▼ 必要なコマンド
 
@@ -189,7 +189,7 @@ hide:
 
 ジョブへのリンクを表示する。
 
-````yaml
+```yaml
 ---
 exec:
   default:
@@ -216,7 +216,7 @@ exec:
         ```
 
         </details>
-````
+```
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
 
