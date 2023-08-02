@@ -84,13 +84,56 @@ GitHubに送信するコメントのテンプレートを設定する。
 
 文法は、Goテンプレートと同じである。
 
+<br>
+
+### exec
+
+#### ▼ execとは
+
+```github-comment exec```コマンドの結果に使用するテンプレート
+
+#### ▼ テンプレート名
+
+
 ```yaml
 ---
 # github-comment execコマンドで使用するテンプレート
 exec:
   # テンプレート名
-  test: ...
+  default:
+    # テンプレートが1つの場合は、whenをtrueとする
+    - when: true
+      template: |
+        ...
 ```
+
+```yaml
+---
+# github-comment execコマンドで使用するテンプレート
+exec:
+  # テンプレート名
+  default:
+    template: |
+      ...
+
+  build:
+    template: |
+      ...
+      
+  test:
+    template: |
+      ...
+ ```
+
+#### ▼ 必要なコマンド
+
+`default`のテンプレートを使用する場合、`-k`オプションは不要である。
+
+```bash
+$ ./github-comment exec -- <好きなコマンド>
+```
+
+`default`以外のテンプレートを使用する場合、`-k`オプションが必要である。
 
 ```bash
 $ ./github-comment exec -k test -- <好きなコマンド>
@@ -105,7 +148,7 @@ $ ./github-comment exec -k test -- <好きなコマンド>
 ```yaml
 ---
 exec:
-  test:
+  default:
     - when: true
       template: |
         ...
@@ -149,7 +192,7 @@ hide:
 ````yaml
 ---
 exec:
-  test:
+  default:
     - when: true
       template: |
 
@@ -185,11 +228,15 @@ exec:
 
 テンプレートを使用する条件を設定する。
 
-````yaml
+**＊実装例＊**
+
+テンプレートが1つの場合は、`when`キーを`true`とする
+
+```yaml
 ---
 exec:
   test:
-    # 必ず実行する場合
+    # テンプレートが1つの場合は、whenをtrueとする
     - when: true
       template: |
 
@@ -213,9 +260,13 @@ exec:
         ```
 
         </details>
-````
+```
 
-````yaml
+**※実装例※**
+
+終了コードを条件とする場合、`ExitCode`を使用する。
+
+```yaml
 ---
 exec:
   test:
@@ -243,7 +294,7 @@ exec:
         ```
 
         </details>
-````
+```
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
 

@@ -125,6 +125,7 @@ BC-APIキーが必要で、これはBridgecrewダッシュボードから取得�
 $ checkov -f <IaCファイル> --skip-check HIGH,CKV_*** --bc-api-key <BC-APIキー>
 ```
 
+> - https://bridgecrew.io/blog/checkov-iac-policy-severities-prioritize-skip-fail/
 > - https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html#platform-enforcement-rules
 
 <br>

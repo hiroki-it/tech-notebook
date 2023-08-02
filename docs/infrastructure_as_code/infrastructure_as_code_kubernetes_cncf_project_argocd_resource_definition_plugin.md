@@ -36,6 +36,7 @@ ArgoCDの仕様上、一部のツール (Helmfile、helmプラグイン、argocd
 
 ```bash
 argocd@repo-server:/usr/local/bin] $ ls -la /usr/local/bin
+
 total 193408
 drwxr-xr-x 1 root root       224 Mar 23 15:11 .
 drwxr-xr-x 1 root root        17 Mar  8 02:05 ..
