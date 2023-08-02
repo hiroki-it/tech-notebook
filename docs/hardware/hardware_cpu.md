@@ -15,7 +15,9 @@ description: CPU＠ハードウェアの知見を記録しています。
 
 ## 01. CPU：Central Processing Unit
 
-### CPUとは
+### CPU (プロセッサー) とは
+
+『プロセッサー』ともいう。
 
 CPUは制御装置と演算装置からなる。
 

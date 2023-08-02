@@ -90,6 +90,7 @@ func main() {
 開始も終了もバラバラであるが、処理の実行が重複する場合がある。
 
 > - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
+> - https://hobik-site.blogspot.com/2018/03/cpu.html
 > - https://moz.hatenablog.jp/entry/2018/04/10/175643
 > - https://zenn.dev/hsaki/books/golang-concurrency/viewer/term
 
@@ -110,6 +111,7 @@ func main() {
 開始は同時であるが、終了はバラバラになる。
 
 > - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
+> - https://hobik-site.blogspot.com/2018/03/cpu.html
 > - https://moz.hatenablog.jp/entry/2018/04/10/175643
 
 <br>

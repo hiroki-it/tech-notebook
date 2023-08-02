@@ -202,7 +202,7 @@ application-controllerは、デフォルトだとレプリカ当たり`400`個�
 
 テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。
 
-この場合、application-controllerの並行処理を有効化するか、Podを冗長化した方が良い。
+この場合、レプリカ数やCPUの並列処理数を増やす必要がある。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
@@ -213,7 +213,7 @@ repo-serverは、レプリカ当たり`1`個のポーリング対象のリポジ
 
 単一のリポジトリで管理するApplication数が多くなるほど、同一のリポジトリで何度もマニフェストを作成しようとするため、repo-serverの性能が落ちる。
 
-この場合、repo-serverの並行処理を有効化するか、Podを冗長化した方が良い。
+この場合、レプリカ数やCPUの並列処理数を増やす必要がある。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-repo-server

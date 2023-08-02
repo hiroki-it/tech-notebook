@@ -592,7 +592,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 各テナントは、ArgoCDを共有する。
 
-この場合、高負荷になるためレプリカ数や並行処理数などを考慮する必要がある。
+この場合、レプリカ数やCPU数を増やすことにより、並列処理数を増やす必要がある。
 
 > - https://github.com/argoproj/argo-cd/issues/11116
 > - https://techblog.zozo.com/entry/measure-argocd-introduction
