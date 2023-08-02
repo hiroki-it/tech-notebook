@@ -108,6 +108,8 @@ data:
 
 #### ▼ 処理効率の向上
 
+application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。
+
 CPUの並列処理数を増やすと、application-controller当たりの処理効率を上げられる。
 
 Clusterのヘルスチェックの並列処理数は`--status-processors`オプションで、Diff/Sync処理のそれは`--operation-processors`オプションで変更できる。
@@ -130,9 +132,11 @@ data:
 
 #### ▼ 負荷の低減
 
-application-controllerのレプリカ数を増やすと、application-controller当たりの負荷を下げられる。
+application-controllerは、デプロイ対象のClusterと通信する。
 
-`ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerのApplication操作を異なるレプリカに分散できる。
+application-controllerのレプリカ数を増やすと、application-controller当たりの通信処理の負荷を下げられる。
+
+`ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerの通信処理を異なるレプリカに分散できる。
 
 ```yaml
 apiVersion: apps/v1
