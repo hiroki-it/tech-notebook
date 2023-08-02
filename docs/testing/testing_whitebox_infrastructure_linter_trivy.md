@@ -61,6 +61,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/trivy -n t
 
 #### ▼ configとは
 
+> - https://aquasecurity.github.io/trivy/v0.44/docs/scanner/misconfiguration/
 > - https://aquasecurity.github.io/trivy/v0.42/docs/references/configuration/cli/trivy_config/
 
 #### ▼ --debug
@@ -69,13 +70,31 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/trivy -n t
 
 ```bash
 $ trivy config --debug <IaCファイル>
+
+2023-08-02T04:52:32.908Z	DEBUG	Severities: ["HIGH" "CRITICAL"]
+2023-08-02T04:52:32.912Z	DEBUG	cache dir:  /root/.cache/trivy
+2023-08-02T04:52:32.912Z	INFO	Misconfiguration scanning is enabled
+2023-08-02T04:52:32.912Z	DEBUG	Failed to open the policy metadata: open /root/.cache/trivy/policy/metadata.json: no such file or directory
+2023-08-02T04:52:32.912Z	INFO	Need to update the built-in policies
+2023-08-02T04:52:32.912Z	INFO	Downloading the built-in policies...
+2023-08-02T04:52:32.912Z	DEBUG	Using URL: ghcr.io/aquasecurity/defsec:0 to load policy bundle
+41.66 KiB / 41.66 KiB [-----------------------------------------------------------] 100.00% ? p/s 0s2023-08-02T04:52:33.743Z	DEBUG	Digest of the built-in policies: sha256:*****
+2023-08-02T04:52:33.743Z	DEBUG	Policies successfully loaded from disk
+2023-08-02T04:52:33.776Z	DEBUG	Walk the file tree rooted at '<IaCファイル>' in parallel
+2023-08-02T04:52:33.776Z	DEBUG	Scanning Kubernetes files for misconfigurations...
+2023-08-02T04:52:36.173Z	DEBUG	Scanning Helm files for misconfigurations...
+2023-08-02T04:52:36.192Z	DEBUG	OS is not detected.
+2023-08-02T04:52:36.192Z	INFO	Detected config files: 1
+2023-08-02T04:52:36.192Z	DEBUG	Scanned config file: <IaCファイル>
 ```
 
-> - https://aquasecurity.github.io/trivy/v0.17.2/usage/
+> - https://aquasecurity.github.io/trivy/v0.44/usage/
 
 #### ▼ --exit-code
 
 脆弱性が検出された時の終了コードを設定する。
+
+デフォルトでは、いずれの結果でも終了コードが`0`になる。
 
 ```bash
 $ trivy config --exit-code 1 <IaCファイル>
@@ -89,15 +108,27 @@ $ helm template foo-chart. --set secret.PASSWORD=test -f foo-values.yaml > manif
 $ trivy config --exit-code 1 manifest.yaml
 ```
 
+> - https://aquasecurity.github.io/trivy/v0.44/docs/configuration/others/#exit-code
+
 #### ▼ --quiet
 
-処理中のプログレスバーを非表示にする。
+処理中のプログレスバー処理ログの両方を非表示にする。
 
 ```bash
+# 非表示の場合
 $ trivy config --quiet <IaCファイル>
+
+# 表示する場合
+$ trivy config <IaCファイル>
+
+2023-08-02T04:50:04.261Z	INFO	Misconfiguration scanning is enabled
+2023-08-02T04:50:04.261Z	INFO	Need to update the built-in policies
+2023-08-02T04:50:04.261Z	INFO	Downloading the built-in policies...
+41.66 KiB / 41.66 KiB [-----------------------------------------------------------] 100.00% ? p/s 0s
+2023-08-02T04:50:08.303Z	INFO	Detected config files: 1
 ```
 
-> - https://aquasecurity.github.io/trivy/v0.17.2/usage/
+> - https://aquasecurity.github.io/trivy/v0.44/usage/
 
 #### ▼ --severity
 

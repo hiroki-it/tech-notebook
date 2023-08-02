@@ -411,7 +411,7 @@ $ kubectl get namespace -L istio.io/rev
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 ```
 
-`【１２】`
+`(12)`
 
 : 新バージョンの`istio-proxy`コンテナがインジェクションされたことを、イメージタグから確認する。
 
@@ -433,7 +433,7 @@ $ istioctl proxy-status
 
 #### ▼ アプリケーションの`istio-proxy`コンテナをアップグレード
 
-`【１３】`
+`(13)`
 
 : アプリケーションのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
 
@@ -443,7 +443,7 @@ $ istioctl proxy-status
 $ kubectl rollout restart deployment app-deployment -n app
 ```
 
-`【１４】`
+`(14)`
 
 : 新バージョンの`istio-proxy`コンテナがインジェクションされたことを、イメージタグから確認する。
 
@@ -468,7 +468,7 @@ $ istioctl proxy-status
 
 #### ▼ webhookの向き先を新しいIstiodコントロールプレーンに完全に変更
 
-`【１５】`
+`(15)`
 
 : Istioのvalidating-admission時を経由するService更新する。
 
@@ -515,7 +515,7 @@ spec:
     istio.io/rev: asm-1140-0 # リビジョン番号を更新する。
 ```
 
-`【１６】`
+`(16)`
 
 : MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づく現在のリビジョン番号を確認する。
 
@@ -535,7 +535,7 @@ istio.io/rev: asm-1130-0
 istio.io/tag: default
 ```
 
-`【１７】`
+`(17)`
 
 : Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。
 
@@ -548,7 +548,7 @@ istio.io/tag: default
 $ ./output/asm-1.14/istioctl tag set default --revision asm-1140-0 --overwrite
 ```
 
-`【１８】`
+`(18)`
 
 : MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づくリビジョン番号を変更できたことを確認する。
 
@@ -570,7 +570,7 @@ istio.io/tag: default
 
 #### ▼ 古いIstiodコントロールプレーンを削除
 
-`【１９】`
+`(19)`
 
 : 旧バージョンのIstiodコントロールプレーン (実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget) を削除する。
 
@@ -587,7 +587,7 @@ $ kubectl get all -n istio-system
 
 #### ▼ 古いIstiodコントロールプレーンを削除を削除
 
-`【２０】`
+`(20)`
 
 : 旧バージョンのValidatingWebhookConfigurationを削除する。
 
@@ -603,7 +603,7 @@ $ kubectl get validatingwebhookconfiguration -n istio-system
 
 #### ▼ 古いIstioOperatorを削除を削除
 
-`【２１】`
+`(21)`
 
 : 旧バージョンのIstioOperatorを削除する。
 
@@ -622,7 +622,7 @@ $ kubectl get IstioOperator -n istio-system
 
 ### アップグレードの動作確認
 
-`【２２】`
+`(22)`
 
 : 全てのPodが正常に稼働していることを確認する。
 
