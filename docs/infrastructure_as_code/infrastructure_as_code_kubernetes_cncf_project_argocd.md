@@ -43,6 +43,29 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 <br>
 
+### 性能改善
+
+#### ▼ リポジトリがモノリポジトリの場合
+
+repo-serverは、リポジトリでコミットが更新されるたびにキャッシュを作成する。
+
+単一のリポジトリで管理するマニフェストやチャートが多くなるほど、コミットの頻度が上がり、キャッシュ再作成の頻度が上がる。
+
+レプリカ数 (Pod数) やメモリの並列処理数を増やすと、repo-server当たりの負荷を下げられる。
+
+> - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
+> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
+> - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
+
+#### ▼ マニフェスト以外のファイルが多い場合
+
+`metadata`キーに`argocd.argoproj.io/manifest-generate-paths`キーを設定し、キャッシュ再作成のトリガーとするディレクトリを設定する。
+
+> - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
+
+<br>
+
 ## 03. application-controller
 
 ### application-controllerとは
@@ -52,6 +75,64 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 > - https://weseek.co.jp/tech/95/#i-7
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 > - https://www.amazon.co.jp/dp/1617297275
+
+<br>
+
+### 性能改善
+
+#### ▼ Applicationが多すぎる場合
+
+application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまで面倒見られる。
+
+テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。
+
+レプリカ数 (Pod数) やCPUの並列処理数を増やすと、application-controller当たりの負荷を下げられる。
+
+CPUの並列処理数を増やす場合、Clusterのヘルスチェックの並列処理数は`--status-processors`オプションで、Diff/Sync処理のそれは`--operation-processors`オプションで変更できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  controllers.status.processors: 50
+  controllers.operation.processors: 25
+```
+
+> - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
+> - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
+
+#### ▼ Cluster数が多すぎる場合
+
+`ARGOCD_CONTROLLER_REPLICAS`変数で、複数のClusterに対する処理をapplication-controllerの異なるレプリカに分散できる。
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: argocd-application-controller
+          env:
+            - name: ARGOCD_CONTROLLER_REPLICAS
+              value: 2
+```
+
+> - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
+> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
+
+なお、執筆時点 (2023/08/02) 時点で、単一のClusterの処理をapplication-controllerの異なるレプリカに分散できない。
+
+> - https://github.com/argoproj/argo-cd/issues/6125#issuecomment-1660341387
 
 <br>
 
@@ -107,6 +188,32 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 ### 他のコンポーネントとの通信
 
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+
+<br>
+
+### 性能改善
+
+#### ▼ ダッシュボードへのリクエストが多すぎる場合
+
+`ARGOCD_API_SERVER_REPLICAS`変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-server
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: argocd-server
+          env:
+            - name: ARGOCD_API_SERVER_REPLICAS
+              value: 3
+```
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-server
 
 <br>
 
@@ -191,34 +298,6 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 > - https://github.com/argoproj/argo-cd/issues/1446#issue-432385992
 > - https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
-
-<br>
-
-### 性能改善
-
-#### ▼ application-controllerの場合
-
-application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまで面倒見られる。
-
-テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。
-
-この場合、レプリカ数やCPUの並列処理数を増やす必要がある。
-
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
-> - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
-
-#### ▼ repo-serverの場合
-
-repo-serverは、レプリカ当たり`1`個のポーリング対象のリポジトリでマニフェストを作成する。
-
-単一のリポジトリで管理するApplication数が多くなるほど、同一のリポジトリで何度もマニフェストを作成しようとするため、repo-serverの性能が落ちる。
-
-この場合、レプリカ数やCPUの並列処理数を増やす必要がある。
-
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-repo-server
-> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
-> - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
 
 <br>
 
