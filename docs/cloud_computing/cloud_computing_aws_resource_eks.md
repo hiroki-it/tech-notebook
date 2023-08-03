@@ -698,7 +698,9 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 
 Nodeグループは、EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングするように、AutoScalingグループに各AZを自動的に設定する。
 
-AutoScalingの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
+AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
+
+ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。
 
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
@@ -725,7 +727,9 @@ EKSのテスト環境の請求料金を節約するために、昼間に通常�
 
 をユーザーが管理する。
 
-AutoScalingの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
+AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
+
+ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。
 
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
