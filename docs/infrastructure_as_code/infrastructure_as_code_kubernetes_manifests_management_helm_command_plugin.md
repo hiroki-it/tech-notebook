@@ -27,19 +27,19 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 #### ▼ インストール
 
-> - https://github.com/komodorio/helm-dashboard#installing
-
 ```bash
 $ helm plugin install https://github.com/komodorio/helm-dashboard.git
 ```
 
-#### ▼ 起動
+> - https://github.com/komodorio/helm-dashboard#installing
 
-> - https://github.com/komodorio/helm-dashboard#running
+#### ▼ 起動
 
 ```bash
 $ helm dashboard
 ```
+
+> - https://github.com/komodorio/helm-dashboard#running
 
 <br>
 

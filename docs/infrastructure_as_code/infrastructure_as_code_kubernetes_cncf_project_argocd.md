@@ -45,20 +45,33 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### 性能改善
 
-#### ▼ リポジトリがモノリポジトリの場合
+#### ▼ 問題
 
 repo-serverは、リポジトリでコミットが更新されるたびにキャッシュを作成する。
 
-単一のリポジトリで管理するマニフェストやチャートが多くなるほど、コミットの頻度が上がり、キャッシュ再作成の頻度が上がる。
+#### ▼ 処理効率の向上
 
-レプリカ数 (Pod数) やメモリの並列処理数を増やすと、repo-server当たりの負荷を下げられる。
+Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを置いておくと並行処理をしてくれる。
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing
+> - https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/
+
+#### ▼ 負荷の低減
+
+repo-serverは、レプリカ当たり1単位のマニフェスト作成しか処理できない。
+
+レプリカ数 (Pod数) を増やすと、レプリカ当たりのマニフェスト作成処理の負荷を下げられる。
+
+これにより、複数人が同時にDiff操作やSync操作しやすくなる。
 
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
 > - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
 
-#### ▼ マニフェスト以外のファイルが多い場合
+#### ▼ キャッシュ作成の頻度を下げる
+
+単一のリポジトリで管理するマニフェストやチャートが多くなるほど、コミットの頻度が上がり、キャッシュ再作成の頻度が上がる。
 
 `metadata`キーに`argocd.argoproj.io/manifest-generate-paths`キーを設定し、キャッシュ再作成のトリガーとするディレクトリを設定する。
 
@@ -84,9 +97,9 @@ repo-serverは、リポジトリでコミットが更新されるたびにキャ
 
 テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。
 
-application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまで面倒見られる。
+application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまでReconciliationできる。
 
-大量のApplicationを処理する場合、次のような対処方法がある。
+大量のApplicationをReconciliationする場合、次のような対処方法がある。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
 
@@ -110,7 +123,7 @@ data:
 
 application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。
 
-CPUの並列処理数を増やすと、application-controller当たりの処理効率を上げられる。
+CPUの並列処理数を増やすと、レプリカ当たりの処理効率を上げられる。
 
 Clusterのヘルスチェックの並列処理数は`--status-processors`オプションで、Diff/Sync処理のそれは`--operation-processors`オプションで変更できる。
 
@@ -134,7 +147,7 @@ data:
 
 application-controllerは、デプロイ対象のClusterと通信する。
 
-application-controllerのレプリカ数を増やすと、application-controller当たりの通信処理の負荷を下げられる。
+application-controllerのレプリカ数を増やすと、レプリカ当たりの通信処理の負荷を下げられる。
 
 `ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerの通信処理を異なるレプリカに分散できる。
 
@@ -221,7 +234,13 @@ spec:
 
 ### 性能改善
 
-#### ▼ ダッシュボードへのリクエストが多すぎる場合
+#### ▼ 問題
+
+argocd-serverは、ステートレスで高負荷になりにくい。
+
+念の為、他のコンポーネントの数に合わせて冗長化するとよい。
+
+#### ▼ 負荷の低減
 
 `ARGOCD_API_SERVER_REPLICAS`変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。
 

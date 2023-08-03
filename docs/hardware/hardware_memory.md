@@ -31,9 +31,9 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ Mask ROMとは
 
-> - https://www.amazon.co.jp/dp/4297124513
-
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png)
+
+> - https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -41,9 +41,9 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ Programmable ROMとは
 
-> - https://www.amazon.co.jp/dp/4297124513
-
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png)
+
+> - https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -145,9 +145,9 @@ CPUは、キャッシュメモリのみに書き込む。
 
 ### 実効アクセス時間
 
-> - https://www.amazon.co.jp/dp/4297124513
-
 ![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p171-1.png)
+
+> - https://www.amazon.co.jp/dp/4297124513
 
 <br>
 

@@ -2036,7 +2036,7 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
-#### ▼ requiredDuringSchedulingIgnoredDuringExecution (hard)
+#### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
 
 条件に合致するNodeにのみPodをスケジューリングする。
 
@@ -2075,7 +2075,7 @@ spec:
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
 
-#### ▼ preferredDuringSchedulingIgnoredDuringExecution (soft)
+#### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
 
 条件に合致するNodeに優先的にPodをスケジューリングする。
 
@@ -2128,6 +2128,35 @@ spec:
 > - https://qiita.com/Esfahan/items/a673317a29ca407e5ae7#pod-affinity
 > - https://zenn.dev/geek/articles/c74d204b00ba1a
 
+preferredDuringSchedulingIgnoredDuringExecutionの場合、`podAffinityTerm`キーや`preference`キーが必要である。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+  affinity:
+    podAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            topologyKey: kubernetes.io/hostname
+            labelSelector:
+              - matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - bar-gin
+```
+
+> - https://qiita.com/kanazawa1226/items/4e5bb6715b52da6649d7#podaffinity--podantiaffinity
+
 #### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
 
 `.spec.affinity.nodeAffinity`キーのPod版である。
@@ -2172,6 +2201,35 @@ spec:
 ```
 
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
+
+preferredDuringSchedulingIgnoredDuringExecutionの場合、`podAffinityTerm`キーや`preference`キーが必要である。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            topologyKey: topology.kubernetes.io/zone
+            labelSelector:
+              - matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - bar-gin
+```
+
+> - https://qiita.com/kanazawa1226/items/4e5bb6715b52da6649d7#podaffinity--podantiaffinity
 
 **＊スケジューリング例＊**
 
