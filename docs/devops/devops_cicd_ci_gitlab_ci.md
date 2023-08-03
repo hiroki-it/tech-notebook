@@ -47,23 +47,66 @@ repository/
 
 ### include
 
+#### ▼ includeとは
+
 参照する別リポジトリと設定ファイルを設定する。
 
 GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで一括管理しておき、これを他のリポジトリからリモート参照できるようになる。
 
 ポリリポジトリ構成規約と相性がよい。
 
+#### ▼ 子リポジトリ側の実装
+
 ```yaml
 include:
-  - project: hiroki-hasegawa/gitlab-ci-job-repository
+  # GitLab CIのテンプレートを管理するリポジトリ
+  - project: rooo-project/gitlab-ci-template-repository
     ref: main
     file:
       - foo-job.yml
       - bar-job.yml
       - baz-job.yml
+
+foo_job:
+  extends: .foo_job
+  stage: build
+
+bar_job:
+  extends: .bar_job
+  stage: build
+
+baz_job:
+  extends: .baz_job
+  stage: build
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#image
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#includeproject
+
+#### ▼ 親リポジトリ側の実装
+
+```yaml
+# foo-job.yaml
+foo_job:
+  stage: build
+  script:
+    - echo foo
+```
+
+```yaml
+# bar-job.yaml
+bar_job:
+  stage: build
+  script:
+    - echo bar
+```
+
+```yaml
+# baz-job.yaml
+baz_job:
+  stage: build
+  script:
+    - echo baz
+```
 
 <br>
 
@@ -127,7 +170,8 @@ fmt:
 ```yaml
 foo_job:
   stage: build
-  script: ...
+  script:
+    - echo foo
   artifacts:
     paths:
       - path/tmp/
@@ -201,9 +245,13 @@ stages:
 
 foo_job:
   stage: build
+  script:
+    - echo foo
 
 bar_job:
   stage: deploy
+  script:
+    - echo bar
   dependencies:
     - foo_job
 ```
@@ -222,6 +270,8 @@ foo_job:
   image:
     name: alpine:1.0.0
     entrypoint: ["sh"]
+  script:
+    - echo foo
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#image
@@ -240,18 +290,24 @@ stages:
 
 foo_job:
   stage: build
+  script:
+    - echo foo
 
 # fooの後に、baz_jobと並行実行する
 bar_job:
   stage: build
   needs:
     - foo_job
+  script:
+    - echo bar
 
 # fooの後に、bar_jobと並行実行する
 baz_job:
   stage: build
   needs:
     - foo_job
+  script:
+    - echo baz
 ```
 
 <br>
@@ -351,9 +407,13 @@ stages:
 # ----------
 foo_job:
   stage: build
+  script:
+    - echo foo
 
 bar_job:
   stage: build
+  script:
+    - echo bar
 
 # ----------
 # test
