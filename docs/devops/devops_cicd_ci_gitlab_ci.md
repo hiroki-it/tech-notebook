@@ -61,28 +61,45 @@ GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで�
 
 `.` (ドット) をつけることで、明示的に指定しない限り実行できない『隠しジョブ』として定義できる。
 
+また、子リポジトリで上書きできる変数を親リポジトリに設定しておく。
+
 ```yaml
 # foo-job.yaml
+
+# 変数のデフォルト値を設定しておく
+variables:
+  PATH: default
+
 .foo_job:
   stage: build
   script:
-    - echo foo
+    - cat ${PATH}/foo.txt
 ```
 
 ```yaml
 # bar-job.yaml
+
+# 変数のデフォルト値を設定しておく
+variables:
+  PATH: default
+
 .bar_job:
   stage: build
   script:
-    - echo bar
+    - cat ${PATH}/bar.txt
 ```
 
 ```yaml
 # baz-job.yaml
+
+# 変数のデフォルト値を設定しておく
+variables:
+  PATH: default
+
 .baz_job:
   stage: build
   script:
-    - echo baz
+    - cat ${PATH}/baz.txt
 ```
 
 > - https://docs.gitlab.com/ee/ci/jobs/index.html#hide-jobs
@@ -92,6 +109,10 @@ GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで�
 子リポジトリでは、親リポジトリをコールする。
 
 ```yaml
+# 親リポジトリの変数を上書きする
+variables:
+  PATH: child/path
+
 include:
   # GitLab CIのテンプレートを管理するリポジトリ
   - project: project/ci-template-repository-1
@@ -109,14 +130,20 @@ foo_job:
   # 親リポジトリで定義したジョブをコールする
   extends: .foo_job
   stage: build
+  script:
+    - cat ${PATH}/foo.txt
 
 bar_job:
   extends: .bar_job
   stage: build
+  script:
+    - cat ${PATH}/bar.txt
 
 baz_job:
   extends: .baz_job
   stage: build
+  script:
+    - cat ${PATH}/baz.txt
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#includeproject
