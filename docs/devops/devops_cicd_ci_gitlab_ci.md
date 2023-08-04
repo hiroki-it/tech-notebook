@@ -139,6 +139,23 @@ foo_job:
 
 > - https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
 
+#### ▼ `CI_PIPELINE_SOURCE`
+
+イベントの発生元 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    - echo foo
+  rules:
+    # MRを作成/更新したタイミングで発火する
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+> - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
+
 <br>
 
 ## 04. Job
@@ -161,7 +178,7 @@ fmt:
   allow_failure: true
   rules:
     # MRを作成/更新したタイミングで発火する
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_BRANCH != 'main'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
 
 <br>
@@ -526,21 +543,22 @@ GitLab CIが発火する条件を設定する。
 
 ```yaml
 # ブランチ名に応じて、CIで使用する実行環境名を切り替える
+# main、develop、MR作成/変更、の順に条件を検証する。
 workflow:
   rules:
-    # featureブランチの場合
-    - if: $CI_COMMIT_REF_NAME =~ /^feature.*/
-      # ついでに環境変数を設定する
-      variables:
-        ENV: dev
-    # developブランチの場合
-    - if: $CI_COMMIT_REF_NAME == "develop"
-      variables:
-        ENV: tes
     # mainブランチの場合
     - if: $CI_COMMIT_REF_NAME == "main"
       variables:
         ENV: prd
+    # developブランチの場合
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      variables:
+        ENV: tes
+    # featureブランチの場合
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      # ついでに環境変数を設定する
+      variables:
+        ENV: dev
 
 setup-manifest:
   stage: build
