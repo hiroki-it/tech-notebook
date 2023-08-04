@@ -62,12 +62,16 @@ GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで�
 ```yaml
 include:
   # GitLab CIのテンプレートを管理するリポジトリ
-  - project: rooo-project/gitlab-ci-template-repository
+  - project: project/ci-template-repository-1
     ref: main
     file:
       - foo-job.yml
       - bar-job.yml
       - baz-job.yml
+  - project: project/ci-template-repository-2
+    ref: main
+    file:
+      - qux-job.yml
 
 foo_job:
   # 親リポジトリで定義したジョブをコールする
@@ -89,9 +93,11 @@ baz_job:
 
 子リポジトリでは、Jobを定義する。
 
+`.` (ドット) をつけることで、明示的に指定しない限り実行できない『隠しジョブ』として定義できる。
+
 ```yaml
 # foo-job.yaml
-foo_job:
+.foo_job:
   stage: build
   script:
     - echo foo
@@ -99,7 +105,7 @@ foo_job:
 
 ```yaml
 # bar-job.yaml
-bar_job:
+.bar_job:
   stage: build
   script:
     - echo bar
@@ -107,11 +113,13 @@ bar_job:
 
 ```yaml
 # baz-job.yaml
-baz_job:
+.baz_job:
   stage: build
   script:
     - echo baz
 ```
+
+> - https://docs.gitlab.com/ee/ci/jobs/index.html#hide-jobs
 
 <br>
 
@@ -187,13 +195,14 @@ fmt:
 
 ジョブ間でファイルを共有する。
 
-次のジョブの同じディレクトリにファイルが配置される。
+次のジョブでは、共有ファイルを指定せずとも、自動的に同じディレクトリに共有ファイルが配置される。
 
 ```yaml
 foo_job:
   stage: build
   script:
     - echo foo
+  # 共有したいファイル
   artifacts:
     paths:
       - path/tmp/
@@ -212,23 +221,29 @@ bar_job:
 
 ### cache
 
-### ▼ cacheとは
+#### ▼ cacheとは
 
 指定したディレクトリのキャッシュを作成する。
 
-これにより、他のパイプラインでこのディレクトリを再利用し、CIの時間を短縮できる。
+もしそのディレクトリに変化がなければ、前回のパイプラインのディレクトリを再利用する。
+
+これにより、CIの時間を短縮できる。
 
 ```yaml
 bar_job:
   stage: build
   cache:
+    # キャッシュの名前を設定する
+    key: ${CI_COMMIT_REF_SLUG}
+    # キャッシュとして保存するディレクトリを設定する
     paths:
       - ./node_module
 ```
 
 > - https://www.serversus.work/topics/927zjvmew2491o2n1oob/
+> - https://docs.gitlab.com/ee/ci/caching/#use-a-fallback-cache-key
 
-### ▼ policy
+#### ▼ policy
 
 キャッシュ作成のルールを設定する。
 
