@@ -314,7 +314,7 @@ PHP-FPMをインストールする場合は、`php:8.0-fpm`である。
 
 #### ▼ クラウドプロバイダー (パブリック)
 
-パブリックなAWS ECR、GCP GCR、GCP Artifact Registry、からイメージをプルする。
+パブリックなAWS ECR、GCP GCR、GCP Artifact Registry、RedHat Quay、からイメージをプルする。
 
 ECRパブリックギャラリーからPHP-FPMをインストールする場合は、`public.ecr.aws/bitnami/php-fpm:latest`である。
 
@@ -322,7 +322,7 @@ ECRパブリックギャラリーからPHP-FPMをインストールする場合�
 
 #### ▼ クラウドプロバイダー (プライベート)
 
-プライベートなAWS ECR、GCP GCR、GCP Artifact Registry、からイメージをプルする。
+プライベートなAWS ECR、GCP GCR、GCP Artifact Registry、RedHat Quay、からイメージをプルする。
 
 ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest`である。
 

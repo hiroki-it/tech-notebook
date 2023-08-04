@@ -76,7 +76,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 <br>
 
-## 02-02. 冗長化の種類
+## 02-02. 冗長化システムの種類
 
 ### デュアルシステム
 
@@ -117,6 +117,68 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 <br>
 
+## 02-03. 冗長化手法の種類
+
+### 垂直スケーリング
+
+#### ▼ 垂直スケーリング (スケールアップ ⇔ スケールダウン) とは
+
+仮想環境のコンポーネント自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
+
+![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアップ.png)
+
+> - https://www.idcf.jp/words/scale-out.html
+
+<br>
+
+### 水平スケーリング
+
+#### ▼ 水平スケーリング (スケールアウト ⇔ スケールイン) とは
+
+仮想環境のコンポーネントのインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
+
+![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアウト.png)
+
+> - https://www.idcf.jp/words/scale-out.html
+
+<br>
+
+### 高可用性クラスターシステム
+
+#### ▼ 高可用性クラスターシステムとは
+
+`1`個の処理を分担できる複数の稼働中ノードと待機中ノードを配置する冗長化方法のこと。
+
+平常時は稼働中ノードのみにルーティングするようにしておき、`1`個の処理を分担させる。
+
+稼働中ノードで障害が発生した場合、待機中ノードを稼働中ノードに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
+
+![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
+
+> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+
+#### ▼ スイッチオーバー、フェイルオーバー
+
+デュプレックスシステムと同じである。
+
+<br>
+
+### 負荷分散クラスターシステム
+
+#### ▼ 負荷分散クラスターシステムとは
+
+`1`個の処理を分担できる複数の稼働中ノード (プライマリーインスタンス、スタンバイインスタンス) を配置しつつ、ロードバランシングできるようにした冗長化方法のこと。
+
+> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+
+#### ▼ スプリットブレイン問題
+
+プライマリーインスタンスとスタンバイインスタンスの間で通信障害が起こり、複数のプライマリーインスタンスが存在してしまう問題のこと。
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
+
+<br>
+
 ## 03. Durability (耐久性)
 
 ### 耐久性とは
@@ -130,6 +192,18 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 ### 性能とは
 
 システムに割り当てられたハードウェアリソースの中で、どれがけ効率的にかどうできるかの、程度を表す。
+
+<br>
+
+### 性能を高める方法
+
+#### ▼ 冗長化
+
+記入中...
+
+#### ▼ CPUやメモリの並列処理数の向上
+
+記入中...
 
 <br>
 
@@ -209,68 +283,6 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 > - https://e-words.jp/w/%E6%8B%A1%E5%BC%B5%E6%80%A7.html
 > - https://www.cyberlinkasp.com/insights/what-is-software-scalability-and-why-is-it-important
-
-<br>
-
-## 07-02. スケーリングの種類
-
-### 垂直スケーリング
-
-#### ▼ 垂直スケーリング (スケールアップ ⇔ スケールダウン) とは
-
-仮想環境のコンポーネント自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
-
-![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアップ.png)
-
-> - https://www.idcf.jp/words/scale-out.html
-
-<br>
-
-### 水平スケーリング
-
-#### ▼ 水平スケーリング (スケールアウト ⇔ スケールイン) とは
-
-仮想環境のコンポーネントのインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
-
-![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアウト.png)
-
-> - https://www.idcf.jp/words/scale-out.html
-
-<br>
-
-### 高可用性クラスターシステム
-
-#### ▼ 高可用性クラスターシステムとは
-
-`1`個の処理を分担できる複数の稼働中ノードと待機中ノードを配置する冗長化方法のこと。
-
-平常時は稼働中ノードのみにルーティングするようにしておき、`1`個の処理を分担させる。
-
-稼働中ノードで障害が発生した場合、待機中ノードを稼働中ノードに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
-
-![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
-
-> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
-
-#### ▼ スイッチオーバー、フェイルオーバー
-
-デュプレックスシステムと同じである。
-
-<br>
-
-### 負荷分散クラスターシステム
-
-#### ▼ 負荷分散クラスターシステムとは
-
-`1`個の処理を分担できる複数の稼働中ノード (プライマリーインスタンス、スタンバイインスタンス) を配置しつつ、ロードバランシングできるようにした冗長化方法のこと。
-
-> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
-
-#### ▼ スプリットブレイン問題
-
-プライマリーインスタンスとスタンバイインスタンスの間で通信障害が起こり、複数のプライマリーインスタンスが存在してしまう問題のこと。
-
-> - https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
 
 <br>
 

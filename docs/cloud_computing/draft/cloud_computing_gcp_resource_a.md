@@ -19,9 +19,10 @@ description: GCPリソース＠GCPリソースの知見を記録しています�
 
 様々なアーティファクト (例：コンテナイメージ、チャート、言語系パッケージ、OS系パッケージ、など) のレジストリとして働く。
 
-コンテナイメージレジストリであるContainer Registryの後継である。
+コンテナイメージレジストリであるGCRの後継である。
 
 > - https://cloud.google.com/blog/ja/products/application-development/understanding-artifact-registry-vs-container-registry
+> - https://zenn.dev/cloud_ace/articles/6c401ce3b3bccc
 
 <br>
 

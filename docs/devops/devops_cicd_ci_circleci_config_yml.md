@@ -82,7 +82,7 @@ commands:
 
 引数名を使用して、`parameters`から値を出力する。
 
-```
+```yaml
 << parameters.foo >>
 ```
 
