@@ -815,7 +815,7 @@ task内で出力できる環境変数を設定する。
 - name: Echo foo
   ansible.builtin.shell: |
     echo foo
-    echo "$FOO"
+    echo "${FOO}"
   environment:
     FOO: FOO
 ```

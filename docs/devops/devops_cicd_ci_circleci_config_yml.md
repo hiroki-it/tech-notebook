@@ -1033,8 +1033,8 @@ steps:
   - run:
       name: echo FOO
       command: |
-        echo $FOO
-        echo "This is "$FOO""
+        echo ${FOO}
+        echo "This is "${FOO}""
 ```
 
 #### ▼ `.env`ファイルの安全な複製方法
@@ -1059,7 +1059,7 @@ jobs:
           name: Make env file
           command: |
             # base64方式のエンコード値をデコードし、.envファイルを複製
-            echo $ENV_FILE | base64 -d > .env
+            echo ${ENV_FILE} | base64 -d > .env
       - run:
           name: Install node module
           commands: |
@@ -1414,7 +1414,7 @@ jobs:
       - run:
           name: Make env file
           command: |
-            echo $ENV_TESTING | base64 -d > .env
+            echo ${ENV_TESTING} | base64 -d > .env
       - run:
           name: Make env docker file
           command: |

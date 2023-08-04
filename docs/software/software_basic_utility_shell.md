@@ -204,7 +204,7 @@ $ echo $SHELL
 ```bash
 #!/bin/bash
 # foo.shファイル
-echo "$FOO"
+echo "${FOO}"
 ```
 
 ```bash
@@ -231,7 +231,7 @@ FOO=$(echo "foo")
 ```bash
 #!/bin/bash
 # foo.shファイル
-echo "$FOO"
+echo "${FOO}"
 ```
 
 ```bash

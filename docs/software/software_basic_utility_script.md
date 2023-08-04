@@ -319,7 +319,7 @@ baz qux:
 FOO:=foo
 
 echo:
-	echo "$FOO" # echo
+	echo "${FOO}" # echo
 ```
 
 > - https://make-muda.net/2014/10/1824/
@@ -332,7 +332,7 @@ echo:
 FOO=foo
 
 echo:
-	echo "$FOO" # echo foo
+	echo "${FOO}" # echo foo
 ```
 
 > - https://make-muda.net/2014/10/1824/
@@ -347,7 +347,7 @@ echo:
 FOO=$(shell echo "foo")
 
 echo:
-	echo "$FOO"
+	echo "${FOO}"
 ```
 
 > - https://qiita.com/vega77/items/5206c397258b5b372fc4
@@ -376,7 +376,7 @@ $ make foo FOO=foo
 FOO=default
 
 foo:
-	echo "$FOO"
+	echo "${FOO}"
 ```
 
 <br>

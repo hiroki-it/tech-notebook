@@ -402,7 +402,7 @@ jobs:
           echo "FOO=foo" >> $GITHUB_ENV
       - name: Echo
         run: |
-          echo $FOO
+          echo ${FOO}
 ```
 
 注意点として、マスキングされた値は入力できない。
@@ -664,8 +664,8 @@ jobs:
       - name: Echo
         run: |
           FOO=foo
-          echo "::add-mask::$FOO"
-          echo $FOO
+          echo "::add-mask::${FOO}"
+          echo ${FOO}
 ```
 
 > - https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
@@ -746,8 +746,8 @@ jobs:
         id: foo_id
         run: |
           FOO=foo
-          echo "::add-mask::$FOO"
-          echo "::set-output name=FOO::$FOO"
+          echo "::add-mask::${FOO}"
+          echo "::set-output name=FOO::${FOO}"
       - name: Echo
         # 共有可能。マスキング維持可能。
         run: |
@@ -798,8 +798,8 @@ jobs:
         id: foo_id
         run: |
           FOO=foo
-          echo "::add-mask::$FOO"
-          echo "::set-output name=FOO::$FOO"
+          echo "::add-mask::${FOO}"
+          echo "::set-output name=FOO::${FOO}"
     output:
       FOO: ${{ steps.foo_id.outputs.FOO }}
   bar:

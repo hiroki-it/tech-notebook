@@ -197,6 +197,8 @@ foo_job:
 
 ### allow_failure
 
+#### ▼ `0`以外のすべての終了コードの場合
+
 ```yaml
 stages:
   - fmt
@@ -209,11 +211,37 @@ fmt:
   stage: fmt
   script:
     - terraform fmt -check -recursive
+  # 0以外の全ての終了コードの場合のみ終了する
   # インデントを揃えるべき場所がある場合に、Jobを失敗させる
   allow_failure: true
   rules:
     # MRを作成/更新したタイミングで発火する
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    # 『echo foo-1』が失敗しても、Jobを中断させない
+    - echo foo-1 || true
+    - echo foo-2
+  # 0以外の全ての終了コードの場合のみ終了する
+  allow_failure: true
+```
+
+#### ▼ `0`以外の特定の終了コードの場合
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    - echo foo
+  # 特定の終了コードの場合のみ終了する
+  allow_failure:
+    exit_codes:
+      - 1
+      - 3
 ```
 
 <br>
@@ -261,7 +289,7 @@ bar_job:
   stage: build
   cache:
     # キャッシュの名前を設定する
-    key: ${CI_COMMIT_REF_SLUG}
+    key: $CI_COMMIT_REF_SLUG
     # キャッシュとして保存するディレクトリを設定する
     paths:
       - ./node_module
@@ -409,7 +437,7 @@ check_tag:
     # 任意の名前のタグがついている場合のみ
     - if: $CI_COMMIT_TAG
       variables:
-        TAG_NAME: "${CI_COMMIT_TAG}"
+        TAG_NAME: "$CI_COMMIT_TAG"
 ```
 
 > - https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
