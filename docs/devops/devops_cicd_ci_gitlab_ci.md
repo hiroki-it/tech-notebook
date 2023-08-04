@@ -55,6 +55,38 @@ GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで�
 
 ポリリポジトリ構成規約と相性がよい。
 
+#### ▼ 親リポジトリ側の実装
+
+子リポジトリでは、Jobを定義する。
+
+`.` (ドット) をつけることで、明示的に指定しない限り実行できない『隠しジョブ』として定義できる。
+
+```yaml
+# foo-job.yaml
+.foo_job:
+  stage: build
+  script:
+    - echo foo
+```
+
+```yaml
+# bar-job.yaml
+.bar_job:
+  stage: build
+  script:
+    - echo bar
+```
+
+```yaml
+# baz-job.yaml
+.baz_job:
+  stage: build
+  script:
+    - echo baz
+```
+
+> - https://docs.gitlab.com/ee/ci/jobs/index.html#hide-jobs
+
 #### ▼ 子リポジトリ側の実装
 
 子リポジトリでは、親リポジトリをコールする。
@@ -88,38 +120,6 @@ baz_job:
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#includeproject
-
-#### ▼ 親リポジトリ側の実装
-
-子リポジトリでは、Jobを定義する。
-
-`.` (ドット) をつけることで、明示的に指定しない限り実行できない『隠しジョブ』として定義できる。
-
-```yaml
-# foo-job.yaml
-.foo_job:
-  stage: build
-  script:
-    - echo foo
-```
-
-```yaml
-# bar-job.yaml
-.bar_job:
-  stage: build
-  script:
-    - echo bar
-```
-
-```yaml
-# baz-job.yaml
-.baz_job:
-  stage: build
-  script:
-    - echo baz
-```
-
-> - https://docs.gitlab.com/ee/ci/jobs/index.html#hide-jobs
 
 <br>
 
@@ -370,7 +370,7 @@ check_tag:
   # OR条件
   rules:
     # mainブランチのみ
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == 'main'
       variables:
         TAG_NAME: main
 
@@ -562,16 +562,20 @@ GitLab CIが発火する条件を設定する。
 workflow:
   rules:
     # mainブランチの場合
-    - if: $CI_COMMIT_REF_NAME == "main"
+    - if: $CI_COMMIT_REF_NAME == 'main'
       variables:
         ENV: prd
     # developブランチの場合
-    - if: $CI_COMMIT_REF_NAME == "develop"
+    - if: $CI_COMMIT_REF_NAME == 'develop'
       variables:
         ENV: tes
     # featureブランチの場合
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       # ついでに環境変数を設定する
+      variables:
+        ENV: dev
+    # 手動でパイプラインを実行する場合
+    - if: $CI_PIPELINE_SOURCE == 'web'
       variables:
         ENV: dev
 
