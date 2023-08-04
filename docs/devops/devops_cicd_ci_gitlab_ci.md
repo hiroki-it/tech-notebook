@@ -68,7 +68,7 @@ GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで�
 
 # 変数のデフォルト値を設定しておく
 variables:
-  PATH: default
+  PATH: "default"
 
 .foo_job:
   stage: build
@@ -81,7 +81,7 @@ variables:
 
 # 変数のデフォルト値を設定しておく
 variables:
-  PATH: default
+  PATH: "default"
 
 .bar_job:
   stage: build
@@ -94,7 +94,7 @@ variables:
 
 # 変数のデフォルト値を設定しておく
 variables:
-  PATH: default
+  PATH: "default"
 
 .baz_job:
   stage: build
@@ -111,7 +111,7 @@ variables:
 ```yaml
 # 親リポジトリの変数を上書きする
 variables:
-  PATH: child/path
+  PATH: "child/path"
 
 include:
   # GitLab CIのテンプレートを管理するリポジトリ
@@ -399,17 +399,17 @@ check_tag:
     # mainブランチのみ
     - if: $CI_COMMIT_BRANCH == 'main'
       variables:
-        TAG_NAME: main
+        TAG_NAME: "main"
 
     # hotfixから始まるブランチのみ
     - if: $CI_COMMIT_BRANCH =~ /^hotfix.*$/
       variables:
-        TAG_NAME: hotfix-$CI_COMMIT_SHA
+        TAG_NAME: "hotfix-${CI_COMMIT_SHA}"
 
     # 任意の名前のタグがついている場合のみ
     - if: $CI_COMMIT_TAG
       variables:
-        TAG_NAME: $CI_COMMIT_TAG
+        TAG_NAME: "${CI_COMMIT_TAG}"
 ```
 
 > - https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
@@ -559,12 +559,14 @@ bar:
 
 Job内で使用する変数を設定する。
 
+値をダブルクオートかシングルクオートで囲わないと、`.gitlab-ci.yml`ファイル自体で予期せぬ構文エラーになる。
+
 ```yaml
 foo_job:
   variables:
-    BAR: bar
-    BAZ: baz
-    QUX: qux
+    BAR: "bar"
+    BAZ: "baz"
+    QUX: "qux"
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#variables
@@ -591,20 +593,20 @@ workflow:
     # mainブランチの場合
     - if: $CI_COMMIT_REF_NAME == 'main'
       variables:
-        ENV: prd
+        ENV: "prd"
     # developブランチの場合
     - if: $CI_COMMIT_REF_NAME == 'develop'
       variables:
-        ENV: tes
+        ENV: "tes"
     # featureブランチの場合
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       # ついでに環境変数を設定する
       variables:
-        ENV: dev
+        ENV: "dev"
     # 手動でパイプラインを実行する場合
     - if: $CI_PIPELINE_SOURCE == 'web'
       variables:
-        ENV: dev
+        ENV: "dev"
 
 setup-manifest:
   stage: build
