@@ -230,6 +230,7 @@ FOO=$(echo "foo")
 
 ```bash
 #!/bin/bash
+
 # foo.shファイル
 echo "${FOO}"
 ```
@@ -286,6 +287,33 @@ $ apk add bash
 
 > - https://tldp.org/LDP/abs/html/exitcodes.html
 > - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
+
+<br>
+
+### 終了ステータスの制御
+
+`|| true`を使用することにより、処理が途中で成功するか失敗するか (終了コードが`0`か`0`以外か) にかかわらず、処理を続行できる。
+
+```bash
+#!/bin/bash
+
+# ここで失敗すると、終了コードが0以外でシェルスクリプトの処理は中断される
+echo foo
+
+echo bar
+```
+
+```bash
+#!/bin/bash
+
+# ここで失敗しても、終了コードが0になり、シェルスクリプトの処理は続行される
+echo foo || true
+
+echo bar
+```
+
+> - https://mymanfile.com/?p=1015
+> - https://unix.stackexchange.com/questions/325705/why-is-pattern-command-true-useful
 
 <br>
 

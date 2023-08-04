@@ -223,7 +223,7 @@ fmt:
 foo_job:
   stage: build
   script:
-    # 『echo foo-1』が失敗しても、Jobを中断させない
+    # 『echo foo-1』が失敗しても、終了コードを1にしてJobを中断させない
     - echo foo-1 || true
     - echo foo-2
   # 0以外の全ての終了コードの場合のみ終了する
@@ -243,6 +243,8 @@ foo_job:
       - 1
       - 3
 ```
+
+> - https://kazmax.zpp.jp/cmd/t/true.1.html
 
 <br>
 
