@@ -432,7 +432,8 @@ metadata:
   namespace: argocd
 data:
   # application-controllerとargocd-server
-  application.namespaces: "<Applicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
+  # Applicationの作成を許可したいNamespaceを設定する
+  application.namespaces: foo-application-ns
 ```
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#change-workload-startup-parameters
@@ -451,7 +452,8 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
-  application.namespaces: "<Applicationが属するNamespace>" # アクセス可能なNamespaceを設定する。AppProjectのspec.sourceNamespacesキーでも設定が必要になる。
+  # Applicationの作成を許可したいNamespaceを設定する
+  application.namespaces: foo-application-ns
   controller.log.format: text
   controller.log.level: warn
   controller.operation.processors: "10"

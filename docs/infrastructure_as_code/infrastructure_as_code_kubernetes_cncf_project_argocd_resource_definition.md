@@ -1592,19 +1592,9 @@ spec:
 
 #### ▼ sourceNamespacesによるClusterスコープモード
 
-AppProjectを単位としたテナント分割のために使用する。
+AppProjectに所属可能なApplicationを制御する。
 
-そのAppProjectに属するApplicationを作成できるNamespace (argocd-serverとapplication-controllerがアクセス可能なNamespace) を設定する。
-
-異なるNamespace間で同じ親Applicationがあると、Namespaceを超えて親を共有してしまう。
-
-これにより、ArgoCDはClusterスコープモードになる。
-
-argocd-serverとapplication-controllerは、ClusterRoleにより全てのKubernetesリソースにアクセスできるようにする必要があり、これを特定のAppProjectに制限できる。
-
-ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
-
-単一のArgoCD用Clusterで複数プロダクトのApplicationを管理し、Applicationをプロダクト別のAppProjectで分割している場合に役立つ。
+設定したNamespace内にあるApplicationのみが、そのAppProjectに所属できる。
 
 もし全てのNamespaceを許可する場合は、`*` (アスタリスク) を設定する。
 
@@ -1615,11 +1605,12 @@ metadata:
   name: prd
   namespace: foo # サービス名、など
 spec:
+  # AppProjectへの所属を許可したいApplicationのNamespaceを設定する
   sourceNamespaces:
-    - "<Applicationが属するNamespace>"
+    - foo-application-ns
 ```
 
-なお、application-controllerとargocd-serverは全てのNamespaceにアクセスできるようにする必要がある。
+ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
 
 argocd-cmd-params-cmの`data.application.namespaces`では、アスタリスク (`*`) としておく。
 
