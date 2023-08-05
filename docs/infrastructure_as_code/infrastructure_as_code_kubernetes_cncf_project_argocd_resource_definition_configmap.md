@@ -453,7 +453,7 @@ metadata:
   namespace: argocd
 data:
   # Applicationの作成を許可したいNamespaceを設定する
-  application.namespaces: foo-application-ns
+  application.namespaces: foo
   controller.log.format: text
   controller.log.level: warn
   controller.operation.processors: "10"

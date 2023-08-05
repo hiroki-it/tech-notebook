@@ -1588,9 +1588,9 @@ spec:
 
 <br>
 
-### sourceNamespaces
+### spec.sourceNamespaces
 
-#### ▼ sourceNamespacesによるClusterスコープモード
+#### ▼ sourceNamespacesとは
 
 AppProjectに所属可能なApplicationを制御する。
 
@@ -1607,10 +1607,14 @@ metadata:
 spec:
   # AppProjectへの所属を許可したいApplicationのNamespaceを設定する
   sourceNamespaces:
-    - foo-application-ns
+    - foo
 ```
 
+#### ▼ ConfigMap
+
 ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると`argocd`のため、それ以外を許可するためにも必要である。
+
+argocd-serverとapplication-controllerの両方で、設定が必要である。
 
 argocd-cmd-params-cmの`data.application.namespaces`では、アスタリスク (`*`) としておく。
 
@@ -1627,7 +1631,39 @@ data:
 あるいは、application-controllerの起動時にパラメーターとして渡しても良い。
 
 ```bash
-$ argocd-application-controller --application-namespaces "*"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-application-controller
+  namespace: argocd
+spec:
+  containers:
+    - name: argocd-application-controller
+      image: quay.io/argoproj/argocd:latest
+      args:
+        - /usr/local/bin/argocd-application-controller
+        # 起動時のパラメーターとして
+        - --application-namespaces="*"
+
+  ...
+```
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-server
+  namespace: argocd
+spec:
+  containers:
+    - name: argocd-server
+      image: quay.io/argoproj/argocd:latest
+      args:
+        - /usr/local/bin/argocd-server
+        # 起動時のパラメーターとして
+        - --application-namespaces="*"
+
+  ...
 ```
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#cluster-scoped-argo-cd-installation

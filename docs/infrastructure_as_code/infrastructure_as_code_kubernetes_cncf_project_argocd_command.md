@@ -271,6 +271,14 @@ argocd-serverの処理対象のNamespaceを設定する。
 $ argocd-server --namespace foo-namespace ...
 ```
 
+#### ▼ --application-namespaces
+
+ArgoCDがClusterスコープモードの場合に、Applicationを操作できるNamespaceを設定する。
+
+```bash
+$ argocd-server --application-namespaces "*"
+```
+
 <br>
 
 ### version
