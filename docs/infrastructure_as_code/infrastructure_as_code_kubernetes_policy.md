@@ -1075,11 +1075,11 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 
 <br>
 
-### カスタムリソーステナントの場合
+## 09-04. カスタムリソーステナントの場合
 
-#### ▼ カスタムリソーステナントとは
+### カスタムリソーステナントとは
 
-テナントカスタムリソースを使用して、Namespaces as-a-Serviceなマルチテナントを実現する。
+テナントカスタムリソースを使用して、ツール固有のマルチテナントを実現する。
 
 アルファベット順
 
@@ -1093,7 +1093,11 @@ Namespaceを分割するとシステムを理解しやすくなるため、そ�
 > - https://github.com/kubewharf/kubezoo
 > - https://github.com/cloud-ark/kubeplus
 
-#### ▼ capsuleの場合
+<br>
+
+### capsule
+
+#### ▼ capsuleとは
 
 capsuleでは、Tenantというカスタムリソースを作成し、テナントを実装する。
 
@@ -1102,6 +1106,8 @@ Tenantには、複数のNamespaceが所属できる。
 ![capsule_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capsule_architecture.png)
 
 > - https://capsule.clastix.io/docs/
+
+#### ▼ テナントの実装
 
 **＊実装例＊**
 
@@ -1138,7 +1144,11 @@ metadata:
 
 > - https://capsule.clastix.io/docs/general/tutorial/#assign-multiple-tenants
 
-#### ▼ kioskの場合
+<br>
+
+### kiosk
+
+#### ▼ kioskとは
 
 kioskでは、Accountというカスタムリソースを作成し、テナントを実装する。
 
@@ -1148,6 +1158,8 @@ Accountは、Spaceを介して、複数のNamespaceを管理する。
 
 > - https://github.com/loft-sh/kiosk#workflow--interactions
 > - https://github.com/loft-sh/kiosk#3-working-with-spaces
+
+#### ▼ テナントの実装
 
 **＊実装例＊**
 
@@ -1216,5 +1228,19 @@ resources:
 
 > - https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/
 > - https://github.com/loft-sh/kiosk#51-manifest-templates
+
+<br>
+
+### KubeZoo
+
+#### ▼ KubeZooとは
+
+KubeZooでは、Tenantというカスタムリソースを作成し、テナントを実装する。
+
+SpaceはNamespaceと紐づいている。
+
+Accountは、Spaceを介して、複数のNamespaceを管理する。
+
+> - https://github.com/kubewharf/kubezoo/blob/main/docs/design.md
 
 <br>
