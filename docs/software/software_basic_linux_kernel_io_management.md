@@ -192,7 +192,7 @@ Hello World
 
 #### ▼ `>`
 
-リダイレクト前に`stdout.txt`ファイルを新しく作成し、echoプロセスの標準出力をこれにリダイレクトする。
+リダイレクト前に`stdout.txt`ファイルを新しく作成し、`echo`コマンドの標準出力をこれにリダイレクトする。
 
 ```bash
 $ echo 'Hello World' > stdout.txt
@@ -209,7 +209,7 @@ ls: cannot access foo: No such file or directory
 
 #### ▼ `>>`
 
-echoプロセスの標準出力を既存の`stdout.txt`ファイルにリダイレクトし、加えて追記する。
+`echo`コマンドの標準出力を既存の`stdout.txt`ファイルにリダイレクトし、加えて追記する。
 
 ```bash
 $ echo 'Hello World' >> stdout.txt
@@ -217,7 +217,7 @@ $ echo 'Hello World' >> stdout.txt
 
 #### ▼ `>|`
 
-リダイレクト前に`stdout.txt`ファイルを新しく作成し、echoプロセスの標準出力をこれにリダイレクトする。
+リダイレクト前に`stdout.txt`ファイルを新しく作成し、`echo`コマンドの標準出力をこれにリダイレクトする。
 
 また、すでにファイルが存在している場合は、ファイルを上書き (再作成) する。
 
@@ -281,7 +281,7 @@ $ tcpdump dst port 443 \
 
 > - https://it-ojisan.tokyo/awk-f/
 
-#### ▼ echoプロセスに対する入力
+#### ▼ `echo`コマンドに対する入力
 
 終了ステータスを`echo`コマンドに渡し、値を出力する。
 

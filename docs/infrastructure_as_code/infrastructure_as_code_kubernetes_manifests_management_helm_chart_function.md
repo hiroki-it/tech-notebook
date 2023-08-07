@@ -231,6 +231,48 @@ metadata:
 
 <br>
 
+### default
+
+#### ▼ defaultとは
+
+出力された値が空文字 (`""`) や`false`の場合に、それを上書きしてデフォルト値として出力する。
+
+キー自体は存在しなければならず、省略することはできないことに注意する。
+
+```yaml
+{{.Values.foo | default "foo"}}
+```
+
+> - https://helm-playground.com/cheatsheet.html#variables
+
+#### ▼ キーが存在しなくてもデフォルト値を表現
+
+`isFoo`キーが存在し、また`true`だった場合にマニフェストを出力する。
+
+これにより、キーが存在しなくとも`false`が設定されているように振る舞える。
+
+```yaml
+foo:
+  isFoo: true
+  params: FOO
+bar:
+  params: BAR
+```
+
+```yaml
+{{- if hasKey .Values.foo "isFoo" }}
+{{- if eq .Values.foo.isFoo true }}
+  ...
+{{- end }}
+{{- else }}
+  ...
+{{- end }}
+```
+
+<br>
+
+<br>
+
 ### toYaml
 
 #### ▼ toYamlとは
@@ -773,43 +815,29 @@ data:
 
 <br>
 
-### default
+### genCA
 
-#### ▼ defaultとは
+#### ▼ genCA
 
-出力された値が空文字 (`""`) や`false`の場合に、それを上書きしてデフォルト値として出力する。
+SSL証明書と対応する秘密鍵を作成する。
 
-キー自体は存在しなければならず、省略することはできないことに注意する。
-
-```yaml
-{{.Values.foo | default "foo"}}
-```
-
-> - https://helm-playground.com/cheatsheet.html#variables
-
-#### ▼ キーが存在しなくてもデフォルト値を表現
-
-`isFoo`キーが存在し、また`true`だった場合にマニフェストを出力する。
-
-これにより、キーが存在しなくとも`false`が設定されているように振る舞える。
+SSL証明書は`.Cert`、秘密鍵は`.Key`でアクセスできる。
 
 ```yaml
-foo:
-  isFoo: true
-  params: FOO
-bar:
-  params: BAR
+{{- $ca := genCA "foo-ca" 3650 }}
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: foo-webhook
+webhooks:
+    clientConfig:
+      # SSL証明書を出力する
+      caBundle: {{ $ca.Cert | b64enc }}
+
+...
 ```
 
-```yaml
-{{- if hasKey .Values.foo "isFoo" }}
-{{- if eq .Values.foo.isFoo true }}
-  ...
-{{- end }}
-{{- else }}
-  ...
-{{- end }}
-```
+> - https://helm.sh/docs/chart_template_guide/function_list/#genca
 
 <br>
 
@@ -1109,7 +1137,7 @@ data:
 
 ## 14. 例外処理系
 
-## fail
+### fail
 
 エラーメッセージを含む例外をスローし、意図的に処理を失敗させる。
 
