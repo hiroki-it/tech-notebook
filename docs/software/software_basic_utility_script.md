@@ -42,7 +42,7 @@ echo "baz"
 ```bash
 #!/bin/bash
 
-cat << EOF > "echo.sh"
+cat << EOF > echo.sh
 #!/bin/bash
 foo
 bar
@@ -55,6 +55,8 @@ EOF
 echo foo
 echo bar
 ```
+
+> - https://qiita.com/kite_999/items/e77fb521fc39454244e7#%E3%83%92%E3%82%A2%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%A8%E3%81%AF
 
 #### ▼ 改行時にコメントを挿入
 

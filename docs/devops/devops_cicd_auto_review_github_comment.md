@@ -29,13 +29,11 @@ $ tar zxvf github-comment_<バージョン>_linux_amd64.tar.gz
 
 <br>
 
-## 03. コマンド
+## 03. オプション
 
-### exec
+### -k
 
-#### ▼ execとは
-
-コマンドを実行し、標準出力/標準エラー出力の出力内容からコメントを作成する。
+`github-comment.yaml`ファイルのテンプレート名を指定して、レビューコメントを作成する。
 
 ```bash
 $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
@@ -43,18 +41,35 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 > - https://suzuki-shunsuke.github.io/github-comment/getting-started
 
-#### ▼ テンプレートに出力できる変数
+<br>
 
-| 変数                    | 説明                                   |
-| ----------------------- | -------------------------------------- |
-| `{{ .Stdout }}`         | 標準出力への出力内容                   |
-| `{{ .Stderr }}`         | 標準エラー出力への出力内容             |
-| `{{ .CombinedOutput }}` | 標準出力と標準エラー出力を結合した内容 |
-| `{{ .Command }}`        | 絶対パスの実行コマンド名               |
-| `{{ .JoinCommand }}`    | バイナリ名のみの実行コマンド名         |
-| `{{ .ExitCode }}`       | 終了ステータスコード                   |
+### -var
 
-> - https://suzuki-shunsuke.github.io/github-comment/config/#exec
+レビューコメントのテンプレートの`{{ .Vars.<変数> }}`に出力できる変数を定義する。
+
+実行コマンドごとに異なる文字列を使用したい場合に役立つ。
+
+```bash
+$ ./github-comment exec -k <テンプレート名>  -var 'TestName:foo-test' -var 'Description:〇〇を検証する' -- <好きなコマンド>
+```
+
+> - https://suzuki-shunsuke.github.io/github-comment/config/#define-variables
+
+<br>
+
+## 04. コマンド
+
+### exec
+
+#### ▼ execとは
+
+コマンドを実行し、標準出力/標準エラー出力の出力内容からレビューコメントを作成する。
+
+```bash
+$ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
+```
+
+> - https://suzuki-shunsuke.github.io/github-comment/getting-started
 
 <br>
 
@@ -62,7 +77,7 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 #### ▼ hideとは
 
-テンプレートで定義した条件に応じて、コメントを非表示にする。
+テンプレートで定義した条件に応じて、レビューコメントを非表示にする。
 
 テンプレート名は
 
@@ -76,13 +91,28 @@ $ ./github-comment hide -k <テンプレート名>
 
 <br>
 
-## 04. `github-comment.yaml`ファイル
+## 05. `github-comment.yaml`ファイル
 
 ### `github-comment.yaml`ファイルとは
 
-GitHubに送信するコメントのテンプレートを設定する。
+GitHubに送信するレビューコメントのテンプレートを設定する。
 
 文法は、Goテンプレートと同じである。
+
+<br>
+
+### 変数
+
+| 変数                    | 説明                                   |
+| ----------------------- | -------------------------------------- |
+| `{{ .Stdout }}`         | 標準出力への出力内容                   |
+| `{{ .Stderr }}`         | 標準エラー出力への出力内容             |
+| `{{ .CombinedOutput }}` | 標準出力と標準エラー出力を結合した内容 |
+| `{{ .Command }}`        | 絶対パスの実行コマンド名               |
+| `{{ .JoinCommand }}`    | バイナリ名のみの実行コマンド名         |
+| `{{ .ExitCode }}`       | 終了ステータスコード                   |
+
+> - https://suzuki-shunsuke.github.io/github-comment/config/#exec
 
 <br>
 
@@ -142,7 +172,7 @@ $ ./github-comment exec -k test -- <好きなコマンド>
 
 ### hide
 
-非表示にするコメントの条件を設定する。
+非表示にするレビューコメントの条件を設定する。
 
 ```yaml
 ---
@@ -154,12 +184,12 @@ exec:
 hide:
   old-comment:
     - when: true
-      # 一致しないコミットによるコメントは非表示にする
+      # 一致しないコミットによるレビューコメントは非表示にする
       template: |
         Comment.HasMeta && Comment.Meta.SHA1 != Commit.SHA1
 ```
 
-各コメントには、以下のようなメタデータが設定されている。
+各レビューコメントには、以下のようなメタデータが設定されている。
 
 これを非表示の条件に使用する。
 
@@ -175,7 +205,7 @@ hide:
 
 #### ▼ template
 
-コメントの内容を定義する。
+レビューコメントの内容を定義する。
 
 | 記法                        | 説明                                               | 中身                                                            |
 | --------------------------- | -------------------------------------------------- | --------------------------------------------------------------- |
@@ -195,11 +225,12 @@ exec:
     - when: true
       template: |
 
-        ## 概要
+        ## `{{ .Vars.TestName }}`
 
         | 項目 | 内容 |
         |-----|--------------------|
-        | 解析コマンド | `{{ .JoinCommand }}` |
+        | 静的解析 | `{{ .JoinCommand }}` |
+        | 説明 | {{ .Vars.Description }} |
         | 成否 | {{ template "status" . }} |
         | 実行ジョブ | {{ template "link" . }} |
 
@@ -239,11 +270,12 @@ exec:
     - when: true
       template: |
 
-        ## 概要
+        ## `{{ .Vars.TestName }}`
 
         | 項目 | 内容 |
         |-----|--------------------|
-        | 解析コマンド | `{{ .JoinCommand }}` |
+        | 静的解析 | `{{ .JoinCommand }}` |
+        | 説明 | {{ .Vars.Description }} |
         | 成否 | {{ template "status" . }} |
         | 実行ジョブ | {{ template "link" . }} |
 
@@ -273,11 +305,12 @@ exec:
     - when: ExitCode != 0
       template: |
 
-        ## 概要
+        ## `{{ .Vars.TestName }}`
 
         | 項目 | 内容 |
         |-----|--------------------|
-        | 解析コマンド | `{{ .JoinCommand }}` |
+        | 静的解析 | `{{ .JoinCommand }}` |
+        | 説明 | {{ .Vars.Description }} |
         | 成否 | :x: |
         | 実行ジョブ | {{ template "link" . }} |
 
