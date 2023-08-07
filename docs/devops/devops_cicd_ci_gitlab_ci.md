@@ -148,6 +148,67 @@ baz_job:
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#includeproject
 
+#### ▼ ヒアドキュメントを使用したファイルの配布
+
+ヒアドキュメントを使用して、CIの実行環境でファイルを動的に作成し、これを配布する。
+
+`artifacts`キーを使用して、後続のJobでも設定ファイルを使用できるようにしている。
+
+````yaml
+variables:
+  GITLAB_COMMENT_VERSION: "6.0.1"
+
+# github-commentを準備する
+.install_github_comment:
+  stage: build
+  image: alpine:latest
+  script:
+    # github-commentをインストールする
+    - |
+      apk add --upgrade curl tar
+      curl -sL -O https://github.com/suzuki-shunsuke/github-comment/releases/download/v"${GITHUB_COMMENT_VERSION}"/github-comment_"${GITHUB_COMMENT_VERSION}"_darwin_amd64.tar.gz
+      tar zxvf github-comment_"${GITHUB_COMMENT_VERSION}"_darwin_amd64
+    # 各リポジトリに配布するgithub-comment.yamlファイルを作成する
+    - |
+      cat << 'EOF' > github-comment.yaml
+      # https://suzuki-shunsuke.github.io/github-comment/getting-started
+      ---
+      exec:
+        default:
+          - when: true
+            template: |
+              
+              ## `{{ .Vars.TestName }}`
+              
+              | 項目 | 内容 |
+              |-----|--------------------|
+              | 静的解析 | `{{ .JoinCommand }}` |
+              | 説明 | {{ .Vars.Description }} |
+              | 成否 | {{ template "status" . }} |
+              | 実行ジョブ | {{ template "link" . }} |
+              
+              ## 詳細
+              
+              <details>
+              <summary>クリックで開く</summary>
+              
+              ```bash
+              $ {{ .JoinCommand }}
+              
+              {{ .CombinedOutput | AvoidHTMLEscape }}
+              ```
+              
+              </details>
+
+      EOF
+      cat github-comment.yaml
+  artifacts:
+    paths:
+      - ./github-comment
+      # github-commentの設定ファイルを配布する
+      - github-comment.yaml
+````
+
 <br>
 
 ### 予約変数
