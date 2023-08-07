@@ -53,6 +53,38 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 $ ./github-comment exec -k <テンプレート名>  -var 'TestName:foo-test' -var 'Description:〇〇を検証する' -- <好きなコマンド>
 ```
 
+ここでは、以下のようなテンプレートを想定している。
+
+````yaml
+---
+exec:
+  default:
+    - when: true
+      template: |
+
+        ## `{{ .Vars.TestName }}`
+
+        | 項目 | 内容 |
+        |-----|--------------------|
+        | 静的解析 | `{{ .JoinCommand }}` |
+        | 説明 | {{ .Vars.Description }} |
+        | 成否 | {{ template "status" . }} |
+        | 実行ジョブ | {{ template "link" . }} |
+
+        ## 詳細
+
+        <details>
+        <summary>クリックで開く</summary>
+
+        ```bash
+        $ {{ .JoinCommand }}
+
+        {{ .CombinedOutput | AvoidHTMLEscape }}
+        ```
+
+        </details>
+````
+
 > - https://suzuki-shunsuke.github.io/github-comment/config/#define-variables
 
 <br>
