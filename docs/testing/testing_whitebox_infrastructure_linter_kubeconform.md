@@ -92,6 +92,8 @@ $ helm template foo-chart. --set secret.PASSWPRD=test \
 
 Kubernetesのバージョンを指定する。
 
+マイナーバージョン (例：`1.24.0`) まで指定する必要がある。
+
 ```bash
 $ kubeconform \
     -kubernetes-version <Kubernetesのバージョン> \
@@ -142,8 +144,11 @@ $ kubeconform \
 
 Kubernetesリソースのスキーマは、`default`エイリアス (`https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{.NormalizedKubernetesVersion}}-standalone{{.StrictSuffix}}/{{.ResourceKind}}{{.KindSuffix}}.json`) にある。
 
+`kubeconform`コマンドは、` -kubernetes-version`オプションで渡したKubernetesのバージョンを`{{.NormalizedKubernetesVersion}} `に出力する。
+
 CRDのスキーマは、`https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json` にある。
 
 > - https://github.com/yannh/kubeconform#overriding-schemas-location
+> - https://github.com/yannh/kubeconform/blob/v0.6.3/pkg/registry/registry.go#L85-L101
 
 <br>

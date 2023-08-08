@@ -84,6 +84,8 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 plutoで検証する非推奨項目のKubernetesバージョンを指定する。
 
+マイナーバージョン (例：`1.24.0`) まで指定する必要がある。
+
 ```bash
 $ pluto detect - -o wide -t k8s=<Kubernetesのバージョン>
 ```
