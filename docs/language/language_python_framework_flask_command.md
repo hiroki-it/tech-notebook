@@ -59,8 +59,6 @@ Flaskクラスの`run`メソッドと同じ機能を持ち、インバウンド�
 $ flask run
 ```
 
-> ↪️：
->
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/cli.html
 

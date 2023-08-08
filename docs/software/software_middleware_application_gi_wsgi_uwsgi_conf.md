@@ -253,8 +253,6 @@ Pythonアプリケーションをフレームワークで開発している場�
 socket = /etc/uwsgi/uwsgi.sock:5000
 ```
 
-> ↪️：
-
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
 > - https://qiita.com/koyoru1214/items/57461b920dfc11f67683
 

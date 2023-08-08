@@ -133,6 +133,8 @@ data:
 
 ConfigMapやSecretのファイル変更に合わせてチェックサム値を更新するようなロジックがチャートあったとしても、repo-serverがマニフェスト作成時に`argocd.argoproj.io/instance`ラベルを挿入するわけではないので、チェックサム値は変更にならない。
 
+なお、CRDには挿入しない仕様になっている。
+
 > - https://github.com/argoproj/argo-cd/blob/master/controller/sync.go#L246
 
 #### ▼ RootのApplication名の重複

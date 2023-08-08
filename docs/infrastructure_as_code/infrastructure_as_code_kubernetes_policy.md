@@ -716,8 +716,6 @@ $ kubectl debug node/<Node名> \
 
 RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。
 
-> ↪️：
-
 > - https://qiita.com/sheepland/items/67a5bb9b19d8686f389d
 > - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
 

@@ -69,8 +69,6 @@ data:
 | kube-apiserver                                                            | kubelet        | SSL証明書          | 記入中                                                                                       | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                 |
 | kube-apiserver                                                            | front-proxy    | SSL証明書          | 記入中...                                                                                    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                             |
 
-> ↪️：
->
 > - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
 > - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
 

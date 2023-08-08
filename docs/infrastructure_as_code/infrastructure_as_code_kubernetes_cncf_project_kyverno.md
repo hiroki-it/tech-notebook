@@ -25,8 +25,6 @@ kube-apiserverのmutating-admissionステップとvalidating-admissionステッ�
 
 送信されたマニフェストの宣言が事前に設定されたルールに則っているかを検証し、もし則っていなければマニフェストの宣言を変更する。
 
-> ↪️：
->
 > - https://www.squadcast.com/blog/kyverno-policy-management-in-kubernetes
 > - https://www.kreyman.de/index.php/others/linux-kubernetes/244-erhoehung-der-container-security-mit-kyverno
 

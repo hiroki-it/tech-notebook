@@ -92,7 +92,7 @@ PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイン
 $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 ```
 
-> ↪️ https://docs.victoriametrics.com/#high-availability
+> - https://docs.victoriametrics.com/#high-availability
 
 <br>
 

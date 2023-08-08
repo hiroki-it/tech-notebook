@@ -86,8 +86,6 @@ $ kubectl get crd foo.io
 foo.io    2023-01-22T06:08:21Z
 ```
 
-> ↪️：
->
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#tell-helm-not-to-uninstall-a-resource
 > - https://codersociety.com/blog/articles/helm-best-practices#9-opt-out-of-resource-deletion-with-resource-policies
 

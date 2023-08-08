@@ -3446,8 +3446,6 @@ spec:
       emptyDir: {}
 ```
 
-> ↪️：
-
 > - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 

@@ -73,8 +73,6 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 
-> ↪️：
->
 > - https://itmanabi.com/real-memory-mng/
 > - https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97
 
