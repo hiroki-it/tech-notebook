@@ -708,7 +708,7 @@ $ kubectl debug node/<Node名> \
 
 <br>
 
-## 07. Kubernetesリソースの脆弱性対策
+## 09. Kubernetesリソースの脆弱性対策
 
 ### 認証/認可の実施
 
@@ -748,9 +748,9 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 > - https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
 > - https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
 
-#### <br>
+<br>
 
-## 08. CIパイプライン
+## 09. CIパイプライン
 
 ### マニフェストのホワイトボックステスト
 
@@ -780,7 +780,7 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 
 <br>
 
-## 08-02. CDパイプライン
+## 09-02. CDパイプライン
 
 ### マニフェストのホワイトボックステスト
 
@@ -845,7 +845,7 @@ Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール (�
 
 <br>
 
-## 08-03. 事後処理
+## 09-03. 事後処理
 
 ### デプロイの通知
 
@@ -861,386 +861,24 @@ CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパ�
 
 <br>
 
-## 09. マルチテナント
+## 10. 可用性
 
-### マルチテナントとは
+### Pod
 
-各Kubernetesリソースの処理範囲を制限するために、Kubernetesリソースをグルーピングする。
+#### ▼ ReplicaSet
 
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/
+Podの冗長化で、可用性を担保する。
 
-<br>
+#### ▼ HorizontalPodAutoscaler
 
-### ハード vs ソフト
-
-#### ▼ ハードマルチテナンシー
-
-信頼できる開発者のみがClusterにアクセスする場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
-
-例えば、Cluster内にアクセスする開発者が、プロダクトの開発チーム (フロントエンドチーム、バックエンドチーム、インフラチーム) の場合である。
-
-> - https://www.amazon.co.jp/dp/B072TS9ZQZ
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
-> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy
-
-#### ▼ ソフトマルチテナンシー
-
-信頼できない開発者もClusterにアクセスする場合 (例：複数の協力会社がいる、Kubernetesをサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
-
-> - https://www.amazon.co.jp/dp/B072TS9ZQZ
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
-> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#hard-multi-tenancy
+Podの水平スケーリングで、可用性を担保する。
 
 <br>
 
-### X as-a-Service
+### Node
 
-後述する。
+#### ▼ HorizontalPodAutoscaler
 
-> - https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes/
-> - https://www.cognixia.com/blog/what-are-the-three-tenancy-models-for-kubernetes/
-> - https://medium.com/eureka-engineering/pairs-eureka-%E3%81%AEeks-production%E7%92%B0%E5%A2%83%E3%81%AE%E8%A8%AD%E8%A8%88%E3%81%A8%E9%81%8B%E7%94%A8%E3%81%AE%E3%81%8A%E8%A9%B1-74608ff640df
-> - https://tag-app-delivery.cncf.io/blog/clusters-for-all-cloud-tenants/
-
-<br>
-
-## 09-02. Clusters as-a-Service
-
-### Clusters as-a-Serviceとは
-
-テナントごとにClusterを作成する。
-
-<br>
-
-### 実Cluster分割の場合
-
-#### ▼ 実Cluster単位のテナントとは
-
-テナントごとに、独立したClusterを提供する。
-
-一番簡単である。
-
-#### ▼ 複数のClusterを一元管理
-
-以下のツールを使用して、複数のClusterを一元管理できる。
-
-- Rancher Multi-cluster Apps
-- Gardener
-
-> - https://ranchermanager.docs.rancher.com/v2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps
-> - https://github.com/gardener/gardener
-
-<br>
-
-## 09-03. Control-planes as-a-Service
-
-### Control-planes as-a-Serviceとは
-
-テナントごとに、独立したコントロールプレーンを提供する。
-
-<br>
-
-### 仮想Clusterの場合
-
-#### ▼ 仮想Cluster単位のテナントとは
-
-ホストCluster上にテナントごとに仮想Clusterを作成する。
-
-各仮想Clusterがコントロールプレーンを持ち、これらが独立したコントロールプレーンのコンポーネントを持つ。
-
-仮想Cluster間でコントロールプレーンは分離されている。
-
-> - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
-> - https://www.linkedin.com/pulse/kubernetes-virtual-clusters-enabling-hard-cost-gokul-chandra/
-> - https://loft.sh/blog/kubernetes-multi-tenancy-why-virtual-clusters-are-the-best-solution/
-
-#### ▼ 仮想Clusterプロビジョニングツール
-
-アルファベット順
-
-- kcp
-- tensile-kube
-- vcluster
-- virtual cluster
-
-> - https://github.com/kubernetes-retired/multi-tenancy/tree/master/incubator/virtualcluster
-> - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
-> - https://github.com/kcp-dev/kcp
-> - https://github.com/virtual-kubelet/tensile-kube
-
-<br>
-
-### カスタムリソーステナントの場合
-
-#### ▼ カスタムリソーステナントとは
-
-記入中...
-
-<br>
-
-## 09-03. Namespaces as-a-Service
-
-### Namespaces as-a-Serviceとは
-
-テナントごとに、独立したNamespaceを提供する。
-
-<br>
-
-### 階層Namespaceの場合
-
-#### ▼ 階層Namespace単位のテナントとは
-
-Namespaceに親子関係を定義し、各Namespaceをテナントとする。
-
-> - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
-
-<br>
-
-### Namespaceの場合
-
-#### ▼ Namespace単位のテナントとは
-
-単一のCluster上に、テナントごとにNamespaceを作成する。
-
-#### ▼ 実行環境別
-
-実行環境別にNamespaceを分割する。
-
-ただそもそも、Namespaceだけでは実行間環境間の分割が足りず、安全性が低い。
-
-そのため、Cluster自体を分割した方がよい。
-
-> - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
-> - https://aptakube.com/blog/namespaces-best-practices
-> - https://www.appvia.io/blog/best-practices-for-kubernetes-namespaces/
-> - https://cloud.redhat.com/blog/kubernetes-namespaces-demystified-how-to-make-the-most-of-them
-
-#### ▼ チーム別
-
-チーム別にNamespaceを分割する。
-
-著名な書籍に一番多いテナントである。
-
-![namespace_teams.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespace_teams.png)
-
-> - https://www.amazon.co.jp/dp/1617293725
-> - https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en
-> - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
-> - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
-
-#### ▼ 機密性の高さ別
-
-機密性の高さに応じて、Namespaceを分割する。
-
-NamespaceにNetworkPolicyを設定し、Namespace間でKubernetesリソースの通信を制限できる。
-
-> - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
-> - https://techstep.hatenablog.com/entry/2020/09/06/160435
-
-#### ▼ ハードウェアリソースの要求量別
-
-コンテナのハードウェアリソースの要求量に応じて、Namespaceを分割する。
-
-NamespaceにResourceQuotaやLimitRangeを設定し、一方のNamespaceでハードウェアリソースの要求量が増えても、他方のNamespaceには影響しないようにできる。
-
-> - https://techstep.hatenablog.com/entry/2020/09/06/160435
-
-#### ▼ プロダクト別
-
-プロダクト別にNamespaceを分割する。
-
-これは、単一のCluster内で共通基盤のツール (例：ArgoCD) を動かすような場合に役立つ。
-
-#### ▼ プロダクトのサブコンポーネント別
-
-プロダクトのサブコンポーネント別にNamespaceを分割する。
-
-Namespaceを分割するとシステムを理解しやすくなるため、それだけで分ける意義がある。
-
-> - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
-
-<br>
-
-### Nodeグループの場合
-
-#### ▼ Nodeグループ単位のテナントとは
-
-単一のClusterをNodeグループで分割する。
-
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#node-isolation
-
-#### ▼ ハードウェアリソースの要求量別
-
-コンテナのハードウェアリソースの要求量に応じて、Nodeグループを分割する。
-
-<br>
-
-## 09-04. カスタムリソーステナントの場合
-
-### カスタムリソーステナントとは
-
-テナントカスタムリソースを使用して、ツール固有のマルチテナントを実現する。
-
-アルファベット順
-
-- capsule
-- kiosk
-- kubeplus
-- kubezoo
-
-> - https://github.com/clastix/capsule
-> - https://github.com/loft-sh/kiosk
-> - https://github.com/kubewharf/kubezoo
-> - https://github.com/cloud-ark/kubeplus
-
-<br>
-
-### capsule
-
-#### ▼ capsuleとは
-
-capsuleでは、Tenantというカスタムリソースを作成し、テナントを実装する。
-
-Tenantには、複数のNamespaceが所属できる。
-
-![capsule_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capsule_architecture.png)
-
-> - https://capsule.clastix.io/docs/
-
-#### ▼ テナントの実装
-
-**＊実装例＊**
-
-fooチームが使用するfooテナント (`foo-tenant`) を作成する。
-
-```yaml
-apiVersion: capsule.clastix.io/v1beta2
-kind: Tenant
-metadata:
-  name: foo-tenant
-spec:
-  owners:
-    - name: foo-team
-      kind: Group
-```
-
-`capsule.clastix.io/tenant`キーを使用して、fooチームが操作するNamespaceをfooテナントに所属させる。
-
-```yaml
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: foo-1
-  labels:
-    capsule.clastix.io/tenant: foo-tenant
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: foo-2
-  labels:
-    capsule.clastix.io/tenant: foo-tenant
-```
-
-> - https://capsule.clastix.io/docs/general/tutorial/#assign-multiple-tenants
-
-<br>
-
-### kiosk
-
-#### ▼ kioskとは
-
-kioskでは、Accountというカスタムリソースを作成し、テナントを実装する。
-
-SpaceはNamespaceと紐づいている。
-
-Accountは、Spaceを介して、複数のNamespaceを管理する。
-
-> - https://github.com/loft-sh/kiosk#workflow--interactions
-> - https://github.com/loft-sh/kiosk#3-working-with-spaces
-
-#### ▼ テナントの実装
-
-**＊実装例＊**
-
-fooチームが使用するfooテナント (`foo-account`) を作成する。
-
-```yaml
-apiVersion: tenancy.kiosk.sh/v1alpha1
-kind: Account
-metadata:
-  name: foo-account
-spec:
-  subjects:
-    - kind: Group
-      name: foo-team
-      apiGroup: rbac.authorization.k8s.io
-  space:
-    templateInstances:
-      - spec:
-          template: space-template
-```
-
-Space (foo-space) を作成し、Account (`foo-account`) に所属させる。
-
-```yaml
-apiVersion: tenancy.kiosk.sh/v1alpha1
-kind: Space
-metadata:
-  name: foo-space
-spec:
-  account: foo-account
-```
-
-またTemplateを使用して、Namespace内の制限に関するKubernetesリソース (例：NetworkPolicy、LimitRange、など) を一括して設定する。
-
-```yaml
-apiVersion: config.kiosk.sh/v1alpha1
-kind: Template
-metadata:
-  name: space-template
-resources:
-  manifests:
-    - kind: NetworkPolicy
-      apiVersion: networking.k8s.io/v1
-      metadata:
-        name: deny-cross-ns-traffic
-      spec:
-        podSelector:
-          matchLabels:
-        ingress:
-          - from:
-              - podSelector: {}
-    - apiVersion: v1
-      kind: LimitRange
-      metadata:
-        name: space-limit-range
-      spec:
-        limits:
-          - default:
-              cpu: 1
-            defaultRequest:
-              cpu: 0.5
-            type: Container
-```
-
-実装方法がなかなか複雑で、移行の実装方法は記入中...
-
-> - https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/
-> - https://github.com/loft-sh/kiosk#51-manifest-templates
-
-<br>
-
-### KubeZoo
-
-#### ▼ KubeZooとは
-
-KubeZooでは、Tenantというカスタムリソースを作成し、テナントを実装する。
-
-SpaceはNamespaceと紐づいている。
-
-Accountは、Spaceを介して、複数のNamespaceを管理する。
-
-> - https://github.com/kubewharf/kubezoo/blob/main/docs/design.md
+Nodeのオートスケーラー (例：cluster autoscaler、Karpenter) による水平スケーリングで、可用性を担保する。
 
 <br>
