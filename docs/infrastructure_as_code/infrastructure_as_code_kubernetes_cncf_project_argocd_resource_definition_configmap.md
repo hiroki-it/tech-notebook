@@ -145,7 +145,7 @@ ConfigMapやSecretのファイル変更に合わせてチェックサム値を�
 
 RootのApplication名が重複している場合、たとえNamespaceが異なっていても、Namespace間でRootのApplicationを共有してしまう。
 
-ちなみに、ClusterスコープのArgoCDに限り、`spec.sourceNamespaces`キーを使用して、この重複を許可できる。
+ちなみに、ClusterスコープのArgoCDに限り、`.spec.sourceNamespaces`キーを使用して、この重複を許可できる。
 
 > - https://github.com/argoproj/argo-cd/issues/9420
 > - https://github.com/argoproj/argo-cd/issues/2352

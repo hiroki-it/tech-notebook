@@ -707,10 +707,10 @@ v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/app":"foo-pod"
 
 以下のタイミングでDeploymentはPodを再デプロイする。
 
-| 箇所                                | 説明                                                             |
-| ----------------------------------- | ---------------------------------------------------------------- |
-| `.spec.replicas`キー                | Podのレプリカ数を変更すると、DeploymentはPodを再デプロイする。   |
-| `spec.template`キー配下の任意のキー | Podテンプレートを変更した場合、DeploymentはPodを再デプロイする。 |
+| 箇所                                 | 説明                                                             |
+| ------------------------------------ | ---------------------------------------------------------------- |
+| `.spec.replicas`キー                 | Podのレプリカ数を変更すると、DeploymentはPodを再デプロイする。   |
+| `.spec.template`キー配下の任意のキー | Podテンプレートを変更した場合、DeploymentはPodを再デプロイする。 |
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
 
@@ -769,7 +769,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-もし`spec.strategy.rollingUpdate.maxSurge`キーを`100`%、また`maxUnavailable`キーを`0`%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
+もし`.spec.strategy.rollingUpdate.maxSurge`キーを`100`%、また`maxUnavailable`キーを`0`%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 

@@ -73,7 +73,7 @@ CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングす
 
 #### ▼ coredns-configmap
 
-ConfigMapの`.data.Corefile`キーに、`Corefile`ファイルの設定値を定義する。
+ConfigMapの`.Corefile`キーに、`Corefile`ファイルの設定値を定義する。
 
 **＊実装例＊**
 

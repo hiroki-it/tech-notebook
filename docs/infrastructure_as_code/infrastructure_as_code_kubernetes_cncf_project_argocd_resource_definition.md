@@ -1616,7 +1616,7 @@ ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると
 
 argocd-serverとapplication-controllerの両方で、設定が必要である。
 
-argocd-cmd-params-cmの`data.application.namespaces`では、アスタリスク (`*`) としておく。
+argocd-cmd-params-cmの`.application.namespaces`では、アスタリスク (`*`) としておく。
 
 ```yaml
 apiVersion: v1

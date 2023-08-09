@@ -363,7 +363,7 @@ argocd-cmp-cm配下で、ConfigManagementPluginを`plugin.yaml`ファイルと�
 
 ConfigManagementPluginで、マニフェスト作成時の追加処理を設定する。
 
-argocd-cmp-cmの`.data.configManagementPlugins`キーで設定することは非推奨である。
+argocd-cmp-cmの`.configManagementPlugins`キーで設定することは非推奨である。
 
 ```yaml
 apiVersion: v1
@@ -414,7 +414,7 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 
 #### ▼ Applicationでのプラグインを使用
 
-Applicationの`.spec.plugin.name`キーで、`.data.configManagementPlugins`キーで設定した独自のプラグイン名を設定する。
+Applicationの`.spec.plugin.name`キーで、`.configManagementPlugins`キーで設定した独自のプラグイン名を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

@@ -138,7 +138,7 @@ spec:
 
 認可フェーズの委譲先のIDプロバイダーを設定する。
 
-事前に、ConfigMapの`data.mesh.extensionProvider`キーにIDプロバイダーを登録しておく必要がある。
+事前に、ConfigMapの`.mesh.extensionProvider`キーにIDプロバイダーを登録しておく必要がある。
 
 **＊実装例＊**
 

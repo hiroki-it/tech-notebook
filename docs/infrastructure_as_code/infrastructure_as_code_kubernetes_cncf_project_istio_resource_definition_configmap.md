@@ -237,7 +237,7 @@ data:
 
 アプリコンテナからスパン作成に関する責務をサイドカーに切り分け、各アプリコンテナに共通的に提供できる。
 
-`.data.mesh.defaultConfig.enableTracing`キーを有効化する必要がある。
+`.mesh.defaultConfig.enableTracing`キーを有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -277,7 +277,7 @@ data:
 
 テレメトリーの収集ツールを設定する。
 
-Envoyを使用してアクセスログを収集する場合、`defaultProviders.accessLogging`キーには何も設定しなくてよい。
+Envoyを使用してアクセスログを収集する場合、`.mesh.defaultProviders.accessLogging`キーには何も設定しなくてよい。
 
 また、Istioがデフォルトで用意している分散トレースツールを使用する場合も同様に不要である。
 
@@ -298,7 +298,7 @@ data:
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders
 
-Envoyのアクセスログの場合、代わりに`accessLogEncoding`キーと`accessLogFile`キーを設定する。
+Envoyのアクセスログの場合、代わりに`.mesh.accessLogEncoding`キーと`.mesh.accessLogFile`キーを設定する。
 
 ```yaml
 apiVersion: v1
@@ -312,7 +312,7 @@ data:
     accessLogFile: /dev/stdout
 ```
 
-分散トレースの場合、代わりに`enableTracing`キーと`defaultConfig`キーを設定する。
+分散トレースの場合、代わりに`.mesh.enableTracing`キーと`.mesh.defaultConfig`キーを設定する。
 
 ```yaml
 apiVersion: v1
@@ -338,7 +338,7 @@ data:
 
 `istio-proxy`コンテナでトレースIDとスパンIDを作成するか否かを設定する。
 
-これを有効化した場合に、`.data.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Jaeger、Zipkin、など) で計装するかを設定する。
+これを有効化した場合に、`.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Jaeger、Zipkin、など) で計装するかを設定する。
 
 ```yaml
 apiVersion: v1
@@ -444,7 +444,7 @@ data:
 
 > - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 
-オプションを有効化すると、`istio-proxy`コンテナの`spec.containers[].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
+オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
 
 ```yaml
 ...

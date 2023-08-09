@@ -232,7 +232,7 @@ data:
 
 #### ▼ 注意点
 
-OCIプロトコルの有効化 (`data.enableOCI`キー) が必要であるが、内部的にOCIプロトコルが`data.repoURL`キーの最初に追記されるため、プロトコルの設定は不要である。
+OCIプロトコルの有効化 (`.enableOCI`キー) が必要であるが、内部的にOCIプロトコルが`.repoURL`キーの最初に追記されるため、プロトコルの設定は不要である。
 
 プライベートなチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
 
@@ -323,7 +323,7 @@ argocd-repoとは異なり、`1`個の認証情報で複数にリポジトリに
 
 argocd-repo-credsに、各argocd-repoで共有する項目を設定する。
 
-argocd-repo-credsの`data.url`キーには、argocd-repoの`data.url`キーの上層のパス (ここでは`https://github.com/hiroki-hasegawa`) を設定する。
+argocd-repo-credsの`url`キーには、argocd-repoの`.url`キーの上層のパス (ここでは`https://github.com/hiroki-hasegawa`) を設定する。
 
 ```yaml
 apiVersion: v1
@@ -342,7 +342,7 @@ data:
   password: pass
 ```
 
-また、argocd-repoには認証情報 (`data.username`キー、`data.password`キー) を設定しないようにする。
+また、argocd-repoには認証情報 (`.username`キー、`.password`キー) を設定しないようにする。
 
 ```yaml
 # foo-repositoryをポーリングするためのargocd-repo
@@ -378,9 +378,9 @@ data:
   url: https://github.com/hiroki-hasegawa/bar-manifest.git
 ```
 
-ArgoCDは、argocd-repo-credsの`data.url`キーを使用して、argocd-repoの`data.url`キーに対する最長一致を実施する。
+ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.url`キーに対する最長一致を実施する。
 
-最長一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`data.username`キー、`data.password`キー) が適用される。
+最長一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`.username`キー、`.password`キー) が適用される。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
