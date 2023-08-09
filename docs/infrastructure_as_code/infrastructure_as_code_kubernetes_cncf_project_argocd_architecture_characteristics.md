@@ -93,22 +93,6 @@ application-controllerは、デフォルトだとレプリカ当たり`400`個�
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
 
-#### ▼ レプリカ当たりのReconciliation頻度の低減
-
-application-controllerのReconciliationの頻度を設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cmd-params-cm
-  namespace: argocd
-data:
-  timeout.reconciliation: 180s
-```
-
-> - https://foxutech.medium.com/how-to-modify-the-application-reconciliation-timeout-in-argo-cd-833fedf8ebbd
-
 #### ▼ レプリカ当たりの処理効率の向上
 
 application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。
@@ -164,6 +148,22 @@ spec:
 なお、執筆時点 (2023/08/02) 時点で、単一のClusterの処理をapplication-controllerの異なるレプリカに分散できない。
 
 > - https://github.com/argoproj/argo-cd/issues/6125#issuecomment-1660341387
+
+#### ▼ レプリカ当たりのReconciliation頻度の低減
+
+application-controllerのReconciliationの頻度を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  timeout.reconciliation: 180s
+```
+
+> - https://foxutech.medium.com/how-to-modify-the-application-reconciliation-timeout-in-argo-cd-833fedf8ebbd
 
 <br>
 
