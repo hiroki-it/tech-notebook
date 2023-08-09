@@ -617,13 +617,3 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 各テナントは、ArgoCDを共有しない。
 
 <br>
-
-## 15. 拡張性
-
-ArgoCDをプラットフォームのように使う場合、各プロダクトのPodがNodeに乗りつつ、各argoコンポーネントのPodを冗長化することになる。
-
-ArgoCDはハードウェアリソースをあまり使わないので、特にEKSではインスタンスタイプを増やすよりもNodeの冗長化数を増やして、Pod数の上限を確保したほうがよい。
-
-> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-
-<br>

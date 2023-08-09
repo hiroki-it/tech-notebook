@@ -16,6 +16,8 @@
 
 * #### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html)
 
+* #### [アーキテクチャ特性](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_architecture_characteristics.html)
+
 * #### ︎<u>リソース定義</u>
   > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.html)
   > * ##### [共通部分](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_common.html)
