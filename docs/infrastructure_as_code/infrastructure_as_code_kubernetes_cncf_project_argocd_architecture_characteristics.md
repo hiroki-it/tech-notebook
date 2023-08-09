@@ -27,20 +27,26 @@ ArgoCDはハードウェアリソースをあまり使わないので、特にEK
 
 ## 02. repo-server
 
+### 可用性設計
+
+Podを冗長化させることで、可用性を高める。
+
+<br>
+
 ### 性能設計
 
 #### ▼ 問題
 
 repo-serverは、リポジトリでコミットが更新されるたびにキャッシュを作成する。
 
-#### ▼ 処理効率の向上
+#### ▼ レプリカ当たりの処理効率の向上
 
 Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを置いておくと並行処理をしてくれる。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing
 > - https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/
 
-#### ▼ 負荷の低減
+#### ▼ レプリカ当たりの負荷の低減
 
 repo-serverは、レプリカ当たり1処理単位のマニフェスト作成しか実行できない。
 
@@ -65,6 +71,12 @@ Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-genera
 
 ## 03. application-controller
 
+### 可用性設計
+
+Podを冗長化させることで、可用性を高める。
+
+<br>
+
 ### 性能設計
 
 #### ▼ 問題
@@ -77,7 +89,7 @@ application-controllerは、デフォルトだとレプリカ当たり`400`個�
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
 
-#### ▼ Reconciliation頻度の低減
+#### ▼ レプリカ当たりのReconciliation頻度の低減
 
 application-controllerのReconciliationの頻度を設定する。
 
@@ -93,7 +105,7 @@ data:
 
 > - https://foxutech.medium.com/how-to-modify-the-application-reconciliation-timeout-in-argo-cd-833fedf8ebbd
 
-#### ▼ 処理効率の向上
+#### ▼ レプリカ当たりの処理効率の向上
 
 application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。
 
@@ -117,7 +129,7 @@ data:
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
-#### ▼ 負荷の低減
+#### ▼ レプリカ当たりの負荷の低減
 
 application-controllerは、デプロイ対象のClusterと通信する。
 
@@ -153,6 +165,12 @@ spec:
 
 ## 04. argocd-server
 
+### 可用性設計
+
+Podを冗長化させることで、可用性を高める。
+
+<br>
+
 ### 性能設計
 
 #### ▼ 問題
@@ -161,7 +179,7 @@ argocd-serverは、ステートレスで高負荷になりにくい。
 
 念の為、他のコンポーネントの数に合わせて冗長化するとよい。
 
-#### ▼ 負荷の低減
+#### ▼ レプリカ当たりの負荷の低減
 
 `ARGOCD_API_SERVER_REPLICAS`変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。
 
