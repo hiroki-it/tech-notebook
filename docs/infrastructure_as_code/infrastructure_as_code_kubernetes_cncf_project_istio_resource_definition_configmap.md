@@ -56,6 +56,18 @@ Istiodコントロールプレーン (`discovery`コンテナ) のため、全�
 
 代わりに、IstioOperatorの`.spec.meshConfig`キーで定義することもできるが、これは非推奨である。
 
+```yaml
+# これは非推奨
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio-operator
+  namespace: istio-system
+spec:
+  meshConfig:
+    defaultProviders: ...
+```
+
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>
@@ -255,6 +267,67 @@ data:
   mesh: |
     defaultConfig:
       trustDomain: cluster.local
+```
+
+<br>
+
+### defaultProviders
+
+#### ▼ defaultProvidersとは
+
+テレメトリーの収集ツールを設定する。
+
+Envoyを使用してアクセスログを収集する場合、`defaultProviders.accessLogging`キーには何も設定しなくてよい。
+
+また、Istioがデフォルトで用意している分散トレースツールを使用する場合も同様に不要である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultProviders:
+       metrics:
+         - prometheus
+       accessLogging:
+         - stackdriver
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders
+
+Envoyのアクセスログの場合、代わりに`accessLogEncoding`キーと`accessLogFile`キーを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    accessLogEncoding: JSON
+    accessLogFile: /dev/stdout
+```
+
+分散トレースの場合、代わりに`enableTracing`キーと`defaultConfig`キーを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    enableTracing: true
+    defaultConfig:
+      tracing:
+        sampling: 100
+        zipkin:
+          address: "jaeger-collector.observability:9411"
 ```
 
 <br>
