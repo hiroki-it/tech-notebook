@@ -368,6 +368,12 @@ data:
 
 #### ▼ extensionProvidersとは
 
+Istioに連携するためのツールの情報を定義する。
+
+#### ▼ envoyExtAuthzHttpとは
+
+SSOのIDプロバイダーの情報を設定する。
+
 AuthorizationPolicyによる認可の実施に、認可フェーズを外部のIDプロバイダーに委譲できるようにする。
 
 **＊実装例＊**
