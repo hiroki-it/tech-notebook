@@ -15,7 +15,7 @@ description: ArgoCD＠CNCFプロジェクトの知見を記録しています。
 
 ## 01. 共通
 
-### 拡張性
+### 拡張性設計
 
 ArgoCDをプラットフォームのように使う場合、各プロダクトのPodがNodeに乗りつつ、各argoコンポーネントのPodを冗長化することになる。
 
@@ -29,7 +29,9 @@ ArgoCDはハードウェアリソースをあまり使わないので、特にEK
 
 ### 可用性設計
 
-Podを冗長化させることで、可用性を高める。
+Podを冗長化させることで、repo-serverの可用性を高める。
+
+ArgoCDの場合、冗長化はrepo-serverの性能設計の改善にもつながる。
 
 <br>
 
@@ -50,7 +52,7 @@ Applicationがポーリングするリポジトリのパス直下に`.argocd-all
 
 repo-serverは、レプリカ当たり1処理単位のマニフェスト作成しか実行できない。
 
-レプリカ数 (Pod数) を増やすと、レプリカ当たりのマニフェスト作成処理の負荷を下げられる。
+冗長化によりrepo-serverのレプリカ数 (Pod数) を増やすと、レプリカ当たりのマニフェスト作成処理の負荷を下げられる。
 
 これにより、複数人が同時にDiff操作やSync操作しやすくなる。
 
@@ -73,7 +75,9 @@ Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-genera
 
 ### 可用性設計
 
-Podを冗長化させることで、可用性を高める。
+Podを冗長化させることで、application-controllerの可用性を高める。
+
+ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善にもつながる。
 
 <br>
 
@@ -133,7 +137,7 @@ data:
 
 application-controllerは、デプロイ対象のClusterと通信する。
 
-application-controllerのレプリカ数を増やすと、レプリカ当たりの通信処理の負荷を下げられる。
+冗長化によりapplication-controllerのレプリカ数を増やすと、レプリカ当たりの通信処理の負荷を下げられる。
 
 `ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerの通信処理を異なるレプリカに分散できる。
 
@@ -167,7 +171,9 @@ spec:
 
 ### 可用性設計
 
-Podを冗長化させることで、可用性を高める。
+Podを冗長化させることで、argocd-serverの可用性を高める。
+
+ArgoCDの場合、冗長化はargocd-serverの性能設計の改善にもつながる。
 
 <br>
 
