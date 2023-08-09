@@ -596,6 +596,7 @@ nav:
           - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_command.md
           - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.md
+          - アーキテクチャ特性: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_architecture_characteristics.md
           - ■ リソース定義:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.md
               - 共通部分: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_common.md
