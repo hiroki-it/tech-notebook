@@ -64,7 +64,7 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 
 シングルNodeモードでは、各コンポーネントは冗長化されない。
 
-もう一方のクラスターNodeモードとは、セットアップ方法が異なる。
+もう一方のクラスターNodeモードとは、バイナリやセットアップ方法が異なる。
 
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Single-server-VictoriaMetrics
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Single-server-VictoriaMetrics#install
@@ -73,7 +73,7 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 
 クラスターNodeモードでは、各コンポーネントは冗長化される。
 
-もう一方のシングルNodeモードとは、セットアップ方法が異なる。
+もう一方のシングルNodeモードとは、バイナリやセットアップ方法が異なる。
 
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Cluster-VictoriaMetrics
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Cluster-VictoriaMetrics#building-from-sources
@@ -303,7 +303,9 @@ LimitNPROC=32000
 WantedBy=multi-user.target
 ```
 
-(２】victoriametricsのプロセスを`systemctl`で起動する。
+`(2)`
+
+: victoriametricsのプロセスを`systemctl`で起動する。
 
 ```bash
 # 作成したファイルを読み込み、VictoriaMetricsプロセスをデーモンとして起動する。

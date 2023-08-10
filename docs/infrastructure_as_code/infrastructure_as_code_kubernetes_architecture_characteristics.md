@@ -75,7 +75,7 @@ Nodeのオートスケーラー (例：cluster autoscaler、Karpenter) による
 
 <br>
 
-## 03. 運用性
+## 03. 保守性
 
 ### 設計規約
 
