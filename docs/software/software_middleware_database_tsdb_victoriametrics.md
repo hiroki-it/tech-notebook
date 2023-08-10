@@ -23,10 +23,6 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 リモートストレージとして、Prometheusで収集したメトリクスを保管する。
 
-シングルNodeモードとクラスターNodeモードがある。
-
-シングルNodeモードでは各コンポーネントは冗長化されず、一方でクラスターNodeモードではこれは冗長化される。
-
 エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。
 
 また読み出しエンドポイントを指定すれば、vm-selectを経由して、vm-storageからメトリクスを読み込める。
@@ -59,6 +55,28 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 > - https://www.sobyte.net/post/2022-05/vmalert/
+
+<br>
+
+### Nodeモード
+
+#### ▼ シングルNodeモード
+
+シングルNodeモードでは、各コンポーネントは冗長化されない。
+
+もう一方のクラスターNodeモードとは、セットアップ方法が異なる。
+
+> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Single-server-VictoriaMetrics
+> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Single-server-VictoriaMetrics#install
+
+#### ▼ クラスターNodeモード
+
+クラスターNodeモードでは、各コンポーネントは冗長化される。
+
+もう一方のシングルNodeモードとは、セットアップ方法が異なる。
+
+> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Cluster-VictoriaMetrics
+> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Cluster-VictoriaMetrics#building-from-sources
 
 <br>
 
