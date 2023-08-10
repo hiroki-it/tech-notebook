@@ -341,7 +341,7 @@ Downloading処理で読みこまれたバイト形式ファイルは、文字コ
 ここでは、以下の`.html`ファイルと`.css`ファイル (`style.css`) に変換されたとする。
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1" />

@@ -445,7 +445,7 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる。
 以下のような`.html`ファイルがあるとする。
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -461,7 +461,7 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる。
 モジュールバンドルは、scriptタグでのパッケージの読み出しをまとめる。
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />

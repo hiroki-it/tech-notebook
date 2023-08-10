@@ -122,11 +122,11 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 |                                  | Pod内サイドカーパターン | DaemonSetパターン |
 | -------------------------------- | :---------------------: | :---------------: |
-| Nodeのハードウェアリソース消費量 |            ×            |        ⭕️        |
-| Nodeのストレージ使用量           |           ⭕️           |         △         |
-| FluentBit/Fluentdの冗長性        |          ⭕️️           |         △         |
-| アプリごとの設定カスタマイズ     |           ⭕️           |         △         |
-| 単純性                           |            ×            |        ⭕️        |
+| Nodeのハードウェアリソース消費量 |            ×            |        ⭕️         |
+| Nodeのストレージ使用量           |           ⭕️            |         △         |
+| FluentBit/Fluentdの冗長性        |           ⭕️️           |         △         |
+| アプリごとの設定カスタマイズ     |           ⭕️            |         △         |
+| 単純性                           |            ×            |        ⭕️         |
 
 > - https://codersociety.com/blog/articles/kubernetes-logging
 > - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411

@@ -5387,7 +5387,7 @@ MessageBagクラスの`all`メソッドで、全てのエラーメッセージ�
 ```html
 <!-- 親テンプレート -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -5419,7 +5419,7 @@ MessageBagクラスの`all`メソッドで、全てのエラーメッセージ�
 ```html
 <!-- 子テンプレート -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -5441,7 +5441,7 @@ MessageBagクラスの`all`メソッドで、全てのエラーメッセージ�
 ```html
 <!-- 親テンプレート -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -5477,7 +5477,7 @@ MessageBagクラスの`all`メソッドで、全てのエラーメッセージ�
 ```html
 <!-- 子テンプレート -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -5526,7 +5526,7 @@ MessageBagクラスの`all`メソッドで、全てのエラーメッセージ�
 ```html
 <!-- 親テンプレート -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="">
   <head>
     <title>@yield("title")</title>
@@ -5557,7 +5557,7 @@ MessageBagクラスの`all`メソッドで、全てのエラーメッセージ�
 ```html
 <!-- 親テンプレート -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="">
   <head>
     <title>{% block title %}{% endblock %}</title>
