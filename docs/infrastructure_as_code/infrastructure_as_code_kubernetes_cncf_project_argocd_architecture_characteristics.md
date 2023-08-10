@@ -1,6 +1,6 @@
 ---
-title: 【IT技術の知見】ArgoCD＠CNCFプロジェクト
-description: ArgoCD＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】ArgoCD＠アーキテクチャ特性
+description: ArgoCD＠アーキテクチャ特性の知見を記録しています。
 ---
 
 # ArgoCD＠アーキテクチャ特性

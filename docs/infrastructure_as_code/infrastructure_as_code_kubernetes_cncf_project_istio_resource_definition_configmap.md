@@ -65,7 +65,7 @@ metadata:
   namespace: istio-system
 spec:
   meshConfig:
-    defaultProviders: ...
+    ...
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
@@ -257,6 +257,10 @@ data:
 
 #### ▼ trustDomain
 
+相互TLSを採用している場合に、送信元として許可する信頼ドメインを設定する。
+
+例えば、信頼ドメインはServiceAccountごとに異なる。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -268,6 +272,8 @@ data:
     defaultConfig:
       trustDomain: cluster.local
 ```
+
+> - https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/
 
 <br>
 
