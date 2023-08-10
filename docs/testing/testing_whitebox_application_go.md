@@ -103,8 +103,6 @@ import (
 
 /**
  * fooメソッドをテストします。
-
-
  */
 func TestFoo(t *testing.T) {
 
@@ -147,7 +145,6 @@ func TestFoo(t *testing.T) {
 		})
 	}
 }
-
 ```
 
 > - https://github.com/golang/go/wiki/TableDrivenTests
