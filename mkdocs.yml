@@ -527,6 +527,7 @@ nav:
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
           - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
+          - アーキテクチャ特性: infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics.md
       - ■ Kubernetesリソース:
           - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
           - ■ リソース定義:
