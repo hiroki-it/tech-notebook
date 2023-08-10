@@ -318,25 +318,26 @@ nav:
           - ホワイトボックステスト: testing/testing_whitebox.md
           - マイクロサービスのテスト: testing/testing_whitebox_microservices_test.md
           - ■ アプリ:
-              - PHPの場合: testing/testing_whitebox_application_php.md
+              - PHPの場合:
+                  - testing/testing_whitebox_application_php.md
               - Goの場合: testing/testing_whitebox_application_go.md
           - ■ インフラ:
               - ■ 静的解析:
-                  - 静的解析ツール: testing/testing_whitebox_infrastructure_linter.md
+                  - 静的解析ツール: testing/testing_whitebox_infrastructure_lint.md
                   - ■ 文法の誤りテスト:
-                      - kubeconform: testing/testing_whitebox_infrastructure_linter_kubeconform.md
+                      - kubeconform: testing/testing_whitebox_infrastructure_lint_kubeconform.md
                   - ■ コード規約違反テスト:
-                      - confest: testing/testing_whitebox_infrastructure_linter_confest.md
+                      - confest: testing/testing_whitebox_infrastructure_lint_confest.md
                   - ■ ベストプラクティス違反テスト:
-                      - polaris: testing/testing_whitebox_infrastructure_linter_polaris.md
+                      - polaris: testing/testing_whitebox_infrastructure_lint_polaris.md
                   - ■ バージョンテスト:
-                      - pluto: testing/testing_whitebox_infrastructure_linter_pluto.md
-                      - nova: testing/testing_whitebox_infrastructure_linter_nova.md
+                      - pluto: testing/testing_whitebox_infrastructure_lint_pluto.md
+                      - nova: testing/testing_whitebox_infrastructure_lint_nova.md
                   - ■ 脆弱性テスト:
-                      - checkov: testing/testing_whitebox_infrastructure_linter_checkov.md
-                      - kics: testing/testing_whitebox_infrastructure_linter_kics.md
-                      - kube-score: testing/testing_whitebox_infrastructure_linter_kube_score.md
-                      - trivy: testing/testing_whitebox_infrastructure_linter_trivy.md
+                      - checkov: testing/testing_whitebox_infrastructure_lint_checkov.md
+                      - kics: testing/testing_whitebox_infrastructure_lint_kics.md
+                      - kube-score: testing/testing_whitebox_infrastructure_lint_kube_score.md
+                      - trivy: testing/testing_whitebox_infrastructure_lint_trivy.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
           - ■ 総合テスト:
