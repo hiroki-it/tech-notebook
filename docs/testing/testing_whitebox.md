@@ -373,6 +373,7 @@ AとBは、『1』または『0』になり得るとする。
 
 ツールは以下の通り。
 
+- `curl`コマンド
 - Selenium
 - Puppeteer
 
@@ -384,111 +385,10 @@ AとBは、『1』または『0』になり得るとする。
 
 ツールは以下の通り。
 
+- `curl`コマンド
 - Postman
 - Karate
 
 > - https://qiita.com/os1ma/items/5429cd8e12ac43a6a803#%E5%88%86%E9%A1%9E%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F
-
-<br>
-
-## 06. マイクロサービス固有のホワイトボックステスト手法
-
-### マイクロサービス固有のホワイトボックステスト手法とは
-
-マイクロサービスアーキテクチャを採用している場合、マイクロサービス固有の観点でホワイトボックステストが必要になる。
-
-<br>
-
-## 06-02. マイクロサービスの単体テスト
-
-### マイクロサービスの単体テストとは
-
-単体テストは、マイクロサービスアーキテクチャでも同じである。
-
-マイクロサービスのクラスや構造体のメソッドが、それ単体で正しく動作するかを検証する。
-
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
-
-### 単体テストツール例
-
-#### ▼ 自前
-
-言語によっては、ビルトインのコマンド (例：`go test`コマンド) で単体テストを実装できる。
-
-#### ▼ フロントエンド系ツール
-
-記入中...
-
-#### ▼ バックエンド系ツール
-
-記入中...
-
-<br>
-
-## 06-03. コンポーネントテスト
-
-### コンポーネントテストとは
-
-マイクロサービスがそれのみで正しく動作するかを検証する。
-
-下流のマイクロサービスは検証対象ではないため、サービスモックとする。
-
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
-
-<br>
-
-### コンポーネントテストツール例
-
-#### ▼ 自前
-
-言語によっては、ビルトインのコマンド (例：`go test`コマンド) でコンポーネントテストを実装できる。
-
-#### ▼ フロントエンド系ツール
-
-記入中...
-
-#### ▼ バックエンド系ツール
-
-記入中...
-
-<br>
-
-## 06-04. マイクロサービスの結合テスト (≒機能テスト)
-
-### マイクロサービスの結合テストとは
-
-マイクロサービスアーキテクチャの文脈では、機能テストを結合テストと呼ぶ。
-
-マイクロサービスの各エンドポイントを`1`個の機能ととらえる。
-
-最上流のマイクロサービス (またはその前段のAPI Gateway) のエンドポイントにリクエストを送信し、下流のマイクロサービスや外部Webサービス (正常である前提) との連携も含めて、レスポンスが機能要件通りに返信されるか否かを検証する。
-
-もしマイクロサービスの結合テストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、結合テスト専用のパイプライン上で実施する。
-
-またパイプライン実行環境がマイクロサービスのエンドポイントにリクエストを送信できるよう、パイプライン実行環境からマイクロサービスまでの通信経路を用意する必要がある。
-
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
-
-### 結合テストツール例
-
-#### ▼ バックエンド系ツール
-
-- Postman
-
-<br>
-
-## 06-05. CDCテスト：Consumer Drive Contract
-
-記入中...
-
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
 
 <br>

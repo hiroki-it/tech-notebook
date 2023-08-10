@@ -7,6 +7,7 @@
 ### ホワイトボックステスト
 
 * #### [︎ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox.html)
+* #### [︎マイクロサービスのテスト](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_microservices_test.html)
 * #### <u>アプリ</u>
 > * ##### [︎PHPの場合](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html)
 > * ##### [︎Goの場合](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go.html)
