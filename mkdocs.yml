@@ -316,6 +316,7 @@ nav:
       - testing/index.md
       - ■ ホワイトボックステスト:
           - ホワイトボックステスト: testing/testing_whitebox.md
+          - マイクロサービスのテスト: testing/testing_whitebox_microservices_test.md
           - ■ アプリ:
               - PHPの場合: testing/testing_whitebox_application_php.md
               - Goの場合: testing/testing_whitebox_application_go.md
