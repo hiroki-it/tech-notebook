@@ -13,7 +13,6 @@ description: 静的解析＠PHPのテストツールの知見を記録してい�
 
 <br>
 
-
 ## 01. PHPStan
 
 ### PHPStanとは

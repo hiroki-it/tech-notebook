@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Terraform＠ホワイトボックステスト
-description: Terraform＠ホワイトボックステストの知見を記録しています。
+title: 【IT技術の知見】Terratest＠単体テスト
+description: Terratest＠単体テストの知見を記録しています。
 ---
 
-# Terraform＠ホワイトボックステスト
+# Terratest＠単体テスト
 
 ## はじめに
 
