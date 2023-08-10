@@ -318,9 +318,12 @@ nav:
           - ホワイトボックステスト: testing/testing_whitebox.md
           - マイクロサービスのテスト: testing/testing_whitebox_microservices_test.md
           - ■ アプリ:
-              - PHPの場合:
-                  - testing/testing_whitebox_application_php.md
-              - Goの場合: testing/testing_whitebox_application_go.md
+              - PHPのテストツール:
+                  - PHPのテストツール: testing/testing_whitebox_application_php.md
+                  - 静的解析: testing/testing_whitebox_application_php_lint.md
+                  - 単体テスト: testing/testing_whitebox_application_php_unit.md
+              - Goのテストツール:
+                  - Goのテストツール: testing/testing_whitebox_application_go.md
           - ■ インフラ:
               - ■ 静的解析:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_lint.md
