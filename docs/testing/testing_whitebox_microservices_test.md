@@ -13,7 +13,6 @@ description: マイクロサービスのテスト＠ホワイトボックステ�
 
 <br>
 
-
 ## 01. マイクロサービス固有のホワイトボックステスト手法
 
 ### マイクロサービス固有のホワイトボックステスト手法とは
@@ -106,15 +105,24 @@ description: マイクロサービスのテスト＠ホワイトボックステ�
 
 <br>
 
+## 05. CDCテスト：Consumer-Driven Contract
 
+### CDCテストとは
 
-## 05. CDCテスト (マイクロサービスのE2Eテスト)
-
-マイクロサービスの文脈でのE2Eテストである。
-
-> - https://zenn.dev/yoshii0110/articles/eb406dc4414cf0
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices
+
+<br>
+
+## 06. マイクロサービスのE2Eテスト
+
+### マイクロサービスのE2Eテストとは
+
+実際のユーザーの一連の操作を模したリクエストをマイクロサービスなシステムに送信し、全てのコンポーネントを対象とした結合テストを実施する。
+
+フロントエンドに対してリクエストを送信し、一連のマイクロサービスの処理を検証する。
+
+> - https://commerce-engineer.rakuten.careers/entry/tech/0031
 
 <br>

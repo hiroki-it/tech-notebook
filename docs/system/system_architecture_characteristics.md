@@ -180,8 +180,6 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 > - https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
 > - https://gihyo.jp/admin/serial/01/pacemaker/0003#sec2
 
-
-
 <br>
 
 ## 03. Durability (耐久性)

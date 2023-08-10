@@ -64,8 +64,7 @@ metadata:
   name: istio-operator
   namespace: istio-system
 spec:
-  meshConfig:
-    ...
+  meshConfig: ...
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
