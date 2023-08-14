@@ -564,15 +564,15 @@ Casbinの記法を使用して、ロールと認可スコープを定義しつ�
 
 ロールに付与するポリシーの認可スコープは、AppProject単位にするとよい。
 
-AppProjectに属するArgoCD系リソースのみへのアクセスを許可すれば、結果として特定のClusterへのデプロイのみを許可したことになる。
+AppProjectに所属するArgoCD系リソースのみへのアクセスを許可すれば、結果として特定のClusterへのデプロイのみを許可したことになる。
 
 **＊実装例＊**
 
-管理チーム (`app`、`infra`) 単位でAppProjectを作成した上で、AppProjectに属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+管理チーム (`app`、`infra`) 単位でAppProjectを作成した上で、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
 これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
 
-- `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `app`ロールに、`app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
 - 認証グループに該当する認可ロールがなければ、`readonly`になる。
@@ -608,9 +608,9 @@ data:
 
 **＊実装例＊**
 
-実行環境 (`dev`、`prd`) 別にAppProjectを作成した上で、AppProjectに属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+実行環境 (`dev`、`prd`) 別にAppProjectを作成した上で、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
-- `developer`ロールに、dev環境のAppProject内に属するArgoCD系リソースのみを操作できる認可スコープ
+- `developer`ロールに、dev環境のAppProject内に所属するArgoCD系リソースのみを操作できる認可スコープ
 - `maintainer`ロールに、dev環境とprd環境の両方を操作できる認可スコープ
 - 認証グループに該当する認可ロールがなければ、`readonly`になる。
 
@@ -649,7 +649,7 @@ IDプロバイダー側で、チームによる認証グループがすでに存
 
 以下のように、ロールと認可スコープを紐付ける。
 
-- `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `app`ロールに、`app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
 - 認証グループに該当する認可ロールがなければ、`readonly`になる。
@@ -681,11 +681,11 @@ data:
 
 IDプロバイダー側で、チームによる認証グループがすでに存在しているとする。
 
-実行環境 (`dev-*`、`prd-*`) 別にAppProjectを作成した上で、AppProjectに属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+実行環境 (`dev-*`、`prd-*`) 別にAppProjectを作成した上で、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
 以下のように、ロールと認可スコープを紐付ける。
 
-- `app`ロールに、`dev-app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `app`ロールに、`dev-app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`dev-infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`dev-app`と`dev-infra`の両方を操作できる認可スコープ
 - 認証グループに該当する認可ロールがなければ、`readonly`になる。
@@ -723,7 +723,7 @@ IDプロバイダー側で、メールアドレスによる認証グループが
 
 以下のように、ロールと認可スコープを紐付ける。
 
-- `app`ロールに、`app`のAppProjectに属するArgoCD系リソースのみを操作できる認可スコープ
+- `app`ロールに、`app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
 - `infra`ロールに、`infra`のみを操作できる認可スコープ
 - `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
 - 認証グループに該当する認可ロールがなければ、`readonly`になる。

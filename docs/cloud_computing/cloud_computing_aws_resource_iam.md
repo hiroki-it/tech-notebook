@@ -439,7 +439,7 @@ IAMグループに対して、IAMロールを紐付ける。
 
 そのIAMグループに対して、IAMロールを紐付けしたいIAMユーザーを追加していく。
 
-![グループに所属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループに所属するユーザーにロールを付与.png)
+![グループに属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループに所属するユーザーにロールを付与.png)
 
 <br>
 

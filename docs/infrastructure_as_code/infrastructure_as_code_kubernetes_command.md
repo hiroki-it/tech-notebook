@@ -338,7 +338,7 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 
 イメージレジストリの認証情報を持つSecretを作成する。
 
-Podと同じNamespaceに属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
+Podと同じNamespaceに所属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
 
 ```bash
 # DockerHubの場合

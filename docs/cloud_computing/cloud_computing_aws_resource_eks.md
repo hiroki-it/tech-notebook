@@ -671,7 +671,7 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 
 #### ▼ IAMポリシー
 
-EC2ワーカーNodeが、自身の属するClusterにアクセスできるように、EC2ワーカーNodeに`AmazonEKSWorkerNodePolicy`を付与する必要がある。
+EC2ワーカーNodeが、自身の所属するClusterにアクセスできるように、EC2ワーカーNodeに`AmazonEKSWorkerNodePolicy`を付与する必要がある。
 
 EC2ワーカーNode内のPodがECRからコンテナイメージをプルできるように、EC2ワーカーNodeに`AmazonEC2ContainerRegistryReadOnly`を付与する必要がある。
 

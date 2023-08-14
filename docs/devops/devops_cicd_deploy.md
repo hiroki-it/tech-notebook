@@ -106,7 +106,7 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 > - https://webapp.io/blog/what-are-rolling-deployments/
 > - https://www.designet.co.jp/ossinfo/kubernetes/update/
 
-補足として、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに属する。
+補足として、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに所属する。
 
 > - https://logmi.jp/tech/articles/323033
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely

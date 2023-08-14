@@ -1242,7 +1242,7 @@ spec:
 
 Gateway名とこれのNamespaceを設定する。
 
-VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
+VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる。
 
 **＊実装例＊**
 
@@ -1261,7 +1261,7 @@ spec:
 
 Gateway名を設定する。
 
-VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
+VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる。
 
 **＊実装例＊**
 

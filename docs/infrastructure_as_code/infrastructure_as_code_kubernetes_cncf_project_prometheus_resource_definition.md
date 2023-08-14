@@ -872,7 +872,7 @@ spec:
 
 #### ▼ namespaceSelector
 
-収集の対象とするServiceが属するNamespaceを設定する。
+収集の対象とするServiceが所属するNamespaceを設定する。
 
 #### ▼ any
 

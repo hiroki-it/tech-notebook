@@ -155,7 +155,7 @@ Applicationの`.resource`キー配下で、紐づく子Applicationを管理し�
 
 全てのApplicationをポーリングする最上位Applicationのこと。
 
-root-applicationとAppProjectは同じNamespaceに属する必要がある。
+root-applicationとAppProjectは同じNamespaceに所属する必要がある。
 
 状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。
 
@@ -291,7 +291,7 @@ AppProjectが異なる限り、同じCluster内にある同じ`argocd.argoproj.i
 
 実行環境名 (dev、stg、prd) とする。
 
-ArgoCDでは、認可スコープ (argocd-rbac-cm) とAppProjectを紐付けられるため、特定の実行環境のAppProjectに属するArgoCD系リソースのみを操作できるようになる。
+ArgoCDでは、認可スコープ (argocd-rbac-cm) とAppProjectを紐付けられるため、特定の実行環境のAppProjectに所属するArgoCD系リソースのみを操作できるようになる。
 
 <br>
 

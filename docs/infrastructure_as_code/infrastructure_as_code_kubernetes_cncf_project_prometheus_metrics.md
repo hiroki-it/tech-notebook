@@ -19,19 +19,19 @@ description: メトリクス＠Prometheus
 
 #### ▼ Counter
 
-数を単位とするメトリクス (例：`go_gc_duration_seconds_count`) が属する。
+数を単位とするメトリクス (例：`go_gc_duration_seconds_count`) が所属する。
 
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
 
 #### ▼ Gauge
 
-動的に増減するメトリクス (例：`go_memstats_heap_alloc_bytes`) が属する。
+動的に増減するメトリクス (例：`go_memstats_heap_alloc_bytes`) が所属する。
 
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
 
 #### ▼ Histogram
 
-時間の範囲を単位とするメトリクス (例：`prometheus_http_request_duration_seconds_bucket`) が属する。
+時間の範囲を単位とするメトリクス (例：`prometheus_http_request_duration_seconds_bucket`) が所属する。
 
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram
 > - https://prometheus.io/docs/practices/histograms/

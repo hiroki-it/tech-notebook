@@ -932,7 +932,7 @@ spec:
 
 #### ▼ projectとは
 
-アプリケーションの属するAppProject名を設定する。
+アプリケーションの所属するAppProject名を設定する。
 
 AppProject名は『`default`』は必ず作成する必要がある。
 
@@ -1716,7 +1716,7 @@ spec:
 
 ### destinations
 
-AppProjectに属するApplicationが指定可能なClusterを設定する。
+AppProjectに所属するApplicationが指定可能なClusterを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1726,8 +1726,8 @@ metadata:
   namespace: foo # サービス名、など
 spec:
   destinations:
-    - namespace: "*" # 属するApplictionは、全てのNamespaceにデプロイできる。
-      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 属するApplictionは、指定したURLのClusterのみを指定できる。
+    - namespace: "*" # 所属するApplictionは、全てのNamespaceにデプロイできる。
+      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 所属するApplictionは、指定したURLのClusterのみを指定できる。
 ```
 
 <br>

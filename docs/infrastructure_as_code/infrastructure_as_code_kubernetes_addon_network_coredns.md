@@ -218,7 +218,7 @@ Name:  <Serviceの完全修飾ドメイン名>
 Address:  10.105.157.184
 ```
 
-補足として、異なるNamespaceに属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
+補足として、異なるNamespaceに所属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
 
 ```bash
 # Pod内のコンテナから正引きの名前解決を行う。

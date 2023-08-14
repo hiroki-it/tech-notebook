@@ -17,7 +17,7 @@ description: メタデータ＠Istioの知見を記録しています。
 
 ### istio-injection
 
-指定したNamespaceに属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに所属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
 
 `.metadata.labels.istio.io/rev`キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection`キーの値が`disabled`の場合は共存できる) 。
 
@@ -58,7 +58,7 @@ metadata:
 
 ### istio.io/rev
 
-指定したNamespaceに属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに所属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
 
 IstoOperatorの`.spec.revision`キーと同じである。
 

@@ -31,7 +31,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 ### スコープ
 
-属するNamespace内のみにアクセスできるNamespacedスコープなKubernetesリソースと、Cluster全体にアクセスできるClusterスコープなKubernetesリソースがある。
+所属するNamespace内のみにアクセスできるNamespacedスコープなKubernetesリソースと、Cluster全体にアクセスできるClusterスコープなKubernetesリソースがある。
 
 ![namespaced-scope_vs_cluster-scoped.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png)
 
