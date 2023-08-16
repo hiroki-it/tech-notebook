@@ -77,7 +77,7 @@ JSON schema written to foo-v1beta1.json
 
 標準入力からマニフェストを渡す。
 
-CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
+CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。
 
 ```bash
 $ helm template foo-chart. --set secret.PASSWPRD=test \

@@ -68,7 +68,7 @@ NAME    NAMESPACE       KIND                      VERSION               REPLACEM
 foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
 
-CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良いので、必ずしもkube-apiserverと通信する必要はない。
+CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。
 
 ```bash
 $ helm template foo-chart . --set secret.GCP_CREDENTIALS=test -f foo-values.yaml \

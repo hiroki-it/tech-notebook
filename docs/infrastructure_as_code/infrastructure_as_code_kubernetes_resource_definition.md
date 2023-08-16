@@ -1328,6 +1328,86 @@ spec:
 
 <br>
 
+## 14. NetworkPolicy
+
+### NetworkPolicyとは
+
+自身の所属するNamespaceに対して、インバウンドとアウトバウンドな通信を制限する。
+
+### egress
+
+アウトバウンドな通信を制限する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: foo-network-policy
+  namespace: foo
+spec:
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 10.0.0.0/24
+      ports:
+        - protocol: TCP
+          port: 5978
+```
+
+> - https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource
+
+### ingress
+
+インバウンドな通信を制限する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: foo-network-policy
+  namespace: foo
+spec:
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - ipBlock:
+            cidr: 172.17.0.0/16
+            except:
+              - 172.17.1.0/24
+        - namespaceSelector:
+            matchLabels:
+              project: myproject
+        - podSelector:
+            matchLabels:
+              role: frontend
+      ports:
+        - protocol: TCP
+          port: 6379
+```
+
+> - https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource
+
+### podSelector
+
+NetworkPolicyを適用するPodを設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: foo-network-policy
+  namespace: foo
+spec:
+  podSelector:
+    matchLabels:
+      name: app
+```
+
+> - https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource
+
 ## 14. Job
 
 ### .spec.activeDeadlineSeconds
