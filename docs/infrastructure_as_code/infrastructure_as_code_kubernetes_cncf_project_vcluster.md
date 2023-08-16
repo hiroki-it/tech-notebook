@@ -97,27 +97,49 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/vcluster-e
 仮想Clusterを作成する。
 
 ```bash
-$ vcluster create <Cluster名> \
-    -n <ClusterのNamespace名> \
-    -f foo-values.yaml \
+$ vcluster create foo-cluster \
+    -n foo \
     --kubernetes-version=<バージョン>
 ```
 
 > - https://www.vcluster.com/docs/getting-started/deployment
+
+#### ▼ -f
+
+使用する`values`ファイルを指定する。
+
+```bash
+$ vcluster create foo-cluster \
+    -n foo \
+    -f foo-values.yaml \
+    --kubernetes-version=<バージョン>
+```
 
 #### ▼ --upgrade
 
 仮想ClusterのKubernetesのバージョンをアップグレードする。
 
 ```bash
-$ vcluster create <Cluster名> \
-    -n <ClusterのNamespace名> \
+$ vcluster create foo-cluster \
+    -n foo \
     --upgrade \
-    -f foo-values.yaml \
     --kubernetes-version=<バージョン>
 ```
 
 > - https://github.com/loft-sh/vcluster/issues/519#issuecomment-1522026776
+
+#### ▼ --isolate
+
+仮想ClusterからホストClusterへは名前解決不可能できないようにし、仮想Cluster間を分離する。
+
+```bash
+$ vcluster create foo-cluster \
+    -n foo \
+    --isolate \
+    --kubernetes-version=<バージョン>
+```
+
+> - https://www.vcluster.com/docs/operator/security#isolated-mode
 
 <br>
 
