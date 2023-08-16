@@ -1334,6 +1334,8 @@ spec:
 
 自身の所属するNamespaceに対して、インバウンドとアウトバウンドな通信を制限する。
 
+<br>
+
 ### egress
 
 アウトバウンドな通信を制限する。
@@ -1349,6 +1351,7 @@ spec:
     - Egress
   egress:
     - to:
+        # 送信を許可するCIDRブロック
         - ipBlock:
             cidr: 10.0.0.0/24
       ports:
@@ -1357,6 +1360,8 @@ spec:
 ```
 
 > - https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource
+
+<br>
 
 ### ingress
 
@@ -1373,13 +1378,16 @@ spec:
     - Ingress
   ingress:
     - from:
+        # 受信を許可するCIDRブロック
         - ipBlock:
             cidr: 172.17.0.0/16
             except:
               - 172.17.1.0/24
+        # 受信を許可するNamespace
         - namespaceSelector:
             matchLabels:
               project: myproject
+        # 受信を許可するPod
         - podSelector:
             matchLabels:
               role: frontend
@@ -1389,6 +1397,8 @@ spec:
 ```
 
 > - https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource
+
+<br>
 
 ### podSelector
 
@@ -1407,6 +1417,8 @@ spec:
 ```
 
 > - https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource
+
+<br>
 
 ## 14. Job
 
