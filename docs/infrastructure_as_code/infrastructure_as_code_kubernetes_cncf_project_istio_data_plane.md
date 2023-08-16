@@ -177,6 +177,8 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 ### `istio-proxy`コンテナ
 
+#### ▼ `istio-proxy`コンテナとは
+
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png)
 
 リバースプロキシの能力を持つサイドカーコンテナである。
@@ -211,6 +213,39 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 > - https://www.amazon.co.jp/dp/1617295825
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/
+
+#### ▼ InitContainerとして
+
+Kubernetesの`v1.28`では、InitContainerでサイドカーを作成できるようになった。
+
+Istioでもこれに対応している。
+
+`istio-proxy`コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。
+
+これにより、Podの作成時にInitContainerをインジェクションできるようになる。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+  initContainers:
+    - name: istio-proxy
+      image: istio/proxyv2:latest
+      restartPolicy: Always
+```
+
+> - https://github.com/istio/istio/blob/1.19.0-beta.0/pkg/kube/inject/inject.go#L426-L436
+> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal
 
 <br>
 

@@ -21,7 +21,7 @@ Grafanaの`datasource.yaml`ファイルを管理する。
 
 <br>
 
-### ### grafana-datasource-cm用のInitContainer
+### grafana-datasource-cm用のInitContainer
 
 Grafanaのコンテナが起動する前に、データソースをセットアップする。
 

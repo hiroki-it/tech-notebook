@@ -1839,9 +1839,29 @@ spec:
       emptyDir: {}
 ```
 
-#### ▼ サイドカー
+#### ▼ restartPolicy
 
-執筆時点 (2023/05/14) で、Kubernetesにビルトインサイドカーの導入が進められている。
+`Always`値を設定することで、サイドカーコンテナを作成できる。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+  initContainers:
+    - name: sidecar
+      image: proxy:1.0.0
+      restartPolicy: Always
+```
 
 > - https://github.com/kubernetes/enhancements/issues/753
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
