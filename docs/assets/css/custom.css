@@ -318,7 +318,7 @@ th, td {
 ***************/
 
 /*
- 参考: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_scheme.scss#L48-L65
+@see https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_scheme.scss#L48-L65
  */
 .md-typeset pre code {
     /* インラインはそのままに、コードハイライト部分のみ色を変更する。*/

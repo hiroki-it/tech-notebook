@@ -422,7 +422,7 @@ spec:
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1
 > - https://onsd.hatenablog.com/entry/2019/09/21/015522
-> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/main.tf#L223-L242
+> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242
 > - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
 
 `(2)`
@@ -1119,7 +1119,7 @@ resource "aws_autoscaling_group_tag" "foo" {
 }
 ```
 
-> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/modules/eks-managed-node-group/main.tf
+> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/eks-managed-node-group/main.tf
 
 #### ▼ セルフマネージドNodeグループの場合
 
@@ -1149,7 +1149,7 @@ resource "aws_autoscaling_group" "foo" {
 }
 ```
 
-> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/modules/self-managed-node-group/main.tf
+> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/self-managed-node-group/main.tf
 
 <br>
 

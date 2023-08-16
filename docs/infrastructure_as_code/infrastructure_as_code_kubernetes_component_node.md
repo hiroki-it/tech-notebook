@@ -202,8 +202,8 @@ kubeletは、`5`分ごとにコンテナイメージ、`10`分ごとにコンテ
 コンテナイメージのガベージコレクションであれば、Nodeのストレージ使用量が`85`%を超過していると、kubeletは`80`%未満になるようにコンテナイメージの残骸を削除する。
 
 > - https://zenn.dev/tmoka/articles/d7e428da4026a5#%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
-> - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144
-> - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/images/image_gc_manager.go#L63-L76
+> - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144
+> - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/images/image_gc_manager.go#L63-L76
 
 #### ▼ ログローテション
 
@@ -218,7 +218,7 @@ kubeletではログの保管期間を設定できないため、もし保管期�
 ![kubernetes_kubelet_log-rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
 
 > - https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/
-> - https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/logs/container_log_manager.go
+> - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/logs/container_log_manager.go
 
 <br>
 
