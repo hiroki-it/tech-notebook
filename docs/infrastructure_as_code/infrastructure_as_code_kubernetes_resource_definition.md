@@ -1334,11 +1334,15 @@ spec:
 
 自身の所属するNamespaceに対して、インバウンドとアウトバウンドな通信を制限する。
 
+それぞれのNamespaceでNetworkPolicyを作成すると、Namespace間の通信はデフォルトで拒否になる。
+
+そのため、許可するように設定する。
+
 <br>
 
 ### egress
 
-アウトバウンドな通信を制限する。
+許可するアウトバウンド通信を設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1350,10 +1354,12 @@ spec:
   policyTypes:
     - Egress
   egress:
+    # アウトバウンド通信の宛先IPアドレス
     - to:
         # 送信を許可するCIDRブロック
         - ipBlock:
             cidr: 10.0.0.0/24
+      # アウトバウンド通信の宛先ポート
       ports:
         - protocol: TCP
           port: 5978
@@ -1365,7 +1371,7 @@ spec:
 
 ### ingress
 
-インバウンドな通信を制限する。
+許可するインバウンド通信を設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1377,8 +1383,9 @@ spec:
   policyTypes:
     - Ingress
   ingress:
+    # インバウンド通信の送信元IPアドレス
     - from:
-        # 受信を許可するCIDRブロック
+        # Cluster外からのインバウンド通信のうちで、受信を許可するCIDRブロック
         - ipBlock:
             cidr: 172.17.0.0/16
             except:
@@ -1387,11 +1394,12 @@ spec:
         - namespaceSelector:
             matchLabels:
               project: myproject
-        # 受信を許可するPod
+        # 同じNamespaceに所属するPodからのインバウンド通信のうちで、受信を許可するPod
         - podSelector:
             matchLabels:
               role: frontend
-      ports:
+    # インバウンド通信の宛先ポート
+    - ports:
         - protocol: TCP
           port: 6379
 ```
@@ -1402,7 +1410,13 @@ spec:
 
 ### podSelector
 
+#### ▼ podSelectorとは
+
 NetworkPolicyを適用するPodを設定する。
+
+#### ▼ matchLabels
+
+`metadata.labels`キーの値でPodを選ぶ。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1417,6 +1431,49 @@ spec:
 ```
 
 > - https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource
+
+#### ▼ 空
+
+空 (`{}`) を設定し、いずれのPodも許可の対象としない。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: foo-network-policy
+  namespace: foo
+spec:
+  # 全てのPodを拒否する
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+```
+
+> - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A
+
+
+<br>
+
+### policyTypes
+
+許否ルールを適用する通信タイプを設定する。
+
+デフォルトで`Ingress`タイプが設定される。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: foo-network-policy
+  namespace: foo
+spec:
+  policyTypes:
+    # インバウンド通信に適用する
+    - Ingress
+    # アウトバウンド通信に適用する
+    - Egress
+```
 
 <br>
 
