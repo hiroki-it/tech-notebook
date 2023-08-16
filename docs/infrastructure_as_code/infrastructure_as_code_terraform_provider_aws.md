@@ -15,7 +15,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 ## 01. AWSプロバイダーとは
 
-TerraformがAWSリソースのAPIと通信できるようにする。
+TerraformがAWSリソースのAPIと通信可能にする。
 
 これにより、Terraformを使用してAWSリソースを作成できるようになる。
 
@@ -608,7 +608,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 ### `(2)`実インフラのリビジョン番号の追跡
 
-アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
+アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡可能にする。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
@@ -622,7 +622,7 @@ Terraformは、特に依存関係を実装しない場合、『ターゲット�
 
 ALB/NLBの作成 (※リスナーも含む可能性) が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになってしまう。
 
-リスナーの後にECSサービスを作成するようにし、『ターゲットグループ ➡︎ ALB/NLB ➡︎ リスナー ➡︎ ECSサービス』の順で`resource`ブロックを作成できるようにする。
+リスナーの後にECSサービスを作成するようにし、『ターゲットグループ ➡︎ ALB/NLB ➡︎ リスナー ➡︎ ECSサービス』の順で`resource`ブロックを作成可能にする。
 
 > - https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
@@ -711,7 +711,7 @@ resource "aws_instance" "bastion" {
 
 ### `(2)`Internet Gatewayの後に作成
 
-Internet Gatewayの後にEC2を作成できるようにする。
+Internet Gatewayの後にEC2を作成可能にする。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
@@ -1484,7 +1484,7 @@ resource "aws_route53_record" "foo" {
   ttl     = 30
   # NSレコードのリストを出力する
   records = aws_route53_zone.foo.name_servers
-  # AWSが自動的に作成するNSレコードとTerraformによるそれが衝突するため、Terraform側が上書きできるようにする
+  # AWSが自動的に作成するNSレコードとTerraformによるそれが衝突するため、Terraform側が上書き可能にする
   allow_overwrite = true
 }
 ```
@@ -2183,7 +2183,7 @@ WAFのIPセットと他設定の依存関係に癖がある。
 
 (2)古いIPセットのresourceを削除し、デプロイする。
 
-もし、これを忘れてしまった場合は、画面上で適当なIPセットに付け換えて、削除処理を実行できるようにする。
+もし、これを忘れてしまった場合は、画面上で適当なIPセットに付け換えて、削除処理を実行可能にする。
 
 <br>
 
@@ -2456,7 +2456,7 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 : コードを削除し、デプロイする。
 
-もし、これを忘れてしまった場合は、画面上で削除処理を無効化し、削除処理を実行できるようにする。
+もし、これを忘れてしまった場合は、画面上で削除処理を無効化し、削除処理を実行可能にする。
 
 | AWSリソース名 | Terraform上での設定名        |
 | ------------- | ---------------------------- |

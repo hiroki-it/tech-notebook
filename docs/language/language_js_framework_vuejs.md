@@ -836,19 +836,19 @@ module.exports = new Vuex.Store({
 
 #### ▼ `mapGetters`ヘルパー
 
-コンポーネントの`computed:{}`に、`Vuex.Store`メソッドの`getters: {}`をマッピングし、コールできるようにする。
+コンポーネントの`computed:{}`に、`Vuex.Store`メソッドの`getters: {}`をマッピングし、コール可能にする。
 
 #### ▼ `mapState`ヘルパー
 
-コンポーネントの`computed:{}`に、`Vuex.Store`メソッドの`state: {}`をマッピングし、コールできるようにする。
+コンポーネントの`computed:{}`に、`Vuex.Store`メソッドの`state: {}`をマッピングし、コール可能にする。
 
 #### ▼ `mapMutations`ヘルパー
 
-コンポーネントの`methods: {}`に、Vuex.Store`メソッドの`mutations: {}```をマッピングし、コールできるようにする。
+コンポーネントの`methods: {}`に、Vuex.Store`メソッドの`mutations: {}```をマッピングし、コール可能にする。
 
 #### ▼ `mapActions`ヘルパー
 
-コンポーネントの`methods: {}`に、`Vuex.Store`メソッドの`actions:{}`をマッピングし、コールできるようにする。
+コンポーネントの`methods: {}`に、`Vuex.Store`メソッドの`actions:{}`をマッピングし、コール可能にする。
 
 **＊実装例＊**
 

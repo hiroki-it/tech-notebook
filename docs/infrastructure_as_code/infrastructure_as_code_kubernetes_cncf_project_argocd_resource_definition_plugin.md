@@ -1007,7 +1007,7 @@ spec:
 
 `repo-server`コンテを持つPodに紐付けるServiceAccountを作成する。
 
-ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用できるようにする。
+ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用可能にする。
 
 ```yaml
 apiVersion: v1

@@ -69,7 +69,7 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 単一のエンドポイントを提供し、クラスター値を取得できる。
 
-Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
+Envoyの実行時に、ルーティング先のClusterの設定を動的に検出可能にする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -78,7 +78,7 @@ Envoyの実行時に、ルーティング先のClusterの設定を動的に検�
 
 単一のエンドポイントを提供し、エンドポイント値を取得できる。
 
-Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
+Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出可能にする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -87,7 +87,7 @@ Envoyの実行時に、ルーティング先のClusterに含まれるメンバ�
 
 単一のエンドポイントを提供し、リスナー値を取得できる。
 
-Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
+Envoyの実行時に、リスナーの設定を動的に検出可能にする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -96,7 +96,7 @@ Envoyの実行時に、リスナーの設定を動的に検出できるように
 
 単一のエンドポイントを提供し、ルート値を取得できる。
 
-Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
+Envoyの実行時に、ルーティングの設定を動的に検出可能にする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
@@ -105,7 +105,7 @@ Envoyの実行時に、ルーティングの設定を動的に検出できるよ
 
 単一のエンドポイントを提供し、証明書を取得できる。
 
-Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
+Envoyの実行時に、リスナーの暗号化の設定を動的に検出可能にする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010

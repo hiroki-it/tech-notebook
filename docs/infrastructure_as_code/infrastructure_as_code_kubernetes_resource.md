@@ -336,7 +336,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。
 
-`.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを削除できるようにする。
+`.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを削除可能にする。
 
 補足として、サービスメッシュツール (例：Istio、Linkerd) のサイドカーを持つPodを安全に削除する場合も、サイドカーコンテナが停止した上でPodを削除できるように、Podの削除プロセスの完了を待機する必要がある。
 
@@ -555,7 +555,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 `Host`ヘッダーの値に基づいて、Serviceにルーティングする。
 
-本番環境では、ドメインを指定した各種ダッシュボードにアクセスできるようにする必要がある。
+本番環境では、ドメインを指定した各種ダッシュボードにアクセス可能にする必要がある。
 
 ![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png)
 
@@ -1191,7 +1191,7 @@ AWSのスポットインスタンスで特定のAZにしかNodeが作成され�
 
 しかし、Podに紐づくPersistentVolumeClaimは元々の`a`ゾーンのNodeのPersistentVolumeを指定したままになっており、`c`ゾーンのPodは`a`ゾーンのPersistentVolumeを指定できないため、`volume node affinity conflict`になる。
 
-以下の手順で、PersistentVolumeClaimとこれを指定するPodの両方を再作成し、PersistentVolumeClaimはPodと同じゾーンのPersistentVolumeを指定できるようにする。
+以下の手順で、PersistentVolumeClaimとこれを指定するPodの両方を再作成し、PersistentVolumeClaimはPodと同じゾーンのPersistentVolumeを指定可能にする。
 
 注意点として、何らかの理由 (例：スポットインスタンス) で、特定のAZにNodeを配置できない場合、この手順では解決できない。
 
@@ -1307,9 +1307,9 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
-kube-apiserverが、リクエストの送信元を認証できるようにする。
+kube-apiserverが、リクエストの送信元を認証可能にする。
 
-kube-apiserverが、Kubernetesリソース (特にPod) を認証できるようにする。
+kube-apiserverが、Kubernetesリソース (特にPod) を認証可能にする。
 
 別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。
 
@@ -1350,9 +1350,9 @@ ServiceAccountは、ServiceAccount本体、service-account-controller、token-co
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
-kube-apiserverが、リクエストの送信元を認証できるようにする。
+kube-apiserverが、リクエストの送信元を認証可能にする。
 
-kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。
+kube-apiserverが、クライアントを認証可能にする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。
 
 クライアントの認証に必要なクライアント証明書は、`kubeconfig`ファイルに登録する必要がある。
 
