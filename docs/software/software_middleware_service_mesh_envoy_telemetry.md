@@ -73,7 +73,7 @@ Envoyは、アプリコンテナへのアクセスログを作成し、標準出
 | `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | インバウンド通信にて、EnvoyはHTTPプロトコルのエラーでアプリコンテナに接続できなかった。                       |
 | `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | インバウンド通信にて、ルートやフィルターチェーンの設定が見つからず、Envoyはアプリコンテナに接続できなかった。 |
 
-> - https://github.com/istio/proxy/blob/main/extensions/common/util.cc#L29-L55
+> - https://github.com/istio/proxy/blob/1.14.3/extensions/common/util.cc#L29-L56
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
 > - https://medium.com/expedia-group-tech/all-about-istio-proxy-5xx-issues-e0221b29e692
 > - https://discuss.istio.io/t/periodic-response-code-0-and-dc-response-flag/9349

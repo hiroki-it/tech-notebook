@@ -1452,7 +1452,6 @@ spec:
 
 > - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A
 
-
 <br>
 
 ### policyTypes

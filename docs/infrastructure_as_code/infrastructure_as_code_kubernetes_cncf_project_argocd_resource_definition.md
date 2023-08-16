@@ -87,7 +87,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 ```
 
 > - https://argo-cd.readthedocs.io/en/stable/getting_started/
-> - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/install.yaml
 
 #### ▼ チャートとして
 
@@ -390,7 +390,7 @@ spec:
               name: argocd-redis
               optional: true
       # Volumeの各種パスをコンテナにマウントする
-      # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
+      # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
@@ -460,7 +460,7 @@ spec:
         secretName: argocd-dex-server-tls
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/master/manifests/base/server/argocd-server-deployment.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/base/server/argocd-server-deployment.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#inbound-tls-options-for-argocd-server
 
 #### ▼ repo-server
@@ -515,7 +515,7 @@ spec:
               name: argocd-redis
               optional: true
       # Volumeの各種パスをコンテナにマウントする
-      # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
+      # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
         # InitContainerでインストールしたバイナリファイルをコンテナにマウントする
         - name: custom-tools
@@ -735,7 +735,7 @@ spec:
 
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/master/manifests/base/dex/argocd-dex-server-deployment.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/base/dex/argocd-dex-server-deployment.yaml
 
 <br>
 
@@ -785,7 +785,7 @@ spec:
               name: argocd-redis
               optional: true
       # Volumeの各種パスをコンテナにマウントする
-      # https://github.com/argoproj/argo-cd/blob/master/common/common.go#L60-L77
+      # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
         - mountPath: /app/config/controller/tls
           name: argocd-repo-server-tls
@@ -823,7 +823,7 @@ Kubernetesのカスタムリソースから定義される。
 
 ポーリング対象のKubernetesリソースやカスタムリソースを設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/master/manifests/crds/application-crd.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/crds/application-crd.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects
 
 #### ▼ 自己ポーリング
@@ -964,7 +964,7 @@ spec:
   project: app # アプリケーションコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
 <br>
 
@@ -980,7 +980,7 @@ spec:
 | チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ) | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
 | OCIリポジトリ (例：ECR内のリポジトリ)                              | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
 <br>
 
@@ -1011,7 +1011,7 @@ spec:
       recurse: true
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L78
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
 
 #### ▼ path
@@ -1131,15 +1131,15 @@ spec:
 
 helmfileと同じように`helm`コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-| 設定項目      | 説明                                                                                                                                                                                                                                         | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `releaseName` | リリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をリリース名としており、リリース名はチャート内のKubernetesリソースのプレフィクスになる。予期せぬApplicationの再作成を防ぐにために、`releaseName`を明示的に設定した方が良い。 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `values`      | `helm`コマンドに渡す`values`ファイルの値をハードコーディングする。                                                                                                                                                                           | 執筆時点 (2022/10/31) では、`values`ファイルは、同じチャートリポジトリ内にある必要がある。チャートと`values`ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、`values`ファイルは独自で定義する) 、`valueFiles`オプションの代わりに`values`オプションを使用する。<br>・https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936 <br>・https://github.com/argoproj/argo-cd/blob/428bf48734153fa1bcc340a975be8c7e3f34c163/docs/operator-manual/application.yaml#L48-L62 <br><br>ただし、Applicationに`values`ファイルをハードコーディングした場合に、共有`values`ファイルと差分`values`ファイルに切り分けて定義できなくなってしまう。そこで、`values`オプションの一部分をHelmのテンプレート機能で動的に出力するようにする。ただし、新機能として複数のリポジトリの`values`ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに`values`ファイルがあっても`valueFiles`オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>・https://github.com/argoproj/argo-cd/pull/10432 |
-| `valueFiles`  | `helm`コマンドに渡す`values`ファイルを設定する。                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `version`     | `helm`コマンドのバージョンを設定する。デフォルトでは、`v3`になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できるため、このオプションを使用する必要はない。                                          | ・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version <br>・https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#L720-L733                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 設定項目      | 説明                                                                                                                                                                                                                                         | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `releaseName` | リリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をリリース名としており、リリース名はチャート内のKubernetesリソースのプレフィクスになる。予期せぬApplicationの再作成を防ぐにために、`releaseName`を明示的に設定した方が良い。 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `values`      | `helm`コマンドに渡す`values`ファイルの値をハードコーディングする。                                                                                                                                                                           | 執筆時点 (2022/10/31) では、`values`ファイルは、同じチャートリポジトリ内にある必要がある。チャートと`values`ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、`values`ファイルは独自で定義する) 、`valueFiles`オプションの代わりに`values`オプションを使用する。<br>・https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936 <br>・https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62 <br><br>ただし、Applicationに`values`ファイルをハードコーディングした場合に、共有`values`ファイルと差分`values`ファイルに切り分けて定義できなくなってしまう。そこで、`values`オプションの一部分をHelmのテンプレート機能で動的に出力するようにする。ただし、新機能として複数のリポジトリの`values`ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに`values`ファイルがあっても`valueFiles`オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>・https://github.com/argoproj/argo-cd/pull/10432 |
+| `valueFiles`  | `helm`コマンドに渡す`values`ファイルを設定する。                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `version`     | `helm`コマンドのバージョンを設定する。デフォルトでは、`v3`になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できるため、このオプションを使用する必要はない。                                          | ・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L25
 > - https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
 
 `helm`コマンドに渡す`values`ファイルの値をハードコーディングする。
@@ -1358,7 +1358,7 @@ spec:
 
 apply先のKubernetesを設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
 #### ▼ namespace
 
@@ -1439,7 +1439,7 @@ ArgoCDはリポジトリを`3`分間ごとにポーリングしており、こ�
 | `selfHeal`   | ArgoCD以外の方法でCluster内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動Syncする。デフォルトでは、ArgoCD以外の方法で変更しても、自動Syncは実行しない。                                                                                                                                                                                                                                                                                                                                                      | - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                              |
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L113
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L113
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1792,7 +1792,7 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/arg
 
 Progressive Deliveryを使用する場合、詳細を設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
 #### ▼ successfulRunHistoryLimit
 

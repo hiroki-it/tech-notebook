@@ -105,7 +105,7 @@ appVersion: <バージョンタグ>
 ```
 
 > - https://helm.sh/docs/topics/charts/#the-appversion-field
-> - https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/templates/_common.tpl#L38
+> - https://github.com/argoproj/argo-helm/blob/argo-cd-5.43.0/charts/argo-cd/templates/_common.tpl#L38
 
 <br>
 

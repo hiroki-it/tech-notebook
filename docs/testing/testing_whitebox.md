@@ -364,9 +364,9 @@ AとBは、『1』または『0』になり得るとする。
 
 各コンポーネントに対して実際のユーザーの一連の操作を模したリクエストを送信する。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/developer-guide/test-e2e.md
-> - https://github.com/argoproj/argo-cd/blob/master/hack/test.sh
-> - https://github.com/argoproj/argo-cd/blob/5120026d154ee5e34a37535cac6275a6ea9e4091/Makefile#L131C41-L131C41
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/developer-guide/test-e2e.md
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/test.sh
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/Makefile#L400-L402
 
 #### ▼ フロントエンド系ツール
 

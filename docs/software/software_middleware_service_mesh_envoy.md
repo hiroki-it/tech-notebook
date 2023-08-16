@@ -124,8 +124,8 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出可能
 
 Envoyを使用するサービスディスカバリーツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに`go-control-plane`パッケージが使用されている。
 
-> - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/resource/v3/resource.go#L34-L43
-> - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/server/v3/gateway.go#L38-L98
+> - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43
+> - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/server/v3/gateway.go#L38-L98
 
 ```go
 package resource
@@ -264,8 +264,8 @@ message DiscoveryResponse {
 
 > - https://skyao.io/learning-envoy/xds/overview/
 > - https://skyao.io/learning-envoy/xds/overview/discovery-message.html
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L47-L97
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L100-L141
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/discovery.proto#L47-L97
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/discovery.proto#L100-L141
 
 #### ▼ リクエスト内容の種類
 
@@ -403,8 +403,8 @@ service ListenerDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/listener/v3/lds.proto#L23-L42
-> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/listener/v3/lds.proto#L23-L42
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87
 
 **＊実装例＊**
 
@@ -569,8 +569,8 @@ service RouteDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/route/v3/rds.proto#L22-L42
-> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/route/v3/rds.proto#L22-L42
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87
 
 **＊実装例＊**
 
@@ -784,8 +784,8 @@ service ClusterDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/cluster/v3/cds.proto#L22-L38
-> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/cluster/v3/cds.proto#L22-L38
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87
 
 **＊実装例＊**
 
@@ -908,7 +908,7 @@ service EndpointDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
+> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
 <br>
 

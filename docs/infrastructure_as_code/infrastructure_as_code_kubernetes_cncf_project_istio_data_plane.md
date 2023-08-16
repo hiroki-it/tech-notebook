@@ -207,7 +207,7 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが`2`個ある構成になってしまうことに注意する。
 
-> - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
+> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2
 > - https://www.amazon.co.jp/dp/1617295825
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/
@@ -283,9 +283,9 @@ func (a *ADSC) Run() error {
 	a.client = discovery.NewAggregatedDiscoveryServiceClient(a.conn)
 
 	// Envoyのgo-control-planeパッケージから提供されている。
-	// https://github.com/envoyproxy/go-control-plane/blob/main/envoy/service/discovery/v3/ads.pb.go#L213-L220
+	// https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/envoy/service/discovery/v3/ads.pb.go#L213-L220
 	// また。.protoファイルで双方向ストリーミングRPCとして定義されている。
-	// https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/ads.proto#L32-L33
+	// https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/ads.proto#L32-L33
 	a.stream, err = a.client.StreamAggregatedResources(context.Background())
 
 	if err != nil {
@@ -314,7 +314,7 @@ func (a *ADSC) Run() error {
 }
 ```
 
-> - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L420-L446
+> - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446
 > - https://github.com/istio/istio/blob/
 
 `handleRecv`メソッド内で、Envoyの各処理コンポーネントを整理し、最後に`XDSUpdates`チャンネルに値を送信している。
@@ -379,7 +379,7 @@ func (a *ADSC) handleRecv() {
 }
 ```
 
-> - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
+> - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L544-L587
 
 #### ▼ ADSクライアントとしての`istioctl`コマンドの実装
 
@@ -405,7 +405,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 }
 ```
 
-> - https://github.com/istio/istio/blob/master/istioctl/pkg/xds/client.go#L44-L73
+> - https://github.com/istio/istio/blob/1.14.3/istioctl/pkg/xds/client.go#L44-L73
 
 <br>
 

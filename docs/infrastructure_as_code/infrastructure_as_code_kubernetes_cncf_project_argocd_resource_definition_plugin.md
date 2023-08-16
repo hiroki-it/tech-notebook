@@ -68,15 +68,15 @@ $ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-
     | grep version=
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/main/Dockerfile#L58-L62
-> - https://github.com/argoproj/argo-cd/blob/main/hack/tool-versions.sh
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L58-L62
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/tool-versions.sh
 
 `tool-version.sh`ファイルで定義した変数は、`install.sh`ファイルで出力されている。
 
 Dockerfile上で`install.sh`ファイルを実行し、ツールをインストールしている。
 
-> - https://github.com/argoproj/argo-cd/blob/master/Dockerfile#L31-L32
-> - https://github.com/argoproj/argo-cd/blob/master/hack/install.sh#L26
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/install.sh#L26
 
 <br>
 
@@ -341,9 +341,9 @@ Flags:
 ```
 
 > - https://thedatabaseme.de/2022/12/02/enhanced-with-plugins-make-argocd-more-powerful-with-plugins-running-as-sidecar/
-> - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml#L17305-L17567
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/install.yaml#L17305-L17567
 > - https://argocd-operator.readthedocs.io/en/latest/usage/config_management_2.0/
-> - https://github.com/argoproj/argo-cd/blob/master/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
 > - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation

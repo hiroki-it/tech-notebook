@@ -116,11 +116,11 @@ spec:
 # 重要なところ以外を省略しているので、全体像はその都度確認すること。
 ```
 
-> - https://github.com/istio/istio/blob/master/pilot/pkg/bootstrap/server.go#L412-L476
+> - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476
 
 Dockerfileとしては、最後に`pilot-discovery`プロセスを実行している。
 
-> - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.pilot
+> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.pilot
 > - https://zenn.dev/link/comments/e8a978a00c6325
 
 ```dockerfile
@@ -129,7 +129,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 
 そのため、`pilot-discovery`プロセスの実体は、GitHubの`pilot-discovery`ディレクトリ配下の`main.go`ファイルで実行されるGoのバイナリファイルである。
 
-> - https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
+> - https://github.com/istio/istio/blob/1.14.3/pilot/cmd/pilot-discovery/main.go
 
 <br>
 
@@ -318,13 +318,13 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 }
 ```
 
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307-L348
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
+> - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L236-L238
+> - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L307-L348
+> - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L190-L233
 
 実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
 
-> - https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
+> - https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306
 
 <br>
 

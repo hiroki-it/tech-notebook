@@ -52,7 +52,7 @@ argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジト
 
 なお、パブリックリポジトリの場合は、argocd-repo自体が不要である。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repositories.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-repositories.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
 <br>
@@ -238,7 +238,7 @@ OCIプロトコルの有効化 (`.enableOCI`キー) が必要であるが、内�
 
 ただし、ポーリングする複数のリポジトリが、全て`1`個のOCIレジストリ内にある場合は、Secretは`1`個でよい。
 
-> - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/util/helm/cmd.go#L262
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
@@ -310,7 +310,7 @@ argocd-repoとは異なり、`1`個の認証情報で複数にリポジトリに
 
 なお、パブリックリポジトリの場合は、argocd-repo-creds自体が不要である。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-repo-creds.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
 <br>
@@ -396,7 +396,7 @@ ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.ur
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
 - Webhookを送信するためのSSL証明書
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-secret.yaml
 
 <br>
 

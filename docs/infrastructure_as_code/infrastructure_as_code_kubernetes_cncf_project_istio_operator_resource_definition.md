@@ -457,7 +457,7 @@ spec:
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
 > - https://hub.docker.com/r/istio/proxyv2/tags
-> - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
+> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

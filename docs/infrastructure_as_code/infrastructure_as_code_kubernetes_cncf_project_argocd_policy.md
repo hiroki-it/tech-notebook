@@ -314,7 +314,7 @@ ArgoCDでは、認可スコープ (argocd-rbac-cm) とAppProjectを紐付けら�
 CDツール (例：ArgoCD) によっては、公式リポジトリで脆弱性テストを実施してくれている。
 
 > - https://argo-cd.readthedocs.io/en/stable/developer-guide/static-code-analysis/
-> - https://github.com/argoproj/argo-cd/blob/master/.github/workflows/README.md
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/README.md
 
 <br>
 
@@ -491,14 +491,14 @@ ArgoCDのコンポーネントのうちで、argocd-serverはclient-goパッケ�
 
 一方で、application-controllerも同様にclient-goパッケージ (gitops-engineがこれを持つ) を使用して通信する。
 
-> - https://github.com/argoproj/argo-cd/blob/master/go.mod#L94
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/go.mod#L94
 > - https://github.com/argoproj/gitops-engine/blob/master/go.mod#L17
 
 ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3sを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。
 
 例えば、ArgoCDの`v2.7.3`は、K3sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`に対応しているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
 
-> - https://github.com/argoproj/argo-cd/blob/master/.github/workflows/ci-build.yaml#L359-L462
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/ci-build.yaml#L359-L462
 > - https://github.com/argoproj/argo-cd/tree/master/test/e2e
 
 #### ▼ CRDについて

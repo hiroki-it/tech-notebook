@@ -710,7 +710,7 @@ static_resources:
 
 > - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15
 > - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40
-> - https://github.com/salrashid123/envoy_discovery/blob/master/envoy_config.yaml#L39-L74
+> - https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
 
 **＊実装例＊**

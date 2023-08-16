@@ -156,7 +156,7 @@ Istioの全てのコンポーネントに適用する変数のデフォルト値
 各Podで個別に設定したい場合、`.metadata.annotations.proxy.istio.io/config.configPath`キーにオプションを設定する。
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
+> - https://github.com/istio/istio/blob/1.14.3/manifests/profiles/preview.yaml
 
 #### ▼ discoveryAddress
 
@@ -563,7 +563,7 @@ data:
 
 ### config
 
-Istiodコントロールプレーン (`discovery`コンテナ) のため、Istioのサイドカーインジェクションの変数や設定テンプレートを管理する。
+Istiodコントロールプレーン (`discovery`コンテナ) のため、Istioのサイドカーインジェクションの変数やpatch処理の内容を管理する。
 
 ```yaml
 apiVersion: v1
@@ -584,6 +584,8 @@ data:
 
         ... # Helmのテンプレート
 ```
+
+> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 
 <br>
 

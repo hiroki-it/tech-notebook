@@ -29,7 +29,7 @@ ConfigMapでは、`.metadata.labels`キー配下に、必ず`app.kubernetes.io/p
 
 ArgoCDの各コンポーネントで共通する値を設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml
 
 <br>
 
@@ -123,7 +123,7 @@ data:
   application.instanceLabelKey: argocd.argoproj.io/instance
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml#L238
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml#L238
 
 #### ▼ ラベル挿入のタイミング
 
@@ -135,7 +135,7 @@ ConfigMapやSecretのファイル変更に合わせてチェックサム値を�
 
 なお、CRDには挿入しない仕様になっている。
 
-> - https://github.com/argoproj/argo-cd/blob/master/controller/sync.go#L246
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246
 
 #### ▼ RootのApplication名の重複
 
@@ -417,7 +417,7 @@ data:
 
 ArgoCDの各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cmd-params-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
 
 <br>
@@ -534,7 +534,7 @@ data:
 
 ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐付ける。
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-rbac-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
 
 <br>
@@ -554,8 +554,8 @@ Casbinの記法を使用して、ロールと認可スコープを定義しつ�
 
 > - https://stackoverflow.com/a/73784100
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure
-> - https://github.com/argoproj/argo-cd/blob/master/assets/model.conf
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/model.conf
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#application-rbac
 
 <br>
@@ -602,7 +602,7 @@ data:
 
 > - https://krrrr.hatenablog.com/entry/2022/01/23/201700
 > - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
 > - https://weseek.co.jp/tech/95/#SSO_RBAC
 > - https://techblog.zozo.com/entry/mlops-argocd
 
@@ -715,7 +715,7 @@ data:
 
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
 
 #### ▼ IDプロバイダーのメールアドレスに紐付ける場合
 
@@ -752,7 +752,7 @@ data:
 ```
 
 > - https://hatappi.blog/entry/2020/08/23/025033
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
 
 <br>
 
@@ -811,7 +811,7 @@ ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフ�
 このConfigMapは、そのためのユーザー定義のSSL証明書を管理する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-tls-certs-cm.yaml
 
 <br>
 
@@ -842,6 +842,6 @@ data:
     vs-ssh.visualstudio.com ssh-rsa AAAAB ...
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
+> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
 
 <br>
