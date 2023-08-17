@@ -1054,7 +1054,7 @@ spec:
 
 #### ▼ annotationsとは
 
-外部Ingressを使用する場合、オプションを設定する。
+IngressClassの専用オプションを設定する。
 
 <br>
 
@@ -1062,7 +1062,7 @@ spec:
 
 #### ▼ ingressClassNameとは
 
-標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの`.metadata.name`キーの値を設定する。
+IngressClassの`.metadata.name`キーの値を設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1222,7 +1222,7 @@ spec:
 
 #### ▼ controllerとは
 
-標準のIngressの代わりに外部Ingressを使用する場合、外部のIngressとIngressコントローラーを紐付けられるように、コントローラーのAPIグループを設定する。
+IngressとIngressコントローラーを紐付けられるように、IngressコントローラーのAPIグループを設定する。
 
 > - https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-class-v1/#IngressClassSpec
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
@@ -1300,7 +1300,11 @@ spec:
 
 ## 13. Gateway
 
-記入中...
+### Gateway
+
+#### ▼ gatewayClassName
+
+GatewayClassの`.metadata.name`キーの値を設定する。
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
@@ -1309,6 +1313,20 @@ metadata:
   name: gateway
   namespace: istio-ingress
 spec:
+  # IstioのIngressGatewayを作成する
+  gatewayClassName: istio
+```
+
+#### ▼ listeners
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: istio-ingress
+spec:
+  # IstioのIngressGatewayを作成する
   gatewayClassName: istio
   listeners:
     - name: default
@@ -1325,6 +1343,12 @@ spec:
         namespaces:
           from: All
 ```
+
+<br>
+
+## 14. GatewayClass
+
+記入中...
 
 <br>
 
@@ -1727,144 +1751,6 @@ spec:
     type: DirectoryOrCreate
     path: /data/src/foo
 ```
-
-<br>
-
-### .spec.initContainers
-
-#### ▼ initContainersとは
-
-`.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
-
-事前処理 (例：待機処理、ツールのインストール処理、など) のために使用する。
-
-**＊実行例＊**
-
-dbコンテナが起動するために時間が必要であり、appコンテナではそれを待機可能にする。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      ports:
-        - containerPort: 8080
-      volumeMounts:
-        - name: app-volume
-          mountPath: /go/src
-  initContainers:
-    - name: readiness-check-db
-      image: busybox:1.28
-      # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのappコンテナの起動を待機する。
-      # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
-      command:
-        - /bin/bash
-        - -c
-      args:
-        - >
-          until nc -z db 3306; do
-            sleep 1;
-          done
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-db
-      image: mysql:1.0.0
-      ports:
-        - containerPort: 3306
-      volumeMounts:
-        - name: foo-db-volume
-          mountPath: /var/lib
-  volumes:
-    - name: foo-db-volume
-      emptyDir: {}
-```
-
-> - https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
-
-**＊実行例＊**
-
-appコンテナからHTTPSリクエストを送信する場合に、SSL証明書が必要になる。
-
-これはすでに署名されている必要があり、例えばubuntuでは、ルート証明書 (CA証明書) を含む`ca-certificates`パッケージをインストールする。
-
-すると、`/etc/ssl`ディレクトリ配下にルート証明書に関する一連のファイルがインストールされる。
-
-これを、共有Volumeを介して、appコンテナにマウントする。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      ports:
-        - containerPort: 8080
-      volumeMounts:
-        - name: app-volume
-          mountPath: /go/src
-        - name: certificate-volume
-          mountPath: /etc/ssl
-  initContainers:
-    - name: certificate-installer
-      image: ubuntu:22.04
-      command:
-        - /bin/sh
-        - -c
-      args:
-        - |
-          apt-get update -y
-          # ルート証明書をインストールする
-          apt-get install -y ca-certificates
-          # 証明書を更新する
-          update-ca-certificates
-      volumeMounts:
-        - mountPath: /etc/ssl
-          name: certificate
-  volumes:
-    - name: certificate
-      emptyDir: {}
-```
-
-#### ▼ restartPolicy
-
-`Always`値を設定することで、サイドカーコンテナを作成できる。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      ports:
-        - containerPort: 8080
-      volumeMounts:
-        - name: app-volume
-          mountPath: /go/src
-  initContainers:
-    - name: sidecar
-      image: proxy:1.0.0
-      restartPolicy: Always
-```
-
-> - https://github.com/kubernetes/enhancements/issues/753
-> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
 
 <br>
 
@@ -3143,6 +3029,185 @@ spec:
 > - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
 > - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret
 > - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
+
+<br>
+
+### .spec.initContainers
+
+#### ▼ initContainersとは
+
+`.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
+
+事前処理 (例：待機処理、ツールのインストール処理、など) のために使用する。
+
+#### ▼ .spec.containers と同じ
+
+**＊実行例＊**
+
+dbコンテナが起動するために時間が必要であり、appコンテナではそれを待機可能にする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+  initContainers:
+    - name: readiness-check-db
+      image: busybox:1.28
+      # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのappコンテナの起動を待機する。
+      # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
+      command:
+        - /bin/bash
+        - -c
+      args:
+        - >
+          until nc -z db 3306; do
+            sleep 1;
+          done
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-db
+      image: mysql:1.0.0
+      ports:
+        - containerPort: 3306
+      volumeMounts:
+        - name: foo-db-volume
+          mountPath: /var/lib
+  volumes:
+    - name: foo-db-volume
+      emptyDir: {}
+```
+
+> - https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
+
+**＊実行例＊**
+
+appコンテナからHTTPSリクエストを送信する場合に、SSL証明書が必要になる。
+
+これはすでに署名されている必要があり、例えばubuntuでは、ルート証明書 (CA証明書) を含む`ca-certificates`パッケージをインストールする。
+
+すると、`/etc/ssl`ディレクトリ配下にルート証明書に関する一連のファイルがインストールされる。
+
+これを、共有Volumeを介して、appコンテナにマウントする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+        - name: certificate-volume
+          mountPath: /etc/ssl
+  initContainers:
+    - name: certificate-installer
+      image: ubuntu:22.04
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          apt-get update -y
+          # ルート証明書をインストールする
+          apt-get install -y ca-certificates
+          # 証明書を更新する
+          update-ca-certificates
+      volumeMounts:
+        - mountPath: /etc/ssl
+          name: certificate
+  volumes:
+    - name: certificate
+      emptyDir: {}
+```
+
+#### ▼ restartPolicy
+
+`Always`値を設定することで、サイドカーコンテナを作成できる。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+  initContainers:
+    - name: sidecar
+      image: proxy:1.0.0
+      restartPolicy: Always
+```
+
+> - https://github.com/kubernetes/enhancements/issues/753
+> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
+
+#### ▼ 起動の順番
+
+InitContainerが複数個ある場合、定義した順番に起動する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+  initContainers:
+    - name: init-1
+    ...
+
+    - name: init-2
+    ...
+```
+
+```bash
+$ kubectl get pod -o "custom-columns=" \
+    "NAME:.metadata.name," \
+    "INIT:.spec.initContainers[*].name," \
+    "CONTAINERS:.spec.containers[*].name"
+
+# 定義した順番 (init-1、init-2) で起動する
+NAME        INIT            CONTAINERS
+app-*****   init-1,init-2   app
+```
+
+> - https://hyoublog.com/2020/06/07/kubernetes-initcontainers/
 
 <br>
 

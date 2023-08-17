@@ -524,13 +524,19 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 <br>
 
-### Ingress
+### Gateway
+
+GatewayClassを指定して、`L4`/`L7`のロードバランサーを作成する。
+
+<br>
+
+### Ingress、Ingressコントローラー
 
 #### ▼ Ingressとは
 
-Ingressは、`L7`のインバウンド通信を受信する。
+Ingressは、`L7`のインバウンド通信の受信ルールを定義する。
 
-IngressコントローラーによってNode外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。
+IngressコントローラーはNode外からインバウンド通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。
 
 Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。
 

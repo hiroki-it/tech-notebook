@@ -25,6 +25,8 @@ description: リソース＠Istioの知見を記録しています。
 
 #### ▼ IngressGatewayとは
 
+`L4`/`L7`のロードバランサーを作成する。
+
 Gateway、VirtualService、DestinationRuleの設定を基に、Node外からインバウンド通信を受信し、Podにルーティングする。
 
 KubernetesリソースのIngressの代わりとして使用できる。
