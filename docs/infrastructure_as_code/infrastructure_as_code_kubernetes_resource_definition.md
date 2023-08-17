@@ -1222,7 +1222,7 @@ spec:
 
 #### ▼ controllerとは
 
-IngressとIngressコントローラーを紐付けられるように、IngressコントローラーのAPIグループを設定する。
+Ingressコントローラーの実体として使用するツールのAPIグループを設定する。
 
 > - https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-class-v1/#IngressClassSpec
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
@@ -1300,9 +1300,9 @@ spec:
 
 ## 13. Gateway
 
-### Gateway
+### spec.gatewayClassName
 
-#### ▼ gatewayClassName
+#### ▼ gatewayClassNameとは
 
 GatewayClassの`.metadata.name`キーの値を設定する。
 
@@ -1317,9 +1317,12 @@ spec:
   gatewayClassName: istio
 ```
 
+> - https://gateway-api.sigs.k8s.io/api-types/gateway/
 > - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
 
-#### ▼ listeners
+<br>
+
+### spec.listeners
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
@@ -1346,11 +1349,47 @@ spec:
           from: All
 ```
 
+> - https://gateway-api.sigs.k8s.io/api-types/gateway/
 > - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
 
 <br>
 
 ## 14. GatewayClass
+
+### spec.controllerName
+
+#### ▼ controllerNameとは
+
+Gatewayの実体として使用するツールのAPIグループを設定する。
+
+```yaml
+kind: GatewayClass
+metadata:
+  name: cluster-gateway
+spec:
+  controllerName: "example.net/gateway-controller"
+```
+
+> - https://gateway-api.sigs.k8s.io/api-types/gatewayclass/
+
+#### ▼ Envoyの場合
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: GatewayClass
+metadata:
+  name: eg
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+```
+
+> - https://github.com/envoyproxy/gateway/blob/v0.5.0/examples/kubernetes/quickstart.yaml#L1-L6
+
+#### ▼ Istioの場合
+
+記入中...
+
+#### ▼ Traefikの場合
 
 記入中...
 

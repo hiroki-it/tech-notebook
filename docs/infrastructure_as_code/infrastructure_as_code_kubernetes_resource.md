@@ -530,6 +530,8 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 Gatewayは、`L4`/`L7`のインバウンド通信の受信ルールを定義し、また`L4`/`L7`のロードバランサーとしてインバウンド通信をルーティングする。
 
+> - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
+
 #### ▼ Ingressとの違い
 
 `L7`だけでなく`L4`のインバウンド通信を処理できる。
