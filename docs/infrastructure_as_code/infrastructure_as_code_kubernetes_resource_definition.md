@@ -1317,6 +1317,8 @@ spec:
   gatewayClassName: istio
 ```
 
+> - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
+
 #### ▼ listeners
 
 ```yaml
@@ -1343,6 +1345,8 @@ spec:
         namespaces:
           from: All
 ```
+
+> - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
 
 <br>
 

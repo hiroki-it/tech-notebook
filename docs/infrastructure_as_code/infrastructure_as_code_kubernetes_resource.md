@@ -526,19 +526,33 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 ### Gateway
 
-GatewayClassを指定して、`L4`/`L7`のロードバランサーを作成する。
+#### ▼ Gatewayとは
+
+Gatewayは、`L4`/`L7`のインバウンド通信の受信ルールを定義し、また`L4`/`L7`のロードバランサーとしてインバウンド通信をルーティングする。
+
+#### ▼ Ingressとの違い
+
+`L7`だけでなく`L4`のインバウンド通信を処理できる。
+
+また、Gateway自体がロードバランサーとしても機能する。
 
 <br>
 
-### Ingress、Ingressコントローラー
+### GatewayClass
+
+#### ▼ GatewayClassとは
+
+Gatewayの実体として使用するツールを指定する。
+
+<br>
+
+### Ingress
 
 #### ▼ Ingressとは
 
 Ingressは、`L7`のインバウンド通信の受信ルールを定義する。
 
-IngressコントローラーはNode外からインバウンド通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。
-
-Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。
+Ingressを使用する場合、ルーティング先のServiceは、Cluster IP Serviceとする。
 
 NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
@@ -548,6 +562,12 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 > - https://thinkit.co.jp/article/18263
 > - https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
+
+#### ▼ Gatewayとの違い
+
+`L7`のインバウンド通信のみを処理できる。
+
+また、Ingressそれ自体はルールのみを持ち、Ingressコントローラーがロードバランサーとして機能する。
 
 #### ▼ パスベースルーティング
 
@@ -566,6 +586,22 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 ![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png)
 
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting
+
+<br>
+
+### IngressClass
+
+#### ▼ IngressClassとは
+
+Ingressコントローラーの実体として使用するツールを指定する。
+
+<br>
+
+### Ingressコントローラー
+
+#### ▼ Ingressコントローラー
+
+IngressコントローラーはNode外からインバウンド通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。
 
 <br>
 
