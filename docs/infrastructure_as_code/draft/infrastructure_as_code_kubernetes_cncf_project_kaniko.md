@@ -31,10 +31,10 @@ spec:
       args:
         # コンテナ内でビルドしたいDockerfileのパスを設定する
         - "--dockerfile=./docker/Dockerfile"
-        # 記入中...
-        - "--context=gs://kaniko-bucket/context.tar.gz"
+        # 指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する
+        - "--context=."
         # ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する
-        - "--destination=gcr.io/kaniko-project/cache"
+        - "--destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko"
       volumeMounts:
         - name: kaniko-secret
           mountPath: /secret
