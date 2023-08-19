@@ -45,6 +45,49 @@ repository/
 
 ## 03. Global
 
+### 予約変数
+
+#### ▼ `CI_COMMIT_BRANCH`
+
+現在のブランチ名が割り当てられている。
+
+#### ▼ `CI_PIPELINE_SOURCE`
+
+現在のパイプラインを発火させたイベント名が割り当てられている。
+
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
+
+#### ▼ `GIT_SUBMODULE_STRATEGY`
+
+デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。
+
+```yaml
+foo_job:
+  variables:
+    GIT_SUBMODULE_STRATEGY: "recursive"
+```
+
+> - https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
+
+#### ▼ `CI_PIPELINE_SOURCE`
+
+イベントの発生元 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    - echo foo
+  rules:
+    # MRを作成/更新したタイミングで発火する
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+> - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
+
+<br>
+
 ### include
 
 #### ▼ includeとは
@@ -211,48 +254,105 @@ variables:
       - github-comment.yaml
 ````
 
-<br>
+### variables (Jobレベルでも設定可)
 
-### 予約変数
+#### ▼ variablesとは
 
-#### ▼ `CI_COMMIT_BRANCH`
+Job内で使用する変数を設定する。
 
-現在のブランチ名が割り当てられている。
-
-#### ▼ `CI_PIPELINE_SOURCE`
-
-現在のパイプラインを発火させたイベント名が割り当てられている。
-
-> - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
-
-#### ▼ `GIT_SUBMODULE_STRATEGY`
-
-デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。
+値をダブルクオートかシングルクオートで囲わないと、`.gitlab-ci.yml`ファイル自体で予期せぬ構文エラーになる。
 
 ```yaml
-foo_job:
-  variables:
-    GIT_SUBMODULE_STRATEGY: "recursive"
+variables:
+  BAR: "bar"
+  BAZ: "baz"
+  QUX: "qux"
 ```
 
-> - https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
-#### ▼ `CI_PIPELINE_SOURCE`
+#### ▼ 空文字の出力
 
-イベントの発生元 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
+空文字を設定したい場合、`variables`キーに設定しても空文字として出力されない。
 
 ```yaml
+# variablesで空文字を設定する
+variables:
+  FOO: ""
+
 foo_job:
   stage: build
   script:
-    - echo foo
-  rules:
-    # MRを作成/更新したタイミングで発火する
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # ダブルクオートがない
+    - echo ${FOO}
 ```
 
-> - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
-> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
+```yaml
+# variablesを定義しない
+
+foo_job:
+  stage: build
+  script:
+    # ダブルクオートがある
+    - echo "${FOO}"
+```
+
+### workflow
+
+#### ▼ workflowとは
+
+GitLab CI自体の発火を制御する。
+
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#workflowrules
+
+#### ▼ if
+
+GitLab CIが発火する条件を設定する。
+
+```yaml
+# ブランチ名に応じて、CIで使用する実行環境名を切り替える
+# main、develop、MR作成/変更、の順に条件を検証する。
+workflow:
+  rules:
+    # mainブランチの場合
+    - if: $CI_COMMIT_REF_NAME == 'main'
+      variables:
+        ENV: "prd"
+    # developブランチの場合
+    - if: $CI_COMMIT_REF_NAME == 'develop'
+      variables:
+        ENV: "tes"
+    # featureブランチの場合
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      # ついでに環境変数を設定する
+      variables:
+        ENV: "dev"
+    # 手動でパイプラインを実行する場合
+    - if: $CI_PIPELINE_SOURCE == 'web'
+      variables:
+        ENV: "dev"
+
+setup-manifest:
+  stage: build
+  image: alpine/helm:latest
+  # ブランチ名に応じて、valuesファイルを切り替える
+  script:
+    - helm lint . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}"
+    - helm template foo-chart. -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}" > manifest.yaml
+    - cat manifest.yaml
+```
+
+> - https://natsuhide.hatenablog.com/entry/2022/04/23/192420
+
+#### ▼ changes
+
+```yaml
+workflow:
+  rules:
+    - changes: foo/**/*
+```
+
+> - https://blogs.networld.co.jp/entry/2022/11/01/090000?_gl=1*1wxr8jb*_gcl_au*MTg4NDE0MjQ1My4xNjkwODAzOTEy
 
 <br>
 
@@ -663,84 +763,5 @@ bar:
 ```
 
 > - https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
-
-<br>
-
-### variables
-
-#### ▼ variablesとは
-
-Job内で使用する変数を設定する。
-
-値をダブルクオートかシングルクオートで囲わないと、`.gitlab-ci.yml`ファイル自体で予期せぬ構文エラーになる。
-
-```yaml
-foo_job:
-  variables:
-    BAR: "bar"
-    BAZ: "baz"
-    QUX: "qux"
-```
-
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#variables
-
-<br>
-
-### workflow
-
-#### ▼ workflowとは
-
-GitLab CI自体の発火を制御する。
-
-> - https://gitlab-docs.creationline.com/ee/ci/yaml/#workflowrules
-
-#### ▼ if
-
-GitLab CIが発火する条件を設定する。
-
-```yaml
-# ブランチ名に応じて、CIで使用する実行環境名を切り替える
-# main、develop、MR作成/変更、の順に条件を検証する。
-workflow:
-  rules:
-    # mainブランチの場合
-    - if: $CI_COMMIT_REF_NAME == 'main'
-      variables:
-        ENV: "prd"
-    # developブランチの場合
-    - if: $CI_COMMIT_REF_NAME == 'develop'
-      variables:
-        ENV: "tes"
-    # featureブランチの場合
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      # ついでに環境変数を設定する
-      variables:
-        ENV: "dev"
-    # 手動でパイプラインを実行する場合
-    - if: $CI_PIPELINE_SOURCE == 'web'
-      variables:
-        ENV: "dev"
-
-setup-manifest:
-  stage: build
-  image: alpine/helm:latest
-  # ブランチ名に応じて、valuesファイルを切り替える
-  script:
-    - helm lint . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}"
-    - helm template foo-chart. -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}" > manifest.yaml
-    - cat manifest.yaml
-```
-
-> - https://natsuhide.hatenablog.com/entry/2022/04/23/192420
-
-#### ▼ changes
-
-```yaml
-workflow:
-  rules:
-    - changes: foo/**/*
-```
-
-> - https://blogs.networld.co.jp/entry/2022/11/01/090000?_gl=1*1wxr8jb*_gcl_au*MTg4NDE0MjQ1My4xNjkwODAzOTEy
 
 <br>
