@@ -197,7 +197,7 @@ $ polaris audit --audit-path manifest.yaml --severity danger --set-exit-code-on-
 
 #### ▼ --severity
 
-検出する最低の重要度レベル (warning、danger) を設定する。
+検出する下限の重要度レベル (warning、danger) を設定する。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml --severity danger

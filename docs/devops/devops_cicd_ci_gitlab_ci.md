@@ -75,7 +75,7 @@ variables:
 .foo_job:
   stage: build
   script:
-    - cat ${PATH}/foo.txt
+    - cat "${PATH}"/foo.txt
 ```
 
 ```yaml
@@ -88,7 +88,7 @@ variables:
 .bar_job:
   stage: build
   script:
-    - cat ${PATH}/bar.txt
+    - cat "${PATH}"/bar.txt
 ```
 
 ```yaml
@@ -101,7 +101,7 @@ variables:
 .baz_job:
   stage: build
   script:
-    - cat ${PATH}/baz.txt
+    - cat "${PATH}"/baz.txt
 ```
 
 > - https://docs.gitlab.com/ee/ci/jobs/index.html#hide-jobs
@@ -133,19 +133,19 @@ foo_job:
   extends: .foo_job
   stage: build
   script:
-    - cat ${PATH}/foo.txt
+    - cat "${PATH}"/foo.txt
 
 bar_job:
   extends: .bar_job
   stage: build
   script:
-    - cat ${PATH}/bar.txt
+    - cat "${PATH}"/bar.txt
 
 baz_job:
   extends: .baz_job
   stage: build
   script:
-    - cat ${PATH}/baz.txt
+    - cat "${PATH}"/baz.txt
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#includeproject
@@ -419,6 +419,8 @@ bar_job:
 
 ### image
 
+#### ▼ imageとは
+
 Jobの実行環境を設定する。
 
 ```yaml
@@ -432,6 +434,24 @@ foo_job:
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#image
+
+#### ▼ `CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX`
+
+CIでは、コンテナイメージのプルの頻度が高まるため、イメージレジストリ (例：DockerHub) によってはプル数の制限にひっかかってしまう。
+
+イメージレジストリ名の前に`CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX`変数を使用すると、GitLabのプロキシを経由するようになり、プル数の制限にかからなくなる。
+
+```yaml
+foo_job:
+  stage: build
+  image:
+    name: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/alpine:1.0.0
+    entrypoint: ["sh"]
+  script:
+    - echo foo
+```
+
+> - https://brettops.io/blog/gitlab-docker-proxy/
 
 <br>
 
@@ -515,7 +535,7 @@ check_tag:
 ```yaml
 gemerate_template:
   script:
-    - helm template foo-chart. --set secret.PASSWORD=test -f foo-values.yaml > foo.yaml
+    - helm template foo-chart. -f foo-values.yaml -f foo-secrets.yaml > foo.yaml
   rules:
     # webイベント (パイプライン実行ボタン) の場合
     - if: $CI_PIPELINE_SOURCE == "web"
@@ -706,8 +726,8 @@ setup-manifest:
   image: alpine/helm:latest
   # ブランチ名に応じて、valuesファイルを切り替える
   script:
-    - helm lint . -f values-${ENV}.yaml
-    - helm template foo-chart. -f values-${ENV}.yaml > manifest.yaml
+    - helm lint . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}"
+    - helm template foo-chart. -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}" > manifest.yaml
     - cat manifest.yaml
 ```
 

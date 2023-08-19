@@ -146,7 +146,7 @@ $ trivy config <IaCファイル>
 
 #### ▼ --severity
 
-検出する最低の重要度レベル (UNKNOWN、LOW、MEDIUM、HIGH、CRITICAL) を設定する。
+検出する下限の重要度レベル (UNKNOWN、LOW、MEDIUM、HIGH、CRITICAL) を設定する。
 
 ```bash
 $ trivy config --severity HIGH,CRITICAL <IaCファイル>

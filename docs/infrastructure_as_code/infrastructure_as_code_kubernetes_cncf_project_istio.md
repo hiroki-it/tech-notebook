@@ -303,6 +303,7 @@ KubernetesリソースにSSL証明書を提供しつつ、これを定期的に�
 
 > - https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes_istio.html
+> - https://jimmysong.io/en/blog/istio-certificates-management/#process-for-istios-built-in-ca-to-issue-a-certificate
 
 #### ▼ 外部の中間認証局を使用する場合
 
@@ -316,6 +317,7 @@ KubernetesリソースにSSL証明書を提供しつつ、これを定期的に�
 
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
+> - https://jimmysong.io/en/blog/cert-manager-spire-istio/
 
 <br>
 

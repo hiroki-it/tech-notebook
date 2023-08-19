@@ -29,7 +29,7 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://servicemesh.es/
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html
+> - https://tetrate.io/blog/istio-vs-linkerd-vs-consul/
 
 <br>
 

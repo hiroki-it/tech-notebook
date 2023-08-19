@@ -484,7 +484,7 @@ ErrorLog /var/log/httpd/error_log
 
 #### ▼ LogLevelとは
 
-ログに出力する最低のレグレベルを設定する。
+ログに出力する下限のレグレベルを設定する。
 
 ```apacheconf
 LogLevel warn

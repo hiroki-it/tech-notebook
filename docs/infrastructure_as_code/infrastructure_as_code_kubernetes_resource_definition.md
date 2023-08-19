@@ -1365,7 +1365,7 @@ Gatewayの実体として使用するツールのAPIグループを設定する�
 ```yaml
 kind: GatewayClass
 metadata:
-  name: cluster-gateway
+  name: foo-gateway
 spec:
   controllerName: "example.net/gateway-controller"
 ```
@@ -1378,7 +1378,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: GatewayClass
 metadata:
-  name: eg
+  name: envoy-gateway
 spec:
   controllerName: gateway.envoyproxy.io/gatewayclass-controller
 ```

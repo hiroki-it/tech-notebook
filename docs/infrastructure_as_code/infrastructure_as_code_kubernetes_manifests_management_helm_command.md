@@ -283,6 +283,17 @@ $ helm lint <チャートへのパス> -f foo-values.yaml
 5 chart(s) linted, 0 chart(s) failed
 ```
 
+#### ▼ --quiet
+
+warning、danger、のみを検出するようにを設定する。
+
+```bash
+$ helm lint <チャートへのパス> --quiet -f foo-values.yaml
+
+==> Linting .
+[ERROR] ...
+```
+
 #### ▼ --strict
 
 `values`ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。
@@ -290,7 +301,7 @@ $ helm lint <チャートへのパス> -f foo-values.yaml
 執筆時点 (2023/05/26) でまだリリースされていない。
 
 ```bash
-$ helm lint --strict <チャートへのパス> -f foo-values.yaml
+$ helm lint <チャートへのパス> --strict -f foo-values.yaml
 ```
 
 > - https://github.com/helm/helm/pull/11760
@@ -648,23 +659,29 @@ $ helm template <チャートへのパス> -f foo-values.yaml >| <出力先フ�
 $ helm template ./foo-chart -f ./values.yaml >| release.yaml
 ```
 
-#### ▼ -set
+**＊例＊**
 
-デフォルト値を上書きし、`helm template`コマンドを実行する。
+CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与する必要はない。
 
-マニフェストの暗号化ツール (例：SOPS) を使用している場合に、暗号化キーを使用せずに機密な変数のテスト値をSecretに出力する場合に使うと良い。
-
-また、CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与することなく、マニフェストを展開できるようになる。
+暗号化されたままの文字列をマニフェストを展開すればよい。
 
 ```bash
 # 暗号化ツールを使用せずにSecretを作成する
-$ helm template <チャートへのパス> -f foo-values.yaml -set user.password=test >| <出力先ファイル>
+$ helm template <チャートへのパス> -f foo-values.yaml -f foo-secrets.yaml >| <出力先ファイル>
 ```
 
 ```yaml
 # valuesファイル
 user:
   password: ***** # 上書きされる
+```
+
+#### ▼ -set
+
+デフォルト値を上書きし、`helm template`コマンドを実行する。
+
+```bash
+$ helm template ./foo-chart -f foo-values.yaml -set foo.test=TEST >| release.yaml
 ```
 
 #### ▼ --include-crds
