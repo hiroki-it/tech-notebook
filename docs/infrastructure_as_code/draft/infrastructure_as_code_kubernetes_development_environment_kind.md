@@ -61,13 +61,14 @@ $ kind create cluster --image kindest/node:v1.28.0
 
 待機時間の間にNodeがReady状態になるようにする。
 
-デフォルトだと`0`秒なので、必ず設定すること。
+デフォルトだと`0`秒であり、コントロールプレーンNodeとワーカーNodeが一台ずつで`2`分半かかる。
 
 ```bash
 $ kind create cluster --wait 3m
 ```
 
 > - https://blog.cybozu.io/entry/2019/07/03/170000
+> - https://zaki-hmkc.hatenablog.com/entry/2020/08/01/135922#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E4%BD%9C%E6%88%90
 
 <br>
 
@@ -91,7 +92,13 @@ $ kind delete cluster --name foo-cluster
 
 ### nodes
 
-Kind ClusterのNodeを設定する。
+#### ▼ nodes
+
+Kind ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。
+
+#### ▼ role
+
+Nodeの役割を設定する。
 
 ```yaml
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -104,5 +111,25 @@ nodes:
 ```
 
 > - https://kind.sigs.k8s.io/docs/user/configuration/#nodes
+
+#### ▼ image
+
+Kubernetesのバージョンを設定する。
+
+```yaml
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.28.0
+  - role: worker
+    image: kindest/node:v1.28.0
+  - role: worker
+    image: kindest/node:v1.28.0
+  - role: worker
+    image: kindest/node:v1.28.0
+```
+
+> - https://kind.sigs.k8s.io/docs/user/configuration/#kubernetes-version
 
 <br>
