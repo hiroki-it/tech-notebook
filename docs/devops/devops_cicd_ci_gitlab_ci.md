@@ -43,6 +43,13 @@ repository/
 
 <br>
 
+### Kubernetes on CI
+
+> - https://containerinfra.com/blog/gitlab/2021-07-31-kubernetes-in-gitlab-ci/
+> - https://gist.github.com/trondhindenes/0307fbe9cda1164115353b4632a31ea9
+
+<br>
+
 ## 03. Global
 
 ### 予約変数
@@ -369,6 +376,7 @@ stages:
 # terraform fmt
 fmt:
   services:
+    # Docker in Dockerに対応するコンテナイメージを使用する
     - docker:19.03.11-dind
   image: hashicorp/terraform:1.4.6
   stage: fmt
@@ -651,10 +659,13 @@ gemerate_template:
 
 ### services
 
-メイン実行環境とは別のサブ実行環境を作成するため、イメージ名を設定する。
+JobのCIの実行環境とは別の実行環境を作成するため、イメージ名を設定する。
+
+Jobでアプリコンテナを動かし、DBコンテナを別に起動しておくためなどに使用する。
 
 ```yaml
 foo_job:
+  # 別の実行環境としてコンテナを作成するために、DINDを使用する
   services: docker:19-dind
 ```
 
