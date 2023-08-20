@@ -7,6 +7,8 @@ description: Kind＠開発環境の知見を記録しています。
 
 ## セットアップ
 
+### バイナリとして
+
 ```bash
 $ curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
 $ chmod +x ./kind
@@ -25,9 +27,47 @@ $ kubectl cluster-info
 
 Kind Clusterを作成する。
 
+#### ▼ --config
+
+`kind-config.yaml`ファイルを指定して、`kind`コマンドを実行する。
+
 ```bash
-$ kind create cluster --config kind-config.yaml --name foo-cluster --wait 180s
+$ kind create cluster --config kind-config.yaml
 ```
+
+#### ▼ --name
+
+Clusterの名前を設定する。
+
+```bash
+$ kind create cluster --name foo-cluster
+```
+
+#### ▼ --image
+
+Kubernetesのバージョンを設定する。
+
+Kubernetesのデフォルトのバージョンは、Kindのバージョンごとに決まっている。
+
+```bash
+$ kind create cluster --image kindest/node:v1.28.0
+```
+
+> - https://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster
+
+#### ▼ --wait
+
+待機時間を設定する。
+
+待機時間の間にNodeがReady状態になるようにする。
+
+デフォルトだと`0`秒なので、必ず設定すること。
+
+```bash
+$ kind create cluster --wait 3m
+```
+
+> - https://blog.cybozu.io/entry/2019/07/03/170000
 
 <br>
 
@@ -43,7 +83,15 @@ $ kind delete cluster --name foo-cluster
 
 ## kind-config.yaml
 
+### kind-config.yamlファイルとば
+
 `kind`コマンドのパラメーターを設定する。
+
+<br>
+
+### nodes
+
+Kind ClusterのNodeを設定する。
 
 ```yaml
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -54,5 +102,7 @@ nodes:
   - role: worker
   - role: worker
 ```
+
+> - https://kind.sigs.k8s.io/docs/user/configuration/#nodes
 
 <br>
