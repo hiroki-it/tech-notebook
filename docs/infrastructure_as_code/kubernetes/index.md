@@ -68,6 +68,8 @@
   > * ##### <u>Minikube</u>
   > > * ##### [Minikube](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
   > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
+  > * ##### <u>Kind</u>
+  > > * ##### [Kind](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind.html)
 
 <br>
 
