@@ -45,7 +45,7 @@ $ kind create cluster --name foo-cluster
 
 #### ▼ --image
 
-Kubernetesのバージョンを設定する。
+KubernetesのコントロールプレーンNodeとワーカーNodeのバージョンを設定する。
 
 Kubernetesのデフォルトのバージョンは、Kindのバージョンごとに決まっている。
 
@@ -54,6 +54,7 @@ $ kind create cluster --image kindest/node:v1.28.0
 ```
 
 > - https://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster
+> - https://qiita.com/Hiroyuki_OSAKI/items/2395e6bbb98856df12f3#20191228%E8%BF%BD%E5%8A%A0-kubernetes%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B
 
 #### ▼ --wait
 

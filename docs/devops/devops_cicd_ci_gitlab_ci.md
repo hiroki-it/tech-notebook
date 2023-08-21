@@ -547,7 +547,9 @@ foo_job:
 
 CIでは、コンテナイメージのプルの頻度が高まるため、イメージレジストリ (例：DockerHub) によってはプル数の制限にひっかかってしまう。
 
-イメージレジストリ名の前に`CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX`変数を使用すると、GitLabのプロキシを経由するようになり、プル数の制限にかからなくなる。
+イメージレジストリのパスのプレフィクスとして`CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX`をつけると、コンテナイメージがGitLabのDependency Proxyを経由するようになる。
+
+Dependency Proxyはコンテナイメージをキャッシュするため、毎回DockerHubにコンテナをプルしなくなり、プル数の制限にひ
 
 ```yaml
 foo_job:
@@ -559,6 +561,7 @@ foo_job:
     - echo foo
 ```
 
+> - https://docs.gitlab.com/ee/user/packages/dependency_proxy/#store-a-docker-image-in-dependency-proxy-cache
 > - https://brettops.io/blog/gitlab-docker-proxy/
 
 <br>
