@@ -321,20 +321,19 @@ GitLab CIが発火する条件を設定する。
 # main、develop、MR作成/変更、の順に条件を検証する。
 workflow:
   rules:
-    # mainブランチの場合
+    # masterブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'main'
       variables:
         ENV: "prd"
-    # developブランチの場合
+    # developブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'develop'
       variables:
         ENV: "tes"
-    # featureブランチの場合
+    # MRにて、任意の方法でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      # ついでに環境変数を設定する
       variables:
         ENV: "dev"
-    # 手動でパイプラインを実行する場合
+    # 上記以外で、webから手動でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'web'
       variables:
         ENV: "dev"
@@ -371,15 +370,15 @@ workflow:
 
 ```yaml
 stages:
-  - fmt
+  - build
 
 # terraform fmt
 fmt:
   services:
     # Docker in Dockerに対応するコンテナイメージを使用する
-    - docker:19.03.11-dind
+    - docker:dind
   image: hashicorp/terraform:1.4.6
-  stage: fmt
+  stage: build
   script:
     - terraform fmt -check -recursive
   # 0以外の全ての終了コードの場合のみ終了する
@@ -662,16 +661,25 @@ gemerate_template:
 
 ### services
 
+![gitlab_service-container.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab_service-container.png)
+
 JobのCIの実行環境とは別の実行環境を作成するため、イメージ名を設定する。
 
 Jobでアプリコンテナを動かし、DBコンテナを別に起動しておくためなどに使用する。
 
+両方のDockerのバージョンは合わせておいた方が良い。
+
 ```yaml
 foo_job:
   # 別の実行環境としてコンテナを作成するために、DINDを使用する
-  services: docker:19-dind
+  services:
+    - name: docker:dind
+      # 外部Dockerに対するTLSを無効化する
+      command: ["--tls=false"]
+  image: docker
 ```
 
+> - https://blog.nestybox.com/2020/10/21/gitlab-dind.html
 > - https://www.ted027.com/post/gitlabci-services-host/
 > - https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example
 
@@ -749,10 +757,10 @@ foo_job:
 ```yaml
 # 親の.gitlab-ci.yml
 stage:
-  - trigger
+  - build
 
 foo:
-  stage: trigger
+  stage: build
   rules:
     - if: $CI_COMMIT_BRANCH
       changes:
@@ -763,7 +771,7 @@ foo:
     strategy: depend
 
 bar:
-  stage: trigger
+  stage: build
   rules:
     # ディレクトリ配下の変更を検知する
     - if: $CI_COMMIT_BRANCH
