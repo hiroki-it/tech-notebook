@@ -176,11 +176,27 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 ### アウトバウンド通信の監視
 
-| 宛先の種類         | 説明                                               | 補足                                                      |
-| ------------------ | -------------------------------------------------- | --------------------------------------------------------- |
-| PassthroughCluster | Egressのルーティング先として明示的に設定された宛先 | `TLS Handshake timeout`となる場合、リトライが必要になる。 |
-| BlackHoleCluster   | 設定されていない任意の宛先                         |                                                           |
-| 外部のサービス     | Clusterの外にあるサービス                          | ServiceEntryで設定できる。                                |
+#### ▼ PassthroughCluster
+
+IPアドレスを指定した宛先のこと。
+
+Istio 1.3以降で、デフォルトで全てのアウトバウンド通信のポリシーが`ALLOW_ANY`となり、PassthroughClusterとして扱うようになった。
+
+AWS RDS、GCP CloudSQL、などの外部DBを使う場合、アプリからDBへのアウトバウンド通信ではDBのエンドポイントを指定することになる。
+
+そのため、アウトバウンド通信はPassthroughClusterに属する。
+
+`TLS Handshake timeout`となる場合、リトライが必要になる。
+
+> - https://istiobyexample.dev/monitoring-egress-traffic/
+> - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+
+#### ▼ BlackHoleCluster
+
+IPアドレスを指定していない宛先のこと。
+
+`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外への全てのアウトバウンド通信がBlackHoleClusterになる。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 
@@ -396,7 +412,7 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 
 #### ▼ 標準出力
 
-IstioによるEnvoyは、アプリコンテナへのアクセスログを作成し、標準出力に出力する。
+IstioによるEnvoyは、アプリコンテナへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
 
 アクセスログにデフォルトで役立つ値が出力される。
 

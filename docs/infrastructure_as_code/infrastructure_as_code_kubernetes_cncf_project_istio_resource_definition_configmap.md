@@ -147,6 +147,54 @@ data:
 
 <br>
 
+### outboundTrafficPolicy
+
+#### ▼ outboundTrafficPolicyとは
+
+アウトバウンド通信の宛先の種類 (PassthroughCluster、BlackHoleCluster) を設定する。
+
+#### ▼ ALLOW_ANY
+
+アウトバウンド通信の宛先を、デフォルトでPassthroughClusterとして扱う。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    outboundTrafficPolicy:
+      mode: ALLOW_ANY
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+> - https://istiobyexample.dev/monitoring-egress-traffic/
+
+#### ▼ ALLOW_ANY
+
+アウトバウンド通信の宛先を、デフォルトでBlackHoleClusterとして扱う。
+
+PassthroughClusterとして扱いたい宛先は、ServiceEntryに設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    outboundTrafficPolicy:
+      mode: ALLOW_ANY
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+> - https://istiobyexample.dev/monitoring-egress-traffic/
+
+<br>
+
 ### defaultConfig
 
 #### ▼ defaultConfigとは

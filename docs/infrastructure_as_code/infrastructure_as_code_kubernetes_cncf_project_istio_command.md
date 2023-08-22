@@ -466,7 +466,7 @@ lastUpdated: "2022-11-16T08:12:07.162Z"
 Envoyのクラスターの静的/動的な設定値を取得する。
 
 ```bash
-$ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
+$ istioctl proxy-config cluster <Pod名> -n <PodのNamespace名>
 ```
 
 ```bash
