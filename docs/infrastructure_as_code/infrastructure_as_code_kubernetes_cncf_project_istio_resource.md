@@ -147,7 +147,7 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。
 
-ルーティング先のServiceは、Istioのコンポーネントではないに注意する。
+宛先のServiceは、Istioのコンポーネントではないに注意する。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 

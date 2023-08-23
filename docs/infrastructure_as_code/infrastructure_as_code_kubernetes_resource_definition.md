@@ -1105,7 +1105,7 @@ Serviceへのルーティングルールを設定する。
 
 複数のServiceにインバウンド通信を振り分けられる。
 
-Ingressを使用する場合、ルーティング先のServiceは、ClusterIP Serviceとする。
+Ingressを使用する場合、宛先のServiceは、ClusterIP Serviceとする。
 
 > - https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
@@ -1185,7 +1185,7 @@ spec:
 
 #### ▼ .spec.rules[].http.paths[].backend
 
-ルーティング先のServiceを設定する。
+宛先のServiceを設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -4484,34 +4484,6 @@ metadata:
 spec:
   ports:
     - appProtocol: tcp
-      port: 9000
-```
-
-もしIstio VirtualServiceからインバウンド通信を受信する場合、`.spec.ports.appProtocol`キーが使用しなければ、`.spec.ports.name`キーを『`<プロトコル名>-<任意の文字列>`』で命名しなければならない。
-
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
-
-```yaml
-# appProtocolを使用しない場合
-apiVersion: v1
-kind: Service
-metadata:
-  name: foo-app-service
-spec:
-  ports:
-    - name: http-foo # Istio Gatewayからインバウンド通信を受信
-      port: 80
-```
-
-```yaml
-# appProtocolを使用しない場合
-apiVersion: v1
-kind: Service
-metadata:
-  name: foo-app-service
-spec:
-  ports:
-    - name: tcp-foo # Istio Gatewayからインバウンド通信を受信
       port: 9000
 ```
 

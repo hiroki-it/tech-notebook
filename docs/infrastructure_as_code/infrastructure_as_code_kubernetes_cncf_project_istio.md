@@ -178,7 +178,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 #### ▼ PassthroughCluster
 
-IPアドレスを指定した宛先のこと。
+IPアドレスを指定した送信できる宛先のこと。
 
 Istio 1.3以降で、デフォルトで全てのアウトバウンド通信のポリシーが`ALLOW_ANY`となり、PassthroughClusterとして扱うようになった。
 
@@ -186,7 +186,7 @@ AWS RDS、GCP CloudSQL、などの外部DBを使う場合、アプリからDBへ
 
 そのため、アウトバウンド通信はPassthroughClusterに属する。
 
-`TLS Handshake timeout`となる場合、リトライが必要になる。
+注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外への全てのアウトバウンド通信がBlackHoleClusterになってしまう
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
@@ -194,9 +194,9 @@ AWS RDS、GCP CloudSQL、などの外部DBを使う場合、アプリからDBへ
 
 #### ▼ BlackHoleCluster
 
-IPアドレスを指定していない宛先のこと。
+IPアドレスを指定して送信できない宛先のこと。
 
-`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外への全てのアウトバウンド通信がBlackHoleClusterになる。
+基本的に、アウトバウンド通信は失敗し、`502`ステータスになる。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 

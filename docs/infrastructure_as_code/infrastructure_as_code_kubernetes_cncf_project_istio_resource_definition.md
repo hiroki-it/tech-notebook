@@ -1301,10 +1301,7 @@ spec:
 
 HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
-ルーティング先のServiceを厳格に指定するために、Serviceの`.spec.ports.appProtocol`キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
-
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
 
 #### ▼ fault
 
@@ -1410,7 +1407,7 @@ spec:
 
 #### ▼ route.destination.host
 
-受信したインバウンド通信でルーティング先のServiceのドメイン名 (あるいはService名) を設定する。
+受信したインバウンド通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -1609,5 +1606,72 @@ spec:
               number: 9000
             subset: v2
 ```
+
+<br>
+
+### 宛先のServiceのポート番号について
+
+Istioは、宛先のServiceに送信しようとするプロトコルを厳格に認識する。
+
+宛先のServiceの`.spec.ports[].name`キー (`<プロトコル名>-<任意の文字列>`) または`.spec.ports[].appProtocol`キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。
+
+**＊例＊**
+
+appProtocolを使用しない場合は以下の通りとなる。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-app-service
+spec:
+  ports:
+    # HTTPのみ
+    - name: http-foo
+      port: 80
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-app-service
+spec:
+  ports:
+    # TCPのみ
+    - name: tcp-foo
+      port: 9000
+```
+
+**＊例＊**
+
+appProtocolを使用する場合は以下の通りとなる。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-app-service
+spec:
+  ports:
+    # HTTPのみをVirtualServiceから送信できる
+    - appProtocol: http
+      port: 80
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-app-service
+spec:
+  ports:
+    # TCPのみをVirtualServiceから送信できる
+    - appProtocol: tcp
+      port: 9000
+```
+
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
+> - https://zenn.dev/toshikish/articles/d0dd54ae067bed
 
 <br>

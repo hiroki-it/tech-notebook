@@ -554,7 +554,7 @@ Gatewayの実体として使用するツールを指定する。
 
 Ingressは、`L7`のインバウンド通信の受信ルールを定義する。
 
-Ingressを使用する場合、ルーティング先のServiceは、Cluster IP Serviceとする。
+Ingressを使用する場合、宛先のServiceは、Cluster IP Serviceとする。
 
 NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
