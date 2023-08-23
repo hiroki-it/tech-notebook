@@ -423,7 +423,7 @@ data:
 
 Istioに連携するためのツールの情報を定義する。
 
-#### ▼ envoyExtAuthzHttpとは
+#### ▼ envoyExtAuthzHttp
 
 SSOのIDプロバイダーの情報を設定する。
 
