@@ -695,3 +695,33 @@ data:
 ```
 
 <br>
+
+## 05. 環境変数
+
+### Istiod
+
+#### ▼ PILOT_CERT_PROVIDER
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  containers:
+    - name: discovery
+      env:
+        - name: PILOT_CERT_PROVIDER
+          value: istiod
+```
+
+`istio-proxy`コンテナに設定するSSL証明書のプロバイダーを設定する。
+
+| 設定値       |                                                   |
+| ------------ | ------------------------------------------------- |
+| `istiod`     | Istiodが提供するSSL証明書を使用する。             |
+| `kubernetes` | KubernetesのSecretで管理するSSL証明書を使用する。 |
+| `none`       | SSL証明書を使用しない。                           |
+
+<br>

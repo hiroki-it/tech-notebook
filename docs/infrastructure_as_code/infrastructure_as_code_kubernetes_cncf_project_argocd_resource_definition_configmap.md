@@ -845,3 +845,49 @@ data:
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
 
 <br>
+
+## 07. 環境変数
+
+### application-controller
+
+#### ▼ ARGOCD_CONTROLLER_REPLICAS
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: argocd-application-controller
+          env:
+            - name: ARGOCD_CONTROLLER_REPLICAS
+              value: 2
+```
+
+<br>
+
+### argocd-server
+
+#### ▼ ARGOCD_API_SERVER_REPLICAS
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-server
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: argocd-server
+          env:
+            - name: ARGOCD_API_SERVER_REPLICAS
+              value: 3
+```
+
+<br>
