@@ -469,8 +469,8 @@ Istioは、分散トレースのためのメタデータを作成し、Jaegerに
 ただし、アプリコンテナ間で伝播することはしないため、伝播の実装が必要になる。
 
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
-> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/productpage/productpage.py#L180-L237
-> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/details/details.rb#L130-L187
+> - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/productpage/productpage.py#L180-L237
+> - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/details/details.rb#L130-L187
 
 <br>
 

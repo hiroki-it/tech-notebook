@@ -407,7 +407,7 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 > - https://juejin.cn/post/7028572651421433892
 > - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
-> - https://github.com/istio/istio/blob/693d97627e70f1e4eadeaede8bb5a18136c8feed/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
+> - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
 > - https://www.kubernetes.org.cn/4208.html
 > - https://etcd.io/docs/v3.3/learning/why/#comparison-chart
 

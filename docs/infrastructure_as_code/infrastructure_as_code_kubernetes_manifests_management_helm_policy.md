@@ -240,7 +240,7 @@ data:
 
 公式リポジトリの実装方法を見て学んだ方が早い。
 
-> - https://github.com/istio/istio/tree/master/manifests/charts
+> - https://github.com/istio/istio/blob/1.14.3/manifests/charts
 
 <br>
 

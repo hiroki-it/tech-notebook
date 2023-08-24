@@ -110,7 +110,7 @@ LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKub
 NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
 
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
-> - https://github.com/istio/istio/blob/bd9ae57cc00a44810496989ec3fa34649d6c8516/manifests/charts/gateway/values.yaml#L39
+> - https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39
 
 #### ▼ アプリコンテナごとに作成する
 

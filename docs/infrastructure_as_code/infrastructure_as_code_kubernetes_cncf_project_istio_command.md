@@ -73,7 +73,7 @@ Istioの機能のセットを提供する。
 | istio-ingressgateway |    ✅    |    ✅    |                 なし                  |   なし   |         なし         |    ？     |   ✅    |   ？   |
 | istiod               |    ✅    |    ✅    |                 なし                  |   なし   |          ✅          |    ？     |   ✅    |   ？   |
 
-> - https://github.com/istio/istio/tree/master/manifests/profiles
+> - https://github.com/istio/istio/blob/1.14.3/manifests/profiles
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 > - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
 

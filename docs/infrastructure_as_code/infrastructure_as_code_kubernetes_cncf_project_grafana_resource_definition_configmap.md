@@ -1458,7 +1458,7 @@ data:
 | `Istio Service Dashboard`        | IstioのVirtualService                 | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
-> - https://github.com/istio/istio/tree/master/manifests/addons/dashboards
+> - https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#viewing-the-istio-dashboard
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#about-the-grafana-dashboards
 

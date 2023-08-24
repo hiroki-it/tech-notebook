@@ -154,7 +154,7 @@ $ kubectl exec \
 
 ### Envoyによるトレーシング
 
-Envoyは、分散トレースを作成できるように、自分で自分を通過した通信にHTTPヘッダーやRPCヘッダーに分散トレースIDを割り当てる。
+Envoyは、分散トレースを作成できるように、自分を通過した通信にHTTPヘッダーやRPCヘッダーに分散トレースIDを割り当てる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 

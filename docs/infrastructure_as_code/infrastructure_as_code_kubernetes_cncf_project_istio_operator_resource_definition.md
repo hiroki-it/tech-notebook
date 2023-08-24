@@ -477,7 +477,7 @@ spec:
 
 `manifests/charts/global.yaml`ファイルの設定値を上書きする。
 
-> - https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
+> - https://github.com/istio/istio/blob/1.14.3/manifests/profiles/default.yaml#L43
 
 #### ▼ base
 
