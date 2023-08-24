@@ -496,7 +496,7 @@ spec:
       validationURL: ""
 ```
 
-#### ▼ gateways.istio-ingressgateway
+#### ▼ gateways.istio-egressgateway
 
 `values`ファイルの`istio-egressgateway`の項目を上書きする。
 
@@ -509,6 +509,7 @@ metadata:
 spec:
   values:
     gateways:
+      # EgressGateway
       istio-egressgateway:
         env: {}
         autoscaleEnabled: true
@@ -536,13 +537,14 @@ metadata:
 spec:
   values:
     gateways:
+      # IngressGateway
       istio-ingressgateway:
+        env: {}
         # IstioOperatorをrootユーザーで実行する。
         runAsRoot: true
         autoscaleEnabled: true
         type: LoadBalancer
         name: istio-ingressgateway
-        env: {}
         secretVolumes:
           - name: ingressgateway-certs
             secretName: istio-ingressgateway-certs

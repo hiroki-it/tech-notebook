@@ -1387,11 +1387,37 @@ spec:
 
 #### ▼ Istioの場合
 
-記入中...
+```yaml
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: GatewayClass
+metadata:
+  name: istio
+spec:
+  controllerName: istio.io/gateway-controller
+```
+
+> - https://openfunction.dev/docs/operations/networking/switch-gateway/
+> - https://www.tkng.io/ingress/gateway/
 
 #### ▼ Traefikの場合
 
 記入中...
+
+#### ▼ AWS VPC Latticeの場合
+
+AWS VPC Latticeをプロビジョニングする。
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: GatewayClass
+metadata:
+  name: amazon-vpc-lattice
+spec:
+  controllerName: application-networking.k8s.aws/gateway-api-controller
+```
+
+> - https://github.com/aws/aws-application-networking-k8s/blob/main/examples/gatewayclass.yaml
+> - https://aws.amazon.com/jp/blogs/news/introducing-aws-gateway-api-controller-for-amazon-vpc-lattice-an-implementation-of-kubernetes-gateway-api/
 
 <br>
 

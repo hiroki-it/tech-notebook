@@ -476,7 +476,7 @@ spec:
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
 
-#### ▼ envoyOtelAlsとは
+#### ▼ envoyOtelAls
 
 Istioに連携するOpenTelemetryの宛先情報を設定する。
 
@@ -561,7 +561,7 @@ spec:
 
 ### ingressSelector
 
-#### ▼ とは
+#### ▼ ingressSelectorとは
 
 全ての`istio-proxy`コンテナに関して、使用するGatewayの`.metadata.labels.istio`キーの値を設定する。
 
