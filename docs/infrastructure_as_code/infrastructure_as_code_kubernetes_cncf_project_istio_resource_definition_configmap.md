@@ -700,28 +700,75 @@ data:
 
 ### Istiod
 
-#### ▼ PILOT_CERT_PROVIDER
+#### ▼ CLUSTER_ID
+
+Istiodのサービスレジストリを設定する。
 
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: istiod
   namespace: istio-system
 spec:
-  containers:
-    - name: discovery
-      env:
-        - name: PILOT_CERT_PROVIDER
-          value: istiod
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: CLUSTER_ID
+            value: Kubernetes
 ```
 
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+#### ▼ PILOT_TRACE_SAMPLING
+
+分散トレースの収集率を設定する。
+
+基本的には`100`% (値は`1`) を設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: PILOT_TRACE_SAMPLING
+            value: 1
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+#### ▼ PILOT_CERT_PROVIDER
+
 `istio-proxy`コンテナに設定するSSL証明書のプロバイダーを設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: PILOT_CERT_PROVIDER
+            value: istiod
+```
 
 | 設定値       |                                                   |
 | ------------ | ------------------------------------------------- |
 | `istiod`     | Istiodが提供するSSL証明書を使用する。             |
 | `kubernetes` | KubernetesのSecretで管理するSSL証明書を使用する。 |
 | `none`       | SSL証明書を使用しない。                           |
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
 <br>

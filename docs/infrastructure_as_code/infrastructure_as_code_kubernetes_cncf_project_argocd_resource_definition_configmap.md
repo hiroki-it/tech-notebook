@@ -852,6 +852,10 @@ data:
 
 #### ▼ ARGOCD_CONTROLLER_REPLICAS
 
+application-controllerのレプリカ数を設定する。
+
+これを設定しないと、application-controllerを冗長化しても、処理が片方のレプリカに偏ってしまう。
+
 ```yaml
 apiVersion: apps/v1
 kind: StatefulSet
@@ -873,6 +877,10 @@ spec:
 ### argocd-server
 
 #### ▼ ARGOCD_API_SERVER_REPLICAS
+
+argocd-serverのレプリカ数を設定する。
+
+これを設定しないと、argocd-serverを冗長化しても、処理が片方のレプリカに偏ってしまう。
 
 ```yaml
 apiVersion: apps/v1
