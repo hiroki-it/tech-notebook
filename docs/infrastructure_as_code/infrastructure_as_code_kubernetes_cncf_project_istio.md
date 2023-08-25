@@ -60,28 +60,26 @@ description: Istio＠CNCFプロジェクトの知見を記録しています。
 
 アンビエントメッシュは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。
 
-ztunnel (実体はDaemonSet配下のPod) が`L4` (トランスポート層) のプロトコル (例：TCP、UDP、など) 、またwaypoint-proxy (実体はDeployment配下の`envoy`コンテナを含むPod) が`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。
-
-また、マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決する責務を持つ。
+マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決する責務を持つ。
 
 Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。
 
-ztunnelのPodを経由した段階でHTTPSプロトコルになる。ハードウェアリソースの消費量の少ない`L4`と多い`L7`のプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、`L4`のプロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。
-
 サイドカープロキシメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+
+ztunnelのPodを経由した段階でHTTPSプロトコルになる。
+
+ハードウェアリソースの消費量の少ない`L4`と多い`L7`のプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、`L4`のプロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。
 
 インバウンド時の通信の経路は以下の通りである。
 
 ```text
 外
 ⬇︎
------ Node
-⬇︎
 リダイレクト
 ⬇︎
-ztunnelのPod (L4)
+ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 ⬇︎
-waypointのPod (L7)
+waypointのPod (L7) # Deployment配下なので、任意のNodeにいる
 ⬇︎
 アプリコンテナのPod
 ```
@@ -91,11 +89,9 @@ waypointのPod (L7)
 ```text
 外
 ⬆︎
------ Node
+waypointのPod (L7) # Deployment配下なので、任意のNodeにいる
 ⬆︎
-waypointのPod (L7)
-⬆︎
-ztunnelのPod (L4)
+ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 ⬆︎
 リダイレクト
 ⬆︎
@@ -107,6 +103,19 @@ ztunnelのPod (L4)
 > - https://github.com/istio/istio/blob/experimental-ambient/manifests/charts/istio-control/istio-discovery/files/waypoint.yaml
 > - https://www.sobyte.net/post/2022-09/istio-ambient/
 > - https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/
+> - https://blog.howardjohn.info/posts/ambient-not-node-proxy/
+
+#### ▼ ztunnel
+
+ztunnelが`L4` (トランスポート層) のプロトコル (例：TCP、UDP、など) を処理できる。
+
+実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。
+
+#### ▼ waypoint-proxy
+
+waypoint-proxyが`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。
+
+実体はDeployment配下の`envoy`コンテナを含むPodであり、任意のNodeにスケジューリングされている。
 
 <br>
 
