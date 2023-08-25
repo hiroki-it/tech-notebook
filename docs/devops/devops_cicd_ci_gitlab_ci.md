@@ -374,8 +374,8 @@ stages:
 
 # terraform fmt
 fmt:
+  # サービスコンテナ
   services:
-    # Docker in Dockerに対応するコンテナイメージを使用する
     - docker:dind
   image: hashicorp/terraform:1.4.6
   stage: build
@@ -661,26 +661,36 @@ gemerate_template:
 
 ### services
 
+#### ▼ services
+
 ![gitlab_service-container.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab_service-container.png)
 
-JobのCIの実行環境とは別の実行環境を作成するため、イメージ名を設定する。
-
-Jobでアプリコンテナを動かし、DBコンテナを別に起動しておくためなどに使用する。
-
-両方のDockerのバージョンは合わせておいた方が良い。
+JobのCIの実行環境とは別のサービスコンテナを作成する。
 
 ```yaml
 foo_job:
-  # 別の実行環境としてコンテナを作成するために、DINDを使用する
+  # CIの実行環境
+  image: docker
+  # サービスコンテナ
   services:
     - name: docker:dind
       # 外部Dockerに対するTLSを無効化する
       command: ["--tls=false"]
-  image: docker
 ```
 
 > - https://blog.nestybox.com/2020/10/21/gitlab-dind.html
 > - https://www.ted027.com/post/gitlabci-services-host/
+
+#### ▼ Docker in Dockerの回避のため
+
+両方のDockerのバージョンは合わせておいた方が良い。
+
+#### ▼ 複数のコンテナを同時に起動するため
+
+Jobでアプリコンテナを動かし、DBコンテナを別に起動しておく場合、もう一つコンテナが必要になる。
+
+これを回避するために使用する。
+
 > - https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example
 
 <br>

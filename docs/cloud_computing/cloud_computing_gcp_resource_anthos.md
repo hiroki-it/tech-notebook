@@ -34,7 +34,7 @@ GKE Cluster (コントロールプレーンNode、ワーカーNode、を含む) 
 
 #### ▼ アタッチCluster
 
-AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境 (AWS EKS、Azure AKS、RKE、K3s) のClusterに委譲する。
+AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境 (AWS EKS、Azure AKS、RKE、K3sやK3d) のClusterに委譲する。
 
 AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
 

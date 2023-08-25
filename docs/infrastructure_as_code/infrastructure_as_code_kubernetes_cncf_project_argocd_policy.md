@@ -494,7 +494,7 @@ ArgoCDのコンポーネントのうちで、argocd-serverはclient-goパッケ�
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/go.mod#L94
 > - https://github.com/argoproj/gitops-engine/blob/master/go.mod#L17
 
-ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3sを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。
+ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3sやK3dを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。
 
 例えば、ArgoCDの`v2.7.3`は、K3sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`に対応しているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
 
