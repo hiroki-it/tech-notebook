@@ -448,6 +448,23 @@ data:
 
 > - https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
 
+#### ▼ JSONファイルを読み込める
+
+Helmには`.Files.Get`関数や`.Files.Glob`関数がある。
+
+これらの関数でJSONファイルを読み込もうとすると、 (なぜか) エラーになる。
+
+Helmfileの`readFile`関数ではエラーが起こらない。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-configmap
+data:
+  foo.json: | {{ readFile foo.json | nindent 4 }}
+```
+
 <br>
 
 ## 05. values.gotmplファイル

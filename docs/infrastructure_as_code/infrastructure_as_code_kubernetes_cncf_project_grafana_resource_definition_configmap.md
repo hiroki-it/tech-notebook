@@ -21,7 +21,7 @@ Grafanaの`datasource.yaml`ファイルを管理する。
 
 <br>
 
-### grafana-datasource-cm用のInitContainer
+### サイドカー (grafana-sc-datasources)
 
 Grafanaのコンテナが起動する前に、データソースをセットアップする。
 
@@ -39,8 +39,7 @@ spec:
 
       ...
 
-  # InitContainer
-  initContainers:
+    # サイドカー
     - name: grafana-sc-datasources
       image: quay.io/kiwigrid/k8s-sidecar:1.14.2
 
@@ -166,7 +165,7 @@ Grafanaの`grafana.ini`ファイルを管理する。
 
 <br>
 
-### download_dashboard.sh
+### InitContainer (download-dashboards)
 
 Grafanaの起動時に、リモートからダッシュボードをダウンロードする。
 
@@ -201,31 +200,38 @@ spec:
   template:
     metadata:
     spec:
-      initContainers:
-        - name: download-dashboards
-          image: "docker.io/curlimages/curl:7.85.0"
-          imagePullPolicy: IfNotPresent
-          command: ["/bin/sh"]
-          # ダウンロードスクリプトを実行する
-          args:
-            [
-              "-c",
-              "mkdir -p /var/lib/grafana/dashboards/default && /bin/sh -x /etc/grafana/download_dashboards.sh",
-            ]
-          volumeMounts:
-            # ダウンロードスクリプトをマウントする
-            - name: config
-              mountPath: "/etc/grafana/download_dashboards.sh"
-              subPath: download_dashboards.sh
-            - name: storage
-              mountPath: "/var/lib/grafana"
-      volumes:
-        - name: config
-          configMap:
-            name: foo-grafana
-        - name: dashboards-community
-          configMap:
-            name: foo-grafana-dashboards-community
+      - containers:
+          - name: grafana
+            image: "docker.io/grafana/grafana:10.0.3"
+          - name: grafana-sc-dashboard
+            image: "quay.io/kiwigrid/k8s-sidecar:1.24.6"
+          - name: grafana-sc-datasources
+            image: "quay.io/kiwigrid/k8s-sidecar:1.24.6"
+        initContainers:
+          - name: download-dashboards
+            image: "docker.io/curlimages/curl:7.85.0"
+            imagePullPolicy: IfNotPresent
+            command: ["/bin/sh"]
+            # ダウンロードスクリプトを実行する
+            args:
+              [
+                "-c",
+                "mkdir -p /var/lib/grafana/dashboards/default && /bin/sh -x /etc/grafana/download_dashboards.sh",
+              ]
+            volumeMounts:
+              # ダウンロードスクリプトをマウントする
+              - name: config
+                mountPath: "/etc/grafana/download_dashboards.sh"
+                subPath: download_dashboards.sh
+              - name: storage
+                mountPath: "/var/lib/grafana"
+        volumes:
+          - name: config
+            configMap:
+              name: foo-grafana
+          - name: dashboards-community
+            configMap:
+              name: foo-grafana-dashboards-community
 ```
 
 <br>
@@ -450,7 +456,7 @@ Grafanaの`dashboard.json`ファイルを管理する。
 
 <br>
 
-### grafana-dashboard-cm用のサイドカー
+### サイドカー (grafana-sc-dashboard)
 
 Kubernetesの通常の仕組みであれば、ConfigMapの数だけVolumeMountでマウントする必要がある。
 
