@@ -165,77 +165,6 @@ Grafanaの`grafana.ini`ファイルを管理する。
 
 <br>
 
-### InitContainer (download-dashboards)
-
-Grafanaの起動時に、リモートからダッシュボードをダウンロードする。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: foo-grafana
-  namespace: prometheus
-data:
-  download_dashboard.sh: |
-    #!/usr/bin/env sh
-    set -euf
-
-    curl -skf \
-      --connect-timeout 60 \
-      --max-time 60 \
-      -H "Accept: application/json" \
-      -H "Content-Type: application/json;charset=UTF-8" \
-      "https://raw.githubusercontent.com/example/foo.json" \
-      > "/var/lib/grafana/foo.json"
-```
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: foo-grafana
-  namespace: prometheus
-spec:
-  replicas: 1
-  template:
-    metadata:
-    spec:
-      - containers:
-          - name: grafana
-            image: "docker.io/grafana/grafana:10.0.3"
-          - name: grafana-sc-dashboard
-            image: "quay.io/kiwigrid/k8s-sidecar:1.24.6"
-          - name: grafana-sc-datasources
-            image: "quay.io/kiwigrid/k8s-sidecar:1.24.6"
-        initContainers:
-          - name: download-dashboards
-            image: "docker.io/curlimages/curl:7.85.0"
-            imagePullPolicy: IfNotPresent
-            command: ["/bin/sh"]
-            # ダウンロードスクリプトを実行する
-            args:
-              [
-                "-c",
-                "mkdir -p /var/lib/grafana/dashboards/default && /bin/sh -x /etc/grafana/download_dashboards.sh",
-              ]
-            volumeMounts:
-              # ダウンロードスクリプトをマウントする
-              - name: config
-                mountPath: "/etc/grafana/download_dashboards.sh"
-                subPath: download_dashboards.sh
-              - name: storage
-                mountPath: "/var/lib/grafana"
-        volumes:
-          - name: config
-            configMap:
-              name: foo-grafana
-          - name: dashboards-community
-            configMap:
-              name: foo-grafana-dashboards-community
-```
-
-<br>
-
 ### pathsセクション
 
 記入中...
@@ -403,6 +332,122 @@ data:
     # foo.grafana.com/dashboards がホームになる。
     home_page = dashboards
 ```
+
+<br>
+
+## 02-02. download_dashboard.sh
+
+### download_dashboard.shとは
+
+リモートからダッシュボードをダウンロードするスクリプトを定義する。
+
+必ず`dashboardproviders.yaml`ファイルも合わせて必要である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-grafana
+  namespace: prometheus
+data:
+  download_dashboard.sh: |
+    #!/usr/bin/env sh
+    set -euf
+
+    curl -skf \
+      --connect-timeout 60 \
+      --max-time 60 \
+      -H "Accept: application/json" \
+      -H "Content-Type: application/json;charset=UTF-8" \
+      "https://raw.githubusercontent.com/example/foo.json" \
+      > "/var/lib/grafana/community/foo.json"
+  dashboardproviders.yaml: |
+    apiVersion: 1
+    providers:
+      - name: foo
+```
+
+> - https://github.com/grafana/helm-charts/issues/127#issuecomment-776311048
+
+<br>
+
+### InitContainer (download-dashboards)
+
+Grafanaの起動時に、リモートからダッシュボードをダウンロードする。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-grafana
+  namespace: prometheus
+spec:
+  replicas: 1
+  template:
+    metadata:
+    spec:
+      - containers:
+          - name: grafana
+            image: "docker.io/grafana/grafana:10.0.3"
+          - name: grafana-sc-dashboard
+            image: "quay.io/kiwigrid/k8s-sidecar:1.24.6"
+          - name: grafana-sc-datasources
+            image: "quay.io/kiwigrid/k8s-sidecar:1.24.6"
+        initContainers:
+          - name: download-dashboards
+            image: "docker.io/curlimages/curl:7.85.0"
+            imagePullPolicy: IfNotPresent
+            command: ["/bin/sh"]
+            # ダウンロードスクリプトを実行する
+            args:
+              [
+                "-c",
+                "mkdir -p /var/lib/grafana/dashboards/default && /bin/sh -x /etc/grafana/download_dashboards.sh",
+              ]
+            volumeMounts:
+              # ダウンロードスクリプトをマウントする
+              - name: config
+                mountPath: "/etc/grafana/download_dashboards.sh"
+                subPath: download_dashboards.sh
+              - name: storage
+                mountPath: "/var/lib/grafana"
+        volumes:
+          - name: config
+            configMap:
+              name: foo-grafana
+          - name: dashboards-community
+            configMap:
+              name: foo-grafana-dashboards-community
+```
+
+<br>
+
+## 02-03. dashboardproviders.yaml
+
+ダッシュボードの共通定義をプロバイダーとして設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-grafana
+  namespace: prometheus
+data:
+  dashboardproviders.yaml: |
+    apiVersion: 1
+    providers:
+      - name: foo
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/foo
+```
+
+> - https://grafana.com/tutorials/provision-dashboards-and-data-sources/#provision-a-dashboard
+> - https://github.com/grafana/helm-charts/issues/127#issuecomment-776311048
 
 <br>
 
