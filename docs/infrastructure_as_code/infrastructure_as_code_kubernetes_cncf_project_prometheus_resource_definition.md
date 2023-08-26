@@ -826,6 +826,43 @@ spec:
     - interval: 15s
 ```
 
+#### ▼ relabelings
+
+作成したメトリクスのラベルやその値を変換する。
+
+ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうちで、`service`/`pod`/`endpoints`のラベルを変換できる。
+
+**＊例＊**
+
+node-exporterが作成したメトリクスでは、`instance`ラベルが`*.*.*.*:<ポート番号>`になっている。
+
+これだとわかりにくいので、Podの`__meta_kubernetes_pod_node_name`ラベルの値 (Nodeのホスト名) に変換する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: foo-service-monitor
+  namespace: prometheus
+spec:
+  endpoints:
+    # __meta_kubernetes_pod_node_nameラベルの値をinstanceラベルの値として挿入する
+    - relabelings:
+        - action: replace
+          # 変換のために使用する値を持つラベル名を設定する
+          sourceLabels:
+            - __meta_kubernetes_pod_node_name
+          # 値の変換対象とするラベル名を設定する
+          targetLabel: instance
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-node-exporter
+```
+
+> - https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/
+> - https://github.com/prometheus-operator/prometheus-operator/issues/135#issuecomment-313087336
+> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config
+
 #### ▼ path
 
 Serviceの待ち受けるパスを設定する。

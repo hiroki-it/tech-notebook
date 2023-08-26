@@ -54,7 +54,7 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 #### ▼ グラフ化手法
 
-Kialiは、cytoscape.jsパッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istioから収集したメトリクスをグラフ化する。
+Kialiは、cytoscape.jsパッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istioから収集したデータポイントをグラフ化する。
 
 > - https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs
 > - https://blog.js.cytoscape.org/2020/05/11/layouts/#choice-of-layout

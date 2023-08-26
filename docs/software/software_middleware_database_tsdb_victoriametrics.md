@@ -21,7 +21,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 ロードバランサー、vm-select、vm-storage、vm-insert、といったコンポーネントから構成されている。
 
-リモートストレージとして、Prometheusで収集したメトリクスを保管する。
+リモートストレージとして、Prometheusで収集したデータポイントを保管する。
 
 エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。
 

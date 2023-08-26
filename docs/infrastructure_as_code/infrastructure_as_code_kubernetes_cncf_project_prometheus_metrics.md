@@ -105,9 +105,9 @@ prometheus_tsdb_compaction_chunk_samples_sum
 
 <br>
 
-## 02-02. 外部から収集したメトリクス
+## 02-02. 外部から収集したデータポイント
 
-### kubeletから収集したメトリクス
+### kubeletから収集したデータポイント
 
 #### ▼ container_cpu_usage_seconds_total
 

@@ -23,7 +23,7 @@ PodとNodeのメトリクスのデータポイントを収集し、`kubectl top`
 
 また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。
 
-KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスのデータポイントを収集しつつ、収集したメトリクスを拡張APIサーバーで公開する。
+KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスのデータポイントを収集しつつ、収集したデータポイントを拡張APIサーバーで公開する。
 
 似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
