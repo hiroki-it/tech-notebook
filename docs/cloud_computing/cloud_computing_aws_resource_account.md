@@ -23,7 +23,7 @@ Webサイトのクラウドインフラの実行環境ごとに作成したほ�
 
 アカウントIDは機密ではないため、仮にバージョン管理してしまうようなことがあっても問題ない。
 
-> - https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html
+> - https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-identifiers.html
 > - https://www.lastweekinaws.com/blog/are-aws-account-ids-sensitive-information/
 
 <br>

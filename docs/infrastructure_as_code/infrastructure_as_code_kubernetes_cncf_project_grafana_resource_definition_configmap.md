@@ -168,15 +168,13 @@ Grafanaの`grafana.ini`ファイルを管理する。
 
 ### download_dashboard.sh
 
-#### ▼ リモートからの場合
-
-Grafanaの起動時に、ローカル/リモートからダッシュボードをダウンロードする。
+Grafanaの起動時に、リモートからダッシュボードをダウンロードする。
 
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana
+  name: foo-grafana
   namespace: prometheus
 data:
   download_dashboard.sh: |
@@ -189,7 +187,7 @@ data:
       -H "Accept: application/json" \
       -H "Content-Type: application/json;charset=UTF-8" \
       "https://raw.githubusercontent.com/example/foo.json" \
-      > "/var/lib/grafana/dashboards/community/node-exporter-full.json"
+      > "/var/lib/grafana/foo.json"
 ```
 
 ```yaml
@@ -208,12 +206,14 @@ spec:
           image: "docker.io/curlimages/curl:7.85.0"
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
+          # ダウンロードスクリプトを実行する
           args:
             [
               "-c",
               "mkdir -p /var/lib/grafana/dashboards/default && /bin/sh -x /etc/grafana/download_dashboards.sh",
             ]
           volumeMounts:
+            # ダウンロードスクリプトをマウントする
             - name: config
               mountPath: "/etc/grafana/download_dashboards.sh"
               subPath: download_dashboards.sh
@@ -227,8 +227,6 @@ spec:
           configMap:
             name: foo-grafana-dashboards-community
 ```
-
-#### ▼ ローカルからの場合
 
 <br>
 
