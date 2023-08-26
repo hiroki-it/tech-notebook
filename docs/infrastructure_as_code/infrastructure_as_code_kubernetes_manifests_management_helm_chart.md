@@ -165,12 +165,13 @@ dependencies:
   - name: foo
     version: 1.0.0
     repository: https://foo.com/foo-chart
-    # .<チャート名>.enabledキーが有効な場合のみ使用する。
+    # valuesファイルで foo.enabled を true にした場合
     condition: foo.enabled
   - name: bar
     version: 1.0.0
     repository: https://bar.com/bar-chart
-    condition: foo.enabled
+    # valuesファイルで bar.enabled を true にした場合
+    condition: bar.enabled
 ```
 
 > - https://helm.sh/docs/chart_template_guide/subcharts_and_globals/#overriding-values-from-a-parent-chart

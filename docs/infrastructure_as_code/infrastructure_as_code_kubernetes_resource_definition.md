@@ -1653,6 +1653,8 @@ spec:
           args:
             - echo Hello World
       restartPolicy: OnFailure
+      nodeSelector:
+        node.kubernetes.io/nodegroup: foo-node-group
 ```
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template

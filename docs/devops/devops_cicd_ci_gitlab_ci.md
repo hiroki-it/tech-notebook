@@ -45,6 +45,16 @@ repository/
 
 ### Kubernetes on CI
 
+GitLab CI上でK8s Clusterを作成する場合には、Docker in Dockerが起こる。
+
+```yaml
+variables:
+  DOCKER_DRIVER: "overlay2"
+  DOCKER_HOST: "tcp://localhost:2375"
+  DOCKER_TLS_CERTDIR: ""
+```
+
+> - https://docs.avisi.cloud/blog/2021/07/31/running-kubernetes-on-gitlab-ci/
 > - https://containerinfra.com/blog/gitlab/2021-07-31-kubernetes-in-gitlab-ci/
 > - https://gist.github.com/trondhindenes/0307fbe9cda1164115353b4632a31ea9
 

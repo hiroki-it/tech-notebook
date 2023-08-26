@@ -17,17 +17,19 @@ $ k3d version
 
 <br>
 
-## 02. コマンド
+## 02. cluster
 
-### cluster
+### create
 
-#### ▼ create
+#### ▼ --image
+
+Kubernetesのバージョンを指定して、Clusterを作成する。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
 ```
 
-#### ▼ delete
+### delete
 
 ```bash
 $ k3d cluster delete foo-cluster
