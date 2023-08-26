@@ -166,6 +166,72 @@ Grafanaの`grafana.ini`ファイルを管理する。
 
 <br>
 
+### download_dashboard.sh
+
+#### ▼ リモートからの場合
+
+Grafanaの起動時に、ローカル/リモートからダッシュボードをダウンロードする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  download_dashboard.sh: |
+    #!/usr/bin/env sh
+    set -euf
+
+    curl -skf \
+      --connect-timeout 60 \
+      --max-time 60 \
+      -H "Accept: application/json" \
+      -H "Content-Type: application/json;charset=UTF-8" \
+      "https://raw.githubusercontent.com/example/foo.json" \
+      > "/var/lib/grafana/dashboards/community/node-exporter-full.json"
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-grafana
+  namespace: prometheus
+spec:
+  replicas: 1
+  template:
+    metadata:
+    spec:
+      initContainers:
+        - name: download-dashboards
+          image: "docker.io/curlimages/curl:7.85.0"
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/sh"]
+          args:
+            [
+              "-c",
+              "mkdir -p /var/lib/grafana/dashboards/default && /bin/sh -x /etc/grafana/download_dashboards.sh",
+            ]
+          volumeMounts:
+            - name: config
+              mountPath: "/etc/grafana/download_dashboards.sh"
+              subPath: download_dashboards.sh
+            - name: storage
+              mountPath: "/var/lib/grafana"
+      volumes:
+        - name: config
+          configMap:
+            name: foo-grafana
+        - name: dashboards-community
+          configMap:
+            name: foo-grafana-dashboards-community
+```
+
+#### ▼ ローカルからの場合
+
+<br>
+
 ### pathsセクション
 
 記入中...

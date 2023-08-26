@@ -299,7 +299,7 @@ $ kubectl get --raw /apis/apps/v1 | jq .
 
 ```bash
 # autoscalingの場合
-$ kubectl get --raw /apis/autoscaling | jq .                                                                                                                          (arn:aws:eks:ap-northeast-1:329512992440:cluster/paylab-nonprd-argocd-unif)
+$ kubectl get --raw /apis/autoscaling | jq .
 
 {
   "kind": "APIGroup",
