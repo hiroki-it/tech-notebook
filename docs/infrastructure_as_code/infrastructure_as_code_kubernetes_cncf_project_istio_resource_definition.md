@@ -759,7 +759,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
   template:
     spec:
       containers:

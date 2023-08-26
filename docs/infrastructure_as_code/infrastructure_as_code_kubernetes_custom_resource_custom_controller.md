@@ -29,11 +29,17 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 ![custom_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
 
-custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
+`(1)`:
 
-カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+    custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
 
-するとcustom-controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
+`(2)`:
+
+    カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+
+`(3)`:
+
+    custom-controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 
 クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。
 
@@ -113,6 +119,8 @@ Operatorがいる状況で、カスタムリソースとCRDのマニフェスト
 この時CRDを改めて作成しても、Operatorはカスタムリソースを自動的に作成しない。
 
 Operatorに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。
+
+Operatorは関連する全てのCRDを要求し、たとえそのCRDに対応するカスタムリソースを作成しないとしても、CRDだけは永続化しておく必要がある。(例：Prometheus系のCRDを全て作成しないと、PrometheusOperatorがエラーになる)
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator-controller.png)
 

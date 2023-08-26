@@ -95,7 +95,7 @@ $ /opt/prometheus/prometheus \
     --config.file=/opt/prometheus/prometheus.yml \
     --web.console.templates=/opt/prometheus/consoles \
     --web.console.libraries=/opt/prometheus/console_libraries \
-    --web.external-url="https://foo.prometheus.com/" \
+    --web.external-url="https://prometheus.example.com/" \
     --web.route-prefix=/ \
     --storage.tsdb.retention.time=3d \
     --storage.tsdb.path=/var/lib/prometheus
@@ -107,7 +107,7 @@ Alertmanagerをクラスター化する場合、インスタンス間で相互TL
 $ /opt/alertmanager/alertmanager \
     --config.file=/opt/alertmanager/alertmanager.yml \
     --web.listen-address=:9093 \
-    --web.external-url="https://foo.alertmanager.com/" \
+    --web.external-url="https://alertmanager.example.com/" \
     --web.route-prefix=/ \
     --log.format=json \
     --data.retention=120h \
@@ -306,7 +306,7 @@ metadata:
   name: foo-alertmanager
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   version: v1.0.0
 ```
@@ -324,7 +324,7 @@ metadata:
   name: foo-alertmanager
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   serviceAccountName: foo-serviceaccount
 ```
@@ -344,7 +344,7 @@ metadata:
   name: foo-alertmanager
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   baseImage: quay.io/prometheus/alertmanager
 ```
@@ -353,7 +353,9 @@ spec:
 
 ### .spec.externalUrl
 
-AlertmanagerのURLを設定する。
+AlertmanagerのダッシュボードのURLを設定する。
+
+注意点として、IngressのHostヘッダールールで、ダッシュボードのドメインを許可する必要がある。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -362,9 +364,9 @@ metadata:
   name: foo-alertmanager
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
-  externalUrl: https://example.com
+  externalUrl: https://alertmanager.example.com
 ```
 
 <br>
@@ -380,7 +382,7 @@ metadata:
   name: foo-alertmanager
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   replicas: 2
 ```
@@ -398,7 +400,7 @@ metadata:
   name: foo-alertmanager
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   logLevel: warn
 ```
@@ -418,7 +420,7 @@ metadata:
   name: foo-alertmanager
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   storage:
     volumeClaimTemplate:
@@ -516,7 +518,7 @@ metadata:
   name: pod-prometheus
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   alerting:
     alertmanagers:
@@ -525,6 +527,26 @@ spec:
         namespace: prometheus
         pathPrefix: /
         port: web
+```
+
+<br>
+
+### .spec.externalUrl
+
+PrometheusのダッシュボードのURLを設定する。
+
+注意点として、IngressのHostヘッダールールで、ダッシュボードのドメインを許可する必要がある。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: pod-prometheus
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/name: foo
+spec:
+  externalUrl: https://prometheus.example.com
 ```
 
 <br>
@@ -540,7 +562,7 @@ metadata:
   name: pod-prometheus
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   image: "quay.io/prometheus/prometheus:v1.0.0"
 ```
@@ -558,7 +580,7 @@ metadata:
   name: pod-prometheus
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   retention: 14d
 ```
@@ -578,7 +600,7 @@ metadata:
   name: pod-prometheus
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   remoteWrite:
     - name: victoria-metrics
@@ -600,7 +622,7 @@ metadata:
   name: pod-prometheus
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   storage:
     volumeClaimTemplate:
@@ -683,7 +705,7 @@ metadata:
   name: pod-prometheus-rule
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   groups:
     - name: foo-pod-alert-prometheus-rule
@@ -713,7 +735,7 @@ metadata:
   name: pod-cpu-alert-prometheus-rule
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   groups:
      - rules:
@@ -751,7 +773,7 @@ metadata:
   name: pod-cpu-alert-prometheus-rule
   namespace: prometheus
   labels:
-    app.kubernetes.io/app: foo
+    app.kubernetes.io/name: foo
 spec:
   groups:
     - rules:
@@ -772,7 +794,9 @@ spec:
 
 Prometheusは、Podから直接的にデータポイントを収集できるが、この時PodのIPアドレスは動的に変化してしまう。
 
-そのため、基本的にはServiceMonitorを使用し、Podを動的に検出できるようにする。
+そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorを使用してPodを動的に検出できるようにする。
+
+注意点として、アプリケーションだけでなく、ExporterなどのPrometheusのコンポーネントのPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 
@@ -934,8 +958,7 @@ metadata:
 spec:
   - selector:
       matchLabels:
-        app.kubernetes.io/managed-by: prometheus-operator
-        app.kubernetes.io/app: foo-service
+        app.kubernetes.io/name: foo-service
 ```
 
 ```yaml
@@ -944,12 +967,36 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/managed-by: prometheus-operator
-    app.kubernetes.io/app: foo-service
+    app.kubernetes.io/name: foo-service
 ```
 
 > - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 > - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
+
+**＊例＊**
+
+node-exporterのPodからメトリクスを収集する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: foo-service-monitor
+  namespace: prometheus
+spec:
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: prometheus-node-exporter
+```
+
+```yaml
+# 収集対象のService
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: prometheus-node-exporter
+```
 
 <br>
 

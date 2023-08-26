@@ -23,6 +23,40 @@ PrometheusOperatorは、Prometheus、Alertmanager、Expoter (Node exporter、kub
 
 <br>
 
+### セットアップ
+
+PrometheusOperatorは、Prometheus系の全てのカスタムリソースを要求するので、これを作成する必要がある。
+
+**＊例＊**
+
+kube-prometheus-stackが提供するCRDを使用する。
+
+```bash
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-alertmanagerconfigs.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-alertmanagers.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-probes.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheusagents.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheuses.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheusrules.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-scrapeconfigs.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml"
+$ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-thanosrulers.yaml"
+
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-alertmanagerconfigs.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-alertmanagers.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-probes.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheusagents.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheuses.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheusrules.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-scrapeconfigs.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml"
+$ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-thanosrulers.yaml"
+```
+
+<br>
+
 ## 02. spec
 
 現状、PrometheusOperatorという名前のカスタムリソースはない。

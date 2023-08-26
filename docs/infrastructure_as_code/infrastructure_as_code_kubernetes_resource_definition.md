@@ -587,12 +587,12 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -620,12 +620,12 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -653,12 +653,12 @@ metadata:
 spec:
   selector:
     matchLabels: # Deploymentに紐付けるPodのmetadata.labelsキー
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels: # Podのmetadata.labelsキー
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -678,19 +678,19 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod # 変更しようとする
+      app.kubernetes.io/name: foo-pod # 変更しようとする
       app.kubernetes.io/component: app # 変更しようとする
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: app
 ```
 
 すると、以下のようなエラーになってしまう。
 
 ```bash
-v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/app":"foo-pod", "app.kubernetes.io/component":"app"}, MatchExpressions:[]v1.LabelSelectorRequirement(nil)}: field is immutable
+v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/name":"foo-pod", "app.kubernetes.io/component":"app"}, MatchExpressions:[]v1.LabelSelectorRequirement(nil)}: field is immutable
 ```
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#label-selector-updates
@@ -728,12 +728,12 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -760,12 +760,12 @@ spec:
       maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -801,12 +801,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
     spec:
       containers:
         - name: app
@@ -2372,12 +2372,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
   replicas: 3
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
     spec:
       containers:
         - name: app
@@ -3654,7 +3654,7 @@ spec:
       image: app:1.0.0
   topologySpreadConstraints:
     - labelSelector:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
 ```
 
 > - https://zenn.dev/tmrekk/articles/07f30b09c26b50#labelselector%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
@@ -3995,7 +3995,7 @@ spec:
   maxUnavailable: 1
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod # 対象のPod
+      app.kubernetes.io/name: foo-pod # 対象のPod
 ```
 
 > - https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
@@ -4019,7 +4019,7 @@ spec:
   selector:
     matchLabels:
       # 対象のPod
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
 ```
 
 > - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
@@ -4039,7 +4039,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod # 対象のPod
+      app.kubernetes.io/name: foo-pod # 対象のPod
 ```
 
 > - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
@@ -4662,7 +4662,7 @@ metadata:
   name: foo-app-service
 spec:
   selector:
-    app.kubernetes.io/app: foo-pod
+    app.kubernetes.io/name: foo-pod
 ```
 
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
@@ -4692,7 +4692,7 @@ spec:
       port: 8080 # Serviceが待ち受けるポート番号
       targetPort: 8080 # ルーティング先のポート番号 (containerPort名でもよい)
   selector:
-    app.kubernetes.io/app: foo-pod
+    app.kubernetes.io/name: foo-pod
   # clusterIP: *.*.*.*
 ```
 
@@ -4720,7 +4720,7 @@ spec:
       port: 8080 # Serviceが待ち受けるポート番号
       targetPort: 8080 # ルーティング先のポート番号 (containerPort名でもよい)
   selector:
-    app.kubernetes.io/app: foo-pod
+    app.kubernetes.io/name: foo-pod
 ```
 
 NodePortのポート番号は、`30000` 〜 `32767`番である必要がある。
@@ -4756,7 +4756,7 @@ spec:
       port: 8080 # Serviceが待ち受けるポート番号
       targetPort: 8080 # ルーティング先のポート番号 (containerPort名でもよい)
   selector:
-    app.kubernetes.io/app: foo-pod
+    app.kubernetes.io/name: foo-pod
 # Kubernetesが自動的に追加するキー
 status:
   loadBalancer:
@@ -4942,13 +4942,13 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-mysql-service
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/name: foo
         app.kubernetes.io/component: db
     spec:
       containers:
@@ -4964,7 +4964,7 @@ spec:
     - metadata:
         name: foo-standard-volume-claim
         labels:
-          app.kubernetes.io/app: foo
+          app.kubernetes.io/name: foo
           app.kubernetes.io/component: db
       spec:
         storageClassName: standard
@@ -4993,13 +4993,13 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-mysql-service
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: db
     spec:
       containers:
@@ -5025,7 +5025,7 @@ spec:
     - metadata:
         name: foo-standard-volume-claim
         labels:
-          app.kubernetes.io/app: foo
+          app.kubernetes.io/name: foo
           app.kubernetes.io/component: db
       spec:
         storageClassName: standard
@@ -5054,13 +5054,13 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-mysql-service
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: db
     spec:
       containers:
@@ -5075,7 +5075,7 @@ spec:
     - metadata:
         name: foo-standard-volume-claim
         labels:
-          app.kubernetes.io/app: foo
+          app.kubernetes.io/name: foo
           app.kubernetes.io/component: db
       spec:
         storageClassName: standard

@@ -227,7 +227,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/app: foo-deployment
+    app.kubernetes.io/name: foo-deployment
 ```
 
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/

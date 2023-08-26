@@ -74,11 +74,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo-pod
+        app.kubernetes.io/name: foo-pod
     spec:
       containers:
         - name: app

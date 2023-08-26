@@ -194,7 +194,7 @@ kind: Deployment
 metadata:
   name: {{ .Values.global.env }}-{{ .Values.global.appName }}-pod
   labels:
-    app.kubernetes.io/app: {{ .Values.global.appName }}
+    app.kubernetes.io/name: {{ .Values.global.appName }}
 ```
 
 > - https://github.com/helm/helm/issues/8026
@@ -866,7 +866,7 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo-pod
+      app.kubernetes.io/name: foo-pod
   template:
     metadata:
       annotations:
