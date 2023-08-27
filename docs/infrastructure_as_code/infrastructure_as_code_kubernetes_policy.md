@@ -411,7 +411,14 @@ AWS EKSでの目安であるが、サブネットごとに `/19`や `/20`なる�
 
 ネットワークの性能指標に関するメトリクスである。
 
-収集ツールとして、node-exporterがある。
+収集ツールとして、kuebeletに内蔵されたcAdvisorがある。
+
+| メトリクス                               | 単位     | 説明                                                          | アラート条件例 (合致したら発火)                            |
+| ---------------------------------------- | -------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
+| `container_network_receive_bytes_total`  | カウント | 同じCluster内の受信したバイトの累積数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `5`分<br>・閾値 : `<= 2` |
+| `container_network_transmit_bytes_total` | カウント | 同じCluster内の送信したバイトの累積数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `5`分<br>・閾値 : `<= 2` |
+
+> - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
 
 <br>
 
