@@ -725,19 +725,19 @@ kubernetes-mixinsはGrafanaダッシュボードも公開しており、kubernet
 
 #### ▼ name
 
-グループ名を設定する。
+ルールのグループ名を設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: pod-prometheus-rule
+  name: foo
   namespace: prometheus
   labels:
     app.kubernetes.io/name: foo
 spec:
   groups:
-    - name: foo-pod-alert-prometheus-rule
+    - name: foo-rules
 
   # グループは複数設定できる。
   # - name:
@@ -748,6 +748,8 @@ spec:
 #### ▼ rules (アラートルールの場合)
 
 `alert`キーを宣言し、アラートルールを設定する。
+
+アラートルールは、『アッパーキャメルケース』で命名する。
 
 | 項目          | 説明                                                                                                                       |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -761,14 +763,16 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: pod-cpu-alert-prometheus-rule
+  name: foo-prometheus-rule
   namespace: prometheus
   labels:
     app.kubernetes.io/name: foo
 spec:
   groups:
-     - rules:
-         - alert: foo-pod-cpu-alert-prometheus-rule
+     - name: foo-alert-rules
+       rules:
+         # アッパーキャメルケース
+         - alert: FooPodCpuUtilization
            annotations:
              summary: 【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内のコンテナのCPU使用率の上昇しました。
              description: {{ {{"{{"}} $labels.source {{"}}"}} }}コンテナのCPU使用率が{{ {{"{{"}} $value {{"}}"}} }}になりました。
@@ -790,6 +794,8 @@ spec:
 
 `record`キーを宣言し、レコーディングルールを設定する。
 
+アラートルールは、『スネークケース』『コロン区切り』で命名する。
+
 | 項目     | 説明                                                                                                                 |
 | -------- | -------------------------------------------------------------------------------------------------------------------- |
 | `record` | レコーディングルール名を設定する                                                                                     |
@@ -799,14 +805,15 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: pod-cpu-alert-prometheus-rule
+  name: foo-prometheus-rule
   namespace: prometheus
   labels:
     app.kubernetes.io/name: foo
 spec:
   groups:
-    - rules:
-        - record: foo-pod-cpu-record-prometheus-rule
+    - name: foo-recording-rules
+      rules:
+        - record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
           # PromQL
           expr: ...
 ```
@@ -825,12 +832,13 @@ Prometheusは、Podから直接的にデータポイントを収集できるが�
 
 そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorを使用してPodを動的に検出できるようにする。
 
-注意点として、アプリケーションだけでなく、ExporterなどのPrometheusのコンポーネントのPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。
+注意点として、アプリケーションだけでなく、Prometheusのコンポーネント (node-exporterやkube-state-metricsといったExporterなど) のPodやKubernetesコンポーネント (kubeletなど)も動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+> - https://observability.thomasriley.co.uk/monitoring-kubernetes/metrics/kubelet-cadvisor/
 
 <br>
 
