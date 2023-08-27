@@ -645,16 +645,40 @@ spec:
 
 PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/rules`ディレクトリ配下にルールの設定ファイルが配置される。
 
-独自アラートルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたアラートルール (例：kubernetes-mixins) を使用した方が良い。
-
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
-> - https://monitoring.mixins.dev/
 
 <br>
 
-### 公開ルール
+### ルールの種類
 
-#### ▼ 公開ルールとは
+#### ▼ アラートルール
+
+アラートの条件とするために、メトリクスを一時的に分析する。
+
+#### ▼ レコーディングルール
+
+メトリクスを分析し、分析結果を名前をつけて保管しておく。
+
+保管したメトリクスは、レコーディング名を使用して、Prometheusのダッシュボードで新しいメトリクスのように取得できる。
+
+```yaml
+# 分析結果をnode_namespace_pod_container:container_cpu_usage_seconds_total:sum_irateというレコーディング名で保管しておく
+expr: |
+  sum by (cluster, namespace, pod, container) (
+    irate(container_cpu_usage_seconds_total{job="cadvisor", image!=""}[5m])
+  ) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (
+    1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=""})
+  )
+record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
+```
+
+> - https://monitoring.mixins.dev/kubernetes/#k8srules
+
+<br>
+
+### 公開ルールレシピ
+
+#### ▼ 公開ルールレシピとは
 
 独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins) を使用した方が良い。
 
@@ -662,7 +686,12 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 
 #### ▼ kubernetes-mixinsのPrometheusRule
 
+kubernetes-mixinsでは、アラートルールとレコーディングルールのレシピが公開されている。
+
+kubernetes-mixinsはGrafanaダッシュボードも公開しており、kubernetes-mixinsのレコーディングルールが定義済みであることが前提になっている。
+
 > - https://github.com/monitoring-mixins/website/tree/master/assets
+> - https://monitoring.mixins.dev
 
 <br>
 

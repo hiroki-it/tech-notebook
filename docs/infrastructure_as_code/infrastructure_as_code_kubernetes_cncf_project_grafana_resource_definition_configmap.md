@@ -1534,47 +1534,69 @@ data:
 
 ### kubernetes-mixinsのGrafanaダッシュボード
 
+kubernetes-mixinsはGrafanaダッシュボードを公開している。
+
+kubernetes-mixinsのレコーディングルールが定義済みであることが前提になっている。
+
+> - https://github.com/monitoring-mixins/website/tree/master/assets
+> - https://monitoring.mixins.dev
+
 #### ▼ Alertmanager
 
 | ダッシュボード名          | 監視対象          | 説明 |
 | ------------------------- | ----------------- | ---- |
 | `Alertmanager / Overview` | AlertmanagerのPod |      |
 
+> - https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards
+
 #### ▼ CoreDNS
 
-| ダッシュボード名 | 監視対象     | 説明                                                                                               |
-| ---------------- | ------------ | -------------------------------------------------------------------------------------------------- |
-| `CoreDNS`        | CoreDNSのPod | CoreDNSのPodに対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を取得する。 |
+| ダッシュボード名 | 監視対象     | 説明                                                                                                 |
+| ---------------- | ------------ | ---------------------------------------------------------------------------------------------------- |
+| `CoreDNS`        | CoreDNSのPod | CoreDNSのPodに対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。 |
+
+> - https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards
 
 #### ▼ Kubernetesコンポーネント
 
-| ダッシュボード名                                         | 監視対象                | 説明                                                                                                                                                                                                                                |
-| -------------------------------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Kubernetes / API server`                                | kube-apiserver          | kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率) を取得する。                                                                                                      |
-| `Kubernetes / Networking / Cluster`                      | 任意のCluster           | Clusterのネットワークの性能指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を取得する。                                                                                                                                 |
-| `Kubernetes / Controller Manager`                        | kube-controller-manager |                                                                                                                                                                                                                                     |
-| `Kubernetes / Compute Resources / Cluster`               | 任意のCluster           | Clusterのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                                                                             |
-| `Kubernetes / Compute Resources / Namespace (Pods)`      | 任意のPod               | Namespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNamespace複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。 |
-| `Kubernetes / Compute Resources / Node (Pods)`           | 任意のPod               | Node単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。同じNodeの複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。         |
-| `Kubernetes / Compute Resources / Pod`                   | 任意のPod               | 各Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。個別のPodや特定のPodの状況を確認したい場合に便利である。                                                       |
-| `Kubernetes / Compute Resources / Workload`              | 任意のPod               | ワークロード (例：Deployment) 単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                                           |
-| `Kubernetes / Compute Resources / Namespace (Workloads)` | 任意のPod               | ワークロード (例：Deployment) 単位かつNamespace単位で、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を取得する。                                                          |
-| `Kubernetes / Kubelet`                                   | kubelet                 |                                                                                                                                                                                                                                     |
-| `Kubernetes / Networking / Namespace (Pods)`             | 任意のPod               | Namespace単位で、Podのネットワークに関するメトリクスを取得する。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。                                                                                  |
-| `Kubernetes / Networking / Namespace (Workload)`         | 任意のPod               | ワークロード (例：Deployment) 単位で、Podのネットワークに関するメトリクスを取得する。                                                                                                                                               |
-| `Kubernetes / Persistent Volumes`                        | 任意のPod               | Persistent Volumeの使用率に関するメトリクスを取得する。                                                                                                                                                                             |
-| `Kubernetes / Networking / Pod`                          | 任意のPod               | 各Podのネットワークに関するメトリクスを取得する。Podを個別に確認したい場合に便利である。                                                                                                                                            |
-| `Kubernetes / Proxy`                                     | kube-proxy              |                                                                                                                                                                                                                                     |
-| `Kubernetes / Scheduler`                                 | kube-scheduler          |                                                                                                                                                                                                                                     |
-| `Kubernetes / Networking / Workload`                     | kube-scheduler          |                                                                                                                                                                                                                                     |
+| ダッシュボード名                  | 監視対象                | 説明                                                                                                                             | おすすめ |
+| --------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / API server`         | kube-apiserver          | kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率) を分析できる。 |          |
+| `Kubernetes / Kubelet`            | kubelet                 |                                                                                                                                  |          |
+| `Kubernetes / Proxy`              | kube-proxy              |                                                                                                                                  |          |
+| `Kubernetes / Controller Manager` | kube-controller-manager |                                                                                                                                  |          |
+| `Kubernetes / Scheduler`          | kube-scheduler          |                                                                                                                                  |          |
+
+> - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
+
+#### ▼ Kubernetesリソース
+
+| ダッシュボード名                                         | 監視対象                      | 説明                                                                                                                                                                                                                                                  | おすすめ |
+| -------------------------------------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / Compute Resources / Cluster`               | 任意のCluster                 | Cluster単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                                                                       | ★        |
+| `Kubernetes / Networking / Cluster`                      | 任意のCluster                 | Cluster単位でフィルタリングし、ネットワークの性能指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を分析できる。                                                                                                                           | ★        |
+| `Kubernetes / Compute Resources / Namespace (Pods)`      | 任意のPod                     | Namespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。 |          |
+| `Kubernetes / Compute Resources / Node (Pods)`           | 任意のPod                     | Node単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。         |          |
+| `Kubernetes / Compute Resources / Pod`                   | 任意のPod                     | Pod単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。個別のPodや特定のPodの状況を確認したい場合に便利である。                                                   |          |
+| `Kubernetes / Networking / Namespace (Pods)`             | 任意のPod                     | Namespace単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。                                                                                  |          |
+| `Kubernetes / Networking / Pod`                          | 任意のPod                     | 各Podのネットワークに関するメトリクスを分析できる。Podを個別に確認したい場合に便利である。                                                                                                                                                            |          |
+| `Kubernetes / Persistent Volumes`                        | 任意のPerisisitentVolume      | Persistent Volumeの使用率に関するメトリクスを分析できる。                                                                                                                                                                                             |          |
+| `Kubernetes / Networking / Namespace (Workload)`         | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。                                                                                                                                               |          |
+| `Kubernetes / Compute Resources / Workload`              | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                                           |          |
+| `Kubernetes / Compute Resources / Namespace (Workloads)` | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位かつNamespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                          |          |
+| `Kubernetes / Networking / Workload`                     | 任意のDeployment、StatefulSet |                                                                                                                                                                                                                                                       |          |
+
+> - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
 
 #### ▼ Node exporter
 
-| ダッシュボード名                       | 監視対象           | 説明 |
-| -------------------------------------- | ------------------ | ---- |
-| `Node Exporter / USE Method / Cluster` | Node exporterのPod |      |
-| `Node Exporter / USE Method / Node`    | Node exporterのPod |      |
-| `Node Exporter / Nodes`                | Node exporterのPod |      |
+| ダッシュボード名                       | 監視対象      | 説明                                     |
+| -------------------------------------- | ------------- | ---------------------------------------- |
+| `Node Exporter / USE Method / Cluster` | 任意のCluster | Cluster全体のUSEメトリクスを分析できる。 |
+| `Node Exporter / USE Method / Node`    | 任意のNode    | NodeのUSEメトリクスを分析できる。        |
+| `Node Exporter / Nodes`                | 任意のNode    | Nodeのメトリクスを分析できる。           |
+
+> - https://github.com/monitoring-mixins/website/tree/master/assets/node-exporter/dashboards
 
 #### ▼ Prometheus
 
@@ -1583,7 +1605,7 @@ data:
 | `Prometheus / Remote Write` | PrometheusのPod |      |
 | `Prometheus / Overview`     | PrometheusのPod |      |
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets
+> - https://github.com/monitoring-mixins/website/tree/master/assets/prometheus/dashboards
 
 #### ▼ Istioダッシュボード
 
