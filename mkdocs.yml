@@ -626,6 +626,7 @@ nav:
           - ■ リソース定義:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition.md
               - ConfigMap: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.md
+              - ダッシュボード: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.md
       - ■ Kyverno:
           - Kyverno: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.md
           - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.md
