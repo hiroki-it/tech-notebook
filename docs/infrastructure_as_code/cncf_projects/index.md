@@ -53,6 +53,7 @@
 * #### <u>リソース定義</u>
   > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition.html)
   > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.html)
+  > * ##### [ダッシュボード](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.html)
 
 <br>
 
