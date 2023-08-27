@@ -29,17 +29,17 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 ![custom_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
 
-`(1)`:
+`(1)`
 
-    custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
+: custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
 
-`(2)`:
+`(2)`
 
-    カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+: カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
 
-`(3)`:
+`(3)`
 
-    custom-controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
+: custom-controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 
 クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。
 

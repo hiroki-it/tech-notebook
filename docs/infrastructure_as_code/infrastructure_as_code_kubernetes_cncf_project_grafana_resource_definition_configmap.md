@@ -388,6 +388,9 @@ data:
   dashboardproviders.yaml: |
     apiVersion: 1
     providers:
+      - name: local
+        options:
+          path: /var/lib/grafana/dashboards/local
       - name: remote
         options:
           path: /var/lib/grafana/dashboards/remote
@@ -452,6 +455,8 @@ spec:
 
 ダッシュボードの共通定義をプロバイダーとして設定する。
 
+ローカルやリモートにあるダッシュボードのJSONを動的に読み込んでダッシュボードを作成する場合に必要になる。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -462,12 +467,10 @@ data:
   dashboardproviders.yaml: |
     apiVersion: 1
     providers:
-      - name: foo
-        orgId: 1
-        folder: ''
-        type: file
-        disableDeletion: false
-        editable: true
+      - name: local
+        options:
+          path: /var/lib/grafana/dashboards/local
+      - name: remote
         options:
           path: /var/lib/grafana/dashboards/remote
 ```
