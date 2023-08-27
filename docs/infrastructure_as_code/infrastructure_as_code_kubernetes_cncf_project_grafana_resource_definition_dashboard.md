@@ -13,7 +13,6 @@ description: ダッシュボード＠Grafanaの知見を記録しています。
 
 <br>
 
-
 ## 01. ユーザー定義のダッシュボード
 
 ### ユーザー定義のダッシュボードとは
@@ -443,7 +442,6 @@ kubernetes-mixinsのレコーディングルールが定義済みであること
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#about-the-grafana-dashboards
 
 <br>
-
 
 ## 03. セクション
 
