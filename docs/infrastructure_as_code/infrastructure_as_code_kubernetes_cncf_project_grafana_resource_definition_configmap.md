@@ -156,12 +156,30 @@ data:
 
 ## 02. grafana-ini-cm
 
-### grafana-ini-cmとは
-
 Grafanaの`grafana.ini`ファイルを管理する。
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location
 > - https://www.server-world.info/query?os=CentOS_Stream_9&p=grafana
+
+<br>
+
+## 02-02. grafana.ini
+
+### auth.anonymousセクション
+
+ユーザー名とパスワード無しでログインできるようにする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  grafana.ini: |
+    [auth.anonymous]
+    enabled = true
+```
 
 <br>
 
@@ -223,7 +241,7 @@ data:
   grafana.ini: |
     [dashboard]
     min_refresh_interval = 5s
-    default_home_dashboard_path = /tmp/dashboards/home.json
+    default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
@@ -335,13 +353,18 @@ data:
 
 <br>
 
-## 02-02. download_dashboard.sh
+## 02-03. download_dashboard.sh
 
 ### download_dashboard.shとは
 
 リモートからダッシュボードをダウンロードするスクリプトを定義する。
 
 必ず`dashboardproviders.yaml`ファイルも合わせて必要である。
+
+URLの指定の方法として、以下がある。
+
+- GitHubのRawファイルのURL (`https://raw.githubusercontent.com/example/foo.json`)
+- GrafanaのコミュニティーのAPI (`https://grafana.com/api/dashboards/<ID>/revisions/<リビジョン番号>/download`)
 
 ```yaml
 apiVersion: v1
@@ -360,11 +383,14 @@ data:
       -H "Accept: application/json" \
       -H "Content-Type: application/json;charset=UTF-8" \
       "https://raw.githubusercontent.com/example/foo.json" \
-      > "/var/lib/grafana/community/foo.json"
+      > "/var/lib/grafana/dashboards/remote/foo.json"
+  # 必ずdashboardproviders.yamlファイルが必要である
   dashboardproviders.yaml: |
     apiVersion: 1
     providers:
-      - name: foo
+      - name: remote
+        options:
+          path: /var/lib/grafana/dashboards/remote
 ```
 
 > - https://github.com/grafana/helm-charts/issues/127#issuecomment-776311048
@@ -402,7 +428,7 @@ spec:
             args:
               [
                 "-c",
-                "mkdir -p /var/lib/grafana/dashboards/default && /bin/sh -x /etc/grafana/download_dashboards.sh",
+                "mkdir -p /var/lib/grafana/dashboards/remote && /bin/sh -x /etc/grafana/download_dashboards.sh",
               ]
             volumeMounts:
               # ダウンロードスクリプトをマウントする
@@ -414,15 +440,15 @@ spec:
         volumes:
           - name: config
             configMap:
-              name: foo-grafana
-          - name: dashboards-community
+              name: foo-grafana-ini-cm
+          - name: foo-dashboards
             configMap:
-              name: foo-grafana-dashboards-community
+              name: foo-dashboards
 ```
 
 <br>
 
-## 02-03. dashboardproviders.yaml
+## 02-04. dashboardproviders.yaml
 
 ダッシュボードの共通定義をプロバイダーとして設定する。
 
@@ -443,7 +469,7 @@ data:
         disableDeletion: false
         editable: true
         options:
-          path: /var/lib/grafana/dashboards/foo
+          path: /var/lib/grafana/dashboards/remote
 ```
 
 > - https://grafana.com/tutorials/provision-dashboards-and-data-sources/#provision-a-dashboard
@@ -1262,7 +1288,7 @@ data:
 # grafana.iniファイル
 [dashboard]
 # Grafanaコンテナでホームダッシュボードのあるパス
-default_home_dashboard_path = /tmp/dashboards/home.json
+default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 ```
 
 ```json
