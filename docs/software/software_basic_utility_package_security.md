@@ -135,7 +135,7 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 
 `EnvVar`キーの定義された項目を参照せよ。
 
-> - https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
+> - https://github.com/getsops/sops/blob/v3.7.3/cmd/sops/main.go#L542-L701
 
 <br>
 

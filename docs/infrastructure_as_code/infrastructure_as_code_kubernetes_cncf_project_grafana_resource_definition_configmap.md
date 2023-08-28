@@ -158,6 +158,7 @@ data:
 
 Grafanaの`grafana.ini`ファイルを管理する。
 
+> - https://github.com/grafana/grafana/blob/main/conf/defaults.ini
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location
 > - https://www.server-world.info/query?os=CentOS_Stream_9&p=grafana
 
@@ -169,6 +170,10 @@ Grafanaの`grafana.ini`ファイルを管理する。
 
 ユーザー名とパスワード無しでログインできるようにする。
 
+`login_cookie_name`もデフォルト (`grafana_session`) 以外に変更する必要がある。
+
+anonymousユーザーは、デフォルトで`Viewer`ロールを持つ。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -177,9 +182,15 @@ metadata:
   namespace: prometheus
 data:
   grafana.ini: |
+    [auth]
+    login_cookie_name = anonymous_session
     [auth.anonymous]
     enabled = true
+    org_role = Viewer
 ```
+
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - https://github.com/grafana/grafana/issues/10727#issuecomment-832617680
 
 <br>
 

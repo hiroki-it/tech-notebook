@@ -101,10 +101,10 @@ Kubernetesでは、Serviceは単一のバージョンのPodとしか通信でき
 
 Kubernetesでは、Podの作成に応じて証明書のKubernetesリソース (Certificate、CertificateSigningRequest、など) を作成する必要がある。
 
-| 責務                | Kubernetes<br>(サービスメッシュ採用せず) |              Istio               | Linkerd | Consul | AWS App Mesh |
-| ------------------- | ---------------------------------------- | :------------------------------: | :-----: | :----: | :----------: |
-| 相互TLS認証         | 相互TLS認証ツール<br>(例：Spiffe)        | `⭕️`<br>(Spiffeへ置き換えできる) |  `⭕️`   |  `⭕️`  |     `⭕️`     |
-| SSL証明書の自動更新 | SSL証明書管理ツール<br>(例：CertManager) |               `⭕️`               |    ×    |  `⭕️`  |     `⭕️`     |
+| 責務                | Kubernetes<br>(サービスメッシュ採用せず)                              |              Istio               | Linkerd | Consul | AWS App Mesh |
+| ------------------- | --------------------------------------------------------------------- | :------------------------------: | :-----: | :----: | :----------: |
+| 相互TLS認証         | 相互TLS認証ツール<br>(例：Spiffe)                                     | `⭕️`<br>(Spiffeへ置き換えできる) |  `⭕️`   |  `⭕️`  |     `⭕️`     |
+| SSL証明書の自動更新 | ・手動でSSL証明書を更新<br>・SSL証明書管理ツール<br>(例：CertManager) |               `⭕️`               |    ×    |  `⭕️`  |     `⭕️`     |
 
 > - https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
 

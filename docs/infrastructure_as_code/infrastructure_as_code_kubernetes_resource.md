@@ -1302,7 +1302,16 @@ $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 
 PVCの値が変われば、使用するPVを変えられる。
 
+`--cascade`オプションでPodを残してStatefulSetを
+
+```bash
+$ kubectl patch prometheus foo --patch '{"spec": {"paused": true, "storage": {"volumeClaimTemplate": {"spec": {"resources": {"requests": {"storage":"10Gi"}}}}}}}' --type merge
+
+$ kubectl delete statefulset -l operator.prometheus.io/name=foo-operator --cascade=orphan
+```
+
 > - https://stackoverflow.com/questions/40335179/can-a-persistent-volume-be-resized
+> - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md#resizing-volumes
 
 <br>
 

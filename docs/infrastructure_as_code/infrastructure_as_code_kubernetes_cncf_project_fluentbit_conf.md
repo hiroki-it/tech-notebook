@@ -146,7 +146,7 @@ Inputs
 
 デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
 
-> - https://github.com/fluent/fluent-bit/blob/master/CMakeLists.txt#L157-L275
+> - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
 
 <br>
 
@@ -406,7 +406,7 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 
 デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
 
-> - https://github.com/fluent/fluent-bit/blob/master/CMakeLists.txt#L157-L275
+> - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
 
 <br>
 
@@ -905,7 +905,7 @@ Outputs
 
 デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
 
-> - https://github.com/fluent/fluent-bit/blob/master/CMakeLists.txt#L157-L275
+> - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
 
 <br>
 

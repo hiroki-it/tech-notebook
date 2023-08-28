@@ -309,7 +309,7 @@ CIツール (例：GitHub Actions、CircleCI、など)を使用してCIパイプ
 ![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
-> - https://github.com/argoproj/gitops-engine/blob/master/specs/design.md
+> - https://github.com/argoproj/gitops-engine/blob/v0.6.2/specs/design.md
 
 <br>
 

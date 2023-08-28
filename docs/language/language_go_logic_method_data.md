@@ -739,7 +739,7 @@ type slice struct {
 }
 ```
 
-> - https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
+> - https://github.com/golang/go/blob/go1.20.7/src/runtime/slice.go#L15-L19
 
 #### ▼ 宣言と代入
 

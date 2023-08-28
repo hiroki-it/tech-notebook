@@ -492,7 +492,7 @@ ArgoCDのコンポーネントのうちで、argocd-serverはclient-goパッケ�
 一方で、application-controllerも同様にclient-goパッケージ (gitops-engineがこれを持つ) を使用して通信する。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/go.mod#L94
-> - https://github.com/argoproj/gitops-engine/blob/master/go.mod#L17
+> - https://github.com/argoproj/gitops-engine/blob/v0.6.2/go.mod#L17
 
 ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3sやK3dを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。
 

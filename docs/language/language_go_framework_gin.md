@@ -224,6 +224,6 @@ c.JSON(400, gin.H{
 
 標準のルールの一覧は、以下のリンクを参考にせよ。
 
-> - https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
+> - https://github.com/go-playground/validator/blob/v10.15.1/baked_in.go#L70-L235
 
 <br>
