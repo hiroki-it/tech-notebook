@@ -828,9 +828,28 @@ spec:
 
 指定したServiceに対してPull型通信を送信し、これに紐づくPodのメトリクスのデータポイントを収集する。
 
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: foo-service-monitor
+  namespace: prometheus
+spec:
+  endpoints:
+    - port: http-foo
+      path: /metrics
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: foo-servive
+```
+
+公開しないPodであるとServiceがないため、メトリクス収集用のServiceを作成することになる。
+
 Prometheusは、Podから直接的にデータポイントを収集できるが、この時PodのIPアドレスは動的に変化してしまう。
 
-そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorを使用してPodを動的に検出できるようにする。
+そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorでServiceを介してPodを動的に検出できるようにする。
 
 注意点として、アプリケーションのPodだけでなく、Prometheusのコンポーネント (node-exporterやkube-state-metricsといったExporterなど) のPodやKubernetesコンポーネント (例：kubeletに内蔵されたcAdvisorなど) も動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
@@ -894,7 +913,7 @@ spec:
           targetLabel: instance
   selector:
     matchLabels:
-      app.kubernetes.io/name: prometheus-node-exporter
+      app.kubernetes.io/name: node-exporter-service
 ```
 
 > - https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/
@@ -984,8 +1003,8 @@ metadata:
   name: foo-service-monitor
   namespace: prometheus
 spec:
-  - namespaceSelector:
-      any: true
+  namespaceSelector:
+    any: true
 ```
 
 #### ▼ matchNames
@@ -999,9 +1018,9 @@ metadata:
   name: foo-service-monitor
   namespace: prometheus
 spec:
-  - namespaceSelector:
-      matchNames:
-        - kube-system
+  namespaceSelector:
+    matchNames:
+      - kube-system
 ```
 
 ```yaml
@@ -1031,9 +1050,9 @@ metadata:
   name: foo-service-monitor
   namespace: prometheus
 spec:
-  - selector:
-      matchLabels:
-        app.kubernetes.io/name: foo-service
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: foo-service
 ```
 
 ```yaml
@@ -1059,9 +1078,9 @@ metadata:
   name: foo-service-monitor
   namespace: prometheus
 spec:
-  - selector:
-      matchLabels:
-        app.kubernetes.io/name: prometheus-node-exporter
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: node-exporter-service
 ```
 
 ```yaml
@@ -1070,7 +1089,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: prometheus-node-exporter
+    app.kubernetes.io/name: node-exporter-service
 ```
 
 <br>
