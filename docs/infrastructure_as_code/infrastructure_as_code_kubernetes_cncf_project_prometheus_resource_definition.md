@@ -851,7 +851,7 @@ Prometheusは、Podから直接的にデータポイントを収集できるが�
 
 そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorでServiceを介してPodを動的に検出できるようにする。
 
-注意点として、アプリケーションのPodだけでなく、Prometheusのコンポーネント (node-exporterやkube-state-metricsといったExporterなど) のPodやKubernetesコンポーネント (例：kubeletに内蔵されたcAdvisorなど) も動的に検出する必要があるため、同様にServiceMonitorが必要である。
+注意点として、アプリケーションのPodだけでなく、Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisor、など) やPrometheusのコンポーネント (node-exporterやkube-state-metricsといったExporterなど) のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 

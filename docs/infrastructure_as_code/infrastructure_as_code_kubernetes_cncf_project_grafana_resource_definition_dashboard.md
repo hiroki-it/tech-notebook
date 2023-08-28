@@ -107,85 +107,72 @@ data:
 default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 ```
 
-```json
+```yaml
 {
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": "-- Grafana --",
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
-  },
+  "annotations":
+    {
+      "list":
+        [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard",
+          },
+        ],
+    },
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
   "links": [],
-  "panels": [
-    {
-      "datasource": null,
-      "gridPos": {
-        "h": 36,
-        "w": 24,
-        "x": 0,
-        "y": 0
+  "panels":
+    [
+      {
+        "datasource": null,
+        "gridPos": {"h": 36, "w": 24, "x": 0, "y": 0},
+        "id": 3,
+        "links": [],
+        "options":
+          {
+            "folderId": 0,
+            "maxItems": 100,
+            "query": "",
+            "showHeadings": true,
+            "showRecentlyViewed": false,
+            "showSearch": true,
+            "showStarred": false,
+            "tags": [],
+          },
+        "pluginVersion": "8.0.0",
+        "tags": [],
+        "title": "Dashboards",
+        "type": "dashlist",
       },
-      "id": 3,
-      "links": [],
-      "options": {
-        "folderId": 0,
-        "maxItems": 100,
-        "query": "",
-        "showHeadings": true,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": []
-      },
-      "pluginVersion": "8.0.0",
-      "tags": [],
-      "title": "Dashboards",
-      "type": "dashlist"
-    }
-  ],
+    ],
   "refresh": "",
   "schemaVersion": 30,
   "style": "dark",
-  "tags": ["<リポジトリ名>.git"],
-  "templating": {
-    "list": []
-  },
-  "time": {
-    "from": "now-6h",
-    "to": "now"
-  },
-  "timepicker": {
-    "hidden": true,
-    "refresh_intervals": [
-      "5s",
-      "10s",
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
-    "type": "timepicker"
-  },
+  # リポジトリ名やリポジトリURLをタグにつける
+  "tags": ["<リポジトリ名>", "https://github.com/example"],
+  "templating": {"list": []},
+  "time": {"from": "now-6h", "to": "now"},
+  "timepicker":
+    {
+      "hidden": true,
+      "refresh_intervals":
+        ["5s", "10s", "30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
+      "time_options":
+        ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
+      "type": "timepicker",
+    },
   "timezone": "browser",
   "title": "Home",
   "uid": null,
-  "version": 0
+  "version": 0,
 }
 ```
 
@@ -479,10 +466,10 @@ kubernetes-mixinsのレコーディングルールが定義済みであること
 
 他の何らかのチャート (例：kube-prometheus-stack) を使用した場合に、ダッシュボードが作成されることがある。
 
-これと区別できるように、本リポジトリのダッシュボードには`<リポジトリ名>.git`というタグをつけると良い。
+これと区別できるように、本リポジトリのダッシュボードには`<リポジトリ名>.git`やリポジトリURLというタグをつけると良い。
 
 ```yaml
-{"tags": ["<リポジトリ名>.git"]}
+{"tags": ["<リポジトリ名>.git", "https://github.com/example"]}
 ```
 
 <br>
@@ -704,6 +691,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
                 "refId": "Prometheus-cluster-Variable-Query",
               },
             "refresh": 2,
+            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
             "skipUrlSync": false,
             # アルファベットの昇順にする。
@@ -743,6 +732,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
                 "refId": "Prometheus-namespace-Variable-Query",
               },
             "refresh": 2,
+            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
             "skipUrlSync": false,
             "sort": 1,
@@ -781,6 +772,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
+            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
             "skipUrlSync": false,
             "sort": 1,
@@ -819,6 +812,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
                 "refId": "Prometheus-node-Variable-Query",
               },
             "refresh": 2,
+            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
             "skipUrlSync": false,
             "sort": 1,
@@ -857,6 +852,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
                 "refId": "Prometheus-container-Variable-Query",
               },
             "refresh": 2,
+            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
             "skipUrlSync": false,
             "sort": 1,

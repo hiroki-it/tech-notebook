@@ -128,10 +128,21 @@ foo-pod
 
 #### ▼ ワイルドカード
 
-`=~`演算子を使用して正規表現マッチングを有効化し、`.*`演算子でワイルドカードを適用する。
+`=~`演算子を使用して正規表現マッチングを有効化し、`.*`演算子や`$`演算子でワイルドカードを適用する。
 
 ```bash
+# 前方一致
 resource.labels.pod_name=~"foo-pod-.*"
+```
+
+```bash
+# 後方一致
+resource.labels.pod_name=~"pod$"
+```
+
+```bash
+# 部分一致
+resource.labels.pod_name=~".*pod.*"
 ```
 
 > - https://cloud.google.com/logging/docs/view/logging-query-language#regular-expressions
