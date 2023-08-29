@@ -288,17 +288,18 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 <br>
 
-### その他
-
-#### ▼ USEメトリクス
+### USEメトリクス
 
 `USE`は、Utilization (使用率)、Saturation (サチュレーション)、Errors (エラー数) のメトリクスの頭文字である。
 
 CPU、メモリ、ストレージ、ネットワーク、などに関する`USE`メトリクス (例：CPU使用率、CPUサチュレーション、など) を含む。
 
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
+> - https://blog.gitnux.com/resource-utilization-metrics/
 
-#### ▼ REDメトリクス
+<br>
+
+### REDメトリクス
 
 `RED`は、Rate (秒あたりのリクエスト数)、Errors (リクエストの失敗数)、Duration (レイテンシー) のメトリクスの頭文字である。
 

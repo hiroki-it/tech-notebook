@@ -374,30 +374,30 @@ kubernetes-mixinsのレコーディングルールが定義済みであること
 
 #### ▼ Kubernetesリソース
 
-| ダッシュボード名                                         | 監視対象                      | 説明                                                                                                                                                                                                                                                    | おすすめ |
-| -------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Cluster`               | 任意のCluster                 | Cluster単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。                                                        | ★        |
-| `Kubernetes / Networking / Cluster`                      | 任意のCluster                 | Cluster単位でフィルタリングし、ネットワークの性能指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を分析できる。Cluster全体のネットワークの分析に役立つ。                                                                                    | ★        |
-| `Kubernetes / Compute Resources / Namespace (Pods)`      | 任意のPod                     | Namespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
-| `Kubernetes / Compute Resources / Node (Pods)`           | 任意のPod                     | Node単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
-| `Kubernetes / Compute Resources / Pod`                   | 任意のPod                     | Pod単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。個別のPodや特定のPodの状況を確認したい場合に役立つ。                                                         |          |
-| `Kubernetes / Networking / Namespace (Pods)`             | 任意のPod                     | Namespace単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に役立つ。                                                                                        |          |
-| `Kubernetes / Networking / Pod`                          | 任意のPod                     | 各Podのネットワークに関するメトリクスを分析できる。Podを個別に確認したい場合に役立つ。                                                                                                                                                                  |          |
-| `Kubernetes / Persistent Volumes`                        | 任意のPerisisitentVolume      | Persistent Volumeの使用率に関するメトリクスを分析できる。                                                                                                                                                                                               |          |
-| `Kubernetes / Networking / Namespace (Workload)`         | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。                                                                                                                                                 |          |
-| `Kubernetes / Compute Resources / Workload`              | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                                             |          |
-| `Kubernetes / Compute Resources / Namespace (Workloads)` | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位かつNamespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                            |          |
-| `Kubernetes / Networking / Workload`                     | 任意のDeployment、StatefulSet |                                                                                                                                                                                                                                                         |          |
+| ダッシュボード名                                         | 監視対象                      | 説明                                                                                                                                                                                                                          | おすすめ |
+| -------------------------------------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / Compute Resources / Cluster`               | 任意のCluster                 | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) の合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。                                                          | ★        |
+| `Kubernetes / Networking / Cluster`                      | 任意のCluster                 | Podのネットワークの性能指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster全体のネットワークの分析に役立つ。                                                                              | ★        |
+| `Kubernetes / Compute Resources / Namespace (Pods)`      | 任意のPod                     | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNamespace単位で分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
+| `Kubernetes / Compute Resources / Node (Pods)`           | 任意のPod                     | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNode単位で分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
+| `Kubernetes / Compute Resources / Pod`                   | 任意のPod                     | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をPod単位で分析できる。個別のPodや特定のPodの状況を確認したい場合に役立つ。                                                    |          |
+| `Kubernetes / Networking / Namespace (Pods)`             | 任意のPod                     | Podのネットワークに関するメトリクスをNamespace単位で分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に役立つ。                                                                                |          |
+| `Kubernetes / Networking / Pod`                          | 任意のPod                     | Podのネットワークに関するメトリクスをPod単位で分析できる。Podを個別に確認したい場合に役立つ。                                                                                                                                 |          |
+| `Kubernetes / Persistent Volumes`                        | 任意のPerisisitentVolume      | Persistent Volumeの使用率に関するメトリクスを分析できる。                                                                                                                                                                     |          |
+| `Kubernetes / Compute Resources / Namespace (Workloads)` | 任意のDeployment、StatefulSet | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNamespace単位で分析できる。                                                                                                  |          |
+| `Kubernetes / Compute Resources / Workload`              | 任意のDeployment、StatefulSet | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をWorkload (例：Deployment) 単位で分析できる。                                                                                 |          |
+| `Kubernetes / Networking / Namespace (Workload)`         | 任意のDeployment、StatefulSet | Podのネットワークに関するメトリクスをNamespace単位で分析できる。                                                                                                                                                              |          |
+| `Kubernetes / Networking / Workload`                     | 任意のDeployment、StatefulSet | Podのネットワークに関するメトリクスをWorkload (例：Deployment) 単位で分析できる。                                                                                                                                             |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
 
 #### ▼ Node exporter
 
-| ダッシュボード名                       | 監視対象      | 説明                                                                                                        | おすすめ |
-| -------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
-| `Node Exporter / USE Method / Cluster` | 任意のCluster | Cluster単位でフィルタリングし、USEメトリクスを分析できる。Cluster全体のハードウェアリソースの分析に役立つ。 | ★        |
-| `Node Exporter / USE Method / Node`    | 任意のNode    | Node単位でフィルタリングし、USEメトリクスを分析できる。                                                     |          |
-| `Node Exporter / Nodes`                | 任意のNode    | Node単位でフィルタリングし、任意のメトリクスを分析できる。                                                  |          |
+| ダッシュボード名                       | 監視対象      | 説明                                                                                     | おすすめ |
+| -------------------------------------- | ------------- | ---------------------------------------------------------------------------------------- | -------- |
+| `Node Exporter / USE Method / Cluster` | 任意のCluster | NodeのUSEメトリクスの合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。 | ★        |
+| `Node Exporter / USE Method / Node`    | 任意のNode    | NodeのUSEメトリクスをNode単位で分析できる。                                              |          |
+| `Node Exporter / Nodes`                | 任意のNode    | Nodeの任意のメトリクスをNode単位で分析できる。                                           |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/node-exporter/dashboards
 
@@ -553,21 +553,59 @@ PromQLを定義する。
 ラベル変数を使用する場合は、`templating`セクションでその定義が必要である。
 
 ```yaml
-{
-  "panels":
-    [
-      {
-        "targets":
-          [
+{"panels": [{"styles": [
             {
-              "expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}',
+              # 表の列名
+              "alias": "Namespace",
+              "colorMode": null,
+              "colors": [],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "link": true,
+              "linkTargetBlank": false,
+              "linkTooltip": "Drill down to pods",
+              # 他のダッシュボードへのリンク
+              "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell",
+              "pattern": "namespace",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short",
             },
-            {"expr": "..."},
-            {"expr": "..."},
-          ],
-      },
-    ],
-}
+            {
+              # 表の列名
+              "alias": "Workloads",
+              "colorMode": null,
+              "colors": [],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "link": true,
+              "linkTargetBlank": false,
+              "linkTooltip": "Drill down to workloads",
+              # 他のダッシュボードへのリンク
+              "linkUrl": "/d/*****/k8s-resources-workloads-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
+              "pattern": "Value #B",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short",
+            },
+            {
+              # 表の列名
+              "alias": "Pods",
+              "colorMode": null,
+              "colors": [],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "link": true,
+              "linkTargetBlank": false,
+              "linkTooltip": "Drill down to pods",
+              # 他のダッシュボードへのリンク
+              "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
+              "pattern": "Value #A",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short",
+            },
+          ], "targets": [{"expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}'}, {"expr": "..."}, {"expr": "..."}]}]}
 ```
 
 #### type
