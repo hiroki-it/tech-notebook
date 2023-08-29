@@ -645,6 +645,8 @@ spec:
 
 PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/rules`ディレクトリ配下にルールの設定ファイルが配置される。
 
+有効になっているPrometheusRuleは、Prometheusダッシュボードの Status > Rule タブで確認できる。
+
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 <br>
@@ -828,6 +830,8 @@ spec:
 
 指定したServiceに対してPull型通信を送信し、これに紐づくPodのメトリクスのデータポイントを収集する。
 
+有効になっているServiceMonitorは、Prometheusダッシュボードの Status > ServiceDiscoveryタブや、Status > Targets タブで確認できる。
+
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -854,6 +858,62 @@ Prometheusは、Podから直接的にデータポイントを収集できるが�
 注意点として、アプリケーションのPodだけでなく、Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisor、など) やPrometheusのコンポーネント (node-exporterやkube-state-metricsといったExporterなど) のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: foo-service-monitor
+  namespace: prometheus
+spec:
+  endpoints:
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      port: https
+      scheme: https
+      metricRelabelings:
+        - action: drop
+          regex: apiserver_request_duration_seconds_bucket;(0.15|0.2|0.3|0.35|0.4|0.45|0.6|0.7|0.8|0.9|1.25|1.5|1.75|2|3|3.5|4|4.5|6|7|8|9|15|25|40|50)
+          sourceLabels:
+            - __name__
+            - le
+      tlsConfig:
+        caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        serverName: kubernetes
+        insecureSkipVerify: false
+  jobLabel: component
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      component: apiserver
+      provider: kubernetes
+```
+
+```yaml
+# kube-apiserverに転送するService
+# デフォルトで作成されている
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes
+  namespace: default
+spec:
+  clusterIP: *.*.*.*
+  clusterIPs:
+    - *.*.*.*
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 443
+  sessionAffinity: None
+  type: ClusterIP
+```
 
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html

@@ -157,7 +157,7 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "schemaVersion": 30,
   "style": "dark",
   # リポジトリ名やリポジトリURLをタグにつける
-  "tags": ["<リポジトリ名>", "https://github.com/example"],
+  "tags": ["<リポジトリ名>", "github.com/example"],
   "templating": {"list": []},
   "time": {"from": "now-6h", "to": "now"},
   "timepicker":
@@ -374,30 +374,30 @@ kubernetes-mixinsのレコーディングルールが定義済みであること
 
 #### ▼ Kubernetesリソース
 
-| ダッシュボード名                                         | 監視対象                      | 説明                                                                                                                                                                                                                                                  | おすすめ |
-| -------------------------------------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Cluster`               | 任意のCluster                 | Cluster単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                                                                       | ★        |
-| `Kubernetes / Networking / Cluster`                      | 任意のCluster                 | Cluster単位でフィルタリングし、ネットワークの性能指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を分析できる。                                                                                                                           | ★        |
-| `Kubernetes / Compute Resources / Namespace (Pods)`      | 任意のPod                     | Namespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。 |          |
-| `Kubernetes / Compute Resources / Node (Pods)`           | 任意のPod                     | Node単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。         |          |
-| `Kubernetes / Compute Resources / Pod`                   | 任意のPod                     | Pod単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。個別のPodや特定のPodの状況を確認したい場合に便利である。                                                   |          |
-| `Kubernetes / Networking / Namespace (Pods)`             | 任意のPod                     | Namespace単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に便利である。                                                                                  |          |
-| `Kubernetes / Networking / Pod`                          | 任意のPod                     | 各Podのネットワークに関するメトリクスを分析できる。Podを個別に確認したい場合に便利である。                                                                                                                                                            |          |
-| `Kubernetes / Persistent Volumes`                        | 任意のPerisisitentVolume      | Persistent Volumeの使用率に関するメトリクスを分析できる。                                                                                                                                                                                             |          |
-| `Kubernetes / Networking / Namespace (Workload)`         | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。                                                                                                                                               |          |
-| `Kubernetes / Compute Resources / Workload`              | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                                           |          |
-| `Kubernetes / Compute Resources / Namespace (Workloads)` | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位かつNamespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                          |          |
-| `Kubernetes / Networking / Workload`                     | 任意のDeployment、StatefulSet |                                                                                                                                                                                                                                                       |          |
+| ダッシュボード名                                         | 監視対象                      | 説明                                                                                                                                                                                                                                                    | おすすめ |
+| -------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / Compute Resources / Cluster`               | 任意のCluster                 | Cluster単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。                                                        | ★        |
+| `Kubernetes / Networking / Cluster`                      | 任意のCluster                 | Cluster単位でフィルタリングし、ネットワークの性能指標に関するメトリクス (例：帯域幅、秒当たりパケット受信数) を分析できる。Cluster全体のネットワークの分析に役立つ。                                                                                    | ★        |
+| `Kubernetes / Compute Resources / Namespace (Pods)`      | 任意のPod                     | Namespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
+| `Kubernetes / Compute Resources / Node (Pods)`           | 任意のPod                     | Node単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
+| `Kubernetes / Compute Resources / Pod`                   | 任意のPod                     | Pod単位でフィルタリングし、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。個別のPodや特定のPodの状況を確認したい場合に役立つ。                                                         |          |
+| `Kubernetes / Networking / Namespace (Pods)`             | 任意のPod                     | Namespace単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に役立つ。                                                                                        |          |
+| `Kubernetes / Networking / Pod`                          | 任意のPod                     | 各Podのネットワークに関するメトリクスを分析できる。Podを個別に確認したい場合に役立つ。                                                                                                                                                                  |          |
+| `Kubernetes / Persistent Volumes`                        | 任意のPerisisitentVolume      | Persistent Volumeの使用率に関するメトリクスを分析できる。                                                                                                                                                                                               |          |
+| `Kubernetes / Networking / Namespace (Workload)`         | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのネットワークに関するメトリクスを分析できる。                                                                                                                                                 |          |
+| `Kubernetes / Compute Resources / Workload`              | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                                             |          |
+| `Kubernetes / Compute Resources / Namespace (Workloads)` | 任意のDeployment、StatefulSet | ワークロード (例：Deployment) 単位かつNamespace単位でフィルタリングし、Podのハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) を分析できる。                                                            |          |
+| `Kubernetes / Networking / Workload`                     | 任意のDeployment、StatefulSet |                                                                                                                                                                                                                                                         |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
 
 #### ▼ Node exporter
 
-| ダッシュボード名                       | 監視対象      | 説明                                     |
-| -------------------------------------- | ------------- | ---------------------------------------- |
-| `Node Exporter / USE Method / Cluster` | 任意のCluster | Cluster全体のUSEメトリクスを分析できる。 |
-| `Node Exporter / USE Method / Node`    | 任意のNode    | NodeのUSEメトリクスを分析できる。        |
-| `Node Exporter / Nodes`                | 任意のNode    | Nodeのメトリクスを分析できる。           |
+| ダッシュボード名                       | 監視対象      | 説明                                                                                                        | おすすめ |
+| -------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
+| `Node Exporter / USE Method / Cluster` | 任意のCluster | Cluster単位でフィルタリングし、USEメトリクスを分析できる。Cluster全体のハードウェアリソースの分析に役立つ。 | ★        |
+| `Node Exporter / USE Method / Node`    | 任意のNode    | Node単位でフィルタリングし、USEメトリクスを分析できる。                                                     |          |
+| `Node Exporter / Nodes`                | 任意のNode    | Node単位でフィルタリングし、任意のメトリクスを分析できる。                                                  |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/node-exporter/dashboards
 
@@ -414,14 +414,14 @@ kubernetes-mixinsのレコーディングルールが定義済みであること
 
 `istioctl dashboard grafana`コマンドでインストールできるダッシュボード。
 
-| ダッシュボード名                 | 監視対象                              | 説明                                                                          |
-| -------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------- |
-| `Istio Wasm Extension Dashboard` |                                       |                                                                               |
-| `Istio Mesh Dashboard`           |                                       | HTTPとTCPのメトリクスを確認したい場合に便利である。                           |
-| `Istio Control Plane Dashboard`  | IstiodのPod                           |                                                                               |
-| `Istio Performance Dashboard`    | IngressGateway、`istio-proxy`コンテナ |                                                                               |
-| `Istio Workload Dashboard`       | Istioの任意のカスタムリソース         |                                                                               |
-| `Istio Service Dashboard`        | IstioのVirtualService                 | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に便利である。 |
+| ダッシュボード名                 | 監視対象                              | 説明                                                                      |
+| -------------------------------- | ------------------------------------- | ------------------------------------------------------------------------- |
+| `Istio Wasm Extension Dashboard` |                                       |                                                                           |
+| `Istio Mesh Dashboard`           |                                       | HTTPとTCPのメトリクスを確認したい場合に役立つ。                           |
+| `Istio Control Plane Dashboard`  | IstiodのPod                           |                                                                           |
+| `Istio Performance Dashboard`    | IngressGateway、`istio-proxy`コンテナ |                                                                           |
+| `Istio Workload Dashboard`       | Istioの任意のカスタムリソース         |                                                                           |
+| `Istio Service Dashboard`        | IstioのVirtualService                 | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に役立つ。 |
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
 > - https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards
@@ -469,7 +469,7 @@ kubernetes-mixinsのレコーディングルールが定義済みであること
 これと区別できるように、本リポジトリのダッシュボードには`<リポジトリ名>.git`やリポジトリURLというタグをつけると良い。
 
 ```yaml
-{"tags": ["<リポジトリ名>.git", "https://github.com/example"]}
+{"tags": ["<リポジトリ名>.git", "github.com/example"]}
 ```
 
 <br>
