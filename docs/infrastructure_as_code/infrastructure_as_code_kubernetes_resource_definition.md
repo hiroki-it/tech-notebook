@@ -3238,6 +3238,7 @@ spec:
       restartPolicy: Always
 ```
 
+> - https://kubernetes.io/blog/2023/08/25/native-sidecar-containers/
 > - https://github.com/kubernetes/enhancements/issues/753
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
 
