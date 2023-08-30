@@ -4581,11 +4581,6 @@ spec:
       port: 22
 ```
 
-補足として、FastCGIプロトコルには変換できず、別にNginxを使用してプロトコルを変換する必要がある。
-
-> - https://github.com/search?q=php-fpm+kubernetes
-> - https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
-
 #### ▼ port
 
 インバウンド通信を待ち受けるポート番号を設定する。

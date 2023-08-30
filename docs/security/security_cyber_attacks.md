@@ -24,11 +24,11 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 <br>
 
-### CVEの報告元
+### CVEのデータベースの種類
 
 #### ▼ GitHub
 
-GitHubで脆弱性に関するIssueが立てられ、これが致命的であると、CVEに掲載れる。
+GitHubで脆弱性に関するIssueが立てられ、これが致命的であると、CVEに掲載される。
 
 GitHub上のOSSのCVEは、GitHub Advisory Databaseで検索できる。
 
