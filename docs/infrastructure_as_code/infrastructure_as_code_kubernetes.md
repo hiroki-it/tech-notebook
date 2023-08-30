@@ -305,7 +305,7 @@ NamespaceにResourceQuotaやLimitRangeを設定し、一方のNamespaceでハー
 
 プロダクト別にNamespaceを分割する。
 
-これは、単一のCluster内で共通基盤のツール (例：ArgoCD) を動かすような場合に役立つ。
+これは、単一のCluster内で共通基盤のツール (例：ArgoCD、Flux) を動かすような場合に役立つ。
 
 #### ▼ プロダクトのサブコンポーネント別
 

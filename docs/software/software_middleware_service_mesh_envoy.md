@@ -926,9 +926,33 @@ service EndpointDiscoveryService {
 
 Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に`istio-proxy`コンテナをインジェクションする。
 
+```text
+Envoy (istio-proxy)
+⬇︎
+⬇︎
+⬇︎
+アプリ
+```
+
 Istioによって自動的に作成されるが、Istioリソースを使用しなくとも作成できる。
 
 マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト宛先マイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
+
+なお、他のリバースプロキシ (例：Nginx、Apache) が転送可能なプロトコル (例：FastCGIプロトコル) で、Envoyが対応していないことがある。
+
+その場合、Envoyの後ろに異なるリバースプロキシを置く必要があり、二重のリバースプロキシになってしまう。
+
+```text
+Envoy (istio-proxy)
+⬇︎
+⬇︎ TCPプロトコル
+⬇︎
+Nginx
+⬇︎
+⬇︎ FastCGIプロトコル
+⬇︎
+アプリ
+```
 
 > - https://blog.linkode.co.jp/entry/2020/07/06/162915
 > - https://openstandia.jp/oss_info/envoy/

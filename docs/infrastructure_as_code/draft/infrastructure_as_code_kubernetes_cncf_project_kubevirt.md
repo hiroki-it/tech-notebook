@@ -17,7 +17,7 @@ description: Kubevirt＠CNCFプロジェクトの知見を記録しています�
 
 Cluster上に仮想Nodeを作成し、またライフサイクルを管理する。
 
-Clusterを作成するツール (例：Kubeadm) を組み合わせられる。
+Kuberbetesオーケストレーションツール (例：Kubeadm) を組み合わせられる。
 
 仮想サーバーの各コンポーネントを作成するQEMU、仮想サーバーのライフサイクルを管理するlibvirt、などを使用している。
 

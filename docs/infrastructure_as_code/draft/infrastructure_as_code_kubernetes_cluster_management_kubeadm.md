@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kubeadm＠クラスター管理
-description: Kubeadm＠クラスター管理の知見を記録しています。
+title: 【IT技術の知見】Kubeadm＠Kubernetesオーケストレーションツール
+description: Kubeadm＠Kubernetesオーケストレーションツールの知見を記録しています。
 ---
 
-# Kubeadm＠クラスター管理
+# Kubeadm＠Kubernetesオーケストレーションツール
 
 ## はじめに
 

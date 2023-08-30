@@ -131,3 +131,11 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 - aws-eks-vpc-cniアドオン (AWS EKSで推奨)
 
 <br>
+
+## 未分類のアドオン
+
+- Antrea
+- Multus
+- Whereabout
+
+<br>

@@ -76,12 +76,14 @@ Ingressコントローラーには種類があり、コントローラーごと�
 | minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                              |    ✅    |          |
 | AWS Load Balancerコントローラー                               | AWS ALB                            |          |    ✅    |
 | Google CLBコントローラー                                      | Google CLB                         |          |    ✅    |
-| Istio Ingressコントローラー                                   | Istio IngressGateway               |    ✅    |    ✅    |
+| Istio Ingressコントローラー                                   | Istio IngressGateway (Envoy)       |    ✅    |    ✅    |
+| Contourコントローラー                                         | Envoy                              |    ✅    |    ✅    |
 | ...                                                           | ...                                |   ...    |   ...    |
 
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 > - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
+> - https://github.com/projectcontour/contour
 
 <br>

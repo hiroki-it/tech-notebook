@@ -378,7 +378,7 @@ metadata:
 
      これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは`istio.io/rev`キーを推奨している。
 
-     もしGitOpsツール (例：ArgoCD) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+     もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 ```bash
 # IngressGatewayの特定のNamespace
