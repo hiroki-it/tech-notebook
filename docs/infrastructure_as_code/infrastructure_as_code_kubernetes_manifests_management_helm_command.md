@@ -772,6 +772,8 @@ TEST SUITE: None
 
 これにより、`helm upgrade`コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。
 
+なお、CRDのアップグレードはHelmの仕様上必ずスキップする。
+
 ```bash
 $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
