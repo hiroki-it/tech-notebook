@@ -147,7 +147,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 <br>
 
-## 02. ロール
+## 03. ロール
 
 ### ロールとは
 
@@ -157,15 +157,21 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 <br>
 
-## 03. ポリシー
+## 04. ポリシー
 
 > - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
 
 <br>
 
-## Workload Identity
+## 05. Workload Identity
+
+### Workload Identityとは
 
 GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにアクセスする場合に、外部リソースをサービスアカウントに紐づけて、APIにアクセスできるようにする仕組みのこと。
+
+<br>
+
+### 仕組み
 
 1. GoogleCloudリソース外で認証を実行する。
 2. 認証が成功する。
