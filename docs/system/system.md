@@ -53,18 +53,38 @@ description: システムの知見を記録しています。
 
 ### Webシステムのミドルウェア
 
-| 経路             | ミドルウェア例                          |
-| ---------------- | :-------------------------------------- |
-| リバースプロキシ | Envoy、Nginx                            |
-| ⬇︎⬆︎           | ⬇︎⬆︎                                  |
-| webサーバー      | Apache 、いらない (Go、Node.js)         |
-| ⬇︎⬆︎           | ⬇︎⬆︎                                  |
-| appサーバー      | Tomcat、Uvicorn、いらない (Go、Node.js) |
-| ⬇︎⬆︎           | ⬇︎⬆︎                                  |
-| dbサーバー       | NySQL、PostgreSQL                       |
+#### ▼ webサーバー、appサーバー、が必要な場合
+
+NginxまたはEnvoyを使用する場合で考えるとする。
+
+| 経路             | Javaの一例        | PHPの一例         | Pythonの一例      |
+| ---------------- | :---------------- | ----------------- | ----------------- |
+| リバースプロキシ | Envoy、Nginx      | Envoy、Nginx      | Envoy、Nginx      |
+| ⬇︎⬆︎           | ⬇︎⬆︎            | ⬇︎⬆︎            | ⬇︎⬆︎            |
+| webサーバー      | Nginx             | Nginx             | Nginx             |
+| ⬇︎⬆︎           | ⬇︎⬆︎            | ⬇︎⬆︎            | ⬇︎⬆︎            |
+| appサーバー      | Tomcat            | なし              | Uvicorn           |
+| ⬇︎⬆︎           | ⬇︎⬆︎            | ⬇︎⬆︎            | ⬇︎⬆︎            |
+| dbサーバー       | MySQL、PostgreSQL | MySQL、PostgreSQL | MySQL、PostgreSQL |
+
+> - https://qiita.com/tanayasu1228/items/11e22a18dbfa796745b5#%E3%81%93%E3%81%93%E3%81%A7%E7%96%91%E5%95%8F%E3%81%AB%E6%80%9D%E3%81%86%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%82%88%E3%81%AD
+> - https://rikues2012.hatenablog.com/entry/2021/09/10/193349
+
+#### ▼ webサーバー、appサーバー、が不要な場合
+
+Go、Node.js、ではwebサーバーとappサーバーがいらない。
+
+| 経路             | Go、Node.jsの場合              |
+| ---------------- | :----------------------------- |
+| リバースプロキシ | Envoy、Nginx                   |
+| ⬇︎⬆︎           | ⬇︎⬆︎                         |
+| webサーバー      | なし                           |
+| ⬇︎⬆︎           | ⬇︎⬆︎                         |
+| appサーバー      | なし (Go、Node.jsのアプリのみ) |
+| ⬇︎⬆︎           | ⬇︎⬆︎                         |
+| dbサーバー       | MySQL、PostgreSQL              |
 
 > - https://teratail.com/questions/103909
-> - https://qiita.com/tanayasu1228/items/11e22a18dbfa796745b5#%E3%81%93%E3%81%93%E3%81%A7%E7%96%91%E5%95%8F%E3%81%AB%E6%80%9D%E3%81%86%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%82%88%E3%81%AD
 
 <br>
 
