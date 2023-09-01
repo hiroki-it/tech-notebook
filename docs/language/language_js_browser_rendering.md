@@ -393,7 +393,7 @@ DOMのインターフェースについては、以下のリンクを参考に�
 
 ![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png)
 
-同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを行う。
+同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを送信する。
 
 レスポンスされた`.css`ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。
 
