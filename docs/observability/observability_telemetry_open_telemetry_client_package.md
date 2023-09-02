@@ -470,8 +470,6 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 #### ▼ アプリケーションの実行
 
-親スパンを作成し、また下流マイクロサービスに親スパンのコンテキストを伝播する。
-
 ```go
 package main
 
