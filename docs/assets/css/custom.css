@@ -154,9 +154,11 @@ p {
 /***************
  サイドバー
 ***************/
-.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+
+/** 左サイドバー **/
+.md-nav__link .md-ellipsis {
     /** タイトルのテキスト **/
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
 
 .md-nav {
