@@ -79,7 +79,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-OpenTelemetoryのパッケージを初期化する。
+OpenTelemetryのパッケージを初期化する。
 
 ```go
 package tracer
@@ -304,7 +304,7 @@ func main() {
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-OpenTelemetoryのパッケージを初期化する。
+OpenTelemetryのパッケージを初期化する。
 
 ```go
 package main
@@ -557,7 +557,7 @@ func getIndex(c *gin.Context) {
 
 ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。
 
-OpenTelemetoryのパッケージをセットアップする。
+OpenTelemetryのパッケージをセットアップする。
 
 ```python
 import time
