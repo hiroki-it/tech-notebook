@@ -13,13 +13,17 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 <br>
 
-## 01. クライアントパッケージのコンポーネント
+## 01. TraceProvider
 
-### TraceProvider
+### TraceProviderとは
+
+分散トレーシングに必要な実装を提供する。
 
 <br>
 
-### Resource
+### TraceProviderの要素
+
+#### ▼ Resource
 
 スパンにメタデータを設定する。
 
@@ -33,33 +37,33 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 }
 ```
 
-<br>
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
-### SpanProcessor
+#### ▼ SpanProcessor
 
 スパンを処理する。
 
 具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
 
 > - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
 
-<br>
-
-### Exporter
+#### ▼ Exporter
 
 スパンの宛先 (例：AWS X-ray、Google Cloud Trace、OpenTelemetryコレクター、など) を決める。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`otel-collector.foo.svc.cluster.local.`、など) を設定できる。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
 
-<br>
-
-### Sampler
+#### ▼ Sampler
 
 スパンのサンプリング率を設定する。
 
 具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
+
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 
 <br>
 
