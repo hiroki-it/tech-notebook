@@ -157,14 +157,14 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	// 定義したtracerパッケージ
-  "github.com/hiroki-hasegawa/foo/infrastructure/tracer"
+	"github.com/hiroki-hasegawa/infrastructure/tracer"
 )
 
 func httpRequest(ctx context.Context) error {
 
 	// 親スパンを作成する。
 	var span trace.Span
-	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "parent")
+	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
 
 	defer span.End()
 
@@ -230,7 +230,7 @@ func httpRequest(ctx context.Context) error {
 
 	// 子スパンを作成する。親スパンからコンテキストを取得する必要はない。
 	var span trace.Span
-	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "child")
+	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
 
@@ -633,7 +633,7 @@ res = requests.get("http://localhost:6000")
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```go
-
+// 記入中...
 ```
 
 #### ▼ アプリケーションの実行
