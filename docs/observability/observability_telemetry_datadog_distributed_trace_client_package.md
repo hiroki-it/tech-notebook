@@ -283,7 +283,7 @@ APMのマイクロサービスのタグ名に反映される。
 
 最上流のマイクロサービスでは、親スパンを作成する。
 
-また、下流のマイクロサービスに親スパンのメタデータを伝播する。
+また、下流のマイクロサービスに親スパンのコンテキスト情報を伝播する。
 
 ```go
 package main
@@ -313,7 +313,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 	req = req.WithContext(ctx)
 
-	// アウトバウンド通信のリクエストヘッダーに、親スパンのメタデータを伝播する。
+	// アウトバウンド通信のリクエストヘッダーに、親スパンのコンテキスト情報を伝播する。
 	err = tracer.Inject(
 		span.Context(),
 		tracer.HTTPHeadersCarrier(req.Header),
@@ -331,9 +331,9 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 #### ▼ 下流のマイクロサービス
 
-下流のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
+下流のマイクロサービスでは、受信したインバウンド通信からコンテキスト情報を取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのメタデータを伝播する。
+また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキスト情報を伝播する。
 
 ```go
 package main
@@ -347,14 +347,14 @@ import (
 
 func initTracer(w http.ResponseWriter, r *http.Request) {
 
-	// インバウンド通信のリクエストヘッダーからメタデータを取得する。
+	// インバウンド通信のリクエストヘッダーからコンテキスト情報を取得する。
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
 
 	if err != nil {
 		log.Fatalf("failed to extract: %s", err)
 	}
 
-	// 子スパンを作成し、アウトバウンド通信のリクエストヘッダーに子スパンのメタデータを伝播する。
+	// 子スパンを作成し、アウトバウンド通信のリクエストヘッダーに子スパンのコンテキスト情報を伝播する。
 	span := tracer.StartSpan(
 		"post.filter",
 		tracer.ChildOf(tracectx),

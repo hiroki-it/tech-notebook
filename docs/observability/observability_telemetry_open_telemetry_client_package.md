@@ -17,7 +17,10 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 ### TraceProviderとは
 
-分散トレーシングに必要な実装を提供する。
+OpenTelemetryをセットアップし、スパンを作成する機能を提供する。
+
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21
 
 <br>
 
@@ -25,7 +28,7 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 #### ▼ Resource
 
-スパンにメタデータを設定する。
+スパンにコンテキスト情報を設定する。
 
 ```yaml
 {
@@ -64,6 +67,7 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
 
 <br>
 
@@ -134,7 +138,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 #### ▼ 最上流のマイクロサービス
 
-最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのメタデータを伝播する。
+最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキスト情報を伝播する。
 
 ```go
 package main
@@ -162,9 +166,9 @@ func httpRequest(ctx context.Context) error {
 
 	defer parentSpan.End()
 
-	// アウトバウンド通信のリクエストヘッダーに、親スパンのメタデータを伝播する。
+	// アウトバウンド通信のリクエストヘッダーに、親スパンのコンテキスト情報を伝播する。
 	req, err := http.NewRequestWithContext(
-		// 親スパンのメタデータ
+		// 親スパンのコンテキスト情報
 		ctx,
 		http.MethodGet, "https://example.com",
 		http.NoBody,
@@ -223,9 +227,9 @@ func main() {
 
 #### ▼ 下流のマイクロサービス
 
-下流のマイクロサービスでは、上流のマイクロサービスからメタデータを取得する。
+下流のマイクロサービスでは、上流のマイクロサービスからコンテキスト情報を取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのメタデータを伝播する。
+また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキスト情報を伝播する。
 
 ```go
 package main
@@ -247,15 +251,15 @@ import (
 
 func httpRequest(ctx context.Context) error {
 
-	// 子スパンを作成する。親スパンからメタデータを取得する必要はない。
+	// 子スパンを作成する。親スパンからコンテキスト情報を取得する必要はない。
 	var childSpan trace.Span
 	ctx, childSpan = otel.Tracer("example.com/bar-service").Start(ctx, "child")
 
 	defer childSpan.End()
 
-	// アウトバウンド通信のリクエストヘッダーに、子スパンのメタデータを伝播する。
+	// アウトバウンド通信のリクエストヘッダーに、子スパンのコンテキスト情報を伝播する。
 	req, err := http.NewRequestWithContext(
-		// 子スパンのメタデータ
+		// 子スパンのコンテキスト情報
 		ctx,
 		http.MethodGet, "https://example.com",
 		http.NoBody,
@@ -343,7 +347,7 @@ set_global_textmap(CloudTraceFormatPropagator())
 # cloud_trace_exporterのセットアップ
 # -------------------------------------
 
-# 任意のメタデータを設定する
+# 任意のコンテキスト情報を設定する
 resource = Resource.create(
     {
         "service.name": "flask_e2e_client",
@@ -371,7 +375,7 @@ tracer = trace.get_tracer(__name__)
 
 #### ▼ 最上流のマイクロサービス
 
-最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのメタデータを伝播する。
+最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキスト情報を伝播する。
 
 ```python
 import requests
@@ -387,9 +391,9 @@ res = requests.get("http://localhost:6000")
 
 #### ▼ 下流のマイクロサービス
 
-下流のマイクロサービスでは、上流のマイクロサービスからメタデータを取得する。
+下流のマイクロサービスでは、上流のマイクロサービスからコンテキスト情報を取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのメタデータを伝播する。
+また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキスト情報を伝播する。
 
 ```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
