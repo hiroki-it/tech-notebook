@@ -28,7 +28,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 #### ▼ Resource
 
-スパンにコンテキスト情報を設定する。
+スパンにコンテキストを設定する。
 
 ```yaml
 {
@@ -138,7 +138,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 #### ▼ 最上流のマイクロサービス
 
-最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキスト情報を伝播する。
+最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキストを伝播する。
 
 ```go
 package main
@@ -166,9 +166,9 @@ func httpRequest(ctx context.Context) error {
 
 	defer parentSpan.End()
 
-	// アウトバウンド通信のリクエストヘッダーに、親スパンのコンテキスト情報を伝播する。
+	// アウトバウンド通信のリクエストヘッダーに、親スパンのコンテキストを伝播する。
 	req, err := http.NewRequestWithContext(
-		// 親スパンのコンテキスト情報
+		// 親スパンのコンテキスト
 		ctx,
 		http.MethodGet, "https://example.com",
 		http.NoBody,
@@ -227,9 +227,9 @@ func main() {
 
 #### ▼ 下流のマイクロサービス
 
-下流のマイクロサービスでは、上流のマイクロサービスからコンテキスト情報を取得する。
+下流のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキスト情報を伝播する。
+また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキストを伝播する。
 
 ```go
 package main
@@ -251,15 +251,15 @@ import (
 
 func httpRequest(ctx context.Context) error {
 
-	// 子スパンを作成する。親スパンからコンテキスト情報を取得する必要はない。
+	// 子スパンを作成する。親スパンからコンテキストを取得する必要はない。
 	var childSpan trace.Span
 	ctx, childSpan = otel.Tracer("example.com/bar-service").Start(ctx, "child")
 
 	defer childSpan.End()
 
-	// アウトバウンド通信のリクエストヘッダーに、子スパンのコンテキスト情報を伝播する。
+	// アウトバウンド通信のリクエストヘッダーに、子スパンのコンテキストを伝播する。
 	req, err := http.NewRequestWithContext(
-		// 子スパンのコンテキスト情報
+		// 子スパンのコンテキスト
 		ctx,
 		http.MethodGet, "https://example.com",
 		http.NoBody,
@@ -347,7 +347,7 @@ set_global_textmap(CloudTraceFormatPropagator())
 # cloud_trace_exporterのセットアップ
 # -------------------------------------
 
-# 任意のコンテキスト情報を設定する
+# 任意のコンテキストを設定する
 resource = Resource.create(
     {
         "service.name": "flask_e2e_client",
@@ -375,7 +375,7 @@ tracer = trace.get_tracer(__name__)
 
 #### ▼ 最上流のマイクロサービス
 
-最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキスト情報を伝播する。
+最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキストを伝播する。
 
 ```python
 import requests
@@ -391,9 +391,9 @@ res = requests.get("http://localhost:6000")
 
 #### ▼ 下流のマイクロサービス
 
-下流のマイクロサービスでは、上流のマイクロサービスからコンテキスト情報を取得する。
+下流のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキスト情報を伝播する。
+また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキストを伝播する。
 
 ```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
