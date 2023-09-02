@@ -79,7 +79,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-全てのマイクロサービスで共通して、OpenTelemetoryのパッケージを初期化する。
+OpenTelemetoryのパッケージを初期化する。
 
 ```go
 package tracer
@@ -136,9 +136,11 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
 
-#### ▼ 最上流マイクロサービス
+#### ▼ 親スパンの作成
 
-最上流マイクロサービスでは、親スパンを作成し、また最上流以外のマイクロサービスに親スパンのコンテキストを伝播する。
+親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```go
 package main
@@ -161,10 +163,10 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	// 親スパンを作成する。
-	var parentSpan trace.Span
-	ctx, parentSpan = otel.Tracer("example.com/foo-service").Start(ctx, "parent")
+	var span trace.Span
+	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "parent")
 
-	defer parentSpan.End()
+	defer span.End()
 
 	// アウトバウンド通信のリクエストヘッダーに、親スパンのコンテキストを伝播する。
 	req, err := http.NewRequestWithContext(
@@ -193,31 +195,6 @@ func httpRequest(ctx context.Context) error {
 
 	return nil
 }
-
-
-func main() {
-
-	ctx, stop := signal.NotifyContext(
-		context.Background(),
-		os.Interrupt,
-		syscall.SIGTERM,
-	)
-
-	defer stop()
-
-	cleanUp, err := tracer.initTracer(10 * time.Second)
-
-	if err != nil {
-		panic(err)
-	}
-
-	defer cleanUp()
-
-	// 最上流以外のマイクロサービスにリクエストを送信する。
-	if err := httpRequest(ctx); err != nil {
-		panic(err)
-	}
-}
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/go/manual/
@@ -225,11 +202,11 @@ func main() {
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 
-#### ▼ 最上流以外のマイクロサービス
+#### ▼ 子スパンの作成
 
-最上流以外のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
+子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
 
-また、子スパンを作成し、最上流以外のマイクロサービスに子スパンのコンテキストを伝播する。
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```go
 package main
@@ -252,10 +229,10 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	// 子スパンを作成する。親スパンからコンテキストを取得する必要はない。
-	var childSpan trace.Span
-	ctx, childSpan = otel.Tracer("example.com/bar-service").Start(ctx, "child")
+	var span trace.Span
+	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "child")
 
-	defer childSpan.End()
+	defer span.End()
 
 	// アウトバウンド通信のリクエストヘッダーに、子スパンのコンテキストを伝播する。
 	req, err := http.NewRequestWithContext(
@@ -286,6 +263,14 @@ func httpRequest(ctx context.Context) error {
 }
 
 
+```
+
+> - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
+> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
+
+#### ▼ アプリケーションの実行
+
+```go
 func main() {
 
 	ctx, stop := signal.NotifyContext(
@@ -304,15 +289,12 @@ func main() {
 
 	defer cleanUp()
 
-	// 最上流以外のマイクロサービスにリクエストを送信する。
+	// 下流マイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
 }
 ```
-
-> - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
-> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
 
 <br>
 
@@ -322,7 +304,7 @@ func main() {
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-全てのマイクロサービスで共通して、OpenTelemetoryのパッケージを初期化する。
+OpenTelemetoryのパッケージを初期化する。
 
 ```go
 package main
@@ -388,9 +370,107 @@ func initProvider() (func(context.Context) error, error) {
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go
 
-#### ▼ 最上流マイクロサービス
+#### ▼ 親スパンの作成
 
-最上流マイクロサービスでは、親スパンを作成し、また最上流以外のマイクロサービスに親スパンのコンテキストを伝播する。
+親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"regexp"
+	"strconv"
+	"text/template"
+	"time"
+	"todobff/app/SessionInfo"
+	"todobff/config"
+
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/zap"
+)
+
+// スパンを作成し、スパンとログにイベント名を記載する
+func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
+
+	_, span := tracer.Start(c.Request.Context(), msg)
+
+	SpanId := span.SpanContext().SpanID().String()
+	TraceId := span.SpanContext().TraceID().String()
+
+	span.SetAttributes(
+		attribute.Int("status", c.Writer.Status()),
+		attribute.String("method", c.Request.Method),
+		attribute.String("client_ip", c.ClientIP()),
+		attribute.String("message", msg),
+		attribute.String("span_id", SpanId),
+		attribute.String("trace_id", TraceId),
+	)
+
+  ...
+
+	return span
+}
+```
+
+#### ▼ 子スパンの作成
+
+子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"regexp"
+	"strconv"
+	"text/template"
+	"time"
+	"todobff/app/SessionInfo"
+	"todobff/config"
+
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/zap"
+)
+
+// スパンを作成し、スパンとログにイベント名を記載する
+func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
+
+	_, span := tracer.Start(c.Request.Context(), msg)
+
+	SpanId := span.SpanContext().SpanID().String()
+	TraceId := span.SpanContext().TraceID().String()
+
+	span.SetAttributes(
+		attribute.Int("status", c.Writer.Status()),
+		attribute.String("method", c.Request.Method),
+		attribute.String("client_ip", c.ClientIP()),
+		attribute.String("message", msg),
+		attribute.String("span_id", SpanId),
+		attribute.String("trace_id", TraceId),
+	)
+
+  ...
+
+	return span
+}
+```
+
+#### ▼ アプリケーションの実行
+
+親スパンを作成し、また下流マイクロサービスに親スパンのコンテキストを伝播する。
 
 ```go
 package main
@@ -413,7 +493,7 @@ func StartMainServer() {
 
   ...
 
-  // Otel Collecotor への接続設定
+    // Otel Collecotor への接続設定
 	shutdown, err := initProvider()
 	if err != nil {
 		log.Fatal(err)
@@ -424,7 +504,7 @@ func StartMainServer() {
 		}
 	}()
 
-  // router 設定
+    // router 設定
 	r := gin.New()
 
   ...
@@ -432,7 +512,9 @@ func StartMainServer() {
 }
 
 func checkSession() gin.HandlerFunc {
+
   return func(c *gin.Context) {
+
     defer LoggerAndCreateSpan(c, "セッションチェック開始").End()
 
     ...
@@ -440,65 +522,32 @@ func checkSession() gin.HandlerFunc {
 		defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
 	}
 }
-```
 
-```go
-package main
+func getIndex(c *gin.Context) {
 
-import (
-	"fmt"
-	"log"
-	"net/http"
-	"regexp"
-	"strconv"
-	"text/template"
-	"time"
-	"todobff/app/SessionInfo"
-	"todobff/config"
+	defer LoggerAndCreateSpan(c, "TODO画面取得").End()
 
-	"github.com/gin-gonic/gin"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/trace"
-	"go.uber.org/zap"
-)
+	...
 
+	defer LoggerAndCreateSpan(c, "UserAPI /getUserByEmail にポスト").End()
 
-// スパンを作成する
-func CreateSpan(c *gin.Context, msg string) trace.Span {
+	...
 
-	_, span := tracer.Start(c.Request.Context(), msg)
+	defer LoggerAndCreateSpan(c, "TodoAPI /getTodosByEmail にポスト").End()
 
-	SpanId := span.SpanContext().SpanID().String()
-	TraceId := span.SpanContext().TraceID().String()
+	...
 
-	span.SetAttributes(
-		attribute.Int("status", c.Writer.Status()),
-		attribute.String("method", c.Request.Method),
-		attribute.String("client_ip", c.ClientIP()),
-		attribute.String("message", msg),
-		attribute.String("span_id", SpanId),
-		attribute.String("trace_id", TraceId),
-	)
+	defer LoggerAndCreateSpan(c, "TODO画面取得").End()
 
-  ...
+	...
 
-	return span
+	generateHTML(c, user, "index", "layout", "private_navbar", "index", "footer")
 }
 ```
 
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go#L60-L97
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/utils/utils.go#L16-L53
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go#L16-L53
-
-#### ▼ 最上流以外のマイクロサービス
-
-最上流以外のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
-
-また、子スパンを作成し、最上流以外のマイクロサービスに子スパンのコンテキストを伝播する。
-
-```
-
-```
 
 <br>
 
@@ -510,7 +559,7 @@ func CreateSpan(c *gin.Context, msg string) trace.Span {
 
 ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。
 
-全てのマイクロサービスで共通して、OpenTelemetoryのパッケージをセットアップする。
+OpenTelemetoryのパッケージをセットアップする。
 
 ```python
 import time
@@ -559,9 +608,11 @@ tracer = trace.get_tracer(__name__)
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
-#### ▼ 最上流マイクロサービス
+#### ▼ 親スパンの作成
 
-最上流マイクロサービスでは、親スパンを作成し、また最上流以外のマイクロサービスに親スパンのコンテキストを伝播する。
+親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```python
 import requests
@@ -575,11 +626,17 @@ res = requests.get("http://localhost:6000")
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69
 
-#### ▼ 最上流以外のマイクロサービス
+#### ▼ 子スパンの作成
 
-最上流以外のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
+子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
 
-また、子スパンを作成し、最上流以外のマイクロサービスに子スパンのコンテキストを伝播する。
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+
+```go
+
+```
+
+#### ▼ アプリケーションの実行
 
 ```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
