@@ -19,9 +19,9 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 #### ▼ 先頭のマイクロサービス
 
-先頭のマイクロサービスでは、親スパンを作成する。
+ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-また、後続のマイクロサービスに親スパンのメタデータを伝播する。
+先頭のマイクロサービスでは、分散トレーシングをセットアップする
 
 ```go
 package tracer
@@ -38,6 +38,7 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
+// 分散トレーシングをセットアップする
 func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// 分散トレースの宛先 (例：標準出力、Jaeger、Zipkin、など) を設定する。
@@ -76,6 +77,8 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 }
 ```
 
+親スパンを作成し、後続のマイクロサービスに親スパンのメタデータを伝播する。
+
 ```go
 package main
 
@@ -105,6 +108,7 @@ func httpRequest(ctx context.Context) error {
 
 	// アウトバウンド通信のリクエストヘッダーに、親スパンのメタデータを伝播する。
 	req, err := http.NewRequestWithContext(
+		// 親スパンのメタデータ
 		ctx,
 		http.MethodGet, "https://example.com",
 		http.NoBody,
@@ -195,6 +199,7 @@ func httpRequest(ctx context.Context) error {
 
 	// アウトバウンド通信のリクエストヘッダーに、子スパンのメタデータを伝播する。
 	req, err := http.NewRequestWithContext(
+		// 子スパンのメタデータ
 		ctx,
 		http.MethodGet, "https://example.com",
 		http.NoBody,
@@ -248,5 +253,84 @@ func main() {
 
 > - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
+
+<br>
+
+## 02. Python
+
+### gRPCを使わない場合
+
+#### ▼ 共通
+
+ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。
+
+監視バックエンドにスパンを送信できるようにする。
+
+ここでは、Google Cloud Traceに送信するとする。
+
+```python
+import time
+
+from flask import Flask
+from opentelemetry import metrics, trace
+from opentelemetry.exporter.cloud_monitoring import (CloudMonitoringMetricsExporter,)
+from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from opentelemetry.propagate import set_global_textmap
+from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+set_global_textmap(CloudTraceFormatPropagator())
+
+tracer_provider = TracerProvider()
+
+cloud_trace_exporter = CloudTraceSpanExporter()
+
+tracer_provider.add_span_processor(
+    BatchSpanProcessor(cloud_trace_exporter)
+)
+
+trace.set_tracer_provider(tracer_provider)
+
+tracer = trace.get_tracer(__name__)
+```
+
+#### ▼ 先頭のマイクロサービス
+
+先頭のマイクロサービスでは、分散トレーシングをセットアップする。
+
+```python
+RequestsInstrumentor().instrument()
+
+res = requests.get("http://localhost:6000")
+```
+
+> - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py
+
+#### ▼ 後続のマイクロサービス
+
+後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
+
+また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
+
+```python
+app = Flask(__name__)
+FlaskInstrumentor().instrument_app(app)
+
+@app.route("/")
+def hello_world():
+    with tracer.start_as_current_span("do_work"):
+        time.sleep(0.1)
+
+    return "Hello, World!"
+```
+
+> - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py
 
 <br>

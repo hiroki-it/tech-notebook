@@ -181,12 +181,46 @@ spec:
 
 マイクロサービスを選ぶと、そのマイクロサービスと送受信の関係にあるマイクロサービスを表示してくれる。
 
+<br>
+
 ### Graphタブ
 
-アプリコンテナ間 (Pod間) の通信を表示するために、Appグラフを選択する。
+#### ▼ メッシュトポロジータイプ
 
 > - https://kiali.io/docs/features/topology/#graph-types
 > - https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml
+
+#### ▼ Appグラフ
+
+アプリコンテナ間 (Pod間) の通信を表示する。
+
+#### ▼ Serviceグラフ
+
+Virtual Service間の通信を表示する。
+
+#### ▼ Versioned Appグラフ
+
+バージョン付きのアプリコンテナ間 (Pod間) の通信を表示する。
+
+#### ▼ Workloadグラフ
+
+Workload (例：Deployment、Statefulset、など) の通信を表示する。
+
+<br>
+
+### プロトコル別メトリクス
+
+#### ▼ HTTP
+
+HTTPプロトコルに関して、インバウンド/アウトバウンド通信のレスポンスタイムやエラー率を表示する。
+
+#### ▼ gRPC
+
+gRPCプロトコルに関して、インバウンド/アウトバウンド通信のレスポンスタイムやエラー率を表示する。
+
+#### ▼ TCP
+
+TCPプロトコルに関して、インバウンド/アウトバウンド通信のレスポンスタイムやエラー率を表示する。
 
 <br>
 
