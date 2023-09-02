@@ -187,11 +187,12 @@ Envoyは、Zipkinが使用するヘッダーを追加する。
 
 Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
-| HTTPヘッダー名    | 説明                             |
-| ----------------- | -------------------------------- |
-| `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。 |
+| HTTPヘッダー名    | 説明                                                        |
+| ----------------- | ----------------------------------------------------------- |
+| `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。トレースIDはALBで作られる。 |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
 <br>
 

@@ -261,8 +261,6 @@ func httpRequest(ctx context.Context) error {
 
 	return nil
 }
-
-
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
@@ -333,6 +331,7 @@ func initProvider() (func(context.Context) error, error) {
 			semconv.ServiceNameKey.String("<マイクロサービス名>"),
 		),
 	)
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to create resource: %w", err)
 	}
@@ -340,12 +339,14 @@ func initProvider() (func(context.Context) error, error) {
 	var tracerProvider *sdktrace.TracerProvider
 
 	conn, err := grpc.DialContext(ctx, "sample-collector.observability.svc.cluster.local:4317", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
 
 	// Set up a trace exporter
 	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithGRPCConn(conn))
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
 	}
@@ -402,6 +403,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
+
 	TraceId := span.SpanContext().TraceID().String()
 
 	span.SetAttributes(
@@ -451,6 +453,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
+
 	TraceId := span.SpanContext().TraceID().String()
 
 	span.SetAttributes(
@@ -496,6 +499,7 @@ func StartMainServer() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Fatal("failed to shutdown TracerProvider: %w", err)
