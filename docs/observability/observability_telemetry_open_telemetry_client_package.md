@@ -55,7 +55,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 スパンの宛先 (例：AWS X-ray、Google Cloud Trace、OpenTelemetryコレクター、など) を決める。
 
-具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`otel-collector.foo.svc.cluster.local.`、など) を設定できる。
+具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
@@ -75,11 +75,11 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 ### gRPCを使わない場合
 
-#### ▼ 全てのマイクロサービス共通
+#### ▼ パッケージの初期化
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-全てのマイクロサービスで共通して、penTelemetoryのパッケージをセットアップする。
+全てのマイクロサービスで共通して、OpenTelemetoryのパッケージを初期化する。
 
 ```go
 package tracer
@@ -121,7 +121,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 下流のマイクロサービスへのアウトバウンド通信がタイムアウトだった場合に、分散トレースを削除する。
+	// 最上流以外のマイクロサービスへのアウトバウンド通信がタイムアウトだった場合に、分散トレースを削除する。
 	cleanUp := func() {
 		ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 		defer cancel()
@@ -136,9 +136,9 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
 
-#### ▼ 最上流のマイクロサービス
+#### ▼ 最上流マイクロサービス
 
-最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキストを伝播する。
+最上流マイクロサービスでは、親スパンを作成し、また最上流以外のマイクロサービスに親スパンのコンテキストを伝播する。
 
 ```go
 package main
@@ -155,7 +155,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	// 定義したtracerパッケージ
-    "github.com/hiroki-hasegawa/foo/infrastructure/tracer"
+  "github.com/hiroki-hasegawa/foo/infrastructure/tracer"
 )
 
 func httpRequest(ctx context.Context) error {
@@ -213,7 +213,7 @@ func main() {
 
 	defer cleanUp()
 
-	// 下流のマイクロサービスにリクエストを送信する。
+	// 最上流以外のマイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -225,11 +225,11 @@ func main() {
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 
-#### ▼ 下流のマイクロサービス
+#### ▼ 最上流以外のマイクロサービス
 
-下流のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
+最上流以外のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキストを伝播する。
+また、子スパンを作成し、最上流以外のマイクロサービスに子スパンのコンテキストを伝播する。
 
 ```go
 package main
@@ -304,7 +304,7 @@ func main() {
 
 	defer cleanUp()
 
-	// 下流のマイクロサービスにリクエストを送信する。
+	// 最上流以外のマイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -316,11 +316,197 @@ func main() {
 
 <br>
 
+### gRPCを使う場合
+
+#### ▼ パッケージの初期化
+
+ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
+
+全てのマイクロサービスで共通して、OpenTelemetoryのパッケージを初期化する。
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+)
+
+var tracer = otel.Tracer("<マイクロサービス名>")
+
+func initProvider() (func(context.Context) error, error) {
+	ctx := context.Background()
+
+	res, err := resource.New(ctx,
+		resource.WithAttributes(
+			semconv.ServiceNameKey.String("<マイクロサービス名>"),
+		),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create resource: %w", err)
+	}
+
+	var tracerProvider *sdktrace.TracerProvider
+
+	conn, err := grpc.DialContext(ctx, "sample-collector.observability.svc.cluster.local:4317", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
+	if err != nil {
+		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
+	}
+
+	// Set up a trace exporter
+	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithGRPCConn(conn))
+	if err != nil {
+		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
+	}
+
+  var tracerProvider *sdktrace.TracerProvider
+
+	bsp := sdktrace.NewBatchSpanProcessor(traceExporter)
+	tracerProvider = sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithResource(res),
+		sdktrace.WithSpanProcessor(bsp),
+	)
+
+	otel.SetTracerProvider(tracerProvider)
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	return tracerProvider.Shutdown, nil
+}
+```
+
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go
+
+#### ▼ 最上流マイクロサービス
+
+最上流マイクロサービスでは、親スパンを作成し、また最上流以外のマイクロサービスに親スパンのコンテキストを伝播する。
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"net/http"
+	"os"
+	"os/signal"
+
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+)
+
+// アプリケーションを実行する
+func StartMainServer() {
+
+  ...
+
+  // Otel Collecotor への接続設定
+	shutdown, err := initProvider()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer func() {
+		if err := shutdown(ctx); err != nil {
+			log.Fatal("failed to shutdown TracerProvider: %w", err)
+		}
+	}()
+
+  // router 設定
+	r := gin.New()
+
+  ...
+
+}
+
+func checkSession() gin.HandlerFunc {
+  return func(c *gin.Context) {
+    defer LoggerAndCreateSpan(c, "セッションチェック開始").End()
+
+    ...
+
+		defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
+	}
+}
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"regexp"
+	"strconv"
+	"text/template"
+	"time"
+	"todobff/app/SessionInfo"
+	"todobff/config"
+
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/zap"
+)
+
+
+// スパンを作成する
+func CreateSpan(c *gin.Context, msg string) trace.Span {
+
+	_, span := tracer.Start(c.Request.Context(), msg)
+
+	SpanId := span.SpanContext().SpanID().String()
+	TraceId := span.SpanContext().TraceID().String()
+
+	span.SetAttributes(
+		attribute.Int("status", c.Writer.Status()),
+		attribute.String("method", c.Request.Method),
+		attribute.String("client_ip", c.ClientIP()),
+		attribute.String("message", msg),
+		attribute.String("span_id", SpanId),
+		attribute.String("trace_id", TraceId),
+	)
+
+  ...
+
+	return span
+}
+```
+
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go#L60-L97
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/utils/utils.go#L16-L53
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go#L16-L53
+
+#### ▼ 最上流以外のマイクロサービス
+
+最上流以外のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
+
+また、子スパンを作成し、最上流以外のマイクロサービスに子スパンのコンテキストを伝播する。
+
+```
+
+```
+
+<br>
+
 ## 03. Python用パッケージ
 
 ### gRPCを使わない場合
 
-#### ▼ 全てのマイクロサービス共通
+#### ▼ パッケージの初期化
 
 ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。
 
@@ -373,9 +559,9 @@ tracer = trace.get_tracer(__name__)
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
-#### ▼ 最上流のマイクロサービス
+#### ▼ 最上流マイクロサービス
 
-最上流のマイクロサービスでは、親スパンを作成し、また下流のマイクロサービスに親スパンのコンテキストを伝播する。
+最上流マイクロサービスでは、親スパンを作成し、また最上流以外のマイクロサービスに親スパンのコンテキストを伝播する。
 
 ```python
 import requests
@@ -389,11 +575,11 @@ res = requests.get("http://localhost:6000")
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69
 
-#### ▼ 下流のマイクロサービス
+#### ▼ 最上流以外のマイクロサービス
 
-下流のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
+最上流以外のマイクロサービスでは、上流のマイクロサービスからコンテキストを取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキストを伝播する。
+また、子スパンを作成し、最上流以外のマイクロサービスに子スパンのコンテキストを伝播する。
 
 ```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor

@@ -491,7 +491,8 @@ data:
     extensionProviders:
       - name: otel
         envoyOtelAls:
-          service: opentelemetry-collector.istio-system.svc.cluster.local
+          # OpenTelemetryコレクターに設定する
+          service: opentelemetry-collector.tracing.svc.cluster.local
           port: 4317
 ```
 
@@ -513,6 +514,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
+> - https://github.com/istio/istio/tree/master/samples/open-telemetry/tracing
 
 <br>
 
