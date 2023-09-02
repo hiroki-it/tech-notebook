@@ -17,11 +17,11 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 ### gRPCを使わない場合
 
-#### ▼ 先頭のマイクロサービス
+#### ▼ 最上流のマイクロサービス
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-先頭のマイクロサービスでは、分散トレーシングをセットアップする
+最上流のマイクロサービスでは、分散トレーシングをセットアップする
 
 ```go
 package tracer
@@ -38,7 +38,6 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
-// 分散トレーシングをセットアップする
 func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// 分散トレースの宛先 (例：標準出力、Jaeger、Zipkin、など) を設定する。
@@ -64,7 +63,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 後続のマイクロサービスへのアウトバウンド通信がタイムアウトだった場合に、分散トレースを削除する。
+	// 下流のマイクロサービスへのアウトバウンド通信がタイムアウトだった場合に、分散トレースを削除する。
 	cleanUp := func() {
 		ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 		defer cancel()
@@ -77,7 +76,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 }
 ```
 
-親スパンを作成し、後続のマイクロサービスに親スパンのメタデータを伝播する。
+親スパンを作成し、下流のマイクロサービスに親スパンのメタデータを伝播する。
 
 ```go
 package main
@@ -97,7 +96,6 @@ import (
     "github.com/hiroki-hasegawa/foo/infrastructure/tracer"
 )
 
-// httpRequest 親スパンを持つHTTPリクエストを作成する。
 func httpRequest(ctx context.Context) error {
 
 	// 親スパンを作成する。
@@ -153,7 +151,7 @@ func main() {
 
 	defer cleanUp()
 
-	// 後続のマイクロサービスにリクエストを送信する。
+	// 下流のマイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -165,11 +163,11 @@ func main() {
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 
-#### ▼ 後続のマイクロサービス
+#### ▼ 下流のマイクロサービス
 
-後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
+下流のマイクロサービスでは、上流からのインバウンド通信からメタデータを取得する。
 
-また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
+また、子スパンを作成し、下流のマイクロサービスに子スパンのメタデータを伝播する。
 
 ```go
 package main
@@ -244,7 +242,7 @@ func main() {
 
 	defer cleanUp()
 
-	// 後続のマイクロサービスにリクエストを送信する。
+	// 下流のマイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -273,19 +271,22 @@ import time
 
 from flask import Flask
 from opentelemetry import metrics, trace
-from opentelemetry.exporter.cloud_monitoring import (CloudMonitoringMetricsExporter,)
 from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from opentelemetry.propagate import set_global_textmap
 from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
+# -------------------------------------
+# cloud_trace_propagatorのセットアップ
+# -------------------------------------
+# X-Cloud-Trace-Contextを使用するように設定する
 set_global_textmap(CloudTraceFormatPropagator())
 
+# -------------------------------------
+# cloud_trace_propagatorのセットアップ
+# -------------------------------------
 tracer_provider = TracerProvider()
 
 cloud_trace_exporter = CloudTraceSpanExporter()
@@ -299,9 +300,12 @@ trace.set_tracer_provider(tracer_provider)
 tracer = trace.get_tracer(__name__)
 ```
 
-#### ▼ 先頭のマイクロサービス
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L1-L65
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79
 
-先頭のマイクロサービスでは、分散トレーシングをセットアップする。
+#### ▼ 最上流のマイクロサービス
+
+最上流のマイクロサービスでは、分散トレーシングをセットアップする。
 
 ```python
 RequestsInstrumentor().instrument()
@@ -310,13 +314,13 @@ res = requests.get("http://localhost:6000")
 ```
 
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69
 
-#### ▼ 後続のマイクロサービス
+#### ▼ 下流のマイクロサービス
 
-後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
+下流のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
 
-また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
+また、子スパンを作成し、下流のマイクロサービスに子スパンのメタデータを伝播する。
 
 ```python
 app = Flask(__name__)
@@ -324,6 +328,7 @@ FlaskInstrumentor().instrument_app(app)
 
 @app.route("/")
 def hello_world():
+    #
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -331,6 +336,6 @@ def hello_world():
 ```
 
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97
 
 <br>
