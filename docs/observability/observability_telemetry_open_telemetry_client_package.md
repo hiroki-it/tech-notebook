@@ -254,7 +254,7 @@ func main() {
 
 <br>
 
-## 02. Python
+## 02. Python用パッケージ
 
 ### gRPCを使わない場合
 
@@ -269,13 +269,12 @@ func main() {
 ```python
 import time
 
-from flask import Flask
-from opentelemetry import metrics, trace
+from opentelemetry import trace
 from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
-from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from opentelemetry.propagate import set_global_textmap
 from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
 # -------------------------------------
@@ -285,8 +284,16 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 set_global_textmap(CloudTraceFormatPropagator())
 
 # -------------------------------------
-# cloud_trace_propagatorのセットアップ
+# cloud_trace_exporterのセットアップ
 # -------------------------------------
+resource = Resource.create(
+    {
+        "service.name": "flask_e2e_client",
+        "service.namespace": "examples",
+        "service.instance.id": "instance554",
+    }
+)
+
 tracer_provider = TracerProvider()
 
 cloud_trace_exporter = CloudTraceSpanExporter()
@@ -308,6 +315,9 @@ tracer = trace.get_tracer(__name__)
 最上流のマイクロサービスでは、分散トレーシングをセットアップする。
 
 ```python
+import requests
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+
 RequestsInstrumentor().instrument()
 
 res = requests.get("http://localhost:6000")
@@ -323,12 +333,17 @@ res = requests.get("http://localhost:6000")
 また、子スパンを作成し、下流のマイクロサービスに子スパンのメタデータを伝播する。
 
 ```python
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from flask import Flask
+
+tracer = trace.get_tracer(__name__)
+
 app = Flask(__name__)
+
 FlaskInstrumentor().instrument_app(app)
 
 @app.route("/")
 def hello_world():
-    #
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
