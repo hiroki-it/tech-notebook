@@ -13,7 +13,57 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 <br>
 
-## 01. Go用パッケージ
+## 01. クライアントパッケージのコンポーネント
+
+### TraceProvider
+
+<br>
+
+### Resource
+
+スパンにメタデータを設定する。
+
+```yaml
+{
+  "service.name": "foo-service",
+  "service.namespace": "app",
+  "service.instance.id": "<Pod名>",
+  "service.version": "1.0.0",
+  "telemetry.sdk.name": "otel",
+}
+```
+
+<br>
+
+### SpanProcessor
+
+スパンを処理する。
+
+具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
+
+> - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
+
+<br>
+
+### Exporter
+
+スパンの宛先 (例：AWS X-ray、Google Cloud Trace、OpenTelemetryコレクター、など) を決める。
+
+具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`otel-collector.foo.svc.cluster.local.`、など) を設定できる。
+
+> - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+<br>
+
+### Sampler
+
+スパンのサンプリング率を設定する。
+
+具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
+
+<br>
+
+## 02. Go用パッケージ
 
 ### gRPCを使わない場合
 
@@ -258,7 +308,7 @@ func main() {
 
 <br>
 
-## 02. Python用パッケージ
+## 03. Python用パッケージ
 
 ### gRPCを使わない場合
 
@@ -288,6 +338,8 @@ set_global_textmap(CloudTraceFormatPropagator())
 # -------------------------------------
 # cloud_trace_exporterのセットアップ
 # -------------------------------------
+
+# 任意のメタデータを設定する
 resource = Resource.create(
     {
         "service.name": "flask_e2e_client",
@@ -311,6 +363,7 @@ tracer = trace.get_tracer(__name__)
 
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L1-L65
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
 #### ▼ 最上流のマイクロサービス
 
