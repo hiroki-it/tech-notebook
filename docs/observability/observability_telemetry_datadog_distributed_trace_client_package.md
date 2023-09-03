@@ -283,8 +283,6 @@ APMのマイクロサービスのタグ名に反映される。
 
 最上流のマイクロサービスでは、親スパンを作成する。
 
-また、下流のマイクロサービスに親スパンのコンテキストを伝播する。
-
 ```go
 package main
 
@@ -313,7 +311,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 	req = req.WithContext(ctx)
 
-	// アウトバウンド通信のリクエストヘッダーに、親スパンのコンテキストを伝播する。
+	// 下流マイクロサービスにコンテキストを伝播する。
 	err = tracer.Inject(
 		span.Context(),
 		tracer.HTTPHeadersCarrier(req.Header),
