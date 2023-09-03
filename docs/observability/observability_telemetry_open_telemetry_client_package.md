@@ -66,7 +66,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。
 
-Carrierからコンテキストを格納する操作を『Inject』、反対に取り出す操作を『Extract』という。
+Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
@@ -134,7 +134,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 前段のマイクロサービスへのリクエストからコンテキストをExtractする
+	// 前段のマイクロサービスへのリクエストからコンテキストを抽出する。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
 	// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。
@@ -180,12 +180,12 @@ func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
 	// 受信したリクエストからコンテキストを取得する。
-    // 変数にコンテキストが格納されていないので、親スパンが作成される
+    // 変数にコンテキストが注入されていないので、親スパンが作成される
 	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
 
 	defer span.End()
 
-	// コンテキストを現在の処理に格納する。
+	// コンテキストを現在の処理に注入する。
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -230,7 +230,6 @@ func main() {
 
 	defer cleanUp()
 
-	// 下流マイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -243,7 +242,7 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ コンテキスト格納と子スパン作成
+#### ▼ コンテキスト注入と子スパン作成
 
 子スパンを作成する。
 
@@ -270,13 +269,13 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
-	// 受信したリクエストからコンテキストを取得する。
-    // 変数にコンテキストが格納されているので、子スパンが作成される。
+	// 受信したリクエストからコンテキストを抽出する。
+    // 変数にコンテキストが注入されているので、子スパンが作成される。
 	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
 
-	// コンテキストを現在の処理に格納する。
+	// コンテキストを現在の処理に注入する。
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -366,7 +365,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	ctx := context.Background()
 
-	// コンテキストを現在の処理に格納する。
+	// コンテキストを現在の処理に注入する。
 	res, err := resource.New(
 		ctx,
 		resource.WithAttributes(semconv.ServiceNameKey.String("<マイクロサービス名>")),
@@ -409,7 +408,7 @@ func initProvider() (func(context.Context) error, error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 前段のマイクロサービスのリクエストからコンテキストをExtractする
+	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
 	return tracerProvider.Shutdown, nil
@@ -456,8 +455,8 @@ import (
 
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// 受信したリクエストからコンテキストを取得する。
-    // 変数にコンテキストが格納されていないので、親スパンが作成される。
+	// 受信したリクエストからコンテキストを抽出する。
+    // 変数にコンテキストが注入されていないので、親スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -551,7 +550,7 @@ func checkSession() gin.HandlerFunc {
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ コンテキスト格納と子スパン作成
+#### ▼ コンテキスト注入と子スパン作成
 
 子スパンを作成する。
 
@@ -588,8 +587,8 @@ import (
 // 子スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// 受信したリクエストからコンテキストを取得する。
-    // 変数にコンテキストが格納されているので、子スパンが作成される。
+	// 受信したリクエストからコンテキストを抽出する。
+    // 変数にコンテキストが注入されているので、子スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -706,7 +705,7 @@ func main() {
 		log.Fatalf("texporter.New: %v", err)
 	}
 
-	// コンテキストを現在の処理に格納する。
+	// コンテキストを現在の処理に注入する。
 	res, err := resource.New(
 		ctx,
 		resource.WithDetectors(gcp.NewDetector()),
@@ -728,10 +727,10 @@ func main() {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tp)
 
-	// 前段のマイクロサービスのリクエストからコンテキストをExtractする
+	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
-	// 前段のマイクロサービスのリクエストからコンテキストをExtractする
+	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
     ...
@@ -767,8 +766,8 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
-	    // 受信したリクエストからコンテキストを取得する。
-        // 変数にコンテキストが格納されていないので、親スパンが作成される。
+	    // 受信したリクエストからコンテキストを抽出する。
+        // 変数にコンテキストが注入されていないので、親スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
 		defer span.End()
 
@@ -782,7 +781,7 @@ func main() {
 > - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ コンテキスト格納と子スパン作成
+#### ▼ コンテキスト注入と子スパン作成
 
 ```go
 package main
@@ -809,8 +808,8 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
-	    // 受信したリクエストからコンテキストを取得する。
-        // 変数にコンテキストが格納されているので、子スパンが作成される。
+	    // 受信したリクエストからコンテキストを抽出する。
+        // 変数にコンテキストが注入されているので、子スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
 		defer span.End()
 
@@ -843,20 +842,11 @@ from opentelemetry.propagate import set_global_textmap
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
-# スパンの宛先として、Google CloudTraceを設定する。
 from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
-# スパンの伝播方法として、Google CloudTraceを設定する。
 from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 
-# -------------------------------------
-# cloud_trace_propagatorのセットアップ
-# -------------------------------------
-# X-Cloud-Trace-Contextを使用するように設定する
+# 前段のマイクロサービスのリクエストからコンテキストを抽出する。
 set_global_textmap(CloudTraceFormatPropagator())
-
-# -------------------------------------
-# cloud_trace_exporterのセットアップ
-# -------------------------------------
 
 # 任意のコンテキストを設定する
 resource = Resource.create({
@@ -867,6 +857,7 @@ resource = Resource.create({
 
 tracer_provider = TracerProvider()
 
+# スパンの宛先として、Google CloudTraceを設定する。
 cloud_trace_exporter = CloudTraceSpanExporter()
 
 tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))
@@ -922,8 +913,8 @@ def hello_world():
 
     ...
 
-    # 受信したリクエストからコンテキストを取得する。
-    # 変数にコンテキストが格納されていないので、親スパンが作成される。
+    # 受信したリクエストからコンテキストを抽出する。
+    # 変数にコンテキストが注入されていないので、親スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -935,7 +926,7 @@ def hello_world():
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97
 
-#### ▼ コンテキスト格納と子スパン作成
+#### ▼ コンテキスト注入と子スパン作成
 
 子スパンを作成する。
 
@@ -956,8 +947,8 @@ def hello_world():
 
     ...
 
-    # 受信したリクエストからコンテキストを取得する。
-    # 変数にコンテキストが格納されているので、子スパンが作成される。
+    # 受信したリクエストからコンテキストを抽出する。
+    # 変数にコンテキストが注入されているので、子スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
