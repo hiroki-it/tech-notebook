@@ -91,6 +91,8 @@ Carrierからコンテキストを格納する操作を『Inject』、反対に�
 
 otelクライアントパッケージを初期化する。
 
+初期化の段階で、コンテキストの伝播処理も実行する。
+
 ```go
 package main
 
@@ -101,7 +103,7 @@ import (
 	"time"
 
 	"go.opentelemetry.io/otel"
-  // スパンの宛先として、標準出力を設定する。
+    // スパンの宛先として、標準出力を設定する。
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -319,7 +321,6 @@ func main() {
 
 	defer cleanUp()
 
-	// 下流マイクロサービスにリクエストを送信する。
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -339,6 +340,8 @@ func main() {
 
 otelクライアントパッケージを初期化する。
 
+初期化の段階で、コンテキストの伝播処理も実行する。
+
 ```go
 package main
 
@@ -347,7 +350,7 @@ import (
 	"fmt"
 
 	"go.opentelemetry.io/otel"
-  // スパンの宛先として、otelコレクターを設定する。
+    // スパンの宛先として、otelコレクターを設定する。
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -445,7 +448,7 @@ import (
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 
-  "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+    "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
@@ -471,6 +474,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	)
 
 	start := time.Now()
+
 	logger, err := zap.NewProduction()
 	if err != nil {
 		log.Fatal(err)
@@ -478,13 +482,16 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	defer logger.Sync()
 
-  // 分散トレースとログを紐づけるために、ログにスパンIDとトレースIDを出力する
-	logger.Info("Logger",
-
-    ...
-
+    // 分散トレースとログを紐づける。
+	logger.Info(
+		"Logger",
+        // スパンID
 		zap.String("span_id", SpanId),
+        // トレースID
 		zap.String("trace_id", TraceId),
+		// 実行時間
+		zap.Duration("elapsed", time.Since(start)),
+		...
 	)
 
 	return span
@@ -572,7 +579,7 @@ import (
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 
-  "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+    "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
@@ -599,20 +606,25 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	)
 
 	start := time.Now()
+
 	logger, err := zap.NewProduction()
+
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	defer logger.Sync()
 
-  // 分散トレースとログを紐づけるために、ログにスパンIDとトレースIDを出力する
-	logger.Info("Logger",
-
-    ...
-
+    // 分散トレースとログを紐づける。
+	logger.Info(
+		"Logger",
+		// スパンID
 		zap.String("span_id", SpanId),
+		// トレースId
 		zap.String("trace_id", TraceId),
+		// 実行時間
+		zap.Duration("elapsed", time.Since(start)),
+		...
 	)
 
 	return span
@@ -620,26 +632,32 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 // ユーザーを作成する
 func createUser(c *gin.Context) {
+
 	utils.LoggerAndCreateSpan(c, "ユーザ登録").End()
 
 	var json signupRequest
+
 	if err := c.BindJSON(&json); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	utils.LoggerAndCreateSpan(c, json.Email+" のユーザ情報の取得").End()
+
 	user, _ := models.GetUserByEmail(c, json.Email)
-	if user.ID != 0 {
+
+    if user.ID != 0 {
 		c.JSON(http.StatusOK, gin.H{
-			"error_code": "その Email はすでに存在しております",
-		})
+      "error_code": "その Email はすでに存在しております",
+    })
 	} else {
-		user := models.User{
+
+    user := models.User{
 			Name:     json.Name,
 			Email:    json.Email,
 			PassWord: json.PassWord,
 		}
+
 		if err := user.CreateUser(c); err != nil {
 			log.Println(err)
 		}
@@ -716,7 +734,7 @@ func main() {
 	// 前段のマイクロサービスのリクエストからコンテキストをExtractする
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
-  ...
+    ...
 }
 ```
 
@@ -815,6 +833,8 @@ func main() {
 
 otelクライアントパッケージを初期化する。
 
+初期化の段階で、コンテキストの伝播処理も実行する。
+
 ```python
 import time
 
@@ -839,21 +859,17 @@ set_global_textmap(CloudTraceFormatPropagator())
 # -------------------------------------
 
 # 任意のコンテキストを設定する
-resource = Resource.create(
-    {
+resource = Resource.create({
         "service.name": "flask_e2e_client",
         "service.namespace": "examples",
         "service.instance.id": "instance554",
-    }
-)
+    })
 
 tracer_provider = TracerProvider()
 
 cloud_trace_exporter = CloudTraceSpanExporter()
 
-tracer_provider.add_span_processor(
-    BatchSpanProcessor(cloud_trace_exporter)
-)
+tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))
 
 trace.set_tracer_provider(tracer_provider)
 
