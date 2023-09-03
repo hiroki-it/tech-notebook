@@ -63,6 +63,8 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 #### ▼ Propagator
 
+![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
+
 コンテキストを下流マイクロサービスに伝播させる。
 
 伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。
@@ -91,6 +93,7 @@ func init() {
 }
 ```
 
+> - https://github.com/openzipkin/b3-propagation#overall-process
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
