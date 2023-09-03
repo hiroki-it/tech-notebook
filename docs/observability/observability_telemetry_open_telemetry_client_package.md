@@ -19,6 +19,7 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 OpenTelemetryをセットアップし、スパンを作成する機能を提供する。
 
+> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21
 
@@ -989,23 +990,62 @@ def hello_world():
 
 ## 04. 任意の言語とgRPCの場合
 
-```go
-var traceFilter = filters.None(
-  // スパンを作成しないRPCの条件を設定する。
-  filters.FullMethodName("/foo.deadbeef.v1.Probe/Ready"),
-)
+### Goの場合
 
-server := grpc.NewServer(
-  grpc.ChainUnaryInterceptor(
-    // otelgrpcを使用して、コンテキストを抽出し、
-    otelgrpc.UnaryServerInterceptor(
-      otelgrpc.WithInterceptorFilter(traceFilter),
-    ),
-    ...
-  ),
-)
+#### ▼ 親スパンの作成
+
+```go
+mux := http.NewServeMux()
+mux.Handle("/", http.HandlerFunc(h.alive))
+mux.Handle("/hello", http.HandlerFunc(h.hello))
+http.ListenAndServe(":8000", telemetry.NewHTTPMiddleware()(mux))
 ```
 
+```go
+conn, err := grpc.Dial(addr,
+        grpc.WithInsecure(),
+        grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+)
+
+if err != nil {
+        log.Fatal(err)
+}
+
+c := pb.NewGreeterClient(conn)
+```
+
+> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+
+#### ▼ コンテキスト注入と子スパン作成
+
+```go
+s := grpc.NewServer(
+  grpc.UnaryInterceptor(telemetry.NewUnaryServerInterceptor())
+)
+
+pb.RegisterGreeterServer(s, &server{})
+
+err = s.Serve(lis)
+
+if err != nil {
+        log.Fatal(err)
+}
+```
+
+```go
+func NewUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServerInterceptor {
+
+  opts = append(
+    opts,
+    // ヘルスチェックのスパンは作成しないようにする
+    otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck())),
+  )
+
+  return otelgrpc.UnaryServerInterceptor(opts...)
+}
+```
+
+> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
 <br>
