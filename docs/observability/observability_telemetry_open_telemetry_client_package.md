@@ -68,7 +68,30 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
+```go
+// 上流マイクロサービス
+otel.SetTextMapPropagator(
+        propagation.NewCompositeTextMapPropagator(
+                propagation.TraceContext{},
+                propagation.Baggage{},
+        ),
+)
+```
+
+```go
+// 下流マイクロサービス
+func init() {
+        otel.SetTextMapPropagator(
+                propagation.NewCompositeTextMapPropagator(
+                        propagation.TraceContext{},
+                        propagation.Baggage{},
+                ),
+        )
+}
+```
+
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
 #### ▼ Sampler
 
@@ -179,13 +202,12 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
-	// 受信したリクエストからコンテキストを取得する。
-    // 変数にコンテキストが注入されていないので、親スパンが作成される
+	// 現在の処理からコンテキストを取得する。
+    // 変数にすでにコンテキストが注入されていないので、親スパンが作成される
 	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
 
 	defer span.End()
 
-	// コンテキストを現在の処理に注入する。
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -244,7 +266,7 @@ func main() {
 
 #### ▼ コンテキスト注入と子スパン作成
 
-子スパンを作成する。
+現在の処理にコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -269,13 +291,12 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
-	// 受信したリクエストからコンテキストを抽出する。
-    // 変数にコンテキストが注入されているので、子スパンが作成される。
+	// 現在の処理にコンテキストを注入する。
+    // 変数にすでにコンテキストが注入されているので、子スパンが作成される。
 	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
 
-	// コンテキストを現在の処理に注入する。
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -349,7 +370,6 @@ import (
 	"fmt"
 
 	"go.opentelemetry.io/otel"
-    // スパンの宛先として、otelコレクターを設定する。
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -365,7 +385,6 @@ func initProvider() (func(context.Context) error, error) {
 
 	ctx := context.Background()
 
-	// コンテキストを現在の処理に注入する。
 	res, err := resource.New(
 		ctx,
 		resource.WithAttributes(semconv.ServiceNameKey.String("<マイクロサービス名>")),
@@ -386,6 +405,7 @@ func initProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
 
+	// スパンの宛先として、otelコレクターを設定する。
 	traceExporter, err := otlptracegrpc.New(
     ctx,
     otlptracegrpc.WithGRPCConn(conn),
@@ -455,8 +475,8 @@ import (
 
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// 受信したリクエストからコンテキストを抽出する。
-    // 変数にコンテキストが注入されていないので、親スパンが作成される。
+	// 現在の処理にコンテキストを注入する。
+    // 変数にすでにコンテキストが注入されていないので、親スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -509,11 +529,12 @@ func StartMainServer() {
 
   ...
 
-	// otelコレクターへの接続設定
 	shutdown, err := initProvider()
-	if err != nil {
+
+  if err != nil {
 		log.Fatal(err)
 	}
+
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Fatal("failed to shutdown TracerProvider: %w", err)
@@ -552,7 +573,7 @@ func checkSession() gin.HandlerFunc {
 
 #### ▼ コンテキスト注入と子スパン作成
 
-子スパンを作成する。
+現在の処理にコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -587,8 +608,8 @@ import (
 // 子スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// 受信したリクエストからコンテキストを抽出する。
-    // 変数にコンテキストが注入されているので、子スパンが作成される。
+	// 現在の処理にコンテキストを注入する。
+    // 変数にすでにコンテキストが注入されているので、子スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -674,6 +695,12 @@ func createUser(c *gin.Context) {
 
 <br>
 
+### 宛先がX-rayの場合
+
+記入中...
+
+<br>
+
 ### 宛先がGoogle CloudTraceの場合
 
 #### ▼ パッケージの初期化
@@ -705,7 +732,6 @@ func main() {
 		log.Fatalf("texporter.New: %v", err)
 	}
 
-	// コンテキストを現在の処理に注入する。
 	res, err := resource.New(
 		ctx,
 		resource.WithDetectors(gcp.NewDetector()),
@@ -766,8 +792,8 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
-	    // 受信したリクエストからコンテキストを抽出する。
-        // 変数にコンテキストが注入されていないので、親スパンが作成される。
+	    // 現在の処理にコンテキストを注入する。
+        // 変数にすでにコンテキストが注入されていないので、親スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
 		defer span.End()
 
@@ -782,6 +808,10 @@ func main() {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
 #### ▼ コンテキスト注入と子スパン作成
+
+現在の処理にコンテキストを注入し、また子スパンを作成する。
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```go
 package main
@@ -808,8 +838,8 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
-	    // 受信したリクエストからコンテキストを抽出する。
-        // 変数にコンテキストが注入されているので、子スパンが作成される。
+	    // 現在の処理にコンテキストを注入する。
+        // 変数にすでにコンテキストが注入されているので、子スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
 		defer span.End()
 
@@ -913,8 +943,8 @@ def hello_world():
 
     ...
 
-    # 受信したリクエストからコンテキストを抽出する。
-    # 変数にコンテキストが注入されていないので、親スパンが作成される。
+    # 現在の処理にコンテキストを注入する。
+    # 変数にすでにコンテキストが注入されていないので、親スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -928,7 +958,7 @@ def hello_world():
 
 #### ▼ コンテキスト注入と子スパン作成
 
-子スパンを作成する。
+現在の処理にコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -947,12 +977,35 @@ def hello_world():
 
     ...
 
-    # 受信したリクエストからコンテキストを抽出する。
-    # 変数にコンテキストが注入されているので、子スパンが作成される。
+    # 現在の処理にコンテキストを注入する。
+    # 変数にすでにコンテキストが注入されているので、子スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
     ...
 ```
+
+<br>
+
+## 04. 任意の言語とgRPCの場合
+
+```go
+var traceFilter = filters.None(
+  // スパンを作成しないRPCの条件を設定する。
+  filters.FullMethodName("/foo.deadbeef.v1.Probe/Ready"),
+)
+
+server := grpc.NewServer(
+  grpc.ChainUnaryInterceptor(
+    // otelgrpcを使用して、コンテキストを抽出し、
+    otelgrpc.UnaryServerInterceptor(
+      otelgrpc.WithInterceptorFilter(traceFilter),
+    ),
+    ...
+  ),
+)
+```
+
+> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 <br>
