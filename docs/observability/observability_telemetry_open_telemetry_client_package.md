@@ -137,7 +137,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
 
-#### ▼ 親スパンの作成
+#### ▼ 親スパンの作成と伝播
 
 親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
 
@@ -196,6 +196,30 @@ func httpRequest(ctx context.Context) error {
 
 	return nil
 }
+
+func main() {
+
+	ctx, stop := signal.NotifyContext(
+		context.Background(),
+		os.Interrupt,
+		syscall.SIGTERM,
+	)
+
+	defer stop()
+
+	cleanUp, err := tracer.initTracer(10 * time.Second)
+
+	if err != nil {
+		panic(err)
+	}
+
+	defer cleanUp()
+
+	// 下流マイクロサービスにリクエストを送信する。
+	if err := httpRequest(ctx); err != nil {
+		panic(err)
+	}
+}
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/go/manual/
@@ -203,7 +227,7 @@ func httpRequest(ctx context.Context) error {
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 
-#### ▼ 子スパンの作成
+#### ▼ 子スパンの作成と伝播
 
 子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
 
@@ -263,14 +287,7 @@ func httpRequest(ctx context.Context) error {
 
 	return nil
 }
-```
 
-> - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
-> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
-
-#### ▼ アプリケーションの実行
-
-```go
 func main() {
 
 	ctx, stop := signal.NotifyContext(
@@ -295,6 +312,9 @@ func main() {
 	}
 }
 ```
+
+> - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
+> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
 
 <br>
 
@@ -380,7 +400,7 @@ func initProvider() (func(context.Context) error, error) {
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go
 
-#### ▼ 親スパンの作成
+#### ▼ 親スパンの作成と伝播
 
 親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
 
@@ -428,9 +448,18 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	return span
 }
+
+// ログイン画面を返却する
+func getLogin(c *gin.Context) {
+	defer LoggerAndCreateSpan(c, "ログイン画面取得").End()
+	generateHTML(c, nil, "login", "layout", "login", "public_navbar", "footer")
+}
 ```
 
-#### ▼ 子スパンの作成
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go
+
+#### ▼ 子スパンの作成と伝播
 
 子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
 
@@ -440,8 +469,12 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 package main
 
 import (
+  "context"
 	"fmt"
 	"log"
+	"net/http"
+	"os"
+	"os/signal"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -450,7 +483,11 @@ import (
 	"todobff/app/SessionInfo"
 	"todobff/config"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
+
+  "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
@@ -478,9 +515,49 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	return span
 }
+
+// ユーザーを作成する
+func createUser(c *gin.Context) {
+	utils.LoggerAndCreateSpan(c, "ユーザ登録").End()
+
+	var json signupRequest
+	if err := c.BindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	utils.LoggerAndCreateSpan(c, json.Email+" のユーザ情報の取得").End()
+	user, _ := models.GetUserByEmail(c, json.Email)
+	if user.ID != 0 {
+		c.JSON(http.StatusOK, gin.H{
+			"error_code": "その Email はすでに存在しております",
+		})
+	} else {
+		user := models.User{
+			Name:     json.Name,
+			Email:    json.Email,
+			PassWord: json.PassWord,
+		}
+		if err := user.CreateUser(c); err != nil {
+			log.Println(err)
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"Name":  json.Name,
+			"Email": json.Email,
+		})
+	}
+}
 ```
 
-#### ▼ アプリケーションの実行
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/route.go
+> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go
+
+<br>
+
+### 宛先がGoogle CloudTraceの場合
+
+#### ▼ パッケージの初期化
 
 ```go
 package main
@@ -488,78 +565,99 @@ package main
 import (
 	"context"
 	"log"
-	"net/http"
 	"os"
-	"os/signal"
 
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-contrib/sessions/cookie"
-	"github.com/gin-gonic/gin"
-	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
+	"go.opentelemetry.io/contrib/detectors/gcp"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
 
-// アプリケーションを実行する
-func StartMainServer() {
+func main() {
+	ctx := context.Background()
 
-    ...
+	projectID := os.Getenv("GOOGLE_CLOUD_PROJECT")
 
-    // otelコレクターへの接続を設定する
-	shutdown, err := initProvider()
+  exporter, err := texporter.New(texporter.WithProjectID(projectID))
 
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("texporter.New: %v", err)
 	}
 
-	defer func() {
-		if err := shutdown(ctx); err != nil {
-			log.Fatal("failed to shutdown TracerProvider: %w", err)
-		}
-	}()
+	res, err := resource.New(ctx,
+		resource.WithDetectors(gcp.NewDetector()),
 
-    // router 設定
-	r := gin.New()
+		resource.WithTelemetrySDK(),
+		resource.WithAttributes(
+			semconv.ServiceNameKey.String("my-application"),
+		),
+	)
 
-    ...
-
-}
-
-func checkSession() gin.HandlerFunc {
-
-  return func(c *gin.Context) {
-
-    defer LoggerAndCreateSpan(c, "セッションチェック開始").End()
-
-    ...
-
-		defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
+	if err != nil {
+		log.Fatalf("resource.New: %v", err)
 	}
-}
 
-func getIndex(c *gin.Context) {
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(res),
+	)
 
-	defer LoggerAndCreateSpan(c, "TODO画面取得").End()
+	defer tp.Shutdown(ctx)
 
-	...
+	otel.SetTracerProvider(tp)
 
-	defer LoggerAndCreateSpan(c, "UserAPI /getUserByEmail にポスト").End()
-
-	...
-
-	defer LoggerAndCreateSpan(c, "TodoAPI /getTodosByEmail にポスト").End()
-
-	...
-
-	defer LoggerAndCreateSpan(c, "TODO画面取得").End()
-
-	...
-
-	generateHTML(c, user, "index", "layout", "private_navbar", "index", "footer")
+  ...
 }
 ```
 
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go#L60-L97
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/utils/utils.go#L16-L53
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go#L16-L53
+> - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L35-L71
+
+#### ▼ 親スパンの作成と伝播
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"os"
+
+	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
+	"go.opentelemetry.io/contrib/detectors/gcp"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
+)
+
+func main() {
+
+  ctx := context.Background()
+
+  ...
+
+  tracer := otel.GetTracerProvider().Tracer("example.com/trace")
+
+  err = func(ctx context.Context) error {
+		ctx, span := tracer.Start(ctx, "foo")
+		defer span.End()
+
+    ...
+
+		return nil
+	}(ctx)
+}
+```
+
+> - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84
+
+#### ▼ 子スパンの作成と伝播
+
+```go
+// 実装例がないため未記載
+```
 
 <br>
 
@@ -641,7 +739,7 @@ print(response.text)
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69
 
-#### ▼ 親スパンの作成
+#### ▼ 親スパンの作成と伝播
 
 親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
 
@@ -676,7 +774,7 @@ def hello_world():
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97
 
-#### ▼ 子スパンの作成
+#### ▼ 子スパンの作成と伝播
 
 子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
 
@@ -684,26 +782,6 @@ def hello_world():
 
 ```python
 # 実装例がないため未記載
-```
-
-#### ▼ アプリケーションの実行
-
-```python
-from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from flask import Flask
-
-tracer = trace.get_tracer(__name__)
-
-app = Flask(__name__)
-
-FlaskInstrumentor().instrument_app(app)
-
-@app.route("/")
-def hello_world():
-    with tracer.start_as_current_span("do_work"):
-        time.sleep(0.1)
-
-    return "Hello, World!"
 ```
 
 <br>
