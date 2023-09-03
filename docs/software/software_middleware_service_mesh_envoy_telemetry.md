@@ -15,7 +15,9 @@ description: テレメトリー＠Envoyの知見を記録しています。
 
 ## 01. ログ (アクセスログのみ)
 
-### アクセスログ形式
+### アクセスログ形式と変数
+
+#### ▼ アクセスログ形式
 
 Envoyは、アプリコンテナへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
 
@@ -44,8 +46,6 @@ Envoyは、アプリコンテナへのアクセスログ (インバウンド通�
 ```
 
 <br>
-
-### 変数
 
 #### ▼ `%RESPONSE_FLAGS%`
 
@@ -78,6 +78,14 @@ Envoyは、アプリコンテナへのアクセスログ (インバウンド通�
 > - https://medium.com/expedia-group-tech/all-about-istio-proxy-5xx-issues-e0221b29e692
 > - https://discuss.istio.io/t/periodic-response-code-0-and-dc-response-flag/9349
 > - https://karlstoney.com/2019/05/31/istio-503s-ucs-and-tcp-fun-times/
+
+### 監視バックエンドへの送信
+
+#### ▼ CloudWatchログの場合
+
+直接的にCloudWatchログに送信できない。
+
+そのため、Envoyのログを一度標準出力に出力し、これをログ収集ツール (例：FluentBit) でCloudWatchログに転送する。
 
 <br>
 
@@ -131,7 +139,7 @@ Envoyのメトリクスには、、
 
 <br>
 
-### エンドポイント
+### 監視バックエンドへの送信
 
 Envoyの`15090`番ポートでは、メトリクス収集ツール (例：Prometheus) からのリクエストを待ち受ける。
 
@@ -160,21 +168,23 @@ Envoyは、分散トレースを作成できるように、自分を通過した
 
 <br>
 
-### HTTPヘッダーの分散トレースID
+### 分散トレースID
 
 #### ▼ 標準ヘッダー
 
-| HTTPヘッダー名 | 説明                             |
-| -------------- | -------------------------------- |
-| `X-REQUEST-ID` | トレースIDが割り当てられている。 |
+| ヘッダー名       | 説明                                                      |
+| ---------------- | --------------------------------------------------------- |
+| `X-REQUEST-ID`   | トレースIDが割り当てられている。                          |
+| `GRPC-TRACE-BIN` | RPCによるリクエストにて、トレースIDが割り当てられている。 |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
 
 #### ▼ zipkin系ヘッダー
 
 Envoyは、Zipkinが使用するヘッダーを追加する。
 
-| HTTPヘッダー名      | 説明                                                                               |
+| ヘッダー名          | 説明                                                                               |
 | ------------------- | ---------------------------------------------------------------------------------- |
 | `X-B3-SAMPLED`      |                                                                                    |
 | `X-B3-SPANID`       | スパンIDが割り当てられている。                                                     |
@@ -187,7 +197,7 @@ Envoyは、Zipkinが使用するヘッダーを追加する。
 
 Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
-| HTTPヘッダー名    | 説明                                                        |
+| ヘッダー名        | 説明                                                        |
 | ----------------- | ----------------------------------------------------------- |
 | `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。トレースIDはALBで作られる。 |
 
@@ -196,14 +206,19 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 <br>
 
-### RPCヘッダーの分散トレースID
+### 監視バックエンドへの送信
 
-#### ▼ 標準ヘッダー
+#### ▼ X-rayの場合
 
-| RPCヘッダー名    | 説明                             |
-| ---------------- | -------------------------------- |
-| `GRPC-TRACE-BIN` | トレースIDが割り当てられている。 |
+スパンをX-rayデーモンに送信して、X-rayで分散トレースを監視できる。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
+一部のサービスメッシュツール (例：AppMesh) では、Envoyのこの機能を使用して、X-rayにスパンを送信する。
+
+注意点として、サービスメッシュツール (例：Istio) によっては、X-rayデーモンにスパンを送信できず、代わりにOpenTelemetryコレクターにスパンを送信しないといけない場合がある。
+
+> - https://github.com/envoyproxy/envoy/blob/v1.27.0/api/envoy/config/trace/v3/xray.proto
+> - https://github.com/istio/istio/issues/36599
+> - https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/xray-services-adot.html
+> - https://github.com/iamsouravin/otelcol-custom-istio-awsxray
 
 <br>

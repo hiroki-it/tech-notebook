@@ -82,7 +82,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 OpenTelemetryのパッケージを初期化する。
 
 ```go
-package tracer
+package main
 
 import (
 	"context"
@@ -351,7 +351,7 @@ func initProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
 	}
 
-  var tracerProvider *sdktrace.TracerProvider
+    var tracerProvider *sdktrace.TracerProvider
 
 	bsp := sdktrace.NewBatchSpanProcessor(traceExporter)
 	tracerProvider = sdktrace.NewTracerProvider(
@@ -415,7 +415,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 		attribute.String("trace_id", TraceId),
 	)
 
-  ...
+    ...
 
 	return span
 }
@@ -465,7 +465,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 		attribute.String("trace_id", TraceId),
 	)
 
-  ...
+    ...
 
 	return span
 }
@@ -492,7 +492,7 @@ import (
 // アプリケーションを実行する
 func StartMainServer() {
 
-  ...
+    ...
 
     // Otel Collecotor への接続設定
 	shutdown, err := initProvider()
@@ -509,7 +509,7 @@ func StartMainServer() {
     // router 設定
 	r := gin.New()
 
-  ...
+    ...
 
 }
 
