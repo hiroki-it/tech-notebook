@@ -218,7 +218,6 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 > - https://github.com/envoyproxy/envoy/blob/v1.27.0/api/envoy/config/trace/v3/xray.proto
 > - https://github.com/istio/istio/issues/36599
-> - https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/xray-services-adot.html
-> - https://github.com/iamsouravin/otelcol-custom-istio-awsxray
+> - https://www.appmeshworkshop.com/x-ray/
 
 <br>
