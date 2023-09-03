@@ -350,7 +350,7 @@ KubernetesリソースにSSL証明書を提供しつつ、これを定期的に�
 
 ### 他のOSSとの連携
 
-IstioによるEnvoyは、テレメトリーを作成する。
+Istio上のEnvoyは、テレメトリーを作成する。
 
 各テレメトリー収集ツールは、プル型 (ツールがIstiodから収集) やプッシュ型 (Istiodがツールに送信) でこのテレメトリーを収集する。
 
@@ -358,11 +358,17 @@ IstioによるEnvoyは、テレメトリーを作成する。
 
 <br>
 
-### メトリクス
+## 06-02. メトリクス
 
-#### ▼ Prometheus
+### メトリクスの監視
 
-IstioによるEnvoyは、メトリクスを作成し、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
+#### ▼ メトリクスの作成
+
+Istio上のEnvoyは、メトリクスを作成する。
+
+#### ▼ メトリクスの送信
+
+Istio上のEnvoyは、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
 
 Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスのデータポイントを収集する。
 
@@ -370,6 +376,10 @@ Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイン�
 
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22
+
+<br>
+
+### メトリクスの種類
 
 #### ▼ Istiod全体に関するメトリクス
 
@@ -417,11 +427,13 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 
 <br>
 
-### ログ (アクセスログのみ)
+## 06-03. ログ
 
-#### ▼ 標準出力
+### ログ (アクセスログのみ) の監視
 
-IstioによるEnvoyは、アプリコンテナへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
+#### ▼ ログの出力
+
+Istio上のEnvoyは、アプリコンテナへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
 
 アクセスログにデフォルトで役立つ値が出力される。
 
@@ -461,15 +473,17 @@ IstioによるEnvoyは、アプリコンテナへのアクセスログ (イン�
 
 > - https://istio.io/latest/docs/tasks/observability/logs/access-log/
 
-#### ▼ opentelemetryコレクター
+#### ▼ ログの送信
 
-IstioによるEnvoyは、アクセスログを作成し、opentelemetryコレクターに出力する。
+Istio上のEnvoyは、アクセスログをログ収集ツール (例：opentelemetryコレクター) に送信する。
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
 <br>
 
-### 分散トレース
+## 06-04. 分散トレース
+
+### 分散トレースの監視
 
 #### ▼ スパンの作成
 
@@ -481,9 +495,12 @@ Istio上のEnvoyは、スパンを作成する。
 
 Istio上のEnvoyは、スパンを分散トレース収集ツール (例：jaegerコレクター、opentelemetryコレクター、など) に送信する。
 
+Envoyでは宛先として対応していても、Istio上のEnvoyでは使用できない場合がある。(例：X-rayデーモン)
+
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
 > - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/productpage/productpage.py#L180-L237
 > - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/details/details.rb#L130-L187
+> - https://github.com/istio/istio/issues/36599
 
 <br>
 
