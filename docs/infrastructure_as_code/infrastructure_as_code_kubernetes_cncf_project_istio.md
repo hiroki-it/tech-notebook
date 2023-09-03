@@ -427,9 +427,9 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 
 <br>
 
-## 06-03. ログ
+## 06-03. ログ (アクセスログのみ)
 
-### ログ (アクセスログのみ) の監視
+### ログの監視
 
 #### ▼ ログの出力
 
@@ -475,7 +475,7 @@ Istio上のEnvoyは、アプリコンテナへのアクセスログ (インバ�
 
 #### ▼ ログの送信
 
-Istio上のEnvoyは、アクセスログをログ収集ツール (例：opentelemetryコレクター) に送信する。
+Istio上のEnvoyは、アクセスログをログ収集ツール (例：otelコレクター) に送信する。
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
@@ -493,7 +493,7 @@ Istio上のEnvoyは、スパンを作成する。
 
 #### ▼ スパンの送信
 
-Istio上のEnvoyは、スパンを分散トレース収集ツール (例：jaegerコレクター、opentelemetryコレクター、など) に送信する。
+Istio上のEnvoyは、スパンを分散トレース収集ツール (例：jaegerコレクター、otelコレクター、など) に送信する。
 
 Envoyでは宛先として対応していても、Istio上のEnvoyでは使用できない場合がある。(例：X-rayデーモン)
 

@@ -53,7 +53,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 #### ▼ Exporter
 
-スパンの宛先 (例：AWS X-ray、Google Cloud Trace、opentelemetryコレクター、など) を決める。
+スパンの宛先 (例：AWS X-ray、Google Cloud Trace、otelコレクター、など) を決める。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
@@ -71,7 +71,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 <br>
 
-## 02. Go用パッケージ
+## 02. Goの場合
 
 ### gRPCを使わない場合
 
@@ -79,7 +79,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-OpenTelemetryのパッケージを初期化する。
+otelクライアントパッケージを初期化する。
 
 ```go
 package main
@@ -302,7 +302,7 @@ func main() {
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-OpenTelemetryのパッケージを初期化する。
+otelクライアントパッケージを初期化する。
 
 ```go
 package main
@@ -553,7 +553,7 @@ func getIndex(c *gin.Context) {
 
 <br>
 
-## 03. Python用パッケージ
+## 03. Pythonの場合
 
 ### gRPCを使わない場合
 
@@ -561,7 +561,7 @@ func getIndex(c *gin.Context) {
 
 ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。
 
-OpenTelemetryのパッケージをセットアップする。
+otelクライアントパッケージを初期化する。
 
 ```python
 import time

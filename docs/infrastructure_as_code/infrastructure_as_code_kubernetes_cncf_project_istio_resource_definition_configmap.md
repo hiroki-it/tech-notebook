@@ -491,7 +491,7 @@ data:
     extensionProviders:
       - name: otel
         envoyOtelAls:
-          # opentelemetryコレクターに設定する
+          # otelコレクターに設定する
           service: opentelemetry-collector.tracing.svc.cluster.local
           port: 4317
 ```

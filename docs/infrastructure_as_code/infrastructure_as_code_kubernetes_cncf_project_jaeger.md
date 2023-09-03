@@ -17,7 +17,7 @@ description: Jaeger＠CNCFプロジェクトの知見を記録しています。
 
 ### アーキテクチャ
 
-Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、OTelクライアントパッケージの使用が推奨) 、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、といったコンポーネントから構成されている。
+Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、otelクライアントパッケージの使用が推奨) 、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、といったコンポーネントから構成されている。
 
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jaeger_architecture.png)
 
@@ -27,7 +27,7 @@ Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で�
 
 ### jaegerクライアントパッケージ (非推奨)
 
-執筆時点 (2022/07/16) で、OTelクライアントパッケージを使用することが推奨されている。
+執筆時点 (2022/07/16) で、otelクライアントパッケージを使用することが推奨されている。
 
 参考程度に、jaegerクライアントパッケージの仕組みを記載する。
 

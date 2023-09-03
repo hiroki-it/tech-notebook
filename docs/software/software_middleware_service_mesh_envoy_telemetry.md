@@ -214,7 +214,7 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 一部のサービスメッシュツール (例：AppMesh) では、Envoyのこの機能を使用して、X-rayにスパンを送信する。
 
-注意点として、サービスメッシュツール (例：Istio) によっては、X-rayデーモンにスパンを送信できず、代わりにopentelemetryコレクターにスパンを送信しないといけない場合がある。
+注意点として、サービスメッシュツール (例：Istio) によっては、X-rayデーモンにスパンを送信できず、代わりにotelコレクターにスパンを送信しないといけない場合がある。
 
 > - https://github.com/envoyproxy/envoy/blob/v1.27.0/api/envoy/config/trace/v3/xray.proto
 > - https://github.com/istio/istio/issues/36599
