@@ -60,6 +60,16 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
 
+#### ▼ Propagator
+
+スパンのコンテキストを下流マイクロサービスに伝播させる。
+
+伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。
+
+Carrierからコンテキストを格納する操作を『』Inject、反対に取り出す操作を『Extract』という。
+
+> - https://blog.cybozu.io/entry/2023/04/12/170000
+
 #### ▼ Sampler
 
 スパンのサンプリング率を設定する。
@@ -122,7 +132,10 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 最上流以外のマイクロサービスへのアウトバウンド通信がタイムアウトだった場合に、分散トレースを削除する。
+	// 前段のマイクロサービスへのリクエストからコンテキストをExtractする
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。
 	cleanUp := func() {
 		ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 		defer cancel()
@@ -163,13 +176,13 @@ import (
 
 func httpRequest(ctx context.Context) error {
 
-	// 親スパンを作成する。
 	var span trace.Span
+  // contextにスパンのコンテキストが何もないので、親スパンが作成される
 	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
 
 	defer span.End()
 
-	// アウトバウンド通信のリクエストヘッダーに、親スパンのコンテキストを伝播する。
+	// リクエストヘッダーに、親スパンのコンテキストを伝播する。
 	req, err := http.NewRequestWithContext(
 		// 親スパンのコンテキスト
 		ctx,
@@ -226,10 +239,11 @@ func main() {
 > - https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
+> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 #### ▼ 子スパンの作成と伝播
 
-子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
+子スパンを作成し、下流マイクロサービスにコンテキストを伝播する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -253,16 +267,15 @@ import (
 
 func httpRequest(ctx context.Context) error {
 
-	// 子スパンを作成する。親スパンからコンテキストを取得する必要はない。
 	var span trace.Span
-
+  // contextにスパンのコンテキストがあるので、子スパンが作成される。
 	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
 
-	// アウトバウンド通信のリクエストヘッダーに、子スパンのコンテキストを伝播する。
+	// リクエストヘッダーに、コンテキストを伝播する。
 	req, err := http.NewRequestWithContext(
-		// 子スパンのコンテキスト
+		// コンテキスト
 		ctx,
 		http.MethodGet, "https://example.com",
 		http.NoBody,
@@ -388,8 +401,13 @@ func initProvider() (func(context.Context) error, error) {
 		sdktrace.WithSpanProcessor(bsp),
 	)
 
+	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
+	// 前段のマイクロサービスのリクエストからコンテキストをExtractする
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+    // 前段のマイクロサービスのリクエストからコンテキストをExtractする
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
 	return tracerProvider.Shutdown, nil
@@ -410,8 +428,12 @@ func initProvider() (func(context.Context) error, error) {
 package main
 
 import (
+  "context"
 	"fmt"
 	"log"
+	"net/http"
+	"os"
+	"os/signal"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -420,15 +442,19 @@ import (
 	"todobff/app/SessionInfo"
 	"todobff/config"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
+
+  "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
 )
 
-// 親スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
+  // contextにスパンのコンテキストが何もないので、親スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -444,24 +470,83 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 		attribute.String("trace_id", TraceId),
 	)
 
+	start := time.Now()
+	logger, err := zap.NewProduction()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer logger.Sync()
+
+  // 分散トレースとログを紐づけるために、ログにスパンIDとトレースIDを出力する
+	logger.Info("Logger",
+
     ...
+
+		zap.String("span_id", SpanId),
+		zap.String("trace_id", TraceId),
+	)
 
 	return span
 }
 
 // ログイン画面を返却する
 func getLogin(c *gin.Context) {
+
+  // イベントごとに同階層スパンを作成する
 	defer LoggerAndCreateSpan(c, "ログイン画面取得").End()
 	generateHTML(c, nil, "login", "layout", "login", "public_navbar", "footer")
 }
+
+
+func StartMainServer() {
+
+  ...
+
+	// otelコレクターへの接続設定
+	shutdown, err := initProvider()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer func() {
+		if err := shutdown(ctx); err != nil {
+			log.Fatal("failed to shutdown TracerProvider: %w", err)
+		}
+	}()
+
+  ...
+
+	rTodos.Use(checkSession())
+
+  ...
+
+}
+
+func checkSession() gin.HandlerFunc {
+
+  return func(c *gin.Context) {
+
+    ...
+
+    // イベントごとに同階層スパンを作成する
+    defer LoggerAndCreateSpan(c, "セッションチェック開始").End()
+
+    ...
+
+    // イベントごとに同階層スパンを作成する
+		defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
+	}
+}
+
 ```
 
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go
+> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 #### ▼ 子スパンの作成と伝播
 
-子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
+子スパンを作成し、下流マイクロサービスにコンテキストを伝播する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -496,6 +581,7 @@ import (
 // 子スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
+  // contextにスパンのコンテキストがあるので、子スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -511,7 +597,22 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 		attribute.String("trace_id", TraceId),
 	)
 
+	start := time.Now()
+	logger, err := zap.NewProduction()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer logger.Sync()
+
+  // 分散トレースとログを紐づけるために、ログにスパンIDとトレースIDを出力する
+	logger.Info("Logger",
+
     ...
+
+		zap.String("span_id", SpanId),
+		zap.String("trace_id", TraceId),
+	)
 
 	return span
 }
@@ -606,7 +707,14 @@ func main() {
 
 	defer tp.Shutdown(ctx)
 
+	// パッケージをセットアップする。
 	otel.SetTracerProvider(tp)
+
+	// 前段のマイクロサービスのリクエストからコンテキストをExtractする
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	// 前段のマイクロサービスのリクエストからコンテキストをExtractする
+	otel.SetTextMapPropagator(propagation.TraceContext{})
 
   ...
 }
@@ -641,6 +749,7 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
+    // contextにスパンのコンテキストが何もないので、親スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
 		defer span.End()
 
@@ -652,11 +761,44 @@ func main() {
 ```
 
 > - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84
+> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 #### ▼ 子スパンの作成と伝播
 
 ```go
-// 実装例がないため未記載
+package main
+
+import (
+	"context"
+	"log"
+	"os"
+
+	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
+	"go.opentelemetry.io/contrib/detectors/gcp"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
+)
+
+func main() {
+
+  ctx := context.Background()
+
+  ...
+
+  tracer := otel.GetTracerProvider().Tracer("example.com/trace")
+
+  err = func(ctx context.Context) error {
+    // contextにスパンのコンテキストがあるので、子スパンが作成される。
+		ctx, span := tracer.Start(ctx, "foo")
+		defer span.End()
+
+    ...
+
+		return nil
+	}(ctx)
+}
 ```
 
 <br>
@@ -762,7 +904,7 @@ def hello_world():
 
     ...
 
-    # 親スパンを作成する。
+    # contextにスパンのコンテキストが何もないので、親スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -776,12 +918,30 @@ def hello_world():
 
 #### ▼ 子スパンの作成と伝播
 
-子スパンを作成し、下流マイクロサービスに子スパンのコンテキストを伝播する。
+子スパンを作成し、下流マイクロサービスにコンテキストを伝播する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```python
-# 実装例がないため未記載
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from flask import Flask
+
+tracer = trace.get_tracer(__name__)
+
+app = Flask(__name__)
+
+FlaskInstrumentor().instrument_app(app)
+
+@app.route("/")
+def hello_world():
+
+    ...
+
+    # contextにスパンのコンテキストがあるので、子スパンが作成される。
+    with tracer.start_as_current_span("do_work"):
+        time.sleep(0.1)
+
+    ...
 ```
 
 <br>
