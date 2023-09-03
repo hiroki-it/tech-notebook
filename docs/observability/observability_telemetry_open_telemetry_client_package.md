@@ -24,7 +24,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 <br>
 
-### TraceProviderの要素
+### TraceProviderの関数の要素
 
 #### ▼ Resource
 
@@ -53,7 +53,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 #### ▼ Exporter
 
-スパンの宛先 (例：AWS X-ray、Google Cloud Trace、otelコレクター、など) を決める。
+スパンの宛先とするスパン収集ツール (例：AWS X-ray、Google CloudTrace、otelコレクター、など) を決める。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
@@ -73,7 +73,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 ## 02. Goの場合
 
-### gRPCを使わない場合
+### 宛先が標準出力の場合
 
 #### ▼ パッケージの初期化
 
@@ -91,6 +91,7 @@ import (
 	"time"
 
 	"go.opentelemetry.io/otel"
+  // スパンの宛先として、標準出力を設定する。
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -98,7 +99,7 @@ import (
 
 func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
-	// 分散トレースの宛先 (例：標準出力、Jaeger、Zipkin、など) を設定する。
+	// 標準出力を宛先に設定する。
 	exporter := stdouttrace.New(
 		stdouttrace.WithPrettyPrint(),
 		stdouttrace.WithWriter(os.Stderr),
@@ -230,6 +231,7 @@ func httpRequest(ctx context.Context) error {
 
 	// 子スパンを作成する。親スパンからコンテキストを取得する必要はない。
 	var span trace.Span
+
 	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
@@ -296,7 +298,7 @@ func main() {
 
 <br>
 
-### gRPCを使う場合
+### 宛先がotelコレクターの場合
 
 #### ▼ パッケージの初期化
 
@@ -312,6 +314,7 @@ import (
 	"fmt"
 
 	"go.opentelemetry.io/otel"
+  // スパンの宛先として、otelコレクターを設定する。
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -324,6 +327,7 @@ import (
 var tracer = otel.Tracer("<マイクロサービス名>")
 
 func initProvider() (func(context.Context) error, error) {
+
 	ctx := context.Background()
 
 	res, err := resource.New(ctx,
@@ -338,7 +342,10 @@ func initProvider() (func(context.Context) error, error) {
 
 	var tracerProvider *sdktrace.TracerProvider
 
-	conn, err := grpc.DialContext(ctx, "sample-collector.observability.svc.cluster.local:4317", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
+	conn, err := grpc.DialContext(
+        ctx, "sample-collector.observability.svc.cluster.local:4317",
+        grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock(),
+    )
 
 	if err != nil {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
@@ -354,6 +361,7 @@ func initProvider() (func(context.Context) error, error) {
     var tracerProvider *sdktrace.TracerProvider
 
 	bsp := sdktrace.NewBatchSpanProcessor(traceExporter)
+
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(res),
@@ -361,6 +369,7 @@ func initProvider() (func(context.Context) error, error) {
 	)
 
 	otel.SetTracerProvider(tracerProvider)
+
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
 	return tracerProvider.Shutdown, nil
@@ -397,7 +406,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// スパンを作成し、スパンとログにイベント名を記載する
+// 親スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	_, span := tracer.Start(c.Request.Context(), msg)
@@ -447,7 +456,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// スパンを作成し、スパンとログにイベント名を記載する
+// 子スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	_, span := tracer.Start(c.Request.Context(), msg)
@@ -494,8 +503,9 @@ func StartMainServer() {
 
     ...
 
-    // Otel Collecotor への接続設定
+    // otelコレクターへの接続を設定する
 	shutdown, err := initProvider()
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -555,7 +565,7 @@ func getIndex(c *gin.Context) {
 
 ## 03. Pythonの場合
 
-### gRPCを使わない場合
+### 宛先がGoogle CloudTraceの場合
 
 #### ▼ パッケージの初期化
 
@@ -567,12 +577,14 @@ otelクライアントパッケージを初期化する。
 import time
 
 from opentelemetry import trace
-from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 from opentelemetry.propagate import set_global_textmap
-from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
+# スパンの宛先として、Google CloudTraceを設定する。
+from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
+# スパンの伝播方法として、Google CloudTraceを設定する。
+from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 
 # -------------------------------------
 # cloud_trace_propagatorのセットアップ
@@ -606,15 +618,12 @@ trace.set_tracer_provider(tracer_provider)
 tracer = trace.get_tracer(__name__)
 ```
 
+> - https://opentelemetry.io/docs/instrumentation/python/manual/
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L1-L65
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
-#### ▼ 親スパンの作成
-
-親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
-
-なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+ここでは、`requests`パッケージでリクエストを送信するため、`RequestsInstrumentor`関数による初期化も必要である。
 
 ```python
 import requests
@@ -622,11 +631,50 @@ from opentelemetry.instrumentation.requests import RequestsInstrumentor
 
 RequestsInstrumentor().instrument()
 
-res = requests.get("http://localhost:6000")
+response = requests.get("http://flask-app:6000")
+
+print(response.text)
 ```
 
+> - https://opentelemetry.io/docs/instrumentation/python/manual/
+> - https://opentelemetry-python-kinvolk.readthedocs.io/en/latest/instrumentation/requests/requests.html
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69
+
+#### ▼ 親スパンの作成
+
+親スパンを作成し、下流マイクロサービスに親スパンのコンテキストを伝播する。
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+
+ここでは、Flaskでリクエストを受信するため、`FlaskInstrumentor`関数でスパンを処理している。
+
+```python
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from flask import Flask
+
+tracer = trace.get_tracer(__name__)
+
+app = Flask(__name__)
+
+FlaskInstrumentor().instrument_app(app)
+
+@app.route("/")
+def hello_world():
+
+    ...
+
+    # 親スパンを作成する。
+    with tracer.start_as_current_span("do_work"):
+        time.sleep(0.1)
+
+    ...
+```
+
+> - https://opentelemetry.io/docs/instrumentation/python/manual/
+> - https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/flask/flask.html
+> - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97
 
 #### ▼ 子スパンの作成
 
@@ -634,8 +682,8 @@ res = requests.get("http://localhost:6000")
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
-```go
-// 記入中...
+```python
+# 実装例がないため未記載
 ```
 
 #### ▼ アプリケーションの実行
@@ -657,8 +705,5 @@ def hello_world():
 
     return "Hello, World!"
 ```
-
-> - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97
 
 <br>

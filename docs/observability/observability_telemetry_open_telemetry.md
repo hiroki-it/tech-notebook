@@ -42,7 +42,7 @@ otelクライアントパッケージは、APIパッケージ、SDKパッケー�
 
 otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、最終的にotelコレクターにこれを渡す。
 
-もし、サービスメッシュツール (例：Istio、Linkerd) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。
+もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。
 
 ![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
 
@@ -56,7 +56,7 @@ otelコレクターは、レシーバー、プロセッサー、エクスポー�
 
 otelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
 
-もし、サービスメッシュツール (例：Istio、Linkerd) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがotelコレクターにテレメトリーデータを送信する責務を持つ。
+もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがotelコレクターにテレメトリーデータを送信する責務を持つ。
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
