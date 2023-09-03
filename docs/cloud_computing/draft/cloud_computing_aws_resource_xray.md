@@ -13,7 +13,17 @@ description: X-Ray＠AWSの知見を記録しています。
 
 <br>
 
-## 01. Lambdaの場合
+## 01. X-rayとは
+
+分散トレースの監視バックエンドとして機能する。
+
+X-rayデーモンまたはopentelemetryコレクターにスパンを送信し、X-rayで分散トレースを監視できるようになる。
+
+サービスメッシュツール (例：AppMesh、Istio) によって、X-rayデーモンまたはopentelemetryコレクターのいずれに送信すれば良いのかが異なる。
+
+<br>
+
+## 02. Lambdaの場合
 
 #### ▼ 初期化
 
