@@ -331,7 +331,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 下流のマイクロサービスでは、受信したインバウンド通信からコンテキストを取得する。
 
-また、子スパンを作成し、下流のマイクロサービスに子スパンのコンテキストを伝播する。
+また、子スパンを作成する。
 
 ```go
 package main
@@ -352,7 +352,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 		log.Fatalf("failed to extract: %s", err)
 	}
 
-	// 子スパンを作成し、アウトバウンド通信のリクエストヘッダーに子スパンのコンテキストを伝播する。
+	// 子スパンを作成する。
 	span := tracer.StartSpan(
 		"post.filter",
 		tracer.ChildOf(tracectx),

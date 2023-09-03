@@ -62,11 +62,11 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 #### ▼ Propagator
 
-スパンのコンテキストを下流マイクロサービスに伝播させる。
+コンテキストを下流マイクロサービスに伝播させる。
 
 伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。
 
-Carrierからコンテキストを格納する操作を『』Inject、反対に取り出す操作を『Extract』という。
+Carrierからコンテキストを格納する操作を『Inject』、反対に取り出す操作を『Extract』という。
 
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
@@ -177,13 +177,13 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
-	// コンテキストを取得する。
-    // contextにスパンのコンテキストが何もないので、親スパンが作成される
+	// 受信したリクエストからコンテキストを取得する。
+    // 変数にコンテキストが格納されていないので、親スパンが作成される
 	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
 
 	defer span.End()
 
-	// コンテキストを格納する。
+	// コンテキストを現在の処理に格納する。
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -194,7 +194,7 @@ func httpRequest(ctx context.Context) error {
 		return err
 	}
 
-	// リクエストの送信元になっているマイクロサービスがわかるようにする。
+	// リクエストの送信元マイクロサービスがわかるようにする。
 	req.Header.Set("User-Agent", "foo-service/1.0.0")
 
 	client := &http.Client{}
@@ -268,13 +268,13 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
-	// コンテキストを取得する。
-    // contextにスパンのコンテキストがあるので、子スパンが作成される。
+	// 受信したリクエストからコンテキストを取得する。
+    // 変数にコンテキストが格納されているので、子スパンが作成される。
 	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
 
-	// コンテキストを格納する
+	// コンテキストを現在の処理に格納する。
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -285,7 +285,7 @@ func httpRequest(ctx context.Context) error {
 		return err
 	}
 
-	// リクエストの送信元になっているマイクロサービスがわかるようにする。
+	// リクエストの送信元マイクロサービスがわかるようにする。
 	req.Header.Set("User-Agent", "bar-service/1.0.0")
 
 	client := &http.Client{}
@@ -363,10 +363,10 @@ func initProvider() (func(context.Context) error, error) {
 
 	ctx := context.Background()
 
-	res, err := resource.New(ctx,
-		resource.WithAttributes(
-			semconv.ServiceNameKey.String("<マイクロサービス名>"),
-		),
+	// コンテキストを現在の処理に格納する。
+	res, err := resource.New(
+		ctx,
+		resource.WithAttributes(semconv.ServiceNameKey.String("<マイクロサービス名>")),
 	)
 
 	if err != nil {
@@ -384,8 +384,10 @@ func initProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
 
-	// Set up a trace exporter
-	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithGRPCConn(conn))
+	traceExporter, err := otlptracegrpc.New(
+    ctx,
+    otlptracegrpc.WithGRPCConn(conn),
+  )
 
 	if err != nil {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
@@ -451,8 +453,8 @@ import (
 
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// コンテキストを取得する。
-    // contextにスパンのコンテキストが何もないので、親スパンが作成される。
+	// 受信したリクエストからコンテキストを取得する。
+    // 変数にコンテキストが格納されていないので、親スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -579,8 +581,8 @@ import (
 // 子スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// コンテキストを取得する。
-    // contextにスパンのコンテキストがあるので、子スパンが作成される。
+	// 受信したリクエストからコンテキストを取得する。
+    // 変数にコンテキストが格納されているので、子スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -680,19 +682,18 @@ func main() {
 
 	projectID := os.Getenv("GOOGLE_CLOUD_PROJECT")
 
-  exporter, err := texporter.New(texporter.WithProjectID(projectID))
+    exporter, err := texporter.New(texporter.WithProjectID(projectID))
 
 	if err != nil {
 		log.Fatalf("texporter.New: %v", err)
 	}
 
-	res, err := resource.New(ctx,
+	// コンテキストを現在の処理に格納する。
+	res, err := resource.New(
+		ctx,
 		resource.WithDetectors(gcp.NewDetector()),
-
 		resource.WithTelemetrySDK(),
-		resource.WithAttributes(
-			semconv.ServiceNameKey.String("my-application"),
-		),
+		resource.WithAttributes(semconv.ServiceNameKey.String("my-application"), ),
 	)
 
 	if err != nil {
@@ -748,12 +749,12 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
-	    // コンテキストを取得する。
-        // contextにスパンのコンテキストが何もないので、親スパンが作成される。
+	    // 受信したリクエストからコンテキストを取得する。
+        // 変数にコンテキストが格納されていないので、親スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
 		defer span.End()
 
-    ...
+		...
 
 		return nil
 	}(ctx)
@@ -790,12 +791,12 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
-	    // コンテキストを取得する。
-        // contextにスパンのコンテキストがあるので、子スパンが作成される。
+	    // 受信したリクエストからコンテキストを取得する。
+        // 変数にコンテキストが格納されているので、子スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
 		defer span.End()
 
-    ...
+		...
 
 		return nil
 	}(ctx)
@@ -905,8 +906,8 @@ def hello_world():
 
     ...
 
-    # コンテキストを取得する。
-    # contextにスパンのコンテキストが何もないので、親スパンが作成される。
+    # 受信したリクエストからコンテキストを取得する。
+    # 変数にコンテキストが格納されていないので、親スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -939,8 +940,8 @@ def hello_world():
 
     ...
 
-    # コンテキストを取得する。
-    # contextにスパンのコンテキストがあるので、子スパンが作成される。
+    # 受信したリクエストからコンテキストを取得する。
+    # 変数にコンテキストが格納されているので、子スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
