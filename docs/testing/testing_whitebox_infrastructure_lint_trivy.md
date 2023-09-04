@@ -57,7 +57,23 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/trivy-oper
 
 <br>
 
-## 03. オプション
+## 03. 設定ファイル
+
+### `.trivyignore`ファイル
+
+検証したくないCVEの項目を設定する。
+
+```bash
+$ cat .trivyignore
+
+CVE-2018-14618
+```
+
+> - https://aquasecurity.github.io/trivy/v0.19.2/vulnerability/examples/filter/
+
+<br>
+
+## 04. trivyコマンド
 
 ### config
 

@@ -31,11 +31,13 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 <br>
 
-## 01-02. prometheusサーバー
+## 02. prometheusサーバー
 
 ### prometheusサーバーとは
 
-メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。
+メトリクスのデータポイントを収集し、管理する。
+
+またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。
 
 `9090`番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。
 
@@ -46,39 +48,15 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 <br>
 
-### エンドポイント
+## 02-02. Retrieval
 
-#### ▼ `/metrics`
+### Retrievalとは
 
-Prometheusで使用できるメトリクスの一覧を取得できる。
-
-```bash
-$ curl http://localhost:3000/metrics
-```
-
-> - https://www.redhat.com/sysadmin/introduction-prometheus-metrics-and-performance-monitoring
-> - https://itnext.io/prometheus-for-beginners-5f20c2e89b6c
+監視対象からデータポイントを定期的に収集する。
 
 <br>
 
-### Retrieval
-
-#### ▼ Retrievalとは
-
-定義されたPromQLのルールに基づいて、監視対象のデータポイントを定期的に収集する。
-
-#### ▼ Retrievalのルール
-
-ルールの種類によって、収集後の処理が異なる。
-
-| ルール名             | 説明                                                                                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------------ |
-| アラートルール       | 収集されたデータポイントがアラート条件に合致する場合、アラートを作成し、Alertmanagerにこれを送信する。 |
-| レコーディングルール | 収集されたデータポイントをローカルストレージに保管する。                                               |
-
-> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
-
-#### ▼ 設定ファイル
+### 設定ファイル
 
 設定ファイルは`.yaml`ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。
 
@@ -112,21 +90,42 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 <br>
 
-### HTTP server
+## 02-03. HTTP server
 
-#### ▼ HTTP serverとは
+### HTTP serverとは
 
-メトリクスを参照するためのエンドポイントを公開する。
+データポイントを参照するためのエンドポイントを公開する。
 
-PromQLをリクエストとして受信し、ローカルストレージからデータを返却する。
+PromQLをリクエストとして受信し、ローカルストレージからデータポイントをメトリクスとして返却する。
 
 <br>
 
-### ローカルストレージ
+### エンドポイント
 
-#### ▼ ローカルストレージ
+#### ▼ `/metrics`
+
+Prometheusで使用できるメトリクスの一覧を取得できる。
+
+```bash
+$ curl http://localhost:3000/metrics
+```
+
+> - https://www.redhat.com/sysadmin/introduction-prometheus-metrics-and-performance-monitoring
+> - https://itnext.io/prometheus-for-beginners-5f20c2e89b6c
+
+<br>
+
+## 02-04. ローカルストレージ
+
+### ローカルストレージとは
 
 Prometheusは、`data`ディレクトリ配下をTSDBとして、収集した全てのメトリクスを保管する。
+
+<br>
+
+### `data`ディレクトリ
+
+#### ▼ `data`ディレクトリとは
 
 収集したデータポイントをデフォルトで`2`時間ごとにブロック化し、`data`ディレクトリ配下に配置する。
 
@@ -166,6 +165,8 @@ drwxrwsr-x    3 1000     2000          4096 Jul  8 11:00 01BKTKF4VE33MYEEQF0M7YE
 ...
 ```
 
+#### ▼ 注意点
+
 TSDBのディレクトリはNodeにマウントされるため、Nodeのストレージサイズに注意する必要がある。
 
 ストレージサイズが大きすぎると、Prometheusのコンテナが起動できなくなることがあり、その場合はNode側でメトリクスのブロックを削除する必要がある。
@@ -176,7 +177,9 @@ TSDBのディレクトリはNodeにマウントされるため、Nodeのスト�
 
 > - https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
-#### ▼ 独自TSDB
+<br>
+
+### 独自TSDB
 
 Prometheusでは、TSDB (`data`ディレクトリ配下) を採用している。
 
@@ -194,9 +197,9 @@ Prometheusでは、TSDB (`data`ディレクトリ配下) を採用している�
 
 <br>
 
-### リモートストレージ
+## 02-05. リモートストレージ
 
-#### ▼ リモートストレージとは
+### リモートストレージとは
 
 Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ (AWS Timestream、Google Bigquery、VictoriaMetrics、...) に保管できる。
 
@@ -212,7 +215,9 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 > - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
 > - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
 
-#### ▼ ダイナミックキュー
+<br>
+
+### ダイナミックキュー
 
 リモートストレージにメトリクスを送信する場合、送信されたメトリクスをキューイングする。
 
@@ -224,7 +229,17 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 
 <br>
 
-## 02. Alertmanager
+### レコーディングルール
+
+事前に定義したPromQLの結果をTSDBに保管できる。
+
+> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - https://training.promlabs.com/training/recording-rules/recording-rules-overview/motivation
+> - https://chronosphere.io/learn/prometheus-recording-rules-right-tool/
+
+<br>
+
+## 03. Alertmanager
 
 ### Alertmanagerとは
 
@@ -260,7 +275,7 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 <br>
 
-## 03. PushGateway
+## 04. PushGateway
 
 ### PushGatewayとは
 
@@ -270,7 +285,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 <br>
 
-## 04. ServiceDiscovery
+## 05. ServiceDiscovery
 
 ### ServiceDiscoveryとは
 
@@ -280,7 +295,7 @@ Pull型通信の宛先のIPアドレスが動的に変化する (例：スケー
 
 <br>
 
-## 04. マネージドPrometheus
+## 06. マネージドPrometheus
 
 Prometheusのコンポーネントを部分的にマネージドにしたサービス。
 

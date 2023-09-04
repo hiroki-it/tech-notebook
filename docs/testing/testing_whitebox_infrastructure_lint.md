@@ -13,7 +13,34 @@ description: 静的解析＠インフラのホワイトボックステストの�
 
 <br>
 
-## 01. IaCのソースコードの静的解析
+## 01. YAML/JSONの静的解析
+
+### YAML
+
+#### ▼ 文法の誤りテスト
+
+- yamllint
+
+> - https://github.com/sbaudoin/yamllint
+
+なお、YAMLの静的解析ツールでHelmチャートを検証したい場合、`Chart.yaml`ファイルや`values`ファイルは`.yaml`ファイルなので検証できるが、Helmテンプレートを検証できない。
+
+> - https://github.com/sbaudoin/yamllint/issues/16
+> - https://github.com/helm/chart-testing/blob/v3.9.0/pkg/chart/chart.go#L474-L482
+
+<br>
+
+### JSON
+
+#### ▼ 文法の誤りテスト
+
+- jsonlint
+
+> - https://github.com/zaach/jsonlint
+
+<br>
+
+## 02. IaCのソースコードの静的解析
 
 ### マニフェスト
 
@@ -116,7 +143,7 @@ Helmチャートのバージョンを検証する。
 
 <br>
 
-## 02. コンテナの静的解析
+## 03. コンテナの静的解析
 
 ### コンテナイメージ
 
