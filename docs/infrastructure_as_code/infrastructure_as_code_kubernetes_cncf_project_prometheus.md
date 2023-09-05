@@ -127,9 +127,9 @@ Prometheusは、`data`ディレクトリ配下をTSDBとして、収集した全
 
 #### ▼ `data`ディレクトリとは
 
-収集したデータポイントをデフォルトで`2`時間ごとにブロック化し、`data`ディレクトリ配下に配置する。
+Prometheusは、収集したデータポイントをデフォルトで`2`時間ごとにブロック化し、`data`ディレクトリ配下に配置する。
 
-現在処理中のブロックはメモリ上に保持されており、同時にストレージの`/data/wal`ディレクトリにもバックアップとして保存される (補足としてRDBMSでは、これをジャーナルファイルという) 。
+現在処理中のブロックをメモリ上に保持し、同時にストレージの`/data/wal`ディレクトリにもバックアップとして保存する (補足としてRDBMSでは、これをジャーナルファイルという) 。
 
 これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
@@ -230,6 +230,16 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png)
 
 > - https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+
+<br>
+
+### 性能設計
+
+Prometheusは、現在処理中のブロックをメモリ上に保持し、同時にストレージの`/data/wal`ディレクトリにもバックアップとして保存する
+
+そのため、十分量のメモリの割り当てが必要である。
+
+> - https://prometheus.io/docs/prometheus/latest/storage/#on-disk-layout
 
 <br>
 
