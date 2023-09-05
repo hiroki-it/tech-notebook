@@ -603,7 +603,12 @@ PromQLを定義する。
 ラベル変数を使用する場合は、`templating`セクションでその定義が必要である。
 
 ```yaml
-{"panels": [{"styles": [
+{
+  # panelsセクション
+  "panels": [
+      {
+        # stylesセクション
+        "styles": [
             {
               # 表の列名
               "alias": "Namespace",
@@ -655,7 +660,18 @@ PromQLを定義する。
               "type": "number",
               "unit": "short",
             },
-          ], "targets": [{"expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}'}, {"expr": "..."}, {"expr": "..."}]}]}
+          ],
+        "targets":
+          [
+            {
+              "expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}',
+            },
+            {"expr": "..."},
+            {"expr": "..."},
+          ],
+      },
+    ],
+}
 ```
 
 #### type
@@ -711,7 +727,9 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
 例えば、`cluster`ラベル値でフィルタリングする場合、パネル上のPromQLでも`<メトリクス>{cluster=\"$cluster\"}`と定義しなければならない。
 
 ```yaml
-{"templating": {
+{
+  # templatingセクション
+  "templating": {
       # listセクション
       "list": [
           # データソース値のフィルタリング
@@ -870,6 +888,30 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": false,
           },
+          # label_eks_amazonaws_com_nodegroupラベル値のフィルタリング
+          {
+            "allValue": null,
+            "current": {},
+            "datasource": "$datasource",
+            # kube-state-metricsで、--metric-labels-allowlist=nodes=[*] を設定する
+            "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
+            "hide": 0,
+            "includeAll": true,
+            "label": "",
+            "multi": true,
+            "name": "nodegroup",
+            "options": [],
+            "query": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 0,
+            "tagValuesQuery": "",
+            "tags": [],
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false,
+          },
           # nodeラベル値のフィルタリング
           {
             "allValue": null,
@@ -951,7 +993,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "useTags": false,
           },
         ],
-    }}
+    },
+}
 ```
 
 > - https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top
@@ -962,6 +1005,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 ```yaml
 {
+  # panelsセクション
   "panels": [
     {
       "targets":
