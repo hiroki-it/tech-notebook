@@ -825,8 +825,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
-            "includeAll": false,
+            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            "includeAll": true,
             "label": null,
             # 全ての値の中から複数選択して選べるようにする。
             "multi": true,
@@ -865,8 +865,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
-            "includeAll": false,
+            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            "includeAll": true,
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": true,
@@ -896,8 +896,10 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # kube-state-metricsで、--metric-labels-allowlist=nodes=[*] を設定する
             "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
             "hide": 0,
+            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
             "includeAll": true,
-            "label": "",
+            "label": null,
+            # 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": true,
             "name": "nodegroup",
             "options": [],
@@ -929,16 +931,16 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
-            "includeAll": false,
+            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            "includeAll": true,
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": true,
             "name": "namespace",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_pod_info{cluster="$cluster", namespace="$namespace", pod="$pod"}, node)',
+                # 指定したデータソースの時に、kube_node_labelsメトリクスが各種ラベルを持っている必要がある。
+                "query": 'label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup =~ "$nodegroup"}, node)',
                 "refId": "Prometheus-node-Variable-Query",
               },
             "refresh": 2,
