@@ -732,7 +732,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
   "templating": {
       # listセクション
       "list": [
-          # データソース値のフィルタリング
+          # データソース値のプルダウン
           {
             # デフォルトのフィルタリング値
             # プルダウンの値を変更すれば、current値も動的に変わる
@@ -762,7 +762,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # 変数タイプを設定する。
             "type": "datasource",
           },
-          # clusterラベル値のフィルタリング
+          # clusterラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
@@ -808,7 +808,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": false,
           },
-          # namespaceラベル値のフィルタリング
+          # namespaceラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
@@ -834,7 +834,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "options": [],
             "query": {
                 # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_pod_info{cluster="$cluster"}, namespace)',
+                "query": 'label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)',
                 "refId": "Prometheus-namespace-Variable-Query",
               },
             "refresh": 2,
@@ -848,7 +848,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": false,
           },
-          # podラベル値のフィルタリング
+          # podラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
@@ -874,7 +874,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "options": [],
             "query": {
                 # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_pod_info{cluster="$cluster", namespace="$namespace"}, pod)',
+                "query": 'label_values(kube_pod_info{cluster=\"$cluster\", namespace=\"$namespace\"}, pod)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
@@ -888,7 +888,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": false,
           },
-          # label_eks_amazonaws_com_nodegroupラベル値のフィルタリング
+          # label_eks_amazonaws_com_nodegroupラベル値のプルダウン
           {
             "allValue": null,
             "current": {},
@@ -914,7 +914,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": false,
           },
-          # nodeラベル値のフィルタリング
+          # nodeラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
@@ -940,7 +940,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "options": [],
             "query": {
                 # 指定したデータソースの時に、kube_node_labelsメトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup =~ "$nodegroup"}, node)',
+                # label_eks_amazonaws_com_nodegroupラベルの値は前段のプルダウンですでに取得しており、変数として使用する。
+                "query": 'label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\"$nodegroup\"}, node)',
                 "refId": "Prometheus-node-Variable-Query",
               },
             "refresh": 2,
@@ -954,7 +955,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": false,
           },
-          # containerラベル値のフィルタリング
+          # containerラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
@@ -980,7 +981,8 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "options": [],
             "query": {
                 # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_pod_container_info{cluster=\"$cluster\",pod=~\"$pod\"}, container)',
+                # nodeラベルの値は前段のプルダウンですでに取得しており、変数として使用する。
+                "query": 'label_values(kube_pod_container_info{cluster=\"$cluster\",instance=\"$node\",pod=\"$pod\"}, container)',
                 "refId": "Prometheus-container-Variable-Query",
               },
             "refresh": 2,

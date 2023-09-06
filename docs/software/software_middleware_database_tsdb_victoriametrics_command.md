@@ -56,6 +56,24 @@ $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 
 <br>
 
+### -maxLabelsPerTimeseries
+
+メトリクスに付与できるラベルの上限数を設定する。
+
+VictoriaMetricsでは、デフォルトで`30`個しかラベルをつけられず、それ以上のラベルは切り捨てる。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -maxLabelsPerTimeseries=30
+```
+
+
+
+> - https://docs.victoriametrics.com/#list-of-command-line-flags
+
+<br>
+
 ### -memory.allowedBytes
 
 VictoriaMetricsが使用できるメモリサイズを設定する。

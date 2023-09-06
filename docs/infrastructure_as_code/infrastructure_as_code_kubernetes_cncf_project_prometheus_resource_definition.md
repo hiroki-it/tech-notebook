@@ -663,6 +663,8 @@ PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/
 
 保管したメトリクスは、レコーディング名を使用して、Prometheusのダッシュボードで新しいメトリクスのように取得できる。
 
+公開されているレコーディングルール (例：kubernetes-mixinのレコーディングルール) を使用すると良い。 
+
 ```yaml
 # 分析結果をnode_namespace_pod_container:container_cpu_usage_seconds_total:sum_irateというレコーディング名で保管しておく
 expr: |
@@ -815,6 +817,7 @@ spec:
   groups:
     - name: foo-recording-rules
       rules:
+        # Prometheusのレコーディングルールを定義する。
         - record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
           # PromQL
           expr: ...

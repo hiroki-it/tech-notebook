@@ -345,8 +345,7 @@ spec:
             - --port=8080
             - --resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments
             # Nodeのラベルをメトリクスに付与する。
-            # クラウドプロバイダーのNodeグループ名を取得する場合は必須である。
-            - --metric-labels-allowlist=nodes=[*]
+            # クラウドプロバイダーのNodeからNodeグループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。            - --metric-labels-allowlist=nodes=[*]
             # Nodeのアノテーションをメトリクスに付与する。
             - --metric-annotations-allowlist=nodes=[*]
           imagePullPolicy: IfNotPresent

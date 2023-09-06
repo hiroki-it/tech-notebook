@@ -76,6 +76,7 @@ groups:
     rules:
       - alert: PodCpuUtilized
         # 値が長くなるため、『>-』で改行すると良い。
+        # Prometheusのレコーディングルール (node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate) をPromQLで使用する。
         expr: >-
           max(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace="foo-namespace", pod=~"foo-pod.*", container="foo-container"}) /
           min(kube_pod_container_resource_limits{namespace="foo-namespace", pod=~"foo-pod.*",resource="cpu",container="foo-container"})
