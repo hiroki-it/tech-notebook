@@ -68,8 +68,6 @@ VictoriaMetricsでは、デフォルトで`30`個しかラベルをつけられ�
 $ victoria-metrics-prod -maxLabelsPerTimeseries=30
 ```
 
-
-
 > - https://docs.victoriametrics.com/#list-of-command-line-flags
 
 <br>
