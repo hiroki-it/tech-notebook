@@ -540,6 +540,7 @@ nav:
           - ■ リソース定義:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
               - 共通項目: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
+              - AWS EKS: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.md
       - ■ カスタムリソース:
           - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
           - custom-controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
