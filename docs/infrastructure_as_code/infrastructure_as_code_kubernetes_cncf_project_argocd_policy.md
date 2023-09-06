@@ -531,6 +531,8 @@ ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`ku
 
 ## 12. Prometheusによる監視
 
+### メトリクスの種類
+
 ArgoCDはデータポイントを作成し、これをPrometheusで収集できる。
 
 | Prometheusのメトリクス                | メトリクスの種類 | 説明                                                                                        |
@@ -553,6 +555,152 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/
+
+<br>
+
+### 必要なKubernetesリソース
+
+#### ▼ ServiceMonitor
+
+ServiceMonitorを作成し、ArgoCDのコンポーネントのPodを監視する。ServiceMonitorは、ArgoCDのコンポーネントがテナントごとにあっても、1つ作成すれば良い。
+
+```yaml
+# application-controllerのPodを監視する
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-application-controller
+  namespace: prometheus
+spec:
+  endpoints:
+    - port: http-metrics
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-metrics
+---
+# redisのPodを監視する
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-redis
+  namespace: prometheus
+spec:
+  endpoints:
+    - port: http-metrics
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-redis
+---
+# repo-serverのPodを監視する
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-repo-server
+  namespace: prometheus
+spec:
+  endpoints:
+    - port: http-metrics
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-repo-server-metrics
+---
+# argocd-serverのPodを監視する
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-server
+  namespace: prometheus
+spec:
+  endpoints:
+    - port: http-metrics
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-server-metrics
+```
+
+#### ▼ Service
+
+スクレイピング専用のServiceを作成し、ServiceMonitorからリクエストを受信できるようにする。
+
+```yaml
+# application-controller用のServiceMonitorからリクエストを受信する
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-argocd-application-controller-metrics
+  namespace: foo
+spec:
+  type: ClusterIP
+  ports:
+    - name: http-metrics
+      protocol: TCP
+      port: 8082
+      targetPort: metrics
+  selector:
+    app.kubernetes.io/name: argocd-application-controller
+    app.kubernetes.io/instance: foo
+---
+# redis用のServiceMonitorからリクエストを受信する
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-argocd-redis-metrics
+  namespace: foo
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - name: http-metrics
+      protocol: TCP
+      port: 9121
+      targetPort: metrics
+  selector:
+    app.kubernetes.io/name: argocd-redis
+    app.kubernetes.io/instance: foo
+    app.kubernetes.io/component: redis
+---
+# repo-server用のServiceMonitorからリクエストを受信する
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-argocd-repo-server-metrics
+  namespace: foo
+spec:
+  type: ClusterIP
+  ports:
+    - name: http-metrics
+      protocol: TCP
+      port: 8084
+      targetPort: metrics
+  selector:
+    app.kubernetes.io/name: argocd-repo-server
+    app.kubernetes.io/instance: foo
+---
+# argocd-server用のServiceMonitorからリクエストを受信する
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-argocd-server-metrics
+  namespace: foo
+spec:
+  type: ClusterIP
+  ports:
+    - name: http-metrics
+      protocol: TCP
+      port: 8083
+      targetPort: metrics
+  selector:
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/instance: foo
+```
 
 <br>
 
