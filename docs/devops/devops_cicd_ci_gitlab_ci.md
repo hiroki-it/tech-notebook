@@ -43,23 +43,6 @@ repository/
 
 <br>
 
-### Kubernetes on CI
-
-GitLab CI上でK8s Clusterを作成する場合には、Docker in Dockerが起こる。
-
-```yaml
-variables:
-  DOCKER_DRIVER: "overlay2"
-  DOCKER_HOST: "tcp://localhost:2375"
-  DOCKER_TLS_CERTDIR: ""
-```
-
-> - https://docs.avisi.cloud/blog/2021/07/31/running-kubernetes-on-gitlab-ci/
-> - https://containerinfra.com/blog/gitlab/2021-07-31-kubernetes-in-gitlab-ci/
-> - https://gist.github.com/trondhindenes/0307fbe9cda1164115353b4632a31ea9
-
-<br>
-
 ## 03. Global
 
 ### 予約変数
@@ -212,7 +195,7 @@ baz_job:
 
 #### ▼ ヒアドキュメントを使用したファイルの配布
 
-ヒアドキュメントを使用して、CIの実行環境でファイルを動的に作成し、これを配布する。
+ヒアドキュメントを使用して、CIの実行コンテナでファイルを動的に作成し、これを配布する。
 
 `artifacts`キーを使用して、後続のJobでも設定ファイルを使用できるようにしている。
 
@@ -327,7 +310,7 @@ GitLab CI自体の発火を制御する。
 GitLab CIが発火する条件を設定する。
 
 ```yaml
-# ブランチ名に応じて、CIで使用する実行環境名を切り替える
+# ブランチ名に応じて、CIで使用する実行コンテナ名を切り替える
 # main、develop、MR作成/変更、の順に条件を検証する。
 workflow:
   rules:
@@ -538,7 +521,7 @@ bar_job:
 
 #### ▼ imageとは
 
-Jobの実行環境を設定する。
+Jobの実行コンテナを設定する。
 
 ```yaml
 foo_job:
@@ -675,25 +658,24 @@ gemerate_template:
 
 ![gitlab_service-container.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab_service-container.png)
 
-JobのCIの実行環境とは別のサービスコンテナを作成する。
+JobのCIの実行コンテナとは別のサービスコンテナを作成する。
+
+両方のコンテナで使用するイメージのバーションは揃えるようにする。
 
 ```yaml
 foo_job:
   # CIの実行環境
-  image: docker
+  image: docker:19.03.0
   # サービスコンテナ
   services:
-    - name: docker:dind
+    - name: docker:19.03.0-dind
       # 外部Dockerに対するTLSを無効化する
       command: ["--tls=false"]
 ```
 
 > - https://blog.nestybox.com/2020/10/21/gitlab-dind.html
 > - https://www.ted027.com/post/gitlabci-services-host/
-
-#### ▼ Docker in Dockerの回避のため
-
-両方のDockerのバージョンは合わせておいた方が良い。
+> - https://about.gitlab.com/blog/2019/07/31/docker-in-docker-with-docker-19-dot-03/#disable-tls
 
 #### ▼ 複数のコンテナを同時に起動するため
 
@@ -702,6 +684,26 @@ Jobでアプリコンテナを動かし、DBコンテナを別に起動してお
 これを回避するために使用する。
 
 > - https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example
+
+#### ▼ TLSの無効化
+
+GitLab CI上でDocker in Dockerを使用する場合、実行コンテナとサービスコンテナ間のTLSを無効化する必要がある。
+
+```yaml
+services:
+  - name: docker:dind
+    command: ["--tls=false"]
+
+variables:
+  DOCKER_DRIVER: "overlay2"
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_TLS_CERTDIR: ""
+```
+
+> - https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300
+> - https://docs.avisi.cloud/blog/2021/07/31/running-kubernetes-on-gitlab-ci/
+> - https://containerinfra.com/blog/gitlab/2021-07-31-kubernetes-in-gitlab-ci/
+> - https://gist.github.com/trondhindenes/0307fbe9cda1164115353b4632a31ea9
 
 <br>
 

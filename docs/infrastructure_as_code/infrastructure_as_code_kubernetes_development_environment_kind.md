@@ -37,7 +37,7 @@ $ kind create cluster --config kind-config.yaml
 
 #### ▼ --name
 
-Clusterの名前を設定する。
+Kind Clusterの名前を設定する。
 
 ```bash
 $ kind create cluster --name foo-cluster
@@ -90,6 +90,18 @@ Kind Clusterを削除する。
 ```bash
 $ kind delete cluster --name foo-cluster
 ```
+
+<br>
+
+### export
+
+Kind Clusterのログを出力する。
+
+```bash
+$ kind export logs
+```
+
+> - https://kind.sigs.k8s.io/docs/user/quick-start/#exporting-cluster-logs
 
 <br>
 

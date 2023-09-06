@@ -23,11 +23,14 @@ $ k3d version
 
 #### ▼ --image
 
-Kubernetesのバージョンを指定して、Clusterを作成する。
+Kubernetesのバージョンを指定して、K3d Clusterを作成する。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
 ```
+
+> - https://github.com/k3d-io/k3d/discussions/474
+> - https://k3d.io/v5.5.2/usage/commands/k3d_cluster_create/
 
 <br>
 
