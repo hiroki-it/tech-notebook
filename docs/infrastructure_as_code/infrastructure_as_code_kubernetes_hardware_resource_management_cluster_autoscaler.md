@@ -249,7 +249,7 @@ NodeGroups:
 
 <br>
 
-## 04. 共通部分
+## 04. 共通項目
 
 ### metadata.annotation
 

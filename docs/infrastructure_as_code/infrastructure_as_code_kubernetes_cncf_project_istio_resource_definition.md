@@ -88,7 +88,6 @@ $ helm repo update
 
 $ kubectl create namespace istio-system
 
-# 共通部分 (IstioBase) のみ
 # baseチャート
 $ helm install <Helmリリース名> <チャートリポジトリ名>/base -n istio-system --version <バージョンタグ>
 

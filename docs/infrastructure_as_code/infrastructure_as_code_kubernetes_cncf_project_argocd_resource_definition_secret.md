@@ -57,7 +57,7 @@ argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジト
 
 <br>
 
-### 共通部分
+### 共通項目
 
 #### ▼ `argocd.argoproj.io/secret-type`キー (必須)
 

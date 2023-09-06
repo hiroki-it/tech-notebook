@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】共通部分＠Helm
-description: 共通部分＠Helmの知見を記録しています。
+title: 【IT技術の知見】共通項目＠Helm
+description: 共通項目＠Helmの知見を記録しています。
 ---
 
-# 共通部分＠Helm
+# 共通項目＠Helm
 
 ## はじめに
 
