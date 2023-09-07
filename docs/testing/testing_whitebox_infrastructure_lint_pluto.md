@@ -120,9 +120,11 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 ### --additional-versions
 
-plutoが対応可能なAPIグループを追加する。
+#### ▼ --additional-versionsとは
 
-plutoはデフォルトでKubernetesリソースに対応しているが、カスタムリソースは一部にしか対応していない。
+plutoが検証可能なAPIグループを追加する。
+
+plutoはデフォルトで全てのKubernetesリソースを検証できるが、一方でカスタムリソースは一部にしか検証していない。
 
 ```bash
 $ pluto list-versions -f additional-versions.yaml
@@ -130,6 +132,55 @@ $ pluto list-versions -f additional-versions.yaml
 
 > - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
 > - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
+
+#### ▼ `additional-versions.yaml`ファイル
+
+追加で検証するAPIグループのルールを設定する。
+
+```yaml
+# version: APIグループ名
+# kind: カスタムリソース名
+# deprecated-in: APIグループが非推奨になるKubernetesバージョン
+# removed-in: APIグループが機能廃止になるKubernetesバージョン
+# replacement-api: APIグループ名を変更する必要がある場合に、変更後のAPIグループ名
+# replacement-available-in: APIグループ名を変更する必要がある場合に、変更できるようになるKubernetesバージョン
+# component: APIグループを使用しているツール名
+
+deprecated-versions:
+  - version: networking.istio.io/v1beta1
+    kind: DestinationRule
+    deprecated-in: ""
+    removed-in: ""
+    replacement-api: ""
+    replacement-available-in: ""
+    component: istio
+  - version: networking.istio.io/v1alpha3
+    kind: Gateway
+    deprecated-in: ""
+    removed-in: ""
+    replacement-api: ""
+    replacement-available-in: ""
+    component: istio
+  - version: networking.istio.io/v1beta1
+    kind: VirtualService
+    deprecated-in: ""
+    removed-in: ""
+    replacement-api: ""
+    replacement-available-in: ""
+    component: istio
+```
+
+このファイルを`-f`オプションで渡すと、追加したAPIグループのルールを検証できるようになる。
+
+```bash
+$ pluto list-versions -f additional-versions.yaml
+
+...
+
+DestinationRule                  networking.istio.io/v1beta1            n/a             n/a          n/a                                    n/a             istio
+Gateway                          networking.istio.io/v1alpha3           n/a             n/a          n/a                                    n/a             istio
+VirtualService                   networking.istio.io/v1beta1            n/a             n/a          n/a                                    n/a             istio
+```
 
 <br>
 
@@ -248,7 +299,7 @@ baz-chart  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autos
 
 ### list-versions
 
-plutoが非推奨と見なしているバージョンの一覧を取得する。
+plutoで検証できるAPIグループの一覧を取得する。
 
 ```bash
 $ pluto list-versions
