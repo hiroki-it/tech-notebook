@@ -23,12 +23,50 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 ### 対応するKubernetesリソース
 
-標準のKubernetesリソースだけでなく、一部のカスタムリソース (Istioも含む) も対応している。
+標準のKubernetesリソースだけでなく、CRDや一部のカスタムリソース (Istioも含む) も対応している。
 
 ただ、全てのカスタムリソースに対応しているわけではない。
 
+```yaml
+deprecated-versions:
+
+  # Deployment
+  - version: extensions/v1beta1
+    kind: Deployment
+    deprecated-in: v1.9.0
+    removed-in: v1.16.0
+    replacement-api: apps/v1
+    replacement-available-in: v1.9.0
+    component: k8s
+
+  ...
+
+  # CRD
+  - version: apiextensions.k8s.io/v1beta1
+    kind: CustomResourceDefinition
+    deprecated-in: v1.16.0
+    removed-in: v1.22.0
+    replacement-api: apiextensions.k8s.io/v1
+    replacement-available-in: v1.16.0
+    component: k8s
+
+  ...
+
+  # Istioのカスタムリソース
+  - version: rbac.istio.io
+    kind: AuthorizationPolicies
+    deprecated-in: v1.4.0
+    removed-in: v1.4.0
+    replacement-api: security.istio.io/v1beta1
+    component: istio
+
+  ...
+
+```
+
 > - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
 > - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
+> - https://github.com/FairwindsOps/pluto/blob/master/docs/contributing/guide.md#versions-updates
 
 <br>
 
@@ -77,6 +115,21 @@ $ helm template foo-chart . --set secret.GCP_CREDENTIALS=test -f foo-values.yaml
 NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
 ```
+
+<br>
+
+### --additional-versions
+
+plutoが対応可能なAPIグループを追加する。
+
+plutoはデフォルトでKubernetesリソースに対応しているが、カスタムリソースは一部にしか対応していない。
+
+```bash
+$ pluto list-versions -f additional-versions.yaml
+```
+
+> - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
+> - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
 
 <br>
 

@@ -669,8 +669,6 @@ foo_job:
   # サービスコンテナ
   services:
     - name: docker:19.03.0-dind
-      # 外部Dockerに対するTLSを無効化する
-      command: ["--tls=false"]
 ```
 
 > - https://blog.nestybox.com/2020/10/21/gitlab-dind.html
@@ -687,17 +685,25 @@ Jobでアプリコンテナを動かし、DBコンテナを別に起動してお
 
 #### ▼ TLSの無効化
 
-GitLab CI上でDocker in Dockerを使用する場合、実行コンテナとサービスコンテナ間のTLSを無効化する必要がある。
+GitLab CI上でDocker in Dockerを使用する場合、実行コンテナとサービスコンテナでセットアップが必要である。
 
 ```yaml
-services:
-  - name: docker:dind
-    command: ["--tls=false"]
-
 variables:
+  # ドライバーの設定
   DOCKER_DRIVER: "overlay2"
+  # ホストの設定
   DOCKER_HOST: "tcp://docker:2375"
+  # TLSの無効化
   DOCKER_TLS_CERTDIR: ""
+
+foo_job:
+  # CIの実行環境
+  image: docker:19.03.0
+  # サービスコンテナ
+  services:
+    - name: docker:19.03.0-dind
+      # TLSの無効化
+      command: ["--tls=false"]
 ```
 
 > - https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300

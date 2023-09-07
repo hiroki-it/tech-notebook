@@ -3985,7 +3985,11 @@ data:
 
 ### .spec.maxUnavailable
 
-対象のPodを新しいNodeでスケジューリングする時に、既存のNodeで削除できるPodの最大数を設定する。
+古いPodをNodeから退避させる時に、Nodeで削除できる古いPodの最大数を設定する。
+
+これを設定しないと、特定のWorkload (例：Deployment、StatefulSet) 配下のPodを全て削除してしまう問題が起こる。
+
+まずは`.spec.minAvailable`キーでスケジューリングできる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -3993,21 +3997,22 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
+  # 古いPodをNodeから退避させる時に、古いPod1個のみを削除できる。
   maxUnavailable: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: foo-pod # 対象のPod
 ```
 
 > - https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
+> - https://tech.andpad.co.jp/entry/2022/08/30/100000
 
 <br>
 
 ### .spec.minAvailable
 
-対象のPodを新しいNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを退避させられる。
+古いPodをNodeから退避させる時に、他のNodeで新しいPodのスケジューリングの完了を待機してから、古いPodを退避させられる。
 
-このスケジューリングを待機するPodの最低限数を設定する。
+このスケジューリングを待機する新しいPodの最低限数を設定する。
+
+まずは`.spec.minAvailable`キーでスケジューリングできる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -4015,12 +4020,8 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  # 新しいNodeで、3個のPodのスケジューリングが完了するまで待機する。
+  # 古いPodをNodeから退避させる時に、他のNodeで新しいPod3個のスケジューリングが完了するまで待機できる。
   minAvailable: 3
-  selector:
-    matchLabels:
-      # 対象のPod
-      app.kubernetes.io/name: foo-pod
 ```
 
 > - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
@@ -4030,7 +4031,7 @@ spec:
 
 ### .spec.selector
 
-対象のPodを設定する。
+古いPodをNodeから退避させる時に、対象のPodを設定する。
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -4040,7 +4041,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: foo-pod # 対象のPod
+      # 対象のPod
+      app.kubernetes.io/name: foo-pod
 ```
 
 > - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
