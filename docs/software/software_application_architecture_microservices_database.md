@@ -17,7 +17,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 ### 共有DBパターン
 
-#### ▼ 共有DBパターン
+#### ▼ 共有DBパターンとは
 
 各マイクロサービスで共有して使用するDBを`1`個だけ用意する。
 
@@ -25,6 +25,24 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 > - https://microservices.io/patterns/data/shared-database.html
+
+#### ▼ マイクロサービス別のスキーマ
+
+共有DBの場合に、マイクロサービス別にスキーマを作成する。
+
+![microservices_share-db_diff-scheme.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png)
+
+> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
+
+<br>
+
+#### ▼ マイクロサービス別のテーブル
+
+共有DBの場合に、マイクロサービス別にテーブルを作成する。
+
+![microservices_share-db_diff-table.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
+
+> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 
 <br>
 
@@ -36,11 +54,14 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 ローカルトランザクションや分散トランザクションを実施する必要がある。
 
+![microservices_diff-db.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_diff-db.png)
+
 > - https://microservices.io/patterns/data/database-per-service.html
+> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 
 <br>
 
-## 02. トランザクションの実施パターン
+## 02. マイクロサービス別DBパターンの場合
 
 ### ローカルトランザクション
 
@@ -80,7 +101,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
-## 03. ローカルトランザクションの種類
+## 02-02. ローカルトランザクションの種類
 
 ### Sagaパターン
 
@@ -194,7 +215,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 <br>
 
-## 04. オブジェクトモデリング方式
+## 03. オブジェクトモデリング方式
 
 ### イベントソーシング
 
