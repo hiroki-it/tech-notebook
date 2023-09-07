@@ -118,9 +118,9 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 <br>
 
-### --additional-versions
+### -f (--additional-versions)
 
-#### ▼ --additional-versionsとは
+#### ▼ -f (--additional-versions) とは
 
 plutoが検証可能なAPIグループを追加する。
 

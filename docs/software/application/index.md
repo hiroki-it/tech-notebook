@@ -15,13 +15,18 @@
 * #### [アーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture.html)
 * #### [︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html)
 * #### <u>バックエンド</u>
-  > * ##### [︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_microservices.html)
   > * ##### [︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
   > * ##### [︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
   > * ##### [︎CQRS](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_cqrs.html)
 
 * #### <u>フロントエンド</u>
   > * ##### [︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html)
+
+* #### <u>マイクロサービスアーキテクチャ</u>
+  > * ##### [︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices.html)
+  > * ##### [認証/認可](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_auth.html)
+  > * ##### [DB](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_database.html)
+  > * ##### [ネットワーク](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_network.html)
 
 <br>
 
