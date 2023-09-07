@@ -149,26 +149,26 @@ checks:
 
   # priorityClassNotSetルールではWorkload全体を検証してしまう
   # そのため、DaemonSetに限定してpriorityClassの設定し忘れを検証できるルールを定義する
-  customChecks:
-    # カスタムルール名
-    daemonSetPriorityClassNotSet:
-      successMessage: In DaemonSet, priority class has been set
-      failureMessage: In DaemonSet, priority class should be set
-      category: Reliability
-      target: Controller
-      controllers:
-        include:
-          - DaemonSet
-      chema:
-        "$schema": http://json-schema.org/draft-07/schema
-        type: object
-        required:
-          - spec
-        properties:
-          spec:
-            type: object
-            required:
-              - priorityClassName
+customChecks:
+  # カスタムルール名
+  daemonSetPriorityClassNotSet:
+    successMessage: In DaemonSet, priority class has been set
+    failureMessage: In DaemonSet, priority class should be set
+    category: Reliability
+    target: Controller
+    controllers:
+      include:
+        - DaemonSet
+    chema:
+      "$schema": http://json-schema.org/draft-07/schema
+      type: object
+      required:
+        - spec
+      properties:
+        spec:
+          type: object
+          required:
+            - priorityClassName
 ```
 
 > - https://polaris.docs.fairwinds.com/customization/custom-checks/
