@@ -72,6 +72,8 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --
 
 ### checks
 
+#### ▼ checksとは
+
 検査項目ごとに重要度レベル (ignore、warning、danger) を設定する。
 
 ```yaml
@@ -98,6 +100,42 @@ checks:
 
   ...
 ```
+
+> - https://polaris.docs.fairwinds.com/customization/checks/
+
+#### ▼ カスタマイズ
+
+polarisの実行時に、重要度が`danger`以上のルールを検証するようにしたとする。
+
+重要度がデフォルトで`warning`のルールは検証しなくなるため、検証したいルールは`danger`に格上げする
+
+```yaml
+checks:
+  # Podのcpuの設定し忘れ
+  cpuLimitsMissing: danger
+  cpuRequestsMissing: danger
+
+  # Deploymentのreplicasの設定し忘れ
+  deploymentMissingReplicas: danger
+
+  # PodのlivenessProbeの設定し忘れ
+  livenessProbeMissing: danger
+
+  # Podのメモリの設定し忘れ
+  memoryLimitsMissing: danger
+  memoryRequestsMissing: danger
+
+  # PodDisruptionBudgetの作成し忘れ
+  missingPodDisruptionBudget: danger
+
+  # PodのpriorityClassの設定し忘れ
+  priorityClassNotSet: danger
+
+  # PodのreadinessProbeの設定し忘れ
+  readinessProbeMissing: danger
+```
+
+> - https://polaris.docs.fairwinds.com/customization/checks/
 
 <br>
 
