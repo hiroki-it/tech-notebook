@@ -116,7 +116,7 @@ checks:
   cpuLimitsMissing: danger
   cpuRequestsMissing: danger
 
-  # Deploymentのreplicasの設定し忘れ
+  # Deploymentのreplicasが1個である
   deploymentMissingReplicas: danger
 
   # PodのlivenessProbeの設定し忘れ
@@ -147,27 +147,32 @@ checks:
   # DaemonSetのpriorityClassの設定し忘れ
   daemonSetPriorityClassNotSet: danger
 
-  # priorityClassNotSetルールではWorkload全体を検証してしまう
-  # そのため、DaemonSetに限定してpriorityClassの設定し忘れを検証できるルールを定義する
+# priorityClassNotSetルールではWorkload全体を検証してしまう
+# そのため、DaemonSetに限定してpriorityClassの設定し忘れを検証できるルールを定義する
 customChecks:
   # カスタムルール名
   daemonSetPriorityClassNotSet:
     successMessage: In DaemonSet, priority class has been set
     failureMessage: In DaemonSet, priority class should be set
     category: Reliability
+    # Controller (Workload) 、PodTemplate、PodSpec、Container、を設定する
+    # schemaで指定する時のトップレベルのパスが変わる
     target: Controller
     controllers:
       include:
+        # ControllerのうちでDaemonSetのみを指定する
         - DaemonSet
-    chema:
+    schema:
       "$schema": http://json-schema.org/draft-07/schema
       type: object
       required:
+        # .specキーを必須にする
         - spec
       properties:
         spec:
           type: object
           required:
+            # .spec.priorityClassNameキーを必須にする
             - priorityClassName
 ```
 
