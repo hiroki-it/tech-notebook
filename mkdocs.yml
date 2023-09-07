@@ -141,12 +141,16 @@ nav:
           - アーキテクチャ: software/software_application_architecture.md
           - オブジェクト指向分析設計: software/software_application_architecture_analysis_and_design.md
           - ■ バックエンド:
-              - マイクロサービスアーキテクチャ: software/software_application_architecture_backend_microservices.md
               - ドメイン駆動設計: software/software_application_architecture_backend_domain_driven_design.md
               - クリーンアーキテクチャ: software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
               - CQRS: software/software_application_architecture_backend_cqrs.md
           - ■ フロントエンド:
               - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
+          - ■ マイクロサービスアーキテクチャ:
+              - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
+              - 認証/認可: software/software_application_architecture_microservices_auth.md
+              - DB: software/software_application_architecture_microservices_database.md
+              - ネットワーク: software/software_application_architecture_microservices_network.md
       - ■ アプリケーション間連携:
           - アプリケーション間通信: software/software_application_collaboration_communication.md
           - ■ RESTful-API:
