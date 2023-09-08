@@ -150,18 +150,19 @@ checks:
 
 #### ▼ 設定し忘れの検証
 
-DaemonSetは、`.spec.priorityClassName`キーを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。
+DaemonSetは、`.spec.priorityClassName`キーやを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。
 
 こういった場合に、カスタムルールが役立つ。
 
 ```yaml
 checks:
-  # DaemonSetのpriorityClassの設定し忘れ
+  # 重要度を設定する
   daemonSetPriorityClassNotSet: danger
+  daemonSetAffinityNotSet: danger
 
 customChecks:
-  # priorityClassNotSetルールではWorkload全体を検証してしまう
-  # そのため、DaemonSetに限定してpriorityClassの設定し忘れを検証できるルールを定義する
+  # DaemonSetのpriorityClassの設定し忘れを検証する
+  # ビルトインのpriorityClassNotSetルールではWorkload全体を検証してしまうため、DaemonSet限定のルールを定義した
   daemonSetPriorityClassNotSet:
     successMessage: In DaemonSet, priority class has been set
     failureMessage: In DaemonSet, priority class should be set
@@ -179,9 +180,30 @@ customChecks:
         spec:
           type: object
           required:
-            # .spec.priorityClassNameキーを必須にする
+            # DaemonSet配下のPodで、.spec.priorityClassNameキーを必須にする
             - priorityClassName
+
+  # DaemonSetのaffinityの設定し忘れを検証する
+  daemonSetAffinityNotSet:
+    successMessage: In DaemonSet, affinity has been set
+    failureMessage: In DaemonSet, affinity should be set
+    category: Reliability
+    target: apps/DaemonSet
+    schema:
+      "$schema": http://json-schema.org/draft-07/schema
+      type: object
+      required:
+        # .specキーを必須にする
+        - spec
+      properties:
+        spec:
+          type: object
+          required:
+            # DaemonSet配下のPodで、.spec.affinityキーを必須にする
+            - affinity
 ```
+
+> - https://polaris.docs.fairwinds.com/customization/custom-checks/#basic-example
 
 #### ▼ 作成し忘れ
 
@@ -191,11 +213,10 @@ HorizontalPodAutoscalerは、Deploymentと合わせて作る必要があるが�
 
 ```yaml
 checks:
-  # DaemonSetのpriorityClassの設定し忘れ
-  daemonSetPriorityClassNotSet: danger
+  # 重要度を設定する
+  missingHorizontalPodAutoscalerWithDeployment: danger
 
 customChecks:
-  # カスタムルール名
   # Deploymentを作成している場合に、HorizontalPodAutoscalerも作成していることを検証する
   missingHorizontalPodAutoscalerWithDeployment:
     successMessage: HorizontalPodAutoscaler exists
@@ -207,6 +228,8 @@ customChecks:
     additionalSchemas:
       autoscaling/HorizontalPodAutoscaler: {}
 ```
+
+> - https://polaris.docs.fairwinds.com/customization/custom-checks/#resource-presence
 
 <br>
 
