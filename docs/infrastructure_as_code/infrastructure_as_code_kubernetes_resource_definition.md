@@ -1084,7 +1084,7 @@ spec:
 
 ルーティング条件とするHostヘッダーの値を設定する。
 
-`.spec.hosts`キーを設定しなければ、全てのHostヘッダー値が対象になる。
+`.spec.rules[].hosts`キーを設定しなければ、全てのHostヘッダー値が対象になる。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

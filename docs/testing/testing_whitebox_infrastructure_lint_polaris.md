@@ -138,30 +138,37 @@ checks:
 
 > - https://polaris.docs.fairwinds.com/customization/checks/
 
-#### ▼ customChecks
+<br>
+
+### customChecks
+
+#### ▼ customChecksとは
 
 カスタムルールを定義する。
+
+> - https://polaris.docs.fairwinds.com/customization/custom-checks/
+
+#### ▼ 設定し忘れの検証
+
+DaemonSetは、`.spec.priorityClassName`キーを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。
+
+こういった場合に、カスタムルールが役立つ。
 
 ```yaml
 checks:
   # DaemonSetのpriorityClassの設定し忘れ
   daemonSetPriorityClassNotSet: danger
 
-# priorityClassNotSetルールではWorkload全体を検証してしまう
-# そのため、DaemonSetに限定してpriorityClassの設定し忘れを検証できるルールを定義する
 customChecks:
-  # カスタムルール名
+  # priorityClassNotSetルールではWorkload全体を検証してしまう
+  # そのため、DaemonSetに限定してpriorityClassの設定し忘れを検証できるルールを定義する
   daemonSetPriorityClassNotSet:
     successMessage: In DaemonSet, priority class has been set
     failureMessage: In DaemonSet, priority class should be set
     category: Reliability
     # Controller (Workload) 、PodTemplate、PodSpec、Container、を設定する
-    # schemaで指定する時のトップレベルのパスが変わる
-    target: Controller
-    controllers:
-      include:
-        # ControllerのうちでDaemonSetのみを指定する
-        - DaemonSet
+    # あるいはAPIグループ名を指定する
+    target: apps/DaemonSet
     schema:
       "$schema": http://json-schema.org/draft-07/schema
       type: object
@@ -176,7 +183,30 @@ customChecks:
             - priorityClassName
 ```
 
-> - https://polaris.docs.fairwinds.com/customization/custom-checks/
+#### ▼ 作成し忘れ
+
+HorizontalPodAutoscalerは、Deploymentと合わせて作る必要があるが、作成し忘れてしまう可能性がある。
+
+こういった場合に、カスタムルールが役立つ。
+
+```yaml
+checks:
+  # DaemonSetのpriorityClassの設定し忘れ
+  daemonSetPriorityClassNotSet: danger
+
+customChecks:
+  # カスタムルール名
+  # Deploymentを作成している場合に、HorizontalPodAutoscalerも作成していることを検証する
+  missingHorizontalPodAutoscalerWithDeployment:
+    successMessage: HorizontalPodAutoscaler exists
+    failureMessage: HorizontalPodAutoscaler is missing
+    category: Reliability
+    target: apps/Deployment
+    schema: {}
+    # Deploymentがある場合に合わせて必要なKubernetesリソースを定義する
+    additionalSchemas:
+      autoscaling/HorizontalPodAutoscaler: {}
+```
 
 <br>
 
@@ -203,7 +233,7 @@ mutations:
 exemptions:
   # Namespace名
   - namespace: kube-system
-    # コントローラー名
+    # Controller名 (Workload名)
     controllerNames:
       - dns-controller
       - ebs-csi-controller

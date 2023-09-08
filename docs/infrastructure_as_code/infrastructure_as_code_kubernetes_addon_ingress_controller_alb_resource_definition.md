@@ -54,9 +54,9 @@ metadata:
 
 あるいは、自動検出機能を使用することもできる。
 
-aws-load-balancer-controllerは、Ingressの`.spec.hosts`キーに基づいて、適切なACMのSSL証明書をALBに自動的に紐づける。
+aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[].host`キーに基づいて、適切なACMのSSL証明書をALBに自動的に紐づける。
 
-例えばIngressで`.spec.hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をACMから探す。
+例えばIngressで`.spec.rules[].hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をACMから探す。
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
 

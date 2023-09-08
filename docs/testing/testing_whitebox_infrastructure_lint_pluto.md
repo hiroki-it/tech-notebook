@@ -120,7 +120,7 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 ### -f (--additional-versions)
 
-#### ▼ -f (--additional-versions) とは
+#### ▼ -fとは
 
 plutoが検証可能なAPIグループを追加する。
 

@@ -140,7 +140,7 @@ Deployment配下のPodには、HorizontalPodAutoscalerが設定されている�
 コントロールプレーンの可用性を高められる。
 
 ```yaml
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: istiod-<リビジョン番号>
