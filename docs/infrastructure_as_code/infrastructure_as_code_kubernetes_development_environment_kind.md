@@ -68,9 +68,9 @@ $ kind create cluster -v 9 --name foo-cluster
 
 #### ▼ --wait
 
-待機時間を設定する。
+NodeのReady状態の待機時間を設定する。
 
-待機時間の間にNodeがReady状態になるようにする。
+これを設定しないと、NodeがReady状態になるのを待たずに、コマンド処理が終了になってしまう。
 
 デフォルトだと`0`秒であり、コントロールプレーンNodeとワーカーNodeが一台ずつで`2`分半かかる。
 
@@ -87,9 +87,13 @@ $ kind create cluster --wait 3m
 
 Kind Clusterを削除する。
 
+CIの実行コンテナでKind Clusterを作成する場合、コンテナが残らないように、`kind delete cluster`コマンドを実行するようにする。
+
 ```bash
 $ kind delete cluster --name foo-cluster
 ```
+
+> - https://gist.github.com/trondhindenes/0307fbe9cda1164115353b4632a31ea9?permalink_comment_id=3842803#gistcomment-3842803
 
 <br>
 

@@ -150,7 +150,7 @@ checks:
 
 #### ▼ 設定し忘れの検証
 
-DaemonSetは、`.spec.priorityClassName`キーやを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。
+DaemonSet配下のPodでは、`.spec.priorityClassName`キーや`.spec.affinity`キーを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。
 
 こういった場合に、カスタムルールが役立つ。
 

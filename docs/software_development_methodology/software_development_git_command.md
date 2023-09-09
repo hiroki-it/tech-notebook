@@ -79,6 +79,18 @@ $ git clone --recursive https://github.com/hiroki-hasegawa/foo-repository.git
 
 > - https://blog.kyanny.me/entry/2020/07/04/172905
 
+#### ▼ --depth
+
+最近コミットのみをクローンする。
+
+速度が求められる場合 (例：CIの実行コンテナなど) に役立つ。
+
+```bash
+$ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git
+```
+
+> - https://kakakakakku.hatenablog.com/entry/2017/03/22/195640
+
 <br>
 
 ### config

@@ -5,6 +5,14 @@ description: K3d＠開発環境の知見を記録しています。
 
 # K3d＠開発環境
 
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+> - https://hiroki-it.github.io/tech-notebook/
+
+<br>
+
 ## 01. セットアップ
 
 ```bash
@@ -31,6 +39,16 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
 
 > - https://github.com/k3d-io/k3d/discussions/474
 > - https://k3d.io/v5.5.2/usage/commands/k3d_cluster_create/
+
+#### ▼ --wait
+
+kube-apiserverからリクエストが返却された上で、処理を完了させる。
+
+デフォルトで有効になっている。
+
+```bash
+$ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --wait
+```
 
 <br>
 

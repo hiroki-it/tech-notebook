@@ -1274,7 +1274,7 @@ $ kubectl get pod -w
 **＊例＊**
 
 ```bash
-$ kubectl label <リソース名> foo=bar
+$ kubectl label <リソースの種類> <リソース名> foo=bar
 ```
 
 #### ▼ オプション無し (キーの削除)
@@ -1282,7 +1282,7 @@ $ kubectl label <リソース名> foo=bar
 指定したリソースの`.metadata.labels`キーを削除する。
 
 ```bash
-$ kubectl label <リソース名> foo-
+$ kubectl label <リソースの種類> <リソース名> foo-
 ```
 
 **＊例＊**

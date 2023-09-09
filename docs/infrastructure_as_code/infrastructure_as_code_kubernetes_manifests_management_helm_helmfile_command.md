@@ -108,6 +108,18 @@ foo-release         ./charts/foo         0.0.1
 > - https://helmfile.readthedocs.io/en/latest/#apply
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
+#### ▼ --skip-crds
+
+CRDの作成をスキップする。
+
+`kubectl apply`コマンドでCRDを作成した場合に役立つ。
+
+注意点として、CRDの更新はHelmがサポートしていないため、あくまで作成をスキップする。
+
+```bash
+$ helmfile -e dev apply --skip-crds
+```
+
 <br>
 
 ### destroy
