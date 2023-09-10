@@ -433,7 +433,8 @@ jobs:
       # コンテナが入れ子にならないようにする。
       - setup_remote_docker
       - run: | # DockerHubに対するログイン
-          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+          echo "$DOCKER_PASS" \
+            | docker login --username $DOCKER_USER --password-stdin
           docker run -d --name db company/proprietary-db:1.2.3
 
       # コンテナイメージのビルド
@@ -462,7 +463,8 @@ jobs:
     steps:
       - checkout
       - run: | # DockerHubに対するログイン
-          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+          echo "$DOCKER_PASS" \
+            | docker login --username $DOCKER_USER --password-stdin
           docker run -d --name db company/proprietary-db:1.2.3
 
       # コンテナイメージのビルド

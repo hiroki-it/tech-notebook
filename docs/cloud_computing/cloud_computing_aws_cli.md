@@ -493,9 +493,13 @@ $ aws deploy register-on-premises-instance \
 
 一時的に有効なパスワード取得する。
 
+`aws ecr get-login --no-include-email`コマンドを使用することは非推奨である。
+
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1
 ```
+
+> - https://qiita.com/hayao_k/items/3e4c822425b7b72e7fd0
 
 <br>
 

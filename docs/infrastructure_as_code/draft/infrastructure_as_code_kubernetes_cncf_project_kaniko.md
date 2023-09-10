@@ -13,11 +13,58 @@ description: Kaniko＠CNCFプロジェクトの知見を記録しています。
 
 <br>
 
-## セットアップ
+## 01. セットアップ
 
 コンテナ内でコンテナイメージをビルドする。
 
 Docker in Dockerを回避できる。
+
+<br>
+
+## 02. `config.json`ファイル
+
+### `config.json`ファイルとは
+
+Kanikoのオプションを設定する。
+
+イメージレジストリごとに、認証処理ヘルパーがある。
+
+```yaml
+{
+  "credHelpers":
+    {"<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login"},
+}
+```
+
+> - https://github.com/awslabs/amazon-ecr-credential-helper#configuration
+
+<br>
+
+### 機密情報の設定
+
+機密情報は、動的に設定できるようにする。
+
+```bash
+$ aws ecr get-login-password --region ap-northeast-1 \
+    | docker login --username AWS --password-stdin <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+
+$ cat > /kaniko/.docker/config.json << EOF
+  {
+    ...
+  }
+  EOF
+```
+
+> - https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-different-registries
+> - https://int128.hatenablog.com/entry/2019/09/25/204930
+
+<br>
+
+## 03. コマンド
+
+### Podの場合
+
+#### ▼ AWS ECR
 
 ```yaml
 apiVersion: v1
@@ -36,18 +83,16 @@ spec:
         # ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する
         - "--destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko"
       volumeMounts:
-        - name: kaniko-secret
-          mountPath: /secret
-      env:
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /secret/kaniko-secret.json
+        - name: aws-credentials
+          value: /root/.aws/
   restartPolicy: Never
   volumes:
-    - name: kaniko-secret
+    - name: aws-credentials
       secret:
-        secretName: kaniko-secret
+        secretName: aws-credentials
 ```
 
 > - https://github.com/GoogleContainerTools/kaniko#running-kaniko
+> - https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr
 
 <br>

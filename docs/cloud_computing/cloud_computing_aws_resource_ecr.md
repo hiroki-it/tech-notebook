@@ -45,9 +45,8 @@ description: ECR＠AWSリソースの知見を記録しています。
 : ECRにログインする。
 
 ```bash
-$ aws ecr get-login-password --region ap-northeast-1 | docker login \
-    --username AWS \
-    --password-stdin <イメージリポジトリURL>
+$ aws ecr get-login-password --region ap-northeast-1 | \
+    docker login --username AWS --password-stdin <イメージリポジトリURL>
 
 Login Succeeded
 ```
