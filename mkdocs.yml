@@ -234,11 +234,6 @@ nav:
       - ■ ユーティリティ:
           - ユーティリティ: software/software_basic_utility.md
           - Unix系標準ユーティリティ: software/software_basic_utility_unix.md
-          - ■ パッケージ管理ユーティリティ:
-              - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
-              - Linux系: software/software_basic_utility_package_management_linux.md
-              - RedHat系: software/software_basic_utility_package_management_redhat.md
-              - Debian系: software/software_basic_utility_package_management_debian.md
           - シェル: software/software_basic_utility_shell.md
           - スクリプト: software/software_basic_utility_script.md
           - ■ パッケージ:
@@ -246,6 +241,11 @@ nav:
               - ネットワーク系: software/software_basic_utility_package_network.md
               - セキュリティ系: software/software_basic_utility_package_security.md
               - ストレージ系: software/software_basic_utility_package_storage.md
+          - ■ パッケージ管理ユーティリティ:
+              - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
+              - Linux系: software/software_basic_utility_package_management_linux.md
+              - RedHat系: software/software_basic_utility_package_management_redhat.md
+              - Debian系: software/software_basic_utility_package_management_debian.md
       - ■ 言語プロセッサ:
           - 言語プロセッサ: software/software_basic_language_processor.md
           - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
@@ -565,7 +565,7 @@ nav:
                   - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.md
               - ■ Kind:
-                    - Kind: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind.md
+                  - Kind: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind.md
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
