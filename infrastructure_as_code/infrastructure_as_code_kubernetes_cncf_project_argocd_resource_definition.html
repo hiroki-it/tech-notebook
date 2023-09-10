@@ -4691,7 +4691,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>
 </code></pre></div>
 <h4 id="_10">▼ 本番環境<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>IngressClassを作成する。</p>
-<p>本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、Google CLB) を使用する。</p>
+<p>本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、GCP CLB) を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -4699,7 +4699,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress.k8s.aws/alb</span>
 </code></pre></div>
-<p>また、IngressClass (AWS ALB、Google CLB) に接続できるように、ドメインレジストリ (Route53、CloudDNS) にArgoCDのドメインを登録する。</p>
+<p>また、IngressClass (AWS ALB、GCP CLB) に接続できるように、ドメインレジストリ (Route53、CloudDNS) にArgoCDのドメインを登録する。</p>
 <p><br></p>
 <h2 id="01-03">01-03. マニフェスト<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_11">マニフェストの種類<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -6492,7 +6492,7 @@ spec:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
       
     
   </small>

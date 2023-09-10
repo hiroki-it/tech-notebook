@@ -2155,11 +2155,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#google-cloudtrace" class="md-nav__link">
-    宛先がGoogle CloudTraceの場合
+  <a href="#gcp-cloudtrace" class="md-nav__link">
+    宛先がGCP CloudTraceの場合
   </a>
   
-    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+    <nav class="md-nav" aria-label="宛先がGCP CloudTraceの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2202,11 +2202,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#google-cloudtrace_1" class="md-nav__link">
-    宛先がGoogle CloudTraceの場合
+  <a href="#gcp-cloudtrace_1" class="md-nav__link">
+    宛先がGCP CloudTraceの場合
   </a>
   
-    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+    <nav class="md-nav" aria-label="宛先がGCP CloudTraceの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2676,11 +2676,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#google-cloudtrace" class="md-nav__link">
-    宛先がGoogle CloudTraceの場合
+  <a href="#gcp-cloudtrace" class="md-nav__link">
+    宛先がGCP CloudTraceの場合
   </a>
   
-    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+    <nav class="md-nav" aria-label="宛先がGCP CloudTraceの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2723,11 +2723,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#google-cloudtrace_1" class="md-nav__link">
-    宛先がGoogle CloudTraceの場合
+  <a href="#gcp-cloudtrace_1" class="md-nav__link">
+    宛先がGCP CloudTraceの場合
   </a>
   
-    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+    <nav class="md-nav" aria-label="宛先がGCP CloudTraceの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2865,7 +2865,7 @@
 </ul>
 </blockquote>
 <h4 id="exporter">▼ Exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h4>
-<p>スパンの宛先とするスパン収集ツール (例：AWS X-ray、Google CloudTrace、otelコレクター、など) を決める。</p>
+<p>スパンの宛先とするスパン収集ツール (例：AWS X-ray、GCP CloudTrace、otelコレクター、など) を決める。</p>
 <p>具体的には、<code>WithEndpoint</code>関数を使用して、宛先 (例：<code>localhost:4317</code>、<code>opentelemetry-collector.tracing.svc.cluster.local</code>、など) を設定できる。</p>
 <blockquote>
 <ul>
@@ -3487,7 +3487,7 @@
 <h3 id="x-ray">宛先がX-rayの場合<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="google-cloudtrace">宛先がGoogle CloudTraceの場合<a class="headerlink" href="#google-cloudtrace" title="Permanent link">&para;</a></h3>
+<h3 id="gcp-cloudtrace">宛先がGCP CloudTraceの場合<a class="headerlink" href="#gcp-cloudtrace" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ パッケージの初期化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -3632,7 +3632,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03-python">03. Pythonの場合<a class="headerlink" href="#03-python" title="Permanent link">&para;</a></h2>
-<h3 id="google-cloudtrace_1">宛先がGoogle CloudTraceの場合<a class="headerlink" href="#google-cloudtrace_1" title="Permanent link">&para;</a></h3>
+<h3 id="gcp-cloudtrace_1">宛先がGCP CloudTraceの場合<a class="headerlink" href="#gcp-cloudtrace_1" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ パッケージの初期化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。</p>
 <p>otelクライアントパッケージを初期化する。</p>
@@ -3659,7 +3659,7 @@
 
 <span class="n">tracer_provider</span> <span class="o">=</span> <span class="n">TracerProvider</span><span class="p">()</span>
 
-<span class="c1"># スパンの宛先として、Google CloudTraceを設定する。</span>
+<span class="c1"># スパンの宛先として、GCP CloudTraceを設定する。</span>
 <span class="n">cloud_trace_exporter</span> <span class="o">=</span> <span class="n">CloudTraceSpanExporter</span><span class="p">()</span>
 
 <span class="n">tracer_provider</span><span class="o">.</span><span class="n">add_span_processor</span><span class="p">(</span><span class="n">BatchSpanProcessor</span><span class="p">(</span><span class="n">cloud_trace_exporter</span><span class="p">))</span>
@@ -3813,7 +3813,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
       
     
   </small>

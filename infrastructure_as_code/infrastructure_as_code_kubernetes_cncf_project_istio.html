@@ -4031,7 +4031,7 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 </blockquote>
 <h4 id="jwtbearer-id">▼ JWTによるBearer認証 (IDプロバイダーに認証フェーズを委譲)<a class="headerlink" href="#jwtbearer-id" title="Permanent link">&para;</a></h4>
 <p>JWTによるBearer認証を実施し、送信元のPodの通信を認証する。</p>
-<p>この場合、認証フェーズをIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、Google Auth) に委譲することになる。</p>
+<p>この場合、認証フェーズをIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、GCP Auth) に委譲することになる。</p>
 <p>JWTの取得方法として、例えば以下の方法がある。</p>
 <ul>
 <li>送信元のPodがIDプロバイダーからJWTを直接取得する。</li>
@@ -4057,7 +4057,7 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 </ul>
 </blockquote>
 <h4 id="_20">▼ 通信の認可の委譲<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、Google Auth) を指定し、認可フェーズを委譲できる。</p>
+<p>AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、GCP Auth) を指定し、認可フェーズを委譲できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3">https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3</a></li>
@@ -4395,7 +4395,7 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
       
     
   </small>
