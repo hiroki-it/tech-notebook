@@ -3444,10 +3444,13 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
 </code></pre></div>
 <p>追加したワーカーNodeに<code>.metadata.labeles</code>キーを追加すれば、node affinityやnode selectorを検証できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDを作成するワーカーNodeの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m02<span class="w"> </span>node-type<span class="o">=</span>deploy
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m01<span class="w"> </span>node-type<span class="o">=</span>deploy
 
 <span class="c1"># IngressやIngressGatewayを作成するワーカーNodeの場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m02<span class="w"> </span>node-type<span class="o">=</span>ingress
+
+<span class="c1"># アプリケーションを作成するワーカーNodeの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m03<span class="w"> </span>node-type<span class="o">=</span>app
 </code></pre></div>
 <blockquote>
 <ul>
@@ -3872,7 +3875,7 @@ Switched<span class="w"> </span>to<span class="w"> </span>context<span class="w"
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>

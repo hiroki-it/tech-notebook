@@ -2011,6 +2011,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-generate-name" class="md-nav__link">
+    ▼ --generate-name
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3189,6 +3196,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-generate-name" class="md-nav__link">
+    ▼ --generate-name
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3861,6 +3875,17 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="c1"># AWSの場合</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>--kube-context<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 </code></pre></div>
+<h4 id="-generate-name">▼ --generate-name<a class="headerlink" href="#-generate-name" title="Permanent link">&para;</a></h4>
+<p>リリース名を省略して、<code>helm install</code>コマンドを実行する。</p>
+<p>代わりに、ランダム値がリリース名になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>--generate-name
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package">https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package</a></li>
+<li><a href="https://stackoverflow.com/a/57347077">https://stackoverflow.com/a/57347077</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="lint">lint<a class="headerlink" href="#lint" title="Permanent link">&para;</a></h3>
 <h4 id="lint_1">▼ lintとは<a class="headerlink" href="#lint_1" title="Permanent link">&para;</a></h4>
@@ -4252,7 +4277,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-31</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>

@@ -2562,6 +2562,15 @@ k3d-foo-cluster-agent-0<span class="w">    </span>Ready<span class="w">    </spa
 k3d-foo-cluster-agent-1<span class="w">    </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">                 </span>16s<span class="w">   </span>v1.26.6+k3s1<span class="w">   </span><span class="m">172</span>.18.0.4<span class="w">    </span>&lt;none&gt;<span class="w">        </span>K3s<span class="w"> </span>dev<span class="w">    </span><span class="m">5</span>.4.226-129.415.amzn2.x86_64<span class="w">   </span>containerd://1.7.1-k3s1
 k3d-foo-cluster-agent-2<span class="w">    </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">                 </span>16s<span class="w">   </span>v1.26.6+k3s1<span class="w">   </span><span class="m">172</span>.18.0.6<span class="w">    </span>&lt;none&gt;<span class="w">        </span>K3s<span class="w"> </span>dev<span class="w">    </span><span class="m">5</span>.4.226-129.415.amzn2.x86_64<span class="w">   </span>containerd://1.7.1-k3s1
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDを作成するワーカーNodeの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>k3d-foo-cluster-agent-0<span class="w"> </span>node-type<span class="o">=</span>deploy
+
+<span class="c1"># IngressやIngressGatewayを作成するワーカーNodeの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>k3d-foo-cluster-agent-1<span class="w"> </span>node-type<span class="o">=</span>ingress
+
+<span class="c1"># アプリケーションを作成するワーカーNodeの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>k3d-foo-cluster-agent-2<span class="w"> </span>node-type<span class="o">=</span>app
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://docs.rancherdesktop.io/how-to-guides/create-multi-node-cluster/">https://docs.rancherdesktop.io/how-to-guides/create-multi-node-cluster/</a></li>
@@ -2635,7 +2644,7 @@ INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>
