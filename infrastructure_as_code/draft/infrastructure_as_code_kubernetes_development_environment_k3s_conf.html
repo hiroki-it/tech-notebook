@@ -12,7 +12,7 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_development_environment_k3s.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_development_environment_k3s_conf.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】K3S＠開発環境 - 俺の技術ノート</title>
+        <title>【IT技術の知見】設定ファイル＠K3S - 俺の技術ノート</title>
       
     
     
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】K3S＠開発環境
+              【IT技術の知見】設定ファイル＠K3S
             
           </span>
         </div>
@@ -1731,56 +1731,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. セットアップ
+  <a href="#01-registriesyaml" class="md-nav__link">
+    01. registries.yamlファイル
   </a>
-  
-    <nav class="md-nav" aria-label="01. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    バイナリの場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    インストールスクリプトの場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. コマンド
-  </a>
-  
-    <nav class="md-nav" aria-label="02. コマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kubectl" class="md-nav__link">
-    kubectl
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    server
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1802,7 +1755,7 @@
   
 
 
-<h1 id="k3s">K3S＠開発環境<a class="headerlink" href="#k3s" title="Permanent link">&para;</a></h1>
+<h1 id="k3s">設定ファイル＠K3S<a class="headerlink" href="#k3s" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -1811,46 +1764,19 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">バイナリの場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-Lo<span class="w"> </span>/usr/local/bin/k3s<span class="w"> </span>https://github.com/k3s-io/k3s/releases/download/v1.28.0+k3s1/k3s
-$<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>/usr/local/bin/k3s
-
-$<span class="w"> </span>k3s<span class="w"> </span>version
+<h2 id="01-registriesyaml">01. <code>registries.yaml</code>ファイル<a class="headerlink" href="#01-registriesyaml" title="Permanent link">&para;</a></h2>
+<p>K3s Cluster内のPodが使用するイメージレジストリ情報を設定する。</p>
+<p><code>/etc/rancher/k3s</code>ディレクトリ配下に配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="s">&quot;&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ユーザー名&gt;</span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;パスワード&gt;</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.k3s.io/installation/configuration#configuration-with-binary">https://docs.k3s.io/installation/configuration#configuration-with-binary</a></li>
-</ul>
-</blockquote>
-<h3 id="_3">インストールスクリプトの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.k3s.io<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_K3S_EXEC</span><span class="o">=</span><span class="s2">&quot;--disable-agent&quot;</span><span class="w"> </span><span class="nv">K3S_KUBECONFIG_MODE</span><span class="o">=</span><span class="s2">&quot;644&quot;</span><span class="w"> </span>sh<span class="w"> </span>-
-$<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>a+rw<span class="w"> </span>/etc/rancher/k3s
-$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/.kube<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>runner<span class="w"> </span><span class="nv">$HOME</span>/.kube
-$<span class="w"> </span>sudo<span class="w"> </span>k3s<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>view<span class="w"> </span>--raw<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOME</span>/.kube/config
-$<span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>runner<span class="w"> </span><span class="nv">$HOME</span>/.kube/config
-$<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </span>go-r<span class="w"> </span><span class="nv">$HOME</span>/.kube/config
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://future-architect.github.io/articles/20200929/">https://future-architect.github.io/articles/20200929/</a></li>
-<li><a href="https://docs.k3s.io/installation/configuration#configuration-with-install-script">https://docs.k3s.io/installation/configuration#configuration-with-install-script</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="kubectl">kubectl<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h3>
-<p>K3s Clusterに<code>kubectl</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>k3s<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod
-</code></pre></div>
-<p><br></p>
-<h3 id="server">server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
-<p>K3s Clusterを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>k3s<span class="w"> </span>server
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.k3s.io/cli/server">https://docs.k3s.io/cli/server</a></li>
+<li><a href="https://docs.k3s.io/installation/private-registry#configs">https://docs.k3s.io/installation/private-registry#configs</a></li>
+<li><a href="https://qiita.com/ynott/items/29373eb7b23b029333dc">https://qiita.com/ynott/items/29373eb7b23b029333dc</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -1860,7 +1786,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>

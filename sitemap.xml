@@ -1146,7 +1146,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_development_environment_k3s.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_development_environment_k3s_command.html</loc>
+         <lastmod>2023-09-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_development_environment_k3s_conf.html</loc>
          <lastmod>2023-09-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
