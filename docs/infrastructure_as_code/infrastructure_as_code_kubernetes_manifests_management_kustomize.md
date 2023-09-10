@@ -213,7 +213,7 @@ viaduct.ai/v1/ksops/ksops
 
 SOPSを使用して、復号化したデータをSecretにデータを注入する。
 
-SOPSで使用できる暗号化キー (例：AWS KMS、Google CKM、GPG、PGP、など) をKSOPSでも使用できる。
+SOPSで使用できる暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) をKSOPSでも使用できる。
 
 > - https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling
 > - https://github.com/viaduct-ai/kustomize-sops/issues/117#issuecomment-852174964

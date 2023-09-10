@@ -29,7 +29,7 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。
 
-各イメージレジストリ (例：DockerHub、AWS ECR、Google GCR、Artifactory、Harbor、など) には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+各イメージレジストリ (例：DockerHub、AWS ECR、GCP GCR、Artifactory、Harbor、など) には、カスタマイズする上でのベースとなるベースイメージが提供されている。
 
 <br>
 
@@ -174,7 +174,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 
 #### ▼ gcplogs
 
-標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
+標準出力/標準エラー出力に出力されたログを、GCP CloudLoggingのAPIに転送する。
 
 ```yaml
 {

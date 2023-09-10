@@ -54,7 +54,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 #### ▼ Exporter
 
-スパンの宛先とするスパン収集ツール (例：AWS X-ray、Google CloudTrace、otelコレクター、など) を決める。
+スパンの宛先とするスパン収集ツール (例：AWS X-ray、GCP CloudTrace、otelコレクター、など) を決める。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
@@ -705,7 +705,7 @@ func createUser(c *gin.Context) {
 
 <br>
 
-### 宛先がGoogle CloudTraceの場合
+### 宛先がGCP CloudTraceの場合
 
 #### ▼ パッケージの初期化
 
@@ -858,7 +858,7 @@ func main() {
 
 ## 03. Pythonの場合
 
-### 宛先がGoogle CloudTraceの場合
+### 宛先がGCP CloudTraceの場合
 
 #### ▼ パッケージの初期化
 
@@ -891,7 +891,7 @@ resource = Resource.create({
 
 tracer_provider = TracerProvider()
 
-# スパンの宛先として、Google CloudTraceを設定する。
+# スパンの宛先として、GCP CloudTraceを設定する。
 cloud_trace_exporter = CloudTraceSpanExporter()
 
 tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))

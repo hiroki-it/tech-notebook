@@ -334,7 +334,7 @@ IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 - Auth0
 - Keycloak
-- Google Auth
+- GCP Auth
 
 <br>
 

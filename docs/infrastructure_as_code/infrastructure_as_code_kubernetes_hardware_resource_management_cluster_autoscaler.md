@@ -50,7 +50,7 @@ Podのスケジューリングの可否を条件とする場合は、metrics-ser
 
 #### ▼ Kubernetes以外のメトリクスを条件するとする場合
 
-Kubernetes以外のメトリクス (例：AWS CloudWatch、Google CloudMonitoring) を条件とする場合は、metrics-serverは不要である。
+Kubernetes以外のメトリクス (例：AWS CloudWatch、GCP CloudMonitoring) を条件とする場合は、metrics-serverは不要である。
 
 > - https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#%E5%A4%96%E9%83%A8%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpacloudwatchclusterautoscaler
 

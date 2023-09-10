@@ -19,7 +19,7 @@ description: GCPリソース＠GCPリソースの知見を記録しています�
 
 データ分析のステップ (収集/加工/保存、クエリ、可視化) のうちで、収集/加工/保存とクエリを担う。
 
-可視化にはBIツール (例：Google Looker) が必要になる。
+可視化にはBIツール (例：GCP Looker) が必要になる。
 
 ![bigquery.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bigquery.png)
 
@@ -38,9 +38,9 @@ description: GCPリソース＠GCPリソースの知見を記録しています�
 > - https://knowledge.insight-lab.co.jp/bi/lookerandbigquery
 > - https://cloud.google.com/looker/docs/db-config-google-bigquery?hl=ja#authentication_with_bigquery_service_accounts
 
-#### ▼ Google OAuth
+#### ▼ GCP OAuth
 
-Google OAuthの情報を認証に使用する。
+GCP OAuthの情報を認証に使用する。
 
 発行した認証情報をBIツールに登録する。
 

@@ -244,7 +244,7 @@ IngressClassを作成する。
 
 開発環境では、IngressClassとしてNginxを使用する。
 
-本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、Google CLB) を使用する。
+本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、GCP CLB) を使用する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
