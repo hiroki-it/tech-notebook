@@ -41,6 +41,16 @@ $ docker attach <起動中コンテナ名>
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --force-rm=true --no-cache .
 ```
 
+#### ▼ --tag (-t)
+
+ビルドしたコンテナイメージに、イメージ名とタグを付与する。
+
+```bash
+$ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ>
+```
+
+> - https://docs.docker.com/engine/reference/commandline/build/#tag
+
 #### ▼ --target
 
 ビルドするステージ名を設定する。

@@ -2450,6 +2450,23 @@ spec:
         - containerPort: 8080
 ```
 
+AWS ECRからコンテナイメージをプルする場合は、以下の通りである。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository/app:1.0.0
+      ports:
+        - containerPort: 8080
+```
+
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/container-registry/#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D
+
 #### ▼ envFrom
 
 `.spec.volumes.secret`キーとは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。

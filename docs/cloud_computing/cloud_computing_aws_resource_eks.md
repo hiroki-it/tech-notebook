@@ -675,6 +675,8 @@ EC2ワーカーNodeが、自身の所属するClusterにアクセスできるよ
 
 EC2ワーカーNode内のPodがECRからコンテナイメージをプルできるように、EC2ワーカーNodeに`AmazonEC2ContainerRegistryReadOnly`を付与する必要がある。
 
+これにより、PodのコンテナごとにAWSの認証情報をマウントする必要がなくなる。
+
 `aws-node`のPodがAWSのネットワーク系のAPIにアクセスできるように、IRSA用のServiceAccountに`AmazonEKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
 
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-node-role.html
