@@ -565,7 +565,9 @@ nav:
                   - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.md
               - ■ Kind:
-                  - Kind: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind_command.md
+              - ■ K3d:
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3d_command.md
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
