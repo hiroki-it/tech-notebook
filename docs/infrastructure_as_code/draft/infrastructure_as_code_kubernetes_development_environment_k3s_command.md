@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】K3S＠開発環境
+title: 【IT技術の知見】コマンド＠K3S
 description: K3S＠開発環境の知見を記録しています。
 ---
 
-# K3S＠開発環境
+# コマンド＠K3S
 
 ## はじめに
 
@@ -46,7 +46,7 @@ $ sudo chmod go-r $HOME/.kube/config
 
 ### kubectl
 
-K3s Clusterに`kubectl`コマンドを実行する。
+K3S Clusterに`kubectl`コマンドを実行する。
 
 ```bash
 $ k3s kubectl get pod
@@ -56,7 +56,7 @@ $ k3s kubectl get pod
 
 ### server
 
-K3s Clusterを作成する。
+K3S Clusterを作成する。
 
 ```bash
 $ k3s server
