@@ -2018,6 +2018,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-wait" class="md-nav__link">
+    ▼ --wait
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2454,7 +2461,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-wait" class="md-nav__link">
+  <a href="#-wait_1" class="md-nav__link">
     ▼ --wait
   </a>
   
@@ -3203,6 +3210,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-wait" class="md-nav__link">
+    ▼ --wait
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3639,7 +3653,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-wait" class="md-nav__link">
+  <a href="#-wait_1" class="md-nav__link">
     ▼ --wait
   </a>
   
@@ -3870,20 +3884,32 @@ kind:<span class="w"> </span>Deployment
 <h4 id="kube-context">▼ kube-context<a class="headerlink" href="#kube-context" title="Permanent link">&para;</a></h4>
 <p><code>helm</code>コマンドの向き先を指定して、<code>helm install</code>コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Minikubeの場合</span>
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>--kube-context<span class="w"> </span>minikube
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/&lt;チャート名&gt;<span class="w"> </span>--kube-context<span class="w"> </span>minikube
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWSの場合</span>
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>--kube-context<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/&lt;チャート名&gt;<span class="w"> </span>--kube-context<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 </code></pre></div>
 <h4 id="-generate-name">▼ --generate-name<a class="headerlink" href="#-generate-name" title="Permanent link">&para;</a></h4>
 <p>リリース名を省略して、<code>helm install</code>コマンドを実行する。</p>
 <p>代わりに、ランダム値がリリース名になる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>--generate-name
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;チャートリポジトリ名&gt;/&lt;チャート名&gt;<span class="w"> </span>--generate-name
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package">https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package</a></li>
 <li><a href="https://stackoverflow.com/a/57347077">https://stackoverflow.com/a/57347077</a></li>
+</ul>
+</blockquote>
+<h4 id="-wait">▼ --wait<a class="headerlink" href="#-wait" title="Permanent link">&para;</a></h4>
+<p>作成したPodがReady状態になるまで、<code>helm install</code>コマンドの完了を待機する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>foo-release<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>--wait
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback">https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -4263,13 +4289,18 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
 <li><a href="https://helm.sh/docs/helm/helm_upgrade/">https://helm.sh/docs/helm/helm_upgrade/</a></li>
 </ul>
 </blockquote>
-<h4 id="-wait">▼ --wait<a class="headerlink" href="#-wait" title="Permanent link">&para;</a></h4>
+<h4 id="-wait_1">▼ --wait<a class="headerlink" href="#-wait_1" title="Permanent link">&para;</a></h4>
 <p>作成したPodがReady状態になるまで、<code>helm upgrade</code>コマンドの完了を待機する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--wait<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--wait<span class="w"> </span>foo-release<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>foo-release<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>--wait
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback">https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>

@@ -1867,11 +1867,13 @@
 <p><br></p>
 <h2 id="01-kaniko">01. Kanikoとは<a class="headerlink" href="#01-kaniko" title="Permanent link">&para;</a></h2>
 <p>コンテナ内でコンテナイメージをビルドする。</p>
-<p>Docker in Dockerの問題を回避できる。</p>
-<p>また、レイヤー単位でコンテナイメージのキャッシュを作成できるため、都度、コンテナイメージをビルドしなくて良くなる。</p>
+<p>これにより、Docker in Dockerの問題を回避できる。</p>
+<p>また、Kubernetes Cluster内でコンテナイメージをビルドできるようになる。</p>
+<p>レイヤー単位でコンテナイメージのキャッシュを作成できるため、都度、コンテナイメージをビルドしなくて良くなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE">https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE</a></li>
+<li><a href="https://snyk.io/blog/building-docker-images-kubernetes/">https://snyk.io/blog/building-docker-images-kubernetes/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -2019,7 +2021,7 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>
